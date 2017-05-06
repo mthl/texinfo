@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Building JavaFX applications</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Composable-pictures.xhtml" title="Composable pictures"/>
+    <link rel="next" href="Building-for-Android.xhtml" title="Building for Android"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Building JavaFX applications" epub:type="subchapter" id="Building-JavaFX-applications">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Building JavaFX applications</h2>
+          </div>
+        </div>
+      </div>
+      <a id="idm139667869694352" class="indexterm"/>
+      <p>Kawa makes it easy to build “rich client” (i.e. GUI) applications using
+<a class="ulink" href="http://www.oracle.com/technetwork/java/javafx/overview/index.html" target="_top">JavaFX</a>.
+For example the following program will print up a window with a button;
+clicking on the button will print a message on the console output about the
+event.
+</p>
+      <pre class="screen">(require 'javafx-defs)
+(javafx-application)
+
+(javafx-scene
+ title: "Hello Button"
+ width: 600 height: 450
+ (Button
+  text: "Click Me"
+  layout-x: 25
+  layout-y: 40
+  on-action: (lambda (e) (format #t "Event: ~s~%~!" e))))
+</pre>
+      <p>JavaFX support is builtin to the pre-built <code class="literal">kawa-2.92_invoke.jar</code>.
+It is easiest to use JDK 8; see below if you’re using JDK 7.
+If you build Kawa from source, specify <code class="literal">--with-javafx</code> on the
+<code class="literal">configure</code> command line (assuming you’re using JDK 8).
+</p>
+      <p>Assume the above file is <code class="literal">HelloButton1.scm</code>, you can
+run it like this:
+</p>
+      <pre class="screen">$ kawa HelloButton1.scm
+</pre>
+      <p>For more information and examples read this (slightly older)
+<a class="ulink" href="http://per.bothner.com/blog/2011/JavaFX-using-Kawa-intro/" target="_top">introduction</a>,
+and
+<a class="ulink" href="http://localhost/per/blog/2011/JavaFX-using-Kawa-animation/" target="_top">this on animation</a>.
+</p>
+      <p>The <code class="literal">browse-kawa-manual</code> script in the <code class="literal">doc</code> directory (source only)
+uses JavaFX WebView to create a window for browsing the Kawa documentation.
+</p>
+      <section class="sect2" title="Using JavaFX with JDK 7" epub:type="division" id="idm139667869684720">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using JavaFX with JDK 7</h3>
+            </div>
+          </div>
+        </div>
+        <p>JDK 8 ships with JavaFX, and it is in the default <code class="literal">CLASSPATH</code>.
+JDK 7 update 9 or later does have JavaFX included, but it is a separate
+<code class="literal">jfxrt.jar</code> which not in the default <code class="literal">CLASSPATH</code>.
+Thus you have to explicitly add <code class="literal">jfxrt.jar</code>.
+To run the previous <code class="literal">HelloButton1.scm</code> you can do:
+</p>
+        <pre class="screen">java -cp $JAVA_HOME/lib/jfxrt.jar:$KAWA_HOME/kawa.jar HelloButton1.scm
+</pre>
+        <p>If you build Kawa from source, do:
+</p>
+        <pre class="screen">$ ./configure --with-javafx=$JAVA_HOME --enable-kawa-frontend ...other-args...
+</pre>
+        <p>The resulting Kawa binary sets up the path to <code class="literal">jfxrt.jar</code> so you just need to do:
+</p>
+        <pre class="screen">$ kawa HelloButton1.scm
+</pre>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Building-JavaFX-applications.xhtml#idm139667869684720">Using JavaFX with JDK 7</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Miscellaneous.xhtml">Miscellaneous topics</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Composable-pictures.xhtml">Composable pictures</a></p>
+        <p>
+        Next: <a accesskey="n" href="Building-for-Android.xhtml">Building for Android</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>System inquiry</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Processes.xhtml" title="Processes"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="System inquiry" epub:type="subchapter" id="System-inquiry">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">System inquiry</h2>
+          </div>
+        </div>
+      </div>
+      <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667869585696" class="indexterm"/> <code class="varname">home-directory</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>A string containing the home directory of the user.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667869582704" class="indexterm"/> <code class="function">command-line</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns a nonempty list of immutable strings. The first element is
+an implementation-specific name for the running top-level
+program.
+The remaining elements are the command-line arguments,
+as passed to the <code class="literal">main</code> method (except for those
+flags processed by Kawa itself).
+</p>
+          <p>The first element will depend on how the Kawa module was invoked.
+Kawa uses the following rules to determine the command name:
+</p>
+          <div class="orderedlist" epub:type="list">
+            <ol class="orderedlist" type="1">
+              <li class="listitem" epub:type="list-item">
+                <p>If the property <code class="literal">kawa.command.name</code> is set, that is used.
+This variable can be set on the <code class="literal">kawa</code> command line,
+for example from a script:
+</p>
+                <pre class="screen">kawa -Dkawa.command.name="$0" foo "$@"
+</pre>
+                <p>This variable is also set implicitly by the meta-arg option.  FIXME.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If we’re reading a source file that starts with the Unix command-file prefix
+‘<code class="literal">#!/</code>’ then we use the name of the source file.
+The assumption is that such a file is an executable script.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If the Java property <code class="literal">kawa.command.line</code> is set,
+then we use that (after stripping off text that duplicates
+the remaining arguments).
+The <code class="literal">kawa</code> program sets this property to the
+command line used to invoke it
+(specifically the contents of the entire <code class="literal">argv</code> array),
+before invoking the <code class="literal">java</code> program.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If the Java property <code class="literal">sun.java.command</code> is set,
+then we use that (after stripping off text that duplicates
+the remaining arguments), and then prepending the string <code class="literal">"java "</code>.
+The OpenJDK <code class="literal">java</code> program sets this property.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If all else fails, the command name is <code class="literal">"kawa"</code>.
+</p>
+              </li>
+            </ol>
+          </div>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667869569648" class="indexterm"/> <code class="varname">command-line-arguments</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Any command-line arguments (following flags processed by Kawa itself)
+are assigned to the global variable ‘<code class="literal">command-line-arguments</code>’,
+which is a vector of strings.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667869565984" class="indexterm"/> <code class="function">process-command-line-assignments</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Process any initial command-line options that set variables.
+These have the form <code class="literal"><em class="replaceable"><code>name</code></em>=<em class="replaceable"><code>value</code></em></code>.
+Any such command-line options (at the start of the command-line)
+are processed and removed from the command-line.
+</p>
+          <pre class="screen">$ java kawa.repl -- abc=123 def
+#|kawa:1|# (write (command-line))
+("java kawa.repl --" "abc=123" "def")
+#|kawa:2|# (process-command-line-assignments)
+#|kawa:3|# (write (command-line))
+("java kawa.repl -- abc=123" "def")
+#|kawa:4|# abc
+123
+</pre>
+          <p>This function is mostly useful for Kawa applications
+compiled with the <code class="literal">--main</code> option.
+(It is used to set XQuery <code class="literal">external</code> variables.)
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667869559872" class="indexterm"/> <code class="function">get-environment-variable</code> <em class="replaceable"><code>name</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Many operating systems provide each running process with
+an environment conisting of environment variables.
+(This environment is not to be confused with the
+Scheme environments that can be passed to <code class="literal">eval</code>.)
+Both the name and value of an environment variable are
+strings. The procedure <code class="literal">get-environment-variable</code>
+returns the value of the environment variable <em class="replaceable"><code>name</code></em>,
+or <code class="literal">#f</code> if the environment variable is not found.
+
+
+(This uses the <code class="literal">java.lang.System:getenv</code> method.)
+It is an error to mutate the resulting string.
+</p>
+          <pre class="screen">(get-environment-variable "PATH")
+    ⇒ "/usr/local/bin:/usr/bin:/bin"
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667869552688" class="indexterm"/> <code class="function">get-environment-variables</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the names and values of all the environment variables as an alist,
+where the car of each entry is the name of an environment variable,
+and the cdr is its value, both as strings.
+It is an error to mutate any of the strings or the alist itself.
+</p>
+          <pre class="screen">(get-environment-variables)
+  ⇒ (("USER" . "root") ("HOME" . "/"))
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Miscellaneous.xhtml">Miscellaneous topics</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Android-view-construction.xhtml">Android view construction</a></p>
+        <p>
+        Next: <a accesskey="n" href="Processes.xhtml">Processes</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

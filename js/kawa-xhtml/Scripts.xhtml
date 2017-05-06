@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Running Command Scripts</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Options.xhtml" title="Command-line arguments"/>
+    <link rel="next" href="REPL-Console.xhtml" title="The REPL (read-eval-print-loop) console"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Running Command Scripts" epub:type="subchapter" id="Scripts">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Running Command Scripts</h2>
+          </div>
+        </div>
+      </div>
+      <p>If you write a Kawa application, it is convenient to be able
+to execute it directly (from the command line or clicking an icon, say),
+without have to explicitly run <code class="literal">kawa</code> or <code class="literal">java</code>.
+On Unix-like systems the easiest way to do this is to
+write a small shell script that runs your Kawa application.
+</p>
+      <p>For modest-sized applications it is convenient if the shell script
+and the Kawa code can be in the same file.
+Unix-like systems support a mechanism where a <em class="firstterm">script</em> can
+specify a program that should execute it.  The convention
+is that the first line of the file should start with the two characters
+‘<code class="literal">#!</code>’ followed by the absolute path of the program that should
+process (interpret) the script.
+</p>
+      <p>(Windows has <em class="firstterm">batch files</em>, which are similar.)
+</p>
+      <p>This convention works well for script languages that use ‘<code class="literal">#</code>’
+to indicate the start of a comment, since the interpreter will
+automatically ignore the line specifying the interpreter filename.
+Scheme, however, uses ‘<code class="literal">#</code>’ as a multi-purpose prefix,
+and Kawa specifically uses ‘<code class="literal">#!</code>’ as a prefix for
+various <a class="link" href="Special-named-constants.xhtml" title="Special named constants">Special named constants</a> such as <code class="literal">#!optional</code>.
+</p>
+      <p>Kawa does recognize the three-character sequence ‘<code class="literal">#!/</code>’ at the
+beginning of a file as special, and ignores it.
+Here is an example:
+</p>
+      <pre class="screen">#!/usr/local/bin/kawa
+(format #t "The command-line was:~{ ~w~}~%" (command-line))
+</pre>
+      <p>If you copy this text to a file named <code class="literal">/home/me/bin/scm-echo</code>,
+set the execute permission, and make sure it is in your <code class="literal">PATH</code>,
+then you can execute it just by naming it on command line:
+</p>
+      <pre class="screen">$ chmod +x /home/me/bin/scm-echo
+$ PATH=/home/me/bin:$PATH
+$ scm-env a b
+The command-line was: "/home/me/bin/scm-echo" "a" "b"
+</pre>
+      <p>The system kernel will automatically execute <code class="literal">kawa</code>, passing it the
+filename as an argument.
+</p>
+      <p>Note that the full path-name of the <code class="literal">kawa</code> interpreter
+must be hard-wired into the script.  This means you may have to edit
+the script depending on where Kawa is installed on your system.
+Another possible problem is that the interpreter must be an
+actual program, not a shell script. Depending on how you configure
+and install Kawa, <code class="literal">kawa</code> can be a real program or a script.
+You can avoid both problems by the <code class="literal">env</code> program, available on
+most modern Unix-like systems:
+</p>
+      <pre class="screen">#!/usr/bin/env kawa
+(format #t "The command-line was:~{ ~w~}~%" (command-line))
+</pre>
+      <p>This works the same way, but assumes <code class="literal">kawa</code> is in the
+command <code class="literal">PATH</code>.
+</p>
+      <section class="sect2" title="Setting kawa options in the script" epub:type="division" id="idm139667880059216">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Setting kawa options in the script</h3>
+            </div>
+          </div>
+        </div>
+        <p>If you need to specify extra arguments to <code class="literal">kawa</code>,
+you can run arbitrary shell command inside Scheme block comments.
+Here is an example:
+</p>
+        <pre class="screen">#!/bin/sh
+#|
+exec kawa out:base=16 out:radix=yes "$0" "$*"
+|#
+(format #t "The command-line is:~{ ~w~}.~%" (command-line))
+(display "It has ")
+(display (apply + (map string-length (command-line))))
+(display " characters.")
+(newline)
+</pre>
+        <p>The trick is to hide the shell code from Kawa inside
+a <code class="literal">#|...|#</code> block-comment.  The start of the block comment
+is a line starting with a <code class="literal">#</code>, so it is treated as a comment by the shell.
+You can then invoke <code class="literal">kawa</code> (or <code class="literal">java</code> directly)
+as you prefer, setting up class-path and jars as needed,
+and passing whatever arguments you want.
+(The shell replaces the <code class="literal">"$0"</code> by the name of the script, and
+replaces the <code class="literal">"$@"</code> by the remaining arguments passed to the script.)
+You need to make sure the shell finishes before it reaches
+the end of the block comment or the Scheme code, which would confuse it.
+The example uses <code class="literal">exec</code>, which tells the shell to <span class="emphasis"><em>replace</em></span>
+itself by <em class="replaceable"><code>kawa</code></em>;
+an alternative is to use the shell <code class="literal">exit</code> command.
+</p>
+        <p>If you copy the above file to <code class="literal">/tmp/sch-echo</code> and make
+that file executable, you can run it directly:
+</p>
+        <pre class="screen">$ /tmp/scm-echo "a b" "c d"
+The command-line is: "/tmp/scm-echo" "a b c d".
+It has #x14 characters.
+</pre>
+        <p>When the Kawa reader sees the initial <code class="literal">#/</code> it sets
+the command name to the file name, so it can be used by a future
+call to <code class="literal">(command-name)</code>.  If you want to override
+this you can use the <code class="literal">-Dkawa.command.name=<em class="replaceable"><code>name</code></em></code> option.
+</p>
+        <p>Using comments this way has the advantage that you have the
+option of running the script “manually” if you prefer:
+</p>
+        <pre class="screen">$ kawa /tmp/scm-echo out:base=8 "x y"
+The command-line is: "/tmp/scm-echo" "out:base=8" "x y".
+It has 26 characters.
+</pre>
+      </section>
+      <section class="sect2" title="Other ways to pass options using meta-arg or –script" epub:type="division" id="idm139667880046784">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Other ways to pass options using meta-arg or –script</h3>
+            </div>
+          </div>
+        </div>
+        <p>An argument consisting of just a <code class="literal">\</code> (backslash)
+causes Kawa to read the <span class="emphasis"><em>second</em></span> line looking for
+options.  (Quotes and backslashes work like in the shell.)
+These replace the backslash in the command line.
+</p>
+        <p>This is a less verbose mechanism, but it requires an
+absolute path to <code class="literal">kawa</code>, due to shell limitations.
+</p>
+        <pre class="screen">#!/usr/bin/kawa \
+  --scheme --full-tailcalls
+(format #t "The command-line is:~{ ~w~}.~%" (command-line))
+</pre>
+        <p>In this case the effective command line received by Kawa will
+be <code class="literal">--scheme</code>, <code class="literal">--full-tailcalls</code>, followed by the
+script filename, followed by other arguments specified when
+running the script.
+</p>
+        <p>The backslash used this way originated in
+<a class="ulink" href="http://www.scsh.net" target="_top">scsh</a> where it is called the <em class="firstterm">meta-arg</em>.
+(Unlike scsh, Kawa’s <code class="literal">#!</code> is not a block comment,
+but a rest-of-line, though the backslash causes the following line
+to also be skipped.) 
+</p>
+        <p>An alternative method is to use the <code class="literal">--script2</code> option,
+which tells Kawa to execute the script after ignoring
+the initial two lines.  For example:
+</p>
+        <pre class="screen">#!/bin/sh
+exec kawa --commonlisp out:base=16 --script2 "$0" "$@"
+(setq xx 20) (display xx) (newline)
+</pre>
+        <p>This is slightly more compact than using block-comments as shown earlier,
+but it has the disadvantage that you can’t explicitly
+use <code class="literal">kawa</code> or <code class="literal">java</code> to run the script unless you
+make sure to pass it the <code class="literal">--script2</code> option.
+</p>
+      </section>
+      <section class="sect2" title="Scripts for compiled code" epub:type="division" id="idm139667880035696">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Scripts for compiled code</h3>
+            </div>
+          </div>
+        </div>
+        <p>If you compile your Kawa application to class files (or better:
+a <code class="literal">jar</code> file), you probably still want to write a small
+shell script to set things up.  Here is one method:
+</p>
+        <pre class="screen">#!/bin/sh
+export CLASSPATH=/my/path
+exec kawa -Dkawa.command.name="$0" foo "$@"
+</pre>
+        <p>Using the <code class="literal">kawa</code> front-end is a convenience, since it automatically
+sets up the paths for the Kawa classes, and (if enabled) it
+provides readline support for the default input port.
+</p>
+        <p>Setting the <code class="literal">kawa.command.name</code> property to <code class="literal">"$0"</code>
+(the filename used to invoke the script) enables
+<code class="literal">(command-line</code>) to use the script name as the command name.
+</p>
+        <p>You can invoke <code class="literal">java</code> directly, which is necessary when
+running a <code class="literal">jar</code> file:
+</p>
+        <pre class="screen">#!/bin/sh
+exec java -cp /path/to/kawa -Dkawa.command.name="$0" foo.jar "$@"
+</pre>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Scripts.xhtml#idm139667880059216">Setting kawa options in the script</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Scripts.xhtml#idm139667880046784">Other ways to pass options using meta-arg or –script</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Scripts.xhtml#idm139667880035696">Scripts for compiled code</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Running.xhtml">How to start up and run Kawa</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Options.xhtml">Command-line arguments</a></p>
+        <p>
+        Next: <a accesskey="n" href="REPL-Console.xhtml">The REPL (read-eval-print-loop) console</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

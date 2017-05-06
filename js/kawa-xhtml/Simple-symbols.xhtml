@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Simple symbols</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Symbols-and-namespaces.xhtml" title="Symbols and namespaces"/>
+    <link rel="next" href="Namespaces.xhtml" title="Namespaces and compound symbols"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Simple symbols" epub:type="subchapter" id="Simple-symbols">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Simple symbols</h2>
+          </div>
+        </div>
+      </div>
+      <p>Simple symbols have no properties other than their name, an immutable string.
+They have the useful property that two simple symbols
+are identical (in the sense of <code class="literal">eq?</code>, <code class="literal">eqv?</code> and
+<code class="literal">equal?</code>) if and only if their names are spelled the same way.  A
+symbol literal is formed using <code class="literal">quote</code>.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877702624" class="indexterm"/> <code class="function">symbol?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is a symbol, <code class="literal">#f</code> otherwise.
+</p>
+          <pre class="screen">(symbol? 'foo)          ⇒ #t
+(symbol? (car '(a b)))  ⇒ #t
+(symbol? "bar")         ⇒ #f
+(symbol? 'nil)          ⇒ #t
+(symbol? '())           ⇒ #f
+(symbol? #f)            ⇒ #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877697264" class="indexterm"/> <code class="function">symbol-&gt;string</code> <em class="replaceable"><code><em class="replaceable"><code>symbol</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the name of <em class="replaceable"><code>symbol</code></em> as an immutable string.
+</p>
+          <pre class="screen">(symbol-&gt;string 'flying-fish)                   ⇒  "flying-fish"
+(symbol-&gt;string 'Martin)                        ⇒  "Martin"
+(symbol-&gt;string (string-&gt;symbol "Malvina"))     ⇒  "Malvina"
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877692656" class="indexterm"/> <code class="function">string-&gt;symbol</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the symbol whose name is <em class="replaceable"><code>string</code></em>.
+</p>
+          <pre class="screen">(eq? 'mISSISSIppi 'mississippi)
+⇒ #f
+
+(string-&gt;symbol "mISSISSIppi")
+⇒ the symbol with name "mISSISSIppi"
+
+(eq? 'bitBlt (string-&gt;symbol "bitBlt"))
+⇒ #t
+
+(eq? 'JollyWog (string-&gt;symbol (symbol-&gt;string 'JollyWog)))
+⇒ #t
+
+(string=? "K. Harper, M.D."
+          (symbol-&gt;string (string-&gt;symbol "K. Harper, M.D.")))
+⇒ #t
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Symbols-and-namespaces.xhtml">Symbols and namespaces</a></p>
+        <p>
+        Next: <a accesskey="n" href="Namespaces.xhtml">Namespaces and compound symbols</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

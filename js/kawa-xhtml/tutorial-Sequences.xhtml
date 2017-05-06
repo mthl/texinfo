@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Lists and sequences</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="tutorial-Objects.xhtml" title="Creating and using objects"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Lists and sequences" epub:type="subchapter" id="Tutorial---Sequences">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Lists and sequences</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">sequence</em> is a generalized array or list:
+Zero or more values treated as a compound value.
+Sequences have certain common operations, including indexing and iteration.
+(<span class="emphasis"><em>Technical note:</em></span> Sequences generally implement the <code class="literal">java.util.List</code>
+interface, but Kawa will also treat strings and native
+Java arrays as sequences.)
+</p>
+      <h3 id="idm139667880465184">Lists</h3>
+      <p>In traditional Lisp-family languages, the <em class="firstterm">list</em> is the
+most important kind of sequence.
+(Don’t confuse Java’s <code class="literal">List</code> interface with Kawa’s use of the
+word <span class="emphasis"><em>list</em></span>.  They’re related, in that a Kawa “list” implements
+the <code class="literal">List</code> interface, so any <span class="emphasis"><em>list</em></span> is also <code class="literal">List</code>,
+but not vice versa.)
+</p>
+      <p>A list is implemented as a chain of linked <em class="firstterm">pairs</em>.
+You can create a constant list by quoting a parenthesized list:
+</p>
+      <pre class="screen">'(3 4 (10 20 30) "a string")
+</pre>
+      <p>See <a class="link" href="Lists.xhtml" title="Lists">Lists</a> for details and operations.
+</p>
+      <h3 id="idm139667880458880">Vectors</h3>
+      <p>A <em class="firstterm">vector</em> is a sequence that is implemented by storing the elements
+side-by-side in memory.
+A vector uses less space than a list of the same length,
+and is generally more efficient than a list.
+</p>
+      <p>To create a vector you can use a bracketed list:
+</p>
+      <pre class="screen">(! vec1 ['A 'B 'C 'D 'E 'F])
+</pre>
+      <p>This creates a vector of 6 symbols and binds it to <code class="literal">vec1</code>.
+To select an element you can use the traditional
+<code class="literal">vector-ref</code> procedure:
+</p>
+      <pre class="screen">(vector-ref vec1 3) ⇒ 'D
+</pre>
+      <p>Alternatively, in Kawa you can use function-call notation:
+</p>
+      <pre class="screen">(vec1 3) ⇒ 'D
+</pre>
+      <p>You can also create a vector using the traditional <code class="literal">vector</code> constructor:
+</p>
+      <pre class="screen">(! vec2 (vector 'A 'B 'C 'D 'E 'F))
+</pre>
+      <p>There is one important difference between <code class="literal">vec1</code> and <code class="literal">vec2</code>:
+You can modify <code class="literal">vec2</code> by changing some or all of its elements.
+You can’t do that for <code class="literal">vec1</code>.
+(We say that <code class="literal">vec1</code> is an <em class="firstterm">immutable</em> or <em class="firstterm">constant</em> vector,
+while  <code class="literal">vec1</code> is a <em class="firstterm">mutable</em> or <em class="firstterm">modifiable</em> vector.)
+To change an element use either the traditional <code class="literal">vector-set!</code>
+procedure, or function-call notation:
+</p>
+      <pre class="screen">(vector-set! vec2 2 'Y)
+(set! (vec2 4) 'Z)
+vec2 ⇒ ['A 'B 'Y 'D 'Z 'F]
+(vector-set! vec1 2 'Y) ⇒ <span class="emphasis"><em>throws exception</em></span>
+</pre>
+      <p>See <a class="link" href="Vectors.xhtml" title="Vectors">Vectors</a> for details and operations.
+</p>
+      <h3 id="idm139667880445680">Java arrays and primitive vectors</h3>
+      <p>See <a class="link" href="Array-operations.xhtml" title="Using Java Arrays">Using Java arrays</a> for examples.
+</p>
+      <h3 id="idm139667880443840">Indexing of general sequences</h3>
+      <p>You can use function-call notation to index a generalized sequence,
+whether it is a list, vector, any <code class="literal">java.util.List</code>,
+native Java array, or string:
+</p>
+      <pre class="screen">((list 'A 'B 'C 'D) 2)  ⇒ 'C
+("abcdef" 3)  ⇒  ⇒
+(! farr (float[] 1.5 3 4.5))  ;; native Java array
+(farr 2) ⇒ 4.5
+</pre>
+      <p>Note that indexing a list with an index <em class="replaceable"><code>i</code></em> will be slow, since it
+has to step through the list <em class="replaceable"><code>i</code></em> times.  (So don’t do that!)
+</p>
+      <h3 id="idm139667880440336">Ranges</h3>
+      <p>A <em class="firstterm">range</em> is a sequence of numbers in order,
+spaced uniformly apart.  Usually, these are (exact) integers
+that increase by one.  The usual notation is:
+</p>
+      <pre class="screen">[<em class="replaceable"><code>start</code></em> &lt;: <em class="replaceable"><code>end</code></em>]
+</pre>
+      <p>This is the sequence of integers starting with the integer <em class="replaceable"><code>start</code></em>
+(inclusive) and ending with the integer <em class="replaceable"><code>end</code></em> (exclusive).
+For example <code class="literal">[3 &lt;: 7]</code> is the sequence <code class="literal">[3 4 5 6]</code>.
+</p>
+      <p>The ‘<code class="literal">&lt;:</code>’ is a keyword; the <code class="literal">&lt;</code> is a mnemonic for the
+set of integers that are <code class="literal">&lt;</code> the end value 6.
+You can also use <code class="literal">&lt;=:</code> if you want to include the upper bound:
+<code class="literal">[4 &lt;=: 8]</code> is <code class="literal">[4 5 6 7 8]</code>.
+</p>
+      <p>You can use <code class="literal">&gt;=:</code> or <code class="literal">&gt;:</code> for a decreasing range.
+<code class="literal">[5 &gt;=: 1]</code> or <code class="literal">[5 &gt;: 0]</code> both evaluate to <code class="literal">[5 4 3 2 1]</code>.
+You can also specifify a step value: <code class="literal">[1 by: 2 &lt;=: 9]</code>,
+which evaluates to <code class="literal">[1 3 5 7 9]</code>.
+(<a class="link" href="Ranges.xhtml" title="Ranges">Details here</a>.)
+</p>
+      <h3 id="idm139667880427968">Using vector and ranges indexes</h3>
+      <p>If an index is a sequence of integers,
+the result is a new sequence (of the same type)
+selecting only the elements matching the index values.
+For example:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:2|# </span><strong class="userinput"><code>(vec1 [3 5 2])</code></strong>
+#(D F C)
+</pre>
+      <p>In general, <code class="literal">((V1 V2) I)</code> is <code class="literal">(V1 (V2 I))</code>.
+</p>
+      <p>You can use a range to create a slice - a contiguous subset of a list.
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:3|# </span><strong class="userinput"><code>(vec1 [2 &lt;: 6])</code></strong>
+#(C D E F)
+</pre>
+      <p>A range is different from a vector integer in that you can use
+a range as the index in the LHS of a set!:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:4|# </span><strong class="userinput"><code>(set! (vec1 [2 &lt;: 4]) #(a b c d e))</code></strong>
+<span class="prompt">#|kawa:5|# </span><strong class="userinput"><code>vec1</code></strong>
+#(A B a b c d e E F)
+</pre>
+      <p>Notice how the number of replaced elements can be different
+then the number of elements in the replacement value.
+I.e. you can do insertion and deletion this way.
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:7|# </span><strong class="userinput"><code>(! str1 (string-copy "ABCDEF"))</code></strong>
+<span class="prompt">#|kawa:8|# </span><strong class="userinput"><code>(set! (str1 [2 &lt;: 5]) "98")</code></strong>
+AB98F
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Pictures.xhtml">Composable pictures</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Objects.xhtml">Creating and using objects</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

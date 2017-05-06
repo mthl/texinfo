@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Lexical syntax</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Datum-syntax.xhtml" title="Datum syntax"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Lexical syntax" epub:type="subchapter" id="Lexical-syntax">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Lexical syntax</h2>
+          </div>
+        </div>
+      </div>
+      <p>The lexical syntax determines how a character sequence is split into a
+sequence of lexemes, omitting non–significant portions such as comments
+and whitespace.  The character sequence is assumed to be text according
+to the <a class="ulink" href="http://unicode.org/" target="_top">Unicode standard</a>.
+Some of the lexemes, such as
+identifiers, representations of number objects, strings etc., of the
+lexical syntax are syntactic data in the datum syntax, and thus
+represent objects.  Besides the formal account of the syntax, this
+section also describes what datum values are represented by these
+syntactic data.
+</p>
+      <p>The lexical syntax, in the description of comments, contains a forward
+reference to <em class="replaceable"><code>datum</code></em>, which is described as part of the datum
+syntax.  Being comments, however, these <em class="replaceable"><code>datum</code></em>s do not play a
+significant role in the syntax.
+</p>
+      <p>Case is significant except in representations of booleans, number
+objects, and in hexadecimal numbers specifying Unicode scalar values.
+For example, <code class="literal">#x1A</code> and <code class="literal">#X1a</code> are equivalent.  The identifier
+<code class="literal">Foo</code> is, however, distinct from the identifier <code class="literal">FOO</code>.
+</p>
+      <section class="sect2" title="Formal account" epub:type="division" id="idm139667879815472">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Formal account</h3>
+            </div>
+          </div>
+        </div>
+        <p><em class="replaceable"><code>Interlexeme-space</code></em> may occur on either side of any lexeme, but not
+within a lexeme.
+</p>
+        <p><em class="replaceable"><code>Identifier</code></em>s, <code class="literal">.</code>, <em class="replaceable"><code>number</code></em>s, <em class="replaceable"><code>character</code></em>s, and
+<em class="replaceable"><code>boolean</code></em>s, must be terminated by a <em class="replaceable"><code>delimiter</code></em> or by the end
+of the input.
+</p>
+        <div class="literallayout">
+          <p><a id="idm139667879809968" class="indexterm"/><span id="meta-lexeme"/><em class="replaceable"><code>lexeme</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a> | <em class="replaceable"><code>boolean</code></em> | <a class="link" href="Lexical-syntax.xhtml#meta-number"><em class="replaceable"><code>number</code></em></a><br/>
+         | <em class="replaceable"><code>character</code></em> | <a class="link" href="String-literals.xhtml#meta-string"><em class="replaceable"><code>string</code></em></a><br/>
+         | <code class="literal"><span class="bold"><strong>(</strong></span></code> |  <code class="literal"><span class="bold"><strong>)</strong></span></code> |  <code class="literal"><span class="bold"><strong>[</strong></span></code> |  <code class="literal"><span class="bold"><strong>]</strong></span></code> |  <code class="literal"><span class="bold"><strong>#(</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>’</strong></span></code> | <code class="literal"><span class="bold"><strong>‘</strong></span></code> | <code class="literal"><span class="bold"><strong>,</strong></span></code> | <code class="literal"><span class="bold"><strong>,@</strong></span></code> | <code class="literal"><span class="bold"><strong>.</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>#’</strong></span></code> |  <code class="literal"><span class="bold"><strong>#‘</strong></span></code> |  <code class="literal"><span class="bold"><strong>#,</strong></span></code> |  <code class="literal"><span class="bold"><strong>#,@</strong></span></code><br/>
+<a id="idm139667879793248" class="indexterm"/><span id="meta-delimiter"/><em class="replaceable"><code>delimiter</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(</strong></span></code> |  <code class="literal"><span class="bold"><strong>)</strong></span></code> |  <code class="literal"><span class="bold"><strong>[</strong></span></code> | <code class="literal"><span class="bold"><strong>]</strong></span></code> | <code class="literal"><span class="bold"><strong>"</strong></span></code> | <code class="literal"><span class="bold"><strong>;</strong></span></code> | <code class="literal"><span class="bold"><strong>#</strong></span></code><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-whitespace"><em class="replaceable"><code>whitespace</code></em></a><br/>
+</p>
+        </div>
+        <p>((UNFINISHED))
+</p>
+      </section>
+      <section class="sect2" title="Line endings" epub:type="division" id="idm139667879784160">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Line endings</h3>
+            </div>
+          </div>
+        </div>
+        <p>Line endings are significant in Scheme in single–line comments
+and within string literals.
+In Scheme source code, any of the line endings in <em class="replaceable"><code>line-ending</code></em>
+marks the end of a line.  Moreover, the two–character line endings
+<em class="replaceable"><code>carriage-return</code></em> <em class="replaceable"><code>linefeed</code></em> and <em class="replaceable"><code>carriage-return</code></em>
+<em class="replaceable"><code>next-line</code></em> each count as a single line ending.
+</p>
+        <p>In a string literal, a <em class="replaceable"><code>line-ending</code></em> not preceded by a <code class="literal">\</code>
+stands for a linefeed character, which is the standard line–ending
+character of Scheme.
+</p>
+      </section>
+      <section class="sect2" title="Whitespace and comments" epub:type="division" id="idm139667879778688">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Whitespace and comments</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879777616" class="indexterm"/><span id="meta-intraline-whitespace"/><em class="replaceable"><code>intraline-whitespace</code></em> <code class="literal">::=</code> <em class="replaceable"><code>space</code></em> | <em class="replaceable"><code>character-tabulation</code></em><br/>
+<a id="idm139667879774784" class="indexterm"/><span id="meta-whitespace"/><em class="replaceable"><code>whitespace</code></em> <code class="literal">::=</code>  <a class="link" href="Lexical-syntax.xhtml#meta-intraline-whitespace"><em class="replaceable"><code>intraline-whitespace</code></em></a><br/>
+         | <em class="replaceable"><code>linefeed</code></em> | <em class="replaceable"><code>line-tabulation</code></em> | <em class="replaceable"><code>form-feed</code></em><br/>
+         | <em class="replaceable"><code>carriage-return</code></em> | <em class="replaceable"><code>next-line</code></em><br/>
+         | <span class="emphasis"><em>any character whose category is Zs, Zl, or Zp</em></span><br/>
+<a id="idm139667879769296" class="indexterm"/><span id="meta-line-ending"/><em class="replaceable"><code>line-ending</code></em> <code class="literal">::=</code> <em class="replaceable"><code>linefeed</code></em> | <em class="replaceable"><code>carriage return</code></em><br/>
+         | <em class="replaceable"><code>carriage-return</code></em> <em class="replaceable"><code>linefeed</code></em> | <em class="replaceable"><code>next-line</code></em><br/>
+         | <em class="replaceable"><code>carriage-return</code></em> <em class="replaceable"><code>next-line</code></em> | <em class="replaceable"><code>line-separator</code></em><br/>
+<a id="idm139667879763920" class="indexterm"/><span id="meta-comment"/><em class="replaceable"><code>comment</code></em> <code class="literal">::=</code>  <code class="literal"><span class="bold"><strong>;</strong></span></code> all subsequent characters up to a <em class="replaceable"><code>line-ending</code></em><br/>
+                or <em class="replaceable"><code>paragraph-separator</code></em><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-nested-comment"><em class="replaceable"><code>nested-comment</code></em></a><br/>
+         | <code class="literal"><span class="bold"><strong>#;</strong></span></code> <a class="link" href="Lexical-syntax.xhtml#meta-interlexeme-space"><em class="replaceable"><code>interlexeme-space</code></em></a> <a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-shebang-comment"><em class="replaceable"><code>shebang-comment</code></em></a><br/>
+<a id="idm139667879756096" class="indexterm"/><span id="meta-nested-comment"/><em class="replaceable"><code>nested-comment</code></em> <code class="literal">::=</code>  <code class="literal"><span class="bold"><strong>#|</strong></span></code> <a class="link" href="Lexical-syntax.xhtml#meta-comment-text"><em class="replaceable"><code>comment-text</code></em></a> <a class="link" href="Lexical-syntax.xhtml#meta-comment-cont"><em class="replaceable"><code>comment-cont</code></em></a>* <code class="literal"><span class="bold"><strong>|#</strong></span></code><br/>
+<a id="idm139667879751008" class="indexterm"/><span id="meta-comment-text"/><em class="replaceable"><code>comment-text</code></em> <code class="literal">::=</code> character sequence not containing <code class="literal"><span class="bold"><strong>#|</strong></span></code> or <code class="literal"><span class="bold"><strong>|#</strong></span></code><br/>
+<a id="idm139667879747376" class="indexterm"/><span id="meta-comment-cont"/><em class="replaceable"><code>comment-cont</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-nested-comment"><em class="replaceable"><code>nested-comment</code></em></a> <a class="link" href="Lexical-syntax.xhtml#meta-comment-text"><em class="replaceable"><code>comment-text</code></em></a><br/>
+<a id="idm139667879743760" class="indexterm"/><span id="meta-atmosphere"/><em class="replaceable"><code>atmosphere</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-whitespace"><em class="replaceable"><code>whitespace</code></em></a> | <a class="link" href="Lexical-syntax.xhtml#meta-comment"><em class="replaceable"><code>comment</code></em></a><br/>
+<a id="idm139667879740144" class="indexterm"/><span id="meta-interlexeme-space"/><em class="replaceable"><code>interlexeme-space</code></em> <code class="literal">::=</code> <em class="replaceable"><code>atmosphere</code></em><sup>*</sup><br/>
+</p>
+        </div>
+        <p>As a special case the characters <code class="literal"><span class="bold"><strong>#!/</strong></span></code> are treated as starting a comment,
+but only at the beginning of file.  These characters are used on
+Unix systems as an <a class="ulink" href="http://en.wikipedia.org/wiki/Shebang_(Unix)" target="_top">Shebang interpreter directive</a>.
+The Kawa reader skips the entire line.
+If the last non-whitespace character is <code class="literal"><span class="bold"><strong>\</strong></span></code>
+(backslash) then the following line is also skipped, and so on.
+</p>
+        <div class="literallayout">
+          <p><a id="idm139667879734272" class="indexterm"/><span id="meta-shebang-comment"/><em class="replaceable"><code>shebang-comment</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>#!</strong></span></code> <em class="replaceable"><code>absolute-filename</code></em> text up to non-escaped <em class="replaceable"><code>line-ending</code></em><br/>
+</p>
+        </div>
+        <p><span class="emphasis"><em>Whitespace</em></span> characters are spaces, linefeeds, carriage returns,
+character tabulations, form feeds, line tabulations, and any other
+character whose category is Zs, Zl, or Zp.  Whitespace is used for
+improved readability and as necessary to separate lexemes from each
+other.  Whitespace may occur between any two lexemes, but not within a
+lexeme.  Whitespace may also occur inside a string, where it is
+significant.
+</p>
+        <p>The lexical syntax includes several comment forms.  In all cases,
+comments are invisible to Scheme, except that they act as delimiters,
+so, for example, a comment cannot appear in the middle of an identifier
+or representation of a number object.
+</p>
+        <p>A semicolon (<code class="literal">;</code>) indicates the start of a line comment.  The
+comment continues to the end of the line on which the semicolon appears.
+</p>
+        <p>Another way to indicate a comment is to prefix a <a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a>
+with <code class="literal">#;</code>, possibly with
+<em class="replaceable"><code>interlexeme-space</code></em> before the <em class="replaceable"><code>datum</code></em>.  The comment consists
+of the comment prefix <code class="literal">#;</code> and the <em class="replaceable"><code>datum</code></em> together.  This
+notation is useful for “commenting out” sections of code.
+</p>
+        <p>Block comments may be indicated with properly nested <code class="literal">#|</code> and
+<code class="literal">|#</code> pairs.
+</p>
+        <pre class="screen">#|
+   The FACT procedure computes the factorial of a
+   non-negative integer.
+|#
+(define fact
+  (lambda (n)
+    ;; base case
+    (if (= n 0)
+        #;(= n 1)
+        1       ; identity of *
+        (* n (fact (- n 1))))))
+</pre>
+      </section>
+      <section class="sect2" title="Identifiers" epub:type="division" id="idm139667879720624">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Identifiers</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879719552" class="indexterm"/><span id="meta-identifier"/><em class="replaceable"><code>identifier</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-initial"><em class="replaceable"><code>initial</code></em></a> <a class="link" href="Lexical-syntax.xhtml#meta-subsequent"><em class="replaceable"><code>subsequent</code></em></a>*<br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-peculiar-identifier"><em class="replaceable"><code>peculiar-identifier</code></em></a><br/>
+<a id="idm139667879715072" class="indexterm"/><span id="meta-initial"/><em class="replaceable"><code>initial</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-constituent"><em class="replaceable"><code>constituent</code></em></a> | <a class="link" href="Lexical-syntax.xhtml#meta-special-initial"><em class="replaceable"><code>special-initial</code></em></a><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-inline-hex-escape"><em class="replaceable"><code>inline-hex-escape</code></em></a><br/>
+<a id="idm139667879710608" class="indexterm"/><span id="meta-letter"/><em class="replaceable"><code>letter</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>a</strong></span></code> | <code class="literal"><span class="bold"><strong>b</strong></span></code> | <code class="literal"><span class="bold"><strong>c</strong></span></code> | ... | <code class="literal"><span class="bold"><strong>z</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>A</strong></span></code> | <code class="literal"><span class="bold"><strong>B</strong></span></code> | <code class="literal"><span class="bold"><strong>C</strong></span></code> | ... | <code class="literal"><span class="bold"><strong>Z</strong></span></code><br/>
+<a id="idm139667879702208" class="indexterm"/><span id="meta-constituent"/><em class="replaceable"><code>constituent</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-letter"><em class="replaceable"><code>letter</code></em></a><br/>
+         | <span class="emphasis"><em>any character whose Unicode scalar value is greater than<br/>
+             127, and whose category is Lu, Ll, Lt, Lm, Lo, Mn,<br/>
+             Nl, No, Pd, Pc, Po, Sc, Sm, Sk, So, or Co</em></span><br/>
+<a id="idm139667879698800" class="indexterm"/><span id="meta-special-initial"/><em class="replaceable"><code>special-initial</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>!</strong></span></code> | <code class="literal"><span class="bold"><strong>$</strong></span></code> | <code class="literal"><span class="bold"><strong>%</strong></span></code> | <code class="literal"><span class="bold"><strong>&amp;</strong></span></code> | <code class="literal"><span class="bold"><strong>*</strong></span></code> | <code class="literal"><span class="bold"><strong>/</strong></span></code> | <code class="literal"><span class="bold"><strong>&lt;</strong></span></code> | <code class="literal"><span class="bold"><strong>=</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>&gt;</strong></span></code> | <code class="literal"><span class="bold"><strong>?</strong></span></code> | <code class="literal"><span class="bold"><strong>^</strong></span></code> | <code class="literal"><span class="bold"><strong>_</strong></span></code> | <code class="literal"><span class="bold"><strong>~</strong></span></code><br/>
+<a id="idm139667879686448" class="indexterm"/><span id="meta-subsequent"/><em class="replaceable"><code>subsequent</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-initial"><em class="replaceable"><code>initial</code></em></a> | <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a><br/>
+         | <span class="emphasis"><em>any character whose category is Nd, Mc, or Me</em></span><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-special-subsequent"><em class="replaceable"><code>special-subsequent</code></em></a><br/>
+<a id="idm139667879681568" class="indexterm"/><span id="meta-digit"/><em class="replaceable"><code>digit</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>0</strong></span></code> | <code class="literal"><span class="bold"><strong>1</strong></span></code> | <code class="literal"><span class="bold"><strong>2</strong></span></code> | <code class="literal"><span class="bold"><strong>3</strong></span></code> | <code class="literal"><span class="bold"><strong>4</strong></span></code> | <code class="literal"><span class="bold"><strong>5</strong></span></code> | <code class="literal"><span class="bold"><strong>6</strong></span></code> | <code class="literal"><span class="bold"><strong>7</strong></span></code> | <code class="literal"><span class="bold"><strong>8</strong></span></code> | <code class="literal"><span class="bold"><strong>9</strong></span></code><br/>
+<a id="idm139667879671744" class="indexterm"/><span id="meta-oct-digit"/><em class="replaceable"><code>oct-digit</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>0</strong></span></code> | <code class="literal"><span class="bold"><strong>1</strong></span></code> | <code class="literal"><span class="bold"><strong>2</strong></span></code> | <code class="literal"><span class="bold"><strong>3</strong></span></code> | <code class="literal"><span class="bold"><strong>4</strong></span></code> | <code class="literal"><span class="bold"><strong>5</strong></span></code> | <code class="literal"><span class="bold"><strong>6</strong></span></code> | <code class="literal"><span class="bold"><strong>7</strong></span></code><br/>
+<a id="idm139667879663488" class="indexterm"/><span id="meta-hex-digit"/><em class="replaceable"><code>hex-digit</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a><br/>
+         | <code class="literal"><span class="bold"><strong>a</strong></span></code> | <code class="literal"><span class="bold"><strong>A</strong></span></code> | <code class="literal"><span class="bold"><strong>b</strong></span></code> | <code class="literal"><span class="bold"><strong>B</strong></span></code> | <code class="literal"><span class="bold"><strong>c</strong></span></code> | <code class="literal"><span class="bold"><strong>C</strong></span></code> | <code class="literal"><span class="bold"><strong>d</strong></span></code> | <code class="literal"><span class="bold"><strong>D</strong></span></code> | <code class="literal"><span class="bold"><strong>e</strong></span></code> | <code class="literal"><span class="bold"><strong>E</strong></span></code> | <code class="literal"><span class="bold"><strong>f</strong></span></code> | <code class="literal"><span class="bold"><strong>F</strong></span></code><br/>
+<a id="idm139667879651248" class="indexterm"/><span id="meta-special-subsequent"/><em class="replaceable"><code>special-subsequent</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>+</strong></span></code> | <code class="literal"><span class="bold"><strong>-</strong></span></code> | <code class="literal"><span class="bold"><strong>.</strong></span></code> | <code class="literal"><span class="bold"><strong>@</strong></span></code><br/>
+<a id="idm139667879646128" class="indexterm"/><span id="meta-escape-sequence"/><em class="replaceable"><code>escape-sequence</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-inline-hex-escape"><em class="replaceable"><code>inline-hex-escape</code></em></a><br/>
+         | <code class="literal"><span class="bold"><strong>\</strong></span></code><a class="link" href="Lexical-syntax.xhtml#meta-character-except-x"><em class="replaceable"><code>character-except-x</code></em></a><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-multi-escape-sequence"><em class="replaceable"><code>multi-escape-sequence</code></em></a><br/>
+<a id="idm139667879640960" class="indexterm"/><span id="meta-inline-hex-escape"/><em class="replaceable"><code>inline-hex-escape</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>\x</strong></span></code><a class="link" href="Lexical-syntax.xhtml#meta-hex-scalar-value"><em class="replaceable"><code>hex-scalar-value</code></em></a><code class="literal"><span class="bold"><strong>;</strong></span></code><br/>
+<a id="idm139667879636800" class="indexterm"/><span id="meta-hex-scalar-value"/><em class="replaceable"><code>hex-scalar-value</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-hex-digit"><em class="replaceable"><code>hex-digit</code></em></a>+<br/>
+<a id="idm139667879633952" class="indexterm"/><span id="meta-multi-escape-sequence"/><em class="replaceable"><code>multi-escape-sequence</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>|</strong></span></code><a class="link" href="Lexical-syntax.xhtml#meta-symbol-element"><em class="replaceable"><code>symbol-element</code></em></a><sup>*</sup><code class="literal"><span class="bold"><strong>|</strong></span></code><br/>
+<a id="idm139667879629568" class="indexterm"/><span id="meta-symbol-element"/><em class="replaceable"><code>symbol-element</code></em> <code class="literal">::=</code>  <span class="emphasis"><em>any character except</em></span> <code class="literal"><span class="bold"><strong>|</strong></span></code> <span class="emphasis"><em>or</em></span> <code class="literal"><span class="bold"><strong>\</strong></span></code><br/>
+         | <a class="link" href="Lexical-syntax.xhtml#meta-inline-hex-escape"><em class="replaceable"><code>inline-hex-escape</code></em></a> | <a class="link" href="String-literals.xhtml#meta-mnemonic-escape"><em class="replaceable"><code>mnemonic-escape</code></em></a> | <code class="literal"><span class="bold"><strong>\|</strong></span></code><br/>
+<br/>
+<a id="idm139667879622704" class="indexterm"/><span id="meta-character-except-x"/><em class="replaceable"><code>character-except-x</code></em> <code class="literal">::=</code> <span class="emphasis"><em>any character except <code class="literal">x</code></em></span><br/>
+<a id="idm139667879620080" class="indexterm"/><span id="meta-peculiar-identifier"/><em class="replaceable"><code>peculiar-identifier</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>+</strong></span></code> | <code class="literal"><span class="bold"><strong>-</strong></span></code> | <code class="literal"><span class="bold"><strong>...</strong></span></code> | <code class="literal"><span class="bold"><strong>-&gt;</strong></span></code> <em class="replaceable"><code>subsequent</code></em><sup>*</sup><br/>
+</p>
+        </div>
+        <p>Most identifiers allowed by other programming languages are also
+acceptable to Scheme.  In general, a sequence of letters, digits, and
+“extended alphabetic characters” is an identifier when it begins with
+a character that cannot begin a representation of a number object.  In
+addition, <code class="literal">+</code>, <code class="literal">-</code>, and <code class="literal">...</code> are identifiers, as is a
+sequence of letters, digits, and extended alphabetic characters that
+begins with the two–character sequence <code class="literal">-&gt;</code>.  Here are some
+examples of identifiers:
+</p>
+        <pre class="screen">lambda         q                soup
+list-&gt;vector   +                V17a
+&lt;=             a34kTMNs         -&gt;-
+the-word-recursion-has-many-meanings
+</pre>
+        <p>Extended alphabetic characters may be used within identifiers as if they
+were letters.  The following are extended alphabetic characters:
+</p>
+        <pre class="screen">! $ % &amp; * + - . / &lt; = &gt; ? @ ^ _ ~
+</pre>
+        <p>Moreover, all characters whose Unicode scalar values are greater than
+127 and whose Unicode category is Lu, Ll, Lt, Lm, Lo, Mn, Mc, Me, Nd,
+Nl, No, Pd, Pc, Po, Sc, Sm, Sk, So, or Co can be used within
+identifiers.  In addition, any character can be used within an
+identifier when specified using an <em class="replaceable"><code>escape-sequence</code></em>.  For example,
+the identifier <code class="literal">H\x65;llo</code> is the same as the identifier
+<code class="literal">Hello</code>.
+</p>
+        <p>Kawa supports two additional non-R6RS ways of making
+identifiers using special characters, both taken from Common Lisp:
+Any character (except <code class="literal">x</code>) following a backslash is treated
+as if it were a <em class="replaceable"><code>letter</code></em>;
+as is any character between a pair of vertical bars.
+</p>
+        <p>Identifiers have two uses within Scheme programs:
+</p>
+        <div class="itemizedlist" epub:type="list">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem" epub:type="list-item">
+              <p>Any identifier may be used as a <a class="link" href="Primitive-expression-syntax.xhtml#variable-reference">variable</a>
+or as a <a class="link" href="Macros.xhtml#macro-reference">syntactic keyword</a>.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>When an identifier appears as or with in <a class="link" href="Primitive-expression-syntax.xhtml#literal-expression">literal</a>,
+it is being used to denote a <a class="link" href="Simple-symbols.xhtml" title="Simple symbols">symbol</a>.
+</p>
+            </li>
+          </ul>
+        </div>
+        <p>In contrast with older versions of Scheme, the syntax distinguishes
+between upper and lower case in identifiers and in characters
+specified via their names, but not in numbers, nor in inline hex
+escapes used in the syntax of identifiers, characters, or strings.
+The following directives give explicit control over case folding.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667879600128" class="indexterm"/> <code class="function">#!fold-case</code></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667879597712" class="indexterm"/> <code class="function">#!no-fold-case</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These directives may appear anywhere comments are permitted and are
+treated as comments, except that they affect the reading of subsequent
+data.  The <code class="literal">#!fold-case</code> directive causes the <code class="literal">read</code>
+procedure to case-fold (as if by <code class="literal">string-foldcase</code>) each
+identifier and character name subsequently read from the same
+port. The <code class="literal">#!no-fold-case</code> directive causes the <code class="literal">read</code>
+procedure to return to the default, non-folding behavior.
+</p>
+          </blockquote>
+        </div>
+        <p>Note that colon <code class="literal">:</code> is treated specially for
+<a class="link" href="Colon-notation.xhtml" title="Property access using colon notation">colon notation</a> in Kawa Scheme,
+though it is a <em class="replaceable"><code>special-initial</code></em> in standard Scheme (R6RS).
+</p>
+      </section>
+      <section class="sect2" title="Numbers" epub:type="division" id="idm139667879590080">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Numbers</h3>
+            </div>
+          </div>
+        </div>
+        <p>((INCOMPLETE))
+</p>
+        <div class="literallayout">
+          <p><a id="idm139667879588592" class="indexterm"/><span id="meta-number"/><em class="replaceable"><code>number</code></em> <code class="literal">::=</code> ((TODO))<br/>
+  | <a class="link" href="Quantities.xhtml#meta-quantity"><em class="replaceable"><code>quantity</code></em></a><br/>
+<a id="idm139667879585760" class="indexterm"/><span id="meta-decimal"/><em class="replaceable"><code>decimal</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a>+ <a class="link" href="Lexical-syntax.xhtml#meta-optional-exponent"><em class="replaceable"><code>optional-exponent</code></em></a><br/>
+  | <code class="literal"><span class="bold"><strong>.</strong></span></code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a>+ <a class="link" href="Lexical-syntax.xhtml#meta-optional-exponent"><em class="replaceable"><code>optional-exponent</code></em></a><br/>
+  | <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a>+ <code class="literal"><span class="bold"><strong>.</strong></span></code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a>+ <a class="link" href="Lexical-syntax.xhtml#meta-optional-exponent"><em class="replaceable"><code>optional-exponent</code></em></a><br/>
+</p>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879576176" class="indexterm"/><span id="meta-optional-exponent"/><em class="replaceable"><code>optional-exponent</code></em> <code class="literal">::=</code> <span class="emphasis"><em>empty</em></span><br/>
+  | <a class="link" href="Lexical-syntax.xhtml#meta-exponent-marker"><em class="replaceable"><code>exponent-marker</code></em></a> <a class="link" href="Lexical-syntax.xhtml#meta-optional-sign"><em class="replaceable"><code>optional-sign</code></em></a> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a>+<br/>
+<a id="idm139667879571296" class="indexterm"/><span id="meta-exponent-marker"/><em class="replaceable"><code>exponent-marker</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>e</strong></span></code> | <code class="literal"><span class="bold"><strong>s</strong></span></code> | <code class="literal"><span class="bold"><strong>f</strong></span></code> | <code class="literal"><span class="bold"><strong>d</strong></span></code> | <code class="literal"><span class="bold"><strong>l</strong></span></code><br/>
+</p>
+        </div>
+        <p>The letter used for the exponent in a floating-point literal determines
+its type:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal"><span class="bold"><strong>e</strong></span></code>
+</dt>
+            <dd>
+              <p>Returns a <code class="literal">gnu.math.DFloat</code> - for example <code class="literal">12e2</code>.
+Note this matches the default when there is no <a class="link" href="Lexical-syntax.xhtml#meta-exponent-marker"><em class="replaceable"><code>exponent-marker</code></em></a>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>s</strong></span></code> or <code class="literal"><span class="bold"><strong>f</strong></span></code>
+</dt>
+            <dd>
+              <p>Returns a primitive <code class="literal">float</code> (or <code class="literal">java.lang.Float</code>
+when boxed as an object) - for example <code class="literal">12s2</code> or <code class="literal">12f2</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>d</strong></span></code>
+</dt>
+            <dd>
+              <p>Returns a primitive <code class="literal">double</code> (or <code class="literal">java.lang.Double</code> when boxed)
+- for example <code class="literal">12d2</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>l</strong></span></code>
+</dt>
+            <dd>
+              <p>Returns a <code class="literal">java.math.BigDecimal</code> - for example <code class="literal">12l2</code>.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879552416" class="indexterm"/><span id="meta-optional-sign"/><em class="replaceable"><code>optional-sign</code></em> <code class="literal">::=</code> <span class="emphasis"><em>empty</em></span> | <code class="literal"><span class="bold"><strong>+</strong></span></code> | <code class="literal"><span class="bold"><strong>-</strong></span></code><br/>
+<a id="idm139667879548448" class="indexterm"/><span id="meta-digit-2"/><em class="replaceable"><code>digit-2</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>0</strong></span></code> | <code class="literal"><span class="bold"><strong>1</strong></span></code><br/>
+<a id="idm139667879544896" class="indexterm"/><span id="meta-digit-8"/><em class="replaceable"><code>digit-8</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>0</strong></span></code> | <code class="literal"><span class="bold"><strong>1</strong></span></code> | <code class="literal"><span class="bold"><strong>2</strong></span></code> | <code class="literal"><span class="bold"><strong>3</strong></span></code> | <code class="literal"><span class="bold"><strong>4</strong></span></code> | <code class="literal"><span class="bold"><strong>5</strong></span></code> | <code class="literal"><span class="bold"><strong>6</strong></span></code> | <code class="literal"><span class="bold"><strong>7</strong></span></code><br/>
+<a id="idm139667879536640" class="indexterm"/><span id="meta-digit-10"/><em class="replaceable"><code>digit-10</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a><br/>
+<a id="idm139667879533840" class="indexterm"/><span id="meta-digit-16"/><em class="replaceable"><code>digit-16</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-digit-10"><em class="replaceable"><code>digit-10</code></em></a> | <code class="literal"><span class="bold"><strong>a</strong></span></code> | <code class="literal"><span class="bold"><strong>b</strong></span></code> | <code class="literal"><span class="bold"><strong>c</strong></span></code> | <code class="literal"><span class="bold"><strong>d</strong></span></code> | <code class="literal"><span class="bold"><strong>e</strong></span></code> | <code class="literal"><span class="bold"><strong>f</strong></span></code><br/>
+</p>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Lexical-syntax.xhtml#idm139667879815472">Formal account</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Lexical-syntax.xhtml#idm139667879784160">Line endings</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Lexical-syntax.xhtml#idm139667879778688">Whitespace and comments</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Lexical-syntax.xhtml#idm139667879720624">Identifiers</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Lexical-syntax.xhtml#idm139667879590080">Numbers</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Lexical-and-datum-syntax.xhtml">Lexical and datum syntax</a></p>
+        <p>
+        Next: <a accesskey="n" href="Datum-syntax.xhtml">Datum syntax</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Parameter objects</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Eval-and-Environments.xhtml" title="Eval and Environments"/>
+    <link rel="next" href="Debugging.xhtml" title="Debugging"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Parameter objects" epub:type="subchapter" id="Parameter-objects">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Parameter objects</h2>
+          </div>
+        </div>
+      </div>
+      <p>A parameter object is a procedure that is bound to a location,
+and may optionally have a conversion procedure.
+The procedure accepts zero or one argument.
+When the procedure is called with zero arguments,
+the content of the location is returned.
+On a call with one argument the content of the location
+is updated with the result of applying the parameter object’s conversion
+procedure to the argument.
+</p>
+      <p>Parameter objects are created with the <code class="literal">make-parameter</code> procedure
+which takes one or two arguments. The second argument is a one
+argument conversion procedure. If only one argument is passed to
+make-parameter the identity function is used as a conversion
+procedure.
+A new location is created and asociated with the 
+parameter object. The initial content of the location is the
+result of applying the conversion procedure to the first argument of
+make-parameter.
+</p>
+      <p>Note that the conversion procedure can be used for guaranteeing the
+type of the parameter object’s binding and/or to perform some
+conversion of the value.
+</p>
+      <p>The <code class="literal">parameterize</code> special form, when given a parameter object
+and a value, binds the parameter
+object to a new location for the dynamic extent of its body.
+The initial content of the location is the result of
+applying the parameter object’s conversion procedure to the value. The
+<code class="literal">parameterize</code> special form behaves analogously to <code class="literal">let</code>
+when binding more than one parameter object (that is the order of
+evaluation is unspecified and the new bindings are only visible in the
+body of the parameterize special form).
+</p>
+      <p>When a new thread is created using <code class="literal">future</code> or <code class="literal">runnable</code>
+then the child thread inherits initial values from its parent.
+Once the child is running, changing the value in the child does not
+affect the value in the parent or vice versa.
+(In the past this was not the case: The child would share a location
+with the parent except within a <code class="literal">parameterize</code>.
+This was changed to avoid unsafe and inefficient coupling between threads.)
+</p>
+      <p>Note that <code class="literal">parameterize</code> and <code class="literal">fluid-let</code> have similar
+binding and sharing behavior.
+The difference is that <code class="literal">fluid-let</code> modifies locations
+accessed by name, while <code class="literal">make-parameter</code> and <code class="literal">parameterize</code>
+create anonymous locations accessed by calling a parameter procedure.
+</p>
+      <p>The R5RS procedures <code class="literal">current-input-port</code> and <code class="literal">current-output-port</code>
+are parameter objects.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873083616" class="indexterm"/> <code class="function">make-parameter</code> <em class="replaceable"><code>init</code></em> [<em class="replaceable"><code>converter</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns a new parameter object which is bound in the global dynamic
+environment to a location containing the value returned by the call
+<code class="literal">(<em class="replaceable"><code>converter</code></em> <em class="replaceable"><code>init</code></em>)</code>. If the conversion procedure
+converter is not specified the identity function is used instead.
+</p>
+          <p>The parameter object is a procedure which accepts zero or one
+argument. When it is called with no argument, the content of the
+location bound to this parameter object in the current dynamic
+environment is returned. When it is called with one argument, the
+content of the location is set to the result of the call
+<code class="literal">(<em class="replaceable"><code>converter</code></em> <em class="replaceable"><code>arg</code></em>)</code>, where <em class="replaceable"><code>arg</code></em> is the argument
+passed to the parameter object, and an unspecified value is returned.
+</p>
+          <pre class="screen">(define radix
+  (make-parameter 10))
+
+(define write-shared
+  (make-parameter
+    #f
+    (lambda (x)
+      (if (boolean? x)
+          x
+          (error "only booleans are accepted by write-shared")))))
+
+(radix)           ⇒  10
+(radix 2)
+(radix)           ⇒  2
+(write-shared 0)  gives an error
+
+(define prompt
+  (make-parameter
+    123
+    (lambda (x)
+      (if (string? x)
+          x
+          (with-output-to-string (lambda () (write x)))))))
+
+(prompt)       ⇒  "123"
+(prompt "&gt;")
+(prompt)       ⇒  "&gt;"
+</pre>
+        </blockquote>
+      </div>
+      <span id="parameterize-syntax"/>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667873073872" class="indexterm"/> <code class="function">parameterize</code> ((<em class="replaceable"><code>expr1</code></em> <em class="replaceable"><code>expr2</code></em>) <em class="replaceable"><code>...</code></em>) <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The expressions <em class="replaceable"><code>expr1</code></em> and <em class="replaceable"><code>expr2</code></em> are evaluated in an
+unspecified order. The value of the <em class="replaceable"><code>expr1</code></em> expressions must be
+parameter objects. For each <em class="replaceable"><code>expr1</code></em> expression and in an
+unspecified order, the local dynamic environment is extended with a
+binding of the parameter object <em class="replaceable"><code>expr1</code></em> to a new location whose
+content is the result of the call <code class="literal">(<em class="replaceable"><code>converter</code></em> <em class="replaceable"><code>val</code></em>)</code>,
+where <em class="replaceable"><code>val</code></em> is the value of <em class="replaceable"><code>expr2</code></em> and <em class="replaceable"><code>converter</code></em> is the
+conversion procedure of the parameter object. The resulting dynamic
+environment is then used for the evaluation of <em class="replaceable"><code>body</code></em> (which
+refers to the R5RS grammar nonterminal of that name). The result(s) of
+the parameterize form are the result(s) of the <em class="replaceable"><code>body</code></em>.
+</p>
+          <pre class="screen">(radix)                                              ⇒  2
+(parameterize ((radix 16)) (radix))                  ⇒  16
+(radix)                                              ⇒  2
+
+(define (f n) (number-&gt;string n (radix)))
+
+(f 10)                                               ⇒  "1010"
+(parameterize ((radix 8)) (f 10))                    ⇒  "12"
+(parameterize ((radix 8) (prompt (f 10))) (prompt))  ⇒  "1010"
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Eval-and-Environments.xhtml">Eval and Environments</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Locations.xhtml">Locations</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

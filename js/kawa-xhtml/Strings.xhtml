@@ -1,0 +1,1613 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Strings</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="String-literals.xhtml" title="String literals"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Strings" epub:type="subchapter" id="Strings">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Strings</h2>
+          </div>
+        </div>
+      </div>
+      <p>Strings are sequences of characters.  The <span class="emphasis"><em>length</em></span> of a string is
+the number of characters that it contains, as an exact non-negative integer.
+The <span class="emphasis"><em>valid indices</em></span> of a string are the
+exact non-negative integers less than the length of the string.
+The first character of a
+string has index 0, the second has index 1, and so on.
+</p>
+      <p>Strings are <span class="emphasis"><em>implemented</em></span> as a sequence of 16-bit <code class="literal">char</code> values,
+even though they’re semantically a sequence of 32-bit Unicode code points.
+A character whose value is greater than <code class="literal">#xffff</code>
+is represented using two surrogate characters.
+The implementation allows for natural interoperability with Java APIs.
+However it does make certain operations (indexing or counting based on
+character counts) difficult to implement efficiently.  Luckily one
+rarely needs to index or count based on character counts;
+alternatives are discussed below.
+</p>
+      <a id="idm139667875784160" class="indexterm"/>
+      <a id="idm139667875783376" class="indexterm"/>
+      <p>There are different kinds of strings:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>An <em class="firstterm">istring</em> is <span class="emphasis"><em>immutable</em></span>:
+It is fixed, and cannot be modified.
+On the other hand, indexing (e.g. <code class="literal">string-ref</code>) is efficient (constant-time),
+while indexing of other string implementations takes time proportional
+to the index.
+</p>
+            <p>String literals are istrings, as are the return values of
+most of the procedures in this chapter.
+</p>
+            <p>An <em class="firstterm">istring</em> is an instance of the <code class="literal">gnu.lists.IString</code> class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>An <em class="firstterm">mstring</em> is <span class="emphasis"><em>mutable</em></span>:
+You can replace individual characters (using <code class="literal">string-set!</code>).
+You can also change the <em class="replaceable"><code>mstring</code></em>’s length by inserting
+or removing characters (using <code class="literal">string-append!</code> or <code class="literal">string-replace!</code>).
+</p>
+            <p>An <em class="firstterm">mstring</em> is an instance of the <code class="literal">gnu.lists.FString</code> class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Any other object that implements the <code class="literal">java.lang.CharSequence</code> interface
+is also a string.
+This includes standard Java <code class="literal">java.lang.String</code>
+and <code class="literal">java.lang.StringBuilder</code> objects.
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>Some of the procedures that operate on strings ignore the
+difference between upper and lower case. The names of
+the versions that ignore case end with “<code class="literal">-ci</code>” (for “case
+insensitive”).
+</p>
+      <p><span class="emphasis"><em>Compatibility:</em></span>
+Many of the following procedures (for example <code class="literal">string-append</code>)
+return an immutable istring in Kawa,
+but return a “freshly allocated” mutable string in
+standard Scheme (include R7RS) as well as most Scheme implementations
+(including previous versions of Kawa).
+To get the  “compatibility mode” versions of those procedures
+(which return mstrings),
+invoke Kawa with one the <code class="literal">--r5rs</code>, <code class="literal">--r6rs</code>, or <code class="literal">--r7rs</code>
+options, or you can <code class="literal">import</code> a standard library like <code class="literal">(scheme base)</code>.
+</p>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667875766704" class="indexterm"/> <code class="function">string</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The type of string objects.
+The underlying type is the interface <code class="literal">java.lang.CharSequence</code>.
+Immultable strings are <code class="literal">gnu.lists.IString</code> or <code class="literal">java.lang.String</code>,
+while mutable strings are <code class="literal">gnu.lists.FString</code>.
+</p>
+        </blockquote>
+      </div>
+      <section class="sect2" title="Basic string procedures" epub:type="division" id="idm139667875762032">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Basic string procedures</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875760960" class="indexterm"/> <code class="function">string?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is a string, <code class="literal">#f</code> otherwise.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875756240" class="indexterm"/> <code class="function">istring?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is a istring (a immutable, constant-time-indexable string); <code class="literal">#f</code> otherwise.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667875751472" class="indexterm"/> <code class="function">string</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a string composed of the arguments.
+This is analogous to <em class="replaceable"><code>list</code></em>.
+</p>
+            <p><span class="emphasis"><em>Compatibility:</em></span> The result is an istring,
+except in compatibility mode, when it is a new allocated mstring.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875746304" class="indexterm"/> <code class="function">string-length</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the number of characters in the given <em class="replaceable"><code>string</code></em> as an exact
+integer object.
+</p>
+            <p><span class="emphasis"><em>Performance note:</em></span> If the <em class="replaceable"><code>string</code></em> is not an istring,
+the calling <code class="literal">string-length</code> may take time proportional
+to the length of the <em class="replaceable"><code>string</code></em>,
+because of the need to scan for surrogate pairs.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875740176" class="indexterm"/> <code class="function">string-ref</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><em class="replaceable"><code>k</code></em> must be a valid index of <em class="replaceable"><code>string</code></em>.  The <code class="literal">string-ref</code>
+procedure returns character <em class="replaceable"><code>k</code></em> of <em class="replaceable"><code>string</code></em> using zero–origin
+indexing.
+</p>
+            <p><span class="emphasis"><em>Performance note:</em></span> If the <em class="replaceable"><code>string</code></em> is not an istring,
+then calling <code class="literal">string-ref</code> may take time proportional
+to <em class="replaceable"><code>k</code></em> because of the need to check for surrogate pairs.
+An alternative is to use <code class="literal">string-cursor-ref</code>.
+If iterating through a string, use <code class="literal">string-for-each</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875731040" class="indexterm"/> <code class="function">string-null?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Is <em class="replaceable"><code>string</code></em> the empty string?
+Same result as <code class="literal">(= (string-length <em class="replaceable"><code>string</code></em>) 0)</code> but
+executes in O(1) time.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875726144" class="indexterm"/> <code class="function">string-every</code> <em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>])</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875721968" class="indexterm"/> <code class="function">string-any</code> <em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>])</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Checks to see if every/any character in <em class="replaceable"><code>string</code></em> satisfies <em class="replaceable"><code>pred</code></em>,
+proceeding from left (index <em class="replaceable"><code>start</code></em>) to right (index <em class="replaceable"><code>end</code></em>). These
+procedures are short-circuiting: if <em class="replaceable"><code>pred</code></em> returns false,
+<code class="literal">string-every</code> does not call <em class="replaceable"><code>pred</code></em> on subsequent characters;
+if <em class="replaceable"><code>pred</code></em> returns true, <code class="literal">string-any</code> does not call <em class="replaceable"><code>pred</code></em>
+on subsequent characters. Both procedures are “witness-generating”:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p>If <code class="literal">string-every</code> is given an empty interval (with <em class="replaceable"><code>start</code></em> = <em class="replaceable"><code>end</code></em>),
+it returns <code class="literal">#t</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If <code class="literal">string-every</code> returns true for a non-empty interval
+(with <em class="replaceable"><code>start</code></em> &lt; <em class="replaceable"><code>end</code></em>), the returned true value is the one returned by the final call to the predicate on
+<code class="literal">(string-ref <em class="replaceable"><code>string</code></em> (- <em class="replaceable"><code>end</code></em> 1))</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If <code class="literal">string-any</code> returns true, the returned true value is the one
+returned by the predicate.
+</p>
+                </li>
+              </ul>
+            </div>
+            <p><span class="emphasis"><em>Note:</em></span> The names of these procedures do not end with a question
+mark. This indicates a general value is returned instead of a simple
+boolean (<code class="literal">#t</code> or <code class="literal">#f</code>).
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Immutable String Constructors" epub:type="division" id="idm139667875704704">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Immutable String Constructors</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875703616" class="indexterm"/> <code class="function">string-tabulate</code> <em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>len</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Constructs a string of size <em class="replaceable"><code>len</code></em> by calling <em class="replaceable"><code>proc</code></em> on
+each value from 0 (inclusive) to <em class="replaceable"><code>len</code></em> (exclusive) to produce
+the corresponding element of the string.
+The procedure <em class="replaceable"><code>proc</code></em> accepts an exact integer as its argument and returns a character.
+The order in which <em class="replaceable"><code>proc</code></em> is called on those indexes is not specifified.
+</p>
+            <p><span class="emphasis"><em>Rationale:</em></span> Although <code class="literal">string-unfold</code> is more general,
+<code class="literal">string-tabulate</code> is likely to run faster for the common special
+case it implements.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875695664" class="indexterm"/> <code class="function">string-unfold</code> <em class="replaceable"><code>stop?</code></em> <em class="replaceable"><code>mapper</code></em> <em class="replaceable"><code>successor</code></em> <em class="replaceable"><code>seed</code></em> [<em class="replaceable"><code>base</code></em> <em class="replaceable"><code>make-final</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875690624" class="indexterm"/> <code class="function">string-unfold-right</code> <em class="replaceable"><code>stop?</code></em> <em class="replaceable"><code>mapper</code></em> <em class="replaceable"><code>successor</code></em> <em class="replaceable"><code>seed</code></em> [<em class="replaceable"><code>base</code></em> <em class="replaceable"><code>make-final</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>This is a fundamental and powerful constructor for strings.
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p><em class="replaceable"><code>successor</code></em> is used to generate a series of “seed” values from the initial seed:
+<em class="replaceable"><code>seed</code></em>, <code class="literal">(</code><em class="replaceable"><code>successor</code></em> <em class="replaceable"><code>seed</code></em><code class="literal">)</code>, <code class="literal">(</code><em class="replaceable"><code>successor</code></em><sup>2</sup> <em class="replaceable"><code>seed</code></em><code class="literal">)</code>, <code class="literal">(</code><em class="replaceable"><code>successor</code></em><sup>3</sup> <em class="replaceable"><code>seed</code></em><code class="literal">)</code>, ...
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><em class="replaceable"><code>stop?</code></em> tells us when to stop — when it returns true when applied to one of these seed values.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><em class="replaceable"><code>mapper</code></em> maps each seed value to the corresponding character(s) in the result string, which are assembled into that string in left-to-right order. It is an error for <em class="replaceable"><code>mapper</code></em> to return anything other than a character or string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><em class="replaceable"><code>base</code></em> is the optional initial/leftmost portion of the constructed string, which defaults to the empty string <code class="literal">""</code>.
+It is an error if <em class="replaceable"><code>base</code></em> is anything other than a character or string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><em class="replaceable"><code>make-final</code></em> is applied to the terminal seed value (on which <em class="replaceable"><code>stop?</code></em> returns true) to produce the final/rightmost portion of the constructed string. It defaults to <code class="literal">(lambda (x) "")</code>.
+It is an error for <em class="replaceable"><code>make-final</code></em> to return anything other than
+a character or string.
+</p>
+                </li>
+              </ul>
+            </div>
+            <p><code class="literal">string-unfold-right</code> is the same as <code class="literal">string-unfold</code> except the
+results of <em class="replaceable"><code>mapper</code></em> are assembled into the string in right-to-left order,
+<em class="replaceable"><code>base</code></em> is the optional rightmost portion of the constructed string, and
+<em class="replaceable"><code>make-final</code></em> produces the leftmost portion of the constructed string.
+</p>
+            <p>You can use it <code class="literal">string-unfold</code> to convert a list to a string,
+read a port into a string, reverse a string, copy a string, and so forth.
+Examples:
+</p>
+            <pre class="screen">(define (port-&gt;string p)
+  (string-unfold eof-object? values
+                 (lambda (x) (read-char p))
+                 (read-char p)))
+
+(define (list-&gt;string lis)
+  (string-unfold null? car cdr lis))
+
+(define (string-tabulate f size)
+  (string-unfold (lambda (i) (= i size)) f add1 0))
+</pre>
+            <p>To map <em class="replaceable"><code>f</code></em> over a list <em class="replaceable"><code>lis</code></em>, producing a string:
+</p>
+            <pre class="screen">(string-unfold null? (compose <em class="replaceable"><code>f</code></em> car) cdr <em class="replaceable"><code>lis</code></em>)
+</pre>
+            <p>Interested functional programmers may enjoy noting that <code class="literal">string-fold-right</code>
+and <code class="literal">string-unfold</code> are in some sense inverses.
+That is, given operations <em class="replaceable"><code>knull?</code></em>, <em class="replaceable"><code>kar</code></em>, <em class="replaceable"><code>kdr</code></em>,
+<em class="replaceable"><code>kons</code></em>, and <em class="replaceable"><code>knil</code></em> satisfying
+</p>
+            <pre class="screen">(<em class="replaceable"><code>kons</code></em> (<em class="replaceable"><code>kar</code></em> x) (<em class="replaceable"><code>kdr</code></em> x)) = x  and  (<em class="replaceable"><code>knull?</code></em> <em class="replaceable"><code>knil</code></em>) = #t
+</pre>
+            <p>then
+</p>
+            <pre class="screen">(string-fold-right <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> (string-unfold <em class="replaceable"><code>knull?</code></em> <em class="replaceable"><code>kar</code></em> <em class="replaceable"><code>kdr</code></em> <em class="replaceable"><code>x</code></em>)) = <em class="replaceable"><code>x</code></em>
+</pre>
+            <p>and
+</p>
+            <pre class="screen">(string-unfold <em class="replaceable"><code>knull?</code></em> <em class="replaceable"><code>kar</code></em> <em class="replaceable"><code>kdr</code></em> (string-fold-right <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> <em class="replaceable"><code>string</code></em>)) = <em class="replaceable"><code>string</code></em>.
+</pre>
+            <p>This combinator pattern is sometimes called an “anamorphism.”
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Selection" epub:type="division" id="idm139667875652960">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Selection</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875651888" class="indexterm"/> <code class="function">substring</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>start</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>end</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><em class="replaceable"><code>string</code></em> must be a string, and <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em> must be
+exact integer objects satisfying:
+</p>
+            <pre class="screen">0 &lt;= <em class="replaceable"><code>start</code></em> &lt;= <em class="replaceable"><code>end</code></em> &lt;= (string-length <em class="replaceable"><code>string</code></em>)
+</pre>
+            <p>The <code class="literal">substring</code> procedure returns a newly allocated string formed
+from the characters of <em class="replaceable"><code>string</code></em> beginning with index <em class="replaceable"><code>start</code></em>
+(inclusive) and ending with index <em class="replaceable"><code>end</code></em> (exclusive).
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875642160" class="indexterm"/> <code class="function">string-take</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>nchars</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875638912" class="indexterm"/> <code class="function">string-drop</code>       <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>nchars</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875635664" class="indexterm"/> <code class="function">string-take-right</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>nchars</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875632416" class="indexterm"/> <code class="function">string-drop-right</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>nchars</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><code class="literal">string-take</code> returns an immutable string containing the
+first <em class="replaceable"><code>nchars</code></em> of <em class="replaceable"><code>string</code></em>;
+<code class="literal">string-drop</code> returns a string containing all but the first <em class="replaceable"><code>nchars</code></em>
+of <em class="replaceable"><code>string</code></em>.
+<code class="literal">string-take-right</code> returns a string containing the last <em class="replaceable"><code>nchars</code></em>
+of <em class="replaceable"><code>string</code></em>; <code class="literal">string-drop-right</code> returns a string containing all
+but the last <em class="replaceable"><code>nchars</code></em> of <em class="replaceable"><code>string</code></em>.
+</p>
+            <pre class="screen">(string-take "Pete Szilagyi" 6) ⇒ "Pete S"
+(string-drop "Pete Szilagyi" 6) ⇒ "zilagyi"
+
+(string-take-right "Beta rules" 5) ⇒ "rules"
+(string-drop-right "Beta rules" 5) ⇒ "Beta "
+</pre>
+            <p>It is an error to take or drop more characters than are in the string:
+</p>
+            <pre class="screen">(string-take "foo" 37) ⇒ <span class="emphasis"><em>error</em></span>
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875621632" class="indexterm"/> <code class="function">string-pad</code>       <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>len</code></em> [<em class="replaceable"><code>char</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875617072" class="indexterm"/> <code class="function">string-pad-right</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>len</code></em> [<em class="replaceable"><code>char</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns an istring of length <em class="replaceable"><code>len</code></em> comprised of the characters
+drawn from the given subrange of <em class="replaceable"><code>string</code></em>,
+padded on the left (right) by as many occurrences of the
+character <em class="replaceable"><code>char</code></em> as needed.
+If <em class="replaceable"><code>string</code></em> has more than <em class="replaceable"><code>len</code></em> chars, it is truncated on the
+left (right) to length <em class="replaceable"><code>len</code></em>.
+The <em class="replaceable"><code>char</code></em> defaults to <code class="literal">#\space</code>
+</p>
+            <pre class="screen">(string-pad     "325" 5) ⇒ "  325"
+(string-pad   "71325" 5) ⇒ "71325"
+(string-pad "8871325" 5) ⇒ "71325"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875607920" class="indexterm"/> <code class="function">string-trim</code>       <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875603744" class="indexterm"/> <code class="function">string-trim-right</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875599568" class="indexterm"/> <code class="function">string-trim-both</code>  <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns an istring obtained from the given subrange of <em class="replaceable"><code>string</code></em>
+by skipping over all characters on the left / on the right / on both sides that satisfy the second argument <em class="replaceable"><code>pred</code></em>:
+<em class="replaceable"><code>pred</code></em> defaults to <code class="literal">char-whitespace?</code>.
+</p>
+            <pre class="screen">(string-trim-both "  The outlook wasn't brilliant,  \n\r")
+    ⇒ "The outlook wasn't brilliant,"
+</pre>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="String Comparisons" epub:type="division" id="idm139667875592560">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">String Comparisons</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875591488" class="indexterm"/> <code class="function">string=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if the strings are the same length and contain the same
+characters in the same positions.  Otherwise, the <code class="literal">string=?</code>
+procedure returns <code class="literal">#f</code>.
+</p>
+            <pre class="screen">(string=? "Straße" "Strasse")    ⇒ #f
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875583520" class="indexterm"/> <code class="function">string&lt;?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875577904" class="indexterm"/> <code class="function">string&gt;?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875572288" class="indexterm"/> <code class="function">string&lt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875566672" class="indexterm"/> <code class="function">string&gt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures return <code class="literal">#t</code> if their arguments are (respectively):
+monotonically increasing, monotonically decreasing,
+monotonically non-decreasing, or monotonically nonincreasing.
+These predicates are required to be transitive.
+</p>
+            <p>These procedures are the lexicographic extensions to strings of the
+corresponding orderings on characters.  For example, <code class="literal">string&lt;?</code> is
+the lexicographic ordering on strings induced by the ordering
+<code class="literal">char&lt;?</code> on characters.  If two strings differ in length but are
+the same up to the length of the shorter string, the shorter string is
+considered to be lexicographically less than the longer string.
+</p>
+            <pre class="screen">(string&lt;? "z" "ß")      ⇒ #t
+(string&lt;? "z" "zz")     ⇒ #t
+(string&lt;? "z" "Z")      ⇒ #f
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875557744" class="indexterm"/> <code class="function">string-ci=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875552128" class="indexterm"/> <code class="function">string-ci&lt;?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875546512" class="indexterm"/> <code class="function">string-ci&gt;?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875540896" class="indexterm"/> <code class="function">string-ci&lt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875535280" class="indexterm"/> <code class="function">string-ci&gt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures are similar to <code class="literal">string=?</code>, etc.,
+but behave as if they applied <code class="literal">string-foldcase</code> to their arguments
+before invoking the corresponding procedures without <code class="literal">-ci</code>.
+</p>
+            <pre class="screen">(string-ci&lt;? "z" "Z")                   ⇒ #f
+(string-ci=? "z" "Z")                   ⇒ #t
+(string-ci=? "Straße" "Strasse")        ⇒ #t
+(string-ci=? "Straße" "STRASSE")        ⇒ #t
+(string-ci=? "ΧΑΟΣ" "χαοσ")             ⇒ #t
+</pre>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Conversions" epub:type="division" id="idm139667875526960">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Conversions</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875525888" class="indexterm"/> <code class="function">list-&gt;string</code> <em class="replaceable"><code><em class="replaceable"><code>list</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">list-&gt;string</code> procedure returns an istring
+formed from the characters in <em class="replaceable"><code>list</code></em>, in order.
+It is an error if any element of <em class="replaceable"><code>list</code></em> is not a character.
+</p>
+            <p><span class="emphasis"><em>Compatibility:</em></span> The result is an istring,
+except in compatibility mode, when it is an mstring.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875520192" class="indexterm"/> <code class="function">reverse-list-&gt;string</code> <em class="replaceable"><code><em class="replaceable"><code>list</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>An efficient implementation of <code class="literal">(compose list-&gt;text reverse)</code>:
+</p>
+            <pre class="screen">(reverse-list-&gt;text '(#\a #\B #\c))  ⇒ "cBa"
+</pre>
+            <p>This is a common idiom in the epilogue of string-processing loops
+that accumulate their result using a list in reverse order.
+(See also <code class="literal">string-concatenate-reverse</code> for the “chunked” variant.)
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875514880" class="indexterm"/> <code class="function">string-&gt;list</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>start</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>end</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">string-&gt;list</code> procedure returns a newly allocated list of the
+characters of <em class="replaceable"><code>string</code></em> between <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>, in order.
+The <code class="literal">string-&gt;list</code> and <code class="literal">list-&gt;string</code> procedures are inverses
+so far as <code class="literal">equal?</code> is concerned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875507024" class="indexterm"/> <code class="function">vector-&gt;string</code> <em class="replaceable"><code>vector</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">vector-&gt;string</code> procedure returns a newly allocated
+string of the objects contained in the elements of <em class="replaceable"><code>vector</code></em>
+between <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+It is an error if any element of <em class="replaceable"><code>vector</code></em> between <em class="replaceable"><code>start</code></em>
+and <em class="replaceable"><code>end</code></em> is not a character, or is a character forbidden in strings.
+</p>
+            <pre class="screen">(vector-&gt;string #(#\1 #\2 #\3))             ⇒ "123"
+(vector-&gt;string #(#\1 #\2 #\3 #\4 #\5) 2 4) ⇒ "34"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875499120" class="indexterm"/> <code class="function">string-&gt;vector</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">string-&gt;vector</code> procedure
+returns a newly created vector initialized to the elements
+of the string <em class="replaceable"><code>string</code></em> between <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+</p>
+            <pre class="screen">(string-&gt;vector "ABC")       ⇒ #(#\A #\B #\C)
+(string-&gt;vector "ABCDE" 1 3) ⇒ #(#\B #\C)
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875492608" class="indexterm"/> <code class="function">string-upcase</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875489648" class="indexterm"/> <code class="function">string-downcase</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875486688" class="indexterm"/> <code class="function">string-titlecase</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875483728" class="indexterm"/> <code class="function">string-foldcase</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures take a string argument and return a string result.
+They are defined in terms of Unicode’s locale–independent case mappings
+from Unicode scalar–value sequences to scalar–value sequences.  In
+particular, the length of the result string can be different from the
+length of the input string.  When the specified result is equal in the
+sense of <code class="literal">string=?</code> to the argument, these procedures may return
+the argument instead of a newly allocated string.
+</p>
+            <p>The <code class="literal">string-upcase</code> procedure converts a string to upper case;
+<code class="literal">string-downcase</code> converts a string to lower case.  The
+<code class="literal">string-foldcase</code> procedure converts the string to its case–folded
+counterpart, using the full case–folding mapping, but without the
+special mappings for Turkic languages.  The <code class="literal">string-titlecase</code>
+procedure converts the first cased character of each word, and downcases
+all other cased characters.
+</p>
+            <pre class="screen">(string-upcase "Hi")              ⇒ "HI"
+(string-downcase "Hi")            ⇒ "hi"
+(string-foldcase "Hi")            ⇒ "hi"
+
+(string-upcase "Straße")          ⇒ "STRASSE"
+(string-downcase "Straße")        ⇒ "straße"
+(string-foldcase "Straße")        ⇒ "strasse"
+(string-downcase "STRASSE")       ⇒ "strasse"
+
+(string-downcase "Σ")             ⇒ "σ"
+; Chi Alpha Omicron Sigma:
+(string-upcase "ΧΑΟΣ")            ⇒ "ΧΑΟΣ"
+(string-downcase "ΧΑΟΣ")          ⇒ "χαος"
+(string-downcase "ΧΑΟΣΣ")         ⇒ "χαοσς"
+(string-downcase "ΧΑΟΣ Σ")        ⇒ "χαος σ"
+(string-foldcase "ΧΑΟΣΣ")         ⇒ "χαοσσ"
+(string-upcase "χαος")            ⇒ "ΧΑΟΣ"
+(string-upcase "χαοσ")            ⇒ "ΧΑΟΣ"
+
+(string-titlecase "kNock KNoCK")  ⇒ "Knock Knock"
+(string-titlecase "who's there?") ⇒ "Who's There?"
+(string-titlecase "r6rs")         ⇒ "R6rs"
+(string-titlecase "R6RS")         ⇒ "R6rs"
+</pre>
+            <p>Since these procedures are locale–independent, they may not be
+appropriate for some locales.
+</p>
+            <p><span class="emphasis"><em>Kawa Note:</em></span>  The implementation of <code class="literal">string-titlecase</code>
+does not correctly handle the case where an initial character
+needs to be converted to multiple characters, such as
+“LATIN SMALL LIGATURE FL” which should be converted to
+the two letters <code class="literal">"Fl"</code>.
+</p>
+            <p><span class="emphasis"><em>Compatibility:</em></span> The result is an istring,
+except in compatibility mode, when it is an mstring.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875471632" class="indexterm"/> <code class="function">string-normalize-nfd</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875468672" class="indexterm"/> <code class="function">string-normalize-nfkd</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875465712" class="indexterm"/> <code class="function">string-normalize-nfc</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875462752" class="indexterm"/> <code class="function">string-normalize-nfkc</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures take a string argument and return a string result,
+which is the input string normalized to Unicode normalization form D,
+KD, C, or KC, respectively.  When the specified result is equal in the
+sense of <code class="literal">string=?</code> to the argument, these procedures may return
+the argument instead of a newly allocated string.
+</p>
+            <pre class="screen">(string-normalize-nfd "\xE9;")          ⇒ "\x65;\x301;"
+(string-normalize-nfc "\xE9;")          ⇒ "\xE9;"
+(string-normalize-nfd "\x65;\x301;")    ⇒ "\x65;\x301;"
+(string-normalize-nfc "\x65;\x301;")    ⇒ "\xE9;"
+</pre>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Searching and matching" epub:type="division" id="idm139667875457824">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Searching and matching</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875456752" class="indexterm"/> <code class="function">string-prefix-length</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875449472" class="indexterm"/> <code class="function">string-suffix-length</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the length of the longest common prefix/suffix of <em class="replaceable"><code>string<sub>1</sub></code></em>
+and <em class="replaceable"><code>string<sub>2</sub></code></em>.
+For prefixes, this is equivalent to their “mismatch index”
+(relative to the start indexes).
+</p>
+            <p>The optional <em class="replaceable"><code>start</code></em>/<em class="replaceable"><code>end</code></em> indexes restrict the comparison
+to the indicated substrings of <em class="replaceable"><code>string<sub>1</sub></code></em> and <em class="replaceable"><code>string<sub>2</sub></code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875437280" class="indexterm"/> <code class="function">string-prefix?</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875430000" class="indexterm"/> <code class="function">string-suffix?</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Is <em class="replaceable"><code>string<sub>1</sub></code></em> a prefix/suffix of <em class="replaceable"><code>string<sub>2</sub></code></em>?
+</p>
+            <p>The optional <em class="replaceable"><code>start</code></em>/<em class="replaceable"><code>end</code></em> indexes restrict the comparison
+to the indicated substrings of <em class="replaceable"><code>string<sub>1</sub></code></em> and <em class="replaceable"><code>string<sub>2</sub></code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875418160" class="indexterm"/> <code class="function">string-index</code>       <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>pred</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875413984" class="indexterm"/> <code class="function">string-index-right</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>pred</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875409808" class="indexterm"/> <code class="function">string-skip</code>        <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>pred</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875405632" class="indexterm"/> <code class="function">string-skip-right</code>  <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>pred</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><code class="literal">string-index</code> searches through the given substring from the
+left, returning the index of the leftmost character satisfying the
+predicate <em class="replaceable"><code>pred</code></em>.
+<code class="literal">string-index-right</code> searches from the right, returning
+the index of the rightmost character satisfying the predicate <em class="replaceable"><code>pred</code></em>.
+If no match is found, these procedures return <code class="literal">#f</code>.
+</p>
+            <p>The <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em> arguments specify the beginning and end
+of the search; the valid indexes relevant to the search include <em class="replaceable"><code>start</code></em>
+but exclude <em class="replaceable"><code>end</code></em>. Beware of “fencepost”" errors: when searching
+right-to-left, the first index considered is <code class="literal">(- <em class="replaceable"><code>end</code></em> 1)</code>,
+whereas when searching left-to-right, the first index considered is <em class="replaceable"><code>start</code></em>.
+That is, the start/end indexes describe the same half-open interval
+<code class="literal">[<em class="replaceable"><code>start</code></em>,<em class="replaceable"><code>end</code></em>)</code>
+in these procedures that they do in other string procedures.
+</p>
+            <p>The <code class="literal">-skip</code> functions are similar, but use the complement of the
+criterion: they search for the first char that <span class="emphasis"><em>doesn’t</em></span> satisfy
+<em class="replaceable"><code>pred</code></em>. To skip over initial whitespace, for example, say
+</p>
+            <pre class="screen">(substring string
+            (or (string-skip string char-whitespace?)
+                (string-length string))
+            (string-length string))
+</pre>
+            <p>These functions can be trivially composed with <code class="literal">string-take</code> and
+<code class="literal">string-drop</code> to produce <code class="literal">take-while</code>, <code class="literal">drop-while</code>,
+<code class="literal">span</code>, and <code class="literal">break</code> procedures without loss of efficiency.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875386752" class="indexterm"/> <code class="function">string-contains</code>       <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875379504" class="indexterm"/> <code class="function">string-contains-right</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Does the substring of <em class="replaceable"><code>string<sub>1</sub></code></em> specified by <em class="replaceable"><code>start<sub>1</sub></code></em> and <em class="replaceable"><code>end<sub>1</sub></code></em> contain the sequence of characters given by the substring of <em class="replaceable"><code>string<sub>2</sub></code></em> specified by <em class="replaceable"><code>start<sub>2</sub></code></em> and <em class="replaceable"><code>end<sub>2</sub></code></em>?
+</p>
+            <p>Returns <code class="literal">#f</code> if there is no match.
+If <em class="replaceable"><code>start<sub>2</sub></code></em> = <em class="replaceable"><code>end<sub>2</sub></code></em>, <code class="literal">string-contains</code>
+returns <em class="replaceable"><code>start<sub>1</sub></code></em> but <code class="literal">string-contains-right</code>
+returns <em class="replaceable"><code>end<sub>1</sub></code></em>. Otherwise returns the index in <em class="replaceable"><code>string<sub>1</sub></code></em> for the first character of the first/last match; that index lies within the half-open interval [<em class="replaceable"><code>start<sub>1</sub></code></em>,<em class="replaceable"><code>end<sub>1</sub></code></em>), and the match lies entirely within the [<em class="replaceable"><code>start<sub>1</sub></code></em>,<em class="replaceable"><code>end<sub>1</sub></code></em>) range of <em class="replaceable"><code>string<sub>1</sub></code></em>.
+</p>
+            <pre class="screen">(string-contains "eek -- what a geek." "ee" 12 18) ; Searches "a geek"
+    ⇒ 15
+</pre>
+            <p>Note: The names of these procedures do not end with a question mark. This indicates a useful value is returned when there is a match.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Concatenation and replacing" epub:type="division" id="idm139667875357872">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Concatenation and replacing</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875356784" class="indexterm"/> <code class="function">string-append</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a string whose characters form the concatenation
+of the given strings.
+</p>
+            <p><span class="emphasis"><em>Compatibility:</em></span> The result is an istring,
+except in compatibility mode, when it is an mstring.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875352032" class="indexterm"/> <code class="function">string-concatenate</code> <em class="replaceable"><code>string-list</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Concatenates the elements of <em class="replaceable"><code>string-list</code></em> together into a single istring.
+</p>
+            <p><span class="emphasis"><em>Rationale:</em></span> Some implementations of Scheme limit the number of
+arguments that may be passed to an n-ary procedure, so the
+<code class="literal">(apply string-append <em class="replaceable"><code>string-list</code></em>)</code> idiom,
+which is otherwise equivalent to using this procedure, is not as portable.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875346448" class="indexterm"/> <code class="function">string-concatenate-reverse</code> <em class="replaceable"><code>string-list</code></em> [<em class="replaceable"><code>final-string</code></em> [<em class="replaceable"><code>end</code></em>]])</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>With no optional arguments, calling this procedure is equivalent to
+<code class="literal">(string-concatenate (reverse <em class="replaceable"><code>string-list</code></em>))</code>.
+If the optional argument <em class="replaceable"><code>final-string</code></em> is specified,
+it is effectively consed onto the beginning of <em class="replaceable"><code>string-list</code></em>
+before performing the list-reverse and string-concatenate operations.
+</p>
+            <p>If the optional argument <em class="replaceable"><code>end</code></em> is given, only the characters up to but not including <em class="replaceable"><code>end</code></em> in <em class="replaceable"><code>final-string</code></em> are added to the result,
+thus producing
+</p>
+            <pre class="screen">(string-concatenate 
+  (reverse (cons (substring final-string 0 end)
+                 string-list)))
+</pre>
+            <p>For example:
+</p>
+            <pre class="screen">(string-concatenate-reverse '(" must be" "Hello, I") " going.XXXX" 7)
+  ⇒ "Hello, I must be going."
+</pre>
+            <p><span class="emphasis"><em>Rationale:</em></span> This procedure is useful when constructing
+procedures that accumulate character data into lists of string
+buffers, and wish to convert the accumulated data into a single string
+when done. The optional end argument accommodates that use case when
+<em class="replaceable"><code>final-string</code></em> is a bob-full mutable string,
+and is allowed (for uniformity) when
+<em class="replaceable"><code>final-string</code></em> is an immutable string.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875335392" class="indexterm"/> <code class="function">string-join</code> <em class="replaceable"><code>string-list</code></em> [<em class="replaceable"><code>delimiter</code></em> [<em class="replaceable"><code>grammar</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>This procedure is a simple unparser; it pastes strings together
+using the <em class="replaceable"><code>delimiter</code></em> string, returning an istring.
+</p>
+            <p>The <em class="replaceable"><code>string-list</code></em> is a list of strings.
+The <em class="replaceable"><code>delimiter</code></em> is the string used to delimit elements; it defaults to a single space <code class="literal">" "</code>.
+</p>
+            <p>The <em class="replaceable"><code>grammar</code></em> argument is a symbol that determines how the <em class="replaceable"><code>delimiter</code></em>
+is used, and defaults to <code class="literal">'infix</code>.
+It is an error for <em class="replaceable"><code>grammar</code></em> to be any symbol other than these four:
+</p>
+            <div class="variablelist" epub:type="list">
+              <dl class="variablelist">
+                <dt class="term"><code class="literal">'infix</code>
+</dt>
+                <dd>
+                  <p>An infix or separator grammar: insert the delimiter between list elements. An empty list will produce an empty string.
+</p>
+                </dd>
+                <dt class="term"><code class="literal">'strict-infix</code>
+</dt>
+                <dd>
+                  <p>Means the same as <code class="literal">'infix</code> if the string-list is non-empty,
+but will signal an error if given an empty list.
+(This avoids an ambiguity shown in the examples below.)
+</p>
+                </dd>
+                <dt class="term"><code class="literal">'suffix</code>
+</dt>
+                <dd>
+                  <p>Means a suffix or terminator grammar: insert the <em class="replaceable"><code>delimiter</code></em>
+after every list element.
+</p>
+                </dd>
+                <dt class="term"><code class="literal">'prefix</code>
+</dt>
+                <dd>
+                  <p>Means a prefix grammar: insert the <em class="replaceable"><code>delimiter</code></em> before every list element.
+</p>
+                </dd>
+              </dl>
+            </div>
+            <pre class="screen">(string-join '("foo" "bar" "baz"))
+         ⇒ "foo bar baz"
+(string-join '("foo" "bar" "baz") "")
+         ⇒ "foobarbaz"
+(string-join '("foo" "bar" "baz") ":")
+         ⇒ "foo:bar:baz"
+(string-join '("foo" "bar" "baz") ":" 'suffix)
+         ⇒ "foo:bar:baz:"
+
+;; Infix grammar is ambiguous wrt empty list vs. empty string:
+(string-join '()   ":") ⇒ ""
+(string-join '("") ":") ⇒ ""
+
+;; Suffix and prefix grammars are not:
+(string-join '()   ":" 'suffix)) ⇒ ""
+(string-join '("") ":" 'suffix)) ⇒ ":"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875319024" class="indexterm"/> <code class="function">string-replace</code> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>string</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>1</sub></code></em> [<em class="replaceable"><code>start</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>end</code></em><em class="replaceable"><code><sub>2</sub></code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns
+</p>
+            <pre class="screen">(string-append (substring <em class="replaceable"><code>string<sub>1</sub></code></em> 0 <em class="replaceable"><code>start<sub>1</sub></code></em>)
+               (substring <em class="replaceable"><code>string<sub>2</sub></code></em> <em class="replaceable"><code>start<sub>2</sub></code></em> <em class="replaceable"><code>end<sub>2</sub></code></em>)
+               (substring <em class="replaceable"><code>string<sub>1</sub></code></em> <em class="replaceable"><code>end<sub>1</sub></code></em> (string-length <em class="replaceable"><code>string<sub>1</sub></code></em>)))
+</pre>
+            <p>That is, the segment of characters in <em class="replaceable"><code>string<sub>1</sub></code></em> from <em class="replaceable"><code>start<sub>1</sub></code></em>
+to <em class="replaceable"><code>end<sub>1</sub></code></em> is replaced by the segment of characters in <em class="replaceable"><code>string<sub>2</sub></code></em> from <em class="replaceable"><code>start<sub>2</sub></code></em> to <em class="replaceable"><code>end<sub>2</sub></code></em>.
+If <em class="replaceable"><code>start<sub>1</sub></code></em>=<em class="replaceable"><code>end<sub>1</sub></code></em>, this simply splices the characters
+drawn from <em class="replaceable"><code>string<sub>2</sub></code></em> into <em class="replaceable"><code>string<sub>1</sub></code></em> at that position.
+</p>
+            <p>Examples:
+</p>
+            <pre class="screen">(string-replace "The TCL programmer endured daily ridicule."
+                 "another miserable perl drone" 4 7 8 22)
+    ⇒ "The miserable perl programmer endured daily ridicule."
+
+(string-replace "It's easy to code it up in Scheme." "lots of fun" 5 9)
+    ⇒ "It's lots of fun to code it up in Scheme."
+
+(define (string-insert s i t) (string-replace s t i i))
+
+(string-insert "It's easy to code it up in Scheme." 5 "really ")
+    ⇒ "It's really easy to code it up in Scheme."
+
+(define (string-set s i c) (string-replace s (string c) i (+ i 1)))
+
+(string-set "String-ref runs in O(n) time." 19 #\1)
+    ⇒ "String-ref runs in O(1) time."
+</pre>
+          </blockquote>
+        </div>
+        <p>Also see <code class="literal">string-append!</code> and <code class="literal">string-replace!</code>
+for destructive changes to a mutable string.
+</p>
+      </section>
+      <section class="sect2" title="Mapping and folding" epub:type="division" id="idm139667875295264">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Mapping and folding</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875294192" class="indexterm"/> <code class="function">string-fold</code> <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875289600" class="indexterm"/> <code class="function">string-fold-right</code> <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These are the fundamental iterators for strings.
+</p>
+            <p>The <code class="literal">string-fold</code> procedure maps the <em class="replaceable"><code>kons</code></em> procedure across
+the given <em class="replaceable"><code>string</code></em> from left to right:
+</p>
+            <pre class="screen">(... (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub>2</sub> (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub>1</sub> (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub>0</sub> <em class="replaceable"><code>knil</code></em>))))
+</pre>
+            <p>In other words, string-fold obeys the (tail) recursion
+</p>
+            <pre class="screen">  (string-fold <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>)
+= (string-fold <em class="replaceable"><code>kons</code></em> (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub>start</sub> <em class="replaceable"><code>knil</code></em>) <em class="replaceable"><code>start+1</code></em> <em class="replaceable"><code>end</code></em>)
+</pre>
+            <p>The <code class="literal">string-fold-right</code> procedure maps <em class="replaceable"><code>kons</code></em> across the given
+string <em class="replaceable"><code>string</code></em> from right to left:
+</p>
+            <pre class="screen">(<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub>0</sub>
+      (... (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub><em class="replaceable"><code>end-3</code></em></sub>
+                 (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub><em class="replaceable"><code>end-2</code></em></sub>
+                       (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub><em class="replaceable"><code>end-1</code></em></sub>
+                             <em class="replaceable"><code>knil</code></em>)))))
+</pre>
+            <p>obeying the (tail) recursion
+</p>
+            <pre class="screen">  (string-fold-right <em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>knil</code></em> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>)
+= (string-fold-right <em class="replaceable"><code>kons</code></em> (<em class="replaceable"><code>kons</code></em> <em class="replaceable"><code>string</code></em><sub><em class="replaceable"><code>end-1</code></em></sub> <em class="replaceable"><code>knil</code></em>) <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end-1</code></em>)
+</pre>
+            <p>Examples:
+</p>
+            <pre class="screen">;;; Convert a string or string to a list of chars.
+(string-fold-right cons '() string)
+
+;;; Count the number of lower-case characters in a string or string.
+(string-fold (lambda (c count)
+                (if (char-lower-case? c)
+                    (+ count 1)
+                    count))
+              0
+              string)
+</pre>
+            <p>The string-fold-right combinator is sometimes called a "catamorphism."
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875259072" class="indexterm"/> <code class="function">string-for-each</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875253840" class="indexterm"/> <code class="function">string-for-each</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <em class="replaceable"><code>string</code></em>s must all have the same length.  <em class="replaceable"><code>proc</code></em> should
+accept as many arguments as there are <em class="replaceable"><code>string</code></em>s.
+</p>
+            <p>The <em class="replaceable"><code>start</code></em>-<em class="replaceable"><code>end</code></em> variant is provided for compatibility
+with the SRFI-13 version.  (In that case <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>
+count code Unicode scalar values (<code class="literal">character</code> values),
+not Java 16-bit <code class="literal">char</code> values.)
+</p>
+            <p>The <code class="literal">string-for-each</code> procedure applies <em class="replaceable"><code>proc</code></em> element–wise to
+the characters of the <em class="replaceable"><code>string</code></em>s for its side effects, in order from
+the first characters to the last.  <em class="replaceable"><code>proc</code></em> is always called in the
+same dynamic environment as <code class="literal">string-for-each</code> itself.
+
+</p>
+            <p>Analogous to <code class="literal">for-each</code>.
+</p>
+            <pre class="screen">(let ((v '()))
+  (string-for-each
+    (lambda (c) (set! v (cons (char-&gt;integer c) v)))
+    "abcde")
+   v)
+  ⇒ (101 100 99 98 97)
+</pre>
+            <p><span class="emphasis"><em>Performance note:</em></span> The compiler generates efficient code
+for <code class="literal">string-for-each</code>.
+If <em class="replaceable"><code>proc</code></em> is a lambda expression, it is inlined.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875237776" class="indexterm"/> <code class="function">string-map</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">string-map</code> procedure applies <em class="replaceable"><code>proc</code></em> element-wise to
+the elements of the strings and returns a string of the results, in order.
+It is an error if <em class="replaceable"><code>proc</code></em> does not accept as many arguments as there
+are strings, or return other than a single character or a string.
+If more than one string is given and not all strings have the same length,
+<code class="literal">string-map</code> terminates when the shortest string runs out.
+The dynamic order in
+which <em class="replaceable"><code>proc</code></em> is applied to the elements of the strings is unspecified.
+
+
+</p>
+            <pre class="screen">(string-map char-foldcase "AbdEgH")  ⇒ "abdegh"
+</pre>
+            <pre class="screen">(string-map
+  (lambda (c) (integer-&gt;char (+ 1 (char-&gt;integer c))))
+  "HAL")
+        ⇒ "IBM"
+</pre>
+            <pre class="screen">(string-map
+  (lambda (c k)
+    ((if (eqv? k #\u) char-upcase char-downcase) c))
+  "studlycaps xxx"
+  "ululululul")
+        ⇒ "StUdLyCaPs"
+</pre>
+            <p>Traditionally the result of <em class="replaceable"><code>proc</code></em> had to be a character,
+but Kawa (and SRFI-140) allows the result to be a string.
+</p>
+            <p><span class="emphasis"><em>Performance note:</em></span> The <code class="literal">string-map</code> procedure has not been
+optimized (mainly because it is not very useful):
+The characters are boxed, and the <em class="replaceable"><code>proc</code></em> is not inlined even if
+it is a lambda expression.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875224720" class="indexterm"/> <code class="function">string-map-index</code> <em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Calls <em class="replaceable"><code>proc</code></em> on each valid index of the specified substring, converts
+the results of those calls into strings, and returns the concatenation
+of those strings. It is an error for <em class="replaceable"><code>proc</code></em> to return anything other
+than a character or string. The dynamic order in which proc is called
+on the indexes is unspecified, as is the dynamic order in which the
+coercions are performed. If any strings returned by <em class="replaceable"><code>proc</code></em> are mutated
+after they have been returned and before the call to <code class="literal">string-map-index</code>
+has returned, then <code class="literal">string-map-index</code> returns a string with unspecified
+contents; the <em class="replaceable"><code>string-map-index</code></em> procedure itself does not mutate those
+strings.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875216720" class="indexterm"/> <code class="function">string-for-each-index</code> <em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Calls <em class="replaceable"><code>proc</code></em> on each valid index of the specified substring, in
+increasing order, discarding the results of those calls. This is
+simply a safe and correct way to loop over a substring.
+</p>
+            <p>Example:
+</p>
+            <pre class="screen">(let ((txt (string-&gt;string "abcde"))
+      (v '()))
+  (string-for-each-index
+    (lambda (cur) (set! v (cons (char-&gt;integer (string-ref txt cur)) v)))
+    txt)
+  v) ⇒ (101 100 99 98 97)
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875210336" class="indexterm"/> <code class="function">string-count</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>pred</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a count of the number of characters in the specified substring
+of <em class="replaceable"><code>string</code></em> that satisfy the predicate <em class="replaceable"><code>pred</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875204672" class="indexterm"/> <code class="function">string-filter</code> <em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875200496" class="indexterm"/> <code class="function">string-remove</code> <em class="replaceable"><code>pred</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return an immutable string consisting of only selected characters, in order:
+<code class="literal">string-filter</code> selects only the characters that satisfy <em class="replaceable"><code>pred</code></em>;
+<code class="literal">string-remove</code> selects only the characters that <span class="emphasis"><em>not</em></span>
+satisfy <em class="replaceable"><code>pred</code></em>
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Replication &amp; splitting" epub:type="division" id="idm139667875193520">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Replication &amp; splitting</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875192432" class="indexterm"/> <code class="function">string-repeat</code> <em class="replaceable"><code>string-or-character</code></em> <em class="replaceable"><code>len</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Create an istring by repeating the first argument <em class="replaceable"><code>len</code></em> times.
+If the first argument is a character, it is as if it were wrapped with
+the <code class="literal">string</code> constructor.
+We can define string-repeat in terms of the more general <code class="literal">xsubstring</code>
+procedure:
+</p>
+            <pre class="screen">(define (string-repeat S N)
+   (let ((T (if (char? S) (string S) S)))
+     (xsubstring T 0 (* N (string-length T))))
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875186832" class="indexterm"/> <code class="function">xsubstring</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>from</code></em> <em class="replaceable"><code>to</code></em> [<em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>This is an extended substring procedure that implements replicated copying of a substring.
+The <em class="replaceable"><code>string</code></em> is a string; <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em> are optional arguments that specify a substring of <em class="replaceable"><code>string</code></em>,
+defaulting to 0 and the length of <em class="replaceable"><code>string</code></em>.
+This substring is conceptually replicated both up and down the index space,
+in both the positive and negative directions.
+For example, if <em class="replaceable"><code>string</code></em> is <code class="literal">"abcdefg"</code>, <em class="replaceable"><code>start</code></em> is 3,
+and <em class="replaceable"><code>end</code></em> is 6, then we have the conceptual bidirectionally-infinite string
+</p>
+            <pre class="screen">  ...  d  e  f  d  e  f  d  e  f  d  e  f  d  e  f  d  e  f  d ...
+      -9 -8 -7 -6 -5 -4 -3 -2 -1  0 +1 +2 +3 +4 +5 +6 +7 +8 +9
+</pre>
+            <p><code class="literal">xsubstring</code> returns the substring of the <em class="replaceable"><code>string</code></em> beginning
+at index <em class="replaceable"><code>from</code></em>, and ending at <em class="replaceable"><code>to</code></em>.
+It is an error if <em class="replaceable"><code>from</code></em> is greater than <em class="replaceable"><code>to</code></em>.
+</p>
+            <p>If <em class="replaceable"><code>from</code></em> and <em class="replaceable"><code>to</code></em> are missing they default to 0 and
+<em class="replaceable"><code>from</code></em>+(<em class="replaceable"><code>end</code></em>-<em class="replaceable"><code>start</code></em>), respectively.
+This variant is a generalization of using <code class="literal">substring</code>,
+but unlike <code class="literal">substring</code> never shares substructures that would
+retain characters or sequences of characters that are substructures of
+its first argument or previously allocated objects.
+</p>
+            <p>You can use <code class="literal">xsubstring</code> to perform a variety of tasks:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p>To rotate a string left: <code class="literal">(xsubstring "abcdef" 2 8) ⇒ "cdefab"</code>
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>To rotate a string right: <code class="literal">(xsubstring "abcdef" -2 4) ⇒ "efabcd"</code>
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>To replicate a string: <code class="literal">(xsubstring "abc" 0 7) ⇒ "abcabca"</code>
+</p>
+                </li>
+              </ul>
+            </div>
+            <p>Note that
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p>The <em class="replaceable"><code>from</code></em>/<em class="replaceable"><code>to</code></em> arguments give a half-open range containing the
+characters from index <em class="replaceable"><code>from</code></em> up to, but not including, index <em class="replaceable"><code>to</code></em>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <em class="replaceable"><code>from</code></em>/<em class="replaceable"><code>to</code></em> indexes are not expressed in the index space of
+<em class="replaceable"><code>string</code></em>. They refer instead to the replicated index space of the
+substring defined by <em class="replaceable"><code>string</code></em>, <em class="replaceable"><code>start</code></em>, and <em class="replaceable"><code>end</code></em>.
+</p>
+                </li>
+              </ul>
+            </div>
+            <p>It is an error if <em class="replaceable"><code>start</code></em>=<em class="replaceable"><code>end</code></em>, unless <em class="replaceable"><code>from</code></em>=<em class="replaceable"><code>to</code></em>,
+which is allowed as a special case.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875159200" class="indexterm"/> <code class="function">string-split</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>delimiter</code></em> [<em class="replaceable"><code>grammar</code></em> <em class="replaceable"><code>limit</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a list of strings representing the words contained in the substring of <em class="replaceable"><code>string</code></em> from <em class="replaceable"><code>start</code></em> (inclusive) to <em class="replaceable"><code>end</code></em> (exclusive).
+The <em class="replaceable"><code>delimiter</code></em> is a string to be used as the word separator.
+This will often be a single character, but multiple characters are
+allowed for use cases such as splitting on <code class="literal">"\r\n"</code>.
+The returned list will have one more item than the number of non-overlapping
+occurrences of the <em class="replaceable"><code>delimiter</code></em> in the string.
+If <em class="replaceable"><code>delimiter</code></em> is an empty string, then the returned list contains a
+list of strings, each of which contains a single character.
+</p>
+            <p>The <em class="replaceable"><code>grammar</code></em> is a symbol with the same meaning as in
+the <code class="literal">string-join</code> procedure.
+If it is <code class="literal">infix</code>, which is the default, processing is done as
+described above, except an empty string produces the empty list;
+if grammar is <code class="literal">strict-infix</code>, then an empty string signals an error.
+The values <code class="literal">prefix</code> and <code class="literal">suffix</code> cause a leading/trailing empty string in the result to be suppressed.
+</p>
+            <p>If <em class="replaceable"><code>limit</code></em> is a non-negative exact integer, at most that many splits occur, and the remainder of string is returned as the final element of the list (so the result will have at most limit+1 elements). If limit is not specified or is #f, then as many splits as possible are made. It is an error if limit is any other value.
+</p>
+            <p>To split on a regular expression, you can use SRFI 115’s <code class="literal">regexp-split</code>
+procedure.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="String mutation" epub:type="division" id="idm139667875144736">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">String mutation</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following procedures create a mutable string,
+i.e. one that you can modify.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875143184" class="indexterm"/> <code class="function">make-string</code> [<em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a newly allocated mstring of <em class="replaceable"><code>k</code></em> characters,
+where <em class="replaceable"><code>k</code></em> defaults to 0.  If <em class="replaceable"><code>char</code></em> is
+given, then all elements of the string are initialized to <em class="replaceable"><code>char</code></em>,
+otherwise the contents of the <em class="replaceable"><code>string</code></em> are unspecified.
+</p>
+            <p>The 1-argument version is deprecated as poor style, except when k is 0.
+</p>
+            <p><span class="emphasis"><em>Rationale:</em></span> In many languags the most common pattern for mutable strings
+is to allocate an empty string and incrementally append to it.
+It seems natural to initialize the string
+with <code class="literal">(make-string)</code>, rather than <code class="literal">(make-string 0)</code>.
+</p>
+            <p>To return an immutable string that repeats <em class="replaceable"><code>k</code></em> times a character
+<em class="replaceable"><code>char</code></em> use <code class="literal">string-repeat</code>.
+</p>
+            <p>This is as R7RS, except the result is variable-size and we allow
+leaving out <em class="replaceable"><code>k</code></em> when it is zero.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875131824" class="indexterm"/> <code class="function">string-copy</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>start</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>end</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a newly allocated mutable (mstring) copy of the part of the given
+<em class="replaceable"><code>string</code></em> between <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p>The following procedures modify a mutable string.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875125344" class="indexterm"/> <code class="function">string-set!</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>k</code></em> <em class="replaceable"><code>char</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>This procedure stores <em class="replaceable"><code>char</code></em> in element <em class="replaceable"><code>k</code></em> of <em class="replaceable"><code>string</code></em>.
+</p>
+            <pre class="screen">(define s1 (make-string 3 #\*))
+(define s2 "***")
+(string-set! s1 0 #\?) ⇒ <span class="emphasis"><em>void</em></span>
+s1 ⇒ "?**"
+(string-set! s2 0 #\?) ⇒ <span class="emphasis"><em>error</em></span>
+(string-set! (symbol-&gt;string 'immutable) 0 #\?) ⇒ <span class="emphasis"><em>error</em></span>
+</pre>
+            <p><span class="emphasis"><em>Performance note:</em></span> Calling <code class="literal">string-set!</code> may take time proportional
+to the length of the string:  First it must scan for the right position,
+like <code class="literal">string-ref</code> does. Then if the new character requires
+using a surrogate pair (and the old one doesn’t) then we have to make room
+in the string, possibly re-allocating a new <code class="literal">char</code> array.
+Alternatively, if the old character requires using a surrogate pair
+(and the new one doesn’t) then following characters need to be moved.
+</p>
+            <p>The function <code class="literal">string-set!</code> is deprecated: It is inefficient,
+and it very seldom does the correct thing.  Instead, you can
+construct a string with <code class="literal">string-append!</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875114000" class="indexterm"/> <code class="function">string-append!</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>value</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <em class="replaceable"><code>string</code></em> must be a mutable string, such as one returned
+by <code class="literal">make-string</code> or <code class="literal">string-copy</code>.
+The <code class="literal">string-append!</code> procedure extends <em class="replaceable"><code>string</code></em>
+by appending each <em class="replaceable"><code>value</code></em> (in order) to the end of <em class="replaceable"><code>string</code></em>.
+Each <code class="literal">value</code> should be a character or a string.
+</p>
+            <p><span class="emphasis"><em>Performance note:</em></span> The compiler converts a call with multiple <em class="replaceable"><code>value</code></em>s
+to multiple <code class="literal">string-append!</code> calls.
+If a <em class="replaceable"><code>value</code></em> is known to be a <code class="literal">character</code>, then
+no boxing (object-allocation) is needed.
+</p>
+            <p>The following example shows how to efficiently process a string
+using <code class="literal">string-for-each</code> and incrementally “build” a result string
+using <code class="literal">string-append!</code>.
+</p>
+            <pre class="screen">(define (translate-space-to-newline str::string)::string
+  (let ((result (make-string 0)))
+    (string-for-each
+     (lambda (ch)
+       (string-append! result
+                       (if (char=? ch #\Space) #\Newline ch)))
+     str)
+    result))
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875101232" class="indexterm"/> <code class="function">string-copy!</code>  <em class="replaceable"><code><em class="replaceable"><code>to</code></em></code></em>  <em class="replaceable"><code><em class="replaceable"><code>at</code></em></code></em>  <em class="replaceable"><code><em class="replaceable"><code>from</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>start</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>end</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Copies the characters of the string <em class="replaceable"><code>from</code></em> that are between
+<em class="replaceable"><code>start</code></em> end <em class="replaceable"><code>end</code></em> into the string <em class="replaceable"><code>to</code></em>,
+starting at index <em class="replaceable"><code>at</code></em>.  The order in which characters are copied
+is unspecified, except that if the source and destination overlap,
+copying takes place as if the source is first copied into a
+temporary string and then into the destination.
+(This is achieved without allocating storage by making sure to copy in
+the correct direction in such circumstances.)
+</p>
+            <p>This is equivalent to (and implemented as):
+</p>
+            <pre class="screen">(string-replace! to at (+ at (- end start)) from start end))
+</pre>
+            <pre class="screen">(define a "12345")
+(define b (string-copy "abcde"))
+(string-copy! b 1 a 0 2)
+b  ⇒  "a12de"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875091760" class="indexterm"/> <code class="function">string-replace!</code>  <em class="replaceable"><code><em class="replaceable"><code>dst</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>dst-start</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>dst-end</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>src</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>src-start</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>src-end</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Replaces the characters of string <em class="replaceable"><code>dst</code></em> (between <em class="replaceable"><code>dst-start</code></em> and <em class="replaceable"><code>dst-end</code></em>) with the characters of <em class="replaceable"><code>src</code></em> (between <em class="replaceable"><code>src-start</code></em> and <em class="replaceable"><code>src-end</code></em>).
+The number of characters from <em class="replaceable"><code>src</code></em> may be different than the
+number replaced in <em class="replaceable"><code>dst</code></em>, so the string may grow or contract.
+The special case where <em class="replaceable"><code>dst-start</code></em> is equal to <em class="replaceable"><code>dst-end</code></em> corresponds to
+insertion; the case where <em class="replaceable"><code>src-start</code></em> is equal to <em class="replaceable"><code>src-end</code></em>
+corresponds to deletion.
+The order in which characters are copied
+is unspecified, except that if the source and destination overlap,
+copying takes place as if the source is first copied into a
+temporary string and then into the destination.
+(This is achieved without allocating storage by making sure to copy in
+the correct direction in such circumstances.)
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875079728" class="indexterm"/> <code class="function">string-fill!</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>fill</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>start</code></em></code></em> [<em class="replaceable"><code><em class="replaceable"><code>end</code></em></code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">string-fill!</code> procedure stores <em class="replaceable"><code>fill</code></em> in the elements
+of <em class="replaceable"><code>string</code></em> between <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+It is an error if <em class="replaceable"><code>fill</code></em> is not a character or is forbidden in strings.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Strings as sequences" epub:type="division" id="idm139667875071808">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Strings as sequences</h3>
+            </div>
+          </div>
+        </div>
+        <section class="sect3" title="Indexing a string" epub:type="division" id="idm139667875070864">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Indexing a string</h4>
+              </div>
+            </div>
+          </div>
+          <p>Using function-call syntax with strings is convenient
+and efficient.  However, it has some “gotchas”.
+</p>
+          <p>We will use the following example string:
+</p>
+          <pre class="screen">(! str1 "Smile \x1f603;!")
+</pre>
+          <p>or if you’re brave:
+</p>
+          <pre class="screen">(! str1 "Smile 😃!")
+</pre>
+          <p>This is <code class="literal">"Smile "</code> followed by an emoticon (“smiling face with
+open mouth”) followed by <code class="literal">"!"</code>.
+The emoticon has scalar value <code class="literal">\x1f603</code> - it is not
+in the 16-bit Basic Multi-language Plane,
+and so it must be encoded by a surrogate pair
+(<code class="literal">#\xd83d</code> followed by <code class="literal">#\xde03</code>).
+</p>
+          <p>The number of scalar values (<code class="literal">character</code>s) is 8,
+while the number of 16-bits code units (<code class="literal">char</code>s) is 9.
+The <code class="literal">java.lang.CharSequence:length</code> method
+counts <code class="literal">char</code>s. Both the <code class="literal">length</code> and the
+<code class="literal">string-length</code> procedures count <code class="literal">character</code>s.  Thus:
+</p>
+          <pre class="screen">(length str1)          ⇒ 8
+(string-length str1)   ⇒ 8
+(str1:length)          ⇒ 9
+</pre>
+          <p>Counting <code class="literal">char</code>s is a constant-time operation (since it
+is stored in the data structure).
+Counting <code class="literal">character</code>s depends on the representation used:
+In geneeral it may take time proportional to the length of
+the string, since it has to subtract one for each surrogate pair;
+however the <em class="replaceable"><code>istring</code></em> type (<code class="literal">gnu.lists.IString</code> class)
+uses a extra structure so it can count characters in constant-time.
+</p>
+          <p>Similarly we can can index the string in 3 ways:
+</p>
+          <pre class="screen">(str1 1)              ⇒ #\m :: character
+(string-ref str1 1)   ⇒ #\m :: character
+(str1:charAt 1)       ⇒ #\m :: char
+</pre>
+          <p>Using function-call syntax when the “function” is a string
+and a single integer argument is the same as using <code class="literal">string-ref</code>.
+</p>
+          <p>Things become interesting when we reach the emoticon:
+</p>
+          <pre class="screen">(str1 6)              ⇒ #\😃 :: character
+(str1:charAt 6)       ⇒ #\d83d :: char
+</pre>
+          <p>Both <code class="literal">string-ref</code> and the function-call syntax return the
+real character, while the <code class="literal">charAt</code> methods returns a partial character.
+</p>
+          <pre class="screen">(str1 7)              ⇒ #\! :: character
+(str1:charAt 7)       ⇒ #\de03 :: char
+(str1 8)              ⇒ <span class="emphasis"><em>throws</em></span> StringIndexOutOfBoundsException
+(str1:charAt 8)       ⇒ #\! :: char
+</pre>
+        </section>
+        <section class="sect3" title="Indexing with a sequence" epub:type="division" id="idm139667875052688">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Indexing with a sequence</h4>
+              </div>
+            </div>
+          </div>
+          <p>You can index a string with a list of integer indexes,
+most commonly a range:
+</p>
+          <pre class="screen">(<em class="replaceable"><code>str</code></em> [<em class="replaceable"><code>i</code></em> ...])
+</pre>
+          <p>is basically the same as:
+</p>
+          <pre class="screen">(string (<em class="replaceable"><code>str</code></em> <em class="replaceable"><code>i</code></em>) ...)
+</pre>
+          <p>Generally when working with strings it is best to
+work with substrings rather than individual characters:
+</p>
+          <pre class="screen">(<em class="replaceable"><code>str</code></em> [<em class="replaceable"><code>start</code></em> &lt;: <em class="replaceable"><code>end</code></em>])
+</pre>
+          <p>This is equivalent to invoking the <code class="literal">substring</code> procedure:
+</p>
+          <pre class="screen">(substring <em class="replaceable"><code>str</code></em> <em class="replaceable"><code>start</code></em> <em class="replaceable"><code>end</code></em>)
+</pre>
+          <span id="String-Cursor-API"/>
+        </section>
+      </section>
+      <section class="sect2" title="String Cursor API" epub:type="division" id="idm139667875043024">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">String Cursor API</h3>
+            </div>
+          </div>
+        </div>
+        <p>Indexing into a string (using for example <code class="literal">string-ref</code>)
+is inefficient because of the possible presence of surrogate pairs.
+Hence given an index <em class="replaceable"><code>i</code></em> access normally requires linearly
+scanning the string until we have seen <em class="replaceable"><code>i</code></em> characters.
+</p>
+        <p>The string-cursor API is defined in terms of abstract “cursor values”,
+which point to a position in the string.  This avoids the linear scan.
+</p>
+        <p>Typical usage is:
+</p>
+        <pre class="screen">(let* ((str <em class="replaceable"><code>whatever</code></em>)
+       (end (string-cursor-end str)))
+  (do ((sc::string-cursor (string-cursor-start str)
+                          (string-cursor-next str sc)))
+    ((string-cursor&gt;=? sc end))
+    (let ((ch (string-cursor-ref str sc)))
+      (<em class="replaceable"><code>do-something-with</code></em> ch))))
+</pre>
+        <p>Alternatively, the following may be marginally faster:
+</p>
+        <pre class="screen">(let* ((str <em class="replaceable"><code>whatever</code></em>)
+       (end (string-cursor-end str)))
+  (do ((sc::string-cursor (string-cursor-start str)
+                          (string-cursor-next-quick sc)))
+    ((string-cursor&gt;=? sc end))
+    (let ((ch (string-cursor-ref str sc)))
+      (if (not (char=? ch #\ignorable-char))
+        (<em class="replaceable"><code>do-something-with</code></em> ch)))))
+</pre>
+        <p>The API is non-standard, but is based on that in Chibi Scheme.
+</p>
+        <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667875035152" class="indexterm"/> <code class="function">string-cursor</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>An abstract position (index) in a string.
+Implemented as a primitive <code class="literal">int</code> which counts the
+number of preceding code units (16-bit <code class="literal">char</code> values).
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875031232" class="indexterm"/> <code class="function">string-cursor-start</code> <em class="replaceable"><code>str</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a cursor for the start of the string.
+The result is always 0, cast to a <code class="literal">string-cursor</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875027408" class="indexterm"/> <code class="function">string-cursor-end</code> <em class="replaceable"><code>str</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a cursor for the end of the string - one past the last valid character.
+Implemented as <code class="literal">(as string-cursor (invoke <em class="replaceable"><code>str</code></em> 'length))</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875023136" class="indexterm"/> <code class="function">string-cursor-ref</code> <em class="replaceable"><code>str</code></em> <em class="replaceable"><code>cursor</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the <code class="literal">character</code> at the <em class="replaceable"><code>cursor</code></em>.
+If the <em class="replaceable"><code>cursor</code></em> points to the second <code class="literal">char</code> of a surrogate pair,
+returns <code class="literal">#\ignorable-char</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875017152" class="indexterm"/> <code class="function">string-cursor-next</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>cursor</code></em> [<em class="replaceable"><code>count</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the cursor position <em class="replaceable"><code>count</code></em> (default 1) character
+positions forwards beyond <em class="replaceable"><code>cursor</code></em>.
+For each <em class="replaceable"><code>count</code></em> this may add either 1 or 2
+(if pointing at a surrogate pair) to the <em class="replaceable"><code>cursor</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875010960" class="indexterm"/> <code class="function">string-cursor-next-quiet</code> <em class="replaceable"><code>cursor</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Increment cursor by one raw <code class="literal">char</code> position,
+even if <em class="replaceable"><code>cursor</code></em> points to the start of a surrogate pair.
+(In that case the next <code class="literal">string-cursor-ref</code> will
+return <code class="literal">#\ignorable-char</code>.)
+Same as <code class="literal">(+ <em class="replaceable"><code>cursor</code></em> 1)</code> but with the <code class="literal">string-cursor</code> type.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667875004416" class="indexterm"/> <code class="function">string-cursor-prev</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>cursor</code></em> [<em class="replaceable"><code>count</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the cursor position <em class="replaceable"><code>count</code></em> (default 1) character
+positions backwards before <em class="replaceable"><code>cursor</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874999168" class="indexterm"/> <code class="function">substring-cursor</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Create a substring of the section of <em class="replaceable"><code>string</code></em>
+between the cursors <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874993568" class="indexterm"/> <code class="function">string-cursor&lt;?</code> <em class="replaceable"><code>cursor1</code></em> <em class="replaceable"><code>cursor2</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874990288" class="indexterm"/> <code class="function">string-cursor&lt;=?</code> <em class="replaceable"><code>cursor1</code></em> <em class="replaceable"><code>cursor2</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874987008" class="indexterm"/> <code class="function">string-cursor=?</code> <em class="replaceable"><code>cursor1</code></em> <em class="replaceable"><code>cursor2</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874983760" class="indexterm"/> <code class="function">string-cursor&gt;=?</code> <em class="replaceable"><code>cursor1</code></em> <em class="replaceable"><code>cursor2</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874980480" class="indexterm"/> <code class="function">string-cursor&gt;?</code> <em class="replaceable"><code>cursor1</code></em> <em class="replaceable"><code>cursor2</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Is the position of <em class="replaceable"><code>cursor1</code></em> respectively before,
+before or same, same, after, or after or same, as <em class="replaceable"><code>cursor2</code></em>.
+</p>
+            <p><span class="emphasis"><em>Performance note:</em></span> Implemented as the corresponding <code class="literal">int</code> comparison.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874974160" class="indexterm"/> <code class="function">string-cursor-for-each</code> <em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Apply the procedure <em class="replaceable"><code>proc</code></em> to each character position in
+<em class="replaceable"><code>string</code></em> between the cursors <em class="replaceable"><code>start</code></em> and <em class="replaceable"><code>end</code></em>.
+</p>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875762032">Basic string procedures</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875704704">Immutable String Constructors</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875652960">Selection</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875592560">String Comparisons</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875526960">Conversions</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875457824">Searching and matching</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875357872">Concatenation and replacing</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875295264">Mapping and folding</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875193520">Replication &amp; splitting</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875144736">String mutation</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875071808">Strings as sequences</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Strings.xhtml#idm139667875043024">String Cursor API</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Characters-and-text.xhtml">Characters and text</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Character-sets.xhtml">Character sets</a></p>
+        <p>
+        Next: <a accesskey="n" href="String-literals.xhtml">String literals</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

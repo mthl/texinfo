@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Mapping functions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Control-features.xhtml" title="Control features"/>
+    <link rel="next" href="Multiple-values.xhtml" title="Multiple values"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Mapping functions" epub:type="subchapter" id="Mapping-functions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Mapping functions</h2>
+          </div>
+        </div>
+      </div>
+      <p>The procedures <code class="literal">string-for-each</code> and <code class="literal">string-map</code>
+are documented under <a class="link" href="Strings.xhtml" title="Strings">Strings</a>.
+</p>
+      <p>The procedure <code class="literal">string-cursor-for-each</code> is documented under <a class="link" href="Strings.xhtml#String-Cursor-API">String Cursor API</a>.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877818816" class="indexterm"/> <code class="function">map</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code>sequence</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>sequence</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>...</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877813936" class="indexterm"/> <code class="function">for-each</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code>sequence</code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>sequence</code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">map</code> procedure applies <em class="replaceable"><code>proc</code></em> element-wise to the elements
+of the <em class="replaceable"><code>sequence</code></em>s and returns a list of the results, in order.
+The dynamic order in which <em class="replaceable"><code>proc</code></em> is applied to
+the elements of the <em class="replaceable"><code>sequence</code></em>s is unspecified.
+</p>
+          <p>The <code class="literal">for-each</code> procedure does the same,
+but is executed for the side-effects of <em class="replaceable"><code>proc</code></em>, whose result (if any)
+is discarded.
+Unlike <code class="literal">map</code>, <code class="literal">for-each</code> is guaranteed to call <em class="replaceable"><code>proc</code></em>
+on the elements of the <em class="replaceable"><code>sequences</code></em>s in order from the first element(s)
+to the last.
+The value returned by <code class="literal">for-each</code> is the void value.
+</p>
+          <p>Each <em class="replaceable"><code>sequence</code></em> must be a generalized sequence.
+(Traditionally, these arguments were restricted to lists,
+but Kawa allows sequences, including vectors, Java arrays, and strings.)
+If more than one <em class="replaceable"><code>sequence</code></em> is given and not all
+<em class="replaceable"><code>sequence</code></em>s have the same length, the procedure terminates when the
+shortest <em class="replaceable"><code>sequence</code></em> runs out.
+The <em class="replaceable"><code>sequence</code></em>s can be infinite (for example circular lists),
+but it is an error if all of them are infinite.
+</p>
+          <p>The <em class="replaceable"><code>proc</code></em> must be a procedure that accepts as many arguments
+as there are <em class="replaceable"><code>sequence</code></em> arguments.
+It is an error for <em class="replaceable"><code>proc</code></em> to mutate any of the <em class="replaceable"><code>sequence</code></em>s.
+In the case of <code class="literal">map</code>, <em class="replaceable"><code>proc</code></em> must return a single value.
+</p>
+          <pre class="screen">(map cadr '((a b) (d e) (g h)))
+    ⇒ (b e h)
+
+(map (lambda (n) (expt n n))
+     '(1 2 3 4 5))
+    ⇒ (1 4 27 256 3125)
+
+(map + ’(1 2 3) ’(4 5 6 7))  ⇒ (5 7 9)
+
+(let ((count 0))
+  (map (lambda (ignored)
+         (set! count (+ count 1))
+         count)
+       '(a b)))
+    ⇒ (1 2) <span class="emphasis"><em>or</em></span> (2 1)
+</pre>
+          <p>The result of <code class="literal">map</code> is a list, even if the arguments are non-lists:
+</p>
+          <pre class="screen">(map +
+     #(3 4 5)
+     (float[] 0.5 1.5))
+    ⇒ (3.5 5.5)
+</pre>
+          <p>To get a vector result, use <code class="literal">vector-map</code>.
+</p>
+          <pre class="screen">(let ((v (make-vector 5)))
+  (for-each (lambda (i)
+              (vector-set! v i (* i i)))
+            '(0 1 2 3 4))
+  v)
+    ⇒  #(0 1 4 9 16)
+</pre>
+          <p>A string is considered a sequence of <code class="literal">character</code> values
+(not 16-bit <code class="literal">char</code> values):
+</p>
+          <pre class="screen">(let ((v (make-vector 10 #\-)))
+  (for-each (lambda (i ch)
+              (vector-set! v i ch))
+            [0 &lt;: ]
+            "Smile 😃!")
+   v)
+    ⇒ #(#\S #\m #\i #\l #\e #\space #\x1f603 #\! #\- #\-)
+</pre>
+          <p><span class="emphasis"><em>Performance note:</em></span> These procedures are pretty well optimized.
+For each <em class="replaceable"><code>sequence</code></em> the compiler will by default create an
+iterator.
+
+However, if the type of the <em class="replaceable"><code>sequence</code></em> is known, the compiler will
+inline the iteration code.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877788240" class="indexterm"/> <code class="function">vector-map</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>sequence</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>sequence</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Same as the <code class="literal">map</code> procedure, except the result is a vector.
+(Traditionally, these arguments were restricted to vectors,
+but Kawa allows sequences, including lists, Java arrays, and strings.)
+</p>
+          <pre class="screen">(vector-map cadr '#((a b) (d e) (g h)))
+    ⇒ #(b e h)
+
+(vector-map (lambda (n) (expt n n))
+            '#(1 2 3 4 5))
+    ⇒ #(1 4 27 256 3125)
+
+(vector-map + '#(1 2 3) ’#(4 5 6 7))
+    ⇒ #(5 7 9)
+
+(let ((count 0))
+  (vector-map
+    (lambda (ignored)
+      (set! count (+ count 1))
+      count)
+    '#(a b)))
+    ⇒ #(1 2) <span class="emphasis"><em>or</em></span> #(2 1)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877780720" class="indexterm"/> <code class="function">vector-for-each</code> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>vector</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>vector</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Mostly the same as <code class="literal">for-each</code>,
+however the arguments should be generalized vectors.
+Specifically, they should implement <code class="literal">java.util.List</code>
+(which both regular vectors and uniform vectors do).
+The <em class="replaceable"><code>vectors</code></em> should also be efficiently indexable.
+</p>
+          <p>(Traditionally, these arguments were restricted to vectors,
+but Kawa allows sequences, including lists, Java arrays, and strings.)
+</p>
+          <pre class="screen">(let ((v (make-list 5)))
+  (vector-for-each
+    (lambda (i) (list-set! v i (* i i)))
+    '#(0 1 2 3 4))
+  v)
+    ⇒ (0 1 4 9 16)
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Control-features.xhtml">Control features</a></p>
+        <p>
+        Next: <a accesskey="n" href="Multiple-values.xhtml">Multiple values</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

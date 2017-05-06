@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Unicode character classes and conversions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Regular-expressions.xhtml" title="Regular expressions"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Unicode character classes and conversions" epub:type="subchapter" id="Unicode">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Unicode character classes and conversions</h2>
+          </div>
+        </div>
+      </div>
+      <p>Some of the procedures that operate on characters or strings ignore the
+difference between upper case and lower case.  These procedures have
+<code class="literal">-ci</code> (for “case insensitive”) embedded in their names.
+</p>
+      <section class="sect2" title="Characters" epub:type="division" id="idm139667874766096">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Characters</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874765024" class="indexterm"/> <code class="function">char-upcase</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874762064" class="indexterm"/> <code class="function">char-downcase</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874759104" class="indexterm"/> <code class="function">char-titlecase</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874756144" class="indexterm"/> <code class="function">char-foldcase</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures take a character argument and return a character
+result.
+</p>
+            <p>If the argument is an upper–case or title–case character, and if there
+is a single character that is its lower–case form, then
+<code class="literal">char-downcase</code> returns that character.
+</p>
+            <p>If the argument is a lower–case or title–case character, and there is
+a single character that is its upper–case form, then <code class="literal">char-upcase</code>
+returns that character.
+</p>
+            <p>If the argument is a lower–case or upper–case character, and there is
+a single character that is its title–case form, then
+<code class="literal">char-titlecase</code> returns that character.
+</p>
+            <p>If the argument is not a title–case character and there is no single
+character that is its title–case form, then <code class="literal">char-titlecase</code>
+returns the upper–case form of the argument.
+</p>
+            <p>Finally, if the character has a case–folded character, then
+<code class="literal">char-foldcase</code> returns that character.  Otherwise the character
+returned is the same as the argument.
+</p>
+            <p>For Turkic characters <code class="literal">#\x130</code> and <code class="literal">#\x131</code>,
+<code class="literal">char-foldcase</code> behaves as the identity function; otherwise
+<code class="literal">char-foldcase</code> is the same as <code class="literal">char-downcase</code> composed with
+<code class="literal">char-upcase</code>.
+</p>
+            <pre class="screen">(char-upcase #\i)               ⇒  #\I
+(char-downcase #\i)             ⇒  #\i
+(char-titlecase #\i)            ⇒  #\I
+(char-foldcase #\i)             ⇒  #\i
+
+(char-upcase #\ß)               ⇒  #\ß
+(char-downcase #\ß)             ⇒  #\ß
+(char-titlecase #\ß)            ⇒  #\ß
+(char-foldcase #\ß)             ⇒  #\ß
+
+(char-upcase #\Σ)               ⇒  #\Σ
+(char-downcase #\Σ)             ⇒  #\σ
+(char-titlecase #\Σ)            ⇒  #\Σ
+(char-foldcase #\Σ)             ⇒  #\σ
+
+(char-upcase #\ς)               ⇒  #\Σ
+(char-downcase #\ς)             ⇒  #\ς
+(char-titlecase #\ς)            ⇒  #\Σ
+(char-foldcase #\ς)             ⇒  #\σ
+</pre>
+            <div class="blockquote">
+              <blockquote class="blockquote">
+                <p><span class="emphasis"><em>Note:</em></span> <code class="literal">char-titlecase</code> does not always return a title–case
+character.
+</p>
+              </blockquote>
+            </div>
+            <div class="blockquote">
+              <blockquote class="blockquote">
+                <p><span class="emphasis"><em>Note:</em></span> These procedures are consistent with Unicode’s
+locale–independent mappings from scalar values to scalar values for
+upcase, downcase, titlecase, and case–folding operations.  These
+mappings can be extracted from <code class="filename">UnicodeData.txt</code> and
+<code class="filename">CaseFolding.txt</code> from the Unicode Consortium, ignoring Turkic
+mappings in the latter.
+</p>
+                <p>Note that these character–based procedures are an incomplete
+approximation to case conversion, even ignoring the user’s locale.  In
+general, case mappings require the context of a string, both in
+arguments and in result.  The <code class="literal">string-upcase</code>,
+<code class="literal">string-downcase</code>, <code class="literal">string-titlecase</code>, and
+<code class="literal">string-foldcase</code> procedures perform more general case conversion.
+</p>
+              </blockquote>
+            </div>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874736480" class="indexterm"/> <code class="function">char-ci=?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874730864" class="indexterm"/> <code class="function">char-ci&lt;?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874725248" class="indexterm"/> <code class="function">char-ci&gt;?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874719632" class="indexterm"/> <code class="function">char-ci&lt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874714016" class="indexterm"/> <code class="function">char-ci&gt;=?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures are similar to <code class="literal">char=?</code>, etc., but operate on the
+case–folded versions of the characters.
+</p>
+            <pre class="screen">(char-ci&lt;? #\z #\Z)             ⇒ #f
+(char-ci=? #\z #\Z)             ⇒ #f
+(char-ci=? #\ς #\σ)             ⇒ #t
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874706736" class="indexterm"/> <code class="function">char-alphabetic?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874703776" class="indexterm"/> <code class="function">char-numeric?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874700816" class="indexterm"/> <code class="function">char-whitespace?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874697856" class="indexterm"/> <code class="function">char-upper-case?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874694896" class="indexterm"/> <code class="function">char-lower-case?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874691936" class="indexterm"/> <code class="function">char-title-case?</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These procedures return <code class="literal">#t</code> if their arguments are alphabetic,
+numeric, whitespace, upper–case, lower–case, or title–case
+characters, respectively; otherwise they return <code class="literal">#f</code>.
+</p>
+            <p>A character is alphabetic if it has the Unicode “Alphabetic” property.
+A character is numeric if it has the Unicode “Numeric” property.  A
+character is whitespace if has the Unicode “White_Space” property.  A
+character is upper case if it has the Unicode “Uppercase” property,
+lower case if it has the “Lowercase” property, and title case if it is
+in the Lt general category.
+</p>
+            <pre class="screen">(char-alphabetic? #\a)          ⇒  #t
+(char-numeric? #\1)             ⇒  #t
+(char-whitespace? #\space)      ⇒  #t
+(char-whitespace? #\x00A0)      ⇒  #t
+(char-upper-case? #\Σ)          ⇒  #t
+(char-lower-case? #\σ)          ⇒  #t
+(char-lower-case? #\x00AA)      ⇒  #t
+(char-title-case? #\I)          ⇒  #f
+(char-title-case? #\x01C5)      ⇒  #t
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874685344" class="indexterm"/> <code class="function">char-general-category</code> <em class="replaceable"><code><em class="replaceable"><code>char</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a symbol representing the Unicode general category of
+<em class="replaceable"><code>char</code></em>, one of <code class="literal">Lu</code>, <code class="literal">Ll</code>, <code class="literal">Lt</code>, <code class="literal">Lm</code>,
+<code class="literal">Lo</code>, <code class="literal">Mn</code>, <code class="literal">Mc</code>, <code class="literal">Me</code>, <code class="literal">Nd</code>, <code class="literal">Nl</code>,
+<code class="literal">No</code>, <code class="literal">Ps</code>, <code class="literal">Pe</code>, <code class="literal">Pi</code>, <code class="literal">Pf</code>, <code class="literal">Pd</code>,
+<code class="literal">Pc</code>, <code class="literal">Po</code>, <code class="literal">Sc</code>, <code class="literal">Sm</code>, <code class="literal">Sk</code>, <code class="literal">So</code>,
+<code class="literal">Zs</code>, <code class="literal">Zp</code>, <code class="literal">Zl</code>, <code class="literal">Cc</code>, <code class="literal">Cf</code>, <code class="literal">Cs</code>,
+<code class="literal">Co</code>, or <code class="literal">Cn</code>.
+</p>
+            <pre class="screen">(char-general-category #\a)         ⇒ Ll
+(char-general-category #\space)     ⇒ Zs
+(char-general-category #\x10FFFF)   ⇒ Cn  
+</pre>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Deprecated in-place case modification" epub:type="division" id="idm139667874668368">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Deprecated in-place case modification</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following functions are deprecated; they really don’t
+and cannot do the right thing, because in some languages
+upper and lower case can use different number of characters.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874666400" class="indexterm"/> <code class="function">string-upcase!</code> <em class="replaceable"><code>str</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><span class="emphasis"><em>Deprecated:</em></span> Destructively modify <em class="replaceable"><code>str</code></em>, replacing the letters
+by their upper-case equivalents.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874662304" class="indexterm"/> <code class="function">string-downcase!</code> <em class="replaceable"><code>str</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><span class="emphasis"><em>Deprecated:</em></span> Destructively modify <em class="replaceable"><code>str</code></em>, replacing the letters
+by their upper-lower equivalents.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874658208" class="indexterm"/> <code class="function">string-capitalize!</code> <em class="replaceable"><code>str</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><span class="emphasis"><em>Deprecated:</em></span> Destructively modify <em class="replaceable"><code>str</code></em>, such that the letters that start a new word
+are replaced by their title-case equivalents, while non-initial letters
+are replaced by their lower-case equivalents.
+</p>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Unicode.xhtml#idm139667874766096">Characters</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Unicode.xhtml#idm139667874668368">Deprecated in-place case modification</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Characters-and-text.xhtml">Characters and text</a></p>
+        <p>
+        Previous: <a accesskey="p" href="String-literals.xhtml">String literals</a></p>
+        <p>
+        Next: <a accesskey="n" href="Regular-expressions.xhtml">Regular expressions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

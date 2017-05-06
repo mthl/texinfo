@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Hash tables</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Eval-and-Environments.xhtml" title="Eval and Environments"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Hash tables" epub:type="subchapter" id="Hash-tables">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Hash tables</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">hashtable</em> is a data structure that
+associates keys with values.
+The hashtable has no intrinsic order for the (key, value) associations
+it contains, and
+supports in-place modification as the primary means of setting the contents
+of a hash table.
+Any object can be used as a key, provided a <em class="firstterm">hash function</em> and a suitable
+<em class="firstterm">equivalence function</em> is available.
+A hash function is a procedure that
+maps keys to exact integer objects.
+</p>
+      <p>The hashtable provides key lookup and destructive update in amortised
+constant time, provided that a good hash function is used. 
+A hash function <em class="replaceable"><code>h</code></em> is acceptable for an equivalence predicate <em class="replaceable"><code>e</code></em> iff
+<code class="literal">(<em class="replaceable"><code>e</code></em> <em class="replaceable"><code>obj1</code></em> <em class="replaceable"><code>obj2</code></em>)</code> implies
+<code class="literal">(= (<em class="replaceable"><code>h</code></em> <em class="replaceable"><code>obj1</code></em>) (<em class="replaceable"><code>h</code></em> <em class="replaceable"><code>obj2</code></em>))</code>.
+A hash function <em class="replaceable"><code>h</code></em> is good for a equivalence predicate <em class="replaceable"><code>e</code></em> if
+it distributes the resulting hash values for non-equal objects
+(by <em class="replaceable"><code>e</code></em>) as uniformly as possible over the range of hash
+values, especially in the case when some (non-equal) objects resemble
+each other by e.g. having common subsequences. This definition is
+vague but should be enough to assert that e.g. a constant function is
+not a good hash function.
+</p>
+      <p>Kawa provides two complete sets of functions for hashtables:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>The functions specified by R6RS have names starting with <code class="literal">hashtable-</code>
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The functions specified by the older
+<a class="ulink" href="http://srfi.schemers.org/srfi-69/srfi-69.html" target="_top">SRFI-69</a> specifiation
+have names starting with <code class="literal">hash-table-</code>
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>Both interfaces use the same underlying datatype, so it is possible 
+to mix and match from both sets.
+That datatype implements <code class="literal">java.util.Map</code>.
+
+
+
+Freshly-written code should probably use the R6RS functions.
+</p>
+      <section class="sect2" title="R6RS hash tables" epub:type="division" id="idm139667873522768">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">R6RS hash tables</h3>
+            </div>
+          </div>
+        </div>
+        <p>To use these hash table functions in your Kawa program you must first:
+</p>
+        <pre class="screen">(import (rnrs hashtables))
+</pre>
+        <p>This section uses the <em class="replaceable"><code>hashtable</code></em> parameter name for arguments that
+must be hashtables, and the <em class="replaceable"><code>key</code></em> parameter name for arguments that
+must be hashtable keys.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873519424" class="indexterm"/> <code class="function">make-eq-hashtable</code></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873517008" class="indexterm"/> <code class="function">make-eq-hashtable</code> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a newly allocated mutable hashtable that accepts arbitrary
+objects as keys, and compares those keys with <code class="literal">eq?</code>.  If an
+argument is given, the initial capacity of the hashtable is set to
+approximately <em class="replaceable"><code>k</code></em> elements.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873512528" class="indexterm"/> <code class="function">make-eqv-hashtable</code></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873510112" class="indexterm"/> <code class="function">make-eqv-hashtable</code> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a newly allocated mutable hashtable that accepts arbitrary
+objects as keys, and compares those keys with <code class="literal">eqv?</code>.  If an
+argument is given, the initial capacity of the hashtable is set to
+approximately <em class="replaceable"><code>k</code></em> elements.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873505600" class="indexterm"/> <code class="function">make-hashtable</code> <em class="replaceable"><code><em class="replaceable"><code>hash-function</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>equiv</code></em></code></em></p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873502096" class="indexterm"/> <code class="function">make-hashtable</code> <em class="replaceable"><code><em class="replaceable"><code>hash-function</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>equiv</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p><em class="replaceable"><code>hash-function</code></em> and <em class="replaceable"><code>equiv</code></em> must be procedures.
+<em class="replaceable"><code>hash-function</code></em> should accept a key as an argument and should return
+a non–negative exact integer object.  <em class="replaceable"><code>equiv</code></em> should accept two
+keys as arguments and return a single value.  Neither procedure should
+mutate the hashtable returned by <code class="literal">make-hashtable</code>.
+</p>
+            <p>The <code class="literal">make-hashtable</code> procedure returns a newly allocated mutable
+hashtable using <em class="replaceable"><code>hash-function</code></em> as the hash function and <em class="replaceable"><code>equiv</code></em>
+as the equivalence function used to compare keys.  If a third argument
+is given, the initial capacity of the hashtable is set to approximately
+<em class="replaceable"><code>k</code></em> elements.
+</p>
+            <p>Both <em class="replaceable"><code>hash-function</code></em> and <em class="replaceable"><code>equiv</code></em> should behave like pure
+functions on the domain of keys.  For example, the <code class="literal">string-hash</code>
+and <code class="literal">string=?</code> procedures are permissible only if all keys are
+strings and the contents of those strings are never changed so long as
+any of them continues to serve as a key in the hashtable.  Furthermore,
+any pair of keys for which <em class="replaceable"><code>equiv</code></em> returns true should be hashed to
+the same exact integer objects by <em class="replaceable"><code>hash-function</code></em>.
+</p>
+            <div class="blockquote">
+              <blockquote class="blockquote">
+                <p><span class="emphasis"><em>Note:</em></span> Hashtables are allowed to cache the results of calling the
+hash function and equivalence function, so programs cannot rely on the
+hash function being called for every lookup or update.  Furthermore any
+hashtable operation may call the hash function more than once.
+</p>
+              </blockquote>
+            </div>
+          </blockquote>
+        </div>
+        <section class="sect3" title="Procedures" epub:type="division" id="idm139667873488544">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Procedures</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873487472" class="indexterm"/> <code class="function">hashtable?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is a hashtable, <code class="literal">#f</code> otherwise.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873482752" class="indexterm"/> <code class="function">hashtable-size</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return the number of keys contained in <em class="replaceable"><code>hashtable</code></em> as an exact
+integer object.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873478768" class="indexterm"/> <code class="function">hashtable-ref</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>key</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>default</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return the value in <em class="replaceable"><code>hashtable</code></em> associated with <em class="replaceable"><code>key</code></em>.  If
+<em class="replaceable"><code>hashtable</code></em> does not contain an association for <em class="replaceable"><code>key</code></em>,
+<em class="replaceable"><code>default</code></em> is returned.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873472048" class="indexterm"/> <code class="function">hashtable-set!</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>key</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Change <em class="replaceable"><code>hashtable</code></em> to associate <em class="replaceable"><code>key</code></em> with <em class="replaceable"><code>obj</code></em>, adding a
+new association or replacing any existing association for <em class="replaceable"><code>key</code></em>, and
+returns unspecified values.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873465760" class="indexterm"/> <code class="function">hashtable-delete!</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>key</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Remove any association for <em class="replaceable"><code>key</code></em> within <em class="replaceable"><code>hashtable</code></em> and returns
+unspecified values.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873460848" class="indexterm"/> <code class="function">hashtable-contains?</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>key</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>hashtable</code></em> contains an association for <em class="replaceable"><code>key</code></em>,
+<code class="literal">#f</code> otherwise.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873455152" class="indexterm"/> <code class="function">hashtable-update!</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>key</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>proc</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>default</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p><em class="replaceable"><code>proc</code></em> should accept one argument, should return a single value, and
+should not mutate <em class="replaceable"><code>hashtable</code></em>.
+</p>
+              <p>The <code class="literal">hashtable-update!</code> procedure applies <em class="replaceable"><code>proc</code></em> to the value
+in <em class="replaceable"><code>hashtable</code></em> associated with <em class="replaceable"><code>key</code></em>, or to <em class="replaceable"><code>default</code></em> if
+<em class="replaceable"><code>hashtable</code></em> does not contain an association for <em class="replaceable"><code>key</code></em>.  The
+<em class="replaceable"><code>hashtable</code></em> is then changed to associate <em class="replaceable"><code>key</code></em> with the value
+returned by <em class="replaceable"><code>proc</code></em>.
+</p>
+              <p>The behavior of <code class="literal">hashtable-update!</code> is equivalent to the following
+code, but is may be (and is in Kawa) implemented more efficiently in cases
+where the implementation can avoid multiple lookups of the same key:
+</p>
+              <pre class="screen">(hashtable-set!
+  hashtable key
+  (proc (hashtable-ref
+         hashtable key default)))
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873442944" class="indexterm"/> <code class="function">hashtable-copy</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873439984" class="indexterm"/> <code class="function">hashtable-copy</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>mutable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return a copy of <em class="replaceable"><code>hashtable</code></em>.  If the <em class="replaceable"><code>mutable</code></em> argument is
+provided and is true, the returned hashtable is mutable; otherwise it is
+immutable.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873434960" class="indexterm"/> <code class="function">hashtable-clear!</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873432000" class="indexterm"/> <code class="function">hashtable-clear!</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Remove all associations from <em class="replaceable"><code>hashtable</code></em> and returns unspecified
+values.
+</p>
+              <p>If a second argument is given, the current capacity of the hashtable is
+reset to approximately <em class="replaceable"><code>k</code></em> elements.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873426592" class="indexterm"/> <code class="function">hashtable-keys</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return a vector of all keys in <em class="replaceable"><code>hashtable</code></em>.  The order of the vector
+is unspecified.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873422656" class="indexterm"/> <code class="function">hashtable-entries</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return two values, a vector of the keys in <em class="replaceable"><code>hashtable</code></em>, and a vector
+of the corresponding values.
+</p>
+              <p>Example:
+</p>
+              <pre class="screen">(let ((h (make-eqv-hashtable)))
+  (hashtable-set! h 1 'one)
+  (hashtable-set! h 2 'two)
+  (hashtable-set! h 3 'three)
+  (hashtable-entries h))
+⇒ #(1 2 3) #(one two three) ; two return values
+</pre>
+              <p>the order of the entries in the result vectors is not known.
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Inspection" epub:type="division" id="idm139667873417072">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Inspection</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873416000" class="indexterm"/> <code class="function">hashtable-equivalence-function</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return the equivalence function used by <em class="replaceable"><code>hashtable</code></em> to compare keys.
+For hashtables created with <code class="literal">make-eq-hashtable</code> and
+<code class="literal">make-eqv-hashtable</code>, returns <code class="literal">eq?</code> and <code class="literal">eqv?</code>
+respectively.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873410192" class="indexterm"/> <code class="function">hashtable-hash-function</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return the hash function used by <em class="replaceable"><code>hashtable</code></em>.  For hashtables
+created by <code class="literal">make-eq-hashtable</code> or <code class="literal">make-eqv-hashtable</code>,
+<code class="literal">#f</code> is returned.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873404928" class="indexterm"/> <code class="function">hashtable-mutable?</code> <em class="replaceable"><code><em class="replaceable"><code>hashtable</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>hashtable</code></em> is mutable, otherwise <code class="literal">#f</code>.
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Hash functions" epub:type="division" id="idm139667873400176">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Hash functions</h4>
+              </div>
+            </div>
+          </div>
+          <p>The <code class="literal">equal-hash</code>, <code class="literal">string-hash</code>, and <code class="literal">string-ci-hash</code>
+procedures of this section are acceptable as the hash functions of a
+hashtable only if the keys on which they are called are not mutated
+while they remain in use as keys in the hashtable.
+</p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873397200" class="indexterm"/> <code class="function">equal-hash</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return an integer hash value for <em class="replaceable"><code>obj</code></em>, based on its structure and
+current contents.  This hash function is suitable for use with
+<code class="literal">equal?</code> as an equivalence function.
+</p>
+              <div class="blockquote">
+                <blockquote class="blockquote">
+                  <p><span class="emphasis"><em>Note:</em></span> Like <code class="literal">equal?</code>, the <code class="literal">equal-hash</code> procedure must
+always terminate, even if its arguments contain cycles.
+</p>
+                </blockquote>
+              </div>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873391088" class="indexterm"/> <code class="function">string-hash</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return an integer hash value for <em class="replaceable"><code>string</code></em>, based on its current
+contents.  This hash function is suitable for use with <code class="literal">string=?</code>
+as an equivalence function.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873386592" class="indexterm"/> <code class="function">string-ci-hash</code> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return an integer hash value for <em class="replaceable"><code>string</code></em> based on its current
+contents, ignoring case.  This hash function is suitable for use with
+<code class="literal">string-ci=?</code> as an equivalence function.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873382080" class="indexterm"/> <code class="function">symbol-hash</code> <em class="replaceable"><code><em class="replaceable"><code>symbol</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Return an integer hash value for <em class="replaceable"><code>symbol</code></em>.
+</p>
+            </blockquote>
+          </div>
+        </section>
+      </section>
+      <section class="sect2" title="SRFI-69 hash tables" epub:type="division" id="idm139667873378016">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">SRFI-69 hash tables</h3>
+            </div>
+          </div>
+        </div>
+        <p>To use these hash table functions in your Kawa program you must first:
+</p>
+        <pre class="screen">(require 'srfi-69)
+</pre>
+        <p>or
+</p>
+        <pre class="screen">(require 'hash-table)
+</pre>
+        <p>or
+</p>
+        <pre class="screen">(import (srfi 69 basic-hash-tables))
+</pre>
+        <section class="sect3" title="Type constructors and predicate" epub:type="division" id="idm139667873375216">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Type constructors and predicate</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873374128" class="indexterm"/> <code class="function">make-hash-table</code> [ <em class="replaceable"><code>equal?</code></em> [ <em class="replaceable"><code>hash</code></em> [ <em class="replaceable"><code>size-hint</code></em>]]] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Create a new hash table with no associations.
+The <em class="replaceable"><code>equal?</code></em> parameter is a predicate
+that should accept two keys and return a boolean telling whether they
+denote the same key value; it defaults to the <code class="literal">equal?</code> function.
+</p>
+              <p>The <em class="replaceable"><code>hash</code></em> parameter is a hash function, and defaults to an 
+appropriate hash function
+for the given <em class="replaceable"><code>equal?</code></em> predicate (see the Hashing section).
+However, an
+acceptable default is not guaranteed to be given for any equivalence
+predicate coarser than <code class="literal">equal?</code>, except for <code class="literal">string-ci=?</code>.
+(The function <code class="literal">hash</code> is acceptable for <code class="literal">equal?</code>, so if you
+use coarser equivalence than <code class="literal">equal?</code> other than <code class="literal">string-ci=?</code>,
+you must always provide the function hash yourself.)
+(An equivalence predicate <em class="replaceable"><code>c1</code></em> is coarser than a equivalence
+predicate <em class="replaceable"><code>c2</code></em> iff there exist values <em class="replaceable"><code>x</code></em> and <em class="replaceable"><code>y</code></em> such
+that <code class="literal">(and (<em class="replaceable"><code>c1</code></em> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em>) (not (<em class="replaceable"><code>c2</code></em> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em>)))</code>.)
+</p>
+              <p>The <em class="replaceable"><code>size-hint</code></em> parameter can be used to suggested an approriate
+initial size.  This option is not part of the SRFI-69 specification
+(though it is handled by the reference implementation), so specifying
+that option might be unportable.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873357984" class="indexterm"/> <code class="function">hash-table?</code> <em class="replaceable"><code>obj</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>boolean</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>A predicate to test whether a given object <em class="replaceable"><code>obj</code></em> is a hash table.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873353360" class="indexterm"/> <code class="function">alist-&gt;hash-table</code> <em class="replaceable"><code>alist</code></em> [ <em class="replaceable"><code>equal?</code></em> [ <em class="replaceable"><code>hash</code></em> [ <em class="replaceable"><code>size-hint</code></em>]]] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Takes an association list <em class="replaceable"><code>alist</code></em> and creates a hash table
+<em class="replaceable"><code>hash-table</code></em> which maps the <code class="literal">car</code> of every element in
+<em class="replaceable"><code>alist</code></em> to the <code class="literal">cdr</code> of corresponding elements in
+<em class="replaceable"><code>alist</code></em>. The <em class="replaceable"><code>equal?</code></em>, <em class="replaceable"><code>hash</code></em>, and <em class="replaceable"><code>size-hint</code></em>
+parameters are interpreted as in <code class="literal">make-hash-table</code>. If some key
+occurs multiple times in <em class="replaceable"><code>alist</code></em>, the value in the first
+association will take precedence over later ones. (Note: the choice of
+using <code class="literal">cdr</code> (instead of <code class="literal">cadr</code>) for values tries to strike
+balance between the two approaches: using <em class="replaceable"><code>cadr</code></em> would render this
+procedure unusable for <code class="literal">cdr</code> alists, but not vice versa.)
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Reflective queries" epub:type="division" id="idm139667873340864">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Reflective queries</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873339792" class="indexterm"/> <code class="function">hash-table-equivalence-function</code> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns the equivalence predicate used for keys of <em class="replaceable"><code>hash-table</code></em>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873335936" class="indexterm"/> <code class="function">hash-table-hash-function</code> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns the hash function used for keys of <em class="replaceable"><code>hash-table</code></em>.
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Dealing with single elements" epub:type="division" id="idm139667873332080">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Dealing with single elements</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873330992" class="indexterm"/> <code class="function">hash-table-ref</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> [ <em class="replaceable"><code>thunk</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>value</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>This procedure returns the value associated to <em class="replaceable"><code>key</code></em> in
+<em class="replaceable"><code>hash-table</code></em>. If no value is associated to <em class="replaceable"><code>key</code></em> and
+<em class="replaceable"><code>thunk</code></em> is given, it is called with no arguments and its value is
+returned; if <em class="replaceable"><code>thunk</code></em> is not given, an error is signalled. Given a
+good hash function, this operation should have an (amortised) complexity
+of O(1) with respect to the number of associations in <em class="replaceable"><code>hash-table</code></em>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873323072" class="indexterm"/> <code class="function">hash-table-ref/default</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>default</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>value</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Evaluates to the same value as <code class="literal">(hash-table-ref <em class="replaceable"><code>hash-table</code></em>
+<em class="replaceable"><code>key</code></em> (lambda () <em class="replaceable"><code>default</code></em>))</code>. Given a good hash function, this
+operation should have an (amortised) complexity of O(1) with respect
+to the number of associations in hash-table.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873316224" class="indexterm"/> <code class="function">hash-table-set!</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>value</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>void</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>This procedure sets the value associated to <em class="replaceable"><code>key</code></em> in
+<em class="replaceable"><code>hash-table</code></em>. The previous association (if any) is removed. Given
+a good hash function, this operation should have an (amortised)
+complexity of O(1) with respect to the number of associations in
+hash-table.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873310144" class="indexterm"/> <code class="function">hash-table-delete!</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>void</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>This procedure removes any association to <em class="replaceable"><code>key</code></em> in
+<em class="replaceable"><code>hash-table</code></em>. It is not an error if no association for the
+<em class="replaceable"><code>key</code></em> exists; in this case, nothing is done. Given a good hash
+function, this operation should have an (amortised) complexity of O(1)
+with respect to the number of associations in hash-table.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873304032" class="indexterm"/> <code class="function">hash-table-exists?</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>boolean</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>This predicate tells whether there is any association to <em class="replaceable"><code>key</code></em> in
+<em class="replaceable"><code>hash-table</code></em>. Given a good hash function, this operation should
+have an (amortised) complexity of O(1) with respect to the number of
+associations in hash-table.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873298400" class="indexterm"/> <code class="function">hash-table-update!</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>function</code></em> [ <em class="replaceable"><code>thunk</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>void</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Semantically equivalent to, but may be implemented more efficiently than,
+the following code:
+</p>
+              <pre class="screen">(hash-table-set! <em class="replaceable"><code>hash-table key</code></em>
+                 (function (hash-table-ref <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>thunk</code></em>)))
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873290880" class="indexterm"/> <code class="function">hash-table-update!/default</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>function</code></em> <em class="replaceable"><code>default</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>void</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Behaves as if it evaluates to
+<code class="literal">(hash-table-update! <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>function</code></em> (lambda () <em class="replaceable"><code>default</code></em>))</code>.
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Dealing with the whole contents" epub:type="division" id="idm139667873283328">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Dealing with the whole contents</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873282240" class="indexterm"/> <code class="function">hash-table-size</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>integer</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns the number of associations in <em class="replaceable"><code>hash-table</code></em>. This operation takes
+constant time.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873277552" class="indexterm"/> <code class="function">hash-table-keys</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>list</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns a list of keys in <em class="replaceable"><code>hash-table</code></em>.
+The order of the keys is unspecified.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873272848" class="indexterm"/> <code class="function">hash-table-values</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>list</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns a list of values in <em class="replaceable"><code>hash-table</code></em>. The order of the values is
+unspecified, and is not guaranteed to match the order of keys in the
+result of <code class="literal">hash-table-keys</code>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873267664" class="indexterm"/> <code class="function">hash-table-walk</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>void</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p><em class="replaceable"><code>proc</code></em> should be a function taking two arguments, a key and a
+value. This procedure calls <em class="replaceable"><code>proc</code></em> for each association in
+<em class="replaceable"><code>hash-table</code></em>, giving the key of the association as key and the
+value of the association as value. The results of <em class="replaceable"><code>proc</code></em> are
+discarded. The order in which <em class="replaceable"><code>proc</code></em> is called for the different
+associations is unspecified.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873260736" class="indexterm"/> <code class="function">hash-table-fold</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>f</code></em> <em class="replaceable"><code>init-value</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>final-value</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>This procedure calls <em class="replaceable"><code>f</code></em> for every association in <em class="replaceable"><code>hash-table</code></em>
+with three arguments: the key of the association key, the value of the
+association value, and an accumulated value, <em class="replaceable"><code>val</code></em>. The <em class="replaceable"><code>val</code></em>
+is <em class="replaceable"><code>init-value</code></em> for the first invocation of <em class="replaceable"><code>f</code></em>, and for
+subsequent invocations of <em class="replaceable"><code>f</code></em>, the return value of the previous
+invocation of <em class="replaceable"><code>f</code></em>. The value <em class="replaceable"><code>final-value</code></em> returned by
+<code class="literal">hash-table-fold</code> is the return value of the last invocation of
+<em class="replaceable"><code>f</code></em>. The order in which <em class="replaceable"><code>f</code></em> is called for different
+associations is unspecified.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873250368" class="indexterm"/> <code class="function">hash-table-&gt;alist</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>alist</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns an association list such that the <code class="literal">car</code> of each element
+in <em class="replaceable"><code>alist</code></em> is a key in <em class="replaceable"><code>hash-table</code></em> and the corresponding
+<code class="literal">cdr</code> of each element in <em class="replaceable"><code>alist</code></em> is the value associated to
+the key in <em class="replaceable"><code>hash-table</code></em>. The order of the elements is unspecified.
+</p>
+              <p>The following should always produce a hash table with the same mappings
+as a hash table <em class="replaceable"><code>h</code></em>:
+</p>
+              <pre class="screen">(alist-&gt;hash-table (hash-table-&gt;alist <em class="replaceable"><code>h</code></em>)
+                        (hash-table-equivalence-function <em class="replaceable"><code>h</code></em>)
+                        (hash-table-hash-function <em class="replaceable"><code>h</code></em>))
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873240896" class="indexterm"/> <code class="function">hash-table-copy</code> <em class="replaceable"><code>hash-table</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Returns a new hash table with the same equivalence predicate, hash
+function and mappings as in <em class="replaceable"><code>hash-table</code></em>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873236192" class="indexterm"/> <code class="function">hash-table-merge!</code> <em class="replaceable"><code>hash-table1</code></em> <em class="replaceable"><code>hash-table2</code></em> <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>hash-table</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Adds all mappings in <em class="replaceable"><code>hash-table2</code></em> into <em class="replaceable"><code>hash-table1</code></em> and
+returns the resulting hash table. This function may modify
+<em class="replaceable"><code>hash-table1</code></em> destructively.
+</p>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Hash functions" epub:type="division" id="idm139667873230176">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Hash functions</h4>
+              </div>
+            </div>
+          </div>
+          <p>The Kawa implementation always calls these hash functions with a single
+parameter, and expects the result to be within the entire
+(32-bit signed) <code class="literal">int</code> range, for compatibility with
+standard <code class="literal">hashCode</code> methods.
+</p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873227664" class="indexterm"/> <code class="function">hash</code> <em class="replaceable"><code>object</code></em> [ <em class="replaceable"><code>bound</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>integer</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Produces a hash value for object in the range from 0 (inclusive) tp to
+<em class="replaceable"><code>bound</code></em> (exclusive).
+</p>
+              <p>If <em class="replaceable"><code>bound</code></em> is not given, the Kawa implementation returns a value within
+the range <code class="literal">(- (expt 2 32))</code> (inclusive)
+to <code class="literal">(- (expt 2 32) 1)</code> (inclusive).
+It does this by calling the standard <code class="literal">hashCode</code> method,
+and returning the result as is.
+(If the <em class="replaceable"><code>object</code></em> is the Java <code class="literal">null</code> value, 0 is returned.)
+This hash function is acceptable for <code class="literal">equal?</code>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873218560" class="indexterm"/> <code class="function">string-hash</code> <em class="replaceable"><code>string</code></em> [ <em class="replaceable"><code>bound</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>integer</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The same as <code class="literal">hash</code>, except that the argument string must be a string.
+(The Kawa implementation returns the same as the <code class="literal">hash</code> function.)
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873212960" class="indexterm"/> <code class="function">string-ci-hash</code> <em class="replaceable"><code>string</code></em> [ <em class="replaceable"><code>bound</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>integer</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The same as <code class="literal">string-hash</code>, except that the case of characters in
+string does not affect the hash value produced.
+(The Kawa implementation returns the same the <code class="literal">hash</code> function
+applied to the lower-cased <em class="replaceable"><code>string</code></em>.)
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873206896" class="indexterm"/> <code class="function">hash-by-identity</code> <em class="replaceable"><code>object</code></em> [ <em class="replaceable"><code>bound</code></em> ] <em class="replaceable"><code>→</code></em> <em class="replaceable"><code>integer</code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The same as <code class="literal">hash</code>, except that this function is only guaranteed
+to be acceptable for <code class="literal">eq?</code>.
+Kawa uses the <code class="literal">identityHashCode</code> method of <code class="literal">java.lang.System</code>.
+</p>
+            </blockquote>
+          </div>
+        </section>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Hash-tables.xhtml#idm139667873522768">R6RS hash tables</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Hash-tables.xhtml#idm139667873378016">SRFI-69 hash tables</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Data-structures.xhtml">Data structures</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Arrays.xhtml">Multi-dimensional Arrays</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

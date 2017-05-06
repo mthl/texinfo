@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Installing and using the source distribution</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="tutorial-index.xhtml" title="Kawa Scheme Tutorial"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Installing and using the source distribution" epub:type="subchapter" id="Source-distribution">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Installing and using the source distribution</h2>
+          </div>
+        </div>
+      </div>
+      <p>The Kawa release normally comes as a gzip-compressed tar file named
+‘<code class="literal">kawa-2.92_invoke.tar.gz</code>’.
+
+
+Two methods are supporting for compiling the Kawa sources;
+choose whichever is most convenient for you.
+</p>
+      <p>One method uses the traditional GNU <code class="literal">configure</code> script,
+followed by running <code class="literal">make</code>.  This works well on Unix-like
+systems, such as GNU/Linux.
+You can also use this method on Microsoft Windows,
+with the help of tools from <a class="ulink" href="http://www.MinGW.org/" target="_top">MinGW</a>
+or <a class="ulink" href="http://www.cygwin.org/" target="_top">Cygwin</a>.
+</p>
+      <p>The other method uses the <code class="literal">ant</code> command, a Java-based
+build system released by Apache’s Jakarta project.  This uses
+an <code class="literal">build.xml</code> file in place of <code class="literal">Makefile</code>s, and
+works on non-Unix systems such as Microsoft Windows.  However,
+the <code class="literal">ant</code> method does not support all
+the features of the <code class="literal">configure</code>+<code class="literal">make</code> method.
+</p>
+      <section class="sect2" title="Build Kawa using configure and make" epub:type="division" id="idm139667880815760">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Build Kawa using <code class="literal">configure</code> and <code class="literal">make</code></h3>
+            </div>
+          </div>
+        </div>
+        <p>(See <a class="link" href="Source-distribution.xhtml#building-on-Windows-with-make">below</a> for some notes for building
+on Microsoft Windows.)
+</p>
+        <p>If you have a <code class="literal">tar.gz</code> file, first unpack that in your build directory:
+</p>
+        <pre class="screen">tar xzf kawa-2.92_invoke.tar.gz
+cd kawa-2.92_invoke
+</pre>
+        <p>If you’re building from the Git repository, you need to
+generate <code class="literal">configure</code> and some other files. This is
+easiest done with the <code class="literal">autogen.sh</code> script:
+</p>
+        <pre class="screen">./autogen.sh
+</pre>
+        <p>Then you must configure the sources.  This you do in
+the same way you configure most other GNU software.  Normally
+you can just run the configure script with no arguments:
+</p>
+        <pre class="screen">./configure
+</pre>
+        <p>The <code class="literal">configure</code> script takes a number of <a class="link" href="Source-distribution.xhtml#configure-options">options</a>.
+</p>
+        <p>If you have installed Kawa before, make sure your <code class="literal">CLASSPATH</code>
+does not include old versions of Kawa, or other classes that may
+conflict with the new ones.
+</p>
+        <p>Then you need to compile all the .java source files.
+Just run make:
+</p>
+        <pre class="screen">make
+</pre>
+        <p>This assumes that ‘<code class="literal">java</code>’ and ‘<code class="literal">javac</code>’ are the java interpreter
+and compiler, respectively.
+</p>
+        <p>It has been reported that parallel make doesn’t work,
+so don’t use the <code class="literal">-j2</code> or above options.
+</p>
+        <p>You can now test the system by running Kawa in place:
+</p>
+        <pre class="screen">java kawa.repl
+</pre>
+        <p>or you can run the test suite:
+</p>
+        <pre class="screen">make check
+</pre>
+        <p>or you can install the compiled files:
+</p>
+        <pre class="screen">make install
+</pre>
+        <p>This will install your classes into <code class="literal">$PREFIX/share/java</code> (and its
+sub-directories).  Here <code class="literal">$PREFIX</code> is the directory you specified
+to configure with the <code class="literal">--prefix</code> option, or <code class="literal">/usr/local</code> if you
+did not specify a <code class="literal">--prefix</code> option.
+</p>
+        <p>To use the installed files, you need to set <code class="literal">CLASSPATH</code> so
+that <code class="literal">$PREFIX/share/java/kawa.jar</code> is in the path:
+</p>
+        <pre class="screen">CLASSPATH=$PREFIX/share/java/kawa.jar
+export CLASSPATH
+</pre>
+        <p>This is done automatically if you use the ‘<code class="literal">kawa</code>’ script.
+</p>
+        <span id="configure-options"/>
+        <a id="idm139667880795696" class="indexterm"/>
+        <section class="sect3" title="Configure options" epub:type="division" id="idm139667880794912">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Configure options</h4>
+              </div>
+            </div>
+          </div>
+          <p>The <code class="literal">configure</code> script takes a number of options.
+The <code class="literal">--help</code> switch gives you a list of options.
+The following are some of the more common or important ones.
+</p>
+          <div class="variablelist" epub:type="list">
+            <dl class="variablelist">
+              <dt class="term"><code class="literal">--prefix=<em class="replaceable"><code>install-dir</code></em></code>
+</dt>
+              <dt class="term"><code class="literal">--prefix <em class="replaceable"><code>install-dir</code></em></code>
+</dt>
+              <dd>
+                <p>By default <code class="literal">make install</code> will install the compiled <code class="literal">.jar</code>
+files info <code class="literal">/usr/local/share/java</code>,
+the <code class="literal">kawa</code> command into <code class="literal">/usr/local/bin</code>,
+and so on in <code class="literal">/usr/local</code>.
+The <code class="literal">--prefix</code> option causes the files to be installed
+under <code class="literal"><em class="replaceable"><code>install-dir</code></em></code> instead of <code class="literal">/usr/local</code>.
+For example to install the <code class="literal">.jar</code> in <code class="literal">/opt/kawa/share/java</code>
+and otherwise use <code class="literal">/opt/kawa</code> do:
+</p>
+                <pre class="screen">./configure --prefix=/opt/kawa
+</pre>
+              </dd>
+              <dt class="term"><code class="literal">--with-java-source=<em class="replaceable"><code>version</code></em></code>
+</dt>
+              <dd>
+                <p>As distributed, the Kawa source code requires Java 7.
+If you only have Java 6 or Java 5, use the <code class="literal">--with-java-source</code> option:
+</p>
+                <pre class="screen">./configure --with-java-source=5
+</pre>
+                <p>Kawa no longer supports older verisons of Java (JDK 1.4 or older).
+It might be possible to use a tool
+like <a class="ulink" href="http://retroweaver.sourceforge.net/" target="_top">Retroweaver</a>
+on the Kawa <code class="literal">.jar</code> to fix up Java 5 dependencies.
+Contact the Kawa author if you want to be a tester for this.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-docbook-stylesheet[=<em class="replaceable"><code>path</code></em>]</code>
+</dt>
+              <dd>
+                <p>Build the documentation (this manual) as an electronic book
+(in ebook format) or a website, using
+the DocBook xslt stylesheets.
+(You can build the documentation without DocBook, but using
+it enables nicer-looking and more functional documentation.)
+</p>
+                <p>The stylesheets are found using <em class="replaceable"><code>path</code></em>;
+the file <code class="literal"><em class="replaceable"><code>path</code></em>/epub3/chunk.xsl</code> needs to exist.
+(For example, on Fedora 25 <em class="replaceable"><code>path</code></em> can be <code class="literal">/usr/share/sgml/docbook/xsl-ns-stylesheets</code>.)
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-domterm</code>
+</dt>
+              <dt class="term"><code class="literal">--with-domterm=<em class="replaceable"><code>domterm_home</code></em></code>
+</dt>
+              <dd>
+                <p>Compile with extra support for the <a class="link" href="REPL-Console.xhtml#Using-DomTerm">DomTerm</a>
+terminal emulator library, where <code class="literal"><em class="replaceable"><code>domterm_home</code></em></code>
+is such that <code class="literal"><em class="replaceable"><code>domterm_home</code></em>/lib/domterm.jar</code> exists.
+(Some DomTerm support is built-in regardless.)
+</p>
+                <p>If you use this option along with <code class="literal">--with-javafx</code>
+then creating a new <a class="link" href="REPL-Console.xhtml" title="The REPL (read-eval-print-loop) console">REPL</a> window
+will create a DomTerm window.
+</p>
+                <p>As an optional convenience, you can use the <code class="literal">domterm.jar</code>
+in the Kawa binary distribution.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-jline3</code>
+</dt>
+              <dt class="term"><code class="literal">--with-jline3=<em class="replaceable"><code>jline3.jar</code></em></code>
+</dt>
+              <dd>
+                <p>Build support for using <a class="ulink" href="https://github.com/jline/jline3" target="_top">JLine 3</a>,
+which is a library for handling console input, similar to GNU readline.
+If specified, the <em class="replaceable"><code>jline3.jar</code></em> is added to the classpath of the
+generated <code class="literal">kawa.sh</code> or <code class="literal">kawa</code> shell program.
+</p>
+                <p>An advantage of <code class="literal">--with-jline3</code> (compared to
+<code class="literal">--enable-kawa-frontend</code>) is that the former works without native code
+(on most Unix-like platforms), and it does not require a C wrapper program.
+</p>
+                <p>As an optional convenience, you can use the <code class="literal">jline.jar</code>
+in the Kawa binary distribution.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-domterm</code>
+</dt>
+              <dt class="term"><code class="literal">--with-domterm=<em class="replaceable"><code>domterm.jar</code></em></code>
+</dt>
+              <dd>
+                <p>Compile with extra support for the <a class="link" href="REPL-Console.xhtml#Using-DomTerm">DomTerm</a>
+terminal emulator library.  (Some DomTerm support is built-in regardless.)
+</p>
+                <p>If you use this option along with <code class="literal">--with-javafx</code>
+then creating a new <a class="link" href="REPL-Console.xhtml" title="The REPL (read-eval-print-loop) console">REPL</a> window
+will create a DomTerm window.
+</p>
+                <p>As an optional convenience, you can use the <code class="literal">domterm.jar</code>
+in the Kawa binary distribution.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-jline3</code>
+</dt>
+              <dt class="term"><code class="literal">--with-jline3=<em class="replaceable"><code>jline3.jar</code></em></code>
+</dt>
+              <dd>
+                <p>Build support for using <a class="ulink" href="https://github.com/jline/jline3" target="_top">JLine 3</a>,
+which is a library for handling console input, similar to GNU readline.
+If specified, the <em class="replaceable"><code>jline3.jar</code></em> is added to the classpath of the
+generated <code class="literal">kawa.sh</code> or <code class="literal">kawa</code> shell program.
+</p>
+                <p>An advantage of <code class="literal">--with-jline3</code> (compared to
+<code class="literal">--enable-kawa-frontend</code>) is that the former works without native code
+(on most Unix-like platforms), and it does not require a C wrapper program.
+</p>
+                <p>As an optional convenience, you can use the <code class="literal">jline.jar</code>
+in the Kawa binary distribution.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-servlet</code>
+</dt>
+              <dt class="term"><code class="literal">--with-servlet=<em class="replaceable"><code>servlet-jar</code></em></code>
+</dt>
+              <dd>
+                <p>Build support for <a class="link" href="Servlets.xhtml" title="Installing web page scripts as Servlets">servlets</a>, which are used in web servers.
+This requires the <code class="literal">servlet-api.jar</code> (available various places including
+<a class="ulink" href="http://tomcat.apache.org/" target="_top">Tomcat</a> or
+<a class="ulink" href="https://glassfish.java.net/" target="_top">Glassfish</a>),
+for <code class="literal">javax.servlet.Servlet</code> and related classes.
+If this class isn’t in your classpath, specify its location
+as <code class="literal"><em class="replaceable"><code>servlet-jar</code></em></code>. For example:
+</p>
+                <pre class="screen">./configure --with-servlet=/path/to/servlet-api.jar 
+</pre>
+              </dd>
+              <dt class="term"><code class="literal">--enable-jemacs</code>
+</dt>
+              <dd>
+                <p>Build JEmacs (enable Emacs-like text editor) and support (a subset of)
+the Emacs Lisp language.  JEmacs is a proof of concept - not really
+usable or maintained.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-javafx</code>
+</dt>
+              <dt class="term"><code class="literal">--with-javafx=<em class="replaceable"><code>javafx-jar</code></em></code>
+</dt>
+              <dt class="term"><code class="literal">--with-javafx=<em class="replaceable"><code>java-home</code></em></code>
+</dt>
+              <dd>
+                <p>Set this flag to enable the convenience features
+for <a class="link" href="Building-JavaFX-applications.xhtml" title="Building JavaFX applications">JavaFX</a>.
+The JavaFX classes are included in JDK 8 (but not OpenJDK 8),
+and you don’t need to specify <code class="literal"><em class="replaceable"><code>javafx-jar</code></em></code> or <code class="literal"><em class="replaceable"><code>java-home</code></em></code>.
+For JDK 7 you need to specify <code class="literal"><em class="replaceable"><code>javafx-jar</code></em></code>
+(the path to <code class="literal">javafx.rt</code>) or <code class="literal"><em class="replaceable"><code>java-home</code></em></code>
+(the value of the <code class="literal">$JAVA_HOME</code>).
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--with-android=<em class="replaceable"><code>android-jar</code></em></code>
+</dt>
+              <dd>
+                <p>Build for the Android platform.
+This requires <a class="link" href="Building-for-Android.xhtml" title="Building for Android">special instructons</a>.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">--enable-kawa-frontend</code>
+</dt>
+              <dd>
+                <p>If you have the GNU ‘<code class="literal">readline</code>’ library installed, you might try
+adding the ‘<code class="literal">--enable-kawa-frontend</code>’ flag.
+This will build the
+‘<code class="literal">kawa</code>’ front-end program, which provides input-line editing
+and an input history.  You can get ‘<code class="literal">readline</code>’ from archives
+of GNU programs, including <a class="ulink" href="ftp://www.gnu.org/" target="_top">ftp://www.gnu.org/</a>.
+</p>
+                <p>Note that using JLine, enabled by <code class="literal">--with-jline3</code>,
+is now recommended instead of using the <code class="literal">readline</code> frontend.
+</p>
+                <p>You may need to specify to <code class="literal">make</code> where to find
+the <code class="literal">readline</code> include files (with <code class="literal">READLINE_INCLUDE_PATH</code>)
+and the library (with <code class="literal">READINE_LIB_PATH</code>).
+For example on OS/X you need to do:
+</p>
+                <pre class="screen">make READLINE_INCLUDE_PATH=-I/usr/local/unix/readline/include \
+     READLINE_LIB_PATH=-L/usr/local/unix/readline/lib
+</pre>
+              </dd>
+            </dl>
+          </div>
+          <span id="building-on-Windows-with-make"/>
+        </section>
+        <section class="sect3" title="Building on Windows using MinGW" epub:type="division" id="idm139667880724592">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Building on Windows using MinGW</h4>
+              </div>
+            </div>
+          </div>
+          <p>The Kawa <code class="literal">configure</code> and <code class="literal">make</code> process assumes Unix-like
+tools, which you can get from <a class="ulink" href="http://mingw.org" target="_top">the MinGW project</a>.
+Download the MingGW Installation Manager, and use it to install
+at least <code class="literal">mingw-developer-toolkit</code>.
+(Also installing <code class="literal">msys-groff</code> avoids a minor problem
+building the documentation.)
+</p>
+          <p>The <code class="literal">C:\MinGW\msys\1.0\msys.bat</code> script creates a command window
+with the <code class="literal">bash</code> shell and the <code class="literal">PATH</code> set up as needed.
+Alternatively, you can use the standard Windows command prompt
+if you set your <code class="literal">PATH</code> as described in <a class="ulink" href="http://mingw.org/wiki/Getting_Started" target="_top">here</a>.
+</p>
+        </section>
+        <section class="sect3" title="Building on Windows using Cygwin" epub:type="division" id="idm139667880717488">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Building on Windows using Cygwin</h4>
+              </div>
+            </div>
+          </div>
+          <p>The free <a class="ulink" href="http://sourceware.org/cygwin/" target="_top">Cygwin</a>
+environment can be used for building Kawa: The Kawa configure script
+recognizes Cygwin, and modifies the classpath to use Windows-style
+path separators.
+</p>
+          <p>Beyond the base packages, you probably want to install <code class="literal">autoconf</code>,
+<code class="literal">automake</code>, <code class="literal">git</code>, <code class="literal">texinfo</code>, <code class="literal">groff</code>,
+<code class="literal">make</code>, and <code class="literal">diffutils</code>.
+</p>
+          <p>Cygwin (unlike MinGW) has a current version of <code class="literal">makeinfo</code>, but
+an undiagnosed bug still prevents building <code class="literal">kawa.info</code>.
+You can work around that problem with <code class="literal">touch doc/kawa.info</code>.
+</p>
+        </section>
+      </section>
+      <section class="sect2" title="Building the documentation" epub:type="division" id="idm139667880709792">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Building the documentation</h3>
+            </div>
+          </div>
+        </div>
+        <p>To build the documentation in a form suitable for a web-site do:
+</p>
+        <pre class="screen">cd doc &amp;&amp; make web/index.html
+</pre>
+        <p>You can then point your browser at <code class="literal">file:/<em class="replaceable"><code>kawa_srcdir</code></em>/doc/web/index.html</code>.
+</p>
+        <p>The above requires <code class="literal">makeinfo</code> from the texinfo package,
+and the DocBook XSLT tools.
+</p>
+        <p>If you don’t have the DocBook XSLT tools (but have <code class="literal">makeinfo</code>),
+you can build a more plain HTML version of the documentation:
+</p>
+        <pre class="screen">cd doc &amp;&amp; make kawa-html/index.html
+</pre>
+        <p>In this case, point your browser at
+<code class="literal">file:/<em class="replaceable"><code>kawa_srcdir</code></em>/doc/kawa-html/index.html</code>.
+</p>
+        <p>To build an <code class="literal">EPUB</code> file suitable for ebook readers,
+as well as enabling support for the
+<a class="link" href="Options.xhtml#browse-manual-option"><code class="literal">kawa --browse-manual</code> option</a>, do:
+</p>
+        <pre class="screen">cd doc &amp;&amp; make kawa-manual.epub
+</pre>
+        <p>To build a <code class="literal">pdf</code> file suitable for printing or online viewing do:
+</p>
+        <pre class="screen">cd doc &amp;&amp; make kawa.pdf
+</pre>
+        <p>The resulting <code class="literal">kawa.pdf</code> is somewhat unsatisfactory - when viewed online,
+links aren’t clickable.  Furthermore, box drawing characters are missing.
+</p>
+      </section>
+      <section class="sect2" title="Build Kawa using ant" epub:type="division" id="idm139667880698416">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Build Kawa using <code class="literal">ant</code></h3>
+            </div>
+          </div>
+        </div>
+        <p>Kawa now includes an Ant buildfile (<code class="literal">build.xml</code>).
+<a class="ulink" href="http://ant.apache.org" target="_top">Ant</a> is a part of the Apache
+Jakarta project.
+If you don’t hava Ant installed,
+get it from <a class="ulink" href="http://ant.apache.org/bindownload.cgi" target="_top">http://ant.apache.org/bindownload.cgi</a>.
+The build is entirely Java based and works equally well on *nix, Windows,
+and presumably most any other operating system.
+</p>
+        <p>Once Ant has been installed and configured (you may need to set the
+<code class="literal">JAVA_HOME</code>, and <code class="literal">ANT_HOME</code> environment variables), you should
+be able to change to the directory containing the <code class="literal">build.xml</code> file,
+and invoke the ‘<code class="literal">ant</code>’ command.  With the default settings, a
+successful build will result in a <code class="literal">kawa-2.92_invoke.jar</code> in the
+current directory.
+</p>
+        <p>There are a few Ant "targets" of interest (they can be supplied on the
+Ant command line):
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">all</code>
+</dt>
+            <dd>
+              <p>This is the default, it does <code class="literal">classes</code> and <code class="literal">jar</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">classes</code>
+</dt>
+            <dd>
+              <p>Compiles all the files into <code class="literal">*.class</code> files into the directory
+specified by the <code class="literal">build.dir</code> property.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">jar</code>
+</dt>
+            <dd>
+              <p>Builds a jar into into the directory
+specified by the <code class="literal">dist.dir</code> property.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">runw</code>
+</dt>
+            <dd>
+              <p>Run Kawa in a GUI window.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">clean</code>
+</dt>
+            <dd>
+              <p>Deletes all files generated by the build, including the jar.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>There is not yet a <code class="literal">test</code> target for running the testsuite.
+</p>
+        <p>There are various “properties" that control what <code class="literal">ant</code> does.  You can
+override these on the command line or by editing the
+<code class="literal">build.properties</code> file in the same directory as <code class="literal">build.xml</code>.
+For example, the <code class="literal">build.dir</code> property tells <code class="literal">ant</code> where to
+build temporary files, and where to leave the resulting <code class="literal">.jar</code>
+file.  For example, to leave the generated files in the sub-directory
+named <code class="literal">BUILD</code> do:
+</p>
+        <pre class="screen">ant -Dbuild.dir=BUILD
+</pre>
+        <p>A sample <code class="literal">build.properties</code> is provided and it contains
+comments explaining many of the options.
+</p>
+        <p>Here are a few general properties that help to customize your build:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">build.dir</code>
+</dt>
+            <dd>
+              <p>Path to put the temporary files used for building.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">dist.dir</code>
+</dt>
+            <dd>
+              <p>Path to put the resulting jar file.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">version.local</code>
+</dt>
+            <dd>
+              <p>A suffix to add to the version label for your customized version.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">debug</code>
+</dt>
+            <dd>
+              <p>Whether (true/false) the Javac "-g" option is enabled.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">optimize</code>
+</dt>
+            <dd>
+              <p>Whether (true/false) the Javac "-O" option is enabled.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>Here are some Kawa-specific ones (all <code class="literal">true</code>/<code class="literal">false</code>):
+<code class="literal">with-collections</code>, <code class="literal">with-references</code>, <code class="literal">with-awt</code>,
+<code class="literal">with-swing</code>, <code class="literal">enable-jemacs</code>, and <code class="literal">enable-servlet</code>&gt;
+See the sample <code class="literal">build.properties</code> for more information on these.
+</p>
+        <p>If you change any of the build properties, you will generally want to do
+an ‘<code class="literal">ant clean</code>’ before building again as the build is often not able to
+notice that kind of change.  In the case of changing a directory path,
+you would want to do the <code class="literal">clean</code> before changing the path.
+</p>
+        <p>A special note for NetBeans users:
+For some reason the build-tools target which compiles an Ant task won’t
+compile with the classpath provided by NetBeans.
+You may do ‘<code class="literal">ant build-tools</code>’ from the command line outside of NetBeans,
+in which case you will not want to use the <code class="literal">clean</code> target as that
+will delete the tool files as well.
+You can use the <code class="literal">clean-build</code> and/or <code class="literal">clean-dist</code>
+targets as appropriate.  Alternatively you can add <code class="literal">ant.jar</code> to the
+<code class="literal">build-tools</code> classpath by copying or linking it into a <code class="literal">lib/ext</code>
+directory in Kawa’s source directory (the one containing the <code class="literal">build.xml</code>
+file).
+</p>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Source-distribution.xhtml#idm139667880815760">Build Kawa using <code class="literal">configure</code> and <code class="literal">make</code></a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Source-distribution.xhtml#idm139667880709792">Building the documentation</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Source-distribution.xhtml#idm139667880698416">Build Kawa using <code class="literal">ant</code></a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Installation.xhtml">Getting and installing Kawa</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Binary-distribution.xhtml">Installing and using the binary distribution</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

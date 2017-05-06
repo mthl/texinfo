@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>File System Interface</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Paths.xhtml" title="Paths - file name, URLs, and URIs"/>
+    <link rel="next" href="Reading-and-writing-whole-files.xhtml" title="Reading and writing whole files"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="File System Interface" epub:type="subchapter" id="Files">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">File System Interface</h2>
+          </div>
+        </div>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872876736" class="indexterm"/> <code class="function">file-exists?</code> <em class="replaceable"><code>filename</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns true iff the file named <em class="replaceable"><code>filename</code></em> actually exists.
+This function is defined on arbitrary <code class="literal">path</code> values:
+for URI values we open a <code class="literal">URLConnection</code>
+and invoke <code class="literal">getLastModified()</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872871520" class="indexterm"/> <code class="function">file-directory?</code> <em class="replaceable"><code>filename</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns true iff the file named <em class="replaceable"><code>filename</code></em> actually exists
+and is a directory.
+This function is defined on arbitrary <code class="literal">path</code> values;
+the default implementation for non-file objects is to
+return <code class="literal">#t</code> iff the path string ends with the character ‘<code class="literal">/</code>’.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872866208" class="indexterm"/> <code class="function">file-readable?</code> <em class="replaceable"><code>filename</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns true iff the file named <em class="replaceable"><code>filename</code></em> actually exists
+and can be read from.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872862352" class="indexterm"/> <code class="function">file-writable?</code> <em class="replaceable"><code>filename</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns true iff the file named <em class="replaceable"><code>filename</code></em> actually exists
+and can be writen to.
+(Undefined if the <em class="replaceable"><code>filename</code></em> does not exist,
+but the file can be created in the directory.)
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872857968" class="indexterm"/> <code class="function">delete-file</code> <em class="replaceable"><code>filename</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Delete the file named <em class="replaceable"><code>filename</code></em>.
+On failure, throws an exception.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872854128" class="indexterm"/> <code class="function">rename-file</code> <em class="replaceable"><code>oldname</code></em> <em class="replaceable"><code>newname</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Renames the file named <em class="replaceable"><code>oldname</code></em> to <em class="replaceable"><code>newname</code></em>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872849472" class="indexterm"/> <code class="function">copy-file</code> <em class="replaceable"><code>oldname</code></em> <em class="replaceable"><code>newname-from</code></em> <em class="replaceable"><code>path-to</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Copy the file named <em class="replaceable"><code>oldname</code></em> to <em class="replaceable"><code>newname</code></em>.
+The return value is unspecified.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872844352" class="indexterm"/> <code class="function">create-directory</code> <em class="replaceable"><code>dirname</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Create a new directory named <em class="replaceable"><code>dirname</code></em>.
+Unspecified what happens on error (such as exiting file with the same name).
+(Currently returns <code class="literal">#f</code> on error, but may change to be more compatible
+with scsh.)
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872839968" class="indexterm"/> <code class="function">system-tmpdir</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the name of the default directory for temporary files.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872836960" class="indexterm"/> <code class="function">make-temporary-file</code> [<em class="replaceable"><code>format</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return a file with a name that does not match any existing file.
+Use <em class="replaceable"><code>format</code></em> (which defaults to <code class="literal">"kawa~d.tmp"</code>) to generate
+a unique filename in <code class="literal">(system-tmpdir)</code>.
+The current implementation is <span class="emphasis"><em>not</em></span> safe from race conditions;
+this will be fixed in a future release (using Java2 features).
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Input-Output.xhtml">Input, output, and file handling</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Paths.xhtml">Paths - file name, URLs, and URIs</a></p>
+        <p>
+        Next: <a accesskey="n" href="Reading-and-writing-whole-files.xhtml">Reading and writing whole files</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

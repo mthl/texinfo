@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Quaternions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Quantities.xhtml" title="Quantities and Units"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Quaternions" epub:type="subchapter" id="Quaternions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Quaternions</h2>
+          </div>
+        </div>
+      </div>
+      <p>Kawa extends the Scheme numeric tower to include
+<a class="ulink" href="http://en.wikipedia.org/wiki/Quaternion" target="_top">quaternions</a> as a proper
+superset of the complex numbers.  Quaternions provide a convenient
+notation to represent
+<a class="ulink" href="http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation" target="_top">rotations in three-dimensional space</a>,
+and are therefore commonly found in applications such as computer
+graphics, robotics, and spacecraft engineering.  The Kawa quaternion API
+is modeled after
+<a class="ulink" href="http://www.ccs.neu.edu/home/dorai/squat/squat.html" target="_top">this</a> with some
+additions.
+</p>
+      <p>A quaternion is a number that can be expressed in the form
+‘<code class="literal">w+xi+yj+zk</code>’, where <code class="literal">w</code>, <code class="literal">x</code>, <code class="literal">y</code>, and <code class="literal">z</code> are
+real, and <code class="literal">i</code>, <code class="literal">j</code>, and <code class="literal">k</code> are imaginary units
+satisfying <span class="mathphrase">i<sup>2</sup> = j<sup>2</sup> = k<sup>2</sup> = ijk = -1</span>.  The magnitude of a
+quaternion is defined to be its Euclidean norm when viewed as a point in
+<span class="mathphrase">R<sup>4</sup></span>.
+</p>
+      <p>The real–part of a quaternion is also called its ‘<code class="literal">scalar</code>’, while
+the i–part, j–part, and k–part taken together are also called its
+‘<code class="literal">vector</code>’.  A quaternion with zero j–part and k–part is an
+ordinary complex number. (If the i–part is also zero, then it is a
+real).  A quaternion with zero real–part is called a
+‘<code class="literal">vector quaternion</code>’.
+</p>
+      <p>The reader syntax for number literals has been extended to support both
+rectangular and polar (hyperspherical) notation for quaternions.  The
+rectangular notation is as above, i.e. <code class="literal">w+xi+yj+zk</code>.  The polar
+notation takes the form <code class="literal">r@t%u&amp;v</code>, where <code class="literal">r</code> is the
+magnitude, <code class="literal">t</code> is the first angle, and <code class="literal">u</code> and <code class="literal">v</code> are
+two other angles called the “colatitude” and “longitude”.
+</p>
+      <p>The rectangular coordinates and polar coordinates are related by the
+equations:
+</p>
+      <pre class="screen"><em class="replaceable"><code>w</code></em> = <em class="replaceable"><code>r</code></em> * cos <em class="replaceable"><code>t</code></em>
+<em class="replaceable"><code>x</code></em> = <em class="replaceable"><code>r</code></em> * sin <em class="replaceable"><code>t</code></em> * cos <em class="replaceable"><code>u</code></em>
+<em class="replaceable"><code>y</code></em> = <em class="replaceable"><code>r</code></em> * sin <em class="replaceable"><code>t</code></em> * sin <em class="replaceable"><code>u</code></em> * cos <em class="replaceable"><code>v</code></em>
+<em class="replaceable"><code>z</code></em> = <em class="replaceable"><code>r</code></em> * sin <em class="replaceable"><code>t</code></em> * sin <em class="replaceable"><code>u</code></em> * sin <em class="replaceable"><code>v</code></em>
+</pre>
+      <p>With either notation, zero elements may be omitted.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876756944" class="indexterm"/> <code class="function">make-rectangular</code> <em class="replaceable"><code><em class="replaceable"><code>w</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876753504" class="indexterm"/> <code class="function">make-rectangular</code> <em class="replaceable"><code><em class="replaceable"><code>w</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>y</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures construct quaternions from Cartesian coordinates.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876748448" class="indexterm"/> <code class="function">make-polar</code> <em class="replaceable"><code><em class="replaceable"><code>r</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>t</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876745008" class="indexterm"/> <code class="function">make-polar</code> <em class="replaceable"><code><em class="replaceable"><code>r</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>t</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>u</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>v</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures construct quaternions from polar coordinates.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876739952" class="indexterm"/> <code class="function">+</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876736672" class="indexterm"/> <code class="function">-</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876733392" class="indexterm"/> <code class="function">*</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876730112" class="indexterm"/> <code class="function">/</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876727248" class="indexterm"/> <code class="function">/</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876721792" class="indexterm"/> <code class="function">expt</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876717584" class="indexterm"/> <code class="function">exp</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876714720" class="indexterm"/> <code class="function">log</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876711856" class="indexterm"/> <code class="function">sqrt</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876708928" class="indexterm"/> <code class="function">sin</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876706064" class="indexterm"/> <code class="function">cos</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876703200" class="indexterm"/> <code class="function">tan</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876700336" class="indexterm"/> <code class="function">asin</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876697408" class="indexterm"/> <code class="function">acos</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876694480" class="indexterm"/> <code class="function">atan</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>All of the arithmetic and transcendental functions defined for complex
+arguments have been extended to support quaternions.
+</p>
+          <p>Quaternion multiplication is not commutative, so there are two possible
+interpretations of <code class="literal">(/ q1 q2)</code> which would yield different results:
+either <code class="literal">(* q1 (/ q2))</code>, or <code class="literal">(* (/ q2) q1)</code>.  Division in this
+implementation has been defined such that <code class="literal">(/ q1 q2 ...)</code> is
+equivalent to <code class="literal">(* q1 (/ q2) ...)</code>, but it is recommended to
+use reciprocals (unary <code class="literal">/</code>) and multiplication.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876687632" class="indexterm"/> <code class="function">real-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the real–part of <em class="replaceable"><code>q</code></em>.
+</p>
+          <pre class="screen">(real-part 0)          ⇒  0
+(real-part -i)         ⇒  0
+(real-part 1+2i-3j+4k) ⇒  1
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876683248" class="indexterm"/> <code class="function">imag-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the i–part of <em class="replaceable"><code>q</code></em>.
+</p>
+          <pre class="screen">(imag-part 0)          ⇒  0
+(imag-part -i)         ⇒  -1
+(imag-part 1+2i-3j+4k) ⇒  2
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876678864" class="indexterm"/> <code class="function">magnitude</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the Euclidean norm of <em class="replaceable"><code>q</code></em>.  If <em class="replaceable"><code>q</code></em> is <code class="literal">a+bi+cj+dk</code>,
+then <code class="literal">(magnitude q)</code> is
+<code class="literal">(sqrt (apply + (map square (list a b c d))))</code>
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876673200" class="indexterm"/> <code class="function">angle</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return the angle of <em class="replaceable"><code>q</code></em>.
+</p>
+        </blockquote>
+      </div>
+      <section class="sect2" title="The (kawa quaternions) module" epub:type="division" id="idm139667876669472">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">The <code class="literal">(kawa quaternions)</code> module</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following additional functionality is made available by doing one
+of:
+</p>
+        <pre class="screen">(require 'quaternions) ;; or
+(import (kawa quaternions))
+</pre>
+        <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876667136" class="indexterm"/> <code class="function">quaternion</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>An alias for <code class="literal">gnu.math.Quaternion</code>, useful for type declarations.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876663840" class="indexterm"/> <code class="function">quaternion?</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>x</code></em> is a quaternion, i.e. an ordinary number, and
+<code class="literal">#f</code> otherwise.
+</p>
+            <pre class="screen">(quaternion? 0)          ⇒  #t
+(quaternion? -i)         ⇒  #t
+(quaternion? 1+2i-3j+4k) ⇒  #t
+(quaternion? 10.0m)      ⇒  #f
+(quaternion? "x")        ⇒  #f
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876658512" class="indexterm"/> <code class="function">jmag-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the j–part of <em class="replaceable"><code>q</code></em>.
+</p>
+            <pre class="screen">(jmag-part 0)          ⇒  0
+(jmag-part -i)         ⇒  0
+(jmag-part 1+2i-3j+4k) ⇒  -3
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876654256" class="indexterm"/> <code class="function">kmag-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <pre class="screen">(kmag-part 0)          ⇒  0
+(kmag-part -i)         ⇒  0
+(kmag-part 1+2i-3j+4k) ⇒  4
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876650560" class="indexterm"/> <code class="function">complex-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the projection of <em class="replaceable"><code>q</code></em> into the complex plane:
+<code class="literal">(+ (real-part q) (* +i (imag-part q)))</code>
+</p>
+            <pre class="screen">(complex-part 0)          ⇒  0
+(complex-part -i)         ⇒  -1i
+(complex-part 1+2i-3j+4k) ⇒  1+2i
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876645808" class="indexterm"/> <code class="function">vector-part</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the vector–part of <em class="replaceable"><code>q</code></em>.
+</p>
+            <pre class="screen">(vector-part 0)          ⇒  0
+(vector-part -i)         ⇒  -1i
+(vector-part 1+2i-3j+4k) ⇒  +2i-3j+4k
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876641392" class="indexterm"/> <code class="function">unit-quaternion</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a quaternion of unit magnitude with the same direction as
+<em class="replaceable"><code>q</code></em>.  If <em class="replaceable"><code>q</code></em> is zero, return zero.  This is like a 4D version of
+a signum function.
+</p>
+            <pre class="screen">(unit-quaternion 0)          ⇒  0
+(unit-quaternion -i)         ⇒  -1i
+(unit-quaternion 1+2i-3j+4k) ⇒  0.18257418583505536+0.3651483716701107i-0.5477225575051661j+0.7302967433402214k
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876636144" class="indexterm"/> <code class="function">unit-vector</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the vector–part of <em class="replaceable"><code>q</code></em>, scaled to have magnitude 1.  If the
+vector–part is zero, then return zero.
+</p>
+            <pre class="screen">(unit-vector 0)          ⇒  0
+(unit-vector -i)         ⇒  -1i
+(unit-vector 1+2i-3j+4k) ⇒  +0.3713906763541037i-0.5570860145311556j+0.7427813527082074k
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876631376" class="indexterm"/> <code class="function">colatitude</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the colatitude of <em class="replaceable"><code>q</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876627504" class="indexterm"/> <code class="function">longitude</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the longitude of <em class="replaceable"><code>q</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876623632" class="indexterm"/> <code class="function">vector-quaternion?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is a vector quaternion, i.e. a quaternion
+with zero real–part.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876619216" class="indexterm"/> <code class="function">make-vector-quaternion</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>y</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Construct vector quaternion <code class="literal">xi+yj+zk</code>.  This is equivalent to
+<code class="literal">(make-rectangular 0 x y z)</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876613808" class="indexterm"/> <code class="function">vector-quaternion-&gt;list</code> <em class="replaceable"><code><em class="replaceable"><code>vq</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a newly allocated list of the x, y, and z components of
+<em class="replaceable"><code>vq</code></em>.  This is equivalent to
+<code class="literal">(list (imag-part vq) (jmag-part vq) (kmag-part vq))</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876609328" class="indexterm"/> <code class="function">dot-product</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>For two vector quaternions <em class="replaceable"><code>q</code></em><sub>1</sub> = <code class="literal">ai+bj+ck</code> and <em class="replaceable"><code>q</code></em><sub>2</sub> =
+<code class="literal">di+ej+fk</code>, return <code class="literal">ad + be + cf</code>.  This is equal to the
+<span class="mathphrase">R^3</span> dot product for vectors <span class="mathphrase">(a,b,c)</span> and <span class="mathphrase">(d,e,f)</span>,
+and is also equal to <code class="literal">(- (real-part (* q1 q2)))</code>.  It is an error
+if either <em class="replaceable"><code>q</code></em><sub>1</sub> or <em class="replaceable"><code>q</code></em><sub>2</sub> has a non-zero real–part.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876598256" class="indexterm"/> <code class="function">cross-product</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>For two vector quaternions <em class="replaceable"><code>q</code></em><sub>1</sub> = <code class="literal">ai+bj+ck</code> and <em class="replaceable"><code>q</code></em><sub>2</sub> =
+<code class="literal">di+ej+fk</code>, return the <span class="mathphrase">R^3</span> cross product for vectors
+<span class="mathphrase">(a,b,c)</span> and <span class="mathphrase">(d,e,f)</span>, which is equal to
+<code class="literal">(vector-part (* q1 q2))</code>.  It is an error
+if either <em class="replaceable"><code>q</code></em><sub>1</sub> or <em class="replaceable"><code>q</code></em><sub>2</sub> has a non-zero real–part.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876587760" class="indexterm"/> <code class="function">conjugate</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">(+ (real-part q) (* -1 (vector-part q)))</code>.
+</p>
+            <pre class="screen">(conjugate 0)          ⇒  0
+(conjugate -i)         ⇒  +1i
+(conjugate 1+2i-3j+4k) ⇒  1-2i+3j-4k
+</pre>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="The (kawa rotations) module" epub:type="division" id="idm139667876583328">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">The <code class="literal">(kawa rotations)</code> module</h3>
+            </div>
+          </div>
+        </div>
+        <p>The <code class="literal">(kawa rotations)</code> library provides a set of functions which
+use unit quaternions to represent 3D spatial rotations.  To use these
+functions, the library must be imported:
+</p>
+        <pre class="screen">(import (kawa rotations))
+</pre>
+        <p>These functions normalize their quaternion inputs as needed to be of
+length 1.
+</p>
+        <section class="sect3" title="Rotation Representation Conversions" epub:type="division" id="idm139667876580144">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Rotation Representation Conversions</h4>
+              </div>
+            </div>
+          </div>
+          <p>Conversions to and from several alternate representations of rotations
+are supported.
+</p>
+          <p>The set of unit quaternions provides a double covering of all
+possible 3D rotations: <code class="literal">q</code> and <code class="literal">-q</code> represent the same
+rotation.  Most other representations also have multiple numerical
+values which map to the same rotation (for example, the rotation about
+<code class="literal">axis-vec</code> by <code class="literal">angle</code> is the same as the rotation about
+<code class="literal">-axis-vec</code> by <code class="literal">-angle+2pi</code>).  Therefore, these functions do
+not necessarily act as inverses in the sense of <code class="literal">equal?</code>.
+Furthermore, rotations involve trigonometric functions, so there will
+typically be some floating point error: <code class="literal">(acos (cos 0.1))</code> returns
+0.09999999999999945, which is very close to 0.1 but not exact.
+</p>
+          <h4 id="idm139667876574272">Rotation Matrices</h4>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876573456" class="indexterm"/> <code class="function">quaternion-&gt;rotation-matrix</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876570400" class="indexterm"/> <code class="function">rotation-matrix-&gt;quaternion</code> <em class="replaceable"><code><em class="replaceable"><code>m</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The <code class="literal">quaternion-&gt;rotation-matrix</code> procedure returns a 3x3 rotation
+matrix representing the same rotation as <em class="replaceable"><code>q</code></em>.  The rotation matrix
+is instantiated as a <a class="link" href="Arrays.xhtml" title="Multi-dimensional Arrays">SRFI-25 multi-dimensional array</a> backed
+by an <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">f64vector</a>.
+</p>
+              <p>The <code class="literal">rotation-matrix-&gt;quaternion</code> procedure performs the reverse
+operation, producing an equivalent unit quaternion for the rotation
+matrix (multi-dimensional array) <em class="replaceable"><code>m</code></em>.
+</p>
+              <pre class="screen">(rotation-matrix-&gt;quaternion (quaternion-&gt;rotation-matrix -1)) ⇒ 1.0
+</pre>
+            </blockquote>
+          </div>
+          <h4 id="idm139667876562496">Axis-Angle Representation</h4>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876561664" class="indexterm"/> <code class="function">rotation-axis</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876558736" class="indexterm"/> <code class="function">rotation-angle</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876555808" class="indexterm"/> <code class="function">rotation-axis/angle</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The <code class="literal">rotation-axis</code> procedure returns the axis of rotation of the
+quaternion <em class="replaceable"><code>q</code></em> as a unit-length vector quaternion.  If the axis of
+rotation is not well-defined (the angle of rotation is 0), then
+<code class="literal">+i</code> is arbitrarily chosen as the axis.
+</p>
+              <p>The <code class="literal">rotation-angle</code> procedure returns the corresponding angle of
+rotation.  Note that this is not the same as the result of the
+<code class="literal">angle</code> procedure.
+</p>
+              <p>The <code class="literal">rotation-axis/angle</code> procedure returns the rotation axis and
+angle as multiple values.
+</p>
+              <pre class="screen">(let* ((q 1/2+1/2i+1/2j+1/2k)
+       (ar (rotation-angle q))
+       (ad (java.lang.Math:toDegrees ar))
+       (exact-ad (exact ad)))
+  (rationalize exact-ad 1/10)) ⇒ 120
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876547712" class="indexterm"/> <code class="function">make-axis/angle</code> <em class="replaceable"><code><em class="replaceable"><code>axis-vec</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>angle</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876544208" class="indexterm"/> <code class="function">make-axis/angle</code> <em class="replaceable"><code><em class="replaceable"><code>axis-x</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>axis-y</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>axis-z</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>angle</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The <code class="literal">make-axis/angle</code> procedure returns a quaternion representing
+the given axis/angle rotation.  The axis is specified as either a single
+vector quaternion argument <em class="replaceable"><code>axis-vec</code></em>, or as three reals
+<em class="replaceable"><code>axis-x</code></em>, <em class="replaceable"><code>axis-y</code></em>, and <em class="replaceable"><code>axis-z</code></em>.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876536640" class="indexterm"/> <code class="function">rotx</code> <em class="replaceable"><code><em class="replaceable"><code>angle</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876533680" class="indexterm"/> <code class="function">roty</code> <em class="replaceable"><code><em class="replaceable"><code>angle</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876530720" class="indexterm"/> <code class="function">rotz</code> <em class="replaceable"><code><em class="replaceable"><code>angle</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>The procedures <code class="literal">rotx</code>, <code class="literal">roty</code>, and <code class="literal">rotz</code> return
+quaternions representing rotations about the X-, Y-, and Z-axes.
+</p>
+            </blockquote>
+          </div>
+          <h4 id="idm139667876525840">Intrinsic Angle Sets</h4>
+          <p>The intrinsic angle sets represent arbitrary rotations as a sequence of
+three rotations about coordinate frame axes attached to the rotating
+body (i.e. the axes rotate with the body).
+</p>
+          <p>There are twelve possible angle sets which neatly divide into two groups
+of six.  The six with same first and third axes are also known as
+“Euler angles”.  The six with different first and third axes are also
+known as “Tait-Bryan angles”.
+</p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876523744" class="indexterm"/> <code class="function">intrinsic-xyx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876520816" class="indexterm"/> <code class="function">intrinsic-xzx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876517888" class="indexterm"/> <code class="function">intrinsic-yxy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876514960" class="indexterm"/> <code class="function">intrinsic-yzy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876512032" class="indexterm"/> <code class="function">intrinsic-zxz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876509104" class="indexterm"/> <code class="function">intrinsic-zyz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions decompose the rotation represented by <em class="replaceable"><code>q</code></em> into Euler
+angles of the given set (XYX, XZX, YXY, YZY, ZXZ, or ZYZ) and returns
+the three angles as multiple values.  The middle angle will be in the
+range [0,pi].  If it is on the edges of that range (within 1.0E-12 of 0
+or pi), such that the first and third axes are colinear, then the first
+angle will be set to 0.
+</p>
+              <pre class="screen">(intrinsic-zyz (* (rotz 0.3) (roty 0.8) (rotz -0.6))) ⇒ 0.3000000000000001 0.7999999999999999 -0.5999999999999999
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876504000" class="indexterm"/> <code class="function">euler-xyx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876501584" class="indexterm"/> <code class="function">euler-xzx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876499168" class="indexterm"/> <code class="function">euler-yxy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876496752" class="indexterm"/> <code class="function">euler-yzy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876494336" class="indexterm"/> <code class="function">euler-zxz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876491920" class="indexterm"/> <code class="function">euler-zyz</code></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Aliases for the corresponding <code class="literal">intrinsic-</code> procedures.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876488496" class="indexterm"/> <code class="function">intrinsic-xyz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876485568" class="indexterm"/> <code class="function">intrinsic-xzy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876482640" class="indexterm"/> <code class="function">intrinsic-yxz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876479712" class="indexterm"/> <code class="function">intrinsic-yzx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876476784" class="indexterm"/> <code class="function">intrinsic-zxy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876473856" class="indexterm"/> <code class="function">intrinsic-zyx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions decompose the rotation represented by <em class="replaceable"><code>q</code></em> into
+Tait-Bryan angles of the given set (XYZ, XZY, YXZ, YZX, ZXY, or ZYX) and
+returns the three angles as multiple values.  The middle angle will be
+in the range [-pi/2,pi/2].  If it is on the edges of that range, such
+that the first and third axes are colinear, then the first angle will be
+set to 0.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876469520" class="indexterm"/> <code class="function">tait-bryan-xyz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876467104" class="indexterm"/> <code class="function">tait-bryan-xzy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876464688" class="indexterm"/> <code class="function">tait-bryan-yxz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876462272" class="indexterm"/> <code class="function">tait-bryan-yzx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876459856" class="indexterm"/> <code class="function">tait-bryan-zxy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876457440" class="indexterm"/> <code class="function">tait-bryan-zyx</code></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Aliases for the corresponding <code class="literal">intrinsic-</code> procedures.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876454016" class="indexterm"/> <code class="function">make-intrinsic-xyx</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876449968" class="indexterm"/> <code class="function">make-intrinsic-xzx</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876445920" class="indexterm"/> <code class="function">make-intrinsic-yxy</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876441872" class="indexterm"/> <code class="function">make-intrinsic-yzy</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876437824" class="indexterm"/> <code class="function">make-intrinsic-zxz</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876433776" class="indexterm"/> <code class="function">make-intrinsic-zyz</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions return quaternions representing the given Euler angle
+rotations.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876428992" class="indexterm"/> <code class="function">make-euler-xyx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876426576" class="indexterm"/> <code class="function">make-euler-xzx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876424160" class="indexterm"/> <code class="function">make-euler-yxy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876421744" class="indexterm"/> <code class="function">make-euler-yzy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876419328" class="indexterm"/> <code class="function">make-euler-zxz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876416912" class="indexterm"/> <code class="function">make-euler-zyz</code></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Aliases for the corresponding <code class="literal">make-intrinsic-</code> procedures.
+</p>
+              <pre class="screen">(let-values (((a b c) (euler-xyx (make-euler-xyx 1.0 0.0 2.0))))
+  (list a b c)) ⇒ (0.0 0.0 3.0)
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876412912" class="indexterm"/> <code class="function">make-intrinsic-xyz</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876408864" class="indexterm"/> <code class="function">make-intrinsic-xzy</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876404816" class="indexterm"/> <code class="function">make-intrinsic-yxz</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876400768" class="indexterm"/> <code class="function">make-intrinsic-yzx</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876396720" class="indexterm"/> <code class="function">make-intrinsic-zxy</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876392672" class="indexterm"/> <code class="function">make-intrinsic-zyx</code> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions return quaternions representing the given Tait-Bryan
+angle rotations.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876387888" class="indexterm"/> <code class="function">make-tait-bryan-xyz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876385472" class="indexterm"/> <code class="function">make-tait-bryan-xzy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876383056" class="indexterm"/> <code class="function">make-tait-bryan-yxz</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876380640" class="indexterm"/> <code class="function">make-tait-bryan-yzx</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876378224" class="indexterm"/> <code class="function">make-tait-bryan-zxy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876375808" class="indexterm"/> <code class="function">make-tait-bryan-zyx</code></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Aliases for the corresponding <code class="literal">make-intrinsic-</code> procedures.
+</p>
+            </blockquote>
+          </div>
+          <h4 id="idm139667876372512">Extrinsic Angle Sets</h4>
+          <p>The extrinsic angle sets represent arbitrary rotations as a sequence of
+three rotations about fixed-frame axes (i.e. the axes do not rotate with
+the body).
+</p>
+          <p>There are twelve possible extrinsic angle sets, and each is the dual of
+an intrinsic set.  The extrinsic rotation about axes <code class="literal">A</code>, <code class="literal">B</code>,
+and <code class="literal">C</code> by angles <code class="literal">a</code>, <code class="literal">b</code>, and <code class="literal">c</code> is the same as
+the intrinsic rotation about axes <code class="literal">C</code>, <code class="literal">B</code>, and <code class="literal">A</code> by
+angles <code class="literal">c</code>, <code class="literal">b</code>, and <code class="literal">a</code>, with the order of the three
+axes reversed.
+</p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876365680" class="indexterm"/> <code class="function">extrinsic-xyx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876362752" class="indexterm"/> <code class="function">extrinsic-xyz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876359824" class="indexterm"/> <code class="function">extrinsic-xzx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876356896" class="indexterm"/> <code class="function">extrinsic-zxy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876353968" class="indexterm"/> <code class="function">extrinsic-yxy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876351040" class="indexterm"/> <code class="function">extrinsic-yxz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876348112" class="indexterm"/> <code class="function">extrinsic-yzx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876345184" class="indexterm"/> <code class="function">extrinsic-yzy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876342256" class="indexterm"/> <code class="function">extrinsic-zxy</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876339328" class="indexterm"/> <code class="function">extrinsic-zxz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876336400" class="indexterm"/> <code class="function">extrinsic-zyx</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876333472" class="indexterm"/> <code class="function">extrinsic-zyz</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions decompose the rotation represented by <em class="replaceable"><code>q</code></em> into
+extrinsic angles of the given set and returns the three angles as
+multiple values.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876329344" class="indexterm"/> <code class="function">make-extrinsic-xyx</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876325296" class="indexterm"/> <code class="function">make-extrinsic-xyz</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876321248" class="indexterm"/> <code class="function">make-extrinsic-xzx</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876317200" class="indexterm"/> <code class="function">make-extrinsic-xzy</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876313152" class="indexterm"/> <code class="function">make-extrinsic-yxy</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876309104" class="indexterm"/> <code class="function">make-extrinsic-yxz</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876305056" class="indexterm"/> <code class="function">make-extrinsic-yzx</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876301008" class="indexterm"/> <code class="function">make-extrinsic-yzy</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876296960" class="indexterm"/> <code class="function">make-extrinsic-zxy</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876292912" class="indexterm"/> <code class="function">make-extrinsic-zxz</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876288864" class="indexterm"/> <code class="function">make-extrinsic-zyx</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876284816" class="indexterm"/> <code class="function">make-extrinsic-zyz</code> <em class="replaceable"><code><em class="replaceable"><code>gamma</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>beta</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>alpha</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>These functions return quaternions representing the given extrinsic
+angle rotations.
+</p>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876280032" class="indexterm"/> <code class="function">rpy</code></p>
+          <p class="synopsis" kind="Alias"><span class="kind">Alias</span><span class="ignore">: </span><a id="idm139667876277680" class="indexterm"/> <code class="function">make-rpy</code></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Aliases for <code class="literal">extrinsic-xyz</code> and <code class="literal">make-extrinsic-xyz</code>.
+</p>
+              <pre class="screen">(let ((r (make-rpy 0.12 -0.23 0.34)))
+  (let-values (((a b c) (tait-bryan-zyx r)))
+    (list a b c))) ⇒ (0.3400000000000001 -0.2300000000000001 0.12000000000000002)
+</pre>
+            </blockquote>
+          </div>
+        </section>
+        <section class="sect3" title="Rotation Operations" epub:type="division" id="idm139667876273248">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Rotation Operations</h4>
+              </div>
+            </div>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876272176" class="indexterm"/> <code class="function">rotate-vector</code> <em class="replaceable"><code><em class="replaceable"><code>rq</code></em></code></em> <em class="replaceable"><code><em class="replaceable"><code>vq</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>Applies the rotation represented by quaternion <em class="replaceable"><code>rq</code></em> to the vector
+represented by vector quaternion <em class="replaceable"><code>vq</code></em>, and returns the rotated
+vector.  This is equivalent to <code class="literal">(* rq vq (conjugate rq))</code> for
+normalized <em class="replaceable"><code>rq</code></em>.
+</p>
+              <pre class="screen">(rotate-vector +k +2i)                      ⇒ -2i
+(rotate-vector 1/2+1/2i+1/2j+1/2k +i+2j+3k) ⇒ +3.0i+1.0j+2.0k
+</pre>
+            </blockquote>
+          </div>
+          <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876265664" class="indexterm"/> <code class="function">make-rotation-procedure</code> <em class="replaceable"><code><em class="replaceable"><code>rq</code></em></code></em></p>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p>A partial application of <code class="literal">rotate-vector</code>.  Returns a
+single-argument procedure which will take a vector quaternion argument
+and rotate it by <em class="replaceable"><code>rq</code></em>.  The returned procedure closes over both
+<em class="replaceable"><code>rq</code></em> and its conjugate, so this will likely be more efficient than
+<code class="literal">rotate-vector</code> at rotating many vectors by the same rotation.
+</p>
+            </blockquote>
+          </div>
+        </section>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Quaternions.xhtml#idm139667876669472">The <code class="literal">(kawa quaternions)</code> module</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Quaternions.xhtml#idm139667876583328">The <code class="literal">(kawa rotations)</code> module</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Numbers.xhtml">Quantities and Numbers</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Numerical-input-and-output.xhtml">Numerical input and output</a></p>
+        <p>
+        Next: <a accesskey="n" href="Quantities.xhtml">Quantities and Units</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

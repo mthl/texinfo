@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Numerical input and output</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Arithmetic-operations.xhtml" title="Arithmetic operations"/>
+    <link rel="next" href="Quaternions.xhtml" title="Quaternions"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Numerical input and output" epub:type="subchapter" id="Numerical-input-and-output">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Numerical input and output</h2>
+          </div>
+        </div>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876803392" class="indexterm"/> <code class="function">number-&gt;string</code> <em class="replaceable"><code>z</code></em> [<em class="replaceable"><code>radix</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The procedure <code class="literal">number-&gt;string</code> takes a number and a
+radix and returns as a string an external representation
+of the given number in the given radix such that
+</p>
+          <pre class="screen">(let ((number number)
+      (radix radix))
+  (eqv? number
+        (string-&gt;number (number-&gt;string number radix)
+                        radix)))
+</pre>
+          <p>is true. It is an error if no possible result makes this expression true.
+</p>
+          <p>If present, <em class="replaceable"><code>radix</code></em> must be an exact integer
+in the range 2 to 36, inclusive.
+If omitted, <em class="replaceable"><code>radix</code></em> defaults to 10.
+</p>
+          <p>If <em class="replaceable"><code>z</code></em> is inexact, the <em class="replaceable"><code>radix</code></em> is 10, and the above expression
+can be satisfied by a result that contains a decimal point,
+then the result contains a decimal point and is expressed
+using the minimum number of digits (exclusive of exponent
+and trailing zeroes) needed to make the above expression;
+otherwise the format of the result is unspecified.
+</p>
+          <p>The result returned by <code class="literal">number-&gt;string</code> never contains an
+explicit radix prefix.
+</p>
+          <p><span class="emphasis"><em>Note:</em></span>
+The error case can occur only when <em class="replaceable"><code>z</code></em> is not a complex
+number or is a complex number with a non-rational real or
+imaginary part.
+</p>
+          <p><span class="emphasis"><em>Rationale:</em></span> If <em class="replaceable"><code>z</code></em> is an inexact number and the <em class="replaceable"><code>radix</code></em> is 10,
+then the above expression is normally satisfied by a result containing
+a decimal point. The unspecified case allows for infinities, NaNs,
+and unusual representations.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876790832" class="indexterm"/> <code class="function">string-&gt;number</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>radix</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns a number of the maximally precise representation
+expressed by the given <em class="replaceable"><code>string</code></em>. It is an error if <em class="replaceable"><code>radix</code></em> is not
+an exact integer in the range 2 to 26, inclusive.
+</p>
+          <p>If supplied, <em class="replaceable"><code>radix</code></em> is a default radix that will be overridden
+ if an explicit radix prefix is present in the string (e.g.
+<code class="literal">"#o177"</code>). If <em class="replaceable"><code>radix</code></em> is not supplied, then the default <em class="replaceable"><code>radix</code></em>
+is 10. If <em class="replaceable"><code>string</code></em> is not a syntactically valid notation for a
+number, or would result in a number that the implementation cannot represent,
+then <code class="literal">string-&gt;number</code> returns <code class="literal">#f</code>.
+An error is never signaled due to the content of <em class="replaceable"><code>string</code></em>.
+</p>
+          <pre class="screen">(string-&gt;number "100")      ⇒  100
+(string-&gt;number "100" 16)   ⇒  256
+(string-&gt;number "1e2")      ⇒  100.0
+(string-&gt;number "#x100" 10) ⇒  256
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Numbers.xhtml">Quantities and Numbers</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Arithmetic-operations.xhtml">Arithmetic operations</a></p>
+        <p>
+        Next: <a accesskey="n" href="Quaternions.xhtml">Quaternions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

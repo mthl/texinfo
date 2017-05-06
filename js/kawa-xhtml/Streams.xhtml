@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Streams - lazy lists</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Arrays.xhtml" title="Multi-dimensional Arrays"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Streams - lazy lists" epub:type="subchapter" id="Streams">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Streams - lazy lists</h2>
+          </div>
+        </div>
+      </div>
+      <p>Streams, sometimes called lazy lists, are a sequential data structure
+containing elements computed only on demand. A stream is either null
+or is a pair with a stream in its cdr. Since elements of a stream are
+computed only when accessed, streams can be infinite. Once computed,
+the value of a stream element is cached in case it is needed again.
+</p>
+      <p><span class="emphasis"><em>Note:</em></span> These are not the same as Java 8 streams.
+</p>
+      <pre class="screen">(require 'srfi-41)
+(define fibs
+  (stream-cons 1
+    (stream-cons 1
+      (stream-map +
+        fibs
+        (stream-cdr fibs)))))
+(stream-&gt;list 8 fibs) ⇒ (1 1 2 3 5 8 13 21)
+</pre>
+      <p>See the <a class="ulink" href="http://srfi.schemers.org/srfi-41/srfi-41.html" target="_top">SRFI 41 specification</a> for details.
+</p>
+      <p>The Kawa implementations builds on <a class="link" href="Lazy-evaluation.xhtml" title="Lazy evaluation">promises</a>.
+The <code class="literal">stream-null</code> value is a promise that evaluates to the empty list.
+The result of <code class="literal">stream-cons</code> is an eager immutable pair whose
+<code class="literal">car</code> and <code class="literal">cdr</code> properties return promises.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Data-structures.xhtml">Data structures</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Ranges.xhtml">Ranges</a></p>
+        <p>
+        Next: <a accesskey="n" href="Arrays.xhtml">Multi-dimensional Arrays</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

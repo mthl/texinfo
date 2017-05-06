@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Programs and Bodies</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Colon-notation.xhtml" title="Property access using colon notation"/>
+    <link rel="next" href="Syntax-and-conditional-compilation.xhtml" title="Syntax and conditional compilation"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Programs and Bodies" epub:type="subchapter" id="Bodies">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Programs and Bodies</h2>
+          </div>
+        </div>
+      </div>
+      <span id="program-units"/>
+      <h3 id="idm139667879138384">Program units</h3>
+      <p>A <em class="replaceable"><code>program-unit</code></em> consists of a sequence of definitions and expressions.
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667879136688" class="indexterm"/><span id="meta-program-unit"/><em class="replaceable"><code>program-unit</code></em> <code class="literal">::=</code> <a class="link" href="Module-classes.xhtml#meta-library-definition"><em class="replaceable"><code>library-definition</code></em></a><sup>+</sup> [<a class="link" href="Bodies.xhtml#meta-statements"><em class="replaceable"><code>statements</code></em></a>]<br/>
+  | <a class="link" href="Bodies.xhtml#meta-statements"><em class="replaceable"><code>statements</code></em></a><br/>
+<a id="idm139667879131968" class="indexterm"/><span id="meta-statements"/><em class="replaceable"><code>statements</code></em> <code class="literal">::=</code> <a class="link" href="Bodies.xhtml#meta-statement"><em class="replaceable"><code>statement</code></em></a><sup>+</sup><br/>
+<a id="idm139667879128912" class="indexterm"/><span id="meta-statement"/><em class="replaceable"><code>statement</code></em> <code class="literal">::=</code> <em class="replaceable"><code>definition</code></em> | <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a> | <code class="literal"><span class="bold"><strong>(begin</strong></span></code> <a class="link" href="Bodies.xhtml#meta-statement"><em class="replaceable"><code>statement</code></em></a><sup>*</sup> <code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+      </div>
+      <p>Typically a <em class="replaceable"><code>program-unit</code></em> corresponds to a single source file
+(i.e.a named file in the file system).  Evaluating a <em class="replaceable"><code>program-unit</code></em>
+first requires the Kawa processor to analyze
+the whole <em class="replaceable"><code>program-unit</code></em> to determine which names are defined by the
+definitions, and then evaluates each <em class="replaceable"><code>statement</code></em> in order in the context
+of the defined names.  The value of an <em class="replaceable"><code>expression</code></em> is normally
+discarded, but may be printed out instead, depending on the evaluating context.
+</p>
+      <p>The read-eval-print-loop (REPL) reads one or more lines until it gets
+a valid <em class="replaceable"><code>program-unit</code></em>, and evaluates it as above, except that the
+values of expressions are printed to the console (as if using the
+<code class="literal">display</code> function).  Then the REPL reads and evaluates
+another <em class="replaceable"><code>program-unit</code></em>, and so on. A definition in an earlier
+<em class="replaceable"><code>program-unit</code></em> is remembered and is visible in a later <em class="replaceable"><code>program-unit</code></em>
+unles it is overridden.
+</p>
+      <a id="idm139667879116992" class="indexterm"/>
+      <a id="idm139667879116208" class="indexterm"/>
+      <p>A comment in the first 2 lines of a source file may contain an encoding
+specification.  This can be used to tell the reader what kind of character
+set encoding is used for the file.  This only works for a character
+encoding that is compatible with ASCII (in the sense that if the
+high-order bit is clear then it’s an ASCII character),
+and that are no non-ASCI characters in the lines upto and including
+the encoding specification.
+A basic example is:
+</p>
+      <pre class="screen">;; -*- coding: utf-8 -*-
+</pre>
+      <p>In general any string that matches the following regular expression works:
+</p>
+      <pre class="screen">coding[:=]\s*([-a-zA-Z0-9]+)
+</pre>
+      <h3 id="idm139667879113440">Libraries</h3>
+      <span id="implicit-library"/>
+      <p>A <em class="replaceable"><code>program-unit</code></em> may contain <em class="replaceable"><code>library-definitions</code></em>.
+In addition, any <em class="replaceable"><code>statements</code></em> in <em class="replaceable"><code>program-unit</code></em> comprise
+an <em class="firstterm">implicit library</em>, in that it can be given a name, and referenced
+from other libraries.
+Certain names defined in the <em class="replaceable"><code>program-unit</code></em> can be exported,
+and then they can be imported by other libraries.
+For more information see <a class="link" href="Module-classes.xhtml" title="Modules and how they are compiled to classes">Module classes</a>.
+</p>
+      <p>It is recommended but not required that:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>There should be at most one <em class="replaceable"><code>library-definition</code></em> in a <em class="replaceable"><code>program-unit</code></em>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <em class="replaceable"><code>library-name</code></em> of the <em class="replaceable"><code>library-definition</code></em> should
+match the name of the source file.  For example:
+</p>
+            <pre class="screen">(define-library (foo bar) ...)
+</pre>
+            <p>should be in a file named <code class="literal">foo/bar.scm</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If there is a <em class="replaceable"><code>library-definition</code></em>, there should
+be no extra <em class="replaceable"><code>statements</code></em> - i.e no implicit library definition.
+(It is disallowed to <code class="literal">export</code> any definitions from the
+implicit library if there is also a <em class="replaceable"><code>library-definition</code></em>.)
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>Following these recommendations makes it easier to locate
+and organize libraries.
+However, having multiple libraries in a single <em class="replaceable"><code>program-unit</code></em>
+is occasionally useful for source distribution and for testing.
+</p>
+      <h3 id="idm139667879100992">Bodies</h3>
+      <p>The <em class="replaceable"><code>body</code></em> of a <code class="literal">lambda</code>, <code class="literal">let</code>, <code class="literal">let*</code>,
+<code class="literal">let-values</code>, <code class="literal">let*-values</code>, <code class="literal">letrec</code>, or <code class="literal">letrec*</code>
+expression, or that of a definition with a body consists of zero or more
+definitions or expressions followed by a final expression.
+(Standard Scheme requires that all definitions precede all expressions.)
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667879096176" class="indexterm"/><span id="meta-body"/><em class="replaceable"><code>body</code></em> <code class="literal">::=</code> <a class="link" href="Bodies.xhtml#meta-statement"><em class="replaceable"><code>statement</code></em></a><sup>*</sup><br/>
+</p>
+      </div>
+      <p>Each identifier defined by a definition is local to the <em class="replaceable"><code>body</code></em>.
+That is, the identifier is bound, and the region of the binding is the
+entire <em class="replaceable"><code>body</code></em>.
+Example:
+</p>
+      <pre class="screen">(let ((x 5))
+  (define foo (lambda (y) (bar x y)))
+  (define bar (lambda (a b) (+ (* a b) a)))
+  (foo (+ x 3)))
+⇒ 45
+</pre>
+      <p>When <code class="literal">begin</code>, <code class="literal">let-syntax</code>, or <code class="literal">letrec-syntax</code> forms
+occur in a body prior to the first expression, they are spliced into the
+body.  Some or all of the body, including portions wrapped in
+<code class="literal">begin</code>, <code class="literal">let-syntax</code>, or <code class="literal">letrec-syntax</code> forms, may be
+specified by a macro use.
+</p>
+      <p>An expanded <em class="replaceable"><code>body</code></em> containing variable definitions can be
+converted into an equivalent <code class="literal">letrec*</code> expression.
+(If there is a definition following expressions you may need to
+convert the expressions to dummy definitions.)     For example,
+the <code class="literal">let</code> expression in the above example is equivalent to
+</p>
+      <pre class="screen">(let ((x 5))
+  (letrec* ((foo (lambda (y) (bar x y)))
+            (bar (lambda (a b) (+ (* a b) a))))
+    (foo (+ x 3))))
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Colon-notation.xhtml">Property access using colon notation</a></p>
+        <p>
+        Next: <a accesskey="n" href="Syntax-and-conditional-compilation.xhtml">Syntax and conditional compilation</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

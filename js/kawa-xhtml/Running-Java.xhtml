@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Getting and running Java</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Installation.xhtml" title="Getting and installing Kawa"/>
+    <link rel="next" href="Binary-distribution.xhtml" title="Installing and using the binary distribution"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Getting and running Java" epub:type="subchapter" id="Running-Java">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Getting and running Java</h2>
+          </div>
+        </div>
+      </div>
+      <p>Before installing Kawa, you will need a working Java system.
+The released Kawa jar file assumes Java 7 or newer.
+You need to build Kawa from source if you have Java 5, Java 6,
+or are targeting Android.
+(Older versions of Kawa have been reported to
+work with JDK from 1.1, Kaffe, Symantec Cafe, J++, and GCJ,
+but these are no longer supported.)
+</p>
+      <p>The discussion below assumes you are using the Java Developer’s Kit
+(JDK) from Oracle.  You can download free copies of
+<a class="ulink" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_top">JDK 8</a> for various platforms.
+</p>
+      <p>If you want to run Kawa on a Macintosh, see
+<a class="ulink" href="http://rdsathene.org/scheme/mackawa.html" target="_top">http://rdsathene.org/scheme/mackawa.html</a>.
+</p>
+      <p>The program <code class="literal">java</code> is the Java interpreter.
+The program <code class="literal">javac</code> is the Java compiler,
+and is needed if you want to compile the source release yourself.
+Both programs must be in your <code class="literal">PATH</code>.
+If you have the JDK in directory <code class="literal">$JAVA_HOME</code>,
+and you are using a Bourne-shell compatible shell
+(/bin/sh, ksh, bash, and some others) you can set <code class="literal">PATH</code> thus:
+</p>
+      <pre class="screen">PATH=$JAVA_HOME/bin:$PATH
+export PATH
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Installation.xhtml">Getting and installing Kawa</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Getting-Kawa.xhtml">Getting Kawa</a></p>
+        <p>
+        Next: <a accesskey="n" href="Binary-distribution.xhtml">Installing and using the binary distribution</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

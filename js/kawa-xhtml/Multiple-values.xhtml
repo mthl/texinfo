@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Multiple values</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Mapping-functions.xhtml" title="Mapping functions"/>
+    <link rel="next" href="Symbols-and-namespaces.xhtml" title="Symbols and namespaces"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Multiple values" epub:type="subchapter" id="Multiple-values">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Multiple values</h2>
+          </div>
+        </div>
+      </div>
+      <p>The multiple-value feature was added in R5RS.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877770480" class="indexterm"/> <code class="function">values</code> <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Delivers all of its arguments to its continuation.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877766688" class="indexterm"/> <code class="function">call-with-values</code> <em class="replaceable"><code>producer</code></em> <em class="replaceable"><code>consumer</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Calls its <em class="replaceable"><code>producer</code></em> argument with no arguments and a
+continuation that, when passed some values, calls the
+<em class="replaceable"><code>consumer</code></em> procedure with those values as arguments.
+</p>
+          <pre class="screen">(call-with-values (lambda () (values 4 5))
+                  (lambda (a b) b))
+                         ⇒ 5
+
+(call-with-values * -)   ⇒ -1
+</pre>
+          <p><span class="emphasis"><em>Performance note:</em></span> If either the <em class="replaceable"><code>producer</code></em> or <em class="replaceable"><code>consumer</code></em> is a
+fixed-arity lambda expression, it is inlined.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877759648" class="indexterm"/> <code class="function">define-values</code> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-formals"><em class="replaceable"><code>formals</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>It is an error if a variable appears more than once in the
+set of <em class="replaceable"><code>formals</code></em>.
+</p>
+          <p>The <em class="replaceable"><code>expression</code></em> is evaluated, and the <em class="replaceable"><code>formals</code></em>
+are bound to the return values in the same way that the <em class="replaceable"><code>formals</code></em> in
+a <code class="literal">lambda</code> expression are matched to the arguments in a procedure call.
+</p>
+          <pre class="screen">(define-values (x y) (integer-sqrt 17))
+(list x y)    ⇒ (4 1)
+(let ()
+  (define-values (x y) (values 1 2))
+  (+ x y))
+              ⇒  3
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877751248" class="indexterm"/> <code class="function">let-values</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-formals"><em class="replaceable"><code>formals</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Each <em class="replaceable"><code>formals</code></em> should be a formal arguments list, as for a <code class="literal">lambda</code>.
+</p>
+          <p>The <em class="replaceable"><code>expression</code></em>s are evaluated in the current environment, the
+variables of the <em class="replaceable"><code>formals</code></em> are bound to fresh locations, the return
+values of the <em class="replaceable"><code>expression</code></em>s are stored in the variables, the
+<em class="replaceable"><code>body</code></em> is evaluated in the extended environment, and the values of
+the last expression of <em class="replaceable"><code>body</code></em> are returned. The <em class="replaceable"><code>body</code></em> is a
+"tail body", cf section 3.5 of the R5RS.
+</p>
+          <p>The matching of each <em class="replaceable"><code>formals</code></em> to values is as for the matching of
+<em class="replaceable"><code>formals</code></em> to arguments in a <code class="literal">lambda</code> expression, and it is an
+error for an <em class="replaceable"><code>expression</code></em> to return a number of values that does not
+match its corresponding <em class="replaceable"><code>formals</code></em>.
+</p>
+          <pre class="screen">(let-values (((a b . c) (values 1 2 3 4)))
+  (list a b c))            ⇒ (1 2 (3 4)) 
+
+(let ((a 'a) (b 'b) (x 'x) (y 'y))
+  (let-values (((a b) (values x y))
+               ((x y) (values a b)))
+    (list a b x y)))       ⇒ (x y a b)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877735328" class="indexterm"/> <code class="function">let*-values</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-formals"><em class="replaceable"><code>formals</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Each <em class="replaceable"><code>formals</code></em> should be a formal arguments list as for a
+<code class="literal">lambda</code> expression.
+</p>
+          <p><code class="literal">let*-values</code> is similar to <code class="literal">let-values</code>, but the bindings are
+performed sequentially from left to right, and the region of a binding
+indicated by (<em class="replaceable"><code>formals</code></em> <em class="replaceable"><code>expression</code></em>) is that part of the
+<code class="literal">let*-values</code> expression to the right of the binding. Thus the
+second binding is done in an environment in which the first binding is
+visible, and so on.
+</p>
+          <pre class="screen">(let ((a 'a) (b 'b) (x 'x) (y 'y))
+  (let*-values (((a b) (values x y))
+                ((x y) (values a b)))
+    (list a b x y)))       ⇒ (x y x y)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877722880" class="indexterm"/> <code class="function">receive</code> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-formals"><em class="replaceable"><code>formals</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This convenience
+form (from <a class="ulink" href="http://srfi.schemers.org/srfi-8/srfi-8.html" target="_top">SRFI-8</a>)
+is equivalent to:
+</p>
+          <pre class="screen">(let-values ((<em class="replaceable"><code>formals</code></em> <em class="replaceable"><code>expression</code></em>)) <em class="replaceable"><code>body</code></em>)
+</pre>
+          <p>For example:
+</p>
+          <pre class="screen">(receive a (values 1 2 3 4)
+  (reverse a)) ⇒ (4 3 2 1)
+
+(receive (a b . c) (values 1 2 3 4)
+  (list a b c))            ⇒ (1 2 (3 4)) 
+
+(let ((a 'a) (b 'b) (x 'x) (y 'y))
+  (receive (a b) (values x y)
+    (receive (x y) (values a b)
+      (list a b x y))))    ⇒ (x y x y)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877713840" class="indexterm"/> <code class="function">values-append</code> <em class="replaceable"><code>arg1</code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The values resulting from evaluating each argument are appended
+together.
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Control-features.xhtml">Control features</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Mapping-functions.xhtml">Mapping functions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

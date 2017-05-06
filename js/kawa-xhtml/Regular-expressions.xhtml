@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Regular expressions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Unicode.xhtml" title="Unicode character classes and conversions"/>
+    <link rel="next" href="Data-structures.xhtml" title="Data structures"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Regular expressions" epub:type="subchapter" id="Regular-expressions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Regular expressions</h2>
+          </div>
+        </div>
+      </div>
+      <p>Kawa provides <em class="firstterm">regular expressions</em>, which is a convenient
+mechanism for matching a string against a <em class="firstterm">pattern</em>
+and maybe replacing matching parts.
+</p>
+      <p>A regexp is a string that describes a pattern. A regexp matcher tries
+to match this pattern against (a portion of) another string, which we
+will call the text string. The text string is treated as raw text and
+not as a pattern.
+</p>
+      <p>Most of the characters in a regexp pattern are meant to match
+occurrences of themselves in the text string. Thus, the pattern “<code class="literal">abc</code>”
+matches a string that contains the characters “<code class="literal">a</code>”, “<code class="literal">b</code>”,
+“<code class="literal">c</code>” in succession.
+</p>
+      <p>In the regexp pattern, some characters act as <em class="firstterm">metacharacters</em>,
+and some character sequences act as <em class="firstterm">metasequences</em>. That is, they
+specify something other than their literal selves. For example, in the
+pattern “<code class="literal">a.c</code>”, the characters “<code class="literal">a</code>” and “<code class="literal">c</code>” do stand
+for themselves but the metacharacter “<code class="literal">.</code>” can match any character
+(other than newline). Therefore, the pattern “<code class="literal">a.c</code>” matches an
+“<code class="literal">a</code>”, followed by any character, followed by a “<code class="literal">c</code>”.
+</p>
+      <p>If we needed to match the character “<code class="literal">.</code>” itself, we <em class="firstterm">escape</em>
+it, ie, precede it with a backslash “<code class="literal">\</code>”. The character sequence
+“<code class="literal">\.</code>” is thus a metasequence, since it doesn’t match itself but
+rather just “<code class="literal">.</code>”.  So, to match “<code class="literal">a</code>” followed by a literal
+“<code class="literal">.</code>” followed by “<code class="literal">c</code>” we use the regexp pattern
+“<code class="literal">a\.c</code>”.  To write this as a Scheme string literal,
+you need to quote the backslash, so you need to write <code class="literal">"a\\.c"</code>.
+Kawa also allows the literal syntax <code class="literal">#/a\.c/</code>,
+which avoids the need to double the backslashes.
+</p>
+      <p>You can choose between two similar styles of regular expressions.
+The two differ slightly in terms of which characters act as metacharacters,
+and what those metacharacters mean:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Functions starting with <code class="literal">regex-</code> are implemented using
+the <code class="literal">java.util.regex</code> package.
+This is likely to be more efficient, has better Unicode support and
+some other minor extra features, and literal syntax <code class="literal">#/a\.c/</code>
+mentioned above.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Functions starting with <code class="literal">pregexp-</code> are implemented in pure Scheme
+using Dorai Sitaram’s “Portable Regular Expressions for Scheme” library.
+These will be portable to more Scheme implementations, including BRL,
+and is available on older Java versions.
+</p>
+          </li>
+        </ul>
+      </div>
+      <section class="sect2" title="Java regular expressions" epub:type="division" id="idm139667874633760">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Java regular expressions</h3>
+            </div>
+          </div>
+        </div>
+        <p>The syntax for regular expressions is
+<a class="ulink" href="http://java.sun.com/javase/6/docs/api/java/util/regex/Pattern.html" target="_top">documented here</a>.
+</p>
+        <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667874631504" class="indexterm"/> <code class="function">regex</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>A compiled regular expression,
+implemented as <code class="literal">java.util.regex.Pattern</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667874628096" class="indexterm"/> <code class="function">regex</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Given a regular expression pattern (as a string),
+compiles it to a <code class="literal">regex</code> object.
+</p>
+            <pre class="screen">(regex "a\\.c")
+</pre>
+            <p>This compiles into a pattern that matches an
+“<code class="literal">a</code>”, followed by any character, followed by a “<code class="literal">c</code>”.
+</p>
+          </blockquote>
+        </div>
+        <p>The Scheme reader recognizes “<code class="literal">#/</code>” as the start of a
+regular expression <em class="firstterm">pattern literal</em>, which ends with the next
+un-escaped “<code class="literal">/</code>”.
+This has the big advantage that you don’t need to double the backslashes:
+</p>
+        <pre class="screen">#/a\.c/
+</pre>
+        <p>This is equivalent to <code class="literal">(regex "a\\.c")</code>, except it is
+compiled at read-time.
+If you need a literal “<code class="literal">/</code>” in a pattern, just escape it
+with a backslash: “<code class="literal">#/a\/c/</code>” matches a “<code class="literal">a</code>”,
+followed by a “<code class="literal">/</code>”, followed by a “<code class="literal">c</code>”.
+</p>
+        <p>You can add single-letter <span class="emphasis"><em>modifiers</em></span> following the pattern literal.
+The following modifiers are allowed:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">i</code>
+</dt>
+            <dd>
+              <p>The modifier “<code class="literal">i</code>” cause the matching to ignore case.
+For example the following pattern matches “<code class="literal">a</code>” or “<code class="literal">A</code>”.
+</p>
+              <pre class="screen">#/a/i
+</pre>
+            </dd>
+            <dt class="term"><code class="literal">m</code>
+</dt>
+            <dd>
+              <p>Enables “metaline” mode.
+Normally metacharacters “<code class="literal">^</code>” and “<code class="literal">$</code>’
+match at the start end end of the entire input string.
+In metaline mode “<code class="literal">^</code>” and “<code class="literal">$</code>” also
+match just before or after a line terminator.
+</p>
+              <p>Multiline mode can also be enabled by the metasequence “<code class="literal">(?m)</code>”. 
+</p>
+            </dd>
+            <dt class="term"><code class="literal">s</code>
+</dt>
+            <dd>
+              <p>Enable “singleline” (aka “dot-all”) mode.
+In this mode the matacharacter “<code class="literal">.</code> matches any character,
+including a line breaks.
+This mode be enabled by the metasequence “<code class="literal">(?s)</code>”.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>The following functions accept a regex either as
+a pattern string or a compiled <code class="literal">regex</code> pattern.
+I.e. the following are all equivalent:
+</p>
+        <pre class="screen">(regex-match "b\\.c" "ab.cd")
+(regex-match #/b\.c/ "ab.cd")
+(regex-match (regex "b\\.c") "ab.cd")
+(regex-match (java.util.regex.Pattern:compile "b\\.c") "ab.cd")
+</pre>
+        <p>These all evaluate to the list <code class="literal">("b.c")</code>.
+</p>
+        <p>The following functions must be imported by doing one of:
+</p>
+        <pre class="screen">(require 'regex) ;; or
+(import (kawa regex))
+</pre>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874604112" class="indexterm"/> <code class="function">regex-match-positions</code> <em class="replaceable"><code>regex</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The procedure <code class="literal">regex‑match‑position</code> takes pattern and a
+text <em class="replaceable"><code>string</code></em>, and returns a match if the regex matches (some part of)
+the text string.
+</p>
+            <p>Returns <code class="literal">#f</code> if the regexp did not match the string;
+and a list of index pairs if it did match.
+</p>
+            <pre class="screen">(regex-match-positions "brain" "bird") ⇒ #f
+(regex-match-positions "needle" "hay needle stack")
+  ⇒ ((4 . 10))
+</pre>
+            <p>In the second example, the integers 4 and 10 identify the substring
+that was matched. 4 is the starting (inclusive) index and 10 the
+ending (exclusive) index of the matching substring.
+</p>
+            <pre class="screen">(substring "hay needle stack" 4 10) ⇒ "needle"
+</pre>
+            <p>In this case the return list contains only one index
+pair, and that pair represents the entire substring matched by the
+regexp. When we discuss subpatterns later, we will see how a single
+match operation can yield a list of submatches.
+</p>
+            <p><code class="literal">regex‑match‑positions</code> takes optional third and fourth arguments
+that specify the indices of the text string within which the matching
+should take place.
+</p>
+            <pre class="screen">(regex-match-positions "needle"
+  "his hay needle stack -- my hay needle stack -- her hay needle stack"
+  24 43)
+  ⇒ ((31 . 37))
+</pre>
+            <p>Note that the returned indices are still reckoned relative to the full text string.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874593248" class="indexterm"/> <code class="function">regex-match</code> <em class="replaceable"><code>regex</code></em> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The procedure <code class="literal">regex‑match</code> is called like <code class="literal">regex‑match‑positions</code>
+but instead of returning index pairs it returns the matching substrings:
+</p>
+            <pre class="screen">(regex-match "brain" "bird") ⇒ #f
+(regex-match "needle" "hay needle stack")
+  ⇒ ("needle")
+</pre>
+            <p><code class="literal">regex‑match</code> also takes optional third and fourth arguments,
+with the same meaning as does <code class="literal">regex‑match‑positions</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874585856" class="indexterm"/> <code class="function">regex-split</code> <em class="replaceable"><code>regex</code></em> <em class="replaceable"><code>string</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Takes two arguments, a <em class="replaceable"><code>regex</code></em> pattern and a text <em class="replaceable"><code>string</code></em>,
+and returns a list of substrings of the text string,
+where the pattern identifies the delimiter separating the substrings.
+</p>
+            <pre class="screen">(regex-split ":" "/bin:/usr/bin:/usr/bin/X11:/usr/local/bin")
+  ⇒ ("/bin" "/usr/bin" "/usr/bin/X11" "/usr/local/bin")
+
+(regex-split " " "pea soup")
+  ⇒ ("pea" "soup")
+</pre>
+            <p>If the first argument can match an empty string, then the list of all
+the single-character substrings is returned, plus we get
+a empty strings at each end.
+</p>
+            <pre class="screen">(regex-split "" "smithereens")
+  ⇒ ("" "s" "m" "i" "t" "h" "e" "r" "e" "e" "n" "s" "")
+</pre>
+            <p>(Note: This behavior is different from <code class="literal">pregexp-split</code>.)
+</p>
+            <p>To identify one-or-more spaces as the delimiter, take care to use the regexp
+“<code class="literal"> +</code>”, not “<code class="literal"> *</code>”.
+</p>
+            <pre class="screen">(regex-split " +" "split pea     soup")
+  ⇒ ("split" "pea" "soup")
+(regex-split " *" "split pea     soup")
+  ⇒ ("" "s" "p" "l" "i" "t" "" "p" "e" "a" "" "s" "o" "u" "p" "")
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874576544" class="indexterm"/> <code class="function">regex‑replace</code> <em class="replaceable"><code>regex</code></em> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>replacement</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Replaces the matched portion of the text <em class="replaceable"><code>string</code></em> by another a
+<em class="replaceable"><code>replacdement</code></em> string.
+</p>
+            <pre class="screen">(regex-replace "te" "liberte" "ty")
+  ⇒ "liberty"
+</pre>
+            <p>Submatches can be used in the replacement string argument.
+The replacement string can use “<code class="literal">$<em class="replaceable"><code>n</code></em></code>”
+as a <em class="firstterm">backreference</em> to refer back to the <em class="replaceable"><code>n</code></em>th
+submatch, ie, the substring that matched the <em class="replaceable"><code>n</code></em>th
+subpattern.   “<code class="literal">$0</code>” refers to the entire match.
+</p>
+            <pre class="screen">(regex-replace #/_(.+?)_/
+               "the _nina_, the _pinta_, and the _santa maria_"
+		"*$1*"))
+  ⇒ "the *nina*, the _pinta_, and the _santa maria_"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874567392" class="indexterm"/> <code class="function">regex‑replace*</code> <em class="replaceable"><code>regex</code></em> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>replacement</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Replaces all matches in the text <em class="replaceable"><code>string</code></em> by the <em class="replaceable"><code>replacement</code></em> string:
+</p>
+            <pre class="screen">(regex-replace* "te" "liberte egalite fraternite" "ty")
+  ⇒ "liberty egality fratyrnity"
+(regex-replace* #/_(.+?)_/
+                "the _nina_, the _pinta_, and the _santa maria_"
+                "*$1*")
+  ⇒ "the *nina*, the *pinta*, and the *santa maria*"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874561632" class="indexterm"/> <code class="function">regex-quote</code> <em class="replaceable"><code>pattern</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Takes an arbitrary string and returns a pattern string that precisely
+matches it. In particular, characters in the input string that could
+serve as regex metacharacters are escaped as needed.
+</p>
+            <pre class="screen">(regex-quote "cons")
+  ⇒ "\Qcons\E"
+</pre>
+            <p><code class="literal">regex‑quote</code> is useful when building a composite regex
+from a mix of regex strings and verbatim strings.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Portable Scheme regular expressions" epub:type="division" id="idm139667874556928">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Portable Scheme regular expressions</h3>
+            </div>
+          </div>
+        </div>
+        <p>This provides the procedures <code class="literal">pregexp</code>, <code class="literal">pregexp‑match‑positions</code>,
+<code class="literal">pregexp‑match</code>, <code class="literal">pregexp‑split</code>, <code class="literal">pregexp‑replace</code>,
+<code class="literal">pregexp‑replace*</code>, and <code class="literal">pregexp‑quote</code>.
+</p>
+        <p>Before using them, you must require them:
+</p>
+        <pre class="screen">(require 'pregexp)
+</pre>
+        <p>These procedures have the same interface as the corresponding
+<code class="literal">regex-</code> versions, but take slightly different pattern syntax.
+The replace commands use “<code class="literal">\</code>” instead of “<code class="literal">$</code>”
+to indicate substitutions.
+Also, <code class="literal">pregexp‑split</code> behaves differently from
+<code class="literal">regex‑split</code> if the pattern can match an empty string.
+</p>
+        <p>See <a class="ulink" href="http://www.ccs.neu.edu/home/dorai/pregexp/index.html" target="_top">here for details</a>.
+</p>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Regular-expressions.xhtml#idm139667874633760">Java regular expressions</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Regular-expressions.xhtml#idm139667874556928">Portable Scheme regular expressions</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Characters-and-text.xhtml">Characters and text</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Unicode.xhtml">Unicode character classes and conversions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

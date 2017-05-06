@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Defining new classes</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Objects-Classes-and-Modules.xhtml" title="Object, Classes and Modules"/>
+    <link rel="next" href="Anonymous-classes.xhtml" title="Anonymous classes"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Defining new classes" epub:type="subchapter" id="Defining-new-classes">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Defining new classes</h2>
+          </div>
+        </div>
+      </div>
+      <p>Kawa provides various mechanisms for defining new classes.
+The <code class="literal">define-class</code> and <code class="literal">define-simple-class</code> forms
+will usually be the preferred mechanisms.  They have basically
+the same syntax, but have a couple of differences.
+<code class="literal">define-class</code> allows multiple inheritance as well as true nested
+(first-class) class objects.  However, the implementation
+is more complex: code using it is slightly slower, and the mapping to
+Java classes is a little less obvious.   (Each Scheme class is implemented
+as a pair of an interface and an implementation class.)
+A class defined by <code class="literal">define-simple-class</code> is slightly more
+efficient, and it is easier to access it from Java code.
+</p>
+      <p>The syntax of <code class="literal">define-class</code> are mostly compatible with that
+in the Guile and Stk dialects of Scheme.
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871881296" class="indexterm"/> <code class="function">define-class</code> <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-class-name"><em class="replaceable"><code>class-name</code></em></a></code></em> <em class="replaceable"><code><span class="bold"><strong>(</strong></span></code></em><em class="replaceable"><code>supers</code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> (<em class="replaceable"><code><a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a></code></em><em class="replaceable"><code>|</code></em><em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a></code></em>)<em class="replaceable"><code><sup>*</sup></code></em> <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-field-or-method-decl"><em class="replaceable"><code>field-or-method-decl</code></em></a></code></em> <em class="replaceable"><code>...</code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871871952" class="indexterm"/> <code class="function">define-simple-class</code> <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-class-name"><em class="replaceable"><code>class-name</code></em></a></code></em> <em class="replaceable"><code><span class="bold"><strong>(</strong></span></code></em><em class="replaceable"><code>supers</code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> (<em class="replaceable"><code><a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a></code></em><em class="replaceable"><code>|</code></em><em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a></code></em>)<em class="replaceable"><code><sup>*</sup></code></em>  <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-field-or-method-decl"><em class="replaceable"><code>field-or-method-decl</code></em></a></code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Defines a new class named <em class="replaceable"><code>class-name</code></em>.  If <code class="literal">define-simple-class</code> is
+used, creates a normal Java class named <em class="replaceable"><code>class-name</code></em> in the current package.
+(If <em class="replaceable"><code>class-name</code></em> has the form <code class="literal">&lt;xyz&gt;</code> the Java implementation
+type is named <code class="literal">xyz</code>.)  For <code class="literal">define-class</code> the implementation is
+unspecified.  In most cases, the compiler creates a class pair,
+consisting of a Java interface and a Java implementation class.
+</p>
+        </blockquote>
+      </div>
+      <div class="literallayout">
+        <p><a id="idm139667871858704" class="indexterm"/><span id="meta-class-name"/><em class="replaceable"><code>class-name</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+<a id="idm139667871855904" class="indexterm"/><span id="meta-option-pair"/><em class="replaceable"><code>option-pair</code></em> <code class="literal">::=</code> <em class="replaceable"><code>option-keyword</code></em> <em class="replaceable"><code>option-value</code></em><br/>
+<a id="idm139667871853088" class="indexterm"/><span id="meta-field-or-method-decl"/><em class="replaceable"><code>field-or-method-decl</code></em> <code class="literal">::=</code> <a class="link" href="Defining-new-classes.xhtml#meta-field-decl"><em class="replaceable"><code>field-decl</code></em></a> | <a class="link" href="Defining-new-classes.xhtml#meta-method-decl"><em class="replaceable"><code>method-decl</code></em></a><br/>
+</p>
+      </div>
+      <section class="sect2" title="General class properties" epub:type="division" id="idm139667871849328">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">General class properties</h3>
+            </div>
+          </div>
+        </div>
+        <p>The class inherits from the classes and interfaces listed in <em class="replaceable"><code>supers</code></em>.
+This is a list of names of classes that are in scope (perhaps imported
+using <code class="literal">require</code>), or names for existing classes or interfaces
+optionally surrounded by <code class="literal">&lt;&gt;</code>, such as <code class="literal">&lt;gnu.lists.Sequence&gt;</code>.
+If <code class="literal">define-simple-class</code> is used, at most one of these may be
+the name of a normal Java class or classes defined using
+<code class="literal">define-simple-class</code>; the rest must be interfaces or classes
+defined using <code class="literal">define-class</code>.
+If <code class="literal">define-class</code> is used, <span class="emphasis"><em>all</em></span> of the classes listed
+in <em class="replaceable"><code>supers</code></em> should be interfaces or classes defined using
+<code class="literal">define-class</code>.
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal"><span class="bold"><strong>interface:</strong></span></code> <em class="replaceable"><code>make-interface</code></em>
+</dt>
+            <dd>
+              <p>Specifies whether Kawa generates a Java class, interface, or both.
+If <em class="replaceable"><code>make-interface</code></em> is <code class="literal">#t</code>, then a Java interface is generated.
+In that case all the supertypes must be interfaces, and
+all the declared methods must be abstract.
+If <em class="replaceable"><code>make-interface</code></em> is <code class="literal">#f</code>, then a Java class is generated.
+If <code class="literal">interface:</code>  is unspecified, the default is <code class="literal">#f</code>
+for <code class="literal">define-simple-class</code>.  For <code class="literal">define-class</code> the default
+is to generate an interface, and in addition (if needed) a helper
+class that implements the interface.  (In that case any non-abstract methods
+are compiled to static methods.  The methods that implement the interface
+are just wrapper methods that call the real static methods.  This
+allows Kawa to implement true multiple inheritance.)
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>access:</strong></span></code> <em class="replaceable"><code>kind</code></em>
+</dt>
+            <dd>
+              <p>Specifies the Java access permission on the class.
+Can be one of <code class="literal">'public</code> (which is the default in Kawa),
+<code class="literal">'package</code> (which the default "unnamed" permission in Java code),
+<code class="literal">'protected</code>, <code class="literal">'private</code>,
+<code class="literal">'volatile</code>, or <code class="literal">'transient</code>.
+Can also be used to specify <code class="literal">final</code>, <code class="literal">abstract</code>, or <code class="literal">enum</code>, as in Java.
+(You don’t need to explicitly specify the class is <code class="literal">abstract</code>
+if any <em class="replaceable"><code>method-body</code></em> is <code class="literal">#!abstract</code>,
+or you specify <code class="literal">interface: #t</code>.)
+The <em class="replaceable"><code>kind</code></em> can also be a list, as for example:
+</p>
+              <pre class="screen">access: '(protected volatile)
+</pre>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>class-name:</strong></span></code> <code class="literal">"</code><em class="replaceable"><code>cname</code></em><code class="literal">"</code>
+</dt>
+            <dd>
+              <p>Specifies the Java name of the created class.
+The <em class="replaceable"><code>name</code></em> specified after <code class="literal">define-class</code>
+or <code class="literal">define-simple-class</code> is the <span class="emphasis"><em>Scheme name</em></span>,
+i.e. the name of a Scheme variable that is bound to the class.
+The Java name is by default derived from the Scheme name,
+but you can override the default with a <code class="literal">class-name:</code> specifier.
+If the <em class="replaceable"><code>cname</code></em> has no periods, then it is a name in
+the package of the main (module) class.
+If the <em class="replaceable"><code>cname</code></em> starts with a period,
+then you get a class nested within the module class.
+In this case the actual class name is <em class="replaceable"><code>moduleClass</code></em><code class="literal">$</code><em class="replaceable"><code>rname</code></em>,
+where <em class="replaceable"><code>rname</code></em> is <em class="replaceable"><code>cname</code></em> without the initial period.
+To force a class in the top-level (unnamed) package (something
+not recommended) write a period at the end of the <em class="replaceable"><code>cname</code></em>.
+</p>
+            </dd>
+          </dl>
+        </div>
+      </section>
+      <section class="sect2" title="Declaring fields" epub:type="division" id="idm139667871818992">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Declaring fields</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667871817920" class="indexterm"/><span id="meta-field-decl"/><em class="replaceable"><code>field-decl</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-field-name"><em class="replaceable"><code>field-name</code></em></a> (<a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a> | <a class="link" href="Types.xhtml#meta-opt-type-specifier"><em class="replaceable"><code>opt-type-specifier</code></em></a> | <a class="link" href="Defining-new-classes.xhtml#meta-field-option"><em class="replaceable"><code>field-option</code></em></a>)*<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<a id="idm139667871811184" class="indexterm"/><span id="meta-field-name"/><em class="replaceable"><code>field-name</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+<a id="idm139667871808384" class="indexterm"/><span id="meta-field-option"/><em class="replaceable"><code>field-option</code></em> <code class="literal">::=</code> <a class="link" href="Keywords.xhtml#meta-keyword"><em class="replaceable"><code>keyword</code></em></a> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+</p>
+        </div>
+        <p>As a matter of style the following order is suggested, though this not enforced:
+</p>
+        <div class="literallayout">
+          <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-field-name"><em class="replaceable"><code>field-name</code></em></a> <a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a>* <a class="link" href="Types.xhtml#meta-opt-type-specifier"><em class="replaceable"><code>opt-type-specifier</code></em></a> <a class="link" href="Defining-new-classes.xhtml#meta-field-option"><em class="replaceable"><code>field-option</code></em></a>*<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+        </div>
+        <p>Each <em class="replaceable"><code>field-decl</code></em> declares a instance "slot" (field)
+with the given <em class="replaceable"><code>field-name</code></em>. 
+By default it is publicly visible, but you can specify
+a different visiblity with the <code class="literal">access:</code> specifier.
+The following <em class="replaceable"><code>field-option</code></em> <em class="replaceable"><code>keyword</code></em>s are implemented:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal"><span class="bold"><strong>type:</strong></span></code> <a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a>
+</dt>
+            <dd>
+              <p>Specifies that <em class="replaceable"><code>type</code></em> is the type of (the values of) the field.
+Equivalent to ‘<code class="literal">:: <em class="replaceable"><code>type</code></em></code>’.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>allocation:</strong></span></code> <em class="replaceable"><code>kind</code></em>
+</dt>
+            <dd>
+              <p>If <em class="replaceable"><code>kind</code></em> is <code class="literal">'class</code> or <code class="literal">'static</code> a single slot is shared
+between all instances of the class (and its sub-classes).
+Not yet implemented for <code class="literal">define-class</code>,
+only for <code class="literal">define-simple-class</code>.
+In Java terms this is a <code class="literal">static</code> field.
+</p>
+              <p>If <em class="replaceable"><code>kind</code></em> is <code class="literal">'instance</code> then
+each instance has a separate value "slot", and they
+are not shared. In Java terms, this is a non-<code class="literal">static</code> field.
+This is the default.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>access:</strong></span></code> <em class="replaceable"><code>kind</code></em>
+</dt>
+            <dd>
+              <p>Specifies the Java access permission on the field.
+Can be one of <code class="literal">'private</code>, <code class="literal">'protected</code>,
+<code class="literal">'public</code> (which is the default in Kawa),
+or <code class="literal">'package</code> (which the default "unnamed" permission
+in Java code).
+Can also be used to specify <code class="literal">volatile</code>, <code class="literal">transient</code>,
+<code class="literal">enum</code>, or <code class="literal">final</code>, as in Java,
+or a quoted list with these symbols.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>init:</strong></span></code> <em class="replaceable"><code>expr</code></em>
+</dt>
+            <dd>
+              <p>An expression used to initialize the slot.
+The expression is evaluated in a scope that includes the field and
+method names of the current class.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>init-form:</strong></span></code> <em class="replaceable"><code>expr</code></em>
+</dt>
+            <dd>
+              <p>An expression used to initialize the slot.
+The lexical environment of the <em class="replaceable"><code>expr</code></em> is that of the <code class="literal">define-class</code>;
+it does <span class="emphasis"><em>not</em></span> include the field and method names of the current class.
+or <code class="literal">define-simple-class</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>init-value:</strong></span></code> <em class="replaceable"><code>value</code></em>
+</dt>
+            <dd>
+              <p>A value expression used to initialize the slot.
+For now this is synonymous with <em class="replaceable"><code>init-form:</code></em>, but that may change
+(depending on what other implementation do), so to be safe only use
+<code class="literal">init-value:</code> with a literal.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>init-keyword:</strong></span></code> <code class="literal"><em class="replaceable"><code>name</code></em>:</code>
+</dt>
+            <dd>
+              <p>A keyword that that can be used to initialize instance in <code class="literal">make</code> calls.
+For now, this is ignored, and <em class="replaceable"><code>name</code></em> should be the same as the
+field’s <em class="replaceable"><code>field-name</code></em>.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>The <em class="replaceable"><code>field-name</code></em> can be left out.  That indicates a "dummy slot",
+which is useful for initialization not tied to a specific field.
+In Java terms this is an instance or static initializer, i.e., a
+block of code executed when a new instance is created or the class is loaded.
+</p>
+        <p>In this example, <code class="literal">x</code> is the only actual field.  It is first
+initialized to 10, but if <code class="literal">(some-condition)</code> is true
+then its value is doubled.
+</p>
+        <pre class="screen">(define-simple-class &lt;my-class&gt; ()
+  (allocation: 'class
+   init: (perform-actions-when-the-class-is-initizalized))
+  (x init: 10)
+  (init: (if (some-condition) (set! x (* x 2)))))
+</pre>
+      </section>
+      <section class="sect2" title="Declaring methods" epub:type="division" id="idm139667871763344">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Declaring methods</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667871762272" class="indexterm"/><span id="meta-method-decl"/><em class="replaceable"><code>method-decl</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>((</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-method-name"><em class="replaceable"><code>method-name</code></em></a> <a class="link" href="Extended-formals.xhtml#meta-formal-arguments"><em class="replaceable"><code>formal-arguments</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+    <a class="link" href="Defining-new-classes.xhtml#meta-method-option"><em class="replaceable"><code>method-option</code></em></a><sup>*</sup> [<a class="link" href="Defining-new-classes.xhtml#meta-deprecated-return-specifier"><em class="replaceable"><code>deprecated-return-specifier</code></em></a>] <a class="link" href="Defining-new-classes.xhtml#meta-method-body"><em class="replaceable"><code>method-body</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<a id="idm139667871753952" class="indexterm"/><span id="meta-method-name"/><em class="replaceable"><code>method-name</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+<a id="idm139667871751152" class="indexterm"/><span id="meta-method-option"/><em class="replaceable"><code>method-option</code></em> <code class="literal">::=</code> <a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a> | <a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a> | <a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a><br/>
+<a id="idm139667871746720" class="indexterm"/><span id="meta-method-body"/><em class="replaceable"><code>method-body</code></em> <code class="literal">::=</code> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a> | <code class="literal"><span class="bold"><strong>#!abstract</strong></span></code> | <code class="literal"><span class="bold"><strong>#!native</strong></span></code><br/>
+<a id="idm139667871742288" class="indexterm"/><span id="meta-deprecated-return-specifier"/><em class="replaceable"><code>deprecated-return-specifier</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+</p>
+        </div>
+        <p>Each <em class="replaceable"><code>method-decl</code></em> declares a method,
+which is by default public and non-static, and whose name is <em class="replaceable"><code>method-name</code></em>.
+(If <em class="replaceable"><code>method-name</code></em> is not a valid
+Java method name, it is mapped to something reasonable.
+For example <code class="literal">foo-bar?</code> is mapped to <code class="literal">isFooBar</code>.)
+The types of the method arguments can be specified in the
+<em class="replaceable"><code>formal-arguments</code></em>.  The return type can be specified by
+a <em class="replaceable"><code>opt-return-type</code></em>, <em class="replaceable"><code>deprecated-return-specifier</code></em>,
+or is otherwise the type of the <em class="replaceable"><code>body</code></em>.
+Currently, the <em class="replaceable"><code>formal-arguments</code></em> cannot contain optional, rest,
+or keyword parameters.  (The plan is to allow optional parameters,
+implemented using multiple overloaded methods.)
+</p>
+        <p>A <em class="replaceable"><code>method-decl</code></em> in a <code class="literal">define-simple-class</code>
+can have the following <em class="replaceable"><code>option-keyword</code></em>s:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal"><span class="bold"><strong>access:</strong></span></code> <em class="replaceable"><code>kind</code></em>
+</dt>
+            <dd>
+              <p>Specifies the Java access permission on the method.
+Can be one of <code class="literal">'private</code>, <code class="literal">'protected</code>,
+<code class="literal">'public</code>, or <code class="literal">'package</code>.
+Can also be <code class="literal">'synchronized</code>, <code class="literal">'final</code>, <code class="literal">'strictfp</code>,
+or a quoted list.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>allocation:</strong></span></code> <em class="replaceable"><code>kind</code></em>
+</dt>
+            <dd>
+              <p>If <em class="replaceable"><code>kind</code></em> is <code class="literal">'class</code> or <code class="literal">'static</code> creates a static method.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>throws:</strong></span></code> ( <em class="replaceable"><code>exception-class-name</code></em> ... )
+</dt>
+            <dd>
+              <p>Specifies a list of checked exception that the method may throw.
+Equivalent to a <code class="literal">throws</code> specification in Java code.
+For example:
+</p>
+              <pre class="screen">(define-simple-class T
+  (prefix)
+  ((lookup name) throws: (java.io.FileNotFoundException)
+   (make java.io.FileReader (string-append prefix name))))
+</pre>
+            </dd>
+          </dl>
+        </div>
+        <p>The scope of the <em class="replaceable"><code>body</code></em> of a method includes the <em class="replaceable"><code>field-decl</code></em>s
+and <em class="replaceable"><code>method-decl</code></em>s of the class, including those inherited from
+superclasses and implemented interfaces.
+</p>
+        <p>If the <em class="replaceable"><code>method-body</code></em> is the special form <code class="literal">#!abstract</code>,
+then the method is abstract.  This means the method must
+be overridden in a subclass, and you’re not allowed to
+create an instance of the enclosing class.
+</p>
+        <pre class="screen">(define-simple-class Searchable () interface: #t
+  ((search value) :: boolean #!abstract))
+</pre>
+        <p>If the <em class="replaceable"><code>method-body</code></em> is the special form <code class="literal">#!native</code>,
+then the method is native, implemented using <a class="ulink" href="http://en.wikipedia.org/wiki/Java_Native_Interface" target="_top">JNI</a>.
+</p>
+        <p>The special <em class="replaceable"><code>method-name</code></em> ‘<code class="literal">*init*</code>’ can be used to name
+a non-default constructor (only if <em class="replaceable"><code>make-interface</code></em> discussed above
+is <code class="literal">#f</code>).
+It can be used to initialize a freshly-allocated instance
+using passed-in parameters.
+You can call a superclass or a sibling constructor using
+the <code class="literal">invoke-special</code> special function.
+(This is general but admittedly a bit verbose; a more compact
+form may be added in the future.)
+See the example below.
+</p>
+      </section>
+      <section class="sect2" title="Example" epub:type="division" id="idm139667871712176">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Example</h3>
+            </div>
+          </div>
+        </div>
+        <p>In the following example we define a simple class <code class="literal">2d-vector</code>
+and a class <code class="literal">3d-vector</code> that extends it.  (This is for illustration
+only - defining 3-dimensional points as an extension
+of 2-dimensional points does not really make sense.)
+</p>
+        <pre class="screen">(define-simple-class 2d-vector ()
+  (x ::double init-keyword: x:)
+  ;; Alternative type-specification syntax.
+  (y type: double init-keyword: y:)
+  (zero-2d :: 2d-vector allocation: 'static
+   init-value: (2d-vector 0))
+  ;; An object initializer (constructor) method.
+  ((*init* (x0 ::double) (y0 ::double))
+   (set! x x0)
+   (set! y y0))
+  ((*init* (xy0 ::double))
+   ;; Call above 2-argument constructor.
+   (invoke-special 2d-vector (this) '*init* xy0 xy0))
+  ;; Need a default constructor as well.
+  ((*init*) #!void)
+  ((add (other ::2d-vector)) ::2d-vector
+   ;; Kawa compiles this using primitive Java types!
+   (2d-vector
+     x: (+ x other:x)
+     y: (+ y other:y)))
+  ((scale (factor ::double)) ::2d-vector
+   (2d-vector x: (* factor x) y: (* factor y))))
+
+(define-simple-class 3d-vector (2d-vector)
+  (z type: double init-value: 0.0 init-keyword: z:)
+  ;; A constructor which calls the superclass constructor.
+  ((*init* (x0 ::double) (y0 ::double) (z0 ::double))
+   (invoke-special 2d-vector (this) '*init* x0 y0)
+   (set! z z0))
+  ;; Need a default constructor.
+  ((*init*) #!void)
+  ((scale (factor ::double)) ::2d-vector
+   ;; Note we cannot override the return type to 3d-vector
+   ;; because Kawa doesn't yet support covariant return types.
+   (3d-vector
+     x: (* factor x)
+     y: (* factor (this):y) ;; Alternative syntax.
+     z: (* factor z))))
+</pre>
+        <p>Note we define both explicit non-default constructor methods,
+and we associate fields with keywords, so they can be named
+when allocating an object.  Using keywords requires a default constructor,
+and since having non-default constructors suppresses
+the implicit default constructor we have to explicitly define it.
+Using both styles of constructors is rather redundant, though.
+</p>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Defining-new-classes.xhtml#idm139667871849328">General class properties</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Defining-new-classes.xhtml#idm139667871818992">Declaring fields</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Defining-new-classes.xhtml#idm139667871763344">Declaring methods</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Defining-new-classes.xhtml#idm139667871712176">Example</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Next: <a accesskey="n" href="Anonymous-classes.xhtml">Anonymous classes</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

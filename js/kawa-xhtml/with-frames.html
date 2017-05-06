@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+  <head>
+    <title>Kawa manual</title>
+    <link rel="up" href="../index.html">
+    <link rel="top" href="../../index.html">
+<script type="text/javascript">
+var sliderBgcolor = "#60ECEC";
+function setHash(pathname) {
+    var contextLength = location.pathname.indexOf("with-frames");
+    if (contextLength <= pathname.length)
+        pathname = pathname.substring(contextLength);
+    history.replaceState(null, null, "#"+pathname);
+};
+function framesetLoaded() {
+    var hash=top.location.hash;
+    var main=top.main;
+    if (hash && main) {
+        // FUTURE: load specified file into main frame
+    }
+}
+function framesetUnloaded() {
+    var request = new XMLHttpRequest();
+    request.open("GET","(WINDOW-CLOSED)");
+    request.send(null);
+}
+</script>
+  </head>
+  <frameset cols="280,*" onload="top.framesetLoaded()" onunload="framesetUnloaded()">
+    <frame name="slider" src="ToC.xhtml">
+    <frame name="main" src="index.html">
+  </frameset>
+</html>

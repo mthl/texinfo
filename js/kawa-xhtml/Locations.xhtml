@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Locations</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Eval-and-Environments.xhtml" title="Eval and Environments"/>
+    <link rel="next" href="Parameter-objects.xhtml" title="Parameter objects"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Locations" epub:type="subchapter" id="Locations">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Locations</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">location</em> is a place where a value can be stored.
+An <em class="firstterm">lvalue</em> is an expression that refers to a location.
+(The name "lvalue" refers to the fact that the left operand
+of <code class="literal">set!</code> is an lvalue.)
+The only kind of lvalue in standard Scheme is a <em class="firstterm">variable</em>.
+Kawa also allows <em class="firstterm">computed lvalues</em>.  These are procedure
+calls used in "lvalue context", such as the left operand of <code class="literal">set!</code>.
+</p>
+      <p>You can only use procedures that have an associated <em class="firstterm">setter</em>.
+In that case, <code class="literal">(set! (f arg ...) value)</code>
+is equivalent to <code class="literal">((setter f) arg ... value)</code>
+Currently, only a few procedures have associated <code class="literal">setter</code>s,
+and only builtin procedures written in Java can have <code class="literal">setter</code>s.
+</p>
+      <p>For example:
+</p>
+      <pre class="screen">(set! (car x) 10)
+</pre>
+      <p>is equivalent to:
+</p>
+      <pre class="screen">((setter car) x 10)
+</pre>
+      <p>which is equivalent to:
+</p>
+      <pre class="screen">(set-car! x 10)
+</pre>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873128672" class="indexterm"/> <code class="function">setter</code> <em class="replaceable"><code>procedure</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Gets the "setter procedure" associated with a "getter procedure".
+Equivalent to <code class="literal">(procedure-property <em class="replaceable"><code>procedure</code></em> 'setter)</code>.
+By convention, a setter procedure takes the same parameters as
+the "getter" procedure, plus an extra parameter that is the
+new value to be stored in the location specified by the parameters.
+The expectation is that following
+<code class="literal">((setter <em class="replaceable"><code>proc</code></em>) <em class="replaceable"><code>args</code></em> ... <em class="replaceable"><code>value</code></em>)</code> then
+the value of <code class="literal">(<em class="replaceable"><code>proc</code></em> <em class="replaceable"><code>args</code></em> ...)</code> will be <em class="replaceable"><code>value</code></em>.
+</p>
+          <p>The <code class="literal">setter</code> of <code class="literal">setter</code> can be used to set the
+<code class="literal">setter</code> property.
+For example the Scheme prologue effectively does the following:
+</p>
+          <pre class="screen">(set! (setter vector-set) vector-set!)
+</pre>
+        </blockquote>
+      </div>
+      <p>Kawa also gives you access to locations as first-class values:
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667873117648" class="indexterm"/> <code class="function">location</code> <em class="replaceable"><code>lvalue</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns a location object for the given <em class="replaceable"><code>lvalue</code></em>.
+You can get its value (by applying it, as if it were a procedure),
+and you can set its value (by using <code class="literal">set!</code> on the application).
+The <em class="replaceable"><code>lvalue</code></em> can be a local or global variable, or a procedure
+call using a procedure that has a <code class="literal">setter</code>.
+</p>
+          <pre class="screen">(define x 100)
+(define lx (location x))
+(set! (lx) (cons 1 2)) ;; set x to (1 . 2)
+(lx)  ;; returns (1 . 2)
+(define lc (location (car x)))
+(set! (lc) (+ 10 (lc)))
+;; x is now (11 . 2)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667873111840" class="indexterm"/> <code class="function">define-alias</code> <em class="replaceable"><code>variable</code></em> <em class="replaceable"><code>lvalue</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Define <em class="replaceable"><code>variable</code></em> as an alias for <em class="replaceable"><code>lvalue</code></em>.
+In other words, makes it so that <code class="literal">(location <em class="replaceable"><code>variable</code></em>)</code>
+is equivalent to <code class="literal">(location <em class="replaceable"><code>lvalue</code></em>)</code>.
+This works both top-level and inside a function.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667873105376" class="indexterm"/> <code class="function">define-private-alias</code> <em class="replaceable"><code>variable</code></em> <em class="replaceable"><code>lvalue</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Same as <code class="literal">define-alias</code>, but the <em class="replaceable"><code>variable</code></em>
+is local to the current module.
+</p>
+        </blockquote>
+      </div>
+      <p>Some people might find it helpful to think of a location
+as a settable <em class="firstterm">thunk</em>.  Others may find it useful to
+think of the <code class="literal">location</code> syntax as similar to the C ‘<code class="literal">&amp;</code>’ operator;
+for the ‘<code class="literal">*</code>’ indirection operator, Kawa uses procedure application.
+</p>
+      <p>You can use <code class="literal">define-alias</code> to define a shorter type synonym,
+similar to Java’s  <code class="literal">import TypeName</code> (single-type-import) declaration:
+</p>
+      <pre class="screen">(define-alias StrBuf java.lang.StringBuffer)
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Eval-and-Environments.xhtml">Eval and Environments</a></p>
+        <p>
+        Next: <a accesskey="n" href="Parameter-objects.xhtml">Parameter objects</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

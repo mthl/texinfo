@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Scheme types in Java</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Array-operations.xhtml" title="Using Java Arrays"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Scheme types in Java" epub:type="subchapter" id="Scheme-types-in-Java">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Scheme types in Java</h2>
+          </div>
+        </div>
+      </div>
+      <p>All Scheme values are implemented by sub-classes of ‘<code class="literal">java.lang.Object</code>’.
+</p>
+      <p>Scheme symbols are implemented using <code class="literal">java.lang.String</code>.
+(Don’t be confused by the fact the Scheme sybols are represented
+using Java Strings, while Scheme strings are represented by
+<code class="literal">gnu.lists.FString</code>.  It is just that the semantics of Java strings
+match Scheme symbols, but do not match mutable Scheme strings.)
+Interned symbols are presented as interned Strings.
+(Note that with JDK 1.1 string literals are automatically interned.)
+</p>
+      <p>Scheme integers are implemented by <code class="literal">gnu.math.IntNum</code>.
+Use the make static function to create a new IntNum from an int or a long.
+Use the intValue or longValue methods to get the int or long value of
+an IntNum.
+</p>
+      <p>A Scheme "flonum" is implemented by <code class="literal">gnu.math.DFloNum</code>.
+</p>
+      <p>A Scheme pair is implemented by <code class="literal">gnu.lists.Pair</code>.
+</p>
+      <p>A Scheme vector is implemented by <code class="literal">gnu.lists.FVectror</code>.
+</p>
+      <p>Scheme characters are implemented using <code class="literal">gnu.text.Char</code>.
+</p>
+      <p>Scheme strings are implemented using <code class="literal">gnu.lists.FString</code>.
+</p>
+      <p>Scheme procedures are all sub-classes of <code class="literal">gnu.mapping.Procedure</code>.
+The "action" of a ‘<code class="literal">Procedure</code>’ is invoked by using one of
+the ‘<code class="literal">apply*</code>’ methods:  ‘<code class="literal">apply0</code>’, ‘<code class="literal">apply1</code>’,
+‘<code class="literal">apply2</code>’, ‘<code class="literal">apply3</code>’, ‘<code class="literal">apply4</code>’, or ‘<code class="literal">applyN</code>’.
+Various sub-class of ‘<code class="literal">Procedure</code>’ provide defaults
+for the various ‘<code class="literal">apply*</code>’ methods.  For example,
+a ‘<code class="literal">Procedure2</code>’ is used by 2-argument procedures.
+The ‘<code class="literal">Procedure2</code>’ class provides implementations of all
+the ‘<code class="literal">apply*</code>’ methods <span class="emphasis"><em>except</em></span> ‘<code class="literal">apply2</code>’,
+which must be provided by any class that extends <code class="literal">Procedure2</code>.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Mangling.xhtml">Mapping Scheme names to Java names</a></p>
+        <p>
+        Next: <a accesskey="n" href="Array-operations.xhtml">Using Java Arrays</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

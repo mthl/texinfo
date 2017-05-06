@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>License for the Kawa software</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="License.xhtml" title="License"/>
+    <link rel="next" href="Manual-License.xhtml" title="License for the Kawa manual"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="License for the Kawa software" epub:type="subchapter" id="Software-License">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">License for the Kawa software</h2>
+          </div>
+        </div>
+      </div>
+      <p>The license for the Kawa software
+(except the optional JEmacs and BRL features - see below) is the
+<a class="ulink" href="http://opensource.org/licenses/mit-license.php" target="_top">X11/MIT license</a>
+which is quoted below.
+</p>
+      <pre class="screen">The software (with related files and documentation) in these packages
+are copyright (C) 1996-2009  Per Bothner.
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+</pre>
+      <p>In the past the Kawa license was a “modified GNU GPL (General
+Public License)".
+If you find any files that contain the old license or otherwise seem
+to contradict the new license, please report that as a bug.
+</p>
+      <p>Some of the JEmacs files are based on Emacs and have a GPL license,
+which is incompatible with non-Free (proprietary) products.  For that
+reason, the <code class="literal">gnu.jemacs.*</code> packages are not included any more in
+the standard <code class="literal">.jar</code>, or by default when building from source, to
+avoid surprises.
+To build JEmacs you have to specify the <code class="literal">configure</code>
+flag <code class="literal">--enable-jemacs</code> or the <code class="literal">ant</code> flag
+<code class="literal">-Denable-jemacs=true</code>.
+</p>
+      <p>Some code in <code class="literal">gnu/brl</code> and <code class="literal">gnu/kawa/brl</code> is copyright
+Bruce R. Lewis and Eaton Vance Management,
+with a modified-GPL license: no restrictions if used
+unmodified, but otherwise the GPL applies.
+These packages are no longer included by default in Kawa builds,
+but have to be selected with the <code class="literal">configure</code>
+flag <code class="literal">--enable-brl</code> or the <code class="literal">ant</code> flag <code class="literal">-Denable-brl=true</code>.
+</p>
+      <p>Kawa uses some math routines from fdlib’s libf77,
+which have a AT&amp;T Bell Laboratories and Bellcore copyright.
+See the source file <code class="literal">gnu/math/DComplex.java</code>.
+</p>
+      <p>The sorting routine in <code class="literal">gnu.xquery.util.OrderedTuples</code>
+is a re-implementatiomn in Java of code copyrighted by
+Simon Tatham.
+</p>
+      <p>Some of the Scheme code in <code class="literal">kawa/lib</code> and <code class="literal">gnu/kawa/slib</code>
+are copyright other parties, and may have slightly different
+license wording, but I believe none of then contradicts the
+main Kawa license or impose extra restrictions.
+Search for the word <code class="literal">copyright</code> in these directories.
+</p>
+      <p>Some code has been converted from other languages, with permission.
+This includes the <code class="literal">rationalize</code> method
+in <code class="literal">gnu/math/RatNum.java</code>, based on an algorithm of Alan Bawden,
+as expressed by Marc Feeley in C-Gambit.
+The concepts and algorithm of <code class="literal">gnu/text/PrettyWriter.java</code>
+are converted from SBCL, which is in the public domain.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="License.xhtml">License</a></p>
+        <p>
+        Next: <a accesskey="n" href="Manual-License.xhtml">License for the Kawa manual</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

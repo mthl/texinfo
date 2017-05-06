@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Arithmetic operations</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Numbers.xhtml" title="Quantities and Numbers"/>
+    <link rel="next" href="Numerical-input-and-output.xhtml" title="Numerical input and output"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Arithmetic operations" epub:type="subchapter" id="Arithmetic-operations">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Arithmetic operations</h2>
+          </div>
+        </div>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877111776" class="indexterm"/> <code class="function">real-valued?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877108848" class="indexterm"/> <code class="function">rational-valued?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877105920" class="indexterm"/> <code class="function">integer-valued?</code> <em class="replaceable"><code><em class="replaceable"><code>obj</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These numerical type predicates can be applied to any kind of argument.
+The <code class="literal">real-valued?</code> procedure returns <code class="literal">#t</code> if the object is a
+number object and is equal in the sense of <code class="literal">=</code> to some real number
+object, or if the object is a NaN, or a complex number object whose real
+part is a NaN and whose imaginary part is zero in the sense of
+<code class="literal">zero?</code>.  The <code class="literal">rational-valued?</code> and <code class="literal">integer-valued?</code>
+procedures return <code class="literal">#t</code> if the object is a number object and is equal
+in the sense of <code class="literal">=</code> to some object of the named type, and otherwise
+they return <code class="literal">#f</code>.
+</p>
+          <pre class="screen">(real-valued? +nan.0)                  ⇒ #t
+(real-valued? +nan.0+0i)               ⇒ #t
+(real-valued? -inf.0)                  ⇒ #t
+(real-valued? 3)                       ⇒ #t
+(real-valued? -2.5+0.0i)               ⇒ #t
+
+(real-valued? -2.5+0i)                 ⇒ #t
+(real-valued? -2.5)                    ⇒ #t
+(real-valued? #e1e10)                  ⇒ #t
+
+(rational-valued? +nan.0)              ⇒ #f
+(rational-valued? -inf.0)              ⇒ #f
+(rational-valued? 6/10)                ⇒ #t
+(rational-valued? 6/10+0.0i)           ⇒ #t
+(rational-valued? 6/10+0i)             ⇒ #t
+(rational-valued? 6/3)                 ⇒ #t
+
+(integer-valued? 3+0i)                 ⇒ #t
+(integer-valued? 3+0.0i)               ⇒ #t
+(integer-valued? 3.0)                  ⇒ #t
+(integer-valued? 3.0+0.0i)             ⇒ #t
+(integer-valued? 8/4)                  ⇒ #t
+</pre>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p><span class="emphasis"><em>Note:</em></span> These procedures test whether a given number object can be
+coerced to the specified type without loss of numerical accuracy.
+Specifically, the behavior of these predicates differs from the behavior
+of <code class="literal">real?</code>, <code class="literal">rational?</code>, and <code class="literal">integer?</code> on complex number
+objects whose imaginary part is inexact zero.
+</p>
+            </blockquote>
+          </div>
+          <div class="blockquote">
+            <blockquote class="blockquote">
+              <p><span class="emphasis"><em>Note:</em></span> The behavior of these type predicates on inexact number
+objects is unreliable, because any inaccuracy may affect the result.
+</p>
+            </blockquote>
+          </div>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877092816" class="indexterm"/> <code class="function">exact-integer?</code> <em class="replaceable"><code>z</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns <code class="literal">#t</code> if <em class="replaceable"><code>z</code></em> is both exact and an integer; otherwise
+returns <code class="literal">#f</code>.
+</p>
+          <pre class="screen">(exact-integer? 32)                    ⇒ #t
+(exact-integer? 32.0)                  ⇒ #t
+(exact-integer? 32/5)                  ⇒ #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877087776" class="indexterm"/> <code class="function">finite?</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns <code class="literal">#t</code> if <em class="replaceable"><code>z</code></em> is finite real number
+(i.e. an infinity and not a NaN),
+or if <em class="replaceable"><code>z</code></em> is a complex number
+whose real and imaginary parts are both finite.
+</p>
+          <pre class="screen">(finite? 3)             ⇒ #t
+(finite? +inf.0)        ⇒ #f
+(finite? 3.0+inf.0i)    ⇒ #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877082576" class="indexterm"/> <code class="function">infinite?</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return <code class="literal">#t</code> if <em class="replaceable"><code>z</code></em> is
+an infinite real number (<code class="literal">+int.0</code> or <code class="literal">-inf.0</code>),
+or if <em class="replaceable"><code>z</code></em> is a complex number where either
+real or imaginary parts or both are infinite.
+</p>
+          <pre class="screen">(infinite? 5.0)         ⇒ #f
+(infinite? +inf.0)      ⇒ #t
+(infinite? +nan.0)      ⇒ #f
+(infinite? 3.0+inf.0i)  ⇒ #t
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877076368" class="indexterm"/> <code class="function">nan?</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>For a real numer returns whether its is a NaN;
+for a complex number if the real or imaginary parts or both is a NaN.
+</p>
+          <pre class="screen">(nan? +nan.0)           ⇒ #t
+(nan? 32)               ⇒ #f
+(nan? +nan.0+5.0i)      ⇒ #t
+(nan? 1+2i)             ⇒ #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877072288" class="indexterm"/> <code class="function">+</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877069008" class="indexterm"/> <code class="function">*</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return the sum or product of their arguments.
+</p>
+          <pre class="screen">(+ 3 4)                          ⇒  7
+(+ 3)                            ⇒  3
+(+)                              ⇒  0
+(+ +inf.0 +inf.0)                ⇒  +inf.0
+(+ +inf.0 -inf.0)                ⇒  +nan.0
+
+(* 4)                            ⇒  4
+(*)                              ⇒  1
+(* 5 +inf.0)                     ⇒  +inf.0
+(* -5 +inf.0)                    ⇒  -inf.0
+(* +inf.0 +inf.0)                ⇒  +inf.0
+(* +inf.0 -inf.0)                ⇒  -inf.0
+(* 0 +inf.0)                     ⇒  +nan.0
+(* 0 +nan.0)                     ⇒  +nan.0
+(* 1.0 0)                        ⇒  0.0
+</pre>
+          <p>For any real number object <em class="replaceable"><code>x</code></em> that is neither infinite nor NaN:
+</p>
+          <pre class="screen">(+ +inf.0 <em class="replaceable"><code>x</code></em>)                   ⇒  +inf.0
+(+ -inf.0 <em class="replaceable"><code>x</code></em>)                   ⇒  -inf.0
+</pre>
+          <p>For any real number object <em class="replaceable"><code>x</code></em>:
+</p>
+          <pre class="screen">(+ +nan.0 <em class="replaceable"><code>x</code></em>)                   ⇒  +nan.0
+</pre>
+          <p>For any real number object <em class="replaceable"><code>x</code></em> that is not an exact 0:
+</p>
+          <pre class="screen">(* +nan.0 <em class="replaceable"><code>x</code></em>)                   ⇒  +nan.0
+</pre>
+          <p>The behavior of <code class="literal">-0.0</code> is illustrated by the following examples:
+</p>
+          <pre class="screen">(+  0.0 -0.0)  ⇒  0.0
+(+ -0.0  0.0)  ⇒  0.0
+(+  0.0  0.0)  ⇒  0.0
+(+ -0.0 -0.0)  ⇒ -0.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877055440" class="indexterm"/> <code class="function">-</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877052688" class="indexterm"/> <code class="function">-</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>With two or more arguments, this procedures returns the difference of
+its arguments, associating to the left.  With one argument, however, it
+returns the negation (additive inverse) of its argument.
+</p>
+          <pre class="screen">(- 3 4)                               ⇒  -1
+(- 3 4 5)                             ⇒  -6
+(- 3)                                 ⇒  -3
+(- +inf.0 +inf.0)                     ⇒  +nan.0
+</pre>
+          <p>The behavior of <code class="literal">-0.0</code> is illustrated by the following examples:
+</p>
+          <pre class="screen">(-  0.0)       ⇒ -0.0
+(- -0.0)       ⇒  0.0
+(-  0.0 -0.0)  ⇒  0.0
+(- -0.0  0.0)  ⇒ -0.0
+(-  0.0  0.0)  ⇒  0.0
+(- -0.0 -0.0)  ⇒  0.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877042880" class="indexterm"/> <code class="function">/</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877040016" class="indexterm"/> <code class="function">/</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If all of the arguments are exact, then the divisors must all be
+nonzero.  With two or more arguments, this procedure returns the
+quotient of its arguments, associating to the left.  With one argument,
+however, it returns the multiplicative inverse of its argument.
+</p>
+          <pre class="screen">(/ 3 4 5)                         ⇒  3/20
+(/ 3)                             ⇒  1/3
+(/ 0.0)                           ⇒  +inf.0
+(/ 1.0 0)                         ⇒  +inf.0
+(/ -1 0.0)                        ⇒  -inf.0
+(/ +inf.0)                        ⇒  0.0
+(/ 0 0)                           ⇒  exception &amp;assertion
+(/ 3 0)                           ⇒  exception &amp;assertion
+(/ 0 3.5)                         ⇒  0.0
+(/ 0 0.0)                         ⇒  +nan.0
+(/ 0.0 0)                         ⇒  +nan.0
+(/ 0.0 0.0)                       ⇒  +nan.0
+</pre>
+          <p>If this procedure is applied to mixed non–rational real and non–real
+complex arguments, it either raises an exception with condition type
+<code class="literal">&amp;implementation-restriction</code> or returns an unspecified number
+object.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877030928" class="indexterm"/> <code class="function">floor/</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877027744" class="indexterm"/> <code class="function">truncate/</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877024560" class="indexterm"/> <code class="function">div-and-mod</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877021376" class="indexterm"/> <code class="function">div0-and-mod0</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures implement number–theoretic integer division.
+They accept two real numbers <em class="replaceable"><code>x</code></em> and <em class="replaceable"><code>y</code></em> as operands,
+where <em class="replaceable"><code>y</code></em> must be nonzero.
+In all cases the result is two values <em class="replaceable"><code>q</code></em> (an integer) and <em class="replaceable"><code>r</code></em> (a real)
+that satisfy the equations:
+</p>
+          <pre class="screen"><em class="replaceable"><code>x</code></em> = <em class="replaceable"><code>q</code></em> * <em class="replaceable"><code>y</code></em> + <em class="replaceable"><code>r</code></em>
+<em class="replaceable"><code>q</code></em> = <em class="replaceable"><code>rounding-op</code></em>(<em class="replaceable"><code>x</code></em>/<em class="replaceable"><code>y</code></em>)
+</pre>
+          <p>The result is inexact if either argument is inexact.
+</p>
+          <p>For <code class="literal">floor/</code> the <em class="replaceable"><code>rounding-op</code></em> is the <code class="literal">floor</code> function (below).
+</p>
+          <pre class="screen">(floor/ 123 10)         ⇒  12 3
+(floor/ 123 -10)        ⇒  -13 -7
+(floor/ -123 10)        ⇒  -13 7
+(floor/ -123 -10)       ⇒  12 -3
+</pre>
+          <p>For <code class="literal">truncate/</code> the <em class="replaceable"><code>rounding-op</code></em> is the <code class="literal">truncate</code> function.
+</p>
+          <pre class="screen">(truncate/ 123 10)      ⇒  12 3
+(truncate/ 123 -10)     ⇒  -12 3
+(truncate/ -123 10)     ⇒  -12 -3
+(truncate/ -123 -10)    ⇒  12 -3
+</pre>
+          <p>For <code class="literal">div-and-mod</code> the <em class="replaceable"><code>rounding-op</code></em> is either <code class="literal">floor</code>
+(if <em class="replaceable"><code>y</code></em> is positive) or <code class="literal">ceiling</code> (if <em class="replaceable"><code>y</code></em> is negative).
+We have:
+</p>
+          <pre class="screen">0  &lt;= <em class="replaceable"><code>r</code></em> &lt; |<em class="replaceable"><code>y</code></em>|
+</pre>
+          <pre class="screen">(div-and-mod 123 10)    ⇒  12 3
+(div-and-mod 123 -10)   ⇒  -12 3
+(div-and-mod -123 10)   ⇒  -13 7
+(div-and-mod -123 -10)  ⇒  13 7
+</pre>
+          <p>For <code class="literal">div0-and-mod0</code> the <em class="replaceable"><code>rounding-op</code></em> is the <code class="literal">round</code> function,
+and <code class="literal">r</code> lies within a half–open interval centered on zero.
+</p>
+          <pre class="screen">-|<em class="replaceable"><code>y</code></em>/2| &lt;= <em class="replaceable"><code>r</code></em> &lt; |<em class="replaceable"><code>y</code></em>/2|
+</pre>
+          <pre class="screen">(div0-and-mod0 123 10)   ⇒  12 3
+(div0-and-mod0 123 -10)  ⇒  -12 3
+(div0-and-mod0 -123 10)  ⇒  -12 -3
+(div0-and-mod0 -123 -10) ⇒  12 -3
+(div0-and-mod0 127 10)   ⇒  13 -3
+(div0-and-mod0 127 -10)  ⇒  -13 -3
+(div0-and-mod0 -127 10)  ⇒  -13 3
+(div0-and-mod0 -127 -10) ⇒  13 3
+</pre>
+          <p>The inconsistent naming is for historical reasons: <code class="literal">div-and-mod</code>
+and <code class="literal">div0-and-mod0</code> are from R6RS, while <code class="literal">floor/</code> and
+<code class="literal">truncate/</code> are from R7RS.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876995616" class="indexterm"/> <code class="function">floor-quotient</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876992432" class="indexterm"/> <code class="function">truncate-quotient</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876989248" class="indexterm"/> <code class="function">div</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876986128" class="indexterm"/> <code class="function">div0</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return the quotient part (first value)
+of respectively <code class="literal">floor/</code>, <code class="literal">truncate/</code>,
+<code class="literal">div-and-mod</code>, and <code class="literal">div0-and-mod0</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876980640" class="indexterm"/> <code class="function">floor-remainder</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876977456" class="indexterm"/> <code class="function">truncate-remainder</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876974272" class="indexterm"/> <code class="function">mod</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876971152" class="indexterm"/> <code class="function">mod0</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return the remainder part (second value)
+of respectively <code class="literal">floor/</code>, <code class="literal">truncate/</code>,
+<code class="literal">div-and-mod</code>, and <code class="literal">div0-and-mod0</code>.
+</p>
+          <p>As a Kawa extension <em class="replaceable"><code>y</code></em> may be zero, in which case the result is <em class="replaceable"><code>x</code></em>:
+</p>
+          <pre class="screen">(mod 123 0)     ⇒  123 ;; Kawa extension
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876964016" class="indexterm"/> <code class="function">quotient</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876960832" class="indexterm"/> <code class="function">remainder</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876957648" class="indexterm"/> <code class="function">modulo</code> <em class="replaceable"><code>x</code></em> <em class="replaceable"><code>y</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These are equivalent to <code class="literal">truncate-quotient</code>,
+<code class="literal">truncate-remainder</code>, and <code class="literal">floor-remainder</code>, respectively.
+These are provided for backward compatibility.
+</p>
+          <pre class="screen">(remainder 13 4)     ⇒ 1
+(remainder -13 4)    ⇒ -1
+(remainder 13 -4)    ⇒ 1
+(remainder -13 -4)   ⇒ -1
+(remainder -13 -4.0) ⇒ -1.0
+(modulo 13 4)   ⇒ 1
+(modulo -13 4)  ⇒ 3
+(modulo 13 -4)  ⇒ -4
+(modulo -13 -4) ⇒ -1
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876951792" class="indexterm"/> <code class="function">abs</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the absolute value of its argument.
+</p>
+          <pre class="screen">(abs -7)                         ⇒  7
+(abs -inf.0)                     ⇒  +inf.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876947792" class="indexterm"/> <code class="function">gcd</code> <em class="replaceable"><code><em class="replaceable"><code>n</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876944128" class="indexterm"/> <code class="function">lcm</code> <em class="replaceable"><code><em class="replaceable"><code>n</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return the greatest common divisor or least common
+multiple of their arguments.  The result is always non–negative.
+The arguments must be integers; if an argument is inexact, so is the result.
+</p>
+          <pre class="screen">(gcd 32 -36)                     ⇒  4
+(gcd)                            ⇒  0
+(lcm 32 -36)                     ⇒  288
+(lcm 32.0 -36)                   ⇒  288.0 ; inexact
+(lcm)                            ⇒  1
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876938896" class="indexterm"/> <code class="function">numerator</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876935968" class="indexterm"/> <code class="function">denominator</code> <em class="replaceable"><code><em class="replaceable"><code>q</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return the numerator or denominator of their argument;
+the result is computed as if the argument was represented as a fraction
+in lowest terms.  The denominator is always positive.  The denominator
+of <code class="literal">0</code> is defined to be <code class="literal">1</code>.
+The arguments must be integers; if an argument is inexact, so is the result.
+</p>
+          <pre class="screen">(numerator   (/ 6 4))            ⇒  3
+(denominator (/ 6 4))            ⇒  2
+(denominator (inexact (/ 6 4)))        ⇒  2.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876930832" class="indexterm"/> <code class="function">floor</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876927904" class="indexterm"/> <code class="function">ceiling</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876924976" class="indexterm"/> <code class="function">truncate</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876922048" class="indexterm"/> <code class="function">round</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return inexact integer objects for inexact arguments
+that are not infinities or NaNs, and exact integer objects for exact
+rational arguments.
+</p>
+          <div class="variablelist" epub:type="list">
+            <dl class="variablelist">
+              <dt class="term"><code class="literal">floor</code>
+</dt>
+              <dd>
+                <p>Returns the largest integer object not larger than <em class="replaceable"><code>x</code></em>.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">ceiling</code>
+</dt>
+              <dd>
+                <p>Returns the smallest integer object not smaller than <em class="replaceable"><code>x</code></em>.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">truncate</code>
+</dt>
+              <dd>
+                <p>Returns the integer object closest to <em class="replaceable"><code>x</code></em> whose absolute value is
+not larger than the absolute value of <em class="replaceable"><code>x</code></em>.
+</p>
+              </dd>
+              <dt class="term"><code class="literal">round</code>
+</dt>
+              <dd>
+                <p>Returns the closest integer object to <em class="replaceable"><code>x</code></em>, rounding to even when
+<em class="replaceable"><code>x</code></em> represents a number halfway between two integers.
+</p>
+              </dd>
+            </dl>
+          </div>
+          <p>If the argument to one of these procedures is inexact, then the result
+is also inexact.  If an exact value is needed, the result should be
+passed to the <code class="literal">exact</code> procedure.
+</p>
+          <p>Although infinities and NaNs are not integer objects, these procedures
+return an infinity when given an infinity as an argument, and a NaN when
+given a NaN.
+</p>
+          <pre class="screen">(floor -4.3)                     ⇒  -5.0
+(ceiling -4.3)                   ⇒  -4.0
+(truncate -4.3)                  ⇒  -4.0
+(round -4.3)                     ⇒  -4.0
+
+(floor 3.5)                      ⇒  3.0
+(ceiling 3.5)                    ⇒  4.0
+(truncate 3.5)                   ⇒  3.0
+(round 3.5)                      ⇒  4.0
+
+(round 7/2)                      ⇒  4
+(round 7)                        ⇒  7
+
+(floor +inf.0)                   ⇒  +inf.0
+(ceiling -inf.0)                 ⇒  -inf.0
+(round +nan.0)                   ⇒  +nan.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876907856" class="indexterm"/> <code class="function">rationalize</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">rationalize</code> procedure returns a number object representing
+the <span class="emphasis"><em>simplest</em></span> rational number differing from <em class="replaceable"><code>x</code></em><sub>1</sub> by no more
+than <em class="replaceable"><code>x</code></em><sub>2</sub>.
+</p>
+          <p>A rational number <span class="emphasis"><em>r_1</em></span> is <span class="emphasis"><em>simpler</em></span> than another rational
+number <span class="emphasis"><em>r_2</em></span> if <code class="literal">r_1 = p_1/q_1</code> and <code class="literal">r_2 = p_2/q_2</code> (in
+lowest terms) and <code class="literal">|p_1| &lt;= |p_2|</code> and <code class="literal">|q_1| &lt;= |q_2|</code>.  Thus
+<code class="literal">3/5</code> is simpler than <code class="literal">4/7</code>.
+</p>
+          <p>Although not all rationals are comparable in this ordering (consider
+<code class="literal">2/7</code> and <code class="literal">3/5</code>) any interval contains a rational number that
+is simpler than every other rational number in that interval (the
+simpler <code class="literal">2/5</code> lies between <code class="literal">2/7</code> and <code class="literal">3/5</code>).
+</p>
+          <p>Note that <code class="literal">0 = 0/1</code> is the simplest rational of all.
+</p>
+          <pre class="screen">(rationalize (exact .3) 1/10)          ⇒ 1/3
+(rationalize .3 1/10)                  ⇒ #i1/3  ; approximately
+
+(rationalize +inf.0 3)                 ⇒  +inf.0
+(rationalize +inf.0 +inf.0)            ⇒  +nan.0
+
+</pre>
+          <p>The first two examples hold only in implementations whose inexact real
+number objects have sufficient precision.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876891376" class="indexterm"/> <code class="function">exp</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876888512" class="indexterm"/> <code class="function">log</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876885648" class="indexterm"/> <code class="function">log</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876881504" class="indexterm"/> <code class="function">sin</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876878592" class="indexterm"/> <code class="function">cos</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876875728" class="indexterm"/> <code class="function">tan</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876872816" class="indexterm"/> <code class="function">asin</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876869888" class="indexterm"/> <code class="function">acos</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876866960" class="indexterm"/> <code class="function">atan</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876864032" class="indexterm"/> <code class="function">atan</code> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>x</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures compute the usual transcendental functions.
+</p>
+          <p>The <code class="literal">exp</code> procedure computes the base–<em class="replaceable"><code>e</code></em> exponential of
+<em class="replaceable"><code>z</code></em>.
+The <code class="literal">log</code> procedure with a single argument computes the natural
+logarithm of <em class="replaceable"><code>z</code></em> (<span class="bold"><strong>not</strong></span> the base–10 logarithm); <code class="literal">(log
+<em class="replaceable"><code>z</code></em><sub>1</sub> <em class="replaceable"><code>z</code></em><sub>2</sub>)</code> computes the base–<em class="replaceable"><code>z</code></em><sub>2</sub> logarithm of <em class="replaceable"><code>z</code></em><sub>1</sub>.
+</p>
+          <p>The <code class="literal">asin</code>, <code class="literal">acos</code>, and <code class="literal">atan</code> procedures compute
+arcsine, arccosine, and arctangent, respectively.  The two–argument
+variant of <code class="literal">atan</code> computes:
+</p>
+          <pre class="screen">(angle (make-rectangular <em class="replaceable"><code>x</code></em><sub>2</sub> <em class="replaceable"><code>x</code></em><sub>1</sub>))
+</pre>
+          <p>These procedures may return inexact results even when given exact
+arguments.
+</p>
+          <pre class="screen">(exp +inf.0)    ⇒ +inf.0
+(exp -inf.0)    ⇒ 0.0
+(log +inf.0)    ⇒ +inf.0
+(log 0.0)       ⇒ -inf.0
+(log 0)         ⇒ exception &amp;assertion
+(log -inf.0)    ⇒ +inf.0+3.141592653589793i    ; approximately
+(atan -inf.0)   ⇒ -1.5707963267948965          ; approximately
+(atan +inf.0)   ⇒ 1.5707963267948965           ; approximately
+(log -1.0+0.0i) ⇒ 0.0+3.141592653589793i       ; approximately
+(log -1.0-0.0i) ⇒ 0.0-3.141592653589793i       ; approximately
+                                                ; if -0.0 is distinguished
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876847392" class="indexterm"/> <code class="function">sinh</code> <em class="replaceable"><code>z</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876844592" class="indexterm"/> <code class="function">cosh</code> <em class="replaceable"><code>z</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876841792" class="indexterm"/> <code class="function">tanh</code> <em class="replaceable"><code>z</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876838992" class="indexterm"/> <code class="function">asinh</code> <em class="replaceable"><code>z</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876836192" class="indexterm"/> <code class="function">acosh</code> <em class="replaceable"><code>z</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876833392" class="indexterm"/> <code class="function">atanh</code> <em class="replaceable"><code>z</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The hyperbolic functions.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876830032" class="indexterm"/> <code class="function">square</code> <em class="replaceable"><code>z</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the square of <em class="replaceable"><code>z</code></em>.
+This is equivalent to <code class="literal">(* <em class="replaceable"><code>z</code></em> <em class="replaceable"><code>z</code></em>)</code>.
+</p>
+          <pre class="screen">(square 42)    ⇒ 1764
+(square 2.0)   ⇒ 4.0
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876824672" class="indexterm"/> <code class="function">sqrt</code> <em class="replaceable"><code><em class="replaceable"><code>z</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the principal square root of <em class="replaceable"><code>z</code></em>.  For rational <em class="replaceable"><code>z</code></em>, the
+result has either positive real part, or zero real part and
+non–negative imaginary part.  The value of <code class="literal">(sqrt <em class="replaceable"><code>z</code></em>)</code> could be
+expressed as:
+</p>
+          <pre class="screen">e^((log z)/2)
+</pre>
+          <p>The <code class="literal">sqrt</code> procedure may return an inexact result even when given
+an exact argument.
+</p>
+          <pre class="screen">(sqrt -5)                   ⇒  0.0+2.23606797749979i ; approximately
+(sqrt +inf.0)               ⇒  +inf.0
+(sqrt -inf.0)               ⇒  +inf.0i
+</pre>
+          <p>Note that if the argument is a primitive number (such as <code class="literal">double</code>) or an
+instance of the corresponding boxed class (such as <code class="literal">java.lang.Double</code>)
+then we use the real-number version of <code class="literal">sqrt</code>:
+</p>
+          <pre class="screen">(sqrt (-&gt;double -5))        ⇒  NaN
+</pre>
+          <p>That is, we get different a result for <code class="literal">java.lang.Double</code>
+and <code class="literal">gnu.math.DFloNum</code>, even for arguments that are numerically equal
+in the sense of <code class="literal">=</code>.
+This is so that the compiler can use the <code class="literal">java.lang.Math.sqrt</code>
+method without object allocation when the argument is a <code class="literal">double</code>
+(and because we want <code class="literal">double</code> and <code class="literal">java.lang.Double</code> to behave
+consistently).
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667876811680" class="indexterm"/> <code class="function">exact-integer-sqrt</code> <em class="replaceable"><code><em class="replaceable"><code>k</code></em></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">exact-integer-sqrt</code> procedure returns two non–negative exact
+integer objects <span class="emphasis"><em>s</em></span> and <span class="emphasis"><em>r</em></span> where <code class="literal"><em class="replaceable"><code>k</code></em> = s^2 + r</code> and
+<code class="literal"><em class="replaceable"><code>k</code></em> &lt; (s+1)^2</code>.
+</p>
+          <pre class="screen">(exact-integer-sqrt 4)  ⇒ 2 0 ; two return values
+(exact-integer-sqrt 5)  ⇒ 2 1 ; two return values
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Numbers.xhtml">Quantities and Numbers</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Numerical-types.xhtml">Numerical types</a></p>
+        <p>
+        Next: <a accesskey="n" href="Numerical-input-and-output.xhtml">Numerical input and output</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

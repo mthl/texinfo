@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Variables</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="tutorial-Pictures.xhtml" title="Composable pictures"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Variables" epub:type="subchapter" id="Tutorial---Variables">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Variables</h2>
+          </div>
+        </div>
+      </div>
+      <p>You can declare a variable using a <code class="literal">!</code> form.
+This takes a variable name, and an expression.  It declares a new
+variable with the given name, and gives it the value of the expression.
+</p>
+      <pre class="screen">#|kawa:1|# (! binary-kilo 1024)
+#|kawa:2|# (! binary-mega (* binary-kilo binary-kilo))
+#|kawa:3|# binary-mega
+1048576
+</pre>
+      <p>If you prefer, you can use <code class="literal">define</code> instead of <code class="literal">!</code>:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:1|# </span><strong class="userinput"><code>(define binary-kilo 1024)</code></strong>
+<span class="prompt">#|kawa:2|# </span><strong class="userinput"><code>(define binary-mega (* binary-kilo binary-kilo))</code></strong>
+<span class="prompt">#|kawa:3|# </span><strong class="userinput"><code>binary-mega</code></strong>
+1048576
+</pre>
+      <p>The advantage of using <code class="literal">define</code> is that it is portable
+to other Scheme implementations.
+The advantages of using <code class="literal">!</code> is that it is shorter;
+it generalizes to patterns (see later);
+and it guards against accidentally “shadowing” a variable
+by a nested variable with the same name.
+</p>
+      <p>A <code class="literal">!</code> (or <code class="literal">define</code>) typed into the command-line
+defines a top-level variable.
+</p>
+      <p>You can also declare local variables, which are variables defined for
+a given block of code.  For example, in the following code <code class="literal">let</code>
+is used to set up a local binding of <code class="literal">x</code> to 3: this does not affect
+the outer binding of <code class="literal">x</code> to 5:
+</p>
+      <pre class="screen">(define x 5)
+
+(let ((x 3))
+  (display x))  ⇒ 3
+
+(display x)     ⇒ 5
+</pre>
+      <p>Alternative forms for defining local variables are
+<code class="literal">let</code>, <code class="literal">let*</code>, or <code class="literal">letrec</code>/<code class="literal">letrec*</code>.
+</p>
+      <p>The differences are in the order in which definitions are made.
+<code class="literal">let</code> evaluates all its definitions in the environment holding
+at the start of the <code class="literal">let</code> statement.  In the following example,
+the local variables are defined using values from the global variables:
+</p>
+      <pre class="screen">(define x 5)
+(define y 2)
+
+(let ((x (+ 2 y))  ; uses value of global y, i.e. 2
+      (y (+ 3 x))) ; uses value of global x, i.e. 5
+  (display (list x y)))  ⇒ (4 8)
+</pre>
+      <p><code class="literal">let*</code> instead evaluates each definition in the environment holding
+at the start of the <code class="literal">let*</code> statement, along with all <span class="emphasis"><em>previous</em></span>
+local definitions. In the following example, <code class="literal">y</code> is now defined with the
+<span class="emphasis"><em>local</em></span> value of <code class="literal">x</code>:
+</p>
+      <pre class="screen">(define x 5)
+(define y 2)
+
+(let* ((x (+ 2 y))  ; uses value of global y, i.e. 2
+       (y (+ 3 x))) ; uses value of local x, i.e. 4
+  (display (list x y)))  ⇒ (4 7)
+</pre>
+      <p><code class="literal">letrec/letrec*</code> are similar, but allow the definition of recursive
+functions:
+</p>
+      <pre class="screen">(letrec ((is-even? (lambda (n) (and (not (= 1 n))
+                                    (or (zero? n)
+                                        (is-odd? (- n 1))))))
+         (is-odd? (lambda (n) (and (not (zero? n))
+                                   (or (= 1 n)
+                                       (is-even? (- n 1)))))))
+  (display (is-even? 11)))   ⇒ #f
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Functions.xhtml">Functions</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Pictures.xhtml">Composable pictures</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Sequences</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Data-structures.xhtml" title="Data structures"/>
+    <link rel="next" href="Lists.xhtml" title="Lists"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Sequences" epub:type="subchapter" id="Sequences">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Sequences</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">sequence</em> is a generalized list, consisting of zero or more values.
+You can choose between a number of different kinds of sequence implementations.
+Scheme traditionally has <a class="link" href="Lists.xhtml" title="Lists">lists</a> and <a class="link" href="Vectors.xhtml" title="Vectors">vectors</a>.
+Any Java class that implements <code class="literal">java.util.List</code> is a sequence type.
+Raw Java arrays can also be viewerd as a sequence,
+and strings can be viewed a sequence (or vector) of characters.
+Kawa also provides <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">uniform vectors</a>.
+</p>
+      <p>Sequence types differ in their API, but given a sequence type <em class="replaceable"><code>stype</code></em>
+you can construct instances of that type using the syntax:
+</p>
+      <pre class="screen">(<em class="replaceable"><code>stype</code></em> <em class="replaceable"><code>v0</code></em> <em class="replaceable"><code>v1</code></em> .... <em class="replaceable"><code>vn</code></em>)
+</pre>
+      <p>For example:
+</p>
+      <pre class="screen">(bytevector 9 8 7 6)  ⇒ #u8(9 8 7 6)
+</pre>
+      <p>For a raw Java class name <em class="replaceable"><code>jname</code></em> you may need to use
+the empty keyword <code class="literal">||:</code> to separate constructor parameters (if any)
+from sequence elements, as in:
+</p>
+      <pre class="screen">(gnu.lists.U8Vector ||: 9 8 7 6)  ⇒ #u8(9 8 7 6)
+</pre>
+      <p>This syntax works with any type with a default constructor
+and a 1-argument <code class="literal">add</code> method;
+see <a class="link" href="Allocating-objects.xhtml" title="Allocating objects">Allocating objects</a> for details.
+You can use the same syntax for allocating arrays,
+though array creation supports <a class="link" href="Array-operations.xhtml#Creating-new-Java-arrays">more options</a>.
+</p>
+      <p>To extract an element from Scheme sequence of type <em class="replaceable"><code>stype</code></em>
+there is usually a function <code class="literal"><em class="replaceable"><code>stype</code></em>-ref</code>.  For example:
+</p>
+      <pre class="screen">(define vec1 (vector 5 6 7 8))
+(vector-ref vec1 2) ⇒ 7
+</pre>
+      <p>More concisely, you can use (Kawa-specific) function call syntax:
+</p>
+      <pre class="screen">(vec1 3) ⇒ 8
+</pre>
+      <p>The index can be another sequence, which creates a new sequence
+of the selected indexes:
+</p>
+      <pre class="screen">(vec1 [3 0 2 1]) ⇒ #(8 5 7 6)
+</pre>
+      <p>It is convenient to use a <a class="link" href="Ranges.xhtml" title="Ranges"><em class="firstterm">range</em></a> to select
+a sub-sequence:
+</p>
+      <pre class="screen">(vec1 [1 &lt;=: 3]) ⇒ #(6 7 8)
+(vec1 [2 &lt;:]) ⇒ #(7 8)
+</pre>
+      <p>The same function call syntax also works for raw Java arrays
+(though the index is restricted to an integer, not a sequence or array):
+</p>
+      <pre class="screen">(define arr1 (long[] 4 5 6 7))
+(arr1 3) ⇒ 7
+</pre>
+      <p>To assign to (replace) an element from a sequence of Scheme type <em class="replaceable"><code>stype</code></em>
+there is usually a function <code class="literal"><em class="replaceable"><code>stype</code></em>-set!</code>:
+</p>
+      <pre class="screen">(vector-set! vec1 1 9)
+vec1 ⇒ #(5 9 7 8)
+</pre>
+      <p>Again, you can use the function call syntax:
+</p>
+      <pre class="screen">(set! (vec1 2) 'x)
+vec1 ⇒ #(5 9 x 8)
+</pre>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667874524720" class="indexterm"/> <code class="function">length</code> <em class="replaceable"><code>seq</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the number of elements of the <em class="replaceable"><code>seq</code></em>.
+</p>
+          <pre class="screen">(length '(a b c))             ⇒  3
+(length '(a (b) (c d e)))     ⇒  3
+(length '())                  ⇒  0
+(length [3 4 [] 12])          ⇒  4
+(length (vector))             ⇒  0
+(length (int[] 7 6))          ⇒  2
+</pre>
+          <p>The length of a string is the number of characters (Unicode code points).
+In contrast, the <code class="literal">length</code> <span class="emphasis"><em>method</em></span> (of the <code class="literal">CharSequence</code> interface)
+returns the number of 16-bit code points:
+</p>
+          <pre class="screen">(length "Hello")              ⇒  5
+(define str1 "Hello \x1f603;!")
+(invoke str1 'length)         ⇒  9
+(length str1)                 ⇒  8 ; Used to return 9 in Kawa 2.x.
+(string-length str1)          ⇒  8
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Data-structures.xhtml">Data structures</a></p>
+        <p>
+        Next: <a accesskey="n" href="Lists.xhtml">Lists</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

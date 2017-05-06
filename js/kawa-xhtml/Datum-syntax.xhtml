@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Datum syntax</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Lexical-syntax.xhtml" title="Lexical syntax"/>
+    <link rel="next" href="Hash-prefixed-forms.xhtml" title="Hash-prefixed forms"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Datum syntax" epub:type="subchapter" id="Datum-syntax">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Datum syntax</h2>
+          </div>
+        </div>
+      </div>
+      <p>The datum syntax describes the syntax of syntactic data in terms of a
+sequence of <em class="replaceable"><code>lexeme</code></em>s, as defined in the lexical syntax.
+</p>
+      <p>The following grammar describes the syntax of syntactic data in terms of
+various kinds of lexemes defined in the grammar in section “Lexical
+Syntax”:
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667879522976" class="indexterm"/><span id="meta-datum"/><em class="replaceable"><code>datum</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-defining-datum"><em class="replaceable"><code>defining-datum</code></em></a><br/>
+         | <a class="link" href="Datum-syntax.xhtml#meta-nondefining-datum"><em class="replaceable"><code>nondefining-datum</code></em></a><br/>
+         | <a class="link" href="Datum-syntax.xhtml#meta-defined-datum"><em class="replaceable"><code>defined-datum</code></em></a><br/>
+<a id="idm139667879518480" class="indexterm"/><span id="meta-nondefining-datum"/><em class="replaceable"><code>nondefining-datum</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-lexeme-datum"><em class="replaceable"><code>lexeme-datum</code></em></a><br/>
+         | <a class="link" href="Datum-syntax.xhtml#meta-compound-datum"><em class="replaceable"><code>compound-datum</code></em></a><br/>
+<br/>
+<a id="idm139667879514832" class="indexterm"/><span id="meta-lexeme-datum"/><em class="replaceable"><code>lexeme-datum</code></em> <code class="literal">::=</code> <a class="link" href="Boolean-values.xhtml#meta-boolean"><em class="replaceable"><code>boolean</code></em></a> | <em class="replaceable"><code>number</code></em><br/>
+         | <a class="link" href="Characters.xhtml#meta-character"><em class="replaceable"><code>character</code></em></a> | <a class="link" href="String-literals.xhtml#meta-string"><em class="replaceable"><code>string</code></em></a> | <a class="link" href="Datum-syntax.xhtml#meta-symbol"><em class="replaceable"><code>symbol</code></em></a><br/>
+<a id="idm139667879509136" class="indexterm"/><span id="meta-symbol"/><em class="replaceable"><code>symbol</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+<a id="idm139667879506336" class="indexterm"/><span id="meta-compound-datum"/><em class="replaceable"><code>compound-datum</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-list"><em class="replaceable"><code>list</code></em></a> | <a class="link" href="Datum-syntax.xhtml#meta-vector"><em class="replaceable"><code>vector</code></em></a> | <a class="link" href="Uniform-vectors.xhtml#meta-uniform-vector"><em class="replaceable"><code>uniform-vector</code></em></a> | <a class="link" href="Arrays.xhtml#meta-array-literal"><em class="replaceable"><code>array-literal</code></em></a> | <a class="link" href="String-literals.xhtml#meta-extended-string-literal"><em class="replaceable"><code>extended-string-literal</code></em></a> | <a class="link" href="XML-literals.xhtml#meta-xml-literal"><em class="replaceable"><code>xml-literal</code></em></a><br/>
+<a id="idm139667879499440" class="indexterm"/><span id="meta-list"/><em class="replaceable"><code>list</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a>*<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><sup>+</sup> <code class="literal"><span class="bold"><strong>.</strong></span></code> <a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+         | <a class="link" href="Datum-syntax.xhtml#meta-abbreviation"><em class="replaceable"><code>abbreviation</code></em></a><br/>
+<a id="idm139667879490336" class="indexterm"/><span id="meta-vector"/><em class="replaceable"><code>vector</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>#(</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><sup>*</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+      </div>
+      <span id="datum-labels"/>
+      <section class="sect2" title="Datum labels" epub:type="division" id="idm139667879485216">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Datum labels</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879484144" class="indexterm"/><span id="meta-datum-label"/><em class="replaceable"><code>datum-label</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>#</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-indexnum"><em class="replaceable"><code>indexnum</code></em></a><code class="literal"><span class="bold"><strong>=</strong></span></code><br/>
+<a id="idm139667879480032" class="indexterm"/><span id="meta-defining-datum"/><em class="replaceable"><code>defining-datum</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-datum-label"><em class="replaceable"><code>datum-label</code></em></a><sup>+</sup><a class="link" href="Datum-syntax.xhtml#meta-nondefining-datum"><em class="replaceable"><code>nondefining-datum</code></em></a><br/>
+<a id="idm139667879476288" class="indexterm"/><span id="meta-defined-datum"/><em class="replaceable"><code>defined-datum</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>#</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-indexnum"><em class="replaceable"><code>indexnum</code></em></a><code class="literal"><span class="bold"><strong>#</strong></span></code><br/>
+<a id="idm139667879472176" class="indexterm"/><span id="meta-indexnum"/><em class="replaceable"><code>indexnum</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-digit"><em class="replaceable"><code>digit</code></em></a><sup>+</sup><br/>
+</p>
+        </div>
+        <p>The lexical syntax <code class="literal">#<em class="replaceable"><code>n</code></em>=<em class="replaceable"><code>datum</code></em></code> reads the
+same as <em class="replaceable"><code>datum</code></em>, but also results in <em class="replaceable"><code>datum</code></em> being
+labelled by <em class="replaceable"><code>n</code></em>, which must a sequence of digits.
+</p>
+        <p>The lexical syntax <code class="literal">#<em class="replaceable"><code>n</code></em>#</code> serves as a reference to some
+object labelled by <code class="literal">#<em class="replaceable"><code>n</code></em>=</code>; the result is the same object
+(in the sense of <code class="literal">eq?</code>) as the <code class="literal">#<em class="replaceable"><code>n</code></em>=</code>.
+</p>
+        <p>Together, these syntaxes permit the notation of structures
+with shared or circular substructure.
+</p>
+        <pre class="screen">(let ((x (list 'a 'b 'c)))
+  (set-cdr! (cddr x) x)
+  x)    ⇒ #0=(a b c . #0#)
+</pre>
+        <p>The scope of a datum label is the portion of the outermost
+datum in which it appears that is to the right of the label.
+Consequently, a reference <code class="literal">#<em class="replaceable"><code>n</code></em>#</code> can occur
+only after a label <code class="literal">#<em class="replaceable"><code>n</code></em>=</code>;
+it is an error to attempt a forward reference.
+In addition, it is an error if the reference appears as the labelled
+object itself (as in <code class="literal">#<em class="replaceable"><code>n</code></em>=#<em class="replaceable"><code>n</code></em>#</code>), because the object
+labelled by <code class="literal">#<em class="replaceable"><code>n</code></em>=</code> is not well defined in this case.
+</p>
+      </section>
+      <section class="sect2" title="Abbreviations" epub:type="division" id="idm139667879457440">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Abbreviations</h3>
+            </div>
+          </div>
+        </div>
+        <div class="literallayout">
+          <p><a id="idm139667879456368" class="indexterm"/><span id="meta-abbreviation"/><em class="replaceable"><code>abbreviation</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-r6rs-abbreviation"><em class="replaceable"><code>r6rs-abbreviation</code></em></a> | <a class="link" href="Datum-syntax.xhtml#meta-kawa-abbreviation"><em class="replaceable"><code>kawa-abbreviation</code></em></a><br/>
+<a id="idm139667879452752" class="indexterm"/><span id="meta-r6rs-abbreviation"/><em class="replaceable"><code>r6rs-abbreviation</code></em> <code class="literal">::=</code> <a class="link" href="Datum-syntax.xhtml#meta-abbrev-prefix"><em class="replaceable"><code>abbrev-prefix</code></em></a> <a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><br/>
+<a id="idm139667879449136" class="indexterm"/><span id="meta-abbrev-prefix"/><em class="replaceable"><code>abbrev-prefix</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>’</strong></span></code> | <code class="literal"><span class="bold"><strong>‘</strong></span></code> | <code class="literal"><span class="bold"><strong>,</strong></span></code> | <code class="literal"><span class="bold"><strong>,@</strong></span></code><br/>
+         | <code class="literal"><span class="bold"><strong>#’</strong></span></code> | <code class="literal"><span class="bold"><strong>#‘</strong></span></code><br/>
+<a id="idm139667879442288" class="indexterm"/><span id="meta-kawa-abbreviation"/><em class="replaceable"><code>kawa-abbreviation</code></em> <code class="literal">::=</code> XXX<br/>
+</p>
+        </div>
+        <p>The following abbreviations are expanded at read-time:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal"><span class="bold"><strong>’</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(quote</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>‘</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(quasiquote</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>,</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(unquote</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>,@</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(unquote-splicing</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>#’</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(syntax</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>#‘</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(quasisyntax</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>#,</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(unsyntax</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+This abbreviation is currently only recognized when nested inside an explicit
+<code class="literal"><span class="bold"><strong>#‘</strong></span></code><em class="replaceable"><code>datum</code></em> form,
+because of a conflict with SRFI-10 named constructors.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>#,@</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>(unsyntax-splicing</strong></span></code> <em class="replaceable"><code>datum</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><em class="replaceable"><code>datum1</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><em class="replaceable"><code>datum2</code></em>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>($lookup$</strong></span></code> <em class="replaceable"><code>datum1</code></em> <code class="literal"><span class="bold"><strong>(quasiquote</strong></span></code> <em class="replaceable"><code>datum2</code></em><code class="literal"><span class="bold"><strong>))</strong></span></code>.
+See <a class="link" href="Colon-notation.xhtml" title="Property access using colon notation">Colon notation</a>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal"><span class="bold"><strong>[</strong></span></code><em class="replaceable"><code>expression</code></em> ...<code class="literal"><span class="bold"><strong>]</strong></span></code>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>($bracket-list$</strong></span></code> <em class="replaceable"><code>expression</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+            <dt class="term"><em class="replaceable"><code>operator</code></em><code class="literal"><span class="bold"><strong>[</strong></span></code><em class="replaceable"><code>expression</code></em> ...<code class="literal"><span class="bold"><strong>]</strong></span></code>
+</dt>
+            <dd>
+              <p>means <code class="literal"><span class="bold"><strong>($bracket-apply$</strong></span></code> <em class="replaceable"><code>operator</code></em> <em class="replaceable"><code>expression</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>.
+</p>
+            </dd>
+          </dl>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Datum-syntax.xhtml#idm139667879485216">Datum labels</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Datum-syntax.xhtml#idm139667879457440">Abbreviations</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Lexical-syntax.xhtml">Lexical syntax</a></p>
+        <p>
+        Next: <a accesskey="n" href="Hash-prefixed-forms.xhtml">Hash-prefixed forms</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

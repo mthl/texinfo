@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Ports</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Reading-and-writing-whole-files.xhtml" title="Reading and writing whole files"/>
+    <link rel="next" href="Format.xhtml" title="Formatted Output (Common-Lisp-style)"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Ports" epub:type="subchapter" id="Ports">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Ports</h2>
+          </div>
+        </div>
+      </div>
+      <p>Ports represent input and output devices.
+An input port is a Scheme object that can deliver data upon
+command, while an output port is a Scheme object that can
+accept data.
+</p>
+      <p>Different <em class="firstterm">port types</em> operate on different data:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>A <em class="firstterm">textual port</em> supports reading or writing of individual
+characters from or to a backing store containing characters
+using <code class="literal">read-char</code> and <code class="literal">write-char</code> below, and it supports
+operations defined in terms of characters, such as <code class="literal">read</code> and
+<code class="literal">write</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A <em class="firstterm">binary port</em> supports reading or writing of individual
+bytes from or to a backing store containing bytes using
+<code class="literal">read-u8</code> and <code class="literal">write-u8</code> below, as well as operations defined
+in terms of bytes (integers in the range 0 to 255).
+</p>
+            <p>All Kawa binary ports created by procedures documented here
+are also textual ports.  Thus you can either read/write
+bytes as described above, or read/write
+characters whose scalar value is in the range 0 to 255
+(i.e. the Latin-1 character set), using <code class="literal">read-char</code> and <code class="literal">write-char</code>.
+</p>
+            <p>A native binary port is a <code class="literal">java.io.InputStream</code>
+or <code class="literal">java.io.OutputStream</code> instance.  These are not textual ports.
+You can use methods <code class="literal">read-u8</code> and <code class="literal">write-u8</code>,
+
+but not <code class="literal">read-char</code> and <code class="literal">write-char</code> on native binary ports.
+(The functions <code class="literal">input-port?</code>, <code class="literal">output-port?</code>, <code class="literal">binary-port?</code>,
+and <code class="literal">port?</code> all currently return false on native binary ports,
+but that may change.)
+</p>
+          </li>
+        </ul>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872772224" class="indexterm"/> <code class="function">call-with-port</code> <em class="replaceable"><code>port</code></em> <em class="replaceable"><code>proc</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">call-with-port</code> procedure calls <em class="replaceable"><code>proc</code></em> with port as an
+argument. If <em class="replaceable"><code>proc</code></em> returns, then the port is closed automatically
+and the values yielded by the proc are returned.
+</p>
+          <p>If <em class="replaceable"><code>proc</code></em> does not return, then the port must not be closed
+automatically unless it is possible to prove that the port
+will never again be used for a read or write operation.
+</p>
+          <p>As a Kawa extension, <em class="replaceable"><code>port</code></em> may be any object
+that implements <code class="literal">java.io.Closeable</code>.
+It is an error if <em class="replaceable"><code>proc</code></em> does not accept one argument.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872761808" class="indexterm"/> <code class="function">call-with-input-file</code> <em class="replaceable"><code>path</code></em> <em class="replaceable"><code>proc</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872758560" class="indexterm"/> <code class="function">call-with-output-file</code> <em class="replaceable"><code>path</code></em> <em class="replaceable"><code>proc</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures obtain a textual port obtained by
+opening the named file for input or output as if by
+<code class="literal">open-input-file</code> or <code class="literal">open-output-file</code>. The port and
+<em class="replaceable"><code>proc</code></em> are then passed to a procedure equivalent to
+<code class="literal">call-with-port</code>.
+</p>
+          <p>It is an error if <em class="replaceable"><code>proc</code></em> does not accept one argument.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872752016" class="indexterm"/> <code class="function">input-port?</code> <em class="replaceable"><code>obj</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872749216" class="indexterm"/> <code class="function">output-port?</code> <em class="replaceable"><code>obj</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872746416" class="indexterm"/> <code class="function">textual-port?</code> <em class="replaceable"><code>obj</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872743616" class="indexterm"/> <code class="function">binary-port?</code> <em class="replaceable"><code>obj</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872740816" class="indexterm"/> <code class="function">port?</code> <em class="replaceable"><code>obj</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>These procedures return <code class="literal">#t</code> if obj is an input port, output port,
+textual port, binary port, or any kind of port,
+respectively. Otherwise they return <code class="literal">#f</code>.
+</p>
+          <p>These procedures currently return <code class="literal">#f</code> on a native Java streams
+(<code class="literal">java.io.InputStream</code> or <code class="literal">java.io.OutputStream</code>),
+a native reader (a <code class="literal">java.io.Reader</code> that is not an
+<code class="literal">gnu.mapping.Inport</code>), or a native writer (a <code class="literal">java.io.Writer</code>
+that is not an <code class="literal">gnu.mapping.Outport</code>).  This may change if
+conversions between native ports and Scheme ports becomes more seamless.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872732768" class="indexterm"/> <code class="function">input-port-open?</code> <em class="replaceable"><code>port</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872729936" class="indexterm"/> <code class="function">output-port-open?</code> <em class="replaceable"><code>port</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns <code class="literal">#t</code> if <em class="replaceable"><code>port</code></em> is still open and capable of performing
+input or output, respectively, and <code class="literal">#f</code> otherwise.
+(Not supported for native binary ports - i.e. <code class="literal">java.io.InputStteam</code>
+or <code class="literal">java.io.OutputStream</code>.)
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872724368" class="indexterm"/> <code class="function">current-input-port</code></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872721952" class="indexterm"/> <code class="function">current-output-port</code></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872719536" class="indexterm"/> <code class="function">current-error-port</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns the current default input port, output port, or
+error port (an output port), respectively.
+(The error port is the port to which errors and warnings should be sent
+- the <em class="firstterm">standard error</em> in Unix and C terminology.)
+These procedures are <a class="link" href="Parameter-objects.xhtml" title="Parameter objects">parameter objects</a>,
+which can be overridden with <a class="link" href="Parameter-objects.xhtml#parameterize-syntax"><code class="literal">parameterize</code></a>.
+</p>
+          <p>The initial bindings for <code class="literal">(current-output-port)</code> and
+<code class="literal">(current-error-port)</code> are hybrid textual/binary
+ports that wrap the values of the corresponding <code class="literal">java.lang.System</code> fields
+<code class="literal">out</code>, and <code class="literal">err</code>.  The latter, in turn are bound
+to the standard output and error streams of the JVM process.
+This means you can write binary data to standard output
+using <code class="literal">write-bytevector</code> and <code class="literal">write-u8</code>.
+</p>
+          <p>The initial value <code class="literal">(current-input-port)</code> similarly is a textual port
+that wraps the <code class="literal">java.lang.System</code> field <code class="literal">in</code>, which is bound
+to the standard input stream of the JVM process.
+It is a <span class="emphasis"><em>hybrid</em></span> textual/binary port only if there
+is no console (as determined by <code class="literal">(java.lang.System:console)</code>
+returning <code class="literal">#!null</code>) - i.e. if standard input is not a tty.
+</p>
+          <p>Here is an example that copies standard input to standard output:
+</p>
+          <pre class="screen">(let* ((in (current-input-port))
+       (out (current-output-port))
+       (blen ::int 2048)
+       (buf (make-bytevector blen)))
+  (let loop ()
+    (define n (read-bytevector! buf in))
+    (cond ((not (eof-object? n))
+           (write-bytevector buf out 0 n)
+           (loop)))))
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872706240" class="indexterm"/> <code class="function">with-input-from-file</code> <em class="replaceable"><code>path</code></em> <em class="replaceable"><code>thunk</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872702992" class="indexterm"/> <code class="function">with-output-to-file</code> <em class="replaceable"><code>path</code></em> <em class="replaceable"><code>thunk</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The file is opened for input or output as if by
+<code class="literal">open-input-file</code> or <code class="literal">open-output-file</code>, and the new port
+is made to be the value returned by <code class="literal">current-input-port</code>
+or <code class="literal">current-output-port</code> (as used by <code class="literal">(read)</code>,
+<code class="literal">(write <em class="replaceable"><code>obj</code></em>)</code>, and so forth). The thunk is then called with no
+arguments. When the <em class="replaceable"><code>thunk</code></em> returns, the port is closed
+and the previous default is restored. It is an error if <em class="replaceable"><code>thunk</code></em>
+does not accept zero arguments. Both procedures return
+the values yielded by <em class="replaceable"><code>thunk</code></em>. If an escape procedure is used
+to escape from the continuation of these procedures, they
+behave exactly as if the current input or output port had
+been bound dynamically with <code class="literal">parameterize</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872694000" class="indexterm"/> <code class="function">open-input-file</code> <em class="replaceable"><code>path</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872691168" class="indexterm"/> <code class="function">open-binary-input-file</code> <em class="replaceable"><code>path</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Takes a <em class="replaceable"><code>path</code></em> naming an existing file and returns a textual
+input port or binary input port that is capable of delivering
+data from the file.
+
+
+</p>
+          <p>The procedure <code class="literal">open-input-file</code> checks the fluid variable
+<a class="link" href="Ports.xhtml#port-char-encoding"><code class="literal">port-char-encoding</code></a> to determine how bytes are decoded
+into characters.  The procedure <code class="literal">open-binary-input-file</code>
+is equivalent to calling <code class="literal">open-input-file</code> with
+<code class="literal">port-char-encoding</code> set to <code class="literal">#f</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872682960" class="indexterm"/> <code class="function">open-output-file</code> <em class="replaceable"><code>path</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872680128" class="indexterm"/> <code class="function">open-binary-output-file</code> <em class="replaceable"><code>path</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Takes a <em class="replaceable"><code>path</code></em> naming an output file to be created and returns
+respectively a textual output port or binary output port that is
+capable of writing data to a new file by that name. If a
+file with the given name already exists, the effect is unspecified.
+
+
+</p>
+          <p>The procedure <code class="literal">open-output-file</code> checks the fluid variable
+<a class="link" href="Ports.xhtml#port-char-encoding"><code class="literal">port-char-encoding</code></a> to determine how characters are
+encoded as bytes.  The procedure <code class="literal">open-binary-output-file</code>
+is equivalent to calling <code class="literal">open-output-file</code> with
+<code class="literal">port-char-encoding</code> set to <code class="literal">#f</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872671904" class="indexterm"/> <code class="function">close-port</code> <em class="replaceable"><code>port</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872669072" class="indexterm"/> <code class="function">close-input-port</code> <em class="replaceable"><code>port</code></em></p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872666240" class="indexterm"/> <code class="function">close-output-port</code> <em class="replaceable"><code>port</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Closes the resource associated with <em class="replaceable"><code>port</code></em>, rendering the port
+incapable of delivering or accepting data. It is an error to
+apply the last two procedures to a port which is not an
+input or output port, respectively.
+(Specifically, <code class="literal">close-input-port</code> requires a <code class="literal">java.io.Reader</code>,
+while <code class="literal">close-output-port</code> requires a <code class="literal">java.io.Writer</code>.
+In contrast <code class="literal">close-port</code> accepts any object whose class
+implements <code class="literal">java.io.Closeable</code>.)
+
+
+
+
+</p>
+          <p>These routines have no effect if the port has already been
+closed.
+</p>
+        </blockquote>
+      </div>
+      <section class="sect2" title="String and bytevector ports" epub:type="division" id="idm139667872657696">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">String and bytevector ports</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872656608" class="indexterm"/> <code class="function">open-input-string</code> <em class="replaceable"><code>string</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Takes a string and returns a text input port that delivers characters
+from the string. The port can be closed by <code class="literal">close-input-port</code>,
+though its storage will be reclaimed by the
+garbage collector if it becomes inaccessible. 
+</p>
+            <pre class="screen">(define p
+  (open-input-string "(a . (b c . ())) 34"))
+
+(input-port? p)                 ⇒  #t
+(read p)                        ⇒  (a b c)
+(read p)                        ⇒  34
+(eof-object? (peek-char p))     ⇒  #t
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872651728" class="indexterm"/> <code class="function">open-output-string</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns an textual output port that will accumulate characters
+for retrieval by <code class="literal">get-output-string</code>.
+The port can be closed by the procedure <code class="literal">close-output-port</code>,
+though its storage will be reclaimed by the garbage collector
+if it becomes inaccessible. 
+</p>
+            <pre class="screen">(let ((q (open-output-string))
+  (x '(a b c)))
+    (write (car x) q)
+    (write (cdr x) q)
+    (get-output-string q))        ⇒  "a(b c)"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872647264" class="indexterm"/> <code class="function">get-output-string</code> <em class="replaceable"><code>output-port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Given an output port created by <code class="literal">open-output-string</code>,
+returns a string consisting of the characters that have been
+output to the port so far in the order they were output.
+If the result string is modified, the effect is unspecified.
+</p>
+            <pre class="screen">(parameterize
+    ((current-output-port (open-output-string)))
+    (display "piece")
+    (display " by piece ")
+    (display "by piece.")
+    (newline)
+    (get-output-string (current-output-port)))
+        ⇒ "piece by piece by piece.\n"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872642416" class="indexterm"/> <code class="function">call-with-input-string</code> <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>proc</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Create an input port that gets its data from <em class="replaceable"><code>string</code></em>,
+call <em class="replaceable"><code>proc</code></em> with that port as its one argument, and return
+the result from the call of <em class="replaceable"><code>proc</code></em>
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872637216" class="indexterm"/> <code class="function">call-with-output-string</code> <em class="replaceable"><code>proc</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Create an output port that writes its data to a <em class="replaceable"><code>string</code></em>,
+and call <em class="replaceable"><code>proc</code></em> with that port as its one argument.
+Return a string consisting of the data written to the port.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872632832" class="indexterm"/> <code class="function">open-input-bytevector</code> <em class="replaceable"><code>bytevector</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Takes a bytevector and returns a binary input port that
+delivers bytes from the bytevector.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872629376" class="indexterm"/> <code class="function">open-output-bytevector</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a binary output port that will accumulate bytes
+for retrieval by <code class="literal">get-output-bytevector</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872625936" class="indexterm"/> <code class="function">get-output-bytevector</code> <em class="replaceable"><code>port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a bytevector consisting of the bytes that have been
+output to the port so far in the order they were output.
+It is an error if <em class="replaceable"><code>port</code></em> was not created with <code class="literal">open-output-bytevector</code>.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Input" epub:type="division" id="idm139667872621584">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Input</h3>
+            </div>
+          </div>
+        </div>
+        <p>If <em class="replaceable"><code>port</code></em> is omitted from any input procedure, it defaults
+to the value returned by <code class="literal">(current-input-port)</code>. It is an
+error to attempt an input operation on a closed port.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872619120" class="indexterm"/> <code class="function">read</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">read</code> procedure converts external representations of
+Scheme objects into the objects themselves. That is, it is
+a parser for the non-terminal <a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a>.
+It returns the next object parsable from the
+given textual input port, updating port to point to the
+first character past the end of the external representation
+of the object.
+</p>
+            <p>If an end of file is encountered in the input before any
+characters are found that can begin an object, then an
+end-of-file object is returned. The port remains open, and
+further attempts to read will also return an end-of-file object.
+If an end of file is encountered after the beginning of
+an object’s external representation, but the external representation
+is incomplete and therefore not parsable, an error
+that satisfies <code class="literal">read-error?</code> is signaled.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872612320" class="indexterm"/> <code class="function">read-char</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the next character available from the textual input
+<em class="replaceable"><code>port</code></em>, updating the port to point to the following character.
+If no more characters are available, an end-of-file value is
+returned.
+</p>
+            <p>The result type is <code class="literal">character-or-eof</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872607376" class="indexterm"/> <code class="function">peek-char</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the next character available from the textual input <em class="replaceable"><code>port</code></em>,
+but <span class="emphasis"><em>without</em></span> updating the port to point to the
+following character. If no more characters are available, an
+end-of-file value is returned.
+</p>
+            <p>The result type is <code class="literal">character-or-eof</code>.
+</p>
+            <p><span class="emphasis"><em>Note:</em></span> The value returned by a call to <code class="literal">peek-char</code> is the same as
+the value that would have been returned by a call to <code class="literal">read-char</code>
+with the same <em class="replaceable"><code>port</code></em>. The only difference is that the very next call
+to <code class="literal">read-char</code> or <code class="literal">peek-char</code> on that <em class="replaceable"><code>port</code></em> will return the
+value returned by the preceding call to <code class="literal">peek-char</code>. In particular, a
+call to <code class="literal">peek-char</code> on an interactive port will hang waiting for
+input whenever a call to <code class="literal">read-char</code> would have hung.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872597040" class="indexterm"/> <code class="function">read-line</code> [<em class="replaceable"><code>port</code></em> [<em class="replaceable"><code>handle-newline</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Reads a line of input from the textual input <em class="replaceable"><code>port</code></em>.
+The <em class="replaceable"><code>handle-newline</code></em> parameter determines what is done with
+terminating end-of-line delimiter.
+The default, <code class="literal">'trim</code>, ignores the delimiter;
+<code class="literal">'peek</code> leaves the delimiter in the input stream;
+<code class="literal">'concat</code> appends the delimiter to the returned value;
+and <code class="literal">'split</code> returns the delimiter as a second value.
+You can use the last three options to tell if the string was
+terminated by end-or-line or by end-of-file.
+If an end of file is encountered before any end of
+line is read, but some characters have been read, a string
+containing those characters is returned.
+(In this case, <code class="literal">'trim</code>, <code class="literal">'peek</code>, and <code class="literal">'concat</code>
+have the same result and effect.  The <code class="literal">'split</code> case returns two
+values: The characters read, and the delimiter is an empty string.)
+If an end of file is encountered before any characters are read,
+an end-of-file object is returned.
+For the purpose of this procedure, an
+end of line consists of either a linefeed character, a carriage
+return character, or a sequence of a carriage return character
+followed by a linefeed character.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872587792" class="indexterm"/> <code class="function">eof-object?</code> <em class="replaceable"><code>obj</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is an end-of-file object,
+otherwise returns <code class="literal">#f</code>.
+</p>
+            <p><code class="literal">Performance note</code>: If <em class="replaceable"><code>obj</code></em> has type <code class="literal">character-or-eof</code>,
+this is compiled as an <code class="literal">int</code> comparison with -1.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872581200" class="indexterm"/> <code class="function">eof-object</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns an end-of-file object.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872578224" class="indexterm"/> <code class="function">char-ready?</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns <code class="literal">#t</code> if a character is ready on the textual input
+<em class="replaceable"><code>port</code></em> and returns <code class="literal">#f</code> otherwise. If char-ready returns <code class="literal">#t</code>
+then the next <code class="literal">read-char</code> operation on the given <em class="replaceable"><code>port</code></em> is
+guaranteed not to hang. If the port is at end of file then
+<code class="literal">char-ready?</code> returns <code class="literal">#t</code>.
+</p>
+            <p><span class="emphasis"><em>Rationale:</em></span> The <code class="literal">char-ready?</code> procedure exists to make it
+possible for a program to accept characters from interactive ports
+without getting stuck waiting for input. Any input editors as-
+sociated with such ports must ensure that characters whose
+existence has been asserted by <code class="literal">char-ready?</code> cannot be removed
+from the input. If <code class="literal">char-ready?</code> were to return <code class="literal">#f</code> at end of
+file, a port at end-of-file would be indistinguishable from an
+interactive port that has no ready characters.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872568352" class="indexterm"/> <code class="function">read-string</code> <em class="replaceable"><code>k</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Reads the next <em class="replaceable"><code>k</code></em> characters, or as many as are available
+before the end of file, from the textual input <em class="replaceable"><code>port</code></em> into a
+newly allocated string in left-to-right order and returns the
+string. If no characters are available before the end of file,
+an end-of-file object is returned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872563360" class="indexterm"/> <code class="function">read-u8</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the next byte available from the binary input <em class="replaceable"><code>port</code></em>,
+updating the <em class="replaceable"><code>port</code></em> to point to the following byte. If no more
+bytes are available, an end-of-file object is returned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872558848" class="indexterm"/> <code class="function">peek-u8</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the next byte available from the binary input <em class="replaceable"><code>port</code></em>,
+but <span class="emphasis"><em>without</em></span> updating the <em class="replaceable"><code>port</code></em> to point to the following byte.
+If no more bytes are available, an end-of-file object is returned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872553888" class="indexterm"/> <code class="function">u8-ready?</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns <code class="literal">#t</code> if a byte is ready on the binary input <em class="replaceable"><code>port</code></em> and
+returns <code class="literal">#f</code> otherwise. If <code class="literal">u8-ready?</code> returns <code class="literal">#t</code> then the
+next <code class="literal">read-u8</code> operation on the given port is guaranteed
+not to hang. If the port is at end of file then <code class="literal">u8-ready?</code>
+returns <code class="literal">#t</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872546848" class="indexterm"/> <code class="function">read-bytevector</code> <em class="replaceable"><code>k</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Reads the next <em class="replaceable"><code>k</code></em> bytes, or as many as are available before
+the end of file, from the binary input <em class="replaceable"><code>port</code></em> into a newly
+allocated bytevector in left-to-right order and returns the
+bytevector. If no bytes are available before the end of file,
+an end-of-file object is returned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872541872" class="indexterm"/> <code class="function">read-bytevector!</code> <em class="replaceable"><code>bytevector</code></em> [<em class="replaceable"><code>port</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Reads the next <em class="replaceable"><code>end</code></em> − <em class="replaceable"><code>start</code></em> bytes, or as many as are
+available before the end of file, from the binary input <em class="replaceable"><code>port</code></em>
+into <em class="replaceable"><code>bytevector</code></em> in left-to-right order beginning at the <em class="replaceable"><code>start</code></em>
+position. If <em class="replaceable"><code>end</code></em> is not supplied, reads until the end of
+<em class="replaceable"><code>bytevector</code></em> has been reached. If <em class="replaceable"><code>start</code></em> is not supplied, reads
+beginning at position 0. Returns the number of bytes read.
+If no bytes are available, an end-of-file object is returned.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Output" epub:type="division" id="idm139667872533328">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Output</h3>
+            </div>
+          </div>
+        </div>
+        <p>If <em class="replaceable"><code>port</code></em> is omitted from any output procedure, it defaults
+to the value returned by <code class="literal">(current-output-port)</code>. It is an
+error to attempt an output operation on a closed port.
+</p>
+        <p>The return type of these methods is <code class="literal">void</code>.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872530016" class="indexterm"/> <code class="function">write</code> <em class="replaceable"><code>obj</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes a representation of <em class="replaceable"><code>obj</code></em> to the given textual output
+<em class="replaceable"><code>port</code></em>. Strings that appear in the written representation
+are enclosed in quotation marks, and within those strings
+backslash and quotation mark characters are escaped by
+backslashes.
+Symbols that contain non-ASCII characters
+are escaped with vertical lines.
+Character objects are written using the <code class="literal">#\</code> notation.
+</p>
+            <p>If <em class="replaceable"><code>obj</code></em> contains cycles which would cause an infinite loop
+using the normal written representation, then at least the
+objects that form part of the cycle must be represented
+using <a class="link" href="Datum-syntax.xhtml#datum-labels">datum labels</a>. Datum
+labels must not be used if there are no cycles.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872522816" class="indexterm"/> <code class="function">write-shared</code> <em class="replaceable"><code>obj</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">write-shared</code> procedure is the same as <code class="literal">write</code>, except
+that shared structure must be represented using datum
+labels for all pairs and vectors that appear more than once
+in the output.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872517888" class="indexterm"/> <code class="function">write-simple</code> <em class="replaceable"><code>obj</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The <code class="literal">write-simple</code> procedure is the same as <code class="literal">write</code>, except
+that shared structure is never represented using datum labels.
+This can cause write-simple not to terminate if <em class="replaceable"><code>obj</code></em>
+contains circular structure.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872512544" class="indexterm"/> <code class="function">display</code> <em class="replaceable"><code>obj</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes a representation of <em class="replaceable"><code>obj</code></em> to the given textual output
+port. Strings that appear in the written representation
+are output as if by <code class="literal">write-string</code> instead of by <code class="literal">write</code>.
+Symbols are not escaped. Character objects appear in the
+representation as if written by <code class="literal">write-char</code> instead of by
+<code class="literal">write</code>.
+The <code class="literal">display</code> representation of other objects is unspecified.
+
+
+
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872504560" class="indexterm"/> <code class="function">newline</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes an end of line to textual output <em class="replaceable"><code>port</code></em>.
+This is done using the <code class="literal">println</code> method
+of the Java class <code class="literal">java.io.PrintWriter</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872499792" class="indexterm"/> <code class="function">write-char</code> <em class="replaceable"><code>char</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes the character <em class="replaceable"><code>char</code></em> (not an external representation
+of the character) to the given textual output <em class="replaceable"><code>port</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872494944" class="indexterm"/> <code class="function">write-string</code> <em class="replaceable"><code>string</code></em> [<em class="replaceable"><code>port</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes the characters of <em class="replaceable"><code>string</code></em> from <em class="replaceable"><code>start</code></em> to <em class="replaceable"><code>end</code></em>
+in left-to-right order to the textual output <em class="replaceable"><code>port</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872488448" class="indexterm"/> <code class="function">write-u8</code> <em class="replaceable"><code>byte</code></em> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes the <em class="replaceable"><code>byte</code></em> to the given binary output port.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872484064" class="indexterm"/> <code class="function">write-bytevector</code> <em class="replaceable"><code>bytevector</code></em> [<em class="replaceable"><code>port</code></em> [<em class="replaceable"><code>start</code></em> [<em class="replaceable"><code>end</code></em>]]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Writes the bytes of <em class="replaceable"><code>bytevector</code></em> from <em class="replaceable"><code>start</code></em> to <em class="replaceable"><code>end</code></em>
+in left-to-right order to the binary output <em class="replaceable"><code>port</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872477584" class="indexterm"/> <code class="function">flush-output-port</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872474624" class="indexterm"/> <code class="function">force-output</code> [<em class="replaceable"><code>port</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Forces any pending output on <em class="replaceable"><code>port</code></em> to be delivered to the output file or
+device and returns an unspecified value.  If the <em class="replaceable"><code>port</code></em> argument is
+omitted it defaults to the value returned by <code class="literal">(current-output-port)</code>.
+(The name <code class="literal">force-output</code> is older,
+while R6RS added <code class="literal">flush-output-port</code>. They have the same effect.)
+</p>
+          </blockquote>
+        </div>
+        <span id="Prompts"/>
+        <a id="idm139667872468512" class="indexterm"/>
+      </section>
+      <section class="sect2" title="Prompts for interactive consoles (REPLs)" epub:type="division" id="idm139667872467600">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Prompts for interactive consoles (REPLs)</h3>
+            </div>
+          </div>
+        </div>
+        <p>When an interactive input port is used for a read-eval-print-loop (REPL
+or console) it is traditional for the REPL to print a short
+<em class="firstterm">prompt</em> string to signal that the user is expected to type
+an expression.  These prompt strings can be customized.
+</p>
+        <span id="input-prompt1"/>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872465024" class="indexterm"/> <code class="varname">input-prompt1</code></p>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872462608" class="indexterm"/> <code class="varname">input-prompt2</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>These are fluid variable whose values are string templates
+with placeholders similar to <code class="literal">printf</code>-style format.
+The placeholders are expanded (depending on the current state),
+and the resulting string printed in front of the input line.
+</p>
+            <p>The <code class="literal">input-prompt1</code> is used normally.  For multi-line input commands
+(for example if the first line is incomplete), <code class="literal">input-prompt1</code>
+is used for the first line of each command, while <code class="literal">input-prompt2</code> is
+used for subsequent “continuation” lines.
+</p>
+            <p>The following placeholders are handled:
+</p>
+            <div class="variablelist" epub:type="list">
+              <dl class="variablelist">
+                <dt class="term"><code class="literal"><span class="bold"><strong>%%</strong></span></code>
+</dt>
+                <dd>
+                  <p>A literal ‘<code class="literal">%</code>’.
+</p>
+                </dd>
+                <dt class="term"><code class="literal"><span class="bold"><strong>%N</strong></span></code>
+</dt>
+                <dd>
+                  <p>The current line number.  This is <code class="literal">(+ 1 (port-line <em class="replaceable"><code>port</code></em>))</code>.
+</p>
+                </dd>
+                <dt class="term"><code class="literal"><span class="bold"><strong>%</strong></span></code><em class="replaceable"><code>n</code></em><code class="literal"><span class="bold"><strong>P</strong></span></code><em class="replaceable"><code>c</code></em>
+</dt>
+                <dd>
+                  <p>Insert padding at this possion, repeating the following
+  character <code class="literal"><em class="replaceable"><code>c</code></em></code> as needed to bring the total number of columns
+of the prompt to that specified by the digits <code class="literal"><em class="replaceable"><code>n</code></em></code>.
+</p>
+                </dd>
+                <dt class="term"><code class="literal"><span class="bold"><strong>%P</strong></span></code><em class="replaceable"><code>c</code></em>
+</dt>
+                <dd>
+                  <p>Same as <code class="literal">%<em class="replaceable"><code>n</code></em>P<em class="replaceable"><code>c</code></em></code>, but <code class="literal"><em class="replaceable"><code>n</code></em></code> defaults to the number
+of columns in the initial prompt from the expansion of <code class="literal">input-prompt1</code>.
+This is only meaningful when expanding <code class="literal">input-prompt2</code> for
+continuation lines.
+</p>
+                </dd>
+                <dt class="term"><code class="literal"><span class="bold"><strong>%</strong></span></code><code class="literal"><span class="bold"><strong>{</strong></span></code><em class="replaceable"><code>hidden</code></em><code class="literal"><span class="bold"><strong>%}</strong></span></code>
+</dt>
+                <dd>
+                  <p>Same as <em class="replaceable"><code>hidden</code></em>, but the characters of <em class="replaceable"><code>hidden</code></em>
+are assumed to have zero visible width.  Can be used for
+<a class="ulink" href="https://en.wikipedia.org/wiki/ANSI_escape_code" target="_top">ANSI escape sequences</a>
+to change color or style:
+</p>
+                  <pre class="screen">(set! input-prompt1 "%{\e[48;5;51m%}{Kawa:%N} %{\e[0m%}")
+</pre>
+                  <p>The above changes both the text and the background color
+(to a pale blue).
+</p>
+                </dd>
+                <dt class="term"><code class="literal"><span class="bold"><strong>%M</strong></span></code>
+</dt>
+                <dd>
+                  <p>Insert a “message” string.
+Not normally used by Kawa, but supported by JLine.
+</p>
+                </dd>
+              </dl>
+            </div>
+            <p>These variables can be initialized by the command-line
+arguments <code class="literal">console:prompt1=<em class="replaceable"><code>prompt1</code></em></code> and
+<code class="literal">console:prompt2=<em class="replaceable"><code>prompt2</code></em></code>, respectively.  If these are
+not specified, languages-specific defaults are used.
+For example for Scheme the default value of <code class="literal">input-prompt1</code>
+is <code class="literal">"#|kawa:%N|# "</code> and <code class="literal">input-prompt2</code> is <code class="literal">"#|$P.%N| "</code>.
+These have the form of Scheme comments, to make it easier to cut-and-paste.
+</p>
+            <p>If <code class="literal">input-prompt1</code> (respectively <code class="literal">input-prompt2</code>) does not contain
+an escape sequence (either <code class="literal">"%{</code> or the escape character <code class="literal">"\e"</code>)
+then ANSI escape sequences are added to to highlight the prompt.
+(Under DomTerm this sets the <code class="literal">prompt</code> style, which can be customised
+with CSS but defaults to a light green background;
+if using JLine the background is set to light green.)
+</p>
+          </blockquote>
+        </div>
+        <p>For greater flexibility, you can also set a prompter procedure.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872429600" class="indexterm"/> <code class="function">set-input-port-prompter!</code> <em class="replaceable"><code>port</code></em> <em class="replaceable"><code>prompter</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Set the prompt procedure associated with <em class="replaceable"><code>port</code></em> to <em class="replaceable"><code>prompter</code></em>,
+which must be a one-argument procedure taking an input port,
+and returning a string.
+The procedure is called before reading the first line of a command;
+its return value is used as the first-line prompt.
+</p>
+            <p>The prompt procedure can have side effects.
+In Bash shell terms: It combines the features of <code class="literal">PROMPT_COMMAND</code>
+and <code class="literal">PS1</code>.
+</p>
+            <p>The initial <em class="replaceable"><code>prompter</code></em> is <code class="literal">default-prompter</code>,
+which returns the expansion of <code class="literal">input-prompt1</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872421584" class="indexterm"/> <code class="function">input-port-prompter</code> <em class="replaceable"><code>port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Get the prompt procedure associated with <em class="replaceable"><code>port</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872417760" class="indexterm"/> <code class="function">default-prompter</code> <em class="replaceable"><code>port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The default prompt procedure.
+Normally (i.e. when <code class="literal">input-port-read-state</code> is a space)
+returns <code class="literal">input-prompt1</code> after expanding the <code class="literal">%</code>-placeholders.
+Can also expand <code class="literal">input-prompt2</code> when <code class="literal">input-port-read-state</code>
+is not whitespace.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Line numbers and other input port properties" epub:type="division" id="idm139667872412128">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Line numbers and other input port properties</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Function"><span class="kind">Function</span><span class="ignore">: </span><a id="idm139667872411024" class="indexterm"/> <code class="function">port-column</code> <em class="replaceable"><code>input-port</code></em></p>
+        <p class="synopsis" kind="Function"><span class="kind">Function</span><span class="ignore">: </span><a id="idm139667872408192" class="indexterm"/> <code class="function">port-line</code> <em class="replaceable"><code>input-port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the current column number or line number of <em class="replaceable"><code>input-port</code></em>,
+using the current input port if none is specified.
+If the number is unknown, the result is <code class="literal">#f</code>.  Otherwise,
+the result is a 0-origin integer - i.e. the first character
+of the first line is line 0, column 0.  (However, when you
+display a file position, for example in an error message,
+we recommend you add 1 to get 1-origin integers.  This is
+because lines and column numbers traditionally start with
+1, and that is what non-programmers will find most natural.)
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872403488" class="indexterm"/> <code class="function">set-port-line!</code> <em class="replaceable"><code>port</code></em> <em class="replaceable"><code>line</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Set (0-origin) line number of the current line of <em class="replaceable"><code>port</code></em> to <em class="replaceable"><code>num</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872398784" class="indexterm"/> <code class="function">input-port-line-number</code> <em class="replaceable"><code>port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Get the line number of the current line of <em class="replaceable"><code>port</code></em>,
+which must be a (non-binary) input port.
+The initial line is line 1.
+Deprecated; replaced by <code class="literal">(+ 1 (port-line <em class="replaceable"><code>port</code></em>))</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872394016" class="indexterm"/> <code class="function">set-input-port-line-number!</code> <em class="replaceable"><code>port</code></em> <em class="replaceable"><code>num</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Set line number of the current line of <em class="replaceable"><code>port</code></em> to <em class="replaceable"><code>num</code></em>.
+Deprecated;  replaced by <code class="literal">(set-port-line! <em class="replaceable"><code>port</code></em> (- <em class="replaceable"><code>num</code></em> 1))</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872388048" class="indexterm"/> <code class="function">input-port-column-number</code> <em class="replaceable"><code>port</code></em> </p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Get the column number of the current line of <em class="replaceable"><code>port</code></em>, 
+which must be a (non-binary) input port.
+The initial column is column 1.
+Deprecated; replaced by <code class="literal">(+ 1 (port-column <em class="replaceable"><code>port</code></em>))</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872383120" class="indexterm"/> <code class="function">input-port-read-state</code> <em class="replaceable"><code>port</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a character indicating the current <code class="literal">read</code> state of the <em class="replaceable"><code>port</code></em>.
+Returns <code class="literal">#\Return</code> if not current doing a <em class="replaceable"><code>read</code></em>,
+<code class="literal">#\"</code> if reading a string;  <code class="literal">#\|</code> if reading a comment;  <code class="literal">#\(</code>
+if inside a list; and <code class="literal">#\Space</code> when otherwise in a <code class="literal">read</code>.
+The result is intended for use by prompt prcedures, and is not necessarily
+correct except when reading a new-line.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872375552" class="indexterm"/> <code class="varname">symbol-read-case</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>A symbol that controls how <code class="literal">read</code> handles letters when reading a symbol.
+If the first letter is ‘<code class="literal">U</code>’, then letters in symbols are upper-cased.
+If the first letter is ‘<code class="literal">D</code>’ or ‘<code class="literal">L</code>’, then letters
+in symbols are down-cased.
+If the first letter is ‘<code class="literal">I</code>’, then the case of letters in symbols
+is inverted.
+Otherwise (the default), the letter is not changed.
+(Letters following a ‘<code class="literal">\</code>’ are always unchanged.)
+The value of <code class="literal">symbol-read-case</code> only checked
+when a reader is created, not each time a symbol is read.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Miscellaneous" epub:type="division" id="idm139667872368816">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Miscellaneous</h3>
+            </div>
+          </div>
+        </div>
+        <span id="port-char-encoding"/>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872367344" class="indexterm"/> <code class="varname">port-char-encoding</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Controls how bytes in external files are converted to/from internal
+Unicode characters.  Can be either a symbol or a boolean.
+If <code class="literal">port-char-encoding</code> is <code class="literal">#f</code>, the file is assumed
+to be a binary file and no conversion is done.
+Otherwise, the file is a text file.  The default is <code class="literal">#t</code>, which
+uses a locale-dependent conversion.  If <code class="literal">port-char-encoding</code>
+is a symbol, it must be the name of a character encoding known to Java.
+For all text files (that is if <code class="literal">port-char-encoding</code> is not <code class="literal">#f</code>),
+on input a <code class="literal">#\Return</code> character or
+a <code class="literal">#\Return</code> followed by <code class="literal">#\Newline</code>
+are converted into plain <code class="literal">#\Newline</code>.
+</p>
+            <p>This variable is checked when the file is opened;  not when actually
+reading or writing.  Here is an example of how you can safely
+change the encoding temporarily:
+</p>
+            <pre class="screen">(define (open-binary-input-file name)
+  (fluid-let ((port-char-encoding #f)) (open-input-file name)))
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872358736" class="indexterm"/> <code class="varname">*print-base*</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The number base (radix) to use by default when printing rational numbers.
+Must be an integer between 2 and 36, and the default is of course 10.
+For example setting <code class="literal">*print-base*</code> to 16 produces hexadecimal output.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872355168" class="indexterm"/> <code class="varname">*print-radix*</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>If true, prints an indicator of the radix used when printing rational numbers.
+If <code class="literal">*print-base*</code> is respectively 2, 8, or 16, then
+<code class="literal">#b</code>, <code class="literal">#o</code> or <code class="literal">#x</code> is written before the number;
+otherwise <code class="literal">#<em class="replaceable"><code>N</code></em>r</code> is written, where <code class="literal"><em class="replaceable"><code>N</code></em></code> is the base.
+An exception is when  <code class="literal">*print-base*</code> is 10, in which case a period
+is written <span class="emphasis"><em>after</em></span> the number, to match Common Lisp; this may
+be inappropriate for Scheme, so is likely to change.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872348064" class="indexterm"/> <code class="varname">*print-right-margin*</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The right margin (or line width) to use when pretty-printing.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872345056" class="indexterm"/> <code class="varname">*print-miser-width*</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>If this an integer, and the available width is less or equal to this value,
+then the pretty printer switch to the more <em class="firstterm">miser</em> compact style.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Variable"><span class="kind">Variable</span><span class="ignore">: </span><a id="idm139667872341552" class="indexterm"/> <code class="varname">*print-xml-indent*</code></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>When writing to XML, controls pretty-printing and indentation.
+If the value is <code class="literal">'always</code> or  <code class="literal">'yes</code> force each element to
+start on a new suitably-indented line.
+If the value is <code class="literal">'pretty</code> only force new lines for elements that
+won’t fit completely on a line.
+The the value is <code class="literal">'no</code> or unset, don’t add extra whitespace.
+</p>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872657696">String and bytevector ports</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872621584">Input</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872533328">Output</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872467600">Prompts for interactive consoles (REPLs)</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872412128">Line numbers and other input port properties</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Ports.xhtml#idm139667872368816">Miscellaneous</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Input-Output.xhtml">Input, output, and file handling</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Reading-and-writing-whole-files.xhtml">Reading and writing whole files</a></p>
+        <p>
+        Next: <a accesskey="n" href="Format.xhtml">Formatted Output (Common-Lisp-style)</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Deprecated low-level functions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Time-related-functions.xhtml" title="Time-related functions"/>
+    <link rel="next" href="FAQs.xhtml" title="Frequently Asked Questions"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Deprecated low-level functions" epub:type="subchapter" id="Low-level-functions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Deprecated low-level functions</h2>
+          </div>
+        </div>
+      </div>
+      <p>These sections document older and less convenient ways
+to call Java methods, access Java fields, and use Java arrays.
+</p>
+      <span id="Low-level-Method-invocation"/>
+      <section class="sect2" title="Low-level Method invocation" epub:type="division" id="idm139667869304896">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Low-level Method invocation</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following lower-level primitives require you to specify
+the parameter and return types explicitly.
+You should probably use the functions <code class="literal">invoke</code> and <code class="literal">invoke-static</code>
+(see <a class="link" href="Method-operations.xhtml" title="Calling Java methods from Scheme">Method operations</a>) instead.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869301648" class="indexterm"/> <code class="function">primitive-constructor</code> <em class="replaceable"><code>class</code></em> (<em class="replaceable"><code>argtype</code></em> <em class="replaceable"><code>...</code></em>)</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a new anonymous procedure, which when called will create
+a new object of the specified class, and will then call the
+constructor matching the specified argument types.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869297184" class="indexterm"/> <code class="function">primitive-virtual-method</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>method</code></em> <em class="replaceable"><code>rtype</code></em> (<em class="replaceable"><code>argtype</code></em> <em class="replaceable"><code>...</code></em>)</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a new anonymous procedure, which when called will
+invoke the instance method whose name is the string <em class="replaceable"><code>method</code></em>
+in the class whose name is <em class="replaceable"><code>class</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869291040" class="indexterm"/> <code class="function">primitive-static-method</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>method</code></em> <em class="replaceable"><code>rtype</code></em> (<em class="replaceable"><code>argtype</code></em> <em class="replaceable"><code>...</code></em>)</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a new anonymous procedure, which when called will
+invoke the static method whose name is the string <em class="replaceable"><code>method</code></em>
+in the class whose name is <em class="replaceable"><code>class</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869284928" class="indexterm"/> <code class="function">primitive-interface-method</code> <em class="replaceable"><code>interface</code></em> <em class="replaceable"><code>method</code></em> <em class="replaceable"><code>rtype</code></em> (<em class="replaceable"><code>argtype</code></em> <em class="replaceable"><code>...</code></em>)</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a new anonymous procedure, which when called will
+invoke the matching method from the interface whose name is <em class="replaceable"><code>interface</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p>The macros return procedure values, just like <code class="literal">lambda</code>.
+If the macros are used directly as the procedure of a procedure call,
+then kawa can inline the correct bytecodes to call the specified methods.
+(Note also that neither macro
+checks that there really is a method that matches the specification.)
+Otherwise, the Java reflection facility is used.
+</p>
+      </section>
+      <section class="sect2" title="Low-level field operations" epub:type="division" id="idm139667869278080">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Low-level field operations</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following macros evaluate to procedures that can be used to
+access or change the fields of objects or static fields.
+The compiler can inline each to a single bytecode instruction
+(not counting type conversion).
+</p>
+        <p>These macros are deprecated.
+The <code class="literal">fields</code> and <code class="literal">static-field</code> functions
+(see <a class="link" href="Field-operations.xhtml" title="Accessing object fields">Field operations</a>) are easier to use, more powerful, and
+just as efficient.  However, the high-level functions currently do
+not provide access to non-public fields.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869274208" class="indexterm"/> <code class="function">primitive-get-field</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>fname</code></em> <em class="replaceable"><code>ftype</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Use this to access a field named <em class="replaceable"><code>fname</code></em> having type <em class="replaceable"><code>type</code></em> in
+class <em class="replaceable"><code>class</code></em>.  Evaluates to a new one-argument procedure,
+whose argument is a reference to an object of the specified <em class="replaceable"><code>class</code></em>.
+Calling that procedure returns the value of the specified field.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869268048" class="indexterm"/> <code class="function">primitive-set-field</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>fname</code></em> <em class="replaceable"><code>ftype</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Use this to change a field named <em class="replaceable"><code>fname</code></em> having type <em class="replaceable"><code>type</code></em> in
+class <em class="replaceable"><code>class</code></em>.  Evaluates to a new two-argument procedure,
+whose first argument is a reference to an object of the
+specified <em class="replaceable"><code>class</code></em>, and the second argument is the new value.
+Calling that procedure sets the field to the specified value.
+(This macro’s name does not end in a ‘<code class="literal">!</code>’, because it does not actually
+set the field.  Rather, it returns a function for setting the field.)
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869261104" class="indexterm"/> <code class="function">primitive-get-static</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>fname</code></em> <em class="replaceable"><code>ftype</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Like <code class="literal">primitive-get-field</code>, but used to access static fields.
+Returns a zero-argument function, which when called returns
+the value of the static field.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869256336" class="indexterm"/> <code class="function">primitive-set-static</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>fname</code></em> <em class="replaceable"><code>ftype</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Like <code class="literal">primitive-set-field</code>, but used to modify static fields.
+Returns a one-argument function, which when called sets the
+value of the static field to the argument.
+</p>
+          </blockquote>
+        </div>
+        <span id="Low-level-array-macros"/>
+      </section>
+      <section class="sect2" title="Old low-level array macros" epub:type="division" id="idm139667869251152">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Old low-level array macros</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following macros evaluate to procedures that can be used to
+manipulate primitive Java array objects.
+The compiler can inline each to a single bytecode instruction
+(not counting type conversion).
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869249472" class="indexterm"/> <code class="function">primitive-array-new</code> <em class="replaceable"><code>element-type</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Evaluates to a one-argument procedure.  Applying the resulting procedure to
+an integer count allocates a new Java array of the specified length,
+and whose elements have type <em class="replaceable"><code>element-type</code></em>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869245520" class="indexterm"/> <code class="function">primitive-array-set</code> <em class="replaceable"><code>element-type</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Evaluates to a three-argument procedure.  The first argument of
+the resulting procedure must be an array whose elements have type
+<em class="replaceable"><code>element-type</code></em>;  the second argument is an index;  and the third
+argument is a value (coercible to <em class="replaceable"><code>element-type</code></em>) which replaces
+the value specified by the index in the given array.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869241024" class="indexterm"/> <code class="function">primitive-array-get</code> <em class="replaceable"><code>element-type</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Evaluates to a two-argument procedure.  The first argument of
+the resulting procedure must be an array whose elements have type
+<em class="replaceable"><code>element-type</code></em>;  the second argument is an index.
+Applying the procedure returns the element at the specified index.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667869237008" class="indexterm"/> <code class="function">primitive-array-length</code> <em class="replaceable"><code>element-type</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Evaluates to a one-argument procedure.  The argument of
+the resulting procedure must be an array whose elements have type
+<em class="replaceable"><code>element-type</code></em>.
+Applying the procedure returns the length of the array.
+(Alternatively, you can use <code class="literal">(field <em class="replaceable"><code>array</code></em> 'length)</code>.)
+</p>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Low-level-functions.xhtml#idm139667869304896">Low-level Method invocation</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Low-level-functions.xhtml#idm139667869278080">Low-level field operations</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Low-level-functions.xhtml#idm139667869251152">Old low-level array macros</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Miscellaneous.xhtml">Miscellaneous topics</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Time-related-functions.xhtml">Time-related functions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

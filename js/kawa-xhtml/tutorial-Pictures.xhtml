@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Composable pictures</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="tutorial-Variables.xhtml" title="Variables"/>
+    <link rel="next" href="tutorial-Sequences.xhtml" title="Lists and sequences"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Composable pictures" epub:type="subchapter" id="Tutorial---Pictures">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Composable pictures</h2>
+          </div>
+        </div>
+      </div>
+      <p>The <code class="literal">pictures</code> library lets you create geometric shapes
+and images, and combine them in interesting ways.
+You first need to import the library:
+</p>
+      <pre class="screen">(import (kawa pictures))
+</pre>
+      <p>The easiest way to use and learn the library
+is with a suitable REPL, where you can type
+expressions that evaluate to pictures values,
+and view the resulting pictures directly on the console.
+The easiest way is to start the <code class="literal">kawa</code> command with the <code class="literal">-w</code>
+flag.  Alternatively, you can use
+a <a class="link" href="REPL-Console.xhtml#Using-DomTerm">DomTerm</a>-based terminal emulator
+such as <code class="literal">qtdomterm</code> (which is shown in the image below),
+and then the <code class="literal">kawa</code> command.
+</p>
+      <div class="informalfigure">
+        <div class="mediaobject">
+          <img src="images/domterm-pictures-1.png"/>
+        </div>
+      </div>
+      <p>The above image shows two simple examples: a filled
+circle (radius 30 pixels, color magenta), and a non-filled rotated rectangle
+(color maroon 3-pixel wide strokes).
+</p>
+      <p>See <a class="link" href="Composable-pictures.xhtml" title="Composable pictures">Composable pictures</a> for details and more examples.
+</p>
+      <h3 id="idm139667880509200">Shapes and coordinates</h3>
+      <p>A <em class="firstterm">shape</em> is a geometrical figure consisting of
+one or more curves and lines.  One kind of shape is a circle;
+you can create one with the <code class="literal">circle</code> procedure,
+specifying the radius in “pixels”.
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:1|# </span><strong class="userinput"><code>(import (kawa pictures))</code></strong>
+<span class="prompt">#|kawa:2|# </span><strong class="userinput"><code>(circle 30)</code></strong>
+<img src="images/fill-circ-1.png"/>
+</pre>
+      <p>It you print a shape, it will show it as a thin black curve.
+</p>
+      <p>A <em class="firstterm">point</em> has two real-numbered parts: the point’s x-coordinate,
+and its y-coordinate.
+The x-coordinate increases as you move right along the page/screen,
+while the y-coordinate increases as you move <span class="emphasis"><em>down</em></span>.
+(Unlike traditional mathematics, where
+the y-coordinate increases as you go up.)
+The unit distance is one “pixel”, which is defined as CSS or HTML.
+You can create a point with <code class="literal">&amp;P</code> operator.
+For example:
+</p>
+      <pre class="screen">&amp;P[30 20]
+</pre>
+      <p>is a point 30 pixels right and 20 pixels down from the origin point.
+To create a circle centered on that point do <code class="literal">(center 30 &amp;P[30 20])</code>.
+</p>
+      <p>The expression <code class="literal">(rectangle &amp;P[10 20] &amp;P[50 40])</code> creates
+a rectangle whose upper left corner is (10,20) and whose
+lower right corner is (50,40).
+</p>
+      <p>A <em class="firstterm">dimension</em> is a pair, a width and height,
+and is written:
+</p>
+      <pre class="screen">&amp;D[<em class="replaceable"><code>width</code></em> <em class="replaceable"><code>height</code></em>]
+</pre>
+      <p>In addition to being used for sizes,
+a dimension is also used for relative offsets.
+For example, the previous rectangle could also
+be written  <code class="literal">(rectangle &amp;P[10 20] &amp;D[40 20])</code>.
+</p>
+      <p>You can use <code class="literal">line</code> to create a line.
+More generally, if you specify <em class="replaceable"><code>n</code></em> points you get a
+<em class="firstterm">polyline</em> of <em class="replaceable"><code>n-1</code></em> line segments:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:3|# </span><strong class="userinput"><code>(line &amp;P[10 20] &amp;P[50 60] &amp;P[90 0])</code></strong>
+<img src="images/polyline-1.png"/>
+</pre>
+      <p>The same line using dimensions for relative offsets:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:4|# </span><strong class="userinput"><code>(line &amp;P[10 20] &amp;D[40 20] &amp;D[40 -60])</code></strong>
+</pre>
+      <p>A <em class="firstterm">closed shape</em> is one whose end point is the same as its start point.
+The <code class="literal">polygon</code> function creates one using straight line segments
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:5|# </span><strong class="userinput"><code>(polygon &amp;P[10 20] &amp;P[50 60] &amp;P[90 0])</code></strong>
+<img src="images/polygon-1.png"/>
+</pre>
+      <h3 id="idm139667880488080">Colors and filling</h3>
+      <p>You can override the default color (black) using the
+<code class="literal">with-paint</code> procedure, which takes a color and a picture
+to produce a new picture:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:6|# </span><strong class="userinput"><code>(with-paint 'red (circle 32))</code></strong>
+</pre>
+      <p>The first argument can be either one of the standard CSS/HTML5 color
+names (such as <code class="literal">'red</code> or <code class="literal">'medium-slate-blue</code>),
+or an integer representing an sRGB color, usually written
+as a hex literal in the form <code class="literal">#xRRGGBB</code>:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:7|# </span><strong class="userinput"><code>(with-paint #x0808FF (circle 32))</code></strong>
+</pre>
+      <p>The name <code class="literal">with-paint</code> is because the first argument
+can be not just a color, but a general “paint”, such as
+a gradient or a background image.  However, we won’t go into that.
+</p>
+      <p>If the shape is closed, you can “fill” its inside:
+</p>
+      <pre class="screen">(fill (circle 32))
+</pre>
+      <p>You can change the color using <code class="literal">with-paint</code>:
+</p>
+      <pre class="screen">(with-paint 'goldenrod (fill (circle 32)))
+</pre>
+      <p>or as an extra argument to <code class="literal">fill</code>:
+</p>
+      <pre class="screen">(fill 'goldenrod (circle 32))
+</pre>
+      <p>draw TODO
+</p>
+      <h3 id="idm139667880478336">Images</h3>
+      <p>An image is a picture represented as a rectangular grid of color values.
+It may be a photograph from a camera, or be created by a painting
+program like Photoshop or gimp.
+You can use <code class="literal">image-read</code> to read an image from a file,
+typically a <code class="literal">.png</code> or <code class="literal">.jpg</code> file.
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:10|# </span><strong class="userinput"><code>(define img1 (image-read "http://pics.bothner.com/2013/Cats/06t.jpg"))</code></strong>
+<span class="prompt">#|kawa:11|# </span><strong class="userinput"><code>img1</code></strong>
+<img src="images/image-cat-1a.png"/>
+</pre>
+      <h3 id="idm139667880472832">Transforms TODO</h3>
+      <pre class="screen"><span class="prompt">#|kawa:12|# </span><strong class="userinput"><code>(scale 0.6 (rotate 30 img1))</code></strong>
+<img src="images/image-cat-1b.png"/>
+</pre>
+      <h3 id="idm139667880470144">Combining and adjusting pictures TODO</h3>
+      <h3 id="idm139667880469440">Using and combining pictures TODO</h3>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Variables.xhtml">Variables</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Sequences.xhtml">Lists and sequences</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

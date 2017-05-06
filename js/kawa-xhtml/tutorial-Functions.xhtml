@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Functions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="tutorial-Numbers.xhtml" title="Numbers"/>
+    <link rel="next" href="tutorial-Variables.xhtml" title="Variables"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Functions" epub:type="subchapter" id="Tutorial---Functions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Functions</h2>
+          </div>
+        </div>
+      </div>
+      <p>To declare a new function use <code class="literal">define</code>,
+which has the following form:
+</p>
+      <pre class="screen">(define (<em class="replaceable"><code>function-name</code></em> <em class="replaceable"><code>parameter-names</code></em>) <em class="replaceable"><code>body</code></em>)
+</pre>
+      <p>This creates a new function named <em class="replaceable"><code>function-name</code></em>,
+which takes <em class="replaceable"><code>parameter-names</code></em> as parameters.
+When the function is called, the  <em class="replaceable"><code>parameter-names</code></em>
+are initialized with the actual arguments. Then <em class="replaceable"><code>body</code></em>
+is evaluated, and its value becomes the result of the call.
+</p>
+      <p>For example, in the <code class="literal">factorial</code> function we looked at recently,
+the <em class="replaceable"><code>function-name</code></em> is <code class="literal">factorial</code>,
+and the <em class="replaceable"><code>parameter-names</code></em> is <code class="literal">x</code>:
+</p>
+      <pre class="screen">(define (factorial x)
+  (if (&lt; x 1) 1
+  (* x (factorial (- x 1)))))
+</pre>
+      <h3 id="idm139667880574592">Anonymous functions</h3>
+      <p>An <span class="emphasis"><em>anonymous</em></span> function is simply a function which does not have a name.
+We define an anonymous function using a <em class="firstterm">lambda expression</em>, which has
+the following form:
+</p>
+      <pre class="screen">(lambda (<em class="replaceable"><code>parameter-names</code></em>) <em class="replaceable"><code>body</code></em>)
+</pre>
+      <p>The lambda expression has the <em class="replaceable"><code>parameter-names</code></em> and <em class="replaceable"><code>body</code></em> of a
+function, but it has no name.  What is the point of this?
+</p>
+      <p>An important example is creating a function to act on a list, perhaps using
+<code class="literal">map</code>.  The <code class="literal">map</code> function takes two parameters: the first is a
+function which takes a value and returns a value; the second is a list.  Here,
+we want to double every number in the list.
+</p>
+      <p>The usual way of doing this is to create a named function, called
+<code class="literal">double</code>, and then apply it to a list:
+</p>
+      <pre class="screen">#|kawa:1|# (define (double x)
+#|.....2|#    (* 2 x))
+#|kawa:3|# (map double (list 1 2 3 4 5))
+(2 4 6 8 10)
+</pre>
+      <p>Instead, anonymous functions make it easy to create a function to work on a
+list, without having to define it in advance:
+</p>
+      <pre class="screen">#|kawa:4|# (map (lambda (x) (* 2 x)) (list 1 2 3 4 5))
+(2 4 6 8 10)
+#|kawa:5|# (define y 3)
+#|kawa:6|# (map (lambda (x) (* x y)) (list 1 2 3 4 5))
+(3 6 9 12 15)
+</pre>
+      <p>The first example shows the double example rewritten as an anonymous function.
+The second example shows how the anonymous function can be changed to
+fit the place in which it is used: here, the value of <em class="replaceable"><code>y</code></em> determines the
+value by which the list values are multiplied.
+</p>
+      <p>Notice that we can name our anonymous functions, in just the same way we
+name any value in Kawa, using <code class="literal">define</code>:
+</p>
+      <pre class="screen">(define double
+   (lambda (n)
+       (* 2 n)))
+</pre>
+      <p>although more frequently we use the short-hand for defining functions, which we
+have already met:
+</p>
+      <pre class="screen">(define (double n)
+  (* 2 n))
+</pre>
+      <p>Anonymous functions are “first-class values” in Kawa, and can be passed to
+other functions as arguments (like we did with <code class="literal">map</code>), and they can even
+be created and returned by functions as results.
+</p>
+      <h3 id="idm139667880561200">Optional, rest and keyword parameters</h3>
+      <p>You can declare a function that takes optional arguments,
+or a variable number of arguments.  You can also use keyword parameters.
+</p>
+      <p>The following function illustrates the use of <span class="emphasis"><em>optional</em></span> arguments.  The function
+identifies an optional argument <code class="literal">z</code>: if the function is called with 3 arguments, <code class="literal">z</code>
+will be bound to the third value, otherwise it will be <code class="literal">#f</code>.
+</p>
+      <pre class="screen">(define (addup x y #!optional z)
+  (if z
+    (+ x y z)
+    (+ x y)))
+</pre>
+      <p>The following examples show <code class="literal">addup</code> applied to 2, 3 and invalid arguments.  It is an error to
+pass just one argument or more than three: <code class="literal">x</code> and <code class="literal">y</code> are compulsory, but <code class="literal">z</code> is
+optional.
+</p>
+      <pre class="screen">#|kawa:12|# (addup 1 2)
+3
+#|kawa:13|# (addup 1 2 3)
+6
+#|kawa:14|# (addup 1)
+/dev/stdin:14:1: call to 'addup' has too few arguments (1; min=2, max=3)
+#|kawa:15|# (addup 1 2 3 4)
+/dev/stdin:15:1: call to 'addup' has too many arguments (4; min=2, max=3)
+</pre>
+      <p>In this example, a better way to define the function would be to include a
+default value for <code class="literal">z</code>, for when its value is not given by the caller.
+This is done as follows, with the same behavior as above:
+</p>
+      <pre class="screen">(define (addup x y #!optional (z 0))
+  (+ x y z))
+</pre>
+      <p>You can include as many optional parameters as you wish, after the <code class="literal">#!optional</code>.
+</p>
+      <p><span class="emphasis"><em>Rest</em></span> arguments are an alternative way to pass an undefined number of
+arguments to a function.  Here is <code class="literal">addup</code> written with rest arguments,
+notice the variable name after the . (dot):
+</p>
+      <pre class="screen">(define (addup x y . args)
+  (+ x y (apply + args)))
+</pre>
+      <p>The <code class="literal">args</code> are simply a list of all remaining values.  The following now all work, as the
+function only requires a minimum of two numbers:
+</p>
+      <pre class="screen">#|kawa:4|# (addup 1 2)
+3
+#|kawa:5|# (addup 1 2 3)
+6
+#|kawa:6|# (addup 1 2 3 4 5 6 7 8)
+36
+</pre>
+      <p>An alternative way to identify the rest args is with <code class="literal">#!rest</code>:
+</p>
+      <pre class="screen">(define (addup x y #!rest args)
+  (+ x y (apply + args)))
+</pre>
+      <p>Finally, it can be useful to identify parameters by name and, for this, Kawa
+provides <span class="emphasis"><em>keyword</em></span> arguments.  Consider the following function:
+</p>
+      <pre class="screen">(define (vector-3d #!key x y z)
+  (make-vector x y z))
+#|kawa:40|# (vector-3d #:x 2 #:z 3 #:y 4)
+#(2 4 3)
+</pre>
+      <p><code class="literal">vector-3d</code> is defined with three keyword arguments: <code class="literal">x</code>, <code class="literal">y</code>, and <code class="literal">z</code>.  When the
+function is called, we identify the name for each value by writing <code class="literal">#:</code> at the start of the name.
+This allows us to write the arguments in any order.  Keyword parameters can also be given default
+values, as with optional parameters.  Keyword parameters with no default value, and no value in the caller,
+will get the value <code class="literal">#f</code>.
+</p>
+      <p>In the caller, keywords are symbols with <code class="literal">#:</code> at the front (or <code class="literal">:</code> at
+the end): <a class="link" href="Keywords.xhtml" title="Keywords">read more here</a>.
+</p>
+      <p>All these extended types of arguments are available both for “named” and for “anonymous” functions.
+Optional, rest and keyword arguments can be mixed together, along with the usual arguments.
+For details <a class="link" href="Extended-formals.xhtml" title="Extended Formal Arguments List">read more here.</a>
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Numbers.xhtml">Numbers</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Variables.xhtml">Variables</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

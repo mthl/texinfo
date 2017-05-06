@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Conditionals</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Boolean-values.xhtml" title="Boolean values"/>
+    <link rel="next" href="Variables-and-Patterns.xhtml" title="Variables and Patterns"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Conditionals" epub:type="subchapter" id="Conditionals">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Conditionals</h2>
+          </div>
+        </div>
+      </div>
+      <div class="literallayout">
+        <p><a id="idm139667878507728" class="indexterm"/><span id="meta-test-expression"/><em class="replaceable"><code>test-expression</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667878504928" class="indexterm"/><span id="meta-consequent"/><em class="replaceable"><code>consequent</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667878502128" class="indexterm"/><span id="meta-alternate"/><em class="replaceable"><code>alternate</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+</p>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878499072" class="indexterm"/> <code class="function">if</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-consequent"><em class="replaceable"><code>consequent</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-alternate"><em class="replaceable"><code>alternate</code></em></a></code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878493888" class="indexterm"/> <code class="function">if</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-consequent"><em class="replaceable"><code>consequent</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>An <code class="literal">if</code> expression is evaluated as follows:
+first, <em class="replaceable"><code>test-expression</code></em> is
+evaluated.  If it yields a true value, then <em class="replaceable"><code>consequent</code></em> is
+evaluated and its values are returned.  Otherwise <em class="replaceable"><code>alternate</code></em> is
+evaluated and its values are returned.  If <em class="replaceable"><code>test</code></em> yields <code class="literal">#f</code>
+and no <em class="replaceable"><code>alternate</code></em> is specified, then the result of the expression
+is unspecified.
+</p>
+          <pre class="screen">(if (&gt; 3 2) 'yes 'no)          ⇒ yes
+(if (&gt; 2 3) 'yes 'no)          ⇒ no
+(if (&gt; 3 2)
+    (- 3 2)
+    (+ 3 2))                   ⇒ 1
+(if #f #f)                     ⇒ unspecified
+</pre>
+          <p>The <em class="replaceable"><code>consequent</code></em> and <em class="replaceable"><code>alternate</code></em> expressions are in tail
+context if the <code class="literal">if</code> expression itself is.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878483232" class="indexterm"/> <code class="function">cond</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-cond-clause"><em class="replaceable"><code>cond-clause</code></em></a></code></em><em class="replaceable"><code><sup>+</sup></code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878479488" class="indexterm"/> <code class="function">cond</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-cond-clause"><em class="replaceable"><code>cond-clause</code></em></a></code></em><em class="replaceable"><code><sup>*</sup></code></em> <em class="replaceable"><code><span class="bold"><strong>(else</strong></span></code></em> <em class="replaceable"><code><em class="replaceable"><code>expression</code></em></code></em><em class="replaceable"><code>…</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> </p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <div class="literallayout">
+            <p><a id="idm139667878473056" class="indexterm"/><span id="meta-cond-clause"/><em class="replaceable"><code>cond-clause</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+    | <code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>test</code></em> <code class="literal"><span class="bold"><strong>=&gt;</strong></span></code> <em class="replaceable"><code>expression</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>A <code class="literal">cond</code> expression is evaluated by evaluating the <em class="replaceable"><code>test-expression</code></em>s
+of successive <em class="replaceable"><code>cond-clause</code></em>s in order until one of them
+evaluates to a true value.  When a <em class="replaceable"><code>test-expression</code></em> evaluates to a true
+value, then the remaining <em class="replaceable"><code>expression</code></em>s in its <em class="replaceable"><code>cond-clause</code></em>
+are evaluated in order, and the results of the last <em class="replaceable"><code>expression</code></em> in
+the <em class="replaceable"><code>cond-clause</code></em> are returned as the results of the entire
+<code class="literal">cond</code> expression.
+If the selected <em class="replaceable"><code>cond-clause</code></em> contains only the <em class="replaceable"><code>test-expression</code></em> and no
+<em class="replaceable"><code>expression</code></em>s, then the value of the <em class="replaceable"><code>test-expression</code></em> is returned as the
+result.  If the selected <em class="replaceable"><code>cond-clause</code></em> uses the <code class="literal">=&gt;</code> alternate
+form, then the <em class="replaceable"><code>expression</code></em> is evaluated.  Its value must be a
+procedure.  This procedure should accept one argument; it is called on
+the value of the <em class="replaceable"><code>test-expression</code></em> and the values returned by this procedure
+are returned by the <code class="literal">cond</code> expression.
+</p>
+          <p>If all <em class="replaceable"><code>test-expression</code></em>s evaluate to <code class="literal">#f</code>, and there is no <code class="literal">else</code>
+clause, then the conditional expression returns unspecified values; if
+there is an <code class="literal">else</code> clause, then its <em class="replaceable"><code>expression</code></em>s are
+evaluated, and the values of the last one are returned.
+</p>
+          <pre class="screen">(cond ((&gt; 3 2) 'greater)
+      ((&lt; 3 2) 'less))         ⇒ greater
+
+(cond ((&gt; 3 3) 'greater)
+      ((&lt; 3 3) 'less)
+      (else 'equal))           ⇒ equal
+
+(cond ('(1 2 3) =&gt; cadr)
+      (else #f))               ⇒ 2
+</pre>
+          <p>For a <em class="replaceable"><code>cond-clause</code></em> of one of the following forms:
+</p>
+          <pre class="screen">(<em class="replaceable"><code>test</code></em> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><sup>*</sup>)
+(else <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><sup>*</sup>)
+</pre>
+          <p>the last <em class="replaceable"><code>expression</code></em> is in tail context if the <code class="literal">cond</code> form
+itself is.  For a <em class="replaceable"><code>cond clause</code></em> of the form:
+</p>
+          <pre class="screen">(<em class="replaceable"><code>test</code></em> =&gt; <em class="replaceable"><code>expression</code></em>)
+</pre>
+          <p>the (implied) call to the procedure that results from the evaluation of
+<em class="replaceable"><code>expression</code></em> is in tail context if the <code class="literal">cond</code> form itself
+is.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878443680" class="indexterm"/> <code class="function">case</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-case-key"><em class="replaceable"><code>case-key</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-case-clause"><em class="replaceable"><code>case-clause</code></em></a></code></em><em class="replaceable"><code><sup>+</sup></code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878438992" class="indexterm"/> <code class="function">case</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-case-key"><em class="replaceable"><code>case-key</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-case-clause"><em class="replaceable"><code>case-clause</code></em></a></code></em><em class="replaceable"><code><sup>*</sup></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-case-else-clause"><em class="replaceable"><code>case-else-clause</code></em></a></code></em> </p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <div class="literallayout">
+            <p><a id="idm139667878432976" class="indexterm"/><span id="meta-case-key"/><em class="replaceable"><code>case-key</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667878430176" class="indexterm"/><span id="meta-case-clause"/><em class="replaceable"><code>case-clause</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>((</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><sup>*</sup><code class="literal"><span class="bold"><strong>)</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><sup>+</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+    | <code class="literal"><span class="bold"><strong>((</strong></span></code><a class="link" href="Datum-syntax.xhtml#meta-datum"><em class="replaceable"><code>datum</code></em></a><sup>*</sup><code class="literal"><span class="bold"><strong>)</strong></span></code> <code class="literal"><span class="bold"><strong>=&gt;</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<a id="idm139667878419376" class="indexterm"/><span id="meta-case-else-clause"/><em class="replaceable"><code>case-else-clause</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(else</strong></span></code>  <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><sup>+</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+    | <code class="literal"><span class="bold"><strong>(else =&gt;</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>Each <em class="replaceable"><code>datum</code></em> is an external representation of some object.
+Each <em class="replaceable"><code>datum</code></em> in the entire <code class="literal">case</code> expression should be distinct.
+</p>
+          <p>A <code class="literal">case</code> expression is evaluated as follows.
+</p>
+          <div class="orderedlist" epub:type="list">
+            <ol class="orderedlist" type="1">
+              <li class="listitem" epub:type="list-item">
+                <p>The <em class="replaceable"><code>case-key</code></em> is evaluated and its result is compared using
+<code class="literal">eqv?</code> against the data represented by the <em class="replaceable"><code>datum</code></em>s of
+each <em class="replaceable"><code>case-clause</code></em> in turn, proceeding in order from left to
+right through the set of clauses.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If the result of evaluating <em class="replaceable"><code>case-key</code></em> is equivalent to a datum of a
+<em class="replaceable"><code>case-clause</code></em>, the corresponding <em class="replaceable"><code>expression</code></em>s are evaluated
+from left to right and the results of the last expression in the
+<em class="replaceable"><code>case-clause</code></em> are returned as the results of the <code class="literal">case</code>
+expression.  Otherwise, the comparison process continues.
+</p>
+              </li>
+              <li class="listitem" epub:type="list-item">
+                <p>If the result of evaluating <em class="replaceable"><code>key</code></em> is different from every datum in
+each set, then if there is an <em class="replaceable"><code>case-else-clause</code></em> its expressions are
+evaluated and the results of the last are the results of the <code class="literal">case</code>
+expression; otherwise the result of <code class="literal">case</code> expression is unspecified.
+</p>
+              </li>
+            </ol>
+          </div>
+          <p>If the selected <em class="replaceable"><code>case-clause</code></em> or <em class="replaceable"><code>case-else-clause</code></em>
+uses the <code class="literal">=&gt;</code> alternate
+form, then the <em class="replaceable"><code>expression</code></em> is evaluated. It is an error if
+its value is not a procedure accepting one argument. This
+procedure is then called on the value of the <em class="replaceable"><code>key</code></em> and the
+values returned by this procedure are returned by the <code class="literal">case</code>
+expression.
+</p>
+          <pre class="screen">(case (* 2 3)
+  ((2 3 5 7) 'prime)
+  ((1 4 6 8 9) 'composite))    ⇒ composite
+(case (car '(c d))
+  ((a) 'a)
+  ((b) 'b))                    ⇒ unspecified
+(case (car '(c d))
+  ((a e i o u) 'vowel)
+  ((w y) 'semivowel)
+  (else =&gt; (lambda (x) x)))    ⇒ c
+</pre>
+          <p>The last <em class="replaceable"><code>expression</code></em> of a <em class="replaceable"><code>case clause</code></em> is in tail context if
+the <code class="literal">case</code> expression itself is.
+</p>
+        </blockquote>
+      </div>
+      <span id="def-match"/>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878395232" class="indexterm"/> <code class="function">match</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-match-key"><em class="replaceable"><code>match-key</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-match-clause"><em class="replaceable"><code>match-clause</code></em></a></code></em><em class="replaceable"><code><sup>+</sup></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">match</code> form is a generalization of <code class="literal">case</code> using <a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a>s,
+</p>
+          <div class="literallayout">
+            <p><a id="idm139667878387408" class="indexterm"/><span id="meta-match-key"/><em class="replaceable"><code>match-key</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667878384608" class="indexterm"/><span id="meta-match-clause"/><em class="replaceable"><code>match-clause</code></em> <code class="literal">::=</code><br/>
+  <code class="literal"><span class="bold"><strong>(</strong></span></code> <a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a> [<a class="link" href="Variables-and-Patterns.xhtml#meta-guard"><em class="replaceable"><code>guard</code></em></a>] <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a> <code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>The <em class="replaceable"><code>match-key</code></em> is evaluated,
+Then the <em class="replaceable"><code>match-clause</code></em>s are tried in order.
+The first <em class="replaceable"><code>match-clause</code></em> whose <em class="replaceable"><code>pattern</code></em> matches (and
+the <em class="replaceable"><code>guard</code></em>, if any, is true), is selected,
+and the corresponding <em class="replaceable"><code>body</code></em> evaluated.
+It is an error if no <em class="replaceable"><code>match-clause</code></em> matches.
+</p>
+          <pre class="screen">(match value
+  (0 (found-zero))
+  (x #!if (&gt; x 0) (found-positive x))
+  (x #!if (&lt; x 0) (found-negative x))
+  (x::symbol (found-symbol x))
+  (_ (found-other)))
+</pre>
+          <p>One <code class="literal">case</code> feature is not (yet) directly supported by <code class="literal">match</code>:
+Matching against a list of values.
+However, this is easy to simulate using a guard using <code class="literal">memq</code>,
+<code class="literal">memv</code>, or <code class="literal">member</code>:
+</p>
+          <pre class="screen">;; compare similar example under case
+(match (car '(c d))
+  (x #!if (memv x '(a e i o u)) ’vowel)
+  (x #!if (memv x '(w y)) ’semivowel)
+  (x x))
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878370960" class="indexterm"/> <code class="function">and</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If there are no <em class="replaceable"><code>test-expression</code></em>s, <code class="literal">#t</code> is returned.  Otherwise, the
+<em class="replaceable"><code>test-expression</code></em> are evaluated from left to right until a
+<em class="replaceable"><code>test-expression</code></em> returns <code class="literal">#f</code> or the last <em class="replaceable"><code>test-expression</code></em> is reached.  In the
+former case, the <code class="literal">and</code> expression returns <code class="literal">#f</code> without
+evaluating the remaining expressions.  In the latter case, the last
+expression is evaluated and its values are returned.
+</p>
+          <pre class="screen">(and (= 2 2) (&gt; 2 1))          ⇒  #t
+(and (= 2 2) (&lt; 2 1))          ⇒  #f
+(and 1 2 'c '(f g))            ⇒  (f g)
+(and)                          ⇒  #t
+</pre>
+          <p>The <code class="literal">and</code> keyword could be defined in terms of <code class="literal">if</code> using
+<code class="literal">syntax-rules</code> as follows:
+</p>
+          <pre class="screen">(define-syntax and
+  (syntax-rules ()
+    ((and) #t)
+    ((and test) test)
+    ((and test1 test2 ...)
+     (if test1 (and test2 ...) #t))))
+</pre>
+          <p>The last <em class="replaceable"><code>test-expression</code></em> is in tail context if the <code class="literal">and</code>
+expression itself is.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878358848" class="indexterm"/> <code class="function">or</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code>…</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If there are no <em class="replaceable"><code>test-expression</code></em>s, <code class="literal">#f</code> is returned.  Otherwise, the
+<em class="replaceable"><code>test-expression</code></em>s are evaluated from left to right until a
+<em class="replaceable"><code>test-expression</code></em> returns a true value <em class="replaceable"><code>val</code></em> or the last
+<em class="replaceable"><code>test-expression</code></em> is
+reached.  In the former case, the <code class="literal">or</code> expression returns <em class="replaceable"><code>val</code></em>
+without evaluating the remaining expressions.  In the latter case, the
+last expression is evaluated and its values are returned.
+</p>
+          <pre class="screen">(or (= 2 2) (&gt; 2 1))           ⇒ #t
+(or (= 2 2) (&lt; 2 1))           ⇒ #t
+(or #f #f #f)                  ⇒ #f
+(or '(b c) (/ 3 0))            ⇒ (b c)
+</pre>
+          <p>The <code class="literal">or</code> keyword could be defined in terms of <code class="literal">if</code> using
+<code class="literal">syntax-rules</code> as follows:
+</p>
+          <pre class="screen">(define-syntax or
+  (syntax-rules ()
+    ((or) #f)
+    ((or test) test)
+    ((or test1 test2 ...)
+     (let ((x test1))
+       (if x x (or test2 ...))))))
+</pre>
+          <p>The last <em class="replaceable"><code>test-expression</code></em> is in tail context if the <code class="literal">or</code>
+expression itself is.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878346768" class="indexterm"/> <code class="function">when</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code>form...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If <em class="replaceable"><code>test-expression</code></em> is true, evaluate each <em class="replaceable"><code>form</code></em> in order,
+returning the value of the last one.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878341536" class="indexterm"/> <code class="function">unless</code> <em class="replaceable"><code><a class="link" href="Conditionals.xhtml#meta-test-expression"><em class="replaceable"><code>test-expression</code></em></a></code></em> <em class="replaceable"><code>form...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If <em class="replaceable"><code>test-expression</code></em> is false, evaluate each <em class="replaceable"><code>form</code></em> in order,
+returning the value of the last one.
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Program-structure.xhtml">Program structure</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Boolean-values.xhtml">Boolean values</a></p>
+        <p>
+        Next: <a accesskey="n" href="Variables-and-Patterns.xhtml">Variables and Patterns</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Using non-Scheme languages for XML/HTML</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Miscellaneous.xhtml" title="Miscellaneous topics"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Using non-Scheme languages for XML/HTML" epub:type="subchapter" id="XML-beyond-Scheme">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Using non-Scheme languages for XML/HTML</h2>
+          </div>
+        </div>
+      </div>
+      <section class="sect2" title="XQuery language" epub:type="division" id="idm139667870128192">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">XQuery language</h3>
+            </div>
+          </div>
+        </div>
+        <p>Bundled with Kawa is a fairly complete implementation of W3C’s
+new <a class="ulink" href="http://www.w3c.org/XML/Query" target="_top">XML Query language</a>.
+If you start Kawa with the <code class="literal">--xquery</code> it selects the "XQuery"
+source language; this also prints output using XML syntax.
+See the <a class="ulink" href="http://www.gnu.org/software/qexo/" target="_top">Qexo (Kawa-XQuery) home page</a>
+for examples and more information.
+</p>
+      </section>
+      <section class="sect2" title="XSL transformations" epub:type="division" id="idm139667870124432">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">XSL transformations</h3>
+            </div>
+          </div>
+        </div>
+        <p>There is an experimental implementation of the XSLT (XML Stylesheet
+Language Transformations) language.  Selecting <code class="literal">--xslt</code> at the
+Kawa command line will parse a source file according to the syntax
+on an XSLT stylesheet.
+See the <a class="ulink" href="http://www.gnu.org/software/qexo/xslt.html" target="_top">Kawa-XSLT page</a>
+for more information.
+</p>
+      </section>
+      <section class="sect2" title="KRL - The Kawa Report Language for generating XML/HTML" epub:type="division" id="KRL">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">KRL - The Kawa Report Language for generating XML/HTML</h3>
+            </div>
+          </div>
+        </div>
+        <p>KRL (the "Kawa Report Language") is powerful Kawa dialect for embedding
+Scheme code in text files such as HTML or XML templates.  You select
+the KRL language by specifying <code class="literal">--krl</code> on the Kawa command line.
+</p>
+        <p>KRL is based on on <a class="ulink" href="http://brl.sourceforge.net/" target="_top">BRL</a>,
+Bruce Lewis’s "Beautiful Report Language", and
+uses some of BRL’s code, but there are some experimental differences,
+and the implementation core is different.  You can run KRL in
+BRL-compatility-mode by specifying <code class="literal">--brl</code> instead of <code class="literal">--krl</code>.
+</p>
+      </section>
+      <section class="sect2" title="Differences between KRL and BRL" epub:type="division" id="idm139667870116400">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Differences between KRL and BRL</h3>
+            </div>
+          </div>
+        </div>
+        <p>This section summarizes the known differences between KRL and BRL.
+Unless otherwise specified, KRL in BRL-compatibility mode will
+act as BRL.
+</p>
+        <div class="itemizedlist" epub:type="list">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem" epub:type="list-item">
+              <p>In BRL a normal Scheme string <code class="literal">"mystring"</code> is the same
+as the inverted quote string <code class="literal">]mystring[</code>, and both are instances
+of the type <code class="literal">&lt;string&gt;</code>.
+In KRL <code class="literal">"mystring"</code> is a normal Scheme string of type <code class="literal">&lt;string&gt;</code>,
+but <code class="literal">]mystring[</code> is special type that suppresses output escaping.
+(It is equivalent to <code class="literal">(unescaped-data "mystring")</code>.)
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>When BRL writes out a string, it does not do any processing
+to escape special characters like <code class="literal">&lt;</code>.  However, KRL in its default
+mode does normally escape characters and strings.  Thus <code class="literal">"&lt;a&gt;"</code>
+is written as <code class="literal">&amp;lt;a&amp;gr;</code>.
+You can stop it from doing this by overriding the output format, for example
+by specifying <code class="literal">--output-format scheme</code> on the Kawa command line,
+or by using the <code class="literal">unescaped-data</code> function.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>Various Scheme syntax forms, including <code class="literal">lambda</code>,
+take a <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a>, which is a list of one or more declarations and
+expressions.  In normal Scheme and in BRL the value of a <em class="replaceable"><code>body</code></em>
+is the value of the last expression.  In KRL the value of a <em class="replaceable"><code>body</code></em>
+is the concatenation of all the values of the expressions,
+as if using <code class="literal">values-append</code>.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>In BRL a word starting with a colon is a keyword.
+In KRL a word starting with a colon is an identifier, which by
+default is bound to the <code class="literal">make-element</code> function specialized
+to take the rest of the word as the tag name (first argument).
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>BRL has an extensive utility library.  Most of this has not yet been ported
+to KRL, even in BRL-compatibility mode.
+</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="XML-beyond-Scheme.xhtml#idm139667870128192">XQuery language</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="XML-beyond-Scheme.xhtml#idm139667870124432">XSL transformations</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="XML-beyond-Scheme.xhtml#KRL">KRL - The Kawa Report Language for generating XML/HTML</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="XML-beyond-Scheme.xhtml#idm139667870116400">Differences between KRL and BRL</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="XML-tools.xhtml">Working with XML and HTML</a></p>
+        <p>
+        Previous: <a accesskey="p" href="HTTP-response.xhtml">Generating HTTP responses</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

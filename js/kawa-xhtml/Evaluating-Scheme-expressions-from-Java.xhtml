@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Evaluating Scheme expressions from Java</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Loading-Java-functions-into-Scheme.xhtml" title="Loading Java functions into Scheme"/>
+    <link rel="next" href="XML-tools.xhtml" title="Working with XML and HTML"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Evaluating Scheme expressions from Java" epub:type="subchapter" id="Evaluating-Scheme-expressions-from-Java">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Evaluating Scheme expressions from Java</h2>
+          </div>
+        </div>
+      </div>
+      <p>The following methods are recommended if you need to evaluate a
+Scheme expression from a Java method.
+(Some details (such as the ‘<code class="literal">throws</code>’ lists) may change.)
+</p>
+      <p class="synopsis" kind="Static method"><span class="kind">Static method</span><span class="ignore">: </span><a id="idm139667870741808" class="indexterm"/> <span class="returnvalue">void</span> <code class="function">Scheme.registerEnvironment</code> ()</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Initializes the Scheme environment.  Maybe needed if you
+try to load a module compiled from a Scheme source file.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Static method"><span class="kind">Static method</span><span class="ignore">: </span><a id="idm139667870738128" class="indexterm"/> <span class="returnvalue">Object</span> <code class="function">Scheme.eval</code> (<span class="type">InPort</span> <em class="replaceable"><code><em class="replaceable"><code>port</code></em></code></em>, <span class="type">Environment</span> <em class="replaceable"><code><em class="replaceable"><code>env</code></em></code></em>)</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Read expressions from <em class="replaceable"><code>port</code></em>, and evaluate them in the
+<em class="replaceable"><code>env</code></em> environment, until end-of-file is reached.
+Return the value of the last expression,
+or <code class="literal">Interpreter.voidObject</code> if there is no expression.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Static method"><span class="kind">Static method</span><span class="ignore">: </span><a id="idm139667870731264" class="indexterm"/> <span class="returnvalue">Object</span> <code class="function">Scheme.eval</code> (<span class="type">String</span> <em class="replaceable"><code><em class="replaceable"><code>string</code></em></code></em>, <span class="type">Environment</span> <em class="replaceable"><code><em class="replaceable"><code>env</code></em></code></em>)</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Read expressions from <em class="replaceable"><code>string</code></em>, and evaluate them in the
+<em class="replaceable"><code>env</code></em> environment, until the end of the string is reached.
+Return the value of the last expression,
+or <code class="literal">Interpreter.voidObject</code> if there is no expression.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Static method"><span class="kind">Static method</span><span class="ignore">: </span><a id="idm139667870724448" class="indexterm"/> <span class="returnvalue">Object</span> <code class="function">Scheme.eval</code> (<span class="type">Object</span> <em class="replaceable"><code><em class="replaceable"><code>sexpr</code></em></code></em>, <span class="type">Environment</span> <em class="replaceable"><code><em class="replaceable"><code>env</code></em></code></em>)</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <em class="replaceable"><code>sexpr</code></em> is an S-expression (as may be returned by <code class="literal">read</code>).
+Evaluate it in the <em class="replaceable"><code>env</code></em> environment, and return the result.
+</p>
+        </blockquote>
+      </div>
+      <p>For the <code class="literal">Environment</code> in most cases you could use
+‘<code class="literal">Environment.current()</code>’.  Before you start, you
+need to initialize the global environment,
+which you can do with
+</p>
+      <pre class="screen">Environment.setCurrent(new Scheme().getEnvironment());
+</pre>
+      <p>Alternatively, rather than setting the global environment,
+you can use this style:
+</p>
+      <pre class="screen">Scheme scm = new Scheme();
+Object x = scm.eval("(+ 3 2)");
+System.out.println(x);
+</pre>
+      <section class="sect2" title="Using javax.script portable Java scripting" epub:type="division" id="idm139667870715120">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using <code class="literal">javax.script</code> portable Java scripting</h3>
+            </div>
+          </div>
+        </div>
+        <p>Kawa also supports the standard
+<a class="ulink" href="http://docs.oracle.com/javase/8/docs/api/javax/script/package-summary.html" target="_top"><code class="literal">javax.script</code></a> API.
+The main advantage of this API is if you want your users to be able to choose
+between multiple scripting languages.  That way you can support Kawa
+without Kawa-specific programming.
+</p>
+        <p>For example the standard JDK tool <a class="ulink" href="http://docs.oracle.com/javase/8/docs/technotes/tools/unix/jrunscript.html" target="_top">jrunscript</a> provides a
+read-eval-print-loop for any language that implements the  <code class="literal">javax.script</code>
+API.  It knows nothing about Kawa but can still use it:
+</p>
+        <pre class="screen">$ jrunscript -cp kawa.jar -l scheme
+scheme&gt; (cadr '(3 4 5))
+4
+</pre>
+        <p>(Of course the <code class="literal">jrunscript</code> REPL isn’t as  nice as the one that
+Kawa provides.  For example the latter can handle multi-line inputs.)
+</p>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Evaluating-Scheme-expressions-from-Java.xhtml#idm139667870715120">Using <code class="literal">javax.script</code> portable Java scripting</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Loading-Java-functions-into-Scheme.xhtml">Loading Java functions into Scheme</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,3638 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>News - Recent Changes</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="index.html" title="The Kawa Scheme language"/>
+    <link rel="next" href="Features.xhtml" title="Features"/>
+  </head>
+  <body>
+    <header/>
+    <section class="chapter" title="News - Recent Changes" epub:type="chapter" id="News">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h1 class="title">News - Recent Changes</h1>
+          </div>
+        </div>
+      </div>
+      <p>These changes are in more-or-less reverse chronological order, with the
+most recent changes first.
+</p>
+      <p>See also the list of <a class="ulink" href="../qexo/news.html" target="_top">Qexo (XQuery)-specific
+changes</a>.
+</p>
+      <h3 id="idm139667882181856">In Git repository (invoke branch) since last release</h3>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Most places where you could declare a new identifier
+binding have been generalized to accept <a class="link" href="Variables-and-Patterns.xhtml" title="Variables and Patterns">patterns</a>,
+including literals and boolean <a class="link" href="Variables-and-Patterns.xhtml#meta-guard"><em class="replaceable"><code>guard</code></em></a>s.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The new form <a class="link" href="Conditionals.xhtml#def-match"><code class="literal">match</code></a> form is a generalization
+of <code class="literal">case</code> using patterns.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The internal calling convention used for “apply” (ie. calling
+an unknown-at-compile-time procedure) has been completely changed.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Major changes to strings:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p><span class="emphasis"><em>Incompatible change:</em></span> String literals are now
+<code class="literal">gnu.lists.IString</code> rather than <code class="literal">java.lang.String</code>.
+The advantage of using <code class="literal">gnu.lists.IString</code> is that <code class="literal">string-ref</code>
+and <code class="literal">string-length</code> are (roughly) constant-time, rather than
+having to linearly scan the string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><span class="emphasis"><em>Incompatible change:</em></span>
+The procedures <code class="literal">string-append</code>, <code class="literal">string-map</code>,
+<code class="literal">substring</code>, <code class="literal">list-&gt;string</code>, <code class="literal">vector-&gt;string</code>,
+<code class="literal">string-downcase</code>, <code class="literal">string-upcase</code>, <code class="literal">string-foldcase</code>, 
+<code class="literal">string-titlecase</code>, and the constructor <code class="literal">string</code>
+return an immutable string (an <code class="literal">IString</code>).
+(The function <code class="literal">string-copy</code> is similar to <code class="literal">substring</code>,
+but returns a mutable string.)
+This is a work-in-progress with the goal of implementing
+<a class="ulink" href="http://srfi.schemers.org/srfi-140/srfi-140.html" target="_top">SRFI-140</a>:
+Other procedures will be changed to return immutable strings.
+</p>
+                  <p>If you <code class="literal">(import (scheme base))</code> standard procedures
+such as <code class="literal">string-append</code> will return mutable strings;
+if you <code class="literal">(import (kawa base))</code> the procedures will return immutable strings.
+The command-line options <code class="literal">--r5rs</code> or <code class="literal">--r6rs</code> or <code class="literal">--r7rs</code>
+override the default so these procedures return mutable strings.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><span class="emphasis"><em>Incompatible change:</em></span>
+Treating a string as a sequence is now simpler but possibly slower:
+The <em class="replaceable"><code>I</code></em>’th element is now the <em class="replaceable"><code>I</code></em>’th Unicode code point.
+Indexing with function-call syntax
+<code class="literal">(<em class="replaceable"><code>string</code></em> <em class="replaceable"><code>i</code></em>)</code> is the same as <code class="literal">(string-ref <em class="replaceable"><code>string</code></em> <em class="replaceable"><code>i</code></em>)</code> and
+<code class="literal">(length <em class="replaceable"><code>string</code></em>)</code> is the same as <code class="literal">(string-length <em class="replaceable"><code>string</code></em>)</code>.
+This applies to all classes that implement <code class="literal">java.lang.CharSequence</code>.
+Indexing may be a linear-time operation (thus much slower),
+unless the string is an <code class="literal">IString</code> (in which case it is constant-time),
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><span class="emphasis"><em>Incompatible change:</em></span> Before, if a Java parameter type
+was <code class="literal">java.lang.String</code> Kawa would accept any value, converting it
+using Object’s <code class="literal">toString</code> method.
+Now Kawa will reject an argument if it is not a <code class="literal">java.lang.CharSequence</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New procedures: <code class="literal">istring?</code>, <code class="literal">reverse-list-&gt;string</code>,
+<code class="literal">string-any</code>, <code class="literal">string-concatenate</code>, <code class="literal">string-concatenate-reverse</code>,
+<code class="literal">string-contains</code>, <code class="literal">string-contains-right</code>,
+<code class="literal">string-count</code>, <code class="literal">string-drop</code>,  <code class="literal">string-drop-right</code>,
+<code class="literal">string-every</code>, <code class="literal">string-filter</code>, <code class="literal">string-fold</code>,
+<code class="literal">string-fold-right</code>, <code class="literal">string-for-each-index</code>,
+<code class="literal">string-index</code>, <code class="literal">string-index-right</code>, <code class="literal">string-join</code>,
+<code class="literal">string-map-index</code>, <code class="literal">string-null?</code>,
+<code class="literal">string-prefix?</code>, <code class="literal">string-prefix-length</code>,
+<code class="literal">string-repeat</code>, <code class="literal">string-remove</code>, <code class="literal">string-replace</code>,
+<code class="literal">string-skip</code>, <code class="literal">string-skip-right</code>, <code class="literal">string-split</code>,
+<code class="literal">string-suffix?</code>, <code class="literal">string-suffix-length</code>,
+<code class="literal">string-tabulate</code>, <code class="literal">string-take</code>, <code class="literal">string-take-right</code>,
+<code class="literal">string-trim</code>, <code class="literal">string-trim-right</code>, <code class="literal">string-trim-both</code>,
+<code class="literal">string-unfold</code>, <code class="literal">string-unfold-right</code>,
+<code class="literal">string-&gt;utf16</code>, <code class="literal">string-&gt;utf16be</code>, <code class="literal">string-&gt;utf16le</code>,
+<code class="literal">utf16-&gt;string</code>, <code class="literal">utf16be-&gt;string</code>, <code class="literal">utf16le-&gt;string</code>,
+<code class="literal">xsubstring</code>.
+These follow SRFI-140 and return immutable strings.
+(Some of these had previously been available in SRFI-13,
+but the older versions return mutable strings.)
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><span class="emphasis"><em>Incompatible change:</em></span> Kawa traditionally followed Java in allowing you
+to pass an array with the “rest” arguments to a varargs method.
+For example, you could write:
+</p>
+            <pre class="screen">(define args (Object[] 3 "cm"))
+(java.lang.String:format "length:%s%s" args)
+</pre>
+            <p>This is no longer allowed. Instead,
+use the splice operator:
+</p>
+            <pre class="screen">(java.lang.String:format "length:%s%s" @args)
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><span class="emphasis"><em>Incompatible change:</em></span> You used to be able to write a
+type-specifier in a formal parameter or return type without
+using ‘<code class="literal">::</code>’, as in:
+</p>
+            <pre class="screen">(define (incr (x int)) int (+ x 1))
+</pre>
+            <p>This is no longer allowed, because it conflicts with the
+syntax for patterns.  Instead you have to write:
+</p>
+            <pre class="screen">(define (incr (x ::int)) ::int (+ x 1))
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New type aliases <code class="literal">bitvector</code> and <code class="literal">c16vector</code>.
+The latter is a <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">uniform vector</a> type for wrapping <code class="literal">char[]</code> arrays.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can convert a Java array (for example a <code class="literal">int[]</code> to the corresponing uniform vector type
+(for example <code class="literal">u32vector</code>) using the <code class="literal">as</code> pseudo-function or the corresponding
+conversion procedure (for example <code class="literal">-&gt;u32vector</code>).  The result shares storage with the
+array, so changes in one will update the other.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The expression <code class="literal">(module-class)</code> evaluates to the
+containing module class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Change the <a class="link" href="Mangling.xhtml" title="Mapping Scheme names to Java names">mangling</a> for field and local variables names
+to match the <a class="ulink" href="https://blogs.oracle.com/jrose/entry/symbolic_freedom_in_the_vm" target="_top">Symbolic Freedom</a> style.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667882127728">Kawa 2.3 (January 13, 2017)</h3>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Moved Kawa’s source code repository (version control system)
+to use git, hosted at <a class="ulink" href="https://gitlab.com/kashell/Kawa" target="_top">GitLab</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Issues (bugs, feature requests, etc) should now be reported using the
+<a class="ulink" href="https://gitlab.com/kashell/Kawa/issues" target="_top">GitLab Issue Tracker</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New <code class="literal">with-docbook-stylesheets</code> to make it easier to build
+the documentation with better functionality and look.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The command-line option <code class="literal">console:jline-mouse=yes</code>
+enables moving the input cursor using a mouse click,
+when using JLine in the REPL on common xterm-like terminals.
+This is disabled by default because it conflicts with
+other mouse actions, such as making a selection for copying text.
+You can press shift to get the terminal’s standard mouse handling.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667882122176">Kawa 2.2 (November 12, 2016)</h3>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>A binary release is no longer just a Kawa <code class="literal">.jar</code> file,
+but is now a <code class="literal">zip</code> archive that also includes
+shell/batch scripts for running Kawa, useful
+third-party libraries, and the complete documentation in EPUB format.
+The archives are named <code class="literal">kawa-version.zip</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">kawa --browse-manual</code> switch makes it easy to
+<a class="link" href="Options.xhtml#browse-manual-option">browse the local documentation</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <a class="link" href="Composable-pictures.xhtml" title="Composable pictures"><code class="literal">(kawa pictures</code>) library</a> lets
+you create “picture” objects,
+display them, transform them, combine them, and more.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>There is a new <a class="link" href="Pretty-printing.xhtml" title="Pretty-printing">API for pretty-printing</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Basic support for Java 9 (though still some issues).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Generated files like <code class="literal">Makefile.in</code> and <code class="literal">configure</code> are no
+longer in the Subversion source code repository, though they are still
+included in the distributed <code class="literal">kawa-version.tar.gz</code> releases. The new
+top-level script <code class="literal">autogen.sh</code> should be run before
+<code class="literal">configure</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Kawa traditionally followed Java in allowing you to pass an array with
+the "rest" arguments to a varargs method. (A "varargs" method includes
+Java varargs methods, as well as Kawa methods with a <code class="literal">#!rest</code>
+parameter that is explicitly typed to be an array type.) For example,
+you could write:
+</p>
+            <pre class="screen">(define args (Object[] 3 "cm"))
+(java.lang.String:format "length:%s%s" args)
+</pre>
+            <p>This is deprecated, and may stop working in a future release. Instead,
+use the splice operator:
+</p>
+            <pre class="screen">(java.lang.String:format "length:%s%s" @args)
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>More options for <a class="link" href="Ranges.xhtml" title="Ranges">range objects</a>.  For example,
+you can write <code class="literal">[1 by: 2 &lt;=: 9]</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Many enhancements to <a class="link" href="Arrays.xhtml" title="Multi-dimensional Arrays">arrays</a> and vectors:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>Shape specifiers (used when creating an array) can now be one of a
+rank-2 array of low/high-bounds, as in SRFI-25; a vector of upper
+bounds; or a vector of ranges.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New type specifiers for array: <code class="literal">array</code> is any array (i.e. any
+<code class="literal">gnu.lists.Array</code>); <code class="literal">array<em class="replaceable"><code>N</code></em></code> is the same restricted to rank
+<code class="literal"><em class="replaceable"><code>N</code></em></code>; <code class="literal">array[etype]</code> or <code class="literal">arrayN[etype]</code> restrict the types
+of elements to <code class="literal">etype</code>.
+</p>
+                  <p>If the <code class="literal">etype</code> is a primitive type (for example
+<code class="literal">array2[double]</code>) then indexing is optimized to method calls that
+avoid object allocation.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Generalized array indexing: If A is an array (or a vector), then the
+expression:
+
+<code class="literal">(A I J K ...)</code>
+
+in general evaluates to an array B such that:
+
+<code class="literal">(B i1 i2 ... j1 j2 ... k1 k2 ... ...)</code> is
+
+<code class="literal">(A (I i1 i2 ..) (J j1 j2 ...) (K k1 k2 ...) ...)</code>
+</p>
+                  <p>If an index I is an integer, it is treated as a zero-index array - a
+scalar.
+</p>
+                  <p>For example: if <code class="literal">(define B (A 2 [4 &lt;: 10]))</code> then <code class="literal">(B i)</code> is
+<code class="literal">(A 2 (+ i 4))</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The procedure <code class="literal">array-index-ref</code> is does the above indexing
+explicitly: <code class="literal">(array-index-ref A I J K ...)</code> is
+<code class="literal">(A I J K ...)</code>. The result is a read-only snapshot.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The procedure <code class="literal">array-index-share</code> is like <code class="literal">array-index-ref</code>
+but creates a modifiable view into argument array.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal">(build-array shape procedure)</code> is a general constructor for lazy
+arrays: If <code class="literal">A</code> is the result, then <code class="literal">(A i j k ...)</code> is
+<code class="literal">(procedure [I J K ...])</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal">array-transform</code> creates a view, with a mapping of the indexes.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Other new procedures (like those in the Racket math package):
+<code class="literal">array-size</code>, <code class="literal">array-fill!</code>, <code class="literal">array-copy!</code>,
+<code class="literal">array-transform</code>, <code class="literal">array-reshape</code>, <code class="literal">array-flatten</code>,
+<code class="literal">array-&gt;vector</code>, <code class="literal">index-array</code>, <code class="literal">build-array</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Add Common Lisp array reader syntax (<code class="literal">#rankA</code>) with
+<a class="ulink" href="https://www.gnu.org/software/guile/manual/html_node/Array-Syntax.html" target="_top">Guile
+extensions</a>, including reader sypport for multi-dimensional uniform
+(primitive) arrays. This is also used when printing arrays.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New <code class="literal">format-array</code> procedure print an array a tabular 2-dimensional
+(APL-like) format. This format is used by default in the top-level of
+the REPL.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Print bit-vectors using the Common Lisp (and Guile) reader syntax.
+For example <code class="literal">#*1100110</code>. Enhanced the reader to read this format.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various REPL enhancements and new features:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">-w</code> switch to create a new REPL window
+can be followed by various sub-options to control <span class="emphasis"><em>how</em></span> and
+where the window is created.
+For example <code class="literal">-wbrowser</code> creates a new window
+using your default web browser.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Prompts are now normally specified using <code class="literal">printf</code>-style templates.
+The normal prompt template is specified by the <code class="literal">input-prompt1</code>
+variable, while continuation lines use <code class="literal">input-prompt2</code>. These can
+be initialized by command-line options <code class="literal">console:prompt1</code> and
+<code class="literal">console:prompt2</code>, or otherwise use language-specific defaults. You
+can still use <code class="literal">set-input-port-prompter!</code> to set a more general
+prompt-procedure, but it is now only called for the initial line of a
+command, not continuation lines.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The new <code class="literal">--with-jline3</code> configure option builds support for the
+<a class="ulink" href="https://github.com/jline/jline3" target="_top">JLine (version 3)</a> library for
+handling console input, similar to GNU readline.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Context-dependent command-completion (tab-completion) works when using
+JLine.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various REPL enhancements when using <a class="ulink" href="http://domterm.org/" target="_top">DomTerm</a>.
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>If you “print” an XML/HTML node, it gets inserted into the DomTerm
+objects.  You print images, tables, fancy text, and more.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If you “print” a picture object or a <code class="literal">BuferredImage</code>
+the picture is shown in the DomTerm console.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>You can load or modify styles with the <code class="literal">domterm-load-stylesheet</code>
+procedure.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>When pretty-printing, calculation of line-breaks and indentation
+is handled by DomTerm.
+If you change the window width, DomTerm will dynamically
+re-calculate the line-breaks of previous pretten output.
+This works even in the case of a session saved to an HTML
+file, as long as JavaScript is enabled.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Hide/show buttons are emitted as part of the default prompt.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Multiple literals that have the same value (as in <code class="literal">equal?</code>) get
+compiled to the same object.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The syntax <code class="literal">&amp;&lt;[expr]</code> is now equivalent to <code class="literal">&amp;&lt;{&amp;[expr]}</code>,
+assuming <code class="literal">expr</code> is an expression that evaluates to a string that
+named an existing file. That file is read is the result is the contents
+of the file (as if by <code class="literal">(path-data expr)</code>).
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667882048064">Kawa 2.1 (October 26, 2015)</h3>
+      <span id="_0023kawa-2_002e1-october-26-2015"/>
+      <p>Lots of little changes, and some big changes to sequences and strings.
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Enhancements to the Kawa tutorial.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added <code class="literal">parameter</code> as a new typename, for Scheme parameter objects.
+It can be parameterized (for example <code class="literal">parameter[string]</code>) for
+better type inference when "calling" (reading) the parameter.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>We now define “interactive mode” as a REPL or a source module that
+uses the default global top-level environment <span class="emphasis"><em>or</em></span> a source module
+imported/required by a interactive module. Interactive mode attempts to
+support dynamic re-definition and re-loading of function and other
+definitions. This is a work-in-progres; interactive mode currently uses
+extra indirection to support re-definitions (at a slight performance
+cost).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various changes and fixes in Path/URI handling. Most significantly, the
+resolve argorithm used by <code class="literal">resolve-uri</code> was re-written to use the
+algorithm from RFC-3986, rather than the obsolete RFC-2396 algorithm
+used by <code class="literal">java.net.URI.resolve</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Change to mangle class and package name in
+<a class="ulink" href="https://blogs.oracle.com/jrose/entry/symbolic_freedom_in_the_vm" target="_top">Symbolic
+Freedom</a> style. This means that class names and class filenames usually
+match the source file, even if special charaters are used, except for a
+small number of disallowed characters. Note this is currently
+<span class="emphasis"><em>only</em></span> used for class and package names.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Allow <code class="literal">'synchronized</code> and <code class="literal">'strictfp</code> as access flags for
+methods.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now have a type-specifier for <code class="literal">define-variable</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Better support for forward references between macros.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added unsigned primitive integer types <code class="literal">ubyte</code>, <code class="literal">ushort</code>,
+<code class="literal">uint</code>, and <code class="literal">ulong</code>. These are represented at run-time by the
+corresponding signed types, but Kawa generates code to do unsigned
+arithmethic and comparisons. Corresponding boxed classes are
+<code class="literal">gnu.math.UByte</code>, <code class="literal">gnu.math.UShort</code>, <code class="literal">gnu.math.UInt</code>, and
+<code class="literal">gnu.math.ULong</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Improvements and unification of sequences and strings:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>The new <code class="literal">sequence</code> type generalizes lists, vectors, arrays,
+strings, and more. It is implemented as the <code class="literal">java.util.List</code>
+interface, but strings (<code class="literal">java.lang.CharSequence</code>) and Java arrays
+are compatible with <code class="literal">sequence</code> and converted as needed.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">length</code> function is generalized to arbitrary sequences. (For
+strings it uses the <code class="literal">CharSequence.length</code> method, which returns the
+number of (16-bit) code units. This is different from the
+<code class="literal">string-length</code> function, which returns the number of Unicode code
+points.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>A new pseudo-character value <code class="literal">#\ignorable-char</code> is introduced. It
+is ignored in string-construction contexts.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The function-call syntax for indexing works for all sequences. If the
+sequence is a string, the result is the Unicode (20-bit) scalar value at
+the specified index. If index references the trailing surrogate of a
+surrogate pair the result is <code class="literal">#\ignorable-char</code>. This allows
+efficient indexing of strings: Handing of surrogate pairs are handled
+automatically as long as <code class="literal">#\ignorable-char</code> is skipped.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Indexing of uniform vector types (such as <code class="literal">s64vector</code> or
+<code class="literal">f64vector</code> or <code class="literal">u16vector</code>) now return the “standard”
+primitive type (such as <code class="literal">long</code> or <code class="literal">double</code>) or the new
+unsigned primitive (such as <code class="literal">ushort</code>). This improves performance
+(since we can generally use primitive types), and improves compatibility
+with Java arrays. Specifically, <code class="literal">s64vector</code> now implements
+<code class="literal">Sequence&lt;Long&gt;</code>, and thus <code class="literal">java.util.List&lt;Long&gt;</code> Note that
+indexing a <code class="literal">f64vector</code> returns a <code class="literal">double</code> which as an object
+is a <code class="literal">java.lang.Double</code>, not the Kawa floating-point type
+<code class="literal">gnu.math.DFloNum</code>. The result is usually the same, but <code class="literal">eqv?</code>
+might return a different result than previously.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The arguments to <code class="literal">map</code>, <code class="literal">for-each</code>, and <code class="literal">vector-for-each</code>
+can now be any sequence (including strings and native arrays). The
+arguments to <code class="literal">vector-for-each</code> can now be arbitrary
+<code class="literal">java.util.List</code> values. All of these are inlined. If the sequence
+type is known, more efficient custom code is generated.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>A range represents an enumerable sequence, normally integers, but it is
+represented compactly using the start value, the step (usually 1), and
+size. There is a new convenient syntax for writing a range: if <code class="literal">i</code>
+and <code class="literal">j</code> are integers then <code class="literal">[i &lt;=: j]</code> is the sequence of
+integers starting at <code class="literal">i</code> and ending at <code class="literal">j</code> (inclusive). You
+can also write <code class="literal">[i &lt;=: j]</code> (excludes the upper bound),
+<code class="literal">[i &gt;: j]</code> (counts down to <code class="literal">j</code>, exclusive), and
+<code class="literal">[i &gt;=: j]</code> (counts down to <code class="literal">j</code>, inclusive).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>You can use a sequences of integers to index a sequence. The result is
+the sequence of the selected elements. In general
+<code class="literal">(seq [i0 ... in])</code> is <code class="literal">[(seq i0) ... (seq in)]</code>. This work
+well with ranges: <code class="literal">(seq [i &lt;: j])</code> is the subsequence of <code class="literal">seq</code>
+from <code class="literal">i</code> to <code class="literal">j</code> (exclusive).
+</p>
+                  <p>If the <code class="literal">seq</code> is a string (a <code class="literal">CharSequence</code>) then the result is
+also a string. In this case the indexing behavior is slightly different
+in that indexing selects (16-bit) code units, which are combined to a
+string.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">dynamic</code> type is like <code class="literal">Object</code>. However, it forces
+runtime lookup and type-checking, and supresses compile-time type check
+and errors. (This is similar to C#. It is useful as an escape hatch if
+we ever implement traditional strict static type-checking.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Specifying the parameter type or return type of a function or method
+without a ’<code class="literal">::</code>’ is deprecated and results in a warning.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>In <code class="literal">--r7rs</code> mode: The ’<code class="literal">l</code>’ exponent suffix of a number
+literal creates a floating-point double, rather than a
+<code class="literal">BigInteger</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added the hyperbolic functions: sinh, cosh, tanh, asinh, acosh, atanh.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">equal?</code> function can now handle cyclic lists and vectors. So
+can <code class="literal">equal-hash</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The command-line option <code class="literal">--with-arg-count=N</code> allows finer control
+of command-line-processing. It is used before an “action”, and
+specifies the <code class="literal">N</code> arguments following the action are set as the
+command-line-arguments. After the action, command-line-processing
+continues following those <code class="literal">N</code> arguments.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added the R6RS module <code class="literal">(rnrs arithmetic bitwise)</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">kawa.repl</code> argument processor now handles <code class="literal">-D</code> options.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The new <code class="literal">class</code> sub-form of <code class="literal">import</code> allows you to import
+classes, and give them abbreviated names, like the Java <code class="literal">import</code>
+statement. The new form is more compact and convenient than
+<code class="literal">define-alias</code>.
+</p>
+            <p>You can also use a classname directly, as a symbol, instead of writing
+it in the form of a list:
+</p>
+            <pre class="screen">(import (only java.lang.Math PI))
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>In the <code class="literal">only</code> clause of the <code class="literal">import</code> syntax you can now
+directly rename, without having to write a <code class="literal">rename</code> clause.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Changes in the calling-convention for <code class="literal">--full-tailcalls</code> yields a
+substantial speed-up in some situations.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The type of boolean literals <code class="literal">#f</code> and <code class="literal">#t</code> is now primitive
+<code class="literal">boolean</code> rather than <code class="literal">java.lang.Boolean</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>General multi-dimensional arrays can be indexed with function call
+notation. E.g. <code class="literal">(arr i j k)</code> is equivalent to
+<code class="literal">(array-ref a i j k)</code>. You can also use <code class="literal">set!</code> with either
+<code class="literal">array-ref</code> or function call notation.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">#!null</code> value (Java <code class="literal">null</code>) is now considered false, not
+true. Likewise for non-canonical false Boolean objects (i.e. all
+instances of <code class="literal">java.lang.Boolean</code> for which <code class="literal">booleanValue</code>
+returns false, not just <code class="literal">Boolean.FALSE</code>).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New standard libraries <code class="literal">(kawa base)</code> and <code class="literal">(kawa reflect)</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now use patterns in the <code class="literal">let</code> form and related forms.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Implemented the <a class="ulink" href="http://en.wikipedia.org/wiki/Lambda_lifting" target="_top">lambda
+lifting</a> optimzation.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>An expression that has type T is now considered compatible with a
+context requiring an interface type I only if T implements I (or T is
+Object). (Before they were considered possibly-compatible if T was
+non-final because the run-time class might be a subclass of T that
+implements I.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New <code class="literal">--console</code> flag forces input to be treated as an interactive
+console, with prompting. This is needed on Windows under Emacs, where
+<code class="literal">System.console()</code> gives the wrong result.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now in a sub-class reference fields from not-yet-compiled
+super-classes. (This doesn’t work for methods yet.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">(? name::type value)</code> operator supports conditional binding.
+The <code class="literal">(! name::type value)</code> operator supports unconditional binding;
+it is similar to <code class="literal">define-constant</code>, but supports patterns.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>More efficient implementation of <code class="literal">call-with-values</code>: If either
+argument is a fixed-arity lambda expression it is inlined. Better
+type-checking of both <code class="literal">call-with-values</code> and <code class="literal">values</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Jamison Hope enhanced the support for quaternions, primarily the new
+<code class="literal">(kawa rotations)</code> library.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881975392">Kawa 2.0 (December 2 2014)</h3>
+      <span id="_0023kawa-2_002e0-december-2-2014"/>
+      <p>There are many new features, but the big one is R7RS compatibility.
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>New <code class="literal">define-alias</code> can define aliases for static class members.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The treatment of keywords is changing to not be self-evaluating (in
+Scheme). If you want a literal keyword, you should quote it. Unquoted
+keywords should only be used for keyword arguments. (This will be
+enforced in a future release.) The compiler now warns about badly formed
+keyword arguments, for example if a value is missing following a
+keyword.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The default is now Java 7, rather than Java 6. This means the checked-in
+source code is pre-processed for Java 7, and future binary releases will
+require Java 7.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The behavior of parameters and fluid variables has changed. Setting a
+parameter no longer changes its value in already-running sub-threads.
+The implementation is simpler and should be more efficient.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The form <code class="literal">define-early-constant</code> is similar to
+<code class="literal">define-constant</code>, but it is evaluated in a module’s class
+initializer (or constructor in the case of a non-static definition).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Almost all of R7RS is now working:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>Importing a SRFI library can now use the syntax
+<code class="literal">(import (srfi N [name]))</code>
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The various standard libraries such as <code class="literal">(scheme base)</code> are
+implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The functions <code class="literal">eval</code> and <code class="literal">load</code> can now take an
+environment-specifier. Implemented the <code class="literal">environment</code> function.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Extended <code class="literal">numerator</code>, <code class="literal">denominator</code>, <code class="literal">gcd</code>, and
+<code class="literal">lcm</code> to inexacts.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The full R7RS library functionality is working, including
+<code class="literal">define-library</code> The keyword <code class="literal">export</code> is now a synonym for
+<code class="literal">module-export</code>, and both support the <code class="literal">rename</code> keyword. The
+<code class="literal">prefix</code> option of <code class="literal">import</code> now works.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">cond-expand</code> form now supports the <code class="literal">library</code> clause.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">make-promise</code> and <code class="literal">delay-force</code> (equivalent to
+the older name <code class="literal">lazy</code>).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Changed <code class="literal">include</code> so that by default it first seaches the directory
+containing the included file, so by default it has the same effect as
+<code class="literal">include-relative</code>. However, you can override the search path with
+the <code class="literal">-Dkawa.include.path</code> property. Also implemented
+<code class="literal">include-ci</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">define-values</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Fixed <code class="literal">string-&gt;number</code> to correctly handle a radix specifier in the
+string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">read</code> procedure now returns mutable pairs.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If you need to use <code class="literal">...</code> in a <code class="literal">syntax-rules</code> template you can
+use <code class="literal">(... template)</code>, which disables the special meaning of
+<code class="literal">...</code> in <code class="literal">template</code>. (This is an extension of the older
+<code class="literal">(... ...)</code>.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Alternatively, you can can write
+<code class="literal">(syntax-rules dots (literals) rules)</code>. The symbol <code class="literal">dots</code>
+replaces the functionality of <code class="literal">...</code> in the <code class="literal">rules</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>An underscore <code class="literal">_</code> in a <code class="literal">syntax-rules</code> pattern matches
+anything, and is ignored.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">syntax-error</code> syntax (renamed from <code class="literal">%syntax-error</code>)
+allows error reporting in <code class="literal">syntax-rules</code> macros. (The older
+Kawa-specific <code class="literal">syntax-error</code> procedure was renamed to
+<code class="literal">report-syntax-error</code>.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented and documented R7RS exception handling: The syntax
+<code class="literal">guard</code> and the procedures <code class="literal">with-exception-handler</code>,
+<code class="literal">raise</code>, and <code class="literal">raise-continuable</code> all work. The <code class="literal">error</code>
+procedure is R7RS-compatible, and the procedures <code class="literal">error-object?</code>,
+<code class="literal">error-object-message</code>, <code class="literal">error-object-irritants</code>,
+<code class="literal">file-error?</code>, and <code class="literal">read-error?</code> were implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">emergency-exit</code>, and modified <code class="literal">exit</code> so
+finally-blocks are executed.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">exact-integer?</code>, <code class="literal">floor/</code>, <code class="literal">floor-quotient</code>,
+<code class="literal">floor-remainder</code>, <code class="literal">truncate/</code>, <code class="literal">truncate-quotient</code>, and
+<code class="literal">truncate-remainder</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">letrec*</code> syntax is now supported. (It works the same as
+<code class="literal">letrec</code>, which is an allowed extension of <code class="literal">letrec</code>.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The functions <code class="literal">utf8-&gt;string</code> and <code class="literal">string-&gt;utf8</code> are now
+documented in the manual.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The changes to characters and strings are worth covering separately:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">character</code> type is now a new primitive type (implemented as
+<code class="literal">int</code>). This can avoid boxing (object allocation)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>There is also a new <code class="literal">character-or-eof</code>. (A union of
+<code class="literal">character</code> and the EOF value, except the latter is encoded as -1,
+thus avoiding object allocation.) The functions read-char and
+<code class="literal">peek-char</code> now return a <code class="literal">character-or-eof</code> value.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Functions like <code class="literal">string-ref</code> that take a character index would not
+take into account non-BMP characters (those whose value is greater than
+<code class="literal">#xffff</code>, thus requiring two surrogate characters). This was
+contrary to R6RS/R7RS. This has been fixed, though at some performance
+cost . (For example <code class="literal">string-ref</code> and <code class="literal">string-length</code> are no
+longer constant-time.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented a <a class="ulink" href="Strings.html#String-Cursor-API" target="_top"><code class="literal">string-cursor</code>
+API</a> (based on Chibi Scheme). Thes allow efficient indexing, based on
+opaque cursors (actually counts of 16-bits <code class="literal">char</code>s).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Optimized <code class="literal">string-for-each</code>, which is now the preferred way to
+iterate through a string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">string-map</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New function <code class="literal">string-append!</code> for in-place appending to a mutable
+string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New function <code class="literal">string-replace!</code> for replacing a substring of a
+string with some other string.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The SRFI-13 function <code class="literal">string-append/shared</code> is no longer
+automatically visible; you have to <code class="literal">(import (srfi :13 strings))</code> or
+similar.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">module-name</code> form allows the name to be a list, as in a
+R6RS/R7RS-style library name.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The syntax <code class="literal">@expression</code> is a <span class="emphasis"><em>splicing form</em></span>. The
+<code class="literal">expression</code> must evaluate to a sequence (vector, list, array,
+etc). The function application or constructor form is equivalent to all
+the elements of the sequence.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The parameter object <code class="literal">current-path</code> returns (or sets) the default
+directory of the current thread.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Add convenience procedures and syntax for <a class="ulink" href="Processes.html" target="_top">working
+with processes</a>: <code class="literal">run-process</code>, <code class="literal">process-exit-wait</code>,
+<code class="literal">process-exit-ok?</code>, <code class="literal">&amp;cmd</code>, <code class="literal">&amp;`</code>, <code class="literal">&amp;sh</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The functions <code class="literal">path-bytes</code>, and <code class="literal">path-data</code> can
+<a class="ulink" href="http://www.gnu.org/software/kawa/Reading-and-writing-whole-files.html" target="_top">read
+or write the entire contents of a file</a>. Alternatively, you can use the
+short-hand syntax: <code class="literal">&amp;&lt;{pname}</code> <code class="literal">&amp;&gt;{pname}</code>
+<code class="literal">&amp;&gt;&gt;{pname}</code>. These work with "blobs" which may be text or binary
+depending on context.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The initial values of <code class="literal">(current-output-port)</code> and
+<code class="literal">(current-error-port)</code> are now hybrid textual/binary ports. This
+means you can call <code class="literal">write-bytevector</code> and <code class="literal">write-u8</code> on them,
+making it possible for an application to write binary data to standard
+output. Similarly, initial value of <code class="literal">(current-input-port)</code> is a
+hybrid textual/binary port, but only if there is no console (standard
+input is not a tty).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Jamison Hope contributed support for
+<a class="ulink" href="http://en.wikipedia.org/wiki/Quaternion" target="_top">quaternions</a>, a
+generalization of complex numbers containing 4 real components.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Andrea Bernardini contributed an optimized implementation of <code class="literal">case</code>
+expressions. He was sponsored by Google Summer of Code.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">kawa.sh</code> shell script (which is installed as <code class="literal">kawa</code> when
+<span class="emphasis"><em>not</em></span> configuring with <code class="literal">--enable-kawa-frontend</code>) now handles
+<code class="literal">-D</code> and <code class="literal">-J</code> options. The <code class="literal">kawa.sh</code> script is now also
+built when usint Ant.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">cond-expand</code> features <code class="literal">java-6</code> though <code class="literal">java-9</code> are
+now set based on the <code class="literal">System</code> property <code class="literal">"java.version"</code>
+(rather than how Kawa was configured).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>An Emacs-style <code class="literal">coding</code> declaration allows you to specify the
+encoding of a Scheme source file.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The command-line option <code class="literal">--debug-syntax-pattern-match</code> prints
+logging importation to standard error when a <code class="literal">syntax-rules</code> or
+<code class="literal">syntax-case</code> pattern matches.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://srfi.schemers.org/srfi-60/srfi-60.html" target="_top">SRFI-60 (Integers as
+Bits)</a> is now fully implemented.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Ported <a class="ulink" href="http://srfi.schemers.org/srfi-101/srfi-101.html" target="_top">SRFI-101</a>.
+These are immutable (read-only) lists with fast (logarithmic) indexing
+and functional update (i.e. return a modified list). These are
+implemented by a <code class="literal">RAPair</code> class which extends the generic
+<code class="literal">pair</code> type, which means that most code that expects a standard
+list will work on these lists as well.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The class <code class="literal">kawa.lib.kawa.expressions</code> contains an experimental
+Scheme API for manipulating and validating expressions.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Internal: Changed representation used for multiple values to an abstract
+class with multiple implementations.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Internal: Started converting to more standard Java code formatting and
+indentation conventions, rather than GNU conventions. Some files
+converted; this is ongoing work.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Internal: Various I/O-related classes moved to new package
+<code class="literal">gnu.kawa.io</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various changes to the <code class="literal">configure+make</code> build framework: A C
+compiler is now only needed if you configure with
+<code class="literal">--enable-kawa-frontend</code>. Improved support for building under
+Windows (using MinGW/MSYS).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Support for building with <a class="ulink" href="http://gcc.gnu.org/java/" target="_top">GCJ</a> was
+removed.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881886400">Kawa 1.14 (October 4, 2013)</h3>
+      <span id="_0023kawa-1_002e14-october-4-2013"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>You can pass flags from the <code class="literal">kawa</code> front-end to the <code class="literal">java</code>
+launcher using <code class="literal">-J</code> and <code class="literal">-D</code> flags. The <code class="literal">kawa</code> front-end
+now passes the <code class="literal">kawa.command.line</code> property to Java; this is used
+by the <code class="literal">(command-line)</code> procedure.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various improvements to the shell-script handling, including
+<a class="ulink" href="Scripts.html" target="_top">re-written documentation</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Some initial support for Java 8.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>More of R7RS is now working:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>After adding list procedures <code class="literal">make-list</code>, <code class="literal">list-copy</code>,
+<code class="literal">list-set!</code> all the R7RS list procedures are implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Other added procedures: <code class="literal">square</code>, <code class="literal">boolean=?</code>,
+<code class="literal">string-copy!</code>, <code class="literal">digit-value</code>,
+<code class="literal">get-environment-variable</code>, <code class="literal">get-environment-variables</code>,
+<code class="literal">current-second</code>, <code class="literal">current-jiffy</code>, <code class="literal">jiffies-per-second</code>,
+and <code class="literal">features</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The predicates <code class="literal">finite?</code>, <code class="literal">infinite?</code>, and <code class="literal">nan?</code> are
+generalized to complex numbers.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The procedures <code class="literal">write</code>, <code class="literal">write-simple</code>, and
+<code class="literal">write-shared</code> are now consistent with R7RS.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>String and character comparison functions are generalized to more than
+two arguments (but restricted to strings or characters, respectively).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The procedures <code class="literal">string-copy</code>, <code class="literal">string-&gt;list</code>, and
+<code class="literal">string-fill!</code> now take optional (start,end)-bounds. All of the
+R7RS string functions are now implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Support <code class="literal">=&gt;</code> syntax in <code class="literal">case</code> form.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Support backslash-escaped special characters in symbols when inside
+vertical bars, such as <code class="literal">'|Hello\nworld|</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The new functions and syntax are documented in the <a class="ulink" href="index.html" target="_top">Kawa
+manual</a>; look for the functions in the <a class="ulink" href="Overall-Index.html" target="_top">index</a>.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added <code class="literal">define-private-alias</code> keyword.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Extended <a class="ulink" href="Strings.html#String-templates" target="_top">string quasi-literals
+(templates)</a> as specified by
+<a class="ulink" href="http://srfi.schemers.org/srfi-109/srfi-109.html" target="_top">SRFI-109</a>. For
+example, if <code class="literal">name</code> has the value <code class="literal">"John"</code>, then:
+</p>
+            <pre class="screen">&amp;{Hello &amp;[name]!}
+</pre>
+            <p>evaluates to: <code class="literal">"Hello John!"</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Named quasi-literal constructors as specified by
+<a class="ulink" href="http://srfi.schemers.org/srfi-108/srfi-108.html" target="_top">SRFI-108</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A symbol having the form <code class="literal">-&gt;type</code> is a type conversion function
+that converts a value to <code class="literal">type</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New and improved check for void-valued expressions in a context
+requiring a value. This is controlled by the new option
+<code class="literal">--warn-void-used</code>, which defaults to true.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">datum-&gt;syntax</code> procedure takes an optional third parameter to
+specify the source location. See <code class="literal">testsuite/srfi-108-test.scm</code> for
+an example.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Instead of specifying <code class="literal">--main</code> the command line, you can now
+specify <code class="literal">(module-compile-options: main: #t)</code> in the Scheme file.
+This makes it easier to compile one or more application (main) modules
+along with other modules.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A change to the data structure used to detect never-returning procedure
+uses a lot less memory. (Kawa 1.13 implemented a conservative detection
+of when a procedure cannot return. This analysis would sometimes cause
+the Kawa compiler to run out of memory. The improved analysis uses the
+same basic algorithm, but with a more space-efficient “inverted” data
+structure.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Multiple fixes to get Emacs Lisp (JEmacs) working (somewhat) again.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881849488">Kawa 1.13 (December 10, 2012)</h3>
+      <span id="_0023kawa-1_002e13-december-10-2012"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>We now do a simple (conservative) analysis of when a procedure cannot
+return. This is combined with earlier and more precise analysis of
+reachable code. Not only does this catch programmer errors better, but
+it also avoids some internal compiler errors, because Kawa could get
+confused by unreachable code.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Implement 2-argument version of <code class="literal">log</code> function, as specified by
+R6RS and R7RS (and, prematurely, the Kawa documentation).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Implement the R7RS <code class="literal">bytevector</code> functions. The <code class="literal">bytevector</code>
+type is a synonym for older <code class="literal">u8vector</code> type.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Implement R7RS <code class="literal">vector</code> procedures. Various procedures now take
+(start,end)-bounds.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Implement most of the R7RS input/output proecdures. Most significant
+enhancement is support for R7RS-conforming binary ports.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various enhancements to the manual, including merging in lots of text
+from R7RS.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Improved Android support, including a more convenient Ant script
+contributed by Julien Rousseau. Also, documentation merged into manual.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881842000">Kawa 1.12 (May 30, 2012)</h3>
+      <span id="_0023kawa-1_002e12-may-30-2012"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Implement a compile-time data-flow framework, similar to Single Static
+Assignment. This enables better type inference, improves some
+warnings/errors, and enables some optimizations.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Jamison Hope added support for co-variant return types and bridge
+methods for generics.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Macros were improved and more standards-conforming:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal">datum-&gt;syntax</code> and <code class="literal">syntax-&gt;datum</code> are preferred names for
+<code class="literal">datum-&gt;syntax-object</code> and <code class="literal">syntax-object-&gt;datum</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented <code class="literal">bound-identifier=?</code> and re-wrote implementation of
+<code class="literal">free-identifier=?</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implement <code class="literal">unsyntax</code> and <code class="literal">unsyntax-splicing</code>, along with the
+reader prefixes <code class="literal">#,</code> and <code class="literal">#,@</code>.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New and improved lazy evaluation functionality:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>Lazy values (resulting from <code class="literal">delay</code> or <code class="literal">future</code>) are
+implicitly forced as needed. This makes “lazy programming” more
+convenient.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>New type <code class="literal">promise</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The semantics of promises (<code class="literal">delay</code> etc) is now compatible with
+<a class="ulink" href="http://srfi.schemers.org/srfi-45/srfi-45.html" target="_top">SRFI 45</a>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>“Blank promises” are useful for passing data between processes, logic
+programmming, and more. New functions <code class="literal">promise-set-value!</code>,
+<code class="literal">promise-set-alias!</code>, <code class="literal">promise-set-exception!</code>, and
+<code class="literal">promise-set-thunk!</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The stream functions of
+<a class="ulink" href="http://srfi.schemers.org/srfi-41/srfi-41.html" target="_top">SRFI-41</a> were
+re-implemented to use the new promise functionality.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Different functions in the same module can be compiled with or without
+full tailcall support. You can control this by using
+<code class="literal">full-tailcalls</code> in <code class="literal">with-compile-options</code>. You can also
+control <code class="literal">full-tailcalls</code> using <code class="literal">module-compile-options</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Charles Turner (sponsored by <a class="ulink" href="http://code.google.com/soc/" target="_top">Google’s
+Summer of Code</a>) enhanced the printer with support for
+<a class="ulink" href="http://srfi.schemers.org/srfi-38/" target="_top">SRFI-38: External Representation
+for Data With Shared Structure</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Optimize tail-recursion in module-level procedures. (We used to only do
+this for internal functions, for reasons that are no longer relevant.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Add support for building Kawa on Windows using configure+make
+(autotools) and Cygwin.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Some support for parameterized (generic) types:
+</p>
+            <pre class="screen">  Type[Arg1 Arg2 ... ArgN]
+</pre>
+            <p>is more-or-less equivalent to Java’s:
+</p>
+            <pre class="screen">  Type&lt;Arg1, Arg2, ..., ArgN&gt;
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New language options <code class="literal">--r5rs</code>, <code class="literal">--r6rs</code>, and <code class="literal">--r7rs</code>
+provide better compatibility with those Scheme standards. (This is a
+work-in-progress.) For example <code class="literal">--r6rs</code> aims to disable Kawa
+extensions that conflict with R6RS. It does not aim to disable all
+extensions, only incompatible extensions. So far these extensions
+disable the colon operator and keyword literals. Selecting <code class="literal">--r5rs</code>
+makes symbols by default case-insensitive.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The special tokens <code class="literal">#!fold-case</code> and <code class="literal">#!no-fold-case</code> act like
+comments except they enable or disable case-folding of symbols. The old
+<code class="literal">symbol-read-case</code> global is now only checked when a LispReader is
+created, not each time a symbol is read.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now use square brackets to construct immutable sequences
+(vectors).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A record type defined using <code class="literal">define-record-type</code> is now compiled to
+a class that is a member of the module class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Annotations are now supported.
+<a class="ulink" href="http://per.bothner.com/blog/2011/Using-JAXB-annotations/" target="_top">This
+example</a> shows how to use
+<a class="ulink" href="http://java.sun.com/xml/downloads/jaxb.html" target="_top">JAXB</a> annotations to
+automatically convert between between Java objects and XML files.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Prevent mutation of vector literals.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>More R6RS procedures: <code class="literal">vector-map</code>, <code class="literal">vector-for-each</code>,
+<code class="literal">string-for-each</code>, <code class="literal">real-valued?</code>, <code class="literal">rational-valued?</code>,
+<code class="literal">integer-valued?</code>, <code class="literal">finite?</code>, <code class="literal">infinite?</code>, <code class="literal">nan?</code>,
+<code class="literal">exact-integer-sqrt</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://srfi.schemers.org/srfi-14/srfi-14.html" target="_top">SRFI-14</a> ("character
+sets") and <a class="ulink" href="http://srfi.schemers.org/srfi-41/srfi-41.html" target="_top">SRFI-41</a>
+("streams") are now supported, thanks to porting done by Jamison Hope.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Kawa now runs under JDK 1.7. This mostly involved fixing some errors in
+<code class="literal">StackMapTable</code> generation.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now have a class created by <code class="literal">define-simple-class</code> with the
+same name as the module class. For example
+<code class="literal">(define-simple-class foo ...)</code> in a file <code class="literal">foo.scm</code>. The
+defined class will serve dual-purpose as the module class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Improvements in separating compile-time from run-time code, reducing the
+size of the runtime jar used for compiled code.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>In the <code class="literal">cond-expand</code> conditional form you can now use
+<code class="literal">class-exists:ClassName</code> as a feature “name” to tests that
+<code class="literal">ClassName</code> exists.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881795840">Kawa 1.11 (November 11, 2010)</h3>
+      <span id="_0023kawa-1_002e11-november-11-2010"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>A new Kawa logo, contributed by <a class="ulink" href="http://jcubic.pl" target="_top">Jakub
+Jankiewicz</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">--warn-unknown-member</code> option, which generalizes
+<code class="literal">--warn-invoke-unknown-method</code> to fields as well as methods.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <a class="ulink" href="ant-kawac.html" target="_top"><code class="literal">kawac</code> task</a>, useful for Ant
+<code class="literal">build.xml</code> files, contributed by Jamison Hope.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://per.bothner.com/blog/2010/AndroidHelloScheme" target="_top">Updated
+Android support</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New <a class="ulink" href="Enumerations.html" target="_top"><code class="literal">define-enum</code> macro</a> contributed by
+Jamison Hope.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Access specifiers <code class="literal">'final</code> and <code class="literal">'enum</code> are now allowed in
+<code class="literal">define-class</code> and related forms.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Optimized <code class="literal">odd?</code> and <code class="literal">even?</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If you specify the type of a <code class="literal">#!rest</code> parameter as an array type,
+that will now be used for the "varargs" method parameter. (Before only
+object arrays did this.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>When constructing an object and there is no matching constructor method,
+look for "<code class="literal">add</code>" methods in addition to "<code class="literal">set</code>" methods. Also,
+allow passing constructor args as well as keyword setters.
+<a class="ulink" href="Allocating-objects.html" target="_top">See here</a> for the gory details.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New <code class="literal">expand</code> function (contributed by Helmut Eller, and enabled by
+<code class="literal">(require 'syntax-utils)</code>) for converting Scheme expressions to
+macro-expanded forms.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="Anonymous-classes.html#SAM-conversion" target="_top">SAM-conversion</a>: In a
+context that expects a Single Abstract Method (SAM) type (for example
+<code class="literal">java.lang.Runnable</code>), if you pass a lambda you will get an
+<code class="literal">object</code> where the lambda implements the abstract method.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>In interactive mode allow dynamic rebinding of procedures. I.e. if you
+re-define a procedure, the old procedure objects gets modified in-place
+and re-used, rather than creating a new procedure object. Thus calls in
+existing procedures will call the new version.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Fix various threading issues related to compilation and eval.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>When <code class="literal">format</code> returns a string, return a <code class="literal">java.lang.String</code>
+rather than a <code class="literal">gnu.lists.FString</code>. Also, add some minor
+optimization.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Inheritance of environments and fluid variables now work properly for
+all child threads, not just ones created using <code class="literal">future</code>.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881773376">Kawa 1.10 (July 24, 2010)</h3>
+      <span id="_0023kawa-1_002e10-july-24-2010"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Now defaults to using Java 6, when compiling from source. The pre-built
+<code class="literal">jar</code> works with Java 5, but makes use of some Java 6 features
+(<code class="literal">javax.script</code>, built-in HTTP server) if available.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can write <a class="ulink" href="XML-literals.html" target="_top">XML literals</a> in Scheme code
+prefixed by a <code class="literal">#</code>, for example:
+</p>
+            <pre class="screen">#&lt;p&gt;The result is &amp;{result}.&lt;/p&gt;
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New functions <code class="literal">element-name</code> and <code class="literal">attribute-name</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Various <a class="ulink" href="Server-side-scripts.html" target="_top">Web server improvements</a>. You
+have the option of using JDK 6’s builtin
+<a class="ulink" href="Options.html#Options-for-web-servers" target="_top">web-server</a> for
+<a class="ulink" href="Self-configuring-page-scripts.html" target="_top">auto-configued web pages</a>.
+Automatic import of web server functions, so you should not need to
+<code class="literal">(import 'http)</code> any more.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Kawa <a class="ulink" href="Hash-tables.html" target="_top">hashtables</a> now extend <code class="literal">java.util.Map</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If a source file is specified on the <code class="literal">kawa</code> command line without
+any options, it is read and compiled as a whole module before it is run.
+In contrast, if you want to read and evaluate a source file line-by-line
+you must use the <code class="literal">-f</code> flag.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can specify a class name on the <code class="literal">kawa</code> command line:
+</p>
+            <pre class="screen">$ kawa fully.qualified.name
+</pre>
+            <p>This is like the <code class="literal">java</code> command. but you don’t need to specify the
+path to the Kawa runtime library, and you don’t need a <code class="literal">main</code>
+method (as long as the class is <code class="literal">Runnable</code>).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The usual bug-fixes, including better handling of the <code class="literal">~F</code>
+<code class="literal">format</code> directive; and fix in handling of macro hygiene of the
+<code class="literal">lambda</code> (<a class="ulink" href="https://savannah.gnu.org/bugs/index.php?27042" target="_top">bug
+#27042</a>).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Spaces are now optional before and after the ’::’ in type specifiers.
+The preferred syntax leave no space after the ’::’, as in:
+</p>
+            <pre class="screen">(define xx ::int 1)
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">define-for-syntax</code> and <code class="literal">begin-for-syntax</code> work.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now use <code class="literal">car</code>, <code class="literal">cdr</code> etc to work with <code class="literal">syntax</code>
+objects that wrap lists, as in SRFI-72.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now define a package alias:
+</p>
+            <pre class="screen">(define-alias jutil java.util)
+(define mylist :: jutil:List (jutil:ArrayList))
+</pre>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">--module-static</code> is now the default. A new
+<code class="literal">--module-nonstatic</code> (or <code class="literal">--no-module-static</code>) option can be
+used to get the old behavior.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can use <code class="literal">access:</code> to specify that a field is <code class="literal">'volatile</code>
+or <code class="literal">'transient</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now have type-specifiers for multiple variables in a <code class="literal">do</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Imported variables are read-only.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Exported variables are only made into Locations when needed.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The letter used for the exponent in a floating-point literal determines
+its type: <code class="literal">12s2</code> is a <code class="literal">java.lang.Float</code>, <code class="literal">12d2</code> is a
+<code class="literal">java.lang.Double</code>, <code class="literal">12l2</code> is a <code class="literal">java.math.BigInteger</code>,
+<code class="literal">12e2</code> is a <code class="literal">gnu.math.DFloat</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Internal: Asking for a <code class="literal">.class</code> file using
+<code class="literal">getResourceAsStream</code> on an <code class="literal">ArrayClassLoader</code> will now open a
+<code class="literal">ByteArrayInputStream</code> on the class bytes.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">disassemble</code> function.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If <code class="literal">exp1</code> has type <code class="literal">int</code>, the type of <code class="literal">(+ exp1 1)</code> is now
+(32-bit) <code class="literal">int</code>, rather than (unlimited-precision) <code class="literal">integer</code>.
+Similar for <code class="literal">long</code> expressions, other arithmetic operations (as
+appropriate), and other untyped integer literals (as long as they fit in
+32/64 bits respectively).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Many more oprimization/specializations of arithmetic, especially when
+argument types are known.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Top-level bindings in a module compiled with <code class="literal">--main</code> are now
+implicitly module-private, unless there is an explicit
+<code class="literal">module-export</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://srfi.schemers.org/srfi-2/srfi-2.html" target="_top">SRFI-2</a>
+(<code class="literal">and-let*</code>: an <code class="literal">and</code> with local bindings, a guarded <code class="literal">*</code>
+special form) is now supported.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The reader now supports shared sub-objects, as in
+<a class="ulink" href="http://srfi.schemers.org/srfi-38/srfi-38.html" target="_top">SRFI-38</a> and Common
+Lisp: <code class="literal">(#2=(3 4) 9 #2# #2#)</code>. (Writing shared sub-objects is not
+yet implemented.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A module compiled with <code class="literal">--main</code> by default exports no bindings
+(unless overriden by an explicit <code class="literal">module-export</code>).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Factor out compile-time only code from run-time code. The new
+<code class="literal">kawart-version.jar</code> is smaller because it has less compile-time
+only code. (Work in progress.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>More changes for R6RS compatibility:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>The reader now recognizes <code class="literal">+nan.0</code>, <code class="literal">+inf.0</code> and variations.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">div</code>, <code class="literal">mod</code>, <code class="literal">div0</code>, <code class="literal">mod0</code>,
+<code class="literal">div-and-mod</code>, <code class="literal">div0-and-mod0</code>, <code class="literal">inexact</code> and
+<code class="literal">exact</code> functions were implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal">command-line</code> and <code class="literal">exit</code>.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881716640">Kawa 1.9.90 (August 8, 2009)</h3>
+      <span id="_0023kawa-1_002e9_002e90-august-8-2009"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Support for <code class="literal">javax.script</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Support for <a class="ulink" href="Regular-expressions.html" target="_top">regular expressions</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Performance improvements:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>Emit <code class="literal">iinc</code> instruction (to increment a local <code class="literal">int</code> by a
+constant).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Inline the <code class="literal">not</code> function if the argument is constant.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If <code class="literal">call-with-current-continuation</code> is only used to exit a block in
+the current method, optimize to a <code class="literal">goto</code>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Generate <code class="literal">StackMapTable</code> attributes when targeting Java 6.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Kawa can now inline a function with multiple calls (without code
+duplication) if all call sites have the same return location
+(continuation). For example: <code class="literal">(if p (f a) (f b))</code>. Also mutually
+tail-recursive functions are inlined, so you get constant stack space
+even without <code class="literal">--full-tailcalls</code>. (Thanks for Helmut Eller for a
+prototype.)
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A number of changes for R6RS compatibility:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p>The <code class="literal">char-titlecase</code>, <code class="literal">char-foldcase</code>, <code class="literal">char-title-case?</code>
+library functions are implemented.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Imported variables are read-only.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Support the R6RS <code class="literal">import</code> keyword, including support for renaming.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Support the R6RS <code class="literal">export</code> keyword (though without support for
+renaming).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented the <code class="literal">(rnrs hashtables)</code> library.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Implemented the <code class="literal">(rnrs sorting)</code> library.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>CommonLisp-style keyword syntax is no longer supported (for Scheme): A
+colon followed by an identifier is no longer a keyword (though an
+identifier followed by a colon is still a keyword). (One reason for this
+change is to support SRFI-97.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The character names <code class="literal">#\delete</code>, <code class="literal">#\alarm</code>, <code class="literal">#\vtab</code> are
+now supported. The old names <code class="literal">#\del</code>, <code class="literal">#\rubout</code>, and
+<code class="literal">#\bel</code> are deprecated.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Hex escapes in character literals are supported. These are now printed
+where we before printed octal escapes.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>A hex escape in a string literal should be terminated by a semi-colon,
+but for compatibily any other non-hex-digit will also terminate the
+escape. (A terminating semi-colon will be skipped, though a different
+terminator will be included in the string.)
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>A backslash-whitespace escape in a string literal will not only ignore
+the whitespace through the end of the line, but also any initial
+whitespace at the start of the following line.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The comment prefix <code class="literal">#;</code> skips the following S-expression, as
+specified by
+<a class="ulink" href="http://srfi.schemers.org/srfi-62/srfi-62.html" target="_top">SRFI-62</a>.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>All the
+<a class="ulink" href="http://www.r6rs.org/final/html/r6rs-lib/r6rs-lib-Z-H-12.html#node_sec_11.4" target="_top">R6RS
+exact bitwise arithmetic</a> functions are now implemented and
+<a class="ulink" href="Logical-Number-Operations.html" target="_top">documented in the manual</a>. The new
+standard functions (for example <code class="literal">bitwise-and</code>) are now preferred
+over the old functions (for example <code class="literal">logand</code>).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If <code class="literal">delete-file</code> fails, throws an exception instead of returning
+<code class="literal">#f</code>.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The code-base now by default assumes Java 5 (JDK 1.5 or newer), and
+pre-built <code class="literal">jar</code> files will require Java 5. Also, the Kawa source
+code now uses generics, so you need to use a generics-aware
+<code class="literal">javac</code>, passing it the appropriate <code class="literal">--target</code> flag.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New SRFIs supported:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul class="itemizedlist" style="list-style-type: circle; ">
+                <li class="listitem" epub:type="list-item">
+                  <p><a class="ulink" href="http://srfi.schemers.org/srfi-62/srfi-62.html" target="_top">SRFI-62</a> -
+S-expression comments.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><a class="ulink" href="http://srfi.schemers.org/srfi-64/srfi-64.html" target="_top">SRFI-64</a> - Scheme
+API for test suites.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><a class="ulink" href="http://srfi.schemers.org/srfi-95/srfi-95.html" target="_top">SRFI-95</a> - Sorting
+and Merging.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><a class="ulink" href="http://srfi.schemers.org/srfi-97/srfi-97.html" target="_top">SRFI-97</a> - Names for
+SRFI Libraries. This is a naming convention for R6RS <code class="literal">import</code>
+statements to reference SRFI libraries.
+</p>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>In BRL text outside square brackets (or nested like <code class="literal">]this[</code>) now
+evaluates to <code class="literal">UnescapedData</code>, which a Scheme quoted string
+evaluates to <code class="literal">String</code>, rather than an <code class="literal">FString</code>. (All of the
+mentioned types implement <code class="literal">java.lang.CharSequence</code>.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can now
+<a class="ulink" href="http://per.bothner.com/blog/2009/AndroidHelloScheme/" target="_top">run Kawa
+Scheme programs on Android</a>, Google’s mobile-phone operating system.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The macro <code class="literal">resource-url</code> is useful for accessing resources.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new command-line option <code class="literal">--target</code> (or <code class="literal">-target</code>) similar to
+<code class="literal">javac</code>’s <code class="literal">-target</code> option.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If there is no console, by default create a window as if <code class="literal">-w</code> was
+specificed.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If a class method (defined in <code class="literal">define-class</code>,
+<code class="literal">define-simple-class</code> or <code class="literal">object</code>) does not have its parameter
+or return type specified, search the super-classes/interfaces for
+matching methods (same name and number of parameters), and if these are
+consistent, use that type.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Trying to modify the <code class="literal">car</code> or <code class="literal">cdr</code> of a literal list now
+throws an exception.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">.zip</code> archive created by <code class="literal">compile-file</code> is now
+compressed.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Java5-style varargs-methods are recognized as such.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>When evaluating or loading a source file, we now always compile to
+bytecode, rather than interpreting “simple” expressions. This makes
+semantics and performance more consistent, and gives us better exception
+stack traces.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The Scheme type specifier <code class="literal">&lt;integer&gt;</code> now handles automatic
+conversion from <code class="literal">java.math.BigInteger</code> and the <code class="literal">java.lang</code>
+classes <code class="literal">Long</code>, <code class="literal">Integer</code>, <code class="literal">Short</code>, and <code class="literal">Byte</code>. The
+various standard functions that work on <code class="literal">&lt;integer&gt;</code> (for example
+<code class="literal">gcd</code> and <code class="literal">arithmetic-shift</code>) can be passed (say) a
+<code class="literal">java.lang.Integer</code>. The generic functions such as <code class="literal">+</code> and the
+real function <code class="literal">modulo</code> should also work. (The result is still a
+<code class="literal">gnu.math.IntNum</code>.)
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If a name such as (<code class="literal">java.util</code>) is lexically unbound, and there is
+a known package with that name, return the <code class="literal">java.lang.Package</code>
+instance. Also, the colon operator is extended so that
+<code class="literal">package:name</code> evaluates to the <code class="literal">Class</code> for
+<code class="literal">package.name</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">`prefix:,expression</code> works - it finds a symbol in <code class="literal">prefix</code>’s
+package (aka namespace), whose local-name is the value of
+<code class="literal">expression</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A quantity <code class="literal">3.0cm</code> is now syntactic sugar for
+<code class="literal">(* 3.0 unit:cm)</code>. Similarly:
+
+<code class="literal">(define-unit name value)</code>
+
+is equivalent to:
+
+<code class="literal">(define-constant unit:name value)</code>
+
+This means that unit names follow normal name-lookup rules (except being
+in the <code class="literal">unit</code> “package”), so for example you can have local unit
+definitions.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can specify whether a class has public or package access, and
+whether it is translated to an interface or class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can declare an abstract method by writing <code class="literal">#!abstract</code> as its
+body.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If a name of the form <code class="literal">type?</code> is undefined, but <code class="literal">type</code> is
+defined, then treat the former as
+<code class="literal">(lambda (x) (instance? x type))</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A major incompatible (but long-sought) change: Java strings (i.e.
+<code class="literal">java.lang.String</code> values) are now Scheme strings, rather than
+Scheme symbols. Since Scheme strings are mutable, while Java
+<code class="literal">String</code>s are not, we use a different type for mutable strings:
+<code class="literal">gnu.lists.FString</code> (this is not a change). Scheme string literals
+are <code class="literal">java.lang.String</code> values. The common type for Scheme string is
+<code class="literal">java.lang.CharSequence</code> (which was introducted in JDK 1.4).
+</p>
+            <p>Scheme symbols are now instances of
+<a class="ulink" href="api/gnu/mapping/Symbol.html" target="_top"><code class="literal">gnu.mapping.Symbol</code></a>,
+specifically the <code class="literal">SimpleSymbol</code> class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A fully-qualified class name such as <code class="literal">java.lang.Integer</code> now
+evaluates to the corresponding <code class="literal">java.lang.Class</code> object. I.e. it is
+equivalent to the Java term <code class="literal">java.lang.Integer.class</code>. This assumes
+that the name does not have a lexical binding, <span class="emphasis"><em>and</em></span> that it exists
+in the class-path at compile time.
+</p>
+            <p>Array class names (such as <code class="literal">java.lang.Integer[]</code>) and primitive
+types (such as <code class="literal">int</code>) also work.
+</p>
+            <p>The older angle-bracket syntax <code class="literal">&lt;java.lang.Integer&gt;</code> also works and
+has the same meaning. It also evaluates to a <code class="literal">Class</code>. It used to
+evaluate to a <a class="ulink" href="api/gnu/bytecode/Type.html" target="_top"><code class="literal">Type</code></a>, so this is
+a change.
+</p>
+            <p>The name bound by a <code class="literal">define-simple-class</code> now evaluates to a
+<code class="literal">Class</code>, rather than a
+<a class="ulink" href="api/gnu/bytecode/ClassType.html" target="_top"><code class="literal">ClassType</code></a>. A
+<code class="literal">define-simple-class</code> is not allowed to reference non-static
+module-level bindings; for that use <code class="literal">define-class</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New convenience macro
+<a class="ulink" href="Syntax-and-conditional-compilation.html" target="_top"><code class="literal">define-syntax-case</code></a>.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881629840">Kawa 1.9.1 (January 23, 2007)</h3>
+      <span id="_0023kawa-1_002e9_002e1-january-23-2007"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Fix some problems building Kawa from source using <code class="literal">configure+make</code>.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881627600">Kawa 1.9.0 (January 21, 2007)</h3>
+      <span id="_0023kawa-1_002e9_002e0-january-21-2007"/>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>New types and functions for working with <a class="ulink" href="Paths.html" target="_top">paths and
+URIs</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Reader macros URI, namespace, duration.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Simplified <a class="ulink" href="Source-distribution.html" target="_top">build using gcj</a>, and added
+configure flag –with-gcj-dbtool.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>If two “word” values are written, a space is written between them. A
+word is most Scheme values, including numbers and lists. A Scheme string
+is treated as a word by <code class="literal">write</code> but by not <code class="literal">display</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">--pedantic</code> command-line flag. It currently only affects the
+XQuery parser.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">load-compile</code> procedure was removed.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The string printed by the <code class="literal">--version</code> switch now includes the
+Subversion revision and date (but only if Kawa was built using
+<code class="literal">make</code> rather than <code class="literal">ant</code> from a checked-out Subversion tree).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Kawa development now uses the
+<a class="ulink" href="http://subversion.tigris.org/" target="_top">Subversion (svn)</a> version control
+system instead of CVS.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Show file/line/column on unbound symbols (both when interpreted and when
+compiled).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Cycles are now allowed between <code class="literal">require</code>’d modules. Also, compiling
+at set of modules that depend on each other can now specified on the
+compilation command line in any order, as long as needed <code class="literal">require</code>
+forms are given.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <a class="ulink" href="PathExpressions.html" target="_top">“colon notation” has been
+generalized.</a>. The syntax <code class="literal">object:name</code> generally means to extract
+a component with a given <code class="literal">name</code> from <code class="literal">object</code>, which may be an
+object, a class, or a namespace.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New command-line options <code class="literal">--debug-error-prints-stack-trace</code> and
+<code class="literal">--debug-warning-prints-stack-trace</code> provide stack trace on static
+error messages.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <a class="ulink" href="Software-License.html" target="_top">license for the Kawa software</a> has been
+changed to the
+<a class="ulink" href="http://opensource.org/licenses/mit-license.php" target="_top">X11/MIT license</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A much more <a class="ulink" href="Array-operations.html" target="_top">convenient syntax for working
+with Java arrays</a>.
+</p>
+            <p>The same function-call syntax also works for Scheme vectors, uniform
+vectors, strings, lists - and anything else that implements
+<code class="literal">java.util.List</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The fields and methods of a class and its bases classes are in scope
+within methods of the class.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Unnamed procedures (such as lambda expressions) are printed with the
+source filename and line.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The numeric compare functions (<code class="literal">=</code>, <code class="literal">&lt;=</code>, etc) and
+<code class="literal">number-&gt;string</code> now work when passed standard Java <code class="literal">Number</code>
+objects (such as <code class="literal">java.lang.Long</code> or <code class="literal">java.math.BigDecimal</code>).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://srfi.schemers.org/srfi-10/srfi-10.html" target="_top">SRFI-10</a> is now
+implemented, providing the <code class="literal">#,(name args ...)</code> form. Predefined
+constructor <code class="literal">name</code>s so far are <code class="literal">URI</code> and <code class="literal">namespace</code>. The
+<code class="literal">define-reader-ctor</code> function is available if you
+<code class="literal">(require 'srfi-10)</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">--script</code> option makes it easier to write Unix shell
+scripts.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Allow general URLs for loading (including the <code class="literal">-f</code> flag),
+compilation and <code class="literal">open-input-file</code>, if the “file name” starts with
+a URL “scheme” like <code class="literal">http:</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Classes defined (<span class="emphasis"><em>e.g.</em></span> with <code class="literal">define-simple-class</code>) in a
+module can now mutually reference each other. On the other hand, you can
+no longer <code class="literal">define-class</code> if the class extends a class rather than
+an interface; you must use <code class="literal">define-simple-class</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">KawaPageServlet</code> now automatically selects language.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">provide</code> macro.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">quasisyntax</code> and the convenience syntax <code class="literal">#`</code>, from
+<a class="ulink" href="http://srfi.schemers.org/srfi-72/srfi-72.html" target="_top">SRFI-72</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><code class="literal">define-for-syntax</code>, <code class="literal">syntax-source</code>, <code class="literal">syntax-line</code>, and
+<code class="literal">syntax-column</code>, for better compatibility with mzscheme.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="ulink" href="http://srfi.schemers.org/srfi-34/srfi-34.html" target="_top">SRFI-34</a> (Exception
+Handling for Programs), which implements <code class="literal">with-exception-handler</code>,
+<code class="literal">guard</code>, and <code class="literal">raise</code>, is now available, if you
+<code class="literal">(require 'srfi-34)</code>.
+
+Also, <a class="ulink" href="http://srfi.schemers.org/srfi-35/srfi-35.html" target="_top">SRFI-35</a>
+(Conditions) is available, if you <code class="literal">(require 'srfi-35)</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">case-lambda</code> form from
+<a class="ulink" href="http://srfi.schemers.org/srfi-16/srfi-16.html" target="_top">SRFI-16</a> is now
+implemented more efficiently.
+</p>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881580528">Kawa 1.8 (October 18, 2005)</h3>
+      <span id="_0023kawa-1_002e8-october-18-2005"/>
+      <p><a class="ulink" href="http://srfi.schemers.org/srfi-69/srfi-69.html" target="_top">SRFI-69 “Basic hash
+tables”</a> is now available, if you <code class="literal">(require 'hash-table)</code> or
+<code class="literal">(require 'srfi-69)</code>. This is an optimized and Java-compatible port
+whose default hash function calls the standard <code class="literal">hashCode</code> method.
+</p>
+      <p>A <code class="literal">define-simple-class</code> can now have one (or more) explicit
+constructor methods. These have the spcial name <code class="literal">*init*</code>. You can
+call superclass constructors or sibling constructors (<code class="literal">this</code>
+constructor calls) using the (admittedly verbose but powerful)
+<code class="literal">invoke-special</code> form.
+</p>
+      <p>The <code class="literal">runnable</code> function creates a <code class="literal">Runnable</code> from a
+<code class="literal">Procedure</code>. It is implemented using the new class
+<code class="literal">RunnableClosure</code>, which is now also used to implement
+<code class="literal">future</code>.
+</p>
+      <p>The <code class="literal">kawa</code> command can now be run “in-place” from the build
+directory: <code class="literal">$build_dir/bin/kawa</code>.
+</p>
+      <p>The special field name <code class="literal">class</code> in <code class="literal">(static-name type 'class)</code>
+or <code class="literal">(prefix:.class)</code> returns the <code class="literal">java.lang.Class</code> object
+corresponding to the <code class="literal">type</code> or <code class="literal">prefix</code>. This is similar to
+the Java syntax.
+</p>
+      <p>Contructing an instance (perhaps using <code class="literal">make</code>) of a class defined
+using <code class="literal">define-simple-class</code> in the current module is much more
+efficient, since it no longer uses reflection. (Optimizing classes
+defined using <code class="literal">define-class</code> is more difficult.) The constructor
+function defined by the <code class="literal">define-record-type</code> macro is also
+optimized.
+</p>
+      <p>You can now access instance methods using this short-hand:
+<code class="literal">(*:methodname instance arg ...)</code>
+
+This is equivalent to: <code class="literal">(invoke instance 'methodname arg ...)</code>
+</p>
+      <p>You can now also access a fields using the same colon-notation as used
+for accessing methods, except you write a dot before the field name:
+
+<code class="literal">(type:.fieldname)</code> <code class="literal"> ;; </code>is like:
+<code class="literal">(static-field type 'fieldname)</code>.
+
+<code class="literal">(*:.fieldname instance)</code> <code class="literal">;;</code> is like:
+<code class="literal">(field 'fieldname instance)</code>
+
+<code class="literal">(type:.fieldname instance)</code> <code class="literal">;;</code> is like:
+<code class="literal">(*:.fieldname (as instance type))</code>
+
+These all work with <code class="literal">set!</code> - for example:
+<code class="literal">(set! (*:.fieldname instance) value)</code>.
+</p>
+      <p>In the above uses of colon-notation, a <code class="literal">type</code> can be any one of:
+
+- a namespace prefix bound using <code class="literal">define-namespace</code> to a namespace
+uri of the form <code class="literal">"class:classname"</code>;
+
+- a namespace prefix using <code class="literal">define-namespace</code> bound to a
+<code class="literal">&lt;classname&gt;</code> name, which can be a fully-qualified class name or a
+locally-declared class, or an alias (which might be an imported
+class);
+
+- a fully qualified name of a class (that exists at compile-time), as in
+<code class="literal">(java.lang.Integer:toHexString 123)</code>; or
+
+- a <code class="literal">&lt;classname&gt;</code> variable, for example:
+<code class="literal">(&lt;list&gt;:list3 11 12 13)</code>.
+</p>
+      <p>New fluid variables <code class="literal">*print-base*</code>, <code class="literal">*print-radix*</code>,
+<code class="literal">*print-right-margin*</code>, and <code class="literal">*print-miser-width*</code> can control
+output formatting. (These are based on Common Lisp.)
+</p>
+      <p>You can new emit elipsis (<code class="literal">...</code>) in the output of a <code class="literal">syntax</code>
+template using the syntax <code class="literal">(... ...)</code>, as in other
+<code class="literal">syntax-case</code> implementations.
+</p>
+      <p>The <code class="literal">args-fold</code> program-argument processor from
+<a class="ulink" href="http://srfi.schemers.org/srfi-37/srfi-37.html" target="_top">SRFI-37</a> is
+available after you <code class="literal">(require 'args-fold)</code> or
+<code class="literal">(require 'srfi-37)</code>.
+</p>
+      <p>The <code class="literal">fluid-let</code> form now works with lexical bindings, and should be
+more compatible with other Scheme implementations.
+</p>
+      <p><code class="literal">(module-export namespace:prefix)</code> can be used to export a
+namespace prefix.
+</p>
+      <p>Static modules are now implemented more similarly to non-static modules.
+Specifically, the module body is not automatically run by the class
+initializer. To get the old behavior, use the new
+<code class="literal">--module-static-run</code> flag. Alternatively, instead of
+<code class="literal">(module-static #t)</code> use <code class="literal">(module-static 'init-run)</code>.
+</p>
+      <p>Implement <a class="ulink" href="http://srfi.schemers.org/srfi-39/srfi-39.html" target="_top">SRFI-39</a>
+"Parameter-objects". These are like anonymous fluid values and use the
+same implementation. <code class="literal">current-input-port</code>,
+<code class="literal">current-output-port</code>, and <code class="literal">current-error-port</code> are now
+parameters.
+</p>
+      <p>Infer types of variables declared with a <code class="literal">let</code>.
+</p>
+      <p>Character comparisons (such as <code class="literal">char-=?</code>, <code class="literal">char-ci&lt;?</code>)
+implemented much more efficiently — and (if using Java5) work for
+characters not in the Basic Multilingual Plane.
+</p>
+      <p>Major re-write of symbol and namespace handling. A
+<a class="ulink" href="api/gnu/mapping/Symbol.html" target="_top"><code class="literal">Symbol</code></a> is now immutable,
+consisting of a "print-name" and a pointer to a
+<a class="ulink" href="api/gnu/mapping/Namespace.html" target="_top"><code class="literal">Namespace</code></a> (package). An
+<a class="ulink" href="api/gnu/mapping/Environment.html" target="_top"><code class="literal">Environment</code></a> is a mapping
+from <code class="literal">Symbol</code> to
+<a class="ulink" href="api/gnu/mapping/Location.html" target="_top"><code class="literal">Location</code></a>.
+</p>
+      <p>Rename <code class="literal">Interpreter</code> to
+<a class="ulink" href="api/gnu/expr/Language.html" target="_top"><code class="literal">Language</code></a> and
+<code class="literal">LispInterpreter</code> to
+<a class="ulink" href="api/gnu/kawa/lispexpr/LispLanguage.html" target="_top"><code class="literal">LispLanguage</code></a>.
+</p>
+      <p>Constant-time property list operations.
+</p>
+      <p>Namespace-prefixes are now always resolved at compile-time, never at
+run-time.
+</p>
+      <p><code class="literal">(define-namespace PREFIX &lt;CLASS&gt;)</code> is loosely the same as
+<code class="literal">(define-namespace PREFIX "class:CLASS")</code> but does the right thing
+for classes defined in this module, including nested or non-simple
+classes.
+</p>
+      <p>Macros capture proper scope automatically, not just when using require.
+This allows some internal macros to become private.
+</p>
+      <p>Major re-write of the macro-handling and hygiene framework. Usable
+support for <code class="literal">syntax-case</code>; in fact some of the primitives (such as
+<code class="literal">if</code>) are now implemented using <code class="literal">syntax-case</code>.
+<code class="literal">(syntax form)</code> (or the short-cut <code class="literal">#!form)</code> evaluates to a
+syntax object. <code class="literal">(define-syntax (mac x) tr)</code> same as
+<code class="literal">(define-syntax mac (lambda (x) tr))</code>. The following non-hygienic
+forms are equivalent:
+</p>
+      <pre class="screen">  (define-macro (macro-name (param ...) transformer)
+  (define-macro macro-name (lambda (param ...) transformer))
+  (defmacro macro-name (PARAM ...) transformer)
+</pre>
+      <p>Allow vectors and more general ellipsis-forms in patterns and templates.
+</p>
+      <p>A new configure switch <code class="literal">--with-java-source=version</code> allows you to
+tweak the Kawa sources to match Java compiler and libraries you’re
+using. The default (and how the sources are distributed) is <code class="literal">2</code>
+(for "Java 2" – jdk 1.2 or better), but you can also select "<code class="literal">1</code>"
+(for jdk 1.1.x), and "<code class="literal">5</code>" for Java 5 (jdk 1.5). You can also
+specify a jdk version number: "<code class="literal">1.4.1</code>" is equivalent to "2" (for
+now). Note the default source-base is incompatible with Java 5 (or more
+generally JAXB 1.3 or DOM 3), unless you also <code class="literal">--disable-xml</code>.
+</p>
+      <p>Configure argument <code class="literal">--with-servlet</code>[<code class="literal">=servlet-api.jar</code>]
+replaces <code class="literal">--enable-servlet</code>.
+</p>
+      <p>Function argument in error message are now numbered starting at one.
+Type errors now give better error messages.
+</p>
+      <p>A new function calling convention, used for <code class="literal">--full-tailcalls</code>. A
+function call is split up in two parts: A
+<code class="literal">match0</code>/.../<code class="literal">matchN</code> method checks that the actual arguments
+match the expected formal arguments, and leaves them in the per-thread
+<a class="ulink" href="api/gnu/mapping/CallContext.html" target="_top"><code class="literal">CallContext</code></a>. Then after
+the calling function returns, a zero-argument <code class="literal">apply()</code> methods
+evaluates the function body. This new convention has long-term
+advantages (performance, full continuations), but the most immediate
+benefit is better handling of generic (otherloaded) functions. There are
+also improved error messages.
+</p>
+      <p>Real numbers, characters, Lisp/Scheme strings
+(<a class="ulink" href="api/gnu/lists/FString.html" target="_top"><code class="literal">FString</code></a>) and symbols all now
+implement the <code class="literal">Comparable</code> interface.
+</p>
+      <p>In <code class="literal">define-class</code>/<code class="literal">define-simple-class</code>: [Most of this work
+was funded by <a class="ulink" href="http://www.mercedsystems.com/" target="_top">Merced Systems</a>.]
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>You can specify
+<code class="literal">access: </code>[<code class="literal">'private</code>|<code class="literal">'protected</code>|<code class="literal">'publi</code>c|<code class="literal">'package</code>]
+to set the Java access permissions of fields and methods.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Methods can be static by using the <code class="literal">access: 'static</code> specifier.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The reflective routines <code class="literal">invoke</code> , <code class="literal">field</code> ,
+<code class="literal">static-field</code> , <code class="literal">slot-ref</code> , <code class="literal">slot-set!</code> can now access
+non-public methods/fields when appropriate.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Such classes are no longer initialized when the containing module is
+loaded.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>The <code class="literal">expr</code> in <code class="literal">init-form: expr</code> is now evaluated in the outer
+scope.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new <code class="literal">init: expr</code> evalues <code class="literal">expr</code> in the inner scope.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>An option name following <code class="literal">allocation:</code> can now be a string literal
+or a quoted symbol. The latter is preferred: <code class="literal">allocation: 'class</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Added <code class="literal">'static</code> as a synonym for <code class="literal">'class</code> following
+<code class="literal">allocation:</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Initialization of static field (<code class="literal">allocation: 'class init: expr</code>)
+now works, and is performed at class initialization time.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can use unnamed “dummy fields” to add initialization-time actions
+not tied to a field:
+</p>
+            <pre class="screen">  (define-simple-class Foo ()
+    (:init (perform-some-action)))
+</pre>
+          </li>
+        </ul>
+      </div>
+      <h3 id="idm139667881495440">Kawa 1.7.90 (2003)</h3>
+      <span id="_0023kawa-1_002e7_002e90-2003"/>
+      <p>Various fixes and better error messages in number parsing. Some
+optimizations for the divide function.
+</p>
+      <p>New framework for controlling compiler warnings and other features,
+supporting command-line flags, and the Scheme forms
+<code class="literal">with-compile-options</code> and <code class="literal">module-compile-options</code>. The flag
+<code class="literal">--warn-undefined-variable</code> is useful for catching typos.
+Implementation funded by <a class="ulink" href="http://www.mercedsystems.com/" target="_top">Merced
+Systems</a>.
+</p>
+      <p>New <code class="literal">invoke-special</code> syntax form (implemented by Chris Dean).
+</p>
+      <p>New <code class="literal">define-variable</code> form (similar to Common Lisp’s
+<code class="literal">defvar</code>).
+</p>
+      <h3 id="idm139667881488976">Kawa 1.7 (June 7, 2003)</h3>
+      <span id="_0023kawa-1_002e7-june-7-2003"/>
+      <p><a class="ulink" href="api/gnu/kawa/servlet/KawaPageServlet.html" target="_top"><code class="literal">KawaPageServlet</code></a>
+allows automatic loading and on-the-fly compilation in a servlet engine.
+See
+<a class="ulink" href="../qexo/simple-xquery-webapp.html" target="_top">http://www.gnu.org/software/qexo/simple-xquery-webapp.html</a>.
+</p>
+      <p>The default source-base requires various Java 2 features, such as
+collection. However, <code class="literal">make-select1</code> will comment out Java2
+dependencies, allowing you to build Kawa with an older Java
+implementation.
+</p>
+      <p>The <code class="literal">-f</code> flag and the load function can take an absolute URL. New
+Scheme functions <code class="literal">load-relative</code> and <code class="literal">base-uri</code>.
+</p>
+      <p>Imported implementation of cut and cute from
+<a class="ulink" href="http://srfi.schemers.org/srfi-26/srfi-26.html" target="_top">SRFI-26</a> (Notation
+for Specializing Parameters without Currying).
+</p>
+      <p>The way top-level definitions (including Scheme procedures) are mapped
+into Java fields is changed to use a mostly reversible mapping. (The
+mapping to method names remains more natural but non-reversible.)
+</p>
+      <p><code class="literal">define-alias</code> of types can now be exported from a module.
+</p>
+      <p>New <code class="literal">--no-inline</code> and <code class="literal">--inline=none</code> options.
+</p>
+      <p>You can use <code class="literal">define-namespace</code> to define “namespace aliases”.
+This is used for the new short-hard syntax for method invocation:
+
+<code class="literal">(define-namespace Int32 "class:java.lang.Integer")</code>
+
+<code class="literal">(Int32:toHexString 255)</code> =&gt; <code class="literal">"ff"</code>
+
+<code class="literal">(Int32:toString (Int32:new "00255"))</code> =&gt; <code class="literal">"255"</code>
+
+Alternatively, you can write:
+
+<code class="literal">(java.lang.Integer:toHexString 255)</code> =&gt; <code class="literal">"ff"</code>
+</p>
+      <p><a class="ulink" href="http://srfi.schemers.org/srfi-9/srfi-9.html" target="_top">SRFI-9</a>
+(define-record-type) has been implemented, and compiled to a
+<code class="literal">define-class</code>, with efficient code.
+</p>
+      <p>The configure option <code class="literal">--with-collections</code> is now the default.
+</p>
+      <p>Unknowns are no longer automatically static.
+</p>
+      <p>If type not specified in a declaration, don’t infer it from it initial
+value. If no return type is specified for a function, default to
+<code class="literal">Object</code>, rather than the return type of the body. (The latter
+leads to undesirable different behaviour if definitions are
+re-arranged.)
+</p>
+      <p>You can now define and use classes defined using <code class="literal">object</code>,
+<code class="literal">define-class</code>, and <code class="literal">define-simple-class</code> from the
+“interpreter”, as well as the compiler. Also, a bug where inherited
+fields did not get initialized has been fixed.
+</p>
+      <p>There are several new procedures useful for servlets.
+</p>
+      <p>Numerical comparisions (<code class="literal">&lt;</code>, <code class="literal">&lt;=</code>, etc) now generates
+optimized bytecode if the types of the operands have certain known
+types. including efficient code for <code class="literal">&lt;int&gt;</code>, <code class="literal">&lt;long&gt;</code>,
+<code class="literal">&lt;double&gt;</code>, and <code class="literal">&lt;integer&gt;</code>. Much more code can now (with type
+declaration) be written just as efficiently in Scheme as in Java.
+</p>
+      <p>There have been some internal re-arranging of how Expressions are
+processed. The Scheme-specific Translator type now inherits from
+Compilation, which replaces the old Parser class. A Complation is now
+allocated much earlier, as part of parsing, and includes a
+SourceMessages object. SourcesMessages now includes (default) line
+number, which is used by Compilation for the "current" line numbers. The
+ExpWalker class includes a SourceMessages instance (which it gets from
+the Compilation). CanInline.inline method now takes ExpWalker parameter.
+Checking of the number or parameters, and mapping known procedures to
+Java methods are now both done during the inlining pass.
+</p>
+      <p>The user-visible effect is that Kawa can now emit error mesages more
+cleanly more places; the inlining pass can be more agressive, and can
+emit better error messages, which yields better type information. This
+gives us better code with fewer warnings about unknown methods.
+</p>
+      <h3 id="idm139667881463296">Changes from Kawa 1.6.98 to 1.6.99.</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e98-to-1_002e6_002e99_002e"/>
+      <p>A new language front-end handles a tiny subset of XSLT. An example is
+the check-format-users test in gnu/xquery/testsuite/Makefile.
+</p>
+      <p>There are now converters between SAX2 and Consumer events, and a basic
+implementation of XMLReader based on XMLParser.
+</p>
+      <p>The function as-xml prints a value in XML format.
+</p>
+      <p>Srfi-0 (cond-expand), srfi-8 (receive), and srfi-25 (multi-dimensional
+arrays) are now implemented. So is srfi-1 (list library), though that
+requires doing (require ’list-lib).
+</p>
+      <p>The JEmacs code is being re-organized, splitting out the Swing-dependent
+code into a separate gnu.jemacs.swing package. This should make it
+easier to add JEmacs implementation without Swing.
+</p>
+      <p>The class gnu.expr.Interpreter has various new ’eval’ methods that are
+useful for evaluating Scheme/BRL/XQuery/... expressions from Java.
+</p>
+      <p>Kawa now uses current versions of autoconf, autoamke, and libtool,
+allowing the use of automake file inclusion.
+</p>
+      <p>The comparisons <code class="literal">&lt;&lt;</code>, <code class="literal">&lt;=</code>, <code class="literal">-</code>, <code class="literal">&gt;</code>, and <code class="literal">=&gt;</code>
+now compile to optimized Java arithmetic if both operands are
+<code class="literal">&lt;int&gt;</code> or a literal that fits in <code class="literal">&lt;int&gt;</code>.
+</p>
+      <h3 id="idm139667881454592">Changes from Kawa 1.6.97 to 1.6.98</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e97-to-1_002e6_002e98"/>
+      <p>Generated HTML and Postscrpt documents are no longer included in the
+source distribution. Get <code class="literal">kawa-doc-version.tar.gz</code> instead.
+</p>
+      <p>(format #t ...) and (format PORT ...) now returns #!void instead of #t.
+</p>
+      <p>Support fluid bindings (fluid-let) for any thread, not just Future and
+main.
+</p>
+      <p>A Unix script header <code class="literal">#!/PROGRAM</code> is ignored.
+</p>
+      <p>You can now take the same Kawa "web" program (written in Scheme,
+KRL/BRL, or XQuery) and run it as either a servlet or a CGI script.
+</p>
+      <p>There are a number of new functions for accessing HTTP requests and
+generating HTTP responses.
+</p>
+      <p>Kawa now supports a new experimental programming KRL (the "Kawa Report
+Language"). You select this language using –krl on the Kawa command
+link. It allows Scheme code to be inside template files, like HTML
+pages, using a syntax based on BRL (brl.sourceforge.net). However, KRL
+has soem experimental changes to both BRL and standard Scheme. There is
+also a BRL-compatibile mode, selected using –brl, though that currently
+only supports a subset of BRL functions.
+</p>
+      <p>If language is not explicitly specified and you’re running a source file
+(e.g. "java kawa.repl myscript.xql"), Kawa tried to derive the language
+from the the filename extension (e.g. "xql"). It still defaults to
+Scheme if there is no extension or the extension is unrecognized.
+</p>
+      <p>New command-line option –output-format alias –format can be used to
+over-ride the format used to write out top-level (repl, load) values.
+</p>
+      <p>XMLPrinter can now print in (non-well-formed-XML) HTML.
+</p>
+      <h3 id="idm139667881446032">Changes from Kawa 1.6.96 to 1.6.97</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e96-to-1_002e6_002e97"/>
+      <p>Changed lots of error messages to use pairs of single quotes rather than
+starting with a backquote (accent grave): ’name’ instead of ‘name’. Many
+newer fonts make the latter look bad, so it is now discouraged.
+</p>
+      <p>The types <code class="literal">&lt;String&gt;</code> and <code class="literal">&lt;java.lang.String&gt;</code> new behave
+differently. The type <code class="literal">&lt;java.lang.String&gt;</code> now works just like
+(say) <code class="literal">&lt;java.util.Hashtable&gt;</code>. Converting an object to a
+<code class="literal">&lt;java.lang.String&gt;</code> is done by a simple coercion, so the incoming
+value must be a java.lang.String reference or null. The special type
+<code class="literal">&lt;String&gt;</code> converts any object to a java.string.String by calling
+toString; it also handles null by specially testing for it.
+</p>
+      <p>For convenience (and backwards compatibility) Kawa uses the type
+<code class="literal">&lt;String&gt;</code> (rather than <code class="literal">&lt;java.lang.String&gt;</code>) when it sees the
+Java type <code class="literal">java.lang</code>.String, for example in the argument to an
+<code class="literal">invoke</code>.
+</p>
+      <p>The default behaviour of ’[’ and ’] was changed back to be token (word)
+constituents, matching R5RS and Common Lisp. However, you can easily
+change this behaviour using the new setBrackMode method or the
+defaultBracketMode static field in ReadTable.
+</p>
+      <p>You can now build Kawa from source using the Ant build system (from
+Apache’s Jakarta project), as an alternative to using the traditional
+configure+make system. An advantage of Ant is that it works on most Java
+systems, without requiring a Unix shell and commands. Specifically, this
+makes it easy to build Kawa under MS-Windows. Thanks to James White for
+contributing this support.
+</p>
+      <p>Added (current-error-port) which does the obvious.
+</p>
+      <p>The new let-values and let-values* macros from srfi-11 provide a more
+convenient way to use multiple values.
+</p>
+      <p>All the abstract apply* and eval* methods now specify ’throws
+Throwable’. A bunch of code was changed to match. The main visible
+advantage is that the throw and primitive-throw procedures work for any
+Throwable without requiring it to be (confusingly) wrapped.
+</p>
+      <h3 id="idm139667881434304">Changes from Kawa 1.6.95 to 1.6.96</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e95-to-1_002e6_002e96"/>
+      <p>A new compilation flag –servlet generates a Servlet which can be
+deployed in a servlet engin like Tomcat. This is experimental, but it
+seesm to work for both Scheme source and XQuery source.
+</p>
+      <p>The interface gnu.lists.CharSequence was renamed to avoid conflitcs with
+the (similar) interface java.lang.CharSequence in JDK 1.4beta.
+</p>
+      <p>New –help option (contributed by Andreas Schlapbach).
+</p>
+      <p>Changed the code generation used when –full-tailcalls. It now is closer
+to that used by default, in that we don’t generate a class for each
+non-inlined procedure. In both cases calling an unknown procedure
+involves executing a switch statement to select a method. In addition to
+generating fewer classes and simplifying one of the more fragile parts
+of Kawa, it is also a step towards how full continuations will be
+implemented.
+</p>
+      <p>Changed the convention for name "mangling" - i.e. how Scheme names are
+mapped into Java names. Now, if a Scheme name is a valid Java name it is
+used as is; otherwise a reversible mangling using "$" characters is
+used. Thus the Scheme names <code class="literal">'&lt;</code> and <code class="literal">'$Leq</code> are both mapped
+into the same Java name <code class="literal">"$Leq"</code>. However, other names not
+containing "<code class="literal">$</code>" should no longer clash, including pairs like
+"<code class="literal">char-letter?</code>" and "<code class="literal">charLetter?</code>" and "<code class="literal">isCharLetter</code>"
+which used to be all mapped to "<code class="literal">isCharLetter</code>". Now only names
+containing "<code class="literal">$</code>" can be ambiguous.
+</p>
+      <p>If the compiler can determine that all the operands of (+ ...) or (-
+...) are floating-point, then it will generate optimized code using Java
+primitive arithmetic.
+</p>
+      <p>Guile-style keyword syntax ’#:KEYWORD’ is recognized. (Note this
+conflicts with Common Lisp syntax for uninterned symbols.)
+</p>
+      <p>New syntax forms define-class and define-simple-class allow you to
+define classes more easily. define-class supports true multiple
+inheritance and first class class values, where each Scheme class is
+compiled to a pair of an inteface and a class. define-simple-class
+generates more efficient and Java-compatible classes.
+</p>
+      <h3 id="idm139667881422512">Changes from Kawa 1.6.94 to 1.6.95.</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e94-to-1_002e6_002e95_002e"/>
+      <p>A new language "xquery" implements a (so far small subset of) XQuery,
+the draft XML Query languaage.
+</p>
+      <p>Various internal (Java API) changes: Changes to gnu.expr.Interpreter to
+make it easier to add non-Lisp-like languages; gnu.lists.Consumer now
+has an endAttribute method that need to be called after each attribute,
+rather than endAttributes that was called after all of them.
+</p>
+      <p>If configured with –with-gcj, Kawa builds and intalls a ’gckawa’ script
+to simlify linking with needed libraries.
+</p>
+      <p>The <code class="literal">setter</code> function is now inlined, and
+<code class="literal">(set! (field X 'N) V)</code> and <code class="literal">(set! (static-field &lt;T&gt; "N) V)</code>
+are now inlined.
+</p>
+      <p>If configured <code class="literal">--with-gcj</code>, then a <code class="literal">gckawa</code> helper script is
+installed, to make it easier to link Kawa+gcj-compiled applications.
+</p>
+      <h3 id="idm139667881416320">Changes from Kawa 1.6.92 to 1.6.94</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e92-to-1_002e6_002e94"/>
+      <p>The JEmacs code now depends on CommonLisp, rather than vice versa, which
+means Commonlisp no longer depends on Swing, and can be built with GCJ.
+CommonLisp and JEmacs symbols are now implemented using Binding, not
+String.
+</p>
+      <h3 id="idm139667881414560">Changes from Kawa 1.6.90 to 1.6.92</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e90-to-1_002e6_002e92"/>
+      <p>Kawa now installs as a .jar file (kawa.jar symlinked to
+kawa-VERSION.jar), rather than a collection of .class files.
+</p>
+      <p>The Kawa manual includes instructions for how to build Kawa using GCJ,
+and how to compile Scheme code to a native executable using GCJ.
+</p>
+      <p>Kawa now has builtin pretty-printer support, using an algorithm from
+Steel Bank Common Lisp converted from Lisp to Java. The high-level
+Common Lisp pretty-printing features are mostly not yet implemented, but
+the low-level support is there. The standard output and error ports
+default to pretty-printing.
+</p>
+      <p>A new formatting framework uses the Consumer interface from gnu.lists.
+You can associate a format with an output port. Common Lisp and JEmacs
+finally print using their respective syntaxes.
+</p>
+      <p>All output ports (OutPort instances) are now automatically flushed on
+program exit, using a new WriterManager helper class.
+</p>
+      <p>The new commmand-line option –debug-print-expr causes the Expression
+for each expression to be printed. The option –debug-print-final-expr
+is similar, but prints Expressions after optimization and just before
+compilation. They are printed using the new pretty-printer.
+</p>
+      <p>Changed calling convention for –full-tailcalls to write results to a
+Consumer, usually a TreeList or something to be printed. A top-level
+ModuleBody now uses the same CpsProcedure convention. This is useful for
+generating xml or html.
+</p>
+      <p>New libtool support allows kawa to be built as a shared library.
+</p>
+      <p>The new configure flag –with-gcj uses gcj to compile Kawa to both
+.class files and native code. This is experimental.
+</p>
+      <h3 id="idm139667881407744">Changes from Kawa 1.6.70 to 1.6.90</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e70-to-1_002e6_002e90"/>
+      <p>The reader (for Scheme and Lisp) has been re-written to be table-driven,
+based on the design of Common Lisp readtables.
+</p>
+      <p>The new gnu.lists package has new implementations of sequence-related
+classes. It replaces most of gnu.kawa.util. See the package.html file.
+</p>
+      <p>If the expected type of a non-unary <code class="literal">+</code> or <code class="literal">-</code> is <code class="literal">&lt;int&gt;</code>
+or <code class="literal">&lt;long&gt;</code> and the operands are integeral types, then the operands
+will converted to the primitive integer type and the addition or
+subtraction done using primitive arithmetic. Similarly if the expected
+type is <code class="literal">&lt;float&gt;</code> or <code class="literal">&lt;long&gt;</code> and the operands have
+appropriate type. This optimization an make a big performance
+difference. (We still need to also optimize compare operations like
+<code class="literal">(&lt; x y)</code> to really benefit from <code class="literal">&lt;int&gt;</code> declarations of loop
+variables.)
+</p>
+      <p>The implementation of procedure closures has been changed to basically
+be the same as top-level procedures (except when –full-tailcalls is
+specified): Each procedure is now an instance of a ModuleMethod, which
+each "frame" is an instance of ModuleBody, just like for top-level
+functions. This sometimes reduces the number of classes generated, but
+more importantly it simplifies the implementation.
+</p>
+      <p>A new <a class="ulink" href="api/gnu/xml/package-summary.html" target="_top"><code class="literal">gnu.xml</code></a> package
+contains XML-related code, currently an XML parser and printer, plus
+some XPath support. The class
+<a class="ulink" href="api/gnu/lists/TreeList.html" target="_top"><code class="literal">gnu.lists.TreeList</code></a> (alias
+<code class="literal">&lt;document&gt;</code>) is useful for compactly representing nested
+structures, including XML documents. If you <code class="literal">(require 'xml)</code> you
+will get Scheme interfaces (<code class="literal">print-as-xml</code> and
+<code class="literal">parse-xml-from-url</code>) to these classes.
+</p>
+      <p>New package gnu.kawa.functions, for primitive functions (written in
+Java).
+</p>
+      <p>The map and for-each procedure is now inlined. This is most especially
+beneficial when it allows the mapped-over procedure to also be inlined,
+such as when that procedure is a lambda expression.
+</p>
+      <p>Added documentation on compiling with Jikes. Renamed some classes to
+avoid warning when compiling with Jikes.
+</p>
+      <p>The reverse! procedure was added.
+</p>
+      <p>Internal changes: * If a variable reference is unknown, create a
+Declaration instance with the IS_UNKNOWN flag to represent an imported
+binding. * The ExpWalker framework for "tree walking" Expressions had a
+bit of reorganization. * New package gnu.kawa.functions, for primitive
+functions (written in Java).
+</p>
+      <p>Added a hook for constant-folding and other optimization/inlining at
+traversal (ExpWalker) time. Optimization of + and - procedures to use
+primitive Java operations when the operands are primitive types.
+</p>
+      <p>Implementation of SRFI-17. Change the definitions of (set! (f x ...)
+val) to ((setter f) x ... val), rather then the old ((setter f) val x
+...). You can now associate a setter with a procedure, either using
+make-procedure or set-procedure-property!. Also, (setter f) is now
+inlined, when possible.
+</p>
+      <p>Internally, Syntax (and hence Macro) no longer extend Declaration.
+</p>
+      <p>Various Java-level changes, which may be reflected in Scheme later: *
+gnu.kawa.util.Consumer interface is similar to ObjectOutput and SAX’s
+ContentHandler interfaces. * A gnu.expr.ConsumerTarget is used when
+evaluating to an implicit Consumer. * These interfaces will make it easy
+to write functional-style but efficient code for transforming data
+streams, including XML. * gnu.kawa.util.FString is now variable-size.
+</p>
+      <h3 id="idm139667881389776">Changes from Kawa 1.6.68 to 1.6.70</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e68-to-1_002e6_002e70"/>
+      <p>The bare beginnings of Common Lisp support, enabled by the –commonlisp
+(or –clisp) command line option. This is so far little more than a hack
+of the EmacsLisp support, but with lexical scoping and CL-style format.
+</p>
+      <h3 id="idm139667881387712">Changes from Kawa 1.6.66 to 1.6.68</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e66-to-1_002e6_002e68"/>
+      <p>JEmacs news:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Define emacs-version as Kawa version but with leading 0 instead of 1.
+For example, the current value is "0.6.68 JEmacs".
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>New testsuite directory.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Improved autoload framework. Handle ELisp autoload comments.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Handle escape and meta-key.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Handle lot more of ELisp.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Lots more is now done in ELisp, using .el files imported from XEmacs.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Incomplete support for setting mark, including using selection.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Basic (but incomplete) implementation of (interactive spec).
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Common Lisp extensions: typep, default arguments.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A new status.html file to note what works and what doesn’t.
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>You can now specify in <code class="literal">define</code> and <code class="literal">define-private</code> the type
+of a variable. If the variable is module-level,
+<code class="literal">(define name :: &lt;type&gt; value)</code> creates a field named
+“<code class="literal">name</code>” having the specified type and initial value. (If type is
+not specified, the default is not <code class="literal">Object</code>, but rather a
+<code class="literal">Binding</code> that <span class="emphasis"><em>contains</em></span> the variable’s value.)
+</p>
+      <p>You can now define the type of a module-level variable: In
+(define[-private] :: type expression) New (define-constant name [::
+type] expression) definition form.
+</p>
+      <p>A procedure can now have arbitrary properties associated with it. Use
+procedure-property and set-procedure-property! to get and set them.
+</p>
+      <p>The new procedure make-procedure creates a generic procedure that may
+contain one or more methods, as well as specified properties.
+</p>
+      <p>New declaration form define-base-unit. Both it and define-unit have been
+re-implemented to be module-safe. Basically ’(define-unit ft 12in)’ is
+sugar for ’(define-constant ft$unit (... (* 12 in$unit)))’, where
+ft$unit and in$unit are standard identifiers managed by the module
+system. Also, the output syntax for units and quantities is cleaner.
+</p>
+      <p>The new declaration (module-export name ...) allows control over the
+names exported from a module. The new declaration (module-static ...)
+allows control over which definitions are static and which are
+non-static. This makes it easier to use a module as a Java class.
+</p>
+      <p>Procedures names that accidentally clash with inherited method names
+(such as "run") are now re-named.
+</p>
+      <p>Simple aliases (define-aliases defining an alias for a variable name)
+are implemented more efficiently.
+</p>
+      <p>The package hierarchy is getter cleaner, with fewer cyclic dependencies:
+The gnu.math package no longer has any dependencies on kawa.* or gnu.*.
+Two classes were moved from gnu.text to other classes, avoiding another
+cyclic package dependency between gnu.text and gnu.mapping. The new
+gnu.kawa.lispexpr is for compile-time handling of Lisp-like languages.
+</p>
+      <p>Compliation of literals has been re-done. A class that can be used in a
+literal no longer needs to be declared as Compilable. Instead, you
+declare it as implementaing java.io.Externalizable, and make sure it has
+appropriate methods.
+</p>
+      <p>All the standard "data" types (i.e. not procedures or ports) now
+implement java.io.Externalizable, and can thus be serialized. If they
+appear in literals, they can also be compiled.
+</p>
+      <p>Created a new class gnu.kawa.util.AbstractString, with the Scheme alias
+<code class="literal">&lt;abstract-string&gt;</code>. The old gnu.kawa.util.FString now extends
+AbstractString. A new class CharBuffer provides an growable buffer, with
+markers (automatically-adjusted positions). Many of the Scheme
+<code class="literal">&lt;string&gt;</code> procedures now work on <code class="literal">&lt;abstract-string&gt;</code>. The
+JEmacs BufferContnat class (contains the characters of a buffer) now
+extends CharBuffer.
+</p>
+      <p>Some JEmacs changes to support a "mode" concept, as well as preliminary
+support for inferior-process and telnet modes.
+</p>
+      <p>New section in manual / web page for projects using Kawa.
+</p>
+      <p>The record feasture (make-record-type etc) how handles "funny" type and
+fields names that need to be "mangled" to Java names.
+</p>
+      <p>Re-did implementation of define-alias. For example, you can define
+type-aliases:
+
+<code class="literal">(define-alias &lt;marker&gt; &lt;gnu.jemacs.buffer.Marker&gt;)</code>
+
+and then use &lt;marker&gt; instead of &lt;gnu.jemacs.buffer.Marker&gt;.
+</p>
+      <p><code class="literal">(field array 'length)</code> now works.
+</p>
+      <h3 id="idm139667881364864">Changes from Kawa 1.6.64 to 1.6.66</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e64-to-1_002e6_002e66"/>
+      <p>Added documentation to the manual for Homogeneous numeric vector
+datatypes (SRFI-4).
+</p>
+      <p>You can now specify characters using their Unicode value: #\u05d0 is
+alef.
+</p>
+      <p>Kawa now uses a more mnemonic name mangling Scheme. For example, a
+Scheme function named <code class="literal">&lt;=</code> would get compiled to method
+<code class="literal">$Ls$Eq</code>.
+</p>
+      <p>There is now working and useful module support, thought not all features
+are implemented. The basic idea is that a module can be any class that
+has a default constructor (or all of whose fields and methods are
+static); the public fields and methods of such a class are its exported
+definitions. Compiling a Scheme file produces such a module. Doing:
+
+<code class="literal"> (require &lt;classname&gt;)</code>
+
+will create an anonymous instance of <code class="literal">&lt;classname&gt;</code> (if needed), and
+add all its exported definitions to the current environment. Note that
+if you import a class in a module you are compiling, then an instance of
+the module will be created at compile-time, and imported definitions are
+not re-imported. (For now you must compile a module, you cannot just
+load it.)
+</p>
+      <p>The define-private keyword creates a module-local definition.
+</p>
+      <p>New syntax to override some properties of the current module:
+
+<code class="literal">(module-name &lt;name&gt;)</code> overrides the default name for a module.
+
+<code class="literal">(module-extends &lt;class&gt;)</code> specifies the super-class.
+
+<code class="literal">(module-implements &lt;interface&gt; ...)</code> specfies the implemented
+interfaces.
+</p>
+      <p>The syntax: (require ’keyword) is syntactic sugar for (require
+&lt;classname&gt;) where the classname is find is a "module catalog"
+(currently hard-wired). This provides compatibility with Slib. The Slib
+"features" gen-write, pretty-print, pprint-file, and printf are now
+available in Kawa; more will be added, depending on time and demand. See
+the package directory gnu/kawa/slib for what is available.
+</p>
+      <h3 id="idm139667881355760">Changes from Kawa 1.6.62 to 1.6.64</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e62-to-1_002e6_002e64"/>
+      <p>A lot of improvements to JEmacs (see JEmacs.SourceForge.net).
+</p>
+      <p>kawa-compiled-VERSION.zip is replaced by kawa-compiled-VERSION.jar.
+</p>
+      <p>You can now use Kawa to generate applets, using the new –applet switch,
+Check the "Applet compilation" section in the manual. Generating an
+application using the –main flag should work again. Neither –applet
+nor –main has Scheme hard-wired any more.
+</p>
+      <p>A new macro ‘(this)’ evaluates to the "this object" - the current
+instance of the current class. The current implementation is incomplete,
+and buggy, but it will have to do for now.
+</p>
+      <p>The command-line argument -f FILENAME will load the same files types as
+load.
+</p>
+      <p>When a source file is compiled, the top-level definitions (procedures,
+variables, and macros) are compiled to final fields on the resulting
+class. This are not automatically entered into the current environment;
+instead that is the responsibility of whoever loads the compiled class.
+This is a major step towards a module system for Kawa.
+</p>
+      <p>There is a new form define-private which is like define, except that the
+defined name is not exported from the current module.
+</p>
+      <p>A procedure that has optional arguments is now typically compiled into
+multiple methods. If it’s a top-level procedure, these will be methods
+in the modules "ModuleBody" class, with the same (mangled) name. The
+compiler can in many cases call the appropriate method directly.
+Usually, each method takes a fixed number of arguments, which means we
+save the overhead of creating an array for the arguments.
+</p>
+      <p>A top-level procedure declared using the form (define (NAME ARS ...)
+BODY ..) is assumed to be "constant" if it isn’t assigned to in the
+current compilation unit. A call in the same compilation unit will now
+be implemented as a direct method call. This is not done if the prcedure
+is declared with the form: (define NAME (lambda (ARGS ,,,) BODY ...)
+</p>
+      <p>gnu.expr.Declaration no longer inherits from gnu.bytecode.Variable.
+</p>
+      <p>A gnu.mapping.Environment now resolves hash index collisions using
+"double hashing" and "open addressing" instead of "chaining" through
+Binding. This allows a Binding to appear in multiple Environments.
+</p>
+      <p>The classes Sequence, Pair, PairWithPosition, FString, and Char were
+moved from kawa.lang to the new package gnu.kawa.util. It seems that
+these classes (except perhaps Char) belong together. The classes List
+and Vector were also moved, and at the same time renamed to LList and
+FVector, respectively, to avoid clashed with classes in java.util.
+</p>
+      <p>New data types and procedures for "uniform vectors" of primitive types
+were implemented. These follow the SRFI-4 specification, which you can
+find at http://srfi.schemers.org/srfi-4/srfi-4.html .
+</p>
+      <p>You can now use the syntax <code class="literal">name :: type</code> to specify the type of a
+parameter. For example:
+
+<code class="literal">(define (vector-length x :: &lt;vector&gt;) (invoke x 'length))</code>
+
+The following also works:
+
+<code class="literal">(define (vector-length (x :: &lt;vector&gt;)) ...)</code>.
+</p>
+      <p><code class="literal">(define-member-alias name object [fname])</code> is new syntactic sugar
+for <code class="literal">(define-alias name (field object fname))</code>, where the default
+for <code class="literal">fname</code> is the mangling of <code class="literal">name</code>.
+</p>
+      <h3 id="idm139667881340944">Changes from Kawa 1.6.60 to 1.6.62</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e60-to-1_002e6_002e62"/>
+      <p>The new function ‘invoke’ allows you to call a Java method. All of
+‘invoke’, ‘invoke-static’ and ‘make’ now select the bets method. They
+are also inlined at compile time in many cases. Specifically, if there
+is a method known to be definitely applicable, based on compile-time
+types of the argument expressions, the compiler will choose the most
+specific such method.
+</p>
+      <p>The functions slot-ref, slot-set!, field, and static-field are now
+inlined by the compiler when it can.
+</p>
+      <p>Added open-input-string, open-output-string, get-output-string from
+SRFI-6. See http://srfi.schemers.org/srfi-6/srfi-6.html.
+</p>
+      <p>The manual has a new section "Mapping Scheme names to Java names", and a
+new chapter "Types". The chapters "Extensions", "Objects and Classes",
+and "Low-level functions" have been extensivley re-organized.
+</p>
+      <p>The Kawa license has been simplified. There used to be two licenses: One
+for the packages gnu.*, and one for the packages kawa.*. There latter
+has been replaced by the former. The "License" section of the manual was
+also improved.
+</p>
+      <h3 id="idm139667881335872">Changes from Kawa 1.6.59 to 1.6.60</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e59-to-1_002e6_002e60"/>
+      <p>There is a new package gnu.kawa.reflect. Some classes that used to be in
+kawa.lang or kawa.standard are now there.
+</p>
+      <p>The procedures slot-ref and slot-set! are now available. They are
+equivalent to the existing ‘field’, but reading a field ‘x’ will look
+for ‘getX’ method if there is no public ‘x’ field; writing to a field
+will look for ‘setX’.
+</p>
+      <p>The procedure ‘make’ makes it convenient to create new objects.
+</p>
+      <p>There is now a teaser screen snapshot of "JEmacs" at
+http://www.bothner.com/~per/papers/jemacs.png.
+</p>
+      <p>The html version of the manual now has a primitive index. The manual has
+been slightly re-organized, with a new "Classes and Objects" chapter.
+</p>
+      <p>The new functions invoke-static and class-methods allow you to call an
+arbitary Java method. They both take a class specification and a method
+name. The result of class-methods is a generic procedure consisting of
+those methods whose names match. (Instance methods are also matched;
+they are treated the asme as class methods with an extra initial
+argument.) The invoke-static function also takes extra arguments, and
+actually calls the "best"-matching method. An example:
+</p>
+      <pre class="screen">        (invoke-static &lt;java.lang.Thread&gt; 'sleep 100)
+</pre>
+      <p>Many fewer classes are now generated when compiling a Scheme file. It
+used to be that each top-level procedure got compiled to its own class;
+that is no longer the case. The change should lead to faster startup and
+less resource use, but procedure application will probably be noticably
+slower (though not so much slower as when reflection is used). The
+reason for the slowdown is that we in the general case now do an extra
+method call, plus a not-yet-optimized switch statement. This change is
+part of the new Kawa module system. That will allow the compiler to
+substitute direct methods calls in more cases, which I hope will more
+than make up for the slowdown.
+</p>
+      <p>A Scheme procedure is now in general compiled to a Java method whose
+name is a "mangling" of the Scheme procedure’s name. If the procedure
+takes a variable number of parameters, then "$V" is added to the name;
+this indicates that the last argument is a Java array containing the
+rest of the arguments. Conversely, calling a Java method whose name ends
+in "$V" passes any excess arguments in the last argument, which must be
+an array type.
+</p>
+      <p>Many changes to the "Emacs-emulation" library in gnu.jemacs.buffer: *
+Implemented commands to read and save files. * We ask for file and
+buffer names using a dialog pop-up window. * Split windows correctly, so
+that the windows that are not split keep their sizes, the windows being
+split gets split as specified, and the frame does not change size. Now
+also handles horizonal splits. * Fairly good support for buffer-local
+keymaps and Emacs-style keymap search order. A new class BufferKeymap
+manages the active keymaps of a buffer. Multi-key key-sequences are
+handled. Pending prefix keys are remembered on a per-buffer basis
+(whereas Emacs does it globally).
+</p>
+      <p>There is now some low-level support for generic procedures.
+</p>
+      <p>The R5RS primitives let-syntax and letrec-syntax for defining local
+syntax extensions (macros) should now work. Also define-syntax works as
+an internal definition. All of these should now be properly "hygienic".
+(There is one known exception: symbols listed among the literals lists
+are matched as raw symbols, rather that checking that the symbol has the
+same binding, if any, as at the defining site.) The plan is to support
+general functions as hygienic rewriters, as in the Chez Scheme
+"syntax-case" system; as one part of that plan, the syntax-case
+primitive is available, but so far without any of the supporting
+machinary to support hygiene.
+</p>
+      <p>The read-line procedure was added. This allows you to efficiently read a
+line from an input port. The interface is the same as scsh and Guile.
+</p>
+      <h3 id="idm139667882228912">Changes from Kawa 1.6.58 to 1.6.59</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e58-to-1_002e6_002e59"/>
+      <p>define-alias now works both top-level and inside a function.
+</p>
+      <p>Optimized eqv? so if one of the arguments is constant and not Char or
+Numeric, inline it the same way eq? is. (This helps case when the labels
+are symbols, which help the "lattice" benchmark.) ???
+</p>
+      <p>The Emacs-related packages are now grouped under a new gnu.jemacs
+package.
+</p>
+      <p>Improved framework for catching errors. This means improved error
+messages when passing a parameter of the wrong type. Many standard
+procedures have been improved.
+</p>
+      <p>Simplified, documented, and tested (!) procedure for building Kawa from
+source under Windows (95/98/NT).
+</p>
+      <p>New macros trace and untrace for tracing procedures. After executing
+(trace PROCEDURE), debugging output will be written (to the standard
+error port) every time PROCEDURE is called, with the parameters and
+return value. Use (untrace PROCEDURE) to turn tracing off.
+</p>
+      <p>New utility functions (system-tmpdir) and (make-temporary-file
+[format]).
+</p>
+      <p>A new (unfinished) framework supports multiple languages. The
+command-line option –elisp selects Emacs Lisp, while –scheme (the
+default) selects Scheme. (The only difference so far is the reader
+syntax; that will change.)
+</p>
+      <p>The ‘format’ function now provides fairly complete functionality for
+CommonLisp-style formatting. (See the Comon Lisp hyperspec at
+http://www.harlequin.com/education/books/HyperSpec/Body/sec_22-3.html.)
+The floating point formatters (~F, ~E, ~G, ~$) now pass the formatst.scm
+test (from Slib, but with some "fixes"; in the testsuite directory).
+Also, output ports now track column numbers, so <code class="literal">~T</code> and <code class="literal">~&amp;</code>
+also work correctly.
+</p>
+      <p>A new package gnu.emacs provides various building blocks for building an
+Emacs-like text editor. These classes are only compiled when Kawa is
+configured with the new –with-swing configuration option. This is a
+large initial step towards "JEmacs" - an Emacs re-implemented to use
+Kawa, Java, and Swing, but with full support (using gnu.elisp) for
+traditional Emacs Lisp. For more imformation see
+gnu/emacs/overview.html.
+</p>
+      <p>A new configuration option –with-swing can be used if Swing is
+available. It is currently only used in gnu.emacs, but that may change.
+</p>
+      <h3 id="idm139667881305024">Changes from Kawa 1.6.56 to 1.6.58</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e56-to-1_002e6_002e58"/>
+      <p>Kawa is now "properly tail-recursive" if you invoke it with the
+–full-tail-calls flag. (Exception: the eval procedure does not perform
+proper tail calls, in violation of R5RS. This will be fixed in a future
+release.) Code compiled when –full-tail-calls is in effect is also
+properly tail-recursive. Procedures compiled with –full-tail-calls can
+call procedures compiled without it, and vice versa (but of course
+without doing proper tail calls). The default is still
+–no-full-tail-calls, partly because of performance concerns, partly
+because that provides better compatibility with Java conventions and
+tools.
+</p>
+      <p>The keywords let (including named let), let*, and letrec support type
+specifiers for the declared variables For example:
+</p>
+      <pre class="screen">    (let ((lst :: &lt;list&gt; (foo x))) (reverse lst))
+</pre>
+      <p>Square brackets [ ... ] are allowed as a synonym of parentheses ( ... ).
+</p>
+      <h3 id="idm139667881300576">Changes from Kawa 1.6.55 to 1.6.57</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e55-to-1_002e6_002e57"/>
+      <p>A new command-line flag –server PORT specifies that Kawa should run as
+a telnet server on the specified PORT, creating a new read-eval-print
+loop for each connection. This allows you to connect using any telnet
+client program to a remote "Kawa server".
+</p>
+      <p>A new front-end program, written in C, that provides editing of input
+lines, using the GNU readline library. This is a friendlier interface
+than the plain "java kawa.repl". However, because kawa.c needs readline
+and suitable networking library support, it is not built by default, but
+only when you configure Kawa with the –enable-kawa-frontend flag.
+</p>
+      <p>The way Scheme names are mapped ("mangled") into Java identifiers is now
+more natural. E.g. "foo-bar?" now is mapped to "isFooBar".
+</p>
+      <p>New syntax (object (SUPERS ...) FIELD-AND-METHODS ...) for creating a
+new object instance of an anonymous class. Now fairly powerful.
+</p>
+      <p>New procedures field and static-field for more convenient field access.
+</p>
+      <p>Syntactic sugar: <code class="literal">(lambda args &lt;type&gt; body)</code> -&gt;
+<code class="literal">(lambda args (as &lt;type&gt; body))</code>. This is especially useful for
+declaring methods in classes.
+</p>
+      <p>A new synchonized form allows you to synchronize on an arbitrary Java
+object, and execute some forms while having an exclusive lock on the
+object. (The syntax matches that used by Skij.)
+</p>
+      <h3 id="idm139667881293536">Changes from Kawa 1.6.53 to 1.6.55</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e53-to-1_002e6_002e55"/>
+      <p>New –debug-dump-zip option writes out a .zip file for compilation.
+(Useful for debugging Kawa.)
+</p>
+      <p>You can now declare parameter types.
+</p>
+      <p>Lot of work on more efficient procedure representation and calling
+convention: Inlining, directly callable statics method, plus some
+procedures no longer generate a separate Class.
+</p>
+      <p>Local functions that are only called from one locations, except for
+tail-recursion, are now inlined. This inlines do loops, and most "named
+let" loops.
+</p>
+      <p>New representation of closures (closures with captured local variables).
+We no longer use an array for the closure. Instead we store the captured
+variables in the Procedure itself. This should be faster (since we can
+use field accesses rather than array indexing, which requires bounds
+checking), and avoids a separate environment object.
+</p>
+      <p>If the compiler sees a function call whose (non-lexically-bound) name
+matches an existing (globally-defined) procedure, and that procedure
+instance has a static method named either "apply" or the mangled
+procedure name, them the compiler emits a direct call to that method.
+This can make a very noticable speed difference, though it may violate
+strict Scheme sementics, and some code may break.
+</p>
+      <p>Partial support for first-class "location" variables.
+</p>
+      <h3 id="idm139667881287360">Changes from Kawa 1.6.53 to 1.6.54</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e53-to-1_002e6_002e54"/>
+      <p>Created new packages gnu.mapping and gnu.expr. Many classes were moved
+from kawa.lang to the new packages. (This is part of the long-term
+process of splitting Kawa into more manageable chunks, separating the
+Scheme-specific code from the language-independent code, and moving
+classes under the gnu hierarchy.)
+</p>
+      <p>You can now write keywords with the colon first (e.g. :KEYWORD), which
+has exactly the same effect and meaning as putting the colon last (e.g.
+KEYWORD:). The latter is preferred is being more consistent with normal
+English use of punctuation, but the former is allowed for compatibility
+with soem other Scheme implementations and Common Lisp.
+</p>
+      <h3 id="idm139667881284784">Changes from Kawa 1.6.52 to 1.6.53</h3>
+      <span id="_0023changes-from-kawa-1_002e6_002e52-to-1_002e6_002e53"/>
+      <p>The new package gnu.text contains facilities for reading, formatting,
+and manipulating text. Some classes in kawa.lang where moved to there.
+</p>
+      <p>Added string-upcase!, string-downcase!, string-capitalize!,
+string-upcase, string-downcase, and string-capitalize; compatible with
+Slib.
+</p>
+      <p>Character constants can now use octal notation (as in Guile). Writing a
+character uses octal format when that seems best.
+</p>
+      <p>A format function, similar to that in Common Lisp (and Slib) has been
+added.
+</p>
+      <p>The default parameter of a #!optional or #!key parameter can now be
+#!null.
+</p>
+      <h3 id="idm139667881281072">Changes since Kawa 1.6.51</h3>
+      <span id="_0023changes-since-kawa-1_002e6_002e51"/>
+      <p>The "record" feature has been changed to that a "record-type descriptor"
+is now a gnu.bytecode.ClassType (a <code class="literal">&lt;record-type&gt;</code>), rather than a
+java.lang.Class. Thus make-record-type now returns a
+<code class="literal">&lt;record-typee&gt;</code>, not a Class, and <code class="literal">record-type-descriptor</code>
+takes a <code class="literal">&lt;record-typee&gt;</code>, not a Class.
+</p>
+      <p>More robust Eval interfaces.
+</p>
+      <p>New Lexer abstract class. New ScmRead class (which extends Lexer) now
+contains the Scheme reader (moved from Inport). Now read errors are kept
+in queue, and can be recovered from.
+</p>
+      <p>Comparing an exact rational and an inexact real (double) is now done as
+if by first converting the double to exact, to satisfy R5RS.
+</p>
+      <h3 id="idm139667881276000">Changes since Kawa 1.6.1</h3>
+      <span id="_0023changes-since-kawa-1_002e6_002e1"/>
+      <p>The compile virtual method in Expression now takes a Target object,
+representing the "destination". The special ConditionalTarget is used to
+evaluate the test of an ’if expression. This allows us to generate much
+better code for and, or, eq?, not and nested if inside an if.
+</p>
+      <p>Added port-line, port-column, and set-port-line! to match Guile.
+</p>
+      <p>The Makefiles have been written so all out-of-date .java (or .scm).
+files in a directory are compiled using a single invocation of javac (or
+kawa). Building Kawa should now be much faster. (But note that this
+depends on unreleased recent autoamke changes.)
+</p>
+      <p>How the Kawa version number is compiled into Kawa was changed to make it
+easier for people who want to build from source on non-Unix-like
+systems.
+</p>
+      <p>A new gnu.ecmascript package contains an extremely incomplete
+implementation of ECMSScript, the ECMA standardized version of
+JavaScript. It includes an ECMAScript lexer (basically complete), parser
+(the framework is there but most of the language is missing), incomplete
+expression evaluation, and a read-eval-print-loop (for testing only).
+</p>
+      <h3 id="idm139667881271520">Changes in Kawa 1.6.1</h3>
+      <span id="_0023changes-in-kawa-1_002e6_002e1"/>
+      <p>Improved Kawa home page with extra links, pointer to Java-generated api
+docs, and homepages for gnu.math and gnu.bytecode.
+</p>
+      <p>Implemented system, make-process, and some related procedures.
+</p>
+      <p>Added macros for primitive access to object fields, static fields, and
+Java arrays. Added constant-fold syntax, and used it for the other
+macros.
+</p>
+      <p>The –main flag compiles Scheme code to an application (containing a
+main method), which can be be invoked directly by a Java interpreter.
+</p>
+      <p>Implemented –version (following GNU standards) as kawa.repl
+command-line flag.
+</p>
+      <h3 id="idm139667881267584">Changes since Kawa 1.5.93</h3>
+      <span id="_0023changes-since-kawa-1_002e5_002e93"/>
+      <p>Adding make procedure to create new objects/records.
+</p>
+      <p>Extended (set! (f . args) value) to be equivalent to ((setter f) value .
+args). Implemented setter, as well as (setter car) and (setter cdr).
+</p>
+      <p>Can now get and set a record field value using an application: (rec
+’fname) gets the value of the field named fname in record rec. (set!
+(rec ’fname) value) sets the value of the field named fname in rec.
+</p>
+      <p>A partial re-write of the implementation of input ports and the Scheme
+reader, to fix some problems, add some features, and improve
+performance.
+</p>
+      <p>Compiled .class files are now installed in $(datadir)/java, rather than
+$(prefix)/java. By default, that means they are installed in
+/usr/local/shared/java, rather than /usr/local/java.
+</p>
+      <p>There is now internal infrastructure to support inlining of procedures,
+and general procedure-specific optimized code generation.
+</p>
+      <p>There is better testing that the right number of arguments are passed to
+a procedure, and better error messages when you don’t. If the procedure
+is inlined, you get a compile-time error message.
+</p>
+      <p>The functions created by primitive-constructor,
+primitive-virtual-method, primitive-static-method, and
+primitive-interface-method are now first-class procedure values. They
+use the Java reflection facily, except when the compiler can directly
+inline them (in which case it generates the same efficient bytecodes as
+before).
+</p>
+      <p>New functions instance? (tests type membership) and as (converts).
+</p>
+      <p>The kawa.html is now split into several files, one per chapter. The
+table of contents is now kawa_toc.html.
+</p>
+      <p>The syntactic form try-catch provides low-level exception handler
+support. It is basically the same as Java’s try/catch form, but in
+Scheme syntax. The new procedure primitive-throw throws an exception
+object.
+</p>
+      <p>The higher-level catch and throw procedures implement exception handling
+where the handler is specified with a "key" (a symbol). These functions
+were taken from Guile.
+</p>
+      <p>The error function has been generalized to take multiple arguments (as
+in Guile). It is now a wrapper around (throw ’misc-error ...).
+</p>
+      <p>There is a new "friendly" GUI access to the Kawa command-line. If you
+invoke kawa.repl with the -w flag, a new interaction window is created.
+This is uses the AWT TextArea class. You can create multiple "consoles".
+They can either share top-level enevironments, or have separate
+environments. This window interface has some nice features, including
+editing. Added a scheme-window procedure, which is another way to create
+a window.
+</p>
+      <h3 id="idm139667881257056">Changes since Kawa 1.5</h3>
+      <span id="_0023changes-since-kawa-1_002e5"/>
+      <p>The default prompt now shows continuations lines differently.
+</p>
+      <p>The copy-file function was added.
+</p>
+      <p>The variable port-char-encoding controls how external files are
+converted to/from internal Unicode characters. It also controls whether
+CR and CR-LF are converted to LF.
+</p>
+      <p>The reader by default no longer down-cases letters in symbols. A new
+variable symbol-read-case control how case is handled: ’P (the default)
+preserves case; ’U upper-cases letters; ’D or -" down-cases letters; and
+’I inverts case.
+</p>
+      <p>The gnu.bytecode package now supports exception handlers. The new
+syntactic form try-finally supports a cleanup hook that is run after
+some other code finishes (normally or abnormally). Try-finally is used
+to implement dynamic-wind and fluid-let.
+</p>
+      <p>The environment handling has been improved to support thread-specific
+environments, a thread-safe fluid-let, and multiple top-levels. (The
+latter still needs a bit of work.)
+</p>
+      <p>The gnu.bytecode package has been extensively changed. There are new
+classes representing the various standard Attributes, and data
+associated with an attribute is now stored there.
+</p>
+      <p>Added new procedures environment-bound? and
+scheme-implementation-version.
+</p>
+      <p>Scheme symbols are represented as java.lang.String objects. Interned
+symbols are interned Strings; uninterned symbols are uninterned Strings.
+Note that Java strings literals are automatically interned in JDK 1.1.
+This change makes symbols slightly more efficient, and moves Kawa closer
+to Java.
+</p>
+      <p>Ports now use the JDK 1.1 character-based Reader and Writer classes,
+rather than the byte-oriented InputStream and OutputStream classes. This
+supports different reading and writing different character encodings [in
+theory - there is no support yet for other than Ascii or binary files].
+</p>
+      <p>An interactive input port now has a prompt function associated with it.
+It is settable with set-input-port-prompter!. The prompt function takes
+one argument (the input port), and returns a prompt string. There are
+also user functions for inquiring about the current line and column
+number of an input port.
+</p>
+      <p>The R4RS procedures transcript-on and transcript-off are implemented.
+</p>
+      <p>Standard types can be referred to using syntax similar to RScheme. For
+example Scheme strings now have the type <code class="literal">&lt;string&gt;</code> which is
+preferred to "<code class="literal">kawa.lang.FString</code>" (which in addition to being
+longer, is also more suspectible to changes in internal implementation).
+Though these types are first-class values, this is so far mainly useful
+for invoking primitive methods.
+</p>
+      <h3 id="idm139667881247168">Changes from Kawa 1.4 to 1.5</h3>
+      <span id="_0023changes-from-kawa-1_002e4-to-1_002e5"/>
+      <p>Execute a ~/.kawarc.scm file on startup, if it exists.
+</p>
+      <p>Add a number of functions for testing, renaming, and deleting files.
+These are meant to be compatible with scsh, Guile, and MIT Scheme:
+file-exists?, file-directory?, file-readable?, file-writable?,
+delete-file, rename-file, create-diretory, and the variable
+home-directory.
+</p>
+      <p>Fixed some small bugs, mainly in gnu.math and in load.
+</p>
+      <p>Generalize apply to accept an arbitrary Sequence, or a primitive Java
+array.
+</p>
+      <h3 id="idm139667881243984">Changes from Kawa 1.2 to 1.4</h3>
+      <span id="_0023changes-from-kawa-1_002e2-to-1_002e4"/>
+      <p>The codegen package has been renamed gnu.bytecode. The kawa.math package
+has been moved to gnu.math. Both packages have new license: No
+restrictions if you use an unmodified release, but GNU General Public
+License. Let me know if that causes problems. The rest of Kawa still has
+the old license.
+</p>
+      <p>Implement defmacro and gentemp.
+</p>
+      <p>Implement make-record-type and related functions to create and use new
+record types. A record type is implemented as a java.lang.Class object,
+and this feature depends on the new reflection features of JDK 1.1.
+</p>
+      <p>Implement keywords, and extend lambda parameter lists to support
+#!optional #!rest and #!keyword parameters (following DSSSL).
+</p>
+      <p>Added more primitives to call arbitrary interface and constructor
+methods.
+</p>
+      <h3 id="idm139667881240096">Changes from Kawa 1.0 to 1.2</h3>
+      <span id="_0023changes-from-kawa-1_002e0-to-1_002e2"/>
+      <p>Added primitives to make it easy to call arbitrary Java methods from
+Scheme.
+</p>
+      <p>Exact rational arithetic is now fully implemented. All integer functions
+now believed to correctly handle bignums. Logical operations on exact
+integers have been implemented. These include all the logical functions
+from Guile.
+</p>
+      <p>Complex numbers are implemented (except {,a}{sin,cos,tan}).
+Quantities (with units) are implemented (as in DSSSL).
+</p>
+      <p>Eval is available, as specified for R5RS. Also implemented are
+scheme-report-environment, null-environment, and
+interaction-environment.
+</p>
+      <p>Internal define is implemented.
+</p>
+      <p>Rough support for multiple threads is implemented.
+</p>
+      <p>Moved kawa class to kawa/repl. Merged in kawac (compiler) functionality.
+A ’kawa’ shell-script is now created. This is now the preferred
+interface to both the interactive evaluator and the compiler (on
+Unix-like systems).
+</p>
+      <p>Now builds "without a snag" using Cafe 1.51 under Win95. (Symantec JIT
+(ver 2.00b19) requires disabling JIT - <code class="literal">JAVA_COMPCMD=disable</code>.)
+Compiles under JDK 1.1 beta (with some warnings).
+</p>
+      <p>A testsuite (and testing framework) was added.
+</p>
+      <p>Documentation moved to doc directory. There is now an internals
+overview, in doc/kawa-tour.ps.
+</p>
+      <h3 id="idm139667881232784">Changes since 0.4</h3>
+      <span id="_0023changes-since-0_002e4"/>
+      <p>The numeric classes have been re-written. There is partial support for
+bignums (infinite-precision integers), but divide (for example) has not
+been implemented yet. The representation of bignums uses 2’s complement,
+where the "big digits" are laid out so as to be compatible with the mpn
+functions of the GNU Multi-Precision library (gmp). (The intent is that
+a future version of Kawa will support an option to use gmp native
+functions for speed.)
+</p>
+      <p>The kawa application takes a number of useful command-line switches.
+</p>
+      <p>Basically all of R4RS has been implemented. All the essential forms and
+functions are implemented. Almost all of the optional forms are
+implemented. The exceptions are transcript-on, transcript-off, and the
+functions for complex numbers, and fractions (exact non-integer
+rationals).
+</p>
+      <p>Loading a source file with load now wraps the entire file in a lambda
+(named "atFileLevel"). This is for better error reporting, and
+consistency with compile-file.
+</p>
+      <h3 id="idm139667881228032">Changes since 0.3</h3>
+      <span id="_0023changes-since-0_002e3"/>
+      <p>The hygienic macros described in the appendix to R4RS are now impemented
+(but only the define-syntax form). They are used to implement the
+standard "do" form.
+</p>
+      <p>The R5RS multiple value functions <code class="literal">values</code> and
+<code class="literal">call-with-values</code> are implemented.
+</p>
+      <p>Macros (and primitive syntax) can now be autoloaded as well as
+procedures.
+</p>
+      <p>New kawac application compiles to one or more .class files.
+</p>
+      <p>Compile time errors include line numbers. Uncaught exceptions cause a
+stack trace that includes .scm line numbers. This makes it more
+practical to debug Kawa with a Java debugger.
+</p>
+      <p>Quasiquotation is implemented.
+</p>
+      <p>Various minor bug fixes and optimizations.
+</p>
+      <h3 id="idm139667881222496">Changes since 0.2</h3>
+      <span id="_0023changes-since-0_002e2"/>
+      <p>The biggest single change is that Scheme procedures are now compiled to
+Java bytecodes. This is mainly for efficiency, but it also allows us to
+do tail-recursion-elimination in some cases.
+</p>
+      <p>The "codegen" library is included. This is a toolkit that handles most
+of the details needed to generate Java bytecode (.class) files.
+</p>
+      <p>The internal structure of Kawa has been extensively re-written,
+especially how syntax transforms, eval, and apply are done, largely due
+to the needs for compilation.
+</p>
+      <p>Almost all the R4RS procedures are now implemented, except that there
+are still large gaps in Section 6.5 "Numbers".
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="index.html">The Kawa Scheme language</a></p>
+        <p>
+        Previous: <a accesskey="p" href="index.html">The Kawa Scheme language</a></p>
+        <p>
+        Next: <a accesskey="n" href="Features.xhtml">Features</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

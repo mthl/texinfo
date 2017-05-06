@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Types and declarations</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="tutorial-Exceptions-and-errors.xhtml" title="Exceptions and errors"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Types and declarations" epub:type="subchapter" id="Tutorial---Types">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Types and declarations</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">type</em> is a named value for a set
+of objects with related properties.
+For example, <code class="literal">vector</code> is the type for standard Scheme vectors.
+You can use a type to specify that a variable can only have
+values of the specified type:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:5|# </span><strong class="userinput"><code>(define v ::vector #(3 4 5))</code></strong>
+<span class="prompt">#|kawa:6|# </span><strong class="userinput"><code>v</code></strong>
+#(3 4 5)
+<span class="prompt">#|kawa:7|# </span><strong class="userinput"><code>(set! v 12)</code></strong>
+/dev/stdin:7:1: warning - cannot convert literal (of type gnu.math.IntNum) to vector
+Value (12) for variable 'v' has wrong type (gnu.math.IntNum) (gnu.math.IntNum cannot be cast to gnu.lists.FVector)
+	at atInteractiveLevel$7.run(stdin:7)
+	at gnu.expr.ModuleExp.evalModule(ModuleExp.java:302)
+	at kawa.Shell.run(Shell.java:275)
+	at kawa.Shell.run(Shell.java:186)
+	at kawa.Shell.run(Shell.java:167)
+	at kawa.repl.main(repl.java:870)
+Caused by: java.lang.ClassCastException: gnu.math.IntNum cannot be cast to gnu.lists.FVector
+	... 6 more
+</pre>
+      <p>Using a type specification catches errors, and makes your programs
+more readable.  It can also allow the Kawa compiler to generate code
+that runs faster.
+</p>
+      <p>You can use a type to check that a value is an instance of the type,
+using either the <code class="literal">instance?</code> function:
+</p>
+      <pre class="screen">(instance? #(3 4 5) vector) ⇒ #t
+(instance? '(3 4 5) vector) ⇒ #f
+</pre>
+      <p>As a convenience, you can use a type-name followed by a “<code class="literal">?</code>”:
+</p>
+      <pre class="screen">(<em class="replaceable"><code>type</code></em>? <em class="replaceable"><code>val</code></em>) == (instance? <em class="replaceable"><code>val</code></em> <em class="replaceable"><code>type</code></em>)
+</pre>
+      <p>You can “call” a type as if it were a function,
+which constructs a new instance of the type.
+The following example shows how to construct a normal Scheme vector,
+and a Java array of ints:
+</p>
+      <pre class="screen">|kawa:1|# (vector )
+#()
+#|kawa:2|# (instance? (vector ) vector)
+#t
+#|kawa:3|# (define x (int[] 1 2 3))
+#|kawa:4|# x
+[1 2 3]
+#|kawa:5|# (instance? x int[])
+#t
+</pre>
+      <p>A fully-qualified Java class is a type name.
+So are the names of Java primitive types.
+So are Java array types, as shown above.
+</p>
+      <p>e.g. a JFrame is constructed by using its class name as a function:
+</p>
+      <pre class="screen">#|kawa:6|# (javax.swing.JFrame )
+javax.swing.JFrame[frame0,0,25,0x0,invalid,hidden,layout=java.awt.BorderLayout,
+title=,resizable,normal,defaultCloseOperation=HIDE_ON_CLOSE,
+rootPane=javax.swing.JRootPane[,0,0,0x0,invalid,
+layout=javax.swing.JRootPane$RootLayout,alignmentX=0.0,alignmentY=0.0,border=,
+flags=16777673,maximumSize=,minimumSize=,preferredSize=],rootPaneCheckingEnabled=true]
+</pre>
+      <p>A type is a true run-time value:
+</p>
+      <pre class="screen">(define mytypes (list vector list string))
+(instance? #(3 4 5) (car mytypes) ⇒ #t
+</pre>
+      <p>The <code class="literal">define-alias</code> form is useful for defining shorter names
+for types, like a generalization of Java’s <code class="literal">import</code> statement:
+</p>
+      <pre class="screen">(define-alias jframe javax.swing.JFrame)
+</pre>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Objects.xhtml">Creating and using objects</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Exceptions-and-errors.xhtml">Exceptions and errors</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

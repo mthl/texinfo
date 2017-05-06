@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Hash-prefixed forms</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Primitive-expression-syntax.xhtml" title="Primitive expression syntax"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Hash-prefixed forms" epub:type="subchapter" id="Hash-prefixed-forms">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Hash-prefixed forms</h2>
+          </div>
+        </div>
+      </div>
+      <p>A number of different special forms are indicated by an
+initial hash (number) symbols (<code class="literal">#</code>).
+Here is a table summarizing them.
+</p>
+      <p>Case is ignored for the character followed the <code class="literal">#</code>.
+Thus <code class="literal">#x</code> and <code class="literal">#X</code> are the same.
+</p>
+      <div class="variablelist" epub:type="list">
+        <dl class="variablelist">
+          <dt class="term"><code class="literal"><span class="bold"><strong>#:</strong></span></code><em class="replaceable"><code>keyword</code></em>
+</dt>
+          <dd>
+            <p>Guile-style <a class="link" href="Keywords.xhtml" title="Keywords">keyword</a> syntax.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#\</strong></span></code>
+</dt>
+          <dd>
+            <p><a class="link" href="Characters.xhtml#meta-character">Character literals</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#!</strong></span></code>
+</dt>
+          <dd>
+            <p>See <a class="link" href="Special-named-constants.xhtml" title="Special named constants">Special named constants</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#‘</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>Equivalent to <code class="literal">(quasisyntax <em class="replaceable"><code>datum</code></em>)</code>.
+Convenience syntax for syntax-case macros.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#’</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>Equivalent to <code class="literal">(syntax <em class="replaceable"><code>datum</code></em>)</code>.
+Convenience syntax for syntax-case macros.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>Equivalent to <code class="literal">(unsyntax <em class="replaceable"><code>datum</code></em>)</code>.
+Currently only recognized when inside a <code class="literal">#`<em class="replaceable"><code>template</code></em></code> form. 
+Convenience syntax for syntax-case macros.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(</strong></span></code><em class="replaceable"><code>name</code></em> <em class="replaceable"><code>datum</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd>
+            <p>Special named constructors.
+This syntax is deprecated, because it conflicts with <code class="literal">unsyntax</code>.
+It is only recognized when <span class="emphasis"><em>not</em></span> in a <code class="literal">#`<em class="replaceable"><code>template</code></em></code> form.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,@</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>Equivalent to <code class="literal">(unsyntax-splicing <em class="replaceable"><code>datum</code></em>)</code>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#(</strong></span></code>
+</dt>
+          <dd>
+            <p>A vector.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#|</strong></span></code>
+</dt>
+          <dd>
+            <p>Start of nested-comment.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#/</strong></span></code><em class="replaceable"><code>regex</code></em><code class="literal"><span class="bold"><strong>/</strong></span></code>
+</dt>
+          <dd>
+            <p>See <a class="link" href="Regular-expressions.xhtml" title="Regular expressions">Regular expressions</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#&lt;</strong></span></code>
+</dt>
+          <dd>
+            <p>See <a class="link" href="XML-literals.xhtml" title="XML literals">XML literals</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#;</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>A datum comment - the <em class="replaceable"><code>datum</code></em> is ignored.
+(An <em class="replaceable"><code>interlexeme-space</code></em> may appear before the <em class="replaceable"><code>datum</code></em>.)
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#</strong></span></code><em class="replaceable"><code>number</code></em><code class="literal"><span class="bold"><strong>=</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>A reference definition, allowing cyclic and shared structure.
+Equivalent to the <em class="replaceable"><code>datum</code></em>, but also defines an association between
+the integer <em class="replaceable"><code>number</code></em> and that <em class="replaceable"><code>datum</code></em>, which can be
+used by a subsequent <code class="literal">#<em class="replaceable"><code>number</code></em>#</code> form.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#</strong></span></code><em class="replaceable"><code>number</code></em><code class="literal"><span class="bold"><strong>#</strong></span></code>
+</dt>
+          <dd>
+            <p>A back-reference, allowing cyclic and shared structure.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#</strong></span></code><em class="replaceable"><code>R</code></em><code class="literal"><span class="bold"><strong>a</strong></span></code><em class="replaceable"><code>datum</code></em>
+</dt>
+          <dd>
+            <p>An <a class="link" href="Arrays.xhtml#array-literals">array literal</a>,
+for a multi-dimensional array of rank <em class="replaceable"><code>R</code></em>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#b</strong></span></code>
+</dt>
+          <dd>
+            <p>A binary (base-2) number.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#d</strong></span></code>
+</dt>
+          <dd>
+            <p>A decimal (base-10) number.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#e</strong></span></code>
+</dt>
+          <dd>
+            <p>A prefix to treat the following number as exact.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#f</strong></span></code>
+</dt>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#false</strong></span></code>
+</dt>
+          <dd>
+            <p>The standard boolean false object.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#f</strong></span></code><em class="replaceable"><code>n</code></em><code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>number</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd>
+            <p>A uniform vector of floating-point numbers.
+The parameter <em class="replaceable"><code>n</code></em> is a precision, which can be 32 or 64.
+See <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">Uniform vectors</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#i</strong></span></code>
+</dt>
+          <dd>
+            <p>A prefix to treat the following number as inexact.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#o</strong></span></code>
+</dt>
+          <dd>
+            <p>An octal (base-8) number.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#</strong></span></code><em class="replaceable"><code>base</code></em><code class="literal"><span class="bold"><strong>r</strong></span></code>
+</dt>
+          <dd>
+            <p>A number in the specified <em class="replaceable"><code>base</code></em> (radix).
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#s</strong></span></code><em class="replaceable"><code>n</code></em><code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>number</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd>
+            <p>A uniform vector of signed integers.
+The parameter <em class="replaceable"><code>n</code></em> is a precision, which can be 8, 16, 32, or 64.
+See <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">Uniform vectors</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#t</strong></span></code>
+</dt>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#true</strong></span></code>
+</dt>
+          <dd>
+            <p>The standard boolean true object.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#u</strong></span></code><em class="replaceable"><code>n</code></em><code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>number</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd>
+            <p>A uniform vector of unsigned integers.
+The parameter <em class="replaceable"><code>n</code></em> is a precision, which can be 8, 16, 32, or 64.
+See <a class="link" href="Uniform-vectors.xhtml" title="Uniform vectors">Uniform vectors</a>.
+</p>
+          </dd>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#x</strong></span></code>
+</dt>
+          <dd>
+            <p>A hexadecimal (base-16) number.
+</p>
+          </dd>
+        </dl>
+      </div>
+      <p>The follow named constructor forms are supported:
+</p>
+      <div class="variablelist" epub:type="list">
+        <dl class="variablelist">
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(path</strong></span></code> <em class="replaceable"><code>path</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(filepath</strong></span></code> <em class="replaceable"><code>path</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(URI</strong></span></code> <em class="replaceable"><code>path</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(symbol</strong></span></code> <em class="replaceable"><code>local-name</code></em> [<em class="replaceable"><code>uri</code></em> [<em class="replaceable"><code>prefix</code></em>]]<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(symbol</strong></span></code> <em class="replaceable"><code>local-name</code></em> <em class="replaceable"><code>namespace</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(namespace</strong></span></code> <em class="replaceable"><code>uri</code></em> [<em class="replaceable"><code>prefix</code></em>]<code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+          <dt class="term"><code class="literal"><span class="bold"><strong>#,(duration</strong></span></code> <em class="replaceable"><code>duration</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code>
+</dt>
+          <dd/>
+        </dl>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Datum-syntax.xhtml">Datum syntax</a></p>
+        <p>
+        Next: <a accesskey="n" href="Primitive-expression-syntax.xhtml">Primitive expression syntax</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Web page scripts</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Self-configuring-page-scripts.xhtml" title="Self-configuring web page scripts"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Web page scripts" epub:type="subchapter" id="Server-side-scripts">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Web page scripts</h2>
+          </div>
+        </div>
+      </div>
+      <p>A Kawa <em class="firstterm">web page script</em> is a Kawa program that is invoked
+by a web server because the server received an HTTP request.
+The result of evaluating the top-level expressions becomes
+the HTTP response that the servlet sends back to the client, usually a browser.
+</p>
+      <p>A web page script may be as simple as:
+</p>
+      <pre class="screen">(format "The time is &lt;~s&gt;." (java.util.Date))
+</pre>
+      <p>This returns a response of consisting of a formatted string
+giving the current time.
+The string would interpreted as <code class="literal">text/plain</code> content:
+The angle brackets are regular characters, and not
+HTML tag markers.
+</p>
+      <p>The script can alternatively evaluate to XML/HTML node
+values, for example those created by <a class="link" href="XML-literals.xhtml" title="XML literals">XML literals</a>:
+</p>
+      <pre class="screen">#&lt;p&gt;Hello, &lt;b&gt;&amp;(request-remote-host)&lt;/b&gt;!&lt;/p&gt;
+</pre>
+      <p>In this case the response would be <code class="literal">text/html</code> or similar content:
+The angle brackets should be interpreted by the browser as HTML tag markers.
+The function <code class="literal">request-remote-host</code> is available (automatically)
+to web page scripts; it returns the host that made the HTTP request,
+which is then interpolated into the response.
+</p>
+      <p>Following sections will go into more details about how
+to write web page scripts.  You can do so in any supported
+Kawa language, including Scheme, BRL, KRL, or XQuery.
+</p>
+      <p>A web server will use a URL mapping to map a request URL
+to a specific web page script.  This can be done in a
+number of different ways:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>The easiest to manage is to use Kawa’s mechanism for
+<a class="link" href="Self-configuring-page-scripts.xhtml" title="Self-configuring web page scripts">Self-configuring page scripts</a>.  Ths is especially
+easy if you the web server built in to JDK 6, since no
+configuration files are needed.
+You can also use a “servlet engine” like Tomcat or Glassfish.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can explicitly compile the web page script to a servlet,
+in the same way Java servlets are compiled.
+This can then be installed ("deployed") in a servlet-supporting
+web server, such a Tomcat or Glassfish.  See <a class="link" href="Servlets.xhtml" title="Installing web page scripts as Servlets">Servlets</a>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>You can run the servlet as a <a class="link" href="CGI-scripts.xhtml" title="Installing Kawa programs as CGI scripts">CGI script</a>.
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>For details on how to extract information from the request
+see <a class="link" href="HTTP-requests.xhtml" title="Functions for accessing HTTP requests">HTTP requests</a>.
+For details on how the response is created see <a class="link" href="HTTP-response.xhtml" title="Generating HTTP responses">Generating HTTP responses</a>.
+If the response is HTML or XML, you may want to
+read <a class="link" href="Creating-HTML-nodes.xhtml" title="Creating HTML nodes">Creating HTML nodes</a>, or <a class="link" href="Creating-XML-nodes.xhtml" title="Creating XML nodes">Creating XML nodes</a>,
+or <a class="link" href="XML-literals.xhtml" title="XML literals">XML literals</a>.
+</p>
+      <p>Here are some examples, starting with a simple <code class="literal">hello.scm</code>:
+</p>
+      <pre class="screen">(response-content-type 'text/html) ; Optional
+(html:p
+  "The request URL was: " (request-url))
+(make-element 'p
+  (let ((query (request-query-string)))
+    (if query
+      (values-append "The query string was: " query)
+      "There was no query string.")))
+</pre>
+      <p>This returns two <code class="literal">&lt;p&gt;</code> (paragraph) elements: One using
+<code class="literal">make-element</code> and one using the <code class="literal">html:p</code> constructor.
+Or you may prefer to use <a class="link" href="XML-literals.xhtml" title="XML literals">XML literals</a>.
+</p>
+      <p>The same program using KRL:
+</p>
+      <pre class="screen">&lt;p&gt;The request URL was: [(request-url)]&lt;/p&gt;,
+&lt;p&gt;[(let ((query (request-query-string)))
+    (if query
+      (begin ]The query string was: [query)
+
+      ]There was no query string.[))]&lt;/p&gt;
+</pre>
+      <p>You can also use XQuery:
+</p>
+      <pre class="screen">&lt;p&gt;The request URL was: {request-url()}&lt;/p&gt;
+&lt;p&gt;{let $query := request-query-string() return
+    if ($query)
+    then ("The query string was: ",$query)
+    else "There was no query string."}&lt;/p&gt;
+</pre>
+      <p>The <code class="literal">+default+</code> script in the <code class="literal">doc</code> directory is
+useful for reading the Kawa documentation using a browser.
+The script uses the <code class="literal">jar:</code> URL scheme to automatically extract
+and uncompress the pages from <code class="literal">doc/kawa-manual.epub</code>,
+which is in EPUB3 format.  Read the script for usage instructions.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="XML-tools.xhtml">Working with XML and HTML</a></p>
+        <p>
+        Previous: <a accesskey="p" href="XML-literals.xhtml">XML literals</a></p>
+        <p>
+        Next: <a accesskey="n" href="Self-configuring-page-scripts.xhtml">Self-configuring web page scripts</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

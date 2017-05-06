@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Property access using colon notation</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Bodies.xhtml" title="Programs and Bodies"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Property access using colon notation" epub:type="subchapter" id="Colon-notation">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Property access using colon notation</h2>
+          </div>
+        </div>
+      </div>
+      <p>The <em class="firstterm">colon notation</em> accesses named parts (properties) of a value.
+It is used to get and set fields, call methods, construct compound symbols,
+and more.
+Evaluating the form <code class="literal"><em class="replaceable"><code>owner</code></em>:<em class="replaceable"><code>property</code></em></code>
+evaluates the <code class="literal"><em class="replaceable"><code>owner</code></em></code> then it extracts the named <code class="literal"><em class="replaceable"><code>property</code></em></code> of the result.
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667879234736" class="indexterm"/><span id="meta-property-access-abbreviation"/><em class="replaceable"><code>property-access-abbreviation</code></em> <code class="literal">::=</code> <a class="link" href="Colon-notation.xhtml#meta-property-owner-expression"><em class="replaceable"><code>property-owner-expression</code></em></a><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Colon-notation.xhtml#meta-property-name"><em class="replaceable"><code>property-name</code></em></a><br/>
+<a id="idm139667879230512" class="indexterm"/><span id="meta-property-owner-expression"/><em class="replaceable"><code>property-owner-expression</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667879227664" class="indexterm"/><span id="meta-property-name"/><em class="replaceable"><code>property-name</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a> | <code class="literal"><span class="bold"><strong>,</strong></span></code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+</p>
+      </div>
+      <p>The <em class="replaceable"><code>property-name</code></em> is usually a literal name,
+but it can be an unquoted <em class="replaceable"><code>expression</code></em> (i.e. following a <code class="literal">,</code>),
+in which case the name is evaluated at run-time.
+No separators are allowed on either side of the colon.
+</p>
+      <p>The input syntax <code class="literal"><em class="replaceable"><code>owner</code></em>:<em class="replaceable"><code>part</code></em></code> is translated by
+the Scheme reader to the internal representation <code class="literal">($lookup$ <em class="replaceable"><code>owner</code></em> (quasiquote <em class="replaceable"><code>part</code></em>))</code>.
+</p>
+      <section class="sect2" title="Part lookup rules" epub:type="division" id="idm139667879218672">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Part lookup rules</h3>
+            </div>
+          </div>
+        </div>
+        <p>Evaluation proceeds as follows.
+First <em class="replaceable"><code>property-owner-expression</code></em> is
+evaluated to yield an <em class="replaceable"><code>owner</code></em> object.
+Evaluating the <em class="replaceable"><code>property-name</code></em> yields a <em class="replaceable"><code>part</code></em> name,
+which is a simple symbol: Either
+the literal <em class="replaceable"><code>identifier</code></em>, or the result of evaluating the
+property-name <em class="replaceable"><code>expression</code></em>.
+If the <em class="replaceable"><code>expression</code></em> evaluates to a string, it is converted to
+a symbol, as if using <code class="literal">string-&gt;symbol</code>.
+</p>
+        <div class="itemizedlist" epub:type="list">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem" epub:type="list-item">
+              <p>If the <em class="replaceable"><code>owner</code></em> implements <code class="literal">gnu.mapping.HasNamedParts</code>,
+then the result is that of invoking the <code class="literal">get</code> method of the <em class="replaceable"><code>owner</code></em>
+with the <em class="replaceable"><code>part</code></em> name as a parameter.
+</p>
+              <p>As a special case of this rule, if <em class="replaceable"><code>owner</code></em> is a
+<code class="literal">gnu.mapping.Namespace</code>, then the result is the
+<a class="link" href="Namespaces.xhtml" title="Namespaces and compound symbols">compound symbol in that namespace</a>.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>If <em class="replaceable"><code>owner</code></em> is a <code class="literal">java.lang.Class</code> or a <code class="literal">gnu.bytecode.ObjectType</code>,
+the result is the static member named <em class="replaceable"><code>part</code></em>
+(i.e. a static field, method, or member class).
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>If <em class="replaceable"><code>owner</code></em> is a <code class="literal">java.lang.Package</code> object, we get the member
+class or sub-package named <em class="replaceable"><code>part</code></em>.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>Otherwise, we look for a named member (instance member or field).
+</p>
+              <p>Note you can’t use colon notation to invoke instance methods
+of a <code class="literal">Class</code>, because it will match a previous rule.
+For example if you want to invoke the <code class="literal">getDeclaredMethod</code>
+method of the <code class="literal">java.util.List</code> , you can’t write <code class="literal">(java.util.List:getDeclaredMethod</code> because that will look for a static method in <code class="literal">java.util.List</code>.
+</p>
+            </li>
+          </ul>
+        </div>
+        <p>If the colon form is on the left-hand-side of an assignment (<code class="literal">set!</code>),
+then the named part is modified as appropriate.
+</p>
+      </section>
+      <section class="sect2" title="Specific cases" epub:type="division" id="idm139667879198688">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Specific cases</h3>
+            </div>
+          </div>
+        </div>
+        <p>Some of these are deprecated;
+more compact and readable forms are usually preferred.
+</p>
+        <section class="sect3" title="Invoking methods" epub:type="division" id="idm139667879197264">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Invoking methods</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>instance</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-method-name"><em class="replaceable"><code>method-name</code></em></a> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>class</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-method-name"><em class="replaceable"><code>method-name</code></em></a> <em class="replaceable"><code>instance</code></em> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>class</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-method-name"><em class="replaceable"><code>method-name</code></em></a> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<code class="literal"><span class="bold"><strong>(*:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-method-name"><em class="replaceable"><code>method-name</code></em></a> <em class="replaceable"><code>instance</code></em> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>For details see <a class="link" href="Method-operations.xhtml" title="Calling Java methods from Scheme">Method operations</a>.
+</p>
+        </section>
+        <section class="sect3" title="Accessing fields" epub:type="division" id="idm139667879180480">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Accessing fields</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><em class="replaceable"><code>class</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-field-name"><em class="replaceable"><code>field-name</code></em></a><br/>
+<em class="replaceable"><code>instance</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-field-name"><em class="replaceable"><code>field-name</code></em></a><br/>
+<code class="literal"><span class="bold"><strong>(</strong></span></code><em class="replaceable"><code>prefix</code></em><code class="literal"><span class="bold"><strong>:.</strong></span></code><a class="link" href="Defining-new-classes.xhtml#meta-field-name"><em class="replaceable"><code>field-name</code></em></a> <em class="replaceable"><code>instance</code></em><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>For details see <a class="link" href="Field-operations.xhtml" title="Accessing object fields">Field operations</a>.
+</p>
+        </section>
+        <section class="sect3" title="Type literal" epub:type="division" id="idm139667879171040">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Type literal</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a><code class="literal"><span class="bold"><strong>:&lt;&gt;)</strong></span></code><br/>
+</p>
+          </div>
+          <p>Returns the <em class="replaceable"><code>type</code></em>.
+Deprecated; usually you can just write:
+</p>
+          <pre class="screen"><em class="replaceable"><code>type</code></em>
+</pre>
+        </section>
+        <section class="sect3" title="Type cast" epub:type="division" id="idm139667879166304">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Type cast</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a><code class="literal"><span class="bold"><strong>:</strong></span></code><code class="literal"><span class="bold"><strong>@</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>Performs a cast.
+Deprecated; usually you can just write:
+</p>
+          <pre class="screen">-&gt;<em class="replaceable"><code>type</code></em>
+</pre>
+        </section>
+        <section class="sect3" title="Type test" epub:type="division" id="idm139667879159648">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Type test</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a><code class="literal"><span class="bold"><strong>:instanceof?</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>Deprecated; usually you can just write:
+</p>
+          <pre class="screen">(<em class="replaceable"><code>type</code></em>? <em class="replaceable"><code>expression</code></em>)
+</pre>
+        </section>
+        <section class="sect3" title="New object construction" epub:type="division" id="idm139667879153152">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">New object construction</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a><code class="literal"><span class="bold"><strong>:new</strong></span></code> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+          <p>Deprecated; usually you can just write:
+</p>
+          <div class="literallayout">
+            <p><code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a> <em class="replaceable"><code>arg</code></em> ...<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+          </div>
+        </section>
+        <section class="sect3" title="Getting array length" epub:type="division" id="idm139667879145216">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h4 class="title">Getting array length</h4>
+              </div>
+            </div>
+          </div>
+          <div class="literallayout">
+            <p><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>:length</strong></span></code><br/>
+<code class="literal"><span class="bold"><strong>(</strong></span></code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><code class="literal"><span class="bold"><strong>:.length)</strong></span></code><br/>
+</p>
+          </div>
+        </section>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Colon-notation.xhtml#idm139667879218672">Part lookup rules</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Colon-notation.xhtml#idm139667879198688">Specific cases</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Primitive-expression-syntax.xhtml">Primitive expression syntax</a></p>
+        <p>
+        Next: <a accesskey="n" href="Bodies.xhtml">Programs and Bodies</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

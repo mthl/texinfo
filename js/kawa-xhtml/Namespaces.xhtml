@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Namespaces and compound symbols</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Simple-symbols.xhtml" title="Simple symbols"/>
+    <link rel="next" href="Keywords.xhtml" title="Keywords"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Namespaces and compound symbols" epub:type="subchapter" id="Namespaces">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Namespaces and compound symbols</h2>
+          </div>
+        </div>
+      </div>
+      <p>Different applications may want to use the same symbol
+to mean different things.  To avoid such <em class="firstterm">name clashes</em>
+we can use <em class="firstterm">compound symbols</em>, which have two string parts:
+a <em class="firstterm">local name</em> and a <em class="firstterm">namespace URI</em>.
+The namespace-uri can be any string, but it is
+recommended that it have the form of an absolute
+<a class="ulink" href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_top">URI</a>.
+It would be too verbose to write the full URI all the
+time, so one usually uses a <em class="firstterm">namespace prefix</em>
+(namespace alias) as a short local alias to refer to a
+namespace URI.
+</p>
+      <p>Compound symbols are usually written using the infix colon operator:
+</p>
+      <pre class="screen"><em class="replaceable"><code>prefix</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><em class="replaceable"><code>local-name</code></em>
+</pre>
+      <p>where <em class="replaceable"><code>prefix</code></em> is a namespace alias bound
+to some (lexically-known) namespace URI.
+</p>
+      <p>Compound symbols are used for namespace-aware XML processing.
+</p>
+      <section class="sect2" title="Namespace objects" epub:type="division" id="idm139667877679568">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Namespace objects</h3>
+            </div>
+          </div>
+        </div>
+        <p>A <em class="firstterm">namespace</em> is a mapping from strings to symbols.
+The string is the local-name of the resulting symbol.
+A namespace is similar to a Common Lisp <em class="firstterm">package</em>.
+</p>
+        <p>A namespace has a namespace-uri, which a string;
+it is recommended that it have the form of an absolute URI.
+A namespace may optionally have a prefix, which is a string used
+when printing out symbols belonging to the namespace.
+(If you want “equivalent symbols” (i.e. those that have the same
+local-name and same uri) to be the identical symbol object, then
+you should use namespaces whose prefix is the empty string.)
+</p>
+        <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667877676240" class="indexterm"/> <code class="function">namespace</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code>prefix</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return a namespace with the given <em class="replaceable"><code>name</code></em> and <em class="replaceable"><code>prefix</code></em>.
+If no such namespace exists, create it.
+The <em class="replaceable"><code>namespace-name</code></em> is commonly a URI, especially when working with XML,
+in which case it is called a <em class="replaceable"><code>namespace-uri</code></em>.  However, any non-empty
+string is allowed.
+The prefix can be a string or a simple symbol.
+(If a symbol is used, then the symbol’s local-name is used.)
+The default for <em class="replaceable"><code>prefix</code></em> is the empty string.
+Multiple calls with the same arguments will yield the same namespace object.
+</p>
+          </blockquote>
+        </div>
+        <p>The reader macro <code class="literal">#,namespace</code> is equivalent to the
+<code class="literal">namespace</code> function, but it is invoked at read-time:
+</p>
+        <pre class="screen">#,(namespace "http://www.w3.org/1999/XSL/Transform" xsl)
+(eq? #,(namespace "foo") (namespace "foo")) ⇒ #t
+</pre>
+        <p>The form <code class="literal">(,#namespace "" "")</code> returns the default <em class="firstterm">empty namespace</em>,
+which is used for simple symbols.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877666544" class="indexterm"/> <code class="function">namespace-uri</code> <em class="replaceable"><code>namespace</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the namespace-uri of the argument <em class="replaceable"><code>namespace</code></em>, as a string.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877662688" class="indexterm"/> <code class="function">namespace-prefix</code> <em class="replaceable"><code>namespace</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the namespace prefix of the argument <em class="replaceable"><code>namespace</code></em>, as a string.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Compound symbols" epub:type="division" id="idm139667877658832">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Compound symbols</h3>
+            </div>
+          </div>
+        </div>
+        <p>A compound symbol is one that belongs to a namespace other than the
+default empty namespace, and (normally) has a non-empty namespace uri.
+(It is possible for a symbol to belong to a non-default namespace
+and have an empty namespace uri, but that is not recommended.)
+</p>
+        <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667877657088" class="indexterm"/> <code class="function">symbol</code> <em class="replaceable"><code>local-name</code></em> <em class="replaceable"><code>namespace-spec</code></em></p>
+        <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667877653840" class="indexterm"/> <code class="function">symbol</code> <em class="replaceable"><code>local-name</code></em> [<em class="replaceable"><code>uri</code></em> [<em class="replaceable"><code>prefix</code></em>]]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Construct a symbol with the given <em class="replaceable"><code>local-name</code></em> and namespace.
+If <em class="replaceable"><code>namespace-spec</code></em> is a namespace object, then find (or, if needed,
+construct) a symbol with the given <em class="replaceable"><code>local-name</code></em> belonging to the
+namespace.  Multiple calls to <code class="literal">symbol</code> with the same namespace
+and <em class="replaceable"><code>local-name</code></em> will yield the same symbol object.
+</p>
+            <p>If uri is a string (optionally followed by a prefix),
+then:
+</p>
+            <pre class="screen">(symbol lname uri [prefix])
+</pre>
+            <p>is equivalent to:
+</p>
+            <pre class="screen">(symbol lname (namespace uri [prefix]))
+</pre>
+            <p>Using <code class="literal">#t</code> for the <em class="replaceable"><code>namespace-spec</code></em> is equivalent to
+using the empty namespace <code class="literal">#,(namespace "")</code>.
+</p>
+            <p>Using <code class="literal">#!null</code> or <code class="literal">#f</code> for the <em class="replaceable"><code>namespace-spec</code></em>
+creates an <em class="replaceable"><code>uninterned</code></em> symbol, which does not belong to
+any namespace.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877641824" class="indexterm"/> <code class="function">symbol-local-name</code> <em class="replaceable"><code>symbol</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the local name of the argument symbol, as an immutable string.
+(The string is interned, except in the case of an uninterned symbol.)
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877638320" class="indexterm"/> <code class="function">symbol-prefix</code> <em class="replaceable"><code>symbol</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the prefix of the argument symbol, as an immutable
+(and interned) string.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877634880" class="indexterm"/> <code class="function">symbol-namespace-uri</code> <em class="replaceable"><code>symbol</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the namespace uri of the argument symbol, as an immutable
+(and interned) string.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877631424" class="indexterm"/> <code class="function">symbol-namespace</code> <em class="replaceable"><code>symbol</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return the namespace object (if any) of the argument symbol.
+Returns <code class="literal">#!null</code> if the symbol is uninterned.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877627536" class="indexterm"/> <code class="function">symbol=?</code> <em class="replaceable"><code><em class="replaceable"><code>symbol</code></em></code></em><em class="replaceable"><code><sub>1</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>symbol</code></em></code></em><em class="replaceable"><code><sub>2</sub></code></em> <em class="replaceable"><code><em class="replaceable"><code>symbol</code></em></code></em><em class="replaceable"><code><sub>3</sub></code></em> <em class="replaceable"><code>…</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Return <code class="literal">#t</code> if the symbols are equivalent as symbols,
+i.e., if their local-names and namespace-uris are the same.
+They may have different values of <code class="literal">symbol-prefix</code> and <code class="literal">symbol-namespace</code>.
+If a symbol is uninterned (or is <code class="literal">#!null</code>) then <code class="literal">symbol=?</code>
+returns the same result as <code class="literal">eq?</code>.
+</p>
+          </blockquote>
+        </div>
+        <p>Two symbols are <code class="literal">equal?</code> or <code class="literal">eqv?</code> if they’re <code class="literal">symbol=?</code>.
+</p>
+      </section>
+      <section class="sect2" title="Namespace aliases" epub:type="division" id="idm139667877616896">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Namespace aliases</h3>
+            </div>
+          </div>
+        </div>
+        <p>A namespace is usually referenced using a shorter <em class="firstterm">namespace alias</em>,
+which is is a lexical definition that binds a namespace prefix
+to a namespace object (and thus a namespace uri).
+This allows using compound symbols as identifiers in Scheme programs.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877614752" class="indexterm"/> <code class="function">define-namespace</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>namespace-name</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Defines <em class="replaceable"><code>name</code></em> as a <em class="firstterm">namespace prefix</em> - a lexically scoped
+"nickname" for the namespace
+whose full name is <em class="replaceable"><code>namespace-name</code></em>, which should be a non-empty
+string literal.
+It is customary for the string have syntactic form of
+an absolute <a class="ulink" href="http://en.wikipedia.org/wiki/Uniform_Resource_Identifier" target="_top">URI</a>,
+but any non-empty string is acceptable and is used without
+further interpretation.
+</p>
+            <p>Any symbols in the scope of this definitions that contain a colon, and
+where the part before the colon matches the <em class="replaceable"><code>name</code></em> will be
+treated as being in the package/namespace whose global unique name
+is the <em class="replaceable"><code>namespace-name</code></em>.
+</p>
+            <p>Has mostly the same effect as:
+</p>
+            <pre class="screen">(define-constant <em class="replaceable"><code>name</code></em> #,(namespace <em class="replaceable"><code>namespace-name</code></em>)
+</pre>
+            <p>However, using <code class="literal">define-namespace</code> (rather than <code class="literal">define-constant</code>)
+is recommended if you want to use compound symbols as names of
+variables, especially local variables, or if you want to quote
+compound symbols.
+</p>
+            <p>Note that the prefix is only visible lexically: it is not
+part of the namespace, or thus indirectly the symbols, and
+so is not available when printing the symbol.
+You might consider using <code class="literal">define-xml-namespace</code> as an alternative.
+</p>
+            <p>A namespace is similar to a Common Lisp package,
+and the <em class="replaceable"><code>namespace-name</code></em> is like the name of the package.
+However, a namespace alias belongs to the lexical scope,
+while a Common Lisp package nickname is global
+and belongs to the package itself.
+</p>
+            <p>If the namespace-name starts with the string <code class="literal">"class:"</code>, then the
+<em class="replaceable"><code>name</code></em> can be used for invoking Java methods
+(see <a class="link" href="Method-operations.xhtml" title="Calling Java methods from Scheme">Method operations</a>) and accessing fields (see <a class="link" href="Field-operations.xhtml" title="Accessing object fields">Field operations</a>).
+</p>
+            <p>You can use a namespace as an abbreviation or renaming of a
+class name, but as a matter of style <code class="literal">define-alias</code> is preferred.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877598240" class="indexterm"/> <code class="function">define-private-namespace</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>namespace-name</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Same as <code class="literal">define-namespace</code>, but the prefix <em class="replaceable"><code>name</code></em>
+is local to the current module.
+</p>
+          </blockquote>
+        </div>
+        <p>For example, you might have a set of a geometry definitions
+defined under the namespace-uri <code class="literal">"http://foo.org/lib/geometry"</code>:
+</p>
+        <pre class="screen">(define-namespace geom "http://foo.org/lib/geometry")
+(define (geom:translate x y)
+  (java.awt.geom.AffineTransform:getTranslateInstance x y))
+(define geom:zero (geom:translate 0 0))
+geom:zero
+  ⇒ AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+</pre>
+        <p>You could have some other definitions for complex math:
+</p>
+        <pre class="screen">(define-namespace complex "http://foo.org/lib/math/complex")
+(define complex:zero +0+0i)
+</pre>
+        <p>You can use a namespace-value directly in a compound name:
+</p>
+        <pre class="screen">(namespace "http://foo.org/lib/geometry"):zero
+  ⇒ AffineTransform[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0]]
+</pre>
+        <p>The variation <code class="literal">define-xml-namespace</code> is used for <a class="link" href="Creating-XML-nodes.xhtml" title="Creating XML nodes">Creating XML nodes</a>.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667877588240" class="indexterm"/> <code class="function">define-xml-namespace</code> <em class="replaceable"><code>prefix</code></em> <em class="replaceable"><code>"namespace-uri"</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Defines a namespace with prefix <em class="replaceable"><code>prefix</code></em> and URI <em class="replaceable"><code>namespace-uri</code></em>.
+This is similar to <code class="literal">define-namespace</code> but with two important differences:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p>Every symbol in the namespace automatically maps to
+an element-constructor-type, as with  the <code class="literal">html</code> namespace.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>The <em class="replaceable"><code>prefix</code></em> is a component of the namespace object, and
+hence indirectly of any symbols belongining to the namespace.
+</p>
+                </li>
+              </ul>
+            </div>
+            <p>Thus the definition is roughly equivalent to:
+</p>
+            <pre class="screen">(define-constant <em class="replaceable"><code>name</code></em> #,(namespace <em class="replaceable"><code>namespace-name name</code></em>)
+</pre>
+            <p>along with an infinite set of definitions, for every possible <em class="replaceable"><code>tag</code></em>:
+</p>
+            <pre class="screen">(define (name:<em class="replaceable"><code>tag</code></em> . rest) (apply make-element 'name:<em class="replaceable"><code>tag</code></em> rest))
+</pre>
+          </blockquote>
+        </div>
+        <pre class="screen">$ kawa --output-format xml
+<span class="prompt">#|kawa:1|# </span><strong class="userinput"><code>(define-xml-namespace na "Namespace1")</code></strong>
+<span class="prompt">#|kawa:2|# </span><strong class="userinput"><code>(define-xml-namespace nb "Namespace1")</code></strong>
+<span class="prompt">#|kawa:3|# </span><strong class="userinput"><code>(define xa (na:em "Info"))</code></strong>
+<span class="prompt">#|kawa:4|# </span><strong class="userinput"><code>xa</code></strong>
+&lt;na:em xmlns:na="Namespace1"&gt;Info&lt;/na:em&gt;
+<span class="prompt">#|kawa:5|# </span><strong class="userinput"><code>(define xb (nb:em "Info"))</code></strong>
+<span class="prompt">#|kawa:6|# </span><strong class="userinput"><code>xa</code></strong>
+&lt;nb:em xmlns:nb="Namespace1"&gt;Info&lt;/nb:em&gt;
+</pre>
+        <p>Note that the prefix is part of the qualified name
+(it is actually part of the namespace object),
+and it is used when printing the tag.
+Two qualified names (symbols) that have the same
+local-name and the same namespace-name are considered
+equal, even if they have different prefix.  You can think of
+the prefix as annotation used when printing, but not
+otherwise part of the “meaning” of a compound symbol.
+They are the same object if they also have the same prefix.
+This is an important difference from traditional Lisp/Scheme symbols,
+but it is how XML QNames work.
+</p>
+        <pre class="screen">#|kawa:7|# (instance? xb na:em)
+true
+#|kawa:8|# (eq? 'na:em 'nb:em)
+false
+#|kawa:9|# (equal? 'na:em 'nb:em)
+true
+#|kawa:10|# (eqv? 'na:em 'nb:em)
+true
+</pre>
+        <p>(Note that <code class="literal">#t</code> is printed as <code class="literal">true</code> when using XML formatting.)
+</p>
+        <p>The predefined <code class="literal">html</code> prefix could be defined thus:
+</p>
+        <pre class="screen">(define-xml-namespace html "http://www.w3.org/1999/xhtml")
+</pre>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Namespaces.xhtml#idm139667877679568">Namespace objects</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Namespaces.xhtml#idm139667877658832">Compound symbols</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Namespaces.xhtml#idm139667877616896">Namespace aliases</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Symbols-and-namespaces.xhtml">Symbols and namespaces</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Simple-symbols.xhtml">Simple symbols</a></p>
+        <p>
+        Next: <a accesskey="n" href="Keywords.xhtml">Keywords</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Self-configuring web page scripts</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Server-side-scripts.xhtml" title="Web page scripts"/>
+    <link rel="next" href="Servlets.xhtml" title="Installing web page scripts as Servlets"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Self-configuring web page scripts" epub:type="subchapter" id="Self-configuring-page-scripts">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Self-configuring web page scripts</h2>
+          </div>
+        </div>
+      </div>
+      <p>Kawa makes it easy to set up a web site without configuration
+files.  Instead, the mapping from request URL to web page script
+matches the layout of files in the application directory.
+</p>
+      <p>Many web servers make it easy to execute a script using a script
+processor which is selected depending on the extension of the
+requested URL. That is why you see lots of URLs that end in
+<code class="literal">.cgi</code>, <code class="literal">.php</code>, or <code class="literal">.jsp</code>. This is bad, because it
+exposes the server-side implementation to the user: Not only are such
+URLs ugly, but they make it difficult to change the server without
+breaking people’s bookmarks and search engines. A server will usually
+provide a mechanism to use prettier URLs, but doing so requires extra
+effort, so many web-masters don’t.
+</p>
+      <p>If you want a script to be executed in response to a URL
+<code class="literal">http://host/app/foo/bar</code> you give the script the name
+<code class="literal">app/foo/bar</code>, in the appropriate server “application”
+directory (as explained below). You get to pick the name <code class="literal">bar</code>.
+Or you can use the name <code class="literal">bar.html</code>, even though the file named
+<code class="literal">bar.html</code> isn’t actually
+an html file - rather it produces html when evaluated. Or better: just use
+a name without an extension at all.
+Kawa figures
+out what kind of script it is based on the content of the file,
+rather than the file name.  Once Kawa has
+found a script, it looks at the first line to see if it can recognize
+the kind (language) of the script. Normally this would be a comment
+that contains the name of a programming language that Kawa
+knows about.  For example:
+</p>
+      <pre class="screen">;; Hello world page script written in -*- scheme -*- 
+#&lt;p&gt;Hello, &lt;b&gt;&amp;(request-remote-host)&lt;/b&gt;!&lt;/p&gt;
+</pre>
+      <p>(Using the funny-looking string <code class="literal">-*- scheme -*-</code> has the
+bonus is that it recognized by the Emacs text editor.)
+</p>
+      <p>A script named <code class="literal">+default+</code> is run if there isn’t a matching script.
+For example assume the following is a file named <code class="literal">+default</code>.
+</p>
+      <pre class="screen">;; This is -*- scheme -*-
+(make-element 'p "servlet-path: " (request-servlet-path))
+</pre>
+      <p>This becomes the default script for HTTP requests that aren’t handled
+by a more specific script. 
+The <code class="literal">request-servlet-path</code> function
+returns the "servlet path", which is the part of the requested URL
+that is relative to the current web application. Thus a request for
+<code class="literal">http://host:port/app/this/is/a/test</code> will return:
+</p>
+      <pre class="screen">servlet-path: /this/is/a/test
+</pre>
+      <section class="sect2" title="Using the OpenJDK built-in web server" epub:type="division" id="idm139667870414560">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using the OpenJDK built-in web server</h3>
+            </div>
+          </div>
+        </div>
+        <p>The easiest way to run a Kawa web server is to
+use the web server built in to JDK 6 or later.
+</p>
+        <pre class="screen">kawa --http-auto-handler <em class="replaceable"><code>context-path</code></em> <em class="replaceable"><code>appdir</code></em> --http-start <em class="replaceable"><code>port</code></em>
+</pre>
+        <p>This starts a web server that listens on the given <em class="replaceable"><code>port</code></em>,
+using the files in directory <em class="replaceable"><code>appdir</code></em> to handle
+requests that start with the given <em class="replaceable"><code>context-path</code></em>.
+The <em class="replaceable"><code>context-path</code></em> must start with a <code class="literal">"/"</code> (one is added if
+needed), and it is recommended that it also end with a <code class="literal">"/"</code>
+(otherwise you might get some surprising behavior).
+</p>
+        <p>You can specify multiple <code class="literal">--http-auto-handler</code> options.
+</p>
+        <p>For example use the files in the current directory to handle
+all requests on the standard port 80 do:
+</p>
+        <pre class="screen">kawa --http-auto-handler / . --http-start 80
+</pre>
+        <p>There are some examples in the <code class="literal">testsuite/webtest</code> directory
+the Kawa source distribution.  You can start the server thus:
+</p>
+        <pre class="screen">bin/kawa --http-auto-handler / testsuite/webtest/ --http-start 8888
+</pre>
+        <p>and then for example browse to <code class="literal">http://localhost:8888/adder.scm</code>.
+</p>
+        <p>For lots of information about the HTTP request, browse to
+<code class="literal">http://localhost:8888/info/<em class="replaceable"><code>anything</code></em></code>.
+</p>
+      </section>
+      <section class="sect2" title="Using a servlet container" epub:type="division" id="idm139667870403088">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using a servlet container</h3>
+            </div>
+          </div>
+        </div>
+        <p>You can also can use a “servlet container”
+such as Tomcat or Glassfish with self-configuring script.
+See <a class="link" href="Servlets.xhtml" title="Installing web page scripts as Servlets">Servlets</a> for information on how to install
+these servers, and the concept of web applications.
+Once you have these server installed, you create a
+web application with the following in the
+<code class="literal"><em class="replaceable"><code>appdir</code></em>/WEB-INF/web.xml</code> configuration file:
+</p>
+        <pre class="screen">&lt;web-app&gt;
+  &lt;display-name&gt;Kawa auto-servlet&lt;/display-name&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;KawaPageServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;gnu.kawa.servlet.KawaPageServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;KawaPageServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre>
+        <p>This creates a web application where all URLs
+are handled by the <code class="literal">gnu.kawa.servlet.KawaPageServlet</code> servlet class,
+which is included in the Kawa jar file.
+The <code class="literal">KawaPageServlet</code> class handles the searching
+and compiling described in this page.
+</p>
+      </section>
+      <section class="sect2" title="Finding a matching script" epub:type="division" id="idm139667870397552">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Finding a matching script</h3>
+            </div>
+          </div>
+        </div>
+        <p>When Kawa receives a request for:
+</p>
+        <pre class="screen">http://host:port/appname/a/b/anything
+</pre>
+        <p>it will look for a file:
+</p>
+        <pre class="screen"><em class="replaceable"><code>appdir</code></em>/a/b/anything
+</pre>
+        <p>If such a file exists, the script will be executed, as described
+below. If not, it will look for a file name <code class="literal">+default+</code> in the same
+directory. If that desn’t exist either, it will look for <code class="literal">+default+</code>
+in the parent
+directory, then the grand-parent directory, and so on until it gets to
+the appname web application root directory. So the default script is
+this: <code class="literal"><em class="replaceable"><code>appdir</code></em>/+default</code>.
+</p>
+        <p>If that doesn’t exist then Kawa returns a 404 "page not found" error. 
+</p>
+      </section>
+      <section class="sect2" title="Determining script language" epub:type="division" id="idm139667870392000">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Determining script language</h3>
+            </div>
+          </div>
+        </div>
+        <p>Once Kawa has found a script file corresponding to a request URL,
+it needs to determine if this is a data file or a web page script,
+and in the latter case, what language it is written in.
+</p>
+        <p>Kawa recognizes the following "magic strings" in the first line of a script:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">kawa:scheme</code>
+</dt>
+            <dd>
+              <p>The Scheme language.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">kawa:xquery</code>
+</dt>
+            <dd>
+              <p>The XQuery language.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">kawa:<em class="replaceable"><code>language</code></em></code>
+</dt>
+            <dd>
+              <p>Some other language known to Kawa.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>Kawa also recognizes Emacs-style "mode specifiers":
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">-*- scheme -*-</code>
+</dt>
+            <dd>
+              <p>The Scheme language.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-*- xquery -*-</code>
+</dt>
+            <dd>
+              <p>The XQuery language (though Emacs doesn’t know about XQuery).
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-*- emacs-lisp -*-</code>
+</dt>
+            <dt class="term"><code class="literal">-*- elisp -*-</code>
+</dt>
+            <dd>
+              <p>The Emacs Lisp extension language.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-*- common-lisp -*-</code>
+</dt>
+            <dt class="term"><code class="literal">-*- lisp -*-</code>
+</dt>
+            <dd>
+              <p>The Common Lisp language.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>Also, it also recognizes comments in the first two columns of the line:
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">;;</code>
+</dt>
+            <dd>
+              <p>A Scheme or Lisp comment - assumed to be in the Scheme language.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">(:</code>
+</dt>
+            <dd>
+              <p>Start of an XQuery comment, so assumed to be in the XQuery language.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p>If Kawa doesn’t recognize the language of a script (and it
+isn’t named +default+) then it assumes the file is a data file. It
+asks the servlet engine to figure out the content type (using the
+getMimeType method of ServletContext), and just copies the file into
+the response.
+</p>
+      </section>
+      <section class="sect2" title="Compilation and caching" epub:type="division" id="idm139667870375424">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Compilation and caching</h3>
+            </div>
+          </div>
+        </div>
+        <p>Kawa automatically compiles a script into a class. The
+class is internal to the server, and is not written out to
+disk. (There is an unsupported option to write the compiled file to a
+class file, but there is no support to use previously-compiled
+classes.) The server then creates a module instance to handle the
+actual request, and runs the body (the <code class="literal">run</code> method)
+of the script class. On subsequence
+requests for the same script, the same class and instance are reused;
+only the <code class="literal">run</code> is re-executed.
+</p>
+        <p>If the script is changed, then it is re-compiled and a new module
+instance created. This makes it very easy to develop and modify a
+script. (Kawa for performance reasons doesn’t check more
+than once a second whether a script has been modified.)
+</p>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Self-configuring-page-scripts.xhtml#idm139667870414560">Using the OpenJDK built-in web server</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Self-configuring-page-scripts.xhtml#idm139667870403088">Using a servlet container</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Self-configuring-page-scripts.xhtml#idm139667870397552">Finding a matching script</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Self-configuring-page-scripts.xhtml#idm139667870392000">Determining script language</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Self-configuring-page-scripts.xhtml#idm139667870375424">Compilation and caching</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="XML-tools.xhtml">Working with XML and HTML</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Server-side-scripts.xhtml">Web page scripts</a></p>
+        <p>
+        Next: <a accesskey="n" href="Servlets.xhtml">Installing web page scripts as Servlets</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

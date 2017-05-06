@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Resources</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Types.xhtml" title="Types"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Resources" epub:type="subchapter" id="Resources">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Resources</h2>
+          </div>
+        </div>
+      </div>
+      <p>A resource is a file or other fixed data that an application may access.
+Resources are part of the application and are shipped with it, but are
+stored in external files.  Examples are images, sounds,
+and translation (localization) of messages.
+In the Java world a resource is commonly bundled in the same jar file
+as the application itself.
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667872034592" class="indexterm"/> <code class="function">resource-url</code> <em class="replaceable"><code>resource-name</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns a <code class="literal">URLPath</code> you can use as a <code class="literal">URL</code>, or
+you can pass to it <code class="literal">open-input-file</code> to read the resource data.
+The <em class="replaceable"><code>resource-name</code></em> is a string which is passed to the
+<code class="literal">ClassLoader</code> of the containing module.
+If the module class is in a jar file, things will magically
+work if the resource is in the same jar file, and <em class="replaceable"><code>resource-name</code></em>
+is a filename relative to the module class in the jar.
+If the module is immediately evaluated, the <em class="replaceable"><code>resource-name</code></em> is resolved
+against the location of the module source file.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667872027808" class="indexterm"/> <code class="function">module-uri</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Evaluates to a special URI that can be used to access resources
+relative to the class of the containing module.
+The URI has the form <code class="literal">"class-resource://<em class="replaceable"><code>CurrentClass</code></em>/"</code>
+in compiled code, to allow moving the classes/jars.
+The current <code class="literal">ClassLoader</code> is associated with the URI, so accessing
+resources using the URI will use that <code class="literal">ClassLoader</code>.
+Therefore you should not create a <code class="literal">"class-resource:"</code> URI
+except by using this function or <code class="literal">resolve-uri</code>,
+since that might try to use the wrong <code class="literal">ClassLoader</code>.
+</p>
+          <p>The macro <code class="literal">resource-url</code> works by using <code class="literal">module-uri</code>
+and resolving that to a normal <code class="literal">URL</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667872019712" class="indexterm"/> <code class="function">module-class</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Evaluates to the containing module class, as a <code class="literal">java.lang.Class</code> instance.
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Input-Output.xhtml">Input, output, and file handling</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Pretty-printing.xhtml">Pretty-printing</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

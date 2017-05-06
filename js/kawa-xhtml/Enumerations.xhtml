@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Enumeration types</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Annotations.xhtml" title="Annotations of declarations"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Enumeration types" epub:type="subchapter" id="Enumerations">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Enumeration types</h2>
+          </div>
+        </div>
+      </div>
+      <p>An enumeration type is a set of named atomic enumeration values
+that are distinct from other values.  You define the type
+using <code class="literal">define-enum</code>, and you reference enumeration values
+using colon notation:
+</p>
+      <pre class="screen">(define-enum colors (red blue green))
+(define favorite-color colors:green)
+</pre>
+      <p>Displaying an enum just prints the enum name,
+but readable output using <code class="literal">write</code> (or the <code class="literal">~s</code> <code class="literal">format</code>
+specifier) prepends the type name:
+</p>
+      <pre class="screen">(format "~a" favorite-color) ⇒ "green"
+(format "~s" favorite-color) ⇒ "colors:green"
+</pre>
+      <p>The static <code class="literal">values</code> method returns a Java array of the enumeration
+values, in declaration order, while <code class="literal">ordinal</code> yields the index
+of an enumeration value:
+</p>
+      <pre class="screen">(colors:values) ⇒ [red blue green]
+((colors:values) 1) ⇒ blue
+(favorite-color:ordinal) ⇒ 2
+</pre>
+      <p>If you invoke the enumeration type as a function,
+it will map the name (as a string) to the corresponding value.
+(This uses the <code class="literal">valueOf</code> method.)
+</p>
+      <pre class="screen">(colors "red") ⇒ red
+(colors "RED") ⇒ throws IllegalArgumentException
+(eq? favorite-color (colors:valueOf "green")) ⇒ #t
+</pre>
+      <p>Kawa enumerations are based on Java enumerations.
+Thus the above is similar to a Java5 <code class="literal">enum</code> declaration,
+and the type <code class="literal">colors</code> above extends <code class="literal">java.lang.Enum</code>.
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871660096" class="indexterm"/> <code class="function">define-enum</code> <em class="replaceable"><code>enum-type-name</code></em> <em class="replaceable"><code><em class="replaceable"><code>option-pair</code></em></code></em><em class="replaceable"><code>...</code></em> <em class="replaceable"><code><span class="bold"><strong>(</strong></span></code></em><em class="replaceable"><code>enum-value-name</code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><em class="replaceable"><code>field-or-method-decl</code></em></code></em><em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This declares a new enumeration type <em class="replaceable"><code>enum-type-name</code></em>,
+whose enumerations values are the <em class="replaceable"><code>enum-value-name</code></em> list.
+You can specify extra options and members using
+<em class="replaceable"><code>option-pair</code></em> and <em class="replaceable"><code>field-or-method-decl</code></em>,
+which are as in <code class="literal">define-simple-class</code>.
+(The <em class="replaceable"><code>define-enum</code></em> syntax is similar to a
+<code class="literal">define-simple-class</code> that extends <code class="literal">java.lang.Enum</code>.)
+</p>
+        </blockquote>
+      </div>
+      <p>(Note that R6RS has a separate Enumerations library <code class="literal">(rnrs enum)</code>.
+Unfortunately, this is not compatible with standard Java enums.
+R6RS enums are simple symbols, which means you cannot distinguish
+two enum values from different enumeration types if they have the
+same value, nor from a vanilla symbol.  That makes them less useful.)
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Anonymous-classes.xhtml">Anonymous classes</a></p>
+        <p>
+        Next: <a accesskey="n" href="Annotations.xhtml">Annotations of declarations</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

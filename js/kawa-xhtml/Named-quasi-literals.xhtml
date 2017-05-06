@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Named quasi-literals</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Program-structure.xhtml" title="Program structure"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Named quasi-literals" epub:type="subchapter" id="Named-quasi-literals">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Named quasi-literals</h2>
+          </div>
+        </div>
+      </div>
+      <p>Traditional Scheme has only a few kinds of values,
+and thus only a few builtin kinds of literals.
+Modern Scheme allows defining new types,
+so it is desirable to have a mechanism for defining literal values
+for the new types.
+</p>
+      <p>Consider the <code class="literal"><a class="link" href="Paths.xhtml#URI-type">URI</a></code> type.
+You can create a new instance of a <code class="literal">URI</code> using a
+constructor function:
+</p>
+      <pre class="screen">(URI "http://example.com/")
+</pre>
+      <p>This isn’t too bad, though the double-quote characters are an ugly distraction.
+However, if you need to construct the string it gets messy:
+</p>
+      <pre class="screen">(URI (string-append base-uri "icon.png"))
+</pre>
+      <p>Instead use can write:
+</p>
+      <pre class="screen">&amp;URI{http://example.com/}
+</pre>
+      <p>or:
+</p>
+      <pre class="screen">&amp;URI{&amp;[base-uri]icon.png}
+</pre>
+      <p>This syntax is translated by the Scheme reader
+to the more familiar but more verbose equivalent forms:
+</p>
+      <pre class="screen">($construct$:URI "http://example.com/")
+($construct$:URI $&lt;&lt;$ base-uri $&gt;&gt;$ "icon.png")
+</pre>
+      <p>So for this to work there just needs to be a definition
+of <code class="literal">$construct$:URI</code>, usually a macro.
+Normal scope rules apply; typically you’d define <code class="literal">$construct$:URI</code> in
+a module.
+</p>
+      <p>The names <code class="literal">$&lt;&lt;$</code> and <code class="literal">$&gt;&gt;$</code> are bound to unique zero-length strings.
+They are used to allow the implementation of <code class="literal">$construct$:URI</code>
+to determine which arguments are literal and which come from
+escaped expressions.
+</p>
+      <p>If you want to define your own <code class="literal">$construct$:<em class="replaceable"><code>tag</code></em></code>,
+or to read motivation and details, see the
+<a class="ulink" href="http://srfi.schemers.org/srfi-108/srfi-108.html" target="_top">SRFI 108</a> specification.
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667878584128" class="indexterm"/><span id="meta-extended-datum-literal"/><em class="replaceable"><code>extended-datum-literal</code></em> <code class="literal">::=</code><br/>
+    <code class="literal"><span class="bold"><strong>&amp;</strong></span></code> <a class="link" href="Named-quasi-literals.xhtml#meta-cname"><em class="replaceable"><code>cname</code></em></a> <code class="literal"><span class="bold"><strong>{</strong></span></code> [<a class="link" href="String-literals.xhtml#meta-initial-ignored"><em class="replaceable"><code>initial-ignored</code></em></a>] <a class="link" href="Named-quasi-literals.xhtml#meta-named-literal-part"><em class="replaceable"><code>named-literal-part</code></em></a><sup>*</sup> <code class="literal"><span class="bold"><strong>}</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>&amp;</strong></span></code> <a class="link" href="Named-quasi-literals.xhtml#meta-cname"><em class="replaceable"><code>cname</code></em></a> <code class="literal"><span class="bold"><strong>[</strong></span></code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><sup>*</sup> <code class="literal"><span class="bold"><strong>]{</strong></span></code> [<a class="link" href="String-literals.xhtml#meta-initial-ignored"><em class="replaceable"><code>initial-ignored</code></em></a>] <a class="link" href="Named-quasi-literals.xhtml#meta-named-literal-part"><em class="replaceable"><code>named-literal-part</code></em></a><sup>*</sup> <code class="literal"><span class="bold"><strong>}</strong></span></code><br/>
+<a id="idm139667878569888" class="indexterm"/><span id="meta-cname"/><em class="replaceable"><code>cname</code></em> <code class="literal">::=</code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><br/>
+<a id="idm139667878567088" class="indexterm"/><span id="meta-named-literal-part"/><em class="replaceable"><code>named-literal-part</code></em> <code class="literal">::=</code><br/>
+    <span class="emphasis"><em>any character except</em></span> <code class="literal"><span class="bold"><strong>&amp;</strong></span></code><span class="emphasis"><em>,</em></span> <code class="literal"><span class="bold"><strong>{</strong></span></code> <span class="emphasis"><em>or</em></span> <code class="literal"><span class="bold"><strong>}</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>{</strong></span></code> <a class="link" href="Named-quasi-literals.xhtml#meta-named-literal-part"><em class="replaceable"><code>named-literal-part</code></em></a><sup>+</sup> <code class="literal"><span class="bold"><strong>}</strong></span></code><br/>
+  | <a class="link" href="String-literals.xhtml#meta-char-ref"><em class="replaceable"><code>char-ref</code></em></a><br/>
+  | <a class="link" href="String-literals.xhtml#meta-entity-ref"><em class="replaceable"><code>entity-ref</code></em></a><br/>
+  | <a class="link" href="String-literals.xhtml#meta-special-escape"><em class="replaceable"><code>special-escape</code></em></a><br/>
+  | <a class="link" href="String-literals.xhtml#meta-enclosed-part"><em class="replaceable"><code>enclosed-part</code></em></a><br/>
+  | <a class="link" href="Named-quasi-literals.xhtml#meta-extended-datum-literal"><em class="replaceable"><code>extended-datum-literal</code></em></a><br/>
+</p>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Syntax.xhtml">Syntax</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Macros.xhtml">Macros</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

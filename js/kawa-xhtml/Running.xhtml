@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>How to start up and run Kawa</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="pt01.xhtml" title="Part . Reference Documentation"/>
+    <link rel="next" href="Options.xhtml" title="Command-line arguments"/>
+  </head>
+  <body>
+    <header/>
+    <section class="chapter" title="How to start up and run Kawa" epub:type="chapter" id="Running">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title">How to start up and run Kawa</h2>
+          </div>
+        </div>
+      </div>
+      <p>The easiest way to start up Kawa is to run the ‘<code class="literal">kawa</code>’ program.
+This finds your Java interpreter, and sets up ‘<code class="literal">CLASSPATH</code>’ correctly.
+If you have installed Kawa such that <code class="literal">$PREFIX/bin</code> is in your <code class="literal">$PATH</code>,
+just do:
+</p>
+      <pre class="screen">kawa
+</pre>
+      <p>However, ‘<code class="literal">kawa</code>’ only works if you have a Unix-like environment.
+On some platforms, ‘<code class="literal">kawa</code>’ is a program that uses the GNU
+‘<code class="literal">readline</code>’ library to provide input line editing.
+</p>
+      <p>To run Kawa manually, you must start a Java Virtual Machine.
+How you do this depends on the Java implementation.
+For Oracle’s JDK, and some other implementations, you must have the
+Java evaluator (usually named <code class="literal">java</code>) in your <code class="literal">PATH</code>.
+You must also make sure that the <code class="literal">kawa/repl.class</code> file,
+the rest of the Kawa packages, and the standard Java
+packages can be found by searching CLASSPATH.
+See <a class="link" href="Running-Java.xhtml" title="Getting and running Java">Running Java</a>.
+</p>
+      <p>Then you do:
+</p>
+      <pre class="screen">java kawa.repl
+</pre>
+      <p>In either case, you will then get the ‘<code class="literal">#|kawa:1|#</code>’ prompt,
+which means you are
+in the Kawa read-eval-print-loop.  If you type a Scheme
+expression, Kawa will evaluate it.  Kawa will then print the
+result (if there is a non-"void" result).
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Options.xhtml">Command-line arguments</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Scripts.xhtml">Running Command Scripts</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="REPL-Console.xhtml">The REPL (read-eval-print-loop) console</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Exiting.xhtml">Exiting Kawa</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Compiling.xhtml">Compiling to byte-code</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="pt01.xhtml">Part . Reference Documentation</a></p>
+        <p>
+        Next: <a accesskey="n" href="Syntax.xhtml">Syntax</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

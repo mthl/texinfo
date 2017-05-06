@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Compatibility with standards</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Features.xhtml" title="Features"/>
+    <link rel="next" href="Community.xhtml" title="The Kawa Community"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Compatibility with standards" epub:type="subchapter" id="Compatibility">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Compatibility with standards</h2>
+          </div>
+        </div>
+      </div>
+      <p>Kawa implements all the required and optional features of R7RS,
+with the following exceptions.
+</p>
+      <p>The entire “numeric tower" is implemented.
+However, some transcendental functions only work on reals.
+Integral functions do not necessarily work on
+inexact (floating-point) integers.
+(The whole idea of “inexact integer" in R5RS seems rather pointless ...)
+</p>
+      <p>Also, <code class="literal">call-with-current-continuation</code> is only “upwards" (?).
+I.e. once a continuation has been exited, it cannot be invoked.
+These restricted continuations can be used to implement catch/throw
+(such as the examples in R4RS), but not co-routines or backtracking.
+</p>
+      <p>Kawa now does general tail-call elimination, but only if
+you use the flag <code class="literal">--full-tail-calls</code>.  (Currently, the
+<code class="literal">eval</code> function itself is not fully tail-recursive, in violation
+of R5RS.)   The <code class="literal">--full-tail-calls</code> flag is not on by default,
+partly because it is noticably slower (though I have not measured how
+much), and partly I think it is more useful for Kawa to be compatible
+with standard Java calling conventions and tools.
+Code compiled with <code class="literal">--full-tail-calls</code> can call code
+ compiled without it and vice versa.
+</p>
+      <p>Even without <code class="literal">--full-tail-calls</code>, if the
+compiler can prove that the procedure being called is the current
+function, then the tail call will be replaced by a jump.
+This includes must “obvious” cases of calls to the
+current function named using <code class="literal">define</code> or <code class="literal">letrec</code>,
+and many cases of mutual tail-recursion (including
+state-machines using <code class="literal">letrec</code>).
+</p>
+      <p>By default, symbols are case sensitive.
+</p>
+      <p>Kawa implements most of the features of the expression language of DSSSL,
+the Scheme-derived ISO-standard Document Style Semantics and Specification
+Language for SGML.  Of the core expression language, the only features
+missing are character properties, <code class="literal">external-procedure</code>,
+the time-relationed procedures, and character name escapes in
+string literals.
+From the full expression language, Kawa additionally is missing
+<code class="literal">format-number</code>, <code class="literal">format-number-list</code>, and language objects.
+Quantities, keyword values, and the expanded <code class="literal">lambda</code> form
+(with optional and keyword parameters) are supported.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Features.xhtml">Features</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Implemented-SRFIs.xhtml">Implemented SRFIs</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

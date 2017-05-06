@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Features</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="news.xhtml" title="News - Recent Changes"/>
+    <link rel="next" href="Implemented-SRFIs.xhtml" title="Implemented SRFIs"/>
+  </head>
+  <body>
+    <header/>
+    <section class="chapter" title="Features" epub:type="chapter" id="Features">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h1 class="title">Features</h1>
+          </div>
+        </div>
+      </div>
+      <p>Runs on the Java platform, with no native code needed.
+</p>
+      <p>Extends the <a class="ulink" href="http://en.wikipedia.org/wiki/Scheme_%28programming_language%29" target="_top">Scheme language</a>, following the <a class="ulink" href="http://r7rs.org/" target="_top">R7RS</a> specification from 2013.
+Scheme has many implementations, and is much used in research and teaching.
+</p>
+      <p>Programs <a class="ulink" href="http://per.bothner.com/blog/2010/Kawa-in-shootout/" target="_top">run fast</a>
+- roughly as fast as Java programs,
+and much faster than other “scripting languages”.
+This is due to a sophisticated compiler,
+compile-time transformations, type inference, and optional type declarations.
+</p>
+      <p>Full, convenient, and efficient access to the huge set of Java libraries
+means you can access objects, methods, fields, and classes without run-time overhead.
+</p>
+      <p>Start-up times are fast.  You don’t have to wait for a lot of
+initialization.  Even if you start with source code, the parser
+and compiler are fast.
+</p>
+      <p><a class="link" href="Scripts.xhtml" title="Running Command Scripts">Scripts</a> are simple Kawa source files
+that can run as an application or command.  These are simple to write,
+start, and run efficiently, since they’re automatically
+compiled before execution.
+</p>
+      <p>Alternatively, you can embed Kawa as a <a class="link" href="Evaluating-Scheme-expressions-from-Java.xhtml" title="Evaluating Scheme expressions from Java">scripting language for Java applications</a>.
+</p>
+      <p>Deployment is easy and flexible.  You just need the Kawa jar file.
+</p>
+      <p><a class="link" href="Macros.xhtml" title="Macros">Macros</a> and <a class="link" href="Named-quasi-literals.xhtml" title="Named quasi-literals">custom named literals</a> make it easy
+to extend the syntax and implement Domain-Specific Languages.
+</p>
+      <p>Kawa provides the usual <a class="link" href="REPL-Console.xhtml" title="The REPL (read-eval-print-loop) console">read-eval-print loop</a>, as well as batch modes.
+</p>
+      <p>Kawa has builtin <a class="link" href="Pretty-printing.xhtml" title="Pretty-printing">pretty-printer</a> support, and fancy formatting.
+</p>
+      <p>Kawa supports class-definition facilities, and separately-compiled modules.
+</p>
+      <p>You can <a class="link" href="Allocating-objects.xhtml" title="Allocating objects">allocate and initialize objects</a>
+with a compact “builder” syntax.  It works out-of-the-box
+(with no run-time overhead) on many classes and APIs,
+but can be customized if need be.
+</p>
+      <p>A library for functional <a class="link" href="Composable-pictures.xhtml" title="Composable pictures">composable pictures</a>
+lets you create “picture” objects,
+display them, transform them, combine them, convert to
+SVG or images, and more.
+This can be “printed” directly in the Kawa console
+(either the DomTerm console or the Swing one).
+</p>
+      <p><a class="link" href="Building-JavaFX-applications.xhtml" title="Building JavaFX applications">JavaFX programming</a> is simpler.
+</p>
+      <p>You can <a class="link" href="Building-for-Android.xhtml" title="Building for Android">run Kawa programs on Android</a>,
+and there is special handling to make <a class="link" href="Android-view-construction.xhtml" title="Android view construction">constructing View objects</a> easier.
+</p>
+      <p>Flexible shell-like functionality, including <a class="link" href="Processes.xhtml#process-literals">process literals</a>.
+</p>
+      <p><a class="link" href="Server-side-scripts.xhtml" title="Web page scripts">Web page scripts</a> are easy to write and install
+with <a class="link" href="Self-configuring-page-scripts.xhtml" title="Self-configuring web page scripts">self-configuring web servers</a>,
+optionally using <a class="link" href="Servlets.xhtml" title="Installing web page scripts as Servlets">servlets</a> and <a class="link" href="XML-literals.xhtml" title="XML literals">XML literals</a>.
+</p>
+      <p><a class="link" href="Arrays.xhtml" title="Multi-dimensional Arrays">Arrays</a> and sequences have a lot of flexibility:
+Arrays can be multi-dimensional;
+you can use an array as an index (which generalizes slices and permutations);
+you can define a lazy array using a function that maps indexes to values;
+you can re-map the indexes to yield a transformed array.
+</p>
+      <p>Many useful features for mathematics and numerics:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>The full “numeric tower” includes infinite-precision
+rational numbers and complex numbers.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Compile-time optimization of arithmetic
+with the use of type declarations and inference.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>A <a class="link" href="Quantities.xhtml" title="Quantities and Units"><em class="firstterm">quantity</em></a> is a real number with a unit,
+such as <code class="literal">3cm</code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p><a class="link" href="Quaternions.xhtml" title="Quaternions">Quaternions</a> are a 4-dimensional generalization of complex numbers.
+Unsigned primitive integer types (<code class="literal">ubyte</code>, <code class="literal">ushort</code>,
+<code class="literal">uint</code>, <code class="literal">ulong</code>) are implemented efficiently without
+object allocation.
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>A <a class="link" href="Lazy-evaluation.xhtml" title="Lazy evaluation">lazy value</a> wraps an expression which is evaluated
+only when it is needed.
+</p>
+      <p>Kawa provides a <a class="link" href="Framework.xhtml" title="The Kawa language framework">framework</a> for implementing other programming languages,
+and comes with incomplete support for CommonLisp, Emacs Lisp, and
+EcmaScript, and
+<a class="ulink" href="http://www.gnu.org/software/qexo/" target="_top">XQuery</a>.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Implemented-SRFIs.xhtml">Implemented SRFIs</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Compatibility.xhtml">Compatibility with standards</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="index.html">The Kawa Scheme language</a></p>
+        <p>
+        Previous: <a accesskey="p" href="news.xhtml">News - Recent Changes</a></p>
+        <p>
+        Next: <a accesskey="n" href="Community.xhtml">The Kawa Community</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

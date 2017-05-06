@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Numbers</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="tutorial-Functions.xhtml" title="Functions"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Numbers" epub:type="subchapter" id="Tutorial---Numbers">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Numbers</h2>
+          </div>
+        </div>
+      </div>
+      <h3 id="idm139667880611536">Exact integers and fractions</h3>
+      <p>Kawa has the usual syntax for decimal integers.
+Addition, subtraction, and multiplication
+are written using the usual <code class="literal">+</code>,
+<code class="literal">-</code>, and  <code class="literal">*</code>,
+but these are all prefix functions that take a variable number of arguments:
+</p>
+      <pre class="screen">(+ 1 2 3) ⇒ 6
+(- 10 3 4) ⇒ (- (- 10 3) 4)  ⇒ 3
+(* 2 -6)  ⇒ -12
+</pre>
+      <p>Kawa has arbitrary-precision integers.
+</p>
+      <p>Let us implement the <a class="ulink" href="http://en.wikipedia.org/wiki/Factorial" target="_top">factorial</a> function.
+Type in the following (we’ll look at the syntax shortly):
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:1|# </span><strong class="userinput"><code>(define (factorial x)</code></strong>
+<span class="prompt">#|(---:2|# </span><strong class="userinput"><code>  (if (&lt; x 1) 1</code></strong>
+<span class="prompt">#|(---:3|# </span><strong class="userinput"><code>    (* x (factorial (- x 1)))))</code></strong>
+</pre>
+      <p>(The prompt changes to indicate a continuation line.)
+This binds the name <code class="literal">factorial</code>
+to a new function, with formal parameter <code class="literal">x</code>.
+This new function is immediately compiled to Java bytecodes,
+and later a JIT compiler may compile it to native code.
+</p>
+      <p>A few tests:
+</p>
+      <pre class="screen"><span class="prompt">#|kawa:4|# </span><strong class="userinput"><code>(list (factorial 3) (factorial 4))</code></strong>
+(6 24)
+<span class="prompt">#|kawa:5|# </span><strong class="userinput"><code>(factorial 30)</code></strong>
+265252859812191058636308480000000
+</pre>
+      <h3 id="idm139667880601184">Floating-point real numbers</h3>
+      <p>Given what was said above about being able to add, subtract and multiply integers,
+the following may be unexpected:
+</p>
+      <pre class="screen">#|kawa:1|# (/ 2 3)
+2/3
+#|kawa:2|# (+ (/ 1 3) (/ 2 3))
+1
+</pre>
+      <p>In many languages, dividing two integers, as 2/3, would result in 0.  At best,
+the result would be a floating point number, similar to 0.666667.  Instead,
+Kawa has a <span class="emphasis"><em>rational</em></span> number type, which holds the results of divisions
+<span class="emphasis"><em>exactly</em></span>, as a proper fraction.  Hence, adding one third to two thirds
+will always result in exactly one.
+</p>
+      <p>Floating-point real numbers are known in Kawa as <span class="emphasis"><em>inexact</em></span> numbers, as
+they cannot be stored exactly.  Consider:
+</p>
+      <pre class="screen">#|kawa:3|# (exact? 2/3)
+#t
+#|kawa:4|# (exact? 0.33333333)
+#f
+#|kawa:5|# (exact-&gt;inexact 2/3)
+0.6666666666666666
+</pre>
+      <p>The first two examples check numbers for being <code class="literal">exact?</code>; there is a
+corresponding <code class="literal">inexact?</code> test.  The last shows how an exact number can be
+converted to an inexact form.
+</p>
+      <p>Numbers are converted between exact and inexact versions when required
+within operations or procedures:
+</p>
+      <pre class="screen">#|kawa:6|# (+ 0.33333333 2/3)
+0.9999999966666666
+#|kawa:7|# (inexact? (+ 0.33333333 2/3))
+#t
+#|kawa:8|# (sin 2/3)
+0.618369803069737
+</pre>
+      <h3 id="idm139667880593984">Complex numbers</h3>
+      <p>A <span class="emphasis"><em>complex</em></span> number is made from two parts: a <span class="emphasis"><em>real</em></span> part and an
+<span class="emphasis"><em>imaginary</em></span> part.  They are written <code class="literal">2+3i</code>.  A complex number can
+be manipulated just like other numbers:
+</p>
+      <pre class="screen">#|kawa:9|# (+ 2+3i 5+2i)
+7+5i
+#|kawa:10|# (* 2+3i 4-3i)
+17+6i
+#|kawa:11|# (integer? (+ 2+3i -3i))
+#t
+</pre>
+      <p>Notice how in the last example the result is an integer, which Kawa recognises.
+</p>
+      <p>Kawa also includes <a class="link" href="Quaternions.xhtml" title="Quaternions">quaternion</a> numbers.
+</p>
+      <h3 id="idm139667880588928">Units and dimensions</h3>
+      <p>In many applications, numbers have a <span class="emphasis"><em>unit</em></span>.  For example, 5 might be
+a number of dollar bills, a weight on a scale, or a speed.  Kawa enables us
+to represent numbers as <span class="emphasis"><em>quantities</em></span>: numbers along with their unit.
+For example, with weight, we might measure weight in pounds and ounces,
+where an ounce is 1/16 of a pound.
+</p>
+      <p>Using Kawa, we can define units for our weight measurements, and specify the 
+units along with numbers:
+</p>
+      <pre class="screen">#|kawa:12|# (define-base-unit pound "Weight")
+#|kawa:13|# (define-unit ounce 0.0625pound)
+#|kawa:14|# 3pound
+3.0pound
+#|kawa:15|# (+ 1pound 5ounce)
+1.3125pound
+</pre>
+      <p>In this example we define a base unit, the pound, and a unit based on it, the
+ounce, which is valued at 0.0625 pounds (one sixteenth).  Numbers can then be
+written along with their unit (making them quantities).  Arithmetic is possible 
+with quantities, as shown in the last line, and Kawa will do the smart thing
+when combining units.  In this case, 1 pound and 5 ounces is combined to make
+1.3125 pounds.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="tutorial-index.xhtml">Kawa Scheme Tutorial</a></p>
+        <p>
+        Previous: <a accesskey="p" href="tutorial-Booleans.xhtml">Booleans</a></p>
+        <p>
+        Next: <a accesskey="n" href="tutorial-Functions.xhtml">Functions</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

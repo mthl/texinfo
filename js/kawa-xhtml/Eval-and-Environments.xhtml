@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Eval and Environments</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Hash-tables.xhtml" title="Hash tables"/>
+    <link rel="next" href="Locations.xhtml" title="Locations"/>
+  </head>
+  <body>
+    <header/>
+    <section class="chapter" title="Eval and Environments" epub:type="chapter" id="Eval-and-Environments">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title">Eval and Environments</h2>
+          </div>
+        </div>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873198800" class="indexterm"/> <code class="function">environment</code> <em class="replaceable"><code>list</code></em><em class="replaceable"><code><sup>*</sup></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This procedure returns a specifier for the environment that
+results by starting with an empty environment and then
+importing each <em class="replaceable"><code>list</code></em>, considered as an <a class="link" href="Importing.xhtml#meta-import-set"><em class="replaceable"><code>import-set</code></em></a>, into it.
+The bindings of the environment represented by the specifier
+are immutable, as is the environment itself.
+See the <code class="literal">eval</code> function for examples.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873193056" class="indexterm"/> <code class="function">null-environment</code> <em class="replaceable"><code>version</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This procedure returns an environment that contains no variable bindings,
+but contains (syntactic) bindings for all the syntactic keywords.
+</p>
+          <p>The effect of assigning to a variable in this environment (such
+as <code class="literal">let</code>) is undefined.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873188672" class="indexterm"/> <code class="function">scheme-report-environment</code> <em class="replaceable"><code>version</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <em class="replaceable"><code>version</code></em> must be an exact non-negative inetger corresponding to
+a version of one of the Revised<em class="replaceable"><code>version</code></em> Reports on Scheme.
+The procedure returns an environment that contains exactly the set of
+bindings specified in the corresponding report.
+</p>
+          <p>This implementation supports <em class="replaceable"><code>version</code></em> that is 4 or 5.
+</p>
+          <p>The effect of assigning to a variable in this environment (such
+as <code class="literal">car</code>) is undefined.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873182416" class="indexterm"/> <code class="function">interaction-environment</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This procedure return an environment that contains implementation-defined
+bindings, as well as top-level user bindings.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873179344" class="indexterm"/> <code class="function">environment-bound?</code> <em class="replaceable"><code>environment</code></em> <em class="replaceable"><code>symbol</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Return true <code class="literal">#t</code> if there is a binding for <em class="replaceable"><code>symbol</code></em>
+in <em class="replaceable"><code>environment</code></em>;  otherwise returns <code class="literal">#f</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667873173840" class="indexterm"/> <code class="function">fluid-let</code> ((<em class="replaceable"><code>variable</code></em> <em class="replaceable"><code>init</code></em>) <em class="replaceable"><code>...</code></em>) <em class="replaceable"><code>body</code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Evaluate the <em class="replaceable"><code>init</code></em> expressions.
+Then modify the dynamic bindings for the <em class="replaceable"><code>variables</code></em> to the
+values of the <em class="replaceable"><code>init</code></em> expressions, and evaluate the <em class="replaceable"><code>body</code></em> expressions.
+Return the result of the last expression in <em class="replaceable"><code>body</code></em>.
+Before returning, restore the original bindings.
+The temporary bindings are only visible in the current thread, and its
+descendent threads.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873166400" class="indexterm"/> <code class="function">base-uri</code> [<em class="replaceable"><code>node</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If <em class="replaceable"><code>node</code></em> is specified, returns the base-URI property
+of the <em class="replaceable"><code>node</code></em>.  If the <em class="replaceable"><code>node</code></em> does not have the base-URI
+property, returns <code class="literal">#f</code>.
+(The XQuery version returns the empty sequence in that case.)
+</p>
+          <p>In the zero-argument case, returns the "base URI" of the current context.
+By default the base URI is the current working directory (as a URL).
+While a source file is <code class="literal">load</code>ed, the base URI is temporarily
+set to the URL of the document.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873159760" class="indexterm"/> <code class="function">eval</code> <em class="replaceable"><code>expression</code></em> [<em class="replaceable"><code>environment</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>This procedure evaluates <em class="replaceable"><code>expression</code></em> in the environment indicated
+by <em class="replaceable"><code>environment</code></em>.
+The default for <em class="replaceable"><code>environment</code></em> is the result
+of <code class="literal">(interaction-environment)</code>.
+</p>
+          <pre class="screen">(eval ’(* 7 3) (environment '(scheme base)))
+            ⇒ 21
+
+(let ((f (eval '(lambda (f x) (f x x))
+               (null-environment 5))))
+  (f + 10))
+            ⇒ 20
+
+(eval '(define foo 32) (environment '(scheme base)))
+            ⇒ <span class="emphasis"><em>error is signaled</em></span>
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873152768" class="indexterm"/> <code class="function">load</code> <em class="replaceable"><code>path</code></em> [<em class="replaceable"><code>environment</code></em>]</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667873149392" class="indexterm"/> <code class="function">load-relative</code> <em class="replaceable"><code>path</code></em> [<em class="replaceable"><code>environment</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <em class="replaceable"><code>path</code></em> can be an (absolute) URL or a filename
+of a source file, which is read and evaluated line-by-line.
+The <em class="replaceable"><code>path</code></em> can also be a fully-qualified class name.
+(Mostly acts like the <code class="literal">-f</code> command-line option,
+but with different error handling.)
+Since <code class="literal">load</code> is a run-time function it doesn’t know
+about the enclosing lexical environment, and the latter
+can’t know about definitions introduced by <code class="literal">load</code>.
+For those reasons it is highly recommended that you use instead use
+<code class="literal"><a class="link" href="Importing.xhtml#require">require</a></code> or <code class="literal"><a class="link" href="Syntax-and-conditional-compilation.xhtml#include">include</a></code>.
+</p>
+          <p>Evaluation is done in the specified <em class="replaceable"><code>environment</code></em>,
+which defauls to result of <code class="literal">(interaction-environment)</code>.
+</p>
+          <p>The <code class="literal">load-relative</code> procedure is like <code class="literal">load</code>,
+except that <em class="replaceable"><code>path</code></em> is a
+URI that is relative to the context’s current base URI.
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Locations.xhtml">Locations</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Parameter-objects.xhtml">Parameter objects</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="pt01.xhtml">Part . Reference Documentation</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Data-structures.xhtml">Data structures</a></p>
+        <p>
+        Next: <a accesskey="n" href="Debugging.xhtml">Debugging</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

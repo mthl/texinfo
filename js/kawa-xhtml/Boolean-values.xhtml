@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Boolean values</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Program-structure.xhtml" title="Program structure"/>
+    <link rel="next" href="Conditionals.xhtml" title="Conditionals"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Boolean values" epub:type="subchapter" id="Boolean-values">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Boolean values</h2>
+          </div>
+        </div>
+      </div>
+      <p>The standard boolean objects for true and false are written as <code class="literal">#t</code> and <code class="literal">#f</code>.
+Alternatively, they may be written <code class="literal">#true</code> and <code class="literal">#false</code>,
+respectively.
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667878548016" class="indexterm"/><span id="meta-boolean"/><em class="replaceable"><code>boolean</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>#t</strong></span></code> | <code class="literal"><span class="bold"><strong>#f</strong></span></code> | <code class="literal"><span class="bold"><strong>#true</strong></span></code> | <code class="literal"><span class="bold"><strong>#false</strong></span></code><br/>
+</p>
+      </div>
+      <p>What really matters,
+though, are the objects that the Scheme conditional expressions (<code class="literal">if</code>,
+<code class="literal">cond</code>, <code class="literal">and</code>, <code class="literal">or</code>, <code class="literal">when</code>, <code class="literal">unless</code>, <code class="literal">do</code>)
+treat as true or
+false. The phrase “a true value” (or sometimes just “true”)
+means any object treated as true by the conditional expressions, and the phrase “a false value” (or “false”) means any
+object treated as false by the conditional expressions.
+</p>
+      <p>Of all the “proper Scheme” values, only <code class="literal">#f</code> counts as false in
+conditional expressions. All other Scheme values, including <code class="literal">#t</code>,
+count as true.  A <em class="replaceable"><code>test-expression</code></em> is an expression evaluated
+in this manner for whether it is true or false.
+</p>
+      <p>In addition the null value <code class="literal">#!null</code> (in Java written as <code class="literal">null</code>)
+is also considered false.  Also, if you for some strange reason create a
+fresh <code class="literal">java.lang.Boolean</code> object whose <code class="literal">booleanValue()</code>
+returns <code class="literal">false</code>, that is also considered false.
+</p>
+      <p><span class="emphasis"><em>Note:</em></span> Unlike some other dialects of Lisp, Scheme distinguishes
+<code class="literal">#f</code> and the empty list from each other and from the symbol
+<code class="literal">nil</code>.
+</p>
+      <p>Boolean constants evaluate to themselves, so they do not
+need to be quoted in programs.
+</p>
+      <pre class="screen">#t       ⇒  #t
+#true    ⇒  #t
+#f       ⇒  #f
+#false   ⇒  #f
+'#f      ⇒  #f
+</pre>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667878531584" class="indexterm"/> <code class="function">boolean</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The type of boolean values.
+As a type conversion, a true value is converted to <code class="literal">#t</code>,
+while a false value is converted to <code class="literal">#f</code>.
+Represented as a primitive Java <code class="literal">boolean</code>
+or <code class="literal">kawa.lang.Boolean</code> when converted to an object.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667878526784" class="indexterm"/> <code class="function">boolean?</code> <em class="replaceable"><code>obj</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">boolean?</code> predicate returns <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em>
+is either <code class="literal">#t</code> or <code class="literal">#f</code>, and returns <code class="literal">#f</code> otherwise.
+</p>
+          <pre class="screen">(boolean? #f)   ⇒  #t
+(boolean? 0)    ⇒  #f
+(boolean? '())  ⇒  #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667878520512" class="indexterm"/> <code class="function">not</code> <em class="replaceable"><code>obj</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">not</code> procedure returns <code class="literal">#t</code> if <em class="replaceable"><code>obj</code></em> is false,
+and returns <code class="literal">#f</code> otherwise.
+</p>
+          <pre class="screen">(not #t)         ⇒  #f
+(not 3)          ⇒  #f
+(not (list 3))   ⇒  #f
+(not #f)         ⇒  #t
+(not ’())        ⇒  #f
+(not (list))     ⇒  #f
+(not ’nil)       ⇒  #f
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667878514864" class="indexterm"/> <code class="function">boolean=?</code> <em class="replaceable"><code>boolean1</code></em> <em class="replaceable"><code>boolean2</code></em> <em class="replaceable"><code>boolean3</code></em> <em class="replaceable"><code>...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Returns <code class="literal">#t</code> if all the arguments are booleans and all are <code class="literal">#t</code>
+or all are <code class="literal">#f</code>.
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Program-structure.xhtml">Program structure</a></p>
+        <p>
+        Next: <a accesskey="n" href="Conditionals.xhtml">Conditionals</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

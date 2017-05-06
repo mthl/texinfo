@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Local binding constructs</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Lazy-evaluation.xhtml" title="Lazy evaluation"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Local binding constructs" epub:type="subchapter" id="Local-binding-constructs">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Local binding constructs</h2>
+          </div>
+        </div>
+      </div>
+      <p>The binding constructs <code class="literal">let</code>, <code class="literal">let*</code>, <code class="literal">letrec</code>,
+and <code class="literal">letrec*</code> give Scheme a block structure, like Algol 60.
+The syntax of these four constructs
+is identical, but they differ in the regions they establish
+for their variable bindings. In a <code class="literal">let</code> expression, the initial
+values are computed before any of the variables become
+bound; in a <code class="literal">let*</code> expression, the bindings and evaluations
+are performed sequentially; while in <code class="literal">letrec</code> and <code class="literal">letrec*</code>
+expressions, all the bindings are in effect while their initial
+values are being computed, thus allowing mutually recursive definitions.
+
+
+
+
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878162832" class="indexterm"/> <code class="function">let</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code><a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a></code></em> <em class="replaceable"><code><em class="replaceable"><code>init</code></em></code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Declare new local variables as found in the <em class="replaceable"><code>pattern</code></em>s.
+Each <em class="replaceable"><code>pattern</code></em> is matched against the corresponding <em class="replaceable"><code>init</code></em>.
+The <em class="replaceable"><code>init</code></em>s are evaluated in the current environment (in left-to-right
+onder), the <em class="replaceable"><code>variable</code></em>s in the <em class="replaceable"><code>patterns</code></em>s are bound to fresh
+locations holding the matched results,
+the <em class="replaceable"><code>body</code></em> is evaluated in the extended environment, and the values of
+the last expression of body are returned.
+Each binding of a variable has <em class="replaceable"><code>body</code></em> as its region.
+</p>
+          <pre class="screen">(let ((x 2) (y 3))
+  (* x y)) ⇒ 6
+</pre>
+          <pre class="screen">(let ((x 2) (y 3))
+  (let ((x 7)
+        (z (+ x y)))
+    (* z x)))   ⇒ 35
+</pre>
+          <p>An example with a non-trivial pattern:
+</p>
+          <pre class="screen">(let (([a::double b::integer] (vector 4 5)))
+  (cons b a))  ⇒ (5 . 4.0)
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878149392" class="indexterm"/> <code class="function">let*</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code><a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a></code></em> <em class="replaceable"><code>init</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <code class="literal">let*</code> binding construct is similar to <code class="literal">let</code>,
+but the bindings are performed sequentially from left to
+right, and the region of a <em class="replaceable"><code>variable</code></em>s in a <em class="replaceable"><code>pattern</code></em>
+is that part of the <code class="literal">let*</code> expression to the right of
+the <em class="replaceable"><code>pattern</code></em>. Thus the second pattern is matched in an environment
+in which the bindings from the first pattern are visible, and so on.
+</p>
+          <pre class="screen">(let ((x 2) (y 3))
+  (let* ((x 7)
+         (z (+ x y)))
+    (* z x)))  ⇒ 70
+</pre>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878138240" class="indexterm"/> <code class="function">letrec</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code>variable</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] <em class="replaceable"><code>init</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878129968" class="indexterm"/> <code class="function">letrec*</code> <em class="replaceable"><code><span class="bold"><strong>((</strong></span></code></em><em class="replaceable"><code>variable</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] <em class="replaceable"><code>init</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code>...</code></em><em class="replaceable"><code><span class="bold"><strong>)</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The <em class="replaceable"><code>variable</code></em>s are bound to fresh locations,
+each <em class="replaceable"><code>variable</code></em> is assigned in left-to-right order
+to the result of the corresponding <em class="replaceable"><code>init</code></em>,
+the <em class="replaceable"><code>body</code></em> is evaluated in the resulting environment,
+and the values of the last expression in body are returned.
+Despite the left-to-right evaluation and assignment order, each binding of a
+<em class="replaceable"><code>variable</code></em> has the entire <code class="literal">letrec</code> or <code class="literal">letrec*</code>
+expression as its region,
+making it possible to define mutually recursive procedures.
+</p>
+          <p>In Kawa <code class="literal">letrec</code> is defined as the same as <code class="literal">letrec*</code>.
+In standard Scheme the order of evaluation of the <em class="replaceable"><code>init</code></em>s
+is undefined, as is the order of assignments.
+If the order matters, you should use <code class="literal">letrec*</code>.
+</p>
+          <p>If it is not possible to evaluate each <em class="replaceable"><code>init</code></em> without assigning
+or referring to the value of the corresponding <em class="replaceable"><code>variable</code></em>
+or the variables that follow it, it is an error.
+</p>
+          <pre class="screen">(letrec ((even?
+          (lambda (n)
+            (if (zero? n)
+                #t
+                (odd? (- n 1)))))
+         (odd?
+          (lambda (n)
+            (if (zero? n)
+                #f
+                (even? (- n 1))))))
+  (even? 88))
+     ⇒ #t
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Program-structure.xhtml">Program structure</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Definitions.xhtml">Definitions</a></p>
+        <p>
+        Next: <a accesskey="n" href="Lazy-evaluation.xhtml">Lazy evaluation</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

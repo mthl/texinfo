@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Annotations of declarations</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Enumerations.xhtml" title="Enumeration types"/>
+    <link rel="next" href="Module-classes.xhtml" title="Modules and how they are compiled to classes"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Annotations of declarations" epub:type="subchapter" id="Annotations">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Annotations of declarations</h2>
+          </div>
+        </div>
+      </div>
+      <p>The Java platform lets you associate with each declaration zero or more
+<a class="ulink" href="http://download.oracle.com/javase/1.5.0/docs/guide/language/annotations.html" target="_top">annotations</a>.
+They provide an extensible mechanism to associate properties
+with declarations.
+Kawa support for annotations is not complete (the most important
+functionality missing is being able to declare annotation types),
+but is fairly functional.
+Here is a simple example illustrating use of
+<a class="ulink" href="http://jcp.org/en/jsr/detail?id=222" target="_top">JAXB annotations</a>:
+an <code class="literal">XmlRootElement</code> annotation on a class,
+and an <code class="literal">XmlElement</code> annotation on a field:
+</p>
+      <pre class="screen">(import (class javax.xml.bind.annotation XmlRootElement XmlElement))
+(define-simple-class Bib ( ) (@XmlRootElement name: "bib")
+  (books (@XmlElement name: "book" type: Book) ::java.util.ArrayList))
+(define-simple-class Book () ...)
+</pre>
+      <p><a class="ulink" href="http://per.bothner.com/blog/2011/Using-JAXB-annotations" target="_top">This tutorial</a>
+explains the JAXB example in depth.
+</p>
+      <p>Here is the syntax:
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667871641840" class="indexterm"/><span id="meta-annotation"/><em class="replaceable"><code>annotation</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(@</strong></span></code><a class="link" href="Annotations.xhtml#meta-annotation-typename"><em class="replaceable"><code>annotation-typename</code></em></a> <a class="link" href="Annotations.xhtml#meta-annotations-element-values"><em class="replaceable"><code>annotations-element-values</code></em></a><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<a id="idm139667871636816" class="indexterm"/><span id="meta-annotations-element-values"/><em class="replaceable"><code>annotations-element-values</code></em> <code class="literal">::=</code> <a class="link" href="Annotations.xhtml#meta-annotation-element-value"><em class="replaceable"><code>annotation-element-value</code></em></a><br/>
+  | <a class="link" href="Annotations.xhtml#meta-annotation-element-pair"><em class="replaceable"><code>annotation-element-pair</code></em></a> ...<br/>
+<a id="idm139667871633040" class="indexterm"/><span id="meta-annotation-element-pair"/><em class="replaceable"><code>annotation-element-pair</code></em> <code class="literal">::=</code> <a class="link" href="Keywords.xhtml#meta-keyword"><em class="replaceable"><code>keyword</code></em></a> <a class="link" href="Annotations.xhtml#meta-annotation-element-value"><em class="replaceable"><code>annotation-element-value</code></em></a><br/>
+<a id="idm139667871629376" class="indexterm"/><span id="meta-annotation-element-value"/><em class="replaceable"><code>annotation-element-value</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667871626528" class="indexterm"/><span id="meta-annotation-typename"/><em class="replaceable"><code>annotation-typename</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+</p>
+      </div>
+      <p>An <em class="replaceable"><code>annotations-element-values</code></em> consisting of just
+a single <em class="replaceable"><code>annotation-element-value</code></em> is equivalent to an
+<em class="replaceable"><code>annotation-element-pair</code></em> with a <code class="literal">value:</code> keyword.
+</p>
+      <p>Each <em class="replaceable"><code>keyword</code></em> must correspond to the name of
+an element (a zero-argument method) in the annotation type.
+The corresponding <em class="replaceable"><code>annotation-element-value</code></em> must be compatible with the
+element type (return type of the method) of the annotation type.
+</p>
+      <p>Allowed element types are of the following kinds:
+</p>
+      <div class="itemizedlist" epub:type="list">
+        <ul class="itemizedlist" style="list-style-type: disc; ">
+          <li class="listitem" epub:type="list-item">
+            <p>Primitive types, where the <em class="replaceable"><code>annotation-element-value</code></em> must
+be number or boolean coercible to the element type.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Strings, where the <em class="replaceable"><code>annotation-element-value</code></em> is normally a string literal.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Classes, where the <em class="replaceable"><code>annotation-element-value</code></em> is normally
+a classname.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Enumeration types. The value usually has the form <code class="literal"><em class="replaceable"><code>ClassName</code></em>:<em class="replaceable"><code>enumFieldname</code></em></code>.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>Nested annotation types, where the  <em class="replaceable"><code>annotation-element-value</code></em> must
+be a compatible <em class="replaceable"><code>annotation</code></em> value.
+</p>
+          </li>
+          <li class="listitem" epub:type="list-item">
+            <p>An array of one of the allowable types.
+An array constructor expression works, but using the
+square bracket syntax is recommended.
+</p>
+          </li>
+        </ul>
+      </div>
+      <p>Annotations are usually used in declarations,
+where they are required to be “constant-folded” to compile-time
+constant annotation values.
+This is so they can be written to class files.
+However, in other contexts an annotation can be used as an expression
+with general sub-expressions evaluated at run-time:
+</p>
+      <pre class="screen">(define bk-name "book")
+(define be (@XmlElement name: bk-name type: Book))
+(be:name) ⇒ "book"
+</pre>
+      <p>(This may have limited usefulness:  There are some bugs, including
+lack of support for default values for annotation elements.
+These bugs can be fixed if someone reports a need for
+runtime construction of annotation values.)
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Enumerations.xhtml">Enumeration types</a></p>
+        <p>
+        Next: <a accesskey="n" href="Module-classes.xhtml">Modules and how they are compiled to classes</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

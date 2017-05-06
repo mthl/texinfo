@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Character sets</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Characters.xhtml" title="Characters"/>
+    <link rel="next" href="Strings.xhtml" title="Strings"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Character sets" epub:type="subchapter" id="Character-sets">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Character sets</h2>
+          </div>
+        </div>
+      </div>
+      <p>Sets of characters are useful for text-processing code,
+including parsing, lexing, and pattern-matching.
+<a class="ulink" href="http://srfi.schemers.org/srfi-14/srfi-14.html" target="_top">SRFI 14</a> specifies
+a <code class="literal">char-set</code> type for such uses.  Some examples:
+</p>
+      <pre class="screen">(import (srfi :14 char-sets))
+(define vowel (char-set #\a #\e #\i #\o #\u))
+(define vowely (char-set-adjoin vowel #\y))
+(char-set-contains? vowel #\y) ⇒  #f
+(char-set-contains? vowely #\y) ⇒  #t
+</pre>
+      <p>See the <a class="ulink" href="http://srfi.schemers.org/srfi-14/srfi-14.html" target="_top">SRFI 14 specification</a> for details.
+</p>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667875795392" class="indexterm"/> <code class="function">char-set</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The type of character sets.
+In Kawa <code class="literal">char-set</code> is a type that can be used in type specifiers:
+</p>
+          <pre class="screen">(define vowely ::char-set (char-set-adjoin vowel #\y))
+</pre>
+        </blockquote>
+      </div>
+      <p>Kawa uses <a class="ulink" href="https://en.wikipedia.org/wiki/Inversion_list" target="_top">inversion lists</a> for an efficient implementation, using Java <code class="literal">int</code> arrays
+to represents character ranges (inversions).
+The <code class="literal">char-set-contains?</code> function uses binary search,
+so it takes time proportional to the logarithm of the number of inversions.
+Other operations may take time proportional to the number of inversions.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Characters-and-text.xhtml">Characters and text</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Characters.xhtml">Characters</a></p>
+        <p>
+        Next: <a accesskey="n" href="Strings.xhtml">Strings</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

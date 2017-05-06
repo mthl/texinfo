@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>The REPL (read-eval-print-loop) console</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Exiting.xhtml" title="Exiting Kawa"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="The REPL (read-eval-print-loop) console" epub:type="subchapter" id="REPL-Console">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">The REPL (read-eval-print-loop) console</h2>
+          </div>
+        </div>
+      </div>
+      <p>The read-eval-print-loop (REPL) console is a convenient way to
+do simple programming, test out things, and experiment.
+As the name implies, the REPL repeatedly (in a loop)
+prints out a prompt, reads an input command, evaluates it, then prints the result.
+</p>
+      <p>The REPL is started when you invoke the <code class="literal">kawa</code> command
+with no arguments.  For example:
+</p>
+      <pre class="screen"><span class="prompt">$ </span><strong class="userinput"><code>kawa</code></strong>
+<span class="prompt">#|kawa:1|# </span><strong class="userinput"><code>(define pi (* 2 (asin 1)))</code></strong>
+<span class="prompt">#|kawa:2|# </span><strong class="userinput"><code>(list pi (sqrt pi))</code></strong>
+(3.141592653589793 1.7724538509055159)
+<span class="prompt">#|kawa:3|# </span><strong class="userinput"><code/></strong>
+</pre>
+      <p>The colors and styles used for the prompt and the user input
+depend on user preference and the capabilities of the console device.
+(If you read this on a color screen you should see pale green for the
+prompt and pale yellow for the user input;
+this matches the defaults for the DomTerm console.)
+</p>
+      <p>You can <a class="link" href="Ports.xhtml#Prompts">change the prompt string</a> if you want.
+The default format depends on the (programming) language used;
+the one shown above is used for Scheme.
+It has the form of a comment, which can be convenient for copying
+and pasting lines.
+</p>
+      <p>You can <a class="link" href="Named-output-formats.xhtml" title="Named output formats">change the output formatting</a> with
+the <code class="literal">--output-format</code> command-line option.
+</p>
+      <p>The basic console has few frills, but should work in any enviroment
+where you have a console or terminal.  It has no dependencies,
+except the kawa <code class="literal">.jar</code> file (and Java):
+</p>
+      <pre class="screen"><span class="prompt">$ </span><strong class="userinput"><code>java kawa-2.92_invoke.jar</code></strong>
+<span class="prompt">#|kawa:2|# </span><strong class="userinput"><code/></strong>
+</pre>
+      <p>On rare occason you may need to specify the <code class="literal">--console</code> flag.
+</p>
+      <section class="sect2" title="Input line editing and history" epub:type="division" id="idm139667880015696">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Input line editing and history</h3>
+            </div>
+          </div>
+        </div>
+        <p>When typing a command in a console it is helpful to go back
+and correct mistakes, repeat and edit previous commands, and so on.
+How well you can do this varies a lot depending on which tools you use.
+Kawa delegates input editing to an external tool.
+The recommended and default input-editing tool is
+the <a class="ulink" href="https://github.com/jline/jline3" target="_top">JLine3 library</a>,
+which is bundled with the Kawa binary distribution.
+</p>
+        <p>JLine3 handles the normal editing comands, including arrow keys
+for moving around in the input, and deleting with backspace or delete.
+In general, JLine3 uses the same keybindings as GNU readline,
+which are based on Emacs key-bindings.
+</p>
+        <p>You can use the up-arrow to move to previous commands in the
+input history and down-arrow to go forwards.
+Control-R (“reverse search” searches backwards in the history
+for a previous command that contains the search string.
+</p>
+        <p>Multi-line commands are treated as a unit by JLine3:
+If Kawa determines that input is “incomplete” it will
+ask for continuation lines - and you can go back and edit previous
+lines in the same command.
+You can explicitly create a multi-line command with Escape-Space.
+An entry in the command history may be multiple lines.
+</p>
+        <p>Tab-completion works for Kawa-Scheme identifiers: If you type TAB
+after an identifier, Kawa will present a list of possible completions.
+</p>
+        <p>There are multiple alternatives to using JLine3.
+You can use GNU readline (if you configured with <code class="literal">--enable-kawa-frontend</code>).
+You can use a front-end program like <code class="literal">rlfe</code> or <code class="literal">fep</code>.
+You can use Emacs shell or scheme mode.
+You can also use DomTerm in line-edit mode, where the browser handles
+the editing.
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">console:use-jline=</code>[<code class="literal">yes</code>|<code class="literal">no</code>]
+</dt>
+            <dd>
+              <p>Disable (with <code class="literal">no</code>) or enable (with <code class="literal">yes</code>, which is the default)
+input line editing with JLine.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">console:console:jline-mouse=</code>[<code class="literal">yes</code>|<code class="literal">no</code>]
+</dt>
+            <dd>
+              <p>Enable (with <code class="literal">yes</code>) mouse click reporting from
+most xterm-like terminals to JLine, which means you
+can move the input cursor with the mouse.
+This is disabled by default because it conflicts with other useful mouse
+actions (text selection using drag; middle-button paste; right-button
+context menu; and wheel mouse scrolling).
+If you enable mouse-reporting, on most terminals you can get the
+standard behavior when pressing the shift key.  E.g. to enable selection,
+drag with the shift key pressed.  (However, mouse-wheel scrolling
+may not work even with shift pressed.)
+</p>
+            </dd>
+          </dl>
+        </div>
+        <span id="New-Window"/>
+      </section>
+      <section class="sect2" title="Running a Command Interpreter in a new Window" epub:type="division" id="idm139667880001952">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Running a Command Interpreter in a new Window</h3>
+            </div>
+          </div>
+        </div>
+        <p>Instead of using an existing terminal window for Kawa’s REPL console,
+you can request a new window.
+The command-line options <code class="literal">-w</code> creates a new window.
+Kawa also creates a new window when it needs to create a REPL
+(for example if invoked with no options) and it is not running
+in a console.
+</p>
+        <p>You have a number of options for how the window appears and
+what it supports, controlled by text following <code class="literal">-w</code>.
+All except <code class="literal">-wswing</code> (and <code class="literal">-wconsole</code>) use DomTerm,
+so they depend on some kind of web browser technology.
+All except <code class="literal">-wswing</code> by default use  JLine3 input editing,
+if available.
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">-w</code>
+</dt>
+            <dd>
+              <p>Pick the default/preferred console implementation.
+You can specify your preference with the <code class="literal">console:type=</code> option,
+which is followed by one of the options below (without the <code class="literal">"-w"</code> prefix),
+It can also be list of options separated by semi-colons, in which
+case they are tried in order.
+</p>
+              <p>The current default (it may change) is as if you specified:
+</p>
+              <pre class="screen">console:type="google-chrome;browser;javafx;swing;console"
+</pre>
+            </dd>
+            <dt class="term"><code class="literal">-wbrowser</code>
+</dt>
+            <dd>
+              <p>Creates a Kawa window or tab in your preferred desktop browser.
+Kawa starts a builtin HTTP and WebSocket server to communicate with the browser.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wbrowser=<em class="replaceable"><code>command</code></em></code>
+</dt>
+            <dd>
+              <p>Uses <em class="replaceable"><code>command</code></em> to display the Kawa REPL.
+The <em class="replaceable"><code>command</code></em> should include the pattern <code class="literal">%U</code>, which Kawa replaces
+with a URL that it listens to.
+(Alternatively, it can use the pattern <code class="literal">%W</code>, which Kawa replaces
+with the port number of its WebSocket server.  However, this feature may be removed.)
+If the is no <code class="literal">%</code> in the <em class="replaceable"><code>command</code></em>, Kawa add <code class="literal">" %U"</code>.
+Thus <code class="literal">-wbrowser=firefox</code> is the same as <code class="literal">-wbrowser="firefox %U"</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wgoogle-chrome</code>
+</dt>
+            <dd>
+              <p>Creates a new Google Chrome window in “app mode” - i.e. with no location or menu bar.
+This is the same as <code class="literal">-wbrowser="google-chrome --app=%U"</code>.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wqtdomterm</code>
+</dt>
+            <dd>
+              <p>Uses the <code class="literal">QtDomTerm</code> application.
+Same as <code class="literal">-wbrowser="qtdomterm --connect localhost:%W"</code>, where <code class="literal">%W</code>
+is the port of the WebSocke server that Kawa starts.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wjavafx</code>
+</dt>
+            <dd>
+              <p>Creates a new window using JavaFX WebView, which runs in the same JVM as Kawa.
+While this doesn’t currently have much in the way of Kawa-specific menus
+or other features, it has the most potential for adding them in the future.
+However, it does require JavaFX, which is not always available,
+and which does not see a lot of love from Oracle. (It uses an old version of WebKit.)
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wswing</code>
+</dt>
+            <dd>
+              <p>Create a console using the Swing toolkit.
+This is the old implementation of <code class="literal">-w</code>.
+It is deprecated because it only supports the builtin Swing line editing.
+(I.e. neither DomTerm or JLine3 features are available, though
+“printing” <a class="link" href="Composable-pictures.xhtml" title="Composable pictures">pictures</a> does work.)
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wserve</code>
+</dt>
+            <dt class="term"><code class="literal">-wserve=</code><em class="replaceable"><code>port</code></em>
+</dt>
+            <dd>
+              <p>Starts up an HTTP server (along with a WebSocket server),
+but does not automatically create any browser windows.
+Instead you can use any modern browser to load <code class="literal">http://localhost:<em class="replaceable"><code>port</code></em>/</code>.
+If <em class="replaceable"><code>port</code></em> is not specified, the systems selects it (and prints it out).
+</p>
+            </dd>
+            <dt class="term"><code class="literal">-wconsole</code>
+</dt>
+            <dd>
+              <p>Same as <code class="literal">"--"</code> - i.e. it uses the existing console.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">console:type=</code><em class="replaceable"><code>preference-list</code></em>
+</dt>
+            <dd>
+              <p>Specify the behavior of plain <code class="literal">-w</code>.
+</p>
+            </dd>
+          </dl>
+        </div>
+        <span id="Using-DomTerm"/>
+      </section>
+      <section class="sect2" title="Using DomTerm" epub:type="division" id="idm139667879970864">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using DomTerm</h3>
+            </div>
+          </div>
+        </div>
+        <p><a class="ulink" href="http://domterm.org" target="_top">DomTerm</a> is a family of terminal emulators that use
+the DomTerm JavaScript library.
+</p>
+        <p>You can either have Kawa start DomTerm:
+</p>
+        <pre class="screen">$ kawa <em class="replaceable"><code>options</code></em> -w
+</pre>
+        <p>or start a DomTerm terminal emulator and have it start Kawa:
+</p>
+        <pre class="screen">$ domterm kawa <em class="replaceable"><code>options</code></em> --
+</pre>
+        <p>(You can also start a shell in a <code class="literal">domterm</code> window, and then start <code class="literal">kawa</code>.)
+</p>
+        <p>Either approach works and both give you the benefits of DomTerm:
+</p>
+        <div class="itemizedlist" epub:type="list">
+          <ul class="itemizedlist" style="list-style-type: disc; ">
+            <li class="listitem" epub:type="list-item">
+              <p>A xterm/ansi-compatible terminal emulator,
+which means you can use (for example) JLine3 for input editing.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>You can “print” images, <a class="link" href="Composable-pictures.xhtml" title="Composable pictures">pictures</a>, or HTML elements.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>Pretty-printing is handled by the terminal,
+which means line-breaking is re-computed when window width changes.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>Hide/show buttons allow you to temporarily hide/unhide the output from a specific command.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>You can save a session as an HTML file,
+which can be viewed later.
+(Still with dynamic line-breaking and pretty-printing, as well as working hide/show buttons.)
+The file is actually XHTML, so it can be processed with XML-reading tools.
+</p>
+            </li>
+            <li class="listitem" epub:type="list-item">
+              <p>Distinct styles for prompts, input, error output and regular output,
+which can be customized with CSS.
+</p>
+            </li>
+          </ul>
+        </div>
+        <p>For now it is recommended to use both DomTerm and JLine3.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667879960416" class="indexterm"/> <code class="function">domterm-load-stylesheet</code> <em class="replaceable"><code>stylesheet</code></em> [<em class="replaceable"><code>name</code></em>]</p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The string <em class="replaceable"><code>stylesheet</code></em> should be a literal CSS stylesheet
+which is downloaded into the current DomTerm console.
+The new stylesheet is given the attribute <code class="literal">name=<em class="replaceable"><code>name</code></em></code>,
+where <em class="replaceable"><code>name</code></em> defaults to <code class="literal">"Kawa"</code>.  If there is an
+existing stylesheey whose <code class="literal">name</code> attribute is <em class="replaceable"><code>name</code></em>,
+it is replaced.
+In this example we change the background color to light gray:
+</p>
+            <pre class="screen">(domterm-load-stylesheet "div.domterm { background-color: lightgray}")
+</pre>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="REPL-Console.xhtml#idm139667880015696">Input line editing and history</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="REPL-Console.xhtml#idm139667880001952">Running a Command Interpreter in a new Window</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="REPL-Console.xhtml#idm139667879970864">Using DomTerm</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Running.xhtml">How to start up and run Kawa</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Scripts.xhtml">Running Command Scripts</a></p>
+        <p>
+        Next: <a accesskey="n" href="Exiting.xhtml">Exiting Kawa</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

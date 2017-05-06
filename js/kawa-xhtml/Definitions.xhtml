@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Definitions</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Variables-and-Patterns.xhtml" title="Variables and Patterns"/>
+    <link rel="next" href="Local-binding-constructs.xhtml" title="Local binding constructs"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Definitions" epub:type="subchapter" id="Definitions">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Definitions</h2>
+          </div>
+        </div>
+      </div>
+      <p>A variable definition binds one or more identifiers and specifies
+an initial value for each of them. The simplest kind of
+variable definition takes one of the following forms:
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878264176" class="indexterm"/> <code class="function">!</code> <em class="replaceable"><code><a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Evaluate <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a>, and match the result against <em class="replaceable"><code>pattern</code></em>.
+Defining variables in <a class="link" href="Variables-and-Patterns.xhtml#meta-pattern"><em class="replaceable"><code>pattern</code></em></a> becomes bound in the
+current (surrounding) scope.
+</p>
+          <p>This is similar to <code class="literal">define-constant</code> except generalized to a <em class="replaceable"><code>pattern</code></em>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878255888" class="indexterm"/> <code class="function">define</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] <em class="replaceable"><code><a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Evaluate the <em class="replaceable"><code>expression</code></em>, optionally converting it to <em class="replaceable"><code>type</code></em>,
+and bind the <em class="replaceable"><code>name</code></em> to the result.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878248480" class="indexterm"/> <code class="function">define</code> (<em class="replaceable"><code>name</code></em> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-formal-arguments"><em class="replaceable"><code>formal-arguments</code></em></a></code></em>) (<em class="replaceable"><code><a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a></code></em> <em class="replaceable"><code>|</code></em> <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a></code></em>)<em class="replaceable"><code><sup>*</sup></code></em> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878239984" class="indexterm"/> <code class="function">define</code> (<em class="replaceable"><code>name</code></em> <em class="replaceable"><code><span class="bold"><strong>.</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-rest-arg"><em class="replaceable"><code>rest-arg</code></em></a></code></em>) (<em class="replaceable"><code><a class="link" href="Annotations.xhtml#meta-annotation"><em class="replaceable"><code>annotation</code></em></a></code></em> <em class="replaceable"><code>|</code></em> <em class="replaceable"><code><a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a></code></em>)<em class="replaceable"><code><sup>*</sup></code></em> <em class="replaceable"><code><a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a></code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Bind the <em class="replaceable"><code>name</code></em> to a function definition.  The form:
+</p>
+          <pre class="screen">(define (<em class="replaceable"><code>name</code></em> <a class="link" href="Extended-formals.xhtml#meta-formal-arguments"><em class="replaceable"><code>formal-arguments</code></em></a>) <a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a><sup>*</sup> <a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a>)
+</pre>
+          <p>is equivalent to:
+</p>
+          <pre class="screen">(define <em class="replaceable"><code>name</code></em> (lambda <a class="link" href="Extended-formals.xhtml#meta-formal-arguments"><em class="replaceable"><code>formal-arguments</code></em></a>) name: <em class="replaceable"><code>name</code></em> <a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a><sup>*</sup> <a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a>))
+</pre>
+          <p>while the form:
+</p>
+          <pre class="screen">(define (<em class="replaceable"><code>name</code></em> . <a class="link" href="Extended-formals.xhtml#meta-rest-arg"><em class="replaceable"><code>rest-arg</code></em></a>) <a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a><sup>*</sup> <a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a>)
+</pre>
+          <p>is equivalent to:
+</p>
+          <pre class="screen">(define <em class="replaceable"><code>name</code></em> (lambda <a class="link" href="Extended-formals.xhtml#meta-rest-arg"><em class="replaceable"><code>rest-arg</code></em></a>) name: <em class="replaceable"><code>name</code></em> <a class="link" href="Defining-new-classes.xhtml#meta-option-pair"><em class="replaceable"><code>option-pair</code></em></a><sup>*</sup> <a class="link" href="Extended-formals.xhtml#meta-opt-return-type"><em class="replaceable"><code>opt-return-type</code></em></a> <a class="link" href="Bodies.xhtml#meta-body"><em class="replaceable"><code>body</code></em></a>))
+</pre>
+          <p>You can associate <a class="link" href="Annotations.xhtml" title="Annotations of declarations">annotations</a> with <em class="replaceable"><code>name</code></em>.
+A field annotation will be associated with the generated field;
+a method annotation will be associated with the generated method(s).
+</p>
+        </blockquote>
+      </div>
+      <p>In addition to <code class="literal">define</code> (which can take an optional type specifier),
+Kawa has some extra definition forms.
+</p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878208272" class="indexterm"/> <code class="function">define-private</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] <em class="replaceable"><code>value</code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878203296" class="indexterm"/> <code class="function">define-private</code> (<em class="replaceable"><code>name</code></em> <em class="replaceable"><code>formals</code></em>) <em class="replaceable"><code>body</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Same as <code class="literal">define</code>, except that <code class="literal">name</code> is not exported.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878198192" class="indexterm"/> <code class="function">define-constant</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] <em class="replaceable"><code>value</code></em></p>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878193216" class="indexterm"/> <code class="function">define-early-constant</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code>::</code></em> <em class="replaceable"><code>type</code></em>] <em class="replaceable"><code>value</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Defines <em class="replaceable"><code>name</code></em> to have the given <em class="replaceable"><code>value</code></em>.
+The value is readonly, and you cannot assign to it.
+(This is not fully enforced.)
+</p>
+          <p>If <code class="literal">define-early-constant</code> is used
+<span class="emphasis"><em>or</em></span> the <em class="replaceable"><code>value</code></em> is a compile-time constant,
+then the compiler will create a <code class="literal">final</code> field with
+the given name and type, and evaluate <em class="replaceable"><code>value</code></em>
+in the module’s class initializer (if the definition
+is static) or constructor (if the definition is non-static),
+before other definitions and expressions.
+Otherwise, the <em class="replaceable"><code>value</code></em> is evaluated in the module body
+where it appears.
+</p>
+          <p>If the <em class="replaceable"><code>value</code></em> is a compile-time constant,
+then the definition defaults to being static.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667878183216" class="indexterm"/> <code class="function">define-variable</code> <em class="replaceable"><code>name</code></em> [<em class="replaceable"><code><span class="bold"><strong>::</strong></span></code></em> <em class="replaceable"><code><a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a></code></em>] [<em class="replaceable"><code>init</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>If <em class="replaceable"><code>init</code></em> is specified and <em class="replaceable"><code>name</code></em> does not have a global variable
+binding, then <em class="replaceable"><code>init</code></em> is evaluated, and <em class="replaceable"><code>name</code></em> bound to the result.
+Otherwise, the value bound to <em class="replaceable"><code>name</code></em> does not change.
+(Note that <em class="replaceable"><code>init</code></em> is not evaluated
+if <em class="replaceable"><code>name</code></em> does have a global variable binding.)
+</p>
+          <p>Also, declares to the compiler that <em class="replaceable"><code>name</code></em> will be looked up
+in the per-thread dynamic environment. This can be useful for shutting up
+warnings from <code class="literal">--warn-undefined-variable</code>.
+</p>
+          <p>This is similar to the Common Lisp <code class="literal">defvar</code> form.
+However, the Kawa version is (currently) only allowed at module level.
+</p>
+        </blockquote>
+      </div>
+      <p>For <code class="literal">define-namespace</code> and <code class="literal">define-private-namespace</code>
+see <a class="link" href="Namespaces.xhtml" title="Namespaces and compound symbols">Namespaces</a>.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Program-structure.xhtml">Program structure</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Variables-and-Patterns.xhtml">Variables and Patterns</a></p>
+        <p>
+        Next: <a accesskey="n" href="Local-binding-constructs.xhtml">Local binding constructs</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

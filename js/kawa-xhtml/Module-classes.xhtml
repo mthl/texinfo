@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Modules and how they are compiled to classes</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Importing.xhtml" title="Importing from a library"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Modules and how they are compiled to classes" epub:type="subchapter" id="Module-classes">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Modules and how they are compiled to classes</h2>
+          </div>
+        </div>
+      </div>
+      <p>Modules provide a way to organize Scheme into
+reusable parts with explicitly defined interfaces to the rest
+of the program.
+A <em class="firstterm">module</em> is a set of definitions that the module <em class="firstterm">exports</em>,
+as well as some <em class="firstterm">actions</em> (expressions evaluated for their side effect).
+The top-level forms in a Scheme source file compile a module;
+the source file is the <em class="firstterm">module source</em>.
+When Kawa compiles the module source, the result is the
+<em class="firstterm">module class</em>.  Each exported definition is translated to
+a public field in the module class.
+</p>
+      <section class="sect2" title="Name visibility" epub:type="division" id="idm139667871606752">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Name visibility</h3>
+            </div>
+          </div>
+        </div>
+        <p>The definitions that a module exports are accessible to other modules.
+These are the "public" definitions, to use Java terminology.
+By default, all the identifiers declared at the top-level of a module
+are exported, except those defined using <code class="literal">define-private</code>.
+(If compiling with the <code class="literal">--main</code> flag,
+then by default no identifiers are exported.)
+However, a major purpose of using modules is to control the set of
+names exported.  One reason is to reduce the chance of accidental
+name conflicts between separately developed modules.  An even more
+important reason is to enforce an interface:  Client modules should
+only use the names that are part of a documented interface, and should
+not use internal implementation procedures (since those may change).
+</p>
+        <p>If there is a <code class="literal">module-export</code> (or <code class="literal">export</code>)
+declaration in the module, then only those names listed are exported.
+There can be more than one <code class="literal">module-export</code>, and they can be
+anywhere in the Scheme file.  The recommended style has
+a single <code class="literal">module-export</code> near the beginning of the file.
+</p>
+        <span id="meta-export-declaration"/>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871600048" class="indexterm"/> <code class="function">module-export</code> <em class="replaceable"><code><a class="link" href="Module-classes.xhtml#meta-export-spec"><em class="replaceable"><code>export-spec</code></em></a></code></em><em class="replaceable"><code><sup>*</sup></code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871596304" class="indexterm"/> <code class="function">export</code> <em class="replaceable"><code><a class="link" href="Module-classes.xhtml#meta-export-spec"><em class="replaceable"><code>export-spec</code></em></a></code></em><em class="replaceable"><code><sup>*</sup></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The forms <code class="literal">export</code> and <code class="literal">module-export</code> are equivalent.
+(The older Kawa name is <code class="literal">module-export</code>;
+<code class="literal">export</code> comes from R7RS.)
+Either form specifies a list of identifiers which
+can be made visible to other libraries or programs.
+</p>
+            <div class="literallayout">
+              <p><a id="idm139667871590240" class="indexterm"/><span id="meta-export-spec"/><em class="replaceable"><code>export-spec</code></em> <code class="literal">::=</code> <em class="replaceable"><code>identifier</code></em><br/>
+  | <code class="literal"><span class="bold"><strong>(rename</strong></span></code> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><sub>1</sub> <a class="link" href="Lexical-syntax.xhtml#meta-identifier"><em class="replaceable"><code>identifier</code></em></a><sub>2</sub><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+</p>
+            </div>
+            <p>In the former variant, an <em class="replaceable"><code>identifier</code></em> names a single binding
+defined within or imported into the library, where the
+external name for the export is the same as the name of
+the binding within the library.
+A <code class="literal">rename</code> spec exports the
+binding defined within or imported into the library and
+named by <em class="replaceable"><code>identifier</code></em><sub>1</sub>,
+using <em class="replaceable"><code>identifier</code></em><sub>2</sub> as the external name.
+</p>
+            <p>Note that it is an error if there is no definition for <em class="replaceable"><code>identifier</code></em>
+(or <em class="replaceable"><code>identifier</code></em><sub>1</sub>)
+in the current module, or if it is defined using <code class="literal">define-private</code>.
+</p>
+            <p>As a matter of style, <code class="literal">export</code> or <code class="literal">module-export</code> should
+appear after <code class="literal">module-name</code> but <span class="emphasis"><em>before</em></span> other commands
+(including <code class="literal">import</code> or <code class="literal">require</code>).
+(This is a requirement if there are any cycles.)
+</p>
+          </blockquote>
+        </div>
+        <p>In this module, <code class="literal">fact</code> is public and <code class="literal">worker</code> is private:
+</p>
+        <pre class="screen">(module-export fact)
+(define (worker x) ...)
+(define (fact x) ...)
+</pre>
+        <p>Alternatively, you can write:
+</p>
+        <pre class="screen">(define-private (worker x) ...)
+(define (fact x) ...)
+</pre>
+      </section>
+      <section class="sect2" title="R7RS explicit library modules" epub:type="division" id="idm139667871573376">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">R7RS explicit library modules</h3>
+            </div>
+          </div>
+        </div>
+        <p>A R7RS <code class="literal">define-library</code> form is another way to create a module.
+The R7RS term <em class="firstterm">library</em> is roughly the same as a Kawa module.
+In Kawa, each source file is a <a class="link" href="Bodies.xhtml#implicit-library"><em class="firstterm">implicit module</em></a>,
+which may contain zero or more explicit sub-modules (in
+the form of <code class="literal">define-library</code>) optionally followed by
+the definitions and expressions of the implicit (file-level) module.
+</p>
+        <span id="meta-library-definition"/>
+        <a id="idm139667871569200" class="indexterm"/>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871568160" class="indexterm"/> <code class="function">define-library</code> <em class="replaceable"><code><a class="link" href="Module-classes.xhtml#meta-library-name"><em class="replaceable"><code>library-name</code></em></a></code></em> <em class="replaceable"><code><a class="link" href="Module-classes.xhtml#meta-library-declaration"><em class="replaceable"><code>library-declaration</code></em></a></code></em><em class="replaceable"><code><sup>*</sup></code></em></p>
+        <div class="literallayout">
+          <p><a id="idm139667871563456" class="indexterm"/><span id="meta-library-name"/><em class="replaceable"><code>library-name</code></em> <code class="literal">::=</code> <code class="literal"><span class="bold"><strong>(</strong></span></code> <a class="link" href="Module-classes.xhtml#meta-library-name-parts"><em class="replaceable"><code>library-name-parts</code></em></a> <code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+<a id="idm139667871559088" class="indexterm"/><span id="meta-library-name-parts"/><em class="replaceable"><code>library-name-parts</code></em> <code class="literal">::=</code> <em class="replaceable"><code>identifier</code></em><sup>+</sup><br/>
+</p>
+        </div>
+        <p>A <em class="replaceable"><code>library-name</code></em> is a list whose members are identifiers and
+exact non-negative integers. It is used to identify the library
+uniquely when importing from other programs or
+libraries. Libraries whose first identifier is <code class="literal">scheme</code> are
+reserved for use by the R7RS report and future versions of that
+report. Libraries whose first identifier is <code class="literal">srfi</code> are reserved
+for libraries implementing <a class="ulink" href="http://srfi.schemer.org/" target="_top">Scheme Requests for Implementation</a>.
+It is inadvisable, but not an error, for identifiers
+in library names to contain any of the characters <code class="literal">|</code> <code class="literal">\</code> <code class="literal">?</code>
+<code class="literal">*</code> <code class="literal">&lt;</code> <code class="literal">"</code> <code class="literal">:</code> <code class="literal">&gt;</code> <code class="literal">+</code> <code class="literal">[</code> <code class="literal">]</code>
+<code class="literal">/</code> <code class="literal">.</code> or control characters after escapes are
+expanded.
+</p>
+        <p>See <a class="link" href="Module-classes.xhtml#module-name">module-name</a> for how a <em class="replaceable"><code>library-name</code></em> is
+mapped to a class name.
+</p>
+        <div class="literallayout">
+          <p><a id="idm139667871546528" class="indexterm"/><span id="meta-library-declaration"/><em class="replaceable"><code>library-declaration</code></em> <code class="literal">::=</code><br/>
+  <a class="link" href="Module-classes.xhtml#meta-export-declaration"><em class="replaceable"><code>export-declaration</code></em></a><br/>
+  | <a class="link" href="Importing.xhtml#meta-import-declaration"><em class="replaceable"><code>import-declaration</code></em></a><br/>
+  | <code class="literal"><span class="bold"><strong>(begin</strong></span></code> <a class="link" href="Bodies.xhtml#meta-statement"><em class="replaceable"><code>statement</code></em></a><sup>*</sup> <code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>(include</strong></span></code> <em class="replaceable"><code>filename</code></em><sup>+</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>(include-ci</strong></span></code> <em class="replaceable"><code>filename</code></em><sup>+</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>(include-library-declarations</strong></span></code> <em class="replaceable"><code>filename</code></em><sup>+</sup><code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+  | <code class="literal"><span class="bold"><strong>(cond-expand</strong></span></code> <a class="link" href="Syntax-and-conditional-compilation.xhtml#meta-cond-expand-clause"><em class="replaceable"><code>cond-expand-clause</code></em></a><sup>*</sup> [<code class="literal"><span class="bold"><strong>(else</strong></span></code> command-or-definition*<code class="literal"><span class="bold"><strong>)</strong></span></code>]<code class="literal"><span class="bold"><strong>)</strong></span></code><br/>
+  | <a class="link" href="Bodies.xhtml#meta-statement"><em class="replaceable"><code>statement</code></em></a><br/>
+</p>
+        </div>
+        <p>The <code class="literal">begin</code>, <code class="literal">include</code>, and <code class="literal">include-ci</code> declarations are
+used to specify the body of the library. They have the
+same syntax and semantics as the corresponding expression types.
+This form of <code class="literal">begin</code> is analogous to, but not the
+same as regular <code class="literal">begin</code>.
+A plain <em class="replaceable"><code>statement</code></em> (which is allowed as a Kawa extension)
+is also part of the body of the library,
+as if it were wrapped in a <code class="literal">begin</code>).
+</p>
+        <p>The <code class="literal">include-library-declarations</code> declaration is similar
+to <code class="literal">include</code> except that the contents of the file are
+spliced directly into the current library definition. This
+can be used, for example, to share the same <code class="literal">export</code> declaration
+among multiple libraries as a simple form of library interface.
+</p>
+        <p>The <code class="literal">cond-expand</code> declaration has the same syntax and semantics
+as the <code class="literal">cond-expand</code> expression type, except that
+it expands to spliced-in library declarations rather than
+expressions enclosed in <code class="literal">begin</code>.
+</p>
+        <p>When a library is loaded, its expressions are executed in
+textual order. If a library’s definitions are referenced in
+the expanded form of a program or library body, then that
+library must be loaded before the expanded program or
+library body is evaluated. This rule applies transitively. If
+a library is imported by more than one program or library,
+it may possibly be loaded additional times.
+</p>
+        <p>Similarly, during the expansion of a library <code class="literal">(foo)</code>, if any
+syntax keywords imported from another library <code class="literal">(bar)</code> are
+needed to expand the library, then the library <code class="literal">(bar)</code> must
+be expanded and its syntax definitions evaluated before the
+expansion of <code class="literal">(foo)</code>.
+</p>
+        <p>Regardless of the number of times that a library is loaded,
+each program or library that imports bindings from a library must
+do so from a single loading of that library, regardless
+of the number of import declarations in which it
+appears. That is, <code class="literal">(import (only (foo) a</code>)) followed by
+<code class="literal">(import (only (foo) b))</code> has the same effect as
+<code class="literal">(import (only (foo) a b))</code>.
+</p>
+      </section>
+      <section class="sect2" title="How a module becomes a class" epub:type="division" id="idm139667871515088">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">How a module becomes a class</h3>
+            </div>
+          </div>
+        </div>
+        <p>If you want to just use a Scheme module as a module (i.e. <code class="literal">load</code>
+or <code class="literal">require</code> it), you don’t care how it gets translated
+into a module class.  However, Kawa gives you some control over how this
+is done, and you can use a Scheme module to define a class which
+you can use with other Java classes.  This style of class definition
+is an alternative to <code class="literal">define-class</code>,
+which lets you define classes and instances fairly conveniently.
+</p>
+        <p>The default name of the module class is the main part of the
+filename of the Scheme source file (with directories and extensions
+stripped off).  That can be overridden by the <code class="literal">-T</code> Kawa
+command-line flag.  The package-prefix specified by the <code class="literal">-P</code>
+flag is prepended to give the fully-qualified class name.
+</p>
+        <span id="module-name"/>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871509680" class="indexterm"/> <code class="function">module-name</code> <em class="replaceable"><code>name</code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871506848" class="indexterm"/> <code class="function">module-name</code> <em class="replaceable"><code>&lt;name&gt;</code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871504016" class="indexterm"/> <code class="function">module-name</code> <em class="replaceable"><code><a class="link" href="Module-classes.xhtml#meta-library-name"><em class="replaceable"><code>library-name</code></em></a></code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Sets the name of the generated class, overriding the default.
+If there is no ‘<code class="literal">.</code>’ in the <em class="replaceable"><code>name</code></em>, the package-prefix
+(specified by the <code class="literal">-P</code> Kawa command-line flag) is prepended.
+</p>
+            <p>If the form <em class="replaceable"><code>library-name</code></em> is used,
+then the class name is the result of taking
+each <em class="replaceable"><code>identifier</code></em> in the <em class="replaceable"><code>library-name-parts</code></em>,
+<a class="link" href="Mangling.xhtml" title="Mapping Scheme names to Java names">mangling</a> if needed, and concatenating them
+separated by periods.
+For example <code class="literal">(org example doc-utils)</code> becomes
+<code class="literal">org.example.doc-utils</code>.  (You can’t reference the class name
+<code class="literal">doc-utils</code> directly in Java, but the JVM has no problems with it.
+In Java you can use reflection to access classes with such names.)
+</p>
+            <p>As a matter of style, <code class="literal">module-name</code> should be the first
+command in a file (after possible comments).  It must appear
+before a <code class="literal">require</code> or <code class="literal">import</code>, in case of cycles.
+</p>
+          </blockquote>
+        </div>
+        <p>By default, the base class of the generated module class is unspecified;
+you cannot count on it being more specific than <code class="literal">Object</code>.
+However, you can override it with <code class="literal">module-extends</code>.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871491312" class="indexterm"/> <code class="function">module-extends</code> <em class="replaceable"><code>class</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Specifies that the class generated from the immediately surrounding
+module should extend (be a sub-class of) the class <code class="literal"><em class="replaceable"><code>class</code></em></code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871487296" class="indexterm"/> <code class="function">module-implements</code> <em class="replaceable"><code>interface</code></em> <em class="replaceable"><code>...</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Specifies that the class generated from the immediately surrounding
+module should implement the interfaces listed.
+</p>
+          </blockquote>
+        </div>
+        <p>Note that the compiler does <span class="emphasis"><em>not</em></span> currently check that all the
+abstract methods requires by the base class or implemented interfaces
+are actually provided, and have the correct signatures.  This will
+hopefully be fixed, but for now, if you are forgot a method, you will
+probably get a verifier error
+</p>
+        <p>For each top-level exported definition the compiler creates a
+corresponding public field with a similar (mangled) name.
+By default, there is some indirection:  The value of the Scheme variable
+is not that of the field itself.  Instead, the field is a
+<code class="literal">gnu.mapping.Location</code> object, and the value Scheme variable is
+defined to be the value stored in the <code class="literal">Location</code>.
+Howewer, if you specify an explicit type, then the field will
+have the specified type, instead of being a <code class="literal">Location</code>.
+The indirection using <code class="literal">Location</code> is also avoided if you use
+<code class="literal">define-constant</code>.
+</p>
+        <p>If the Scheme definition defines a procedure (which is not re-assigned
+in the module), then the compiler assumes the variable as bound as a
+constant procedure.  The compiler generates one or more methods
+corresponding to the body of the Scheme procedure. It also generates
+a public field with the same name; the value of the field is an
+instance of a subclass of <code class="literal">&lt;gnu.mapping.Procedure&gt;</code> which when
+applied will execute the correct method (depending on the actual arguments).
+The field is used when the procedure used as a value (such as being passed
+as an argument to <code class="literal">map</code>), but when the compiler is able to do so,
+it will generate code to call the correct method directly.
+</p>
+        <p>You can control the signature of the generated method by declaring
+the parameter types and the return type of the method.  See the
+applet (see <a class="link" href="Compiling.xhtml#Applet-compilation" title="Compiling to an applet">Applet compilation</a>) example for how this can be done.
+If the procedures has optional parameters, then the compiler will
+generate multiple methods, one for each argument list length.
+(In rare cases the default expression may be such that this is
+not possible, in which case an "variable argument list" method
+is generated instead.  This only happens when there is a nested
+scope <span class="emphasis"><em>inside</em></span> the default expression, which is very contrived.)
+If there are <code class="literal">#!keyword</code> or <code class="literal">#!rest</code> arguments, the compiler
+generate a "variable argument list" method.  This is a method whose
+last parameter is either an array or a <code class="literal">&lt;list&gt;</code>, and whose
+name has <code class="literal">$V</code> appended to indicate the last parameter is a list.
+</p>
+        <p>Top-leval macros (defined using either <code class="literal">define-syntax</code>
+or <code class="literal">defmacro</code>) create a field whose type is currently a sub-class of
+<code class="literal">kawa.lang.Syntax</code>;  this allows importing modules to detect
+that the field is a macro and apply the macro at compile time.
+</p>
+        <p>Unfortunately, the Java class verifier does not allow fields to have
+arbitrary names.  Therefore, the name of a field that represents a
+Scheme variable is "mangled" (see <a class="link" href="Mangling.xhtml" title="Mapping Scheme names to Java names">Mangling</a>) into an acceptable Java name.
+The implementation can recover the original name of a field <code class="literal">X</code>
+as <code class="literal">((gnu.mapping.Named) X).getName()</code> because all the standard
+compiler-generated field types implement the <code class="literal">Named</code> interface.
+</p>
+        <span id="dual-purpose-class"/>
+      </section>
+      <section class="sect2" title="Same class for module and defined class" epub:type="division" id="idm139667871467792">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Same class for module and defined class</h3>
+            </div>
+          </div>
+        </div>
+        <p>You can declare a class using <code class="literal">define-simple-class</code>
+with the same name as the module class, for example the
+following in a file named <code class="literal">foo.scm</code>:
+</p>
+        <pre class="screen">(define-simple-class foo ...)
+</pre>
+        <p>In this case the defined class will serve dual-purpose as the module class.
+</p>
+        <p>To avoid confusion, in this case you must not specify
+<code class="literal">module-extends</code>, <code class="literal">module-implements</code>, or <code class="literal">(module-static #t)</code>.
+Also, the defined class should not have public static members.
+In that case it works out pretty well: public static members
+represent bindings exported by the module; other non-private members
+“belong” to the defined class.
+</p>
+        <p>In this case <code class="literal">(module-static 'init-run)</code> is implied.
+</p>
+        <span id="static-or-non-modules"/>
+      </section>
+      <section class="sect2" title="Static vs non-static modules" epub:type="division" id="idm139667871461264">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Static vs non-static modules</h3>
+            </div>
+          </div>
+        </div>
+        <p>There are two kinds of module class:
+A <em class="firstterm">static module</em> is a class (or gets compiled to a class)
+all of whose public fields are static, and that does not have a
+public constructor.  A JVM can only have a single global instance of
+a static module.
+An <em class="firstterm">instance module</em> has a public default constructor,
+and usually has at least one non-static public field.
+There can be multiple instances
+of an instance module; each instance is called a <em class="firstterm">module instance</em>.
+However, only a single instance of a module can be <em class="firstterm">registered</em>
+in an environment, so in most cases there is only a single
+instance of instance modules.  Registering an instance in an environment
+means creating a binding mapping a magic name (derived from the class name)
+to the instance.
+</p>
+        <p>In fact, any Java class class that has the properties of either
+an instance module or a static module, is a module, and can be
+loaded or imported as such;  the class need not have written
+using Scheme.
+</p>
+        <p>You can control whether a module is compiled to a static or
+a non-static class using either a command-line flag to the compiler,
+or using the <code class="literal">module-static</code> special form.
+</p>
+        <div class="variablelist" epub:type="list">
+          <dl class="variablelist">
+            <dt class="term"><code class="literal">--module-static</code>
+</dt>
+            <dd>
+              <p>Generate a static module
+(as if <code class="literal">(module-static #t)</code> were specified).
+This is (now) the default.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">--module-nonstatic</code>
+</dt>
+            <dt class="term"><code class="literal">--no-module-static</code>
+</dt>
+            <dd>
+              <p>Generate a non-static module
+(as if <code class="literal">(module-static #f)</code> were specified).
+This used to be the default.
+</p>
+            </dd>
+            <dt class="term"><code class="literal">--module-static-run</code>
+</dt>
+            <dd>
+              <p>Generate a static module
+(as if <code class="literal">(module-static 'init-run)</code> were specified).
+</p>
+            </dd>
+          </dl>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871450240" class="indexterm"/> <code class="function">module-static</code> <em class="replaceable"><code>name</code></em> <em class="replaceable"><code>...</code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871447024" class="indexterm"/> <code class="function">module-static</code> <em class="replaceable"><code>#t</code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871444224" class="indexterm"/> <code class="function">module-static</code> <em class="replaceable"><code>#f</code></em></p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871441424" class="indexterm"/> <code class="function">module-static</code> <em class="replaceable"><code>'init-run</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Control whether the generated fields and methods are static.
+If <code class="literal">#t</code>  or <code class="literal">'init-run</code> is specified, then the module will be a
+static module, <span class="emphasis"><em>all</em></span> definitions will be static.
+If <code class="literal">'init-run</code> is specified, in addition the module body
+is evaluated in the class’s static initializer.
+(Otherwise, it is run the first time it is <code class="literal">require</code>’d.)
+Otherwise, the module is an instance module.  If there is a non-empty
+list of <em class="replaceable"><code>name</code></em>s then the module is an instance module, but the <em class="replaceable"><code>name</code></em>s
+that are explicitly listed will be compiled to static fields and methods.
+If <code class="literal">#f</code> is specified, then all exported names will
+be compiled to non-static (instance) fields and methods.
+</p>
+            <p>By default, if no <code class="literal">module-static</code> is specified:
+</p>
+            <div class="orderedlist" epub:type="list">
+              <ol class="orderedlist" type="1">
+                <li class="listitem" epub:type="list-item">
+                  <p>If there is a <code class="literal">module-extends</code> or <code class="literal">module-implements</code>
+declaration, or one of the <code class="literal">--applet</code> or <code class="literal">--servlet</code>
+command-line flags was specified, then <code class="literal">(module-static #f)</code> is implied.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If one of the command-line flags
+<code class="literal">--no-module-static</code>, <code class="literal">--module-nonstatic</code>,
+<code class="literal">--module-static</code>, or <code class="literal">--module-static-run</code> was specified,
+then the default is <code class="literal">#f</code>, <code class="literal">#f</code>, <code class="literal">#t</code>, or <code class="literal">'init-run</code>,
+respectively.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>If the module class is <a class="link" href="Module-classes.xhtml#dual-purpose-class">dual-purpose</a>
+then <code class="literal">(module-static 'init-run)</code> is implied.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p>Otherwise the default is <code class="literal">(module-static #t)</code>.
+(It used to be <code class="literal">(module-static #f)</code> in older Kawa versions.)
+</p>
+                </li>
+              </ol>
+            </div>
+            <p>The default is <code class="literal">(module-static #t)</code>.  It usually produces more efficient
+code, and is recommended if a module contains only procedure or macro
+definitions. However, a static module means that all environments in a JVM
+share the same bindings, which you may not want if you use
+multiple top-level environments.
+</p>
+          </blockquote>
+        </div>
+        <p>The top-level actions of a module will get compiled to a <code class="literal">run</code>
+method.  If there is an explicit <code class="literal">method-extends</code>, then the
+module class will also automatically implement <code class="literal">java.lang.Runnable</code>.
+(Otherwise, the class does not implement <code class="literal">Runnable</code>, since in that
+case the <code class="literal">run</code> method return an <code class="literal">Object</code> rather than <code class="literal">void</code>.
+This will likely change.)
+</p>
+      </section>
+      <section class="sect2" title="Module options" epub:type="division" id="idm139667871418480">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Module options</h3>
+            </div>
+          </div>
+        </div>
+        <p>Certain compilation options can be be specified <span class="emphasis"><em>either</em></span>
+on the command-line when compiling, or in the module itself.
+</p>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871416464" class="indexterm"/> <code class="function">module-compile-options</code> [<em class="replaceable"><code>key</code></em><em class="replaceable"><code><span class="bold"><strong>:</strong></span></code></em> <em class="replaceable"><code>value</code></em>] <em class="replaceable"><code>...</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>This sets the value of the <code class="literal">key</code> option to <code class="literal">value</code>
+for the current module (source file).  It takes effect as
+soon it is seen during the first macro-expansion pass,
+and is active thereafter (unless overridden by <code class="literal">with-compile-options</code>).
+</p>
+            <p>The <em class="replaceable"><code>key:</code></em> is one of the supported option names 
+(The ending colon makes it a Kawa keyword). Valid
+option keys are:
+</p>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>main:</strong></span></code> - Generate an application, with a main method.
+</p>
+                </li>
+              </ul>
+            </div>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>full-tailcalls:</strong></span></code> - Use a calling convention that supports proper tail recursion.
+</p>
+                </li>
+              </ul>
+            </div>
+            <div class="itemizedlist" epub:type="list">
+              <ul style="list-style-type: disc; " class="itemizedlist">
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-undefined-variable:</strong></span></code> - Warn if no compiler-visible binding for a variable.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-unknown-member:</strong></span></code> - Warn if referencing an unknown method or field.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-invoke-unknown-method:</strong></span></code> - Warn if invoke calls an unknown method (subsumed by warn-unknown-member).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-unused:</strong></span></code> - Warn if a variable is usused or code never executed.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-unreachable:</strong></span></code> - Warn if this code can never be executed.
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-void-used:</strong></span></code> - Warn if an expression depends on the value of a void sub-expression (one that never returns a value).
+</p>
+                </li>
+                <li class="listitem" epub:type="list-item">
+                  <p><code class="literal"><span class="bold"><strong>warn-as-error:</strong></span></code> - Treat a compilation warning as if it were an error.
+</p>
+                </li>
+              </ul>
+            </div>
+            <p>The <em class="replaceable"><code>value</code></em> must be a literal value: either a boolean
+(<code class="literal">#t</code> or <code class="literal">#f</code>), a number, or a string,
+depending on the <em class="replaceable"><code>key</code></em>.
+(All the options so far are boolean options.)
+</p>
+            <pre class="screen">(module-compile-options warn-undefined-variable: #t)
+;; This causes a warning message that y is unknown.
+(define (func x) (list x y))
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Syntax"><span class="kind">Syntax</span><span class="ignore">: </span><a id="idm139667871394864" class="indexterm"/> <code class="function">with-compile-options</code> [<em class="replaceable"><code>key:</code></em> <em class="replaceable"><code>value</code></em>] <em class="replaceable"><code>...</code></em> <em class="replaceable"><code>body</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Similar to <code class="literal">module-compile-options</code>, but the option
+is only active within <em class="replaceable"><code>body</code></em>.
+</p>
+            <p>The module option key <code class="literal">main:</code> has no effect when applied 
+to a particular body via the <code class="literal">with-compile-options</code> syntax.
+</p>
+            <pre class="screen">(define (func x)
+  (with-compile-options warn-invoke-unknown-method: #f
+    (invoke x 'size)))
+</pre>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871606752">Name visibility</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871573376">R7RS explicit library modules</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871515088">How a module becomes a class</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871467792">Same class for module and defined class</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871461264">Static vs non-static modules</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Module-classes.xhtml#idm139667871418480">Module options</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Annotations.xhtml">Annotations of declarations</a></p>
+        <p>
+        Next: <a accesskey="n" href="Importing.xhtml">Importing from a library</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

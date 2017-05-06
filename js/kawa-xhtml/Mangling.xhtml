@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Mapping Scheme names to Java names</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Field-operations.xhtml" title="Accessing object fields"/>
+    <link rel="next" href="Scheme-types-in-Java.xhtml" title="Scheme types in Java"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Mapping Scheme names to Java names" epub:type="subchapter" id="Mangling">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Mapping Scheme names to Java names</h2>
+          </div>
+        </div>
+      </div>
+      <p>Programs use "names" to refer to various values and procedures.
+The definition of what is a "name" is different in different
+programming languages.  A name in Scheme (and other Lisp-like
+languages) can in principle contain any character (if using a
+suitable quoting convention), but typically names consist of
+"words" (one or more letters) separated by hyphens, such
+as ‘<code class="literal">make-temporary-file</code>’.  Digits
+and some special symbols are also used.  Traditionally, Scheme is
+case-insensitive;  this means that the names ‘<code class="literal">loop</code>’,
+‘<code class="literal">Loop</code>’, and ‘<code class="literal">LOOP</code>’ are all the same name.  Kawa
+is by default case-sensitive, but we recommend that you
+avoid using upper-case letters as a general rule.
+</p>
+      <p>The Java language and the Java virtual machine uses names for
+classes, variables, fields and methods.
+Names in the Java language can contain upper- and lower-case letters,
+digits, and the special symbols ‘<code class="literal">_</code>’ and ‘<code class="literal">$</code>’.
+The Java virtual machine (JVM) allows most characters, but still
+has some limitations.
+</p>
+      <p>Kawa translates class names, package names, field names, and local variable
+names using the
+<a class="ulink" href="https://blogs.oracle.com/jrose/entry/symbolic_freedom_in_the_vm" target="_top">”symbolic” convention</a>, so most characters are unchanged.
+For example the Scheme function ‘<code class="literal">file-exists?</code>’
+becomes the field ‘<code class="literal">file-exists?</code>’, but <code class="literal">dotted.name</code>
+becomes ‘<code class="literal">dotted\,name</code>’.
+Such names may not be valid Java name, so to access them from a
+Java program you might have to use reflection.
+</p>
+      <p>When translating procedure names to method names,
+Kawa uses a different translation, in order to achieve
+more “Java-like” names. This means translating a
+Scheme-style name like ‘<code class="literal">make-temporary-file</code>’ to
+"mixed-case" words, such as ‘<code class="literal">makeTemporaryFile</code>’.
+The basic rule is simple:  Hyphens are dropped, and
+a letter that follows a hyphen is translated to its
+upper-case (actually "title-case") equivalent.  Otherwise,
+letters are translated as is.
+</p>
+      <p>Some special characters are handled specially.  A final ‘<code class="literal">?</code>’
+is replaced by an <span class="emphasis"><em>initial</em></span> ‘<code class="literal">is</code>’, with the following
+letter converted to titlecase.  Thus ‘<code class="literal">number?</code>’ is
+converted to ‘<code class="literal">isNumber</code>’ (which fits with Java conventions),
+and ‘<code class="literal">file-exists?</code>’ is converted to ‘<code class="literal">isFileExists</code>’
+(which doesn’t really).
+The pair ‘<code class="literal">-&gt;</code>’ is translated to ‘<code class="literal">$To$</code>’.
+For example ‘<code class="literal">list-&gt;string</code>’ is translated to ‘<code class="literal">list$To$string</code>’.
+</p>
+      <p>Some symbols are mapped to a mnemonic sequence, starting with a dollar-sign,
+followed by a two-character abbreviation.  For example, the less-than
+symbol ‘<code class="literal">&lt;</code>’ is mangled as ‘<code class="literal">$Ls</code>’.
+See the source code to the <code class="literal">mangleName</code> method in the
+<code class="literal">gnu.expr.Mangling</code> class for the full list.
+Characters that do not have a mnemonic abbreviation are
+mangled as ‘<code class="literal">$</code>’ followed by a four-hex-digit unicode value.
+For example ‘<code class="literal">Tamil vowel sign ai</code>’ is mangled as ‘<code class="literal">$0bc8</code>’.
+</p>
+      <p>Note that this mapping may map different Scheme names to the
+same Java name.  For example ‘<code class="literal">string?</code>’, ‘<code class="literal">String?</code>’,
+‘<code class="literal">is-string</code>’, ‘<code class="literal">is-String</code>’,
+and ‘<code class="literal">isString</code>’ are all mapped to the same Java identifier
+‘<code class="literal">isString</code>’.  Code that uses such "Java-clashing" names
+is <span class="emphasis"><em>not</em></span> supported.  There is very partial support for
+renaming names in the case of a clash, and there may be better
+support in the future.  However, some of the nice features of
+Kawa depend on being able to map Scheme name to Java names
+naturally, so we urge you to <span class="emphasis"><em>not</em></span> write code that
+"mixes" naming conventions by using (say) the names ‘<code class="literal">open-file</code>’
+and ‘<code class="literal">openFile</code>’ to name two different objects.
+</p>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Field-operations.xhtml">Accessing object fields</a></p>
+        <p>
+        Next: <a accesskey="n" href="Scheme-types-in-Java.xhtml">Scheme types in Java</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

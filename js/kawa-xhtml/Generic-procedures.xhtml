@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Generic (dynamically overloaded) procedures</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Extended-formals.xhtml" title="Extended Formal Arguments List"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Generic (dynamically overloaded) procedures" epub:type="subchapter" id="Generic-procedures">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Generic (dynamically overloaded) procedures</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">generic procedure</em> is a collection of <em class="firstterm">method procedures</em>.
+(A "method procedure" is not the same as a Java method, but
+the terms are related.)
+You can call a generic procedure, which selects the "closest
+match" among the component method procedures:  I.e. the most specific
+method procedure that is applicable given the actual arguments.
+</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p><span class="bold"><strong>Warning:</strong></span> The current implementation of selecting the "best" method
+is not reliable if there is more than one method.
+It can select depending on argument count, and it can select between
+primitive Java methods.  However, selecting between different Scheme
+procedures based on parameter types should be considered experimental.
+The main problem is we can’t determine the most specific
+method, so Kawa just tries the methods in order.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667877360096" class="indexterm"/> <code class="function">make-procedure</code> [<em class="replaceable"><code>keyword:</code></em> <em class="replaceable"><code>value</code></em>]<em class="replaceable"><code>...</code></em> <em class="replaceable"><code>method...</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Create a generic procedure given the specific methods.
+You can also specify property values for the result.
+</p>
+          <p>The <em class="replaceable"><code>keyword</code></em>s specify how the arguments are used.
+A <code class="literal">method:</code> keyword is optional and specifies that the following
+argument is a method.
+A <code class="literal">name:</code> keyword specifies the name of the resulting procedure,
+when used for printing.
+Unrecognized keywords are used to set the procedure properties of the result.
+</p>
+          <pre class="screen">(define plus10 (make-procedure foo: 33 name: 'Plus10
+                            method: (lambda (x y) (+ x y 10))
+                            method: (lambda () 10)))
+</pre>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="Procedures.xhtml">Procedures</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Procedure-properties.xhtml">Procedure properties</a></p>
+        <p>
+        Next: <a accesskey="n" href="Extended-formals.xhtml">Extended Formal Arguments List</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

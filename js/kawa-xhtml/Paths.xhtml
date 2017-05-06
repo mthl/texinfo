@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Paths - file name, URLs, and URIs</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Input-Output.xhtml" title="Input, output, and file handling"/>
+    <link rel="next" href="Files.xhtml" title="File System Interface"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Paths - file name, URLs, and URIs" epub:type="subchapter" id="Paths">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Paths - file name, URLs, and URIs</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">Path</em> is the name of a file or some other <em class="firstterm">resource</em>.
+The path mechanism provides a layer of abstraction, so you can
+use the same functions on either a filename or a URL/URI.
+Functions that in standard Scheme take a filename
+have been generalized to take a path or a path string,
+as if using the <code class="literal">path</code> function below.  For example:
+</p>
+      <pre class="screen">(open-input-file "http://www.gnu.org/index.html")
+(open-input-file (URI "ftp://ftp.gnu.org/README"))
+</pre>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667873009760" class="indexterm"/> <code class="function">path</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>A general path, which can be a <code class="literal">filename</code> or a <code class="literal">URI</code>.
+It can be either a <code class="literal">filename</code> or a <code class="literal">URI</code>.
+Represented using the abstract Java class <code class="literal">gnu.kawa.io.Path</code>.
+</p>
+          <p>Coercing a value to a <code class="literal">Path</code> is equivalent to
+calling the <code class="literal">path</code> constructor documented below.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Constructor"><span class="kind">Constructor</span><span class="ignore">: </span><a id="idm139667873003264" class="indexterm"/> <code class="function">path</code> <em class="replaceable"><code>arg</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Coerces the <em class="replaceable"><code>arg</code></em> to a <code class="literal">path</code>.
+If <em class="replaceable"><code>arg</code></em> is already a <code class="literal">path</code>, it is returned unchanged.
+If <em class="replaceable"><code>arg</code></em> is a <code class="literal">java.net.URI</code>, or a <code class="literal">java.net.URL</code>
+then a <code class="literal">URI</code> value is returned.
+If <em class="replaceable"><code>arg</code></em> is a <code class="literal">java.io.File</code>, a <code class="literal">filepath</code> value is returned.
+Otherwise, <em class="replaceable"><code>arg</code></em> can be a string.
+A <code class="literal">URI</code> value is returned if the string starts with a URI scheme
+(such as <code class="literal">"http:"</code>),
+and a <code class="literal">filepath</code> value is returned otherwise.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Predicate"><span class="kind">Predicate</span><span class="ignore">: </span><a id="idm139667872993328" class="indexterm"/> <code class="function">path?</code> <em class="replaceable"><code>arg</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>True if <em class="replaceable"><code>arg</code></em> is a <code class="literal">path</code> - i.e. an instance of a <code class="literal">gnu.kawa.io.Path</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872988688" class="indexterm"/> <code class="function">current-path</code> [<em class="replaceable"><code>new-value</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>With no arguments, returns the default directory of the current thread
+as a <code class="literal">path</code>.
+This is used as the base directory for relative pathnames.
+The initial value is that of the <code class="literal">user.dir</code> property
+as returned by <code class="literal">(java.lang.System:getProperty "user.dir")</code>.
+</p>
+          <p>If a <em class="replaceable"><code>new-value</code></em> argument is given, sets the default directory:
+</p>
+          <pre class="screen">(current-path "/opt/myApp/")
+</pre>
+          <p>A string value is automatically converted to a <code class="literal">path</code>,
+normally a <code class="literal">filepath</code>. 
+</p>
+          <p>Alternatively, you can change the default using a setter:
+</p>
+          <pre class="screen">(set! (current-path) "/opt/myApp/")
+</pre>
+          <p>Since <code class="literal">current-path</code> is a <a class="link" href="Parameter-objects.xhtml" title="Parameter objects">parameter object</a>, you can
+locally change the value using <a class="link" href="Parameter-objects.xhtml#parameterize-syntax"><code class="literal">parameterize</code></a>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667872978064" class="indexterm"/> <code class="function">filepath</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>The name of a local file.
+Represented using the Java class <code class="literal">gnu.kawa.io.FilePath</code>,
+which is a wrapper around <code class="literal">java.io.File</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Predicate"><span class="kind">Predicate</span><span class="ignore">: </span><a id="idm139667872974176" class="indexterm"/> <code class="function">filepath?</code> <em class="replaceable"><code>arg</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>True if <em class="replaceable"><code>arg</code></em> is a <code class="literal">filepath</code> - i.e. an instance of
+a <code class="literal">gnu.kawa.io.FilePath</code>.
+</p>
+        </blockquote>
+      </div>
+      <span id="URI-type"/>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667872969136" class="indexterm"/> <code class="function">URI</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>A Uniform Resource Indicator, which is a generalization of
+the more familiar URL.  The general format is specified by
+<a class="ulink" href="http://www.ietf.org/rfc/rfc2396.txt" target="_top">RFC 2396: Uniform Resource Identifiers (URI): Generic Syntax</a>.
+Represented using the Java class <code class="literal">gnu.kawa.io.URIPath</code>,
+which is a wrapper around <code class="literal">java.net.URI</code>.
+A URI can be a URL, or it be a relative URI.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Predicate"><span class="kind">Predicate</span><span class="ignore">: </span><a id="idm139667872964400" class="indexterm"/> <code class="function">URI?</code> <em class="replaceable"><code>arg</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>True if <em class="replaceable"><code>arg</code></em> is a <code class="literal">URI</code> - i.e. an instance of
+a <code class="literal">gnu.kawa.io.URIPath</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Type"><span class="kind">Type</span><span class="ignore">: </span><a id="idm139667872959792" class="indexterm"/> <code class="function">URL</code></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>A Uniform Resource Locator - a subtype of <code class="literal">URI</code>.
+Represented using the Java class <code class="literal">gnu.kawa.io.URLPath</code>,
+which is a wrapper around a <code class="literal">java.net.URL</code>, in
+addition to extending <code class="literal">gnu.kawa.io.URIPath</code>.
+</p>
+        </blockquote>
+      </div>
+      <section class="sect2" title="Extracting Path components" epub:type="division" id="idm139667872955168">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Extracting Path components</h3>
+            </div>
+          </div>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872954080" class="indexterm"/> <code class="function">path-scheme</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the “URI scheme” of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+defined, or <code class="literal">#f</code> otherwise.  The URI scheme of a <code class="literal">filepath</code>
+is <code class="literal">"file"</code> if the <code class="literal">filepath</code> is absolute, and <code class="literal">#f</code> otherwise.
+</p>
+            <pre class="screen">(path-scheme "http://gnu.org/") ⇒ "http"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872947296" class="indexterm"/> <code class="function">path-authority</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the authority part of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+defined, or <code class="literal">#f</code> otherwise.
+The “authority” is usually the hostname, but may also include user-info
+or a port-number.
+</p>
+            <pre class="screen">(path-authority "http://me@localhost:8000/home") ⇒ "me@localhost:8000"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872941920" class="indexterm"/> <code class="function">path-host</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the name name part of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+defined, or <code class="literal">#f</code> otherwise.
+</p>
+            <pre class="screen">(path-host "http://me@localhost:8000/home") ⇒ "localhost"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872936768" class="indexterm"/> <code class="function">path-user-info</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the “user info” of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+specified, or <code class="literal">#f</code> otherwise.
+</p>
+            <pre class="screen">(path-host "http://me@localhost:8000/home") ⇒ "me"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872931600" class="indexterm"/> <code class="function">path-port</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the port number of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+specified, or <code class="literal">-1</code> otherwise.  Even if there is a default port
+associated with a URI scheme (such as 80 for <code class="literal">http</code>), the value
+-1 is returned unless the port number is <span class="emphasis"><em>explictly</em></span> specified.
+</p>
+            <pre class="screen">(path-host "http://me@localhost:8000/home") ⇒ 8000
+(path-host "http://me@localhost/home") ⇒ -1
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872925424" class="indexterm"/> <code class="function">path-file</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the “path component” of the <em class="replaceable"><code>arg</code></em>
+(coerced to a <code class="literal">path</code>).
+(The name <code class="literal">path-path</code> might be more logical,
+but it is obviously a bit awkward.)
+The path component of a file name is the file name itself.
+For a URI, it is the main hierarchical part of the URI,
+without schema, authority, query, or fragment.
+</p>
+            <pre class="screen">(path-file "http://gnu.org/home/me.html?add-bug#body") ⇒ "/home/me.html"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872920112" class="indexterm"/> <code class="function">path-directory</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>If <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) is directory,
+return <em class="replaceable"><code>arg</code></em>; otherwise return the “parent” path, without the
+final component.
+</p>
+            <pre class="screen">(path-directory "http://gnu.org/home/me/index.html#body")
+  ⇒ (path "http://gnu.org/home/me/")
+(path-directory "http://gnu.org/home/me/")
+  ⇒ (path "http://gnu.org/home/me/")
+</pre>
+            <p><code class="literal">(path-directory "./dir")</code> <code class="literal">⇒</code> <code class="literal">(path "./dir")</code> if <code class="literal">dir</code> is a directory, and <code class="literal">(path ".")</code> otherwise.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872912448" class="indexterm"/> <code class="function">path-parent</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the “parent directory” of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>).
+If <em class="replaceable"><code>arg</code></em> is not a directory, same as <code class="literal">path-directory <em class="replaceable"><code>arg</code></em></code>.
+</p>
+            <pre class="screen">(path-parent "a/b/c") ⇒ (path "a/b")
+(path-parent "file:/a/b/c") ⇒ (path "file:/a/b/c")
+(path-parent "file:/a/b/c/") ⇒ (path "file:/a/b/")
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872906656" class="indexterm"/> <code class="function">path-last</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>The last component of path component
+of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>).
+Returns a substring of <code class="literal">(path-file <em class="replaceable"><code>arg</code></em>)</code>.
+If that string ends with ‘<code class="literal">/</code>’ or the path separator,
+that last character is ignored.
+Returns the tail of the path-string, following
+the last (non-final) ‘<code class="literal">/</code>’ or path separator.
+</p>
+            <pre class="screen">(path-last "http:/a/b/c") ⇒ "c"
+(path-last "http:/a/b/c/") ⇒ "c"
+(path-last "a/b/c") ⇒ "c"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872900016" class="indexterm"/> <code class="function">path-extension</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the “extension” of the <em class="replaceable"><code>arg</code></em>
+(coerced to a <code class="literal">path</code>).
+</p>
+            <pre class="screen">(path-extension "http://gnu.org/home/me.html?add-bug#body") ⇒ "html"
+(path-extension "/home/.init") ⇒ #f
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872895360" class="indexterm"/> <code class="function">path-query</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the query part of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+defined, or <code class="literal">#f</code> otherwise.  The query part of a URI is the
+part after ‘<code class="literal">?</code>’.
+</p>
+            <pre class="screen">(path-query "http://gnu.org/home?add-bug") ⇒ "add-bug"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872889824" class="indexterm"/> <code class="function">path-fragment</code> <em class="replaceable"><code>arg</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns the fragment part of <em class="replaceable"><code>arg</code></em> (coerced to a <code class="literal">path</code>) if it is
+defined, or <code class="literal">#f</code> otherwise.  The fragment of a URI is the
+part of after ‘<code class="literal">#</code>’.
+</p>
+            <pre class="screen">(path-query "http://gnu.org/home#top") ⇒ "top"
+</pre>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667872884304" class="indexterm"/> <code class="function">resolve-uri</code> <em class="replaceable"><code>uri</code></em> <em class="replaceable"><code>base</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Returns a <em class="replaceable"><code>uri</code></em> unchanged if it is an absolute URI.
+Otherwise resolves it against a base URI <em class="replaceable"><code>base</code></em>,
+which is normally (though not always) absolute.
+</p>
+            <p>This uses the algorithm specifyed by RFC-3986 (assuming <em class="replaceable"><code>base</code></em>
+is absolute), unlike the obsolete RFC-2396 algorithm used
+by <code class="literal">java.net.URI.resolve</code>.
+</p>
+          </blockquote>
+        </div>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Paths.xhtml#idm139667872955168">Extracting Path components</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Input-Output.xhtml">Input, output, and file handling</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Named-output-formats.xhtml">Named output formats</a></p>
+        <p>
+        Next: <a accesskey="n" href="Files.xhtml">File System Interface</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

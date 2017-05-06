@@ -1,0 +1,1462 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>The Kawa Scheme language</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+  </head>
+  <body>
+    <header/>
+    <h1>The Kawa Scheme language</h1>
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <nav epub:type="toc">
+        <ul>
+          <li>
+            <a href="index.html">The Kawa Scheme language</a>
+          </li>
+          <li>
+            <a href="news.xhtml">News - Recent Changes</a>
+          </li>
+          <li>
+            <a href="Features.xhtml">Features</a>
+            <ul>
+              <li>
+                <a href="Implemented-SRFIs.xhtml">Implemented SRFIs</a>
+              </li>
+              <li>
+                <a href="Compatibility.xhtml">Compatibility with standards</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="Community.xhtml">The Kawa Community</a>
+            <ul>
+              <li>
+                <a href="Reporting-bugs.xhtml">Reporting bugs</a>
+              </li>
+              <li>
+                <a href="Mailing-lists.xhtml">General Kawa email and discussion</a>
+              </li>
+              <li>
+                <a href="Acknowledgements.xhtml">Acknowledgements and thanks</a>
+              </li>
+              <li>
+                <a href="Support.xhtml">Technical Support for Kawa</a>
+              </li>
+              <li>
+                <a href="Projects.xhtml">Projects using Kawa</a>
+              </li>
+              <li>
+                <a href="Ideas-and-tasks.xhtml">Ideas and tasks for contributing to Kawa</a>
+                <ul>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881027616">Run interactive process in separate Java Virtual Machine:</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881023360">Better dynamic reload</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881017520">Easier Access to Native Libraries using JNA/JNR</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881013328">Types for units</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881003824">Compiler should use class-file reading instead of reflection</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667881001568">Mutually dependent Java and Scheme modules</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880993680">Use Java-7 MethodHandles and invokedynamic</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880988112">Parameterized types</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880983728">Optimized function types and values using MethodHandles</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880964448">Full continuations</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880960688">Faster tailcalls</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880957200">TreeList-optimization</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880954080">Asynchronous evaluation</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880948320">REPL console and other REPL improvement</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880941248">XQuery-3.0 functionality</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880938320">XQuery-updates</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880934976">Common Lisp support</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880931136">JEmacs improvements</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880926080">Improved IDE integration</a>
+                    <ul>
+                      <li>
+                        <a href="Ideas-and-tasks.xhtml#idm139667880923840">Plugin for NetBeans IDE</a>
+                      </li>
+                      <li>
+                        <a href="Ideas-and-tasks.xhtml#idm139667880922256">Plugin for Eclipse IDE</a>
+                      </li>
+                      <li>
+                        <a href="Ideas-and-tasks.xhtml#idm139667880918336">Improve Emacs integration</a>
+                      </li>
+                      <li>
+                        <a href="Ideas-and-tasks.xhtml#idm139667880914080">Implement <code class="literal">javax.tools</code> and code-range support in Kawa compiler</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880911776">Hop-style web programming</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880909600">String localization</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880905744">Data binding</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880899984">Decimal arithmetic and repeated decimals</a>
+                  </li>
+                  <li>
+                    <a href="Ideas-and-tasks.xhtml#idm139667880894144">Optional strict typing along with an explicit <code class="literal">dynamic</code> type</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="Installation.xhtml">Getting and installing Kawa</a>
+            <ul>
+              <li>
+                <a href="Getting-Kawa.xhtml">Getting Kawa</a>
+                <ul>
+                  <li>
+                    <a href="Getting-Kawa.xhtml#idm139667880870656">Getting the development sources using Git</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Running-Java.xhtml">Getting and running Java</a>
+              </li>
+              <li>
+                <a href="Binary-distribution.xhtml">Installing and using the binary distribution</a>
+              </li>
+              <li>
+                <a href="Source-distribution.xhtml">Installing and using the source distribution</a>
+                <ul>
+                  <li>
+                    <a href="Source-distribution.xhtml#idm139667880815760">Build Kawa using <code class="literal">configure</code> and <code class="literal">make</code></a>
+                    <ul>
+                      <li>
+                        <a href="Source-distribution.xhtml#idm139667880794912">Configure options</a>
+                      </li>
+                      <li>
+                        <a href="Source-distribution.xhtml#idm139667880724592">Building on Windows using MinGW</a>
+                      </li>
+                      <li>
+                        <a href="Source-distribution.xhtml#idm139667880717488">Building on Windows using Cygwin</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Source-distribution.xhtml#idm139667880709792">Building the documentation</a>
+                  </li>
+                  <li>
+                    <a href="Source-distribution.xhtml#idm139667880698416">Build Kawa using <code class="literal">ant</code></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="tutorial-index.xhtml">Kawa Scheme Tutorial</a>
+            <ul>
+              <li>
+                <a href="tutorial-Introduction.xhtml">Introduction</a>
+              </li>
+              <li>
+                <a href="tutorial-Booleans.xhtml">Booleans</a>
+              </li>
+              <li>
+                <a href="tutorial-Numbers.xhtml">Numbers</a>
+              </li>
+              <li>
+                <a href="tutorial-Functions.xhtml">Functions</a>
+              </li>
+              <li>
+                <a href="tutorial-Variables.xhtml">Variables</a>
+              </li>
+              <li>
+                <a href="tutorial-Pictures.xhtml">Composable pictures</a>
+              </li>
+              <li>
+                <a href="tutorial-Sequences.xhtml">Lists and sequences</a>
+              </li>
+              <li>
+                <a href="tutorial-Objects.xhtml">Creating and using objects</a>
+              </li>
+              <li>
+                <a href="tutorial-Types.xhtml">Types and declarations</a>
+              </li>
+              <li>
+                <a href="tutorial-Exceptions-and-errors.xhtml">Exceptions and errors</a>
+              </li>
+              <li>
+                <a href="tutorial-Classes.xhtml">Classes</a>
+              </li>
+              <li>
+                <a href="tutorial-Other-Java-features.xhtml">Other Java features</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="pt01.xhtml">Reference Documentation</a>
+            <ul>
+              <li>
+                <a href="Running.xhtml">How to start up and run Kawa</a>
+                <ul>
+                  <li>
+                    <a href="Options.xhtml">Command-line arguments</a>
+                    <ul>
+                      <li>
+                        <a href="Options.xhtml#idm139667880304720">Argument processing</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880292032">General options</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880239696">Options for language selection</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880216944">Options for warnings and errors</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880186288">Options for setting variables</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880172992">Options for the REPL console</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880159184">Options for controlling output formatting</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880136112">Options for compiling and optimizing</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880110352">Options for debugging</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880098544">Options for web servers</a>
+                      </li>
+                      <li>
+                        <a href="Options.xhtml#idm139667880089520">Options for the JVM</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Scripts.xhtml">Running Command Scripts</a>
+                    <ul>
+                      <li>
+                        <a href="Scripts.xhtml#idm139667880059216">Setting kawa options in the script</a>
+                      </li>
+                      <li>
+                        <a href="Scripts.xhtml#idm139667880046784">Other ways to pass options using meta-arg or –script</a>
+                      </li>
+                      <li>
+                        <a href="Scripts.xhtml#idm139667880035696">Scripts for compiled code</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="REPL-Console.xhtml">The REPL (read-eval-print-loop) console</a>
+                    <ul>
+                      <li>
+                        <a href="REPL-Console.xhtml#idm139667880015696">Input line editing and history</a>
+                      </li>
+                      <li>
+                        <a href="REPL-Console.xhtml#idm139667880001952">Running a Command Interpreter in a new Window</a>
+                      </li>
+                      <li>
+                        <a href="REPL-Console.xhtml#idm139667879970864">Using DomTerm</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Exiting.xhtml">Exiting Kawa</a>
+                  </li>
+                  <li>
+                    <a href="Compiling.xhtml">Compiling to byte-code</a>
+                    <ul>
+                      <li>
+                        <a href="Compiling.xhtml#Files-compilation">Compiling to a set of .class files</a>
+                      </li>
+                      <li>
+                        <a href="Compiling.xhtml#Archive-compilation">Compiling to an archive file</a>
+                      </li>
+                      <li>
+                        <a href="Compiling.xhtml#Compiling-using-Ant">Compiling using Ant</a>
+                      </li>
+                      <li>
+                        <a href="Compiling.xhtml#Application-compilation">Compiling to a standalone application</a>
+                      </li>
+                      <li>
+                        <a href="Compiling.xhtml#Applet-compilation">Compiling to an applet</a>
+                      </li>
+                      <li>
+                        <a href="Compiling.xhtml#Compiling-to-executable">Compiling to a native executable</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Syntax.xhtml">Syntax</a>
+                <ul>
+                  <li>
+                    <a href="Syntax-notation.xhtml">Notation</a>
+                  </li>
+                  <li>
+                    <a href="Lexical-and-datum-syntax.xhtml">Lexical and datum syntax</a>
+                  </li>
+                  <li>
+                    <a href="Lexical-syntax.xhtml">Lexical syntax</a>
+                    <ul>
+                      <li>
+                        <a href="Lexical-syntax.xhtml#idm139667879815472">Formal account</a>
+                      </li>
+                      <li>
+                        <a href="Lexical-syntax.xhtml#idm139667879784160">Line endings</a>
+                      </li>
+                      <li>
+                        <a href="Lexical-syntax.xhtml#idm139667879778688">Whitespace and comments</a>
+                      </li>
+                      <li>
+                        <a href="Lexical-syntax.xhtml#idm139667879720624">Identifiers</a>
+                      </li>
+                      <li>
+                        <a href="Lexical-syntax.xhtml#idm139667879590080">Numbers</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Datum-syntax.xhtml">Datum syntax</a>
+                    <ul>
+                      <li>
+                        <a href="Datum-syntax.xhtml#idm139667879485216">Datum labels</a>
+                      </li>
+                      <li>
+                        <a href="Datum-syntax.xhtml#idm139667879457440">Abbreviations</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Hash-prefixed-forms.xhtml">Hash-prefixed forms</a>
+                  </li>
+                  <li>
+                    <a href="Primitive-expression-syntax.xhtml">Primitive expression syntax</a>
+                    <ul>
+                      <li>
+                        <a href="Primitive-expression-syntax.xhtml#idm139667879287568">Literal expressions</a>
+                      </li>
+                      <li>
+                        <a href="Primitive-expression-syntax.xhtml#idm139667879268592">Variable references</a>
+                      </li>
+                      <li>
+                        <a href="Primitive-expression-syntax.xhtml#idm139667879263008">Procedure calls</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Colon-notation.xhtml">Property access using colon notation</a>
+                    <ul>
+                      <li>
+                        <a href="Colon-notation.xhtml#idm139667879218672">Part lookup rules</a>
+                      </li>
+                      <li>
+                        <a href="Colon-notation.xhtml#idm139667879198688">Specific cases</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879197264">Invoking methods</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879180480">Accessing fields</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879171040">Type literal</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879166304">Type cast</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879159648">Type test</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879153152">New object construction</a>
+                          </li>
+                          <li>
+                            <a href="Colon-notation.xhtml#idm139667879145216">Getting array length</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Bodies.xhtml">Programs and Bodies</a>
+                  </li>
+                  <li>
+                    <a href="Syntax-and-conditional-compilation.xhtml">Syntax and conditional compilation</a>
+                  </li>
+                  <li>
+                    <a href="Macros.xhtml">Macros</a>
+                    <ul>
+                      <li>
+                        <a href="Macros.xhtml#idm139667878937936">Pattern language</a>
+                      </li>
+                      <li>
+                        <a href="Macros.xhtml#idm139667878770304">Identifier predicates</a>
+                      </li>
+                      <li>
+                        <a href="Macros.xhtml#idm139667878720528">Syntax-object and datum conversions</a>
+                      </li>
+                      <li>
+                        <a href="Macros.xhtml#idm139667878677280">Signaling errors in macro transformers</a>
+                      </li>
+                      <li>
+                        <a href="Macros.xhtml#idm139667878656608">Convenience forms</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Named-quasi-literals.xhtml">Named quasi-literals</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Program-structure.xhtml">Program structure</a>
+                <ul>
+                  <li>
+                    <a href="Boolean-values.xhtml">Boolean values</a>
+                  </li>
+                  <li>
+                    <a href="Conditionals.xhtml">Conditionals</a>
+                  </li>
+                  <li>
+                    <a href="Variables-and-Patterns.xhtml">Variables and Patterns</a>
+                    <ul>
+                      <li>
+                        <a href="Variables-and-Patterns.xhtml#idm139667878322480">Patterns</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Definitions.xhtml">Definitions</a>
+                  </li>
+                  <li>
+                    <a href="Local-binding-constructs.xhtml">Local binding constructs</a>
+                  </li>
+                  <li>
+                    <a href="Lazy-evaluation.xhtml">Lazy evaluation</a>
+                    <ul>
+                      <li>
+                        <a href="Lazy-evaluation.xhtml#idm139667878104384">Delayed evaluation</a>
+                      </li>
+                      <li>
+                        <a href="Lazy-evaluation.xhtml#idm139667878051664">Implicit forcing</a>
+                      </li>
+                      <li>
+                        <a href="Lazy-evaluation.xhtml#idm139667878038224">Blank promises</a>
+                      </li>
+                      <li>
+                        <a href="Lazy-evaluation.xhtml#idm139667877996688">Lazy and eager types</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Threads.xhtml">Threads</a>
+                  </li>
+                  <li>
+                    <a href="Exceptions.xhtml">Exception handling</a>
+                    <ul>
+                      <li>
+                        <a href="Exceptions.xhtml#idm139667877898080">Simple error objects</a>
+                      </li>
+                      <li>
+                        <a href="Exceptions.xhtml#idm139667877874016">Named exceptions</a>
+                      </li>
+                      <li>
+                        <a href="Exceptions.xhtml#idm139667877853776">Native exception handling</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Control-features.xhtml">Control features</a>
+                <ul>
+                  <li>
+                    <a href="Mapping-functions.xhtml">Mapping functions</a>
+                  </li>
+                  <li>
+                    <a href="Multiple-values.xhtml">Multiple values</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Symbols-and-namespaces.xhtml">Symbols and namespaces</a>
+                <ul>
+                  <li>
+                    <a href="Simple-symbols.xhtml">Simple symbols</a>
+                  </li>
+                  <li>
+                    <a href="Namespaces.xhtml">Namespaces and compound symbols</a>
+                    <ul>
+                      <li>
+                        <a href="Namespaces.xhtml#idm139667877679568">Namespace objects</a>
+                      </li>
+                      <li>
+                        <a href="Namespaces.xhtml#idm139667877658832">Compound symbols</a>
+                      </li>
+                      <li>
+                        <a href="Namespaces.xhtml#idm139667877616896">Namespace aliases</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Keywords.xhtml">Keywords</a>
+                  </li>
+                  <li>
+                    <a href="Special-named-constants.xhtml">Special named constants</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Procedures.xhtml">Procedures</a>
+                <ul>
+                  <li>
+                    <a href="Application-and-Arguments-Lists.xhtml">Application and Arguments Lists</a>
+                    <ul>
+                      <li>
+                        <a href="Application-and-Arguments-Lists.xhtml#idm139667877516224">Arguments lists</a>
+                      </li>
+                      <li>
+                        <a href="Application-and-Arguments-Lists.xhtml#idm139667877498112">Explicit argument list objects</a>
+                      </li>
+                      <li>
+                        <a href="Application-and-Arguments-Lists.xhtml#idm139667877468752">Argument list library</a>
+                      </li>
+                      <li>
+                        <a href="Application-and-Arguments-Lists.xhtml#idm139667877422304">Apply procedures</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Procedure-properties.xhtml">Procedure properties</a>
+                    <ul>
+                      <li>
+                        <a href="Procedure-properties.xhtml#idm139667877371584">Standard properties</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Generic-procedures.xhtml">Generic (dynamically overloaded) procedures</a>
+                  </li>
+                  <li>
+                    <a href="Extended-formals.xhtml">Extended Formal Arguments List</a>
+                  </li>
+                  <li>
+                    <a href="Partial-application.xhtml">Partial application</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Numbers.xhtml">Quantities and Numbers</a>
+                <ul>
+                  <li>
+                    <a href="Numerical-types.xhtml">Numerical types</a>
+                    <ul>
+                      <li>
+                        <a href="Numerical-types.xhtml#idm139667877158000">Exactness</a>
+                      </li>
+                      <li>
+                        <a href="Numerical-types.xhtml#idm139667877134800">Numerical promotion and conversion</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Arithmetic-operations.xhtml">Arithmetic operations</a>
+                  </li>
+                  <li>
+                    <a href="Numerical-input-and-output.xhtml">Numerical input and output</a>
+                  </li>
+                  <li>
+                    <a href="Quaternions.xhtml">Quaternions</a>
+                    <ul>
+                      <li>
+                        <a href="Quaternions.xhtml#idm139667876669472">The <code class="literal">(kawa quaternions)</code> module</a>
+                      </li>
+                      <li>
+                        <a href="Quaternions.xhtml#idm139667876583328">The <code class="literal">(kawa rotations)</code> module</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Quaternions.xhtml#idm139667876580144">Rotation Representation Conversions</a>
+                          </li>
+                          <li>
+                            <a href="Quaternions.xhtml#idm139667876273248">Rotation Operations</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Quantities.xhtml">Quantities and Units</a>
+                  </li>
+                  <li>
+                    <a href="Logical-Number-Operations.xhtml">Logical Number Operations</a>
+                    <ul>
+                      <li>
+                        <a href="Logical-Number-Operations.xhtml#idm139667876079808">SRFI-60 Logical Number Operations</a>
+                      </li>
+                      <li>
+                        <a href="Logical-Number-Operations.xhtml#idm139667875960208">Deprecated Logical Number Operations</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Performance-of-numeric-operations.xhtml">Performance of numeric operations</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Characters-and-text.xhtml">Characters and text</a>
+                <ul>
+                  <li>
+                    <a href="Characters.xhtml">Characters</a>
+                  </li>
+                  <li>
+                    <a href="Character-sets.xhtml">Character sets</a>
+                  </li>
+                  <li>
+                    <a href="Strings.xhtml">Strings</a>
+                    <ul>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875762032">Basic string procedures</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875704704">Immutable String Constructors</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875652960">Selection</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875592560">String Comparisons</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875526960">Conversions</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875457824">Searching and matching</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875357872">Concatenation and replacing</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875295264">Mapping and folding</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875193520">Replication &amp; splitting</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875144736">String mutation</a>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875071808">Strings as sequences</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Strings.xhtml#idm139667875070864">Indexing a string</a>
+                          </li>
+                          <li>
+                            <a href="Strings.xhtml#idm139667875052688">Indexing with a sequence</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="Strings.xhtml#idm139667875043024">String Cursor API</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="String-literals.xhtml">String literals</a>
+                    <ul>
+                      <li>
+                        <a href="String-literals.xhtml#idm139667874965056">Simple string literals</a>
+                      </li>
+                      <li>
+                        <a href="String-literals.xhtml#idm139667874889552">String templates</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="String-literals.xhtml#idm139667874860704">Special characters</a>
+                          </li>
+                          <li>
+                            <a href="String-literals.xhtml#idm139667874833328">Multiline string literals</a>
+                          </li>
+                          <li>
+                            <a href="String-literals.xhtml#idm139667874808736">Embedded expressions</a>
+                          </li>
+                          <li>
+                            <a href="String-literals.xhtml#idm139667874793168">Formatting</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Unicode.xhtml">Unicode character classes and conversions</a>
+                    <ul>
+                      <li>
+                        <a href="Unicode.xhtml#idm139667874766096">Characters</a>
+                      </li>
+                      <li>
+                        <a href="Unicode.xhtml#idm139667874668368">Deprecated in-place case modification</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Regular-expressions.xhtml">Regular expressions</a>
+                    <ul>
+                      <li>
+                        <a href="Regular-expressions.xhtml#idm139667874633760">Java regular expressions</a>
+                      </li>
+                      <li>
+                        <a href="Regular-expressions.xhtml#idm139667874556928">Portable Scheme regular expressions</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Data-structures.xhtml">Data structures</a>
+                <ul>
+                  <li>
+                    <a href="Sequences.xhtml">Sequences</a>
+                  </li>
+                  <li>
+                    <a href="Lists.xhtml">Lists</a>
+                    <ul>
+                      <li>
+                        <a href="Lists.xhtml#idm139667874492576">SRFI-1 list library</a>
+                      </li>
+                      <li>
+                        <a href="Lists.xhtml#idm139667874482928">SRFI-101 Purely Functional Random-Access Pairs and Lists</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Vectors.xhtml">Vectors</a>
+                  </li>
+                  <li>
+                    <a href="Uniform-vectors.xhtml">Uniform vectors</a>
+                    <ul>
+                      <li>
+                        <a href="Uniform-vectors.xhtml#idm139667874063184">Relationship with Java arrays</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Bytevectors.xhtml">Bytevectors</a>
+                    <ul>
+                      <li>
+                        <a href="Bytevectors.xhtml#idm139667873983184">Converting to or from strings</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Ranges.xhtml">Ranges</a>
+                  </li>
+                  <li>
+                    <a href="Streams.xhtml">Streams - lazy lists</a>
+                  </li>
+                  <li>
+                    <a href="Arrays.xhtml">Multi-dimensional Arrays</a>
+                    <ul>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873857328">Array shape</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873795792">Array types</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873776720">Array literals and printing</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873733232">Array construction</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873697328">Array indexing</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873642576">Modifying arrays</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873610672">Transformations and views</a>
+                      </li>
+                      <li>
+                        <a href="Arrays.xhtml#idm139667873542560">Miscellaneous</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Hash-tables.xhtml">Hash tables</a>
+                    <ul>
+                      <li>
+                        <a href="Hash-tables.xhtml#idm139667873522768">R6RS hash tables</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873488544">Procedures</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873417072">Inspection</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873400176">Hash functions</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <a href="Hash-tables.xhtml#idm139667873378016">SRFI-69 hash tables</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873375216">Type constructors and predicate</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873340864">Reflective queries</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873332080">Dealing with single elements</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873283328">Dealing with the whole contents</a>
+                          </li>
+                          <li>
+                            <a href="Hash-tables.xhtml#idm139667873230176">Hash functions</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Eval-and-Environments.xhtml">Eval and Environments</a>
+                <ul>
+                  <li>
+                    <a href="Locations.xhtml">Locations</a>
+                  </li>
+                  <li>
+                    <a href="Parameter-objects.xhtml">Parameter objects</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Debugging.xhtml">Debugging</a>
+              </li>
+              <li>
+                <a href="Input-Output.xhtml">Input, output, and file handling</a>
+                <ul>
+                  <li>
+                    <a href="Named-output-formats.xhtml">Named output formats</a>
+                  </li>
+                  <li>
+                    <a href="Paths.xhtml">Paths - file name, URLs, and URIs</a>
+                    <ul>
+                      <li>
+                        <a href="Paths.xhtml#idm139667872955168">Extracting Path components</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Files.xhtml">File System Interface</a>
+                  </li>
+                  <li>
+                    <a href="Reading-and-writing-whole-files.xhtml">Reading and writing whole files</a>
+                    <ul>
+                      <li>
+                        <a href="Reading-and-writing-whole-files.xhtml#idm139667872829760">Reading a file</a>
+                      </li>
+                      <li>
+                        <a href="Reading-and-writing-whole-files.xhtml#idm139667872818656">Blobs</a>
+                      </li>
+                      <li>
+                        <a href="Reading-and-writing-whole-files.xhtml#idm139667872811728">Writing to a file</a>
+                      </li>
+                      <li>
+                        <a href="Reading-and-writing-whole-files.xhtml#idm139667872799632">Functions</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Ports.xhtml">Ports</a>
+                    <ul>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872657696">String and bytevector ports</a>
+                      </li>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872621584">Input</a>
+                      </li>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872533328">Output</a>
+                      </li>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872467600">Prompts for interactive consoles (REPLs)</a>
+                      </li>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872412128">Line numbers and other input port properties</a>
+                      </li>
+                      <li>
+                        <a href="Ports.xhtml#idm139667872368816">Miscellaneous</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Format.xhtml">Formatted Output (Common-Lisp-style)</a>
+                    <ul>
+                      <li>
+                        <a href="Format.xhtml#idm139667872312816">Implemented CL Format Control Directives</a>
+                      </li>
+                      <li>
+                        <a href="Format.xhtml#idm139667872293200">Formatting Integers</a>
+                      </li>
+                      <li>
+                        <a href="Format.xhtml#idm139667872246272">Formatting real numbers</a>
+                      </li>
+                      <li>
+                        <a href="Format.xhtml#idm139667872214448">Miscellaneous formatting operators</a>
+                      </li>
+                      <li>
+                        <a href="Format.xhtml#idm139667872138880">Unimplemented CL Format Control Directives</a>
+                      </li>
+                      <li>
+                        <a href="Format.xhtml#idm139667872132720">Extended, Replaced and Additional Control Directives</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Pretty-printing.xhtml">Pretty-printing</a>
+                    <ul>
+                      <li>
+                        <a href="Pretty-printing.xhtml#idm139667872102416">Pretty-printing Scheme forms</a>
+                      </li>
+                      <li>
+                        <a href="Pretty-printing.xhtml#idm139667872084384">Generic pretty-printing functions</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Resources.xhtml">Resources</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Types.xhtml">Types</a>
+                <ul>
+                  <li>
+                    <a href="Standard-Types.xhtml">Standard Types</a>
+                  </li>
+                  <li>
+                    <a href="Parameterized-Types.xhtml">Parameterized Types</a>
+                  </li>
+                  <li>
+                    <a href="Type-tests-and-conversions.xhtml">Type tests and conversions</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a>
+                <ul>
+                  <li>
+                    <a href="Defining-new-classes.xhtml">Defining new classes</a>
+                    <ul>
+                      <li>
+                        <a href="Defining-new-classes.xhtml#idm139667871849328">General class properties</a>
+                      </li>
+                      <li>
+                        <a href="Defining-new-classes.xhtml#idm139667871818992">Declaring fields</a>
+                      </li>
+                      <li>
+                        <a href="Defining-new-classes.xhtml#idm139667871763344">Declaring methods</a>
+                      </li>
+                      <li>
+                        <a href="Defining-new-classes.xhtml#idm139667871712176">Example</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Anonymous-classes.xhtml">Anonymous classes</a>
+                    <ul>
+                      <li>
+                        <a href="Anonymous-classes.xhtml#idm139667871675040">Lambda as shorthand for anonymous class</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Enumerations.xhtml">Enumeration types</a>
+                  </li>
+                  <li>
+                    <a href="Annotations.xhtml">Annotations of declarations</a>
+                  </li>
+                  <li>
+                    <a href="Module-classes.xhtml">Modules and how they are compiled to classes</a>
+                    <ul>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871606752">Name visibility</a>
+                      </li>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871573376">R7RS explicit library modules</a>
+                      </li>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871515088">How a module becomes a class</a>
+                      </li>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871467792">Same class for module and defined class</a>
+                      </li>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871461264">Static vs non-static modules</a>
+                      </li>
+                      <li>
+                        <a href="Module-classes.xhtml#idm139667871418480">Module options</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Importing.xhtml">Importing from a library</a>
+                    <ul>
+                      <li>
+                        <a href="Importing.xhtml#idm139667871273696">Searching for modules</a>
+                      </li>
+                      <li>
+                        <a href="Importing.xhtml#idm139667871262528">Searching for source files</a>
+                      </li>
+                      <li>
+                        <a href="Importing.xhtml#idm139667871238240">Builtin libraries</a>
+                      </li>
+                      <li>
+                        <a href="Importing.xhtml#idm139667871212272">Importing a SRFI library</a>
+                      </li>
+                      <li>
+                        <a href="Importing.xhtml#idm139667871206048">Importing from a plain class</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Record-types.xhtml">Record types</a>
+                  </li>
+                  <li>
+                    <a href="Dynamic-records.xhtml">Creating New Record Types On-the-fly</a>
+                  </li>
+                  <li>
+                    <a href="Method-operations.xhtml">Calling Java methods from Scheme</a>
+                    <ul>
+                      <li>
+                        <a href="Method-operations.xhtml#idm139667871098400">Calling static methods using colon notation</a>
+                      </li>
+                      <li>
+                        <a href="Method-operations.xhtml#idm139667871085136">Calling instance methods using colon notation</a>
+                      </li>
+                      <li>
+                        <a href="Method-operations.xhtml#idm139667871058224">Method names</a>
+                      </li>
+                      <li>
+                        <a href="Method-operations.xhtml#idm139667871048192">Invoking a method with the <code class="literal">invoke</code> function</a>
+                      </li>
+                      <li>
+                        <a href="Method-operations.xhtml#idm139667870994624">Using a namespace prefix</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Allocating-objects.xhtml">Allocating objects</a>
+                  </li>
+                  <li>
+                    <a href="Field-operations.xhtml">Accessing object fields</a>
+                    <ul>
+                      <li>
+                        <a href="Field-operations.xhtml#idm139667870907808">Accessing static fields and properties</a>
+                      </li>
+                      <li>
+                        <a href="Field-operations.xhtml#idm139667870901152">Accessing instance fields and properties</a>
+                      </li>
+                      <li>
+                        <a href="Field-operations.xhtml#idm139667870892384">Using field and static-field methods</a>
+                      </li>
+                      <li>
+                        <a href="Field-operations.xhtml#idm139667870859200">Older colon-dot notation</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Mangling.xhtml">Mapping Scheme names to Java names</a>
+                  </li>
+                  <li>
+                    <a href="Scheme-types-in-Java.xhtml">Scheme types in Java</a>
+                  </li>
+                  <li>
+                    <a href="Array-operations.xhtml">Using Java Arrays</a>
+                    <ul>
+                      <li>
+                        <a href="Array-operations.xhtml#idm139667870790912">Creating new Java arrays</a>
+                      </li>
+                      <li>
+                        <a href="Array-operations.xhtml#idm139667870784080">Accessing Java array elements</a>
+                      </li>
+                      <li>
+                        <a href="Array-operations.xhtml#idm139667870776432">Old low-level array macros</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Loading-Java-functions-into-Scheme.xhtml">Loading Java functions into Scheme</a>
+                  </li>
+                  <li>
+                    <a href="Evaluating-Scheme-expressions-from-Java.xhtml">Evaluating Scheme expressions from Java</a>
+                    <ul>
+                      <li>
+                        <a href="Evaluating-Scheme-expressions-from-Java.xhtml#idm139667870715120">Using <code class="literal">javax.script</code> portable Java scripting</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="XML-tools.xhtml">Working with XML and HTML</a>
+                <ul>
+                  <li>
+                    <a href="Formatting-XML.xhtml">Formatting XML</a>
+                  </li>
+                  <li>
+                    <a href="Creating-HTML-nodes.xhtml">Creating HTML nodes</a>
+                  </li>
+                  <li>
+                    <a href="Creating-XML-nodes.xhtml">Creating XML nodes</a>
+                  </li>
+                  <li>
+                    <a href="XML-literals.xhtml">XML literals</a>
+                    <ul>
+                      <li>
+                        <a href="XML-literals.xhtml#idm139667870603696">Element constructors</a>
+                      </li>
+                      <li>
+                        <a href="XML-literals.xhtml#idm139667870567456">Elements contents (children)</a>
+                      </li>
+                      <li>
+                        <a href="XML-literals.xhtml#idm139667870537104">Attributes</a>
+                      </li>
+                      <li>
+                        <a href="XML-literals.xhtml#idm139667870514752">QNames and namespaces</a>
+                      </li>
+                      <li>
+                        <a href="XML-literals.xhtml#idm139667870489696">Other XML types</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="XML-literals.xhtml#idm139667870488752">Processing instructions</a>
+                          </li>
+                          <li>
+                            <a href="XML-literals.xhtml#idm139667870474256">XML comments</a>
+                          </li>
+                          <li>
+                            <a href="XML-literals.xhtml#idm139667870465232">CDATA sections</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Server-side-scripts.xhtml">Web page scripts</a>
+                  </li>
+                  <li>
+                    <a href="Self-configuring-page-scripts.xhtml">Self-configuring web page scripts</a>
+                    <ul>
+                      <li>
+                        <a href="Self-configuring-page-scripts.xhtml#idm139667870414560">Using the OpenJDK built-in web server</a>
+                      </li>
+                      <li>
+                        <a href="Self-configuring-page-scripts.xhtml#idm139667870403088">Using a servlet container</a>
+                      </li>
+                      <li>
+                        <a href="Self-configuring-page-scripts.xhtml#idm139667870397552">Finding a matching script</a>
+                      </li>
+                      <li>
+                        <a href="Self-configuring-page-scripts.xhtml#idm139667870392000">Determining script language</a>
+                      </li>
+                      <li>
+                        <a href="Self-configuring-page-scripts.xhtml#idm139667870375424">Compilation and caching</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Servlets.xhtml">Installing web page scripts as Servlets</a>
+                    <ul>
+                      <li>
+                        <a href="Servlets.xhtml#idm139667870369168">Creating a web application</a>
+                      </li>
+                      <li>
+                        <a href="Servlets.xhtml#idm139667870357024">Compiling a web page script to a servlet</a>
+                      </li>
+                      <li>
+                        <a href="Servlets.xhtml#idm139667870346784">Installing a servlet under Tomcat</a>
+                      </li>
+                      <li>
+                        <a href="Servlets.xhtml#idm139667870337024">Installing a servlet under Glassfish</a>
+                      </li>
+                      <li>
+                        <a href="Servlets.xhtml#idm139667870323664">Servlet-specific script functions</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="CGI-scripts.xhtml">Installing Kawa programs as CGI scripts</a>
+                  </li>
+                  <li>
+                    <a href="HTTP-requests.xhtml">Functions for accessing HTTP requests</a>
+                    <ul>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870271056">Request URL components</a>
+                      </li>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870232736">Request parameters</a>
+                      </li>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870217504">Request headers</a>
+                      </li>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870207696">Request body</a>
+                      </li>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870197584">Request IP addresses and ports</a>
+                      </li>
+                      <li>
+                        <a href="HTTP-requests.xhtml#idm139667870167536">Miscellaneous request properties</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="HTTP-response.xhtml">Generating HTTP responses</a>
+                  </li>
+                  <li>
+                    <a href="XML-beyond-Scheme.xhtml">Using non-Scheme languages for XML/HTML</a>
+                    <ul>
+                      <li>
+                        <a href="XML-beyond-Scheme.xhtml#idm139667870128192">XQuery language</a>
+                      </li>
+                      <li>
+                        <a href="XML-beyond-Scheme.xhtml#idm139667870124432">XSL transformations</a>
+                      </li>
+                      <li>
+                        <a href="XML-beyond-Scheme.xhtml#KRL">KRL - The Kawa Report Language for generating XML/HTML</a>
+                      </li>
+                      <li>
+                        <a href="XML-beyond-Scheme.xhtml#idm139667870116400">Differences between KRL and BRL</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="Miscellaneous.xhtml">Miscellaneous topics</a>
+                <ul>
+                  <li>
+                    <a href="Composable-pictures.xhtml">Composable pictures</a>
+                    <ul>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667870078896">Coordinates - points and dimensions</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667870053184">Shapes</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667870019904">Colors and paints</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869985312">Filling a shape with a color</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869973952">Stroking (outlining) a shape</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869946288">Affine transforms</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869868832">Combining pictures</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869799600">Images</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869745248">Compositing - Controlling how pictures are combined</a>
+                      </li>
+                      <li>
+                        <a href="Composable-pictures.xhtml#idm139667869739872">Displaying and exporting pictures</a>
+                        <ul hidden="">
+                          <li>
+                            <a href="Composable-pictures.xhtml#idm139667869738912">Export to SVG</a>
+                          </li>
+                          <li>
+                            <a href="Composable-pictures.xhtml#idm139667869721040">Display in Swing</a>
+                          </li>
+                          <li>
+                            <a href="Composable-pictures.xhtml#idm139667869698304">Convert to image</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Building-JavaFX-applications.xhtml">Building JavaFX applications</a>
+                    <ul>
+                      <li>
+                        <a href="Building-JavaFX-applications.xhtml#idm139667869684720">Using JavaFX with JDK 7</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Building-for-Android.xhtml">Building for Android</a>
+                    <ul>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869672672">Downloading and setting up the Android SDK</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869666944">Building Kawa for Android</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869660736">Creating the application</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869650560">Running the application on the Android emulator</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869642320">Running the application on your device</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869632608">Some debugging notes</a>
+                      </li>
+                      <li>
+                        <a href="Building-for-Android.xhtml#idm139667869626352">Other resources</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Android-view-construction.xhtml">Android view construction</a>
+                    <ul>
+                      <li>
+                        <a href="Android-view-construction.xhtml#idm139667869598656">View object allocation</a>
+                      </li>
+                      <li>
+                        <a href="Android-view-construction.xhtml#idm139667869592752">Event handlers</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="System-inquiry.xhtml">System inquiry</a>
+                  </li>
+                  <li>
+                    <a href="Processes.xhtml">Processes</a>
+                    <ul>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869542768">Creating a process</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869512640">Process literals</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869498432">Process values and process output</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869488528">Substitution and tokenization</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869467008">Input/output redirection</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869414528">Pipe-lines</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869401952">Setting the process environment</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869386880">Waiting for process exit</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869370272">Exiting the current process</a>
+                      </li>
+                      <li>
+                        <a href="Processes.xhtml#idm139667869354352">Deprecated functions</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="Time-related-functions.xhtml">Time-related functions</a>
+                  </li>
+                  <li>
+                    <a href="Low-level-functions.xhtml">Deprecated low-level functions</a>
+                    <ul>
+                      <li>
+                        <a href="Low-level-functions.xhtml#idm139667869304896">Low-level Method invocation</a>
+                      </li>
+                      <li>
+                        <a href="Low-level-functions.xhtml#idm139667869278080">Low-level field operations</a>
+                      </li>
+                      <li>
+                        <a href="Low-level-functions.xhtml#idm139667869251152">Old low-level array macros</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="FAQs.xhtml">Frequently Asked Questions</a>
+              </li>
+              <li>
+                <a href="Framework.xhtml">The Kawa language framework</a>
+              </li>
+              <li>
+                <a href="License.xhtml">License</a>
+                <ul>
+                  <li>
+                    <a href="Software-License.xhtml">License for the Kawa software</a>
+                  </li>
+                  <li>
+                    <a href="Manual-License.xhtml">License for the Kawa manual</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="Overall-Index.xhtml">Index</a>
+            <ul>
+              <li>
+                <a href="Overall-Index.xhtml#idm139667869168432">Index</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </body>
+</html>

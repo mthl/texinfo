@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Accessing object fields</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Mangling.xhtml" title="Mapping Scheme names to Java names"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Accessing object fields" epub:type="subchapter" id="Field-operations">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Accessing object fields</h2>
+          </div>
+        </div>
+      </div>
+      <section class="sect2" title="Accessing static fields and properties" epub:type="division" id="idm139667870907808">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Accessing static fields and properties</h3>
+            </div>
+          </div>
+        </div>
+        <p>The recommmended way to access fields 
+uses the <a class="link" href="Colon-notation.xhtml" title="Property access using colon notation">colon notation</a>.
+For static fields and properties the following is recommended:
+</p>
+        <div class="literallayout">
+          <p><em class="replaceable"><code>class-expression</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><em class="replaceable"><code>field-name</code></em><br/>
+</p>
+        </div>
+        <p>For example:
+</p>
+        <pre class="screen">java.lang.Integer:MAX_VALUE
+</pre>
+        <p>A property with a <code class="literal">get</code> method is equivalent to a field.
+The following are all equivalent:
+</p>
+        <pre class="screen">java.util.Currency:available-currencies
+java.util.Currency:availableCurrencies
+(java.util.Currency:getAvailableCurrencies)
+</pre>
+        <p>Just like for a method call, the <em class="replaceable"><code>class-expression</code></em>
+can be a class in the current lexical scope,
+a fully-qualified class name, or more generally an
+expression that evaluates to a class.
+</p>
+      </section>
+      <section class="sect2" title="Accessing instance fields and properties" epub:type="division" id="idm139667870901152">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Accessing instance fields and properties</h3>
+            </div>
+          </div>
+        </div>
+        <p>The syntax is:
+</p>
+        <div class="literallayout">
+          <p><em class="replaceable"><code>instance</code></em><code class="literal"><span class="bold"><strong>:</strong></span></code><em class="replaceable"><code>field-name</code></em><br/>
+</p>
+        </div>
+        <p>The <em class="replaceable"><code>field-name</code></em> can of course be the name of an actual
+object field, but it can also be the name of a property with
+a zero-argument <code class="literal">get</code> method.
+For example, if <code class="literal">cal</code> is a <code class="literal">java.util-Calendar</code> instance,
+then the following are all equivalent:
+</p>
+        <pre class="screen">cal:time-zone
+cal:timeZone
+(cal:getTimeZone)
+(cal:get-time-zone)
+</pre>
+        <p>You can use colon notation to assign to a field:
+</p>
+        <pre class="screen">(set! cal:time-zone TimeZone:default)
+</pre>
+        <p>which is equivalent to:
+</p>
+        <pre class="screen">(cal:setTimeZone (TimeZone:getDefault))
+</pre>
+        <p>A Java array only has the <code class="literal">length</code> field, plus the <code class="literal">class</code> property:
+</p>
+        <pre class="screen">(int[] 4 5 6):length ⇒ 3
+(int[] 4 5 6):class:name ⇒ "int[]"
+</pre>
+      </section>
+      <section class="sect2" title="Using field and static-field methods" epub:type="division" id="idm139667870892384">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Using field and static-field methods</h3>
+            </div>
+          </div>
+        </div>
+        <p>The following methods are useful in cases where colon notation
+is ambiguous, for example where there are both fields and methods
+with the same name.
+You might also prefer as a matter of style, to
+emphasise that a field is being accessed.
+</p>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870890656" class="indexterm"/> <code class="function">field</code> <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>fieldname</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Get the instance field with the given <em class="replaceable"><code>fieldname</code></em> from the given
+<em class="replaceable"><code>Object</code></em>.  Returns the value of the field, which must be accessible.
+This procedure has a <code class="literal">setter</code>, and so can be used as the first
+operand to <code class="literal">set!</code>.
+</p>
+            <p>The field name is "mangled" (see <a class="link" href="Mangling.xhtml" title="Mapping Scheme names to Java names">Mangling</a>) into a valid Java name.
+If there is no accessible field whose name is <code class="literal">"<em class="replaceable"><code>fieldname</code></em>"</code>,
+we look for a no-argument method whose name is
+<code class="literal">"get<em class="replaceable"><code>Fieldname</code></em>"</code> (or <code class="literal">"is<em class="replaceable"><code>Fieldname</code></em>"</code> for a
+boolean property).
+</p>
+            <p>If <em class="replaceable"><code>object</code></em> is a primitive Java array, then <em class="replaceable"><code>fieldname</code></em> can only
+be <code class="literal">'length</code>, and the result is the number of elements of the array.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870879248" class="indexterm"/> <code class="function">static-field</code> <em class="replaceable"><code>class</code></em> <em class="replaceable"><code>fieldname</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>Get the static field with the given <em class="replaceable"><code>fieldname</code></em> from the given
+<em class="replaceable"><code>class</code></em>.  Returns the value of the field, which must be accessible.
+This procedure has a <code class="literal">setter</code>, and so can be used as the first
+operand to <code class="literal">set!</code>.
+</p>
+            <p>If the <em class="replaceable"><code>fieldname</code></em> is the special name <code class="literal">class</code>,
+then it returns the <code class="literal">java.lang.Class</code> object corresponding to
+<em class="replaceable"><code>class</code></em> (which is usually a <code class="literal">gnu.bytecode.ClassType</code> object).
+</p>
+          </blockquote>
+        </div>
+        <p>Examples:
+</p>
+        <pre class="screen">(static-field java.lang.System 'err)
+;; Copy the car field of b into a.
+(set! (field a 'car) (field b 'car))
+</pre>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870870112" class="indexterm"/> <code class="function">slot-ref</code> <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>fieldname</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>A synonym for <code class="literal">(field <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>fieldname</code></em>)</code>.
+</p>
+          </blockquote>
+        </div>
+        <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870865072" class="indexterm"/> <code class="function">slot-set!</code> <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>fieldname</code></em> <em class="replaceable"><code>value</code></em></p>
+        <div class="blockquote">
+          <blockquote class="blockquote">
+            <p>A synonym for <code class="literal">(set! (field <em class="replaceable"><code>object</code></em> <em class="replaceable"><code>fieldname</code></em>) <em class="replaceable"><code>value</code></em>)</code>.
+</p>
+          </blockquote>
+        </div>
+      </section>
+      <section class="sect2" title="Older colon-dot notation" epub:type="division" id="idm139667870859200">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h3 class="title">Older colon-dot notation</h3>
+            </div>
+          </div>
+        </div>
+        <p>There is older syntax where following the colon
+there is field name a following the colon <span class="emphasis"><em>and</em></span> a period.
+</p>
+        <p>To access an static field named <em class="replaceable"><code>field-name</code></em> use this syntax
+</p>
+        <pre class="screen">(<em class="replaceable"><code>prefix</code></em>:.<em class="replaceable"><code>field-name</code></em> <em class="replaceable"><code>instance</code></em>)
+</pre>
+        <p>The <em class="replaceable"><code>prefix</code></em> can be as discussed in See <a class="link" href="Method-operations.xhtml" title="Calling Java methods from Scheme">Method operations</a>.
+Here are 5 equivalent ways:
+</p>
+        <pre class="screen">(java.lang.Integer:.MAX_VALUE)
+(&lt;java.lang.Integer&gt;:.MAX_VALUE)
+(define-namespace Int32 &lt;java.lang.Integer&gt;)
+(Int32:.MAX_VALUE)
+(define-namespace Integer "class:java.lang.Integer")
+(Integer:.MAX_VALUE)
+(define-alias j.l.Integer java.lang.Integer)
+(j.l.Integer:.MAX_VALUE)
+</pre>
+        <p>You can set a static field using this syntax:
+</p>
+        <pre class="screen">(set! (<em class="replaceable"><code>prefix</code></em>:.<em class="replaceable"><code>field-name</code></em>) <em class="replaceable"><code>new-value</code></em>)
+</pre>
+        <p>The special field name <code class="literal">class</code> can be used to extract the
+<code class="literal">java.lang.Class</code> object for a class-type.  For example:
+</p>
+        <pre class="screen">(java.util.Vector:.class) ⇒ class java.util.Vector
+</pre>
+        <p>To access a instance field named <em class="replaceable"><code>field-name</code></em> use the following syntax.
+Note the period before the <em class="replaceable"><code>field-name</code></em>.
+</p>
+        <pre class="screen">(*:.<em class="replaceable"><code>field-name</code></em> <em class="replaceable"><code>instance</code></em>)
+</pre>
+        <p>This syntax works with <code class="literal">set!</code> - to set the field use this syntax:
+</p>
+        <pre class="screen">(set! (*:.<em class="replaceable"><code>field-name</code></em> <em class="replaceable"><code>instance</code></em>) <em class="replaceable"><code>new-value</code></em>)
+</pre>
+        <p>Here is an example:
+</p>
+        <pre class="screen">(define p (list 3 4 5))
+(*:.cdr p) ⇒ (4 5)
+(set! (*:.cdr p) (list 6 7))
+p ⇒ (3 6 7)
+</pre>
+        <p>You can specify an explicit class:
+</p>
+        <pre class="screen">(<em class="replaceable"><code>prefix</code></em>:.<em class="replaceable"><code>field-name</code></em> <em class="replaceable"><code>instance</code></em>)
+</pre>
+        <p>If <em class="replaceable"><code>prefix</code></em> is bound to <code class="literal">&lt;<em class="replaceable"><code>class</code></em>&gt;</code>, then the above
+is equivalent to:
+</p>
+        <pre class="screen">(*:.<em class="replaceable"><code>field-name</code></em> (as &lt;<em class="replaceable"><code>class</code></em>&gt; <em class="replaceable"><code>instance</code></em>))
+</pre>
+      </section>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Field-operations.xhtml#idm139667870907808">Accessing static fields and properties</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Field-operations.xhtml#idm139667870901152">Accessing instance fields and properties</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Field-operations.xhtml#idm139667870892384">Using field and static-field methods</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Field-operations.xhtml#idm139667870859200">Older colon-dot notation</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Allocating-objects.xhtml">Allocating objects</a></p>
+        <p>
+        Next: <a accesskey="n" href="Mangling.xhtml">Mapping Scheme names to Java names</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

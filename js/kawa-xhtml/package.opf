@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" version="3.0" xml:lang="en" unique-identifier="pub-identifier">
+  <metadata>
+    <dc:identifier id="pub-identifier">_book</dc:identifier>
+    <meta id="meta-identifier" property="dcterms:identifier">_book</meta>
+    <dc:title id="pub-title">The Kawa Scheme language</dc:title>
+    <meta property="dcterms:title" id="meta-title">The Kawa Scheme language</meta>
+    <dc:language id="pub-language">en</dc:language>
+    <meta property="dcterms:language" id="meta-language">en</meta>
+    <meta property="dcterms:modified">2017-04-26T13:58:52Z</meta>
+    <!--The preceding date value is actually local time (not UTC) in UTC format because there is no function in XSLT 1.0 to generate a correct UTC time-->
+  </metadata>
+  <manifest>
+    <item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+    <item id="htmltoc" properties="nav" media-type="application/xhtml+xml" href="ToC.xhtml"/>
+    <item media-type="text/css" id="html-css" href="kawa.css"/>
+    <item media-type="text/css" id="docbook-css" href="docbook-epub.css"/>
+    <item id="id-idm139667896491920" href="top.html" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667882195376" href="index.html" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667882184160" href="news.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881218784" href="Features.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881183968" href="Implemented-SRFIs.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881116336" href="Compatibility.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881104032" href="Community.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881102848" href="Reporting-bugs.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881093584" href="Mailing-lists.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881085968" href="Acknowledgements.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881052112" href="Support.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881047056" href="Projects.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667881030336" href="Ideas-and-tasks.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880880656" href="Installation.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880879456" href="Getting-Kawa.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880863392" href="Running-Java.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880855632" href="Binary-distribution.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880824848" href="Source-distribution.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880660128" href="tutorial-index.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880654928" href="tutorial-Introduction.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880627248" href="tutorial-Booleans.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880612896" href="tutorial-Numbers.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880584032" href="tutorial-Functions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880539312" href="tutorial-Variables.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880517648" href="tutorial-Pictures.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880468608" href="tutorial-Sequences.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880418624" href="tutorial-Objects.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880369088" href="tutorial-Types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880352160" href="tutorial-Exceptions-and-errors.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880342240" href="tutorial-Classes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880339552" href="tutorial-Other-Java-features.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880324112" href="pt01.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880323200" href="Running.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880312224" href="Options.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880076288" href="Scripts.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667880028336" href="REPL-Console.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879952624" href="Exiting.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879945712" href="Compiling.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879856768" href="Syntax.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879855584" href="Syntax-notation.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879842576" href="Lexical-and-datum-syntax.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879822352" href="Lexical-syntax.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879525952" href="Datum-syntax.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879391472" href="Hash-prefixed-forms.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879293984" href="Primitive-expression-syntax.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879239232" href="Colon-notation.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879139968" href="Bodies.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879085152" href="Syntax-and-conditional-compilation.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667879012736" href="Macros.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878596320" href="Named-quasi-literals.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878553840" href="Program-structure.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878551488" href="Boolean-values.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878509088" href="Conditionals.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878336304" href="Variables-and-Patterns.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878266064" href="Definitions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878170000" href="Local-binding-constructs.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667878113248" href="Lazy-evaluation.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877985488" href="Threads.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877961248" href="Exceptions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877824912" href="Control-features.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877823728" href="Mapping-functions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877772288" href="Multiple-values.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877709888" href="Symbols-and-namespaces.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877706304" href="Simple-symbols.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877687680" href="Namespaces.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877568432" href="Keywords.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877540992" href="Special-named-constants.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877519328" href="Procedures.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877518144" href="Application-and-Arguments-Lists.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877402992" href="Procedure-properties.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877364944" href="Generic-procedures.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877352960" href="Extended-formals.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877253120" href="Partial-application.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877221664" href="Numbers.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877219184" href="Numerical-types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667877113120" href="Arithmetic-operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667876804768" href="Numerical-input-and-output.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667876780992" href="Quaternions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667876260000" href="Quantities.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667876193488" href="Logical-Number-Operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667875952752" href="Performance-of-numeric-operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667875924464" href="Characters-and-text.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667875923280" href="Characters.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667875800336" href="Character-sets.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667875789344" href="Strings.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874967680" href="String-literals.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874768352" href="Unicode.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874653888" href="Regular-expressions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874547280" href="Data-structures.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874546048" href="Sequences.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874517632" href="Lists.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874479536" href="Vectors.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874377952" href="Uniform-vectors.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667874050096" href="Bytevectors.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873937168" href="Ranges.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873877952" href="Streams.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873870304" href="Arrays.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873537984" href="Hash-tables.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873200112" href="Eval-and-Environments.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873138064" href="Locations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873096496" href="Parameter-objects.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873061520" href="Debugging.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873043728" href="Input-Output.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873040928" href="Named-output-formats.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667873013504" href="Paths.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872878080" href="Files.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872831536" href="Reading-and-writing-whole-files.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872786624" href="Ports.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872336400" href="Format.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872111408" href="Pretty-printing.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872036672" href="Resources.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872016144" href="Types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667872001584" href="Standard-Types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871921856" href="Parameterized-Types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871918064" href="Type-tests-and-conversions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871893104" href="Objects-Classes-and-Modules.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871886320" href="Defining-new-classes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871705584" href="Anonymous-classes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871669792" href="Enumerations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871648224" href="Annotations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871611024" href="Module-classes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871387408" href="Importing.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871199056" href="Record-types.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871161472" href="Dynamic-records.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667871100112" href="Method-operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870965248" href="Allocating-objects.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870909024" href="Field-operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870838160" href="Mangling.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870810512" href="Scheme-types-in-Java.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870792544" href="Array-operations.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870774080" href="Loading-Java-functions-into-Scheme.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870744336" href="Evaluating-Scheme-expressions-from-Java.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870708608" href="XML-tools.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870701104" href="Formatting-XML.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870675104" href="Creating-HTML-nodes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870660544" href="Creating-XML-nodes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870618480" href="XML-literals.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870452512" href="Server-side-scripts.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870427568" href="Self-configuring-page-scripts.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870371776" href="Servlets.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870288640" href="CGI-scripts.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870276512" href="HTTP-requests.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870154672" href="HTTP-response.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870129424" href="XML-beyond-Scheme.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870102864" href="Miscellaneous.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667870093312" href="Composable-pictures.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869695600" href="Building-JavaFX-applications.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869678528" href="Building-for-Android.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869622208" href="Android-view-construction.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869587040" href="System-inquiry.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869549040" href="Processes.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869327808" href="Time-related-functions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869307056" href="Low-level-functions.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869231888" href="FAQs.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869201472" href="Framework.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667882080320" href="License.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667882079136" href="Software-License.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869193744" href="Manual-License.xhtml" media-type="application/xhtml+xml"/>
+    <item id="id-idm139667869169584" href="Overall-Index.xhtml" media-type="application/xhtml+xml"/>
+    <item id="idm139667857605312" href="images/domterm-pictures-1.png" media-type="image/png"/>
+    <item id="idm139667857605184" href="images/fill-circ-1.png" media-type="image/png"/>
+    <item id="idm139667857611520" href="images/polyline-1.png" media-type="image/png"/>
+    <item id="idm139667867278480" href="images/polygon-1.png" media-type="image/png"/>
+    <item id="idm139667857610784" href="images/image-cat-1a.png" media-type="image/png"/>
+    <item id="idm139667857611360" href="images/image-cat-1b.png" media-type="image/png"/>
+    <item id="idm139667857609440" href="images/paint-circ-1.png" media-type="image/png"/>
+    <item id="idm139667857503312" href="images/paint-circ-2.png" media-type="image/png"/>
+    <item id="idm139667857507008" href="images/paint-circ-3.png" media-type="image/png"/>
+    <item id="idm139667857506880" href="images/paint-circ-4.png" media-type="image/png"/>
+    <item id="idm139667857605632" href="images/show-draw-1.png" media-type="image/png"/>
+    <item id="idm139667857504752" href="images/show-draw-2.png" media-type="image/png"/>
+    <item id="idm139667857504592" href="images/show-draw-3.png" media-type="image/png"/>
+    <item id="idm139667857503920" href="images/border-1.png" media-type="image/png"/>
+    <item id="idm139667857505328" href="images/padding-1.png" media-type="image/png"/>
+    <item id="idm139667857502480" href="images/re-center-1.png" media-type="image/png"/>
+    <item id="idm139667857502320" href="images/re-center-2.png" media-type="image/png"/>
+    <item id="idm139667857499568" href="images/image-scaled-1.png" media-type="image/png"/>
+  </manifest>
+  <spine toc="ncx">
+    <itemref idref="htmltoc" linear="yes"/>
+    <itemref idref="id-idm139667882195376"/>
+    <itemref idref="id-idm139667882184160"/>
+    <itemref idref="id-idm139667881218784"/>
+    <itemref idref="id-idm139667881183968"/>
+    <itemref idref="id-idm139667881116336"/>
+    <itemref idref="id-idm139667881104032"/>
+    <itemref idref="id-idm139667881102848"/>
+    <itemref idref="id-idm139667881093584"/>
+    <itemref idref="id-idm139667881085968"/>
+    <itemref idref="id-idm139667881052112"/>
+    <itemref idref="id-idm139667881047056"/>
+    <itemref idref="id-idm139667881030336"/>
+    <itemref idref="id-idm139667880880656"/>
+    <itemref idref="id-idm139667880879456"/>
+    <itemref idref="id-idm139667880863392"/>
+    <itemref idref="id-idm139667880855632"/>
+    <itemref idref="id-idm139667880824848"/>
+    <itemref idref="id-idm139667880660128"/>
+    <itemref idref="id-idm139667880654928"/>
+    <itemref idref="id-idm139667880627248"/>
+    <itemref idref="id-idm139667880612896"/>
+    <itemref idref="id-idm139667880584032"/>
+    <itemref idref="id-idm139667880539312"/>
+    <itemref idref="id-idm139667880517648"/>
+    <itemref idref="id-idm139667880468608"/>
+    <itemref idref="id-idm139667880418624"/>
+    <itemref idref="id-idm139667880369088"/>
+    <itemref idref="id-idm139667880352160"/>
+    <itemref idref="id-idm139667880342240"/>
+    <itemref idref="id-idm139667880339552"/>
+    <itemref idref="id-idm139667880324112"/>
+    <itemref idref="id-idm139667880323200"/>
+    <itemref idref="id-idm139667880312224"/>
+    <itemref idref="id-idm139667880076288"/>
+    <itemref idref="id-idm139667880028336"/>
+    <itemref idref="id-idm139667879952624"/>
+    <itemref idref="id-idm139667879945712"/>
+    <itemref idref="id-idm139667879856768"/>
+    <itemref idref="id-idm139667879855584"/>
+    <itemref idref="id-idm139667879842576"/>
+    <itemref idref="id-idm139667879822352"/>
+    <itemref idref="id-idm139667879525952"/>
+    <itemref idref="id-idm139667879391472"/>
+    <itemref idref="id-idm139667879293984"/>
+    <itemref idref="id-idm139667879239232"/>
+    <itemref idref="id-idm139667879139968"/>
+    <itemref idref="id-idm139667879085152"/>
+    <itemref idref="id-idm139667879012736"/>
+    <itemref idref="id-idm139667878596320"/>
+    <itemref idref="id-idm139667878553840"/>
+    <itemref idref="id-idm139667878551488"/>
+    <itemref idref="id-idm139667878509088"/>
+    <itemref idref="id-idm139667878336304"/>
+    <itemref idref="id-idm139667878266064"/>
+    <itemref idref="id-idm139667878170000"/>
+    <itemref idref="id-idm139667878113248"/>
+    <itemref idref="id-idm139667877985488"/>
+    <itemref idref="id-idm139667877961248"/>
+    <itemref idref="id-idm139667877824912"/>
+    <itemref idref="id-idm139667877823728"/>
+    <itemref idref="id-idm139667877772288"/>
+    <itemref idref="id-idm139667877709888"/>
+    <itemref idref="id-idm139667877706304"/>
+    <itemref idref="id-idm139667877687680"/>
+    <itemref idref="id-idm139667877568432"/>
+    <itemref idref="id-idm139667877540992"/>
+    <itemref idref="id-idm139667877519328"/>
+    <itemref idref="id-idm139667877518144"/>
+    <itemref idref="id-idm139667877402992"/>
+    <itemref idref="id-idm139667877364944"/>
+    <itemref idref="id-idm139667877352960"/>
+    <itemref idref="id-idm139667877253120"/>
+    <itemref idref="id-idm139667877221664"/>
+    <itemref idref="id-idm139667877219184"/>
+    <itemref idref="id-idm139667877113120"/>
+    <itemref idref="id-idm139667876804768"/>
+    <itemref idref="id-idm139667876780992"/>
+    <itemref idref="id-idm139667876260000"/>
+    <itemref idref="id-idm139667876193488"/>
+    <itemref idref="id-idm139667875952752"/>
+    <itemref idref="id-idm139667875924464"/>
+    <itemref idref="id-idm139667875923280"/>
+    <itemref idref="id-idm139667875800336"/>
+    <itemref idref="id-idm139667875789344"/>
+    <itemref idref="id-idm139667874967680"/>
+    <itemref idref="id-idm139667874768352"/>
+    <itemref idref="id-idm139667874653888"/>
+    <itemref idref="id-idm139667874547280"/>
+    <itemref idref="id-idm139667874546048"/>
+    <itemref idref="id-idm139667874517632"/>
+    <itemref idref="id-idm139667874479536"/>
+    <itemref idref="id-idm139667874377952"/>
+    <itemref idref="id-idm139667874050096"/>
+    <itemref idref="id-idm139667873937168"/>
+    <itemref idref="id-idm139667873877952"/>
+    <itemref idref="id-idm139667873870304"/>
+    <itemref idref="id-idm139667873537984"/>
+    <itemref idref="id-idm139667873200112"/>
+    <itemref idref="id-idm139667873138064"/>
+    <itemref idref="id-idm139667873096496"/>
+    <itemref idref="id-idm139667873061520"/>
+    <itemref idref="id-idm139667873043728"/>
+    <itemref idref="id-idm139667873040928"/>
+    <itemref idref="id-idm139667873013504"/>
+    <itemref idref="id-idm139667872878080"/>
+    <itemref idref="id-idm139667872831536"/>
+    <itemref idref="id-idm139667872786624"/>
+    <itemref idref="id-idm139667872336400"/>
+    <itemref idref="id-idm139667872111408"/>
+    <itemref idref="id-idm139667872036672"/>
+    <itemref idref="id-idm139667872016144"/>
+    <itemref idref="id-idm139667872001584"/>
+    <itemref idref="id-idm139667871921856"/>
+    <itemref idref="id-idm139667871918064"/>
+    <itemref idref="id-idm139667871893104"/>
+    <itemref idref="id-idm139667871886320"/>
+    <itemref idref="id-idm139667871705584"/>
+    <itemref idref="id-idm139667871669792"/>
+    <itemref idref="id-idm139667871648224"/>
+    <itemref idref="id-idm139667871611024"/>
+    <itemref idref="id-idm139667871387408"/>
+    <itemref idref="id-idm139667871199056"/>
+    <itemref idref="id-idm139667871161472"/>
+    <itemref idref="id-idm139667871100112"/>
+    <itemref idref="id-idm139667870965248"/>
+    <itemref idref="id-idm139667870909024"/>
+    <itemref idref="id-idm139667870838160"/>
+    <itemref idref="id-idm139667870810512"/>
+    <itemref idref="id-idm139667870792544"/>
+    <itemref idref="id-idm139667870774080"/>
+    <itemref idref="id-idm139667870744336"/>
+    <itemref idref="id-idm139667870708608"/>
+    <itemref idref="id-idm139667870701104"/>
+    <itemref idref="id-idm139667870675104"/>
+    <itemref idref="id-idm139667870660544"/>
+    <itemref idref="id-idm139667870618480"/>
+    <itemref idref="id-idm139667870452512"/>
+    <itemref idref="id-idm139667870427568"/>
+    <itemref idref="id-idm139667870371776"/>
+    <itemref idref="id-idm139667870288640"/>
+    <itemref idref="id-idm139667870276512"/>
+    <itemref idref="id-idm139667870154672"/>
+    <itemref idref="id-idm139667870129424"/>
+    <itemref idref="id-idm139667870102864"/>
+    <itemref idref="id-idm139667870093312"/>
+    <itemref idref="id-idm139667869695600"/>
+    <itemref idref="id-idm139667869678528"/>
+    <itemref idref="id-idm139667869622208"/>
+    <itemref idref="id-idm139667869587040"/>
+    <itemref idref="id-idm139667869549040"/>
+    <itemref idref="id-idm139667869327808"/>
+    <itemref idref="id-idm139667869307056"/>
+    <itemref idref="id-idm139667869231888"/>
+    <itemref idref="id-idm139667869201472"/>
+    <itemref idref="id-idm139667882080320"/>
+    <itemref idref="id-idm139667882079136"/>
+    <itemref idref="id-idm139667869193744"/>
+    <itemref idref="id-idm139667869169584"/>
+  </spine>
+  <guide>
+    <reference href="ToC.xhtml" type="toc" title="Table of Contents"/>
+  </guide>
+</package>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Generating HTTP responses</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="HTTP-requests.xhtml" title="Functions for accessing HTTP requests"/>
+    <link rel="next" href="XML-beyond-Scheme.xhtml" title="Using non-Scheme languages for XML/HTML"/>
+  </head>
+  <body>
+    <header/>
+    <section class="sect1" title="Generating HTTP responses" epub:type="subchapter" id="HTTP-response">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title" style="clear: both">Generating HTTP responses</h2>
+          </div>
+        </div>
+      </div>
+      <p>The result of evaluating the top-level expressions of a web page script
+becomes the HTTP response that the servlet sends back to the browser.
+The result is typically an HTML/XML element code object
+Kawa will automatically format the result as appropriate for the type.
+Before the main part of the response there may be
+special "response header values",
+as created by the <code class="literal">response-header</code> function.
+Kawa will use the response header values to set various
+required and optional fields of the HTTP response.
+Note that <code class="literal">response-header</code> does not actually do anything
+until it is "printed" to the standard output.
+Note also that a <code class="literal">"Content-Type"</code> response value is
+special since it controls the formatting of the following
+non-response-header values.
+</p>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870150448" class="indexterm"/> <code class="function">response-header</code> <em class="replaceable"><code>key</code></em> <em class="replaceable"><code>value</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Create the response header ‘<code class="literal"><em class="replaceable"><code>key</code></em>: <em class="replaceable"><code>value</code></em></code>’ in the HTTP
+response.  The result is a "response header value" (of some unspecified
+type).  It does not directly set or print a response header, but only
+does so when you actually "print" its value to the response output stream.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870145280" class="indexterm"/> <code class="function">response-content-type</code> <em class="replaceable"><code>type</code></em></p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Species the content-type of the result - for example <code class="literal">"text/plain"</code>.
+Convenience function for <code class="literal">(response-header "Content-Type" <em class="replaceable"><code>type</code></em>)</code>.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870140560" class="indexterm"/> <code class="function">error-response</code> <em class="replaceable"><code>code</code></em> [<em class="replaceable"><code>message</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Creates a response-header with an error code of <em class="replaceable"><code>code</code></em> and a
+response message of <em class="replaceable"><code>message</code></em>.
+(For now this is the same as <code class="literal">response-status</code>.)
+</p>
+          <p>Note this also returns a response-header value, which does not actually
+do anything unless it is returned as the result of executing a servlet body.
+</p>
+        </blockquote>
+      </div>
+      <p class="synopsis" kind="Procedure"><span class="kind">Procedure</span><span class="ignore">: </span><a id="idm139667870134720" class="indexterm"/> <code class="function">response-status</code> <em class="replaceable"><code>code</code></em> [<em class="replaceable"><code>message</code></em>]</p>
+      <div class="blockquote">
+        <blockquote class="blockquote">
+          <p>Creates a response-header with an status code of <em class="replaceable"><code>code</code></em> and a
+response message of <em class="replaceable"><code>message</code></em>.
+(For now this is the same as <code class="literal">error-response</code>.)
+</p>
+        </blockquote>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <p>
+          Up: <a accesskey="u" href="XML-tools.xhtml">Working with XML and HTML</a></p>
+        <p>
+        Previous: <a accesskey="p" href="HTTP-requests.xhtml">Functions for accessing HTTP requests</a></p>
+        <p>
+        Next: <a accesskey="n" href="XML-beyond-Scheme.xhtml">Using non-Scheme languages for XML/HTML</a></p>
+      </div>
+    </footer>
+  </body>
+</html>

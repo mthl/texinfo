@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:pls="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns:svg="http://www.w3.org/2000/svg">
+  <head>
+    <title>Types</title>
+    <link rel="stylesheet" type="text/css" href="docbook-epub.css"/>
+    <link rel="stylesheet" type="text/css" href="kawa.css"/>
+    <script src="kawa-ebook.js" type="text/javascript"/>
+    <meta name="generator" content="DocBook XSL-NS Stylesheets V1.79.1"/>
+    <link rel="prev" href="Overall-Index.xhtml" title="Index"/>
+    <link rel="next" href="Standard-Types.xhtml" title="Standard Types"/>
+  </head>
+  <body>
+    <header/>
+    <section class="chapter" title="Types" epub:type="chapter" id="Types">
+      <div class="titlepage">
+        <div>
+          <div>
+            <h2 class="title">Types</h2>
+          </div>
+        </div>
+      </div>
+      <p>A <em class="firstterm">type</em> is a set of values, plus an associated set of operations
+valid on those values.
+Types are useful for catching errors ("type-checking"), documenting
+the programmer’s intent, and to help the compiler generate better code.
+Types in some languages (such as C) appear in programs,
+but do not exist at run-time.  In such languages, all type-checking
+is done at compile-time.  Other languages (such as standard Scheme)
+do not have types as such, but they have <em class="firstterm">predicates</em>, which
+allow you to check if a value is a member of certain sets;  also,
+the primitive functions will check at run-time if the arguments
+are members of the allowed sets.  Other languages, including Java
+and Common Lisp, provide a combination:  Types may be used as specifiers
+to guide the compiler, but also exist as actual run-time values.
+In Java, for each class, there is a corresponding <code class="literal">java.lang.Class</code>
+run-time object, as well as an associated type (the set of values
+of that class, plus its sub-classes, plus <code class="literal">null</code>).
+</p>
+      <p>Kawa, like Java, has first-class types, that is types exist as
+objects you can pass around at run-time.  For each Java type,
+there is a corresponding Kawa type (but not necessarily vice
+versa).  It would be nice if we could represent run-time
+type values using <code class="literal">java.lang.Class</code> objects, but unfortunately
+that does not work very well.  One reason is that we need
+to be able to refer to types and classes that do not exist yet,
+because we are in the processing of compiling them.  Another
+reason is that we want to be able to distinguish between different
+types that are implemented using the same Java class.
+</p>
+      <p>Various Kawa constructs require or allow a type to be specified.
+Those specifications consist of <em class="firstterm">type expressions</em>, and a type expression
+is evaluated to yield a type value.  The current Kawa compiler
+is rather simple-minded, and in many places only allows simple
+types that the compiler can evaluate at compile-time.
+More specifically, it only allows simple <em class="firstterm">type names</em>
+that map to primitive Java types or Java classes.
+</p>
+      <div class="literallayout">
+        <p><a id="idm139667872008096" class="indexterm"/><span id="meta-type"/><em class="replaceable"><code>type</code></em> <code class="literal">::=</code> <a class="link" href="Primitive-expression-syntax.xhtml#meta-expression"><em class="replaceable"><code>expression</code></em></a><br/>
+<a id="idm139667872005296" class="indexterm"/><span id="meta-opt-type-specifier"/><em class="replaceable"><code>opt-type-specifier</code></em> <code class="literal">::=</code> [<code class="literal"><span class="bold"><strong>::</strong></span></code> <a class="link" href="Types.xhtml#meta-type"><em class="replaceable"><code>type</code></em></a>]<br/>
+</p>
+      </div>
+    </section>
+    <footer>
+      <div class="navfooter">
+        <ul>
+          <li>
+            <b class="toc">
+              <a href="Standard-Types.xhtml">Standard Types</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Parameterized-Types.xhtml">Parameterized Types</a>
+            </b>
+          </li>
+          <li>
+            <b class="toc">
+              <a href="Type-tests-and-conversions.xhtml">Type tests and conversions</a>
+            </b>
+          </li>
+        </ul>
+        <p>
+          Up: <a accesskey="u" href="pt01.xhtml">Part . Reference Documentation</a></p>
+        <p>
+        Previous: <a accesskey="p" href="Input-Output.xhtml">Input, output, and file handling</a></p>
+        <p>
+        Next: <a accesskey="n" href="Objects-Classes-and-Modules.xhtml">Object, Classes and Modules</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
