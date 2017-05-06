@@ -36,7 +36,7 @@ onMainLoad (evt)
 {
   if (top == window)
     {
-      mainFilename = location.pathname.replace (/.*[/]/, "");
+      mainFilename = window.location.pathname.replace (/.*[/]/, "");
       var body = document.getElementsByTagName ("body")[0];
 
       /* Move contents of <body> into a a fresh <div>.  */
@@ -51,7 +51,7 @@ onMainLoad (evt)
         }
       body.appendChild (div);
 
-      if (useSidebar (location.hash))
+      if (useSidebar (window.location.hash))
         {
           var iframe = document.createElement ("iframe");
           sidebarFrame = iframe;
@@ -60,7 +60,7 @@ onMainLoad (evt)
           body.insertBefore (iframe, body.firstChild);
           body.setAttribute ("class", "mainbar");
         }
-      sidebarQuery = location.hash;
+      sidebarQuery = window.location.hash;
     }
   else
     {
@@ -203,12 +203,13 @@ scanToc1 (node, current)
 function
 onSidebarLoad (evt)
 {
-  mainFilename = location.href.replace (/.*#main=/, "");
-  var search = location.hash;
+  mainFilename = window.location.href.replace (/.*#main=/, "");
+  var search = window.location.hash;
   addSidebarHeader (document);
   /* FIXME: Add base also for sub-pages.  */
   var base = document.createElement ("base");
-  base.setAttribute ("href", location.href.replace (/[/][^/]*$/, "/"));
+  base.setAttribute ("href",
+                     window.location.href.replace (/[/][^/]*$/, "/"));
   document.head.appendChild (base);
   var body = document.getElementsByTagName ("body")[0];
   body.setAttribute ("class", "toc-sidebar");
@@ -286,7 +287,7 @@ loadPage (url, hash)
 
   let msg = { message_kind: "update-sidebar", selected: nodeName };
   sidebarFrame.contentWindow.postMessage (msg, "*");
-  history.pushState ("", document.title, path);
+  window.history.pushState ("", document.title, path);
   if (window.selectedDivNode != div)
   {
     if (window.selectedDivNode)
@@ -316,9 +317,9 @@ receiveMessage (event)
             div.setAttribute ("hidden", "true");
             body.appendChild (div);
           }
-        if (location.hash)
+        if (window.location.hash)
           {
-            var hash = location.hash;
+            var hash = window.location.hash;
             var url = (hash.indexOf (".") >= 0)
               ? hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2")
               : hash.replace (/#/, "") + ".xhtml";
@@ -332,7 +333,7 @@ receiveMessage (event)
     case "scroll-to":           /* top window to node window */
       {
         let url = data.url;
-        location.hash = (url.indexOf ('#') < 0) ?
+        window.location.hash = (url.indexOf ('#') < 0) ?
           "" : url.replace (/.*#/, "");
         break;
       }
@@ -396,10 +397,10 @@ useSidebar (hash)
 }
 
 if (top != window
-    || location.pathname.endsWith ("/index.html")
-    || location.pathname.endsWith ("/"))
+    || window.location.pathname.endsWith ("/index.html")
+    || window.location.pathname.endsWith ("/"))
 {
-  if (location.href.indexOf ("#main=") >= 0 || window.name == "slider")
+  if (window.location.href.indexOf ("#main=") >= 0 || window.name == "slider")
     window.addEventListener ("load", onSidebarLoad, false);
   else
     window.addEventListener ("load", onMainLoad, false);
