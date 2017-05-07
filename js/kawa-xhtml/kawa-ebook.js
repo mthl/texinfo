@@ -90,10 +90,11 @@ fixLink (link, href)
 function
 clearTocStyles (node)
 {
-  if (node.tagName == "ul" || node.tagName == "UL")
+  if (node.matches ("ul"))
     node.removeAttribute ("toc-detail");
-  if (node.tagName == "a" || node.tagName == "A")
+  else if (node.matches ("a"))
     node.removeAttribute ("toc-current");
+
   for (var child = node.firstElementChild; child;
        child = child.nextElementSibling)
     clearTocStyles (child);
@@ -103,7 +104,7 @@ function
 addSidebarHeader (sidebarDoc)
 {
   var li = sidebarDoc.getElementsByTagName ("li")[0];
-  if (li && li.firstElementChild && li.firstElementChild.tagName == "a"
+  if (li && li.firstElementChild && li.firstElementChild.matches ("a")
       && li.firstElementChild.getAttribute ("href") == mainName)
     li.parentNode.removeChild (li);
   var header = sidebarDoc.getElementsByTagName ("header")[0];
@@ -163,10 +164,9 @@ scanToc (node, filename)
 function
 scanToc1 (node, current)
 {
-  if (node.tagName == "a" || node.tagName == "A")
+  if (node.matches ("a"))
     {
-      var href = node.getAttribute ("href");
-      if (href == current)
+      if (current == node.getAttribute ("href"))
         {
           node.setAttribute ("toc-current", "yes");
           var ul = node.nextElementSibling;
