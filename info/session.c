@@ -1141,7 +1141,10 @@ point_forward_char (WINDOW *win)
   long point = win->point;
   int col;
 
-  col = window_point_to_column (win, point, 0);
+  /* Find column in the line map after the current one that advances the
+     point.  (This may not be the very next character if we are at a
+     double-width character that occupies multiple columns.) */
+  col = window_point_to_column (win, point, 0) + 1;
   for (; col < win->line_map.used && win->line_map.map[col] == point; col++)
     ;
 

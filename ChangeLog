@@ -1,3 +1,11 @@
+2017-05-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (point_forward_char): Make sure that we always 
+	advance the position of the point on the display.  The point 
+	could get stuck at the very start of a node if the 'nodeline' 
+	variable was set to 'pointers'.  Report from Benno Schulenberg 
+	on 2017-04-27.
+
 2017-05-03  Jason Hood  <jadoxa@yahoo.com.au>
 
 	Allow style variables to be described and set.
