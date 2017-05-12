@@ -2424,7 +2424,7 @@ N       search-previous
 \mf     xref-item
 \xr     xref-item
 
-\mf     select-reference-this-line
+\mg     select-reference-this-line
 ^x^j    select-reference-this-line
 ^x^m    select-reference-this-line
 
