@@ -277,7 +277,7 @@ get_initial_file (int *argc, char ***argv, char **error)
           return;
         }
       else
-        asprintf (error, _("No menu item '%s' in node '%s'."),
+        asprintf (error, _("No menu item '%s' in node '%s'"),
             (*argv)[0], "(dir)Top");
     }
 
@@ -412,7 +412,7 @@ add_initial_nodes (int argc, char **argv, char **error)
               if (!node_nodename)
                 {
                   free (*error);
-                  asprintf (error, _("Cannot find node '%s'."),
+                  asprintf (error, _("Cannot find node '%s'"),
                             user_nodenames[i]);
                   continue;
                 }
@@ -434,7 +434,7 @@ add_initial_nodes (int argc, char **argv, char **error)
 
       if (ref_index == 0)
         {
-          info_error (_("No program name given."));
+          info_error (_("No program name given"));
           exit (1);
         }
 
@@ -1185,20 +1185,20 @@ const char *msg_cant_make_help;
 static void
 init_messages (void)
 {
-  msg_cant_find_node   = _("Cannot find node '%s'.");
-  msg_cant_file_node   = _("Cannot find node '(%s)%s'.");
+  msg_cant_find_node   = _("Cannot find node '%s'");
+  msg_cant_file_node   = _("Cannot find node '(%s)%s'");
   msg_cant_find_window = _("Cannot find a window!");
   msg_cant_find_point  = _("Point doesn't appear within this window's node!");
-  msg_cant_kill_last   = _("Cannot delete the last window.");
-  msg_no_menu_node     = _("No menu in this node.");
-  msg_no_foot_node     = _("No footnotes in this node.");
-  msg_no_xref_node     = _("No cross references in this node.");
-  msg_no_pointer       = _("No '%s' pointer for this node.");
-  msg_unknown_command  = _("Unknown Info command '%c'; try '?' for help.");
-  msg_term_too_dumb    = _("Terminal type '%s' is not smart enough to run Info.");
-  msg_at_node_bottom   = _("You are already at the last page of this node.");
-  msg_at_node_top      = _("You are already at the first page of this node.");
-  msg_one_window       = _("Only one window.");
-  msg_win_too_small    = _("Resulting window would be too small.");
-  msg_cant_make_help   = _("Not enough room for a help window, please delete a window.");
+  msg_cant_kill_last   = _("Cannot delete the last window");
+  msg_no_menu_node     = _("No menu in this node");
+  msg_no_foot_node     = _("No footnotes in this node");
+  msg_no_xref_node     = _("No cross references in this node");
+  msg_no_pointer       = _("No '%s' pointer for this node");
+  msg_unknown_command  = _("Unknown Info command '%c'; try '?' for help");
+  msg_term_too_dumb    = _("Terminal type '%s' is not smart enough to run Info");
+  msg_at_node_bottom   = _("You are already at the last page of this node");
+  msg_at_node_top      = _("You are already at the first page of this node");
+  msg_one_window       = _("Only one window");
+  msg_win_too_small    = _("Resulting window would be too small");
+  msg_cant_make_help   = _("Not enough room for a help window, please delete a window");
 }

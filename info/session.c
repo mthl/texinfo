@@ -2233,11 +2233,11 @@ has_menu:
   if (entry = select_menu_digit (window, key))
     info_select_reference (window, entry);
   else if (key == '0')
-    /* Don't print "There aren't 0 items in this menu." */
+    /* Don't print "There aren't 0 items in this menu" */
     info_error ("%s", msg_no_menu_node);
   else
-    info_error (ngettext ("There isn't %d item in this menu.",
-                          "There aren't %d items in this menu.",
+    info_error (ngettext ("There isn't %d item in this menu",
+                          "There aren't %d items in this menu",
                           item),
                 item);
   return;
@@ -2444,7 +2444,7 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
         }
 
       if (!entry && defentry)
-        info_error (_("The reference disappeared! (%s)."), line);
+        info_error (_("The reference disappeared! (%s)"), line);
       else
         {
           info_select_reference (window, entry);
@@ -2767,7 +2767,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu in node '%s'."),
+              asprintf (error, _("No menu in node '%s'"),
                         node_printed_rep (initial_node));
             }
           debug (3, ("no menu found"));
@@ -2789,7 +2789,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
           if (error)
             {
               free (*error);
-              asprintf (error, _("No menu item '%s' in node '%s'."),
+              asprintf (error, _("No menu item '%s' in node '%s'"),
                         arg, node_printed_rep (initial_node));
             }
           debug (3, ("no entry found"));
@@ -2814,7 +2814,7 @@ info_follow_menus (NODE *initial_node, char **menus, char **error,
             {
               free (*error);
               asprintf (error,
-                        _("Unable to find node referenced by '%s' in '%s'."),
+                        _("Unable to find node referenced by '%s' in '%s'"),
                         entry->label,
                         node_printed_rep (initial_node));
             }
@@ -3164,7 +3164,7 @@ forward_move_node_structure (WINDOW *window, int behaviour)
                     {
                     case SLN_Stop:
                       info_error ("%s",
-                                  _("No more nodes within this document."));
+                                  _("No more nodes within this document"));
                       return 1;
                       
                     case SLN_Top:
@@ -3208,8 +3208,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
              Don't do anything. */
           if (!strncasecmp (window->node->up, "(dir)", strlen ("(dir)")))
             {
-              info_error ("%s", 
-                    _("No 'Prev' or 'Up' for this node within this document."));
+              info_error ("%s", _("No 'Prev' or 'Up' for this node within this document"));
               return 1;
             }
           /* If 'Prev' and 'Up' are the same, we are at the first node
@@ -3248,8 +3247,7 @@ backward_move_node_structure (WINDOW *window, int behaviour)
         info_handle_pointer ("Prev", window);
       else
         {
-          info_error ("%s", 
-                _("No 'Prev' or 'Up' for this node within this document."));
+          info_error ("%s", _("No 'Prev' or 'Up' for this node within this document"));
           return 1;
         }
 
@@ -3670,7 +3668,7 @@ DECLARE_INFO_COMMAND (info_view_file, _("Read the name of a file and select it")
           if (info_recent_file_error)
             info_error ("%s", info_recent_file_error);
           else
-            info_error (_("Cannot find '%s'."), line);
+            info_error (_("Cannot find '%s'"), line);
         }
       else
         info_set_node_of_window (window, node);
@@ -3718,7 +3716,7 @@ dump_nodes_to_file (REFERENCE **references,
 
   if (!output_stream)
     {
-      info_error (_("Could not create output file '%s'."), output_filename);
+      info_error (_("Could not create output file '%s'"), output_filename);
       return;
     }
 
@@ -3864,7 +3862,7 @@ DECLARE_INFO_COMMAND (info_print_node,
 
   if (!printer_pipe)
     {
-      info_error (_("Cannot open pipe to '%s'."), print_command);
+      info_error (_("Cannot open pipe to '%s'"), print_command);
       return;
     }
 
@@ -3913,8 +3911,8 @@ DECLARE_INFO_COMMAND (info_toggle_regexp,
 {
   use_regex = !use_regex;
   window_message_in_echo_area (use_regex
-                               ? _("Using regular expressions for searches.")
-                               : _("Using literal strings for searches."));
+                               ? _("Using regular expressions for searches")
+                               : _("Using literal strings for searches"));
 }
 
 /* Search for STRING in NODE starting at START.  The DIR argument says which
@@ -4117,12 +4115,12 @@ info_search_internal (char *string, WINDOW *window,
         {
           if (i < 0)
             {
-              msg = N_("Search continued from the end of the document.");
+              msg = N_("Search continued from the end of the document");
               i = number_of_tags - 1;
             }
           else if (i == number_of_tags)
             {
-              msg = N_("Search continued from the beginning of the document.");
+              msg = N_("Search continued from the beginning of the document");
               i = 0;
             }
           
@@ -4175,7 +4173,7 @@ info_search_internal (char *string, WINDOW *window,
 
   /* Not in interactive search. */
   if (!echo_area_is_active)
-    info_error ("%s", _("Search failed."));
+    info_error ("%s", _("Search failed"));
 
 funexit:
   return -1;
@@ -4435,7 +4433,7 @@ go_up:
       window->point = window->node->body_start;
       tree_search_check_node_backwards (window);
     }
-  info_error (previous_match ?  _("No more matches.") : _("Search failed."));
+  info_error (previous_match ?  _("No more matches") : _("Search failed"));
 
 funexit:
   free (string);
@@ -4548,7 +4546,7 @@ go_up:
     }
 
   /* Otherwise, no result. */
-  info_error (previous_match ?  _("No more matches.") : _("Search failed."));
+  info_error (previous_match ?  _("No more matches") : _("Search failed"));
 
 funexit:
   free (string);
@@ -4575,7 +4573,7 @@ wipe_seen_flags (void)
 }
 
 DECLARE_INFO_COMMAND (info_tree_search,
-                      _("Search this node and subnodes for a string."))
+                      _("Search this node and subnodes for a string"))
 {
   char *prompt, *line;
   int i;
@@ -5355,7 +5353,7 @@ dispatch_error (int *keyseq)
   rep = pretty_keyseq (keyseq);
 
   if (!echo_area_is_active)
-    info_error (_("Unknown command (%s)."), rep);
+    info_error (_("Unknown command (%s)"), rep);
   else
     {
       char *temp = xmalloc (1 + strlen (rep) + strlen (_("\"%s\" is invalid")));

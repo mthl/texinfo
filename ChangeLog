@@ -1,3 +1,21 @@
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/indices.c (info_index_search, info_next_index_match),
+	* info/indices.h (APROPOS_NONE),
+	* info/info-utils.c (copy_converting),
+	* info/info.c (get_initial_file, add_initial_nodes, init_messages),
+	* info/infodoc.c (describe_key, info_where_is),
+	* info/m-x.c (info_execute_command),
+	* info/session.c
+	(menu_digit, info_menu_or_ref_item, info_follow_menus)
+	(forward_move_node_structure, backward_move_node_structure)
+	(info_view_file, dump_nodes_to_file, info_print_node)
+	(info_toggle_regexp, info_search_internal)
+	(tree_search_check_node, tree_search_check_node_backwards)
+	(wipe_seen_flags, dispatch_error): Remove full stop from end
+	of messages given to the user.  Inconsistent use of full stops
+	reported by Benno Schulenberg.
+
 2017-05-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (infokey format): Correct documentation of

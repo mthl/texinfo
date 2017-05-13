@@ -470,7 +470,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
       if (map[keystroke].value.function == NULL)
         {
-          message_in_echo_area (_("%s is undefined."), pretty_keyseq (keys));
+          message_in_echo_area (_("%s is undefined"), pretty_keyseq (keys));
           return;
         }
       else if (map[keystroke].type == ISKMAP)
@@ -506,7 +506,7 @@ DECLARE_INFO_COMMAND (describe_key, _("Print documentation for KEY"))
 
               if (map[lowerkey].value.function == NULL)
                 {
-                  message_in_echo_area (_("%s is undefined."),
+                  message_in_echo_area (_("%s is undefined"),
 					pretty_keyseq (keys));
                   return;
                 }
@@ -900,11 +900,11 @@ DECLARE_INFO_COMMAND (info_where_is,
             {
               if (strstr (location, function_name (command)))
                 window_message_in_echo_area
-                  (_("%s can only be invoked via %s."),
+                  (_("%s can only be invoked via %s"),
                    command_name, location);
               else
                 window_message_in_echo_area
-                  (_("%s can be invoked via %s."),
+                  (_("%s can be invoked via %s"),
                    command_name, location);
             }
         }

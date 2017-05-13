@@ -877,7 +877,7 @@ copy_converting (long n)
             }
           continue;
         default: /* Unknown error */
-          info_error (_("Error converting file character encoding."));
+          info_error (_("Error converting file character encoding"));
 
           /* Skip past current input and hope we don't get an
              error next time. */

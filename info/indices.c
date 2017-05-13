@@ -212,7 +212,7 @@ DECLARE_INFO_COMMAND (info_index_search,
 
   if (!fb || !index_index)
     {
-      info_error (_("No indices found."));
+      info_error (_("No indices found"));
       return;
     }
 
@@ -456,7 +456,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
      yet. */
   if (!index_search)
     {
-      info_error (_("No previous index search string."));
+      info_error (_("No previous index search string"));
       return;
     }
 
@@ -474,7 +474,7 @@ DECLARE_INFO_COMMAND (info_next_index_match,
   if (!result)
     {
       info_error (index_offset > 0 ?
-		  _("No more index entries containing '%s'.") :
+                  _("No more index entries containing '%s'") :
 		  _("No index entries containing '%s'."),
 		  index_search);
       index_offset = 0;
