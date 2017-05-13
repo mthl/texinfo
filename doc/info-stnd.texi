@@ -2191,7 +2191,7 @@ the last node. Possible values are:
 
 @table @code
 @item Stop
-Do not scroll. Display the @samp{No more nodes within this document.}
+Do not scroll. Display the @samp{No more nodes within this document}
 message. This is the default.
 
 @item Top

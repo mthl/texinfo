@@ -1,5 +1,10 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Variables) <scroll-last-node>: Remove full 
+	stop from a quoted message.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/window.c (calculate_line_starts, window_compute_line_map):
 	Add a comment and cast return value of a function to void to 
 	make it clear that the return value is being discarded.
