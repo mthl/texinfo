@@ -1154,21 +1154,27 @@ point_forward_char (WINDOW *win)
     point_next_line (win);
 }
 
-/* Set point to the previous multibyte character. */
-static void
+/* Set point to the previous multibyte character.  Return 0 if we can't
+   go any further. */
+static int
 point_backward_char (WINDOW *win)
 {
   long point = win->point;
   int col;
 
-  col = window_point_to_column (win, point, 0);
+  /* Find column in the line map before the current one that moves the
+     point backward. */
+  col = window_point_to_column (win, point, 0) - 1;
   for (; col >= 0 && win->line_map.map[col] == point; col--)
     ;
 
   if (col >= 0)
-    win->point = win->line_map.map[col];
+    {
+      win->point = win->line_map.map[col];
+      return 1;
+    }
   else
-    point_prev_line (win);
+    return point_prev_line (win);
 }
 
 /* Advance window point to the beginning of the next word. */
@@ -1214,42 +1220,17 @@ point_backward_word (WINDOW *win)
 {
   int col;
 
-  point_backward_char (win);
-  col = window_point_to_column (win, win->point, &win->point);
-
-  /* Skip white space backwards. */
-  while (1)
+  /* Skip any white space before current cursor position. */
+  while (point_backward_char (win))
     {
-      for (; col >= 0; col--)
-        {
-          win->point = win->line_map.map[col];
-          if (looking_at_alnum (win))
-            goto skipped_whitespace;
-        }
-      if (!point_prev_line (win))
-        return;
-      col = win->line_map.used - 1;
+      if (looking_at_alnum (win))
+        goto back_to_word_start;
     }
-  skipped_whitespace:
 
-  while (1)
+back_to_word_start:
+  while (point_backward_char (win))
     {
-      for (; col >= 0; col--)
-	{
-          win->point = win->line_map.map[col];
-          if (win->point == 0)
-            return;
-	  if (!looking_at_alnum (win))
-            {
-              point_forward_char (win);
-              return;
-            }
-	}
-      if (!point_prev_line (win))
-        return;
-      col = win->line_map.used - 1;
-
-      if (looking_at_newline (win, win->point))
+      if (!looking_at_alnum (win))
         {
           point_forward_char (win);
           return;

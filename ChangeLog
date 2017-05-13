@@ -1,5 +1,14 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/sesson.c (point_backward_char): Change return type to int
+	and return 0 on failure.  Make sure we always go backwards.
+	(point_backward_word): Use point_backward_char to simplify code.
+
+	This continues the fix of the bug of the point getting stuck
+	at the start of a node (partially fixed on 2017-05-11).
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Xref Commands, Parts of an Xref)
 	(Selecting Xrefs): Change 'cross reference' to 'cross-reference'.
 
