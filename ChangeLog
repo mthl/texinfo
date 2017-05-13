@@ -1,5 +1,10 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Xref Commands, Parts of an Xref)
+	(Selecting Xrefs): Change 'cross reference' to 'cross-reference'.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (Variables) <scroll-last-node>: Remove full 
 	stop from a quoted message.
 
