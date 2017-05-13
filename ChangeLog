@@ -1,5 +1,11 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (calculate_line_starts, window_compute_line_map):
+	Add a comment and cast return value of a function to void to 
+	make it clear that the return value is being discarded.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (info_index_search, info_next_index_match),
 	* info/indices.h (APROPOS_NONE),
 	* info/info-utils.c (copy_converting),

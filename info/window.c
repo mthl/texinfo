@@ -1173,7 +1173,9 @@ calculate_line_starts (WINDOW *win)
       size_t pbytes = 0; /* Not used. */
       int delim = 0;
 
-      printed_representation (&iter, &delim, pl_chars, &pchars, &pbytes);
+      /* Set pchars. */
+      (void) printed_representation (&iter, &delim, pl_chars,
+                                     &pchars, &pbytes);
 
       /* If this character can be printed without passing the width of
          the line, then include it in the line. */
@@ -1298,8 +1300,9 @@ window_compute_line_map (WINDOW *win)
       if (cur_ptr >= endp)
 	break;
       
-      printed_representation (&iter, &delim, win->line_map.used,
-                              &pchars, &pbytes);
+      /* Set pchars */
+      (void) printed_representation (&iter, &delim, win->line_map.used,
+                                     &pchars, &pbytes);
 
       while (pchars--)
         line_map_add (&win->line_map, cur_ptr - win->node->contents);
