@@ -1,5 +1,10 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\xrdef): Place a \gdef using a \csname
+	within a group to avoid save stack build-up for long aux files.
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/indices.c (info_next_index_match): Remove full stop from 
 	end of message.  (Missed on 2017-05-13.  Report from Benno 
 	Schulenberg.)
