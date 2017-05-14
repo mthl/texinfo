@@ -1,15 +1,15 @@
 # Italian translations of resulting document strings.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Federico Bruni <fedelogy@gmail.com>, 2013, 2015.
+# Federico Bruni <fede@inventati.org>, 2013, 2015, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 5.9.90\n"
+"Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2015-02-24 21:36+0100\n"
-"Last-Translator: Federico Bruni <fedelogy@gmail.com>\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-24 11:47+0200\n"
+"Last-Translator: Federico Bruni <fede@inventati.org>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Gtranslator 2.91.6\n"
+"X-Generator: Gtranslator 2.91.7\n"
 
 #: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
 msgid "Function"
@@ -821,9 +821,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Questo documento è stato generato il @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format

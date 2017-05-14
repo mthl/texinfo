@@ -1,15 +1,15 @@
 # Hungarian translations of resulting document strings.
-# Copyright (C) 2009, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2009, 2015, 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
 # Harmath Dénes <harmathdenes@gmail.com>, 2009.
-# Balázs Úr <urbalazs@gmail.com>, 2015.
+# Balázs Úr <urbalazs@gmail.com>, 2015, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 5.9.93\n"
+"Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2015-06-14 20:39+0200\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-27 22:08+0200\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "Language: hu\n"
@@ -822,9 +822,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Ezt a dokumentumot @emph{@today{}} napon állították elő."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format
@@ -903,6 +903,3 @@ msgstr "1.4. alszakasz"
 #: tp/Texinfo/Convert/HTML.pm:6908
 msgid "Untitled Document"
 msgstr "Névtelen dokumentum"
-
-#~ msgid "{title}: {element_text}"
-#~ msgstr "{title}: {element_text}"

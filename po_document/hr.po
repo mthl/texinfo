@@ -2,13 +2,13 @@
 # Copyright (C) 2015 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 #
-# Božidar Putanec <bozidarp@yahoo.com>, 2016.
+# Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU texinfo_document 6.1.92\n"
+"Project-Id-Version: GNU texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2016-09-09 20:30+0200\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-25 20:36-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Lokalize 2.0\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: tp/Texinfo/Common.pm:698 tp/Texinfo/Common.pm:703
@@ -825,9 +825,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Ovaj dokument je napravljen na @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format

@@ -1,14 +1,14 @@
 # Polish translation for texinfo_document
-# Copyright (C) 2013 Free Software Foundation, Inc.
+# Copyright (C) 2013, 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
-# Jakub Bogusz <qboosh@pld-linux.org>, 2013.
+# Jakub Bogusz <qboosh@pld-linux.org>, 2013-2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 5.0\n"
+"Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2013-02-28 21:35+0100\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-26 21:40+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "Language: pl\n"
@@ -822,9 +822,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Ten dokument został wygenerowany @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format
@@ -904,6 +904,3 @@ msgstr "Podsekcja Jeden-Cztery"
 #: tp/Texinfo/Convert/HTML.pm:6908
 msgid "Untitled Document"
 msgstr "Dokument bez tytułu"
-
-#~ msgid "{title}: {element_text}"
-#~ msgstr "{title}: {element_text}"

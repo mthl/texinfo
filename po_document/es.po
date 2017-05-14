@@ -1,15 +1,15 @@
 # Spanish translations of resulting document strings.
-# Copyright (C) 2008, 2015 Free Software Foundation, Inc.
+# Copyright (C) 2008, 2015, 2017 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 # Francisco Vila <paconet.org@gmail.com>, 2008.
-# Antonio Ceballos <aceballos@gmail.com>, 2015.
+# Antonio Ceballos <aceballos@gmail.com>, 2015, 2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document-5.9.90\n"
+"Project-Id-Version: texinfo_document-6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2015-05-21 00:04+0200\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-23 23:35+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -820,9 +820,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Este documento se generó el @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format

@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo_document 6.1.92\n"
+"Project-Id-Version: texinfo_document 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-04-23 13:58+0100\n"
-"PO-Revision-Date: 2016-09-17 06:12-0300\n"
+"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"PO-Revision-Date: 2017-04-25 06:00-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
 "net>\n"
@@ -822,9 +822,9 @@ msgid "This document was generated on @emph{@today{}}."
 msgstr "Esse documento foi gerado em @emph{@today{}}."
 
 #: tp/Texinfo/Convert/HTML.pm:6216
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "{element_text} ({title})"
-msgstr "{text} ({url})"
+msgstr "{element_text} ({title})"
 
 #: tp/Texinfo/Convert/HTML.pm:6360
 #, perl-brace-format
@@ -906,6 +906,3 @@ msgstr "Subse@,{c}@~{a}o Um-Quatro"
 #: tp/Texinfo/Convert/HTML.pm:6908
 msgid "Untitled Document"
 msgstr "Documento Sem Nome"
-
-#~ msgid "{title}: {element_text}"
-#~ msgstr "{title}: {element_text}"
