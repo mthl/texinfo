@@ -460,6 +460,7 @@ static int default_vi_like_info_keys[] =
   CONTROL('x'), 'g', NUL,         A_info_goto_node,
   CONTROL('x'), 'i', NUL,         A_info_index_search,
   CONTROL('x'), 'I', NUL,         A_info_goto_invocation_node,
+  CONTROL('x'), 'n', NUL,         A_info_next_node,
   CONTROL('x'), 'o', NUL,         A_info_next_window,
   CONTROL('x'), 'O', NUL,         A_info_goto_invocation_node,
   CONTROL('x'), 'p', NUL,         A_info_prev_node,

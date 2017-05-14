@@ -2380,8 +2380,8 @@ bindings that are activated by the @option{--vi-keys} option to Info
 
 @example
 #info
-g       beginning-of-node
-G       end-of-node
+g       first-node
+G       last-node
 \mb     beginning-of-node
 \me     end-of-node
 j       next-line
@@ -2410,6 +2410,7 @@ u       scroll-half-screen-up
 ^u      scroll-half-screen-up
 
 ^xn     next-node
+^xp     prev-node
 ^xu     up-node
 '       last-node
 \mt     top-node

@@ -1,3 +1,13 @@
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (infokey format): Add missing documentation 
+	for 'C-x p' for 'prev-node' under --vi-keys.  Correct bindings
+	of 'g' and 'G' to 'first-node' and 'last-node' respectively.
+	* info/infomap.c (default_vi_like_info_keys): Re-add 'C-x n' for
+	'next-node' (removed accidentally on 2014-06-10).
+
+	Reports from Benno Schulenberg.
+
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\xrdef): Place a \gdef using a \csname
