@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2016-12-30 07:10+0100\n"
 "Last-Translator: Walter Garcia-Fontes <walter.garcia@upf.edu>\n"
 "Language-Team: Catalan <ca@dodds.net>\n"
@@ -325,9 +325,9 @@ msgstr "No hi ha una cadena prèvia de caràcters de cerca d'índex"
 msgid "No more index entries containing '%s'"
 msgstr "No hi ha més entrades d'índex que continguin `%s'."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "No hi ha entrades d'índex que continguin `%s'."
 
 #: info/indices.c:588
@@ -367,6 +367,11 @@ msgstr ""
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Tema d'índex"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "No hi ha entrades d'índex que continguin `%s'."
 
 #: info/indices.h:42
 #, fuzzy, c-format

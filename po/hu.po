@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.x\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Máté LABÁDI <labadimate@freemail.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -330,9 +330,9 @@ msgstr "Nincs korábbi keresési feltétel"
 msgid "No more index entries containing '%s'"
 msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
 
 #: info/indices.c:588
@@ -373,6 +373,11 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "Tárgymutató apropók:"
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nincs %stárgymutató-bejegyzés, ami „%s!H-t tartalmazná."
 
 #: info/indices.h:42
 #, fuzzy, c-format

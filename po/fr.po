@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-24 18:59+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -331,9 +331,9 @@ msgstr "Aucune chaîne de recherche d'index précédente."
 msgid "No more index entries containing '%s'"
 msgstr "Plus aucune entrée d'index contenant « %s »."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Aucune entrée d'index contenant « %s »."
 
 #: info/indices.c:588
@@ -375,6 +375,11 @@ msgstr "Placer dans l'index toutes les correspondances à une chaîne"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Sujet de l'index"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Aucune entrée d'index contenant « %s »."
 
 #: info/indices.h:42
 #, fuzzy, c-format

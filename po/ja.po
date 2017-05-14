@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2014-11-07 08:03+0000\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -328,9 +328,9 @@ msgstr "以前の見出し検索文字列がありません"
 msgid "No more index entries containing '%s'"
 msgstr "%s を含む見出し項目はこれ以上ありません。"
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "%s を含む見出し項目がありません。"
 
 #: info/indices.c:588
@@ -369,6 +369,11 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "終了インデックス"
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "%s を含む見出し項目がありません。"
 
 #: info/indices.h:42
 #, fuzzy, c-format

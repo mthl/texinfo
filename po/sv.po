@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.11.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2008-03-09 20:35+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -352,9 +352,9 @@ msgstr "Inga %sindexposter som innehåller \"%s\"."
 # Please don't use this type of construct, use two complete sentences
 # instead and an outer if statement.
 #
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Inga %sindexposter som innehåller \"%s\"."
 
 #: info/indices.c:588
@@ -401,6 +401,19 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "Index-apropos: "
+
+# This is broken
+#
+#  info_error (_("No %sindex entries containing \"%s\"."),
+#              index_offset > 0 ? _("more ") : "", index_search);
+#
+# Please don't use this type of construct, use two complete sentences
+# instead and an outer if statement.
+#
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Inga %sindexposter som innehåller \"%s\"."
 
 #: info/indices.h:42
 #, fuzzy, c-format

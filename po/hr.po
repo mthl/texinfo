@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-25 20:55-0800\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -328,9 +328,9 @@ msgstr "Nema prethodnog zadanog niza za pretraživanje indeksa."
 msgid "No more index entries containing '%s'"
 msgstr "Nema više stavki indeksa koje sadrže ‘%s’."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Nema stavki u indeksu koje sadrže ‘%s’."
 
 #: info/indices.c:588
@@ -371,6 +371,11 @@ msgstr "Prikaži svako pojavljivanje niza u indeksu"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Tema indeksa"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nema stavki u indeksu koje sadrže ‘%s’."
 
 #: info/indices.h:42
 #, fuzzy, c-format

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-25 12:38+0300\n"
 "Last-Translator: Mehmet Kececi <mkececi@mehmetkececi.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -324,9 +324,9 @@ msgstr "Daha önce bir indeks arama dizgesi yok."
 msgid "No more index entries containing '%s'"
 msgstr "'%s' içeren daha başka indeks girdisi yok."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "'%s' içeren indeks girdisi yok."
 
 #: info/indices.c:588
@@ -369,6 +369,11 @@ msgstr "İndekste dizgeyle eşleşenleri listele"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "İndeks konusu"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "'%s' içeren indeks girdisi yok."
 
 #: info/indices.h:42
 #, fuzzy, c-format

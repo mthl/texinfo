@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -326,9 +326,9 @@ msgstr "Tidak ada indeks pencarian string sebelumnya."
 msgid "No more index entries containing '%s'"
 msgstr "Tidak ada masukan indeks yang berisi `%s'."
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Tidak ada masukan indeks yang berisi `%s'."
 
 #: info/indices.c:588
@@ -369,6 +369,11 @@ msgstr "List all matches of a string in the index"
 #, fuzzy
 msgid "Index topic"
 msgstr "Indeks apropos: "
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Tidak ada masukan indeks yang berisi `%s'."
 
 #: info/indices.h:42
 #, fuzzy, c-format

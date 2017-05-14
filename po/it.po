@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2013-09-20 13:31+0200\n"
 "Last-Translator: Francesco Groccia <frgroccia@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
@@ -327,9 +327,9 @@ msgstr "Nessun precedente testo di ricerca dell'indice."
 msgid "No more index entries containing '%s'"
 msgstr "Nessun'altra voce dell'indice contiene «%s»."
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Nessuna voce dell'indice contiene «%s»."
 
 #: info/indices.c:588
@@ -368,6 +368,11 @@ msgstr "Elenca tutte le occorrenze di una stringa nell'indice"
 #, fuzzy
 msgid "Index topic"
 msgstr "Argomento indice: "
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nessuna voce dell'indice contiene «%s»."
 
 #: info/indices.h:42
 #, fuzzy, c-format

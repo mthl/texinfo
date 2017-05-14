@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-23 22:46+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
@@ -328,9 +328,9 @@ msgstr "Немає попередніх рядків пошуку у покаж�
 msgid "No more index entries containing '%s'"
 msgstr "Більше немає пунктів покажчика, які б містили «%s»."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Немає пунктів покажчика, які б містили «%s»."
 
 #: info/indices.c:588
@@ -372,6 +372,11 @@ msgstr "Показати список усіх входжень рядка до 
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Тема покажчика"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Немає пунктів покажчика, які б містили «%s»."
 
 #: info/indices.h:42
 #, fuzzy, c-format

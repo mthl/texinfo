@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -328,9 +328,9 @@ msgstr ".סקדניאב שופיחל תמדוק תזורחמ ןיא"
 msgid "No more index entries containing '%s'"
 msgstr ".\"%s\" תזורחמ םיליכמה סקדניא יטירפ%s ןיא"
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr ".\"%s\" תזורחמ םיליכמה סקדניא יטירפ%s ןיא"
 
 #: info/indices.c:588
@@ -370,6 +370,11 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "Index apropos: "
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr ".\"%s\" תזורחמ םיליכמה סקדניא יטירפ%s ןיא"
 
 #: info/indices.h:42
 #, fuzzy, c-format

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-05-12 13:09+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -325,9 +325,9 @@ msgstr "Malestas antaŭa ĉeno por serĉo en indekso."
 msgid "No more index entries containing '%s'"
 msgstr "Malestas pli da indekseroj enhavantaj «%s»."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Ne ekzistas indekseroj kiuj enhavas «%s»."
 
 #: info/indices.c:588
@@ -368,6 +368,11 @@ msgstr "Listigi ĉiujn aperojn de signoĉeno en la indekso"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Indeksa temo"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Ne ekzistas indekseroj kiuj enhavas «%s»."
 
 #: info/indices.h:42
 #, fuzzy, c-format

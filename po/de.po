@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2015-03-02 13:41+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -354,9 +354,9 @@ msgstr "Keine vorherige zu suchende Index-Zeichenkette."
 msgid "No more index entries containing '%s'"
 msgstr "Keine weiteren Index-Einträge, die „%s“ enthalten."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Keine Index-Einträge, die „%s“ enthalten."
 
 #: info/indices.c:588
@@ -395,6 +395,11 @@ msgstr "Alle Übereinstimmungen einer Zeichenkette im Index anzeigen"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Index-Thema: "
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Keine Index-Einträge, die „%s“ enthalten."
 
 #: info/indices.h:42
 #, fuzzy, c-format

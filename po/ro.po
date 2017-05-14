@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -331,9 +331,9 @@ msgstr "Nu existã nici un ºir cãutat anterior."
 msgid "No more index entries containing '%s'"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Nici o intrare în %sindex conþinând `%s'."
 
 #: info/indices.c:588
@@ -373,6 +373,11 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "Index apropos: "
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nici o intrare în %sindex conþinând `%s'."
 
 #: info/indices.h:42
 #, fuzzy, c-format

@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -366,9 +366,9 @@ msgstr "Ibanjirije Umubarendanga Gushaka Ikurikiranyanyuguti"
 msgid "No more index entries containing '%s'"
 msgstr "Ibyinjijwe"
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "Ibyinjijwe"
 
 #: info/indices.c:588
@@ -412,6 +412,11 @@ msgstr ""
 #, fuzzy
 msgid "Index topic"
 msgstr "Ikinjizwa mu mubarendanga...."
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "Ibyinjijwe"
 
 #: info/indices.h:42
 #, fuzzy, c-format

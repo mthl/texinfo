@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-26 21:33+0200\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -324,9 +324,9 @@ msgstr "Brak poprzedniego łańcucha szukanego w indeksie."
 msgid "No more index entries containing '%s'"
 msgstr "Nie ma więcej wpisów w indeksie zawierających '%s'."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Nie ma wpisów w indeksie zawierających '%s'."
 
 #: info/indices.c:588
@@ -367,6 +367,11 @@ msgstr "Lista wszystkich dopasowań łańcucha w indeksie"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Temat indeksu"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Nie ma wpisów w indeksie zawierających '%s'."
 
 #: info/indices.h:42
 #, fuzzy, c-format

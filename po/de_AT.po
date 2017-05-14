@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 3.12d\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 1999-02-16 21:14+01:00\n"
 "Last-Translator: Karl Eichwalder <ke@suse.de>\n"
 "Language-Team: German <de@li.org>\n"
@@ -320,9 +320,9 @@ msgstr ""
 msgid "No more index entries containing '%s'"
 msgstr ""
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr ""
 
 #: info/indices.c:588
@@ -358,6 +358,11 @@ msgstr ""
 
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
+msgstr ""
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
 msgstr ""
 
 #: info/indices.h:42

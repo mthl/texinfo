@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo-6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2017-04-23 22:35+0200\n"
 "Last-Translator: Antonio Ceballos <aceballos@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
@@ -336,9 +336,9 @@ msgstr "No existe constancia previa de texto de búsqueda."
 msgid "No more index entries containing '%s'"
 msgstr "No existen más entradas en el índice que contengan '%s'."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "No existen entradas en el índice que contengan '%s'."
 
 #: info/indices.c:588
@@ -380,6 +380,11 @@ msgstr "Enumera todas las coincidencias de una cadena de texto en el índice."
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Tema del índice"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "No existen entradas en el índice que contengan '%s'."
 
 #: info/indices.h:42
 #, fuzzy, c-format

@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2016-09-27 09:13GMT\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -331,9 +331,9 @@ msgstr "Ingen tidligere indekssøgestreng."
 msgid "No more index entries containing '%s'"
 msgstr "Ikke flere indekspunkter indeholdende »%s«."
 
-#: info/indices.c:478 info/indices.c:918
-#, c-format
-msgid "No index entries containing '%s'."
+#: info/indices.c:478
+#, fuzzy, c-format
+msgid "No index entries containing '%s'"
 msgstr "Ingen indeksposter indeholdende »%s«."
 
 #: info/indices.c:588
@@ -371,6 +371,11 @@ msgstr "Vis alle match for en streng i indekset"
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr "Indeksemne"
+
+#: info/indices.c:918
+#, c-format
+msgid "No index entries containing '%s'."
+msgstr "Ingen indeksposter indeholdende »%s«."
 
 #: info/indices.h:42
 #, fuzzy, c-format

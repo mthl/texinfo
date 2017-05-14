@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.1\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-14 12:13+0100\n"
+"POT-Creation-Date: 2017-05-14 12:40+0100\n"
 "PO-Revision-Date: 2002-03-08 04:56+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -327,9 +327,9 @@ msgstr "沒有前一個索引搜尋字串"
 msgid "No more index entries containing '%s'"
 msgstr "沒有 %s索引項目包含 \"%s\"."
 
-#: info/indices.c:478 info/indices.c:918
+#: info/indices.c:478
 #, fuzzy, c-format
-msgid "No index entries containing '%s'."
+msgid "No index entries containing '%s'"
 msgstr "沒有 %s索引項目包含 \"%s\"."
 
 #: info/indices.c:588
@@ -366,6 +366,11 @@ msgstr ""
 #: info/indices.c:891 info/indices.c:893
 msgid "Index topic"
 msgstr ""
+
+#: info/indices.c:918
+#, fuzzy, c-format
+msgid "No index entries containing '%s'."
+msgstr "沒有 %s索引項目包含 \"%s\"."
 
 #: info/indices.h:42
 #, c-format
