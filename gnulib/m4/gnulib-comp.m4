@@ -486,6 +486,7 @@ AC_DEFUN([gl_INIT],
       if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
         AC_LIBOBJ([msvc-nothrow])
       fi
+      gl_MODULE_INDICATOR([msvc-nothrow])
       gl_gnulib_enabled_676220fa4366efa9bdbfccf11a857c07=true
       func_gl_gnulib_m4code_f691f076f650964c9f5598c3ee487616
     fi

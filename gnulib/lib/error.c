@@ -98,7 +98,11 @@ extern void __error_at_line (int status, int errnum, const char *file_name,
 #  define WIN32_LEAN_AND_MEAN
 #  include <windows.h>
 /* Get _get_osfhandle.  */
-#  include "msvc-nothrow.h"
+#  if GNULIB_MSVC_NOTHROW
+#   include "msvc-nothrow.h"
+#  else
+#   include <io.h>
+#  endif
 # endif
 
 /* The gnulib override of fcntl is not needed in this file.  */
@@ -174,7 +178,7 @@ print_errno_message (int errnum)
 
 #if _LIBC || GNULIB_STRERROR_R_POSIX || defined HAVE_STRERROR_R
   char errbuf[1024];
-# if _LIBC || GNULIB_STRERROR_R_POSIX || STRERROR_R_CHAR_P
+# if _LIBC || (!GNULIB_STRERROR_R_POSIX && STRERROR_R_CHAR_P)
   s = __strerror_r (errnum, errbuf, sizeof errbuf);
 # else
   if (__strerror_r (errnum, errbuf, sizeof errbuf) == 0)

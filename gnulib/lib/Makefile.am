@@ -1481,6 +1481,7 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's/@''GNULIB_SLEEP''@/$(GNULIB_SLEEP)/g' \
 	      -e 's/@''GNULIB_SYMLINK''@/$(GNULIB_SYMLINK)/g' \
 	      -e 's/@''GNULIB_SYMLINKAT''@/$(GNULIB_SYMLINKAT)/g' \
+	      -e 's/@''GNULIB_TRUNCATE''@/$(GNULIB_TRUNCATE)/g' \
 	      -e 's/@''GNULIB_TTYNAME_R''@/$(GNULIB_TTYNAME_R)/g' \
 	      -e 's/@''GNULIB_UNISTD_H_GETOPT''@/0$(GNULIB_GL_UNISTD_H_GETOPT)/g' \
 	      -e 's/@''GNULIB_UNISTD_H_NONBLOCKING''@/$(GNULIB_UNISTD_H_NONBLOCKING)/g' \
@@ -1518,6 +1519,7 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''HAVE_SLEEP''@|$(HAVE_SLEEP)|g' \
 	      -e 's|@''HAVE_SYMLINK''@|$(HAVE_SYMLINK)|g' \
 	      -e 's|@''HAVE_SYMLINKAT''@|$(HAVE_SYMLINKAT)|g' \
+	      -e 's|@''HAVE_TRUNCATE''@|$(HAVE_TRUNCATE)|g' \
 	      -e 's|@''HAVE_UNLINKAT''@|$(HAVE_UNLINKAT)|g' \
 	      -e 's|@''HAVE_USLEEP''@|$(HAVE_USLEEP)|g' \
 	      -e 's|@''HAVE_DECL_ENVIRON''@|$(HAVE_DECL_ENVIRON)|g' \
@@ -1559,6 +1561,7 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''REPLACE_SLEEP''@|$(REPLACE_SLEEP)|g' \
 	      -e 's|@''REPLACE_SYMLINK''@|$(REPLACE_SYMLINK)|g' \
 	      -e 's|@''REPLACE_SYMLINKAT''@|$(REPLACE_SYMLINKAT)|g' \
+	      -e 's|@''REPLACE_TRUNCATE''@|$(REPLACE_TRUNCATE)|g' \
 	      -e 's|@''REPLACE_TTYNAME_R''@|$(REPLACE_TTYNAME_R)|g' \
 	      -e 's|@''REPLACE_UNLINK''@|$(REPLACE_UNLINK)|g' \
 	      -e 's|@''REPLACE_UNLINKAT''@|$(REPLACE_UNLINKAT)|g' \
@@ -1662,6 +1665,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''HAVE_FEATURES_H''@|$(HAVE_FEATURES_H)|g' \
 	      -e 's|@''NEXT_WCHAR_H''@|$(NEXT_WCHAR_H)|g' \
 	      -e 's|@''HAVE_WCHAR_H''@|$(HAVE_WCHAR_H)|g' \
+	      -e 's/@''HAVE_CRTDEFS_H''@/$(HAVE_CRTDEFS_H)/g' \
 	      -e 's/@''GNULIB_OVERRIDES_WINT_T''@/$(GNULIB_OVERRIDES_WINT_T)/g' \
 	      -e 's/@''GNULIB_BTOWC''@/$(GNULIB_BTOWC)/g' \
 	      -e 's/@''GNULIB_WCTOB''@/$(GNULIB_WCTOB)/g' \
@@ -1702,6 +1706,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_WCSSTR''@/$(GNULIB_WCSSTR)/g' \
 	      -e 's/@''GNULIB_WCSTOK''@/$(GNULIB_WCSTOK)/g' \
 	      -e 's/@''GNULIB_WCSWIDTH''@/$(GNULIB_WCSWIDTH)/g' \
+	      -e 's/@''GNULIB_WCSFTIME''@/$(GNULIB_WCSFTIME)/g' \
 	      < $(srcdir)/wchar.in.h | \
 	  sed -e 's|@''HAVE_WINT_T''@|$(HAVE_WINT_T)|g' \
 	      -e 's|@''HAVE_BTOWC''@|$(HAVE_BTOWC)|g' \
@@ -1741,6 +1746,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''HAVE_WCSSTR''@|$(HAVE_WCSSTR)|g' \
 	      -e 's|@''HAVE_WCSTOK''@|$(HAVE_WCSTOK)|g' \
 	      -e 's|@''HAVE_WCSWIDTH''@|$(HAVE_WCSWIDTH)|g' \
+	      -e 's|@''HAVE_WCSFTIME''@|$(HAVE_WCSFTIME)|g' \
 	      -e 's|@''HAVE_DECL_WCTOB''@|$(HAVE_DECL_WCTOB)|g' \
 	      -e 's|@''HAVE_DECL_WCWIDTH''@|$(HAVE_DECL_WCWIDTH)|g' \
 	  | \
@@ -1757,6 +1763,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''REPLACE_WCSNRTOMBS''@|$(REPLACE_WCSNRTOMBS)|g' \
 	      -e 's|@''REPLACE_WCWIDTH''@|$(REPLACE_WCWIDTH)|g' \
 	      -e 's|@''REPLACE_WCSWIDTH''@|$(REPLACE_WCSWIDTH)|g' \
+	      -e 's|@''REPLACE_WCSFTIME''@|$(REPLACE_WCSFTIME)|g' \
 	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
 	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
 	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)'; \
