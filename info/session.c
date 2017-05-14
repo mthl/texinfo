@@ -546,6 +546,9 @@ info_gather_typeahead (int wait)
 
 static int get_input_key_internal (void);
 
+static void _scroll_forward (WINDOW *window, int count, int nodeonly);
+static void _scroll_backward (WINDOW *window, int count, int nodeonly);
+
 /* Whether to process or skip mouse events in the input stream. */
 unsigned char mouse_cb, mouse_cx, mouse_cy;
 
@@ -557,16 +560,13 @@ mouse_event_handler (void)
 {
   if (mouse_cb & 0x40)
     {
-      void info_up_line (WINDOW *, int count);
-      void info_down_line (WINDOW *, int count);
-
       switch (mouse_cb & 0x03)
         {
         case 0: /* Mouse button 4 (scroll up). */
-          info_up_line (active_window, 3);
+          _scroll_backward (active_window, 3, 1);
           break;
         case 1: /* Mouse button 5 (scroll down). */
-          info_down_line (active_window, 3);
+          _scroll_forward (active_window, 3, 1);
           break;
         }
     }
@@ -1218,8 +1218,6 @@ point_forward_word (WINDOW *win)
 static void
 point_backward_word (WINDOW *win)
 {
-  int col;
-
   /* Skip any white space before current cursor position. */
   while (point_backward_char (win))
     {
@@ -1623,13 +1621,13 @@ DECLARE_INFO_COMMAND (info_scroll_backward_page_only_set_window,
 /* Scroll the window forward by N lines.  */
 DECLARE_INFO_COMMAND (info_down_line, _("Scroll down by lines"))
 {
-  _scroll_forward (window, count, 1);
+  _scroll_forward (window, count, 0);
 }
 
 /* Scroll the window backward by N lines.  */
 DECLARE_INFO_COMMAND (info_up_line, _("Scroll up by lines"))
 {
-  _scroll_backward (window, count, 1);
+  _scroll_backward (window, count, 0);
 }
 
 /* Lines to scroll when using commands that scroll by half screen size

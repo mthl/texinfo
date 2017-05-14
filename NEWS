@@ -27,6 +27,9 @@ See the manual for detailed information.
     documented)
 
 * info:
+  . the `up-line' and `down-line' commands now are like the other
+    scrolling commands and are no longer confined to a single node
+    (depending on the value of `scroll-behaviour')
   . supplying the --all option with --index-search displays a list
     of matching index entries
   . display bug fixed where color could be turned off prematurely

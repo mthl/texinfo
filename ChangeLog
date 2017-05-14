@@ -1,5 +1,21 @@
 2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (point_backwards_word): Remove unused variable.
+
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_down_line, info_up_line): Call
+	_scroll_backward and _scroll_forward with argument so that it
+	possible for scrolling to change node, depending on the value
+	of 'scroll-behaviour'.
+	(mouse_event_handler): Call _scroll_backward and _scroll_forward
+	instead of info_down_line, info_up_line so that mouse scrollwheel
+	scrolling continues to be confined to an single node.
+	* NEWS: Mention that 'down-line' and 'up-line' are affected by
+	the value of 'scroll-behaviour'.
+
+2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (infokey format): Add missing documentation 
 	for 'C-x p' for 'prev-node' under --vi-keys.  Correct bindings
 	of 'g' and 'G' to 'first-node' and 'last-node' respectively.
