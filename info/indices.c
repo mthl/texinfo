@@ -475,8 +475,8 @@ DECLARE_INFO_COMMAND (info_next_index_match,
     {
       info_error (index_offset > 0 ?
                   _("No more index entries containing '%s'") :
-		  _("No index entries containing '%s'."),
-		  index_search);
+                  _("No index entries containing '%s'"),
+                  index_search);
       index_offset = 0;
       return;
     }

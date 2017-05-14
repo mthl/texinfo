@@ -1,5 +1,11 @@
 2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/indices.c (info_next_index_match): Remove full stop from 
+	end of message.  (Missed on 2017-05-13.  Report from Benno 
+	Schulenberg.)
+
+2017-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/sesson.c (point_backward_char): Change return type to int
 	and return 0 on failure.  Make sure we always go backwards.
 	(point_backward_word): Use point_backward_char to simplify code.
