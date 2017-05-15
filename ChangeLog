@@ -1,5 +1,15 @@
 2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (Node Commands) <global-next-node>: Change 
+	'forward or down' to just 'forward'.  Explain that the menu is 
+	checked before the Next pointer, rather than the other way 
+	around as it incorrectly stated.  Benno Schulenberg reported 
+	that this was documented to happen the wrong way around.  In 
+	addition, correct description of what happens when neither a 
+	menu or a Next pointer is present.
+
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Mention to always run change_perl_modules.sh
 	even if it is a pretest release, as this is needed now there is
 	module version checking.

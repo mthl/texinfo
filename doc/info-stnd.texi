@@ -938,11 +938,11 @@ node.
 @item @kbd{]} (@code{global-next-node})
 @kindex ]
 @findex global-next-node
-Move forward or down through node structure.  If the node that you are
-currently viewing has a @samp{Next} pointer, that node is selected.
-Otherwise, if this node has a menu, the first menu item is selected.  If
-there is no @samp{Next} and no menu, the same process is tried with the
-@samp{Up} node of this node.
+Move forward through the node structure.  If the node that you are
+currently viewing has a menu, select the first menu item.  Otherwise,
+if this node has a @samp{Next} pointer, follow it.  If there is no menu
+and no @samp{Next} pointer, then follow @samp{Up} pointers until there
+is a @samp{Next} pointer, and then follow it.
 
 @item @kbd{[} (@code{global-prev-node})
 @kindex [
