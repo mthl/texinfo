@@ -1,5 +1,11 @@
 2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Mention to always run change_perl_modules.sh
+	even if it is a pretest release, as this is needed now there is
+	module version checking.
+
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infomap.c (default_vi_like_info_keys),
 	* doc/info-stnd.texi (Custom Key Bindings):
 	Bind 'b' to 'scroll-backward-page-only' instead of 
