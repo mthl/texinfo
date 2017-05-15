@@ -386,7 +386,7 @@ static int default_vi_like_info_keys[] =
   '[', NUL,                       A_info_global_prev_node,
   ']', NUL,                       A_info_global_next_node,
   '\'', NUL,                      A_info_history_node,
-  'b', NUL,                       A_info_scroll_backward,
+  'b', NUL,                       A_info_scroll_backward_page_only,
   'd', NUL,                       A_info_scroll_half_screen_down,
   'e', NUL,                       A_info_down_line,
   'E', NUL,                       A_info_view_file,

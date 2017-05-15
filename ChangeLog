@@ -1,3 +1,10 @@
+2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infomap.c (default_vi_like_info_keys),
+	* doc/info-stnd.texi (Custom Key Bindings):
+	Bind 'b' to 'scroll-backward-page-only' instead of 
+	'scroll-backward' for consistency with f, C-f and C-b.
+
 2017-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (point_backwards_word): Remove unused variable.

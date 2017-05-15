@@ -2392,7 +2392,7 @@ f       scroll-forward-page-only
 \m\     scroll-forward-page-only
 z       scroll-forward-page-only-set-window
 
-b       scroll-backward
+b       scroll-backward-page-only
 ^b      scroll-backward-page-only
 w       scroll-backward-page-only-set-window
 
