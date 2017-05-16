@@ -947,7 +947,7 @@ is a @samp{Next} pointer, and then follow it.
 @item @kbd{[} (@code{global-prev-node})
 @kindex [
 @findex global-prev-node
-Move backward or up through node structure.  If the node that you are
+Move backward through the node structure.  If the node that you are
 currently viewing has a @samp{Prev} pointer, that node is selected.
 Otherwise, if the node has an @samp{Up} pointer, that node is selected,
 and if it has a menu, the last item in the menu is selected.
@@ -962,12 +962,9 @@ You can get the same behavior as @code{global-next-node} and
 @item @kbd{g} (@code{goto-node})
 @kindex g
 @findex goto-node
-Read the name of a node and select it.  While reading the node name,
-completion (@pxref{The Echo Area, completion}) is only done for the
-nodes which reside in one of the Info files that were loaded in the
-current Info session; if the desired node resides in some other file,
-you must type the node exactly as it appears in that Info file, and you
-must include the Info file of the other file.  For example,
+Read the name of a node and select it.  If the desired node resides in
+some other file, you must type the node as it appears in that Info file,
+and include the name of the other file.  For example,
 
 @example
 @code{g(emacs)Buffers}
@@ -975,6 +972,10 @@ must include the Info file of the other file.  For example,
 
 @noindent
 finds the node @samp{Buffers} in the Info file @file{emacs}.
+
+While reading the node name, completion (@pxref{The Echo Area,
+completion}) is only done for the nodes which reside in one of the Info
+files that were loaded in the current Info session.
 
 @anchor{goto-invocation}
 @item @kbd{O} (@code{goto-invocation})

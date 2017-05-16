@@ -1,3 +1,18 @@
+2017-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Node Commands) <global-prev-node>: Change 
+	'forward or down' to just 'forward'.
+
+2017-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Node Commands) <goto-node>:
+	Re-write, describing completion and selection of nodes in other 
+	files separately.  The old text implied that you could select a 
+	node in another file without using a filename if that file had 
+	been loaded already in the current Info session.
+	Benno Schuleberg noticed that the text contained the phrase
+	"the Info file of the other file", which was wrong.
+
 2017-05-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Node Commands) <global-next-node>: Change 
