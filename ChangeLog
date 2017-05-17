@@ -1,3 +1,20 @@
+2017-05-17  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/gettext.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/iconv.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-ld.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-link.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/lib-prefix.m4: Upgrade to gettext-0.19.8.
+	* gnulib/m4/nls.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/po.m4: New file, from gettext-0.19.8.
+	* gnulib/m4/progtest.m4: New file, from gettext-0.19.8.
+
+2017-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* gnulib: run gnulib-tool to import 'gettext-h' module instead
+	of 'gettext' module, as the 'gettext' module is deprecated in 
+	Gnulib. run gettexize again to put the files back.
+
 2017-05-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Node Commands) <global-prev-node>: Change 
