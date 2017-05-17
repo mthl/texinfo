@@ -1,3 +1,13 @@
+2017-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_next_text):
+	Do not strip \r from end of line.  This reverses the change
+	on 2017-04-29.
+	* tp/tests/test_scripts/coverage_formatting_cr.sh,
+	* tp/tests/coverage (formatting_cr): Remove test.
+	texi2any does not support CR LF line endings on GNU/Linux.
+	* tp/tests/coverage/formatting_cr.texi: Removed.
+
 2017-05-17  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* gnulib/m4/gettext.m4: New file, from gettext-0.19.8.
