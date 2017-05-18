@@ -1,3 +1,29 @@
+2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c, info/filesys.c (convert_eols): Function moved 
+	between files.  Change arguments and modify text in place.  Do
+	not realloc the buffer to make it smaller.
+	* info/filesys.c (filesys_read_info_file)
+	[__MSDOS__, __MINGW32__]: Call convert_eols and realloc buffer.  
+	This reinstates call that was removed on 2014-10-24, except now 
+	it is MS-DOS/Windows only.
+
+	* info/nodes.c (find_node_from_tag): Remove most of the code
+	here that deals with conversion of end-of-lines, including
+	code updating pointers to node contents in currently-displayed 
+	windows.
+	* info/nodes.c (adjust_nodestart): Do not take extra argument 
+	giving the slack to search for a node.
+	* info/nodes.h (N_EOLs_Converted): Remove.
+
+	This reverses changes made on 2014-12-29.  Although there has 
+	not been a report of any problems with this code, it is too 
+	complicated and difficult to understand for what it achieves 
+	(allow reading Info files whether CR bytes before LF bytes are 
+	counted in the tag table or not).  It updates global data across 
+	the program which could cause problems in the future if there 
+	are changes elsewhere in the program.
+
 2017-05-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_next_text):
