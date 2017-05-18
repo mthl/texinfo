@@ -115,8 +115,6 @@ TESTS = \
 	t/spec-menu.sh \
 	t/all-only.sh \
 	t/empty.sh \
-	t/cr-tag-table.sh \
-	t/inc-sea-bs-after-strip-cr.sh \
 	t/tab.sh \
 	t/tab-argument.sh \
 	t/tab-no-xref.sh \
