@@ -1,3 +1,10 @@
+2017-05-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/infodoc.c (replace_in_documentation):
+	Remove code to handle numbers before command name, like
+	"\\[6next-line]" meaning "M-6 M-x next-line", as it is not used 
+	anywhere, and this simplifies the code.
+
 2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/cr-tag-table.sh: Remove test.

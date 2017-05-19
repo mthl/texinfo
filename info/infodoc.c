@@ -635,22 +635,6 @@ pretty_keyseq (int *keyseq)
   return text_buffer_base (&rep);
 }
 
-/* Return a pointer to the last character in s that is found in f. */
-static const char *
-strrpbrk (const char *s, const char *f)
-{
-  register const char *e = s + strlen(s);
-  register const char *t;
-
-  while (e-- != s)
-    {
-      for (t = f; *t; t++)
-        if (*e == *t)
-          return e;
-    }
-  return NULL;
-}
-
 /* Replace the names of functions with the key that invokes them. */
 char *
 replace_in_documentation (const char *string, int help_is_only_window_p)
@@ -702,30 +686,14 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
             }
           if (string[j] == '[')
             {
-              unsigned arg = 0;
-              char *argstr = NULL;
               char *rep_name, *fun_name, *rep;
               InfoCommand *command;
-              char *repstr = NULL;
               unsigned replen;
 
               /* Copy in the old text. */
               strncpy (result + next, string + start, i - start);
               next += (i - start);
               start = j + 1;
-
-              /* Look for an optional numeric arg. */
-              i = start;
-              if (isdigit(string[i])
-                  || (string[i] == '-' && isdigit(string[i + 1])) )
-                {
-                  arg = atoi(string + i);
-                  if (string[i] == '-')
-                    i++;
-                  while (isdigit(string[i]))
-                    i++;
-                }
-              start = i;
 
               /* Move to the end of the function name. */
               for (i = start; string[i] && (string[i] != ']'); i++);
@@ -754,35 +722,10 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               if (!command)
                 abort ();
 
-              if (arg)
-                {
-                  char *argrep;
-		  const char *p;
-
-                  argrep = where_is (info_keymap, InfoCmd(info_add_digit_to_numeric_arg));
-                  p = argrep ? strrpbrk (argrep, "0123456789-") : NULL;
-                  if (p)
-                    {
-                      argstr = xmalloc (p - argrep + 21);
-                      strncpy (argstr, argrep, p - argrep);
-                      sprintf (argstr + (p - argrep), "%d", arg);
-                    }
-                  else
-                    command = NULL;
-                }
-              rep = command ? where_is (info_keymap, command) : NULL;
+              rep = where_is (info_keymap, command);
               if (!rep)
                 rep = "N/A";
-              replen = (argstr ? strlen (argstr) : 0) + strlen (rep) + 1;
-              repstr = xmalloc (replen);
-              repstr[0] = '\0';
-              if (argstr)
-                {
-                  strcat(repstr, argstr);
-                  strcat(repstr, " ");
-                  free (argstr);
-                }
-              strcat(repstr, rep);
+              replen = strlen (rep) + 1;
 
               if (fmt)
                 {
@@ -798,12 +741,11 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                 }
 
               if (fmt)
-                  sprintf (result + next, fmt, repstr);
+                  sprintf (result + next, fmt, rep);
               else
-                  strcpy (result + next, repstr);
+                  strcpy (result + next, rep);
 
               next = strlen (result);
-              free (repstr);
 
               start = i;
               if (string[i])
