@@ -1,10 +1,15 @@
 2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/cr-tag-table.sh: Remove test.
+	* info/t/inc-sea-bs-after-strip-cr: Remove test.
+
+2017-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c, info/filesys.c (convert_eols): Function moved 
 	between files.  Change arguments and modify text in place.  Do
 	not realloc the buffer to make it smaller.
 	* info/filesys.c (filesys_read_info_file)
-	[__MSDOS__, __MINGW32__]: Call convert_eols and realloc buffer.  
+	[__MSDOS__, __MINGW32__]: Call convert_eols and realloc buffer.
 	This reinstates call that was removed on 2014-10-24, except now 
 	it is MS-DOS/Windows only.
 
