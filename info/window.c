@@ -618,6 +618,8 @@ window_delete_window (WINDOW *window)
   free (window->log_line_no);
   free (window->line_map.map);
   free (window->modeline);
+  free_matches (&window->matches);
+  free (window->search_string);
 
   if (window == active_window)
     {

@@ -148,6 +148,7 @@ TESTS = \
 	t/replace-viewed.sh \
 	t/search-skip-screen.sh \
 	t/search-empty.sh \
+	t/close-window-after-search.sh \
 	t/inc-sea-forward.sh \
 	t/inc-sea-forward-nonregex.sh \
 	t/inc-sea-insensitive.sh \

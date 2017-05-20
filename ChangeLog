@@ -1,5 +1,11 @@
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/window.c (window_delete_window): Call 'free_matches' and 
+	free 'search_string' field in order to avoid a memory leak.
+	* info/t/close-window-after-search.sh: New test.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_search_in_node_internal): Call
 	free_matches even after a failing search in order to avoid a 
 	memory leak.
