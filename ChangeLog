@@ -1,5 +1,14 @@
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infodoc.c (replace_in_documentation): Use functions 
+	operating on a struct text_buffer object to keep track of
+	whether there is enough space in the output buffer.
+	Benno Schulenberg reported that there would be an out-of-bounds
+	write when a message reporting an index match was output if the
+	binding of ',' had been changed away from 'next-index-match'.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (replace_in_documentation): Explicitly compare 
 	a pointed-to character to the only character value it can be 
 	equal to other than null, for clarity.  Move code near other 

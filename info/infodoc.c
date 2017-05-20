@@ -635,18 +635,19 @@ pretty_keyseq (int *keyseq)
   return text_buffer_base (&rep);
 }
 
-/* Replace the names of functions with the key that invokes them. */
+/* Replace the names of functions with the key that invokes them.
+   Return value should not be freed by caller. */
 char *
 replace_in_documentation (const char *string, int help_is_only_window_p)
 {
-  unsigned reslen = strlen (string);
-  register int i, start, next;
-  static char *result = NULL;
+  register int i, start;
+  static struct text_buffer txtresult = {0};
 
-  free (result);
-  result = xmalloc (1 + reslen);
+  text_buffer_free (&txtresult);
+  text_buffer_init (&txtresult);
+  text_buffer_alloc (&txtresult, strlen (string));
 
-  next = start = 0;
+  start = 0;
 
   /* Skip to the beginning of a replaceable function. */
   for (i = start; string[i]; i++)
@@ -691,8 +692,7 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               unsigned replen;
 
               /* Copy in the old text. */
-              strncpy (result + next, string + start, i - start);
-              next += (i - start);
+              text_buffer_add_string (&txtresult, string + start, i - start);
               start = j + 1;
 
               /* Move to the end of the function name. */
@@ -731,34 +731,20 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               rep = where_is (info_keymap, command);
               if (!rep)
                 rep = "N/A";
-              replen = strlen (rep) + 1;
+              replen = strlen (rep);
 
               if (fmt)
-                {
-                  if (replen > max)
-                    replen = max;
-                  if (replen < min)
-                    replen = min;
-                }
-              if (next + replen > reslen)
-                {
-                  reslen = next + replen + 1;
-                  result = xrealloc (result, reslen + 1);
-                }
-
-              if (fmt)
-                  sprintf (result + next, fmt, rep);
+                text_buffer_printf (&txtresult, fmt, rep);
               else
-                  strcpy (result + next, rep);
-
-              next = strlen (result);
+                text_buffer_add_string (&txtresult, rep, replen);
             }
 
           free (fmt);
         }
     }
-  strcpy (result + next, string + start);
-  return result;
+  text_buffer_add_string (&txtresult,
+                          string + start, strlen (string + start) + 1);
+  return text_buffer_base (&txtresult);
 }
 
 /* Return a string of characters which could be typed from the keymap
