@@ -702,18 +702,24 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
               strncpy (rep_name, string + start, i - start);
               rep_name[i - start] = '\0';
 
-            /* If we have only one window (because the window size was too
-               small to split it), we have to quit help by going back one
-               node in the history list, not deleting the window.  */
+              start = i;
+              if (string[start] == ']')
+                start++;
+
+              fun_name = rep_name;
               if (strcmp (rep_name, "quit-help") == 0)
-                fun_name = help_is_only_window_p ? "history-node"
-                                                 : "get-help-window";
-              else
-                fun_name = rep_name;
+                {
+                  /* Special case for help window.  If we have only one window 
+                     (because the window size was too small to split it), we 
+                     have to quit help by going back one node in the history 
+                     list, not deleting the window.  */
+
+                  fun_name = help_is_only_window_p ? "history-node"
+                                                   : "get-help-window";
+                }
 
               /* Find a key which invokes this function in the info_keymap. */
               command = named_function (fun_name);
-
               free (rep_name);
 
               /* If the internal documentation string fails, there is a
@@ -746,10 +752,6 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                   strcpy (result + next, rep);
 
               next = strlen (result);
-
-              start = i;
-              if (string[i])
-                start++;
             }
 
           free (fmt);
