@@ -658,8 +658,6 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
       if (string[i] == '\\')
         {
           char *fmt = NULL;
-          unsigned min = 0;
-          unsigned max = 0;
 
           if(string[j] == '%')
             {
@@ -667,13 +665,11 @@ replace_in_documentation (const char *string, int help_is_only_window_p)
                 j++;
               if (isdigit(string[j]))
                 {
-                  min = atoi(string + j);
                   while (isdigit(string[j]))
                     j++;
                   if (string[j] == '.' && isdigit(string[j + 1]))
                     {
                       j += 1;
-                      max = atoi(string + j);
                       while (isdigit(string[j]))
                         j++;
                     }
