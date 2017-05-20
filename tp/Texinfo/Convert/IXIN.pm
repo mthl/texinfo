@@ -54,7 +54,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.3.90';
+$VERSION = '6.3.91';
 
 my $ixin_version = 1;
 

@@ -1,3 +1,8 @@
+2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.3.91.
+	* configure.ac: Update version.
+
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (window_delete_window): Call 'free_matches' and 
