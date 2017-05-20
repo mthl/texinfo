@@ -1,5 +1,10 @@
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS (info): Add item about the handling of Info files
+	with CR-LF line endings.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (replace_in_documentation): Use functions 
 	operating on a struct text_buffer object to keep track of
 	whether there is enough space in the output buffer.

@@ -36,6 +36,13 @@ See the manual for detailed information.
   . several other bugs fixed
   . better portability in test suite
   . do not fall back to showing the dir node if a manual isn't found
+  . Do not attempt any kind of conversion of CR LF line endings,
+    except on MS-DOS/Windows, when it is done unconditionally.  (This 
+    replaces a more complicated approach, where this conversion would 
+    take place if there was a problem finding a node in a file.)  The 
+    main effect of this change is that Info files with CR LF line 
+    endings, which would have been produced on MS-DOS/Windows with old 
+    versions of makeinfo, are only supported on such operating systems.
 
 * texinfo.tex
   . a DVI file with a single empty page can be output again, which
