@@ -3923,7 +3923,6 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
       || window->search_is_case_sensitive != case_sensitive)
     {
       free_matches (&window->matches);
-
       free (window->search_string);
       window->search_string = xstrdup (string);
       window->search_is_case_sensitive = case_sensitive;
@@ -3937,7 +3936,10 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
     }
   
   if (result != search_success)
-    return result;
+    {
+      free_matches (&matches);
+      return result;
+    }
 
   if (node->flags & N_Simple)
     {

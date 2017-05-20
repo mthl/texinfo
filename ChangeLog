@@ -1,5 +1,11 @@
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/session.c (info_search_in_node_internal): Call
+	free_matches even after a failing search in order to avoid a 
+	memory leak.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS (info): Add items about setting style variables and 
 	--vi-keys.
 
