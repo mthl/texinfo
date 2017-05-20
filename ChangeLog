@@ -1,5 +1,10 @@
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS (info): Add items about setting style variables and 
+	--vi-keys.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infodoc.c (replace_in_documentation): Remove code
 	setting variables whose value is no longer used anywhere.
 
