@@ -1,5 +1,10 @@
 2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (info_short_help): Remove full stops from the ends 
+	of lines describing options.
+
+2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (info_xref_item): Give an error message if
 	there are no cross-references in the node, to be consistent
 	with 'menu-item'.  This happened in Texinfo 5.2 and earlier.

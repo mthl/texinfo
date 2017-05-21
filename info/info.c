@@ -1094,22 +1094,22 @@ Read documentation in Info format.\n"), program_name);
 
   puts (_("\
 Options:\n\
-  -a, --all                    use all matching manuals.\n\
-  -k, --apropos=STRING         look up STRING in all indices of all manuals.\n\
-  -d, --directory=DIR          add DIR to INFOPATH.\n\
-      --dribble=FILE           remember user keystrokes in FILENAME.\n\
+  -a, --all                    use all matching manuals\n\
+  -k, --apropos=STRING         look up STRING in all indices of all manuals\n\
+  -d, --directory=DIR          add DIR to INFOPATH\n\
+      --dribble=FILE           remember user keystrokes in FILENAME\n\
   -f, --file=MANUAL            specify Info manual to visit."));
 
   puts (_("\
-  -h, --help                   display this help and exit.\n\
-      --index-search=STRING    go to node pointed by index entry STRING.\n\
-  -n, --node=NODENAME          specify nodes in first visited Info file.\n\
+  -h, --help                   display this help and exit\n\
+      --index-search=STRING    go to node pointed by index entry STRING\n\
+  -n, --node=NODENAME          specify nodes in first visited Info file\n\
   -o, --output=FILE            output selected nodes to FILE."));
 
   puts (_("\
-  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n\
-      --no-raw-escapes         output escapes as literal text.\n\
-      --restore=FILE           read initial keystrokes from FILE.\n\
+  -R, --raw-escapes            output \"raw\" ANSI escapes (default)\n\
+      --no-raw-escapes         output escapes as literal text\n\
+      --restore=FILE           read initial keystrokes from FILE\n\
   -O, --show-options, --usage  go to command-line options node."));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
@@ -1118,13 +1118,13 @@ Options:\n\
 #endif
 
   puts (_("\
-      --strict-node-location   (for debugging) use Info file pointers as-is.\n\
-      --subnodes               recursively output menu items.\n\
-  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n\
-      --vi-keys                use vi-like and less-like key bindings.\n\
-      --version                display version information and exit.\n\
-  -w, --where, --location      print physical location of Info file.\n\
-  -x, --debug=NUMBER           set debugging level (-1 for all).\n"));
+      --strict-node-location   (for debugging) use Info file pointers as-is\n\
+      --subnodes               recursively output menu items\n\
+  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n\
+      --vi-keys                use vi-like and less-like key bindings\n\
+      --version                display version information and exit\n\
+  -w, --where, --location      print physical location of Info file\n\
+  -x, --debug=NUMBER           set debugging level (-1 for all)\n"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\
