@@ -1098,23 +1098,23 @@ Options:\n\
   -k, --apropos=STRING         look up STRING in all indices of all manuals\n\
   -d, --directory=DIR          add DIR to INFOPATH\n\
       --dribble=FILE           remember user keystrokes in FILENAME\n\
-  -f, --file=MANUAL            specify Info manual to visit."));
+  -f, --file=MANUAL            specify Info manual to visit"));
 
   puts (_("\
   -h, --help                   display this help and exit\n\
       --index-search=STRING    go to node pointed by index entry STRING\n\
   -n, --node=NODENAME          specify nodes in first visited Info file\n\
-  -o, --output=FILE            output selected nodes to FILE."));
+  -o, --output=FILE            output selected nodes to FILE"));
 
   puts (_("\
   -R, --raw-escapes            output \"raw\" ANSI escapes (default)\n\
       --no-raw-escapes         output escapes as literal text\n\
       --restore=FILE           read initial keystrokes from FILE\n\
-  -O, --show-options, --usage  go to command-line options node."));
+  -O, --show-options, --usage  go to command-line options node"));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
   puts (_("\
-  -b, --speech-friendly        be friendly to speech synthesizers."));
+  -b, --speech-friendly        be friendly to speech synthesizers"));
 #endif
 
   puts (_("\
