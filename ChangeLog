@@ -1,4 +1,9 @@
-2017-04-23  Gavin Smith  <gavinsmith0123@gmail.com>
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (Custom Key Bindings): Correct '\xr' to 
+	'^xr'.  Report from Benno Schulenberg.
+
+2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.3.91.
 	* configure.ac: Update version.
