@@ -2462,7 +2462,24 @@ DECLARE_INFO_COMMAND (info_menu_item, _("Read a menu item and select its node"))
 DECLARE_INFO_COMMAND
   (info_xref_item, _("Read a footnote or cross reference and select its node"))
 {
-  info_menu_or_ref_item (window, 0, 1, 1);
+  if (window->node->references)
+    {
+      REFERENCE **r;
+      
+      /* Check if there is a cross-reference in this node. */
+      for (r = window->node->references; *r; r++)
+        if ((*r)->type == REFERENCE_XREF)
+          break;
+
+      if (*r)
+        {
+          info_menu_or_ref_item (window, 0, 1, 1);
+          return;
+        }
+    }
+
+  info_error ("%s", msg_no_xref_node);
+  return;
 }
 
 /* Position the cursor at the start of this node's menu. */

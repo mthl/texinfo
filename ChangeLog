@@ -1,3 +1,10 @@
+2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (info_xref_item): Give an error message if
+	there are no cross-references in the node, to be consistent
+	with 'menu-item'.  This happened in Texinfo 5.2 and earlier.
+	Report from Benno Schulenberg.
+
 2017-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/info-stnd.texi (Custom Key Bindings): Correct '\xr' to 
