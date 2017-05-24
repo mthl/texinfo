@@ -11,6 +11,13 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
+import {
+  withSidebarQuery,
+  scanToc,
+  clearTocStyles,
+  mainFilename
+} from "./toc";
+
 var mainName = "index.html";
 var mainWindow = window;
 var sidebarQuery = "";
@@ -18,25 +25,13 @@ var tocName = "ToC";
 var tocFilename = tocName + ".xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
-var mainFilename;
-
-function
-withSidebarQuery (href)
-{
-  var nodeName = href.replace (/[.]x?html.*/, "");
-  if (href == mainFilename || href == mainName || nodeName == "start")
-    return mainFilename;
-  var h = href.indexOf ('#');
-  var hash = h < 0 ? "" : href.replace (/.*#/, ".");
-  return mainFilename + "#" + nodeName + hash;
-}
 
 function
 onMainLoad (evt)
 {
-  if (top == window)
+  if (top == window)       /* Function is called at the top-level.  */
     {
-      mainFilename = window.location.pathname.replace (/.*[/]/, "");
+      mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
       var body = document.body;
 
       /* Move contents of <body> into a a fresh <div>.  */
@@ -56,15 +51,16 @@ onMainLoad (evt)
           var iframe = document.createElement ("iframe");
           sidebarFrame = iframe;
           iframe.setAttribute ("name", "slider");
-          iframe.setAttribute ("src", tocFilename + "#main=" + mainFilename);
+          iframe.setAttribute ("src",
+                               tocFilename + "#main=" + mainFilename.val);
           body.insertBefore (iframe, body.firstChild);
           body.setAttribute ("class", "mainbar");
         }
       sidebarQuery = window.location.hash;
     }
-  else
+  else                     /* Function is called inside an iframe.  */
     {
-      mainFilename = window.name
+      mainFilename.val = window.name
         .replace (/.*[/]/, "")
         .replace (/#.*/, "");
     }
@@ -85,19 +81,6 @@ fixLink (link, href)
     link.setAttribute ("target", "_blank");
   else
     link.setAttribute ("href", withSidebarQuery (href));
-}
-
-function
-clearTocStyles (node)
-{
-  if (node.matches ("ul"))
-    node.removeAttribute ("toc-detail");
-  else if (node.matches ("a"))
-    node.removeAttribute ("toc-current");
-
-  for (var child = node.firstElementChild; child;
-       child = child.nextElementSibling)
-    clearTocStyles (child);
 }
 
 function
@@ -127,83 +110,9 @@ addSidebarHeader (sidebarDoc)
 }
 
 function
-hideGrandChildNodes (ul)
-{
-  /* Keep children but remove grandchildren (Exception: don't remove
-     anything on the current page; however, that's not a problem in the
-     Kawa manual).  */
-  for (var li = ul.firstElementChild; li; li = li.nextElementSibling)
-    {
-      var achild = li.firstElementChild;
-      if (achild && li.matches ("li") && achild.matches ("a"))
-        {
-          var lichild = achild.nextElementSibling;
-          if (lichild
-              && lichild.matches ("ul")
-              /* Never remove Overall-Index.  */
-              && achild.getAttribute ("href") != "Overall-Index.xhtml")
-            lichild.setAttribute ("toc-detail", "yes");
-        }
-    }
-}
-
-
-function
-scanToc (node, filename)
-{
-  var current = withSidebarQuery (filename);
-  var ul = node.getElementsByTagName ("ul")[0];
-  if (filename == "index.html")
-    hideGrandChildNodes (ul);
-  else
-    scanToc1 (ul, current);
-}
-
-/** Scan ToC entries to see which should be hidden.  Return 2 if node
-    matches current; 1 if node is ancestor of current; else 0.  */
-function
-scanToc1 (node, current)
-{
-  if (node.matches ("a"))
-    {
-      if (current == node.getAttribute ("href"))
-        {
-          node.setAttribute ("toc-current", "yes");
-          var ul = node.nextElementSibling;
-          if (ul && ul.matches ("ul"))
-            hideGrandChildNodes (ul);
-          return 2;
-        }
-    }
-  var ancestor = null;
-  for (var child = node.firstElementChild; child;
-       child = child.nextElementSibling)
-    {
-      if (scanToc1 (child, current) > 0)
-        {
-          ancestor = child;
-          break;
-        }
-    }
-  if (ancestor && ancestor.parentNode && ancestor.parentNode.parentNode)
-    {
-      var pparent = ancestor.parentNode.parentNode;
-      for (var sib = pparent.firstElementChild; sib; sib = sib.nextElementSibling)
-        {
-          if (sib != ancestor.parentNode
-              && sib.firstElementChild
-              && sib.firstElementChild.nextElementSibling)
-            sib.firstElementChild.nextElementSibling.setAttribute ("toc-detail", "yes");
-        }
-    }
-
-  return ancestor ? 1 : 0;
-}
-
-function
 onSidebarLoad (evt)
 {
-  mainFilename = window.location.href.replace (/.*#main=/, "");
+  mainFilename.val = window.location.href.replace (/.*#main=/, "");
   var search = window.location.hash;
   addSidebarHeader (document);
   /* FIXME: Add base also for sub-pages.  */
@@ -247,8 +156,8 @@ onSidebarLoad (evt)
             }
         }
     }
-  if (mainFilename != null)
-    scanToc (document.body, mainFilename);
+  if (mainFilename.val != null)
+    scanToc (document.body, mainFilename.val);
 
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
