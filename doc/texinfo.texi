@@ -5936,13 +5936,13 @@ Here are some cases for which it is preferable @emph{not} to use @code{@@code}:
 
 @itemize @bullet
 @item
-For shell command names such as @command{ls} (use @code{@@command}).
+For shell command names, such as @command{ls} (use @code{@@command}).
 
 @item
-For environment variable such as @env{TEXINPUTS} (use @code{@@env}).
+For environment variables, such as @env{TEXINPUTS} (use @code{@@env}).
 
 @item
-For shell options such as @samp{-c} when such options stand alone (use
+For shell options, such as @samp{-c}, when such options stand alone (use
 @code{@@option}).
 
 @item
