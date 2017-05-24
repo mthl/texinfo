@@ -1,3 +1,13 @@
+2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/session.c (tree_search_check_node) <no more matches>: Add
+	the "Top" node to the window history, instead of using a
+	menu entry in the current node (as the current node may not
+	have a menu).  Otherwise, if a tree search was rooted at a node
+	without a menu, 'active_menu' would be left with an invalid 
+	value, leading to a crash if it was used again when the user did 
+	a 'tree-search-next' command.  Report from Benno Schulenberg.
+
 2017-05-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (info_short_help): Remove full stops from the ends 

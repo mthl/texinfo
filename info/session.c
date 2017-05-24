@@ -4405,15 +4405,15 @@ go_up:
   /* Go back to the final match. */
   if (previous_match)
     {
-      REFERENCE *mentry;
-
       message_in_echo_area (_("Going back to last match from %s"),
                             window->node->nodename);
 
-      /* This is a trick.  Add an arbitrary node to the window history,
-         but set active_menu to one more than the number of references.  When
-         we call tree_search_check_node_backwards, this will repeatedly go down 
-         the last menu entry for us. */
+      /* This is a trick.
+         Set active_menu to one more than the number of references,
+         and add an arbitrary node to the window history.
+         When we call tree_search_check_node_backwards, this will go
+         backwards through the tree structure to the last match.
+         Change active_menu back to a valid value afterwards .*/
       {
         int n = 0;
 
@@ -4421,11 +4421,14 @@ go_up:
           n++;
         window->node->active_menu = n + 1;
 
-        mentry = select_menu_digit (window, '1');
-        if (!mentry)
-          goto funexit;
-        if (!info_select_reference (window, mentry))
-          goto funexit;
+        info_parse_and_select ("Top", window);
+        /* Check if this worked. */
+        if (strcmp (window->node->nodename, "Top"))
+          {
+            /* Loading "Top" node failed. */
+            window->node->active_menu = 0;
+            goto funexit;
+          }
         window->node->active_menu = BEFORE_MENU;
       }
       window->point = window->node->body_start;
