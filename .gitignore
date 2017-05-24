@@ -103,3 +103,5 @@ man/*.1
 stamp-1
 stamp-po
 stamp-vti
+node_modules/
+/js/build/
