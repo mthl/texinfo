@@ -6689,8 +6689,8 @@ For example,
 
 @example
 @group
-@@strong@{Caution:@} @@samp@{rm *@}
-removes @@emph@{all@} normal files.
+@@strong@{Caution:@} @@samp@{rm * .[^.]*@}
+removes @@emph@{all@} files in the directory.
 @end group
 @end example
 
@@ -6699,7 +6699,7 @@ produces the following:
 
 @quotation
 @strong{Caution}: @samp{rm * .[^.]*}
-removes @emph{all} normal files.
+removes @emph{all} files in the directory.
 @end quotation
 
 The @code{@@strong} command is seldom used except to mark what is, in

@@ -1,5 +1,11 @@
 2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (@emph @strong): Make output of example 
+	Texinfo code consistent with the input, as was the case before
+	2012-09-06.  Inconsistency reported by Matan Nassau.
+
+2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (tree_search_check_node) <no more matches>: Add
 	the "Top" node to the window history, instead of using a
 	menu entry in the current node (as the current node may not
