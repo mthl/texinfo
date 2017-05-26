@@ -291,6 +291,9 @@ onUnload (evt)
   request.send (null);
 }
 
+/* Return true if the side bar containing the table of content should be
+   displayed, otherwise return false.  This is guessed from HASH which must be
+   a string representing a list of URL parameters.  */
 function
 useSidebar (hash)
 {
