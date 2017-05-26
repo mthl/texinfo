@@ -64,14 +64,13 @@ onMainLoad (evt)
         .replace (/.*[/]/, "")
         .replace (/#.*/, "");
     }
+
   var links = document.getElementsByTagName ("a");
-  for (var i = links.length; --i >= 0; )
-    {
-      var link = links[i];
-      var href = link.getAttribute ("href");
-      if (href)
-        fixLink (link, href);
-    }
+  links.forEach (link => {
+    var href = link.getAttribute ("href");
+    if (href)
+      fixLink (link, href);
+  });
 }
 
 function
