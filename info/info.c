@@ -1131,16 +1131,16 @@ For a summary of key bindings, type H within Info."));
 
   puts (_("\n\
 Examples:\n\
-  info                       show top-level dir menu\n\
-  info info-stnd             show the manual for this Info program\n\
-  info emacs                 start at emacs node from top-level dir\n\
-  info emacs buffers         select buffers menu entry in emacs manual\n\
-  info emacs -n Files        start at Files node within emacs manual\n\
-  info '(emacs)Files'        alternative way to start at Files node\n\
-  info --show-options emacs  start at node with emacs' command line options\n\
+  info                         show top-level dir menu\n\
+  info info-stnd               show the manual for this Info program\n\
+  info emacs                   start at emacs node from top-level dir\n\
+  info emacs buffers           select buffers menu entry in emacs manual\n\
+  info emacs -n Files          start at Files node within emacs manual\n\
+  info '(emacs)Files'          alternative way to start at Files node\n\
+  info --show-options emacs    start at node with emacs' command line options\n\
   info --subnodes -o out.txt emacs\n\
-                             dump entire emacs manual to out.txt\n\
-  info -f ./foo.info         show file ./foo.info, not searching dir"));
+                               dump entire emacs manual to out.txt\n\
+  info -f ./foo.info           show file ./foo.info, not searching dir"));
 
   puts ("");
 

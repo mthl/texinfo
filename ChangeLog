@@ -1,5 +1,11 @@
 2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/info.c (info_short_help): Move right-hand column of 
+	descriptions so that a word in an example in the left-hand 
+	column doesn't line up with the edge of the right-hand column.
+
+2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/info.c (info_short_help): Change "options" to 
 	"frequently-used options" and remove documentation of several 
 	options: --dribble, --raw-escapes, --no-raw-escapes, --restore,
