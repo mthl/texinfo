@@ -1093,11 +1093,10 @@ Read documentation in Info format.\n"), program_name);
   puts ("");
 
   puts (_("\
-Options:\n\
+Frequently-used options:\n\
   -a, --all                    use all matching manuals\n\
   -k, --apropos=STRING         look up STRING in all indices of all manuals\n\
   -d, --directory=DIR          add DIR to INFOPATH\n\
-      --dribble=FILE           remember user keystrokes in FILENAME\n\
   -f, --file=MANUAL            specify Info manual to visit"));
 
   puts (_("\
@@ -1107,9 +1106,6 @@ Options:\n\
   -o, --output=FILE            output selected nodes to FILE"));
 
   puts (_("\
-  -R, --raw-escapes            output \"raw\" ANSI escapes (default)\n\
-      --no-raw-escapes         output escapes as literal text\n\
-      --restore=FILE           read initial keystrokes from FILE\n\
   -O, --show-options, --usage  go to command-line options node"));
 
 #if defined(__MSDOS__) || defined(__MINGW32__)
@@ -1118,13 +1114,10 @@ Options:\n\
 #endif
 
   puts (_("\
-      --strict-node-location   (for debugging) use Info file pointers as-is\n\
       --subnodes               recursively output menu items\n\
   -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n\
-      --vi-keys                use vi-like and less-like key bindings\n\
       --version                display version information and exit\n\
-  -w, --where, --location      print physical location of Info file\n\
-  -x, --debug=NUMBER           set debugging level (-1 for all)\n"));
+  -w, --where, --location      print physical location of Info file"));
 
   puts (_("\n\
 The first non-option argument, if present, is the menu entry to start from;\n\
@@ -1139,14 +1132,14 @@ For a summary of key bindings, type H within Info."));
   puts (_("\n\
 Examples:\n\
   info                       show top-level dir menu\n\
-  info info                  show the general manual for Info readers\n\
-  info info-stnd             show the manual specific to this Info program\n\
+  info info-stnd             show the manual for this Info program\n\
   info emacs                 start at emacs node from top-level dir\n\
   info emacs buffers         select buffers menu entry in emacs manual\n\
   info emacs -n Files        start at Files node within emacs manual\n\
   info '(emacs)Files'        alternative way to start at Files node\n\
   info --show-options emacs  start at node with emacs' command line options\n\
-  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n\
+  info --subnodes -o out.txt emacs\n\
+                             dump entire emacs manual to out.txt\n\
   info -f ./foo.info         show file ./foo.info, not searching dir"));
 
   puts ("");

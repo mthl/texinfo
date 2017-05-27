@@ -1,3 +1,13 @@
+2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info.c (info_short_help): Change "options" to 
+	"frequently-used options" and remove documentation of several 
+	options: --dribble, --raw-escapes, --no-raw-escapes, --restore,
+	--strict-node-location, --vi-keys, --debug.  (All of these are
+	still documented in full in the manual.)  Only show one example
+	of loading a manual for the Info program.  Reformat one example.
+	Remove a blank line from the output.
+
 2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@code): Fix grammar.  Change "variable such 
