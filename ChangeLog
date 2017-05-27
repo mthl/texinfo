@@ -8,6 +8,8 @@
 	of loading a manual for the Info program.  Reformat one example.
 	Remove a blank line from the output.
 
+	* info/t/help.sh: Update.
+
 2017-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@code): Fix grammar.  Change "variable such 
