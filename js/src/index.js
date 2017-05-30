@@ -309,7 +309,7 @@ useSidebar (hash)
    which is different from "index.html".  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
-  if (window.location.href.indexOf ("#main=") >= 0 || window.name == "slider")
+  if (window.location.href.includes ("#main=") || window.name == "slider")
     window.addEventListener ("load", onSidebarLoad, false);
   else
     window.addEventListener ("load", onMainLoad, false);
