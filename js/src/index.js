@@ -11,6 +11,7 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
+import { inside_iframe_p } from "./utils";
 import {
   withSidebarQuery,
   scanToc,
@@ -29,7 +30,7 @@ var sidebarFrame = null;
 function
 onMainLoad (evt)
 {
-  if (top == window)       /* Function is called at the top-level.  */
+  if (!inside_iframe_p ())
     {
       mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
       var body = document.body;
@@ -304,7 +305,7 @@ useSidebar (hash)
     return !(navigator && navigator.epubReadingSystem);
 }
 
-if (top != window
+if (inside_iframe_p ()
     || window.location.pathname.endsWith ("/index.html")
     || window.location.pathname.endsWith ("/"))
 {
