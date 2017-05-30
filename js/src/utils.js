@@ -7,3 +7,11 @@ inside_iframe_p ()
 {
   return top != window;
 }
+
+/** Check if FILE_NAME corresponds to the entry file of the
+    manual.  */
+export function
+inside_index_page_p (file_name)
+{
+  return file_name.endsWith ("/index.html") || file_name.endsWith ("/");
+}

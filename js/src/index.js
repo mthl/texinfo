@@ -11,7 +11,7 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
-import { inside_iframe_p } from "./utils";
+import { inside_iframe_p, inside_index_page_p } from "./utils";
 import {
   withSidebarQuery,
   scanToc,
@@ -305,9 +305,9 @@ useSidebar (hash)
     return !(navigator && navigator.epubReadingSystem);
 }
 
-if (inside_iframe_p ()
-    || window.location.pathname.endsWith ("/index.html")
-    || window.location.pathname.endsWith ("/"))
+/* Don't do anything if the current script is launched from a non-iframed page
+   which is different from "index.html".  */
+if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
   if (window.location.href.indexOf ("#main=") >= 0 || window.name == "slider")
     window.addEventListener ("load", onSidebarLoad, false);
