@@ -63,14 +63,7 @@ onMainLoad (evt)
       sidebarQuery = window.location.hash;
     }
 
-  var links = document.getElementsByTagName ("a");
-  for (let i = 0; i < links.length; i++)
-    {
-      let link = links[i];
-      let href = link.getAttribute ("href");
-      if (href)
-        fixLink (link, href);
-    }
+  fix_links (document.getElementsByTagName ("a"));
 }
 
 function
@@ -80,6 +73,28 @@ fixLink (link, href)
     link.setAttribute ("target", "_blank");
   else
     link.setAttribute ("href", withSidebarQuery (href));
+}
+
+/* Modify LINKS to handle the iframe based navigation properly.
+   relative links will be opened inside the corresponding iframe and
+   absolute links will be opened in a new tab.  LINKS must be an array
+   or a collection of nodes.  Return the number of nodes fixed.  */
+function
+fix_links (links)
+{
+  let count = 0;
+  for (let i = 0; i < links.length; i++)
+    {
+      let link = links[i];
+      let href = link.getAttribute ("href");
+      if (href)
+        {
+          fixLink (link, href);
+          count += 1;
+        }
+    }
+
+  return count;
 }
 
 function
