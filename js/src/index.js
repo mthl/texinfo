@@ -34,12 +34,14 @@ var sidebarFrame = null;
 function
 onMainLoad (evt)
 {
-  if (!inside_iframe_p ())
+  if (inside_iframe_p ())
+    mainFilename.val = window.name.replace (/.*[/]/, "").replace (/#.*/, "");
+  else
     {
       mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
-      var body = document.body;
 
       /* Move contents of <body> into a a fresh <div>.  */
+      var body = document.body;
       var div = document.createElement ("div");
       window.selectedDivNode = div;
       div.setAttribute ("id", "index");
@@ -59,12 +61,6 @@ onMainLoad (evt)
           body.setAttribute ("class", "mainbar");
         }
       sidebarQuery = window.location.hash;
-    }
-  else                     /* Function is called inside an iframe.  */
-    {
-      mainFilename.val = window.name
-        .replace (/.*[/]/, "")
-        .replace (/#.*/, "");
     }
 
   var links = document.getElementsByTagName ("a");
