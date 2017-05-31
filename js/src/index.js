@@ -44,11 +44,8 @@ onMainLoad (evt)
       window.selectedDivNode = div;
       div.setAttribute ("id", "index");
       div.setAttribute ("node", "index");
-      for (var ch = body.firstChild; ch != null; )
-        {
-          div.appendChild (ch);
-          ch = body.firstChild;
-        }
+      for (let ch = body.firstChild; ch != null; ch = body.firstChild)
+        div.appendChild (ch);
       body.appendChild (div);
 
       if (useSidebar (window.location.hash))
