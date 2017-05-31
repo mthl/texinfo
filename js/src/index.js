@@ -11,7 +11,11 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
-import { inside_iframe_p, inside_index_page_p } from "./utils";
+import {
+  inside_iframe_p,
+  inside_index_page_p,
+  absolute_url_p
+} from "./utils";
 import {
   withSidebarQuery,
   scanToc,
@@ -79,7 +83,7 @@ onMainLoad (evt)
 function
 fixLink (link, href)
 {
-  if (href.indexOf (':') >= 0)
+  if (absolute_url_p (href))
     link.setAttribute ("target", "_blank");
   else
     link.setAttribute ("href", withSidebarQuery (href));
@@ -147,7 +151,7 @@ onSidebarLoad (evt)
       if (href)
         {
           fixLink (link, href);
-          if (href.indexOf (':') <= 0)
+          if (!absolute_url_p (href))
             {
               var nodeName = href.replace (/[.]x?html.*/, "");
               if (prevNode != nodeName)

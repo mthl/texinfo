@@ -15,3 +15,12 @@ inside_index_page_p (file_name)
 {
   return file_name.endsWith ("/index.html") || file_name.endsWith ("/");
 }
+
+/** Check if LINK is an absolute url.  Return true if this is the case
+    otherwise return false.  LINK must be a string representing a
+    valid URL.  */
+export function
+absolute_url_p (url)
+{
+  return url.includes (':');
+}
