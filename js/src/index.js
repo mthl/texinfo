@@ -48,15 +48,15 @@ on_index_load (evt)
   body.appendChild (div);
 
   if (useSidebar (window.location.hash))
-  {
-    var iframe = document.createElement ("iframe");
-    sidebarFrame = iframe;
-    iframe.setAttribute ("name", "slider");
-    iframe.setAttribute ("src",
-                         tocFilename + "#main=" + mainFilename.val);
-    body.insertBefore (iframe, body.firstChild);
-    body.setAttribute ("class", "mainbar");
-  }
+    {
+      var iframe = document.createElement ("iframe");
+      sidebarFrame = iframe;
+      iframe.setAttribute ("name", "slider");
+      iframe.setAttribute ("src",
+                           tocFilename + "#main=" + mainFilename.val);
+      body.insertBefore (iframe, body.firstChild);
+      body.setAttribute ("class", "mainbar");
+    }
 
   sidebarQuery = window.location.hash;
   fix_links (document.getElementsByTagName ("a"));
