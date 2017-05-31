@@ -67,11 +67,13 @@ onMainLoad (evt)
     }
 
   var links = document.getElementsByTagName ("a");
-  links.forEach (link => {
-    var href = link.getAttribute ("href");
-    if (href)
-      fixLink (link, href);
-  });
+  for (let i = 0; i < links.length; i++)
+    {
+      let link = links[i];
+      let href = link.getAttribute ("href");
+      if (href)
+        fixLink (link, href);
+    }
 }
 
 function
