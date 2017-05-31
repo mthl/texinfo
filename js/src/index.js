@@ -31,38 +31,43 @@ var tocFilename = tocName + ".xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
 
+/* Initialize the top level "index.html" DOM.  */
 function
-onMainLoad (evt)
+on_index_load (evt)
 {
-  if (inside_iframe_p ())
-    mainFilename.val = window.name.replace (/.*[/]/, "").replace (/#.*/, "");
-  else
-    {
-      mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
+  mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
 
-      /* Move contents of <body> into a a fresh <div>.  */
-      var body = document.body;
-      var div = document.createElement ("div");
-      window.selectedDivNode = div;
-      div.setAttribute ("id", "index");
-      div.setAttribute ("node", "index");
-      for (let ch = body.firstChild; ch != null; ch = body.firstChild)
-        div.appendChild (ch);
-      body.appendChild (div);
+  /* Move contents of <body> into a a fresh <div>.  */
+  var body = document.body;
+  var div = document.createElement ("div");
+  window.selectedDivNode = div;
+  div.setAttribute ("id", "index");
+  div.setAttribute ("node", "index");
+  for (let ch = body.firstChild; ch != null; ch = body.firstChild)
+    div.appendChild (ch);
+  body.appendChild (div);
 
-      if (useSidebar (window.location.hash))
-        {
-          var iframe = document.createElement ("iframe");
-          sidebarFrame = iframe;
-          iframe.setAttribute ("name", "slider");
-          iframe.setAttribute ("src",
-                               tocFilename + "#main=" + mainFilename.val);
-          body.insertBefore (iframe, body.firstChild);
-          body.setAttribute ("class", "mainbar");
-        }
-      sidebarQuery = window.location.hash;
-    }
+  if (useSidebar (window.location.hash))
+  {
+    var iframe = document.createElement ("iframe");
+    sidebarFrame = iframe;
+    iframe.setAttribute ("name", "slider");
+    iframe.setAttribute ("src",
+                         tocFilename + "#main=" + mainFilename.val);
+    body.insertBefore (iframe, body.firstChild);
+    body.setAttribute ("class", "mainbar");
+  }
 
+  sidebarQuery = window.location.hash;
+  fix_links (document.getElementsByTagName ("a"));
+}
+
+/* Initialize the DOM for generic pages loaded in the context of an
+   iframe.  */
+function
+on_iframe_load (evt)
+{
+  mainFilename.val = window.name.replace (/.*[/]/, "").replace (/#.*/, "");
   fix_links (document.getElementsByTagName ("a"));
 }
 
@@ -123,8 +128,10 @@ addSidebarHeader (sidebarDoc)
     }
 }
 
+/* Initialize the "ToC.xhtml" DOM which must be loaded in the context of an
+   iframe.  */
 function
-onSidebarLoad (evt)
+on_sidebar_load (evt)
 {
   mainFilename.val = window.location.href.replace (/.*#main=/, "");
   var search = window.location.hash;
@@ -323,10 +330,12 @@ useSidebar (hash)
    which is different from "index.html".  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
-  if (window.location.href.includes ("#main=") || window.name == "slider")
-    window.addEventListener ("load", onSidebarLoad, false);
+  if (!inside_iframe_p ())
+    window.addEventListener ("load", on_index_load, false);
+  else if (window.name == "slider")
+    window.addEventListener ("load", on_sidebar_load, false);
   else
-    window.addEventListener ("load", onMainLoad, false);
+    window.addEventListener ("load", on_iframe_load, false);
 
   window.addEventListener ("beforeunload", onUnload, false);
   window.addEventListener ("click", onClick, false);
