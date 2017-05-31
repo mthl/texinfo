@@ -3,7 +3,7 @@
 const MAIN_NAME = "index.html";
 
 /** Object storing the value of the */
-export var mainFilename = { val: undefined };
+export var mainFilename = { val: null };
 
 /** Return ...  */
 export function
