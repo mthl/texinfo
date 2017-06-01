@@ -217,12 +217,12 @@ loadPage (url, hash)
   sidebarFrame.contentWindow.postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
   if (window.selectedDivNode != div)
-  {
-    if (window.selectedDivNode)
-      window.selectedDivNode.setAttribute ("hidden", "true");
-    div.removeAttribute ("hidden");
-    window.selectedDivNode = div;
-  }
+    {
+      if (window.selectedDivNode)
+        window.selectedDivNode.setAttribute ("hidden", "true");
+      div.removeAttribute ("hidden");
+      window.selectedDivNode = div;
+    }
 }
 
 function
