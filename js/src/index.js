@@ -260,8 +260,8 @@ receiveMessage (event)
     case "scroll-to":           /* top window to node window */
       {
         let url = data.url;
-        window.location.hash = (url.indexOf ('#') < 0) ?
-          "" : url.replace (/.*#/, "");
+        window.location.hash = (url.includes ("#")) ?
+          url.replace (/.*#/, "") : "";
         break;
       }
     case "update-sidebar":
