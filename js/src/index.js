@@ -27,8 +27,7 @@ import {
 var mainName = "index.html";
 var mainWindow = window;
 var sidebarQuery = "";
-var tocName = "ToC";
-var tocFilename = tocName + ".xhtml";
+const TOC_FILENAME = "ToC.xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
 
@@ -54,7 +53,7 @@ on_index_load (evt)
       sidebarFrame = iframe;
       iframe.setAttribute ("name", "slider");
       iframe.setAttribute ("src",
-                           tocFilename + "#main=" + mainFilename.val);
+                           TOC_FILENAME + "#main=" + mainFilename.val);
       body.insertBefore (iframe, body.firstChild);
       body.setAttribute ("class", "mainbar");
     }
@@ -146,7 +145,7 @@ on_sidebar_load (evt)
   var links = document.getElementsByTagName ("a");
 
   var tocA = document.createElementNS (xhtmlNamespace, "a");
-  tocA.setAttribute ("href", tocFilename);
+  tocA.setAttribute ("href", TOC_FILENAME);
   tocA.appendChild (document.createTextNode ("Table of Contents"));
   var tocLi = document.createElementNS (xhtmlNamespace, "li");
   tocLi.appendChild (tocA);
