@@ -1,21 +1,31 @@
 /* toc.js - Generate and manage table of content */
 
+import { basename } from "./utils";
+
 const MAIN_NAME = "index.html";
 
 /** Object storing the value of the */
 export var mainFilename = { val: null };
 
-/** Return ...  */
-export function
-withSidebarQuery (href)
-{
-  var nodeName = href.replace (/[.]x?html.*/, "");
-  if (href == mainFilename.val || href == MAIN_NAME || nodeName == "start")
-    return mainFilename.val;
-  var h = href.indexOf ('#');
-  var hash = h < 0 ? "" : href.replace (/.*#/, ".");
-  return mainFilename.val + "#" + nodeName + hash;
-}
+/** Adapt HREF to refer to an anchor in index file.  HREF must be a string
+    representing an absolute or relative URL.
+
+    For example if 'mainFilename.val' value is "index.html", "foo/bar.html"
+    will be replaced by "index.html#bar".  */
+export var withSidebarQuery = (function () {
+
+  /* DOM element used to access the HTMLAnchorElement interface.  */
+  let node = document.createElement ("a");
+
+  return function (href) {
+    node.href = href;
+    var node_name = basename (node.pathname, /[.]x?html/);
+    if (href == mainFilename.val || href == MAIN_NAME || node_name == "start")
+      return mainFilename.val;
+    else
+      return mainFilename.val + "#" + node_name + node.hash.slice (1);
+  };
+}());
 
 /* Keep children but remove grandchildren (Exception: don't remove
    anything on the current page; however, that's not a problem in the
