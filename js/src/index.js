@@ -143,7 +143,6 @@ on_sidebar_load (evt)
   document.head.appendChild (base);
   document.body.setAttribute ("class", "toc-sidebar");
   var links = document.getElementsByTagName ("a");
-  var nlinks = links.length;
 
   var tocA = document.createElementNS (xhtmlNamespace, "a");
   tocA.setAttribute ("href", tocFilename);
@@ -158,37 +157,36 @@ on_sidebar_load (evt)
   indexLi.parentNode.insertBefore (tocLi, indexLi.nextSibling);
 
   var prevNode = null;
-  var nodes = new Array ();
-  for (var i = 0; i <= nlinks; i++)
-    {
-      var link = i < nlinks ? links[i] : tocA;
-      var href = link.getAttribute ("href");
-      if (href)
-        {
-          fixLink (link, href);
-          if (!absolute_url_p (href))
-            {
-              var nodeName = href.replace (/[.]x?html.*/, "");
-              if (prevNode != nodeName)
-                {
-                  prevNode = nodeName;
-                  nodes.push (nodeName);
-                }
-            }
-        }
-    }
+  var nodes = [];
+  let links$ = [...Array.from (links), tocA];
+  links$.forEach (link => {
+    let href = link.getAttribute ("href");
+    if (href)
+      {
+        fixLink (link, href);
+        if (!absolute_url_p (href))
+          {
+            let nodeName = href.replace (/[.]x?html.*/, "");
+            if (prevNode != nodeName)
+              {
+                prevNode = nodeName;
+                nodes.push (nodeName);
+              }
+          }
+      }
+  });
+
   if (mainFilename.val != null)
     scanToc (document.body, mainFilename.val);
 
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
-  var divs = document.getElementsByTagName ("div");
-  for (var i = divs.length; --i >= 0; )
-    {
-      var div = divs[i];
-      if (div.getAttribute ("class") == "toc-title")
-        div.parentNode.removeChild (div);
-    }
+  var divs = Array.from (document.getElementsByTagName ("div"));
+  divs.reverse ()
+      .forEach (div => {
+        if (div.getAttribute ("class") == "toc-title")
+          div.parentNode.removeChild (div);
+      });
 }
 
 function
