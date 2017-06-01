@@ -14,7 +14,8 @@
 import {
   inside_iframe_p,
   inside_index_page_p,
-  absolute_url_p
+  absolute_url_p,
+  basename
 } from "./utils";
 import {
   withSidebarQuery,
@@ -35,7 +36,7 @@ var sidebarFrame = null;
 function
 on_index_load (evt)
 {
-  mainFilename.val = window.location.pathname.replace (/.*[/]/, "");
+  mainFilename.val = basename (window.location.pathname);
 
   /* Move contents of <body> into a a fresh <div>.  */
   var body = document.body;
@@ -67,7 +68,7 @@ on_index_load (evt)
 function
 on_iframe_load (evt)
 {
-  mainFilename.val = window.name.replace (/.*[/]/, "").replace (/#.*/, "");
+  mainFilename.val = basename (window.name, /#.*/);
   fix_links (document.getElementsByTagName ("a"));
 }
 
