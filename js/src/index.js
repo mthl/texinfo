@@ -31,56 +31,13 @@ const TOC_FILENAME = "ToC.xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
 
-/* Load page represented by ID. ID is a page name without the ".xhtml"
-   extension.  */
-function
-load_id (id)
-{
-  let url = id + ".xhtml";
-  top.postMessage ({ message_kind: "load-page", url, hash: "" }, "*");
-}
-
-
 /* Object used for retrieving navigation links.  This is only used
    from the index page.  */
 let loaded_nodes = {
-
   /* Dictionary associating page ids to next, prev, up link ids.  */
-  nodes: {},
+  data: {},
   /* Page id of the current visible page.  */
-  current: null,
-
-  /* Associate ID with LINKS in 'load_nodes'.  ID corresponds to an
-     iframe id.  LINKS is an object containing references to other
-     ids.  */
-  add (id, links)
-  {
-    this.nodes[id] = links;
-  },
-
-  /* Dispatch an action to load 'current.next'.  */
-  load_next ()
-  {
-    let id = this.nodes[this.current].next;
-    if (id)
-      load_id (id);
-  },
-
-  /* Dispatch an action to load 'current.prev'.  */
-  load_prev ()
-  {
-    let id = this.nodes[this.current].prev;
-    if (id)
-      load_id (id);
-  },
-
-  /* Dispatch an action to load 'current.up'.  */
-  load_up ()
-  {
-    let id = this.nodes[this.current].up;
-    if (id)
-      load_id (id);
-  }
+  current: null
 };
 
 /* Initialize the top level "index.html" DOM.  */
@@ -339,17 +296,17 @@ receiveMessage (event)
         break;
       }
     case "load-page":           /* from click handler to top frame */
-      loadPage (data.url, data.hash);
-      break;
-    case "load-next-page":    /* from keypress handler to top frame */
-      loaded_nodes.load_next ();
-      break;
-    case "load-prev-page":    /* from keypress handler to top frame */
-      loaded_nodes.load_prev ();
-      break;
-    case "load-up-page":      /* from keypress handler to top frame */
-      loaded_nodes.load_up ();
-      break;
+      {
+        if (!data.nav)         /* not a NEXT, PREV, UP link */
+          loadPage (data.url, data.hash);
+        else
+        {
+          let ids = loaded_nodes.data[loaded_nodes.current];
+          if (ids[data.nav])
+            loadPage (ids[data.nav] + ".xhtml", "");
+        }
+        break;
+      }
     case "scroll-to":           /* top window to node window */
       {
         let url = data.url;
@@ -366,7 +323,7 @@ receiveMessage (event)
         break;
       }
     case "cache-document":
-      loaded_nodes.add (data.url, data.item);
+      loaded_nodes.data[data.url] = data.item;
       break;
     default:
       break;
@@ -415,13 +372,13 @@ on_keypress (evt)
   switch (evt.key)
     {
     case "n":
-      top.postMessage ({ message_kind: "load-next-page" }, "*");
+      top.postMessage ({ message_kind: "load-page", nav: "next" }, "*");
       break;
     case "p":
-      top.postMessage ({ message_kind: "load-prev-page" }, "*");
+      top.postMessage ({ message_kind: "load-page", nav: "prev" }, "*");
       break;
     case "u":
-      top.postMessage ({ message_kind: "load-up-page" }, "*");
+      top.postMessage ({ message_kind: "load-page", nav: "up" }, "*");
       break;
     default:
       break;
