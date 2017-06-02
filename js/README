@@ -1,0 +1,13 @@
+The build process requires that you have 'npm' and 'nodejs' installed.
+
+to fetch the dependencies:
+
+  npm install
+
+to build and bundle the script for the Kawa examples:
+
+  npm run build:kawa
+
+Finally to check the result
+
+  firefox examples/kawa/index.html
