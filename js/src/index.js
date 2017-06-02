@@ -31,6 +31,58 @@ const TOC_FILENAME = "ToC.xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
 
+/* Load page represented by ID. ID is a page name without the ".xhtml"
+   extension.  */
+function
+load_id (id)
+{
+  let url = id + ".xhtml";
+  top.postMessage ({ message_kind: "load-page", url, hash: "" }, "*");
+}
+
+
+/* Object used for retrieving navigation links.  This is only used
+   from the index page.  */
+let loaded_nodes = {
+
+  /* Dictionary associating page ids to next, prev, up link ids.  */
+  nodes: {},
+  /* Page id of the current visible page.  */
+  current: null,
+
+  /* Associate ID with LINKS in 'load_nodes'.  ID corresponds to an
+     iframe id.  LINKS is an object containing references to other
+     ids.  */
+  add (id, links)
+  {
+    this.nodes[id] = links;
+  },
+
+  /* Dispatch an action to load 'current.next'.  */
+  load_next ()
+  {
+    let id = this.nodes[this.current].next;
+    if (id)
+      load_id (id);
+  },
+
+  /* Dispatch an action to load 'current.prev'.  */
+  load_prev ()
+  {
+    let id = this.nodes[this.current].prev;
+    if (id)
+      load_id (id);
+  },
+
+  /* Dispatch an action to load 'current.up'.  */
+  load_up ()
+  {
+    let id = this.nodes[this.current].up;
+    if (id)
+      load_id (id);
+  }
+};
+
 /* Initialize the top level "index.html" DOM.  */
 function
 on_index_load (evt)
@@ -60,6 +112,10 @@ on_index_load (evt)
 
   sidebarQuery = window.location.hash;
   fix_links (document.getElementsByTagName ("a"));
+  let url = "index";
+  let item = navigation_links (document);
+  top.postMessage ({ message_kind: "cache-document", url, item }, "*");
+  loaded_nodes.current = url;
 }
 
 /* Initialize the DOM for generic pages loaded in the context of an
@@ -69,6 +125,9 @@ on_iframe_load (evt)
 {
   mainFilename.val = basename (window.name, /#.*/);
   fix_links (document.getElementsByTagName ("a"));
+  let url = basename (window.location.pathname, /[.]x?html$/);
+  let item = navigation_links (document);
+  top.postMessage ({ message_kind: "cache-document", url, item }, "*");
 }
 
 function
@@ -100,6 +159,31 @@ fix_links (links)
     }
 
   return count;
+}
+
+/* Retrieve PREV, NEXT, and UP links and Return a object containing references
+   to those links.  */
+function
+navigation_links (content)
+{
+  let as = Array.from (content.querySelectorAll("footer a"));
+  /* links have the from MAIN_FILE.html#FRAME-ID.  For convenience we
+     only store FRAME-ID.  */
+  return as.reduce ((acc, node) => {
+    let href = node.getAttribute ("href");
+    let id = href.replace(/.*#/, "");
+    switch (node.getAttribute ("accesskey"))
+      {
+      case "n":
+        return Object.assign (acc, { next: id });
+      case "p":
+        return Object.assign (acc, { prev: id });
+      case "u":
+        return Object.assign (acc, { up: id });
+      default:
+        return acc;
+      }
+  }, {});
 }
 
 function
@@ -220,6 +304,7 @@ loadPage (url, hash)
       if (window.selectedDivNode)
         window.selectedDivNode.setAttribute ("hidden", "true");
       div.removeAttribute ("hidden");
+      loaded_nodes.current = nodeName;
       window.selectedDivNode = div;
     }
 }
@@ -256,6 +341,15 @@ receiveMessage (event)
     case "load-page":           /* from click handler to top frame */
       loadPage (data.url, data.hash);
       break;
+    case "load-next-page":    /* from keypress handler to top frame */
+      loaded_nodes.load_next ();
+      break;
+    case "load-prev-page":    /* from keypress handler to top frame */
+      loaded_nodes.load_prev ();
+      break;
+    case "load-up-page":      /* from keypress handler to top frame */
+      loaded_nodes.load_up ();
+      break;
     case "scroll-to":           /* top window to node window */
       {
         let url = data.url;
@@ -271,6 +365,9 @@ receiveMessage (event)
                  (selected == "index") ? "index.html" : (selected + ".xhtml"));
         break;
       }
+    case "cache-document":
+      loaded_nodes.add (data.url, data.item);
+      break;
     default:
       break;
     }
@@ -311,6 +408,26 @@ onUnload (evt)
   request.send (null);
 }
 
+/* Handle Keyboard 'keypress' events.  */
+function
+on_keypress (evt)
+{
+  switch (evt.key)
+    {
+    case "n":
+      top.postMessage ({ message_kind: "load-next-page" }, "*");
+      break;
+    case "p":
+      top.postMessage ({ message_kind: "load-prev-page" }, "*");
+      break;
+    case "u":
+      top.postMessage ({ message_kind: "load-up-page" }, "*");
+      break;
+    default:
+      break;
+    }
+}
+
 /* Return true if the side bar containing the table of content should be
    displayed, otherwise return false.  This is guessed from HASH which must be
    a string representing a list of URL parameters.  */
@@ -339,4 +456,5 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
   window.addEventListener ("beforeunload", onUnload, false);
   window.addEventListener ("click", onClick, false);
   window.addEventListener ("message", receiveMessage, false);
+  window.addEventListener ("keypress", on_keypress, false);
 }
