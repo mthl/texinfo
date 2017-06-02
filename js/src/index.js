@@ -280,26 +280,27 @@ function
 onClick (evt)
 {
   for (var target = evt.target; target != null; target = target.parentNode)
-  {
-    if ((target.nodeName == "a" || target.nodeName == "A")
-        && target.getAttribute ("target") != "_blank")
-      {
-        var href = target.getAttribute ("href");
-        var url = href.replace (/.*#/, "") || "index";
-        if (url.indexOf (".") >= 0)
-          url = url.replace (/[.]/, ".xhtml#");
-        else
-          url = url + ".xhtml";
-        var hash = href.replace (/.*#/, "#");
-        if (hash == "index.html")
-          hash = "";
-        let msg = { message_kind: "load-page", url: url, hash: hash };
-        top.postMessage (msg, "*");
-        evt.preventDefault ();
-        evt.stopPropagation ();
-        return;
-      }
-  }
+    {
+      if ((target instanceof Element) && target.matches ("a"))
+        {
+          let href = target.getAttribute ("href");
+          if (!absolute_url_p (href))
+            {
+              let url = href.replace (/.*#/, "") || "index";
+              if (url.includes ("."))
+                url = url.replace (/[.]/, ".xhtml#");
+              else
+                url = url + ".xhtml";
+              let hash = href.replace (/.*#/, "#");
+              if (hash == "index.html")
+                hash = "";
+              top.postMessage ({ message_kind: "load-page", url, hash }, "*");
+              evt.preventDefault ();
+              evt.stopPropagation ();
+              return;
+          }
+        }
+    }
 }
 
 function
