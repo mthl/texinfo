@@ -1,3 +1,17 @@
+2017-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): Save filename
+	and nodename components of the label separately.
+	(scan_node_contents): Move code dealing with xrefs ending in
+	"::" into this function out of 'scan_reference_target'.  Do
+	not call 'info_parse_node' to get the filename and nodename
+	of the target from the 'label' field; use the data that was
+	already saved in 'scan_reference_label' instead.  Add a comment
+	about possibly ill-formed xrefs.
+
+	This change is to simplify the code slightly, and shouldn't
+	result in any significant functional changes.
+
 2017-05-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (info_short_help): Move right-hand column of 
