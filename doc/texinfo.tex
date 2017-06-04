@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2017-06-04.18}
+\def\texinfoversion{2017-06-04.19}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5493,7 +5493,7 @@ end
       \let\indexlbrace\{   % Likewise, set these sequences for braces
       \let\indexrbrace\}   % used in the sort key.
       \begindoublecolumns
-      \let\dotheinsertindexentrybox\dotheinsertindexentryboxwithpenalty
+      \let\dotheinsertentrybox\dotheinsertentryboxwithpenalty
       %
       % Read input from the index file line by line.
       \loopdo
@@ -5603,7 +5603,7 @@ end
     % For pdfTeX and XeTeX.
     % The redefinition of \domark stops marks being added in \pdflink to 
     % preserve coloured links across page boundaries.  Otherwise the marks
-    % would get in the way of \lastbox in \insertindexentrybox.
+    % would get in the way of \lastbox in \insertentrybox.
     \let\domark\relax
     %
     % Start a new paragraph if necessary, so our assignments below can't
@@ -5664,9 +5664,9 @@ end
     \fi
     \egroup % end \boxA
     \ifdim\wd\boxB = 0pt
-      \global\setbox\entryindexbox=\vbox{\unhbox\boxA}%
+      \global\setbox\entrybox=\vbox{\unhbox\boxA}%
     \else
-    \global\setbox\entryindexbox=\vbox\bgroup
+    \global\setbox\entrybox=\vbox\bgroup
       % We want the text of the entries to be aligned to the left, and the
       % page numbers to be aligned to the right.
       %
@@ -5728,19 +5728,19 @@ end
     \egroup % The \vbox
     \fi
   \endgroup
-  \dotheinsertindexentrybox
+  \dotheinsertentrybox
 }}
 
 \newskip\thinshrinkable
 \skip\thinshrinkable=.15em minus .15em
 
-\newbox\entryindexbox
-\def\insertindexentrybox{%
-  \ourunvbox\entryindexbox
+\newbox\entrybox
+\def\insertentrybox{%
+  \ourunvbox\entrybox
 }
 
 % default definition
-\let\dotheinsertindexentrybox\insertindexentrybox
+\let\dotheinsertentrybox\insertentrybox
 
 % Use \lastbox to take apart vbox box by box, and add each sub-box
 % to the current vertical list.
@@ -5768,16 +5768,14 @@ end
 % after the \entry.  If it's not another \entry, we are at the last
 % line of a group of index entries, so insert a penalty to discourage
 % widowed index entries.
-\long\def\dotheinsertindexentryboxwithpenalty{%
-  % delay text of entry until after penalty
-  \bgroup\aftergroup\insertindexentrybox
-    \def\isentry{\entry}%
-    \ifx\firsttoken\isentry
-    \else
-      \penalty 9000
-    \fi
-  \egroup % now comes the box added with \aftergroup
+\def\dotheinsertentryboxwithpenalty{%
+  \ifx\firsttoken\isentry
+  \else
+    \penalty 9000
+  \fi
+  \insertentrybox
 }
+\def\isentry{\entry}%
 
 % Like plain.tex's \dotfill, except uses up at least 1 em.
 % The filll stretch here overpowers both the fil and fill stretch to push
