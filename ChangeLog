@@ -1,3 +1,26 @@
+2017-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\finishentry, \dotheinsertindexentrybox):
+	Use a control sequence \dotheinsertindexentrybox instead of 
+	calling \insertindexentrybox and \entrywidowpenalty.  Do not 
+	open a new group and then use \entrywidowpenalty to close the 
+	group, (\entrywidowpenalty could be \let either to \egroup or 
+	our macro \indexwidowpenalty which itself closed the group), as 
+	this requires the reader of the code to understand the 
+	definition of \entrywidowpenalty to follow what is going on.  No 
+	functional changes intended; this change is for clarity only.
+	(\entrywidowpenalty, \indexwidowpenalty): Remove.
+	(\dotheinsertindexentryboxwithpenalty): Code from 
+	\indexwidowpenalty moved here.  This is one possible value
+	for \dotheinsertindexentrybox.
+	(\printindex): Use \dotheinsertindexentryboxwithpenalty for
+	\dotheinsertindexentrybox.  Do not set a value for 
+	\entrywidowpenalty.
+
+	(\printindex, \indexinputprocessing): Split code that checks the 
+	first token of the next line into a new macro.  This should 
+	improve clarity.
+
 2017-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_label): Save filename
