@@ -25,7 +25,7 @@ absolute_url_p (url)
   return url.includes (':');
 }
 
-/** return PATHNAME with any leading directory components removed.  If
+/** Return PATHNAME with any leading directory components removed.  If
     specified, also remove a trailing SUFFIX.  */
 export function
 basename (pathname, suffix)
