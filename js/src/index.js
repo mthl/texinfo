@@ -361,7 +361,7 @@ function
 onUnload (evt)
 {
   var request = new XMLHttpRequest ();
-  request.open ("GET","(WINDOW-CLOSED)");
+  request.open ("GET", "(WINDOW-CLOSED)");
   request.send (null);
 }
 
