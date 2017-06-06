@@ -53,15 +53,15 @@ export function
 scan_toc (node, filename)
 {
   var current = with_sidebar_query (filename);
-  var ul = node.getElementsByTagName ("ul")[0];
+  var ul = node.querySelector ("ul");
   if (filename == "index.html")
     hide_grand_child_nodes (ul);
   else
     scan_toc1 (ul, current);
 }
 
-/* Scan ToC entries to see which should be hidden.  Return 2 if node
-   matches current; 1 if node is ancestor of current; else 0.  */
+/* Scan ToC entries to see which should be hidden.  Return "current" if node
+   matches current, "ancestor" if node is ancestor of current, else 'null'.  */
 function
 scan_toc1 (node, current)
 {
@@ -73,14 +73,14 @@ scan_toc1 (node, current)
           var ul = node.nextElementSibling;
           if (ul && ul.matches ("ul"))
             hide_grand_child_nodes (ul);
-          return 2;
+          return "current";
         }
     }
   var ancestor = null;
   for (var child = node.firstElementChild; child;
        child = child.nextElementSibling)
     {
-      if (scan_toc1 (child, current) > 0)
+      if (scan_toc1 (child, current) !== null)
         {
           ancestor = child;
           break;
@@ -103,7 +103,7 @@ scan_toc1 (node, current)
         }
     }
 
-  return ancestor ? 1 : 0;
+  return ancestor ? "ancestor" : null;
 }
 
 /** Reset what is done by 'scan_toc' and 'hide_grand_child_nodes'.  */

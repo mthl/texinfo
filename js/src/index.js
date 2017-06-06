@@ -296,7 +296,7 @@ receive_message (event)
         if (window.location.hash)
           {
             var hash = window.location.hash;
-            var url = (hash.indexOf (".") >= 0)
+            var url = (hash.includes ("."))
               ? hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2")
               : hash.replace (/#/, "") + ".xhtml";
             load_page (url, hash);
@@ -400,9 +400,9 @@ on_keypress (evt)
 function
 use_sidebar (hash)
 {
-  if (hash.indexOf ("sidebar=no") >= 0)
+  if (hash.includes ("sidebar=no"))
     return false;
-  else if (hash.indexOf ("sidebar=yes") >= 0 || hash == "#sidebar")
+  else if (hash.includes ("sidebar=yes") || hash == "#sidebar")
     return true;
   else
     return !(navigator && navigator.epubReadingSystem);
