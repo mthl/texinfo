@@ -13,7 +13,6 @@ export var main_filename = { val: null };
     For example if 'main_filename.val' value is "index.html", "foo/bar.html"
     will be replaced by "index.html#bar".  */
 export var with_sidebar_query = (function () {
-
   /* DOM element used to access the HTMLAnchorElement interface.  */
   let node = document.createElement ("a");
 
