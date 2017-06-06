@@ -23,7 +23,7 @@
   "scripts": {
     "build": "rollup --config build-aux/rollup.js",
     "build:kawa": "rollup --config build-aux/rollup-kawa.js",
-    "lint": "eslint --config build-aux/eslint.json src/"
+    "lint": "eslint --config build-aux/eslint.json --format unix src/"
   },
   "files": [
     "dist"
