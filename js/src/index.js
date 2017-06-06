@@ -102,7 +102,7 @@ function
 fix_links (links)
 {
   let count = 0;
-  for (let i = 0; i < links.length; i++)
+  for (let i = 0; i < links.length; i += 1)
     {
       let link = links[i];
       let href = link.getAttribute ("href");
@@ -282,7 +282,7 @@ receive_message (event)
     {
     case "node-list":           /* from sidebar to top frame */
       {
-        for (var i = 0; i < data.length; i++)
+        for (var i = 0; i < data.length; i += 1)
           {
             var name = data[i];
             if (name == "index")
