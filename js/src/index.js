@@ -25,8 +25,6 @@ import {
 } from "./toc";
 
 var mainName = "index.html";
-var mainWindow = window;
-var sidebarQuery = "";
 const TOC_FILENAME = "ToC.xhtml";
 var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
 var sidebarFrame = null;
@@ -67,7 +65,6 @@ on_index_load (evt)
       body.setAttribute ("class", "mainbar");
     }
 
-  sidebarQuery = window.location.hash;
   fix_links (document.getElementsByTagName ("a"));
   let url = "index";
   let item = navigation_links (document);
