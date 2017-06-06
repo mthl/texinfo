@@ -327,8 +327,8 @@ receive_message (event)
       {
         var selected = data.selected;
         clear_toc_styles (document.body);
-        scan_toc (document.body,
-                  (selected == "index") ? "index.html" : (selected + ".xhtml"));
+        scan_toc (document.body, (selected == "index") ?
+                  "index.html" : (selected + ".xhtml"));
         break;
       }
     case "cache-document":

@@ -89,12 +89,17 @@ scan_toc1 (node, current)
   if (ancestor && ancestor.parentNode && ancestor.parentNode.parentNode)
     {
       var pparent = ancestor.parentNode.parentNode;
-      for (var sib = pparent.firstElementChild; sib; sib = sib.nextElementSibling)
+      for (var sib = pparent.firstElementChild; sib;
+           sib = sib.nextElementSibling)
         {
           if (sib != ancestor.parentNode
               && sib.firstElementChild
               && sib.firstElementChild.nextElementSibling)
-            sib.firstElementChild.nextElementSibling.setAttribute ("toc-detail", "yes");
+            {
+              sib.firstElementChild
+                .nextElementSibling
+                .setAttribute ("toc-detail", "yes");
+            }
         }
     }
 
