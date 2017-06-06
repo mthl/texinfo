@@ -1,3 +1,16 @@
+2017-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/MiscXS/configure.ac: Copy code for HOST_IS_WINDOWS
+	Automake conditional from top-level configure.ac.
+
+	* tp/Texinfo/MiscXS/Makefile.am,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am: Only put 
+	-no-undefined -lperl in AM_FLAGS on MS-Windows systems.
+	Li Er reported that linking against libperl is not necessary,
+	and it won't work if perl is not built with a shared libperl
+	library.
+
 2017-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex

@@ -80,6 +80,12 @@ LT_INIT
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
+host_is_windows=no
+case "$host" in
+   *-mingw32 | *-mingw64 | *-msdosdjgpp )  host_is_windows=yes ;;
+esac     
+AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
+
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
 # different compiler.  Also in top-level configure.ac.
