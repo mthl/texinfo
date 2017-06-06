@@ -51,7 +51,7 @@ on_index_load (evt)
   window.selectedDivNode = div;
   div.setAttribute ("id", "index");
   div.setAttribute ("node", "index");
-  for (let ch = body.firstChild; ch != null; ch = body.firstChild)
+  for (let ch = body.firstChild; ch !== null; ch = body.firstChild)
     div.appendChild (ch);
   body.appendChild (div);
 
@@ -224,7 +224,7 @@ on_sidebar_load (evt)
       }
   });
 
-  if (main_filename.val != null)
+  if (main_filename.val !== null)
     scan_toc (document.body, main_filename.val);
 
   nodes.message_kind = "node-list";
@@ -247,7 +247,7 @@ load_page (url, hash)
       + hash;
   var div = document.getElementById (node_name);
   var iframe = div.firstChild;
-  if (iframe == null)
+  if (iframe === null)
     {
       iframe = document.createElement ("iframe");
       iframe.setAttribute ("class", "node");
@@ -342,7 +342,7 @@ receive_message (event)
 function
 on_click (evt)
 {
-  for (var target = evt.target; target != null; target = target.parentNode)
+  for (var target = evt.target; target !== null; target = target.parentNode)
     {
       if ((target instanceof Element) && target.matches ("a"))
         {
