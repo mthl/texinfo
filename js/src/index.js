@@ -18,16 +18,17 @@ import {
   inside_index_page_p
 } from "./utils";
 import {
-  clearTocStyles,
-  mainFilename,
-  scanToc,
-  withSidebarQuery
+  clear_toc_styles,
+  main_filename,
+  scan_toc,
+  with_sidebar_query
 } from "./toc";
 
-var mainName = "index.html";
+const INDEX_NAME = "index.html";
 const TOC_FILENAME = "ToC.xhtml";
-var xhtmlNamespace = "http://www.w3.org/1999/xhtml";
-var sidebarFrame = null;
+const XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+
+let sidebar_frame = null;
 
 /* Object used for retrieving navigation links.  This is only used
    from the index page.  */
@@ -42,7 +43,7 @@ let loaded_nodes = {
 function
 on_index_load (evt)
 {
-  mainFilename.val = basename (window.location.pathname);
+  main_filename.val = basename (window.location.pathname);
 
   /* Move contents of <body> into a a fresh <div>.  */
   var body = document.body;
@@ -54,13 +55,13 @@ on_index_load (evt)
     div.appendChild (ch);
   body.appendChild (div);
 
-  if (useSidebar (window.location.hash))
+  if (use_sidebar (window.location.hash))
     {
       var iframe = document.createElement ("iframe");
-      sidebarFrame = iframe;
+      sidebar_frame = iframe;
       iframe.setAttribute ("name", "slider");
       iframe.setAttribute ("src",
-                           TOC_FILENAME + "#main=" + mainFilename.val);
+                           TOC_FILENAME + "#main=" + main_filename.val);
       body.insertBefore (iframe, body.firstChild);
       body.setAttribute ("class", "mainbar");
     }
@@ -77,7 +78,7 @@ on_index_load (evt)
 function
 on_iframe_load (evt)
 {
-  mainFilename.val = basename (window.name, /#.*/);
+  main_filename.val = basename (window.name, /#.*/);
   fix_links (document.getElementsByTagName ("a"));
   let url = basename (window.location.pathname, /[.]x?html$/);
   let item = navigation_links (document);
@@ -85,12 +86,12 @@ on_iframe_load (evt)
 }
 
 function
-fixLink (link, href)
+fix_link (link, href)
 {
   if (absolute_url_p (href))
     link.setAttribute ("target", "_blank");
   else
-    link.setAttribute ("href", withSidebarQuery (href));
+    link.setAttribute ("href", with_sidebar_query (href));
 }
 
 /* Modify LINKS to handle the iframe based navigation properly.
@@ -107,7 +108,7 @@ fix_links (links)
       let href = link.getAttribute ("href");
       if (href)
         {
-          fixLink (link, href);
+          fix_link (link, href);
           count += 1;
         }
     }
@@ -151,7 +152,7 @@ on_sidebar_load (evt)
   {
     let li = document.querySelector ("li");
     if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-        && li.firstElementChild.getAttribute ("href") == mainName)
+        && li.firstElementChild.getAttribute ("href") == INDEX_NAME)
       li.parentNode.removeChild (li);
 
     let header = document.querySelector ("header");
@@ -173,8 +174,8 @@ on_sidebar_load (evt)
       }
   }
 
-  /* Retrieve 'mainName' from current window URL. */
-  mainFilename.val = window.location.href.replace (/.*#main=/, "");
+  /* Retrieve 'INDEX_NAME' from current window URL. */
+  main_filename.val = window.location.href.replace (/.*#main=/, "");
   add_sidebar_header ();
   document.body.setAttribute ("class", "toc-sidebar");
 
@@ -188,43 +189,43 @@ on_sidebar_load (evt)
   let links = Array.from (document.getElementsByTagName ("a"));
 
   /* Create a link referencing the Table of content.  */
-  let tocA = document.createElementNS (xhtmlNamespace, "a");
-  tocA.setAttribute ("href", TOC_FILENAME);
-  tocA.appendChild (document.createTextNode ("Table of Contents"));
-  let tocLi = document.createElementNS (xhtmlNamespace, "li");
-  tocLi.appendChild (tocA);
-  let indexLi = links[links.length-1].parentNode;
-  let indexGrand = indexLi.parentNode.parentNode;
+  let toc_a = document.createElementNS (XHTML_NAMESPACE, "a");
+  toc_a.setAttribute ("href", TOC_FILENAME);
+  toc_a.appendChild (document.createTextNode ("Table of Contents"));
+  let toc_li = document.createElementNS (XHTML_NAMESPACE, "li");
+  toc_li.appendChild (toc_a);
+  let index_li = links[links.length-1].parentNode;
+  let index_grand = index_li.parentNode.parentNode;
   /* XXX: hack */
-  if (indexGrand.nodeName == "li")
-    indexLi = indexGrand;
-  indexLi.parentNode.insertBefore (tocLi, indexLi.nextSibling);
+  if (index_grand.nodeName == "li")
+    index_li = index_grand;
+  index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
 
   /* Populate 'nodes' with all the relative links of the table of
      content.  Exclude the hash part and the file extension from the
      links.  */
   let nodes = [];
-  let prevNode = null;
-  let links$ = [...links, tocA];
+  let prev_node = null;
+  let links$ = [...links, toc_a];
   links$.forEach (link => {
     let href = link.getAttribute ("href");
     if (href)
       {
-        fixLink (link, href);
+        fix_link (link, href);
         if (!absolute_url_p (href))
           {
-            let nodeName = href.replace (/[.]x?html.*/, "");
-            if (prevNode != nodeName)
+            let node_name = href.replace (/[.]x?html.*/, "");
+            if (prev_node != node_name)
               {
-                prevNode = nodeName;
-                nodes.push (nodeName);
+                prev_node = node_name;
+                nodes.push (node_name);
               }
           }
       }
   });
 
-  if (mainFilename.val != null)
-    scanToc (document.body, mainFilename.val);
+  if (main_filename.val != null)
+    scan_toc (document.body, main_filename.val);
 
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
@@ -238,13 +239,13 @@ on_sidebar_load (evt)
 }
 
 function
-loadPage (url, hash)
+load_page (url, hash)
 {
-  var nodeName = url.replace (/[.]x?html.*/, "");
+  var node_name = url.replace (/[.]x?html.*/, "");
   var path =
       (window.location.pathname + window.location.search).replace (/#.*/, "")
       + hash;
-  var div = document.getElementById (nodeName);
+  var div = document.getElementById (node_name);
   var iframe = div.firstChild;
   if (iframe == null)
     {
@@ -260,21 +261,21 @@ loadPage (url, hash)
       iframe.contentWindow.postMessage (msg, "*");
     }
 
-  let msg = { message_kind: "update-sidebar", selected: nodeName };
-  sidebarFrame.contentWindow.postMessage (msg, "*");
+  let msg = { message_kind: "update-sidebar", selected: node_name };
+  sidebar_frame.contentWindow.postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
   if (window.selectedDivNode != div)
     {
       if (window.selectedDivNode)
         window.selectedDivNode.setAttribute ("hidden", "true");
       div.removeAttribute ("hidden");
-      loaded_nodes.current = nodeName;
+      loaded_nodes.current = node_name;
       window.selectedDivNode = div;
     }
 }
 
 function
-receiveMessage (event)
+receive_message (event)
 {
   var data = event.data;
   switch (data.message_kind)
@@ -298,20 +299,20 @@ receiveMessage (event)
             var url = (hash.indexOf (".") >= 0)
               ? hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2")
               : hash.replace (/#/, "") + ".xhtml";
-            loadPage (url, hash);
+            load_page (url, hash);
           }
         break;
       }
     case "load-page":           /* from click handler to top frame */
       {
         if (!data.nav)         /* not a NEXT, PREV, UP link */
-          loadPage (data.url, data.hash);
+          load_page (data.url, data.hash);
         else
         {
           let ids = loaded_nodes.data[loaded_nodes.current];
           let link_id = ids[data.nav];
           if (link_id)
-            loadPage (link_id + ".xhtml", "");
+            load_page (link_id + ".xhtml", "");
         }
         break;
       }
@@ -325,9 +326,9 @@ receiveMessage (event)
     case "update-sidebar":
       {
         var selected = data.selected;
-        clearTocStyles (document.body);
-        scanToc (document.body,
-                 (selected == "index") ? "index.html" : (selected + ".xhtml"));
+        clear_toc_styles (document.body);
+        scan_toc (document.body,
+                  (selected == "index") ? "index.html" : (selected + ".xhtml"));
         break;
       }
     case "cache-document":
@@ -339,7 +340,7 @@ receiveMessage (event)
 }
 
 function
-onClick (evt)
+on_click (evt)
 {
   for (var target = evt.target; target != null; target = target.parentNode)
     {
@@ -366,7 +367,7 @@ onClick (evt)
 }
 
 function
-onUnload (evt)
+on_unload (evt)
 {
   var request = new XMLHttpRequest ();
   request.open ("GET", "(WINDOW-CLOSED)");
@@ -397,7 +398,7 @@ on_keypress (evt)
    displayed, otherwise return false.  This is guessed from HASH which must be
    a string representing a list of URL parameters.  */
 function
-useSidebar (hash)
+use_sidebar (hash)
 {
   if (hash.indexOf ("sidebar=no") >= 0)
     return false;
@@ -418,8 +419,8 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
   else
     window.addEventListener ("load", on_iframe_load, false);
 
-  window.addEventListener ("beforeunload", onUnload, false);
-  window.addEventListener ("click", onClick, false);
-  window.addEventListener ("message", receiveMessage, false);
+  window.addEventListener ("beforeunload", on_unload, false);
+  window.addEventListener ("click", on_click, false);
+  window.addEventListener ("message", receive_message, false);
   window.addEventListener ("keypress", on_keypress, false);
 }

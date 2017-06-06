@@ -2,17 +2,17 @@
 
 import { basename } from "./utils";
 
-const MAIN_NAME = "index.html";
+const INDEX_NAME = "index.html";
 
 /** Object storing the value of the */
-export var mainFilename = { val: null };
+export var main_filename = { val: null };
 
 /** Adapt HREF to refer to an anchor in index file.  HREF must be a string
     representing an absolute or relative URL.
 
-    For example if 'mainFilename.val' value is "index.html", "foo/bar.html"
+    For example if 'main_filename.val' value is "index.html", "foo/bar.html"
     will be replaced by "index.html#bar".  */
-export var withSidebarQuery = (function () {
+export var with_sidebar_query = (function () {
 
   /* DOM element used to access the HTMLAnchorElement interface.  */
   let node = document.createElement ("a");
@@ -20,10 +20,10 @@ export var withSidebarQuery = (function () {
   return function (href) {
     node.href = href;
     var node_name = basename (node.pathname, /[.]x?html/);
-    if (href == mainFilename.val || href == MAIN_NAME || node_name == "start")
-      return mainFilename.val;
+    if (href == main_filename.val || href == INDEX_NAME || node_name == "start")
+      return main_filename.val;
     else
-      return mainFilename.val + "#" + node_name + node.hash.slice (1);
+      return main_filename.val + "#" + node_name + node.hash.slice (1);
   };
 } ());
 
@@ -31,7 +31,7 @@ export var withSidebarQuery = (function () {
    anything on the current page; however, that's not a problem in the
    Kawa manual).  */
 function
-hideGrandChildNodes (ul)
+hide_grand_child_nodes (ul)
 {
   for (var li = ul.firstElementChild; li; li = li.nextElementSibling)
     {
@@ -50,20 +50,20 @@ hideGrandChildNodes (ul)
 
 /** Scan ToC entries to see which should be hidden.  */
 export function
-scanToc (node, filename)
+scan_toc (node, filename)
 {
-  var current = withSidebarQuery (filename);
+  var current = with_sidebar_query (filename);
   var ul = node.getElementsByTagName ("ul")[0];
   if (filename == "index.html")
-    hideGrandChildNodes (ul);
+    hide_grand_child_nodes (ul);
   else
-    scanToc1 (ul, current);
+    scan_toc1 (ul, current);
 }
 
 /* Scan ToC entries to see which should be hidden.  Return 2 if node
    matches current; 1 if node is ancestor of current; else 0.  */
 function
-scanToc1 (node, current)
+scan_toc1 (node, current)
 {
   if (node.matches ("a"))
     {
@@ -72,7 +72,7 @@ scanToc1 (node, current)
           node.setAttribute ("toc-current", "yes");
           var ul = node.nextElementSibling;
           if (ul && ul.matches ("ul"))
-            hideGrandChildNodes (ul);
+            hide_grand_child_nodes (ul);
           return 2;
         }
     }
@@ -80,7 +80,7 @@ scanToc1 (node, current)
   for (var child = node.firstElementChild; child;
        child = child.nextElementSibling)
     {
-      if (scanToc1 (child, current) > 0)
+      if (scan_toc1 (child, current) > 0)
         {
           ancestor = child;
           break;
@@ -101,9 +101,9 @@ scanToc1 (node, current)
   return ancestor ? 1 : 0;
 }
 
-/** Reset what is done by 'scanToc' and 'hideGrandChildNodes'.  */
+/** Reset what is done by 'scan_toc' and 'hide_grand_child_nodes'.  */
 export function
-clearTocStyles (node)
+clear_toc_styles (node)
 {
   if (node.matches ("ul"))
     node.removeAttribute ("toc-detail");
@@ -112,5 +112,5 @@ clearTocStyles (node)
 
   for (var child = node.firstElementChild; child;
        child = child.nextElementSibling)
-    clearTocStyles (child);
+    clear_toc_styles (child);
 }
