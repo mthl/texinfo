@@ -12,16 +12,16 @@
    their own table-of-contents.  */
 
 import {
-  inside_iframe_p,
-  inside_index_page_p,
   absolute_url_p,
-  basename
+  basename,
+  inside_iframe_p,
+  inside_index_page_p
 } from "./utils";
 import {
-  withSidebarQuery,
-  scanToc,
   clearTocStyles,
-  mainFilename
+  mainFilename,
+  scanToc,
+  withSidebarQuery
 } from "./toc";
 
 var mainName = "index.html";
