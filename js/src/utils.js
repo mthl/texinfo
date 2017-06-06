@@ -36,5 +36,5 @@ basename (pathname, suffix)
   else if (suffix instanceof RegExp)
     return res.replace (suffix, "");
   else                          /* typeof SUFFIX == "string" */
-    return res.replace (new RegExp ("[.]" +  suffix), "");
+    return res.replace (new RegExp ("[.]" + suffix), "");
 }
