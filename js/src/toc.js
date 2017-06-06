@@ -25,7 +25,7 @@ export var withSidebarQuery = (function () {
     else
       return mainFilename.val + "#" + node_name + node.hash.slice (1);
   };
-}());
+} ());
 
 /* Keep children but remove grandchildren (Exception: don't remove
    anything on the current page; however, that's not a problem in the

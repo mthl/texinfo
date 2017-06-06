@@ -120,12 +120,12 @@ fix_links (links)
 function
 navigation_links (content)
 {
-  let as = Array.from (content.querySelectorAll("footer a"));
+  let as = Array.from (content.querySelectorAll ("footer a"));
   /* links have the from MAIN_FILE.html#FRAME-ID.  For convenience we
      only store FRAME-ID.  */
   return as.reduce ((acc, node) => {
     let href = node.getAttribute ("href");
-    let id = href.replace(/.*#/, "");
+    let id = href.replace (/.*#/, "");
     switch (node.getAttribute ("accesskey"))
       {
       case "n":
