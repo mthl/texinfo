@@ -22,7 +22,7 @@ inside_index_page_p (file_name)
 export function
 absolute_url_p (url)
 {
-  return url.includes (':');
+  return url.includes (":");
 }
 
 /** Return PATHNAME with any leading directory components removed.  If
