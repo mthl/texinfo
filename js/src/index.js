@@ -304,8 +304,9 @@ receiveMessage (event)
         else
         {
           let ids = loaded_nodes.data[loaded_nodes.current];
-          if (ids[data.nav])
-            loadPage (ids[data.nav] + ".xhtml", "");
+          let link_id = ids[data.nav];
+          if (link_id)
+            loadPage (link_id + ".xhtml", "");
         }
         break;
       }
