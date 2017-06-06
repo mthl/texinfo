@@ -143,40 +143,42 @@ navigation_links (content)
   }, {});
 }
 
-function
-addSidebarHeader (sidebarDoc)
-{
-  var li = sidebarDoc.getElementsByTagName ("li")[0];
-  if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-      && li.firstElementChild.getAttribute ("href") == mainName)
-    li.parentNode.removeChild (li);
-  var header = sidebarDoc.getElementsByTagName ("header")[0];
-  var h1 = sidebarDoc.getElementsByTagName ("h1")[0];
-  if (header && h1)
-    {
-      var a = sidebarDoc.createElement ("a");
-      a.setAttribute ("href", "index.html");
-      header.appendChild (a);
-      var div = sidebarDoc.createElement ("div");
-      a.appendChild (div);
-      var img = sidebarDoc.createElement ("img");
-      img.setAttribute ("src", "kawa-logo.png");
-      div.appendChild (img);
-      var span = sidebarDoc.createElement ("span");
-      span.appendChild (h1.firstChild);
-      div.appendChild (span);
-      h1.parentNode.removeChild (h1);
-    }
-}
-
-/* Initialize the "ToC.xhtml" DOM which must be loaded in the context of an
+/* Initialize TOC_FILENAME which must be loaded in the context of an
    iframe.  */
 function
 on_sidebar_load (evt)
 {
+  /* Add a link from TOC_FILENAME to the main index file.  */
+  function
+  add_sidebar_header ()
+  {
+    let li = document.querySelector ("li");
+    if (li && li.firstElementChild && li.firstElementChild.matches ("a")
+        && li.firstElementChild.getAttribute ("href") == mainName)
+      li.parentNode.removeChild (li);
+
+    let header = document.querySelector ("header");
+    let h1 = document.querySelector ("h1");
+    if (header && h1)
+      {
+        let a = document.createElement ("a");
+        a.setAttribute ("href", "index.html");
+        header.appendChild (a);
+        let div = document.createElement ("div");
+        a.appendChild (div);
+        let img = document.createElement ("img");
+        img.setAttribute ("src", "kawa-logo.png");
+        div.appendChild (img);
+        let span = document.createElement ("span");
+        span.appendChild (h1.firstChild);
+        div.appendChild (span);
+        h1.parentNode.removeChild (h1);
+      }
+  }
+
   mainFilename.val = window.location.href.replace (/.*#main=/, "");
   var search = window.location.hash;
-  addSidebarHeader (document);
+  add_sidebar_header ();
   /* FIXME: Add base also for sub-pages.  */
   var base = document.createElement ("base");
   base.setAttribute ("href",
