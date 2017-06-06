@@ -277,17 +277,17 @@ load_page (url, hash)
 function
 receive_message (event)
 {
-  var data = event.data;
+  let data = event.data;
   switch (data.message_kind)
     {
     case "node-list":           /* from sidebar to top frame */
       {
         for (var i = 0; i < data.length; i += 1)
           {
-            var name = data[i];
+            let name = data[i];
             if (name == "index")
               continue;
-            var div = document.createElement ("div");
+            let div = document.createElement ("div");
             div.setAttribute ("id", name);
             div.setAttribute ("node", name);
             div.setAttribute ("hidden", "true");
@@ -295,8 +295,8 @@ receive_message (event)
           }
         if (window.location.hash)
           {
-            var hash = window.location.hash;
-            var url = (hash.includes ("."))
+            let hash = window.location.hash;
+            let url = (hash.includes ("."))
               ? hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2")
               : hash.replace (/#/, "") + ".xhtml";
             load_page (url, hash);
@@ -325,7 +325,7 @@ receive_message (event)
       }
     case "update-sidebar":
       {
-        var selected = data.selected;
+        let selected = data.selected;
         clear_toc_styles (document.body);
         scan_toc (document.body, (selected == "index") ?
                   "index.html" : (selected + ".xhtml"));
