@@ -296,9 +296,9 @@ receive_message (event)
         if (window.location.hash)
           {
             let hash = window.location.hash;
-            let url = (hash.includes ("."))
-              ? hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2")
-              : hash.replace (/#/, "") + ".xhtml";
+            let url = (hash.includes (".")) ?
+                hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2") :
+                hash.replace (/#/, "") + ".xhtml";
             load_page (url, hash);
           }
         break;
@@ -327,8 +327,9 @@ receive_message (event)
       {
         let selected = data.selected;
         clear_toc_styles (document.body);
-        scan_toc (document.body, (selected == "index") ?
-                  "index.html" : (selected + ".xhtml"));
+        let filename = (selected == "index") ?
+            "index.html" : (selected + ".xhtml");
+        scan_toc (document.body, filename);
         break;
       }
     case "cache-document":
