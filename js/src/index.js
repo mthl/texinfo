@@ -173,32 +173,39 @@ on_sidebar_load (evt)
       }
   }
 
+  /* Retrieve 'mainName' from current window URL. */
   mainFilename.val = window.location.href.replace (/.*#main=/, "");
-  var search = window.location.hash;
   add_sidebar_header ();
+  document.body.setAttribute ("class", "toc-sidebar");
+
+  /* Specify the base URL to use for all relative URLs.  */
   /* FIXME: Add base also for sub-pages.  */
-  var base = document.createElement ("base");
+  let base = document.createElement ("base");
   base.setAttribute ("href",
                      window.location.href.replace (/[/][^/]*$/, "/"));
   document.head.appendChild (base);
-  document.body.setAttribute ("class", "toc-sidebar");
-  var links = document.getElementsByTagName ("a");
 
-  var tocA = document.createElementNS (xhtmlNamespace, "a");
+  let links = Array.from (document.getElementsByTagName ("a"));
+
+  /* Create a link referencing the Table of content.  */
+  let tocA = document.createElementNS (xhtmlNamespace, "a");
   tocA.setAttribute ("href", TOC_FILENAME);
   tocA.appendChild (document.createTextNode ("Table of Contents"));
-  var tocLi = document.createElementNS (xhtmlNamespace, "li");
+  let tocLi = document.createElementNS (xhtmlNamespace, "li");
   tocLi.appendChild (tocA);
-  var indexLi = links[links.length-1].parentNode;
-  var indexGrand = indexLi.parentNode.parentNode;
+  let indexLi = links[links.length-1].parentNode;
+  let indexGrand = indexLi.parentNode.parentNode;
   /* XXX: hack */
   if (indexGrand.nodeName == "li")
     indexLi = indexGrand;
   indexLi.parentNode.insertBefore (tocLi, indexLi.nextSibling);
 
-  var prevNode = null;
-  var nodes = [];
-  let links$ = [...Array.from (links), tocA];
+  /* Populate 'nodes' with all the relative links of the table of
+     content.  Exclude the hash part and the file extension from the
+     links.  */
+  let nodes = [];
+  let prevNode = null;
+  let links$ = [...links, tocA];
   links$.forEach (link => {
     let href = link.getAttribute ("href");
     if (href)
@@ -221,7 +228,8 @@ on_sidebar_load (evt)
 
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
-  var divs = Array.from (document.getElementsByTagName ("div"));
+
+  let divs = Array.from (document.getElementsByTagName ("div"));
   divs.reverse ()
       .forEach (div => {
         if (div.getAttribute ("class") == "toc-title")
