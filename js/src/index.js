@@ -347,7 +347,7 @@ onClick (evt)
               if (url.includes ("."))
                 url = url.replace (/[.]/, ".xhtml#");
               else
-                url = url + ".xhtml";
+                url += ".xhtml";
               let hash = href.replace (/.*#/, "#");
               if (hash == "index.html")
                 hash = "";
