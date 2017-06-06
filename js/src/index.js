@@ -194,7 +194,7 @@ on_sidebar_load (evt)
   toc_a.appendChild (document.createTextNode ("Table of Contents"));
   let toc_li = document.createElementNS (XHTML_NAMESPACE, "li");
   toc_li.appendChild (toc_a);
-  let index_li = links[links.length-1].parentNode;
+  let index_li = links[links.length - 1].parentNode;
   let index_grand = index_li.parentNode.parentNode;
   /* XXX: hack */
   if (index_grand.nodeName == "li")
