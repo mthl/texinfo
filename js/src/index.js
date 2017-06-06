@@ -257,7 +257,7 @@ load_page (url, hash)
     }
   else if (iframe.nodeName == "IFRAME")
     {
-      let msg = { message_kind: "scroll-to", url: url };
+      let msg = { message_kind: "scroll-to", url };
       iframe.contentWindow.postMessage (msg, "*");
     }
 
