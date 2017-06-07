@@ -125,7 +125,7 @@ var navigation_links = (function () {
   let dict = { n: "next", p: "prev", u: "up" };
 
   return function (content) {
-    let links = [...content.querySelectorAll ("footer a")];
+    let links = Array.from (content.querySelectorAll ("footer a"));
 
     /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
        we only store FRAME-ID.  */
@@ -183,7 +183,7 @@ on_sidebar_load (evt)
                      window.location.href.replace (/[/][^/]*$/, "/"));
   document.head.appendChild (base);
 
-  let links = [...document.links];
+  let links = Array.from (document.links);
 
   /* Create a link referencing the Table of content.  */
   let toc_a = document.createElementNS (XHTML_NAMESPACE, "a");
@@ -227,7 +227,7 @@ on_sidebar_load (evt)
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
 
-  let divs = [...document.querySelectorAll ("div")];
+  let divs = Array.from (document.querySelectorAll ("div"));
   divs.reverse ()
       .forEach (div => {
         if (div.getAttribute ("class") == "toc-title")
