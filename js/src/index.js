@@ -23,6 +23,7 @@ import {
   scan_toc,
   with_sidebar_query
 } from "./toc";
+import polyfill from "./polyfill";
 
 const INDEX_NAME = "index.html";
 const TOC_FILENAME = "ToC.xhtml";
@@ -413,6 +414,8 @@ use_sidebar (hash)
    which is different from "index.html".  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
+  polyfill.register ();
+
   if (!inside_iframe_p ())
     window.addEventListener ("load", on_index_load, false);
   else if (window.name == "slider")
