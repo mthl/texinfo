@@ -378,30 +378,22 @@ on_unload (evt)
 }
 
 /* Handle Keyboard 'keypress' events.  */
-function
-on_keypress (evt)
-{
-  switch (evt.key)
-    {
-    case "n":
-      top.postMessage ({ message_kind: "load-page", nav: "next" }, "*");
-      break;
-    case "p":
-      top.postMessage ({ message_kind: "load-page", nav: "prev" }, "*");
-      break;
-    case "u":
-      top.postMessage ({ message_kind: "load-page", nav: "up" }, "*");
-      break;
-    case "]":
-      top.postMessage ({ message_kind: "load-page", nav: "forward" }, "*");
-      break;
-    case "[":
-      top.postMessage ({ message_kind: "load-page", nav: "backward" }, "*");
-      break;
-    default:
-      break;
-    }
-}
+var on_keypress = (function () {
+  /* Dictionary associating an Event 'key' property to its navigation id.  */
+  let dict = {
+    n: "next",
+    p: "prev",
+    u: "up",
+    "]": "forward",
+    "[": "backward"
+  };
+
+  return function (evt) {
+    let nav = dict[evt.key];
+    if (nav)
+      top.postMessage ({ message_kind: "load-page", nav }, "*");
+  };
+} ());
 
 /* Return true if the side bar containing the table of content should be
    displayed, otherwise return false.  This is guessed from HASH which must be
