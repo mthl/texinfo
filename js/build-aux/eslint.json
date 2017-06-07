@@ -31,7 +31,7 @@
     "eqeqeq": "off",
     "func-call-spacing": ["error", "always"],
     "func-name-matching": "error",
-    "func-style": ["error", "declaration"],
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
     "generator-star-spacing": ["error", "both"],
     "global-require": "error",
     "guard-for-in": "error",

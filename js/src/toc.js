@@ -118,3 +118,45 @@ clear_toc_styles (node)
        child = child.nextElementSibling)
     clear_toc_styles (child);
 }
+
+/** Build a dictionary containing navigation links from NAV.  NAV must be an
+    'ul' DOM element containing the table of content of the manual.  */
+export function
+create_link_dict (nav)
+{
+  let dict = {};
+  let filter = {
+    acceptNode (node)
+    {
+      return (node.matches ("a")) ?
+        window.NodeFilter.FILTER_ACCEPT : window.NodeFilter.FILTER_SKIP;
+    }
+  };
+
+  /* Depth first walk through the links in NAV to define the 'backward' and
+     'forward' attributes in DICT.  */
+  let tw =
+    document.createTreeWalker (nav, window.NodeFilter.SHOW_ELEMENT, filter);
+  let old = tw.currentNode;
+  let current = tw.nextNode ();
+  let href = link => (link.getAttribute ("href") || "index");
+  while (current)
+    {
+      let id_old = href (old).replace (/.*#/, "");
+      let id_cur = href (current).replace (/.*#/, "");
+      top.postMessage ({
+        message_kind: "cache-document",
+        url: id_old,
+        item: { forward: id_cur }
+      }, "*");
+      top.postMessage ({
+        message_kind: "cache-document",
+        url: id_cur,
+        item: { backward: id_old }
+      }, "*");
+      old = current;
+      current = tw.nextNode ();
+    }
+
+  return dict;
+}

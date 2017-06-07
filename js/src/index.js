@@ -19,6 +19,7 @@ import {
 } from "./utils";
 import {
   clear_toc_styles,
+  create_link_dict,
   main_filename,
   scan_toc,
   with_sidebar_query
@@ -237,6 +238,10 @@ on_sidebar_load (evt)
         if (div.getAttribute ("class") == "toc-title")
           div.parentNode.removeChild (div);
       });
+
+  /* Add 'backward' and 'forward' attributes to 'loaded_nodes.data'.  */
+  let ul = document.querySelector ("ul");
+  Object.assign (loaded_nodes.data, create_link_dict (ul));
 }
 
 function
@@ -334,7 +339,8 @@ receive_message (event)
         break;
       }
     case "cache-document":
-      loaded_nodes.data[data.url] = data.item;
+      loaded_nodes.data[data.url] =
+        Object.assign ({}, loaded_nodes.data[data.url], data.item);
       break;
     default:
       break;
@@ -390,6 +396,12 @@ on_keypress (evt)
       break;
     case "u":
       top.postMessage ({ message_kind: "load-page", nav: "up" }, "*");
+      break;
+    case "]":
+      top.postMessage ({ message_kind: "load-page", nav: "forward" }, "*");
+      break;
+    case "[":
+      top.postMessage ({ message_kind: "load-page", nav: "backward" }, "*");
       break;
     default:
       break;
