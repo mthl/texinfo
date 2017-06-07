@@ -1,3 +1,9 @@
+2017-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* Texinfo/Convert/XSParagraph/configure.ac,
+	* Texinfo/MiscXS/configure.ac: Check for cygwin when setting 
+	HOST_IS_WINDOWS conditional.
+
 2017-06-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac,

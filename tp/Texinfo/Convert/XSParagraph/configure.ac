@@ -86,7 +86,7 @@ LT_INIT
 
 host_is_windows=no
 case "$host" in
-   *-mingw32 | *-mingw64 | *-msdosdjgpp )  host_is_windows=yes ;;
+   *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )  host_is_windows=yes ;;
 esac     
 AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
 
