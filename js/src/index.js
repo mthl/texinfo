@@ -20,9 +20,9 @@ import {
 import {
   clear_toc_styles,
   create_link_dict,
+  fix_link,
   main_filename,
-  scan_toc,
-  with_sidebar_query
+  scan_toc
 } from "./toc";
 import polyfill from "./polyfill";
 
@@ -85,15 +85,6 @@ on_iframe_load (evt)
   let url = basename (window.location.pathname, /[.]x?html$/);
   let item = navigation_links (document);
   top.postMessage ({ message_kind: "cache-document", url, item }, "*");
-}
-
-function
-fix_link (link, href)
-{
-  if (absolute_url_p (href))
-    link.setAttribute ("target", "_blank");
-  else
-    link.setAttribute ("href", with_sidebar_query (href));
 }
 
 /* Modify LINKS to handle the iframe based navigation properly.

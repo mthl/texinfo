@@ -1,18 +1,18 @@
 /* toc.js - Generate and manage table of content */
 
-import { basename } from "./utils";
+import { absolute_url_p, basename } from "./utils";
 
 const INDEX_NAME = "index.html";
 
 /** Object storing the value of the */
 export var main_filename = { val: null };
 
-/** Adapt HREF to refer to an anchor in index file.  HREF must be a string
-    representing an absolute or relative URL.
+/* Adapt HREF to refer to an anchor in index file.  HREF must be a string
+   representing an absolute or relative URL.
 
-    For example if 'main_filename.val' value is "index.html", "foo/bar.html"
-    will be replaced by "index.html#bar".  */
-export var with_sidebar_query = (function () {
+   For example if 'main_filename.val' value is "index.html", "foo/bar.html"
+   will be replaced by "index.html#bar".  */
+var with_sidebar_query = (function () {
   /* DOM element used to access the HTMLAnchorElement interface.  */
   let node = document.createElement ("a");
 
@@ -157,4 +157,15 @@ create_link_dict (nav)
       old = current;
       current = tw.nextNode ();
     }
+}
+
+/** If LINK is absolute ensure it is opened in a new tab.  Otherwise modify
+    the 'href' attribute to adapt to the iframe based navigation.  */
+export function
+fix_link (link, href)
+{
+  if (absolute_url_p (href))
+    link.setAttribute ("target", "_blank");
+  else
+    link.setAttribute ("href", with_sidebar_query (href));
 }
