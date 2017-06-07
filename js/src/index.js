@@ -120,28 +120,23 @@ fix_links (links)
 
 /* Retrieve PREV, NEXT, and UP links and Return a object containing references
    to those links.  */
-function
-navigation_links (content)
-{
-  let as = [...content.querySelectorAll ("footer a")];
-  /* links have the from MAIN_FILE.html#FRAME-ID.  For convenience we
-     only store FRAME-ID.  */
-  return as.reduce ((acc, node) => {
-    let href = node.getAttribute ("href");
-    let id = href.replace (/.*#/, "");
-    switch (node.getAttribute ("accesskey"))
-      {
-      case "n":
-        return Object.assign (acc, { next: id });
-      case "p":
-        return Object.assign (acc, { prev: id });
-      case "u":
-        return Object.assign (acc, { up: id });
-      default:
-        return acc;
-      }
-  }, {});
-}
+var navigation_links = (function () {
+  /* Dictionary associating an 'accesskey' property to its navigation id.  */
+  let dict = { n: "next", p: "prev", u: "up" };
+
+  return function (content) {
+    let links = [...content.querySelectorAll ("footer a")];
+
+    /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
+       we only store FRAME-ID.  */
+    return links.reduce ((acc, link) => {
+      let nav_id = dict[link.getAttribute ("accesskey")];
+      if (nav_id)
+        acc[nav_id] = link.getAttribute ("href").replace (/.*#/, "");
+      return acc;
+    }, {});
+  };
+} ());
 
 /* Initialize TOC_FILENAME which must be loaded in the context of an
    iframe.  */
