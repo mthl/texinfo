@@ -119,12 +119,12 @@ clear_toc_styles (node)
     clear_toc_styles (child);
 }
 
-/** Build a dictionary containing navigation links from NAV.  NAV must be an
-    'ul' DOM element containing the table of content of the manual.  */
+/** Build the global dictionary containing navigation links from NAV.  NAV
+    must be an 'ul' DOM element containing the table of content of the
+    manual.  */
 export function
 create_link_dict (nav)
 {
-  let dict = {};
   let filter = {
     acceptNode (node)
     {
@@ -157,6 +157,4 @@ create_link_dict (nav)
       old = current;
       current = tw.nextNode ();
     }
-
-  return dict;
 }

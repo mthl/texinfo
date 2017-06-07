@@ -235,8 +235,7 @@ on_sidebar_load (evt)
       });
 
   /* Add 'backward' and 'forward' attributes to 'loaded_nodes.data'.  */
-  let ul = document.querySelector ("ul");
-  Object.assign (loaded_nodes.data, create_link_dict (ul));
+  create_link_dict (document.querySelector ("ul"));
 }
 
 function
