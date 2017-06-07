@@ -123,7 +123,7 @@ fix_links (links)
 function
 navigation_links (content)
 {
-  let as = Array.from (content.querySelectorAll ("footer a"));
+  let as = [...content.querySelectorAll ("footer a")];
   /* links have the from MAIN_FILE.html#FRAME-ID.  For convenience we
      only store FRAME-ID.  */
   return as.reduce ((acc, node) => {
@@ -232,7 +232,7 @@ on_sidebar_load (evt)
   nodes.message_kind = "node-list";
   top.postMessage (nodes, "*");
 
-  let divs = Array.from (document.getElementsByTagName ("div"));
+  let divs = [...document.querySelectorAll ("div")];
   divs.reverse ()
       .forEach (div => {
         if (div.getAttribute ("class") == "toc-title")
