@@ -1,8 +1,7 @@
 /* toc.js - Generate and manage table of content */
 
 import { absolute_url_p, basename } from "./utils";
-
-const INDEX_NAME = "index.html";
+import config from "./config";
 
 /** Object storing the value of the */
 export var main_filename = { val: null };
@@ -19,7 +18,9 @@ var with_sidebar_query = (function () {
   return function (href) {
     node.href = href;
     var node_name = basename (node.pathname, /[.]x?html/);
-    if (href == main_filename.val || href == INDEX_NAME || node_name == "start")
+    if (href == main_filename.val
+        || href == config.INDEX_NAME
+        || node_name == "start")
       return main_filename.val;
     else
       return main_filename.val + "#" + node_name + node.hash.slice (1);

@@ -24,11 +24,8 @@ import {
   main_filename,
   scan_toc
 } from "./toc";
+import config from "./config";
 import polyfill from "./polyfill";
-
-const INDEX_NAME = "index.html";
-const TOC_FILENAME = "ToC.xhtml";
-const XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
 let sidebar_frame = null;
 
@@ -62,8 +59,8 @@ on_index_load (evt)
       var iframe = document.createElement ("iframe");
       sidebar_frame = iframe;
       iframe.setAttribute ("name", "slider");
-      iframe.setAttribute ("src",
-                           TOC_FILENAME + "#main=" + main_filename.val);
+      iframe.setAttribute ("src", (config.TOC_FILENAME
+                                   + "#main=" + main_filename.val));
       body.insertBefore (iframe, body.firstChild);
       body.setAttribute ("class", "mainbar");
     }
@@ -140,7 +137,7 @@ on_sidebar_load (evt)
   {
     let li = document.querySelector ("li");
     if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-        && li.firstElementChild.getAttribute ("href") == INDEX_NAME)
+        && li.firstElementChild.getAttribute ("href") == config.INDEX_NAME)
       li.parentNode.removeChild (li);
 
     let header = document.querySelector ("header");
@@ -177,10 +174,10 @@ on_sidebar_load (evt)
   let links = Array.from (document.links);
 
   /* Create a link referencing the Table of content.  */
-  let toc_a = document.createElementNS (XHTML_NAMESPACE, "a");
-  toc_a.setAttribute ("href", TOC_FILENAME);
+  let toc_a = document.createElementNS (config.XHTML_NAMESPACE, "a");
+  toc_a.setAttribute ("href", config.TOC_FILENAME);
   toc_a.appendChild (document.createTextNode ("Table of Contents"));
-  let toc_li = document.createElementNS (XHTML_NAMESPACE, "li");
+  let toc_li = document.createElementNS (config.XHTML_NAMESPACE, "li");
   toc_li.appendChild (toc_a);
   let index_li = links[links.length - 1].parentNode;
   let index_grand = index_li.parentNode.parentNode;
