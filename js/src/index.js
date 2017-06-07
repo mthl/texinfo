@@ -68,7 +68,7 @@ on_index_load (evt)
       body.setAttribute ("class", "mainbar");
     }
 
-  fix_links (document.getElementsByTagName ("a"));
+  fix_links (document.links);
   let url = "index";
   let item = navigation_links (document);
   top.postMessage ({ message_kind: "cache-document", url, item }, "*");
@@ -81,7 +81,7 @@ function
 on_iframe_load (evt)
 {
   main_filename.val = basename (window.name, /#.*/);
-  fix_links (document.getElementsByTagName ("a"));
+  fix_links (document.links);
   let url = basename (window.location.pathname, /[.]x?html$/);
   let item = navigation_links (document);
   top.postMessage ({ message_kind: "cache-document", url, item }, "*");
@@ -188,7 +188,7 @@ on_sidebar_load (evt)
                      window.location.href.replace (/[/][^/]*$/, "/"));
   document.head.appendChild (base);
 
-  let links = Array.from (document.getElementsByTagName ("a"));
+  let links = [...document.links];
 
   /* Create a link referencing the Table of content.  */
   let toc_a = document.createElementNS (XHTML_NAMESPACE, "a");
