@@ -79,23 +79,16 @@ on_iframe_load (evt)
 /* Modify LINKS to handle the iframe based navigation properly.
    relative links will be opened inside the corresponding iframe and
    absolute links will be opened in a new tab.  LINKS must be an array
-   or a collection of nodes.  Return the number of nodes fixed.  */
+   or a collection of nodes.  */
 function
 fix_links (links)
 {
-  let count = 0;
   for (let i = 0; i < links.length; i += 1)
     {
-      let link = links[i];
-      let href = link.getAttribute ("href");
+      let href = links[i].getAttribute ("href");
       if (href)
-        {
-          fix_link (link, href);
-          count += 1;
-        }
+        fix_link (links[i], href);
     }
-
-  return count;
 }
 
 /* Retrieve PREV, NEXT, and UP links and Return a object containing references
