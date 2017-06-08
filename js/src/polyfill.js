@@ -27,6 +27,34 @@ element_matches (str)
   return i > -1;
 }
 
+/* Polyfill for 'Object.assign'.  */
+function
+object_assign (target, varArgs)
+{
+  'use strict';
+  if (target == null)           /* TypeError if undefined or null.  */
+    throw new TypeError ('Cannot convert undefined or null to object');
+
+  var to = Object (target);
+  for (var index = 1; index < arguments.length; index++)
+    {
+      var nextSource = arguments[index];
+      /* Skip over if undefined or null */
+      if (nextSource != null)
+        {
+          for (var nextKey in nextSource)
+            {
+              /* Avoid bugs when hasOwnProperty is shadowed.  */
+              if (Object.prototype.hasOwnProperty.call (nextSource, nextKey))
+                to[nextKey] = nextSource[nextKey];
+            }
+        }
+    }
+
+  return to;
+}
+
+
 export default {
   /* Augment prototypes if necessary.  */
   register ()
@@ -43,5 +71,8 @@ export default {
           || Element.prototype.webkitMatchesSelector
           || element_matches;
       }
+
+    if (typeof Object.assign != 'function')
+      Object.assign = object_assign;
   }
 };
