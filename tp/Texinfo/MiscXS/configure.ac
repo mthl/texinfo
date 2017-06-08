@@ -80,11 +80,12 @@ LT_INIT
 # aren't really used: otherwise, configure complains about undefined
 # variables.
 
-host_is_windows=no
-case "$host" in
-   *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )  host_is_windows=yes ;;
+host_needs_no_undefined=no
+case "$host" in *-mingw32 | *-mingw64 | *-msdosdjgpp | *-cygwin )
+  host_needs_no_undefined=yes ;;
 esac     
-AM_CONDITIONAL([HOST_IS_WINDOWS], [test "x$host_is_windows" = "xyes"])
+AM_CONDITIONAL([HOST_NEEDS_NO_UNDEFINED],
+               [test "x$host_needs_no_undefined" = "xyes"])
 
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a

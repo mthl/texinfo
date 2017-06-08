@@ -84,7 +84,7 @@ XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_I
 TestXS_la_CFLAGS = $(AM_CFLAGS)
 TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
 
-if HOST_IS_WINDOWS
+if HOST_NEEDS_NO_UNDEFINED
   PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
   # The -no-undefined flag is for MS-Windows.  See info node
   # `(gnulib)Libtool and Windows'.  The -L and -l options after it show

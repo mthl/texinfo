@@ -1,3 +1,12 @@
+2017-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph/configure.ac,
+	* tp/Texinfo/Convert/XSParagraph/Makefile.am,
+	* tp/Texinfo/MiscXS/configure.ac,
+	* tp/Texinfo/MiscXS/Makefile.am:
+	Change name of conditional from HOST_IS_WINDOWS to 
+	HOST_NEEDS_NO_UNDEFINED.  Suggestion from Ken Brown.
+
 2017-06-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* Texinfo/Convert/XSParagraph/configure.ac,
