@@ -13,11 +13,16 @@ import { absolute_url_p } from "./utils";
 import config from "./config";
 
 /** Sidebar component encapsulating the iframe and its state.  */
-export let instance = {
-  /* Actual state of the sidebar.  */
-  state: null,
-  /* Reference to the DOM element.  */
-  element: null,
+export class
+Sidebar
+{
+  constructor ()
+  {
+    /* Actual state of the sidebar.  */
+    this.state = null;
+    /* Reference to the DOM element.  */
+    this.element = null;
+  }
 
   /* Render 'sidebar' according to STATE which is a new state. */
   render (state)
@@ -34,7 +39,7 @@ export let instance = {
       }
 
     this.state = state;
-  },
+  }
 
   /* Updating render.  */
   update (state)
@@ -45,7 +50,7 @@ export let instance = {
         this.element.contentWindow.postMessage (msg, "*");
       }
   }
-};
+}
 
 /** Return true if the side bar containing the table of content should be
     displayed, otherwise return false.  This is guessed from HASH which must
