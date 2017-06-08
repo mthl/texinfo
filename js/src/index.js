@@ -55,7 +55,12 @@ on_index_load (evt)
   body.appendChild (div);
 
   if (sidebar.use_sidebar (window.location.hash))
-    sidebar.instance.render ({ current: "index", visible: true });
+    {
+      let sbi = sidebar.instance;
+      sbi.render ({ current: "index", visible: true });
+      document.body.insertBefore (sbi.element, document.body.firstChild);
+      document.body.setAttribute ("class", "mainbar");
+    }
 
   fix_links (document.links);
   let url = "index";

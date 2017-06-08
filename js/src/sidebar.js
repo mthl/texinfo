@@ -30,8 +30,6 @@ export let instance = {
         iframe.setAttribute ("name", "slider");
         iframe.setAttribute ("src", (config.TOC_FILENAME
                                      + "#main=" + main_filename.val));
-        document.body.insertBefore (iframe, document.body.firstChild);
-        document.body.setAttribute ("class", "mainbar");
         this.element = iframe;
       }
 
