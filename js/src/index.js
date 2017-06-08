@@ -11,23 +11,23 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
+import * as sidebar from "./sidebar";
+
 import {
   absolute_url_p,
   basename,
   inside_iframe_p,
   inside_index_page_p
 } from "./utils";
+
 import {
   clear_toc_styles,
-  create_link_dict,
   fix_link,
   main_filename,
   scan_toc
 } from "./toc";
-import config from "./config";
-import polyfill from "./polyfill";
 
-let sidebar_frame = null;
+import polyfill from "./polyfill";
 
 /* Object used for retrieving navigation links.  This is only used
    from the index page.  */
@@ -54,16 +54,8 @@ on_index_load (evt)
     div.appendChild (ch);
   body.appendChild (div);
 
-  if (use_sidebar (window.location.hash))
-    {
-      var iframe = document.createElement ("iframe");
-      sidebar_frame = iframe;
-      iframe.setAttribute ("name", "slider");
-      iframe.setAttribute ("src", (config.TOC_FILENAME
-                                   + "#main=" + main_filename.val));
-      body.insertBefore (iframe, body.firstChild);
-      body.setAttribute ("class", "mainbar");
-    }
+  if (sidebar.use_sidebar (window.location.hash))
+    sidebar.instance.render ({ current: "index", visible: true });
 
   fix_links (document.links);
   let url = "index";
@@ -126,106 +118,6 @@ var navigation_links = (function () {
   };
 } ());
 
-/* Initialize TOC_FILENAME which must be loaded in the context of an
-   iframe.  */
-function
-on_sidebar_load (evt)
-{
-  /* Add a link from TOC_FILENAME to the main index file.  */
-  function
-  add_sidebar_header ()
-  {
-    let li = document.querySelector ("li");
-    if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-        && li.firstElementChild.getAttribute ("href") == config.INDEX_NAME)
-      li.parentNode.removeChild (li);
-
-    let header = document.querySelector ("header");
-    let h1 = document.querySelector ("h1");
-    if (header && h1)
-      {
-        let a = document.createElement ("a");
-        a.setAttribute ("href", "index.html");
-        header.appendChild (a);
-        let div = document.createElement ("div");
-        a.appendChild (div);
-        let img = document.createElement ("img");
-        img.setAttribute ("src", "kawa-logo.png");
-        div.appendChild (img);
-        let span = document.createElement ("span");
-        span.appendChild (h1.firstChild);
-        div.appendChild (span);
-        h1.parentNode.removeChild (h1);
-      }
-  }
-
-  /* Retrieve 'INDEX_NAME' from current window URL. */
-  main_filename.val = window.location.href.replace (/.*#main=/, "");
-  add_sidebar_header ();
-  document.body.setAttribute ("class", "toc-sidebar");
-
-  /* Specify the base URL to use for all relative URLs.  */
-  /* FIXME: Add base also for sub-pages.  */
-  let base = document.createElement ("base");
-  base.setAttribute ("href",
-                     window.location.href.replace (/[/][^/]*$/, "/"));
-  document.head.appendChild (base);
-
-  let links = Array.from (document.links);
-
-  /* Create a link referencing the Table of content.  */
-  let toc_a = document.createElementNS (config.XHTML_NAMESPACE, "a");
-  toc_a.setAttribute ("href", config.TOC_FILENAME);
-  toc_a.appendChild (document.createTextNode ("Table of Contents"));
-  let toc_li = document.createElementNS (config.XHTML_NAMESPACE, "li");
-  toc_li.appendChild (toc_a);
-  let index_li = links[links.length - 1].parentNode;
-  let index_grand = index_li.parentNode.parentNode;
-  /* XXX: hack */
-  if (index_grand.nodeName == "li")
-    index_li = index_grand;
-  index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
-
-  /* Populate 'nodes' with all the relative links of the table of
-     content.  Exclude the hash part and the file extension from the
-     links.  */
-  let nodes = [];
-  let prev_node = null;
-  let links$ = [...links, toc_a];
-  links$.forEach (link => {
-    let href = link.getAttribute ("href");
-    if (href)
-      {
-        fix_link (link, href);
-        if (!absolute_url_p (href))
-          {
-            let node_name = href.replace (/[.]x?html.*/, "");
-            if (prev_node != node_name)
-              {
-                prev_node = node_name;
-                nodes.push (node_name);
-              }
-          }
-      }
-  });
-
-  if (main_filename.val !== null)
-    scan_toc (document.body, main_filename.val);
-
-  nodes.message_kind = "node-list";
-  top.postMessage (nodes, "*");
-
-  let divs = Array.from (document.querySelectorAll ("div"));
-  divs.reverse ()
-      .forEach (div => {
-        if (div.getAttribute ("class") == "toc-title")
-          div.parentNode.removeChild (div);
-      });
-
-  /* Add 'backward' and 'forward' attributes to 'loaded_nodes.data'.  */
-  create_link_dict (document.querySelector ("ul"));
-}
-
 function
 load_page (url, hash)
 {
@@ -250,7 +142,7 @@ load_page (url, hash)
     }
 
   let msg = { message_kind: "update-sidebar", selected: node_name };
-  sidebar_frame.contentWindow.postMessage (msg, "*");
+  sidebar.instance.element.contentWindow.postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
   if (window.selectedDivNode != div)
     {
@@ -382,20 +274,6 @@ var on_keypress = (function () {
   };
 } ());
 
-/* Return true if the side bar containing the table of content should be
-   displayed, otherwise return false.  This is guessed from HASH which must be
-   a string representing a list of URL parameters.  */
-function
-use_sidebar (hash)
-{
-  if (hash.includes ("sidebar=no"))
-    return false;
-  else if (hash.includes ("sidebar=yes") || hash == "#sidebar")
-    return true;
-  else
-    return !(navigator && navigator.epubReadingSystem);
-}
-
 /* Don't do anything if the current script is launched from a non-iframed page
    which is different from "index.html".  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
@@ -403,14 +281,22 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
   polyfill.register ();
 
   if (!inside_iframe_p ())
-    window.addEventListener ("load", on_index_load, false);
+    {
+      window.addEventListener ("load", on_index_load, false);
+      window.addEventListener ("message", receive_message, false);
+    }
   else if (window.name == "slider")
-    window.addEventListener ("load", on_sidebar_load, false);
+    {
+      window.addEventListener ("load", sidebar.on_load, false);
+      window.addEventListener ("message", sidebar.on_message, false);
+    }
   else
-    window.addEventListener ("load", on_iframe_load, false);
+    {
+      window.addEventListener ("load", on_iframe_load, false);
+      window.addEventListener ("message", receive_message, false);
+    }
 
   window.addEventListener ("beforeunload", on_unload, false);
   window.addEventListener ("click", on_click, false);
-  window.addEventListener ("message", receive_message, false);
   window.addEventListener ("keypress", on_keypress, false);
 }
