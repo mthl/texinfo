@@ -67,10 +67,8 @@ on_index_load (evt)
 
   fix_links (document.links);
   let links = {};
-  let url = "index";
-  links[url] = navigation_links (document);
+  links["index"] = navigation_links (document);
   store.dispatch (actions.cache_links (links));
-  store.dispatch (actions.set_current_url (url));
 }
 
 /* Initialize the DOM for generic pages loaded in the context of an
@@ -293,7 +291,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
            backward link ids.  */
         loaded_nodes: {},
         /* page id of the current page.  */
-        current: null
+        current: "index"
       };
 
       store = new Store (global_reducer, initial_state);
