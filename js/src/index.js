@@ -130,6 +130,7 @@ load_page (url, hash)
       + hash;
   var div = document.getElementById (node_name);
   var iframe = div.firstChild;
+  var iframe = div.firstElementChild;
   if (iframe === null)
     {
       iframe = document.createElement ("iframe");
