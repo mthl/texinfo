@@ -159,7 +159,7 @@ on_load (evt)
   let index_li = links[links.length - 1].parentNode;
   let index_grand = index_li.parentNode.parentNode;
   /* XXX: hack */
-  if (index_grand.nodeName == "li")
+  if (index_grand.matches ("li"))
     index_li = index_grand;
   index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
 

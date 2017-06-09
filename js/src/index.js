@@ -138,7 +138,7 @@ load_page (url, hash)
       iframe.setAttribute ("src", url);
       div.appendChild (iframe);
     }
-  else if (iframe.nodeName == "IFRAME")
+  else if (iframe.matches ("iframe"))
     {
       let msg = { message_kind: "scroll-to", url };
       iframe.contentWindow.postMessage (msg, "*");
