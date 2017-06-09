@@ -29,6 +29,7 @@ import {
 } from "./toc";
 
 import Store from "./store";
+import config from "./config";
 import { global_reducer } from "./reducers";
 import polyfill from "./polyfill";
 
@@ -40,7 +41,7 @@ let components = {
   sidebar: null
 };
 
-/* Initialize the top level "index.html" DOM.  */
+/* Initialize the top level 'config.INDEX_NAME' DOM.  */
 function
 on_index_load (evt)
 {
@@ -50,8 +51,8 @@ on_index_load (evt)
   var body = document.body;
   var div = document.createElement ("div");
   window.selectedDivNode = div;
-  div.setAttribute ("id", "index");
-  div.setAttribute ("node", "index");
+  div.setAttribute ("id", config.INDEX_ID);
+  div.setAttribute ("node", config.INDEX_ID);
   for (let ch = body.firstChild; ch !== null; ch = body.firstChild)
     div.appendChild (ch);
   body.appendChild (div);
@@ -59,7 +60,7 @@ on_index_load (evt)
   if (sidebar.use_sidebar (window.location.hash))
     {
       let sbi = new sidebar.Sidebar ();
-      sbi.render ({ current: "index", visible: true });
+      sbi.render ({ current: config.INDEX_ID, visible: true });
       document.body.insertBefore (sbi.element, document.body.firstChild);
       document.body.setAttribute ("class", "mainbar");
       components.sidebar = sbi;
@@ -67,7 +68,7 @@ on_index_load (evt)
 
   fix_links (document.links);
   let links = {};
-  links["index"] = navigation_links (document);
+  links[config.INDEX_ID] = navigation_links (document);
   store.dispatch (actions.cache_links (links));
 }
 
@@ -170,7 +171,7 @@ receive_message (event)
         for (var i = 0; i < data.length; i += 1)
           {
             let name = data[i];
-            if (name == "index")
+            if (name == config.INDEX_ID)
               continue;
             let div = document.createElement ("div");
             div.setAttribute ("id", name);
@@ -212,8 +213,8 @@ receive_message (event)
       {
         let selected = data.selected;
         clear_toc_styles (document.body);
-        let filename = (selected == "index") ?
-            "index.html" : (selected + ".xhtml");
+        let filename = (selected == config.INDEX_ID) ?
+            config.INDEX_NAME : (selected + ".xhtml");
         scan_toc (document.body, filename);
         break;
       }
@@ -232,13 +233,13 @@ on_click (evt)
           let href = target.getAttribute ("href");
           if (!absolute_url_p (href))
             {
-              let url = href.replace (/.*#/, "") || "index";
+              let url = href.replace (/.*#/, "") || config.INDEX_ID;
               if (url.includes ("."))
                 url = url.replace (/[.]/, ".xhtml#");
               else
                 url += ".xhtml";
               let hash = href.replace (/.*#/, "#");
-              if (hash == "index.html")
+              if (hash == config.INDEX_NAME)
                 hash = "";
               top.postMessage ({ message_kind: "load-page", url, hash }, "*");
               evt.preventDefault ();
@@ -276,7 +277,7 @@ var on_keypress = (function () {
 } ());
 
 /* Don't do anything if the current script is launched from a non-iframed page
-   which is different from "index.html".  */
+   which is different from 'config.INDEX_NAME'.  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
   polyfill.register ();
@@ -291,7 +292,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
            backward link ids.  */
         loaded_nodes: {},
         /* page id of the current page.  */
-        current: "index"
+        current: config.INDEX_ID
       };
 
       store = new Store (global_reducer, initial_state);

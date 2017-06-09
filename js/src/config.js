@@ -7,5 +7,7 @@ export default {
 
   INDEX_NAME: "index.html",
 
+  INDEX_ID: "index",
+
   PACKAGE_LOGO: "kawa-logo.png"
 };
