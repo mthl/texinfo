@@ -11,6 +11,7 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
+import * as actions from "./actions";
 import * as sidebar from "./sidebar";
 
 import {
@@ -35,9 +36,7 @@ import polyfill from "./polyfill";
    from the index page.  */
 let loaded_nodes = {
   /* Dictionary associating page ids to next, prev, up link ids.  */
-  data: {},
-  /* Page id of the current visible page.  */
-  current: null
+  data: {}
 };
 
 /* Global state manager.  */
@@ -77,7 +76,7 @@ on_index_load (evt)
   let url = "index";
   let item = navigation_links (document);
   top.postMessage ({ message_kind: "cache-document", url, item }, "*");
-  loaded_nodes.current = url;
+  store.dispatch (actions.set_current_url (url));
 }
 
 /* Initialize the DOM for generic pages loaded in the context of an
@@ -158,7 +157,7 @@ load_page (url, hash)
       if (window.selectedDivNode)
         window.selectedDivNode.setAttribute ("hidden", "true");
       div.removeAttribute ("hidden");
-      loaded_nodes.current = node_name;
+      store.dispatch (actions.set_current_url (node_name));
       window.selectedDivNode = div;
     }
 }
@@ -201,7 +200,7 @@ receive_message (event)
           load_page (data.url, data.hash);
         else
         {
-          let ids = loaded_nodes.data[loaded_nodes.current];
+          let ids = loaded_nodes.data[store.state.current];
           let link_id = ids[data.nav];
           if (link_id)
             load_page (link_id + ".xhtml", "");

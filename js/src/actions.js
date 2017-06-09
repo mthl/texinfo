@@ -15,3 +15,11 @@ page_ready (page)
 {
   return { type: PAGE_READY, page };
 }
+
+export const CURRENT_URL = "current-url";
+
+export function
+set_current_url (url)
+{
+  return { type: CURRENT_URL, url };
+}
