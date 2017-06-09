@@ -43,8 +43,10 @@ let loaded_nodes = {
 /* Global state manager.  */
 let store;
 
-/* Instance of a Sidebar object.  */
-let sidebar$ = null;
+let components = {
+  /* Instance of a Sidebar object.  */
+  sidebar: null
+};
 
 /* Initialize the top level "index.html" DOM.  */
 function
@@ -68,7 +70,7 @@ on_index_load (evt)
       sbi.render ({ current: "index", visible: true });
       document.body.insertBefore (sbi.element, document.body.firstChild);
       document.body.setAttribute ("class", "mainbar");
-      sidebar$ = sbi;
+      components.sidebar = sbi;
     }
 
   fix_links (document.links);
@@ -149,7 +151,7 @@ load_page (url, hash)
     }
 
   let msg = { message_kind: "update-sidebar", selected: node_name };
-  sidebar$.element.contentWindow.postMessage (msg, "*");
+  components.sidebar.element.contentWindow.postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
   if (window.selectedDivNode != div)
     {
