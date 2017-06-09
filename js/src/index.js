@@ -43,7 +43,7 @@ let components = {
 
 /* Initialize the top level 'config.INDEX_NAME' DOM.  */
 function
-on_index_load (evt)
+on_index_load (_event)
 {
   main_filename.val = basename (window.location.pathname);
 
@@ -75,7 +75,7 @@ on_index_load (evt)
 /* Initialize the DOM for generic pages loaded in the context of an
    iframe.  */
 function
-on_iframe_load (evt)
+on_iframe_load (_event)
 {
   main_filename.val = basename (window.name, /#.*/);
   fix_links (document.links);
@@ -251,7 +251,7 @@ on_click (evt)
 }
 
 function
-on_unload (evt)
+on_unload (_event)
 {
   var request = new XMLHttpRequest ();
   request.open ("GET", "(WINDOW-CLOSED)");

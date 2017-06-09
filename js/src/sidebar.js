@@ -134,7 +134,7 @@ relative_links (links)
 /** Initialize TOC_FILENAME which must be loaded in the context of an
     iframe.  */
 export function
-on_load (evt)
+on_load (_event)
 {
   /* Retrieve 'INDEX_NAME' from current window URL. */
   main_filename.val = window.location.href.replace (/.*#main=/, "");

@@ -39,7 +39,7 @@
     "id-blacklist": "error",
     "id-match": [
       "error",
-      "^([A-Z]+(_[A-Z]+)*|([a-z]|[A-Z])([a-z]|[1-9])*(_([a-z]|[1-9])+)*\\$*)$",
+      "^([A-Z]+(_[A-Z]+)*|[_A-Z]?[a-z\\d]+(_[a-z\\d]+)*\\$*)$",
       { "onlyDeclarations": true }
     ],
     "key-spacing": "error",
@@ -127,7 +127,7 @@
     "no-unmodified-loop-condition": "error",
     "no-unneeded-ternary": "error",
     "no-unused-expressions": "error",
-    "no-unused-vars": ["error", { "vars": "all", "args": "none" }],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-use-before-define": "off",
     "no-useless-call": "error",
     "no-useless-computed-key": "error",
