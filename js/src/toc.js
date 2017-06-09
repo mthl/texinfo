@@ -138,6 +138,7 @@ create_link_dict (nav)
      'forward' attributes in DICT.  */
   let tw =
     document.createTreeWalker (nav, window.NodeFilter.SHOW_ELEMENT, filter);
+  let links = {};
   let old = tw.currentNode;
   let current = tw.nextNode ();
   let href = link => (link.getAttribute ("href") || "index");
@@ -145,19 +146,13 @@ create_link_dict (nav)
     {
       let id_old = href (old).replace (/.*#/, "");
       let id_cur = href (current).replace (/.*#/, "");
-      top.postMessage ({
-        message_kind: "cache-document",
-        url: id_old,
-        item: { forward: id_cur }
-      }, "*");
-      top.postMessage ({
-        message_kind: "cache-document",
-        url: id_cur,
-        item: { backward: id_old }
-      }, "*");
+      links[id_old] = Object.assign ({}, links[id_old], { forward: id_cur });
+      links[id_cur] = Object.assign ({}, links[id_cur], { backward: id_old });
       old = current;
       current = tw.nextNode ();
     }
+
+  return links;
 }
 
 /** If LINK is absolute ensure it is opened in a new tab.  Otherwise modify

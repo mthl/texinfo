@@ -1,5 +1,7 @@
 /* sidebar.js - module for the lateral table of content component */
 
+import * as actions from "./actions";
+
 import {
   clear_toc_styles,
   create_link_dict,
@@ -175,8 +177,10 @@ on_load (evt)
           div.parentNode.removeChild (div);
       });
 
-  /* Add 'backward' and 'forward' attributes to 'loaded_nodes.data'.  */
-  create_link_dict (document.querySelector ("ul"));
+  /* Get 'backward' and 'forward' link attributes.  */
+  let dict = create_link_dict (document.querySelector ("ul"));
+  let action = actions.cache_links (dict);
+  top.postMessage ({ message_kind: "action", action }, "*");
 }
 
 /** Handle messages received via the Message API.  */

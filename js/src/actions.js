@@ -23,3 +23,11 @@ set_current_url (url)
 {
   return { type: CURRENT_URL, url };
 }
+
+export const CACHE_LINKS = "cache-links";
+
+export function
+cache_links (links)
+{
+  return { type: CACHE_LINKS, links };
+}

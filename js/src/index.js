@@ -32,13 +32,6 @@ import Store from "./store";
 import { global_reducer } from "./reducers";
 import polyfill from "./polyfill";
 
-/* Object used for retrieving navigation links.  This is only used
-   from the index page.  */
-let loaded_nodes = {
-  /* Dictionary associating page ids to next, prev, up link ids.  */
-  data: {}
-};
-
 /* Global state manager.  */
 let store;
 
@@ -73,9 +66,10 @@ on_index_load (evt)
     }
 
   fix_links (document.links);
+  let links = {};
   let url = "index";
-  let item = navigation_links (document);
-  top.postMessage ({ message_kind: "cache-document", url, item }, "*");
+  links[url] = navigation_links (document);
+  store.dispatch (actions.cache_links (links));
   store.dispatch (actions.set_current_url (url));
 }
 
@@ -86,9 +80,11 @@ on_iframe_load (evt)
 {
   main_filename.val = basename (window.name, /#.*/);
   fix_links (document.links);
+  let links = {};
   let url = basename (window.location.pathname, /[.]x?html$/);
-  let item = navigation_links (document);
-  top.postMessage ({ message_kind: "cache-document", url, item }, "*");
+  links[url] = navigation_links (document);
+  let action = actions.cache_links (links);
+  top.postMessage ({ message_kind: "action", action }, "*");
 }
 
 /* Modify LINKS to handle the iframe based navigation properly.
@@ -200,7 +196,7 @@ receive_message (event)
           load_page (data.url, data.hash);
         else
         {
-          let ids = loaded_nodes.data[store.state.current];
+          let ids = store.state.loaded_nodes[store.state.current];
           let link_id = ids[data.nav];
           if (link_id)
             load_page (link_id + ".xhtml", "");
@@ -223,10 +219,6 @@ receive_message (event)
         scan_toc (document.body, filename);
         break;
       }
-    case "cache-document":
-      loaded_nodes.data[data.url] =
-        Object.assign ({}, loaded_nodes.data[data.url], data.item);
-      break;
     default:
       break;
     }
@@ -296,8 +288,16 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
       window.addEventListener ("load", on_index_load, false);
       window.addEventListener ("message", receive_message, false);
 
-      store = new Store (global_reducer);
-      store.subscribe (() => console.log (store.state));
+      let initial_state = {
+        /* Dictionary associating page ids to next, prev, up, forward,
+           backward link ids.  */
+        loaded_nodes: {},
+        /* page id of the current page.  */
+        current: null
+      };
+
+      store = new Store (global_reducer, initial_state);
+      store.subscribe (() => console.log ("state: ", store.state));
     }
   else if (window.name == "slider")
     {
