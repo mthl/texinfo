@@ -27,6 +27,8 @@ import {
   scan_toc
 } from "./toc";
 
+import Store from "./store";
+import { global_reducer } from "./reducers";
 import polyfill from "./polyfill";
 
 /* Object used for retrieving navigation links.  This is only used
@@ -37,6 +39,9 @@ let loaded_nodes = {
   /* Page id of the current visible page.  */
   current: null
 };
+
+/* Global state manager.  */
+let store;
 
 /* Instance of a Sidebar object.  */
 let sidebar$ = null;
@@ -162,6 +167,9 @@ receive_message (event)
   let data = event.data;
   switch (data.message_kind)
     {
+    case "action":            /* Handle actions sent from iframes.  */
+      store.dispatch (data.action);
+      break;
     case "node-list":           /* from sidebar to top frame */
       {
         for (var i = 0; i < data.length; i += 1)
@@ -286,6 +294,9 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
     {
       window.addEventListener ("load", on_index_load, false);
       window.addEventListener ("message", receive_message, false);
+
+      store = new Store (global_reducer);
+      store.subscribe (() => console.log (store.state));
     }
   else if (window.name == "slider")
     {
