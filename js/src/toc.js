@@ -33,18 +33,13 @@ var with_sidebar_query = (function () {
 function
 hide_grand_child_nodes (ul)
 {
-  for (var li = ul.firstElementChild; li; li = li.nextElementSibling)
+  for (let li = ul.firstElementChild; li; li = li.nextElementSibling)
     {
-      var achild = li.firstElementChild;
-      if (achild && li.matches ("li") && achild.matches ("a"))
-        {
-          var lichild = achild.nextElementSibling;
-          if (lichild
-              && lichild.matches ("ul")
-              /* Never remove Overall-Index.  */
-              && achild.getAttribute ("href") != "Overall-Index.xhtml")
-            lichild.setAttribute ("toc-detail", "yes");
-        }
+      let a = li.firstElementChild;
+      let li$ = a && a.nextElementSibling;
+      /* Never remove Overall-Index.  */
+      if (li$ && a.getAttribute ("href") != "Overall-Index.xhtml")
+        li$.setAttribute ("toc-detail", "yes");
     }
 }
 
