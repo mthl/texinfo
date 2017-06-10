@@ -38,3 +38,15 @@ basename (pathname, suffix)
   else                          /* typeof SUFFIX == "string" */
     return res.replace (new RegExp ("[.]" + suffix), "");
 }
+
+/** Apply FUNC to each nodes in the NODE subtree.  The walk follows a depth
+    first algorithm.  Only consider the nodes of type NODE_TYPE.  */
+export function
+depth_first_walk (node, func, node_type)
+{
+  if (!node_type || (node.nodeType === Node.ELEMENT_NODE))
+    func (node);
+
+  for (let child = node.firstChild; child; child = child.nextSibling)
+    depth_first_walk (child, func, node_type);
+}

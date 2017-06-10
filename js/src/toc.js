@@ -1,6 +1,6 @@
 /* toc.js - Generate and manage table of content */
 
-import { absolute_url_p, basename } from "./utils";
+import { absolute_url_p, basename, depth_first_walk } from "./utils";
 import config from "./config";
 
 /** Object storing the value of the */
@@ -105,14 +105,16 @@ scan_toc1 (node, current)
 export function
 clear_toc_styles (node)
 {
-  if (node.matches ("ul"))
-    node.removeAttribute ("toc-detail");
-  else if (node.matches ("a"))
-    node.removeAttribute ("toc-current");
+  function
+  do_clear (node$)
+  {
+    if (node$.matches ("ul"))
+      node$.removeAttribute ("toc-detail");
+    else if (node$.matches ("a"))
+      node$.removeAttribute ("toc-current");
+  }
 
-  for (var child = node.firstElementChild; child;
-       child = child.nextElementSibling)
-    clear_toc_styles (child);
+  depth_first_walk (node, do_clear, Node.ELEMENT_NODE);
 }
 
 /** Build the global dictionary containing navigation links from NAV.  NAV
