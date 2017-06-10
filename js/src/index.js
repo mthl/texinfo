@@ -36,9 +36,30 @@ import polyfill from "./polyfill";
 /* Global state manager.  */
 let store;
 
+let selected_div = {
+  id: null,
+  element: null,
+
+  render (new_id)
+  {
+    if (new_id === this.id)
+      return;
+
+    if (this.element)
+      this.element.setAttribute ("hidden", "true");
+    var div = document.getElementById (new_id);
+    div.removeAttribute ("hidden");
+
+    this.id = new_id;
+    this.element = div;
+  }
+};
+
 let components = {
   /* Instance of a Sidebar object.  */
-  sidebar: null
+  sidebar: null,
+  /* Currently visible page.  */
+  selected_div
 };
 
 /* Initialize the top level 'config.INDEX_NAME' DOM.  */
@@ -50,7 +71,6 @@ on_index_load (_event)
   /* Move contents of <body> into a a fresh <div>.  */
   var body = document.body;
   var div = document.createElement ("div");
-  window.selectedDivNode = div;
   div.setAttribute ("id", config.INDEX_ID);
   div.setAttribute ("node", config.INDEX_ID);
   for (let ch = body.firstChild; ch !== null; ch = body.firstChild)
@@ -163,14 +183,7 @@ load_page (url, hash)
   let msg = { message_kind: "update-sidebar", selected: node_name };
   components.sidebar.element.contentWindow.postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
-  if (window.selectedDivNode != div)
-    {
-      if (window.selectedDivNode)
-        window.selectedDivNode.setAttribute ("hidden", "true");
-      div.removeAttribute ("hidden");
-      store.dispatch (actions.set_current_url (node_name));
-      window.selectedDivNode = div;
-    }
+  store.dispatch (actions.set_current_url (node_name));
 }
 
 function
@@ -314,11 +327,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
       store = new Store (global_reducer, initial_state);
       store.subscribe (() => console.log ("state: ", store.state));
       store.subscribe (() => {
-        for (let prop in components)
-          {
-            if (components.hasOwnProperty (prop))
-              components[prop].render (store.state);
-          }
+        components.selected_div.render (store.state.current);
       });
     }
   else if (window.name == "slider")
