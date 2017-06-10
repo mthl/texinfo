@@ -121,6 +121,21 @@ var navigation_links = (function () {
   };
 } ());
 
+/* Return an array compose of the filename and the anchor of NODE_NAME.
+   NODE_NAME can have the form "foobaridm80837412374" or just "foobar".  */
+function
+split_id_anchor (node_name)
+{
+  let rgxp = /idm\d+$/;
+  if (!rgxp.test (node_name))
+    return [node_name, ""];
+  else
+    {
+      let [id, anchor] = node_name.match (/^(.+)(idm\d+)$/).slice (1);
+      return [id, "#" + anchor];
+    }
+}
+
 function
 load_page (url, hash)
 {
@@ -128,8 +143,8 @@ load_page (url, hash)
   var path =
       (window.location.pathname + window.location.search).replace (/#.*/, "")
       + hash;
-  var div = document.getElementById (node_name);
-  var iframe = div.firstChild;
+  let [id] = split_id_anchor (node_name);
+  var div = document.getElementById (id);
   var iframe = div.firstElementChild;
   if (iframe === null)
     {
