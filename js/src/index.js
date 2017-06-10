@@ -298,6 +298,13 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 
       store = new Store (global_reducer, initial_state);
       store.subscribe (() => console.log ("state: ", store.state));
+      store.subscribe (() => {
+        for (let prop in components)
+          {
+            if (components.hasOwnProperty (prop))
+              components[prop].render (store.state);
+          }
+      });
     }
   else if (window.name == "slider")
     {
