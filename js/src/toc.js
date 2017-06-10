@@ -123,32 +123,22 @@ clear_toc_styles (node)
 export function
 create_link_dict (nav)
 {
-  let filter = {
-    acceptNode (node)
-    {
-      return (node.matches ("a")) ?
-        window.NodeFilter.FILTER_ACCEPT : window.NodeFilter.FILTER_SKIP;
-    }
-  };
-
-  /* Depth first walk through the links in NAV to define the 'backward' and
-     'forward' attributes in DICT.  */
-  let tw =
-    document.createTreeWalker (nav, window.NodeFilter.SHOW_ELEMENT, filter);
+  let prev_id = config.INDEX_ID;
   let links = {};
-  let old = tw.currentNode;
-  let current = tw.nextNode ();
-  let href = link => (link.getAttribute ("href") || "index");
-  while (current)
-    {
-      let id_old = href (old).replace (/.*#/, "");
-      let id_cur = href (current).replace (/.*#/, "");
-      links[id_old] = Object.assign ({}, links[id_old], { forward: id_cur });
-      links[id_cur] = Object.assign ({}, links[id_cur], { backward: id_old });
-      old = current;
-      current = tw.nextNode ();
-    }
 
+  function
+  add_link (elem)
+  {
+    if (elem.matches ("a"))
+    {
+      let id = elem.getAttribute ("href").replace (/.*#/, "");
+      links[prev_id] = Object.assign ({}, links[prev_id], { forward: id });
+      links[id] = Object.assign ({}, links[id], { backward: prev_id });
+      prev_id = id;
+    }
+  }
+
+  depth_first_walk (nav, add_link, Node.ELEMENT_NODE);
   return links;
 }
 
