@@ -24,7 +24,7 @@ import {
 
 import {
   clear_toc_styles,
-  fix_link,
+  fix_links,
   scan_toc
 } from "./toc";
 
@@ -70,21 +70,6 @@ on_iframe_load (_event)
   let url = basename (window.location.pathname, /[.]x?html$/);
   links[url] = navigation_links (document);
   iframe_dispatch (actions.cache_links (links));
-}
-
-/* Modify LINKS to handle the iframe based navigation properly.
-   relative links will be opened inside the corresponding iframe and
-   absolute links will be opened in a new tab.  LINKS must be an array
-   or a collection of nodes.  */
-function
-fix_links (links)
-{
-  for (let i = 0; i < links.length; i += 1)
-    {
-      let href = links[i].getAttribute ("href");
-      if (href)
-        fix_link (links[i], href);
-    }
 }
 
 /* Retrieve PREV, NEXT, and UP links and Return a object containing references

@@ -146,3 +146,18 @@ fix_link (link, href)
   else
     link.setAttribute ("href", with_sidebar_query (href));
 }
+
+/** Modify LINKS to handle the iframe based navigation properly.  Relative
+    links will be opened inside the corresponding iframe and absolute links
+    will be opened in a new tab.  LINKS must be an array or a collection of
+    nodes.  */
+export function
+fix_links (links)
+{
+  for (let i = 0; i < links.length; i += 1)
+    {
+      let href = links[i].getAttribute ("href");
+      if (href)
+        fix_link (links[i], href);
+    }
+}
