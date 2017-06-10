@@ -20,21 +20,21 @@ global_reducer (state, action)
             if (action.links.hasOwnProperty (key))
               clone[key] = Object.assign ({}, clone[key], action.links[key]);
           }
-        return Object.assign ({}, state, { loaded_nodes: clone });
+        return Object.assign ({}, state, { loaded_nodes: clone, action });
       }
     case CURRENT_URL:
-      return Object.assign ({}, state, { current: action.url });
+      return Object.assign ({}, state, { current: action.url, action });
     case LOAD_PAGE:
       {
         let loaded_nodes = Object.assign ({}, state.loaded_nodes);
         loaded_nodes[action.page] = { id: action.page, status: "loading" };
-        return Object.assign ({}, state, { loaded_nodes });
+        return Object.assign ({}, state, { loaded_nodes, action });
       }
     case PAGE_READY:
       {
         let loaded_nodes = Object.assign ({}, state.loaded_nodes);
         loaded_nodes[action.page] = { id: action.page, status: "loaded" };
-        return Object.assign ({}, state, { loaded_nodes });
+        return Object.assign ({ action }, state, { loaded_nodes, action });
       }
     default:
       return state;
