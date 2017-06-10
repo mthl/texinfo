@@ -279,7 +279,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 
   if (!inside_iframe_p ())
     {
-      window.addEventListener ("load", on_index_load, false);
+      window.addEventListener ("DOMContentLoaded", on_index_load, false);
       window.addEventListener ("message", receive_message, false);
 
       let initial_state = {
@@ -296,12 +296,12 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
     }
   else if (window.name == "slider")
     {
-      window.addEventListener ("load", sidebar.on_load, false);
+      window.addEventListener ("DOMContentLoaded", sidebar.on_load, false);
       window.addEventListener ("message", sidebar.on_message, false);
     }
   else
     {
-      window.addEventListener ("load", on_iframe_load, false);
+      window.addEventListener ("DOMContentLoaded", on_iframe_load, false);
       window.addEventListener ("message", receive_message, false);
     }
 
