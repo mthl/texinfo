@@ -136,17 +136,6 @@ create_link_dict (nav)
   return links;
 }
 
-/** If LINK is absolute ensure it is opened in a new tab.  Otherwise modify
-    the 'href' attribute to adapt to the iframe based navigation.  */
-export function
-fix_link (link, href)
-{
-  if (absolute_url_p (href))
-    link.setAttribute ("target", "_blank");
-  else
-    link.setAttribute ("href", with_sidebar_query (href));
-}
-
 /** Modify LINKS to handle the iframe based navigation properly.  Relative
     links will be opened inside the corresponding iframe and absolute links
     will be opened in a new tab.  LINKS must be an array or a collection of
@@ -154,6 +143,15 @@ fix_link (link, href)
 export function
 fix_links (links)
 {
+  function
+  fix_link (link, href)
+  {
+    if (absolute_url_p (href))
+      link.setAttribute ("target", "_blank");
+    else
+      link.setAttribute ("href", with_sidebar_query (href));
+  }
+
   for (let i = 0; i < links.length; i += 1)
     {
       let href = links[i].getAttribute ("href");
