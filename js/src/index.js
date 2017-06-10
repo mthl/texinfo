@@ -148,9 +148,10 @@ receive_message (event)
       break;
     case "node-list":           /* from sidebar to top frame */
       {
-        for (var i = 0; i < data.length; i += 1)
+        let nodes = Object.keys (store.state.loaded_nodes);
+        for (var i = 0; i < nodes.length; i += 1)
           {
-            let name = data[i];
+            let name = nodes[i];
             if (name == config.INDEX_ID)
               continue;
             let div = document.createElement ("div");

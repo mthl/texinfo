@@ -5,11 +5,10 @@ import * as actions from "./actions";
 import {
   clear_toc_styles,
   create_link_dict,
-  fix_link,
+  fix_links,
   scan_toc
 } from "./toc";
 
-import { absolute_url_p } from "./utils";
 import config from "./config";
 import { iframe_dispatch } from "./store";
 
@@ -105,33 +104,6 @@ add_header ()
     }
 }
 
-/* Return an Array with all the relative links of the table of content.
-   Exclude the hash part and the file extension from the links.  */
-function
-relative_links (links)
-{
-  let nodes = [];
-  let prev_node = null;
-  links.forEach (link => {
-    let href = link.getAttribute ("href");
-    if (href)
-      {
-        fix_link (link, href);
-        if (!absolute_url_p (href))
-          {
-            let node_name = href.replace (/[.]x?html.*/, "");
-            if (prev_node != node_name)
-              {
-                prev_node = node_name;
-                nodes.push (node_name);
-              }
-          }
-      }
-  });
-
-  return nodes;
-}
-
 /*-----------------------------------------
 | Event handlers for the iframe context.  |
 `----------------------------------------*/
@@ -152,6 +124,7 @@ on_load (_event)
   document.head.appendChild (base);
 
   let links = Array.from (document.links);
+  fix_links (links);
 
   /* Create a link referencing the Table of content.  */
   let toc_a = document.createElementNS (config.XHTML_NAMESPACE, "a");
@@ -168,10 +141,6 @@ on_load (_event)
 
   scan_toc (document.body, config.INDEX_NAME);
 
-  let nodes = relative_links ([...links, toc_a]);
-  nodes.message_kind = "node-list";
-  top.postMessage (nodes, "*");
-
   let divs = Array.from (document.querySelectorAll ("div"));
   divs.reverse ()
       .forEach (div => {
@@ -182,6 +151,8 @@ on_load (_event)
   /* Get 'backward' and 'forward' link attributes.  */
   let dict = create_link_dict (document.querySelector ("ul"));
   iframe_dispatch (actions.cache_links (dict));
+  /* Create iframe divs in 'config.MAIN_NAME'.  */
+  top.postMessage ({ message_kind: "node-list" }, "*");
 }
 
 /** Handle messages received via the Message API.  */
