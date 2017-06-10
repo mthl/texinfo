@@ -3,14 +3,10 @@
 import { absolute_url_p, basename, depth_first_walk } from "./utils";
 import config from "./config";
 
-/** Object storing the value of the */
-export var main_filename = { val: null };
-
 /* Adapt HREF to refer to an anchor in index file.  HREF must be a string
    representing an absolute or relative URL.
 
-   For example if 'main_filename.val' value is "index.html", "foo/bar.html"
-   will be replaced by "index.html#bar".  */
+   For example "foo/bar.html" will be replaced by "config.INDEX_NAME#bar".  */
 var with_sidebar_query = (function () {
   /* DOM element used to access the HTMLAnchorElement interface.  */
   let node = document.createElement ("a");
@@ -18,12 +14,10 @@ var with_sidebar_query = (function () {
   return function (href) {
     node.href = href;
     var node_name = basename (node.pathname, /[.]x?html/);
-    if (href == main_filename.val
-        || href == config.INDEX_NAME
-        || node_name == "start")
-      return main_filename.val;
+    if (href == config.INDEX_NAME || node_name == "start")
+      return config.INDEX_NAME;
     else
-      return main_filename.val + "#" + node_name + node.hash.slice (1);
+      return config.INDEX_NAME + "#" + node_name + node.hash.slice (1);
   };
 } ());
 

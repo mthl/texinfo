@@ -24,7 +24,6 @@ import {
 import {
   clear_toc_styles,
   fix_link,
-  main_filename,
   scan_toc
 } from "./toc";
 
@@ -43,7 +42,6 @@ let components;
 function
 on_index_load (_event)
 {
-  main_filename.val = basename (window.location.pathname);
   fix_links (document.links);
   document.body.setAttribute ("class", "mainbar");
 
@@ -67,7 +65,6 @@ on_index_load (_event)
 function
 on_iframe_load (_event)
 {
-  main_filename.val = basename (window.name, /#.*/);
   fix_links (document.links);
   let links = {};
   let url = basename (window.location.pathname, /[.]x?html$/);

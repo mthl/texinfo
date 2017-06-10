@@ -6,7 +6,6 @@ import {
   clear_toc_styles,
   create_link_dict,
   fix_link,
-  main_filename,
   scan_toc
 } from "./toc";
 
@@ -37,7 +36,7 @@ Sidebar
         let iframe = document.createElement ("iframe");
         iframe.setAttribute ("name", "slider");
         iframe.setAttribute ("src", (config.TOC_FILENAME
-                                     + "#main=" + main_filename.val));
+                                     + "#main=" + config.INDEX_NAME));
         this.element.appendChild (iframe);
       }
 
@@ -142,8 +141,6 @@ relative_links (links)
 export function
 on_load (_event)
 {
-  /* Retrieve 'INDEX_NAME' from current window URL. */
-  main_filename.val = window.location.href.replace (/.*#main=/, "");
   add_header ();
   document.body.setAttribute ("class", "toc-sidebar");
 
@@ -169,8 +166,7 @@ on_load (_event)
     index_li = index_grand;
   index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
 
-  if (main_filename.val !== null)
-    scan_toc (document.body, main_filename.val);
+  scan_toc (document.body, config.INDEX_NAME);
 
   let nodes = relative_links ([...links, toc_a]);
   nodes.message_kind = "node-list";
