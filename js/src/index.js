@@ -192,7 +192,7 @@ receive_message (event)
       }
     case "load-page":           /* from click handler to top frame */
       {
-        if (!data.nav)         /* not a NEXT, PREV, UP link */
+        if (!data.nav)          /* not a navigation link */
           load_page (data.url, data.hash);
         else
         {
