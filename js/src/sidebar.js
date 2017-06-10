@@ -10,8 +10,8 @@ import {
 } from "./toc";
 
 import { absolute_url_p } from "./utils";
-
 import config from "./config";
+import { iframe_dispatch } from "./store";
 
 /** Sidebar component encapsulating the iframe and its state.  */
 export class
@@ -181,8 +181,7 @@ on_load (_event)
 
   /* Get 'backward' and 'forward' link attributes.  */
   let dict = create_link_dict (document.querySelector ("ul"));
-  let action = actions.cache_links (dict);
-  top.postMessage ({ message_kind: "action", action }, "*");
+  iframe_dispatch (actions.cache_links (dict));
 }
 
 /** Handle messages received via the Message API.  */

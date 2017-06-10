@@ -13,6 +13,7 @@
 
 import * as actions from "./actions";
 import * as sidebar from "./sidebar";
+import { Store, iframe_dispatch } from "./store";
 
 import {
   absolute_url_p,
@@ -28,7 +29,6 @@ import {
 } from "./toc";
 
 import { Main_component } from "./component";
-import Store from "./store";
 import config from "./config";
 import { global_reducer } from "./reducers";
 import polyfill from "./polyfill";
@@ -69,8 +69,7 @@ on_iframe_load (_event)
   let links = {};
   let url = basename (window.location.pathname, /[.]x?html$/);
   links[url] = navigation_links (document);
-  let action = actions.cache_links (links);
-  top.postMessage ({ message_kind: "action", action }, "*");
+  iframe_dispatch (actions.cache_links (links));
 }
 
 /* Modify LINKS to handle the iframe based navigation properly.
