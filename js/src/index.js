@@ -28,6 +28,7 @@ import {
   scan_toc
 } from "./toc";
 
+import { Main_component } from "./component";
 import Store from "./store";
 import config from "./config";
 import { global_reducer } from "./reducers";
@@ -35,58 +36,27 @@ import polyfill from "./polyfill";
 
 /* Global state manager.  */
 let store;
-
-let selected_div = {
-  id: null,
-  element: null,
-
-  render (new_id)
-  {
-    if (new_id === this.id)
-      return;
-
-    if (this.element)
-      this.element.setAttribute ("hidden", "true");
-    var div = document.getElementById (new_id);
-    div.removeAttribute ("hidden");
-
-    this.id = new_id;
-    this.element = div;
-  }
-};
-
-let components = {
-  /* Instance of a Sidebar object.  */
-  sidebar: null,
-  /* Currently visible page.  */
-  selected_div
-};
+/* Main stateful view.   */
+let components;
 
 /* Initialize the top level 'config.INDEX_NAME' DOM.  */
 function
 on_index_load (_event)
 {
   main_filename.val = basename (window.location.pathname);
-
-  /* Move contents of <body> into a a fresh <div>.  */
-  var body = document.body;
-  var div = document.createElement ("div");
-  div.setAttribute ("id", config.INDEX_ID);
-  div.setAttribute ("node", config.INDEX_ID);
-  for (let ch = body.firstChild; ch !== null; ch = body.firstChild)
-    div.appendChild (ch);
-  body.appendChild (div);
-
-  if (sidebar.use_sidebar (window.location.hash))
-    {
-      let sbi = new sidebar.Sidebar ();
-      sbi.render ({ current: config.INDEX_ID, visible: true });
-      document.body.insertBefore (sbi.element, document.body.firstChild);
-      document.body.setAttribute ("class", "mainbar");
-      components.sidebar = sbi;
-    }
-
   fix_links (document.links);
+  document.body.setAttribute ("class", "mainbar");
+
+  /* Move contents of <body> into a a fresh <div> to let the components treat
+     the index page like other iframe page.  */
+  let index_div = document.createElement ("div");
+  for (let ch = document.body.firstChild; ch; ch = document.body.firstChild)
+    index_div.appendChild (ch);
+
+  /* Instanciate the components.  */
+  components = new Main_component (document.body, index_div);
+
+  /* Retrieve NEXT link.  */
   let links = {};
   links[config.INDEX_ID] = navigation_links (document);
   store.dispatch (actions.cache_links (links));
@@ -181,7 +151,7 @@ load_page (url, hash)
     }
 
   let msg = { message_kind: "update-sidebar", selected: node_name };
-  components.sidebar.element.contentWindow.postMessage (msg, "*");
+  components.sidebar.get_iframe_window ().postMessage (msg, "*");
   window.history.pushState ("", document.title, path);
   store.dispatch (actions.set_current_url (node_name));
 }
@@ -206,7 +176,7 @@ receive_message (event)
             div.setAttribute ("id", name);
             div.setAttribute ("node", name);
             div.setAttribute ("hidden", "true");
-            document.body.appendChild (div);
+            document.querySelector ("#sub-pages").appendChild (div);
           }
         if (window.location.hash)
           {
@@ -326,9 +296,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 
       store = new Store (global_reducer, initial_state);
       store.subscribe (() => console.log ("state: ", store.state));
-      store.subscribe (() => {
-        components.selected_div.render (store.state.current);
-      });
+      store.subscribe (() => components.render (store.state));
     }
   else if (window.name == "slider")
     {

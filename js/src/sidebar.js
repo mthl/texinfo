@@ -23,7 +23,8 @@ Sidebar
     /* Actual state of the sidebar.  */
     this.state = null;
     /* Reference to the DOM element.  */
-    this.element = null;
+    this.element = document.createElement ("div");
+    this.element.setAttribute ("id", "sidebar");
   }
 
   /* Render 'sidebar' according to STATE which is a new state. */
@@ -37,7 +38,7 @@ Sidebar
         iframe.setAttribute ("name", "slider");
         iframe.setAttribute ("src", (config.TOC_FILENAME
                                      + "#main=" + main_filename.val));
-        this.element = iframe;
+        this.element.appendChild (iframe);
       }
 
     this.state = state;
@@ -51,6 +52,11 @@ Sidebar
         let msg = { message_kind: "update-sidebar", selected: state.current };
         this.element.contentWindow.postMessage (msg, "*");
       }
+  }
+
+  get_iframe_window ()
+  {
+    return this.element.firstChild.contentWindow;
   }
 }
 
