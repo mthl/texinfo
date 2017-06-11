@@ -781,6 +781,8 @@ build_single_index_data (INDEX *i)
         }
       if (e->node)
         STORE2("node", newRV_inc ((SV *)e->node->hv));
+      if (e->sortas)
+        STORE2("sortas", newSVpv (e->sortas, 0));
 
       /* We set this now because the index data structures don't
          exist at the time that the main tree is built. */

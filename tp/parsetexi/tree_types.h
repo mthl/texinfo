@@ -189,6 +189,7 @@ typedef struct {
     ELEMENT *node;
     int number; /* Index of entry in containing index, 1-based. */
     ELEMENT *region;
+    char *sortas; /* the sort key for the index */
 } INDEX_ENTRY;
 
 typedef struct INDEX {

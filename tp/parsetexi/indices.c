@@ -241,6 +241,7 @@ enter_index_entry (enum command_id index_type_command,
   INDEX *idx;
   INDEX_ENTRY *entry;
   INDEX_ENTRY_REF *ier;
+  KEY_PAIR *k;
 
   idx = index_of_command (index_type_command);
   if (idx->index_number == idx->index_space)
@@ -262,6 +263,12 @@ enter_index_entry (enum command_id index_type_command,
   //entry->content_normalized = ... ;
   entry->command = current;
   entry->number = idx->index_number;
+
+  k = lookup_extra_key (current, "sortas");
+  if (k)
+    {
+      entry->sortas = (char *) k->value;
+    }
 
   if (current_region ())
     entry->region = current_region ();
