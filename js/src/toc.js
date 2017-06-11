@@ -3,23 +3,23 @@
 import { absolute_url_p, basename, depth_first_walk } from "./utils";
 import config from "./config";
 
-/* Adapt HREF to refer to an anchor in index file.  HREF must be a string
-   representing an absolute or relative URL.
+/* Return a relative URL corresponding to HREF, which refers to an anchor of
+   'config.INDEX_NAME'.  URL must be a USVString representing an absolute or
+   relative URL.
 
    For example "foo/bar.html" will be replaced by "config.INDEX_NAME#bar".  */
-var with_sidebar_query = (function () {
-  /* DOM element used to access the HTMLAnchorElement interface.  */
-  let node = document.createElement ("a");
-
-  return function (href) {
-    node.href = href;
-    var node_name = basename (node.pathname, /[.]x?html/);
-    if (href == config.INDEX_NAME || node_name == "start")
-      return config.INDEX_NAME;
-    else
-      return config.INDEX_NAME + "#" + node_name + node.hash.slice (1);
-  };
-} ());
+function
+with_sidebar_query (href)
+{
+  if (basename (href) === config.INDEX_NAME)
+    return config.INDEX_NAME;
+  else
+    {
+      let url = new window.URL (href, window.location);
+      let hash = basename (url.pathname, /[.]x?html/) + url.hash.slice (1);
+      return config.INDEX_NAME + "#" + hash;
+    }
+}
 
 /* Keep children but remove grandchildren (Exception: don't remove
    anything on the current page; however, that's not a problem in the
