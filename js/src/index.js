@@ -107,6 +107,7 @@ split_id_anchor (node_name)
     }
 }
 
+/* Load URL in the corresponding iframe.  */
 function
 load_page (url, hash)
 {
@@ -122,7 +123,8 @@ load_page (url, hash)
       throw new ReferenceError (msg);
     }
 
-  var iframe = div.firstElementChild;
+  /* Select contained iframe or create it if necessary.  */
+  let iframe = div.querySelector ("iframe");
   if (iframe === null)
     {
       iframe = document.createElement ("iframe");
@@ -131,7 +133,7 @@ load_page (url, hash)
       iframe.setAttribute ("src", url);
       div.appendChild (iframe);
     }
-  else if (iframe.matches ("iframe"))
+  else
     {
       let msg = { message_kind: "scroll-to", url };
       iframe.contentWindow.postMessage (msg, "*");
