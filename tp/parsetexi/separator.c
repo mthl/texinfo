@@ -268,7 +268,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
-      else if (command_data(current->parent->cmd).data > 0) /* sic */
+      else if (command_data(current->parent->cmd).data > 0
+                 /* (the Perl code has > 1 here, but this is a deliberate
+                    difference) */
+               && current->parent->cmd != CM_sortas) /* FIXME special case */
         {
           // 5033
           /* @inline* always have end spaces considered as normal text */
@@ -480,6 +483,34 @@ handle_close_brace (ELEMENT *current, char **line_inout)
             current->parent->type = ET_command_as_argument;
           add_extra_element (current->parent->parent->parent,
                              "command_as_argument", current->parent);
+        }
+      else if (current->parent->cmd == CM_sortas)
+        {
+          int i;
+          for (i = 0; i < current->contents.number; i++)
+            {
+              ELEMENT *e = current->contents.list[i];
+
+              if (e->type == ET_empty_line_after_command
+                  || e->type == ET_empty_spaces_after_command
+                  || e->type == ET_empty_spaces_before_argument
+                  || e->type == ET_empty_spaces_after_close_brace)
+                continue;
+
+              if (e->text.end > 0)
+                {
+                  ELEMENT *index_elt;
+                  if (current->parent->parent
+                      && current->parent->parent->parent
+                      && (command_flags(current->parent->parent->parent)
+                          & CF_index_entry_command))
+                    {
+                      index_elt = current->parent->parent->parent;
+                      add_extra_string (index_elt, "sortas",
+                                        e->text.text);
+                    }
+                }
+            }
         }
       register_global_command (current->parent->cmd, current->parent);
 

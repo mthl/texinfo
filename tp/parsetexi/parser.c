@@ -1110,32 +1110,6 @@ superfluous_arg:
                                  "command_as_argument", current);
           current = current->parent;
         }
-      else if (current->parent->cmd == CM_sortas)
-        {
-          int i;
-          for (i = 0; i < current->contents.number; i++)
-            {
-              if (current->type == ET_empty_line_after_command
-                  || current->type == ET_empty_spaces_after_command
-                  || current->type == ET_empty_spaces_before_argument
-                  || current->type == ET_empty_spaces_after_close_brace)
-                continue;
-
-              if (current->text.end > 0)
-                {
-                  ELEMENT *index_elt;
-                  if (current->parent->parent
-                      && (command_flags(current->parent->parent)
-                          & CF_index_entry_command))
-                    {
-                      index_elt = current->parent->parent;
-                      add_extra_string (index_elt, "sortas",
-                                        current->text.text);
-                    }
-
-                }
-            }
-        }
       else if (command_flags (current) & CF_accent) // 3996 - accent commands
         {
           if (strchr (whitespace_chars_except_newline, *line))
