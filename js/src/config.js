@@ -7,6 +7,8 @@ export default {
 
   INDEX_NAME: "index.html",
 
+  OVERALL_INDEX_NAME: "Overall-Index.xhtml",
+
   INDEX_ID: "index",
 
   PACKAGE_LOGO: "kawa-logo.png"
