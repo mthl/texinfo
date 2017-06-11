@@ -115,7 +115,13 @@ load_page (url, hash)
       (window.location.pathname + window.location.search).replace (/#.*/, "")
       + hash;
   let [id] = split_id_anchor (node_name);
-  var div = document.getElementById (id);
+  let div = document.getElementById (id);
+  if (!div)
+    {
+      let msg = `no iframe container correspond to identifier "${id}"`;
+      throw new ReferenceError (msg);
+    }
+
   var iframe = div.firstElementChild;
   if (iframe === null)
     {
