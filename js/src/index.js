@@ -11,6 +11,7 @@
    navigator.epubReadingSystem), since ebook-readers generally provide
    their own table-of-contents.  */
 
+import "./polyfill";
 import * as actions from "./actions";
 import * as sidebar from "./sidebar";
 import { Store, iframe_dispatch } from "./store";
@@ -31,7 +32,6 @@ import {
 import { Main_component } from "./component";
 import config from "./config";
 import { global_reducer } from "./reducers";
-import polyfill from "./polyfill";
 
 /* Global state manager.  */
 let store;
@@ -269,8 +269,6 @@ var on_keypress = (function () {
    which is different from 'config.INDEX_NAME'.  */
 if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
-  polyfill.register ();
-
   if (!inside_iframe_p ())
     {
       window.addEventListener ("DOMContentLoaded", on_index_load, false);

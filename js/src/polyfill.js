@@ -9,7 +9,6 @@ import "./url";
 function
 string_includes (search, start)
 {
-  'use strict';
   if (typeof start !== 'number')
     start = 0;
 
@@ -34,7 +33,6 @@ element_matches (str)
 function
 object_assign (target, varArgs)
 {
-  'use strict';
   if (target == null)           /* TypeError if undefined or null.  */
     throw new TypeError ('Cannot convert undefined or null to object');
 
@@ -57,25 +55,19 @@ object_assign (target, varArgs)
   return to;
 }
 
+/* Augment prototypes if necessary.  */
+if (!String.prototype.includes)
+  String.prototype.includes = string_includes;
 
-export default {
-  /* Augment prototypes if necessary.  */
-  register ()
+if (!Element.prototype.matches)
   {
-    if (!String.prototype.includes)
-      String.prototype.includes = string_includes;
-
-    if (!Element.prototype.matches)
-      {
-        Element.prototype.matches = Element.prototype.matchesSelector
-          || Element.prototype.mozMatchesSelector
-          || Element.prototype.msMatchesSelector
-          || Element.prototype.oMatchesSelector
-          || Element.prototype.webkitMatchesSelector
-          || element_matches;
-      }
-
-    if (typeof Object.assign != 'function')
-      Object.assign = object_assign;
+    Element.prototype.matches = Element.prototype.matchesSelector
+      || Element.prototype.mozMatchesSelector
+      || Element.prototype.msMatchesSelector
+      || Element.prototype.oMatchesSelector
+      || Element.prototype.webkitMatchesSelector
+      || element_matches;
   }
-};
+
+if (typeof Object.assign != 'function')
+  Object.assign = object_assign;
