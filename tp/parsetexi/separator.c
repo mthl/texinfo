@@ -487,7 +487,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       if (current->parent->cmd == CM_anchor
           || current->parent->cmd == CM_hyphenation
           || current->parent->cmd == CM_caption
-          || current->parent->cmd == CM_shortcaption)
+          || current->parent->cmd == CM_shortcaption
+          || current->parent->cmd == CM_sortas)
         {
           ELEMENT *e;
           e = new_element (ET_empty_spaces_after_close_brace);

@@ -303,6 +303,7 @@ key		brace	BRACE_other
 hyphenation	brace,global	BRACE_other
 anchor		brace	1
 errormsg	brace	1
+sortas  	brace	1
 
 # more code style commands
 indicateurl	brace,code_style	1
