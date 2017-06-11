@@ -256,6 +256,68 @@ sub _complete_node_menus ($$) {
   }
 }
 
+# Copied from Texinfo::Parser.  Should move this to a common module.
+sub _complete_indices {
+  my $self = shift;
+
+  my ($index_entry, $index_contents_normalized);
+    
+  my $save_lang = $self->get_conf('documentlanguage');
+
+  foreach my $index_name (keys(%{$self->{'index_names'}})) {
+    next if !defined $self->{'index_names'}->{$index_name}->{'index_entries'};
+    foreach my $entry (@{$self->{'index_names'}->{$index_name}->{'index_entries'}}) {
+      $entry->{'in_code'} = $self->{'index_names'}->{$index_name}->{'in_code'};
+      
+      if (!defined $entry->{'content'}) {
+        my $def_command = $entry->{'command'}->{'extra'}->{'def_command'};
+
+        my $def_parsed_hash = $entry->{'command'}->{'extra'}->{'def_parsed_hash'}; 
+        if ($def_parsed_hash and $def_parsed_hash->{'class'}
+            and $def_command) {
+          # Use the document language that was current when the command was
+          # used for getting the translation.
+          $self->{'documentlanguage'} = $entry->{'command'}->{'extra'}->{'documentlanguage'};
+          delete $entry->{'command'}->{'extra'}->{'documentlanguage'};
+          if ($def_command eq 'defop'
+              or $def_command eq 'deftypeop'
+              or $def_command eq 'defmethod'
+              or $def_command eq 'deftypemethod') {
+            $index_entry = $self->gdt('{name} on {class}',
+                                  {'name' => $def_parsed_hash->{'name'},
+                                   'class' => $def_parsed_hash->{'class'}});
+           $index_contents_normalized
+             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                { 'text' => ' on '},
+                _non_bracketed_contents($def_parsed_hash->{'class'})];
+          } elsif ($def_command eq 'defivar'
+                   or $def_command eq 'deftypeivar'
+                   or $def_command eq 'deftypecv') {
+            $index_entry = $self->gdt('{name} of {class}',
+                                     {'name' => $def_parsed_hash->{'name'},
+                                     'class' => $def_parsed_hash->{'class'}});
+            $index_contents_normalized
+              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
+                 { 'text' => ' of '},
+                 _non_bracketed_contents($def_parsed_hash->{'class'})];
+          }
+        }
+        # 'root_line' is the container returned by gdt.
+        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
+          for my $child (@{$index_entry->{'contents'}}) {
+            delete $child->{'parent'};
+          }
+        }
+        if ($index_entry->{'contents'}) {
+          $entry->{'content'} = [@{$index_entry->{'contents'}}];
+          $entry->{'content_normalized'} = $index_contents_normalized;
+        }
+      }
+    }
+  }
+  $self->{'documentlanguage'} = $save_lang;
+}
+
 sub get_parser_info {
   my $self = shift;
 
@@ -265,7 +327,10 @@ sub get_parser_info {
   $TARGETS = build_label_list ();
   $INTL_XREFS = build_internal_xref_list ();
   $FLOATS = build_float_list ();
+
   $INDEX_NAMES = build_index_data ();
+  _complete_indices ($self);
+
   $GLOBAL_INFO = build_global_info ();
   $GLOBAL_INFO2 = build_global_info2 ();
 
