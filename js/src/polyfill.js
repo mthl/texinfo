@@ -2,6 +2,9 @@
 
 /* eslint-disable */
 
+/* Polyfill for 'window.URL'.  */
+import "./url";
+
 /* Polyfill for 'String.prototype.matches'.  */
 function
 string_includes (search, start)
