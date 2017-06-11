@@ -52,9 +52,13 @@ Sidebar
       }
   }
 
-  get_iframe_window ()
+  /* Update sidebar to highligh NODE_NAME which must be a string
+     identifying */
+  set selected_node (node_name)
   {
-    return this.element.firstChild.contentWindow;
+    let iframe = this.element.querySelector ("iframe");
+    let msg = { message_kind: "update-sidebar", selected: node_name };
+    iframe.contentWindow.postMessage (msg, "*");
   }
 }
 

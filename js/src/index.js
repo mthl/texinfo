@@ -139,8 +139,7 @@ load_page (url, hash)
       iframe.contentWindow.postMessage (msg, "*");
     }
 
-  let msg = { message_kind: "update-sidebar", selected: node_name };
-  components.sidebar.get_iframe_window ().postMessage (msg, "*");
+  components.sidebar.selected_node = node_name;
   window.history.pushState ("", document.title, path);
   store.dispatch (actions.set_current_url (node_name));
 }
