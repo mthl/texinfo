@@ -1110,6 +1110,32 @@ superfluous_arg:
                                  "command_as_argument", current);
           current = current->parent;
         }
+      else if (current->parent->cmd == CM_sortas)
+        {
+          int i;
+          for (i = 0; i < current->contents.number; i++)
+            {
+              if (current->type == ET_empty_line_after_command
+                  || current->type == ET_empty_spaces_after_command
+                  || current->type == ET_empty_spaces_before_argument
+                  || current->type == ET_empty_spaces_after_close_brace)
+                continue;
+
+              if (current->text.end > 0)
+                {
+                  ELEMENT *index_elt;
+                  if (current->parent->parent
+                      && (command_flags(current->parent->parent)
+                          & CF_index_entry_command))
+                    {
+                      index_elt = current->parent->parent;
+                      add_extra_string (index_elt, "sortas",
+                                        current->text.text);
+                    }
+
+                }
+            }
+        }
       else if (command_flags (current) & CF_accent) // 3996 - accent commands
         {
           if (strchr (whitespace_chars_except_newline, *line))
@@ -1403,7 +1429,8 @@ value_invalid:
 
 
           else if (outer == CM_ctrl
-                   || outer == CM_errormsg)
+                   || outer == CM_errormsg
+                   || outer == CM_sortas)
             {
               ok = 0;
             }
@@ -1450,6 +1477,15 @@ value_invalid:
               if (cmd_flags & CF_block
                   && command_data(cmd).data == BLOCK_conditional)
                 ok = 1; // 384
+
+              /* Additional commands allowed in indices only. */
+              if (cmd == CM_sortas)
+                {
+                  if (outer_flags & CF_index_entry_command)
+                    ok = 1;
+                  else
+                    ok = 0;
+                }
 
               // 390 exceptions for all of "full line commands",
               //     "full line commands no refs" and "simple text commands"
