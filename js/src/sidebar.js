@@ -62,9 +62,9 @@ Sidebar
   }
 }
 
-/*---------------------------------------------
-| Auxilary functions for the iframe context.  |
-`--------------------------------------------*/
+/*----------------------------------------------
+| Auxilary functions for the sidebar context.  |
+`---------------------------------------------*/
 
 /* Add a link from TOC_FILENAME to the main index file.  */
 function
@@ -94,9 +94,9 @@ add_header ()
     }
 }
 
-/*-----------------------------------------
-| Event handlers for the iframe context.  |
-`----------------------------------------*/
+/*------------------------------------------
+| Event handlers for the sidebar context.  |
+`-----------------------------------------*/
 
 /** Initialize TOC_FILENAME which must be loaded in the context of an
     iframe.  */
