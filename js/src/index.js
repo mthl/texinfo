@@ -23,14 +23,9 @@ import {
   inside_index_page_p
 } from "./utils";
 
-import {
-  clear_toc_styles,
-  fix_links,
-  scan_toc
-} from "./toc";
-
 import { Main_component } from "./component";
 import config from "./config";
+import { fix_links } from "./toc";
 import { global_reducer } from "./reducers";
 
 /* Global state manager.  */
@@ -195,15 +190,6 @@ receive_message (event)
         let url = data.url;
         window.location.hash = (url.includes ("#")) ?
           url.replace (/.*#/, "") : "";
-        break;
-      }
-    case "update-sidebar":
-      {
-        let selected = data.selected;
-        clear_toc_styles (document.body);
-        let filename = (selected == config.INDEX_ID) ?
-            config.INDEX_NAME : (selected + ".xhtml");
-        scan_toc (document.body, filename);
         break;
       }
     default:

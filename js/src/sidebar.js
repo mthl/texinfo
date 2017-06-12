@@ -170,8 +170,8 @@ on_message (event)
       {
         let selected = data.selected;
         clear_toc_styles (document.body);
-        let filename = (selected == "index") ?
-            "index.html" : (selected + ".xhtml");
+        let filename = (selected == config.INDEX_ID) ?
+            config.INDEX_NAME : (selected + ".xhtml");
         scan_toc (document.body, filename);
         break;
       }
