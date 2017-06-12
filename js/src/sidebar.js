@@ -62,20 +62,6 @@ Sidebar
   }
 }
 
-/** Return true if the side bar containing the table of content should be
-    displayed, otherwise return false.  This is guessed from HASH which must
-    be a string representing a list of URL parameters.  */
-export function
-use_sidebar (hash)
-{
-  if (hash.includes ("sidebar=no"))
-    return false;
-  else if (hash.includes ("sidebar=yes") || hash == "#sidebar")
-    return true;
-  else
-    return !(navigator && navigator.epubReadingSystem);
-}
-
 /*---------------------------------------------
 | Auxilary functions for the iframe context.  |
 `--------------------------------------------*/

@@ -1,15 +1,7 @@
 /* TODO:
    - Styling of node header
    - Handle internal links: #NODE-NAME.ID-NAME
-   - set location.has husefully; use initial value  */
-
-/* JavaScript mostly to set up a table-of-contents sidebar, using an
-   <iframe>.  The <iframe> sidebar can be explicitly enabled if you
-   use the hash "#sidebar" or "#sidebar=yes"; or explicitly disabled
-   with "#sidebar=no".  The default is to enable the sidebar except
-   when using a ebook-reader (as detected by the property
-   navigator.epubReadingSystem), since ebook-readers generally provide
-   their own table-of-contents.  */
+   - set location.hash usefully; use initial value  */
 
 import "./polyfill";
 import * as actions from "./actions";
