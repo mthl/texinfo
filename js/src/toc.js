@@ -139,7 +139,7 @@ create_link_dict (nav)
   function
   add_link (elem)
   {
-    if (elem.matches ("a"))
+    if (elem.matches ("a") && elem.hasAttribute ("href"))
     {
       let id = elem.getAttribute ("href").replace (/.*#/, "");
       links[prev_id] = Object.assign ({}, links[prev_id], { forward: id });
