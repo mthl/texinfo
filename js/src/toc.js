@@ -48,7 +48,7 @@ hide_grand_child_nodes (ul)
       let a = li.firstElementChild;
       let li$ = a && a.nextElementSibling;
       /* Never remove Overall-Index.  */
-      if (li$ && a.getAttribute ("href") != config.OVERALL_INDEX_NAME)
+      if (li$ && a.getAttribute ("href") !== config.OVERALL_INDEX_NAME)
         li$.setAttribute ("toc-detail", "yes");
     }
 }
@@ -59,7 +59,7 @@ scan_toc (node, filename)
 {
   var current = with_sidebar_query (filename);
   var ul = node.querySelector ("ul");
-  if (filename == config.INDEX_NAME)
+  if (filename === config.INDEX_NAME)
     hide_grand_child_nodes (ul);
   else
     scan_toc1 (ul, current);
@@ -72,7 +72,7 @@ scan_toc1 (node, current)
 {
   if (node.matches ("a"))
     {
-      if (current == node.getAttribute ("href"))
+      if (current === node.getAttribute ("href"))
         {
           node.setAttribute ("toc-current", "yes");
           var ul = node.nextElementSibling;
@@ -97,7 +97,7 @@ scan_toc1 (node, current)
       for (var sib = pparent.firstElementChild; sib;
            sib = sib.nextElementSibling)
         {
-          if (sib != ancestor.parentNode
+          if (sib !== ancestor.parentNode
               && sib.firstElementChild
               && sib.firstElementChild.nextElementSibling)
             {

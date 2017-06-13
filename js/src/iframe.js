@@ -36,7 +36,7 @@ Pages
 
   render (state)
   {
-    if (state == this.state)
+    if (state === this.state)
       return;
 
     this.state = state;

@@ -191,7 +191,7 @@ on_message (event)
         for (var i = 0; i < nodes.length; i += 1)
           {
             let name = nodes[i];
-            if (name == config.INDEX_ID)
+            if (name === config.INDEX_ID)
               continue;
             let div = document.createElement ("div");
             div.setAttribute ("id", name);

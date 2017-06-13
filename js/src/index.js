@@ -61,7 +61,7 @@ on_click (event)
               else
                 url += ".xhtml";
               let hash = href.replace (/.*#/, "#");
-              if (hash == config.INDEX_NAME)
+              if (hash === config.INDEX_NAME)
                 hash = "";
               top.postMessage ({ message_kind: "load-page", url, hash }, "*");
               event.preventDefault ();
@@ -111,7 +111,7 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
       window.addEventListener ("DOMContentLoaded", main.on_load, false);
       window.addEventListener ("message", main.on_message, false);
     }
-  else if (window.name == "slider")
+  else if (window.name === "slider")
     {
       window.addEventListener ("DOMContentLoaded", sidebar.on_load, false);
       window.addEventListener ("message", sidebar.on_message, false);

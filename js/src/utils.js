@@ -21,7 +21,7 @@
 export function
 inside_iframe_p ()
 {
-  return top != window;
+  return top !== window;
 }
 
 /** Check if FILE_NAME corresponds to the entry file of the
@@ -54,7 +54,7 @@ basename (pathname, suffix)
     return res;
   else if (suffix instanceof RegExp)
     return res.replace (suffix, "");
-  else                          /* typeof SUFFIX == "string" */
+  else                          /* typeof SUFFIX === "string" */
     return res.replace (new RegExp ("[.]" + suffix), "");
 }
 

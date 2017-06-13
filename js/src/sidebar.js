@@ -61,7 +61,7 @@ Sidebar
   /* Updating render.  */
   update (state)
   {
-    if (state.current != this.state.current)
+    if (state.current !== this.state.current)
       {
         let msg = { message_kind: "update-sidebar", selected: state.current };
         this.element.contentWindow.postMessage (msg, "*");
@@ -88,7 +88,7 @@ add_header ()
 {
   let li = document.querySelector ("li");
   if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-      && li.firstElementChild.getAttribute ("href") == config.INDEX_NAME)
+      && li.firstElementChild.getAttribute ("href") === config.INDEX_NAME)
     li.parentNode.removeChild (li);
 
   let header = document.querySelector ("header");
@@ -150,7 +150,7 @@ on_load ()
   let divs = Array.from (document.querySelectorAll ("div"));
   divs.reverse ()
       .forEach (div => {
-        if (div.getAttribute ("class") == "toc-title")
+        if (div.getAttribute ("class") === "toc-title")
           div.parentNode.removeChild (div);
       });
 
@@ -172,7 +172,7 @@ on_message (event)
       {
         let selected = data.selected;
         clear_toc_styles (document.body);
-        let filename = (selected == config.INDEX_ID) ?
+        let filename = (selected === config.INDEX_ID) ?
             config.INDEX_NAME : (selected + ".xhtml");
         scan_toc (document.body, filename);
         break;

@@ -29,7 +29,7 @@ Store
   dispatch (action)
   {
     /* Handle asynchonous actions which are functions.  */
-    if (typeof action == "function")
+    if (typeof action === "function")
       action (this.dispatch.bind (this));
     else
       {
