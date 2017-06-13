@@ -34,6 +34,7 @@ import * as pages from "./iframe";
 import * as sidebar from "./sidebar";
 import { absolute_url_p } from "./utils";
 import config from "./config";
+import { with_sidebar_query } from "./toc";
 
 /*-------------------------
 | Common event handlers.  |
@@ -118,7 +119,8 @@ else if (inside_iframe)
   }
 else
   {
-    /* TODO: Trampoline to 'config.INDEX_NAME' */
+    /* Jump to 'config.INDEX_NAME' and adapt the selected iframe.  */
+    window.location.replace (with_sidebar_query (window.location.href));
   }
 
 /* Register common event handlers.  */

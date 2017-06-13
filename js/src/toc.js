@@ -19,12 +19,12 @@
 import { absolute_url_p, basename, depth_first_walk } from "./utils";
 import config from "./config";
 
-/* Return a relative URL corresponding to HREF, which refers to an anchor of
-   'config.INDEX_NAME'.  URL must be a USVString representing an absolute or
-   relative URL.
+/** Return a relative URL corresponding to HREF, which refers to an anchor of
+    'config.INDEX_NAME'.  URL must be a USVString representing an absolute or
+    relative URL.
 
-   For example "foo/bar.html" will be replaced by "config.INDEX_NAME#bar".  */
-function
+    For example "foo/bar.html" will return "config.INDEX_NAME#bar".  */
+export function
 with_sidebar_query (href)
 {
   if (basename (href) === config.INDEX_NAME)
