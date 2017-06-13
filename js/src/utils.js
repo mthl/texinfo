@@ -16,22 +16,6 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-/** Check wether the current script is loaded inside an Iframe.
-    Return true if this is the case otherwise return false.  */
-export function
-inside_iframe_p ()
-{
-  return top !== window;
-}
-
-/** Check if FILE_NAME corresponds to the entry file of the
-    manual.  */
-export function
-inside_index_page_p (file_name)
-{
-  return file_name.endsWith ("/index.html") || file_name.endsWith ("/");
-}
-
 /** Check if 'URL' is an absolute URL.  Return true if this is the case
     otherwise return false.  'URL' must be a USVString representing a valid
     URL.  */

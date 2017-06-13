@@ -32,13 +32,7 @@ import "./polyfill";
 import * as main from "./main";
 import * as pages from "./iframe";
 import * as sidebar from "./sidebar";
-
-import {
-  absolute_url_p,
-  inside_iframe_p,
-  inside_index_page_p
-} from "./utils";
-
+import { absolute_url_p } from "./utils";
 import config from "./config";
 
 /*-------------------------
@@ -102,27 +96,32 @@ var on_keypress = (function () {
 | Context dispatch.  |
 `-------------------*/
 
-/* Don't do anything if the current script is launched from a non-iframed page
-   which is different from 'config.INDEX_NAME'.  */
-if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
-{
-  if (!inside_iframe_p ())
-    {
-      window.addEventListener ("DOMContentLoaded", main.on_load, false);
-      window.addEventListener ("message", main.on_message, false);
-    }
-  else if (window.name === "slider")
-    {
-      window.addEventListener ("DOMContentLoaded", sidebar.on_load, false);
-      window.addEventListener ("message", sidebar.on_message, false);
-    }
-  else
-    {
-      window.addEventListener ("DOMContentLoaded", pages.on_load, false);
-      window.addEventListener ("message", pages.on_message, false);
-    }
+let inside_iframe = top !== window;
+let inside_sidebar = inside_iframe && window.name === "slider";
+let inside_index_page = (window.location.pathname.endsWith (config.INDEX_NAME)
+                         || window.location.pathname.endsWith ("/"));
 
-  window.addEventListener ("beforeunload", on_unload, false);
-  window.addEventListener ("click", on_click, false);
-  window.addEventListener ("keypress", on_keypress, false);
-}
+if (inside_index_page)
+  {
+    window.addEventListener ("DOMContentLoaded", main.on_load, false);
+    window.addEventListener ("message", main.on_message, false);
+  }
+else if (inside_sidebar)
+  {
+    window.addEventListener ("DOMContentLoaded", sidebar.on_load, false);
+    window.addEventListener ("message", sidebar.on_message, false);
+  }
+else if (inside_iframe)
+  {
+    window.addEventListener ("DOMContentLoaded", pages.on_load, false);
+    window.addEventListener ("message", pages.on_message, false);
+  }
+else
+  {
+    /* TODO: Trampoline to 'config.INDEX_NAME' */
+  }
+
+/* Register common event handlers.  */
+window.addEventListener ("beforeunload", on_unload, false);
+window.addEventListener ("click", on_click, false);
+window.addEventListener ("keypress", on_keypress, false);
