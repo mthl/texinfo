@@ -1,198 +1,38 @@
-/* TODO:
-   - Styling of node header
-   - Handle internal links: #NODE-NAME.ID-NAME
-   - set location.hash usefully; use initial value  */
+/* index.js - global entry point */
+
+/* Depending on the role of the document launching this script, different
+   event handlers are registered.  This script can be used in the context of:
+
+   - the index page of the manual which manages the state of the application
+   - the iframe which contains the lateral table of content
+   - other iframes which contain other pages of the manual
+
+  This is done to allow referencing the same script inside every HTML page.
+  This has the benefits of reducing the number of HTTP requests required to
+  fetch the Javascript code and simplifying the work of the Texinfo HTML
+  converter.  */
 
 import "./polyfill";
-import * as actions from "./actions";
+import * as main from "./main";
+import * as pages from "./iframe";
 import * as sidebar from "./sidebar";
-import { Store, iframe_dispatch } from "./store";
 
 import {
   absolute_url_p,
-  basename,
   inside_iframe_p,
   inside_index_page_p
 } from "./utils";
 
-import { Main_component } from "./component";
 import config from "./config";
-import { fix_links } from "./toc";
-import { global_reducer } from "./reducers";
 
-/* Global state manager.  */
-let store;
-/* Main stateful view.   */
-let components;
-
-/* Initialize the top level 'config.INDEX_NAME' DOM.  */
-function
-on_index_load (_event)
-{
-  fix_links (document.links);
-  document.body.setAttribute ("class", "mainbar");
-
-  /* Move contents of <body> into a a fresh <div> to let the components treat
-     the index page like other iframe page.  */
-  let index_div = document.createElement ("div");
-  for (let ch = document.body.firstChild; ch; ch = document.body.firstChild)
-    index_div.appendChild (ch);
-
-  /* Instanciate the components.  */
-  components = new Main_component (document.body, index_div);
-
-  /* Retrieve NEXT link.  */
-  let links = {};
-  links[config.INDEX_ID] = navigation_links (document);
-  store.dispatch (actions.cache_links (links));
-}
-
-/* Initialize the DOM for generic pages loaded in the context of an
-   iframe.  */
-function
-on_iframe_load (_event)
-{
-  fix_links (document.links);
-  let links = {};
-  let url = basename (window.location.pathname, /[.]x?html$/);
-  links[url] = navigation_links (document);
-  iframe_dispatch (actions.cache_links (links));
-}
-
-/* Retrieve PREV, NEXT, and UP links and Return a object containing references
-   to those links.  */
-var navigation_links = (function () {
-  /* Dictionary associating an 'accesskey' property to its navigation id.  */
-  let dict = { n: "next", p: "prev", u: "up" };
-
-  return function (content) {
-    let links = Array.from (content.querySelectorAll ("footer a"));
-
-    /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
-       we only store FRAME-ID.  */
-    return links.reduce ((acc, link) => {
-      let nav_id = dict[link.getAttribute ("accesskey")];
-      if (nav_id)
-        acc[nav_id] = link.getAttribute ("href").replace (/.*#/, "");
-      return acc;
-    }, {});
-  };
-} ());
-
-/* Return an array compose of the filename and the anchor of NODE_NAME.
-   NODE_NAME can have the form "foobaridm80837412374" or just "foobar".  */
-function
-split_id_anchor (node_name)
-{
-  let rgxp = /idm\d+$/;
-  if (!rgxp.test (node_name))
-    return [node_name, ""];
-  else
-    {
-      let [id, anchor] = node_name.match (/^(.+)(idm\d+)$/).slice (1);
-      return [id, "#" + anchor];
-    }
-}
-
-/* Load URL in the corresponding iframe.  */
-function
-load_page (url, hash)
-{
-  var node_name = url.replace (/[.]x?html.*/, "");
-  var path =
-      (window.location.pathname + window.location.search).replace (/#.*/, "")
-      + hash;
-  let [id] = split_id_anchor (node_name);
-  let div = document.getElementById (id);
-  if (!div)
-    {
-      let msg = `no iframe container correspond to identifier "${id}"`;
-      throw new ReferenceError (msg);
-    }
-
-  /* Select contained iframe or create it if necessary.  */
-  let iframe = div.querySelector ("iframe");
-  if (iframe === null)
-    {
-      iframe = document.createElement ("iframe");
-      iframe.setAttribute ("class", "node");
-      iframe.setAttribute ("name", path);
-      iframe.setAttribute ("src", url);
-      div.appendChild (iframe);
-    }
-  else
-    {
-      let msg = { message_kind: "scroll-to", url };
-      iframe.contentWindow.postMessage (msg, "*");
-    }
-
-  components.sidebar.selected_node = node_name;
-  window.history.pushState ("", document.title, path);
-  store.dispatch (actions.set_current_url (node_name));
-}
+/*-------------------------
+| Common event handlers.  |
+`------------------------*/
 
 function
-receive_message (event)
+on_click (event)
 {
-  let data = event.data;
-  switch (data.message_kind)
-    {
-    case "action":            /* Handle actions sent from iframes.  */
-      store.dispatch (data.action);
-      break;
-    case "node-list":           /* from sidebar to top frame */
-      {
-        let nodes = Object.keys (store.state.loaded_nodes);
-        for (var i = 0; i < nodes.length; i += 1)
-          {
-            let name = nodes[i];
-            if (name == config.INDEX_ID)
-              continue;
-            let div = document.createElement ("div");
-            div.setAttribute ("id", name);
-            div.setAttribute ("node", name);
-            div.setAttribute ("hidden", "true");
-            document.querySelector ("#sub-pages").appendChild (div);
-          }
-        if (window.location.hash)
-          {
-            let hash = window.location.hash;
-            let url = (hash.includes (".")) ?
-                hash.replace (/#(.*)[.](.*)/, "$1.xhtml#$2") :
-                hash.replace (/#/, "") + ".xhtml";
-            load_page (url, hash);
-          }
-        break;
-      }
-    case "load-page":           /* from click handler to top frame */
-      {
-        if (!data.nav)          /* not a navigation link */
-          load_page (data.url, data.hash);
-        else
-        {
-          let ids = store.state.loaded_nodes[store.state.current];
-          let link_id = ids[data.nav];
-          if (link_id)
-            load_page (link_id + ".xhtml", "");
-        }
-        break;
-      }
-    case "scroll-to":           /* top window to node window */
-      {
-        let url = data.url;
-        window.location.hash = (url.includes ("#")) ?
-          url.replace (/.*#/, "") : "";
-        break;
-      }
-    default:
-      break;
-    }
-}
-
-function
-on_click (evt)
-{
-  for (var target = evt.target; target !== null; target = target.parentNode)
+  for (var target = event.target; target !== null; target = target.parentNode)
     {
       if ((target instanceof Element) && target.matches ("a"))
         {
@@ -208,8 +48,8 @@ on_click (evt)
               if (hash == config.INDEX_NAME)
                 hash = "";
               top.postMessage ({ message_kind: "load-page", url, hash }, "*");
-              evt.preventDefault ();
-              evt.stopPropagation ();
+              event.preventDefault ();
+              event.stopPropagation ();
               return;
           }
         }
@@ -217,7 +57,7 @@ on_click (evt)
 }
 
 function
-on_unload (_event)
+on_unload ()
 {
   var request = new XMLHttpRequest ();
   request.open ("GET", "(WINDOW-CLOSED)");
@@ -235,12 +75,16 @@ var on_keypress = (function () {
     "[": "backward"
   };
 
-  return function (evt) {
-    let nav = dict[evt.key];
+  return function (event) {
+    let nav = dict[event.key];
     if (nav)
       top.postMessage ({ message_kind: "load-page", nav }, "*");
   };
 } ());
+
+/*--------------------
+| Context dispatch.  |
+`-------------------*/
 
 /* Don't do anything if the current script is launched from a non-iframed page
    which is different from 'config.INDEX_NAME'.  */
@@ -248,20 +92,8 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
 {
   if (!inside_iframe_p ())
     {
-      window.addEventListener ("DOMContentLoaded", on_index_load, false);
-      window.addEventListener ("message", receive_message, false);
-
-      let initial_state = {
-        /* Dictionary associating page ids to next, prev, up, forward,
-           backward link ids.  */
-        loaded_nodes: {},
-        /* page id of the current page.  */
-        current: config.INDEX_ID
-      };
-
-      store = new Store (global_reducer, initial_state);
-      store.subscribe (() => console.log ("state: ", store.state));
-      store.subscribe (() => components.render (store.state));
+      window.addEventListener ("DOMContentLoaded", main.on_load, false);
+      window.addEventListener ("message", main.on_message, false);
     }
   else if (window.name == "slider")
     {
@@ -270,8 +102,8 @@ if (inside_iframe_p () || inside_index_page_p (window.location.pathname))
     }
   else
     {
-      window.addEventListener ("DOMContentLoaded", on_iframe_load, false);
-      window.addEventListener ("message", receive_message, false);
+      window.addEventListener ("DOMContentLoaded", pages.on_load, false);
+      window.addEventListener ("message", pages.on_message, false);
     }
 
   window.addEventListener ("beforeunload", on_unload, false);

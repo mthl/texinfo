@@ -101,7 +101,7 @@ add_header ()
 /** Initialize TOC_FILENAME which must be loaded in the context of an
     iframe.  */
 export function
-on_load (_event)
+on_load ()
 {
   add_header ();
   document.body.setAttribute ("class", "toc-sidebar");

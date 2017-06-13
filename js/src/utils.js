@@ -50,3 +50,23 @@ depth_first_walk (node, func, node_type)
   for (let child = node.firstChild; child; child = child.nextSibling)
     depth_first_walk (child, func, node_type);
 }
+
+/** Retrieve PREV, NEXT, and UP links and Return a object containing
+    references to those links.  */
+export var navigation_links = (function () {
+  /* Dictionary associating an 'accesskey' property to its navigation id.  */
+  let dict = { n: "next", p: "prev", u: "up" };
+
+  return function (content) {
+    let links = Array.from (content.querySelectorAll ("footer a"));
+
+    /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
+       we only store FRAME-ID.  */
+    return links.reduce ((acc, link) => {
+      let nav_id = dict[link.getAttribute ("accesskey")];
+      if (nav_id)
+        acc[nav_id] = link.getAttribute ("href").replace (/.*#/, "");
+      return acc;
+    }, {});
+  };
+} ());
