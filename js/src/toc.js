@@ -159,19 +159,16 @@ create_link_dict (nav)
 export function
 fix_links (links)
 {
-  function
-  fix_link (link, href)
-  {
-    if (absolute_url_p (href))
-      link.setAttribute ("target", "_blank");
-    else
-      link.setAttribute ("href", with_sidebar_query (href));
-  }
-
   for (let i = 0; i < links.length; i += 1)
     {
-      let href = links[i].getAttribute ("href");
+      let link = links[i];
+      let href = link.getAttribute ("href");
       if (href)
-        fix_link (links[i], href);
+        {
+          if (absolute_url_p (href))
+            link.setAttribute ("target", "_blank");
+          else
+            link.setAttribute ("href", with_sidebar_query (href));
+        }
     }
 }
