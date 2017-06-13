@@ -1,16 +1,32 @@
-/* index.js - global entry point */
+/* index.js - Global entry point
+   Copyright © 2017 Free Software Foundation, Inc.
 
-/* Depending on the role of the document launching this script, different
-   event handlers are registered.  This script can be used in the context of:
+   This file is part of GNU Texinfo.
 
-   - the index page of the manual which manages the state of the application
-   - the iframe which contains the lateral table of content
-   - other iframes which contain other pages of the manual
+   GNU Texinfo is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
-  This is done to allow referencing the same script inside every HTML page.
-  This has the benefits of reducing the number of HTTP requests required to
-  fetch the Javascript code and simplifying the work of the Texinfo HTML
-  converter.  */
+   GNU Texinfo is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
+
+/** Depending on the role of the document launching this script, different
+    event handlers are registered.  This script can be used in the context of:
+
+    - the index page of the manual which manages the state of the application
+    - the iframe which contains the lateral table of content
+    - other iframes which contain other pages of the manual
+
+    This is done to allow referencing the same script inside every HTML page.
+    This has the benefits of reducing the number of HTTP requests required to
+    fetch the Javascript code and simplifying the work of the Texinfo HTML
+    converter.  */
 
 import "./polyfill";
 import * as main from "./main";
