@@ -38,6 +38,9 @@ inside_index_page_p (file_name)
 export function
 absolute_url_p (url)
 {
+  if (typeof url !== "string")
+    throw new TypeError (`'${url}' is not a string`);
+
   return url.includes (":");
 }
 
