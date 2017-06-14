@@ -54,6 +54,18 @@ depth_first_walk (node, func, node_type)
     depth_first_walk (child, func, node_type);
 }
 
+/** Return the hash part of HREF without the '#' prefix.  HREF must be
+    a string.  If there is no hash part in HREF then return the empty
+    string.  */
+export function
+href_hash (href)
+{
+  if (typeof href !== "string")
+    throw new TypeError (href + " is not a string");
+
+  return href.replace (/.*#/, "");
+}
+
 /** Retrieve PREV, NEXT, and UP links and Return a object containing
     references to those links.  */
 export var navigation_links = (function () {
@@ -68,7 +80,7 @@ export var navigation_links = (function () {
     return links.reduce ((acc, link) => {
       let nav_id = dict[link.getAttribute ("accesskey")];
       if (nav_id)
-        acc[nav_id] = link.getAttribute ("href").replace (/.*#/, "");
+        acc[nav_id] = href_hash (link.getAttribute ("href"));
       return acc;
     }, {});
   };

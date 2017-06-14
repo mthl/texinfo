@@ -16,7 +16,13 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-import { absolute_url_p, basename, depth_first_walk } from "./utils";
+import {
+  absolute_url_p,
+  basename,
+  depth_first_walk,
+  href_hash
+} from "./utils";
+
 import config from "./config";
 
 /** Return a relative URL corresponding to HREF, which refers to an anchor of
@@ -141,7 +147,7 @@ create_link_dict (nav)
   {
     if (elem.matches ("a") && elem.hasAttribute ("href"))
     {
-      let id = elem.getAttribute ("href").replace (/.*#/, "");
+      let id = href_hash (elem.getAttribute ("href"));
       links[prev_id] = Object.assign ({}, links[prev_id], { forward: id });
       links[id] = Object.assign ({}, links[id], { backward: prev_id });
       prev_id = id;

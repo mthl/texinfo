@@ -32,7 +32,7 @@ import "./polyfill";
 import * as main from "./main";
 import * as pages from "./iframe";
 import * as sidebar from "./sidebar";
-import { absolute_url_p } from "./utils";
+import { absolute_url_p, href_hash } from "./utils";
 import config from "./config";
 import { with_sidebar_query } from "./toc";
 
@@ -50,7 +50,7 @@ on_click (event)
           let href = target.getAttribute ("href");
           if (!absolute_url_p (href))
             {
-              let url = href.replace (/.*#/, "") || config.INDEX_ID;
+              let url = href_hash (href) || config.INDEX_ID;
               if (url.includes ("."))
                 url = url.replace (/[.]/, ".xhtml#");
               else

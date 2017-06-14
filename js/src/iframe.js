@@ -17,7 +17,7 @@
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
 import * as actions from "./actions";
-import { basename, navigation_links } from "./utils";
+import { basename, href_hash, navigation_links } from "./utils";
 import config from "./config";
 import { fix_links } from "./toc";
 import { iframe_dispatch } from "./store";
@@ -67,12 +67,8 @@ on_message (event)
   switch (data.message_kind)
     {
     case "scroll-to":
-      {
-        let url = data.url;
-        window.location.hash = (url.includes ("#")) ?
-          url.replace (/.*#/, "") : "";
-        break;
-      }
+      window.location.hash = href_hash (data.url);
+      break;
     default:
       break;
     }
