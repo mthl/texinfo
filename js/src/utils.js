@@ -66,8 +66,9 @@ href_hash (href)
   return href.replace (/.*#/, "");
 }
 
-/** Retrieve PREV, NEXT, and UP links and Return a object containing
-    references to those links.  */
+/** Retrieve PREV, NEXT, and UP links from CONTENT and Return an object
+    containing references to those links.  CONTENT must be an object
+    implementing the ParentNode interface (Element, Document...).  */
 export function
 navigation_links (content)
 {
