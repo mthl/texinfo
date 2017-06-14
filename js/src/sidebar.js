@@ -63,18 +63,12 @@ Sidebar
   {
     if (state.current !== this.state.current)
       {
+        /* Update sidebar to highlight the title corresponding to
+           'state.current'.  */
+        let iframe = this.element.querySelector ("iframe");
         let msg = { message_kind: "update-sidebar", selected: state.current };
-        this.element.contentWindow.postMessage (msg, "*");
+        iframe.contentWindow.postMessage (msg, "*");
       }
-  }
-
-  /* Update sidebar to highligh NODE_NAME which must be a string
-     identifying */
-  set selected_node (node_name)
-  {
-    let iframe = this.element.querySelector ("iframe");
-    let msg = { message_kind: "update-sidebar", selected: node_name };
-    iframe.contentWindow.postMessage (msg, "*");
   }
 }
 

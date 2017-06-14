@@ -27,8 +27,28 @@ import { navigation_links } from "./utils";
 
 /* Global state manager.  */
 let store;
-/* Main stateful view.   */
-let components;
+
+/* Aggregation of all the components.   */
+let components = {
+  element: null,
+  components: [],
+
+  register (id, component)
+  {
+    if (this.element === null)
+      throw new Error ("element property must be set first");
+
+    this[id] = component;
+    this.components.push (component);
+    if (component.element)
+      this.element.appendChild (component.element);
+  },
+
+  render (state)
+  {
+    this.components.forEach (cmpt => cmpt.render (state));
+  }
+};
 
 export class
 Selected_div
@@ -39,43 +59,18 @@ Selected_div
     this.element = null;
   }
 
-  render (id)
+  render (state)
   {
-    if (id === this.id)
+    if (state.current === this.id)
       return;
 
     if (this.element)
       this.element.setAttribute ("hidden", "true");
-    let div = document.getElementById (id);
+    let div = document.getElementById (state.current);
     div.removeAttribute ("hidden");
 
-    this.id = id;
+    this.id = state.current;
     this.element = div;
-  }
-}
-
-export class
-Main_component
-{
-  constructor (root, index_div)
-  {
-    let sidebar = new Sidebar ();
-    root.appendChild (sidebar.element);
-    let pages = new Pages (index_div);
-    root.appendChild (pages.element);
-
-    /* Root DOM element.  */
-    this.root = root;
-    /* Instance of a Sidebar object.  */
-    this.sidebar = sidebar;
-    /* Currently visible page.  */
-    this.selected_div = new Selected_div ();
-  }
-
-  render (state)
-  {
-    this.sidebar.render ({ current: config.INDEX_ID, visible: true });
-    this.selected_div.render (state.current);
   }
 }
 
@@ -131,7 +126,6 @@ load_page (url, hash)
       iframe.contentWindow.postMessage (msg, "*");
     }
 
-  components.sidebar.selected_node = node_name;
   window.history.pushState ("", document.title, path);
   store.dispatch (actions.set_current_url (node_name));
 }
@@ -151,7 +145,10 @@ on_load ()
     index_div.appendChild (ch);
 
   /* Instanciate the components.  */
-  components = new Main_component (document.body, index_div);
+  components.element = document.body;
+  components.register ("sidebar", new Sidebar ());
+  components.register ("selected_div", new Selected_div ());
+  components.register ("pages", new Pages (index_div));
 
   let initial_state = {
     /* Dictionary associating page ids to next, prev, up, forward,
