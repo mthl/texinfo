@@ -98,7 +98,8 @@ split_id_anchor (node_name)
     }
 }
 
-/* Load URL in the corresponding iframe.  */
+/* Load URL in its corresponding iframe and make this iframe visible.  Display
+   HASH in the url bar.  */
 function
 load_page (url, hash)
 {
@@ -218,7 +219,7 @@ on_message (event)
           let ids = store.state.loaded_nodes[store.state.current];
           let link_id = ids[data.nav];
           if (link_id)
-            load_page (link_id + ".xhtml", "");
+            load_page (link_id + ".xhtml", "#" + link_id);
         }
         break;
       }
