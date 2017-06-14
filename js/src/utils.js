@@ -71,16 +71,19 @@ href_hash (href)
 export function
 navigation_links (content)
 {
-  let links = Array.from (content.querySelectorAll ("footer a"));
-
+  let links = content.querySelectorAll ("footer a");
+  let res = {};
   /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
-     we only store FRAME-ID.  */
-  return links.reduce ((acc, link) => {
-    let nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
-    if (nav_id)
-      acc[nav_id] = href_hash (link.getAttribute ("href"));
-    return acc;
-  }, {});
+     only store FRAME-ID.  */
+  for (let i = 0; i < links.length; i += 1)
+    {
+      let link = links[i];
+      let nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
+      if (nav_id)
+        res[nav_id] = href_hash (link.getAttribute ("href"));
+    }
+
+  return res;
 }
 
 /* Dictionary associating an 'accesskey' property to its navigation id.  */
