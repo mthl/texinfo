@@ -76,22 +76,22 @@ on_unload ()
 }
 
 /* Handle Keyboard 'keypress' events.  */
-var on_keypress = (function () {
-  /* Dictionary associating an Event 'key' property to its navigation id.  */
-  let dict = {
-    n: "next",
-    p: "prev",
-    u: "up",
-    "]": "forward",
-    "[": "backward"
-  };
+function
+on_keypress (event)
+{
+  let nav = on_keypress.dict[event.key];
+  if (nav)
+    top.postMessage ({ message_kind: "load-page", nav }, "*");
+}
 
-  return function (event) {
-    let nav = dict[event.key];
-    if (nav)
-      top.postMessage ({ message_kind: "load-page", nav }, "*");
-  };
-} ());
+/* Dictionary associating an Event 'key' property to its navigation id.  */
+on_keypress.dict = {
+  n: "next",
+  p: "prev",
+  u: "up",
+  "]": "forward",
+  "[": "backward"
+};
 
 /*--------------------
 | Context dispatch.  |
