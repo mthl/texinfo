@@ -19,8 +19,9 @@
 import {
   CACHE_LINKS,
   CURRENT_URL,
-  LOAD_PAGE,
-  PAGE_READY
+  INIT,
+  NAVIGATE,
+  SIDEBAR_LOADED
 } from "./actions";
 
 export function
@@ -28,6 +29,10 @@ global_reducer (state, action)
 {
   switch (action.type)
     {
+    case INIT:
+      return Object.assign ({}, state, { action });
+    case SIDEBAR_LOADED:
+      return Object.assign ({}, state, { sidebar_loaded: true, action });
     case CACHE_LINKS:
       {
         let clone = Object.assign ({}, state.loaded_nodes);
@@ -39,18 +44,25 @@ global_reducer (state, action)
         return Object.assign ({}, state, { loaded_nodes: clone, action });
       }
     case CURRENT_URL:
-      return Object.assign ({}, state, { current: action.url, action });
-    case LOAD_PAGE:
       {
-        let loaded_nodes = Object.assign ({}, state.loaded_nodes);
-        loaded_nodes[action.page] = { id: action.page, status: "loading" };
-        return Object.assign ({}, state, { loaded_nodes, action });
+        let res = Object.assign ({}, state, { current: action.url, action });
+        if (!res.loaded_nodes[action.url])
+          res.loaded_nodes[action.url] = {};
+        return res;
       }
-    case PAGE_READY:
+    case NAVIGATE:
       {
-        let loaded_nodes = Object.assign ({}, state.loaded_nodes);
-        loaded_nodes[action.page] = { id: action.page, status: "loaded" };
-        return Object.assign ({ action }, state, { loaded_nodes, action });
+        let ids = state.loaded_nodes[state.current];
+        let linkid = ids[action.direction];
+        if (!linkid)
+          return state;
+        else
+          {
+            let res = Object.assign ({}, state, { current: linkid, action });
+            if (!Object.keys (res.loaded_nodes).includes (action.url))
+              res.loaded_nodes[action.url] = {};
+            return res;
+          }
       }
     default:
       return state;

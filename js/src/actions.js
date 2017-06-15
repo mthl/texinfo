@@ -16,21 +16,9 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-export const LOAD_PAGE = "load-page";
+export const INIT = "init";
 
-export function
-load_page (page)
-{
-  return { type: LOAD_PAGE, page };
-}
-
-export const PAGE_READY = "page-ready";
-
-export function
-page_ready (page)
-{
-  return { type: PAGE_READY, page };
-}
+export const SIDEBAR_LOADED = "sidebar-ready";
 
 export const CURRENT_URL = "current-url";
 
@@ -38,6 +26,14 @@ export function
 set_current_url (url)
 {
   return { type: CURRENT_URL, url };
+}
+
+export const NAVIGATE = "navigate";
+
+export function
+navigate (direction)
+{
+  return { type: NAVIGATE, direction };
 }
 
 export const CACHE_LINKS = "cache-links";

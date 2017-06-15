@@ -49,9 +49,6 @@ Sidebar
   /* Render 'sidebar' according to STATE which is a new state. */
   render (state)
   {
-    if (state.current === this.prev)
-      return;
-
     /* Update sidebar to highlight the title corresponding to
        'state.current'.  */
     let msg = { message_kind: "update-sidebar", selected: state.current };
@@ -101,6 +98,8 @@ add_header ()
 export function
 on_load ()
 {
+  iframe_dispatch ({ type: actions.SIDEBAR_LOADED });
+
   add_header ();
   document.body.setAttribute ("class", "toc-sidebar");
 
@@ -139,8 +138,6 @@ on_load ()
   /* Get 'backward' and 'forward' link attributes.  */
   let dict = create_link_dict (document.querySelector ("ul"));
   iframe_dispatch (actions.cache_links (dict));
-  /* Create iframe divs in 'config.MAIN_NAME'.  */
-  top.postMessage ({ message_kind: "node-list" }, "*");
 }
 
 /** Handle messages received via the Message API.  */

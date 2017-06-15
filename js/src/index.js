@@ -29,11 +29,13 @@
     converter.  */
 
 import "./polyfill";
+import * as actions from "./actions";
 import * as main from "./main";
 import * as pages from "./iframe";
 import * as sidebar from "./sidebar";
 import { absolute_url_p, href_hash } from "./utils";
 import config from "./config";
+import { iframe_dispatch } from "./store";
 import { with_sidebar_query } from "./toc";
 
 /*-------------------------
@@ -50,15 +52,8 @@ on_click (event)
           let href = target.getAttribute ("href");
           if (!absolute_url_p (href))
             {
-              let url = href_hash (href) || config.INDEX_ID;
-              if (url.includes ("."))
-                url = url.replace (/[.]/, ".xhtml#");
-              else
-                url += ".xhtml";
-              let hash = href.replace (/.*#/, "#");
-              if (hash === config.INDEX_NAME)
-                hash = "";
-              top.postMessage ({ message_kind: "load-page", url, hash }, "*");
+              let linkid = href_hash (href) || config.INDEX_ID;
+              iframe_dispatch (actions.set_current_url (linkid));
               event.preventDefault ();
               event.stopPropagation ();
               return;
@@ -79,9 +74,9 @@ on_unload ()
 function
 on_keypress (event)
 {
-  let nav = on_keypress.dict[event.key];
-  if (nav)
-    top.postMessage ({ message_kind: "load-page", nav }, "*");
+  let direction = on_keypress.dict[event.key];
+  if (direction)
+    iframe_dispatch (actions.navigate (direction));
 }
 
 /* Dictionary associating an Event 'key' property to its navigation id.  */

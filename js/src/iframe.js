@@ -22,6 +22,21 @@ import config from "./config";
 import { fix_links } from "./toc";
 import { iframe_dispatch } from "./store";
 
+/* Return an array compose of the filename and the anchor of NODE_NAME.
+   NODE_NAME can have the form "foobaridm80837412374" or just "foobar".  */
+function
+split_id_anchor (node_name)
+{
+  let rgxp = /idm\d+$/;
+  if (!rgxp.test (node_name))
+    return [node_name, ""];
+  else
+    {
+      let [id, anchor] = node_name.match (/^(.+)(idm\d+)$/).slice (1);
+      return [id, "#" + anchor];
+    }
+}
+
 export class
 Pages
 {
@@ -29,23 +44,90 @@ Pages
   {
     index_div.setAttribute ("id", config.INDEX_ID);
     index_div.setAttribute ("node", config.INDEX_ID);
+    index_div.setAttribute ("hidden", "true");
     this.element = document.createElement ("div");
     this.element.setAttribute ("id", "sub-pages");
     this.element.appendChild (index_div);
+    /* Currently created divs.  */
+    this.ids = [];
+  }
+
+  add_divs (linkids)
+  {
+    for (let i = 0; i < linkids.length; i += 1)
+      {
+        let linkid = linkids[i];
+        let div = document.createElement ("div");
+        div.setAttribute ("id", linkid);
+        div.setAttribute ("node", linkid);
+        div.setAttribute ("hidden", "true");
+        this.element.appendChild (div);
+        this.ids.push (linkid);
+      }
+  }
+
+  static load_iframe (linkid)
+  {
+    let path = window.location.pathname + window.location.search;
+
+    if (linkid === config.INDEX_ID)
+      {
+        window.history.pushState ("", document.title, path);
+        return;
+      }
+
+    let [pageid, hash] = split_id_anchor (linkid);
+    let div = document.getElementById (pageid);
+    if (!div)
+    {
+      let msg = "no iframe container correspond to identifier: " + pageid;
+      throw new ReferenceError (msg);
+    }
+
+    path = path.replace (/#.*/, "") + "#" + linkid;
+    let url = pageid + ".xhtml" + hash;
+
+    /* Select contained iframe or create it if necessary.  */
+    let iframe = div.querySelector ("iframe");
+    if (iframe === null)
+    {
+      iframe = document.createElement ("iframe");
+      iframe.setAttribute ("class", "node");
+      iframe.setAttribute ("name", path);
+      iframe.setAttribute ("src", url);
+      div.appendChild (iframe);
+    }
+    else
+    {
+      let msg = { message_kind: "scroll-to", url };
+      iframe.contentWindow.postMessage (msg, "*");
+    }
+
+    window.history.pushState ("", document.title, path);
   }
 
   render (state)
   {
-    if (state.current === this.prev_id)
-      return;
+    let new_linkids = Object.keys (state.loaded_nodes)
+                            .filter (id => !this.ids.includes (id));
+    this.add_divs (new_linkids);
 
-    if (this.prev_id)
-      this.prev_div.setAttribute ("hidden", "true");
-    let div = document.getElementById (state.current);
-    div.removeAttribute ("hidden");
+    if (state.current !== this.prev_id)
+      {
+        if (this.prev_id)
+          this.prev_div.setAttribute ("hidden", "true");
 
-    this.prev_id = state.current;
-    this.prev_div = div;
+        let div = document.getElementById (state.current);
+        if (!div)
+          {
+            throw new Error ("'loaded_nodes' doesn't have property: "
+                             + state.current);
+          }
+        Pages.load_iframe (state.current);
+        div.removeAttribute ("hidden");
+        this.prev_id = state.current;
+        this.prev_div = div;
+      }
   }
 }
 
