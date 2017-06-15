@@ -36,10 +36,16 @@ Pages
 
   render (state)
   {
-    if (state === this.state)
+    if (state.current === this.prev_id)
       return;
 
-    this.state = state;
+    if (this.prev_id)
+      this.prev_div.setAttribute ("hidden", "true");
+    let div = document.getElementById (state.current);
+    div.removeAttribute ("hidden");
+
+    this.prev_id = state.current;
+    this.prev_div = div;
   }
 }
 

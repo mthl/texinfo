@@ -50,30 +50,6 @@ let components = {
   }
 };
 
-export class
-Selected_div
-{
-  constructor (id)
-  {
-    this.id = id;
-    this.element = null;
-  }
-
-  render (state)
-  {
-    if (state.current === this.id)
-      return;
-
-    if (this.element)
-      this.element.setAttribute ("hidden", "true");
-    let div = document.getElementById (state.current);
-    div.removeAttribute ("hidden");
-
-    this.id = state.current;
-    this.element = div;
-  }
-}
-
 /*------------------------------------------------
 | Auxilary functions for the top-level context.  |
 `-----------------------------------------------*/
@@ -147,7 +123,6 @@ on_load ()
   /* Instanciate the components.  */
   components.element = document.body;
   components.register ("sidebar", new Sidebar ());
-  components.register ("selected_div", new Selected_div ());
   components.register ("pages", new Pages (index_div));
 
   let initial_state = {
