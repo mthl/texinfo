@@ -63,7 +63,10 @@ href_hash (href)
   if (typeof href !== "string")
     throw new TypeError (href + " is not a string");
 
-  return href.replace (/.*#/, "");
+  if (href.includes ("#"))
+    return href.replace (/.*#/, "");
+  else
+    return "";
 }
 
 /** Retrieve PREV, NEXT, and UP links from CONTENT and Return an object
