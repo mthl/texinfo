@@ -34,41 +34,29 @@ Sidebar
 {
   constructor ()
   {
-    /* Actual state of the sidebar.  */
-    this.state = null;
-    /* Reference to the DOM element.  */
     this.element = document.createElement ("div");
     this.element.setAttribute ("id", "sidebar");
+
+    /* Create iframe. */
+    let iframe = document.createElement ("iframe");
+    iframe.setAttribute ("name", "slider");
+    iframe.setAttribute ("src", (config.TOC_FILENAME
+                                 + "#main=" + config.INDEX_NAME));
+    this.element.appendChild (iframe);
+    this.iframe = iframe;
   }
 
   /* Render 'sidebar' according to STATE which is a new state. */
   render (state)
   {
-    if (this.state && this.state !== state)
-      this.update (state);
-    else                        /* Initial render */
-      {
-        let iframe = document.createElement ("iframe");
-        iframe.setAttribute ("name", "slider");
-        iframe.setAttribute ("src", (config.TOC_FILENAME
-                                     + "#main=" + config.INDEX_NAME));
-        this.element.appendChild (iframe);
-      }
+    if (state.current === this.prev)
+      return;
 
-    this.state = state;
-  }
-
-  /* Updating render.  */
-  update (state)
-  {
-    if (state.current !== this.state.current)
-      {
-        /* Update sidebar to highlight the title corresponding to
-           'state.current'.  */
-        let iframe = this.element.querySelector ("iframe");
-        let msg = { message_kind: "update-sidebar", selected: state.current };
-        iframe.contentWindow.postMessage (msg, "*");
-      }
+    /* Update sidebar to highlight the title corresponding to
+       'state.current'.  */
+    let msg = { message_kind: "update-sidebar", selected: state.current };
+    this.iframe.contentWindow.postMessage (msg, "*");
+    this.prev = state.current;
   }
 }
 
