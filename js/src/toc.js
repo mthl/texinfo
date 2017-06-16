@@ -148,12 +148,12 @@ create_link_dict (nav)
   add_link (elem)
   {
     if (elem.matches ("a") && elem.hasAttribute ("href"))
-    {
-      let id = href_hash (elem.getAttribute ("href"));
-      links[prev_id] = Object.assign ({}, links[prev_id], { forward: id });
-      links[id] = Object.assign ({}, links[id], { backward: prev_id });
-      prev_id = id;
-    }
+      {
+        let id = href_hash (elem.getAttribute ("href"));
+        links[prev_id] = Object.assign ({}, links[prev_id], { forward: id });
+        links[id] = Object.assign ({}, links[id], { backward: prev_id });
+        prev_id = id;
+      }
   }
 
   depth_first_walk (nav, add_link, Node.ELEMENT_NODE);
