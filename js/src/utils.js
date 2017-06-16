@@ -47,7 +47,7 @@ basename (pathname, suffix)
 export function
 depth_first_walk (node, func, node_type)
 {
-  if (!node_type || (node.nodeType === Node.ELEMENT_NODE))
+  if (!node_type || (node.nodeType === node_type))
     func (node);
 
   for (let child = node.firstChild; child; child = child.nextSibling)
