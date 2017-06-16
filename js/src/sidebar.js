@@ -145,18 +145,13 @@ export function
 on_message (event)
 {
   let data = event.data;
-  switch (data.message_kind)
+  if (data.message_kind === "update-sidebar")
     {
-    case "update-sidebar":
-      {
-        let selected = data.selected;
-        clear_toc_styles (document.body);
-        let filename = (selected === config.INDEX_ID) ?
-            config.INDEX_NAME : (selected + ".xhtml");
-        scan_toc (document.body, filename);
-        break;
-      }
-    default:
-      break;
+      /* Highlight the current LINKID in the table of content.  */
+      let selected = data.selected;
+      clear_toc_styles (document.body);
+      let filename = (selected === config.INDEX_ID) ?
+          config.INDEX_NAME : (selected + ".xhtml");
+      scan_toc (document.body, filename);
     }
 }

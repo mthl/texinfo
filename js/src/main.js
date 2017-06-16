@@ -95,10 +95,14 @@ on_load ()
   store.dispatch (actions.cache_links (links));
 }
 
+/** Handle messages received via the Message API.  */
 export function
 on_message (event)
 {
-  /* Handle actions sent from iframes.  */
-  if (event.data.message_kind === "action")
-    store.dispatch (event.data.action);
+  let data = event.data;
+  if (data.message_kind === "action")
+    {
+      /* Follow up actions to the store.  */
+      store.dispatch (data.action);
+    }
 }

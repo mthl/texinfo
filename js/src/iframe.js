@@ -102,7 +102,7 @@ Pages
       }
     else
       {
-        let msg = { message_kind: "scroll-to", url: hash };
+        let msg = { message_kind: "scroll-to", hash };
         iframe.contentWindow.postMessage (msg, "*");
       }
 
@@ -153,12 +153,9 @@ export function
 on_message (event)
 {
   let data = event.data;
-  switch (data.message_kind)
+  if (data.message_kind === "scroll-to")
     {
-    case "scroll-to":
-      window.location.hash = data.url;
-      break;
-    default:
-      break;
+      /* Scroll to the anchor corresponding to HASH.  */
+      window.location.hash = data.hash;
     }
 }
