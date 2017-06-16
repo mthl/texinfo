@@ -38,8 +38,10 @@ with_sidebar_query (href)
   else
     {
       let url = new window.URL (href, window.location);
-      let hash = basename (url.pathname, /[.]x?html/) + url.hash.slice (1);
-      return config.INDEX_NAME + "#" + hash;
+      let new_hash = basename (url.pathname, /[.]x?html/);
+      if (url.hash)
+        new_hash += ("." + url.hash.slice (1));
+      return config.INDEX_NAME + "#" + new_hash;
     }
 }
 

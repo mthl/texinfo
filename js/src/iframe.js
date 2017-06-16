@@ -17,22 +17,21 @@
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
 import * as actions from "./actions";
-import { basename, href_hash, navigation_links } from "./utils";
+import { basename, navigation_links } from "./utils";
 import config from "./config";
 import { fix_links } from "./toc";
 import { iframe_dispatch } from "./store";
 
-/* Return an array compose of the filename and the anchor of NODE_NAME.
-   NODE_NAME can have the form "foobaridm80837412374" or just "foobar".  */
+/* Return an array composed of the filename and the anchor of LINKID.
+   LINKID can have the form "foobar.anchor" or just "foobar".  */
 function
-split_id_anchor (node_name)
+linkid_split (linkid)
 {
-  let rgxp = /idm\d+$/;
-  if (!rgxp.test (node_name))
-    return [node_name, ""];
+  if (!linkid.includes ("."))
+    return [linkid, ""];
   else
     {
-      let [id, anchor] = node_name.match (/^(.+)(idm\d+)$/).slice (1);
+      let [id, anchor] = linkid.match (/^(.+)\.(.*)$/).slice (1);
       return [id, "#" + anchor];
     }
 }
@@ -57,12 +56,16 @@ Pages
     for (let i = 0; i < linkids.length; i += 1)
       {
         let linkid = linkids[i];
-        let div = document.createElement ("div");
-        div.setAttribute ("id", linkid);
-        div.setAttribute ("node", linkid);
-        div.setAttribute ("hidden", "true");
-        this.element.appendChild (div);
         this.ids.push (linkid);
+        /* Don't create a div if there is an anchor part in LINKID.  */
+        if (!linkid.includes ("."))
+          {
+            let div = document.createElement ("div");
+            div.setAttribute ("id", linkid);
+            div.setAttribute ("node", linkid);
+            div.setAttribute ("hidden", "true");
+            this.element.appendChild (div);
+          }
       }
   }
 
@@ -76,13 +79,13 @@ Pages
         return;
       }
 
-    let [pageid, hash] = split_id_anchor (linkid);
+    let [pageid, hash] = linkid_split (linkid);
     let div = document.getElementById (pageid);
     if (!div)
-    {
-      let msg = "no iframe container correspond to identifier: " + pageid;
-      throw new ReferenceError (msg);
-    }
+      {
+        let msg = "no iframe container correspond to identifier: " + pageid;
+        throw new ReferenceError (msg);
+      }
 
     path = path.replace (/#.*/, "") + "#" + linkid;
     let url = pageid + ".xhtml" + hash;
@@ -90,18 +93,18 @@ Pages
     /* Select contained iframe or create it if necessary.  */
     let iframe = div.querySelector ("iframe");
     if (iframe === null)
-    {
-      iframe = document.createElement ("iframe");
-      iframe.setAttribute ("class", "node");
-      iframe.setAttribute ("name", path);
-      iframe.setAttribute ("src", url);
-      div.appendChild (iframe);
-    }
+      {
+        iframe = document.createElement ("iframe");
+        iframe.setAttribute ("class", "node");
+        iframe.setAttribute ("name", path);
+        iframe.setAttribute ("src", url);
+        div.appendChild (iframe);
+      }
     else
-    {
-      let msg = { message_kind: "scroll-to", url };
-      iframe.contentWindow.postMessage (msg, "*");
-    }
+      {
+        let msg = { message_kind: "scroll-to", url: hash };
+        iframe.contentWindow.postMessage (msg, "*");
+      }
 
     window.history.pushState ("", document.title, path);
   }
@@ -117,12 +120,10 @@ Pages
         if (this.prev_id)
           this.prev_div.setAttribute ("hidden", "true");
 
-        let div = document.getElementById (state.current);
+        let [pageid] = linkid_split (state.current);
+        let div = document.getElementById (pageid);
         if (!div)
-          {
-            throw new Error ("'loaded_nodes' doesn't have property: "
-                             + state.current);
-          }
+          throw new Error ("no div with id: " + pageid);
         Pages.load_iframe (state.current);
         div.removeAttribute ("hidden");
         this.prev_id = state.current;
@@ -155,7 +156,7 @@ on_message (event)
   switch (data.message_kind)
     {
     case "scroll-to":
-      window.location.hash = href_hash (data.url);
+      window.location.hash = data.url;
       break;
     default:
       break;
