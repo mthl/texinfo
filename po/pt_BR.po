@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.3.90\n"
+"Project-Id-Version: texinfo 6.3.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-20 17:09+0100\n"
-"PO-Revision-Date: 2017-04-25 06:47-0300\n"
+"POT-Creation-Date: 2017-06-18 12:27+0100\n"
+"PO-Revision-Date: 2017-05-23 06:00-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
 "net>\n"
@@ -318,12 +318,12 @@ msgstr ""
 #: info/indices.c:459
 #, fuzzy, c-format
 msgid "No previous index search string"
-msgstr "Nenhum índice de busca anterior."
+msgstr "Nenhuma sequência de caracteres de busca anterior"
 
 #: info/indices.c:477
 #, fuzzy, c-format
 msgid "No more index entries containing '%s'"
-msgstr "Não existem mais entradas de índice contendo '%s'."
+msgstr "Não existem entradas de índice contendo '%s'."
 
 #: info/indices.c:478
 #, fuzzy, c-format
@@ -377,31 +377,29 @@ msgid "No index entries containing '%s'."
 msgstr "Não existem entradas de índice contendo '%s'."
 
 #: info/indices.h:42
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have '%s' in their indices"
 msgstr ""
-"Nenhum dos arquivos disponíveis no formato info possuem '%s' nos seus "
-"índices."
 
 #: info/info-utils.c:880
-#, fuzzy, c-format
+#, c-format
 msgid "Error converting file character encoding"
-msgstr "Erro na conversão de codificação de caractere do arquivo."
+msgstr ""
 
-#: info/info.c:280 info/session.c:2771
-#, fuzzy, c-format
+#: info/info.c:280 info/session.c:2788
+#, c-format
 msgid "No menu item '%s' in node '%s'"
-msgstr "Nenhum item de menu '%s' no nodo '%s'."
+msgstr ""
 
-#: info/info.c:415 info/info.c:1188
+#: info/info.c:415 info/info.c:1181
 #, fuzzy, c-format
 msgid "Cannot find node '%s'"
-msgstr "Não encontro o nodo '%s'."
+msgstr "Não posso encontrar uma janela!"
 
 #: info/info.c:437
-#, fuzzy, c-format
+#, c-format
 msgid "No program name given"
-msgstr "Nenhum nome de programa fornecido."
+msgstr ""
 
 #: info/info.c:635
 #, c-format
@@ -460,14 +458,13 @@ msgstr ""
 "Leia a documentaçãono formato Info.\n"
 
 #: info/info.c:1095
+#, fuzzy
 msgid ""
-"Options:\n"
-"  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
-"  -d, --directory=DIR          add DIR to INFOPATH.\n"
-"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
-"  -f, --file=MANUAL            specify Info manual to visit."
+"Frequently-used options:\n"
+"  -a, --all                    use all matching manuals\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals\n"
+"  -d, --directory=DIR          add DIR to INFOPATH\n"
+"  -f, --file=MANUAL            specify Info manual to visit"
 msgstr ""
 "Opções:\n"
 "  -a, --all                    usa todos os coincidentes dos manuais.\n"
@@ -477,12 +474,13 @@ msgstr ""
 "      --dribble=ARQUIVO        guarda a digitação do usuário em ARQUIVO.\n"
 "  -f, --file=MANUAL            especifica o manual Info a ser visitado."
 
-#: info/info.c:1103
+#: info/info.c:1102
+#, fuzzy
 msgid ""
-"  -h, --help                   display this help and exit.\n"
-"      --index-search=STRING    go to node pointed by index entry STRING.\n"
-"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILE            output selected nodes to FILE."
+"  -h, --help                   display this help and exit\n"
+"      --index-search=STRING    go to node pointed by index entry STRING\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file\n"
+"  -o, --output=FILE            output selected nodes to FILE"
 msgstr ""
 "  -h, --help                   display this help and exit.\n"
 "      --index-search=CARACTERE go to node pointed by index entry CARACTERE.\n"
@@ -491,33 +489,23 @@ msgstr ""
 "  -o, --output=ARQUIVO         guarde a saída dos nodos selecionados em "
 "ARQUIVO."
 
-#: info/info.c:1109
-msgid ""
-"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
-"      --no-raw-escapes         output escapes as literal text.\n"
-"      --restore=FILE           read initial keystrokes from FILE.\n"
-"  -O, --show-options, --usage  go to command-line options node."
+#: info/info.c:1108
+msgid "  -O, --show-options, --usage  go to command-line options node"
 msgstr ""
-"  -R, --raw-escapes            saída usando escapes \"raw\" ANSI (padrão).\n"
-"      --no-raw-escapes         escapes de saída como texto literais.\n"
-"      --restore=ARQUIVO        leia as digitações a partir de ARQUIVO.\n"
-"  -O, --show-options, --usage  vá para o nodo de opções de linha de comando."
 
-#: info/info.c:1116
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#: info/info.c:1112
+#, fuzzy
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers"
 msgstr ""
 "  -b, --speech-friendly        seja amigável com os sintetizadores de voz."
 
-#: info/info.c:1120
+#: info/info.c:1116
+#, fuzzy
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
-"      --subnodes               recursively output menu items.\n"
-"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
-"      --vi-keys                use vi-like and less-like key bindings.\n"
-"      --version                display version information and exit.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
-"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
+"      --subnodes               recursively output menu items\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n"
+"      --version                display version information and exit\n"
+"  -w, --where, --location      print physical location of Info file"
 msgstr ""
 "      --strict-node-location   (para depuração) use os apontadores dos "
 "arquivos Info da forma queestiverem.\n"
@@ -530,7 +518,7 @@ msgstr ""
 "  -x, --debug=NUMBER           ajuste o nível de depuração (-1 mostrar "
 "tudo).\n"
 
-#: info/info.c:1129
+#: info/info.c:1122
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -549,7 +537,7 @@ msgstr ""
 "Quaisquer argumentos restantes são tratados como nomes de itens de\n"
 "menu relativos ao nodo inicial visitado."
 
-#: info/info.c:1136
+#: info/info.c:1129
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
@@ -557,20 +545,22 @@ msgstr ""
 "\n"
 "Para um resumo das associações de tecla, digite H dentro do Info."
 
-#: info/info.c:1139
+#: info/info.c:1132
+#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
-"  info                       show top-level dir menu\n"
-"  info info                  show the general manual for Info readers\n"
-"  info info-stnd             show the manual specific to this Info program\n"
-"  info emacs                 start at emacs node from top-level dir\n"
-"  info emacs buffers         select buffers menu entry in emacs manual\n"
-"  info emacs -n Files        start at Files node within emacs manual\n"
-"  info '(emacs)Files'        alternative way to start at Files node\n"
-"  info --show-options emacs  start at node with emacs' command line options\n"
-"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir"
+"  info                         show top-level dir menu\n"
+"  info info-stnd               show the manual for this Info program\n"
+"  info emacs                   start at emacs node from top-level dir\n"
+"  info emacs buffers           select buffers menu entry in emacs manual\n"
+"  info emacs -n Files          start at Files node within emacs manual\n"
+"  info '(emacs)Files'          alternative way to start at Files node\n"
+"  info --show-options emacs    start at node with emacs' command line "
+"options\n"
+"  info --subnodes -o out.txt emacs\n"
+"                               dump entire emacs manual to out.txt\n"
+"  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 "\n"
 "Exemplos:\n"
@@ -590,7 +580,7 @@ msgstr ""
 "  info --subnodes -o out.txt grava o manual completo do emacs em out.txt\n"
 "  info -f ./foo.info         mostra o arquivo ./foo.info, sem buscar dir"
 
-#: info/info.c:1154 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1147 install-info/install-info.c:616 tp/texi2any.pl:876
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -600,78 +590,75 @@ msgstr ""
 "quastões gerais e discurssões para help-texinfo@gnu.org.\n"
 "Texinfo home page: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1189
+#: info/info.c:1182
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'"
-msgstr "Não encontro o nodo '(%s)%s'."
+msgstr "Não posso encontrar uma janela!"
 
-#: info/info.c:1190
+#: info/info.c:1183
 msgid "Cannot find a window!"
 msgstr "Não posso encontrar uma janela!"
 
-#: info/info.c:1191
+#: info/info.c:1184
 msgid "Point doesn't appear within this window's node!"
 msgstr "O apontador não aparece dentro desse nodo de janela!"
 
-#: info/info.c:1192
+#: info/info.c:1185
 #, fuzzy
 msgid "Cannot delete the last window"
-msgstr "Não posso apagar a último janela."
+msgstr "Não posso apagar uma janela permanente"
+
+#: info/info.c:1186
+#, fuzzy
+msgid "No menu in this node"
+msgstr "Vai para o fim desse nodo"
+
+#: info/info.c:1187
+#, fuzzy
+msgid "No footnotes in this node"
+msgstr "Vai para o fim desse nodo"
+
+#: info/info.c:1188
+#, fuzzy
+msgid "No cross references in this node"
+msgstr "Lê uma nota de rodapé ou referência cruzada e seleciona seu nodo"
+
+#: info/info.c:1189
+#, fuzzy, c-format
+msgid "No '%s' pointer for this node"
+msgstr "Vai para o início desse nodo"
+
+#: info/info.c:1190
+#, c-format
+msgid "Unknown Info command '%c'; try '?' for help"
+msgstr ""
+
+#: info/info.c:1191
+#, c-format
+msgid "Terminal type '%s' is not smart enough to run Info"
+msgstr ""
+
+#: info/info.c:1192
+#, fuzzy
+msgid "You are already at the last page of this node"
+msgstr "Vai para o início desse nodo"
 
 #: info/info.c:1193
 #, fuzzy
-msgid "No menu in this node"
-msgstr "Nenhum menu nesse nodo."
+msgid "You are already at the first page of this node"
+msgstr "Vai para o início desse nodo"
 
 #: info/info.c:1194
-#, fuzzy
-msgid "No footnotes in this node"
-msgstr "Nenhuma nota de rodampé nesse nodo."
+msgid "Only one window"
+msgstr ""
 
 #: info/info.c:1195
-#, fuzzy
-msgid "No cross references in this node"
-msgstr "Nenhuma referência cruzada nesse nodo."
+msgid "Resulting window would be too small"
+msgstr ""
 
 #: info/info.c:1196
-#, fuzzy, c-format
-msgid "No '%s' pointer for this node"
-msgstr "Nenhum apontador '%s' para esse nodo."
-
-#: info/info.c:1197
-#, fuzzy, c-format
-msgid "Unknown Info command '%c'; try '?' for help"
-msgstr "Comando Info desconhecido '%c'; tente '?' para ajuda."
-
-#: info/info.c:1198
-#, fuzzy, c-format
-msgid "Terminal type '%s' is not smart enough to run Info"
-msgstr "Terminal do tipo '%s' é incapaz de executar o programa Info."
-
-#: info/info.c:1199
-#, fuzzy
-msgid "You are already at the last page of this node"
-msgstr "Você já está na última página desse nodo."
-
-#: info/info.c:1200
-#, fuzzy
-msgid "You are already at the first page of this node"
-msgstr "Você já está na primeira página desse nodo."
-
-#: info/info.c:1201
-#, fuzzy
-msgid "Only one window"
-msgstr "Janela única"
-
-#: info/info.c:1202
-#, fuzzy
-msgid "Resulting window would be too small"
-msgstr "A janela resultante será muito pequena."
-
-#: info/info.c:1203
-#, fuzzy
 msgid "Not enough room for a help window, please delete a window"
-msgstr "Espaço insuficiente para janela de ajuda, por favor apague uma janela."
+msgstr ""
 
 #: info/infodoc.c:41
 msgid "Basic Info command keys\n"
@@ -871,7 +858,7 @@ msgstr "Descreva a chave: %s"
 #: info/infodoc.c:474 info/infodoc.c:510
 #, fuzzy, c-format
 msgid "%s is undefined"
-msgstr "%s indefinido."
+msgstr "@%s `%s' definido anteriormente"
 
 #: info/infodoc.c:798
 msgid "Show what to type to execute a given command"
@@ -889,12 +876,16 @@ msgstr "'%s' não é sobre quaisquer chaves"
 #: info/infodoc.c:830
 #, fuzzy, c-format
 msgid "%s can only be invoked via %s"
-msgstr "%s pode somente ser chamado via %s."
+msgstr ""
+"Os seguintes comandos podem somente serem chamados via %s:\n"
+"\n"
 
 #: info/infodoc.c:834
 #, fuzzy, c-format
 msgid "%s can be invoked via %s"
-msgstr "%s pode ser chamado via %s."
+msgstr ""
+"Os seguintes comandos podem somente serem chamados via %s:\n"
+"\n"
 
 #: info/infodoc.c:839
 #, c-format
@@ -989,9 +980,9 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Lê um nome de comando na área de eco e executa-o"
 
 #: info/m-x.c:136
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot execute an 'echo-area' command here"
-msgstr "Impossibilitado executar comando 'echo-area' aqui"
+msgstr ""
 
 #: info/m-x.c:150
 msgid "Set the height of the displayed window"
@@ -1232,8 +1223,8 @@ msgstr "Seleciona esse item de menu"
 #, fuzzy, c-format
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
-msgstr[0] "Não existe %d item nesse menu."
-msgstr[1] "Não existem %d itens nesse menu."
+msgstr[0] "Seleciona o último item nesse menu de nodo"
+msgstr[1] "Seleciona o último item nesse menu de nodo"
 
 #: info/session.c:2227
 msgid "Select the last item in this node's menu"
@@ -1270,386 +1261,384 @@ msgstr "Lê um item de menu e seleciona seu nodo"
 msgid "Read a footnote or cross reference and select its node"
 msgstr "Lê uma nota de rodapé ou referência cruzada e seleciona seu nodo"
 
-#: info/session.c:2469
+#: info/session.c:2486
 msgid "Move to the start of this node's menu"
 msgstr "Vai para o início desse menu de nodo"
 
-#: info/session.c:2491
+#: info/session.c:2508
 msgid "Visit as many menu items at once as possible"
 msgstr "Visita tantos itens de menu quanto for possivel de uma só vez"
 
-#: info/session.c:2591
+#: info/session.c:2608
 msgid "Move to the previous cross reference"
 msgstr "Vai para a referência cruzada anterior"
 
-#: info/session.c:2654
+#: info/session.c:2671
 msgid "Move to the next cross reference"
 msgstr "Vai para a referência cruzada anterior"
 
-#: info/session.c:2715
+#: info/session.c:2732
 msgid "Select reference or menu item appearing on this line"
 msgstr "Seleciona a referência ou o item de menu que aparece nessa linha"
 
-#: info/session.c:2749
-#, fuzzy, c-format
+#: info/session.c:2766
+#, c-format
 msgid "No menu in node '%s'"
-msgstr "Nenhum menu no nodo '%s'."
+msgstr ""
 
-#: info/session.c:2796
-#, fuzzy, c-format
+#: info/session.c:2813
+#, c-format
 msgid "Unable to find node referenced by '%s' in '%s'"
-msgstr "Incapaz de encontrar o nodo referenciado por '%s' em `%s'."
+msgstr ""
 
-#: info/session.c:2852
+#: info/session.c:2869
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Lê uma lista de menus iniciando a parti de dir e seguindo-o"
 
-#: info/session.c:2854
+#: info/session.c:2871
 msgid "Follow menus: "
 msgstr "Segue os menus: "
 
-#: info/session.c:2959
+#: info/session.c:2976
 msgid "Select the Next node"
 msgstr "Seleciona o nodo adiante"
 
-#: info/session.c:2966
+#: info/session.c:2983
 msgid "Select the Prev node"
 msgstr "Seleciona o nodo anterior"
 
-#: info/session.c:2973
+#: info/session.c:2990
 msgid "Select the Up node"
 msgstr "Seleciona o nodo acima"
 
-#: info/session.c:2979
+#: info/session.c:2996
 msgid "Select the last node in this file"
 msgstr "Seleciona o último nodo nesse arquivo"
 
-#: info/session.c:3006 info/session.c:3039
+#: info/session.c:3023 info/session.c:3056
 msgid "This window has no additional nodes"
 msgstr "Essa janela não tem nodos adicionais"
 
-#: info/session.c:3012
+#: info/session.c:3029
 msgid "Select the first node in this file"
 msgstr "Seleciona o primeiro nodo nesse arquivo"
 
-#: info/session.c:3146
+#: info/session.c:3163
 #, fuzzy
 msgid "No more nodes within this document"
-msgstr "Nenhum nodo dentro desse documento"
+msgstr "Nenhum nodo anterior no histórico"
 
-#: info/session.c:3190 info/session.c:3229
+#: info/session.c:3207 info/session.c:3246
 #, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document"
-msgstr "Nenhum 'Prev' ou 'Up' para esse nodo dentro desse documento."
+msgstr "nome antigo de `%s' é um nodo do documento"
 
-#: info/session.c:3242
+#: info/session.c:3259
 msgid "Move forwards or down through node structure"
 msgstr "Move adiante ou abaixo através da estrutura de nodos"
 
-#: info/session.c:3259
+#: info/session.c:3276
 msgid "Move backwards or up through node structure"
 msgstr "Volta ou sobe através da estrutura de nodos"
 
-#: info/session.c:3282
+#: info/session.c:3299
 msgid "Read a node name and select it"
 msgstr "Lê um nome de nodo e seleciona-o"
 
-#: info/session.c:3336 info/session.c:3340
+#: info/session.c:3353 info/session.c:3357
 msgid "Goto node: "
 msgstr "Vai para o nodo: "
 
-#: info/session.c:3519
+#: info/session.c:3536
 msgid "Find the node describing program invocation"
 msgstr "Encontra o nodo descrevendo como chamar o programa"
 
-#: info/session.c:3521
+#: info/session.c:3538
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Encontra o nodo como chamar de [%s]: "
 
-#: info/session.c:3566
+#: info/session.c:3583
 msgid "Read a manpage reference and select it"
 msgstr "Lê uma referência de página de manual e seleciona-a"
 
-#: info/session.c:3570
+#: info/session.c:3587
 msgid "Get Manpage: "
 msgstr "Pega Página de Manual: "
 
-#: info/session.c:3591
+#: info/session.c:3608
 msgid "Select the node 'Top' in this file"
 msgstr "Seleciona o nodo 'Topo' desse arquivo"
 
-#: info/session.c:3597
+#: info/session.c:3614
 msgid "Select the node '(dir)'"
 msgstr "Seleciona o nodo '(dir)'"
 
-#: info/session.c:3603
+#: info/session.c:3620
 msgid "Show full file name of node being displayed"
 msgstr "Mostra o nome de arquivo completo do nodo sendo mostrado"
 
-#: info/session.c:3620
+#: info/session.c:3637
 msgid "Select the most recently selected node"
 msgstr "Seleciona o nodo mais recentemente selecionado"
 
-#: info/session.c:3625
+#: info/session.c:3642
 #, c-format
 msgid "No earlier node in history"
 msgstr "Nenhum nodo anterior no histórico"
 
-#: info/session.c:3629
+#: info/session.c:3646
 msgid "Read the name of a file and select it"
 msgstr "Lê o nome de um arquivo e seleciona-o"
 
-#: info/session.c:3633
+#: info/session.c:3650
 msgid "Find file: "
 msgstr "Encontra o arquivo: "
 
-#: info/session.c:3650
+#: info/session.c:3667
 #, fuzzy, c-format
 msgid "Cannot find '%s'"
-msgstr "Desconhecido '%s'."
+msgstr "Não posso encontrar uma janela!"
 
-#: info/session.c:3698
+#: info/session.c:3715
 #, fuzzy, c-format
 msgid "Could not create output file '%s'"
-msgstr "Não posso criar arquivo de saída '%s'."
+msgstr "não posso ler o arquivo de inicialização %s"
 
-#: info/session.c:3712
+#: info/session.c:3729
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "erro ao gravar em %s: %s"
 
-#: info/session.c:3721
+#: info/session.c:3738
 #, c-format
 msgid "closing %s"
 msgstr "fechando %s"
 
-#: info/session.c:3770
+#: info/session.c:3787
 #, c-format
 msgid "writing node %s..."
 msgstr "gravando nodo %s..."
 
-#: info/session.c:3816
+#: info/session.c:3833
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr ""
 "Colocando o conteúdo desse nodo em um pipe através de INFO_PRINT_COMMAND"
 
-#: info/session.c:3844
-#, fuzzy, c-format
+#: info/session.c:3861
+#, c-format
 msgid "Cannot open pipe to '%s'"
-msgstr "Não posso abrir um pipe para '%s'."
+msgstr ""
 
-#: info/session.c:3849
+#: info/session.c:3866
 #, c-format
 msgid "printing node %s..."
 msgstr "imprimindo o nodo %s..."
 
-#: info/session.c:3857
+#: info/session.c:3874
 #, c-format
 msgid "finished printing node %s"
 msgstr "terminada a impressão do nodo %s"
 
-#: info/session.c:3889
+#: info/session.c:3906
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Muda o uso de expressões regulares em buscas"
 
-#: info/session.c:3893
+#: info/session.c:3910
 #, fuzzy, c-format
 msgid "Using regular expressions for searches"
-msgstr "Usando expressões regulares para buscas."
+msgstr "Muda o uso de expressões regulares em buscas"
 
-#: info/session.c:3894
-#, fuzzy, c-format
+#: info/session.c:3911
+#, c-format
 msgid "Using literal strings for searches"
-msgstr "Usando sequências de caracteres literais para buscas."
+msgstr ""
 
-#: info/session.c:4099
-#, fuzzy
+#: info/session.c:4116
 msgid "Search continued from the end of the document"
-msgstr "Busca continuada a partir do fim do documento."
-
-#: info/session.c:4104
-#, fuzzy
-msgid "Search continued from the beginning of the document"
-msgstr "Busca continuada a partir do início do documento."
+msgstr ""
 
 #: info/session.c:4121
+#, fuzzy
+msgid "Search continued from the beginning of the document"
+msgstr "Destrua o início da linha"
+
+#: info/session.c:4138
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Buscando subarquivo %s ..."
 
-#: info/session.c:4157 info/session.c:4417 info/session.c:4530
+#: info/session.c:4174 info/session.c:4437 info/session.c:4550
 #, fuzzy, c-format
 msgid "Search failed"
-msgstr "Não encontrado."
+msgstr "Busca"
 
-#: info/session.c:4174
+#: info/session.c:4191
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Regexp search"
 msgstr "Busca de regexp"
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Search"
 msgstr "Busca"
 
-#: info/session.c:4176 info/session.c:4182
+#: info/session.c:4193 info/session.c:4199
 msgid " case-sensitively"
 msgstr "sensivelmente à caixa"
 
-#: info/session.c:4177 info/session.c:4183
+#: info/session.c:4194 info/session.c:4200
 msgid " backward"
 msgstr "para trás"
 
-#: info/session.c:4180
+#: info/session.c:4197
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4200
+#: info/session.c:4217
 msgid "Search string too short"
 msgstr "Sequência de caractere de busca muito curta"
 
-#: info/session.c:4393
+#: info/session.c:4408
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "Voltando ao anterior que coincide com %s"
 
-#: info/session.c:4417 info/session.c:4530
+#: info/session.c:4437 info/session.c:4550
 #, fuzzy, c-format
 msgid "No more matches"
-msgstr "Sem coincidentes."
+msgstr "Nenhuma ocorrência do padrão"
 
-#: info/session.c:4557
-#, fuzzy
+#: info/session.c:4577
 msgid "Search this node and subnodes for a string"
-msgstr "Busca no nodo e nos subnodos por caracteres."
+msgstr ""
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4564
+#: info/session.c:4584
 #, fuzzy, c-format
 msgid "Search under %s: "
 msgstr "Buscando subarquivo %s ..."
 
-#: info/session.c:4579
+#: info/session.c:4599
 msgid "Go to next match in Info sub-tree"
 msgstr "Vá para o próximo coincidente nos níveis abaixo"
 
-#: info/session.c:4583 info/session.c:4595
+#: info/session.c:4603 info/session.c:4615
 #, c-format
 msgid "No active search"
 msgstr "Nenhuma busca ativa"
 
-#: info/session.c:4591
+#: info/session.c:4611
 msgid "Go to previous match in Info sub-tree"
 msgstr "Vá para o coincidente anterior nos níveis abaixo"
 
-#: info/session.c:4604
+#: info/session.c:4624
 msgid "Read a string and search for it case-sensitively"
 msgstr "Lê uma sequência de caracteres e busca-a sensivelmente à caixa"
 
-#: info/session.c:4609
+#: info/session.c:4629
 msgid "Read a string and search for it"
 msgstr "Lê uma sequência de caracteres e busca-a"
 
-#: info/session.c:4615
+#: info/session.c:4635
 msgid "Read a string and search backward for it"
 msgstr "Lê uma sequência de caracteres e busca-a voltando"
 
-#: info/session.c:4623
+#: info/session.c:4643
 msgid "Repeat last search in the same direction"
 msgstr "Repita a última busca na mesma direção"
 
-#: info/session.c:4631 info/session.c:4676
+#: info/session.c:4651 info/session.c:4696
 msgid "No previous search string"
 msgstr "Nenhuma sequência de caracteres de busca anterior"
 
-#: info/session.c:4668
+#: info/session.c:4688
 msgid "Repeat last search in the reverse direction"
 msgstr "Repita a última busca na direção contrária"
 
-#: info/session.c:4715
+#: info/session.c:4735
 msgid "Clear displayed search matches"
 msgstr "Limpar padrões de busca mostrados"
 
-#: info/session.c:4731 info/session.c:4737
+#: info/session.c:4751 info/session.c:4757
 msgid "Search interactively for a string as you type it"
 msgstr ""
 "Busca iterativamente por uma sequência de caracteres da forma como foi "
 "digitada"
 
-#: info/session.c:4857
+#: info/session.c:4877
 msgid "Regexp I-search backward: "
 msgstr "Regexp I-search para trás: "
 
-#: info/session.c:4858
+#: info/session.c:4878
 msgid "I-search backward: "
 msgstr "I-search de volta: "
 
-#: info/session.c:4860
+#: info/session.c:4880
 msgid "Regexp I-search: "
 msgstr "Regexp I-search: "
 
-#: info/session.c:4861
+#: info/session.c:4881
 msgid "I-search: "
 msgstr "I-search: "
 
-#: info/session.c:4886 info/session.c:4889
+#: info/session.c:4906 info/session.c:4909
 msgid "Failing "
 msgstr "Falha "
 
-#: info/session.c:5254
+#: info/session.c:5274
 msgid "Cancel current operation"
 msgstr "Cancela a operação atual"
 
-#: info/session.c:5261
+#: info/session.c:5281
 msgid "Quit"
 msgstr "Sair"
 
-#: info/session.c:5266
+#: info/session.c:5286
 msgid "Display version of Info being run"
 msgstr "Mostre informação do Info de agora"
 
-#: info/session.c:5268
+#: info/session.c:5288
 #, c-format
 msgid "GNU Info version %s"
 msgstr "Versão Info %s GNU"
 
-#: info/session.c:5273
+#: info/session.c:5293
 msgid "Redraw the display"
 msgstr "Atualiza a tela"
 
-#: info/session.c:5310
+#: info/session.c:5330
 msgid "Quit using Info"
 msgstr "Sair usando Info"
 
-#: info/session.c:5326
+#: info/session.c:5346
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Executa o comando associado a essa variante em caixa baixa da chave"
 
-#: info/session.c:5337
+#: info/session.c:5357
 #, fuzzy, c-format
 msgid "Unknown command (%s)"
-msgstr "Comando desconhecido (%s)."
+msgstr "comando desconhecido `%s'"
 
-#: info/session.c:5340
+#: info/session.c:5360
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "\"%s\" inválido"
 
-#: info/session.c:5341
+#: info/session.c:5361
 #, c-format
 msgid "'%s' is invalid"
 msgstr "'%s' inválido"
 
-#: info/session.c:5659
+#: info/session.c:5679
 msgid "Add this digit to the current numeric argument"
 msgstr "Adiciona esse dígito ao argumento numérico atual"
 
-#: info/session.c:5666
+#: info/session.c:5686
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Inicia (ou multiplica por 4) o argumento numérico atual"
 
@@ -3702,3 +3691,16 @@ msgstr "%s: erro ao fechar o arquivo de links internos %s: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: não posso abrir %s para escrita: %s\n"
+
+#~ msgid ""
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILE           read initial keystrokes from FILE.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node."
+#~ msgstr ""
+#~ "  -R, --raw-escapes            saída usando escapes \"raw\" ANSI "
+#~ "(padrão).\n"
+#~ "      --no-raw-escapes         escapes de saída como texto literais.\n"
+#~ "      --restore=ARQUIVO        leia as digitações a partir de ARQUIVO.\n"
+#~ "  -O, --show-options, --usage  vá para o nodo de opções de linha de "
+#~ "comando."

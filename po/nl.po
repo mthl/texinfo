@@ -12,10 +12,10 @@
 # Ivo Timmermans <zarq@iname.com>, 1998.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-6.3.90\n"
+"Project-Id-Version: texinfo-6.3.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-20 17:09+0100\n"
-"PO-Revision-Date: 2017-05-12 12:56+0200\n"
+"POT-Creation-Date: 2017-06-18 12:27+0100\n"
+"PO-Revision-Date: 2017-05-21 17:48+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -296,7 +296,7 @@ msgid "Look up a string in the index for this file"
 msgstr "Een tekenreeks opzoeken in de index van dit document"
 
 #: info/indices.c:215
-#, fuzzy, c-format
+#, c-format
 msgid "No indices found"
 msgstr "Geen indexen gevonden."
 
@@ -322,17 +322,17 @@ msgstr ""
 "commando"
 
 #: info/indices.c:459
-#, fuzzy, c-format
+#, c-format
 msgid "No previous index search string"
 msgstr "Geen eerdere index-zoektekenreeks."
 
 #: info/indices.c:477
-#, fuzzy, c-format
+#, c-format
 msgid "No more index entries containing '%s'"
 msgstr "Er zijn geen index-items meer die '%s' bevatten."
 
 #: info/indices.c:478
-#, fuzzy, c-format
+#, c-format
 msgid "No index entries containing '%s'"
 msgstr "Er zijn geen index-items die '%s' bevatten."
 
@@ -382,27 +382,27 @@ msgid "No index entries containing '%s'."
 msgstr "Er zijn geen index-items die '%s' bevatten."
 
 #: info/indices.h:42
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have '%s' in their indices"
 msgstr "Geen van de beschikbare Info-bestanden heeft '%s' in z'n index."
 
 #: info/info-utils.c:880
-#, fuzzy, c-format
+#, c-format
 msgid "Error converting file character encoding"
 msgstr "Fout tijdens converteren van tekencodering van bestand."
 
-#: info/info.c:280 info/session.c:2771
-#, fuzzy, c-format
+#: info/info.c:280 info/session.c:2788
+#, c-format
 msgid "No menu item '%s' in node '%s'"
 msgstr "Er is geen menu-item '%s' op pagina '%s'."
 
-#: info/info.c:415 info/info.c:1188
-#, fuzzy, c-format
+#: info/info.c:415 info/info.c:1181
+#, c-format
 msgid "Cannot find node '%s'"
 msgstr "Kan pagina '%s' niet vinden."
 
 #: info/info.c:437
-#, fuzzy, c-format
+#, c-format
 msgid "No program name given"
 msgstr "Geen programmanaam gegeven."
 
@@ -463,14 +463,13 @@ msgstr ""
 "Documentatie in Info-opmaak lezen.\n"
 
 #: info/info.c:1095
+#, fuzzy
 msgid ""
-"Options:\n"
-"  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
-"  -d, --directory=DIR          add DIR to INFOPATH.\n"
-"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
-"  -f, --file=MANUAL            specify Info manual to visit."
+"Frequently-used options:\n"
+"  -a, --all                    use all matching manuals\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals\n"
+"  -d, --directory=DIR          add DIR to INFOPATH\n"
+"  -f, --file=MANUAL            specify Info manual to visit"
 msgstr ""
 "Opties:\n"
 "  -a, --all                    alle overeenkomende handleidingen gebruiken\n"
@@ -481,12 +480,13 @@ msgstr ""
 "      --dribble=BESTAND        toetsaanslagen in dit bestand opslaan\n"
 "  -f, --file=HANDLEIDING       het te bekijken Info-bestand"
 
-#: info/info.c:1103
+#: info/info.c:1102
+#, fuzzy
 msgid ""
-"  -h, --help                   display this help and exit.\n"
-"      --index-search=STRING    go to node pointed by index entry STRING.\n"
-"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILE            output selected nodes to FILE."
+"  -h, --help                   display this help and exit\n"
+"      --index-search=STRING    go to node pointed by index entry STRING\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file\n"
+"  -o, --output=FILE            output selected nodes to FILE"
 msgstr ""
 "  -h, --help                   deze hulptekst tonen en stoppen\n"
 "      --index-search=NAAM      de pagina tonen waarnaar dit index-item "
@@ -494,35 +494,23 @@ msgstr ""
 "  -n, --node=PAGINANAAM        een te bezoeken pagina\n"
 "  -o, --output=BESTAND         de gekozen pagina's naar dit bestand schrijven"
 
-#: info/info.c:1109
-msgid ""
-"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
-"      --no-raw-escapes         output escapes as literal text.\n"
-"      --restore=FILE           read initial keystrokes from FILE.\n"
-"  -O, --show-options, --usage  go to command-line options node."
+#: info/info.c:1108
+msgid "  -O, --show-options, --usage  go to command-line options node"
 msgstr ""
-"  -R, --raw-escapes            \"ruwe\" ANSI-stuurcodes schrijven "
-"(standaard)\n"
-"      --no-raw-escapes         stuurcodes als tekst uitschrijven\n"
-"      --restore=BESTAND        de eerste toetsaanslagen uit dit bestand "
-"lezen\n"
-"  -O, --show-options, --usage  de pagina met de commandoregelopties tonen"
 
-#: info/info.c:1116
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#: info/info.c:1112
+#, fuzzy
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers"
 msgstr ""
 "  -b, --speech-friendly        uitvoer toesnijden op spraaksynthesizers"
 
-#: info/info.c:1120
+#: info/info.c:1116
+#, fuzzy
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
-"      --subnodes               recursively output menu items.\n"
-"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
-"      --vi-keys                use vi-like and less-like key bindings.\n"
-"      --version                display version information and exit.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
-"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
+"      --subnodes               recursively output menu items\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n"
+"      --version                display version information and exit\n"
+"  -w, --where, --location      print physical location of Info file"
 msgstr ""
 "      --strict-node-location   (voor debugging) bestandswijzers sic "
 "gebruiken\n"
@@ -535,7 +523,7 @@ msgstr ""
 "  -x, --debug=GETAL            debugging-niveau instellen (-1 voor "
 "allerhoogste)\n"
 
-#: info/info.c:1129
+#: info/info.c:1122
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -552,7 +540,7 @@ msgstr ""
 "Eventuele overige argumenten worden steeds begrepen als het te kiezen\n"
 "menu-item in de op dat moment bereikte pagina."
 
-#: info/info.c:1136
+#: info/info.c:1129
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
@@ -560,20 +548,22 @@ msgstr ""
 "\n"
 "Voor een overzicht van de commandotoetsen in 'info', typ hoofdletter 'H'."
 
-#: info/info.c:1139
+#: info/info.c:1132
+#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
-"  info                       show top-level dir menu\n"
-"  info info                  show the general manual for Info readers\n"
-"  info info-stnd             show the manual specific to this Info program\n"
-"  info emacs                 start at emacs node from top-level dir\n"
-"  info emacs buffers         select buffers menu entry in emacs manual\n"
-"  info emacs -n Files        start at Files node within emacs manual\n"
-"  info '(emacs)Files'        alternative way to start at Files node\n"
-"  info --show-options emacs  start at node with emacs' command line options\n"
-"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir"
+"  info                         show top-level dir menu\n"
+"  info info-stnd               show the manual for this Info program\n"
+"  info emacs                   start at emacs node from top-level dir\n"
+"  info emacs buffers           select buffers menu entry in emacs manual\n"
+"  info emacs -n Files          start at Files node within emacs manual\n"
+"  info '(emacs)Files'          alternative way to start at Files node\n"
+"  info --show-options emacs    start at node with emacs' command line "
+"options\n"
+"  info --subnodes -o out.txt emacs\n"
+"                               dump entire emacs manual to out.txt\n"
+"  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 "\n"
 "Voorbeelden:\n"
@@ -596,7 +586,7 @@ msgstr ""
 "dumpen\n"
 "  info -f ./foo.info           het bestand './foo.info' tonen"
 
-#: info/info.c:1154 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1147 install-info/install-info.c:616 tp/texi2any.pl:876
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -607,76 +597,67 @@ msgstr ""
 "en opmerkingen over de vertaling naar <vertaling@vrijschrift.org>.\n"
 "De Texinfo-webpagina is: http://www.gnu.org/software/texinfo/"
 
-#: info/info.c:1189
-#, fuzzy, c-format
+#: info/info.c:1182
+#, c-format
 msgid "Cannot find node '(%s)%s'"
 msgstr "Kan pagina '(%s)%s' niet vinden."
 
-#: info/info.c:1190
+#: info/info.c:1183
 msgid "Cannot find a window!"
 msgstr "Kan geen venster vinden!"
 
-#: info/info.c:1191
+#: info/info.c:1184
 msgid "Point doesn't appear within this window's node!"
 msgstr "Het punt bevindt zich niet in de pagina van dit venster!"
 
-#: info/info.c:1192
-#, fuzzy
+#: info/info.c:1185
 msgid "Cannot delete the last window"
 msgstr "Het laatste venster kan niet gesloten worden."
 
-#: info/info.c:1193
-#, fuzzy
+#: info/info.c:1186
 msgid "No menu in this node"
 msgstr "Er is geen menu op deze pagina."
 
-#: info/info.c:1194
-#, fuzzy
+#: info/info.c:1187
 msgid "No footnotes in this node"
 msgstr "Er zijn geen voetnoten op deze pagina."
 
-#: info/info.c:1195
-#, fuzzy
+#: info/info.c:1188
 msgid "No cross references in this node"
 msgstr "Er zijn geen kruisverwijzingen op deze pagina."
 
-#: info/info.c:1196
-#, fuzzy, c-format
+#: info/info.c:1189
+#, c-format
 msgid "No '%s' pointer for this node"
 msgstr "Er is geen '%s'-koppeling op deze pagina."
 
-#: info/info.c:1197
-#, fuzzy, c-format
+#: info/info.c:1190
+#, c-format
 msgid "Unknown Info command '%c'; try '?' for help"
 msgstr "Onbekend Info-commando '%c'; typ '?' voor hulp."
 
-#: info/info.c:1198
-#, fuzzy, c-format
+#: info/info.c:1191
+#, c-format
 msgid "Terminal type '%s' is not smart enough to run Info"
 msgstr "Terminaltype '%s' is niet krachtig genoeg voor Info."
 
-#: info/info.c:1199
-#, fuzzy
+#: info/info.c:1192
 msgid "You are already at the last page of this node"
 msgstr "U bent al aan het eind van deze pagina."
 
-#: info/info.c:1200
-#, fuzzy
+#: info/info.c:1193
 msgid "You are already at the first page of this node"
 msgstr "U bent al aan het begin van deze pagina."
 
-#: info/info.c:1201
-#, fuzzy
+#: info/info.c:1194
 msgid "Only one window"
-msgstr "Slechts één venster."
+msgstr "Er is slechts één venster."
 
-#: info/info.c:1202
-#, fuzzy
+#: info/info.c:1195
 msgid "Resulting window would be too small"
 msgstr "Het resulterende venster zou te klein zijn."
 
-#: info/info.c:1203
-#, fuzzy
+#: info/info.c:1196
 msgid "Not enough room for a help window, please delete a window"
 msgstr "Niet genoeg ruimte voor een hulp-venster; sluit een venster."
 
@@ -885,7 +866,7 @@ msgid "Describe key: %s"
 msgstr "Te beschrijven toets: %s"
 
 #: info/infodoc.c:474 info/infodoc.c:510
-#, fuzzy, c-format
+#, c-format
 msgid "%s is undefined"
 msgstr "%s is niet gedefinieerd."
 
@@ -903,19 +884,19 @@ msgid "'%s' is not on any keys"
 msgstr "'%s' is aan geen enkele toetscombinatie toegekend"
 
 #: info/infodoc.c:830
-#, fuzzy, c-format
+#, c-format
 msgid "%s can only be invoked via %s"
 msgstr "%s kan alleen aangeroepen worden via %s."
 
 #: info/infodoc.c:834
-#, fuzzy, c-format
+#, c-format
 msgid "%s can be invoked via %s"
 msgstr "%s kan aangeroepen worden via %s."
 
 #: info/infodoc.c:839
 #, c-format
 msgid "There is no function named '%s'"
-msgstr "Er is geen functie met de naam '%s'"
+msgstr "Er is geen functie met de naam '%s'."
 
 #: info/infomap.c:599
 #, c-format
@@ -1005,7 +986,7 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "De naam van een commando in de echoregel lezen en deze uitvoeren"
 
 #: info/m-x.c:136
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot execute an 'echo-area' command here"
 msgstr "Kan hier geen 'echoregel'-commando uitvoeren."
 
@@ -1071,7 +1052,7 @@ msgstr "Te selecteren bezochte pagina: "
 #: info/nodemenu.c:278
 #, c-format
 msgid "The reference disappeared! (%s)."
-msgstr "De verwijzing is verdwenen! (%s)."
+msgstr "De verwijzing is verdwenen!  (%s)"
 
 #: info/pcterm.c:225
 #, c-format
@@ -1245,7 +1226,7 @@ msgid "Select this menu item"
 msgstr "Het huidige menu-item selecteren"
 
 #: info/session.c:2218
-#, fuzzy, c-format
+#, c-format
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
 msgstr[0] "Dit menu heeft minder dan %d item."
@@ -1274,9 +1255,9 @@ msgid "Follow xref: "
 msgstr "Te volgen kruisverwijzing: "
 
 #: info/session.c:2426
-#, fuzzy, c-format
+#, c-format
 msgid "The reference disappeared! (%s)"
-msgstr "De verwijzing is verdwenen! (%s)."
+msgstr "De verwijzing is verdwenen!  (%s)"
 
 #: info/session.c:2438
 msgid "Read a menu item and select its node"
@@ -1287,386 +1268,381 @@ msgid "Read a footnote or cross reference and select its node"
 msgstr ""
 "De naam van een voetnoot of kruisverwijzing lezen en diens pagina selecteren"
 
-#: info/session.c:2469
+#: info/session.c:2486
 msgid "Move to the start of this node's menu"
 msgstr "Naar het begin van het menu op deze pagina"
 
-#: info/session.c:2491
+#: info/session.c:2508
 msgid "Visit as many menu items at once as possible"
 msgstr "Zo veel mogelijk menu-items tegelijk bezoeken"
 
-#: info/session.c:2591
+#: info/session.c:2608
 msgid "Move to the previous cross reference"
 msgstr "Naar de vorige kruisverwijzing springen"
 
-#: info/session.c:2654
+#: info/session.c:2671
 msgid "Move to the next cross reference"
 msgstr "Naar de volgende kruisverwijzing springen"
 
-#: info/session.c:2715
+#: info/session.c:2732
 msgid "Select reference or menu item appearing on this line"
 msgstr "De verwijzing of het menu-item in deze regel volgen"
 
-#: info/session.c:2749
-#, fuzzy, c-format
+#: info/session.c:2766
+#, c-format
 msgid "No menu in node '%s'"
 msgstr "Er is geen menu in pagina '%s'."
 
-#: info/session.c:2796
-#, fuzzy, c-format
+#: info/session.c:2813
+#, c-format
 msgid "Unable to find node referenced by '%s' in '%s'"
 msgstr "Kan de pagina waarnaar verwezen werd door '%s' niet vinden in '%s'."
 
-#: info/session.c:2852
+#: info/session.c:2869
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Een reeks menu-items lezen en deze vanaf de inhoudspagina volgen"
 
-#: info/session.c:2854
+#: info/session.c:2871
 msgid "Follow menus: "
 msgstr "Te volgen reeks menu-items: "
 
-#: info/session.c:2959
+#: info/session.c:2976
 msgid "Select the Next node"
 msgstr "Naar de volgende pagina op dit niveau"
 
-#: info/session.c:2966
+#: info/session.c:2983
 msgid "Select the Prev node"
 msgstr "Naar de voorgaande pagina op dit niveau"
 
-#: info/session.c:2973
+#: info/session.c:2990
 msgid "Select the Up node"
 msgstr "Naar de bovenliggende pagina"
 
-#: info/session.c:2979
+#: info/session.c:2996
 msgid "Select the last node in this file"
 msgstr "Naar de laatste pagina van dit document"
 
-#: info/session.c:3006 info/session.c:3039
+#: info/session.c:3023 info/session.c:3056
 msgid "This window has no additional nodes"
 msgstr "Dit venster heeft geen extra pagina's."
 
-#: info/session.c:3012
+#: info/session.c:3029
 msgid "Select the first node in this file"
 msgstr "Naar de eerste pagina van dit document"
 
-#: info/session.c:3146
-#, fuzzy
+#: info/session.c:3163
 msgid "No more nodes within this document"
 msgstr "Dit is de laatste pagina van dit document."
 
-#: info/session.c:3190 info/session.c:3229
-#, fuzzy
+#: info/session.c:3207 info/session.c:3246
 msgid "No 'Prev' or 'Up' for this node within this document"
 msgstr "Dit is de eerste pagina van dit document."
 
-#: info/session.c:3242
+#: info/session.c:3259
 msgid "Move forwards or down through node structure"
 msgstr "Voorwaarts door alle pagina's van een document bladeren"
 
-#: info/session.c:3259
+#: info/session.c:3276
 msgid "Move backwards or up through node structure"
 msgstr "Achterwaarts door alle pagina's van een document bladeren"
 
-#: info/session.c:3282
+#: info/session.c:3299
 msgid "Read a node name and select it"
 msgstr "De naam van een pagina lezen en deze selecteren"
 
-#: info/session.c:3336 info/session.c:3340
+#: info/session.c:3353 info/session.c:3357
 msgid "Goto node: "
 msgstr "Te bezoeken pagina: "
 
-#: info/session.c:3519
+#: info/session.c:3536
 msgid "Find the node describing program invocation"
 msgstr "De pagina zoeken die de aanroepwijze van het programma beschrijft"
 
-#: info/session.c:3521
+#: info/session.c:3538
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Aanroepbeschrijving bekijken van [%s]: "
 
-#: info/session.c:3566
+#: info/session.c:3583
 msgid "Read a manpage reference and select it"
 msgstr "Een man-paginaverwijzing lezen en deze selecteren"
 
-#: info/session.c:3570
+#: info/session.c:3587
 msgid "Get Manpage: "
 msgstr "Te bekijken man-pagina: "
 
-#: info/session.c:3591
+#: info/session.c:3608
 msgid "Select the node 'Top' in this file"
 msgstr "Naar de top-pagina van dit document"
 
-#: info/session.c:3597
+#: info/session.c:3614
 msgid "Select the node '(dir)'"
 msgstr "Naar de hoofd-inhoudspagina"
 
-#: info/session.c:3603
+#: info/session.c:3620
 msgid "Show full file name of node being displayed"
 msgstr "Volledige bestandsnaam van getoonde pagina tonen"
 
-#: info/session.c:3620
+#: info/session.c:3637
 msgid "Select the most recently selected node"
 msgstr "Terug naar de laatst geziene pagina"
 
-#: info/session.c:3625
+#: info/session.c:3642
 #, c-format
 msgid "No earlier node in history"
 msgstr "Er is geen vroegere pagina in de geschiedenis."
 
-#: info/session.c:3629
+#: info/session.c:3646
 msgid "Read the name of a file and select it"
 msgstr "De naam van een bestand lezen en deze selecteren"
 
-#: info/session.c:3633
+#: info/session.c:3650
 msgid "Find file: "
 msgstr "Te bezoeken bestand: "
 
-#: info/session.c:3650
-#, fuzzy, c-format
+#: info/session.c:3667
+#, c-format
 msgid "Cannot find '%s'"
 msgstr "Kan '%s' niet vinden."
 
-#: info/session.c:3698
-#, fuzzy, c-format
+#: info/session.c:3715
+#, c-format
 msgid "Could not create output file '%s'"
 msgstr "Kan uitvoerbestand '%s' niet aanmaken."
 
-#: info/session.c:3712
+#: info/session.c:3729
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "fout bij het schrijven naar '%s': %s"
 
-#: info/session.c:3721
+#: info/session.c:3738
 #, c-format
 msgid "closing %s"
 msgstr "sluiten van %s"
 
-#: info/session.c:3770
+#: info/session.c:3787
 #, c-format
 msgid "writing node %s..."
 msgstr "schrijven van pagina %s..."
 
-#: info/session.c:3816
+#: info/session.c:3833
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "De inhoud van deze pagina doorsluizen naar het INFO_PRINT_COMMAND"
 
-#: info/session.c:3844
-#, fuzzy, c-format
+#: info/session.c:3861
+#, c-format
 msgid "Cannot open pipe to '%s'"
 msgstr "Kan geen pijp naar '%s' openen."
 
-#: info/session.c:3849
+#: info/session.c:3866
 #, c-format
 msgid "printing node %s..."
 msgstr "afdrukken van pagina %s..."
 
-#: info/session.c:3857
+#: info/session.c:3874
 #, c-format
 msgid "finished printing node %s"
 msgstr "klaar met afdrukken van pagina %s"
 
-#: info/session.c:3889
+#: info/session.c:3906
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Het gebruik van reguliere expressies bij zoekopdrachten aan-/uitzetten"
 
-#: info/session.c:3893
-#, fuzzy, c-format
+#: info/session.c:3910
+#, c-format
 msgid "Using regular expressions for searches"
 msgstr "Zoeken gebruikt reguliere expressies."
 
-#: info/session.c:3894
-#, fuzzy, c-format
+#: info/session.c:3911
+#, c-format
 msgid "Using literal strings for searches"
 msgstr "Zoeken gebruikt letterlijke tekst."
 
-#: info/session.c:4099
-#, fuzzy
+#: info/session.c:4116
 msgid "Search continued from the end of the document"
 msgstr "Het zoeken is verdergegaan vanaf het einde."
 
-#: info/session.c:4104
-#, fuzzy
+#: info/session.c:4121
 msgid "Search continued from the beginning of the document"
 msgstr "Het zoeken is verdergegaan vanaf het begin."
 
-#: info/session.c:4121
+#: info/session.c:4138
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Zoeken naar subbestand %s..."
 
-#: info/session.c:4157 info/session.c:4417 info/session.c:4530
-#, fuzzy, c-format
+#: info/session.c:4174 info/session.c:4437 info/session.c:4550
+#, c-format
 msgid "Search failed"
 msgstr "Niet gevonden."
 
-#: info/session.c:4174
+#: info/session.c:4191
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [\"%s\"]: "
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Regexp search"
 msgstr "Zoeken naar expressie"
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Search"
 msgstr "Zoeken"
 
-#: info/session.c:4176 info/session.c:4182
+#: info/session.c:4193 info/session.c:4199
 msgid " case-sensitively"
 msgstr " (hooflettergevoelig)"
 
-#: info/session.c:4177 info/session.c:4183
+#: info/session.c:4194 info/session.c:4200
 msgid " backward"
 msgstr " (achterwaarts)"
 
 # FIXME: huh?
-#: info/session.c:4180
+#: info/session.c:4197
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4200
+#: info/session.c:4217
 msgid "Search string too short"
 msgstr "Zoektekenreeks is te kort."
 
-#: info/session.c:4393
+#: info/session.c:4408
 #, c-format
 msgid "Going back to last match from %s"
-msgstr "Terugkerend naar de laatste overeenkomst van %s"
+msgstr "Terugkerend naar de laatste overeenkomst in '%s'."
 
-#: info/session.c:4417 info/session.c:4530
-#, fuzzy, c-format
+#: info/session.c:4437 info/session.c:4550
+#, c-format
 msgid "No more matches"
 msgstr "Geen verdere overeenkomsten."
 
-#: info/session.c:4557
-#, fuzzy
+#: info/session.c:4577
 msgid "Search this node and subnodes for a string"
 msgstr "Deze pagina en subpagina's doorzoeken naar een tekenreeks"
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4564
-#, fuzzy, c-format
+#: info/session.c:4584
+#, c-format
 msgid "Search under %s: "
-msgstr "Zoeken naar subbestand %s..."
+msgstr "Zoeken onder '%s': "
 
-#: info/session.c:4579
+#: info/session.c:4599
 msgid "Go to next match in Info sub-tree"
 msgstr "Naar de volgende overeenkomst in de Info-subboom gaan"
 
-#: info/session.c:4583 info/session.c:4595
+#: info/session.c:4603 info/session.c:4615
 #, c-format
 msgid "No active search"
-msgstr "Geen actieve zoekopdracht."
+msgstr "Er is geen actieve zoekopdracht."
 
-#: info/session.c:4591
+#: info/session.c:4611
 msgid "Go to previous match in Info sub-tree"
 msgstr "Naar de voorgaande overeenkomst in de Info-subboom gaan"
 
-#: info/session.c:4604
+#: info/session.c:4624
 msgid "Read a string and search for it case-sensitively"
 msgstr "Een tekenreeks lezen en er hoofdlettergevoelig naar zoeken"
 
-#: info/session.c:4609
+#: info/session.c:4629
 msgid "Read a string and search for it"
 msgstr "Een tekenreeks lezen en er naar zoeken"
 
-#: info/session.c:4615
+#: info/session.c:4635
 msgid "Read a string and search backward for it"
 msgstr "Een tekenreeks lezen en er achterwaarts naar zoeken"
 
-#: info/session.c:4623
+#: info/session.c:4643
 msgid "Repeat last search in the same direction"
 msgstr "De laatste zoekopdracht in dezelfde richting herhalen"
 
-#: info/session.c:4631 info/session.c:4676
+#: info/session.c:4651 info/session.c:4696
 msgid "No previous search string"
 msgstr "Geen eerdere zoektekenreeks."
 
-#: info/session.c:4668
+#: info/session.c:4688
 msgid "Repeat last search in the reverse direction"
 msgstr "De laatste zoekopdracht in tegenovergestelde richting herhalen"
 
-#: info/session.c:4715
+#: info/session.c:4735
 msgid "Clear displayed search matches"
 msgstr "Getoonde zoekresultaten wissen"
 
-#: info/session.c:4731 info/session.c:4737
+#: info/session.c:4751 info/session.c:4757
 msgid "Search interactively for a string as you type it"
 msgstr "Naar een tekenreeks zoeken terwijl u deze intypt"
 
-#: info/session.c:4857
+#: info/session.c:4877
 msgid "Regexp I-search backward: "
 msgstr "Achterwaarts typend-zoeken naar expressie: "
 
-#: info/session.c:4858
+#: info/session.c:4878
 msgid "I-search backward: "
 msgstr "Achterwaarts typend-zoeken: "
 
-#: info/session.c:4860
+#: info/session.c:4880
 msgid "Regexp I-search: "
 msgstr "Typend-zoeken naar expressie: "
 
-#: info/session.c:4861
+#: info/session.c:4881
 msgid "I-search: "
 msgstr "Typend-zoeken: "
 
-#: info/session.c:4886 info/session.c:4889
+#: info/session.c:4906 info/session.c:4909
 msgid "Failing "
 msgstr "*Ongevonden* "
 
-#: info/session.c:5254
+#: info/session.c:5274
 msgid "Cancel current operation"
 msgstr "Huidige operatie annuleren"
 
 # Dit is een reactie op bovenstaande 'Cancel current operation'.
-#: info/session.c:5261
+#: info/session.c:5281
 msgid "Quit"
 msgstr "Geannuleerd"
 
-#: info/session.c:5266
+#: info/session.c:5286
 msgid "Display version of Info being run"
 msgstr "De versie van Info tonen"
 
-#: info/session.c:5268
+#: info/session.c:5288
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info, versie %s"
 
-#: info/session.c:5273
+#: info/session.c:5293
 msgid "Redraw the display"
 msgstr "Het venster opnieuw schrijven"
 
-#: info/session.c:5310
+#: info/session.c:5330
 msgid "Quit using Info"
 msgstr "Info afsluiten"
 
-#: info/session.c:5326
+#: info/session.c:5346
 msgid "Run command bound to this key's lowercase variant"
 msgstr ""
 "Commando uitvoeren dat behoort bij de kleinelettervariant van deze toets"
 
-#: info/session.c:5337
-#, fuzzy, c-format
+#: info/session.c:5357
+#, c-format
 msgid "Unknown command (%s)"
 msgstr "Onbekend commando (%s)."
 
-#: info/session.c:5340
+#: info/session.c:5360
 #, c-format
 msgid "\"%s\" is invalid"
-msgstr "\"%s\" is ongeldig"
+msgstr "\"%s\" is ongeldig."
 
-#: info/session.c:5341
+#: info/session.c:5361
 #, c-format
 msgid "'%s' is invalid"
-msgstr "'%s' is ongeldig"
+msgstr "'%s' is ongeldig."
 
-#: info/session.c:5659
+#: info/session.c:5679
 msgid "Add this digit to the current numeric argument"
 msgstr "Dit cijfer toevoegen aan het huidige numerieke argument"
 
-#: info/session.c:5666
+#: info/session.c:5686
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr ""
 "Een nieuw numeriek argument beginnen (of het huidige met 4 vermenigvuldigen)"
@@ -3712,6 +3688,19 @@ msgstr "%s: fout bij sluiten van %s, bestand met interne koppelingen: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kan %s niet openen om te schrijven: %s\n"
+
+#~ msgid ""
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILE           read initial keystrokes from FILE.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node."
+#~ msgstr ""
+#~ "  -R, --raw-escapes            \"ruwe\" ANSI-stuurcodes schrijven "
+#~ "(standaard)\n"
+#~ "      --no-raw-escapes         stuurcodes als tekst uitschrijven\n"
+#~ "      --restore=BESTAND        de eerste toetsaanslagen uit dit bestand "
+#~ "lezen\n"
+#~ "  -O, --show-options, --usage  de pagina met de commandoregelopties tonen"
 
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: optie '--%s' staat geen argument toe\n"

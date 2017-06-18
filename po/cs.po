@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-05-20 17:09+0100\n"
+"POT-Creation-Date: 2017-06-18 12:27+0100\n"
 "PO-Revision-Date: 2017-04-24 18:04+02:00\n"
 "Last-Translator: Petr Pisar <petr.pisar@atlas.cz>\n"
 "Language-Team: Czech <translation-team-cs@lists.sourceforge.net>\n"
@@ -396,12 +396,12 @@ msgstr "Žádné dostupné info soubory nemají ve svých rejstřících „%s�
 msgid "Error converting file character encoding"
 msgstr "Chyba při převodu kódování znaků souboru."
 
-#: info/info.c:280 info/session.c:2771
+#: info/info.c:280 info/session.c:2788
 #, fuzzy, c-format
 msgid "No menu item '%s' in node '%s'"
 msgstr "V uzlu „%2$s“ žádná položka nabídky „%1$s“ není."
 
-#: info/info.c:415 info/info.c:1188
+#: info/info.c:415 info/info.c:1181
 #, fuzzy, c-format
 msgid "Cannot find node '%s'"
 msgstr "Uzel „%s“ nelze nalézt."
@@ -468,14 +468,13 @@ msgstr ""
 "Čte dokumentaci ve formátu info.\n"
 
 #: info/info.c:1095
+#, fuzzy
 msgid ""
-"Options:\n"
-"  -a, --all                    use all matching manuals.\n"
-"  -k, --apropos=STRING         look up STRING in all indices of all "
-"manuals.\n"
-"  -d, --directory=DIR          add DIR to INFOPATH.\n"
-"      --dribble=FILE           remember user keystrokes in FILENAME.\n"
-"  -f, --file=MANUAL            specify Info manual to visit."
+"Frequently-used options:\n"
+"  -a, --all                    use all matching manuals\n"
+"  -k, --apropos=STRING         look up STRING in all indices of all manuals\n"
+"  -d, --directory=DIR          add DIR to INFOPATH\n"
+"  -f, --file=MANUAL            specify Info manual to visit"
 msgstr ""
 "Přepínače:\n"
 "  -a, --all                    použije všechny odpovídající manuály.\n"
@@ -486,12 +485,13 @@ msgstr ""
 "do SOUBORU.\n"
 "  -f, --file=MANUÁL            otevře tento info manuál."
 
-#: info/info.c:1103
+#: info/info.c:1102
+#, fuzzy
 msgid ""
-"  -h, --help                   display this help and exit.\n"
-"      --index-search=STRING    go to node pointed by index entry STRING.\n"
-"  -n, --node=NODENAME          specify nodes in first visited Info file.\n"
-"  -o, --output=FILE            output selected nodes to FILE."
+"  -h, --help                   display this help and exit\n"
+"      --index-search=STRING    go to node pointed by index entry STRING\n"
+"  -n, --node=NODENAME          specify nodes in first visited Info file\n"
+"  -o, --output=FILE            output selected nodes to FILE"
 msgstr ""
 "  -h, --help                   zobrazí tuto nápovědu a skončí.\n"
 "      --index-search=ŘETĚZEC   přejde na uzel odkazovaný položkou rejstříku\n"
@@ -499,33 +499,22 @@ msgstr ""
 "  -n, --node=NÁZEV_UZLU        určuje uzly v prvním otevřeném info souboru.\n"
 "  -o, --output=SOUBOR          vybrané uzly vypíše do SOUBORU."
 
-#: info/info.c:1109
-msgid ""
-"  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
-"      --no-raw-escapes         output escapes as literal text.\n"
-"      --restore=FILE           read initial keystrokes from FILE.\n"
-"  -O, --show-options, --usage  go to command-line options node."
+#: info/info.c:1108
+msgid "  -O, --show-options, --usage  go to command-line options node"
 msgstr ""
-"  -R, --raw-escapes            vypisuje „syrové“ ANSI sekvence (výchozí).\n"
-"      --no-raw-escapes         vypisuje sekvence jako doslovný text.\n"
-"      --restore=SOUBOR         načte úvodní stisky kláves ze SOUBORU.\n"
-"  -O, --show-options, --usage  přejde na uzel s přepínači pro příkazový "
-"řádek."
 
-#: info/info.c:1116
-msgid "  -b, --speech-friendly        be friendly to speech synthesizers."
+#: info/info.c:1112
+#, fuzzy
+msgid "  -b, --speech-friendly        be friendly to speech synthesizers"
 msgstr "  -b, --speech-friendly        režim pro hlasové syntetizátory."
 
-#: info/info.c:1120
+#: info/info.c:1116
+#, fuzzy
 msgid ""
-"      --strict-node-location   (for debugging) use Info file pointers as-"
-"is.\n"
-"      --subnodes               recursively output menu items.\n"
-"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR.\n"
-"      --vi-keys                use vi-like and less-like key bindings.\n"
-"      --version                display version information and exit.\n"
-"  -w, --where, --location      print physical location of Info file.\n"
-"  -x, --debug=NUMBER           set debugging level (-1 for all).\n"
+"      --subnodes               recursively output menu items\n"
+"  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n"
+"      --version                display version information and exit\n"
+"  -w, --where, --location      print physical location of Info file"
 msgstr ""
 "      --strict-node-location   použije ukazatele info souborů beze změny\n"
 "                               (vhodné pro ladění).\n"
@@ -537,7 +526,7 @@ msgstr ""
 "  -w, --where, --location      vypíše fyzické umístění info souboru.\n"
 "  -x, --debug=ČÍSLO            nastaví úroveň ladění (-1 pro vše).\n"
 
-#: info/info.c:1129
+#: info/info.c:1122
 msgid ""
 "\n"
 "The first non-option argument, if present, is the menu entry to start from;\n"
@@ -554,7 +543,7 @@ msgstr ""
 "Jakékoliv zbývající argumenty se považují za názvy položek v nabídce\n"
 "relativně k prvně navštívenému uzlu."
 
-#: info/info.c:1136
+#: info/info.c:1129
 msgid ""
 "\n"
 "For a summary of key bindings, type H within Info."
@@ -562,20 +551,22 @@ msgstr ""
 "\n"
 "Přehled klávesových zkratek je dostupný klávesou H."
 
-#: info/info.c:1139
+#: info/info.c:1132
+#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
-"  info                       show top-level dir menu\n"
-"  info info                  show the general manual for Info readers\n"
-"  info info-stnd             show the manual specific to this Info program\n"
-"  info emacs                 start at emacs node from top-level dir\n"
-"  info emacs buffers         select buffers menu entry in emacs manual\n"
-"  info emacs -n Files        start at Files node within emacs manual\n"
-"  info '(emacs)Files'        alternative way to start at Files node\n"
-"  info --show-options emacs  start at node with emacs' command line options\n"
-"  info --subnodes -o out.txt emacs  dump entire manual to out.txt\n"
-"  info -f ./foo.info         show file ./foo.info, not searching dir"
+"  info                         show top-level dir menu\n"
+"  info info-stnd               show the manual for this Info program\n"
+"  info emacs                   start at emacs node from top-level dir\n"
+"  info emacs buffers           select buffers menu entry in emacs manual\n"
+"  info emacs -n Files          start at Files node within emacs manual\n"
+"  info '(emacs)Files'          alternative way to start at Files node\n"
+"  info --show-options emacs    start at node with emacs' command line "
+"options\n"
+"  info --subnodes -o out.txt emacs\n"
+"                               dump entire emacs manual to out.txt\n"
+"  info -f ./foo.info           show file ./foo.info, not searching dir"
 msgstr ""
 "\n"
 "Příklady:\n"
@@ -592,7 +583,7 @@ msgstr ""
 "  info -f ./foo.info         zobrazí soubor ./foo.info, adresář se "
 "neprohledává"
 
-#: info/info.c:1154 install-info/install-info.c:616 tp/texi2any.pl:876
+#: info/info.c:1147 install-info/install-info.c:616 tp/texi2any.pl:876
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -604,75 +595,75 @@ msgstr ""
 "(česky).\n"
 "Domovská stránka texinfa je <http://www.gnu.org/software/texinfo/>."
 
-#: info/info.c:1189
+#: info/info.c:1182
 #, fuzzy, c-format
 msgid "Cannot find node '(%s)%s'"
 msgstr "Uzel „(%s)%s“ nelze nalézt."
 
-#: info/info.c:1190
+#: info/info.c:1183
 msgid "Cannot find a window!"
 msgstr "Nelze nalézt okno!"
 
-#: info/info.c:1191
+#: info/info.c:1184
 msgid "Point doesn't appear within this window's node!"
 msgstr "Bod se v okně tohoto uzlu nevyskytuje!"
 
-#: info/info.c:1192
+#: info/info.c:1185
 #, fuzzy
 msgid "Cannot delete the last window"
 msgstr "Poslední okno nelze smazat."
 
-#: info/info.c:1193
+#: info/info.c:1186
 #, fuzzy
 msgid "No menu in this node"
 msgstr "V tomto uzlu není menu."
 
-#: info/info.c:1194
+#: info/info.c:1187
 #, fuzzy
 msgid "No footnotes in this node"
 msgstr "V tomto nejsou poznámky pod čarou."
 
-#: info/info.c:1195
+#: info/info.c:1188
 #, fuzzy
 msgid "No cross references in this node"
 msgstr "V tomto uzlu není křížový odkaz."
 
-#: info/info.c:1196
+#: info/info.c:1189
 #, fuzzy, c-format
 msgid "No '%s' pointer for this node"
 msgstr "Pro tento uzel není „%s“ ukazatel."
 
-#: info/info.c:1197
+#: info/info.c:1190
 #, fuzzy, c-format
 msgid "Unknown Info command '%c'; try '?' for help"
 msgstr "Neznámý Info příkaz „%c“; zkuste „?“ pro nápovědu."
 
-#: info/info.c:1198
+#: info/info.c:1191
 #, fuzzy, c-format
 msgid "Terminal type '%s' is not smart enough to run Info"
 msgstr "Typ terminálu „%s“ není dostatečně inteligentní pro provoz Infa."
 
-#: info/info.c:1199
+#: info/info.c:1192
 #, fuzzy
 msgid "You are already at the last page of this node"
 msgstr "Již jste na poslední stránce tohoto uzlu."
 
-#: info/info.c:1200
+#: info/info.c:1193
 #, fuzzy
 msgid "You are already at the first page of this node"
 msgstr "Již jste na první stránce tohoto uzlu."
 
-#: info/info.c:1201
+#: info/info.c:1194
 #, fuzzy
 msgid "Only one window"
 msgstr "Pouze jedno okno."
 
-#: info/info.c:1202
+#: info/info.c:1195
 #, fuzzy
 msgid "Resulting window would be too small"
 msgstr "Výsledné okno by bylo příliš malé."
 
-#: info/info.c:1203
+#: info/info.c:1196
 #, fuzzy
 msgid "Not enough room for a help window, please delete a window"
 msgstr "Není volné místo pro okno nápovědy, prosím smažte některé okno."
@@ -1276,384 +1267,384 @@ msgid "Read a footnote or cross reference and select its node"
 msgstr ""
 "Zadání jména poznámky pod čarou nebo křížového odkazu a následné zobrazení"
 
-#: info/session.c:2469
+#: info/session.c:2486
 msgid "Move to the start of this node's menu"
 msgstr "Přesun na začátek menu tohoto uzlu"
 
-#: info/session.c:2491
+#: info/session.c:2508
 msgid "Visit as many menu items at once as possible"
 msgstr ""
 "Navštívení tolika položek menu, kolik je možno. Každá položka v jiném okně."
 
-#: info/session.c:2591
+#: info/session.c:2608
 msgid "Move to the previous cross reference"
 msgstr "Přesun na předcházející křížový odkaz"
 
-#: info/session.c:2654
+#: info/session.c:2671
 msgid "Move to the next cross reference"
 msgstr "Přesun na následující křížový odkaz"
 
-#: info/session.c:2715
+#: info/session.c:2732
 msgid "Select reference or menu item appearing on this line"
 msgstr "Zobrazení odkazu nebo položky menu, která je na tomto řádku"
 
-#: info/session.c:2749
+#: info/session.c:2766
 #, fuzzy, c-format
 msgid "No menu in node '%s'"
 msgstr "V uzlu „%s“ není žádná nabídka."
 
-#: info/session.c:2796
+#: info/session.c:2813
 #, fuzzy, c-format
 msgid "Unable to find node referenced by '%s' in '%s'"
 msgstr "Uzel, na který se odkazuje „%s“ v „%s“, nelze najít."
 
-#: info/session.c:2852
+#: info/session.c:2869
 msgid "Read a list of menus starting from dir and follow them"
 msgstr "Čtení seznamu menu začínajíce v adresáři a pokračujíce dále"
 
-#: info/session.c:2854
+#: info/session.c:2871
 msgid "Follow menus: "
 msgstr "Následování menu: "
 
-#: info/session.c:2959
+#: info/session.c:2976
 msgid "Select the Next node"
 msgstr "Zobrazení následujícího uzlu"
 
-#: info/session.c:2966
+#: info/session.c:2983
 msgid "Select the Prev node"
 msgstr "Zobrazení předchozího uzlu"
 
-#: info/session.c:2973
+#: info/session.c:2990
 msgid "Select the Up node"
 msgstr "Zobrazení vyššího uzlu"
 
-#: info/session.c:2979
+#: info/session.c:2996
 msgid "Select the last node in this file"
 msgstr "Zobrazení posledního uzlu v tomto souboru"
 
-#: info/session.c:3006 info/session.c:3039
+#: info/session.c:3023 info/session.c:3056
 msgid "This window has no additional nodes"
 msgstr "Toto okno nemá více dalších uzlů"
 
-#: info/session.c:3012
+#: info/session.c:3029
 msgid "Select the first node in this file"
 msgstr "Zobrazení prvního uzlu v tomto souboru"
 
-#: info/session.c:3146
+#: info/session.c:3163
 #, fuzzy
 msgid "No more nodes within this document"
 msgstr "V tomto dokumentu již nejsou další uzly."
 
-#: info/session.c:3190 info/session.c:3229
+#: info/session.c:3207 info/session.c:3246
 #, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document"
 msgstr "V tomto dokumentu není pro tento uzel předchozí nebo vyšší uzel."
 
-#: info/session.c:3242
+#: info/session.c:3259
 msgid "Move forwards or down through node structure"
 msgstr "Přesun na následující uzel nebo na první nižší v uzlové struktuře"
 
-#: info/session.c:3259
+#: info/session.c:3276
 msgid "Move backwards or up through node structure"
 msgstr "Přesun na předchozí uzel nebo na první vyšší v uzlové struktuře"
 
-#: info/session.c:3282
+#: info/session.c:3299
 msgid "Read a node name and select it"
 msgstr "Zadání jména uzlu a jeho následné zobrazení"
 
-#: info/session.c:3336 info/session.c:3340
+#: info/session.c:3353 info/session.c:3357
 msgid "Goto node: "
 msgstr "Přesun na uzel: "
 
-#: info/session.c:3519
+#: info/session.c:3536
 msgid "Find the node describing program invocation"
 msgstr "Nalezení uzlu popisujícího přepínače programu"
 
-#: info/session.c:3521
+#: info/session.c:3538
 #, c-format
 msgid "Find Invocation node of [%s]: "
 msgstr "Nalezení uzlu s přepínači programu [%s]: "
 
-#: info/session.c:3566
+#: info/session.c:3583
 msgid "Read a manpage reference and select it"
 msgstr "Zadání jména manuálové stránky a následné zobrazení"
 
-#: info/session.c:3570
+#: info/session.c:3587
 msgid "Get Manpage: "
 msgstr "Manuálová stránka: "
 
-#: info/session.c:3591
+#: info/session.c:3608
 msgid "Select the node 'Top' in this file"
 msgstr "Zobrazení nejvyššího uzlu v tomto souboru"
 
-#: info/session.c:3597
+#: info/session.c:3614
 msgid "Select the node '(dir)'"
 msgstr "Zobrazení uzlu „(dir)“"
 
-#: info/session.c:3603
+#: info/session.c:3620
 msgid "Show full file name of node being displayed"
 msgstr "Zobrazení plného názvu souboru aktuálního uzlu"
 
-#: info/session.c:3620
+#: info/session.c:3637
 msgid "Select the most recently selected node"
 msgstr "Zobrazení poslední dobou nejvíce navštěvovaných uzlů"
 
-#: info/session.c:3625
+#: info/session.c:3642
 #, c-format
 msgid "No earlier node in history"
 msgstr "V historii není dřívější uzel"
 
-#: info/session.c:3629
+#: info/session.c:3646
 msgid "Read the name of a file and select it"
 msgstr "Zadání jména souboru a jeho následné zobrazení"
 
-#: info/session.c:3633
+#: info/session.c:3650
 msgid "Find file: "
 msgstr "Nalezení souboru: "
 
-#: info/session.c:3650
+#: info/session.c:3667
 #, fuzzy, c-format
 msgid "Cannot find '%s'"
 msgstr "Nelze najít „%s“."
 
-#: info/session.c:3698
+#: info/session.c:3715
 #, fuzzy, c-format
 msgid "Could not create output file '%s'"
 msgstr "Výstupní soubor „%s“ nelze vytvořit."
 
-#: info/session.c:3712
+#: info/session.c:3729
 #, c-format
 msgid "error writing to %s: %s"
 msgstr "chyba při zápisu od %s: %s"
 
-#: info/session.c:3721
+#: info/session.c:3738
 #, c-format
 msgid "closing %s"
 msgstr "zavírání %s"
 
-#: info/session.c:3770
+#: info/session.c:3787
 #, c-format
 msgid "writing node %s..."
 msgstr "zapisování uzlu %s…"
 
-#: info/session.c:3816
+#: info/session.c:3833
 msgid "Pipe the contents of this node through INFO_PRINT_COMMAND"
 msgstr "Poslání obsahu tohoto uzlu příkazu INFO_PRINT_COMMAND"
 
-#: info/session.c:3844
+#: info/session.c:3861
 #, fuzzy, c-format
 msgid "Cannot open pipe to '%s'"
 msgstr "Rouru do „%s“ nelze otevřít."
 
-#: info/session.c:3849
+#: info/session.c:3866
 #, c-format
 msgid "printing node %s..."
 msgstr "Probíhá tisk uzlu %s…"
 
-#: info/session.c:3857
+#: info/session.c:3874
 #, c-format
 msgid "finished printing node %s"
 msgstr "tisk uzlu %s dokončen"
 
-#: info/session.c:3889
+#: info/session.c:3906
 msgid "Toggle the usage of regular expressions in searches"
 msgstr "Změna použití regulárních výrazů v hledání"
 
-#: info/session.c:3893
+#: info/session.c:3910
 #, fuzzy, c-format
 msgid "Using regular expressions for searches"
 msgstr "Vyhledávání regulárním výrazem."
 
-#: info/session.c:3894
+#: info/session.c:3911
 #, fuzzy, c-format
 msgid "Using literal strings for searches"
 msgstr "Vyhledávání doslovným řetězcem."
 
-#: info/session.c:4099
+#: info/session.c:4116
 #, fuzzy
 msgid "Search continued from the end of the document"
 msgstr "Hledání pokračovalo od konce dokumentu."
 
-#: info/session.c:4104
+#: info/session.c:4121
 #, fuzzy
 msgid "Search continued from the beginning of the document"
 msgstr "Hledání pokračovalo od začátku dokumentu."
 
-#: info/session.c:4121
+#: info/session.c:4138
 #, c-format
 msgid "Searching subfile %s ..."
 msgstr "Probíhá hledání podsouboru %s…"
 
-#: info/session.c:4157 info/session.c:4417 info/session.c:4530
+#: info/session.c:4174 info/session.c:4437 info/session.c:4550
 #, fuzzy, c-format
 msgid "Search failed"
 msgstr "Nebylo nalezeno."
 
-#: info/session.c:4174
+#: info/session.c:4191
 #, c-format
 msgid "%s%s%s [%s]: "
 msgstr "%s%s%s [%s]: "
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Regexp search"
 msgstr "Hledání regulárním výrazem"
 
-#: info/session.c:4175 info/session.c:4181
+#: info/session.c:4192 info/session.c:4198
 msgid "Search"
 msgstr "Hledání"
 
-#: info/session.c:4176 info/session.c:4182
+#: info/session.c:4193 info/session.c:4199
 msgid " case-sensitively"
 msgstr " velikost rozhoduje"
 
-#: info/session.c:4177 info/session.c:4183
+#: info/session.c:4194 info/session.c:4200
 msgid " backward"
 msgstr " zpětné"
 
-#: info/session.c:4180
+#: info/session.c:4197
 #, c-format
 msgid "%s%s%s: "
 msgstr "%s%s%s: "
 
-#: info/session.c:4200
+#: info/session.c:4217
 msgid "Search string too short"
 msgstr "Hledaný řetězec je příliš krátký"
 
-#: info/session.c:4393
+#: info/session.c:4408
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "Návrat zpět na poslední shodu %s"
 
-#: info/session.c:4417 info/session.c:4530
+#: info/session.c:4437 info/session.c:4550
 #, fuzzy, c-format
 msgid "No more matches"
 msgstr "Žádné další shody."
 
-#: info/session.c:4557
+#: info/session.c:4577
 #, fuzzy
 msgid "Search this node and subnodes for a string"
 msgstr "Prohledání tohoto uzlu a poduzlů na řetězec."
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4564
+#: info/session.c:4584
 #, fuzzy, c-format
 msgid "Search under %s: "
 msgstr "Probíhá hledání podsouboru %s…"
 
-#: info/session.c:4579
+#: info/session.c:4599
 msgid "Go to next match in Info sub-tree"
 msgstr "Přesun na další shodu v podstromě Infa"
 
-#: info/session.c:4583 info/session.c:4595
+#: info/session.c:4603 info/session.c:4615
 #, c-format
 msgid "No active search"
 msgstr "Hledání není aktivní"
 
-#: info/session.c:4591
+#: info/session.c:4611
 msgid "Go to previous match in Info sub-tree"
 msgstr "Přesun na předchozí shodu v podstromě Infa"
 
-#: info/session.c:4604
+#: info/session.c:4624
 msgid "Read a string and search for it case-sensitively"
 msgstr "Přečtení řetězce a jeho vyhledání (záleží na velikosti písmen)"
 
-#: info/session.c:4609
+#: info/session.c:4629
 msgid "Read a string and search for it"
 msgstr "Přečtení řetězce a jeho vyhledání"
 
-#: info/session.c:4615
+#: info/session.c:4635
 msgid "Read a string and search backward for it"
 msgstr "Přečtení řetězce a jeho vyhledání (zpětné)"
 
-#: info/session.c:4623
+#: info/session.c:4643
 msgid "Repeat last search in the same direction"
 msgstr "Opakování posledního hledání tím samým směrem"
 
-#: info/session.c:4631 info/session.c:4676
+#: info/session.c:4651 info/session.c:4696
 msgid "No previous search string"
 msgstr "Není předchozí hledaný řetězec"
 
-#: info/session.c:4668
+#: info/session.c:4688
 msgid "Repeat last search in the reverse direction"
 msgstr "Opakování posledního hledání opačným směrem"
 
-#: info/session.c:4715
+#: info/session.c:4735
 msgid "Clear displayed search matches"
 msgstr "Odstraní zobrazené výsledky hledání"
 
-#: info/session.c:4731 info/session.c:4737
+#: info/session.c:4751 info/session.c:4757
 msgid "Search interactively for a string as you type it"
 msgstr "Vyhledávání zadávaného řetězce hned při zadávání"
 
-#: info/session.c:4857
+#: info/session.c:4877
 msgid "Regexp I-search backward: "
 msgstr "Zpětné interaktivní hledání regulárním výrazem: "
 
-#: info/session.c:4858
+#: info/session.c:4878
 msgid "I-search backward: "
 msgstr "Zpětné interaktivní hledání: "
 
-#: info/session.c:4860
+#: info/session.c:4880
 msgid "Regexp I-search: "
 msgstr "Interaktivní hledání regulárním výrazem: "
 
-#: info/session.c:4861
+#: info/session.c:4881
 msgid "I-search: "
 msgstr "Interaktivní hledání: "
 
-#: info/session.c:4886 info/session.c:4889
+#: info/session.c:4906 info/session.c:4909
 msgid "Failing "
 msgstr "Bezvýsledné "
 
-#: info/session.c:5254
+#: info/session.c:5274
 msgid "Cancel current operation"
 msgstr "Zrušení aktuální operace"
 
-#: info/session.c:5261
+#: info/session.c:5281
 msgid "Quit"
 msgstr "Ukončení operace"
 
-#: info/session.c:5266
+#: info/session.c:5286
 msgid "Display version of Info being run"
 msgstr "Zobrazí verzi spuštěného Infa"
 
-#: info/session.c:5268
+#: info/session.c:5288
 #, c-format
 msgid "GNU Info version %s"
 msgstr "GNU Info verze %s"
 
-#: info/session.c:5273
+#: info/session.c:5293
 msgid "Redraw the display"
 msgstr "Překreslení obrazovky"
 
-#: info/session.c:5310
+#: info/session.c:5330
 msgid "Quit using Info"
 msgstr "Ukončení Infa"
 
-#: info/session.c:5326
+#: info/session.c:5346
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Spuštění příkazu navázaného na malý znak této klávesy"
 
-#: info/session.c:5337
+#: info/session.c:5357
 #, fuzzy, c-format
 msgid "Unknown command (%s)"
 msgstr "Neznámý příkaz (%s)."
 
-#: info/session.c:5340
+#: info/session.c:5360
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "„%s“ je neplatné"
 
-#: info/session.c:5341
+#: info/session.c:5361
 #, c-format
 msgid "'%s' is invalid"
 msgstr "„%s“ je neplatné"
 
-#: info/session.c:5659
+#: info/session.c:5679
 msgid "Add this digit to the current numeric argument"
 msgstr "Přidání této číslice do aktuálního číselného argumentu"
 
-#: info/session.c:5666
+#: info/session.c:5686
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Začátek (nebo dělení čtyřmi) aktuálního číselného argumentu"
 
@@ -3674,6 +3665,19 @@ msgstr "%s: chyba při zavírání souboru %s s vnitřními odkazy: %s\n"
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s nebylo možné otevřít pro zápis: %s\n"
+
+#~ msgid ""
+#~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
+#~ "      --no-raw-escapes         output escapes as literal text.\n"
+#~ "      --restore=FILE           read initial keystrokes from FILE.\n"
+#~ "  -O, --show-options, --usage  go to command-line options node."
+#~ msgstr ""
+#~ "  -R, --raw-escapes            vypisuje „syrové“ ANSI sekvence "
+#~ "(výchozí).\n"
+#~ "      --no-raw-escapes         vypisuje sekvence jako doslovný text.\n"
+#~ "      --restore=SOUBOR         načte úvodní stisky kláves ze SOUBORU.\n"
+#~ "  -O, --show-options, --usage  přejde na uzel s přepínači pro příkazový "
+#~ "řádek."
 
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: přepínač „--%s“ nedovoluje argument\n"
