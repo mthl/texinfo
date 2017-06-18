@@ -1,3 +1,8 @@
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (find_node_from_tag): Remove some unused 
+	variables.
+
 2017-06-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/XSParagraph/configure.ac,

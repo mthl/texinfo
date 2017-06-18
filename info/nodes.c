@@ -1192,9 +1192,6 @@ static int
 find_node_from_tag (FILE_BUFFER *parent, FILE_BUFFER *fb, TAG *tag)
 {
   int success;
-  int slack;
-  TAG **t;
-  WINDOW *w;
 
   if (tag->nodestart_adjusted != -1)
     success = 1;
