@@ -244,10 +244,7 @@ sub _encode_i18n_string($$)
 # Return a parsed Texinfo tree
 sub gdt($$;$$)
 {
-  my $self = shift;
-  my $message = shift;
-  my $context = shift;
-  my $type = shift;
+  my ($self, $message, $context, $type) = @_;
 
   my $re = join '|', map { quotemeta $_ } keys %$context
       if (defined($context) and ref($context));
@@ -385,13 +382,7 @@ sub gdt($$;$$)
     print STDERR "GDT $translation_result\n";
   }
 
-  my $tree;
-  # Right now this is not used anywhere.
-  if ($type and $type eq 'translated_paragraph') {
-    $tree = $parser->parse_texi_text($translation_result);
-  } else {
-    $tree = $parser->parse_texi_line($translation_result);
-  }
+  my $tree = $parser->parse_texi_line($translation_result);
   $tree = _substitute ($tree, $context);
   return $tree;
 }
@@ -527,11 +518,6 @@ behaves.  The possible values are
 In that case the string is not considered to be Texinfo, a plain string
 that is returned after translation and substitution.  The substitutions
 may only be strings in that case.
-
-=item translated_paragraph
-
-In that case, the parsing of the Texinfo string is done in a 
-context of a paragraph, not in the context of an inline text.
 
 =back
 

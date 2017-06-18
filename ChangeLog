@@ -1,5 +1,11 @@
 2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Report.pm (gdt): Remove code dealing with a
+	'translated_paragraph' argument.  Condense code dealing
+	with subroutine arguments to a single line.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Paragraph.pm: Remove check for UTF-8 locale 
 	that runs "locale -a".
 	xspara_init in tp/Texinfo/Convert/XSParagraph/xspara.c does its 
