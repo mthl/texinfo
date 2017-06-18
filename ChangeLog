@@ -1,5 +1,10 @@
 2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.3.92
+	* configure.ac: Update version.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (find_node_from_tag): Remove some unused 
 	variables.
 
