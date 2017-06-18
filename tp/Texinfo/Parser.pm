@@ -4218,8 +4218,10 @@ sub _parse_texi($;$)
                                                 'type' => $value,
                                                 'contents' => [],
                                                 'parent' => $current };
-              $self->line_warn(
-                  sprintf($self->__("undefined flag: %s"), $value), $line_nr);
+              if (!$self->{'in_gdt'}) {
+                $self->line_warn(
+                   sprintf($self->__("undefined flag: %s"), $value), $line_nr);
+              }
             }
           } else {
             $self->line_error($self->__("bad syntax for \@value"), $line_nr);
@@ -5106,9 +5108,12 @@ sub _parse_texi($;$)
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
                  and @{$current->{'contents'}}) {
-              $self->line_warn(sprintf($self->__(
-                                 "command \@%s does not accept arguments"), 
-                                       $closed_command), $line_nr);
+              if (!($self->{'in_gdt'} and $closed_command eq 'tie')) {
+                $self->line_warn(sprintf($self->__(
+                                   "command \@%s does not accept arguments"), 
+                                         $closed_command), $line_nr);
+              }
+              # TODO: Change @tie{ } to @tie{} in Plaintext.pm
             }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;

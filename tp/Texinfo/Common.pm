@@ -134,7 +134,8 @@ our %default_parser_state_configuration = (
                               # argument.  A Texinfo tree may also be used.
   'info' => {
     'novalidate' => 0,        # same as setting @novalidate.
-  }
+  },
+  'in_gdt' => 0 # whether we are being called by gdt
 );
 
 # customization options

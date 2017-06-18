@@ -1,5 +1,16 @@
 2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Report.pm (gdt): Set an 'in_gdt' flag
+	on the parser.
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Allow 'in_gdt' as a config value.
+	* tp/Texinfo/Parser.pm (_parse_texi): Avoid issuing an error
+	message in a couple of situations when being called from 'gdt'.
+	(It would be thrown away anyway.)  This avoids the need for the 
+	error message to be translated, so is slightly faster.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Report.pm (gdt): Remove code dealing with a
 	'translated_paragraph' argument.  Condense code dealing
 	with subroutine arguments to a single line.
