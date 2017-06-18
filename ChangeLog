@@ -1,5 +1,12 @@
 2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Paragraph.pm: Remove check for UTF-8 locale 
+	that runs "locale -a".
+	xspara_init in tp/Texinfo/Convert/XSParagraph/xspara.c does its 
+	own check which should be enough.
+
+2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/MiscXS.pm: Remove check for UTF-8 locale, as
 	"locale -a" can be slow to run (about 4.5 seconds on my computer 
 	after disk caches are cleared), and tp/Texinfo/MiscXS/misc.c may
