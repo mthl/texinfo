@@ -1,3 +1,8 @@
+2017-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/TODO: Mention that some checks for incorrect nesting
+	is done already.
+
 2017-06-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Report.pm (gdt): Set an 'in_gdt' flag
