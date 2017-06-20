@@ -74,18 +74,22 @@ on_unload ()
 function
 on_keypress (event)
 {
-  let direction = on_keypress.dict[event.key];
-  if (direction)
-    iframe_dispatch (actions.navigate (direction));
+  let value = on_keypress.dict[event.key];
+  if (value)
+    {
+      let [action, arg] = value;
+      iframe_dispatch (action (arg));
+    }
 }
 
 /* Dictionary associating an Event 'key' property to its navigation id.  */
 on_keypress.dict = {
-  n: "next",
-  p: "prev",
-  u: "up",
-  "]": "forward",
-  "[": "backward"
+  m: [actions.show_component, "menu"],
+  n: [actions.navigate, "next"],
+  p: [actions.navigate, "prev"],
+  u: [actions.navigate, "up"],
+  "]": [actions.navigate, "forward"],
+  "[": [actions.navigate, "backward"]
 };
 
 /*--------------------

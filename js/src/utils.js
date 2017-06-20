@@ -69,14 +69,14 @@ href_hash (href)
     return "";
 }
 
-/** Retrieve PREV, NEXT, and UP links from CONTENT and Return an object
-    containing references to those links.  CONTENT must be an object
+/** Retrieve PREV, NEXT, and UP links, and local menu from CONTENT and return
+    an object containing references to those links.  CONTENT must be an object
     implementing the ParentNode interface (Element, Document...).  */
 export function
 navigation_links (content)
 {
   let links = content.querySelectorAll ("footer a");
-  let res = {};
+  let res = { menu: {} };
   /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
      only store FRAME-ID.  */
   for (let i = 0; i < links.length; i += 1)
@@ -85,6 +85,8 @@ navigation_links (content)
       let nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
       if (nav_id)
         res[nav_id] = href_hash (link.getAttribute ("href"));
+      else                  /* this link is part of local table of content. */
+        res.menu[link.text] = href_hash (link.getAttribute ("href"));
     }
 
   return res;

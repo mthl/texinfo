@@ -43,3 +43,21 @@ cache_links (links)
 {
   return { type: CACHE_LINKS, links };
 }
+
+export const SHOW_COMPONENT = "show-component";
+
+/** Toggle the visibility of COMPONENT.  */
+export function
+show_component (component)
+{
+  return { type: SHOW_COMPONENT, component };
+}
+
+export const HIDE_COMPONENT = "hide-component";
+
+/** Toggle the visibility of COMPONENT.  */
+export function
+hide_component (component)
+{
+  return { type: HIDE_COMPONENT, component };
+}

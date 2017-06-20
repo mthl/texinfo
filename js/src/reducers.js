@@ -19,8 +19,10 @@
 import {
   CACHE_LINKS,
   CURRENT_URL,
+  HIDE_COMPONENT,
   INIT,
   NAVIGATE,
+  SHOW_COMPONENT,
   SIDEBAR_LOADED
 } from "./actions";
 
@@ -46,6 +48,7 @@ global_reducer (state, action)
     case CURRENT_URL:
       {
         let res = Object.assign ({}, state, { current: action.url, action });
+        res.text_input_visible = false;
         if (!res.loaded_nodes[action.url])
           res.loaded_nodes[action.url] = {};
         return res;
@@ -59,9 +62,30 @@ global_reducer (state, action)
         else
           {
             let res = Object.assign ({}, state, { current: linkid, action });
+            res.text_input_visible = false;
             if (!Object.keys (res.loaded_nodes).includes (action.url))
               res.loaded_nodes[action.url] = {};
             return res;
+          }
+      }
+    case SHOW_COMPONENT:
+      {
+        if (action.component !== "menu" || state.text_input_visible)
+          return state;
+        else
+          {
+            let text_input_visible = true;
+            return Object.assign ({}, state, { text_input_visible, action });
+          }
+      }
+    case HIDE_COMPONENT:
+      {
+        if (action.component !== "menu" || !state.text_input_visible)
+          return state;
+        else
+          {
+            let text_input_visible = false;
+            return Object.assign ({}, state, { text_input_visible, action });
           }
       }
     default:

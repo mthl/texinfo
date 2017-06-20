@@ -20,6 +20,7 @@ import * as actions from "./actions";
 import { Pages } from "./iframe";
 import { Sidebar } from "./sidebar";
 import { Store } from "./store";
+import { Text_input } from "./text_input";
 import config from "./config";
 import { fix_links } from "./toc";
 import { global_reducer } from "./reducers";
@@ -71,6 +72,7 @@ on_load ()
   components.element = document.body;
   components.add (new Sidebar ());
   components.add (new Pages (index_div));
+  components.add (new Text_input ("menu"));
 
   let initial_state = {
     /* Dictionary associating page ids to next, prev, up, forward,
@@ -79,7 +81,9 @@ on_load ()
     /* page id of the current page.  */
     current: config.INDEX_ID,
     /* Define if the sidebar iframe is loaded.  */
-    sidebar_loaded: false
+    sidebar_loaded: false,
+    /* Define if the sidebar iframe is loaded.  */
+    text_input_visible: false
   };
 
   store = new Store (global_reducer, initial_state);
@@ -89,7 +93,7 @@ on_load ()
   if (window.location.hash)
     store.dispatch (actions.set_current_url (window.location.hash.slice (1)));
 
-  /* Retrieve NEXT link.  */
+  /* Retrieve NEXT link and local menu.  */
   let links = {};
   links[config.INDEX_ID] = navigation_links (document);
   store.dispatch (actions.cache_links (links));
