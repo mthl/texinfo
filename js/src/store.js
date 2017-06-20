@@ -33,8 +33,12 @@ Store
       action (this.dispatch.bind (this));
     else
       {
-        this.state = this.reducer (this.state, action);
-        this.listeners.forEach (listener => listener ());
+        let new_state = this.reducer (this.state, action);
+        if (new_state !== this.state)
+          {
+            this.state = new_state;
+            this.listeners.forEach (listener => listener ());
+          }
       }
   }
 
