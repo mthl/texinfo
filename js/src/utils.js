@@ -76,7 +76,7 @@ export function
 navigation_links (content)
 {
   let links = content.querySelectorAll ("footer a");
-  let res = { menu: {} };
+  let res = {};
   /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
      only store FRAME-ID.  */
   for (let i = 0; i < links.length; i += 1)
@@ -86,7 +86,10 @@ navigation_links (content)
       if (nav_id)
         res[nav_id] = href_hash (link.getAttribute ("href"));
       else                  /* this link is part of local table of content. */
-        res.menu[link.text] = href_hash (link.getAttribute ("href"));
+        {
+          res.menu = res.menu || {};
+          res.menu[link.text] = href_hash (link.getAttribute ("href"));
+        }
     }
 
   return res;
