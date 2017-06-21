@@ -27,5 +27,7 @@ export default {
 
   INDEX_ID: "index",
 
-  PACKAGE_LOGO: "kawa-logo.png"
+  PACKAGE_LOGO: "kawa-logo.png",
+
+  WARNING_TIMEOUT: 3000
 };
