@@ -836,6 +836,15 @@ xref_files_changed ()
     fi
   done
 
+  secondary_xref_files=`sorted_index_files`
+  verbose "Secondary xref files = $secondary_xref_files"
+  for this_file in $secondary_xref_files; do
+    if test -f $this_file; then :; else
+      verbose "$this_file missing ..."
+      return 0
+    fi
+  done
+
   # No change.
   return 1
 }

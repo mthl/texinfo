@@ -1,5 +1,12 @@
 2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (xref_files_changed): Call 'sorted_index_files'
+	to get a list of the sorted index files that should exist, and
+	if any of them are missing, go around another cycle of 
+	processing.
+
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (filter_files): Comment changed.
 	(add_all_filter): Do not print the argument of the file, so 
 	using this with filter_files only prints secondary files.
