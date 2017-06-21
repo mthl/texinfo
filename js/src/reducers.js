@@ -48,11 +48,13 @@ global_reducer (state, action)
       }
     case CURRENT_URL:
       {
+        let res = Object.assign ({}, state, { action });
         let url = (action.pointer) ?
             state.loaded_nodes[action.pointer] : action.url;
-        let res = Object.assign ({}, state, { current: url, action });
-        res.text_input_visible = false;
+
+        res.current = url;
         res.loaded_nodes[url] = res.loaded_nodes[url] || {};
+        res.text_input_visible = false;
         return res;
       }
     case NAVIGATE:
