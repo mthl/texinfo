@@ -1,3 +1,14 @@
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (filter_files): Comment changed.
+	(add_all_filter): Do not print the argument of the file, so 
+	using this with filter_files only prints secondary files.
+	(add_all_filter, sorted_index_filter): Rename.
+	(sorted_index_files): New function.
+	(all_files): Use sorted_index_files instead of add_all_filter.
+
+	No functional changes intended.
+
 2017-06-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/TODO: Mention that some checks for incorrect nesting

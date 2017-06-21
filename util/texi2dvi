@@ -1013,8 +1013,9 @@ run_bibtex ()
 }
 
 
-# filter_file PREDICATE - Print the names of files in xref_files_new
-#                         that match PREDICATE.
+# filter_file PREDICATE - Go through the list of files in xref_files_new
+# and use PREDICATE on each one to optionally print it or print other files 
+# based on the filename.
 filter_files ()
 {
   test -n "$xref_files_new" || return 0
@@ -1630,13 +1631,18 @@ all_files ()
 {
   echo $in_noext.log
   echo $in_noext.fls
-  filter_files add_all_filter
+  echo $xref_files_new
+  echo `sorted_index_files`
 }
 
-# Echo FILE and any generated file based thereon.
-add_all_filter ()
+sorted_index_files ()
 {
-  echo $1
+  filter_files sorted_index_filter
+}
+
+# Print the name of a generated file based on FILE if there is one.
+sorted_index_filter ()
+{
   case $in_lang in
     texinfo)
       # texindex: texinfo.cp -> texinfo.cps
