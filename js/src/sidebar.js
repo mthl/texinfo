@@ -111,7 +111,6 @@ on_load ()
   document.head.appendChild (base);
 
   let links = Array.from (document.links);
-  fix_links (links);
 
   /* Create a link referencing the Table of content.  */
   let toc_a = document.createElementNS (config.XHTML_NAMESPACE, "a");
@@ -126,6 +125,8 @@ on_load ()
     index_li = index_grand;
   index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
 
+  links.push (toc_a);
+  fix_links (links);
   scan_toc (document.body, config.INDEX_NAME);
 
   let divs = Array.from (document.querySelectorAll ("div"));
