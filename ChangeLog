@@ -1,5 +1,12 @@
 2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (sorted_index_filter) <latex input>: Don't
+	print the name of a *.fls recorder file, as then 
+	'xref_files_changed' would require one to exist, which it may 
+	not.
+
+2017-06-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (xref_files_changed): Call 'sorted_index_files'
 	to get a list of the sorted index files that should exist, and
 	if any of them are missing, go around another cycle of 

@@ -1664,8 +1664,6 @@ sorted_index_filter ()
         # bibtex: *.aux -> *.bbl and *.blg.
         echo $1 | $SED 's/^\(.*\)\.aux$/\1.bbl/'
         echo $1 | $SED 's/^\(.*\)\.aux$/\1.blg/'
-        # -recorder: .fls
-        echo $1 | $SED 's/^\(.*\)\.aux$/\1.fls/'
       fi
       ;;
   esac
