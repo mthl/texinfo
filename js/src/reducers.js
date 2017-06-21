@@ -20,7 +20,6 @@ import {
   CACHE_LINKS,
   CURRENT_URL,
   HIDE_COMPONENT,
-  INIT,
   NAVIGATE,
   SHOW_COMPONENT,
   SIDEBAR_LOADED
@@ -31,8 +30,6 @@ global_reducer (state, action)
 {
   switch (action.type)
     {
-    case INIT:
-      return Object.assign ({}, state, { action });
     case SIDEBAR_LOADED:
       return Object.assign ({}, state, { sidebar_loaded: true, action });
     case CACHE_LINKS:

@@ -16,8 +16,6 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-export const INIT = "init";
-
 export const SIDEBAR_LOADED = "sidebar-ready";
 
 export const CURRENT_URL = "current-url";
