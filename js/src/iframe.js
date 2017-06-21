@@ -92,18 +92,18 @@ Pages
 
     /* Select contained iframe or create it if necessary.  */
     let iframe = div.querySelector ("iframe");
-    if (iframe === null)
+    if (iframe)
+      {
+        let msg = { message_kind: "scroll-to", hash };
+        iframe.contentWindow.postMessage (msg, "*");
+      }
+    else
       {
         iframe = document.createElement ("iframe");
         iframe.setAttribute ("class", "node");
         iframe.setAttribute ("name", path);
         iframe.setAttribute ("src", url);
         div.appendChild (iframe);
-      }
-    else
-      {
-        let msg = { message_kind: "scroll-to", hash };
-        iframe.contentWindow.postMessage (msg, "*");
       }
 
     window.history.pushState ("", document.title, path);
