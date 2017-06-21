@@ -157,6 +157,9 @@ create_link_dict (nav)
   }
 
   depth_first_walk (nav, add_link, Node.ELEMENT_NODE);
+  /* Add a reference to the first and last node of the manual.  */
+  links["*TOP*"] = config.INDEX_ID;
+  links["*END*"] = prev_id;
   return links;
 }
 

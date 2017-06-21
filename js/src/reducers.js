@@ -38,19 +38,24 @@ global_reducer (state, action)
     case CACHE_LINKS:
       {
         let clone = Object.assign ({}, state.loaded_nodes);
-        for (let key in action.links)
-          {
-            if (action.links.hasOwnProperty (key))
+        Object
+          .keys (action.links)
+          .forEach (key => {
+            if (typeof action.links[key] === "object")
               clone[key] = Object.assign ({}, clone[key], action.links[key]);
-          }
+            else
+              clone[key] = action.links[key];
+          });
+
         return Object.assign ({}, state, { loaded_nodes: clone, action });
       }
     case CURRENT_URL:
       {
-        let res = Object.assign ({}, state, { current: action.url, action });
+        let url = (action.pointer) ?
+            state.loaded_nodes[action.pointer] : action.url;
+        let res = Object.assign ({}, state, { current: url, action });
         res.text_input_visible = false;
-        if (!res.loaded_nodes[action.url])
-          res.loaded_nodes[action.url] = {};
+        res.loaded_nodes[url] = res.loaded_nodes[url] || {};
         return res;
       }
     case NAVIGATE:

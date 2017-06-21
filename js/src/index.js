@@ -89,7 +89,9 @@ on_keypress.dict = {
   p: [actions.navigate, "prev"],
   u: [actions.navigate, "up"],
   "]": [actions.navigate, "forward"],
-  "[": [actions.navigate, "backward"]
+  "[": [actions.navigate, "backward"],
+  "<": [actions.set_current_url_pointer, "*TOP*"],
+  ">": [actions.set_current_url_pointer, "*END*"]
 };
 
 /*--------------------

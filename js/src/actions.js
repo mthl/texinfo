@@ -28,6 +28,14 @@ set_current_url (url)
   return { type: CURRENT_URL, url };
 }
 
+/** Set current URL to the node corresponding to POINTER which is an
+    id refering to a linkid (such as "*TOP*" or "*END*"). */
+export function
+set_current_url_pointer (pointer)
+{
+  return { type: CURRENT_URL, pointer };
+}
+
 export const NAVIGATE = "navigate";
 
 export function
