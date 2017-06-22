@@ -69,46 +69,6 @@ Pages
       }
   }
 
-  static load_iframe (linkid)
-  {
-    let path = window.location.pathname + window.location.search;
-
-    if (linkid === config.INDEX_ID)
-      {
-        window.history.pushState ("", document.title, path);
-        return;
-      }
-
-    let [pageid, hash] = linkid_split (linkid);
-    let div = document.getElementById (pageid);
-    if (!div)
-      {
-        let msg = "no iframe container correspond to identifier: " + pageid;
-        throw new ReferenceError (msg);
-      }
-
-    path = path.replace (/#.*/, "") + "#" + linkid;
-    let url = pageid + ".xhtml" + hash;
-
-    /* Select contained iframe or create it if necessary.  */
-    let iframe = div.querySelector ("iframe");
-    if (iframe)
-      {
-        let msg = { message_kind: "scroll-to", hash };
-        iframe.contentWindow.postMessage (msg, "*");
-      }
-    else
-      {
-        iframe = document.createElement ("iframe");
-        iframe.setAttribute ("class", "node");
-        iframe.setAttribute ("name", path);
-        iframe.setAttribute ("src", url);
-        div.appendChild (iframe);
-      }
-
-    window.history.pushState ("", document.title, path);
-  }
-
   render (state)
   {
     let new_linkids = Object.keys (state.loaded_nodes)
@@ -124,12 +84,53 @@ Pages
         let div = document.getElementById (pageid);
         if (!div)
           throw new Error ("no div with id: " + pageid);
-        Pages.load_iframe (state.current);
+        load_page (state.current);
         div.removeAttribute ("hidden");
         this.prev_id = state.current;
         this.prev_div = div;
       }
   }
+}
+
+function
+load_page (linkid)
+{
+  let path = window.location.pathname + window.location.search;
+
+  if (linkid === config.INDEX_ID)
+    {
+      window.history.pushState ("", document.title, path);
+      return;
+    }
+
+  let [pageid, hash] = linkid_split (linkid);
+  let div = document.getElementById (pageid);
+  if (!div)
+    {
+      let msg = "no iframe container correspond to identifier: " + pageid;
+      throw new ReferenceError (msg);
+    }
+
+  path = path.replace (/#.*/, "") + "#" + linkid;
+  let url = pageid + ".xhtml" + hash;
+
+  /* Select contained iframe or create it if necessary.  */
+  let iframe = div.querySelector ("iframe");
+  if (iframe)
+    {
+      let msg = { message_kind: "scroll-to", hash };
+      iframe.contentWindow.postMessage (msg, "*");
+    }
+  else
+    {
+      iframe = document.createElement ("iframe");
+      iframe.setAttribute ("class", "node");
+      iframe.setAttribute ("name", path);
+      iframe.setAttribute ("src", url);
+      div.appendChild (iframe);
+    }
+
+  window.history.pushState ("", document.title, path);
 }
 
 /*-----------------------------------------
