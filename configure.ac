@@ -2,7 +2,7 @@
 # $Id$
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([GNU Texinfo], [6.3.92], [bug-texinfo@gnu.org])
+AC_INIT([GNU Texinfo], [6.4], [bug-texinfo@gnu.org])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
@@ -35,7 +35,7 @@ AC_CONFIG_SRCDIR([info/info.c])
 # 3. It may be kept as is in case there were no change in the DTD
 #    between releases.  This is rare, but has happened.
 #
-TEXINFO_DTD_VERSION=6.3dev
+TEXINFO_DTD_VERSION=6.4
 AC_SUBST([TEXINFO_DTD_VERSION])
 
 # Conditional texi2html support.

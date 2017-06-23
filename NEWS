@@ -11,6 +11,7 @@ See the manual for detailed information.
   notice and this notice are preserved.
 
 -------------------------------------------------------------------------------
+6.4 (23 June 2017)
 * texi2any:
   . for HTML output, place section names before the manual in page
     titles, instead of after them, so it is easier to distinguish pages

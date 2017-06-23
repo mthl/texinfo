@@ -106,7 +106,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.3.92';
+$VERSION = '6.4';
 
 sub N__($)
 {
