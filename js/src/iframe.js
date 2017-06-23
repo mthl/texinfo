@@ -85,6 +85,7 @@ Pages
         if (!div)
           throw new Error ("no div with id: " + pageid);
         load_page (state.current);
+        update_history (state.current, state.history);
         div.removeAttribute ("hidden");
         this.prev_id = state.current;
         this.prev_div = div;
@@ -98,10 +99,7 @@ load_page (linkid)
   let path = window.location.pathname + window.location.search;
 
   if (linkid === config.INDEX_ID)
-    {
-      window.history.pushState ("", document.title, path);
-      return;
-    }
+    return;
 
   let [pageid, hash] = linkid_split (linkid);
   let div = document.getElementById (pageid);
@@ -129,8 +127,29 @@ load_page (linkid)
       iframe.setAttribute ("src", url);
       div.appendChild (iframe);
     }
+}
 
-  window.history.pushState ("", document.title, path);
+/* Mutate the history of page navigation.  Store LINKID in history
+   state, The actual way to store LINKID depends on HISTORY_MODE. */
+function
+update_history (linkid, history_mode)
+{
+  let visible_url = window.location.pathname + window.location.search;
+  if (linkid !== config.INDEX_ID)
+    visible_url += ("#" + linkid);
+
+  switch (history_mode)
+  {
+  case config.HISTORY_REPLACE:
+    window.history.replaceState ({ linkid }, linkid, visible_url);
+    break;
+  case config.HISTORY_PUSH:
+    window.history.pushState ({ linkid }, linkid, visible_url);
+    break;
+  case config.HISTORY_POP:
+  default:
+    break;
+  }
 }
 
 /*-----------------------------------------
@@ -156,7 +175,9 @@ on_message (event)
   let data = event.data;
   if (data.message_kind === "scroll-to")
     {
-      /* Scroll to the anchor corresponding to HASH.  */
-      window.location.hash = data.hash;
+      /* Scroll to the anchor corresponding to HASH without saving
+         current page in session history.  */
+      let url = window.location.pathname + window.location.search;
+      window.location.replace ((data.hash) ? (url + data.hash) : url);
     }
 }

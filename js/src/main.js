@@ -80,6 +80,8 @@ on_load ()
     loaded_nodes: {},
     /* page id of the current page.  */
     current: config.INDEX_ID,
+    /* Current mode for handling history.  */
+    history: config.HISTORY_REPLACE,
     /* Define if the sidebar iframe is loaded.  */
     sidebar_loaded: false,
     /* Define if the sidebar iframe is loaded.  */
@@ -91,7 +93,11 @@ on_load ()
   store.subscribe (() => console.log ("state: ", store.state));
 
   if (window.location.hash)
-    store.dispatch (actions.set_current_url (window.location.hash.slice (1)));
+    {
+      let linkid = window.location.hash.slice (1);
+      let action = actions.set_current_url (linkid, config.HISTORY_REPLACE);
+      store.dispatch (action);
+    }
 
   /* Retrieve NEXT link and local menu.  */
   let links = {};
@@ -109,4 +115,12 @@ on_message (event)
       /* Follow up actions to the store.  */
       store.dispatch (data.action);
     }
+}
+
+/** Event handler for 'popstate' events.  */
+export function
+on_popstate (event)
+{
+  let linkid = event.state.linkid;
+  store.dispatch (actions.set_current_url (linkid, config.HISTORY_POP));
 }

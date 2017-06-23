@@ -107,6 +107,7 @@ if (inside_index_page)
   {
     window.addEventListener ("DOMContentLoaded", main.on_load, false);
     window.addEventListener ("message", main.on_message, false);
+    window.onpopstate = main.on_popstate;
   }
 else if (inside_sidebar)
   {

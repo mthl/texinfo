@@ -53,6 +53,7 @@ global_reducer (state, action)
             state.loaded_nodes[action.pointer] : action.url;
 
         res.current = url;
+        res.history = action.history;
         res.loaded_nodes[url] = res.loaded_nodes[url] || {};
         res.text_input_visible = false;
         return res;
@@ -66,6 +67,7 @@ global_reducer (state, action)
         else
           {
             let res = Object.assign ({}, state, { current: linkid, action });
+            res.history = action.history;
             res.text_input_visible = false;
             if (!Object.keys (res.loaded_nodes).includes (action.url))
               res.loaded_nodes[action.url] = {};

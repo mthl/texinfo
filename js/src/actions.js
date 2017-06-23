@@ -16,14 +16,16 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
+import config from "./config";
+
 export const SIDEBAR_LOADED = "sidebar-ready";
 
 export const CURRENT_URL = "current-url";
 
 export function
-set_current_url (url)
+set_current_url (url, history = config.HISTORY_PUSH)
 {
-  return { type: CURRENT_URL, url };
+  return { type: CURRENT_URL, url, history };
 }
 
 /** Set current URL to the node corresponding to POINTER which is an
@@ -31,7 +33,7 @@ set_current_url (url)
 export function
 set_current_url_pointer (pointer)
 {
-  return { type: CURRENT_URL, pointer };
+  return { type: CURRENT_URL, pointer, history: config.HISTORY_PUSH };
 }
 
 export const NAVIGATE = "navigate";
@@ -39,7 +41,7 @@ export const NAVIGATE = "navigate";
 export function
 navigate (direction)
 {
-  return { type: NAVIGATE, direction };
+  return { type: NAVIGATE, direction, history: config.HISTORY_PUSH };
 }
 
 export const CACHE_LINKS = "cache-links";

@@ -29,5 +29,10 @@ export default {
 
   PACKAGE_LOGO: "kawa-logo.png",
 
-  WARNING_TIMEOUT: 3000
+  WARNING_TIMEOUT: 3000,
+
+  /* History modes. */
+  HISTORY_REPLACE: "replace",
+  HISTORY_PUSH: "push",
+  HISTORY_POP: "pop"
 };
