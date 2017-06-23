@@ -1,5 +1,10 @@
 2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Change some instructions and remove some 
+	others.
+
+2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	6.4 release.
 	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
 	doc/refcard/txirefcard.tex: Version number.
