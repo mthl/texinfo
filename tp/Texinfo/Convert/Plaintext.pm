@@ -70,7 +70,7 @@ sub import {
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4dev';
 
 # misc commands that are of use for formatting.
 my %formatting_misc_commands = %Texinfo::Convert::Text::formatting_misc_commands;

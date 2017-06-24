@@ -71,7 +71,7 @@ valid_tree_transformation
 @EXPORT = qw(
 );
 
-$VERSION = '6.4';
+$VERSION = '6.4dev';
 
 # i18n
 sub N__($)
