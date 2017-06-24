@@ -1,3 +1,8 @@
+2017-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* configure.ac: Increase version to 6.4dev.  Remove "dist-xz" 
+	option.
+
 2017-06-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Change some instructions and remove some 
