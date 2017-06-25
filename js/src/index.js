@@ -77,16 +77,20 @@ on_keypress (event)
   let value = on_keypress.dict[event.key];
   if (value)
     {
-      let [action, arg] = value;
-      iframe_dispatch (action (arg));
+      let [func, arg] = value;
+      let action = func (arg);
+      if (action)
+        iframe_dispatch (action);
     }
 }
 
 /* Dictionary associating an Event 'key' property to its navigation id.  */
 on_keypress.dict = {
+  l: [top.history.back.bind (top.history)],
   m: [actions.show_component, "menu"],
   n: [actions.navigate, "next"],
   p: [actions.navigate, "prev"],
+  r: [top.history.forward.bind (top.history)],
   u: [actions.navigate, "up"],
   "]": [actions.navigate, "forward"],
   "[": [actions.navigate, "backward"],
