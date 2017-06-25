@@ -5101,12 +5101,9 @@ sub _parse_texi($;$)
             if (defined($brace_commands{$closed_command}) 
                  and $brace_commands{$closed_command} == 0
                  and @{$current->{'contents'}}) {
-              if (!($self->{'in_gdt'} and $closed_command eq 'tie')) {
-                $self->line_warn(sprintf($self->__(
-                                   "command \@%s does not accept arguments"), 
-                                         $closed_command), $line_nr);
-              }
-              # TODO: Change @tie{ } to @tie{} in Plaintext.pm
+              $self->line_warn(sprintf($self->__(
+                                 "command \@%s does not accept arguments"), 
+                                       $closed_command), $line_nr);
             }
             if ($current->{'parent'}->{'cmdname'} eq 'anchor') {
               $current->{'parent'}->{'line_nr'} = $line_nr;

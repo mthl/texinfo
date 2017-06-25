@@ -1,3 +1,11 @@
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <def commands>:
+	Change "@tie{ }" to "@tie{} in document strings passed to gdt.
+	* tp/Texinfo/Parser.pm (_parse_texi) <closing a brace command>:
+	Don't check if we are being called from gdt and the closed 
+	command was @tie.
+
 2017-06-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi): Remove debugging code

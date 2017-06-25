@@ -2755,12 +2755,12 @@ sub _convert($$)
                  or $command eq 'deftypevr')
                 and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name});
           }
@@ -2773,10 +2773,10 @@ sub _convert($$)
                     'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
-              $tree = $self->gdt("\@tie{ }-- {category}:\@*{type}\@*{name} {arguments}",
+              $tree = $self->gdt("\@tie{}-- {category}:\@*{type}\@*{name} {arguments}",
                                  $strings);
             } else {
-              $tree = $self->gdt("\@tie{ }-- {category}: {type} {name} {arguments}",
+              $tree = $self->gdt("\@tie{}-- {category}: {type} {name} {arguments}",
                                  $strings);
             }
           } else {
@@ -2785,10 +2785,10 @@ sub _convert($$)
                     'type' => $root->{'extra'}->{'def_parsed_hash'}->{'type'},
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
-              $tree = $self->gdt("\@tie{ }-- {category}:\@*{type}\@*{name}",
+              $tree = $self->gdt("\@tie{}-- {category}:\@*{type}\@*{name}",
                                  $strings);
             } else {
-              $tree = $self->gdt("\@tie{ }-- {category}: {type} {name}",
+              $tree = $self->gdt("\@tie{}-- {category}: {type} {name}",
                                  $strings);
             }
           }
@@ -2796,13 +2796,13 @@ sub _convert($$)
                  or ($command eq 'deftypecv'
                      and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category} of {class}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category} of {class}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category} of {class}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'name' => $name});
@@ -2811,13 +2811,13 @@ sub _convert($$)
                  or ($command eq 'deftypeop'
                      and !$root->{'extra'}->{'def_parsed_hash'}->{'type'})) {
           if ($arguments) {
-            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name} {arguments}", {
+            $tree = $self->gdt("\@tie{}-- {category} on {class}: {name} {arguments}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'name' => $name,
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'arguments' => $arguments});
           } else {
-            $tree = $self->gdt("\@tie{ }-- {category} on {class}: {name}", {
+            $tree = $self->gdt("\@tie{}-- {category} on {class}: {name}", {
                     'category' => $root->{'extra'}->{'def_parsed_hash'}->{'category'},
                     'class' => $root->{'extra'}->{'def_parsed_hash'}->{'class'},
                     'name' => $name});
@@ -2832,11 +2832,11 @@ sub _convert($$)
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}:\@*{type}\@*{name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} on {class}:\@*{type}\@*{name} {arguments}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} on {class}: {type} {name} {arguments}",
                              $strings);
             }
           } else {
@@ -2847,11 +2847,11 @@ sub _convert($$)
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}:\@*{type}\@*{name}",
+                = $self->gdt("\@tie{}-- {category} on {class}:\@*{type}\@*{name}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} on {class}: {type} {name}",
+                = $self->gdt("\@tie{}-- {category} on {class}: {type} {name}",
                              $strings);
             }
           }
@@ -2865,11 +2865,11 @@ sub _convert($$)
                     'arguments' => $arguments};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}:\@*{type}\@*{name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} of {class}:\@*{type}\@*{name} {arguments}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name} {arguments}",
+                = $self->gdt("\@tie{}-- {category} of {class}: {type} {name} {arguments}",
                              $strings);
             }
           } else {
@@ -2880,11 +2880,11 @@ sub _convert($$)
                     'name' => $name};
             if ($self->get_conf('deftypefnnewline') eq 'on') {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}:\@*{type}\@*{name}",
+                = $self->gdt("\@tie{}-- {category} of {class}:\@*{type}\@*{name}",
                              $strings);
             } else {
               $tree 
-                = $self->gdt("\@tie{ }-- {category} of {class}: {type} {name}",
+                = $self->gdt("\@tie{}-- {category} of {class}: {type} {name}",
                              $strings);
             }
           }
