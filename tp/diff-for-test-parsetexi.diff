@@ -1,6 +1,6 @@
 Index: Texinfo/Convert/Converter.pm
 ===================================================================
---- Texinfo/Convert/Converter.pm	(revision 7842)
+--- Texinfo/Convert/Converter.pm	(revision 7847)
 +++ Texinfo/Convert/Converter.pm	(working copy)
 @@ -1136,6 +1136,8 @@
    return @result;
@@ -35,7 +35,7 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 7842)
+--- Texinfo/Parser.pm	(revision 7847)
 +++ Texinfo/Parser.pm	(working copy)
 @@ -33,6 +33,9 @@
  use 5.006;
@@ -73,7 +73,7 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7842)
+--- Texinfo/Structuring.pm	(revision 7847)
 +++ Texinfo/Structuring.pm	(working copy)
 @@ -396,7 +396,8 @@
    foreach my $node (@{$self->{'nodes'}}) {
@@ -124,7 +124,7 @@ Index: texi2any.pl
    }
  }
  
-@@ -1083,7 +1083,14 @@
+@@ -1083,7 +1083,12 @@
    document_warn(__('--Xopt option without printed output')); 
  }
  
@@ -134,8 +134,6 @@ Index: texi2any.pl
 +require Parsetexi;
 +*Texinfo::Parser:: = \%Parsetexi::;
 +}
-+
-+print *Parsetexi::{PACKAGE};
 +
  require Texinfo::Structuring;
  require Texinfo::Transformations;
