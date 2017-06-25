@@ -1,5 +1,11 @@
 2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfor/Parser.pm, tp/Texinfo/Common.pm
+	(complete_indices, _complete_indices): Move function to 
+	Common.pm and rename.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <@verbatiminclude>: Save 
 	value of 'input_perl_encoding' on the element.
 	* tp/Texinfo/Common.pm (expand_verbatiminclude): Use the

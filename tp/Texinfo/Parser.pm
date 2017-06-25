@@ -956,84 +956,6 @@ sub parse_texi_line($$;$$$$)
   return $tree;
 }
 
-sub _non_bracketed_contents {
-  my $current = shift;
-
-  if ($current->{'type'} and $current->{'type'} eq 'bracketed') {
-    my $new = {};
-    $new->{'contents'} = $current->{'contents'} if ($current->{'parent'});
-    $new->{'parent'} = $current->{'parent'} if ($current->{'parent'});
-    return $new;
-  } else {
-    return $current;
-  }
-}
-
-# In a handful of cases, we delay storing the contents of the
-# index entry until now to avoid needing Texinfo::Report::gdt
-# in the main code of Parser.pm.  Also set 'in_code' value on
-# index entries.
-sub _complete_indices {
-  my $self = shift;
-
-  my ($index_entry, $index_contents_normalized);
-    
-  my $save_lang = $self->get_conf('documentlanguage');
-
-  foreach my $index_name (keys(%{$self->{'index_names'}})) {
-    next if !defined $self->{'index_names'}->{$index_name}->{'index_entries'};
-    foreach my $entry (@{$self->{'index_names'}->{$index_name}->{'index_entries'}}) {
-      $entry->{'in_code'} = $self->{'index_names'}->{$index_name}->{'in_code'};
-      
-      if (!defined $entry->{'content'}) {
-        my $def_command = $entry->{'command'}->{'extra'}->{'def_command'};
-
-        my $def_parsed_hash = $entry->{'command'}->{'extra'}->{'def_parsed_hash'}; 
-        if ($def_parsed_hash and $def_parsed_hash->{'class'}
-            and $def_command) {
-          # Use the document language that was current when the command was
-          # used for getting the translation.
-          $self->{'documentlanguage'} = $entry->{'command'}->{'extra'}->{'documentlanguage'};
-          delete $entry->{'command'}->{'extra'}->{'documentlanguage'};
-          if ($def_command eq 'defop'
-              or $def_command eq 'deftypeop'
-              or $def_command eq 'defmethod'
-              or $def_command eq 'deftypemethod') {
-            $index_entry = $self->gdt('{name} on {class}',
-                                  {'name' => $def_parsed_hash->{'name'},
-                                   'class' => $def_parsed_hash->{'class'}});
-           $index_contents_normalized
-             = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                { 'text' => ' on '},
-                _non_bracketed_contents($def_parsed_hash->{'class'})];
-          } elsif ($def_command eq 'defivar'
-                   or $def_command eq 'deftypeivar'
-                   or $def_command eq 'deftypecv') {
-            $index_entry = $self->gdt('{name} of {class}',
-                                     {'name' => $def_parsed_hash->{'name'},
-                                     'class' => $def_parsed_hash->{'class'}});
-            $index_contents_normalized
-              = [_non_bracketed_contents($def_parsed_hash->{'name'}),
-                 { 'text' => ' of '},
-                 _non_bracketed_contents($def_parsed_hash->{'class'})];
-          }
-        }
-        # 'root_line' is the container returned by gdt.
-        if ($index_entry->{'type'} and $index_entry->{'type'} eq 'root_line') {
-          for my $child (@{$index_entry->{'contents'}}) {
-            delete $child->{'parent'};
-          }
-        }
-        if ($index_entry->{'contents'}) {
-          $entry->{'content'} = [@{$index_entry->{'contents'}}];
-          $entry->{'content_normalized'} = $index_contents_normalized;
-        }
-      }
-    }
-  }
-  $self->{'documentlanguage'} = $save_lang;
-}
-
 # return indices informations
 sub indices_information($)
 {
@@ -5520,7 +5442,7 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
 
   # Call 'labels_information' to initialize labels.
   my $labels = labels_information($self);
-  _complete_indices($self);
+  Texinfo::Common::complete_indices($self);
   return $root;
 }
 
