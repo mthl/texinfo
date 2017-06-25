@@ -91,6 +91,7 @@ on_keypress.dict = {
   n: [actions.navigate, "next"],
   p: [actions.navigate, "prev"],
   r: [top.history.forward.bind (top.history)],
+  t: [actions.set_current_url_pointer, "*TOP*"],
   u: [actions.navigate, "up"],
   "]": [actions.navigate, "forward"],
   "[": [actions.navigate, "backward"],
