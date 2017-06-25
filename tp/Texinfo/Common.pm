@@ -1142,9 +1142,10 @@ sub expand_verbatiminclude($$)
                             $current->{'line_nr'});
       }
     } else {
-      if ($self and defined($self->get_conf('INPUT_PERL_ENCODING'))) {
-        binmode(VERBINCLUDE, ":encoding(".
-                            $self->get_conf('INPUT_PERL_ENCODING').")");
+      if (defined $current->{'extra'}->{'input_perl_encoding'}) {
+        binmode(VERBINCLUDE, ":encoding("
+                             . $current->{'extra'}->{'input_perl_encoding'}
+                             . ")");
       }
       $verbatiminclude = { 'cmdname' => 'verbatim',
                            'parent' => $current->{'parent'},

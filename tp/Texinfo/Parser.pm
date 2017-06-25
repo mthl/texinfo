@@ -3178,6 +3178,10 @@ sub _end_line($$$)
                               $self->__("\@%s: could not find %s"),
                               $command, $text);
           }
+        } elsif ($command eq 'verbatiminclude') {
+          $current->{'extra'}->{'input_perl_encoding'}
+                                          = $self->{'INPUT_PERL_ENCODING'}
+            if defined $self->{'INPUT_PERL_ENCODING'};
         } elsif ($command eq 'documentencoding') {
           my ($texinfo_encoding, $perl_encoding, $input_encoding)
             = Texinfo::Encoding::encoding_alias($text);

@@ -1,5 +1,13 @@
 2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <@verbatiminclude>: Save 
+	value of 'input_perl_encoding' on the element.
+	* tp/Texinfo/Common.pm (expand_verbatiminclude): Use the
+	saved value of 'input_perl_encoding' instead of looking at
+	'INPUT_PERL_ENCODING' conf value.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_get_node_with_defaults): Remove code that
 	fell back to a man page.  This got in the way of the code in
 	info_get_info_help_node that fell back to info-stnd.info if 
