@@ -1978,8 +1978,30 @@ end_line_misc_line (ELEMENT *current)
             }
 
           // "current parts" - 3394
+          if (current_part)
+            {
+              add_extra_element (current, "associated_part", current_part);
+              add_extra_element (current_part, "part_associated_section",
+                                 current);
+              if (current->cmd == CM_top)
+                {
+                  line_error_ext (1, &current_part->line_nr,
+                         "@part should not be associated with @top");
+                }
+              current_part = 0;
+            }
 
           current_section = current;
+        }
+      else if (cmd == CM_part)
+        {
+          current_part = current;
+          if (current_node
+              && !lookup_extra_key (current_node, "associated_section"))
+            {
+              line_warn ("@node precedes @part, but parts may not be "
+                         "associated with nodes");
+            }
         }
     } /* 3416 */
 

@@ -80,6 +80,7 @@ extern const char *digit_chars;
 
 extern ELEMENT *current_node;
 extern ELEMENT *current_section;
+extern ELEMENT *current_part;
 
 extern GLOBAL_INFO global_info;
 extern char *global_clickstyle;

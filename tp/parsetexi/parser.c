@@ -67,10 +67,11 @@ read_command_name (char **ptr)
 }
 
 
-/* Current node and section. */
+/* Current node, section and part. */
 
 ELEMENT *current_node = 0;
 ELEMENT *current_section = 0;
+ELEMENT *current_part = 0;
 
 
 /* Conditional stack. */

@@ -61,7 +61,7 @@ reset_parser (void)
   input_reset_input_stack ();
   reset_conf ();
 
-  current_node = current_section = 0;
+  current_node = current_section = current_part = 0;
 }
 
 /* Set ROOT to root of tree obtained by parsing FILENAME. */
