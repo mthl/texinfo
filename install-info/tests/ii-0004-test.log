@@ -1,0 +1,52 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ mktemp ii04-XXXXXXXX
++ outputdirfile=ii04-MHffGM8b
++ cp ../../install-info/tests/ii-0004-input-dir-file ii04-MHffGM8b
++ [ x0 != x0 ]
++ ../../install-info/ginstall-info ../../install-info/tests/ii-0004-input-info-file ii04-MHffGM8b
++ retval=0
++ [ x0 != x0 ]
++ diff ../../install-info/tests/ii-0004-expected-dir-file ii04-MHffGM8b
++ retval=0
++ rm -f ii04-MHffGM8b
++ exit 0
+PASS ii-0004-test (exit status: 0)

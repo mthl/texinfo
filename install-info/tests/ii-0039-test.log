@@ -1,0 +1,53 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ mktemp ii39-XXXXXXXX
++ outputdirfile=ii39-zoCdW0RA
++ cp ../../install-info/tests/ii-0039-input-dir-file ii39-zoCdW0RA
++ [ x0 != x0 ]
++ ../../install-info/ginstall-info --entry=* Gnu: (gnu).  Wildebeest native to the African continent.
+               (this item contains disputed material). --no-indent ../../install-info/tests/ii-0039-input-info-file ii39-zoCdW0RA
++ retval=0
++ [ x0 != x0 ]
++ diff ../../install-info/tests/ii-0039-expected-dir-file ii39-zoCdW0RA
++ retval=0
++ rm -f ii39-zoCdW0RA
++ exit 0
+PASS ii-0039-test (exit status: 0)

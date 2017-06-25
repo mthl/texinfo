@@ -1,0 +1,43 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/cr-tag-table.sh.out
++ GINFO_OUTPUT=t/cr-tag-table.sh.out
++ basename ./t/cr-tag-table.sh.pipein
++ PIPEIN=t/cr-tag-table.sh.pipein
++ basename ./t/cr-tag-table.sh.pipeout
++ PTY_TYPE=t/cr-tag-table.sh.pipeout
++ rm -f t/cr-tag-table.sh.out
++ INFO_PRINT_COMMAND=>t/cr-tag-table.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --strict-node-location --file cr-tag-table.info --node Second
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ grep Node: Second t/cr-tag-table.sh.out
+File: cr-tag-table.info, Node: Second
++ RETVAL=0
++ cleanup
++ test 0 -ne 0
++ test 0 -ne 0
++ rm -f t/cr-tag-table.sh.out
++ rm -f t/cr-tag-table.sh.pipein t/cr-tag-table.sh.pipeout
++ rm -f
++ test no = yes
++ test -n 
++ exit 0
+PASS t/cr-tag-table.sh (exit status: 0)

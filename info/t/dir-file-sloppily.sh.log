@@ -1,0 +1,33 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/dir-file-sloppily.sh.out
++ GINFO_OUTPUT=t/dir-file-sloppily.sh.out
++ basename ./t/dir-file-sloppily.sh.pipein
++ PIPEIN=t/dir-file-sloppily.sh.pipein
++ basename ./t/dir-file-sloppily.sh.pipeout
++ PTY_TYPE=t/dir-file-sloppily.sh.pipeout
++ rm -f t/dir-file-sloppily.sh.out
++ INFO_PRINT_COMMAND=>t/dir-file-sloppily.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --output - FiLe-M
++ grep ^File: file-menu,
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+File: file-menu,   Node: Top
+PASS t/dir-file-sloppily.sh (exit status: 0)

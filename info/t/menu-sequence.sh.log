@@ -1,0 +1,249 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/menu-sequence.sh.out
++ GINFO_OUTPUT=t/menu-sequence.sh.out
++ basename ./t/menu-sequence.sh.pipein
++ PIPEIN=t/menu-sequence.sh.pipein
++ basename ./t/menu-sequence.sh.pipeout
++ PTY_TYPE=t/menu-sequence.sh.pipeout
++ rm -f t/menu-sequence.sh.out
++ INFO_PRINT_COMMAND=>t/menu-sequence.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/menu-sequence.sh.finished
++ FINISHEDFIFO=t/menu-sequence.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+-echo
++ reset_required=no
++ rm -f t/menu-sequence.sh.pipein t/menu-sequence.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/menu-sequence.sh.pipein
++ mkfifo t/menu-sequence.sh.pipeout
++ test ! -r t/menu-sequence.sh.pipein
++ test ! -r t/menu-sequence.sh.pipeout
++ PTY_PID=28495
++ read PTS_DEVICE
++ exec ./pseudotty t/menu-sequence.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/2
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
++ exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f intera
++ rm -f t/menu-sequence.sh.finished
+./pseudotty: entering main loop
++ mkfifo t/menu-sequence.sh.finished
++ SUBSHELL=28504
++ exec
++ exec
++ exec
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ exec
++ ./ginfo --init-file ./t/Infokey-config -f intera
++ pgrep -P 28504 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28507
++ test 0 -eq 99
++ + echo 28507
+grep ^0$\|^1$
++ wc -l
++ echo 28507
++ grep -v ^[0-9]*$
++ test 1 -eq 0
++ echo 28507
++ tr -d \n
++ GINFO_PID=28507
++ test 28507 = 
++ break
++ test 28507 = 
++ echo ...28507
+...28507
++ printf \033xmenu-sequence\rfile-menu,first,no,nod\rDq
++ . ./t/Timeout-test.inc
+./pseudotty: trying to read
+./pseudotty: read byte 0x1B
++ TIMED_OUT=
++ ./pseudotty: status=0trying to read
+
+./pseudotty: read byte 0x78
+./pseudotty: trying to read
+./pseudotty: read byte 0x6D
+./pseudotty: trying to read
+./pseudotty: read byte 0x65
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x75
+./pseudotty: trying to read
+./pseudotty: read byte 0x2D
+./pseudotty: trying to read
+./pseudotty: read byte 0x73+ 
+./pseudotty: trying to read
+./pseudotty: read byte 0x65
+read./pseudotty:  -ttrying to read 0
+
+./pseudotty: read byte 0x71./t/menu-sequence.sh: 26: read: 
+Illegal option -t
+./pseudotty: trying to read
++ ./pseudotty: testread byte 0x75 2
+ != 2./pseudotty: 
+trying to read
++ ./pseudotty: exitread byte 0x65 1
+
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x63
+./pseudotty: trying to read
+./pseudotty: read byte 0x65
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x66
+./pseudotty: trying to read+ 
+test./pseudotty:  1read byte 0x69 !=
+ 0
+./pseudotty: + trying to readstatus=2
+
+./pseudotty: read byte 0x6C
++ ./pseudotty: testtrying to read 2
+ !=./pseudotty:  2read byte 0x65
+
+./pseudotty: + trying to readtest
+ 2./pseudotty:  !=read byte 0x2D 2
+
+./pseudotty: + trying to readRETVAL=0
+
+./pseudotty: read byte 0x6D
++ test 2 =./pseudotty:  1trying to read
+
++ ./pseudotty: testread byte 0x65 2
+ != 0 -a./pseudotty:  2trying to read -le
+ 128./pseudotty: 
+read byte 0x6E
++ rm./pseudotty:  -ftrying to read t/menu-sequence.sh.finished
+
+./pseudotty: read byte 0x75
+./pseudotty: trying to read
+./pseudotty: read byte 0x2C
+./pseudotty: trying to read
+./pseudotty: read byte 0x66
+./pseudotty: trying to read
+./pseudotty: read byte 0x69
+./pseudotty: trying to read
+./pseudotty: read byte 0x72
+./pseudotty: trying to read
+./pseudotty: read byte 0x73
+./pseudotty: trying to read
+./pseudotty: read byte 0x74
+./pseudotty: trying to read
+./pseudotty: read byte 0x2C
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x6F
+./pseudotty: trying to read
+./pseudotty: read byte 0x2C
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x6F
+./pseudotty: trying to read
+./pseudotty: read byte 0x64
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x44
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 28495 -ne 0
++ kill 28495
++ test 28504 -ne 0
++ kill 28504
++ rm -f t/menu-sequence.sh.out
++ rm -f t/menu-sequence.sh.pipein t/menu-sequence.sh.pipeout
++ rm -f t/menu-sequence.sh.finished
++ test no = yes
++ test -n 
++ exit 77
+SKIP t/menu-sequence.sh (exit status: 77)

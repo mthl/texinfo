@@ -1,0 +1,2 @@
+Skipping HTML TeX tests that are not easily reproducible
+SKIP tex_t4ht.sh (exit status: 77)

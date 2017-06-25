@@ -1,0 +1,199 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/index-long-nodeline.sh.out
++ GINFO_OUTPUT=t/index-long-nodeline.sh.out
++ basename ./t/index-long-nodeline.sh.pipein
++ PIPEIN=t/index-long-nodeline.sh.pipein
++ basename ./t/index-long-nodeline.sh.pipeout
++ PTY_TYPE=t/index-long-nodeline.sh.pipeout
++ rm -f t/index-long-nodeline.sh.out
++ INFO_PRINT_COMMAND=>t/index-long-nodeline.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/index-long-nodeline.sh.finished
++ FINISHEDFIFO=t/index-long-nodeline.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ rm -f t/index-long-nodeline.sh.pipein t/index-long-nodeline.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/index-long-nodeline.sh.pipein
++ mkfifo t/index-long-nodeline.sh.pipeout
++ test ! -r t/index-long-nodeline.sh.pipein
++ test ! -r t/index-long-nodeline.sh.pipeout
++ PTY_PID=28407
++ read PTS_DEVICE
++ exec ./pseudotty t/index-long-nodeline.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/3
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
++ exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f split
++ rm -f t/index-long-nodeline.sh.finished
+./pseudotty: entering main loop
++ mkfifo t/index-long-nodeline.sh.finished
++ SUBSHELL=28418
++ exec
++ exec+ 
+exec
++ + ./ginfoexec --init-file
+ ./t/Infokey-config+  -ffindprog split pgrep
+
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ pgrep -P 28418 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28419
++ test 0 -eq 99
++ echo 28419
++ wc -l
++ grep ^0$\|^1$
++ grep -v ^[0-9]*$
++ echo 28419
++ test 1 -eq 0
++ echo 28419
++ tr -d \n
++ GINFO_PID=28419
++ test 28419 = 
++ break
++ test 28419 = 
++ echo ...28419
+...28419
++ printf gIndex\r\t\t\r\rDq
++ . ./t/Timeout-test.inc
++ TIMED_OUT=
++ status=0
+./pseudotty: trying to read
+./pseudotty: read byte 0x67
+./pseudotty: trying to read
+./pseudotty: read byte 0x49
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x64
+./pseudotty: trying to read
+./pseudotty: read byte 0x65
+./pseudotty: trying to read
+./pseudotty: read byte 0x78
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x44
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ read -t 0
+./t/index-long-nodeline.sh: 26: read: Illegal option -t
++ test 2 != 2
++ exit 1
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/index-long-nodeline.sh.finished
++ test 0 -eq 0
++ echo finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 28407 -ne 0
++ kill 28407
++ test 28418 -ne 0
++ kill 28418
+./t/index-long-nodeline.sh: 74: kill: No such process
+
++ rm -f t/index-long-nodeline.sh.out
++ rm -f t/index-long-nodeline.sh.pipein t/index-long-nodeline.sh.pipeout
++ rm -f t/index-long-nodeline.sh.finished
++ test yes = yes
++ + sttygrep
+ [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/index-long-nodeline.sh (exit status: 77)

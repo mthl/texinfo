@@ -1,0 +1,195 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/goto-quoted.sh.out
++ GINFO_OUTPUT=t/goto-quoted.sh.out
++ basename ./t/goto-quoted.sh.pipein
++ PIPEIN=t/goto-quoted.sh.pipein
++ basename ./t/goto-quoted.sh.pipeout
++ PTY_TYPE=t/goto-quoted.sh.pipeout
++ rm -f t/goto-quoted.sh.out
++ INFO_PRINT_COMMAND=>t/goto-quoted.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/goto-quoted.sh.finished
++ FINISHEDFIFO=t/goto-quoted.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ rm -f t/goto-quoted.sh.pipein t/goto-quoted.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/goto-quoted.sh.pipein
++ mkfifo t/goto-quoted.sh.pipeout
++ test ! -r t/goto-quoted.sh.pipein
++ test ! -r t/goto-quoted.sh.pipeout
++ PTY_PID=29198
++ exec ./pseudotty t/goto-quoted.sh.pipeout
++ read PTS_DEVICE
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/5
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
+./pseudotty: + entering main loopexec
+
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f quoting
++ rm -f t/goto-quoted.sh.finished
++ mkfifo t/goto-quoted.sh.finished
++ SUBSHELL=29201
++ exec
++ exec
++ ./ginfo --init-file ./t/Infokey-config -f quoting+ 
+exec
++ exec
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ pgrep -P 29201 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=29202
++ test 0 -eq 99
++ echo 29202
++ wc -l
++ grep ^0$\|^1$
++ echo 29202+ 
+grep -v ^[0-9]*$
++ test 1 -eq 0
++ echo 29202
++ tr -d \n
++ GINFO_PID=29202
++ test 29202 = 
++ break
++ test 29202 = 
++ echo ...29202
+...29202
++ printf g\tColo\t\r\t\rDq
++ . ./t/Timeout-test.inc
+./pseudotty: trying to read
+./pseudotty: read byte 0x67
++ TIMED_OUT=
++ status=0./pseudotty: 
+trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read
+./pseudotty: read byte 0x43
++ ./pseudotty: trying to readread
+ -t./pseudotty:  0read byte 0x6F
+
+./t/goto-quoted.sh: 26: read: Illegal option -t
+./pseudotty: + trying to readtest
+ 2./pseudotty:  !=read byte 0x6C 2
+
+./pseudotty: + trying to readexit
+ 1./pseudotty: 
+read byte 0x6F
+./pseudotty: trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read+ 
+test./pseudotty:  1read byte 0x0D !=
+ 0
+./pseudotty: + trying to readstatus=2
+
+./pseudotty: read byte 0x44
++ ./pseudotty: testtrying to read 2
+ !=./pseudotty:  2read byte 0x71
+
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/goto-quoted.sh.finished
++ test 0 -eq 0
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 29198 -ne 0
++ + echokill finished 29198
+
++ test 29201 -ne 0
++ kill 29201
++ rm -f t/goto-quoted.sh.out
++ rm -f t/goto-quoted.sh.pipein t/goto-quoted.sh.pipeout
++ rm -f t/goto-quoted.sh.finished
++ test yes = yes
++ + stty
+grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/goto-quoted.sh (exit status: 77)

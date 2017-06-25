@@ -1,0 +1,52 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ mktemp ii18-XXXXXXXX
++ outputdirfile=ii18-1bgNze9Y
++ cp ../../install-info/tests/ii-0018-input-dir-file ii18-1bgNze9Y
++ [ x0 != x0 ]
++ ../../install-info/ginstall-info ../../install-info/tests/ii-0018-input-info-file ii18-1bgNze9Y
++ retval=0
++ [ x0 != x0 ]
++ diff ../../install-info/tests/ii-0018-expected-dir-file ii18-1bgNze9Y
++ retval=0
++ rm -f ii18-1bgNze9Y
++ exit 0
+PASS ii-0018-test (exit status: 0)

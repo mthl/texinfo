@@ -1,0 +1,181 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/no-index.sh.out
++ GINFO_OUTPUT=t/no-index.sh.out
++ basename ./t/no-index.sh.pipein
++ PIPEIN=t/no-index.sh.pipein
++ basename ./t/no-index.sh.pipeout
++ PTY_TYPE=t/no-index.sh.pipeout
++ rm -f t/no-index.sh.out
++ INFO_PRINT_COMMAND=>t/no-index.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/no-index.sh.finished
++ FINISHEDFIFO=t/no-index.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
+stty: 'standard input': Inappropriate ioctl for device
++ grep [-]echo
++ rm -f t/no-index.sh.pipein t/no-index.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/no-index.sh.pipein
++ mkfifo t/no-index.sh.pipeout
++ test ! -r t/no-index.sh.pipein
++ test ! -r t/no-index.sh.pipeout
++ PTY_PID=28213
++ read PTS_DEVICE
++ exec ./pseudotty t/no-index.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/5
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
+./pseudotty: + entering main loopexec
+
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f sample
++ rm -f t/no-index.sh.finished
++ mkfifo t/no-index.sh.finished
++ SUBSHELL=28229
++ exec
++ exec
++ exec
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ exec
++ ./ginfo --init-file ./t/Infokey-config -f sample
++ pgrep -P 28229 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28234
++ test 0 -eq 99
++ echo 28234
++ wc -l
++ grep ^0$\|^1$
++ + echo 28234
+grep -v ^[0-9]*$
++ test 1 -eq 0
++ tr -d \n
++ echo 28234
++ GINFO_PID=28234
++ test 28234 = 
++ break
++ test 28234 = 
++ echo ...28234
+...28234
++ printf ia\rq
++ . ./t/Timeout-test.inc
++ TIMED_OUT=
++ status=0
+./pseudotty: trying to read
+./pseudotty: read byte 0x69
+./pseudotty: trying to read
+./pseudotty: read byte 0x61
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ test 0 -eq 0
++ echo finished
++ read -t 0
+./t/no-index.sh: 26: read: Illegal option -t
++ test 2 != 2
++ exit 1
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/no-index.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 28213 -ne 0
++ kill 28213
++ test 28229 -ne 0
++ kill 28229
+./t/no-index.sh: 74: kill: No such process
+
++ rm -f t/no-index.sh.out
++ rm -f t/no-index.sh.pipein t/no-index.sh.pipeout
++ rm -f t/no-index.sh.finished
++ test yes = yes
++ stty
+stty: 'standard input': Inappropriate ioctl for device
++ grep [-]echo
++ test -n 
++ exit 77
+SKIP t/no-index.sh (exit status: 77)

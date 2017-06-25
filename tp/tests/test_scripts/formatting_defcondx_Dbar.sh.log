@@ -1,0 +1,11 @@
+testdir: formatting/
+driving_file: ./formatting//tests-parser.txt
+made result dir: ./formatting//res_parser/
+
+doing test defcondx_Dbar, src_file ./formatting//defxcond.texi
+format_option: --set-customization-variable=TEXI2HTML
+texi2any.pl defcondx_Dbar -> formatting//out_parser/defcondx_Dbar
+ /usr/bin/perl -w ./..//texi2any.pl --set-customization-variable=TEXI2HTML --force --conf-dir ./../t/init/ --conf-dir ./../init -I ./formatting/ -I formatting// -I ./ --set-customization-variable L2H_FILE=./../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0  --output formatting//out_parser/defcondx_Dbar/ -D bar ./formatting//defxcond.texi > formatting//out_parser/defcondx_Dbar/defxcond.1 2>formatting//out_parser/defcondx_Dbar/defxcond.2
+
+all done, exiting with status 0
+PASS test_scripts/formatting_defcondx_Dbar.sh (exit status: 0)

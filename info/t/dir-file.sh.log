@@ -1,0 +1,35 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/dir-file.sh.out
++ GINFO_OUTPUT=t/dir-file.sh.out
++ basename ./t/dir-file.sh.pipein
++ PIPEIN=t/dir-file.sh.pipein
++ basename ./t/dir-file.sh.pipeout
++ PTY_TYPE=t/dir-file.sh.pipeout
++ rm -f t/dir-file.sh.out
++ INFO_PRINT_COMMAND=>t/dir-file.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --output - file1
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+File: file1,	Node: Top	This is the top of the INFO tree
+
+This is file1.
+
+PASS t/dir-file.sh (exit status: 0)

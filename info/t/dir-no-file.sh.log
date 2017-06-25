@@ -1,0 +1,31 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/dir-no-file.sh.out
++ GINFO_OUTPUT=t/dir-no-file.sh.out
++ basename ./t/dir-no-file.sh.pipein
++ PIPEIN=t/dir-no-file.sh.pipein
++ basename ./t/dir-no-file.sh.pipeout
++ PTY_TYPE=t/dir-no-file.sh.pipeout
++ rm -f t/dir-no-file.sh.out
++ INFO_PRINT_COMMAND=>t/dir-no-file.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ grep No menu item
++ ./ginfo --init-file ./t/Infokey-config --output - not-a-file
+info: No menu item 'not-a-file' in node '(dir)Top'.
+PASS t/dir-no-file.sh (exit status: 0)

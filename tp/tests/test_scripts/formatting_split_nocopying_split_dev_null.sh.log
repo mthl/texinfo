@@ -1,0 +1,11 @@
+testdir: formatting/
+driving_file: ./formatting//tests-parser.txt
+made result dir: ./formatting//res_parser/
+
+doing test split_nocopying_split_dev_null, src_file ./formatting//split_nocopying.texi
+format_option: --set-customization-variable=TEXI2HTML
+texi2any.pl split_nocopying_split_dev_null -> formatting//out_parser/split_nocopying_split_dev_null
+ /usr/bin/perl -w ./..//texi2any.pl --set-customization-variable=TEXI2HTML --force --conf-dir ./../t/init/ --conf-dir ./../init -I ./formatting/ -I formatting// -I ./ --set-customization-variable L2H_FILE=./../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0  --output formatting//out_parser/split_nocopying_split_dev_null/ --info --split-size 1 -o /dev/null ./formatting//split_nocopying.texi > formatting//out_parser/split_nocopying_split_dev_null/split_nocopying.1 2>formatting//out_parser/split_nocopying_split_dev_null/split_nocopying.2
+
+all done, exiting with status 0
+PASS test_scripts/formatting_split_nocopying_split_dev_null.sh (exit status: 0)

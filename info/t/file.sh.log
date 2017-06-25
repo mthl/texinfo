@@ -1,0 +1,51 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/file.sh.out
++ GINFO_OUTPUT=t/file.sh.out
++ basename ./t/file.sh.pipein
++ PIPEIN=t/file.sh.pipein
++ basename ./t/file.sh.pipeout
++ PTY_TYPE=t/file.sh.pipeout
++ rm -f t/file.sh.out
++ INFO_PRINT_COMMAND=>t/file.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --file file-menu
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ grep Node: Top t/file.sh.out
+File: file-menu,   Node: Top
++ grep Node: Node 1 t/file.sh.out
+File: file-menu,   Node: Node 1
++ grep Node: Node 2 t/file.sh.out
+File: file-menu,   Node: Node 2
++ grep Node: Node 3 t/file.sh.out
+File: file-menu,   Node: Node 3
++ grep Node: Has\.dot t/file.sh.out
+File: file-menu,   Node: Has.dot
++ RETVAL=0
++ cleanup
++ test 0 -ne 0
++ test 0 -ne 0
++ rm -f t/file.sh.out
++ rm -f t/file.sh.pipein t/file.sh.pipeout
++ rm -f
++ test no = yes
++ test -n 
++ exit 0
+PASS t/file.sh (exit status: 0)

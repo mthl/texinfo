@@ -1,0 +1,11 @@
+testdir: formatting/
+driving_file: ./formatting//tests-parser.txt
+made result dir: ./formatting//res_parser/
+
+doing test simple_with_menu_docbook_info, src_file ./formatting//simple_with_menu.texi
+format_option: --set-customization-variable=TEXI2HTML
+texi2any.pl simple_with_menu_docbook_info -> formatting//out_parser/simple_with_menu_docbook_info
+ /usr/bin/perl -w ./..//texi2any.pl --set-customization-variable=TEXI2HTML --force --conf-dir ./../t/init/ --conf-dir ./../init -I ./formatting/ -I formatting// -I ./ --set-customization-variable L2H_FILE=./../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0  --output formatting//out_parser/simple_with_menu_docbook_info/ --docbook --info ./formatting//simple_with_menu.texi > formatting//out_parser/simple_with_menu_docbook_info/simple_with_menu.1 2>formatting//out_parser/simple_with_menu_docbook_info/simple_with_menu.2
+
+all done, exiting with status 0
+PASS test_scripts/formatting_simple_with_menu_docbook_info.sh (exit status: 0)

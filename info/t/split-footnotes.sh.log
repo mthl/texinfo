@@ -1,0 +1,187 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/split-footnotes.sh.out
++ GINFO_OUTPUT=t/split-footnotes.sh.out
++ basename ./t/split-footnotes.sh.pipein
++ PIPEIN=t/split-footnotes.sh.pipein
++ basename ./t/split-footnotes.sh.pipeout
++ PTY_TYPE=t/split-footnotes.sh.pipeout
++ rm -f t/split-footnotes.sh.out
++ INFO_PRINT_COMMAND=>t/split-footnotes.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/split-footnotes.sh.finished
++ FINISHEDFIFO=t/split-footnotes.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+-echo
++ reset_required=no
++ rm -f t/split-footnotes.sh.pipein t/split-footnotes.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/split-footnotes.sh.pipein
++ mkfifo t/split-footnotes.sh.pipeout
++ test ! -r t/split-footnotes.sh.pipein
++ test ! -r t/split-footnotes.sh.pipeout
++ PTY_PID=27872
++ + read PTS_DEVICE
+exec ./pseudotty t/split-footnotes.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/3
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
++ exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f intera -n Node with footnotes -v automatic-footnotes=On
++ rm -f t/split-footnotes.sh.finished
+./pseudotty: entering main loop
++ mkfifo t/split-footnotes.sh.finished
++ SUBSHELL=27878
++ exec
++ exec+ 
+exec
++ + exec
++ ./ginfofindprog --init-file pgrep ./t/Infokey-config
+ -f intera+  -nsaveIFS= 	
+ Node with footnotes
+ -v+  automatic-footnotes=OnIFS=:
+
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ pgrep -P 27878 ginfo
++ test 0 -eq 0
++ GINFO_PID=27879
++ test 0 -eq 99
++ echo 27879
++ grep ^0$\|^1$
++ wc -l
++ grep -v ^[0-9]*$
++ echo 27879
++ test 1 -eq 0
++ echo 27879
++ tr -d \n
++ GINFO_PID=27879
++ test 27879 = 
++ break
++ test 27879 = 
++ echo ...27879
+...27879
++ printf \030o\0302qqqq
++ . ./t/Timeout-test.inc
++ ./pseudotty: TIMED_OUT=trying to read
+
++ ./pseudotty: status=0read byte 0x18
+
+./pseudotty: trying to read
+./pseudotty: read byte 0x6F
+./pseudotty: trying to read
+./pseudotty: read byte 0x18
+./pseudotty: trying to read
+./pseudotty: read byte 0x32
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ read -t 0
+./t/split-footnotes.sh: 26: read: Illegal option -t
++ test 2 != 2
++ exit 1
++ test 0 -eq 0
++ echo finished
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/split-footnotes.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 27872 -ne 0
++ kill 27872
++ test 27878 -ne 0
++ kill 27878
+./t/split-footnotes.sh: 74: kill: No such process
+
++ rm -f t/split-footnotes.sh.out
++ rm -f t/split-footnotes.sh.pipein t/split-footnotes.sh.pipeout
++ rm -f t/split-footnotes.sh.finished
++ test no = yes
++ test -n 
++ exit 77
+SKIP t/split-footnotes.sh (exit status: 77)

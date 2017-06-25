@@ -1,0 +1,26 @@
+==================================================================
+   GNU Texinfo 6.3.90: tp/tests/many_input_files/test-suite.log
+==================================================================
+
+# TOTAL: 3
+# PASS:  1
+# SKIP:  2
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
+
+.. contents:: :depth: 2
+
+SKIP: tex_l2h.sh
+================
+
+Skipping HTML TeX tests that are not easily reproducible (./tex_l2h.sh)
+SKIP tex_l2h.sh (exit status: 77)
+
+SKIP: tex_t4ht.sh
+=================
+
+Skipping HTML TeX tests that are not easily reproducible
+SKIP tex_t4ht.sh (exit status: 77)
+

@@ -1,0 +1,50 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ testnum=0055
++ mktemp ii0055-XXXXXXXX
++ outputdirfile=ii0055-VHKo13fr
++ cp ../../install-info/tests/ii-0055-input-dir-file ii0055-VHKo13fr
++ ../../install-info/ginstall-info --defsection=Antlered Animals --entry=* Gnu: (gnu).  Wildebeest native to Africa. ../../install-info/tests/ii-0055-input-info-file ii0055-VHKo13fr
++ diff ../../install-info/tests/ii-0055-expected-dir-file ii0055-VHKo13fr
++ retval=0
++ rm -f ii0055-VHKo13fr
++ exit 0
+PASS ii-0056-test (exit status: 0)

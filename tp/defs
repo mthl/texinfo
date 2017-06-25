@@ -1,0 +1,4 @@
+PATH_SEPARATOR=":"
+PERL="/usr/bin/perl"
+DIFF_U_OPTION="-u"
+DIFF_A_OPTION="-a"

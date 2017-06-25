@@ -1,0 +1,33 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/dir-file-index.sh.out
++ GINFO_OUTPUT=t/dir-file-index.sh.out
++ basename ./t/dir-file-index.sh.pipein
++ PIPEIN=t/dir-file-index.sh.pipein
++ basename ./t/dir-file-index.sh.pipeout
++ PTY_TYPE=t/dir-file-index.sh.pipeout
++ rm -f t/dir-file-index.sh.out
++ INFO_PRINT_COMMAND=>t/dir-file-index.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file+  ./t/Infokey-config --output - splitgrep entry text
+ Node: Target node
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+File: split.info,  Node: Target node
+PASS t/dir-file-index.sh (exit status: 0)

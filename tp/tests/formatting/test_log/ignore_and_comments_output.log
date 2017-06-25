@@ -1,0 +1,10 @@
+testdir: formatting/
+driving_file: ./formatting//tests-parser.txt
+made result dir: ./formatting//res_parser/
+
+doing test ignore_and_comments_output, src_file ./formatting//ignore_and_comments.texi
+format_option: --set-customization-variable=TEXI2HTML
+texi2any.pl ignore_and_comments_output -> formatting//out_parser/ignore_and_comments_output
+ /usr/bin/perl -w ./..//texi2any.pl --set-customization-variable=TEXI2HTML --force --conf-dir ./../t/init/ --conf-dir ./../init -I ./formatting/ -I formatting// -I ./ --set-customization-variable L2H_FILE=./../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0  --output formatting//out_parser/ignore_and_comments_output/ --init ignore_and_comments_output.init ./formatting//ignore_and_comments.texi > formatting//out_parser/ignore_and_comments_output/ignore_and_comments.1 2>formatting//out_parser/ignore_and_comments_output/ignore_and_comments.2
+
+all done, exiting with status 0

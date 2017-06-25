@@ -1,0 +1,35 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/empty.sh.out
++ GINFO_OUTPUT=t/empty.sh.out
++ basename ./t/empty.sh.pipein
++ PIPEIN=t/empty.sh.pipein
++ basename ./t/empty.sh.pipeout
++ PTY_TYPE=t/empty.sh.pipeout
++ rm -f t/empty.sh.out
++ INFO_PRINT_COMMAND=>t/empty.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ rm -f empty.info
++ touch empty.info
++ INFOPATH=. ./ginfo --init-file ./t/Infokey-config --output - empty
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+info: Cannot find node '(empty)Top'.
++ rm -f empty.info
+PASS t/empty.sh (exit status: 0)

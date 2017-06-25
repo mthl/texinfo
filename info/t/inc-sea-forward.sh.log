@@ -1,0 +1,206 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/inc-sea-forward.sh.out
++ GINFO_OUTPUT=t/inc-sea-forward.sh.out
++ basename ./t/inc-sea-forward.sh.pipein
++ PIPEIN=t/inc-sea-forward.sh.pipein
++ basename ./t/inc-sea-forward.sh.pipeout
++ PTY_TYPE=t/inc-sea-forward.sh.pipeout
++ rm -f t/inc-sea-forward.sh.out
++ INFO_PRINT_COMMAND=>t/inc-sea-forward.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/inc-sea-forward.sh.finished
++ FINISHEDFIFO=t/inc-sea-forward.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ rm -f t/inc-sea-forward.sh.pipein t/inc-sea-forward.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/inc-sea-forward.sh.pipein
++ mkfifo t/inc-sea-forward.sh.pipeout
++ test ! -r t/inc-sea-forward.sh.pipein
++ test ! -r t/inc-sea-forward.sh.pipeout
++ PTY_PID=28747
++ + readexec PTS_DEVICE ./pseudotty
+ t/inc-sea-forward.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/5
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
+./pseudotty: + entering main loop
+exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -f search
++ rm -f t/inc-sea-forward.sh.finished
++ mkfifo t/inc-sea-forward.sh.finished
++ SUBSHELL=28757
++ exec
++ exec
++ ./ginfo --init-file ./t/Infokey-config -f search
++ exec
++ exec
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ pgrep -P 28757 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28758
++ test 0 -eq 99
++ echo 28758
++ wc -l
++ grep ^0$\|^1$
++ echo 28758
++ grep -v ^[0-9]*$
++ test 1 -eq 0
++ echo 28758
++ tr -d \n
++ GINFO_PID=28758
++ test 28758 = 
++ break
++ test 28758 = 
++ echo ...28758
+...28758
++ printf \023matchxy\010\010
++ printf \023\023\023\r\006\rDq./pseudotty: 
+trying to read
++ ../pseudotty:  ./t/Timeout-test.incread byte 0x13
+
++ ./pseudotty: TIMED_OUT=trying to read
+
+./pseudotty: + read byte 0x6Dstatus=0
+
+./pseudotty: trying to read
+./pseudotty: read byte 0x61
+./pseudotty: trying to read
+./pseudotty: read byte 0x74
+./pseudotty: trying to read
+./pseudotty: read byte 0x63
+./pseudotty: trying to read
+./pseudotty: read byte 0x68
+./pseudotty: trying to read
+./pseudotty: read byte 0x78
+./pseudotty: trying to read
+./pseudotty: + read byte 0x79
+./pseudotty: trying to read
+read./pseudotty:  -tread byte 0x08 0
+
+./pseudotty: trying to read./t/inc-sea-forward.sh: 26: read: 
+Illegal option -t./pseudotty: 
+read byte 0x08
++ ./pseudotty: testtrying to read 2
+ !=./pseudotty:  2read byte 0x13
+
++ ./pseudotty: exittrying to read 1
+
+./pseudotty: read byte 0x13
+./pseudotty: trying to read
+./pseudotty: read byte 0x13
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x06
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read+ 
+test./pseudotty:  1read byte 0x44 !=
+ 0
+./pseudotty: trying to read+ 
+status=2./pseudotty: 
+read byte 0x71
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/inc-sea-forward.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 28747 -ne 0
++ kill 28747
++ test 28757 -ne 0
++ kill 28757
++ rm -f t/inc-sea-forward.sh.out
++ rm -f t/inc-sea-forward.sh.pipein t/inc-sea-forward.sh.pipeout
++ rm -f t/inc-sea-forward.sh.finished
++ test yes = yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/inc-sea-forward.sh (exit status: 77)

@@ -1,0 +1,33 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/file-relative-path.sh.out
++ GINFO_OUTPUT=t/file-relative-path.sh.out
++ basename ./t/file-relative-path.sh.pipein
++ PIPEIN=t/file-relative-path.sh.pipein
++ basename ./t/file-relative-path.sh.pipeout
++ PTY_TYPE=t/file-relative-path.sh.pipeout
++ rm -f t/file-relative-path.sh.out
++ INFO_PRINT_COMMAND=>t/file-relative-path.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --output - --file ./t/infodir/sample.info
++ grep ^File: sample.info,
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+File: sample.info,  Node: Top,  Up: (DIR)
+PASS t/file-relative-path.sh (exit status: 0)

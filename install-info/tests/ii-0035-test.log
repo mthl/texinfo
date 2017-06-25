@@ -1,0 +1,52 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ mktemp ii35-XXXXXXXX
++ outputdirfile=ii35-dmJ5LDEs
++ cp ../../install-info/tests/ii-0035-input-dir-file ii35-dmJ5LDEs
++ [ x0 != x0 ]
++ ../../install-info/ginstall-info --regex=^Antlered Animals$ --section=Animals ../../install-info/tests/ii-0035-input-info-file ii35-dmJ5LDEs
++ retval=0
++ [ x0 != x0 ]
++ diff ../../install-info/tests/ii-0035-expected-dir-file ii35-dmJ5LDEs
++ retval=0
++ rm -f ii35-dmJ5LDEs
++ exit 0
+PASS ii-0035-test (exit status: 0)

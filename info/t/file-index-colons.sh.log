@@ -1,0 +1,33 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/file-index-colons.sh.out
++ GINFO_OUTPUT=t/file-index-colons.sh.out
++ basename ./t/file-index-colons.sh.pipein
++ PIPEIN=t/file-index-colons.sh.pipein
++ basename ./t/file-index-colons.sh.pipeout
++ PTY_TYPE=t/file-index-colons.sh.pipeout
++ rm -f t/file-index-colons.sh.out
++ INFO_PRINT_COMMAND=>t/file-index-colons.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --output - --file index-search aaa::bbb
++ grep Node: Node 2
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+Node: Node 2
+PASS t/file-index-colons.sh (exit status: 0)

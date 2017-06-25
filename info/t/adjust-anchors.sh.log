@@ -1,0 +1,230 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/adjust-anchors.sh.out
++ GINFO_OUTPUT=t/adjust-anchors.sh.out
++ basename ./t/adjust-anchors.sh.pipein
++ PIPEIN=t/adjust-anchors.sh.pipein
++ basename ./t/adjust-anchors.sh.pipeout
++ PTY_TYPE=t/adjust-anchors.sh.pipeout
++ rm -f t/adjust-anchors.sh.out
++ INFO_PRINT_COMMAND=>t/adjust-anchors.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/adjust-anchors.sh.finished
++ FINISHEDFIFO=t/adjust-anchors.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
+stty: 'standard input': Inappropriate ioctl for device
++ grep [-]echo
++ rm -f t/adjust-anchors.sh.pipein t/adjust-anchors.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/adjust-anchors.sh.pipein
++ mkfifo t/adjust-anchors.sh.pipeout
++ test ! -r t/adjust-anchors.sh.pipein
++ test ! -r t/adjust-anchors.sh.pipeout
++ PTY_PID=27989
++ exec ./pseudotty t/adjust-anchors.sh.pipeout
++ read PTS_DEVICE
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/3
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
++ exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ LC_ALL=en_US.ISO8859-1
++ export LC_ALL
++ run_ginfo -f anchors
++ rm -f t/adjust-anchors.sh.finished
+./pseudotty: entering main loop
++ mkfifo t/adjust-anchors.sh.finished
++ SUBSHELL=28006
++ exec
++ exec+ 
+exec
++ + ./ginfoexec --init-file
+ ./t/Infokey-config -f anchors
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ pgrep -P 28006 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28007
++ test 0 -eq 99
++ wc -l
++ echo 28007
++ grep ^0$\|^1$
++ echo 28007
++ grep -v ^[0-9]*$
++ test 1 -eq 0
++ echo 28007
++ tr -d \n
++ GINFO_PID=28007
++ test 28007 = 
++ break
++ test 28007 = 
++ echo ...28007
+...28007
++ printf ganchor-2\r\002\002\002\002\002\002
++ printf \002\002\002\002\002\002\002\002\rDq
++ . ./t/Timeout-test.inc
++ TIMED_OUT=
++ status=0
+./pseudotty: trying to read
+./pseudotty: read byte 0x67
+./pseudotty: trying to read
+./pseudotty: read byte 0x61
+./pseudotty: trying to read
+./pseudotty: read byte 0x6E
+./pseudotty: trying to read
+./pseudotty: read byte 0x63
+./pseudotty: trying to read
+./pseudotty: read byte 0x68
+./pseudotty: trying to read
+./pseudotty: read byte 0x6F
+./pseudotty: trying to read
+./pseudotty: read byte 0x72
+./pseudotty: trying to read
+./pseudotty: read byte 0x2D
+./pseudotty: trying to read
+./pseudotty: read byte 0x32
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
++ ./pseudotty: read byte 0x02
+./pseudotty: trying to read
+read./pseudotty:  -tread byte 0x02 0
+
+./pseudotty: ./t/adjust-anchors.sh: 26: read: trying to readIllegal option -t
+
+./pseudotty: read byte 0x02+ 
+test./pseudotty:  2trying to read !=
+ 2./pseudotty: 
+read byte 0x02
++ ./pseudotty: exittrying to read 1
+
+./pseudotty: read byte 0x02
+./pseudotty: trying to read
+./pseudotty: read byte 0x0D
+./pseudotty: trying to read
+./pseudotty: read byte 0x44
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ test 0 -eq 0
++ echo finished
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/adjust-anchors.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 27989 -ne 0
++ kill 27989
++ test 28006 -ne 0
++ kill 28006
+./t/adjust-anchors.sh: 74: kill: No such process
+
++ rm -f t/adjust-anchors.sh.out
++ rm -f t/adjust-anchors.sh.pipein t/adjust-anchors.sh.pipeout
++ rm -f t/adjust-anchors.sh.finished
++ test yes = yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/adjust-anchors.sh (exit status: 77)

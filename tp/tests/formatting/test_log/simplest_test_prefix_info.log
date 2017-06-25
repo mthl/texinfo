@@ -1,0 +1,10 @@
+testdir: formatting/
+driving_file: ./formatting//tests-parser.txt
+made result dir: ./formatting//res_parser/
+
+doing test simplest_test_prefix_info, src_file ./formatting//simplest.texi
+format_option: --set-customization-variable=TEXI2HTML
+texi2any.pl simplest_test_prefix_info -> formatting//out_parser/simplest_test_prefix_info
+ /usr/bin/perl -w ./..//texi2any.pl --set-customization-variable=TEXI2HTML --force --conf-dir ./../t/init/ --conf-dir ./../init -I ./formatting/ -I formatting// -I ./ --set-customization-variable L2H_FILE=./../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0  --output formatting//out_parser/simplest_test_prefix_info/ --info --set-customization-variable 'PREFIX truc' ./formatting//simplest.texi > formatting//out_parser/simplest_test_prefix_info/simplest.1 2>formatting//out_parser/simplest_test_prefix_info/simplest.2
+
+all done, exiting with status 0

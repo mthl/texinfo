@@ -1,0 +1,68 @@
++ . ./defs
++ SHELL=/bin/bash
++ export SHELL
++ CDPATH=
++ unset CDPATH
++ test ! -f ./defs
++ test -z .
++ LC_ALL=C
++ export LC_ALL
++ valgrind=
++ top_builddir=../..
++ install_info=../../install-info/ginstall-info
++ export install_info
++ top_srcdir=../..
++ testdir=../../install-info/tests
++ export testdir
++ test -z 
++ TMPDIR=/tmp
++ export TMPDIR
++ : egrep
++ test -n 
++ path_sep=:
++ findprog mktemp
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mktemp
++ test -f /usr/local/bin/mktemp.exe
++ IFS= 	
+
++ test -f /usr/bin/mktemp
++ test -f /usr/bin/mktemp.exe
++ IFS= 	
+
++ test -f /bin/mktemp
++ test -x /bin/mktemp
++ return 0
++ :
++ mktemp ii41-XXXXXXXX
++ tempfile=ii41-2PK9pVaz
++ outputdirfile=ii41-2PK9pVaz.gz
++ cp ../../install-info/tests/ii-0041-input-dir-file.gz ii41-2PK9pVaz.gz
++ chmod u+rw ii41-2PK9pVaz.gz
++ ../../install-info/ginstall-info ../../install-info/tests/ii-0041-input-info-file ii41-2PK9pVaz.gz
++ findprog zdiff
++ local saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/zdiff
++ test -f /usr/local/bin/zdiff.exe
++ IFS= 	
+
++ test -f /usr/bin/zdiff
++ test -f /usr/bin/zdiff.exe
++ IFS= 	
+
++ test -f /bin/zdiff
++ test -x /bin/zdiff
++ return 0
++ zdiff ../../install-info/tests/ii-0041-expected-dir-file.gz ii41-2PK9pVaz.gz
++ retval=0
++ rm -f ii41-2PK9pVaz ii41-2PK9pVaz.gz
++ exit 0
+PASS ii-0041-test (exit status: 0)

@@ -1,0 +1,53 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/dir.sh.out
++ GINFO_OUTPUT=t/dir.sh.out
++ basename ./t/dir.sh.pipein
++ PIPEIN=t/dir.sh.pipein
++ basename ./t/dir.sh.pipeout
++ PTY_TYPE=t/dir.sh.pipeout
++ rm -f t/dir.sh.out
++ INFO_PRINT_COMMAND=>t/dir.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ ./ginfo --init-file ./t/Infokey-config --output -
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
+File: dir,	Node: Top,	This is the top of the INFO tree.
+
+This is the Info main menu (aka directory node).
+A few useful Info commands:
+
+  'q' quits;
+  'H' lists all Info commands;
+  'h' starts the Info tutorial;
+  'mTexinfo RET' visits the Texinfo manual, etc.
+
+* Menu:
+
+Test Info files
+* file1: (file1). 
+* file-menu: (file-menu). 
+
+* split: (split). 
+
+* non-existent: (non-existent).  Dir reference to non-existent file.
+
+* subdir:(subdir/file-in-subdir).          File in a subdir.
+* subdir-split:(subdir/split-in-subdir).   Split file in a subdir.
+PASS t/dir.sh (exit status: 0)

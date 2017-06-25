@@ -1,0 +1,177 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/anchor-positions.sh.out
++ GINFO_OUTPUT=t/anchor-positions.sh.out
++ basename ./t/anchor-positions.sh.pipein
++ PIPEIN=t/anchor-positions.sh.pipein
++ basename ./t/anchor-positions.sh.pipeout
++ PTY_TYPE=t/anchor-positions.sh.pipeout
++ rm -f t/anchor-positions.sh.out
++ INFO_PRINT_COMMAND=>t/anchor-positions.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/anchor-positions.sh.finished
++ FINISHEDFIFO=t/anchor-positions.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ rm -f t/anchor-positions.sh.pipein t/anchor-positions.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/anchor-positions.sh.pipein
++ mkfifo t/anchor-positions.sh.pipeout
++ test ! -r t/anchor-positions.sh.pipein
++ test ! -r t/anchor-positions.sh.pipeout
++ PTY_PID=28950
++ exec ./pseudotty t/anchor-positions.sh.pipeout+ 
+read PTS_DEVICE
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/5
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
+./pseudotty: + entering main loop
+exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ LANG=en_US.iso8859-1
++ export LANG
++ run_ginfo -f anchor-positions
++ rm -f t/anchor-positions.sh.finished
++ mkfifo t/anchor-positions.sh.finished
++ SUBSHELL=28953
++ exec
++ + execexec
+
++ exec
++ + ./ginfofindprog pgrep --init-file
+ ./t/Infokey-config -f+  anchor-positionssaveIFS= 	
+
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ pgrep -P 28953 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=28954
++ test 0 -eq 99
++ echo 28954
++ wc -l
++ grep ^0$\|^1$
++ echo 28954
++ grep -v ^[0-9]*$
++ test 1 -eq 0
++ echo 28954
++ tr -d \n
++ GINFO_PID=28954
++ test 28954 = 
++ break
++ test 28954 = 
++ echo ...28954
+...28954
++ printf q
++ ../pseudotty:  ./t/Timeout-test.inctrying to read
+
+./pseudotty: read byte 0x71
++ TIMED_OUT=
++ status=0
++ read -t 0
+./t/anchor-positions.sh: 26: read: Illegal option -t
++ test 2 != 2
++ exit 1
++ test 0 -eq 0
++ echo finished
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/anchor-positions.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 28950 -ne 0
++ kill 28950
++ test 28953 -ne 0
++ kill 28953
+./t/anchor-positions.sh: 74: kill: No such process
+
++ rm -f t/anchor-positions.sh.out
++ rm -f t/anchor-positions.sh.pipein t/anchor-positions.sh.pipeout
++ rm -f t/anchor-positions.sh.finished
++ test yes = yes
++ + stty
+grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/anchor-positions.sh (exit status: 77)

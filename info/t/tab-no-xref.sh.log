@@ -1,0 +1,177 @@
++ srcdir=.
++ GINFO=./ginfo --init-file ./t/Infokey-config
++ GINFO_NAME=ginfo
++ infodir=./t/infodir
++ export infodir
++ INFOPATH=./t/infodir
++ export INFOPATH
++ t=./t
++ export t
++ basename ./t/tab-no-xref.sh.out
++ GINFO_OUTPUT=t/tab-no-xref.sh.out
++ basename ./t/tab-no-xref.sh.pipein
++ PIPEIN=t/tab-no-xref.sh.pipein
++ basename ./t/tab-no-xref.sh.pipeout
++ PTY_TYPE=t/tab-no-xref.sh.pipeout
++ rm -f t/tab-no-xref.sh.out
++ INFO_PRINT_COMMAND=>t/tab-no-xref.sh.out
++ export INFO_PRINT_COMMAND
++ PTY_PID=0
++ SUBSHELL=0
++ LC_ALL=C
++ export LC_ALL
++ TERM=dumb
++ export TERM
++ STTY=true
++ reset_required=no
++ trap cleanup 2
++ . ./t/Init-inter.inc
++ test -x pseudotty
++ path_sep=:
++ TERM=vt100
++ export TERM
++ basename ./t/tab-no-xref.sh.finished
++ FINISHEDFIFO=t/tab-no-xref.sh.finished
++ findprog stty
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/stty
++ test -f /usr/local/bin/stty.exe
++ IFS= 	
+
++ test -f /usr/bin/stty
++ test -f /usr/bin/stty.exe
++ IFS= 	
+
++ test -f /bin/stty
++ test -x /bin/stty
++ return 0
++ STTY=stty
++ reset_required=yes
++ test yes=yes
++ stty
++ grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ rm -f t/tab-no-xref.sh.pipein t/tab-no-xref.sh.pipeout
++ findprog mkfifo
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/mkfifo
++ test -f /usr/local/bin/mkfifo.exe
++ IFS= 	
+
++ test -f /usr/bin/mkfifo
++ test -x /usr/bin/mkfifo
++ return 0
++ mkfifo t/tab-no-xref.sh.pipein
++ mkfifo t/tab-no-xref.sh.pipeout
++ test ! -r t/tab-no-xref.sh.pipein
++ test ! -r t/tab-no-xref.sh.pipeout
++ PTY_PID=27515
++ + read PTS_DEVICEexec
+ ./pseudotty t/tab-no-xref.sh.pipeout
+./pseudotty: getting pty master fd
+./pseudotty: unlocking slave device
+./pseudotty: getting file name of slave device...
+./pseudotty: /dev/pts/2
+./pseudotty: opening slave device
+./pseudotty: attempting to set window size
+./pseudotty: ...succeeded
+./pseudotty: opening control channel
++ exec
++ LIBC_FATAL_STDERR_=1
++ export LIBC_FATAL_STDERR
++ run_ginfo -v scroll-last-node=Top -f no-xref.info
++ rm -f t/tab-no-xref.sh.finished
+./pseudotty: entering main loop
++ mkfifo t/tab-no-xref.sh.finished
++ SUBSHELL=27527
++ exec
++ exec
++ exec
++ findprog pgrep
++ saveIFS= 	
+
++ IFS=:
++ IFS= 	
+
++ test -f /usr/local/bin/pgrep
++ test -f /usr/local/bin/pgrep.exe
++ IFS= 	
+
++ test -f /usr/bin/pgrep
++ test -x /usr/bin/pgrep
++ return 0
++ echo Fetching PID of ginfo process under test...
+Fetching PID of ginfo process under test...
++ GINFO_PID=
++ exec
++ ./ginfo --init-file ./t/Infokey-config -v scroll-last-node=Top -f no-xref.info
++ pgrep -P 27527 ginfo
+info: "./t/Infokey-config", line 2: unknown action `xxx-not-recognized'
+info: "./t/Infokey-config", line 3: cannot bind key sequence to menu-digit
++ test 0 -eq 0
++ GINFO_PID=27531
++ test 0 -eq 99
++ wc -l
++ echo 27531
++ grep ^0$\|^1$
++ + echogrep 27531 -v
+ ^[0-9]*$
++ test 1 -eq 0
++ echo 27531
++ tr -d \n
++ GINFO_PID=27531
++ test 27531 = 
++ break
++ test 27531 = 
++ echo ...27531
+...27531
++ printf \tq
++ . ./t/Timeout-test.inc
++ TIMED_OUT=
++ status=0
+./pseudotty: trying to read
+./pseudotty: read byte 0x09
+./pseudotty: trying to read
+./pseudotty: read byte 0x71
++ test 0 -eq 0
++ echo finished
++ read -t 0
+./t/tab-no-xref.sh: 26: read: Illegal option -t
++ test 2 != 2
++ exit 1
++ test 1 != 0
++ status=2
++ test 2 != 2
++ test 2 != 2
++ RETVAL=0
++ test 2 = 1
++ test 2 != 0 -a 2 -le 128
++ rm -f t/tab-no-xref.sh.finished
++ echo read -t not supported - test skipped
+read -t not supported - test skipped
++ RETVAL=77
++ cleanup
++ test 27515 -ne 0
++ kill 27515
++ test 27527 -ne 0
++ kill 27527
+./t/tab-no-xref.sh: 74: kill: No such process
+
++ rm -f t/tab-no-xref.sh.out
++ rm -f t/tab-no-xref.sh.pipein t/tab-no-xref.sh.pipeout
++ rm -f t/tab-no-xref.sh.finished
++ test yes = yes
++ stty+ 
+grep [-]echo
+stty: 'standard input': Inappropriate ioctl for device
++ test -n 
++ exit 77
+SKIP t/tab-no-xref.sh (exit status: 77)
