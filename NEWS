@@ -10,7 +10,13 @@ See the manual for detailed information.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
--------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+* info:
+  . do not fall back to a man page if following a cross-reference in an
+    info file failed
+
+
 6.4 (23 June 2017)
 * texi2any:
   . for HTML output, place section names before the manual in page

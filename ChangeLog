@@ -1,7 +1,19 @@
 2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_get_node_with_defaults): Remove code that
+	fell back to a man page.  This got in the way of the code in
+	info_get_info_help_node that fell back to info-stnd.info if 
+	info.info couldn't be loaded.  Also, this code is called from 
+	many places where falling back to a man page would definitely 
+	not be what was wanted, so removing the manpage fallback option 
+	makes the program more robust and easy to understand.
+	* NEWS: Mention info will not try to fall back to a man page if
+	it failed to follow a cross-reference.
+
+2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <def commands>:
-	Change "@tie{ }" to "@tie{} in document strings passed to gdt.
+	Change "@tie{ }" to "@tie{}" in document strings passed to gdt.
 	* tp/Texinfo/Parser.pm (_parse_texi) <closing a brace command>:
 	Don't check if we are being called from gdt and the closed 
 	command was @tie.

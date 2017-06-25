@@ -996,18 +996,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
       node = info_get_node_of_file_buffer (file_buffer, nodename);
     }
 
-  if (!file_buffer)
-    {
-      /* Try to find a man page with this name as a fall back. */
-      node = get_manpage_node (filename);
-      if (!node)
-        {
-          if (filesys_error_number)
-            info_recent_file_error =
-              filesys_error_string (filename, filesys_error_number);
-        }
-    }
-
   /* If the node not found was "Top", try again with different case. */
   if (!node && (nodename && mbscasecmp (nodename, "Top") == 0))
     {
