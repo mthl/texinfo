@@ -988,3 +988,10 @@ reset_conf (void)
   conf.show_menu = 1;
   conf.cpp_line_directives = 1;
 }
+
+/* for debugging */
+void
+set_debug (int value)
+{
+  debug_output = value;
+}
