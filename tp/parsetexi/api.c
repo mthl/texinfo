@@ -79,7 +79,7 @@ get_root (void)
 }
 
 /* Set ROOT to root of tree obtained by parsing the Texinfo code in STRING.
-   Used for parse_texi_line. */
+   STRING should be a UTF-8 buffer.  Used for parse_texi_line. */
 void
 parse_string (char *string)
 {
@@ -89,7 +89,7 @@ parse_string (char *string)
   Root = parse_texi (root);
 }
 
-/* Used for parse_texi_text. */
+/* Used for parse_texi_text.  STRING should be a UTF-8 buffer. */
 void
 parse_text (char *string)
 {

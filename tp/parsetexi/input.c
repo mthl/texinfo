@@ -348,7 +348,7 @@ next_text (ELEMENT *current)
 
           line_nr = i->line_nr;
 
-          return convert_to_utf8 (new, 0); // i->input_encoding);
+          return new;
 
           break;
         case IN_file: // 1911
@@ -431,9 +431,9 @@ input_push (char *text, char *macro, char *filename, int line_number)
   input_number++;
 }
 
-/* Store TEXT as a source for Texinfo content.  TEXT will be later free'd
-   and must be allocated on the heap.  MACRO is the name of a macro that
-   the text came from. */
+/* Store TEXT as a source for Texinfo content.  TEXT should be a UTF-8
+   string.  TEXT will be later free'd and must be allocated on the heap.
+   MACRO is the name of a macro that the text came from. */
 void
 input_push_text (char *text, char *macro)
 {
