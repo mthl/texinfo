@@ -1554,6 +1554,12 @@ end_line_misc_line (ELEMENT *current)
                     included_file = 1;
                 }
             }
+          else if (current->cmd == CM_verbatiminclude)
+            {
+              if (global_info.input_perl_encoding)
+                add_extra_string (current, "input_perl_encoding",
+                                  global_info.input_perl_encoding);
+            }
           else if (current->cmd == CM_documentencoding) // 3190
             {
               int i; char *p, *text2;
@@ -1636,6 +1642,7 @@ end_line_misc_line (ELEMENT *current)
                     }
                   add_extra_string (current, "input_perl_encoding",
                                     perl_encoding);
+                  global_info.input_perl_encoding = perl_encoding;
                 }
               else
                 {
