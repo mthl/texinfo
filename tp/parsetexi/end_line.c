@@ -1711,26 +1711,39 @@ end_line_misc_line (ELEMENT *current)
               p = text;
               while (isalpha (*p))
                 p++;
-              if (*p == '_')
-                {
-                  q = p + 1;
-                  p = q;
-                  /* Language code should be of the form LL_CC, language code
-                     followed by country code. */
-                  while (isalpha (*p))
-                    p++;
-                  if (*p)
-                    {
-                      /* non-alphabetic char in country code */
-                      command_warn (current, "%s is not a valid region code",
-                                    q);
-                    }
-                }
-              else if (*p)
+              if (*p && *p != '_')
                 {
                    /* non-alphabetic char in language code */
                   command_warn (current, "%s is not a valid language code",
                                 text);
+                }
+              else
+                {
+                  if (p - text > 4)
+                    {
+                      /* looks too long */
+                      char c = *p;
+                      *p = 0;
+                      command_warn (current, "%s is not a valid language code",
+                                    text);
+                      *p = c;
+                    }
+                  if (*p == '_')
+                    {
+                      q = p + 1;
+                      p = q;
+                      /* Language code should be of the form LL_CC,
+                         language code followed by country code. */
+                      while (isalpha (*p))
+                        p++;
+                      if (*p || p - q > 4)
+                        {
+                          /* non-alphabetic char in country code or code
+                             is too long. */
+                          command_warn (current,
+                                        "%s is not a valid region code", q);
+                        }
+                    }
                 }
 
               global_documentlanguage = text;
