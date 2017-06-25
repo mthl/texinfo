@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@
 #include "input.h"
 #include "text.h"
 #include "api.h"
+#include "commands.h"
 
 enum input_type { IN_file, IN_text };
 
@@ -65,7 +66,7 @@ LINE_NR line_nr;
    Return value should not be freed by caller, and becomes invalid after
    a subsequent call. */
 char *
-new_line (void)
+new_line (ELEMENT *current)
 {
   static TEXT t;
   char *new = 0;
@@ -74,7 +75,7 @@ new_line (void)
 
   while (1)
     {
-      new = next_text ();
+      new = next_text (current);
       if (!new)
         break;
       text_append (&t, new);
@@ -250,9 +251,69 @@ expanding_macro (char *macro)
   return 0;
 }
 
+static int
+check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
+{
+  char *p = line, *q;
+  int line_no = 0;
+  char *filename;
+
+  if (current && current->parent && current->parent->cmd == CM_verb)
+    return 0;
+  if (current && (command_flags(current) & CF_block)
+      && (command_data(current->cmd).data == BLOCK_raw
+          || command_data(current->cmd).data == BLOCK_conditional))
+    return 0;
+
+  p += strspn (p, " \t");
+  if (*p != '#')
+    return 0;
+  p++;
+
+  q = p + strspn (p, " \t");
+  if (!memcmp (q, "line", strlen ("line")))
+    p = q + strlen ("line");
+
+  if (!strchr (" \t", *p))
+    return 0;
+  p += strspn (p, " \t");
+
+  /* p should now be at the line number */
+  if (!strchr ("0123456789", *p))
+    return 0;
+  line_no = strtoul (p, &p, 10);
+
+  p += strspn (p, " \t");
+  if (*p == '"')
+    {
+      p++;
+      q = strchr (p, '"');
+      if (!q)
+        return 0;
+      filename = malloc (q - p + 1);
+      memcpy (filename, p, q - p);
+      filename[q - p] = '\0';
+      p = q + 1;
+      p += strspn (p, " \t");
+
+      p += strspn (p, "0123456789");
+      p += strspn (p, " \t");
+    }
+  if (*p && *p != '\n')
+    return 0; /* trailing text on line */
+
+  line_nr->line_nr = line_no;
+  if (filename)
+    {
+      // free (line_nr->file_name); // FIXME: could still be referenced
+      line_nr->file_name = filename;
+    }
+  return 1;
+}
+
 /* Return value to be freed by caller.  Return null if we are out of input. */
 char *
-next_text (void)
+next_text (ELEMENT *current)
 {
   ssize_t status;
   char *line = 0;
@@ -293,7 +354,7 @@ next_text (void)
         case IN_file: // 1911
           input_file = input_stack[input_number - 1].file;
           status = getline (&line, &n, input_file);
-          while (status != -1)
+          if (status != -1)
             {
               char *comment;
               if (feof (input_file))
@@ -310,7 +371,11 @@ next_text (void)
               if (comment)
                 *comment = '\0';
 
-              // 1920 CPP_LINE_DIRECTIVES
+              if (conf.cpp_line_directives)
+                {
+                  if (check_line_directive (line, current, &i->line_nr))
+                    continue;
+                }
 
               i->line_nr.line_nr++;
               line_nr = i->line_nr;
@@ -360,7 +425,8 @@ input_push (char *text, char *macro, char *filename, int line_number)
   if (!macro)
     line_number--;
   input_stack[input_number].line_nr.line_nr = line_number;
-  input_stack[input_number].line_nr.file_name = filename;
+  input_stack[input_number].line_nr.file_name
+                                       = filename ? strdup (filename) : 0;
   input_stack[input_number].line_nr.macro = macro;
   input_number++;
 }
@@ -498,7 +564,8 @@ input_push_file (char *filename)
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
-  input_stack[input_number].line_nr.file_name = filename;
+  input_stack[input_number].line_nr.file_name
+                                       = filename ? strdup (filename) : 0;
   input_stack[input_number].line_nr.line_nr = 0;
   input_stack[input_number].line_nr.macro = 0;
   input_stack[input_number].text = 0;

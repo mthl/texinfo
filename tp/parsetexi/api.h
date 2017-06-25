@@ -1,5 +1,6 @@
 /* In api.c */
 extern ELEMENT *Root;
+extern CONF conf;
 
 void parse_file (char *filename);
 ELEMENT *get_root (void);

@@ -172,7 +172,7 @@ parse_texi_file (char *filename)
 
       /* FIXME: _next_text isn't used in Perl. */
       free (line);
-      line = next_text ();
+      line = next_text (0);
       if (!line)
         abort (); /* Empty file? */
 
@@ -899,14 +899,15 @@ superfluous_arg:
               popped = pop_element_from_contents (current);
               if (popped->cmd != end_cmd)
                 abort(); //error
-              destroy_element_and_children (popped);
 
               /* Ignore until end of line */
               if (!strchr (line, '\n'))
                 {
+                  line = new_line (popped);
                   debug ("IGNORE CLOSE LINE");
-                  line = new_line ();
                 }
+              destroy_element_and_children (popped);
+
               debug ("CLOSED conditional %s", command_name(end_cmd));
               retval = GET_A_NEW_LINE;
               goto funexit;
@@ -1021,7 +1022,7 @@ superfluous_arg:
          input in a static variable like allocated_text, to prevent
          memory leaks.  */
       free (allocated_text);
-      line = allocated_text = next_text ();
+      line = allocated_text = next_text (current);
 
       if (!line)
         {
@@ -1087,7 +1088,7 @@ superfluous_arg:
       line = line_after_command;
       current = handle_macro (current, &line, cmd);
       free (allocated_line);
-      allocated_line = next_text ();
+      allocated_line = next_text (current);
       line = allocated_line;
     }
 
@@ -1717,7 +1718,7 @@ parse_texi (ELEMENT *root_elt)
   while (1)
     {
       free (allocated_line);
-      line = allocated_line = next_text ();
+      line = allocated_line = next_text (current);
       if (!allocated_line)
         break; /* Out of input. */
 

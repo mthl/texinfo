@@ -304,7 +304,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           input_push_text (strdup (line), 0);
 
           save_ln = line_nr;
-          line2 = new_line ();
+          line2 = new_line (current);
           if (line2)
             {
               line = line2;
@@ -761,7 +761,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             {
               char *line2;
               input_push_text (strdup (line), 0);
-              line2 = new_line ();
+              line2 = new_line (current);
               if (line2)
                 line = line2;
             }
@@ -1096,7 +1096,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
                   while (!is_end_current_command (current,
                                                   &line_dummy, &dummy))
                     {
-                      line = new_line ();
+                      line = new_line (current);
                       if (!line)
                         abort (); // TODO
                       line_dummy = line;

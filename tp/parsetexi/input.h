@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-char *new_line (void);
-char *next_text (void);
+char *new_line (ELEMENT *current);
+char *next_text (ELEMENT *current);
 
 void input_push (char *text, char *macro, char *filename, int line_number);
 void input_push_text (char *line, char *macro);

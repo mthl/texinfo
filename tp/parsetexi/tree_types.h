@@ -174,6 +174,7 @@ typedef struct GLOBAL_INFO {
 
 typedef struct CONF {
     int show_menu;
+    int cpp_line_directives;
 } CONF;
 
 typedef struct {

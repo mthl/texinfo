@@ -976,8 +976,15 @@ conf_set_show_menu (int i)
 }
 
 void
+conf_set_CPP_LINE_DIRECTIVES (int i)
+{
+  conf.cpp_line_directives = i;
+}
+
+void
 reset_conf (void)
 {
   memset (&conf, 0, sizeof (conf));
   conf.show_menu = 1;
+  conf.cpp_line_directives = 1;
 }

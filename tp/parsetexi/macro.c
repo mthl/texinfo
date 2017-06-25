@@ -269,7 +269,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
         {
           debug ("MACRO ARG end of line");
           text_append (&arg, pline);
-          line = new_line ();
+          line = new_line (macro);
           if (!line)
             {
               line_error ("@%s missing closing brace", command_name(cmd));
@@ -476,7 +476,7 @@ wipe_macros (void)
 }
 
 // 3898
-/* CMD is the macro command. */
+/* Handle macro expandsion.  CMD is the macro command. */
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
@@ -524,7 +524,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
          input already, call new_line. */
       if (!strchr (line, '\n'))
         {
-          line = new_line ();
+          line = new_line (current);
           if (!line)
             line = "";
         }

@@ -748,7 +748,7 @@ inline_no_arg:
                       brace_count--;
                       break;
                     default:
-                      line = next_text ();
+                      line = next_text (current);
                       if (!line)
                         {
                           /* ERROR - unbalanced brace */
@@ -795,7 +795,7 @@ inlinefmtifelse_done:
                   brace_count--;
                   break;
                 default:
-                  line = next_text ();
+                  line = next_text (current);
                   if (!line)
                     {
                       /* ERROR - unbalanced brace */
