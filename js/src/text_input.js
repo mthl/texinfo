@@ -29,13 +29,8 @@ Text_input
     let elem = document.createElement ("div");
     elem.setAttribute ("style", "background:pink;z-index:100;position:fixed");
 
-    /* Create container for menu input.  */
-    let menu_div = document.createElement ("div");
-    menu_div.setAttribute ("id", "menu-div");
-    menu_div.setAttribute ("hidden", "true");
-    menu_div.appendChild (document.createTextNode ("menu: "));
+    let menu_div = create_input_div ("menu: ");
     elem.appendChild (menu_div);
-
     let menu_input = create_input ("menu_data");
     menu_div.appendChild (menu_input);
 
@@ -54,13 +49,8 @@ Text_input
       event.stopPropagation ();
     });
 
-    /* Create container for index input.  */
-    let index_div = document.createElement ("div");
-    index_div.setAttribute ("id", "index-div");
-    index_div.setAttribute ("hidden", "true");
-    index_div.appendChild (document.createTextNode ("index: "));
+    let index_div = create_input_div ("index: ");
     elem.appendChild (index_div);
-
     let index_input = create_input ("index_data");
     index_div.appendChild (index_input);
 
@@ -195,6 +185,15 @@ create_datalist (menu)
           datalist.appendChild (opt);
         });
   return datalist;
+}
+
+function
+create_input_div (text)
+{
+  let div = document.createElement ("div");
+  div.setAttribute ("hidden", "true");
+  div.appendChild (document.createTextNode (text));
+  return div;
 }
 
 function
