@@ -34,6 +34,6 @@ else
   printf '\007q' >$PTY_TYPE
 fi
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

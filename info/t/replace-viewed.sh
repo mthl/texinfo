@@ -45,6 +45,6 @@ printf '/what\r' >$PTY_TYPE
 printf q >$PTY_TYPE
 
 rm -f t/replace-viewed.info
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup

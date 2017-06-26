@@ -24,7 +24,7 @@ run_ginfo -f split 'Second'
 # the one containing "Top".  Check that we arrived properly and remembered
 # that we are in a split file by going back to "Top" with "t".
 printf tDq >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

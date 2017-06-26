@@ -22,6 +22,6 @@ run_ginfo -f intera
 # Search without specifying a search string, and check we don't crash.
 printf 's\rq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

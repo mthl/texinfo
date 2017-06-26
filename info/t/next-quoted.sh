@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f quoting
 # Go to a node with colons and commas in its name with "n"
 printf 'n\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

@@ -24,7 +24,7 @@ run_ginfo -f tab-skip-node
 # back to the last node that was actually displayed, and not to the
 # skipped node.
 printf '\t\t\tlDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 grep 'Node: Top' $GINFO_OUTPUT
 RETVAL=$?

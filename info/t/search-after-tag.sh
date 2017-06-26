@@ -22,7 +22,7 @@ run_ginfo -f intera -n Searching
 # Search for text in a node that appears after an Info tag
 printf '/match\r\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\x06\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

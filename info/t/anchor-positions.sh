@@ -24,6 +24,6 @@ LANG=en_US.iso8859-1; export LANG
 run_ginfo -f anchor-positions
 printf q >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 cleanup
 

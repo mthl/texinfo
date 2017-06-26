@@ -25,7 +25,7 @@ INFOPATH=
 export INFOPATH
 run_ginfo
 printf q >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

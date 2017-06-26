@@ -23,7 +23,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f split 'Link to node'
 printf '/node\r}}}}}q' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

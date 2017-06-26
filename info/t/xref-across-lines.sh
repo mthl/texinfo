@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n 'Xref target crosses lines'
 printf '\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?

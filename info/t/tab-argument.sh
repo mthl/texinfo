@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera -n 'Argument to tab'
 # C-u 2 TAB to go to second link
 printf '\0252\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 diff $GINFO_OUTPUT $t/node-target
 RETVAL=$?

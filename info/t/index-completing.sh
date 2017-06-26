@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f index-search
 # Check that pressing tab to complete works for index search
 printf 'i\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 grep '^Node: Node 2' $GINFO_OUTPUT
 RETVAL=$?

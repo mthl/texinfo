@@ -22,7 +22,7 @@ run_ginfo -f intera
 # Follow an index entry
 printf 'iabc\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

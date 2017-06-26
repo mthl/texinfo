@@ -23,7 +23,7 @@ run_ginfo -f split
 # incremental search.  Refresh the screen afterwards to increase the 
 # chances of trying to access freed file contents.
 printf '\023aa\033[B\014q' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

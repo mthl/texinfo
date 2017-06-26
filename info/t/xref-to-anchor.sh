@@ -25,7 +25,7 @@ printf '\t\r' >$PTY_TYPE
 # Follow the cross-reference on the line after the anchor
 printf '\6\6\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

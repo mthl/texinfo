@@ -34,7 +34,7 @@ run_ginfo -f intera -n 'Scroll four lines'
 printf '\025\033xscroll-forward\r' >$PTY_TYPE
 printf '\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

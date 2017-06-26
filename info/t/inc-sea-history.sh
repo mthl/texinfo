@@ -30,7 +30,7 @@ grep 'Node: Four' $GINFO_OUTPUT
 RETVAL=$?
 
 printf 'lDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test $RETVAL = 0; then
   grep 'Node: Top' $GINFO_OUTPUT

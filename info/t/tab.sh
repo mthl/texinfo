@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera
 # Tab to first link and follow it
 printf '\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

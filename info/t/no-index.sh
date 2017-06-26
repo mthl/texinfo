@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f sample
 # Try to search in the indices when there aren't any
 printf 'ia\rq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

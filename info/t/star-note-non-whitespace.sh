@@ -24,7 +24,7 @@ run_ginfo -f intera -n 'Star note non-whitespace'
 # it is followed by a non-whitespace character.
 printf '\t\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

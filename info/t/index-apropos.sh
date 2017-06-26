@@ -28,7 +28,7 @@ printf '\033xindex-apropos\rlink\r\t\ri\txxxx\rqq' >$PTY_TYPE
 # We exited the "i" prompt with "xxx\r" instead of "\007" because
 # C-g leads typeahead to be discarded so it would not be reliable.
 
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

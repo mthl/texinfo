@@ -22,7 +22,7 @@ run_ginfo -f intera
 # Check that typing C-e on an empty line doesn't go to previous line
 printf '\x0e\x0e\x0e\x0e\x0e\x05\x0e\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

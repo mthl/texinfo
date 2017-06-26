@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f quoting
 # Follow a cross-reference with a manual and quoted nodename in the label.
 printf '\t\t\t\t\t\r\t\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

@@ -1,5 +1,11 @@
 2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Timeout-test.inc,
+	* info/t/Init-test.inc (timeout-test): Move code to timeout the
+	test to a shell function.
+
+2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc (run_ginfo): Time out test by running a 
 	subshell in the background that kills the current shell inside 
 	an "sh -c" command, and execing the ginfo program.  Do not use a 

@@ -26,7 +26,7 @@ run_ginfo -f intera -n 'Incremental search case-insensitive'
 printf '\023matchX\010' >$PTY_TYPE
 printf '\023\023\r\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Return non-zero (test failure) if files differ
 diff $GINFO_OUTPUT $t/node-target

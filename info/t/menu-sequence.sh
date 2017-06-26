@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera
 # M-x menu-sequence
 printf '\033xmenu-sequence\rfile-menu,first,no,nod\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

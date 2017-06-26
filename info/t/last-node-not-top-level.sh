@@ -22,7 +22,7 @@ run_ginfo -f last-node-not-top-level -v scroll-last-node=Top
 
 # Wrap round to top node when last node does not have Top as Up
 printf ']]]Dq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 grep 'Node: Top' $GINFO_OUTPUT
 RETVAL=$?

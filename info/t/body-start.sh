@@ -22,7 +22,7 @@ run_ginfo -f body-start
 # Check that node headers aren't included in searches
 printf 'sPotential match\r\rDq' >$PTY_TYPE &
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

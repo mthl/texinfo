@@ -26,7 +26,7 @@ MANPATH=.; export MANPATH
 # on there being no "intera" entry in "dir".
 run_ginfo --all intera
 printf 'Dq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 grep '^File: intera.info,  Node: Top' $GINFO_OUTPUT
 RETVAL=$?

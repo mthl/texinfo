@@ -22,7 +22,7 @@ run_ginfo -f intera
 
 # Try to go back in history when there is no earlier node
 printf lq >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
 

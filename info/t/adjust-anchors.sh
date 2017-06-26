@@ -30,7 +30,7 @@ run_ginfo -f anchors
 printf 'ganchor-2\r\002\002\002\002\002\002' >$PTY_TYPE
 printf '\002\002\002\002\002\002\002\002\rDq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

@@ -22,6 +22,6 @@ run_ginfo -v scroll-last-node=Top -f no-xref.info
 # Check that pressing tab in a file with no cross-references or menus
 # doesn't cause an infinite loop
 printf '\tq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup

@@ -23,7 +23,7 @@ run_ginfo -v search-skip-screen=Off -f search
 # Go back to previous match when search-skip-screen=On
 printf 'smatch\r}{Dq' >$PTY_TYPE
 
-. $t/Timeout-test.inc
+timeout_test
 
 # Check we went back to the right node.
 grep '^File: search\.info, Node: Top' $GINFO_OUTPUT

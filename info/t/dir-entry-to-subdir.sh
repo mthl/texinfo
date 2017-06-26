@@ -21,7 +21,7 @@ srcdir=${srcdir:-.}
 # Follow a dir entry to a file in a subdirectory of infodir
 run_ginfo subdir
 printf 'Dq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cat $GINFO_OUTPUT
 grep '^File: file-in-subdir.info' $GINFO_OUTPUT

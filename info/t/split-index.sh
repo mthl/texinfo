@@ -22,7 +22,7 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f split
 printf 'ientry text\r\rDq' >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 if test ! -f $GINFO_OUTPUT; then
   RETVAL=1

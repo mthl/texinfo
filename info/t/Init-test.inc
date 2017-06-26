@@ -89,3 +89,17 @@ cleanup ()
 
 #cleanup
 
+timeout_test ()
+{
+  wait $GINFO_PID
+  status=$?
+  
+  RETVAL=0
+  if test $status != 0; then
+    RETVAL=1
+  fi
+  
+  # Program is gone, so avoid trying to kill it in cleanup
+  GINFO_PID=0
+}
+

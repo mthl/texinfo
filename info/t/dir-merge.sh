@@ -24,6 +24,6 @@ INFOPATH=$INFOPATH:$t/infodir/subdir
 run_ginfo -v hide-note-references=On file-in-subdir
 
 printf q >$PTY_TYPE
-. $t/Timeout-test.inc
+timeout_test
 
 cleanup
