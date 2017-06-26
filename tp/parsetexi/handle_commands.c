@@ -420,11 +420,13 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             }
         }
 
-      if (0 || cmd == CM_raisesections)
+      if (cmd == CM_raisesections)
         {
+          global_info.sections_level++;
         }
-      else if (0 || cmd == CM_raisesections)
+      else if (cmd == CM_lowersections)
         {
+          global_info.sections_level--;
         }
       else if (cmd == CM_novalidate)
         {
@@ -626,14 +628,30 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
           if (command_data(cmd).flags & CF_sectioning)
             {
+              static char *level_string =
+                          ("0\0" "0\0" "1\0" "2\0" "3\0" "4\0"
+                                 "5\0" "6\0" "7\0" "8\0" "9\0");
               /* Store section level in 'extra' key. */
-              /* TODO: @part? */
-              /*add_extra_string (last_contents_child (current), 
-                "sections_level", "1"); */
+              if (global_info.sections_level)
+                {
+                  int level = global_info.sections_level;
+                  char *p;
+
+                  if (level < -1)
+                    level = -1;
+                  if (level > 9)
+                    level = 9;
+                  /* fixme: should support all values */
+
+                  if (level == -1)
+                    p = "-1";
+                  else
+                    p = &(level_string + 2)[level * 2];
+                  add_extra_string (last_contents_child (current),
+                                    "sections_level", p);
+                }
               add_extra_string (misc, "level",
-                          &("0\0" "0\0" "1\0" "2\0" "3\0" "4\0"
-                                  "5\0" "6\0" "7\0" "8\0" "9\0" + 2)
-                                  [section_level (misc) * 2]);
+                          &(level_string + 2)[section_level (misc) * 2]);
             }
 
           /* 4546 - def*x */
@@ -808,7 +826,7 @@ static int
 section_level (ELEMENT *section)
 {
   int level;
-int min_level = 0, max_level = 5;
+int min_level = 0, max_level = 4;
 
   switch (section->cmd)
     {
@@ -835,8 +853,12 @@ int min_level = 0, max_level = 5;
     case CM_centerchap: level = 1; break;
     default: level = -1; break;
     }
+  level -= global_info.sections_level;
+  if (level <= min_level)
+    level = min_level;
+  if (level >= max_level)
+    level = max_level;
   return level;
-  /* then adjust according to raise-/lowersections. */
 }
 
           /* TODO: Allow user to change which formats are true. */
