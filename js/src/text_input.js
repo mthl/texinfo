@@ -36,9 +36,7 @@ Text_input
     menu_div.appendChild (document.createTextNode ("menu: "));
     elem.appendChild (menu_div);
 
-    let menu_input = document.createElement ("input");
-    menu_input.setAttribute ("type", "search");
-    menu_input.setAttribute ("list", "menu_data");
+    let menu_input = create_input ("menu_data");
     menu_div.appendChild (menu_input);
 
     /* Define a special key handler when INPUT is focused and visible.  */
@@ -63,9 +61,7 @@ Text_input
     index_div.appendChild (document.createTextNode ("index: "));
     elem.appendChild (index_div);
 
-    let index_input = document.createElement ("input");
-    index_input.setAttribute ("type", "search");
-    index_input.setAttribute ("list", "index_data");
+    let index_input = create_input ("index_data");
     index_div.appendChild (index_input);
 
     index_input.addEventListener ("keypress", event => {
@@ -199,4 +195,13 @@ create_datalist (menu)
           datalist.appendChild (opt);
         });
   return datalist;
+}
+
+function
+create_input (list_id)
+{
+  let input = document.createElement ("input");
+  input.setAttribute ("type", "search");
+  input.setAttribute ("list", list_id);
+  return input;
 }
