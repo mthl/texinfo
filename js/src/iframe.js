@@ -166,7 +166,7 @@ update_history (linkid, history_mode)
     case config.HISTORY_POP:
     default:
       break;
-  }
+    }
 }
 
 /* Retun a dictionary whose keys are index keywords and values are
