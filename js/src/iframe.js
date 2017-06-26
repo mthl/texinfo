@@ -36,6 +36,20 @@ linkid_split (linkid)
     }
 }
 
+/* Convert LINKID which has the form "foobar.anchor" or just "foobar",
+   to an URL of the form "foobar.xhtml#anchor". */
+function
+linkid_to_url (linkid)
+{
+  if (linkid === config.INDEX_ID)
+    return config.INDEX_NAME;
+  else
+    {
+      let [pageid, hash] = linkid_split (linkid);
+      return pageid + ".xhtml" + hash;
+    }
+}
+
 export class
 Pages
 {
@@ -79,12 +93,7 @@ Pages
       {
         if (this.prev_id)
           this.prev_div.setAttribute ("hidden", "true");
-
-        let [pageid] = linkid_split (state.current);
-        let div = document.getElementById (pageid);
-        if (!div)
-          throw new Error ("no div with id: " + pageid);
-        load_page (state.current);
+        let div = resolve_page (state.current);
         update_history (state.current, state.history);
         div.removeAttribute ("hidden");
         this.prev_id = state.current;
@@ -93,14 +102,10 @@ Pages
   }
 }
 
+/* Return the 'div' element that correspond to PAGEID.  */
 function
-load_page (linkid)
+resolve_page (linkid)
 {
-  let path = window.location.pathname + window.location.search;
-
-  if (linkid === config.INDEX_ID)
-    return;
-
   let [pageid, hash] = linkid_split (linkid);
   let div = document.getElementById (pageid);
   if (!div)
@@ -109,24 +114,22 @@ load_page (linkid)
       throw new ReferenceError (msg);
     }
 
-  path = path.replace (/#.*/, "") + "#" + linkid;
-  let url = pageid + ".xhtml" + hash;
-
-  /* Select contained iframe or create it if necessary.  */
-  let iframe = div.querySelector ("iframe");
-  if (iframe)
+  /* Load iframe if necessary.  Index page is not inside an iframe.  */
+  if (pageid !== config.INDEX_ID)
     {
+      let iframe = div.querySelector ("iframe");
+      if (!iframe)
+        {
+          iframe = document.createElement ("iframe");
+          iframe.setAttribute ("class", "node");
+          iframe.setAttribute ("src", linkid_to_url (pageid));
+          div.appendChild (iframe);
+        }
       let msg = { message_kind: "scroll-to", hash };
       iframe.contentWindow.postMessage (msg, "*");
     }
-  else
-    {
-      iframe = document.createElement ("iframe");
-      iframe.setAttribute ("class", "node");
-      iframe.setAttribute ("name", path);
-      iframe.setAttribute ("src", url);
-      div.appendChild (iframe);
-    }
+
+  return div;
 }
 
 /* Mutate the history of page navigation.  Store LINKID in history
