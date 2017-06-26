@@ -35,35 +35,34 @@ global_reducer (state, action)
       return Object.assign ({}, state, { sidebar_loaded: true, action });
     case CACHE_LINKS:
       {
-        let clone = Object.assign ({}, state.loaded_nodes);
+        let nodes = Object.assign ({}, state.loaded_nodes);
         Object
           .keys (action.links)
           .forEach (key => {
             if (typeof action.links[key] === "object")
-              clone[key] = Object.assign ({}, clone[key], action.links[key]);
+              nodes[key] = Object.assign ({}, nodes[key], action.links[key]);
             else
-              clone[key] = action.links[key];
+              nodes[key] = action.links[key];
           });
 
-        return Object.assign ({}, state, { loaded_nodes: clone, action });
+        return Object.assign ({}, state, { loaded_nodes: nodes, action });
       }
     case CACHE_INDEX_LINKS:
       {
-        let clone = Object.assign ({}, state, { action });
-        clone.index = clone.index || {};
-        Object.assign (clone.index, action.links);
-        return clone;
+        let res = Object.assign ({}, state, { action });
+        res.index = Object.assign ({}, res.index, action.links);
+        return res;
       }
     case CURRENT_URL:
       {
         let res = Object.assign ({}, state, { action });
-        let url = (action.pointer) ?
+        let linkid = (action.pointer) ?
             state.loaded_nodes[action.pointer] : action.url;
 
-        res.current = url;
+        res.current = linkid;
         res.history = action.history;
-        res.loaded_nodes[url] = res.loaded_nodes[url] || {};
         res.text_input_visible = false;
+        res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
         return res;
       }
     case NAVIGATE:
@@ -74,11 +73,11 @@ global_reducer (state, action)
           return state;
         else
           {
-            let res = Object.assign ({}, state, { current: linkid, action });
+            let res = Object.assign ({}, state, { action });
+            res.current = linkid;
             res.history = action.history;
             res.text_input_visible = false;
-            if (!Object.keys (res.loaded_nodes).includes (action.url))
-              res.loaded_nodes[action.url] = {};
+            res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
             return res;
           }
       }
@@ -89,10 +88,10 @@ global_reducer (state, action)
           return state;
         else
           {
-            let clone = Object.assign ({ action }, state);
-            clone.text_input_visible = true;
-            clone.text_input_type = action.component;
-            return clone;
+            let res = Object.assign ({}, state, { action });
+            res.text_input_visible = true;
+            res.text_input_type = action.component;
+            return res;
           }
       }
     case HIDE_COMPONENT:
@@ -102,10 +101,10 @@ global_reducer (state, action)
           return state;
         else
           {
-            let clone = Object.assign ({ action }, state);
-            clone.text_input_visible = false;
-            clone.text_input_type = action.component;
-            return clone;
+            let res = Object.assign ({}, state, { action });
+            res.text_input_visible = false;
+            res.text_input_type = action.component;
+            return res;
           }
       }
     default:
