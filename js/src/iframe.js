@@ -156,16 +156,16 @@ update_history (linkid, history_mode)
     visible_url += ("#" + linkid);
 
   switch (history_mode)
-  {
-  case config.HISTORY_REPLACE:
-    window.history.replaceState ({ linkid }, linkid, visible_url);
-    break;
-  case config.HISTORY_PUSH:
-    window.history.pushState ({ linkid }, linkid, visible_url);
-    break;
-  case config.HISTORY_POP:
-  default:
-    break;
+    {
+    case config.HISTORY_REPLACE:
+      window.history.replaceState ({ linkid }, linkid, visible_url);
+      break;
+    case config.HISTORY_PUSH:
+      window.history.pushState ({ linkid }, linkid, visible_url);
+      break;
+    case config.HISTORY_POP:
+    default:
+      break;
   }
 }
 
