@@ -1,3 +1,10 @@
+2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/Init-inter.inc (run_ginfo): Remove use of pgrep to get 
+	PID of process.  Get PID of ginfo process by running a subshell 
+	with "sh -c", printing the value of $$ (the shell PID), and then
+	exec'ing the ginfo program.
+
 2017-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfor/Parser.pm, tp/Texinfo/Common.pm

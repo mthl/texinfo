@@ -101,55 +101,17 @@ run_ginfo ()
     # interrupted.
     exec 7>&- ;
     exec 8>$FINISHEDFIFO ;
-    $GINFO $GINFO_OPTIONS "$@" ;
+    sh -c "echo \$\$ >&8 ; exec $GINFO $GINFO_OPTIONS $*" ;
     test $? -eq 0 || echo failure >$FINISHEDFIFO ;
     echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
   SUBSHELL=$!
   exec 8<$FINISHEDFIFO
+
+  read GINFO_PID <&8
 
   # Although we don't write to the FIFO in this process, we still need
   # to open it for writing, because if the above subshell exits before
   # we read from it, we won't be able to open it - even though 
   # "finished" is buffered.
   exec 9>$FINISHEDFIFO
-
-  # Check for pgrep
-  if findprog pgrep; then
-    # Get the PID of the running ginfo process.  Look for a process called
-    # "ginfo" whose parent process is the subshell executed by the previous
-    # command.
-    echo 'Fetching PID of ginfo process under test...' >&2
-    GINFO_PID=
-
-    # Try 3 times and then give up.  The process may never have started, 
-    # have started under a different name, or have already exited.
-    for i in 1 2 3; do
-      GINFO_PID=`pgrep -P $SUBSHELL $GINFO_NAME ; \
-	test $? -eq 0 || test $? -eq 1 || exit 99`
-
-      # This use of pgrep is likely not portable (works on procps).
-      # Check if it is likely to have worked.
-
-      # Exit status was anything other than 0 or 1
-      test $? -eq 99 && { GINFO_PID=unknown; break; }
-
-      # More than one line in output
-      echo $GINFO_PID | wc -l | grep '^0$\|^1$' >/dev/null \
-	|| { GINFO_PID=unknown; break; }
-
-      # Non-numeral characters present
-      echo $GINFO_PID | grep -v '^[0-9]*$' >/dev/null
-      test $? -eq 0 && { GINFO_PID=unknown; break; }
-
-      GINFO_PID=`echo $GINFO_PID | tr -d '\n'`
-
-      test "$GINFO_PID" = "" || break
-      sleep 1 # Give subshell time to spawn ginfo process
-    done
-    test "$GINFO_PID" = "" && GINFO_PID=unknown
-    echo ...$GINFO_PID >&2
-  else
-    echo 'pgrep program not found - cannot get PID of ginfo process' >&2
-    GINFO_PID=unknown
-  fi
 }
