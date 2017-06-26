@@ -15,61 +15,14 @@
 
 # Shell script snippet.  Wait for program to finish.
 
-# Not timed out yet
-TIMED_OUT=
-
-# Attempt to test if "read -t" works.  Under Solaris 10, read -t below
-# should exit the subshell with an error exit status.  Under some other
-# shells the subshell will not exit but the "read -t" will have an exit
-# status of 2, representing a syntax error.
-status=0
-(read -t 0 ; test $? != 2 ; exit $?)
-if test $? != 0; then
-  # skip test below
-  status=2
-fi
-
-# If that succeeded, now check that "read -t 0" has no output, which could
-# be an error message.
-if test $status != 2; then
-  (read -t 0 2>&1 ) | grep .
-  test $? = 0 && status=2
-fi
-# This last test was needed under OpenBSD 5.5, where
-# "read -t 0" has an exit status of 1, not 2
-
-if test $status != 2; then
-  read -t 3 FINISHED <$FINISHEDFIFO
-  status=$?
-fi
+wait $GINFO_PID
+status=$?
 
 RETVAL=0
-if test $status = 1; then
-  echo 'read -t failed - probably end-of-file' >&2
+if test $status != 0; then
   RETVAL=1
-
-elif test $status != 0 -a $status -le 128 ; then
-  # Exit status of 'read' should be 0 on a successful read, or
-  # greater than 128 if it timed out.
-  rm -f $FINISHEDFIFO
-  echo 'read -t not supported - test skipped' >&2
-  RETVAL=77
-  cleanup
-elif test "$FINISHED" = failure; then
-  echo 'Program exited unsuccessfully' >&2
-  RETVAL=1
-
-elif test "$FINISHED" != finished; then
-  # Kill ginfo if we have its PID.  Failing this, it will probably exit
-  # with an I/O error when pseudotty is killed in Cleanup.inc.
-  test "$GINFO_PID" != unknown && kill $GINFO_PID
-
-  echo 'Program timed out after 3 seconds' >&2
-  TIMED_OUT=1
 fi
 
-# Subshell is gone, so avoid trying to kill it in cleanup
-SUBSHELL=0
-
-rm -f $FINISHEDFIFO
+# Program is gone, so avoid trying to kill it in cleanup
+GINFO_PID=0
 

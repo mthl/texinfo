@@ -51,8 +51,6 @@ findprog ()
 # Avoid ginfo complaining that terminal is too dumb
 TERM=vt100; export TERM
 
-FINISHEDFIFO=t/`basename $0.finished`
-
 # See cleanup in Init-test.inc.
 findprog stty && { STTY=stty ; reset_required=yes ; }
 test $reset_required=yes && { $STTY | grep [-]echo ; } && reset_required=no
@@ -94,24 +92,14 @@ LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 
 run_ginfo ()
 {
-  rm -f $FINISHEDFIFO
-  mkfifo $FINISHEDFIFO
-  { # Close fd opened to control FIFO in subshell so pseudotty can exit 
+  sh -c "
+    # Close fd opened to control FIFO in subshell so pseudotty can exit 
     # for an EOF.  This prevents lingering processes if a test is 
     # interrupted.
     exec 7>&- ;
-    exec 8>$FINISHEDFIFO ;
-    sh -c "echo \$\$ >&8 ; exec $GINFO $GINFO_OPTIONS $*" ;
-    test $? -eq 0 || echo failure >$FINISHEDFIFO ;
-    echo finished >$FINISHEDFIFO ; } 0<>$PTS_DEVICE 1<&0 &
-  SUBSHELL=$!
-  exec 8<$FINISHEDFIFO
 
-  read GINFO_PID <&8
+    (sleep 3 ; kill \$\$) &
+    exec $GINFO $GINFO_OPTIONS $* 0<>$PTS_DEVICE 1<&0 ;" &
 
-  # Although we don't write to the FIFO in this process, we still need
-  # to open it for writing, because if the above subshell exits before
-  # we read from it, we won't be able to open it - even though 
-  # "finished" is buffered.
-  exec 9>$FINISHEDFIFO
+  GINFO_PID=$!
 }
