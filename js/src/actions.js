@@ -52,6 +52,14 @@ cache_links (links)
   return { type: CACHE_LINKS, links };
 }
 
+export const CACHE_INDEX_LINKS = "cache-index-links";
+
+export function
+cache_index_links (links)
+{
+  return { type: CACHE_INDEX_LINKS, links };
+}
+
 export const SHOW_COMPONENT = "show-component";
 
 /** Toggle the visibility of COMPONENT.  */

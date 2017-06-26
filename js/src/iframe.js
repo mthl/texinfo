@@ -17,7 +17,7 @@
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
 import * as actions from "./actions";
-import { basename, navigation_links } from "./utils";
+import { basename, href_hash, navigation_links } from "./utils";
 import config from "./config";
 import { fix_links } from "./toc";
 import { iframe_dispatch } from "./store";
@@ -79,6 +79,10 @@ Pages
             div.setAttribute ("node", linkid);
             div.setAttribute ("hidden", "true");
             this.element.appendChild (div);
+
+            /* Load pages containing index links.  */
+            if (linkid.match (/^.*-Index$/))
+              load_page (linkid);
           }
       }
   }
@@ -100,6 +104,16 @@ Pages
         this.prev_div = div;
       }
   }
+}
+
+/* Load PAGEID.  */
+function
+load_page (pageid)
+{
+  let div = resolve_page (pageid);
+  /* Making the iframe visible triggers the load of the iframe DOM.  */
+  div.removeAttribute ("hidden");
+  div.setAttribute ("hidden", "true");
 }
 
 /* Return the 'div' element that correspond to PAGEID.  */
@@ -155,6 +169,21 @@ update_history (linkid, history_mode)
   }
 }
 
+/* Retun a dictionary whose keys are index keywords and values are
+   linkids.  */
+function
+scan_index (content)
+{
+  let links = Array.from (content.links);
+  return links.filter (link => link.hasAttribute ("xref"))
+              .reduce ((acc, link) => {
+                let linkid = href_hash (link.getAttribute ("href"));
+                let key = link.innerText;
+                acc[key] = linkid;
+                return acc;
+              }, {});
+}
+
 /*-----------------------------------------
 | Event handlers for the iframe context.  |
 `----------------------------------------*/
@@ -166,9 +195,15 @@ on_load ()
 {
   fix_links (document.links);
   let links = {};
-  let url = basename (window.location.pathname, /[.]x?html$/);
-  links[url] = navigation_links (document);
+  let linkid = basename (window.location.pathname, /[.]x?html$/);
+  links[linkid] = navigation_links (document);
   iframe_dispatch (actions.cache_links (links));
+
+  if (linkid.match (/^.*-Index$/))
+    {
+      let index_links = scan_index (document);
+      iframe_dispatch (actions.cache_index_links (index_links));
+    }
 }
 
 /** Handle messages received via the Message API.  */

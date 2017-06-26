@@ -17,6 +17,7 @@
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
 import {
+  CACHE_INDEX_LINKS,
   CACHE_LINKS,
   CURRENT_URL,
   HIDE_COMPONENT,
@@ -45,6 +46,13 @@ global_reducer (state, action)
           });
 
         return Object.assign ({}, state, { loaded_nodes: clone, action });
+      }
+    case CACHE_INDEX_LINKS:
+      {
+        let clone = Object.assign ({}, state, { action });
+        clone.index = clone.index || {};
+        Object.assign (clone.index, action.links);
+        return clone;
       }
     case CURRENT_URL:
       {
@@ -76,22 +84,28 @@ global_reducer (state, action)
       }
     case SHOW_COMPONENT:
       {
-        if (action.component !== "menu" || state.text_input_visible)
+        if (!["menu", "index"].includes (action.component)
+            || state.text_input_visible)
           return state;
         else
           {
-            let text_input_visible = true;
-            return Object.assign ({}, state, { text_input_visible, action });
+            let clone = Object.assign ({ action }, state);
+            clone.text_input_visible = true;
+            clone.text_input_type = action.component;
+            return clone;
           }
       }
     case HIDE_COMPONENT:
       {
-        if (action.component !== "menu" || !state.text_input_visible)
+        if (!["menu", "index"].includes (action.component)
+            || !state.text_input_visible)
           return state;
         else
           {
-            let text_input_visible = false;
-            return Object.assign ({}, state, { text_input_visible, action });
+            let clone = Object.assign ({ action }, state);
+            clone.text_input_visible = false;
+            clone.text_input_type = action.component;
+            return clone;
           }
       }
     default:

@@ -72,7 +72,7 @@ on_load ()
   components.element = document.body;
   components.add (new Sidebar ());
   components.add (new Pages (index_div));
-  components.add (new Text_input ("menu"));
+  components.add (new Text_input ());
 
   let initial_state = {
     /* Dictionary associating page ids to next, prev, up, forward,
