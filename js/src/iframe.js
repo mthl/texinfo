@@ -102,6 +102,18 @@ Pages
         div.removeAttribute ("hidden");
         this.prev_id = state.current;
         this.prev_div = div;
+
+        /* XXX: Ensure that focus is not on a hidden iframe which has
+           the consequence of making the keyboard event not bubbling.  */
+        if (state.current === config.INDEX_ID)
+          document.documentElement.focus ();
+        else
+          {
+            div.querySelector ("iframe")
+               .contentDocument
+               .documentElement
+               .focus ();
+          }
       }
   }
 }
