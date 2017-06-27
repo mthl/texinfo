@@ -276,7 +276,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           misc->cmd = cmd;
           add_to_element_contents (current, misc);
           if (only_in_headings)
-            add_extra_string (misc, "invalid_nesting", "1");
+            add_extra_integer (misc, "invalid_nesting", 1);
           register_global_command (cmd, misc);
         }
       mark_and_warn_invalid (cmd, invalid_parent, misc);
@@ -676,7 +676,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   line_error ("must be after `@%s' to use `@%s'",
                                command_name(base_command),
                                command_name(cmd));
-                  add_extra_string (misc, "not_after_command", "1");
+                  add_extra_integer (misc, "not_after_command", 1);
                 }
             }
         } /* 4571 */
@@ -1235,7 +1235,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
           && global_kbdinputstyle != kbd_distinct
           || global_kbdinputstyle == kbd_code)
         {
-          add_extra_string (e, "code", "1");
+          add_extra_integer (e, "code", 1);
         }
       else if (global_kbdinputstyle == kbd_example)
         {
@@ -1249,7 +1249,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
             {
               if (command_flags(tmp->parent) & CF_code_style)
                 {
-                  add_extra_string (e, "code", "1");
+                  add_extra_integer (e, "code", 1);
                   break;
                 }
               tmp = tmp->parent->parent;

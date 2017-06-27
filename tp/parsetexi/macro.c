@@ -96,13 +96,13 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
   if (*line && *line != '{' && !strchr (whitespace_chars, *line))
     {
       line_error ("bad name for @%s", command_name (cmd));
-      add_extra_string (macro, "invalid_syntax", "1");
+      add_extra_integer (macro, "invalid_syntax", 1);
       return macro;
     }
   else if (!name)
     {
       line_error ("@%s requires a name", command_name (cmd));
-      add_extra_string (macro, "invalid_syntax", "1");
+      add_extra_integer (macro, "invalid_syntax", 1);
       return macro;
     }
 
@@ -158,7 +158,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
               arg = new_element (ET_macro_arg);
               add_to_element_args (macro, arg);
               text_append_n (&arg->text, "", 0);
-              add_extra_string (macro, "invalid_syntax", "1");
+              add_extra_integer (macro, "invalid_syntax", 1);
             }
         }
       else
@@ -178,7 +178,7 @@ parse_macro_command_line (enum command_id cmd, char **line_inout,
                       line_error ("bad or empty @%s formal argument: %s",
                                   command_name(cmd), args_ptr);
                       *q2 = c;
-                      add_extra_string (macro, "invalid_syntax", "1");
+                      add_extra_integer (macro, "invalid_syntax", 1);
                       break;
                     }
                 }
@@ -200,7 +200,7 @@ check_trailing:
     {
       line_error ("bad syntax for @%s argument: %s",
                   command_name(cmd), line);
-      add_extra_string (macro, "invalid_syntax", "1");
+      add_extra_integer (macro, "invalid_syntax", 1);
     }
   //line += strlen (line); /* Discard rest of line. */
 

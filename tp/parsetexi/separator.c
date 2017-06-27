@@ -694,7 +694,7 @@ inline_no_arg:
               if (format_expanded_p (inline_type))
                 {
                   expandp = 1;
-                  add_extra_string (current, "expand_index", "1");
+                  add_extra_integer (current, "expand_index", 1);
                 }
               else
                 expandp = 0;
@@ -708,7 +708,7 @@ inline_no_arg:
               if (current->cmd == CM_inlineifclear)
                 expandp = !expandp;
               if (expandp)
-                add_extra_string (current, "expand_index", "1");
+                add_extra_integer (current, "expand_index", 1);
             }
           else
             expandp = 0;
@@ -721,7 +721,7 @@ inline_no_arg:
               ELEMENT *e;
               int brace_count = 1;
 
-              add_extra_string (current, "expand_index", "2");
+              add_extra_integer (current, "expand_index", 2);
 
               /* Add a dummy argument for the first argument. */
               e = new_element (ET_elided);
