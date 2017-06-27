@@ -628,30 +628,12 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
           if (command_data(cmd).flags & CF_sectioning)
             {
-              static char *level_string =
-                          ("0\0" "0\0" "1\0" "2\0" "3\0" "4\0"
-                                 "5\0" "6\0" "7\0" "8\0" "9\0");
-              /* Store section level in 'extra' key. */
               if (global_info.sections_level)
                 {
-                  int level = global_info.sections_level;
-                  char *p;
-
-                  if (level < -1)
-                    level = -1;
-                  if (level > 9)
-                    level = 9;
-                  /* fixme: should support all values */
-
-                  if (level == -1)
-                    p = "-1";
-                  else
-                    p = &(level_string + 2)[level * 2];
-                  add_extra_string (last_contents_child (current),
-                                    "sections_level", p);
+                  add_extra_integer (misc, "sections_level",
+                                     global_info.sections_level);
                 }
-              add_extra_string (misc, "level",
-                          &(level_string + 2)[section_level (misc) * 2]);
+              add_extra_integer (misc, "level", section_level (misc));
             }
 
           /* 4546 - def*x */

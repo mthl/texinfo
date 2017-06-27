@@ -35,6 +35,7 @@ enum extra_type {
     extra_node_spec,
     extra_node_spec_array,
     extra_string,
+    extra_integer,
     extra_def_args,
     extra_float_type,
     extra_deleted

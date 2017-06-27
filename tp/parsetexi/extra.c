@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -119,6 +119,12 @@ void
 add_extra_string (ELEMENT *e, char *key, char *value)
 {
   add_extra_key (e, key, (ELEMENT *) value, extra_string);
+}
+
+void
+add_extra_integer (ELEMENT *e, char *key, int value)
+{
+  add_extra_key (e, key, (ELEMENT *) value, extra_integer);
 }
 
 KEY_PAIR *

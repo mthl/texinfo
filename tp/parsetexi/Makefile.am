@@ -15,7 +15,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
-bin_PROGRAMS=parsetexi
+# bin_PROGRAMS=parsetexi
 xs_LTLIBRARIES = Parsetexi.la
 
 CLEANFILES += Parsetexi.c
