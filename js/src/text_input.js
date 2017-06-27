@@ -20,8 +20,62 @@ import * as actions from "./actions";
 import config from "./config";
 import { iframe_dispatch } from "./store";
 
-export class
+class
 Text_input
+{
+  constructor (id, func)
+  {
+    this.id = id;
+    this.create_input_div (id + ": ");
+    this.create_input (id + "-data");
+    this.input_keypress (func);
+  }
+
+  create_input_div (text)
+  {
+    let div = document.createElement ("div");
+    div.setAttribute ("hidden", "true");
+    div.appendChild (document.createTextNode (text));
+    this.element = div;
+  }
+
+  create_input (list_id)
+  {
+    let input = document.createElement ("input");
+    input.setAttribute ("type", "search");
+    input.setAttribute ("list", list_id);
+    this.input = input;
+    this.element.appendChild (input);
+  }
+
+  /* Define a special key handler when INPUT is focused and visible.  */
+  input_keypress (func)
+  {
+    this.input.addEventListener ("keypress", event => {
+      if (event.key === "Escape")
+        iframe_dispatch (actions.hide_component (this.id));
+      else if (event.key === "Enter")
+        func (this.data, this.input);
+
+      /* Do not send key events to global "key navigation" handler.  */
+      event.stopPropagation ();
+    });
+  }
+
+  /* Display a text input for searching through DATA.  */
+  show (data)
+  {
+    let datalist = create_datalist (data);
+    datalist.setAttribute ("id", this.id + "-data");
+    this.data = data;
+    this.element.appendChild (datalist);
+    this.element.removeAttribute ("hidden");
+    this.input.focus ();
+  }
+}
+
+export class
+Minibuffer
 {
   constructor ()
   {
@@ -29,44 +83,20 @@ Text_input
     let elem = document.createElement ("div");
     elem.setAttribute ("style", "background:pink;z-index:100;position:fixed");
 
-    let menu_div = create_input_div ("menu: ");
-    elem.appendChild (menu_div);
-    let menu_input = create_input ("menu_data");
-    menu_div.appendChild (menu_input);
-
-    /* Define a special key handler when INPUT is focused and visible.  */
-    menu_input.addEventListener ("keypress", event => {
-      if (event.key === "Escape")
-        iframe_dispatch (actions.hide_component ("menu"));
-      else if (event.key === "Enter")
-        {
-          let linkid = this.current_menu[this.menu_input.value];
-          if (linkid)
-            iframe_dispatch (actions.set_current_url (linkid));
-        }
-
-      /* Do not send key events to global "key navigation" handler.  */
-      event.stopPropagation ();
+    let menu = new Text_input ("menu", (data, input) => {
+      let linkid = data[input.value];
+      if (linkid)
+        iframe_dispatch (actions.set_current_url (linkid));
     });
 
-    let index_div = create_input_div ("index: ");
-    elem.appendChild (index_div);
-    let index_input = create_input ("index_data");
-    index_div.appendChild (index_input);
-
-    index_input.addEventListener ("keypress", event => {
-      if (event.key === "Escape")
-        iframe_dispatch (actions.hide_component ("index"));
-      else if (event.key === "Enter")
-      {
-        let linkid = this.current_index[this.index_input.value];
-        if (linkid)
-          iframe_dispatch (actions.set_current_url (linkid));
-      }
-
-      /* Do not send key events to global "key navigation" handler.  */
-      event.stopPropagation ();
+    let index = new Text_input ("index", (data, input) => {
+      let linkid = data[input.value];
+      if (linkid)
+        iframe_dispatch (actions.set_current_url (linkid));
     });
+
+    elem.appendChild (menu.element);
+    elem.appendChild (index.element);
 
     /* Create a container for warning when no menu in current page.  */
     let warn = document.createElement ("div");
@@ -75,14 +105,10 @@ Text_input
     elem.appendChild (warn);
 
     this.element = elem;
-    this.menu_container = menu_div;
-    this.menu_input = menu_input;
-    this.index_container = index_div;
-    this.index_input = index_input;
+    this.menu = menu;
+    this.index = index;
     this.warn = warn;
     this.toid = null;
-    this.current_menu = null;
-    this.current_index = null;
   }
 
   render (state)
@@ -97,31 +123,18 @@ Text_input
             {
               let menu = state.loaded_nodes[state.current].menu;
               if (menu)
-                this.show_menu_input (menu);
+                this.menu.show (menu);
               else
                 this.show_menu_warning ();
               break;
             }
           case "index":
-            {
-              this.show_index_input (state.index);
-              break;
-            }
+            this.index.show (state.index);
+            break;
           default:
             break;
           }
       }
-  }
-
-  /* Display a text input for searching through the current menu.  */
-  show_menu_input (menu)
-  {
-    let datalist = create_datalist (menu);
-    datalist.setAttribute ("id", "menu_data");
-    this.current_menu = menu;
-    this.menu_container.appendChild (datalist);
-    this.menu_container.removeAttribute ("hidden");
-    this.menu_input.focus ();
   }
 
   /* Display a warning indicating that there is no menu in current node.  */
@@ -139,25 +152,14 @@ Text_input
     }, config.WARNING_TIMEOUT);
   }
 
-  /* Display a text input for searching through the current index.  */
-  show_index_input (index)
-  {
-    let datalist = create_datalist (index);
-    datalist.setAttribute ("id", "index_data");
-    this.current_index = index;
-    this.index_container.appendChild (datalist);
-    this.index_container.removeAttribute ("hidden");
-    this.index_input.focus ();
-  }
-
   /* Hide both menu input and menu warning.  */
   hide_elements ()
   {
-    this.menu_container.setAttribute ("hidden", "true");
-    this.index_container.setAttribute ("hidden", "true");
+    this.menu.element.setAttribute ("hidden", "true");
+    this.index.element.setAttribute ("hidden", "true");
     this.warn.setAttribute ("hidden", "true");
-    this.menu_input.value = "";
-    this.index_input.value = "";
+    this.menu.input.value = "";
+    this.index.input.value = "";
 
     /* Check if a menu warning is already displayed.  */
     if (this.toid)
@@ -185,22 +187,4 @@ create_datalist (menu)
           datalist.appendChild (opt);
         });
   return datalist;
-}
-
-function
-create_input_div (text)
-{
-  let div = document.createElement ("div");
-  div.setAttribute ("hidden", "true");
-  div.appendChild (document.createTextNode (text));
-  return div;
-}
-
-function
-create_input (list_id)
-{
-  let input = document.createElement ("input");
-  input.setAttribute ("type", "search");
-  input.setAttribute ("list", list_id);
-  return input;
 }
