@@ -1,5 +1,13 @@
 2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_text_to_lines): Do not return an array 
+	containing a single empty string if the input is an empty 
+	string; instead, return a completely empty array.  This means
+	that parse_texi_line does not get as far into parsing for an
+	empty input.
+	
+2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm <root commands>: Do not associate a @part 
 	command with a following sectioning command if another @part 
 	command appears first.  This means there is no special support

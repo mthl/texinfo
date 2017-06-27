@@ -786,8 +786,7 @@ sub _text_to_lines($)
   die if (!defined($text));
   my $had_final_end_line = chomp($text);
   my $lines = [ map {$_."\n"} split (/\n/, $text, -1) ];
-  $lines = [''] if (!@$lines);
-  chomp($lines->[-1]) unless ($had_final_end_line);
+  chomp($lines->[-1]) unless (!@$lines or $had_final_end_line);
   return $lines;
 }
 
