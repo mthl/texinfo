@@ -1,3 +1,10 @@
+2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm <root commands>: Do not associate a @part 
+	command with a following sectioning command if another @part 
+	command appears first.  This means there is no special support
+	for @part pages following each other immediately.
+
 2017-06-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Timeout-test.inc,
