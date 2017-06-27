@@ -78,6 +78,8 @@ on_load ()
     /* Dictionary associating page ids to next, prev, up, forward,
        backward link ids.  */
     loaded_nodes: {},
+    /* Dictionary associating keyword to linkids.  */
+    index: {},
     /* page id of the current page.  */
     current: config.INDEX_ID,
     /* Current mode for handling history.  */

@@ -50,7 +50,7 @@ global_reducer (state, action)
     case CACHE_INDEX_LINKS:
       {
         let res = Object.assign ({}, state, { action });
-        res.index = Object.assign ({}, res.index, action.links);
+        Object.assign (res.index, action.links);
         return res;
       }
     case CURRENT_URL:
