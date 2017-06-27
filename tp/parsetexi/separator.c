@@ -243,6 +243,40 @@ handle_open_brace (ELEMENT *current, char **line_inout)
   return current;
 }
 
+/* Return 1 if an element is all whitespace.
+   Note that this function isn't completely reliable because it
+   doesn't look deep into the element tree.
+   In the perl code it calls 
+   Texinfo::Convert::NodeNameNormalization::normalize_node,
+   and checks that the result isn't all hyphens.
+ */
+int
+check_empty_expansion (ELEMENT *e)
+{
+  int i;
+  for (i = 0; i < e->contents.number; i++)
+    {
+      ELEMENT *f = e->contents.list[i];
+      if (!(
+               f->cmd == CM_SPACE
+            || f->cmd == CM_TAB
+            || f->cmd == CM_NEWLINE
+            || f->cmd == CM_c
+            || f->cmd == CM_comment
+            || f->cmd == CM_COLON
+            || f->type == ET_empty_spaces_before_argument
+            || f->type == ET_spaces_at_end
+            || (!f->cmd && !f->type && f->text.end == 0)
+            || (f->text.end > 0
+                && !*(f->text.text + strspn (f->text.text, whitespace_chars)))
+         ))
+        {
+          return 0;
+        }
+    }
+  return 1;
+}
+
 /* 5007 */
 ELEMENT *
 handle_close_brace (ELEMENT *current, char **line_inout)
@@ -346,7 +380,35 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                       remember_internal_xref (ref);
                     }
                 }
-              // TODO 5085 check node name not empty after normalization
+
+              if (args->contents.number > 1
+                  && args->contents.list[1])
+                {
+                  if (check_empty_expansion (args->contents.list[1]))
+                    {
+                      line_warn ("in @%s empty cross reference name "
+                                 "after expansion `%s'",
+                                 command_name(closed_command),
+                                 args->contents.list[1]
+                                 ? convert_to_texinfo (args->contents.list[1])
+                                 : "");
+                    }
+                }
+
+              if (closed_command != CM_inforef
+                  && args->contents.number > 2
+                  && args->contents.list[2])
+                {
+                  if (check_empty_expansion (args->contents.list[2]))
+                    {
+                      line_warn ("in @%s empty cross reference title "
+                                 "after expansion `%s'",
+                                 command_name(closed_command),
+                                 args->contents.list[2]
+                                 ? convert_to_texinfo (args->contents.list[2])
+                                 : "");
+                    }
+                }
             }
         }
       else if (closed_command == CM_image) // 5109
