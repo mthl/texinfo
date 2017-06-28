@@ -84,8 +84,8 @@ on_load ()
     current: config.INDEX_ID,
     /* Current mode for handling history.  */
     history: config.HISTORY_REPLACE,
-    /* Define if the sidebar iframe is loaded.  */
-    text_input_visible: false
+    /* Define the name of current text input.  */
+    text_input: null
   };
 
   store = new Store (global_reducer, initial_state);

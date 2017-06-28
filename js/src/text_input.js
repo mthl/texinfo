@@ -113,11 +113,11 @@ Minibuffer
 
   render (state)
   {
-    if (!state.text_input_visible)
+    if (!state.text_input)
       this.hide_elements ();
     else
       {
-        switch (state.text_input_type)
+        switch (state.text_input)
           {
           case "menu":
             {

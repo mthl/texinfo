@@ -58,7 +58,7 @@ global_reducer (state, action)
 
         res.current = linkid;
         res.history = action.history;
-        res.text_input_visible = false;
+        res.text_input = null;
         res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
         return res;
       }
@@ -73,7 +73,7 @@ global_reducer (state, action)
             let res = Object.assign ({}, state, { action });
             res.current = linkid;
             res.history = action.history;
-            res.text_input_visible = false;
+            res.text_input = null;
             res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
             return res;
           }
@@ -81,26 +81,23 @@ global_reducer (state, action)
     case SHOW_COMPONENT:
       {
         if (!["menu", "index"].includes (action.component)
-            || state.text_input_visible)
+            || state.text_input)
           return state;
         else
           {
             let res = Object.assign ({}, state, { action });
-            res.text_input_visible = true;
-            res.text_input_type = action.component;
+            res.text_input = action.component;
             return res;
           }
       }
     case HIDE_COMPONENT:
       {
-        if (!["menu", "index"].includes (action.component)
-            || !state.text_input_visible)
+        if (!state.text_input)
           return state;
         else
           {
             let res = Object.assign ({}, state, { action });
-            res.text_input_visible = false;
-            res.text_input_type = action.component;
+            res.text_input = null;
             return res;
           }
       }
