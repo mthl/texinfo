@@ -85,8 +85,6 @@ on_load ()
     /* Current mode for handling history.  */
     history: config.HISTORY_REPLACE,
     /* Define if the sidebar iframe is loaded.  */
-    sidebar_loaded: false,
-    /* Define if the sidebar iframe is loaded.  */
     text_input_visible: false
   };
 
