@@ -65,33 +65,29 @@ Pages
     this.ids = [];
   }
 
-  add_divs (linkids)
+  add_div (pageid)
   {
-    for (let i = 0; i < linkids.length; i += 1)
-      {
-        let linkid = linkids[i];
-        this.ids.push (linkid);
-        /* Don't create a div if there is an anchor part in LINKID.  */
-        if (!linkid.includes ("."))
-          {
-            let div = document.createElement ("div");
-            div.setAttribute ("id", linkid);
-            div.setAttribute ("node", linkid);
-            div.setAttribute ("hidden", "true");
-            this.element.appendChild (div);
+    let div = document.createElement ("div");
+    div.setAttribute ("id", pageid);
+    div.setAttribute ("node", pageid);
+    div.setAttribute ("hidden", "true");
+    this.ids.push (pageid);
+    this.element.appendChild (div);
 
-            /* Load pages containing index links.  */
-            if (linkid.match (/^.*-Index$/))
-              load_page (linkid);
-          }
-      }
+    /* Load pages containing index links.  */
+    if (pageid.match (/^.*-Index$/))
+      load_page (pageid);
   }
 
   render (state)
   {
-    let new_linkids = Object.keys (state.loaded_nodes)
-                            .filter (id => !this.ids.includes (id));
-    this.add_divs (new_linkids);
+    /* Create div elements for pages corresponding to newly added
+       linkids from 'state.loaded_nodes'.  */
+    Object.keys (state.loaded_nodes)
+          .map (id => id.replace (/\..*$/, ""))
+          .filter (id => !this.ids.includes (id))
+          .reduce ((acc, id) => ((acc.includes (id)) ? acc : [...acc, id]), [])
+          .forEach (id => this.add_div (id));
 
     if (state.current !== this.prev_id)
       {
