@@ -98,8 +98,6 @@ add_header ()
 export function
 on_load ()
 {
-  iframe_dispatch ({ type: actions.SIDEBAR_LOADED });
-
   add_header ();
   document.body.setAttribute ("class", "toc-sidebar");
 

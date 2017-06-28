@@ -22,8 +22,7 @@ import {
   CURRENT_URL,
   HIDE_COMPONENT,
   NAVIGATE,
-  SHOW_COMPONENT,
-  SIDEBAR_LOADED
+  SHOW_COMPONENT
 } from "./actions";
 
 export function
@@ -31,8 +30,6 @@ global_reducer (state, action)
 {
   switch (action.type)
     {
-    case SIDEBAR_LOADED:
-      return Object.assign ({}, state, { sidebar_loaded: true, action });
     case CACHE_LINKS:
       {
         let nodes = Object.assign ({}, state.loaded_nodes);

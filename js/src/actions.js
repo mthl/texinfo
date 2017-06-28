@@ -18,8 +18,6 @@
 
 import config from "./config";
 
-export const SIDEBAR_LOADED = "sidebar-ready";
-
 export const CURRENT_URL = "current-url";
 
 export function
