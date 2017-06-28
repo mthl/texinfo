@@ -17335,11 +17335,6 @@ default true.  Do not warn about index entries, since parsing problems
 there don't prevent navigation; readers can still relatively easily
 find their way to the node in question.
 
-@item INLINE_INSERTCOPYING
-If set, @code{@@insertcopying} is replaced by the @code{@@copying}
-content (@pxref{@code{@@copying}}) as if @code{@@insertcopying} were a
-user-defined macro; default false.
-
 @item INPUT_ENCODING_NAME
 Normalized encoding name suitable for output.  Should be a usable
 charset name in HTML, typically one of the preferred IANA encoding
