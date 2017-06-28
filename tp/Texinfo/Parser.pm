@@ -119,7 +119,6 @@ our %default_customization_values = (
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
   'SHOW_MENU' => 1,             # if false no menu error related.
-  'INLINE_INSERTCOPYING' => 0,
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
@@ -3211,27 +3210,6 @@ sub _end_line($$$)
           _close_command_cleanup($self, $closed_command);
           $end->{'parent'} = $closed_command;
 
-          # register @insertcopying as a macro if INLINE_INSERTCOPYING is set.
-          if ($end_command eq 'copying' and $self->{'INLINE_INSERTCOPYING'}) {
-            # remove the end of line following @copying.
-            my @contents = @{$closed_command->{'contents'}};
-            shift @contents if ($contents[0] and $contents[0]->{'type'}
-               and ($contents[0]->{'type'} eq 'empty_line_after_command'
-                    or $contents[0]->{'type'} eq 'empty_spaces_after_command'));
-            # the macrobody is the @copying content converted to Texinfo.
-            my $body = Texinfo::Convert::Texinfo::convert(
-                         {'contents' => \@contents});
-            
-            #chomp ($body);
-            $self->{'macros'}->{'insertcopying'} =
-            { 'element' => {
-                    'args' => [{'text' => 'insertcopying', 'type' => 'macro_name'}],
-                    'cmdname' => 'macro', },
-              'macrobody' => $body
-            };
-            $inline_copying = 1;
-            print STDERR "INLINE_INSERTCOPYING as macro\n" if ($self->{'DEBUG'});
-          }
           push @{$closed_command->{'contents'}}, $end;
 
           # closing a menu command, but still in a menu. Open a menu_comment
@@ -5967,12 +5945,6 @@ through L<global_informations|/$info = global_informations($parser)>.
 
 An array reference of directories in which C<@include> files should be 
 searched for.  Default contains the working directory, F<.>.
-
-=item INLINE_INSERTCOPYING
-
-If set, C<@insertcopying> is replaced by the C<@copying> content as if
-C<@insertcopying> was a user-defined macro.  In the default case, it is 
-considered to be a simple @-command and kept as-is in the tree.
 
 =item IGNORE_BEFORE_SETFILENAME
 

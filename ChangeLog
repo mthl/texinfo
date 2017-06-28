@@ -1,3 +1,18 @@
+2017-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@copying>: Removing handling
+	of INLINE_INSERTCOPYING variable.  Also remove from the module 
+	documentation section at the end of the file.
+	(%default_customization_variables): Remove INLINE_INSERTCOPYING.
+	* tp/Texinfo/Parser.pm (@variable_string_settables)
+	(@obsolete_variables): Move 'INLINE_INSERTCOPYING' to 
+	@obsolete_variables.
+	* tp/t/plaintext_tests.t (inline_copying_inline_and_paragraph):
+	Remove.
+	* NEWS: Mention removal.
+	* doc/texinfo.texi (Other Customization Variables) 
+	<INLINE_INSERTCOPYING>: Remove.
+
 2017-06-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_text_to_lines): Do not return an array 

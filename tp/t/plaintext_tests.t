@@ -638,9 +638,6 @@ Insertcopying
 
 push @test_cases, ['insert_copying_and_paragraph', 
                     $insert_copying_and_paragraph];
-push @test_cases, ['insert_copying_inline_and_paragraph', 
-                    $insert_copying_and_paragraph, 
-                    {'INLINE_INSERTCOPYING' => 1}];
 
 my $at_commands_glued_text = 'at@@.
 TeX@TeX{}TeX.

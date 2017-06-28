@@ -16,6 +16,9 @@ See the manual for detailed information.
   . do not fall back to a man page if following a cross-reference in an
     info file failed
 
+* texi2any
+  . `INLINE_INSERTCOPYING' removed as a customization variable
+
 
 6.4 (23 June 2017)
 * texi2any:
