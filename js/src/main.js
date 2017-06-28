@@ -68,7 +68,7 @@ on_load ()
   for (let ch = document.body.firstChild; ch; ch = document.body.firstChild)
     index_div.appendChild (ch);
 
-  /* Instanciate the components.  */
+  /* Instantiate the components.  */
   components.element = document.body;
   components.add (new Sidebar ());
   components.add (new Pages (index_div));
