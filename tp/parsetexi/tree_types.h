@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -188,7 +188,6 @@ typedef struct {
 
     /* content->contents is the index entry text */
     ELEMENT *content;
-    /* content_normalized */
     ELEMENT *command;
     ELEMENT *node;
     int number; /* Index of entry in containing index, 1-based. */
