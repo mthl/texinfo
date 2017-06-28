@@ -91,8 +91,8 @@ on_load ()
   };
 
   store = new Store (global_reducer, initial_state);
-  store.subscribe (() => components.render (store.state));
   store.subscribe (() => console.log ("state: ", store.state));
+  store.subscribe (() => components.render (store.state));
 
   if (window.location.hash)
     {
