@@ -150,7 +150,7 @@ register_global_command (enum command_id cmd, ELEMENT *current)
           extern int input_number;
         case CM_setfilename:
           /* Check if we are inside an @include, and if so, do nothing. */
-          if (input_number > 1)
+          if (top_file_index () > 0)
             break;
           where = &global_info.setfilename;
           break;

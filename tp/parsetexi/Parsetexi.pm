@@ -314,7 +314,8 @@ sub parse_texi_file ($$)
   # The non-XS Perl code checks $self->{'extra'}->{'setfilename'}, which
   # would be set in _register_global_command.
   if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root
-      and $self->{'extra'}->{'setfilename'}) {
+      and $self->{'extra'}->{'setfilename'}
+      and $self->{'extra'}->{'setfilename'}->{'parent'} eq $text_root) {
     my $before_setfilename = {'type' => 'preamble_before_setfilename',
       'parent' => $text_root,
       'contents' => []};
