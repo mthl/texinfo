@@ -58,20 +58,19 @@ cache_index_links (links)
   return { type: CACHE_INDEX_LINKS, links };
 }
 
-export const SHOW_COMPONENT = "show-component";
+export const TEXT_INPUT = "show-component";
 
-/** Toggle the visibility of COMPONENT.  */
+/** Make the text input INPUT visible.  If INPUT is a falsy value then
+    hide current text input.  */
 export function
-show_component (component)
+show_text_input (input)
 {
-  return { type: SHOW_COMPONENT, component };
+  return { type: TEXT_INPUT, input };
 }
 
-export const HIDE_COMPONENT = "hide-component";
-
-/** Toggle the visibility of COMPONENT.  */
+/** Hide the current current text input.  */
 export function
-hide_component (component)
+hide_text_input ()
 {
-  return { type: HIDE_COMPONENT, component };
+  return { type: TEXT_INPUT, input: null };
 }

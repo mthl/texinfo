@@ -53,7 +53,7 @@ Text_input
   {
     this.input.addEventListener ("keypress", event => {
       if (event.key === "Escape")
-        iframe_dispatch (actions.hide_component (this.id));
+        iframe_dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
         func (this.data, this.input);
 
@@ -147,7 +147,7 @@ Minibuffer
       this.warn.removeAttribute ("hidden");
 
     this.toid = window.setTimeout (() => {
-      iframe_dispatch (actions.hide_component ("menu"));
+      iframe_dispatch (actions.hide_text_input ());
       this.toid = null;
     }, config.WARNING_TIMEOUT);
   }

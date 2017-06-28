@@ -20,9 +20,8 @@ import {
   CACHE_INDEX_LINKS,
   CACHE_LINKS,
   CURRENT_URL,
-  HIDE_COMPONENT,
   NAVIGATE,
-  SHOW_COMPONENT
+  TEXT_INPUT
 } from "./actions";
 
 export function
@@ -80,26 +79,19 @@ global_reducer (state, action)
             return res;
           }
       }
-    case SHOW_COMPONENT:
+    case TEXT_INPUT:
       {
-        if (!["menu", "index"].includes (action.component)
-            || state.text_input)
+        let needs_update = (state.text_input && !action.input)
+            || (!state.text_input && action.input)
+            || (state.text_input && action.input
+                && state.text_input !== action.input);
+
+        if (!needs_update)
           return state;
         else
           {
             let res = Object.assign ({}, state, { action });
-            res.text_input = action.component;
-            return res;
-          }
-      }
-    case HIDE_COMPONENT:
-      {
-        if (!state.text_input)
-          return state;
-        else
-          {
-            let res = Object.assign ({}, state, { action });
-            res.text_input = null;
+            res.text_input = action.input;
             return res;
           }
       }

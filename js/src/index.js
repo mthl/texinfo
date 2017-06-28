@@ -86,9 +86,9 @@ on_keypress (event)
 
 /* Dictionary associating an Event 'key' property to its navigation id.  */
 on_keypress.dict = {
-  i: [actions.show_component, "index"],
+  i: [actions.show_text_input, "index"],
   l: [top.history.back.bind (top.history)],
-  m: [actions.show_component, "menu"],
+  m: [actions.show_text_input, "menu"],
   n: [actions.navigate, "next"],
   p: [actions.navigate, "prev"],
   r: [top.history.forward.bind (top.history)],
