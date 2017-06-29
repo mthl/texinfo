@@ -1,5 +1,11 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Converter.pm (_register_command_arg):
+	Copy function here from Parser.pm.
+	(_table_item_content_tree): Call it.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <menu>: Don't store
 	a list of menus in 'unassociated_menus' array.
 	* tp/Texinfo/Transformations.pm (_reassociate_to_node)

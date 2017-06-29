@@ -1136,6 +1136,19 @@ sub _collect_leading_trailing_spaces_arg($$)
   return @result;
 }
 
+sub _register_command_arg($$$)
+{
+  my ($self, $current, $type) = @_;
+
+  my @contents = @{$current->{'contents'}};
+  Texinfo::Common::trim_spaces_comment_from_content(\@contents);
+  if (scalar(@contents)) {
+    push @{$current->{'parent'}->{'extra'}->{$type}}, \@contents;
+  } else {
+    push @{$current->{'parent'}->{'extra'}->{$type}}, undef;
+  }
+}
+
 sub _table_item_content_tree($$$)
 {
   my $self = shift;
@@ -1160,7 +1173,7 @@ sub _table_item_content_tree($$$)
                'contents' => $contents,
                'parent' => $command,};
     $command->{'args'} = [$arg];
-    $self->Texinfo::Parser::_register_command_arg($arg, 'brace_command_contents');
+    _register_command_arg($self, $arg, 'brace_command_contents');
     $contents = [$command];
   }
   $converted_tree->{'contents'} = $contents;
