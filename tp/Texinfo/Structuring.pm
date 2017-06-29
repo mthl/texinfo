@@ -141,7 +141,8 @@ sub sectioning_structure($$)
         $section_top = $content;
       }
     }
-    my $level = $content->{'level'};
+    my $level;
+    $level = $content->{'level'} = Texinfo::Parser::_section_level($content);
     if (!defined($level)) {
       warn "bug: level not defined for $content->{'cmdname'}\n";
       $level = $content->{'level'} = 0;

@@ -310,6 +310,9 @@ sub heading($$$;$$)
   } else {
     $indent_length = 0;
   }
+  if (!defined $current->{'level'}) {
+    $current->{'level'} = Texinfo::Parser::_section_level($current);
+  }
   $result .=($underline_symbol{$current->{'level'}} 
      x (Texinfo::Convert::Unicode::string_width($text) - $indent_length))."\n";
   return $result;

@@ -4451,7 +4451,6 @@ sub _parse_texi($;$)
                   $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
                     = $self->{'sections_level'};
                 }
-                $misc->{'level'} = _section_level($misc);
               }
               if ($root_commands{$command}) {
                 $misc->{'contents'} = [];

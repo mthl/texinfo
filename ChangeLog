@@ -1,3 +1,14 @@
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Do not add 'level' value
+	on sectioning commands.
+	* tp/Texinfo/Structuring.pm (sectioning_structure): Add 'level' 
+	value on element.
+	* tp/Texinfo/Convert/HTML.pm (_convert_heading_command),
+	* tp/Texinfo/Convert/Text.pm (heading):
+	Account for the case when 'level' is not set.
+	* texi2any.pl: Remove a comment.
+
 2017-06-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line) <@copying>: Removing handling

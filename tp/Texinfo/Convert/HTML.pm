@@ -2367,8 +2367,10 @@ sub _convert_heading_command($$$$$)
         $heading_level = 3;
       }
     }
-  } else {
+  } elsif (defined $command->{'level'}) {
     $heading_level = $command->{'level'};
+  } else {
+    $heading_level = Texinfo::Parser::_section_level($command);
   }
 
   my $heading = $self->command_text($command);
