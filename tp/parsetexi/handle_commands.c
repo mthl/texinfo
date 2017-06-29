@@ -23,8 +23,6 @@
 #include "text.h"
 #include "errors.h"
 
-static int section_level (ELEMENT *section);
-
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847
 ELEMENT *
@@ -633,7 +631,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   add_extra_integer (misc, "sections_level",
                                      global_info.sections_level);
                 }
-              add_extra_integer (misc, "level", section_level (misc));
             }
 
           /* 4546 - def*x */
@@ -803,45 +800,6 @@ funexit:
   return current;
 }
 
-/* Return numbered level of an element */
-static int
-section_level (ELEMENT *section)
-{
-  int level;
-int min_level = 0, max_level = 4;
-
-  switch (section->cmd)
-    {
-    case CM_top: level = 0; break;
-    case CM_chapter: level = 1; break;
-    case CM_unnumbered: level = 1; break;
-    case CM_chapheading: level = 1; break;
-    case CM_appendix: level = 1; break;
-    case CM_section: level = 2; break;
-    case CM_unnumberedsec: level = 2; break;
-    case CM_heading: level = 2; break;
-    case CM_appendixsec: level = 2; break;
-    case CM_subsection: level = 3; break;
-    case CM_unnumberedsubsec: level = 3; break;
-    case CM_subheading: level = 3; break;
-    case CM_appendixsubsec: level = 3; break;
-    case CM_subsubsection: level = 4; break;
-    case CM_unnumberedsubsubsec: level = 4; break;
-    case CM_subsubheading: level = 4; break;
-    case CM_appendixsubsubsec: level = 4; break;
-    case CM_part: level = 0; break;
-    case CM_appendixsection: level = 2; break;
-    case CM_majorheading: level = 1; break;
-    case CM_centerchap: level = 1; break;
-    default: level = -1; break;
-    }
-  level -= global_info.sections_level;
-  if (level <= min_level)
-    level = min_level;
-  if (level >= max_level)
-    level = max_level;
-  return level;
-}
 
           /* TODO: Allow user to change which formats are true. */
 struct expanded_format {

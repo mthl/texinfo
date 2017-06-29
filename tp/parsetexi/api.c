@@ -394,14 +394,7 @@ element_to_perl_hash (ELEMENT *e)
             case extra_integer:
               { /* A simple string. */
               int value = (int) f;
-              if (strcmp (key, "level"))
-                STORE(newSViv (value));
-              else
-                {
-                  // FIXME: don't use level as a separate key
-                  hv_store (e->hv, key, strlen (key),
-                           newSViv(value), 0);
-                }
+              STORE(newSViv (value));
               break;
               }
             case extra_misc_args:
