@@ -100,7 +100,22 @@ Minibuffer
     elem.setAttribute ("style", "background:pink;z-index:100;position:fixed");
 
     let menu = new Text_input ("menu");
+    menu.render = function (state) {
+      if (state.text_input === "menu")
+        {
+          let current_menu = state.loaded_nodes[state.current].menu;
+          if (current_menu)
+            this.show (current_menu);
+          else
+            iframe_dispatch (actions.warn ("No menu in this node"));
+        }
+    };
+
     let index = new Text_input ("index");
+    index.render = function (state) {
+      if (state.text_input === "index")
+        this.show (state.index);
+    };
 
     elem.appendChild (menu.element);
     elem.appendChild (index.element);
@@ -141,23 +156,8 @@ Minibuffer
       }
     else
       {
-        switch (state.text_input)
-          {
-          case "menu":
-            {
-              let menu = state.loaded_nodes[state.current].menu;
-              if (menu)
-                this.menu.show (menu);
-              else
-                iframe_dispatch (actions.warn ("No menu in this node"));
-              break;
-            }
-          case "index":
-            this.index.show (state.index);
-            break;
-          default:
-            break;
-          }
+        this.index.render (state);
+        this.menu.render (state);
       }
   }
 }
