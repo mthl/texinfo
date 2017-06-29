@@ -1,5 +1,10 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/html_tests.t (simple_menu): Add @node and @top commands
+	so that the menu is inside a node.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Transformations.pm (fill_gaps_in_sectioning): Call 
 	Texinfo::Structuring::section_level to get sectioning level
 	(used in tp/t/test_fill_gaps_in_sectioning.t).
