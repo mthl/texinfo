@@ -1,5 +1,13 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <menu>: Don't store
+	a list of menus in 'unassociated_menus' array.
+	* tp/Texinfo/Transformations.pm (_reassociate_to_node)
+	(set_menus_to_simple_menu): Remove checks of 
+	'unassociated_menus' array.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <macro expansion>:
 	Add a check for the return value of _text_to_lines being empty.
 

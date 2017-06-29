@@ -979,7 +979,6 @@ sub global_commands_information($)
 }
 
 # @ dircategory_direntry
-# @ unassociated_menus
 # perl_encoding
 # input_encoding_name
 # input_file_name
@@ -4765,9 +4764,6 @@ sub _parse_texi($;$)
       "perhaps your \@top node should be wrapped in \@ifnottex rather than \@ifinfo?"), 
                                   $line_nr);
                   }
-                  if ($command eq 'menu') {
-                    push @{$self->{'info'}->{'unassociated_menus'}}, $current;
-                  }
                 }
               }
               $current->{'args'} = [ {
@@ -6058,10 +6054,6 @@ C<input_perl_encoding> string is a corresponding perl encoding name.
 
 An array of successive C<@dircategory> and C<@direntry> as they appear
 in the document.
-
-=item unassociated_menus
-
-An array of menus that are not associated with a node.
 
 =item novalidate
 

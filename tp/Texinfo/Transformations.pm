@@ -283,18 +283,6 @@ sub _reassociate_to_node($$$$)
         @{$previous_node->{'menus'}} = grep {$_ ne $current} @{$previous_node->{'menus'}};
         delete $previous_node->{'menus'} if !(@{$previous_node->{'menus'}});
       }
-    } else {
-      my $info = $self->global_informations();
-      if (!$info or !$info->{'unassociated_menus'} 
-          or !@{$info->{'unassociated_menus'}}
-          or !grep {$current eq $_} @{$info->{'unassociated_menus'}}) {
-        print STDERR "Bug: menu $current not in unassociated menus\n";
-      } else {
-        @{$info->{'unassociated_menus'}} 
-          = grep {$_ ne $current} @{$info->{'unassociated_menus'}};
-        delete $info->{'unassociated_menus'} if !(@{$info->{'unassociated_menus'}});
-      }
-    }
     push @{$new_node->{'menus'}}, $current;
   } elsif ($current->{'extra'} and $current->{'extra'}->{'index_entry'}) {
     if ($previous_node 
@@ -718,11 +706,6 @@ sub set_menus_to_simple_menu($)
 {
   my $self = shift;
 
-  if ($self->{'info'} and $self->{'info'}->{'unassociated_menus'}) {
-    foreach my $menu (@{$self->{'info'}->{'unassociated_menus'}}) {
-      menu_to_simple_menu($menu);
-    }
-  }
   if ($self->{'nodes'} and @{$self->{'nodes'}}) {
     foreach my $node (@{$self->{'nodes'}}) {
       if ($node->{'menus'}) {
