@@ -1,8 +1,8 @@
 # $Id$
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015,
-# 2016 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software Foundation, 
+# Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2370,7 +2370,7 @@ sub _convert_heading_command($$$$$)
   } elsif (defined $command->{'level'}) {
     $heading_level = $command->{'level'};
   } else {
-    $heading_level = Texinfo::Parser::_section_level($command);
+    $heading_level = Texinfo::Structuring::section_level($command);
   }
 
   my $heading = $self->command_text($command);

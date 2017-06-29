@@ -1,7 +1,7 @@
 # Text.pm: output tree as simple text.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc., 
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
+# Foundation, Inc., 
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -311,7 +311,7 @@ sub heading($$$;$$)
     $indent_length = 0;
   }
   if (!defined $current->{'level'}) {
-    $current->{'level'} = Texinfo::Parser::_section_level($current);
+    $current->{'level'} = Texinfo::Structuring::section_level($current);
   }
   $result .=($underline_symbol{$current->{'level'}} 
      x (Texinfo::Convert::Unicode::string_width($text) - $indent_length))."\n";

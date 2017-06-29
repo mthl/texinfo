@@ -1,5 +1,11 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_section_level),
+	* tp/Texinfo/Structuring.pm (section_level): Move function to
+	Structuring.pm.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Do not add 'level' value
 	on sectioning commands.
 	* tp/Texinfo/Structuring.pm (sectioning_structure): Add 'level' 

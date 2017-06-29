@@ -95,6 +95,31 @@ $unnumbered_commands{'top'} = 1;
 $unnumbered_commands{'centerchap'} = 1;
 $unnumbered_commands{'part'} = 1;
 
+my $min_level = $command_structuring_level{'chapter'};
+my $max_level = $command_structuring_level{'subsubsection'};
+
+# Return numbered level of an element
+sub section_level($)
+{
+  my $section = shift;
+  my $level = $command_structuring_level{$section->{'cmdname'}};
+  # correct level according to raise/lowersections
+  if ($section->{'extra'} and $section->{'extra'}->{'sections_level'}) {
+    $level -= $section->{'extra'}->{'sections_level'};
+    if ($level < $min_level) {
+      if ($command_structuring_level{$section->{'cmdname'}} < $min_level) {
+        $level = $command_structuring_level{$section->{'cmdname'}};
+      } else {
+        $level = $min_level;
+      }
+    } elsif ($level > $max_level) {
+      $level = $max_level;
+    }
+  }
+  return $level;
+}
+
+
 # Go through the sectioning commands (e.g. @chapter, not @node), and
 # set:
 # 'number'
@@ -142,7 +167,7 @@ sub sectioning_structure($$)
       }
     }
     my $level;
-    $level = $content->{'level'} = Texinfo::Parser::_section_level($content);
+    $level = $content->{'level'} = section_level($content);
     if (!defined($level)) {
       warn "bug: level not defined for $content->{'cmdname'}\n";
       $level = $content->{'level'} = 0;
