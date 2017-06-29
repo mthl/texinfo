@@ -68,9 +68,21 @@ Text_input
     let datalist = create_datalist (data);
     datalist.setAttribute ("id", this.id + "-data");
     this.data = data;
+    this.datalist = datalist;
     this.element.appendChild (datalist);
     this.element.removeAttribute ("hidden");
     this.input.focus ();
+  }
+
+  hide ()
+  {
+    this.element.setAttribute ("hidden", "true");
+    this.input.value = "";
+    if (this.datalist)
+      {
+        this.datalist.parentNode.removeChild (this.datalist);
+        this.datalist = null;
+      }
   }
 }
 
@@ -128,7 +140,10 @@ Minibuffer
       }
 
     if (!state.text_input || state.warning)
-      this.hide_elements ();
+      {
+        this.menu.hide ();
+        this.index.hide ();
+      }
     else
       {
         switch (state.text_input)
@@ -149,19 +164,6 @@ Minibuffer
             break;
           }
       }
-  }
-
-  /* Hide both menu input and menu warning.  */
-  hide_elements ()
-  {
-    this.menu.element.setAttribute ("hidden", "true");
-    this.index.element.setAttribute ("hidden", "true");
-    this.menu.input.value = "";
-    this.index.input.value = "";
-
-    /* Remove the datalist if found.  */
-    this.element.querySelectorAll ("datalist")
-                .forEach (el => el.parentNode.removeChild (el));
   }
 }
 
