@@ -1,5 +1,11 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Transformations.pm (fill_gaps_in_sectioning): Call 
+	Texinfo::Structuring::section_level to get sectioning level
+	(used in tp/t/test_fill_gaps_in_sectioning.t).
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_section_level),
 	* tp/Texinfo/Structuring.pm (section_level): Move function to
 	Structuring.pm.

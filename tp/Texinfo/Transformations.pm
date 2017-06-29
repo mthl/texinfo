@@ -83,11 +83,14 @@ sub fill_gaps_in_sectioning($)
       next;
     }
     my $current_section = shift @sections_list;
-    my $current_section_level = $current_section->{'level'};
+    my $current_section_level
+       = Texinfo::Structuring::section_level($current_section);
     my $next_section = $sections_list[0];
     
     if (defined($next_section)) {
-      my $next_section_level = $next_section->{'level'};
+      my $next_section_level
+                        = Texinfo::Structuring::section_level($next_section);
+
       if ($next_section_level - $current_section_level > 1) {
         my @correct_level_offset_commands = _correct_level($next_section,
                                                           $contents[-1]);
