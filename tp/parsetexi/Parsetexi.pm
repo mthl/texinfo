@@ -285,6 +285,8 @@ sub get_parser_info {
   Texinfo::Common::complete_indices ($self);
 }
 
+use File::Basename; # for fileparse
+
 # Replacement for Texinfo::Parser::parse_texi_file (line 835)
 sub parse_texi_file ($$)
 {
@@ -310,9 +312,6 @@ sub parse_texi_file ($$)
 
   # Put everything before @setfilename in a special type.  This allows
   # ignoring everything before @setfilename.
-
-  # The non-XS Perl code checks $self->{'extra'}->{'setfilename'}, which
-  # would be set in _register_global_command.
   if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root
       and $self->{'extra'}->{'setfilename'}
       and $self->{'extra'}->{'setfilename'}->{'parent'} eq $text_root) {
@@ -330,10 +329,9 @@ sub parse_texi_file ($$)
       # not found
       #splice @{$text_root->{'contents'}}, 0, 0, @$before_setfilename;
       $text_root->{'contents'} = $before_setfilename->{'contents'};
-    }
-    else {
-    unshift (@{$text_root->{'contents'}}, $before_setfilename)
-      if (@{$before_setfilename->{'contents'}});
+    } else {
+      unshift (@{$text_root->{'contents'}}, $before_setfilename)
+        if (@{$before_setfilename->{'contents'}});
     }
   }
 
@@ -345,7 +343,13 @@ sub parse_texi_file ($$)
             $self->{'info'}->{'input_encoding_name'});
     $self->{'info'}->{'input_encoding_name'} = $input_encoding;
   }
-  $self->{'info'}->{'input_file_name'} = $file_name;
+
+  if (!$self->{'TEST'}) {
+    $self->{'info'}->{'input_file_name'} = $file_name;
+  } else {
+    my ($filename, $directories, $suffix) = fileparse($file_name);
+    $self->{'info'}->{'input_file_name'} = $filename;
+  }
 
   return $TREE;
 }
