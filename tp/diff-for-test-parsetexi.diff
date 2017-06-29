@@ -1,16 +1,3 @@
-Index: Texinfo/Convert/Converter.pm
-===================================================================
---- Texinfo/Convert/Converter.pm	(revision 7884)
-+++ Texinfo/Convert/Converter.pm	(working copy)
-@@ -1149,6 +1149,8 @@
-   }
- }
- 
-+use Parsetexi;
-+
- sub _table_item_content_tree($$$)
- {
-   my $self = shift;
 Index: Texinfo/ModulePath.pm.in
 ===================================================================
 --- Texinfo/ModulePath.pm.in	(revision 7860)
