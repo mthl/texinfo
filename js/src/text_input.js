@@ -113,7 +113,21 @@ Minibuffer
 
   render (state)
   {
-    if (!state.text_input)
+    if (!state.warning)
+      {
+        this.warn.setAttribute ("hidden", "true");
+        this.toid = null;
+      }
+    else if (!this.toid)
+      {
+        let toid = window.setTimeout (() => {
+          iframe_dispatch ({ type: actions.WARNING, msg: null });
+        }, config.WARNING_TIMEOUT);
+        this.warn.removeAttribute ("hidden");
+        this.toid = toid;
+      }
+
+    if (!state.text_input || state.warning)
       this.hide_elements ();
     else
       {
@@ -125,7 +139,7 @@ Minibuffer
               if (menu)
                 this.menu.show (menu);
               else
-                this.show_menu_warning ();
+                iframe_dispatch (actions.warn ("No menu in this node"));
               break;
             }
           case "index":
@@ -137,36 +151,13 @@ Minibuffer
       }
   }
 
-  /* Display a warning indicating that there is no menu in current node.  */
-  show_menu_warning ()
-  {
-    /* Check if a menu warning is already displayed.  */
-    if (this.toid)
-      window.clearTimeout (this.toid);
-    else
-      this.warn.removeAttribute ("hidden");
-
-    this.toid = window.setTimeout (() => {
-      iframe_dispatch (actions.hide_text_input ());
-      this.toid = null;
-    }, config.WARNING_TIMEOUT);
-  }
-
   /* Hide both menu input and menu warning.  */
   hide_elements ()
   {
     this.menu.element.setAttribute ("hidden", "true");
     this.index.element.setAttribute ("hidden", "true");
-    this.warn.setAttribute ("hidden", "true");
     this.menu.input.value = "";
     this.index.input.value = "";
-
-    /* Check if a menu warning is already displayed.  */
-    if (this.toid)
-      {
-        window.clearTimeout (this.toid);
-        this.toid = null;
-      }
 
     /* Remove the datalist if found.  */
     this.element.querySelectorAll ("datalist")

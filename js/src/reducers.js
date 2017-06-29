@@ -21,7 +21,8 @@ import {
   CACHE_LINKS,
   CURRENT_URL,
   NAVIGATE,
-  TEXT_INPUT
+  TEXT_INPUT,
+  WARNING
 } from "./actions";
 
 export function
@@ -94,6 +95,13 @@ global_reducer (state, action)
             res.text_input = action.input;
             return res;
           }
+      }
+    case WARNING:
+      {
+        let res = Object.assign ({}, state, { action });
+        res.warning = action.msg;
+        res.text_input = null;
+        return res;
       }
     default:
       return state;

@@ -74,3 +74,11 @@ hide_text_input ()
 {
   return { type: TEXT_INPUT, input: null };
 }
+
+export const WARNING = "warning";
+
+export function
+warn (msg)
+{
+  return { type: WARNING, msg };
+}
