@@ -59,6 +59,7 @@ global_reducer (state, action)
         res.current = linkid;
         res.history = action.history;
         res.text_input = null;
+        res.warning = null;
         res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
         res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
         return res;
@@ -75,6 +76,7 @@ global_reducer (state, action)
             res.current = linkid;
             res.history = action.history;
             res.text_input = null;
+            res.warning = null;
             res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
             res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
             return res;
@@ -100,7 +102,8 @@ global_reducer (state, action)
       {
         let res = Object.assign ({}, state, { action });
         res.warning = action.msg;
-        res.text_input = null;
+        if (action.msg !== null)
+          res.text_input = null;
         return res;
       }
     default:
