@@ -18,6 +18,21 @@ string_includes (search, start)
     return this.indexOf(search, start) !== -1;
 }
 
+function
+string_endsWith (search_string, position)
+{
+  var subject_string = this.toString ();
+  if (typeof position !== 'number'
+      || !isFinite (position)
+      || Math.floor (position) !== position
+      || position > subject_string.length)
+    position = subject_string.length;
+
+  position -= search_string.length;
+  var lastIndex = subject_string.lastIndexOf (search_string, position);
+  return lastIndex !== -1 && lastIndex === position;
+};
+
 /* Polyfill for 'Element.matches'.  */
 function
 element_matches (str)
@@ -58,6 +73,9 @@ object_assign (target, varArgs)
 /* Augment prototypes if necessary.  */
 if (!String.prototype.includes)
   String.prototype.includes = string_includes;
+
+if (!String.prototype.endsWith)
+  String.prototype.endsWith = string_endsWith;
 
 if (!Element.prototype.matches)
   {
