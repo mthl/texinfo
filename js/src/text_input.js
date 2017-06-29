@@ -23,12 +23,12 @@ import { iframe_dispatch } from "./store";
 class
 Text_input
 {
-  constructor (id, func)
+  constructor (id)
   {
     this.id = id;
     this.create_input_div (id + ": ");
     this.create_input (id + "-data");
-    this.input_keypress (func);
+    this.input_keypress ();
   }
 
   create_input_div (text)
@@ -49,13 +49,17 @@ Text_input
   }
 
   /* Define a special key handler when INPUT is focused and visible.  */
-  input_keypress (func)
+  input_keypress ()
   {
     this.input.addEventListener ("keypress", event => {
       if (event.key === "Escape")
         iframe_dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
-        func (this.data, this.input);
+        {
+          let linkid = this.data[this.input.value];
+          if (linkid)
+            iframe_dispatch (actions.set_current_url (linkid));
+        }
 
       /* Do not send key events to global "key navigation" handler.  */
       event.stopPropagation ();
@@ -95,17 +99,8 @@ Minibuffer
     let elem = document.createElement ("div");
     elem.setAttribute ("style", "background:pink;z-index:100;position:fixed");
 
-    let menu = new Text_input ("menu", (data, input) => {
-      let linkid = data[input.value];
-      if (linkid)
-        iframe_dispatch (actions.set_current_url (linkid));
-    });
-
-    let index = new Text_input ("index", (data, input) => {
-      let linkid = data[input.value];
-      if (linkid)
-        iframe_dispatch (actions.set_current_url (linkid));
-    });
+    let menu = new Text_input ("menu");
+    let index = new Text_input ("index");
 
     elem.appendChild (menu.element);
     elem.appendChild (index.element);
