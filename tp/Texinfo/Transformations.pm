@@ -283,6 +283,7 @@ sub _reassociate_to_node($$$$)
         @{$previous_node->{'menus'}} = grep {$_ ne $current} @{$previous_node->{'menus'}};
         delete $previous_node->{'menus'} if !(@{$previous_node->{'menus'}});
       }
+    }
     push @{$new_node->{'menus'}}, $current;
   } elsif ($current->{'extra'} and $current->{'extra'}->{'index_entry'}) {
     if ($previous_node 
