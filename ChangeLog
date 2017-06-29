@@ -1,5 +1,10 @@
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <macro expansion>:
+	Add a check for the return value of _text_to_lines being empty.
+
+2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/html_tests.t (simple_menu): Add @node and @top commands
 	so that the menu is inside a node.
 

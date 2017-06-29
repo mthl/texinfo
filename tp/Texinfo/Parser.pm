@@ -3869,6 +3869,7 @@ sub _parse_texi($;$)
         }
 
         my $expanded_lines = _text_to_lines($expanded);
+        next if (!@$expanded_lines);
         chomp ($expanded_lines->[-1]);
         pop @$expanded_lines if ($expanded_lines->[-1] eq '');
         print STDERR "MACRO EXPANSION LINES: ".join('|', @$expanded_lines)
