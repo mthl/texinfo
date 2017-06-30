@@ -163,18 +163,9 @@ update_history (linkid, history_mode)
   if (linkid !== config.INDEX_ID)
     visible_url += ("#" + linkid);
 
-  switch (history_mode)
-    {
-    case config.HISTORY_REPLACE:
-      window.history.replaceState ({ linkid }, linkid, visible_url);
-      break;
-    case config.HISTORY_PUSH:
-      window.history.pushState ({ linkid }, linkid, visible_url);
-      break;
-    case config.HISTORY_POP:
-    default:
-      break;
-    }
+  let method = window.history[history_mode];
+  if (method)
+    method.call (window.history, linkid, null, visible_url);
 }
 
 /* Retun a dictionary whose keys are index keywords and values are

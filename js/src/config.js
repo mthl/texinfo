@@ -31,8 +31,7 @@ export default {
 
   WARNING_TIMEOUT: 3000,
 
-  /* History modes. */
-  HISTORY_REPLACE: "replace",
-  HISTORY_PUSH: "push",
-  HISTORY_POP: "pop"
+  /* History methods. */
+  HISTORY_REPLACE: "replaceState",
+  HISTORY_PUSH: "pushState"
 };

@@ -121,6 +121,6 @@ on_message (event)
 export function
 on_popstate (event)
 {
-  let linkid = event.state.linkid;
-  store.dispatch (actions.set_current_url (linkid, config.HISTORY_POP));
+  let linkid = event.state;
+  store.dispatch (actions.set_current_url (linkid, false));
 }
