@@ -65,9 +65,13 @@ on_click (event)
 function
 on_unload ()
 {
-  var request = new XMLHttpRequest ();
-  request.open ("GET", "(WINDOW-CLOSED)");
-  request.send (null);
+  /* Cross origin requests are not supported in file protocol.  */
+  if (window.location.protocol !== "file:")
+  {
+    var request = new XMLHttpRequest ();
+    request.open ("GET", "(WINDOW-CLOSED)");
+    request.send (null);
+  }
 }
 
 /* Handle Keyboard 'keypress' events.  */
