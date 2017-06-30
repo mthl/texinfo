@@ -26,31 +26,22 @@ Text_input
   constructor (id)
   {
     this.id = id;
-    this.create_input_div (id + ": ");
-    this.create_input (id + "-data");
-    this.input_keypress ();
-  }
 
-  create_input_div (text)
-  {
+    /* Create input div element.  */
     let div = document.createElement ("div");
     div.setAttribute ("hidden", "true");
-    div.appendChild (document.createTextNode (text));
+    div.appendChild (document.createTextNode (id + ": "));
     this.element = div;
-  }
 
-  create_input (list_id)
-  {
+    /* Create input element.  */
     let input = document.createElement ("input");
     input.setAttribute ("type", "search");
-    input.setAttribute ("list", list_id);
+    input.setAttribute ("list", id + "-data");
     this.input = input;
     this.element.appendChild (input);
-  }
 
-  /* Define a special key handler when INPUT is focused and visible.  */
-  input_keypress ()
-  {
+    /* Define a special key handler when 'this.input' is focused and
+       visible.  */
     this.input.addEventListener ("keypress", event => {
       if (event.key === "Escape")
         iframe_dispatch (actions.hide_text_input ());
