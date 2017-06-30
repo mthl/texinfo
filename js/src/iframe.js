@@ -104,12 +104,7 @@ Pages
         if (state.current === config.INDEX_ID)
           document.documentElement.focus ();
         else
-          {
-            div.querySelector ("iframe")
-               .contentDocument
-               .documentElement
-               .focus ();
-          }
+          div.querySelector ("iframe").focus ();
       }
   }
 }

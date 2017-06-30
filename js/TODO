@@ -1,4 +1,3 @@
 - Styling of node header
 - Scroll the sidebar table of content to show the current section
 - Handle 'n', 'p', 'u' for anchors linkids.
-- Make focus of iframes work well in Chromium 59
