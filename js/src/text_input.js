@@ -42,7 +42,7 @@ Text_input
 
     /* Define a special key handler when 'this.input' is focused and
        visible.  */
-    this.input.addEventListener ("keypress", event => {
+    this.input.addEventListener ("keyup", event => {
       if (event.key === "Escape")
         iframe_dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")

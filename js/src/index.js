@@ -74,11 +74,11 @@ on_unload ()
   }
 }
 
-/* Handle Keyboard 'keypress' events.  */
+/* Handle Keyboard 'keyup' events.  */
 function
-on_keypress (event)
+on_keyup (event)
 {
-  let value = on_keypress.dict[event.key];
+  let value = on_keyup.dict[event.key];
   if (value)
     {
       let [func, arg] = value;
@@ -89,7 +89,7 @@ on_keypress (event)
 }
 
 /* Dictionary associating an Event 'key' property to its navigation id.  */
-on_keypress.dict = {
+on_keyup.dict = {
   i: [actions.show_text_input, "index"],
   l: [window.history.back.bind (window.history)],
   m: [actions.show_text_input, "menu"],
@@ -138,4 +138,7 @@ else
 /* Register common event handlers.  */
 window.addEventListener ("beforeunload", on_unload, false);
 window.addEventListener ("click", on_click, false);
-window.addEventListener ("keypress", on_keypress, false);
+/* XXX: handle 'keyup' event instead of 'keypress' since Chromium
+   doesn't handle the 'Escape' key properly.  See
+   https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
+window.addEventListener ("keyup", on_keyup, false);
