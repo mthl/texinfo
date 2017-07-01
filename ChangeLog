@@ -1,3 +1,9 @@
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/info-utils.c (scan_reference_label): Canonicalize the 
+	whitespace in the nodename, otherwise links can't be followed if 
+	the nodename is split across a line.
+
 2017-06-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Converter.pm (_register_command_arg):

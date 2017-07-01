@@ -1278,6 +1278,7 @@ scan_reference_label (REFERENCE *entry, int in_index)
     {
       len = read_quoted_string (inptr + label_len, ":", max_lines,
                                 &entry->nodename);
+      canonicalize_whitespace (entry->nodename);
       if (!len)
         return 0; /* Input invalid. */
       label_len += len;
