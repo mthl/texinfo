@@ -7,7 +7,10 @@
 	being multiple level of quoting present which can be extremely 
 	confusing, i.e., autoconf's quadrigraphs, quoting within the 
 	backquoted string where sed is called, as well as sed's own 
-	escaping of special characters. 
+	escaping of special characters.
+
+	* tp/Texinfo/MiscXS/configure.ac (fetch_conf): Make the same 
+	change.
 
 2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
