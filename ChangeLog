@@ -1,5 +1,13 @@
 2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/c-u-m-x-scroll-forward.sh, info/t/inc-sea-insensitive.sh, 
+	info/t/search-split-after-index.sh, info/t/split-footnotes.sh, 
+	info/t/star-note-non-whitespace.sh, info/t/tab-argument.sh, 
+	info/t/xref-across-lines.sh: Quote argument to run_ginfo so that 
+	quoting characters are preseved in the subshell that execs ginfo.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/xref-across-lines-2.sh: New test.
 
 2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>

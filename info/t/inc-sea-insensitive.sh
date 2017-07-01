@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Incremental search case-insensitive'
+run_ginfo "-f intera -n 'Incremental search case-insensitive'"
 
 # Search for "match" with incremental search, adding an upper-case character
 # to make the search case-sensitive.  Delete it and check the search goes back

@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Argument to tab'
+run_ginfo "-f intera -n 'Argument to tab'"
 # C-u 2 TAB to go to second link
 printf '\0252\t\rDq' >$PTY_TYPE
 timeout_test

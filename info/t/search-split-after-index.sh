@@ -20,7 +20,7 @@ srcdir=${srcdir:-.}
 
 # Search for text in a split file after loading an index entry from the
 # command-line.
-run_ginfo -f split 'Link to node'
+run_ginfo "-f split 'Link to node'"
 printf '/node\r}}}}}q' >$PTY_TYPE
 
 timeout_test

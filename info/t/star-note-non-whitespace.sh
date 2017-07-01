@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Star note non-whitespace'
+run_ginfo "-f intera -n 'Star note non-whitespace'"
 
 # Check that "*note" is not interpreted as a cross-reference marker if
 # it is followed by a non-whitespace character.

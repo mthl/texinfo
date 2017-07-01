@@ -18,7 +18,7 @@ srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
 . $t/Init-inter.inc
 
-run_ginfo -f intera -n 'Xref target crosses lines'
+run_ginfo "-f intera -n 'Xref target crosses lines'"
 printf '\t\rDq' >$PTY_TYPE
 timeout_test
 
