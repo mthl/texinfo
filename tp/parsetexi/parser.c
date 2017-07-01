@@ -1294,7 +1294,24 @@ value_invalid:
       /* Warn on deprecated command */
       if (command_data(cmd).flags & CF_deprecated)
         {
-          line_warn ("@%s is obsolete.", command_name(cmd));
+          char *msg = 0;
+          switch (cmd)
+            {
+            case CM_setcontentsaftertitlepage:
+              msg = "move your @contents command if you want the "
+                    "contents after the title page";
+              break;
+            case CM_setshortcontentsaftertitlepage:
+              msg = "move your @shortcontents and @contents command if "
+                    "you want the contents after the title page";
+              break;
+            }
+          if (!msg)
+            line_warn ("@%s is obsolete.", command_name(cmd));
+          else
+            line_warn ("@%s is obsolete; %s", command_name(cmd), msg);
+          /* note: will have to translate msg if string translation with
+             gettext is implemented */
         }
 
       /* warn on not appearing at line beginning 4226 */
