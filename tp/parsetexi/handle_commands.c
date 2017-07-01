@@ -163,8 +163,6 @@ register_global_command (enum command_id cmd, ELEMENT *current)
         GLOBAL_UNIQUE_CASE(titlepage);
         GLOBAL_UNIQUE_CASE(top);
         GLOBAL_UNIQUE_CASE(documentdescription);
-        GLOBAL_UNIQUE_CASE(setcontentsaftertitlepage);
-        GLOBAL_UNIQUE_CASE(setshortcontentsaftertitlepage);
         GLOBAL_UNIQUE_CASE(novalidate);
         GLOBAL_UNIQUE_CASE(validatemenus);
         GLOBAL_UNIQUE_CASE(pagesizes);

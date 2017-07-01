@@ -71,9 +71,9 @@ summarycontents			misc,global		MISC_skipline
 insertcopying			misc,global		MISC_noarg
 clickstyle			misc,global		MISC_special
 # more relevant in preamble
-setcontentsaftertitlepage	misc,global_unique,deprecated	MISC_skipline
-setshortcontentsaftertitlepage	misc,global_unique,deprecated	MISC_skipline
-documentencoding		misc,global	MISC_text
+setcontentsaftertitlepage	misc,deprecated 	MISC_skipline
+setshortcontentsaftertitlepage	misc,deprecated 	MISC_skipline
+documentencoding		misc,global		MISC_text
 novalidate			misc,global_unique	MISC_skipline
 validatemenus			misc,global_unique     	1
 dircategory			misc		MISC_line
