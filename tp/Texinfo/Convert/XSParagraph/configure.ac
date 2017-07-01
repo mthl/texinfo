@@ -15,6 +15,7 @@ AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 
 b='\'
+d='$'
 o='@<:@' dnl quadrigraph for [ - see autoconf documentatoin
 c='@:>@' dnl quadrigraph for ]
 
@@ -26,7 +27,7 @@ sed_script="
 s/^$o^=$c*= *//
 s/^'//
 s/ *; *$//
-s/'$//
+s/'$d//
 s/$b$b/$b//g"
 
 fetch_conf ()
