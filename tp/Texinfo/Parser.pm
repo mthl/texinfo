@@ -879,7 +879,8 @@ sub parse_texi_file($$)
   }
   my $root = { 'contents' => [], 'type' => 'text_root' };
   if (@first_lines) {
-    push @{$root->{'contents'}}, { 'type' => 'preamble', 'contents' => [] };
+    push @{$root->{'contents'}}, { 'type' => 'preamble', 'contents' => [],
+                                   'parent' => $root };
     foreach my $line (@first_lines) {
       push @{$root->{'contents'}->[-1]->{'contents'}}, 
                                    { 'text' => $line,

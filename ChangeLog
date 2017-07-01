@@ -1,5 +1,10 @@
 2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi_file): Set the parent key on 
+	a created 'preamble' element.
+
+2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph/configure.ac (fetch_conf): Put
 	all sed commands within an environment variable, 'sed_script'.
 	Assign 'sed_script' from a double-quoted string, using shell 
