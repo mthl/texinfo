@@ -2,7 +2,7 @@
 # Makefile.am for texinfo/info.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2012,
-# 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# 2013, 2014, 2015, 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -120,6 +120,7 @@ TESTS = \
 	t/tab-no-xref.sh \
 	t/tab-skip-node.sh \
 	t/xref-across-lines.sh \
+	t/xref-across-lines-2.sh \
 	t/body-start.sh \
 	t/end-of-line.sh \
 	t/goal-column.sh \
