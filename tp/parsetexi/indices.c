@@ -235,8 +235,7 @@ init_index_commands (void)
 void
 enter_index_entry (enum command_id index_type_command,
                    enum command_id index_at_command,
-                   ELEMENT *current,
-                   ELEMENT *content /*, content_normalized */ )
+                   ELEMENT *current, ELEMENT *content)
 {
   INDEX *idx;
   INDEX_ENTRY *entry;
@@ -260,7 +259,6 @@ enter_index_entry (enum command_id index_type_command,
   entry->index_type_command = index_type_command;
   entry->index_prefix = idx->prefix;
   entry->content = content;
-  //entry->content_normalized = ... ;
   entry->command = current;
   entry->number = idx->index_number;
 
@@ -272,7 +270,8 @@ enter_index_entry (enum command_id index_type_command,
 
   if (current_region ())
     entry->region = current_region ();
-  entry->node = current_node;
+  else
+    entry->node = current_node;
 
   entry->number = idx->index_number;
 
