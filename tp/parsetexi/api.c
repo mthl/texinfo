@@ -834,6 +834,8 @@ HV *
 build_global_info (void)
 {
   HV *hv;
+  int i;
+  ELEMENT *e;
 
   dTHX;
 
@@ -844,6 +846,20 @@ build_global_info (void)
   if (global_info.input_perl_encoding)
     hv_store (hv, "input_perl_encoding", strlen ("input_perl_encoding"),
               newSVpv (global_info.input_perl_encoding, 0), 0);
+
+  if (global_info.dircategory_direntry.contents.number > 0)
+    {
+      AV *av = newAV ();
+      hv_store (hv, "dircategory_direntry", strlen ("dircategory_direntry"),
+                newRV_inc ((SV *) av), 0);
+      for (i = 0; i < global_info.dircategory_direntry.contents.number; i++)
+        {
+          e = contents_child_by_index (&global_info.dircategory_direntry, i);
+          if (e->hv)
+            av_push (av, newRV_inc ((SV *) e->hv));
+        }
+    }
+
   if (global_info.novalidate)
     {
       hv_store (hv, "novalidate", strlen ("novalidate"),

@@ -113,6 +113,7 @@ typedef struct GLOBAL_INFO {
     char *input_encoding_name;
     char *input_perl_encoding;
     int sections_level;
+    ELEMENT dircategory_direntry;
 
     /* Elements that should be unique. */
     // 288 and Common.pm:164

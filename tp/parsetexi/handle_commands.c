@@ -792,6 +792,8 @@ handle_misc_command (ELEMENT *current, char **line_inout,
 
   if (misc)
     register_global_command (cmd, misc);
+  if (cmd == CM_dircategory)
+    add_to_contents_as_array (&global_info.dircategory_direntry, misc);
 
 funexit:
   *line_inout = line;
@@ -1091,7 +1093,9 @@ handle_block_command (ELEMENT *current, char **line_inout,
               else
                 push_context (ct_menu);
 
-              // Record dir entry here
+              if (cmd == CM_direntry)
+                add_to_contents_as_array (&global_info.dircategory_direntry, 
+                                          block);
 
               if (current_node) // 4793
                 {
