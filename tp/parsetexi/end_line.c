@@ -1610,6 +1610,7 @@ end_line_misc_line (ELEMENT *current)
                   int i;
                   static char *known_encodings[] = {
                       "shift_jis",
+                      "latin1",
                       0
                   };
                   for (i = 0; (known_encodings[i]); i++)
@@ -1630,7 +1631,8 @@ end_line_misc_line (ELEMENT *current)
                   static struct encoding_map map[] = {
                       "utf-8", "utf-8-strict",
                       "us-ascii", "ascii",
-                      "shift_jis",   "shiftjis"
+                      "shift_jis", "shiftjis",
+                      "latin1", "iso-8859-1"
                   };
                   for (i = 0; i < sizeof map / sizeof *map; i++)
                     {
