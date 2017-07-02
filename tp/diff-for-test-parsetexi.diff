@@ -1,6 +1,6 @@
 Index: Texinfo/ModulePath.pm.in
 ===================================================================
---- Texinfo/ModulePath.pm.in	(revision 7860)
+--- Texinfo/ModulePath.pm.in	(revision 7895)
 +++ Texinfo/ModulePath.pm.in	(working copy)
 @@ -73,6 +73,7 @@
      if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
@@ -12,21 +12,23 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 7882)
+--- Texinfo/Parser.pm	(revision 7897)
 +++ Texinfo/Parser.pm	(working copy)
-@@ -33,6 +33,9 @@
- use 5.006;
- use strict;
+@@ -27,6 +27,11 @@
+ #  user visible subroutines.
+ #  internal subroutines, doing the parsing.
  
-+# make sure we don't load this module for testing XS
-+die;
 +
- # debug
- use Carp qw(cluck);
++use Parsetexi;
++1;
++__END__
++
+ package Texinfo::Parser;
  
+ # We need the unicode stuff.
 Index: Texinfo/Report.pm
 ===================================================================
---- Texinfo/Report.pm	(revision 7860)
+--- Texinfo/Report.pm	(revision 7895)
 +++ Texinfo/Report.pm	(working copy)
 @@ -48,7 +48,8 @@
  
@@ -50,7 +52,7 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7877)
+--- Texinfo/Structuring.pm	(revision 7895)
 +++ Texinfo/Structuring.pm	(working copy)
 @@ -422,7 +422,8 @@
    foreach my $node (@{$self->{'nodes'}}) {
@@ -64,7 +66,7 @@ Index: Texinfo/Structuring.pm
        $top_node_up
 Index: t/test_utils.pl
 ===================================================================
---- t/test_utils.pl	(revision 7860)
+--- t/test_utils.pl	(revision 7895)
 +++ t/test_utils.pl	(working copy)
 @@ -32,7 +32,8 @@
  
@@ -88,7 +90,7 @@ Index: t/test_utils.pl
                                            't/include/',
 Index: texi2any.pl
 ===================================================================
---- texi2any.pl	(revision 7876)
+--- texi2any.pl	(revision 7895)
 +++ texi2any.pl	(working copy)
 @@ -273,8 +273,8 @@
    } else {
