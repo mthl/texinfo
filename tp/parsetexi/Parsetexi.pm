@@ -25,6 +25,7 @@ use warnings;
 
 require Exporter;
 
+use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Encoding;
 use Texinfo::Convert::NodeNameNormalization;
@@ -39,6 +40,9 @@ our @ISA = qw(Exporter DynaLoader Texinfo::Report);
 # will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
     parser
+    parse_texi_text
+    parse_texi_line
+    parse_texi_file
 ) ] );
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
