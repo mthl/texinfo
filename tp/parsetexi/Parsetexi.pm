@@ -274,6 +274,7 @@ sub get_parser_info {
   $FLOATS = build_float_list ();
 
   $INDEX_NAMES = build_index_data ();
+  $self->{'index_names'} = $INDEX_NAMES;
 
   $GLOBAL_INFO = build_global_info ();
   $GLOBAL_INFO2 = build_global_info2 ();

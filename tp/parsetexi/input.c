@@ -438,7 +438,14 @@ void
 input_push_text (char *text, char *macro)
 {
   if (text)
-    input_push (text, macro, 0, line_nr.line_nr);
+    {
+      char *filename = 0;
+      if (input_number > 0)
+        {
+          filename = input_stack[input_number - 1].line_nr.file_name;
+        }
+      input_push (text, macro, filename, line_nr.line_nr);
+    }
 }
 
 /* Used in tests - like input_push_text, but the lines from the text have
