@@ -1,6 +1,6 @@
 # configure.ac for Parsetexi
 #
-# Copyright 2016 Free Software Foundation, Inc.
+# Copyright 2016, 2017 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -10,7 +10,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-AC_INIT([texinfo], [6.0])
+AC_INIT([texinfo], [0])
 AM_INIT_AUTOMAKE
 AC_CONFIG_MACRO_DIR([m4])
 

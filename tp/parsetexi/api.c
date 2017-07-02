@@ -841,6 +841,9 @@ build_global_info (void)
   if (global_info.input_encoding_name)
     hv_store (hv, "input_encoding_name", strlen ("input_encoding_name"),
               newSVpv (global_info.input_encoding_name, 0), 0);
+  if (global_info.input_perl_encoding)
+    hv_store (hv, "input_perl_encoding", strlen ("input_perl_encoding"),
+              newSVpv (global_info.input_perl_encoding, 0), 0);
   if (global_info.novalidate)
     {
       hv_store (hv, "novalidate", strlen ("novalidate"),
