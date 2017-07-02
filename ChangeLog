@@ -1,3 +1,10 @@
+2017-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@image>: Save 
+	'input_perl_encoding' value on @image element.
+	* tp/Texinfo/Convert/Plaintext.pm (_image_text): Use it instead
+	of looking at the current value of INPUT_PERL_ENCODING.
+
 2017-07-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi_file): Set the parent key on 

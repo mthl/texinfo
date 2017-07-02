@@ -5068,6 +5068,9 @@ sub _parse_texi($;$)
                 $self->line_error(
                    $self->__("\@image missing filename argument"), $line_nr);
               }
+              $image->{'extra'}->{'input_perl_encoding'}
+                           = $self->{'INPUT_PERL_ENCODING'}
+                                  if defined $self->{'INPUT_PERL_ENCODING'};
             } elsif($current->{'parent'}->{'cmdname'} eq 'dotless') {
               my $dotless = $current->{'parent'};
               if (@{$current->{'contents'}}) {

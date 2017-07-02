@@ -1393,9 +1393,9 @@ sub _image_text($$$)
   } else {
     my $filehandle = do { local *FH };
     if (open ($filehandle, $txt_file)) {
-      binmode($filehandle, ":encoding("
-                         .$self->get_conf('INPUT_PERL_ENCODING').")")
-                if (defined($self->get_conf('INPUT_PERL_ENCODING')));
+      my $enc = $root->{'extra'}->{'input_perl_encoding'};
+      binmode($filehandle, ":encoding($enc)")
+        if ($enc);
       my $result = '';
       my $max_width = 0;
       while (<$filehandle>) {
