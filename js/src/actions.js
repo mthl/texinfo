@@ -82,3 +82,14 @@ warn (msg)
 {
   return { type: WARNING, msg };
 }
+
+export const SEARCH = "search";
+
+/** Search EXP in the whole manual.  EXP can be either a regular
+    expression or a string.  */
+export function
+search (exp)
+{
+  let rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
+  return { type: SEARCH, regexp: rgxp.toString () };
+}

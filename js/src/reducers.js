@@ -21,6 +21,7 @@ import {
   CACHE_LINKS,
   CURRENT_URL,
   NAVIGATE,
+  SEARCH,
   TEXT_INPUT,
   WARNING
 } from "./actions";
@@ -81,6 +82,14 @@ global_reducer (state, action)
             res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
             return res;
           }
+      }
+    case SEARCH:
+      {
+        let res = Object.assign ({}, state, { action });
+        res.regexp = action.regexp;
+        res.text_input = null;
+        res.warning = null;
+        return res;
       }
     case TEXT_INPUT:
       {

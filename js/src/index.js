@@ -96,6 +96,7 @@ on_keyup.dict = {
   n: [actions.navigate, "next"],
   p: [actions.navigate, "prev"],
   r: [window.history.forward.bind (window.history)],
+  s: [actions.show_text_input, "regexp-search"],
   t: [actions.set_current_url_pointer, "*TOP*"],
   u: [actions.navigate, "up"],
   "]": [actions.navigate, "forward"],

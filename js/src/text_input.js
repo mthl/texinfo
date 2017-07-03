@@ -21,6 +21,51 @@ import config from "./config";
 import { iframe_dispatch } from "./store";
 
 class
+Search_input
+{
+  constructor (id)
+  {
+    this.id = id;
+
+    /* Create input div element.  */
+    let div = document.createElement ("div");
+    div.setAttribute ("hidden", "true");
+    div.appendChild (document.createTextNode (id + ": "));
+    this.element = div;
+
+    /* Create input element.  */
+    let input = document.createElement ("input");
+    input.setAttribute ("type", "search");
+    this.input = input;
+    this.element.appendChild (input);
+
+    /* Define a special key handler when 'this.input' is focused and
+       visible.  */
+    this.input.addEventListener ("keyup", event => {
+      if (event.key === "Escape")
+        iframe_dispatch (actions.hide_text_input ());
+      else if (event.key === "Enter")
+        iframe_dispatch (actions.search (this.input.value));
+
+      /* Do not send key events to global "key navigation" handler.  */
+      event.stopPropagation ();
+    });
+  }
+
+  show ()
+  {
+    this.element.removeAttribute ("hidden");
+    this.input.focus ();
+  }
+
+  hide ()
+  {
+    this.element.setAttribute ("hidden", "true");
+    this.input.value = "";
+  }
+}
+
+class
 Text_input
 {
   constructor (id)
@@ -108,8 +153,15 @@ Minibuffer
         this.show (state.index);
     };
 
+    let search = new Search_input ("regexp-search");
+    search.render = function (state) {
+      if (state.text_input === "regexp-search")
+        this.show ();
+    };
+
     elem.appendChild (menu.element);
     elem.appendChild (index.element);
+    elem.appendChild (search.element);
 
     /* Create a container for warning when no menu in current page.  */
     let warn = document.createElement ("div");
@@ -120,6 +172,7 @@ Minibuffer
     this.element = elem;
     this.menu = menu;
     this.index = index;
+    this.search = search;
     this.warn = warn;
     this.toid = null;
   }
@@ -144,11 +197,13 @@ Minibuffer
       {
         this.menu.hide ();
         this.index.hide ();
+        this.search.hide ();
       }
     else
       {
         this.index.render (state);
         this.menu.render (state);
+        this.search.render (state);
       }
   }
 }
