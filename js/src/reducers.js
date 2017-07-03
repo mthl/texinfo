@@ -95,6 +95,7 @@ global_reducer (state, action)
           {
             let res = Object.assign ({}, state, { action });
             res.text_input = action.input;
+            res.warning = null;
             return res;
           }
       }
