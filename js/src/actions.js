@@ -58,7 +58,7 @@ cache_index_links (links)
   return { type: CACHE_INDEX_LINKS, links };
 }
 
-export const TEXT_INPUT = "show-component";
+export const TEXT_INPUT = "text-input";
 
 /** Make the text input INPUT visible.  If INPUT is a falsy value then
     hide current text input.  */
