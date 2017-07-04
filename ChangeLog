@@ -1,3 +1,11 @@
+2017-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\unicodechardefs):
+	Define U+25C7 as \diamond and remove definitions for U+25A1,
+	U+2A1D, U+2201, U+2127, U+21BE, U+2290, U+22B4, and U+22B5 which 
+	didn't work.  (Benno Schulenberg reported that U+25C7 didn't 
+	work.)
+
 2017-07-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <@image>: Save 
