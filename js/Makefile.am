@@ -16,3 +16,18 @@
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
+NODE_BIN = node_modules/.bin
+
+lint:
+	$(NODE_BIN)/eslint -c build-aux/eslint.json info.js -f unix
+
+minify:
+	$(NODE_BIN)/uglifyjs info.js -o info.min.js
+
+build-kawa:
+	cp info.js examples/kawa/kawa-ebook.js
+
+modernizr:
+	$(NODE_BIN)/modernizr -c build-aux/modernizr.json
+
+PHONY = lint minify build-kawa modernizr

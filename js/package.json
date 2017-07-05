@@ -20,11 +20,5 @@
     "modernizr": "^3.5.0",
     "serve-static": "^1.12.3",
     "uglify-js": "^2.4.11"
-  },
-  "scripts": {
-    "lint": "eslint -c build-aux/eslint.json info.js -f unix",
-    "minify": "uglifyjs info.js -o info.min.js",
-    "build:kawa": "cp info.js examples/kawa/kawa-ebook.js",
-    "modernizr": "modernizr -c build-aux/modernizr.json"
   }
 }
