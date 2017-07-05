@@ -929,9 +929,6 @@
         header.appendChild (a);
         var div = document.createElement ("div");
         a.appendChild (div);
-        var img = document.createElement ("img");
-        img.setAttribute ("src", config.PACKAGE_LOGO);
-        div.appendChild (img);
         var span = document.createElement ("span");
         span.appendChild (h1.firstChild);
         div.appendChild (span);
