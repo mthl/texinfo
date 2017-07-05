@@ -174,8 +174,8 @@ extend_matches (MATCH_STATE *state)
   state->match_count = match_count;
 }
 
-/* Search BUFFER for REGEXP.  Pass back the list of matches
-   in MATCH_STATE. */
+/* Search BUFFER for REGEXP.  If matches are found, pass back the list of 
+   matches in MATCH_STATE. */
 enum search_result
 regexp_search (char *regexp, int is_literal, int is_insensitive,
                char *buffer, size_t buflen,
@@ -201,6 +201,7 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
       char *buf = xmalloc (size);
       regerror (result, &preg, buf, size);
       info_error (_("regexp error: %s"), buf);
+      free (buf);
       return search_invalid;
     }
 
@@ -215,7 +216,10 @@ regexp_search (char *regexp, int is_literal, int is_insensitive,
   extend_matches (match_state);
 
   if (match_state->match_count == 0)
-    return search_not_found;
+    {
+      free_matches (match_state);
+      return search_not_found;
+    }
   else
     return search_success;
 }

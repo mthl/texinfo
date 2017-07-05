@@ -3953,10 +3953,7 @@ info_search_in_node_internal (WINDOW *window, NODE *node,
     }
   
   if (result != search_success)
-    {
-      free_matches (&matches);
-      return result;
-    }
+    return result;
 
   if (node->flags & N_Simple)
     {

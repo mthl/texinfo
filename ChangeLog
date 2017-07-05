@@ -1,5 +1,15 @@
 2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/search.c (regexp_search): Call free_matches if the regex
+	could be compiled, but there were no matches.  Free a string
+	buffer used for displaying an error message.
+	* info/session.c (info_search_in_node_internal): Do not call
+	free_matches.  It could be called on uninitialised data leading
+	to a crash if the regex had an error in it.  Marco Maggi reported
+	a crash for incremental search when a single \ was entered.
+
+2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (sorted_index_filter): Remove code to list files 
 	created with bibtex, as then xref_files_changed requires them to 
 	exist (since change on 2017-06-21) and they won't if bibtex is 
