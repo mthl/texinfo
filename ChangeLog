@@ -1,3 +1,10 @@
+2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (sorted_index_filter): Remove code to list files 
+	created with bibtex, as then xref_files_changed requires them to 
+	exist (since change on 2017-06-21) and they won't if bibtex is 
+	not being used.  Report from Daniel Gerbet.
+
 2017-07-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\unicodechardefs):

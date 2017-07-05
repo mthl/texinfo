@@ -1659,6 +1659,15 @@ sorted_index_filter ()
         echo $1s
       fi
       ;;
+  esac
+}
+
+
+# Not currently used - use with filter_files to add secondary files created by 
+# bibtex
+bibtex_secondary_files ()
+{
+  case $in_lang in
     latex)
       if test -n "`aux_file_p $1`"; then
         # bibtex: *.aux -> *.bbl and *.blg.
