@@ -1,0 +1,15 @@
+{
+  "options": [],
+  "feature-detects": [
+    "test/eventlistener",
+    "test/es5/specification",
+    "test/history",
+    "test/dom/hidden",
+    "test/elem/datalist",
+    "test/messagechannel",
+    "test/postmessage",
+    "test/queryselector",
+    "test/url/parser",
+    "test/window/framed"
+  ]
+}
