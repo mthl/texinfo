@@ -106,3 +106,6 @@ stamp-vti
 node_modules/
 /js/build/
 /js/examples/kawa/kawa-ebook.js
+/js/build-aux/install-sh
+/js/build-aux/missing
+/js/config.status
