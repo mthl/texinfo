@@ -31,3 +31,5 @@ modernizr:
 	$(NODE_BIN)/modernizr -c build-aux/modernizr.json
 
 PHONY = lint minify build-kawa modernizr
+
+include examples/hello/local.mk

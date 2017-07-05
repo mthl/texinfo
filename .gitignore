@@ -3,6 +3,7 @@
 *.gmo
 *.log
 *.trs
+*.xml
 .deps
 Makefile
 Makefile.in
@@ -109,3 +110,4 @@ node_modules/
 /js/build-aux/install-sh
 /js/build-aux/missing
 /js/config.status
+js/ebook/
