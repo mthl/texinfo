@@ -736,7 +736,7 @@
     this.element.appendChild (div);
 
     /* Load pages containing index links.*/
-    if (pageid.match (/^.*-Index$/))
+    if (pageid.match (/^.*-index$/i))
       load_page (pageid);
   };
 
@@ -859,7 +859,7 @@
     links[linkid] = navigation_links (document);
     iframe_dispatch (cache_links (links));
 
-    if (linkid.match (/^.*-Index$/))
+    if (linkid.match (/^.*-index$/i))
       {
         var index_links = scan_index (document);
         iframe_dispatch (cache_index_links (index_links));
