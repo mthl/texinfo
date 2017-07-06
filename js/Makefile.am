@@ -39,8 +39,6 @@ examples = \
   examples/hello-html \
   examples/kawa-html
 
-XSLT = xsltproc
-
 build_html_pages = \
   $(AM_V_GEN)$(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
     --stringparam base.dir ebook/OEBPS/ \

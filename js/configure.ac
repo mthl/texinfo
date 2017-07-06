@@ -23,6 +23,11 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
 
+AC_PATH_PROG([XSLT], [xsltproc])
+if test "x$ac_cv_path_XSLT" = "x"; then
+   AC_MSG_ERROR([xsltproc not found])
+fi
+
 AC_ARG_WITH([docbook-stylesheets],
   [AS_HELP_STRING([--with-docbook-stylesheets=DIR],
     [define the directory containing xsl stylesheets])],
