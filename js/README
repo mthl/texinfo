@@ -1,13 +1,16 @@
-To build the Kawa example you have to execute the following commands:
+To build the provided examples you have to execute the following
+commands:
 
   autoreconf -fi
   ./configure
-  make build-kawa
+  make
 
-To check the result:
+notes: The Makefile doesn't support out of tree build
 
-  firefox examples/kawa/index.html
+To check the result of EXAMPLE:
+
+  firefox examples/EXAMPLE-html/index.html
 
 When modifying the 'info.js' source we recommend that you lint your
 code with 'make lint'.  This command requires 'eslint' which must be
-fetched with 'npm install' in this directory.
+fetched with 'npm install' or 'yarn' in this directory.
