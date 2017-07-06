@@ -23,5 +23,13 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
 
+AC_ARG_WITH([docbook-stylesheets],
+  [AS_HELP_STRING([--with-docbook-stylesheets=DIR],
+    [define the directory containing xsl stylesheets])],
+  [with_docbook_stylesheets="$withval"],
+  [AC_MSG_ERROR([--with-docbook-stylesheets option must be defined])])
+
+AC_SUBST([DOCBOOK_XSL_DIR], [$with_docbook_stylesheets])
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

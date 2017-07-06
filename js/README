@@ -2,10 +2,16 @@ To build the provided examples you have to execute the following
 commands:
 
   autoreconf -fi
-  ./configure
+  ./configure --with-docbook-stylesheet=DIR
   make
 
-notes: The Makefile doesn't support out of tree build
+The '--with-docbook-stylesheet' option is required for building the
+manuals using 'xsltproc'.  The stylesheets are found using DIR; the file
+"DIR/epub3/chunk.xsl" needs to exist.  For example, on Fedora 25 path
+can be "/usr/share/sgml/docbook/xsl-ns-stylesheets", while on Debian
+use "/usr/share/xml/docbook/stylesheet/docbook-xsl-ns".
+
+note: The Makefile doesn't support out of tree build.
 
 To check the result of EXAMPLE:
 
