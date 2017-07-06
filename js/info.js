@@ -121,79 +121,73 @@
     HISTORY_PUSH: "pushState"
   };
 
-  /* Actions types to dispatch.  */
-  var CURRENT_URL = "current-url";
-  var NAVIGATE = "navigate";
-  var CACHE_LINKS = "cache-links";
-  var CACHE_INDEX_LINKS = "cache-index-links";
-  var TEXT_INPUT = "text-input";
-  var WARNING = "warning";
-  var SEARCH = "search";
+  /*--------------------------------------------.
+  | Define actions types and actions creators.  |
+  `--------------------------------------------*/
 
-  function
-  set_current_url (url, history)
-  {
-    history = history || config.HISTORY_PUSH;
-    return { type: CURRENT_URL, url: url, history: history };
-  }
+  /* Actions are payloads of information taking the form of plain javascript
+     objects.  Those actions are meant to be treated by the store which can
+     receive them using the 'store.dispatch' method.  */
 
-  /** Set current URL to the node corresponding to POINTER which is an
-      id refering to a linkid (such as "*TOP*" or "*END*"). */
-  function
-  set_current_url_pointer (pointer)
-  {
-    var history = config.HISTORY_PUSH;
-    return { type: CURRENT_URL, pointer: pointer, history: history };
-  }
+  var actions = {
+    /* Actions types.  */
+    CURRENT_URL: "current-url",
+    NAVIGATE: "navigate",
+    CACHE_LINKS: "cache-links",
+    CACHE_INDEX_LINKS: "cache-index-links",
+    TEXT_INPUT: "text-input",
+    WARNING: "warning",
+    SEARCH: "search",
 
-  function
-  navigate (direction)
-  {
-    var history = config.HISTORY_PUSH;
-    return { type: NAVIGATE, direction: direction, history: history };
-  }
+    /* Actions creators.  */
 
-  function
-  cache_links (links)
-  {
-    return { type: CACHE_LINKS, links: links };
-  }
+    set_current_url: function (url, history) {
+      history = history || config.HISTORY_PUSH;
+      return { type: actions.CURRENT_URL, url: url, history: history };
+    },
 
-  function
-  cache_index_links (links)
-  {
-    return { type: CACHE_INDEX_LINKS, links: links };
-  }
+    /** Set current URL to the node corresponding to POINTER which is an
+        id refering to a linkid (such as "*TOP*" or "*END*"). */
+    set_current_url_pointer: function (pointer) {
+      var history = config.HISTORY_PUSH;
+      return { type: actions.CURRENT_URL, pointer: pointer, history: history };
+    },
 
-  /** Make the text input INPUT visible.  If INPUT is a falsy value then
-      hide current text input.  */
-  function
-  show_text_input (input)
-  {
-    return { type: TEXT_INPUT, input: input };
-  }
+    navigate: function (dir) {
+      var history = config.HISTORY_PUSH;
+      return { type: actions.NAVIGATE, direction: dir, history: history };
+    },
 
-  /** Hide the current current text input.  */
-  function
-  hide_text_input ()
-  {
-    return { type: TEXT_INPUT, input: null };
-  }
+    cache_links: function (links) {
+    return { type: actions.CACHE_LINKS, links: links };
+    },
 
-  function
-  warn (msg)
-  {
-    return { type: WARNING, msg: msg };
-  }
+    cache_index_links: function (links) {
+      return { type: actions.CACHE_INDEX_LINKS, links: links };
+    },
 
-  /** Search EXP in the whole manual.  EXP can be either a regular
-      expression or a string.  */
-  function
-  search (exp)
-  {
-    var rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
-    return { type: SEARCH, regexp: rgxp.toString () };
-  }
+    /** Make the text input INPUT visible.  If INPUT is a falsy value then
+        hide current text input.  */
+    show_text_input: function (input) {
+      return { type: actions.TEXT_INPUT, input: input };
+    },
+
+    /** Hide the current current text input.  */
+    hide_text_input: function () {
+      return { type: actions.TEXT_INPUT, input: null };
+    },
+
+    warn: function (msg) {
+      return { type: actions.WARNING, msg: msg };
+    },
+
+    /** Search EXP in the whole manual.  EXP can be either a regular
+        expression or a string.  */
+    search: function (exp) {
+      var rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
+      return { type: actions.SEARCH, regexp: rgxp.toString () };
+    }
+  };
 
   /* State manager using an unidirectional dataflow architecture.  */
 
@@ -265,9 +259,9 @@
        visible.*/
     this.input.addEventListener ("keyup", (function (event) {
       if (event.key === "Escape")
-        iframe_dispatch (hide_text_input ());
+        iframe_dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
-        iframe_dispatch (search (this.input.value));
+        iframe_dispatch (actions.search (this.input.value));
 
       /* Do not send key events to global "key navigation" handler.*/
       event.stopPropagation ();
@@ -307,12 +301,12 @@
     var that = this;
     this.input.addEventListener ("keyup", function (event) {
       if (event.key === "Escape")
-        iframe_dispatch (hide_text_input ());
+        iframe_dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
         {
           var linkid = that.data[that.input.value];
           if (linkid)
-            iframe_dispatch (set_current_url (linkid));
+            iframe_dispatch (actions.set_current_url (linkid));
         }
 
       /* Do not send key events to global "key navigation" handler.*/
@@ -356,7 +350,7 @@
         if (current_menu)
           this.show (current_menu);
         else
-          iframe_dispatch (warn ("No menu in this node"));
+          iframe_dispatch (actions.warn ("No menu in this node"));
       }
     };
 
@@ -399,7 +393,7 @@
     else if (!this.toid)
       {
         var toid = window.setTimeout (function () {
-          iframe_dispatch ({ type: WARNING, msg: null });
+          iframe_dispatch ({ type: actions.WARNING, msg: null });
         }, config.WARNING_TIMEOUT);
         this.warn.removeAttribute ("hidden");
         this.toid = toid;
@@ -857,12 +851,12 @@
     var links = {};
     var linkid = basename (window.location.pathname, /[.]x?html$/);
     links[linkid] = navigation_links (document);
-    iframe_dispatch (cache_links (links));
+    iframe_dispatch (actions.cache_links (links));
 
     if (linkid.match (/^.*-index$/i))
       {
         var index_links = scan_index (document);
-        iframe_dispatch (cache_index_links (index_links));
+        iframe_dispatch (actions.cache_index_links (index_links));
       }
   }
 
@@ -983,7 +977,7 @@
 
     /* Get 'backward' and 'forward' link attributes.  */
     var dict = create_link_dict (document.querySelector ("ul"));
-    iframe_dispatch (cache_links (dict));
+    iframe_dispatch (actions.cache_links (dict));
   }
 
   /** Handle messages received via the Message API.  */
@@ -1012,7 +1006,7 @@
 
     switch (action.type)
       {
-      case CACHE_LINKS:
+      case actions.CACHE_LINKS:
         {
           var nodes = Object.assign ({}, state.loaded_nodes);
           Object
@@ -1026,12 +1020,12 @@
 
           return Object.assign (res, { loaded_nodes: nodes });
         }
-      case CACHE_INDEX_LINKS:
+      case actions.CACHE_INDEX_LINKS:
         {
           Object.assign (res.index, action.links);
           return res;
         }
-      case CURRENT_URL:
+      case actions.CURRENT_URL:
         {
           linkid = (action.pointer) ?
               state.loaded_nodes[action.pointer] : action.url;
@@ -1044,7 +1038,7 @@
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
           return res;
         }
-      case NAVIGATE:
+      case actions.NAVIGATE:
         {
           var ids = state.loaded_nodes[state.current];
           linkid = ids[action.direction];
@@ -1061,14 +1055,14 @@
               return res;
             }
         }
-      case SEARCH:
+      case actions.SEARCH:
         {
           res.regexp = action.regexp;
           res.text_input = null;
           res.warning = null;
           return res;
         }
-      case TEXT_INPUT:
+      case actions.TEXT_INPUT:
         {
           var needs_update = (state.text_input && !action.input)
               || (!state.text_input && action.input)
@@ -1084,7 +1078,7 @@
               return res;
             }
         }
-      case WARNING:
+      case actions.WARNING:
         {
           res.warning = action.msg;
           if (action.msg !== null)
@@ -1171,14 +1165,14 @@
     if (window.location.hash)
       {
         var linkid = window.location.hash.slice (1);
-        var action = set_current_url (linkid, config.HISTORY_REPLACE);
+        var action = actions.set_current_url (linkid, config.HISTORY_REPLACE);
         store.dispatch (action);
       }
 
     /* Retrieve NEXT link and local menu.  */
     var links = {};
     links[config.INDEX_ID] = navigation_links (document);
-    store.dispatch (cache_links (links));
+    store.dispatch (actions.cache_links (links));
   }
 
   /** Handle messages received via the Message API.  */
@@ -1198,7 +1192,7 @@
   on_popstate (event)
   {
     var linkid = event.state;
-    store.dispatch (set_current_url (linkid, false));
+    store.dispatch (actions.set_current_url (linkid, false));
   }
 
   /** Depending on the role of the document launching this script, different
@@ -1228,7 +1222,7 @@
             if (!absolute_url_p (href))
               {
                 var linkid = href_hash (href) || config.INDEX_ID;
-                iframe_dispatch (set_current_url (linkid));
+                iframe_dispatch (actions.set_current_url (linkid));
                 event.preventDefault ();
                 event.stopPropagation ();
                 return;
@@ -1266,19 +1260,19 @@
 
   /* Dictionary associating an Event 'key' property to its navigation id.  */
   on_keyup.dict = {
-    i: [show_text_input, "index"],
+    i: [actions.show_text_input, "index"],
     l: [window.history.back.bind (window.history)],
-    m: [show_text_input, "menu"],
-    n: [navigate, "next"],
-    p: [navigate, "prev"],
+    m: [actions.show_text_input, "menu"],
+    n: [actions.navigate, "next"],
+    p: [actions.navigate, "prev"],
     r: [window.history.forward.bind (window.history)],
-    s: [show_text_input, "regexp-search"],
-    t: [set_current_url_pointer, "*TOP*"],
-    u: [navigate, "up"],
-    "]": [navigate, "forward"],
-    "[": [navigate, "backward"],
-    "<": [set_current_url_pointer, "*TOP*"],
-    ">": [set_current_url_pointer, "*END*"]
+    s: [actions.show_text_input, "regexp-search"],
+    t: [actions.set_current_url_pointer, "*TOP*"],
+    u: [actions.navigate, "up"],
+    "]": [actions.navigate, "forward"],
+    "[": [actions.navigate, "backward"],
+    "<": [actions.set_current_url_pointer, "*TOP*"],
+    ">": [actions.set_current_url_pointer, "*END*"]
   };
 
   /*--------------------
