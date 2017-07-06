@@ -40,7 +40,7 @@ examples = \
   examples/kawa-html
 
 build_html_pages = \
-  $(AM_V_GEN)$(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
+  $(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
     --stringparam base.dir ebook/OEBPS/ \
     --stringparam html.script info.js \
     --stringparam html.stylesheet info.css \
@@ -59,7 +59,7 @@ build_html_pages = \
     --stringparam toc.section.depth 3 \
     --stringparam chunk.separate.lots 1 \
     --stringparam chunk.tocs.and.lots 1 \
-    info-epub.xsl $<; \
+    info-epub.xsl $${xml_file}; \
   sed -e '/<footer>/,/<.footer>/d' <ebook/OEBPS/bk01-toc.xhtml \
     >ebook/OEBPS/ToC.xhtml; \
   rm ebook/OEBPS/bk01-toc.xhtml; \
@@ -76,9 +76,11 @@ build_html_pages = \
 	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@
 
 examples/hello-html: examples/hello/hello.xml
+	$(AM_V_GEN)xml_file=examples/hello/hello.xml; \
 	$(build_html_pages)
 
 examples/kawa-html: examples/kawa/kawa.xml
+	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; \
 	$(build_html_pages)
 
 .PHONY: $(examples)
