@@ -111,3 +111,5 @@ node_modules/
 /js/build-aux/missing
 /js/config.status
 js/ebook/
+/js/examples/hello-html/
+/js/examples/kawa-html/
