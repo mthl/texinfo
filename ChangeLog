@@ -1,3 +1,7 @@
+2017-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/t/inc-sea-bs.sh: New test.
+
 2017-07-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (regexp_search): Call free_matches if the regex

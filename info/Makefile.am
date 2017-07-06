@@ -154,6 +154,7 @@ TESTS = \
 	t/inc-sea-forward-nonregex.sh \
 	t/inc-sea-insensitive.sh \
 	t/inc-sea-history.sh \
+	t/inc-sea-bs.sh \
 	t/gc-split.sh \
 	t/anchor-positions.sh \
 	t/quoted-label-as-target.sh \
