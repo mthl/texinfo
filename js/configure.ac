@@ -28,6 +28,9 @@ if test "x$ac_cv_path_XSLT" = "x"; then
    AC_MSG_ERROR([xsltproc not found])
 fi
 
+## XXX: 'AC_ARG_WITH' should only be used for optional packages.  In
+## this particular case the XSL stylesheets are mandatory.  We don't know
+## a good way to check the system for this directory.
 AC_ARG_WITH([docbook-stylesheets],
   [AS_HELP_STRING([--with-docbook-stylesheets=DIR],
     [define the directory containing xsl stylesheets])],
