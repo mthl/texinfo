@@ -16,20 +16,29 @@
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
-NODE_BIN = node_modules/.bin
-
 all: $(examples)
 
+phony =
+
+if HAVE_ESLINT
+phony += lint
 lint:
-	$(NODE_BIN)/eslint -c build-aux/eslint.json info.js -f unix
+	$(ESLINT) -c build-aux/eslint.json info.js -f unix
+endif
 
+if HAVE_UGLIFYJS
+phony += minify
 minify:
-	$(NODE_BIN)/uglifyjs info.js -o info.min.js
+	$(UGLIFYJS) info.js -o info.min.js
+endif
 
+if HAVE_MODERNIZR
+phony += modernizr
 modernizr:
-	$(NODE_BIN)/modernizr -c build-aux/modernizr.json
+	$(MODERNIZR) -c build-aux/modernizr.json
+endif
 
-.PHONY: lint minify modernizr
+.PHONY: $(phony)
 
 ## ---------- ##
 ## Examples.  ##

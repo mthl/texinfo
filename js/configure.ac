@@ -36,5 +36,16 @@ AC_ARG_WITH([docbook-stylesheets],
 
 AC_SUBST([DOCBOOK_XSL_DIR], [$with_docbook_stylesheets])
 
+npm_path="${srcdir}/node_modules/.bin${PATH_SEPARATOR}$PATH"
+
+AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
+AM_CONDITIONAL([HAVE_ESLINT], [test "x$ac_cv_path_ESLINT" != "x"])
+
+AC_PATH_PROG([UGLIFYJS], [uglifyjs], [], [$npm_path])
+AM_CONDITIONAL([HAVE_UGLIFYJS], [test "x$ac_cv_path_UGLIFYJS" != "x"])
+
+AC_PATH_PROG([MODERNIZR], [modernizr], [], [$npm_path])
+AM_CONDITIONAL([HAVE_MODERNIZR], [test "x$ac_cv_path_MODERNIZR" != "x"])
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
