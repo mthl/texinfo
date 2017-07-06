@@ -59,16 +59,16 @@ build_html_pages = \
     --stringparam toc.section.depth 3 \
     --stringparam chunk.separate.lots 1 \
     --stringparam chunk.tocs.and.lots 1 \
-    info-epub.xsl $${xml_file}; \
+    info-epub.xsl $${xml_file} && \
   sed -e '/<footer>/,/<.footer>/d' <ebook/OEBPS/bk01-toc.xhtml \
-    >ebook/OEBPS/ToC.xhtml; \
-  rm ebook/OEBPS/bk01-toc.xhtml; \
+    >ebook/OEBPS/ToC.xhtml && \
+  rm ebook/OEBPS/bk01-toc.xhtml && \
   for file in ebook/OEBPS/*.xhtml; do \
-    sed -e '/<?xml .*>/d' -e '/<script/s|/>|> </script>|' -i $$file; done; \
-  mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html; \
-  cp style/info.css ebook/OEBPS/info.css; \
-  cp info.js ebook/OEBPS/; \
-  rm -rf $@; \
+    sed -e '/<?xml .*>/d' -e '/<script/s|/>|> </script>|' -i $$file; done && \
+  mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html && \
+  cp style/info.css ebook/OEBPS/info.css && \
+  cp info.js ebook/OEBPS/ && \
+  rm -rf $@ && \
   mv ebook/OEBPS $@; \
   rm -rf ebook
 
