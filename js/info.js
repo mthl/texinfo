@@ -1247,32 +1247,31 @@
   function
   on_keyup (event)
   {
-    var value = on_keyup.dict[event.key];
-    if (value)
+    var val = on_keyup.dict[event.key];
+    if (val)
       {
-        var func = value[0];
-        var arg = value[1];
-        var action = func (arg);
-        if (action)
-          iframe_dispatch (action);
+        if (typeof val === "function")
+          val ();
+        else
+          iframe_dispatch (val);
       }
   }
 
-  /* Dictionary associating an Event 'key' property to its navigation id.  */
+  /* Associate an Event 'key' property to an action or a thunk.  */
   on_keyup.dict = {
-    i: [actions.show_text_input, "index"],
-    l: [window.history.back.bind (window.history)],
-    m: [actions.show_text_input, "menu"],
-    n: [actions.navigate, "next"],
-    p: [actions.navigate, "prev"],
-    r: [window.history.forward.bind (window.history)],
-    s: [actions.show_text_input, "regexp-search"],
-    t: [actions.set_current_url_pointer, "*TOP*"],
-    u: [actions.navigate, "up"],
-    "]": [actions.navigate, "forward"],
-    "[": [actions.navigate, "backward"],
-    "<": [actions.set_current_url_pointer, "*TOP*"],
-    ">": [actions.set_current_url_pointer, "*END*"]
+    i: actions.show_text_input ("index"),
+    l: window.history.back.bind (window.history),
+    m: actions.show_text_input ("menu"),
+    n: actions.navigate ("next"),
+    p: actions.navigate ("prev"),
+    r: window.history.forward.bind (window.history),
+    s: actions.show_text_input ("regexp-search"),
+    t: actions.set_current_url_pointer ("*TOP*"),
+    u: actions.navigate ("up"),
+    "]": actions.navigate ("forward"),
+    "[": actions.navigate ("backward"),
+    "<": actions.set_current_url_pointer ("*TOP*"),
+    ">": actions.set_current_url_pointer ("*END*")
   };
 
   /*--------------------
