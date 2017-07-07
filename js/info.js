@@ -218,12 +218,6 @@
 
   Store.prototype.subscribe = function subscribe (listener) {
     this.listeners.push (listener);
-
-    /* Return a function to unsubscribe.*/
-    return (function () {
-      var idx = this.listeners.indexOf (listener);
-      this.listeners.splice (idx, 1);
-    }).bind (this);
   };
 
   /** Dispatch ACTION to the top-level browsing context.  This function must be
