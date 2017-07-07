@@ -128,6 +128,10 @@
   /* Global state manager.  */
   var store;
 
+  /* Aggregation of all the components.  This is used only in the index
+     page context.  */
+  var components;
+
   /*-------------------.
   | State Management.  |
   `-------------------*/
@@ -136,9 +140,10 @@
      dispatch method which accepts actions as parameter.  This method is the
      only way to update the state.  */
 
-  /* Instantiate a store object.  */
+  /* Instantiate a store object that renders COMPONENT at each state
+     change.  */
   function
-  create_store ()
+  create_store (component)
   {
     return {
       reducer: updater,
@@ -163,7 +168,7 @@
             /* eslint-disable no-console */
             console.log ("state: ", new_state);
             /* eslint-enable no-console */
-            components.render (new_state);
+            component.render (new_state);
             this.state = new_state;
           }
       }
@@ -1116,24 +1121,6 @@
 
   /* Handle the index page.  */
 
-  /* Aggregation of all the components.   */
-  var components = {
-    element: null,
-    components: [],
-
-    add: function add (component) {
-      if (this.element === null)
-        throw new Error ("element property must be set first");
-
-      this.components.push (component);
-      this.element.appendChild (component.element);
-    },
-
-    render: function render (state) {
-      this.components
-          .forEach (function (cmpt) { return cmpt.render (state); });
-    }
-  };
 
   /*--------------------------------------------
   | Event handlers for the top-level context.  |
@@ -1153,7 +1140,21 @@
       index_div.appendChild (ch);
 
     /* Instantiate the components.  */
-    components.element = document.body;
+    components = {
+      element: document.body,
+      components: [],
+
+      add: function add (component) {
+        this.components.push (component);
+        this.element.appendChild (component.element);
+      },
+
+      render: function render (state) {
+        this.components
+          .forEach (function (cmpt) { return cmpt.render (state); });
+      }
+    };
+
     components.add (new Sidebar ());
     components.add (new Pages (index_div));
     components.add (new Minibuffer ());
@@ -1281,7 +1282,7 @@
 
   if (inside_index_page)
     {
-      store = create_store ();
+      store = create_store (components);
       window.addEventListener ("DOMContentLoaded", on_index_load, false);
       window.addEventListener ("message", on_index_message, false);
       window.onpopstate = on_index_popstate;
