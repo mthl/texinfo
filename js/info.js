@@ -216,10 +216,6 @@
       }
   };
 
-  Store.prototype.subscribe = function subscribe (listener) {
-    this.listeners.push (listener);
-  };
-
   /** Dispatch ACTION to the top-level browsing context.  This function must be
       used in conjunction with an event listener on "message" events in the
       top-level browsing context which must forwards ACTION to an actual
@@ -1144,12 +1140,12 @@
     };
 
     store = new Store (global_reducer, initial_state);
-    store.subscribe (function () {
+    store.listeners.push (function () {
       /* eslint-disable no-console */
       return console.log ("state: ", store.state);
       /* eslint-enable no-console */
     });
-    store.subscribe (function () {
+    store.listeners.push (function () {
       return components.render (store.state);
     });
 
