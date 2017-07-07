@@ -1189,7 +1189,7 @@
 
   /** Event handler for 'popstate' events.  */
   function
-  on_popstate (event)
+  on_index_popstate (event)
   {
     var linkid = event.state;
     store.dispatch (actions.set_current_url (linkid, false));
@@ -1287,7 +1287,7 @@
     {
       window.addEventListener ("DOMContentLoaded", on_index_load, false);
       window.addEventListener ("message", on_index_message, false);
-      window.onpopstate = on_popstate;
+      window.onpopstate = on_index_popstate;
     }
   else if (inside_sidebar)
     {
