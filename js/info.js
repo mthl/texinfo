@@ -121,6 +121,13 @@
     HISTORY_PUSH: "pushState"
   };
 
+  /*-------------------.
+  | Global variables.  |
+  `-------------------*/
+
+  /* Global state manager.  */
+  var store;
+
   /*--------------------------------------------.
   | Define actions types and actions creators.  |
   `--------------------------------------------*/
@@ -1091,9 +1098,6 @@
   }
 
   /* Handle the index page.  */
-
-  /* Global state manager.  */
-  var store;
 
   /* Aggregation of all the components.   */
   var components = {
