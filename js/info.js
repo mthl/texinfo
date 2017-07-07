@@ -128,14 +128,71 @@
   /* Global state manager.  */
   var store;
 
-  /*--------------------------------------------.
-  | Define actions types and actions creators.  |
-  `--------------------------------------------*/
+  /*-------------------.
+  | State Management.  |
+  `-------------------*/
+
+  /* A 'store' is an object managing the state of the application and having a
+     dispatch method which accepts actions as parameter.  This method is the
+     only way to update the state.  */
+
+  /* Instantiate a store object.  */
+  function
+  create_store ()
+  {
+    return {
+      reducer: updater,
+      state: {
+        /* Dictionary associating page ids to next, prev, up, forward,
+           backward link ids.  */
+        loaded_nodes: {},
+        /* Dictionary associating keyword to linkids.  */
+        index: {},
+        /* page id of the current page.  */
+        current: config.INDEX_ID,
+        /* Current mode for handling history.  */
+        history: config.HISTORY_REPLACE,
+        /* Define the name of current text input.  */
+        text_input: null
+      },
+
+      dispatch: function dispatch (action) {
+        var new_state = this.reducer (this.state, action);
+        if (new_state !== this.state)
+          {
+            /* eslint-disable no-console */
+            console.log ("state: ", new_state);
+            /* eslint-enable no-console */
+            components.render (new_state);
+            this.state = new_state;
+          }
+      }
+    };
+  }
+
+  /* Return a store delegate that will forward its actions to a "real" store
+     that can be in a different browsing context.  */
+  function
+  create_remote_store ()
+  {
+    return {
+      /* Dispatch ACTION to the top-level browsing context.  This function
+         must be used in conjunction with an event listener on "message"
+         events in the top-level browsing context which must forwards ACTION
+         to an actual store.  */
+      dispatch: function dispatch (action) {
+        top.postMessage ({ message_kind: "action", action: action }, "*");
+      }
+    };
+  }
+
+  /*------------------------------------------.
+  | Define action types and action creators.  |
+  `------------------------------------------*/
 
   /* Actions are payloads of information taking the form of plain javascript
      objects.  Those actions are meant to be treated by the store which can
      receive them using the 'store.dispatch' method.  */
-
   var actions = {
     /* Actions types.  */
     CURRENT_URL: "current-url",
@@ -196,37 +253,106 @@
     }
   };
 
-  /* State manager using an unidirectional dataflow architecture.  */
+  /*-------------------------.
+  | Define action handlers.  |
+  `-------------------------*/
 
+  /* Actions handler that return a new state.  */
   function
-  Store (reducer, state)
+  updater (state, action)
   {
-    this.state = state || {};
-    this.reducer = reducer;
-    this.listeners = [];
-  }
+    var res = Object.assign ({}, state, { action: action });
+    var linkid;
 
-  Store.prototype.dispatch = function dispatch (action) {
-    var new_state = this.reducer (this.state, action);
-    if (new_state !== this.state)
+    switch (action.type)
       {
-        this.state = new_state;
-        this.listeners
-            .forEach (function (lstnr) { return lstnr (); });
-      }
-  };
+      case actions.CACHE_LINKS:
+        {
+          var nodes = Object.assign ({}, state.loaded_nodes);
+          Object
+            .keys (action.links)
+            .forEach (function (key) {
+              if (typeof action.links[key] === "object")
+                nodes[key] = Object.assign ({}, nodes[key], action.links[key]);
+              else
+                nodes[key] = action.links[key];
+            });
 
-  /** Dispatch ACTION to the top-level browsing context.  This function must be
-      used in conjunction with an event listener on "message" events in the
-      top-level browsing context which must forwards ACTION to an actual
-      store.  */
-  function
-  iframe_dispatch (action)
-  {
-    top.postMessage ({ message_kind: "action", action: action }, "*");
+          return Object.assign (res, { loaded_nodes: nodes });
+        }
+      case actions.CACHE_INDEX_LINKS:
+        {
+          Object.assign (res.index, action.links);
+          return res;
+        }
+      case actions.CURRENT_URL:
+        {
+          linkid = (action.pointer) ?
+              state.loaded_nodes[action.pointer] : action.url;
+
+          res.current = linkid;
+          res.history = action.history;
+          res.text_input = null;
+          res.warning = null;
+          res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
+          res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
+          return res;
+        }
+      case actions.NAVIGATE:
+        {
+          var ids = state.loaded_nodes[state.current];
+          linkid = ids[action.direction];
+          if (!linkid)
+            return state;
+          else
+            {
+              res.current = linkid;
+              res.history = action.history;
+              res.text_input = null;
+              res.warning = null;
+              res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
+              res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
+              return res;
+            }
+        }
+      case actions.SEARCH:
+        {
+          res.regexp = action.regexp;
+          res.text_input = null;
+          res.warning = null;
+          return res;
+        }
+      case actions.TEXT_INPUT:
+        {
+          var needs_update = (state.text_input && !action.input)
+              || (!state.text_input && action.input)
+              || (state.text_input && action.input
+                  && state.text_input !== action.input);
+
+          if (!needs_update)
+            return state;
+          else
+            {
+              res.text_input = action.input;
+              res.warning = null;
+              return res;
+            }
+        }
+      case actions.WARNING:
+        {
+          res.warning = action.msg;
+          if (action.msg !== null)
+            res.text_input = null;
+          return res;
+        }
+      default:
+        return state;
+      }
   }
 
-  /* Component for menu navigation */
+  /*---------------------------------.
+  | Components for menu navigation.  |
+  `---------------------------------*/
 
   function
   Search_input (id)
@@ -249,9 +375,9 @@
        visible.*/
     this.input.addEventListener ("keyup", (function (event) {
       if (event.key === "Escape")
-        iframe_dispatch (actions.hide_text_input ());
+        store.dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
-        iframe_dispatch (actions.search (this.input.value));
+        store.dispatch (actions.search (this.input.value));
 
       /* Do not send key events to global "key navigation" handler.*/
       event.stopPropagation ();
@@ -291,12 +417,12 @@
     var that = this;
     this.input.addEventListener ("keyup", function (event) {
       if (event.key === "Escape")
-        iframe_dispatch (actions.hide_text_input ());
+        store.dispatch (actions.hide_text_input ());
       else if (event.key === "Enter")
         {
           var linkid = that.data[that.input.value];
           if (linkid)
-            iframe_dispatch (actions.set_current_url (linkid));
+            store.dispatch (actions.set_current_url (linkid));
         }
 
       /* Do not send key events to global "key navigation" handler.*/
@@ -340,7 +466,7 @@
         if (current_menu)
           this.show (current_menu);
         else
-          iframe_dispatch (actions.warn ("No menu in this node"));
+          store.dispatch (actions.warn ("No menu in this node"));
       }
     };
 
@@ -383,7 +509,7 @@
     else if (!this.toid)
       {
         var toid = window.setTimeout (function () {
-          iframe_dispatch ({ type: actions.WARNING, msg: null });
+          store.dispatch ({ type: actions.WARNING, msg: null });
         }, config.WARNING_TIMEOUT);
         this.warn.removeAttribute ("hidden");
         this.toid = toid;
@@ -837,16 +963,17 @@
   function
   on_iframe_load ()
   {
+    store = create_remote_store ();
     fix_links (document.links);
     var links = {};
     var linkid = basename (window.location.pathname, /[.]x?html$/);
     links[linkid] = navigation_links (document);
-    iframe_dispatch (actions.cache_links (links));
+    store.dispatch (actions.cache_links (links));
 
     if (linkid.match (/^.*-index$/i))
       {
         var index_links = scan_index (document);
-        iframe_dispatch (actions.cache_index_links (index_links));
+        store.dispatch (actions.cache_index_links (index_links));
       }
   }
 
@@ -967,7 +1094,7 @@
 
     /* Get 'backward' and 'forward' link attributes.  */
     var dict = create_link_dict (document.querySelector ("ul"));
-    iframe_dispatch (actions.cache_links (dict));
+    store.dispatch (actions.cache_links (dict));
   }
 
   /** Handle messages received via the Message API.  */
@@ -986,99 +1113,6 @@
       }
   }
 
-  /* Actions handlers that return a new state.  */
-
-  function
-  global_reducer (state, action)
-  {
-    var res = Object.assign ({}, state, { action: action });
-    var linkid;
-
-    switch (action.type)
-      {
-      case actions.CACHE_LINKS:
-        {
-          var nodes = Object.assign ({}, state.loaded_nodes);
-          Object
-            .keys (action.links)
-            .forEach (function (key) {
-              if (typeof action.links[key] === "object")
-                nodes[key] = Object.assign ({}, nodes[key], action.links[key]);
-              else
-                nodes[key] = action.links[key];
-            });
-
-          return Object.assign (res, { loaded_nodes: nodes });
-        }
-      case actions.CACHE_INDEX_LINKS:
-        {
-          Object.assign (res.index, action.links);
-          return res;
-        }
-      case actions.CURRENT_URL:
-        {
-          linkid = (action.pointer) ?
-              state.loaded_nodes[action.pointer] : action.url;
-
-          res.current = linkid;
-          res.history = action.history;
-          res.text_input = null;
-          res.warning = null;
-          res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
-          res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
-          return res;
-        }
-      case actions.NAVIGATE:
-        {
-          var ids = state.loaded_nodes[state.current];
-          linkid = ids[action.direction];
-          if (!linkid)
-            return state;
-          else
-            {
-              res.current = linkid;
-              res.history = action.history;
-              res.text_input = null;
-              res.warning = null;
-              res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
-              res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
-              return res;
-            }
-        }
-      case actions.SEARCH:
-        {
-          res.regexp = action.regexp;
-          res.text_input = null;
-          res.warning = null;
-          return res;
-        }
-      case actions.TEXT_INPUT:
-        {
-          var needs_update = (state.text_input && !action.input)
-              || (!state.text_input && action.input)
-              || (state.text_input && action.input
-                  && state.text_input !== action.input);
-
-          if (!needs_update)
-            return state;
-          else
-            {
-              res.text_input = action.input;
-              res.warning = null;
-              return res;
-            }
-        }
-      case actions.WARNING:
-        {
-          res.warning = action.msg;
-          if (action.msg !== null)
-            res.text_input = null;
-          return res;
-        }
-      default:
-        return state;
-      }
-  }
 
   /* Handle the index page.  */
 
@@ -1119,35 +1153,10 @@
       index_div.appendChild (ch);
 
     /* Instantiate the components.  */
-
     components.element = document.body;
     components.add (new Sidebar ());
     components.add (new Pages (index_div));
     components.add (new Minibuffer ());
-
-    var initial_state = {
-      /* Dictionary associating page ids to next, prev, up, forward,
-         backward link ids.  */
-      loaded_nodes: {},
-      /* Dictionary associating keyword to linkids.  */
-      index: {},
-      /* page id of the current page.  */
-      current: config.INDEX_ID,
-      /* Current mode for handling history.  */
-      history: config.HISTORY_REPLACE,
-      /* Define the name of current text input.  */
-      text_input: null
-    };
-
-    store = new Store (global_reducer, initial_state);
-    store.listeners.push (function () {
-      /* eslint-disable no-console */
-      return console.log ("state: ", store.state);
-      /* eslint-enable no-console */
-    });
-    store.listeners.push (function () {
-      return components.render (store.state);
-    });
 
     if (window.location.hash)
       {
@@ -1209,7 +1218,7 @@
             if (!absolute_url_p (href))
               {
                 var linkid = href_hash (href) || config.INDEX_ID;
-                iframe_dispatch (actions.set_current_url (linkid));
+                store.dispatch (actions.set_current_url (linkid));
                 event.preventDefault ();
                 event.stopPropagation ();
                 return;
@@ -1240,7 +1249,7 @@
         if (typeof val === "function")
           val ();
         else
-          iframe_dispatch (val);
+          store.dispatch (val);
       }
   }
 
@@ -1272,17 +1281,20 @@
 
   if (inside_index_page)
     {
+      store = create_store ();
       window.addEventListener ("DOMContentLoaded", on_index_load, false);
       window.addEventListener ("message", on_index_message, false);
       window.onpopstate = on_index_popstate;
     }
   else if (inside_sidebar)
     {
+      store = create_remote_store ();
       window.addEventListener ("DOMContentLoaded", on_sidebar_load, false);
       window.addEventListener ("message", on_sidebar_message, false);
     }
   else if (inside_iframe)
     {
+      store = create_remote_store ();
       window.addEventListener ("DOMContentLoaded", on_iframe_load, false);
       window.addEventListener ("message", on_iframe_message, false);
     }
