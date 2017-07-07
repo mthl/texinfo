@@ -207,19 +207,12 @@
   }
 
   Store.prototype.dispatch = function dispatch (action) {
-    /* Handle asynchonous actions which are functions.*/
-    if (typeof action === "function")
-      action (this.dispatch.bind (this));
-    else
+    var new_state = this.reducer (this.state, action);
+    if (new_state !== this.state)
       {
-        var new_state = this.reducer (this.state, action);
-        if (new_state !== this.state)
-          {
-            this.state = new_state;
-            this.listeners.forEach (function (lstnr) {
-              return lstnr ();
-            });
-          }
+        this.state = new_state;
+        this.listeners
+            .forEach (function (lstnr) { return lstnr (); });
       }
   };
 
