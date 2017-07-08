@@ -277,7 +277,7 @@
       /* Define a special key handler when 'this.input' is focused and
          visible.*/
       this.input.addEventListener ("keyup", (function (event) {
-        if (event.key === "Escape")
+        if (is_escape_key (event.key))
           store.dispatch (actions.hide_text_input ());
         else if (event.key === "Enter")
           store.dispatch (actions.search (this.input.value));
@@ -319,7 +319,7 @@
          visible.*/
       var that = this;
       this.input.addEventListener ("keyup", function (event) {
-        if (event.key === "Escape")
+        if (is_escape_key (event.key))
           store.dispatch (actions.hide_text_input ());
         else if (event.key === "Enter")
           {
@@ -525,6 +525,15 @@
     /*--------------.
     | Utilitaries.  |
     `--------------*/
+
+    /* Check portably if KEY correspond to "Escape" key value.  */
+    function
+    is_escape_key (key)
+    {
+      /* In Internet Explorer 9 and Firefox 36 and earlier, the Esc key
+         returns "Esc" instead of "Escape".  */
+      return  key === "Escape" || key === "Esc";
+    }
 
     /* Return an array composed of the filename and the anchor of LINKID.
        LINKID can have the form "foobar.anchor" or just "foobar".  */
