@@ -961,7 +961,7 @@
                    .filter (function (l) { return l.hasAttribute ("xref"); })
                    .reduce (function (acc, link) {
                      var linkid = href_hash (link.getAttribute ("href"));
-                     var key = link.innerText;
+                     var key = link.textContent;
                      acc[key] = linkid;
                      return acc;
                    }, {});
