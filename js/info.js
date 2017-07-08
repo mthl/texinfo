@@ -1055,15 +1055,20 @@
   function
   register_polyfills ()
   {
+    function
+    includes (search, start)
+    {
+      start = start || 0;
+      return ((start + search.length) <= this.length)
+        && (this.indexOf (search, start) !== -1);
+    }
+
     /* eslint-disable no-extend-native */
+    if (!Array.prototype.includes)
+      Array.prototype.includes = includes;
+
     if (!String.prototype.includes)
-      {
-        String.prototype.includes = function includes (search, start) {
-          start = start || 0;
-          return ((start + search.length) <= this.length)
-            && (this.indexOf (search, start) !== -1);
-        };
-      }
+      String.prototype.includes = includes;
 
     if (!String.prototype.endsWith)
       {
