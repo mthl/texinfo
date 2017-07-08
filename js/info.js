@@ -484,9 +484,7 @@
       div.setAttribute ("hidden", "true");
       this.ids.push (pageid);
       this.element.appendChild (div);
-
-      /* Load pages containing index links.*/
-      if (pageid.match (/^.*-index$/i))
+      if (linkid_contains_index (pageid))
         load_page (pageid);
     };
 
@@ -953,7 +951,7 @@
       links[linkid] = navigation_links (document);
       store.dispatch (actions.cache_links (links));
 
-      if (linkid.match (/^.*-index$/i))
+      if (linkid_contains_index (linkid))
         {
           /* Scan links that show be added to the index.  */
           var index_links =
@@ -1239,6 +1237,13 @@
       return href.replace (/.*#/, "");
     else
       return "";
+  }
+
+  /** Check if LINKID corresponds to a page containing index links.  */
+  function
+  linkid_contains_index (linkid)
+  {
+    return linkid.match (/^.*-index$/i);
   }
 
   /** Retrieve PREV, NEXT, and UP links, and local menu from CONTENT and
