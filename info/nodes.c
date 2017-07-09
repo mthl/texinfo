@@ -129,6 +129,7 @@ build_tags_and_nodes (FILE_BUFFER *file_buffer)
         return;
 
       /* Skip "Indirect:" line. */
+      position += skip_node_separator (file_buffer->contents + position);
       position += strlen (INDIRECT_TABLE_LABEL);
       position += strspn (file_buffer->contents + position, "\r\n");
 
