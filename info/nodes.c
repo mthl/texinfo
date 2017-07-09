@@ -842,9 +842,6 @@ info_reload_file_buffer_contents (FILE_BUFFER *fb)
 /* Functions for node creation and retrieval. */
 
 static long get_node_length (SEARCH_BINDING *binding);
-static void get_filename_and_nodename (NODE *node,
-                                      char **filename, char **nodename,
-                                      char *filename_in, char *nodename_in);
 static void node_set_body_start (NODE *node);
 static int adjust_nodestart (FILE_BUFFER *file_buffer, TAG *tag);
 
@@ -924,8 +921,22 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   info_recent_file_error = NULL;
 
-  get_filename_and_nodename (defaults, &filename, &nodename,
-                             filename_in, nodename_in);
+  filename = filename_in;
+  if (filename_in)
+    filename = xstrdup (filename_in);
+  else
+    {
+      if (defaults)
+        filename = xstrdup (defaults->fullpath);
+      else
+        filename = xstrdup ("dir");
+    }
+
+  if (nodename_in && *nodename_in)
+    nodename = xstrdup (nodename_in);
+  else
+    /* If NODENAME is not specified, it defaults to "Top". */
+    nodename = xstrdup ("Top");
 
   /* If the file to be looked up is "dir", build the contents from all of
      the "dir"s and "localdir"s found in INFOPATH. */
@@ -998,33 +1009,6 @@ NODE *
 info_get_node (char *filename_in, char *nodename_in)
 {
   return info_get_node_with_defaults (filename_in, nodename_in, 0);
-}
-
-/* Get filename and nodename of node to load using defaults from NODE.
-   Output values should be freed by caller. */
-static void
-get_filename_and_nodename (NODE *node,
-                           char **filename, char **nodename,
-                           char *filename_in, char *nodename_in)
-{
-  *filename = filename_in;
-
-  /* If FILENAME is not specified, it defaults to "dir". */
-  if (filename_in)
-    *filename = xstrdup (filename_in);
-  else
-    {
-      if (node)
-        *filename = xstrdup (node->fullpath);
-      else
-        *filename = xstrdup ("dir");
-    }
-
-  if (nodename_in && *nodename_in)
-    *nodename = xstrdup (nodename_in);
-  else
-    /* If NODENAME is not specified, it defaults to "Top". */
-    *nodename = xstrdup ("Top");
 }
 
 static void

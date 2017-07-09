@@ -1,5 +1,11 @@
 2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c
+	(get_filename_and_nodename, info_get_node_with_defaults):
+	Merge get_filename_and_nodename into caller.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (build_tags_and_nodes): Call 'skip_node_separator'
 	in order not to start reading the tag table in the middle of an
 	"Indirect:" string.
