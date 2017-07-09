@@ -1,5 +1,18 @@
 2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_find_subfile): When looking for an 
+	already-loaded file, check that the names match either exactly, 
+	or as an initial substring followed by a period.  Previously,
+	any loaded file which had an initial substring that was the name 
+	of the sought file would be accepted, which would be incorrect
+	for a case like "libc.info-11" matching when it was "libc.info-1"
+	that was wanted.  Vitezslav Crhonek reported that this could 
+	lead to failure when following cross-references.
+
+	* info/t/subfile-initial-match.sh: New test.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/nodes.c (info_get_node_with_defaults): Only use the
 	directory from the current node's fullpath if this function was 
 	passed a filename as an argument.

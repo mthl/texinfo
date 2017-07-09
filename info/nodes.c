@@ -650,6 +650,7 @@ info_find_subfile (char *fullpath)
   char *with_extension = 0;
   int i;
   FILE_BUFFER *file_buffer = 0;
+  int fullpath_len = strlen (fullpath);
 
   /* First try to find the file in our list of already loaded files. */
   if (info_loaded_files)
@@ -657,7 +658,9 @@ info_find_subfile (char *fullpath)
       for (i = 0; (file_buffer = info_loaded_files[i]); i++)
         /* Check if fullpath starts the name of the recorded file (extra
            extensions like ".info.gz" could be added.) */
-        if (!strncmp (file_buffer->fullpath, fullpath, strlen (fullpath)))
+        if (!strncmp (file_buffer->fullpath, fullpath, fullpath_len)
+            && (file_buffer->fullpath[fullpath_len] == '\0'
+                || file_buffer->fullpath[fullpath_len] == '.'))
           {
             struct stat new_info, *old_info;
 
