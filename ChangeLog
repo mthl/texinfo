@@ -1,3 +1,8 @@
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/nodes.c (info_find_file): Do not convert the filename to 
+	lowercase and check for it again if a file was not found.
+
 2017-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/inc-sea-bs.sh: New test.

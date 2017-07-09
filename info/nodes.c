@@ -631,35 +631,6 @@ info_find_file (char *filename)
   else
     fullpath = xstrdup (filename);
 
-  /* FIXME: Put the following in info_find_fullpath, or remove
-     it altogether. */
-  /* If the file referenced by the name returned from info_find_fullpath ()
-     doesn't exist, then try again with the last part of the filename
-     appearing in lowercase. */
-  /* This is probably not needed at all on those systems which define
-     FILENAME_CMP to be mbscasecmp.  But let's do it anyway, lest some
-     network redirector supports case sensitivity.  */
-  if (!fullpath)
-    {
-      char *lowered_name;
-      char *tmp_basename;
-
-      lowered_name = xstrdup (filename);
-      tmp_basename = filename_non_directory (lowered_name);
-
-      while (*tmp_basename)
-        {
-          if (isupper (*tmp_basename))
-            *tmp_basename = tolower (*tmp_basename);
-
-          tmp_basename++;
-        }
-
-      fullpath = info_find_fullpath (lowered_name, 0);
-
-      free (lowered_name);
-    }
-
   /* If the file wasn't found, give up, returning a NULL pointer. */
   if (!fullpath)
     return NULL;
