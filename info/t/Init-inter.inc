@@ -93,10 +93,7 @@ LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 run_ginfo ()
 {
   sh -c "
-    # Close fd opened to control FIFO in subshell so pseudotty can exit 
-    # for an EOF.  This prevents lingering processes if a test is 
-    # interrupted.
-    exec 7>&- ;
+    exec 7>&- ; # Close fd from parent shell
 
     (sleep 3 ; kill \$\$) &
     exec $GINFO $GINFO_OPTIONS $* 0<>$PTS_DEVICE 1<&0 ;" &
