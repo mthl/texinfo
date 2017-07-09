@@ -375,6 +375,8 @@ add_initial_nodes (int argc, char **argv, char **error)
               node_nodename = 0;
 
               file_buffer = info_find_file (node_filename);
+              if (!file_buffer)
+                continue;
 
               /* First look for an exact match. */
               for (j = 0; (tag = file_buffer->tags[j]); j++)

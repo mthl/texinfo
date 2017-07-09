@@ -1,5 +1,14 @@
 2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_load_file): If calling 
+	'build_tags_and_nodes' didn't set the 'tags' array for the file 
+	buffer, fail to load the file.
+	* info/info.c (add_initial_nodes): Check if info_load_file failed.
+
+	* info/t/malformed-split.sh: New test.
+
+2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc (run_ginfo): Shorten a comment.
 
 2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>

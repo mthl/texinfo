@@ -93,6 +93,7 @@ TESTS = \
 	t/no-file.sh \
 	t/node-no-file.sh \
 	t/split.sh \
+	t/malformed-split.sh \
 	t/relative-path.sh \
 	t/file-relative-path.sh \
 	t/dir.sh \

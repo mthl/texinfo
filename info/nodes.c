@@ -725,7 +725,16 @@ info_load_file (char *fullpath, int is_subfile)
   get_file_character_encoding (file_buffer);
 
   if (!is_subfile)
-    build_tags_and_nodes (file_buffer);
+    {
+      build_tags_and_nodes (file_buffer);
+      if (!file_buffer->tags)
+        {
+          free (file_buffer->fullpath);
+          free (file_buffer->filename);
+          free (file_buffer);
+          return 0;
+        }
+    }
   else
     file_buffer->flags |= N_Subfile;
 
