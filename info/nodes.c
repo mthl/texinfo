@@ -923,7 +923,35 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
 
   filename = filename_in;
   if (filename_in)
-    filename = xstrdup (filename_in);
+    {
+      filename = xstrdup (filename_in);
+      if (follow_strategy == FOLLOW_REMAIN
+          && defaults && defaults->fullpath
+          && filename_in)
+        {
+          /* Find the directory in the filename for defaults, and look in
+             that directory first. */
+          char *file_in_same_dir;
+          char saved_char, *p;
+
+          p = defaults->fullpath + strlen (defaults->fullpath);
+          while (p > defaults->fullpath && !IS_SLASH (*p))
+            p--;
+
+          if (p > defaults->fullpath)
+            {
+              saved_char = *p;
+              *p = 0;
+
+              file_in_same_dir = info_add_extension (defaults->fullpath,
+                                                     filename, 0);
+              if (file_in_same_dir)
+                file_buffer = info_find_file (file_in_same_dir);
+              free (file_in_same_dir);
+              *p = saved_char;
+            }
+        }
+    }
   else
     {
       if (defaults)
@@ -950,33 +978,6 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
     {
       node = get_manpage_node (nodename);
       goto cleanup_and_exit;
-    }
-
-
-  if (follow_strategy == FOLLOW_REMAIN
-      && defaults && defaults->fullpath)
-    {
-      /* Find the directory in the filename for defaults, and look in
-         that directory first. */
-      char *file_in_same_dir;
-      char saved_char, *p;
-
-      p = defaults->fullpath + strlen (defaults->fullpath);
-      while (p > defaults->fullpath && !IS_SLASH (*p))
-        p--;
-
-      if (p > defaults->fullpath)
-        {
-          saved_char = *p;
-          *p = 0;
-
-          file_in_same_dir = info_add_extension (defaults->fullpath,
-                                                 filename, 0);
-          if (file_in_same_dir)
-            file_buffer = info_find_file (file_in_same_dir);
-          free (file_in_same_dir);
-          *p = saved_char;
-        }
     }
 
   if (!file_buffer)
