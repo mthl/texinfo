@@ -48,10 +48,16 @@ examples = \
   examples/hello-html \
   examples/kawa-html
 
+# Javascript files that will be included in the html pages.  The order
+# of those files is the order in which they will be included
+js_scripts = \
+  modernizr.js \
+  info.js
+
 build_html_pages = \
   $(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
     --stringparam base.dir ebook/OEBPS/ \
-    --stringparam html.script info.js \
+    --stringparam html.script "$(js_scripts)" \
     --stringparam html.stylesheet info.css \
     --stringparam chunker.output.encoding UTF-8 \
     --stringparam generate.section.toc.level 0 \
@@ -76,7 +82,7 @@ build_html_pages = \
     sed -e '/<?xml .*>/d' -e '/<script/s|/>|> </script>|' -i $$file; done && \
   mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html && \
   cp style/info.css ebook/OEBPS/info.css && \
-  cp info.js ebook/OEBPS/ && \
+  cp $(js_scripts) ebook/OEBPS/ && \
   rm -rf $@ && \
   mv ebook/OEBPS $@; \
   rm -rf ebook
