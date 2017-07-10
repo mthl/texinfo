@@ -530,7 +530,7 @@
     {
       /* In Internet Explorer 9 and Firefox 36 and earlier, the Esc key
          returns "Esc" instead of "Escape".  */
-      return  key === "Escape" || key === "Esc";
+      return key === "Escape" || key === "Esc";
     }
 
     /* Return an array composed of the filename and the anchor of LINKID.
