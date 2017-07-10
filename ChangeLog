@@ -1,5 +1,10 @@
 2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/Makefile.am (wwwdoc-build): Remove commands that could
+	build the "info" manual.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Update with various news items.
 
 2017-07-09  Gavin Smith  <gavinsmith0123@gmail.com>
