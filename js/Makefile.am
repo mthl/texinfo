@@ -29,7 +29,7 @@ endif
 if HAVE_UGLIFYJS
 phony += minify
 minify:
-	$(UGLIFYJS) info.js -o info.min.js
+	$(UGLIFYJS) info.js -o info.min.js --mangle --compress
 endif
 
 if HAVE_MODERNIZR
