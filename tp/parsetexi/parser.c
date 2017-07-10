@@ -703,6 +703,9 @@ is_end_current_command (ELEMENT *current, char **line,
     return 0;
 
   cmdname = read_command_name (&linep);
+  if (!cmdname)
+    return 0;
+
   *end_cmd = lookup_command (cmdname);
   free (cmdname);
   if (*end_cmd != current->cmd)
