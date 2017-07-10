@@ -16,7 +16,7 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-(function () {
+(function (features) {
   "use strict";
 
   /*-------------------.
@@ -335,11 +335,14 @@
 
     /* Display a text input for searching through DATA.*/
     Text_input.prototype.show = function show (data) {
-      var datalist = create_datalist (data);
-      datalist.setAttribute ("id", this.id + "-data");
-      this.data = data;
-      this.datalist = datalist;
-      this.element.appendChild (datalist);
+      if (features.datalistelem)
+        {
+          var datalist = create_datalist (data);
+          datalist.setAttribute ("id", this.id + "-data");
+          this.data = data;
+          this.datalist = datalist;
+          this.element.appendChild (datalist);
+        }
       this.element.removeAttribute ("hidden");
       this.input.focus ();
     };
@@ -1291,6 +1294,19 @@
       fetch the Javascript code and simplifying the work of the Texinfo HTML
       converter.  */
 
+  /* Check if current browser supports the minimum requirements required for
+     properly using this script, otherwise bails out.  */
+  if (!(features.es5
+        && features.eventlistener
+        && features.hidden
+        && features.history
+        && features.messagechannel
+        && features.postmessage
+        && features.queryselector
+        /* TODO: Remove this requirement for IE support.  */
+        && features.urlparser))
+    return;
+
   register_polyfills ();
 
   var inside_iframe = top !== window;
@@ -1347,4 +1363,4 @@
      doesn't handle the 'Escape' key properly.  See
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
-} ());
+} (window.Modernizr));
