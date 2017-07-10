@@ -16,7 +16,7 @@ dnl Process this file with autoconf to produce a configure script.
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([info.js], 0.1, [bug-texinfo@gnu.org])
+AC_INIT([info.js], [0.1], [bug-texinfo@gnu.org])
 AC_CONFIG_SRCDIR([info.js])
 AC_CONFIG_AUX_DIR([build-aux])
 
