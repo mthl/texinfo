@@ -27,7 +27,6 @@
     TOC_FILENAME: "ToC.xhtml",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
-    OVERALL_INDEX_NAME: "Overall-Index.xhtml",
     INDEX_ID: "index",
     WARNING_TIMEOUT: 3000,
 
@@ -731,8 +730,7 @@
         {
           var a = li.firstElementChild;
           var li$ = a && a.nextElementSibling;
-          /* Never remove Overall-Index.  */
-          if (li$ && a.getAttribute ("href") !== config.OVERALL_INDEX_NAME)
+          if (li$)
             li$.setAttribute ("toc-detail", "yes");
         }
     }
