@@ -24,8 +24,8 @@
   `-------------------*/
 
   var config = {
-    EXT: ".xhtml",
-    TOC_FILENAME: "ToC.xhtml",
+    EXT: ".html",
+    TOC_FILENAME: "ToC.html",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
@@ -869,10 +869,10 @@
       var links = Array.from (document.links);
 
       /* Create a link referencing the Table of content.  */
-      var toc_a = document.createElementNS (config.XHTML_NAMESPACE, "a");
+      var toc_a = document.createElement ("a");
       toc_a.setAttribute ("href", config.TOC_FILENAME);
       toc_a.appendChild (document.createTextNode ("Table of Contents"));
-      var toc_li = document.createElementNS (config.XHTML_NAMESPACE, "li");
+      var toc_li = document.createElement ("li");
       toc_li.appendChild (toc_a);
       var index_li = links[links.length - 1].parentNode;
       var index_grand = index_li.parentNode.parentNode;

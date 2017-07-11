@@ -83,8 +83,10 @@ build_xhtml_pages = \
       -e '/<?xml .*>/d' \
       -e '/<script/s|/>|> </script>|' \
       -e 's,</title>,</title><meta charset="utf-8" />,' \
-      -i $$file; done && \
-  mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html && \
+      -e 's,<header/>,<header></header>,' \
+      -i $$file; \
+    mv $$file `echo $$file | sed -e 's/xhtml$$/html/'`; \
+  done && \
   cp style/info.css ebook/OEBPS/info.css && \
   cp $(js_scripts) ebook/OEBPS/ && \
   (test "x$$imgdir" = x || cp -r $$imgdir ebook/OEBPS/) && \
