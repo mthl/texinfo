@@ -79,7 +79,11 @@ build_xhtml_pages = \
     >ebook/OEBPS/ToC.xhtml && \
   rm ebook/OEBPS/bk01-toc.xhtml && \
   for file in ebook/OEBPS/*.xhtml; do \
-    sed -e '/<?xml .*>/d' -e '/<script/s|/>|> </script>|' -i $$file; done && \
+    sed \
+      -e '/<?xml .*>/d' \
+      -e '/<script/s|/>|> </script>|' \
+      -e 's,</title>,</title><meta charset="utf-8" />,' \
+      -i $$file; done && \
   mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html && \
   cp style/info.css ebook/OEBPS/info.css && \
   cp $(js_scripts) ebook/OEBPS/ && \
