@@ -45,8 +45,8 @@ endif
 ## ---------- ##
 
 examples = \
-  examples/hello-html \
-  examples/kawa-html
+  examples/hello-xhtml \
+  examples/kawa-xhtml
 
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included
@@ -54,7 +54,7 @@ js_scripts = \
   modernizr.js \
   info.js
 
-build_html_pages = \
+build_xhtml_pages = \
   $(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
     --stringparam base.dir ebook/OEBPS/ \
     --stringparam html.script "$(js_scripts)" \
@@ -91,12 +91,12 @@ build_html_pages = \
 .texi.xml:
 	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@
 
-examples/hello-html: examples/hello/hello.xml
+examples/hello-xhtml: examples/hello/hello.xml
 	$(AM_V_GEN)xml_file=examples/hello/hello.xml; imgdir=""; \
-	$(build_html_pages)
+	$(build_xhtml_pages)
 
-examples/kawa-html: examples/kawa/kawa.xml
+examples/kawa-xhtml: examples/kawa/kawa.xml
 	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; imgdir=examples/kawa/images; \
-	$(build_html_pages)
+	$(build_xhtml_pages)
 
 .PHONY: $(examples)
