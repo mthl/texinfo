@@ -88,64 +88,54 @@
 
   /** Actions are payloads of information taking the form of plain javascript
       objects.  Those actions are meant to be treated by the store which can
-      receive them using the 'store.dispatch' method.  */
+      receive them using the 'store.dispatch' method.  The following methods
+      are action creators.  */
   var actions = {
-    /* Actions types.  */
-    CURRENT_URL: "current-url",
-    NAVIGATE: "navigate",
-    CACHE_LINKS: "cache-links",
-    CACHE_INDEX_LINKS: "cache-index-links",
-    TEXT_INPUT: "text-input",
-    WARNING: "warning",
-    SEARCH: "search",
-
-    /* Actions creators.  */
-
     set_current_url: function (url, history) {
       history = history || config.HISTORY_PUSH;
-      return { type: actions.CURRENT_URL, url: url, history: history };
+      return { type: "current-url", url: url, history: history };
     },
 
     /** Set current URL to the node corresponding to POINTER which is an
         id refering to a linkid (such as "*TOP*" or "*END*"). */
     set_current_url_pointer: function (pointer) {
       var history = config.HISTORY_PUSH;
-      return { type: actions.CURRENT_URL, pointer: pointer, history: history };
+      return { type: "current-url", pointer: pointer, history: history };
     },
 
     navigate: function (dir) {
       var history = config.HISTORY_PUSH;
-      return { type: actions.NAVIGATE, direction: dir, history: history };
+      return { type: "navigate", direction: dir, history: history };
     },
 
     cache_links: function (links) {
-      return { type: actions.CACHE_LINKS, links: links };
+      return { type: "cache-links", links: links };
     },
 
     cache_index_links: function (links) {
-      return { type: actions.CACHE_INDEX_LINKS, links: links };
+      return { type: "cache-index-links", links: links };
     },
 
     /** Make the text input INPUT visible.  If INPUT is a falsy value then
         hide current text input.  */
     show_text_input: function (input) {
-      return { type: actions.TEXT_INPUT, input: input };
+      return { type: "input", input: input };
     },
 
     /** Hide the current current text input.  */
     hide_text_input: function () {
-      return { type: actions.TEXT_INPUT, input: null };
+      return { type: "input", input: null };
     },
 
     warn: function (msg) {
-      return { type: actions.WARNING, msg: msg };
+      return { type: "warning", msg: msg };
     },
 
     /** Search EXP in the whole manual.  EXP can be either a regular
         expression or a string.  */
     search: function (exp) {
       var rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
-      return { type: actions.SEARCH, regexp: rgxp.toString () };
+      return { type: "search", regexp: rgxp.toString () };
     }
   };
 
@@ -155,10 +145,9 @@
   {
     var res = Object.assign ({}, state, { action: action });
     var linkid;
-
     switch (action.type)
       {
-      case actions.CACHE_LINKS:
+      case "cache-links":
         {
           var nodes = Object.assign ({}, state.loaded_nodes);
           Object
@@ -172,12 +161,12 @@
 
           return Object.assign (res, { loaded_nodes: nodes });
         }
-      case actions.CACHE_INDEX_LINKS:
+      case "cache-index-links":
         {
           Object.assign (res.index, action.links);
           return res;
         }
-      case actions.CURRENT_URL:
+      case "current-url":
         {
           linkid = (action.pointer) ?
               state.loaded_nodes[action.pointer] : action.url;
@@ -190,7 +179,7 @@
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
           return res;
         }
-      case actions.NAVIGATE:
+      case "navigate":
         {
           var ids = state.loaded_nodes[state.current];
           linkid = ids[action.direction];
@@ -207,14 +196,14 @@
               return res;
             }
         }
-      case actions.SEARCH:
+      case "search":
         {
           res.regexp = action.regexp;
           res.text_input = null;
           res.warning = null;
           return res;
         }
-      case actions.TEXT_INPUT:
+      case "input":
         {
           var needs_update = (state.text_input && !action.input)
               || (!state.text_input && action.input)
@@ -230,7 +219,7 @@
               return res;
             }
         }
-      case actions.WARNING:
+      case "warning":
         {
           res.warning = action.msg;
           if (action.msg !== null)
@@ -238,6 +227,9 @@
           return res;
         }
       default:
+        /* eslint-disable no-console */
+        console.warn ("no reducer for action type:", action.type);
+        /* eslint-enable no-console */
         return state;
       }
   }
@@ -413,7 +405,7 @@
       else if (!this.toid)
         {
           var toid = window.setTimeout (function () {
-            store.dispatch ({ type: actions.WARNING, msg: null });
+            store.dispatch ({ type: "warning", msg: null });
           }, config.WARNING_TIMEOUT);
           this.warn.removeAttribute ("hidden");
           this.toid = toid;
