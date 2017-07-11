@@ -32,19 +32,13 @@
   };
 
   /*-------------------.
-  | Global variables.  |
-  `-------------------*/
-
-  /* Global state manager.  */
-  var store;
-
-  /*-------------------.
   | State Management.  |
   `-------------------*/
 
-  /** A 'store' is an object managing the state of the application and having
-      a dispatch method which accepts actions as parameter.  This method is
-      the only way to update the state.  */
+  /** Global state manager.  A 'store' is an object managing the state of the
+      application and having a dispatch method which accepts actions as
+      parameter.  This method is the only way to update the state.  */
+  var store;
 
   /** Store constructor that renders its listeners at each state change.  */
   function
