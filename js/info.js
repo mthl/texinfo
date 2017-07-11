@@ -1236,7 +1236,7 @@
   function
   navigation_links (content)
   {
-    var links = content.querySelectorAll ("footer a");
+    var links = content.querySelectorAll ("footer a[href]");
     var res = {};
     /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
        only store FRAME-ID.  */
