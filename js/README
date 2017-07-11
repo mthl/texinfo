@@ -15,7 +15,7 @@ note: The Makefile doesn't support out of tree build.
 
 To check the result of EXAMPLE:
 
-  firefox examples/EXAMPLE-html/index.html
+  firefox examples/EXAMPLE-xhtml/index.html
 
 When modifying the 'info.js' source we recommend that you lint your
 code with 'make lint'.  This command requires 'eslint' which must be
