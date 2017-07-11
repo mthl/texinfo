@@ -1276,15 +1276,15 @@
 
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
-  if (!(features.es5
-        && features.eventlistener
-        && features.hidden
-        && features.history
-        && features.messagechannel
-        && features.postmessage
-        && features.queryselector
-        /* TODO: Remove this requirement for IE support.  */
-        && features.urlparser))
+  if (features && !(features.es5
+                    && features.eventlistener
+                    && features.hidden
+                    && features.history
+                    && features.messagechannel
+                    && features.postmessage
+                    && features.queryselector
+                    /* TODO: Remove this requirement for IE support.  */
+                    && features.urlparser))
     return;
 
   register_polyfills ();
