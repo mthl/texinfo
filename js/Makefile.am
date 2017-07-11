@@ -83,6 +83,7 @@ build_html_pages = \
   mv ebook/OEBPS/index.xhtml ebook/OEBPS/index.html && \
   cp style/info.css ebook/OEBPS/info.css && \
   cp $(js_scripts) ebook/OEBPS/ && \
+  (test "x$$imgdir" = x || cp -r $$imgdir ebook/OEBPS/) && \
   rm -rf $@ && \
   mv ebook/OEBPS $@; \
   rm -rf ebook
@@ -91,11 +92,11 @@ build_html_pages = \
 	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@
 
 examples/hello-html: examples/hello/hello.xml
-	$(AM_V_GEN)xml_file=examples/hello/hello.xml; \
+	$(AM_V_GEN)xml_file=examples/hello/hello.xml; imgdir=""; \
 	$(build_html_pages)
 
 examples/kawa-html: examples/kawa/kawa.xml
-	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; \
+	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; imgdir=examples/kawa/images; \
 	$(build_html_pages)
 
 .PHONY: $(examples)
