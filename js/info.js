@@ -1290,8 +1290,9 @@
 
   var inside_iframe = top !== window;
   var inside_sidebar = inside_iframe && window.name === "slider";
-  var inside_index_page = (window.location.pathname.endsWith (config.INDEX_NAME)
-                           || window.location.pathname.endsWith ("/"));
+  var inside_index_page = window.location.pathname === config.INDEX_NAME
+      || window.location.pathname.endsWith ("/" + config.INDEX_NAME)
+      || window.location.pathname.endsWith ("/");
 
   if (inside_index_page)
     {
