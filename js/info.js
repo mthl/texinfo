@@ -28,11 +28,7 @@
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
-    WARNING_TIMEOUT: 3000,
-
-    /* History methods. */
-    HISTORY_REPLACE: "replaceState",
-    HISTORY_PUSH: "pushState"
+    WARNING_TIMEOUT: 3000
   };
 
   /*-------------------.
@@ -91,21 +87,21 @@
       receive them using the 'store.dispatch' method.  The following methods
       are action creators.  */
   var actions = {
-    set_current_url: function (url, history) {
-      history = history || config.HISTORY_PUSH;
-      return { type: "current-url", url: url, history: history };
+    /* Make LINKID the current page.  HISTORY is a string corresponding to the
+       method name that will be applied on the 'window.history' object.  */
+    set_current_url: function (linkid, history) {
+      history = history || "pushState";
+      return { type: "current-url", url: linkid, history: history };
     },
 
     /** Set current URL to the node corresponding to POINTER which is an
         id refering to a linkid (such as "*TOP*" or "*END*"). */
     set_current_url_pointer: function (pointer) {
-      var history = config.HISTORY_PUSH;
-      return { type: "current-url", pointer: pointer, history: history };
+      return { type: "current-url", pointer: pointer, history: "pushState" };
     },
 
     navigate: function (dir) {
-      var history = config.HISTORY_PUSH;
-      return { type: "navigate", direction: dir, history: history };
+      return { type: "navigate", direction: dir, history: "pushState" };
     },
 
     cache_links: function (links) {
@@ -671,7 +667,7 @@
       if (window.location.hash)
         {
           var linkid = window.location.hash.slice (1);
-          var action = actions.set_current_url (linkid, config.HISTORY_REPLACE);
+          var action = actions.set_current_url (linkid, "replaceState");
           store.dispatch (action);
         }
 
@@ -1314,7 +1310,7 @@
         /* page id of the current page.  */
         current: config.INDEX_ID,
         /* Current mode for handling history.  */
-        history: config.HISTORY_REPLACE,
+        history: "replaceState",
         /* Define the name of current text input.  */
         text_input: null
       };
