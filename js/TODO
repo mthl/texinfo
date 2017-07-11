@@ -1,3 +1,7 @@
 - Styling of node header
 - Scroll the sidebar table of content to show the current section
 - Handle 'n', 'p', 'u' for anchors linkids.
+- Allow the 'n' key to work from top node
+- Include images in the manual
+- Use .html extension instead of .xhtml
+- Include docbook-epub.css into style/info.css
