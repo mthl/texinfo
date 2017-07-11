@@ -24,6 +24,7 @@
   `-------------------*/
 
   var config = {
+    EXT: ".xhtml",
     TOC_FILENAME: "ToC.xhtml",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
@@ -533,7 +534,7 @@
     }
 
     /* Convert LINKID which has the form "foobar.anchor" or just "foobar",
-       to an URL of the form "foobar.xhtml#anchor". */
+       to an URL of the form `foobar${config.EXT}#anchor`. */
     function
     linkid_to_url (linkid)
     {
@@ -544,7 +545,7 @@
           var ref = linkid_split (linkid);
           var pageid = ref[0];
           var hash = ref[1];
-          return pageid + ".xhtml" + hash;
+          return pageid + config.EXT + hash;
         }
     }
 
@@ -835,7 +836,7 @@
       if (header && h1)
         {
           var a = document.createElement ("a");
-          a.setAttribute ("href", "index.html");
+          a.setAttribute ("href", config.INDEX_NAME);
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
@@ -907,7 +908,7 @@
           var selected = data.selected;
           clear_toc_styles (document.body);
           var filename = (selected === config.INDEX_ID) ?
-              config.INDEX_NAME : (selected + ".xhtml");
+              config.INDEX_NAME : (selected + config.EXT);
           scan_toc (document.body, filename);
         }
     }
