@@ -36,18 +36,23 @@
   | State Management.  |
   `-------------------*/
 
-  /** Global state manager.  A 'store' is an object managing the state of the
-      application and having a dispatch method which accepts actions as
-      parameter.  This method is the only way to update the state.  */
+  /** A 'store' is an object managing the state of the application and having
+      a dispatch method which accepts actions as parameter.  This method is
+      the only way to update the state.
+      @typedef {function (Action): void} Action_consumer
+      @type {{dispatch: Action_consumer, state?: any, listeners?: any[]}}.  */
   var store;
 
-  /** Store constructor that renders its listeners at each state change.  */
+  /** Create a Store that renders its listeners at each state change.
+      @arg {function (Object, Action): Object} reducer
+      @arg {Object} state  */
   function
   Store (reducer, state)
   {
     this.listeners = [];
     this.reducer = reducer;
     this.state = state;
+    /** @arg {Action} action */
     this.dispatch = function dispatch (action) {
       var new_state = this.reducer (this.state, action);
       if (new_state !== this.state)
@@ -63,29 +68,34 @@
     };
   }
 
-  /** Store delegate constructor that will forward its actions to a "real"
+  /** Build a store delegate that will forward its actions to a "real"
       store that can be in a different browsing context.  */
   function
   Remote_store ()
   {
-    /* Dispatch ACTION to the top-level browsing context.  This function
-       must be used in conjunction with an event listener on "message"
-       events in the top-level browsing context which must forwards ACTION
-       to an actual store.  */
+    /** Dispatch ACTION to the top-level browsing context.  This function
+        must be used in conjunction with an event listener on "message"
+        events in the top-level browsing context which must forwards ACTION
+        to an actual store.
+        @arg {Action} action */
     this.dispatch = function dispatch (action) {
       top.postMessage ({ message_kind: "action", action: action }, "*");
     };
   }
 
-  /** Actions are payloads of information taking the form of plain javascript
-      objects.  Those actions are meant to be treated by the store which can
-      receive them using the 'store.dispatch' method.  The following methods
-      are action creators.  */
+  /** @typedef {{type: string, [x: string]: any}} Action - Payloads
+      of information meant to be treated by the store which can receive them
+      using the 'store.dispatch' method.  */
+
+  /* Place holder for action creators.  */
   var actions = {
-    /* Make LINKID the current page.  HISTORY is a string corresponding to the
-       method name that will be applied on the 'window.history' object.  */
+    /** Return an action that makes LINKID the current page.
+        @arg {string} linkid - link identifier
+        @arg {string|false} [history] - method name that will be applied on
+        the 'window.history' object.  */
     set_current_url: function (linkid, history) {
-      history = history || "pushState";
+      if (undef_or_null (history))
+        history = "pushState";
       return { type: "current-url", url: linkid, history: history };
     },
 
@@ -95,20 +105,24 @@
       return { type: "current-url", pointer: pointer, history: "pushState" };
     },
 
+    /** @arg {string} dir */
     navigate: function (dir) {
       return { type: "navigate", direction: dir, history: "pushState" };
     },
 
+    /** @arg {{[id: string]: string}} links */
     cache_links: function (links) {
       return { type: "cache-links", links: links };
     },
 
+    /** @arg {{[id: string]: string}} links */
     cache_index_links: function (links) {
       return { type: "cache-index-links", links: links };
     },
 
     /** Make the text input INPUT visible.  If INPUT is a falsy value then
-        hide current text input.  */
+        hide current text input.
+        @arg {string} input */
     show_text_input: function (input) {
       return { type: "input", input: input };
     },
@@ -118,19 +132,26 @@
       return { type: "input", input: null };
     },
 
+    /** @arg {string} msg */
     warn: function (msg) {
       return { type: "warning", msg: msg };
     },
 
-    /** Search EXP in the whole manual.  EXP can be either a regular
-        expression or a string.  */
+    /** Search EXP in the whole manual.
+        @arg {RegExp|string} exp*/
     search: function (exp) {
       var rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
       return { type: "search", regexp: rgxp.toString () };
     }
   };
 
-  /** Actions handler that return a new state.  */
+
+  /** Update STATE based on the type of ACTION.  This update is a purely
+      fonctional meaning that STATE is not modified and a new version of it is
+      returned.
+      @arg {Object} state
+      @arg {Action} action
+      @return {Object} a new state */
   function
   updater (state, action)
   {
@@ -238,10 +259,12 @@
     | Components for menu navigation.  |
     `---------------------------------*/
 
+    /** @arg {string} id */
     function
     Search_input (id)
     {
       this.id = id;
+      this.render = null;
 
       /* Create input div element.*/
       var div = document.createElement ("div");
@@ -278,10 +301,14 @@
       this.input.value = "";
     };
 
+    /** @arg {string} id */
     function
     Text_input (id)
     {
       this.id = id;
+      this.data = null;
+      this.datalist = null;
+      this.render = null;
 
       /* Create input div element.*/
       var div = document.createElement ("div");
@@ -433,6 +460,7 @@
                                    + "#main=" + config.INDEX_NAME));
       this.element.appendChild (iframe);
       this.iframe = iframe;
+      this.prev = null;
     }
 
     /* Render 'sidebar' according to STATE which is a new state. */
@@ -448,6 +476,7 @@
     | Component for the pages.  |
     `--------------------------*/
 
+    /** @arg {HTMLDivElement} index_div */
     function
     Pages (index_div)
     {
@@ -457,8 +486,12 @@
       this.element = document.createElement ("div");
       this.element.setAttribute ("id", "sub-pages");
       this.element.appendChild (index_div);
-      /* Currently created divs.*/
+      /** @type {string[]} Currently created divs.  */
       this.ids = [];
+      /** @type {string} */
+      this.prev_id = null;
+      /** @type {HTMLElement} */
+      this.prev_div = null;
     }
 
     Pages.prototype.add_div = function add_div (pageid) {
@@ -508,7 +541,8 @@
     | Utilitaries.  |
     `--------------*/
 
-    /* Check portably if KEY correspond to "Escape" key value.  */
+    /** Check portably if KEY correspond to "Escape" key value.
+        @arg {string} key */
     function
     is_escape_key (key)
     {
@@ -517,8 +551,9 @@
       return key === "Escape" || key === "Esc";
     }
 
-    /* Return an array composed of the filename and the anchor of LINKID.
-       LINKID can have the form "foobar.anchor" or just "foobar".  */
+    /** Return an array composed of the filename and the anchor of LINKID.
+        LINKID can have the form "foobar.anchor" or just "foobar".
+        @arg {string} linkid */
     function
     linkid_split (linkid)
     {
@@ -533,8 +568,9 @@
         }
     }
 
-    /* Convert LINKID which has the form "foobar.anchor" or just "foobar",
-       to an URL of the form `foobar${config.EXT}#anchor`. */
+    /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
+        an URL of the form `foobar${config.EXT}#anchor`.
+        @arg {string} linkid */
     function
     linkid_to_url (linkid)
     {
@@ -549,7 +585,8 @@
         }
     }
 
-    /* Load PAGEID.  */
+    /** Load PAGEID.
+        @arg {string} pageid */
     function
     load_page (pageid)
     {
@@ -559,7 +596,8 @@
       div.setAttribute ("hidden", "true");
     }
 
-    /* Return the 'div' element that correspond to PAGEID.  */
+    /** @arg {string} linkid - link identifier
+        @return {HTMLElement} the div element that correspond to linkid.  */
     function
     resolve_page (linkid)
     {
@@ -592,8 +630,8 @@
       return div;
     }
 
-    /* Create a datalist element containing option elements corresponding
-       to the keys in MENU.  */
+    /** Create a datalist element containing option elements corresponding
+        to the keys in MENU.  */
     function
     create_datalist (menu)
     {
@@ -607,8 +645,10 @@
       return datalist;
     }
 
-    /* Mutate the history of page navigation.  Store LINKID in history
-       state, The actual way to store LINKID depends on HISTORY_MODE. */
+    /** Mutate the history of page navigation.  Store LINKID in history
+        state, The actual way to store LINKID depends on HISTORY_MODE.
+        @arg {string} linkid
+        @arg {string} history_mode */
     function
     update_history (linkid, history_mode)
     {
@@ -672,7 +712,8 @@
       store.dispatch (actions.cache_links (links));
     }
 
-    /* Handle messages received via the Message API.  */
+    /* Handle messages received via the Message API.
+       @arg {MessageEvent} event */
     function
     on_message (event)
     {
@@ -1078,11 +1119,11 @@
 
     if (!Element.prototype.matches)
       {
-        Element.prototype.matches = Element.prototype.matchesSelector
-          || Element.prototype.mozMatchesSelector
-          || Element.prototype.msMatchesSelector
-          || Element.prototype.oMatchesSelector
-          || Element.prototype.webkitMatchesSelector
+        Element.prototype.matches = Element.prototype["matchesSelector"]
+          || Element.prototype["mozMatchesSelector"]
+          || Element.prototype["mozMatchesSelector"]
+          || Element.prototype["msMatchesSelector"]
+          || Element.prototype["webkitMatchesSelector"]
           || function element_matches (str) {
             var document = (this.document || this.ownerDocument);
             var matches = document.querySelectorAll (str);
@@ -1140,7 +1181,7 @@
       return config.INDEX_NAME;
     else
       {
-        var url = new window.URL (href, window.location);
+        var url = new window.URL (href, window.location.href);
         var new_hash = basename (url.pathname, /[.]x?html/);
         if (url.hash)
           new_hash += ("." + url.hash.slice (1));
@@ -1344,4 +1385,4 @@
      doesn't handle the 'Escape' key properly.  See
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
-} (window.Modernizr));
+} (window["Modernizr"]));

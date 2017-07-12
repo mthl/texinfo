@@ -44,6 +44,9 @@ npm_path="${srcdir}/node_modules/.bin${PATH_SEPARATOR}$PATH"
 AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
 AM_CONDITIONAL([HAVE_ESLINT], [test "x$ac_cv_path_ESLINT" != "x"])
 
+AC_PATH_PROG([TSC], [tsc], [], [$npm_path])
+AM_CONDITIONAL([HAVE_TYPESCRIPT], [test "x$ac_cv_path_TSC" != "x"])
+
 AC_PATH_PROG([UGLIFYJS], [uglifyjs], [], [$npm_path])
 AM_CONDITIONAL([HAVE_UGLIFYJS], [test "x$ac_cv_path_UGLIFYJS" != "x"])
 

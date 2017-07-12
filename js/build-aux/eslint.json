@@ -22,7 +22,6 @@
     "curly": ["error", "multi-or-nest"],
     "default-case": "error",
     "dot-location": ["error", "property"],
-    "dot-notation": "error",
     "eol-last": "error",
     "eqeqeq": "off",
     "func-call-spacing": ["error", "always"],

@@ -26,6 +26,12 @@ lint:
 	$(ESLINT) -c build-aux/eslint.json info.js -f unix
 endif
 
+if HAVE_TYPESCRIPT
+phony += check-types
+check-types:
+	$(TSC) --allowJs --checkJS --noEmit --lib dom,es2017 info.js
+endif
+
 if HAVE_UGLIFYJS
 phony += minify
 minify:
