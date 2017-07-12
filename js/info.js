@@ -553,7 +553,8 @@
 
     /** Return an array composed of the filename and the anchor of LINKID.
         LINKID can have the form "foobar.anchor" or just "foobar".
-        @arg {string} linkid */
+        @arg {string} linkid
+        @return {string[]} */
     function
     linkid_split (linkid)
     {
