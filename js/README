@@ -17,6 +17,5 @@ To check the result of EXAMPLE:
 
   firefox examples/EXAMPLE-xhtml/index.html
 
-When modifying the 'info.js' source we recommend that you lint your
-code with 'make lint'.  This command requires 'eslint' which must be
-fetched with 'npm install' or 'yarn' in this directory.
+See the "HACKING" file for information about the development of this
+program.
