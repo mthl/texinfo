@@ -874,8 +874,8 @@
       toc_a.appendChild (document.createTextNode ("Table of Contents"));
       var toc_li = document.createElement ("li");
       toc_li.appendChild (toc_a);
-      var index_li = links[links.length - 1].parentNode;
-      var index_grand = index_li.parentNode.parentNode;
+      var index_li = links[links.length - 1].parentElement;
+      var index_grand = index_li.parentElement.parentElement;
       /* XXX: hack */
       if (index_grand.matches ("li"))
         index_li = index_grand;
