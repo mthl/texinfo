@@ -316,7 +316,7 @@
 
     /* Display a text input for searching through DATA.*/
     Text_input.prototype.show = function show (data) {
-      if (features.datalistelem)
+      if (!features || features.datalistelem)
         {
           var datalist = create_datalist (data);
           datalist.setAttribute ("id", this.id + "-data");
