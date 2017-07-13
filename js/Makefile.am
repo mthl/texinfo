@@ -85,13 +85,15 @@ build_xhtml_pages = \
     >ebook/OEBPS/ToC.xhtml && \
   rm ebook/OEBPS/bk01-toc.xhtml && \
   for file in ebook/OEBPS/*.xhtml; do \
+    mv $$file `echo $$file | sed -e 's/xhtml$$/html/'`; \
+  done && \
+  for file in ebook/OEBPS/*.html; do \
     sed \
       -e '/<?xml .*>/d' \
       -e '/<script/s|/>|> </script>|' \
       -e 's,</title>,</title><meta charset="utf-8" />,' \
       -e 's,<header/>,<header></header>,' \
       -i $$file; \
-    mv $$file `echo $$file | sed -e 's/xhtml$$/html/'`; \
   done && \
   cp style/info.css ebook/OEBPS/info.css && \
   cp $(js_scripts) ebook/OEBPS/ && \
@@ -100,8 +102,12 @@ build_xhtml_pages = \
   mv ebook/OEBPS $@; \
   rm -rf ebook
 
+## Fix target to make "Top" id the first page.
 .texi.xml:
-	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@
+	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@ && \
+	sed -i $@ \
+	  -e 's|<book id="-" lang="en">|<book id="book" xmlns="http://docbook.org/ns/docbook" lang="en"><?dbhtml filename="top.html"?>|' \
+	  -e 's|<chapter label="" id="Top">|<chapter label="Top" id="Top"><?dbhtml filename="index.html"?>|'
 
 examples/hello-xhtml: examples/hello/hello.xml
 	$(AM_V_GEN)xml_file=examples/hello/hello.xml; imgdir=""; \
