@@ -111,4 +111,11 @@ examples/kawa-xhtml: examples/kawa/kawa.xml
 	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; imgdir=examples/kawa/images; \
 	$(build_xhtml_pages)
 
+CLEANFILES = \
+  examples/kawa/kawa.xml \
+  examples/hello/hello.xml
+
+clean-local:
+	rm -rf $(examples)
+
 .PHONY: $(examples)
