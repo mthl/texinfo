@@ -104,10 +104,11 @@ build_xhtml_pages = \
 
 ## Fix target to make "Top" id the first page.
 .texi.xml:
-	$(MAKEINFO) -I=$(srcdir) --docbook $< -o $@ && \
-	sed -i $@ \
+	$(MAKEINFO) -I=$(srcdir) --docbook $< -o - | \
+	sed \
 	  -e 's|<book id="-" lang="en">|<book id="book" xmlns="http://docbook.org/ns/docbook" lang="en"><?dbhtml filename="top.html"?>|' \
-	  -e 's|<chapter label="" id="Top">|<chapter label="Top" id="Top"><?dbhtml filename="index.html"?>|'
+	  -e 's|<chapter label="" id="Top">|<chapter label="Top" id="Top"><?dbhtml filename="index.html"?>|' \
+	  > $@
 
 examples/hello-xhtml: examples/hello/hello.xml
 	$(AM_V_GEN)xml_file=examples/hello/hello.xml; imgdir=""; \
