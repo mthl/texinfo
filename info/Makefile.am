@@ -169,7 +169,7 @@ TESTS = \
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
   t/README t/infodir \
-  t/Init-inter.inc t/Init-test.inc t/Timeout-test.inc \
+  t/Init-inter.inc t/Init-test.inc \
   t/Infokey-config t/node-target
 dist-hook:
 	rm -rf `find $(distdir)/t/infodir -name '*~'`

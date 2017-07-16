@@ -1,5 +1,15 @@
 2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.4.90
+	* configure.ac: Update version.  Add dist-xz to options.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/XSParagraph: Run gnulib-tool --add-import.
+	* (top-level): Run gnulib-tool --add-import.
+
+2017-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/Makefile.am (wwwdoc-build): Remove commands that could
 	build the "info" manual.
 
