@@ -1050,7 +1050,8 @@
     }
   }
 
-  /** Handle Keyboard 'keyup' events.  */
+  /** Handle Keyboard 'keyup' events.
+      @arg {KeyboardEvent} event */
   function
   on_keyup (event)
   {
