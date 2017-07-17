@@ -1025,7 +1025,7 @@
         if ((target instanceof Element) && target.matches ("a"))
           {
             var href = target.getAttribute ("href");
-            if (!absolute_url_p (href))
+            if (href && !absolute_url_p (href))
               {
                 var linkid = href_hash (href) || config.INDEX_ID;
                 store.dispatch (actions.set_current_url (linkid));
