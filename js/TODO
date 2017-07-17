@@ -2,3 +2,6 @@
 - Scroll the sidebar table of content to show the current section
 - Handle 'n', 'p', 'u' for anchors linkids.
 - Include docbook-epub.css into style/info.css
+- Display a help screen for keyboard shortcuts
+- Order the datalist 'option' children using a lexicographic order
+- Show "page.html#anchor" in URL bar instead of "index.html#page.anchor"
