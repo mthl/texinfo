@@ -301,7 +301,37 @@
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
       /* TODO: Summarize the shorcuts.  */
-      div.innerHTML = "<p>HELP!</p>";
+      div.innerHTML = "\
+<h2>Keyboard Shortcuts</h2>\
+<table id=\"keyboard-shortcuts\">\
+  <tbody>\
+    <tr><td/><td><b>Moving around</b></td></tr>\
+    <tr><td><code><b>n / p</b></code></td>\
+        <td>goto the next / previous section</td></tr>\
+    <tr><td><code><b>[ / ]</b></code></td>\
+        <td>goto the next / previous sibling</td></tr>\
+    <tr><td><code><b>&lt; / &gt;</b></code></td>\
+        <td>goto the first / last section</td></tr>\
+    <tr><td><code><b>t</b></code></td><td>goto the first section</td></tr>\
+    <tr><td><code><b>u</b></code></td>\
+        <td>go one level up (parent section)</td></tr>\
+    <tr><td><code><b>l / r</b></code></td>\
+        <td>go back / forward in history.</td></tr>\
+  </tbody>\
+  <tbody>\
+    <tr><td/><td><b>Searching</b></td></tr>\
+    <tr><td><code><b>i</b></code></td><td>search in the index</td></tr>\
+    <tr><td><code><b>s</b></code></td>\
+        <td>global search in the manual (not implemented)</td></tr>\
+    <tr><td><code><b>m</b></code></td>\
+        <td>search in current node menu</td></tr>\
+  </tbody>\
+  <tbody>\
+    <tr><td/><td><b>Misc</b></td></tr>\
+    <tr><td><code><b>?</b></code></td><td>show this help screen</td></tr>\
+    <tr><td><code><b>Esc</b></code></td><td>hide this help screen</td></tr>\
+  </tbody>\
+";
       this.element = div;
     }
 

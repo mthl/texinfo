@@ -115,3 +115,11 @@ body.toc-sidebar a:hover, body.toc-sidebar a:hover div {
 .blurred {
     opacity: 0.05;
 }
+
+#keyboard-shortcuts {
+    margin: 20px;
+}
+
+#keyboard-shortcuts td {
+    padding: 5px;
+}
