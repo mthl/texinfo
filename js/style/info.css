@@ -111,3 +111,7 @@ body.toc-sidebar a:hover, body.toc-sidebar a:hover div {
     color: #fff;
     background-color: #69C;
 }
+
+.blurred {
+    opacity: 0.05;
+}

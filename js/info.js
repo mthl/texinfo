@@ -120,6 +120,11 @@
       return { type: "cache-index-links", links: links };
     },
 
+    /** Show or hide the help screen.  */
+    show_help: function () {
+      return { type: "help", visible: true };
+    },
+
     /** Make the text input INPUT visible.  If INPUT is a falsy value then
         hide current text input.
         @arg {string} input */
@@ -187,8 +192,28 @@
           res.history = action.history;
           res.text_input = null;
           res.warning = null;
+          res.help = false;
+          res.focus = false;
           res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
+          return res;
+        }
+      case "unfocus":
+        {
+          if (!res.focus)
+            return state;
+          else
+            {
+              res.help = false;
+              res.text_input = null;
+              res.focus = false;
+              return res;
+            }
+        }
+      case "help":
+        {
+          res.help = action.visible;
+          res.focus = true;
           return res;
         }
       case "navigate":
@@ -203,6 +228,8 @@
               res.history = action.history;
               res.text_input = null;
               res.warning = null;
+              res.help = false;
+              res.focus = false;
               res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
               res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
               return res;
@@ -211,6 +238,8 @@
       case "search":
         {
           res.regexp = action.regexp;
+          res.focus = false;
+          res.help = false;
           res.text_input = null;
           res.warning = null;
           return res;
@@ -226,6 +255,8 @@
             return state;
           else
             {
+              res.focus = (action.input) ? true : false;
+              res.help = false;
               res.text_input = action.input;
               res.warning = null;
               return res;
@@ -255,6 +286,35 @@
   function
   init_index_page ()
   {
+    /*--------------------------.
+    | Component for help page.  |
+    `--------------------------*/
+
+    /* Create a small '?' icon on the bottom right which will link to
+     * the help page.  */
+
+    function
+    Help_page ()
+    {
+      this.id = "help-screen";
+      /* Create help div element.*/
+      var div = document.createElement ("div");
+      div.setAttribute ("hidden", "true");
+      /* TODO: Summarize the shorcuts.  */
+      div.innerHTML = "<p>HELP!</p>";
+      this.element = div;
+    }
+
+    Help_page.prototype.render = function render (state) {
+      if (!state.help)
+        this.element.setAttribute ("hidden", "true");
+      else
+        {
+          this.element.removeAttribute ("hidden");
+          this.element.focus ();
+        }
+    };
+
     /*---------------------------------.
     | Components for menu navigation.  |
     `---------------------------------*/
@@ -282,11 +342,9 @@
          visible.*/
       this.input.addEventListener ("keyup", (function (event) {
         if (is_escape_key (event.key))
-          store.dispatch (actions.hide_text_input ());
+          store.dispatch ({ type: "unfocus" });
         else if (event.key === "Enter")
           store.dispatch (actions.search (this.input.value));
-
-        /* Do not send key events to global "key navigation" handler.*/
         event.stopPropagation ();
       }).bind (this));
     }
@@ -325,20 +383,17 @@
 
       /* Define a special key handler when 'this.input' is focused and
          visible.*/
-      var that = this;
-      this.input.addEventListener ("keyup", function (event) {
+      this.input.addEventListener ("keyup", (function (event) {
         if (is_escape_key (event.key))
-          store.dispatch (actions.hide_text_input ());
+          store.dispatch ({ type: "unfocus" });
         else if (event.key === "Enter")
           {
-            var linkid = that.data[that.input.value];
+            var linkid = this.data[this.input.value];
             if (linkid)
               store.dispatch (actions.set_current_url (linkid));
           }
-
-        /* Do not send key events to global "key navigation" handler.*/
         event.stopPropagation ();
-      });
+      }).bind (this));
     }
 
     /* Display a text input for searching through DATA.*/
@@ -518,6 +573,8 @@
             }, [])
             .forEach (function (id) { return that.add_div (id); });
 
+      this.element.classList.toggle ("blurred", state.help);
+
       if (state.current !== this.prev_id)
         {
           if (this.prev_id)
@@ -540,16 +597,6 @@
     /*--------------.
     | Utilitaries.  |
     `--------------*/
-
-    /** Check portably if KEY correspond to "Escape" key value.
-        @arg {string} key */
-    function
-    is_escape_key (key)
-    {
-      /* In Internet Explorer 9 and Firefox 36 and earlier, the Esc key
-         returns "Esc" instead of "Escape".  */
-      return key === "Escape" || key === "Esc";
-    }
 
     /** Return an array composed of the filename and the anchor of LINKID.
         LINKID can have the form "foobar.anchor" or just "foobar".
@@ -697,6 +744,7 @@
 
       components.add (new Sidebar ());
       components.add (new Pages (index_div));
+      components.add (new Help_page ());
       components.add (new Minibuffer ());
       store.listeners.push (components);
 
@@ -1055,13 +1103,18 @@
   function
   on_keyup (event)
   {
-    var val = on_keyup.dict[event.key];
-    if (val)
+    if (is_escape_key (event.key))
+      store.dispatch ({ type: "unfocus" });
+    else
       {
-        if (typeof val === "function")
-          val ();
-        else
-          store.dispatch (val);
+        var val = on_keyup.dict[event.key];
+        if (val)
+          {
+            if (typeof val === "function")
+              val ();
+            else
+              store.dispatch (val);
+          }
       }
   }
 
@@ -1079,7 +1132,8 @@
     "]": actions.navigate ("forward"),
     "[": actions.navigate ("backward"),
     "<": actions.set_current_url_pointer ("*TOP*"),
-    ">": actions.set_current_url_pointer ("*END*")
+    ">": actions.set_current_url_pointer ("*END*"),
+    "?": actions.show_help ()
   };
 
   /** Some standard methods used in this script might not be implemented by
@@ -1163,6 +1217,16 @@
   /*---------------------.
   | Common utilitaries.  |
   `---------------------*/
+
+  /** Check portably if KEY correspond to "Escape" key value.
+      @arg {string} key */
+  function
+  is_escape_key (key)
+  {
+    /* In Internet Explorer 9 and Firefox 36 and earlier, the Esc key
+       returns "Esc" instead of "Escape".  */
+    return key === "Escape" || key === "Esc";
+  }
 
   /** Check if OBJ is equal to 'undefined' or 'null'.  */
   function
