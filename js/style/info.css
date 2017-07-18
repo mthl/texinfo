@@ -116,14 +116,14 @@ body.toc-sidebar a:hover, body.toc-sidebar a:hover div {
     opacity: 0.05;
 }
 
-#keyboard-shortcuts {
+table#keyboard-shortcuts {
     margin: 20px;
 }
 
-#keyboard-shortcuts td {
+table#keyboard-shortcuts td {
     padding: 5px;
 }
 
-#keyboard-shortcuts th {
+table#keyboard-shortcuts th {
     text-align: left;
 }
