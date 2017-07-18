@@ -123,3 +123,7 @@ body.toc-sidebar a:hover, body.toc-sidebar a:hover div {
 #keyboard-shortcuts td {
     padding: 5px;
 }
+
+#keyboard-shortcuts th {
+    text-align: left;
+}

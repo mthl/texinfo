@@ -305,7 +305,7 @@
 <h2>Keyboard Shortcuts</h2>\
 <table id=\"keyboard-shortcuts\">\
   <tbody>\
-    <tr><td/><td><b>Moving around</b></td></tr>\
+    <tr><th colspan=\"2\">Moving around</th></tr>\
     <tr><td><code><b>n / p</b></code></td>\
         <td>goto the next / previous section</td></tr>\
     <tr><td><code><b>[ / ]</b></code></td>\
@@ -319,7 +319,7 @@
         <td>go back / forward in history.</td></tr>\
   </tbody>\
   <tbody>\
-    <tr><td/><td><b>Searching</b></td></tr>\
+    <tr><th colspan=\"2\">Searching</th></tr>\
     <tr><td><code><b>i</b></code></td><td>search in the index</td></tr>\
     <tr><td><code><b>s</b></code></td>\
         <td>global search in the manual (not implemented)</td></tr>\
@@ -327,7 +327,7 @@
         <td>search in current node menu</td></tr>\
   </tbody>\
   <tbody>\
-    <tr><td/><td><b>Misc</b></td></tr>\
+    <tr><th colspan=\"2\">Misc</th></tr>\
     <tr><td><code><b>?</b></code></td><td>show this help screen</td></tr>\
     <tr><td><code><b>Esc</b></code></td><td>hide this help screen</td></tr>\
   </tbody>\
