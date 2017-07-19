@@ -290,9 +290,6 @@
     | Component for help page.  |
     `--------------------------*/
 
-    /* Create a small '?' icon on the bottom right which will link to
-     * the help page.  */
-
     function
     Help_page ()
     {
@@ -343,6 +340,32 @@
           this.element.removeAttribute ("hidden");
           this.element.focus ();
         }
+    };
+
+    /*--------------------------.
+    | Component for icon bar.  |
+    `--------------------------*/
+
+    function
+    Icon_bar ()
+    {
+      var div = document.createElement ("div");
+      div.setAttribute ("id", "icon-bar");
+      var a = document.createElement ("a");
+      a.innerHTML = "?";
+      a.setAttribute ("href", "javascript:void (0)");
+      a.addEventListener ("click", function (event) {
+        store.dispatch (actions.show_help ());
+      });
+      div.appendChild (a);
+      this.element = div;
+    }
+
+    Icon_bar.prototype.render = function render (state) {
+      if (state.focus)
+        this.element.setAttribute ("hidden", "true");
+      else
+        this.element.removeAttribute ("hidden");
     };
 
     /*---------------------------------.
@@ -774,6 +797,7 @@
 
       components.add (new Sidebar ());
       components.add (new Pages (index_div));
+      components.add (new Icon_bar ());
       components.add (new Help_page ());
       components.add (new Minibuffer ());
       store.listeners.push (components);

@@ -33,7 +33,7 @@ body.mainbar {
     padding-left: 25%;
 }
 div[node][hidden] {
-    top: 0pt; bottom: 0pt;
+    top: 20px; bottom: 0pt;
     position: absolute;
     display: none
 }
@@ -41,7 +41,7 @@ div[node][hidden] {
 div[node] {
     left: 25%;
     width: 75%; height: auto;
-    top: 0pt; bottom: 0pt;
+    top: 20px; bottom: 0pt;
     position: absolute;
     overflow: hidden;
 }
@@ -126,4 +126,16 @@ table#keyboard-shortcuts td {
 
 table#keyboard-shortcuts th {
     text-align: left;
+}
+
+#icon-bar {
+    text-align: right;
+    height: 20px;
+    position: absolute;
+    margin: 0px;
+}
+
+#icon-bar a {
+    color: #fff;
+    background-color: #444;
 }
