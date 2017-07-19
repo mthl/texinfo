@@ -738,6 +738,7 @@
     {
       var datalist = document.createElement ("datalist");
       Object.keys (menu)
+            .sort ()
             .forEach (function (title) {
               var opt = document.createElement ("option");
               opt.setAttribute ("value", title);
