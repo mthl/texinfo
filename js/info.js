@@ -754,13 +754,27 @@
     function
     update_history (linkid, history_mode)
     {
-      var visible_url = window.location.pathname + window.location.search;
-      if (linkid !== config.INDEX_ID)
-        visible_url += ("#" + linkid);
-
       var method = window.history[history_mode];
       if (method)
-        method.call (window.history, linkid, null, visible_url);
+        {
+          /* Pretend that the current page is the one corresponding to the
+             LINKID iframe.  Handle errors since changing the visible file
+             name can fail on some browsers with the "file:" protocol.  */
+          var visible_url =
+            dirname (window.location.pathname) + linkid_to_url (linkid);
+          try
+            {
+              method.call (window.history, linkid, null, visible_url);
+            }
+          catch (err)
+            {
+              /* Fallback to changing only the hash part which is safer.  */
+              visible_url = window.location.pathname;
+              if (linkid !== config.INDEX_ID)
+                visible_url += ("#" + linkid);
+              method.call (window.history, linkid, null, visible_url);
+            }
+        }
     }
 
     /*--------------------------------------------
@@ -1355,6 +1369,19 @@
       return res.replace (suffix, "");
     else /* typeof SUFFIX === "string" */
       return res.replace (new RegExp ("[.]" + suffix), "");
+  }
+
+  /** Strip last component from PATHNAME and keep the trailing slash. For
+      example if PATHNAME is "/foo/bar/baz.html" then return "/foo/bar/".
+      @arg {string} pathname */
+  function
+  dirname (pathname)
+  {
+    var res = pathname.match (/\/?.*\//);
+    if (res)
+      return res[0];
+    else
+      throw new Error ("'location.pathname' is not recognized");
   }
 
   /** Apply FUNC to each nodes in the NODE subtree.  The walk follows a depth
