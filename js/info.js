@@ -1304,11 +1304,12 @@
     return (obj === null || typeof obj === "undefined");
   }
 
-  /** Return a relative URL corresponding to HREF, which refers to an anchor of
-      'config.INDEX_NAME'.  URL must be a USVString representing an absolute or
-      relative URL.
+  /** Return a relative URL corresponding to HREF, which refers to an anchor
+      of 'config.INDEX_NAME'.  HREF must be a USVString representing an
+      absolute or relative URL.  For example "foo/bar.html" will return
+      "config.INDEX_NAME#bar".
 
-      For example "foo/bar.html" will return "config.INDEX_NAME#bar".  */
+      @arg {string} href.*/
   function
   with_sidebar_query (href)
   {
