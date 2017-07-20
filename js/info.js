@@ -632,7 +632,7 @@
         {
           if (this.prev_id)
             this.prev_div.setAttribute ("hidden", "true");
-          var div = resolve_page (state.current);
+          var div = resolve_page (state.current, true);
           update_history (state.current, state.history);
           div.removeAttribute ("hidden");
           this.prev_id = state.current;
@@ -691,16 +691,21 @@
     function
     load_page (pageid)
     {
-      var div = resolve_page (pageid);
+      var div = resolve_page (pageid, false);
       /* Making the iframe visible triggers the load of the iframe DOM.  */
       div.removeAttribute ("hidden");
       div.setAttribute ("hidden", "true");
     }
 
-    /** @arg {string} linkid - link identifier
-        @return {HTMLElement} the div element that correspond to linkid.  */
+    /** Return the div element that correspond to LINKID.  If SCROLL is true
+        then position the corresponding iframe to the anchor specified by
+        LINKID.
+
+        @arg {string} linkid - link identifier
+        @arg {boolean} [scroll]
+        @return {HTMLElement} the div element.  */
     function
-    resolve_page (linkid)
+    resolve_page (linkid, scroll)
     {
       var msg;
       var ref = linkid_split (linkid);
@@ -724,8 +729,11 @@
               iframe.setAttribute ("src", linkid_to_url (pageid));
               div.appendChild (iframe);
             }
-          msg = { message_kind: "scroll-to", hash: hash };
-          iframe.contentWindow.postMessage (msg, "*");
+          if (scroll)
+            {
+              msg = { message_kind: "scroll-to", hash: hash };
+              iframe.contentWindow.postMessage (msg, "*");
+            }
         }
 
       return div;
