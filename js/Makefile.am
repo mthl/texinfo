@@ -64,6 +64,8 @@ build_xhtml_pages = \
   $(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
     --stringparam base.dir ebook/OEBPS/ \
     --stringparam html.script "$(js_scripts)" \
+    --stringparam docbook.css.link 0 \
+    --stringparam docbook.css.source "" \
     --stringparam html.stylesheet info.css \
     --stringparam chunker.output.encoding UTF-8 \
     --stringparam generate.section.toc.level 0 \
