@@ -46,6 +46,29 @@
 <xsl:param name="top.name">Home</xsl:param>
 <!--<xsl:param name="body.attributes">Home</xsl:param>-->
 
+<!-- Don't generate the default "docbook-epub.css".  -->
+<xsl:param name="docbook.css.link" select="0"/>
+<xsl:param name="docbook.css.source"/>
+
+<!-- The Javascript UI requires that an index page exists.  -->
+<xsl:param name="generate.index" select="1"/>
+
+<!-- Various parameters.  -->
+<xsl:param name="chunker.output.encoding">UTF-8</xsl:param>
+<xsl:param name="generate.section.toc.level" select="0"/>
+<xsl:param name="use.id.as.filename" select="1"/>
+<xsl:param name="autotoc.label.in.hyperlink" select="0"/>
+<xsl:param name="chunker.output.indent">yes</xsl:param>
+<xsl:param name="chunk.first.sections" select="1"/>
+<xsl:param name="chunk.section.depth" select="1"/>
+<xsl:param name="chapter.autolabel" select="0"/>
+<xsl:param name="chunk.fast" select="1"/>
+<xsl:param name="toc.max.depth" select="4"/>
+<xsl:param name="toc.list.type">ul</xsl:param>
+<xsl:param name="toc.section.depth" select="3"/>
+<xsl:param name="chunk.separate.lots" select="1"/>
+<xsl:param name="chunk.tocs.and.lots" select="1"/>
+
 <xsl:template name="component.toc">
 </xsl:template>
 
