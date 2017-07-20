@@ -732,7 +732,11 @@
           if (scroll)
             {
               msg = { message_kind: "scroll-to", hash: hash };
-              iframe.contentWindow.postMessage (msg, "*");
+              /* XXX: This delay allows the iframe to receive the message even
+                 on first load.  */
+              window.setTimeout (function () {
+                iframe.contentWindow.postMessage (msg, "*");
+              }, 200);
             }
         }
 
