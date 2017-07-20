@@ -728,20 +728,38 @@
               iframe.setAttribute ("class", "node");
               iframe.setAttribute ("src", linkid_to_url (pageid));
               div.appendChild (iframe);
+              iframe.addEventListener ("load", function (event) {
+                /* Send pending messages.  */
+                var msgs = resolve_page.pendings[pageid];
+                if (msgs)
+                  {
+                    for (var i = 0; i < msgs.length; i += 1)
+                      this.contentWindow.postMessage (msgs[i], "*");
+                  }
+                resolve_page.pendings[pageid] = false;
+              }, false);
             }
           if (scroll)
             {
               msg = { message_kind: "scroll-to", hash: hash };
-              /* XXX: This delay allows the iframe to receive the message even
-                 on first load.  */
-              window.setTimeout (function () {
+              /* XXX: Since messages sent to a not loaded iframe are not
+                 properly received we need to keep them until necessary.  */
+              if (resolve_page.pendings[pageid] === false)
                 iframe.contentWindow.postMessage (msg, "*");
-              }, 200);
+              else if (resolve_page.pendings.hasOwnProperty (pageid))
+                resolve_page.pendings[pageid].push (msg);
+              else
+                resolve_page.pendings[pageid] = [msg];
             }
         }
 
       return div;
     }
+
+    /* Dictionary that associate a 'pageid' to an array of messages that are
+       not already sent to the corresponding iframe.  The array of messages is
+       replaced with FALSE when 'pageid' is loaded.  */
+    resolve_page.pendings = {};
 
     /** Create a datalist element containing option elements corresponding
         to the keys in MENU.  */
