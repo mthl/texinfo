@@ -718,7 +718,7 @@
           throw new ReferenceError (msg);
         }
 
-      /* Load iframe if necessary.  Index page is not inside an iframe.  */
+      /* Create iframe if necessary.  Index page is not inside an iframe.  */
       if (pageid !== config.INDEX_ID)
         {
           var iframe = div.querySelector ("iframe");
