@@ -1126,8 +1126,7 @@
         {
           /* Scroll to the anchor corresponding to HASH without saving
              current page in session history.  */
-          var url = window.location.pathname + window.location.search;
-          window.location.replace ((data.hash) ? (url + data.hash) : url);
+          window.location.replace (data.hash);
         }
     }
 
