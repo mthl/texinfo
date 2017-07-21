@@ -743,7 +743,9 @@
             {
               msg = { message_kind: "scroll-to", hash: hash };
               /* XXX: Since messages sent to a not loaded iframe are not
-                 properly received we need to keep them until necessary.  */
+                 properly received we need to keep them until necessary.
+                 Semantically this would be better to use "promises" however
+                 they are not available in IE.  */
               if (resolve_page.pendings[pageid] === false)
                 iframe.contentWindow.postMessage (msg, "*");
               else if (resolve_page.pendings.hasOwnProperty (pageid))
