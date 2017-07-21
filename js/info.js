@@ -297,8 +297,11 @@
       /* Create help div element.*/
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
+      div.setAttribute ("class", "modal");
       /* TODO: Summarize the shorcuts.  */
       div.innerHTML = "\
+<div class=\"modal-content\">\
+<span class=\"close\">&times;</span>\
 <h2>Keyboard Shortcuts</h2>\
 <table id=\"keyboard-shortcuts\">\
   <tbody>\
@@ -328,16 +331,24 @@
     <tr><td><code><b>?</b></code></td><td>show this help screen</td></tr>\
     <tr><td><code><b>Esc</b></code></td><td>hide this help screen</td></tr>\
   </tbody>\
+</table>\
+</div>\
 ";
+      var span = div.querySelector (".close");
+      div.addEventListener ("click", function (event) {
+        if (event.target === span || event.target === div)
+          store.dispatch ({ type: "unfocus" });
+      }, false);
+
       this.element = div;
     }
 
     Help_page.prototype.render = function render (state) {
       if (!state.help)
-        this.element.setAttribute ("hidden", "true");
+        this.element.style.display = "none";
       else
         {
-          this.element.removeAttribute ("hidden");
+          this.element.style.display = "block";
           this.element.focus ();
         }
     };
