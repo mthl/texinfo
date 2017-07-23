@@ -1208,8 +1208,13 @@ sub expand_today($)
   if ($self->get_conf('TEST')) {
     return {'text' => 'a sunny day'};
   }
-  my($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
-   = localtime(time);
+
+  my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst)
+    = ($ENV{SOURCE_DATE_EPOCH}
+        ? gmtime($ENV{SOURCE_DATE_EPOCH})
+        : localtime(time));
+  # See https://reproducible-builds.org/specs/source-date-epoch/.
+
   $year += ($year < 70) ? 2000 : 1900;
   return $self->gdt('{month} {day}, {year}',
           { 'month' => $self->gdt($MONTH_NAMES[$mon]),

@@ -1,3 +1,10 @@
+2017-07-23   Alexis Bienvenüe <pado@passoire.fr>  (tiny change)
+
+	* tp/Texinfo/Common.pm (expand_today):
+	Honour the SOURCE_DATE_EPOCH environment variable to get a 
+	reproducible @today value for info output when it is set.
+	See https://reproducible-builds.org/specs/source-date-epoch/.
+
 2017-07-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* gnulib/m4/intlmacos.m4: Add this file, as gettextize doesn't 
