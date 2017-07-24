@@ -1084,7 +1084,7 @@
       index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
 
       links.push (toc_a);
-      fix_links (links);
+      fix_links (links, true);
       scan_toc (document.body, config.INDEX_NAME);
 
       var divs = Array.from (document.querySelectorAll ("div"));
@@ -1112,6 +1112,9 @@
           var filename = (selected === config.INDEX_ID) ?
               config.INDEX_NAME : (selected + config.EXT);
           scan_toc (document.body, filename);
+          /* Scroll to the anchor corresponding to SELECTED without
+             saving current page in session history.  */
+          window.location.replace (config.TOC_FILENAME + "#" + selected);
         }
     }
 
@@ -1369,10 +1372,14 @@
 
   /** Modify LINKS to handle the iframe based navigation properly.  Relative
       links will be opened inside the corresponding iframe and absolute links
-      will be opened in a new tab.  LINKS must be an array or a collection of
-      nodes.  */
+      will be opened in a new tab.  If ID is true then define an "id"
+      attribute with a linkid value for relative links.
+
+      @arg {(HTMLAnchorElement|HTMLAreaElement)[]} links
+      @arg {boolean} [id]
+      @return void  */
   function
-  fix_links (links)
+  fix_links (links, id)
   {
     for (var i = 0; i < links.length; i += 1)
       {
@@ -1383,7 +1390,12 @@
             if (absolute_url_p (href))
               link.setAttribute ("target", "_blank");
             else
-              link.setAttribute ("href", with_sidebar_query (href));
+              {
+                var fixed_href = with_sidebar_query (href);
+                link.setAttribute ("href", with_sidebar_query (href));
+                if (id)
+                  link.setAttribute ("id", href_hash (fixed_href));
+              }
           }
       }
   }
