@@ -221,6 +221,23 @@
           var ids = state.loaded_nodes[state.current];
           linkid = ids[action.direction];
           if (!linkid)
+            {
+              /* When STATE.CURRENT is in index but doesn't have the requested
+                 direction, ask its corresponding 'pageid'.  */
+              var is_index_ref =
+                Object.keys (state.index)
+                      .reduce (function (acc, val) {
+                        return acc || state.index[val] === state.current;
+                      }, false);
+              if (is_index_ref)
+                {
+                  var parent = linkid_split (state.current).pageid;
+                  ids = state.loaded_nodes[parent];
+                  linkid = ids[action.direction];
+                }
+            }
+
+          if (!linkid)
             return state;
           else
             {
@@ -654,22 +671,6 @@
     /*--------------.
     | Utilitaries.  |
     `--------------*/
-
-    /** Return an object composed of the filename and the anchor of LINKID.
-        LINKID can have the form "foobar.anchor" or just "foobar".
-        @arg {string} linkid
-        @return {{pageid: string, hash: string}} */
-    function
-    linkid_split (linkid)
-    {
-      if (!linkid.includes ("."))
-        return { pageid: linkid, hash: "" };
-      else
-        {
-          var ref = linkid.match (/^(.+)\.(.*)$/).slice (1);
-          return { pageid: ref[0], hash: "#" + ref[1] };
-        }
-    }
 
     /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
         an URL of the form `foobar${config.EXT}#anchor`.
@@ -1403,6 +1404,23 @@
                   }
               }
           }
+      }
+  }
+
+
+  /** Return an object composed of the filename and the anchor of LINKID.
+      LINKID can have the form "foobar.anchor" or just "foobar".
+      @arg {string} linkid
+      @return {{pageid: string, hash: string}} */
+  function
+  linkid_split (linkid)
+  {
+    if (!linkid.includes ("."))
+      return { pageid: linkid, hash: "" };
+    else
+      {
+        var ref = linkid.match (/^(.+)\.(.*)$/).slice (1);
+        return { pageid: ref[0], hash: "#" + ref[1] };
       }
   }
 
