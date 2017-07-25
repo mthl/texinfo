@@ -648,13 +648,6 @@
           div.removeAttribute ("hidden");
           this.prev_id = state.current;
           this.prev_div = div;
-
-          /* XXX: Ensure that focus is not on a hidden iframe which has
-             the consequence of making the keyboard event not bubbling.*/
-          if (state.current === config.INDEX_ID)
-            document.documentElement.focus ();
-          else
-            div.querySelector ("iframe").focus ();
         }
     };
 
@@ -850,6 +843,18 @@
         render: function render (state) {
           this.components
               .forEach (function (cmpt) { cmpt.render (state); });
+
+          /* Ensure that focus is on the current node unless some component is
+             focused.  */
+          if (!state.focus)
+            {
+              if (state.current === config.INDEX_ID)
+                document.documentElement.focus ();
+              else
+                document.getElementById (linkid_split (state.current)[0])
+                        .querySelector ("iframe")
+                        .focus ();
+            }
         }
       };
 
