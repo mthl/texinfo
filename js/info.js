@@ -1393,7 +1393,11 @@
                 var fixed_href = with_sidebar_query (href);
                 link.setAttribute ("href", with_sidebar_query (href));
                 if (id)
-                  link.setAttribute ("id", href_hash (fixed_href));
+                  {
+                    var linkid = (fixed_href === config.INDEX_NAME) ?
+                        config.INDEX_ID : href_hash (fixed_href);
+                    link.setAttribute ("id", linkid);
+                  }
               }
           }
       }
