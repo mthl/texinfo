@@ -1112,9 +1112,9 @@
           var filename = (selected === config.INDEX_ID) ?
               config.INDEX_NAME : (selected + config.EXT);
           scan_toc (document.body, filename);
-          /* Scroll to the anchor corresponding to SELECTED without
-             saving current page in session history.  */
-          window.location.replace (config.TOC_FILENAME + "#" + selected);
+          var elem = document.getElementById (selected);
+          if (elem)
+            elem.scrollIntoView (true);
         }
     }
 
