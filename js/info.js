@@ -272,7 +272,7 @@
             return state;
           else
             {
-              res.focus = (action.input) ? true : false;
+              res.focus = (action.input && true) || false;
               res.help = false;
               res.text_input = action.input;
               res.warning = null;
@@ -382,7 +382,7 @@
       var a = document.createElement ("a");
       a.innerHTML = "?";
       a.setAttribute ("href", "javascript:void (0)");
-      a.addEventListener ("click", function (event) {
+      a.addEventListener ("click", function () {
         store.dispatch (actions.show_help ());
       });
       div.appendChild (a);
@@ -728,7 +728,7 @@
               iframe.setAttribute ("class", "node");
               iframe.setAttribute ("src", linkid_to_url (pageid));
               div.appendChild (iframe);
-              iframe.addEventListener ("load", function (event) {
+              iframe.addEventListener ("load", function () {
                 /* Send pending messages.  */
                 var msgs = resolve_page.pendings[pageid];
                 if (msgs)
