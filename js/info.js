@@ -1160,10 +1160,9 @@
     on_message (event)
     {
       var data = event.data;
-      if (data.message_kind === "scroll-to")
+      if (data.message_kind === "scroll-to" && data.hash)
         {
-          /* Scroll to the anchor corresponding to HASH without saving
-             current page in session history.  */
+          /* Scroll to the anchor corresponding to HASH.  */
           window.location.replace (data.hash);
         }
     }
