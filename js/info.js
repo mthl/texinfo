@@ -655,21 +655,19 @@
     | Utilitaries.  |
     `--------------*/
 
-    /** Return an array composed of the filename and the anchor of LINKID.
+    /** Return an object composed of the filename and the anchor of LINKID.
         LINKID can have the form "foobar.anchor" or just "foobar".
         @arg {string} linkid
-        @return {string[]} */
+        @return {{pageid: string, hash: string}} */
     function
     linkid_split (linkid)
     {
       if (!linkid.includes ("."))
-        return [linkid, ""];
+        return { pageid: linkid, hash: "" };
       else
         {
           var ref = linkid.match (/^(.+)\.(.*)$/).slice (1);
-          var id = ref[0];
-          var anchor = ref[1];
-          return [id, "#" + anchor];
+          return { pageid: ref[0], hash: "#" + ref[1] };
         }
     }
 
@@ -683,10 +681,8 @@
         return config.INDEX_NAME;
       else
         {
-          var ref = linkid_split (linkid);
-          var pageid = ref[0];
-          var hash = ref[1];
-          return pageid + config.EXT + hash;
+          var link = linkid_split (linkid);
+          return link.pageid + config.EXT + link.hash;
         }
     }
 
@@ -712,10 +708,9 @@
     resolve_page (linkid, scroll)
     {
       var msg;
-      var ref = linkid_split (linkid);
-      var pageid = ref[0];
-      var hash = ref[1];
-      var div = document.getElementById (pageid);
+      var link = linkid_split (linkid);
+      var pageid = link.pageid;
+      var div = document.getElementById (link.pageid);
       if (!div)
         {
           msg = "no iframe container correspond to identifier: " + pageid;
@@ -745,7 +740,7 @@
             }
           if (scroll)
             {
-              msg = { message_kind: "scroll-to", hash: hash };
+              msg = { message_kind: "scroll-to", hash: link.hash };
               /* XXX: Since messages sent to a not loaded iframe are not
                  properly received we need to keep them until necessary.
                  Semantically this would be better to use "promises" however
@@ -851,9 +846,12 @@
               if (state.current === config.INDEX_ID)
                 document.documentElement.focus ();
               else
-                document.getElementById (linkid_split (state.current)[0])
-                        .querySelector ("iframe")
-                        .focus ();
+                {
+                  var link = linkid_split (state.current);
+                  document.getElementById (link.pageid)
+                          .querySelector ("iframe")
+                          .focus ();
+                }
             }
         }
       };
