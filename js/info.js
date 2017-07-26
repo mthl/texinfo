@@ -1203,7 +1203,7 @@
                 event.preventDefault ();
                 event.stopPropagation ();
                 return;
-            }
+              }
           }
       }
   }
