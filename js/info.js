@@ -52,36 +52,39 @@
     this.listeners = [];
     this.reducer = reducer;
     this.state = state;
-    /** @arg {Action} action */
-    this.dispatch = function dispatch (action) {
-      var new_state = this.reducer (this.state, action);
-      if (new_state !== this.state)
-        {
-          this.state = new_state;
-          /* eslint-disable no-console */
-          console.log ("state: ", new_state);
-          /* eslint-enable no-console */
-          this.listeners.forEach (function (listener) {
-            listener.render (new_state);
-          });
-        }
-    };
   }
+
+  /** @arg {Action} action */
+  Store.prototype.dispatch = function dispatch (action) {
+    var new_state = this.reducer (this.state, action);
+    if (new_state !== this.state)
+      {
+        this.state = new_state;
+        /* eslint-disable no-console */
+        console.log ("state: ", new_state);
+        /* eslint-enable no-console */
+        this.listeners.forEach (function (listener) {
+          listener.render (new_state);
+        });
+      }
+  };
 
   /** Build a store delegate that will forward its actions to a "real"
       store that can be in a different browsing context.  */
   function
   Remote_store ()
   {
-    /** Dispatch ACTION to the top-level browsing context.  This function
-        must be used in conjunction with an event listener on "message"
-        events in the top-level browsing context which must forwards ACTION
-        to an actual store.
-        @arg {Action} action */
-    this.dispatch = function dispatch (action) {
-      top.postMessage ({ message_kind: "action", action: action }, "*");
-    };
+    /* The browsing context containing the real store.  */
+    this.delegate = top;
   }
+
+  /** Dispatch ACTION to the delegate browing context.  This method must be
+      used in conjunction of an event listener on "message" events in the
+      delegate browsing context which must forwards ACTION to an actual store.
+      @arg {Action} action */
+  Remote_store.prototype.dispatch = function dispatch (action) {
+    this.delegate.postMessage ({ message_kind: "action", action: action }, "*");
+  };
 
   /** @typedef {{type: string, [x: string]: any}} Action - Payloads
       of information meant to be treated by the store which can receive them
