@@ -310,3 +310,17 @@ table#keyboard-shortcuts th {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Icons in the icon bar.  */
+.icon {
+    color: #aaaaaa;
+    float: right;
+    font-weight: bold;
+}
+
+.icon:hover,
+.icon:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

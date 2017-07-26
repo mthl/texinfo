@@ -379,13 +379,13 @@
     {
       var div = document.createElement ("div");
       div.setAttribute ("id", "icon-bar");
-      var a = document.createElement ("a");
-      a.innerHTML = "?";
-      a.setAttribute ("href", "javascript:void (0)");
-      a.addEventListener ("click", function () {
+      var span = document.createElement ("span");
+      span.innerHTML = "?";
+      span.classList.add ("icon");
+      span.addEventListener ("click", function () {
         store.dispatch (actions.show_help ());
       });
-      div.appendChild (a);
+      div.appendChild (span);
       this.element = div;
     }
 
