@@ -1170,10 +1170,13 @@
     on_message (event)
     {
       var data = event.data;
-      if (data.message_kind === "scroll-to" && data.hash)
+      if (data.message_kind === "scroll-to")
         {
           /* Scroll to the anchor corresponding to HASH.  */
-          window.location.replace (data.hash);
+          if (data.hash)
+            window.location.replace (data.hash);
+          else
+            window.scroll (0, 0);
         }
     }
 
