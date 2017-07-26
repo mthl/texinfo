@@ -157,6 +157,9 @@
       @arg {Object} state
       @arg {Action} action
       @return {Object} a new state */
+  /* eslint-disable complexity */
+  /* A "big" switch has been preferred over splitting each case in a separate
+     function combined with a dictionary lookup.  */
   function
   updater (state, action)
   {
@@ -293,6 +296,7 @@
         return state;
       }
   }
+  /* eslint-enable complexity */
 
   /*-----------------------.
   | Context initializers.  |
