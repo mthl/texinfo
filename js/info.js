@@ -376,32 +376,6 @@
         }
     };
 
-    /*--------------------------.
-    | Component for icon bar.  |
-    `--------------------------*/
-
-    function
-    Icon_bar ()
-    {
-      var div = document.createElement ("div");
-      div.setAttribute ("id", "icon-bar");
-      var span = document.createElement ("span");
-      span.innerHTML = "?";
-      span.classList.add ("icon");
-      span.addEventListener ("click", function () {
-        store.dispatch (actions.show_help ());
-      });
-      div.appendChild (span);
-      this.element = div;
-    }
-
-    Icon_bar.prototype.render = function render (state) {
-      if (state.focus)
-        this.element.setAttribute ("hidden", "true");
-      else
-        this.element.removeAttribute ("hidden");
-    };
-
     /*---------------------------------.
     | Components for menu navigation.  |
     `---------------------------------*/
@@ -865,7 +839,6 @@
 
       components.add (new Sidebar ());
       components.add (new Pages (index_div));
-      components.add (new Icon_bar ());
       components.add (new Help_page ());
       components.add (new Minibuffer ());
       store.listeners.push (components);
@@ -1163,6 +1136,18 @@
                    }, {});
           store.dispatch (actions.cache_index_links (index_links));
         }
+
+      /* Add icons for dispatching actions.  */
+      var div = document.createElement ("div");
+      div.setAttribute ("id", "icon-bar");
+      var span = document.createElement ("span");
+      span.innerHTML = "?";
+      span.classList.add ("icon");
+      span.addEventListener ("click", function () {
+        store.dispatch (actions.show_help ());
+      }, false);
+      div.appendChild (span);
+      document.body.insertBefore (div, document.body.firstChild);
     }
 
     /* Handle messages received via the Message API.  */

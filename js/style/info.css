@@ -173,7 +173,7 @@ div[node][hidden] {
 div[node] {
     left: 25%;
     width: 75%; height: auto;
-    top: 20px; bottom: 0pt;
+    top: 0pt; bottom: 0pt;
     position: absolute;
     overflow: hidden;
 }
@@ -261,10 +261,7 @@ table#keyboard-shortcuts th {
 }
 
 #icon-bar {
-    text-align: right;
-    height: 20px;
-    position: absolute;
-    margin: 0px;
+    float: right;
 }
 
 #icon-bar a {
@@ -314,7 +311,7 @@ table#keyboard-shortcuts th {
 /* Icons in the icon bar.  */
 .icon {
     color: #aaaaaa;
-    float: right;
+    font-size: 20px;
     font-weight: bold;
 }
 
