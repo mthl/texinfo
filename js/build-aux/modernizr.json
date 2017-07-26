@@ -9,7 +9,6 @@
     "test/messagechannel",
     "test/postmessage",
     "test/queryselector",
-    "test/url/parser",
     "test/window/framed"
   ]
 }

@@ -1374,13 +1374,18 @@
       return config.INDEX_NAME;
     else
       {
-        var url = new window.URL (href, window.location.href);
+        /* XXX: Do not use the URL API for IE portability.  */
+        var url = with_sidebar_query.url;
+        url.setAttribute ("href", href);
         var new_hash = basename (url.pathname, /[.]x?html/);
         if (url.hash)
           new_hash += ("." + url.hash.slice (1));
         return config.INDEX_NAME + "#" + new_hash;
       }
   }
+
+  /* Use the same DOM element for every function call.  */
+  with_sidebar_query.url = document.createElement ("a");
 
   /** Modify LINKS to handle the iframe based navigation properly.  Relative
       links will be opened inside the corresponding iframe and absolute links
@@ -1559,9 +1564,7 @@
                     && features.history
                     && features.messagechannel
                     && features.postmessage
-                    && features.queryselector
-                    /* TODO: Remove this requirement for IE support.  */
-                    && features.urlparser))
+                    && features.queryselector))
     return;
 
   register_polyfills ();

@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.5.0
- * Build https://modernizr.com/download?-MessageChannel-datalistelem-es5-eventlistener-framed-hidden-history-postmessage-queryselector-urlparser-dontmin
+ * Build https://modernizr.com/download?-MessageChannel-datalistelem-es5-eventlistener-framed-hidden-history-postmessage-queryselector-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -735,34 +735,6 @@ Detects support for querySelector.
 */
 
   Modernizr.addTest('queryselector', 'querySelector' in document && 'querySelectorAll' in document);
-
-/*!
-{
-  "name": "URL parser",
-  "property": "urlparser",
-  "notes": [{
-    "name": "URL",
-    "href": "https://dvcs.w3.org/hg/url/raw-file/tip/Overview.html"
-  }],
-  "polyfills": ["urlparser"],
-  "authors": ["Ron Waldon (@jokeyrhyme)"],
-  "tags": ["url"]
-}
-!*/
-/* DOC
-Check if browser implements the URL constructor for parsing URLs.
-*/
-
-  Modernizr.addTest('urlparser', function() {
-    var url;
-    try {
-      // have to actually try use it, because Safari defines a dud constructor
-      url = new URL('http://modernizr.com/');
-      return url.href === 'http://modernizr.com/';
-    } catch (e) {
-      return false;
-    }
-  });
 
 /*!
 {
