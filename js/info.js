@@ -1387,20 +1387,19 @@
       {
         var link = links[i];
         var href = link.getAttribute ("href");
-        if (href)
+        if (!href)
+          continue;
+        else if (absolute_url_p (href))
+          link.setAttribute ("target", "_blank");
+        else
           {
-            if (absolute_url_p (href))
-              link.setAttribute ("target", "_blank");
-            else
+            var href$ = with_sidebar_query (href);
+            link.setAttribute ("href", href$);
+            if (id)
               {
-                var fixed_href = with_sidebar_query (href);
-                link.setAttribute ("href", with_sidebar_query (href));
-                if (id)
-                  {
-                    var linkid = (fixed_href === config.INDEX_NAME) ?
-                        config.INDEX_ID : href_hash (fixed_href);
-                    link.setAttribute ("id", linkid);
-                  }
+                var linkid = (href$ === config.INDEX_NAME) ?
+                    config.INDEX_ID : href_hash (href$);
+                link.setAttribute ("id", linkid);
               }
           }
       }
