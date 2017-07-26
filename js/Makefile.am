@@ -77,6 +77,7 @@ build_xhtml_pages = \
       -e '/<?xml .*>/d' \
       -e '/<script/s|/>|> </script>|' \
       -e 's,</title>,</title><meta charset="utf-8" />,' \
+      -e 's/ title="[^"]*"//' \
       -e 's,<header/>,<header></header>,' \
       -i $$file; \
   done && \
