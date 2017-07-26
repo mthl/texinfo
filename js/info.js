@@ -315,7 +315,6 @@
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
       div.setAttribute ("class", "modal");
-      /* TODO: Summarize the shorcuts.  */
       div.innerHTML = "\
 <div class=\"modal-content\">\
 <span class=\"close\">&times;</span>\
