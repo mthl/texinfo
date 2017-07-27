@@ -935,36 +935,41 @@
             hide_grand_child_nodes (ul);
           return "current";
         }
-      var ancestor = null;
-      for (var child = elem.firstElementChild; child;
-           child = child.nextElementSibling)
+      else
         {
-          if (scan_toc_rec (child, current) !== null)
+          for (var child = elem.firstElementChild; child;
+               child = child.nextElementSibling)
             {
-              ancestor = child;
-              break;
+              if (scan_toc_rec (child, current) !== null)
+                {
+                  mark_parent_elements (child);
+                  return "ancestor";
+                }
             }
+          return null;
         }
-      if (ancestor
-          && ancestor.parentElement
-          && ancestor.parentElement.parentElement)
+    }
+
+    /** @arg {HTMLElement} elem */
+    function
+    mark_parent_elements (elem)
+    {
+      if (elem && elem.parentElement && elem.parentElement.parentElement)
         {
-          var pparent = ancestor.parentElement.parentElement;
+          var pparent = elem.parentElement.parentElement;
           for (var sib = pparent.firstElementChild; sib;
                sib = sib.nextElementSibling)
             {
-              if (sib !== ancestor.parentElement
+              if (sib !== elem.parentElement
                   && sib.firstElementChild
                   && sib.firstElementChild.nextElementSibling)
                 {
                   sib.firstElementChild
-                    .nextElementSibling
-                    .setAttribute ("toc-detail", "yes");
+                     .nextElementSibling
+                     .setAttribute ("toc-detail", "yes");
                 }
             }
         }
-
-      return ancestor ? "ancestor" : null;
     }
 
     /* Reset what is done by 'scan_toc' and 'hide_grand_child_nodes'.  */
