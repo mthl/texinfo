@@ -1554,7 +1554,14 @@
                     && features.messagechannel
                     && features.postmessage
                     && features.queryselector))
-    return;
+    {
+      /* eslint-disable no-console */
+      /* TODO: Display a warning in floating div instead.  */
+      var msg = "The current browser doesn't satisfy the minimum requirements";
+      console.log (msg, features);
+      /* eslint-enable no-console */
+      return;
+    }
 
   register_polyfills ();
 
