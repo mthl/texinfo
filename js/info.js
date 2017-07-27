@@ -926,16 +926,14 @@
     function
     scan_toc_rec (elem, current)
     {
-      if (elem.matches ("a"))
+      /* XXX: No template literals for IE compatibility.  */
+      if (elem.matches ("a[href=\"" + current + "\"]"))
         {
-          if (current === elem.getAttribute ("href"))
-            {
-              elem.setAttribute ("toc-current", "yes");
-              var ul = elem.nextElementSibling;
-              if (ul && ul.matches ("ul"))
-                hide_grand_child_nodes (ul);
-              return "current";
-            }
+          elem.setAttribute ("toc-current", "yes");
+          var ul = elem.nextElementSibling;
+          if (ul && ul.matches ("ul"))
+            hide_grand_child_nodes (ul);
+          return "current";
         }
       var ancestor = null;
       for (var child = elem.firstElementChild; child;
