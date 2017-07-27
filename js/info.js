@@ -909,49 +909,38 @@
     function
     scan_toc (elem, filename)
     {
+      /** @type {HTMLElement} */
+      var current;
+      var url = with_sidebar_query (filename);
+
+      /** Set CURRENT to the node corresponding to URL linkid.
+          @arg {Element} elem */
+      function
+      find_current (elem)
+      {
+        /* XXX: No template literals for IE compatibility.  */
+        if (elem.matches ("a[href=\"" + url + "\"]"))
+          {
+            elem.setAttribute ("toc-current", "yes");
+            var sib = elem.nextElementSibling;
+            if (sib && sib.matches ("ul"))
+              hide_grand_child_nodes (sib);
+            current = elem;
+          }
+      }
+
       var ul = elem.querySelector ("ul");
       if (filename === config.INDEX_NAME)
         hide_grand_child_nodes (ul);
       else
         {
-          var cur = scan_toc_rec (ul, with_sidebar_query (filename));
-          while (cur && cur !== ul)
+          depth_first_walk (ul, find_current, Node.ELEMENT_NODE);
+          /* Mark every parent node.  */
+          while (current && current !== ul)
             {
-              mark_parent_elements (cur);
-              cur = cur.parentElement;
+              mark_parent_elements (current);
+              current = current.parentElement;
             }
-        }
-
-    }
-
-    /** Scan ToC entries to see which should be hidden.  Return the
-        node corresponding to CURRENT linkid or null.
-
-        @arg {Element} elem
-        @arg {string} current
-        @return {Element} */
-    function
-    scan_toc_rec (elem, current)
-    {
-      /* XXX: No template literals for IE compatibility.  */
-      if (elem.matches ("a[href=\"" + current + "\"]"))
-        {
-          elem.setAttribute ("toc-current", "yes");
-          var ul = elem.nextElementSibling;
-          if (ul && ul.matches ("ul"))
-            hide_grand_child_nodes (ul);
-          return elem;
-        }
-      else
-        {
-          for (var child = elem.firstElementChild; child;
-               child = child.nextElementSibling)
-            {
-              var res = scan_toc_rec (child, current);
-              if (res)
-                return res;
-            }
-          return null;
         }
     }
 
