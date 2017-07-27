@@ -903,16 +903,17 @@
         }
     }
 
-    /* Scan ToC entries to see which should be hidden.  */
+    /** Scan ToC entries to see which should be hidden.
+        @arg {HTMLElement} elem
+        @arg {string} filename */
     function
-    scan_toc (node, filename)
+    scan_toc (elem, filename)
     {
-      var current = with_sidebar_query (filename);
-      var ul = node.querySelector ("ul");
+      var ul = elem.querySelector ("ul");
       if (filename === config.INDEX_NAME)
         hide_grand_child_nodes (ul);
       else
-        scan_toc1 (ul, current);
+        scan_toc1 (ul, with_sidebar_query (filename));
     }
 
     /* Scan ToC entries to see which should be hidden.  Return "current" if
