@@ -1551,7 +1551,6 @@
                     && features.eventlistener
                     && features.hidden
                     && features.history
-                    && features.messagechannel
                     && features.postmessage
                     && features.queryselector))
     {

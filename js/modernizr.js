@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.5.0
- * Build https://modernizr.com/download?-MessageChannel-datalistelem-es5-eventlistener-framed-hidden-history-postmessage-queryselector-dontmin
+ * Build https://modernizr.com/download?-datalistelem-es5-eventlistener-framed-hidden-history-postmessage-queryselector-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -675,28 +675,6 @@ Modernizr.input.step
   // Leaving it around in case anyone's using it
 
   Modernizr.addTest('datalistelem', Modernizr.input.list);
-
-/*!
-{
-  "name": "Message Channel",
-  "property": "MessageChannel",
-  "authors": ["Raju Konga [kongaraju]"],
-  "caniuse" : "MessageChannel",
-  "tags": ["performance", "messagechannel"],
-  "notes": [{
-    "name": "W3C Reference",
-    "href": "https://www.w3.org/TR/2011/WD-webmessaging-20110317/#message-channels"
-  }, {
-    "name": "MDN documentation",
-    "href": "https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API/Using_channel_messaging"
-  }]
-}
-!*/
-/* DOC
-Detects support for Message Channels, a way to communicate between different browsing contexts like iframes, workers, etc..
-*/
-
-  Modernizr.addTest('messagechannel', 'MessageChannel' in window);
 
 /*!
 {

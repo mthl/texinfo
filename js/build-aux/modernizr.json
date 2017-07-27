@@ -6,7 +6,6 @@
     "test/history",
     "test/dom/hidden",
     "test/elem/datalist",
-    "test/messagechannel",
     "test/postmessage",
     "test/queryselector",
     "test/window/framed"
