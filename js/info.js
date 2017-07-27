@@ -1560,6 +1560,22 @@
       var msg = "The current browser doesn't satisfy the minimum requirements";
       console.log (msg, features);
       /* eslint-enable no-console */
+
+      /* XXX: This should be done statically.  */
+      document.addEventListener ("DOMContentLoaded", function () {
+        if (config.EXT === ".xhtml")
+          return;
+
+        for (var i = 0; i < document.links.length; i += 1)
+          {
+            var link = document.links[i];
+            var href = link.getAttribute ("href");
+            /* Modify href only for relative URL.  */
+            if (href && href.indexOf (":") < 0)
+              link.setAttribute ("href", href.replace (/\.xhtml/, ".html"));
+          }
+      }, false);
+
       return;
     }
 
