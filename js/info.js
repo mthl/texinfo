@@ -913,7 +913,15 @@
       if (filename === config.INDEX_NAME)
         hide_grand_child_nodes (ul);
       else
-        scan_toc_rec (ul, with_sidebar_query (filename));
+        {
+          var cur = scan_toc_rec (ul, with_sidebar_query (filename));
+          while (cur && cur !== ul)
+            {
+              mark_parent_elements (cur);
+              cur = cur.parentElement;
+            }
+        }
+
     }
 
     /** Scan ToC entries to see which should be hidden.  Return the
@@ -941,10 +949,7 @@
             {
               var res = scan_toc_rec (child, current);
               if (res)
-                {
-                  mark_parent_elements (child);
-                  return res;
-                }
+                return res;
             }
           return null;
         }
