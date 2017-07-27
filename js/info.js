@@ -913,43 +913,49 @@
       if (filename === config.INDEX_NAME)
         hide_grand_child_nodes (ul);
       else
-        scan_toc1 (ul, with_sidebar_query (filename));
+        scan_toc_rec (ul, with_sidebar_query (filename));
     }
 
-    /* Scan ToC entries to see which should be hidden.  Return "current" if
-       node matches current, "ancestor" if node is ancestor of current, else
-       'null'.  */
+    /** Scan ToC entries to see which should be hidden.  Return "current" if
+        node matches CURRENT, "ancestor" if node is ancestor of CURRENT, else
+        'null'.
+
+        @arg {Element} elem
+        @arg {string} current
+        @return {string} */
     function
-    scan_toc1 (node, current)
+    scan_toc_rec (elem, current)
     {
-      if (node.matches ("a"))
+      if (elem.matches ("a"))
         {
-          if (current === node.getAttribute ("href"))
+          if (current === elem.getAttribute ("href"))
             {
-              node.setAttribute ("toc-current", "yes");
-              var ul = node.nextElementSibling;
+              elem.setAttribute ("toc-current", "yes");
+              var ul = elem.nextElementSibling;
               if (ul && ul.matches ("ul"))
                 hide_grand_child_nodes (ul);
               return "current";
             }
         }
       var ancestor = null;
-      for (var child = node.firstElementChild; child;
+      for (var child = elem.firstElementChild; child;
            child = child.nextElementSibling)
         {
-          if (scan_toc1 (child, current) !== null)
+          if (scan_toc_rec (child, current) !== null)
             {
               ancestor = child;
               break;
             }
         }
-      if (ancestor && ancestor.parentNode && ancestor.parentNode.parentNode)
+      if (ancestor
+          && ancestor.parentElement
+          && ancestor.parentElement.parentElement)
         {
-          var pparent = ancestor.parentNode.parentNode;
+          var pparent = ancestor.parentElement.parentElement;
           for (var sib = pparent.firstElementChild; sib;
                sib = sib.nextElementSibling)
             {
-              if (sib !== ancestor.parentNode
+              if (sib !== ancestor.parentElement
                   && sib.firstElementChild
                   && sib.firstElementChild.nextElementSibling)
                 {
@@ -1015,7 +1021,7 @@
       var li = document.querySelector ("li");
       if (li && li.firstElementChild && li.firstElementChild.matches ("a")
           && li.firstElementChild.getAttribute ("href") === config.INDEX_NAME)
-        li.parentNode.removeChild (li);
+        li.parentElement.removeChild (li);
 
       var header = document.querySelector ("header");
       var h1 = document.querySelector ("h1");
@@ -1029,7 +1035,7 @@
           var span = document.createElement ("span");
           span.appendChild (h1.firstChild);
           div.appendChild (span);
-          h1.parentNode.removeChild (h1);
+          h1.parentElement.removeChild (h1);
         }
     }
 
@@ -1065,7 +1071,7 @@
       /* XXX: hack */
       if (index_grand.matches ("li"))
         index_li = index_grand;
-      index_li.parentNode.insertBefore (toc_li, index_li.nextSibling);
+      index_li.parentElement.insertBefore (toc_li, index_li.nextSibling);
 
       links.push (toc_a);
       fix_links (links, true);
@@ -1075,7 +1081,7 @@
       divs.reverse ()
           .forEach (function (div) {
             if (div.getAttribute ("class") === "toc-title")
-              div.parentNode.removeChild (div);
+              div.parentElement.removeChild (div);
           });
 
       /* Get 'backward' and 'forward' link attributes.  */
