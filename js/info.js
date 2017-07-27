@@ -1381,7 +1381,8 @@
       will be opened in a new tab.  If ID is true then define an "id"
       attribute with a linkid value for relative links.
 
-      @arg {(HTMLAnchorElement|HTMLAreaElement)[]} links
+      @typedef {HTMLAnchorElement|HTMLAreaElement} Links
+      @arg {Links[]|HTMLCollectionOf<Links>} links
       @arg {boolean} [id]
       @return void  */
   function
