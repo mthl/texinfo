@@ -916,13 +916,12 @@
         scan_toc_rec (ul, with_sidebar_query (filename));
     }
 
-    /** Scan ToC entries to see which should be hidden.  Return "current" if
-        node matches CURRENT, "ancestor" if node is ancestor of CURRENT, else
-        'null'.
+    /** Scan ToC entries to see which should be hidden.  Return the
+        node corresponding to CURRENT linkid or null.
 
         @arg {Element} elem
         @arg {string} current
-        @return {string} */
+        @return {Element} */
     function
     scan_toc_rec (elem, current)
     {
@@ -933,17 +932,18 @@
           var ul = elem.nextElementSibling;
           if (ul && ul.matches ("ul"))
             hide_grand_child_nodes (ul);
-          return "current";
+          return elem;
         }
       else
         {
           for (var child = elem.firstElementChild; child;
                child = child.nextElementSibling)
             {
-              if (scan_toc_rec (child, current) !== null)
+              var res = scan_toc_rec (child, current);
+              if (res)
                 {
                   mark_parent_elements (child);
-                  return "ancestor";
+                  return res;
                 }
             }
           return null;
