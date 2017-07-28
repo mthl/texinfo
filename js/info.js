@@ -1434,7 +1434,7 @@
   absolute_url_p (url)
   {
     if (typeof url !== "string")
-      throw new TypeError (("'" + url + "' is not a string"));
+      throw new TypeError ("'" + url + "' is not a string");
 
     return url.includes (":");
   }
