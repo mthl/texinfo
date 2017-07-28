@@ -909,7 +909,7 @@
     function
     scan_toc (elem, filename)
     {
-      /** @type {HTMLElement} */
+      /** @type {Element} */
       var current;
       var url = with_sidebar_query (filename);
 
