@@ -321,3 +321,9 @@ table#keyboard-shortcuts th {
     text-decoration: none;
     cursor: pointer;
 }
+
+.warning {
+    background-color: orange;
+    padding: 5px;
+    float: right;
+}

@@ -1554,14 +1554,21 @@
                     && features.postmessage
                     && features.queryselector))
     {
-      /* eslint-disable no-console */
-      /* TODO: Display a warning in floating div instead.  */
-      var msg = "The current browser doesn't satisfy the minimum requirements";
-      console.log (msg, features);
-      /* eslint-enable no-console */
+      /* XXX: This code needs to be highly portable.
+         Check <https://quirksmode.org/dom/core/> for details.  */
+      window.onload = function () {
+        /* Display a warning.  */
+        var div = document.createElement ("div");
+        div.setAttribute ("class", "warning");
+        div.innerHTML = "'info.js' is not compatible with this browser";
+        var elem = document.body.firstChild;
+        document.body.insertBefore (div, elem);
+        window.setTimeout (function () {
+          document.body.removeChild (div);
+        }, config.WARNING_TIMEOUT);
 
-      /* XXX: This should be done statically.  */
-      document.addEventListener ("DOMContentLoaded", function () {
+        /* Ensure that the file extensions of links are correct.
+           XXX: This should be done statically.  */
         if (config.EXT === ".xhtml")
           return;
 
@@ -1570,10 +1577,10 @@
             var link = document.links[i];
             var href = link.getAttribute ("href");
             /* Modify href only for relative URL.  */
-            if (href && href.indexOf (":") < 0)
+            if (href && href.indexOf && href.indexOf (":") < 0)
               link.setAttribute ("href", href.replace (/\.xhtml/, ".html"));
           }
-      }, false);
+      };
 
       return;
     }
