@@ -798,6 +798,7 @@
     on_load ()
     {
       fix_links (document.links);
+      add_icons ();
       document.body.setAttribute ("class", "mainbar");
 
       /* Move contents of <body> into a a fresh <div> to let the components
@@ -1141,17 +1142,7 @@
           store.dispatch (actions.cache_index_links (index_links));
         }
 
-      /* Add icons for dispatching actions.  */
-      var div = document.createElement ("div");
-      div.setAttribute ("id", "icon-bar");
-      var span = document.createElement ("span");
-      span.innerHTML = "?";
-      span.classList.add ("icon");
-      span.addEventListener ("click", function () {
-        store.dispatch (actions.show_help ());
-      }, false);
-      div.appendChild (span);
-      document.body.insertBefore (div, document.body.firstChild);
+      add_icons ();
     }
 
     /* Handle messages received via the Message API.  */
@@ -1528,6 +1519,21 @@
   }
 
   navigation_links.dict = { n: "next", p: "prev", u: "up" };
+
+  function
+  add_icons ()
+  {
+    var div = document.createElement ("div");
+    div.setAttribute ("id", "icon-bar");
+    var span = document.createElement ("span");
+    span.innerHTML = "?";
+    span.classList.add ("icon");
+    span.addEventListener ("click", function () {
+      store.dispatch (actions.show_help ());
+    }, false);
+    div.appendChild (span);
+    document.body.insertBefore (div, document.body.firstChild);
+  }
 
   /*--------------.
   | Entry point.  |
