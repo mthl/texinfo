@@ -475,10 +475,10 @@
       this.element.setAttribute ("hidden", "true");
       this.input.value = "";
       if (this.datalist)
-      {
-        this.datalist.parentNode.removeChild (this.datalist);
-        this.datalist = null;
-      }
+        {
+          this.datalist.parentNode.removeChild (this.datalist);
+          this.datalist = null;
+        }
     };
 
     function
