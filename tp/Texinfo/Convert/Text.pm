@@ -31,6 +31,8 @@ use Texinfo::Convert::Texinfo;
 use Data::Dumper;
 use Carp qw(cluck carp);
 
+use File::Basename;
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);

@@ -618,13 +618,13 @@ my %formats_table = (
           'module' => 'DebugTexinfo::DebugTree'
          },
   'textcontent' => {
-            'converter' => sub{Texinfo::Convert::TextContent->converter(@_)},
+            'module' => 'Texinfo::Convert::TextContent'
            },
   'rawtext' => {
-            'converter' => sub{Texinfo::Convert::Text->converter(@_)},
+            'module' => 'Texinfo::Convert::Text'
            },
   'plaintexinfo' => {
-            'converter' => sub{Texinfo::Convert::PlainTexinfo->converter(@_)},
+            'module' => 'Texinfo::Convert::PlainTexinfo'
            },
   'parse' => {
            },
