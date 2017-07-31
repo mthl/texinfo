@@ -1228,13 +1228,9 @@ while(@input_files) {
   #my $global_commands = $parser->global_commands_information();
   #print STDERR join('|', keys(%$global_commands))."\n";
 
-  if (!defined($tree) or $format eq 'parse') {
-    handle_errors($parser, $error_count, \@opened_files);
-    next;
-  }
-
-  if (defined(get_conf('DUMP_TREE')) 
-      or (get_conf('DEBUG') and get_conf('DEBUG') >= 10)) {
+  if (defined($tree)
+      and (defined(get_conf('DUMP_TREE')) 
+           or (get_conf('DEBUG') and get_conf('DEBUG') >= 10))) {
     # this is very wrong, but a way to avoid a spurious warning.
     no warnings 'once';
     local $Data::Dumper::Purity = 1;
@@ -1242,6 +1238,11 @@ while(@input_files) {
     local $Data::Dumper::Indent = 1;
     print STDERR Data::Dumper->Dump([$tree]);
   }
+  if (!defined($tree) or $format eq 'parse') {
+    handle_errors($parser, $error_count, \@opened_files);
+    next;
+  }
+
 
   if ($tree_transformations{'fill_gaps_in_sectioning'}) {
     my ($filled_contents, $added_sections) 

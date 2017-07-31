@@ -1,3 +1,19 @@
+2017-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl <DUMP_TREE>: Check if tree is defined, as 
+	happened before.
+
+2017-07-31  Randall Sawyer  <strandallsawyer@hushmail.me>  (tiny change)
+
+	* tp/texi2any.pl: Exchange two conditional blocks, so that we 
+	check if 'DUMP_TREE' was given as an option before 'parse' being 
+	the output format, so that
+
+	  makeinfo -c DUMP_TREE=1 -c TEXINFO_OUTPUT_FORMAT=parse document.texi
+
+	works to dump the parse tree, as mentioned in the comments at 
+	the end of Parser.pm.
+
 2017-07-31  Randall Sawyer  <strandallsawyer@hushmail.me>  (tiny change)
 
 	* tp/texi2any.pl (%formats_table)
