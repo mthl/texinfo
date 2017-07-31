@@ -519,7 +519,6 @@
       /* Create a container for warning when no menu in current page.*/
       var warn$ = document.createElement ("div");
       warn$.setAttribute ("hidden", "true");
-      warn$.appendChild (document.createTextNode ("No menu in this node"));
       elem.appendChild (warn$);
 
       this.element = elem;
@@ -541,6 +540,7 @@
           var toid = window.setTimeout (function () {
             store.dispatch ({ type: "warning", msg: null });
           }, config.WARNING_TIMEOUT);
+          this.warn.innerHTML = state.warning;
           this.warn.removeAttribute ("hidden");
           this.toid = toid;
         }
