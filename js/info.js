@@ -486,7 +486,7 @@
     {
       /* Create global container.*/
       var elem = document.createElement ("div");
-      elem.setAttribute ("style", "background:pink;z-index:100;position:fixed");
+      elem.setAttribute ("class", "text-input");
 
       var menu = new Text_input ("menu");
       menu.render = function (state) {

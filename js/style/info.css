@@ -327,3 +327,9 @@ table#keyboard-shortcuts th {
     padding: 5px;
     float: right;
 }
+
+.text-input {
+    background: pink;
+    z-index: 100;
+    position: fixed;
+}
