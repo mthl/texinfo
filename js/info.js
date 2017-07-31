@@ -29,7 +29,8 @@
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
-    WARNING_TIMEOUT: 3000
+    WARNING_TIMEOUT: 3000,
+    DEBUG: true
   };
 
   /*-------------------.
@@ -60,9 +61,8 @@
     if (new_state !== this.state)
       {
         this.state = new_state;
-        /* eslint-disable no-console */
-        console.log ("state: ", new_state);
-        /* eslint-enable no-console */
+        if (config.DEBUG)
+          console.log ("state: ", new_state);
         this.listeners.forEach (function (listener) {
           listener.render (new_state);
         });
@@ -293,9 +293,8 @@
           return res;
         }
       default:
-        /* eslint-disable no-console */
-        console.warn ("no reducer for action type:", action.type);
-        /* eslint-enable no-console */
+        if (config.DEBUG)
+          console.warn ("no reducer for action type:", action.type);
         return state;
       }
   }
