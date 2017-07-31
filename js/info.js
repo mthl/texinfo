@@ -634,7 +634,7 @@
             }, [])
             .forEach (function (id) { return that.add_div (id); });
 
-      this.element.classList.toggle ("blurred", state.help);
+      this.element.classList[(state.help) ? "add" : "remove"] ("blurred");
 
       if (state.current !== this.prev_id)
         {
