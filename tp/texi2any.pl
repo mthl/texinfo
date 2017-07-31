@@ -613,11 +613,6 @@ my %formats_table = (
   'dvipdf' => {
              'texi2dvi_format' => 1,
            },
-  'debugcount' => {
-             'nodes_tree' => 1,
-             'floats' => 1,
-             'module' => 'DebugTexinfo::DebugCount'
-           },
   'debugtree' => {
           'split' => 1,
           'module' => 'DebugTexinfo::DebugTree'
