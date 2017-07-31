@@ -855,6 +855,9 @@
       var links = {};
       links[config.INDEX_ID] = navigation_links (document);
       store.dispatch (actions.cache_links (links));
+      var msg =
+        "Welcome to Texinfo documentation viewer 6.1, type '?' for help.";
+      store.dispatch (actions.warn (msg));
     }
 
     /* Handle messages received via the Message API.
