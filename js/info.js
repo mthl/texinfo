@@ -285,6 +285,12 @@
               return res;
             }
         }
+      case "iframe-ready":
+        {
+          res.ready = Object.assign ({}, res.ready);
+          res.ready[action.id] = true;
+          return res;
+        }
       case "echo":
         {
           res.echo = action.msg;
@@ -741,6 +747,7 @@
               iframe.setAttribute ("src", linkid_to_url (pageid));
               div.appendChild (iframe);
               iframe.addEventListener ("load", function () {
+                store.dispatch ({ type: "iframe-ready", id: pageid });
                 /* Send pending messages.  */
                 var msgs = resolve_page.pendings[pageid];
                 if (msgs)
@@ -888,6 +895,7 @@
       var links = {};
       links[config.INDEX_ID] = navigation_links (document);
       store.dispatch (actions.cache_links (links));
+      store.dispatch ({ type: "iframe-ready", id: config.INDEX_ID });
       store.dispatch ({
         type: "echo",
         msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
@@ -1646,6 +1654,8 @@
         index: {},
         /* page id of the current page.  */
         current: config.INDEX_ID,
+        /* dictionary associating a page id to a boolean.  */
+        ready: {},
         /* Current mode for handling history.  */
         history: "replaceState",
         /* Define the name of current text input.  */
