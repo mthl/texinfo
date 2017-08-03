@@ -749,13 +749,13 @@
               iframe.addEventListener ("load", function () {
                 store.dispatch ({ type: "iframe-ready", id: pageid });
                 /* Send pending messages.  */
-                var msgs = resolve_page.pendings[pageid];
+                var msgs = store.state.pendings[pageid];
                 if (msgs)
                   {
                     for (var i = 0; i < msgs.length; i += 1)
                       this.contentWindow.postMessage (msgs[i], "*");
                   }
-                resolve_page.pendings[pageid] = false;
+                store.state.pendings[pageid] = false;
               }, false);
             }
           if (scroll)
@@ -765,22 +765,17 @@
                  properly received we need to keep them until necessary.
                  Semantically this would be better to use "promises" however
                  they are not available in IE.  */
-              if (resolve_page.pendings[pageid] === false)
+              if (store.state.pendings[pageid] === false)
                 iframe.contentWindow.postMessage (msg, "*");
-              else if (resolve_page.pendings.hasOwnProperty (pageid))
-                resolve_page.pendings[pageid].push (msg);
+              else if (store.state.pendings.hasOwnProperty (pageid))
+                store.state.pendings[pageid].push (msg);
               else
-                resolve_page.pendings[pageid] = [msg];
+                store.state.pendings[pageid] = [msg];
             }
         }
 
       return div;
     }
-
-    /* Dictionary that associate a 'pageid' to an array of messages that are
-       not already sent to the corresponding iframe.  The array of messages is
-       replaced with FALSE when 'pageid' is loaded.  */
-    resolve_page.pendings = {};
 
     /** Create a datalist element containing option elements corresponding
         to the keys in MENU.  */
@@ -1656,6 +1651,9 @@
         current: config.INDEX_ID,
         /* dictionary associating a page id to a boolean.  */
         ready: {},
+        /* Dictionary that associate a 'pageid' to an array of messages that
+           are not already sent to the corresponding iframe.  */
+        pendings: {},
         /* Current mode for handling history.  */
         history: "replaceState",
         /* Define the name of current text input.  */
