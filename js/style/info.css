@@ -332,6 +332,8 @@ table#keyboard-shortcuts th {
     background: pink;
     z-index: 100;
     position: fixed;
+    right: 5px;
+    top: 5px;
 }
 
 .echo-area {
