@@ -1,3 +1,5 @@
 - Styling of node header
 - Handle 'n', 'p', 'u' for anchors linkids.
 - Order the datalist 'option' children using a lexicographic order
+- Make message and text inputs not overlap the iframe scroll bar
+- Implement regexp search which is associated with the 's' key
