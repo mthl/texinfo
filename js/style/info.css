@@ -333,3 +333,10 @@ table#keyboard-shortcuts th {
     z-index: 100;
     position: fixed;
 }
+
+.echo-area {
+    background: lightgrey;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}

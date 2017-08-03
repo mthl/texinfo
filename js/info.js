@@ -285,6 +285,11 @@
               return res;
             }
         }
+      case "echo":
+        {
+          res.echo = action.msg;
+          return res;
+        }
       case "warning":
         {
           res.warning = action.msg;
@@ -555,6 +560,34 @@
           this.index.render (state);
           this.menu.render (state);
           this.search.render (state);
+        }
+    };
+
+    function
+    Echo_area ()
+    {
+      var elem = document.createElement ("div");
+      elem.classList.add ("echo-area");
+      elem.setAttribute ("hidden", "true");
+
+      this.element = elem;
+      this.toid = null;
+    }
+
+    Echo_area.prototype.render = function render (state) {
+      if (!state.echo)
+        {
+          this.element.setAttribute ("hidden", "true");
+          this.toid = null;
+        }
+      else if (!this.toid)
+        {
+          var toid = window.setTimeout (function () {
+            store.dispatch ({ type: "echo", msg: null });
+          }, config.WARNING_TIMEOUT);
+          this.element.innerHTML = state.echo;
+          this.element.removeAttribute ("hidden");
+          this.toid = toid;
         }
     };
 
@@ -841,6 +874,7 @@
       components.add (new Pages (index_div));
       components.add (new Help_page ());
       components.add (new Minibuffer ());
+      components.add (new Echo_area ());
       store.listeners.push (components);
 
       if (window.location.hash)
@@ -854,9 +888,10 @@
       var links = {};
       links[config.INDEX_ID] = navigation_links (document);
       store.dispatch (actions.cache_links (links));
-      var msg =
-        "Welcome to Texinfo documentation viewer 6.1, type '?' for help.";
-      store.dispatch (actions.warn (msg));
+      store.dispatch ({
+        type: "echo",
+        msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
+      });
     }
 
     /* Handle messages received via the Message API.
