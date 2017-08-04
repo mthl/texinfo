@@ -764,14 +764,6 @@
               div.appendChild (iframe);
               iframe.addEventListener ("load", function () {
                 store.dispatch ({ type: "iframe-ready", id: pageid });
-                /* Send pending messages.  */
-                var msgs = store.state.pendings[pageid];
-                if (msgs)
-                  {
-                    for (var i = 0; i < msgs.length; i += 1)
-                      this.contentWindow.postMessage (msgs[i], "*");
-                  }
-                store.state.pendings[pageid] = false;
               }, false);
             }
           if (scroll)
@@ -781,12 +773,15 @@
                  properly received we need to keep them until necessary.
                  Semantically this would be better to use "promises" however
                  they are not available in IE.  */
-              if (store.state.pendings[pageid] === false)
+              if (store.state.ready[pageid])
                 iframe.contentWindow.postMessage (msg, "*");
-              else if (store.state.pendings.hasOwnProperty (pageid))
-                store.state.pendings[pageid].push (msg);
               else
-                store.state.pendings[pageid] = [msg];
+                {
+                  iframe.addEventListener ("load", function handler () {
+                    this.contentWindow.postMessage (msg, "*");
+                    this.removeEventListener ("load", handler, false);
+                  }, false);
+                }
             }
         }
 
@@ -1667,9 +1662,6 @@
         current: config.INDEX_ID,
         /* dictionary associating a page id to a boolean.  */
         ready: {},
-        /* Dictionary that associate a 'pageid' to an array of messages that
-           are not already sent to the corresponding iframe.  */
-        pendings: {},
         /* Current mode for handling history.  */
         history: "replaceState",
         /* Define the name of current text input.  */
