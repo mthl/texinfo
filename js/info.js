@@ -40,7 +40,7 @@
   /** A 'store' is an object managing the state of the application and having
       a dispatch method which accepts actions as parameter.  This method is
       the only way to update the state.
-      @typedef {function (Action): void} Action_consumer
+      @typedef {function ((Action|Async_action)): void} Action_consumer
       @type {{dispatch: Action_consumer, state?: any, listeners?: any[]}}.  */
   var store;
 
@@ -57,7 +57,12 @@
 
   /** @arg {Action} action */
   Store.prototype.dispatch = function dispatch (action) {
-    var new_state = this.reducer (this.state, action);
+    /* Handle asynchronous actions.  */
+    if (typeof action === "function")
+      action (this.dispatch.bind (this));
+    else
+      var new_state = this.reducer (this.state, action);
+
     if (new_state !== this.state)
       {
         this.state = new_state;
@@ -83,12 +88,23 @@
       delegate browsing context which must forwards ACTION to an actual store.
       @arg {Action} action */
   Remote_store.prototype.dispatch = function dispatch (action) {
-    this.delegate.postMessage ({ message_kind: "action", action: action }, "*");
+    /* Handle asynchronous actions.  */
+    if (typeof action === "function")
+      action (this.dispatch.bind (this));
+    else
+      {
+        var msg = { message_kind: "action", action: action };
+        this.delegate.postMessage (msg, "*");
+      }
   };
 
-  /** @typedef {{type: string, [x: string]: any}} Action - Payloads
-      of information meant to be treated by the store which can receive them
-      using the 'store.dispatch' method.  */
+  /** @typedef {{type: string, [x: string]: any}} Action
+      Payloads of information meant to be treated by the store which can
+      receive them using the 'store.dispatch' method.
+
+      @typedef {function (Action_consumer): void} Async_action
+      function that dispatch multiple 'Actions' for each state of the
+      asynchronous request.  */
 
   /* Place holder for action creators.  */
   var actions = {
