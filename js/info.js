@@ -148,8 +148,8 @@
     /** Search EXP in the whole manual.
         @arg {RegExp|string} exp*/
     search: function (exp) {
-      var rgxp = (typeof exp === "object") ? exp : new RegExp (exp);
-      return { type: "search", regexp: rgxp.toString () };
+      var rgxp = (typeof exp === "object") ? exp : new RegExp (exp, "i");
+      return { type: "search", regexp: rgxp };
     }
   };
 
@@ -260,7 +260,7 @@
         }
       case "search":
         {
-          res.regexp = action.regexp;
+          res.search = action.regexp;
           res.focus = false;
           res.help = false;
           res.text_input = null;
@@ -674,6 +674,13 @@
 
       this.element.classList[(state.help) ? "add" : "remove"] ("blurred");
 
+      if (state.search)
+        {
+          var elem = document.querySelector ("#index");
+          remove_highlight (elem);
+          depth_first_walk (elem, text_highlighter (state.search), Node.TEXT_NODE);
+        }
+
       if (state.current !== this.prev_id)
         {
           if (this.prev_id)
@@ -815,6 +822,58 @@
                 visible_url += ("#" + linkid);
               method.call (window.history, linkid, null, visible_url);
             }
+        }
+    }
+
+    /** Highlight text in NODE which match RGXP.
+        @arg {RegExp} rgxp
+        @arg {Text} node */
+    function
+    highlight_text (rgxp, node)
+    {
+      /* Skip elements corresponding to highlighted words to avoid infinite
+         recursion.  */
+      if (node.parentElement.matches ("span[class~=highlight]"))
+        return;
+
+      var matches = rgxp.exec (node.textContent);
+      if (matches)
+        {
+          /* Create an highlighted element containing first match.  */
+          var span = document.createElement ("span");
+          span.appendChild (document.createTextNode (matches[0]));
+          span.classList.add ("highlight");
+
+          var right_node = node.splitText (matches.index);
+          /* Remove first match from right node.  */
+          right_node.textContent = right_node.textContent
+                                             .slice (matches[0].length);
+          node.parentElement.insertBefore (span, right_node);
+        }
+    }
+
+    /** @arg {RegExp} rgxp
+        @return {function (Text): void} partial application of RGXP in
+        'highlight_text' */
+    function
+    text_highlighter (rgxp)
+    {
+      return function (node) { highlight_text (rgxp, node); };
+    }
+
+    /** Remove every highlighted elements and inline their text content.
+        @arg {Element} elem */
+    function
+    remove_highlight (elem)
+    {
+      var spans = elem.getElementsByClassName ("highlight");
+      /* Replace spans with their inner text node.  */
+      while (spans.length > 0)
+        {
+          var span = spans[0];
+          var parent = span.parentElement;
+          parent.replaceChild (span.firstChild, span);
+          parent.normalize ();
         }
     }
 

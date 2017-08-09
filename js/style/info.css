@@ -342,3 +342,9 @@ table#keyboard-shortcuts th {
     bottom: 0;
     right: 0;
 }
+
+.highlight {
+    background: lightgrey;
+    color: black;
+    font-style: inherit;
+}
