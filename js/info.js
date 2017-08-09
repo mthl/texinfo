@@ -154,9 +154,9 @@
   };
 
 
-  /** Update STATE based on the type of ACTION.  This update is a purely
-      fonctional meaning that STATE is not modified and a new version of it is
-      returned.
+  /** Update STATE based on the type of ACTION.  This update is purely
+      fonctional since STATE is not modified in place and a new state object
+      is returned instead.
       @arg {Object} state
       @arg {Action} action
       @return {Object} a new state */
