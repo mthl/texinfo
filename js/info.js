@@ -699,35 +699,11 @@
         {
           var link = linkid_split (state.current);
           var msg = { message_kind: "highlight", search: null };
-          var iframe = document.getElementById (link.pageid)
-                               .querySelector ("iframe");
-
-          /* XXX: Since messages sent to a not loaded iframe are not
-             properly received we need to keep them until necessary.
-             Semantically this would be better to use "promises" however
-             they are not available in IE.  */
-          if (store.state.ready[link.pageid])
-            iframe.contentWindow.postMessage (msg, "*");
-          else
-            {
-              iframe.addEventListener ("load", function handler () {
-                this.contentWindow.postMessage (msg, "*");
-                this.removeEventListener ("load", handler, false);
-              }, false);
-            }
-
+          post_message (link.pageid, msg);
           if (state.search)
             {
-              msg = { message_kind: "highlight", search: state.search };
-              if (store.state.ready[link.pageid])
-                iframe.contentWindow.postMessage (msg, "*");
-              else
-                {
-                  iframe.addEventListener ("load", function handler () {
-                    this.contentWindow.postMessage (msg, "*");
-                    this.removeEventListener ("load", handler, false);
-                  }, false);
-                }
+              var msg$ = { message_kind: "highlight", search: state.search };
+              post_message (link.pageid, msg$);
             }
         }
     };
@@ -799,19 +775,7 @@
           if (scroll)
             {
               msg = { message_kind: "scroll-to", hash: link.hash };
-              /* XXX: Since messages sent to a not loaded iframe are not
-                 properly received we need to keep them until necessary.
-                 Semantically this would be better to use "promises" however
-                 they are not available in IE.  */
-              if (store.state.ready[pageid])
-                iframe.contentWindow.postMessage (msg, "*");
-              else
-                {
-                  iframe.addEventListener ("load", function handler () {
-                    this.contentWindow.postMessage (msg, "*");
-                    this.removeEventListener ("load", handler, false);
-                  }, false);
-                }
+              post_message (pageid, msg);
             }
         }
 
@@ -861,6 +825,32 @@
                 visible_url += ("#" + linkid);
               method.call (window.history, linkid, null, visible_url);
             }
+        }
+    }
+
+    /** Send MSG to the browsing context corresponding to PAGEID.  This is a
+        wrapper around 'Window.postMessage' which ensures that MSG is sent
+        after PAGEID is loaded.
+        @arg {string} pageid
+        @arg {any} msg */
+    function
+    post_message (pageid, msg)
+    {
+      if (pageid === config.INDEX_ID)
+        window.postMessage (msg, "*");
+      else
+        {
+          var iframe = document.getElementById (pageid)
+                               .querySelector ("iframe");
+          /* Semantically this would be better to use "promises" however
+             they are not available in IE.  */
+          if (store.state.ready[pageid])
+            iframe.contentWindow.postMessage (msg, "*");
+          else
+            iframe.addEventListener ("load", function handler () {
+              this.contentWindow.postMessage (msg, "*");
+              this.removeEventListener ("load", handler, false);
+            }, false);
         }
     }
 
