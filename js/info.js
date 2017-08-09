@@ -200,6 +200,7 @@
           res.warning = null;
           res.help = false;
           res.focus = false;
+          res.search = null;
           res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
           return res;
@@ -252,6 +253,7 @@
               res.text_input = null;
               res.warning = null;
               res.help = false;
+              res.search = null;
               res.focus = false;
               res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
               res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
@@ -674,13 +676,6 @@
 
       this.element.classList[(state.help) ? "add" : "remove"] ("blurred");
 
-      if (state.search)
-        {
-          var elem = document.querySelector ("#index");
-          remove_highlight (elem);
-          depth_first_walk (elem, text_highlighter (state.search), Node.TEXT_NODE);
-        }
-
       if (state.current !== this.prev_id)
         {
           if (this.prev_id)
@@ -690,6 +685,50 @@
           div.removeAttribute ("hidden");
           this.prev_id = state.current;
           this.prev_div = div;
+        }
+
+      if (state.current === config.INDEX_ID)
+        {
+          var elem = document.querySelector ("#index");
+          remove_highlight (elem);
+          if (state.search)
+            depth_first_walk (elem, text_highlighter (state.search),
+                              Node.TEXT_NODE);
+        }
+      else
+        {
+          var link = linkid_split (state.current);
+          var msg = { message_kind: "highlight", search: null };
+          var iframe = document.getElementById (link.pageid)
+                               .querySelector ("iframe");
+
+          /* XXX: Since messages sent to a not loaded iframe are not
+             properly received we need to keep them until necessary.
+             Semantically this would be better to use "promises" however
+             they are not available in IE.  */
+          if (store.state.ready[link.pageid])
+            iframe.contentWindow.postMessage (msg, "*");
+          else
+            {
+              iframe.addEventListener ("load", function handler () {
+                this.contentWindow.postMessage (msg, "*");
+                this.removeEventListener ("load", handler, false);
+              }, false);
+            }
+
+          if (state.search)
+            {
+              msg = { message_kind: "highlight", search: state.search };
+              if (store.state.ready[link.pageid])
+                iframe.contentWindow.postMessage (msg, "*");
+              else
+                {
+                  iframe.addEventListener ("load", function handler () {
+                    this.contentWindow.postMessage (msg, "*");
+                    this.removeEventListener ("load", handler, false);
+                  }, false);
+                }
+            }
         }
     };
 
@@ -822,58 +861,6 @@
                 visible_url += ("#" + linkid);
               method.call (window.history, linkid, null, visible_url);
             }
-        }
-    }
-
-    /** Highlight text in NODE which match RGXP.
-        @arg {RegExp} rgxp
-        @arg {Text} node */
-    function
-    highlight_text (rgxp, node)
-    {
-      /* Skip elements corresponding to highlighted words to avoid infinite
-         recursion.  */
-      if (node.parentElement.matches ("span[class~=highlight]"))
-        return;
-
-      var matches = rgxp.exec (node.textContent);
-      if (matches)
-        {
-          /* Create an highlighted element containing first match.  */
-          var span = document.createElement ("span");
-          span.appendChild (document.createTextNode (matches[0]));
-          span.classList.add ("highlight");
-
-          var right_node = node.splitText (matches.index);
-          /* Remove first match from right node.  */
-          right_node.textContent = right_node.textContent
-                                             .slice (matches[0].length);
-          node.parentElement.insertBefore (span, right_node);
-        }
-    }
-
-    /** @arg {RegExp} rgxp
-        @return {function (Text): void} partial application of RGXP in
-        'highlight_text' */
-    function
-    text_highlighter (rgxp)
-    {
-      return function (node) { highlight_text (rgxp, node); };
-    }
-
-    /** Remove every highlighted elements and inline their text content.
-        @arg {Element} elem */
-    function
-    remove_highlight (elem)
-    {
-      var spans = elem.getElementsByClassName ("highlight");
-      /* Replace spans with their inner text node.  */
-      while (spans.length > 0)
-        {
-          var span = spans[0];
-          var parent = span.parentElement;
-          parent.replaceChild (span.firstChild, span);
-          parent.normalize ();
         }
     }
 
@@ -1252,6 +1239,13 @@
           else
             window.scroll (0, 0);
         }
+      else if (data.message_kind === "highlight")
+        {
+          remove_highlight (document.body);
+          if (data.search)
+            depth_first_walk (document.body, text_highlighter (data.search),
+                              Node.TEXT_NODE);
+        }
     }
 
     return {
@@ -1627,6 +1621,58 @@
     }, false);
     div.appendChild (span);
     document.body.insertBefore (div, document.body.firstChild);
+  }
+
+    /** Highlight text in NODE which match RGXP.
+      @arg {RegExp} rgxp
+      @arg {Text} node */
+  function
+  highlight_text (rgxp, node)
+  {
+    /* Skip elements corresponding to highlighted words to avoid infinite
+       recursion.  */
+    if (node.parentElement.matches ("span[class~=highlight]"))
+      return;
+
+    var matches = rgxp.exec (node.textContent);
+    if (matches)
+      {
+        /* Create an highlighted element containing first match.  */
+        var span = document.createElement ("span");
+        span.appendChild (document.createTextNode (matches[0]));
+        span.classList.add ("highlight");
+
+        var right_node = node.splitText (matches.index);
+        /* Remove first match from right node.  */
+        right_node.textContent = right_node.textContent
+                                           .slice (matches[0].length);
+        node.parentElement.insertBefore (span, right_node);
+      }
+  }
+
+  /** @arg {RegExp} rgxp
+      @return {function (Text): void} partial application of RGXP in
+      'highlight_text' */
+  function
+  text_highlighter (rgxp)
+  {
+    return function (node) { highlight_text (rgxp, node); };
+  }
+
+  /** Remove every highlighted elements and inline their text content.
+      @arg {Element} elem */
+  function
+  remove_highlight (elem)
+  {
+    var spans = elem.getElementsByClassName ("highlight");
+    /* Replace spans with their inner text node.  */
+    while (spans.length > 0)
+      {
+        var span = spans[0];
+        var parent = span.parentElement;
+        parent.replaceChild (span.firstChild, span);
+        parent.normalize ();
+      }
   }
 
   /*--------------.
