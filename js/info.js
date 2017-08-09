@@ -1649,7 +1649,9 @@
   function
   text_highlighter (rgxp)
   {
-    return function (node) { highlight_text (rgxp, node); };
+    return function (node) {
+      highlight_text (rgxp, node);
+    };
   }
 
   /** Remove every highlighted elements and inline their text content.
