@@ -697,16 +697,7 @@
         }
 
       if (state.current === config.INDEX_ID)
-        {
-          var elem = document.querySelector ("#index");
-          remove_highlight (elem);
-          if (state.search)
-            depth_first_walk (elem, text_highlighter (state.search),
-                              Node.TEXT_NODE);
-          var first_highlight = elem.querySelector (".highlight");
-          if (first_highlight)
-            first_highlight.scrollIntoView (true);
-        }
+        handle_highlight (document.querySelector ("#index"), state.search);
       else
         {
           var link = linkid_split (state.current);
@@ -1233,23 +1224,15 @@
     on_message (event)
     {
       var data = event.data;
-      if (data.message_kind === "scroll-to")
+      if (data.message_kind === "highlight")
+        handle_highlight (document.body, data.search);
+      else if (data.message_kind === "scroll-to")
         {
           /* Scroll to the anchor corresponding to HASH.  */
           if (data.hash)
             window.location.replace (data.hash);
           else
             window.scroll (0, 0);
-        }
-      else if (data.message_kind === "highlight")
-        {
-          remove_highlight (document.body);
-          if (data.search)
-            depth_first_walk (document.body, text_highlighter (data.search),
-                              Node.TEXT_NODE);
-          var first_highlight = document.body.querySelector (".highlight");
-          if (first_highlight)
-            first_highlight.scrollIntoView (true);
         }
     }
 
@@ -1677,6 +1660,23 @@
         var parent = span.parentElement;
         parent.replaceChild (span.firstChild, span);
         parent.normalize ();
+      }
+  }
+
+  /** Clear ELEM current highlights.  If SEARCH is truthy highlight it in
+      ELEM.
+      @arg {Element} elem
+      @arg {RegExp} search */
+  function
+  handle_highlight (elem, search)
+  {
+    remove_highlight (elem);
+    if (search)
+      {
+        depth_first_walk (elem, text_highlighter (search), Node.TEXT_NODE);
+        var first_highlight = elem.querySelector (".highlight");
+        if (first_highlight)
+          first_highlight.scrollIntoView (true);
       }
   }
 
