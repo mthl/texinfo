@@ -689,7 +689,13 @@
       if (state.current !== this.prev_id)
         {
           if (this.prev_id)
-            this.prev_div.setAttribute ("hidden", "true");
+            {
+              this.prev_div.setAttribute ("hidden", "true");
+              /* Remove previous highlights.  */
+              var old = linkid_split (this.prev_id);
+              var msg = { message_kind: "highlight", search: null };
+              post_message (old.pageid, msg);
+            }
           var div = resolve_page (state.current, true);
           update_history (state.current, state.history);
           div.removeAttribute ("hidden");
@@ -697,15 +703,13 @@
           this.prev_div = div;
         }
 
-      if (state.current === config.INDEX_ID)
-        handle_highlight (document.querySelector ("#index"), state.search);
-      else
+      if (state.search instanceof RegExp)
         {
-          var link = linkid_split (state.current);
-          var msg = { message_kind: "highlight", search: null };
-          post_message (link.pageid, msg);
-          if (state.search)
+          if (state.current === config.INDEX_ID)
+            handle_highlight (document.querySelector ("#index"), state.search);
+          else
             {
+              var link = linkid_split (state.current);
               var msg$ = { message_kind: "highlight", search: state.search };
               post_message (link.pageid, msg$);
             }
