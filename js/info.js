@@ -703,6 +703,9 @@
           if (state.search)
             depth_first_walk (elem, text_highlighter (state.search),
                               Node.TEXT_NODE);
+          var first_highlight = elem.querySelector (".highlight");
+          if (first_highlight)
+            first_highlight.scrollIntoView (true);
         }
       else
         {
@@ -1244,6 +1247,9 @@
           if (data.search)
             depth_first_walk (document.body, text_highlighter (data.search),
                               Node.TEXT_NODE);
+          var first_highlight = document.body.querySelector (".highlight");
+          if (first_highlight)
+            first_highlight.scrollIntoView (true);
         }
     }
 
