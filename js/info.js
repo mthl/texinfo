@@ -683,6 +683,7 @@
             }, [])
             .forEach (function (id) { return that.add_div (id); });
 
+      /* Blur pages if help screen is on.  */
       this.element.classList[(state.help) ? "add" : "remove"] ("blurred");
 
       if (state.current !== this.prev_id)
