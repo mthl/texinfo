@@ -148,11 +148,20 @@
     /** Search EXP in the whole manual.
         @arg {RegExp|string} exp*/
     search: function (exp) {
-      var rgxp = (typeof exp === "object") ? exp : new RegExp (exp, "i");
+      var rgxp;
+      if (typeof exp === "object")
+        rgxp = exp;
+      else if (exp !== "")
+        rgxp = new RegExp (exp, "i");
+      else
+        {
+          /* XXX: Not having a special case for the empty string creates an
+             infinite loop.  */
+          rgxp = /^$/;
+        }
       return { type: "search", regexp: rgxp };
     }
   };
-
 
   /** Update STATE based on the type of ACTION.  This update is purely
       fonctional since STATE is not modified in place and a new state object
