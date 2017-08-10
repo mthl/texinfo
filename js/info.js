@@ -1154,12 +1154,9 @@
       fix_links (links, true);
       scan_toc (document.body, config.INDEX_NAME);
 
-      var divs = Array.from (document.querySelectorAll ("div"));
-      divs.reverse ()
-          .forEach (function (div) {
-            if (div.getAttribute ("class") === "toc-title")
-              div.remove ();
-          });
+      /* Remove artefact from docbook export.  */
+      Array.from (document.querySelectorAll ("div.toc-title"))
+           .forEach (function (div) { div.remove (); });
 
       /* Get 'backward' and 'forward' link attributes.  */
       var dict = create_link_dict (document.querySelector ("ul"));
