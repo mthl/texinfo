@@ -342,7 +342,7 @@
       /* Create help div element.*/
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
-      div.setAttribute ("class", "modal");
+      div.classList.add ("modal");
       div.innerHTML = "\
 <div class=\"modal-content\">\
 <span class=\"close\">&times;</span>\
@@ -507,7 +507,7 @@
     {
       /* Create global container.*/
       var elem = document.createElement ("div");
-      elem.setAttribute ("class", "text-input");
+      elem.classList.add ("text-input");
 
       var menu = new Text_input ("menu");
       menu.render = function (state) {
@@ -773,7 +773,7 @@
           if (!iframe)
             {
               iframe = document.createElement ("iframe");
-              iframe.setAttribute ("class", "node");
+              iframe.classList.add ("node");
               iframe.setAttribute ("src", linkid_to_url (pageid));
               div.appendChild (iframe);
               iframe.addEventListener ("load", function () {
@@ -872,7 +872,7 @@
     {
       fix_links (document.links);
       add_icons ();
-      document.body.setAttribute ("class", "mainbar");
+      document.body.classList.add ("mainbar");
 
       /* Move contents of <body> into a a fresh <div> to let the components
          treat the index page like other iframe page.  */
@@ -1126,7 +1126,7 @@
     on_load ()
     {
       add_header ();
-      document.body.setAttribute ("class", "toc-sidebar");
+      document.body.classList.add ("toc-sidebar");
 
       /* Specify the base URL to use for all relative URLs.  */
       /* FIXME: Add base also for sub-pages.  */
