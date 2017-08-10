@@ -201,7 +201,7 @@
         }
       case "cache-index-links":
         {
-          Object.assign (res.index, action.links);
+          res.index = Object.assign ({}, res.index, action.links);
           return res;
         }
       case "current-url":
