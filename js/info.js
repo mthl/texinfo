@@ -118,9 +118,15 @@
       return { type: "cache-links", links: links };
     },
 
-    /** @arg {{[id: string]: string}} links */
+    /** @arg {NodeListOf<Element>} links */
     cache_index_links: function (links) {
-      return { type: "cache-index-links", links: links };
+      var dict = {};
+      for (var i = 0; i < links.length; i += 1)
+        {
+          var link = links[i];
+          dict[link.textContent] = href_hash (link.getAttribute ("href"));
+        }
+      return { type: "cache-index-links", links: dict };
     },
 
     /** Show or hide the help screen.  */
@@ -1204,13 +1210,7 @@
       if (linkid_contains_index (linkid))
         {
           /* Scan links that should be added to the index.  */
-          var index_links = {};
-          links = document.querySelectorAll ("a [xref]");
-          for (var i = 0; i < links.length; i += 1)
-            {
-              var key = links[i].textContent;
-              index_links[key] = href_hash (links[i].getAttribute ("href"));
-            }
+          var index_links = document.querySelectorAll ("a[xref][href]");
           store.dispatch (actions.cache_index_links (index_links));
         }
 
