@@ -497,7 +497,7 @@
       this.input.value = "";
       if (this.datalist)
         {
-          this.datalist.parentNode.removeChild (this.datalist);
+          this.datalist.remove ();
           this.datalist = null;
         }
     };
@@ -1098,7 +1098,7 @@
       var li = document.querySelector ("li");
       if (li && li.firstElementChild && li.firstElementChild.matches ("a")
           && li.firstElementChild.getAttribute ("href") === config.INDEX_NAME)
-        li.parentElement.removeChild (li);
+        li.remove ();
 
       var header = document.querySelector ("header");
       var h1 = document.querySelector ("h1");
@@ -1112,7 +1112,7 @@
           var span = document.createElement ("span");
           span.appendChild (h1.firstChild);
           div.appendChild (span);
-          h1.parentElement.removeChild (h1);
+          h1.remove ();
         }
     }
 
@@ -1158,7 +1158,7 @@
       divs.reverse ()
           .forEach (function (div) {
             if (div.getAttribute ("class") === "toc-title")
-              div.parentElement.removeChild (div);
+              div.remove ();
           });
 
       /* Get 'backward' and 'forward' link attributes.  */
@@ -1398,6 +1398,22 @@
           return to;
         };
       }
+
+    (function (protos) {
+      protos.forEach (function (proto) {
+        if (!proto.hasOwnProperty ("remove"))
+          {
+            Object.defineProperty (proto, "remove", {
+              configurable: true,
+              enumerable: true,
+              writable: true,
+              value: function value () {
+                this.parentNode.removeChild (this);
+              }
+            });
+          }
+      });
+    } ([Element.prototype, CharacterData.prototype, DocumentType.prototype]));
     /* eslint-enable no-extend-native */
   }
 
