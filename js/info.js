@@ -303,6 +303,7 @@
               res.search.status = "done";
               res.search.found = true;
               res.current = res.search.current_pageid;
+              res.history = "pushState";
               res.highlight = res.search.regexp;
             }
           else
