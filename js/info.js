@@ -309,10 +309,14 @@
           else
             {
               var fwd = forward_pageid (state, state.search.current_pageid);
-              res.search.status = (fwd === null) ? "done" : "ready";
-              res.search.current_pageid = fwd;
-              if (fwd === null)
-                res.highlight = null;
+              if (fwd !== null)
+                res.search.status = "ready";
+              else
+                {
+                  res.search.status = "done";
+                  res.warning = "Search failed";
+                  res.highlight = null;
+                }
             }
           return res;
         }
