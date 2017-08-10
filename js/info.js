@@ -861,10 +861,12 @@
           if (store.state.ready[pageid])
             iframe.contentWindow.postMessage (msg, "*");
           else
-            iframe.addEventListener ("load", function handler () {
-              this.contentWindow.postMessage (msg, "*");
-              this.removeEventListener ("load", handler, false);
-            }, false);
+            {
+              iframe.addEventListener ("load", function handler () {
+                this.contentWindow.postMessage (msg, "*");
+                this.removeEventListener ("load", handler, false);
+              }, false);
+            }
         }
     }
 
