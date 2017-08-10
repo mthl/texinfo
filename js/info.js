@@ -1095,16 +1095,16 @@
     function
     add_header ()
     {
-      var li = document.querySelector ("li");
-      if (li && li.firstElementChild && li.firstElementChild.matches ("a")
-          && li.firstElementChild.getAttribute ("href") === config.INDEX_NAME)
-        li.remove ();
+      var pattern = "li a[href=\"" + config.INDEX_NAME + "\"]";
+      var a = document.querySelector (pattern);
+      if (a)
+        a.parentElement.remove ();
 
       var header = document.querySelector ("header");
       var h1 = document.querySelector ("h1");
       if (header && h1)
         {
-          var a = document.createElement ("a");
+          a = document.createElement ("a");
           a.setAttribute ("href", config.INDEX_NAME);
           header.appendChild (a);
           var div = document.createElement ("div");
