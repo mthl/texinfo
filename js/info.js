@@ -165,7 +165,7 @@
              infinite loop.  */
           rgxp = /^$/;
         }
-      return { type: "search", regexp: rgxp };
+      return { type: "search-init", regexp: rgxp };
     }
   };
 
@@ -275,13 +275,42 @@
               return res;
             }
         }
-      case "search":
+      case "search-init":
         {
-          res.search = action.regexp;
+          res.search = {
+            regexp: action.regexp,
+            status: "ready",
+            current_pageid: state.current,
+            found: false
+          };
           res.focus = false;
           res.help = false;
           res.text_input = null;
           res.warning = null;
+          return res;
+        }
+      case "search-query":
+        {
+          res.search = Object.assign ({}, state.search);
+          res.search.status = "searching";
+          return res;
+        }
+      case "search-result":
+        {
+          res.search = Object.assign ({}, state.search);
+          if (action.found)
+            {
+              res.search.status = "done";
+              res.search.found = true;
+              res.current = res.search.current_pageid;
+              res.highlight = res.search.regexp;
+            }
+          else
+            {
+              var fwd = forward_pageid (state, state.search.current_pageid);
+              res.search.status = (fwd === null) ? "done" : "ready";
+              res.search.current_pageid = fwd;
+            }
           return res;
         }
       case "input":
@@ -372,7 +401,7 @@
     <tr><th colspan=\"2\">Searching</th></tr>\
     <tr><td><code><b>i</b></code></td><td>search in the index</td></tr>\
     <tr><td><code><b>s</b></code></td>\
-        <td>global search in the manual (not implemented)</td></tr>\
+        <td>global search in the manual (experimental)</td></tr>\
     <tr><td><code><b>m</b></code></td>\
         <td>search in current node menu</td></tr>\
   </tbody>\
@@ -709,15 +738,44 @@
           this.prev_div = div;
         }
 
-      if (state.search instanceof RegExp)
+      if (state.search && state.search.status === "ready")
+        {
+          if (state.search.current_pageid === config.INDEX_ID)
+            {
+              window.setTimeout (function () {
+                store.dispatch ({ type: "search-query" });
+                var res = search (document.getElementById (config.INDEX_ID),
+                                  state.search.regexp);
+                store.dispatch ({ type: "search-result", found: res });
+              }, 0);
+            }
+          else
+            {
+              window.setTimeout (function () {
+                store.dispatch ({ type: "search-query" });
+                var msg = {
+                  message_kind: "search",
+                  regexp: state.search.regexp,
+                  id: state.search.current_pageid
+                };
+                post_message (state.search.current_pageid, msg);
+              }, 0);
+            }
+        }
+
+      if (state.highlight)
         {
           if (state.current === config.INDEX_ID)
-            handle_highlight (document.querySelector ("#index"), state.search);
+            {
+              handle_highlight (document.getElementById (config.INDEX_ID),
+                                state.highlight);
+            }
           else
             {
               var link = linkid_split (state.current);
-              var msg$ = { message_kind: "highlight", search: state.search };
-              post_message (link.pageid, msg$);
+              var regexp = state.highlight;
+              var msg$ = { message_kind: "highlight", regexp: regexp };
+              post_message (link.pageid, msg);
             }
         }
     };
@@ -748,8 +806,11 @@
     {
       var div = resolve_page (pageid, false);
       /* Making the iframe visible triggers the load of the iframe DOM.  */
-      div.removeAttribute ("hidden");
-      div.setAttribute ("hidden", "true");
+      if (div.hasAttribute ("hidden"))
+        {
+          div.removeAttribute ("hidden");
+          div.setAttribute ("hidden", "true");
+        }
     }
 
     /** Return the div element that correspond to LINKID.  If SCROLL is true
@@ -854,6 +915,7 @@
         window.postMessage (msg, "*");
       else
         {
+          load_page (pageid);
           var iframe = document.getElementById (pageid)
                                .querySelector ("iframe");
           /* Semantically this would be better to use "promises" however
@@ -1226,6 +1288,11 @@
       var data = event.data;
       if (data.message_kind === "highlight")
         handle_highlight (document.body, data.search);
+      else if (data.message_kind === "search")
+        {
+          var found = search (document.body, data.regexp);
+          store.dispatch ({ type: "search-result", found: found });
+        }
       else if (data.message_kind === "scroll-to")
         {
           /* Scroll to the anchor corresponding to HASH.  */
@@ -1627,7 +1694,41 @@
     document.body.insertBefore (div, document.body.firstChild);
   }
 
-    /** Highlight text in NODE which match RGXP.
+  /** Check if ELEM matches SEARCH
+      @arg {Element} elem
+      @arg {RegExp} rgxp */
+  function
+  search (elem, rgxp)
+  {
+    if (!rgxp)
+      throw new Error ("RGXP argument must be provided");
+
+    var res = false;
+    depth_first_walk (elem, function find (node) {
+      res = res || rgxp.test (node.textContent);
+    }, Node.TEXT_NODE);
+    return res;
+  }
+
+  /** Find the pageid corresponding to forward direction.
+      @arg {any} state
+      @arg {string} linkid
+      @return {string} the forward pageid */
+  function
+  forward_pageid (state, linkid)
+  {
+    var data = state.loaded_nodes[linkid];
+    if (!data)
+      throw new Error ("page not loaded: " + linkid);
+    else if (!data.forward)
+      return null;
+    else if (linkid_split (data.forward).pageid !== linkid)
+      return data.forward;
+    else
+      return forward_pageid (state, data.forward);
+  }
+
+  /** Highlight text in NODE which match RGXP.
       @arg {RegExp} rgxp
       @arg {Text} node */
   function
