@@ -1135,28 +1135,26 @@
                          window.location.href.replace (/[/][^/]*$/, "/"));
       document.head.appendChild (base);
 
-      var links = Array.from (document.links);
-
       /* Create a link referencing the Table of content.  */
       var toc_a = document.createElement ("a");
       toc_a.setAttribute ("href", config.TOC_FILENAME);
       toc_a.appendChild (document.createTextNode ("Table of Contents"));
       var toc_li = document.createElement ("li");
       toc_li.appendChild (toc_a);
-      var index_li = links[links.length - 1].parentElement;
+      var index_li = document.links[document.links.length - 1].parentElement;
       var index_grand = index_li.parentElement.parentElement;
       /* XXX: hack */
       if (index_grand.matches ("li"))
         index_li = index_grand;
       index_li.parentElement.insertBefore (toc_li, index_li.nextSibling);
 
-      links.push (toc_a);
-      fix_links (links, true);
+      fix_links (document.links, true);
       scan_toc (document.body, config.INDEX_NAME);
 
       /* Remove artefact from docbook export.  */
-      Array.from (document.querySelectorAll ("div.toc-title"))
-           .forEach (function (div) { div.remove (); });
+      var divs = document.querySelectorAll ("div.toc-title");
+      for (var i = 0; i < divs.length; i += 1)
+        divs[i].remove ();
 
       /* Get 'backward' and 'forward' link attributes.  */
       var dict = create_link_dict (document.querySelector ("ul"));
@@ -1205,16 +1203,14 @@
 
       if (linkid_contains_index (linkid))
         {
-          /* Scan links that show be added to the index.  */
-          var index_links =
-              Array.from (document.links)
-                   .filter (function (l) { return l.hasAttribute ("xref"); })
-                   .reduce (function (acc, link) {
-                     var linkid = href_hash (link.getAttribute ("href"));
-                     var key = link.textContent;
-                     acc[key] = linkid;
-                     return acc;
-                   }, {});
+          /* Scan links that should be added to the index.  */
+          var index_links = {};
+          links = document.querySelectorAll ("a [xref]");
+          for (var i = 0; i < links.length; i += 1)
+            {
+              var key = links[i].textContent;
+              index_links[key] = href_hash (links[i].getAttribute ("href"));
+            }
           store.dispatch (actions.cache_index_links (index_links));
         }
 
