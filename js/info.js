@@ -215,7 +215,7 @@
           res.warning = null;
           res.help = false;
           res.focus = false;
-          res.search = null;
+          res.highlight = null;
           res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
           return res;
@@ -268,7 +268,7 @@
               res.text_input = null;
               res.warning = null;
               res.help = false;
-              res.search = null;
+              res.highlight = null;
               res.focus = false;
               res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
               res.loaded_nodes[action.url] = res.loaded_nodes[action.url] || {};
@@ -310,6 +310,8 @@
               var fwd = forward_pageid (state, state.search.current_pageid);
               res.search.status = (fwd === null) ? "done" : "ready";
               res.search.current_pageid = fwd;
+              if (fwd === null)
+                res.highlight = null;
             }
           return res;
         }
@@ -728,7 +730,7 @@
               this.prev_div.setAttribute ("hidden", "true");
               /* Remove previous highlights.  */
               var old = linkid_split (this.prev_id);
-              var msg = { message_kind: "highlight", search: null };
+              var msg = { message_kind: "highlight", regexp: null };
               post_message (old.pageid, msg);
             }
           var div = resolve_page (state.current, true);
@@ -763,20 +765,18 @@
             }
         }
 
-      if (state.highlight)
+      /* Update highlight of current page.  */
+      if (state.current === config.INDEX_ID)
         {
-          if (state.current === config.INDEX_ID)
-            {
-              handle_highlight (document.getElementById (config.INDEX_ID),
-                                state.highlight);
-            }
-          else
-            {
-              var link = linkid_split (state.current);
-              var regexp = state.highlight;
-              var msg$ = { message_kind: "highlight", regexp: regexp };
-              post_message (link.pageid, msg$);
-            }
+          handle_highlight (document.getElementById (config.INDEX_ID),
+                            state.highlight);
+        }
+      else
+        {
+          var link = linkid_split (state.current);
+          var regexp = state.highlight;
+          var msg$ = { message_kind: "highlight", regexp: regexp };
+          post_message (link.pageid, msg$);
         }
     };
 
@@ -1287,7 +1287,7 @@
     {
       var data = event.data;
       if (data.message_kind === "highlight")
-        handle_highlight (document.body, data.search);
+        handle_highlight (document.body, data.regexp);
       else if (data.message_kind === "search")
         {
           var found = search (document.body, data.regexp);
