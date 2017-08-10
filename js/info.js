@@ -775,7 +775,7 @@
               var link = linkid_split (state.current);
               var regexp = state.highlight;
               var msg$ = { message_kind: "highlight", regexp: regexp };
-              post_message (link.pageid, msg);
+              post_message (link.pageid, msg$);
             }
         }
     };
