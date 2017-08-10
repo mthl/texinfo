@@ -280,7 +280,7 @@
           res.search = {
             regexp: action.regexp,
             status: "ready",
-            current_pageid: state.current,
+            current_pageid: linkid_split (state.current).pageid,
             found: false
           };
           res.focus = false;
@@ -1730,10 +1730,15 @@
       throw new Error ("page not loaded: " + linkid);
     else if (!data.forward)
       return null;
-    else if (linkid_split (data.forward).pageid !== linkid)
-      return data.forward;
     else
-      return forward_pageid (state, data.forward);
+      {
+        var cur = linkid_split (linkid);
+        var fwd = linkid_split (data.forward);
+        if (!fwd.hash && fwd.pageid !== cur.pageid)
+          return fwd.pageid;
+        else
+          return forward_pageid (state, data.forward);
+      }
   }
 
   /** Highlight text in NODE which match RGXP.
