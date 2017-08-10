@@ -1640,7 +1640,7 @@
   {
     /* Skip elements corresponding to highlighted words to avoid infinite
        recursion.  */
-    if (node.parentElement.matches ("span[class~=highlight]"))
+    if (node.parentElement.matches ("span.highlight"))
       return;
 
     var matches = rgxp.exec (node.textContent);
