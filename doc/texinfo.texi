@@ -18773,7 +18773,7 @@ feature.
 @cindex Footnote styles, in HTML
 @strong{Footnotes:} for HTML, when the footnote style is @samp{end},
 or if the output is not split, footnotes are put at the end of the
-output.  If the footnoet style is set to @samp{separate}, and the
+output.  If the footnote style is set to @samp{separate}, and the
 output is split, they are placed in a separate file.  @xref{Footnote
 Styles}.
 
