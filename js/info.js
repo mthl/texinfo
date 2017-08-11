@@ -1831,6 +1831,7 @@
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
   if (features && !(features.es5
+                    && features.classlist
                     && features.eventlistener
                     && features.hidden
                     && features.history

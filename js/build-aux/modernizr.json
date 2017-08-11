@@ -1,11 +1,12 @@
 {
   "options": [],
   "feature-detects": [
-    "test/eventlistener",
-    "test/es5/specification",
-    "test/history",
+    "test/dom/classlist",
     "test/dom/hidden",
     "test/elem/datalist",
+    "test/es5/specification",
+    "test/eventlistener",
+    "test/history",
     "test/postmessage",
     "test/queryselector",
     "test/window/framed"
