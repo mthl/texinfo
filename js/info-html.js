@@ -678,6 +678,9 @@
       div.classList.add ("toc-sidebar");
       div$.appendChild (div);
       this.element.appendChild (div$);
+
+      /* Remove table of contents header.  */
+      document.querySelector (".contents-heading").remove ();
     }
 
     /* Render 'sidebar' according to STATE which is a new state. */
