@@ -51,6 +51,7 @@ endif
 ## ---------- ##
 
 examples = \
+  examples/hello-html \
   examples/hello-xhtml \
   examples/kawa-xhtml
 
@@ -107,6 +108,14 @@ examples/kawa-xhtml: examples/kawa/kawa.xml
 CLEANFILES = \
   examples/kawa/kawa.xml \
   examples/hello/hello.xml
+
+html_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
+
+examples/hello-html: examples/hello/hello.texi
+	$(MAKEINFO) -I=$(srcdir) --html \
+	  -c EXTRA_HEAD=$(html_extra_head) \
+	  examples/hello/hello.texi -o $@ && \
+	cp modernizr.js info-html.js style/info-html.css $@
 
 clean-local:
 	rm -rf $(examples)

@@ -1,0 +1,350 @@
+@namespace "http://www.w3.org/1999/xhtml";
+
+/*------------------------.
+| Default Docbook rules.  |
+`------------------------*/
+
+/* Those rules are copied from the docbook default "docbook-epub.css".
+   TODO: Remove unused rules.  */
+
+/* block.xsl */
+
+.formalpara-title {
+  font-weight: bold;
+}
+
+div.blockquote-title {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+span.msgmain-title {
+  font-weight: bold;
+}
+
+span.msgsub-title {
+  font-weight: bold;
+}
+
+span.msgrel-title {
+  font-weight: bold;
+}
+
+div.msglevel, div.msgorig, div.msgaud {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+span.msglevel-title, span.msgorig-title, span.msgaud-title {
+  font-weight: bold;
+}
+
+div.msgexplan {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+span.msgexplan-title {
+  font-weight: bold;
+}
+
+div.slider {
+  border: 0.5pt solid black;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding: 8px;
+}
+
+/* autotoc.xsl */
+
+nav>ol>li>a {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+/* formal.xsl */
+
+div.figure-title {
+  font-weight: bold;
+}
+
+div.example-title {
+  font-weight: bold;
+}
+
+div.equation-title {
+  font-weight: bold;
+}
+
+div.table-title {
+  font-weight: bold;
+}
+
+div.sidebar-title {
+  font-weight: bold;
+}
+
+/* verbatim.xsl */
+
+div.programlisting {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+div.screen {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+div.synopsis {
+  white-space: pre-wrap;
+  font-family: monospace;
+}
+
+/* Navigation */
+
+nav ol {
+list-style-type: none;
+margin: 0 0 0 2em;
+padding: 0 0 0 0;
+}
+
+nav ol li {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+}
+
+nav ol li a {
+text-decoration: none;
+color: black;
+font-family: sans-serif;
+}
+
+#guide {
+display: none;
+}
+
+/*---------------.
+| Custom rules.  |
+`---------------*/
+
+/* Those rules are additional customizations initially taken from the
+   Kawa manual.  */
+
+span.ignore { display: none }
+
+code[class="literal"] strong { color: purple }
+p[class="synopsis"] code strong { color: purple }
+p[class="synopsis"] code[class="function"] { color: purple }
+p[class="synopsis"] code[class="varname"] { color: purple }
+
+p[class="synopsis"][kind="Procedure"] code[class="function"]:before,
+  p[class="synopsis"][kind="Predicate"] code[class="function"]:before,
+  p[class="synopsis"][kind="Constructor"] code[class="function"]:before,
+  p[class="synopsis"][kind="Syntax"] code[class="function"]:before
+{ content: "("; font-weight: bold; font-family: monospace; color: purple; }
+p[class="synopsis"][kind="Procedure"]:after,
+  p[class="synopsis"][kind="Predicate"]:after,
+  p[class="synopsis"][kind="Constructor"]:after,
+  p[class="synopsis"][kind="Syntax"]:after
+{ content: ")"; font-weight: bold; font-family: monospace; color: purple }
+
+p.synopsis span.kind { float: right; padding-left: 2em }
+p.synopsis span.kind:before { content: "[" }
+p.synopsis span.kind:after { content: "]" }
+p.synopsis > code { font-weight: bold; }
+blockquote { margin-left: 40px; margin-right: 40px }
+
+strong.userinput { background-color: #FFFFD0 } /* a pale yellow */
+span.userinput { background-color: #FFFFD0 } /* a pale yellow */
+span.prompt { background-color: #E0FFE0 } /* a pale green */
+
+body.mainbar {
+    background: #fffff5;
+    padding-left: 25%;
+}
+div[node][hidden] {
+    top: 20px; bottom: 0pt;
+    position: absolute;
+    display: none
+}
+
+div[node] {
+    left: 25%;
+    width: 75%; height: auto;
+    top: 0pt; bottom: 0pt;
+    position: absolute;
+    overflow: hidden;
+}
+/* The initial contents are put into a separate node.  Unlike the other
+ *  nodes, it is *not* in an <iframe>, so needs different handling. */
+div[node]#index {
+    overflow: auto
+}
+div[node]#index header {
+    margin: 8px;
+}
+iframe.node {
+   width: 100%; height: 100%; border: none; margin: 0px;padding: 0px;
+}
+
+#slider {
+    position: fixed;
+    top: 0em; right: 25%; bottom: 0em; left: 0em;
+    height: 100%;
+    width: 25%;
+    overflow: scroll;
+    border: none;
+}
+
+div.toc-sidebar div img {
+    border: none;
+    padding: 4px;
+    float: right;
+    width: 40%;
+    height: auto
+}
+div.toc-sidebar header {
+    font-size: xx-large;
+}
+div.toc ul[toc-detail] {
+    display: none
+}
+div.toc a[toc-current] {
+  font-weight: bold
+}
+div.toc li {
+  display: block;
+  text-indent: 0;
+  text-align: left;
+  border: solid;
+  border-width: 1px 0px 0px 1px;
+  border-color: #AAA #666 #666 #AAA;
+  list-style: none }     /* Remove triangle from H2 */
+div.toc ul
+{
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+div.toc-sidebar div { padding: 0.4ex; overflow: auto }
+div.toc-sidebar { background-color: #F4FCFF; margin: 0pt }
+div.toc-sidebar a { text-decoration: none }
+div.toc { background-color: #F4FCFF }
+div.toc li { padding: 0px 4px;}
+div.toc li { margin: 0 ; }
+
+div.toc nav {padding: 0; margin: 0 }
+div.toc ul {padding: 0; margin: 0 }
+
+div.toc ul ul, div.toc ul ul { margin-left: 1em; }
+div.toc-sidebar a:hover, div.toc-sidebar a:hover div {
+    color: #fff;
+    background-color: #69C;
+}
+
+.blurred {
+    opacity: 0.2;
+}
+
+table#keyboard-shortcuts {
+    margin: 20px;
+}
+
+table#keyboard-shortcuts td {
+    padding: 5px;
+}
+
+table#keyboard-shortcuts th {
+    text-align: left;
+}
+
+#icon-bar {
+    float: right;
+}
+
+#icon-bar a {
+    color: #fff;
+    background-color: #444;
+}
+
+/* The Modal (background) hidden by default */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 25%;
+    top: 0;
+    width: 75%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Icons in the icon bar.  */
+.icon {
+    color: #aaaaaa;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.icon:hover,
+.icon:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.warning {
+    background-color: orange;
+    padding: 5px;
+    float: right;
+}
+
+.text-input {
+    background: pink;
+    z-index: 100;
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
+
+.echo-area {
+    background: lightgrey;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.highlight {
+    background: lightgrey;
+    color: black;
+    font-style: inherit;
+}
