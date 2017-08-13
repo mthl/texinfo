@@ -662,10 +662,22 @@
       this.element = document.createElement ("div");
       this.element.setAttribute ("id", "slider");
       var div = document.createElement ("div");
-      div.classList.add ("toc-sidebar");
+      div.classList.add ("toc");
       var toc = document.querySelector (".contents");
-      div.appendChild (toc);
-      this.element.appendChild (div);
+      toc.remove ();
+
+      /* Move contents of <body> into a a fresh <div> to let the components
+         treat the index page like other iframe page.  */
+      var nav = document.createElement ("nav");
+      nav.classList.add ("contents");
+      for (var ch = toc.firstChild; ch; ch = toc.firstChild)
+        nav.appendChild (ch);
+
+      div.appendChild (nav);
+      var div$ = document.createElement ("div");
+      div.classList.add ("toc-sidebar");
+      div$.appendChild (div);
+      this.element.appendChild (div$);
     }
 
     /* Render 'sidebar' according to STATE which is a new state. */
@@ -1163,28 +1175,24 @@
       return links;
     }
 
-    /* Add a link from TOC_FILENAME to the main index file.  */
+    /* Add a link from the sidebar to the main index file.  ELEM is the first
+       sibling of the newly created header.  */
     function
-    add_header ()
+    add_header (elem)
     {
-      var pattern = "li a[href=\"" + config.INDEX_NAME + "\"]";
-      var a = document.querySelector (pattern);
-      if (a)
-        a.parentElement.remove ();
-
-      var header = document.querySelector ("header");
-      var h1 = document.querySelector ("h1");
-      if (header && h1)
+      var h1 = document.querySelector ("h1.settitle");
+      if (h1)
         {
-          a = document.createElement ("a");
+          var header = document.createElement ("header");
+          var a = document.createElement ("a");
           a.setAttribute ("href", config.INDEX_NAME);
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
           var span = document.createElement ("span");
-          span.appendChild (h1.firstChild);
+          span.textContent = h1.textContent;
           div.appendChild (span);
-          h1.remove ();
+          elem.parentElement.insertBefore (header, elem);
         }
     }
 
@@ -1197,7 +1205,8 @@
     function
     on_load ()
     {
-      add_header ();
+      var toc_div = document.getElementById ("slider");
+      add_header (toc_div.querySelector (".contents"));
 
       /* Specify the base URL to use for all relative URLs.  */
       /* FIXME: Add base also for sub-pages.  */
@@ -1206,11 +1215,10 @@
                          window.location.href.replace (/[/][^/]*$/, "/"));
       document.head.appendChild (base);
 
-      var toc_div = document.getElementById ("slider");
       scan_toc (toc_div, config.INDEX_NAME);
 
       /* Get 'backward' and 'forward' link attributes.  */
-      var dict = create_link_dict (toc_div.querySelector ("div.contents ul"));
+      var dict = create_link_dict (toc_div.querySelector ("nav.contents ul"));
       store.dispatch (actions.cache_links (dict));
     }
 
