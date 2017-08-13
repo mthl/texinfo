@@ -1206,11 +1206,11 @@
                          window.location.href.replace (/[/][^/]*$/, "/"));
       document.head.appendChild (base);
 
-      fix_links (document.querySelector ("div.contents a"), true);
-      scan_toc (document.body, config.INDEX_NAME);
+      var toc_div = document.getElementById ("slider");
+      scan_toc (toc_div, config.INDEX_NAME);
 
       /* Get 'backward' and 'forward' link attributes.  */
-      var dict = create_link_dict (document.querySelector ("div.contents ul"));
+      var dict = create_link_dict (toc_div.querySelector ("div.contents ul"));
       store.dispatch (actions.cache_links (dict));
     }
 
@@ -1532,6 +1532,12 @@
         else
           {
             var href$ = with_sidebar_query (href);
+            /* XXX: A 'Top' anchor element is present in 'config.INDEX_NAME'
+             and navigation links refers to that anchor when accessing the top
+             node.  This doesn't fit the model we used previously so we need
+             to replace all those links.  */
+            if (href$ === config.INDEX_NAME + "#index.Top")
+              href$ = config.INDEX_NAME;
             link.setAttribute ("href", href$);
             if (id)
               {
