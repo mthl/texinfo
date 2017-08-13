@@ -1499,10 +1499,13 @@
         /* XXX: Do not use the URL API for IE portability.  */
         var url = with_sidebar_query.url;
         url.setAttribute ("href", href);
-        var new_hash = basename (url.pathname, /[.]x?html/);
-        if (url.hash)
+        var new_hash = "#" + basename (url.pathname, /[.]x?html/);
+        /* XXX: 'new_hash !== url.hash' is a workaround to work with links
+           produced by makeinfo which link to an anchor element in a page
+           instead of directly to the page. */
+        if (url.hash && new_hash !== url.hash)
           new_hash += ("." + url.hash.slice (1));
-        return config.INDEX_NAME + "#" + new_hash;
+        return config.INDEX_NAME + new_hash;
       }
   }
 
