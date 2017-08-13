@@ -1674,7 +1674,13 @@
         var link = links[i];
         var nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
         if (nav_id)
-          res[nav_id] = href_hash (link.getAttribute ("href"));
+          {
+            var href = basename (link.getAttribute ("href"));
+            if (href === config.INDEX_NAME)
+              res[nav_id] = config.INDEX_ID;
+            else
+              res[nav_id] = href_hash (href);
+          }
         else /* this link is part of local table of content. */
           {
             res.menu = res.menu || {};
