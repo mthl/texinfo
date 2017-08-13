@@ -1549,12 +1549,13 @@
         else
           {
             var href$ = with_sidebar_query (href);
-            /* XXX: A 'Top' anchor element is present in 'config.INDEX_NAME'
-             and navigation links refers to that anchor when accessing the top
-             node.  This doesn't fit the model we used previously so we need
-             to replace all those links.  */
-            if (href$ === config.INDEX_NAME + "#index.Top")
+            /* XXX: Anchor elements are present in 'config.INDEX_NAME' but
+               this doesn't fit the model we used previously so we need to
+               replace all those links for now.  */
+            if (href$ === config.INDEX_NAME + "#index.Top"
+                || href$ === config.INDEX_NAME + "#index.SEC_Contents")
               href$ = config.INDEX_NAME;
+
             link.setAttribute ("href", href$);
             if (id)
               {
