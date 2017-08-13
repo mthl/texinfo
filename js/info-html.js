@@ -1186,6 +1186,7 @@
           var header = document.createElement ("header");
           var a = document.createElement ("a");
           a.setAttribute ("href", config.INDEX_NAME);
+          a.setAttribute ("name", config.INDEX_ID);
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
@@ -1236,7 +1237,11 @@
           var filename = (selected === config.INDEX_ID) ?
               config.INDEX_NAME : (selected + config.EXT);
           scan_toc (toc_div, filename);
-          var elem = document.querySelector ("a[name=\"" + selected + "\"]");
+
+          var elem =
+            toc_div.querySelector ((selected === config.INDEX_ID) ?
+                                   "a[href=\"" + config.INDEX_NAME + "\"]" :
+                                   "a[href$=\"" + selected + "\"]");
           if (elem)
             elem.scrollIntoView (true);
         }
