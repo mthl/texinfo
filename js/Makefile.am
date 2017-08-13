@@ -23,7 +23,7 @@ phony =
 if HAVE_ESLINT
 phony += lint
 lint:
-	$(ESLINT) -c build-aux/eslint.json info.js -f unix
+	$(ESLINT) -c build-aux/eslint.json info.js info-html.js -f unix
 endif
 
 if HAVE_TYPESCRIPT
