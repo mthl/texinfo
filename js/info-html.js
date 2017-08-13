@@ -1231,11 +1231,12 @@
         {
           /* Highlight the current LINKID in the table of content.  */
           var selected = data.selected;
-          clear_toc_styles (document.body);
+          var toc_div = document.getElementById ("slider");
+          clear_toc_styles (toc_div);
           var filename = (selected === config.INDEX_ID) ?
               config.INDEX_NAME : (selected + config.EXT);
-          scan_toc (document.body, filename);
-          var elem = document.getElementById (selected);
+          scan_toc (toc_div, filename);
+          var elem = document.querySelector ("a[name=\"" + selected + "\"]");
           if (elem)
             elem.scrollIntoView (true);
         }
