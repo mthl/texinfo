@@ -53,6 +53,7 @@ endif
 examples = \
   examples/hello-html \
   examples/hello-xhtml \
+  examples/kawa-html \
   examples/kawa-xhtml
 
 # Javascript files that will be included in the html pages.  The order
@@ -115,6 +116,12 @@ examples/hello-html: examples/hello/hello.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(html_extra_head) \
 	  examples/hello/hello.texi -o $@ && \
+	cp modernizr.js info-html.js style/info-html.css $@
+
+examples/kawa-html: examples/kawa/kawa.texi
+	$(MAKEINFO) -I=$(srcdir) --html \
+	  -c EXTRA_HEAD=$(html_extra_head) \
+	  examples/kawa/kawa.texi -o $@ && \
 	cp modernizr.js info-html.js style/info-html.css $@
 
 clean-local:
