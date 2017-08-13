@@ -1834,8 +1834,7 @@
 
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
-  if (features && !(true
-                    && features.es5
+  if (features && !(features.es5
                     && features.classlist
                     && features.eventlistener
                     && features.hidden
@@ -1855,20 +1854,6 @@
         window.setTimeout (function () {
           document.body.removeChild (div);
         }, config.WARNING_TIMEOUT);
-
-        /* Ensure that the file extensions of links are correct.
-           XXX: This should be done statically.  */
-        if (config.EXT === ".xhtml")
-          return;
-
-        for (var i = 0; i < document.links.length; i += 1)
-          {
-            var link = document.links[i];
-            var href = link.getAttribute ("href");
-            /* Modify href only for relative URL.  */
-            if (href && href.indexOf && href.indexOf (":") < 0)
-              link.setAttribute ("href", href.replace (/\.xhtml/, ".html"));
-          }
       };
 
       return;
