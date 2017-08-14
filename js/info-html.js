@@ -28,6 +28,7 @@
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
+    MAIN_ANCHORS: ["Top", "SEC_Contents"],
     WARNING_TIMEOUT: 3000,
     DEBUG: true
   };
@@ -239,21 +240,27 @@
         }
       case "navigate":
         {
-          var ids = state.loaded_nodes[state.current];
+          var current = state.current;
+          var link = linkid_split (state.current);
+
+          /* Handle inner 'config.INDEX_NAME' anchors specially.  */
+          if (link.pageid === config.INDEX_ID)
+            current = config.INDEX_ID;
+
+          var ids = state.loaded_nodes[current];
           linkid = ids[action.direction];
           if (!linkid)
             {
-              /* When STATE.CURRENT is in index but doesn't have the requested
+              /* When CURRENT is in index but doesn't have the requested
                  direction, ask its corresponding 'pageid'.  */
               var is_index_ref =
                 Object.keys (state.index)
                       .reduce (function (acc, val) {
-                        return acc || state.index[val] === state.current;
+                        return acc || state.index[val] === current;
                       }, false);
               if (is_index_ref)
                 {
-                  var parent = linkid_split (state.current).pageid;
-                  ids = state.loaded_nodes[parent];
+                  ids = state.loaded_nodes[link.pageid];
                   linkid = ids[action.direction];
                 }
             }
@@ -1014,8 +1021,12 @@
       if (window.location.hash)
         {
           var linkid = window.location.hash.slice (1);
-          var action = actions.set_current_url (linkid, "replaceState");
-          store.dispatch (action);
+          /* XXX: Some anchor elements are present in 'config.INDEX_NAME' and
+             we need to handle link to them specially (i.e. not try to find
+             their corresponding iframe).  */
+          if (config.MAIN_ANCHORS.includes (linkid))
+            linkid = config.INDEX_ID + "." + linkid;
+          store.dispatch (actions.set_current_url (linkid, "replaceState"));
         }
 
       /* Retrieve NEXT link and local menu.  */
@@ -1046,7 +1057,17 @@
     function
     on_popstate (event)
     {
-      var linkid = event.state;
+      /* When EVENT.STATE is 'null' it means that the user has manually
+         changed the hash part of the URL bar.  */
+      var linkid = (event.state === null) ?
+        window.location.hash.slice (1) : event.state;
+
+      /* XXX: Some anchor elements are present in 'config.INDEX_NAME' and we
+         need to handle link to them specially (i.e. not try to find their
+         corresponding iframe).  */
+      if (config.MAIN_ANCHORS.includes (linkid))
+        linkid = config.INDEX_ID + "." + linkid;
+
       store.dispatch (actions.set_current_url (linkid, false));
     }
 
@@ -1558,13 +1579,6 @@
         else
           {
             var href$ = with_sidebar_query (href);
-            /* XXX: Anchor elements are present in 'config.INDEX_NAME' but
-               this doesn't fit the model we used previously so we need to
-               replace all those links for now.  */
-            if (href$ === config.INDEX_NAME + "#index.Top"
-                || href$ === config.INDEX_NAME + "#index.SEC_Contents")
-              href$ = config.INDEX_NAME;
-
             link.setAttribute ("href", href$);
             if (id)
               {
