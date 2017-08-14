@@ -855,11 +855,15 @@
           throw new ReferenceError (msg);
         }
 
-      /* Create iframe if necessary.  Index page is not inside an iframe.  */
+      /* Create iframe if necessary unless the div is refering to the Index
+         page.  */
       if ((pageid === config.INDEX_ID) && visible)
         {
           div.removeAttribute ("hidden");
-          div.scroll (0, 0);
+          /* Unlike iframes, Elements are unlikely to be scrollable (CSSOM
+             Scroll-behavior), so choose an arbitrary element inside "index"
+             div and at the top of it.  */
+          document.getElementById ("icon-bar").scrollIntoView ();
         }
       else
         {
