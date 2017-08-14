@@ -1024,12 +1024,7 @@
 
       if (window.location.hash)
         {
-          var linkid = window.location.hash.slice (1);
-          /* XXX: Some anchor elements are present in 'config.INDEX_NAME' and
-             we need to handle link to them specially (i.e. not try to find
-             their corresponding iframe).  */
-          if (config.MAIN_ANCHORS.includes (linkid))
-            linkid = config.INDEX_ID + "." + linkid;
+          var linkid = normalize_hash (window.location.hash);
           store.dispatch (actions.set_current_url (linkid, "replaceState"));
         }
 
@@ -1064,14 +1059,7 @@
       /* When EVENT.STATE is 'null' it means that the user has manually
          changed the hash part of the URL bar.  */
       var linkid = (event.state === null) ?
-        window.location.hash.slice (1) : event.state;
-
-      /* XXX: Some anchor elements are present in 'config.INDEX_NAME' and we
-         need to handle link to them specially (i.e. not try to find their
-         corresponding iframe).  */
-      if (config.MAIN_ANCHORS.includes (linkid))
-        linkid = config.INDEX_ID + "." + linkid;
-
+        normalize_hash (window.location.hash) : event.state;
       store.dispatch (actions.set_current_url (linkid, false));
     }
 
@@ -1594,6 +1582,22 @@
       }
   }
 
+  /** Convert HASH which is something that can be found 'Location.hash' to a
+      "linkid" which can be handled in our model.
+      @arg {string} hash
+      @return {string} linkid */
+  function
+  normalize_hash (hash)
+  {
+    var text = hash.slice (1);
+    /* Some anchor elements are present in 'config.INDEX_NAME' and we need to
+       handle link to them specially (i.e. not try to find their corresponding
+       iframe).*/
+    if (config.MAIN_ANCHORS.includes (text))
+      return config.INDEX_ID + "." + text;
+    else
+      return text;
+  }
 
   /** Return an object composed of the filename and the anchor of LINKID.
       LINKID can have the form "foobar.anchor" or just "foobar".
