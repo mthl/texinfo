@@ -991,10 +991,16 @@
             {
               var link = linkid_split (state.current);
               var elem = document.getElementById (link.pageid);
-              if (link.pageid === config.INDEX_ID)
-                elem.focus ();
-              else
+              console.log ("main render:", elem);
+              if (link.pageid !== config.INDEX_ID)
                 elem.querySelector ("iframe").focus ();
+              else
+                {
+                  /* Move the focus to top DOM.  */
+                  document.documentElement.focus ();
+                  /* Allow the spacebar scroll in the main page to work.  */
+                  elem.focus ();
+                }
             }
         }
       };
