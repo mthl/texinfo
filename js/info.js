@@ -976,15 +976,12 @@
              focused.  */
           if (!state.focus)
             {
-              if (state.current === config.INDEX_ID)
-                document.documentElement.focus ();
+              var link = linkid_split (state.current);
+              var elem = document.getElementById (link.pageid);
+              if (link.pageid === config.INDEX_ID)
+                elem.focus ();
               else
-                {
-                  var link = linkid_split (state.current);
-                  document.getElementById (link.pageid)
-                          .querySelector ("iframe")
-                          .focus ();
-                }
+                elem.querySelector ("iframe").focus ();
             }
         }
       };
