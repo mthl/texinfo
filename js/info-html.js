@@ -752,7 +752,6 @@
             }
           var div = resolve_page (state.current, true);
           update_history (state.current, state.history);
-          div.removeAttribute ("hidden");
           this.prev_id = state.current;
           this.prev_div = div;
         }
@@ -830,15 +829,14 @@
         }
     }
 
-    /** Return the div element that correspond to LINKID.  If SCROLL is true
-        then position the corresponding iframe to the anchor specified by
-        LINKID.
-
+    /** Return the div element that correspond to LINKID.  If VISIBLE is true
+        then display the div and position the corresponding iframe to the
+        anchor specified by LINKID.
         @arg {string} linkid - link identifier
-        @arg {boolean} [scroll]
+        @arg {boolean} [visible]
         @return {HTMLElement} the div element.  */
     function
-    resolve_page (linkid, scroll)
+    resolve_page (linkid, visible)
     {
       var msg;
       var link = linkid_split (linkid);
@@ -851,7 +849,12 @@
         }
 
       /* Create iframe if necessary.  Index page is not inside an iframe.  */
-      if (pageid !== config.INDEX_ID)
+      if ((pageid === config.INDEX_ID) && visible)
+        {
+          div.removeAttribute ("hidden");
+          div.scroll (0, 0);
+        }
+      else
         {
           var iframe = div.querySelector ("iframe");
           if (!iframe)
@@ -864,8 +867,9 @@
                 store.dispatch ({ type: "iframe-ready", id: pageid });
               }, false);
             }
-          if (scroll)
+          if (visible)
             {
+              div.removeAttribute ("hidden");
               msg = { message_kind: "scroll-to", hash: link.hash };
               post_message (pageid, msg);
             }
