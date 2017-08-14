@@ -991,7 +991,6 @@
             {
               var link = linkid_split (state.current);
               var elem = document.getElementById (link.pageid);
-              console.log ("main render:", elem);
               if (link.pageid !== config.INDEX_ID)
                 elem.querySelector ("iframe").focus ();
               else
