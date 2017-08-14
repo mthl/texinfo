@@ -697,7 +697,7 @@
       this.element.setAttribute ("id", "sub-pages");
       this.element.appendChild (index_div);
       /** @type {string[]} Currently created divs.  */
-      this.ids = [];
+      this.ids = [config.INDEX_ID];
       /** @type {string} */
       this.prev_id = null;
       /** @type {HTMLElement} */
