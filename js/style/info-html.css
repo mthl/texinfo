@@ -194,17 +194,13 @@ iframe.node {
     top: 0em; right: 25%; bottom: 0em; left: 0em;
     height: 100%;
     width: 25%;
-    overflow: scroll;
+    overflow: auto;
     border: none;
+    background-color: #F4FCFF;
+    margin: 0px;
+    padding: 0px;
 }
 
-div.toc-sidebar div img {
-    border: none;
-    padding: 4px;
-    float: right;
-    width: 40%;
-    height: auto
-}
 div.toc-sidebar header {
     font-size: xx-large;
 }
@@ -229,9 +225,7 @@ div.toc ul
     list-style-type: none;
 }
 div.toc-sidebar div { padding: 0.4ex; overflow: auto }
-div.toc-sidebar { background-color: #F4FCFF; margin: 0pt }
 div.toc-sidebar a { text-decoration: none }
-div.toc { background-color: #F4FCFF }
 div.toc li { padding: 0px 4px;}
 div.toc li { margin: 0 ; }
 
