@@ -662,7 +662,7 @@
       this.element = document.createElement ("div");
       this.element.setAttribute ("id", "slider");
       var div = document.createElement ("div");
-      div.classList.add ("toc");
+      div.classList.add ("toc-sidebar");
       var toc = document.querySelector (".contents");
       toc.remove ();
 
@@ -673,11 +673,11 @@
       for (var ch = toc.firstChild; ch; ch = toc.firstChild)
         nav.appendChild (ch);
 
-      div.appendChild (nav);
       var div$ = document.createElement ("div");
-      div.classList.add ("toc-sidebar");
-      div$.appendChild (div);
-      this.element.appendChild (div$);
+      div$.classList.add ("toc");
+      div$.appendChild (nav);
+      div.appendChild (div$);
+      this.element.appendChild (div);
 
       /* Remove table of contents header.  */
       document.querySelector (".contents-heading").remove ();
@@ -1210,7 +1210,7 @@
     on_load ()
     {
       var toc_div = document.getElementById ("slider");
-      add_header (toc_div.querySelector (".contents"));
+      add_header (toc_div.querySelector (".toc"));
 
       /* Specify the base URL to use for all relative URLs.  */
       /* FIXME: Add base also for sub-pages.  */
