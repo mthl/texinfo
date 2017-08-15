@@ -154,14 +154,11 @@
       var rgxp;
       if (typeof exp === "object")
         rgxp = exp;
-      else if (exp !== "")
-        rgxp = new RegExp (exp, "i");
+      else if (exp === "")
+        rgxp = null;
       else
-        {
-          /* XXX: Not having a special case for the empty string creates an
-             infinite loop.  */
-          rgxp = /^$/;
-        }
+        rgxp = new RegExp (exp, "i");
+
       return { type: "search-init", regexp: rgxp, input: exp };
     }
   };
@@ -280,13 +277,18 @@
         }
       case "search-init":
         {
-          res.search = {
-            regexp: action.regexp,
-            input: action.input,
-            status: "ready",
-            current_pageid: linkid_split (state.current).pageid,
-            found: false
-          };
+          if (action.regexp === null && state.search)
+            res.search = Object.assign ({}, res.search, { status: "ready" });
+          else if (action.regexp !== null)
+            {
+              res.search = {
+                regexp: action.regexp,
+                input: action.input,
+                status: "ready",
+                current_pageid: linkid_split (state.current).pageid,
+                found: false
+              };
+            }
           res.focus = false;
           res.help = false;
           res.text_input = null;
