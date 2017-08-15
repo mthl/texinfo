@@ -162,7 +162,7 @@
              infinite loop.  */
           rgxp = /^$/;
         }
-      return { type: "search-init", regexp: rgxp };
+      return { type: "search-init", regexp: rgxp, input: exp };
     }
   };
 
@@ -282,6 +282,7 @@
         {
           res.search = {
             regexp: action.regexp,
+            input: action.input,
             status: "ready",
             current_pageid: linkid_split (state.current).pageid,
             found: false
@@ -315,7 +316,7 @@
               if (fwd === null)
                 {
                   res.search.status = "done";
-                  res.warning = "Search failed";
+                  res.warning = "Search failed: \"" + res.search.input + "\"";
                   res.highlight = null;
                 }
               else
@@ -455,11 +456,12 @@
     {
       this.id = id;
       this.render = null;
+      this.prompt = document.createTextNode (id + ": ");
 
       /* Create input div element.*/
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
-      div.appendChild (document.createTextNode (id + ": "));
+      div.appendChild (this.prompt);
       this.element = div;
 
       /* Create input element.*/
@@ -480,6 +482,11 @@
     }
 
     Search_input.prototype.show = function show () {
+      /* Display previous search. */
+      var search = store.state.search;
+      var input = search && (search.status === "done") && search.input;
+      if (input)
+        this.prompt.textContent = this.id + " (default " + input + "): ";
       this.element.removeAttribute ("hidden");
       this.input.focus ();
     };
