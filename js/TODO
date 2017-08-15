@@ -3,6 +3,5 @@
 - Make message and text inputs not overlap the iframe scroll bar
 - Implement regexp search which is associated with the 's' key
 - Make sure the index search work with multiples indices
-- Fallback to basic HTML when the screen is too small
 - Remove nested nodes from the table of content (navigation commands
   should ignore them too)

@@ -1864,6 +1864,24 @@
       fetch the Javascript code and simplifying the work of the Texinfo HTML
       converter.  */
 
+  /* Display MSG bail out message portably.  */
+  function
+  error (msg)
+  {
+    /* XXX: This code needs to be highly portable.
+       Check <https://quirksmode.org/dom/core/> for details.  */
+    return function () {
+        var div = document.createElement ("div");
+        div.setAttribute ("class", "error");
+        div.innerHTML = msg;
+        var elem = document.body.firstChild;
+        document.body.insertBefore (div, elem);
+        window.setTimeout (function () {
+          document.body.removeChild (div);
+        }, config.WARNING_TIMEOUT);
+      };
+  }
+
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
   if (features && !(features.es5
@@ -1874,20 +1892,16 @@
                     && features.postmessage
                     && features.queryselector))
     {
-      /* XXX: This code needs to be highly portable.
-         Check <https://quirksmode.org/dom/core/> for details.  */
-      window.onload = function () {
-        /* Display a warning.  */
-        var div = document.createElement ("div");
-        div.setAttribute ("class", "warning");
-        div.innerHTML = "'info.js' is not compatible with this browser";
-        var elem = document.body.firstChild;
-        document.body.insertBefore (div, elem);
-        window.setTimeout (function () {
-          document.body.removeChild (div);
-        }, config.WARNING_TIMEOUT);
-      };
+      window.onload = error ("'info.js' is not compatible with this browser");
+      return;
+    }
 
+  /* Until we have a responsive design implemented, fallback to basic
+     HTML navigation for small screen.  */
+  if (window.screen.availWidth < 700)
+    {
+      window.onload =
+        error ("screen width is too small to display the table of content");
       return;
     }
 

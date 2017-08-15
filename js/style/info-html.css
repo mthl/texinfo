@@ -316,7 +316,7 @@ table#keyboard-shortcuts th {
     cursor: pointer;
 }
 
-.warning {
+.error {
     background-color: orange;
     padding: 5px;
     float: right;
