@@ -44,7 +44,7 @@
       @type {{dispatch: Action_consumer, state?: any, listeners?: any[]}}.  */
   var store;
 
-  /** Create a Store that renders its listeners at each state change.
+  /** Create a Store that calls its listeners at each state change.
       @arg {function (Object, Action): Object} reducer
       @arg {Object} state  */
   function
@@ -63,9 +63,7 @@
         this.state = new_state;
         if (config.DEBUG)
           console.log ("state: ", new_state);
-        this.listeners.forEach (function (listener) {
-          listener.render (new_state);
-        });
+        this.listeners.forEach (function (l) { l (new_state); });
       }
   };
 
@@ -1020,7 +1018,7 @@
       components.add (new Help_page ());
       components.add (new Minibuffer ());
       components.add (new Echo_area ());
-      store.listeners.push (components);
+      store.listeners.push (components.render.bind (components));
 
       if (window.location.hash)
         {
