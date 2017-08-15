@@ -1785,17 +1785,20 @@
 
   /** Highlight text in NODE which match RGXP.
       @arg {RegExp} rgxp
-      @arg {Text} node */
+      @arg {Text} node
+      @return {Boolean} */
   function
   highlight_text (rgxp, node)
   {
     /* Skip elements corresponding to highlighted words to avoid infinite
        recursion.  */
     if (node.parentElement.matches ("span.highlight"))
-      return;
+      return false;
 
     var matches = rgxp.exec (node.textContent);
-    if (matches)
+    if (!matches)
+      return false;
+    else
       {
         /* Create an highlighted element containing first match.  */
         var span = document.createElement ("span");
@@ -1807,17 +1810,20 @@
         right_node.textContent = right_node.textContent
                                            .slice (matches[0].length);
         node.parentElement.insertBefore (span, right_node);
+        return true;
       }
   }
 
-  /** @arg {RegExp} rgxp
-      @return {function (Text): void} partial application of RGXP in
-      'highlight_text' */
+  /** Create a function that highlight text nodes only once.
+      @arg {RegExp} rgxp
+      @return {function (Text): void} */
   function
   text_highlighter (rgxp)
   {
+    var found = false;
     return function (node) {
-      highlight_text (rgxp, node);
+      if (!found)
+        found = highlight_text (rgxp, node);
     };
   }
 
