@@ -29,8 +29,7 @@
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
-    WARNING_TIMEOUT: 3000,
-    DEBUG: true
+    WARNING_TIMEOUT: 3000
   };
 
   /*-------------------.
@@ -61,7 +60,7 @@
     if (new_state !== this.state)
       {
         this.state = new_state;
-        if (config.DEBUG)
+        if (window["INFO_DEBUG"])
           console.log ("state: ", new_state);
         this.listeners.forEach (function (l) { l (new_state); });
       }
@@ -358,7 +357,7 @@
           return res;
         }
       default:
-        if (config.DEBUG)
+        if (window["INFO_DEBUG"])
           console.warn ("no reducer for action type:", action.type);
         return state;
       }

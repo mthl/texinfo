@@ -29,8 +29,7 @@
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
     MAIN_ANCHORS: ["Top", "SEC_Contents"],
-    WARNING_TIMEOUT: 3000,
-    DEBUG: true
+    WARNING_TIMEOUT: 3000
   };
 
   /*-------------------.
@@ -61,7 +60,7 @@
     if (new_state !== this.state)
       {
         this.state = new_state;
-        if (config.DEBUG)
+        if (window["INFO_DEBUG"])
           console.log ("state: ", new_state);
         this.listeners.forEach (function (l) { l (new_state); });
       }
@@ -364,7 +363,7 @@
           return res;
         }
       default:
-        if (config.DEBUG)
+        if (window["INFO_DEBUG"])
           console.warn ("no reducer for action type:", action.type);
         return state;
       }
