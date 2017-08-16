@@ -725,7 +725,6 @@
       /** @type {HTMLElement} */
       this.prev_div = null;
       this.prev_search = null;
-      this.prev_highlight = null;
     }
 
     Pages.prototype.add_div = function add_div (pageid) {
@@ -800,19 +799,14 @@
         }
 
       /* Update highlight of current page.  */
-      if (state.highlight && this.prev_highlight !== state.highlight)
+      if (!state.highlight)
         {
-          this.prev_highlight = state.highlight;
           if (state.current === config.INDEX_ID)
-            {
-              handle_highlight (document.getElementById (config.INDEX_ID),
-                                state.highlight);
-            }
+            remove_highlight (document.getElementById (config.INDEX_ID));
           else
             {
               var link = linkid_split (state.current);
-              var regexp = state.highlight;
-              var msg$ = { message_kind: "highlight", regexp: regexp };
+              var msg$ = { message_kind: "highlight", regexp: null };
               post_message (link.pageid, msg$);
             }
         }
@@ -1321,7 +1315,7 @@
     {
       var data = event.data;
       if (data.message_kind === "highlight")
-        handle_highlight (document.body, data.regexp);
+        remove_highlight (document.body);
       else if (data.message_kind === "search")
         {
           var found = search (document.body, data.regexp);
@@ -1755,18 +1749,35 @@
 
   /** Check if ELEM matches SEARCH
       @arg {Element} elem
-      @arg {RegExp} rgxp */
+      @arg {RegExp} rgxp
+      @return {boolean} */
   function
   search (elem, rgxp)
   {
-    if (!rgxp)
-      throw new Error ("RGXP argument must be provided");
+    /** @type {Text} */
+    var text = null;
 
-    var res = false;
-    depth_first_walk (elem, function find (node) {
-      res = res || rgxp.test (node.textContent);
-    }, Node.TEXT_NODE);
-    return res;
+    /** @arg {Text} node */
+    function
+    find (node)
+    {
+      if (rgxp.test (node.textContent))
+        {
+          /* Ignore previous match.  */
+          var prev = node.parentElement.matches ("span.highlight");
+          text = (prev) ? null : (text || node);
+        }
+    }
+
+    depth_first_walk (elem, find, Node.TEXT_NODE);
+    remove_highlight (elem);
+    if (!text)
+      return false;
+    else
+      {
+        highlight_text (rgxp, text);
+        return true;
+      }
   }
 
   /** Find the pageid corresponding to forward direction.
@@ -1794,20 +1805,17 @@
 
   /** Highlight text in NODE which match RGXP.
       @arg {RegExp} rgxp
-      @arg {Text} node
-      @return {Boolean} */
+      @arg {Text} node */
   function
   highlight_text (rgxp, node)
   {
     /* Skip elements corresponding to highlighted words to avoid infinite
        recursion.  */
     if (node.parentElement.matches ("span.highlight"))
-      return false;
+      return;
 
     var matches = rgxp.exec (node.textContent);
-    if (!matches)
-      return false;
-    else
+    if (matches)
       {
         /* Create an highlighted element containing first match.  */
         var span = document.createElement ("span");
@@ -1819,21 +1827,8 @@
         right_node.textContent = right_node.textContent
                                            .slice (matches[0].length);
         node.parentElement.insertBefore (span, right_node);
-        return true;
+        span.scrollIntoView (true);
       }
-  }
-
-  /** Create a function that highlight text nodes only once.
-      @arg {RegExp} rgxp
-      @return {function (Text): void} */
-  function
-  text_highlighter (rgxp)
-  {
-    var found = false;
-    return function (node) {
-      if (!found)
-        found = highlight_text (rgxp, node);
-    };
   }
 
   /** Remove every highlighted elements and inline their text content.
@@ -1848,24 +1843,6 @@
         var span = spans[0];
         var parent = span.parentElement;
         parent.replaceChild (span.firstChild, span);
-        parent.normalize ();
-      }
-  }
-
-  /** Clear ELEM current highlights.  If SEARCH is truthy highlight it in
-      ELEM.
-      @arg {Element} elem
-      @arg {RegExp} search */
-  function
-  handle_highlight (elem, search)
-  {
-    remove_highlight (elem);
-    if (search)
-      {
-        depth_first_walk (elem, text_highlighter (search), Node.TEXT_NODE);
-        var first_highlight = elem.querySelector (".highlight");
-        if (first_highlight)
-          first_highlight.scrollIntoView (true);
       }
   }
 
