@@ -725,6 +725,7 @@
       /** @type {HTMLElement} */
       this.prev_div = null;
       this.prev_search = null;
+      this.prev_highlight = null;
     }
 
     Pages.prototype.add_div = function add_div (pageid) {
@@ -799,17 +800,21 @@
         }
 
       /* Update highlight of current page.  */
-      if (state.current === config.INDEX_ID)
+      if (state.highlight && this.prev_highlight !== state.highlight)
         {
-          handle_highlight (document.getElementById (config.INDEX_ID),
-                            state.highlight);
-        }
-      else
-        {
-          var link = linkid_split (state.current);
-          var regexp = state.highlight;
-          var msg$ = { message_kind: "highlight", regexp: regexp };
-          post_message (link.pageid, msg$);
+          this.prev_highlight = state.highlight;
+          if (state.current === config.INDEX_ID)
+            {
+              handle_highlight (document.getElementById (config.INDEX_ID),
+                                state.highlight);
+            }
+          else
+            {
+              var link = linkid_split (state.current);
+              var regexp = state.highlight;
+              var msg$ = { message_kind: "highlight", regexp: regexp };
+              post_message (link.pageid, msg$);
+            }
         }
     };
 
