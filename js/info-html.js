@@ -724,6 +724,7 @@
       this.prev_id = null;
       /** @type {HTMLElement} */
       this.prev_div = null;
+      this.prev_search = null;
     }
 
     Pages.prototype.add_div = function add_div (pageid) {
@@ -769,8 +770,11 @@
           this.prev_div = div;
         }
 
-      if (state.search && state.search.status === "ready")
+      if (state.search
+          && (this.prev_search !== state.search)
+          && state.search.status === "ready")
         {
+          this.prev_search = state.search;
           if (state.search.current_pageid === config.INDEX_ID)
             {
               window.setTimeout (function () {
