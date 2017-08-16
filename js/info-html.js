@@ -277,18 +277,13 @@
         }
       case "search-init":
         {
-          if (action.regexp === null && state.search)
-            res.search = Object.assign ({}, res.search, { status: "ready" });
-          else if (action.regexp !== null)
-            {
-              res.search = {
-                regexp: action.regexp,
-                input: action.input,
-                status: "ready",
-                current_pageid: linkid_split (state.current).pageid,
-                found: false
-              };
-            }
+          res.search = {
+            regexp: action.regexp || state.search.regexp,
+            input: action.input || state.search.input,
+            status: "ready",
+            current_pageid: linkid_split (state.current).pageid,
+            found: false
+          };
           res.focus = false;
           res.help = false;
           res.text_input = null;
