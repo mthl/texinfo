@@ -805,6 +805,18 @@
               post_message (link.pageid, msg$);
             }
         }
+
+      /* Scroll to highlighted search result. */
+      if (state.search
+          && (this.prev_search !== state.search)
+          && state.search.status === "done"
+          && state.search.found === true)
+        {
+          var link$ = linkid_split (state.current);
+          var msg$$ = { message_kind: "scroll-to", hash: "#search-result" };
+          post_message (link$.pageid, msg$$);
+          this.prev_search = state.search;
+        }
     };
 
     /*--------------.
@@ -1815,6 +1827,7 @@
         /* Create an highlighted element containing first match.  */
         var span = document.createElement ("span");
         span.appendChild (document.createTextNode (matches[0]));
+        span.setAttribute ("id", "search-result");
         span.classList.add ("highlight");
 
         var right_node = node.splitText (matches.index);
@@ -1822,7 +1835,6 @@
         right_node.textContent = right_node.textContent
                                            .slice (matches[0].length);
         node.parentElement.insertBefore (span, right_node);
-        span.scrollIntoView (true);
       }
   }
 
