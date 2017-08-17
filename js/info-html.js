@@ -1096,12 +1096,18 @@
     function
     hide_grand_child_nodes (ul)
     {
-      for (var li = ul.firstElementChild; li; li = li.nextElementSibling)
+      var lis = ul.children;
+      for (var i = 0; i < lis.length; i += 1)
         {
-          var a = li.firstElementChild;
-          var li$ = a && a.nextElementSibling;
-          if (li$)
-            li$.setAttribute ("toc-detail", "yes");
+          var first = lis[i].firstElementChild;
+          if (first && first.matches ("ul"))
+            hide_grand_child_nodes (first);
+          else if (first && first.matches ("a"))
+            {
+              var ul$ = first && first.nextElementSibling;
+              if (ul$)
+                ul$.setAttribute ("toc-detail", "yes");
+            }
         }
     }
 
