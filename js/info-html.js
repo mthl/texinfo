@@ -364,7 +364,7 @@
           return res;
         }
       default:
-        console.warn ("no reducer for action type:", action.type);
+        console.error ("no reducer for action type:", action.type);
         return state;
       }
   }
@@ -612,6 +612,7 @@
         }
       else if (!this.toid)
         {
+          console.warn (state.warning);
           var toid = window.setTimeout (function () {
             store.dispatch ({ type: "warning", msg: null });
           }, config.WARNING_TIMEOUT);
@@ -653,6 +654,7 @@
         }
       else if (!this.toid)
         {
+          console.info (state.echo);
           var toid = window.setTimeout (function () {
             store.dispatch ({ type: "echo", msg: null });
           }, config.WARNING_TIMEOUT);
