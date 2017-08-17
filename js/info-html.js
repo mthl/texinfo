@@ -29,7 +29,8 @@
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
     MAIN_ANCHORS: ["Top", "SEC_Contents"],
-    WARNING_TIMEOUT: 3000
+    WARNING_TIMEOUT: 3000,
+    SCREEN_MIN_WIDTH: 700
   };
 
   /*-------------------.
@@ -1905,7 +1906,7 @@
 
   /* Until we have a responsive design implemented, fallback to basic
      HTML navigation for small screen.  */
-  if (window.screen.availWidth < 700)
+  if (window.screen.availWidth < config.SCREEN_MIN_WIDTH)
     {
       window.onload =
         error ("screen width is too small to display the table of content");
