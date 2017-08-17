@@ -823,21 +823,6 @@
     | Utilitaries.  |
     `--------------*/
 
-    /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
-        an URL of the form `foobar${config.EXT}#anchor`.
-        @arg {string} linkid */
-    function
-    linkid_to_url (linkid)
-    {
-      if (linkid === config.INDEX_ID)
-        return config.INDEX_NAME;
-      else
-        {
-          var link = linkid_split (linkid);
-          return link.pageid + config.EXT + link.hash;
-        }
-    }
-
     /** Load PAGEID.
         @arg {string} pageid */
     function
@@ -1136,13 +1121,13 @@
 
     /** Scan ToC entries to see which should be hidden.
         @arg {HTMLElement} elem
-        @arg {string} filename */
+        @arg {string} linkid */
     function
-    scan_toc (elem, filename)
+    scan_toc (elem, linkid)
     {
       /** @type {Element} */
-      var current;
-      var url = with_sidebar_query (filename);
+      var res;
+      var url = with_sidebar_query (linkid_to_url (linkid));
 
       /** Set CURRENT to the node corresponding to URL linkid.
           @arg {Element} elem */
@@ -1156,23 +1141,28 @@
             var sib = elem.nextElementSibling;
             if (sib && sib.matches ("ul"))
               hide_grand_child_nodes (sib);
-            current = elem;
+            res = elem;
           }
       }
 
       var ul = elem.querySelector ("ul");
-      if (filename === config.INDEX_NAME)
-        hide_grand_child_nodes (ul);
+      if (linkid === config.INDEX_ID)
+        {
+          hide_grand_child_nodes (ul);
+          res = elem.querySelector ("a[name=\"" + linkid + "\"]");
+        }
       else
         {
           depth_first_walk (ul, find_current, Node.ELEMENT_NODE);
           /* Mark every parent node.  */
+          var current = res;
           while (current && current !== ul)
             {
               mark_parent_elements (current);
               current = current.parentElement;
             }
         }
+      return res;
     }
 
     /* Build the global dictionary containing navigation links from NAV.  NAV
@@ -1259,8 +1249,6 @@
       var data = event.data;
       if (data.message_kind === "update-sidebar")
         {
-          /* Highlight the current LINKID in the table of content.  */
-          var selected = data.selected;
           var toc_div = document.getElementById ("slider");
 
           /* Reset previous calls to 'scan_toc'.  */
@@ -1269,14 +1257,11 @@
             elem.removeAttribute ("toc-current");
           }, Node.ELEMENT_NODE);
 
-          var filename = (selected === config.INDEX_ID) ?
-              config.INDEX_NAME : (selected + config.EXT);
-          scan_toc (toc_div, filename);
-
-          var elem =
-            toc_div.querySelector ((selected === config.INDEX_ID) ?
-                                   "a[href=\"" + config.INDEX_NAME + "\"]" :
-                                   "a[href$=\"" + selected + "\"]");
+          /* Remove the hash part for the main page.  */
+          var pageid = linkid_split (data.selected).pageid;
+          var selected = (pageid === config.INDEX_ID) ? pageid : data.selected;
+          /* Highlight the current LINKID in the table of content.  */
+          var elem = scan_toc (toc_div, selected);
           if (elem)
             elem.scrollIntoView (true);
         }
@@ -1625,6 +1610,21 @@
       {
         var ref = linkid.match (/^(.+)\.(.*)$/).slice (1);
         return { pageid: ref[0], hash: "#" + ref[1] };
+      }
+  }
+
+  /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
+      an URL of the form `foobar${config.EXT}#anchor`.
+      @arg {string} linkid */
+  function
+  linkid_to_url (linkid)
+  {
+    if (linkid === config.INDEX_ID)
+      return config.INDEX_NAME;
+    else
+      {
+        var link = linkid_split (linkid);
+        return link.pageid + config.EXT + link.hash;
       }
   }
 
