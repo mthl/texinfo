@@ -1079,11 +1079,13 @@
        anything on the current page; however, that's not a problem in the Kawa
        manual).  */
     function
-    hide_grand_child_nodes (ul)
+    hide_grand_child_nodes (ul, excluded)
     {
       var lis = ul.children;
       for (var i = 0; i < lis.length; i += 1)
         {
+          if (lis[i] === excluded)
+            continue;
           var first = lis[i].firstElementChild;
           if (first && first.matches ("ul"))
             hide_grand_child_nodes (first);
@@ -1159,6 +1161,9 @@
           while (current && current !== ul)
             {
               mark_parent_elements (current);
+              /* XXX: Special case for manuals with '@part' commands.  */
+              if (current.parentElement === ul)
+                hide_grand_child_nodes (ul, current);
               current = current.parentElement;
             }
         }
