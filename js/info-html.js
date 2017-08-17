@@ -1105,6 +1105,29 @@
         }
     }
 
+    /** Make the parent of ELEMS visible.
+        @arg {HTMLElement} elem */
+    function
+    mark_parent_elements (elem)
+    {
+      if (elem && elem.parentElement && elem.parentElement.parentElement)
+        {
+          var pparent = elem.parentElement.parentElement;
+          for (var sib = pparent.firstElementChild; sib;
+               sib = sib.nextElementSibling)
+            {
+              if (sib !== elem.parentElement
+                  && sib.firstElementChild
+                  && sib.firstElementChild.nextElementSibling)
+                {
+                  sib.firstElementChild
+                     .nextElementSibling
+                     .setAttribute ("toc-detail", "yes");
+                }
+            }
+        }
+    }
+
     /** Scan ToC entries to see which should be hidden.
         @arg {HTMLElement} elem
         @arg {string} filename */
@@ -1142,28 +1165,6 @@
             {
               mark_parent_elements (current);
               current = current.parentElement;
-            }
-        }
-    }
-
-    /** @arg {HTMLElement} elem */
-    function
-    mark_parent_elements (elem)
-    {
-      if (elem && elem.parentElement && elem.parentElement.parentElement)
-        {
-          var pparent = elem.parentElement.parentElement;
-          for (var sib = pparent.firstElementChild; sib;
-               sib = sib.nextElementSibling)
-            {
-              if (sib !== elem.parentElement
-                  && sib.firstElementChild
-                  && sib.firstElementChild.nextElementSibling)
-                {
-                  sib.firstElementChild
-                     .nextElementSibling
-                     .setAttribute ("toc-detail", "yes");
-                }
             }
         }
     }
