@@ -63,7 +63,9 @@
         this.state = new_state;
         if (window["INFO_DEBUG"])
           console.log ("state: ", new_state);
-        this.listeners.forEach (function (l) { l (new_state); });
+        this.listeners.forEach (function (listener) {
+          listener (new_state);
+        });
       }
   };
 
