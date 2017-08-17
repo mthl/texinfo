@@ -1176,11 +1176,13 @@
     function
     add_header ()
     {
+      /* Remove link to main page.  */
       var pattern = "li a[href=\"" + config.INDEX_NAME + "\"]";
       var a = document.querySelector (pattern);
       if (a)
         a.parentElement.remove ();
 
+      /* Create a title to replace the deleted link.  */
       var header = document.querySelector ("header");
       var h1 = document.querySelector ("h1");
       if (header && h1)
