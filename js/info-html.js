@@ -362,8 +362,7 @@
           return res;
         }
       default:
-        if (window["INFO_DEBUG"])
-          console.warn ("no reducer for action type:", action.type);
+        console.warn ("no reducer for action type:", action.type);
         return state;
       }
   }
