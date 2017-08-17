@@ -1175,22 +1175,6 @@
         }
     }
 
-    /* Reset what is done by 'scan_toc' and 'hide_grand_child_nodes'.  */
-    function
-    clear_toc_styles (node)
-    {
-      function
-      do_clear (node$)
-      {
-        if (node$.matches ("ul"))
-          node$.removeAttribute ("toc-detail");
-        else if (node$.matches ("a"))
-          node$.removeAttribute ("toc-current");
-      }
-
-      depth_first_walk (node, do_clear, Node.ELEMENT_NODE);
-    }
-
     /* Build the global dictionary containing navigation links from NAV.  NAV
        must be an 'ul' DOM element containing the table of content of the
        manual.  */
@@ -1278,7 +1262,13 @@
           /* Highlight the current LINKID in the table of content.  */
           var selected = data.selected;
           var toc_div = document.getElementById ("slider");
-          clear_toc_styles (toc_div);
+
+          /* Reset previous calls to 'scan_toc'.  */
+          depth_first_walk (toc_div, function clear_toc_styles (elem) {
+            elem.removeAttribute ("toc-detail");
+            elem.removeAttribute ("toc-current");
+          }, Node.ELEMENT_NODE);
+
           var filename = (selected === config.INDEX_ID) ?
               config.INDEX_NAME : (selected + config.EXT);
           scan_toc (toc_div, filename);
