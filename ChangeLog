@@ -1,5 +1,13 @@
 2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/maintain/change_perl_modules.sh: Get version number from
+	configure.ac instead of from Makefile, as then Makefile doesn't
+	have to be regenerated before it runs.  (Otherwise, there could
+	be a failure in 'make distcheck' due to a version number 
+	mismatch.)
+
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Text.pm (@ISA). Add Texinfo::Convert::Converter.
 	Report from Randall Sawyer 2017-07-31.
 
