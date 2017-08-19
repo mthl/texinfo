@@ -1,3 +1,8 @@
+2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Text.pm (@ISA). Add Texinfo::Convert::Converter.
+	Report from Randall Sawyer 2017-07-31.
+
 2017-07-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/texi2any.pl <DUMP_TREE>: Check if tree is defined, as 
