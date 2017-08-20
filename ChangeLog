@@ -1,3 +1,12 @@
+2017-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\partentry): Add stretch and a bonus for 
+	breaking the page before the part heading in the table of 
+	contents.  Arnold Robbins reported that the page could be broken
+	immediately after the part heading, which separated it from the 
+	entry for the first chapter in that part, which didn't look 
+	good.
+
 2017-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* po_document: Run fix-translations.sh.
