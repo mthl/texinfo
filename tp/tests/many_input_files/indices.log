@@ -1,2 +1,0 @@
-indices
-/usr/bin/perl -w ./../../texi2any.pl --set-customization-variable 'TEXI2HTML 1' --conf-dir ./../indices/ --set-customization-variable 'TEST 1' --split chapter --out indices/ ./../indices/index_table.texi ./../indices/index_split.texi --force >> indices.out 2>indices/indices.2

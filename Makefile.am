@@ -1,74 +1,82 @@
-# Makefile.am for texinfo.
-# $Id: Makefile.am,v 1.25 2008-07-05 13:37:39 karl Exp $
-# Process this file with automake to produce Makefile.in in all directories.
+## Process this file with automake to produce Makefile.in
+# Copyright (C) 2017  Free Software Foundation, Inc.
 #
-# This file is free software; as a special exception the author gives
-# unlimited permission to copy and/or distribute it, with or without
-# modifications, as long as this notice is preserved.
+# This file is part of GNU Texinfo.
 #
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
-# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# GNU Texinfo is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# GNU Texinfo is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
-# Find our headers and gnulib headers.
-ACLOCAL_AMFLAGS = -I gnulib/m4
+all: $(examples)
 
-# Additional files to distribute.
-EXTRA_DIST = ChangeLog.46 INSTALL.generic INTRODUCTION README.dev system.h \
-  djgpp/README djgpp/config.bat djgpp/config.sed djgpp/config.site \
-  gnulib/m4/gnulib-cache.m4
+phony =
 
-# This is to prevent texinfo.tex from being included in the top-level
-# distribution directory.
-TEXINFO_TEX = doc/texinfo.tex
-
-if TOOLS_ONLY
-  # Build native tools only.
-  SUBDIRS = lib info install-info makeinfo util
-else
-  # All subdirectories.
-  # Do libs first since the C programs depend on it.
-  # Do doc last so makeinfo will be built when we get there.
-  # Others are alphabetical.
-  SUBDIRS = $(native_tools) gnulib/lib lib \
-            install-info info makeinfo po util doc 
+if HAVE_ESLINT
+phony += lint
+lint:
+	$(ESLINT) -c build-aux/eslint.json info.js -f unix
 endif
 
-# One special target for installers to use by hand if desired.
-install-tex:
-	cd doc && $(MAKE) TEXMF=$(TEXMF) install-tex
-
-distclean-local:
-	-test -d "$(native_tools)" && rm -rf "$(native_tools)"
-
-# Don't install native tools for cross compile.
-if TOOLS_ONLY
-install:
-
+if HAVE_TYPESCRIPT
+phony += check-types
+check-types:
+	$(TSC) --allowJs --checkJS --noEmit --lib dom,es2017 info.js
 endif
 
-# From coreutils.
-# Verify that all source files using _() are listed in po/POTFILES.in.
-# Run this before making pretests, as well as official releases, so that
-# translators will see changed string.
-po-check:
-	if test -f po/POTFILES.in; then					\
-	  grep -E -v '^(#|$$)' po/POTFILES.in				\
-	    | grep -v '^src/false\.c$$' | sort > $@-1;			\
-	  files=;							\
-	  for file in $$($(CVS_LIST_EXCEPT)) `find [a-z]* -name '*.[ch]'`; do \
-	    case $$file in						\
-	    djgpp/* | man/*) continue;;					\
-	    esac;							\
-	    case $$file in						\
-	    *.[ch])							\
-	      base=`expr " $$file" : ' \(.*\)\..'`;			\
-	      { test -f $$base.l || test -f $$base.y; } && continue;;	\
-	    esac;							\
-	    files="$$files $$file";					\
-	  done;								\
-	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files		\
-	    | sort -u > $@-2;						\
-	  diff -u $@-1 $@-2 || exit 1;					\
-	  rm -f $@-1 $@-2;						\
-	fi
+if HAVE_UGLIFYJS
+phony += minify
+minify:
+	$(UGLIFYJS) info.js -o info.min.js --mangle --compress
+endif
+
+if HAVE_MODERNIZR
+phony += modernizr
+modernizr:
+	$(MODERNIZR) -c build-aux/modernizr.json
+endif
+
+.PHONY: $(phony)
+
+## ---------- ##
+## Examples.  ##
+## ---------- ##
+
+examples = \
+  examples/hello-html \
+  examples/kawa-html
+
+# Javascript files that will be included in the html pages.  The order
+# of those files is the order in which they will be included
+js_scripts = \
+  modernizr.js \
+  info.js
+
+hello_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
+
+examples/hello-html: examples/hello/hello.texi
+	$(MAKEINFO) -I=$(srcdir) --html \
+	  -c EXTRA_HEAD=$(hello_extra_head) \
+	  examples/hello/hello.texi -o $@ && \
+	cp $(js_scripts) style/info.css $@
+
+kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
+
+examples/kawa-html: examples/kawa/kawa.texi
+	$(MAKEINFO) -I=$(srcdir) --html \
+	  -c EXTRA_HEAD=$(kawa_extra_head) \
+	  examples/kawa/kawa.texi -o $@ && \
+	cp $(js_scripts) style/info.css style/kawa.css $@
+
+clean-local:
+	rm -rf $(examples)
+
+.PHONY: $(examples)

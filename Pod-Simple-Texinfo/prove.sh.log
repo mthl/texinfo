@@ -1,8 +1,0 @@
-+ test z. = z
-+ tpdir=./../tp
-+ prove -I ./../tp -I ./../tp/maintain/lib/Unicode-EastAsianWidth/lib/ -I ./../tp/maintain/lib/libintl-perl/lib -I ./../tp/maintain/lib/Text-Unidecode/lib/ -I ./lib ./t/Pod-Simple-Texinfo.t
-./t/Pod-Simple-Texinfo.t .. ok
-All tests successful.
-Files=1, Tests=17,  0 wallclock secs ( 0.03 usr  0.00 sys +  0.31 cusr  0.02 csys =  0.36 CPU)
-Result: PASS
-PASS prove.sh (exit status: 0)
