@@ -110,19 +110,21 @@ CLEANFILES = \
   examples/kawa/kawa.xml \
   examples/hello/hello.xml
 
-html_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
+hello_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
 
 examples/hello-html: examples/hello/hello.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
-	  -c EXTRA_HEAD=$(html_extra_head) \
+	  -c EXTRA_HEAD=$(hello_extra_head) \
 	  examples/hello/hello.texi -o $@ && \
 	cp modernizr.js info-html.js style/info-html.css $@
 
+kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
+
 examples/kawa-html: examples/kawa/kawa.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
-	  -c EXTRA_HEAD=$(html_extra_head) \
+	  -c EXTRA_HEAD=$(kawa_extra_head) \
 	  examples/kawa/kawa.texi -o $@ && \
-	cp modernizr.js info-html.js style/info-html.css $@
+	cp modernizr.js info-html.js style/info-html.css style/kawa.css $@
 
 clean-local:
 	rm -rf $(examples)
