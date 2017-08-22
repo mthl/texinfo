@@ -1,5 +1,6 @@
-To build the provided examples you have to execute the following
-commands:
+To build the provided examples you need to have 'makeinfo' installed
+on your system.  'makeinfo' is provided by GNU Texinfo. After that
+execute the following commands:
 
   autoreconf -fi
   ./configure

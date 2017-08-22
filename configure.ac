@@ -23,6 +23,11 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
 
+AC_PATH_PROG([MAKEINFO], [makeinfo])
+if test "x$ac_cv_path_MAKEINFO" = "x"; then
+   AC_MSG_ERROR([makeinfo not found])
+fi
+
 npm_path="${srcdir}/node_modules/.bin${PATH_SEPARATOR}$PATH"
 
 AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
