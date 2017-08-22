@@ -16,21 +16,33 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-(function (features) {
+(function (features, user_config) {
   "use strict";
 
   /*-------------------.
   | Define constants.  |
   `-------------------*/
 
+  /** To override those default parameters, define 'INFO_CONFIG' in the global
+      environment before loading this script.  */
   var config = {
     EXT: ".html",
-    TOC_FILENAME: "ToC.html",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
+    MAIN_ANCHORS: ["Top", "SEC_Contents"],
     WARNING_TIMEOUT: 3000,
-    SCREEN_MIN_WIDTH: 700
+    SCREEN_MIN_WIDTH: 700,
+    hooks: {
+      /** Define a function called after 'DOMContentLoaded' event in
+          the INDEX_NAME context.
+          @type {function (): void}*/
+      on_main_load: null,
+      /** Define a function called after 'DOMContentLoaded' event in
+          the iframe context.
+          @type {(function (): void)} */
+      on_iframe_load: null
+    }
   };
 
   /*-------------------.
@@ -157,15 +169,12 @@
       var rgxp;
       if (typeof exp === "object")
         rgxp = exp;
-      else if (exp !== "")
-        rgxp = new RegExp (exp, "i");
+      else if (exp === "")
+        rgxp = null;
       else
-        {
-          /* XXX: Not having a special case for the empty string creates an
-             infinite loop.  */
-          rgxp = /^$/;
-        }
-      return { type: "search-init", regexp: rgxp };
+        rgxp = new RegExp (exp, "i");
+
+      return { type: "search-init", regexp: rgxp, input: exp };
     }
   };
 
@@ -240,21 +249,27 @@
         }
       case "navigate":
         {
-          var ids = state.loaded_nodes[state.current];
+          var current = state.current;
+          var link = linkid_split (state.current);
+
+          /* Handle inner 'config.INDEX_NAME' anchors specially.  */
+          if (link.pageid === config.INDEX_ID)
+            current = config.INDEX_ID;
+
+          var ids = state.loaded_nodes[current];
           linkid = ids[action.direction];
           if (!linkid)
             {
-              /* When STATE.CURRENT is in index but doesn't have the requested
+              /* When CURRENT is in index but doesn't have the requested
                  direction, ask its corresponding 'pageid'.  */
               var is_index_ref =
                 Object.keys (state.index)
                       .reduce (function (acc, val) {
-                        return acc || state.index[val] === state.current;
+                        return acc || state.index[val] === current;
                       }, false);
               if (is_index_ref)
                 {
-                  var parent = linkid_split (state.current).pageid;
-                  ids = state.loaded_nodes[parent];
+                  ids = state.loaded_nodes[link.pageid];
                   linkid = ids[action.direction];
                 }
             }
@@ -278,7 +293,8 @@
       case "search-init":
         {
           res.search = {
-            regexp: action.regexp,
+            regexp: action.regexp || state.search.regexp,
+            input: action.input || state.search.input,
             status: "ready",
             current_pageid: linkid_split (state.current).pageid,
             found: false
@@ -312,7 +328,7 @@
               if (fwd === null)
                 {
                   res.search.status = "done";
-                  res.warning = "Search failed";
+                  res.warning = "Search failed: \"" + res.search.input + "\"";
                   res.highlight = null;
                 }
               else
@@ -360,8 +376,7 @@
           return res;
         }
       default:
-        if (window["INFO_DEBUG"])
-          console.warn ("no reducer for action type:", action.type);
+        console.error ("no reducer for action type:", action.type);
         return state;
       }
   }
@@ -452,11 +467,12 @@
     {
       this.id = id;
       this.render = null;
+      this.prompt = document.createTextNode (id + ": ");
 
       /* Create input div element.*/
       var div = document.createElement ("div");
       div.setAttribute ("hidden", "true");
-      div.appendChild (document.createTextNode (id + ": "));
+      div.appendChild (this.prompt);
       this.element = div;
 
       /* Create input element.*/
@@ -477,6 +493,11 @@
     }
 
     Search_input.prototype.show = function show () {
+      /* Display previous search. */
+      var search = store.state.search;
+      var input = search && (search.status === "done") && search.input;
+      if (input)
+        this.prompt.textContent = this.id + " (default " + input + "): ";
       this.element.removeAttribute ("hidden");
       this.input.focus ();
     };
@@ -603,6 +624,7 @@
         }
       else if (!this.toid)
         {
+          console.warn (state.warning);
           var toid = window.setTimeout (function () {
             store.dispatch ({ type: "warning", msg: null });
           }, config.WARNING_TIMEOUT);
@@ -644,6 +666,7 @@
         }
       else if (!this.toid)
         {
+          console.info (state.echo);
           var toid = window.setTimeout (function () {
             store.dispatch ({ type: "echo", msg: null });
           }, config.WARNING_TIMEOUT);
@@ -661,16 +684,27 @@
     Sidebar ()
     {
       this.element = document.createElement ("div");
-      this.element.setAttribute ("id", "sidebar");
+      this.element.setAttribute ("id", "slider");
+      var div = document.createElement ("div");
+      div.classList.add ("toc-sidebar");
+      var toc = document.querySelector (".contents");
+      toc.remove ();
 
-      /* Create iframe. */
-      var iframe = document.createElement ("iframe");
-      iframe.setAttribute ("name", "slider");
-      iframe.setAttribute ("src", (config.TOC_FILENAME
-                                   + "#main=" + config.INDEX_NAME));
-      this.element.appendChild (iframe);
-      this.iframe = iframe;
-      this.prev = null;
+      /* Move contents of <body> into a a fresh <div> to let the components
+         treat the index page like other iframe page.  */
+      var nav = document.createElement ("nav");
+      nav.classList.add ("contents");
+      for (var ch = toc.firstChild; ch; ch = toc.firstChild)
+        nav.appendChild (ch);
+
+      var div$ = document.createElement ("div");
+      div$.classList.add ("toc");
+      div$.appendChild (nav);
+      div.appendChild (div$);
+      this.element.appendChild (div);
+
+      /* Remove table of contents header.  */
+      document.querySelector (".contents-heading").remove ();
     }
 
     /* Render 'sidebar' according to STATE which is a new state. */
@@ -678,8 +712,7 @@
       /* Update sidebar to highlight the title corresponding to
          'state.current'.*/
       var msg = { message_kind: "update-sidebar", selected: state.current };
-      this.iframe.contentWindow.postMessage (msg, "*");
-      this.prev = state.current;
+      window.postMessage (msg, "*");
     };
 
     /*--------------------------.
@@ -702,6 +735,7 @@
       this.prev_id = null;
       /** @type {HTMLElement} */
       this.prev_div = null;
+      this.prev_search = null;
     }
 
     Pages.prototype.add_div = function add_div (pageid) {
@@ -747,8 +781,11 @@
           this.prev_div = div;
         }
 
-      if (state.search && state.search.status === "ready")
+      if (state.search
+          && (this.prev_search !== state.search)
+          && state.search.status === "ready")
         {
+          this.prev_search = state.search;
           if (state.search.current_pageid === config.INDEX_ID)
             {
               window.setTimeout (function () {
@@ -773,38 +810,34 @@
         }
 
       /* Update highlight of current page.  */
-      if (state.current === config.INDEX_ID)
+      if (!state.highlight)
         {
-          handle_highlight (document.getElementById (config.INDEX_ID),
-                            state.highlight);
+          if (state.current === config.INDEX_ID)
+            remove_highlight (document.getElementById (config.INDEX_ID));
+          else
+            {
+              var link = linkid_split (state.current);
+              var msg$ = { message_kind: "highlight", regexp: null };
+              post_message (link.pageid, msg$);
+            }
         }
-      else
+
+      /* Scroll to highlighted search result. */
+      if (state.search
+          && (this.prev_search !== state.search)
+          && state.search.status === "done"
+          && state.search.found === true)
         {
-          var link = linkid_split (state.current);
-          var regexp = state.highlight;
-          var msg$ = { message_kind: "highlight", regexp: regexp };
-          post_message (link.pageid, msg$);
+          var link$ = linkid_split (state.current);
+          var msg$$ = { message_kind: "scroll-to", hash: "#search-result" };
+          post_message (link$.pageid, msg$$);
+          this.prev_search = state.search;
         }
     };
 
     /*--------------.
     | Utilitaries.  |
     `--------------*/
-
-    /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
-        an URL of the form `foobar${config.EXT}#anchor`.
-        @arg {string} linkid */
-    function
-    linkid_to_url (linkid)
-    {
-      if (linkid === config.INDEX_ID)
-        return config.INDEX_NAME;
-      else
-        {
-          var link = linkid_split (linkid);
-          return link.pageid + config.EXT + link.hash;
-        }
-    }
 
     /** Load PAGEID.
         @arg {string} pageid */
@@ -839,11 +872,15 @@
           throw new ReferenceError (msg);
         }
 
-      /* Create iframe if necessary.  Index page is not inside an iframe.  */
+      /* Create iframe if necessary unless the div is refering to the Index
+         page.  */
       if ((pageid === config.INDEX_ID) && visible)
         {
           div.removeAttribute ("hidden");
-          div.scroll (0, 0);
+          /* Unlike iframes, Elements are unlikely to be scrollable (CSSOM
+             Scroll-behavior), so choose an arbitrary element inside "index"
+             div and at the top of it.  */
+          document.getElementById ("icon-bar").scrollIntoView ();
         }
       else
         {
@@ -995,8 +1032,8 @@
         }
       };
 
-      components.add (new Sidebar ());
       components.add (new Pages (index_div));
+      components.add (new Sidebar ());
       components.add (new Help_page ());
       components.add (new Minibuffer ());
       components.add (new Echo_area ());
@@ -1004,9 +1041,8 @@
 
       if (window.location.hash)
         {
-          var linkid = window.location.hash.slice (1);
-          var action = actions.set_current_url (linkid, "replaceState");
-          store.dispatch (action);
+          var linkid = normalize_hash (window.location.hash);
+          store.dispatch (actions.set_current_url (linkid, "replaceState"));
         }
 
       /* Retrieve NEXT link and local menu.  */
@@ -1018,6 +1054,10 @@
         type: "echo",
         msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
       });
+
+      /* Call user hook.  */
+      if (config.hooks.on_main_load)
+        config.hooks.on_main_load ();
     }
 
     /* Handle messages received via the Message API.
@@ -1037,7 +1077,10 @@
     function
     on_popstate (event)
     {
-      var linkid = event.state;
+      /* When EVENT.STATE is 'null' it means that the user has manually
+         changed the hash part of the URL bar.  */
+      var linkid = (event.state === null) ?
+        normalize_hash (window.location.hash) : event.state;
       store.dispatch (actions.set_current_url (linkid, false));
     }
 
@@ -1056,59 +1099,27 @@
        anything on the current page; however, that's not a problem in the Kawa
        manual).  */
     function
-    hide_grand_child_nodes (ul)
+    hide_grand_child_nodes (ul, excluded)
     {
-      for (var li = ul.firstElementChild; li; li = li.nextElementSibling)
+      var lis = ul.children;
+      for (var i = 0; i < lis.length; i += 1)
         {
-          var a = li.firstElementChild;
-          var li$ = a && a.nextElementSibling;
-          if (li$)
-            li$.setAttribute ("toc-detail", "yes");
-        }
-    }
-
-    /** Scan ToC entries to see which should be hidden.
-        @arg {HTMLElement} elem
-        @arg {string} filename */
-    function
-    scan_toc (elem, filename)
-    {
-      /** @type {Element} */
-      var current;
-      var url = with_sidebar_query (filename);
-
-      /** Set CURRENT to the node corresponding to URL linkid.
-          @arg {Element} elem */
-      function
-      find_current (elem)
-      {
-        /* XXX: No template literals for IE compatibility.  */
-        if (elem.matches ("a[href=\"" + url + "\"]"))
-          {
-            elem.setAttribute ("toc-current", "yes");
-            var sib = elem.nextElementSibling;
-            if (sib && sib.matches ("ul"))
-              hide_grand_child_nodes (sib);
-            current = elem;
-          }
-      }
-
-      var ul = elem.querySelector ("ul");
-      if (filename === config.INDEX_NAME)
-        hide_grand_child_nodes (ul);
-      else
-        {
-          depth_first_walk (ul, find_current, Node.ELEMENT_NODE);
-          /* Mark every parent node.  */
-          while (current && current !== ul)
+          if (lis[i] === excluded)
+            continue;
+          var first = lis[i].firstElementChild;
+          if (first && first.matches ("ul"))
+            hide_grand_child_nodes (first);
+          else if (first && first.matches ("a"))
             {
-              mark_parent_elements (current);
-              current = current.parentElement;
+              var ul$ = first && first.nextElementSibling;
+              if (ul$)
+                ul$.setAttribute ("toc-detail", "yes");
             }
         }
     }
 
-    /** @arg {HTMLElement} elem */
+    /** Make the parent of ELEMS visible.
+        @arg {HTMLElement} elem */
     function
     mark_parent_elements (elem)
     {
@@ -1130,20 +1141,53 @@
         }
     }
 
-    /* Reset what is done by 'scan_toc' and 'hide_grand_child_nodes'.  */
+    /** Scan ToC entries to see which should be hidden.
+        @arg {HTMLElement} elem
+        @arg {string} linkid */
     function
-    clear_toc_styles (node)
+    scan_toc (elem, linkid)
     {
+      /** @type {Element} */
+      var res;
+      var url = with_sidebar_query (linkid_to_url (linkid));
+
+      /** Set CURRENT to the node corresponding to URL linkid.
+          @arg {Element} elem */
       function
-      do_clear (node$)
+      find_current (elem)
       {
-        if (node$.matches ("ul"))
-          node$.removeAttribute ("toc-detail");
-        else if (node$.matches ("a"))
-          node$.removeAttribute ("toc-current");
+        /* XXX: No template literals for IE compatibility.  */
+        if (elem.matches ("a[href=\"" + url + "\"]"))
+          {
+            elem.setAttribute ("toc-current", "yes");
+            var sib = elem.nextElementSibling;
+            if (sib && sib.matches ("ul"))
+              hide_grand_child_nodes (sib);
+            res = elem;
+          }
       }
 
-      depth_first_walk (node, do_clear, Node.ELEMENT_NODE);
+      var ul = elem.querySelector ("ul");
+      if (linkid === config.INDEX_ID)
+        {
+          hide_grand_child_nodes (ul);
+          res = elem.querySelector ("a[name=\"" + linkid + "\"]");
+        }
+      else
+        {
+          depth_first_walk (ul, find_current, Node.ELEMENT_NODE);
+          /* Mark every parent node.  */
+          var current = res;
+          while (current && current !== ul)
+            {
+              mark_parent_elements (current);
+              /* XXX: Special case for manuals with '@part' commands.  */
+              if (current.parentElement === ul)
+                hide_grand_child_nodes (ul, current);
+              current = current.parentElement;
+            }
+        }
+      return res;
     }
 
     /* Build the global dictionary containing navigation links from NAV.  NAV
@@ -1175,30 +1219,25 @@
       return links;
     }
 
-    /* Add a link from TOC_FILENAME to the main index file.  */
+    /* Add a link from the sidebar to the main index file.  ELEM is the first
+       sibling of the newly created header.  */
     function
-    add_header ()
+    add_header (elem)
     {
-      /* Remove link to main page.  */
-      var pattern = "li a[href=\"" + config.INDEX_NAME + "\"]";
-      var a = document.querySelector (pattern);
-      if (a)
-        a.parentElement.remove ();
-
-      /* Create a title to replace the deleted link.  */
-      var header = document.querySelector ("header");
-      var h1 = document.querySelector ("h1");
-      if (header && h1)
+      var h1 = document.querySelector ("h1.settitle");
+      if (h1)
         {
-          a = document.createElement ("a");
+          var header = document.createElement ("header");
+          var a = document.createElement ("a");
           a.setAttribute ("href", config.INDEX_NAME);
+          a.setAttribute ("name", config.INDEX_ID);
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
           var span = document.createElement ("span");
-          span.appendChild (h1.firstChild);
+          span.textContent = h1.textContent;
           div.appendChild (span);
-          h1.remove ();
+          elem.parentElement.insertBefore (header, elem);
         }
     }
 
@@ -1211,8 +1250,8 @@
     function
     on_load ()
     {
-      add_header ();
-      document.body.classList.add ("toc-sidebar");
+      var toc_div = document.getElementById ("slider");
+      add_header (toc_div.querySelector (".toc"));
 
       /* Specify the base URL to use for all relative URLs.  */
       /* FIXME: Add base also for sub-pages.  */
@@ -1221,29 +1260,10 @@
                          window.location.href.replace (/[/][^/]*$/, "/"));
       document.head.appendChild (base);
 
-      /* Create a link referencing the Table of content.  */
-      var toc_a = document.createElement ("a");
-      toc_a.setAttribute ("href", config.TOC_FILENAME);
-      toc_a.appendChild (document.createTextNode ("Table of Contents"));
-      var toc_li = document.createElement ("li");
-      toc_li.appendChild (toc_a);
-      var index_li = document.links[document.links.length - 1].parentElement;
-      var index_grand = index_li.parentElement.parentElement;
-      /* XXX: hack */
-      if (index_grand.matches ("li"))
-        index_li = index_grand;
-      index_li.parentElement.insertBefore (toc_li, index_li.nextSibling);
-
-      fix_links (document.links, true);
-      scan_toc (document.body, config.INDEX_NAME);
-
-      /* Remove artefact from docbook export.  */
-      var divs = document.querySelectorAll ("div.toc-title");
-      for (var i = 0; i < divs.length; i += 1)
-        divs[i].remove ();
+      scan_toc (toc_div, config.INDEX_NAME);
 
       /* Get 'backward' and 'forward' link attributes.  */
-      var dict = create_link_dict (document.querySelector ("ul"));
+      var dict = create_link_dict (toc_div.querySelector ("nav.contents ul"));
       store.dispatch (actions.cache_links (dict));
     }
 
@@ -1254,13 +1274,19 @@
       var data = event.data;
       if (data.message_kind === "update-sidebar")
         {
+          var toc_div = document.getElementById ("slider");
+
+          /* Reset previous calls to 'scan_toc'.  */
+          depth_first_walk (toc_div, function clear_toc_styles (elem) {
+            elem.removeAttribute ("toc-detail");
+            elem.removeAttribute ("toc-current");
+          }, Node.ELEMENT_NODE);
+
+          /* Remove the hash part for the main page.  */
+          var pageid = linkid_split (data.selected).pageid;
+          var selected = (pageid === config.INDEX_ID) ? pageid : data.selected;
           /* Highlight the current LINKID in the table of content.  */
-          var selected = data.selected;
-          clear_toc_styles (document.body);
-          var filename = (selected === config.INDEX_ID) ?
-              config.INDEX_NAME : (selected + config.EXT);
-          scan_toc (document.body, filename);
-          var elem = document.getElementById (selected);
+          var elem = scan_toc (toc_div, selected);
           if (elem)
             elem.scrollIntoView (true);
         }
@@ -1290,11 +1316,15 @@
       if (linkid_contains_index (linkid))
         {
           /* Scan links that should be added to the index.  */
-          var index_links = document.querySelectorAll ("a[xref][href]");
+          var index_links = document.querySelectorAll ("td[valign=top] a");
           store.dispatch (actions.cache_index_links (index_links));
         }
 
       add_icons ();
+
+      /* Call user hook.  */
+      if (config.hooks.on_iframe_load)
+        config.hooks.on_iframe_load ();
     }
 
     /* Handle messages received via the Message API.  */
@@ -1303,7 +1333,7 @@
     {
       var data = event.data;
       if (data.message_kind === "highlight")
-        handle_highlight (document.body, data.regexp);
+        remove_highlight (document.body);
       else if (data.message_kind === "search")
         {
           var found = search (document.body, data.regexp);
@@ -1532,10 +1562,13 @@
         /* XXX: Do not use the URL API for IE portability.  */
         var url = with_sidebar_query.url;
         url.setAttribute ("href", href);
-        var new_hash = basename (url.pathname, /[.]x?html/);
-        if (url.hash)
+        var new_hash = "#" + basename (url.pathname, /[.]x?html/);
+        /* XXX: 'new_hash !== url.hash' is a workaround to work with links
+           produced by makeinfo which link to an anchor element in a page
+           instead of directly to the page. */
+        if (url.hash && new_hash !== url.hash)
           new_hash += ("." + url.hash.slice (1));
-        return config.INDEX_NAME + "#" + new_hash;
+        return config.INDEX_NAME + new_hash;
       }
   }
 
@@ -1576,6 +1609,22 @@
       }
   }
 
+  /** Convert HASH which is something that can be found 'Location.hash' to a
+      "linkid" which can be handled in our model.
+      @arg {string} hash
+      @return {string} linkid */
+  function
+  normalize_hash (hash)
+  {
+    var text = hash.slice (1);
+    /* Some anchor elements are present in 'config.INDEX_NAME' and we need to
+       handle link to them specially (i.e. not try to find their corresponding
+       iframe).*/
+    if (config.MAIN_ANCHORS.includes (text))
+      return config.INDEX_ID + "." + text;
+    else
+      return text;
+  }
 
   /** Return an object composed of the filename and the anchor of LINKID.
       LINKID can have the form "foobar.anchor" or just "foobar".
@@ -1590,6 +1639,21 @@
       {
         var ref = linkid.match (/^(.+)\.(.*)$/).slice (1);
         return { pageid: ref[0], hash: "#" + ref[1] };
+      }
+  }
+
+  /** Convert LINKID which has the form "foobar.anchor" or just "foobar", to
+      an URL of the form `foobar${config.EXT}#anchor`.
+      @arg {string} linkid */
+  function
+  linkid_to_url (linkid)
+  {
+    if (linkid === config.INDEX_ID)
+      return config.INDEX_NAME;
+    else
+      {
+        var link = linkid_split (linkid);
+        return link.pageid + config.EXT + link.hash;
       }
   }
 
@@ -1673,7 +1737,7 @@
   function
   navigation_links (content)
   {
-    var links = content.querySelectorAll ("footer a[href]");
+    var links = content.querySelectorAll ("a[accesskey][href]");
     var res = {};
     /* links have the form MAIN_FILE.html#FRAME-ID.  For convenience
        only store FRAME-ID.  */
@@ -1718,18 +1782,35 @@
 
   /** Check if ELEM matches SEARCH
       @arg {Element} elem
-      @arg {RegExp} rgxp */
+      @arg {RegExp} rgxp
+      @return {boolean} */
   function
   search (elem, rgxp)
   {
-    if (!rgxp)
-      throw new Error ("RGXP argument must be provided");
+    /** @type {Text} */
+    var text = null;
 
-    var res = false;
-    depth_first_walk (elem, function find (node) {
-      res = res || rgxp.test (node.textContent);
-    }, Node.TEXT_NODE);
-    return res;
+    /** @arg {Text} node */
+    function
+    find (node)
+    {
+      if (rgxp.test (node.textContent))
+        {
+          /* Ignore previous match.  */
+          var prev = node.parentElement.matches ("span.highlight");
+          text = (prev) ? null : (text || node);
+        }
+    }
+
+    depth_first_walk (elem, find, Node.TEXT_NODE);
+    remove_highlight (elem);
+    if (!text)
+      return false;
+    else
+      {
+        highlight_text (rgxp, text);
+        return true;
+      }
   }
 
   /** Find the pageid corresponding to forward direction.
@@ -1772,6 +1853,7 @@
         /* Create an highlighted element containing first match.  */
         var span = document.createElement ("span");
         span.appendChild (document.createTextNode (matches[0]));
+        span.setAttribute ("id", "search-result");
         span.classList.add ("highlight");
 
         var right_node = node.splitText (matches.index);
@@ -1780,17 +1862,6 @@
                                            .slice (matches[0].length);
         node.parentElement.insertBefore (span, right_node);
       }
-  }
-
-  /** @arg {RegExp} rgxp
-      @return {function (Text): void} partial application of RGXP in
-      'highlight_text' */
-  function
-  text_highlighter (rgxp)
-  {
-    return function (node) {
-      highlight_text (rgxp, node);
-    };
   }
 
   /** Remove every highlighted elements and inline their text content.
@@ -1805,24 +1876,6 @@
         var span = spans[0];
         var parent = span.parentElement;
         parent.replaceChild (span.firstChild, span);
-        parent.normalize ();
-      }
-  }
-
-  /** Clear ELEM current highlights.  If SEARCH is truthy highlight it in
-      ELEM.
-      @arg {Element} elem
-      @arg {RegExp} search */
-  function
-  handle_highlight (elem, search)
-  {
-    remove_highlight (elem);
-    if (search)
-      {
-        depth_first_walk (elem, text_highlighter (search), Node.TEXT_NODE);
-        var first_highlight = elem.querySelector (".highlight");
-        if (first_highlight)
-          first_highlight.scrollIntoView (true);
       }
   }
 
@@ -1849,29 +1902,15 @@
     /* XXX: This code needs to be highly portable.
        Check <https://quirksmode.org/dom/core/> for details.  */
     return function () {
-      var div = document.createElement ("div");
-      div.setAttribute ("class", "error");
-      div.innerHTML = msg;
-      var elem = document.body.firstChild;
-      document.body.insertBefore (div, elem);
-      window.setTimeout (function () {
-        document.body.removeChild (div);
-      }, config.WARNING_TIMEOUT);
-
-      /* Ensure that the file extensions of links are correct.
-         XXX: This should be done statically.  */
-      if (config.EXT === ".xhtml")
-        return;
-
-      for (var i = 0; i < document.links.length; i += 1)
-        {
-          var link = document.links[i];
-          var href = link.getAttribute ("href");
-          /* Modify href only for relative URL.  */
-          if (href && href.indexOf && href.indexOf (":") < 0)
-            link.setAttribute ("href", href.replace (/\.xhtml/, ".html"));
-        }
-    };
+        var div = document.createElement ("div");
+        div.setAttribute ("class", "error");
+        div.innerHTML = msg;
+        var elem = document.body.firstChild;
+        document.body.insertBefore (div, elem);
+        window.setTimeout (function () {
+          document.body.removeChild (div);
+        }, config.WARNING_TIMEOUT);
+      };
   }
 
   /* Check if current browser supports the minimum requirements required for
@@ -1898,9 +1937,10 @@
     }
 
   register_polyfills ();
+  /* Let the config provided by the user mask the default one.  */
+  config = Object.assign (config, user_config);
 
   var inside_iframe = top !== window;
-  var inside_sidebar = inside_iframe && window.name === "slider";
   var inside_index_page = window.location.pathname === config.INDEX_NAME
       || window.location.pathname.endsWith ("/" + config.INDEX_NAME)
       || window.location.pathname.endsWith ("/");
@@ -1925,16 +1965,14 @@
 
       store = new Store (updater, initial_state);
       var index = init_index_page ();
-      window.addEventListener ("DOMContentLoaded", index.on_load, false);
-      window.addEventListener ("message", index.on_message, false);
-      window.onpopstate = index.on_popstate;
-    }
-  else if (inside_sidebar)
-    {
-      store = new Remote_store ();
       var sidebar = init_sidebar ();
-      window.addEventListener ("DOMContentLoaded", sidebar.on_load, false);
+      window.addEventListener ("DOMContentLoaded", function () {
+        index.on_load ();
+        sidebar.on_load ();
+      }, false);
+      window.addEventListener ("message", index.on_message, false);
       window.addEventListener ("message", sidebar.on_message, false);
+      window.onpopstate = index.on_popstate;
     }
   else if (inside_iframe)
     {
@@ -1956,4 +1994,4 @@
      doesn't handle the 'Escape' key properly.  See
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
-} (window["Modernizr"]));
+} (window["Modernizr"], window["INFO_CONFIG"]));

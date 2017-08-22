@@ -2,20 +2,14 @@ To build the provided examples you have to execute the following
 commands:
 
   autoreconf -fi
-  ./configure --with-docbook-stylesheets=DIR
+  ./configure
   make
-
-The '--with-docbook-stylesheets' option is required for building the
-manuals using 'xsltproc'.  The stylesheets are found using DIR; the file
-"DIR/epub3/chunk.xsl" needs to exist.  For example, on Fedora 25 path
-can be "/usr/share/sgml/docbook/xsl-ns-stylesheets", while on Debian
-use "/usr/share/xml/docbook/stylesheet/docbook-xsl-ns".
 
 note: The Makefile doesn't support out of tree build.
 
 To check the result of EXAMPLE:
 
-  firefox examples/EXAMPLE-xhtml/index.html
+  firefox examples/EXAMPLE-html/index.html
 
 See the "HACKING" file for information about the development of this
 program.

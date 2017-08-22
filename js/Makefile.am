@@ -23,7 +23,7 @@ phony =
 if HAVE_ESLINT
 phony += lint
 lint:
-	$(ESLINT) -c build-aux/eslint.json info.js info-html.js -f unix
+	$(ESLINT) -c build-aux/eslint.json info.js -f unix
 endif
 
 if HAVE_TYPESCRIPT
@@ -52,9 +52,7 @@ endif
 
 examples = \
   examples/hello-html \
-  examples/hello-xhtml \
-  examples/kawa-html \
-  examples/kawa-xhtml
+  examples/kawa-html
 
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included
@@ -62,69 +60,21 @@ js_scripts = \
   modernizr.js \
   info.js
 
-build_xhtml_pages = \
-  $(XSLT) --path "$(DOCBOOK_XSL_DIR)/epub3:$(srcdir)/style" \
-    --stringparam base.dir ebook/OEBPS/ \
-    --stringparam html.script "$(js_scripts)" \
-    --stringparam html.stylesheet info.css \
-    info-epub.xsl $${xml_file} && \
-  sed -e '/<footer>/,/<.footer>/d' <ebook/OEBPS/bk01-toc.xhtml \
-    >ebook/OEBPS/ToC.xhtml && \
-  rm ebook/OEBPS/bk01-toc.xhtml && \
-  for file in ebook/OEBPS/*.xhtml; do \
-    mv $$file `echo $$file | sed -e 's/xhtml$$/html/'`; \
-  done && \
-  for file in ebook/OEBPS/*.html; do \
-    sed \
-      -e '/<?xml .*>/d' \
-      -e '/<script/s|/>|> </script>|' \
-      -e 's,</title>,</title><meta charset="utf-8" />,' \
-      -e 's/ title="[^"]*"//' \
-      -e 's,<header/>,<header></header>,' \
-      -i $$file; \
-  done && \
-  cp style/info.css ebook/OEBPS/info.css && \
-  cp $(js_scripts) ebook/OEBPS/ && \
-  (test "x$$imgdir" = x || cp -r $$imgdir ebook/OEBPS/) && \
-  rm -rf $@ && \
-  mv ebook/OEBPS $@; \
-  rm -rf ebook
-
-## Fix target to make "Top" id the first page.
-.texi.xml:
-	$(MAKEINFO) -I=$(srcdir) --docbook $< -o - | \
-	sed \
-	  -e 's|<book id="-" lang="en">|<book id="book" xmlns="http://docbook.org/ns/docbook" lang="en"><?dbhtml filename="top.html"?>|' \
-	  -e 's|<chapter label="" id="Top">|<chapter label="Top" id="Top"><?dbhtml filename="index.html"?>|' \
-	  > $@
-
-examples/hello-xhtml: examples/hello/hello.xml
-	$(AM_V_GEN)xml_file=examples/hello/hello.xml; imgdir=""; \
-	$(build_xhtml_pages)
-
-examples/kawa-xhtml: examples/kawa/kawa.xml
-	$(AM_V_GEN)xml_file=examples/kawa/kawa.xml; imgdir=examples/kawa/images; \
-	$(build_xhtml_pages)
-
-CLEANFILES = \
-  examples/kawa/kawa.xml \
-  examples/hello/hello.xml
-
-hello_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
+hello_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
 examples/hello-html: examples/hello/hello.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(hello_extra_head) \
 	  examples/hello/hello.texi -o $@ && \
-	cp modernizr.js info-html.js style/info-html.css $@
+	cp $(js_scripts) style/info.css $@
 
-kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info-html.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info-html.js" type="text/javascript"></script>'
+kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
 examples/kawa-html: examples/kawa/kawa.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(kawa_extra_head) \
 	  examples/kawa/kawa.texi -o $@ && \
-	cp modernizr.js info-html.js style/info-html.css style/kawa.css $@
+	cp $(js_scripts) style/info.css style/kawa.css $@
 
 clean-local:
 	rm -rf $(examples)

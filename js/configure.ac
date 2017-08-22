@@ -23,22 +23,6 @@ AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([foreign])
 AM_SILENT_RULES([yes])
 
-AC_PATH_PROG([XSLT], [xsltproc])
-if test "x$ac_cv_path_XSLT" = "x"; then
-   AC_MSG_ERROR([xsltproc not found])
-fi
-
-## XXX: 'AC_ARG_WITH' should only be used for optional packages.  In
-## this particular case the XSL stylesheets are mandatory.  We don't know
-## a good way to check the system for this directory.
-AC_ARG_WITH([docbook-stylesheets],
-  [AS_HELP_STRING([--with-docbook-stylesheets=DIR],
-    [define the directory containing xsl stylesheets])],
-  [with_docbook_stylesheets="$withval"],
-  [AC_MSG_ERROR([--with-docbook-stylesheets option must be defined])])
-
-AC_SUBST([DOCBOOK_XSL_DIR], [$with_docbook_stylesheets])
-
 npm_path="${srcdir}/node_modules/.bin${PATH_SEPARATOR}$PATH"
 
 AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
