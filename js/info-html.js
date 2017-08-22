@@ -16,14 +16,14 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-(function (features) {
+(function (features, config) {
   "use strict";
 
   /*-------------------.
   | Define constants.  |
   `-------------------*/
 
-  var config = {
+  config = config || {
     EXT: ".html",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
@@ -1972,4 +1972,4 @@
      doesn't handle the 'Escape' key properly.  See
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
-} (window["Modernizr"]));
+} (window["Modernizr"], window["INFO_CONFIG"]));
