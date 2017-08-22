@@ -16,21 +16,33 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-(function (features, config) {
+(function (features, user_config) {
   "use strict";
 
   /*-------------------.
   | Define constants.  |
   `-------------------*/
 
-  config = config || {
+  /** To override those default parameters, define 'INFO_CONFIG' in the global
+      environment before loading this script.  */
+  var config = {
     EXT: ".html",
     XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
     MAIN_ANCHORS: ["Top", "SEC_Contents"],
     WARNING_TIMEOUT: 3000,
-    SCREEN_MIN_WIDTH: 700
+    SCREEN_MIN_WIDTH: 700,
+    hooks: {
+      /** Define a function called after 'DOMContentLoaded' event in
+          the INDEX_NAME context.
+          @type {function (): void}*/
+      on_main_load: null,
+      /** Define a function called after 'DOMContentLoaded' event in
+          the iframe context.
+          @type {(function (): void)} */
+      on_iframe_load: null
+    }
   };
 
   /*-------------------.
@@ -1042,6 +1054,10 @@
         type: "echo",
         msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
       });
+
+      /* Call user hook.  */
+      if (config.hooks.on_main_load)
+        config.hooks.on_main_load ();
     }
 
     /* Handle messages received via the Message API.
@@ -1305,6 +1321,10 @@
         }
 
       add_icons ();
+
+      /* Call user hook.  */
+      if (config.hooks.on_iframe_load)
+        config.hooks.on_iframe_load ();
     }
 
     /* Handle messages received via the Message API.  */
@@ -1917,6 +1937,8 @@
     }
 
   register_polyfills ();
+  /* Let the config provided by the user mask the default one.  */
+  config = Object.assign (config, user_config);
 
   var inside_iframe = top !== window;
   var inside_index_page = window.location.pathname === config.INDEX_NAME
