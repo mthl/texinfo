@@ -1,3 +1,13 @@
+2017-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\entry): When splitting the text across 
+	multiple lines, do not simply set \leftskip and \parindent to 
+	values, alter the existing values instead.  Otherwise, long 
+	entries in a table of contents would not be indented properly, 
+	because \leftskip had been set to a positive value.  Arnold 
+	Robbins reported that this happened for the gawk manual.  Add or 
+	change some comments.
+
 2017-08-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\partentry): Add stretch and a bonus for 
