@@ -27,7 +27,6 @@
       environment before loading this script.  */
   var config = {
     EXT: ".html",
-    XHTML_NAMESPACE: "http://www.w3.org/1999/xhtml",
     INDEX_NAME: "index.html",
     INDEX_ID: "index",
     MAIN_ANCHORS: ["Top", "SEC_Contents"],
