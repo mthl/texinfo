@@ -349,7 +349,7 @@
             return state;
           else
             {
-              res.focus = (action.input && true) || false;
+              res.focus = Boolean (action.input);
               res.help = false;
               res.text_input = action.input;
               res.warning = null;
