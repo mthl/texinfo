@@ -425,7 +425,7 @@
     <tr><th colspan=\"2\">Searching</th></tr>\
     <tr><td><code><b>i</b></code></td><td>search in the index</td></tr>\
     <tr><td><code><b>s</b></code></td>\
-        <td>global search in the manual (experimental)</td></tr>\
+        <td>global text search in the manual</td></tr>\
     <tr><td><code><b>m</b></code></td>\
         <td>search in current node menu</td></tr>\
   </tbody>\
@@ -466,7 +466,7 @@
     {
       this.id = id;
       this.render = null;
-      this.prompt = document.createTextNode (id + ": ");
+      this.prompt = document.createTextNode ("Text search" + ": ");
 
       /* Create input div element.*/
       var div = document.createElement ("div");
