@@ -496,7 +496,7 @@
       var search = store.state.search;
       var input = search && (search.status === "done") && search.input;
       if (input)
-        this.prompt.textContent = this.id + " (default " + input + "): ";
+        this.prompt.textContent = "Text search (default " + input + "): ";
       this.element.removeAttribute ("hidden");
       this.input.focus ();
     };
