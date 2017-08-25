@@ -1,3 +1,12 @@
+2017-08-25  Mathieu Lirzin  <mthl@gnu.org>
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_redirection_page)
+	(_default_begin_file): Move '$encoding' to the top of the '<head>'
+	element.  This removes a warning in recent browsers that check if
+	the encoding declaration is present in the first 1024 bytes of the
+	file.  See
+	https://www.w3.org/TR/html5/document-metadata.html#character-encoding-declaration
+
 2017-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\entry): When splitting the text across 

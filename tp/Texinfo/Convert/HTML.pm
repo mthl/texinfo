@@ -6328,13 +6328,13 @@ sub _default_begin_file($$$)
 <html>
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 <head>
+$encoding
 <title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
-$encoding
 ${links}$css_lines
 $extra_head
 </head>
@@ -6366,13 +6366,13 @@ sub _default_node_redirection_page($$)
 $copying_comment<!-- Created by $program_and_version, $program_homepage -->
 <!-- This file redirects to the location of a node or anchor -->
 <head>
+$encoding
 <title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">
 <meta name=\"resource-type\" content=\"document\">
 <meta name=\"distribution\" content=\"global\">${generator}$date
-$encoding
 $css_lines
 <meta http-equiv=\"Refresh\" content=\"0; url=$href\">
 $extra_head
