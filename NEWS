@@ -28,12 +28,16 @@ See the manual for detailed information.
 * texinfo.tex
   . some faulty definitions for Unicode characters have been changed or
     removed
+  . fix indentation in table of contents for entries that are split
+    across multiple lines
 
 * texi2dvi
   . a bug that broke the processing of LaTeX files that did not
     use BibTeX has been fixed
 
 * texi2any
+  . output the encoding declaration of a HTML file earlier so it
+    will always occur within first 1024 bytes of file
   . `INLINE_INSERTCOPYING' removed as a customization variable
 
 
