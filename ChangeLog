@@ -1,3 +1,12 @@
+2017-08-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/pseudotty.c: Open slave end of pseudoterminal outside of 
+	a conditional block so that it will be open even if that block 
+	is not executed.  Otherwise we could fail to turn off the 
+	special interpretation of some characters (C-u, C-s) to the 
+	terminal in time, leading some tests to fail.  Assaf Gordon 
+	reported test failures for several platforms.
+
 2017-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* pretest 6.4.91
