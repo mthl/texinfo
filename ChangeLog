@@ -1,5 +1,10 @@
 2017-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* pretest 6.4.91
+	* configure.ac: Update version.
+
+2017-08-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Add a couple of news items.
 
 2017-08-25  Mathieu Lirzin  <mthl@gnu.org>
