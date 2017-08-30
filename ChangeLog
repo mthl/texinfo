@@ -181,6 +181,11 @@
 	* info/nodes.c (info_find_file): Do not convert the filename to 
 	lowercase and check for it again if a file was not found.
 
+	Note added 2017-08-30: This change was made for code 
+	simplification, and not to fix anything.  The thinking behind 
+	the original code was to support a case-insensitive filesystem
+	that was mounted in a way that was not case-insensitive.
+
 2017-07-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/inc-sea-bs.sh: New test.
