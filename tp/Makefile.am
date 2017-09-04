@@ -197,6 +197,7 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
                        $(top_srcdir)/build-aux/tap-driver.sh
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
+AM_T_LOG_FLAGS += -I .
 AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
 AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
 

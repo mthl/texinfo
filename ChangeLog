@@ -1,3 +1,10 @@
+2017-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Makefile.am (AM_T_LOG_FLAGS): Add "-I .".
+	* tp/tests/run_parser_all.sh: Add "-I ." to perl invocations.
+	Attempt at getting tests to work if . is not in @INC.  Report 
+	from Patrice Dumas.
+
 2017-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infokey.c (compile): Support "1 menu-digit" in .infokey
