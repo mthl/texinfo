@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.0\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-08-19 19:55+0100\n"
+"POT-Creation-Date: 2017-09-04 19:27+0100\n"
 "PO-Revision-Date: 2006-01-09\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin01@solar.com.br>\n"
 "Language-Team: Unknown\n"
@@ -282,92 +282,92 @@ msgid "@{No value for `{value}'@}"
 msgstr ""
 
 #: tp/Texinfo/Convert/Plaintext.pm:2758
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}: {name} {arguments}"
 msgstr "@tie{ }-- {category} da {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2763
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}: {name}"
 msgstr "@tie{ }-- {category} da {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2776
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2779
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2788
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2791
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2799
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name} {arguments}"
 msgstr "@tie{ }-- {category} da {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2805
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name}"
 msgstr "@tie{ }-- {category} da {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2814
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name} {arguments}"
 msgstr "@tie{ }-- {category} na {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2820
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name}"
 msgstr "@tie{ }-- {category} na {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2835
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2839
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2850
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2854
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name}"
 msgstr "@tie{ }-- {category} na {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2868
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name} {arguments}"
 msgstr "@tie{ }-- {category} da {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2872
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name} {arguments}"
 msgstr "@tie{ }-- {category} da {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2883
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name}"
 msgstr "@tie{ }-- {category} da {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2887
-#, perl-brace-format
+#, fuzzy, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "@tie{ }-- {category} da {class}: {type} {name}"
 

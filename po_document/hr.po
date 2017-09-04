@@ -5,10 +5,10 @@
 # Božidar Putanec <bozidarp@yahoo.com>, 2016, 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU texinfo_document 6.3.90\n"
+"Project-Id-Version: GNU texinfo_document 6.4.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2017-08-19 19:55+0100\n"
-"PO-Revision-Date: 2017-04-25 20:36-0800\n"
+"POT-Creation-Date: 2017-09-04 19:27+0100\n"
+"PO-Revision-Date: 2017-08-30 09:52-0700\n"
 "Last-Translator: Božidar Putanec <bozidarp@yahoo.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "Language: hr\n"
@@ -62,7 +62,7 @@ msgstr "{category} od {class}"
 #: tp/Texinfo/Common.pm:1219
 #, perl-brace-format
 msgid "{month} {day}, {year}"
-msgstr "{day}. {month} {year}."
+msgstr "{month} {day}, {year}"
 
 #: tp/Texinfo/Common.pm:1250 tp/Texinfo/Convert/Plaintext.pm:1055
 #: tp/Texinfo/Convert/HTML.pm:532
@@ -286,92 +286,92 @@ msgstr "@{nema vrijednost za „{value}“@}"
 #: tp/Texinfo/Convert/Plaintext.pm:2758
 #, perl-brace-format
 msgid "@tie{}-- {category}: {name} {arguments}"
-msgstr "@tie{ }-- {category}: {name} {arguments}"
+msgstr "@tie{}-- {category}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2763
 #, perl-brace-format
 msgid "@tie{}-- {category}: {name}"
-msgstr "@tie{ }-- {category}: {name}"
+msgstr "@tie{}-- {category}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2776
 #, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name} {arguments}"
-msgstr "@tie{ }-- {category}:@*{type}@*{name} {arguments}"
+msgstr "@tie{}-- {category}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2779
 #, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name} {arguments}"
-msgstr "@tie{ }-- {category}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2788
 #, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name}"
-msgstr "@tie{ }-- {category}:@*{type}@*{name}"
+msgstr "@tie{}-- {category}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2791
 #, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name}"
-msgstr "@tie{ }-- {category}: {type} {name}"
+msgstr "@tie{}-- {category}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2799
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name} {arguments}"
-msgstr "@tie{ }-- {category} klase {class}: {name} {arguments}"
+msgstr "@tie{}-- {category} klase {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2805
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name}"
-msgstr "@tie{ }-- {category} klase {class}: {name}"
+msgstr "@tie{}-- {category} klase {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2814
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name} {arguments}"
-msgstr "@tie{ }-- {category} na klasi {class}: {name} {arguments}"
+msgstr "@tie{}-- {category} na klasi {class}: {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2820
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name}"
-msgstr "@tie{ }-- {category} na klasi {class}: {name}"
+msgstr "@tie{}-- {category} na klasi {class}: {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2835
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name} {arguments}"
-msgstr "@tie{ }-- {category} na klasi {class}:@*{type}@*{name} {arguments}"
+msgstr "@tie{}-- {category} na klasi {class}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2839
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name} {arguments}"
-msgstr "@tie{ }-- {category} na klasi {class}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category} na klasi {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2850
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name}"
-msgstr "@tie{ }-- {category} na klasi {class}:@*{type}@*{name}"
+msgstr "@tie{}-- {category} na klasi {class}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2854
 #, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name}"
-msgstr "@tie{ }-- {category} na klasi {class}: {type} {name}"
+msgstr "@tie{}-- {category} na klasi {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2868
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name} {arguments}"
-msgstr "@tie{ }-- {category} klase {class}:@*{type}@*{name} {arguments}"
+msgstr "@tie{}-- {category} od {class}:@*{type}@*{name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2872
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name} {arguments}"
-msgstr "@tie{ }-- {category} klase {class}: {type} {name} {arguments}"
+msgstr "@tie{}-- {category} od {class}: {type} {name} {arguments}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2883
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name}"
-msgstr "@tie{ }-- {category} klase {class}:@*{type}@*{name}"
+msgstr "@tie{}-- {category} od {class}:@*{type}@*{name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2887
 #, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name}"
-msgstr "@tie{ }-- {category} klase {class}: {type} {name}"
+msgstr "@tie{}-- {category} od {class}: {type} {name}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:3205 tp/Texinfo/Convert/HTML.pm:2920
 #, perl-brace-format
