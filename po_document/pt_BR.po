@@ -283,96 +283,96 @@ msgid "@{No value for `{value}'@}"
 msgstr "@{Nenhum valor para `{value}'@}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2758
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {name} {arguments}"
 msgstr "{category}: @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2763
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {name}"
 msgstr "{category}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2776
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name} {arguments}"
 msgstr "{category}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2779
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name} {arguments}"
 msgstr "{category}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2788
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}:@*{type}@*{name}"
 msgstr "{category}:@* @emph{{type}}@* @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2791
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category}: {type} {name}"
 msgstr "{category}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2799
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name} {arguments}"
 msgstr "{category} de {class}: @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2805
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {name}"
 msgstr "{category} de {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2814
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name} {arguments}"
 msgstr "{category} em {class}: @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2820
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {name}"
 msgstr "{category} em {class}: @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2835
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name} {arguments}"
 msgstr ""
 "{category} em {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2839
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name} {arguments}"
 msgstr ""
 "{category} em {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2850
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}:@*{type}@*{name}"
 msgstr "{category} em {class}:@* @emph{{type}}@* @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2854
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} on {class}: {type} {name}"
 msgstr "{category} em {class}: @emph{{type}} @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2868
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name} {arguments}"
 msgstr ""
 "{category} de {class}:@* @emph{{type}}@* @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2872
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name} {arguments}"
 msgstr ""
 "{category} da {class}: @emph{{type}} @strong{{name}} @emph{{arguments}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2883
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}:@*{type}@*{name}"
 msgstr "{category} da {class}:@* @emph{{type}}@* @strong{{name}}"
 
 #: tp/Texinfo/Convert/Plaintext.pm:2887
-#, fuzzy, perl-brace-format
+#, perl-brace-format
 msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "{category} da {class}: @emph{{type}} @strong{{name}}"
 
