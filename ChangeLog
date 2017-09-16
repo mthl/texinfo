@@ -1,3 +1,14 @@
+2017-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	6.5 release.
+	* configure.ac, NEWS, util/texi2dvi, util/texi2pdf,
+	doc/refcard/txirefcard.tex: Version number.
+
+2017-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* pretest 6.4.92
+	* configure.ac: Update version.
+
 2017-09-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Makefile.am (AM_T_LOG_FLAGS): Add "-I .".

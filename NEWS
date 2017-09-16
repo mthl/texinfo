@@ -12,6 +12,7 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+6.5 (12 September 2017)
 * info:
   . some bugs fixed:
     . a bug where a segfault could happen in the regex search, for
