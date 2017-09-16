@@ -1,3 +1,7 @@
+2017-09-16  Paul Eggert  <eggert@cs.ucla.edu>
+
+	* doc/texinfo.tex: Use 'https' in preference to 'http' in comments.
+
 2017-09-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.5 release.
