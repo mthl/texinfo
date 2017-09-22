@@ -1,3 +1,9 @@
+2017-09-22  Mathieu Lirzin  <mthl@gnu.org>
+
+	* build-aux/pre-inst-env.in: New file, for launching programs 
+	from build directory.
+	* Makefile.am (noinst_SCRIPTS, CLEANFILES): Add pre-inst-env.
+
 2017-09-16  Paul Eggert  <eggert@cs.ucla.edu>
 
 	* doc/texinfo.tex: Use 'https' in preference to 'http' in comments.

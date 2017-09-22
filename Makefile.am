@@ -16,6 +16,9 @@
 # Find our headers and gnulib headers.
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
+# Wrapper for the build environment.
+noinst_SCRIPTS = pre-inst-env
+
 # Additional files to distribute.
 EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
@@ -132,3 +135,5 @@ po-check:
 	  diff -u $@-1 $@-2 || exit 1;					\
 	  rm -f $@-1 $@-2;						\
 	fi
+
+CLEANFILES= $(noinst_SCRIPTS)
