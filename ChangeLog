@@ -3,6 +3,8 @@
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Do not check for 
 	'spaces_before_argument' element on parent element.  Rename a 
 	variable.
+	* tp/Texinfo/MiscXS/misc.c (xs_abort_empty_line): Make the same 
+	change.
 
 2017-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 

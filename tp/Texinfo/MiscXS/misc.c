@@ -153,14 +153,6 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
           if (svp)
             {
               test_extra = (HV *) SvRV (*svp);
-              key = "spaces_before_argument";
-              svp = hv_fetch (test_extra, key, strlen (key), 0);
-              if (svp)
-                {
-                  if ((HV *) SvRV (*svp) == last_elt)
-                    goto found;
-                }
-
               key = "spaces_after_command";
               svp = hv_fetch (test_extra, key, strlen (key), 0);
               if (svp)
