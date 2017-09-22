@@ -1192,7 +1192,8 @@ sub _convert($$;$)
             $in_monospace_not_normal
               if (defined($in_monospace_not_normal));
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
-          if ($arg_index > 0) {
+          if (!$Texinfo::Common::context_brace_commands{$root->{'cmdname'}}
+              and $root->{'cmdname'} ne 'verb') {
             push @$attribute, 
               $self->_leading_spaces_arg($root->{'args'}->[$arg_index]);
           }

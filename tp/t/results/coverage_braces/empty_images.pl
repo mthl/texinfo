@@ -50,6 +50,9 @@ $result_trees{'empty_images'} = {
               'type' => 'empty_spaces_before_argument'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'brace_command_arg'
         },
@@ -116,8 +119,7 @@ $result_trees{'empty_images'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {}
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -249,6 +251,7 @@ $result_trees{'empty_images'}{'contents'}[0]{'parent'} = $result_trees{'empty_im
 $result_trees{'empty_images'}{'contents'}[1]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[2]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[0];
+$result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[1];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];
@@ -263,7 +266,6 @@ $result_trees{'empty_images'}{'contents'}[3]{'extra'}{'brace_command_contents'}[
 $result_trees{'empty_images'}{'contents'}[3]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'empty_images'}{'contents'}[3]{'args'}[2]{'contents'}[0];
 $result_trees{'empty_images'}{'contents'}[3]{'extra'}{'brace_command_contents'}[3][0] = $result_trees{'empty_images'}{'contents'}[3]{'args'}[3]{'contents'}[0];
 $result_trees{'empty_images'}{'contents'}[3]{'extra'}{'brace_command_contents'}[4][0] = $result_trees{'empty_images'}{'contents'}[3]{'args'}[4]{'contents'}[0];
-$result_trees{'empty_images'}{'contents'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_images'}{'contents'}[3]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[4]{'parent'} = $result_trees{'empty_images'};
 $result_trees{'empty_images'}{'contents'}[5]{'parent'} = $result_trees{'empty_images'};

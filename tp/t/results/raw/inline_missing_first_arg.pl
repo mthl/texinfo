@@ -19,6 +19,9 @@ $result_trees{'inline_missing_first_arg'} = {
                   'type' => 'empty_spaces_before_argument'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             },
@@ -35,8 +38,7 @@ $result_trees{'inline_missing_first_arg'} = {
               undef,
               undef
             ],
-            'format' => undef,
-            'spaces_before_argument' => {}
+            'format' => undef
           },
           'line_nr' => {
             'file_name' => '',
@@ -87,9 +89,9 @@ $result_trees{'inline_missing_first_arg'} = {
   'type' => 'text_root'
 };
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0];
-$result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0];
 $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'inline_missing_first_arg'}{'contents'}[0]{'contents'}[2];

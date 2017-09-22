@@ -4906,7 +4906,7 @@ sub _parse_texi($;$)
                   {'type' => 'empty_spaces_before_argument',
                    'text' => '',
                    'parent' => $current };
-                $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+                $current->{'extra'}->{'spaces_before_argument'}
                    = $current->{'contents'}->[-1];
               }
               if ($inline_commands{$command}) {

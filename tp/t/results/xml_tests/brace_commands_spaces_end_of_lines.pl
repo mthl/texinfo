@@ -22,6 +22,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
               'text' => 'a'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'brace_command_arg'
         }
@@ -33,8 +36,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {}
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -69,6 +71,9 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
               'text' => 'a'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'brace_command_arg'
         }
@@ -80,8 +85,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
           [
             {}
           ]
-        ],
-        'spaces_before_argument' => {}
+        ]
       },
       'line_nr' => {
         'file_name' => '',
@@ -336,17 +340,17 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
 };
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0];
+$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[2]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0];
+$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[4]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[5]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
@@ -427,9 +431,9 @@ $result_errors{'brace_commands_spaces_end_of_lines'} = [];
 
 
 
-$result_converted{'xml'}->{'brace_commands_spaces_end_of_lines'} = '<image spaces="\\n"><imagefile>a</imagefile></image>
+$result_converted{'xml'}->{'brace_commands_spaces_end_of_lines'} = '<image><imagefile spaces="\\n">a</imagefile></image>
 
-<image spaces=" \\n"><imagefile>a</imagefile></image>
+<image><imagefile spaces=" \\n">a</imagefile></image>
 
 <image><imagefile>a</imagefile><imagewidth spaces="\\n">b</imagewidth></image>
 

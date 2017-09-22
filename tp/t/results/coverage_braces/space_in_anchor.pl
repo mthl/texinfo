@@ -26,6 +26,9 @@ $result_trees{'space_in_anchor'} = {
               'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'brace_command_arg'
         }
@@ -41,8 +44,7 @@ $result_trees{'space_in_anchor'} = {
         'node_content' => [
           {}
         ],
-        'normalized' => 'anchor-name',
-        'spaces_before_argument' => {}
+        'normalized' => 'anchor-name'
       },
       'line_nr' => {
         'file_name' => '',
@@ -68,10 +70,10 @@ $result_trees{'space_in_anchor'} = {
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0];
+$result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'space_in_anchor'}{'contents'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'space_in_anchor'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'space_in_anchor'}{'contents'}[0]{'parent'} = $result_trees{'space_in_anchor'};
 $result_trees{'space_in_anchor'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_anchor'}{'contents'}[1];
 $result_trees{'space_in_anchor'}{'contents'}[1]{'parent'} = $result_trees{'space_in_anchor'};
