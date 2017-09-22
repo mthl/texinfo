@@ -530,6 +530,9 @@ AC_CONFIG_FILES([\
   Pod-Simple-Texinfo/Makefile
 ])
 
+AC_CONFIG_FILES([pre-inst-env:build-aux/pre-inst-env.in],
+  [chmod +x pre-inst-env])
+
 AC_OUTPUT
 
 # Summarize warnings to make them more visible.
