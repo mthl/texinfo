@@ -50,7 +50,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @EXPORT = qw(
 );
 
-$VERSION = '6.5';
+$VERSION = '6.5dev';
 
 # SXML specific
 my %defaults = (
