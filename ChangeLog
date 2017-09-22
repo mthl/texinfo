@@ -1,3 +1,8 @@
+2017-09-22  Mathieu Lirzin  <mthl@gnu.org>
+
+	* Makefile.am (CLEANFILES): Remove $(noinst_SCRIPTS) to
+	keep 'pre-inst-env' when doing 'make clean'.
+
 2017-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Do not check for 
