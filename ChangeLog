@@ -1,5 +1,11 @@
 2017-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Do not check for 
+	'spaces_before_argument' element on parent element.  Rename a 
+	variable.
+
+2017-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <'{' seen>: Set 
 	spaces_before_argument on element for the argument itself, not 
 	for the element corresponding to the command, which is the 
