@@ -2126,23 +2126,21 @@ sub _expand_macro_body($$$$) {
 # consisting only of spaces.  This container is removed here, typically
 # this is called when non-space happens on a line.
 sub _abort_empty_line {
-  my ($self, $current, $additional_spaces) = @_;
+  my ($self, $current, $additional_text) = @_;
 
-  $additional_spaces = '' if (!defined($additional_spaces));
+  $additional_text = '' if (!defined($additional_text));
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
        and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
-
     print STDERR "ABORT EMPTY "
     .$current->{'contents'}->[-1]->{'type'}
-    ." additional text |$additional_spaces|,"
+    ." additional text |$additional_text|,"
     ." current |$current->{'contents'}->[-1]->{'text'}|\n"
       if ($self->{'DEBUG'});
-
-    $current->{'contents'}->[-1]->{'text'} .= $additional_spaces;
+    $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     # remove empty 'empty*before'.
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
       # as we remove 'empty_spaces_before_argument', 'spaces_before_argument'
@@ -2153,6 +2151,13 @@ sub _abort_empty_line {
                 eq $current->{'contents'}->[-1]) {
         delete ($current->{'extra'}->{'spaces_before_argument'});
         delete ($current->{'extra'}) if !(keys(%{$current->{'extra'}}));
+      } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
+          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
+                eq $current->{'contents'}->[-1]) {
+        delete ($current->{'parent'}->{'extra'}->{'spaces_before_argument'});
+        delete ($current->{'parent'}->{'extra'})
+          if !(keys(%{$current->{'parent'}->{'extra'}}));
       } elsif ($current->{'extra'} 
           and $current->{'extra'}->{'spaces_after_command'}
           and $current->{'extra'}->{'spaces_after_command'} 
