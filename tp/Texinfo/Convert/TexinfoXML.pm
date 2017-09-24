@@ -1350,7 +1350,7 @@ sub _convert($$;$)
                 }
                 my $spaces = [];
                 if ($arg_index != 0) {
-                  push @$spaces, $self->_leading_spaces_arg(
+                  push @$spaces, _leading_spaces_before_argument(
                                               $root->{'args'}->[$arg_index]);
                 }
                 if ($arg ne '' or scalar(@$spaces)) {
