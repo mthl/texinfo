@@ -86,7 +86,7 @@ $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'parent'} = $result_trees{'node_empty_direction'};
 
-$result_texis{'node_empty_direction'} = '@node name, ';
+$result_texis{'node_empty_direction'} = '@node name,  ';
 
 
 $result_texts{'node_empty_direction'} = '';

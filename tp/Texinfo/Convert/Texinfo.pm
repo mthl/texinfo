@@ -82,9 +82,15 @@ sub convert ($;$)
                                 or $root->{'type'} eq 'menu_comment'))) {
       $result .= _expand_cmd_args_to_texi($root, $fix);
     }
-    $result .= '{' if ($root->{'type'}
-                       and ($root->{'type'} eq 'bracketed'
-                            or $root->{'type'} eq 'bracketed_def_content'));
+    if ($root->{'type'}
+        and ($root->{'type'} eq 'bracketed'
+             or $root->{'type'} eq 'bracketed_def_content')) {
+      $result .= '{';
+      if ($root->{'extra'}
+          and $root->{'extra'}->{'spaces_before_argument'}) {
+         $result .= $root->{'extra'}->{'spaces_before_argument'}->{'text'};
+      }
+    }
     if (defined($root->{'contents'})) {
       die "bad contents type(" . ref($root->{'contents'})
           . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
@@ -153,7 +159,10 @@ sub _expand_cmd_args_to_texi ($;$) {
     die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
       if (ref($cmd->{'args'}) ne 'ARRAY');
     foreach my $arg (@{$cmd->{'args'}}) {
-       $result .= convert($arg, $fix) . ',';
+      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
+        $result .= $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
+      }
+      $result .= convert($arg, $fix) . ',';
     }
     $result =~ s/,$//;
   } elsif ($fix and $misc_commands{$cmdname}
@@ -168,12 +177,19 @@ sub _expand_cmd_args_to_texi ($;$) {
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};
     }
+    if ($cmd->{'extra'}
+        and $cmd->{'extra'}->{'spaces_before_argument'}) {
+      $result .= $cmd->{'extra'}->{'spaces_before_argument'}->{'text'};
+    }
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
       if (exists($brace_commands{$cmdname}) or ($cmd->{'type'} 
                     and $cmd->{'type'} eq 'definfoenclose_command')) {
         $result .= ',' if ($arg_nr);
         $arg_nr++;
+      }
+      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
+        $result .= $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
       }
       $result .= convert($arg, $fix);
     }

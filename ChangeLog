@@ -1,3 +1,35 @@
+
+2017-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Remove
+	'empty_spaces_before_argument' element from main tree.
+	(import): Temporarily disable XS overrides.
+	(_parse_texi) <new line>: Remove an 
+	'empty_spaces_before_argument' element.
+	Otherwise it will not be removed in '_abort_empty_line' because 
+	a 'new_line' element is in the way.
+	Do not call '_abort_empty_line' for a continuation with @ inside
+	a def command, as this leads to an 'empty_spaces_before_argument'
+	element being removed when it was not before.
+	(close_current) <bracketed>: Remove an 
+	'empty_spaces_before_argument' element.  This happens for some 
+	cases of malformed input.
+
+	* tp/Texinfo/Convert/Texinfo.pm (convert, _expand_cmd_args_to_texi):
+	Check for a 'spaces_before_argument' extra value, and output the 
+	spaces in it.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_leading_trailing_spaces_arg):
+	Call _leading_spaces_before_argument to check for 
+	'spaces_before_argument' extra value.
+	
+	* tp/t/test_tree_copy.t: Disable all tests, temporarily.
+	* tp/Texinfo/Convert/Converter.pm
+	(_collect_leading_trailing_spaces_arg): Check for 
+	'spaces_before_argument' extra value.
+
+	The effect of this change is to make the parse tree less cyclic,
+	which should make it easier to understand.
+
 2017-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi) <after ',' separating arguments>:

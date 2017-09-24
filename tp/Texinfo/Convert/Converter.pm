@@ -1099,7 +1099,10 @@ sub _collect_leading_trailing_spaces_arg($$)
   my $arg = shift;
   #print STDERR "$arg->{'type'}: @{$arg->{'contents'}}\n";
   my @result;
-  if ($arg->{'contents'} and $arg->{'contents'}->[0] 
+  if ($arg->{'extra'} and
+      $arg->{'extra'}->{'spaces_before_argument'}) {
+    $result[0] = $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
+  } elsif ($arg->{'contents'} and $arg->{'contents'}->[0] 
       and defined($arg->{'contents'}->[0]->{'text'})
       and $arg->{'contents'}->[0]->{'text'} !~ /\S/
       and defined($arg->{'contents'}->[0]->{'type'})) {

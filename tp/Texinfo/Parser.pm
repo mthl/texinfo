@@ -66,7 +66,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 our $module_loaded = 0;
 sub import {
-  if (!$module_loaded) {
+  if (0 and !$module_loaded) {
     Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
       "Texinfo::MiscXS::merge_text");
     Texinfo::XSLoader::override ("Texinfo::Parser::_abort_empty_line",
@@ -1724,6 +1724,14 @@ sub _close_current($$$;$$)
     if ($current->{'type'} eq 'bracketed') {
       $self->_command_error($current, $line_nr, 
                             $self->__("misplaced %c"), ord('{'));
+      if ($current->{'contents'}
+          and @{$current->{'contents'}}
+          and $current->{'contents'}->[0]->{'type'}
+          and $current->{'contents'}->[0]->{'type'}
+                eq 'empty_spaces_before_argument') {
+        shift @{$current->{'contents'}};
+      }
+
     } elsif ($current->{'type'} eq 'menu_comment' 
           or $current->{'type'} eq 'menu_entry_description') {
       my $context = pop @{$self->{'context_stack'}};
@@ -2135,11 +2143,15 @@ sub _abort_empty_line {
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_before_argument'
            or $current->{'contents'}->[-1]->{'type'} eq 'empty_spaces_after_close_brace')) {
+
+    my $spaces_element = $current->{'contents'}->[-1];
+
     print STDERR "ABORT EMPTY "
     .$current->{'contents'}->[-1]->{'type'}
     ." additional text |$additional_text|,"
     ." current |$current->{'contents'}->[-1]->{'text'}|\n"
       if ($self->{'DEBUG'});
+
     $current->{'contents'}->[-1]->{'text'} .= $additional_text;
     # remove empty 'empty*before'.
     if ($current->{'contents'}->[-1]->{'text'} eq '') {
@@ -2185,7 +2197,12 @@ sub _abort_empty_line {
       }
     } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
       $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_after_command';
+    } elsif ($spaces_element->{'type'} eq 'empty_spaces_before_argument') {
+      # Remove element from main tree. It will still be referenced in
+      # the 'extra' hash as 'spaces_before_argument' or 'spaces_after_command'.
+      pop @{$current->{'contents'}};
     }
+
     return 1;
   }
   return 0;
@@ -3604,6 +3621,17 @@ sub _parse_texi($;$)
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
+
+      # FIXME: should we continue with this element instead?
+      if ($current->{'contents'}
+          and $current->{'contents'}->[-1]
+          and $current->{'contents'}->[-1]->{'type'}
+          and $current->{'contents'}->[-1]->{'type'}
+               eq 'empty_spaces_before_argument') {
+        # If we do not remove this here, it will not be removed in 
+        # _abort_new_line due to the 'empty_line' element which is added next.
+        pop @{$current->{'contents'}};
+      }
       $line =~ s/^([^\S\r\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
                                         'text' => $1,
@@ -4134,7 +4162,13 @@ sub _parse_texi($;$)
           }
         }
 
-        if (not _abort_empty_line($self, $current) 
+        # special case with @ followed by a newline protecting end of lines
+        # in @def*
+        my $def_line_continuation
+          = ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
+
+        if (not $def_line_continuation
+               and not _abort_empty_line($self, $current) 
                and $begin_line_commands{$command}) {
           $self->line_warn( 
               sprintf($self->__("\@%s should only appear at the beginning of a line"), 
@@ -4180,9 +4214,7 @@ sub _parse_texi($;$)
           }
         }
 
-        # special case with @ followed by a newline protecting end of lines
-        # in @def*
-        last if ($self->{'context_stack'}->[-1] eq 'def' and $command eq "\n");
+        last if ($def_line_continuation);
 
         unless ($self->{'no_paragraph_commands'}->{$command}) {
           my $paragraph = _begin_paragraph($self, $current, $line_nr);

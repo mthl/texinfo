@@ -198,16 +198,15 @@ $result_trees{'inter_item_commands_in_def_in_example'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => ' ',
-                          'type' => 'empty_spaces_before_argument'
-                        },
-                        {
-                          'parent' => {},
                           'text' => 'log trap1'
                         }
                       ],
                       'extra' => {
-                        'spaces_before_argument' => {}
+                        'spaces_before_argument' => {
+                          'parent' => {},
+                          'text' => ' ',
+                          'type' => 'empty_spaces_before_argument'
+                        }
                       },
                       'line_nr' => {
                         'file_name' => '',
@@ -707,8 +706,7 @@ $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'contents'}[0];
+$result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[4]{'line_nr'} = $result_trees{'inter_item_commands_in_def_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'line_nr'};

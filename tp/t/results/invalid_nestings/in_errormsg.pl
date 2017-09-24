@@ -171,16 +171,14 @@ $result_trees{'in_errormsg'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
+          'contents' => [],
+          'extra' => {
+            'spaces_before_argument' => {
               'parent' => {},
               'text' => '
 ',
               'type' => 'empty_spaces_before_argument'
             }
-          ],
-          'extra' => {
-            'spaces_before_argument' => {}
           },
           'parent' => {},
           'type' => 'brace_command_arg'
@@ -373,8 +371,7 @@ $result_trees{'in_errormsg'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_t
 $result_trees{'in_errormsg'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[3];
 $result_trees{'in_errormsg'}{'contents'}[3]{'parent'} = $result_trees{'in_errormsg'};
 $result_trees{'in_errormsg'}{'contents'}[4]{'parent'} = $result_trees{'in_errormsg'};
-$result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0];
-$result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0];
 $result_trees{'in_errormsg'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[5];
 $result_trees{'in_errormsg'}{'contents'}[5]{'parent'} = $result_trees{'in_errormsg'};
 $result_trees{'in_errormsg'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'in_errormsg'}{'contents'}[6];

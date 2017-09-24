@@ -116,11 +116,6 @@ $result_trees{'section_in_math'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_before_argument'
-                    },
-                    {
-                      'parent' => {},
                       'text' => 'in math
 '
                     },
@@ -138,7 +133,11 @@ $result_trees{'section_in_math'} = {
               'cmdname' => 'math',
               'contents' => [],
               'extra' => {
-                'spaces_before_argument' => {}
+                'spaces_before_argument' => {
+                  'parent' => {},
+                  'text' => ' ',
+                  'type' => 'empty_spaces_before_argument'
+                }
               },
               'line_nr' => {
                 'file_name' => '',
@@ -235,9 +234,8 @@ $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[0]{'parent'} = $resu
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[1];

@@ -679,10 +679,9 @@ sub _leading_trailing_spaces_arg($$)
   my $root = shift;
 
   my @result;
+  @result = _leading_spaces_before_argument($root);
+
   my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
-  if (defined($spaces[0]) and $spaces[0] ne '') {
-    push @result, ('spaces', _protect_in_spaces($spaces[0]));
-  }
   if (defined($spaces[1])) {
     chomp($spaces[1]);
     if ($spaces[1] ne '') {
