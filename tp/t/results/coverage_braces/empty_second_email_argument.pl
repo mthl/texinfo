@@ -45,6 +45,9 @@ $result_trees{'empty_second_email_argument'} = {
                   'type' => 'empty_spaces_before_argument'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
@@ -82,6 +85,7 @@ $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[1];
+$result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'empty_second_email_argument'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];

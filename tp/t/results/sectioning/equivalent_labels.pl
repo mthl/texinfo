@@ -149,6 +149,9 @@ $result_trees{'equivalent_labels'} = {
                   'type' => 'space_at_end_block_command'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'block_line_arg'
             }
@@ -486,6 +489,7 @@ $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'par
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[0];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4];

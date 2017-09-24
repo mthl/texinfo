@@ -661,6 +661,9 @@ $result_trees{'semi_auto'} = {
               'text' => 'Chap1'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         },
@@ -682,6 +685,9 @@ $result_trees{'semi_auto'} = {
               'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -888,10 +894,12 @@ $result_trees{'semi_auto'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2];
+$result_trees{'semi_auto'}{'contents'}[7]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2]{'contents'}[0];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[2]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3];
+$result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'contents'}[0];
 $result_trees{'semi_auto'}{'contents'}[7]{'args'}[3]{'parent'} = $result_trees{'semi_auto'}{'contents'}[7];
 $result_trees{'semi_auto'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'semi_auto'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'semi_auto'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'semi_auto'}{'contents'}[7]{'extra'}{'node_content'};

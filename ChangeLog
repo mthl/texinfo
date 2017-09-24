@@ -1,3 +1,12 @@
+2017-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <after ',' separating arguments>:
+	Save 'spaces_before_argument' on element corresponding to argument.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Call 
+	_leading_spaces_before_argument instead of _leading_spaces_arg.  
+	This uses the 'spaces_before_argument' element we saved in 
+	'_parse_texi'.
+
 2017-09-22  Mathieu Lirzin  <mthl@gnu.org>
 
 	* Makefile.am (CLEANFILES): Remove $(noinst_SCRIPTS) to

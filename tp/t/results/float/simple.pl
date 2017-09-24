@@ -45,6 +45,9 @@ $result_trees{'simple'} = {
               'type' => 'space_at_end_block_command'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -181,6 +184,7 @@ $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'sim
 $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[1];
 $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[1];
 $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'args'}[1];
+$result_trees{'simple'}{'contents'}[0]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[1];

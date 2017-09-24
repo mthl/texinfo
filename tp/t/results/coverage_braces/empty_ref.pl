@@ -146,6 +146,9 @@ $result_trees{'empty_ref'} = {
                   'text' => 'arg'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
@@ -203,6 +206,7 @@ $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'extra'}{'sp
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1];
+$result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'contents'}[0];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'args'}[1]{'contents'}[1];
 $result_trees{'empty_ref'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'empty_ref'}{'contents'}[1];

@@ -1195,7 +1195,7 @@ sub _convert($$;$)
           if (!$Texinfo::Common::context_brace_commands{$root->{'cmdname'}}
               and $root->{'cmdname'} ne 'verb') {
             push @$attribute, 
-              $self->_leading_spaces_arg($root->{'args'}->[$arg_index]);
+              _leading_spaces_before_argument($root->{'args'}->[$arg_index]);
           }
           if (!defined($command) or $arg ne '' or scalar(@$attribute) > 0) {
             # ${attribute} is only set for @verb

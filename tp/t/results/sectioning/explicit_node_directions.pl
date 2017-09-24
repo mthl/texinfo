@@ -300,6 +300,9 @@ $result_trees{'explicit_node_directions'} = [
                 'text' => 'third node'
               }
             ],
+            'extra' => {
+              'spaces_before_argument' => {}
+            },
             'parent' => {},
             'type' => 'misc_line_arg'
           },
@@ -554,6 +557,7 @@ $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[0]{'contents
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1];
+$result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[2];
 $result_trees{'explicit_node_directions'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'explicit_node_directions'}[1]{'contents'}[0];

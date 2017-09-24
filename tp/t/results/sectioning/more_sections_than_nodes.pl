@@ -587,6 +587,9 @@ $result_trees{'more_sections_than_nodes'} = {
               'text' => 'n c3 s1 s2'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         },
@@ -602,6 +605,9 @@ $result_trees{'more_sections_than_nodes'} = {
               'text' => 'n c2'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         },
@@ -623,6 +629,9 @@ $result_trees{'more_sections_than_nodes'} = {
               'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -1491,13 +1500,16 @@ $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[0]{'contents'}[
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1];
+$result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1]{'contents'}[0];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[1]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2];
+$result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2]{'contents'}[0];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[2]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3];
+$result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'contents'}[0];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[3]{'parent'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'extra'}{'node_content'}[0] = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'args'}[0]{'contents'}[1];
 $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'more_sections_than_nodes'}{'contents'}[7]{'extra'}{'node_content'};

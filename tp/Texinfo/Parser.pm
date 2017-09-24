@@ -5344,6 +5344,8 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '',
                   'parent' => $current };
+          $current->{'extra'}->{'spaces_before_argument'}
+            = $current->{'contents'}->[-1];
         } elsif ($separator eq ',' and $current->{'type'}
             and $current->{'type'} eq 'misc_line_arg'
             and $current->{'parent'}->{'cmdname'} 

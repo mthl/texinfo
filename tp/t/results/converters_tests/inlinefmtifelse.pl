@@ -348,6 +348,9 @@ $result_trees{'inlinefmtifelse'} = {
                   'text' => 'else docbook spaces '
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
@@ -433,6 +436,9 @@ $result_trees{'inlinefmtifelse'} = {
                   'text' => 'else tex spaces '
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
@@ -660,6 +666,7 @@ $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'paren
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2];
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2];
+$result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'inlinefmtifelse'}{'contents'}[6]{'contents'}[0]{'args'}[2]{'contents'}[1];
@@ -675,6 +682,7 @@ $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'paren
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2];
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2];
+$result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0];
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'extra'}{'brace_command_contents'}[2][0] = $result_trees{'inlinefmtifelse'}{'contents'}[8]{'contents'}[0]{'args'}[2]{'contents'}[1];

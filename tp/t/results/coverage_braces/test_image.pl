@@ -414,6 +414,9 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -535,6 +538,9 @@ $result_trees{'test_image'} = {
                           'type' => 'spaces_at_end'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -1087,6 +1093,9 @@ $result_trees{'test_image'} = {
                       'text' => '1cm'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -1208,6 +1217,9 @@ $result_trees{'test_image'} = {
                       'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -1711,6 +1723,9 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -1832,6 +1847,9 @@ $result_trees{'test_image'} = {
                           'type' => 'spaces_at_end'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -2061,6 +2079,9 @@ $result_trees{'test_image'} = {
                   'type' => 'space_at_end_block_command'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'block_line_arg'
             }
@@ -2389,6 +2410,9 @@ $result_trees{'test_image'} = {
                           'text' => '1cm'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -2510,6 +2534,9 @@ $result_trees{'test_image'} = {
                           'type' => 'spaces_at_end'
                         }
                       ],
+                      'extra' => {
+                        'spaces_before_argument' => {}
+                      },
                       'parent' => {},
                       'type' => 'brace_command_arg'
                     },
@@ -2974,6 +3001,9 @@ $result_trees{'test_image'} = {
                                   'text' => '1cm'
                                 }
                               ],
+                              'extra' => {
+                                'spaces_before_argument' => {}
+                              },
                               'parent' => {},
                               'type' => 'brace_command_arg'
                             },
@@ -3095,6 +3125,9 @@ $result_trees{'test_image'} = {
                                   'type' => 'spaces_at_end'
                                 }
                               ],
+                              'extra' => {
+                                'spaces_before_argument' => {}
+                              },
                               'parent' => {},
                               'type' => 'brace_command_arg'
                             },
@@ -3493,6 +3526,7 @@ $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'conten
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2];
+$result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3];
@@ -3519,6 +3553,7 @@ $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'conten
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'line_nr'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[10]{'line_nr'};
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[8]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[4];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[3]{'contents'}[1]{'args'}[4];
@@ -3668,6 +3703,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3];
@@ -3694,6 +3730,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[7]{'line_nr'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[10]{'line_nr'};
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[7]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[8]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'args'}[4];
@@ -3832,6 +3869,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'conte
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3];
@@ -3858,6 +3896,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'conte
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[7]{'line_nr'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[10]{'line_nr'};
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[7]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[8]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[10]{'contents'}[1]{'contents'}[4]{'args'}[4];
@@ -3928,6 +3967,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'parent'} 
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'args'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[0]{'args'}[0];
@@ -4008,6 +4048,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'conte
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3];
@@ -4034,6 +4075,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'conte
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'line_nr'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[10]{'line_nr'};
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[8]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[3]{'contents'}[1]{'args'}[4];
@@ -4165,6 +4207,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3];
@@ -4191,6 +4234,7 @@ $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'line_nr'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[10]{'line_nr'};
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[7]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[8]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[4];
 $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[1]{'contents'}[12]{'contents'}[5]{'args'}[0]{'contents'}[3]{'contents'}[1]{'args'}[4];

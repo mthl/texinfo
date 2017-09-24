@@ -51,6 +51,9 @@ $result_trees{'check_htmlxref'} = {
               'text' => '(../there/no_existing_no_manual_direction)'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         },
@@ -66,6 +69,9 @@ $result_trees{'check_htmlxref'} = {
               'text' => 'first'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         },
@@ -87,6 +93,9 @@ $result_trees{'check_htmlxref'} = {
               'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -197,6 +206,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'b'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -212,6 +224,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'c'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -227,6 +242,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'no_existing_no_manual.info'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 }
@@ -290,6 +308,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'b'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -305,6 +326,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'c'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 },
@@ -320,6 +344,9 @@ $result_trees{'check_htmlxref'} = {
                       'text' => 'no_existing_no_manual.info'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 }
@@ -609,6 +636,9 @@ $result_trees{'check_htmlxref'} = {
               'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_before_argument' => {}
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -654,13 +684,16 @@ $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2];
+$result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3];
+$result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'check_htmlxref'}{'contents'}[1]{'extra'}{'node_content'};
@@ -680,12 +713,15 @@ $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'ar
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1];
@@ -698,12 +734,15 @@ $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'ar
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3];
+$result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'check_htmlxref'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1];
@@ -758,6 +797,7 @@ $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'parent'} = $result_tr
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1];
+$result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'contents'}[0];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'check_htmlxref'}{'contents'}[3];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'check_htmlxref'}{'contents'}[3]{'args'}[0]{'contents'}[1];
 $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'check_htmlxref'}{'contents'}[3]{'extra'}{'node_content'};

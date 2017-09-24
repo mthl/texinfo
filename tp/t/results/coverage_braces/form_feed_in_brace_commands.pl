@@ -116,6 +116,9 @@ $result_trees{'form_feed_in_brace_commands'} = {
                   'text' => 'fff'
                 }
               ],
+              'extra' => {
+                'spaces_before_argument' => {}
+              },
               'parent' => {},
               'type' => 'brace_command_arg'
             }
@@ -265,6 +268,7 @@ $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1];
+$result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'form_feed_in_brace_commands'}{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[1];

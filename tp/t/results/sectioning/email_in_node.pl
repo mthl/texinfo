@@ -99,6 +99,9 @@ $result_trees{'email_in_node'} = {
                       'text' => 'd'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 }
@@ -150,6 +153,9 @@ $result_trees{'email_in_node'} = {
                       'text' => 'e'
                     }
                   ],
+                  'extra' => {
+                    'spaces_before_argument' => {}
+                  },
                   'parent' => {},
                   'type' => 'brace_command_arg'
                 }
@@ -219,6 +225,7 @@ $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1];
+$result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'contents'}[0];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[1]{'contents'}[1];
@@ -230,6 +237,7 @@ $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1];
+$result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'contents'}[0];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'parent'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'args'}[1]{'contents'}[1];
 $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[5]{'line_nr'} = $result_trees{'email_in_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'line_nr'};
