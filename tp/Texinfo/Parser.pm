@@ -1,8 +1,8 @@
 # $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
+# Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2134,9 +2134,9 @@ sub _expand_macro_body($$$$) {
 # consisting only of spaces.  This container is removed here, typically
 # this is called when non-space happens on a line.
 sub _abort_empty_line {
-  my ($self, $current, $additional_text) = @_;
+  my ($self, $current, $additional_spaces) = @_;
 
-  $additional_text = '' if (!defined($additional_text));
+  $additional_spaces = '' if (!defined($additional_spaces));
   if ($current->{'contents'} and @{$current->{'contents'}} 
        and $current->{'contents'}->[-1]->{'type'}
        and ($current->{'contents'}->[-1]->{'type'} eq 'empty_line' 
@@ -2147,56 +2147,56 @@ sub _abort_empty_line {
     my $spaces_element = $current->{'contents'}->[-1];
 
     print STDERR "ABORT EMPTY "
-    .$current->{'contents'}->[-1]->{'type'}
-    ." additional text |$additional_text|,"
+    .$spaces_element->{'type'}
+    ." additional text |$additional_spaces|,"
     ." current |$current->{'contents'}->[-1]->{'text'}|\n"
       if ($self->{'DEBUG'});
 
-    $current->{'contents'}->[-1]->{'text'} .= $additional_text;
+    $spaces_element->{'text'} .= $additional_spaces;
     # remove empty 'empty*before'.
-    if ($current->{'contents'}->[-1]->{'text'} eq '') {
+    if ($spaces_element->{'text'} eq '') {
       # as we remove 'empty_spaces_before_argument', 'spaces_before_argument'
       # is removed from 'extra' too.
       if ($current->{'extra'} 
           and $current->{'extra'}->{'spaces_before_argument'}
           and $current->{'extra'}->{'spaces_before_argument'} 
-                eq $current->{'contents'}->[-1]) {
+                eq $spaces_element) {
         delete ($current->{'extra'}->{'spaces_before_argument'});
         delete ($current->{'extra'}) if !(keys(%{$current->{'extra'}}));
       } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
           and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
           and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
-                eq $current->{'contents'}->[-1]) {
+                eq $spaces_element) {
         delete ($current->{'parent'}->{'extra'}->{'spaces_before_argument'});
         delete ($current->{'parent'}->{'extra'})
           if !(keys(%{$current->{'parent'}->{'extra'}}));
       } elsif ($current->{'extra'} 
           and $current->{'extra'}->{'spaces_after_command'}
           and $current->{'extra'}->{'spaces_after_command'} 
-                eq $current->{'contents'}->[-1]) {
+                eq $spaces_element) {
         delete ($current->{'extra'}->{'spaces_after_command'});
         delete ($current->{'extra'})
           if !(keys(%{$current->{'extra'}}));
       } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
           and $current->{'parent'}->{'extra'}->{'spaces_after_command'}
           and $current->{'parent'}->{'extra'}->{'spaces_after_command'} 
-                eq $current->{'contents'}->[-1]) {
+                eq $spaces_element) {
         delete ($current->{'parent'}->{'extra'}->{'spaces_after_command'});
         delete ($current->{'parent'}->{'extra'})
           if !(keys(%{$current->{'parent'}->{'extra'}}));
       }
 
       pop @{$current->{'contents'}} 
-    } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line') {
+    } elsif ($spaces_element->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph
       if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
          and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
-        $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_before_paragraph';
+        $spaces_element->{'type'} = 'empty_spaces_before_paragraph';
       } else { 
-        delete $current->{'contents'}->[-1]->{'type'};
+        delete $spaces_element->{'type'};
       }
-    } elsif ($current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command') {
-      $current->{'contents'}->[-1]->{'type'} = 'empty_spaces_after_command';
+    } elsif ($spaces_element->{'type'} eq 'empty_line_after_command') {
+      $spaces_element->{'type'} = 'empty_spaces_after_command';
     } elsif ($spaces_element->{'type'} eq 'empty_spaces_before_argument') {
       # Remove element from main tree. It will still be referenced in
       # the 'extra' hash as 'spaces_before_argument' or 'spaces_after_command'.

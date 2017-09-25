@@ -1,3 +1,7 @@
+2017-09-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Change the name of a 
+	variable.  Use a variable to simplify the code.
 
 2017-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
