@@ -2146,47 +2146,51 @@ sub _abort_empty_line {
 
     my $spaces_element = $current->{'contents'}->[-1];
 
+    my $owning_element;
+    if ($current->{'extra'} 
+        and $current->{'extra'}->{'spaces_before_argument'}
+        and $current->{'extra'}->{'spaces_before_argument'} 
+              eq $spaces_element) {
+      $owning_element = $current;
+    } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
+        and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+        and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
+              eq $spaces_element) {
+      $owning_element = $current->{'parent'};
+    } elsif ($current->{'extra'} 
+        and $current->{'extra'}->{'spaces_after_command'}
+        and $current->{'extra'}->{'spaces_after_command'} 
+              eq $spaces_element) {
+      $owning_element = $current;
+    } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
+        and $current->{'parent'}->{'extra'}->{'spaces_after_command'}
+        and $current->{'parent'}->{'extra'}->{'spaces_after_command'} 
+              eq $spaces_element) {
+      $owning_element = $current->{'parent'};
+    }
+
     print STDERR "ABORT EMPTY "
-    .$spaces_element->{'type'}
-    ." additional text |$additional_spaces|,"
-    ." current |$current->{'contents'}->[-1]->{'text'}|\n"
-      if ($self->{'DEBUG'});
+      .$spaces_element->{'type'}
+      ." additional text |$additional_spaces|,"
+      ." current |$spaces_element->{'text'}|\n"
+        if ($self->{'DEBUG'});
 
     $spaces_element->{'text'} .= $additional_spaces;
     # remove empty 'empty*before'.
     if ($spaces_element->{'text'} eq '') {
-      # as we remove 'empty_spaces_before_argument', 'spaces_before_argument'
-      # is removed from 'extra' too.
-      if ($current->{'extra'} 
-          and $current->{'extra'}->{'spaces_before_argument'}
-          and $current->{'extra'}->{'spaces_before_argument'} 
-                eq $spaces_element) {
-        delete ($current->{'extra'}->{'spaces_before_argument'});
-        delete ($current->{'extra'}) if !(keys(%{$current->{'extra'}}));
-      } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
-          and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
-                eq $spaces_element) {
-        delete ($current->{'parent'}->{'extra'}->{'spaces_before_argument'});
-        delete ($current->{'parent'}->{'extra'})
-          if !(keys(%{$current->{'parent'}->{'extra'}}));
-      } elsif ($current->{'extra'} 
-          and $current->{'extra'}->{'spaces_after_command'}
-          and $current->{'extra'}->{'spaces_after_command'} 
-                eq $spaces_element) {
-        delete ($current->{'extra'}->{'spaces_after_command'});
-        delete ($current->{'extra'})
-          if !(keys(%{$current->{'extra'}}));
-      } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-          and $current->{'parent'}->{'extra'}->{'spaces_after_command'}
-          and $current->{'parent'}->{'extra'}->{'spaces_after_command'} 
-                eq $spaces_element) {
-        delete ($current->{'parent'}->{'extra'}->{'spaces_after_command'});
-        delete ($current->{'parent'}->{'extra'})
-          if !(keys(%{$current->{'parent'}->{'extra'}}));
-      }
+      pop @{$current->{'contents'}};
 
-      pop @{$current->{'contents'}} 
+      if ($owning_element
+          and $owning_element->{'extra'}->{'spaces_before_argument'}) {
+        delete ($owning_element->{'extra'}->{'spaces_before_argument'});
+        delete ($owning_element->{'extra'})
+          if !(keys(%{$owning_element->{'extra'}}));
+      } elsif ($owning_element
+          and $owning_element->{'extra'}->{'spaces_after_command'}) {
+        delete ($owning_element->{'extra'}->{'spaces_after_command'});
+        delete ($owning_element->{'extra'})
+          if !(keys(%{$owning_element->{'extra'}}));
+      }
     } elsif ($spaces_element->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph
       if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
