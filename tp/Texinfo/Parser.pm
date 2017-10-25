@@ -1729,7 +1729,8 @@ sub _close_current($$$;$$)
           and $current->{'contents'}->[0]->{'type'}
           and $current->{'contents'}->[0]->{'type'}
                 eq 'empty_spaces_before_argument') {
-        shift @{$current->{'contents'}};
+        # remove spaces element from tree and update extra values
+        _abort_empty_line($self, $current)
       }
 
     } elsif ($current->{'type'} eq 'menu_comment' 
@@ -2148,13 +2149,13 @@ sub _abort_empty_line {
 
     my $owning_element;
     if ($current->{'extra'} 
-        and $current->{'extra'}->{'spaces_before_argument'}
-        and $current->{'extra'}->{'spaces_before_argument'} 
+        and $current->{'extra'}->{'spaces_before_argument_elt'}
+        and $current->{'extra'}->{'spaces_before_argument_elt'} 
               eq $spaces_element) {
       $owning_element = $current;
     } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-        and $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
-        and $current->{'parent'}->{'extra'}->{'spaces_before_argument'} 
+        and $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'}
+        and $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'} 
               eq $spaces_element) {
       $owning_element = $current->{'parent'};
     } elsif ($current->{'extra'} 
@@ -2181,8 +2182,8 @@ sub _abort_empty_line {
       pop @{$current->{'contents'}};
 
       if ($owning_element
-          and $owning_element->{'extra'}->{'spaces_before_argument'}) {
-        delete ($owning_element->{'extra'}->{'spaces_before_argument'});
+          and $owning_element->{'extra'}->{'spaces_before_argument_elt'}) {
+        delete ($owning_element->{'extra'}->{'spaces_before_argument_elt'});
         delete ($owning_element->{'extra'})
           if !(keys(%{$owning_element->{'extra'}}));
       } elsif ($owning_element
@@ -2203,8 +2204,13 @@ sub _abort_empty_line {
       $spaces_element->{'type'} = 'empty_spaces_after_command';
     } elsif ($spaces_element->{'type'} eq 'empty_spaces_before_argument') {
       # Remove element from main tree. It will still be referenced in
-      # the 'extra' hash as 'spaces_before_argument' or 'spaces_after_command'.
+      # the 'extra' hash as 'spaces_before_argument'.
       pop @{$current->{'contents'}};
+
+      # Replace element reference with a simple string.
+      $owning_element->{'extra'}->{'spaces_before_argument'}
+        = $owning_element->{'extra'}->{'spaces_before_argument_elt'}->{'text'};
+      delete $owning_element->{'extra'}->{'spaces_before_argument_elt'};
     }
 
     return 1;
@@ -3626,15 +3632,14 @@ sub _parse_texi($;$)
         and $self->{'context_stack'}->[-1] ne 'def') {
       print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
 
-      # FIXME: should we continue with this element instead?
       if ($current->{'contents'}
           and $current->{'contents'}->[-1]
           and $current->{'contents'}->[-1]->{'type'}
           and $current->{'contents'}->[-1]->{'type'}
                eq 'empty_spaces_before_argument') {
-        # If we do not remove this here, it will not be removed in 
-        # _abort_new_line due to the 'empty_line' element which is added next.
-        pop @{$current->{'contents'}};
+        # Remove this element and update 'extra' values.
+        # FIXME: should we continue with this element instead?
+        _abort_empty_line($self, $current);
       }
       $line =~ s/^([^\S\r\n]*)//;
       push @{$current->{'contents'}}, { 'type' => 'empty_line', 
@@ -4931,7 +4936,7 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
                                         'text' => $1,
                                         'parent' => $current };
-              $current->{'parent'}->{'extra'}->{'spaces_before_argument'}
+              $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'}
                  = $current->{'contents'}->[-1];
             } else {
               $current->{'type'} = 'brace_command_arg';
@@ -4942,7 +4947,7 @@ sub _parse_texi($;$)
                   {'type' => 'empty_spaces_before_argument',
                    'text' => '',
                    'parent' => $current };
-                $current->{'extra'}->{'spaces_before_argument'}
+                $current->{'extra'}->{'spaces_before_argument_elt'}
                    = $current->{'contents'}->[-1];
               }
               if ($inline_commands{$command}) {
@@ -4972,7 +4977,7 @@ sub _parse_texi($;$)
                  'text' => '',
                  'parent' => $current };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
-            $current->{'extra'}->{'spaces_before_argument'}
+            $current->{'extra'}->{'spaces_before_argument_elt'}
                = $current->{'contents'}->[-1];
 
           # lone braces accepted right in a rawpreformatted
@@ -5160,8 +5165,7 @@ sub _parse_texi($;$)
 
               } elsif (length ($arg) < 4) {
                 # Perl doesn't mind, but too much trouble to do in TeX.
-                $self->line_warn(
-sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
+                $self->line_warn(sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                   $line_nr);
 
               } else {
@@ -5380,7 +5384,7 @@ sprintf($self->__("fewer than four hex digits in argument for \@U: %s"), $arg),
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '',
                   'parent' => $current };
-          $current->{'extra'}->{'spaces_before_argument'}
+          $current->{'extra'}->{'spaces_before_argument_elt'}
             = $current->{'contents'}->[-1];
         } elsif ($separator eq ',' and $current->{'type'}
             and $current->{'type'} eq 'misc_line_arg'
@@ -6880,7 +6884,13 @@ text element.
 =item spaces_before_argument
 
 For @-commands with opening brace followed by spaces held in a 
+C<empty_spaces_before_argument> element, a reference to those spaces.
+
+=item spaces_before_argument_elt
+
+For @-commands with opening brace followed by spaces held in a 
 C<empty_spaces_before_argument> element, a reference to that element.
+Should not occur in final tree.
 
 =item spaces
 

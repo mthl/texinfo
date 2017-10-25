@@ -597,10 +597,9 @@ sub _leading_spaces_before_argument($)
 {
   my $root = shift;
   if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
-      and $root->{'extra'}->{'spaces_before_argument'}->{'type'} eq 'empty_spaces_before_argument'
-      and $root->{'extra'}->{'spaces_before_argument'}->{'text'} ne '') {
+      and $root->{'extra'}->{'spaces_before_argument'} ne '') {
     return ('spaces', _protect_in_spaces(
-                 $root->{'extra'}->{'spaces_before_argument'}->{'text'}));
+                 $root->{'extra'}->{'spaces_before_argument'}));
   } else {
     return ();
   }

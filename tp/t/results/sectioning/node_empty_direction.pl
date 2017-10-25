@@ -41,7 +41,7 @@ $result_trees{'node_empty_direction'} = {
             }
           ],
           'extra' => {
-            'spaces_before_argument' => {}
+            'spaces_before_argument_elt' => {}
           },
           'parent' => {},
           'type' => 'misc_line_arg'
@@ -79,14 +79,14 @@ $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1];
-$result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'extra'}{'spaces_before_argument'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'contents'}[0];
+$result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'extra'}{'spaces_before_argument_elt'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'parent'} = $result_trees{'node_empty_direction'};
 
-$result_texis{'node_empty_direction'} = '@node name,  ';
+$result_texis{'node_empty_direction'} = '@node name, ';
 
 
 $result_texts{'node_empty_direction'} = '';

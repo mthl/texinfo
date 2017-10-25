@@ -1,3 +1,19 @@
+2017-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Rename reference to spaces 
+	element from 'spaces_before_argument' to 'spaces_before_argument_elt'.
+	(_abort_empty_line): Replace 'spaces_before_argument_elt' value
+	with 'spaces_before_argument', a simple string value.
+	(_close_current),
+	(_parse_texi) <new line>: Call '_abort_empty_line' to remove 
+	spaces element.
+
+	* tp/Texinfo/Convert/Converter.pm
+	(_collect_leading_trailing_spaces_arg),
+	* tp/Texinfo/Convert/Texinfo.pm (convert, _expand_cmd_args_to_texi),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_leading_spaces_before_argument):
+	Access 'spaces_before_argument' as a string value.
+
 2017-09-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Change code to

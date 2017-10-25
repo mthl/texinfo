@@ -41,11 +41,7 @@ $result_trees{'part_node_before_top'} = [
               }
             ],
             'extra' => {
-              'spaces_before_argument' => {
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_before_argument'
-              }
+              'spaces_before_argument' => ' '
             },
             'parent' => {},
             'type' => 'misc_line_arg'
@@ -394,7 +390,6 @@ $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1];
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[1];
-$result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[1]{'extra'}{'spaces_before_argument'}{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1];
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1];
 $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'part_node_before_top'}[0]{'contents'}[1]{'args'}[3];

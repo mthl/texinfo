@@ -1101,7 +1101,7 @@ sub _collect_leading_trailing_spaces_arg($$)
   my @result;
   if ($arg->{'extra'} and
       $arg->{'extra'}->{'spaces_before_argument'}) {
-    $result[0] = $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
+    $result[0] = $arg->{'extra'}->{'spaces_before_argument'};
   } elsif ($arg->{'contents'} and $arg->{'contents'}->[0] 
       and defined($arg->{'contents'}->[0]->{'text'})
       and $arg->{'contents'}->[0]->{'text'} !~ /\S/

@@ -88,7 +88,7 @@ sub convert ($;$)
       $result .= '{';
       if ($root->{'extra'}
           and $root->{'extra'}->{'spaces_before_argument'}) {
-         $result .= $root->{'extra'}->{'spaces_before_argument'}->{'text'};
+         $result .= $root->{'extra'}->{'spaces_before_argument'};
       }
     }
     if (defined($root->{'contents'})) {
@@ -160,7 +160,7 @@ sub _expand_cmd_args_to_texi ($;$) {
       if (ref($cmd->{'args'}) ne 'ARRAY');
     foreach my $arg (@{$cmd->{'args'}}) {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
+        $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert($arg, $fix) . ',';
     }
@@ -179,7 +179,7 @@ sub _expand_cmd_args_to_texi ($;$) {
     }
     if ($cmd->{'extra'}
         and $cmd->{'extra'}->{'spaces_before_argument'}) {
-      $result .= $cmd->{'extra'}->{'spaces_before_argument'}->{'text'};
+      $result .= $cmd->{'extra'}->{'spaces_before_argument'};
     }
     my $arg_nr = 0;
     foreach my $arg (@{$cmd->{'args'}}) {
@@ -189,7 +189,7 @@ sub _expand_cmd_args_to_texi ($;$) {
         $arg_nr++;
       }
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_before_argument'}->{'text'};
+        $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert($arg, $fix);
     }
