@@ -1,5 +1,11 @@
 2017-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/MiscXS/misc.c (xs_abort_empty_line): Update to
+	match Perl implementation.
+	* tp/Texinfo/Parser.pm (import): Re-enable XS overrides.
+
+2017-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Rename reference to spaces 
 	element from 'spaces_before_argument' to 'spaces_before_argument_elt'.
 	(_abort_empty_line): Replace 'spaces_before_argument_elt' value

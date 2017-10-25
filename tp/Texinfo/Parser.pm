@@ -66,7 +66,7 @@ use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 
 our $module_loaded = 0;
 sub import {
-  if (0 and !$module_loaded) {
+  if (!$module_loaded) {
     Texinfo::XSLoader::override ("Texinfo::Parser::_merge_text",
       "Texinfo::MiscXS::merge_text");
     Texinfo::XSLoader::override ("Texinfo::Parser::_abort_empty_line",

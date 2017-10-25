@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software
    Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -47,33 +47,38 @@
 const char *whitespace_chars = " \t\f\v\r\n";
 
 int
-xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
+xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
 {
-  char *additional_text;
+  char *additional_spaces;
   AV *contents_array;
   SV **svp;
   int contents_num;
-  HV *last_elt;
+  HV *spaces_elt;
+  char *key;
+  HV *test_elt;
+  HV *test_extra;
+
+  HV *owning_elt = 0;
   char *type;
   SV *existing_text_sv;
 
   dTHX;
 
   /* Get additional text in UTF-8. */
-  if (additional_text_in)
+  if (additional_spaces_in)
     {
       STRLEN len;
       static char *new_string;
-      additional_text = SvPV (additional_text_in, len);
-      if (!SvUTF8 (additional_text_in))
+      additional_spaces = SvPV (additional_spaces_in, len);
+      if (!SvUTF8 (additional_spaces_in))
         {
           free (new_string);
-          new_string = bytes_to_utf8 (additional_text, &len);
-          additional_text = new_string;
+          new_string = bytes_to_utf8 (additional_spaces, &len);
+          additional_spaces = new_string;
         }
     }
   else
-    additional_text = "";
+    additional_spaces = "";
 
   svp = hv_fetch (current, "contents", strlen("contents"), 0);
   if (!svp)
@@ -84,9 +89,9 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
   if (contents_num == 0)
     return 0;
 
-  last_elt = (HV *) SvRV (*av_fetch (contents_array, contents_num - 1, 0));
+  spaces_elt = (HV *) SvRV (*av_fetch (contents_array, contents_num - 1, 0));
 
-  svp = hv_fetch (last_elt, "type", strlen ("type"), 0);
+  svp = hv_fetch (spaces_elt, "type", strlen ("type"), 0);
   if (!svp)
     return 0;
 
@@ -105,34 +110,43 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
   
   //fprintf (stderr, "ABORT EMPTY\n");
 
-  svp = hv_fetch (last_elt, "text", strlen ("text"), 0);
-  if (!svp)
-    return 0; /* or create it? change last arg from 0 to 1 */
-  existing_text_sv = *svp;
+  /* Look for another reference to spaces_elt. */
+  test_elt = current;
 
-  /* Append the 'additional_text' argument. */
-  sv_utf8_upgrade (existing_text_sv);
-  sv_catpv (existing_text_sv, additional_text);
-
-  if (!*SvPV_nolen (existing_text_sv)) /* existing text is empty */
+  svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
+  if (svp)
     {
-      HV *test_extra;
-      char *key;
-      HV *test_elt;
+      test_extra = (HV *) SvRV (*svp);
+      key = "spaces_before_argument_elt";
+      svp = hv_fetch (test_extra, key, strlen (key), 0);
+      if (svp)
+        {
+          if ((HV *) SvRV (*svp) == spaces_elt)
+            goto found;
+        }
 
-      /* Look for another reference to last_elt. */
+      key = "spaces_after_command";
+      svp = hv_fetch (test_extra, key, strlen (key), 0);
+      if (svp)
+        {
+          if ((HV *) SvRV (*svp) == spaces_elt)
+            goto found;
+        }
+    }
 
-      test_elt = current;
-
+  svp = hv_fetch (current, "parent", strlen ("parent"), 0);
+  if (svp)
+    {
+      test_elt = (HV *) SvRV (*svp);
       svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
       if (svp)
         {
           test_extra = (HV *) SvRV (*svp);
-          key = "spaces_before_argument";
+          key = "spaces_before_argument_elt";
           svp = hv_fetch (test_extra, key, strlen (key), 0);
           if (svp)
             {
-              if ((HV *) SvRV (*svp) == last_elt)
+              if ((HV *) SvRV (*svp) == spaces_elt)
                 goto found;
             }
 
@@ -140,40 +154,34 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_text_in)
           svp = hv_fetch (test_extra, key, strlen (key), 0);
           if (svp)
             {
-              if ((HV *) SvRV (*svp) == last_elt)
+              if ((HV *) SvRV (*svp) == spaces_elt)
                 goto found;
             }
         }
+    }
 
-      svp = hv_fetch (current, "parent", strlen ("parent"), 0);
-      if (svp)
-        {
-          test_elt = (HV *) SvRV (*svp);
-          svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
-          if (svp)
-            {
-              test_extra = (HV *) SvRV (*svp);
-              key = "spaces_before_argument";
-              svp = hv_fetch (test_extra, key, strlen (key), 0);
-              if (svp)
-                {
-                  if ((HV *) SvRV (*svp) == last_elt)
-                    goto found;
-                }
-
-              key = "spaces_after_command";
-              svp = hv_fetch (test_extra, key, strlen (key), 0);
-              if (svp)
-                {
-                  if ((HV *) SvRV (*svp) == last_elt)
-                    goto found;
-                }
-            }
-        }
-
-      if (0)
-        {
+  if (0)
+    {
 found:
+      owning_elt = test_elt;
+    }
+
+  svp = hv_fetch (spaces_elt, "text", strlen ("text"), 0);
+  if (!svp)
+    return 0; /* or create it? change last arg from 0 to 1 */
+  existing_text_sv = *svp;
+
+  /* Append the 'additional_spaces' argument. */
+  sv_utf8_upgrade (existing_text_sv);
+  sv_catpv (existing_text_sv, additional_spaces);
+
+  if (!*SvPV_nolen (existing_text_sv)) /* existing text is empty */
+    {
+      /* Remove spaces_elt */
+      av_pop (contents_array);
+
+      if (owning_elt)
+        {
           /* We found an "extra" reference to this element.  Remove it. */
           hv_delete (test_extra, key, strlen (key), G_DISCARD);
 
@@ -182,9 +190,6 @@ found:
           if (!hv_iternext (test_extra))
             hv_delete (test_elt, "extra", strlen ("extra"), G_DISCARD);
         }
-
-      /* Remove last_elt */
-      av_pop (contents_array);
     }
   else if (!strcmp (type, "empty_line"))
     {
@@ -232,19 +237,39 @@ found:
           && strcmp (top_context, "def")
           && strcmp (top_context, "inlineraw"))
         {
-          hv_store (last_elt, "type", strlen ("type"),
+          hv_store (spaces_elt, "type", strlen ("type"),
                     newSVpv ("empty_spaces_before_paragraph", 0), 0);
         }
       else
         {
 delete_type:
-          hv_delete (last_elt, "type", strlen ("type"), G_DISCARD);
+          hv_delete (spaces_elt, "type", strlen ("type"), G_DISCARD);
         }
     }
   else if (!strcmp (type, "empty_line_after_command"))
     {
-      hv_store (last_elt, "type", strlen ("type"),
+      hv_store (spaces_elt, "type", strlen ("type"),
                 newSVpv ("empty_spaces_after_command", 0), 0);
+    }
+  else if (!strcmp (type, "empty_spaces_before_argument"))
+    {
+      STRLEN len;
+      char *ptr;
+
+      /* Remove spaces_elt */
+      av_pop (contents_array);
+
+      ptr = SvPV(existing_text_sv, len);
+      /* Replace element reference with a simple string. */
+      hv_store (test_extra,
+                 "spaces_before_argument",
+                 strlen ("spaces_before_argument"),
+                 newSVpv(ptr, len),
+                 0);
+      hv_delete (test_extra,
+                 "spaces_before_argument_elt",
+                 strlen ("spaces_before_argument_elt"),
+                 G_DISCARD);
     }
   return 1;
 }
