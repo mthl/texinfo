@@ -1,5 +1,11 @@
 2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Replace use
+	of 'brace_command_contents' array in the 'extra' hash with
+	the 'args' in the main tree.
+
+2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_isolate_last_space): For 
 	'brace_command_arg' only, save trailing spaces in 
 	'spaces_after_argument' extra value instead of adding a 

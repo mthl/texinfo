@@ -1134,10 +1134,10 @@ sub _convert($$;$)
           push @{$self->{'document_context'}}, {'monospace' => [0]};
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        if (scalar (@{$root->{'args'}}) == 2
+              and @{$root->{'args'}->[-1]->{'contents'}}) {
           $result .= $self->_convert({'contents' 
-                        => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                        => $root->{'args'}->[-1]->{'contents'}});
         }
         if ($root->{'cmdname'} eq 'inlineraw') {
           pop @{$self->{'document_context'}};
@@ -1209,7 +1209,7 @@ sub _convert($$;$)
           push @$attribute, ('where', 'inline');
         }
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
-        if ($root->{'extra'}->{'brace_command_contents'}) {
+        if ($root->{'args'}) {
           my $normalized;
           if ($root->{'extra'}->{'node_argument'}
               and $root->{'extra'}->{'node_argument'}->{'node_content'}) {
@@ -1228,9 +1228,9 @@ sub _convert($$;$)
           if ($root->{'cmdname'} eq 'inforef') {
             $manual_arg_index = 2;
           }
-          if ($root->{'extra'}->{'brace_command_contents'}->[$manual_arg_index]) {
+          if (@{$root->{'args'}->[$manual_arg_index]->{'contents'}}) {
             $manual = Texinfo::Convert::Text::convert({'contents'
-             => $root->{'extra'}->{'brace_command_contents'}->[$manual_arg_index]}, 
+                     => $root->{'args'}->[$manual_arg_index]->{'contents'}},
                       {'code' => 1,
                        Texinfo::Common::_convert_text_options($self)});
           }
