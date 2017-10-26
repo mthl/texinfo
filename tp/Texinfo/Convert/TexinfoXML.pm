@@ -659,19 +659,6 @@ sub _trailing_spaces_arg($$)
   return ();
 }
 
-sub _leading_spaces_arg($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my @result = ();
-  my @spaces = $self->_collect_leading_trailing_spaces_arg($root);
-  if (defined($spaces[0]) and $spaces[0] ne '') {
-    @result = ('spaces', _protect_in_spaces($spaces[0]));
-  }
-  return @result;
-}
-
 sub _leading_trailing_spaces_arg($$)
 {
   my $self = shift;

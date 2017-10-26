@@ -1,3 +1,8 @@
+2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (_leading_spaces_arg): Remove 
+	unused.
+
 2017-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/misc.c (xs_abort_empty_line): Update to
