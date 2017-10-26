@@ -75,13 +75,11 @@ $result_trees{'empty_images'} = {
             {
               'parent' => {},
               'text' => 'cc'
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => ' '
+          },
           'parent' => {},
           'type' => 'brace_command_arg'
         },
@@ -250,7 +248,6 @@ $result_trees{'empty_images'}{'contents'}[3]{'args'}[1]{'parent'} = $result_tree
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[2];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[2]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[3];
-$result_trees{'empty_images'}{'contents'}[3]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[3];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[3]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[4]{'contents'}[0]{'parent'} = $result_trees{'empty_images'}{'contents'}[3]{'args'}[4];
 $result_trees{'empty_images'}{'contents'}[3]{'args'}[4]{'parent'} = $result_trees{'empty_images'}{'contents'}[3];

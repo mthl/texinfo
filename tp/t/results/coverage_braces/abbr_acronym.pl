@@ -280,14 +280,10 @@ $result_trees{'abbr_acronym'} = {
                   'contents' => [],
                   'line_nr' => {},
                   'parent' => {}
-                },
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'spaces_at_end'
                 }
               ],
               'extra' => {
+                'spaces_after_argument' => ' ',
                 'spaces_before_argument' => ' '
               },
               'parent' => {},
@@ -455,7 +451,6 @@ $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[4];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[4]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1];
-$result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'contents'}[5]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[1]{'parent'} = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'abbr_acronym'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[1];

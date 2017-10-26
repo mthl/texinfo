@@ -162,7 +162,11 @@ sub _expand_cmd_args_to_texi ($;$) {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
-      $result .= convert($arg, $fix) . ',';
+      $result .= convert($arg, $fix);
+      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_after_argument'}) {
+        $result .= $arg->{'extra'}->{'spaces_after_argument'};
+      }
+      $result .= ',';
     }
     $result =~ s/,$//;
   } elsif ($fix and $misc_commands{$cmdname}
@@ -192,6 +196,9 @@ sub _expand_cmd_args_to_texi ($;$) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert($arg, $fix);
+      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_after_argument'}) {
+        $result .= $arg->{'extra'}->{'spaces_after_argument'};
+      }
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'type'};

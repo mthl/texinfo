@@ -1177,6 +1177,11 @@ sub _convert($$;$)
             $in_monospace_not_normal
               if (defined($in_monospace_not_normal));
           my $arg = $self->_convert($root->{'args'}->[$arg_index]);
+          if ($root->{'args'}->[$arg_index]->{'extra'}
+              and $root->{'args'}->[$arg_index]->{'extra'}->{'spaces_after_argument'}) {
+            $arg .= $root->{'args'}->[$arg_index]
+                   ->{'extra'}->{'spaces_after_argument'};
+          }
           if (!$Texinfo::Common::context_brace_commands{$root->{'cmdname'}}
               and $root->{'cmdname'} ne 'verb') {
             push @$attribute, 

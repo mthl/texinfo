@@ -1,5 +1,19 @@
 2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_isolate_last_space): For 
+	'brace_command_arg' only, save trailing spaces in 
+	'spaces_after_argument' extra value instead of adding a 
+	'spaces_at_end' element to the main tree.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert),
+	* tp/Texinfo/Convert/Texinfo.pm (_expand_cmd_args_to_texi):
+	Update to look at 'spaces_after_argument' after an argument to
+	a brace command.
+	* tp/Texinfo/Convert/Converter.pm
+	(_collect_leading_trailing_spaces_arg): Check for a
+	'spaces_after_argument' record to find trailing spaces.
+
+2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_leading_spaces_arg): Remove 
 	unused.
 

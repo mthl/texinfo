@@ -1116,7 +1116,11 @@ sub _collect_leading_trailing_spaces_arg($$)
     $result[0] = $arg->{'contents'}->[0]->{'text'};
     return @result if (scalar(@{$arg->{'contents'}}) == 1);
   }
-  if ($arg->{'contents'}) {
+
+  if ($arg->{'extra'} and
+      $arg->{'extra'}->{'spaces_after_argument'}) {
+    $result[1] = $arg->{'extra'}->{'spaces_after_argument'};
+  } elsif ($arg->{'contents'}) {
     my $index = -1;
     $index-- if ($arg->{'contents'}->[-1] 
                  and $arg->{'contents'}->[-1]->{'cmdname'}

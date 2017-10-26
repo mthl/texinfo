@@ -2223,7 +2223,9 @@ sub _isolate_last_space($$;$)
 {
   my ($self, $current, $type) = @_;
 
+  my $end_spaces;
   $type = 'spaces_at_end' if (!defined($type));
+
   if ($current->{'contents'} and @{$current->{'contents'}}) {
     my $index = -1;
     # we ignore space before a misc command that is last on line.
@@ -2236,17 +2238,26 @@ sub _isolate_last_space($$;$)
       if (scalar(@{$current->{'contents'}}) > 1 
         and $current->{'contents'}->[-1]->{'cmdname'}
         and $self->{'misc_commands'}->{$current->{'contents'}->[-1]->{'cmdname'}});
+
     if (defined($current->{'contents'}->[$index]->{'text'}) 
         and !$current->{'contents'}->[$index]->{'type'}
         and $current->{'contents'}->[$index]->{'text'} =~ /\s+$/) {
       if ($current->{'contents'}->[$index]->{'text'} !~ /\S/) {
-        $current->{'contents'}->[$index]->{'type'} = $type;
+        if ($index == -1 and $current->{'type'} eq 'brace_command_arg') {
+          $end_spaces = $current->{'contents'}->[$index]->{'text'};
+          pop @{$current->{'contents'}};
+          $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
+        } else {
+          $current->{'contents'}->[$index]->{'type'} = $type;
+        }
       } else {
         $current->{'contents'}->[$index]->{'text'} =~ s/(\s+)$//;
-        my $spaces = $1;
-        my $new_spaces = { 'text' => $spaces, 'parent' => $current,
-                           'type' => $type };
-        if ($index == -1) {
+        $end_spaces = $1;
+        my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
+          'type' => $type };
+        if ($index == -1 and $current->{'type'} eq 'brace_command_arg') {
+          $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
+        } elsif ($index == -1) {
           push @{$current->{'contents'}}, $new_spaces;
         } else {
           splice (@{$current->{'contents'}}, $index+1, 0, $new_spaces);
