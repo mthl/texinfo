@@ -1135,6 +1135,7 @@ sub _convert($$;$)
           $self->{'document_context'}->[-1]->{'raw'} = 1;
         }
         if (scalar (@{$root->{'args'}}) == 2
+              and defined($root->{'args'}->[-1])
               and @{$root->{'args'}->[-1]->{'contents'}}) {
           $result .= $self->_convert({'contents' 
                         => $root->{'args'}->[-1]->{'contents'}});
@@ -1228,7 +1229,8 @@ sub _convert($$;$)
           if ($root->{'cmdname'} eq 'inforef') {
             $manual_arg_index = 2;
           }
-          if (@{$root->{'args'}->[$manual_arg_index]->{'contents'}}) {
+          if (defined($root->{'args'}->[$manual_arg_index])
+              and @{$root->{'args'}->[$manual_arg_index]->{'contents'}}) {
             $manual = Texinfo::Convert::Text::convert({'contents'
                      => $root->{'args'}->[$manual_arg_index]->{'contents'}},
                       {'code' => 1,

@@ -1,3 +1,8 @@
+2017-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Check if array 
+	elements are defined to avoid creating them accidentally.
+
 2017-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Replace use
