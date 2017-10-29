@@ -1,4 +1,11 @@
-2017-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+2017-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_image),
+	* tp/Texinfo/Convert/IXIN.pm (output_ixin),
+	* tp/Texinfo/Convert/HTML.pm (_convert_explained_command, output):
+	Use 'args' array instead of 'brace_command_contents' array.
+
+2017-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert)
 	(_image_formatted_text, _image):

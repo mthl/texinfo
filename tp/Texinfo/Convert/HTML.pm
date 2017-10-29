@@ -1498,8 +1498,7 @@ sub _convert_explained_command($$$$)
   my $explanation_string;
   my $normalized_type
     = Texinfo::Convert::NodeNameNormalization::normalize_node(
-    {'contents' =>
-      $command->{'extra'}->{'brace_command_contents'}->[0]});
+    {'contents' => $command->{'args'}->[0]->{'contents'}});
 
   if ($args->[1] and defined($args->[1]->{'string'}) 
                  and $args->[1]->{'string'} =~ /\S/) {
@@ -1512,7 +1511,7 @@ sub _convert_explained_command($$$$)
     $explanation_result = $self->convert_tree( $args->[1]->{'tree'} );
 
     $self->{'explained_commands'}->{$cmdname}->{$normalized_type} =
-       $command->{'extra'}->{'brace_command_contents'}->[1];
+       $command->{'args'}->[1]->{'contents'};
   } elsif ($command->{'extra'}->{'explanation_contents'}) {
     if (@{$command->{'extra'}->{'explanation_contents'}}) {
       $explanation_string = $self->convert_tree_new_formatting_context(
@@ -6881,9 +6880,9 @@ sub output($$)
     }
   }
   if (!$fulltitle and $self->{'extra'}->{'titlefont'}
-      and $self->{'extra'}->{'titlefont'}->[0]->{'extra'}
-      and $self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}
-      and defined($self->{'extra'}->{'titlefont'}->[0]->{'extra'}->{'brace_command_contents'}->[0])) {
+      and $self->{'extra'}->{'titlefont'}->[0]->{'args'}
+      and defined($self->{'extra'}->{'titlefont'}->[0]->{'args'}->[0])
+      and @{$self->{'extra'}->{'titlefont'}->[0]->{'args'}->[0]->{'contents'}}) {
     $fulltitle = $self->{'extra'}->{'titlefont'}->[0];
   }
   # prepare simpletitle

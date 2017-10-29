@@ -473,13 +473,15 @@ sub _image($$)
 
   my $lines_count = 0;
 
-  if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+  if (defined($root->{'args'}->[0])
+      and @{$root->{'args'}->[0]->{'contents'}}) {
     my $basefile = Texinfo::Convert::Text::convert(
-      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
+      {'contents' => $root->{'args'}->[0]->{'contents'}},
       {'code' => 1, Texinfo::Common::_convert_text_options($self)});
-    if (defined($root->{'extra'}->{'brace_command_contents'}->[4])) {
+    if (defined($root->{'args'}->[4])
+        and @{$root->{'args'}->[4]->{'contents'}}) {
       my $extension = Texinfo::Convert::Text::convert(
-        {'contents' => $root->{'extra'}->{'brace_command_contents'}->[4]},
+        {'contents' => $root->{'args'}->[4]->{'contents'}},
         {'code' => 1, Texinfo::Common::_convert_text_options($self)});
       unshift @extensions, ".$extension";
       unshift @extensions, "$extension";
@@ -495,9 +497,10 @@ sub _image($$)
     }
     my ($text, $width) = $self->_image_text($root, $basefile);
     my $alt;
-    if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+    if (defined($root->{'args'}->[3])
+        and @{$root->{'args'}->[3]->{'contents'}}) {
      $alt = Texinfo::Convert::Text::convert(
-       {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
+       {'contents' => $root->{'args'}->[3]->{'contents'}},
        {Texinfo::Common::_convert_text_options($self)});
     }
 
@@ -508,7 +511,8 @@ sub _image($$)
       $image_file =~ s/\"/\\\"/g;
       $result = "\x{00}\x{08}[image src=\"$image_file\"";
 
-      if (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+      if (defined($root->{'args'}->[3])
+          and @{$root->{'args'}->[3]->{'contents'}}) {
         $alt =~ s/\\/\\\\/g;
         $alt =~ s/\"/\\\"/g;
         $result .= " alt=\"$alt\"";

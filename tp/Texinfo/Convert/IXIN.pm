@@ -832,14 +832,16 @@ sub output_ixin($$)
       my @extension;
       my $basefile;
       my $extension;
-      if (defined($command->{'extra'}->{'brace_command_contents'}->[0])) {
+      if (defined($command->{'args'}->[0])
+            and @{$command->{'args'}->[0]->{'contents'}}) {
         $basefile = Texinfo::Convert::Text::convert(
-          {'contents' => $command->{'extra'}->{'brace_command_contents'}->[0]},
+          {'contents' => $command->{'args'}->[0]->{'contents'}},
           {'code' => 1, Texinfo::Common::_convert_text_options($self)});
       }
-      if (defined($command->{'extra'}->{'brace_command_contents'}->[4])) {
+      if (defined($command->{'args'}->[4])
+            and @{$command->{'args'}->[4]->{'contents'}}) {
         $extension = Texinfo::Convert::Text::convert(
-          {'contents' => $command->{'extra'}->{'brace_command_contents'}->[0]},
+          {'contents' => $command->{'args'}->[4]->{'contents'}},
           {'code' => 1, Texinfo::Common::_convert_text_options($self)});
         $extension =~ s/^\.//;
         @extension = ($extension);
