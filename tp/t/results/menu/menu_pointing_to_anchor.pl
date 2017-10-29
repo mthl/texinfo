@@ -129,11 +129,6 @@ $result_trees{'menu_pointing_to_anchor'} = {
           'cmdname' => 'anchor',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'node_content' => [
               {}
             ],
@@ -319,7 +314,6 @@ $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[1]{'parent'}
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3];
-$result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2];
 $result_trees{'menu_pointing_to_anchor'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'menu_pointing_to_anchor'}{'contents'}[2];
@@ -406,13 +400,6 @@ $result_nodes{'menu_pointing_to_anchor'} = {
   'menu_child' => {
     'cmdname' => 'anchor',
     'extra' => {
-      'brace_command_contents' => [
-        [
-          {
-            'text' => 'An anchor'
-          }
-        ]
-      ],
       'normalized' => 'An-anchor'
     },
     'node_prev' => {}
@@ -458,13 +445,6 @@ $result_menus{'menu_pointing_to_anchor'} = {
   'menu_child' => {
     'cmdname' => 'anchor',
     'extra' => {
-      'brace_command_contents' => [
-        [
-          {
-            'text' => 'An anchor'
-          }
-        ]
-      ],
       'normalized' => 'An-anchor'
     },
     'menu_up' => {},

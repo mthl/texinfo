@@ -84,12 +84,6 @@ $result_trees{'ignored_macro_definition'} = {
           'cmdname' => 'inlinefmt',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ],
-              undef
-            ],
             'format' => 'tex'
           },
           'line_nr' => {
@@ -139,7 +133,6 @@ $result_trees{'ignored_macro_definition'}{'contents'}[3]{'parent'} = $result_tre
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0];
-$result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[4];
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[4];
 $result_trees{'ignored_macro_definition'}{'contents'}[4]{'parent'} = $result_trees{'ignored_macro_definition'};

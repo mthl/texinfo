@@ -106,11 +106,6 @@ $result_trees{'anchor_and_spaces'} = {
           'cmdname' => 'anchor',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'node_content' => [
               {}
             ],
@@ -157,11 +152,6 @@ $result_trees{'anchor_and_spaces'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'node_content' => [
                   {}
                 ],
@@ -211,11 +201,6 @@ $result_trees{'anchor_and_spaces'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ],
                 'node_content' => [
                   {}
                 ],
@@ -272,7 +257,6 @@ $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'par
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0];
-$result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2];
@@ -280,7 +264,6 @@ $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[2]{'parent'} = $re
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
-$result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[3];
@@ -289,7 +272,6 @@ $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[4]{'parent'} = $re
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1];
-$result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5];
 $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'anchor_and_spaces'}{'contents'}[2]{'contents'}[5];

@@ -62,13 +62,7 @@ $result_trees{'image_lines_count'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
+          'extra' => {},
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 3,
@@ -221,7 +215,6 @@ $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'parent'} = $result
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1];
-$result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];

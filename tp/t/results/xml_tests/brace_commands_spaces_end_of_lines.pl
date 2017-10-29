@@ -26,13 +26,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -70,13 +63,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 4,
@@ -124,16 +110,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 7,
@@ -181,16 +157,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 10,
@@ -238,16 +204,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 13,
@@ -295,16 +251,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       ],
       'cmdname' => 'image',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 16,
@@ -322,13 +268,11 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
 };
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[2]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[3]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[4]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[5]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
@@ -336,8 +280,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[0]{'c
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[1];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'args'}[1]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[6]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[7]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[8]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
@@ -345,8 +287,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[0]{'c
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[1];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'args'}[1]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[9]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[10]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[11]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
@@ -354,8 +294,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[0]{'
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[1];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[0]{'contents'}[0];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'args'}[1]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[12]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[13]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[14]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
@@ -363,8 +301,6 @@ $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[0]{'
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[1];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[1]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[0]{'contents'}[0];
-$result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'extra'}{'brace_command_contents'}[1][0] = $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'args'}[1]{'contents'}[0];
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[15]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 $result_trees{'brace_commands_spaces_end_of_lines'}{'contents'}[16]{'parent'} = $result_trees{'brace_commands_spaces_end_of_lines'};
 

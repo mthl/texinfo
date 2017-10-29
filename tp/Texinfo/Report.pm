@@ -424,15 +424,6 @@ sub _substitute ($$) {
     _substitute_element_array ($tree->{'args'}, $context);
   }
 
-  # Used for @email and @url
-  if ($tree->{'extra'} and $tree->{'extra'}{'brace_command_contents'}) {
-    for my $arg (@{$tree->{'extra'}{'brace_command_contents'}}) {
-      if ($arg) {
-        _substitute_element_array ($arg, $context);
-      }
-    }
-  }
-
   return $tree;
 }
 

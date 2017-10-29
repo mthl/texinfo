@@ -1,5 +1,24 @@
 2017-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi): Remove all calls to
+	_register_command_arg that added elements to 
+	'brace_command_contents' array.  Look at 'args' instead
+	of 'brace_command_contents'.
+	(_remove_empty_content_arguments): Do not check for a 
+	'brace_command_contents' array.
+	(module documentation section): Remove mention of
+	brace_command_contents.
+	* tp/Texinfo/Report.pm (_substitute): Do not look at
+	'brace_command_contents' array.
+	* tp/Texinfo/Convert/Converter.pm (_table_item_content_tree):
+	Do not call _register_command_arg.
+
+	The effect of this change is to make the parse tree less cyclic,
+	which should make it easier to understand, for example when it 
+	is printed.  It may also reduce memory use.
+
+2017-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/DocBook.pm (_convert):
 	Use 'args' array instead of 'brace_command_contents' array.
 

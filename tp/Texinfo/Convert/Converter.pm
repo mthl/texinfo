@@ -1180,7 +1180,6 @@ sub _table_item_content_tree($$$)
                'contents' => $contents,
                'parent' => $command,};
     $command->{'args'} = [$arg];
-    _register_command_arg($self, $arg, 'brace_command_contents');
     $contents = [$command];
   }
   $converted_tree->{'contents'} = $contents;

@@ -49,11 +49,6 @@ $result_trees{'inlinefmt_with_empty_line'} = {
           'cmdname' => 'inlinefmt',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'expand_index' => 1,
             'format' => 'plaintext'
           },
@@ -128,11 +123,6 @@ $result_trees{'inlinefmt_with_empty_line'} = {
           'cmdname' => 'inlinefmt',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ],
             'expand_index' => 1,
             'format' => 'html'
           },
@@ -168,13 +158,6 @@ $result_trees{'inlinefmt_with_empty_line'} = {
           ],
           'cmdname' => 'acronym',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 6,
@@ -200,7 +183,6 @@ $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[0];
@@ -211,13 +193,11 @@ $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1];
-$result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2];
 $result_trees{'inlinefmt_with_empty_line'}{'contents'}[2]{'parent'} = $result_trees{'inlinefmt_with_empty_line'};

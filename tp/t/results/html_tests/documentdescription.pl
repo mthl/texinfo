@@ -197,14 +197,6 @@ $result_trees{'documentdescription'} = {
                   ],
                   'cmdname' => 'email',
                   'contents' => [],
-                  'extra' => {
-                    'brace_command_contents' => [
-                      [
-                        {},
-                        {}
-                      ]
-                    ]
-                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -364,8 +356,6 @@ $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13];
-$result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[0];
-$result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'extra'}{'brace_command_contents'}[0][1] = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'args'}[0]{'contents'}[1];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'line_nr'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[0]{'contents'}[1];

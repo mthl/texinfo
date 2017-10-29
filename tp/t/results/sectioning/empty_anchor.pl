@@ -17,11 +17,6 @@ $result_trees{'empty_anchor'} = {
       ],
       'cmdname' => 'anchor',
       'contents' => [],
-      'extra' => {
-        'brace_command_contents' => [
-          undef
-        ]
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -49,11 +44,6 @@ $result_trees{'empty_anchor'} = {
           ],
           'cmdname' => 'anchor',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              undef
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,

@@ -28,10 +28,6 @@ $result_trees{'inline_missing_first_arg'} = {
           'cmdname' => 'inlinefmt',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              undef,
-              undef
-            ],
             'format' => undef
           },
           'line_nr' => {
@@ -61,10 +57,6 @@ $result_trees{'inline_missing_first_arg'} = {
           'cmdname' => 'inlineraw',
           'contents' => [],
           'extra' => {
-            'brace_command_contents' => [
-              undef,
-              undef
-            ],
             'format' => undef
           },
           'line_nr' => {},

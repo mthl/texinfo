@@ -40,13 +40,6 @@ $result_trees{'titlefont_in_center'} = {
               ],
               'cmdname' => 'titlefont',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 2,
@@ -83,7 +76,6 @@ $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'e
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1];

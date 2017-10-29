@@ -124,13 +124,6 @@ $result_trees{'unnumbered_before_top_node'} = [
             ],
             'cmdname' => 'titlefont',
             'contents' => [],
-            'extra' => {
-              'brace_command_contents' => [
-                [
-                  {}
-                ]
-              ]
-            },
             'line_nr' => {
               'file_name' => '',
               'line_nr' => 6,
@@ -192,7 +185,6 @@ $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0]{'pa
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];

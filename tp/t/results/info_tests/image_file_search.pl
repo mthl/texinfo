@@ -115,13 +115,6 @@ $result_trees{'image_file_search'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 7,
@@ -170,13 +163,6 @@ $result_trees{'image_file_search'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {
-                'brace_command_contents' => [
-                  [
-                    {}
-                  ]
-                ]
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -233,7 +219,6 @@ $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];
@@ -242,7 +227,6 @@ $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2];
-$result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'extra'}{'brace_command_contents'}[0][0] = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_file_search'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'image_file_search'}{'contents'}[1];

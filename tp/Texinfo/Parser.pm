@@ -2540,12 +2540,9 @@ sub _remove_empty_content_arguments($)
 {
   my $current = shift;
   my $type;
-  if ($current->{'extra'}) {
-    if ($current->{'extra'}->{'block_command_line_contents'}) {
-      $type = 'block_command_line_contents';
-    } elsif ($current->{'extra'}->{'brace_command_contents'}) {
-      $type = 'brace_command_contents';
-    }
+  if ($current->{'extra'}
+      and $current->{'extra'}->{'block_command_line_contents'}) {
+    $type = 'block_command_line_contents';
   }
   if ($type) {
     while (@{$current->{'extra'}->{$type}} 
@@ -5039,7 +5036,6 @@ sub _parse_texi($;$)
               # @inline* always have end spaces considered as normal text 
               _isolate_last_space($self, $current) 
                 unless ($inline_commands{$current->{'parent'}->{'cmdname'}});
-              _register_command_arg($self, $current, 'brace_command_contents');
               # Remove empty arguments, as far as possible
               _remove_empty_content_arguments($current);
             }
@@ -5068,7 +5064,14 @@ sub _parse_texi($;$)
             } elsif ($ref_commands{$current->{'parent'}->{'cmdname'}}) {
               my $ref = $current->{'parent'};
               if (@{$ref->{'args'}}) {
-                my @args = @{$ref->{'extra'}->{'brace_command_contents'}};
+                my @args;
+                for $a (@{$ref->{'args'}}) {
+                  if (@{$a->{'contents'}}) {
+                    push @args, $a->{'contents'};
+                  } else {
+                    push @args, undef;
+                  }
+                }
                 if (($closed_command eq 'inforef' 
                      and !defined($args[0]) and !defined($args[2]))
                     or ($closed_command ne 'inforef'
@@ -5115,8 +5118,8 @@ sub _parse_texi($;$)
             } elsif ($current->{'parent'}->{'cmdname'} eq 'image') {
               my $image = $current->{'parent'};
               if (!@{$image->{'args'}} 
-                  or !@{$image->{'extra'}->{'brace_command_contents'}}
-                  or !defined($image->{'extra'}->{'brace_command_contents'}->[0])) {
+                  or !defined($image->{'args'}->[0])
+                  or scalar(@{$image->{'args'}->[0]->{'contents'}}) == 0) {
                 $self->line_error(
                    $self->__("\@image missing filename argument"), $line_nr);
               }
@@ -5149,8 +5152,8 @@ sub _parse_texi($;$)
                 }
               }
               if (!@{$current_command->{'args'}} 
-                  or !@{$current_command->{'extra'}->{'brace_command_contents'}}
-                  or !defined($current_command->{'extra'}->{'brace_command_contents'}->[0])) {
+                  or !defined($current_command->{'args'}->[0])
+                  or scalar(@{$current_command->{'args'}->[0]->{'contents'}}) == 0) {
                 $self->line_warn(
                    sprintf($self->__("\@%s missing first argument"),
                            $current_command->{'cmdname'}), $line_nr);
@@ -5269,7 +5272,6 @@ sub _parse_texi($;$)
               and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
                  or $simple_text_commands{$current->{'parent'}->{'cmdname'}})) {
             _isolate_last_space($self, $current);
-            _register_command_arg($self, $current, 'brace_command_contents');
           } else {
             _isolate_last_space($self, $current);
             if (exists $block_commands{$current->{'parent'}->{'cmdname'}}) {
@@ -5283,10 +5285,10 @@ sub _parse_texi($;$)
             if (! $current->{'extra'}->{'format'}) {
               my @contents;
               my $inline_type;
-              if (defined
-                    $current->{'extra'}->{'brace_command_contents'}->[0]) {
+              if (defined $current->{'args'}->[0]
+                  and @{$current->{'args'}->[0]->{'contents'}}) {
                 @contents
-                   = @{$current->{'extra'}->{'brace_command_contents'}->[0]};
+                   = @{$current->{'args'}->[0]->{'contents'}};
                 _trim_spaces_comment_from_content (\@contents);
                 $inline_type = $contents[0]->{'text'};
               }
@@ -5321,8 +5323,6 @@ sub _parse_texi($;$)
                 push @{$current->{'args'}}, {'type' => 'elided',
                                              'parent' => $current,
                                              'contents' => []};
-               _register_command_arg($self, $current->{'args'}->[-1],
-                                     'brace_command_contents');
 
                 # Scan forward to get the next argument.
                 my $brace_count = 1;
@@ -6835,11 +6835,7 @@ is in I<row_prototype>.
 
 =item block_command_line_contents
 
-=item brace_command_contents
-
-An array associated with block @-commands or @-commands with braces
-taking more than one argument or with simple text content
-(C<@anchor>, C<@titlefont>, C<@dmn>).  Each of the elements of the
+An array associated with block @-commands.  Each of the elements of the
 array is either undef, if there is no argument at that place,
 or an array reference holding the argument contents.
 
