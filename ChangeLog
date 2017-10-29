@@ -1,5 +1,11 @@
 2017-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert)
+	(_image_formatted_text, _image):
+	Use 'args' array instead of 'brace_command_contents' array.
+
+2017-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Check if array 
 	elements are defined to avoid creating them accidentally.
 

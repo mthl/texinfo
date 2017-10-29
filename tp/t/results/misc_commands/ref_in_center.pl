@@ -345,7 +345,8 @@ $result_errors{'ref_in_center'} = [
 
 $result_converted{'plaintext'}->{'ref_in_center'} = '                              *note Top::
 
-                              *note Top::
+                              *note title
+                                : Top.
    very long
 ';
 

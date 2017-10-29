@@ -12,13 +12,6 @@ $result_trees{'invalid_U'} = {
         {
           'cmdname' => 'U',
           'contents' => [],
-          'extra' => {
-            'brace_command_contents' => [
-              [
-                {}
-              ]
-            ]
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,

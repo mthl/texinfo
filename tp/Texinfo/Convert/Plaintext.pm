@@ -1427,9 +1427,10 @@ sub _image_formatted_text($$$$)
   my $result;
   if (defined($text)) {
     $result = $text;
-  } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
+  } elsif (defined($root->{'args'}->[3])
+      and @{$root->{'args'}->[3]->{'contents'}}) {
     $result = '[' .Texinfo::Convert::Text::convert(
-      {'contents' => $root->{'extra'}->{'brace_command_contents'}->[3]},
+      {'contents' => $root->{'args'}->[3]->{'contents'}},
       $self->{'convert_text_options'}) .']';
   } else {
     $self->line_warn(sprintf($self->__(
@@ -1444,9 +1445,10 @@ sub _image($$)
 {
   my ($self, $root) = @_;
 
-  if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+  if (defined($root->{'args'}->[0])
+        and @{$root->{'args'}->[0]->{'contents'}}) {
     my $basefile = Texinfo::Convert::Text::convert(
-     {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
+     {'contents' => $root->{'args'}->[0]->{'contents'}},
      {'code' => 1, %{$self->{'convert_text_options'}}});
     my ($text, $width) = $self->_image_text($root, $basefile);
     my $result = $self->_image_formatted_text($root, $basefile, $text);
@@ -1853,15 +1855,17 @@ sub _convert($$)
     } elsif ($command eq 'email') {
       # nothing is output for email, instead the command is substituted.
       my @email_contents;
-      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+      if ($root->{'args'}) {
         my $name;
         my $email;
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-            and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
-          $name = $root->{'extra'}->{'brace_command_contents'}->[1];
+        if (scalar (@{$root->{'args'}}) == 2
+            and defined($root->{'args'}->[1])
+            and @{$root->{'args'}->[1]->{'contents'}}) {
+          $name = $root->{'args'}->[1]->{'contents'};
         }
-        if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-          $email = $root->{'extra'}->{'brace_command_contents'}->[0];
+        if (defined($root->{'args'}->[0])
+            and @{$root->{'args'}->[0]->{'contents'}}) {
+          $email = $root->{'args'}->[0]->{'contents'};
         }
         my $prepended;
         if ($name and $email) {
@@ -1879,19 +1883,21 @@ sub _convert($$)
       }
       return '';
     } elsif ($command eq 'uref' or $command eq 'url') {
-      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
-        if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 3
-             and defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+      if ($root->{'args'}) {
+        if (scalar(@{$root->{'args'}}) == 3
+             and defined($root->{'args'}->[2])
+             and @{$root->{'args'}->[2]->{'contents'}}) {
           unshift @{$self->{'current_contents'}->[-1]}, 
-            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[2]};
-        } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            {'contents' => $root->{'args'}->[2]->{'contents'}};
+        } elsif (@{$root->{'args'}->[0]->{'contents'}}) {
           # no mangling of --- and similar in url.
           my $url = {'type' => '_code',
-              'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
-          if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-             and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+              'contents' => $root->{'args'}->[0]->{'contents'}};
+          if (scalar(@{$root->{'args'}}) == 2
+             and defined($root->{'args'}->[1])
+             and @{$root->{'args'}->[1]->{'contents'}}) {
             my $prepended = $self->gdt('{text} ({url})', 
-                 {'text' => $root->{'extra'}->{'brace_command_contents'}->[1],
+                 {'text' => $root->{'args'}->[1]->{'contents'},
                   'url' => $url });
             unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           } else {
@@ -1899,10 +1905,11 @@ sub _convert($$)
                                         {'url' => $url});
             unshift @{$self->{'current_contents'}->[-1]}, $prepended
           }
-        } elsif (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-                 and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+        } elsif (scalar(@{$root->{'args'}}) == 2
+                 and defined($root->{'args'}->[1])
+                 and @{$root->{'args'}->[1]->{'contents'}}) {
           unshift @{$self->{'current_contents'}->[-1]}, 
-            {'contents' => $root->{'extra'}->{'brace_command_contents'}->[1]};
+            {'contents' => $root->{'args'}->[1]->{'contents'}};
         }
       }
       return '';
@@ -1927,9 +1934,15 @@ sub _convert($$)
         $result .= _convert($self, {'contents' => 
          [{'text' => ' ('},
           {'cmdname' => 'pxref',
-           'extra' => {'brace_command_contents' => 
-          [[@{$self->{'node'}->{'extra'}->{'node_content'}},
-                   {'text' => "-Footnote-$self->{'footnote_index'}"}]]}},
+           'args' => [
+             {'type' => 'brace_command_arg',
+              'contents' => [
+                 @{$self->{'node'}->{'extra'}->{'node_content'}},
+                 {'text' => "-Footnote-$self->{'footnote_index'}"}
+              ]
+             }
+           ]
+          },
           {'text' => ')'}],
           });
       }
@@ -1940,9 +1953,15 @@ sub _convert($$)
       $result .= $self->_anchor($root);
       return $result;
     } elsif ($ref_commands{$command}) {
-      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
-          and scalar(@{$root->{'extra'}->{'brace_command_contents'}})) {
-        my @args = @{$root->{'extra'}->{'brace_command_contents'}};
+      if (scalar(@{$root->{'args'}})) {
+        my @args;
+        for my $a (@{$root->{'args'}}) {
+          if (defined $a->{'contents'} and @{$a->{'contents'}}) {
+            push @args, $a->{'contents'};
+          } else {
+            push @args, undef;
+          }
+        }
         $args[0] = [{'text' => ''}] if (!defined($args[0]));
 
         # normalize node name, to get a ref with the right formatting
@@ -2160,22 +2179,23 @@ sub _convert($$)
       }
       return '';
     } elsif ($explained_commands{$command}) {
-      if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}
-          and defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+      if ($root->{'args'}
+          and defined($root->{'args'}->[0])
+          and @{$root->{'args'}->[0]->{'contents'}}) {
         # in abbr spaces never end a sentence.
         my $argument;
         if ($command eq 'abbr') {
           $argument = {'type' => 'frenchspacing',
-                     'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
+                       'contents' => $root->{'args'}->[0]->{'contents'}};
         } else {
-          $argument = {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]};
+          $argument = { 'contents' => $root->{'args'}->[0]->{'contents'}};
         }
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-           and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        if (scalar (@{$root->{'args'}}) == 2
+            and defined($root->{'args'}->[-1])
+            and @{$root->{'args'}->[-1]->{'contents'}}) {
           my $prepended = $self->gdt('{abbr_or_acronym} ({explanation})', 
                            {'abbr_or_acronym' => $argument, 
-                            'explanation' => 
-                             $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                            'explanation' => $root->{'args'}->[-1]->{'contents'}});
           unshift @{$self->{'current_contents'}->[-1]}, $prepended;
           return '';
         } else {
@@ -2194,14 +2214,14 @@ sub _convert($$)
                or !$self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}})) {
         $arg_index = 2;
       }
-      if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
-         and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
+      if (scalar(@{$root->{'args'}}) > $arg_index
+         and defined($root->{'args'}->[$arg_index])
+         and @{$root->{'args'}->[$arg_index]->{'contents'}}) {
         my $argument;
         if ($command eq 'inlineraw') {
           $argument->{'type'} = '_code';
         }
-        $argument->{'contents'} 
-            = $root->{'extra'}->{'brace_command_contents'}->[$arg_index];
+        $argument->{'contents'} = $root->{'args'}->[$arg_index]->{'contents'};
         unshift @{$self->{'current_contents'}->[-1]}, ($argument);
       }
       return '';
@@ -2230,9 +2250,15 @@ sub _convert($$)
       return $result;
 
     } elsif ($command eq 'U') {
-      my $arg = $root->{'extra'}->{'brace_command_contents'}
-                ->[0]->[0]->{'text'};
-      if (defined($arg) && $arg) {
+      my $arg;
+      if ($root->{'args'}
+          and $root->{'args'}->[0]
+          and $root->{'args'}->[0]->{'contents'}
+          and $root->{'args'}->[0]->{'contents'}->[0]
+          and $root->{'args'}->[0]->{'contents'}->[0]->{'text'}) {
+        $arg = $root->{'args'}->[0]->{'contents'}->[0]->{'text'};
+      }
+      if ($arg) {
         # The general idea is to output UTF-8 if that has been
         # explicitly given as the encoding, else simple ASCII.
         # 
