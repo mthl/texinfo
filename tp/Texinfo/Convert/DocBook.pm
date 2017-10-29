@@ -805,20 +805,20 @@ sub _convert($$;$)
           return '';
         }
       } elsif ($Texinfo::Common::ref_commands{$root->{'cmdname'}}) {
-        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+        if ($root->{'args'}) {
           if ($root->{'cmdname'} eq 'inforef') {
             my $filename;
-            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 3
-                and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+            if (scalar(@{$root->{'args'}}) == 3
+                and defined($root->{'args'}->[-1]) and @{$root->{'args'}->[-1]->{'contents'}}) {
               $filename 
                 = $self->xml_protect_text(Texinfo::Convert::Text::convert(
-              {'contents' => $root->{'extra'}->{'brace_command_contents'}->[-1]},
+              {'contents' => $root->{'args'}->[-1]->{'contents'}},
               {'code' => 1, Texinfo::Common::_convert_text_options($self)}));
             }
             my $node;
-            if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            if (defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
               $node = {'contents' 
-                        => $root->{'extra'}->{'brace_command_contents'}->[0]};
+                        => $root->{'args'}->[0]->{'contents'}};
             }
             if ($node and defined($filename)) {
               return $self->_convert($self->gdt(
@@ -835,36 +835,36 @@ sub _convert($$;$)
                    { 'myfile' => {'type' => '_converted', 'text' => $filename}}));
             }
             #my $name;
-            #if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 2
-            #    and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+            #if (scalar(@{$root->{'args'}}) >= 2
+            #    and defined($root->{'args'}->[1]) and @{$root->{'args'}->[1]->{'contents'}}) {
             #  $name = $self->_convert({'contents' 
-            #       => $root->{'extra'}->{'brace_command_contents'}->[0]});
+            #       => $root->{'args'}->[0]->{'contents'}});
             #}
           } else {
             my $book_contents;
-            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 5
-                and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
-              $book_contents = $root->{'extra'}->{'brace_command_contents'}->[-1];
+            if (scalar(@{$root->{'args'}}) == 5
+                and defined($root->{'args'}->[-1]) and @{$root->{'args'}->[-1]->{'contents'}}) {
+              $book_contents = $root->{'args'}->[-1]->{'contents'};
             }
             my $manual_file_contents;
-            if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 4
-                and defined($root->{'extra'}->{'brace_command_contents'}->[3])) {
-              $manual_file_contents = $root->{'extra'}->{'brace_command_contents'}->[3];
+            if (scalar(@{$root->{'args'}}) >= 4
+                and defined($root->{'args'}->[3]) and @{$root->{'args'}->[3]->{'contents'}}) {
+              $manual_file_contents = $root->{'args'}->[3]->{'contents'};
             }
             my ($section_name_contents, $section_name);
-            if (defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+            if (defined($root->{'args'}->[2]) and @{$root->{'args'}->[2]->{'contents'}}) {
               $section_name_contents 
-                = $root->{'extra'}->{'brace_command_contents'}->[2];
+                = $root->{'args'}->[2]->{'contents'};
               $section_name = $self->_convert(
                      {'contents' => $section_name_contents});
-            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+            } elsif (defined($root->{'args'}->[1]) and @{$root->{'args'}->[1]->{'contents'}}) {
               $section_name_contents
-                = $root->{'extra'}->{'brace_command_contents'}->[1];
+                = $root->{'args'}->[1]->{'contents'};
               $section_name = $self->_convert(
                      {'contents' => $section_name_contents});
-            } elsif (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+            } elsif (defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
               $section_name_contents
-                = $root->{'extra'}->{'brace_command_contents'}->[0];
+                = $root->{'args'}->[0]->{'contents'};
               $section_name = $self->_convert(
                      {'contents' => $section_name_contents});
 
@@ -946,9 +946,9 @@ sub _convert($$;$)
           return '';
         }
       } elsif ($root->{'cmdname'} eq 'image') {
-        if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+        if (defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
           my $basefile = Texinfo::Convert::Text::convert(
-           {'contents' => $root->{'extra'}->{'brace_command_contents'}->[0]},
+           {'contents' => $root->{'args'}->[0]->{'contents'}},
            {'code' => 1, Texinfo::Common::_convert_text_options($self)});
           my $element;
           my $is_inline = $self->_is_inline($root);
@@ -992,16 +992,16 @@ sub _convert($$;$)
           }
         }
       } elsif ($root->{'cmdname'} eq 'email') {
-        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+        if ($root->{'args'}) {
           my $name;
           my $email;
           my $email_text;
-          if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-              and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
-            $name = $root->{'extra'}->{'brace_command_contents'}->[1];
+          if (scalar(@{$root->{'args'}}) == 2
+              and defined($root->{'args'}->[-1]) and @{$root->{'args'}->[-1]->{'contents'}}) {
+            $name = $root->{'args'}->[1]->{'contents'};
           }
-          if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-            $email = $root->{'extra'}->{'brace_command_contents'}->[0];
+          if (defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
+            $email = $root->{'args'}->[0]->{'contents'};
             $email_text 
               = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $email},
@@ -1021,10 +1021,10 @@ sub _convert($$;$)
         }
 
       } elsif ($root->{'cmdname'} eq 'uref' or $root->{'cmdname'} eq 'url') {
-        if ($root->{'extra'} and $root->{'extra'}->{'brace_command_contents'}) {
+        if ($root->{'args'}) {
           my ($url_text, $url_content);
-          if (defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
-            $url_content = $root->{'extra'}->{'brace_command_contents'}->[0];
+          if (defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
+            $url_content = $root->{'args'}->[0]->{'contents'};
             $url_text = $self->_protect_text(Texinfo::Convert::Text::convert(
                                          {'contents' => $url_content},
                                          {'code' => 1,
@@ -1033,16 +1033,16 @@ sub _convert($$;$)
             $url_text = '';
           }
           my $replacement;
-          if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) >= 2 
-              and defined($root->{'extra'}->{'brace_command_contents'}->[1])) {
+          if (scalar(@{$root->{'args'}}) >= 2 
+              and defined($root->{'args'}->[1]) and @{$root->{'args'}->[1]->{'contents'}}) {
             $replacement = $self->_convert({'contents' 
-                      => $root->{'extra'}->{'brace_command_contents'}->[1]});
+                      => $root->{'args'}->[1]->{'contents'}});
           }
           if (!defined($replacement) or $replacement eq '') {
-            if (scalar(@{$root->{'extra'}->{'brace_command_contents'}}) == 3
-                and defined($root->{'extra'}->{'brace_command_contents'}->[2])) {
+            if (scalar(@{$root->{'args'}}) == 3
+                and defined($root->{'args'}->[2]) and @{$root->{'args'}->[2]->{'contents'}}) {
               $replacement = $self->_convert({'contents' 
-                      => $root->{'extra'}->{'brace_command_contents'}->[2]});
+                      => $root->{'args'}->[2]->{'contents'}});
             }
           }
           if (!defined($replacement) or $replacement eq '') {
@@ -1055,10 +1055,10 @@ sub _convert($$;$)
 
       } elsif ($root->{'cmdname'} eq 'abbr' or $root->{'cmdname'} eq 'acronym') {
         my $argument;
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) >= 1
-            and defined($root->{'extra'}->{'brace_command_contents'}->[0])) {
+        if (scalar(@{$root->{'args'}}) >= 1
+            and defined($root->{'args'}->[0]) and @{$root->{'args'}->[0]->{'contents'}}) {
           my $arg = $self->_convert({'contents' 
-                      => $root->{'extra'}->{'brace_command_contents'}->[0]});
+                      => $root->{'args'}->[0]->{'contents'}});
           if ($arg ne '') {
             my $element;
             if ($root->{'cmdname'} eq 'abbr') {
@@ -1070,18 +1070,18 @@ sub _convert($$;$)
           }
         }
         #
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) == 2
-           and defined($root->{'extra'}->{'brace_command_contents'}->[-1])) {
+        if (scalar(@{$root->{'args'}}) == 2
+           and defined($root->{'args'}->[-1]) and @{$root->{'args'}->[-1]->{'contents'}}) {
           if (defined($argument)) {
             my $tree = $self->gdt('{abbr_or_acronym} ({explanation})',
                            {'abbr_or_acronym' => {'type' => '_converted',
                                                   'text' => $argument},
                             'explanation' =>
-                             $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                             $root->{'args'}->[-1]->{'contents'}});
             return $self->_convert($tree);
           } else {
             return $self->_convert({'contents' 
-                    => $root->{'extra'}->{'brace_command_contents'}->[-1]});
+                    => $root->{'args'}->[-1]->{'contents'}});
           }
         } elsif (defined($argument)) {
           return $argument;
@@ -1090,9 +1090,15 @@ sub _convert($$;$)
         }
 
       } elsif ($root->{'cmdname'} eq 'U') {
-        my $argument = $root->{'extra'}->{'brace_command_contents'}->[0]
-                       ->[0]->{'text'};
-        if (defined($argument) && $argument) {
+        my $argument;
+        if ($root->{'args'}
+            and $root->{'args'}->[0]
+            and $root->{'args'}->[0]->{'contents'}
+            and $root->{'args'}->[0]->{'contents'}->[0]
+            and $root->{'args'}->[0]->{'contents'}->[0]->{'text'}) {
+          $argument = $root->{'args'}->[0]->{'contents'}->[0]->{'text'};
+        }
+        if ($argument) {
           $result = "&#x$argument;";
         } else {
           $self->line_warn($self->__("no argument specified for \@U"),
@@ -1121,10 +1127,11 @@ sub _convert($$;$)
                  and ! $self->{'expanded_formats_hash'}->{$root->{'extra'}->{'format'}}) {
           $arg_index = 2;
         }
-        if (scalar (@{$root->{'extra'}->{'brace_command_contents'}}) > $arg_index
-            and defined($root->{'extra'}->{'brace_command_contents'}->[$arg_index])) {
+        if (scalar(@{$root->{'args'}}) > $arg_index
+            and defined($root->{'args'}->[$arg_index])
+            and @{$root->{'args'}->[$arg_index]->{'contents'}}) {
           $result .= $self->_convert({'contents'
-                        => $root->{'extra'}->{'brace_command_contents'}->[$arg_index]});
+                        => $root->{'args'}->[$arg_index]->{'contents'}});
         }
         if ($root->{'cmdname'} eq 'inlineraw') {
           pop @{$self->{'document_context'}};

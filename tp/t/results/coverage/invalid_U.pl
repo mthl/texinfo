@@ -31,9 +31,7 @@ $result_trees{'invalid_U'} = {
           'contents' => [],
           'extra' => {
             'brace_command_contents' => [
-              [
-                {}
-              ]
+              undef
             ]
           },
           'line_nr' => {},

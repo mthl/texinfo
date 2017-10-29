@@ -367,7 +367,8 @@ $result_converted{'docbook'}->{'ref_in_center'} = '<anchor id="Top"/>
 
 <link linkend="Top">Top</link>
 
-<link>Top</link>
+<link>title
+</link>
 <para>very long
 </para>';
 
