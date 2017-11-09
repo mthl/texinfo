@@ -1,3 +1,10 @@
+2017-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\pagesizes): Add one inch to height and width 
+	so that text will still fit on the page if @pagesizes is used
+	with a small width.  Report from Christopher Diemech
+	2017-10-12.
+
 2017-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi): Remove all calls to
