@@ -1,3 +1,21 @@
+2017-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\balancecolumns): If it appears that we have
+	been called on to balance too much material for the final page 
+	of the double column material, output some of it using 
+	\doublecolumnout and leave remainder on current page.
+	Otherwise, two problems occurred with the output: first, that
+	the material on the last page of the index extended too low on 
+	the page (see "Final page of index hard to balance" case in
+	texinfo-tex-test.texi); and second, a blank page could occur 
+	before the final page of the index (report from Arnold Robbins) 
+	(this happened because of marks output in \savemarks and 
+	\restoremarks).
+	
+	(\enddoublecolumns): Only change the output routine back to the 
+	usual one and reset all the formatting variables if no extra 
+	material has been added to the current page.  Otherwise, repeat.
+
 2017-11-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\pagesizes): Add one inch to height and width 
