@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2017-11-16.19}
+\def\texinfoversion{2017-11-17.06}
 %
 % Copyright 1985, 1986, 1988, 1990, 1991, 1992, 1993, 1994, 1995,
 % 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006,
@@ -5971,7 +5971,7 @@ end
     \balancecolumns
   }%
   \eject % call the \output just set
-  \if\ht\pagetotal=0pt
+  \ifdim\pagetotal=0pt
     % Having called \balancecolumns once, we do not
     % want to call it again.  Therefore, reset \output to its normal
     % definition right away.
@@ -5989,8 +5989,8 @@ end
     \global\vsize = \txipageheight %
     \pagegoal = \txipageheight %
   \else
-    % We had some left-over material.  This happens when \doublecolumnout
-    % was called in \balancecolumns.  Try again.
+    % We had some left-over material.  This might happen when \doublecolumnout
+    % is called in \balancecolumns.  Try again.
     \expandafter\enddoublecolumns
   \fi
 }
