@@ -1,3 +1,10 @@
+2017-12-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\resetmathfonts): Define \scriptfont and 
+	\scriptscriptfont in addition to \textfont.  Vincent Lefevre 
+	reported that @var didn't work in superscript in math mode
+	(bug-texinfo, 2017-11-27).
+
 2017-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\enddoublecolums): Correct a conditional 
