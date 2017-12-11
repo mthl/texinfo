@@ -1,3 +1,8 @@
+2017-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Use https instead of http for links to 
+	manuals on gnu.org.  Report from Bruno Haible.
+
 2017-12-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\resetmathfonts): Define \scriptfont and 

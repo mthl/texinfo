@@ -1,8 +1,8 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2016-07-11.22; # UTC
+htmlxrefversion=2017-12-11.19; # UTC
 
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software
 # Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
@@ -37,7 +37,7 @@ htmlxrefversion=2016-07-11.22; # UTC
 # associated, and thus gnu.org/manual can't include them.
 
 # shorten references to manuals on www.gnu.org.
-G = http://www.gnu.org
+G = https://www.gnu.org
 GS = ${G}/software
 
 3dldf		mono	${GS}/3dldf/manual/user_ref/3DLDF.html
