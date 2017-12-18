@@ -1,3 +1,10 @@
+2017-12-18  Bruno Haible  <bruno@clisp.org>
+
+        * util/htmlxref.cnf: Use https for sourceware.org, puszcza.gnu.org.ua,
+        gcc.gnu.org, www.complang.tuwien.ac.at, www.gmplib.org, www.gnupg.org,
+        ftp.gwdg.de, www.nano-editor.org, cran.r-project.org, tug.org.
+        Update info for avl, flex, myserver, readline.
+
 2017-12-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Use https instead of http for links to 
