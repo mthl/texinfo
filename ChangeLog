@@ -1,3 +1,8 @@
+2017-12-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\resetmathfonts): Revert last change.  Wrong 
+	font used in footnote superscripts reported by Mohammad Akhlaghi.
+
 2017-12-18  Bruno Haible  <bruno@clisp.org>
 
         * util/htmlxref.cnf: Use https for sourceware.org, puszcza.gnu.org.ua,
