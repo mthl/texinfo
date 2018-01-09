@@ -1,3 +1,8 @@
+2018-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\assignfonts): Add a comment explaining 
+	purpose of \ifont and \syfont.
+
 2017-12-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\setupmarkupstyle): Remove conditionals used 
