@@ -1,5 +1,14 @@
 2018-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\definefontsizexi, \definefontsizex):
+	Add new set of fonts \sevenrm, \seventt, \sevenbf, \sevenit,
+	\sevensl, \sevensf \sevensc, \seventtsl, \seveni, \sevensy.
+	(\resetmathfonts): Use them for math mode superscript.
+	Vincent Lefevre reported that @var didn't work in superscript in 
+	math mode (bug-texinfo, 2017-11-27).
+
+2018-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\assignfonts): Add a comment explaining 
 	purpose of \ifont and \syfont.
 
