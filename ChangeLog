@@ -1,3 +1,9 @@
+2018-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Mention js/ subdirectory.
+	* js/README: Explain how to get git history of this project and 
+	refer to some background info on the web.
+
 2018-01-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\definefontsizexi, \definefontsizex):
