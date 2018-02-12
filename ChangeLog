@@ -1,3 +1,7 @@
+2018-02-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\hyphenation): Add "auto-ma-ti-cal-ly".  From rms.
+
 2018-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention js/ subdirectory.
