@@ -1,3 +1,9 @@
+2018-03-10  Paul Eggert  <eggert@cs.ucla.edu>
+
+	* doc/texinfo.tex, contrib/psfonts-bronger.tex: Replace 
+	"write-file-hooks" with "before-save-hook".
+	See https://lists.gnu.org/r/bug-gnulib/2018-03/msg00008.html.
+
 2018-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* README-hacking: Mention js/ subdirectory.
