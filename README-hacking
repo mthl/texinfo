@@ -84,6 +84,7 @@ Subdirectories in repository
 In addition to the subdirectories listed in README, there are these 
 directories in the source control repository:
 
+js/ - Work on enhanced browsing of HTML manuals with JavaScript
 makeinfo/  - Implementation of makeinfo in C, distributed before version 5.0
 texi2html/ - Perl program to generate HTML from Texinfo, superseded by texi2any
 
