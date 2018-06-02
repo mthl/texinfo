@@ -1,3 +1,7 @@
+2018-06-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\pdfgettoks): Add a comment.
+
 2018-03-10  Paul Eggert  <eggert@cs.ucla.edu>
 
 	* doc/texinfo.tex, contrib/psfonts-bronger.tex: Replace 
