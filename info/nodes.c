@@ -1284,8 +1284,7 @@ info_node_of_tag_ext (FILE_BUFFER *fb, TAG **tag_ptr, int fast)
              anchors that occur within the node. */
           scan_node_contents (node, parent, tag_ptr);
 
-          if (!preprocess_nodes_p)
-            node_set_body_start (node);
+          node_set_body_start (node);
           tag->cache = *node;
           if (!(node->flags & N_WasRewritten))
             tag->cache.contents = 0; /* Pointer into file buffer

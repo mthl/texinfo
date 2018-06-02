@@ -1,5 +1,13 @@
 2018-06-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/nodes.c (info_node_of_tag_ext): Always call 
+	node_set_body_start regardless of the value of 
+	preprocess_nodes_p.  Benno Schulenberg reported that searching 
+	commands could find matches in the node information line if the 
+	use set "hide-note-references=On".
+
+2018-06-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\pdfgettoks): Add a comment.
 
 2018-03-10  Paul Eggert  <eggert@cs.ucla.edu>
