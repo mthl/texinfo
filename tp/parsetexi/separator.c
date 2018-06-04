@@ -28,11 +28,8 @@
 // 3600
 /* Add the contents of CURRENT as an element to the extra value with
    key KEY, except that some "empty space" elements are removed.  Used for
-   'brace_command_contents' for the arguments to a brace command, and
    'block_command_line_contents' for the arguments to a block line command.
-
-   For a brace command $element, $element->{'args'} has pretty much the same 
-   information as $element->{'extra'}->{'brace_command_contents'}. */
+   */
 void
 register_command_arg (ELEMENT *current, char *key)
 {
@@ -166,7 +163,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             text_append_n (&e->text, line, n);
             add_to_element_contents (current, e);
             add_extra_element (current->parent,
-                                   "spaces_before_argument", e);
+                                   "spaces_before_argument_elt", e);
             line += n;
           }
           current->type = ET_brace_command_context;
@@ -178,9 +175,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
           current->type = ET_brace_command_arg;
 
           /* Commands which are said to take a positive number of arguments
-             disregard leading and trailing whitespace.  In 
-             'handle_close_brace', the 'brace_command_contents' array
-             is set.  */
+             disregard leading and trailing whitespace. */
           if (command_data(command).data > 0)
             {
               ELEMENT *e;
@@ -188,8 +183,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               /* See comment in parser.c:merge_text */
               text_append (&e->text, "");
               add_to_element_contents (current, e);
-              add_extra_element (current->parent,
-                                     "spaces_before_argument", e);
+              add_extra_element (current, "spaces_before_argument_elt", e);
 
               if (command == CM_inlineraw)
                 push_context (ct_inlineraw);
@@ -216,7 +210,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       text_append (&e->text, ""); /* See comment in parser.c:merge_text */
       add_to_element_contents (current, e);
       debug ("BRACKETED in def/multitable");
-      add_extra_element (current, "spaces_before_argument", e);
+      add_extra_element (current, "spaces_before_argument_elt", e);
     }
   else if (current->type == ET_rawpreformatted)
     {
@@ -237,7 +231,15 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       debug ("BRACKETED in math");
     }
   else
-    line_error ("misplaced {");
+    {
+      line_error ("misplaced {");
+      if (current->contents.number > 0
+          && last_contents_child(current)->type
+               == ET_empty_spaces_before_argument)
+        {
+          remove_from_contents (current, 0);
+        }
+    }
 
   *line_inout = line;
   return current;
@@ -311,7 +313,6 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* @inline* always have end spaces considered as normal text */
           if (!(command_flags(current->parent) & CF_inline))
             isolate_last_space (current, 0);
-          register_command_arg (current, "brace_command_contents");
           remove_empty_content_arguments (current);
         }
 
@@ -339,24 +340,22 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062
         {
-          ELEMENT *ref = current->parent, *args;
+          ELEMENT *ref = current->parent;
           KEY_PAIR *k;
           if (ref->args.number > 0)
             {
-              k = lookup_extra_key (ref, "brace_command_contents");
-              args = k->value;
               if ((closed_command == CM_inforef
-                   && (args->contents.number <= 0
-                       || !args->contents.list[0])
-                   && (args->contents.number <= 2
-                       || !args->contents.list[2]))
+                   && (ref->args.number <= 0
+                       || ref->args.list[0]->contents.number == 0)
+                   && (ref->args.number <= 2
+                       || ref->args.list[2]->contents.number == 0))
                   || (closed_command != CM_inforef
-                       && (args->contents.number <= 0
-                           || !args->contents.list[0])
-                       && (args->contents.number <= 3
-                           || !args->contents.list[3])
-                       && (args->contents.number <= 4
-                           || !args->contents.list[4])))
+                       && (ref->args.number <= 0
+                           || ref->args.list[0]->contents.number == 0)
+                       && (ref->args.number <= 3
+                           || ref->args.list[3]->contents.number == 0)
+                       && (ref->args.number <= 4
+                           || ref->args.list[4]->contents.number == 0)))
                 {
                   line_warn ("command @%s missing a node or external manual "
                              "argument", command_name(closed_command));
@@ -370,42 +369,42 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                   else
                     free (nse);
                   if (closed_command != CM_inforef
-                      && (args->contents.number <= 3
-                          || args->contents.number <= 4
-                             && !contents_child_by_index(args, 3)
-                          || (!contents_child_by_index(args, 3)
-                               && !contents_child_by_index(args, 4)))
+                      && (ref->args.number <= 3
+                          || ref->args.number <= 4
+                             && ref->args.list[3]->contents.number == 0
+                          || (ref->args.list[3]->contents.number == 0
+                               && ref->args.list[4]->contents.number == 0))
                       && !nse->manual_content)
                     {
                       remember_internal_xref (ref);
                     }
                 }
 
-              if (args->contents.number > 1
-                  && args->contents.list[1])
+              if (ref->args.number > 1
+                  && ref->args.list[1]->contents.number > 0)
                 {
-                  if (check_empty_expansion (args->contents.list[1]))
+                  if (check_empty_expansion (ref->args.list[1]))
                     {
                       line_warn ("in @%s empty cross reference name "
                                  "after expansion `%s'",
                                  command_name(closed_command),
-                                 args->contents.list[1]
-                                 ? convert_to_texinfo (args->contents.list[1])
+                                 ref->args.list[1]
+                                 ? convert_to_texinfo (ref->args.list[1])
                                  : "");
                     }
                 }
 
               if (closed_command != CM_inforef
-                  && args->contents.number > 2
-                  && args->contents.list[2])
+                  && ref->args.number > 2
+                  && ref->args.list[2]->contents.number > 0)
                 {
-                  if (check_empty_expansion (args->contents.list[2]))
+                  if (check_empty_expansion (ref->args.list[2]))
                     {
                       line_warn ("in @%s empty cross reference title "
                                  "after expansion `%s'",
                                  command_name(closed_command),
-                                 args->contents.list[2]
-                                 ? convert_to_texinfo (args->contents.list[2])
+                                 ref->args.list[2]
+                                 ? convert_to_texinfo (ref->args.list[2])
                                  : "");
                     }
                 }
@@ -415,16 +414,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         {
           ELEMENT *image = current->parent;
           KEY_PAIR *k;
-          if (image->args.number == 0)
-            goto image_no_args;
-          k = lookup_extra_key (image, "brace_command_contents");
-          if (!k)
-            goto image_no_args;
-          if (!contents_child_by_index (k->value, 0))
-            goto image_no_args;
-          if (0)
+          if (image->args.number == 0
+              || image->args.list[0]->contents.number == 0)
             {
-          image_no_args:
               line_error ("@image missing filename argument");
             }
           if (global_info.input_perl_encoding)
@@ -447,17 +439,13 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
         { // 5129
-          KEY_PAIR *k;
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
                 abort ();
             }
           if (current->parent->args.number == 0
-              || !(k = lookup_extra_key (current->parent, 
-                                         "brace_command_contents"))
-              || !k->value || k->value->contents.number == 0
-              || !k->value->contents.list[0])
+              || current->parent->args.list[0]->contents.number == 0)
             {
               line_warn ("@%s missing first argument",
                          command_name(current->parent->cmd));
@@ -641,8 +629,7 @@ funexit:
 }
 
 // 2577
-/* Remove 'brace_command_contents' or 'block_command_line_contents'
-   extra value if empty.
+/* Remove 'block_command_line_contents' extra value if empty.
    TODO: If not empty, remove empty elements thereof. */
 void
 remove_empty_content_arguments (ELEMENT *current)
@@ -650,8 +637,6 @@ remove_empty_content_arguments (ELEMENT *current)
   KEY_PAIR *k;
 
   k = lookup_extra_key (current, "block_command_line_contents");
-  if (!k)
-    k = lookup_extra_key (current, "brace_command_contents");
   if (!k)
     return;
 
@@ -678,14 +663,11 @@ handle_comma (ELEMENT *current, char **line_inout)
 
   abort_empty_line (&current, NULL);
 
-  /* Register brace_command_contents or block_command_line_contents in extra 
-     key. */
   if (command_flags(current->parent) & CF_brace
       && command_data(current->parent->cmd).data > 0)
     {
       // 5033
       isolate_last_space (current, 0);
-      register_command_arg (current, "brace_command_contents");
       remove_empty_content_arguments (current);
     }
   else
@@ -709,21 +691,23 @@ handle_comma (ELEMENT *current, char **line_inout)
       k = lookup_extra_key (current, "format");
       if (!k)
         {
-          KEY_PAIR *k;
           char *inline_type = 0;
-          k = lookup_extra_key (current, "brace_command_contents");
-          if (k)
+          if (current->args.number > 0
+              && current->args.list[0]->contents.number > 0)
             {
               ELEMENT *args = 0, *arg = 0;
               int i;
-              args = (ELEMENT *) k->value;
+              args = current->args.list[0];
+              /*
               if (!args)
                 goto inline_no_arg;
               if (args->contents.number == 0)
                 goto inline_no_arg;
+              */
               arg = args->contents.list[0];
               if (!arg)
                 goto inline_no_arg; /* Possible if registered as 'undef'. */
+
               /* Find text argument.
                  TODO: Should we use trim_spaces_comment_from_content instead?
                  Or use a function for this? */
@@ -791,7 +775,6 @@ inline_no_arg:
               /* Add a dummy argument for the first argument. */
               e = new_element (ET_elided);
               add_to_element_args (current, e);
-              register_command_arg (e, "brace_command_contents");
 
               /* Scan forward to get the next argument. */
               while (brace_count > 0)
@@ -882,6 +865,7 @@ inlinefmtifelse_done:
   e = new_element (ET_empty_spaces_before_argument);
   text_append (&e->text, ""); /* See comment in parser.c:merge_text */
   add_to_element_contents (current, e);
+  add_extra_element (current, "spaces_before_argument_elt", e);
   
 funexit:
   *line_inout = line;

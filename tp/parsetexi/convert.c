@@ -58,6 +58,7 @@ static void
 expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
 {
   enum command_id cmd = e->cmd;
+  KEY_PAIR *k;
 
   if (cmd)
     {
@@ -111,7 +112,13 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
                 ADD(",");
               arg_nr++;
             }
+          k = lookup_extra_key (e->args.list[i], "spaces_before_argument");
+          if (k)
+            ADD((char *)k->value);
           convert_to_texinfo_internal (e->args.list[i], result);
+          k = lookup_extra_key (e->args.list[i], "spaces_after_argument");
+          if (k)
+            ADD((char *)k->value);
         }
 
       if (e->cmd == CM_verb)
@@ -139,8 +146,15 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
           expand_cmd_args_to_texi (e, result);
         }
 
-      if (e->type == ET_bracketed)
-        ADD("{");
+      if (e->type == ET_bracketed
+          || e->type == ET_bracketed_def_content)
+        {
+          KEY_PAIR *k;
+          ADD("{");
+          k = lookup_extra_key (e, "spaces_before_argument");
+          if (k)
+            ADD((char *)k->value);
+        }
       if (e->contents.number > 0)
         {
           int i;

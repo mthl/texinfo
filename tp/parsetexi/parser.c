@@ -398,15 +398,15 @@ merge_text (ELEMENT *current, char *text)
 
 /* 2106 */
 int
-abort_empty_line (ELEMENT **current_inout, char *additional_text)
+abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
 {
   ELEMENT *current = *current_inout;
   int retval;
 
   ELEMENT *last_child = last_contents_child (current);
 
-  if (!additional_text)
-    additional_text = "";
+  if (!additional_spaces)
+    additional_spaces = "";
 
   if (last_child
       && (last_child->type == ET_empty_line
@@ -414,61 +414,70 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
           || last_child->type == ET_empty_spaces_before_argument
           || last_child->type == ET_empty_spaces_after_close_brace))
     {
+      ELEMENT *owning_element = 0, *e;
+      KEY_PAIR *owning_keypair = 0, *k;
+          
+      e = current;
+      if (current)
+        {
+          k = lookup_extra_key (current, "spaces_before_argument_elt");
+          if (k && k->value == last_contents_child (current))
+            goto owning_element_found;
+        }
+
+      e = current->parent;
+      if (current->parent)
+        {
+          k = lookup_extra_key (current->parent, 
+                                "spaces_before_argument_elt");
+          if (k && k->value == last_contents_child (current))
+            goto owning_element_found;
+        }
+
+      e = current;
+      if (current)
+        {
+          k = lookup_extra_key (current, "spaces_after_command");
+          if (k && k->value == last_contents_child (current))
+            goto owning_element_found;
+        }
+
+      e = current->parent;
+      if (current->parent)
+        {
+          k = lookup_extra_key (current->parent, "spaces_after_command");
+          if (k && k->value == last_contents_child (current))
+            goto owning_element_found;
+        }
+
+      if (0)
+        {
+owning_element_found:
+          owning_element = e;
+          owning_keypair = k;
+        }
+
       debug ("ABORT EMPTY %s additional text |%s| "
              "current |%s|",
              element_type_name(last_child),
-             additional_text,
+             additional_spaces,
              last_child->text.text);
-      text_append (&last_child->text, additional_text);
+      text_append (&last_child->text, additional_spaces);
 
       /* Remove element altogether if it's empty. */
       if (last_child->text.end == 0) //2121
         {
-          KEY_PAIR *k = 0; ELEMENT *e;
-          
-          /* Remove extra key from either from current or current->parent.  */
-          if (current)
-            k = lookup_extra_key (current, "spaces_before_argument");
-          if (k && k->value == last_contents_child (current))
-            {
-              k->key = "";
-              k->value = 0;
-              k->type = extra_deleted;
-            }
-          else if (current->parent)
-            {
-              k = lookup_extra_key (current->parent, "spaces_before_argument");
-              if (k && k->value == last_contents_child (current))
-                {
-                  k->key = "";
-                  k->value = 0;
-                  k->type = extra_deleted;
-                }
-            }
-
-          if (current)
-            k = lookup_extra_key (current, "spaces_after_command");
-          if (k && k->value == last_contents_child(current))
-            {
-              k->key = "";
-              k->value = 0;
-              k->type = extra_deleted;
-            }
-          else if (current->parent)
-            {
-              k = lookup_extra_key (current->parent, "spaces_after_command");
-              if (k && k->value == last_contents_child (current))
-                {
-                  k->key = "";
-                  k->value = 0;
-                  k->type = extra_deleted;
-                }
-            }
-
           e = pop_element_from_contents (current);
           e->parent = 0; e->parent_type = route_not_in_tree;
           destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
+
+          if (owning_keypair)
+            {
+              owning_keypair->key = "";
+              owning_keypair->value = 0;
+              owning_keypair->type = extra_deleted;
+            }
         }
       else if (last_child->type == ET_empty_line) //2132
         {
@@ -478,6 +487,23 @@ abort_empty_line (ELEMENT **current_inout, char *additional_text)
       else if (last_child->type == ET_empty_line_after_command)
         {
           last_child->type = ET_empty_spaces_after_command;
+        }
+      else if (last_child->type == ET_empty_spaces_before_argument)
+        {
+          /* Remove element from main tree. */
+          pop_element_from_contents (current);
+          /* FIXME: destroy_element? */
+          
+          if (owning_keypair)
+            {
+              /* Replace element reference with a simple string. */
+              add_extra_string (owning_element, "spaces_before_argument",
+                                owning_keypair->value->text.text);
+
+              owning_keypair->key = "";
+              owning_keypair->value = 0;
+              owning_keypair->type = extra_deleted;
+            }
         }
       retval = 1;
     }
@@ -504,6 +530,7 @@ void
 isolate_last_space (ELEMENT *current, enum element_type element_type)
 {
   ELEMENT *last = last_contents_child (current);
+  char *end_spaces;
 
   if (!element_type)
     element_type = ET_spaces_at_end;
@@ -541,7 +568,17 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
                 {
                   /* If text all whitespace */
                   if (text[strspn (text, whitespace_chars)] == '\0')
-                    indexed_elt->type = element_type;
+                    {
+                      if (index == -1 && current->type == ET_brace_command_arg)
+                        {
+                          add_extra_string (current, "spaces_after_argument",
+                                            strdup (indexed_elt->text.text));
+                          pop_element_from_contents (current);
+                          /* FIXME: destroy_element? */
+                        }
+                      else
+                        indexed_elt->type = element_type;
+                    }
                   else
                     {
                       /* 2173 */
@@ -562,7 +599,16 @@ isolate_last_space (ELEMENT *current, enum element_type element_type)
                       text[text_len - trailing_spaces] = '\0';
                       indexed_elt->text.end -= trailing_spaces;
 
-                      if (index == -1)
+                      if (index == -1
+                          && current->type == ET_brace_command_arg)
+                        {
+                          add_extra_string (current, "spaces_after_argument",
+                                            new_spaces->text.text);
+                          new_spaces->text.end = 0;
+                          new_spaces->text.text = 0;
+                          destroy_element (new_spaces);
+                        }
+                      else if (index == -1)
                         add_to_element_contents (current, new_spaces);
                       else
                         insert_into_contents (current, new_spaces, -1);
@@ -1215,6 +1261,8 @@ superfluous_arg:
   else if (cmd)
     {
       enum command_id invalid_parent = 0;
+      int def_line_continuation;
+
       line = line_after_command;
       debug ("COMMAND %s", command_name(cmd));
 
@@ -1317,10 +1365,13 @@ value_invalid:
              gettext is implemented */
         }
 
+      def_line_continuation = (current_context() == ct_def
+                               && cmd == CM_NEWLINE);
       /* warn on not appearing at line beginning 4226 */
       // begin line commands 315
       // TODO maybe have a command flag for this
-      if (!abort_empty_line (&current, NULL)
+      if (!def_line_continuation
+          && !abort_empty_line (&current, NULL)
           && ((cmd == CM_node || cmd == CM_bye)
               || (command_data(cmd).flags & CF_block)
               || ((command_data(cmd).flags & CF_misc)
@@ -1541,7 +1592,7 @@ value_invalid:
         }
 
       /* 4274 */
-      if (current_context () == ct_def && cmd == CM_NEWLINE)
+      if (def_line_continuation)
         {
           retval = GET_A_NEW_LINE;
           goto funexit;
@@ -1760,6 +1811,15 @@ parse_texi (ELEMENT *root_elt)
           int n;
           
           debug ("BEGIN LINE");
+
+          if (current->contents.number > 0
+              && last_contents_child(current)->type
+                 == ET_empty_spaces_before_argument)
+            {
+              /* Remove this element and update 'extra' values. */
+              abort_empty_line (&current, 0);
+            }
+
           e = new_element (ET_empty_line);
           add_to_element_contents (current, e);
 
