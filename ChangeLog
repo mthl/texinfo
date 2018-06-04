@@ -1,5 +1,11 @@
 2018-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Transformations.pm (_reference_to_arg):
+	Refer to 'args' array instead of 'brace_command_contents'.
+	(Makes a couple of tests failing since 2017-10-29 pass.)
+
+2018-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Plaintext.pm (_convert):
 	When checking if a node name in a cross-reference includes a
 	`.', do not include in the check any manual name that may have 

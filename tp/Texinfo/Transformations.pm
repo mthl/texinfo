@@ -153,8 +153,7 @@ sub _reference_to_arg($$$)
 
   if ($current->{'cmdname'} and 
       $Texinfo::Common::ref_commands{$current->{'cmdname'}}
-      and $current->{'extra'} 
-      and $current->{'extra'}->{'brace_command_contents'}) {
+      and $current->{'args'}) {
     my @args_try_order;
     if ($current->{'cmdname'} eq 'inforef') {
       @args_try_order = (0, 1, 2);
@@ -162,14 +161,13 @@ sub _reference_to_arg($$$)
       @args_try_order = (0, 1, 2, 4, 3);
     }
     foreach my $index (@args_try_order) {
-      if (defined($current->{'args'}->[$index]) 
-          and defined($current->{'extra'}->{'brace_command_contents'}->[$index])) {
+      if (defined($current->{'args'}->[$index])) {
         # This a double checking that there is some content.
         # Not sure that it is useful.
         my $text = Texinfo::Convert::Text::convert($current->{'args'}->[$index]);
         if (defined($text) and $text =~ /\S/) {
-          my $result = {'contents' => 
-                $current->{'extra'}->{'brace_command_contents'}->[$index],
+          my $result
+            = {'contents' => $current->{'args'}->[$index]->{'contents'},
                         'parent' => $current->{'parent'}};
           return ($result);
         }
