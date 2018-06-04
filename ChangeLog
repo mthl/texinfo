@@ -1,3 +1,14 @@
+2018-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert):
+	When checking if a node name in a cross-reference includes a
+	`.', do not include in the check any manual name that may have 
+	already been stored inside the paragraph formatter.  Rical Jasan 
+	reported that an error message mentioning the "node name" would 
+	be given for output like "(gcc.info)Debugging Options" which is 
+	confusing as the `.' is not in the node name "Debugging 
+	Options".  (bug-texinfo 2018-02-09)
+
 2018-06-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (info_node_of_tag_ext): Always call 

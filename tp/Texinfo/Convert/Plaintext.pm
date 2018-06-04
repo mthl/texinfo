@@ -2064,12 +2064,18 @@ sub _convert($$)
           }
           # node name
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
+
+          my $maybe_file
+            = get_pending($self->{'formatters'}->[-1]->{'container'});
           my $node_text = _convert($self, {'type' => '_code',
                                            'contents' => $node_content});
           delete $self->{'formatters'}->[-1]->{'suppress_styles'};
 
           my $node_text_checked = $node_text 
              .get_pending($self->{'formatters'}->[-1]->{'container'});
+          $maybe_file =~ s/^\s*//;
+          $maybe_file = quotemeta $maybe_file;
+          $node_text_checked =~ s/^\s*$maybe_file//;
           $quoting_required = 0;
           if ($node_text_checked =~ /([,\t\.])/m ) {
               if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
