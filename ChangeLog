@@ -1,5 +1,20 @@
 2018-07-13  Niko Tyni <ntyni@debian.org>  (tiny change)
 
+	Perl 5.28 introduced thread-safe locales, where 'setlocale'
+	only affects the locale of the current thread. External code
+	like 'mbrtowc' isn't aware of this thread specific locale,
+	so we need to explicitly modify the global one instead.
+	
+	Without this we could enter a busy loop in xspara__add_next
+	(Texinfo::Convert::XSParagraph) for UTF-8 documents when mbrtowc
+	returned -1.
+
+	* tp/Texinfo/Convert/XSParagraph/xspara.c (xspara_init)
+	[Perl version >= 5.28]: Call 'switch_to_global_locale' and 
+	'sync_locale'.
+
+2018-07-13  Niko Tyni <ntyni@debian.org>  (tiny change)
+
 	* tp/Texinfo/Parser.pm (_parse_special_misc_command) <@clickstyle>:
 	Escape braces in regex to be compatible with recent Perl 
 	versions.

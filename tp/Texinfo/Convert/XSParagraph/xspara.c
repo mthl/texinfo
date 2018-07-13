@@ -248,6 +248,11 @@ xspara_init (void)
 
   dTHX;
 
+#if PERL_VERSION > 27 || (PERL_VERSION == 27 && PERL_SUBVERSION > 8)
+  /* needed due to thread-safe locale handling in newer perls */
+  switch_to_global_locale();
+#endif
+
   if (setlocale (LC_CTYPE, "en_US.UTF-8")
       || setlocale (LC_CTYPE, "en_US.utf8"))
     goto success;
@@ -320,6 +325,10 @@ failure:
     {
 success: ;
       free (utf8_locale);
+#if PERL_VERSION > 27 || (PERL_VERSION == 27 && PERL_SUBVERSION > 8)
+      /* needed due to thread-safe locale handling in newer perls */
+      sync_locale();
+#endif
       /*
       fprintf (stderr, "tried to set LC_CTYPE to UTF-8.\n");
       fprintf (stderr, "character encoding is: %s\n",
