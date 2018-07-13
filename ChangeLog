@@ -1,3 +1,9 @@
+2018-07-13  Niko Tyni <ntyni@debian.org>  (tiny change)
+
+	* tp/Texinfo/Parser.pm (_parse_special_misc_command) <@clickstyle>:
+	Escape braces in regex to be compatible with recent Perl 
+	versions.
+
 2018-06-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Transformations.pm (_reference_to_arg):
