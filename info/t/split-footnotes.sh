@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera -n 'Node with footnotes' -v automatic-footnotes=On
 # Move to automatic footnotes window and split it.  Check we don't crash.

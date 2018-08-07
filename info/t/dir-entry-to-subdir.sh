@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Follow a dir entry to a file in a subdirectory of infodir
 run_ginfo subdir

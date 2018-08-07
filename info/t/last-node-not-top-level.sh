@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f last-node-not-top-level -v scroll-last-node=Top
 

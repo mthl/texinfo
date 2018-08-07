@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f body-start
 # Check that node headers aren't included in searches

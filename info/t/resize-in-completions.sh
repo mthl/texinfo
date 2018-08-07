@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Indicate a window resize while showing a completions window
 

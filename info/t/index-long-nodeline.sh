@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc 
 
 run_ginfo -f split
 # Follow an menu item from the index node to a node where physical lines

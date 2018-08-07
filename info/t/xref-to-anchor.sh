@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f xref_to_anchor
 # Follow cross-reference to an anchor

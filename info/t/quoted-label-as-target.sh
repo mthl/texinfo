@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f quoting
 # Follow a cross-reference to a node with colons and commas in its name

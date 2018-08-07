@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera -n xrefnode
 # Enter echo area and try to follow a cross-reference that doesn't exist

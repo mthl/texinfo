@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -f intera -n "Xref target crosses lines 2"
 printf '\t\rDq' >$PTY_TYPE

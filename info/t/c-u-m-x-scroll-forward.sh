@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Set screen geometry so that scrolling down by screens goes to 
 # predictable places.  5 lines of the node should be visible at once, 1 

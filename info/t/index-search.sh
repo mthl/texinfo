@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc 
 
 run_ginfo -f intera
 # Search in indices with 'virtual-index' command.  Go down to index

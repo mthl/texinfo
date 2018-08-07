@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $srcdir/t/Init-inter.inc
 
 # Check that an empty search path doesn't break.  There are no search
 # directories here because infopath-no-defaults=On in

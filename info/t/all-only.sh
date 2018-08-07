@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Try to stop a "man" command finding a man page called "intera"
 MANPATH=.; export MANPATH

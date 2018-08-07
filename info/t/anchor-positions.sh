@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Open a UTF-8 file with anchors in various positions.  Check that character
 # encoding conversion doesn't cause the program to freeze.

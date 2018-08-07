@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 run_ginfo -v scroll-last-node=Top -f no-xref.info
 # Check that pressing tab in a file with no cross-references or menus

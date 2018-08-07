@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 # Split window with C-x 2, follow menu entry with a slash in the filename.
 # Close window (so destination file will be forgotten), and do it again with

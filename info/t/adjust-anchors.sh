@@ -16,7 +16,6 @@
 
 srcdir=${srcdir:-.}
 . $srcdir/t/Init-test.inc
-. $t/Init-inter.inc
 
 LC_ALL=en_US.ISO8859-1; export LC_ALL
 # "ISO8859-1" is what it's known as on NetBSD 5.1 (and not "iso-8859-1"
