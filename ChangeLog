@@ -2,7 +2,8 @@
 
 	* info/t/Infokey-config: Use C-x for aborting in echo area in 
 	test suite.
-	* info/t/echo-area-no-completions.sh: Update.
+	* info/t/echo-area-no-completions.sh,
+	* info/t/index-apropos.sh: Update.
 
 2018-08-07  Vitezslav Crhonek <vcrhonek@redhat.com>  (tiny change)
 
