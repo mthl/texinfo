@@ -979,6 +979,7 @@ info_read_completing_internal (const char *prompt, REFERENCE **completions,
                 inform_in_echo_area (_("No completions"));
               else
                 inform_in_echo_area (_("Not complete"));
+              free (line);
               continue;
             }
         }

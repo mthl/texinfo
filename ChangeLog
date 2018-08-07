@@ -1,3 +1,7 @@
+2018-08-07  Vitezslav Crhonek <vcrhonek@redhat.com>  (tiny change)
+
+	* info/echo-area.c (info_read_completing_internal): Avoid memory leak.
+
 2018-07-13  Niko Tyni <ntyni@debian.org>  (tiny change)
 
 	Perl 5.28 introduced thread-safe locales, where 'setlocale'
