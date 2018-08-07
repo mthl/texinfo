@@ -165,6 +165,7 @@ TESTS = \
 	t/quoted-manual-in-label.sh \
 	t/goto-quoted.sh \
 	t/next-quoted.sh \
+	t/echo-area-no-completions.sh \
 	t/help.sh
 
 EXTRA_DIST += $(TESTS) $(XFAIL_TESTS) \
