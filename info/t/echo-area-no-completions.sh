@@ -19,10 +19,9 @@ srcdir=${srcdir:-.}
 
 run_ginfo -f intera -n xrefnode
 # Enter echo area and try to follow a cross-reference that doesn't exist
-# Use backspace to exit echo area, because neither ESC or C-g work reliably
-# as cancel characters in the test suite.
+
 printf 'fs\r\r\r\r\r\r' >$PTY_TYPE
-printf '\b\b\bq' >$PTY_TYPE
+printf '\030\030q' >$PTY_TYPE
 
 timeout_test
 cleanup
