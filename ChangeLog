@@ -1,5 +1,14 @@
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/infomap.c (default_emacs_like_ea_keys)
+	(default_vi_like_ea_keys): Remove ineffectual key bindings.
+	Remove key bindings for sequences beginning with ESC, as these 
+	have not worked since ESC was made an abort key.  Remove binding 
+	for "C-x o" as it is not possible to escape the echo area any 
+	more.  Remove bindings for SPC and ? which are self-inserting.
+
+2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-inter.inc: File removed.  All contents moved into
 	Init-test.inc.
 
