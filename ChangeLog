@@ -1,3 +1,8 @@
+2018-08-07  Vitezslav Crhonek <vcrhonek@redhat.com>  (tiny change)
+
+	* info/info.c (get_initial_file) <man page fallback>: Avoid
+	leaking memory.
+
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Init-test.inc (run_ginfo, timeout_test): Record process 
