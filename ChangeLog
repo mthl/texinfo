@@ -1,5 +1,13 @@
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc (run_ginfo): Run ginfo inside a subshell 
+	with parentheses instead of using "sh -c".  This enables the use 
+	of "$@" and avoids the need for an extra level of quoting when 
+	calling run_ginfo.  Time out the process outside of the 
+	subshell.
+
+2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/echo-area-no-completions.sh: New test.
 
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
