@@ -139,9 +139,10 @@ findprog ()
 }
 
 # Initialize test of interactive operation
+initialization_done=0
 init_interactive_test ()
 {
-  test -v initialization_done && return 0
+  test $initialization_done -eq 1 && return 0
   initialization_done=1
 
   # Skip test if pseudotty wasn't built
