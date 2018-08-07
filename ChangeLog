@@ -1,5 +1,11 @@
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc (run_ginfo, timeout_test): Record process 
+	ID of background process that does the timing out, and kill this 
+	process if ginfo exited first.
+
+2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/infomap.c (default_emacs_like_ea_keys)
 	(default_vi_like_ea_keys): Remove ineffectual key bindings.
 	Remove key bindings for sequences beginning with ESC, as these 

@@ -93,6 +93,10 @@ timeout_test ()
 {
   wait $GINFO_PID
   status=$?
+
+  # If the program was not ended by a signal, kill the subshell that 
+  # is waiting to send it a signal.
+  test $status -lt 128 && kill $KILLER_PID
   
   RETVAL=0
   if test $status != 0; then
@@ -196,4 +200,5 @@ run_ginfo ()
 
   GINFO_PID=$!
   (sleep 3 ; kill $GINFO_PID) &
+  KILLER_PID=$!
 }
