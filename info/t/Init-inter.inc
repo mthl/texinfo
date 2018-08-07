@@ -1,4 +1,4 @@
-# Copyright (C) 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright (C) 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -92,11 +92,11 @@ LIBC_FATAL_STDERR_=1; export LIBC_FATAL_STDERR
 
 run_ginfo ()
 {
-  sh -c "
+  (
     exec 7>&- ; # Close fd from parent shell
 
-    (sleep 3 ; kill \$\$) &
-    exec $GINFO $GINFO_OPTIONS $* 0<>$PTS_DEVICE 1<&0 ;" &
+    exec $GINFO $GINFO_OPTIONS "$@" 0<>$PTS_DEVICE 1<&0 ; ) &
 
   GINFO_PID=$!
+  (sleep 3 ; kill $GINFO_PID) &
 }
