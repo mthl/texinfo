@@ -284,7 +284,6 @@ sub _fix_texinfo_tree($$$$;$)
           #push @{$node->{'extra'}->{'nodes_manuals'}}, $parsed_node;
           @{$node->{'extra'}->{'nodes_manuals'}} = ($parsed_node);
           Texinfo::Parser::_register_label($parser, $node, $parsed_node);
-          }
         }
       }
     }
