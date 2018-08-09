@@ -1,6 +1,7 @@
 # Report.pm: prepare error messages and translate strings.
 #
-# Copyright 2010, 2011, 2012, 2014 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2014, 2015, 2016, 2017, 2018 Free Software 
+# Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -309,15 +310,7 @@ sub gdt($$;$$)
 
   Locale::Messages::nl_putenv("LANGUAGE=$locales");
 
-  my $translation_result;
-  if (!defined($context) or ref($context)) {
-    $translation_result = Locale::Messages::gettext($message);
-  } else {
-    # In practice this is not used anywhere, context is always a HASH.
-    # for strings substitution not a context for translation.
-    $translation_result = Locale::Messages::pgettext($context, $message);
-  }
-  #print STDERR "$locales $message ----> $translation_result\n";
+  my $translation_result = Locale::Messages::gettext($message);
 
   Locale::Messages::textdomain($messages_textdomain);
   # old perl complains 'Use of uninitialized value in scalar assignment'
