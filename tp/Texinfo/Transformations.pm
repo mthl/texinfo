@@ -186,7 +186,7 @@ sub reference_to_arg_in_tree($$)
   return Texinfo::Common::modify_tree($self, $tree, \&_reference_to_arg);
 }
 
-# prepare a new node and register it
+# prepare a new node
 sub _new_node($$)
 {
   my $self = shift;
@@ -234,7 +234,7 @@ sub _new_node($$)
     foreach my $content (@{$node_arg->{'contents'}}) {
       $content->{'parent'} = $node_arg;
     }
-    $parsed_node = Texinfo::Parser::_parse_node_manual($node_arg);
+    $parsed_node = Texinfo::Common::parse_node_manual($node_arg);
     if ($parsed_node and $parsed_node->{'node_content'}) {
       $parsed_node->{'normalized'} =
       Texinfo::Convert::NodeNameNormalization::normalize_node (
@@ -256,8 +256,9 @@ sub _new_node($$)
     $self->{'labels'}->{$parsed_node->{'normalized'}} = $node;
     $node->{'extra'}->{'normalized'} = $parsed_node->{'normalized'};
   }
-  if (!Texinfo::Parser::_register_label($self, $node, $parsed_node)) {
-    print STDERR "BUG: node unique, register failed:  $parsed_node->{'normalized'}\n";
+  push @{$self->{'targets'}}, $node;
+  if ($parsed_node->{'node_content'}) {
+    $node->{'extra'}->{'node_content'} = $parsed_node->{'node_content'};
   }
   push @{$self->{'nodes'}}, $node;
   return $node;
