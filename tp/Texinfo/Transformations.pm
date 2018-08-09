@@ -256,7 +256,7 @@ sub _new_node($$)
     $self->{'labels'}->{$parsed_node->{'normalized'}} = $node;
     $node->{'extra'}->{'normalized'} = $parsed_node->{'normalized'};
   }
-  if (!Texinfo::Parser::_register_label($self, $node, $parsed_node, undef)) {
+  if (!Texinfo::Parser::_register_label($self, $node, $parsed_node)) {
     print STDERR "BUG: node unique, register failed:  $parsed_node->{'normalized'}\n";
   }
   push @{$self->{'nodes'}}, $node;
