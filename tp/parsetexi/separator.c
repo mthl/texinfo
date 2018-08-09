@@ -691,48 +691,19 @@ handle_comma (ELEMENT *current, char **line_inout)
       k = lookup_extra_key (current, "format");
       if (!k)
         {
+          ELEMENT *arg = 0;
           char *inline_type = 0;
           if (current->args.number > 0
-              && current->args.list[0]->contents.number > 0)
+              && current->args.list[0]->contents.number > 0
+              && (arg = current->args.list[0]->contents.list[0]))
             {
-              ELEMENT *args = 0, *arg = 0;
-              int i;
-              args = current->args.list[0];
-              /*
-              if (!args)
-                goto inline_no_arg;
-              if (args->contents.number == 0)
-                goto inline_no_arg;
-              */
-              arg = args->contents.list[0];
-              if (!arg)
-                goto inline_no_arg; /* Possible if registered as 'undef'. */
-
-              /* Find text argument.
-                 TODO: Should we use trim_spaces_comment_from_content instead?
-                 Or use a function for this? */
-              for (i = 0; i < arg->contents.number; i++)
-                {
-                  enum element_type t = arg->contents.list[i]->type;
-                  if (arg->contents.list[i]->text.end > 0
-                      && t != ET_empty_line_after_command
-                      && t != ET_empty_spaces_after_command
-                      && t != ET_empty_spaces_before_argument
-                      && t != ET_empty_space_at_end_def_bracketed
-                      && t != ET_empty_spaces_after_close_brace)
-                    break;
-                }
-              if (i != arg->contents.number)
-                {
-                  inline_type = arg->contents.list[i]->text.text;
-                }
+              if (arg->text.end > 0)
+                inline_type = arg->text.text;
             }
-
 
           debug ("INLINE <%s>", inline_type);
           if (!inline_type)
             {
-inline_no_arg:
               /* Condition is missing */
               debug ("INLINE COND MISSING");
             }
