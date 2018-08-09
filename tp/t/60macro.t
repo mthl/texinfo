@@ -931,6 +931,13 @@ a
 
 @mactwo{}
 '],
+['line_after_recursive_call',
+'@macro mac
+ggg
+@mac xxx
+fff
+@end macro
+@mac'],
 ['unknown_macro_on_line_command',
 '@setfilename @begin{}file'
 ],
@@ -985,7 +992,7 @@ in inlinefmt tex
 }
 
 @mymacro{}.
-']
+'],
 );
 
 my @todo =(

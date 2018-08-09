@@ -1,5 +1,9 @@
 2018-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/60macro.t (line_after_recursive_call): New test.
+
+2018-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Transformations.pm (_new_node): Call 
 	'parse_node_manual' from Texinfo::Common instead of 
 	Texinfo::Parser, and do not call Texinfo::Parser::register_label.
