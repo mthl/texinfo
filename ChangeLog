@@ -1,3 +1,9 @@
+2018-08-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_register_label): Remove a useless 
+	variable assignment.  Remove an unused argument.  Do not return 
+	a value.
+
 2018-08-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/t/Infokey-config: Use C-x for aborting in echo area in 

@@ -1,7 +1,7 @@
 # $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software 
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
 # Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -2476,21 +2476,16 @@ sub _parse_def($$$)
 }
 
 # register a label, that is something that may be the target of a reference
-# and must be unique in the document.  Corresponds with @node, @anchor and 
+# and must be unique in the document.  Corresponds to @node, @anchor and 
 # @float second arg.
-sub _register_label($$$$)
+sub _register_label($$$)
 {
-  my ($self, $current, $label, $line_nr) = @_;
+  my ($self, $current, $label) = @_;
 
-  my $normalized = $label->{'normalized'};
-
+  push @{$self->{'targets'}}, $current;
   if ($label->{'node_content'}) {
     $current->{'extra'}->{'node_content'} = $label->{'node_content'};
   }
-
-  push @{$self->{'targets'}}, $current;
-
-  return 1;
 }
 
 # store an index entry.
@@ -2860,7 +2855,7 @@ sub _end_line($$$)
           $float_label = _parse_node_manual($float->{'args'}->[1]);
           _check_internal_node($self, $float_label, $line_nr);
         }
-        _register_label($self, $float, $float_label, $line_nr);
+        _register_label($self, $float, $float_label);
         _parse_float_type($float);
         $type = $float->{'extra'}->{'type'}->{'normalized'};
       }
@@ -3198,7 +3193,7 @@ sub _end_line($$$)
         $current->{'extra'}->{'nodes_manuals'}->[0],
         $line_nr);
      _register_label($self, $current, 
-                   $current->{'extra'}->{'nodes_manuals'}->[0], $line_nr);
+                   $current->{'extra'}->{'nodes_manuals'}->[0]);
      $self->{'current_node'} = $current;
     } elsif ($command eq 'listoffloats') {
       _parse_float_type($current);
@@ -5055,8 +5050,7 @@ sub _parse_texi($;$)
               my $parsed_anchor = _parse_node_manual($current);
               if (_check_node_label($self, $parsed_anchor,
                                 $current->{'parent'}->{'cmdname'}, $line_nr)) {
-                _register_label($self, $current->{'parent'},
-                  $parsed_anchor, $line_nr);
+                _register_label($self, $current->{'parent'}, $parsed_anchor);
                 if (@{$self->{'regions_stack'}}) {
                   $current->{'extra'}->{'region'} = $self->{'regions_stack'}->[-1];
                 }
