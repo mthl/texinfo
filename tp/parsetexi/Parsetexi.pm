@@ -211,35 +211,13 @@ sub _parse_texi ($;$)
 
 use Data::Dumper;
 
-# Look for a menu in the node, saving in the 'menus' array reference
-# of the node element
-# This array was built on line 4800 of Parser.pm.
-sub _find_menus_of_node ($) {
+# Record any @menu elements under $root in the 'menus' array of $node.
+sub _find_menus_of_node {
   my $node = shift;
+  my $root = shift;
 
-  # If a sectioning command wasn't used in the node, the
-  # associated_section won't be set.  This is the case for
-  # "(texinfo)Info Format Preamble" and some other nodes in
-  # doc/texinfo.texi.  Avoid referencing it which would create
-  # it by mistake, which would cause problems in Structuring.pm.
-  #
-  # Also, check for menu elements under both the node element and the
-  # sectioning element.  This is for malformed input with a @menu between
-  # the two commands.
-
-  my $contents;
-
-  if ($node->{'contents'}) {
-    $contents = $node->{'contents'};
-    foreach my $child (@{$contents}) {
-      if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
-        push @{$node->{'menus'}}, $child;
-      }
-    }
-  }
-
-  if (defined $node->{'extra'}{'associated_section'}) {
-    $contents = $node->{'extra'}{'associated_section'}->{'contents'};
+  if ($root->{'contents'}) {
+    my $contents = $root->{'contents'};
     foreach my $child (@{$contents}) {
       if ($child->{'cmdname'} and $child->{'cmdname'} eq 'menu') {
         push @{$node->{'menus'}}, $child;
@@ -248,18 +226,21 @@ sub _find_menus_of_node ($) {
   }
 }
 
-# For each node, call _find_menus_of_node.
-sub _complete_node_menus ($$) {
+# Set 'menus' array for each node.  This accounts for malformed input where
+# the number of sectioning commands between @node and @menu is not exactly 1.
+sub _complete_node_menus {
   my $self = shift;
   my $root = shift;
 
   if (!defined $self->{'nodes'}) {
     $self->{'nodes'} = [];
   }
+  my $node;
   foreach my $child (@{$root->{'contents'}}) {
     if ($child->{'cmdname'} and $child->{'cmdname'} eq 'node') {
-      _find_menus_of_node ($child);
+      $node = $child;
     }
+    _find_menus_of_node ($node, $child) unless !defined $node;
   }
 }
 
