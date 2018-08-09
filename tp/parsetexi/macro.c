@@ -562,7 +562,8 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
         {
           line_error ("recursive call of macro %s is not allowed; "
                       "use @rmacro if needed", command_name(cmd));
-          goto funexit;
+          expanded.text[0] = '\0';
+          expanded.end = 0;
         }
     }
 
