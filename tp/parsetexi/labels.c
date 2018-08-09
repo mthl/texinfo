@@ -41,8 +41,8 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
     }
   labels_list[labels_number++].target = current;
 
-  // 2504
-  add_extra_contents (current, "node_content", label->node_content);
+  if (label->node_content)
+    add_extra_contents (current, "node_content", label->node_content);
 }
 
 void
