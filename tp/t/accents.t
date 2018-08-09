@@ -23,10 +23,11 @@ sub test_accent_stack ($)
   my $texi = $test->[0];
   my $name = $test->[1]; 
   my $reference = $test->[2]; 
-  my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
-  my $tree = $parser->parse_texi_text($texi);
+  my $parser = Texinfo::Parser::parser();
+  my $text_root = $parser->parse_texi_text($texi);
+  my $tree = $text_root->{'contents'}->[0]->{'contents'}->[0];
   my ($contents, $commands_stack) = 
-    Texinfo::Common::find_innermost_accent_contents($tree->{'contents'}->[0]);
+    Texinfo::Common::find_innermost_accent_contents($tree);
   my $text = Texinfo::Convert::Text::convert({'contents' => $contents});
   my @stack = map {$_->{'cmdname'}} @$commands_stack;
   if (defined($reference)) {
@@ -71,9 +72,9 @@ sub test_enable_encoding ($)
   my $reference_xml = $test->[3];
   my $reference_xml_entity = $test->[4];
   my $reference_unicode = $test->[5];
-  my $parser = Texinfo::Parser::parser({'context' => 'preformatted'});
+  my $parser = Texinfo::Parser::parser();
   my $text_root = $parser->parse_texi_text($texi);
-  my $tree = $text_root->{'contents'}->[0];
+  my $tree = $text_root->{'contents'}->[0]->{'contents'}->[0];
 
   my ($contents, $commands_stack) = 
     Texinfo::Common::find_innermost_accent_contents($tree);

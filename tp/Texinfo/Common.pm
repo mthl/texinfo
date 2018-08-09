@@ -95,10 +95,6 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
 # They are defined here, because they are used below and we 
 # don't want Texinfo::Common to use Texinfo::Parser.
 our %default_parser_state_configuration = (
-  # this is the initial context.  It is put at the bottom of the 
-  # 'context_stack'.  It is not clear if this is really useful to be
-  # able to customize that value.
-  'context' => '_root',
   'expanded_formats' => [],
   'gettext' => sub {return $_[0];},
   'pgettext' => sub {return $_[1];},

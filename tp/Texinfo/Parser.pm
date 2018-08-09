@@ -699,7 +699,7 @@ sub parser(;$$)
       $parser->{'explained_commands'}->{$explained_command} = {};
     }
   }
-  $parser->{'context_stack'} = [ $parser->{'context'} ];
+  $parser->{'context_stack'} = [ '_root' ];
   $parser->{'regions_stack'} = [];
   $parser->{'macro_stack'} = [];
   $parser->{'conditionals_stack'} = [];
@@ -753,7 +753,7 @@ sub simple_parser(;$)
       $parser->{'explained_commands'}->{$explained_command} = {};
     }
   }
-  $parser->{'context_stack'} = [ $parser->{'context'} ];
+  $parser->{'context_stack'} = [ '_root' ];
   $parser->{'regions_stack'} = [];
   $parser->{'macro_stack'} = [];
   $parser->{'conditionals_stack'} = [];
@@ -5458,7 +5458,7 @@ sub _parse_texi($;$)
     if ($self->{'DEBUG'}) {
       print STDERR "CONTEXT_STACK no empty end _parse_texi: ".join('|', @{$self->{'context_stack'}})."\n";
     }
-    @{$self->{'context_stack'}} = ($self->{'context'});
+    @{$self->{'context_stack'}} = ('_root');
   }
 
   # Call 'labels_information' to initialize labels.
