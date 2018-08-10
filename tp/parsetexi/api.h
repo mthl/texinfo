@@ -9,6 +9,9 @@ int num_contents_children (ELEMENT *e);
 int num_args_children (ELEMENT *e);
 void reset_parser (void);
 
+/* In parser.c */
+void set_documentlanguage (char *);
+
 //HV *build_global_info (void);
 //HV *build_global_info2 (void);
 

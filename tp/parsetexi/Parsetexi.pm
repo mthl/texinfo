@@ -151,9 +151,7 @@ sub parser (;$$)
       }
 
       if ($key eq 'include_directories') {
-        #warn "Passed include_directories\n";
         foreach my $d (@{$conf->{'include_directories'}}) {
-          #warn "got dir $d\n";
           add_include_directory ($d);
         }
       } elsif ($key eq 'values') {
@@ -175,6 +173,8 @@ sub parser (;$$)
         for my $f (@{$parser->{$key}}) {
           add_expanded_format ($f);
         }
+      } elsif ($key eq 'documentlanguage') {
+        set_documentlanguage ($conf->{$key});
       } elsif ($key eq 'SHOW_MENU') {
         conf_set_show_menu ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {

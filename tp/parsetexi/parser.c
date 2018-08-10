@@ -118,6 +118,12 @@ char *global_documentlanguage = "";
 enum kbd_enum global_kbdinputstyle = kbd_distinct;
 
 void
+set_documentlanguage (char *value)
+{
+  global_documentlanguage = value;
+}
+
+void
 wipe_global_info (void)
 {
   global_clickstyle = "arrow";
