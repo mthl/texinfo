@@ -38,7 +38,8 @@ printed manual from a single source using semantic markup.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software
+Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -16745,23 +16746,29 @@ Each of the following @@-commands has an associated customization
 variable with the same name (minus the leading @code{@@}):
 
 @smallexample
-@@allowcodebreaks @@clickstyle @@codequotebacktick
-@@codequoteundirected @@contents @@deftypefnnewline
+@@allowcodebreaks @@clickstyle
+@@codequotebacktick @@codequoteundirected
+@@contents @@deftypefnnewline
 @@documentdescription @@documentencoding @@documentlanguage
-@@evenfooting   @@evenfootingmarks
-@@evenheading   @@evenheadingmarks
-@@everyfooting  @@everyfootingmarks
-@@everyheading  @@everyheadingmarks 
 @@exampleindent @@firstparagraphindent
-@@fonttextsize  @@footnotestyle @@frenchspacing @@headings
+@@footnotestyle @@frenchspacing
 @@kbdinputstyle @@novalidate
-@@oddfooting    @@oddfootingmarks
-@@oddheading    @@oddheadingmarks
-@@pagesizes     @@paragraphindent
-@@setchapternewpage  @@setfilename
+@@paragraphindent @@setfilename
 @@shortcontents  @@urefbreakstyle
 @@validatemenus  @@xrefautomaticsectiontitle
 @end smallexample
+
+@c Relevant to TeX only.
+@c @@evenfooting   @@evenfootingmarks
+@c @@evenheading   @@evenheadingmarks
+@c @@everyfooting  @@everyfootingmarks
+@c @@everyheading  @@everyheadingmarks
+@c @@fonttextsize
+@c @@headings
+@c @@oddfooting    @@oddfootingmarks
+@c @@oddheading    @@oddheadingmarks
+@c @@pagesizes
+@c @@setchapternewpage
 
 Setting such a customization variable to a value @samp{foo} is similar
 to executing @code{@@@var{cmd} foo}.  It is not exactly the same,
@@ -16769,6 +16776,10 @@ though, since any side effects of parsing the Texinfo source are not
 redone.  Also, some variables do not take Texinfo code when generating
 particular formats, but an argument that is already formatted.  This
 is the case, for example, for HTML for @code{documentdescription}.
+
+Note that if @command{texi2any} is invoked to process the file with
+@TeX{} (e.g., with the @option{--pdf} option), then these customization
+variables may not be passed on to @TeX{}.
 
 
 @node Customization Variables and Options

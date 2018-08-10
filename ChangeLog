@@ -1,5 +1,11 @@
 2018-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Customization Variables for @-Commands):
+	Mention that these variables are not passed on to TeX.  Comment 
+	out commands that only do anything for TeX.  Report from Karl.
+
+2018-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_parse_node_and_warn_external):
 	Call 'parse_node_manual' from Texinfo::Common instead of 
 	Texinfo::Parser.
