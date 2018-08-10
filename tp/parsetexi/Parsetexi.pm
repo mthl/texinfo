@@ -174,7 +174,9 @@ sub parser (;$$)
           add_expanded_format ($f);
         }
       } elsif ($key eq 'documentlanguage') {
-        set_documentlanguage ($conf->{$key});
+        if (defined ($conf->{$key})) {
+          set_documentlanguage ($conf->{$key});
+        }
       } elsif ($key eq 'SHOW_MENU') {
         conf_set_show_menu ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
