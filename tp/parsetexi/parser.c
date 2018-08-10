@@ -1334,7 +1334,7 @@ value_valid:
                 {
                   line++; /* past '}' */
                   input_push_text (strdup (line), line_nr.macro);
-                  input_push_text (strdup (value), 0);
+                  input_push_text (strdup (value), line_nr.macro);
                   line += strlen (line);
                   retval = STILL_MORE_TO_PROCESS;
                 }
