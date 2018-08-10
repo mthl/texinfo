@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -166,7 +166,8 @@ parse_texi_file (char *filename)
       *p = c;
     }
 
-  /* Check for preamble. */
+  /* Put all lines up to a line starting "\input" inside a "preamble"
+     element. */
   while (1)
     {
       ELEMENT *l;
@@ -175,7 +176,7 @@ parse_texi_file (char *filename)
       free (line);
       line = next_text (0);
       if (!line)
-        abort (); /* Empty file? */
+        break;
 
       linep = line; 
       linep += strspn (linep, whitespace_chars);
