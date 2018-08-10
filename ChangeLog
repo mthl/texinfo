@@ -1,5 +1,10 @@
 2018-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test_utils.pl (test): Avoid method call syntax for 
+	calling Texinfo::Parser::parser.
+
+2018-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Customization Variables for @-Commands):
 	Mention that these variables are not passed on to TeX.  Comment 
 	out commands that only do anything for TeX.  Report from Karl.

@@ -696,7 +696,7 @@ sub test($$)
   #  push @tested_formats, @{$self->{'test_formats'}};
   }
 
-  my $parser = Texinfo::Parser->parser({'TEST' => 1,
+  my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                         'include_directories' => [
                                           't/include_dir/',
                                           't/include/',
