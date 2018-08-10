@@ -1,8 +1,8 @@
 Index: Texinfo/ModulePath.pm.in
 ===================================================================
---- Texinfo/ModulePath.pm.in	(revision 7895)
+--- Texinfo/ModulePath.pm.in	(revision 8003)
 +++ Texinfo/ModulePath.pm.in	(working copy)
-@@ -73,6 +73,7 @@
+@@ -73,6 +73,7 @@ sub init (;$$) {
      if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
        unshift @INC, (File::Spec->catdir($lib_dir, 'lib', 'Text-Unidecode', 'lib'));
      }
@@ -12,7 +12,7 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 7897)
+--- Texinfo/Parser.pm	(revision 8029)
 +++ Texinfo/Parser.pm	(working copy)
 @@ -27,6 +27,11 @@
  #  user visible subroutines.
@@ -28,9 +28,9 @@ Index: Texinfo/Parser.pm
  # We need the unicode stuff.
 Index: Texinfo/Report.pm
 ===================================================================
---- Texinfo/Report.pm	(revision 7895)
+--- Texinfo/Report.pm	(revision 8036)
 +++ Texinfo/Report.pm	(working copy)
-@@ -48,7 +48,8 @@
+@@ -49,7 +49,8 @@ use File::Basename;
  
  use Locale::Messages;
  # to be able to load a parser if none was given to gdt.
@@ -40,7 +40,7 @@ Index: Texinfo/Report.pm
  
  # return the errors and warnings
  sub errors($)
-@@ -378,7 +379,8 @@
+@@ -371,7 +372,8 @@ sub gdt($$;$$)
    }
    $parser_conf->{'in_gdt'} = 1;
    #my $parser = Texinfo::Parser::parser($parser_conf);
@@ -52,9 +52,9 @@ Index: Texinfo/Report.pm
    }
 Index: Texinfo/Structuring.pm
 ===================================================================
---- Texinfo/Structuring.pm	(revision 7895)
+--- Texinfo/Structuring.pm	(revision 8003)
 +++ Texinfo/Structuring.pm	(working copy)
-@@ -422,7 +422,8 @@
+@@ -422,7 +422,8 @@ sub nodes_tree($)
    foreach my $node (@{$self->{'nodes'}}) {
      if ($node->{'extra'}->{'normalized'} eq 'Top') {
        $top_node = $node;
@@ -66,9 +66,9 @@ Index: Texinfo/Structuring.pm
        $top_node_up
 Index: t/test_utils.pl
 ===================================================================
---- t/test_utils.pl	(revision 7895)
+--- t/test_utils.pl	(revision 8003)
 +++ t/test_utils.pl	(working copy)
-@@ -32,7 +32,8 @@
+@@ -32,7 +32,8 @@ Texinfo::ModulePath::init(undef, undef, 'updirs' =
  
  use Test::More;
  
@@ -78,7 +78,7 @@ Index: t/test_utils.pl
  use Texinfo::Convert::Text;
  use Texinfo::Convert::Texinfo;
  use Texinfo::Structuring;
-@@ -696,7 +697,8 @@
+@@ -696,7 +697,8 @@ sub test($$)
    #  push @tested_formats, @{$self->{'test_formats'}};
    }
  
@@ -90,9 +90,9 @@ Index: t/test_utils.pl
                                            't/include/',
 Index: texi2any.pl
 ===================================================================
---- texi2any.pl	(revision 7895)
+--- texi2any.pl	(revision 8003)
 +++ texi2any.pl	(working copy)
-@@ -273,8 +273,8 @@
+@@ -273,8 +273,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@
    } else {
      # used in the standalone perl module, as $hardcoded_version is undef
      # and it should never be configured in that setup
@@ -103,7 +103,7 @@ Index: texi2any.pl
    }
  }
  
-@@ -1083,7 +1083,12 @@
+@@ -1078,7 +1078,12 @@ if ($call_texi2dvi) {
    document_warn(__('--Xopt option without printed output')); 
  }
  
