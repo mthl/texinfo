@@ -522,9 +522,7 @@ my @prepend_dirs = ();
 
 # options for all the files
 my $parser_default_options = {'expanded_formats' => [], 
-                              'values' => {'txicommandconditionals' => 1},
-                              'gettext' => \&__,
-                              'pgettext' => \&__p,};
+                              'values' => {'txicommandconditionals' => 1}};
 
 Texinfo::Config::_load_config($converter_default_options, $cmdline_options);
 
@@ -897,7 +895,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
   },
  'split=s' => sub {  my $split = $_[1];
                      my @messages 
-                       = Texinfo::Common::warn_unknown_split($_[1], \&__);
+                       = Texinfo::Common::warn_unknown_split($_[1]);
                      if (@messages) {
                        foreach my $message (@messages) {
                          document_warn($message);
@@ -931,7 +929,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
                       set_from_cmdline('documentlanguage', $_[1]); 
                       $parser_default_options->{'documentlanguage'} = $_[1];
                       my @messages 
-                       = Texinfo::Common::warn_unknown_language($_[1], \&__);
+                       = Texinfo::Common::warn_unknown_language($_[1]);
                       foreach my $message (@messages) {
                         document_warn($message);
                       }

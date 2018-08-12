@@ -1,5 +1,29 @@
 2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Remove 'gettext' and 'pgettext'.
+	* tp/texi2any.pl ($parser_default_options): Remove 'gettext' and 
+	'pgettext'.
+	* tp/Texinfo/Parser.pm (%parser_default_configration_subs):
+	(%parser_default_configration_no_subs): Remove.  There are no
+	subroutines in the parser configuration any more.
+	(_setup_parser_default_configuration): Remove.
+	(parser, simple_parser): Call dclone directly instead of 
+	_setup_parser_default_configuration.  Do not check for CODE 
+	values on the parser hash object when duplicating a parser.
+	(_setup_conf): Do not check for CODE values on the parser hash 
+	object when copying a parser configuration.
+	(MODULE DOCUMENTATION SECTION): Remove mention of 'gettext' 
+	configuration.
+	* tp/Texinfo/Common.pm (warn_unknown_language, warn_unknown_split):
+	Do not take a 'gettext' argument.  Callers updated.
+	* tp/Texinfo/Report.pm (new): Do not set 'gettext' or 'pgettext' 
+	on object.
+	* tp/Texinfo/Convert/Converter.pm (converter): Do not set 
+	'gettext' or 'pgettext' on object.
+
+2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (__, __p): Copy functions from 
 	texi2any.pl.  Place these in @EXPORT.
 	(%default_parser_state_configuration): Refer to __ and __p

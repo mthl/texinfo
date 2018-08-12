@@ -143,16 +143,6 @@ our %default_customization_values = (
 my %parser_default_configuration = (%Texinfo::Common::default_parser_state_configuration,
                                     %default_customization_values);
 
-# split subs/no subs to help dclone that cannot clone subs
-my %parser_default_configuration_subs = ();
-my %parser_default_configuration_no_subs = %parser_default_configuration;
-foreach my $key(keys(%parser_default_configuration)) {
-  if (ref($parser_default_configuration{$key}) eq 'CODE') {
-    $parser_default_configuration_subs{$key} 
-       = delete $parser_default_configuration_no_subs{$key};
-  }
-}
-
 # the other possible keys for the parser state are:
 #
 # expanded_formats_hash   each key comes from expanded_formats value is 1
@@ -574,7 +564,7 @@ sub _setup_conf($$$)
   if (defined($conf)) {
     foreach my $key (keys(%$conf)) {
       if (exists($parser_default_configuration{$key})) {
-        if (ref($conf->{$key}) ne 'CODE' and $key ne 'values' and ref($conf->{$key})) {
+        if ($key ne 'values' and ref($conf->{$key})) {
           $parser->{$key} = dclone($conf->{$key});
         } else {
           $parser->{$key} = $conf->{$key};
@@ -589,16 +579,6 @@ sub _setup_conf($$$)
   }
 }
 
-sub _setup_parser_default_configuration()
-{
-  # _deep_copy/dclone doesn't handle subs
-  my $parser = dclone(\%parser_default_configuration_no_subs);
-  foreach my $key(keys(%parser_default_configuration_subs)) {
-    $parser->{$key} = $parser_default_configuration_subs{$key};
-  }
-  return $parser;
-}
-
 # initialization entry point.  Set up a parser.
 # The last argument, optional, is a hash provided by the user to change
 # the default values for what is present in %parser_default_configuration.
@@ -609,7 +589,7 @@ sub parser(;$$)
   my $class = shift;
   my $conf;
 
-  my $parser = _setup_parser_default_configuration();
+  my $parser = dclone(\%parser_default_configuration);
 
   # called not object-oriented
   if (ref($class) eq 'HASH') {
@@ -629,7 +609,7 @@ sub parser(;$$)
               = $old_parser->{$key}->{$info_key};
           }
         }
-      } elsif(ref($old_parser->{$key}) and ref($old_parser->{$key}) ne 'CODE') {
+      } elsif(ref($old_parser->{$key})) {
         $parser->{$key} = dclone($old_parser->{$key});
       } else {
         $parser->{$key} = $old_parser->{$key};
@@ -735,7 +715,7 @@ sub simple_parser(;$)
 {
   my $conf = shift;
 
-  my $parser = _setup_parser_default_configuration();
+  my $parser = dclone(\%parser_default_configuration);
   bless $parser;
 
   _setup_conf($parser, $conf, "Texinfo::Parser::simple_parser");
@@ -3163,8 +3143,7 @@ sub _end_line($$$)
             }
           }
         } elsif ($command eq 'documentlanguage') {
-          my @messages = Texinfo::Common::warn_unknown_language($text,
-                                                          $self->{'gettext'});
+          my @messages = Texinfo::Common::warn_unknown_language($text);
           foreach my $message(@messages) {
             $self->_command_warn($current, $line_nr, $message);
           }
@@ -5950,12 +5929,6 @@ C<@synindex>).  These options are described below in L</Texinfo Parser options>.
 
 An array reference of the output formats for which C<@ifI<FORMAT>> 
 conditional blocks should be expanded.  Default is empty.
-
-=item gettext
-
-If set, the function reference is used to translate error and warning
-messages.  It takes a string as argument and returns a string.  The default 
-function returns the error message as-is.
 
 =item GLOBAL_COMMANDS
 

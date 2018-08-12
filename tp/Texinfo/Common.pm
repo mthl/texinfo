@@ -112,8 +112,6 @@ sub __p($$) {
 # don't want Texinfo::Common to use Texinfo::Parser.
 our %default_parser_state_configuration = (
   'expanded_formats' => [],
-  'gettext' => \&__,
-  'pgettext' => \&__p,
   'include_directories' => [ '.' ],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
@@ -1091,9 +1089,8 @@ sub open_out($$;$$)
   return $filehandle;
 }
 
-sub warn_unknown_language($$) {
+sub warn_unknown_language($) {
   my $lang = shift;
-  my $gettext = shift;
 
   my @messages = ();
   my $lang_code = $lang;
@@ -1105,12 +1102,12 @@ sub warn_unknown_language($$) {
   }
 
   if (! $Texinfo::Documentlanguages::language_codes{$lang_code}) {
-    push @messages, sprintf(&$gettext(N__("%s is not a valid language code")), 
+    push @messages, sprintf(__("%s is not a valid language code"), 
                             $lang_code);
   }
   if (defined($region_code) 
        and ! $Texinfo::Documentlanguages::region_codes{$region_code}) {
-    push @messages, sprintf(&$gettext(N__("%s is not a valid region code")), 
+    push @messages, sprintf(__("%s is not a valid region code"), 
                             $region_code);
   }
   return @messages;
@@ -1122,14 +1119,12 @@ my %possible_split = (
   'node' => 1,
 );
 
-sub warn_unknown_split($$) {
+sub warn_unknown_split($) {
   my $split = shift;
-  my $gettext = shift;
 
   my @messages = ();
   if ($split and !$possible_split{$split}) {
-    push @messages, sprintf(&$gettext(N__("%s is not a valid split possibility")),
-                            $split);
+    push @messages, sprintf(__("%s is not a valid split possibility"), $split);
   }
   return @messages;
 }

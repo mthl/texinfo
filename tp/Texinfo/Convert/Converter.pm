@@ -244,8 +244,6 @@ sub converter(;$)
           }
         }
       }
-      $converter->{'gettext'} = $converter->{'parser'}->{'gettext'};
-      $converter->{'pgettext'} = $converter->{'parser'}->{'pgettext'};
       delete $conf->{'parser'};
     }
     foreach my $key (keys(%$conf)) {
