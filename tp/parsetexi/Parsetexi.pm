@@ -92,17 +92,6 @@ my %parser_default_configuration =
   (%Texinfo::Common::default_parser_state_configuration,
    %default_customization_values);
 
-use Data::Dumper;
-
-# simple deep copy of a structure
-sub _deep_copy($)
-{
-  my $struct = shift;
-  my $string = Data::Dumper->Dump([$struct], ['struct']);
-  eval $string;
-  return $struct;
-}
-
 my %tree_informations;
 foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
   $tree_informations{$tree_information} = 1;
@@ -140,43 +129,16 @@ sub parser (;$$)
 {
   my $conf = shift;
 
-  my %parser_blanks = (
-    'targets' => [],
-    'extra' => {},
-    'info' => {},
-    'index_names' => {},
-    'merged_indices' => {},
-    'nodes' => [],
-    'floats' => {},
-    'internal_references' => [],
-
-    # Not used but present in case we pass the object into 
-    # Texinfo::Parser.
-    # FIXME check if we can remove these, because we never want to use
-    # Texinfo::Parser if the XS module is in use.
-    'conditionals_stack' => [],
-    'expanded_formats_stack' => [],
-    'context_stack' => ['_root'],
-
-  );
-
-  # my %parser_hash = %parser_blanks;
-  # @parser_hash {keys %default_customization_values} =
-  #   values %default_customization_values;
-
-  # my $parser = \%parser_hash;
-
-  my $parser = _deep_copy(\%parser_default_configuration);
+  my $parser = dclone(\%parser_default_configuration);
 
   reset_parser ();
   # fixme: these are overwritten immediately after
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
-      if ($key ne 'values') {
-        $parser->{$key} = _deep_copy($conf->{$key});
+      if ($key ne 'values' and ref($conf->{$key})) {
+        $parser->{$key} = dclone($conf->{$key});
       } else {
-        #warn "key is $key";
-        #$parser->{$key} = $conf->{$key};
+        $parser->{$key} = $conf->{$key};
       }
 
       if ($key eq 'include_directories') {
@@ -222,25 +184,6 @@ sub parser (;$$)
 
   return $parser;
 }
-
-#use Texinfo::Parser;
-
-# Wrapper for Parser.pm:_parse_texi.  We don't want to use this for the 
-# main tree, but it is called via some other functions like 
-# parse_texi_line, which is used in a few places.  This stub should go 
-# away at some point.
-sub _parse_texi ($;$)
-{
-  my $self = shift;
-  my $root = shift;
-  ##
-  ##  my $self2 = Texinfo::Parser::parser();
-  ##  $self2->{'input'} = $self->{'input'};
-  ##  return Texinfo::Parser::_parse_texi ($self2, $root);
-  return {};
-}
-
-use Data::Dumper;
 
 # Record any @menu elements under $root in the 'menus' array of $node.
 sub _find_menus_of_node {
