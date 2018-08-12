@@ -579,6 +579,31 @@ sub _setup_conf($$$)
   }
 }
 
+# Duplicate an existing parser.
+sub duplicate_parser {
+  my $old_parser = shift;
+
+  my $parser = dclone(\%parser_default_configuration);
+
+  foreach my $key (keys(%parser_default_configuration)) {
+    if ($tree_informations{$key}) {
+      if (defined($old_parser->{$key})) {
+        foreach my $info_key (keys(%{$old_parser->{$key}})) {
+          $parser->{$key}->{$info_key}
+          = $old_parser->{$key}->{$info_key};
+        }
+      }
+    } elsif(ref($old_parser->{$key})) {
+      $parser->{$key} = dclone($old_parser->{$key});
+    } else {
+      $parser->{$key} = $old_parser->{$key};
+    }
+  }
+  bless $parser, ref($old_parser);
+
+  return _setup_parser($parser, undef);
+}
+
 # initialization entry point.  Set up a parser.
 # The last argument, optional, is a hash provided by the user to change
 # the default values for what is present in %parser_default_configuration.
@@ -596,28 +621,6 @@ sub parser(;$$)
     #print STDERR "Not oo\n"
     $conf = $class;
     bless $parser;
-
-  } elsif (ref($class)) { 
-    # called on an existing parser, interpreted as a duplication
-    my $old_parser = $class;
-    $class = ref($class);
-    foreach my $key (keys(%parser_default_configuration)) {
-      if ($tree_informations{$key}) {
-        if (defined($old_parser->{$key})) {
-          foreach my $info_key (keys(%{$old_parser->{$key}})) {
-            $parser->{$key}->{$info_key}
-              = $old_parser->{$key}->{$info_key};
-          }
-        }
-      } elsif(ref($old_parser->{$key})) {
-        $parser->{$key} = dclone($old_parser->{$key});
-      } else {
-        $parser->{$key} = $old_parser->{$key};
-      }
-    }
-    bless $parser, $class;
-    $conf = shift;
-
   } elsif (defined($class)) {
     bless $parser, $class;
     $conf = shift;
@@ -625,6 +628,11 @@ sub parser(;$$)
     bless $parser;
     $conf = shift;
   }
+  return _setup_parser($parser, $conf);
+}
+
+sub _setup_parser {
+  my ($parser, $conf) = @_;
 
   _setup_conf($parser, $conf, "Texinfo::Parser::parser");
 

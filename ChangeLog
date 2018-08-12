@@ -1,5 +1,12 @@
 2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (parser, duplicate_parser): Move code out 
+	for duplicating an existing parser to a new function.
+	* tp/Texinfo/Convert/HTML.pm (output) <renamed nodes>: Call 
+	'duplicate_parser'.
+
+2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
 	Remove 'gettext' and 'pgettext'.
 	* tp/texi2any.pl ($parser_default_options): Remove 'gettext' and 

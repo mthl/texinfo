@@ -7137,7 +7137,8 @@ sub output($$)
     # nodes incorrectly define anchors...
     my $parser_for_renamed_nodes;
     if ($self->{'parser'}) {
-      $parser_for_renamed_nodes = $self->{'parser'}->parser();
+      $parser_for_renamed_nodes
+                       = Texinfo::Parser::duplicate_parser($self->{'parser'});
     }
     my %warned_new_node;
     foreach my $old_node_name (sort(keys(%{$self->{'renamed_nodes'}}))) {
