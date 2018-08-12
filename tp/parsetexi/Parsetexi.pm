@@ -103,6 +103,38 @@ sub _deep_copy($)
   return $struct;
 }
 
+my %tree_informations;
+foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
+  $tree_informations{$tree_information} = 1;
+}
+
+use Storable qw(dclone); # standard in 5.007003
+
+sub duplicate_parser {
+  my $old_parser = shift;
+
+  my $parser = dclone(\%parser_default_configuration);
+
+  foreach my $key (keys(%parser_default_configuration)) {
+    if ($tree_informations{$key}) {
+      if (defined($old_parser->{$key})) {
+        foreach my $info_key (keys(%{$old_parser->{$key}})) {
+          $parser->{$key}->{$info_key}
+          = $old_parser->{$key}->{$info_key};
+        }
+      }
+    } elsif(ref($old_parser->{$key})) {
+      $parser->{$key} = dclone($old_parser->{$key});
+    } else {
+      $parser->{$key} = $old_parser->{$key};
+    }
+  }
+  bless $parser, ref($old_parser);
+
+  $parser->Texinfo::Report::new;
+  return $parser;
+}
+
 # Stub for Texinfo::Parser::parser (line 574)
 sub parser (;$$)
 {
@@ -136,14 +168,11 @@ sub parser (;$$)
 
   my $parser = _deep_copy(\%parser_default_configuration);
 
-  $parser->{'gettext'} = $parser_default_configuration{'gettext'};
-  $parser->{'pgettext'} = $parser_default_configuration{'pgettext'};
-
   reset_parser ();
   # fixme: these are overwritten immediately after
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
-      if (ref($conf->{$key}) ne 'CODE' and $key ne 'values') {
+      if ($key ne 'values') {
         $parser->{$key} = _deep_copy($conf->{$key});
       } else {
         #warn "key is $key";
@@ -478,7 +507,7 @@ sub labels_information($)
         my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $target->{'extra'}->{'node_content'}});
 
         if ($normalized !~ /[^-]/) {
-          $self->line_error (sprintf($self->__("empty node name after expansion `%s'"),
+          $self->line_error (sprintf(__("empty node name after expansion `%s'"),
                 Texinfo::Convert::Texinfo::convert({'contents' 
                                => $target->{'extra'}->{'node_content'}})), 
                 $target->{'line_nr'});
@@ -486,13 +515,13 @@ sub labels_information($)
         } else {
           if (defined $labels{$normalized}) {
             $self->line_error(
-              sprintf($self->__("\@%s `%s' previously defined"), 
+              sprintf(__("\@%s `%s' previously defined"), 
                          $target->{'cmdname'}, 
                    Texinfo::Convert::Texinfo::convert({'contents' => 
                        $target->{'extra'}->{'node_content'}})), 
                            $target->{'line_nr'});
             $self->line_error(
-              sprintf($self->__("here is the previous definition as \@%s"),
+              sprintf(__("here is the previous definition as \@%s"),
                                $labels{$normalized}->{'cmdname'}),
                        $labels{$normalized}->{'line_nr'});
             delete $target->{'extra'}->{'node_content'};
@@ -511,7 +540,7 @@ sub labels_information($)
         }
       } else {
         if ($target->{'cmdname'} eq 'node') {
-          $self->line_error (sprintf($self->__("empty argument in \@%s"),
+          $self->line_error (sprintf(__("empty argument in \@%s"),
                   $target->{'cmdname'}), $target->{'line_nr'});
           delete $target->{'extra'}->{'node_content'};
         }
