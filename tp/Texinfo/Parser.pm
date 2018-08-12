@@ -607,27 +607,13 @@ sub duplicate_parser {
 # initialization entry point.  Set up a parser.
 # The last argument, optional, is a hash provided by the user to change
 # the default values for what is present in %parser_default_configuration.
-# The exact arguments of the function depend on how it was called,
-# in a object oriented way or not.
 sub parser(;$$)
 {
-  my $class = shift;
-  my $conf;
+  my $conf = shift;
 
   my $parser = dclone(\%parser_default_configuration);
+  bless $parser;
 
-  # called not object-oriented
-  if (ref($class) eq 'HASH') {
-    #print STDERR "Not oo\n"
-    $conf = $class;
-    bless $parser;
-  } elsif (defined($class)) {
-    bless $parser, $class;
-    $conf = shift;
-  } else {
-    bless $parser;
-    $conf = shift;
-  }
   return _setup_parser($parser, $conf);
 }
 
