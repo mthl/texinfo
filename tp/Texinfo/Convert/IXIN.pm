@@ -290,7 +290,7 @@ sub output_ixin($$)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
+      $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }
@@ -913,7 +913,7 @@ sub output_ixin($$)
   if ($fh and $self->{'output_file'} ne '-') {
     $self->register_close_file($self->{'output_file'});
     if (!close ($fh)) {
-      $self->document_error(sprintf($self->__("error on closing %s: %s"),
+      $self->document_error(sprintf(__("error on closing %s: %s"),
                                     $self->{'output_file'}, $!));
     }
   }

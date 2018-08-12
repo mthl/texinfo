@@ -23,6 +23,7 @@ package Texinfo::Convert::Info;
 use 5.00405;
 use strict;
 
+use Texinfo::Common;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Text;
 
@@ -107,7 +108,7 @@ sub output($)
   my $out_file_nr = 0;
   my @indirect_files;
   if (!defined($elements) or $elements->[0]->{'extra'}->{'no_node'}) {
-    $self->file_line_warn($self->__("document without nodes"), 
+    $self->file_line_warn(__("document without nodes"), 
                           $self->{'info'}->{'input_file_name'});
     my $output = $header.$self->_convert($root);
     $self->_count_context_bug_message('no element ');
@@ -124,7 +125,7 @@ sub output($)
   } else {
     unless ($self->{'structuring'} and $self->{'structuring'}->{'top_node'}
      and $self->{'structuring'}->{'top_node'}->{'extra'}->{'normalized'} eq 'Top') {
-      $self->file_line_warn($self->__("document without Top node"),
+      $self->file_line_warn(__("document without Top node"),
                             $self->{'info'}->{'input_file_name'});
     }
     $out_file_nr = 1;
@@ -162,7 +163,7 @@ sub output($)
         if ($out_file_nr == 1) {
           $self->register_close_file($self->{'output_file'});
           if (defined($close_error)) {
-            $self->document_error(sprintf($self->__("error on closing %s: %s"),
+            $self->document_error(sprintf(__("error on closing %s: %s"),
                                   $self->{'output_file'}, $close_error));
             return undef;
           }
@@ -172,7 +173,7 @@ sub output($)
           }
           unless (rename($self->{'output_file'}, 
                          $self->{'output_file'}.'-'.$out_file_nr)) {
-            $self->document_error(sprintf($self->__("rename %s failed: %s"),
+            $self->document_error(sprintf(__("rename %s failed: %s"),
                                          $self->{'output_file'}, $!));
             return undef;
           }
@@ -188,7 +189,7 @@ sub output($)
         } else {
           $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
           if (defined($close_error)) {
-            $self->document_error(sprintf($self->__("error on closing %s: %s"),
+            $self->document_error(sprintf(__("error on closing %s: %s"),
                                   $self->{'output_file'}.'-'.$out_file_nr, 
                                   $close_error));
             return undef;
@@ -216,7 +217,7 @@ sub output($)
   if ($out_file_nr > 1) {
     $self->register_close_file($self->{'output_file'}.'-'.$out_file_nr);
     if (!close ($fh)) {
-      $self->document_error(sprintf($self->__("error on closing %s: %s"),
+      $self->document_error(sprintf(__("error on closing %s: %s"),
                             $self->{'output_file'}.'-'.$out_file_nr, $!));
       return undef;
     }
@@ -253,7 +254,7 @@ sub output($)
     my ($label_text, $byte_count) = $self->_node_line($label->{'root'});
 
     if ($seen_anchors{$label_text}) {
-      $self->line_error(sprintf($self->__("\@%s output more than once: %s"),
+      $self->line_error(sprintf(__("\@%s output more than once: %s"),
           $label->{'root'}->{'cmdname'},
           Texinfo::Convert::Texinfo::convert({'contents' =>
               $label->{'root'}->{'extra'}->{'node_content'}})),
@@ -279,7 +280,7 @@ sub output($)
     unless ($self->{'output_file'} eq '-') {
       $self->register_close_file($self->{'output_file'});
       if (!close ($fh)) {
-        $self->document_error(sprintf($self->__("error on closing %s: %s"),
+        $self->document_error(sprintf(__("error on closing %s: %s"),
                               $self->{'output_file'}, $!));
       }
     }
@@ -299,7 +300,7 @@ sub _open_info_file($$)
   my $fh = $self->Texinfo::Common::open_out($filename, undef, 'use_binmode');
   if (!$fh) {
     $self->document_error(sprintf(
-        $self->__("could not open %s for writing: %s"),
+        __("could not open %s for writing: %s"),
         $filename, $!));
     return undef;
   }
@@ -383,7 +384,7 @@ sub _error_outside_of_any_node($$)
   my $self = shift;
   my $root = shift;
   if (!$self->{'node'}) {
-    $self->line_warn(sprintf($self->__("\@%s outside of any node"),
+    $self->line_warn(sprintf(__("\@%s outside of any node"),
                      $root->{'cmdname'}), $root->{'line_nr'});
   }
 }
@@ -425,7 +426,7 @@ sub _node($$)
   my $post_quote = '';
   if ($node_text =~ /,/) {
     if ($self->get_conf('INFO_SPECIAL_CHARS_WARNING')) {
-      $self->line_warn(sprintf($self->__(
+      $self->line_warn(sprintf(__(
                  "\@node name should not contain `,': %s"), $node_text),
                                $node->{'line_nr'});
     }

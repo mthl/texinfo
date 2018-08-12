@@ -58,18 +58,6 @@ sub errors($)
   return ($self->{'errors_warnings'}, $self->{'error_nrs'});
 }
 
-sub __($$)
-{
-  my $self = shift;
-  return &{$self->{'gettext'}}(@_);
-}
-
-sub __p($$$)
-{
-  my $self = shift;
-  return &{$self->{'pgettext'}}(@_);
-}
-
 sub new($)
 {
   my $self = shift;
@@ -96,11 +84,11 @@ sub line_warn($$$)
     if ($self->get_conf('TEST'));
   my $warn_line;
   if ($line_number->{'macro'} ne '') {
-    $warn_line = sprintf($self->__p("Texinfo source file warning",
+    $warn_line = sprintf(__p("Texinfo source file warning",
                              "%s:%d: warning: %s (possibly involving \@%s)\n"),
              $file, $line_number->{'line_nr'}, $text, $line_number->{'macro'});
   } else {
-    $warn_line = sprintf($self->__p("Texinfo source file warning", 
+    $warn_line = sprintf(__p("Texinfo source file warning", 
                                     "%s:%d: warning: %s\n"),
                          $file, $line_number->{'line_nr'}, $text);
   }
@@ -144,10 +132,10 @@ sub document_warn($$)
 
   my $warn_line;
   if (defined($self->get_conf('PROGRAM')) and $self->get_conf('PROGRAM') ne '') {
-    $warn_line = sprintf($self->__p("whole document warning", "%s: warning: %s\n"), 
+    $warn_line = sprintf(__p("whole document warning", "%s: warning: %s\n"), 
                          $self->get_conf('PROGRAM'), $text);
   } else {
-    $warn_line = sprintf($self->__p("whole document warning", "warning: %s\n"), 
+    $warn_line = sprintf(__p("whole document warning", "warning: %s\n"), 
                          $text);
   }
   push @{$self->{'errors_warnings'}},
@@ -182,12 +170,12 @@ sub file_line_warn($$$;$)
 
   my $warn_line;
   if (!defined($file)) {
-    $warn_line = sprintf($self->__p("file warning", "warning: %s\n"), $text);
+    $warn_line = sprintf(__p("file warning", "warning: %s\n"), $text);
   } elsif (!defined($line_nr)) {
-    $warn_line = sprintf($self->__p("file warning", "%s: warning: %s\n"), 
+    $warn_line = sprintf(__p("file warning", "%s: warning: %s\n"), 
                          $file, $text);
   } else {
-    $warn_line = sprintf($self->__p("file warning", "%s:%d: warning: %s\n"), 
+    $warn_line = sprintf(__p("file warning", "%s:%d: warning: %s\n"), 
                          $file, $line_nr, $text);
   }
   #print STDERR "REPORT FILE_LINE_WARN $self $self->{'errors_warnings'}\n";
@@ -227,9 +215,21 @@ my $DEFAULT_LANGUAGE = 'en';
 # gettext.
 Locale::Messages->select_package ('gettext_pp');
 
-# FIXME make those configurable?  Set them with call to new?
 my $strings_textdomain = 'texinfo_document';
 my $messages_textdomain = 'texinfo';
+
+sub __($) {
+  my $msgid = shift;
+  return Locale::Messages::dgettext($messages_textdomain, $msgid);
+}
+  
+sub __p($$) {
+  my $context = shift;
+  my $msgid = shift;
+  return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
+}
+
+
 
 # libintl converts between encodings but doesn't decode them into the
 # perl internal format.  This is only called if the encoding is a proper

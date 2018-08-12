@@ -1,3 +1,38 @@
+2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (__, __p): Copy functions from 
+	texi2any.pl.  Place these in @EXPORT.
+	(%default_parser_state_configuration): Refer to __ and __p
+	for 'gettext' and 'pgettext' instead of stub functions.
+	* t/test_utils.pl: Call Locale::Messages::bindtextdomain for 
+	'texinfo' domain as well as 'texinfo_document'.
+	* tp/texi2any.pl (__, __p): Remove definitions.
+
+	* tp/Texinfo/Report.pm (__, __p): Do not take a first argument 
+	that is a parser object.  Do not look at 'gettext' and 
+	'pgettext' configuration values: call the functions in 
+	Locale::Messages directly.
+
+	* tp/Texinfo/Common.pm,
+	* tp/Texinfo/Structuring.pm,
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Convert/Converter.pm,
+	* tp/Texinfo/Convert/Docbook.pm,
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/IXIN.pm,
+	* tp/Texinfo/Convert/Info.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Convert/TexinfoXML.pm:
+	Do not call __ or __p as methods on a parser object: use the
+	functions exported from Common.pm instead.
+
+	The only effect of this change should be in the test suite where 
+	the default stub values for 'gettext' and 'pgettext' were used 
+	for Texinfo.  This should have no user-visible effect.  The name 
+	of the translation domain ("texinfo") is no longer set from the 
+	name of the package in texi2any.pl, but this was already 
+	hard-coded in Texinfo/Report.pm.
+
 2018-08-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/test_utils.pl (test): Avoid method call syntax for 

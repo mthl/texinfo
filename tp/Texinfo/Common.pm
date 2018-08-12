@@ -69,6 +69,7 @@ valid_tree_transformation
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 @EXPORT = qw(
+__ __p
 );
 
 $VERSION = '6.5dev';
@@ -90,14 +91,29 @@ if ($Config{osname} eq 'dos' and $Config{osvers} eq 'djgpp') {
   $null_device_file{'NUL'} = 1;
 }
 
+use Locale::Messages;
+
+my $messages_textdomain = 'texinfo';
+
+sub __($) {
+  my $msgid = shift;
+  return Locale::Messages::dgettext($messages_textdomain, $msgid);
+}
+
+sub __p($$) {
+  my $context = shift;
+  my $msgid = shift;
+  return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
+}
+
 # these are the default values for the parser state that may be 
 # initialized to values given by the user.
 # They are defined here, because they are used below and we 
 # don't want Texinfo::Common to use Texinfo::Parser.
 our %default_parser_state_configuration = (
   'expanded_formats' => [],
-  'gettext' => sub {return $_[0];},
-  'pgettext' => sub {return $_[1];},
+  'gettext' => \&__,
+  'pgettext' => \&__p,
   'include_directories' => [ '.' ],
   # these are the user-added indices.  May be an array reference on names
   # or an hash reference in the same format than %index_names below
@@ -1135,7 +1151,7 @@ sub expand_verbatiminclude($$)
   if (defined($file)) {
     if (!open(VERBINCLUDE, $file)) {
       if ($self) {
-        $self->line_error(sprintf($self->__("could not read %s: %s"), $file, $!), 
+        $self->line_error(sprintf(__("could not read %s: %s"), $file, $!), 
                             $current->{'line_nr'});
       }
     } else {
@@ -1154,14 +1170,14 @@ sub expand_verbatiminclude($$)
       }
       if (!close (VERBINCLUDE)) {
         if ($self) {
-          $self->document_warn(sprintf($self->__(
+          $self->document_warn(sprintf(__(
                       "error on closing \@verbatiminclude file %s: %s"),
                              $file, $!));
         }
       }
     }
   } elsif ($self) {
-    $self->line_error(sprintf($self->__("\@%s: could not find %s"), 
+    $self->line_error(sprintf(__("\@%s: could not find %s"), 
                     $current->{'cmdname'}, $text), $current->{'line_nr'});
   }
   return $verbatiminclude;
@@ -1626,7 +1642,7 @@ sub parse_renamed_nodes_file($$;$$)
           $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
           @old_names = ();
         } else {
-          $self->file_line_warn($self->__("no node to be renamed"),
+          $self->file_line_warn(__("no node to be renamed"),
                         $renamed_nodes_file, $renamed_nodes_line_nr);
         }
       } else {
@@ -1637,17 +1653,17 @@ sub parse_renamed_nodes_file($$;$$)
       }
     }
     if (scalar(@old_names)) {
-      $self->file_line_warn($self->__("nodes without a new name at the end of file"),
+      $self->file_line_warn(__("nodes without a new name at the end of file"),
              $renamed_nodes_file, $renamed_nodes_line_nr);
     }
     if (!close(RENAMEDFILE)) {
-      $self->document_warn(sprintf($self->__p(
+      $self->document_warn(sprintf(__p(
           "see HTML Xref Link Preservation in the Texinfo manual for context",
           "error on closing node-renaming configuration file %s: %s"), 
                             $renamed_nodes_file, $!));
     }
   } else {
-    $self->document_warn(sprintf($self->__("could not open %s: %s"), 
+    $self->document_warn(sprintf(__("could not open %s: %s"), 
                          $renamed_nodes_file, $!));
   }
   return ($renamed_nodes, $renamed_nodes_lines);
@@ -2166,7 +2182,7 @@ sub _protect_hashchar_at_line_beginning($$$)
         my $parent = $current->{'parent'};
         while ($parent) {
           if ($parent->{'cmdname'} and $parent->{'line_nr'}) {
-            $self->line_warn(sprintf($self->__(
+            $self->line_warn(sprintf(__(
                   "could not protect hash character in \@%s"), 
                              $parent->{'cmdname'}), $parent->{'line_nr'});
             last;

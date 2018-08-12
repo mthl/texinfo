@@ -179,17 +179,6 @@ my $strings_textdomain = '@PACKAGE@' . '_document';
 $strings_textdomain = 'texinfo_document' 
    if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
-sub __($) {
-  my $msgid = shift;
-  return Locale::Messages::dgettext($messages_textdomain, $msgid);
-}
-
-sub __p($$) {
-  my $context = shift;
-  my $msgid = shift;
-  return Locale::Messages::dpgettext($messages_textdomain, $context, $msgid);
-}
-
 my $srcdir;
 if (defined($ENV{'top_srcdir'})) {
   $srcdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');

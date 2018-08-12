@@ -323,7 +323,7 @@ sub output($$)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out ($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
+      $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }
@@ -359,7 +359,7 @@ sub output($$)
   if ($fh and $self->{'output_file'} ne '-') {
     $self->register_close_file($self->{'output_file'});
     if (!close ($fh)) {
-      $self->document_error(sprintf($self->__("error on closing %s: %s"),
+      $self->document_error(sprintf(__("error on closing %s: %s"),
                                     $self->{'output_file'}, $!));
     }
   }
@@ -981,7 +981,7 @@ sub _convert($$;$)
           }
           if (!defined($image_text) and !$image_file_found) {
             $self->line_warn(sprintf(
-                     $self->__("\@image file `%s' not found, using `%s'"), 
+                     __("\@image file `%s' not found, using `%s'"), 
                        $basefile, "$basefile.jpg"), $root->{'line_nr'});
           }
 
@@ -1101,7 +1101,7 @@ sub _convert($$;$)
         if ($argument) {
           $result = "&#x$argument;";
         } else {
-          $self->line_warn($self->__("no argument specified for \@U"),
+          $self->line_warn(__("no argument specified for \@U"),
                            $root->{'line_nr'});
           $result = '';
         }

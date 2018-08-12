@@ -84,7 +84,9 @@ foreach my $dir ("LocaleData", "$locales_srcdir/LocaleData") {
 if (! defined($localesdir)) {
   warn "No locales directory found, some tests will fail\n";
 }
+
 Locale::Messages::bindtextdomain ('texinfo_document', $localesdir);
+Locale::Messages::bindtextdomain ('texinfo', $localesdir);
 
 my $generated_texis_dir = 't_texis';
 

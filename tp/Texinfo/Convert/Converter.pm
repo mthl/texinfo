@@ -785,7 +785,7 @@ sub output($$)
            or $self->get_conf('OUTFILE') eq '-'
            or $self->get_conf('OUTFILE') eq '')) {
     if ($self->get_conf('SPLIT')) {
-      $self->document_warn(sprintf($self->__("%s: output incompatible with split"),
+      $self->document_warn(sprintf(__("%s: output incompatible with split"),
                                    $self->get_conf('OUTFILE')));
       $self->force_conf('SPLIT', 0);
     }
@@ -846,7 +846,7 @@ sub output($$)
         if ($self->get_conf('DEBUG'));
       $fh = $self->Texinfo::Common::open_out($outfile);
       if (!$fh) {
-        $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
+        $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                       $outfile, $!));
         return undef;
       }
@@ -867,7 +867,7 @@ sub output($$)
     if ($fh and $outfile ne '-') {
       $self->register_close_file($outfile);
       if (!close($fh)) {
-        $self->document_error(sprintf($self->__("error on closing %s: %s"),
+        $self->document_error(sprintf(__("error on closing %s: %s"),
                                       $outfile, $!));
       }
     }
@@ -884,7 +884,7 @@ sub output($$)
       if (!$files{$element->{'filename'}}->{'fh'}) {
         $file_fh = $self->Texinfo::Common::open_out($element->{'out_filename'});
         if (!$file_fh) {
-          $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
+          $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                     $element->{'out_filename'}, $!));
           return undef;
         }
@@ -900,7 +900,7 @@ sub output($$)
         if ($element->{'out_filename'} ne '-') {
           $self->register_close_file($element->{'out_filename'});
           if (!close($file_fh)) {
-            $self->document_error(sprintf($self->__("error on closing %s: %s"),
+            $self->document_error(sprintf(__("error on closing %s: %s"),
                                   $element->{'out_filename'}, $!));
             return undef;
           }
@@ -977,7 +977,7 @@ sub _create_destination_directory($)
                  $directories . '.' . $self->get_conf('EXTENSION'), $file);
         if (! -d $new_directory) {
           if (!mkdir($new_directory, oct(755))) {
-            $self->document_error(sprintf($self->__(
+            $self->document_error(sprintf(__(
               "could not create directories `%s' or `%s': %s"), 
               $self->{'destination_directory'}, $new_directory, $!));
             return undef;
@@ -985,7 +985,7 @@ sub _create_destination_directory($)
         }
         $self->{'destination_directory'} = $new_directory;
       } else {
-        $self->document_error(sprintf($self->__(
+        $self->document_error(sprintf(__(
              "could not create directory `%s': %s"), 
              $self->{'destination_directory'}, $!));
         return undef;
@@ -1214,7 +1214,7 @@ sub output_no_split($$)
   if (! $self->{'output_file'} eq '') {
     $fh = $self->Texinfo::Common::open_out($self->{'output_file'});
     if (!$fh) {
-      $self->document_error(sprintf($self->__("could not open %s for writing: %s"),
+      $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                     $self->{'output_file'}, $!));
       return undef;
     }
