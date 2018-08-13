@@ -6,12 +6,16 @@
 use strict;
 
 use Test::More;
-use File::Spec;
-BEGIN { plan tests => 2;
-  require Texinfo::ModulePath;
+
+use lib '.';
+BEGIN {
+  require 'Texinfo/ModulePath.pm';
   Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
 }
 use Texinfo::Convert::Texinfo;
+
+plan tests => 2;
+
 ok(1, "modules loading"); # If we made it this far, we're ok.
 
 #########################

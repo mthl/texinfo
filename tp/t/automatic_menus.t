@@ -2,6 +2,7 @@ use strict;
 
 use Test::More;
 
+use lib '.';
 BEGIN {
   require Texinfo::ModulePath;
   Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);

@@ -1,5 +1,6 @@
 use strict;
 
+use lib '.';
 BEGIN {
   require Texinfo::ModulePath;
   Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);

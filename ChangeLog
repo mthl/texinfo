@@ -1,5 +1,34 @@
 2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/01use.t, tp/t/02coverage.t, tp/t/03coverage_braces.t, 
+	tp/t/04verb.t, tp/t/05paragraph.t,
+	tp/t/06columnfractions.t, tp/t/08misc_commands.t, tp/t/09indices.t,
+	tp/t/10menu.t, tp/t/16raw.t, tp/t/181quotation.t, tp/t/18itemize.t,
+	tp/t/19def.t, tp/t/20preformatted.t, tp/t/21multitable.t,
+	tp/t/22xtable.t, tp/t/25regions.t, tp/t/27float.t, tp/t/28heading.t,
+	tp/t/30sectioning.t, tp/t/50value.t, tp/t/55conditionals.t,
+	tp/t/57invalid_nestings.t, tp/t/58alias.t, tp/t/60macro.t,
+	tp/t/70value_and_macro.t, tp/t/80include.t, tp/t/accents.t,
+	tp/t/automatic_menus.t, tp/t/automatic_nodes.t, tp/t/collect_spaces.t,
+	tp/t/converters_tests.t, tp/t/do_master_menu.t, tp/t/docbook_tests.t,
+	tp/t/fix_texinfo.t, tp/t/html_tests.t, tp/t/index_before_item.t,
+	tp/t/info_tests.t, tp/t/languages.t, tp/t/nodenormalization.t,
+	tp/t/paragraph.t, tp/t/plaintext_tests.t,
+	tp/t/protect_character_in_texinfo.t, tp/t/reference_to_text_in_tree.t,
+	tp/t/test_brace_count.t, tp/t/test_fill_gaps_in_sectioning.t,
+	tp/t/test_is_content_empty.t,
+	tp/t/test_protect_hashchar_at_line_beginning.t, tp/t/test_sort.t,
+	tp/t/test_tree_copy.t, tp/t/xml_tests.t:
+	Add "use lib '.'" to add current working directory to @INC, the 
+	Perl module include path.  This directory is not present in @INC 
+	in recent versions of Perl, which makes running tests from the 
+	command-line (like "perl -w t/02coverage.t") difficult.  Require 
+	Texinfo::ModulePath to add all the other required directories to 
+	@INC.  As tp/Texinfo/ModulePath.pm is generated in the builddir, 
+	this should work for out-of-source builds.
+
+2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/01use.t: Use Texinfo::ModulePath.
 
 2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
