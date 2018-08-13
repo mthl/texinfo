@@ -92,4 +92,9 @@ sub init {
   }
 }
 
+sub import { 
+  my $class = shift;
+  goto &init;
+}
+
 1;

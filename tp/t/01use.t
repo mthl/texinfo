@@ -8,10 +8,8 @@ use strict;
 use Test::More;
 
 use lib '.';
-BEGIN {
-  require 'Texinfo/ModulePath.pm';
-  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
-}
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
+
 use Texinfo::Convert::Texinfo;
 
 plan tests => 2;

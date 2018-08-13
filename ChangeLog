@@ -2,6 +2,8 @@
 
 	* tp/Texinfo/ModulePath.pm.in (init): Remove subroutine 
 	prototype.
+	* tp/Texinfo/ModulePath.pm.in (import): Wrap 'init' to allow 
+	using module with "use Texinfo::ModulePath".
 
 2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 

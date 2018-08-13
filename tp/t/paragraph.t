@@ -5,10 +5,7 @@ use File::Spec;
 use File::Basename;
 
 use lib '.';
-BEGIN {
-  require Texinfo::ModulePath;
-  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
-}
+use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 BEGIN { plan tests => 119 ; }
 
