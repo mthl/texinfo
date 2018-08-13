@@ -22,7 +22,7 @@ use File::Spec;
 #
 # otherwise use 'top_srcdir'
 # and 'top_builddir' environment variables.
-sub init (;$$) {
+sub init {
   my $lib_dir = shift;
   my $libexec_dir = shift;
   my %named_args = @_;

@@ -1,5 +1,10 @@
 2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/ModulePath.pm.in (init): Remove subroutine 
+	prototype.
+
+2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/01use.t, tp/t/02coverage.t, tp/t/03coverage_braces.t, 
 	tp/t/04verb.t, tp/t/05paragraph.t,
 	tp/t/06columnfractions.t, tp/t/08misc_commands.t, tp/t/09indices.t,
