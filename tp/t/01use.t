@@ -8,7 +8,9 @@ use strict;
 use Test::More;
 use File::Spec;
 BEGIN { plan tests => 2;
-        if (defined($ENV{'top_srcdir'})) {unshift @INC, File::Spec->catdir($ENV{'top_srcdir'}, 'tp');} }
+  require Texinfo::ModulePath;
+  Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
+}
 use Texinfo::Convert::Texinfo;
 ok(1, "modules loading"); # If we made it this far, we're ok.
 

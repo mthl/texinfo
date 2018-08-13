@@ -1,3 +1,7 @@
+2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/01use.t: Use Texinfo::ModulePath.
+
 2018-08-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (parser): Remove code allowing calling 
