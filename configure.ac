@@ -59,7 +59,7 @@ fi
 
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
-# different compiler.  Also in tp/Texinfo/Convert/XSParagraph/configure.ac.
+# different compiler.  Also in tp/Texinfo/XS/configure.ac.
 AC_ARG_VAR([PERL_EXT_CFLAGS], [Compiler flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
@@ -359,7 +359,7 @@ AC_ARG_ENABLE([perl-xs],
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
-# Set xs_srcdir to the path from XSParagraph builddir to srcdir
+# Set xs_srcdir to the path from XS builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
     xs_srcdir=../../.. ;;
@@ -381,7 +381,7 @@ esac
 # not to work.
 #
 save_subdirs=$subdirs
-subdirs=tp/Texinfo/Convert/XSParagraph
+subdirs=tp/Texinfo/XS
 ( _AC_OUTPUT_SUBDIRS ) || enable_xs=no
 subdirs=$save_subdirs
 
@@ -389,13 +389,13 @@ if test $enable_xs = check; then
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
   AC_MSG_RESULT([])
   enable_xs=no
-  (cd tp/Texinfo/Convert/XSParagraph \
+  (cd tp/Texinfo/XS \
    && make clean \
    && make TestXS.la \
    && TEXINFO_XS=debug ; export TEXINFO_XS \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/Texinfo/Convert/XSParagraph/fail.pl \
+              -w ${xs_srcdir}/Texinfo/XS/fail.pl \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])
@@ -405,11 +405,6 @@ fi
 AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
-
-if test $enable_xs = yes; then
-  AC_CONFIG_SUBDIRS([tp/Texinfo/MiscXS])
-fi
-
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])

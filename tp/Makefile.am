@@ -29,12 +29,12 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 
 SUBDIRS =
 if ! DISABLE_XS
-SUBDIRS += Texinfo/XS Texinfo/MiscXS
+SUBDIRS += Texinfo/XS
 endif
 
 SUBDIRS += . tests
 
-DIST_SUBDIRS = Texinfo/XS Texinfo/MiscXS tests
+DIST_SUBDIRS = Texinfo/XS tests
 
 
 bin_SCRIPTS = texi2any

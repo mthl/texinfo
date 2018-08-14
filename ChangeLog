@@ -1,5 +1,23 @@
 2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/Makefile.am (modulesdir): Change to new 
+	location.
+	(CLEANFILES, EXTRA_DIST, xs_LTLIBRARIES): Add MiscXS files.
+	(MiscXS_la_CFLAGS): Define.
+
+	* tp/Texinfo/MiscXS/MiscXS.pm,
+	* tp/Texinfo/MiscXS/miscxs.h,
+	* tp/Texinfo/MiscXS/misc.c: Move to tp/Texinfo/XS.
+	* tp/Texinfo/MiscXS: Remove subdirectory.
+
+	* tp/Texinfo/ModulePath.pm.in: Refer to Texinfo/XS instead of 
+	Texinfo/MiscXS.
+
+	* tp/Makefile.am (SUBDIRS, DIST_SUBDIRS): Remove Texinfo/MiscXS.
+	* configure.ac: Do not configure in tp/Texinfo/MiscXS.
+
+2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/XSParagraph, tp/Texinfo/XS:
 	Move subdirectory. This is intended to be a subdirectory for all 
 	XS modules and to remove the duplication that exists between

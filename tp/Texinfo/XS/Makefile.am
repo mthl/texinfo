@@ -1,6 +1,6 @@
-# Makefile.am for XSParagraph
+# Makefile.am for XS modules
 #
-# Copyright 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -32,7 +32,7 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
 
-modulesdir = $(pkgdatadir)/Texinfo/Convert/XSParagraph
+modulesdir = $(pkgdatadir)/Texinfo/XS
 xsdir = $(pkglibdir)
 
 dist_modules_DATA = TestXS.pm
@@ -55,6 +55,10 @@ XSParagraph_la_SOURCES = XSParagraph.c xspara.c xspara.h \
 			 text.c text.h ppport.h
 TestXS_la_SOURCES = TestXS.c ppport.h
 
+xs_LTLIBRARIES += MiscXS.la
+MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
+
+
 # TestXS has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 
 # otherwise dynamic libraries aren't built (a libtool bug).  Work around 
 # this by deleting it after it's installed.
@@ -66,6 +70,10 @@ EXTRA_DIST += TestXS.xs
 
 CLEANFILES += XSParagraph.c
 EXTRA_DIST += XSParagraph.xs
+
+CLEANFILES += MiscXS.c
+EXTRA_DIST += MiscXS.xs
+
 
 # Override these variables set by configure at the top level, because 
 # the compiler used in this subdirectory might be different.  
@@ -83,6 +91,10 @@ XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_I
 
 TestXS_la_CFLAGS = $(AM_CFLAGS)
 TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
+
+MiscXS_la_CFLAGS = $(AM_CFLAGS)
+MiscXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
+
 
 if HOST_NEEDS_NO_UNDEFINED
   PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
