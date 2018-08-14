@@ -362,11 +362,11 @@ AC_ARG_ENABLE([perl-xs],
 # Set xs_srcdir to the path from XS builddir to srcdir
 case $srcdir in
   .)  # We are building in place.
-    xs_srcdir=../../.. ;;
+    xs_srcdir=../.. ;;
   [[\\/]]* | ?:[[\\/]]* )  # Absolute name.
     xs_srcdir=$srcdir/tp ;;
   *) # Relative name.
-    xs_srcdir=../../../../$srcdir/tp ;;
+    xs_srcdir=../../../$srcdir/tp ;;
 esac
 
 # Pass on all the options we were given to the subsidiary configure 

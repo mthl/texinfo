@@ -1,1 +1,1 @@
-require Texinfo::Convert::XSParagraph::TestXS;
+require Texinfo::XS::TestXS;

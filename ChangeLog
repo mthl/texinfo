@@ -1,5 +1,11 @@
 2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac (xs_srcdir): Update path from XS builddir to 
+	srcdir.
+	* tp/Texinfo/XS/fail.pl: update path to TestXS module.
+
+2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/Makefile.am (modulesdir): Change to new 
 	location.
 	(CLEANFILES, EXTRA_DIST, xs_LTLIBRARIES): Add MiscXS files.
