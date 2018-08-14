@@ -284,7 +284,6 @@ t/input_files/sample_utf8.texi
 t/input_files/things_before_setfilename.texi
 t/input_files/things_before_setfilename_no_element.texi
 t/languages.t
-t/manual_tree.pl
 t/nodenormalization.t
 t/paragraph.t
 t/plaintext_tests.t
