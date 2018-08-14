@@ -1,5 +1,11 @@
 2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* info/t/Init-test.inc: Do not check whether the terminal needs 
+	to be reset with stty, because the command that caused this 
+	problem ("read -t") is not being used any more.
+
+2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/01use.t: Inline file tp/t/manual_tree.pl.
 
 2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
