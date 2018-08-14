@@ -11,7 +11,7 @@
 
 #include "xspara.h"
 
-MODULE = Texinfo::Convert::XSParagraph::XSParagraph PACKAGE = Texinfo::Convert::XSParagraph::XSParagraph PREFIX = xspara_
+MODULE = Texinfo::XS::XSParagraph PACKAGE = Texinfo::XS::XSParagraph PREFIX = xspara_
 
 #  Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
 #

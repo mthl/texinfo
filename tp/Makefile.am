@@ -1,8 +1,8 @@
 # $Id$
 # Makefile.am for texinfo/tp.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
+# Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -29,12 +29,12 @@ $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
 
 SUBDIRS =
 if ! DISABLE_XS
-SUBDIRS += Texinfo/Convert/XSParagraph Texinfo/MiscXS
+SUBDIRS += Texinfo/XS Texinfo/MiscXS
 endif
 
 SUBDIRS += . tests
 
-DIST_SUBDIRS = Texinfo/Convert/XSParagraph Texinfo/MiscXS tests
+DIST_SUBDIRS = Texinfo/XS Texinfo/MiscXS tests
 
 
 bin_SCRIPTS = texi2any
@@ -197,8 +197,8 @@ T_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
 T_LOG_COMPILER = $(PERL)
 AM_T_LOG_FLAGS = -w
 AM_T_LOG_FLAGS += -I .
-AM_T_LOG_FLAGS += -ITexinfo/Convert/XSParagraph
-AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/Convert/XSParagraph
+AM_T_LOG_FLAGS += -ITexinfo/XS
+AM_T_LOG_FLAGS += -I$(srcdir)/Texinfo/XS
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 

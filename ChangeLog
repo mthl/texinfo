@@ -1,5 +1,22 @@
 2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/XSParagraph, tp/Texinfo/XS:
+	Move subdirectory. This is intended to be a subdirectory for all 
+	XS modules and to remove the duplication that exists between
+	tp/Texinfo/Convert/XSParagraph and tp/Texinfo/MiscXS.
+
+	* configure.ac,
+	* tp/Makefile.am,
+	* tp/Texinfo/Convert/Paragraph.pm,
+	* tp/Texinfo/ModulePath.pm.in,
+	* tp/Texinfo/XS/XSParagraph.xs,
+	* tp/Texinfo/XS/TestXS.pm:
+	Refer to Texinfo/XS subdirectory instead of 
+	Texinfo/Convert/XSParagraph and namespaces beginning 
+	"Texinfo::XS" instead of "Texinfo::Convert::XSParagraph".
+
+2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/t/Init-test.inc: Do not check whether the terminal needs 
 	to be reset with stty, because the command that caused this 
 	problem ("read -t") is not being used any more.

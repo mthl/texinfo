@@ -79,7 +79,7 @@ sub init {
     # XSParagraph.la is generated in the build directory.
     if (defined($ENV{'top_builddir'})) {
       $libexec_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp',
-        'Texinfo', 'Convert', 'XSParagraph');
+        'Texinfo', 'XS');
     }
   }
 
