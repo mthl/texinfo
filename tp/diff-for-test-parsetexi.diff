@@ -1,6 +1,6 @@
 Index: Texinfo/ModulePath.pm.in
 ===================================================================
---- Texinfo/ModulePath.pm.in	(revision 8003)
+--- Texinfo/ModulePath.pm.in	(revision 8063)
 +++ Texinfo/ModulePath.pm.in	(working copy)
 @@ -73,6 +73,7 @@
      if ('@USE_EXTERNAL_UNIDECODE@' ne 'yes') {
@@ -12,7 +12,7 @@ Index: Texinfo/ModulePath.pm.in
    if (!$libexec_dir) {
 Index: Texinfo/Parser.pm
 ===================================================================
---- Texinfo/Parser.pm	(revision 8048)
+--- Texinfo/Parser.pm	(revision 8058)
 +++ Texinfo/Parser.pm	(working copy)
 @@ -27,6 +27,11 @@
  #  user visible subroutines.
@@ -26,47 +26,9 @@ Index: Texinfo/Parser.pm
  package Texinfo::Parser;
  
  # We need the unicode stuff.
-Index: Texinfo/Report.pm
-===================================================================
---- Texinfo/Report.pm	(revision 8046)
-+++ Texinfo/Report.pm	(working copy)
-@@ -49,7 +49,8 @@
- 
- use Locale::Messages;
- # to be able to load a parser if none was given to gdt.
--use Texinfo::Parser;
-+#use Texinfo::Parser;
-+use Parsetexi;
- 
- # return the errors and warnings
- sub errors($)
-@@ -369,7 +370,8 @@
-   }
-   $parser_conf->{'in_gdt'} = 1;
-   #my $parser = Texinfo::Parser::parser($parser_conf);
--  my $parser = Texinfo::Parser::simple_parser($parser_conf);
-+  #my $parser = Texinfo::Parser::simple_parser($parser_conf);
-+  my $parser = Parsetexi::parser($parser_conf);
-   if ($parser->{'DEBUG'}) {
-     print STDERR "GDT $translation_result\n";
-   }
-Index: Texinfo/Structuring.pm
-===================================================================
---- Texinfo/Structuring.pm	(revision 8045)
-+++ Texinfo/Structuring.pm	(working copy)
-@@ -424,7 +424,8 @@
-   foreach my $node (@{$self->{'nodes'}}) {
-     if ($node->{'extra'}->{'normalized'} eq 'Top') {
-       $top_node = $node;
--      my $parser = Texinfo::Parser::simple_parser ($self->{'conf'});
-+      #my $parser = Texinfo::Parser::simple_parser ($self->{'conf'});
-+      my $parser = Parsetexi::parser ($self->{'conf'});
-       my $top_node_up_content_tree
-                          = $parser->parse_texi_line($self->{'TOP_NODE_UP'});
-       $top_node_up
 Index: texi2any.pl
 ===================================================================
---- texi2any.pl	(revision 8046)
+--- texi2any.pl	(revision 8058)
 +++ texi2any.pl	(working copy)
 @@ -262,8 +262,8 @@
    } else {
