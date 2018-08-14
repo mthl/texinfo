@@ -25,7 +25,6 @@ use warnings;
 
 require Exporter;
 
-use Texinfo::Report;
 use Texinfo::Common;
 use Texinfo::Encoding;
 use Texinfo::Convert::NodeNameNormalization;
@@ -122,6 +121,10 @@ sub duplicate_parser {
 
   $parser->Texinfo::Report::new;
   return $parser;
+}
+
+sub simple_parser {
+  goto &parser;
 }
 
 # Stub for Texinfo::Parser::parser (line 574)
@@ -502,8 +505,19 @@ BEGIN {
     undef,
     "Parsetexi",
     1);
-
 } # end BEGIN
+
+# This "use" statement is all the way down here because Texinfo::Report
+# and Texinfo::Parser both "use" each other.  If we "use Texinfo::Report"
+# at the top of the file, this has the problem that the symbol table
+# for the Texinfo::Parser namespace, %Texinfo::Parser::, is a different
+# hash (i.e. it has a different address) from what it ends up with by the
+# end of this module.  Once the Perl interpreter has read in a module and 
+# interpreted variables in terms of a given symbol table, it does not 
+# do so them again.  Hence, use of subroutines in the Texinfo::Parser namespace 
+# fails.  This remains the case even if we arrange for the symbol table hash 
+# to remain at the same address, because is empty while the file is being read.
+use Texinfo::Report;
 
 # NB Don't add more functions down here, because this can cause an error
 # with some versions of Perl, connected with the typeglob assignment just
