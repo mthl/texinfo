@@ -1,3 +1,7 @@
+2018-08-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/01use.t: Inline file tp/t/manual_tree.pl.
+
 2018-08-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/ModulePath.pm.in (init): Remove subroutine 

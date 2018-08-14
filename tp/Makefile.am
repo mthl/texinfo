@@ -153,7 +153,6 @@ test_files = \
  t/init/test_renamed_nodes.init \
  t/init/misc_file_collision.init \
  t/init/l2h.init \
- t/manual_tree.pl \
  t/test_utils.pl \
  t/input_files/all_spaces.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
