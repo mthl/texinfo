@@ -49,13 +49,7 @@ echo "  $cmd $*"
 $chicken eval $cmd "$@" || exit 1
 
 : ${LIBTOOLIZE=libtoolize}
-cmd="(cd tp/Texinfo/Convert/XSParagraph && ${LIBTOOLIZE} \
- && autoreconf --force --verbose --install)"
-echo "  $cmd"
-$chicken eval $cmd || exit 1
-
-: ${LIBTOOLIZE=libtoolize}
-cmd="(cd tp/Texinfo/MiscXS && ${LIBTOOLIZE} \
+cmd="(cd tp/Texinfo/XS && ${LIBTOOLIZE} \
  && autoreconf --force --verbose --install)"
 echo "  $cmd"
 $chicken eval $cmd || exit 1
