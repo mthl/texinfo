@@ -39,6 +39,8 @@ use Getopt::Long qw(GetOptions);
 
 Getopt::Long::Configure("gnu_getopt");
 
+my ($real_command_name, $command_directory, $command_suffix);
+
 # This big BEGIN block deals with finding modules and 
 # some dependencies that we ship 
 # * in source or
@@ -48,7 +50,7 @@ BEGIN
 {
   # emulate -w
   $^W = 1;
-  my ($real_command_name, $command_directory, $command_suffix) 
+  ($real_command_name, $command_directory, $command_suffix) 
      = fileparse($0, '.pl');
   my $updir = File::Spec->updir();
 
@@ -69,11 +71,6 @@ BEGIN
       $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
     }
     unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
-
-    if (defined($ENV{'top_srcdir'})) {
-      my $lib_dir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-      unshift @INC, $lib_dir;
-    }
 
     require Texinfo::ModulePath;
     Texinfo::ModulePath::init();
@@ -97,6 +94,7 @@ BEGIN
   }
 } # end BEGIN
 
+# This allows disabling use of XS modules when Texinfo is built.
 BEGIN {
   my $enable_xs = '@enable_xs@';
   if ($enable_xs eq 'no') {
@@ -109,9 +107,6 @@ BEGIN {
 use Locale::Messages;
 use Texinfo::Common;
 use Texinfo::Convert::Converter;
-
-my ($real_command_name, $command_directory, $command_suffix) 
-   = fileparse($0, '.pl');
 
 # this associates the command line options to the arrays set during
 # command line parsing.
