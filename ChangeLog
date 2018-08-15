@@ -1,5 +1,10 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/texi2any.pl: Do not check for module files relative to the
+	installed location.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ModulePath.pm.in: Do not account for the case of 
 	one of $top_builddir and $top_srcdir being set but not the 
 	other.
