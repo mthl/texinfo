@@ -1,5 +1,10 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/Makefile.am: Do not install TestXS.pm, as this 
+	is useless.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Only call fileparse once (used for both 
 	finding modules and translation files).  Do not add a directory 
 	to @INC that Texinfo::ModulePath takes care of adding.  Add a 

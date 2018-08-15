@@ -32,16 +32,13 @@ EXTRA_DIST+=m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
 
-modulesdir = $(pkgdatadir)/Texinfo/XS
 xsdir = $(pkglibdir)
-
-dist_modules_DATA = TestXS.pm
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
 XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 
-EXTRA_DIST+=fail.pl
+EXTRA_DIST+= TestXS.pm fail.pl
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
@@ -59,7 +56,7 @@ xs_LTLIBRARIES += MiscXS.la
 MiscXS_la_SOURCES = MiscXS.c misc.c miscxs.h ppport.h
 
 
-# TestXS has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 
+# TestXS.la has to be included in xs_LIBRARIES, and not noinst_LIBRARIES, 
 # otherwise dynamic libraries aren't built (a libtool bug).  Work around 
 # this by deleting it after it's installed.
 install-data-hook:
