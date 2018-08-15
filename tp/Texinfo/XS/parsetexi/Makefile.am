@@ -71,11 +71,16 @@ Parsetexi_la_SOURCES= Parsetexi.c \
 		  errors.c errors.h \
 		  counter.c counter.h
 
-parsetexi_SOURCES=$(Parsetexi_la_SOURCES) main.c
-parsetexi_CFLAGS = -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
+AM_CPPFLAGS =                    \
+  -I$(top_srcdir)/gnulib/lib     \
+  -I$(top_builddir)/gnulib/lib
 
-# TODO: should -lpthread come from the Perl conf?
-parsetexi_LDFLAGS = $(AM_LDFLAGS) -lpthread
+#  parsetexi_SOURCES=$(Parsetexi_la_SOURCES) main.c
+#  parsetexi_CFLAGS = -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+#  
+#  # TODO: should -lpthread come from the Perl conf?
+#  parsetexi_LDFLAGS = $(AM_LDFLAGS) -lpthread
 
 
 BUILT_SOURCES=element_types.c element_types.h \
