@@ -13,7 +13,7 @@ xsdir = $(pkglibdir)
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
-XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
@@ -22,7 +22,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
 xs_LTLIBRARIES = Parsetexi.la
 
 CLEANFILES += Parsetexi.c
-EXTRA_DIST += Parsetexi.xs
+EXTRA_DIST += Parsetexi.xs typemap
 
 # Override these variables set by configure at the top level, because 
 # the compiler used in this subdirectory might be different.  

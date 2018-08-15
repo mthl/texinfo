@@ -21,10 +21,6 @@ HV *build_global_info2 (void);
 
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 
-TYPEMAP: <<END
-ELEMENT *   T_UV
-END
-
 PROTOTYPES: ENABLE
 
 char *
