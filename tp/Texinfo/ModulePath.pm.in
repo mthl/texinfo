@@ -40,12 +40,7 @@ sub init {
       $top_srcdir = File::Spec->catdir($top_srcdir, $updir);
     }
     $ENV{'top_srcdir'} = $top_srcdir;
-  }
-
-  if (defined($ENV{'top_builddir'}) and !defined($ENV{'top_srcdir'})) {
-    $ENV{'top_srcdir'} = $ENV{'top_builddir'};
-  } elsif (!defined($ENV{'top_builddir'}) and defined($ENV{'top_srcdir'})) {
-    $ENV{'top_builddir'} = $ENV{'top_srcdir'};
+    $ENV{'top_builddir'} = $top_srcdir;
   }
    
   if (!$lib_dir) {
