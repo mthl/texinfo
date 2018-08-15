@@ -1,5 +1,9 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS: Run "gnulib --add-import iconv".
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS: Put subdirectories 'lib' and 'm4' inside new 
 	subdirectory 'gnulib' (as is done in the top-level gnulib 
 	import).

@@ -50,6 +50,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module float:
   # Code from module getdelim:
   # Code from module getline:
+  # Code from module havelib:
+  # Code from module iconv:
   # Code from module include_next:
   # Code from module limits-h:
   # Code from module memchr:
@@ -107,6 +109,9 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_GETLINE
   fi
   gl_STDIO_MODULE_INDICATOR([getline])
+  AM_ICONV
+  m4_ifdef([gl_ICONV_MODULE_INDICATOR],
+    [gl_ICONV_MODULE_INDICATOR([iconv])])
   gl_LIMITS_H
   gl_FUNC_MEMCHR
   if test $HAVE_MEMCHR = 0 || test $REPLACE_MEMCHR = 1; then
@@ -267,6 +272,7 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
+  build-aux/config.rpath
   lib/alloca.in.h
   lib/arg-nonnull.h
   lib/asnprintf.c
@@ -311,9 +317,13 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/getdelim.m4
   m4/getline.m4
   m4/gnulib-common.m4
+  m4/iconv.m4
   m4/include_next.m4
   m4/intmax_t.m4
   m4/inttypes_h.m4
+  m4/lib-ld.m4
+  m4/lib-link.m4
+  m4/lib-prefix.m4
   m4/limits-h.m4
   m4/longlong.m4
   m4/math_h.m4
