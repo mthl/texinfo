@@ -5,7 +5,10 @@ ACLOCAL_AMFLAGS=-I m4
 EXTRA_DIST=
 CLEANFILES =
 
-modulesdir = $(pkgdatadir)/Parsetexi
+modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
+dist_modules_DATA = Parsetexi.pm
+
+
 xsdir = $(pkglibdir)
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
