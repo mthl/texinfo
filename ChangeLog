@@ -1,5 +1,15 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS: Put subdirectories 'lib' and 'm4' inside new 
+	subdirectory 'gnulib' (as is done in the top-level gnulib 
+	import).
+	* tp/Texinfo/XS/Makefile.am (AM_CPPFLAGS, ACLOCAL_AMFLAGS, SUBDIRS)
+	(EXTRA_DIST),
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_MACRO_DIR, AC_CONFIG_FILES):
+	Update.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am (AM_LOG_T_FLAGS): Remove -I flags.
 
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>

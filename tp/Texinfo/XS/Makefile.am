@@ -18,17 +18,17 @@ EXTRA_DIST=
 
 AM_CPPFLAGS =                \
   -I$(srcdir)                \
-  -I$(srcdir)/lib     \
-  -I$(builddir)/lib
+  -I$(srcdir)/gnulib/lib     \
+  -I$(builddir)/gnulib/lib
 
-XSParagraph_la_LIBADD = $(builddir)/lib/libgnu.la \
+XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la \
 	                $(TERMLIBS) $(LIBINTL) $(LIBICONV)
 
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = -I gnulib/m4
 
-SUBDIRS=lib
+SUBDIRS=gnulib/lib
 
-EXTRA_DIST+=m4/gnulib-cache.m4
+EXTRA_DIST+=gnulib/m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
 

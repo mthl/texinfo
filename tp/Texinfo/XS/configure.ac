@@ -12,7 +12,7 @@
 #
 AC_INIT([texinfo], [0])
 AM_INIT_AUTOMAKE
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIR([gnulib/m4])
 
 b='\'
 d='$'
@@ -141,5 +141,5 @@ lookup_perl_conf([privlibexp])
 AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile lib/Makefile parsetexi/Makefile])
+AC_CONFIG_FILES([Makefile gnulib/lib/Makefile parsetexi/Makefile])
 AC_OUTPUT
