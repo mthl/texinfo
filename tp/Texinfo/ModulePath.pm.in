@@ -76,7 +76,7 @@ sub init {
       $libexec_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp',
         'Texinfo', 'XS');
     }
-    unshift @INC, (File::Spec->catdir($lib_dir, '..', 'parsetexi'));
+    unshift @INC, (File::Spec->catdir($lib_dir, '..', 'Texinfo', 'XS', 'parsetexi'));
   }
 
   if (defined($libexec_dir)) {
@@ -87,7 +87,7 @@ sub init {
     unshift @INC, sub { 
       my ($coderef, $filename) = @_;
       if ($filename eq 'Texinfo/Parser.pm') {
-        my $replacement = 'parsetexi/Parsetexi.pm';
+        my $replacement = 'Texinfo/XS/parsetexi/Parsetexi.pm';
         foreach my $prefix (@INC) {
           if (ref($prefix)) {
             next;
