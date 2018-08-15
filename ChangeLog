@@ -1,5 +1,9 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am (AM_LOG_T_FLAGS): Remove -I flags.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XSLoader.pm (_find_file): Skip @INC hooks.
 
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
