@@ -113,3 +113,6 @@ perl_specific_files = \
 
 EXTRA_DIST += $(perl_specific_files)
 
+##########################
+SUBDIRS += parsetexi
+

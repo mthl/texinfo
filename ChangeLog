@@ -1,5 +1,11 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES):
+	Add parsetexi/Makefile.
+	* tp/Texinfo/XS/Makefile.am (SUBDIRS): Add parsetexi.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ModulePath.pm.in: Add 'parsetexi' directory to 
 	@INC.
 	<TEXINFO_XS_PARSER environment variable set>: Add a subroutine 
