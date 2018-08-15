@@ -27,13 +27,14 @@
 
 
 # Specification in the form of a command-line invocation:
-#   gnulib-tool --import --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl getline iconv vasprintf
+#   gnulib-tool --import --lib=libgnu --source-base=gnulib/lib --m4-base=gnulib/m4 --doc-base=doc --tests-base=tests --aux-dir=. --no-conditional-dependencies --libtool --macro-prefix=gl getline iconv strchrnul vasprintf
 
 # Specification in the form of a few gnulib-tool.m4 macro invocations:
 gl_LOCAL_DIR([])
 gl_MODULES([
   getline
   iconv
+  strchrnul
   vasprintf
 ])
 gl_AVOID([])

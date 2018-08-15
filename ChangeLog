@@ -1,6 +1,7 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS: Run "gnulib --add-import iconv".
+	* tp/Texinfo/XS: Run "gnulib --add-import strchrnul".
 
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 

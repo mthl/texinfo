@@ -56,6 +56,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module limits-h:
   # Code from module memchr:
   # Code from module multiarch:
+  # Code from module rawmemchr:
   # Code from module size_max:
   # Code from module snippet/arg-nonnull:
   # Code from module snippet/c++defs:
@@ -64,6 +65,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module stddef:
   # Code from module stdint:
   # Code from module stdio:
+  # Code from module strchrnul:
   # Code from module string:
   # Code from module sys_types:
   # Code from module vasnprintf:
@@ -120,11 +122,23 @@ AC_DEFUN([gl_INIT],
   fi
   gl_STRING_MODULE_INDICATOR([memchr])
   gl_MULTIARCH
+  gl_FUNC_RAWMEMCHR
+  if test $HAVE_RAWMEMCHR = 0; then
+    AC_LIBOBJ([rawmemchr])
+    gl_PREREQ_RAWMEMCHR
+  fi
+  gl_STRING_MODULE_INDICATOR([rawmemchr])
   gl_SIZE_MAX
   gt_TYPE_SSIZE_T
   gl_STDDEF_H
   gl_STDINT_H
   gl_STDIO_H
+  gl_FUNC_STRCHRNUL
+  if test $HAVE_STRCHRNUL = 0 || test $REPLACE_STRCHRNUL = 1; then
+    AC_LIBOBJ([strchrnul])
+    gl_PREREQ_STRCHRNUL
+  fi
+  gl_STRING_MODULE_INDICATOR([strchrnul])
   gl_HEADER_STRING_H
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
@@ -292,10 +306,14 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/printf-args.h
   lib/printf-parse.c
   lib/printf-parse.h
+  lib/rawmemchr.c
+  lib/rawmemchr.valgrind
   lib/size_max.h
   lib/stddef.in.h
   lib/stdint.in.h
   lib/stdio.in.h
+  lib/strchrnul.c
+  lib/strchrnul.valgrind
   lib/string.in.h
   lib/sys_types.in.h
   lib/vasnprintf.c
@@ -333,12 +351,14 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/off_t.m4
   m4/onceonly.m4
   m4/printf.m4
+  m4/rawmemchr.m4
   m4/size_max.m4
   m4/ssize_t.m4
   m4/stddef_h.m4
   m4/stdint.m4
   m4/stdint_h.m4
   m4/stdio_h.m4
+  m4/strchrnul.m4
   m4/string_h.m4
   m4/sys_types_h.m4
   m4/vasnprintf.m4
