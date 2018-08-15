@@ -1,5 +1,12 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/ModulePath.pm.in: Add 'parsetexi' directory to 
+	@INC.
+	<TEXINFO_XS_PARSER environment variable set>: Add a subroutine 
+	to @INC to override Texinfo::Parser with Parsetexi.pm.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl <finding version number>: Refer to 
 	Texinfo::Common instead of Texinfo::Parser.
 
