@@ -50,6 +50,7 @@ sub _fatal($) {
 sub _find_file($) {
   my $file = shift;
   for my $dir (@INC) {
+    next if ref($dir);
     _debug "checking $dir/$file";
     if (-f "$dir/$file") {
       _debug "found $dir/$file";

@@ -1,5 +1,9 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XSLoader.pm (_find_file): Skip @INC hooks.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES):
 	Add parsetexi/Makefile.
 	* tp/Texinfo/XS/Makefile.am (SUBDIRS): Add parsetexi.
