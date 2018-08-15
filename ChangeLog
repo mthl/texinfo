@@ -1,5 +1,10 @@
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/texi2any.pl <finding version number>: Refer to 
+	Texinfo::Common instead of Texinfo::Parser.
+
+2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Do not check for module files relative to the
 	installed location.
 

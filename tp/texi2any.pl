@@ -2,7 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 
 # Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -248,8 +248,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
   } else {
     # used in the standalone perl module, as $hardcoded_version is undef
     # and it should never be configured in that setup
-    require Texinfo::Parser;
-    $configured_version = $Texinfo::Parser::VERSION;
+    require Texinfo::Common;
+    $configured_version = $Texinfo::Common::VERSION;
   }
 }
 
