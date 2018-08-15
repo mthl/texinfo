@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,10 +16,14 @@
 
 #define _GNU_SOURCE
 
+#include <config.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <iconv.h>
+#if HAVE_ICONV
+# include <iconv.h>
+#endif
 #include <errno.h>
 #include <sys/stat.h>
 

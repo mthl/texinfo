@@ -72,7 +72,10 @@ Parsetexi_la_SOURCES= Parsetexi.c \
 		  counter.c counter.h
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
+
 AM_CPPFLAGS =                    \
+  -I$(top_srcdir)                \
   -I$(top_srcdir)/gnulib/lib     \
   -I$(top_builddir)/gnulib/lib
 
