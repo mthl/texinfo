@@ -111,7 +111,7 @@ perl_specific_files = \
   MANIFEST \
   prepare_standalone_perl_module.sh
 
-EXTRA_DIST += $(perl_specific_files)
+# EXTRA_DIST += $(perl_specific_files)
 
 ##########################
 SUBDIRS += parsetexi

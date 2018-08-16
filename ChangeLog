@@ -1,5 +1,15 @@
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am (EXTRA_DIST) Do not distribute tp/Makefile.PL 
+	or tp/MANIFEST.
+	* tp/Texinfo/XS/Makefile.am: Do not distribute Makefile.PL,
+	MANIFEST or prepare_standalone_perl_module.sh.
+
+	This is to reduce confusion about whether these files are needed 
+	for "make dist".
+
+2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Clarify purpose of regenerate_file_lists.pl.  Do 
 	not mention prepare_perl_module_files.sh.
 

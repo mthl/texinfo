@@ -226,8 +226,8 @@ EXTRA_DIST = \
   $(test_files) \
   $(tp_tests) \
   $(maintenance_files) \
-  $(perl_specific_files) \
   maintain/lib
+# $(perl_specific_files)
 
 # MANIFEST is used for the Perl module.
 # maintain/MANIFEST_generated_files is used for dist(check).
