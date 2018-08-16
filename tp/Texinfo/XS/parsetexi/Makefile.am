@@ -60,16 +60,17 @@ Parsetexi_la_SOURCES= Parsetexi.c \
 		  end_line.c \
 		  separator.c \
 		  multitable.c \
-		  indices.c \
+		  indices.c indices.h \
 		  macro.c macro.h \
 		  handle_commands.c handle_commands.h \
 		  def.c def.h \
 		  dump_perl.c dump_perl.h \
 		  extra.c \
 		  menus.c \
-		  labels.c \
+		  labels.c labels.h \
 		  errors.c errors.h \
 		  counter.c counter.h
+EXTRA_DIST += command_data.c
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
