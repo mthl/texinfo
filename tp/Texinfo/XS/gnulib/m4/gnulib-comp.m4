@@ -67,6 +67,8 @@ AC_DEFUN([gl_EARLY],
   # Code from module stdio:
   # Code from module strchrnul:
   # Code from module string:
+  # Code from module strndup:
+  # Code from module strnlen:
   # Code from module sys_types:
   # Code from module vasnprintf:
   # Code from module vasprintf:
@@ -140,6 +142,17 @@ AC_DEFUN([gl_INIT],
   fi
   gl_STRING_MODULE_INDICATOR([strchrnul])
   gl_HEADER_STRING_H
+  gl_FUNC_STRNDUP
+  if test $HAVE_STRNDUP = 0 || test $REPLACE_STRNDUP = 1; then
+    AC_LIBOBJ([strndup])
+  fi
+  gl_STRING_MODULE_INDICATOR([strndup])
+  gl_FUNC_STRNLEN
+  if test $HAVE_DECL_STRNLEN = 0 || test $REPLACE_STRNLEN = 1; then
+    AC_LIBOBJ([strnlen])
+    gl_PREREQ_STRNLEN
+  fi
+  gl_STRING_MODULE_INDICATOR([strnlen])
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
   gl_FUNC_VASNPRINTF
@@ -315,6 +328,8 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strchrnul.c
   lib/strchrnul.valgrind
   lib/string.in.h
+  lib/strndup.c
+  lib/strnlen.c
   lib/sys_types.in.h
   lib/vasnprintf.c
   lib/vasnprintf.h
@@ -360,6 +375,8 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/stdio_h.m4
   m4/strchrnul.m4
   m4/string_h.m4
+  m4/strndup.m4
+  m4/strnlen.m4
   m4/sys_types_h.m4
   m4/vasnprintf.m4
   m4/vasprintf.m4
