@@ -1,5 +1,10 @@
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/README: Clarify purpose of regenerate_file_lists.pl.  Do 
+	not mention prepare_perl_module_files.sh.
+
+2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS: Run "gnulib --add-import strndup".
 
 2018-08-15  Gavin Smith  <gavinsmith0123@gmail.com>
