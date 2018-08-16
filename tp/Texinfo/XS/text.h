@@ -1,4 +1,4 @@
-/* Copyright 2014, 2015, 2016 Free Software Foundation, Inc.
+/* Copyright 2014, 2015, 2016, 2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@ typedef struct TEXT {
 } TEXT;
 
 void text_init (TEXT *t);
+void text_reset (TEXT *t);
 void text_append (TEXT *t, char *s);
 void text_append_n (TEXT *t, char *s, size_t len);
 void text_printf (TEXT *t, char *format, ...);

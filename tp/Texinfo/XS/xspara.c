@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2018 Free Software
    Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -553,8 +553,8 @@ xspara_end_line (void)
 char *
 xspara_get_pending (void)
 {
-  TEXT t;
-  text_init (&t);
+  static TEXT t;
+  text_reset (&t);
   text_append_n (&t, state.space.text, state.space.end);
   text_append_n (&t, state.word.text, state.word.end);
   return t.text;
@@ -610,9 +610,9 @@ xspara__add_pending_word (TEXT *result, int add_spaces)
 char *
 xspara_add_pending_word (int add_spaces)
 {
-  TEXT ret;
+  static TEXT ret;
 
-  text_init (&ret);
+  text_reset (&ret);
   state.end_line_count = 0;
   xspara__add_pending_word (&ret, add_spaces);
   if (ret.text)
@@ -625,8 +625,8 @@ xspara_add_pending_word (int add_spaces)
 char *
 xspara_end (void)
 {
-  TEXT ret;
-  text_init (&ret);
+  static TEXT ret;
+  text_reset (&ret);
   state.end_line_count = 0;
   xspara__add_pending_word (&ret, state.add_final_space);
   if (!state.no_final_newline && state.counter != 0)
@@ -773,9 +773,9 @@ xspara__add_next (TEXT *result, char *word, int word_len, int transparent)
 char *
 xspara_add_next (char *text, int text_len, int transparent)
 {
-  TEXT t;
+  static TEXT t;
 
-  text_init (&t);
+  text_reset (&t);
   state.end_line_count = 0;
   xspara__add_next (&t, text, text_len, transparent);
 
@@ -883,10 +883,10 @@ xspara_add_text (char *text)
   int len;
   wchar_t wc;
   size_t char_len;
-  TEXT result;
+  static TEXT result;
   dTHX;
 
-  text_init (&result);
+  text_reset (&result);
 
   len = strlen (text); /* FIXME: Get this as an argument */
   state.end_line_count = 0;
@@ -973,13 +973,13 @@ xspara_add_text (char *text)
                               /* Truncate to at most 2 spaces, and replace any 
                                  '\n' or '\r' characters with ' '. */
 
-                              TEXT new_space;
+                              static TEXT new_space;
                               char *pspace;
                               int pspace_left;
                               int len;
                               int i;
 
-                              text_init (&new_space);
+                              text_reset (&new_space);
                               pspace = state.space.text;
                               pspace_left = state.space.end;
                               state.space_counter = 0;

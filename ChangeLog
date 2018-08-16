@@ -1,5 +1,12 @@
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/xspara.c (xspara_get_pending, xspara_add_pending_word)
+	xspara_end, xspara_add_next, xspara_add_text): Save storage for 
+	text buffers in static variables to avoid memory leak.
+	* tp/Texinfo/XS/text.c (text_reset): New function.
+
+2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/misc.c (xs_parse_texi_regex): Retain all memory
 	allocated on the heap in static pointers.  Perl does not free 
 	them, as when SV's are initialized with sv_setpv, the data 

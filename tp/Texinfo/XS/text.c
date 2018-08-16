@@ -1,4 +1,4 @@
-/* Copyright 2014, 2015, 2016 Free Software Foundation, Inc.
+/* Copyright 2014, 2015, 2016, 2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,6 +66,17 @@ text_append (TEXT *t, char *s)
 {
   size_t len = strlen (s);
   text_append_n (t, s, len);
+}
+
+/* Set text to an empty string without clearing any storage */
+void
+text_reset (TEXT *t)
+{
+  if (t->end > 0)
+    {
+      t->end = 0;
+      t->text[0] = 0;
+    }
 }
 
 void
