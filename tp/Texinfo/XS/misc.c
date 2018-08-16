@@ -612,21 +612,24 @@ void xs_parse_texi_regex (SV *text_in,
   if (*text == '@' && isalnum(text[1]))
     {
       char *p, *q;
+      static char *s;
 
       p = text + 1;
       q = text + 2;
       while (isalnum (*q) || *q == '-' || *q == '_')
         q++;
-      *at_command = malloc (q - p + 1);
-      memcpy (*at_command, p, q - p);
-      (*at_command)[q - p] = '\0';
+      
+      s = realloc (s, q - p + 1);
+      memcpy (s, p, q - p);
+      s[q - p] = '\0';
+      *at_command = s;
     }
   else
     {
       if (*text == '{')
         {
-          *open_brace = strdup ("{");
-          *separator_match = strdup ("{");
+          *open_brace = "{";
+          *separator_match = "{";
         }
 
       else if (*text == '@'
@@ -635,16 +638,18 @@ void xs_parse_texi_regex (SV *text_in,
                                        "*-^`=:|/\\",
                                        text[1]))
         {
-          *single_letter_command = malloc (2);
-          (*single_letter_command)[0] = text[1];
-          (*single_letter_command)[1] = '\0';
+          static char a[2];
+          *single_letter_command = a;
+          a[0] = text[1];
+          a[1] = '\0';
         }
 
       else if (strchr ("{}@,:\t.\f", *text))
         {
-          *separator_match = malloc (2);
-          (*separator_match)[0] = *text;
-          (*separator_match)[1] = '\0';
+          static char a[2];
+          *separator_match = a;
+          a[0] = *text;
+          a[1] = '\0';
         }
 
       else
@@ -652,17 +657,17 @@ void xs_parse_texi_regex (SV *text_in,
           char *p;
 
           if (*text == '*')
-            {
-              *asterisk = strdup ("*");
-            }
+            *asterisk = "*";
 
           p = text;
           p += strcspn (p, "{}@,:\t.\n\f");
           if (p > text)
             {
-              *new_text = malloc (p - text + 1);
-              memcpy (*new_text, text, p - text);
-              (*new_text)[p - text] = '\0';
+              static char *s;
+              s = realloc (s, p - text + 1);
+              memcpy (s, text, p - text);
+              s[p - text] = '\0';
+              *new_text = s;
             }
         }
     }

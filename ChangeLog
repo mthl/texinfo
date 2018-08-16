@@ -1,5 +1,13 @@
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/misc.c (xs_parse_texi_regex): Retain all memory
+	allocated on the heap in static pointers.  Perl does not free 
+	them, as when SV's are initialized with sv_setpv, the data 
+	pointed to is copied, not the pointer itself.  This memory leak 
+	is visible with valgrind, e.g. run TEXINFO_XS=debug PERL_DESTRUCT_LEVEL=2 valgrind --log-file=val.log --leak-check=full perl -w t/02coverage.t commands
+
+2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Makefile.am (EXTRA_DIST) Do not distribute tp/Makefile.PL 
 	or tp/MANIFEST.
 	* tp/Texinfo/XS/Makefile.am: Do not distribute Makefile.PL,
