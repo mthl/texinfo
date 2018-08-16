@@ -70,17 +70,16 @@ sub init {
     }
   }
 
-  if (!$libexec_dir) {
-    # XSParagraph.la is generated in the build directory.
-    if (defined($ENV{'top_builddir'})) {
-      $libexec_dir = File::Spec->catdir($ENV{'top_builddir'}, 'tp',
-        'Texinfo', 'XS');
-    }
-    unshift @INC, (File::Spec->catdir($lib_dir, '..', 'Texinfo', 'XS', 'parsetexi'));
-  }
-
   if (defined($libexec_dir)) {
-    unshift @INC, (File::Spec->catdir($libexec_dir));
+    unshift @INC, $libexec_dir;
+  } else {
+    # *.la files are generated in the build directory.
+    if (defined($ENV{'top_builddir'})) {
+      unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp',
+        'Texinfo', 'XS');
+      unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp',
+        'Texinfo', 'XS', 'parsetexi');
+    }
   }
 
   if ($ENV{TEXINFO_XS_PARSER}) {
