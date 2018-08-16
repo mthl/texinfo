@@ -1,5 +1,10 @@
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/xspara.c (xs_unicode_text, xs_process_text):
+	Use static buffers to avoid memory leaks.
+
+2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/xspara.c (xspara_get_pending, xspara_add_pending_word)
 	xspara_end, xspara_add_next, xspara_add_text): Save storage for 
 	text buffers in static variables to avoid memory leak.

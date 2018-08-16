@@ -437,9 +437,11 @@ NEW_TEXT:
 char *
 xs_process_text (char *text)
 {
-  char *new, *p, *q;
+  static char *new;
+  char *p, *q;
 
-  new = strdup (text);
+  new = realloc (new, strlen (text) + 1);
+  strcpy (new, text);
 
   p = q = new;
   while (*p)
@@ -489,7 +491,7 @@ char *
 xs_unicode_text (char *text, int in_code)
 {
   char *p, *q;
-  char *new;
+  static char *new;
   int new_space, new_len;
 
   dTHX; /* Perl boilerplate. */
@@ -499,7 +501,7 @@ xs_unicode_text (char *text, int in_code)
 
   p = text;
   new_space = strlen (text);
-  new = malloc (new_space + 1);
+  new = realloc (new, new_space + 1);
   new_len = 0;
 #define ADD3(s) \
   if (new_len + 2 >= new_space - 1)               \
