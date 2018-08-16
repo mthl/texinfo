@@ -54,6 +54,18 @@
 /* Define to 1 when the gnulib module memchr should be tested. */
 #undef GNULIB_TEST_MEMCHR
 
+/* Define to 1 when the gnulib module rawmemchr should be tested. */
+#undef GNULIB_TEST_RAWMEMCHR
+
+/* Define to 1 when the gnulib module strchrnul should be tested. */
+#undef GNULIB_TEST_STRCHRNUL
+
+/* Define to 1 when the gnulib module strndup should be tested. */
+#undef GNULIB_TEST_STRNDUP
+
+/* Define to 1 when the gnulib module strnlen should be tested. */
+#undef GNULIB_TEST_STRNLEN
+
 /* Define to 1 when the gnulib module vasprintf should be tested. */
 #undef GNULIB_TEST_VASPRINTF
 
@@ -82,6 +94,14 @@
 /* Define to 1 if you have the declaration of `getline', and to 0 if you
    don't. */
 #undef HAVE_DECL_GETLINE
+
+/* Define to 1 if you have the declaration of `strndup', and to 0 if you
+   don't. */
+#undef HAVE_DECL_STRNDUP
+
+/* Define to 1 if you have the declaration of `strnlen', and to 0 if you
+   don't. */
+#undef HAVE_DECL_STRNLEN
 
 /* Define to 1 if you have the declaration of `_snprintf', and to 0 if you
    don't. */
@@ -133,6 +153,9 @@
 
 /* Define to 1 if you have the 'mprotect' function. */
 #undef HAVE_MPROTECT
+
+/* Define to 1 if you have the `rawmemchr' function. */
+#undef HAVE_RAWMEMCHR
 
 /* Define to 1 if btowc is declared even after undefining macros. */
 #undef HAVE_RAW_DECL_BTOWC
@@ -383,11 +406,17 @@
 /* Define to 1 if you have the <stdlib.h> header file. */
 #undef HAVE_STDLIB_H
 
+/* Define to 1 if you have the `strchrnul' function. */
+#undef HAVE_STRCHRNUL
+
 /* Define to 1 if you have the <strings.h> header file. */
 #undef HAVE_STRINGS_H
 
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
+
+/* Define to 1 if you have the 'strndup' function. */
+#undef HAVE_STRNDUP
 
 /* Define to 1 if you have the `strnlen' function. */
 #undef HAVE_STRNLEN
