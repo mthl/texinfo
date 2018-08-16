@@ -498,8 +498,7 @@ owning_element_found:
       else if (last_child->type == ET_empty_spaces_before_argument)
         {
           /* Remove element from main tree. */
-          pop_element_from_contents (current);
-          /* FIXME: destroy_element? */
+          ELEMENT *e = pop_element_from_contents (current);
           
           if (owning_keypair)
             {
@@ -511,6 +510,8 @@ owning_element_found:
               owning_keypair->value = 0;
               owning_keypair->type = extra_deleted;
             }
+          e->text.text = 0;
+          destroy_element (e);
         }
       retval = 1;
     }

@@ -110,6 +110,9 @@ command_error (ELEMENT *e, char *format, ...)
 void
 wipe_errors (void)
 {
+  int i;
+  for (i = 0; i < error_number; i++)
+    free (error_list[i].message);
   error_number = 0;
 }
 
@@ -117,9 +120,9 @@ char *
 dump_errors (void)
 {
   int i;
-  TEXT t;
+  static TEXT t;
   
-  text_init (&t);
+  text_reset (&t);
   text_append (&t, "$ERRORS = [\n");
   for (i = 0; i < error_number; i++)
     {

@@ -70,6 +70,16 @@ text_append (TEXT *t, char *s)
 }
 
 void
+text_reset (TEXT *t)
+{
+  if (t->end > 0)
+    {
+      t->end = 0;
+      t->text[0] = 0;
+    }
+}
+
+void
 text_init (TEXT *t)
 {
   t->end = t->space = 0;

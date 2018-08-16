@@ -237,6 +237,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
           && last_contents_child(current)->type
                == ET_empty_spaces_before_argument)
         {
+          /* FIXME: Is this right? */
           remove_from_contents (current, 0);
         }
     }
