@@ -464,8 +464,23 @@ input_push_text_with_line_nos (char *text, int starting)
 void
 input_reset_input_stack (void)
 {
+  int i;
   input_number = 0;
-  /* TODO: free the memory */
+  return;
+  for (i = 0; i < input_number; i++)
+    {
+      switch (input_stack[i].type)
+        {
+        case IN_file:
+          fclose (input_stack[i].file);
+          free (input_stack[i].text);
+          break;
+        case IN_text:
+          free (input_stack[i].text);
+          break;
+        }
+    }
+  input_number = 0;
 }
 
 int

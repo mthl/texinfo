@@ -464,7 +464,10 @@ delete_macro (char *name)
   if (!m)
     return;
   m->cmd = 0;
-  m->macro_name = "";
+  free (m->macro_name);
+  m->macro_name = strdup ("");
+  free (m->macrobody);
+  m->macrobody = 0;
   m->element = 0;
   remove_texinfo_command (cmd);
 }
@@ -472,6 +475,13 @@ delete_macro (char *name)
 void
 wipe_macros (void)
 {
+  int i;
+
+  for (i = 0; i < macro_number; i++)
+    {
+      free (macro_list[i].macro_name);
+      free (macro_list[i].macrobody);
+    }
   macro_number = 0;
 }
 

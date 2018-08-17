@@ -97,12 +97,15 @@ remove_texinfo_command (enum command_id cmd)
 {
   cmd &= ~USER_COMMAND_BIT;
   free (user_defined_command_data[cmd].cmdname);
-  user_defined_command_data[cmd].cmdname = "";
+  user_defined_command_data[cmd].cmdname = strdup ("");
 }
 
 void
 wipe_user_commands (void)
 {
+  int i;
+  for (i = 0; i < user_defined_number; i++)
+    free (user_defined_command_data[i].cmdname);
   user_defined_number = 0;
 }
 
