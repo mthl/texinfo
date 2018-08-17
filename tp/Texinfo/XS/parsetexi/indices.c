@@ -20,9 +20,9 @@
 #include "parser.h"
 #include "indices.h"
 
-INDEX **index_names;
-int number_of_indices;
-int space_for_indices;
+INDEX **index_names = 0;
+int number_of_indices = 0;
+int space_for_indices = 0;
 
 typedef struct {
     enum command_id cmd;
@@ -124,6 +124,30 @@ add_index (char *name, int in_code)
   asprintf (&cmdname, "%s%s", name, "index");
   add_index_command (cmdname, idx);
   free (cmdname);
+}
+
+static void
+wipe_index (INDEX *idx)
+{
+  int i;
+  for (i = 0; i < idx->index_number; i++)
+    {
+      ; /* all data is referenced elsewhere */
+    }
+  free (idx->index_entries);
+}
+
+void
+wipe_indices (void)
+{
+  int i;
+  for (i = 0; i < number_of_indices; i++)
+    {
+      wipe_index (index_names[i]);
+      free (index_names[i]);
+    }
+  number_of_indices = 0;
+  return;
 }
 
 void

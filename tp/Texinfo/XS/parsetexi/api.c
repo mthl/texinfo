@@ -49,6 +49,7 @@ reset_parser (void)
   wipe_user_commands ();
   wipe_values ();
   wipe_macros ();
+  wipe_indices ();
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
