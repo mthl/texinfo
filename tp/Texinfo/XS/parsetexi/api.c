@@ -46,6 +46,11 @@ void
 reset_parser (void)
 {
   debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
+  if (Root)
+    {
+      destroy_element_and_children (Root);
+      Root = 0;
+    }
   wipe_user_commands ();
   wipe_values ();
   wipe_macros ();
@@ -70,7 +75,7 @@ void
 parse_file (char *filename)
 {
   debug_output = 0;
-  parse_texi_file (filename);
+  Root = parse_texi_file (filename);
 }
 
 ELEMENT *

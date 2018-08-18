@@ -49,19 +49,28 @@ new_element (enum element_type type)
 void
 destroy_element (ELEMENT *e)
 {
+  int i;
   free (e->text.text);
 
   /* Note the pointers in these lists are not themselves freed. */
   free (e->contents.list);
   free (e->args.list);
 
-  /* FIXME destroy extra values as well? */
+  for (i = 0; i < e->extra_number; i++)
+    {
+      switch (e->extra[i].type)
+        {
+        default:
+          /* TODO: need to check if the element is in the main tree or not. */
+          break;
+        }
+    }
+  free (e->extra);
 
   free (e);
 }
 
-/* Recursively destroy this element and all data in its descendants.
-   TODO: Also extra information. */
+/* Recursively destroy this element and all data in its descendants. */
 void
 destroy_element_and_children (ELEMENT *e)
 {

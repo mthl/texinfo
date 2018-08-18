@@ -260,7 +260,7 @@ check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
 {
   char *p = line, *q;
   int line_no = 0;
-  char *filename;
+  char *filename = 0;
 
   if (current && current->parent && current->parent->cmd == CM_verb)
     return 0;

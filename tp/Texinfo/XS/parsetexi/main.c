@@ -26,6 +26,7 @@ int
 main (int argc, char **argv)
 {
   //extern int element_counter;
+  ELEMENT *root;
   debug_output = 1;
 
   if (argc <= 1)
@@ -34,8 +35,8 @@ main (int argc, char **argv)
       exit (1);
     }
   reset_parser ();
-  parse_texi_file (argv[1]);
-  dump_tree_to_perl (Root);
+  root = parse_texi_file (argv[1]);
+  dump_tree_to_perl (root);
   //build_texinfo_tree ();
   /* ^ doesn't work because there's no active perl instance */
   //printf ("About %d elements in tree\n", element_counter);

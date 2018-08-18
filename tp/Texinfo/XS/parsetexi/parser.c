@@ -134,7 +134,7 @@ wipe_global_info (void)
 
 
 /* 835 */
-void
+ELEMENT *
 parse_texi_file (char *filename)
 {
   char *p, *q;
@@ -205,7 +205,7 @@ parse_texi_file (char *filename)
   if (preamble)
     add_to_element_contents (root, preamble);
 
-  Root = parse_texi (root);
+  return parse_texi (root);
 } /* 916 */
 
 
