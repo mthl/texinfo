@@ -64,6 +64,19 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
 }
 
 
+static ELEMENT *
+shallow_copy_element (ELEMENT *e)
+{
+  ELEMENT *e2 = 0;
+  if (e)
+    {
+      e2 = malloc (sizeof (ELEMENT));
+      memcpy (e2, e, sizeof (ELEMENT));
+      e2->parent_type = route_not_in_tree;
+    }
+  return (e2);
+}
+
 static void
 shallow_destroy_element (ELEMENT *e)
 {
@@ -231,13 +244,13 @@ add_to_def_args_extra (DEF_ARGS_EXTRA *d, char *label, ELEMENT *arg)
   d->elements[d->nelements] = 0;
 }
 
-/* Parse the arguments on a def* command line. */
+/* Parse the arguments on a def* command line.
+   The return value is suitable for "def_args" extra value. */
 // 2378
 DEF_ARGS_EXTRA *
 parse_def (enum command_id command, ELEMENT_LIST contents)
 {
-  /* The return value - suitable for "def_args" extra value. */
-  DEF_ARGS_EXTRA *def_args;
+  DEF_ARGS_EXTRA *def_args; /* Return value */
   int i, args_start = 0;
 
   ELEMENT *arg_line; /* Copy of argument line. */
@@ -254,7 +267,12 @@ parse_def (enum command_id command, ELEMENT_LIST contents)
   for (i = contents.list[0]->type != ET_empty_spaces_after_command ? 0 : 1;
        i < contents.number; i++)
     {
-      if (contents.list[i]->text.space > 0)
+      if (0)
+        {
+          add_to_contents_as_array (arg_line,
+                                    shallow_copy_element (contents.list[i]));
+        }
+      else if (contents.list[i]->text.space > 0)
         {
           /* Copy text to avoid changing the original. */
           ELEMENT *copy = new_element (ET_NONE);
