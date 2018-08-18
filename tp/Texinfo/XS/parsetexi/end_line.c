@@ -1327,7 +1327,7 @@ end_line_starting_block (ELEMENT *current)
           e->cmd = CM_bullet;
           e->parent_type = route_not_in_tree;
           e->parent = current;
-          add_extra_element (current, "command_as_argument", e);
+          add_extra_element_oot (current, "command_as_argument", e);
 
           contents = new_element (ET_NONE);
           contents2 = new_element (ET_NONE);
@@ -1346,7 +1346,7 @@ end_line_starting_block (ELEMENT *current)
           e->cmd = CM_asis;
           e->parent_type = route_not_in_tree;
           e->parent = current;
-          add_extra_element (current, "command_as_argument", e);
+          add_extra_element_oot (current, "command_as_argument", e);
 
           contents = new_element (ET_NONE);
           contents2 = new_element (ET_NONE);

@@ -345,16 +345,16 @@ element_to_perl_hash (ELEMENT *e)
           switch (e->extra[i].type)
             {
             case extra_element:
+            case extra_element_oot:
               /* For references to other parts of the tree, create the hash so 
                  we can point to it.  */
               if (!f->hv)
                 {
                   if (f->parent_type != route_not_in_tree)
                     {
-                      /* TODO: Are there any extra values which are
-                         extra_element that are route_not_in_tree?  Consider
-                         eliminating use of 'parent_type' to differentiate types
-                         of extra value. */
+                      /* TODO: Set all out-of-tree elements with
+                         add_extra_element_oot and then eliminate
+                         use of 'parent_type' to differentiate. */
                       f->hv = newHV ();
                     }
                   else

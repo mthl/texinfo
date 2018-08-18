@@ -80,6 +80,9 @@ destroy_element (ELEMENT *e)
         case extra_index_entry:
           free (e->extra[i].value);
           break;
+        case extra_element_oot:
+          destroy_element_and_children (e->extra[i].value);
+          break;
         case extra_element_contents:
           if (e->extra[i].value)
             destroy_element ((ELEMENT *) e->extra[i].value);
