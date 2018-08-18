@@ -85,8 +85,17 @@ destroy_element (ELEMENT *e)
             destroy_element ((ELEMENT *) e->extra[i].value);
           break;
         case extra_element_contents_array:
-          /* TODO */
+          {
+            int j;
+            ELEMENT *array = e->extra[i].value;
+            for (j = 0 ; j < array->contents.number; j++)
+              {
+                if (array->contents.list[j])
+                  destroy_element (array->contents.list[j]);
+              }
+            destroy_element (array);
           break;
+          }
         case extra_node_spec:
             {
               NODE_SPEC_EXTRA *nse = (NODE_SPEC_EXTRA *) e->extra[i].value;

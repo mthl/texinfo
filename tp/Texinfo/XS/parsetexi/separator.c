@@ -29,6 +29,8 @@
 /* Add the contents of CURRENT as an element to the extra value with
    key KEY, except that some "empty space" elements are removed.  Used for
    'block_command_line_contents' for the arguments to a block line command.
+TODO: This function should go away once we make the same change for
+"block commands" as were made for "brace commands".
    */
 void
 register_command_arg (ELEMENT *current, char *key)
@@ -650,13 +652,22 @@ remove_empty_content_arguments (ELEMENT *current)
   while (k->value->contents.number > 0
          && !last_contents_child(k->value)) // ->contents.number == 0)
     {
-      ELEMENT *popped = pop_element_from_contents (k->value);
-      if (popped)
-        destroy_element (popped);
+      ELEMENT *array = pop_element_from_contents (k->value);
+      if (array)
+        {
+          int j;
+          for (j = 0 ; j < array->contents.number; j++)
+            {
+              if (array->contents.list[j])
+                destroy_element (array->contents.list[j]);
+            }
+          destroy_element (array);
+        }
     }
 
   if (k->value->contents.number == 0)
     {
+      destroy_element (k->value);
       k->key = "";
       k->type = extra_deleted;
     }
