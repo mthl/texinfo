@@ -1819,6 +1819,7 @@ end_line_misc_line (ELEMENT *current)
 
       if (current->cmd != CM_top && misc_content->contents.number == 0)
         {
+          destroy_element (misc_content);
           command_warn (current, "@%s missing argument", 
                         command_name(current->cmd));
           add_extra_integer (current, "missing_argument", 1);

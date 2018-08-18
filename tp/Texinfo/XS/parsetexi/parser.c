@@ -476,7 +476,6 @@ owning_element_found:
       if (last_child->text.end == 0) //2121
         {
           e = pop_element_from_contents (current);
-          e->parent = 0; e->parent_type = route_not_in_tree;
           destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
 
@@ -511,7 +510,6 @@ owning_element_found:
               owning_keypair->value = 0;
               owning_keypair->type = extra_deleted;
             }
-          e->text.text = 0;
           destroy_element (e);
         }
       retval = 1;

@@ -61,7 +61,14 @@ destroy_element (ELEMENT *e)
       switch (e->extra[i].type)
         {
         case extra_string:
+        case extra_index_entry:
           free (e->extra[i].value);
+          break;
+        case extra_element_contents:
+          destroy_element ((ELEMENT *) e->extra[i].value);
+          break;
+        case extra_element_contents_array:
+          /* TODO */
           break;
         default:
           /* TODO: need to check if the element is in the main tree or not. */
