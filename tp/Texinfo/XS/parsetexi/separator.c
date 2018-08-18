@@ -734,7 +734,10 @@ handle_comma (ELEMENT *current, char **line_inout)
           else
             expandp = 0;
 
-          add_extra_string_dup (current, "format", inline_type);
+          if (inline_type)
+            add_extra_string_dup (current, "format", inline_type);
+          else
+            add_extra_string (current, "format", 0);
 
           /* Skip first argument for a false @inlinefmtifelse */
           if (!expandp && current->cmd == CM_inlinefmtifelse)

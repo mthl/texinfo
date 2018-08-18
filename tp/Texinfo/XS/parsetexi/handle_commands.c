@@ -642,7 +642,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               /* Find the command with "x" stripped from the end, e.g.
                  deffnx -> deffn. */
               base_name = command_name(cmd);
-              add_extra_string (misc, "original_def_cmdname", base_name);
+              add_extra_string_dup (misc, "original_def_cmdname", base_name);
 
               base_name = strdup (base_name);
               base_len = strlen (base_name);
