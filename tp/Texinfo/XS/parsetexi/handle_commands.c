@@ -1024,9 +1024,9 @@ handle_block_command (ELEMENT *current, char **line_inout,
           def_line->line_nr = line_nr;
           add_to_element_contents (current, def_line);
           current = def_line;
-          add_extra_string (current, "def_command", command_name(cmd));
-          add_extra_string (current, "original_def_cmdname", 
-                            command_name(cmd));
+          add_extra_string_dup (current, "def_command", command_name(cmd));
+          add_extra_string_dup (current, "original_def_cmdname", 
+                                command_name(cmd));
         }
       else
         {
@@ -1187,7 +1187,7 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   mark_and_warn_invalid (cmd, invalid_parent, e);
   if (cmd == CM_click)
     {
-      add_extra_string (e, "clickstyle", global_clickstyle);
+      add_extra_string_dup (e, "clickstyle", global_clickstyle);
     }
   else if (cmd == CM_kbd)
     {
@@ -1221,8 +1221,8 @@ handle_brace_command (ELEMENT *current, char **line_inout,
       INFO_ENCLOSE *ie = lookup_infoenclose (cmd);
       if (ie)
         {
-          add_extra_string (e, "begin", ie->begin);
-          add_extra_string (e, "end", ie->end);
+          add_extra_string_dup (e, "begin", ie->begin);
+          add_extra_string_dup (e, "end", ie->end);
         }
       e->type = ET_definfoenclose_command;
     }

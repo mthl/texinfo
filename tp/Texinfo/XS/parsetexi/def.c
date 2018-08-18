@@ -313,8 +313,8 @@ found:
       if (global_documentlanguage && *global_documentlanguage)
         {
           e1->type = ET_untranslated;
-          add_extra_string (e1, "documentlanguage",
-                            global_documentlanguage);
+          add_extra_string_dup (e1, "documentlanguage",
+                                global_documentlanguage);
         }
       e1->parent_type = route_not_in_tree;
 

@@ -421,8 +421,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
               line_error ("@image missing filename argument");
             }
           if (global_info.input_perl_encoding)
-            add_extra_string (image, "input_perl_encoding",
-                              global_info.input_perl_encoding);
+            add_extra_string_dup (image, "input_perl_encoding",
+                                  global_info.input_perl_encoding);
         }
       else if (closed_command == CM_dotless)
         {
@@ -560,8 +560,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                           & CF_index_entry_command))
                     {
                       index_elt = current->parent->parent->parent;
-                      add_extra_string (index_elt, "sortas",
-                                        e->text.text);
+                      add_extra_string_dup (index_elt, "sortas",
+                                            e->text.text);
                     }
                 }
             }
@@ -734,7 +734,7 @@ handle_comma (ELEMENT *current, char **line_inout)
           else
             expandp = 0;
 
-          add_extra_string (current, "format", inline_type);
+          add_extra_string_dup (current, "format", inline_type);
 
           /* Skip first argument for a false @inlinefmtifelse */
           if (!expandp && current->cmd == CM_inlinefmtifelse)

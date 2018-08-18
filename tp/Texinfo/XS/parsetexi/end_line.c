@@ -1217,14 +1217,14 @@ end_line_starting_block (ELEMENT *current)
                           && !*(g->text.text
                                 + strspn (g->text.text, "0123456789"))))
                     {
-                      spec = strdup (g->text.text);
+                      spec = g->text.text;
                     }
                   else
                     command_error (current, "bad argument to @%s",
                                    command_name(current->cmd));
                 }
             }
-          add_extra_string (current, "enumerate_specification", spec);
+          add_extra_string_dup (current, "enumerate_specification", spec);
         }
       else if (item_line_command (current->cmd)) // 3002
         {
@@ -1438,8 +1438,6 @@ end_line_misc_line (ELEMENT *current)
           text = convert_to_text (trimmed, &superfluous_arg);
         }
 
-      if (!text)
-        text = "";
       destroy_element (trimmed);
 
       if (!text || !strcmp (text, ""))
@@ -1447,6 +1445,7 @@ end_line_misc_line (ELEMENT *current)
           if (!superfluous_arg)
             line_warn ("@%s missing argument", command_name(cmd)); // 3123
           add_extra_integer (current, "missing_argument", 1);
+          free (text);
         }
       else
         {
@@ -1557,8 +1556,8 @@ end_line_misc_line (ELEMENT *current)
           else if (current->cmd == CM_verbatiminclude)
             {
               if (global_info.input_perl_encoding)
-                add_extra_string (current, "input_perl_encoding",
-                                  global_info.input_perl_encoding);
+                add_extra_string_dup (current, "input_perl_encoding",
+                                      global_info.input_perl_encoding);
             }
           else if (current->cmd == CM_documentencoding) // 3190
             {
@@ -1642,8 +1641,8 @@ end_line_misc_line (ELEMENT *current)
                           break;
                         }
                     }
-                  add_extra_string (current, "input_perl_encoding",
-                                    perl_encoding);
+                  add_extra_string_dup (current, "input_perl_encoding",
+                                        perl_encoding);
                   global_info.input_perl_encoding = perl_encoding;
                 }
               else
@@ -1694,8 +1693,8 @@ end_line_misc_line (ELEMENT *current)
                 }
               if (input_encoding)
                 {
-                  add_extra_string (current, "input_encoding_name",
-                                    input_encoding);
+                  add_extra_string_dup (current, "input_encoding_name",
+                                        input_encoding);
 
                   global_info.input_encoding_name = input_encoding; // 3210
                   set_input_encoding (input_encoding);
@@ -1748,7 +1747,7 @@ end_line_misc_line (ELEMENT *current)
                     }
                 }
 
-              global_documentlanguage = text;
+              global_documentlanguage = strdup (text);
               /* TODO: check customization variable */
             }
         }
@@ -1961,7 +1960,7 @@ end_line_misc_line (ELEMENT *current)
               add_extra_string (current, "max_columns", s);
             }
           else
-              add_extra_string (current, "max_columns", "0");
+              add_extra_string_dup (current, "max_columns", "0");
 
           before_item = new_element (ET_before_item);
           add_to_element_contents (current, before_item);
@@ -2299,8 +2298,8 @@ end_line (ELEMENT *current)
                       || def_command == CM_deftypeivar
                       || def_command == CM_deftypecv))
                 {
-                  add_extra_string (current->parent, "documentlanguage",
-                                    global_documentlanguage);
+                  add_extra_string_dup (current->parent, "documentlanguage",
+                                        global_documentlanguage);
                 }
               else
                 {

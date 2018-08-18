@@ -257,7 +257,8 @@ begin_paragraph (ELEMENT *current)
 
       e = new_element (ET_paragraph);
       if (indent)
-        add_extra_string (e, indent == CM_indent ? "indent" : "noindent", "1");
+        add_extra_string_dup (e, indent == CM_indent ? "indent" : "noindent",
+                              "1");
       add_to_element_contents (current, e);
       current = e;
 
@@ -503,8 +504,8 @@ owning_element_found:
           if (owning_keypair)
             {
               /* Replace element reference with a simple string. */
-              add_extra_string (owning_element, "spaces_before_argument",
-                                owning_keypair->value->text.text);
+              add_extra_string_dup (owning_element, "spaces_before_argument",
+                                    owning_keypair->value->text.text);
 
               owning_keypair->key = "";
               owning_keypair->value = 0;
@@ -729,7 +730,8 @@ mark_and_warn_invalid (enum command_id command,
                  command_name(command),
                  command_name(invalid_parent));
       if (marked_as_invalid_command)
-        add_extra_string (marked_as_invalid_command, "invalid_nesting", "1");
+        add_extra_string_dup (marked_as_invalid_command, "invalid_nesting",
+                              "1");
     }
 }
 
