@@ -649,7 +649,11 @@ remove_empty_content_arguments (ELEMENT *current)
 
   while (k->value->contents.number > 0
          && !last_contents_child(k->value)) // ->contents.number == 0)
-    pop_element_from_contents (k->value);
+    {
+      ELEMENT *popped = pop_element_from_contents (k->value);
+      if (popped)
+        destroy_element (popped);
+    }
 
   if (k->value->contents.number == 0)
     {

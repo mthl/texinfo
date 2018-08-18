@@ -184,7 +184,7 @@ convert_to_texinfo (ELEMENT *e)
   TEXT result;
 
   if (!e)
-    return "";
+    return strdup ("");
   text_init (&result);
   convert_to_texinfo_internal (e, &result);
   return result.text;

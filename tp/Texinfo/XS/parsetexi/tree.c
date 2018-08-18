@@ -94,7 +94,27 @@ destroy_element (ELEMENT *e)
               free_node_contents (nse->manual_content);
               free_node_contents (nse->node_content);
               free (nse);
+              break;
             }
+        case extra_float_type:
+          {
+            EXTRA_FLOAT_TYPE *eft = (EXTRA_FLOAT_TYPE *) e->extra[i].value;
+            free (eft->normalized);
+
+            if (eft->content)
+              destroy_element (eft->content);
+            /* free_node_contents (eft->content); */
+            /* Big problem here.  If we call free_node_contents to look for
+               'route_not_in_tree' elements, the elements that *were* in
+               the tree may have already been freed via reset_parser.  I don't 
+               expect there to be 'route_not_in_tree' elements for 
+               EXTRA_FLOAT_TYPE; however, it's a potential problem for 
+               extra_node_spec above.  The best solution would seem to get rid 
+               of the need for any 'route_not_in_tree' elements. */
+
+            free (eft);
+            break;
+          }
         default:
           /* TODO: need to check if the element is in the main tree or not. */
           break;

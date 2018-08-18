@@ -1043,7 +1043,7 @@ parse_float_type (ELEMENT *current)
           destroy_element (type_contents);
         }
     }
-  eft->normalized = "";
+  eft->normalized = strdup ("");
   add_extra_float_type (current, "type", eft);
   return 0;
 }
@@ -1185,11 +1185,9 @@ end_line_starting_block (ELEMENT *current)
       && current->args.list[0]->contents.list[0]->type
          == ET_empty_line_after_command)
     {
-      ELEMENT *e;
-      e = current->args.list[0]->contents.list[0];
+      ELEMENT *e = remove_from_contents (current->args.list[0], 0);
       insert_into_contents (current, e, 0);
-      // TODO: Free lists?
-      current->args.number = 0;
+      destroy_element (pop_element_from_args (current));
     }
   remove_empty_content_arguments (current);
 
