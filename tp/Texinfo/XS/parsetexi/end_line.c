@@ -1152,7 +1152,9 @@ end_line_starting_block (ELEMENT *current)
               float_label = parse_node_manual (args_child_by_index (f, 1));
               check_internal_node (float_label);
 
-              register_label (f, float_label);
+              register_label (f, float_label->node_content);
+              free_node_contents (float_label->manual_content);
+              free (float_label);
             }
           parse_float_type (f);
           k = lookup_extra_key (f, "type");
@@ -1800,7 +1802,7 @@ end_line_misc_line (ELEMENT *current)
         {
           add_extra_contents (current, "node_content",
                               nodes_manuals[0]->node_content);
-          register_label (current, nodes_manuals[0]);
+          register_label (current, nodes_manuals[0]->node_content);
         }
 
       current_node = current;

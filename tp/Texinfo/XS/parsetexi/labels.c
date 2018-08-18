@@ -29,7 +29,7 @@ size_t labels_space = 0;
    and must be unique in the document.  Corresponds to @node, @anchor, and 
    second arg of @float. */
 void
-register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
+register_label (ELEMENT *current, ELEMENT *label)
 {
   if (labels_number == labels_space)
     {
@@ -41,8 +41,8 @@ register_label (ELEMENT *current, NODE_SPEC_EXTRA *label)
     }
   labels_list[labels_number++].target = current;
 
-  if (label->node_content)
-    add_extra_contents (current, "node_content", label->node_content);
+  if (label)
+    add_extra_contents (current, "node_content", label);
 }
 
 void

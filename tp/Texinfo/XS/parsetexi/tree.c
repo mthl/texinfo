@@ -47,6 +47,22 @@ new_element (enum element_type type)
 }
 
 void
+free_node_contents (ELEMENT *e)
+{
+  int i;
+  if (e)
+    {
+      for (i = 0; i < e->contents.number; i++)
+        {
+          if (e->contents.list[i]->parent_type
+              == route_not_in_tree)
+            destroy_element (e->contents.list[i]);
+        }
+      free (e);
+    }
+}
+
+void
 destroy_element (ELEMENT *e)
 {
   int i;
@@ -65,11 +81,20 @@ destroy_element (ELEMENT *e)
           free (e->extra[i].value);
           break;
         case extra_element_contents:
-          destroy_element ((ELEMENT *) e->extra[i].value);
+          if (e->extra[i].value)
+            destroy_element ((ELEMENT *) e->extra[i].value);
           break;
         case extra_element_contents_array:
           /* TODO */
           break;
+        case extra_node_spec:
+            {
+              NODE_SPEC_EXTRA *nse = (NODE_SPEC_EXTRA *) e->extra[i].value;
+
+              free_node_contents (nse->manual_content);
+              free_node_contents (nse->node_content);
+              free (nse);
+            }
         default:
           /* TODO: need to check if the element is in the main tree or not. */
           break;

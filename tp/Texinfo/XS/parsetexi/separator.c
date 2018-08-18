@@ -334,10 +334,12 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           parsed_anchor = parse_node_manual (current);
           if (check_node_label (parsed_anchor, CM_anchor))
             {
-              register_label (current->parent, parsed_anchor);
+              register_label (current->parent, parsed_anchor->node_content);
               if (current_region ())
                 add_extra_element (current, "region", current_region ());
+              free_node_contents (parsed_anchor->manual_content);
             }
+          free (parsed_anchor);
         }
       else if (command_data(closed_command).flags & CF_ref) // 5062
         {
@@ -368,7 +370,11 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                   if (nse && (nse->manual_content || nse->node_content))
                     add_extra_node_spec (ref, "node_argument", nse);
                   else
-                    free (nse);
+                    {
+                      free_node_contents (nse->manual_content);
+                      free_node_contents (nse->node_content);
+                      free (nse);
+                    }
                   if (closed_command != CM_inforef
                       && (ref->args.number <= 3
                           || ref->args.number <= 4
