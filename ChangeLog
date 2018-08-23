@@ -1,3 +1,8 @@
+2018-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Remove gcj, info.  Add cvs.  Report from 
+	Ineiev <ineiev@gnu.org> and Thérèse Godefroy <godef.th@free.fr>.
+
 2018-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS/xspara.c (xs_unicode_text, xs_process_text):

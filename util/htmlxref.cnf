@@ -1,9 +1,9 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2017-12-18.20; # UTC
+htmlxrefversion=2018-08-23.18; # UTC
 
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 Free Software
-# Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free
+# Software Foundation, Inc.
 # 
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -110,7 +110,9 @@ cpio		node	${GS}/cpio/manual/html_node/
 
 cssc		node	${GS}/cssc/manual/
 
-#cvs cannot be handled here; see http://ximbiot.com/cvs/manual.
+CVS = ${GS}/trans-coord/manual
+cvs            mono    ${CVS}/cvs/cvs.html
+cvs            node    ${CVS}/cvs/html_node/
 
 ddd		mono	${GS}/ddd/manual/html_mono/ddd.html
 
@@ -247,7 +249,6 @@ gcal		node	${GS}/gcal/manual/html_node/
 GCC = https://gcc.gnu.org/onlinedocs
 gcc		node	${GCC}/gcc/
  cpp		node	${GCC}/cpp/
- gcj		node	${GCC}/gcj/
  gfortran	node	${GCC}/gfortran/
  gnat_rm	node	${GCC}/gnat_rm/
  gnat_ugn	node	${GCC}/gnat_ugn/
@@ -596,9 +597,6 @@ teseq		node	${GS}/teseq/html_node/
 TEXINFO = ${GS}/texinfo/manual
 texinfo		mono	${TEXINFO}/texinfo/texinfo.html
 texinfo		node	${TEXINFO}/texinfo/html_node/
- #
- info		mono	${TEXINFO}/info/info.html
- info		node	${TEXINFO}/info/html_node/
  #
  info-stnd	mono	${TEXINFO}/info-stnd/info-stnd.html
  info-stnd	node	${TEXINFO}/info-stnd/html_node/
