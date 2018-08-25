@@ -495,6 +495,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -986,6 +994,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvr',
@@ -1280,6 +1296,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => ')',
                       'type' => 'delimiter'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -1915,6 +1939,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',
@@ -2104,6 +2136,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'typearg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',
@@ -2525,6 +2565,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'typearg',
                     {
                       'text' => 'end'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -2991,6 +3039,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'last'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -3478,6 +3534,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftp',
@@ -3942,6 +4006,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'last'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -4442,6 +4514,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypecv',
@@ -4906,6 +4986,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'last'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -5412,6 +5500,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'last'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -5650,6 +5746,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'arg'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -5900,6 +6004,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -6149,6 +6261,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -6388,6 +6508,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -6626,6 +6754,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'arg'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -6876,6 +7012,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -7125,6 +7269,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -7364,6 +7516,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -7602,6 +7762,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'arg'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -7852,6 +8020,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -8101,6 +8277,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -8340,6 +8524,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -8578,6 +8770,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'arg'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -8834,6 +9034,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     {
                       'text' => 'name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -9034,6 +9242,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                     'arg',
                     {
                       'text' => 'arguments'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -9267,6 +9483,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -9495,6 +9719,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -9723,6 +9955,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvr',
@@ -9951,6 +10191,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvr',
@@ -10212,6 +10460,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',
@@ -10474,6 +10730,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',
@@ -10736,6 +11000,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypevr',
@@ -10998,6 +11270,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypevr',
@@ -11227,6 +11507,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftp',
@@ -11455,6 +11743,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftp',
@@ -11716,6 +12012,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defcv',
@@ -11978,6 +12282,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'typearg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftp',
@@ -12270,6 +12582,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypecv',
@@ -12572,6 +12892,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypecv',
@@ -12841,6 +13169,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defop',
@@ -13109,6 +13445,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defop',
@@ -13410,6 +13754,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -13712,6 +14064,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -14028,6 +14388,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',
@@ -14335,6 +14703,14 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                   [
                     'typearg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefn',

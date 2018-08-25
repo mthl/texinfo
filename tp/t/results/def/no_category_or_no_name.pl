@@ -151,6 +151,14 @@ $result_trees{'no_category_or_no_name'} = {
               [
                 'category',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -327,8 +335,9 @@ $result_trees{'no_category_or_no_name'} = {
               [
                 'spaces',
                 {
-                  'text' => ' ',
-                  'type' => 'spaces'
+                  'text' => ' 
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -391,6 +400,14 @@ $result_trees{'no_category_or_no_name'} = {
                 'category',
                 {
                   'text' => 'deffnx_category'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -596,7 +613,7 @@ $result_texts{'no_category_or_no_name'} = 'no category no name
 only category: 
 no name
 
-a: b c d 
+a: b c d
 deffnx_category: 
 with deffnx missing category or name
 ';

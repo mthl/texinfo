@@ -790,6 +790,14 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                     {
                       'text' => 'CCC'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defivar',
@@ -1154,6 +1162,14 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                     {
                       'text' => 'CCC'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defivar',
@@ -1471,6 +1487,14 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                     'arg',
                     {
                       'text' => 'CCC'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

@@ -1846,6 +1846,14 @@ $result_trees{'commands_and_spaces'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',

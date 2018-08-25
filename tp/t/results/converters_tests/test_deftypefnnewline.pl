@@ -180,6 +180,14 @@ $result_trees{'test_deftypefnnewline'} = {
                     {
                       'text' => 'arguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefun',
@@ -333,6 +341,14 @@ $result_trees{'test_deftypefnnewline'} = {
                     'name',
                     {
                       'text' => 'arg'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -570,6 +586,14 @@ $result_trees{'test_deftypefnnewline'} = {
                     {
                       'text' => 'arguments2...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefun',
@@ -723,6 +747,14 @@ $result_trees{'test_deftypefnnewline'} = {
                     'name',
                     {
                       'text' => 'arg2'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

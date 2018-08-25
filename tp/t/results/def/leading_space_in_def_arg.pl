@@ -92,6 +92,14 @@ $result_trees{'leading_space_in_def_arg'} = {
                 {
                   'text' => 'arg'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

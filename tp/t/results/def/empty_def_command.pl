@@ -59,6 +59,14 @@ $result_trees{'empty_def_command'} = {
                 {
                   'text' => 'deffn'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -234,6 +242,14 @@ $result_trees{'empty_def_command'} = {
                 {
                   'text' => 'deffnx'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -315,6 +331,14 @@ $result_trees{'empty_def_command'} = {
                 'name',
                 {
                   'text' => 'deffnx'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],

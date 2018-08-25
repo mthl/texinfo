@@ -126,6 +126,14 @@ $result_trees{'block_not_matching'} = {
                 {
                   'text' => '$filehandle'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

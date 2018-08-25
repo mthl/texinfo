@@ -107,6 +107,14 @@ $result_trees{'def_in_style_command'} = {
                 {
                   'text' => 'args...'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'defun',

@@ -2273,24 +2273,6 @@ sub _parse_float_type($)
   return 0;
 }
 
-# Return array, first element spaces, next element non-space.
-sub _next_bracketed_or_word
-{
-  my ($contents) = @_;
-  my ($spaces, $arg);
-
-  my $next = shift @$contents;
-  if (!defined($next->{'type'}) or $next->{'type'} ne 'spaces') {
-    $arg = $next;
-  } else {
-    $spaces = $next;
-    if (@$contents) {
-      $arg = shift @$contents;
-    }
-  }
-  return ($spaces, $arg);
-}
-
 # split non-space text elements into strings without [ ] ( ) , and single
 # character strings with one of them
 sub _split_delimiters
@@ -2448,13 +2430,9 @@ sub _parse_def($$$)
       shift @contents;
       $arg = shift (@args);
     } elsif ($token->{'type'} and $token->{'type'} eq 'spaces') {
-      if ($token->{'text'} and $token->{'text'} ne "\n") {
+      if ($token->{'text'}) {#  and $token->{'text'} ne "\n") {
         if ($token->{'text'} =~ /\n$/) {
-          # copy, in order not to change in the main tree
-          # TODO: be neater either always to have trailing spaces or never
-          # have them included.
-          $token = { %{$token} };
-          $token->{'text'} =~ s/\n$//;
+          $token->{'type'} = 'spaces_at_end';
         }
         push @result, ['spaces', $token];
         shift @contents;
@@ -2486,13 +2464,9 @@ sub _parse_def($$$)
       $spaces = $next_token;
       $next_token = shift @contents;
     }
-    if (defined($spaces) and $spaces->{'text'} ne "\n") {
+    if (defined($spaces)) {
       if ($spaces->{'text'} =~ /\n$/) {
-        # copy, in order not to change in the main tree
-        # TODO: be neater either always to have trailing spaces or never
-        # have them included.
-        $spaces = { %{$spaces} };
-        $spaces->{'text'} =~ s/\n$//;
+        $spaces->{'type'} = 'spaces_at_end';
       }
       push @args_results, ['spaces', $spaces]
     }

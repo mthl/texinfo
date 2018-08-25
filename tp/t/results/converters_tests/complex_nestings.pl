@@ -206,6 +206,14 @@ $result_trees{'complex_nestings'} = {
                       [
                         'arg',
                         {}
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
                       ]
                     ],
                     'def_command' => 'defun',
@@ -333,6 +341,14 @@ $result_trees{'complex_nestings'} = {
                         'arg',
                         {
                           'text' => 'args'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
                         }
                       ]
                     ],
@@ -514,6 +530,14 @@ $result_trees{'complex_nestings'} = {
                                 {
                                   'text' => 'args'
                                 }
+                              ],
+                              [
+                                'spaces',
+                                {
+                                  'text' => '
+',
+                                  'type' => 'spaces_at_end'
+                                }
                               ]
                             ],
                             'def_command' => 'deffn',
@@ -625,6 +649,14 @@ $result_trees{'complex_nestings'} = {
                                         'arg',
                                         {
                                           'text' => 'variable-name'
+                                        }
+                                      ],
+                                      [
+                                        'spaces',
+                                        {
+                                          'text' => '
+',
+                                          'type' => 'spaces_at_end'
                                         }
                                       ]
                                     ],
@@ -751,6 +783,14 @@ $result_trees{'complex_nestings'} = {
                                         'arg',
                                         {
                                           'text' => 'other-variable'
+                                        }
+                                      ],
+                                      [
+                                        'spaces',
+                                        {
+                                          'text' => '
+',
+                                          'type' => 'spaces_at_end'
                                         }
                                       ]
                                     ],

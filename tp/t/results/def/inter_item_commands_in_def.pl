@@ -116,6 +116,14 @@ $result_trees{'inter_item_commands_in_def'} = {
                 {
                   'text' => 'g'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -262,8 +270,9 @@ $result_trees{'inter_item_commands_in_def'} = {
               [
                 'spaces',
                 {
-                  'text' => '  ',
-                  'type' => 'spaces'
+                  'text' => '  
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -458,6 +467,14 @@ $result_trees{'inter_item_commands_in_def'} = {
                 'arg',
                 {
                   'text' => 'truc'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -712,7 +729,7 @@ In deff item.
 
 $result_texts{'inter_item_commands_in_def'} = 'fset: i a g
 
-Command: log trap1   
+Command: log trap1 
 cmde2: id i ule truc
 
 In deff item.

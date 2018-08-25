@@ -152,6 +152,14 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                         {
                           'text' => 'arg'
                         }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
                       ]
                     ],
                     'def_command' => 'defun',
@@ -253,6 +261,14 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                         'arg',
                         {
                           'text' => 'arg'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
                         }
                       ]
                     ],

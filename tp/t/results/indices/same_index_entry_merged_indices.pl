@@ -233,6 +233,14 @@ $result_trees{'same_index_entry_merged_indices'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -380,6 +388,14 @@ $result_trees{'same_index_entry_merged_indices'} = {
                     'name',
                     {
                       'text' => 'mmm-mode'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

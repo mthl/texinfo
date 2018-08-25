@@ -406,6 +406,14 @@ $result_trees{'colon_in_index_entry'} = {
                     {
                       'text' => 'f'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvr',
@@ -560,6 +568,14 @@ $result_trees{'colon_in_index_entry'} = {
                     'arg',
                     {
                       'text' => 'o'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

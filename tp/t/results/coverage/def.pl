@@ -95,6 +95,14 @@ $result_trees{'def'} = {
                 {
                   'text' => 'a--rguments...'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -382,6 +390,14 @@ $result_trees{'def'} = {
                 {
                   'text' => 'so'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -591,6 +607,14 @@ $result_trees{'def'} = {
                 {
                   'text' => 'g'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -700,6 +724,14 @@ $result_trees{'def'} = {
               [
                 'arg',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -810,6 +842,14 @@ $result_trees{'def'} = {
               [
                 'arg',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -927,8 +967,9 @@ $result_trees{'def'} = {
               [
                 'spaces',
                 {
-                  'text' => '  ',
-                  'type' => 'spaces'
+                  'text' => '  
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1045,6 +1086,14 @@ $result_trees{'def'} = {
               [
                 'arg',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -1160,6 +1209,14 @@ $result_trees{'def'} = {
                 'arg',
                 {
                   'text' => 'truc'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1299,6 +1356,14 @@ $result_trees{'def'} = {
                 {
                   'text' => 'truc'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -1377,6 +1442,14 @@ $result_trees{'def'} = {
                 'name',
                 {
                   'text' => 'machin'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1462,6 +1535,14 @@ $result_trees{'def'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -1544,6 +1625,14 @@ $result_trees{'def'} = {
                 'name',
                 {
                   'text' => 'machin'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1692,6 +1781,14 @@ $result_trees{'def'} = {
                 'arg',
                 {
                   'text' => 'comment'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1866,6 +1963,14 @@ $result_trees{'def'} = {
                 {
                   'text' => 'item'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -2038,6 +2143,14 @@ $result_trees{'def'} = {
                 'arg',
                 {
                   'text' => 'deffn'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -2429,7 +2542,7 @@ def-fn
 fset: i a g
 cmde: truc 
 Command: log trap 
-Command: log trap1   
+Command: log trap1 
 Command: log trap2 
 cmde: id ule truc
 cmde2: id i ule truc
@@ -2621,7 +2734,7 @@ $result_converted{'html_text'}->{'def'} = '
 <dt><a name="index-i"></a>fset: <strong><var>i</var></strong> <em>a g</em></dt>
 <dt><a name="index-truc"></a>cmde: <strong>truc</strong> <em></em></dt>
 <dt><a name="index-log-trap"></a>Command: <strong>log trap</strong> <em></em></dt>
-<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong> <em>  </em></dt>
+<dt><a name="index-log-trap1"></a>Command: <strong>log trap1</strong> <em></em></dt>
 <dt><a name="index-log-trap2"></a>Command: <strong>log trap2</strong> <em></em></dt>
 <dt><a name="index-id-ule"></a>cmde: <strong><b>id ule</b></strong> <em>truc</em></dt>
 <dt><a name="index-id-i-ule"></a>cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong> <em>truc</em></dt>
@@ -2676,7 +2789,7 @@ $result_converted{'docbook'}->{'def'} = '
 <synopsis><indexterm role="fn"><primary><replaceable>i</replaceable></primary></indexterm><phrase role="category"><emphasis role="bold">fset</emphasis>:</phrase> <function><replaceable>i</replaceable></function> <replaceable>a</replaceable> <replaceable>g</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>truc</primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function>truc</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap</function> <replaceable></replaceable></synopsis>
-<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable>  </synopsis>
+<synopsis><indexterm role="fn"><primary>log trap1</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap1</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary>log trap2</primary></indexterm><phrase role="category"><emphasis role="bold">Command</emphasis>:</phrase> <function>log trap2</function> <replaceable></replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde</emphasis>:</phrase> <function><emphasis role="bold">id ule</emphasis></function> <replaceable>truc</replaceable></synopsis>
 <synopsis><indexterm role="fn"><primary><emphasis role="bold">id &#8216;<literal>i</literal>&#8217; ule</emphasis></primary></indexterm><phrase role="category"><emphasis role="bold">cmde2</emphasis>:</phrase> <function><emphasis role="bold">id &#8216;i&#8217; ule</emphasis></function> <replaceable>truc</replaceable></synopsis>

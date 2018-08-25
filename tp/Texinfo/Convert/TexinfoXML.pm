@@ -1503,6 +1503,7 @@ sub _convert($$;$)
           my $type = $arg->[0];
           my $content = $self->_convert($arg->[1]);
           if ($type eq 'spaces') {
+            $content =~ s/\n$//;
             $result .= $content;
           } else {
             my $attribute = [];

@@ -87,6 +87,14 @@ $result_trees{'def_in_example'} = {
                     {
                       'text' => 'arg'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defun',

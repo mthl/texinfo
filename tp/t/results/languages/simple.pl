@@ -182,6 +182,14 @@ $result_trees{'simple'} = {
                     {
                       'text' => 'CCC'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defivar',

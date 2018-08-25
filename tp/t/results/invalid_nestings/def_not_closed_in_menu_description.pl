@@ -122,6 +122,14 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                             {
                               'text' => 'chose'
                             }
+                          ],
+                          [
+                            'spaces',
+                            {
+                              'text' => '
+',
+                              'type' => 'spaces_at_end'
+                            }
                           ]
                         ],
                         'def_command' => 'deffn',

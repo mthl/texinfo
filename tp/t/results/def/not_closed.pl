@@ -79,6 +79,14 @@ $result_trees{'not_closed'} = {
                 {
                   'text' => 'machin'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -180,6 +188,14 @@ $result_trees{'not_closed'} = {
                 'arg',
                 {
                   'text' => 'args'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -306,6 +322,14 @@ $result_trees{'not_closed'} = {
                         'arg',
                         {
                           'text' => 'bidule'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
                         }
                       ]
                     ],

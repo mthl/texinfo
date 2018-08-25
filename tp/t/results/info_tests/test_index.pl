@@ -666,6 +666,14 @@ $result_trees{'test_index'} = {
                     {
                       'text' => 'g'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -784,6 +792,14 @@ $result_trees{'test_index'} = {
                     'arg',
                     {
                       'text' => 'chose'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

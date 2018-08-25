@@ -263,6 +263,14 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
                           [
                             'arg',
                             {}
+                          ],
+                          [
+                            'spaces',
+                            {
+                              'text' => '
+',
+                              'type' => 'spaces_at_end'
+                            }
                           ]
                         ],
                         'def_command' => 'deffn',

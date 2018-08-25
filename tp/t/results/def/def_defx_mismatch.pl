@@ -149,6 +149,14 @@ $result_trees{'def_defx_mismatch'} = {
               [
                 'arg',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'defun',
@@ -322,6 +330,14 @@ $result_trees{'def_defx_mismatch'} = {
                 'arg',
                 {
                   'text' => 'args'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],

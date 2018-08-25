@@ -1,5 +1,14 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (parse_def): Change the type
+	of final spaces elements to 'spaces_at_end'.  This leads to
+	the spaces being ignored in some output formats.
+	(_next_bracketed_or_word): Remove unused.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <def commands>:
+	Strip off a final newline.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_split_delimiters): New function.
 	(_parse_def): Do not produce def_args array via an intermediate
 	array of a similar format.  Use "map" with _split_delimiters to

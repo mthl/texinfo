@@ -116,6 +116,14 @@ $result_trees{'empty_def_arguments'} = {
                 {
                   'text' => 'g'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -217,8 +225,9 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'spaces',
                 {
-                  'text' => '    ',
-                  'type' => 'spaces'
+                  'text' => '    
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -296,6 +305,14 @@ $result_trees{'empty_def_arguments'} = {
                 {
                   'text' => 'aaa'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -369,6 +386,14 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -413,6 +438,14 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'category',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -484,6 +517,14 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -532,6 +573,14 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'category',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -595,6 +644,14 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

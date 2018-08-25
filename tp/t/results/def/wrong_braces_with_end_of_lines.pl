@@ -329,6 +329,14 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
                 {
                   'text' => 'args'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

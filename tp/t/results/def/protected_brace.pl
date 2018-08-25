@@ -58,6 +58,14 @@ $result_trees{'protected_brace'} = {
               [
                 'name',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

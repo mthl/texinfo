@@ -182,6 +182,14 @@ $result_trees{'space_in_def_for_index'} = {
                     {
                       'text' => 'argument2...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -296,6 +304,14 @@ $result_trees{'space_in_def_for_index'} = {
                     'arg',
                     {
                       'text' => 'arg3'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

@@ -105,6 +105,14 @@ $result_trees{'empty_index_entry'} = {
                   [
                     'name',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',

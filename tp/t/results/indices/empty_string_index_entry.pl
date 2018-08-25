@@ -383,6 +383,14 @@ $result_trees{'empty_string_index_entry'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defun',
@@ -522,6 +530,14 @@ $result_trees{'empty_string_index_entry'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defun',

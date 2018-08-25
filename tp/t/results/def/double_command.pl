@@ -253,6 +253,14 @@ $result_trees{'double_command'} = {
                           'text' => ')',
                           'type' => 'delimiter'
                         }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
                       ]
                     ],
                     'def_command' => 'deffn',
@@ -591,6 +599,14 @@ $result_trees{'double_command'} = {
                             'name',
                             {
                               'text' => 'd--efvr_name'
+                            }
+                          ],
+                          [
+                            'spaces',
+                            {
+                              'text' => '
+',
+                              'type' => 'spaces_at_end'
                             }
                           ]
                         ],

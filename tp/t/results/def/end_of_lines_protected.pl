@@ -237,6 +237,14 @@ $result_trees{'end_of_lines_protected'} = {
               [
                 'arg',
                 {}
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',

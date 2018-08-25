@@ -311,6 +311,14 @@ $result_trees{'ref_in_def'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -571,6 +579,14 @@ $result_trees{'ref_in_def'} = {
                   [
                     'arg',
                     {}
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',

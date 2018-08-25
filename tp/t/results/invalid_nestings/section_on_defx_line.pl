@@ -105,8 +105,9 @@ $result_trees{'section_on_defx_line'} = {
                   [
                     'spaces',
                     {
-                      'text' => ' ',
-                      'type' => 'spaces'
+                      'text' => ' 
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -286,7 +287,7 @@ Something
 ';
 
 
-$result_texts{'section_on_defx_line'} = 'h: j k l 
+$result_texts{'section_on_defx_line'} = 'h: j k l
 1 s
 ===
 

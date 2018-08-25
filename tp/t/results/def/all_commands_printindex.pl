@@ -90,6 +90,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'd--efvr_name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvr',
@@ -282,6 +290,14 @@ $result_trees{'all_commands_printindex'} = {
                     'typearg',
                     {
                       'text' => 'a--rguments...'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -497,6 +513,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--rguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeop',
@@ -680,6 +704,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'd--eftypevr_name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypevr',
@@ -853,6 +885,14 @@ $result_trees{'all_commands_printindex'} = {
                     'name',
                     {
                       'text' => 'd--efcv_name'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -1048,6 +1088,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--rguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defop',
@@ -1230,6 +1278,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--ttributes...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftp',
@@ -1401,6 +1457,14 @@ $result_trees{'all_commands_printindex'} = {
                     'arg',
                     {
                       'text' => 'a--rguments...'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -1574,6 +1638,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--rguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defmac',
@@ -1746,6 +1818,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--rguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defspec',
@@ -1898,6 +1978,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'd--efvar_name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defvar',
@@ -2049,6 +2137,14 @@ $result_trees{'all_commands_printindex'} = {
                     'name',
                     {
                       'text' => 'd--efopt_name'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -2242,6 +2338,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'a--rguments...'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypefun',
@@ -2415,6 +2519,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'd--eftypevar_name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypevar',
@@ -2587,6 +2699,14 @@ $result_trees{'all_commands_printindex'} = {
                     'name',
                     {
                       'text' => 'd--efivar_name'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -2789,6 +2909,14 @@ $result_trees{'all_commands_printindex'} = {
                     {
                       'text' => 'd--eftypeivar_name'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deftypeivar',
@@ -2990,6 +3118,14 @@ $result_trees{'all_commands_printindex'} = {
                     'arg',
                     {
                       'text' => 'a--rguments...'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],
@@ -3211,6 +3347,14 @@ $result_trees{'all_commands_printindex'} = {
                     'typearg',
                     {
                       'text' => 'a--rguments...'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

@@ -157,6 +157,14 @@ $result_trees{'empty_deftype'} = {
                   'text' => ')',
                   'type' => 'delimiter'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deftypefun',
@@ -378,6 +386,14 @@ $result_trees{'empty_deftype'} = {
                 {
                   'text' => ')',
                   'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -649,6 +665,14 @@ $result_trees{'empty_deftype'} = {
                   'text' => ')',
                   'type' => 'delimiter'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deftypemethod',
@@ -899,6 +923,14 @@ $result_trees{'empty_deftype'} = {
                 {
                   'text' => ')',
                   'type' => 'delimiter'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],

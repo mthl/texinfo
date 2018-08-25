@@ -153,6 +153,14 @@ $result_trees{'empty_deftypeop_name'} = {
                     {}
                   ]
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deftypeop',

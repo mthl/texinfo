@@ -123,8 +123,9 @@ $result_trees{'wrong_braces_simple'} = {
               [
                 'spaces',
                 {
-                  'text' => ' ',
-                  'type' => 'spaces'
+                  'text' => ' 
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -340,6 +341,14 @@ $result_trees{'wrong_braces_simple'} = {
                 'arg',
                 {
                   'text' => 'after'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -976,6 +985,14 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => 'e'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -1122,8 +1139,9 @@ $result_trees{'wrong_braces_simple'} = {
               [
                 'spaces',
                 {
-                  'text' => ' ',
-                  'type' => 'spaces'
+                  'text' => ' 
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1287,6 +1305,14 @@ $result_trees{'wrong_braces_simple'} = {
                 'arg',
                 {
                   'text' => 'after'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
@@ -1873,7 +1899,7 @@ $result_texis{'wrong_braces_simple'} = '@deffn truc machin bidule chose and
 ';
 
 
-$result_texts{'wrong_braces_simple'} = 'truc: machin bidule chose and 
+$result_texts{'wrong_braces_simple'} = 'truc: machin bidule chose and
 
 truc: machin bidule chose and  after
 
@@ -1882,7 +1908,7 @@ truc: machin bidule chose and
 truc: machin bidule chose and and after
 
 a: b c d e
-truc: machin bidule chose and 
+truc: machin bidule chose and
 truc: machin bidule chose and  after
 truc: machin bidule chose and 
 truc: machin bidule chose and and after

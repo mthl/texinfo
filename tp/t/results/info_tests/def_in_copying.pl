@@ -246,6 +246,14 @@ $result_trees{'def_in_copying'} = {
                         {
                           'text' => 'cc'
                         }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
                       ]
                     ],
                     'def_command' => 'deffn',
@@ -348,6 +356,14 @@ $result_trees{'def_in_copying'} = {
                         'arg',
                         {
                           'text' => 'ccx'
+                        }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
                         }
                       ]
                     ],
@@ -583,6 +599,14 @@ $result_trees{'def_in_copying'} = {
                     {
                       'text' => 'cc'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -685,6 +709,14 @@ $result_trees{'def_in_copying'} = {
                     'arg',
                     {
                       'text' => 'ccx'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

@@ -155,6 +155,14 @@ $result_trees{'multiple'} = {
                         {
                           'text' => 'b'
                         }
+                      ],
+                      [
+                        'spaces',
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces_at_end'
+                        }
                       ]
                     ],
                     'def_command' => 'defivar',
@@ -428,6 +436,14 @@ $result_trees{'multiple'} = {
                     {
                       'text' => 'CCC'
                     }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
+                    }
                   ]
                 ],
                 'def_command' => 'defivar',
@@ -677,6 +693,14 @@ $result_trees{'multiple'} = {
                     'arg',
                     {
                       'text' => 'CCC'
+                    }
+                  ],
+                  [
+                    'spaces',
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces_at_end'
                     }
                   ]
                 ],

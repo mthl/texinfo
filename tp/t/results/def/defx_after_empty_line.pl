@@ -116,6 +116,14 @@ $result_trees{'defx_after_empty_line'} = {
                 {
                   'text' => 'g'
                 }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
+                }
               ]
             ],
             'def_command' => 'deffn',
@@ -235,6 +243,14 @@ $result_trees{'defx_after_empty_line'} = {
                 'arg',
                 {
                   'text' => 'machin...'
+                }
+              ],
+              [
+                'spaces',
+                {
+                  'text' => '
+',
+                  'type' => 'spaces_at_end'
                 }
               ]
             ],
