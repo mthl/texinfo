@@ -69,6 +69,7 @@ BEGIN
     # To find Texinfo::ModulePath
     if (!defined($ENV{'top_builddir'})) {
       $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
+      $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir);
     }
     unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
