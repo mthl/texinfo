@@ -1,5 +1,12 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Structuring.pm (new_block_command)
+	* tp/Texinfo/Parser.pm (_parse_texi, _end_line):
+	Do not set 'command' extra value on 'empty_line_after_command'
+	or 'empty_spaces_after_command'.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Remove 
 	conditional block that checks for a raw formatting command (e.g.
 	@html if --html is given to texi2any) that is being expanded.  

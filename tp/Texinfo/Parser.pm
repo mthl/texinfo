@@ -3248,7 +3248,6 @@ sub _end_line($$$)
           = _close_commands($self, $current, $line_nr, $end_command);
         my $inline_copying;
         if ($closed_command) {
-          $misc_cmd->{'extra'}->{'command'} = $closed_command;
           $closed_command->{'extra'}->{'end_command'} = $misc_cmd;
           _close_command_cleanup($self, $closed_command);
           $end->{'parent'} = $closed_command;
@@ -3427,7 +3426,6 @@ sub _start_empty_line_after_command($$$) {
                                     'parent' => $current, 
                                   };
   if (defined($command)) {
-    $current->{'contents'}->[-1]->{'extra'} = {'command' => $command};
     $command->{'extra'}->{'spaces_after_command'} = $current->{'contents'}->[-1];
   }
   return $line;
@@ -4359,7 +4357,7 @@ sub _parse_texi($;$)
                 = { 'type' => 'empty_spaces_after_command',
                     'text' => ' ',
                     'parent' => $misc_line_args,
-                    'extra' => {'command' => $misc} };
+                  };
               $misc->{'extra'}->{'spaces_after_command'} 
                  = $spaces_after_command;
               $misc_line_args->{'contents'} = [ $spaces_after_command,

@@ -1331,18 +1331,14 @@ sub new_block_command($$$)
   push @{$end->{'args'}->[0]->{'contents'}},
           ({'type' => 'empty_spaces_after_command',
            'text' => ' ',
-           'extra' => {'command' => $end},
            'parent' => $end->{'args'}->[0]},
           {'text' => $command_name, 'parent' => $end->{'args'}->[0]},
           {'type' => 'spaces_at_end', 'text' => "\n", 
            'parent' => $end->{'args'}->[0]});
   my $new_block = {'cmdname' => $command_name, 'parent' => $parent,
                   'extra'=>{'end_command' => $end}};
-  $end->{'extra'}->{'command'} = $new_block;
-  $new_block->{'contents'} = [{'extra' => 
-                                     {'command' => $new_block},
-                              'type' => 'empty_line_after_command',
-                              'text' => "\n"},
+  $new_block->{'contents'} = [{'type' => 'empty_line_after_command',
+                               'text' => "\n"},
                               @$block_contents, $end];
   foreach my $content (@{$new_block->{'contents'}}) {
     $content->{'parent'} = $new_block;
