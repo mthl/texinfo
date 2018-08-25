@@ -1,5 +1,18 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_def): Reorder some code.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_split_def_args): New function.
+	(_parse_def): Use "map" with _split_def_args to create the
+	array of def line contents.  This does all at once what
+	_next_bracketed_or_word did across all the times it was called.
+	(_next_bracketed_or_word): Collect elements from the array that
+	has already been processed.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (new_block_command)
 	* tp/Texinfo/Parser.pm (_parse_texi, _end_line):
 	Do not set 'command' extra value on 'empty_line_after_command'

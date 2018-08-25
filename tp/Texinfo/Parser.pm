@@ -2355,34 +2355,7 @@ sub _parse_def($$$)
     $command = $def_aliases{$command};
   }
   @contents = map (_split_def_args($self, $_), @contents );
-  
-  my @result;
-  my @args = @{$def_map{$command}};
-  my $arg_type;
-  # Even when $arg_type is not set, that is for def* that is not documented
-  # to take args, everything is as is arg_type was set to arg.
-  $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
-  my @def_line = ();
-  # tokenize the line.  We need to do that in order to be able to 
-  # look ahead for spaces.
-  while (@contents) {
-    my ($spaces, $next) = _next_bracketed_or_word (\@contents);
-    # if there is no argument at all, the leading space is not associated
-    # to the @-command, so end up being gathered here.  We do not want to
-    # have this leading space appear in the arguments ever, so we ignore
-    # it here.
-    if (defined($spaces)) {
-      push @def_line, ['spaces', $spaces] if scalar(@def_line) != 0;
-      push @new_contents, $spaces;
-    }
-    last if (!defined($next));
-    if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
-      push @def_line, ['bracketed', $next];
-    } else {
-      push @def_line, ['text_or_cmd', $next];
-    }
-    push @new_contents, $next;
-  }
+  @new_contents = @contents;
   if (@prepended_content) {
     # Remove the @prepended_content added above.
     splice @new_contents, 0, scalar (@prepended_content);
@@ -2397,6 +2370,35 @@ sub _parse_def($$$)
               or $new_contents[$i]->{'type'} ne 'empty_spaces_after_command');
   }
   $current->{'contents'} = \@new_contents;
+  
+  my @def_line = ();
+  # tokenize the line.  We need to do that in order to be able to 
+  # look ahead for spaces.
+  while (@contents) {
+    my ($spaces, $next) = _next_bracketed_or_word (\@contents);
+    # if there is no argument at all, the leading space is not associated
+    # to the @-command, so end up being gathered here.  We do not want to
+    # have this leading space appear in the arguments ever, so we ignore
+    # it here.
+    if (defined($spaces)) {
+      push @def_line, ['spaces', $spaces] if scalar(@def_line) != 0;
+    }
+    last if (!defined($next));
+    if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
+      push @def_line, ['bracketed', $next];
+    } else {
+      push @def_line, ['text_or_cmd', $next];
+    }
+  }
+
+  my @result;
+  my @args = @{$def_map{$command}};
+  my $arg_type;
+
+
+  $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
+  # If $arg_type is not set (for @def* commands that are not documented
+  # to take args), everything happens as if arg_type was set to 'arg'.
 
   my $argument_content = [];
   my $arg = shift (@args);
