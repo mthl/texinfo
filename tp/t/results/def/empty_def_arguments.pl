@@ -223,8 +223,7 @@ $result_trees{'empty_def_arguments'} = {
               [
                 'spaces',
                 {
-                  'text' => '    
-',
+                  'text' => '    ',
                   'type' => 'spaces'
                 }
               ]
