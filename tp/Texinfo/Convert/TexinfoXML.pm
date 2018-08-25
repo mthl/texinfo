@@ -1,6 +1,6 @@
 # TexinfoXML.pm: output tree as Texinfo XML.
 #
-# Copyright 2011, 2012, 2013, 2016 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2016, 2017, 2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -729,15 +729,6 @@ sub _convert($$;$)
         return '';
       } else {
         return $root->{'text'};
-      }
-    } elsif ($root->{'type'} 
-             and $root->{'type'} eq 'empty_line_after_command'
-             and $root->{'extra'}->{'command'}) {
-      my $command_name = $root->{'extra'}->{'command'}->{'cmdname'};
-      
-      if ($Texinfo::Common::format_raw_commands{$command_name} and 
-          $self->{'expanded_formats_hash'}->{$command_name}) {
-        return '';
       }
     }
     $result = $self->format_text($root);

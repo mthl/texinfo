@@ -1,5 +1,13 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Remove 
+	conditional block that checks for a raw formatting command (e.g.
+	@html if --html is given to texi2any) that is being expanded.  
+	It appears that this code is never executed as an earlier clause
+	of the "if" statement is executed if this format is being expanded.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <CLOSED raw>: Do
 	not add a 'command' extra value on the 'empty_line_after_command'.
 
