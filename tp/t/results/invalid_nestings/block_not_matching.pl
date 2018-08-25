@@ -78,9 +78,23 @@ $result_trees{'block_not_matching'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
-                  'parent' => {},
-                  'text' => ' print_navigation $filehandle
-'
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'print_navigation'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => '$filehandle'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'spaces'
                 }
               ],
               'parent' => {},
@@ -617,7 +631,6 @@ $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'block_not_matching'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];

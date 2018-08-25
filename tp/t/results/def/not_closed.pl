@@ -23,9 +23,26 @@ $result_trees{'not_closed'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
-                  'parent' => {},
-                  'text' => 'truc bidule machin
-'
+                  'text' => 'truc'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'bidule'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'machin'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'spaces'
                 }
               ],
               'parent' => {},
@@ -110,9 +127,26 @@ $result_trees{'not_closed'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
-                  'parent' => {},
-                  'text' => 'truc chose args
-'
+                  'text' => 'truc'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'chose'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'args'
+                },
+                {
+                  'text' => '
+',
+                  'type' => 'spaces'
                 }
               ],
               'parent' => {},
@@ -204,9 +238,26 @@ $result_trees{'not_closed'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
-                          'parent' => {},
-                          'text' => 'type1 var bidule
-'
+                          'text' => 'type1'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'text' => 'var'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'text' => 'bidule'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces'
                         }
                       ],
                       'parent' => {},
@@ -320,7 +371,6 @@ $result_trees{'not_closed'} = {
 };
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed'}{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
@@ -330,7 +380,6 @@ $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[0][1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'def_args'}[2][1];
@@ -341,7 +390,6 @@ $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];

@@ -29,8 +29,25 @@ $result_trees{'end_of_line_protect_at_end'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
-                  'parent' => {},
-                  'text' => 'category2 deffn_name2 arguments2 '
+                  'text' => 'category2'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'deffn_name2'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
+                },
+                {
+                  'text' => 'arguments2'
+                },
+                {
+                  'text' => ' ',
+                  'type' => 'spaces'
                 }
               ],
               'parent' => {},
@@ -122,7 +139,6 @@ $result_trees{'end_of_line_protect_at_end'} = {
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'};
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];

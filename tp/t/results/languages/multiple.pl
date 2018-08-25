@@ -82,9 +82,26 @@ $result_trees{'multiple'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
-                          'parent' => {},
-                          'text' => 'copying a b
-'
+                          'text' => 'copying'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'text' => 'a'
+                        },
+                        {
+                          'text' => ' ',
+                          'type' => 'spaces'
+                        },
+                        {
+                          'text' => 'b'
+                        },
+                        {
+                          'text' => '
+',
+                          'type' => 'spaces'
                         }
                       ],
                       'parent' => {},
@@ -352,9 +369,26 @@ $result_trees{'multiple'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'fr BBB CCC
-'
+                      'text' => 'fr'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'BBB'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'CCC'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -595,9 +629,26 @@ $result_trees{'multiple'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'pt BBB CCC
-'
+                      'text' => 'pt'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'BBB'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'CCC'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -807,7 +858,6 @@ $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'extra'}{
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2];
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
@@ -853,7 +903,6 @@ $result_trees{'multiple'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'m
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
@@ -892,7 +941,6 @@ $result_trees{'multiple'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_tree
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'multiple'}{'contents'}[1];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple'}{'contents'}[1]{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1];

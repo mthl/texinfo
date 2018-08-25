@@ -2283,9 +2283,9 @@ sub _next_bracketed_or_word($$)
   $spaces = shift @{$contents} if (defined($contents->[0]->{'text'}) and 
                                      $contents->[0]->{'text'} !~ /\S/);
   if (defined($spaces)) {
+    delete $spaces->{'parent'};
     #print STDERR "Gather spaces only text\n";
     $spaces->{'type'} = 'spaces';
-    chomp $spaces->{'text'};
     $spaces = undef if ($spaces->{'text'} eq '');
   }
   return ($spaces, undef) if (!scalar(@{$contents}));
@@ -2314,15 +2314,22 @@ sub _next_bracketed_or_word($$)
 # definition line parsing
 sub _parse_def($$$)
 {
-  my ($self, $command, $contents) = @_;
+  my ($self, $command, $current) = @_;
+
+  my $contents = $current->{'contents'};
+  my $empty_spaces_after_command;
   
+  my @new_contents;
   my @contents = @$contents;
-  shift @contents if ($contents[0] and $contents[0]->{'type'}
-                    and $contents[0]->{'type'} eq 'empty_spaces_after_command');
+  if ($contents[0] and $contents[0]->{'type'}
+        and $contents[0]->{'type'} eq 'empty_spaces_after_command') {
+    $empty_spaces_after_command = shift @contents;
+  }
+
+  my @prepended_content;
   if ($def_aliases{$command}) {
     my $real_command = $def_aliases{$command};
     my $prepended = $def_map{$command}->{$real_command};
-    my @prepended_content;
 
 
     my $bracketed = { 'type' => 'bracketed' };
@@ -2337,11 +2344,6 @@ sub _parse_def($$$)
     unshift @contents, @prepended_content;
 
     $command = $def_aliases{$command};
-  }
-  foreach (my $i = 0; $i < scalar(@contents); $i++) {
-    # copy, to avoid changing the original
-    $contents[$i] = {'text' => $contents[$i]->{'text'}} 
-       if (defined($contents[$i]->{'text'}));
   }
   my @result;
   my @args = @{$def_map{$command}};
@@ -2358,14 +2360,33 @@ sub _parse_def($$$)
     # to the @-command, so end up being gathered here.  We do not want to
     # have this leading space appear in the arguments ever, so we ignore
     # it here.
-    push @def_line, ['spaces', $spaces] if ((defined($spaces)) and scalar(@def_line) != 0);
+    if (defined($spaces)) {
+      push @def_line, ['spaces', $spaces] if scalar(@def_line) != 0;
+      push @new_contents, $spaces;
+    }
     last if (!defined($next));
     if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
       push @def_line, ['bracketed', $next];
     } else {
       push @def_line, ['text_or_cmd', $next];
     }
+    push @new_contents, $next;
   }
+  if (@prepended_content) {
+    # Remove the @prepended_content added above.
+    splice @new_contents, 0, scalar (@prepended_content);
+  }
+  unshift @new_contents, $empty_spaces_after_command
+    if $empty_spaces_after_command; 
+  foreach (my $i = 0; $i < scalar(@new_contents); $i++) {
+    # copy, to avoid changing in the code below.
+    $new_contents[$i] = { %{$new_contents[$i]} }
+     if $new_contents[$i]->{'text'}
+         and (!$new_contents[$i]->{'type'}
+              or $new_contents[$i]->{'type'} ne 'empty_spaces_after_command');
+  }
+  $current->{'contents'} = \@new_contents;
+
   my $argument_content = [];
   my $arg = shift (@args);
   while (@def_line) {
@@ -2391,7 +2412,18 @@ sub _parse_def($$$)
       push @result, [$arg, $bracketed->[1]];
       $arg = shift (@args);
     } elsif ($token->[0] eq 'spaces') {
-      push @result, shift @def_line;
+      if ($token->[1]->{'text'} and $token->[1]->{'text'} ne "\n") {
+        if ($token->[1]->{'text'} =~ /\n$/) {
+          # copy, in order not to change in the main tree
+          # TODO: be neater either always to have trailing spaces or never
+          # have them included.
+          $token->[1] = { %{$token->[1]} };
+          $token->[1]->{'text'} =~ s/\n$//;
+        }
+        push @result, shift @def_line;
+      } else {
+        last;
+      }
     } else {
       my $text_or_cmd = shift @def_line;
       push @$argument_content, $text_or_cmd->[1];
@@ -2413,7 +2445,16 @@ sub _parse_def($$$)
       $next_token = shift @def_line;
     }
     my $next = $next_token->[1];
-    push @args_results, ['spaces', $spaces] if (defined($spaces));
+    if (defined($spaces) and $spaces->{'text'} ne "\n") {
+      if ($spaces->{'text'} =~ /\n$/) {
+        # copy, in order not to change in the main tree
+        # TODO: be neater either always to have trailing spaces or never
+        # have them included.
+        $spaces = { %{$spaces} };
+        $spaces->{'text'} =~ s/\n$//;
+      }
+      push @args_results, ['spaces', $spaces]
+    }
     last if (!defined($next));
     if (defined($next->{'text'})) {
       while (1) {
@@ -2701,7 +2742,7 @@ sub _end_line($$$)
       die; 
     }
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
-    my $arguments = _parse_def($self, $def_command, $current->{'contents'});
+    my $arguments = _parse_def($self, $def_command, $current);
     if (scalar(@$arguments)) {
       $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
       my $def_parsed_hash;

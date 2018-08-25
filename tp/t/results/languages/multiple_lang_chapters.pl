@@ -739,9 +739,26 @@ $result_trees{'multiple_lang_chapters'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'AAA BBB CCC
-'
+                      'text' => 'AAA'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'BBB'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'CCC'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -1102,9 +1119,26 @@ $result_trees{'multiple_lang_chapters'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'AAA BBB CCC
-'
+                      'text' => 'AAA'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'BBB'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'CCC'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -1419,9 +1453,26 @@ $result_trees{'multiple_lang_chapters'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'AAA BBB CCC
-'
+                      'text' => 'AAA'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'BBB'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'CCC'
+                    },
+                    {
+                      'text' => '
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -2054,7 +2105,6 @@ $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[1]{'contents'
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4];
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2];
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
@@ -2115,7 +2165,6 @@ $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[1]{'contents'
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6];
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2];
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters'}{'contents'}[6]{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
@@ -2168,7 +2217,6 @@ $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'args'}[0]{'parent'} = $r
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8];
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1];
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0];
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1]{'contents'}[0]{'parent'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'multiple_lang_chapters'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];

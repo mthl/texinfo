@@ -25,9 +25,33 @@ $result_trees{'section_on_defx_line'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
-                      'parent' => {},
-                      'text' => 'h j k l 
-'
+                      'text' => 'h'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'j'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'k'
+                    },
+                    {
+                      'text' => ' ',
+                      'type' => 'spaces'
+                    },
+                    {
+                      'text' => 'l'
+                    },
+                    {
+                      'text' => ' 
+',
+                      'type' => 'spaces'
                     }
                   ],
                   'parent' => {},
@@ -235,7 +259,6 @@ $result_trees{'section_on_defx_line'} = {
 };
 $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
 $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'section_on_defx_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];

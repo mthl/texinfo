@@ -1,3 +1,23 @@
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm
+	(parse_def): Split up text elements in the main tree into 
+	separate elements.  This means in most cases, the elements in 
+	the 'def_args' hash and the elements in the main tree will be 
+	the same.  (The exceptions are when "(" or ")" is split into a 
+	"delimeter" element in def_args, and when there is trailing 
+	whitespace on a line before the LF.)
+	(next_bracketed_or_word): Include any trailing newline in the 
+	returned values.
+	(parse_def): Avoid adding elements with a trailing newline to 
+	'def_args'.
+
+	This change should only affect the main tree, not the value of 
+	the 'def_args' hash, or the output from any of the converters.
+	It is intended to reduce duplication of information in the parse 
+	tree, and to make handling of allocated memory simpler in the C 
+	replacement for this module.
+
 2018-08-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Remove gcj, info.  Add cvs.  Report from 
