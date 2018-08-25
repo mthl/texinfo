@@ -2291,6 +2291,34 @@ sub _next_bracketed_or_word
   return ($spaces, $arg);
 }
 
+# split non-space text elements into strings without [ ] ( ) , and single
+# character strings with one of them
+sub _split_delimiters
+{
+  my ($self, $root) = @_;
+
+  if (defined $root->{'type'} # 'spaces' for spaces
+      or !defined $root->{'text'}) {
+    return $root;
+  } else {
+    my @elements;
+    my $type;
+    my $chars = quotemeta '[](),';
+    my $text = $root->{'text'};
+    while (1) {
+      if ($text =~ s/^([^$chars]+)//) {
+        push @elements, {'text' => $1};
+      } elsif ($text =~ s/^([$chars])//) {
+        push @elements, {'text' => $1, 'type' => 'delimiter'};
+      } else {
+        last;
+      }
+    }
+    return @elements;
+  }
+}
+
+# split text elements into whitespace and non-whitespace
 sub _split_def_args
 {
   my ($self, $root) = @_;
@@ -2356,6 +2384,7 @@ sub _parse_def($$$)
   }
   @contents = map (_split_def_args($self, $_), @contents );
   @new_contents = @contents;
+
   if (@prepended_content) {
     # Remove the @prepended_content added above.
     splice @new_contents, 0, scalar (@prepended_content);
@@ -2370,26 +2399,14 @@ sub _parse_def($$$)
               or $new_contents[$i]->{'type'} ne 'empty_spaces_after_command');
   }
   $current->{'contents'} = \@new_contents;
-  
-  my @def_line = ();
-  # tokenize the line.  We need to do that in order to be able to 
-  # look ahead for spaces.
-  while (@contents) {
-    my ($spaces, $next) = _next_bracketed_or_word (\@contents);
+
+  if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
     # if there is no argument at all, the leading space is not associated
-    # to the @-command, so end up being gathered here.  We do not want to
-    # have this leading space appear in the arguments ever, so we ignore
-    # it here.
-    if (defined($spaces)) {
-      push @def_line, ['spaces', $spaces] if scalar(@def_line) != 0;
-    }
-    last if (!defined($next));
-    if ($next->{'type'} and $next->{'type'} eq 'bracketed_def_content') {
-      push @def_line, ['bracketed', $next];
-    } else {
-      push @def_line, ['text_or_cmd', $next];
-    }
+    # to the @-command. We do not want to have this leading space appear in the 
+    # arguments ever, so we ignore it here.
+    @contents = ();
   }
+  
 
   my @result;
   my @args = @{$def_map{$command}};
@@ -2400,12 +2417,17 @@ sub _parse_def($$$)
   # If $arg_type is not set (for @def* commands that are not documented
   # to take args), everything happens as if arg_type was set to 'arg'.
 
+  #  Fill in everything up to the args, collecting adjacent non-whitespace 
+  #  elements into a single element, e.g 'a@i{b}c'.
   my $argument_content = [];
   my $arg = shift (@args);
-  while (@def_line) {
-    my $token = $def_line[0];
+  while (@contents) {
+    my $token = $contents[0];
     # finish previous item
-    if ($token->[0] eq 'spaces' or $token->[0] eq 'bracketed') {
+    if ( $token->{'type'}
+        and ($token->{'type'} eq 'spaces'
+               or $token->{'type'} eq 'bracketed_def_content'
+               or $token->{'type'} eq 'delimiter')) {
       # we create a {'contents' =>} only if there is more than one
       # content gathered.
       if (scalar(@$argument_content)) {
@@ -2415,31 +2437,35 @@ sub _parse_def($$$)
           push @result, [$arg, $argument_content->[0]];
         }
         $argument_content = [];
-        if ($token->[0] eq 'spaces') {
+        if ($token->{'type'} eq 'spaces') {
           $arg = shift (@args);
         }
       }
     }
-    if ($token->[0] eq 'bracketed') {
-      my $bracketed = shift @def_line;
-      push @result, [$arg, $bracketed->[1]];
+
+    if ($token->{'type'} and $token->{'type'} eq 'bracketed') {
+      push @result, [$arg, $token];
+      shift @contents;
       $arg = shift (@args);
-    } elsif ($token->[0] eq 'spaces') {
-      if ($token->[1]->{'text'} and $token->[1]->{'text'} ne "\n") {
-        if ($token->[1]->{'text'} =~ /\n$/) {
+    } elsif ($token->{'type'} and $token->{'type'} eq 'spaces') {
+      if ($token->{'text'} and $token->{'text'} ne "\n") {
+        if ($token->{'text'} =~ /\n$/) {
           # copy, in order not to change in the main tree
           # TODO: be neater either always to have trailing spaces or never
           # have them included.
-          $token->[1] = { %{$token->[1]} };
-          $token->[1]->{'text'} =~ s/\n$//;
+          $token = { %{$token} };
+          $token->{'text'} =~ s/\n$//;
         }
-        push @result, shift @def_line;
+        push @result, ['spaces', $token];
+        shift @contents;
       } else {
         last;
       }
+    } elsif ($token->{'type'} and $token->{'type'} eq 'delimiter') {
+      push @result, ['delimiter', shift @contents];
     } else {
-      my $text_or_cmd = shift @def_line;
-      push @$argument_content, $text_or_cmd->[1];
+      my $text_or_cmd = shift @contents;
+      push @$argument_content, $text_or_cmd;
     }
     last if (! defined($arg));
   }
@@ -2449,15 +2475,17 @@ sub _parse_def($$$)
     push @result, [$arg, $argument_content->[0]];
   }
 
+  @contents = map (_split_delimiters($self, $_), @contents );
+
+  # Create the part of the def_args array for any arguments.
   my @args_results;
-  while (@def_line) {
+  while (@contents) {
     my $spaces;
-    my $next_token = shift @def_line;
-    if ($next_token->[0] eq 'spaces') {
-      $spaces = $next_token->[1];
-      $next_token = shift @def_line;
+    my $next_token = shift @contents;
+    if ($next_token->{'type'} and $next_token->{'type'} eq 'spaces') {
+      $spaces = $next_token;
+      $next_token = shift @contents;
     }
-    my $next = $next_token->[1];
     if (defined($spaces) and $spaces->{'text'} ne "\n") {
       if ($spaces->{'text'} =~ /\n$/) {
         # copy, in order not to change in the main tree
@@ -2468,22 +2496,15 @@ sub _parse_def($$$)
       }
       push @args_results, ['spaces', $spaces]
     }
-    last if (!defined($next));
-    if (defined($next->{'text'})) {
-      while (1) {
-        if ($next->{'text'} =~ s/^([^\[\](),]+)//) {
-          push @args_results, ['arg', {'text' => $1}];
-        } elsif ($next->{'text'} =~ s/^([\[\](),])//) {
-          push @args_results, ['delimiter', 
-                      {'text' => $1, 'type' => 'delimiter'}];
-        } else {
-          last;
-        }
-      }
+    last if (!defined($next_token));
+    if ($next_token->{'type'} and $next_token->{'type'} eq 'delimiter') {
+      push @args_results, ['delimiter', $next_token];
     } else {
-      push @args_results, [ 'arg', $next ];
+      push @args_results, ['arg', $next_token];
     }
   }
+
+  # If a command like @deftypefn, mark the type arguments
   if ($arg_type and $arg_type eq 'argtype') {
     my $next_is_type = 1;
     foreach my $arg(@args_results) {
@@ -2500,6 +2521,7 @@ sub _parse_def($$$)
       }
     }
   }
+
   return [@result, @args_results];
 }
 
