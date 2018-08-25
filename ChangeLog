@@ -1,5 +1,11 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <after @end verbatim>:
+	Do not use 'command' extra value to check if we are after
+	@end verbatim.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Set top_srcdir as well as top_builddir in case
 	these are not defined.  This compensates for a recent change in
 	Texinfo::ModulePath.

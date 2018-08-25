@@ -3009,9 +3009,9 @@ sub _end_line($$$)
            and $current->{'contents'}->[-1]
            and $current->{'contents'}->[-1]->{'type'}
            and $current->{'contents'}->[-1]->{'type'} eq 'empty_line_after_command'
-           and $current->{'contents'}->[-1]->{'extra'}
-           and $current->{'contents'}->[-1]->{'extra'}->{'command'}
-           and $current->{'contents'}->[-1]->{'extra'}->{'command'}->{'cmdname'} eq 'verbatim') {
+           and $current->{'contents'}->[-2]
+           and $current->{'contents'}->[-2]->{'cmdname'}
+           and $current->{'contents'}->[-2]->{'cmdname'} eq 'verbatim') {
     $current = _begin_preformatted($self, $current);
   # misc command line arguments
   # Never go here if skipline/noarg/...
