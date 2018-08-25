@@ -95,9 +95,6 @@ $result_trees{'kbdinputstyle'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -1358,7 +1355,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[8]{'parent'} = $result
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'};
-$result_trees{'kbdinputstyle'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'kbdinputstyle'}{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[3];

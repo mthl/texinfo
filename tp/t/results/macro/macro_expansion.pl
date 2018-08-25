@@ -75,9 +75,6 @@ $result_trees{'macro_expansion'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -270,9 +267,6 @@ $result_trees{'macro_expansion'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => ' ',
       'type' => 'empty_spaces_after_command'
@@ -500,7 +494,6 @@ $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[2]{'parent'} = $resu
 $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[2]{'extra'}{'command'} = $result_trees{'macro_expansion'}{'contents'}[1];
 $result_trees{'macro_expansion'}{'contents'}[2]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[3]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[4];
@@ -534,7 +527,6 @@ $result_trees{'macro_expansion'}{'contents'}[13]{'contents'}[0]{'parent'} = $res
 $result_trees{'macro_expansion'}{'contents'}[13]{'contents'}[1]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[13];
 $result_trees{'macro_expansion'}{'contents'}[13]{'extra'}{'spaces_after_command'} = $result_trees{'macro_expansion'}{'contents'}[13]{'contents'}[0];
 $result_trees{'macro_expansion'}{'contents'}[13]{'parent'} = $result_trees{'macro_expansion'};
-$result_trees{'macro_expansion'}{'contents'}[14]{'extra'}{'command'} = $result_trees{'macro_expansion'}{'contents'}[13];
 $result_trees{'macro_expansion'}{'contents'}[14]{'parent'} = $result_trees{'macro_expansion'};
 $result_trees{'macro_expansion'}{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'macro_expansion'}{'contents'}[15];
 $result_trees{'macro_expansion'}{'contents'}[15]{'parent'} = $result_trees{'macro_expansion'};

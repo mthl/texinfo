@@ -1255,9 +1255,7 @@ $result_trees{'commands_and_spaces'} = {
           'parent' => {}
         },
         {
-          'extra' => {
-            'command' => {}
-          },
+          'extra' => {},
           'parent' => {},
           'text' => ' 
 ',
@@ -2292,7 +2290,6 @@ $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29]{'contents'}[
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29]{'contents'}[1]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29]{'extra'}{'spaces_after_command'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29]{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1];
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[30]{'extra'}{'command'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[29];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[30]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[31]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[32]{'contents'}[0]{'extra'}{'command'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[32];

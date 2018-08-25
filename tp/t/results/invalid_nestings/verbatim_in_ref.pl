@@ -115,9 +115,6 @@ $result_trees{'verbatim_in_ref'} = {
           'parent' => {}
         },
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -180,7 +177,6 @@ $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'p
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
-$result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[3]{'extra'}{'command'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[2];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1];
 $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'verbatim_in_ref'}{'contents'}[1]{'contents'}[5];

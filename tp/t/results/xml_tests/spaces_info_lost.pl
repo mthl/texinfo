@@ -141,9 +141,7 @@ $result_trees{'spaces_info_lost'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
+      'extra' => {},
       'parent' => {},
       'text' => ' 
 ',
@@ -177,7 +175,6 @@ $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'parent'} = $res
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'};
-$result_trees{'spaces_info_lost'}{'contents'}[3]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[3]{'parent'} = $result_trees{'spaces_info_lost'};
 
 $result_texis{'spaces_info_lost'} = '@example  text on example line 

@@ -86,9 +86,6 @@ $result_trees{'backslash_in_arg'} = {
           'parent' => {}
         },
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -393,7 +390,6 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1]{'args'}[1]{'pare
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4];

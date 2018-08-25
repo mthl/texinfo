@@ -277,9 +277,6 @@ $result_trees{'misc_raw_comments'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -335,7 +332,6 @@ $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[1]{'parent'} = $re
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'misc_raw_comments'}{'contents'}[5]{'contents'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw_comments'};
-$result_trees{'misc_raw_comments'}{'contents'}[6]{'extra'}{'command'} = $result_trees{'misc_raw_comments'}{'contents'}[5];
 $result_trees{'misc_raw_comments'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw_comments'};
 
 $result_texis{'misc_raw_comments'} = '

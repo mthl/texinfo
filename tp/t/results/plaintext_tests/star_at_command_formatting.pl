@@ -107,9 +107,6 @@ $result_trees{'star_at_command_formatting'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -1140,7 +1137,6 @@ $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[10]{'pare
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[11]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'contents'}[12]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[0]{'parent'} = $result_trees{'star_at_command_formatting'};
-$result_trees{'star_at_command_formatting'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'star_at_command_formatting'}{'contents'}[0];
 $result_trees{'star_at_command_formatting'}{'contents'}[1]{'parent'} = $result_trees{'star_at_command_formatting'};
 $result_trees{'star_at_command_formatting'}{'contents'}[2]{'parent'} = $result_trees{'star_at_command_formatting'};
 $result_trees{'star_at_command_formatting'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'star_at_command_formatting'}{'contents'}[3];

@@ -3781,11 +3781,12 @@ sub _parse_texi($;$)
           } else {
             print STDERR "CLOSED raw $end_command\n" if ($self->{'DEBUG'});
             $line =~ s/^([^\S\r\n]*)//;
+            # Start an element to have the spaces at the end of the line
+            # ignored.
             push @{$current->{'contents'}},
                         { 'type' => 'empty_line_after_command',
                           'text' => $1,
                           'parent' => $current,
-                          'extra' => {'command' => $raw_command }
                         };
           }
         } else {

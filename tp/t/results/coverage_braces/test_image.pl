@@ -55,9 +55,6 @@ $result_trees{'test_image'} = {
           'parent' => {}
         },
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -2955,7 +2952,6 @@ $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_image'}{'contents'}[0];
-$result_trees{'test_image'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_image'}{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_image'}{'contents'}[0];
 $result_trees{'test_image'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_image'}{'contents'}[0]{'contents'}[3];

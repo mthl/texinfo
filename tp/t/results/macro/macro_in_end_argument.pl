@@ -41,9 +41,6 @@ $result_trees{'macro_in_end_argument'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -127,7 +124,6 @@ $result_trees{'macro_in_end_argument'}{'contents'}[0]{'args'}[0]{'parent'} = $re
 $result_trees{'macro_in_end_argument'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_end_argument'};
-$result_trees{'macro_in_end_argument'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'macro_in_end_argument'}{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'};
 $result_trees{'macro_in_end_argument'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_end_argument'};
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3];

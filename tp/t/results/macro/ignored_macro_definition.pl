@@ -41,9 +41,6 @@ $result_trees{'ignored_macro_definition'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -126,7 +123,6 @@ $result_trees{'ignored_macro_definition'}{'contents'}[0]{'args'}[0]{'parent'} = 
 $result_trees{'ignored_macro_definition'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ignored_macro_definition'}{'contents'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[0]{'parent'} = $result_trees{'ignored_macro_definition'};
-$result_trees{'ignored_macro_definition'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'ignored_macro_definition'}{'contents'}[0];
 $result_trees{'ignored_macro_definition'}{'contents'}[1]{'parent'} = $result_trees{'ignored_macro_definition'};
 $result_trees{'ignored_macro_definition'}{'contents'}[2]{'parent'} = $result_trees{'ignored_macro_definition'};
 $result_trees{'ignored_macro_definition'}{'contents'}[3]{'parent'} = $result_trees{'ignored_macro_definition'};

@@ -37,9 +37,6 @@ $result_trees{'xml_protected_in_verb'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -139,7 +136,6 @@ $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[0]{'parent'} =
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'parent'} = $result_trees{'xml_protected_in_verb'};
-$result_trees{'xml_protected_in_verb'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[1]{'parent'} = $result_trees{'xml_protected_in_verb'};
 $result_trees{'xml_protected_in_verb'}{'contents'}[2]{'parent'} = $result_trees{'xml_protected_in_verb'};
 $result_trees{'xml_protected_in_verb'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'xml_protected_in_verb'}{'contents'}[3]{'contents'}[0]{'args'}[0];

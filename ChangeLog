@@ -1,5 +1,10 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <CLOSED raw>: Do
+	not add a 'command' extra value on the 'empty_line_after_command'.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <after @end verbatim>:
 	Do not use 'command' extra value to check if we are after
 	@end verbatim.

@@ -48,9 +48,6 @@ $result_trees{'nested_ignore'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -103,9 +100,6 @@ $result_trees{'nested_ignore'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -158,9 +152,6 @@ $result_trees{'nested_ignore'} = {
       'parent' => {}
     },
     {
-      'extra' => {
-        'command' => {}
-      },
       'parent' => {},
       'text' => '
 ',
@@ -176,7 +167,6 @@ $result_trees{'nested_ignore'}{'contents'}[0]{'contents'}[2]{'parent'} = $result
 $result_trees{'nested_ignore'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'nested_ignore'}{'contents'}[0];
 $result_trees{'nested_ignore'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'nested_ignore'}{'contents'}[0]{'contents'}[0];
 $result_trees{'nested_ignore'}{'contents'}[0]{'parent'} = $result_trees{'nested_ignore'};
-$result_trees{'nested_ignore'}{'contents'}[1]{'extra'}{'command'} = $result_trees{'nested_ignore'}{'contents'}[0];
 $result_trees{'nested_ignore'}{'contents'}[1]{'parent'} = $result_trees{'nested_ignore'};
 $result_trees{'nested_ignore'}{'contents'}[2]{'parent'} = $result_trees{'nested_ignore'};
 $result_trees{'nested_ignore'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_ignore'}{'contents'}[3];
@@ -186,7 +176,6 @@ $result_trees{'nested_ignore'}{'contents'}[3]{'contents'}[2]{'parent'} = $result
 $result_trees{'nested_ignore'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'nested_ignore'}{'contents'}[3];
 $result_trees{'nested_ignore'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'nested_ignore'}{'contents'}[3]{'contents'}[0];
 $result_trees{'nested_ignore'}{'contents'}[3]{'parent'} = $result_trees{'nested_ignore'};
-$result_trees{'nested_ignore'}{'contents'}[4]{'extra'}{'command'} = $result_trees{'nested_ignore'}{'contents'}[3];
 $result_trees{'nested_ignore'}{'contents'}[4]{'parent'} = $result_trees{'nested_ignore'};
 $result_trees{'nested_ignore'}{'contents'}[5]{'parent'} = $result_trees{'nested_ignore'};
 $result_trees{'nested_ignore'}{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'nested_ignore'}{'contents'}[6];
@@ -196,7 +185,6 @@ $result_trees{'nested_ignore'}{'contents'}[6]{'contents'}[2]{'parent'} = $result
 $result_trees{'nested_ignore'}{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'nested_ignore'}{'contents'}[6];
 $result_trees{'nested_ignore'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'nested_ignore'}{'contents'}[6]{'contents'}[0];
 $result_trees{'nested_ignore'}{'contents'}[6]{'parent'} = $result_trees{'nested_ignore'};
-$result_trees{'nested_ignore'}{'contents'}[7]{'extra'}{'command'} = $result_trees{'nested_ignore'}{'contents'}[6];
 $result_trees{'nested_ignore'}{'contents'}[7]{'parent'} = $result_trees{'nested_ignore'};
 
 $result_texis{'nested_ignore'} = '@ignore
