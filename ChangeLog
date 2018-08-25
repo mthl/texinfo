@@ -1,5 +1,12 @@
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (parse_def): Use the same hashes in the
+	main tree as in the def_args array for the arguments on a
+	@def* line.  This means that delimiter characters are in their 
+	own elements now.
+
+2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (parse_def): Change the type
 	of final spaces elements to 'spaces_at_end'.  This leads to
 	the spaces being ignored in some output formats.

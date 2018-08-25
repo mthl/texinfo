@@ -82,7 +82,7 @@ $result_trees{'empty_index_entry'} = {
                     {
                       'text' => '
 ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_at_end'
                     }
                   ],
                   'parent' => {},
@@ -97,10 +97,7 @@ $result_trees{'empty_index_entry'} = {
                   ],
                   [
                     'spaces',
-                    {
-                      'text' => ' ',
-                      'type' => 'spaces'
-                    }
+                    {}
                   ],
                   [
                     'name',
@@ -108,11 +105,7 @@ $result_trees{'empty_index_entry'} = {
                   ],
                   [
                     'spaces',
-                    {
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
-                    }
+                    {}
                   ]
                 ],
                 'def_command' => 'deffn',
@@ -251,7 +244,9 @@ $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'empty_index_entry'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};

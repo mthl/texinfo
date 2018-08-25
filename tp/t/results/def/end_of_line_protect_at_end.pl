@@ -55,42 +55,27 @@ $result_trees{'end_of_line_protect_at_end'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'category2'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'deffn_name2'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'arguments2'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -136,11 +121,17 @@ $result_trees{'end_of_line_protect_at_end'} = {
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'};
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'line_nr'} = $result_trees{'end_of_line_protect_at_end'}{'contents'}[1]{'contents'}[0]{'line_nr'};

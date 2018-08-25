@@ -2373,13 +2373,6 @@ sub _parse_def($$$)
   }
   unshift @new_contents, $empty_spaces_after_command
     if $empty_spaces_after_command; 
-  foreach (my $i = 0; $i < scalar(@new_contents); $i++) {
-    # copy, to avoid changing in the code below.
-    $new_contents[$i] = { %{$new_contents[$i]} }
-     if $new_contents[$i]->{'text'}
-         and (!$new_contents[$i]->{'type'}
-              or $new_contents[$i]->{'type'} ne 'empty_spaces_after_command');
-  }
   $current->{'contents'} = \@new_contents;
 
   if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
@@ -2388,12 +2381,10 @@ sub _parse_def($$$)
     # arguments ever, so we ignore it here.
     @contents = ();
   }
-  
 
   my @result;
   my @args = @{$def_map{$command}};
   my $arg_type;
-
 
   $arg_type = pop @args if ($args[-1] eq 'arg' or $args[-1] eq 'argtype');
   # If $arg_type is not set (for @def* commands that are not documented
@@ -2453,7 +2444,12 @@ sub _parse_def($$$)
     push @result, [$arg, $argument_content->[0]];
   }
 
+  if (scalar(@contents) > 0) {
+    splice @new_contents, -scalar(@contents);
+  }
+
   @contents = map (_split_delimiters($self, $_), @contents );
+  @new_contents = (@new_contents, @contents);
 
   # Create the part of the def_args array for any arguments.
   my @args_results;

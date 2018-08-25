@@ -53,7 +53,7 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => ' 
 ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -64,69 +64,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' 
-',
-                  'type' => 'spaces_at_end'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -263,7 +237,7 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -274,82 +248,51 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => '  ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'after'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -503,68 +446,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
@@ -728,68 +646,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
@@ -919,7 +812,7 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -930,69 +823,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'a'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'b'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'c'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'd'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'e'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -1068,7 +935,7 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => ' 
 ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -1080,69 +947,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' 
-',
-                  'type' => 'spaces_at_end'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -1226,7 +1067,7 @@ $result_trees{'wrong_braces_simple'} = {
                 {
                   'text' => '
 ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},
@@ -1238,82 +1079,51 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => '  ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'after'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
-                }
+                {}
               ]
             ],
             'def_command' => 'deffn',
@@ -1415,68 +1225,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
@@ -1588,68 +1373,43 @@ $result_trees{'wrong_braces_simple'} = {
             'def_args' => [
               [
                 'category',
-                {
-                  'text' => 'truc'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'name',
-                {
-                  'text' => 'machin'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'bidule'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'chose'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
-                {
-                  'text' => 'and'
-                }
+                {}
               ],
               [
                 'spaces',
-                {
-                  'text' => ' ',
-                  'type' => 'spaces'
-                }
+                {}
               ],
               [
                 'arg',
@@ -1733,11 +1493,21 @@ $result_trees{'wrong_braces_simple'} = {
 };
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[10];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -1752,11 +1522,23 @@ $result_trees{'wrong_braces_simple'}{'contents'}[0]{'parent'} = $result_trees{'w
 $result_trees{'wrong_braces_simple'}{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'};
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[10];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[11];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[11][1] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[12];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[2];
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[2]{'contents'}[1]{'args'}[0];
@@ -1772,12 +1554,22 @@ $result_trees{'wrong_braces_simple'}{'contents'}[3]{'parent'} = $result_trees{'w
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[10];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[11];
-$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'line_nr'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[11]{'line_nr'};
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[4];
 $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[4]{'contents'}[1]{'args'}[0];
@@ -1796,12 +1588,22 @@ $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'c
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[11];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[10];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[11];
-$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'line_nr'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'args'}[0]{'contents'}[11]{'line_nr'};
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[6];
 $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[6]{'contents'}[1]{'args'}[0];
@@ -1817,39 +1619,81 @@ $result_trees{'wrong_braces_simple'}{'contents'}[6]{'parent'} = $result_trees{'w
 $result_trees{'wrong_braces_simple'}{'contents'}[7]{'parent'} = $result_trees{'wrong_braces_simple'};
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[10];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[10];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[10];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[11];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[11][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[12];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[10];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[11];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'line_nr'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'args'}[0]{'contents'}[11]{'line_nr'};
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[3]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8];
@@ -1858,12 +1702,22 @@ $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'c
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[11];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[11]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[0][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[1][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[2];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[2][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[3][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[4];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[4][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[5];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[5][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[6];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[6][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[7];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[7][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[8];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[8][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[9];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[9][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[10];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[10][1] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[11];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[0][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'category'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'index_entry'}{'command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[2][1];
-$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'def_args'}[2][1];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[3];
+$result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[3];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'line_nr'} = $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'args'}[0]{'contents'}[11]{'line_nr'};
 $result_trees{'wrong_braces_simple'}{'contents'}[8]{'contents'}[4]{'parent'} = $result_trees{'wrong_braces_simple'}{'contents'}[8];
