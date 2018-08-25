@@ -17,9 +17,6 @@ $result_trees{'complex_recursive_synindex'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -52,9 +49,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -93,9 +87,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -134,9 +125,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -175,9 +163,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -216,9 +201,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -263,9 +245,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -305,9 +284,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -349,9 +325,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -391,9 +364,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -433,9 +403,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -493,9 +460,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -535,9 +499,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -579,9 +540,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -633,9 +591,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -687,9 +642,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -741,9 +693,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -795,9 +744,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -866,9 +812,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -924,9 +867,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -982,9 +922,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -1040,9 +977,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -1098,9 +1032,6 @@ $result_trees{'complex_recursive_synindex'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -1159,41 +1090,35 @@ $result_trees{'complex_recursive_synindex'} = {
   'type' => 'document_root'
 };
 $result_trees{'complex_recursive_synindex'}{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'};
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0];
@@ -1201,14 +1126,12 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0];
@@ -1216,21 +1139,18 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0];
@@ -1243,14 +1163,12 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'extr
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[12]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[13]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0];
@@ -1258,7 +1176,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0];
@@ -1270,7 +1187,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'extr
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'extra'}{'misc_content'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'extra'}{'index_entry'}{'content'};
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[17]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0];
@@ -1282,7 +1198,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'extr
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'extra'}{'misc_content'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'extra'}{'index_entry'}{'content'};
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[18]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0];
@@ -1294,7 +1209,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'extr
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'extra'}{'misc_content'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'extra'}{'index_entry'}{'content'};
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[19]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0];
@@ -1306,7 +1220,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'extr
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'extra'}{'misc_content'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'extra'}{'index_entry'}{'content'};
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'extra'}{'spaces_after_command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[20]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'args'}[0];
@@ -1321,7 +1234,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[21]{'pare
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[22]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[23]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[23];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[23]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'args'}[0];
@@ -1331,7 +1243,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[24]{'pare
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[25]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[26]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[26];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[26]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'args'}[0];
@@ -1341,7 +1252,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[27]{'pare
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[28]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[29]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[29];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[29]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'args'}[0];
@@ -1351,7 +1261,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[30]{'pare
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[31]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[32]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[32];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[32]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'args'}[0];
@@ -1361,7 +1270,6 @@ $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[33]{'pare
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[34]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[35]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[35];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[35]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1];
-$result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0];
 $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'complex_recursive_synindex'}{'contents'}[1]{'contents'}[36]{'args'}[0];

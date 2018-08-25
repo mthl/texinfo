@@ -39,7 +39,6 @@ $result_trees{'macro_and_args'} = {
       'parent' => {}
     },
     {
-      'extra' => {},
       'parent' => {},
       'text' => '
 ',
@@ -89,7 +88,6 @@ $result_trees{'macro_and_args'} = {
       'parent' => {}
     },
     {
-      'extra' => {},
       'parent' => {},
       'text' => '
 ',

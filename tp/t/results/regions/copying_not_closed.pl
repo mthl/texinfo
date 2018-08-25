@@ -11,9 +11,6 @@ $result_trees{'copying_not_closed'} = {
       'cmdname' => 'copying',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -50,7 +47,6 @@ $result_trees{'copying_not_closed'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'copying_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'copying_not_closed'}{'contents'}[0];
 $result_trees{'copying_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'copying_not_closed'}{'contents'}[0];
 $result_trees{'copying_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'copying_not_closed'}{'contents'}[0];
 $result_trees{'copying_not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'copying_not_closed'}{'contents'}[0]{'contents'}[2];

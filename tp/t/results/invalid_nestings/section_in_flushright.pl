@@ -13,9 +13,6 @@ $result_trees{'section_in_flushright'} = {
           'cmdname' => 'flushright',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -64,9 +61,6 @@ $result_trees{'section_in_flushright'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -106,7 +100,6 @@ $result_trees{'section_in_flushright'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
@@ -115,7 +108,6 @@ $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'};
-$result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_flushright'}{'contents'}[1];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];

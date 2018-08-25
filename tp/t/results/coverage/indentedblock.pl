@@ -11,9 +11,6 @@ $result_trees{'indentedblock'} = {
       'cmdname' => 'indentedblock',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -57,9 +54,6 @@ $result_trees{'indentedblock'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -81,7 +75,6 @@ $result_trees{'indentedblock'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'indentedblock',
             'spaces_after_command' => {},
             'text_arg' => 'indentedblock'
@@ -108,7 +101,6 @@ $result_trees{'indentedblock'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'indentedblock'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[2];
@@ -116,12 +108,10 @@ $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[2]{'parent'} = $result
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[4];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0];
-$result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5];
-$result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'extra'}{'command'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'indentedblock'}{'contents'}[0];
 $result_trees{'indentedblock'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'indentedblock'}{'contents'}[0]{'contents'}[5];

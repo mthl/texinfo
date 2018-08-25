@@ -11,9 +11,6 @@ $result_trees{'menu_no_closed_star'} = {
       'cmdname' => 'menu',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -49,7 +46,6 @@ $result_trees{'menu_no_closed_star'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_no_closed_star'}{'contents'}[0];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_star'}{'contents'}[0]{'contents'}[1];

@@ -17,9 +17,6 @@ $result_trees{'menu_in_style_command'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -80,9 +77,6 @@ $result_trees{'menu_in_style_command'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -152,9 +146,6 @@ $result_trees{'menu_in_style_command'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -176,7 +167,6 @@ $result_trees{'menu_in_style_command'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
                 'spaces_after_command' => {},
                 'text_arg' => 'menu'
@@ -226,7 +216,6 @@ $result_trees{'menu_in_style_command'} = {
   'type' => 'document_root'
 };
 $result_trees{'menu_in_style_command'}{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'};
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_in_style_command'}{'contents'}[1];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'args'}[0];
@@ -236,7 +225,6 @@ $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[1];
@@ -248,12 +236,10 @@ $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[3];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'extra'}{'menu_entry_node'}{'manual_content'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'args'}[1];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
-$result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'extra'}{'command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'menu_in_style_command'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
@@ -301,7 +287,6 @@ $result_nodes{'menu_in_style_command'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
             'text_arg' => 'menu'
           }
@@ -322,7 +307,6 @@ $result_nodes{'menu_in_style_command'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'menu_in_style_command'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'menu_in_style_command'}{'menus'}[0];
 $result_nodes{'menu_in_style_command'}{'node_next'} = $result_nodes{'menu_in_style_command'}{'menu_child'};
 $result_nodes{'menu_in_style_command'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'menu_in_style_command'};
 

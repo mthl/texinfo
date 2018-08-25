@@ -12,9 +12,6 @@ $result_trees{'verbatiminclude_and_encoding_latin1'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -59,9 +56,6 @@ $result_trees{'verbatiminclude_and_encoding_latin1'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -97,7 +91,6 @@ $result_trees{'verbatiminclude_and_encoding_latin1'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0];
@@ -105,7 +98,6 @@ $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'};
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'};
-$result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_and_encoding_latin1'}{'contents'}[2]{'args'}[0];

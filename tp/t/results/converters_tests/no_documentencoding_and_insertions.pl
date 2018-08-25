@@ -82,9 +82,6 @@ $result_trees{'no_documentencoding_and_insertions'} = {
       'cmdname' => 'example',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -154,9 +151,6 @@ $result_trees{'no_documentencoding_and_insertions'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -178,7 +172,6 @@ $result_trees{'no_documentencoding_and_insertions'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'example',
             'spaces_after_command' => {},
             'text_arg' => 'example'
@@ -218,7 +211,6 @@ $result_trees{'no_documentencoding_and_insertions'}{'contents'}[1]{'contents'}[3
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[1];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[1]{'parent'} = $result_trees{'no_documentencoding_and_insertions'};
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[2]{'parent'} = $result_trees{'no_documentencoding_and_insertions'};
-$result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -231,12 +223,10 @@ $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3];
-$result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2];
-$result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3];
 $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'no_documentencoding_and_insertions'}{'contents'}[3]{'contents'}[2];

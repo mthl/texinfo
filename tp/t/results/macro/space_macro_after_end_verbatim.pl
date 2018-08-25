@@ -56,9 +56,6 @@ $result_trees{'space_macro_after_end_verbatim'} = {
       'cmdname' => 'verbatim',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -95,7 +92,6 @@ $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'contents'}[1]{'p
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[2]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0];

@@ -15,9 +15,6 @@ $result_trees{'end_of_lines_protected'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -294,9 +291,6 @@ $result_trees{'end_of_lines_protected'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -318,7 +312,6 @@ $result_trees{'end_of_lines_protected'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'deffn',
             'spaces_after_command' => {},
             'text_arg' => 'deffn'
@@ -341,7 +334,6 @@ $result_trees{'end_of_lines_protected'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'args'}[0];
@@ -363,12 +355,10 @@ $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[0]{'parent'} 
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
-$result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];
-$result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'end_of_lines_protected'}{'contents'}[0];
 $result_trees{'end_of_lines_protected'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'end_of_lines_protected'}{'contents'}[0]{'contents'}[2];

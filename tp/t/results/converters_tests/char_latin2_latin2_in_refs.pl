@@ -32,9 +32,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -77,9 +74,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -128,9 +122,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -177,9 +168,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -230,9 +218,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
                     {
                       'contents' => [
                         {
-                          'extra' => {
-                            'command' => {}
-                          },
                           'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_after_command'
@@ -308,9 +293,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -372,9 +354,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -442,9 +421,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -466,7 +442,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
                 'spaces_after_command' => {},
                 'text_arg' => 'menu'
@@ -517,9 +492,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -552,9 +524,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -641,7 +610,6 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -649,7 +617,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'args'}[0];
@@ -658,7 +625,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'extra
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'};
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0];
@@ -667,7 +633,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'extra'}{'node_conten
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'};
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0];
@@ -675,7 +640,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'parent'} 
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'};
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'}{'args'}[0];
@@ -689,7 +653,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'conte
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'args'}[0];
@@ -699,7 +662,6 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[3]{'paren
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[5];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[1];
@@ -711,12 +673,10 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'conte
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[3];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[6]{'contents'}[2];
@@ -727,13 +687,11 @@ $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'extra'}{'misc_conten
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'};
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[3] = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'label'};
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4];
-$result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'char_latin2_latin2_in_refs'}{'contents'}[4]{'contents'}[1]{'args'}[0];
@@ -866,7 +824,6 @@ $result_nodes{'char_latin2_latin2_in_refs'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
             'text_arg' => 'menu'
           }
@@ -889,7 +846,6 @@ $result_nodes{'char_latin2_latin2_in_refs'} = {
 };
 $result_nodes{'char_latin2_latin2_in_refs'}{'menu_child'}{'node_prev'} = $result_nodes{'char_latin2_latin2_in_refs'};
 $result_nodes{'char_latin2_latin2_in_refs'}{'menu_child'}{'node_up'} = $result_nodes{'char_latin2_latin2_in_refs'};
-$result_nodes{'char_latin2_latin2_in_refs'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'char_latin2_latin2_in_refs'}{'menus'}[0];
 $result_nodes{'char_latin2_latin2_in_refs'}{'node_next'} = $result_nodes{'char_latin2_latin2_in_refs'}{'menu_child'};
 $result_nodes{'char_latin2_latin2_in_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'char_latin2_latin2_in_refs'};
 

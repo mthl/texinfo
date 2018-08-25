@@ -12,9 +12,6 @@ $result_trees{'east_asian_in_w'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -106,9 +103,6 @@ $result_trees{'east_asian_in_w'} = {
       'cmdname' => 'noindent',
       'extra' => {
         'spaces_after_command' => {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -151,7 +145,6 @@ $result_trees{'east_asian_in_w'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'east_asian_in_w'}{'contents'}[0];
 $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0];
 $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0];
 $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[0]{'args'}[0];
@@ -167,7 +160,6 @@ $result_trees{'east_asian_in_w'}{'contents'}[2]{'contents'}[2]{'parent'} = $resu
 $result_trees{'east_asian_in_w'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[2];
 $result_trees{'east_asian_in_w'}{'contents'}[2]{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[3]{'parent'} = $result_trees{'east_asian_in_w'};
-$result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command'}{'extra'}{'command'} = $result_trees{'east_asian_in_w'}{'contents'}[4];
 $result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[4]{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[5] = $result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command'};

@@ -150,9 +150,6 @@ $result_trees{'value_expansion_in_include'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -238,9 +235,6 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -342,9 +336,6 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -446,9 +437,6 @@ $result_trees{'value_expansion_in_include'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -522,7 +510,6 @@ $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[6]{'paren
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'};
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'args'}[0];
@@ -537,7 +524,6 @@ $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[1]{'paren
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[3];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[4]{'args'}[0];
@@ -555,7 +541,6 @@ $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[7]{'paren
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[9];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[10]{'args'}[0];
@@ -573,7 +558,6 @@ $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[13]{'pare
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[15]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[15];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1];
-$result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0];
 $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_expansion_in_include'}{'contents'}[1]{'contents'}[16]{'args'}[0];

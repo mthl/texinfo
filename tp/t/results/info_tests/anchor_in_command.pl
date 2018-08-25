@@ -17,9 +17,6 @@ $result_trees{'anchor_in_command'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -213,7 +210,6 @@ $result_trees{'anchor_in_command'} = {
   'type' => 'document_root'
 };
 $result_trees{'anchor_in_command'}{'contents'}[0]{'parent'} = $result_trees{'anchor_in_command'};
-$result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'anchor_in_command'}{'contents'}[1];
 $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_command'}{'contents'}[1]{'args'}[0];

@@ -57,9 +57,6 @@ $result_trees{'test_paths'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -106,7 +103,6 @@ $result_trees{'test_paths'}{'contents'}[2]{'parent'} = $result_trees{'test_paths
 $result_trees{'test_paths'}{'contents'}[3]{'parent'} = $result_trees{'test_paths'};
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4];
-$result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_paths'}{'contents'}[4]{'contents'}[2]{'args'}[0];

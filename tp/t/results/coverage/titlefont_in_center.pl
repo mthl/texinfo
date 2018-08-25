@@ -18,9 +18,6 @@ $result_trees{'titlefont_in_center'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -72,7 +69,6 @@ $result_trees{'titlefont_in_center'} = {
   'type' => 'text_root'
 };
 $result_trees{'titlefont_in_center'}{'contents'}[0]{'parent'} = $result_trees{'titlefont_in_center'};
-$result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'titlefont_in_center'}{'contents'}[1];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'titlefont_in_center'}{'contents'}[1]{'args'}[0]{'contents'}[1];

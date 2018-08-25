@@ -17,9 +17,6 @@ $result_trees{'unknown_node_in_menu'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -51,9 +48,6 @@ $result_trees{'unknown_node_in_menu'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -121,9 +115,6 @@ $result_trees{'unknown_node_in_menu'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -145,7 +136,6 @@ $result_trees{'unknown_node_in_menu'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
                 'spaces_after_command' => {},
                 'text_arg' => 'menu'
@@ -194,13 +184,11 @@ $result_trees{'unknown_node_in_menu'} = {
   'type' => 'document_root'
 };
 $result_trees{'unknown_node_in_menu'}{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'};
-$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1];
-$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
@@ -212,12 +200,10 @@ $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1];
-$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'unknown_node_in_menu'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
@@ -254,7 +240,6 @@ $result_nodes{'unknown_node_in_menu'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
             'text_arg' => 'menu'
           }
@@ -274,7 +259,6 @@ $result_nodes{'unknown_node_in_menu'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'unknown_node_in_menu'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'unknown_node_in_menu'}{'menus'}[0];
 $result_nodes{'unknown_node_in_menu'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'unknown_node_in_menu'};
 
 $result_menus{'unknown_node_in_menu'} = {

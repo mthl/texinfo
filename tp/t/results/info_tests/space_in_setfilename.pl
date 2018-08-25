@@ -14,9 +14,6 @@ $result_trees{'space_in_setfilename'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -90,9 +87,6 @@ $result_trees{'space_in_setfilename'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -137,7 +131,6 @@ $result_trees{'space_in_setfilename'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
@@ -151,7 +144,6 @@ $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'line_nr'} =
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'};
-$result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_in_setfilename'}{'contents'}[1];
 $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'space_in_setfilename'}{'contents'}[1]{'args'}[0];

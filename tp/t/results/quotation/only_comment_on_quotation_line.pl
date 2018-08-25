@@ -12,9 +12,6 @@ $result_trees{'only_comment_on_quotation_line'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -60,9 +57,6 @@ $result_trees{'only_comment_on_quotation_line'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -84,7 +78,6 @@ $result_trees{'only_comment_on_quotation_line'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'quotation',
             'spaces_after_command' => {},
             'text_arg' => 'quotation'
@@ -111,19 +104,16 @@ $result_trees{'only_comment_on_quotation_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
-$result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0];
 $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'only_comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];

@@ -17,9 +17,6 @@ $result_trees{'image_lines_count'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -86,9 +83,6 @@ $result_trees{'image_lines_count'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -146,9 +140,6 @@ $result_trees{'image_lines_count'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -207,7 +198,6 @@ $result_trees{'image_lines_count'} = {
   'type' => 'document_root'
 };
 $result_trees{'image_lines_count'}{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'};
-$result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'args'}[0];
@@ -218,7 +208,6 @@ $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'par
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
-$result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0];
@@ -231,7 +220,6 @@ $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'extra'}{'misc_
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1];
-$result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_lines_count'}{'contents'}[1]{'contents'}[6]{'args'}[0];

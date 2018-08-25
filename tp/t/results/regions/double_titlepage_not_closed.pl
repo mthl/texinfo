@@ -11,9 +11,6 @@ $result_trees{'double_titlepage_not_closed'} = {
       'cmdname' => 'titlepage',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -52,9 +49,6 @@ $result_trees{'double_titlepage_not_closed'} = {
           'cmdname' => 'titlepage',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -102,14 +96,12 @@ $result_trees{'double_titlepage_not_closed'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[2];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0];
-$result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_titlepage_not_closed'}{'contents'}[0]{'contents'}[5]{'contents'}[2];

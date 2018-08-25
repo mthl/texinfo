@@ -12,9 +12,6 @@ $result_trees{'multitable_not_closed_item'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -63,9 +60,6 @@ $result_trees{'multitable_not_closed_item'} = {
                   'cmdname' => 'item',
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -129,7 +123,6 @@ $result_trees{'multitable_not_closed_item'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
@@ -138,7 +131,6 @@ $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0];
-$result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'multitable_not_closed_item'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];

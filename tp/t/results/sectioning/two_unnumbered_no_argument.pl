@@ -17,9 +17,6 @@ $result_trees{'two_unnumbered_no_argument'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -49,9 +46,6 @@ $result_trees{'two_unnumbered_no_argument'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -80,12 +74,10 @@ $result_trees{'two_unnumbered_no_argument'} = {
   'type' => 'document_root'
 };
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0];

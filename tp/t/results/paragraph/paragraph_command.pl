@@ -189,9 +189,6 @@ $result_trees{'paragraph_command'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -346,7 +343,6 @@ $result_trees{'paragraph_command'}{'contents'}[8]{'contents'}[0]{'parent'} = $re
 $result_trees{'paragraph_command'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[8];
 $result_trees{'paragraph_command'}{'contents'}[8]{'parent'} = $result_trees{'paragraph_command'};
 $result_trees{'paragraph_command'}{'contents'}[9]{'parent'} = $result_trees{'paragraph_command'};
-$result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'paragraph_command'}{'contents'}[10];
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];

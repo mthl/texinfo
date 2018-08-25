@@ -12,9 +12,6 @@ $result_trees{'caption_not_closed'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -123,9 +120,6 @@ $result_trees{'caption_not_closed'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -147,7 +141,6 @@ $result_trees{'caption_not_closed'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
             'spaces_after_command' => {},
             'text_arg' => 'float'
@@ -204,7 +197,6 @@ $result_trees{'caption_not_closed'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0];
@@ -224,12 +216,10 @@ $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'co
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'extra'}{'float'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0];
-$result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2];
-$result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'caption_not_closed'}{'contents'}[0];
 $result_trees{'caption_not_closed'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'caption_not_closed'}{'contents'}[0]{'args'}[0]{'contents'}[1];
@@ -287,7 +277,6 @@ $result_floats{'caption_not_closed'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'float',
             'text_arg' => 'float'
           }
@@ -305,7 +294,6 @@ $result_floats{'caption_not_closed'} = {
   ]
 };
 $result_floats{'caption_not_closed'}{'Text'}[0]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'caption_not_closed'}{'Text'}[0];
-$result_floats{'caption_not_closed'}{'Text'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_floats{'caption_not_closed'}{'Text'}[0];
 
 
 1;

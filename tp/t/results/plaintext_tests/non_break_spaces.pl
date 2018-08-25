@@ -14,9 +14,6 @@ $result_trees{'non_break_spaces'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -65,9 +62,6 @@ $result_trees{'non_break_spaces'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -135,7 +129,6 @@ $result_trees{'non_break_spaces'} = {
   ],
   'type' => 'document_root'
 };
-$result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'args'}[0];
@@ -144,7 +137,6 @@ $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'};
-$result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'non_break_spaces'}{'contents'}[1];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];
 $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'non_break_spaces'}{'contents'}[1]{'args'}[0];

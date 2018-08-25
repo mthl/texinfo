@@ -28,9 +28,6 @@ $result_trees{'japanese_shift_jis'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -73,9 +70,6 @@ $result_trees{'japanese_shift_jis'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -112,9 +106,6 @@ $result_trees{'japanese_shift_jis'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -159,9 +150,6 @@ $result_trees{'japanese_shift_jis'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -208,9 +196,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -257,9 +242,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -291,9 +273,6 @@ $result_trees{'japanese_shift_jis'} = {
           'cmdname' => 'copying',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -429,9 +408,6 @@ $result_trees{'japanese_shift_jis'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -453,7 +429,6 @@ $result_trees{'japanese_shift_jis'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'copying',
                 'spaces_after_command' => {},
                 'text_arg' => 'copying'
@@ -510,9 +485,6 @@ $result_trees{'japanese_shift_jis'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -637,9 +609,6 @@ $result_trees{'japanese_shift_jis'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -661,7 +630,6 @@ $result_trees{'japanese_shift_jis'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
                 'spaces_after_command' => {},
                 'text_arg' => 'menu'
@@ -711,9 +679,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -760,9 +725,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -834,9 +796,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -883,9 +842,6 @@ $result_trees{'japanese_shift_jis'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -963,7 +919,6 @@ $result_trees{'japanese_shift_jis'} = {
 };
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0];
-$result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -971,14 +926,12 @@ $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
-$result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
-$result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0];
@@ -987,7 +940,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
-$result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'args'}[0];
@@ -996,7 +948,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'extra'}{'spac
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0];
@@ -1005,13 +956,11 @@ $result_trees{'japanese_shift_jis'}{'contents'}[1]{'extra'}{'node_content'}[0] =
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_shift_jis'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[1];
@@ -1033,12 +982,10 @@ $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5]
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[1]{'contents'}[6];
@@ -1049,7 +996,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[3]{'parent'} = $r
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[4];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[1]{'args'}[1];
@@ -1071,12 +1017,10 @@ $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'menu_entry_description'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[3];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'args'}[1]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
-$result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[6]{'contents'}[3];
@@ -1086,7 +1030,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[2]{'contents'}[7]{'parent'} = $r
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[3];
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0];
@@ -1095,7 +1038,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[3]{'extra'}{'node_content'}[0] =
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_shift_jis'}{'contents'}[3]{'extra'}{'node_content'};
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[3]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[4];
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0];
@@ -1108,7 +1050,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[4]{'contents'}[3]{'parent'} = $r
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[4]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[5];
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0];
@@ -1117,7 +1058,6 @@ $result_trees{'japanese_shift_jis'}{'contents'}[5]{'extra'}{'node_content'}[0] =
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'japanese_shift_jis'}{'contents'}[5]{'extra'}{'node_content'};
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'japanese_shift_jis'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[5]{'parent'} = $result_trees{'japanese_shift_jis'};
-$result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'japanese_shift_jis'}{'contents'}[6];
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0];
 $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'japanese_shift_jis'}{'contents'}[6]{'args'}[0];
@@ -1308,7 +1248,6 @@ $result_nodes{'japanese_shift_jis'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
             'text_arg' => 'menu'
           }
@@ -1333,7 +1272,6 @@ $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_next'}{'node_prev'} = $r
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'japanese_shift_jis'};
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_prev'} = $result_nodes{'japanese_shift_jis'};
 $result_nodes{'japanese_shift_jis'}{'menu_child'}{'node_up'} = $result_nodes{'japanese_shift_jis'};
-$result_nodes{'japanese_shift_jis'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'japanese_shift_jis'}{'menus'}[0];
 $result_nodes{'japanese_shift_jis'}{'node_next'} = $result_nodes{'japanese_shift_jis'}{'menu_child'};
 $result_nodes{'japanese_shift_jis'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'japanese_shift_jis'};
 

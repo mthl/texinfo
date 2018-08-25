@@ -48,9 +48,6 @@ $result_trees{'ifclear_in_ifset_set'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -87,9 +84,6 @@ $result_trees{'ifclear_in_ifset_set'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -147,14 +141,12 @@ $result_trees{'ifclear_in_ifset_set'}{'contents'}[1]{'args'}[0]{'parent'} = $res
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[1];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[1]{'parent'} = $result_trees{'ifclear_in_ifset_set'};
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_ifset_set'};
-$result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'ifclear_in_ifset_set'};
-$result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[4];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0];
 $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ifclear_in_ifset_set'}{'contents'}[4]{'args'}[0];

@@ -74,9 +74,6 @@ $result_trees{'section_in_math'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -167,9 +164,6 @@ $result_trees{'section_in_math'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -221,7 +215,6 @@ $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'l
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[0]{'parent'} = $result_trees{'section_in_math'};
-$result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_math'}{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0];
@@ -236,7 +229,6 @@ $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'parent'} = $resu
 $result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_math'}{'contents'}[1]{'parent'} = $result_trees{'section_in_math'};
-$result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_math'}{'contents'}[2];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];

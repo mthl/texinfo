@@ -12,9 +12,6 @@ $result_trees{'spaces_info_lost'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '  ',
               'type' => 'empty_spaces_after_command'
@@ -52,9 +49,6 @@ $result_trees{'spaces_info_lost'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => '  ',
                   'type' => 'empty_spaces_after_command'
@@ -76,7 +70,6 @@ $result_trees{'spaces_info_lost'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'example',
             'spaces_after_command' => {},
             'text_arg' => 'example'
@@ -115,9 +108,6 @@ $result_trees{'spaces_info_lost'} = {
       'cmdname' => 'verbatim',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '  
 ',
@@ -141,7 +131,6 @@ $result_trees{'spaces_info_lost'} = {
       'parent' => {}
     },
     {
-      'extra' => {},
       'parent' => {},
       'text' => ' 
 ',
@@ -150,19 +139,16 @@ $result_trees{'spaces_info_lost'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[1];
@@ -170,7 +156,6 @@ $result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'end_command'} = $resu
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'};
 $result_trees{'spaces_info_lost'}{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'};
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0];

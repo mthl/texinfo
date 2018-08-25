@@ -11,9 +11,6 @@ $result_trees{'many_conditionals'} = {
       'cmdname' => 'html',
       'contents' => [
         {
-          'extra' => {
-            'command' => {}
-          },
           'parent' => {},
           'text' => '
 ',
@@ -35,9 +32,6 @@ $result_trees{'many_conditionals'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -59,7 +53,6 @@ $result_trees{'many_conditionals'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'html',
             'spaces_after_command' => {},
             'text_arg' => 'html'
@@ -166,9 +159,6 @@ $result_trees{'many_conditionals'} = {
             {
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'empty_spaces_after_command'
@@ -190,7 +180,6 @@ $result_trees{'many_conditionals'} = {
           ],
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'tex',
             'spaces_after_command' => {},
             'text_arg' => 'tex'
@@ -234,16 +223,13 @@ $result_trees{'many_conditionals'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[1];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
-$result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2];
-$result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'many_conditionals'}{'contents'}[0]{'contents'}[2];
@@ -262,12 +248,10 @@ $result_trees{'many_conditionals'}{'contents'}[8]{'parent'} = $result_trees{'man
 $result_trees{'many_conditionals'}{'contents'}[9]{'parent'} = $result_trees{'many_conditionals'};
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
-$result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2];
-$result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'extra'}{'command'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'many_conditionals'}{'contents'}[10];
 $result_trees{'many_conditionals'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'many_conditionals'}{'contents'}[10]{'contents'}[2];

@@ -19,9 +19,6 @@ $result_trees{'html_in_copying'} = {
           'cmdname' => 'copying',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -48,9 +45,6 @@ $result_trees{'html_in_copying'} = {
               'cmdname' => 'html',
               'contents' => [
                 {
-                  'extra' => {
-                    'command' => {}
-                  },
                   'parent' => {},
                   'text' => '
 ',
@@ -72,9 +66,6 @@ $result_trees{'html_in_copying'} = {
                     {
                       'contents' => [
                         {
-                          'extra' => {
-                            'command' => {}
-                          },
                           'parent' => {},
                           'text' => ' ',
                           'type' => 'empty_spaces_after_command'
@@ -96,7 +87,6 @@ $result_trees{'html_in_copying'} = {
                   ],
                   'cmdname' => 'end',
                   'extra' => {
-                    'command' => {},
                     'command_argument' => 'html',
                     'spaces_after_command' => {},
                     'text_arg' => 'html'
@@ -125,9 +115,6 @@ $result_trees{'html_in_copying'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -149,7 +136,6 @@ $result_trees{'html_in_copying'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'copying',
                 'spaces_after_command' => {},
                 'text_arg' => 'copying'
@@ -188,9 +174,6 @@ $result_trees{'html_in_copying'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -237,9 +220,6 @@ $result_trees{'html_in_copying'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -286,32 +266,26 @@ $result_trees{'html_in_copying'} = {
   'type' => 'document_root'
 };
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
-$result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
@@ -319,7 +293,6 @@ $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'};
-$result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[1];
 $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0];
@@ -328,7 +301,6 @@ $result_trees{'html_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $r
 $result_trees{'html_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'html_in_copying'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'html_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'html_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'html_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'};
-$result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'html_in_copying'}{'contents'}[2];
 $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0];
 $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'html_in_copying'}{'contents'}[2]{'args'}[0];

@@ -17,9 +17,6 @@ $result_trees{'ref_in_preformatted'} = {
         {
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => ' ',
               'type' => 'empty_spaces_after_command'
@@ -51,9 +48,6 @@ $result_trees{'ref_in_preformatted'} = {
           'cmdname' => 'menu',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -121,9 +115,6 @@ $result_trees{'ref_in_preformatted'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -145,7 +136,6 @@ $result_trees{'ref_in_preformatted'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'menu',
                 'spaces_after_command' => {},
                 'text_arg' => 'menu'
@@ -179,9 +169,6 @@ $result_trees{'ref_in_preformatted'} = {
           'cmdname' => 'example',
           'contents' => [
             {
-              'extra' => {
-                'command' => {}
-              },
               'parent' => {},
               'text' => '
 ',
@@ -219,9 +206,6 @@ $result_trees{'ref_in_preformatted'} = {
                         {
                           'contents' => [
                             {
-                              'extra' => {
-                                'command' => {}
-                              },
                               'parent' => {},
                               'text' => ' ',
                               'type' => 'empty_spaces_after_command'
@@ -292,9 +276,6 @@ $result_trees{'ref_in_preformatted'} = {
                 {
                   'contents' => [
                     {
-                      'extra' => {
-                        'command' => {}
-                      },
                       'parent' => {},
                       'text' => ' ',
                       'type' => 'empty_spaces_after_command'
@@ -316,7 +297,6 @@ $result_trees{'ref_in_preformatted'} = {
               ],
               'cmdname' => 'end',
               'extra' => {
-                'command' => {},
                 'command_argument' => 'example',
                 'spaces_after_command' => {},
                 'text_arg' => 'example'
@@ -372,13 +352,11 @@ $result_trees{'ref_in_preformatted'} = {
   'type' => 'document_root'
 };
 $result_trees{'ref_in_preformatted'}{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'};
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
@@ -390,25 +368,21 @@ $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_description'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'};
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'extra'}{'label'}{'args'}[0];
@@ -422,12 +396,10 @@ $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3];
 $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'ref_in_preformatted'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
@@ -485,7 +457,6 @@ $result_nodes{'ref_in_preformatted'} = {
         'end_command' => {
           'cmdname' => 'end',
           'extra' => {
-            'command' => {},
             'command_argument' => 'menu',
             'text_arg' => 'menu'
           }
@@ -508,7 +479,6 @@ $result_nodes{'ref_in_preformatted'} = {
 };
 $result_nodes{'ref_in_preformatted'}{'menu_child'}{'node_prev'} = $result_nodes{'ref_in_preformatted'};
 $result_nodes{'ref_in_preformatted'}{'menu_child'}{'node_up'} = $result_nodes{'ref_in_preformatted'};
-$result_nodes{'ref_in_preformatted'}{'menus'}[0]{'extra'}{'end_command'}{'extra'}{'command'} = $result_nodes{'ref_in_preformatted'}{'menus'}[0];
 $result_nodes{'ref_in_preformatted'}{'node_next'} = $result_nodes{'ref_in_preformatted'}{'menu_child'};
 $result_nodes{'ref_in_preformatted'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'ref_in_preformatted'};
 
