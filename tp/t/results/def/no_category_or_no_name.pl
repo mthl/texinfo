@@ -94,9 +94,10 @@ $result_trees{'no_category_or_no_name'} = {
       'extra' => {
         'end_command' => {},
         'spaces_after_command' => {
+          'parent' => {},
           'text' => '
 ',
-          'type' => 'spaces'
+          'type' => 'empty_line_after_command'
         }
       },
       'line_nr' => {},
@@ -427,9 +428,10 @@ $result_trees{'no_category_or_no_name'} = {
             'def_command' => 'deffn',
             'original_def_cmdname' => 'deffnx',
             'spaces_after_command' => {
+              'parent' => {},
               'text' => ' 
 ',
-              'type' => 'spaces'
+              'type' => 'empty_line_after_command'
             }
           },
           'line_nr' => {
@@ -517,6 +519,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'args'}[0]
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[2];
+$result_trees{'no_category_or_no_name'}{'contents'}[0]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'line_nr'} = $result_trees{'no_category_or_no_name'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_category_or_no_name'}{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'};
 $result_trees{'no_category_or_no_name'}{'contents'}[1]{'parent'} = $result_trees{'no_category_or_no_name'};
@@ -556,6 +559,7 @@ $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[1]{'extra'}{'
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2];
+$result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0];
 $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'no_category_or_no_name'}{'contents'}[4]{'contents'}[3];

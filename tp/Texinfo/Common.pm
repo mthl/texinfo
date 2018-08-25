@@ -69,7 +69,7 @@ valid_tree_transformation
 @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
 @EXPORT = qw(
-__ __p
+__ __p print_tree
 );
 
 $VERSION = '6.5dev';

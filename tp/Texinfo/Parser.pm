@@ -2273,42 +2273,51 @@ sub _parse_float_type($)
   return 0;
 }
 
-# used for definition line parsing
-sub _next_bracketed_or_word($$)
+# Return array, first element spaces, next element non-space.
+sub _next_bracketed_or_word
 {
-  my ($self, $contents) = @_;
+  my ($contents) = @_;
+  my ($spaces, $arg);
 
-  return undef if (!scalar(@{$contents}));
-  my $spaces;
-  $spaces = shift @{$contents} if (defined($contents->[0]->{'text'}) and 
-                                     $contents->[0]->{'text'} !~ /\S/);
-  if (defined($spaces)) {
-    delete $spaces->{'parent'};
-    #print STDERR "Gather spaces only text\n";
-    $spaces->{'type'} = 'spaces';
-    $spaces = undef if ($spaces->{'text'} eq '');
-  }
-  return ($spaces, undef) if (!scalar(@{$contents}));
-
-  #print STDERR "BEFORE PROCESSING ".Texinfo::Convert::Texinfo::convert({'contents' => $contents});
-  if ($contents->[0]->{'type'} and $contents->[0]->{'type'} eq 'bracketed') {
-    #print STDERR "Return bracketed\n";
-    my $bracketed = shift @{$contents};
-    _isolate_last_space($self, $bracketed);
-    $bracketed->{'type'} = 'bracketed_def_content';
-    return ($spaces, $bracketed);
-  } elsif ($contents->[0]->{'cmdname'}) {
-    #print STDERR "Return command $contents->[0]->{'cmdname'}\n";
-    return ($spaces, shift @{$contents});
+  my $next = shift @$contents;
+  if (!defined($next->{'type'}) or $next->{'type'} ne 'spaces') {
+    $arg = $next;
   } else {
-    #print STDERR "Process $contents->[0]->{'text'}\n";
-    $contents->[0]->{'text'} =~ s/^(\s*)//;
-    my $space_text = $1;
-    $spaces = {'text' => $space_text, 'type' => 'spaces'} if ($space_text);
-    $contents->[0]->{'text'} =~ s/^(\S+)//;
-    shift @{$contents} if ($contents->[0]->{'text'} eq '');
-    return ($spaces, {'text' => $1});
+    $spaces = $next;
+    if (@$contents) {
+      $arg = shift @$contents;
+    }
   }
+  return ($spaces, $arg);
+}
+
+sub _split_def_args
+{
+  my ($self, $root) = @_;
+
+  if (defined $root->{'text'}) {
+    my @elements;
+    my $type;
+    my @split_text = split /(?<=\s)(?=\S)|(?<=\S)(?=\s)/, $root->{'text'};
+    if ($split_text[0] =~ /^\s*$/) {
+      $type = 'spaces';
+    }
+    for my $t (@split_text) {
+      my $e = {'text' => $t };
+      if ($type) {
+        $e->{'type'} = $type;
+        $type = undef;
+      } else {
+        $type = 'spaces';
+      }
+      push @elements, $e;
+    }
+    return @elements;
+  } elsif ($root->{'type'} and $root->{'type'} eq 'bracketed') {
+    _isolate_last_space($self, $root);
+    $root->{'type'} = 'bracketed_def_content';
+  }
+  return $root;
 }
 
 # definition line parsing
@@ -2345,6 +2354,8 @@ sub _parse_def($$$)
 
     $command = $def_aliases{$command};
   }
+  @contents = map (_split_def_args($self, $_), @contents );
+  
   my @result;
   my @args = @{$def_map{$command}};
   my $arg_type;
@@ -2355,7 +2366,7 @@ sub _parse_def($$$)
   # tokenize the line.  We need to do that in order to be able to 
   # look ahead for spaces.
   while (@contents) {
-    my ($spaces, $next) = _next_bracketed_or_word($self, \@contents);
+    my ($spaces, $next) = _next_bracketed_or_word (\@contents);
     # if there is no argument at all, the leading space is not associated
     # to the @-command, so end up being gathered here.  We do not want to
     # have this leading space appear in the arguments ever, so we ignore
