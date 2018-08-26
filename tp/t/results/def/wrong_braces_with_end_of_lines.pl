@@ -20,23 +20,41 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'category'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -54,6 +72,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
                     }
                   ],
                   'extra' => {
+                    'def_role' => 'arg',
                     'spaces_before_argument' => '   '
                   },
                   'line_nr' => {
@@ -215,37 +234,67 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'category'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '    ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'more'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

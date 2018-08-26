@@ -20,16 +20,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efvr_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -169,30 +181,54 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypefn_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'typearg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -349,37 +385,67 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypeop_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'typearg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -553,23 +619,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypevr_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -718,23 +802,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efcv_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -883,30 +985,54 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efop_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1071,23 +1197,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'c--ategory'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftp_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'typearg'
+                  },
                   'text' => 'a--ttributes...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1235,16 +1379,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efun_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1265,12 +1421,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Function'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -1403,16 +1565,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efmac_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1433,12 +1607,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Macro'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -1571,16 +1751,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efspec_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1601,12 +1793,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Special Form'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -1739,9 +1937,15 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efvar_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1762,12 +1966,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Variable'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -1892,9 +2102,15 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efopt_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -1915,12 +2131,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'User Option'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2045,23 +2267,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypefun_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'typearg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -2082,12 +2322,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Function'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2229,16 +2475,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypevar_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -2259,12 +2517,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Variable'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2398,16 +2662,28 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efivar_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -2428,12 +2704,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Instance Variable'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2575,23 +2857,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypeivar_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -2612,12 +2912,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Instance Variable'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2768,23 +3074,41 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--efmethod_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -2805,12 +3129,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Method'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -2960,30 +3290,54 @@ $result_trees{'all_commands'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'text' => 'c--lass'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'text' => 't--ype'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'd--eftypemethod_name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'typearg'
+                  },
                   'text' => 'a--rguments...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -3004,12 +3358,18 @@ $result_trees{'all_commands'} = {
                       'text' => 'Method'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }

@@ -63,6 +63,9 @@ $result_trees{'block_not_matching'} = {
                       'text' => 'Function Reference'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,
@@ -72,20 +75,35 @@ $result_trees{'block_not_matching'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'print_navigation'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => '$filehandle'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

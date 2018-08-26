@@ -187,23 +187,41 @@ $result_trees{'def_in_copying'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'text' => 'aa'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'bb'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'cc'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -281,23 +299,41 @@ $result_trees{'def_in_copying'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'text' => 'aax'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'bbx'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'ccx'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -508,23 +544,41 @@ $result_trees{'def_in_copying'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'aa'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'bb'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'cc'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -602,23 +656,41 @@ $result_trees{'def_in_copying'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'aax'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'bbx'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'ccx'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

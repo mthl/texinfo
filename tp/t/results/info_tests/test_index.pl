@@ -570,9 +570,15 @@ $result_trees{'test_index'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'fset'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -591,6 +597,9 @@ $result_trees{'test_index'} = {
                       ],
                       'cmdname' => 'var',
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 12,
@@ -599,20 +608,35 @@ $result_trees{'test_index'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'a'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'g'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -694,30 +718,54 @@ $result_trees{'test_index'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'truc'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'machin'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'bidule'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'chose'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

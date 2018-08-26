@@ -49,16 +49,28 @@ $result_trees{'def_in_style_command'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'name'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -79,12 +91,18 @@ $result_trees{'def_in_style_command'} = {
                       'text' => 'Function'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }

@@ -20,9 +20,15 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'fset'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -41,6 +47,9 @@ $result_trees{'inter_item_commands_in_def'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -49,20 +58,35 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'g'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -173,9 +197,15 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'Command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -187,6 +217,7 @@ $result_trees{'inter_item_commands_in_def'} = {
                     }
                   ],
                   'extra' => {
+                    'def_role' => 'name',
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {
@@ -198,16 +229,25 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
                   'contents' => [],
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '  
 ',
                   'type' => 'spaces_at_end'
@@ -338,9 +378,15 @@ $result_trees{'inter_item_commands_in_def'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'cmde2'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -385,17 +431,29 @@ $result_trees{'inter_item_commands_in_def'} = {
                   ],
                   'cmdname' => 'b',
                   'contents' => [],
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'truc'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

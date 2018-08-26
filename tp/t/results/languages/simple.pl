@@ -100,23 +100,41 @@ $result_trees{'simple'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'class'
+                      },
                       'text' => 'AAA'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'BBB'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'CCC'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -141,12 +159,18 @@ $result_trees{'simple'} = {
                           'type' => 'untranslated'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }

@@ -303,31 +303,49 @@ $result_trees{'empty_string_index_entry'} = {
                           'parent' => {}
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -348,12 +366,18 @@ $result_trees{'empty_string_index_entry'} = {
                           'text' => 'Function'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }
@@ -439,31 +463,49 @@ $result_trees{'empty_string_index_entry'} = {
                           'parent' => {}
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -485,12 +527,18 @@ $result_trees{'empty_string_index_entry'} = {
                           'text' => 'Function'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }

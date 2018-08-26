@@ -20,9 +20,15 @@ $result_trees{'leading_space_in_def_arg'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'category'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -34,6 +40,7 @@ $result_trees{'leading_space_in_def_arg'} = {
                     }
                   ],
                   'extra' => {
+                    'def_role' => 'name',
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {
@@ -45,13 +52,22 @@ $result_trees{'leading_space_in_def_arg'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'arg'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

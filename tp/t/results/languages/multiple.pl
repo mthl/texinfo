@@ -73,23 +73,41 @@ $result_trees{'multiple'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'class'
+                          },
                           'text' => 'copying'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'a'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'b'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -114,12 +132,18 @@ $result_trees{'multiple'} = {
                               'type' => 'untranslated'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'type' => 'bracketed_def_content'
                         }
                       ],
                       [
                         'spaces',
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         }
@@ -338,23 +362,41 @@ $result_trees{'multiple'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'class'
+                      },
                       'text' => 'fr'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'BBB'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'CCC'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -379,12 +421,18 @@ $result_trees{'multiple'} = {
                           'type' => 'untranslated'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }
@@ -580,23 +628,41 @@ $result_trees{'multiple'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'class'
+                      },
                       'text' => 'pt'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'BBB'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'CCC'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -621,12 +687,18 @@ $result_trees{'multiple'} = {
                           'type' => 'untranslated'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }

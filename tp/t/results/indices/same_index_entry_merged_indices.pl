@@ -157,16 +157,28 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'Command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'mmm-mode'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -185,6 +197,9 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       ],
                       'cmdname' => 'var',
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 8,
@@ -193,6 +208,9 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -337,9 +355,15 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'mmm-mode'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -360,12 +384,18 @@ $result_trees{'same_index_entry_merged_indices'} = {
                           'text' => 'Variable'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'type' => 'bracketed_def_content'
                     }
                   ],
                   [
                     'spaces',
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     }

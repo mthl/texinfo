@@ -29,9 +29,15 @@ $result_trees{'defx_in_example'} = {
                       'type' => 'empty_spaces_after_command'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'text' => 'fset'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -50,6 +56,9 @@ $result_trees{'defx_in_example'} = {
                       ],
                       'cmdname' => 'var',
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 2,
@@ -58,20 +67,35 @@ $result_trees{'defx_in_example'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'a'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'g'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -158,6 +182,9 @@ $result_trees{'defx_in_example'} = {
                           'text' => 'truc'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 3,
@@ -167,20 +194,35 @@ $result_trees{'defx_in_example'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'text' => 'bidulr'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'machin...'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

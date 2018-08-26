@@ -26,6 +26,9 @@ $result_trees{'def_defx_mismatch'} = {
                       'text' => 'my def'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 1,
@@ -35,13 +38,22 @@ $result_trees{'def_defx_mismatch'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -60,10 +72,16 @@ $result_trees{'def_defx_mismatch'} = {
                   ],
                   'cmdname' => 'var',
                   'contents' => [],
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -77,10 +95,16 @@ $result_trees{'def_defx_mismatch'} = {
                   ],
                   'cmdname' => 'dots',
                   'contents' => [],
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'
@@ -101,12 +125,18 @@ $result_trees{'def_defx_mismatch'} = {
                       'text' => 'Function'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'bracketed_def_content'
                 }
               ],
               [
                 'spaces',
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 }
@@ -186,6 +216,9 @@ $result_trees{'def_defx_mismatch'} = {
                       'text' => 'type'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 2,
@@ -195,6 +228,9 @@ $result_trees{'def_defx_mismatch'} = {
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -205,39 +241,69 @@ $result_trees{'def_defx_mismatch'} = {
                       'text' => 'name'
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'and'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'now'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'the'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

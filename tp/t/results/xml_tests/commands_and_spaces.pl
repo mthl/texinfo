@@ -1685,6 +1685,7 @@ $result_trees{'commands_and_spaces'} = {
                         }
                       ],
                       'extra' => {
+                        'def_role' => 'category',
                         'spaces_before_argument' => ' '
                       },
                       'line_nr' => {
@@ -1696,6 +1697,9 @@ $result_trees{'commands_and_spaces'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -1712,6 +1716,7 @@ $result_trees{'commands_and_spaces'} = {
                         }
                       ],
                       'extra' => {
+                        'def_role' => 'name',
                         'spaces_before_argument' => ' '
                       },
                       'line_nr' => {},
@@ -1719,6 +1724,9 @@ $result_trees{'commands_and_spaces'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '  ',
                       'type' => 'spaces'
                     },
@@ -1735,6 +1743,7 @@ $result_trees{'commands_and_spaces'} = {
                         }
                       ],
                       'extra' => {
+                        'def_role' => 'arg',
                         'spaces_before_argument' => ' '
                       },
                       'line_nr' => {},
@@ -1742,6 +1751,9 @@ $result_trees{'commands_and_spaces'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '  ',
                       'type' => 'spaces'
                     },
@@ -1758,6 +1770,7 @@ $result_trees{'commands_and_spaces'} = {
                         }
                       ],
                       'extra' => {
+                        'def_role' => 'arg',
                         'spaces_before_argument' => '  '
                       },
                       'line_nr' => {},
@@ -1765,6 +1778,9 @@ $result_trees{'commands_and_spaces'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -1781,6 +1797,7 @@ $result_trees{'commands_and_spaces'} = {
                         }
                       ],
                       'extra' => {
+                        'def_role' => 'arg',
                         'spaces_before_argument' => '  '
                       },
                       'line_nr' => {},
@@ -1788,6 +1805,9 @@ $result_trees{'commands_and_spaces'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

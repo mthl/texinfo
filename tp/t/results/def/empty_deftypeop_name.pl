@@ -47,9 +47,15 @@ $result_trees{'empty_deftypeop_name'} = {
                       'parent' => {}
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'type' => 'def_aggregate'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -78,11 +84,17 @@ $result_trees{'empty_deftypeop_name'} = {
                       'parent' => {}
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'class'
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -110,9 +122,15 @@ $result_trees{'empty_deftypeop_name'} = {
                       'parent' => {}
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'type'
+                  },
                   'type' => 'def_aggregate'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '
 ',
                   'type' => 'spaces_at_end'

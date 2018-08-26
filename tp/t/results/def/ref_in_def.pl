@@ -79,6 +79,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'ref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'category',
                         'label' => {
                           'args' => [
                             {
@@ -122,6 +123,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -141,6 +145,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'ref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'name',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -153,6 +158,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -186,11 +194,17 @@ $result_trees{'ref_in_def'} = {
                           'parent' => {}
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -210,6 +224,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'pxref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'arg',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -222,6 +237,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -241,6 +259,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'pxref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'arg',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -253,6 +272,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -357,6 +379,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'ref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'category',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -373,6 +396,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -392,6 +418,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'ref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'name',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -404,6 +431,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -437,11 +467,17 @@ $result_trees{'ref_in_def'} = {
                           'parent' => {}
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -461,6 +497,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'pxref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'arg',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -473,6 +510,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -492,6 +532,7 @@ $result_trees{'ref_in_def'} = {
                       'cmdname' => 'pxref',
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'arg',
                         'label' => {},
                         'node_argument' => {
                           'node_content' => [
@@ -504,6 +545,9 @@ $result_trees{'ref_in_def'} = {
                       'parent' => {}
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

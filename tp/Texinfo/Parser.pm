@@ -2509,6 +2509,10 @@ sub _parse_def($$$)
     }
   }
 
+  for my $pair (@result, @args_results) {
+    $pair->[1]->{'extra'}->{'def_role'} = $pair->[0];
+  }
+
   return [@result, @args_results];
 }
 

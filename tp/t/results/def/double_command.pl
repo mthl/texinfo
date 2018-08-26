@@ -20,64 +20,115 @@ $result_trees{'double_command'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'func'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'plot'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'delimiter'
+                  },
                   'text' => '(',
                   'type' => 'delimiter'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'a'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'delimiter'
+                  },
                   'text' => ',',
                   'type' => 'delimiter'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'b'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'delimiter'
+                  },
                   'text' => ',',
                   'type' => 'delimiter'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'c'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'delimiter'
+                  },
                   'text' => ',',
                   'type' => 'delimiter'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => '...'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'delimiter'
+                  },
                   'text' => ')',
                   'type' => 'delimiter'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -91,75 +142,135 @@ $result_trees{'double_command'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'text' => 'func'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'plot2'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => '(',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'a'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => ',',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'b'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => ',',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'c'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => ',',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => '...'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => ',',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'd'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'delimiter'
+                          },
                           'text' => ')',
                           'type' => 'delimiter'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -258,6 +369,7 @@ $result_trees{'double_command'} = {
                       'category' => {},
                       'name' => {}
                     },
+                    'def_role' => 'arg',
                     'index_entry' => {
                       'command' => {},
                       'content' => [
@@ -473,23 +585,41 @@ $result_trees{'double_command'} = {
                   'type' => 'empty_spaces_after_command'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'text' => 'func'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'name'
+                  },
                   'text' => 'aaaa'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'arg'
+                  },
                   'text' => 'args'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => '  ',
                   'type' => 'spaces'
                 },
@@ -506,16 +636,28 @@ $result_trees{'double_command'} = {
                               'type' => 'empty_spaces_after_command'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'category'
+                              },
                               'text' => 'c--ategory'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'spaces'
+                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'name'
+                              },
                               'text' => 'd--efvr_name'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'spaces'
+                              },
                               'text' => '
 ',
                               'type' => 'spaces_at_end'
@@ -576,6 +718,7 @@ $result_trees{'double_command'} = {
                     }
                   ],
                   'extra' => {
+                    'def_role' => 'arg',
                     'invalid_nesting' => 1,
                     'spaces_after_command' => {}
                   },

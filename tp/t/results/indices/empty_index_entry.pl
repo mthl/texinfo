@@ -58,6 +58,9 @@ $result_trees{'empty_index_entry'} = {
                     },
                     {
                       'contents' => [],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 3,
@@ -67,12 +70,16 @@ $result_trees{'empty_index_entry'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
                       'contents' => [],
                       'extra' => {
+                        'def_role' => 'name',
                         'spaces_before_argument' => ' '
                       },
                       'line_nr' => {},
@@ -80,6 +87,9 @@ $result_trees{'empty_index_entry'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

@@ -94,16 +94,28 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'fun'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'arg'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -124,12 +136,18 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                               'text' => 'Function'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'type' => 'bracketed_def_content'
                         }
                       ],
                       [
                         'spaces',
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         }
@@ -192,16 +210,28 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                           'type' => 'empty_spaces_after_command'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'text' => 'xf'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'arg'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -223,12 +253,18 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                               'text' => 'Function'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'type' => 'bracketed_def_content'
                         }
                       ],
                       [
                         'spaces',
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         }

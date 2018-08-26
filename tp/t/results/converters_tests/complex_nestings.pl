@@ -83,6 +83,9 @@ $result_trees{'complex_nestings'} = {
                               'text' => 'my def'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 5,
@@ -92,13 +95,22 @@ $result_trees{'complex_nestings'} = {
                           'type' => 'bracketed_def_content'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'args'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
@@ -117,10 +129,16 @@ $result_trees{'complex_nestings'} = {
                           ],
                           'cmdname' => 'var',
                           'contents' => [],
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'line_nr' => {},
                           'parent' => {}
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
@@ -134,10 +152,16 @@ $result_trees{'complex_nestings'} = {
                           ],
                           'cmdname' => 'dots',
                           'contents' => [],
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'line_nr' => {},
                           'parent' => {}
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -158,12 +182,18 @@ $result_trees{'complex_nestings'} = {
                               'text' => 'Function'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'type' => 'bracketed_def_content'
                         }
                       ],
                       [
                         'spaces',
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         }
@@ -244,6 +274,9 @@ $result_trees{'complex_nestings'} = {
                               'text' => 'other def'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'name'
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 6,
@@ -253,20 +286,35 @@ $result_trees{'complex_nestings'} = {
                           'type' => 'bracketed_def_content'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'no'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'arg'
+                          },
                           'text' => 'args'
                         },
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => '
 ',
                           'type' => 'spaces_at_end'
@@ -288,12 +336,18 @@ $result_trees{'complex_nestings'} = {
                               'text' => 'Function'
                             }
                           ],
+                          'extra' => {
+                            'def_role' => 'category'
+                          },
                           'type' => 'bracketed_def_content'
                         }
                       ],
                       [
                         'spaces',
                         {
+                          'extra' => {
+                            'def_role' => 'spaces'
+                          },
                           'text' => ' ',
                           'type' => 'spaces'
                         }
@@ -372,6 +426,9 @@ $result_trees{'complex_nestings'} = {
                                       'text' => 'type'
                                     }
                                   ],
+                                  'extra' => {
+                                    'def_role' => 'category'
+                                  },
                                   'line_nr' => {
                                     'file_name' => '',
                                     'line_nr' => 7,
@@ -381,6 +438,9 @@ $result_trees{'complex_nestings'} = {
                                   'type' => 'bracketed_def_content'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
@@ -391,39 +451,69 @@ $result_trees{'complex_nestings'} = {
                                       'text' => 'name'
                                     }
                                   ],
+                                  'extra' => {
+                                    'def_role' => 'name'
+                                  },
                                   'line_nr' => {},
                                   'parent' => {},
                                   'type' => 'bracketed_def_content'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'arg'
+                                  },
                                   'text' => 'and'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'arg'
+                                  },
                                   'text' => 'now'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'arg'
+                                  },
                                   'text' => 'the'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => ' ',
                                   'type' => 'spaces'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'arg'
+                                  },
                                   'text' => 'args'
                                 },
                                 {
+                                  'extra' => {
+                                    'def_role' => 'spaces'
+                                  },
                                   'text' => '
 ',
                                   'type' => 'spaces_at_end'
@@ -532,6 +622,9 @@ $result_trees{'complex_nestings'} = {
                                               'text' => 'variables'
                                             }
                                           ],
+                                          'extra' => {
+                                            'def_role' => 'name'
+                                          },
                                           'line_nr' => {
                                             'file_name' => '',
                                             'line_nr' => 8,
@@ -541,13 +634,22 @@ $result_trees{'complex_nestings'} = {
                                           'type' => 'bracketed_def_content'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => ' ',
                                           'type' => 'spaces'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'arg'
+                                          },
                                           'text' => 'variable-name'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => '
 ',
                                           'type' => 'spaces_at_end'
@@ -568,12 +670,18 @@ $result_trees{'complex_nestings'} = {
                                               'text' => 'Variable'
                                             }
                                           ],
+                                          'extra' => {
+                                            'def_role' => 'category'
+                                          },
                                           'type' => 'bracketed_def_content'
                                         }
                                       ],
                                       [
                                         'spaces',
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => ' ',
                                           'type' => 'spaces'
                                         }
@@ -656,6 +764,9 @@ $result_trees{'complex_nestings'} = {
                                               'text' => 'variables too'
                                             }
                                           ],
+                                          'extra' => {
+                                            'def_role' => 'name'
+                                          },
                                           'line_nr' => {
                                             'file_name' => '',
                                             'line_nr' => 10,
@@ -665,13 +776,22 @@ $result_trees{'complex_nestings'} = {
                                           'type' => 'bracketed_def_content'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => ' ',
                                           'type' => 'spaces'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'arg'
+                                          },
                                           'text' => 'other-variable'
                                         },
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => '
 ',
                                           'type' => 'spaces_at_end'
@@ -693,12 +813,18 @@ $result_trees{'complex_nestings'} = {
                                               'text' => 'Variable'
                                             }
                                           ],
+                                          'extra' => {
+                                            'def_role' => 'category'
+                                          },
                                           'type' => 'bracketed_def_content'
                                         }
                                       ],
                                       [
                                         'spaces',
                                         {
+                                          'extra' => {
+                                            'def_role' => 'spaces'
+                                          },
                                           'text' => ' ',
                                           'type' => 'spaces'
                                         }

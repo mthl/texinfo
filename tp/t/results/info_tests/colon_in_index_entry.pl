@@ -317,6 +317,9 @@ $result_trees{'colon_in_index_entry'} = {
                           'text' => 'a:b'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 11,
@@ -326,6 +329,9 @@ $result_trees{'colon_in_index_entry'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -336,25 +342,43 @@ $result_trees{'colon_in_index_entry'} = {
                           'text' => 'c:d'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'e'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'f'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'
@@ -442,6 +466,9 @@ $result_trees{'colon_in_index_entry'} = {
                           'text' => 'x:y'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'category'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 12,
@@ -451,6 +478,9 @@ $result_trees{'colon_in_index_entry'} = {
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
@@ -461,32 +491,56 @@ $result_trees{'colon_in_index_entry'} = {
                           'text' => 'z:t'
                         }
                       ],
+                      'extra' => {
+                        'def_role' => 'name'
+                      },
                       'line_nr' => {},
                       'parent' => {},
                       'type' => 'bracketed_def_content'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'n'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'm'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => ' ',
                       'type' => 'spaces'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'arg'
+                      },
                       'text' => 'o'
                     },
                     {
+                      'extra' => {
+                        'def_role' => 'spaces'
+                      },
                       'text' => '
 ',
                       'type' => 'spaces_at_end'

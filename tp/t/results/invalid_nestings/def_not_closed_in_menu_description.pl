@@ -63,23 +63,41 @@ $result_trees{'def_not_closed_in_menu_description'} = {
                               'type' => 'empty_spaces_after_command'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'category'
+                              },
                               'text' => 'bidule'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'spaces'
+                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'name'
+                              },
                               'text' => 'truc'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'spaces'
+                              },
                               'text' => ' ',
                               'type' => 'spaces'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'arg'
+                              },
                               'text' => 'chose'
                             },
                             {
+                              'extra' => {
+                                'def_role' => 'spaces'
+                              },
                               'text' => '
 ',
                               'type' => 'spaces_at_end'

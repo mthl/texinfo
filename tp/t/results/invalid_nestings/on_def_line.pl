@@ -51,11 +51,17 @@ $result_trees{'on_def_line'} = {
                       'parent' => {}
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -75,12 +81,16 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'titlefont',
                   'contents' => [],
                   'extra' => {
+                    'def_role' => 'name',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -106,12 +116,16 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'footnote',
                   'contents' => [],
                   'extra' => {
+                    'def_role' => 'arg',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -141,6 +155,7 @@ $result_trees{'on_def_line'} = {
                   ],
                   'cmdname' => 'exdent',
                   'extra' => {
+                    'def_role' => 'arg',
                     'invalid_nesting' => 1,
                     'misc_content' => [
                       {}
@@ -253,11 +268,17 @@ $result_trees{'on_def_line'} = {
                       'parent' => {}
                     }
                   ],
+                  'extra' => {
+                    'def_role' => 'category'
+                  },
                   'line_nr' => {},
                   'parent' => {},
                   'type' => 'bracketed_def_content'
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -277,12 +298,16 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'titlefont',
                   'contents' => [],
                   'extra' => {
+                    'def_role' => 'name',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -308,12 +333,16 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'footnote',
                   'contents' => [],
                   'extra' => {
+                    'def_role' => 'arg',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {},
                   'parent' => {}
                 },
                 {
+                  'extra' => {
+                    'def_role' => 'spaces'
+                  },
                   'text' => ' ',
                   'type' => 'spaces'
                 },
@@ -343,6 +372,7 @@ $result_trees{'on_def_line'} = {
                   ],
                   'cmdname' => 'exdent',
                   'extra' => {
+                    'def_role' => 'arg',
                     'invalid_nesting' => 1,
                     'misc_content' => [
                       {}

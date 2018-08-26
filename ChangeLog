@@ -1,20 +1,26 @@
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm (parse_def): Collect adjacent 
+	* tp/Texinfo/Parser.pm (_parse_def): Copy the element label in
+	a 'def_args' pair into the 'def_role' extra value on the 
+	element.
+
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_def): Collect adjacent 
 	non-whitespace elements into a 'def_aggregate' element and
 	make this change in the main tree as well as in the 'def_args'
 	array.
 
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm (parse_def): Use the same hashes in the
+	* tp/Texinfo/Parser.pm (_parse_def): Use the same hashes in the
 	main tree as in the def_args array for the arguments on a
 	@def* line.  This means that delimiter characters are in their 
 	own elements now.
 
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm (parse_def): Change the type
+	* tp/Texinfo/Parser.pm (_parse_def): Change the type
 	of final spaces elements to 'spaces_at_end'.  This leads to
 	the spaces being ignored in some output formats.
 	(_next_bracketed_or_word): Remove unused.
