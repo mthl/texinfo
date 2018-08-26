@@ -2773,7 +2773,7 @@ sub _end_line($$$)
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
     my $arguments = _parse_def($self, $def_command, $current);
     if (scalar(@$arguments)) {
-      $current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
+      #$current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
       my $def_parsed_hash;
       foreach my $arg (@$arguments) {
         die if (!defined($arg->[0]));

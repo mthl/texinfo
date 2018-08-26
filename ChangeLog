@@ -1,5 +1,10 @@
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line): Do not set 'def_args'
+	extra value.
+
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert),
 	* tp/Texinfo/Convert/DocBook.pm (_convert): Use the def args in
 	the main tree instead of the 'def_args' extra array.
