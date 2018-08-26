@@ -1292,16 +1292,21 @@ sub _convert($$;$)
       $result .= $self->_index_entry($root);
       push @{$self->{'document_context'}}, {'monospace' => [1], 'upper_case' => [0]};
       $self->{'document_context'}->[-1]->{'inline'}++;
-      if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
+      if ($root->{'args'} and @{$root->{'args'}}
+          and $root->{'args'}->[0]->{'contents'}) {
         my $main_command;
         if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {
           $main_command = $Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}};
         } else {
           $main_command = $root->{'extra'}->{'def_command'};
         }
-        foreach my $arg (@{$root->{'extra'}->{'def_args'}}) {
-          my $type = $arg->[0];
-          my $content = $self->_convert($arg->[1]);
+        foreach my $arg (@{$root->{'args'}->[0]->{'contents'}}) {
+          next if $arg->{'type'}
+                   and $arg->{'type'} eq 'empty_spaces_after_command';
+          my $type = $arg->{'extra'}->{'def_role'};
+          next if !$type and $arg->{'type'} eq 'spaces';
+
+          my $content = $self->_convert($arg);
           if ($type eq 'spaces' or $type eq 'delimiter') {
             $result .= $content;
           } elsif ($type eq 'category') {

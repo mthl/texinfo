@@ -1489,7 +1489,8 @@ sub _convert($$;$)
       $result .= $self->open_element('definitionterm');
       $result .= $self->_index_entry($root);
       push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1;
-      if ($root->{'extra'} and $root->{'extra'}->{'def_args'}) {
+      if ($root->{'args'} and @{$root->{'args'}}
+          and $root->{'args'}->[0]->{'contents'}) {
         my $main_command;
         my $alias;
         if ($Texinfo::Common::def_aliases{$root->{'extra'}->{'def_command'}}) {
@@ -1499,9 +1500,12 @@ sub _convert($$;$)
           $main_command = $root->{'extra'}->{'def_command'};
           $alias = 0;
         }
-        foreach my $arg (@{$root->{'extra'}->{'def_args'}}) {
-          my $type = $arg->[0];
-          my $content = $self->_convert($arg->[1]);
+        foreach my $arg (@{$root->{'args'}->[0]->{'contents'}}) {
+          next if $arg->{'type'}
+                   and $arg->{'type'} eq 'empty_spaces_after_command';
+          my $type = $arg->{'extra'}->{'def_role'};
+          next if !$type and $arg->{'type'} eq 'spaces';
+          my $content = $self->_convert($arg);
           if ($type eq 'spaces') {
             $content =~ s/\n$//;
             $result .= $content;
@@ -1520,11 +1524,11 @@ sub _convert($$;$)
             } else {
               $element = $type;
             }
-            if ($arg->[1]->{'type'}
-                and ($arg->[1]->{'type'} eq 'bracketed_def_content'
-                  or ($arg->[1]->{'type'} eq 'bracketed_inserted'))) {
+            if ($arg->{'type'}
+                and ($arg->{'type'} eq 'bracketed_def_content'
+                  or ($arg->{'type'} eq 'bracketed_inserted'))) {
               push @$attribute, ('bracketed', 'on');
-              push @$attribute, _leading_spaces_before_argument($arg->[1]);
+              push @$attribute, _leading_spaces_before_argument($arg);
             }
             $result .= $self->open_element("def$element", $attribute).$content
                       .$self->close_element("def$element");
