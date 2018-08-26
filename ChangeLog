@@ -126,7 +126,7 @@
 	separate elements.  This means in most cases, the elements in 
 	the 'def_args' hash and the elements in the main tree will be 
 	the same.  (The exceptions are when "(" or ")" is split into a 
-	"delimeter" element in def_args, and when there is trailing 
+	"delimiter" element in def_args, and when there is trailing 
 	whitespace on a line before the LF.)
 	(next_bracketed_or_word): Include any trailing newline in the 
 	returned values.
