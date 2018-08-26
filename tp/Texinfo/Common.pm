@@ -1183,7 +1183,8 @@ sub definition_category($$)
   my $self = shift;
   my $current = shift;
 
-  return undef if (!$current->{'extra'} or !$current->{'extra'}->{'def_args'});
+  return undef if (!$current->{'extra'}
+      or !$current->{'extra'}->{'def_parsed_hash'});
 
   my $arg_category = $current->{'extra'}->{'def_parsed_hash'}->{'category'};
   my $arg_class = $current->{'extra'}->{'def_parsed_hash'}->{'class'};
@@ -1282,19 +1283,21 @@ sub definition_arguments_content($)
   my $result;
 
   return undef if (!defined($root->{'extra'}) 
-                    or !defined($root->{'extra'}->{'def_args'}));
-  my @args = @{$root->{'extra'}->{'def_args'}};
+                    or !defined($root->{'extra'}->{'def_parsed_hash'}));
+  my @args = @{$root->{'args'}->[0]->{'contents'}};
   while (@args) {
-    last if ($args[0]->[0] ne 'spaces'
-             and !$root->{'extra'}->{'def_parsed_hash'}->{$args[0]->[0]});
+    last if (defined($args[0]->{'extra'})
+             and defined($args[0]->{'extra'}->{'def_role'})
+             and $args[0]->{'extra'}->{'def_role'} ne 'spaces'
+             and !$root->{'extra'}->{'def_parsed_hash'}
+                       ->{$args[0]->{'extra'}->{'def_role'}});
     shift @args;
   }
-  if (@args) {
-    foreach my $arg (@args) {
-      push @$result, $arg->[1];
-    }
+  if (scalar(@args) > 0) {
+    return \@args;
+  } else {
+    return undef;
   }
-  return $result;
 }
 
 # find the accent commands stack and the innermost text contents
@@ -1789,7 +1792,6 @@ sub count_bytes($$;$)
 # extra->node_argument
 # extra->explanation_contents
 # extra->menu_entry_node
-# extra->def_arg
 
 
 sub _copy_tree($$$);
@@ -2433,7 +2435,9 @@ sub debug_hash
 
 use Data::Dumper;
 
-my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args');
+my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args',
+  'extra', 'def_role'
+);
 my %kept_keys;
 foreach my $key (@kept_keys) {
   $kept_keys{$key} = 1;

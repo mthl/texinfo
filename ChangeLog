@@ -1,5 +1,11 @@
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (definition_arguments_content)
+	(definition_category): Refer to 'def_parsed_hash' instead
+	of 'def_args'.
+
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_def): Copy the element label in
 	a 'def_args' pair into the 'def_role' extra value on the 
 	element.
