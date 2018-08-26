@@ -692,7 +692,6 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
 
   if (command)
     {
-      add_extra_element (e, "command", command);
       add_extra_element (command, "spaces_after_command", e);
     }
 
@@ -980,7 +979,6 @@ superfluous_arg:
               n = strspn (line, whitespace_chars_except_newline);
               text_append_n (&e->text, line, n);
               line += n;
-              add_extra_element (e, "command", raw_command);
               add_to_element_contents (current, e);
             }
         }

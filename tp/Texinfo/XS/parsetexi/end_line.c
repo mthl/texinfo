@@ -1886,7 +1886,6 @@ end_line_misc_line (ELEMENT *current)
           else
             { // 3295
               // FIXME: end_elt correct?
-              add_extra_element (end_elt, "command", closed_command);
               add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 

@@ -370,12 +370,10 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           add_to_element_args (misc, misc_line_args);
           add_extra_misc_args (misc, "misc_args", args);
 
-          spaces_after_command = new_element 
-            (ET_empty_spaces_after_command);
+          spaces_after_command = new_element (ET_empty_spaces_after_command);
           text_append_n (&spaces_after_command->text, " ", 1);
           add_extra_element (misc, "spaces_after_command",
                              spaces_after_command);
-          add_extra_element (spaces_after_command, "command", misc);
 
           add_to_element_contents (misc_line_args, spaces_after_command);
 
