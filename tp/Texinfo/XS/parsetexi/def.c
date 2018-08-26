@@ -108,16 +108,11 @@ next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out, int join)
     space_len = strspn (text, whitespace_chars);
   if (space_len)
     {
-      /* Remove a trailing newline. */
-      if (text[space_len - 1] == '\n')
-        {
-          text[--space_len] == '\0';
-          f->text.end--;
-        }
-
       if (space_len)
         {
           spaces = new_element (ET_spaces);
+          if (text[space_len - 1] == '\n')
+            spaces->type = ET_spaces_at_end;
           spaces->parent_type = route_not_in_tree;
           text_append_n (&spaces->text, text, space_len);
           memmove (f->text.text,
