@@ -369,7 +369,7 @@ $result_trees{'empty_string_index_entry'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -379,7 +379,7 @@ $result_trees{'empty_string_index_entry'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [
@@ -530,7 +530,7 @@ $result_trees{'empty_string_index_entry'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -540,7 +540,7 @@ $result_trees{'empty_string_index_entry'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [

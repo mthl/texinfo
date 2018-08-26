@@ -160,7 +160,7 @@ $result_trees{'test_deftypefnnewline'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -170,7 +170,7 @@ $result_trees{'test_deftypefnnewline'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [
@@ -575,7 +575,7 @@ $result_trees{'test_deftypefnnewline'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -585,7 +585,7 @@ $result_trees{'test_deftypefnnewline'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [

@@ -770,7 +770,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -780,7 +780,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [
@@ -1150,7 +1150,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -1160,7 +1160,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [
@@ -1484,7 +1484,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -1494,7 +1494,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [

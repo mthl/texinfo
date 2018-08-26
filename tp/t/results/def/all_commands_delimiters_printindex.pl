@@ -9813,7 +9813,7 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -9823,7 +9823,7 @@ $result_trees{'all_commands_delimiters_printindex'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [

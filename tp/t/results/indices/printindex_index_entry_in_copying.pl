@@ -139,7 +139,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                           'extra' => {
                             'def_role' => 'category'
                           },
-                          'type' => 'bracketed_def_content'
+                          'type' => 'bracketed_inserted'
                         }
                       ],
                       [
@@ -149,7 +149,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                             'def_role' => 'spaces'
                           },
                           'text' => ' ',
-                          'type' => 'spaces'
+                          'type' => 'spaces_inserted'
                         }
                       ],
                       [
@@ -256,7 +256,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                           'extra' => {
                             'def_role' => 'category'
                           },
-                          'type' => 'bracketed_def_content'
+                          'type' => 'bracketed_inserted'
                         }
                       ],
                       [
@@ -266,7 +266,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
                             'def_role' => 'spaces'
                           },
                           'text' => ' ',
-                          'type' => 'spaces'
+                          'type' => 'spaces_inserted'
                         }
                       ],
                       [

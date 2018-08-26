@@ -2305,7 +2305,9 @@ sub _split_def_args
 {
   my ($self, $root) = @_;
 
-  if (defined $root->{'text'}) {
+  if ($root->{'type'} and $root->{'type'} eq 'spaces_inserted') {
+    return $root;
+  } elsif (defined $root->{'text'}) {
     my @elements;
     my $type;
     my @split_text = split /(?<=\s)(?=\S)|(?<=\S)(?=\s)/, $root->{'text'};
@@ -2351,14 +2353,15 @@ sub _parse_def($$$)
     my $prepended = $def_map{$command}->{$real_command};
 
 
-    my $bracketed = { 'type' => 'bracketed' };
+    my $bracketed = { 'type' => 'bracketed_inserted' };
     my $content = { 'text' => $prepended, 'parent' => $bracketed };
     if ($self->{'documentlanguage'}) {
       $content->{'type'} = 'untranslated';
       $content->{'extra'}->{'documentlanguage'} = $self->{'documentlanguage'};
     }
     @{$bracketed->{'contents'}} = ($content);
-    @prepended_content = ($bracketed, { 'text' => ' ' });
+    @prepended_content = ($bracketed,
+      { 'text' => ' ', 'type' => 'spaces_inserted'});
 
     unshift @contents, @prepended_content;
 
@@ -2399,7 +2402,9 @@ sub _parse_def($$$)
     # finish previous item
     if ( $token->{'type'}
         and ($token->{'type'} eq 'spaces'
+               or $token->{'type'} eq 'spaces_inserted'
                or $token->{'type'} eq 'bracketed_def_content'
+               or $token->{'type'} eq 'bracketed_inserted'
                or $token->{'type'} eq 'delimiter')) {
       # we create a {'contents' =>} only if there is more than one
       # content gathered.
@@ -2418,18 +2423,22 @@ sub _parse_def($$$)
           push @result, [$arg, $argument_content->[0]];
         }
         $argument_content = [];
-        if ($token->{'type'} eq 'spaces') {
+        if ($token->{'type'} eq 'spaces'
+            or $token->{'type'} eq 'spaces_inserted') {
           $arg = shift (@args);
         }
       }
     }
 
-    if ($token->{'type'} and $token->{'type'} eq 'bracketed') {
+    if ($token->{'type'} and ($token->{'type'} eq 'bracketed_def_content'
+                                or $token->{'type'} eq 'bracketed_inserted')) {
       push @result, [$arg, $token];
       shift @contents;
       $arg = shift (@args);
-    } elsif ($token->{'type'} and $token->{'type'} eq 'spaces') {
-      if ($token->{'text'}) {#  and $token->{'text'} ne "\n") {
+    } elsif ($token->{'type'}
+        and ($token->{'type'} eq 'spaces'
+               or $token->{'type'} eq 'spaces_inserted')) {
+      if ($token->{'text'}) {
         if ($token->{'text'} =~ /\n$/) {
           $token->{'type'} = 'spaces_at_end';
         }

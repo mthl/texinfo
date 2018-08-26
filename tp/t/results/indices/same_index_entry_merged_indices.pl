@@ -387,7 +387,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
                       'extra' => {
                         'def_role' => 'category'
                       },
-                      'type' => 'bracketed_def_content'
+                      'type' => 'bracketed_inserted'
                     }
                   ],
                   [
@@ -397,7 +397,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
                         'def_role' => 'spaces'
                       },
                       'text' => ' ',
-                      'type' => 'spaces'
+                      'type' => 'spaces_inserted'
                     }
                   ],
                   [

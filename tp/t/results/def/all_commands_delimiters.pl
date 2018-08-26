@@ -9756,7 +9756,7 @@ $result_trees{'all_commands_delimiters'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -9766,7 +9766,7 @@ $result_trees{'all_commands_delimiters'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [

@@ -1424,7 +1424,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -1434,7 +1434,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -1610,7 +1610,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -1620,7 +1620,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -1796,7 +1796,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -1806,7 +1806,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -1969,7 +1969,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -1979,7 +1979,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -2134,7 +2134,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -2144,7 +2144,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -2325,7 +2325,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -2335,7 +2335,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -2520,7 +2520,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -2530,7 +2530,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -2707,7 +2707,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -2717,7 +2717,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -2915,7 +2915,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -2925,7 +2925,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -3132,7 +3132,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -3142,7 +3142,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [
@@ -3361,7 +3361,7 @@ $result_trees{'all_commands'} = {
                   'extra' => {
                     'def_role' => 'category'
                   },
-                  'type' => 'bracketed_def_content'
+                  'type' => 'bracketed_inserted'
                 }
               ],
               [
@@ -3371,7 +3371,7 @@ $result_trees{'all_commands'} = {
                     'def_role' => 'spaces'
                   },
                   'text' => ' ',
-                  'type' => 'spaces'
+                  'type' => 'spaces_inserted'
                 }
               ],
               [

@@ -1521,7 +1521,8 @@ sub _convert($$;$)
               $element = $type;
             }
             if ($arg->[1]->{'type'}
-                and $arg->[1]->{'type'} eq 'bracketed_def_content') {
+                and ($arg->[1]->{'type'} eq 'bracketed_def_content'
+                  or ($arg->[1]->{'type'} eq 'bracketed_inserted'))) {
               push @$attribute, ('bracketed', 'on');
               push @$attribute, _leading_spaces_before_argument($arg->[1]);
             }

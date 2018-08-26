@@ -1,5 +1,13 @@
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_def, _split_def_args),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Give inserted 
+	elements at front of def line the types 'bracketed_inserted'
+	and 'spaces_inserted' instead of 'bracketed_def_content' and
+	'spaces'.
+
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Text.pm (_convert),
 	* tp/Texinfo/Convert/Plaintext.pm (_convert),
 	* tp/Texinfo/Convert/HTML.pm (_convert_def_line_type):
