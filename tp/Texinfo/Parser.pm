@@ -2371,8 +2371,6 @@ sub _parse_def($$$)
     # Remove the @prepended_content added above.
     splice @new_contents, 0, scalar (@prepended_content);
   }
-  unshift @new_contents, $empty_spaces_after_command
-    if $empty_spaces_after_command; 
   $current->{'contents'} = \@new_contents;
 
   if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
@@ -2394,6 +2392,8 @@ sub _parse_def($$$)
   #  elements into a single element, e.g 'a@i{b}c'.
   my $argument_content = [];
   my $arg = shift (@args);
+
+  my $i = 0; # the offset in @new_contents of $token
   while (@contents) {
     my $token = $contents[0];
     # finish previous item
@@ -2405,7 +2405,15 @@ sub _parse_def($$$)
       # content gathered.
       if (scalar(@$argument_content)) {
         if (scalar(@$argument_content) > 1) {
-          push @result, [$arg, {'contents' => $argument_content}];
+          my $e = {'contents' => $argument_content,
+                   'type' => 'def_aggregate'   };
+          push @result, [$arg, $e];
+          # Replace in the main tree.
+          splice @new_contents,
+                 $i - scalar(@$argument_content),
+                 scalar(@$argument_content),
+                 $e;
+          $i -= scalar(@$argument_content) - 1;
         } elsif (scalar(@$argument_content) == 1) {
           push @result, [$arg, $argument_content->[0]];
         }
@@ -2428,6 +2436,7 @@ sub _parse_def($$$)
         push @result, ['spaces', $token];
         shift @contents;
       } else {
+        $i++;
         last;
       }
     } elsif ($token->{'type'} and $token->{'type'} eq 'delimiter') {
@@ -2436,10 +2445,16 @@ sub _parse_def($$$)
       my $text_or_cmd = shift @contents;
       push @$argument_content, $text_or_cmd;
     }
+    $i++;
     last if (! defined($arg));
   }
   if (scalar(@$argument_content) > 1) {
-    push @result, [$arg, {'contents' => $argument_content}];
+    my $e = {'contents' => $argument_content,
+      'type' => 'def_aggregate'   };
+    push @result, [$arg, $e];
+    # Replace in the main tree.
+    splice @new_contents, $i - scalar(@$argument_content),
+           scalar(@$argument_content), $e;
   } elsif (scalar(@$argument_content) == 1) {
     push @result, [$arg, $argument_content->[0]];
   }
@@ -2447,6 +2462,8 @@ sub _parse_def($$$)
   if (scalar(@contents) > 0) {
     splice @new_contents, -scalar(@contents);
   }
+  unshift @new_contents, $empty_spaces_after_command
+    if $empty_spaces_after_command; 
 
   @contents = map (_split_delimiters($self, $_), @contents );
   @new_contents = (@new_contents, @contents);

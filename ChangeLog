@@ -1,3 +1,10 @@
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (parse_def): Collect adjacent 
+	non-whitespace elements into a 'def_aggregate' element and
+	make this change in the main tree as well as in the 'def_args'
+	array.
+
 2018-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (parse_def): Use the same hashes in the
