@@ -54,6 +54,12 @@ my %brace_commands           = %Texinfo::Common::brace_commands;
 my %block_commands           = %Texinfo::Common::block_commands;    
 my %def_commands             = %Texinfo::Common::def_commands;    
 
+my @ignored_types = ('spaces_inserted', 'bracketed_inserted');
+my %ignored_types;
+for my $a (@ignored_types) {
+  $ignored_types{$a} = 1;
+}
+
 sub convert ($;$);
 # Following subroutines deal with transforming a texinfo tree into texinfo
 # text.  Should give the text that was used parsed, except for a few cases.
@@ -69,6 +75,8 @@ sub convert ($;$)
   die "convert: bad root type (".ref($root).") $root\n" 
      if (ref($root) ne 'HASH');
   my $result = '';
+
+  return '' if ($root->{'type'} and $ignored_types{$root->{'type'}});
 
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};

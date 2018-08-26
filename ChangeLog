@@ -1,5 +1,12 @@
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_def): Include inserted content on
+	def line in main tree.
+	* tp/Texinfo/Convert/Texinfo.pm (convert): Ignore this inserted 
+	content when converting back to Texinfo.
+
+2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_def, _split_def_args),
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Give inserted 
 	elements at front of def line the types 'bracketed_inserted'

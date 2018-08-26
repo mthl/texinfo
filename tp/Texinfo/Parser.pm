@@ -2347,7 +2347,6 @@ sub _parse_def($$$)
     $empty_spaces_after_command = shift @contents;
   }
 
-  my @prepended_content;
   if ($def_aliases{$command}) {
     my $real_command = $def_aliases{$command};
     my $prepended = $def_map{$command}->{$real_command};
@@ -2360,20 +2359,15 @@ sub _parse_def($$$)
       $content->{'extra'}->{'documentlanguage'} = $self->{'documentlanguage'};
     }
     @{$bracketed->{'contents'}} = ($content);
-    @prepended_content = ($bracketed,
-      { 'text' => ' ', 'type' => 'spaces_inserted'});
 
-    unshift @contents, @prepended_content;
+    unshift @contents, $bracketed,
+                       { 'text' => ' ', 'type' => 'spaces_inserted'};
 
     $command = $def_aliases{$command};
   }
   @contents = map (_split_def_args($self, $_), @contents );
   @new_contents = @contents;
 
-  if (@prepended_content) {
-    # Remove the @prepended_content added above.
-    splice @new_contents, 0, scalar (@prepended_content);
-  }
   $current->{'contents'} = \@new_contents;
 
   if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
