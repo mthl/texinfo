@@ -2762,8 +2762,8 @@ sub _convert($$)
         }
       }
     } elsif ($root->{'type'} eq 'def_line') {
-      if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
-             and @{$root->{'extra'}->{'def_args'}}) {
+      if ($root->{'extra'} and $root->{'extra'}->{'def_parsed_hash'}
+             and %{$root->{'extra'}->{'def_parsed_hash'}}) {
         my $arguments = Texinfo::Common::definition_arguments_content($root);
         my $tree;
         my $command;
@@ -2778,7 +2778,6 @@ sub _convert($$)
         } else {
           $name = '';
         }
-        
         
         if ($command eq 'deffn'
             or $command eq 'defvr'

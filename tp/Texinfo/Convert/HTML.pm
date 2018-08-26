@@ -4258,8 +4258,8 @@ sub _convert_def_line_type($$$$)
                              'contents' => [$tree]}) . "</dt>\n";
   } else {
     my $category_prepared = '';
-    if ($command->{'extra'} and $command->{'extra'}->{'def_args'}
-        and @{$command->{'extra'}->{'def_args'}}) {
+    if ($command->{'extra'} and $command->{'extra'}->{'def_parsed_hash'}
+        and %{$command->{'extra'}->{'def_parsed_hash'}}) {
       my $parsed_definition_category 
          = Texinfo::Common::definition_category ($self, $command);
       if ($parsed_definition_category) {

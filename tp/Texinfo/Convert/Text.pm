@@ -541,8 +541,8 @@ sub _convert($;$)
   }
   if ($root->{'type'} and $root->{'type'} eq 'def_line') {
     #print STDERR "$root->{'extra'}->{'def_command'}\n";
-    if ($root->{'extra'} and $root->{'extra'}->{'def_args'}
-             and @{$root->{'extra'}->{'def_args'}}) {
+    if ($root->{'extra'} and $root->{'extra'}->{'def_parsed_hash'}
+             and %{$root->{'extra'}->{'def_parsed_hash'}}) {
       my $parsed_definition_category
         = Texinfo::Common::definition_category ($options->{'converter'}, $root);
       my @contents = ($parsed_definition_category, {'text' => ': '});
