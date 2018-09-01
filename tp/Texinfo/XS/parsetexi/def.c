@@ -74,11 +74,12 @@ next_bracketed_or_word (ELEMENT *current, int *i)
       if (*i == current->contents.number)
         return 0;
       if (current->contents.list[*i]->type != ET_spaces
-          && current->contents.list[*i]->type != ET_spaces_inserted)
+          && current->contents.list[*i]->type != ET_spaces_inserted
+          && current->contents.list[*i]->type != ET_empty_spaces_after_command)
         break;
       (*i)++;
     }
-  return current->contents.list[(*i)];
+  return current->contents.list[(*i)++];
 }
 
 typedef struct {
@@ -117,6 +118,8 @@ split_def_args (ELEMENT *current)
       int len;
       if (e->text.end == 0)
         continue;
+      if (e->type == ET_empty_spaces_after_command)
+        continue;
       p = e->text.text;
 
       len = strspn (p, whitespace_chars);
@@ -125,24 +128,29 @@ split_def_args (ELEMENT *current)
           new = new_element (ET_spaces);
           text_append_n (&new->text, p, len);
           insert_into_contents (current, new, i++);
+          add_extra_string_dup (new, "def_role", "spaces");
           p += len;
         }
 
       while (1)
         {
-          len = strspn (p, whitespace_chars);
-          new = new_element (ET_spaces);
-          text_append_n (&new->text, p, len);
-          insert_into_contents (current, new, i++);
-          if (!*(p += len))
-            break;
-
           len = strcspn (p, whitespace_chars);
           new = new_element (ET_NONE);
           text_append_n (&new->text, p, len);
           insert_into_contents (current, new, i++);
           if (!*(p += len))
             break;
+
+          len = strspn (p, whitespace_chars);
+          new = new_element (ET_spaces);
+          text_append_n (&new->text, p, len);
+          insert_into_contents (current, new, i++);
+          add_extra_string_dup (new, "def_role", "spaces");
+          if (!*(p += len))
+            {
+              new->type = ET_spaces_at_end;
+              break;
+            }
         }
       destroy_element (remove_from_contents (current, i--));
     }
