@@ -37,7 +37,7 @@ enum extra_type {
     extra_node_spec_array,
     extra_string,
     extra_integer,
-    extra_def_args,
+    extra_def_info,
     extra_float_type,
     extra_deleted
 };
@@ -226,6 +226,15 @@ typedef struct {
     ELEMENT *manual_content;
     ELEMENT *node_content;
 } NODE_SPEC_EXTRA;
+
+
+/* For 'def_parsed_hash'. */
+typedef struct {
+    ELEMENT *category;
+    ELEMENT *class;
+    ELEMENT *type;
+    ELEMENT *name;
+} DEF_INFO;
 
 typedef struct {
     char **labels;

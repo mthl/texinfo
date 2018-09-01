@@ -131,26 +131,9 @@ destroy_element (ELEMENT *e)
             /* Same problem as above. */
           //destroy_element_and_children (e->extra[i].value);
           break;
-        case extra_def_args:
-          {
-            int j;
-            DEF_ARGS_EXTRA *dae = (DEF_ARGS_EXTRA *) e->extra[i].value;
-
-            /* Same problem as above. */
-            for (j = 0; 0 && j < dae->nelements; j++)
-              {
-                ELEMENT *e = dae->elements[j];
-                if (e->text.end > 0)
-                  {
-                    //destroy_element_and_children (dae->elements[j]);
-                    destroy_element (dae->elements[j]);
-                  }
-                free (dae->labels[j]);
-              }
-            free (dae->labels);
-            free (dae->elements);
-            free (dae);
-          }
+        case extra_def_info:
+          free (e->extra[i].value);
+          break;
 
         default:
           break;

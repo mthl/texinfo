@@ -2224,7 +2224,8 @@ end_line (ELEMENT *current)
   else if (current->parent && current->parent->type == ET_def_line)
     {
       enum command_id def_command, original_def_command;
-      DEF_ARGS_EXTRA *arguments = 0;
+      DEF_INFO *def_info = 0;
+      static DEF_INFO zero_def_info; /* always stays zeroed */
       KEY_PAIR *k;
 
       if (pop_context () != ct_def)
@@ -2247,41 +2248,36 @@ end_line (ELEMENT *current)
           free (stripped);
         }
 
-      arguments = parse_def (def_command, current->contents);
+      def_info = parse_def (def_command, current);
 
-      /* Now record the index entry. */
-      if (arguments && arguments->nelements > 0)
+      /* Record the index entry if def_info is not empty. */
+      if (!memcmp(def_info, &zero_def_info, sizeof (DEF_INFO)))
         {
-          ELEMENT *name = 0, *class = 0; /* From arguments. */
+          free (def_info);
+          command_warn (current->parent, "missing category for @%s",
+                        command_name (original_def_command));
+        }
+      else
+        {
           ELEMENT *index_entry = 0; /* Index entry text. */
           char *label;
           int i;
 
-          add_extra_def_args (current->parent, "def_args", arguments);
+          add_extra_def_info (current->parent, "def_parsed_hash", def_info);
 
-          /* We use the keys "name" and "class" from the arguments. */
-          for (i = 0; i < arguments->nelements; i++)
-            {
-              label = arguments->labels[i];
-              if (!strcmp (label, "name"))
-                name = arguments->elements[i];
-              else if (!strcmp (label, "class"))
-                class = arguments->elements[i];
-            }
-
-          if (name) // 2811
+          if (def_info->name) // 2811
             {
               char *t;
               /* Set index_entry unless an empty ET_bracketed_def_content. */
-              if (name->type == ET_bracketed_def_content
-                  && (name->contents.number == 0
-                      || (name->contents.number == 1
-                          && (t = name->contents.list[0]->text.text)
+              if (def_info->name->type == ET_bracketed_def_content
+                  && (def_info->name->contents.number == 0
+                      || (def_info->name->contents.number == 1
+                          && (t = def_info->name->contents.list[0]->text.text)
                           && t[strspn (t, whitespace_chars)] == '\0')))
                 {
                 }
               else
-                index_entry = name;
+                index_entry = def_info->name;
             }
 
           if (index_entry) // 2822
@@ -2289,7 +2285,7 @@ end_line (ELEMENT *current)
               ELEMENT *index_contents = 0;
 
               // 2824
-              if (class &&
+              if (def_info->class &&
                   (def_command == CM_defop
                       || def_command == CM_deftypeop
                       || def_command == CM_defmethod
@@ -2319,11 +2315,6 @@ end_line (ELEMENT *current)
               command_warn (current->parent, "missing name for @%s",
                             command_name (original_def_command));
             }
-        }
-      else
-        {
-          command_warn (current->parent, "missing category for @%s",
-                        command_name (original_def_command));
         }
 
       current = current->parent->parent; // 2868

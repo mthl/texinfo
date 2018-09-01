@@ -455,54 +455,28 @@ element_to_perl_hash (ELEMENT *e)
                be much nicer if we could get rid of the need for this key.
                We set this afterwards in build_index_data. */
               break;
-            case extra_def_args:
+            case extra_def_info:
               {
-              /* Value is an array of two-element arrays. */
-              AV *av, *av2;
+              DEF_INFO *d = (DEF_INFO *) f;
               HV *def_parsed_hash;
-              int j;
-              DEF_ARGS_EXTRA *d = (DEF_ARGS_EXTRA *) f;
 
-              av = newAV ();
-              STORE(newRV_inc ((SV *)av));
-
-              /* Also create a "def_parsed_hash" extra value.  The key name
-                 for this is hard-coded here. */
+              /* Create a "def_parsed_hash" extra value. */
               def_parsed_hash = newHV ();
-              hv_store (extra, "def_parsed_hash",
-                        strlen ("def_parsed_hash"),
-                        newRV_inc ((SV *)def_parsed_hash), 0);
+              STORE(newRV_inc ((SV *)def_parsed_hash));
 
-              for (j = 0; j < d->nelements; j++)
-                {
-                  ELEMENT *elt = d->elements[j];
-                  char *label = d->labels[j];
-                  av2 = newAV ();
-                  av_push (av, newRV_inc ((SV *)av2));
-                  av_push (av2, newSVpv (label, 0));
-                  if (!elt->hv)
-                    {
-                      /* TODO: Same problem as "extra_element" cross-tree
-                         references. */
-                      if (elt->parent_type != route_not_in_tree)
-                        abort ();
-                      element_to_perl_hash (elt);
-                    }
-                  if (!elt->hv)
-                    abort ();
-                  av_push (av2, newRV_inc ((SV *)elt->hv));
+#define SAVE_DEF(X) { if (!d->X->hv) \
+                        element_to_perl_hash (d->X); \
+                      hv_store (def_parsed_hash, #X, strlen (#X), \
+                                newRV_inc ((SV *)d->X->hv), 0) ; }
 
-                  /* Set keys of "def_parsed_hash". */
-                  // 2793
-                  if (strcmp (label, "spaces")
-                      && strcmp (label, "arg") && strcmp (label, "typearg")
-                      && strcmp (label, "delimiter"))
-                    {
-                      hv_store (def_parsed_hash, label, strlen (label),
-                                newRV_inc ((SV *)elt->hv), 0);
-                    }
-                }
-
+              if (d->category)
+                SAVE_DEF(category)
+              if (d->class)
+                SAVE_DEF(class)
+              if (d->type)
+                SAVE_DEF(type)
+              if (d->name)
+                SAVE_DEF(name)
               break;
               }
             case extra_float_type:

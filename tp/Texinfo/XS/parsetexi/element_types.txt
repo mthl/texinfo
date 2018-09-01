@@ -1,4 +1,4 @@
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
 # Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
@@ -40,6 +40,7 @@ preamble_text
 space_at_end_menu_node
 after_description_line
 spaces
+spaces_inserted
 
 # Other special types
 text_root
@@ -81,6 +82,7 @@ multitable_body
 row
 bracketed
 bracketed_def_content
+bracketed_inserted
 bracketed_multitable_prototype
 row_prototype
 

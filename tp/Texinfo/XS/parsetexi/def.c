@@ -64,137 +64,21 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
 }
 
 
-static ELEMENT *
-shallow_copy_element (ELEMENT *e)
+/* Starting at I in the contents, return the next non-whitespace element,
+   incrementing I.  Return null if no more elements. */
+ELEMENT *
+next_bracketed_or_word (ELEMENT *current, int *i)
 {
-  ELEMENT *e2 = 0;
-  if (e)
+  while (1)
     {
-      e2 = malloc (sizeof (ELEMENT));
-      memcpy (e2, e, sizeof (ELEMENT));
-      e2->parent_type = route_not_in_tree;
+      if (*i == current->contents.number)
+        return 0;
+      if (current->contents.list[*i]->type != ET_spaces
+          && current->contents.list[*i]->type != ET_spaces_inserted)
+        break;
+      (*i)++;
     }
-  return (e2);
-}
-
-static void
-shallow_destroy_element (ELEMENT *e)
-{
-  free (e->text.text);
-  free (e);
-}
-
-// 2335
-/* Used for definition line parsing.  Return next unit on the line after
-   a definition command like @deffn.  The contents of E is what is remaining
-   in the argument line.  *SPACES_OUT is set to an element with spaces before 
-   the line. */
-static ELEMENT *
-next_bracketed_or_word (ELEMENT *e, ELEMENT **spaces_out, int join)
-{
-  char *text;
-  ELEMENT *spaces = 0;
-  int space_len = 0;
-  ELEMENT *ret;
-  ELEMENT *f;
-
-  *spaces_out = 0;
-  if (e->contents.number == 0)
-    return 0; /* No more arguments */
-
-  f = e->contents.list[0];
-  text = f->text.text;
-  if (text)
-    space_len = strspn (text, whitespace_chars);
-  if (space_len)
-    {
-      if (space_len)
-        {
-          spaces = new_element (ET_spaces);
-          if (text[space_len - 1] == '\n')
-            spaces->type = ET_spaces_at_end;
-          spaces->parent_type = route_not_in_tree;
-          text_append_n (&spaces->text, text, space_len);
-          memmove (f->text.text,
-                   f->text.text + space_len,
-                   f->text.end - space_len + 1);
-          f->text.end -= space_len;
-        }
-
-      if (f->text.end == 0)
-        {
-          (void ) remove_from_contents (e, 0);
-          shallow_destroy_element (f);
-        }
-      *spaces_out = spaces;
-    }
-
-  if (e->contents.number == 0)
-    return 0; /* No more arguments */
-
-  ret = new_element (ET_NONE);
-  ret->parent_type = route_not_in_tree;
-  while (e->contents.number > 0)
-    {
-      f = e->contents.list[0];
-      if (f->type == ET_bracketed)
-        {
-          (void) remove_from_contents (e, 0);
-          f->type = ET_bracketed_def_content;
-          isolate_last_space (f, 0);
-          add_to_contents_as_array (ret, f);
-          if (!join)
-            break;
-        }
-      else if (f->cmd) // 2363
-        {
-          (void ) remove_from_contents (e, 0);
-          add_to_contents_as_array (ret, f);
-          if (!join)
-            break;
-        }
-      else
-        {
-          /* Extract span of non-whitespace characters. */
-          ELEMENT *returned;
-          int arg_len;
-
-          text = f->text.text;
-          if (!*text)
-            {
-              /* Finished with this element */
-              remove_from_contents (e, 0);
-              shallow_destroy_element (f);
-              continue;
-            }
-
-          space_len = strspn (text, whitespace_chars);
-          if (space_len > 0)
-            break; /* Finished */
-
-          returned = new_element (ET_NONE);
-          returned->parent_type = route_not_in_tree;
-          arg_len = strcspn (text, whitespace_chars);
-          text_append_n (&returned->text, text, arg_len);
-          memmove (f->text.text, f->text.text + space_len + arg_len,
-                   f->text.end - (space_len + arg_len) + 1);
-          f->text.end -= space_len + arg_len;
-
-          add_to_contents_as_array (ret, returned);
-          if (!join)
-            break;
-       }
-    }
-  if (ret->contents.number == 1)
-    {
-      ELEMENT *tmp = ret;
-      ret = ret->contents.list[0];
-      shallow_destroy_element (tmp);
-    }
-  else if (ret->contents.number == 0)
-    abort ();
-
-  return ret;
+  return current->contents.list[(*i)];
 }
 
 typedef struct {
@@ -218,82 +102,65 @@ DEF_ALIAS def_aliases[] = {
   0, 0, 0
 };
 
+/* Divide any text elements into separate elements, separating whitespace
+   and non-whitespace. */
 static void
-add_to_def_args_extra (DEF_ARGS_EXTRA *d, char *label, ELEMENT *arg)
+split_def_args (ELEMENT *current)
 {
-  if (d->nelements >= d->space - 1)
+  int i;
+  for (i = 0; i < current->contents.number; i++)
     {
-      d->space += 5;
-      d->labels = realloc (d->labels, d->space * sizeof (char *));
-      d->elements = realloc (d->elements, d->space * sizeof (ELEMENT *));
+      ELEMENT *e = current->contents.list[i];
+      int j;
+      char *p;
+      ELEMENT *new;
+      int len;
+      if (e->text.end == 0)
+        continue;
+      p = e->text.text;
+
+      len = strspn (p, whitespace_chars);
+      if (len)
+        {
+          new = new_element (ET_spaces);
+          text_append_n (&new->text, p, len);
+          insert_into_contents (current, new, i++);
+          p += len;
+        }
+
+      while (1)
+        {
+          len = strspn (p, whitespace_chars);
+          new = new_element (ET_spaces);
+          text_append_n (&new->text, p, len);
+          insert_into_contents (current, new, i++);
+          if (!*(p += len))
+            break;
+
+          len = strcspn (p, whitespace_chars);
+          new = new_element (ET_NONE);
+          text_append_n (&new->text, p, len);
+          insert_into_contents (current, new, i++);
+          if (!*(p += len))
+            break;
+        }
+      destroy_element (remove_from_contents (current, i--));
     }
-
-  if (arg && arg->hv)
-    abort ();
-  if (!arg)
-    return; /* Probably a bug */
-
-  d->labels[d->nelements] = label;
-  d->elements[d->nelements++] = arg;
-  d->labels[d->nelements] = 0;
-  d->elements[d->nelements] = 0;
 }
 
-/* Parse the arguments on a def* command line.
-   The return value is suitable for "def_args" extra value. */
-// 2378
-DEF_ARGS_EXTRA *
-parse_def (enum command_id command, ELEMENT_LIST contents)
+DEF_INFO *
+parse_def (enum command_id command, ELEMENT *current)
 {
-  DEF_ARGS_EXTRA *def_args; /* Return value */
-  int i, args_start = 0;
-
-  ELEMENT *arg_line; /* Copy of argument line. */
-  ELEMENT *arg, *spaces; /* Arguments and spaces extracted from line. */
+  DEF_INFO *ret;
+  int contents_idx;
+  ELEMENT *arg;
   ELEMENT *e, *e1;
-
   enum command_id original_command = CM_NONE;
 
-  def_args = malloc (sizeof (DEF_ARGS_EXTRA));
-  memset (def_args, 0, sizeof (DEF_ARGS_EXTRA));
+  ret = malloc (sizeof (DEF_INFO));
+  memset (ret, 0, sizeof (DEF_INFO));
 
-  /* Copy contents of argument line. */
-  arg_line = new_element (ET_NONE);
-  for (i = contents.list[0]->type != ET_empty_spaces_after_command ? 0 : 1;
-       i < contents.number; i++)
-    {
-      if (0)
-        {
-          add_to_contents_as_array (arg_line,
-                                    shallow_copy_element (contents.list[i]));
-        }
-      else if (contents.list[i]->text.space > 0)
-        {
-          /* Copy text to avoid changing the original. */
-          ELEMENT *copy = new_element (ET_NONE);
-          copy->parent_type = route_not_in_tree;
-          copy->parent = 0;
-          text_init (&copy->text);
-          text_append_n (&copy->text,
-                         contents.list[i]->text.text,
-                         contents.list[i]->text.end);
-          add_to_contents_as_array (arg_line, copy);
-
-          /* Note that these copied elements should be destroyed with
-             shallow_destroy_element, not destroy_element, because their
-             contents and args are shared with in-tree elements. */
-        }
-      else
-        {
-          add_to_contents_as_array (arg_line, contents.list[i]);
-        }
-    }
-
-  if (arg_line->contents.number > 0 // 2385
-      && arg_line->contents.list[0]->type == ET_empty_spaces_after_command)
-    {
-      remove_from_contents (arg_line, 0);
-    }
+  split_def_args (current);
 
   /* Check for "def alias" - for example @defun for @deffn. */
   if (command_data(command).flags & CF_def_alias) // 2387
@@ -316,10 +183,8 @@ found:
       command = def_aliases[i].command;
 
       /* Used when category text has a space in it. */
-      e = new_element (ET_bracketed);
-      insert_into_contents (arg_line, e, 0);
-      e->parent = 0;
-      e->parent_type = route_not_in_tree;
+      e = new_element (ET_bracketed_inserted);
+      insert_into_contents (current, e, 0);
       e1 = new_element (ET_NONE);
       text_append_n (&e1->text, category, strlen (category));
       add_to_element_contents (e, e1);
@@ -329,13 +194,12 @@ found:
           add_extra_string_dup (e1, "documentlanguage",
                                 global_documentlanguage);
         }
-      e1->parent_type = route_not_in_tree;
 
-      e = new_element (ET_NONE);
+      e = new_element (ET_spaces_inserted);
       text_append_n (&e->text, " ", 1);
-      insert_into_contents (arg_line, e, 1);
-      e->parent_type = route_not_in_tree;
+      insert_into_contents (current, e, 1);
     }
+
 
   /* Read arguments as CATEGORY [CLASS] [TYPE] NAME [ARGUMENTS].
   
@@ -346,13 +210,9 @@ found:
      NAME - name of entity being documented
      ARGUMENTS - arguments to a function or macro                  */
 
+  contents_idx = 0;
   /* CATEGORY */
-  arg = next_bracketed_or_word (arg_line, &spaces, 1);
-  if (!arg)
-    goto finished;
-  if (spaces)
-    add_to_def_args_extra (def_args, "spaces", spaces);
-  add_to_def_args_extra (def_args, "category", arg);
+  ret->category = next_bracketed_or_word (current, &contents_idx);
 
   /* CLASS */
   if (command == CM_deftypeop
@@ -360,12 +220,7 @@ found:
       || command == CM_deftypecv
       || command == CM_defop)
     {
-      arg = next_bracketed_or_word (arg_line, &spaces, 1);
-      if (spaces)
-        add_to_def_args_extra (def_args, "spaces", spaces);
-      if (!arg)
-        goto finished;
-      add_to_def_args_extra (def_args, "class", arg);
+      ret->class = next_bracketed_or_word (current, &contents_idx);
     }
 
   /* TYPE */
@@ -374,23 +229,35 @@ found:
       || command == CM_deftypevr
       || command == CM_deftypecv)
     {
-      arg = next_bracketed_or_word (arg_line, &spaces, 1);
-      if (spaces)
-        add_to_def_args_extra (def_args, "spaces", spaces);
-      if (!arg)
-        goto finished;
-      add_to_def_args_extra (def_args, "type", arg);
+      ret->type = next_bracketed_or_word (current, &contents_idx);
     }
 
   /* NAME */
-  /* All command types get a name. */
-  arg = next_bracketed_or_word (arg_line, &spaces, 1);
-  if (spaces)
-    add_to_def_args_extra (def_args, "spaces", spaces);
-  if (!arg)
-    goto finished;
-  add_to_def_args_extra (def_args, "name", arg);
+  ret->name = next_bracketed_or_word (current, &contents_idx);
 
+  if (ret->category)
+    {
+      add_extra_string_dup (ret->category, "def_role", "category");
+    }
+  if (ret->class)
+    {
+      add_extra_string_dup (ret->class, "def_role", "class");
+    }
+  if (ret->type)
+    {
+      add_extra_string_dup (ret->type, "def_role", "type");
+    }
+  if (ret->name)
+    {
+      add_extra_string_dup (ret->name, "def_role", "name");
+    }
+  /* TODO: process args */
+
+  return ret;
+
+}
+
+#if 0
   /* ARGUMENTS */
 
   args_start = def_args->nelements;
@@ -479,3 +346,5 @@ finished:
   destroy_element (arg_line);
   return def_args;
 }
+
+#endif
