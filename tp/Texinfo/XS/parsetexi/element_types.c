@@ -57,6 +57,7 @@ char *element_type_names[] = {
 "row",
 "bracketed",
 "bracketed_def_content",
+"def_aggregate",
 "bracketed_inserted",
 "bracketed_multitable_prototype",
 "row_prototype",

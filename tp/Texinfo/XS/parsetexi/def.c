@@ -75,7 +75,9 @@ next_bracketed_or_word (ELEMENT *current, int *i)
         return 0;
       if (current->contents.list[*i]->type != ET_spaces
           && current->contents.list[*i]->type != ET_spaces_inserted
-          && current->contents.list[*i]->type != ET_empty_spaces_after_command)
+          && current->contents.list[*i]->type != ET_spaces_at_end
+          && current->contents.list[*i]->type != ET_empty_spaces_after_command
+          && current->contents.list[*i]->type != ET_delimiter)
         break;
       (*i)++;
     }
@@ -102,6 +104,55 @@ DEF_ALIAS def_aliases[] = {
   CM_deftypemethod, CM_deftypeop, "Method",
   0, 0, 0
 };
+
+/* Split non-space text elements into strings without [ ] ( ) , and single
+   character strings with one of them.
+
+   TODO: also collect adjacent non-whitespace elements, e.g. 'a@i{b}c' into a 
+   single ET_def_aggregate element. */
+static void
+split_delimiters (ELEMENT *current, int starting_idx)
+{
+  int i;
+  static char *chars = "[](),";
+  for (i = starting_idx; i < current->contents.number; i++)
+    {
+      ELEMENT *e = current->contents.list[i];
+      int j;
+      char *p;
+      ELEMENT *new;
+      int len;
+
+      if (e->type != ET_NONE
+          || e->text.end == 0)
+        continue;
+      if (e->type == ET_empty_spaces_after_command)
+        continue;
+      p = e->text.text;
+
+      while (1)
+        {
+          if (strchr (chars, *p))
+            {
+              new = new_element (ET_delimiter);
+              text_append_n (&new->text, p, 1);
+              insert_into_contents (current, new, i++);
+              add_extra_string_dup (new, "def_role", "delimiter");
+              if (!*++p)
+                break;
+              continue;
+            }
+
+          len = strcspn (p, chars);
+          new = new_element (ET_NONE);
+          text_append_n (&new->text, p, len);
+          insert_into_contents (current, new, i++);
+          if (!*(p += len))
+            break;
+        }
+      destroy_element (remove_from_contents (current, i--));
+    }
+}
 
 /* Divide any text elements into separate elements, separating whitespace
    and non-whitespace. */
@@ -161,7 +212,9 @@ parse_def (enum command_id command, ELEMENT *current)
 {
   DEF_INFO *ret;
   int contents_idx;
+  int args_start;
   ELEMENT *arg;
+  int type, next_type;
   ELEMENT *e, *e1;
   enum command_id original_command = CM_NONE;
 
@@ -190,9 +243,14 @@ found:
       original_command = command;
       command = def_aliases[i].command;
 
+      contents_idx = 0;
+      if (current->contents.number > 0
+          && current->contents.list[0]->type == ET_empty_spaces_after_command)
+        contents_idx++;
+
       /* Used when category text has a space in it. */
       e = new_element (ET_bracketed_inserted);
-      insert_into_contents (current, e, 0);
+      insert_into_contents (current, e, contents_idx++);
       e1 = new_element (ET_NONE);
       text_append_n (&e1->text, category, strlen (category));
       add_to_element_contents (e, e1);
@@ -205,7 +263,8 @@ found:
 
       e = new_element (ET_spaces_inserted);
       text_append_n (&e->text, " ", 1);
-      insert_into_contents (current, e, 1);
+      add_extra_string_dup (e, "def_role", "spaces");
+      insert_into_contents (current, e, contents_idx);
     }
 
 
@@ -259,100 +318,25 @@ found:
     {
       add_extra_string_dup (ret->name, "def_role", "name");
     }
-  /* TODO: process args */
 
-  return ret;
+  /* Process args */
+  args_start = contents_idx;
+  split_delimiters (current, contents_idx);
 
-}
-
-#if 0
-  /* ARGUMENTS */
-
-  args_start = def_args->nelements;
-  // 2441
-  while (arg_line->contents.number > 0)
-    {
-      arg = next_bracketed_or_word (arg_line, &spaces, 0);
-      if (spaces)
-        add_to_def_args_extra (def_args, "spaces", spaces);
-      if (!arg)
-        goto finished;
-      if (arg->text.end > 0) // 2445
-        {
-          ELEMENT *e;
-          char *p = arg->text.text;
-          int len;
-          /* Split this argument into multiple arguments, separated by
-             separator characters. */
-          while (1)
-            {
-              /* Square and round brackets used for optional arguments
-                 and grouping.  Commas allowed as well? */
-              len = strcspn (p, "[](),");
-              if (len > 0)
-                {
-                  e = new_element (ET_NONE);
-                  e->parent_type = route_not_in_tree;
-                  text_append_n (&e->text, p, len);
-                  add_to_def_args_extra (def_args, "arg", e);
-                  p += len;
-                }
-              if (!*p)
-                break;
-              while (*p && strchr ("[](),", *p))
-                {
-                  e = new_element (ET_delimiter);
-                  e->parent_type = route_not_in_tree;
-                  text_append_n (&e->text, p++, 1);
-                  add_to_def_args_extra (def_args, "delimiter", e);
-                }
-              if (!*p)
-                break;
-            }
-          destroy_element (arg);
-        }
-      else
-        {
-          add_to_def_args_extra (def_args, "arg", arg);
-        }
-    }
-
-finished:
-
-  // 2460 - argtype
-  /* Change some of the left sides to 'typearg'.  This matters for
+  /* For some commands, alternate between "arg" and "typearg". This matters for
      the DocBook output. */
-  if (args_start > 0
-      && (command == CM_deftypefn || command == CM_deftypeop
-          || command == CM_deftp))
+  if (command == CM_deftypefn || command == CM_deftypeop
+          || command == CM_deftp)
+    next_type = -1;
+  else
+    next_type = 1;
+
+  type = 1;
+  while ((arg = next_bracketed_or_word (current, &contents_idx)))
     {
-      int i, next_is_type = 1;
-      for (i = args_start; i < def_args->nelements; i++)
-        {
-          if (!strcmp ("spaces", def_args->labels[i]))
-            {
-            }
-          else if (!strcmp ("delimiter", def_args->labels[i]))
-            {
-              next_is_type = 1;
-            }
-          else if (def_args->elements[i]->cmd
-                   && def_args->elements[i]->cmd != CM_code)
-            {
-              next_is_type = 1;
-            }
-          else if (next_is_type)
-            {
-              def_args->labels[i] = "typearg";
-              next_is_type = 0;
-            }
-          else
-            next_is_type = 1;
-        }
+      add_extra_string_dup (arg, "def_role",
+                            (type *= next_type) == 1 ? "arg" : "typearg");
+
     }
-
-  destroy_element (arg_line);
-  return def_args;
+  return ret;
 }
-
-#endif

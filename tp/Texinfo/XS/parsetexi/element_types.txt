@@ -17,7 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Types for @-commands
-#def_line # duplicated below
 command_as_argument
 index_entry_command
 following_arg
@@ -82,6 +81,7 @@ multitable_body
 row
 bracketed
 bracketed_def_content
+def_aggregate
 bracketed_inserted
 bracketed_multitable_prototype
 row_prototype
