@@ -84,6 +84,65 @@ next_bracketed_or_word (ELEMENT *current, int *i)
   return current->contents.list[(*i)++];
 }
 
+ELEMENT *
+next_bracketed_or_word_agg (ELEMENT *current, int *i)
+{
+  int num = 0;
+  ELEMENT *new;
+  ELEMENT *e;
+  int j;
+  while (1)
+    {
+      if (*i == current->contents.number)
+        break;
+      e = current->contents.list[*i];
+      if (e->type == ET_spaces
+          || e->type == ET_spaces_inserted
+          || e->type == ET_spaces_at_end
+          || e->type == ET_empty_spaces_after_command
+          || e->type == ET_delimiter)
+        {
+          if (num > 0)
+            break;
+          else
+            {
+              (*i)++;
+              continue;
+            }
+        }
+      if (e->type == ET_bracketed_def_content
+          || e->type == ET_bracketed_inserted)
+        {
+          if (num > 0)
+            break;
+          else
+            {
+              (*i)++;
+              return e;
+            }
+        }
+      /* e is a text or command element */
+      (*i)++;
+      num++;
+    }
+  if (num == 0)
+    return 0;
+  if (num == 1)
+    return current->contents.list[*i - 1];
+
+  new = new_element (ET_def_aggregate);
+  for (j = 0; j < num; j++)
+    {
+      add_to_element_contents (new,
+                               remove_from_contents (current, *i - num));
+      /* Note: if we did a lot of this could write a special
+         "splicing" function. */
+    }
+  insert_into_contents (current, new, *i - num);
+  *i = *i - num + 1;
+  return new;
+}
+
 typedef struct {
     enum command_id alias;
     enum command_id command;
@@ -106,10 +165,7 @@ DEF_ALIAS def_aliases[] = {
 };
 
 /* Split non-space text elements into strings without [ ] ( ) , and single
-   character strings with one of them.
-
-   TODO: also collect adjacent non-whitespace elements, e.g. 'a@i{b}c' into a 
-   single ET_def_aggregate element. */
+   character strings with one of them. */
 static void
 split_delimiters (ELEMENT *current, int starting_idx)
 {
@@ -153,6 +209,7 @@ split_delimiters (ELEMENT *current, int starting_idx)
       destroy_element (remove_from_contents (current, i--));
     }
 }
+
 
 /* Divide any text elements into separate elements, separating whitespace
    and non-whitespace.  Change ET_bracketed elements to 
@@ -214,9 +271,8 @@ parse_def (enum command_id command, ELEMENT *current)
 {
   DEF_INFO *ret;
   int contents_idx;
-  int args_start;
-  ELEMENT *arg;
   int type, next_type;
+  int i;
   ELEMENT *e, *e1;
   enum command_id original_command = CM_NONE;
 
@@ -281,7 +337,7 @@ found:
 
   contents_idx = 0;
   /* CATEGORY */
-  ret->category = next_bracketed_or_word (current, &contents_idx);
+  ret->category = next_bracketed_or_word_agg (current, &contents_idx);
 
   /* CLASS */
   if (command == CM_deftypeop
@@ -289,7 +345,7 @@ found:
       || command == CM_deftypecv
       || command == CM_defop)
     {
-      ret->class = next_bracketed_or_word (current, &contents_idx);
+      ret->class = next_bracketed_or_word_agg (current, &contents_idx);
     }
 
   /* TYPE */
@@ -298,11 +354,11 @@ found:
       || command == CM_deftypevr
       || command == CM_deftypecv)
     {
-      ret->type = next_bracketed_or_word (current, &contents_idx);
+      ret->type = next_bracketed_or_word_agg (current, &contents_idx);
     }
 
   /* NAME */
-  ret->name = next_bracketed_or_word (current, &contents_idx);
+  ret->name = next_bracketed_or_word_agg (current, &contents_idx);
 
   if (ret->category)
     {
@@ -322,7 +378,6 @@ found:
     }
 
   /* Process args */
-  args_start = contents_idx;
   split_delimiters (current, contents_idx);
 
   /* For some commands, alternate between "arg" and "typearg". This matters for
@@ -333,12 +388,31 @@ found:
   else
     next_type = 1;
 
-  type = 1;
-  while ((arg = next_bracketed_or_word (current, &contents_idx)))
+  type = next_type;
+  for (i = contents_idx; i < current->contents.number; i++)
     {
-      add_extra_string_dup (arg, "def_role",
-                            (type *= next_type) == 1 ? "arg" : "typearg");
-
+      e = contents_child_by_index (current, i);
+      if (e->type == ET_spaces
+          || e->type == ET_spaces_inserted
+          || e->type == ET_spaces_at_end
+          || e->type == ET_empty_spaces_after_command)
+        {
+          continue;
+        }
+      if (e->type == ET_delimiter)
+        {
+          type = next_type;
+          continue;
+        }
+      if (e->cmd && e->cmd != CM_code)
+        {
+          add_extra_string_dup (e, "def_role", "arg");
+          type = next_type;
+          continue;
+        }
+      add_extra_string_dup (e, "def_role",
+                            (type == 1 ? "arg" : "typearg"));
+      type *= next_type;
     }
   return ret;
 }
