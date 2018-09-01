@@ -2289,9 +2289,10 @@ sub _split_delimiters
     my $text = $root->{'text'};
     while (1) {
       if ($text =~ s/^([^$chars]+)//) {
-        push @elements, {'text' => $1};
+        push @elements, {'text' => $1, 'parent' => $root->{'parent'}};
       } elsif ($text =~ s/^([$chars])//) {
-        push @elements, {'text' => $1, 'type' => 'delimiter'};
+        push @elements, {'text' => $1, 'type' => 'delimiter',
+                         'parent' => $root->{'parent'}};
       } else {
         last;
       }
@@ -2322,6 +2323,7 @@ sub _split_def_args
       } else {
         $type = 'spaces';
       }
+      $e->{'parent'} = $root->{'parent'};
       push @elements, $e;
     }
     return @elements;
@@ -2352,7 +2354,8 @@ sub _parse_def($$$)
     my $prepended = $def_map{$command}->{$real_command};
 
 
-    my $bracketed = { 'type' => 'bracketed_inserted' };
+    my $bracketed = { 'type' => 'bracketed_inserted',
+                      'parent' => \@new_contents };
     my $content = { 'text' => $prepended, 'parent' => $bracketed };
     if ($self->{'documentlanguage'}) {
       $content->{'type'} = 'untranslated';
@@ -2361,7 +2364,9 @@ sub _parse_def($$$)
     @{$bracketed->{'contents'}} = ($content);
 
     unshift @contents, $bracketed,
-                       { 'text' => ' ', 'type' => 'spaces_inserted'};
+                       { 'text' => ' ', 'type' => 'spaces_inserted',
+                         'parent' => \@new_contents
+                       };
 
     $command = $def_aliases{$command};
   }

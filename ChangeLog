@@ -1,3 +1,8 @@
+2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_def, _split_def_args)
+	(_split_delimiters): Set 'parent' on new elements.
+
 2018-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line): Do not set 'def_args'
