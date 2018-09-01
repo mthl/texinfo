@@ -2410,7 +2410,8 @@ sub _parse_def($$$)
       if (scalar(@$argument_content)) {
         if (scalar(@$argument_content) > 1) {
           my $e = {'contents' => $argument_content,
-                   'type' => 'def_aggregate'   };
+                   'type' => 'def_aggregate',
+                   'parent' => $current };
           push @result, [$arg, $e];
           # Replace in the main tree.
           splice @new_contents,
