@@ -155,7 +155,8 @@ split_delimiters (ELEMENT *current, int starting_idx)
 }
 
 /* Divide any text elements into separate elements, separating whitespace
-   and non-whitespace. */
+   and non-whitespace.  Change ET_bracketed elements to 
+   ET_bracketed_def_content. */
 static void
 split_def_args (ELEMENT *current)
 {
@@ -167,24 +168,35 @@ split_def_args (ELEMENT *current)
       char *p;
       ELEMENT *new;
       int len;
+      if (e->type == ET_bracketed)
+        {
+          isolate_last_space (e, 0);
+          e->type = ET_bracketed_def_content;
+          continue;
+        }
       if (e->text.end == 0)
         continue;
       if (e->type == ET_empty_spaces_after_command)
         continue;
       p = e->text.text;
 
-      len = strspn (p, whitespace_chars);
-      if (len)
-        {
-          new = new_element (ET_spaces);
-          text_append_n (&new->text, p, len);
-          insert_into_contents (current, new, i++);
-          add_extra_string_dup (new, "def_role", "spaces");
-          p += len;
-        }
-
       while (1)
         {
+          len = strspn (p, whitespace_chars);
+          if (len)
+            {
+              new = new_element (ET_spaces);
+              text_append_n (&new->text, p, len);
+              insert_into_contents (current, new, i++);
+              add_extra_string_dup (new, "def_role", "spaces");
+              if (!*(p += len))
+                {
+                  if (p[-1] == '\n')
+                    new->type = ET_spaces_at_end;
+                  break;
+                }
+            }
+            
           len = strcspn (p, whitespace_chars);
           new = new_element (ET_NONE);
           text_append_n (&new->text, p, len);
@@ -192,16 +204,6 @@ split_def_args (ELEMENT *current)
           if (!*(p += len))
             break;
 
-          len = strspn (p, whitespace_chars);
-          new = new_element (ET_spaces);
-          text_append_n (&new->text, p, len);
-          insert_into_contents (current, new, i++);
-          add_extra_string_dup (new, "def_role", "spaces");
-          if (!*(p += len))
-            {
-              new->type = ET_spaces_at_end;
-              break;
-            }
         }
       destroy_element (remove_from_contents (current, i--));
     }
