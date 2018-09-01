@@ -2355,7 +2355,7 @@ sub _parse_def($$$)
 
 
     my $bracketed = { 'type' => 'bracketed_inserted',
-                      'parent' => \@new_contents };
+                      'parent' => $current };
     my $content = { 'text' => $prepended, 'parent' => $bracketed };
     if ($self->{'documentlanguage'}) {
       $content->{'type'} = 'untranslated';
@@ -2365,7 +2365,7 @@ sub _parse_def($$$)
 
     unshift @contents, $bracketed,
                        { 'text' => ' ', 'type' => 'spaces_inserted',
-                         'parent' => \@new_contents
+                         'parent' => $current,
                        };
 
     $command = $def_aliases{$command};
