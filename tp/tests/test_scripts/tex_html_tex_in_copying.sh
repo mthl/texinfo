@@ -25,7 +25,7 @@ srcdir_test=$dir; export srcdir_test;
 "$srcdir"/"$command" -dir $dir $arg
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log
-if test -f $dir/$diffs_dir/$name.diff; then
+if test $exit_status = 0 && test -f $dir/$diffs_dir/$name.diff; then
   echo 
   cat $dir/$diffs_dir/$name.diff
 fi

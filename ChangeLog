@@ -1,5 +1,11 @@
 2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/maintain/regenerate_cmd_tests.sh: Do not print diffs if
+	perl exited with a non-zero exit status, as the diffs will be 
+	out of date and this could hide a syntax error.
+
+2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_def): Update 'parent' on
 	elements of a 'def_aggregate'.
 

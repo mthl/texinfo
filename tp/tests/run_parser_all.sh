@@ -329,14 +329,22 @@ while read line; do
       echo "$cmd" >>$logfile
       eval $cmd
       ret=$?
+      echo XXXXXXXXXXXXXXXXXXXXXXXXXXXXXx $ret
+      if test $ret = 0 ; then
+        echo FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      else
+        echo GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+      fi
       #rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
       #  ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
       #  ${outdir}$dir/*_l2h.html.* \
       #  ${outdir}$dir/*_tex4ht_tex.html*
     fi
+        echo KKKKKKKKKKKKKKKKKKKKKKKKKK
     #
     # ran test, check results.
     if test $ret = 0 ; then
+        echo HHHHHHHHHHHHHHHHHH
       diff_base="${dir}${dir_suffix}"
       res_dir_used=
       if [ -d "$results_dir/$dir" ]; then
@@ -428,6 +436,7 @@ while read line; do
         echo "no res($format): $dir"
       fi
     else
+      echo 555555555555555555555555555555
       echo "failed with status $ret" >>$logfile
       echo "F: ${outdir}$dir/$basename.2"
       return_code=1
@@ -444,5 +453,7 @@ fi
 
 echo >>$logfile
 echo "all done, exiting with status $return_code" >>$logfile
+
+      echo 77777777777777777777777
 
 exit $return_code
