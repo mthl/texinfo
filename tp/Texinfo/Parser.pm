@@ -2375,6 +2375,13 @@ sub _parse_def($$$)
 
   $current->{'contents'} = \@new_contents;
 
+  if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
+    # if there is no argument at all, the leading space is not associated
+    # to the @-command. We do not want to have this leading space appear in the 
+    # arguments ever, so we ignore it here.
+    @contents = ();
+  }
+
   my @result;
   my @args = @{$def_map{$command}};
   my $arg_type;
@@ -2771,9 +2778,9 @@ sub _end_line($$$)
     }
     my $def_command = $current->{'parent'}->{'extra'}->{'def_command'};
     my $arguments = _parse_def($self, $def_command, $current);
-    my $def_parsed_hash;
     if (scalar(@$arguments)) {
       #$current->{'parent'}->{'extra'}->{'def_args'} = $arguments;
+      my $def_parsed_hash;
       foreach my $arg (@$arguments) {
         die if (!defined($arg->[0]));
         last if ($arg->[0] eq 'arg' or $arg->[0] eq 'typearg' 
@@ -2781,8 +2788,6 @@ sub _end_line($$$)
         next if ($arg->[0] eq 'spaces');
         $def_parsed_hash->{$arg->[0]} = $arg->[1];
       }
-    }
-    if (scalar(%$def_parsed_hash)) {
       $current->{'parent'}->{'extra'}->{'def_parsed_hash'} = $def_parsed_hash;
       # do an standard index entry tree
       my $index_entry;

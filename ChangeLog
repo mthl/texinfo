@@ -5,12 +5,6 @@
 
 2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Parser.pm (_parse_def): Do not handle a leading 
-	space specially.
-	(_end_line): Account for this change.
-
-2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
-
 	* tp/Texinfo/Parser.pm (_parse_def): Set 'parent' on 
 	'def_aggregate' element.
 
