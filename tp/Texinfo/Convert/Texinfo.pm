@@ -187,7 +187,7 @@ sub _expand_cmd_args_to_texi ($;$) {
                          or $cmd->{'args'}->[0]->{'type'} eq 'brace_command_context'));
     $result .= '{' if ($braces);
     if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
+      $result .= $cmd->{'extra'}->{'delimiter'};
     }
     if ($cmd->{'extra'}
         and $cmd->{'extra'}->{'spaces_before_argument'}) {
@@ -209,7 +209,7 @@ sub _expand_cmd_args_to_texi ($;$) {
       }
     }
     if ($cmdname eq 'verb') {
-      $result .= $cmd->{'type'};
+      $result .= $cmd->{'extra'}->{'delimiter'};
     }
     #die "Shouldn't have args: $cmdname\n";
     $result .= '}' if ($braces);

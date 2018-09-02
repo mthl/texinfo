@@ -1145,7 +1145,7 @@ sub _convert($$;$)
       # first argument
       my $attribute = [];
       if ($root->{'cmdname'} eq 'verb') {
-        push @$attribute, ('delimiter', $root->{'type'});
+        push @$attribute, ('delimiter', $root->{'extra'}->{'delimiter'});
       } elsif ($root->{'cmdname'} eq 'anchor') {
         my $anchor_name;
         if (defined($root->{'extra'}->{'normalized'})) {

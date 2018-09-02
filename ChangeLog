@@ -1,5 +1,13 @@
 2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi, _close_brace_command),
+	* tp/Texinfo/Convert/Texinfo.pm (_expand_cmd_args_to_texi),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert):
+	Save the delimiter character of @verb as the 'delimiter' extra
+	value, instead of putting in 'type'.
+
+2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (module documentation): Update.
 
 2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>

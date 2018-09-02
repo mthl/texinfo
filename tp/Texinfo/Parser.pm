@@ -1278,7 +1278,8 @@ sub _close_brace_command($$$;$$)
   my ($self, $current, $line_nr, $closed_command,
       $interrupting_command) = @_;
 
-  if ($current->{'cmdname'} ne 'verb' or $current->{'type'} eq '') {
+  if ($current->{'cmdname'} ne 'verb'
+      or $current->{'extra'}->{'delimiter'} eq '') {
     if (defined($closed_command)) {
       $self->_command_error($current, $line_nr,
         __("\@end %s seen before \@%s closing brace"), 
@@ -1295,7 +1296,7 @@ sub _close_brace_command($$$;$$)
   } else {
     $self->_command_error($current, $line_nr,
        __("\@%s missing closing delimiter sequence: %s}"),
-       $current->{'cmdname'}, $current->{'type'});
+       $current->{'cmdname'}, $current->{'extra'}->{'delimiter'});
   }
   $current = $current->{'parent'};
   return $current;
@@ -3836,17 +3837,17 @@ sub _parse_texi($;$)
       } elsif ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
              and $current->{'parent'}->{'cmdname'} eq 'verb') {
         # collect the first character if not already done
-        if (!defined($current->{'parent'}->{'type'})) {
+        if (!defined($current->{'parent'}->{'extra'}->{'delimiter'})) {
           if ($line =~ /^$/) {
-            $current->{'parent'}->{'type'} = '';
+            $current->{'parent'}->{'extra'}->{'delimiter'} = '';
             $self->line_error(sprintf(
                 __("\@%s without associated character"), 'verb'), $line_nr);
           } else {
             $line =~ s/^(.)//;
-            $current->{'parent'}->{'type'} = $1;
+            $current->{'parent'}->{'extra'}->{'delimiter'} = $1;
           }
         }
-        my $char = quotemeta($current->{'parent'}->{'type'});
+        my $char = quotemeta($current->{'parent'}->{'extra'}->{'delimiter'});
         if ($line =~ s/^(.*?)$char\}/\}/) {
           push @{$current->{'contents'}}, 
               { 'text' => $1, 'type' => 'raw', 'parent' => $current } 
