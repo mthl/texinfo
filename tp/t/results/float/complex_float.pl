@@ -1020,9 +1020,11 @@ $result_trees{'complex_float'} = {
                   ],
                   'cmdname' => 'verb',
                   'contents' => [],
+                  'extra' => {
+                    'delimiter' => '!'
+                  },
                   'line_nr' => {},
-                  'parent' => {},
-                  'type' => '!'
+                  'parent' => {}
                 },
                 {
                   'parent' => {},
@@ -2133,9 +2135,11 @@ $result_trees{'complex_float'} = {
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'delimiter' => '!'
+                          },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => '!'
+                          'parent' => {}
                         },
                         {
                           'parent' => {},
@@ -2385,9 +2389,11 @@ $result_trees{'complex_float'} = {
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'delimiter' => '!'
+                          },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => '!'
+                          'parent' => {}
                         },
                         {
                           'parent' => {},
@@ -3747,9 +3753,11 @@ $result_trees{'complex_float'} = {
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'delimiter' => '!'
+                          },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => '!'
+                          'parent' => {}
                         },
                         {
                           'parent' => {},

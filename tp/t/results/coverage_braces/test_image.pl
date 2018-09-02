@@ -143,6 +143,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {
@@ -150,8 +151,7 @@ $result_trees{'test_image'} = {
                             'line_nr' => 9,
                             'macro' => 'files-char'
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -234,11 +234,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -332,6 +332,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {
@@ -339,8 +340,7 @@ $result_trees{'test_image'} = {
                             'line_nr' => 9,
                             'macro' => 'files-char'
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -473,11 +473,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -546,11 +546,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -723,6 +723,7 @@ $result_trees{'test_image'} = {
                   'cmdname' => 'verb',
                   'contents' => [],
                   'extra' => {
+                    'delimiter' => ':',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {
@@ -730,8 +731,7 @@ $result_trees{'test_image'} = {
                     'line_nr' => 14,
                     'macro' => 'files-char'
                   },
-                  'parent' => {},
-                  'type' => ':'
+                  'parent' => {}
                 }
               ],
               'extra' => {
@@ -814,11 +814,11 @@ $result_trees{'test_image'} = {
                   'cmdname' => 'verb',
                   'contents' => [],
                   'extra' => {
+                    'delimiter' => ':',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {},
-                  'parent' => {},
-                  'type' => ':'
+                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -908,6 +908,7 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {
@@ -915,8 +916,7 @@ $result_trees{'test_image'} = {
                         'line_nr' => 14,
                         'macro' => 'files-char'
                       },
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'extra' => {
@@ -1049,11 +1049,11 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {},
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'extra' => {
@@ -1122,11 +1122,11 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {},
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -1256,6 +1256,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {
@@ -1263,8 +1264,7 @@ $result_trees{'test_image'} = {
                             'line_nr' => 20,
                             'macro' => 'files-char'
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -1347,11 +1347,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -1439,6 +1439,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {
@@ -1446,8 +1447,7 @@ $result_trees{'test_image'} = {
                             'line_nr' => 20,
                             'macro' => 'files-char'
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -1580,11 +1580,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -1653,11 +1653,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -1833,6 +1833,7 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {
@@ -1840,8 +1841,7 @@ $result_trees{'test_image'} = {
                         'line_nr' => 24,
                         'macro' => 'files-char'
                       },
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'extra' => {
@@ -1924,11 +1924,11 @@ $result_trees{'test_image'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {},
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -2018,6 +2018,7 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {
@@ -2025,8 +2026,7 @@ $result_trees{'test_image'} = {
                             'line_nr' => 24,
                             'macro' => 'files-char'
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -2159,11 +2159,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'extra' => {
@@ -2232,11 +2232,11 @@ $result_trees{'test_image'} = {
                           'cmdname' => 'verb',
                           'contents' => [],
                           'extra' => {
+                            'delimiter' => ':',
                             'invalid_nesting' => 1
                           },
                           'line_nr' => {},
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -2328,6 +2328,7 @@ $result_trees{'test_image'} = {
                               'cmdname' => 'verb',
                               'contents' => [],
                               'extra' => {
+                                'delimiter' => ':',
                                 'invalid_nesting' => 1
                               },
                               'line_nr' => {
@@ -2335,8 +2336,7 @@ $result_trees{'test_image'} = {
                                 'line_nr' => 26,
                                 'macro' => 'files-char'
                               },
-                              'parent' => {},
-                              'type' => ':'
+                              'parent' => {}
                             }
                           ],
                           'extra' => {
@@ -2419,11 +2419,11 @@ $result_trees{'test_image'} = {
                               'cmdname' => 'verb',
                               'contents' => [],
                               'extra' => {
+                                'delimiter' => ':',
                                 'invalid_nesting' => 1
                               },
                               'line_nr' => {},
-                              'parent' => {},
-                              'type' => ':'
+                              'parent' => {}
                             }
                           ],
                           'parent' => {},
@@ -2513,6 +2513,7 @@ $result_trees{'test_image'} = {
                                   'cmdname' => 'verb',
                                   'contents' => [],
                                   'extra' => {
+                                    'delimiter' => ':',
                                     'invalid_nesting' => 1
                                   },
                                   'line_nr' => {
@@ -2520,8 +2521,7 @@ $result_trees{'test_image'} = {
                                     'line_nr' => 26,
                                     'macro' => 'files-char'
                                   },
-                                  'parent' => {},
-                                  'type' => ':'
+                                  'parent' => {}
                                 }
                               ],
                               'extra' => {
@@ -2654,11 +2654,11 @@ $result_trees{'test_image'} = {
                                   'cmdname' => 'verb',
                                   'contents' => [],
                                   'extra' => {
+                                    'delimiter' => ':',
                                     'invalid_nesting' => 1
                                   },
                                   'line_nr' => {},
-                                  'parent' => {},
-                                  'type' => ':'
+                                  'parent' => {}
                                 }
                               ],
                               'extra' => {
@@ -2727,11 +2727,11 @@ $result_trees{'test_image'} = {
                                   'cmdname' => 'verb',
                                   'contents' => [],
                                   'extra' => {
+                                    'delimiter' => ':',
                                     'invalid_nesting' => 1
                                   },
                                   'line_nr' => {},
-                                  'parent' => {},
-                                  'type' => ':'
+                                  'parent' => {}
                                 }
                               ],
                               'parent' => {},

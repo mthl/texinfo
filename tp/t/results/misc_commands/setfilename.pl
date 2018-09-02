@@ -174,6 +174,7 @@ $result_trees{'setfilename'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => ':',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -181,8 +182,7 @@ $result_trees{'setfilename'} = {
                 'line_nr' => 4,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => ':'
+              'parent' => {}
             },
             {
               'cmdname' => ' ',

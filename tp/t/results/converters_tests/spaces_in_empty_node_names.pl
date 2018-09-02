@@ -140,13 +140,15 @@ $result_trees{'spaces_in_empty_node_names'} = {
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'delimiter' => ':'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 5,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -403,6 +405,7 @@ $result_trees{'spaces_in_empty_node_names'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => ':',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -410,8 +413,7 @@ $result_trees{'spaces_in_empty_node_names'} = {
                 'line_nr' => 11,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => ':'
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -572,6 +574,7 @@ $result_trees{'spaces_in_empty_node_names'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => ':',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {
@@ -579,8 +582,7 @@ $result_trees{'spaces_in_empty_node_names'} = {
                         'line_nr' => 17,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'type' => ':'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},

@@ -95,6 +95,7 @@ $result_trees{'verb_in_xref'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => '*',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {
@@ -102,8 +103,7 @@ $result_trees{'verb_in_xref'} = {
                         'line_nr' => 3,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'type' => '*'
+                      'parent' => {}
                     }
                   ],
                   'extra' => {

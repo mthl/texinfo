@@ -39,6 +39,7 @@ $result_trees{'space_in_setfilename'} = {
                   'cmdname' => 'verb',
                   'contents' => [],
                   'extra' => {
+                    'delimiter' => ':',
                     'invalid_nesting' => 1
                   },
                   'line_nr' => {
@@ -46,8 +47,7 @@ $result_trees{'space_in_setfilename'} = {
                     'line_nr' => 1,
                     'macro' => ''
                   },
-                  'parent' => {},
-                  'type' => ':'
+                  'parent' => {}
                 },
                 {
                   'cmdname' => ' ',

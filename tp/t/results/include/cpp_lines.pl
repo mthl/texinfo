@@ -471,13 +471,15 @@ $result_trees{'cpp_lines'} = {
               ],
               'cmdname' => 'verb',
               'contents' => [],
+              'extra' => {
+                'delimiter' => ':'
+              },
               'line_nr' => {
                 'file_name' => 'g_f',
                 'line_nr' => '66',
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => ':'
+              'parent' => {}
             },
             {
               'parent' => {},

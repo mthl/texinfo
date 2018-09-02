@@ -63,13 +63,15 @@ $result_trees{'xml_protected_in_verb'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => '.'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 5,
             'macro' => ''
           },
-          'parent' => {},
-          'type' => '.'
+          'parent' => {}
         },
         {
           'parent' => {},

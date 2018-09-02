@@ -160,13 +160,15 @@ $result_trees{'end_ifset_in_format'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => '%'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 18,
             'macro' => ''
           },
-          'parent' => {},
-          'type' => '%'
+          'parent' => {}
         },
         {
           'parent' => {},

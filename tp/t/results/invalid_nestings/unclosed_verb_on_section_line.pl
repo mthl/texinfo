@@ -55,6 +55,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => 'T',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -62,8 +63,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
                 'line_nr' => 1,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => 'T'
+              'parent' => {}
             }
           ],
           'parent' => {},

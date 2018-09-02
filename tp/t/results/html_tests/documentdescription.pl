@@ -100,9 +100,11 @@ $result_trees{'documentdescription'} = {
                   ],
                   'cmdname' => 'verb',
                   'contents' => [],
+                  'extra' => {
+                    'delimiter' => ':'
+                  },
                   'line_nr' => {},
-                  'parent' => {},
-                  'type' => ':'
+                  'parent' => {}
                 },
                 {
                   'parent' => {},

@@ -37,6 +37,7 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => 'f',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -44,8 +45,7 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
                 'line_nr' => 1,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => 'f'
+              'parent' => {}
             }
           ],
           'parent' => {},

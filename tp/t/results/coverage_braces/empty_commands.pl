@@ -169,9 +169,11 @@ $result_trees{'empty_commands'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => ';'
+          },
           'line_nr' => {},
-          'parent' => {},
-          'type' => ';'
+          'parent' => {}
         },
         {
           'parent' => {},

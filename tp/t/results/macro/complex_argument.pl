@@ -199,13 +199,15 @@ $result_trees{'complex_argument'} = {
           ],
           'cmdname' => 'verb',
           'contents' => [],
+          'extra' => {
+            'delimiter' => '%'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 38,
             'macro' => 'macrothree'
           },
-          'parent' => {},
-          'type' => '%'
+          'parent' => {}
         },
         {
           'parent' => {},

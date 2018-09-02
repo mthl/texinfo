@@ -3248,13 +3248,15 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'verb',
                       'contents' => [],
+                      'extra' => {
+                        'delimiter' => '.'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 27,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'type' => '.'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -10122,6 +10124,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => '.',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -10129,8 +10132,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                 'line_nr' => 98,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => '.'
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -10187,6 +10189,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
+                'delimiter' => '.',
                 'invalid_nesting' => 1
               },
               'line_nr' => {
@@ -10194,8 +10197,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                 'line_nr' => 100,
                 'macro' => ''
               },
-              'parent' => {},
-              'type' => '.'
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -14823,6 +14825,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
+                        'delimiter' => '.',
                         'invalid_nesting' => 1
                       },
                       'line_nr' => {
@@ -14830,8 +14833,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                         'line_nr' => 149,
                         'macro' => ''
                       },
-                      'parent' => {},
-                      'type' => '.'
+                      'parent' => {}
                     }
                   ],
                   'parent' => {},

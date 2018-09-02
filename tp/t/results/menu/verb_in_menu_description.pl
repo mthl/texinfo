@@ -153,13 +153,15 @@ $result_trees{'verb_in_menu_description'} = {
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'delimiter' => ':'
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 6,
                             'macro' => ''
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         },
                         {
                           'parent' => {},

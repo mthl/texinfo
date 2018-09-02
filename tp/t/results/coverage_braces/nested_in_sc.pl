@@ -192,13 +192,15 @@ $result_trees{'nested_in_sc'} = {
                           ],
                           'cmdname' => 'verb',
                           'contents' => [],
+                          'extra' => {
+                            'delimiter' => ':'
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 2,
                             'macro' => ''
                           },
-                          'parent' => {},
-                          'type' => ':'
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
