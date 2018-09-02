@@ -215,10 +215,10 @@ split_delimiters (ELEMENT *current, int starting_idx)
    and non-whitespace.  Change ET_bracketed elements to 
    ET_bracketed_def_content. */
 static void
-split_def_args (ELEMENT *current)
+split_def_args (ELEMENT *current, int starting_idx)
 {
   int i;
-  for (i = 0; i < current->contents.number; i++)
+  for (i = starting_idx; i < current->contents.number; i++)
     {
       ELEMENT *e = current->contents.list[i];
       int j;
@@ -233,8 +233,6 @@ split_def_args (ELEMENT *current)
         }
       if (e->text.end == 0)
         continue;
-      if (e->type == ET_empty_spaces_after_command)
-        continue;
       p = e->text.text;
 
       while (1)
@@ -248,7 +246,8 @@ split_def_args (ELEMENT *current)
               add_extra_string_dup (new, "def_role", "spaces");
               if (!*(p += len))
                 {
-                  if (p[-1] == '\n')
+                  if (new->text.end > 0
+                      && new->text.text[new->text.end - 1] == '\n')
                     new->type = ET_spaces_at_end;
                   break;
                 }
@@ -270,7 +269,7 @@ DEF_INFO *
 parse_def (enum command_id command, ELEMENT *current)
 {
   DEF_INFO *ret;
-  int contents_idx;
+  int contents_idx = 0;
   int type, next_type;
   int i;
   ELEMENT *e, *e1;
@@ -279,7 +278,12 @@ parse_def (enum command_id command, ELEMENT *current)
   ret = malloc (sizeof (DEF_INFO));
   memset (ret, 0, sizeof (DEF_INFO));
 
-  split_def_args (current);
+  if (current->contents.number > 0
+      && (current->contents.list[0]->type == ET_empty_spaces_after_command
+          || current->contents.list[0]->type == ET_empty_line_after_command))
+    contents_idx++;
+
+  split_def_args (current, contents_idx);
 
   /* Check for "def alias" - for example @defun for @deffn. */
   if (command_data(command).flags & CF_def_alias) // 2387
@@ -301,14 +305,9 @@ found:
       original_command = command;
       command = def_aliases[i].command;
 
-      contents_idx = 0;
-      if (current->contents.number > 0
-          && current->contents.list[0]->type == ET_empty_spaces_after_command)
-        contents_idx++;
-
       /* Used when category text has a space in it. */
       e = new_element (ET_bracketed_inserted);
-      insert_into_contents (current, e, contents_idx++);
+      insert_into_contents (current, e, contents_idx);
       e1 = new_element (ET_NONE);
       text_append_n (&e1->text, category, strlen (category));
       add_to_element_contents (e, e1);
@@ -322,9 +321,8 @@ found:
       e = new_element (ET_spaces_inserted);
       text_append_n (&e->text, " ", 1);
       add_extra_string_dup (e, "def_role", "spaces");
-      insert_into_contents (current, e, contents_idx);
+      insert_into_contents (current, e, contents_idx + 1);
     }
-
 
   /* Read arguments as CATEGORY [CLASS] [TYPE] NAME [ARGUMENTS].
   
@@ -335,7 +333,6 @@ found:
      NAME - name of entity being documented
      ARGUMENTS - arguments to a function or macro                  */
 
-  contents_idx = 0;
   /* CATEGORY */
   ret->category = next_bracketed_or_word_agg (current, &contents_idx);
 
@@ -394,8 +391,7 @@ found:
       e = contents_child_by_index (current, i);
       if (e->type == ET_spaces
           || e->type == ET_spaces_inserted
-          || e->type == ET_spaces_at_end
-          || e->type == ET_empty_spaces_after_command)
+          || e->type == ET_spaces_at_end)
         {
           continue;
         }

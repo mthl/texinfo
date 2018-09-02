@@ -2331,7 +2331,6 @@ end_line (ELEMENT *current)
   /* after an "@end verbatim" 3090 */
   else if (current->contents.number
            && last_contents_child(current)->type == ET_empty_line_after_command
-    /* The Perl version gets the command with the 'command' key in 'extra'. */
            && contents_child_by_index(current, -2)
            && contents_child_by_index(current, -2)->cmd == CM_verbatim)
     {
