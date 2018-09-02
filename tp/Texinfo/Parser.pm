@@ -2412,6 +2412,9 @@ sub _parse_def($$$)
                  $i - scalar(@$argument_content),
                  scalar(@$argument_content),
                  $e;
+          for my $e2 (@$argument_content) {
+            $e2->{'parent'} = $e;
+          }
           $i -= scalar(@$argument_content) - 1;
         } elsif (scalar(@$argument_content) == 1) {
           push @result, [$arg, $argument_content->[0]];

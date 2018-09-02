@@ -1,5 +1,10 @@
 2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_def): Update 'parent' on
+	elements of a 'def_aggregate'.
+
+2018-09-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_def): Leave an 
 	'empty_line_after_command' element alone just as 
 	'empty_spaces_after_command' is left alone.
