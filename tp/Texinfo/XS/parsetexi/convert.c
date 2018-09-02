@@ -98,9 +98,8 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
 
       if (e->cmd == CM_verb)
         {
-          s[0] = (char ) e->type;
-          s[1] = '\0';
-          ADD(s);
+          k = lookup_extra_key (e, "delimiter");
+          ADD((char *)k->value);
         }
 
       arg_nr = 0;
@@ -122,7 +121,10 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
         }
 
       if (e->cmd == CM_verb)
-        ADD(s);
+        {
+          k = lookup_extra_key (e, "delimiter");
+          ADD((char *)k->value);
+        }
 
       if (braces)
         ADD("}");

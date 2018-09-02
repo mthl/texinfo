@@ -87,15 +87,19 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       if (command == CM_verb)
         {
           current->type = ET_brace_command_arg;
-          /* Save the deliminating character in 'type'.  This is a reuse of 
-             'type' for a different purpose. */
+          /* Save the deliminating character in 'type'. */
           if (!*line || *line == '\n')
             {
               line_error ("@verb without associated character");
+              add_extra_string_dup (current->parent, "delimiter", "");
               current->parent->type = 0;
             }
           else
-            current->parent->type = (enum element_type) *line++;
+            {
+              static char c[2];
+              c[0] = *line++;
+              add_extra_string_dup (current->parent, "delimiter", c);
+            }
         }
         /* 4903 */
       else if (command_data(command).data == BRACE_context)

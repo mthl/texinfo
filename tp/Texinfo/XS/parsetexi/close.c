@@ -26,8 +26,17 @@ close_brace_command (ELEMENT *current,
                      enum command_id closed_command,
                      enum command_id interrupting_command)
 {
-  if (current->cmd != CM_verb || current->type == ET_NONE)
+
+  KEY_PAIR *k;
+
+  if (current->cmd != CM_verb)
+    goto yes;
+  k = lookup_extra_key (current, "delimiter");
+  if (!k || !*(char *)k->value)
+    goto yes;
+  if (0)
     {
+yes:
       if (closed_command)
         command_error (current,
                         "@end %s seen before @%s closing brace",
@@ -45,18 +54,10 @@ close_brace_command (ELEMENT *current,
     }
   else
     {
-      char s[2];
-      if ((char) current->type)
-        {
-          s[0] = (char) current->type;
-          s[1] = 0;
-        }
-      else
-        s[0] = 0;
-      
       command_error (current,
                       "@%s missing closing delimiter sequence: %s}",
-                      command_name(current->cmd), s);
+                      command_name(current->cmd),
+                      (char *)k->value);
     }
   current = current->parent;
   return current;

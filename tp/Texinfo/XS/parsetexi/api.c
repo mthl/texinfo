@@ -217,21 +217,11 @@ element_to_perl_hash (ELEMENT *e)
   /* FIXME: Sometimes extra values have parent set - try to remove this
      in the Perl code as well. */
 
-  sv = 0;
-  if (e->cmd == CM_verb)
-    {
-      char c = (char) e->type;
-      if (c)
-        sv = newSVpv (&c, 1);
-      else
-        sv = newSVpv ("", 0);
-    }
-  else if (e->type)
+  if (e->type)
     {
       sv = newSVpv (element_type_names[e->type], 0);
+      hv_store (e->hv, "type", strlen ("type"), sv, 0);
     }
-  if (sv)
-    hv_store (e->hv, "type", strlen ("type"), sv, 0);
 
   if (e->cmd)
     {

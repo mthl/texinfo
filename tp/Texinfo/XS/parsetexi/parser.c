@@ -1011,8 +1011,11 @@ superfluous_arg:
     {
       char c;
       char *q;
+      KEY_PAIR *k;
 
-      c = (char) current->parent->type;
+      k = lookup_extra_key (current->parent, "delimiter");
+
+      c = *(char *)k->value;
       if (c)
         {
           /* Look forward for the delimiter character followed by a close
