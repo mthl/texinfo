@@ -221,7 +221,7 @@ $result_trees{'empty_def_arguments'} = {
                   'parent' => {},
                   'text' => ' 
 ',
-                  'type' => 'spaces'
+                  'type' => 'empty_line_after_command'
                 }
               ],
               'parent' => {},
@@ -232,12 +232,7 @@ $result_trees{'empty_def_arguments'} = {
           'extra' => {
             'def_command' => 'deffn',
             'original_def_cmdname' => 'deffnx',
-            'spaces_after_command' => {
-              'parent' => {},
-              'text' => ' 
-',
-              'type' => 'empty_line_after_command'
-            }
+            'spaces_after_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -664,7 +659,7 @@ $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[1]{'line_nr'} = 
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'}{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_def_arguments'}{'contents'}[0]{'contents'}[3]{'args'}[0];

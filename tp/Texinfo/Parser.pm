@@ -2345,7 +2345,8 @@ sub _parse_def($$$)
   my @new_contents;
   my @contents = @$contents;
   if ($contents[0] and $contents[0]->{'type'}
-        and $contents[0]->{'type'} eq 'empty_spaces_after_command') {
+        and ($contents[0]->{'type'} eq 'empty_spaces_after_command'
+          or $contents[0]->{'type'} eq 'empty_line_after_command')) {
     $empty_spaces_after_command = shift @contents;
   }
 
@@ -2374,13 +2375,6 @@ sub _parse_def($$$)
   @new_contents = @contents;
 
   $current->{'contents'} = \@new_contents;
-
-  if (scalar(@contents) == 1 and $contents[0]->{'type'} eq 'spaces') {
-    # if there is no argument at all, the leading space is not associated
-    # to the @-command. We do not want to have this leading space appear in the 
-    # arguments ever, so we ignore it here.
-    @contents = ();
-  }
 
   my @result;
   my @args = @{$def_map{$command}};
