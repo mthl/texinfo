@@ -1302,7 +1302,9 @@ sub _convert($$;$)
         }
         foreach my $arg (@{$root->{'args'}->[0]->{'contents'}}) {
           next if $arg->{'type'}
-                   and $arg->{'type'} eq 'empty_spaces_after_command';
+                   and ($arg->{'type'} eq 'empty_spaces_after_command'
+                        or $arg->{'type'} eq 'empty_line_after_command');
+
           my $type = $arg->{'extra'}->{'def_role'};
           next if !$type and $arg->{'type'} eq 'spaces';
 
