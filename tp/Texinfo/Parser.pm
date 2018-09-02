@@ -6850,6 +6850,10 @@ where they are valid, in C<@math>.
 
 Content in brackets on definition command lines.
 
+=item def_aggregate
+
+Contains several elements that together are a single unit on a @def* line.
+
 =item bracketed_multitable_prototype
 
 =item row_prototype
@@ -7029,17 +7033,13 @@ appearing after the definition command without x.
 
 =item def_line
 
-The I<def_arg> extra key holds an array reference corresponding to
-the parsed definition line argument.  Each of the elements of the
-array is a two-element array reference.  The first element is the type,
-which could be I<spaces> for a space, types specific of the 
-definition, like I<category>, I<name>, I<class>, I<type>, and, at the
-end, a mix of I<arg>, I<typearg>, I<delimiter> depending on the definition.
-The second element is a hash reference holding the content of the 
-type.
+For each element in a def_line, the key I<def_role> holds a string
+describing the meaning of the element.  It is one of
+I<category>, I<name>, I<class>, I<type>, I<arg>, I<typearg>, 
+I<spaces> or I<delimiter>, depending on the definition.
 
-The I<def_parsed_hash> hash reference has as key the type specific
-of the definition, and as value the corresponding content tree.
+The I<def_parsed_hash> hash reference has these strings as keys,
+and the values are the corresponding elements.
 
 =item C<@multitable>
 
@@ -7185,14 +7185,5 @@ If you have a web site set up for your module, mention it here.
 =head1 AUTHOR
 
 Patrice Dumas, E<lt>pertusus@free.frE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 
 =cut

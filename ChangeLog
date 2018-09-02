@@ -1,5 +1,9 @@
 2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (module documentation): Update.
+
+2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert),
 	* tp/Texinfo/Convert/DocBook.pm (_convert): Leave an 
 	'empty_line_after_command' element alone just as 
