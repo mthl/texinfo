@@ -130,9 +130,14 @@ static void
 wipe_index (INDEX *idx)
 {
   int i;
+  INDEX_ENTRY *ie;
   for (i = 0; i < idx->index_number; i++)
     {
+      ie = &idx->index_entries[i];
+      //destroy_element (ie->content);
       ; /* all data is referenced elsewhere */
+      // FIXME: the content is referenced for commands like @cindex
+      // in the "misc_content" array, but not for commands like @deffn.
     }
   free (idx->index_entries);
 }
@@ -286,7 +291,7 @@ enter_index_entry (enum command_id index_type_command,
   entry->command = current;
   entry->number = idx->index_number;
 
-  k = lookup_extra_key (current, "sortas");
+  k = lookup_extra (current, "sortas");
   if (k)
     {
       entry->sortas = (char *) k->value;

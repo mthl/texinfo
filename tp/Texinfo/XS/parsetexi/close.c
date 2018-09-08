@@ -31,7 +31,7 @@ close_brace_command (ELEMENT *current,
 
   if (current->cmd != CM_verb)
     goto yes;
-  k = lookup_extra_key (current, "delimiter");
+  k = lookup_extra (current, "delimiter");
   if (!k || !*(char *)k->value)
     goto yes;
   if (0)
@@ -185,7 +185,7 @@ close_command_cleanup (ELEMENT *current)
       // 1585
       /* Reparent @end from a ET_before_item to the block command */
       {
-      KEY_PAIR *k = lookup_extra_key (current, "end_command");
+      KEY_PAIR *k = lookup_extra (current, "end_command");
       ELEMENT *e = k ? k->value : 0;
       if (k && last_contents_child (before_item)
           && last_contents_child (before_item) == e)

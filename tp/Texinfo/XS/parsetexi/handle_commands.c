@@ -526,12 +526,12 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                   int max_columns = 0;
                   KEY_PAIR *prototypes;
 
-                  prototypes = lookup_extra_key  (parent, "prototypes");
+                  prototypes = lookup_extra  (parent, "prototypes");
                   if (prototypes)
                     max_columns = prototypes->value->contents.number;
                   else
                     {
-                      prototypes = lookup_extra_key(parent, "columnfractions");
+                      prototypes = lookup_extra(parent, "columnfractions");
                       if (prototypes)
                         max_columns = prototypes->value->contents.number;
                     }
@@ -711,7 +711,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                            || parent->cmd == CM_smallquotation)
                     {
                       KEY_PAIR *k; ELEMENT *e;
-                      k = lookup_extra_key (parent, "authors");
+                      k = lookup_extra (parent, "authors");
                       if (k)
                         e = k->value;
                       else

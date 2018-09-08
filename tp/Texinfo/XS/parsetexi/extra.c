@@ -142,7 +142,7 @@ add_extra_integer (ELEMENT *e, char *key, int value)
 }
 
 KEY_PAIR *
-lookup_extra_key (ELEMENT *e, char *key)
+lookup_extra (ELEMENT *e, char *key)
 {
   int i;
   for (i = 0; i < e->extra_number; i++)

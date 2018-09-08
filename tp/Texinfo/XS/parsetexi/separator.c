@@ -48,7 +48,7 @@ register_command_arg (ELEMENT *current, char *key)
 
   /* FIXME: Could we add all the command args together, instead of one-by-one,
      to avoid having to look for the extra value every time? */
-  k = lookup_extra_key (current->parent, key);
+  k = lookup_extra (current->parent, key);
   if (k)
     value = k->value;
   else
@@ -129,7 +129,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
                 float = current->parent->parent;
               if (float)
                 {
-                  if (lookup_extra_key (float, command_name(command)))
+                  if (lookup_extra (float, command_name(command)))
                     line_warn ("ignoring multiple @%s",
                                command_name(command));
                   else
@@ -649,7 +649,7 @@ remove_empty_content_arguments (ELEMENT *current)
 {
   KEY_PAIR *k;
 
-  k = lookup_extra_key (current, "block_command_line_contents");
+  k = lookup_extra (current, "block_command_line_contents");
   if (!k)
     return;
 
@@ -714,7 +714,7 @@ handle_comma (ELEMENT *current, char **line_inout)
       KEY_PAIR *k;
       int expandp = 0;
       debug ("THE INLINE PART");
-      k = lookup_extra_key (current, "format");
+      k = lookup_extra (current, "format");
       if (!k)
         {
           ELEMENT *arg = 0;

@@ -428,7 +428,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       e = current;
       if (current)
         {
-          k = lookup_extra_key (current, "spaces_before_argument_elt");
+          k = lookup_extra (current, "spaces_before_argument_elt");
           if (k && k->value == last_contents_child (current))
             goto owning_element_found;
         }
@@ -436,7 +436,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       e = current->parent;
       if (current->parent)
         {
-          k = lookup_extra_key (current->parent, 
+          k = lookup_extra (current->parent, 
                                 "spaces_before_argument_elt");
           if (k && k->value == last_contents_child (current))
             goto owning_element_found;
@@ -445,7 +445,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       e = current;
       if (current)
         {
-          k = lookup_extra_key (current, "spaces_after_command");
+          k = lookup_extra (current, "spaces_after_command");
           if (k && k->value == last_contents_child (current))
             goto owning_element_found;
         }
@@ -453,7 +453,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       e = current->parent;
       if (current->parent)
         {
-          k = lookup_extra_key (current->parent, "spaces_after_command");
+          k = lookup_extra (current->parent, "spaces_after_command");
           if (k && k->value == last_contents_child (current))
             goto owning_element_found;
         }
@@ -938,7 +938,7 @@ superfluous_arg:
                             name);
                         }
                     }
-                  if (!lookup_extra_key (current, "invalid_syntax"))
+                  if (!lookup_extra (current, "invalid_syntax"))
                     {
                       new_macro (name, current); // 3808
                     }
@@ -1013,7 +1013,7 @@ superfluous_arg:
       char *q;
       KEY_PAIR *k;
 
-      k = lookup_extra_key (current->parent, "delimiter");
+      k = lookup_extra (current->parent, "delimiter");
 
       c = *(char *)k->value;
       if (c)
@@ -1180,7 +1180,7 @@ superfluous_arg:
                   char *p; char *s;
                   KEY_PAIR *k;
                   p = line + strspn (line, whitespace_chars_except_newline);
-                  k = lookup_extra_key (current, "spaces");
+                  k = lookup_extra (current, "spaces");
                   if (!k)
                     {
                       asprintf (&s, "%.*s", (int) (p - line), line);

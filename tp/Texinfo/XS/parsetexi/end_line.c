@@ -1157,7 +1157,7 @@ end_line_starting_block (ELEMENT *current)
               free (float_label);
             }
           parse_float_type (f);
-          k = lookup_extra_key (f, "type");
+          k = lookup_extra (f, "type");
           if (k)
             {
               eft = (EXTRA_FLOAT_TYPE *) k->value;
@@ -1198,7 +1198,7 @@ end_line_starting_block (ELEMENT *current)
           char *spec = "1";
           KEY_PAIR *k;
 
-          k = lookup_extra_key (current, "block_command_line_contents");
+          k = lookup_extra (current, "block_command_line_contents");
           if (k)
             {
               ELEMENT *e = k->value;
@@ -1229,7 +1229,7 @@ end_line_starting_block (ELEMENT *current)
       else if (item_line_command (current->cmd)) // 3002
         {
           KEY_PAIR *k;
-          k = lookup_extra_key (current, "command_as_argument");
+          k = lookup_extra (current, "command_as_argument");
           if (!k)
             command_error (current,
                            "%s requires an argument: the formatter for @item",
@@ -1258,7 +1258,7 @@ end_line_starting_block (ELEMENT *current)
       if (current->cmd == CM_itemize) // 3019
         {
           KEY_PAIR *k;
-          k = lookup_extra_key (current, "command_as_argument");
+          k = lookup_extra (current, "command_as_argument");
           if (k)
             {
               int i;
@@ -1293,7 +1293,7 @@ end_line_starting_block (ELEMENT *current)
       // 3040 Check if command_as_argument isn't an accent command
       if (current->cmd == CM_itemize || item_line_command(current->cmd))
         {
-          KEY_PAIR *k = lookup_extra_key (current, "command_as_argument");
+          KEY_PAIR *k = lookup_extra (current, "command_as_argument");
           if (k && k->value)
             {
               enum command_id cmd = k->value->cmd;
@@ -1306,7 +1306,7 @@ end_line_starting_block (ELEMENT *current)
                   k->key = "";
                   k->value = 0;
                   k->type = extra_deleted;
-                  k = lookup_extra_key (current,
+                  k = lookup_extra (current,
                                         "block_command_line_contents");
                   if (k)
                     {
@@ -1319,7 +1319,7 @@ end_line_starting_block (ELEMENT *current)
       /* 3052 - if no command_as_argument given, default to @bullet for
          @itemize, and @asis for @table. */
       if (current->cmd == CM_itemize
-        && !lookup_extra_key (current, "block_command_line_contents"))
+        && !lookup_extra (current, "block_command_line_contents"))
         {
           ELEMENT *e, *contents, *contents2;
 
@@ -1338,7 +1338,7 @@ end_line_starting_block (ELEMENT *current)
                                         contents);
         }
       else if (item_line_command (current->cmd)
-          && !lookup_extra_key (current, "command_as_argument"))
+          && !lookup_extra (current, "command_as_argument"))
         { // 3064
           ELEMENT *e, *contents, *contents2;
 
@@ -1951,7 +1951,7 @@ end_line_misc_line (ELEMENT *current)
 
           current = current->parent;
 
-          if ((misc_args = lookup_extra_key (misc_cmd, "misc_args")))
+          if ((misc_args = lookup_extra (misc_cmd, "misc_args")))
             {
               char *s;
               add_extra_misc_args (current, "columnfractions", 
@@ -1982,7 +1982,7 @@ end_line_misc_line (ELEMENT *current)
         {
           if (current_node)
             {
-              if (!lookup_extra_key (current_node, "associated_section"))
+              if (!lookup_extra (current_node, "associated_section"))
                 {
                   add_extra_element
                     (current_node, "associated_section", current);
@@ -2011,7 +2011,7 @@ end_line_misc_line (ELEMENT *current)
         {
           current_part = current;
           if (current_node
-              && !lookup_extra_key (current_node, "associated_section"))
+              && !lookup_extra (current_node, "associated_section"))
             {
               line_warn ("@node precedes @part, but parts may not be "
                          "associated with nodes");
@@ -2231,7 +2231,7 @@ end_line (ELEMENT *current)
       if (pop_context () != ct_def)
         abort ();
 
-      k = lookup_extra_key (current->parent, "original_def_cmdname");
+      k = lookup_extra (current->parent, "original_def_cmdname");
       if (k)
         original_def_command = lookup_command ((char *) k->value);
       else
