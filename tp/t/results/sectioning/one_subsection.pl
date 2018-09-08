@@ -18,11 +18,6 @@ $result_trees{'one_subsection'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'The subsection'
             },
             {
@@ -42,7 +37,7 @@ $result_trees{'one_subsection'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 3,
       'line_nr' => {
@@ -59,10 +54,8 @@ $result_trees{'one_subsection'} = {
 $result_trees{'one_subsection'}{'contents'}[0]{'parent'} = $result_trees{'one_subsection'};
 $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0];
 $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0];
-$result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0];
 $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'one_subsection'}{'contents'}[1];
-$result_trees{'one_subsection'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'one_subsection'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'one_subsection'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'one_subsection'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'one_subsection'}{'contents'}[1]{'parent'} = $result_trees{'one_subsection'};
 
 $result_texis{'one_subsection'} = '@subsection The subsection
@@ -78,7 +71,9 @@ $result_sectioning{'one_subsection'} = {
   'section_childs' => [
     {
       'cmdname' => 'subsection',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 3,
       'number' => 1,
       'section_up' => {}

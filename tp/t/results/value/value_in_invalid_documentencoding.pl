@@ -37,11 +37,6 @@ $result_trees{'value_in_invalid_documentencoding'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'bad'
             },
             {
@@ -57,7 +52,7 @@ $result_trees{'value_in_invalid_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'bad'
       },
       'line_nr' => {
@@ -75,9 +70,7 @@ $result_trees{'value_in_invalid_documentencoding'}{'contents'}[0]{'args'}[1]{'pa
 $result_trees{'value_in_invalid_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'value_in_invalid_documentencoding'};
 $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0];
-$result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0];
 $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1];
-$result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'value_in_invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'value_in_invalid_documentencoding'};
 
 $result_texis{'value_in_invalid_documentencoding'} = '@set badvalue bad

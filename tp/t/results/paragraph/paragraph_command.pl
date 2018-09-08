@@ -190,11 +190,6 @@ $result_trees{'paragraph_command'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'foo,\\,//'
             },
             {
@@ -215,7 +210,7 @@ $result_trees{'paragraph_command'} = {
           '\\',
           '//'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -345,9 +340,7 @@ $result_trees{'paragraph_command'}{'contents'}[8]{'parent'} = $result_trees{'par
 $result_trees{'paragraph_command'}{'contents'}[9]{'parent'} = $result_trees{'paragraph_command'};
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];
-$result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[10];
-$result_trees{'paragraph_command'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'paragraph_command'}{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraph_command'}{'contents'}[10]{'parent'} = $result_trees{'paragraph_command'};
 $result_trees{'paragraph_command'}{'contents'}[11]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[11]{'contents'}[0]{'args'}[0];
 $result_trees{'paragraph_command'}{'contents'}[11]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraph_command'}{'contents'}[11]{'contents'}[0]{'args'}[0];

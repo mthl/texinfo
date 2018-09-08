@@ -19,11 +19,6 @@ $result_trees{'definfoenclose_with_empty_arg'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'headword, , :'
             },
             {
@@ -44,7 +39,7 @@ $result_trees{'definfoenclose_with_empty_arg'} = {
           '',
           ':'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -108,9 +103,7 @@ $result_trees{'definfoenclose_with_empty_arg'} = {
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'};
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0];
-$result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1];
-$result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[1]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'};
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[2]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'};
 $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'definfoenclose_with_empty_arg'}{'contents'}[3];
@@ -152,7 +145,7 @@ $result_converted{'html_text'}->{'definfoenclose_with_empty_arg'} = '
 
 
 $result_converted{'xml'}->{'definfoenclose_with_empty_arg'} = '
-<definfoenclose command="headword" open="" close=":" line=" headword, , :"></definfoenclose>
+<definfoenclose command="headword" open="" close=":" line="headword, , :"></definfoenclose>
 
 <para>My <infoenclose command="headword" begin="" end=":">something</infoenclose>.
 </para>

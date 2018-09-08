@@ -2357,11 +2357,15 @@ sub move_index_entries_after_items($) {
           foreach my $entry(@gathered_index_entries) {
             $entry->{'parent'} = $item_container;
           }
-          if ($item_container->{'contents'} 
+          if ($item->{'extra'} 
+              and $item->{'extra'}->{'spaces_before_argument'}
+       and $item->{'extra'}->{'spaces_before_argument'} !~ /\n$/) {
+            $item->{'extra'}->{'spaces_before_argument'} .= "\n";
+          # TODO: could we delete all these cases down here?
+          } elsif ($item_container->{'contents'} 
               and $item_container->{'contents'}->[0]
               and $item_container->{'contents'}->[0]->{'type'}) {
             if ($item_container->{'contents'}->[0]->{'type'} eq 'empty_line_after_command') {
-              
               unshift @gathered_index_entries, shift @{$item_container->{'contents'}};
             } elsif ($item_container->{'contents'}->[0]->{'type'} eq 'empty_spaces_after_command') {
                unshift @gathered_index_entries, shift @{$item_container->{'contents'}};
@@ -2436,7 +2440,7 @@ sub debug_hash
 use Data::Dumper;
 
 my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args',
-  'extra', 'def_role'
+  'extra', 'def_role', 'spaces_before_argument'
 );
 my %kept_keys;
 foreach my $key (@kept_keys) {

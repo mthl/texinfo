@@ -13,6 +13,9 @@ $result_trees{'section_in_copying'} = {
           'cmdname' => 'copying',
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => '
 ',
@@ -43,7 +46,7 @@ $result_trees{'section_in_copying'} = {
             }
           ],
           'extra' => {
-            'spaces_after_command' => {}
+            'spaces_after_command_elt' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -60,11 +63,6 @@ $result_trees{'section_in_copying'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'section'
@@ -86,7 +84,7 @@ $result_trees{'section_in_copying'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 2,
       'line_nr' => {
@@ -100,20 +98,19 @@ $result_trees{'section_in_copying'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'};
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1];
-$result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'};
 
 $result_texis{'section_in_copying'} = '@copying
@@ -133,7 +130,9 @@ $result_sectioning{'section_in_copying'} = {
   'section_childs' => [
     {
       'cmdname' => 'section',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 2,
       'number' => 1,
       'section_up' => {}

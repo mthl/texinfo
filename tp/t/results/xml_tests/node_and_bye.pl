@@ -19,11 +19,6 @@ $result_trees{'node_and_bye'} = [
             'contents' => [
               {
                 'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
-                'parent' => {},
                 'text' => 'Top'
               },
               {
@@ -57,7 +52,7 @@ $result_trees{'node_and_bye'} = [
             }
           ],
           'normalized' => 'Top',
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'line_nr' => {
           'file_name' => '',
@@ -88,12 +83,10 @@ $result_trees{'node_and_bye'} = [
 $result_trees{'node_and_bye'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_and_bye'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[1];
-$result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'node_and_bye'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_and_bye'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_and_bye'}[0];
 $result_trees{'node_and_bye'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'node_and_bye'}[0]{'contents'}[2];
 $result_trees{'node_and_bye'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_and_bye'}[0];
@@ -112,7 +105,8 @@ $result_sectioning{'node_and_bye'} = {};
 $result_nodes{'node_and_bye'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -131,7 +125,8 @@ $result_nodes{'node_and_bye'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes
 $result_menus{'node_and_bye'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

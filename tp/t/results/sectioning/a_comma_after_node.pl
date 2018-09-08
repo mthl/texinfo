@@ -18,11 +18,6 @@ $result_trees{'a_comma_after_node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Commands'
             }
           ],
@@ -105,7 +100,7 @@ $result_trees{'a_comma_after_node'} = {
           }
         ],
         'normalized' => 'Commands',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -119,7 +114,6 @@ $result_trees{'a_comma_after_node'} = {
 };
 $result_trees{'a_comma_after_node'}{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'};
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
@@ -129,11 +123,10 @@ $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'parent'} = $resul
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[1]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'};
 
 $result_texis{'a_comma_after_node'} = '@node Commands, Requirements, Nodes and Menus
@@ -151,14 +144,16 @@ $result_sectioning{'a_comma_after_node'} = {};
 $result_nodes{'a_comma_after_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Commands'
+    'normalized' => 'Commands',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'a_comma_after_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Commands'
+    'normalized' => 'Commands',
+    'spaces_before_argument' => ' '
   }
 };
 

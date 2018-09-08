@@ -13,11 +13,6 @@ $result_trees{'group_beginning_and_end_on_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'within '
             }
           ],
@@ -31,11 +26,6 @@ $result_trees{'group_beginning_and_end_on_line'} = {
           'args' => [
             {
               'contents' => [
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
                 {
                   'parent' => {},
                   'text' => 'group'
@@ -54,7 +44,7 @@ $result_trees{'group_beginning_and_end_on_line'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'group',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'group'
           },
           'line_nr' => {
@@ -67,7 +57,7 @@ $result_trees{'group_beginning_and_end_on_line'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {},
       'parent' => {}
@@ -76,16 +66,12 @@ $result_trees{'group_beginning_and_end_on_line'} = {
   'type' => 'text_root'
 };
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'group_beginning_and_end_on_line'}{'contents'}[0]{'parent'} = $result_trees{'group_beginning_and_end_on_line'};
 

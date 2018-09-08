@@ -17,6 +17,9 @@ $result_trees{'flushleft_flushright'} = {
       'cmdname' => 'flushleft',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -64,11 +67,6 @@ $result_trees{'flushleft_flushright'} = {
           'args' => [
             {
               'contents' => [
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
                 {
                   'parent' => {},
                   'text' => 'flushleft'
@@ -87,7 +85,7 @@ $result_trees{'flushleft_flushright'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'flushleft',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'flushleft'
           },
           'line_nr' => {
@@ -100,7 +98,7 @@ $result_trees{'flushleft_flushright'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -119,6 +117,9 @@ $result_trees{'flushleft_flushright'} = {
       'cmdname' => 'flushright',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -168,11 +169,6 @@ $result_trees{'flushleft_flushright'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'flushright'
                 },
                 {
@@ -189,7 +185,7 @@ $result_trees{'flushleft_flushright'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'flushright',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'flushright'
           },
           'line_nr' => {
@@ -202,7 +198,7 @@ $result_trees{'flushleft_flushright'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -215,6 +211,7 @@ $result_trees{'flushleft_flushright'} = {
   'type' => 'text_root'
 };
 $result_trees{'flushleft_flushright'}{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'};
+$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[1];
@@ -225,14 +222,13 @@ $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[3]{'contents'}[
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0];
+$result_trees{'flushleft_flushright'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'flushleft_flushright'}{'contents'}[1]{'contents'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'};
 $result_trees{'flushleft_flushright'}{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'};
+$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[1];
@@ -243,12 +239,10 @@ $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[3]{'contents'}[
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'flushleft_flushright'}{'contents'}[3];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[4];
-$result_trees{'flushleft_flushright'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0];
+$result_trees{'flushleft_flushright'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'flushleft_flushright'}{'contents'}[3]{'contents'}[0];
 $result_trees{'flushleft_flushright'}{'contents'}[3]{'parent'} = $result_trees{'flushleft_flushright'};
 
 $result_texis{'flushleft_flushright'} = '

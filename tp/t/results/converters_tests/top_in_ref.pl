@@ -18,11 +18,6 @@ $result_trees{'top_in_ref'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -3350,7 +3345,7 @@ $result_trees{'top_in_ref'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -3365,7 +3360,6 @@ $result_trees{'top_in_ref'} = {
 $result_trees{'top_in_ref'}{'contents'}[0]{'parent'} = $result_trees{'top_in_ref'};
 $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0];
-$result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
@@ -3997,9 +3991,8 @@ $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'line_
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[14]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'contents'}[15]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5];
 $result_trees{'top_in_ref'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'top_in_ref'}{'contents'}[1];
-$result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'top_in_ref'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'top_in_ref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_in_ref'}{'contents'}[1]{'parent'} = $result_trees{'top_in_ref'};
 
 $result_texis{'top_in_ref'} = '@node Top
@@ -4083,7 +4076,8 @@ $result_sectioning{'top_in_ref'} = {};
 $result_nodes{'top_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -4102,7 +4096,8 @@ $result_nodes{'top_in_ref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'
 $result_menus{'top_in_ref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

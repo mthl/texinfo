@@ -110,7 +110,23 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
   
   //fprintf (stderr, "ABORT EMPTY\n");
 
+  svp = hv_fetch (spaces_elt, "extra", strlen ("extra"), 0);
+  if (svp)
+    {
+      test_extra = (HV *) SvRV (*svp);
+      key = "command";
+      svp = hv_fetch (test_extra, key, strlen (key), 0);
+      if (svp)
+        {
+          test_elt = (HV *) SvRV (*svp);
+          svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
+          test_extra = (HV *) SvRV (*svp);
+          goto found;
+        }
+    }
+
   /* Look for another reference to spaces_elt. */
+
   test_elt = current;
 
   svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
@@ -125,7 +141,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
             goto found;
         }
 
-      key = "spaces_after_command";
+      key = "spaces_after_command_elt";
       svp = hv_fetch (test_extra, key, strlen (key), 0);
       if (svp)
         {
@@ -150,7 +166,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
                 goto found;
             }
 
-          key = "spaces_after_command";
+          key = "spaces_after_command_elt";
           svp = hv_fetch (test_extra, key, strlen (key), 0);
           if (svp)
             {
@@ -246,30 +262,39 @@ delete_type:
           hv_delete (spaces_elt, "type", strlen ("type"), G_DISCARD);
         }
     }
-  else if (!strcmp (type, "empty_line_after_command"))
-    {
-      hv_store (spaces_elt, "type", strlen ("type"),
-                newSVpv ("empty_spaces_after_command", 0), 0);
-    }
-  else if (!strcmp (type, "empty_spaces_before_argument"))
+  else if (!strcmp (type, "empty_line_after_command")
+           || !strcmp (type, "empty_spaces_before_argument"))
     {
       STRLEN len;
       char *ptr;
 
-      /* Remove spaces_elt */
-      av_pop (contents_array);
+      if (owning_elt)
+        {
+          /* Remove spaces_elt */
+          av_pop (contents_array);
 
-      ptr = SvPV(existing_text_sv, len);
-      /* Replace element reference with a simple string. */
-      hv_store (test_extra,
-                 "spaces_before_argument",
-                 strlen ("spaces_before_argument"),
-                 newSVpv(ptr, len),
-                 0);
-      hv_delete (test_extra,
-                 "spaces_before_argument_elt",
-                 strlen ("spaces_before_argument_elt"),
-                 G_DISCARD);
+          ptr = SvPV(existing_text_sv, len);
+          /* Replace element reference with a simple string. */
+          hv_store (test_extra,
+                    "spaces_before_argument",
+                    strlen ("spaces_before_argument"),
+                    newSVpv(ptr, len),
+                    0);
+          hv_delete (test_extra,
+                     "spaces_before_argument_elt",
+                     strlen ("spaces_before_argument_elt"),
+                     G_DISCARD);
+          hv_delete (test_extra,
+                     "spaces_after_command_elt",
+                     strlen ("spaces_after_command_elt"),
+                     G_DISCARD);
+        }
+      else
+        {
+          hv_store (spaces_elt, "type", strlen ("type"),
+                    newSVpv ("empty_spaces_after_command", 0), 0);
+
+        }
     }
   return 1;
 }

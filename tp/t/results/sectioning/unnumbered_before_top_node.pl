@@ -19,11 +19,6 @@ $result_trees{'unnumbered_before_top_node'} = [
             'contents' => [
               {
                 'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
-              {
-                'parent' => {},
                 'text' => 'before nodes'
               },
               {
@@ -50,7 +45,7 @@ $result_trees{'unnumbered_before_top_node'} = [
           'misc_content' => [
             {}
           ],
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'level' => 1,
         'line_nr' => {
@@ -64,11 +59,6 @@ $result_trees{'unnumbered_before_top_node'} = [
         'args' => [
           {
             'contents' => [
-              {
-                'parent' => {},
-                'text' => ' ',
-                'type' => 'empty_spaces_after_command'
-              },
               {
                 'parent' => {},
                 'text' => 'Top'
@@ -142,7 +132,7 @@ $result_trees{'unnumbered_before_top_node'} = [
             }
           ],
           'normalized' => 'Top',
-          'spaces_after_command' => {}
+          'spaces_before_argument' => ' '
         },
         'line_nr' => {
           'file_name' => '',
@@ -162,15 +152,12 @@ $result_trees{'unnumbered_before_top_node'} = [
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
@@ -179,9 +166,8 @@ $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'ar
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2];
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'node_content'};
-$result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_top_node'}[0];
 $result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'element_command'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
 $result_trees{'unnumbered_before_top_node'}[0]{'extra'}{'section'} = $result_trees{'unnumbered_before_top_node'}[0]{'contents'}[1];
@@ -208,7 +194,9 @@ $result_sectioning{'unnumbered_before_top_node'} = {
   'section_childs' => [
     {
       'cmdname' => 'unnumbered',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'section_up' => {}
     }
@@ -219,7 +207,8 @@ $result_sectioning{'unnumbered_before_top_node'}{'section_childs'}[0]{'section_u
 $result_nodes{'unnumbered_before_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -238,7 +227,8 @@ $result_nodes{'unnumbered_before_top_node'}{'node_up'}{'extra'}{'top_node_up'} =
 $result_menus{'unnumbered_before_top_node'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 
@@ -253,7 +243,9 @@ $result_elements{'unnumbered_before_top_node'} = [
       },
       'element_command' => {
         'cmdname' => 'unnumbered',
-        'extra' => {},
+        'extra' => {
+          'spaces_before_argument' => ' '
+        },
         'level' => 1
       },
       'section' => {}

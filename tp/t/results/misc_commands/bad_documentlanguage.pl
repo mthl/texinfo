@@ -25,11 +25,6 @@ $result_trees{'bad_documentlanguage'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => '  ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'en'
                 },
                 {
@@ -45,7 +40,7 @@ $result_trees{'bad_documentlanguage'} = {
           ],
           'cmdname' => 'documentlanguage',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => '  ',
             'text_arg' => 'en'
           },
           'line_nr' => {
@@ -71,11 +66,6 @@ $result_trees{'bad_documentlanguage'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '  ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'en'
             },
             {
@@ -87,11 +77,6 @@ $result_trees{'bad_documentlanguage'} = {
               'args' => [
                 {
                   'contents' => [
-                    {
-                      'parent' => {},
-                      'text' => '  ',
-                      'type' => 'empty_spaces_after_command'
-                    },
                     {
                       'parent' => {},
                       'text' => 'en'
@@ -110,7 +95,7 @@ $result_trees{'bad_documentlanguage'} = {
               'cmdname' => 'documentlanguage',
               'extra' => {
                 'invalid_nesting' => 1,
-                'spaces_after_command' => {},
+                'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
               },
               'line_nr' => {
@@ -127,7 +112,7 @@ $result_trees{'bad_documentlanguage'} = {
       ],
       'cmdname' => 'documentlanguage',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => '  ',
         'text_arg' => 'en '
       },
       'line_nr' => {},
@@ -145,11 +130,6 @@ $result_trees{'bad_documentlanguage'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '  ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'en  after documentlanguage'
             },
             {
@@ -165,7 +145,7 @@ $result_trees{'bad_documentlanguage'} = {
       ],
       'cmdname' => 'documentlanguage',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => '  ',
         'text_arg' => 'en  after documentlanguage'
       },
       'line_nr' => {
@@ -182,31 +162,23 @@ $result_trees{'bad_documentlanguage'}{'contents'}[0]{'parent'} = $result_trees{'
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1];
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1];
-$result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[1];
 $result_trees{'bad_documentlanguage'}{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[2]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0];
+$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0];
+$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2];
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[3];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[3]{'line_nr'};
+$result_trees{'bad_documentlanguage'}{'contents'}[3]{'line_nr'} = $result_trees{'bad_documentlanguage'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'line_nr'};
 $result_trees{'bad_documentlanguage'}{'contents'}[3]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[4]{'parent'} = $result_trees{'bad_documentlanguage'};
 $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0];
-$result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'bad_documentlanguage'}{'contents'}[5];
-$result_trees{'bad_documentlanguage'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'bad_documentlanguage'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_documentlanguage'}{'contents'}[5]{'parent'} = $result_trees{'bad_documentlanguage'};
 
 $result_texis{'bad_documentlanguage'} = '

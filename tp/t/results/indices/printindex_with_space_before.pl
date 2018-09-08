@@ -18,11 +18,6 @@ $result_trees{'printindex_with_space_before'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -48,11 +43,6 @@ $result_trees{'printindex_with_space_before'} = {
           'args' => [
             {
               'contents' => [
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
                 {
                   'parent' => {},
                   'text' => 'index'
@@ -85,7 +75,7 @@ $result_trees{'printindex_with_space_before'} = {
               'number' => 1
             },
             'misc_content' => [],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -118,11 +108,6 @@ $result_trees{'printindex_with_space_before'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'cp'
                 },
                 {
@@ -141,7 +126,7 @@ $result_trees{'printindex_with_space_before'} = {
             'misc_args' => [
               'cp'
             ],
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -162,7 +147,7 @@ $result_trees{'printindex_with_space_before'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -177,32 +162,26 @@ $result_trees{'printindex_with_space_before'} = {
 $result_trees{'printindex_with_space_before'}{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'};
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'index_entry'}{'content'};
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[3];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'printindex_with_space_before'}{'contents'}[1];
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'printindex_with_space_before'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'printindex_with_space_before'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'printindex_with_space_before'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_with_space_before'}{'contents'}[1]{'parent'} = $result_trees{'printindex_with_space_before'};
 
 $result_texis{'printindex_with_space_before'} = '@node Top
@@ -224,7 +203,8 @@ $result_sectioning{'printindex_with_space_before'} = {};
 $result_nodes{'printindex_with_space_before'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -243,7 +223,8 @@ $result_nodes{'printindex_with_space_before'}{'node_up'}{'extra'}{'top_node_up'}
 $result_menus{'printindex_with_space_before'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

@@ -52,11 +52,6 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'badm'
             },
             {
@@ -72,7 +67,7 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
       ],
       'cmdname' => 'documentencoding',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'badm'
       },
       'line_nr' => {
@@ -92,9 +87,7 @@ $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[0]{'parent'} = $r
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2];
-$result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_invalid_documentencoding'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_invalid_documentencoding'};
 
 $result_texis{'macro_in_invalid_documentencoding'} = '@macro badmacro

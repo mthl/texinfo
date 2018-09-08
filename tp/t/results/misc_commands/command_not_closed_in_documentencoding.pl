@@ -12,11 +12,6 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'args' => [
                 {
                   'contents' => [],
@@ -41,7 +36,7 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
       'cmdname' => 'documentencoding',
       'extra' => {
         'missing_argument' => 1,
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {},
       'parent' => {}
@@ -49,12 +44,10 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0];
-$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0];
-$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'line_nr'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'line_nr'} = $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'command_not_closed_in_documentencoding'}{'contents'}[0]{'parent'} = $result_trees{'command_not_closed_in_documentencoding'};
 
 $result_texis{'command_not_closed_in_documentencoding'} = '@documentencoding @strong{}';

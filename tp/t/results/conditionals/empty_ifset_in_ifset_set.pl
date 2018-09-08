@@ -47,6 +47,9 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
       'cmdname' => 'verbatim',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -60,7 +63,7 @@ $result_trees{'empty_ifset_in_ifset_set'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -83,9 +86,10 @@ $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[1]{'args'}[0]{'parent'} = 
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[1];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[1]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[2]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3];
-$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0];
+$result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'contents'}[0];
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[3]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
 $result_trees{'empty_ifset_in_ifset_set'}{'contents'}[4]{'parent'} = $result_trees{'empty_ifset_in_ifset_set'};
 

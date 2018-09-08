@@ -24,11 +24,6 @@ $result_trees{'test_sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '1'
             },
             {
@@ -47,7 +42,7 @@ $result_trees{'test_sp'} = {
         'misc_args' => [
           '1'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -92,11 +87,6 @@ $result_trees{'test_sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '1'
             },
             {
@@ -115,7 +105,7 @@ $result_trees{'test_sp'} = {
         'misc_args' => [
           '1'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -136,11 +126,6 @@ $result_trees{'test_sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '2'
             },
             {
@@ -159,7 +144,7 @@ $result_trees{'test_sp'} = {
         'misc_args' => [
           '2'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -202,11 +187,6 @@ $result_trees{'test_sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '2'
             },
             {
@@ -225,7 +205,7 @@ $result_trees{'test_sp'} = {
         'misc_args' => [
           '2'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -268,11 +248,6 @@ $result_trees{'test_sp'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '1'
             },
             {
@@ -291,7 +266,7 @@ $result_trees{'test_sp'} = {
         'misc_args' => [
           '1'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -307,9 +282,7 @@ $result_trees{'test_sp'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'test_sp'}{'contents'}[0]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[1];
-$result_trees{'test_sp'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[1]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[2];
 $result_trees{'test_sp'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[2];
@@ -319,16 +292,12 @@ $result_trees{'test_sp'}{'contents'}[2]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[3]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[4];
-$result_trees{'test_sp'}{'contents'}[4]{'extra'}{'spaces_after_command'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[4]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[5]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[6];
-$result_trees{'test_sp'}{'contents'}[6]{'extra'}{'spaces_after_command'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[6]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[7];
 $result_trees{'test_sp'}{'contents'}[7]{'parent'} = $result_trees{'test_sp'};
@@ -337,9 +306,7 @@ $result_trees{'test_sp'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'test_sp'}{'contents'}[9]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[10];
-$result_trees{'test_sp'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[10]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[11];
 $result_trees{'test_sp'}{'contents'}[11]{'parent'} = $result_trees{'test_sp'};
@@ -348,9 +315,7 @@ $result_trees{'test_sp'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_tree
 $result_trees{'test_sp'}{'contents'}[13]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[14];
-$result_trees{'test_sp'}{'contents'}[14]{'extra'}{'spaces_after_command'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[14]{'parent'} = $result_trees{'test_sp'};
 
 $result_texis{'test_sp'} = 'Para
@@ -437,21 +402,21 @@ Now lone @sp:
 
 
 $result_converted{'xml'}->{'test_sp'} = '<para>Para
-</para><sp value="1" line=" 1"></sp>
+</para><sp value="1" line="1"></sp>
 <para>other para
 Now lone &arobase;sp:
 </para>
-<sp value="1" line=" 1"></sp>
+<sp value="1" line="1"></sp>
 
-<sp value="2" line=" 2"></sp>
+<sp value="2" line="2"></sp>
 <para>Para after sp
 </para>
 <para>A
-</para><sp value="2" line=" 2"></sp>
+</para><sp value="2" line="2"></sp>
 <para>B
 </para>
 <para>sp after para
-</para><sp value="1" line=" 1"></sp>
+</para><sp value="1" line="1"></sp>
 ';
 
 

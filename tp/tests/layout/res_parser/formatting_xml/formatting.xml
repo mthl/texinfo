@@ -954,7 +954,7 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2" line=" 2"></sp>
+<sp value="2" line="2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
 <clickstyle command="result" line=" @result">@result</clickstyle>
@@ -1053,7 +1053,7 @@ After clickstyle &result;
 <listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" " endspaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" " endspaces=" "><columnfractions line="0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
@@ -1554,7 +1554,7 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2" line=" 2"></sp>
+<sp value="2" line="2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
 <clickstyle command="result" line=" @result">@result</clickstyle>
@@ -1653,7 +1653,7 @@ After clickstyle &result;
 <listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" " endspaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" " endspaces=" "><columnfractions line="0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
@@ -2154,7 +2154,7 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a&textndash;lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 </para>
-<sp value="2" line=" 2"></sp>
+<sp value="2" line="2"></sp>
 
 <para><code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
 <clickstyle command="result" line=" @result">@result</clickstyle>
@@ -2253,7 +2253,7 @@ After clickstyle &result;
 <listitem spaces=" "><para>e&textndash;numerate
 </para></listitem></enumerate>
 
-<multitable spaces=" " endspaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+<multitable spaces=" " endspaces=" "><columnfractions line="0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem" spaces=" "><para>mu&textndash;ltitable headitem </para></entry><entry command="tab" spaces=" "><para>another tab
 </para></entry></row></thead><tbody><row><entry command="item" spaces=" "><para>mu&textndash;ltitable item </para></entry><entry command="tab" spaces=" "><para>multitable tab
 <!-- c comment in multitable -->
@@ -2748,7 +2748,7 @@ but , ,&noeos;
 <code>&arobase;image&lbrace;f-ile,aze,,a--lt&rbrace;</code> <image where="inline"><imagefile>f-ile</imagefile><imagewidth>aze</imagewidth><alttext>a--lt</alttext></image>
 <code>&arobase;image&lbrace;&arobase;file&lbrace;f--ile&rbrace;&arobase;&arobase;&arobase;.,aze,az,alt,&arobase;file&lbrace;file ext&rbrace; e--xt&arobase;&rbrace;</code> <image where="inline"><imagefile><file>f--ile</file>&arobase;&eosperiod;</imagefile><imagewidth>aze</imagewidth><imageheight>az</imageheight><alttext>alt</alttext><imageextension><file>file ext</file> e--xt&rbrace;</imageextension></image>
 
-<sp value="2" line=" 2"></sp>
+<sp value="2" line="2"></sp>
 
 <code>&arobase;clicksequence&lbrace;click &arobase;click&lbrace;&rbrace; A&rbrace;</code> <clicksequence>click <click command="arrow"/> A</clicksequence>
 <clickstyle command="result" line=" @result">@result</clickstyle>
@@ -2847,7 +2847,7 @@ After clickstyle &result;
 <listitem spaces=" "><pre xml:space="preserve">e--numerate
 </pre></listitem></enumerate>
 <pre xml:space="preserve">
-</pre><multitable spaces=" " endspaces=" "><columnfractions line=" 0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
+</pre><multitable spaces=" " endspaces=" "><columnfractions line="0.4 0.6 "><columnfraction value="0.4"></columnfraction><columnfraction value="0.6"></columnfraction></columnfractions>
 <thead><row><entry command="headitem" spaces=" "><pre xml:space="preserve">mu--ltitable headitem </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">another tab
 </pre></entry></row></thead><tbody><row><entry command="item" spaces=" "><pre xml:space="preserve">mu--ltitable item </pre></entry><entry command="tab" spaces=" "><pre xml:space="preserve">multitable tab
 <!-- c comment in multitable -->
@@ -3160,22 +3160,22 @@ in verbatim ''
 
 
 <para>cp
-</para><printindex value="cp" line=" cp"></printindex>
+</para><printindex value="cp" line="cp"></printindex>
 
 <para>fn
-</para><printindex value="fn" line=" fn"></printindex>
+</para><printindex value="fn" line="fn"></printindex>
 
 <para>vr
-</para><printindex value="vr" line=" vr"></printindex>
+</para><printindex value="vr" line="vr"></printindex>
 
 <para>ky
-</para><printindex value="ky" line=" ky"></printindex>
+</para><printindex value="ky" line="ky"></printindex>
 
 <para>pg
-</para><printindex value="pg" line=" pg"></printindex>
+</para><printindex value="pg" line="pg"></printindex>
 
 <para>tp
-</para><printindex value="tp" line=" tp"></printindex>
+</para><printindex value="tp" line="tp"></printindex>
 
 
 
@@ -3233,8 +3233,8 @@ Menu comment
 <node name="chapter2" spaces=" "><nodename>chapter2</nodename><nodeprev automatic="on">chapter</nodeprev><nodeup automatic="on">Top</nodeup></node>
 <centerchap spaces=" "><sectiontitle>chapter 2</sectiontitle>
 
-<printindex value="cp" line=" cp"></printindex>
-<printindex value="fn" line=" fn"></printindex>
+<printindex value="cp" line="cp"></printindex>
+<printindex value="fn" line="fn"></printindex>
 
 <contents></contents>
 <shortcontents></shortcontents>

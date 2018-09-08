@@ -15,11 +15,6 @@ $result_trees{'accentenc_no_entity'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'ISO-8859-1'
                 },
                 {
@@ -37,7 +32,7 @@ $result_trees{'accentenc_no_entity'} = {
           'extra' => {
             'input_encoding_name' => 'iso-8859-1',
             'input_perl_encoding' => 'iso-8859-1',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'ISO-8859-1'
           },
           'line_nr' => {
@@ -61,11 +56,6 @@ $result_trees{'accentenc_no_entity'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'Top'
@@ -94,7 +84,7 @@ $result_trees{'accentenc_no_entity'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -107,11 +97,6 @@ $result_trees{'accentenc_no_entity'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'top'
@@ -2468,7 +2453,7 @@ $result_trees{'accentenc_no_entity'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -2483,23 +2468,18 @@ $result_trees{'accentenc_no_entity'} = {
 };
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0];
-$result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'};
 $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0];
-$result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[1];
-$result_trees{'accentenc_no_entity'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'accentenc_no_entity'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'accentenc_no_entity'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'accentenc_no_entity'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'};
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0];
-$result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[1];
@@ -2919,8 +2899,7 @@ $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75]{'contents'}[
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75]{'contents'}[1]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75]{'contents'}[2]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'contents'}[75]{'parent'} = $result_trees{'accentenc_no_entity'}{'contents'}[2];
-$result_trees{'accentenc_no_entity'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'accentenc_no_entity'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'accentenc_no_entity'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'accentenc_no_entity'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'accentenc_no_entity'}{'contents'}[2]{'parent'} = $result_trees{'accentenc_no_entity'};
 
 $result_texis{'accentenc_no_entity'} = '@documentencoding ISO-8859-1
@@ -3094,9 +3073,11 @@ $result_sectioning{'accentenc_no_entity'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_up' => {}
@@ -3110,10 +3091,13 @@ $result_nodes{'accentenc_no_entity'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -3132,7 +3116,8 @@ $result_nodes{'accentenc_no_entity'}{'node_up'}{'extra'}{'top_node_up'} = $resul
 $result_menus{'accentenc_no_entity'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

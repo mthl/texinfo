@@ -111,11 +111,6 @@ sub fill_gaps_in_sectioning($)
           $new_section->{'args'} = [{'type' => 'misc_line_arg',
                                      'parent' => $new_section}];
           $new_section->{'args'}->[0]->{'contents'} = [
-             {'type' => 'empty_spaces_after_command',
-              'text' => " ",
-              'extra' => {'command' => $new_section},
-              'parent' => $new_section->{'args'}->[0]
-             },
              {'cmdname' => 'asis',
               'parent' => $new_section->{'args'}->[0]
              },
@@ -123,7 +118,9 @@ sub fill_gaps_in_sectioning($)
               'text' => "\n",
               'parent' => $new_section->{'args'}->[0]
              }];
-          $new_section->{'args'}->[0]->{'contents'}->[1]->{'args'}
+          $new_section->{'args'}->[0]->{'extra'}
+            = {'spaces_before_argument' => ' '};
+          $new_section->{'args'}->[0]->{'contents'}->[0]->{'args'}
              = [{'type' => 'brace_command_arg',
                  'contents' => [],
                  'parent' => $new_section->{'args'}->[0]->{'contents'}->[1]}];

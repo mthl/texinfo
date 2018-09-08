@@ -13,11 +13,6 @@ $result_trees{'unknown_macro_on_line_command'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'file'
             }
           ],
@@ -27,7 +22,7 @@ $result_trees{'unknown_macro_on_line_command'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'file'
       },
       'line_nr' => {
@@ -41,9 +36,7 @@ $result_trees{'unknown_macro_on_line_command'} = {
   'type' => 'text_root'
 };
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0];
-$result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0];
-$result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_macro_on_line_command'}{'contents'}[0]{'parent'} = $result_trees{'unknown_macro_on_line_command'};
 
 $result_texis{'unknown_macro_on_line_command'} = '@setfilename file';

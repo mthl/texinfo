@@ -18,11 +18,6 @@ $result_trees{'image_and_punctuation'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -316,7 +311,7 @@ $result_trees{'image_and_punctuation'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -331,7 +326,6 @@ $result_trees{'image_and_punctuation'} = {
 $result_trees{'image_and_punctuation'}{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'};
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[1];
@@ -375,9 +369,8 @@ $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'contents'}[2]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'contents'}[11]{'parent'} = $result_trees{'image_and_punctuation'}{'contents'}[1];
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'image_and_punctuation'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'image_and_punctuation'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_punctuation'}{'contents'}[1]{'parent'} = $result_trees{'image_and_punctuation'};
 
 $result_texis{'image_and_punctuation'} = '@node Top
@@ -419,7 +412,8 @@ $result_sectioning{'image_and_punctuation'} = {};
 $result_nodes{'image_and_punctuation'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -438,7 +432,8 @@ $result_nodes{'image_and_punctuation'}{'node_up'}{'extra'}{'top_node_up'} = $res
 $result_menus{'image_and_punctuation'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

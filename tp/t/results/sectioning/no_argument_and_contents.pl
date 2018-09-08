@@ -42,11 +42,6 @@ $result_trees{'no_argument_and_contents'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'for example'
             },
             {
@@ -73,7 +68,7 @@ $result_trees{'no_argument_and_contents'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -87,11 +82,6 @@ $result_trees{'no_argument_and_contents'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'args' => [
                 {
@@ -133,7 +123,7 @@ $result_trees{'no_argument_and_contents'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {},
@@ -149,21 +139,17 @@ $result_trees{'no_argument_and_contents'}{'contents'}[0]{'contents'}[1]{'parent'
 $result_trees{'no_argument_and_contents'}{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'};
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0];
-$result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1];
-$result_trees{'no_argument_and_contents'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'no_argument_and_contents'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'no_argument_and_contents'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'parent'} = $result_trees{'no_argument_and_contents'};
+$result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'line_nr'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'no_argument_and_contents'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'no_argument_and_contents'}{'contents'}[2]{'line_nr'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'parent'} = $result_trees{'no_argument_and_contents'};
 
 $result_texis{'no_argument_and_contents'} = '@contents
@@ -189,12 +175,16 @@ $result_sectioning{'no_argument_and_contents'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_childs' => [
         {
           'cmdname' => 'chapter',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 1,
           'number' => 1,
           'section_up' => {},

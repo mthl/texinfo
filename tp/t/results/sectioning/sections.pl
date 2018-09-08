@@ -18,11 +18,6 @@ $result_trees{'sections'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'a chapter'
             },
             {
@@ -42,7 +37,7 @@ $result_trees{'sections'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -59,10 +54,8 @@ $result_trees{'sections'} = {
 $result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
-$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1];
-$result_trees{'sections'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'sections'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'sections'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'sections'}{'contents'}[1]{'parent'} = $result_trees{'sections'};
 
 $result_texis{'sections'} = '@chapter a chapter
@@ -78,7 +71,9 @@ $result_sectioning{'sections'} = {
   'section_childs' => [
     {
       'cmdname' => 'chapter',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'number' => 1,
       'section_up' => {}

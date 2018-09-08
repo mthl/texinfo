@@ -1,3 +1,33 @@
+2018-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_start_empty_line_after_command):
+	Refer to spaces element at start of line as
+	'spaces_after_command_elt' instead of 'spaces_after_command'.
+	Refer back to the main element for the command as 'command'.
+	(_abort_empty_line): Use 'command' extra value to find an 
+	element that refers to the spaces element
+	as 'spaces_after_command'.  If found, change the reference to 
+	the element to a reference to a simple string.  This was already
+	done for 'spaces_before_argument_elt' but is now done for 
+	'spaces_after_command_elt' too.
+	* tp/Texinfo/XS/misc.c (xs_abort_empty_line): Make the same change.
+
+	* tp/Texinfo/Structuring.pm (new_block_command),
+	* tp/Texinfo/Transformations (fill_gaps_sectioning):
+	Update to store spaces after the command in 'spaces_before_argument'.
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (_leading_spaces, _convert):
+	Update to access 'spaces_after_command'.
+
+	* tp/Texinfo/Common.pm (move_index_entries_after_item):
+	Insert a newline in the 'spaces_before_argument' value if it is 
+	present.
+
+	* tp/Texinfo/Convert/Texinfo.pm (_expand_cmd_args_to_texi):
+	Output a space in 'spaces_before_argument' if it is present.
+
+	* tp/t/collect_spaces.t: Test removed.
+
 2018-09-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_parse_texi, _close_brace_command),

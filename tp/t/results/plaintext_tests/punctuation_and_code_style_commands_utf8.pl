@@ -13,11 +13,6 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'utf-8'
             },
             {
@@ -35,7 +30,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
       'extra' => {
         'input_encoding_name' => 'utf-8',
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -346,9 +341,7 @@ $result_trees{'punctuation_and_code_style_commands_utf8'} = {
 };
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0];
-$result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'};
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'punctuation_and_code_style_commands_utf8'}{'contents'}[1]{'contents'}[0];

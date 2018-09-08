@@ -2123,7 +2123,10 @@ sub _abort_empty_line {
     my $spaces_element = $current->{'contents'}->[-1];
 
     my $owning_element;
-    if ($current->{'extra'} 
+    if ($spaces_element->{'extra'}
+        and $spaces_element->{'extra'}->{'command'}) {
+      $owning_element = $spaces_element->{'extra'}->{'command'};
+    } elsif ($current->{'extra'} 
         and $current->{'extra'}->{'spaces_before_argument_elt'}
         and $current->{'extra'}->{'spaces_before_argument_elt'} 
               eq $spaces_element) {
@@ -2134,13 +2137,13 @@ sub _abort_empty_line {
               eq $spaces_element) {
       $owning_element = $current->{'parent'};
     } elsif ($current->{'extra'} 
-        and $current->{'extra'}->{'spaces_after_command'}
-        and $current->{'extra'}->{'spaces_after_command'} 
+        and $current->{'extra'}->{'spaces_after_command_elt'}
+        and $current->{'extra'}->{'spaces_after_command_elt'} 
               eq $spaces_element) {
       $owning_element = $current;
     } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-        and $current->{'parent'}->{'extra'}->{'spaces_after_command'}
-        and $current->{'parent'}->{'extra'}->{'spaces_after_command'} 
+        and $current->{'parent'}->{'extra'}->{'spaces_after_command_elt'}
+        and $current->{'parent'}->{'extra'}->{'spaces_after_command_elt'} 
               eq $spaces_element) {
       $owning_element = $current->{'parent'};
     }
@@ -2175,17 +2178,21 @@ sub _abort_empty_line {
       } else { 
         delete $spaces_element->{'type'};
       }
-    } elsif ($spaces_element->{'type'} eq 'empty_line_after_command') {
-      $spaces_element->{'type'} = 'empty_spaces_after_command';
-    } elsif ($spaces_element->{'type'} eq 'empty_spaces_before_argument') {
-      # Remove element from main tree. It will still be referenced in
-      # the 'extra' hash as 'spaces_before_argument'.
-      pop @{$current->{'contents'}};
+    } elsif ($spaces_element->{'type'} eq 'empty_line_after_command'
+             or $spaces_element->{'type'} eq 'empty_spaces_before_argument') {
+      if ($owning_element) {
+        # Remove element from main tree. It will still be referenced in
+        # the 'extra' hash as 'spaces_before_argument'.
+        pop @{$current->{'contents'}};
 
-      # Replace element reference with a simple string.
-      $owning_element->{'extra'}->{'spaces_before_argument'}
-        = $owning_element->{'extra'}->{'spaces_before_argument_elt'}->{'text'};
-      delete $owning_element->{'extra'}->{'spaces_before_argument_elt'};
+        # Replace element reference with a simple string.
+        $owning_element->{'extra'}->{'spaces_before_argument'}
+          = $spaces_element->{'text'};
+        delete $owning_element->{'extra'}->{'spaces_before_argument_elt'};
+        delete $owning_element->{'extra'}->{'spaces_after_command_elt'};
+      } else {
+        $spaces_element->{'type'} = 'empty_spaces_after_command';
+      }
     }
 
     return 1;
@@ -3459,7 +3466,8 @@ sub _start_empty_line_after_command($$$) {
                                     'parent' => $current, 
                                   };
   if (defined($command)) {
-    $command->{'extra'}->{'spaces_after_command'} = $current->{'contents'}->[-1];
+    $command->{'extra'}->{'spaces_after_command_elt'} = $current->{'contents'}->[-1];
+    $current->{'contents'}->[-1]->{'extra'} = {'command' => $command};
   }
   return $line;
 }

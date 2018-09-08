@@ -11,6 +11,9 @@ $result_trees{'flushright_not_closed_and_format'} = {
       'cmdname' => 'flushright',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -37,6 +40,9 @@ $result_trees{'flushright_not_closed_and_format'} = {
           'cmdname' => 'quotation',
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => ' 
 ',
@@ -59,11 +65,6 @@ $result_trees{'flushright_not_closed_and_format'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => ' ',
-                      'type' => 'empty_spaces_after_command'
-                    },
-                    {
-                      'parent' => {},
                       'text' => 'quotation'
                     },
                     {
@@ -80,7 +81,7 @@ $result_trees{'flushright_not_closed_and_format'} = {
               'cmdname' => 'end',
               'extra' => {
                 'command_argument' => 'quotation',
-                'spaces_after_command' => {},
+                'spaces_before_argument' => ' ',
                 'text_arg' => 'quotation'
               },
               'line_nr' => {
@@ -93,7 +94,7 @@ $result_trees{'flushright_not_closed_and_format'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'spaces_after_command' => {}
+            'spaces_after_command_elt' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -104,7 +105,7 @@ $result_trees{'flushright_not_closed_and_format'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -116,23 +117,23 @@ $result_trees{'flushright_not_closed_and_format'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
+$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
+$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0];
-$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0];
+$result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'contents'}[0];
 $result_trees{'flushright_not_closed_and_format'}{'contents'}[0]{'parent'} = $result_trees{'flushright_not_closed_and_format'};
 
 $result_texis{'flushright_not_closed_and_format'} = '@flushright

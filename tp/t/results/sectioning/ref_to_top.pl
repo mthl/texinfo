@@ -25,11 +25,6 @@ $result_trees{'ref_to_top'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'ToP'
             },
             {
@@ -56,7 +51,7 @@ $result_trees{'ref_to_top'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -69,11 +64,6 @@ $result_trees{'ref_to_top'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'top'
@@ -144,7 +134,7 @@ $result_trees{'ref_to_top'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -161,15 +151,12 @@ $result_trees{'ref_to_top'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'ref_to_top'}{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'};
 $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0];
-$result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[1];
-$result_trees{'ref_to_top'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'ref_to_top'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_to_top'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'ref_to_top'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'ref_to_top'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'ref_to_top'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_to_top'}{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'};
 $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0];
-$result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
@@ -179,8 +166,7 @@ $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2];
-$result_trees{'ref_to_top'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'ref_to_top'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_to_top'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_to_top'}{'contents'}[2]{'parent'} = $result_trees{'ref_to_top'};
 
 $result_texis{'ref_to_top'} = '
@@ -207,9 +193,11 @@ $result_sectioning{'ref_to_top'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_up' => {}
@@ -223,10 +211,13 @@ $result_nodes{'ref_to_top'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -245,7 +236,8 @@ $result_nodes{'ref_to_top'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'
 $result_menus{'ref_to_top'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

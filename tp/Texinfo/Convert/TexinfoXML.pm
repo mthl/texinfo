@@ -584,10 +584,10 @@ sub _protect_in_spaces($)
 sub _leading_spaces($)
 {
   my $root = shift;
-  if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
-      and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command') {
+  if ($root->{'extra'} and $root->{'extra'}->{'spaces_before_argument'}
+      and $root->{'extra'}->{'spaces_before_argument'} ne '') {
     return ('spaces', _protect_in_spaces(
-         $root->{'extra'}->{'spaces_after_command'}->{'text'}));
+         $root->{'extra'}->{'spaces_before_argument'}));
   } else {
     return ();
   }
@@ -1009,9 +1009,9 @@ sub _convert($$;$)
                  .$self->close_element($command)."\n";
       } elsif ($type eq 'noarg' or $type eq 'skipspace') {
         my $spaces = '';
-        $spaces = $root->{'extra'}->{'spaces_after_command'}->{'text'}
+        $spaces = $root->{'extra'}->{'spaces_after_command'}
           if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_command'}
-              and $root->{'extra'}->{'spaces_after_command'}->{'type'} eq 'empty_spaces_after_command');
+              and $root->{'extra'}->{'spaces_after_command'} ne '');
         return $self->open_element($command)
                 .$self->close_element($command).$spaces;
       } elsif ($type eq 'special') {

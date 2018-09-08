@@ -12,11 +12,6 @@ $result_trees{'comment_first_on_enumerate_line'} = {
         {
           'contents' => [
             {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'args' => [
                 {
                   'parent' => {},
@@ -45,11 +40,6 @@ $result_trees{'comment_first_on_enumerate_line'} = {
           'cmdname' => 'item',
           'contents' => [
             {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
               'contents' => [
                 {
                   'parent' => {},
@@ -63,7 +53,7 @@ $result_trees{'comment_first_on_enumerate_line'} = {
           ],
           'extra' => {
             'item_number' => 1,
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -76,11 +66,6 @@ $result_trees{'comment_first_on_enumerate_line'} = {
           'args' => [
             {
               'contents' => [
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
                 {
                   'parent' => {},
                   'text' => 'enumerate'
@@ -99,7 +84,7 @@ $result_trees{'comment_first_on_enumerate_line'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'enumerate',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'enumerate'
           },
           'line_nr' => {
@@ -113,7 +98,7 @@ $result_trees{'comment_first_on_enumerate_line'} = {
       'extra' => {
         'end_command' => {},
         'enumerate_specification' => 1,
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -125,23 +110,17 @@ $result_trees{'comment_first_on_enumerate_line'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0];
+$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'contents'}[1];
-$result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_first_on_enumerate_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_enumerate_line'};
 
 $result_texis{'comment_first_on_enumerate_line'} = '@enumerate @c comment on enumerate line

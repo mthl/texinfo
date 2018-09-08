@@ -1329,12 +1329,10 @@ sub new_block_command($$$)
   push @{$end->{'args'}},
     {'type' => 'misc_line_arg', 'parent' => $end};
   push @{$end->{'args'}->[0]->{'contents'}},
-          ({'type' => 'empty_spaces_after_command',
-           'text' => ' ',
-           'parent' => $end->{'args'}->[0]},
-          {'text' => $command_name, 'parent' => $end->{'args'}->[0]},
+         ({'text' => $command_name, 'parent' => $end->{'args'}->[0]},
           {'type' => 'spaces_at_end', 'text' => "\n", 
            'parent' => $end->{'args'}->[0]});
+  $end->{'args'}->[0]->{'extra'} = {'spaces_before_argument' => ' '};
   my $new_block = {'cmdname' => $command_name, 'parent' => $parent,
                   'extra'=>{'end_command' => $end}};
   $new_block->{'contents'} = [{'type' => 'empty_line_after_command',

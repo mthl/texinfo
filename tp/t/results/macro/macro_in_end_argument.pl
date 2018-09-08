@@ -56,6 +56,9 @@ $result_trees{'macro_in_end_argument'} = {
       'cmdname' => 'cartouche',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -65,11 +68,6 @@ $result_trees{'macro_in_end_argument'} = {
           'args' => [
             {
               'contents' => [
-                {
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
                 {
                   'parent' => {},
                   'text' => 'cartouche'
@@ -88,7 +86,7 @@ $result_trees{'macro_in_end_argument'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'cartouche',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'cartouche'
           },
           'line_nr' => {
@@ -101,7 +99,7 @@ $result_trees{'macro_in_end_argument'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -119,15 +117,14 @@ $result_trees{'macro_in_end_argument'}{'contents'}[0]{'contents'}[1]{'parent'} =
 $result_trees{'macro_in_end_argument'}{'contents'}[0]{'parent'} = $result_trees{'macro_in_end_argument'};
 $result_trees{'macro_in_end_argument'}{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'};
 $result_trees{'macro_in_end_argument'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_end_argument'};
+$result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0];
-$result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1];
-$result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1];
-$result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0];
+$result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_end_argument'};
 
 $result_texis{'macro_in_end_argument'} = '@macro acartouche

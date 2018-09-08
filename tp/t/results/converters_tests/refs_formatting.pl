@@ -18,11 +18,6 @@ $result_trees{'refs_formatting'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'chapter'
             },
             {
@@ -49,7 +44,7 @@ $result_trees{'refs_formatting'} = {
           }
         ],
         'normalized' => 'chapter',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -62,11 +57,6 @@ $result_trees{'refs_formatting'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'chapter'
@@ -3389,7 +3379,7 @@ $result_trees{'refs_formatting'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -3406,15 +3396,12 @@ $result_trees{'refs_formatting'} = {
 $result_trees{'refs_formatting'}{'contents'}[0]{'parent'} = $result_trees{'refs_formatting'};
 $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0];
 $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0];
-$result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0];
 $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[1];
-$result_trees{'refs_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'refs_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'refs_formatting'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'refs_formatting'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'refs_formatting'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'refs_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'refs_formatting'}{'contents'}[1]{'parent'} = $result_trees{'refs_formatting'};
 $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0];
 $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0];
-$result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0];
 $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
@@ -4046,8 +4033,7 @@ $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[15]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2];
-$result_trees{'refs_formatting'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'refs_formatting'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'refs_formatting'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'refs_formatting'}{'contents'}[2]{'parent'} = $result_trees{'refs_formatting'};
 
 $result_texis{'refs_formatting'} = '@node chapter
@@ -4138,9 +4124,11 @@ $result_sectioning{'refs_formatting'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'chapter'
+            'normalized' => 'chapter',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'number' => 1,
@@ -4155,18 +4143,22 @@ $result_nodes{'refs_formatting'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'chapter',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 1,
       'number' => 1
     },
-    'normalized' => 'chapter'
+    'normalized' => 'chapter',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'refs_formatting'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'chapter'
+    'normalized' => 'chapter',
+    'spaces_before_argument' => ' '
   }
 };
 

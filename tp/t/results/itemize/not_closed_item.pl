@@ -11,6 +11,9 @@ $result_trees{'not_closed_item'} = {
       'cmdname' => 'itemize',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -19,11 +22,6 @@ $result_trees{'not_closed_item'} = {
         {
           'cmdname' => 'item',
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'contents' => [
                 {
@@ -38,7 +36,7 @@ $result_trees{'not_closed_item'} = {
           ],
           'extra' => {
             'item_number' => 1,
-            'spaces_after_command' => {}
+            'spaces_before_argument' => ' '
           },
           'line_nr' => {
             'file_name' => '',
@@ -60,7 +58,7 @@ $result_trees{'not_closed_item'} = {
           ]
         ],
         'command_as_argument' => {},
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -72,15 +70,14 @@ $result_trees{'not_closed_item'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed_item'}{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0];
+$result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1];
-$result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
-$result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1];
-$result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'not_closed_item'}{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
-$result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[0];
+$result_trees{'not_closed_item'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'not_closed_item'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_closed_item'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_item'};
 
 $result_texis{'not_closed_item'} = '@itemize

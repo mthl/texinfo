@@ -39,11 +39,6 @@ $result_trees{'contents_at_end_document'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'contents_at_end_document.info'
                 },
                 {
@@ -59,7 +54,7 @@ $result_trees{'contents_at_end_document'} = {
           ],
           'cmdname' => 'setfilename',
           'extra' => {
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'contents_at_end_document.info'
           },
           'line_nr' => {
@@ -83,11 +78,6 @@ $result_trees{'contents_at_end_document'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'Top'
@@ -116,7 +106,7 @@ $result_trees{'contents_at_end_document'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => 'contents_at_end_document.texi',
@@ -129,11 +119,6 @@ $result_trees{'contents_at_end_document'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'top'
@@ -162,7 +147,7 @@ $result_trees{'contents_at_end_document'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -176,11 +161,6 @@ $result_trees{'contents_at_end_document'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'chap'
@@ -232,7 +212,7 @@ $result_trees{'contents_at_end_document'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 1,
       'line_nr' => {
@@ -264,38 +244,30 @@ $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[0]{'content
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1];
-$result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'};
 $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0];
-$result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[1];
-$result_trees{'contents_at_end_document'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'contents_at_end_document'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'contents_at_end_document'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'contents_at_end_document'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'};
 $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0];
-$result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[2];
 $result_trees{'contents_at_end_document'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[2];
-$result_trees{'contents_at_end_document'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'contents_at_end_document'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'contents_at_end_document'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'};
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0];
-$result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[3];
-$result_trees{'contents_at_end_document'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'contents_at_end_document'}{'contents'}[3]{'extra'}{'spaces_after_command'} = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'contents_at_end_document'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'contents_at_end_document'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'contents_at_end_document'}{'contents'}[3]{'parent'} = $result_trees{'contents_at_end_document'};
 $result_trees{'contents_at_end_document'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'contents_at_end_document'}{'contents'}[4];
 $result_trees{'contents_at_end_document'}{'contents'}[4]{'parent'} = $result_trees{'contents_at_end_document'};
@@ -334,15 +306,19 @@ $result_sectioning{'contents_at_end_document'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'normalized' => 'Top'
+            'normalized' => 'Top',
+            'spaces_before_argument' => ' '
           }
-        }
+        },
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'section_childs' => [
         {
           'cmdname' => 'chapter',
-          'extra' => {},
+          'extra' => {
+            'spaces_before_argument' => ' '
+          },
           'level' => 1,
           'number' => 1,
           'section_up' => {},
@@ -364,10 +340,13 @@ $result_nodes{'contents_at_end_document'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0
     },
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -386,7 +365,8 @@ $result_nodes{'contents_at_end_document'}{'node_up'}{'extra'}{'top_node_up'} = $
 $result_menus{'contents_at_end_document'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

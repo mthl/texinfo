@@ -18,11 +18,6 @@ $result_trees{'image_and_spaces_formatting'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -747,7 +742,7 @@ $result_trees{'image_and_spaces_formatting'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -762,7 +757,6 @@ $result_trees{'image_and_spaces_formatting'} = {
 $result_trees{'image_and_spaces_formatting'}{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'};
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0];
-$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[1]{'args'}[0];
@@ -900,9 +894,8 @@ $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'con
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'contents'}[4]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[24]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'contents'}[25]{'parent'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1];
-$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'image_and_spaces_formatting'}{'contents'}[1]{'parent'} = $result_trees{'image_and_spaces_formatting'};
 
 $result_texis{'image_and_spaces_formatting'} = '@node Top
@@ -942,7 +935,8 @@ $result_sectioning{'image_and_spaces_formatting'} = {};
 $result_nodes{'image_and_spaces_formatting'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -961,7 +955,8 @@ $result_nodes{'image_and_spaces_formatting'}{'node_up'}{'extra'}{'top_node_up'} 
 $result_menus{'image_and_spaces_formatting'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

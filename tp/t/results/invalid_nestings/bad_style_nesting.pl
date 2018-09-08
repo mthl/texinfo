@@ -40,6 +40,9 @@ $result_trees{'bad_style_nesting'} = {
       'cmdname' => 'quotation',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -62,11 +65,6 @@ $result_trees{'bad_style_nesting'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'quotation'
                 },
                 {
@@ -83,7 +81,7 @@ $result_trees{'bad_style_nesting'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'quotation',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'quotation'
           },
           'line_nr' => {
@@ -97,7 +95,7 @@ $result_trees{'bad_style_nesting'} = {
       'extra' => {
         'end_command' => {},
         'invalid_nesting' => 1,
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -113,17 +111,16 @@ $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'con
 $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'};
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0];
+$result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'};
 
 $result_texis{'bad_style_nesting'} = '@code{

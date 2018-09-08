@@ -11,6 +11,9 @@ $result_trees{'empty_multitable_with_cells'} = {
       'cmdname' => 'multitable',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -90,11 +93,6 @@ $result_trees{'empty_multitable_with_cells'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'multitable'
                 },
                 {
@@ -111,7 +109,7 @@ $result_trees{'empty_multitable_with_cells'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'multitable',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'multitable'
           },
           'line_nr' => {
@@ -126,7 +124,7 @@ $result_trees{'empty_multitable_with_cells'} = {
         'end_command' => {},
         'max_columns' => 0,
         'prototypes' => [],
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -138,6 +136,7 @@ $result_trees{'empty_multitable_with_cells'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
@@ -154,12 +153,10 @@ $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1]{'cont
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[0];
+$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'};
 
 $result_texis{'empty_multitable_with_cells'} = '@multitable

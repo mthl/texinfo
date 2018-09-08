@@ -21,11 +21,6 @@ $result_trees{'encoding_us_ascii'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                },
-                {
-                  'parent' => {},
                   'text' => 'US-ASCII'
                 },
                 {
@@ -43,7 +38,7 @@ $result_trees{'encoding_us_ascii'} = {
           'extra' => {
             'input_encoding_name' => 'us-ascii',
             'input_perl_encoding' => 'ascii',
-            'spaces_after_command' => {},
+            'spaces_before_argument' => ' ',
             'text_arg' => 'US-ASCII'
           },
           'line_nr' => {
@@ -67,11 +62,6 @@ $result_trees{'encoding_us_ascii'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'Top'
@@ -107,7 +97,7 @@ $result_trees{'encoding_us_ascii'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -122,20 +112,16 @@ $result_trees{'encoding_us_ascii'} = {
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0];
-$result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1];
-$result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'};
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0];
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'encoding_us_ascii'}{'contents'}[1];
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'encoding_us_ascii'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'encoding_us_ascii'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'encoding_us_ascii'}{'contents'}[1]{'parent'} = $result_trees{'encoding_us_ascii'};
 
 $result_texis{'encoding_us_ascii'} = '
@@ -156,7 +142,8 @@ $result_sectioning{'encoding_us_ascii'} = {};
 $result_nodes{'encoding_us_ascii'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -175,7 +162,8 @@ $result_nodes{'encoding_us_ascii'}{'node_up'}{'extra'}{'top_node_up'} = $result_
 $result_menus{'encoding_us_ascii'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

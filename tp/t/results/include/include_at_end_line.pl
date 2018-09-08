@@ -13,11 +13,6 @@ $result_trees{'include_at_end_line'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'inc_file.texi'
             },
             {
@@ -32,7 +27,7 @@ $result_trees{'include_at_end_line'} = {
       ],
       'cmdname' => 'include',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'inc_file.texi'
       },
       'line_nr' => {
@@ -63,9 +58,7 @@ $result_trees{'include_at_end_line'} = {
 };
 $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[0];
-$result_trees{'include_at_end_line'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'include_at_end_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'include_at_end_line'}{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'};
 $result_trees{'include_at_end_line'}{'contents'}[1]{'parent'} = $result_trees{'include_at_end_line'};
 $result_trees{'include_at_end_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'include_at_end_line'}{'contents'}[2];

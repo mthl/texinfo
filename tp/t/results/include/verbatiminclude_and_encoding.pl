@@ -13,11 +13,6 @@ $result_trees{'verbatiminclude_and_encoding'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'utf-8'
             },
             {
@@ -35,7 +30,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
       'extra' => {
         'input_encoding_name' => 'utf-8',
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -57,11 +52,6 @@ $result_trees{'verbatiminclude_and_encoding'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'verbatim_encoded.texi'
             },
             {
@@ -78,7 +68,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
       'cmdname' => 'verbatiminclude',
       'extra' => {
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'verbatim_encoded.texi'
       },
       'line_nr' => {
@@ -93,16 +83,12 @@ $result_trees{'verbatiminclude_and_encoding'} = {
 };
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0];
-$result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0];
-$result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding'};
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding'};
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0];
-$result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2];
-$result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'verbatiminclude_and_encoding'}{'contents'}[2]{'parent'} = $result_trees{'verbatiminclude_and_encoding'};
 
 $result_texis{'verbatiminclude_and_encoding'} = '@documentencoding utf-8

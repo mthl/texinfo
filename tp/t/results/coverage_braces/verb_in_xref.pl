@@ -18,11 +18,6 @@ $result_trees{'verb_in_xref'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -148,7 +143,7 @@ $result_trees{'verb_in_xref'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -163,7 +158,6 @@ $result_trees{'verb_in_xref'} = {
 $result_trees{'verb_in_xref'}{'contents'}[0]{'parent'} = $result_trees{'verb_in_xref'};
 $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0];
-$result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
@@ -181,9 +175,8 @@ $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'}{'contents'}[1];
-$result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'verb_in_xref'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'verb_in_xref'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verb_in_xref'}{'contents'}[1]{'parent'} = $result_trees{'verb_in_xref'};
 
 $result_texis{'verb_in_xref'} = '@node Top
@@ -204,7 +197,8 @@ $result_sectioning{'verb_in_xref'} = {};
 $result_nodes{'verb_in_xref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -223,7 +217,8 @@ $result_nodes{'verb_in_xref'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes
 $result_menus{'verb_in_xref'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

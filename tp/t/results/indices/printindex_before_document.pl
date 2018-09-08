@@ -19,11 +19,6 @@ $result_trees{'printindex_before_document'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'cp'
             },
             {
@@ -42,7 +37,7 @@ $result_trees{'printindex_before_document'} = {
         'misc_args' => [
           'cp'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -57,9 +52,7 @@ $result_trees{'printindex_before_document'} = {
 $result_trees{'printindex_before_document'}{'contents'}[0]{'parent'} = $result_trees{'printindex_before_document'};
 $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0];
-$result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1];
-$result_trees{'printindex_before_document'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_before_document'}{'contents'}[1]{'parent'} = $result_trees{'printindex_before_document'};
 
 $result_texis{'printindex_before_document'} = '

@@ -18,11 +18,6 @@ $result_trees{'double_top_section'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'First top'
             },
             {
@@ -66,7 +61,7 @@ $result_trees{'double_top_section'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -80,11 +75,6 @@ $result_trees{'double_top_section'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'Second top'
@@ -124,7 +114,7 @@ $result_trees{'double_top_section'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -140,24 +130,20 @@ $result_trees{'double_top_section'} = {
 $result_trees{'double_top_section'}{'contents'}[0]{'parent'} = $result_trees{'double_top_section'};
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
-$result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'double_top_section'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'double_top_section'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_top_section'}{'contents'}[1]{'parent'} = $result_trees{'double_top_section'};
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
-$result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0];
 $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
 $result_trees{'double_top_section'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
 $result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1];
 $result_trees{'double_top_section'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'double_top_section'}{'contents'}[2];
-$result_trees{'double_top_section'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'double_top_section'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'double_top_section'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'double_top_section'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'double_top_section'}{'contents'}[2]{'parent'} = $result_trees{'double_top_section'};
 
 $result_texis{'double_top_section'} = '@top First top
@@ -186,13 +172,17 @@ $result_sectioning{'double_top_section'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_up' => {}
     },
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_prev' => {},
       'section_up' => {},

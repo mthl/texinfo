@@ -13,6 +13,9 @@ $result_trees{'node_in_copying'} = {
           'cmdname' => 'copying',
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => '
 ',
@@ -20,7 +23,7 @@ $result_trees{'node_in_copying'} = {
             }
           ],
           'extra' => {
-            'spaces_after_command' => {}
+            'spaces_after_command_elt' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -37,11 +40,6 @@ $result_trees{'node_in_copying'} = {
       'args' => [
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
             {
               'parent' => {},
               'text' => 'node'
@@ -77,7 +75,7 @@ $result_trees{'node_in_copying'} = {
           }
         ],
         'normalized' => 'node',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -89,18 +87,17 @@ $result_trees{'node_in_copying'} = {
   ],
   'type' => 'document_root'
 };
+$result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'};
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1];
 $result_trees{'node_in_copying'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1];
-$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'node_in_copying'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'node_in_copying'};
 
 $result_texis{'node_in_copying'} = '@copying
@@ -117,14 +114,16 @@ $result_sectioning{'node_in_copying'} = {};
 $result_nodes{'node_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node'
+    'normalized' => 'node',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'node_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'node'
+    'normalized' => 'node',
+    'spaces_before_argument' => ' '
   }
 };
 

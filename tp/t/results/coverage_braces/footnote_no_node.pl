@@ -18,11 +18,6 @@ $result_trees{'footnote_no_node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'top'
             },
             {
@@ -92,7 +87,7 @@ $result_trees{'footnote_no_node'} = {
         'misc_content' => [
           {}
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'level' => 0,
       'line_nr' => {
@@ -108,7 +103,6 @@ $result_trees{'footnote_no_node'} = {
 $result_trees{'footnote_no_node'}{'contents'}[0]{'parent'} = $result_trees{'footnote_no_node'};
 $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0];
-$result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1];
@@ -118,8 +112,7 @@ $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'
 $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'footnote_no_node'}{'contents'}[1];
-$result_trees{'footnote_no_node'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[1];
-$result_trees{'footnote_no_node'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'footnote_no_node'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'footnote_no_node'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_no_node'}{'contents'}[1]{'parent'} = $result_trees{'footnote_no_node'};
 
 $result_texis{'footnote_no_node'} = '@top top
@@ -139,7 +132,9 @@ $result_sectioning{'footnote_no_node'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {},
+      'extra' => {
+        'spaces_before_argument' => ' '
+      },
       'level' => 0,
       'section_up' => {}
     }

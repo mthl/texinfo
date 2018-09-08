@@ -31,11 +31,6 @@ $result_trees{'delcomment'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'delcomment.info'
             },
             {
@@ -51,7 +46,7 @@ $result_trees{'delcomment'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'delcomment.info'
       },
       'line_nr' => {
@@ -152,9 +147,7 @@ $result_trees{'delcomment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_tr
 $result_trees{'delcomment'}{'contents'}[0]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0];
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0];
-$result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0];
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[1];
-$result_trees{'delcomment'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'delcomment'}{'contents'}[1]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[2]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[3];

@@ -155,17 +155,21 @@ sub _expand_cmd_args_to_texi ($;$) {
          and ($def_commands{$cmdname}
               or $block_commands{$cmdname} eq 'multitable')
          and $cmd->{'args'}) {
+     $result .= $cmd->{'extra'}->{'spaces_before_argument'}
+       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
      foreach my $arg (@{$cmd->{'args'}}) {
         $result .= convert($arg, $fix);
     }
   # for misc_commands with type special
   } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
            and defined($cmd->{'extra'}->{'arg_line'})) {
+    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
+      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
     $result .= $cmd->{'extra'}->{'arg_line'};
   } elsif (($block_commands{$cmdname} or $cmdname eq 'node')
             and defined($cmd->{'args'})) {
-    die "bad args type (".ref($cmd->{'args'}).") $cmd->{'args'}\n"
-      if (ref($cmd->{'args'}) ne 'ARRAY');
+    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
+      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
     foreach my $arg (@{$cmd->{'args'}}) {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
@@ -213,6 +217,9 @@ sub _expand_cmd_args_to_texi ($;$) {
     }
     #die "Shouldn't have args: $cmdname\n";
     $result .= '}' if ($braces);
+  } else {
+    $result .= $cmd->{'extra'}->{'spaces_before_argument'}
+      if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
   return $result;

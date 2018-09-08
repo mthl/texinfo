@@ -11,6 +11,9 @@ $result_trees{'menu_no_closed_entry_beginning'} = {
       'cmdname' => 'menu',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -34,7 +37,7 @@ $result_trees{'menu_no_closed_entry_beginning'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -46,11 +49,12 @@ $result_trees{'menu_no_closed_entry_beginning'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0];
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0];
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1];
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0];
-$result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[0];
+$result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_no_closed_entry_beginning'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_entry_beginning'};
 
 $result_texis{'menu_no_closed_entry_beginning'} = '@menu

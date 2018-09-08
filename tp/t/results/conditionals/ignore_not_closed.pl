@@ -11,6 +11,9 @@ $result_trees{'ignore_not_closed'} = {
       'cmdname' => 'ignore',
       'contents' => [
         {
+          'extra' => {
+            'command' => {}
+          },
           'parent' => {},
           'text' => '
 ',
@@ -30,7 +33,7 @@ $result_trees{'ignore_not_closed'} = {
         }
       ],
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -42,10 +45,11 @@ $result_trees{'ignore_not_closed'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
 $result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
 $result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
 $result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ignore_not_closed'}{'contents'}[0];
-$result_trees{'ignore_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0];
+$result_trees{'ignore_not_closed'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'ignore_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'ignore_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'ignore_not_closed'};
 
 $result_texis{'ignore_not_closed'} = '@ignore

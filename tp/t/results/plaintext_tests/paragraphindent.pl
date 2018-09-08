@@ -52,11 +52,6 @@ $result_trees{'paragraphindent'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'asis'
             },
             {
@@ -75,7 +70,7 @@ $result_trees{'paragraphindent'} = {
         'misc_args' => [
           'asis'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -118,11 +113,6 @@ $result_trees{'paragraphindent'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '0'
             },
             {
@@ -141,7 +131,7 @@ $result_trees{'paragraphindent'} = {
         'misc_args' => [
           '0'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -184,11 +174,6 @@ $result_trees{'paragraphindent'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => '7'
             },
             {
@@ -207,7 +192,7 @@ $result_trees{'paragraphindent'} = {
         'misc_args' => [
           '7'
         ],
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -250,9 +235,7 @@ $result_trees{'paragraphindent'}{'contents'}[3]{'parent'} = $result_trees{'parag
 $result_trees{'paragraphindent'}{'contents'}[4]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0];
-$result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[5];
-$result_trees{'paragraphindent'}{'contents'}[5]{'extra'}{'spaces_after_command'} = $result_trees{'paragraphindent'}{'contents'}[5]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent'}{'contents'}[5]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[6]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[7]{'parent'} = $result_trees{'paragraphindent'};
@@ -261,9 +244,7 @@ $result_trees{'paragraphindent'}{'contents'}[8]{'parent'} = $result_trees{'parag
 $result_trees{'paragraphindent'}{'contents'}[9]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0];
-$result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[10];
-$result_trees{'paragraphindent'}{'contents'}[10]{'extra'}{'spaces_after_command'} = $result_trees{'paragraphindent'}{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent'}{'contents'}[10]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[11]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[12]{'parent'} = $result_trees{'paragraphindent'};
@@ -272,9 +253,7 @@ $result_trees{'paragraphindent'}{'contents'}[13]{'parent'} = $result_trees{'para
 $result_trees{'paragraphindent'}{'contents'}[14]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0];
-$result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0];
 $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'paragraphindent'}{'contents'}[15];
-$result_trees{'paragraphindent'}{'contents'}[15]{'extra'}{'spaces_after_command'} = $result_trees{'paragraphindent'}{'contents'}[15]{'args'}[0]{'contents'}[0];
 $result_trees{'paragraphindent'}{'contents'}[15]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[16]{'parent'} = $result_trees{'paragraphindent'};
 $result_trees{'paragraphindent'}{'contents'}[17]{'parent'} = $result_trees{'paragraphindent'};

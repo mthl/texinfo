@@ -18,11 +18,6 @@ $result_trees{'inforef_too_much_args'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'chapter'
             },
             {
@@ -122,7 +117,7 @@ $result_trees{'inforef_too_much_args'} = {
           }
         ],
         'normalized' => 'chapter',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -137,7 +132,6 @@ $result_trees{'inforef_too_much_args'} = {
 $result_trees{'inforef_too_much_args'}{'contents'}[0]{'parent'} = $result_trees{'inforef_too_much_args'};
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0];
-$result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
@@ -150,9 +144,8 @@ $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'}{'contents'}[1];
-$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'inforef_too_much_args'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'inforef_too_much_args'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'inforef_too_much_args'}{'contents'}[1]{'parent'} = $result_trees{'inforef_too_much_args'};
 
 $result_texis{'inforef_too_much_args'} = '@node chapter
@@ -170,14 +163,16 @@ $result_sectioning{'inforef_too_much_args'} = {};
 $result_nodes{'inforef_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'chapter'
+    'normalized' => 'chapter',
+    'spaces_before_argument' => ' '
   }
 };
 
 $result_menus{'inforef_too_much_args'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'chapter'
+    'normalized' => 'chapter',
+    'spaces_before_argument' => ' '
   }
 };
 

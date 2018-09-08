@@ -18,11 +18,6 @@ $result_trees{'one_node_explicit_directions_anchor'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'one node'
             }
           ],
@@ -192,7 +187,7 @@ $result_trees{'one_node_explicit_directions_anchor'} = {
           }
         ],
         'normalized' => 'one-node',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -206,7 +201,6 @@ $result_trees{'one_node_explicit_directions_anchor'} = {
 };
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[0]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'};
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0];
-$result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1];
@@ -232,10 +226,9 @@ $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[4];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[4];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1];
-$result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[3];
-$result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'one_node_explicit_directions_anchor'}{'contents'}[1]{'parent'} = $result_trees{'one_node_explicit_directions_anchor'};
 
 $result_texis{'one_node_explicit_directions_anchor'} = '@node one node,,,(dir)
@@ -259,7 +252,8 @@ $result_sectioning{'one_node_explicit_directions_anchor'} = {};
 $result_nodes{'one_node_explicit_directions_anchor'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'one-node'
+    'normalized' => 'one-node',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -275,7 +269,8 @@ $result_nodes{'one_node_explicit_directions_anchor'} = {
 $result_menus{'one_node_explicit_directions_anchor'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'one-node'
+    'normalized' => 'one-node',
+    'spaces_before_argument' => ' '
   }
 };
 

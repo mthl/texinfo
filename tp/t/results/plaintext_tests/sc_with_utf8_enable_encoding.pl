@@ -13,11 +13,6 @@ $result_trees{'sc_with_utf8_enable_encoding'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'utf-8'
             },
             {
@@ -35,7 +30,7 @@ $result_trees{'sc_with_utf8_enable_encoding'} = {
       'extra' => {
         'input_encoding_name' => 'utf-8',
         'input_perl_encoding' => 'utf-8-strict',
-        'spaces_after_command' => {},
+        'spaces_before_argument' => ' ',
         'text_arg' => 'utf-8'
       },
       'line_nr' => {
@@ -83,9 +78,7 @@ $result_trees{'sc_with_utf8_enable_encoding'} = {
 };
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
-$result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0];
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0];
-$result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[0]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'};
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'sc_with_utf8_enable_encoding'}{'contents'}[1]{'contents'}[0];

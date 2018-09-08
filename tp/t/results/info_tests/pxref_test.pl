@@ -18,11 +18,6 @@ $result_trees{'pxref_test'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'Top'
             },
             {
@@ -254,7 +249,7 @@ $result_trees{'pxref_test'} = {
           }
         ],
         'normalized' => 'Top',
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -269,7 +264,6 @@ $result_trees{'pxref_test'} = {
 $result_trees{'pxref_test'}{'contents'}[0]{'parent'} = $result_trees{'pxref_test'};
 $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0];
 $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0];
-$result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0];
 $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1];
@@ -304,9 +298,8 @@ $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[7]{'line_n
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1];
 $result_trees{'pxref_test'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'pxref_test'}{'contents'}[1];
-$result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[1];
+$result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'node_content'};
-$result_trees{'pxref_test'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'pxref_test'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'pxref_test'}{'contents'}[1]{'parent'} = $result_trees{'pxref_test'};
 
 $result_texis{'pxref_test'} = '@node Top
@@ -326,7 +319,8 @@ $result_sectioning{'pxref_test'} = {};
 $result_nodes{'pxref_test'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   },
   'node_up' => {
     'extra' => {
@@ -345,7 +339,8 @@ $result_nodes{'pxref_test'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'
 $result_menus{'pxref_test'} = {
   'cmdname' => 'node',
   'extra' => {
-    'normalized' => 'Top'
+    'normalized' => 'Top',
+    'spaces_before_argument' => ' '
   }
 };
 

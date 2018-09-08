@@ -13,11 +13,6 @@ $result_trees{'unknown_printindex'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'parent' => {},
               'text' => 'bidule'
             }
           ],
@@ -27,7 +22,7 @@ $result_trees{'unknown_printindex'} = {
       ],
       'cmdname' => 'printindex',
       'extra' => {
-        'spaces_after_command' => {}
+        'spaces_before_argument' => ' '
       },
       'line_nr' => {
         'file_name' => '',
@@ -40,9 +35,7 @@ $result_trees{'unknown_printindex'} = {
   'type' => 'text_root'
 };
 $result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0];
-$result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_printindex'}{'contents'}[0];
-$result_trees{'unknown_printindex'}{'contents'}[0]{'extra'}{'spaces_after_command'} = $result_trees{'unknown_printindex'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_printindex'}{'contents'}[0]{'parent'} = $result_trees{'unknown_printindex'};
 
 $result_texis{'unknown_printindex'} = '@printindex bidule';

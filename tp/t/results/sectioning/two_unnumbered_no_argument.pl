@@ -17,6 +17,9 @@ $result_trees{'two_unnumbered_no_argument'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => '
 ',
@@ -31,7 +34,7 @@ $result_trees{'two_unnumbered_no_argument'} = {
       'contents' => [],
       'extra' => {
         'missing_argument' => 1,
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'level' => 1,
       'line_nr' => {
@@ -46,6 +49,9 @@ $result_trees{'two_unnumbered_no_argument'} = {
         {
           'contents' => [
             {
+              'extra' => {
+                'command' => {}
+              },
               'parent' => {},
               'text' => '
 ',
@@ -60,7 +66,7 @@ $result_trees{'two_unnumbered_no_argument'} = {
       'contents' => [],
       'extra' => {
         'missing_argument' => 1,
-        'spaces_after_command' => {}
+        'spaces_after_command_elt' => {}
       },
       'level' => 1,
       'line_nr' => {
@@ -74,13 +80,15 @@ $result_trees{'two_unnumbered_no_argument'} = {
   'type' => 'document_root'
 };
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
+$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'extra'}{'spaces_after_command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
+$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'extra'}{'spaces_after_command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
 
 $result_texis{'two_unnumbered_no_argument'} = '@unnumbered
@@ -96,7 +104,15 @@ $result_sectioning{'two_unnumbered_no_argument'} = {
     {
       'cmdname' => 'unnumbered',
       'extra' => {
-        'missing_argument' => 1
+        'missing_argument' => 1,
+        'spaces_after_command_elt' => {
+          'extra' => {
+            'command' => {}
+          },
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'level' => 1,
       'section_up' => {}
@@ -104,7 +120,15 @@ $result_sectioning{'two_unnumbered_no_argument'} = {
     {
       'cmdname' => 'unnumbered',
       'extra' => {
-        'missing_argument' => 1
+        'missing_argument' => 1,
+        'spaces_after_command_elt' => {
+          'extra' => {
+            'command' => {}
+          },
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        }
       },
       'level' => 1,
       'section_prev' => {},
@@ -113,7 +137,9 @@ $result_sectioning{'two_unnumbered_no_argument'} = {
     }
   ]
 };
+$result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[0];
 $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'two_unnumbered_no_argument'};
+$result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1];
 $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1]{'section_prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[0];
 $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1]{'section_up'} = $result_sectioning{'two_unnumbered_no_argument'};
 $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[1]{'toplevel_prev'} = $result_sectioning{'two_unnumbered_no_argument'}{'section_childs'}[0];
