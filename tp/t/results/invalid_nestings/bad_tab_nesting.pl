@@ -38,7 +38,8 @@ $result_trees{'bad_tab_nesting'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

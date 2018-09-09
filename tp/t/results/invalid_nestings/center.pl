@@ -1129,7 +1129,8 @@ $result_trees{'center'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

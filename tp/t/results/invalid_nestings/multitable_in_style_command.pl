@@ -72,7 +72,8 @@ $result_trees{'multitable_in_style_command'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

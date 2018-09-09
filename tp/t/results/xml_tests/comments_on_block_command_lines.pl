@@ -1439,7 +1439,8 @@ $result_trees{'comments_on_block_command_lines'} = {
             },
             {
               'parent' => {},
-              'text' => ' '
+              'text' => ' ',
+              'type' => 'spaces_at_end'
             },
             {
               'args' => [

@@ -2873,6 +2873,7 @@ sub _end_line($$$)
                              __("empty multitable"));
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
+      _isolate_last_space($self, $current);
 
     } else {
       _isolate_last_space($self, $current, 'space_at_end_block_command');

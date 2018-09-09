@@ -50,7 +50,8 @@ $result_trees{'multitable_in_example'} = {
                 {
                   'parent' => {},
                   'text' => '
-'
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},

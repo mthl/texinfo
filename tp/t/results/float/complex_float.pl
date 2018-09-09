@@ -1378,7 +1378,8 @@ $result_trees{'complex_float'} = {
                             {
                               'parent' => {},
                               'text' => '
-'
+',
+                              'type' => 'spaces_at_end'
                             }
                           ],
                           'parent' => {},
@@ -2869,7 +2870,8 @@ $result_trees{'complex_float'} = {
                             {
                               'parent' => {},
                               'text' => '
-'
+',
+                              'type' => 'spaces_at_end'
                             }
                           ],
                           'parent' => {},

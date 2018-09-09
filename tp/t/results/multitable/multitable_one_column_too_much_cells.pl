@@ -24,7 +24,8 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

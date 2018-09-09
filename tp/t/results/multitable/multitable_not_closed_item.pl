@@ -38,7 +38,8 @@ $result_trees{'multitable_not_closed_item'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

@@ -52,7 +52,8 @@ $result_trees{'nested_multitable'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -108,7 +109,8 @@ $result_trees{'nested_multitable'} = {
                             {
                               'parent' => {},
                               'text' => '
-'
+',
+                              'type' => 'spaces_at_end'
                             }
                           ],
                           'parent' => {},

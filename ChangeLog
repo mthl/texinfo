@@ -1,5 +1,10 @@
 2018-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable>:
+	Call _isolate_last_space.
+
+2018-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_abort_empty_line): Always get the
 	element that refers to the space element through the 'command'
 	value.  This saves the trouble of looking at $current, 

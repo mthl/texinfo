@@ -476,7 +476,8 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
                 {
                   'parent' => {},
                   'text' => '
-'
+',
+                  'type' => 'spaces_at_end'
                 }
               ],
               'parent' => {},

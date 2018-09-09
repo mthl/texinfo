@@ -24,7 +24,8 @@ $result_trees{'inter_item_commands_in_multitable'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -667,7 +668,8 @@ $result_trees{'inter_item_commands_in_multitable'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

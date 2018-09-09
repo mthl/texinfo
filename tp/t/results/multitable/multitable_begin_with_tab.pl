@@ -38,7 +38,8 @@ $result_trees{'multitable_begin_with_tab'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -161,7 +162,8 @@ $result_trees{'multitable_begin_with_tab'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

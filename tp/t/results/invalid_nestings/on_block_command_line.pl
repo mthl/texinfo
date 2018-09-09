@@ -73,7 +73,8 @@ $result_trees{'on_block_command_line'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

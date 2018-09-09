@@ -38,7 +38,8 @@ $result_trees{'w_in_multitable'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

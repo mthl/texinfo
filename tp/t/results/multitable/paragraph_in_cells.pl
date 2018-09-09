@@ -38,7 +38,8 @@ $result_trees{'paragraph_in_cells'} = {
             {
               'parent' => {},
               'text' => '
-'
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},

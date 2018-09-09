@@ -13,8 +13,13 @@ $result_trees{'not_letters_in_prototype'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '1.3  5-6
-'
+              'text' => '1.3  5-6'
+            },
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'spaces_at_end'
             }
           ],
           'parent' => {},
@@ -163,6 +168,7 @@ $result_trees{'not_letters_in_prototype'} = {
   'type' => 'text_root'
 };
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0];
+$result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_letters_in_prototype'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
