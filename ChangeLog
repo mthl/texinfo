@@ -1,5 +1,17 @@
 2018-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_abort_empty_line): Always get the
+	element that refers to the space element through the 'command'
+	value.  This saves the trouble of looking at $current, 
+	$current->{'parent'}, $current->{'parent'}->{'parent'} etc.
+	Delete the 'spaces_after_command_elt' value properly.
+	(_parse_texi): Set 'command' on created 
+	'empty_spaces_before_argument' elements.
+	* tp/Texinfo/XS/misc.c (xs_abort_empty_line): Make the same 
+	change.
+
+2018-09-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_start_empty_line_after_command):
 	Refer to spaces element at start of line as
 	'spaces_after_command_elt' instead of 'spaces_after_command'.

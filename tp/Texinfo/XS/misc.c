@@ -54,8 +54,7 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
   SV **svp;
   int contents_num;
   HV *spaces_elt;
-  char *key;
-  HV *test_elt;
+  //char *key;
   HV *test_extra;
 
   HV *owning_elt = 0;
@@ -114,72 +113,14 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
   if (svp)
     {
       test_extra = (HV *) SvRV (*svp);
-      key = "command";
-      svp = hv_fetch (test_extra, key, strlen (key), 0);
+      svp = hv_fetch (test_extra, "command",
+                      strlen ("command"), 0);
       if (svp)
         {
-          test_elt = (HV *) SvRV (*svp);
-          svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
+          owning_elt = (HV *) SvRV (*svp);
+          svp = hv_fetch (owning_elt, "extra", strlen ("extra"), 0);
           test_extra = (HV *) SvRV (*svp);
-          goto found;
         }
-    }
-
-  /* Look for another reference to spaces_elt. */
-
-  test_elt = current;
-
-  svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
-  if (svp)
-    {
-      test_extra = (HV *) SvRV (*svp);
-      key = "spaces_before_argument_elt";
-      svp = hv_fetch (test_extra, key, strlen (key), 0);
-      if (svp)
-        {
-          if ((HV *) SvRV (*svp) == spaces_elt)
-            goto found;
-        }
-
-      key = "spaces_after_command_elt";
-      svp = hv_fetch (test_extra, key, strlen (key), 0);
-      if (svp)
-        {
-          if ((HV *) SvRV (*svp) == spaces_elt)
-            goto found;
-        }
-    }
-
-  svp = hv_fetch (current, "parent", strlen ("parent"), 0);
-  if (svp)
-    {
-      test_elt = (HV *) SvRV (*svp);
-      svp = hv_fetch (test_elt, "extra", strlen ("extra"), 0);
-      if (svp)
-        {
-          test_extra = (HV *) SvRV (*svp);
-          key = "spaces_before_argument_elt";
-          svp = hv_fetch (test_extra, key, strlen (key), 0);
-          if (svp)
-            {
-              if ((HV *) SvRV (*svp) == spaces_elt)
-                goto found;
-            }
-
-          key = "spaces_after_command_elt";
-          svp = hv_fetch (test_extra, key, strlen (key), 0);
-          if (svp)
-            {
-              if ((HV *) SvRV (*svp) == spaces_elt)
-                goto found;
-            }
-        }
-    }
-
-  if (0)
-    {
-found:
-      owning_elt = test_elt;
     }
 
   svp = hv_fetch (spaces_elt, "text", strlen ("text"), 0);
@@ -199,12 +140,19 @@ found:
       if (owning_elt)
         {
           /* We found an "extra" reference to this element.  Remove it. */
-          hv_delete (test_extra, key, strlen (key), G_DISCARD);
+          hv_delete (test_extra,
+                     "spaces_before_argument_elt",
+                     strlen ("spaces_before_argument_elt"),
+                     G_DISCARD);
+          hv_delete (test_extra,
+                     "spaces_after_command_elt",
+                     strlen ("spaces_after_command_elt"),
+                     G_DISCARD);
 
           /* If the extra hash now empty, remove it as well. */
           hv_iterinit (test_extra);
           if (!hv_iternext (test_extra))
-            hv_delete (test_elt, "extra", strlen ("extra"), G_DISCARD);
+            hv_delete (owning_elt, "extra", strlen ("extra"), G_DISCARD);
         }
     }
   else if (!strcmp (type, "empty_line"))

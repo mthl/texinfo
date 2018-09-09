@@ -2126,26 +2126,6 @@ sub _abort_empty_line {
     if ($spaces_element->{'extra'}
         and $spaces_element->{'extra'}->{'command'}) {
       $owning_element = $spaces_element->{'extra'}->{'command'};
-    } elsif ($current->{'extra'} 
-        and $current->{'extra'}->{'spaces_before_argument_elt'}
-        and $current->{'extra'}->{'spaces_before_argument_elt'} 
-              eq $spaces_element) {
-      $owning_element = $current;
-    } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-        and $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'}
-        and $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'} 
-              eq $spaces_element) {
-      $owning_element = $current->{'parent'};
-    } elsif ($current->{'extra'} 
-        and $current->{'extra'}->{'spaces_after_command_elt'}
-        and $current->{'extra'}->{'spaces_after_command_elt'} 
-              eq $spaces_element) {
-      $owning_element = $current;
-    } elsif ($current->{'parent'} and $current->{'parent'}->{'extra'} 
-        and $current->{'parent'}->{'extra'}->{'spaces_after_command_elt'}
-        and $current->{'parent'}->{'extra'}->{'spaces_after_command_elt'} 
-              eq $spaces_element) {
-      $owning_element = $current->{'parent'};
     }
 
     print STDERR "ABORT EMPTY "
@@ -2165,8 +2145,8 @@ sub _abort_empty_line {
         delete ($owning_element->{'extra'})
           if !(keys(%{$owning_element->{'extra'}}));
       } elsif ($owning_element
-          and $owning_element->{'extra'}->{'spaces_after_command'}) {
-        delete ($owning_element->{'extra'}->{'spaces_after_command'});
+          and $owning_element->{'extra'}->{'spaces_after_command_elt'}) {
+        delete ($owning_element->{'extra'}->{'spaces_after_command_elt'});
         delete ($owning_element->{'extra'})
           if !(keys(%{$owning_element->{'extra'}}));
       }
@@ -4394,14 +4374,8 @@ sub _parse_texi($;$)
               my $misc_line_args = {'type' => 'misc_line_arg',
                      'parent' => $misc};
               $misc->{'args'} = [$misc_line_args];
-              my $spaces_after_command 
-                = { 'type' => 'empty_spaces_after_command',
-                    'text' => ' ',
-                    'parent' => $misc_line_args,
-                  };
-              $misc->{'extra'}->{'spaces_after_command'} 
-                 = $spaces_after_command;
-              $misc_line_args->{'contents'} = [ $spaces_after_command,
+              $misc->{'extra'}->{'spaces_before_argument'} = ' ';
+              $misc_line_args->{'contents'} = [
                 { 'text' => $arg,
                   'parent' => $misc_line_args, },
                 { 'text' => "\n",
@@ -4991,8 +4965,10 @@ sub _parse_texi($;$)
               $line =~ s/([^\S\f\n]*)//;
               $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
-                                        'text' => $1,
-                                        'parent' => $current };
+                            'text' => $1,
+                            'parent' => $current,
+                            'extra' => {'command' => $current->{'parent'}}
+                                      };
               $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'}
                  = $current->{'contents'}->[-1];
             } else {
@@ -5002,8 +4978,10 @@ sub _parse_texi($;$)
                        or $simple_text_commands{$command})) {
                 push @{$current->{'contents'}}, 
                   {'type' => 'empty_spaces_before_argument',
-                   'text' => '',
-                   'parent' => $current };
+                            'text' => '',
+                            'parent' => $current,
+                            'extra' => {'command' => $current}
+                                      };
                 $current->{'extra'}->{'spaces_before_argument_elt'}
                    = $current->{'contents'}->[-1];
               }
@@ -5032,7 +5010,9 @@ sub _parse_texi($;$)
             push @{$current->{'contents'}}, 
                 {'type' => 'empty_spaces_before_argument',
                  'text' => '',
-                 'parent' => $current };
+                 'parent' => $current,
+                 'extra' => {'command' => $current}
+               };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
             $current->{'extra'}->{'spaces_before_argument_elt'}
                = $current->{'contents'}->[-1];
@@ -5442,7 +5422,9 @@ sub _parse_texi($;$)
           push @{$current->{'contents'}}, 
                  {'type' => 'empty_spaces_before_argument',
                   'text' => '',
-                  'parent' => $current };
+                  'parent' => $current,
+                  'extra' => {'command' => $current}
+                };
           $current->{'extra'}->{'spaces_before_argument_elt'}
             = $current->{'contents'}->[-1];
         } elsif ($separator eq ',' and $current->{'type'}
