@@ -14,24 +14,6 @@ $result_trees{'setfilename'} = {
             {
               'parent' => {},
               'text' => 'file_comment'
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              },
-              'parent' => {}
             }
           ],
           'parent' => {},
@@ -40,6 +22,24 @@ $result_trees{'setfilename'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
+        'comment_at_end' => {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' comment
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
+          'parent' => {}
+        },
         'spaces_before_argument' => ' ',
         'text_arg' => 'file_comment'
       },
@@ -93,24 +93,6 @@ $result_trees{'setfilename'} = {
               'parent' => {},
               'text' => ' ',
               'type' => 'spaces_at_end'
-            },
-            {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment
-'
-                ]
-              },
-              'parent' => {}
             }
           ],
           'parent' => {},
@@ -119,6 +101,24 @@ $result_trees{'setfilename'} = {
       ],
       'cmdname' => 'setfilename',
       'extra' => {
+        'comment_at_end' => {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => ' comment
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'c',
+          'extra' => {
+            'misc_args' => [
+              ' comment
+'
+            ]
+          },
+          'parent' => {}
+        },
         'spaces_before_argument' => ' ',
         'text_arg' => 'file_space_comment'
       },
@@ -197,9 +197,9 @@ $result_trees{'setfilename'} = {
   'type' => 'text_root'
 };
 $result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0];
-$result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[0];
+$result_trees{'setfilename'}{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'setfilename'}{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'setfilename'}{'contents'}[0]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[0]{'parent'} = $result_trees{'setfilename'};
 $result_trees{'setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[1]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename'}{'contents'}[1]{'args'}[0];
@@ -207,9 +207,9 @@ $result_trees{'setfilename'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees
 $result_trees{'setfilename'}{'contents'}[1]{'parent'} = $result_trees{'setfilename'};
 $result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'args'}[0];
-$result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[2];
+$result_trees{'setfilename'}{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'setfilename'}{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'setfilename'}{'contents'}[2]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[2]{'parent'} = $result_trees{'setfilename'};
 $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[3]{'args'}[0];
 $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'args'}[0];

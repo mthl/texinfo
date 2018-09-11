@@ -258,8 +258,7 @@ $result_trees{'in_table'} = {
                             },
                             {
                               'parent' => {},
-                              'text' => ' ',
-                              'type' => 'spaces_at_end'
+                              'text' => ' '
                             },
                             {
                               'args' => [
@@ -1329,7 +1328,7 @@ Even more
 $result_texts{'in_table'} = '
 
 
-in titlefont exdent
+in titlefont  exdent
 in item
 Top
 long title

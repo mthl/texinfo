@@ -111,8 +111,7 @@ $result_trees{'on_index_entry_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'spaces_at_end'
+              'text' => ' '
             },
             {
               'args' => [
@@ -168,7 +167,7 @@ $result_trees{'on_index_entry_line'} = {
           'index_at_command' => 'cindex',
           'index_name' => 'cp',
           'index_type_command' => 'cindex',
-          'key' => 'in titlefont exdent
+          'key' => 'in titlefont  exdent
 ',
           'number' => 1
         },

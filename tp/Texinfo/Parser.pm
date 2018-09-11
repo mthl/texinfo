@@ -2188,42 +2188,39 @@ sub _isolate_last_space($$;$)
   my $end_spaces;
   $type = 'spaces_at_end' if (!defined($type));
 
-  if ($current->{'contents'} and @{$current->{'contents'}}) {
-    my $index = -1;
-    # we ignore space before a misc command that is last on line.
-    # This is primarily to tag spaces before comments, but this will
-    # also tag and, in most converter lead to removal of spaces
-    # before any misc command, which is not really problematic as 
-    # in most cases, if it is not a comment, we are in an invalid 
-    # nesting of misc command on another @-command line.
-    $index = -2 
-      if (scalar(@{$current->{'contents'}}) > 1 
-        and $current->{'contents'}->[-1]->{'cmdname'}
-        and $self->{'misc_commands'}->{$current->{'contents'}->[-1]->{'cmdname'}});
+  return if (!$current->{'contents'} or !@{$current->{'contents'}});
 
-    if (defined($current->{'contents'}->[$index]->{'text'}) 
-        and !$current->{'contents'}->[$index]->{'type'}
-        and $current->{'contents'}->[$index]->{'text'} =~ /\s+$/) {
-      if ($current->{'contents'}->[$index]->{'text'} !~ /\S/) {
-        if ($index == -1 and $current->{'type'} eq 'brace_command_arg') {
-          $end_spaces = $current->{'contents'}->[$index]->{'text'};
-          pop @{$current->{'contents'}};
-          $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
-        } else {
-          $current->{'contents'}->[$index]->{'type'} = $type;
-        }
+  # Store a final comment command in the 'extra' hash.
+  if (scalar(@{$current->{'contents'}}) >= 1 
+      and $current->{'contents'}->[-1]->{'cmdname'}
+      and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c'
+            or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
+     $current->{'parent'}->{'extra'}->{'comment_at_end'}
+       = pop @{$current->{'contents'}}; 
+  }
+
+  return if (!@{$current->{'contents'}}); 
+
+  if (defined($current->{'contents'}->[-1]->{'text'}) 
+      and !$current->{'contents'}->[-1]->{'type'}
+      and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
+    if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
+      if ($current->{'type'} eq 'brace_command_arg') {
+        $end_spaces = $current->{'contents'}->[-1]->{'text'};
+        pop @{$current->{'contents'}};
+        $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
       } else {
-        $current->{'contents'}->[$index]->{'text'} =~ s/(\s+)$//;
-        $end_spaces = $1;
-        my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
-          'type' => $type };
-        if ($index == -1 and $current->{'type'} eq 'brace_command_arg') {
-          $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
-        } elsif ($index == -1) {
-          push @{$current->{'contents'}}, $new_spaces;
-        } else {
-          splice (@{$current->{'contents'}}, $index+1, 0, $new_spaces);
-        }
+        $current->{'contents'}->[-1]->{'type'} = $type;
+      }
+    } else {
+      $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
+      $end_spaces = $1;
+      my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
+        'type' => $type };
+      if ($current->{'type'} eq 'brace_command_arg') {
+        $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
+      } else {
+        push @{$current->{'contents'}}, $new_spaces;
       }
     }
   }

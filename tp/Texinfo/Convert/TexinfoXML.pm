@@ -611,21 +611,15 @@ sub _end_line_spaces($$)
   my $type = shift;
 
   my $end_spaces = undef;
-  if ($root->{'args'}->[-1]->{'contents'}) {
-    my $index = -1;
-    if ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'}
-        and ($root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'c' 
-             or $root->{'args'}->[-1]->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-      $index = -2;
-    }
-    if ($root->{'args'}->[-1]->{'contents'}->[$index]
-        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'}
-        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'type'} eq $type
-        and defined($root->{'args'}->[-1]->{'contents'}->[$index]->{'text'})
-        and $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'} !~ /\S/) {
-      $end_spaces = $root->{'args'}->[-1]->{'contents'}->[$index]->{'text'};
-      chomp $end_spaces;
-    }
+  if ($root->{'args'}->[-1]
+      and $root->{'args'}->[-1]->{'contents'}
+      and $root->{'args'}->[-1]->{'contents'}->[-1]
+      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'type'}
+      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'type'} eq $type
+      and defined($root->{'args'}->[-1]->{'contents'}->[-1]->{'text'})
+      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'} !~ /\S/) {
+    $end_spaces = $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'};
+    chomp $end_spaces;
   }
   return $end_spaces;
 }
@@ -820,6 +814,9 @@ sub _convert($$;$)
             if (defined($in_monospace_not_normal));
 
         $result .= $self->_convert($root->{'args'}->[0]);
+        if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
+          $result .= $self->_convert($root->{'extra'}->{'comment_at_end'});
+        }
         pop @{$self->{'document_context'}->[-1]->{'monospace'}} 
           if (defined($in_monospace_not_normal));
         chomp ($result);
@@ -854,7 +851,7 @@ sub _convert($$;$)
       push @$attribute, _leading_spaces($root);
       my $end_line;
       if ($root->{'args'}->[0]) {
-        $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+        $end_line = $self->_end_line_or_comment($root);
       } else {
         # May that happen?
         $end_line = '';
@@ -873,8 +870,7 @@ sub _convert($$;$)
                   $root->{'extra'}->{'text_arg'});
           }
         }
-        my ($arg, $end_line)
-            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+        my ($arg, $end_line) = $self->_convert_argument_and_end_line($root);
         push @$attribute, _leading_spaces($root);
         return $self->open_element($command, $attribute).$arg
                 .$self->close_element($command).${end_line};
@@ -938,7 +934,7 @@ sub _convert($$;$)
           my $end_line;
           if ($root->{'args'}->[0]) {
             $end_line 
-              = $self->_end_line_or_comment($root->{'args'}->[-1]->{'contents'});
+              = $self->_end_line_or_comment($root);
           } else {
             $end_line = "\n";
           }
@@ -962,8 +958,7 @@ sub _convert($$;$)
           }
 
           if ($root->{'args'} and $root->{'args'}->[0]) {
-            my ($arg, $end_line)
-              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+            my ($arg, $end_line) = $self->_convert_argument_and_end_line($root);
             $result .= $self->open_element('sectiontitle').$arg
                       .$self->close_element('sectiontitle')
                       .$closed_section_element.$end_line;
@@ -977,8 +972,7 @@ sub _convert($$;$)
               and defined($root->{'extra'}->{'type'}->{'normalized'})) {
             unshift @$attribute, ('type', $root->{'extra'}->{'type'}->{'normalized'});
           }
-          my ($arg, $end_line)
-            = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+          my ($arg, $end_line) = $self->_convert_argument_and_end_line($root);
           return $self->open_element($command, ${attribute}).$arg
                .$self->close_element($command).$end_line;
         }
@@ -1086,9 +1080,8 @@ sub _convert($$;$)
         }
         my $end_line;
         if ($root->{'args'}->[0]) {
-          $end_line = $self->_end_line_or_comment(
-                                         $root->{'args'}->[0]->{'contents'});
-          push @$attribute, $self->_texinfo_line($root->{'args'}->[0]);
+          $end_line = $self->_end_line_or_comment($root);
+          push @$attribute, $self->_texinfo_line($root);
         } else {
           $end_line = "\n";
         }
@@ -1327,7 +1320,7 @@ sub _convert($$;$)
                 if ($arg_index+1 eq scalar(@{$root->{'args'}})) {
                   # last argument
                   ($arg, $end_line) 
-                    = $self->_convert_argument_and_end_line($root->{'args'}->[$arg_index]);
+                    = $self->_convert_argument_and_end_line($root);
                 } else {
                   $arg = $self->_convert($root->{'args'}->[$arg_index]);
                 }
@@ -1415,8 +1408,7 @@ sub _convert($$;$)
                   $first_proto = 0;
                 }
                 $result .= $self->close_element('columnprototypes');
-                $contents_possible_comment 
-                  = $root->{'args'}->[-1]->{'contents'};
+                $contents_possible_comment = $root;
               } elsif ($root->{'extra'}
                          and $root->{'extra'}->{'columnfractions'}) {
                 my $cmd;
@@ -1427,7 +1419,7 @@ sub _convert($$;$)
                     last;
                   }
                 }
-                my $attribute = [$self->_texinfo_line($cmd->{'args'}->[0])];
+                my $attribute = [$self->_texinfo_line($cmd)];
                 $result .= $self->open_element('columnfractions', $attribute);
                 foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
                   $result .= $self->open_element('columnfraction', 
@@ -1435,11 +1427,7 @@ sub _convert($$;$)
                              .$self->close_element('columnfraction');
                 }
                 $result .= $self->close_element('columnfractions');
-                $contents_possible_comment 
-                  = $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'}
-                    if ($root->{'args'}->[-1]->{'contents'}
-                        and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}
-                        and $root->{'args'}->[-1]->{'contents'}->[-1]->{'args'}->[-1]->{'contents'});
+                $contents_possible_comment = $cmd;
               } else { # bogus multitable
                 $result .= "\n";
               }
@@ -1454,8 +1442,7 @@ sub _convert($$;$)
                 #print STDERR "NOT xtable: $root->{'cmdname'}\n" 
                 #  if (!$Texinfo::Common::item_line_commands{$root->{'cmdname'}});
               }
-              $contents_possible_comment = $root->{'args'}->[-1]->{'contents'}
-                if ($root->{'args'}->[-1]->{'contents'});
+              $contents_possible_comment = $root;
             }
             $end_line .= $self->_end_line_or_comment($contents_possible_comment);
           }
@@ -1610,9 +1597,8 @@ sub _convert($$;$)
         my $end_spaces = _end_line_spaces($end_command, 'spaces_at_end');
         $end_line .= $end_spaces if (defined($end_spaces));
         $end_line 
-         .= $self->_end_line_or_comment($end_command->{'args'}->[0]->{'contents'})
-           if ($end_command->{'args'}->[0]
-               and $end_command->{'args'}->[0]->{'contents'});
+         .= $self->_end_line_or_comment($end_command)
+          if ($end_command->{'args'});
       } else {
         #$end_line = "\n";
       }

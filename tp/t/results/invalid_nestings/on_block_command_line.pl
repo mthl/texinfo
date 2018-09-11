@@ -294,8 +294,7 @@ $result_trees{'on_block_command_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'space_at_end_block_command'
+              'text' => ' '
             },
             {
               'args' => [

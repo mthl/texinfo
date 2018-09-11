@@ -111,8 +111,7 @@ $result_trees{'on_itemize_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'space_at_end_block_command'
+              'text' => ' '
             },
             {
               'args' => [

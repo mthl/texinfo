@@ -163,7 +163,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'é é'
+                  'text' => "\x{e9} \x{e9}"
                 },
                 {
                   'parent' => {},

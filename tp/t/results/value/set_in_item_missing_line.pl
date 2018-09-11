@@ -45,12 +45,7 @@ $result_trees{'set_in_item_missing_line'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'xx'
-                        },
-                        {
-                          'parent' => {},
-                          'text' => ' ',
-                          'type' => 'spaces_at_end'
+                          'text' => 'xx '
                         },
                         {
                           'args' => [
@@ -84,7 +79,6 @@ $result_trees{'set_in_item_missing_line'} = {
                   'cmdname' => 'item',
                   'extra' => {
                     'misc_content' => [
-                      {},
                       {},
                       {}
                     ],
@@ -364,14 +358,12 @@ $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'contents'}[
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[1] = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[2] = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0];
@@ -432,7 +424,7 @@ $result_texis{'set_in_item_missing_line'} = '@table @code
 ';
 
 
-$result_texts{'set_in_item_missing_line'} = 'xx
+$result_texts{'set_in_item_missing_line'} = 'xx 
 jj
 
 xx jj

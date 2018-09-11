@@ -595,7 +595,7 @@ sub _convert($$;$)
     } elsif ($root->{'type'} and $root->{'type'} eq 'index_entry_command') {
       my $end_line;
       if ($root->{'args'}->[0]) {
-        $end_line = $self->_end_line_or_comment($root->{'args'}->[0]->{'contents'});
+        $end_line = $self->_end_line_or_comment($root);
         if ($self->{'document_context'}->[-1]->{'in_preformatted'}) {
           chomp($end_line);
         }
@@ -657,8 +657,7 @@ sub _convert($$;$)
           }
           $result .= "<$command${attribute}>\n";
           if ($root->{'args'} and $root->{'args'}->[0]) {
-            my ($arg, $end_line)
-              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+            my ($arg, $end_line) = $self->_convert_argument_and_end_line($root);
             $result .= "<title>$arg</title>$end_line";
             chomp ($result);
             $result .= "\n";
@@ -668,8 +667,7 @@ sub _convert($$;$)
           }
         } elsif ($Texinfo::Common::sectioning_commands{$root->{'cmdname'}}) {
           if ($root->{'args'} and $root->{'args'}->[0]) {
-            my ($arg, $end_line)
-              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+            my ($arg, $end_line) = $self->_convert_argument_and_end_line($root);
             $result .= 
               "<bridgehead renderas=\"$docbook_sections{$root->{'cmdname'}}\">$arg</bridgehead>$end_line";
             chomp ($result);
@@ -681,7 +679,7 @@ sub _convert($$;$)
           my $attribute = '';
           if (defined($command)) {
             my ($arg, $end_line)
-              = $self->_convert_argument_and_end_line($root->{'args'}->[0]);
+              = $self->_convert_argument_and_end_line($root);
             if ($command eq '') {
               $result .= "$arg$end_line";
             } else {

@@ -57,24 +57,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => '  ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comment itemize
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comment itemize
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -84,6 +66,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'itemize',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment itemize
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment itemize
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'itemize'
           },
@@ -147,24 +147,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -174,6 +156,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'enumerate',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'enumerate'
           },
@@ -288,24 +288,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' table
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' table
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -315,6 +297,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'table',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' table
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' table
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'table'
           },
@@ -380,24 +380,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' quot no arg
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' quot no arg
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -407,6 +389,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'quotation',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' quot no arg
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' quot no arg
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'quotation'
           },
@@ -470,24 +470,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -497,6 +479,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'group',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'group'
           },
@@ -560,24 +560,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -587,6 +569,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'example',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'example'
           },
@@ -734,24 +734,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -761,6 +743,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'multitable',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'multitable'
           },
@@ -841,24 +841,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => '  ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -868,6 +850,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'float',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           },
@@ -950,24 +950,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -977,6 +959,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'flushright',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'flushright'
           },
@@ -1040,24 +1040,6 @@ $result_trees{'comments_end_lines'} = {
                   'parent' => {},
                   'text' => ' ',
                   'type' => 'spaces_at_end'
-                },
-                {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' comm
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' comm
-'
-                    ]
-                  },
-                  'parent' => {}
                 }
               ],
               'parent' => {},
@@ -1067,6 +1049,24 @@ $result_trees{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'raggedright',
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comm
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'raggedright'
           },
@@ -1099,9 +1099,9 @@ $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[0]
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
@@ -1113,9 +1113,9 @@ $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[0]{'extra'}{'comm
 $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1];
+$result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[1];
 $result_trees{'comments_end_lines'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[2]{'contents'}[0];
@@ -1133,9 +1133,9 @@ $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[0]{'contents'}[0]
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1];
+$result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'args'}[0]{'contents'}[0];
@@ -1149,9 +1149,9 @@ $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[1]{'contents'}[0]
 $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[6];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[6]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[6]{'contents'}[0];
@@ -1163,9 +1163,9 @@ $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[1]{'contents'}[0]
 $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[8];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[8]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[8]{'contents'}[0];
@@ -1177,9 +1177,9 @@ $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[1]{'contents'}[0
 $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[10];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[10]{'contents'}[0];
@@ -1201,9 +1201,9 @@ $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[0]{'contents'}[0
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1];
+$result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'extra'}{'columnfractions'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
 $result_trees{'comments_end_lines'}{'contents'}[12]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1];
@@ -1219,9 +1219,9 @@ $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[0]{'contents'}[0
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1];
+$result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[1]{'contents'}[0];
@@ -1236,9 +1236,9 @@ $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[1]{'contents'}[0
 $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[16];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[16]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[16]{'contents'}[0];
@@ -1250,9 +1250,9 @@ $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[1]{'contents'}[0
 $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2];
+$result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'extra'}{'comment_at_end'};
+$result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[18];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[18]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[18]{'contents'}[0];
@@ -1332,6 +1332,15 @@ $result_floats{'comments_end_lines'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'float',
+            'comment_at_end' => {
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comm
+'
+                ]
+              }
+            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           }

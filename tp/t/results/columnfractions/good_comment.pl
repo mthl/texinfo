@@ -18,24 +18,6 @@ $result_trees{'good_comment'} = {
                     {
                       'parent' => {},
                       'text' => '0.4 .6 5.'
-                    },
-                    {
-                      'args' => [
-                        {
-                          'parent' => {},
-                          'text' => ' comment
-',
-                          'type' => 'misc_arg'
-                        }
-                      ],
-                      'cmdname' => 'c',
-                      'extra' => {
-                        'misc_args' => [
-                          ' comment
-'
-                        ]
-                      },
-                      'parent' => {}
                     }
                   ],
                   'parent' => {},
@@ -44,6 +26,24 @@ $result_trees{'good_comment'} = {
               ],
               'cmdname' => 'columnfractions',
               'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' comment
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment
+'
+                    ]
+                  },
+                  'parent' => {}
+                },
                 'misc_args' => [
                   '0.4',
                   '.6',
@@ -105,9 +105,9 @@ $result_trees{'good_comment'} = {
   'type' => 'text_root'
 };
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0];
 $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];

@@ -115,8 +115,7 @@ $result_trees{'on_subheading_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'spaces_at_end'
+              'text' => ' '
             },
             {
               'args' => [
@@ -219,8 +218,8 @@ $result_texis{'on_subheading_line'} = '@subheading @noindent Text @titlefont{in 
 ';
 
 
-$result_texts{'on_subheading_line'} = 'Text in titlefont exdent
-------------------------
+$result_texts{'on_subheading_line'} = 'Text in titlefont  exdent
+-------------------------
 ';
 
 $result_errors{'on_subheading_line'} = [

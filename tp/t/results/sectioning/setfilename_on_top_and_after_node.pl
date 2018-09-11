@@ -59,12 +59,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'In top'
-            },
-            {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'spaces_at_end'
+              'text' => 'In top '
             },
             {
               'args' => [
@@ -146,7 +141,6 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
       'extra' => {
         'misc_content' => [
           {},
-          {},
           {}
         ],
         'spaces_before_argument' => ' '
@@ -166,11 +160,10 @@ $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'node
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'};
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0];
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'args'}[0];
@@ -179,8 +172,7 @@ $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'extra'}{'misc_content'}[2] = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'line_nr'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[2]{'line_nr'};
+$result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'line_nr'} = $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'setfilename_on_top_and_after_node'}{'contents'}[2]{'parent'} = $result_trees{'setfilename_on_top_and_after_node'};
 
 $result_texis{'setfilename_on_top_and_after_node'} = '@node Top
@@ -190,8 +182,8 @@ $result_texis{'setfilename_on_top_and_after_node'} = '@node Top
 ';
 
 
-$result_texts{'setfilename_on_top_and_after_node'} = 'In top
-******
+$result_texts{'setfilename_on_top_and_after_node'} = 'In top 
+*******
 
 ';
 
@@ -302,8 +294,8 @@ $result_errors{'setfilename_on_top_and_after_node'} = [
 
 
 
-$result_converted{'plaintext'}->{'setfilename_on_top_and_after_node'} = 'In top
-******
+$result_converted{'plaintext'}->{'setfilename_on_top_and_after_node'} = 'In top 
+*******
 
 ';
 
@@ -313,10 +305,10 @@ $result_converted{'html'}->{'setfilename_on_top_and_after_node'} = '<!DOCTYPE ht
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>In top</title>
+<title>In top </title>
 
-<meta name="description" content="In top">
-<meta name="keywords" content="In top">
+<meta name="description" content="In top ">
+<meta name="keywords" content="In top ">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <link href="#Top" rel="start" title="Top">
@@ -353,8 +345,8 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <a name="Top"></a>
-<a name="In-top"></a>
-<h1 class="top">In top</h1>
+<a name="In-top-"></a>
+<h1 class="top">In top </h1>
 
 <hr>
 

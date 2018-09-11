@@ -188,8 +188,7 @@ $result_trees{'on_node_line'} = {
             },
             {
               'parent' => {},
-              'text' => ' ',
-              'type' => 'spaces_at_end'
+              'text' => ' '
             },
             {
               'args' => [
@@ -250,7 +249,7 @@ $result_trees{'on_node_line'} = {
               {},
               {}
             ],
-            'normalized' => ''
+            'normalized' => '-'
           }
         ],
         'normalized' => 'a',
@@ -340,7 +339,7 @@ $result_nodes{'on_node_line'} = {
           }
         }
       ],
-      'normalized' => ''
+      'normalized' => '-'
     }
   }
 };

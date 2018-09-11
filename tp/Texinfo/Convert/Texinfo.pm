@@ -222,6 +222,8 @@ sub _expand_cmd_args_to_texi ($;$) {
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
+  $result .= convert($cmd->{'extra'}->{'comment_at_end'}, $fix)
+     if $cmd->{'extra'} and $cmd->{'extra'}->{'comment_at_end'};
   return $result;
 }
 

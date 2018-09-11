@@ -1026,16 +1026,19 @@ sub _float_type_number($$)
 sub _end_line_or_comment($$)
 {
   my $self = shift;
-  my $contents_possible_comment = shift;
+  my $root = shift;
+
   my $end_line;
-  if ($contents_possible_comment
-      and $contents_possible_comment->[-1]->{'cmdname'}
-      and ($contents_possible_comment->[-1]->{'cmdname'} eq 'c'
-          or $contents_possible_comment->[-1]->{'cmdname'} eq 'comment')) {
-    $end_line = $self->convert_tree($contents_possible_comment->[-1]);
-  } elsif ($contents_possible_comment      
-           and $contents_possible_comment->[-1]->{'text'}) {
-    my $text = $contents_possible_comment->[-1]->{'text'};
+
+  my $comment = $root->{'extra'}->{'comment_at_end'}
+    if $root->{'extra'};
+
+  if ($comment) {
+    $end_line = $self->convert_tree($comment);
+  } elsif ($root->{'args'}->[-1]->{'contents'}
+            and $root->{'args'}->[-1]->{'contents'}->[-1]
+            and $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'}) {
+    my $text = $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'};
     if (chomp($text)) {
       $end_line = "\n";
     } else {
@@ -1049,25 +1052,13 @@ sub _end_line_or_comment($$)
 
 sub _tree_without_comment($)
 {
-  my $contents_possible_comment = shift;
-  my $comment;
-  my $tree;
+  my $root = shift;
 
-  if ($contents_possible_comment->{'contents'}
-      and $contents_possible_comment->{'contents'}->[-1]->{'cmdname'}
-      and ($contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'c'
-           or $contents_possible_comment->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-    my @contents = @{$contents_possible_comment->{'contents'}};
-    $comment = pop @contents;
-    $tree = {'contents' => \@contents};
-    # FIXME why this selection, and not everything?
-    foreach my $key ('extra', 'type', 'cmdname', 'parent', 'line_nr') {
-      $tree->{$key} = $contents_possible_comment->{$key}
-        if (exists($contents_possible_comment->{$key}));
-    }
-  } else {
-   $tree = $contents_possible_comment;
-  }
+  my $comment = $root->{'extra'}->{'comment_at_end'}
+    if $root->{'extra'};
+
+  my $tree = $root->{'args'}->[-1];
+
   return ($comment, $tree);
 }
 
