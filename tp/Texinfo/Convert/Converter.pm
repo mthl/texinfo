@@ -1050,28 +1050,15 @@ sub _end_line_or_comment($$)
   return $end_line;
 }
 
-sub _tree_without_comment($)
-{
-  my $root = shift;
-
-  my $comment = $root->{'extra'}->{'comment_at_end'}
-    if $root->{'extra'};
-
-  my $tree = $root->{'args'}->[-1];
-
-  return ($comment, $tree);
-}
-
 sub _convert_argument_and_end_line($$)
 {
   my $self = shift;
   my $root = shift;
-  my ($comment, $tree) 
-    = _tree_without_comment($root);
-  my $converted = $self->convert_tree($tree);
+
+  my $converted = $self->convert_tree($root->{'args'}->[-1]);
   my $end_line;
-  if ($comment) {
-    $end_line = $self->convert_tree($comment);
+  if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
+    $end_line = $self->convert_tree($root->{'extra'}->{'comment_at_end'});
   } else {
     if (chomp($converted)) {
       $end_line = "\n";

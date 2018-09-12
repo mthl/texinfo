@@ -676,9 +676,7 @@ sub _texinfo_line($$)
   my $self = shift;
   my $root = shift;
 
-  my ($comment, $tree) = Texinfo::Convert::Converter::_tree_without_comment(
-                                                                        $root);
-  my $line = Texinfo::Convert::Texinfo::convert($tree);
+  my $line = Texinfo::Convert::Texinfo::convert($root->{'args'}->[-1]);
   chomp($line);
   if ($line ne '') {
     return ('line', $line);
