@@ -579,14 +579,11 @@ sub _convert($$;$)
             and $root->{'parent'}->{'extra'}
             and !($root->{'parent'}->{'extra'}->{'command_as_argument'}
                   and $root->{'parent'}->{'extra'}->{'command_as_argument'}->{'cmdname'} eq 'bullet')
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
-       #   $result .= $self->_convert({'contents'
-       # => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
-       #     ." ";
-          $self->{'pending_prepend'} = $self->_convert(
-            {'contents' => $root->{'parent'}->{'extra'}
-                           ->{'block_command_line_contents'}->[0]}) . " ";
+            and $root->{'parent'}->{'args'}
+            and $root->{'parent'}->{'args'}->[0]) {
+          $self->{'pending_prepend'}
+            = $self->_convert($root->{'parent'}->{'args'}->[0]);
+          $self->{'pending_prepend'} .= " ";
         }
         push @close_elements, 'listitem';
       } elsif (($root->{'cmdname'} eq 'item' or $root->{'cmdname'} eq 'itemx')
@@ -1256,10 +1253,11 @@ sub _convert($$;$)
               }
             }
           }
-          if ($root->{'extra'}->{'block_command_line_contents'}
-              and defined($root->{'extra'}->{'block_command_line_contents'}->[0])) {
+          if ($root->{'args'} and $root->{'args'}->[0]
+              and $root->{'args'}->[0]->{'contents'}
+              and @{$root->{'args'}->[0]->{'contents'}}) {
             my $quotation_arg_text = Texinfo::Convert::Text::convert(
-                     {'contents' => $root->{'extra'}->{'block_command_line_contents'}->[0]},
+                     $root->{'args'}->[0],
                      {Texinfo::Common::_convert_text_options($self)});
             if ($docbook_special_quotations{lc($quotation_arg_text)}) {
               $element = lc($quotation_arg_text);
@@ -1267,7 +1265,7 @@ sub _convert($$;$)
               $self->{'pending_prepend'} 
                 = $self->_convert($self->gdt('@b{{quotation_arg}:} ',
                               {'quotation_arg' =>
-                    $root->{'extra'}->{'block_command_line_contents'}->[0]}));
+                    $root->{'args'}->[0]->{'contents'}}));
             }
           }
         }
