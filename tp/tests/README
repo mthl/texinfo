@@ -192,3 +192,14 @@ Of course commit all the files and try a make check afterward to verify
 it gets run, and passes.
 
 See tp/t/README for info about those tests.
+
+Deleting a test
+===============
+
+rm test_scripts/*
+
+Then "make" to recreate the test scripts
+
+svn status test_scripts/
+
+Then "svn rm" the missing files.
