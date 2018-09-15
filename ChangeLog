@@ -1,5 +1,11 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_quotation_arg_to_prepend):
+	Do not use the 'block_command_line_contents' array: use the 
+	'args' array directly.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_convert_item_line_command),
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert):
 	Do not use the 'block_command_line_contents' array: use the 

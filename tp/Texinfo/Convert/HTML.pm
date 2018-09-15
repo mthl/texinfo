@@ -3669,11 +3669,12 @@ sub _quotation_arg_to_prepend($$)
   if ($command->{'parent'} and $command->{'parent'}->{'cmdname'}
       and ($command->{'parent'}->{'cmdname'} eq 'quotation'
            or $command->{'parent'}->{'cmdname'} eq 'smallquotation')
-      and $command->{'parent'}->{'extra'}
-      and $command->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
+      and $command->{'parent'}->{'args'}
+      and $command->{'parent'}->{'args'}->[0]
+      and $command->{'parent'}->{'args'}->[0]->{'contents'}} {
     return $self->convert_tree($self->gdt('@b{{quotation_arg}:} ',
      {'quotation_arg' => 
-       $command->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]}));
+      $command->{'parent'}->{'args'}->[0]->{'contents'}};
 
   }
   return undef;

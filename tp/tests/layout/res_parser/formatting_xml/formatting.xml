@@ -1018,7 +1018,7 @@ After clickstyle &result;
 </quotation>
 
 
-<itemize commandarg="bullet" endspaces=" ">
+<itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
@@ -1618,7 +1618,7 @@ After clickstyle &result;
 </quotation>
 
 
-<itemize commandarg="bullet" endspaces=" ">
+<itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
@@ -2218,7 +2218,7 @@ After clickstyle &result;
 </quotation>
 
 
-<itemize commandarg="bullet" endspaces=" ">
+<itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
 
@@ -2812,7 +2812,7 @@ After clickstyle &result;
 </quotation>
 <pre xml:space="preserve">
 
-</pre><itemize commandarg="bullet" endspaces=" ">
+</pre><itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">i--temize
 </pre></listitem></itemize>
 <pre xml:space="preserve">
