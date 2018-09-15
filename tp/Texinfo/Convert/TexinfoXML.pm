@@ -521,7 +521,6 @@ sub _index_entry($$)
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
-    $result =~ s/\s*$//;
     pop @{$self->{'document_context'}};
     $result .= $self->close_element('indexterm');
     return $result;
@@ -1008,7 +1007,6 @@ sub _convert($$;$)
             and !($root->{'parent'}->{'extra'}
                   and ($root->{'parent'}->{'extra'}->{'no_section'}
                        or $root->{'parent'}->{'extra'}->{'no_node'}))) {
-          #print STDERR "$root->{'parent'} $root->{'parent'}->{'type'}\n";
           $self->{'pending_bye'} = $self->open_element($command)
                     .$self->close_element($command)."\n";
           return '';

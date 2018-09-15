@@ -1,5 +1,15 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_isolate_last_space): Remove useless 
+	argument.  Callers updated.
+	(module documentation section): Remove mention of 
+	'space_at_end_block_command'.
+	* tp/Texinfo/Convert/TexinfoXML.pm (_index_entry): Remove code 
+	stripping final whitespace.
+	(_convert): Remove a commented-out statement for debugging.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_isolate_last_space): For all element
 	types except 'menu_entry_node', store trailing spaces as a 
 	'spaces_after_argument' value.  This was already done for

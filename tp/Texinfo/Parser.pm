@@ -2181,12 +2181,9 @@ sub _abort_empty_line {
 }
 
 # isolate last space in a command to help expansion disregard unuseful spaces.
-sub _isolate_last_space($$;$)
+sub _isolate_last_space
 {
-  my ($self, $current, $type) = @_;
-
-  my $end_spaces;
-  $type = 'spaces_at_end' if (!defined($type));
+  my ($self, $current) = @_;
 
   return if (!$current->{'contents'} or !@{$current->{'contents'}});
 
@@ -2209,9 +2206,8 @@ sub _isolate_last_space($$;$)
         $current->{'contents'}->[-1]->{'type'} = 'space_at_end_menu_node';
       } else {
         $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
-        $end_spaces = $1;
-        my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
-          'type' => $type };
+        my $new_spaces = { 'text' => $1, 'parent' => $current,
+          'type' => 'space_at_end_menu_node' };
         push @{$current->{'contents'}}, $new_spaces;
       }
     }
@@ -2220,18 +2216,17 @@ sub _isolate_last_space($$;$)
       and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
     # Store final spaces in 'spaces_after_argument'.
     if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
-      $end_spaces = $current->{'contents'}->[-1]->{'text'};
+      my $end_spaces = $current->{'contents'}->[-1]->{'text'};
       pop @{$current->{'contents'}};
       $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
     } else {
       $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
-      $end_spaces = $1;
       $current->{'extra'}->{'spaces_after_argument'} = $1;
     }
   }
 }
 
-# $NODE->{'contents'} is the Texinfo fo the specification of a node.
+# $NODE->{'contents'} is the Texinfo for the specification of a node.
 # Returned object is a hash with two fields:
 #
 #     manual_content - Texinfo tree for a manual name extracted from the
@@ -2878,7 +2873,7 @@ sub _end_line($$$)
       _isolate_last_space($self, $current);
 
     } else {
-      _isolate_last_space($self, $current, 'space_at_end_block_command');
+      _isolate_last_space($self, $current);
       _register_command_arg($self, $current, 'block_command_line_contents');
     } 
     # @float args
@@ -3500,7 +3495,7 @@ sub _register_extra_menu_entry_information($$;$)
           Texinfo::Convert::Texinfo::convert($current)), $line_nr);
       }
     } elsif ($arg->{'type'} eq 'menu_entry_node') {
-      _isolate_last_space($self, $arg, 'space_at_end_menu_node');
+      _isolate_last_space($self, $arg);
       my $parsed_entry_node = _parse_node_manual($arg);
       if (! defined($parsed_entry_node)) {
         if ($self->{'SHOW_MENU'}) {
@@ -6614,10 +6609,6 @@ comma separating a command's arguments.
 Space at the end of an argument to a line command, at the end of an
 comma-separated argument for some brace commands, or at the end of
 bracketed content on a C<@multitable> line or definition line.
-
-=item space_at_end_block_command
-
-Space at the end of a block @-command line.
 
 =item empty_spaces_after_close_brace
 
