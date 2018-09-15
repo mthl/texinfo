@@ -1,5 +1,10 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/TexinfoXML.pm (_index_entry): Remove
+	trailing spaces from the text of an index entry.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_convert) <def line>: Remove 
 	trailing spaces from bracketed terms.
 

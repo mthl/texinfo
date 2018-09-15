@@ -2466,7 +2466,7 @@ in tex
 </para>
 <para><indicateurl spaces=" ">http://ggg </indicateurl>
 </para>
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">machin </indexterm><defcategory bracketed="on" spaces=" ">truc</defcategory> <deffunction bracketed="on" spaces=" ">machin</deffunction>  <defparam bracketed="on" spaces=" ">bidule</defparam>  <defparam bracketed="on" spaces="  ">chose</defparam> <defparam bracketed="on" spaces="  ">arg</defparam></definitionterm>
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="1">machin</indexterm><defcategory bracketed="on" spaces=" ">truc</defcategory> <deffunction bracketed="on" spaces=" ">machin</deffunction>  <defparam bracketed="on" spaces=" ">bidule</defparam>  <defparam bracketed="on" spaces="  ">chose</defparam> <defparam bracketed="on" spaces="  ">arg</defparam></definitionterm>
 <definitionitem><para>T
 </para></definitionitem></deffn>
 

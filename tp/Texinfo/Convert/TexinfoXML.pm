@@ -521,6 +521,7 @@ sub _index_entry($$)
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
+    $result =~ s/\s*$//;
     pop @{$self->{'document_context'}};
     $result .= $self->close_element('indexterm');
     return $result;
