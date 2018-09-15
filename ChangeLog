@@ -1,5 +1,9 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/README: Add a note about how to check test results.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/maintain/regenerate_cmd_tests.sh,
 	* tp/tests/run_parser_all.sh:
 	Rename file with the specifications of tests to be run from

@@ -1,7 +1,7 @@
 $Id$
 texinfo/tp/t/README
 
-  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
   Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
@@ -40,6 +40,9 @@ you can see the difference between the expected and actual output with
 
 (Any number at the start of the name of the test, like "03" in this
 example, is removed.)
+
+Another way to check test results is to regenerate the reference test 
+results (see below), and then run "svn diff t".
 
 To review all the differences for one of the *.t test files, you can do:
 
