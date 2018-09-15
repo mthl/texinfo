@@ -2,7 +2,7 @@
 # $Id$
 # Run all Texinfo tests.
 # 
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
 # Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
@@ -35,7 +35,7 @@ prepended_command=
 
 main_command='texi2any.pl'
 
-# formats can be specified by first line of tests-parser.txt.
+# formats can be specified by first line of list-of-tests.
 #commands='texi2any.pl:_html texi2any.pl:_info'
 #commands=': texi2any.pl:_info'
 commands=':'
@@ -114,7 +114,7 @@ fi
 #echo "testdir $testdir srcdir_test $srcdir_test" 1>&2
 
 base_results_dir=$testdir/
-test_file=tests-parser.txt
+test_file=list-of-tests
 driving_file=$srcdir/$testdir/$test_file
 
 echo "testdir: $testdir" >$logfile

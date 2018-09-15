@@ -20,7 +20,7 @@
 
 #set -x
 
-test_file='tests-parser.txt'
+test_file='list-of-tests'
 test_scripts_dir='test_scripts'
 
 test -d $test_scripts_dir || mkdir $test_scripts_dir
@@ -58,7 +58,7 @@ type=$1
 shift
 test_dirs=$1
 for test_dir in $test_dirs; do
-  driving_file=$test_dir/tests-parser.txt
+  driving_file=$test_dir/list-of-tests
   if test -f $driving_file; then
     test_driving_files="$test_driving_files $driving_file"
     while read line

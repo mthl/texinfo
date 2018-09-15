@@ -1,5 +1,12 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/maintain/regenerate_cmd_tests.sh,
+	* tp/tests/run_parser_all.sh:
+	Rename file with the specifications of tests to be run from
+	'tests-parser.txt' to 'list-of-tests'.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/DocBook.pm (_convert):
 	Do not use the 'block_command_line_contents' array: use the 
 	'args' array directly.
