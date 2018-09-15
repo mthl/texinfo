@@ -16,14 +16,12 @@ $result_trees{'unknown_language'} = {
                 {
                   'parent' => {},
                   'text' => 'unknown'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -57,14 +55,12 @@ $result_trees{'unknown_language'} = {
             {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -98,14 +94,12 @@ $result_trees{'unknown_language'} = {
             {
               'parent' => {},
               'text' => 'unknkown language'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -177,14 +171,12 @@ $result_trees{'unknown_language'} = {
                 {
                   'parent' => {},
                   'text' => 'another_UNKNOWN'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -272,19 +264,16 @@ $result_trees{'unknown_language'} = {
   'type' => 'document_root'
 };
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[0]{'parent'} = $result_trees{'unknown_language'};
 $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0];
-$result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1];
 $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'unknown_language'}{'contents'}[1]{'parent'} = $result_trees{'unknown_language'};
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0];
-$result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[1];
@@ -297,7 +286,6 @@ $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[1]{'contents'}[2]{'
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0];
-$result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
 $result_trees{'unknown_language'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];

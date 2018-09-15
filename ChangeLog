@@ -1,5 +1,27 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_isolate_last_space): For all element
+	types except 'menu_entry_node', store trailing spaces as a 
+	'spaces_after_argument' value.  This was already done for
+	'brace_command_arg'.
+
+	* tp/Texinfo/Convert/Texinfo.pm (convert, _expand_cmd_args_to_texi):
+	Check for and output these spaces.
+
+	* tp/Texinfo/Convert/Converter.pm (_end_line_or_comment): Look 
+	for these spaces in new location.
+	* tp/Texinfo/Convert/Converter.pm (_convert_argument_and_end_line):
+	Replace with two new subroutines, one in DocBook.pm, one in
+	TexinfoXML.pm.  This allows end-of-line spaces to continue to be 
+	ignored in DocBook output.
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (_end_line_spaces): Check for 
+	end-of-line spaces in new location.
+	(_convert): Check for and output 'spaces_after_argument' in a 
+	few places.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/TexinfoXML.pm (_index_entry): Remove
 	trailing spaces from the text of an index entry.
 

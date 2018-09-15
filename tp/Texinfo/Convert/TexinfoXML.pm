@@ -606,20 +606,15 @@ sub _leading_spaces_before_argument($)
   }
 }
 
-sub _end_line_spaces($$)
+sub _end_line_spaces
 {
   my $root = shift;
-  my $type = shift;
 
   my $end_spaces = undef;
   if ($root->{'args'}->[-1]
-      and $root->{'args'}->[-1]->{'contents'}
-      and $root->{'args'}->[-1]->{'contents'}->[-1]
-      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'type'}
-      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'type'} eq $type
-      and defined($root->{'args'}->[-1]->{'contents'}->[-1]->{'text'})
-      and $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'} !~ /\S/) {
-    $end_spaces = $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'};
+      and $root->{'args'}->[-1]->{'extra'}
+      and $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'}) {
+    $end_spaces = $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'};
     chomp $end_spaces;
   }
   return $end_spaces;
@@ -684,6 +679,31 @@ sub _texinfo_line($$)
   } else {
     return ();
   }
+}
+
+sub _convert_argument_and_end_line($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $converted = $self->convert_tree($root->{'args'}->[-1]);
+
+  my $end_line = '';
+
+  if ($root->{'args'}->[-1]->{'extra'} and $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'}) {
+    $converted .= $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'};
+  }
+
+  if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
+    $end_line = $self->convert_tree($root->{'extra'}->{'comment_at_end'});
+  } else {
+    if (chomp($converted)) {
+      $end_line = "\n";
+    } else {
+      $end_line = "";
+    }
+  }
+  return ($converted, $end_line);
 }
 
 my @node_directions = ('Next', 'Prev', 'Up');
@@ -813,6 +833,9 @@ sub _convert($$;$)
             if (defined($in_monospace_not_normal));
 
         $result .= $self->_convert($root->{'args'}->[0]);
+        if ($root->{'args'}->[0]->{'extra'} and $root->{'args'}->[0]->{'extra'}->{'spaces_after_argument'}) {
+          $result .= $root->{'args'}->[0]->{'extra'}->{'spaces_after_argument'};
+         }
         if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
           $result .= $self->_convert($root->{'extra'}->{'comment_at_end'});
         }
@@ -1432,8 +1455,7 @@ sub _convert($$;$)
               }
             } else {
               # get end of lines from @*table.
-              my $end_spaces = _end_line_spaces($root, 
-                                           'space_at_end_block_command');
+              my $end_spaces = _end_line_spaces($root);
               if (defined($end_spaces)) {
                 $end_line .= $end_spaces 
                 # This also catches block @-commands with no argument that
@@ -1497,7 +1519,6 @@ sub _convert($$;$)
             $content =~ s/\n$//;
             $result .= $content;
           } else {
-            $content =~ s/\s*$//;
             my $attribute = [];
             if ($type eq 'category' and $alias) {
               push @$attribute, ('automatic', 'on');
@@ -1594,7 +1615,7 @@ sub _convert($$;$)
     } else {
       my $end_line = '';
       if ($end_command) {
-        my $end_spaces = _end_line_spaces($end_command, 'spaces_at_end');
+        my $end_spaces = _end_line_spaces($end_command);
         $end_line .= $end_spaces if (defined($end_spaces));
         $end_line 
          .= $self->_end_line_or_comment($end_command)

@@ -32,14 +32,12 @@ $result_trees{'delcomment'} = {
             {
               'parent' => {},
               'text' => 'delcomment.info'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -146,7 +144,6 @@ $result_trees{'delcomment'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent
 $result_trees{'delcomment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[0];
 $result_trees{'delcomment'}{'contents'}[0]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0];
-$result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'delcomment'}{'contents'}[1]{'args'}[0];
 $result_trees{'delcomment'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'delcomment'}{'contents'}[1];
 $result_trees{'delcomment'}{'contents'}[1]{'parent'} = $result_trees{'delcomment'};
 $result_trees{'delcomment'}{'contents'}[2]{'parent'} = $result_trees{'delcomment'};

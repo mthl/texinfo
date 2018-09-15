@@ -14,14 +14,12 @@ $result_trees{'enumerate_letters'} = {
             {
               'parent' => {},
               'text' => 'c'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'space_at_end_block_command'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -5391,14 +5389,12 @@ $result_trees{'enumerate_letters'} = {
                 {
                   'parent' => {},
                   'text' => 'enumerate'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -5438,7 +5434,6 @@ $result_trees{'enumerate_letters'} = {
   'type' => 'text_root'
 };
 $result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0];
-$result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[0];
@@ -6059,7 +6054,6 @@ $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[205]{'contents'}[0
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[205]{'contents'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[205];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[205]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'args'}[0];
-$result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'args'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'args'}[0]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'contents'}[206]{'parent'} = $result_trees{'enumerate_letters'}{'contents'}[0];
 $result_trees{'enumerate_letters'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'enumerate_letters'}{'contents'}[0]{'args'}[0]{'contents'}[0];

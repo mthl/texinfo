@@ -66,14 +66,12 @@ $result_trees{'section_in_copying'} = {
             {
               'parent' => {},
               'text' => 'section'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -108,7 +106,6 @@ $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spac
 $result_trees{'section_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'};
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
-$result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_copying'}{'contents'}[1];
 $result_trees{'section_in_copying'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'section_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'section_in_copying'};

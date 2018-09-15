@@ -1,7 +1,8 @@
 # $Id$
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
+# Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2440,7 +2441,8 @@ sub debug_hash
 use Data::Dumper;
 
 my @kept_keys = ('contents', 'cmdname', 'type', 'text', 'args',
-  'extra', 'def_role', 'spaces_before_argument'
+  'extra', 'def_role', 'spaces_before_argument',
+  'spaces_after_argument', 'comment_at_end', 'index_entry'
 );
 my %kept_keys;
 foreach my $key (@kept_keys) {

@@ -1,7 +1,8 @@
 # $Id$
 # DocBook.pm: output tree as DocBook.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
+# Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -470,6 +471,28 @@ sub _protect_text($$)
   $result =~ s/\f/ /g;
   return $result;
 }
+
+sub _convert_argument_and_end_line($$)
+{
+  my $self = shift;
+  my $root = shift;
+
+  my $converted = $self->convert_tree($root->{'args'}->[-1]);
+
+  my $end_line = '';
+
+  if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
+    $end_line = $self->convert_tree($root->{'extra'}->{'comment_at_end'});
+  } else {
+    if (chomp($converted)) {
+      $end_line = "\n";
+    } else {
+      $end_line = "";
+    }
+  }
+  return ($converted, $end_line);
+}
+
 
 
 sub _convert($$;$);

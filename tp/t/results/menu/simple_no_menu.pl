@@ -422,14 +422,12 @@ $result_trees{'simple_no_menu'} = {
                 {
                   'parent' => {},
                   'text' => 'menu'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -555,7 +553,6 @@ $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[7]{'extra'}{'menu_ent
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[7]{'extra'}{'menu_entry_node'}{'node_content'}[1] = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[7]{'args'}[1]{'contents'}[1];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[7]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0];
-$result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8];

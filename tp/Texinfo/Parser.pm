@@ -2201,27 +2201,32 @@ sub _isolate_last_space($$;$)
 
   return if (!@{$current->{'contents'}}); 
 
-  if (defined($current->{'contents'}->[-1]->{'text'}) 
+  if ($current->{'type'} and $current->{'type'} eq 'menu_entry_node') {
+    if (defined($current->{'contents'}->[-1]->{'text'}) 
+        and !$current->{'contents'}->[-1]->{'type'}
+        and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
+      if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
+        $current->{'contents'}->[-1]->{'type'} = 'space_at_end_menu_node';
+      } else {
+        $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
+        $end_spaces = $1;
+        my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
+          'type' => $type };
+        push @{$current->{'contents'}}, $new_spaces;
+      }
+    }
+  } elsif (defined($current->{'contents'}->[-1]->{'text'}) 
       and !$current->{'contents'}->[-1]->{'type'}
       and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
+    # Store final spaces in 'spaces_after_argument'.
     if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
-      if ($current->{'type'} eq 'brace_command_arg') {
-        $end_spaces = $current->{'contents'}->[-1]->{'text'};
-        pop @{$current->{'contents'}};
-        $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
-      } else {
-        $current->{'contents'}->[-1]->{'type'} = $type;
-      }
+      $end_spaces = $current->{'contents'}->[-1]->{'text'};
+      pop @{$current->{'contents'}};
+      $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
     } else {
       $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
       $end_spaces = $1;
-      my $new_spaces = { 'text' => $end_spaces, 'parent' => $current,
-        'type' => $type };
-      if ($current->{'type'} eq 'brace_command_arg') {
-        $current->{'extra'}->{'spaces_after_argument'} = $end_spaces;
-      } else {
-        push @{$current->{'contents'}}, $new_spaces;
-      }
+      $current->{'extra'}->{'spaces_after_argument'} = $1;
     }
   }
 }

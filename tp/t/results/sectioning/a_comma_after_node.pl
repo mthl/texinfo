@@ -42,15 +42,11 @@ $result_trees{'a_comma_after_node'} = {
             {
               'parent' => {},
               'text' => 'Nodes and Menus'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
           'extra' => {
+            'spaces_after_argument' => '
+',
             'spaces_before_argument' => ' '
           },
           'parent' => {},
@@ -118,7 +114,6 @@ $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[0]{'parent'} = $resul
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2];
-$result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1];
 $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'a_comma_after_node'}{'contents'}[1]{'contents'}[1];

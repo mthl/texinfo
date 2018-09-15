@@ -42,14 +42,12 @@ $result_trees{'paragraphindent_asis_first'} = {
             {
               'parent' => {},
               'text' => 'asis'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -93,7 +91,6 @@ $result_trees{'paragraphindent_asis_first'}{'contents'}[2]{'contents'}[0]{'paren
 $result_trees{'paragraphindent_asis_first'}{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_asis_first'};
 $result_trees{'paragraphindent_asis_first'}{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_asis_first'};
 $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0];
-$result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0];
 $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_asis_first'}{'contents'}[4];
 $result_trees{'paragraphindent_asis_first'}{'contents'}[4]{'parent'} = $result_trees{'paragraphindent_asis_first'};
 $result_trees{'paragraphindent_asis_first'}{'contents'}[5]{'parent'} = $result_trees{'paragraphindent_asis_first'};

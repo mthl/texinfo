@@ -19,14 +19,12 @@ $result_trees{'note_in_strong'} = {
             {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -329,7 +327,6 @@ $result_trees{'note_in_strong'} = {
 };
 $result_trees{'note_in_strong'}{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'};
 $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0];
-$result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0];
 $result_trees{'note_in_strong'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1];
 $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'note_in_strong'}{'contents'}[1]{'contents'}[1];

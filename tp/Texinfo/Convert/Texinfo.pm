@@ -1,6 +1,6 @@
 # Texinfo.pm: output a Texinfo tree as Texinfo.
 #
-# Copyright 2010, 2011, 2012, 2016 Free Software Foundation, Inc.
+# Copyright 2010, 2011, 2012, 2016, 2017, 2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -106,6 +106,10 @@ sub convert ($;$)
         $result .= convert($child, $fix);
       }
     }
+    if ($root->{'extra'}
+        and $root->{'extra'}->{'spaces_after_argument'}) {
+       $result .= $root->{'extra'}->{'spaces_after_argument'};
+    }
     $result .= '}' if ($root->{'type'}
                        and ($root->{'type'} eq 'bracketed'
                             or $root->{'type'} eq 'bracketed_def_content'));
@@ -175,9 +179,6 @@ sub _expand_cmd_args_to_texi ($;$) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert($arg, $fix);
-      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_after_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_after_argument'};
-      }
       $result .= ',';
     }
     $result =~ s/,$//;
@@ -208,9 +209,6 @@ sub _expand_cmd_args_to_texi ($;$) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
       $result .= convert($arg, $fix);
-      if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_after_argument'}) {
-        $result .= $arg->{'extra'}->{'spaces_after_argument'};
-      }
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'extra'}->{'delimiter'};

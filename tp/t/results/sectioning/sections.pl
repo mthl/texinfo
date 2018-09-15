@@ -19,14 +19,12 @@ $result_trees{'sections'} = {
             {
               'parent' => {},
               'text' => 'a chapter'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -53,7 +51,6 @@ $result_trees{'sections'} = {
 };
 $result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
-$result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1];
 $result_trees{'sections'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'sections'}{'contents'}[1]{'parent'} = $result_trees{'sections'};

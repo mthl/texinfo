@@ -25,14 +25,12 @@ $result_trees{'test_sp'} = {
             {
               'parent' => {},
               'text' => '1'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -88,14 +86,12 @@ $result_trees{'test_sp'} = {
             {
               'parent' => {},
               'text' => '1'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -127,14 +123,12 @@ $result_trees{'test_sp'} = {
             {
               'parent' => {},
               'text' => '2'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -188,14 +182,12 @@ $result_trees{'test_sp'} = {
             {
               'parent' => {},
               'text' => '2'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -249,14 +241,12 @@ $result_trees{'test_sp'} = {
             {
               'parent' => {},
               'text' => '1'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -281,7 +271,6 @@ $result_trees{'test_sp'} = {
 $result_trees{'test_sp'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[0];
 $result_trees{'test_sp'}{'contents'}[0]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[1]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[1];
 $result_trees{'test_sp'}{'contents'}[1]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[2];
@@ -291,12 +280,10 @@ $result_trees{'test_sp'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees
 $result_trees{'test_sp'}{'contents'}[2]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[3]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[4]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[4];
 $result_trees{'test_sp'}{'contents'}[4]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[5]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[6]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[6];
 $result_trees{'test_sp'}{'contents'}[6]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[7];
@@ -305,7 +292,6 @@ $result_trees{'test_sp'}{'contents'}[8]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[9];
 $result_trees{'test_sp'}{'contents'}[9]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[10]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[10];
 $result_trees{'test_sp'}{'contents'}[10]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[11]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[11];
@@ -314,7 +300,6 @@ $result_trees{'test_sp'}{'contents'}[12]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[13]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[13];
 $result_trees{'test_sp'}{'contents'}[13]{'parent'} = $result_trees{'test_sp'};
 $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0];
-$result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'test_sp'}{'contents'}[14]{'args'}[0];
 $result_trees{'test_sp'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'test_sp'}{'contents'}[14];
 $result_trees{'test_sp'}{'contents'}[14]{'parent'} = $result_trees{'test_sp'};
 

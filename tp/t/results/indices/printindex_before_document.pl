@@ -20,14 +20,12 @@ $result_trees{'printindex_before_document'} = {
             {
               'parent' => {},
               'text' => 'cp'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -51,7 +49,6 @@ $result_trees{'printindex_before_document'} = {
 };
 $result_trees{'printindex_before_document'}{'contents'}[0]{'parent'} = $result_trees{'printindex_before_document'};
 $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0];
-$result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0];
 $result_trees{'printindex_before_document'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'printindex_before_document'}{'contents'}[1];
 $result_trees{'printindex_before_document'}{'contents'}[1]{'parent'} = $result_trees{'printindex_before_document'};
 

@@ -1,7 +1,8 @@
 # $Id$
 # Converter.pm: Common code for Converters.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
+# Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1035,10 +1036,9 @@ sub _end_line_or_comment($$)
 
   if ($comment) {
     $end_line = $self->convert_tree($comment);
-  } elsif ($root->{'args'}->[-1]->{'contents'}
-            and $root->{'args'}->[-1]->{'contents'}->[-1]
-            and $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'}) {
-    my $text = $root->{'args'}->[-1]->{'contents'}->[-1]->{'text'};
+  } elsif ($root->{'args'}->[-1]->{'extra'}
+      and $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'}) {
+    my $text = $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'};
     if (chomp($text)) {
       $end_line = "\n";
     } else {
@@ -1048,25 +1048,6 @@ sub _end_line_or_comment($$)
     $end_line = '';
   }
   return $end_line;
-}
-
-sub _convert_argument_and_end_line($$)
-{
-  my $self = shift;
-  my $root = shift;
-
-  my $converted = $self->convert_tree($root->{'args'}->[-1]);
-  my $end_line;
-  if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
-    $end_line = $self->convert_tree($root->{'extra'}->{'comment_at_end'});
-  } else {
-    if (chomp($converted)) {
-      $end_line = "\n";
-    } else {
-      $end_line = "";
-    }
-  }
-  return ($converted, $end_line);
 }
 
 sub _collect_leading_trailing_spaces_arg($$)

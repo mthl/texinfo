@@ -53,15 +53,11 @@ $result_trees{'float_in_style_command'} = {
             {
               'parent' => {},
               'text' => 'B'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'space_at_end_block_command'
             }
           ],
           'extra' => {
+            'spaces_after_argument' => '
+',
             'spaces_before_argument' => ' '
           },
           'parent' => {},
@@ -124,14 +120,12 @@ $result_trees{'float_in_style_command'} = {
                 {
                   'parent' => {},
                   'text' => 'float'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -192,7 +186,6 @@ $result_trees{'float_in_style_command'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
@@ -203,7 +196,6 @@ $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'extra'}{'
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
-$result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'float_in_style_command'}{'contents'}[1];
 $result_trees{'float_in_style_command'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'float_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];

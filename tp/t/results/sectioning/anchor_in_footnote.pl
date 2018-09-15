@@ -19,14 +19,12 @@ $result_trees{'anchor_in_footnote'} = {
             {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -60,14 +58,12 @@ $result_trees{'anchor_in_footnote'} = {
             {
               'parent' => {},
               'text' => 'Top'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -239,14 +235,12 @@ $result_trees{'anchor_in_footnote'} = {
                     {
                       'parent' => {},
                       'text' => 'menu'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
                   'type' => 'misc_line_arg'
                 }
@@ -304,14 +298,12 @@ $result_trees{'anchor_in_footnote'} = {
             {
               'parent' => {},
               'text' => 'chapter'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -345,14 +337,12 @@ $result_trees{'anchor_in_footnote'} = {
             {
               'parent' => {},
               'text' => 'Chap'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -428,13 +418,11 @@ $result_trees{'anchor_in_footnote'} = {
 };
 $result_trees{'anchor_in_footnote'}{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'};
 $result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0];
-$result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[1];
 $result_trees{'anchor_in_footnote'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_footnote'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_in_footnote'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'anchor_in_footnote'}{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'};
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0];
-$result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[1];
@@ -463,7 +451,6 @@ $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[1]
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
-$result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
@@ -473,13 +460,11 @@ $result_trees{'anchor_in_footnote'}{'contents'}[2]{'contents'}[4]{'parent'} = $r
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'anchor_in_footnote'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[2]{'parent'} = $result_trees{'anchor_in_footnote'};
 $result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0];
-$result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[3];
 $result_trees{'anchor_in_footnote'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_footnote'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_in_footnote'}{'contents'}[3]{'extra'}{'node_content'};
 $result_trees{'anchor_in_footnote'}{'contents'}[3]{'parent'} = $result_trees{'anchor_in_footnote'};
 $result_trees{'anchor_in_footnote'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[4]{'args'}[0];
-$result_trees{'anchor_in_footnote'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[4]{'args'}[0];
 $result_trees{'anchor_in_footnote'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[4];
 $result_trees{'anchor_in_footnote'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[4];
 $result_trees{'anchor_in_footnote'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_footnote'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0];

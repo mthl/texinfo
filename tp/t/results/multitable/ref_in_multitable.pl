@@ -94,14 +94,12 @@ $result_trees{'ref_in_multitable'} = {
                     {
                       'parent' => {},
                       'text' => '.35 .65'
-                    },
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'spaces_at_end'
                     }
                   ],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
                   'type' => 'misc_line_arg'
                 }
@@ -448,14 +446,12 @@ $result_trees{'ref_in_multitable'} = {
                 {
                   'parent' => {},
                   'text' => 'multitable'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -552,7 +548,6 @@ $result_trees{'ref_in_multitable'}{'contents'}[2]{'contents'}[1]{'parent'} = $re
 $result_trees{'ref_in_multitable'}{'contents'}[2]{'parent'} = $result_trees{'ref_in_multitable'};
 $result_trees{'ref_in_multitable'}{'contents'}[3]{'parent'} = $result_trees{'ref_in_multitable'};
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0];
-$result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4];
@@ -606,7 +601,6 @@ $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'args'}[0];
-$result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'extra'}{'columnfractions'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};

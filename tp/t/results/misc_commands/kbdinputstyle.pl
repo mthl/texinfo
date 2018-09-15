@@ -134,14 +134,12 @@ $result_trees{'kbdinputstyle'} = {
             {
               'parent' => {},
               'text' => 'code'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -464,14 +462,12 @@ $result_trees{'kbdinputstyle'} = {
                 {
                   'parent' => {},
                   'text' => 'example'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -535,14 +531,12 @@ $result_trees{'kbdinputstyle'} = {
             {
               'parent' => {},
               'text' => 'example'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -862,14 +856,12 @@ $result_trees{'kbdinputstyle'} = {
                 {
                   'parent' => {},
                   'text' => 'example'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -933,14 +925,12 @@ $result_trees{'kbdinputstyle'} = {
             {
               'parent' => {},
               'text' => 'distinct'
-            },
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'spaces_at_end'
             }
           ],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -1251,14 +1241,12 @@ $result_trees{'kbdinputstyle'} = {
                 {
                   'parent' => {},
                   'text' => 'example'
-                },
-                {
-                  'parent' => {},
-                  'text' => '
-',
-                  'type' => 'spaces_at_end'
                 }
               ],
+              'extra' => {
+                'spaces_after_argument' => '
+'
+              },
               'parent' => {},
               'type' => 'misc_line_arg'
             }
@@ -1311,7 +1299,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[3]{'contents'}[1]{'parent'} = $result
 $result_trees{'kbdinputstyle'}{'contents'}[3]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[4]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[5]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[5]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[5];
 $result_trees{'kbdinputstyle'}{'contents'}[5]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[6]{'parent'} = $result_trees{'kbdinputstyle'};
@@ -1364,7 +1351,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[1]{'contents'}[4]{'pa
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[1];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2];
@@ -1376,7 +1362,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[12]{'contents'}[1]{'parent'} = $resul
 $result_trees{'kbdinputstyle'}{'contents'}[12]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[13]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[14]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[14]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[14]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[14]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[14];
 $result_trees{'kbdinputstyle'}{'contents'}[14]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[15]{'parent'} = $result_trees{'kbdinputstyle'};
@@ -1429,7 +1414,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[1]{'contents'}[4]{'pa
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[1];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2];
@@ -1441,7 +1425,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[21]{'contents'}[1]{'parent'} = $resul
 $result_trees{'kbdinputstyle'}{'contents'}[21]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[22]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[23]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[23]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[23]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[23]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[23]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[23];
 $result_trees{'kbdinputstyle'}{'contents'}[23]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[24]{'parent'} = $result_trees{'kbdinputstyle'};
@@ -1494,7 +1477,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[1]{'contents'}[4]{'pa
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[1];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0];
-$result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2];
