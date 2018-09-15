@@ -2562,25 +2562,6 @@ sub _enter_index_entry($$$$$$$)
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
-# This is always called at command closing.
-sub _remove_empty_content_arguments($)
-{
-  my $current = shift;
-  my $type;
-  if ($current->{'extra'}
-      and $current->{'extra'}->{'block_command_line_contents'}) {
-    $type = 'block_command_line_contents';
-  }
-  if ($type) {
-    while (@{$current->{'extra'}->{$type}} 
-           and not defined($current->{'extra'}->{$type}->[-1])) {
-      pop @{$current->{'extra'}->{$type}}; 
-    }
-    delete $current->{'extra'}->{$type} if (!@{$current->{'extra'}->{$type}});
-    delete $current->{'extra'} if (!keys(%{$current->{'extra'}}));
-  }
-}
-
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -2871,10 +2852,8 @@ sub _end_line($$$)
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
       _isolate_last_space($self, $current);
-
     } else {
       _isolate_last_space($self, $current);
-      _register_command_arg($self, $current, 'block_command_line_contents');
     } 
     # @float args
     if ($current->{'parent'}->{'cmdname'}
@@ -2909,21 +2888,20 @@ sub _end_line($$$)
       unshift @{$current->{'contents'}}, $empty_text;
       delete $current->{'args'};
     }
-    # Additionally, remove empty arguments as far as possible
-    _remove_empty_content_arguments($current);
 
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
       if ($current->{'cmdname'} eq 'enumerate') {
         my $spec = 1;
-        if ($current->{'extra'}->{'block_command_line_contents'}
-            and defined($current->{'extra'}->{'block_command_line_contents'}->[0])) {
-          if (scalar(@{$current->{'extra'}->{'block_command_line_contents'}->[0]}) > 1) {
+        if ($current->{'args'} and $current->{'args'}->[0]
+            and $current->{'args'}->[0]->{'contents'}
+            and @{$current->{'args'}->[0]->{'contents'}}) {
+          if (scalar(@{$current->{'args'}->[0]->{'contents'}}) > 1) {
             $self->_command_error($current, $line_nr, 
                         __("superfluous argument to \@%s"),
                         $current->{'cmdname'});
           }
-          my $arg = $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+          my $arg = $current->{'args'}->[0]->{'contents'}->[0];
           if (!defined($arg->{'text'}) or $arg->{'text'} !~ /^(([[:digit:]]+)|([[:alpha:]]+))$/) {
             $self->_command_error($current, $line_nr, 
                         __("bad argument to \@%s"),
@@ -2981,32 +2959,26 @@ sub _end_line($$$)
               $current->{'extra'}->{'command_as_argument'}->{'cmdname'}, 
               $current->{'cmdname'});
         delete $current->{'extra'}->{'command_as_argument'};
-        delete $current->{'extra'}->{'block_command_line_contents'};
       }
-      if (!$current->{'extra'}->{'block_command_line_contents'}
-          and $current->{'cmdname'} eq 'itemize') {
+      if ($current->{'cmdname'} eq 'itemize'
+          and (!$current->{'args'}
+            or !$current->{'args'}->[0]
+            or !$current->{'args'}->[0]->{'contents'}
+            or !@{$current->{'args'}->[0]->{'contents'}})) {
         my $inserted =  { 'cmdname' => 'bullet', 
                           'contents' => [],
                           'type' => 'command_as_argument_inserted',
                           'parent' => $current };
         unshift @{$current->{'args'}}, $inserted;
-        $current->{'extra'}->{'block_command_line_contents'} = [
-          [ $inserted ]
-        ];
-        $current->{'extra'}->{'command_as_argument'} = 
-          $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+        $current->{'extra'}->{'command_as_argument'} = $inserted;
       } elsif ($item_line_commands{$current->{'cmdname'}} and
-              ! $current->{'extra'}->{'command_as_argument'}) {
+              !$current->{'extra'}->{'command_as_argument'}) {
         my $inserted =  { 'cmdname' => 'asis', 
                           'contents' => [],
                           'type' => 'command_as_argument_inserted',
                           'parent' => $current };
         unshift @{$current->{'args'}}, $inserted;
-        $current->{'extra'}->{'block_command_line_contents'} = [
-          [ $inserted ]
-        ];
-        $current->{'extra'}->{'command_as_argument'} = 
-          $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
+        $current->{'extra'}->{'command_as_argument'} = $inserted;
       }
       push @{$current->{'contents'}}, { 'type' => 'before_item',
          'contents' => [], 'parent', $current };
@@ -3532,19 +3504,6 @@ sub _enter_menu_entry_node($$$)
   $current = $current->{'contents'}->[-1];
   push @{$self->{'context_stack'}}, 'preformatted';
   return $current;
-}
-
-sub _register_command_arg($$$)
-{
-  my ($self, $current, $type) = @_;
-
-  my @contents = @{$current->{'contents'}};
-  _trim_spaces_comment_from_content(\@contents);
-  if (scalar(@contents)) {
-    push @{$current->{'parent'}->{'extra'}->{$type}}, \@contents;
-  } else {
-    push @{$current->{'parent'}->{'extra'}->{$type}}, undef;
-  }
 }
 
 sub _command_with_command_as_argument($)
@@ -5065,8 +5024,6 @@ sub _parse_texi($;$)
               # @inline* always have end spaces considered as normal text 
               _isolate_last_space($self, $current) 
                 unless ($inline_commands{$current->{'parent'}->{'cmdname'}});
-              # Remove empty arguments, as far as possible
-              _remove_empty_content_arguments($current);
             }
             my $closed_command = $current->{'parent'}->{'cmdname'};
             print STDERR "CLOSING(brace) \@$current->{'parent'}->{'cmdname'}\n" 
@@ -5296,16 +5253,7 @@ sub _parse_texi($;$)
         } elsif ($separator eq ','
                  and $current->{'parent'}->{'remaining_args'}) {
           _abort_empty_line ($self, $current);
-          if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
-              and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
-                 or $simple_text_commands{$current->{'parent'}->{'cmdname'}})) {
-            _isolate_last_space($self, $current);
-          } else {
-            _isolate_last_space($self, $current);
-            if (exists $block_commands{$current->{'parent'}->{'cmdname'}}) {
-              _register_command_arg($self, $current, 'block_command_line_contents');
-            }
-          }
+          _isolate_last_space($self, $current);
           my $type = $current->{'type'};
           $current = $current->{'parent'};
           if ($inline_commands{$current->{'cmdname'}}) {
@@ -6856,12 +6804,6 @@ is in I<row_prototype>.
 =head3 Extra keys available for more than one @-command
 
 =over
-
-=item block_command_line_contents
-
-An array associated with block @-commands.  Each of the elements of the
-array is either undef, if there is no argument at that place,
-or an array reference holding the argument contents.
 
 =item misc_content
 

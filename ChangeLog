@@ -1,5 +1,24 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_remove_empty_content_arguments):
+	Remove function.
+	(_register_command_arg): Remove function.
+	(module documentation section): Remove mention of 
+	'block_command_line_contents'.
+	(_end_line): Do not set or access 'block_command_line_contents' 
+	extra value.
+
+	This is intended to simplify the parse tree.  Reducing 
+	duplication of information makes it easier to track what data 
+	leads to output at later stages of processing.  It reduces 
+	memory use and may increase speed.  It makes it easier to 
+	inspect data structures that are "dumped" to a text stream.  It 
+	is also easier to handle memory allocation in a rewrite in 
+	another programming language if the data structures are less 
+	cyclic.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/91morecoverage.t: New file.
 	* tp/t/91morecoverage.t (texi_formatting, formatting_fr):
 	New tests.
