@@ -1496,6 +1496,7 @@ sub _convert($$;$)
             $content =~ s/\n$//;
             $result .= $content;
           } else {
+            $content =~ s/\s*$//;
             my $attribute = [];
             if ($type eq 'category' and $alias) {
               push @$attribute, ('automatic', 'on');
