@@ -1,5 +1,12 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Plaintext.pm (_convert)
+	<@quotation, @item, @listoffloats>:
+	Do not use the 'block_command_line_contents' array: use the 
+	'args' array directly.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_quotation_arg_to_prepend):
 	Do not use the 'block_command_line_contents' array: use the 
 	'args' array directly.

@@ -93,7 +93,7 @@ $result_errors{'quotation_beginning_and_end_on_line'} = [
 
 
 
-$result_converted{'plaintext'}->{'quotation_beginning_and_end_on_line'} = '';
+$result_converted{'plaintext'}->{'quotation_beginning_and_end_on_line'} = '     in quotation : ';
 
 
 $result_converted{'html_text'}->{'quotation_beginning_and_end_on_line'} = '<blockquote>

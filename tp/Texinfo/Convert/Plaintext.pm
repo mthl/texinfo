@@ -2386,9 +2386,11 @@ sub _convert($$)
       }
       if ($command eq 'quotation'
           or $command eq 'smallquotation') {
-        if ($root->{'extra'} and $root->{'extra'}->{'block_command_line_contents'}) {
+        if ($root->{'args'} and $root->{'args'}->[0]
+            and $root->{'args'}->[0]->{'contents'}
+            and @{$root->{'args'}->[0]->{'contents'}}) {
           my $prepended = $self->gdt('@b{{quotation_arg}:} ', 
-             {'quotation_arg' => $root->{'extra'}->{'block_command_line_contents'}->[0]});
+             {'quotation_arg' => $root->{'args'}->[0]->{'contents'}});
           $prepended->{'type'} = 'frenchspacing';
           $result .= $self->convert_line($prepended);
           $self->{'text_element_context'}->[-1]->{'counter'} += 
@@ -2498,14 +2500,12 @@ sub _convert($$)
                Texinfo::Common::enumerate_item_representation(
                  $root->{'parent'}->{'extra'}->{'enumerate_specification'},
                  $root->{'extra'}->{'item_number'}) . '. '));
-      } elsif ($root->{'parent'}->{'extra'}->{'block_command_line_contents'}) {
+      } elsif ($root->{'parent'}->{'args'}
+          and $root->{'parent'}->{'args'}->[0]) {
         # this is the text prepended to items.
         
-        $result = _convert($self, 
-          {'contents' => 
-             [@{$root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]},
-              { 'text' => ' ' }]
-          });
+        $result = _convert($self, $root->{'parent'}->{'args'}->[0]);
+        $result .= _convert($self, { 'text' => ' ' });
       }
       $result .= _count_added($self, $line->{'container'}, 
                       Texinfo::Convert::Paragraph::end($line->{'container'}));
@@ -2595,10 +2595,10 @@ sub _convert($$)
         $result .= "* Menu:\n\n";
         $lines_count += 2;
         foreach my $float (@{$self->{'floats'}->{$root->{'extra'}->{'type'}->{'normalized'}}}) {
-          next if (!defined($float->{'extra'}->{'block_command_line_contents'}->[1]));
+          next if !$float->{'args'} or !$float->{'args'}->[1]
+                   or !@{$float->{'args'}->[1]->{'contents'}};
           my $float_label_text = $self->convert_line({'type' => '_code',
-             'contents' 
-                 => $float->{'extra'}->{'block_command_line_contents'}->[1]});
+             'contents' => $float->{'args'}->[1]->{'contents'}});
           my $float_entry = $self->_float_type_number($float);
           my $float_entry_text = ':';
           if (defined($float_entry)) {

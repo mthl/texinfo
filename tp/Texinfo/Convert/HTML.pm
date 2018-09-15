@@ -3671,10 +3671,11 @@ sub _quotation_arg_to_prepend($$)
            or $command->{'parent'}->{'cmdname'} eq 'smallquotation')
       and $command->{'parent'}->{'args'}
       and $command->{'parent'}->{'args'}->[0]
-      and $command->{'parent'}->{'args'}->[0]->{'contents'}} {
+      and $command->{'parent'}->{'args'}->[0]->{'contents'}
+      and @{$command->{'parent'}->{'args'}->[0]->{'contents'}}) {
     return $self->convert_tree($self->gdt('@b{{quotation_arg}:} ',
      {'quotation_arg' => 
-      $command->{'parent'}->{'args'}->[0]->{'contents'}};
+      $command->{'parent'}->{'args'}->[0]->{'contents'}}));
 
   }
   return undef;

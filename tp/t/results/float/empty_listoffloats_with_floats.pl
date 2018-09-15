@@ -301,7 +301,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [],
         'end_command' => {},
         'spaces_after_command_elt' => {},
         'type' => {
@@ -412,7 +411,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [],
         'caption' => {},
         'end_command' => {},
         'spaces_after_command_elt' => {},
