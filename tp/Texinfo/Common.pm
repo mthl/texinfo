@@ -1780,7 +1780,7 @@ sub count_bytes($$;$)
 #
 # extra that should point to other elements: 
 # command_as_argument
-# @block_command_line_contents @brace_command_contents @misc_content end_command
+# @brace_command_contents @misc_content end_command
 # associated_section part_associated_section associated_node associated_part
 # @prototypes @columnfractions titlepage quotation @author command
 # menu_entry_description menu_entry_name

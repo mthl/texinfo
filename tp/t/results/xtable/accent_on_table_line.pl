@@ -10,6 +10,12 @@ $result_trees{'accent_on_table_line'} = {
     {
       'args' => [
         {
+          'cmdname' => 'asis',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        },
+        {
           'contents' => [
             {
               'cmdname' => '~',
@@ -172,12 +178,7 @@ $result_trees{'accent_on_table_line'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {
-              'cmdname' => 'asis',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
+            {}
           ]
         ],
         'command_as_argument' => {},
@@ -190,8 +191,9 @@ $result_trees{'accent_on_table_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0];
+$result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[1];
+$result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
@@ -212,10 +214,10 @@ $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[1]{'parent'} = 
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0];
-$result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'accent_on_table_line'}{'contents'}[0];
-$result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0];
+$result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'contents'}[2];
-$result_trees{'accent_on_table_line'}{'contents'}[0]{'line_nr'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
+$result_trees{'accent_on_table_line'}{'contents'}[0]{'line_nr'} = $result_trees{'accent_on_table_line'}{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'accent_on_table_line'}{'contents'}[0]{'parent'} = $result_trees{'accent_on_table_line'};
 
 $result_texis{'accent_on_table_line'} = '@table @~

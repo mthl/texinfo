@@ -3065,7 +3065,7 @@ sub _convert_item_command($$$$)
       # Setting multiple expansion should not be needed, except in 
       # case of invalid constructs
       $prepend = $self->convert_tree_new_formatting_context(
-        {'contents' => $itemize->{'extra'}->{'block_command_line_contents'}->[0]},
+        $itemize->{'args'}->[0],
         $command->{'cmdname'}, 'item_prepended');
     }
     if ($content =~ /\S/) {

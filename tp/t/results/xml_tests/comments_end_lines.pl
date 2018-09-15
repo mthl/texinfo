@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'comments_end_lines'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'cmdname' => 'bullet',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        }
+      ],
       'cmdname' => 'itemize',
       'contents' => [
         {
@@ -96,12 +104,7 @@ $result_trees{'comments_end_lines'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {
-              'cmdname' => 'bullet',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
+            {}
           ]
         ],
         'command_as_argument' => {},
@@ -1064,6 +1067,7 @@ $result_trees{'comments_end_lines'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'comments_end_lines'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
@@ -1074,8 +1078,8 @@ $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'pa
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'};
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[0]{'args'}[0];
+$result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'parent'} = $result_trees{'comments_end_lines'};
@@ -1321,7 +1325,7 @@ $result_floats{'comments_end_lines'} = {
 
 
 
-$result_converted{'xml'}->{'comments_end_lines'} = '<itemize commandarg="bullet" endspaces=" ">
+$result_converted{'xml'}->{'comments_end_lines'} = '<itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>itemize it
 </para></listitem></itemize>  <!-- c comment itemize -->
 

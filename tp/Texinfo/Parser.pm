@@ -2985,23 +2985,25 @@ sub _end_line($$$)
       }
       if (!$current->{'extra'}->{'block_command_line_contents'}
           and $current->{'cmdname'} eq 'itemize') {
+        my $inserted =  { 'cmdname' => 'bullet', 
+                          'contents' => [],
+                          'type' => 'command_as_argument_inserted',
+                          'parent' => $current };
+        unshift @{$current->{'args'}}, $inserted;
         $current->{'extra'}->{'block_command_line_contents'} = [
-          [ { 'cmdname' => 'bullet', 
-              'contents' => [],
-            'type' => 'command_as_argument',
-            'parent' => $current }
-          ]
+          [ $inserted ]
         ];
         $current->{'extra'}->{'command_as_argument'} = 
           $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];
       } elsif ($item_line_commands{$current->{'cmdname'}} and
               ! $current->{'extra'}->{'command_as_argument'}) {
+        my $inserted =  { 'cmdname' => 'asis', 
+                          'contents' => [],
+                          'type' => 'command_as_argument_inserted',
+                          'parent' => $current };
+        unshift @{$current->{'args'}}, $inserted;
         $current->{'extra'}->{'block_command_line_contents'} = [
-          [ { 'cmdname' => 'asis', 
-              'contents' => [],
-            'type' => 'command_as_argument',
-            'parent' => $current }
-          ]
+          [ $inserted ]
         ];
         $current->{'extra'}->{'command_as_argument'} = 
           $current->{'extra'}->{'block_command_line_contents'}->[0]->[0];

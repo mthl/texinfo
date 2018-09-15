@@ -1,5 +1,23 @@
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (_convert_item_line_command),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert):
+	Do not use the 'block_command_line_contents' array: use the 
+	'args' array directly.
+
+	* tp/Texinfo/Parser.pm (_end_line): Include an inserted 
+	'command_as_argument' element in the 'args' with the type 
+	'command_as_argument_inserted'.
+	* tp/Texinfo/Convert/Texinfo.pm (@ignored_types): Ignore
+	'command_as_argument_inserted'.
+	(_expand_cmd_args_to_texi): Avoid outputing a comma after an 
+	ignored element.
+
+	* tp/Texinfo/Common.pm: Remove mention of 
+	'block_command_line_contents' from a comment.
+
+2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_isolate_last_space): Remove useless 
 	argument.  Callers updated.
 	(module documentation section): Remove mention of 

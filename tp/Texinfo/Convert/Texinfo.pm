@@ -54,7 +54,8 @@ my %brace_commands           = %Texinfo::Common::brace_commands;
 my %block_commands           = %Texinfo::Common::block_commands;    
 my %def_commands             = %Texinfo::Common::def_commands;    
 
-my @ignored_types = ('spaces_inserted', 'bracketed_inserted');
+my @ignored_types = ('spaces_inserted', 'bracketed_inserted',
+'command_as_argument_inserted');
 my %ignored_types;
 for my $a (@ignored_types) {
   $ignored_types{$a} = 1;
@@ -175,6 +176,7 @@ sub _expand_cmd_args_to_texi ($;$) {
     $result .= $cmd->{'extra'}->{'spaces_before_argument'}
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
     foreach my $arg (@{$cmd->{'args'}}) {
+      next if $arg->{'type'} and $ignored_types{$arg->{'type'}};
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }

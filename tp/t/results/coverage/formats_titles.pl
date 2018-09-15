@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'formats_titles'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'cmdname' => 'bullet',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        }
+      ],
       'cmdname' => 'itemize',
       'contents' => [
         {
@@ -96,12 +104,7 @@ $result_trees{'formats_titles'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {
-              'cmdname' => 'bullet',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
+            {}
           ]
         ],
         'command_as_argument' => {},
@@ -673,6 +676,7 @@ $result_trees{'formats_titles'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'formats_titles'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'formats_titles'}{'contents'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
@@ -684,8 +688,8 @@ $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[2]{'parent'} = $resul
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3];
 $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0];
-$result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[0];
-$result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_titles'}{'contents'}[0]{'args'}[0];
+$result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'formats_titles'}{'contents'}[0]{'args'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[3];
 $result_trees{'formats_titles'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'formats_titles'}{'contents'}[0]{'contents'}[0];
 $result_trees{'formats_titles'}{'contents'}[0]{'parent'} = $result_trees{'formats_titles'};

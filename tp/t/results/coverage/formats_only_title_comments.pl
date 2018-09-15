@@ -8,6 +8,14 @@ use utf8;
 $result_trees{'formats_only_title_comments'} = {
   'contents' => [
     {
+      'args' => [
+        {
+          'cmdname' => 'bullet',
+          'contents' => [],
+          'parent' => {},
+          'type' => 'command_as_argument_inserted'
+        }
+      ],
       'cmdname' => 'itemize',
       'contents' => [
         {
@@ -88,12 +96,7 @@ $result_trees{'formats_only_title_comments'} = {
       'extra' => {
         'block_command_line_contents' => [
           [
-            {
-              'cmdname' => 'bullet',
-              'contents' => [],
-              'parent' => {},
-              'type' => 'command_as_argument'
-            }
+            {}
           ]
         ],
         'command_as_argument' => {},
@@ -567,6 +570,7 @@ $result_trees{'formats_only_title_comments'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'formats_only_title_comments'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
@@ -577,8 +581,8 @@ $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[1]{'pare
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
-$result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[0];
-$result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0];
+$result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'args'}[0];
+$result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'};

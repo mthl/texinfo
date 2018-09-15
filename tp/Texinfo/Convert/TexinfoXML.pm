@@ -786,12 +786,10 @@ sub _convert($$;$)
                or $root->{'parent'}->{'cmdname'} eq 'enumerate')) {
         $result .= $self->open_element('listitem', [_leading_spaces($root)]);
         if ($root->{'parent'}->{'cmdname'} eq 'itemize'
-            and $root->{'parent'}->{'extra'} 
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}
-            and $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]) {
+            and $root->{'parent'}->{'args'}
+            and @{$root->{'parent'}->{'args'}}) {
           $result .= $self->open_element('prepend')
-            .$self->_convert({'contents' 
-        => $root->{'parent'}->{'extra'}->{'block_command_line_contents'}->[0]})
+            .$self->_convert($root->{'parent'}->{'args'}->[0])
             .$self->close_element('prepend');
         }
         unshift @close_elements, 'listitem';
