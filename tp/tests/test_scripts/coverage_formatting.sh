@@ -11,8 +11,8 @@ diffs_dir=diffs
 
 
 dir=coverage
-arg='formatting_fr'
-name='formatting_fr'
+arg='formatting'
+name='formatting'
 [ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;
