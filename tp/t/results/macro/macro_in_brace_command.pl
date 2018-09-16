@@ -212,11 +212,6 @@ $result_trees{'macro_in_brace_command'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -254,7 +249,6 @@ $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[0]{'parent'} 
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'args'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'macro_in_brace_command'}{'contents'}[6];
-$result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'contents'}[1];
 $result_trees{'macro_in_brace_command'}{'contents'}[6]{'line_nr'} = $result_trees{'macro_in_brace_command'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'};

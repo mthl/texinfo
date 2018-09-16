@@ -172,11 +172,6 @@ $result_trees{'set_in_item_missing_line'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -327,11 +322,6 @@ $result_trees{'set_in_item_missing_line'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -363,7 +353,6 @@ $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[1]{'parent'
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0];
-$result_trees{'set_in_item_missing_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'contents'}[2];
 $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'line_nr'} = $result_trees{'set_in_item_missing_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
@@ -388,7 +377,6 @@ $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[0]{'parent'
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1];
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2];
-$result_trees{'set_in_item_missing_line'}{'contents'}[2]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'extra'}{'command_as_argument'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'contents'}[1];
 $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'line_nr'} = $result_trees{'set_in_item_missing_line'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};

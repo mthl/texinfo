@@ -69,12 +69,6 @@ $result_trees{'comment_on_quotation_line'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {},
-            {}
-          ]
-        ],
         'comment_at_end' => {
           'args' => [
             {
@@ -114,8 +108,6 @@ $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[0]{'parent
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][1] = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'comment_at_end'};
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_quotation_line'}{'contents'}[0]{'contents'}[1];

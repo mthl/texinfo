@@ -19,7 +19,7 @@ my @test_cases = (
   {'test_file' => 'formatting.texi',
  'documentlanguage' => 'fr'
  },
- {'documentlanguage' => 'fr', 'TEXI2HTML' => 1}
+ {'documentlanguage' => 'fr', 'TEXI2HTML' => 1, 'TEST' => 1}
  ]
 );
 

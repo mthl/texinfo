@@ -266,11 +266,6 @@ $result_trees{'in_errormsg'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'invalid_nesting' => 1,
@@ -319,7 +314,6 @@ $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_t
 $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1]{'args'}[0];
 $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1];
 $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'in_errormsg'}{'contents'}[6];
-$result_trees{'in_errormsg'}{'contents'}[6]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'in_errormsg'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'in_errormsg'}{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'in_errormsg'}{'contents'}[6]{'args'}[0]{'contents'}[0];
 $result_trees{'in_errormsg'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'in_errormsg'}{'contents'}[6]{'contents'}[1];
 $result_trees{'in_errormsg'}{'contents'}[6]{'line_nr'} = $result_trees{'in_errormsg'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'};

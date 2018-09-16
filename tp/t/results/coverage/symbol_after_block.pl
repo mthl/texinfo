@@ -405,11 +405,6 @@ $result_trees{'symbol_after_block'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -545,11 +540,6 @@ $result_trees{'symbol_after_block'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -664,11 +654,6 @@ $result_trees{'symbol_after_block'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -770,11 +755,6 @@ $result_trees{'symbol_after_block'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -1619,7 +1599,6 @@ $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[0]{'parent'} = $
 $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[14];
-$result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[14]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[14]{'args'}[0]{'contents'}[0]{'line_nr'};
@@ -1640,7 +1619,6 @@ $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1]{'args'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[16];
-$result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[16]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[16]{'args'}[0]{'contents'}[0]{'line_nr'};
@@ -1657,7 +1635,6 @@ $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[0]{'parent'} = $
 $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1]{'args'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[20];
-$result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[20]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[20]{'args'}[0]{'contents'}[0]{'line_nr'};
@@ -1672,7 +1649,6 @@ $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1]{'args'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1]{'parent'} = $result_trees{'symbol_after_block'}{'contents'}[22];
-$result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'command_as_argument'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'extra'}{'end_command'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'contents'}[1];
 $result_trees{'symbol_after_block'}{'contents'}[22]{'line_nr'} = $result_trees{'symbol_after_block'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'line_nr'};

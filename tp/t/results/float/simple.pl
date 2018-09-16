@@ -118,14 +118,6 @@ $result_trees{'simple'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ],
         'caption' => {},
         'end_command' => {},
         'node_content' => [
@@ -167,8 +159,6 @@ $result_trees{'simple'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{
 $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
 $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'simple'}{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0];

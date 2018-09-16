@@ -181,11 +181,6 @@ $result_trees{'misc_raw_comments'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -267,7 +262,6 @@ $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0]{'par
 $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'extra'}{'comment_at_end'};
 $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'args'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'misc_raw_comments'}{'contents'}[3];
-$result_trees{'misc_raw_comments'}{'contents'}[3]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'misc_raw_comments'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'misc_raw_comments'}{'contents'}[3]{'contents'}[0];
 $result_trees{'misc_raw_comments'}{'contents'}[3]{'parent'} = $result_trees{'misc_raw_comments'};
 $result_trees{'misc_raw_comments'}{'contents'}[4]{'parent'} = $result_trees{'misc_raw_comments'};

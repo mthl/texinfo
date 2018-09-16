@@ -81,11 +81,6 @@ $result_trees{'comment_first_on_itemize_line'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'comment_at_end' => {
           'args' => [
@@ -126,7 +121,6 @@ $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[0]{'pa
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0];
-$result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'extra'}{'comment_at_end'};
 $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_first_on_itemize_line'}{'contents'}[0]{'args'}[1];

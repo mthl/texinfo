@@ -5342,7 +5342,7 @@ Menu comment
 
 <hr>
 <p><font size="-1">
-  Ce document a &eacute;t&eacute; g&eacute;n&eacute;r&eacute; le <em>le 15 septembre 2018</em>.
+  Ce document a &eacute;t&eacute; g&eacute;n&eacute;r&eacute; le <em>a sunny day</em>.
 </font></p>
 
 

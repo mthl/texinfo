@@ -113,11 +113,6 @@ $result_trees{'enumerate_in_style_command'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'enumerate_specification' => '1',
         'invalid_nesting' => 1,
@@ -145,7 +140,6 @@ $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[0]{'paren
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1];
-$result_trees{'enumerate_in_style_command'}{'contents'}[1]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'contents'}[1];
 $result_trees{'enumerate_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'enumerate_in_style_command'};
 

@@ -510,11 +510,6 @@ $result_trees{'itemize_long_item'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -604,7 +599,6 @@ $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[5]{'parent'} = $re
 $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6]{'args'}[0];
 $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6];
 $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'itemize_long_item'}{'contents'}[0];
-$result_trees{'itemize_long_item'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'itemize_long_item'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'itemize_long_item'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'itemize_long_item'}{'contents'}[0]{'contents'}[6];
 $result_trees{'itemize_long_item'}{'contents'}[0]{'parent'} = $result_trees{'itemize_long_item'};
 

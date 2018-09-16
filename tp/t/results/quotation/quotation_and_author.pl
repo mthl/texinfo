@@ -316,11 +316,6 @@ $result_trees{'quotation_and_author'} = {
         'authors' => [
           {}
         ],
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -381,7 +376,6 @@ $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'extra'}{'authors'}[0] = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0];
-$result_trees{'quotation_and_author'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'quotation_and_author'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'parent'} = $result_trees{'quotation_and_author'};
 
