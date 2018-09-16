@@ -102,11 +102,6 @@ $result_trees{'comments_end_lines'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_after_command_elt' => {}
@@ -320,11 +315,6 @@ $result_trees{'comments_end_lines'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'command_as_argument' => {},
         'end_command' => {},
         'spaces_before_argument' => ' '
@@ -859,14 +849,6 @@ $result_trees{'comments_end_lines'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ],
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'node_content' => [
           {}
@@ -1078,7 +1060,6 @@ $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'pa
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'};
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[0]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[2];
 $result_trees{'comments_end_lines'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comments_end_lines'}{'contents'}[0]{'contents'}[0];
@@ -1108,7 +1089,6 @@ $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0]{'pa
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'};
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[4];
-$result_trees{'comments_end_lines'}{'contents'}[4]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'contents'}[1];
 $result_trees{'comments_end_lines'}{'contents'}[4]{'line_nr'} = $result_trees{'comments_end_lines'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
@@ -1187,8 +1167,6 @@ $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0]{'p
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'};
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[14];
-$result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[0]{'contents'}[0];
-$result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'block_command_line_contents'}[1][0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[1]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[14]{'contents'}[1];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'node_content'}[0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[1]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[14]{'extra'}{'type'}{'content'}[0] = $result_trees{'comments_end_lines'}{'contents'}[14]{'args'}[0]{'contents'}[0];

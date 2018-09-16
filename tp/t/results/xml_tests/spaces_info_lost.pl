@@ -69,11 +69,6 @@ $result_trees{'spaces_info_lost'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'spaces_before_argument' => '  '
       },
@@ -135,7 +130,6 @@ $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[0]{'parent'} = $res
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[0];
-$result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'spaces_info_lost'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'spaces_info_lost'}{'contents'}[0]{'contents'}[1];
 $result_trees{'spaces_info_lost'}{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'};
 $result_trees{'spaces_info_lost'}{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'};

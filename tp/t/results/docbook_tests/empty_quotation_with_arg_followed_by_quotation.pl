@@ -58,11 +58,6 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'} = {
         }
       ],
       'extra' => {
-        'block_command_line_contents' => [
-          [
-            {}
-          ]
-        ],
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -152,7 +147,6 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0];
-$result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'extra'}{'block_command_line_contents'}[0][0] = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[0]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'};
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[1]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'};
