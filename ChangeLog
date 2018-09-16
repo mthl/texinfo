@@ -1,3 +1,8 @@
+2018-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/maintain/regenerate_cmd_tests.sh: Less indirection in test 
+	scripts.
+
 2018-09-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_remove_empty_content_arguments):
