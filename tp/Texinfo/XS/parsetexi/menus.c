@@ -46,7 +46,7 @@ register_extra_menu_entry_information (ELEMENT *current)
         {
           NODE_SPEC_EXTRA *parsed_entry_node;
 
-          isolate_last_space (arg, ET_space_at_end_menu_node);
+          isolate_last_space (arg);
 
           parsed_entry_node = parse_node_manual (arg);
           if (!parsed_entry_node)

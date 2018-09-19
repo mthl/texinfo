@@ -43,10 +43,8 @@ void debug_nonl (char *s, ...);
 extern int debug_output;
 
 /* In separator.c */
-void register_command_arg (ELEMENT *current, char *key);
 ELEMENT *handle_separator (ELEMENT *current, char separator,
                            char **line_inout);
-void remove_empty_content_arguments (ELEMENT *current);
 
 /* In parser.c */
 ELEMENT *parse_texi (ELEMENT *root_elt);
@@ -58,7 +56,7 @@ int abort_empty_line (ELEMENT **current_inout, char *additional);
 ELEMENT *end_paragraph (ELEMENT *current,
                         enum command_id closed_command,
                         enum command_id interrupting_command);
-void isolate_last_space (ELEMENT *current, enum element_type type);
+void isolate_last_space (ELEMENT *current);
 int command_with_command_as_argument (ELEMENT *current);
 void mark_and_warn_invalid (enum command_id command,
                             enum command_id invalid_parent,

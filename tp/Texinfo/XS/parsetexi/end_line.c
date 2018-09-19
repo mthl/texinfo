@@ -1132,8 +1132,7 @@ end_line_starting_block (ELEMENT *current)
     }
   else
     {
-      isolate_last_space (current, ET_space_at_end_block_command); // 2939
-      register_command_arg (current, "block_command_line_contents");
+      isolate_last_space (current); // 2939
     }
 
   if (current->parent->cmd == CM_float) // 2943
@@ -1189,7 +1188,6 @@ end_line_starting_block (ELEMENT *current)
       insert_into_contents (current, e, 0);
       destroy_element (pop_element_from_args (current));
     }
-  remove_empty_content_arguments (current);
 
   if (command_flags(current) & CF_blockitem) // 2981
     {
@@ -1396,7 +1394,7 @@ end_line_misc_line (ELEMENT *current)
   enum command_id end_id;
   int included_file = 0;
 
-  isolate_last_space (current, 0);
+  isolate_last_space (current);
 
   current = current->parent;
   misc_cmd = current;

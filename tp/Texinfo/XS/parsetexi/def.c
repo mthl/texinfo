@@ -227,7 +227,7 @@ split_def_args (ELEMENT *current, int starting_idx)
       int len;
       if (e->type == ET_bracketed)
         {
-          isolate_last_space (e, 0);
+          isolate_last_space (e);
           e->type = ET_bracketed_def_content;
           continue;
         }

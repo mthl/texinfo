@@ -521,110 +521,120 @@ owning_element_found:
   return retval;
 }
 
-/* 2149 */
-/* Split any trailing whitespace on the last contents child of CURRENT into
-   its own element, ET_spaces_at_end by default.
-  
-   This is used for the argument to a line command, and for the arguments to a 
-   brace command taking a given number of arguments.
-
-   This helps with argument parsing as there will be no leading or trailing 
-   spaces.
-
-   Also, "to help expansion disregard unuseful spaces".  Could that mean
-   macro expansion? */
-void
-isolate_last_space (ELEMENT *current, enum element_type element_type)
+static void
+isolate_last_space_internal (ELEMENT *current)
 {
-  ELEMENT *last = last_contents_child (current);
-  char *end_spaces;
+  ELEMENT *last_elt;
 
-  if (!element_type)
-    element_type = ET_spaces_at_end;
+  last_elt = last_contents_child (current);
+  char *text = element_text (last_elt);
+  if (!text || !*text)
+    return;
 
-  if (last)
+  int text_len = strlen (text);
+  /* Does the text end in whitespace? */
+  if (strchr (whitespace_chars, text[text_len - 1]))
     {
-      int index = -1;
-      ELEMENT *indexed_elt;
-
-      /* If a "misc" (i.e. line) command is last on line, isolate the space in 
-         the element before it.  This covers the case of a "@c" at the end
-         of a line. */
-      if (element_contents_number (current) > 1)
+      /* If text all whitespace */
+      if (text[strspn (text, whitespace_chars)] == '\0')
         {
-          if (last->cmd)
-            {
-              if (command_flags(last) & CF_misc)
-                index = -2;
-            }
+          add_extra_string_dup (current, "spaces_after_argument",
+                                last_elt->text.text);
+          pop_element_from_contents (current);
+          /* FIXME: destroy_element? */
         }
-
-      indexed_elt = contents_child_by_index (current, index);
-      if (indexed_elt)
+      else
         {
-          char *text = element_text (indexed_elt);
-          if (!text || !*text)
-            return;
+          int i, trailing_spaces;
+          static TEXT t;
 
-          if (indexed_elt->type == ET_NONE)
-            {
-              int text_len = strlen (text);
-              /* 2170 */
-              /* Does the text end in whitespace? */
-              if (strchr (whitespace_chars, text[text_len - 1]))
-                {
-                  /* If text all whitespace */
-                  if (text[strspn (text, whitespace_chars)] == '\0')
-                    {
-                      if (index == -1 && current->type == ET_brace_command_arg)
-                        {
-                          add_extra_string (current, "spaces_after_argument",
-                                            strdup (indexed_elt->text.text));
-                          pop_element_from_contents (current);
-                          /* FIXME: destroy_element? */
-                        }
-                      else
-                        indexed_elt->type = element_type;
-                    }
-                  else
-                    {
-                      /* 2173 */
-                      ELEMENT *new_spaces;
-                      int i, trailing_spaces;
+          text_reset (&t);
 
-                      /* "strrcspn" */
-                      trailing_spaces = 0;
-                      for (i = strlen (text) - 1;
-                           i > 0 && strchr (whitespace_chars, text[i]);
-                           i--)
-                        trailing_spaces++;
-                      
-                      new_spaces = new_element (element_type);
-                      text_append_n (&new_spaces->text,
-                                     text + text_len - trailing_spaces,
-                                     trailing_spaces);
-                      text[text_len - trailing_spaces] = '\0';
-                      indexed_elt->text.end -= trailing_spaces;
+          trailing_spaces = 0;
+          for (i = strlen (text) - 1;
+               i > 0 && strchr (whitespace_chars, text[i]);
+               i--)
+            trailing_spaces++;
 
-                      if (index == -1
-                          && current->type == ET_brace_command_arg)
-                        {
-                          add_extra_string (current, "spaces_after_argument",
-                                            new_spaces->text.text);
-                          new_spaces->text.end = 0;
-                          new_spaces->text.text = 0;
-                          destroy_element (new_spaces);
-                        }
-                      else if (index == -1)
-                        add_to_element_contents (current, new_spaces);
-                      else
-                        insert_into_contents (current, new_spaces, -1);
-                    }
-                }
-            }
+          text_append_n (&t,
+                         text + text_len - trailing_spaces,
+                         trailing_spaces);
+
+          text[text_len - trailing_spaces] = '\0';
+          last_elt->text.end -= trailing_spaces;
+
+          add_extra_string_dup (current, "spaces_after_argument",
+                                t.text);
         }
     }
 }
+
+static void
+isolate_last_space_menu_entry_node (ELEMENT *current)
+{
+  ELEMENT *last_elt;
+  char *text;
+  int text_len;
+
+  last_elt = last_contents_child (current);
+  text = element_text (last_elt);
+  if (!text || !*text)
+    return;
+
+  text_len = strlen (text);
+  /* Does the text end in whitespace? */
+  if (strchr (whitespace_chars, text[text_len - 1]))
+    {
+      /* If text all whitespace */
+      if (text[strspn (text, whitespace_chars)] == '\0')
+        {
+          last_elt->type = ET_space_at_end_menu_node;
+        }
+      else
+        {
+          ELEMENT *new_spaces;
+          int i, trailing_spaces;
+
+          trailing_spaces = 0;
+          for (i = strlen (text) - 1;
+               i > 0 && strchr (whitespace_chars, text[i]);
+               i--)
+            trailing_spaces++;
+
+          new_spaces = new_element (ET_space_at_end_menu_node);
+          text_append_n (&new_spaces->text,
+                         text + text_len - trailing_spaces,
+                         trailing_spaces);
+          text[text_len - trailing_spaces] = '\0';
+          last_elt->text.end -= trailing_spaces;
+
+          add_to_element_contents (current, new_spaces);
+        }
+    }
+}
+
+void
+isolate_last_space (ELEMENT *current)
+{
+  if (current->contents.number == 0)
+    return;
+
+  if (last_contents_child(current)->cmd == CM_c
+      || last_contents_child(current)->cmd == CM_comment)
+    {
+      add_extra_element_oot (current->parent, "spaces_after_argument",
+                             pop_element_from_contents (current));
+    }
+
+  if (current->contents.number == 0)
+    return;
+
+  if (current->type == ET_menu_entry_node)
+    isolate_last_space_menu_entry_node (current);
+  else
+    isolate_last_space_internal (current);
+}
+
 
 // 5467, also in Common.pm 1334
 /* Return a new element whose contents are the same as those of ORIGINAL,

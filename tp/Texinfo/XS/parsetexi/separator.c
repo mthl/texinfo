@@ -319,8 +319,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           // 5033
           /* @inline* always have end spaces considered as normal text */
           if (!(command_flags(current->parent) & CF_inline))
-            isolate_last_space (current, 0);
-          remove_empty_content_arguments (current);
+            isolate_last_space (current);
         }
 
       closed_command = current->parent->cmd;
@@ -641,42 +640,6 @@ funexit:
   return current;
 }
 
-// 2577
-/* Remove 'block_command_line_contents' extra value if empty.
-   TODO: If not empty, remove empty elements thereof. */
-void
-remove_empty_content_arguments (ELEMENT *current)
-{
-  KEY_PAIR *k;
-
-  k = lookup_extra (current, "block_command_line_contents");
-  if (!k)
-    return;
-
-  while (k->value->contents.number > 0
-         && !last_contents_child(k->value)) // ->contents.number == 0)
-    {
-      ELEMENT *array = pop_element_from_contents (k->value);
-      if (array)
-        {
-          int j;
-          for (j = 0 ; j < array->contents.number; j++)
-            {
-              if (array->contents.list[j])
-                destroy_element (array->contents.list[j]);
-            }
-          destroy_element (array);
-        }
-    }
-
-  if (k->value->contents.number == 0)
-    {
-      destroy_element (k->value);
-      k->key = "";
-      k->type = extra_deleted;
-    }
-}
-
 
 /* Handle a comma separating arguments to a Texinfo command. */
 /* 5228 */
@@ -688,22 +651,7 @@ handle_comma (ELEMENT *current, char **line_inout)
   ELEMENT *new_arg, *e;
 
   abort_empty_line (&current, NULL);
-
-  if (command_flags(current->parent) & CF_brace
-      && command_data(current->parent->cmd).data > 0)
-    {
-      // 5033
-      isolate_last_space (current, 0);
-      remove_empty_content_arguments (current);
-    }
-  else
-    {
-      isolate_last_space (current, 0);
-      if (command_flags(current->parent) & CF_block)
-        {
-          register_command_arg (current, "block_command_line_contents");
-        }
-    }
+  isolate_last_space (current);
 
   type = current->type;
   current = current->parent;
