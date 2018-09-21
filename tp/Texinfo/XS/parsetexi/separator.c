@@ -170,6 +170,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
             add_to_element_contents (current, e);
             add_extra_element (current->parent,
                                    "spaces_before_argument_elt", e);
+            add_extra_element (e, "command", current);
             line += n;
           }
           current->type = ET_brace_command_context;
@@ -190,6 +191,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               text_append (&e->text, "");
               add_to_element_contents (current, e);
               add_extra_element (current, "spaces_before_argument_elt", e);
+              add_extra_element (e, "command", current);
 
               if (command == CM_inlineraw)
                 push_context (ct_inlineraw);
@@ -217,6 +219,7 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       add_to_element_contents (current, e);
       debug ("BRACKETED in def/multitable");
       add_extra_element (current, "spaces_before_argument_elt", e);
+      add_extra_element (e, "command", current);
     }
   else if (current->type == ET_rawpreformatted)
     {
@@ -814,6 +817,7 @@ inlinefmtifelse_done:
   text_append (&e->text, ""); /* See comment in parser.c:merge_text */
   add_to_element_contents (current, e);
   add_extra_element (current, "spaces_before_argument_elt", e);
+  add_extra_element (e, "command", current);
   
 funexit:
   *line_inout = line;

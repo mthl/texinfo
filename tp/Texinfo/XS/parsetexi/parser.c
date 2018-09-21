@@ -423,46 +423,12 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
           || last_child->type == ET_empty_spaces_after_close_brace))
     {
       ELEMENT *owning_element = 0, *e;
-      KEY_PAIR *owning_keypair = 0, *k;
-          
-      e = current;
-      if (current)
-        {
-          k = lookup_extra (current, "spaces_before_argument_elt");
-          if (k && k->value == last_contents_child (current))
-            goto owning_element_found;
-        }
+      KEY_PAIR *k;
 
-      e = current->parent;
-      if (current->parent)
+      k = lookup_extra (last_child, "command");
+      if (k)
         {
-          k = lookup_extra (current->parent, 
-                                "spaces_before_argument_elt");
-          if (k && k->value == last_contents_child (current))
-            goto owning_element_found;
-        }
-
-      e = current;
-      if (current)
-        {
-          k = lookup_extra (current, "spaces_after_command");
-          if (k && k->value == last_contents_child (current))
-            goto owning_element_found;
-        }
-
-      e = current->parent;
-      if (current->parent)
-        {
-          k = lookup_extra (current->parent, "spaces_after_command");
-          if (k && k->value == last_contents_child (current))
-            goto owning_element_found;
-        }
-
-      if (0)
-        {
-owning_element_found:
-          owning_element = e;
-          owning_keypair = k;
+          owning_element = (ELEMENT *) k->value;
         }
 
       debug ("ABORT EMPTY %s additional text |%s| "
@@ -478,39 +444,35 @@ owning_element_found:
           e = pop_element_from_contents (current);
           destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
-
-          if (owning_keypair)
+          if (owning_element)
             {
-              owning_keypair->key = "";
-              owning_keypair->value = 0;
-              owning_keypair->type = extra_deleted;
+              delete_extra (owning_element, "spaces_before_argument_elt");
+              delete_extra (owning_element, "spaces_after_command_elt");
             }
         }
-      else if (last_child->type == ET_empty_line) //2132
+      else if (last_child->type == ET_empty_line)
         {
           last_child->type = begin_paragraph_p (current)
                              ? ET_empty_spaces_before_paragraph : ET_NONE;
         }
-      else if (last_child->type == ET_empty_line_after_command)
+      else if (last_child->type == ET_empty_line_after_command
+               || last_child->type == ET_empty_spaces_before_argument)
         {
-          last_child->type = ET_empty_spaces_after_command;
-        }
-      else if (last_child->type == ET_empty_spaces_before_argument)
-        {
-          /* Remove element from main tree. */
-          ELEMENT *e = pop_element_from_contents (current);
-          
-          if (owning_keypair)
+          if (owning_element)
             {
-              /* Replace element reference with a simple string. */
+              /* Remove element from main tree. */
+              ELEMENT *e = pop_element_from_contents (current);
               add_extra_string_dup (owning_element, "spaces_before_argument",
-                                    owning_keypair->value->text.text);
-
-              owning_keypair->key = "";
-              owning_keypair->value = 0;
-              owning_keypair->type = extra_deleted;
+                                    e->text.text);
+              destroy_element (e);
+              delete_extra (owning_element, "spaces_before_argument_elt");
+              delete_extra (owning_element, "spaces_after_command_elt");
             }
-          destroy_element (e);
+          else
+            {
+              last_child->type = ET_empty_spaces_after_command;
+              abort ();
+            }
         }
       retval = 1;
     }
@@ -622,7 +584,7 @@ isolate_last_space (ELEMENT *current)
   if (last_contents_child(current)->cmd == CM_c
       || last_contents_child(current)->cmd == CM_comment)
     {
-      add_extra_element_oot (current->parent, "spaces_after_argument",
+      add_extra_element_oot (current->parent, "comment_at_end",
                              pop_element_from_contents (current));
     }
 
@@ -702,7 +664,8 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
 
   if (command)
     {
-      add_extra_element (command, "spaces_after_command", e);
+      add_extra_element (command, "spaces_after_command_elt", e);
+      add_extra_element (e, "command", command);
     }
 
   *line_inout = line;

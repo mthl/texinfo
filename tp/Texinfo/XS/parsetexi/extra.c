@@ -45,6 +45,18 @@ add_extra_key (ELEMENT *e, char *key, ELEMENT *value,
   e->extra[i].type = type;
 }
 
+void
+delete_extra (ELEMENT *e, char *key)
+{
+  KEY_PAIR *k = lookup_extra (e, key);
+  if (k)
+    {
+      k->key = "";
+      k->value = 0; /* should really free this */
+      k->type = extra_deleted;
+    }
+}
+
 /* Add an extra key that is a reference to another element (for example, 
    'associated_section' on a node command element. */
 void
