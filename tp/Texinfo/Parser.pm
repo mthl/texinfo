@@ -2144,11 +2144,6 @@ sub _abort_empty_line {
         delete ($owning_element->{'extra'}->{'spaces_before_argument_elt'});
         delete ($owning_element->{'extra'})
           if !(keys(%{$owning_element->{'extra'}}));
-      } elsif ($owning_element
-          and $owning_element->{'extra'}->{'spaces_after_command_elt'}) {
-        delete ($owning_element->{'extra'}->{'spaces_after_command_elt'});
-        delete ($owning_element->{'extra'})
-          if !(keys(%{$owning_element->{'extra'}}));
       }
     } elsif ($spaces_element->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph
@@ -2169,7 +2164,6 @@ sub _abort_empty_line {
         $owning_element->{'extra'}->{'spaces_before_argument'}
           = $spaces_element->{'text'};
         delete $owning_element->{'extra'}->{'spaces_before_argument_elt'};
-        delete $owning_element->{'extra'}->{'spaces_after_command_elt'};
       } else {
         $spaces_element->{'type'} = 'empty_spaces_after_command';
       }
@@ -3418,7 +3412,6 @@ sub _start_empty_line_after_command($$$) {
                                     'parent' => $current, 
                                   };
   if (defined($command)) {
-    $command->{'extra'}->{'spaces_after_command_elt'} = $current->{'contents'}->[-1];
     $current->{'contents'}->[-1]->{'extra'} = {'command' => $command};
   }
   return $line;

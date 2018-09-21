@@ -1,3 +1,10 @@
+2018-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_start_empty_line_after_command):
+	Do not set a 'spaces_after_command_elt' value.
+	(_abort_empty_line): Do not clear a 'spaces_after_command_elt' value.
+	* tp/Texinfo/XS/misc.c (xs_abort_empty_line): Make the same change.
+
 2018-09-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/maintain/regenerate_cmd_tests.sh: Less indirection in test 

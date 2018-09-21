@@ -55,7 +55,8 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
   int contents_num;
   HV *spaces_elt;
   //char *key;
-  HV *test_extra;
+  HV *test_extra = 0;
+  HV *command_extra = 0;
 
   HV *owning_elt = 0;
   char *type;
@@ -119,7 +120,8 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
         {
           owning_elt = (HV *) SvRV (*svp);
           svp = hv_fetch (owning_elt, "extra", strlen ("extra"), 0);
-          test_extra = (HV *) SvRV (*svp);
+          if (svp)
+            command_extra = (HV *) SvRV (*svp);
         }
     }
 
@@ -139,20 +141,19 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
 
       if (owning_elt)
         {
-          /* We found an "extra" reference to this element.  Remove it. */
-          hv_delete (test_extra,
-                     "spaces_before_argument_elt",
-                     strlen ("spaces_before_argument_elt"),
-                     G_DISCARD);
-          hv_delete (test_extra,
-                     "spaces_after_command_elt",
-                     strlen ("spaces_after_command_elt"),
-                     G_DISCARD);
+          if (command_extra)
+            {
+              /* We found an "extra" reference to this element.  Remove it. */
+              hv_delete (command_extra,
+                         "spaces_before_argument_elt",
+                         strlen ("spaces_before_argument_elt"),
+                         G_DISCARD);
 
-          /* If the extra hash now empty, remove it as well. */
-          hv_iterinit (test_extra);
-          if (!hv_iternext (test_extra))
-            hv_delete (owning_elt, "extra", strlen ("extra"), G_DISCARD);
+              /* If the extra hash now empty, remove it as well. */
+              hv_iterinit (command_extra);
+              if (!hv_iternext (command_extra))
+                hv_delete (owning_elt, "extra", strlen ("extra"), G_DISCARD);
+            }
         }
     }
   else if (!strcmp (type, "empty_line"))
@@ -223,18 +224,20 @@ delete_type:
 
           ptr = SvPV(existing_text_sv, len);
           /* Replace element reference with a simple string. */
-          hv_store (test_extra,
+          if (!command_extra)
+            {
+              command_extra = newHV ();
+              hv_store (owning_elt, "extra", strlen ("extra"),
+                        newRV_inc((SV *)command_extra), 0);
+            }
+          hv_store (command_extra,
                     "spaces_before_argument",
                     strlen ("spaces_before_argument"),
                     newSVpv(ptr, len),
                     0);
-          hv_delete (test_extra,
+          hv_delete (command_extra,
                      "spaces_before_argument_elt",
                      strlen ("spaces_before_argument_elt"),
-                     G_DISCARD);
-          hv_delete (test_extra,
-                     "spaces_after_command_elt",
-                     strlen ("spaces_after_command_elt"),
                      G_DISCARD);
         }
       else
