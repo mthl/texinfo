@@ -1305,39 +1305,24 @@ end_line_starting_block (ELEMENT *current)
          @itemize, and @asis for @table. */
       if (current->cmd == CM_itemize
           && (current->args.number == 0
-              || current->args.list[0]->args.number == 0))
+              || current->args.list[0]->contents.number == 0))
         {
           ELEMENT *e, *contents, *contents2;
 
           e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_bullet;
-          e->parent_type = route_not_in_tree;
-          e->parent = current;
-          add_extra_element_oot (current, "command_as_argument", e);
-
-          contents = new_element (ET_NONE);
-          contents2 = new_element (ET_NONE);
-          contents2->parent_type = route_not_in_tree;
-          add_to_contents_as_array (contents2, e);
-          add_to_element_contents (contents, contents2);
+          insert_into_args (current, e, 0);
+          add_extra_element (current, "command_as_argument", e);
         }
       else if (item_line_command (current->cmd)
           && !lookup_extra (current, "command_as_argument"))
         { // 3064
           ELEMENT *e, *contents, *contents2;
 
-          e = new_element (ET_command_as_argument);
+          e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_asis;
-          e->parent_type = route_not_in_tree;
-          e->parent = current;
-          add_extra_element_oot (current, "command_as_argument", e);
-
-          contents = new_element (ET_NONE);
-          contents2 = new_element (ET_NONE);
-          contents2->parent_type = route_not_in_tree;
-          add_to_contents_as_array (contents2, e);
-          add_to_element_contents (contents, contents2);
-          // FIXME: code duplication
+          insert_into_args (current, e, 0);
+          add_extra_element (current, "command_as_argument", e);
         }
 
       {

@@ -247,6 +247,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_menu_entry_name
       || e->type == ET_brace_command_arg
       || e->type == ET_brace_command_context
+      || e->type == ET_block_line_arg
       || e->type == ET_before_item
       || e->type == ET_inter_item
       || e->cmd == CM_TeX
@@ -335,7 +336,6 @@ element_to_perl_hash (ELEMENT *e)
           switch (e->extra[i].type)
             {
             case extra_element:
-            case extra_element_oot:
               /* For references to other parts of the tree, create the hash so 
                  we can point to it.  */
               if (!f->hv)
@@ -350,6 +350,11 @@ element_to_perl_hash (ELEMENT *e)
                   else
                     element_to_perl_hash (f);
                 }
+              STORE(newRV_inc ((SV *)f->hv));
+              break;
+            case extra_element_oot:
+              if (!f->hv)
+                element_to_perl_hash (f);
               STORE(newRV_inc ((SV *)f->hv));
               break;
             case extra_element_contents:

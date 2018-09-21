@@ -222,6 +222,26 @@ insert_into_contents (ELEMENT *parent, ELEMENT *e, int where)
   list->number++;
 }
 
+/* Add the element E into the arguments of PARENT at index WHERE. */
+void
+insert_into_args (ELEMENT *parent, ELEMENT *e, int where)
+{
+  ELEMENT_LIST *list = &parent->args;
+  reallocate_list (list);
+
+  if (where < 0)
+    where = list->number + where;
+
+  if (where < 0 || where > list->number)
+    abort ();
+
+  memmove (&list->list[where + 1], &list->list[where],
+           (list->number - where) * sizeof (ELEMENT *));
+  list->list[where] = e;
+  e->parent = parent;
+  list->number++;
+}
+
 ELEMENT *
 remove_from_contents (ELEMENT *parent, int where)
 {
