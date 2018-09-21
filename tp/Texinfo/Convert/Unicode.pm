@@ -522,6 +522,7 @@ our %unicode_map = (
                'ordm'              => '00BA',
                'comma'             => '002C',
                'atchar'            => '0040',
+               'ampchar'           => '0026',
                'lbracechar'        => '007B',
                'rbracechar'        => '007D',
                'backslashchar'     => '005C',

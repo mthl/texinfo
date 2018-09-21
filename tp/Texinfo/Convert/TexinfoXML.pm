@@ -86,6 +86,7 @@ our %commands_formatting = (
            '@' => 'arobase',
            '{' => 'lbrace',
            '}' => 'rbrace',
+           '&' => 'amp',
            '\\' => 'backslash',  # should only appear in math
 
            'TeX' => 'tex',
@@ -108,6 +109,7 @@ our %commands_formatting = (
            'today'        => ['today'],
            'comma'        => 'comma',
            'atchar'       => 'atchar',
+           'ampchar'      => 'ampchar',
            'lbracechar'   => 'lbracechar',
            'rbracechar'   => 'rbracechar',
            'backslashchar' => 'backslashchar',

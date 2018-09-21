@@ -4811,7 +4811,7 @@ sub converter_initialize($)
               and !$self->_use_entity_is_entity($default_commands_formatting{$context}->{$command})) {
             $self->{'commands_formatting'}->{$context}->{$command}
               = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
-                             $command, $self->get_conf('OUTPUT_ENCODING_NAME'))
+                           $command, $self->get_conf('OUTPUT_ENCODING_NAME'));
           } else {
             $self->{'commands_formatting'}->{$context}->{$command} 
               = $default_commands_formatting{$context}->{$command};

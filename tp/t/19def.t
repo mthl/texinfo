@@ -508,7 +508,13 @@ bbb
 '@deffn truc bidule machin
 @deffnx truc chose args
 @defvar type1 var bidule
-']
+'],
+['ampchar',
+'@defop {Constructor} a b (@code{const std::vector<int>@&})
+@end defop
+& @& @ampchar{} @{ @} @@
+',
+{'test_formats' => ['plaintext', 'html', 'xml', 'docbook']}],
 );
 
 my @test_printindex = ();

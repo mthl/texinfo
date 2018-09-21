@@ -113,6 +113,7 @@ our %text_brace_no_arg_commands = (
                'ordm'         => 'o',
                'comma'        => ',',
                'atchar'       => '@',
+               'ampchar'      => '&',
                'lbracechar'   => '{',
                'rbracechar'   => '}',
                'backslashchar' => '\\',

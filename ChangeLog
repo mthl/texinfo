@@ -1,5 +1,31 @@
 2018-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%no_brace_commands): Add '&'.
+	(%brace_commands): Add 'ampchar'.
+	* tp/Texinfo/Convert/Converter.pm
+	(%defaul_xml_commands_formatting): Add 'ampchar'.
+	* tp/Texinfo/Convert/TexinfoXML.pm (%commands_formatting): Add 
+	'&', 'ampchar'.
+	* tp/Texinfo/Convert/Text.pm (%text_brace_no_arg_commands): Add 
+	'ampchar'.
+	* tp/Texinfo/Convert/Unicode.pm (%unicode_map): Add 'ampchar'.
+	* tp/Texinfo/XS/misc.c (parse_texi_regex),
+	* tp/Texinfo/Parser.pm (_parse_texi_regex): Include & as a 
+	single letter command.
+
+	* tp/t/19def.t (ampchar): New test.
+
+	* util/texinfo.dtd: Add 'ampchar'.
+	* configure.ac (TEXINFO_DTD_VERSION): Increase to '6.4dev'.
+
+	* doc/texinfo.tex (\ampchar): Define.
+
+	* doc/texinfo.texi (Inserting an Ampersand): New section.
+
+	* NEWS: Mention @&, @ampchar{}.
+
+2018-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi):
 	Do not set a 'spaces_after_command_elt' value.
 	(_abort_empty_line): Do not clear a 'spaces_before_argument_elt' 

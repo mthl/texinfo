@@ -377,6 +377,7 @@ our %no_brace_commands;             # commands never taking braces
            '@', '@',
            '}', '}',
            '{', '{',
+           '&', '&',
            '\\', '\\',  # should only appear in math
 );
 
@@ -566,6 +567,7 @@ foreach my $no_arg_command ('TeX','LaTeX','bullet','copyright',
   'minus','point','print','result','today',
   'exclamdown','questiondown','pounds','ordf','ordm',
   'atchar', 'lbracechar', 'rbracechar', 'backslashchar', 'hashchar', 'comma',
+  'ampchar',
   'euro', 'geq','leq','tie','textdegree','click',
   'quotedblleft','quotedblright','quoteleft','quoteright','quotedblbase',
   'quotesinglbase','guillemetleft','guillemetright','guillemotleft',

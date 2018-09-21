@@ -418,7 +418,7 @@ Combining Indices
 
 Special Insertions
 
-* Special Characters::          Inserting @@ @{@} , \ #
+* Special Characters::          Inserting @@ @{@} , \ # &
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             Inserting the right amount of whitespace.
 * Inserting Accents::           Inserting accents and special characters.
@@ -430,13 +430,14 @@ Special Insertions
                                  expansion of macros, errors, etc.
 * Inserting Unicode::           Inserting a Unicode character by code point.
 
-Special Characters: Inserting @@ @{@} , \ #
+Special Characters: Inserting @@ @{@} , \ # &
 
 * Inserting an Atsign::         @code{@@@@}, @code{@@atchar@{@}}.
 * Inserting Braces::            @code{@@@{ @@@}}, @code{@@l rbracechar@{@}}.
 * Inserting a Comma::           , and @code{@@comma@{@}}.
 * Inserting a Backslash::       \ and @code{@@backslashchar@{@}}.
 * Inserting a Hashsign::        # and @code{@@hashchar@{@}}.
+* Inserting an Ampersand::      & and @code{@@ampchar@{@}}.
 
 Inserting Space
 
@@ -9466,7 +9467,7 @@ elements that do not correspond to simple characters you can type.
 These are:
 
 @itemize @bullet
-@item The Texinfo special characters: @samp{@@ @{@} , \ #}.
+@item The Texinfo special characters: @samp{@@ @{@} , \ # &}.
 @item Whitespace within and around a sentence.
 @item Accents.
 @item Dots and bullets.
@@ -9481,7 +9482,7 @@ These are:
 @end iftex
 
 @menu
-* Special Characters::          Inserting @@ @{@} , \ #
+* Special Characters::          Inserting @@ @{@} , \ # &
 * Inserting Quote Characters::  Inserting left and right quotes, in code.
 * Inserting Space::             Inserting the right amount of whitespace.
 * Inserting Accents::           Inserting accents and special characters.
@@ -9496,7 +9497,7 @@ These are:
 
 
 @node Special Characters
-@section Special Characters: Inserting @@ @{@} , \ #
+@section Special Characters: Inserting @@ @{@} , \ # &
 @anchor{Braces Atsign}@c previous names for this node
 @anchor{Atsign Braces Comma}
 @cindex Special characters, inserting
@@ -9507,8 +9508,8 @@ Texinfo.  To insert these characters so they appear in text, you must
 put an @samp{@@} in front of these characters to prevent Texinfo from
 misinterpreting them.  Alphabetic commands are also provided.
 
-The other characters (comma, backslash, hash) are special only in
-restricted contexts, as explained in the respective sections.
+The other characters (comma, backslash, hash, ampersand) are special 
+only in restricted contexts, as explained in the respective sections.
 
 @menu
 * Inserting an Atsign::         @code{@@@@}, @code{@@atchar@{@}}.
@@ -9516,6 +9517,7 @@ restricted contexts, as explained in the respective sections.
 * Inserting a Comma::           , and @code{@@comma@{@}}.
 * Inserting a Backslash::       \ and @code{@@backslashchar@{@}}.
 * Inserting a Hashsign::        # and @code{@@hashchar@{@}}.
+* Inserting an Ampersand::      & and @code{@@ampchar@{@}}.
 @end menu
 
 
@@ -9659,6 +9661,57 @@ Here's an example:
 
 Although @samp{@@hashchar@{@}} can be used nearly anywhere, there
 is no need for it anywhere except this unusual case.
+
+
+@node Inserting an Ampersand
+@subsection Inserting `&' with @code{@@&} and @code{@@ampchar@{@}}
+
+@findex ampchar@{@} @r{(literal @samp{&})}
+@cindex Inserting &
+@cindex Ampersand, inserting
+
+Ordinarily, an ampersand `&' is a normal character in Texinfo that can be
+simply typed in your input where you need it.  The result is to
+typeset the ampersand character.
+
+However, the ampersand character has a special meaning in Texinfo in 
+just one restricted context.  In the argument to a definition command
+(@pxref{Definition Commands}), Emacs Lisp keywords beginning with 
+ampersands are recognized and typeset specially.  @xref{A Sample 
+Function Description,,, elisp, GNU Emacs Lisp Reference Manual}.
+For example:
+
+@example
+@@defun foo integer1 &optional integer2 &rest integers
+@@code@{foo@} described here.
+@@end defun
+@end example
+
+@noindent leads to the output
+
+@defun foo integer1 &optional integer2 &rest integers
+@code{foo} described here.
+@end defun
+
+So, in order to typeset an ampersand in such a context (for example, in 
+documentation of a C++ function taking a reference as a parameter),
+it's necessary to use @code{@@&} or some other construct.
+Here's an example:
+
+@example
+@@deftypefn Function int foo (@@code@{const std::vector<int>@@&@} bar)
+Documentation of @@code@{foo@}.
+@@end deftypefn
+@end example
+
+@noindent This gives the output 
+
+@deftypefn Function int foo (@code{const std::vector<int>@&} bar)
+Documentation of @code{foo}.
+@end deftypefn
+
+Although @samp{@@&} and @samp{@@ampchar@{@}} can be used nearly 
+anywhere, there is no need for them anywhere except this unusual case.
 
 
 @node Inserting Quote Characters

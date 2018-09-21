@@ -1463,6 +1463,7 @@ $default_xml_commands_formatting{'normal'} = {
                'ordm'         => '&ordm;',
                'comma'        => ',',
                'atchar'       => '@',
+               'ampchar'      => '&amp;',
                'lbracechar'   => '{',
                'rbracechar'   => '}',
                'backslashchar' => '\\',
@@ -1490,6 +1491,8 @@ foreach my $no_brace_command (keys(%Texinfo::Common::no_brace_commands)) {
   $default_xml_commands_formatting{'normal'}->{$no_brace_command}
     = $Texinfo::Common::no_brace_commands{$no_brace_command};
 }
+
+$default_xml_commands_formatting{'normal'}->{'&'} = '&amp;';
 
 sub xml_comment($$)
 {
