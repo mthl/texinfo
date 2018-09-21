@@ -2139,12 +2139,6 @@ sub _abort_empty_line {
     if ($spaces_element->{'text'} eq '') {
       pop @{$current->{'contents'}};
 
-      if ($owning_element
-          and $owning_element->{'extra'}->{'spaces_before_argument_elt'}) {
-        delete ($owning_element->{'extra'}->{'spaces_before_argument_elt'});
-        delete ($owning_element->{'extra'})
-          if !(keys(%{$owning_element->{'extra'}}));
-      }
     } elsif ($spaces_element->{'type'} eq 'empty_line') {
       # exactly the same condition than to begin a paragraph
       if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
@@ -2160,10 +2154,8 @@ sub _abort_empty_line {
         # the 'extra' hash as 'spaces_before_argument'.
         pop @{$current->{'contents'}};
 
-        # Replace element reference with a simple string.
         $owning_element->{'extra'}->{'spaces_before_argument'}
           = $spaces_element->{'text'};
-        delete $owning_element->{'extra'}->{'spaces_before_argument_elt'};
       } else {
         $spaces_element->{'type'} = 'empty_spaces_after_command';
       }
@@ -4921,8 +4913,6 @@ sub _parse_texi($;$)
                             'parent' => $current,
                             'extra' => {'command' => $current->{'parent'}}
                                       };
-              $current->{'parent'}->{'extra'}->{'spaces_before_argument_elt'}
-                 = $current->{'contents'}->[-1];
             } else {
               $current->{'type'} = 'brace_command_arg';
               if ($brace_commands{$command}
@@ -4934,8 +4924,6 @@ sub _parse_texi($;$)
                             'parent' => $current,
                             'extra' => {'command' => $current}
                                       };
-                $current->{'extra'}->{'spaces_before_argument_elt'}
-                   = $current->{'contents'}->[-1];
               }
               if ($inline_commands{$command}) {
                 push @{$self->{'context_stack'}}, $command
@@ -4966,9 +4954,6 @@ sub _parse_texi($;$)
                  'extra' => {'command' => $current}
                };
             print STDERR "BRACKETED in def/multitable\n" if ($self->{'DEBUG'});
-            $current->{'extra'}->{'spaces_before_argument_elt'}
-               = $current->{'contents'}->[-1];
-
           # lone braces accepted right in a rawpreformatted
           } elsif ($current->{'type'} 
                    and $current->{'type'} eq 'rawpreformatted') {
@@ -5366,8 +5351,6 @@ sub _parse_texi($;$)
                   'parent' => $current,
                   'extra' => {'command' => $current}
                 };
-          $current->{'extra'}->{'spaces_before_argument_elt'}
-            = $current->{'contents'}->[-1];
         } elsif ($separator eq ',' and $current->{'type'}
             and $current->{'type'} eq 'misc_line_arg'
             and $current->{'parent'}->{'cmdname'} 
@@ -6851,12 +6834,6 @@ text element.
 
 For @-commands with opening brace followed by spaces held in a 
 C<empty_spaces_before_argument> element, a reference to those spaces.
-
-=item spaces_before_argument_elt
-
-For @-commands with opening brace followed by spaces held in a 
-C<empty_spaces_before_argument> element, a reference to that element.
-Should not occur in final tree.
 
 =item spaces
 

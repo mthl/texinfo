@@ -138,23 +138,6 @@ xs_abort_empty_line (HV *self, HV *current, SV *additional_spaces_in)
     {
       /* Remove spaces_elt */
       av_pop (contents_array);
-
-      if (owning_elt)
-        {
-          if (command_extra)
-            {
-              /* We found an "extra" reference to this element.  Remove it. */
-              hv_delete (command_extra,
-                         "spaces_before_argument_elt",
-                         strlen ("spaces_before_argument_elt"),
-                         G_DISCARD);
-
-              /* If the extra hash now empty, remove it as well. */
-              hv_iterinit (command_extra);
-              if (!hv_iternext (command_extra))
-                hv_delete (owning_elt, "extra", strlen ("extra"), G_DISCARD);
-            }
-        }
     }
   else if (!strcmp (type, "empty_line"))
     {
@@ -235,10 +218,6 @@ delete_type:
                     strlen ("spaces_before_argument"),
                     newSVpv(ptr, len),
                     0);
-          hv_delete (command_extra,
-                     "spaces_before_argument_elt",
-                     strlen ("spaces_before_argument_elt"),
-                     G_DISCARD);
         }
       else
         {
