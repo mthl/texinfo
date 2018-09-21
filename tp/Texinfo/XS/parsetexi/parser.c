@@ -444,11 +444,6 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
           e = pop_element_from_contents (current);
           destroy_element (e);
           /* TODO: Maybe we could avoid adding it in the first place? */
-          if (owning_element)
-            {
-              delete_extra (owning_element, "spaces_before_argument_elt");
-              delete_extra (owning_element, "spaces_after_command_elt");
-            }
         }
       else if (last_child->type == ET_empty_line)
         {
@@ -465,13 +460,10 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
               add_extra_string_dup (owning_element, "spaces_before_argument",
                                     e->text.text);
               destroy_element (e);
-              delete_extra (owning_element, "spaces_before_argument_elt");
-              delete_extra (owning_element, "spaces_after_command_elt");
             }
           else
             {
               last_child->type = ET_empty_spaces_after_command;
-              abort ();
             }
         }
       retval = 1;
@@ -490,7 +482,7 @@ isolate_last_space_internal (ELEMENT *current)
 
   last_elt = last_contents_child (current);
   char *text = element_text (last_elt);
-  if (!text || !*text)
+  if (!text || !*text || last_elt->type)
     return;
 
   int text_len = strlen (text);
@@ -540,7 +532,7 @@ isolate_last_space_menu_entry_node (ELEMENT *current)
 
   last_elt = last_contents_child (current);
   text = element_text (last_elt);
-  if (!text || !*text)
+  if (!text || !*text || last_elt->type)
     return;
 
   text_len = strlen (text);
@@ -663,10 +655,7 @@ start_empty_line_after_command (ELEMENT *current, char **line_inout,
   line += len;
 
   if (command)
-    {
-      add_extra_element (command, "spaces_after_command_elt", e);
-      add_extra_element (e, "command", command);
-    }
+    add_extra_element (e, "command", command);
 
   *line_inout = line;
 }
