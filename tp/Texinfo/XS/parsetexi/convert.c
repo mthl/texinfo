@@ -66,6 +66,9 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
     }
 
   // TODO extra spaces
+  k = lookup_extra (e, "spaces_before_argument");
+  if (k)
+    ADD((char *)k->value);
 
   // TODO multitable or block command
 

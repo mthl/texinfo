@@ -1129,10 +1129,11 @@ end_line_starting_block (ELEMENT *current)
         command_warn (current->parent, "empty multitable");
       }
       add_extra_contents (current->parent, "prototypes", prototypes);
+      isolate_last_space (current);
     }
   else
     {
-      isolate_last_space (current); // 2939
+      isolate_last_space (current);
     }
 
   if (current->parent->cmd == CM_float) // 2943
