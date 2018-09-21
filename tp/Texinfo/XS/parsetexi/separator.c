@@ -25,42 +25,6 @@
 #include "input.h"
 #include "labels.h"
 
-// 3600
-/* Add the contents of CURRENT as an element to the extra value with
-   key KEY, except that some "empty space" elements are removed.  Used for
-   'block_command_line_contents' for the arguments to a block line command.
-TODO: This function should go away once we make the same change for
-"block commands" as were made for "brace commands".
-   */
-void
-register_command_arg (ELEMENT *current, char *key)
-{
-  ELEMENT *value;
-  ELEMENT *new;
-  KEY_PAIR *k;
-
-  new = trim_spaces_comment_from_content (current);
-  if (new->contents.number == 0)
-    {
-      free (new);
-      new = 0;
-    }
-
-  /* FIXME: Could we add all the command args together, instead of one-by-one,
-     to avoid having to look for the extra value every time? */
-  k = lookup_extra (current->parent, key);
-  if (k)
-    value = k->value;
-  else
-    {
-      value = new_element (ET_NONE);
-      value->parent_type = route_not_in_tree;
-      add_extra_contents_array (current->parent, key, value);
-    }
-
-  add_to_contents_as_array (value, new);
-}
-
 /* 4888 */
 ELEMENT *
 handle_open_brace (ELEMENT *current, char **line_inout)

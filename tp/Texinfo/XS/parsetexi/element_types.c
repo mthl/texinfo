@@ -1,6 +1,7 @@
 char *element_type_names[] = {
 0,
 "command_as_argument",
+"command_as_argument_inserted",
 "index_entry_command",
 "following_arg",
 "space_command_arg",

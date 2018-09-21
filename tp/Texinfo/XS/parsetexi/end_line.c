@@ -1194,33 +1194,26 @@ end_line_starting_block (ELEMENT *current)
       if (current->cmd == CM_enumerate)
         {
           char *spec = "1";
-          KEY_PAIR *k;
 
-          k = lookup_extra (current, "block_command_line_contents");
-          if (k)
+          if (current->args.number > 0
+              && current->args.list[0]->contents.number > 0)
             {
-              ELEMENT *e = k->value;
-              if (e->contents.number >= 1)
+              if (current->args.list[0]->contents.number > 1)
+                command_error (current, "superfluous argument to @%s",
+                               command_name(current->cmd));
+              ELEMENT *g = current->args.list[0]->contents.list[0];
+              /* Check if @enumerate specification is either a single
+                 letter or a string of digits. */
+              if (g->text.end == 1 && isalpha (g->text.text[0])
+                  || (g->text.end > 0
+                      && !*(g->text.text
+                            + strspn (g->text.text, "0123456789"))))
                 {
-                  ELEMENT *f, *g;
-                  f = contents_child_by_index (e, 0);
-                  if (f->contents.number > 1)
-                    command_error (current, "superfluous argument to @%s",
-                                   command_name(current->cmd));
-                  g = contents_child_by_index (f, 0);
-                  /* Check if @enumerate specification is either a single
-                     letter or a string of digits. */
-                  if (g->text.end == 1 && isalpha (g->text.text[0])
-                      || (g->text.end > 0
-                          && !*(g->text.text
-                                + strspn (g->text.text, "0123456789"))))
-                    {
-                      spec = g->text.text;
-                    }
-                  else
-                    command_error (current, "bad argument to @%s",
-                                   command_name(current->cmd));
+                  spec = g->text.text;
                 }
+              else
+                command_error (current, "bad argument to @%s",
+                               command_name(current->cmd));
             }
           add_extra_string_dup (current, "enumerate_specification", spec);
         }
@@ -1304,12 +1297,6 @@ end_line_starting_block (ELEMENT *current)
                   k->key = "";
                   k->value = 0;
                   k->type = extra_deleted;
-                  k = lookup_extra (current,
-                                        "block_command_line_contents");
-                  if (k)
-                    {
-                      k->key = ""; k->type = extra_deleted;
-                    }
                 }
             }
         }
@@ -1317,11 +1304,12 @@ end_line_starting_block (ELEMENT *current)
       /* 3052 - if no command_as_argument given, default to @bullet for
          @itemize, and @asis for @table. */
       if (current->cmd == CM_itemize
-        && !lookup_extra (current, "block_command_line_contents"))
+          && (current->args.number == 0
+              || current->args.list[0]->args.number == 0))
         {
           ELEMENT *e, *contents, *contents2;
 
-          e = new_element (ET_command_as_argument);
+          e = new_element (ET_command_as_argument_inserted);
           e->cmd = CM_bullet;
           e->parent_type = route_not_in_tree;
           e->parent = current;
@@ -1332,8 +1320,6 @@ end_line_starting_block (ELEMENT *current)
           contents2->parent_type = route_not_in_tree;
           add_to_contents_as_array (contents2, e);
           add_to_element_contents (contents, contents2);
-          add_extra_contents_array (current, "block_command_line_contents",
-                                        contents);
         }
       else if (item_line_command (current->cmd)
           && !lookup_extra (current, "command_as_argument"))
@@ -1351,8 +1337,6 @@ end_line_starting_block (ELEMENT *current)
           contents2->parent_type = route_not_in_tree;
           add_to_contents_as_array (contents2, e);
           add_to_element_contents (contents, contents2);
-          add_extra_contents_array (current, "block_command_line_contents",
-                                        contents);
           // FIXME: code duplication
         }
 
