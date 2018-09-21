@@ -81,8 +81,7 @@ $result_trees{'paragraphindent_and_preamble'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -304,7 +303,6 @@ $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'con
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[4];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[0];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'};

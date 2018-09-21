@@ -14,15 +14,7 @@ $result_trees{'on_itemize_line'} = {
             {
               'cmdname' => 'indent',
               'extra' => {
-                'invalid_nesting' => 1,
-                'spaces_after_command_elt' => {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {
                 'file_name' => '',
@@ -31,7 +23,14 @@ $result_trees{'on_itemize_line'} = {
               },
               'parent' => {}
             },
-            {},
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
             {
               'args' => [
                 {
@@ -291,10 +290,9 @@ $result_trees{'on_itemize_line'} = {
   ],
   'type' => 'text_root'
 };
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
-$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1] = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'on_itemize_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};

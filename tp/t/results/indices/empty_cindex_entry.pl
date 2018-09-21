@@ -51,8 +51,7 @@ $result_trees{'empty_cindex_entry'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'missing_argument' => 1,
-            'spaces_after_command_elt' => {}
+            'missing_argument' => 1
           },
           'line_nr' => {
             'file_name' => '',
@@ -91,7 +90,6 @@ $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'parent'} = $resul
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0];
-$result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'empty_cindex_entry'}{'contents'}[1];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'empty_cindex_entry'}{'contents'}[1]{'extra'}{'node_content'};

@@ -130,8 +130,7 @@ $result_trees{'quotation_in_ref'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'invalid_nesting' => 1,
-            'spaces_after_command_elt' => {}
+            'invalid_nesting' => 1
           },
           'line_nr' => {
             'file_name' => '',
@@ -192,7 +191,6 @@ $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[2];
-$result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'contents'}[0];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[3];
 $result_trees{'quotation_in_ref'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'quotation_in_ref'}{'contents'}[1];

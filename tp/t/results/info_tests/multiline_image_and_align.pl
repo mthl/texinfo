@@ -430,8 +430,7 @@ $result_trees{'multiline_image_and_align'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1141,8 +1140,7 @@ $result_trees{'multiline_image_and_align'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1225,7 +1223,6 @@ $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[6]{'args'}
 $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[6];
 $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[6]{'parent'} = $result_trees{'multiline_image_and_align'}{'contents'}[8];
 $result_trees{'multiline_image_and_align'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[6];
-$result_trees{'multiline_image_and_align'}{'contents'}[8]{'extra'}{'spaces_after_command_elt'} = $result_trees{'multiline_image_and_align'}{'contents'}[8]{'contents'}[0];
 $result_trees{'multiline_image_and_align'}{'contents'}[8]{'parent'} = $result_trees{'multiline_image_and_align'};
 $result_trees{'multiline_image_and_align'}{'contents'}[9]{'parent'} = $result_trees{'multiline_image_and_align'};
 $result_trees{'multiline_image_and_align'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'multiline_image_and_align'}{'contents'}[10]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -1339,7 +1336,6 @@ $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[6]{'args'
 $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[6];
 $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[6]{'parent'} = $result_trees{'multiline_image_and_align'}{'contents'}[18];
 $result_trees{'multiline_image_and_align'}{'contents'}[18]{'extra'}{'end_command'} = $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[6];
-$result_trees{'multiline_image_and_align'}{'contents'}[18]{'extra'}{'spaces_after_command_elt'} = $result_trees{'multiline_image_and_align'}{'contents'}[18]{'contents'}[0];
 $result_trees{'multiline_image_and_align'}{'contents'}[18]{'parent'} = $result_trees{'multiline_image_and_align'};
 
 $result_texis{'multiline_image_and_align'} = '@center @image{figure}

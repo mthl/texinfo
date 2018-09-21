@@ -1141,8 +1141,7 @@ $result_trees{'quote_node_names'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => 'nodequote.texi',
@@ -1159,8 +1158,7 @@ $result_trees{'quote_node_names'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
-        'spaces_after_command_elt' => {}
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -1619,10 +1617,8 @@ $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{
 $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[6];
 $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[6]{'parent'} = $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13];
 $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'extra'}{'end_command'} = $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[6];
-$result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'extra'}{'spaces_after_command_elt'} = $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'contents'}[0];
 $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[13]{'parent'} = $result_trees{'quote_node_names'}{'contents'}[2];
 $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[14]{'parent'} = $result_trees{'quote_node_names'}{'contents'}[2];
-$result_trees{'quote_node_names'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'quote_node_names'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'quote_node_names'}{'contents'}[2]{'parent'} = $result_trees{'quote_node_names'};
 $result_trees{'quote_node_names'}{'contents'}[3] = $result_trees{'quote_node_names'}{'contents'}[2]{'contents'}[3]{'contents'}[0]{'extra'}{'label'};
 $result_trees{'quote_node_names'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quote_node_names'}{'contents'}[4]{'args'}[0];
@@ -1761,14 +1757,6 @@ $result_sectioning{'quote_node_names'} = {
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       },
       'level' => 0,
@@ -1853,7 +1841,6 @@ $result_sectioning{'quote_node_names'} = {
     }
   ]
 };
-$result_sectioning{'quote_node_names'}{'section_childs'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'quote_node_names'}{'section_childs'}[0];
 $result_sectioning{'quote_node_names'}{'section_childs'}[0]{'section_childs'}[0]{'section_up'} = $result_sectioning{'quote_node_names'}{'section_childs'}[0];
 $result_sectioning{'quote_node_names'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_prev'} = $result_sectioning{'quote_node_names'}{'section_childs'}[0];
 $result_sectioning{'quote_node_names'}{'section_childs'}[0]{'section_childs'}[0]{'toplevel_up'} = $result_sectioning{'quote_node_names'}{'section_childs'}[0];
@@ -1876,16 +1863,7 @@ $result_nodes{'quote_node_names'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
-      },
+      'extra' => {},
       'level' => 0
     },
     'normalized' => 'Top',
@@ -1970,14 +1948,6 @@ $result_nodes{'quote_node_names'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -1995,7 +1965,6 @@ $result_nodes{'quote_node_names'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'quote_node_names'}{'extra'}{'associated_section'}{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'quote_node_names'}{'extra'}{'associated_section'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'quote_node_names'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'};
@@ -2004,7 +1973,6 @@ $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_prev'} = $res
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'quote_node_names'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_prev'} = $result_nodes{'quote_node_names'};
 $result_nodes{'quote_node_names'}{'menu_child'}{'node_up'} = $result_nodes{'quote_node_names'};
-$result_nodes{'quote_node_names'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'quote_node_names'}{'menus'}[0];
 $result_nodes{'quote_node_names'}{'node_next'} = $result_nodes{'quote_node_names'}{'menu_child'};
 $result_nodes{'quote_node_names'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'quote_node_names'};
 

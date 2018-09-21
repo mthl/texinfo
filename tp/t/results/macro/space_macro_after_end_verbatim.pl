@@ -71,9 +71,6 @@ $result_trees{'space_macro_after_end_verbatim'} = {
           'type' => 'raw'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -98,7 +95,6 @@ $result_trees{'space_macro_after_end_verbatim'}{'contents'}[2]{'parent'} = $resu
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3];
-$result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'contents'}[0];
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[3]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 $result_trees{'space_macro_after_end_verbatim'}{'contents'}[4]{'parent'} = $result_trees{'space_macro_after_end_verbatim'};
 

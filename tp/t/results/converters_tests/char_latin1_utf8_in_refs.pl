@@ -539,8 +539,7 @@ $result_trees{'char_latin1_utf8_in_refs'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => 'char_latin1_utf8_in_refs.texi',
@@ -1528,7 +1527,6 @@ $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'content
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'contents'}[6];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'contents'}[6]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'contents'}[6];
-$result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2];
 $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'char_latin1_utf8_in_refs'}{'contents'}[2]{'args'}[0]{'contents'}[0];
@@ -2000,14 +1998,6 @@ $result_nodes{'char_latin1_utf8_in_refs'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -2035,7 +2025,6 @@ $result_nodes{'char_latin1_utf8_in_refs'}{'menu_child'}{'node_next'}{'node_prev'
 $result_nodes{'char_latin1_utf8_in_refs'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'char_latin1_utf8_in_refs'};
 $result_nodes{'char_latin1_utf8_in_refs'}{'menu_child'}{'node_prev'} = $result_nodes{'char_latin1_utf8_in_refs'};
 $result_nodes{'char_latin1_utf8_in_refs'}{'menu_child'}{'node_up'} = $result_nodes{'char_latin1_utf8_in_refs'};
-$result_nodes{'char_latin1_utf8_in_refs'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'char_latin1_utf8_in_refs'}{'menus'}[0];
 $result_nodes{'char_latin1_utf8_in_refs'}{'node_next'} = $result_nodes{'char_latin1_utf8_in_refs'}{'menu_child'};
 $result_nodes{'char_latin1_utf8_in_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'char_latin1_utf8_in_refs'};
 

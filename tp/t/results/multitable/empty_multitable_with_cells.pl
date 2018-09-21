@@ -121,8 +121,7 @@ $result_trees{'empty_multitable_with_cells'} = {
       'extra' => {
         'end_command' => {},
         'max_columns' => 0,
-        'prototypes' => [],
-        'spaces_after_command_elt' => {}
+        'prototypes' => []
       },
       'line_nr' => {
         'file_name' => '',
@@ -153,7 +152,6 @@ $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[2];
-$result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'contents'}[0];
 $result_trees{'empty_multitable_with_cells'}{'contents'}[0]{'parent'} = $result_trees{'empty_multitable_with_cells'};
 
 $result_texis{'empty_multitable_with_cells'} = '@multitable

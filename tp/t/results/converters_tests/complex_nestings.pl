@@ -1099,8 +1099,7 @@ $result_trees{'complex_nestings'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -1307,7 +1306,6 @@ $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'
 $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
 $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1];
 $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
-$result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'complex_nestings'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'complex_nestings'}{'contents'}[1];
 $result_trees{'complex_nestings'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'complex_nestings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'complex_nestings'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'complex_nestings'}{'contents'}[1]{'extra'}{'node_content'};

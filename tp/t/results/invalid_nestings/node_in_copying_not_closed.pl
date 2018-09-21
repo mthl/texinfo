@@ -51,9 +51,6 @@ $result_trees{'node_in_copying_not_closed'} = {
               'type' => 'empty_line'
             }
           ],
-          'extra' => {
-            'spaces_after_command_elt' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -168,7 +165,6 @@ $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'conte
 $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0];
-$result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[0];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'};
 $result_trees{'node_in_copying_not_closed'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[1]{'args'}[0];

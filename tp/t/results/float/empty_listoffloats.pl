@@ -27,7 +27,6 @@ $result_trees{'empty_listoffloats'} = {
       ],
       'cmdname' => 'listoffloats',
       'extra' => {
-        'spaces_after_command_elt' => {},
         'type' => {
           'normalized' => ''
         }
@@ -45,7 +44,6 @@ $result_trees{'empty_listoffloats'} = {
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats'}{'contents'}[0];
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats'}{'contents'}[0];
-$result_trees{'empty_listoffloats'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_listoffloats'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_listoffloats'}{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats'};
 
 $result_texis{'empty_listoffloats'} = '@listoffloats

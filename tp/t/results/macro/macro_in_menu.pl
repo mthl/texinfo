@@ -651,8 +651,7 @@ $result_trees{'macro_in_menu'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -765,7 +764,6 @@ $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'args'}[0]{'conten
 $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7]{'parent'} = $result_trees{'macro_in_menu'}{'contents'}[19];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'extra'}{'end_command'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[7];
-$result_trees{'macro_in_menu'}{'contents'}[19]{'extra'}{'spaces_after_command_elt'} = $result_trees{'macro_in_menu'}{'contents'}[19]{'contents'}[0];
 $result_trees{'macro_in_menu'}{'contents'}[19]{'parent'} = $result_trees{'macro_in_menu'};
 
 $result_texis{'macro_in_menu'} = '

@@ -123,8 +123,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
                 }
               ],
               'extra' => {
-                'end_command' => {},
-                'spaces_after_command_elt' => {}
+                'end_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -135,8 +134,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'item_number' => 2,
-            'spaces_after_command_elt' => {}
+            'item_number' => 2
           },
           'line_nr' => {
             'file_name' => '',
@@ -176,8 +174,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'item_number' => 3,
-            'spaces_after_command_elt' => {}
+            'item_number' => 3
           },
           'line_nr' => {
             'file_name' => '',
@@ -259,8 +256,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
                 }
               ],
               'extra' => {
-                'end_command' => {},
-                'spaces_after_command_elt' => {}
+                'end_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -271,8 +267,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'item_number' => 4,
-            'spaces_after_command_elt' => {}
+            'item_number' => 4
           },
           'line_nr' => {
             'file_name' => '',
@@ -348,8 +343,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
                 }
               ],
               'extra' => {
-                'end_command' => {},
-                'spaces_after_command_elt' => {}
+                'end_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -366,8 +360,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'item_number' => 5,
-            'spaces_after_command_elt' => {}
+            'item_number' => 5
           },
           'line_nr' => {
             'file_name' => '',
@@ -449,8 +442,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
                 }
               ],
               'extra' => {
-                'end_command' => {},
-                'spaces_after_command_elt' => {}
+                'end_command' => {}
               },
               'line_nr' => {
                 'file_name' => '',
@@ -461,8 +453,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
             }
           ],
           'extra' => {
-            'item_number' => 6,
-            'spaces_after_command_elt' => {}
+            'item_number' => 6
           },
           'line_nr' => {
             'file_name' => '',
@@ -504,8 +495,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
-        'spaces_after_command_elt' => {}
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -591,8 +581,7 @@ $result_trees{'enumerate_and_empty_lines'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
-        'spaces_after_command_elt' => {}
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -621,16 +610,13 @@ $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'conten
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4];
@@ -643,9 +629,7 @@ $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'conten
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5];
@@ -657,10 +641,8 @@ $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'conten
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6];
@@ -673,15 +655,12 @@ $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'conten
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[7];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'};
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[1]{'parent'} = $result_trees{'enumerate_and_empty_lines'};
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[2];
@@ -693,7 +672,6 @@ $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[2]{'args'}
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[2];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[2];
-$result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'contents'}[0];
 $result_trees{'enumerate_and_empty_lines'}{'contents'}[2]{'parent'} = $result_trees{'enumerate_and_empty_lines'};
 
 $result_texis{'enumerate_and_empty_lines'} = '@enumerate

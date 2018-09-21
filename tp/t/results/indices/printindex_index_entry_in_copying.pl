@@ -567,8 +567,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -783,8 +782,7 @@ $result_trees{'printindex_index_entry_in_copying'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -1042,7 +1040,6 @@ $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[10]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[10];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[10]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[10];
-$result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying'};
@@ -1075,7 +1072,6 @@ $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'contents'}[0];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2];
 $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'printindex_index_entry_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0];
@@ -1239,14 +1235,6 @@ $result_nodes{'printindex_index_entry_in_copying'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -1266,7 +1254,6 @@ $result_nodes{'printindex_index_entry_in_copying'} = {
 };
 $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'}{'node_prev'} = $result_nodes{'printindex_index_entry_in_copying'};
 $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'}{'node_up'} = $result_nodes{'printindex_index_entry_in_copying'};
-$result_nodes{'printindex_index_entry_in_copying'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'printindex_index_entry_in_copying'}{'menus'}[0];
 $result_nodes{'printindex_index_entry_in_copying'}{'node_next'} = $result_nodes{'printindex_index_entry_in_copying'}{'menu_child'};
 $result_nodes{'printindex_index_entry_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_index_entry_in_copying'};
 

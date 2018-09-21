@@ -92,8 +92,7 @@ $result_trees{'bad_style_nesting'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'invalid_nesting' => 1,
-        'spaces_after_command_elt' => {}
+        'invalid_nesting' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -117,7 +116,6 @@ $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'con
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'bad_style_nesting'}{'contents'}[1];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[2];
-$result_trees{'bad_style_nesting'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'bad_style_nesting'}{'contents'}[1]{'contents'}[0];
 $result_trees{'bad_style_nesting'}{'contents'}[1]{'parent'} = $result_trees{'bad_style_nesting'};
 
 $result_texis{'bad_style_nesting'} = '@code{

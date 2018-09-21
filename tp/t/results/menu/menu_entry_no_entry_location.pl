@@ -248,8 +248,7 @@ $result_trees{'menu_entry_no_entry_location'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -301,7 +300,6 @@ $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[4]{'arg
 $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[4];
 $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0];
 $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[4];
-$result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_entry_no_entry_location'}{'contents'}[0]{'parent'} = $result_trees{'menu_entry_no_entry_location'};
 
 $result_texis{'menu_entry_no_entry_location'} = '@menu

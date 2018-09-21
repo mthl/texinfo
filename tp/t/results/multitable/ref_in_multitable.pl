@@ -418,8 +418,7 @@ $result_trees{'ref_in_multitable'} = {
                     }
                   ],
                   'extra' => {
-                    'cell_number' => 2,
-                    'spaces_after_command_elt' => {}
+                    'cell_number' => 2
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -596,7 +595,6 @@ $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1];
-$result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0];
 $result_trees{'ref_in_multitable'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'ref_in_multitable'}{'contents'}[4];

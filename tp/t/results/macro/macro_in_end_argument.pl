@@ -96,8 +96,7 @@ $result_trees{'macro_in_end_argument'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -121,7 +120,6 @@ $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'macro_in_end_argument'}{'contents'}[3];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[1];
-$result_trees{'macro_in_end_argument'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'macro_in_end_argument'}{'contents'}[3]{'contents'}[0];
 $result_trees{'macro_in_end_argument'}{'contents'}[3]{'parent'} = $result_trees{'macro_in_end_argument'};
 
 $result_texis{'macro_in_end_argument'} = '@macro acartouche

@@ -110,8 +110,7 @@ $result_trees{'headitem_itemx_in_enumerate'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'enumerate_specification' => 1,
-        'spaces_after_command_elt' => {}
+        'enumerate_specification' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -138,7 +137,6 @@ $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'args
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[2];
-$result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'contents'}[0];
 $result_trees{'headitem_itemx_in_enumerate'}{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_enumerate'};
 
 $result_texis{'headitem_itemx_in_enumerate'} = '@enumerate

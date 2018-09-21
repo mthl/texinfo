@@ -94,17 +94,6 @@ $result_trees{'east_asian_in_w'} = {
     },
     {
       'cmdname' => 'noindent',
-      'extra' => {
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
-      },
       'line_nr' => {
         'file_name' => 'east_asian_in_w.texi',
         'line_nr' => 6,
@@ -112,7 +101,15 @@ $result_trees{'east_asian_in_w'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
     {
       'contents' => [
         {
@@ -153,10 +150,9 @@ $result_trees{'east_asian_in_w'}{'contents'}[2]{'contents'}[2]{'parent'} = $resu
 $result_trees{'east_asian_in_w'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[2];
 $result_trees{'east_asian_in_w'}{'contents'}[2]{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[3]{'parent'} = $result_trees{'east_asian_in_w'};
-$result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'east_asian_in_w'}{'contents'}[4];
-$result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[4]{'parent'} = $result_trees{'east_asian_in_w'};
-$result_trees{'east_asian_in_w'}{'contents'}[5] = $result_trees{'east_asian_in_w'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'east_asian_in_w'}{'contents'}[5]{'extra'}{'command'} = $result_trees{'east_asian_in_w'}{'contents'}[4];
+$result_trees{'east_asian_in_w'}{'contents'}[5]{'parent'} = $result_trees{'east_asian_in_w'};
 $result_trees{'east_asian_in_w'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[6];
 $result_trees{'east_asian_in_w'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'east_asian_in_w'}{'contents'}[6];
 $result_trees{'east_asian_in_w'}{'contents'}[6]{'parent'} = $result_trees{'east_asian_in_w'};

@@ -19,15 +19,7 @@ $result_trees{'on_section_line'} = {
             {
               'cmdname' => 'noindent',
               'extra' => {
-                'invalid_nesting' => 1,
-                'spaces_after_command_elt' => {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                }
+                'invalid_nesting' => 1
               },
               'line_nr' => {
                 'file_name' => '',
@@ -36,7 +28,14 @@ $result_trees{'on_section_line'} = {
               },
               'parent' => {}
             },
-            {},
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
             {
               'parent' => {},
               'text' => 'Text '
@@ -180,10 +179,9 @@ $result_trees{'on_section_line'} = {
   'type' => 'document_root'
 };
 $result_trees{'on_section_line'}{'contents'}[0]{'parent'} = $result_trees{'on_section_line'};
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'extra'}{'command'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3];
@@ -208,7 +206,7 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'line_
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1];
 $result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[1] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[1] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[1];
 $result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[2] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[3] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[3];
 $result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'}[4] = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[4];

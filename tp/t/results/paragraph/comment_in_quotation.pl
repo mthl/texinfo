@@ -85,8 +85,7 @@ $result_trees{'comment_in_quotation'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -173,8 +172,7 @@ $result_trees{'comment_in_quotation'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -197,7 +195,6 @@ $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[1];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[2];
-$result_trees{'comment_in_quotation'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comment_in_quotation'}{'contents'}[1]{'contents'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[1]{'parent'} = $result_trees{'comment_in_quotation'};
 $result_trees{'comment_in_quotation'}{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'};
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'comment_in_quotation'}{'contents'}[3];
@@ -210,7 +207,6 @@ $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'comment_in_quotation'}{'contents'}[3];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[2];
-$result_trees{'comment_in_quotation'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'comment_in_quotation'}{'contents'}[3]{'contents'}[0];
 $result_trees{'comment_in_quotation'}{'contents'}[3]{'parent'} = $result_trees{'comment_in_quotation'};
 
 $result_texis{'comment_in_quotation'} = '

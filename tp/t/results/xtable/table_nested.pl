@@ -767,8 +767,7 @@ $result_trees{'table_nested'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1378,8 +1377,7 @@ $result_trees{'table_nested'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -2001,8 +1999,7 @@ $result_trees{'table_nested'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -2043,8 +2040,7 @@ $result_trees{'table_nested'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -2175,7 +2171,6 @@ $result_trees{'table_nested'}{'contents'}[4]{'contents'}[6]{'args'}[0]{'contents
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[6];
 $result_trees{'table_nested'}{'contents'}[4]{'contents'}[6]{'parent'} = $result_trees{'table_nested'}{'contents'}[4];
 $result_trees{'table_nested'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[6];
-$result_trees{'table_nested'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'table_nested'}{'contents'}[4]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[4]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[5]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[6];
@@ -2271,7 +2266,6 @@ $result_trees{'table_nested'}{'contents'}[7]{'contents'}[5]{'args'}[0]{'contents
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[5];
 $result_trees{'table_nested'}{'contents'}[7]{'contents'}[5]{'parent'} = $result_trees{'table_nested'}{'contents'}[7];
 $result_trees{'table_nested'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[5];
-$result_trees{'table_nested'}{'contents'}[7]{'extra'}{'spaces_after_command_elt'} = $result_trees{'table_nested'}{'contents'}[7]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[7]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[8]{'parent'} = $result_trees{'table_nested'};
 $result_trees{'table_nested'}{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[9];
@@ -2369,13 +2363,11 @@ $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[6]{'arg
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[6];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[6];
-$result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'table_nested'}{'contents'}[10];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2]{'args'}[0];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2];
 $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'table_nested'}{'contents'}[10];
 $result_trees{'table_nested'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[2];
-$result_trees{'table_nested'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'} = $result_trees{'table_nested'}{'contents'}[10]{'contents'}[0];
 $result_trees{'table_nested'}{'contents'}[10]{'parent'} = $result_trees{'table_nested'};
 
 $result_texis{'table_nested'} = '@macro myvtable

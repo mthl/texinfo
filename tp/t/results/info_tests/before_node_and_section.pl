@@ -322,8 +322,7 @@ $result_trees{'before_node_and_section'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -570,8 +569,7 @@ $result_trees{'before_node_and_section'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -772,7 +770,6 @@ $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents'}[2];
-$result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[0];
 $result_trees{'before_node_and_section'}{'contents'}[0]{'parent'} = $result_trees{'before_node_and_section'};
@@ -816,7 +813,6 @@ $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents
 $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
 $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3];
 $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
-$result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'contents'}[0];
 $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[2];
 $result_trees{'before_node_and_section'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'before_node_and_section'}{'contents'}[2];
 $result_trees{'before_node_and_section'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'before_node_and_section'}{'contents'}[2]{'args'}[0]{'contents'}[0];
@@ -971,14 +967,6 @@ $result_nodes{'before_node_and_section'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -998,7 +986,6 @@ $result_nodes{'before_node_and_section'} = {
 };
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_prev'} = $result_nodes{'before_node_and_section'};
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_up'} = $result_nodes{'before_node_and_section'};
-$result_nodes{'before_node_and_section'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'before_node_and_section'}{'menus'}[0];
 $result_nodes{'before_node_and_section'}{'node_next'} = $result_nodes{'before_node_and_section'}{'menu_child'};
 $result_nodes{'before_node_and_section'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'before_node_and_section'};
 

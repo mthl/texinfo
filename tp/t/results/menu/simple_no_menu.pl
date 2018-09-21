@@ -447,8 +447,7 @@ $result_trees{'simple_no_menu'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -556,7 +555,6 @@ $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0]{'conten
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[3];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[8];
-$result_trees{'simple_no_menu'}{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'simple_no_menu'}{'contents'}[3]{'contents'}[0];
 $result_trees{'simple_no_menu'}{'contents'}[3]{'parent'} = $result_trees{'simple_no_menu'};
 $result_trees{'simple_no_menu'}{'contents'}[4]{'parent'} = $result_trees{'simple_no_menu'};
 $result_trees{'simple_no_menu'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'simple_no_menu'}{'contents'}[5];

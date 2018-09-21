@@ -79,8 +79,7 @@ $result_trees{'recursive_copying'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -123,7 +122,6 @@ $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'con
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
-$result_trees{'recursive_copying'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'parent'} = $result_trees{'recursive_copying'};
 $result_trees{'recursive_copying'}{'contents'}[1]{'parent'} = $result_trees{'recursive_copying'};
 $result_trees{'recursive_copying'}{'contents'}[2]{'parent'} = $result_trees{'recursive_copying'};

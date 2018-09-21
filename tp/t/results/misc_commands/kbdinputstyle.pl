@@ -487,8 +487,7 @@ $result_trees{'kbdinputstyle'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -881,8 +880,7 @@ $result_trees{'kbdinputstyle'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1266,8 +1264,7 @@ $result_trees{'kbdinputstyle'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -1354,7 +1351,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'conten
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[10];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[2];
-$result_trees{'kbdinputstyle'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'} = $result_trees{'kbdinputstyle'}{'contents'}[10]{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[10]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[11]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[12];
@@ -1417,7 +1413,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'conten
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[19];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[2];
-$result_trees{'kbdinputstyle'}{'contents'}[19]{'extra'}{'spaces_after_command_elt'} = $result_trees{'kbdinputstyle'}{'contents'}[19]{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[19]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[20]{'parent'} = $result_trees{'kbdinputstyle'};
 $result_trees{'kbdinputstyle'}{'contents'}[21]{'contents'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[21];
@@ -1480,7 +1475,6 @@ $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0]{'conten
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2]{'parent'} = $result_trees{'kbdinputstyle'}{'contents'}[28];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'extra'}{'end_command'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[2];
-$result_trees{'kbdinputstyle'}{'contents'}[28]{'extra'}{'spaces_after_command_elt'} = $result_trees{'kbdinputstyle'}{'contents'}[28]{'contents'}[0];
 $result_trees{'kbdinputstyle'}{'contents'}[28]{'parent'} = $result_trees{'kbdinputstyle'};
 
 $result_texis{'kbdinputstyle'} = '@macro codekbdmacro

@@ -67,8 +67,7 @@ $result_trees{'misc_raw'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -175,9 +174,6 @@ $result_trees{'misc_raw'} = {
           'type' => 'raw'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 8,
@@ -203,7 +199,6 @@ $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2];
 $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[1];
 $result_trees{'misc_raw'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[2];
-$result_trees{'misc_raw'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'misc_raw'}{'contents'}[1]{'contents'}[0];
 $result_trees{'misc_raw'}{'contents'}[1]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[2]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[3]{'args'}[0];
@@ -218,7 +213,6 @@ $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0]{'extra'}{'command'} = $r
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[1]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
 $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'misc_raw'}{'contents'}[5];
-$result_trees{'misc_raw'}{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'misc_raw'}{'contents'}[5]{'contents'}[0];
 $result_trees{'misc_raw'}{'contents'}[5]{'parent'} = $result_trees{'misc_raw'};
 $result_trees{'misc_raw'}{'contents'}[6]{'parent'} = $result_trees{'misc_raw'};
 

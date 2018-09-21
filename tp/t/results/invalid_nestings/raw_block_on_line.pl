@@ -24,9 +24,6 @@ $result_trees{'raw_block_on_line'} = {
                   'type' => 'empty_line_after_command'
                 }
               ],
-              'extra' => {
-                'spaces_after_command_elt' => {}
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -51,7 +48,6 @@ $result_trees{'raw_block_on_line'} = {
 };
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'raw_block_on_line'}{'contents'}[0];
 $result_trees{'raw_block_on_line'}{'contents'}[0]{'line_nr'} = $result_trees{'raw_block_on_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};

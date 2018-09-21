@@ -98,9 +98,6 @@ $result_trees{'block_command_alias'} = {
           'type' => 'preformatted'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 3,
@@ -122,7 +119,6 @@ $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1]{'contents'}[1
 $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1]{'contents'}[1];
 $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1];
 $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'block_command_alias'}{'contents'}[2];
-$result_trees{'block_command_alias'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'block_command_alias'}{'contents'}[2]{'contents'}[0];
 $result_trees{'block_command_alias'}{'contents'}[2]{'parent'} = $result_trees{'block_command_alias'};
 
 $result_texis{'block_command_alias'} = '@alias lang=lisp

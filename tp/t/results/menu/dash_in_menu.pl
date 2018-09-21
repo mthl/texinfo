@@ -162,8 +162,7 @@ $result_trees{'dash_in_menu'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -201,7 +200,6 @@ $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'contents
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'dash_in_menu'}{'contents'}[1];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[3];
-$result_trees{'dash_in_menu'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'dash_in_menu'}{'contents'}[1]{'contents'}[0];
 $result_trees{'dash_in_menu'}{'contents'}[1]{'parent'} = $result_trees{'dash_in_menu'};
 
 $result_texis{'dash_in_menu'} = '

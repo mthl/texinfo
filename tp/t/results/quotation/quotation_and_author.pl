@@ -97,8 +97,7 @@ $result_trees{'quotation_and_author'} = {
         'authors' => [
           {}
         ],
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -203,8 +202,7 @@ $result_trees{'quotation_and_author'} = {
         'authors' => [
           {}
         ],
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -343,7 +341,6 @@ $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'extra'}{'authors'}[0] = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[3];
-$result_trees{'quotation_and_author'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'};
 $result_trees{'quotation_and_author'}{'contents'}[1]{'parent'} = $result_trees{'quotation_and_author'};
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'quotation_and_author'}{'contents'}[2];
@@ -360,7 +357,6 @@ $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'extra'}{'authors'}[0] = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[3];
-$result_trees{'quotation_and_author'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'parent'} = $result_trees{'quotation_and_author'};
 $result_trees{'quotation_and_author'}{'contents'}[3]{'parent'} = $result_trees{'quotation_and_author'};
 $result_trees{'quotation_and_author'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'args'}[0];

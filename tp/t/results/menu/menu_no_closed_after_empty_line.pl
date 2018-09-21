@@ -103,9 +103,6 @@ $result_trees{'menu_no_closed_after_empty_line'} = {
           'type' => 'menu_comment'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -132,7 +129,6 @@ $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2]{'
 $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2]{'contents'}[0];
 $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2];
 $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0];
-$result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'menu_no_closed_after_empty_line'}{'contents'}[0]{'parent'} = $result_trees{'menu_no_closed_after_empty_line'};
 
 $result_texis{'menu_no_closed_after_empty_line'} = '@menu

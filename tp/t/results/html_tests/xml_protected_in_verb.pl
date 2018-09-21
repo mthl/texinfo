@@ -26,9 +26,6 @@ $result_trees{'xml_protected_in_verb'} = {
           'type' => 'raw'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 1,
@@ -126,7 +123,6 @@ $result_trees{'xml_protected_in_verb'} = {
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0];
-$result_trees{'xml_protected_in_verb'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'contents'}[0];
 $result_trees{'xml_protected_in_verb'}{'contents'}[0]{'parent'} = $result_trees{'xml_protected_in_verb'};
 $result_trees{'xml_protected_in_verb'}{'contents'}[1]{'parent'} = $result_trees{'xml_protected_in_verb'};
 $result_trees{'xml_protected_in_verb'}{'contents'}[2]{'parent'} = $result_trees{'xml_protected_in_verb'};

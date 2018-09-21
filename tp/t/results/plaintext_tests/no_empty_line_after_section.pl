@@ -289,17 +289,6 @@ $result_trees{'no_empty_line_after_section'} = {
       'contents' => [
         {
           'cmdname' => 'indent',
-          'extra' => {
-            'spaces_after_command_elt' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 15,
@@ -307,7 +296,15 @@ $result_trees{'no_empty_line_after_section'} = {
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
         {
           'contents' => [
             {
@@ -383,10 +380,9 @@ $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'extra'}{'misc_conte
 $result_trees{'no_empty_line_after_section'}{'contents'}[3]{'parent'} = $result_trees{'no_empty_line_after_section'};
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0];
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
-$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[1] = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[1]{'extra'}{'command'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[0];
+$result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2];
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];
 $result_trees{'no_empty_line_after_section'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'no_empty_line_after_section'}{'contents'}[4];

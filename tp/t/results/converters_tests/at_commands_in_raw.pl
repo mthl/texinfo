@@ -203,8 +203,7 @@ $result_trees{'at_commands_in_raw'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -832,7 +831,6 @@ $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[2]
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[2];
-$result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'contents'}[0];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[5]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[5]{'contents'}[0];

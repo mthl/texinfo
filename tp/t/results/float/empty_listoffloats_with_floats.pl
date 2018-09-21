@@ -290,7 +290,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'spaces_after_command_elt' => {},
         'type' => {
           'normalized' => ''
         }
@@ -401,7 +400,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
       'extra' => {
         'caption' => {},
         'end_command' => {},
-        'spaces_after_command_elt' => {},
         'type' => {
           'normalized' => ''
         }
@@ -439,7 +437,6 @@ $result_trees{'empty_listoffloats_with_floats'} = {
       ],
       'cmdname' => 'listoffloats',
       'extra' => {
-        'spaces_after_command_elt' => {},
         'type' => {
           'normalized' => ''
         }
@@ -494,7 +491,6 @@ $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'a
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[2];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'contents'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[5]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[6]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
@@ -512,13 +508,11 @@ $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'a
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'extra'}{'caption'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[2];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'extra'}{'end_command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[4];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'contents'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[7]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[8]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9];
-$result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_listoffloats_with_floats'}{'contents'}[9]{'parent'} = $result_trees{'empty_listoffloats_with_floats'};
 
 $result_texis{'empty_listoffloats_with_floats'} = '
@@ -619,14 +613,6 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'text_arg' => 'float'
           }
         },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
         'type' => {
           'normalized' => ''
         }
@@ -649,14 +635,6 @@ $result_floats{'empty_listoffloats_with_floats'} = {
             'text_arg' => 'float'
           }
         },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        },
         'type' => {
           'normalized' => ''
         }
@@ -665,9 +643,7 @@ $result_floats{'empty_listoffloats_with_floats'} = {
   ]
 };
 $result_floats{'empty_listoffloats_with_floats'}{''}[1]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'empty_listoffloats_with_floats'}{''}[1];
-$result_floats{'empty_listoffloats_with_floats'}{''}[2]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_floats{'empty_listoffloats_with_floats'}{''}[2];
 $result_floats{'empty_listoffloats_with_floats'}{''}[3]{'extra'}{'caption'}{'extra'}{'float'} = $result_floats{'empty_listoffloats_with_floats'}{''}[3];
-$result_floats{'empty_listoffloats_with_floats'}{''}[3]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_floats{'empty_listoffloats_with_floats'}{''}[3];
 
 
 

@@ -105,8 +105,7 @@ $result_trees{'bad_beginning'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -134,7 +133,6 @@ $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'content
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[2];
 $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'bad_beginning'}{'contents'}[0];
 $result_trees{'bad_beginning'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[2];
-$result_trees{'bad_beginning'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'bad_beginning'}{'contents'}[0]{'contents'}[0];
 $result_trees{'bad_beginning'}{'contents'}[0]{'parent'} = $result_trees{'bad_beginning'};
 
 $result_texis{'bad_beginning'} = '@menu

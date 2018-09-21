@@ -92,8 +92,7 @@ $result_trees{'cartouche_in_style_command'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'invalid_nesting' => 1,
-        'spaces_after_command_elt' => {}
+        'invalid_nesting' => 1
       },
       'line_nr' => {
         'file_name' => '',
@@ -122,7 +121,6 @@ $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'
 $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[2];
 $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'cartouche_in_style_command'}{'contents'}[1];
 $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[2];
-$result_trees{'cartouche_in_style_command'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'contents'}[0];
 $result_trees{'cartouche_in_style_command'}{'contents'}[1]{'parent'} = $result_trees{'cartouche_in_style_command'};
 $result_trees{'cartouche_in_style_command'}{'contents'}[2]{'parent'} = $result_trees{'cartouche_in_style_command'};
 

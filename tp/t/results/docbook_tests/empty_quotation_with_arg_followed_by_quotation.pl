@@ -129,8 +129,7 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -158,7 +157,6 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'contents'}[2];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'contents'}[2];
-$result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'contents'}[0];
 $result_trees{'empty_quotation_with_arg_followed_by_quotation'}{'contents'}[2]{'parent'} = $result_trees{'empty_quotation_with_arg_followed_by_quotation'};
 
 $result_texis{'empty_quotation_with_arg_followed_by_quotation'} = '@quotation something

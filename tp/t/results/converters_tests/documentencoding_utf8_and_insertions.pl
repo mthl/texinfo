@@ -212,8 +212,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -258,7 +257,6 @@ $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}
 $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}[2];
 $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4];
 $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}[2];
-$result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'contents'}[0];
 $result_trees{'documentencoding_utf8_and_insertions'}{'contents'}[4]{'parent'} = $result_trees{'documentencoding_utf8_and_insertions'};
 
 $result_texis{'documentencoding_utf8_and_insertions'} = '@documentencoding utf-8

@@ -147,8 +147,7 @@ $result_trees{'multiple_menus'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -273,8 +272,7 @@ $result_trees{'multiple_menus'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -328,7 +326,6 @@ $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'ar
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
-$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3];
@@ -348,7 +345,6 @@ $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'ar
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[2];
-$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'multiple_menus'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'multiple_menus'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'multiple_menus'}{'contents'}[1]{'extra'}{'node_content'};
@@ -401,14 +397,6 @@ $result_nodes{'multiple_menus'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     },
@@ -422,14 +410,6 @@ $result_nodes{'multiple_menus'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -447,8 +427,6 @@ $result_nodes{'multiple_menus'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'multiple_menus'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'multiple_menus'}{'menus'}[0];
-$result_nodes{'multiple_menus'}{'menus'}[1]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'multiple_menus'}{'menus'}[1];
 $result_nodes{'multiple_menus'}{'node_next'} = $result_nodes{'multiple_menus'}{'menu_child'};
 $result_nodes{'multiple_menus'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'multiple_menus'};
 

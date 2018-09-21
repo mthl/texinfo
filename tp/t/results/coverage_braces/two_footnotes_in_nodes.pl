@@ -309,8 +309,7 @@ $result_trees{'two_footnotes_in_nodes'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -602,7 +601,6 @@ $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[2]{'parent'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5];
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[2];
-$result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'contents'}[0];
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2];
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2];
 $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'two_footnotes_in_nodes'}{'contents'}[2]{'args'}[0]{'contents'}[0];
@@ -773,14 +771,6 @@ $result_nodes{'two_footnotes_in_nodes'} = {
             'spaces_before_argument' => ' ',
             'text_arg' => 'menu'
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       }
     }
@@ -800,7 +790,6 @@ $result_nodes{'two_footnotes_in_nodes'} = {
 };
 $result_nodes{'two_footnotes_in_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'two_footnotes_in_nodes'};
 $result_nodes{'two_footnotes_in_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'two_footnotes_in_nodes'};
-$result_nodes{'two_footnotes_in_nodes'}{'menus'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'two_footnotes_in_nodes'}{'menus'}[0];
 $result_nodes{'two_footnotes_in_nodes'}{'node_next'} = $result_nodes{'two_footnotes_in_nodes'}{'menu_child'};
 $result_nodes{'two_footnotes_in_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'two_footnotes_in_nodes'};
 

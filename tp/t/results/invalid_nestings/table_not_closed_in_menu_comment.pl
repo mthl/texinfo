@@ -227,8 +227,7 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -274,7 +273,6 @@ $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[3];
-$result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'table_not_closed_in_menu_comment'}{'contents'}[0]{'parent'} = $result_trees{'table_not_closed_in_menu_comment'};
 
 $result_texis{'table_not_closed_in_menu_comment'} = '@menu

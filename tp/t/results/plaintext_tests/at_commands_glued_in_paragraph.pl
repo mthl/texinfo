@@ -338,16 +338,6 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
         },
         {
           'cmdname' => 'noindent',
-          'extra' => {
-            'spaces_after_command_elt' => {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            }
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 11,
@@ -355,7 +345,14 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
           },
           'parent' => {}
         },
-        {},
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => ' ',
+          'type' => 'empty_spaces_after_command'
+        },
         {
           'parent' => {},
           'text' => 'after noindent
@@ -548,10 +545,9 @@ $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[27]{'
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[28]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[29]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[30]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31];
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
-$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[32] = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[32]{'extra'}{'command'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[31];
+$result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[32]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[33]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'contents'}[34]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'at_commands_glued_in_paragraph'};

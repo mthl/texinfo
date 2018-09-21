@@ -273,16 +273,6 @@ $result_trees{'comments_on_misc_command_line'} = {
     },
     {
       'cmdname' => 'indent',
-      'extra' => {
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'parent' => {},
-          'text' => ' ',
-          'type' => 'empty_spaces_after_command'
-        }
-      },
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 9,
@@ -290,7 +280,14 @@ $result_trees{'comments_on_misc_command_line'} = {
       },
       'parent' => {}
     },
-    {},
+    {
+      'extra' => {
+        'command' => {}
+      },
+      'parent' => {},
+      'text' => ' ',
+      'type' => 'empty_spaces_after_command'
+    },
     {
       'contents' => [
         {
@@ -356,10 +353,9 @@ $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'parent'} = $resul
 $result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[8];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[9]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[11] = $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[11]{'extra'}{'command'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[11]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];

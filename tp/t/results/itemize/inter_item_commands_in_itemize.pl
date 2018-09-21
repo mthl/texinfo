@@ -549,8 +549,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
       ],
       'extra' => {
         'command_as_argument' => {},
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -644,7 +643,6 @@ $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'contents'}[3]{'a
 $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'contents'}[3]{'parent'} = $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4];
 $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'extra'}{'command_as_argument'} = $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'args'}[0];
 $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'contents'}[3];
-$result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'contents'}[0];
 $result_trees{'inter_item_commands_in_itemize'}{'contents'}[4]{'parent'} = $result_trees{'inter_item_commands_in_itemize'};
 
 $result_texis{'inter_item_commands_in_itemize'} = '@itemize @minus

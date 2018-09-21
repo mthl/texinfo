@@ -473,8 +473,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
-        'spaces_after_command_elt' => {}
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -557,7 +556,6 @@ $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[6]{'
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'};
 
 $result_texis{'same_index_entry_merged_indices'} = '@syncodeindex vr fn
@@ -603,14 +601,6 @@ $result_sectioning{'same_index_entry_merged_indices'} = {
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
-        },
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
         }
       },
       'level' => 0,
@@ -618,7 +608,6 @@ $result_sectioning{'same_index_entry_merged_indices'} = {
     }
   ]
 };
-$result_sectioning{'same_index_entry_merged_indices'}{'section_childs'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'same_index_entry_merged_indices'}{'section_childs'}[0];
 $result_sectioning{'same_index_entry_merged_indices'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'same_index_entry_merged_indices'};
 
 $result_nodes{'same_index_entry_merged_indices'} = {
@@ -626,16 +615,7 @@ $result_nodes{'same_index_entry_merged_indices'} = {
   'extra' => {
     'associated_section' => {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
-      },
+      'extra' => {},
       'level' => 0
     },
     'normalized' => 'Top',
@@ -653,7 +633,6 @@ $result_nodes{'same_index_entry_merged_indices'} = {
     'type' => 'top_node_up'
   }
 };
-$result_nodes{'same_index_entry_merged_indices'}{'extra'}{'associated_section'}{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_nodes{'same_index_entry_merged_indices'}{'extra'}{'associated_section'};
 $result_nodes{'same_index_entry_merged_indices'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'same_index_entry_merged_indices'};
 
 $result_menus{'same_index_entry_merged_indices'} = {

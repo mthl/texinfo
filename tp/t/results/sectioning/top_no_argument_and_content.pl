@@ -51,8 +51,7 @@ $result_trees{'top_no_argument_and_content'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
-        'spaces_after_command_elt' => {}
+        'misc_content' => []
       },
       'level' => 0,
       'line_nr' => {
@@ -72,7 +71,6 @@ $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'parent'}
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
-$result_trees{'top_no_argument_and_content'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'parent'} = $result_trees{'top_no_argument_and_content'};
 
 $result_texis{'top_no_argument_and_content'} = '@top
@@ -90,22 +88,12 @@ $result_sectioning{'top_no_argument_and_content'} = {
   'section_childs' => [
     {
       'cmdname' => 'top',
-      'extra' => {
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
-      },
+      'extra' => {},
       'level' => 0,
       'section_up' => {}
     }
   ]
 };
-$result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0];
 $result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'top_no_argument_and_content'};
 
 $result_errors{'top_no_argument_and_content'} = [];

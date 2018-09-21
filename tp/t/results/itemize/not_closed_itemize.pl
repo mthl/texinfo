@@ -29,8 +29,7 @@ $result_trees{'not_closed_itemize'} = {
         }
       ],
       'extra' => {
-        'command_as_argument' => {},
-        'spaces_after_command_elt' => {}
+        'command_as_argument' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -46,7 +45,6 @@ $result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0]{'parent'} = $resul
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'}{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'args'}[0];
-$result_trees{'not_closed_itemize'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'not_closed_itemize'}{'contents'}[0]{'contents'}[0];
 $result_trees{'not_closed_itemize'}{'contents'}[0]{'parent'} = $result_trees{'not_closed_itemize'};
 
 $result_texis{'not_closed_itemize'} = '@itemize

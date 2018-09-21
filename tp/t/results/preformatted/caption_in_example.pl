@@ -146,8 +146,7 @@ $result_trees{'caption_in_example'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -229,7 +228,6 @@ $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[4]
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
-$result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'caption_in_example'}{'contents'}[0];
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'caption_in_example'}{'contents'}[0]{'contents'}[2];

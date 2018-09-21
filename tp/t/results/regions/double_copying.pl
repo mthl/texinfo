@@ -97,8 +97,7 @@ $result_trees{'double_copying'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'spaces_after_command_elt' => {}
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',
@@ -139,8 +138,7 @@ $result_trees{'double_copying'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -166,13 +164,11 @@ $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'ar
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
-$result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'extra'}{'spaces_after_command_elt'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'double_copying'}{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5]{'parent'} = $result_trees{'double_copying'}{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[5];
-$result_trees{'double_copying'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'double_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'double_copying'}{'contents'}[0]{'parent'} = $result_trees{'double_copying'};
 
 $result_texis{'double_copying'} = '@copying

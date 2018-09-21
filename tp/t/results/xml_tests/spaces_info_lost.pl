@@ -104,9 +104,7 @@ $result_trees{'spaces_info_lost'} = {
           'type' => 'raw'
         }
       ],
-      'extra' => {
-        'spaces_after_command_elt' => {}
-      },
+      'extra' => {},
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
@@ -136,7 +134,6 @@ $result_trees{'spaces_info_lost'}{'contents'}[1]{'parent'} = $result_trees{'spac
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'spaces_info_lost'}{'contents'}[2];
-$result_trees{'spaces_info_lost'}{'contents'}[2]{'extra'}{'spaces_after_command_elt'} = $result_trees{'spaces_info_lost'}{'contents'}[2]{'contents'}[0];
 $result_trees{'spaces_info_lost'}{'contents'}[2]{'parent'} = $result_trees{'spaces_info_lost'};
 $result_trees{'spaces_info_lost'}{'contents'}[3]{'parent'} = $result_trees{'spaces_info_lost'};
 

@@ -350,16 +350,6 @@ $result_trees{'at_commands_glued_in_example'} = {
             },
             {
               'cmdname' => 'noindent',
-              'extra' => {
-                'spaces_after_command_elt' => {
-                  'extra' => {
-                    'command' => {}
-                  },
-                  'parent' => {},
-                  'text' => ' ',
-                  'type' => 'empty_spaces_after_command'
-                }
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -367,7 +357,14 @@ $result_trees{'at_commands_glued_in_example'} = {
               },
               'parent' => {}
             },
-            {},
+            {
+              'extra' => {
+                'command' => {}
+              },
+              'parent' => {},
+              'text' => ' ',
+              'type' => 'empty_spaces_after_command'
+            },
             {
               'parent' => {},
               'text' => 'after noindent
@@ -528,8 +525,7 @@ $result_trees{'at_commands_glued_in_example'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -598,10 +594,9 @@ $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'con
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[28]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[29]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[30]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31];
-$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31]{'extra'}{'spaces_after_command_elt'}{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
-$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[32] = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31]{'extra'}{'spaces_after_command_elt'};
+$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[32]{'extra'}{'command'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[31];
+$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[32]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[33]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[34]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[35]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[35]{'args'}[0];
@@ -626,7 +621,6 @@ $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[2]{'arg
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'contents'}[0];
 $result_trees{'at_commands_glued_in_example'}{'contents'}[0]{'parent'} = $result_trees{'at_commands_glued_in_example'};
 
 $result_texis{'at_commands_glued_in_example'} = '@example

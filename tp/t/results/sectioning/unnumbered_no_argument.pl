@@ -33,8 +33,7 @@ $result_trees{'unnumbered_no_argument'} = {
       'cmdname' => 'unnumbered',
       'contents' => [],
       'extra' => {
-        'missing_argument' => 1,
-        'spaces_after_command_elt' => {}
+        'missing_argument' => 1
       },
       'level' => 1,
       'line_nr' => {
@@ -51,7 +50,6 @@ $result_trees{'unnumbered_no_argument'}{'contents'}[0]{'parent'} = $result_trees
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1];
-$result_trees{'unnumbered_no_argument'}{'contents'}[1]{'extra'}{'spaces_after_command_elt'} = $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_no_argument'}{'contents'}[1]{'parent'} = $result_trees{'unnumbered_no_argument'};
 
 $result_texis{'unnumbered_no_argument'} = '@unnumbered
@@ -66,22 +64,13 @@ $result_sectioning{'unnumbered_no_argument'} = {
     {
       'cmdname' => 'unnumbered',
       'extra' => {
-        'missing_argument' => 1,
-        'spaces_after_command_elt' => {
-          'extra' => {
-            'command' => {}
-          },
-          'text' => '
-',
-          'type' => 'empty_line_after_command'
-        }
+        'missing_argument' => 1
       },
       'level' => 1,
       'section_up' => {}
     }
   ]
 };
-$result_sectioning{'unnumbered_no_argument'}{'section_childs'}[0]{'extra'}{'spaces_after_command_elt'}{'extra'}{'command'} = $result_sectioning{'unnumbered_no_argument'}{'section_childs'}[0];
 $result_sectioning{'unnumbered_no_argument'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'unnumbered_no_argument'};
 
 $result_errors{'unnumbered_no_argument'} = [

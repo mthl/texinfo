@@ -45,9 +45,6 @@ $result_trees{'section_in_flushright'} = {
               'type' => 'empty_line'
             }
           ],
-          'extra' => {
-            'spaces_after_command_elt' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -102,7 +99,6 @@ $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0];
-$result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'};
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];

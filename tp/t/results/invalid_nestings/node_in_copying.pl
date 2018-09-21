@@ -22,9 +22,6 @@ $result_trees{'node_in_copying'} = {
               'type' => 'empty_line_after_command'
             }
           ],
-          'extra' => {
-            'spaces_after_command_elt' => {}
-          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -87,7 +84,6 @@ $result_trees{'node_in_copying'} = {
 };
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0];
-$result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'extra'}{'spaces_after_command_elt'} = $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[0];
 $result_trees{'node_in_copying'}{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'};
 $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying'}{'contents'}[1]{'args'}[0];

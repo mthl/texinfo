@@ -183,9 +183,6 @@ $result_trees{'cpp_lines'} = {
               'type' => 'raw'
             }
           ],
-          'extra' => {
-            'spaces_after_command_elt' => {}
-          },
           'line_nr' => {
             'file_name' => 'g_f',
             'line_nr' => '48',
@@ -586,7 +583,6 @@ $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3];
-$result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'extra'}{'spaces_after_command_elt'} = $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'contents'}[0];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];
 $result_trees{'cpp_lines'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'cpp_lines'}{'contents'}[1];

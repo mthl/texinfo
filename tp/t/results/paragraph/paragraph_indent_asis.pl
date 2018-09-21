@@ -131,8 +131,7 @@ $result_trees{'paragraph_indent_asis'} = {
         }
       ],
       'extra' => {
-        'end_command' => {},
-        'spaces_after_command_elt' => {}
+        'end_command' => {}
       },
       'line_nr' => {
         'file_name' => '',
@@ -168,7 +167,6 @@ $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'args'}[0]{
 $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3];
 $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3]{'parent'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5];
 $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'extra'}{'end_command'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[3];
-$result_trees{'paragraph_indent_asis'}{'contents'}[5]{'extra'}{'spaces_after_command_elt'} = $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'contents'}[0];
 $result_trees{'paragraph_indent_asis'}{'contents'}[5]{'parent'} = $result_trees{'paragraph_indent_asis'};
 $result_trees{'paragraph_indent_asis'}{'contents'}[6]{'parent'} = $result_trees{'paragraph_indent_asis'};
 
