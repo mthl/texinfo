@@ -5237,14 +5237,10 @@ sub _parse_texi($;$)
           if ($inline_commands{$current->{'cmdname'}}) {
             my $expandp = 0;
             if (! $current->{'extra'}->{'format'}) {
-              my @contents;
               my $inline_type;
               if (defined $current->{'args'}->[0]
                   and @{$current->{'args'}->[0]->{'contents'}}) {
-                @contents
-                   = @{$current->{'args'}->[0]->{'contents'}};
-                _trim_spaces_comment_from_content (\@contents);
-                $inline_type = $contents[0]->{'text'};
+                $inline_type = $current->{'args'}->[0]->{'contents'}->[0]->{'text'};
               }
 
               if (!$inline_type) {

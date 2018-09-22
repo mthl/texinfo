@@ -1,5 +1,11 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <',' seen for inline commands>:
+	Use text in 'args' directly instead of calling 
+	_trim_spaces_comment_from_content.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Remove all code dealing with a 
 	test case specially if its name was 'texi'.
 	* tp/tests/README: Don't mention a 'texi' special case.
