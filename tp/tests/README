@@ -29,8 +29,10 @@ This testsuite can be run one of the following ways:
 * Using the makefile rules: "make check" (in this directory)
 These tests use the scripts under the test_scripts directory.
 
-* Using ./parser_tests.sh with the directories one want to run the tests 
-in given as arguments, for example "./parser_tests.sh formatting".
+* Using ./run_parser_all.sh with the directories one want to run the 
+tests in given as arguments, for example "./run_parser_all.sh -dir formatting".
+To run just one test, give the test name, e.g.
+"./run_parser_all.sh -dir formatting cond".
 
 Checking test results
 ---------------------

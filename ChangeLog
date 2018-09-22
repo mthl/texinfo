@@ -1,5 +1,9 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Explain how to run tests with run-parser-all.sh.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests
 	(texi_bib-example, texi_cond, texi_ignore_and_comments):
 	Define tests using '-c TEXINFO_OUTPUT_FORMAT=plaintexinfo'.
