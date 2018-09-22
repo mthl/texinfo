@@ -5173,8 +5173,7 @@ sub _parse_texi($;$)
                   = $current->{'parent'};
             } elsif ($current->{'parent'}->{'cmdname'} eq 'sortas') {
               my @contents = @{$current->{'contents'}};
-              _trim_spaces_comment_from_content (\@contents);
-              my $arg = $contents[0]->{'text'};
+              my $arg = $current->{'contents'}->[0]->{'text'};
               if (defined($arg)) {
                 my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
                 if ($index_element and $index_element->{'cmdname'}

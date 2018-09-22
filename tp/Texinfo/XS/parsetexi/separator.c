@@ -482,28 +482,19 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if (current->parent->cmd == CM_sortas)
         {
           int i;
-          for (i = 0; i < current->contents.number; i++)
+          ELEMENT *e = current->contents.list[0];
+
+          if (e->text.end > 0)
             {
-              ELEMENT *e = current->contents.list[i];
-
-              if (e->type == ET_empty_line_after_command
-                  || e->type == ET_empty_spaces_after_command
-                  || e->type == ET_empty_spaces_before_argument
-                  || e->type == ET_empty_spaces_after_close_brace)
-                continue;
-
-              if (e->text.end > 0)
+              ELEMENT *index_elt;
+              if (current->parent->parent
+                  && current->parent->parent->parent
+                  && (command_flags(current->parent->parent->parent)
+                      & CF_index_entry_command))
                 {
-                  ELEMENT *index_elt;
-                  if (current->parent->parent
-                      && current->parent->parent->parent
-                      && (command_flags(current->parent->parent->parent)
-                          & CF_index_entry_command))
-                    {
-                      index_elt = current->parent->parent->parent;
-                      add_extra_string_dup (index_elt, "sortas",
-                                            e->text.text);
-                    }
+                  index_elt = current->parent->parent->parent;
+                  add_extra_string_dup (index_elt, "sortas",
+                                        e->text.text);
                 }
             }
         }
