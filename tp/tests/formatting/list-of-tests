@@ -1,5 +1,5 @@
 # conditionals and macros
-texi glossary.texi
+texi_glossary glossary.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 texi_bib-example bib-example.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 texi_cond cond.texi --ifhtml --ifinfo --no-iftex -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 # in the texinfo test suite, the default is info, and there is also a 

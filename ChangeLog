@@ -1,5 +1,12 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/formatting/list-of-tests (texi_glossary):
+	Define test using '-c TEXINFO_OUTPUT_FORMAT=plaintexinfo'.  This 
+	leads to an extra error message due to more processing taking 
+	place after '-c DUMP_TEXI=1' would have been processed.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/README: Explain how to run tests with run-parser-all.sh.
 
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
