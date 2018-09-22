@@ -10,7 +10,7 @@ diffs_dir=diffs
 
 
 dir=formatting
-arg='texi ignore_and_comments.texi'
+arg='texi_ignore_and_comments'
 name='texi_ignore_and_comments'
 [ -d "$dir" ] || mkdir $dir
 

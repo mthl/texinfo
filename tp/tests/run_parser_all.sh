@@ -102,11 +102,6 @@ if test -n "$1"; then
   one_test=yes
   the_test=$1
   test_name=$the_test
-  if test "z$the_test" = "ztexi"; then
-    the_file=$2
-    test -n "$the_file" && the_basename=`basename $the_file .texi`
-    test_name="${test_name}_$the_basename"
-  fi
   test -d $one_test_logs_dir || mkdir $one_test_logs_dir
   logfile=$one_test_logs_dir/$test_name.log
 fi
@@ -150,10 +145,6 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
     file=`echo $line | awk '{print $2}'`
     remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
     [ "z$dir" = 'z' -o "z$file" = 'z' ] && continue
-    basename=`basename $file .texi`
-    if [ "z$dir" = 'ztexi' ]; then
-      dir="texi_${basename}"
-    fi
     if [ "z$clean" = 'zyes' ]; then
       for command_dir in $commands; do
         dir_suffix=`echo $command_dir | cut -d':' -f2`
@@ -256,84 +247,61 @@ while read line; do
     
     outdir="$testdir/${out_dir}${dir_suffix}/"
     results_dir="$srcdir/$testdir/${res_dir}${dir_suffix}"
-    if test "z$current" = 'ztexi' ; then
-      if test $one_test = 'yes' \
-         && test -n "$the_basename" \
-         && test "z$basename" != "z$the_basename"; then
+    # non-"texi" case.
+    one_test_done=yes
+    use_latex2html=no
+    use_tex4ht=no
+    l2h_tmp_dir=
+    maybe_use_latex2html=no
+    if echo "$remaining" | grep '[-]l2h' >/dev/null; then
+      maybe_use_latex2html=yes
+    fi
+    if echo "$remaining" | grep 'L2H 1' >/dev/null; then
+      maybe_use_latex2html=yes
+    fi
+    if [ $maybe_use_latex2html = 'yes' ]; then
+      if [ "$no_latex2html" = 'yes' ]; then
+        echo "S: (no latex2html) $current"
         continue 2
       fi
-      one_test_done=yes
-      dir="texi_${basename}"
-      echo "doing special texi case, dir: $dir" >>$logfile
-
-      test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
-      mkdir "${outdir}$dir"
-      remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
-      command_file=
-      # -I $testdir/ is useful when file name is found using 
-      # @setfilename
-      echo "$command $dir" >>$logfile
-      #echo "$dir($format)"
-      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 --output ${outdir}$dir/ -I $srcdir/testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable=DUMP_TEXI=1 --macro-expand=${outdir}$dir/$basename.texi $remaining_out_dir $src_file 2>${outdir}$dir/$basename.2" >> $logfile
-      echo "$cmd" >>$logfile
-      eval $cmd
-      ret=$?
-    else
-      # non-"texi" case.
-      one_test_done=yes
-      use_latex2html=no
-      use_tex4ht=no
-      l2h_tmp_dir=
-      maybe_use_latex2html=no
-      if echo "$remaining" | grep '[-]l2h' >/dev/null; then
-        maybe_use_latex2html=yes
-      fi
-      if echo "$remaining" | grep 'L2H 1' >/dev/null; then
-        maybe_use_latex2html=yes
-      fi
-      if [ $maybe_use_latex2html = 'yes' ]; then
-        if [ "$no_latex2html" = 'yes' ]; then
-          echo "S: (no latex2html) $current"
-          continue 2
-        fi
-        use_latex2html=yes
-        if test z"$tmp_dir" = 'z'; then
-           tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
-           if test z"$tmp_dir" = 'z'; then
-             echo "$0: mktemp failed" 1>&2
-             exit 1
-           fi
-        fi
-        l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
-      elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
-        if test "$no_tex4ht" = 'yes' ; then
-          echo "S: (no tex4ht) $current"
-          continue 2
-        fi
-        use_tex4ht=yes
-      fi
-      if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
-        if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
-         if test "$no_html2wiki" = 'yes' ; then
-           echo "S: (no html2wiki) $current"
-           continue 2
+      use_latex2html=yes
+      if test z"$tmp_dir" = 'z'; then
+         tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
+         if test z"$tmp_dir" = 'z'; then
+           echo "$0: mktemp failed" 1>&2
+           exit 1
          fi
-        fi
       fi
-      dir=$current
-      test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
-      mkdir "${outdir}$dir"
-      remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
-      echo "$command $dir -> ${outdir}$dir" >> $logfile
-      cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
-      echo "$cmd" >>$logfile
-      eval $cmd
-      ret=$?
-      #rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
-      #  ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-      #  ${outdir}$dir/*_l2h.html.* \
-      #  ${outdir}$dir/*_tex4ht_tex.html*
+      l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
+    elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
+      if test "$no_tex4ht" = 'yes' ; then
+        echo "S: (no tex4ht) $current"
+        continue 2
+      fi
+      use_tex4ht=yes
     fi
+    if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
+      if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
+       if test "$no_html2wiki" = 'yes' ; then
+         echo "S: (no html2wiki) $current"
+         continue 2
+       fi
+      fi
+    fi
+    dir=$current
+    test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
+    mkdir "${outdir}$dir"
+    remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
+    echo "$command $dir -> ${outdir}$dir" >> $logfile
+    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+    echo "$cmd" >>$logfile
+    eval $cmd
+    ret=$?
+    #rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+    #  ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
+    #  ${outdir}$dir/*_l2h.html.* \
+    #  ${outdir}$dir/*_tex4ht_tex.html*
+    
     #
     # ran test, check results.
     if test $ret = 0 ; then

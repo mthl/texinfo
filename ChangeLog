@@ -1,5 +1,11 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Remove all code dealing with a 
+	test case specially if its name was 'texi'.
+	* tp/tests/README: Don't mention a 'texi' special case.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests (texi_glossary):
 	Define test using '-c TEXINFO_OUTPUT_FORMAT=plaintexinfo'.  This 
 	leads to an extra error message due to more processing taking 

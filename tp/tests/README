@@ -141,18 +141,6 @@ specifies that the results of the processing of manual.texi with additional
 command line arguments --split chapter will be in the a_test_split_chapter
 directory.
 
-Using "texi" as the test name is special. In that case the directory name 
-is constructed by appending _ followed by the manual name without the .texi
-extension to "texi". And the result is not processed normally, but instead
-macros are expanded and regions that are not processed removed and the 
-result is put in a file with the same name as the manual. 
-
-texi manual.texi
-
-results in the following: in the directory out_parser/texi_manual the file
-manual.texi will have macros expanded and ignored regions removed.
-
-
 Common .texi
 ------------
 A common .texi file should be in the top-level directory (there is such an

@@ -10,7 +10,7 @@ diffs_dir=diffs
 
 
 dir=formatting
-arg='texi glossary.texi'
+arg='texi_glossary'
 name='texi_glossary'
 [ -d "$dir" ] || mkdir $dir
 

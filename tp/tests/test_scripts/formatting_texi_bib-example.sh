@@ -10,7 +10,7 @@ diffs_dir=diffs
 
 
 dir=formatting
-arg='texi bib-example.texi'
+arg='texi_bib-example'
 name='texi_bib-example'
 [ -d "$dir" ] || mkdir $dir
 

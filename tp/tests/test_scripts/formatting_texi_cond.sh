@@ -10,7 +10,7 @@ diffs_dir=diffs
 
 
 dir=formatting
-arg='texi cond.texi'
+arg='texi_cond'
 name='texi_cond'
 [ -d "$dir" ] || mkdir $dir
 
