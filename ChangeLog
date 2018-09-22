@@ -1,5 +1,14 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/nested_formats/list-of-tests (texi, texi_nested_formats):
+	Rename test and use '-c TEXINFO_OUTPUT_FORMAT=plaintexinfo' to
+	get a macro-expanded Texinfo output instead of using the special
+	test name "texi".  This means that the output will have the 
+	".txi" extension instead of "texi", and in the out_parser_info
+	directory, the output format will be info instead of texi.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Allow '-c TEXINFO_OUTPUT_FORMAT' to override 
 	'-c TEXI2HTML'.
 

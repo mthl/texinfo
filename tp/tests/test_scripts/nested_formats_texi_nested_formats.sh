@@ -10,7 +10,7 @@ diffs_dir=diffs
 
 
 dir=nested_formats
-arg='texi nested_formats.texi'
+arg='texi_nested_formats'
 name='texi_nested_formats'
 [ -d "$dir" ] || mkdir $dir
 
