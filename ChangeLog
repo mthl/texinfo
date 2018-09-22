@@ -1,5 +1,9 @@
 2018-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/README: Update to mention list-of-tests file.
+
+2018-09-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%no_brace_commands): Add '&'.
 	(%brace_commands): Add 'ampchar'.
 	* tp/Texinfo/Convert/Converter.pm
@@ -9,7 +13,7 @@
 	* tp/Texinfo/Convert/Text.pm (%text_brace_no_arg_commands): Add 
 	'ampchar'.
 	* tp/Texinfo/Convert/Unicode.pm (%unicode_map): Add 'ampchar'.
-	* tp/Texinfo/XS/misc.c (parse_texi_regex),
+	* tp/Texinfo/XS/misc.c (xs_parse_texi_regex),
 	* tp/Texinfo/Parser.pm (_parse_texi_regex): Include & as a 
 	single letter command.
 

@@ -1,7 +1,7 @@
 $Id$
 texinfo/tp/tests/README
 
-  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+  Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
   Free Software Foundation, Inc.
 
   Copying and distribution of this README file, with or without
@@ -113,7 +113,7 @@ the directory is passed through on the command line.
 
 Tests specification
 ===================
-Test runs are driven by the contents of the tests-parser.txt file in
+Test runs are driven by the contents of the list-of-tests file in
 each subdirectory. This is a line-oriented file. A # starts a
 comment, except that the very first line of the file can be, e.g.,
 # formats :html
@@ -166,10 +166,10 @@ Creating a new test
 ===================
 - choose the subdir here for the new test.  Each subdir only generates
 output in one or two formats (according to the `formats' line in
-its tests-parser.txt), so if you want to test a particular output
+its list-of-tests), so if you want to test a particular output
 format, use the right place.
 
-- add the line to subdir/tests-parser.txt as described above.
+- add the line to subdir/list-of-tests as described above.
 - most probably, create the needed subdir/*.texi file
 - cd subdir; ../run_parser_all.sh newtest
 
