@@ -429,7 +429,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if (closed_command == CM_errormsg) // 5173
         {
           char *arg = current->contents.list[0]->text.text;
-          line_error (arg);
+          if (arg)
+            line_error (arg);
         }
       else if (closed_command == CM_U)
         {

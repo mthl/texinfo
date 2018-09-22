@@ -293,68 +293,29 @@ parse_line_command_args (ELEMENT *line_command)
     add_to_element_contents (line_args, E); \
 } while (0)
 
-  ELEMENT *line_args;
   ELEMENT *arg = line_command->args.list[0];
-  ELEMENT *argarg = 0;
+  ELEMENT *line_args;
   enum command_id cmd;
   char *line;
   int i;
 
-  line_args = new_element (ET_NONE);
-
   cmd = line_command->cmd;
+  if (arg->contents.number == 0)
+   {
+     command_error (line_command, "@%s missing argument", command_name(cmd));
+     add_extra_integer (line_command, "missing_argument", 1);
+     return 0;
+   }
 
-  /* Find the argument, and check there is only one. */
-  i = 0;
-  while (i < arg->contents.number)
+  if (arg->contents.number > 1 || arg->contents.list[0]->text.end == 0)
     {
-      /* Ignore all the elements checked
-         in trim_spaces_comment_from_content.  */
-      enum element_type t;
-      t = contents_child_by_index(arg, i)->type;
-
-      if (t == ET_empty_spaces_after_command
-          || t == ET_empty_spaces_before_argument
-          || t == ET_empty_space_at_end_def_bracketed
-          || t == ET_empty_spaces_after_close_brace
-          || t == ET_spaces_at_end
-          || t == ET_space_at_end_block_command
-          || t == ET_empty_line_after_command
-          || contents_child_by_index(arg, i)->cmd == CM_c
-          || contents_child_by_index(arg, i)->cmd == CM_comment)
-        {
-          i++;
-          continue;
-        }
-      if (!argarg)
-        {
-          argarg = contents_child_by_index(arg, i);
-          i++;
-          continue;
-        }
-      else
-        {
-          /* Error - too many arguments. */
-          line_error ("superfluous argument to @%s",
-                       command_name (cmd));
-          break;
-        }
+      line_error ("superfluous argument to @%s", command_name (cmd));
     }
+  if (arg->contents.list[0]->text.end == 0)
+    return 0;
 
-  if (!argarg)
-    {
-      command_error (line_command, "@%s missing argument", command_name(cmd));
-      add_extra_integer (line_command, "missing_argument", 1);
-      return 0;
-    }
-  if (argarg->text.end == 0)
-    {
-      line_error ("superfluous argument to @%s",
-                   command_name (cmd));
-      return 0;
-    }
-
-  line = argarg->text.text;
+  line_args = new_element (ET_NONE);
+  line = arg->contents.list[0]->text.text;
 
   switch (cmd)
     {

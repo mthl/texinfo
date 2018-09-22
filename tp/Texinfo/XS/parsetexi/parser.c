@@ -482,44 +482,40 @@ isolate_last_space_internal (ELEMENT *current)
 
   last_elt = last_contents_child (current);
   char *text = element_text (last_elt);
-  if (!text || !*text || last_elt->type)
-    return;
 
-  int text_len = strlen (text);
+  int text_len = last_elt->text.end;
   /* Does the text end in whitespace? */
-  if (strchr (whitespace_chars, text[text_len - 1]))
+
+  /* If text all whitespace */
+  if (text[strspn (text, whitespace_chars)] == '\0')
     {
-      /* If text all whitespace */
-      if (text[strspn (text, whitespace_chars)] == '\0')
-        {
-          add_extra_string_dup (current, "spaces_after_argument",
-                                last_elt->text.text);
-          pop_element_from_contents (current);
-          /* FIXME: destroy_element? */
-        }
-      else
-        {
-          int i, trailing_spaces;
-          static TEXT t;
+      add_extra_string_dup (current, "spaces_after_argument",
+                            last_elt->text.text);
+      pop_element_from_contents (current);
+      /* FIXME: destroy_element? */
+    }
+  else
+    {
+      int i, trailing_spaces;
+      static TEXT t;
 
-          text_reset (&t);
+      text_reset (&t);
 
-          trailing_spaces = 0;
-          for (i = strlen (text) - 1;
-               i > 0 && strchr (whitespace_chars, text[i]);
-               i--)
-            trailing_spaces++;
+      trailing_spaces = 0;
+      for (i = strlen (text) - 1;
+           i > 0 && strchr (whitespace_chars, text[i]);
+           i--)
+        trailing_spaces++;
 
-          text_append_n (&t,
-                         text + text_len - trailing_spaces,
-                         trailing_spaces);
+      text_append_n (&t,
+                     text + text_len - trailing_spaces,
+                     trailing_spaces);
 
-          text[text_len - trailing_spaces] = '\0';
-          last_elt->text.end -= trailing_spaces;
+      text[text_len - trailing_spaces] = '\0';
+      last_elt->text.end -= trailing_spaces;
 
-          add_extra_string_dup (current, "spaces_after_argument",
-                                t.text);
-        }
+      add_extra_string_dup (current, "spaces_after_argument",
+                            t.text);
     }
 }
 
@@ -532,44 +528,43 @@ isolate_last_space_menu_entry_node (ELEMENT *current)
 
   last_elt = last_contents_child (current);
   text = element_text (last_elt);
-  if (!text || !*text || last_elt->type)
-    return;
 
-  text_len = strlen (text);
-  /* Does the text end in whitespace? */
-  if (strchr (whitespace_chars, text[text_len - 1]))
+  text_len = last_elt->text.end;
+
+  /* If text all whitespace */
+  if (text[strspn (text, whitespace_chars)] == '\0')
     {
-      /* If text all whitespace */
-      if (text[strspn (text, whitespace_chars)] == '\0')
-        {
-          last_elt->type = ET_space_at_end_menu_node;
-        }
-      else
-        {
-          ELEMENT *new_spaces;
-          int i, trailing_spaces;
+      last_elt->type = ET_space_at_end_menu_node;
+    }
+  else
+    {
+      ELEMENT *new_spaces;
+      int i, trailing_spaces;
 
-          trailing_spaces = 0;
-          for (i = strlen (text) - 1;
-               i > 0 && strchr (whitespace_chars, text[i]);
-               i--)
-            trailing_spaces++;
+      trailing_spaces = 0;
+      for (i = strlen (text) - 1;
+           i > 0 && strchr (whitespace_chars, text[i]);
+           i--)
+        trailing_spaces++;
 
-          new_spaces = new_element (ET_space_at_end_menu_node);
-          text_append_n (&new_spaces->text,
-                         text + text_len - trailing_spaces,
-                         trailing_spaces);
-          text[text_len - trailing_spaces] = '\0';
-          last_elt->text.end -= trailing_spaces;
+      new_spaces = new_element (ET_space_at_end_menu_node);
+      text_append_n (&new_spaces->text,
+                     text + text_len - trailing_spaces,
+                     trailing_spaces);
+      text[text_len - trailing_spaces] = '\0';
+      last_elt->text.end -= trailing_spaces;
 
-          add_to_element_contents (current, new_spaces);
-        }
+      add_to_element_contents (current, new_spaces);
     }
 }
 
 void
 isolate_last_space (ELEMENT *current)
 {
+  char *text;
+  ELEMENT *last_elt;
+  int text_len;
+
   if (current->contents.number == 0)
     return;
 
@@ -581,6 +576,18 @@ isolate_last_space (ELEMENT *current)
     }
 
   if (current->contents.number == 0)
+    return;
+
+  last_elt = last_contents_child (current);
+  text = element_text (last_elt);
+  if (!text || !*text
+      || (last_elt->type && (!current->type
+                             || current->type != ET_misc_line_arg)))
+    return;
+
+  text_len = last_elt->text.end;
+  /* Does the text end in whitespace? */
+  if (!strchr (whitespace_chars, text[text_len - 1]))
     return;
 
   if (current->type == ET_menu_entry_node)
