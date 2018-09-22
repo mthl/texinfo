@@ -2182,24 +2182,21 @@ sub _isolate_last_space
        = pop @{$current->{'contents'}}; 
   }
 
-  return if (!@{$current->{'contents'}}); 
+  return if !@{$current->{'contents'}}
+            or !defined($current->{'contents'}->[-1]->{'text'}) 
+            or $current->{'contents'}->[-1]->{'type'}
+            or $current->{'contents'}->[-1]->{'text'} !~ /\s+$/;
 
   if ($current->{'type'} and $current->{'type'} eq 'menu_entry_node') {
-    if (defined($current->{'contents'}->[-1]->{'text'}) 
-        and !$current->{'contents'}->[-1]->{'type'}
-        and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
-      if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
-        $current->{'contents'}->[-1]->{'type'} = 'space_at_end_menu_node';
-      } else {
-        $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
-        my $new_spaces = { 'text' => $1, 'parent' => $current,
-          'type' => 'space_at_end_menu_node' };
-        push @{$current->{'contents'}}, $new_spaces;
-      }
+    if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
+      $current->{'contents'}->[-1]->{'type'} = 'space_at_end_menu_node';
+    } else {
+      $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
+      my $new_spaces = { 'text' => $1, 'parent' => $current,
+        'type' => 'space_at_end_menu_node' };
+      push @{$current->{'contents'}}, $new_spaces;
     }
-  } elsif (defined($current->{'contents'}->[-1]->{'text'}) 
-      and !$current->{'contents'}->[-1]->{'type'}
-      and $current->{'contents'}->[-1]->{'text'} =~ /\s+$/) {
+  } else {
     # Store final spaces in 'spaces_after_argument'.
     if ($current->{'contents'}->[-1]->{'text'} !~ /\S/) {
       my $end_spaces = $current->{'contents'}->[-1]->{'text'};

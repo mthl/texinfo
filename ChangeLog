@@ -1,5 +1,10 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_isolate_last_space): Simplify code by 
+	taking out conditionals that are common to two blocks.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <@sortas>: Don't call
 	_trim_spaces_comment_from_content.
 
