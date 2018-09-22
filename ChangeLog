@@ -1,5 +1,13 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line): Reparent an empty argument 
+	of a block command to the contents before possibly processing a 
+	float command, instead of after.
+	(_parse_float_type): Allow args to be undefined.  Do not use
+	_trim_spaces_comment_from_content.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_line_command_args): Do not call
 	_trim_spaces_comment_from_content.
 

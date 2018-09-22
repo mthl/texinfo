@@ -2228,13 +2228,13 @@ sub _parse_node_manual($)
 sub _parse_float_type($)
 {
   my $current = shift;
-  if (@{$current->{'args'}}) {
-    my @type_contents = @{$current->{'args'}->[0]->{'contents'}};
-    _trim_spaces_comment_from_content(\@type_contents);
-    if (@type_contents) {
+  if ($current->{'args'} and @{$current->{'args'}}) {
+    if (@{$current->{'args'}->[0]->{'contents'}}) {
       my $normalized 
-        = Texinfo::Convert::Texinfo::convert({'contents' => \@type_contents});
-      $current->{'extra'}->{'type'}->{'content'} = \@type_contents;
+        = Texinfo::Convert::Texinfo::convert(
+          {'contents' => $current->{'args'}->[0]->{'contents'}});
+      $current->{'extra'}->{'type'}->{'content'} =
+                                      $current->{'args'}->[0]->{'contents'};
       $current->{'extra'}->{'type'}->{'normalized'} = $normalized;
       return 1;
     }
@@ -2840,26 +2840,6 @@ sub _end_line($$$)
     } else {
       _isolate_last_space($self, $current);
     } 
-    # @float args
-    if ($current->{'parent'}->{'cmdname'}
-               and $current->{'parent'}->{'cmdname'} eq 'float') {
-      my $float = $current->{'parent'};
-      $float->{'line_nr'} = $line_nr;
-      my $type = '';
-      if (@{$float->{'args'}}) {
-        my $float_label;
-        if ($float->{'args'}->[1]) {
-          $float_label = _parse_node_manual($float->{'args'}->[1]);
-          _check_internal_node($self, $float_label, $line_nr);
-        }
-        _register_label($self, $float, $float_label);
-        _parse_float_type($float);
-        $type = $float->{'extra'}->{'type'}->{'normalized'};
-      }
-      push @{$self->{'floats'}->{$type}}, $float;
-      $float->{'extra'}->{'float_section'} = $self->{'current_section'} 
-        if (defined($self->{'current_section'}));
-    }
     $current = $current->{'parent'};
     delete $current->{'remaining_args'};
     # don't consider empty argument of block @-commands as argument,
@@ -2872,6 +2852,23 @@ sub _end_line($$$)
       $empty_text->{'parent'} = $current;
       unshift @{$current->{'contents'}}, $empty_text;
       delete $current->{'args'};
+    }
+
+    # @float args
+    if ($current->{'cmdname'} and $current->{'cmdname'} eq 'float') {
+      $current->{'line_nr'} = $line_nr;
+      my $type = '';
+      my $float_label;
+      if ($current->{'args'} and $current->{'args'}->[1]) {
+        $float_label = _parse_node_manual($current->{'args'}->[1]);
+        _check_internal_node($self, $float_label, $line_nr);
+      }
+      _register_label($self, $current, $float_label);
+      _parse_float_type($current);
+      $type = $current->{'extra'}->{'type'}->{'normalized'};
+      push @{$self->{'floats'}->{$type}}, $current;
+      $current->{'extra'}->{'float_section'} = $self->{'current_section'} 
+        if (defined($self->{'current_section'}));
     }
 
     if ($current->{'cmdname'} 
