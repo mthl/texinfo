@@ -946,7 +946,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
      if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
        $format = set_format($value, $format, 1);
      } elsif ($var eq 'TEXI2HTML') {
-       $format = set_format('html');
+       $format = set_format('html', $format, 1);
        $parser_default_options->{'values'}->{'texi2html'} = 1;
      }
      set_from_cmdline($var, $value);
