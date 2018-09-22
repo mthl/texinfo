@@ -1,7 +1,7 @@
 # conditionals and macros
 texi glossary.texi
-texi bib-example.texi
-texi cond.texi --ifhtml --ifinfo --no-iftex
+texi_bib-example bib-example.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
+texi_cond cond.texi --ifhtml --ifinfo --no-iftex -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 # in the texinfo test suite, the default is info, and there is also a 
 # test with --html which doesn't make much sense here, replaced with --xml
 # though it is not the same
@@ -19,7 +19,7 @@ defcondx_Ubar defxcond.texi -U bar
 unknown_nodes_renamed unknown_nodes_renamed.texi
 
 # api
-texi ignore_and_comments.texi --init ignore_and_comments_output.init
+texi_ignore_and_comments ignore_and_comments.texi --init ignore_and_comments_output.init -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init
 test_redefine_need test_need.texi --init redefine_need.init
 
