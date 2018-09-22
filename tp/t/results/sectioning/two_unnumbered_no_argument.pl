@@ -15,17 +15,11 @@ $result_trees{'two_unnumbered_no_argument'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -46,17 +40,11 @@ $result_trees{'two_unnumbered_no_argument'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -78,12 +66,8 @@ $result_trees{'two_unnumbered_no_argument'} = {
   'type' => 'document_root'
 };
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[1];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[1]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
-$result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_unnumbered_no_argument'}{'contents'}[2];
 $result_trees{'two_unnumbered_no_argument'}{'contents'}[2]{'parent'} = $result_trees{'two_unnumbered_no_argument'};
 

@@ -60,17 +60,11 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -96,8 +90,6 @@ $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'conten
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[1]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[2]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
-$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3];
-$result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3];
 $result_trees{'macro_with_error_at_end_line_after_macro'}{'contents'}[3]{'parent'} = $result_trees{'macro_with_error_at_end_line_after_macro'};
 

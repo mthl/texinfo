@@ -2184,7 +2184,9 @@ sub _isolate_last_space
 
   return if !@{$current->{'contents'}}
             or !defined($current->{'contents'}->[-1]->{'text'}) 
-            or $current->{'contents'}->[-1]->{'type'}
+            or ($current->{'contents'}->[-1]->{'type'}
+                  and (!$current->{'type'}
+                        or $current->{'type'} ne 'misc_line_arg'))
             or $current->{'contents'}->[-1]->{'text'} !~ /\s+$/;
 
   if ($current->{'type'} and $current->{'type'} eq 'menu_entry_node') {

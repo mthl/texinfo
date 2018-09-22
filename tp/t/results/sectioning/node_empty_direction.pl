@@ -25,16 +25,10 @@ $result_trees{'node_empty_direction'} = {
           'type' => 'misc_line_arg'
         },
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_before_argument'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => ' '
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -68,8 +62,6 @@ $result_trees{'node_empty_direction'} = {
 $result_trees{'node_empty_direction'}{'contents'}[0]{'parent'} = $result_trees{'node_empty_direction'};
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
-$result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1];
-$result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'node_empty_direction'}{'contents'}[1];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'node_empty_direction'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_empty_direction'}{'contents'}[1]{'extra'}{'node_content'};

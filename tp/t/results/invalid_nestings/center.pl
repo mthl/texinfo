@@ -828,17 +828,11 @@ $result_trees{'center'} = {
             {
               'args' => [
                 {
-                  'contents' => [
-                    {
-                      'extra' => {
-                        'command' => {}
-                      },
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'empty_line_after_command'
-                    }
-                  ],
+                  'contents' => [],
+                  'extra' => {
+                    'spaces_after_argument' => '
+'
+                  },
                   'parent' => {},
                   'type' => 'misc_line_arg'
                 }
@@ -1542,8 +1536,6 @@ $result_trees{'center'}{'contents'}[22]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[23]{'parent'} = $result_trees{'center'};
 $result_trees{'center'}{'contents'}[24]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[24];
 $result_trees{'center'}{'contents'}[24]{'parent'} = $result_trees{'center'};
-$result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0];
-$result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0];
 $result_trees{'center'}{'contents'}[25]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center'}{'contents'}[25]{'args'}[0];
 $result_trees{'center'}{'contents'}[25]{'args'}[0]{'parent'} = $result_trees{'center'}{'contents'}[25];

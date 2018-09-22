@@ -15,17 +15,11 @@ $result_trees{'top_no_argument_and_content'} = {
     {
       'args' => [
         {
-          'contents' => [
-            {
-              'extra' => {
-                'command' => {}
-              },
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'empty_line_after_command'
-            }
-          ],
+          'contents' => [],
+          'extra' => {
+            'spaces_after_argument' => '
+'
+          },
           'parent' => {},
           'type' => 'misc_line_arg'
         }
@@ -65,8 +59,6 @@ $result_trees{'top_no_argument_and_content'} = {
   'type' => 'document_root'
 };
 $result_trees{'top_no_argument_and_content'}{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'};
-$result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
-$result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1];
 $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'top_no_argument_and_content'}{'contents'}[1]{'contents'}[1];
