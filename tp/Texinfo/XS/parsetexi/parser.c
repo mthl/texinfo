@@ -1059,7 +1059,7 @@ superfluous_arg:
       line_after_command = line + 1;
 
       /* List of single character Texinfo commands. */
-      if (strchr ("([\"'~@}{,.!?"
+      if (strchr ("([\"'~@&}{,.!?"
                   " \f\n\r\t"
                   "*-^`=:|/\\",
               *line_after_command))

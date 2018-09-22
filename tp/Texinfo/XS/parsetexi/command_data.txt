@@ -1,4 +1,4 @@
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
 # Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
@@ -37,6 +37,7 @@ value	brace
 ?	nobrace
 .	nobrace
 @	nobrace
+&	nobrace
 }	nobrace
 {	nobrace
 \\	nobrace
@@ -216,6 +217,7 @@ pounds		brace		0
 ordf		brace		0
 ordm		brace		0
 atchar		brace		0
+ampchar		brace		0
 lbracechar	brace		0
 rbracechar	brace		0
 backslashchar	brace		0
