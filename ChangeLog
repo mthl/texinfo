@@ -1,5 +1,12 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@U>: Don't call
+	_trim_spaces_comment_from_content.
+	* t/02coverage.t (invalid_U): Add use of @U with whitespace 
+	surrounding argument.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <@errormsg>: Don't call
 	_trim_spaces_comment_from_content.
 	* t/02coverage.t (test_errormsg): Add use of @errormsg with 

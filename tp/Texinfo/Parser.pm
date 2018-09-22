@@ -5126,9 +5126,10 @@ sub _parse_texi($;$)
               $self->line_error($error_message_text, $line_nr)
                 if $error_message_text;
             } elsif ($current->{'parent'}->{'cmdname'} eq 'U') {
-              my @contents = @{$current->{'contents'}};
-              _trim_spaces_comment_from_content (\@contents);
-              my $arg = $contents[0]->{'text'};
+              my $arg;
+              if ($current->{'contents'}->[0]) {
+                $arg = $current->{'contents'}->[0]->{'text'};
+              }
               if (!defined($arg) || !$arg) {
                 $self->line_warn(__("no argument specified for \@U"),
                   $line_nr);

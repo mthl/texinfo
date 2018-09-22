@@ -544,6 +544,7 @@ In float with caption.
 '],
 ['invalid_U',
 '@U @U{} @U{z} @U{abc} @U{9999999999999} @U{110000} @U{10FFFF}
+@U{ 0023 } @U{ wxyz }
 '],
 ['test_errormsg',
 'Some text
