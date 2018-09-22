@@ -1,5 +1,12 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi) <@errormsg>: Don't call
+	_trim_spaces_comment_from_content.
+	* t/02coverage.t (test_errormsg): Add use of @errormsg with 
+	whitespace surrounding error message.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <',' seen for inline commands>:
 	Use text in 'args' directly instead of calling 
 	_trim_spaces_comment_from_content.

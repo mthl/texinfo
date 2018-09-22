@@ -5122,9 +5122,7 @@ sub _parse_texi($;$)
                            $current_command->{'cmdname'}), $line_nr);
               }
             } elsif ($current->{'parent'}->{'cmdname'} eq 'errormsg') {
-              my @contents = @{$current->{'contents'}};
-              _trim_spaces_comment_from_content (\@contents);
-              my $error_message_text = $contents[0]->{'text'};
+              my $error_message_text = $current->{'contents'}->[0]->{'text'};
               $self->line_error($error_message_text, $line_nr)
                 if $error_message_text;
             } elsif ($current->{'parent'}->{'cmdname'} eq 'U') {

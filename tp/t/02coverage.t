@@ -548,6 +548,7 @@ In float with caption.
 ['test_errormsg',
 'Some text
 @errormsg{Text @~e @code{code}}
+@errormsg{  with surrounding spaces   }
 '],
 ['unknown_accents',
 '@"X @"x @"Q @"Y
