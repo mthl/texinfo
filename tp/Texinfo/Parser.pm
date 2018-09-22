@@ -5537,25 +5537,21 @@ sub _parse_line_command_args($$$)
     }
   }
 
-  my @contents = @{$arg->{'contents'}};
-
-  _trim_spaces_comment_from_content(\@contents);
-
-  if (! @contents) {
+  if (!$arg->{'contents'} or !@{$arg->{'contents'}}) {
     $self->_command_error($line_command, $line_nr,
                __("\@%s missing argument"), $command);
     $line_command->{'extra'}->{'missing_argument'} = 1;
     return undef;
   }
 
-  if (@contents > 1
-         or (!defined($contents[0]->{'text'}))) {
+  if (@{$arg->{'contents'}} > 1
+         or (!defined($arg->{'contents'}->[0]->{'text'}))) {
     $self->line_error (sprintf(__("superfluous argument to \@%s"),
        $command), $line_nr);
   }
-  return undef if (!defined($contents[0]->{'text'}));
+  return undef if (!defined($arg->{'contents'}->[0]->{'text'}));
   
-  my $line = $contents[0]->{'text'};  
+  my $line = $arg->{'contents'}->[0]->{'text'};  
 
   if ($command eq 'alias') {
     # REMACRO

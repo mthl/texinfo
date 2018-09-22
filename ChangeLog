@@ -1,5 +1,10 @@
 2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_line_command_args): Do not call
+	_trim_spaces_comment_from_content.
+
+2018-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_isolate_last_space): Isolate the last 
 	space on a misc_line_arg if it has a 'type' set, including
 	'empty_line_after_command'.
