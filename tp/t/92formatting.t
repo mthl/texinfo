@@ -9,8 +9,20 @@ require 't/test_utils.pl';
 # These tests are supposed to test the same things as tests
 # under tp/tests did, but to be faster.
 my @test_cases = (
+['unknown_nodes_renamed',
+  undef, {'test_file' => 'unknown_nodes_renamed.texi',
+  },
+],
 ['one_line_no_content',
   undef, {'test_file' => 'one_line_no_content.texi',
+  },
+],
+['one_line',
+  undef, {'test_file' => 'one_line.texi',
+  },
+],
+['empty',
+  undef, {'test_file' => 'empty.texi',
   },
 ],
 

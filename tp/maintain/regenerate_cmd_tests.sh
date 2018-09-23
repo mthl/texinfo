@@ -24,6 +24,7 @@ test_file='list-of-tests'
 test_scripts_dir='test_scripts'
 
 test -d $test_scripts_dir || mkdir $test_scripts_dir
+rm -f $test_scripts_dir/*
 
 dir=`echo $0 | sed 's,/[^/]*$,,'`
 outfile=$1

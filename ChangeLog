@@ -1,5 +1,16 @@
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/formatting/list-of-tests
+	(unknown_nodes_renamed, one_line, empty): Remove.
+	* tp/t/92formatting.t
+	(unknown_nodes_renamed, one_line, empty): New tests.
+
+	* tp/maintain/regenerate_cmd_tests.sh: Wipe tests directory.
+	* tp/tests/README: Do not mention wiping tests directory.  
+	Explain which other files to delete.
+
+2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/92formatting.t: New file.
 	* tp/t/92formatting.t (one_line_no_content): New test.
 	* tp/tests/formatting/list-of-tests (one_line_no_content): Remove test.
