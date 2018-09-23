@@ -1097,45 +1097,6 @@ end_line_starting_block (ELEMENT *current)
       isolate_last_space (current);
     }
 
-  if (current->parent->cmd == CM_float) // 2943
-    {
-      ELEMENT *f = current->parent;
-      char *type = "";
-      current->parent->line_nr = line_nr;
-      if (current->parent->args.number > 0)
-        {
-          KEY_PAIR *k;
-          EXTRA_FLOAT_TYPE *eft;
-          if (current->parent->args.number > 1)
-            {
-              // 2950
-              NODE_SPEC_EXTRA *float_label;
-              float_label = parse_node_manual (args_child_by_index (f, 1));
-              check_internal_node (float_label);
-
-              register_label (f, float_label->node_content);
-              free_node_contents (float_label->manual_content);
-              free (float_label);
-            }
-          parse_float_type (f);
-          k = lookup_extra (f, "type");
-          if (k)
-            {
-              eft = (EXTRA_FLOAT_TYPE *) k->value;
-              type = eft->normalized;
-            }
-        }
-      // add to global 'floats' array
-      if (floats_number == floats_space)
-        {
-          floats_list = realloc (floats_list,
-                                 (floats_space += 5) * sizeof (FLOAT_RECORD));
-        }
-      floats_list[floats_number].type = type;
-      floats_list[floats_number++].element = f;
-      if (current_section)
-        add_extra_element (f, "float_section", current_section);
-    }
   current = current->parent; //2965
   if (counter_value (&count_remaining_args, current) != -1)
     counter_pop (&count_remaining_args);
@@ -1149,6 +1110,42 @@ end_line_starting_block (ELEMENT *current)
       ELEMENT *e = remove_from_contents (current->args.list[0], 0);
       insert_into_contents (current, e, 0);
       destroy_element (pop_element_from_args (current));
+    }
+
+  if (current->cmd == CM_float) // 2943
+    {
+      char *type = "";
+      KEY_PAIR *k;
+      EXTRA_FLOAT_TYPE *eft;
+      current->line_nr = line_nr;
+      if (current->args.number >= 2)
+        {
+          // 2950
+          NODE_SPEC_EXTRA *float_label;
+          float_label = parse_node_manual (args_child_by_index (current, 1));
+          check_internal_node (float_label);
+
+          register_label (current, float_label->node_content);
+          free_node_contents (float_label->manual_content);
+          free (float_label);
+        }
+      parse_float_type (current);
+      k = lookup_extra (current, "type");
+      if (k)
+        {
+          eft = (EXTRA_FLOAT_TYPE *) k->value;
+          type = eft->normalized;
+        }
+      // add to global 'floats' array
+      if (floats_number == floats_space)
+        {
+          floats_list = realloc (floats_list,
+                                 (floats_space += 5) * sizeof (FLOAT_RECORD));
+        }
+      floats_list[floats_number].type = type;
+      floats_list[floats_number++].element = current;
+      if (current_section)
+        add_extra_element (current, "float_section", current_section);
     }
 
   if (command_flags(current) & CF_blockitem) // 2981
