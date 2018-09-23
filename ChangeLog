@@ -1,14 +1,14 @@
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/maintain/regenerate_cmd_tests.sh: Remove code dealing with 
-	"texi" as a special test case name.  Do not use separate '$arg' 
-	and '$name' variables in the test scripts.
+	* tp/t/92formatting.t: New file.
+	* tp/t/92formatting.t (one_line_no_content): New test.
+	* tp/tests/formatting/list-of-tests (one_line_no_content): Remove test.
 
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/tests/nested_formats/list-of-tests (texi_nested_formats): Remove.
-	* tp/92nested_formats.t: New file.
-	* tp/92nested_formats.t (texi_nested_formats): New test.
+	* tp/maintain/regenerate_cmd_tests.sh: Remove code dealing with 
+	"texi" as a special test case name.  Do not use separate '$arg' 
+	and '$name' variables in the test scripts.
 
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
