@@ -17351,13 +17351,6 @@ Xref Configuration}.
 The extension added to the output file name.  The default is different
 for each output format.
 
-@item FIX_TEXINFO
-For ``plain Texinfo'' (see the @code{PLAINTEXINFO} item).  If set to
-false, the resulting Texinfo does not have all errors corrected, such
-as missing @samp{@@end}; default true.  This variable is only
-relevant when expanding Texinfo; other converters always try to
-output something sane even if the input is erroneous.
-
 @c @item IDX_SUMMARY
 @c If set, for each @code{@@printindex} a file named
 @c @file{@var{docname}_@var{idxname}.idx} is created, containing lines of
