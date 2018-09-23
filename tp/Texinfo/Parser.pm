@@ -875,6 +875,7 @@ sub parse_texi_file($$)
        'fh' => $filehandle
         }];
   $self->{'info'}->{'input_file_name'} = $file_name;
+  $self->{'info'}->{'input_directory'} = $directories;
   my $tree = $self->_parse_texi($root);
 
   # Find 'text_root', which contains everything before first node/section.

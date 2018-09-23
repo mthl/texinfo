@@ -1623,7 +1623,13 @@ sub parse_renamed_nodes_file($$;$$)
   my $renamed_nodes = shift;
   my $renamed_nodes_lines = shift;
 
-  if (open(RENAMEDFILE, "<$renamed_nodes_file")) {
+  my $input_directory = $self->{'info'}->{'input_directory'};
+  
+  # check for noderename.cnf in directory of source, and in current
+  # directory.
+  if ($input_directory
+        and open(RENAMEDFILE, "<$input_directory$renamed_nodes_file")
+      or open(RENAMEDFILE, "<$renamed_nodes_file")) {
     if ($self->get_conf('INPUT_PERL_ENCODING')) {
       binmode(RENAMEDFILE, ":encoding(".
                        $self->get_conf('INPUT_PERL_ENCODING').")");

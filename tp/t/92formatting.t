@@ -10,8 +10,11 @@ require 't/test_utils.pl';
 # under tp/tests did, but to be faster.
 my @test_cases = (
 ['unknown_nodes_renamed',
-  undef, {'test_file' => 'unknown_nodes_renamed.texi',
+  undef, {'test_file' => 'unknown_nodes_renamed.texi', 
+   'test_formats' => ['file_html']
   },
+  {'RENAMED_NODES_FILE' => 'unknown_nodes_renamed-noderename.cnf',
+  }
 ],
 ['one_line_no_content',
   undef, {'test_file' => 'one_line_no_content.texi',
@@ -29,7 +32,9 @@ my @test_cases = (
 );
 
 foreach my $test (@test_cases) {
-  push @{$test->[2]->{'test_formats'}}, 'html';
+  if (!$test->[2]->{'test_formats'}) {
+    push @{$test->[2]->{'test_formats'}}, 'html';
+  }
   $test->[3]->{'TEXI2HTML'} = 1;
   $test->[3]->{'TEST'} = 1;
 }

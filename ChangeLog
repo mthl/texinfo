@@ -1,5 +1,15 @@
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (parse_texi_file): Save name subdirectory
+	containing input file.
+	* tp/Texinfo/Common.pm (parse_renamed_nodes_file): Check for 
+	noderename.cnf in subdirectory containing input file first.
+	* t/92formatting.t (unknown_nodes_renamed): Output a file for 
+	the test and use a renamed nodes file.  This restores an error 
+	message that was present in the test this one replaced.
+
+2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests
 	(unknown_nodes_renamed, one_line, empty): Remove.
 	* tp/t/92formatting.t
