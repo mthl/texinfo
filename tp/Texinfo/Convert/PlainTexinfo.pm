@@ -63,8 +63,7 @@ sub _convert($$)
   my $self = shift;
   my $root = shift;
   
-  return Texinfo::Convert::Texinfo::convert($root, 
-                                            $self->get_conf('FIX_TEXINFO'));
+  return Texinfo::Convert::Texinfo::convert($root);
 }
 
 1;

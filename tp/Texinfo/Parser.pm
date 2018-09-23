@@ -6811,11 +6811,6 @@ C<@frenchspacing>, C<@alias>, C<@synindex>, C<@columnfractions>.
 Also filled for C<@set>, C<@clickstyle>, C<@unmacro> or C<@comment>
 arguments.
 
-=item spaces_after_command
-
-For @-commands followed by spaces, a reference to the corresponding
-text element.
-
 =item spaces_before_argument
 
 For @-commands with opening brace followed by spaces held in a 

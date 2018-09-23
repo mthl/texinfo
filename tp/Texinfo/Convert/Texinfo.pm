@@ -61,17 +61,14 @@ for my $a (@ignored_types) {
   $ignored_types{$a} = 1;
 }
 
-sub convert ($;$);
 # Following subroutines deal with transforming a texinfo tree into texinfo
 # text.  Should give the text that was used parsed, except for a few cases.
-# Second argument is undocumented for now, as it may change, for instance
-# become a hash if more has to be given.
 
 # expand a tree to the corresponding texinfo.
-sub convert ($;$)
+sub convert
 {
   my $root = shift;
-  my $fix = shift;
+
   die "convert: root undef\n" if (!defined($root));
   die "convert: bad root type (".ref($root).") $root\n" 
      if (ref($root) ne 'HASH');
@@ -82,14 +79,11 @@ sub convert ($;$)
   if (defined($root->{'text'})) {
     $result .= $root->{'text'};
   } else {
-    if ($fix and $root->{'extra'} and $root->{'extra'}->{'invalid_nesting'}) {
-      return '';
-    }
     if ($root->{'cmdname'} 
        or ($root->{'type'} and ($root->{'type'} eq 'def_line'
                                 or $root->{'type'} eq 'menu_entry'
                                 or $root->{'type'} eq 'menu_comment'))) {
-      $result .= _expand_cmd_args_to_texi($root, $fix);
+      $result .= _expand_cmd_args_to_texi($root);
     }
     if ($root->{'type'}
         and ($root->{'type'} eq 'bracketed'
@@ -104,7 +98,7 @@ sub convert ($;$)
       die "bad contents type(" . ref($root->{'contents'})
           . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
       foreach my $child (@{$root->{'contents'}}) {
-        $result .= convert($child, $fix);
+        $result .= convert($child);
       }
     }
     if ($root->{'extra'}
@@ -114,9 +108,8 @@ sub convert ($;$)
     $result .= '}' if ($root->{'type'}
                        and ($root->{'type'} eq 'bracketed'
                             or $root->{'type'} eq 'bracketed_def_content'));
-    if ($root->{'cmdname'} and (defined($block_commands{$root->{'cmdname'}}))
-        and ($block_commands{$root->{'cmdname'}} eq 'raw' 
-          or ($fix and !($root->{'extra'} and $root->{'extra'}->{'end_command'})))) {
+    if ($root->{'cmdname'} and defined($block_commands{$root->{'cmdname'}})
+        and $block_commands{$root->{'cmdname'}} eq 'raw') {
       $result .= '@end '.$root->{'cmdname'};
       $result .= "\n" if ($block_commands{$root->{'cmdname'}} ne 'raw');
     } 
@@ -142,9 +135,9 @@ sub node_extra_to_texi($)
 
 
 # expand a command argument as texinfo.
-sub _expand_cmd_args_to_texi ($;$) {
+sub _expand_cmd_args_to_texi {
   my $cmd = shift;
-  my $fix = shift;
+
   my $cmdname = $cmd->{'cmdname'};
   $cmdname = '' if (!$cmd->{'cmdname'}); 
   my $result = '';
@@ -163,7 +156,7 @@ sub _expand_cmd_args_to_texi ($;$) {
      $result .= $cmd->{'extra'}->{'spaces_before_argument'}
        if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
      foreach my $arg (@{$cmd->{'args'}}) {
-        $result .= convert($arg, $fix);
+        $result .= convert($arg);
     }
   # for misc_commands with type special
   } elsif (($cmd->{'extra'} or $cmdname eq 'macro' or $cmdname eq 'rmacro') 
@@ -180,13 +173,10 @@ sub _expand_cmd_args_to_texi ($;$) {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
-      $result .= convert($arg, $fix);
+      $result .= convert($arg);
       $result .= ',';
     }
     $result =~ s/,$//;
-  } elsif ($fix and $misc_commands{$cmdname}
-      and $misc_commands{$cmdname} eq 'skipline') {
-    $result .="\n";
   } elsif (defined($cmd->{'args'})) {
     my $braces;
     $braces = 1 if ($cmd->{'args'}->[0]->{'type'} 
@@ -210,7 +200,7 @@ sub _expand_cmd_args_to_texi ($;$) {
       if ($arg->{'extra'} and $arg->{'extra'}->{'spaces_before_argument'}) {
         $result .= $arg->{'extra'}->{'spaces_before_argument'};
       }
-      $result .= convert($arg, $fix);
+      $result .= convert($arg);
     }
     if ($cmdname eq 'verb') {
       $result .= $cmd->{'extra'}->{'delimiter'};
@@ -222,7 +212,7 @@ sub _expand_cmd_args_to_texi ($;$) {
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-  $result .= convert($cmd->{'extra'}->{'comment_at_end'}, $fix)
+  $result .= convert($cmd->{'extra'}->{'comment_at_end'})
      if $cmd->{'extra'} and $cmd->{'extra'}->{'comment_at_end'};
   return $result;
 }
