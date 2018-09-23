@@ -120,6 +120,7 @@ test_files = \
  t/README \
  t/include/a.txt \
  t/include/aa.txt \
+ t/include/my-bib-macros.texi \
  t/include/count_image.png \
  t/include/count_image.txt \
  t/include/count_image_text.txt \
@@ -155,6 +156,8 @@ test_files = \
  t/init/l2h.init \
  t/test_utils.pl \
  t/input_files/all_spaces.texi \
+ t/input_files/bib-example.texi \
+ t/input_files/cond.texi \
  t/input_files/char_latin1_utf8_in_refs.texi \
  t/input_files/char_latin1_latin1_in_refs.texi \
  t/input_files/char_latin2_latin2_in_refs.texi \
@@ -170,6 +173,7 @@ test_files = \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/glossary.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
  t/input_files/nodequote.texi \

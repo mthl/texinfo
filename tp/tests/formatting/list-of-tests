@@ -1,22 +1,6 @@
 # conditionals and macros
-texi_glossary glossary.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
-texi_bib-example bib-example.texi -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
-texi_cond cond.texi --ifhtml --ifinfo --no-iftex -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
-# in the texinfo test suite, the default is info, and there is also a 
-# test with --html which doesn't make much sense here, replaced with --xml
-# though it is not the same
-cond cond.texi
-cond_xml cond.texi --xml
-cond_no-ifhtml_no-ifinfo_no-iftex cond.texi --no-ifhtml --no-ifinfo --no-iftex
-cond_ifhtml_ifinfo_iftex cond.texi --ifhtml --ifinfo --iftex
-cond_info cond.texi --info
-cond_info_no-ifhtml_no-ifinfo_no-iftex cond.texi --info --no-ifhtml --no-ifinfo --no-iftex
-cond_info_ifhtml_ifinfo_iftex cond.texi --info --ifhtml --ifinfo --iftex
 defcondx_Dbar defxcond.texi -D bar
 defcondx_Ubar defxcond.texi -U bar
-
-# renamed nodes
-unknown_nodes_renamed unknown_nodes_renamed.texi
 
 # api
 texi_ignore_and_comments ignore_and_comments.texi --init ignore_and_comments_output.init -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
