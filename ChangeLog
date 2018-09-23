@@ -1,5 +1,17 @@
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/maintain/regenerate_cmd_tests.sh: Remove code dealing with 
+	"texi" as a special test case name.  Do not use separate '$arg' 
+	and '$name' variables in the test scripts.
+
+2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/nested_formats/list-of-tests (texi_nested_formats): Remove.
+	* tp/92nested_formats.t: New file.
+	* tp/92nested_formats.t (texi_nested_formats): New test.
+
+2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/PlainTexinfo.pm: Do not pass a 
 	'FIX_TEXINFO' value into Texinfo.pm.
 	* tp/Texinfo/Convert/Texinfo.pm (convert, _expand_cmd_args_to_texi):

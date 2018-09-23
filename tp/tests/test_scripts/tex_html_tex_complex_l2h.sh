@@ -16,12 +16,11 @@ if test "z$TEX_HTML_TESTS" != z"yes"; then
 fi
 
 dir=tex_html
-arg='tex_complex_l2h'
 name='tex_complex_l2h'
 [ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;
-"$srcdir"/run_parser_all.sh -dir $dir $arg
+"$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log
 if test $exit_status = 0 && test -f $dir/$diffs_dir/$name.diff; then

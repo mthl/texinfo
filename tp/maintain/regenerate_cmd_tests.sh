@@ -66,15 +66,10 @@ for test_dir in $test_dirs; do
     if echo $line | grep '^ *#' >/dev/null; then continue; fi
 # there are better ways
     name=`echo $line | awk '{print $1}'`
-    arg=$name
     file=`echo $line | awk '{print $2}'`
     remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
     test "z$name" = 'z' -o "$zfile" = 'z' && continue
     basename=`basename $file .texi`
-    if test "z$name" = 'ztexi' ; then
-      name="texi_${basename}"
-      arg="texi ${basename}.texi"
-    fi
     if test "z${test_dir}" = 'z.'; then
       name_prepended=${destdir}_
       relative_command_dir='/..'
@@ -105,13 +100,13 @@ if test "z$TEX_HTML_TESTS" != z"yes"; then
 fi
 ' >> $one_test_file
     fi
+
     echo "dir=$test_dir
-arg='$arg'
 name='$name'
 "'[ -d "$dir" ] || mkdir $dir
 
 srcdir_test=$dir; export srcdir_test;
-"$srcdir"'"$relative_command_dir"'/run_parser_all.sh -dir $dir $arg
+"$srcdir"'"$relative_command_dir"'/run_parser_all.sh -dir $dir $name
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log
 if test $exit_status = 0 && test -f $dir/$diffs_dir/$name.diff; then
