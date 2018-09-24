@@ -78,8 +78,6 @@ res_dir=res_parser
 out_dir=out_parser
 # used for tex4ht and latex2html results to keep their raw output
 raw_out_dir=raw_out_parser
-#res_dir_ref=res
-#command=texi2html.pl
 diffs_dir=diffs
 
 no_latex2html=yes
@@ -297,11 +295,6 @@ while read line; do
     echo "$cmd" >>$logfile
     eval $cmd
     ret=$?
-    #rm -f ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
-    #  ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-    #  ${outdir}$dir/*_l2h.html.* \
-    #  ${outdir}$dir/*_tex4ht_tex.html*
-    
     #
     # ran test, check results.
     if test $ret = 0 ; then

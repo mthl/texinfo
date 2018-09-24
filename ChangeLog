@@ -1,5 +1,9 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Remove some commented-out code.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Mention changes for newer versions of Perl.
 
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
