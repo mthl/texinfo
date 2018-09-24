@@ -50,9 +50,7 @@ $result_trees{'no_empty_line_between_headings'} = {
           ],
           'cmdname' => 'subheading',
           'extra' => {
-            'misc_content' => [
-              {}
-            ],
+            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'level' => 3,
@@ -65,9 +63,7 @@ $result_trees{'no_empty_line_between_headings'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -98,9 +94,7 @@ $result_trees{'no_empty_line_between_headings'} = {
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -132,9 +126,7 @@ $result_trees{'no_empty_line_between_headings'} = {
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -154,17 +146,17 @@ $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1];
 $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0];
-$result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1];
-$result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[1]{'parent'} = $result_trees{'no_empty_line_between_headings'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'args'}[0];
 $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[2];
-$result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[2]{'parent'} = $result_trees{'no_empty_line_between_headings'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'args'}[0];
 $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[3];
-$result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'no_empty_line_between_headings'}{'contents'}[3]{'parent'} = $result_trees{'no_empty_line_between_headings'};
 
 $result_texis{'no_empty_line_between_headings'} = '@top Top

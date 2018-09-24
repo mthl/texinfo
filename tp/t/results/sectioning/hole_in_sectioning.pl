@@ -39,9 +39,7 @@ $result_trees{'hole_in_sectioning'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -79,9 +77,7 @@ $result_trees{'hole_in_sectioning'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -120,9 +116,7 @@ $result_trees{'hole_in_sectioning'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -161,9 +155,7 @@ $result_trees{'hole_in_sectioning'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 3,
@@ -195,9 +187,7 @@ $result_trees{'hole_in_sectioning'} = {
       'cmdname' => 'subsection',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 3,
@@ -216,26 +206,26 @@ $result_trees{'hole_in_sectioning'}{'contents'}[0]{'parent'} = $result_trees{'ho
 $result_trees{'hole_in_sectioning'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[1]{'args'}[0];
 $result_trees{'hole_in_sectioning'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[1];
 $result_trees{'hole_in_sectioning'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[1];
-$result_trees{'hole_in_sectioning'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'hole_in_sectioning'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'hole_in_sectioning'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'hole_in_sectioning'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'hole_in_sectioning'}{'contents'}[1]{'parent'} = $result_trees{'hole_in_sectioning'};
 $result_trees{'hole_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[2]{'args'}[0];
 $result_trees{'hole_in_sectioning'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[2];
 $result_trees{'hole_in_sectioning'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[2];
-$result_trees{'hole_in_sectioning'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'hole_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'hole_in_sectioning'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'hole_in_sectioning'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'hole_in_sectioning'}{'contents'}[2]{'parent'} = $result_trees{'hole_in_sectioning'};
 $result_trees{'hole_in_sectioning'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[3]{'args'}[0];
 $result_trees{'hole_in_sectioning'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[3];
 $result_trees{'hole_in_sectioning'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[3];
-$result_trees{'hole_in_sectioning'}{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'hole_in_sectioning'}{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'hole_in_sectioning'}{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'hole_in_sectioning'}{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'hole_in_sectioning'}{'contents'}[3]{'parent'} = $result_trees{'hole_in_sectioning'};
 $result_trees{'hole_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[4]{'args'}[0];
 $result_trees{'hole_in_sectioning'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[4];
 $result_trees{'hole_in_sectioning'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[4];
-$result_trees{'hole_in_sectioning'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'hole_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'hole_in_sectioning'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'hole_in_sectioning'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'hole_in_sectioning'}{'contents'}[4]{'parent'} = $result_trees{'hole_in_sectioning'};
 $result_trees{'hole_in_sectioning'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[5]{'args'}[0];
 $result_trees{'hole_in_sectioning'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'hole_in_sectioning'}{'contents'}[5];
-$result_trees{'hole_in_sectioning'}{'contents'}[5]{'extra'}{'misc_content'}[0] = $result_trees{'hole_in_sectioning'}{'contents'}[5]{'args'}[0]{'contents'}[0];
+$result_trees{'hole_in_sectioning'}{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'hole_in_sectioning'}{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'hole_in_sectioning'}{'contents'}[5]{'parent'} = $result_trees{'hole_in_sectioning'};
 
 $result_texis{'hole_in_sectioning'} = '@top Top

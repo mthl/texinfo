@@ -74,12 +74,7 @@ $result_trees{'heading_in_quotation'} = {
           ],
           'cmdname' => 'heading',
           'extra' => {
-            'misc_content' => [
-              {},
-              {},
-              {},
-              {}
-            ],
+            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'level' => 2,
@@ -146,10 +141,7 @@ $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[1] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[2] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[3] = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3];
+$result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'line_nr'} = $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[3]{'line_nr'};
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];
 $result_trees{'heading_in_quotation'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'heading_in_quotation'}{'contents'}[0];

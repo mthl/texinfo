@@ -316,9 +316,7 @@ $result_trees{'also_not_line'} = {
       ],
       'cmdname' => 'subheading',
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 3,
@@ -419,9 +417,7 @@ $result_trees{'also_not_line'} = {
       ],
       'cmdname' => 'exdent',
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -488,7 +484,7 @@ $result_trees{'also_not_line'}{'contents'}[15]{'parent'} = $result_trees{'also_n
 $result_trees{'also_not_line'}{'contents'}[16]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0];
 $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[17];
-$result_trees{'also_not_line'}{'contents'}[17]{'extra'}{'misc_content'}[0] = $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'contents'}[0];
+$result_trees{'also_not_line'}{'contents'}[17]{'extra'}{'misc_content'} = $result_trees{'also_not_line'}{'contents'}[17]{'args'}[0]{'contents'};
 $result_trees{'also_not_line'}{'contents'}[17]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[18]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
@@ -504,7 +500,7 @@ $result_trees{'also_not_line'}{'contents'}[21]{'contents'}[0]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[21]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[22]{'args'}[0];
 $result_trees{'also_not_line'}{'contents'}[22]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[22];
-$result_trees{'also_not_line'}{'contents'}[22]{'extra'}{'misc_content'}[0] = $result_trees{'also_not_line'}{'contents'}[22]{'args'}[0]{'contents'}[0];
+$result_trees{'also_not_line'}{'contents'}[22]{'extra'}{'misc_content'} = $result_trees{'also_not_line'}{'contents'}[22]{'args'}[0]{'contents'};
 $result_trees{'also_not_line'}{'contents'}[22]{'parent'} = $result_trees{'also_not_line'};
 
 $result_texis{'also_not_line'} = '

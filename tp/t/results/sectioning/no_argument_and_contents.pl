@@ -63,9 +63,7 @@ $result_trees{'no_argument_and_contents'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -116,9 +114,7 @@ $result_trees{'no_argument_and_contents'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -136,13 +132,13 @@ $result_trees{'no_argument_and_contents'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1];
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[1];
-$result_trees{'no_argument_and_contents'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'no_argument_and_contents'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'no_argument_and_contents'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'no_argument_and_contents'}{'contents'}[1]{'parent'} = $result_trees{'no_argument_and_contents'};
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'no_argument_and_contents'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'line_nr'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'parent'} = $result_trees{'no_argument_and_contents'};
 

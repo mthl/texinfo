@@ -263,9 +263,7 @@ $result_trees{'inlineraw_in_menu_description'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -316,7 +314,7 @@ $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1]{'co
 $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1];
 $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
 $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'inlineraw_in_menu_description'}{'contents'}[2];
-$result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'inlineraw_in_menu_description'}{'contents'}[2]{'parent'} = $result_trees{'inlineraw_in_menu_description'};
 
 $result_texis{'inlineraw_in_menu_description'} = '@node Top

@@ -76,9 +76,7 @@ $result_trees{'section_in_flushright'} = {
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -103,7 +101,7 @@ $result_trees{'section_in_flushright'}{'contents'}[0]{'contents'}[0]{'parent'} =
 $result_trees{'section_in_flushright'}{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'};
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_flushright'}{'contents'}[1];
-$result_trees{'section_in_flushright'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'section_in_flushright'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'section_in_flushright'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'section_in_flushright'}{'contents'}[1]{'parent'} = $result_trees{'section_in_flushright'};
 
 $result_texis{'section_in_flushright'} = '@flushright

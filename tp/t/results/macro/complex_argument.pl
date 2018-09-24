@@ -251,9 +251,7 @@ $result_trees{'complex_argument'} = {
           ],
           'cmdname' => 'pagesizes',
           'extra' => {
-            'misc_content' => [
-              {}
-            ],
+            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -572,7 +570,7 @@ $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'args'}[0]{'pare
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[2]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3];
-$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[3]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[4]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];
 $result_trees{'complex_argument'}{'contents'}[9]{'contents'}[5]{'parent'} = $result_trees{'complex_argument'}{'contents'}[9];

@@ -431,9 +431,7 @@ $result_trees{'weird_accents'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -516,7 +514,7 @@ $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'lin
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'weird_accents'}{'contents'}[2];
-$result_trees{'weird_accents'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'weird_accents'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'weird_accents'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'weird_accents'}{'contents'}[2]{'parent'} = $result_trees{'weird_accents'};
 
 $result_texis{'weird_accents'} = '@documentencoding ISO-8859-1

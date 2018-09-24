@@ -180,9 +180,7 @@ $result_trees{'value_node_directions'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -316,9 +314,7 @@ $result_trees{'value_node_directions'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -436,9 +432,7 @@ $result_trees{'value_node_directions'} = {
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -478,7 +472,7 @@ $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0]{'parent'} = $re
 $result_trees{'value_node_directions'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[2]{'contents'}[0];
 $result_trees{'value_node_directions'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[2];
 $result_trees{'value_node_directions'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[2];
-$result_trees{'value_node_directions'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'value_node_directions'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'value_node_directions'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'value_node_directions'}{'contents'}[2]{'parent'} = $result_trees{'value_node_directions'};
 $result_trees{'value_node_directions'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[3]{'args'}[0];
 $result_trees{'value_node_directions'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[3];
@@ -497,7 +491,7 @@ $result_trees{'value_node_directions'}{'contents'}[3]{'parent'} = $result_trees{
 $result_trees{'value_node_directions'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[4]{'args'}[0];
 $result_trees{'value_node_directions'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[4];
 $result_trees{'value_node_directions'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[4];
-$result_trees{'value_node_directions'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'value_node_directions'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'value_node_directions'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'value_node_directions'}{'contents'}[4]{'parent'} = $result_trees{'value_node_directions'};
 $result_trees{'value_node_directions'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[5]{'args'}[0];
 $result_trees{'value_node_directions'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[5];
@@ -513,7 +507,7 @@ $result_trees{'value_node_directions'}{'contents'}[5]{'extra'}{'nodes_manuals'}[
 $result_trees{'value_node_directions'}{'contents'}[5]{'parent'} = $result_trees{'value_node_directions'};
 $result_trees{'value_node_directions'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[6]{'args'}[0];
 $result_trees{'value_node_directions'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'value_node_directions'}{'contents'}[6];
-$result_trees{'value_node_directions'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'value_node_directions'}{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'value_node_directions'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'value_node_directions'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'value_node_directions'}{'contents'}[6]{'parent'} = $result_trees{'value_node_directions'};
 
 $result_texis{'value_node_directions'} = '@set a--foo bar

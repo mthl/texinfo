@@ -102,9 +102,7 @@ $result_trees{'footnote_in_center'} = {
                                       ],
                                       'cmdname' => 'item',
                                       'extra' => {
-                                        'misc_content' => [
-                                          {}
-                                        ],
+                                        'misc_content' => [],
                                         'spaces_before_argument' => ' '
                                       },
                                       'line_nr' => {
@@ -248,11 +246,7 @@ $result_trees{'footnote_in_center'} = {
       ],
       'cmdname' => 'center',
       'extra' => {
-        'misc_content' => [
-          {},
-          {},
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},
@@ -272,7 +266,7 @@ $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'contents'}[0];
@@ -295,9 +289,7 @@ $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'extra'}{'misc_content'}[0] = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'extra'}{'misc_content'}[1] = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'extra'}{'misc_content'}[2] = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'footnote_in_center'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'footnote_in_center'}{'contents'}[0]{'line_nr'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'footnote_in_center'}{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'};
 

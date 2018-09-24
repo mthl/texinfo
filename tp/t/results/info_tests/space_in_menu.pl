@@ -211,9 +211,7 @@ $result_trees{'space_in_menu'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -301,9 +299,7 @@ $result_trees{'space_in_menu'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -348,7 +344,7 @@ $result_trees{'space_in_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'par
 $result_trees{'space_in_menu'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'space_in_menu'}{'contents'}[2]{'contents'}[3]{'contents'}[2];
 $result_trees{'space_in_menu'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[2];
 $result_trees{'space_in_menu'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[2];
-$result_trees{'space_in_menu'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'space_in_menu'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'space_in_menu'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'space_in_menu'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'space_in_menu'}{'contents'}[2]{'parent'} = $result_trees{'space_in_menu'};
 $result_trees{'space_in_menu'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[3]{'args'}[0];
 $result_trees{'space_in_menu'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[3];
@@ -360,7 +356,7 @@ $result_trees{'space_in_menu'}{'contents'}[4]{'args'}[0]{'parent'} = $result_tre
 $result_trees{'space_in_menu'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[4];
 $result_trees{'space_in_menu'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[4]{'contents'}[1];
 $result_trees{'space_in_menu'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'space_in_menu'}{'contents'}[4];
-$result_trees{'space_in_menu'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'space_in_menu'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'space_in_menu'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'space_in_menu'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'space_in_menu'}{'contents'}[4]{'parent'} = $result_trees{'space_in_menu'};
 
 $result_texis{'space_in_menu'} = '@node Top

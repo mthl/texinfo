@@ -576,9 +576,7 @@ $result_trees{'placed_things_before_node'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cindex',
@@ -774,9 +772,7 @@ $result_trees{'placed_things_before_node'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -878,9 +874,9 @@ $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[14]{'paren
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'command'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15];
-$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'}[0];
-$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content'};
-$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'misc_content'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content'};
+$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
+$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
+$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'misc_content'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'parent'} = $result_trees{'placed_things_before_node'};
@@ -909,7 +905,7 @@ $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'conten
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3];
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3];
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2];
-$result_trees{'placed_things_before_node'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'placed_things_before_node'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'parent'} = $result_trees{'placed_things_before_node'};
 
 $result_texis{'placed_things_before_node'} = '@anchor{An anchor}

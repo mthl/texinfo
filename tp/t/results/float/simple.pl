@@ -126,9 +126,7 @@ $result_trees{'simple'} = {
         'normalized' => 'Label',
         'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [
-            {}
-          ],
+          'content' => [],
           'normalized' => 'Type'
         }
       },
@@ -162,7 +160,7 @@ $result_trees{'simple'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'caption'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[2];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'simple'}{'contents'}[0]{'contents'}[4];
 $result_trees{'simple'}{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[1]{'contents'}[0];
-$result_trees{'simple'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'simple'}{'contents'}[0]{'extra'}{'type'}{'content'} = $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 
 $result_texis{'simple'} = '@float Type, Label

@@ -138,9 +138,7 @@ $result_trees{'section_in_math'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -173,9 +171,7 @@ $result_trees{'section_in_math'} = {
       'contents' => [],
       'extra' => {
         'invalid_nesting' => 1,
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -210,11 +206,11 @@ $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'a
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1];
 $result_trees{'section_in_math'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'section_in_math'}{'contents'}[1];
-$result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'section_in_math'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'section_in_math'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'section_in_math'}{'contents'}[1]{'parent'} = $result_trees{'section_in_math'};
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_in_math'}{'contents'}[2];
-$result_trees{'section_in_math'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'section_in_math'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'section_in_math'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'section_in_math'}{'contents'}[2]{'parent'} = $result_trees{'section_in_math'};
 
 $result_texis{'section_in_math'} = '

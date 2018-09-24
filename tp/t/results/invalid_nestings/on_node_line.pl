@@ -210,9 +210,7 @@ $result_trees{'on_node_line'} = {
               'cmdname' => 'exdent',
               'extra' => {
                 'invalid_nesting' => 1,
-                'misc_content' => [
-                  {}
-                ],
+                'misc_content' => [],
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -292,7 +290,7 @@ $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[4]{'parent'}
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[5]{'parent'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1];
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6];
-$result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'line_nr'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'contents'}[6]{'parent'} = $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1];
 $result_trees{'on_node_line'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'on_node_line'}{'contents'}[1];

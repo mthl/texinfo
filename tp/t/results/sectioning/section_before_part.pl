@@ -39,9 +39,7 @@ $result_trees{'section_before_part'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -97,9 +95,7 @@ $result_trees{'section_before_part'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -117,14 +113,14 @@ $result_trees{'section_before_part'}{'contents'}[0]{'parent'} = $result_trees{'s
 $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[1];
-$result_trees{'section_before_part'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'section_before_part'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'section_before_part'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'section_before_part'}{'contents'}[1]{'parent'} = $result_trees{'section_before_part'};
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1];
 $result_trees{'section_before_part'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'section_before_part'}{'contents'}[2];
-$result_trees{'section_before_part'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'section_before_part'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'section_before_part'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'section_before_part'}{'contents'}[2]{'parent'} = $result_trees{'section_before_part'};
 
 $result_texis{'section_before_part'} = '@section section 

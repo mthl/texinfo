@@ -127,9 +127,7 @@ $result_trees{'ref_to_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -160,7 +158,7 @@ $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'extra'
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1];
 $result_trees{'ref_to_top'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'ref_to_top'}{'contents'}[2];
-$result_trees{'ref_to_top'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'ref_to_top'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'ref_to_top'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'ref_to_top'}{'contents'}[2]{'parent'} = $result_trees{'ref_to_top'};
 
 $result_texis{'ref_to_top'} = '

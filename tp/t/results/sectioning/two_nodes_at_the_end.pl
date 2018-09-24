@@ -309,9 +309,7 @@ $result_trees{'two_nodes_at_the_end'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
+          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 0,
@@ -453,9 +451,7 @@ $result_trees{'two_nodes_at_the_end'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
+          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 1,
@@ -609,7 +605,7 @@ $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'contents'}[1]{'contents
 $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[4];
 $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2];
 $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2];
-$result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2]{'parent'} = $result_trees{'two_nodes_at_the_end'}[0];
 $result_trees{'two_nodes_at_the_end'}[0]{'extra'}{'element_command'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[2];
 $result_trees{'two_nodes_at_the_end'}[0]{'extra'}{'node'} = $result_trees{'two_nodes_at_the_end'}[0]{'contents'}[1];
@@ -631,7 +627,7 @@ $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[0]{'parent'} = $result_tree
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1];
-$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[1]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'two_nodes_at_the_end'}[1]{'contents'}[2];

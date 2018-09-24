@@ -282,9 +282,7 @@ $result_trees{'documentdescription'} = {
       'cmdname' => 'top',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -349,7 +347,7 @@ $result_trees{'documentdescription'}{'contents'}[0]{'contents'}[1]{'parent'} = $
 $result_trees{'documentdescription'}{'contents'}[0]{'parent'} = $result_trees{'documentdescription'};
 $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0];
 $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'documentdescription'}{'contents'}[1];
-$result_trees{'documentdescription'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'documentdescription'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'documentdescription'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'documentdescription'}{'contents'}[1]{'parent'} = $result_trees{'documentdescription'};
 
 $result_texis{'documentdescription'} = '@documentdescription

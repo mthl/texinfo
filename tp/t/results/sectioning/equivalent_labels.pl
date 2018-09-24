@@ -176,9 +176,7 @@ $result_trees{'equivalent_labels'} = {
             'normalized' => 'floa',
             'spaces_before_argument' => ' ',
             'type' => {
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'normalized' => 'truc'
             }
           },
@@ -426,7 +424,7 @@ $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'end_command'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'contents'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'node_content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
-$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'type'}{'content'}[0] = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'extra'}{'type'}{'content'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'equivalent_labels'}{'contents'}[1];
 $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6]{'contents'}[0]{'extra'}{'command'} = $result_trees{'equivalent_labels'}{'contents'}[1]{'contents'}[6];

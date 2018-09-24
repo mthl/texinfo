@@ -234,9 +234,7 @@ $result_trees{'lone_Top_node'} = [
         'cmdname' => 'chapter',
         'contents' => [],
         'extra' => {
-          'misc_content' => [
-            {}
-          ],
+          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 1,
@@ -289,7 +287,7 @@ $result_trees{'lone_Top_node'}[0]{'contents'}[2]{'extra'}{'nodes_manuals'}[0]{'n
 $result_trees{'lone_Top_node'}[0]{'contents'}[2]{'parent'} = $result_trees{'lone_Top_node'}[0];
 $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'lone_Top_node'}[0]{'contents'}[3];
-$result_trees{'lone_Top_node'}[0]{'contents'}[3]{'extra'}{'misc_content'}[0] = $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0];
+$result_trees{'lone_Top_node'}[0]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'lone_Top_node'}[0]{'contents'}[3]{'parent'} = $result_trees{'lone_Top_node'}[0];
 $result_trees{'lone_Top_node'}[0]{'extra'}{'element_command'} = $result_trees{'lone_Top_node'}[0]{'contents'}[3];
 $result_trees{'lone_Top_node'}[0]{'extra'}{'node'} = $result_trees{'lone_Top_node'}[0]{'contents'}[2];

@@ -486,9 +486,7 @@ $result_trees{'macro_in_early_commands'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -568,7 +566,7 @@ $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7]{'contents
 $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7]{'contents'}[4]{'parent'} = $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7];
 $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7]{'contents'}[5]{'parent'} = $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7];
 $result_trees{'macro_in_early_commands'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'macro_in_early_commands'}{'contents'}[2];
-$result_trees{'macro_in_early_commands'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'macro_in_early_commands'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'macro_in_early_commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'macro_in_early_commands'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'macro_in_early_commands'}{'contents'}[2]{'parent'} = $result_trees{'macro_in_early_commands'};
 
 $result_texis{'macro_in_early_commands'} = '@macro begin-file

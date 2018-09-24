@@ -4025,9 +4025,7 @@ $result_trees{'codequoteundirected_codequotebacktick'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -4733,7 +4731,7 @@ $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'extra'}{'end_command'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'contents'}[6];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[13]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'contents'}[14]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2];
-$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'codequoteundirected_codequotebacktick'}{'contents'}[2]{'parent'} = $result_trees{'codequoteundirected_codequotebacktick'};
 
 $result_texis{'codequoteundirected_codequotebacktick'} = '@macro quotes

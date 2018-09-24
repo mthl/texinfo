@@ -1906,6 +1906,7 @@ $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[9]{'args'
 $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1];
 $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1]{'contents'}[9];
 $result_trees{'simple_menu'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'simple_menu'}{'contents'}[2];
+$result_trees{'simple_menu'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'simple_menu'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'simple_menu'}{'contents'}[2]{'parent'} = $result_trees{'simple_menu'};
 
 $result_texis{'simple_menu'} = '

@@ -135,9 +135,7 @@ $result_trees{'anchor_in_titlepage'} = {
       'cmdname' => 'top',
       'contents' => [],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -257,7 +255,7 @@ $result_trees{'anchor_in_titlepage'}{'contents'}[0]{'contents'}[1]{'parent'} = $
 $result_trees{'anchor_in_titlepage'}{'contents'}[0]{'parent'} = $result_trees{'anchor_in_titlepage'};
 $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'args'}[0];
 $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'anchor_in_titlepage'}{'contents'}[1];
-$result_trees{'anchor_in_titlepage'}{'contents'}[1]{'extra'}{'misc_content'}[0] = $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'args'}[0]{'contents'}[0];
+$result_trees{'anchor_in_titlepage'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'anchor_in_titlepage'}{'contents'}[1]{'parent'} = $result_trees{'anchor_in_titlepage'};
 $result_trees{'anchor_in_titlepage'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'anchor_in_titlepage'}{'contents'}[2]{'args'}[0];
 $result_trees{'anchor_in_titlepage'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'anchor_in_titlepage'}{'contents'}[2];

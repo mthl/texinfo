@@ -555,9 +555,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -751,9 +749,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'sections_level' => -1,
         'spaces_before_argument' => ' '
       },
@@ -948,9 +944,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'sections_level' => -1,
         'spaces_before_argument' => ' '
       },
@@ -1077,9 +1071,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'sections_level' => -1,
         'spaces_before_argument' => ' '
       },
@@ -1192,9 +1184,7 @@ $result_trees{'raiselowersections'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -1261,6 +1251,7 @@ $result_trees{'raiselowersections'}{'contents'}[2]{'contents'}[0]{'contents'}[3]
 $result_trees{'raiselowersections'}{'contents'}[2]{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'raiselowersections'}{'contents'}[2]{'contents'}[0]{'contents'}[3];
 $result_trees{'raiselowersections'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[2];
 $result_trees{'raiselowersections'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[2];
+$result_trees{'raiselowersections'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[2]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[3]{'args'}[0];
 $result_trees{'raiselowersections'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[3];
@@ -1301,7 +1292,7 @@ $result_trees{'raiselowersections'}{'contents'}[4]{'contents'}[7]{'contents'}[1]
 $result_trees{'raiselowersections'}{'contents'}[4]{'contents'}[7]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[4];
 $result_trees{'raiselowersections'}{'contents'}[4]{'contents'}[8]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[4];
 $result_trees{'raiselowersections'}{'contents'}[4]{'contents'}[9]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[4];
-$result_trees{'raiselowersections'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'raiselowersections'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'raiselowersections'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[4]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[5]{'args'}[0];
 $result_trees{'raiselowersections'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[5];
@@ -1329,7 +1320,7 @@ $result_trees{'raiselowersections'}{'contents'}[6]{'contents'}[1]{'contents'}[2]
 $result_trees{'raiselowersections'}{'contents'}[6]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raiselowersections'}{'contents'}[6]{'contents'}[1]{'contents'}[2];
 $result_trees{'raiselowersections'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[6];
 $result_trees{'raiselowersections'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[6];
-$result_trees{'raiselowersections'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'raiselowersections'}{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'raiselowersections'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[6]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[7]{'args'}[0];
 $result_trees{'raiselowersections'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[7];
@@ -1357,7 +1348,7 @@ $result_trees{'raiselowersections'}{'contents'}[8]{'contents'}[1]{'contents'}[2]
 $result_trees{'raiselowersections'}{'contents'}[8]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'raiselowersections'}{'contents'}[8]{'contents'}[1]{'contents'}[2];
 $result_trees{'raiselowersections'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[8];
 $result_trees{'raiselowersections'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[8];
-$result_trees{'raiselowersections'}{'contents'}[8]{'extra'}{'misc_content'}[0] = $result_trees{'raiselowersections'}{'contents'}[8]{'args'}[0]{'contents'}[0];
+$result_trees{'raiselowersections'}{'contents'}[8]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[8]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[8]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[9]{'args'}[0];
 $result_trees{'raiselowersections'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[9];
@@ -1374,7 +1365,7 @@ $result_trees{'raiselowersections'}{'contents'}[10]{'contents'}[3]{'parent'} = $
 $result_trees{'raiselowersections'}{'contents'}[10]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[10]{'contents'}[4];
 $result_trees{'raiselowersections'}{'contents'}[10]{'contents'}[4]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[10];
 $result_trees{'raiselowersections'}{'contents'}[10]{'contents'}[5]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[10];
-$result_trees{'raiselowersections'}{'contents'}[10]{'extra'}{'misc_content'}[0] = $result_trees{'raiselowersections'}{'contents'}[10]{'args'}[0]{'contents'}[0];
+$result_trees{'raiselowersections'}{'contents'}[10]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[10]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[10]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[11]{'args'}[0];
 $result_trees{'raiselowersections'}{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[11];
@@ -1389,7 +1380,7 @@ $result_trees{'raiselowersections'}{'contents'}[12]{'contents'}[1]{'parent'} = $
 $result_trees{'raiselowersections'}{'contents'}[12]{'contents'}[2]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[12];
 $result_trees{'raiselowersections'}{'contents'}[12]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[12]{'contents'}[3];
 $result_trees{'raiselowersections'}{'contents'}[12]{'contents'}[3]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[12];
-$result_trees{'raiselowersections'}{'contents'}[12]{'extra'}{'misc_content'}[0] = $result_trees{'raiselowersections'}{'contents'}[12]{'args'}[0]{'contents'}[0];
+$result_trees{'raiselowersections'}{'contents'}[12]{'extra'}{'misc_content'} = $result_trees{'raiselowersections'}{'contents'}[12]{'args'}[0]{'contents'};
 $result_trees{'raiselowersections'}{'contents'}[12]{'parent'} = $result_trees{'raiselowersections'};
 $result_trees{'raiselowersections'}{'contents'}[13]{'args'}[0]{'parent'} = $result_trees{'raiselowersections'}{'contents'}[13];
 $result_trees{'raiselowersections'}{'contents'}[13]{'parent'} = $result_trees{'raiselowersections'};

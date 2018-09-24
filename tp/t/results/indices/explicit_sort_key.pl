@@ -156,11 +156,7 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {},
-                {},
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'SKindex',
@@ -227,11 +223,7 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {},
-                {},
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'SKindex',
@@ -298,11 +290,7 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {},
-                {},
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'SKindex',
@@ -381,9 +369,7 @@ $result_trees{'explicit_sort_key'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'SKindex',
@@ -665,12 +651,10 @@ $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'con
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[2];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'node'} = $result_trees{'explicit_sort_key'}{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'line_nr'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -680,12 +664,10 @@ $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'con
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'command'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[2];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'node'} = $result_trees{'explicit_sort_key'}{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'line_nr'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -695,12 +677,10 @@ $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'con
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'command'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[2];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'node'} = $result_trees{'explicit_sort_key'}{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'line_nr'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0];
@@ -712,10 +692,10 @@ $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'con
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'command'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'node'} = $result_trees{'explicit_sort_key'}{'contents'}[1];
-$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'index_entry'}{'content'};
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'line_nr'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
@@ -756,6 +736,7 @@ $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[11]{'parent'} = $r
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[12]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[12]{'args'}[0];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[12]{'args'}[0]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[12];
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'contents'}[12]{'parent'} = $result_trees{'explicit_sort_key'}{'contents'}[2];
+$result_trees{'explicit_sort_key'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'explicit_sort_key'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'explicit_sort_key'}{'contents'}[2]{'parent'} = $result_trees{'explicit_sort_key'};
 
 $result_texis{'explicit_sort_key'} = '@node Top

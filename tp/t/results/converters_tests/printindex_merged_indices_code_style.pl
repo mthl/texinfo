@@ -134,9 +134,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cindex',
@@ -184,9 +182,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'vindex',
@@ -234,9 +230,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 1,
               'index_at_command' => 'findex',
@@ -359,9 +353,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 0,
               'index_at_command' => 'cdiindex',
@@ -484,9 +476,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
           'extra' => {
             'index_entry' => {
               'command' => {},
-              'content' => [
-                {}
-              ],
+              'content' => [],
               'content_normalized' => [],
               'in_code' => 1,
               'index_at_command' => 'ddiindex',
@@ -583,28 +573,28 @@ $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[8]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[9]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[10]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[11]{'args'}[0];
@@ -618,10 +608,10 @@ $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[16]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[17]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[17]{'args'}[0];
@@ -635,10 +625,10 @@ $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'command'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'node'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'index_entry'}{'content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'extra'}{'misc_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'args'}[0]{'contents'};
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[21]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[22]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[23]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[23]{'args'}[0];

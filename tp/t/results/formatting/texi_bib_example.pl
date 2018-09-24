@@ -393,9 +393,7 @@ $result_trees{'texi_bib_example'} = {
           ],
           'cmdname' => 'settitle',
           'extra' => {
-            'misc_content' => [
-              {}
-            ],
+            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -4004,9 +4002,7 @@ $result_trees{'texi_bib_example'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -4223,9 +4219,7 @@ $result_trees{'texi_bib_example'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -4449,9 +4443,7 @@ $result_trees{'texi_bib_example'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -4523,7 +4515,7 @@ $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'pare
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[0]{'contents'}[4];
@@ -4969,7 +4961,7 @@ $result_trees{'texi_bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[4]{'
 $result_trees{'texi_bib_example'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'texi_bib_example'}{'contents'}[2]{'contents'}[1]{'contents'}[4];
 $result_trees{'texi_bib_example'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[2];
 $result_trees{'texi_bib_example'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[2];
-$result_trees{'texi_bib_example'}{'contents'}[2]{'extra'}{'misc_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[2]{'args'}[0]{'contents'}[0];
+$result_trees{'texi_bib_example'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'texi_bib_example'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'texi_bib_example'}{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[3];
@@ -5000,7 +4992,7 @@ $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[6]{'
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4];
-$result_trees{'texi_bib_example'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[4]{'args'}[0]{'contents'}[0];
+$result_trees{'texi_bib_example'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'texi_bib_example'}{'contents'}[4]{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[5] = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'};
 $result_trees{'texi_bib_example'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'args'}[0];
@@ -5033,7 +5025,7 @@ $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'extra'}{'end_co
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'line_nr'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6];
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6];
-$result_trees{'texi_bib_example'}{'contents'}[6]{'extra'}{'misc_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[6]{'args'}[0]{'contents'}[0];
+$result_trees{'texi_bib_example'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'texi_bib_example'}{'contents'}[6]{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[7];
 $result_trees{'texi_bib_example'}{'contents'}[7]{'parent'} = $result_trees{'texi_bib_example'};

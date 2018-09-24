@@ -345,10 +345,7 @@ $result_trees{'commands'} = {
       'extra' => {
         'index_entry' => {
           'command' => {},
-          'content' => [
-            {},
-            {}
-          ],
+          'content' => [],
           'content_normalized' => [],
           'in_code' => 0,
           'index_at_command' => 'cindex',
@@ -411,10 +408,7 @@ $result_trees{'commands'} = {
       ],
       'cmdname' => 'majorheading',
       'extra' => {
-        'misc_content' => [
-          {},
-          {}
-        ],
+        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -484,10 +478,9 @@ $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'args'}[0]{'p
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0];
 $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[2];
 $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'commands'}{'contents'}[2];
-$result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[0];
-$result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'}[1] = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1];
-$result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
-$result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'};
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'};
+$result_trees{'commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'commands'}{'contents'}[2]{'line_nr'} = $result_trees{'commands'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'commands'}{'contents'}[2]{'parent'} = $result_trees{'commands'};
 $result_trees{'commands'}{'contents'}[3]{'parent'} = $result_trees{'commands'};
@@ -496,8 +489,7 @@ $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'c
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1];
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0];
 $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'commands'}{'contents'}[4];
-$result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[0] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[0];
-$result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'}[1] = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1];
+$result_trees{'commands'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'commands'}{'contents'}[4]{'line_nr'} = $result_trees{'commands'}{'contents'}[4]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'commands'}{'contents'}[4]{'parent'} = $result_trees{'commands'};
 
