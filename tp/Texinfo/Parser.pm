@@ -3021,9 +3021,7 @@ sub _end_line($$$)
     } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
       my $text = '';
       my $superfluous_arg = 0;
-      my @contents = @{$current->{'args'}->[0]->{'contents'}};
-      _trim_spaces_comment_from_content (\@contents);
-      for my $c (@contents) {
+      for my $c (@{$current->{'args'}->[0]->{'contents'}}) {
         # Allow @@, @{ and @} to give a way for @, { and } to appear in
         # filenames (although it's not a good idea to use these characters
         # in filenames).

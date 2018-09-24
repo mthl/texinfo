@@ -1,5 +1,10 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <misc command with text argument>:
+	Do not call _trim_spaces_comment_from_content.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Remove some commented-out code.
 
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
