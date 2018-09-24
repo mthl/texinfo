@@ -15,6 +15,12 @@ See the manual for detailed information.
 * Language:
   . New commands @&, @ampchar{}.
 
+* texi2any
+  . `FIX_TEXINFO' removed as a customization variable
+  . extension modules fixed to work with the "thread-safe locales" of
+    Perl 5.28 and newer
+  . some code changed to stop warnings being given by newer versions of Perl
+
 
 6.5 (12 September 2017)
 * info:

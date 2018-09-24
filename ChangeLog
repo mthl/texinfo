@@ -1,3 +1,7 @@
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Mention changes for newer versions of Perl.
+
 2018-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/formatting/list_of_tests
