@@ -1410,7 +1410,6 @@ sub _gather_previous_item($$;$$)
     }
     return;
   }
-  #print STDERR "GATHER "._print_current($current)."\n";
   my $type;
   # if before an itemx, the type is different since there should not be 
   # real content, so it may be treated differently
@@ -1425,7 +1424,6 @@ sub _gather_previous_item($$;$$)
   # put it in the table_item, starting from the end.
   my $contents_count = scalar(@{$current->{'contents'}});
   for (my $i = 0; $i < $contents_count; $i++) {
-    #print STDERR "_gather_previous_item $i on $contents_count: "._print_current($current->{'contents'}->[-1])."\n";
     if ($current->{'contents'}->[-1]->{'cmdname'} 
         and ($current->{'contents'}->[-1]->{'cmdname'} eq 'item' 
              or ($current->{'contents'}->[-1]->{'cmdname'} eq 'itemx'))) {
@@ -1500,7 +1498,6 @@ sub _gather_def_item($;$)
   # @deffnx a b @section
   # but otherwise the end of line will lead to the command closing
   return if (!$current->{'cmdname'} or $current->{'cmdname'} =~ /x$/);
-  #print STDERR "_gather_def_item($type) in "._print_current($current)."\n";
   my $def_item = {'type' => $type,
                   'parent' => $current,
                   'contents' => []};
@@ -1508,7 +1505,6 @@ sub _gather_def_item($;$)
   # starting from the end.
   my $contents_count = scalar(@{$current->{'contents'}});
   for (my $i = 0; $i < $contents_count; $i++) {
-    #print STDERR "_gather_def_item $type ($i on $contents_count) "._print_current($current->{'contents'}->[-1])."\n";
     if ($current->{'contents'}->[-1]->{'type'} 
         and $current->{'contents'}->[-1]->{'type'} eq 'def_line') {
      #   and !$current->{'contents'}->[-1]->{'extra'}->{'not_after_command'}) {
@@ -1794,8 +1790,6 @@ sub _close_commands($$$;$$)
                             $line_nr, $current);
       }
     }
-    #print STDERR "close context $context for $current->{'cmdname'}\n"
-    #  if ($self->{'DEBUG'});
     pop @{$self->{'regions_stack'}} 
        if ($region_commands{$current->{'cmdname'}});
     $closed_element = $current;
@@ -1810,6 +1804,7 @@ sub _close_commands($$$;$$)
 
 # begin paragraph if needed.  If not try to merge with the previous
 # content if it is also some text.
+# NOTE - this sub has an XS override
 sub _merge_text {
   my ($self, $current, $text) = @_;
 
@@ -2110,6 +2105,7 @@ sub _expand_macro_body($$$$) {
 # each time a new line appeared, a container is opened to hold the text
 # consisting only of spaces.  This container is removed here, typically
 # this is called when non-space happens on a line.
+# NOTE - this sub has an XS override
 sub _abort_empty_line {
   my ($self, $current, $additional_spaces) = @_;
 
@@ -2925,7 +2921,6 @@ sub _end_line($$$)
                and ($arg->{'cmdname'} eq 'c' 
                      or $arg->{'cmdname'} eq 'comment'))
                or (defined($arg->{'text'}) and $arg->{'text'} !~ /\S/))) {
-            #print STDERR " -> stop at "._print_current($arg)."\n";
             delete $current->{'extra'}->{'command_as_argument'}->{'type'};
             delete $current->{'extra'}->{'command_as_argument'};
             last;
@@ -3520,6 +3515,7 @@ sub _mark_and_warn_invalid($$$$$)
 
 # This combines several regular expressions used in '_parse_texi' to
 # look at what is next on the remaining part of the line.
+# NOTE - this sub has an XS override
 sub _parse_texi_regex {
   my ($line) = @_;
 
@@ -3542,33 +3538,6 @@ sub _parse_texi_regex {
   return ($at_command, $open_brace, $asterisk, $single_letter_command,
     $separator_match, $misc_text);
 }
-
-# the different types
-#c 'menu_entry'
-#c 'menu_entry'
-# t 'menu_entry_leading_text'
-#
-#t 'macro_arg_name'
-#t 'macro_arg_args'
-#
-#t 'raw'
-#
-#t 'misc_arg'
-#c 'misc_line_arg'
-#
-#c 'block_line_arg'
-#
-#c 'brace_command_arg'
-#c 'brace_command_context'
-#
-#c 'before_item'   what comes after @*table, @itemize, @enumerate before
-#                an @item
-#
-#c 'paragraph'
-#
-#a 'def_line'
-#
-#special for @verb, type is the character
 
 # the main subroutine
 sub _parse_texi($;$)
@@ -4014,7 +3983,6 @@ sub _parse_texi($;$)
               }
             }
             $current = $menu;
-            #print STDERR "Close MENU_COMMENT because new menu entry\n";
           } else {
             # first parent preformatted, third is menu_entry
             if ($current->{'type'} ne 'preformatted' 
@@ -5375,9 +5343,8 @@ sub _parse_texi($;$)
         $current = _merge_text($self, $current, $new_text);
       # end of line
       } else {
-        if ($self->{'DEBUG'}) {
-          print STDERR "END LINE: ". _print_current($current)."\n";
-        }
+        print STDERR "END LINE: ". _print_current($current)."\n"
+          if ($self->{'DEBUG'});
         if ($line =~ s/^(\n)//) {
           $current = _merge_text($self, $current, $1);
         } else {
@@ -5387,7 +5354,6 @@ sub _parse_texi($;$)
             die;
           }
         }
-        #print STDERR "END LINE AFTER MERGE END OF LINE: ". _print_current($current)."\n";
         $current = _end_line($self, $current, $line_nr);
         last;
       }

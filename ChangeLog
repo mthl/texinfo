@@ -1,5 +1,14 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi): Remove a comment.
+	(_merge_text, _abort_empty_line, _parse_texi_regex): Add a 
+	comment noting these subs have XS overrides.
+	(_gather_def_item, _close_commands, _end_line, _parse_texi)
+	(_gather_previous_item): Remove commented-out debugging 
+	statements.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Delete 'staging_res' directories 
 	once finished.
 
