@@ -9,7 +9,7 @@ one_test_logs_dir=test_log
 diffs_dir=diffs
 
 
-dir=coverage
+dir=layout
 name='formatting'
 [ -d "$dir" ] || mkdir $dir
 

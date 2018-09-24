@@ -1,5 +1,11 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/formatting/list-of-tests (formatting): Test moved 
+	from here, to:
+	* tp/tests/coverage/list-of-tests (formatting): Here.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/Makefile.am: Do not generate 'coverage_macro-cr.texi'.
 	It doesn't appear to be used for anything.
 

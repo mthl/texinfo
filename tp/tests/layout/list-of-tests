@@ -34,3 +34,5 @@ formatting_fr_icons ../coverage/formatting.texi --document-language fr --init ic
 #formatting_makeinfo ../coverage/formatting.texi --init makeinfo.pm --no-warn
 formatting_chm ../coverage/formatting.texi --init chm.pm
 formatting_nodes ../coverage/formatting.texi --split node
+formatting ../coverage/formatting.texi --internal-links=@OUT_DIR@internal_links_formatting.txt
+
