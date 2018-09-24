@@ -1787,8 +1787,7 @@ sub count_bytes($$;$)
 # extra->index_entry extra->type
 #
 # extra that should point to other elements: 
-# command_as_argument
-# @brace_command_contents @misc_content end_command
+# command_as_argument end_command
 # associated_section part_associated_section associated_node associated_part
 # @prototypes @columnfractions titlepage quotation @author command
 # menu_entry_description menu_entry_name

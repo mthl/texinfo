@@ -1,7 +1,7 @@
 # Transformations.pm: some transformations of the document tree
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016 Free Software Foundation, 
-# Inc.
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017 2018
+# Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -124,9 +124,6 @@ sub fill_gaps_in_sectioning($)
              = [{'type' => 'brace_command_arg',
                  'contents' => [],
                  'parent' => $new_section->{'args'}->[0]->{'contents'}->[1]}];
-          my @misc_contents = @{$new_section->{'args'}->[0]->{'contents'}};
-          Texinfo::Common::trim_spaces_comment_from_content(\@misc_contents);
-          $new_section->{'extra'}->{'misc_content'} = \@misc_contents;
           push @contents, $new_section;
           push @added_sections, $new_section;
           #print STDERR "  -> "._print_root_command_texi($new_section)."\n";
@@ -323,7 +320,7 @@ sub insert_nodes_for_sectioning_commands($$)
         $new_node_tree = {'contents' => [{'text' => 'Top'}]};
       } else {
         $new_node_tree = Texinfo::Common::copy_tree({'contents' 
-          => $content->{'extra'}->{'misc_content'}});
+          => $content->{'args'}->[0]->{'contents'}});
       }
       my $new_node = _new_node($self, $new_node_tree);
       if (defined($new_node)) {
@@ -506,10 +503,11 @@ sub _print_down_menus($$;$)
       # Prepend node title
       my $node_title_contents;
       if ($node->{'extra'}->{'associated_section'}
-          and $node->{'extra'}->{'associated_section'}->{'extra'}
-          and $node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'}) {
+          and $node->{'extra'}->{'associated_section'}->{'args'}
+          and $node->{'extra'}->{'associated_section'}->{'args'}->[0]
+          and $node->{'extra'}->{'associated_section'}->{'args'}->[0]->{'contents'}) {
         $node_title_contents
-          = _copy_contents($node->{'extra'}->{'associated_section'}->{'extra'}->{'misc_content'});
+          = _copy_contents($node->{'extra'}->{'associated_section'}->{'args'}->[0]->{'contents'});
       } else {
         $node_title_contents = _copy_contents($node->{'extra'}->{'node_content'});
       }

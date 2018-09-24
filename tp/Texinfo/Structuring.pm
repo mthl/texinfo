@@ -1105,7 +1105,7 @@ sub _print_root_command_texi($)
     if ($command->{'cmdname'} eq 'node') {
       $tree = $command->{'extra'}->{'node_content'};
     } elsif ($sectioning_commands{$command->{'cmdname'}}) {
-      $tree = $command->{'extra'}->{'misc_content'};
+      $tree = $command->{'args'}->[0]->{'contents'};
     }
   } else {
     return "Not a root command";

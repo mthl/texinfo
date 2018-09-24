@@ -1,5 +1,14 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (_copy_tree): Change a comment.
+	* tp/Texinfo/Structuring.pm (_print_root_command_texi),
+	* tp/Texinfo/Transformations.pm (insert_nodes_for_sectioning_commands)
+	(print_down_menus): Use 'args' instead of 'misc_content'.
+	* tp/Texinfo/Transformations.pm (fill_gaps_in_sectioning): Do 
+	not set 'misc_content'.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Converter.pm 
 	(_sectioning_command_normalized_filename),
 	* tp/Texinfo/Convert/DocBook.pm (_convert),
