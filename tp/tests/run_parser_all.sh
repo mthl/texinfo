@@ -412,6 +412,7 @@ while read line; do
 done <"$driving_file"
 
 test -n "$tmp_dir" && rm -rf $tmp_dir
+rm -rf $staging_dir_res
 
 if test "$one_test" = 'yes' && test "z$one_test_done" != "zyes"; then
   echo "$0: test not found: $the_test (file: $the_file) " >&2

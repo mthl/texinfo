@@ -1,5 +1,10 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Delete 'staging_res' directories 
+	once finished.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Don't store string 
 	"raw_out_parser" in a variable.
 
