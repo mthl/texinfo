@@ -1,5 +1,10 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Don't store string 
+	"raw_out_parser" in a variable.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Only use flags for latex2html in 
 	the latex2html tests.
 

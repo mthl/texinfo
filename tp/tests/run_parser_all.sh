@@ -186,7 +186,6 @@ logfile=$testdir/tests.log
 
 res_dir=res_parser
 out_dir=out_parser
-# used for tex4ht and latex2html results to keep their raw output
 raw_out_dir=raw_out_parser
 diffs_dir=diffs
 
@@ -257,7 +256,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
       for command_dir in $commands; do
         dir_suffix=`echo $command_dir | cut -d':' -f2`
         outdir="$testdir/${out_dir}${dir_suffix}/"
-        raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
+        raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
         [ -d "${outdir}$dir" ] && rm -rf "${outdir}$dir"
         [ -d "${raw_outdir}$dir" ] && rm -rf "${raw_outdir}$dir"
       done
@@ -384,7 +383,7 @@ while read line; do
         rm -rf $staging_dir_res$dir/CVS $staging_dir_res$dir/.svn
 
         # store raw output
-        raw_outdir="$testdir/${raw_out_dir}${dir_suffix}/"
+        raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
         test -d "${raw_outdir}" || mkdir "${raw_outdir}"
         rm -rf "${raw_outdir}$dir"
 
