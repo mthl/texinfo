@@ -333,7 +333,7 @@ while read line; do
       if test -n "$format"; then
         format_option="--$format"
       else
-        format_option="--set-customization-variable=TEXI2HTML"
+        format_option="-c TEXI2HTML"
       fi
     fi
     command_run=
