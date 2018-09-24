@@ -1,5 +1,13 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Put flags for latex2html inside a 
+	variable so they are less distracting when reading the code.
+	Use -c instead of --set-customization-variable in the interests 
+	of concision.  Put code post-processing the output files in a 
+	separate shell function.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <misc command with text argument>:
 	Do not call _trim_spaces_comment_from_content.
 

@@ -26,6 +26,116 @@
 test -f /usr/xpg4/bin/sh && test -z "$RANDOM" \
 && exec /usr/xpg4/bin/sh "$0" "$@"
 
+
+check_latex2html_and_tex4ht ()
+{
+    use_latex2html=no
+    use_tex4ht=no
+    l2h_tmp_dir=
+    maybe_use_latex2html=no
+    if echo "$remaining" | grep '[-]l2h' >/dev/null; then
+      maybe_use_latex2html=yes
+    fi
+    if echo "$remaining" | grep 'L2H 1' >/dev/null; then
+      maybe_use_latex2html=yes
+    fi
+    if [ $maybe_use_latex2html = 'yes' ]; then
+      if [ "$no_latex2html" = 'yes' ]; then
+        echo "S: (no latex2html) $current"
+        return 1
+      fi
+      use_latex2html=yes
+      if test z"$tmp_dir" = 'z'; then
+         tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
+         if test z"$tmp_dir" = 'z'; then
+           echo "$0: mktemp failed" 1>&2
+           exit 1
+         fi
+      fi
+      l2h_tmp_dir="-c 'L2H_TMP $tmp_dir'"
+    elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
+      if test "$no_tex4ht" = 'yes' ; then
+        echo "S: (no tex4ht) $current"
+        return 1
+      fi
+      use_tex4ht=yes
+    fi
+    if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
+      if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
+       if test "$no_html2wiki" = 'yes' ; then
+         echo "S: (no html2wiki) $current"
+         continue 2
+       fi
+      fi
+    fi
+    l2h_flags="-c L2H_CLEAN=0 $l2h_tmp_dir -c L2H_FILE=$srcdir/../t/init/l2h.init"
+    return 0
+}
+
+# process the output so we can get consistent output for the comparisons
+post_process_output ()
+{
+  # With latex2html or tex4ht output is stored in raw_outdir, and files
+  # are removed or modified from the output directory used for comparisons
+  # NB there is similar code in many_input_files/tex_{l2h,t4ht}.sh.
+  if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
+
+    cp -pr ${outdir}$dir/ "${raw_outdir}"
+
+    # remove files that are not reproducible
+    rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png \
+          ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+          ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
+          ${outdir}$dir/*_l2h.html.* \
+          ${outdir}$dir/*_tex4ht_tex.html*
+  else
+    # Otherwise it's only the standard error that needs to be modified.
+    mkdir -p "${raw_outdir}$dir"
+    cp -p ${outdir}$dir/${basename}.2 "${raw_outdir}$dir"
+  fi
+  if test "$use_tex4ht" = 'yes' ; then
+    # tex4ht may be customized to use dvipng or dvips, both being
+    # verbose, so there can not be reproducible tests on stderr either
+    # with tex4ht.
+    rm "${outdir}$dir/$basename.2"
+  elif test "$use_latex2html" = 'yes' ; then
+    sed -e 's/^texexpand.*/texexpand /' \
+        -e '/is no longer supported at.*line/d' \
+        -e 's/^htmlxref/.\/htmlxref/' \
+        $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+    # "*"_images.pl" files are not guaranteed to be present
+    for file in "${raw_outdir}$dir/"*"_labels.pl"; do
+     if test -f "$file" ; then
+      filename=`basename "$file"`
+      sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+     fi
+    done
+    #for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
+    for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm; do
+     if test -f "$file" ; then
+     # width and height changed because of different rounding on 
+     # different computers.  Also remove version information.
+      filename=`basename "$file"`
+      sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
+          -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' \
+          -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \
+          -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' \
+          -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
+     fi
+    done
+    # *_l2h_images.pl associate images original text with physical files
+    # but entries are not sorted, so that the result is not reproducible
+    # even with the normalizations above.
+    rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
+          ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
+  else
+    # Account for variant output under MS-Windows.  This transformation
+    # is also done above.
+    sed -e 's/^htmlxref/.\/htmlxref/' \
+        $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
+  fi
+}
+
 #echo "SRCDIR $srcdir srcdir_test $srcdir_test"
 
 LC_ALL=C; export LC_ALL
@@ -245,53 +355,16 @@ while read line; do
     
     outdir="$testdir/${out_dir}${dir_suffix}/"
     results_dir="$srcdir/$testdir/${res_dir}${dir_suffix}"
-    # non-"texi" case.
     one_test_done=yes
-    use_latex2html=no
-    use_tex4ht=no
-    l2h_tmp_dir=
-    maybe_use_latex2html=no
-    if echo "$remaining" | grep '[-]l2h' >/dev/null; then
-      maybe_use_latex2html=yes
-    fi
-    if echo "$remaining" | grep 'L2H 1' >/dev/null; then
-      maybe_use_latex2html=yes
-    fi
-    if [ $maybe_use_latex2html = 'yes' ]; then
-      if [ "$no_latex2html" = 'yes' ]; then
-        echo "S: (no latex2html) $current"
-        continue 2
-      fi
-      use_latex2html=yes
-      if test z"$tmp_dir" = 'z'; then
-         tmp_dir=`mktemp -d l2h_t2h_XXXXXXXX`
-         if test z"$tmp_dir" = 'z'; then
-           echo "$0: mktemp failed" 1>&2
-           exit 1
-         fi
-      fi
-      l2h_tmp_dir="--set-customization-variable 'L2H_TMP $tmp_dir'"
-    elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
-      if test "$no_tex4ht" = 'yes' ; then
-        echo "S: (no tex4ht) $current"
-        continue 2
-      fi
-      use_tex4ht=yes
-    fi
-    if test $use_tex4ht = 'yes' || test $use_latex2html = 'yes' ; then
-      if echo "$remaining" | grep '[-]init mediawiki.pm' >/dev/null; then
-       if test "$no_html2wiki" = 'yes' ; then
-         echo "S: (no html2wiki) $current"
-         continue 2
-       fi
-      fi
-    fi
+
+    check_latex2html_and_tex4ht || continue 2
+
     dir=$current
     test -d "${outdir}$dir" && rm -rf "${outdir}$dir"
     mkdir "${outdir}$dir"
     remaining_out_dir=`echo $remaining | sed 's,@OUT_DIR@,'"${outdir}$dir/"',g'`
     echo "$command $dir -> ${outdir}$dir" >> $logfile
-    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I . --set-customization-variable L2H_FILE=$srcdir/../t/init/l2h.init --error-limit=1000 --set-customization-variable TEST=1 --set-customization-variable L2H_CLEAN=0 $l2h_tmp_dir --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
+    cmd="$prepended_command $PERL -w $command_run $format_option --force --conf-dir $srcdir/../t/init/ --conf-dir $srcdir/../init -I $srcdir/$testdir -I $testdir/ -I $srcdir/ -I .  --error-limit=1000 -c TEST=1 $l2h_flags --output ${outdir}$dir/ $remaining_out_dir $src_file > ${outdir}$dir/$basename.1 2>${outdir}$dir/$basename.2"
     echo "$cmd" >>$logfile
     eval $cmd
     ret=$?
@@ -315,65 +388,8 @@ while read line; do
         test -d "${raw_outdir}" || mkdir "${raw_outdir}"
         rm -rf "${raw_outdir}$dir"
 
-        # With latex2html or tex4ht output is stored in raw_outdir, and files
-        # are removed or modified from the output directory used for comparisons
-        # NB there is similar code in many_input_files/tex_{l2h,t4ht}.sh.
-        if test "$use_latex2html" = 'yes' || test "$use_tex4ht" = 'yes' ; then
+        post_process_output
 
-          cp -pr ${outdir}$dir/ "${raw_outdir}"
-
-          # remove files that are not reproducible
-          rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png \
-                ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
-                ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-                ${outdir}$dir/*_l2h.html.* \
-                ${outdir}$dir/*_tex4ht_tex.html*
-        else
-          # Otherwise it's only the standard error that needs to be modified.
-          mkdir -p "${raw_outdir}$dir"
-          cp -p ${outdir}$dir/${basename}.2 "${raw_outdir}$dir"
-        fi
-        if test "$use_tex4ht" = 'yes' ; then
-          # tex4ht may be customized to use dvipng or dvips, both being
-          # verbose, so there can not be reproducible tests on stderr either
-          # with tex4ht.
-          rm "${outdir}$dir/$basename.2"
-        elif test "$use_latex2html" = 'yes' ; then
-          sed -e 's/^texexpand.*/texexpand /' \
-              -e '/is no longer supported at.*line/d' \
-              -e 's/^htmlxref/.\/htmlxref/' \
-              $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
-          # "*"_images.pl" files are not guaranteed to be present
-          for file in "${raw_outdir}$dir/"*"_labels.pl"; do
-           if test -f "$file" ; then
-            filename=`basename "$file"`
-            sed -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
-           fi
-          done
-          #for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm "${raw_outdir}$dir/"*_l2h_images.pl; do
-          for file in "${raw_outdir}$dir/"*.htm* "${raw_outdir}$dir/"*-l2h_cache.pm; do
-           if test -f "$file" ; then
-           # width and height changed because of different rounding on 
-           # different computers.  Also remove version information.
-            filename=`basename "$file"`
-            sed -e 's/WIDTH="\([0-9]*\)\([0-9]\)"/WIDTH="100"/' \
-                -e 's/HEIGHT="\([0-9]*\)\([0-9]\)"/HEIGHT="\10"/' \
-                -e 's/CONTENT="LaTeX2HTML.*/CONTENT="LaTeX2HTML">/' \
-                -e 's/^# LaTeX2HTML.*/# LaTeX2HTML/' \
-                -e 's/with LaTeX2HTML.*/with LaTeX2HTML/' "$file" > "$outdir$dir/$filename"
-           fi
-          done
-          # *_l2h_images.pl associate images original text with physical files
-          # but entries are not sorted, so that the result is not reproducible
-          # even with the normalizations above.
-          rm -f ${outdir}$dir/*.aux ${outdir}$dir/*_images.out \
-                ${outdir}$dir/*_l2h.css ${outdir}$dir/*_l2h_images.pl
-        else
-          # Account for variant output under MS-Windows.  This transformation
-          # is also done above.
-          sed -e 's/^htmlxref/.\/htmlxref/' \
-              $raw_outdir$dir/$basename.2 > $outdir$dir/$basename.2
-        fi
         test -d "$raw_outdir$dir" && rm -rf "$raw_outdir$dir"
         # This directory isn't cleaned anywhere else.
 
