@@ -1,5 +1,10 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/Makefile.am: Do not generate 'coverage_macro-cr.texi'.
+	It doesn't appear to be used for anything.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (_copy_tree): Change a comment.
 	* tp/Texinfo/Structuring.pm (_print_root_command_texi),
 	* tp/Texinfo/Transformations.pm (insert_nodes_for_sectioning_commands)
