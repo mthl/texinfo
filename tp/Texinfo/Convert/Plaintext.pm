@@ -1055,15 +1055,15 @@ sub _contents($$$)
           $section_title_tree = $self->gdt('Appendix {number} {section_title}',
                            {'number' => {'text' => $section->{'number'}},
                             'section_title' 
-                              => {'contents' => $section->{'extra'}->{'misc_content'}}});
+                              => {'contents' => $section->{'args'}->[0]->{'contents'}}});
         } else {
           $section_title_tree = $self->gdt('{number} {section_title}',
                            {'number' => {'text' => $section->{'number'}},
                             'section_title' 
-                              => {'contents' => $section->{'extra'}->{'misc_content'}}});
+                              => {'contents' => $section->{'args'}->[0]->{'contents'}}});
         }
       } else {
-        $section_title_tree = {'contents' => $section->{'extra'}->{'misc_content'}};
+        $section_title_tree = {'contents' => $section->{'args'}->[0]->{'contents'}};
       }
       my $section_title = $self->convert_line(
             {'contents' => [$section_title_tree],
@@ -2433,16 +2433,17 @@ sub _convert($$)
       # use settitle for empty @top
       # ignore @part
       my $contents;
-      if ($root->{'extra'}->{'misc_content'} 
-          and @{$root->{'extra'}->{'misc_content'}} 
+      if ($root->{'args'}->[0]->{'contents'} 
+          and @{$root->{'args'}->[0]->{'contents'}} 
           and $command ne 'part') {
-        $contents = $root->{'extra'}->{'misc_content'};
+        $contents = $root->{'args'}->[0]->{'contents'};
       } elsif ($command eq 'top'
           and $self->{'extra'}->{'settitle'} 
-          and $self->{'extra'}->{'settitle'}->{'extra'}
-          and $self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'}
-          and @{$self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'}}) {
-        $contents = $self->{'extra'}->{'settitle'}->{'extra'}->{'misc_content'};
+          and $self->{'extra'}->{'settitle'}->{'args'}
+          and @{$self->{'extra'}->{'settitle'}->{'args'}}
+          and $self->{'extra'}->{'settitle'}->{'args'}->[0]->{'contents'}
+          and @{$self->{'extra'}->{'settitle'}->{'args'}->[0]->{'contents'}}) {
+        $contents = $self->{'extra'}->{'settitle'}->{'args'}->[0]->{'contents'};
       }
              
       if ($contents) {
@@ -2471,10 +2472,11 @@ sub _convert($$)
             and $root->{'args'} and $root->{'args'}->[0] 
             and $root->{'args'}->[0]->{'type'}
             and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
-      if ($root->{'extra'} and $root->{'extra'}->{'misc_content'}) {
+      if ($root->{'args'} and @{$root->{'args'}}
+          and $root->{'args'}->[0]->{'contents'}) {
 
         my $converted_tree = $self->_table_item_content_tree($root,
-                                         $root->{'extra'}->{'misc_content'});
+                                         $root->{'args'}->[0]->{'contents'});
 
         $converted_tree->{'type'} = 'frenchspacing';
         $result = $self->convert_line($converted_tree,
@@ -2537,7 +2539,7 @@ sub _convert($$)
                                                    'locations' => []};
       $result = $self->convert_line (
                        {'type' => 'frenchspacing',
-                        'contents' => $root->{'extra'}->{'misc_content'}},
+                        'contents' => $root->{'args'}->[0]->{'contents'}},
                        {'indent_length' => 0});
       if ($result ne '') {
         $result = $self->ensure_end_of_line($result);
@@ -2553,11 +2555,11 @@ sub _convert($$)
       return $result;
     } elsif ($command eq 'exdent') {
       if ($self->{'preformatted_context_commands'}->{$self->{'context'}->[-1]}) {
-        $result = $self->convert_unfilled({'contents' => $root->{'extra'}->{'misc_content'}},
+        $result = $self->convert_unfilled({'contents' => $root->{'args'}->[0]->{'contents'}},
          {'indent_level'
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       } else {
-        $result = $self->convert_line({'contents' => $root->{'extra'}->{'misc_content'}},
+        $result = $self->convert_line({'contents' => $root->{'args'}->[0]->{'contents'}},
          {'indent_level' 
           => $self->{'format_context'}->[-1]->{'indent_level'} -1});
       }
@@ -3234,7 +3236,7 @@ sub _convert($$)
       foreach my $author (@{$root->{'extra'}->{'authors'}}) {
         $result .= _convert($self, 
                  $self->gdt("\@center --- \@emph{{author}}\n",
-                    {'author' => $author->{'extra'}->{'misc_content'}}));
+                    {'author' => $author->{'args'}->[0]->{'contents'}}));
       }
     } elsif (($command eq 'multitable')) {
       $self->{'document_context'}->[-1]->{'in_multitable'}--;

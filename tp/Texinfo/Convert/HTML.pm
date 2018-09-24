@@ -521,7 +521,7 @@ sub command_text($$;$)
           return '';
         }
       } else {
-        if (!$command->{'extra'}->{'misc_content'}) {
+        if (!$command->{'args'}->[0]->{'contents'}) {
           cluck "No misc_content: "
             .Texinfo::Common::_print_current($command);
         }
@@ -533,20 +533,20 @@ sub command_text($$;$)
                              {'number' => {'text' => $command->{'number'}},
                               'section_title'
                                 => {'contents' 
-                                    => $command->{'extra'}->{'misc_content'}}});
+                                    => $command->{'args'}->[0]->{'contents'}}});
           } else {
             $tree = $self->gdt('{number} {section_title}',
                              {'number' => {'text' => $command->{'number'}},
                               'section_title'
                                 => {'contents' 
-                                    => $command->{'extra'}->{'misc_content'}}});
+                                    => $command->{'args'}->[0]->{'contents'}}});
           }
         } else {
-          $tree = {'contents' => [@{$command->{'extra'}->{'misc_content'}}]};
+          $tree = {'contents' => [@{$command->{'args'}->[0]->{'contents'}}]};
         }
 
         $target->{'tree_nonumber'} 
-          = {'contents' => $command->{'extra'}->{'misc_content'}};
+          = {'contents' => $command->{'args'}->[0]->{'contents'}};
       }
       $target->{'tree'} = $tree;
     } else {
@@ -2917,7 +2917,7 @@ sub _convert_quotation_command($$$$$)
   if ($command->{'extra'} and $command->{'extra'}->{'authors'}) {
     foreach my $author (@{$command->{'extra'}->{'authors'}}) {
       my $centered_author = $self->gdt("\@center --- \@emph{{author}}\n",
-         {'author' => $author->{'extra'}->{'misc_content'}});
+         {'author' => $author->{'args'}->[0]->{'contents'}});
       $centered_author->{'parent'} = $command;
       $attribution .= $self->convert_tree($centered_author);
     }
@@ -6872,12 +6872,12 @@ sub output($$)
      'shorttitlepage', 'top') {
     if ($self->{'extra'}->{$fulltitle_command}) {
       my $command = $self->{'extra'}->{$fulltitle_command};
-      next if (!$command->{'extra'}
-               or (!$command->{'extra'}->{'misc_content'}
+      next if (!$command->{'args'}
+               or (!$command->{'args'}->[0]->{'contents'}
                    or $command->{'extra'}->{'missing_argument'}));
       print STDERR "Using $fulltitle_command as title\n"
         if ($self->get_conf('DEBUG'));
-      $fulltitle = {'contents' => $command->{'extra'}->{'misc_content'}};
+      $fulltitle = {'contents' => $command->{'args'}->[0]->{'contents'}};
       last;
     }
   }
@@ -6894,7 +6894,7 @@ sub output($$)
       next if ($command->{'extra'} 
                and $command->{'extra'}->{'missing_argument'});
       $self->{'simpletitle_tree'} = 
-         {'contents' => $command->{'extra'}->{'misc_content'}};
+         {'contents' => $command->{'args'}->[0]->{'contents'}};
       last;
     }
   }

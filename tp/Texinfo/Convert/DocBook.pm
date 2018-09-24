@@ -591,7 +591,7 @@ sub _convert($$;$)
                and $root->{'parent'}->{'type'} eq 'table_term') {
 
         my $converted_tree = $self->_table_item_content_tree($root,
-                                         $root->{'extra'}->{'misc_content'});
+                                         $root->{'args'}->[0]->{'contents'});
 
         $result .= "<term>";
         $result .= $self->_index_entry($root);
@@ -1246,9 +1246,9 @@ sub _convert($$;$)
         if ($root->{'extra'}) {
           if ($root->{'extra'}->{'authors'}) {
             foreach my $author (@{$root->{'extra'}->{'authors'}}) {
-              if ($author->{'extra'} and $author->{'extra'}->{'misc_content'}) {
+              if ($author->{'extra'} and $author->{'args'}->[0]->{'contents'}) {
                 $appended .= '<attribution>'.$self->_convert(
-                  {'contents' => $author->{'extra'}->{'misc_content'}})
+                  {'contents' => $author->{'args'}->[0]->{'contents'}})
                            ."</attribution>\n";
               }
             }

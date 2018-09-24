@@ -1,5 +1,16 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/Converter.pm 
+	(_sectioning_command_normalized_filename),
+	* tp/Texinfo/Convert/DocBook.pm (_convert),
+	* tp/Texinfo/Convert/HTML.pm
+	(command_text _convert_quotation_command, output),
+	* tp/Texinfo/Convert/Info.pm (_info_header),
+	* tp/Texinfo/Convert/Plaintext.pm (_contents, _convert):
+	Use 'args' instead of 'misc_content'.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <misc command>:
 	Do not call _trim_spaces_comment_from_content.  This leads to a 
 	change in the 'misc_args' in a few cases of invalid nesting of 

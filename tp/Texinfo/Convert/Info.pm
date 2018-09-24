@@ -342,10 +342,10 @@ sub _info_header($)
     $self->{'ignored_commands'}->{'direntry'} = 0;
     foreach my $command (@{$self->{'info'}->{'dircategory_direntry'}}) {
       if ($command->{'cmdname'} eq 'dircategory') {
-        if ($command->{'extra'} 
-            and defined($command->{'extra'}->{'misc_content'})) {
+        if ($command->{'args'} and @{$command->{'args'}}
+            and defined($command->{'args'}->[0]->{'contents'})) {
           my $dircategory = "INFO-DIR-SECTION ".$self->convert_line(
-             {'contents' => $command->{'extra'}->{'misc_content'}});
+             {'contents' => $command->{'args'}->[0]->{'contents'}});
           $result .= $self->ensure_end_of_line($dircategory);
         }
         $self->{'empty_lines_count'} = 0;

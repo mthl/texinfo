@@ -541,7 +541,7 @@ sub _sectioning_command_normalized_filename($$)
                         and !$self->get_conf('USE_UNIDECODE'));
 
   my $normalized_name = Texinfo::Convert::NodeNameNormalization::transliterate_texinfo(
-       {'contents' => $command->{'extra'}->{'misc_content'}},
+       {'contents' => $command->{'args'}->[0]->{'contents'}},
                 $no_unidecode);
 
   my $filename = $self->_id_to_filename($normalized_name);
