@@ -262,7 +262,6 @@ $result_trees{'paragraphindent_and_preamble'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -325,7 +324,6 @@ $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[6]{'par
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2];
-$result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[2]{'parent'} = $result_trees{'paragraphindent_and_preamble'};
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'paragraphindent_and_preamble'}{'contents'}[3];
 $result_trees{'paragraphindent_and_preamble'}{'contents'}[3]{'parent'} = $result_trees{'paragraphindent_and_preamble'};

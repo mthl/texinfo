@@ -57,7 +57,6 @@ $result_trees{'unnumbered_before_node_top_top'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 1,
@@ -148,7 +147,6 @@ $result_trees{'unnumbered_before_node_top_top'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 1,
@@ -176,7 +174,6 @@ $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'contents'}[0]
 $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1];
-$result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[0]{'extra'}{'element_command'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[0]{'extra'}{'section'} = $result_trees{'unnumbered_before_node_top_top'}[0]{'contents'}[1];
@@ -189,7 +186,6 @@ $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0]{'co
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'contents'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1];
-$result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'element_prev'} = $result_trees{'unnumbered_before_node_top_top'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'extra'}{'element_command'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1];

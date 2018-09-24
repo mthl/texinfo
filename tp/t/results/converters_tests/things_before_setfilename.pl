@@ -769,7 +769,6 @@ $result_trees{'things_before_setfilename'} = {
                   'key' => 'index entry',
                   'number' => 1
                 },
-                'misc_content' => [],
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {
@@ -1076,7 +1075,6 @@ $result_trees{'things_before_setfilename'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -1208,7 +1206,6 @@ $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'conten
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'command'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20];
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
-$result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'extra'}{'misc_content'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[20]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[21]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0];
 $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[22]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[0]{'contents'}[0]{'contents'}[22]{'args'}[0];
@@ -1252,7 +1249,6 @@ $result_trees{'things_before_setfilename'}{'contents'}[2]{'contents'}[3]{'conten
 $result_trees{'things_before_setfilename'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[2]{'contents'}[3];
 $result_trees{'things_before_setfilename'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[2];
 $result_trees{'things_before_setfilename'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'things_before_setfilename'}{'contents'}[2];
-$result_trees{'things_before_setfilename'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'things_before_setfilename'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'things_before_setfilename'}{'contents'}[2]{'parent'} = $result_trees{'things_before_setfilename'};
 
 $result_texis{'things_before_setfilename'} = '\\input texinfo

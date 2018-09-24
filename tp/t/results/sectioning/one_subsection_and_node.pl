@@ -71,7 +71,6 @@ $result_trees{'one_subsection_and_node'} = {
       'cmdname' => 'subsection',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 3,
@@ -94,7 +93,6 @@ $result_trees{'one_subsection_and_node'}{'contents'}[1]{'extra'}{'nodes_manuals'
 $result_trees{'one_subsection_and_node'}{'contents'}[1]{'parent'} = $result_trees{'one_subsection_and_node'};
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0];
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'one_subsection_and_node'}{'contents'}[2];
-$result_trees{'one_subsection_and_node'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'one_subsection_and_node'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'one_subsection_and_node'}{'contents'}[2]{'parent'} = $result_trees{'one_subsection_and_node'};
 
 $result_texis{'one_subsection_and_node'} = '@node one node

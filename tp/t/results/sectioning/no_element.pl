@@ -26,7 +26,6 @@ $result_trees{'no_element'} = {
       ],
       'cmdname' => 'settitle',
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -655,7 +654,6 @@ $result_trees{'no_element'} = {
           'key' => 'index entry',
           'number' => 1
         },
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -671,7 +669,6 @@ $result_trees{'no_element'} = {
 };
 $result_trees{'no_element'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[0]{'args'}[0];
 $result_trees{'no_element'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[0];
-$result_trees{'no_element'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'no_element'}{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'no_element'}{'contents'}[0]{'parent'} = $result_trees{'no_element'};
 $result_trees{'no_element'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[1]{'args'}[0];
 $result_trees{'no_element'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'no_element'}{'contents'}[1];
@@ -768,7 +765,6 @@ $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'parent'} = $result_trees
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'command'} = $result_trees{'no_element'}{'contents'}[19];
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content'} = $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'contents'};
 $result_trees{'no_element'}{'contents'}[19]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'contents'};
-$result_trees{'no_element'}{'contents'}[19]{'extra'}{'misc_content'} = $result_trees{'no_element'}{'contents'}[19]{'args'}[0]{'contents'};
 $result_trees{'no_element'}{'contents'}[19]{'parent'} = $result_trees{'no_element'};
 
 $result_texis{'no_element'} = '@settitle no_element test

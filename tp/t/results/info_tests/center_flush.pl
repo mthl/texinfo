@@ -26,7 +26,6 @@ $result_trees{'center_flush'} = {
       ],
       'cmdname' => 'center',
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -435,7 +434,6 @@ $result_trees{'center_flush'} = {
 };
 $result_trees{'center_flush'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[0]{'args'}[0];
 $result_trees{'center_flush'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'center_flush'}{'contents'}[0];
-$result_trees{'center_flush'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'center_flush'}{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'center_flush'}{'contents'}[0]{'parent'} = $result_trees{'center_flush'};
 $result_trees{'center_flush'}{'contents'}[1]{'parent'} = $result_trees{'center_flush'};
 $result_trees{'center_flush'}{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'center_flush'}{'contents'}[2];

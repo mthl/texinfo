@@ -860,7 +860,6 @@ $result_trees{'texi_glossary'} = {
                         }
                       ],
                       'extra' => {
-                        'misc_content' => [],
                         'spaces_before_argument' => ' '
                       },
                       'level' => 1,
@@ -1076,7 +1075,6 @@ $result_trees{'texi_glossary'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -1254,7 +1252,6 @@ $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'ex
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'contents'}[2] = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'contents'}[3]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'contents'}[4]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'};
-$result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'extra'}{'misc_content'} = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'args'}[0]{'contents'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'}{'parent'} = $result_trees{'texi_glossary'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3];
@@ -1284,7 +1281,6 @@ $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[17]{'pa
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[18]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3];
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2];
 $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2];
-$result_trees{'texi_glossary'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'texi_glossary'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'parent'} = $result_trees{'texi_glossary'};
 $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0];
 $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[3];

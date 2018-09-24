@@ -106,7 +106,6 @@ $result_trees{'section_before_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -294,7 +293,6 @@ $result_trees{'section_before_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -322,7 +320,6 @@ $result_trees{'section_before_top'}{'contents'}[1]{'parent'} = $result_trees{'se
 $result_trees{'section_before_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_before_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_before_top'}{'contents'}[2];
 $result_trees{'section_before_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'section_before_top'}{'contents'}[2];
-$result_trees{'section_before_top'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'section_before_top'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'section_before_top'}{'contents'}[2]{'parent'} = $result_trees{'section_before_top'};
 $result_trees{'section_before_top'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_before_top'}{'contents'}[3]{'args'}[0];
 $result_trees{'section_before_top'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'section_before_top'}{'contents'}[3];
@@ -349,7 +346,6 @@ $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2]
 $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1];
 $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2];
 $result_trees{'section_before_top'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'section_before_top'}{'contents'}[4];
-$result_trees{'section_before_top'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'section_before_top'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'section_before_top'}{'contents'}[4]{'parent'} = $result_trees{'section_before_top'};
 
 $result_texis{'section_before_top'} = '@node section node,,,Top

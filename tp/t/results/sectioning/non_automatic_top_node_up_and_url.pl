@@ -357,7 +357,6 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
           }
         ],
         'extra' => {
-          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 0,
@@ -584,7 +583,6 @@ $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'contents'}
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2];
-$result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[2]{'parent'} = $result_trees{'non_automatic_top_node_up_and_url'}[0];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'element_command'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1];
 $result_trees{'non_automatic_top_node_up_and_url'}[0]{'extra'}{'node'} = $result_trees{'non_automatic_top_node_up_and_url'}[0]{'contents'}[1];

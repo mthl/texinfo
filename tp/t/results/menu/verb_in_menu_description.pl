@@ -246,7 +246,6 @@ $result_trees{'verb_in_menu_description'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -294,7 +293,6 @@ $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1]{'content
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1];
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1]{'contents'}[3];
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[2];
-$result_trees{'verb_in_menu_description'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'verb_in_menu_description'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'parent'} = $result_trees{'verb_in_menu_description'};
 
 $result_texis{'verb_in_menu_description'} = '@node Top

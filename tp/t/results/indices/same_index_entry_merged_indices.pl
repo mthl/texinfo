@@ -466,9 +466,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
           'parent' => {}
         }
       ],
-      'extra' => {
-        'misc_content' => []
-      },
+      'extra' => {},
       'level' => 0,
       'line_nr' => {
         'file_name' => '',
@@ -548,7 +546,6 @@ $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[6]{'
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7];
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2];
-$result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'same_index_entry_merged_indices'}{'contents'}[2]{'parent'} = $result_trees{'same_index_entry_merged_indices'};
 
 $result_texis{'same_index_entry_merged_indices'} = '@syncodeindex vr fn

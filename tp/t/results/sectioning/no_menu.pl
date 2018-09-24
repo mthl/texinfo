@@ -72,9 +72,7 @@ $result_trees{'no_menu'} = {
           'type' => 'empty_line'
         }
       ],
-      'extra' => {
-        'misc_content' => []
-      },
+      'extra' => {},
       'level' => 0,
       'line_nr' => {
         'file_name' => '',
@@ -149,7 +147,6 @@ $result_trees{'no_menu'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -227,7 +224,6 @@ $result_trees{'no_menu'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -298,7 +294,6 @@ $result_trees{'no_menu'} = {
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -321,7 +316,6 @@ $result_trees{'no_menu'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_conte
 $result_trees{'no_menu'}{'contents'}[1]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[2];
 $result_trees{'no_menu'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[2];
-$result_trees{'no_menu'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'no_menu'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'no_menu'}{'contents'}[2]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[3]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[3];
@@ -331,7 +325,6 @@ $result_trees{'no_menu'}{'contents'}[3]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[4]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[4];
 $result_trees{'no_menu'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[4];
-$result_trees{'no_menu'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'no_menu'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'no_menu'}{'contents'}[4]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[5]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[5];
@@ -341,7 +334,6 @@ $result_trees{'no_menu'}{'contents'}[5]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[6]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[6];
 $result_trees{'no_menu'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[6];
-$result_trees{'no_menu'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'no_menu'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'no_menu'}{'contents'}[6]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[7]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[7];
@@ -350,7 +342,6 @@ $result_trees{'no_menu'}{'contents'}[7]{'extra'}{'nodes_manuals'}[0]{'node_conte
 $result_trees{'no_menu'}{'contents'}[7]{'parent'} = $result_trees{'no_menu'};
 $result_trees{'no_menu'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[8]{'args'}[0];
 $result_trees{'no_menu'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'no_menu'}{'contents'}[8];
-$result_trees{'no_menu'}{'contents'}[8]{'extra'}{'misc_content'} = $result_trees{'no_menu'}{'contents'}[8]{'args'}[0]{'contents'};
 $result_trees{'no_menu'}{'contents'}[8]{'parent'} = $result_trees{'no_menu'};
 
 $result_texis{'no_menu'} = '@node Top

@@ -230,7 +230,6 @@ $result_trees{'comments_on_misc_command_line'} = {
           },
           'parent' => {}
         },
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
@@ -346,7 +345,6 @@ $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0]{'conten
 $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[8];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'parent'} = $result_trees{'comments_on_misc_command_line'};

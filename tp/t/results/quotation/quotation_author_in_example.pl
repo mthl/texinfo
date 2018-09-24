@@ -52,7 +52,6 @@ $result_trees{'quotation_author_in_example'} = {
                   ],
                   'cmdname' => 'author',
                   'extra' => {
-                    'misc_content' => [],
                     'quotation' => {},
                     'spaces_before_argument' => ' '
                   },
@@ -166,7 +165,6 @@ $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'cont
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0];
-$result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'quotation'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'quotation_author_in_example'}{'contents'}[0]{'contents'}[1]{'contents'}[1];

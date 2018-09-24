@@ -3186,18 +3186,16 @@ sub _end_line($$$)
                __("\@%s missing argument"), $command);
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
-        $current->{'extra'}->{'misc_content'}
-                                    = $current->{'args'}->[0]->{'contents'};
         if (($command eq 'item' or $command eq 'itemx')
             and $self->{'command_index'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, 
                              $command, $current,
-                             $current->{'extra'}->{'misc_content'}, 
+                             $current->{'args'}->[0]->{'contents'},
                              undef, $line_nr);
         } elsif ($self->{'command_index'}->{$current->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'cmdname'}, 
                              $current->{'cmdname'}, $current,
-                             $current->{'extra'}->{'misc_content'}, 
+                             $current->{'args'}->[0]->{'contents'},
                              undef, $line_nr);
           $current->{'type'} = 'index_entry_command';
         }
@@ -6723,11 +6721,6 @@ is in I<row_prototype>.
 =head3 Extra keys available for more than one @-command
 
 =over
-
-=item misc_content
-
-The contents of an @-command taking regular Texinfo code as
-argument, like C<@settitle> or C<@exdent>.
 
 =item end_command
 

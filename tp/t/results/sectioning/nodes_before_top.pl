@@ -498,7 +498,6 @@ $result_trees{'nodes_before_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -568,7 +567,6 @@ $result_trees{'nodes_before_top'} = {
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -656,7 +654,6 @@ $result_trees{'nodes_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2]{'
 $result_trees{'nodes_before_top'}{'contents'}[4]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'nodes_before_top'}{'contents'}[4]{'contents'}[1]{'contents'}[2];
 $result_trees{'nodes_before_top'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[4];
 $result_trees{'nodes_before_top'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[4];
-$result_trees{'nodes_before_top'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'nodes_before_top'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'nodes_before_top'}{'contents'}[4]{'parent'} = $result_trees{'nodes_before_top'};
 $result_trees{'nodes_before_top'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[5]{'args'}[0];
 $result_trees{'nodes_before_top'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[5];
@@ -665,7 +662,6 @@ $result_trees{'nodes_before_top'}{'contents'}[5]{'extra'}{'nodes_manuals'}[0]{'n
 $result_trees{'nodes_before_top'}{'contents'}[5]{'parent'} = $result_trees{'nodes_before_top'};
 $result_trees{'nodes_before_top'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[6]{'args'}[0];
 $result_trees{'nodes_before_top'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'nodes_before_top'}{'contents'}[6];
-$result_trees{'nodes_before_top'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'nodes_before_top'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'nodes_before_top'}{'contents'}[6]{'parent'} = $result_trees{'nodes_before_top'};
 
 $result_texis{'nodes_before_top'} = '@node first, Top, ,(dir)

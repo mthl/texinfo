@@ -32,7 +32,6 @@ $result_trees{'sections'} = {
       'cmdname' => 'chapter',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -50,7 +49,6 @@ $result_trees{'sections'} = {
 $result_trees{'sections'}{'contents'}[0]{'parent'} = $result_trees{'sections'};
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0];
 $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'sections'}{'contents'}[1];
-$result_trees{'sections'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'sections'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'sections'}{'contents'}[1]{'parent'} = $result_trees{'sections'};
 
 $result_texis{'sections'} = '@chapter a chapter

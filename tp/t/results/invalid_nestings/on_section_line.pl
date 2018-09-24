@@ -141,7 +141,6 @@ $result_trees{'on_section_line'} = {
               'cmdname' => 'exdent',
               'extra' => {
                 'invalid_nesting' => 1,
-                'misc_content' => [],
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -155,7 +154,6 @@ $result_trees{'on_section_line'} = {
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -189,11 +187,9 @@ $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[6]{'paren
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8];
-$result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'extra'}{'misc_content'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'args'}[0]{'contents'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'on_section_line'}{'contents'}[1];
-$result_trees{'on_section_line'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'on_section_line'}{'contents'}[1]{'line_nr'} = $result_trees{'on_section_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'on_section_line'}{'contents'}[1]{'parent'} = $result_trees{'on_section_line'};
 

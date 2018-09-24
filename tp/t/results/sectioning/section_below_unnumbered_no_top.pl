@@ -32,7 +32,6 @@ $result_trees{'section_below_unnumbered_no_top'} = {
       'cmdname' => 'unnumbered',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -63,7 +62,6 @@ $result_trees{'section_below_unnumbered_no_top'} = {
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -80,11 +78,9 @@ $result_trees{'section_below_unnumbered_no_top'} = {
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[0]{'parent'} = $result_trees{'section_below_unnumbered_no_top'};
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1];
-$result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[1]{'parent'} = $result_trees{'section_below_unnumbered_no_top'};
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2];
-$result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'section_below_unnumbered_no_top'}{'contents'}[2]{'parent'} = $result_trees{'section_below_unnumbered_no_top'};
 
 $result_texis{'section_below_unnumbered_no_top'} = '@unnumbered U

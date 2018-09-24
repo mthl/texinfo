@@ -220,7 +220,6 @@ $result_trees{'protected_node_parentheses'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -452,7 +451,6 @@ $result_trees{'protected_node_parentheses'}{'contents'}[2]{'contents'}[1]{'conte
 $result_trees{'protected_node_parentheses'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'protected_node_parentheses'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'protected_node_parentheses'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[2];
 $result_trees{'protected_node_parentheses'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[2];
-$result_trees{'protected_node_parentheses'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'protected_node_parentheses'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'protected_node_parentheses'}{'contents'}[2]{'parent'} = $result_trees{'protected_node_parentheses'};
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'protected_node_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protected_node_parentheses'}{'contents'}[3]{'args'}[0]{'contents'}[0];

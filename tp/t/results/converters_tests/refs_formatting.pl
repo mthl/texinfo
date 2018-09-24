@@ -3372,7 +3372,6 @@ $result_trees{'refs_formatting'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -4025,7 +4024,6 @@ $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[14]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'contents'}[15]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5];
 $result_trees{'refs_formatting'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'refs_formatting'}{'contents'}[2];
-$result_trees{'refs_formatting'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'refs_formatting'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'refs_formatting'}{'contents'}[2]{'parent'} = $result_trees{'refs_formatting'};
 
 $result_texis{'refs_formatting'} = '@node chapter

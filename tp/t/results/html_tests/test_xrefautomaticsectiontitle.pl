@@ -194,7 +194,6 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -435,7 +434,6 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -477,7 +475,6 @@ $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'c
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'contents'}[2];
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2];
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[2]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'};
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'args'}[0];
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[3];
@@ -510,7 +507,6 @@ $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'c
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[0]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7];
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'contents'}[1]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7];
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'contents'}[7]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4];
-$result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'test_xrefautomaticsectiontitle'}{'contents'}[4]{'parent'} = $result_trees{'test_xrefautomaticsectiontitle'};
 
 $result_texis{'test_xrefautomaticsectiontitle'} = '@node Top

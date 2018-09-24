@@ -54,7 +54,6 @@ $result_trees{'direntry_dircategory_and_commands'} = {
           ],
           'cmdname' => 'dircategory',
           'extra' => {
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {},
@@ -235,7 +234,6 @@ $result_trees{'direntry_dircategory_and_commands'} = {
           ],
           'cmdname' => 'dircategory',
           'extra' => {
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -482,7 +480,6 @@ $result_trees{'direntry_dircategory_and_commands'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -502,7 +499,6 @@ $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1];
@@ -534,7 +530,6 @@ $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[1]
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[0]{'contents'}[4];
@@ -573,7 +568,6 @@ $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'args'}[0]{'pa
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'contents'}[1];
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2];
-$result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'direntry_dircategory_and_commands'}{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_and_commands'};
 
 $result_texis{'direntry_dircategory_and_commands'} = '@dircategory ``category---@var{th  ere}?\'\'

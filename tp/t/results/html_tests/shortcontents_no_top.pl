@@ -39,7 +39,6 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -78,7 +77,6 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -134,7 +132,6 @@ $result_trees{'shortcontents_no_top'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 2,
@@ -153,19 +150,16 @@ $result_trees{'shortcontents_no_top'}{'contents'}[0]{'parent'} = $result_trees{'
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1];
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[1];
-$result_trees{'shortcontents_no_top'}{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'shortcontents_no_top'}{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'shortcontents_no_top'}{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'};
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2];
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[2];
-$result_trees{'shortcontents_no_top'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'shortcontents_no_top'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'shortcontents_no_top'}{'contents'}[2]{'parent'} = $result_trees{'shortcontents_no_top'};
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1];
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'shortcontents_no_top'}{'contents'}[3];
-$result_trees{'shortcontents_no_top'}{'contents'}[3]{'extra'}{'misc_content'} = $result_trees{'shortcontents_no_top'}{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'shortcontents_no_top'}{'contents'}[3]{'parent'} = $result_trees{'shortcontents_no_top'};
 
 $result_texis{'shortcontents_no_top'} = '@chapter chap

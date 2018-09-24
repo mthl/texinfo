@@ -467,7 +467,6 @@ $result_trees{'nodes_after_top_before_chapter_nodes'} = [
         'cmdname' => 'chapter',
         'contents' => [],
         'extra' => {
-          'misc_content' => [],
           'spaces_before_argument' => ' '
         },
         'level' => 1,
@@ -562,7 +561,6 @@ $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[0]{'extra'}
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[0]{'parent'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2];
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1];
-$result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[1]{'parent'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2];
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'element_prev'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[1];
 $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'extra'}{'element_command'} = $result_trees{'nodes_after_top_before_chapter_nodes'}[2]{'contents'}[0];

@@ -431,7 +431,6 @@ $result_trees{'weird_accents_disable_encoding'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -514,7 +513,6 @@ $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'c
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9];
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'contents'}[9]{'parent'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2];
-$result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'weird_accents_disable_encoding'}{'contents'}[2]{'parent'} = $result_trees{'weird_accents_disable_encoding'};
 
 $result_texis{'weird_accents_disable_encoding'} = '@documentencoding ISO-8859-1

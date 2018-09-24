@@ -39,7 +39,6 @@ $result_trees{'empty_center_with_arg'} = {
       ],
       'cmdname' => 'center',
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},
@@ -51,7 +50,6 @@ $result_trees{'empty_center_with_arg'} = {
 $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_center_with_arg'}{'contents'}[0];
-$result_trees{'empty_center_with_arg'}{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'empty_center_with_arg'}{'contents'}[0]{'line_nr'} = $result_trees{'empty_center_with_arg'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'empty_center_with_arg'}{'contents'}[0]{'parent'} = $result_trees{'empty_center_with_arg'};
 

@@ -311,7 +311,6 @@ $result_trees{'on_block_command_line'} = {
               'cmdname' => 'exdent',
               'extra' => {
                 'invalid_nesting' => 1,
-                'misc_content' => [],
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -414,7 +413,6 @@ $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[5]{
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[6]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7];
-$result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[2];

@@ -382,7 +382,6 @@ $result_trees{'special_docbook_unnumbered'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -476,7 +475,6 @@ $result_trees{'special_docbook_unnumbered'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -570,7 +568,6 @@ $result_trees{'special_docbook_unnumbered'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -664,7 +661,6 @@ $result_trees{'special_docbook_unnumbered'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -752,7 +748,6 @@ $result_trees{'special_docbook_unnumbered'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 1,
@@ -827,7 +822,6 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'contents'}[3]{'conte
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'contents'}[3]{'extra'}{'end_command'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'contents'}[3]{'contents'}[5];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[2]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[3];
@@ -840,7 +834,6 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'contents'}[0]{'paren
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'contents'}[1];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[4]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[5];
@@ -853,7 +846,6 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'contents'}[0]{'paren
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'contents'}[1];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[6]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[7];
@@ -866,7 +858,6 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'contents'}[0]{'paren
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'contents'}[1];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'extra'}{'misc_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'args'}[0]{'contents'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[8]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[9]{'args'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[9];
@@ -878,7 +869,6 @@ $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'args'}[0]{'parent'}
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'contents'}[1];
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10];
-$result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'extra'}{'misc_content'} = $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'args'}[0]{'contents'};
 $result_trees{'special_docbook_unnumbered'}{'contents'}[10]{'parent'} = $result_trees{'special_docbook_unnumbered'};
 
 $result_texis{'special_docbook_unnumbered'} = '@node Top

@@ -118,7 +118,6 @@ $result_trees{'backslash_in_arg'} = {
               'node' => {},
               'number' => 1
             },
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -160,7 +159,6 @@ $result_trees{'backslash_in_arg'} = {
               'node' => {},
               'number' => 2
             },
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -202,7 +200,6 @@ $result_trees{'backslash_in_arg'} = {
               'node' => {},
               'number' => 3
             },
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -244,7 +241,6 @@ $result_trees{'backslash_in_arg'} = {
               'node' => {},
               'number' => 4
             },
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -327,7 +323,6 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'extra'}{'index_
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'extra'}{'index_entry'}{'content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'extra'}{'index_entry'}{'node'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'extra'}{'misc_content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5];
@@ -335,7 +330,6 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'extra'}{'index_entry'}{'node'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'extra'}{'misc_content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6];
@@ -343,7 +337,6 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'extra'}{'index_entry'}{'node'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'extra'}{'misc_content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7];
@@ -351,7 +344,6 @@ $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'extra'}{'index_entry'}{'node'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
-$result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'extra'}{'misc_content'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'args'}[0]{'contents'};
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[7]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'args'}[0];
 $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'backslash_in_arg'}{'contents'}[1]{'contents'}[8];

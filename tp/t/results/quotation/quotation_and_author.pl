@@ -38,7 +38,6 @@ $result_trees{'quotation_and_author'} = {
           ],
           'cmdname' => 'author',
           'extra' => {
-            'misc_content' => [],
             'quotation' => {},
             'spaces_before_argument' => ' '
           },
@@ -141,7 +140,6 @@ $result_trees{'quotation_and_author'} = {
           ],
           'cmdname' => 'author',
           'extra' => {
-            'misc_content' => [],
             'quotation' => {},
             'spaces_before_argument' => ' '
           },
@@ -251,7 +249,6 @@ $result_trees{'quotation_and_author'} = {
           ],
           'cmdname' => 'author',
           'extra' => {
-            'misc_content' => [],
             'quotation' => {},
             'spaces_before_argument' => ' '
           },
@@ -325,7 +322,6 @@ $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[0]{'extra'}{'co
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1];
-$result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'extra'}{'quotation'} = $result_trees{'quotation_and_author'}{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[0]{'contents'}[2];
@@ -341,7 +337,6 @@ $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[0]{'extra'}{'co
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1];
-$result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'extra'}{'misc_content'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'};
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'extra'}{'quotation'} = $result_trees{'quotation_and_author'}{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2];
 $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[2]{'contents'}[2];
@@ -357,7 +352,6 @@ $result_trees{'quotation_and_author'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'
 $result_trees{'quotation_and_author'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'args'}[0];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0];
-$result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'extra'}{'misc_content'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'args'}[0]{'contents'};
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'extra'}{'quotation'} = $result_trees{'quotation_and_author'}{'contents'}[4];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4];
 $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'quotation_and_author'}{'contents'}[4]{'contents'}[1];

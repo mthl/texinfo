@@ -180,7 +180,6 @@ $result_trees{'today_in_copying'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -217,7 +216,6 @@ $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
-$result_trees{'today_in_copying'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'today_in_copying'}{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'};
 
 $result_texis{'today_in_copying'} = '@copying

@@ -585,7 +585,6 @@ $result_trees{'placed_things_before_node'} = {
               'key' => 'index entry',
               'number' => 1
             },
-            'misc_content' => [],
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -772,7 +771,6 @@ $result_trees{'placed_things_before_node'} = {
         }
       ],
       'extra' => {
-        'misc_content' => [],
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -876,7 +874,6 @@ $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'command'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
-$result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'extra'}{'misc_content'} = $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'args'}[0]{'contents'};
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[15]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'contents'}[16]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[0];
 $result_trees{'placed_things_before_node'}{'contents'}[0]{'parent'} = $result_trees{'placed_things_before_node'};
@@ -905,7 +902,6 @@ $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'conten
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3];
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3];
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'contents'}[3]{'parent'} = $result_trees{'placed_things_before_node'}{'contents'}[2];
-$result_trees{'placed_things_before_node'}{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'placed_things_before_node'}{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'placed_things_before_node'}{'contents'}[2]{'parent'} = $result_trees{'placed_things_before_node'};
 
 $result_texis{'placed_things_before_node'} = '@anchor{An anchor}

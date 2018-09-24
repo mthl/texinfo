@@ -521,7 +521,6 @@ $result_trees{'at_commands_in_raw'} = {
                   'node' => {},
                   'number' => 1
                 },
-                'misc_content' => [],
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {
@@ -878,7 +877,6 @@ $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'extra'}{'index_entry'}{'content'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'extra'}{'index_entry'}{'node'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
-$result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'extra'}{'misc_content'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'args'}[0]{'contents'};
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[18]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
 $result_trees{'at_commands_in_raw'}{'contents'}[1]{'contents'}[19]{'parent'} = $result_trees{'at_commands_in_raw'}{'contents'}[1];
