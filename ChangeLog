@@ -1,5 +1,14 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <misc command>:
+	Do not call _trim_spaces_comment_from_content.  This leads to a 
+	change in the 'misc_args' in a few cases of invalid nesting of 
+	line commands.
+	(_trim_spaces_comment_from_content): Remove wrapper for
+	Texinfo::Common::trim_spaces_comment_from_content.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Remove a comment.
 	(_merge_text, _abort_empty_line, _parse_texi_regex): Add a 
 	comment noting these subs have XS overrides.

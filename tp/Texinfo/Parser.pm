@@ -3171,26 +3171,23 @@ sub _end_line($$$)
         my $node = _parse_node_manual($arg);
         push @{$current->{'extra'}->{'nodes_manuals'}}, $node;
       }
-      _check_internal_node($self,
-        $current->{'extra'}->{'nodes_manuals'}->[0],
-        $line_nr);
+      _check_internal_node($self, $current->{'extra'}->{'nodes_manuals'}->[0],
+                           $line_nr);
      _register_label($self, $current, 
                    $current->{'extra'}->{'nodes_manuals'}->[0]);
      $self->{'current_node'} = $current;
     } elsif ($command eq 'listoffloats') {
       _parse_float_type($current);
-    # handle all the other 'line' commands.  Here just check that they 
-    # have an argument and prepare contents without spaces.
     } else {
-      my @contents = @{$current->{'args'}->[0]->{'contents'}};
-      _trim_spaces_comment_from_content(\@contents);
-      # empty @top is allowed
-      if (!scalar(@contents) and $command ne 'top') {
+      # Handle all the other 'line' commands.  Here just check that they 
+      # have an argument.  Empty @top is allowed
+      if (!@{$current->{'args'}->[0]->{'contents'}} and $command ne 'top') {
         $self->_command_warn($current, $line_nr,
                __("\@%s missing argument"), $command);
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
-        $current->{'extra'}->{'misc_content'} = \@contents;
+        $current->{'extra'}->{'misc_content'}
+                                    = $current->{'args'}->[0]->{'contents'};
         if (($command eq 'item' or $command eq 'itemx')
             and $self->{'command_index'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, 
@@ -5463,11 +5460,6 @@ sub _parse_special_misc_command($$$$)
     }
   }
   return ($args, $has_comment);
-}
-
-sub _trim_spaces_comment_from_content($)
-{
-  Texinfo::Common::trim_spaces_comment_from_content($_[0]);
 }
 
 # at the end of an @-command line with arguments, parse the resulting 
