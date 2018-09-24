@@ -31,7 +31,7 @@ check_latex2html_and_tex4ht ()
 {
     use_latex2html=no
     use_tex4ht=no
-    l2h_tmp_dir=
+    l2h_flags=
     maybe_use_latex2html=no
     if echo "$remaining" | grep '[-]l2h' >/dev/null; then
       maybe_use_latex2html=yes
@@ -53,6 +53,7 @@ check_latex2html_and_tex4ht ()
          fi
       fi
       l2h_tmp_dir="-c 'L2H_TMP $tmp_dir'"
+      l2h_flags="-c L2H_CLEAN=0 -c 'L2H_TMP $tmp_dir' -c L2H_FILE=$srcdir/../t/init/l2h.init"
     elif echo "$remaining" | grep '[-]init tex4ht.pm' >/dev/null; then
       if test "$no_tex4ht" = 'yes' ; then
         echo "S: (no tex4ht) $current"
@@ -68,7 +69,6 @@ check_latex2html_and_tex4ht ()
        fi
       fi
     fi
-    l2h_flags="-c L2H_CLEAN=0 $l2h_tmp_dir -c L2H_FILE=$srcdir/../t/init/l2h.init"
     return 0
 }
 

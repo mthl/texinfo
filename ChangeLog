@@ -1,5 +1,10 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Only use flags for latex2html in 
+	the latex2html tests.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Put flags for latex2html inside a 
 	variable so they are less distracting when reading the code.
 	Use -c instead of --set-customization-variable in the interests 
