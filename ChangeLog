@@ -1,13 +1,23 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/Makefile.am (base_tests): Remove 'coverage'.
+
+2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/coverage/formatting.texi
 	* tp/tests/coverage/simplest.texi
 	* tp/tests/coverage/f--ile.e--xt,
 	* tp/tests/coverage/f--ile.jpg: Move to t/tests/layout.
-	* tp/tests/layout/list-of-tests: Reference formatting.texi in 
-	new location.
+
+	* tp/tests/layout/list-of-tests,
+	* tp/tests/tex_html/list-of-tests:
+	Reference formatting.texi in new location.
 	* tp/tests/layout/f--ile.gif,
 	* tp/tests/layout/f--ile.jpeg: Remove.
+
+	* tp/tests/coverage/list-of-tests (formatting): Test moved from 
+	here, to:
+	* tp/tests/layout/list-of-tests (formatting): Here.
 
 	This leads to "simplest.texi" being included in the output of 
 	some the 'formatting_regions' test, and different image files 
