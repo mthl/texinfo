@@ -466,6 +466,15 @@ f-lushright
 
 ce-ntered line
 
+\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  <>.
+
+@bye
 
 in verbatim ''
 
@@ -829,8 +838,8 @@ but , ,
 <code>@image{f--ile,l--i}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,l--e}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,,alt}</code> <img src="f--ile.png" alt="alt">
-<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
-<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.e--xt" alt="f--ile">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.e--xt" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
 </p>
@@ -1232,7 +1241,16 @@ ref</a>
 </p>
 <div align="center">ce&ndash;ntered line
 </div>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
 <pre class="verbatim">in verbatim ''
 </pre>
 
@@ -1263,7 +1281,7 @@ html ''
 <p><code>@math{--a@minus{} {\frac{1}{2}}}</code> <em>--a- {\frac{1}{2}}</em>
 </p>
 <p><code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> <img src="f-ile.jpg" alt="altjk _&quot; %@">
-<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.png" alt="jk _&quot; %@ in b &quot;">
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.e--xt" alt="jk _&quot; %@ in b &quot;">
 <code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="filejk _&quot; %@.jpg" alt="altjk _&quot; %@">
 </p>
 
@@ -1550,8 +1568,8 @@ but , ,
 <code>@image{f--ile,l--i}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,l--e}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,,alt}</code> <img src="f--ile.png" alt="alt">
-<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
-<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.e--xt" alt="f--ile">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.e--xt" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
 </p>
@@ -1953,7 +1971,16 @@ ref</a>
 </p>
 <div align="center">ce&ndash;ntered line
 </div>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
 <pre class="verbatim">in verbatim ''
 </pre>
 
@@ -1984,7 +2011,7 @@ html ''
 <p><code>@math{--a@minus{} {\frac{1}{2}}}</code> <em>--a- {\frac{1}{2}}</em>
 </p>
 <p><code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> <img src="f-ile.jpg" alt="altjk _&quot; %@">
-<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.png" alt="jk _&quot; %@ in b &quot;">
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.e--xt" alt="jk _&quot; %@ in b &quot;">
 <code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="filejk _&quot; %@.jpg" alt="altjk _&quot; %@">
 </p>
 
@@ -2317,8 +2344,8 @@ but , ,
 <code>@image{f--ile,l--i}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,l--e}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,,alt}</code> <img src="f--ile.png" alt="alt">
-<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
-<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.e--xt" alt="f--ile">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.e--xt" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
 </p>
@@ -2720,7 +2747,16 @@ ref</a>
 </p>
 <div align="center">ce&ndash;ntered line
 </div>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
 <pre class="verbatim">in verbatim ''
 </pre>
 
@@ -2751,7 +2787,7 @@ html ''
 <p><code>@math{--a@minus{} {\frac{1}{2}}}</code> <em>--a- {\frac{1}{2}}</em>
 </p>
 <p><code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> <img src="f-ile.jpg" alt="altjk _&quot; %@">
-<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.png" alt="jk _&quot; %@ in b &quot;">
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.e--xt" alt="jk _&quot; %@ in b &quot;">
 <code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="filejk _&quot; %@.jpg" alt="altjk _&quot; %@">
 </p>
 
@@ -3512,6 +3548,15 @@ ref</a>
 </pre><div align="center">ce--ntered line
 </div><pre class="example">
 
+</pre><pre class="verbatim">\input texinfo @c -*-texinfo-*-
+
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
 </pre><pre class="example">
 
 </pre><pre class="verbatim">in verbatim ''
@@ -3845,8 +3890,8 @@ but , ,
 <code>@image{f--ile,l--i}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,l--e}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,,,alt}</code> <img src="f--ile.png" alt="alt">
-<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
-<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
+<code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.e--xt" alt="f--ile">
+<code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.e--xt" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
 <code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
 </p>
@@ -4248,7 +4293,16 @@ ref</a>
 </p>
 <div align="center">ce&ndash;ntered line
 </div>
+<pre class="verbatim">\input texinfo @c -*-texinfo-*-
 
+@setfilename simplest.info
+
+@node Top
+
+This is a very simple texi manual @  &lt;&gt;.
+
+@bye
+</pre>
 <pre class="verbatim">in verbatim ''
 </pre>
 
@@ -4279,7 +4333,7 @@ html ''
 <p><code>@math{--a@minus{} {\frac{1}{2}}}</code> <em>--a- {\frac{1}{2}}</em>
 </p>
 <p><code>@image{f-ile,,,alt@verb{:jk _&quot; %}}</code> <img src="f-ile.jpg" alt="altjk _&quot; %@">
-<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.png" alt="jk _&quot; %@ in b &quot;">
+<code>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</code> <img src="f--ile.e--xt" alt="jk _&quot; %@ in b &quot;">
 <code>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</code> <img src="filejk _&quot; %@.jpg" alt="altjk _&quot; %@">
 </p>
 
