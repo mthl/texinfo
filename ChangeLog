@@ -1,8 +1,8 @@
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/tests/formatting/list-of-tests (formatting): Test moved 
-	from here, to:
-	* tp/tests/coverage/list-of-tests (formatting): Here.
+	* tp/tests/coverage/list-of-tests (formatting): Test moved from 
+	here, to:
+	* tp/tests/layout/list-of-tests (formatting): Here.
 
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
