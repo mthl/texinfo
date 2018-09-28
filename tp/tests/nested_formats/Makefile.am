@@ -1,5 +1,5 @@
 EXTRA_DIST = nested_formats.texi \
- tests-parser.txt res_parser res_parser_info
+ list-of-tests res_parser res_parser_info
 
 DISTCLEANFILES = tests.log tests.out
 

@@ -9,7 +9,7 @@ EXTRA_DIST = index_table.texi index_no_node.texi \
  same_doc_nr_split_index_and_element.texi \
  printindex_between_part_chapter.texi \
  index_test.init \
- tests-parser.txt res_parser res_parser_info
+ list-of-tests res_parser res_parser_info
 
 DISTCLEANFILES = tests.log tests.out
 

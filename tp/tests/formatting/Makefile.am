@@ -9,7 +9,7 @@ EXTRA_DIST = \
  simple_with_menu.texi      unknown_nodes_renamed.texi \
  one_line_no_content.texi one_line.texi empty.texi \
  unknown_nodes_renamed-noderename.cnf-ref \
- file.css tests-parser.txt  res_parser
+ file.css list-of-tests  res_parser
 
 DISTCLEANFILES = tests.log tests.out unknown_nodes_renamed-noderename.cnf
 

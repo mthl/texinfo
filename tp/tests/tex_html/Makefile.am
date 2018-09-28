@@ -4,7 +4,7 @@ EXTRA_DIST = \
  tex_in_copying.texi \
  math_not_closed.texi       tex_not_closed.texi \
  tex.texi \
- tests-parser.txt res_parser
+ list-of-tests res_parser
 
 DISTCLEANFILES = tests.log tests.out
 

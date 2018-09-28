@@ -1,5 +1,5 @@
 EXTRA_DIST = no_monolithic.texi navigation.texi formatting_regions.texi \
- tests-parser.txt res_parser \
+ list-of-tests res_parser \
  f--ile.gif f--ile.txt f--ile.jpeg f--ile.png
 
 
