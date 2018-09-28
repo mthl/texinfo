@@ -1,3 +1,8 @@
+2018-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/nested_formats/generate_all_texi.pl: Refer to 
+	list-of-tests rather than tests-parser.txt.
+
 2018-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_end_line): Do not set 'misc_content'.

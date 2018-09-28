@@ -14,7 +14,7 @@ BEGIN
   $^W = 1;
 }
 
-open (TXT, 'tests-parser.txt') or die "Cannot open tests-parser.txt: $!\n";
+open (TXT, 'list-of-tests') or die "Cannot open list-of-tests: $!\n";
 
 mkdir ("all_texi");
 
