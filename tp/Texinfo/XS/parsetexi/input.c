@@ -431,7 +431,7 @@ input_push (char *text, char *macro, char *filename, int line_number)
   input_stack[input_number].line_nr.line_nr = line_number;
   input_stack[input_number].line_nr.file_name
                                        = filename ? strdup (filename) : 0;
-  input_stack[input_number].line_nr.macro = macro;
+  input_stack[input_number].line_nr.macro = macro ? strdup (macro) : 0;
   input_number++;
 }
 

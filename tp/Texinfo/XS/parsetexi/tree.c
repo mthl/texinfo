@@ -103,8 +103,12 @@ destroy_element (ELEMENT *e)
             {
               NODE_SPEC_EXTRA *nse = (NODE_SPEC_EXTRA *) e->extra[i].value;
 
-              free_node_contents (nse->manual_content);
-              free_node_contents (nse->node_content);
+              //free_node_contents (nse->manual_content);
+              //free_node_contents (nse->node_content);
+              /* Problem - some of the elements in 'node_content' may have
+                 been in the main tree and have been free'd already.  If
+                 that is the case, we can't rely on checking whether the
+                 elements are 'route_not_in_tree'. */
               free (nse);
               break;
             }

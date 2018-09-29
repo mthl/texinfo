@@ -486,7 +486,7 @@ wipe_macros (void)
 }
 
 // 3898
-/* Handle macro expandsion.  CMD is the macro command. */
+/* Handle macro expansion.  CMD is the macro command. */
 ELEMENT *
 handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
