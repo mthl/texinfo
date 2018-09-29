@@ -1426,11 +1426,9 @@ sub parse_node_manual($)
 {
   my $node = shift;
   my @contents = @{$node->{'contents'}};
-  trim_spaces_comment_from_content(\@contents);
 
   my $manual;
   my $result;
-#print STDERR "RRR $contents[0] and $contents[0]->{'text'} \n";
   if ($contents[0] and $contents[0]->{'text'} and $contents[0]->{'text'} =~ /^\(/) {
     my $braces_count = 1;
     if ($contents[0]->{'text'} !~ /^\($/) {
