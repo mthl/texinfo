@@ -1,3 +1,7 @@
+2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/init/chm.pm (chm_init): Do not refer to a 'misc_content' array.
+
 2018-09-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/nested_formats/generate_all_texi.pl: Refer to 
