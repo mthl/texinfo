@@ -14,6 +14,39 @@ my @test_cases = (
   undef, {'test_file' => 'no_monolithic.texi' },
   {'MONOLITHIC' => 0}
 ],
+['navigation',
+  undef, {'test_file' => 'navigation.texi' },
+],
+['navigation_no_header',
+  undef, {'test_file' => 'navigation.texi' },
+  {'HEADERS' => 0, 'SHOW_MENU' => 0}
+],
+['navigation_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1}
+],
+['navigation_no_header_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1,
+   'HEADERS' => 0}
+],
+['navigation_chapter',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'chapter'}
+],
+['navigation_section',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'section'}
+],
+['navigation_node',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'node'}
+],
+['navigation_chapter_no_header',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'chapter',
+   'HEADERS' => 0, 'SHOW_MENU' => 0}
+],
 
 );
 

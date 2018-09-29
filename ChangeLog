@@ -1,5 +1,22 @@
 2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/93/layout.t: (navigation, navigation_no_header)
+	(navigation_vertical, navigation_no_header_vertical)
+	(navigation_chapter, navigation_section, navigation_node)
+	(navigation_chapter_no_header): New tests.
+	* tp/tests/layout/list-of-tests: Remove the same tests.
+
+	I checked the results were the same with a script like the 
+	following:
+
+	  OTHER=../../../../../tests/layout/res_parser
+
+	  (for d in *[^.][^.][^.]? ; do echo "CHANGING TO $d" ; pushd  \
+	  $d/res_html ; for f in * ; do echo DIFFING $f ; diff $f      \
+	  $OTHER/$d/$f ; done ; popd ; done ) |& less
+
+2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/93layout.t: New file.
 	* tp/t/93layout.t (no_monolithic): New test.
 	* tp/tests/layout/list-of-tests (no_monolithic): Remove test.
