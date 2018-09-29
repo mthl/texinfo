@@ -1,5 +1,17 @@
 2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/93layout.t: New file.
+	* tp/t/93layout.t (no_monolithic): New test.
+	* tp/tests/layout/list-of-tests (no_monolithic): Remove test.
+
+	I checked the results were the same by running the following in
+	the results directory:
+
+	  OTHER=../../../../../tests/layout/res_parser/no_monolithic
+	  for f in * ; do diff $f $OTHER/$f ; done
+
+2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (parse_node_manual):
 	Do not call trim_spaces_comment_from_content.
 

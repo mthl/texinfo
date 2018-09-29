@@ -1,35 +1,34 @@
-no_monolithic no_monolithic.texi --set-customization-variable 'MONOLITHIC 0'
-no_monolithic_only_toc_out no_monolithic.texi --set-customization-variable 'MONOLITHIC 0' --init only_toc_out.init
+no_monolithic_only_toc_out no_monolithic.texi -c 'MONOLITHIC 0' --init only_toc_out.init
 navigation navigation.texi
 navigation_no_header navigation.texi --no-header
 #navigation_noheaders_init navigation.texi --init noheaders.pm
-navigation_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1'
-navigation_no_header_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --set-customization-variable HEADERS=0
+navigation_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1'
+navigation_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' -c HEADERS=0
 navigation_chapter navigation.texi --split chapter
 navigation_section navigation.texi --split section
 navigation_node navigation.texi --split node
 navigation_chapter_no_header navigation.texi --split chapter --no-header
 navigation_section_no_header navigation.texi --split section --no-header
 navigation_node_no_header navigation.texi --split node --no-header
-navigation_chapter_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split chapter
-navigation_section_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split section
-navigation_node_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split node
-navigation_chapter_no_header_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split chapter --set-customization-variable HEADERS=0
-navigation_section_no_header_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split section --set-customization-variable HEADERS=0
-navigation_node_no_header_vertical navigation.texi --set-customization-variable 'VERTICAL_HEAD_NAVIGATION 1' --split node --set-customization-variable HEADERS=0
+navigation_chapter_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split chapter
+navigation_section_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split section
+navigation_node_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split node
+navigation_chapter_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split chapter -c HEADERS=0
+navigation_section_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split section -c HEADERS=0
+navigation_node_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split node -c HEADERS=0
 navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 
 formatting_docbook formatting.texi --docbook -U texi2html
 formatting_xml formatting.texi --xml -U texi2html
-formatting_weird_quotes formatting.texi --set-customization-variable 'OPEN_QUOTE_SYMBOL @' --set-customization-variable "CLOSE_QUOTE_SYMBOL '&lsquo;"
+formatting_weird_quotes formatting.texi -c 'OPEN_QUOTE_SYMBOL @' -c "CLOSE_QUOTE_SYMBOL '&lsquo;"
 #lightweight_markups_mediawiki lightweight_markups.texi --init mediawiki.pm
 formatting_html formatting.texi --html --no-split
-formatting_html_nodes formatting.texi --html --split node --node-files --set-customization-variable 'TOP_FILE index.html'
+formatting_html_nodes formatting.texi --html --split node --node-files -c 'TOP_FILE index.html'
 formatting_plaintext formatting.texi --plaintext -U texi2html
 #formatting_mediawiki formatting.texi --init mediawiki.pm
 formatting_html32 formatting.texi --init html32.pm
 formatting_regions formatting_regions.texi
-formatting_exotic formatting.texi --split section --no-header --no-number-sections --set-customization-variable 'TOC_LINKS 1' --set-customization-variable 'DEF_TABLE 1' --set-customization-variable 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null --set-customization-variable 'USE_TITLEPAGE_FOR_TITLE 0'
+formatting_exotic formatting.texi --split section --no-header --no-number-sections -c 'TOC_LINKS 1' -c 'DEF_TABLE 1' -c 'XREF_USE_NODE_NAME_ARG 1' --footnote-style=end --css-ref http://www.environnement.ens.fr/perso/dumas/background-color.css --internal-links=/dev/null -c 'USE_TITLEPAGE_FOR_TITLE 0'
 formatting_fr_icons formatting.texi --document-language fr --init icons.init
 #formatting_makeinfo formatting.texi --init makeinfo.pm --no-warn
 formatting_chm formatting.texi --init chm.pm
