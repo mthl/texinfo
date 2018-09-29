@@ -795,6 +795,47 @@ kdbinputstyle_invalid:
 #undef ADD_ARG
 }
 
+/* Return a new element whose contents are the same as those of ORIGINAL,
+   but with some elements representing empty spaces removed. */
+ELEMENT *
+trim_spaces_comment_from_content (ELEMENT *original)
+{
+  ELEMENT *trimmed;
+  int i, j, k;
+  enum element_type t;
+
+  trimmed = new_element (ET_NONE);
+  trimmed->parent_type = route_not_in_tree;
+
+  if (original->contents.number == 0)
+    return trimmed;
+
+  i = 1;
+  t = original->contents.list[0]->type;
+  if (t != ET_empty_line_after_command
+      && t != ET_empty_spaces_after_command
+      && t != ET_empty_spaces_before_argument
+      && t != ET_empty_space_at_end_def_bracketed
+      && t != ET_empty_spaces_after_close_brace)
+    i = 0;
+
+  for (j = original->contents.number - 1; j >= 0; j--)
+    {
+      enum element_type t = original->contents.list[j]->type;
+      if (original->contents.list[j]->cmd != CM_c
+          && original->contents.list[j]->cmd != CM_comment
+          && t != ET_spaces_at_end
+          && t != ET_space_at_end_block_command)
+        break;
+    }
+  for (k = i; k <= j; k++)
+    {
+      add_to_contents_as_array (trimmed, original->contents.list[k]);
+    }
+
+  return trimmed;
+}
+
 // 2257
 /* NODE->contents is the Texinfo for the specification of a node.  This
    function sets three fields on the returned object:
@@ -979,7 +1020,6 @@ size_t floats_space = 0;
 int
 parse_float_type (ELEMENT *current)
 {
-  ELEMENT *type_contents;
   EXTRA_FLOAT_TYPE *eft;
   eft = malloc (sizeof (EXTRA_FLOAT_TYPE));
   eft->content = 0;
@@ -987,21 +1027,15 @@ parse_float_type (ELEMENT *current)
 
   if (current->args.number > 0)
     {
-      type_contents = trim_spaces_comment_from_content 
-        (args_child_by_index(current, 0));
-      if (type_contents->contents.number > 0)
+      if (current->args.list[0]->contents.number > 0)
         {
           char *normalized;
-          normalized = convert_to_texinfo (type_contents);
-          eft->content = type_contents;
+          normalized = convert_to_texinfo (current->args.list[0]);
+          eft->content = current->args.list[0];
           eft->normalized = normalized;
 
           add_extra_float_type (current, "type", eft);
           return 1;
-        }
-      else
-        {
-          destroy_element (type_contents);
         }
     }
   eft->normalized = strdup ("");
@@ -1354,17 +1388,9 @@ end_line_misc_line (ELEMENT *current)
       char *text = 0;
       int superfluous_arg = 0;
       int i;
-      ELEMENT *trimmed = 0;
 
       if (current->args.number > 0)
-        {
-          trimmed = trim_spaces_comment_from_content
-            (args_child_by_index(current, 0));
-
-          text = convert_to_text (trimmed, &superfluous_arg);
-        }
-
-      destroy_element (trimmed);
+        text = convert_to_text (current->args.list[0], &superfluous_arg);
 
       if (!text || !strcmp (text, ""))
         {
@@ -1737,30 +1763,25 @@ end_line_misc_line (ELEMENT *current)
     }
   else
     {
-      /* All the other "line" commands" */
-      ELEMENT *misc_content;
-
-      misc_content = trim_spaces_comment_from_content 
-        (last_args_child(current));
-
-      if (current->cmd != CM_top && misc_content->contents.number == 0)
+      /* All the other "line" commands. Check they have an argument. Empty 
+         @top is allowed. */
+      if (current->args.list[0]->contents.number == 0
+          && current->cmd != CM_top)
         {
-          destroy_element (misc_content);
           command_warn (current, "@%s missing argument", 
                         command_name(current->cmd));
           add_extra_integer (current, "missing_argument", 1);
         }
       else
         {
-          // 3266
-          add_extra_contents (current, "misc_content", misc_content);
           if ((current->parent->cmd == CM_ftable
                || current->parent->cmd == CM_vtable)
               && (current->cmd == CM_item || current->cmd == CM_itemx))
             {
               enter_index_entry (current->parent->cmd,
                                  current->cmd,
-                                 current, misc_content);
+                                 current,
+                                 current->args.list[0]);
             }
           else
             {
@@ -1776,7 +1797,7 @@ end_line_misc_line (ELEMENT *current)
 
               // 3274
               enter_index_entry (current->cmd, current->cmd, current,
-                                 misc_content);
+                                 current->args.list[0]);
               current->type = ET_index_entry_command;
             }
         }

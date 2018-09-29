@@ -135,9 +135,7 @@ wipe_index (INDEX *idx)
     {
       ie = &idx->index_entries[i];
       //destroy_element (ie->content);
-      ; /* all data is referenced elsewhere */
-      // FIXME: the content is referenced for commands like @cindex
-      // in the "misc_content" array, but not for commands like @deffn.
+      // TODO - check if above is required
     }
   free (idx->index_entries);
 }

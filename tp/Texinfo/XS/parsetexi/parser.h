@@ -69,7 +69,6 @@ char *read_command_name (char **ptr);
 ELEMENT *merge_text (ELEMENT *current, char *text);
 void start_empty_line_after_command (ELEMENT *current, char **line_inout,
                                      ELEMENT *command);
-ELEMENT *trim_spaces_comment_from_content (ELEMENT *original);
 ELEMENT *begin_paragraph (ELEMENT *current);
 int format_expanded_p (char *format);
 

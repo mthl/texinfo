@@ -597,50 +597,6 @@ isolate_last_space (ELEMENT *current)
 }
 
 
-// 5467, also in Common.pm 1334
-/* Return a new element whose contents are the same as those of ORIGINAL,
-   but with some elements representing empty spaces removed.  Elements like 
-   these are used to represent some of the "content" extra keys. */
-ELEMENT *
-trim_spaces_comment_from_content (ELEMENT *original)
-{
-  ELEMENT *trimmed;
-  int i, j, k;
-  enum element_type t;
-
-  trimmed = new_element (ET_NONE);
-  trimmed->parent_type = route_not_in_tree;
-
-  if (original->contents.number == 0)
-    return trimmed;
-
-  i = 1;
-  t = original->contents.list[0]->type;
-  if (t != ET_empty_line_after_command
-      && t != ET_empty_spaces_after_command
-      && t != ET_empty_spaces_before_argument
-      && t != ET_empty_space_at_end_def_bracketed
-      && t != ET_empty_spaces_after_close_brace)
-    i = 0;
-
-  for (j = original->contents.number - 1; j >= 0; j--)
-    {
-      enum element_type t = original->contents.list[j]->type;
-      if (original->contents.list[j]->cmd != CM_c
-          && original->contents.list[j]->cmd != CM_comment
-          && t != ET_spaces_at_end
-          && t != ET_space_at_end_block_command)
-        break;
-    }
-  for (k = i; k <= j; k++)
-    {
-      add_to_contents_as_array (trimmed, original->contents.list[k]);
-    }
-
-  return trimmed;
-}
-
-
 /* 3491 */
 /* Add an "ET_empty_line_after_command" element containing the whitespace at 
    the beginning of the rest of the line.  This element can be later changed to 
