@@ -257,7 +257,6 @@ sub parse_texi_file ($$)
   my $file_name = shift;
   my $tree_stream;
 
-  $self->{'info'}->{'input_file_name'} = $file_name;
 
   parse_file ($file_name);
   my $TREE = build_texinfo_tree ();
@@ -307,12 +306,9 @@ sub parse_texi_file ($$)
     $self->{'info'}->{'input_encoding_name'} = $input_encoding;
   }
 
-  if (!$self->{'TEST'}) {
-    $self->{'info'}->{'input_file_name'} = $file_name;
-  } else {
-    my ($filename, $directories, $suffix) = fileparse($file_name);
-    $self->{'info'}->{'input_file_name'} = $filename;
-  }
+  my ($basename, $directories, $suffix) = fileparse($file_name);
+  $self->{'info'}->{'input_file_name'} = $basename;
+  $self->{'info'}->{'input_directory'} = $directories;
 
   return $TREE;
 }
