@@ -1,5 +1,13 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/94htmlxref.t: New file.
+	* tp/t/94htmlxref.t (htmlxref): New test.
+
+	* tp/Texinfo/Convert/HTML.pm [TEST]: If HTMLXREF is set, look 
+	for file in various directories.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Converter/Converter.pm (%all_converter_defaults):
 	Remove 'htmlxref_files' and 'FIX_TEXINFO'.  Add
 	'language_config_dirs'.

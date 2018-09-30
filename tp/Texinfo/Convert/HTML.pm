@@ -4759,8 +4759,14 @@ sub _load_htmlxref_files {
   my @texinfo_htmlxref_files;
   my $init_file_from_conf = $self->get_conf('HTMLXREF');
   if ($init_file_from_conf) {
-    @texinfo_htmlxref_files = ( $init_file_from_conf );
-  } else {
+    if (!$self->get_conf('TEST')) {
+      @texinfo_htmlxref_files = ( $init_file_from_conf );
+    } else {
+      @texinfo_htmlxref_files 
+      = Texinfo::Common::locate_init_file ($init_file_from_conf,
+        \@htmlxref_dirs, 1);
+    }
+  } elsif (!$self->get_conf('TEST')) {
     @texinfo_htmlxref_files 
       = Texinfo::Common::locate_init_file ('htmlxref.cnf',
                                            \@htmlxref_dirs, 1);
