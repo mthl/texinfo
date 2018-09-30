@@ -20,6 +20,26 @@ my @test_cases = (
    'SPLIT' => 'node',
    'USE_NODES' => 1, 'NODE_FILES' => 1}
 ],
+['htmlxref_only_mono',
+  undef, {'test_file' => 'test_refs.texi' },
+  {'HTMLXREF' => 'htmlxref-mono.cnf'}
+],
+['htmlxref_only_mono_nodes',
+  undef, {'test_file' => 'test_refs.texi' },
+  {'HTMLXREF' => 'htmlxref-mono.cnf',
+   'SPLIT' => 'node',
+   'USE_NODES' => 1, 'NODE_FILES' => 1}
+],
+['htmlxref_only_split',
+  undef, {'test_file' => 'test_refs.texi' },
+  {'HTMLXREF' => 'htmlxref-split.cnf'}
+],
+['htmlxref_only_split_nodes',
+  undef, {'test_file' => 'test_refs.texi' },
+  {'HTMLXREF' => 'htmlxref-split.cnf',
+   'SPLIT' => 'node',
+   'USE_NODES' => 1, 'NODE_FILES' => 1}
+],
 
 );
 

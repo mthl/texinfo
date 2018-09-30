@@ -1,5 +1,10 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/94htmlxref.t (htmlxref_only_mono, htmlxref_only_mono_nodes)
+	(htmlxref_only_split, htmlxref_only_split_nodes): Add.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/94htmlxref.t (htmlxref_nodes): Add test.
 
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
