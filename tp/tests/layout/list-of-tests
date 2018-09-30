@@ -1,13 +1,5 @@
 no_monolithic_only_toc_out no_monolithic.texi -c 'MONOLITHIC 0' --init only_toc_out.init
 #navigation_noheaders_init navigation.texi --init noheaders.pm
-navigation_section_no_header navigation.texi --split section --no-header
-navigation_node_no_header navigation.texi --split node --no-header
-navigation_chapter_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split chapter
-navigation_section_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split section
-navigation_node_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split node
-navigation_chapter_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split chapter -c HEADERS=0
-navigation_section_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split section -c HEADERS=0
-navigation_node_no_header_vertical navigation.texi -c 'VERTICAL_HEAD_NAVIGATION 1' --split node -c HEADERS=0
 navigation_test_misc_file_collision navigation.texi --split node --init misc_file_collision.init
 
 formatting_docbook formatting.texi --docbook -U texi2html

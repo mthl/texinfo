@@ -47,6 +47,43 @@ my @test_cases = (
   {'SPLIT' => 'chapter',
    'HEADERS' => 0, 'SHOW_MENU' => 0}
 ],
+['navigation_section_no_header',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'section',
+   'HEADERS' => 0, 'SHOW_MENU' => 0}
+],
+['navigation_node_no_header',
+  undef, {'test_file' => 'navigation.texi' },
+  {'SPLIT' => 'node',
+   'HEADERS' => 0, 'SHOW_MENU' => 0}
+],
+['navigation_chapter_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'chapter'}
+],
+['navigation_section_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'section'}
+],
+['navigation_node_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'node'}
+],
+['navigation_chapter_no_header_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'chapter',
+  'HEADERS' => 0}
+],
+['navigation_section_no_header_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'section',
+  'HEADERS' => 0}
+],
+['navigation_node_no_header_vertical',
+  undef, {'test_file' => 'navigation.texi' },
+  {'VERTICAL_HEAD_NAVIGATION' => 1, 'SPLIT' => 'node',
+  'HEADERS' => 0}
+],
 
 );
 

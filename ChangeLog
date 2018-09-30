@@ -1,3 +1,13 @@
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/layout/list-of-tests, tp/t/93layout.t
+	(navigation_section_no_header navigation_node_no_header)
+	(navigation_chapter_vertical navigation_section_vertical)
+	(navigation_node_vertical navigation_chapter_no_header_vertical)
+	(navigation_section_no_header_vertical)
+	(navigation_node_no_header_vertical):
+	Move tests to 93layout.t.
+
 2018-09-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/93/layout.t: (navigation, navigation_no_header)
