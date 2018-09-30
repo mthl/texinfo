@@ -4735,6 +4735,46 @@ sub _parse_htmlxref_files($$)
   return $htmlxref;
 }
 
+sub _load_htmlxref_files {
+  my ($self) = @_;
+
+  my @htmlxref_dirs = ();
+  if ($self->get_conf('TEST')) {
+    my $curdir = File::Spec->curdir();
+    # to have reproducible tests, do not use system or user
+    # directories if TEST is set.
+    @htmlxref_dirs = File::Spec->catdir($curdir, '.texinfo');
+  } elsif ($self->{'language_config_dirs'}
+            and @{$self->{'language_config_dirs'}}) {
+    @htmlxref_dirs = @{$self->{'language_config_dirs'}};
+  }
+  my $input_directory = $self->{'info'}->{'input_directory'}
+    if $self->{'info'}->{'input_directory'};
+  if (defined($input_directory)
+      and $input_directory ne '.' and $input_directory ne '') {
+    unshift @htmlxref_dirs, $input_directory;
+  }
+  unshift @htmlxref_dirs, '.';
+
+  my @texinfo_htmlxref_files;
+  my $init_file_from_conf = $self->get_conf('HTMLXREF');
+  if ($init_file_from_conf) {
+    @texinfo_htmlxref_files = ( $init_file_from_conf );
+  } else {
+    @texinfo_htmlxref_files 
+      = Texinfo::Common::locate_init_file ('htmlxref.cnf',
+                                           \@htmlxref_dirs, 1);
+  }
+  $self->{'htmlxref_files'} = \@texinfo_htmlxref_files;
+
+  $self->{'htmlxref'} = {};
+  if ($self->{'htmlxref_files'}) {
+    $self->{'htmlxref'} = _parse_htmlxref_files($self,
+                                                $self->{'htmlxref_files'});
+  }
+}
+
+
 sub converter_initialize($)
 {
   my $self = shift;
@@ -4749,11 +4789,7 @@ sub converter_initialize($)
 
   %{$self->{'css_map'}} = %css_map;
 
-  $self->{'htmlxref'} = {};
-  if ($self->{'htmlxref_files'}) {
-    $self->{'htmlxref'} = _parse_htmlxref_files($self,
-                                                $self->{'htmlxref_files'});
-  }
+  _load_htmlxref_files($self);
 
   foreach my $type (keys(%default_types_conversion)) {
     if (exists($Texinfo::Config::texinfo_types_conversion{$type})) {

@@ -1,5 +1,20 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Converter/Converter.pm (%all_converter_defaults):
+	Remove 'htmlxref_files' and 'FIX_TEXINFO'.  Add
+	'language_config_dirs'.
+
+	* tp/texi2any.pl: Do not set an 'htmlxref_files' configuration 
+	value.  Save the 'language_config_dirs' array in the converter 
+	options.
+	* tp/Texinfo/Convert/HTML.pm (_load_htmlxref_files): Move code 
+	here from texi2any.pl.
+
+	* tp/texi2any.pl, tp/Texinfo/Common.pm (locate_init_file):
+	Move to Common.pm.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Get class of converter from string value, 
 	rather than calling ref on a subroutine.  This subroutine would
 	actually be called, which is not the intention.

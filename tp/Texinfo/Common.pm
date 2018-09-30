@@ -994,6 +994,36 @@ our @MONTH_NAMES =
      'November', 'December'
     );
 
+# file:        file name to locate. It can be a file path.
+# directories: a reference on a array containing a list of directories to
+#              search the file in. 
+# all_files:   if true collect all the files with that name, otherwise stop
+#              at first match.
+sub locate_init_file($$$)
+{
+  my $file = shift;
+  my $directories = shift;
+  my $all_files = shift;
+
+  if (File::Spec->file_name_is_absolute($file)) {
+    return $file if (-e $file and -r $file);
+  } else {
+    my @files;
+    foreach my $dir (@$directories) {
+      next unless (-d $dir);
+      my $possible_file = File::Spec->catfile($dir, $file);
+      if ($all_files) {
+        push (@files, $possible_file) 
+          if (-e $possible_file and -r $possible_file);
+      } else {
+        return $possible_file if (-e $possible_file and -r $possible_file);
+      }
+    }
+    return @files if ($all_files);
+  }
+  return undef;
+}
+
 sub locate_include_file($$)
 {
   my $self = shift;

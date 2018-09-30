@@ -318,7 +318,6 @@ my $converter_default_options = {
 # determine configuration directories.
 
 my $conf_file_name = 'Config' ;
-my $texinfo_htmlxref = 'htmlxref.cnf';
 
 # directories for texinfo configuration files
 my @language_config_dirs = File::Spec->catdir($curdir, '.texinfo');
@@ -433,42 +432,12 @@ sub get_conf($) {
 }
 # back in main program namespace
 
-# file:        file name to locate. It can be a file path.
-# directories: a reference on a array containing a list of directories to
-#              search the file in. 
-# all_files:   if true collect all the files with that name, otherwise stop
-#              at first match.
-sub locate_init_file($$$)
-{
-  my $file = shift;
-  my $directories = shift;
-  my $all_files = shift;
-
-  if (File::Spec->file_name_is_absolute($file)) {
-    return $file if (-e $file and -r $file);
-  } else {
-    my @files;
-    foreach my $dir (@$directories) {
-      next unless (-d $dir);
-      my $possible_file = File::Spec->catfile($dir, $file);
-      if ($all_files) {
-        push (@files, $possible_file) 
-          if (-e $possible_file and -r $possible_file);
-      } else {
-        return $possible_file if (-e $possible_file and -r $possible_file);
-      }
-    }
-    return @files if ($all_files);
-  }
-  return undef;
-}
-
 sub locate_and_load_init_file($$)
 {
   my $filename = shift;
   my $directories = shift;
 
-  my $file = locate_init_file($filename, $directories, 0);
+  my $file = Texinfo::Common::locate_init_file($filename, $directories, 0);
   if (defined($file)) {
     Texinfo::Config::_load_init_file($file);
   } else {
@@ -477,7 +446,7 @@ sub locate_and_load_init_file($$)
 }
 
 # read initialization files
-foreach my $file (locate_init_file($conf_file_name, 
+foreach my $file (Texinfo::Common::locate_init_file($conf_file_name, 
                   [ reverse(@program_config_dirs) ], 1)) {
   Texinfo::Config::_load_init_file($file);
 }
@@ -1163,28 +1132,6 @@ while(@input_files) {
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
 
-  my @htmlxref_dirs;
-  if (get_conf('TEST')) {
-    # to have reproducible tests, do not use system or user
-    # directories if TEST is set.
-    @htmlxref_dirs = File::Spec->catdir($curdir, '.texinfo');
-  } else {
-    @htmlxref_dirs = @language_config_dirs;
-  }
-  if ($input_directory ne '.' and $input_directory ne '') {
-    unshift @htmlxref_dirs, $input_directory;
-  }
-  unshift @htmlxref_dirs, '.';
-
-  my @texinfo_htmlxref_files;
-  my $init_file_from_conf = get_conf('HTMLXREF');
-  if ($init_file_from_conf) {
-    @texinfo_htmlxref_files = ( $init_file_from_conf );
-  } else {
-    @texinfo_htmlxref_files 
-      = locate_init_file ($texinfo_htmlxref, \@htmlxref_dirs, 1);
-  }
-
   my $parser_options = { %$parser_default_options };
 
   $parser_options->{'include_directories'} = [@include_dirs];
@@ -1329,7 +1276,9 @@ while(@input_files) {
 
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
-  $converter_options->{'htmlxref_files'} = \@texinfo_htmlxref_files;
+  $converter_options->{'language_config_dirs'} = \@language_config_dirs;
+
+
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
   push @opened_files, $converter->converter_opened_files();
