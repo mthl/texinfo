@@ -1,5 +1,11 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/texi2any.pl: Get class of converter from string value, 
+	rather than calling ref on a subroutine.  This subroutine would
+	actually be called, which is not the intention.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/layout/list-of-tests, tp/t/93layout.t
 	(navigation_section_no_header navigation_node_no_header)
 	(navigation_chapter_vertical navigation_section_vertical)

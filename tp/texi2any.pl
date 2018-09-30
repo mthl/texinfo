@@ -1094,9 +1094,8 @@ if (defined($formats_table{$format}->{'module'})) {
         .'->converter(@_)};';
 }
 
-# This gets the class right, even though there is a sub...
-if (defined($formats_table{$format}->{'converter'})) {
-  $converter_class = ref(&{$formats_table{$format}->{'converter'}});
+if (defined($formats_table{$format}->{'module'})) {
+  $converter_class = $formats_table{$format}->{'module'};
   %converter_defaults = $converter_class->converter_defaults();
 }
 
