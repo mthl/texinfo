@@ -1,5 +1,9 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/test_utils.pl: Set 'TEST' to 1 for converters.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/htmlxref
 	* tp/tests/htmlxref-only_mono,
 	* tp/tests/htmlxref-only_split: Remove.

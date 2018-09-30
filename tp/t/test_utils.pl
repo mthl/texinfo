@@ -793,6 +793,7 @@ sub test($$)
       } elsif (!defined($format_converter_options->{'OUTFILE'})) {
         $format_converter_options->{'OUTFILE'} = '';
       }
+      $format_converter_options->{'TEST'} = 1;
       ($converted_errors{$format}, $converted{$format})
            = &{$formats{$format}}($self, $test_name, $format_type, 
                                   $result, $parser, 
