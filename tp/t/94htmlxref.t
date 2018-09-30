@@ -14,6 +14,12 @@ my @test_cases = (
   undef, {'test_file' => 'test_refs.texi' },
   {'HTMLXREF' => 'htmlxref.cnf'}
 ],
+['htmlxref_nodes',
+  undef, {'test_file' => 'test_refs.texi' },
+  {'HTMLXREF' => 'htmlxref.cnf',
+   'SPLIT' => 'node',
+   'USE_NODES' => 1, 'NODE_FILES' => 1}
+],
 
 );
 
