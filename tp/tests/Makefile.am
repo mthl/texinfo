@@ -22,8 +22,7 @@ $(srcdir)/Makefile.onetst: \
 	  -base '$(base_tests)' \
 	  -tex_html '$(tex_html_tests)'
 
-base_tests = formatting htmlxref htmlxref-only_mono htmlxref-only_split \
-	     sectioning indices nested_formats contents layout
+base_tests = formatting sectioning indices nested_formats contents layout
 tex_html_tests = tex_html
 
 DIST_SUBDIRS = many_input_files $(base_tests) $(tex_html_tests)
@@ -56,23 +55,11 @@ all-checks all-check: all
 tex-html-checks tex-html-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes
 
-# this is in order to have the htmlxref.cnf files in the build dir.
 # This is done in this directory to be sure that the files are there
 # when check is done in this directory.
 # Some files are in 2 directories in order to get the same result
 # in both test run locations.
-all-local: htmlxref/htmlxref.cnf htmlxref-only_mono/htmlxref.cnf \
- htmlxref-only_split/htmlxref.cnf \
- equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf
-
-htmlxref/htmlxref.cnf: htmlxref/htmlxref.cnf-ref
-	${INSTALL_DATA} $(srcdir)/htmlxref/htmlxref.cnf-ref $@
-
-htmlxref-only_mono/htmlxref.cnf: htmlxref-only_mono/htmlxref.cnf-ref
-	${INSTALL_DATA} $(srcdir)/htmlxref-only_mono/htmlxref.cnf-ref $@
-
-htmlxref-only_split/htmlxref.cnf: htmlxref-only_split/htmlxref.cnf-ref
-	${INSTALL_DATA} $(srcdir)/htmlxref-only_split/htmlxref.cnf-ref $@
+all-local: equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf
 
 sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
 	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@

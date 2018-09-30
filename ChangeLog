@@ -1,5 +1,16 @@
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/htmlxref
+	* tp/tests/htmlxref-only_mono,
+	* tp/tests/htmlxref-only_split: Remove.
+	* tp/tests/Makefile.am: Remove rules for copying htmlxref.cnf to 
+	the build directory.
+	* configure.ac (AC_CONFIG_FILES): Don't list Makefiles in 
+	removed directories.
+	* autogen.sh: Excise htmlxref and coverage subdirectories.
+
+2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/94htmlxref.t (htmlxref_only_mono, htmlxref_only_mono_nodes)
 	(htmlxref_only_split, htmlxref_only_split_nodes): Add.
 
