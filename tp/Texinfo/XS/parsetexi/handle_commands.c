@@ -527,7 +527,12 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                     {
                       prototypes = lookup_extra(parent, "columnfractions");
                       if (prototypes)
-                        max_columns = prototypes->value->contents.number;
+                        {
+                          prototypes = lookup_extra((ELEMENT *) prototypes->value,
+                                                    "misc_args");
+                          if (prototypes)
+                            max_columns = prototypes->value->contents.number;
+                        }
                     }
 
                   if (max_columns == 0)

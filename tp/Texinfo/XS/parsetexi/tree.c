@@ -121,14 +121,7 @@ destroy_element (ELEMENT *e)
             break;
           }
         case extra_misc_args:
-          //destroy_element_and_children (e->extra[i].value);
-            /* Big problem here.  If we call free_node_contents to look for
-               'route_not_in_tree' elements, the elements that *were* in
-               the tree may have already been freed via reset_parser.
-               Also a potential problem for extra_node_spec above.  The best 
-               solution would seem to get rid of the need for any 
-               'route_not_in_tree' elements. */
-
+          destroy_element_and_children (e->extra[i].value);
           break;
         case extra_def_info:
           free (e->extra[i].value);

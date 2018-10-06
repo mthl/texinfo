@@ -1901,8 +1901,7 @@ end_line_misc_line (ELEMENT *current)
           if ((misc_args = lookup_extra (misc_cmd, "misc_args")))
             {
               char *s;
-              add_extra_misc_args (current, "columnfractions", 
-                                       misc_args->value);
+              add_extra_element (current, "columnfractions", misc_cmd);
               asprintf (&s, "%d", misc_args->value->contents.number);
               add_extra_string (current, "max_columns", s);
             }
