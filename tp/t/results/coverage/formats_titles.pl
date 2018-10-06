@@ -642,7 +642,7 @@ $result_trees{'formats_titles'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 2,
         'spaces_before_argument' => ' '
@@ -741,7 +741,7 @@ $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[1]{'parent'} = $resul
 $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2]{'args'}[0];
 $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2];
 $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2]{'parent'} = $result_trees{'formats_titles'}{'contents'}[8];
-$result_trees{'formats_titles'}{'contents'}[8]{'extra'}{'columnfractions'} = $result_trees{'formats_titles'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
+$result_trees{'formats_titles'}{'contents'}[8]{'extra'}{'columnfractions'} = $result_trees{'formats_titles'}{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'formats_titles'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'formats_titles'}{'contents'}[8]{'contents'}[2];
 $result_trees{'formats_titles'}{'contents'}[8]{'line_nr'} = $result_trees{'formats_titles'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'formats_titles'}{'contents'}[8]{'parent'} = $result_trees{'formats_titles'};

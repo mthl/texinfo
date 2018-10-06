@@ -1313,7 +1313,7 @@ $result_trees{'comments_on_block_command_lines'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 2,
         'spaces_before_argument' => ' '
@@ -1966,7 +1966,7 @@ $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[0]{
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1]{'parent'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22];
-$result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'columnfractions'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
+$result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'columnfractions'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'extra'}{'end_command'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'contents'}[1];
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'line_nr'} = $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'comments_on_block_command_lines'}{'contents'}[22]{'parent'} = $result_trees{'comments_on_block_command_lines'};

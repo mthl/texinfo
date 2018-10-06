@@ -543,7 +543,7 @@ $result_trees{'formats_only_title_comments'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 2,
         'spaces_before_argument' => ' '
@@ -625,7 +625,7 @@ $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[0]{'pare
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[8];
-$result_trees{'formats_only_title_comments'}{'contents'}[8]{'extra'}{'columnfractions'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
+$result_trees{'formats_only_title_comments'}{'contents'}[8]{'extra'}{'columnfractions'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'args'}[0]{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'extra'}{'end_command'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'line_nr'} = $result_trees{'formats_only_title_comments'}{'contents'}[8]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'formats_only_title_comments'}{'contents'}[8]{'parent'} = $result_trees{'formats_only_title_comments'};

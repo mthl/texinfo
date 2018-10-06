@@ -79,7 +79,7 @@ $result_trees{'good'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 3,
         'spaces_before_argument' => ' '
@@ -97,7 +97,7 @@ $result_trees{'good'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'
 $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'good'}{'contents'}[0];
-$result_trees{'good'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
+$result_trees{'good'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'good'}{'contents'}[0]{'contents'}[0];
 $result_trees{'good'}{'contents'}[0]{'line_nr'} = $result_trees{'good'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'good'}{'contents'}[0]{'parent'} = $result_trees{'good'};

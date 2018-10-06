@@ -82,7 +82,7 @@ $result_trees{'something_before_columnfractions'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 2,
         'spaces_before_argument' => ' '
@@ -101,7 +101,7 @@ $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'par
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'}{'contents'}[0];
-$result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'extra'}{'misc_args'};
+$result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'columnfractions'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'contents'}[0];
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'line_nr'} = $result_trees{'something_before_columnfractions'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'something_before_columnfractions'}{'contents'}[0]{'parent'} = $result_trees{'something_before_columnfractions'};

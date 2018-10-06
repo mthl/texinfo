@@ -1223,7 +1223,7 @@ sub _convert($$;$)
                 Texinfo::Convert::Unicode::string_width($prototype_text);
             }
           } elsif ($root->{'extra'}->{'columnfractions'}) {
-            @fractions = @{$root->{'extra'}->{'columnfractions'}};
+            @fractions = @{$root->{'extra'}->{'columnfractions'}->{'extra'}->{'misc_args'}};
             $multiply = 100;
           }
           foreach my $fraction (@fractions) {

@@ -1,10 +1,24 @@
 2018-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_end_line) <@columnfractions>: Set the 
+	'columnfractions' extra value to the element for the 
+	@columnfractions command, rather than to the 'misc_args' array 
+	of that element.  This is to make a 'misc_args' array only 
+	referenced by one element, which makes it possible to free the 
+	memory properly in the C rewrite.
+
+	* tp/Texinfo/Convert/DocBook.pm (_convert),
+	* tp/Texinfo/Convert/HTML.pm (_convert_tab_command),
+	* tp/Texinfo/Convert/Plaintext.pm (_convert),
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert): Update.
+
+2018-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Add more advice.
 
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/test_utils.pl: Set 'TEST' to 1 for converters.
+	* tp/t/test_utils.pl: Set 'TEST' to 1 for converters.
 
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 

@@ -3268,7 +3268,7 @@ sub _end_line($$$)
         if (defined($misc_cmd->{'extra'}->{'misc_args'})) {
           $current->{'extra'}->{'max_columns'} = 
             scalar(@{$misc_cmd->{'extra'}->{'misc_args'}});
-          $current->{'extra'}->{'columnfractions'} = $misc_cmd->{'extra'}->{'misc_args'};
+          $current->{'extra'}->{'columnfractions'} = $misc_cmd;
         }
         push @{$current->{'contents'}}, { 'type' => 'before_item',
            'contents' => [], 'parent', $current };
@@ -6876,8 +6876,8 @@ and the values are the corresponding elements.
 The key I<max_columns> holds the maximal number of columns.  If there
 are prototypes on the line they are in the array associated with 
 I<prototypes>.  If there is a C<@columnfractions> as argument, then the 
-I<columnfractions> key is associated with the array of columnfractions
-arguments, holding all the column fractions.
+I<columnfractions> key is associated with the element for the
+@columnfractions command.
 
 =item C<@enumerate>
 

@@ -1441,7 +1441,8 @@ sub _convert($$;$)
                 }
                 my $attribute = [$self->_texinfo_line($cmd)];
                 $result .= $self->open_element('columnfractions', $attribute);
-                foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+                foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}
+                                             ->{'extra'}->{'misc_args'}}) {
                   $result .= $self->open_element('columnfraction', 
                                                 ['value', $fraction])
                              .$self->close_element('columnfraction');

@@ -738,7 +738,7 @@ $result_trees{'comments_end_lines'} = {
         }
       ],
       'extra' => {
-        'columnfractions' => [],
+        'columnfractions' => {},
         'end_command' => {},
         'max_columns' => 2,
         'spaces_before_argument' => ' '
@@ -1133,7 +1133,7 @@ $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0]{'p
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'};
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'args'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'comments_end_lines'}{'contents'}[12];
-$result_trees{'comments_end_lines'}{'contents'}[12]{'extra'}{'columnfractions'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'extra'}{'misc_args'};
+$result_trees{'comments_end_lines'}{'contents'}[12]{'extra'}{'columnfractions'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'args'}[0]{'contents'}[0];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'extra'}{'end_command'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'contents'}[1];
 $result_trees{'comments_end_lines'}{'contents'}[12]{'line_nr'} = $result_trees{'comments_end_lines'}{'contents'}[12]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'comments_end_lines'}{'contents'}[12]{'parent'} = $result_trees{'comments_end_lines'};

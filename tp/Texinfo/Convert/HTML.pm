@@ -3126,10 +3126,13 @@ sub _convert_tab_command ($$$$)
   my $multitable = $row->{'parent'}->{'parent'};
 
   my $fractions = '';
-  if ($multitable->{'extra'}->{'columnfractions'} and 
-      exists($multitable->{'extra'}->{'columnfractions'}->[$cell_nr-1])) {
-    my $fraction = sprintf('%d', 100*$multitable->{'extra'}->{'columnfractions'}->[$cell_nr-1]);
-    $fractions = " width=\"$fraction%\"";
+  my $cf = $multitable->{'extra'}->{'columnfractions'};
+  if ($cf) {
+    if (exists($cf->{'extra'}->{'misc_args'}->[$cell_nr-1])) {
+      my $fraction = sprintf('%d',
+                             100*$cf->{'extra'}->{'misc_args'}->[$cell_nr-1]);
+      $fractions = " width=\"$fraction%\"";
+    }
   }
 
   $content =~ s/^\s*//;

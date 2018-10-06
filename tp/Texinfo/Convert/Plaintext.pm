@@ -2402,7 +2402,8 @@ sub _convert($$)
       } elsif ($command eq 'multitable') {
         my $columnsize;
         if ($root->{'extra'}->{'columnfractions'}) {
-          foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}}) {
+          foreach my $fraction (@{$root->{'extra'}->{'columnfractions'}
+                                       ->{'extra'}->{'misc_args'}}) {
             push @$columnsize, int($fraction * $self->{'text_element_context'}->[-1]->{'max'} +0.5);
           }
         } elsif ($root->{'extra'}->{'prototypes'}) {
