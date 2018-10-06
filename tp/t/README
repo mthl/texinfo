@@ -41,6 +41,10 @@ you can see the difference between the expected and actual output with
 (Any number at the start of the name of the test, like "03" in this
 example, is removed.)
 
+When making changes that you expect will change the parse tree but not 
+change any of the output, one way to check this would be to run "make 
+check" and then "grep FAIL test-suite.log | grep -v 'tree$'".
+
 Another way to check test results is to regenerate the reference test 
 results (see below), and then run "svn diff t".
 
@@ -64,6 +68,7 @@ Some tests under this directory use input files in the 'input_files'
 subdirectory.  When adding a test that uses an input file, add its path 
 to tp/Makefile.am.
 
+
 For some tests, as well as a .pl file as usual in results/*/, actual
 output files are generated.  For those tests, there are directories with
 reference test results (with names prefixed with res_), and directories
@@ -77,6 +82,11 @@ example, "./maintain/all_tests.sh generate" regenerates all of the
 reference test results (run from the upper-level directory), and
 "./maintain/all_tests.sh diff" makes a diff of all resulting files
 against references.
+
+Another way to overwrite the reference test results with the obtained 
+results from the last test run is to use a command like
+
+  for f in t/results/*/*.pl.new ; do cp ${f%.new} $f ; done
 
 From the top directory, you can also create texinfo files corresponding to
 tests by running something along the lines of:

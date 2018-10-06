@@ -1,3 +1,7 @@
+2018-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/README: Add more advice.
+
 2018-09-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/test_utils.pl: Set 'TEST' to 1 for converters.
