@@ -27,7 +27,6 @@ ELEMENT *pop_element_from_args (ELEMENT *parent);
 ELEMENT *pop_element_from_contents (ELEMENT *parent);
 ELEMENT *contents_child_by_index (ELEMENT *e, int index);
 ELEMENT *args_child_by_index (ELEMENT *e, int index);
-void free_node_contents (ELEMENT *e);
 void destroy_element (ELEMENT *e);
 void destroy_element_and_children (ELEMENT *e);
 

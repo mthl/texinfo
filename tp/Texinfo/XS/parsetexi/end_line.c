@@ -1160,7 +1160,8 @@ end_line_starting_block (ELEMENT *current)
           check_internal_node (float_label);
 
           register_label (current, float_label->node_content);
-          free_node_contents (float_label->manual_content);
+          if (float_label->manual_content)
+            destroy_element (float_label->manual_content);
           free (float_label);
         }
       parse_float_type (current);

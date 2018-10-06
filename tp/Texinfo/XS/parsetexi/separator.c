@@ -305,7 +305,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
               register_label (current->parent, parsed_anchor->node_content);
               if (current_region ())
                 add_extra_element (current, "region", current_region ());
-              free_node_contents (parsed_anchor->manual_content);
+              if (parsed_anchor->manual_content)
+                destroy_element (parsed_anchor->manual_content);
             }
           free (parsed_anchor);
         }
@@ -339,8 +340,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                     add_extra_node_spec (ref, "node_argument", nse);
                   else
                     {
-                      free_node_contents (nse->manual_content);
-                      free_node_contents (nse->node_content);
+                      if (nse->manual_content)
+                        destroy_element (nse->manual_content);
+                      if (nse->node_content)
+                        destroy_element (nse->node_content);
                       free (nse);
                     }
                   if (closed_command != CM_inforef
