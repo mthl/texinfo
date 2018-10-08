@@ -173,17 +173,22 @@ test_files = \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/formatting.texi \
  t/input_files/glossary.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
+ t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
+ t/input_files/no_monolithic.texi \
  t/input_files/non_break_spaces.texi \
  t/input_files/one_line.texi \
  t/input_files/one_line_no_content.texi \
  t/input_files/sample_utf8.texi \
+ t/input_files/test_refs.texi \
  t/input_files/things_before_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
  t/input_files/unknown_nodes_renamed.texi \
+ t/input_files/unknown_nodes_renamed-noderename.cnf \
  t/input_files/htmlxref.cnf \
  t/input_files/htmlxref-mono.cnf \
  t/input_files/htmlxref-split.cnf \
