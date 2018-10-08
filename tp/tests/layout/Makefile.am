@@ -1,6 +1,6 @@
 EXTRA_DIST = no_monolithic.texi navigation.texi formatting_regions.texi \
  list-of-tests res_parser \
- f--ile.gif f--ile.txt f--ile.jpeg f--ile.png
+ f--ile.e--xt  f--ile.jpg  f--ile.png  f--ile.txt
 
 
 DISTCLEANFILES = tests.log tests.out
