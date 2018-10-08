@@ -4680,6 +4680,10 @@ sub _parse_htmlxref_files($$)
   my $htmlxref;
 
   foreach my $file (@$files) {
+    my ($fname) = $file;
+    if ($self->get_conf('TEST')) {
+      $fname =~ s/([^\/]+\/)*//; # strip directories for out-of-source builds
+    }
     print STDERR "html refs config file: $file\n" if ($self->get_conf('DEBUG'));
     unless (open (HTMLXREF, $file)) {
       $self->document_warn(
@@ -4711,11 +4715,11 @@ sub _parse_htmlxref_files($$)
       my $split_or_mono = shift @htmlxref;
       #print STDERR "$split_or_mono $Texi2HTML::Config::htmlxref_entries{$split_or_mono} $line_nr\n";
       if (!defined($split_or_mono)) {
-        $self->file_line_warn(__("missing type"), $file, $line_nr);
+        $self->file_line_warn(__("missing type"), $fname, $line_nr);
         next;
       } elsif (!defined($htmlxref_entries{$split_or_mono})) {
         $self->file_line_warn(sprintf(__("unrecognized type: %s"), 
-                               $split_or_mono), $file, $line_nr);
+                               $split_or_mono), $fname, $line_nr);
         next;
       }
       my $href = shift @htmlxref;

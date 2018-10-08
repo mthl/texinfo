@@ -3631,13 +3631,13 @@ $result_errors{'htmlxref_nodes'} = [];
 
 $result_converted_errors{'file_html'}->{'htmlxref_nodes'} = [
   {
-    'error_line' => 't/input_files/htmlxref.cnf:15: warning: unrecognized type: foo
+    'error_line' => 'htmlxref.cnf:15: warning: unrecognized type: foo
 ',
     'text' => 'unrecognized type: foo',
     'type' => 'warning'
   },
   {
-    'error_line' => 't/input_files/htmlxref.cnf:16: warning: missing type
+    'error_line' => 'htmlxref.cnf:16: warning: missing type
 ',
     'text' => 'missing type',
     'type' => 'warning'
