@@ -3,7 +3,7 @@
 # Process this file with automake to produce Makefile.in in all directories.
 #
 # Copyright 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-# 2012, 2013, 2014, 2015, 2016 Free Software Foundation, Inc.
+# 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -28,11 +28,6 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
 	rm -rf `find $(distdir) -type d -name .svn`
-
-# update texi2html translations.
-dist-local:
-	cp -fpR $(srcdir)/po_document/*.po $(srcdir)/po_document/LINGUAS texi2html/po_document/
-	cp -fpR $(srcdir)/po/*.po $(srcdir)/po/LINGUAS texi2html/po_messages/
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.

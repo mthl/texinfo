@@ -38,9 +38,6 @@ AC_CONFIG_SRCDIR([info/info.c])
 TEXINFO_DTD_VERSION=6.4dev
 AC_SUBST([TEXINFO_DTD_VERSION])
 
-# Conditional texi2html support.
-AM_CONDITIONAL([TEXI2HTML],[false])
-
 # Package date.
 PACKAGE_DATE=`${SHELL} "$srcdir"/build-aux/mdate-sh "$srcdir"/configure.ac`
 AC_SUBST([PACKAGE_DATE])
