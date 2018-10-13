@@ -177,6 +177,7 @@ test_files = \
  t/input_files/cpp_lines.texi \
  t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
+ t/input_files/double_index_entry.texi \
  t/input_files/east_asian_in_w.texi \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \

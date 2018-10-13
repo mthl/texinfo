@@ -1,5 +1,11 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/95moreindices.t: New test file.
+	* tp/t/95moreindices.t (double_index_entry): Add.
+	* tp/tests/indices/list-of-tests (double_index_entry): Remove.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests
 	(simplest_test_prefix, simplest_test_prefix_info)
 	(simplest_test_date_in_header, float_copying):
