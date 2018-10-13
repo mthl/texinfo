@@ -444,7 +444,7 @@ $result_errors{'cond_info_no-ifhtml_no-ifinfo_no-iftex'} = [];
 
 
 
-$result_converted{'info'}->{'cond_info_no-ifhtml_no-ifinfo_no-iftex'} = 'This is cond.info, produced from cond.texi.
+$result_converted{'info'}->{'cond_info_no-ifhtml_no-ifinfo_no-iftex'} = 'This is cond.info, produced by texi2any version from cond.texi.
 
 
 File: cond.info,  Node: Top,  Up: (dir)
@@ -458,7 +458,7 @@ This is ifnothtml text.
 
 
 Tag Table:
-Node: Top45
+Node: Top65
 
 End Tag Table
 ';

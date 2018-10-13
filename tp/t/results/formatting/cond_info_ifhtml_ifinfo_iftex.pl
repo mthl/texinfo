@@ -478,7 +478,7 @@ $result_errors{'cond_info_ifhtml_ifinfo_iftex'} = [];
 
 
 
-$result_converted{'info'}->{'cond_info_ifhtml_ifinfo_iftex'} = 'This is cond.info, produced from cond.texi.
+$result_converted{'info'}->{'cond_info_ifhtml_ifinfo_iftex'} = 'This is cond.info, produced by texi2any version from cond.texi.
 
 
 File: cond.info,  Node: Top,  Up: (dir)
@@ -496,7 +496,7 @@ This is tex text.
 
 
 Tag Table:
-Node: Top45
+Node: Top65
 
 End Tag Table
 ';

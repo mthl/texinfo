@@ -444,7 +444,7 @@ $result_errors{'cond_info'} = [];
 
 
 
-$result_converted{'info'}->{'cond_info'} = 'This is cond.info, produced from cond.texi.
+$result_converted{'info'}->{'cond_info'} = 'This is cond.info, produced by texi2any version from cond.texi.
 
 
 File: cond.info,  Node: Top,  Up: (dir)
@@ -458,7 +458,7 @@ This is ifnothtml text.
 
 
 Tag Table:
-Node: Top45
+Node: Top65
 
 End Tag Table
 ';

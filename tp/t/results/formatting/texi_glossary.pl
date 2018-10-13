@@ -1586,6 +1586,7 @@ $result_converted{'html'}->{'texi_glossary'} = '<!DOCTYPE html PUBLIC "-//W3C//D
 <meta name="keywords" content="Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
@@ -1669,7 +1670,7 @@ ul.no-bullet {list-style: none}
 
 <hr>
 <p><font size="-1">
-  This document was generated on <em>a sunny day</em>.
+  This document was generated on <em>a sunny day</em> using <a href="http://www.gnu.org/software/texinfo/"><em>texi2any</em></a>.
 </font></p>
 
 
