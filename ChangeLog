@@ -1,5 +1,27 @@
 2018-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test_utils.pl, tp/t/nodenormalisation.t:
+	Put tp/t/include_reference in srcdir in include path.
+
+	* tp/t/80include.t (test_paths, test_include_directories): 
+	Remove tests.
+	* tp/t/converters_tests.t (verbatiminclude_paths):
+	test_include_directories): Remove tests.
+	* tp/t/info_tests.t (image_file_search): Remove test.
+	test_include_directories): Remove tests.
+
+	* maintain/regenerate_file_lists.pl: Do not generate rules to 
+	copy files to tp/t/include_dir in build directory.
+
+	This avoids the hassle of copying all the include files to the 
+	build directory for out-of-source builds and avoids the 
+	confusion of which of "t/include", "t/include_dir" or 
+	"t/include_reference" a test file is to be added to.  This 
+	feature of the test suite is not used enough IMHO to be worth 
+	the complexity.
+
+2018-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: Remove AM_CONDITIONAL for TEXI2HTML.
 	* Makefile.am (dist-local): Remove reult for updating 
 	translations for texi2html.

@@ -93,8 +93,8 @@ foreach my $include_file (sort(keys(%include_files))) {
   my $bfile = basename($include_file);
   $test_copied_include_files .= " t/include_dir/$bfile";
 
-  print INCLUDE "t/include_dir/$bfile: \$(srcdir)/$include_file t/include_dir\n"
-     ."\t".'$(INSTALL_DATA) $(srcdir)/'.$include_file.' $@'."\n\n";
+  #print INCLUDE "t/include_dir/$bfile: \$(srcdir)/$include_file t/include_dir\n"
+  #."\t".'$(INSTALL_DATA) $(srcdir)/'.$include_file.' $@'."\n\n";
 }
 
 print INCLUDE $test_copied_include_files ."\n\n";

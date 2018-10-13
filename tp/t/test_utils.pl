@@ -104,7 +104,8 @@ foreach my $dir ('t', 't/results', $output_files_dir) {
 }
 
 my $include_reference_dir = 't/include_reference';
-my $include_dir = 't/include_dir';
+my $include_dir = $srcdir.'t/include_reference';
+
 if (! -d $include_dir) {
   mkdir $include_dir or die "mkdir $include_dir: $!\n";
   if (opendir DIR, $include_reference_dir) {
@@ -700,11 +701,12 @@ sub test($$)
 
   my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                         'include_directories' => [
-                                          't/include_dir/',
+                                          $include_dir,
                                           't/include/',
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
+
   # take the initial values to record only if there is something new
   my $initial_index_names = $parser->indices_information();
   # do a copy to compare the values and not the references
