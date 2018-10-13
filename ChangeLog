@@ -1,5 +1,10 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/Makefile.am (Makefile.onetst): Fix rule to work
+	in out-of-source builds.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests (defcondx_Dbar, defcondx_Ubar):
 	Remove.
 	* tp/t/92formatting.t (defcondx_Dbar, defcondx_Ubar): Add.
