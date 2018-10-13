@@ -64,6 +64,16 @@ my @test_cases = (
   },
   {'expanded_formats' => ['info', 'html', 'tex'],}
 ],
+['defcondx_Dbar',
+  undef, {'test_file' => 'defxcond.texi',
+   'test_formats' => ['file_html'],
+  'values' => {'bar' => 1}}
+],
+['defcondx_Ubar',
+  undef, {'test_file' => 'defxcond.texi',
+   'test_formats' => ['file_html'],
+  'values' => {}}
+],
 ['unknown_nodes_renamed',
   undef, {'test_file' => 'unknown_nodes_renamed.texi', 
    'test_formats' => ['file_html']

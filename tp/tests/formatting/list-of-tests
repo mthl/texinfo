@@ -1,7 +1,3 @@
-# conditionals and macros
-defcondx_Dbar defxcond.texi -D bar
-defcondx_Ubar defxcond.texi -U bar
-
 # api
 texi_ignore_and_comments ignore_and_comments.texi --init ignore_and_comments_output.init -c TEXINFO_OUTPUT_FORMAT=plaintexinfo
 ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_output.init

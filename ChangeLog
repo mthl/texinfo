@@ -1,4 +1,10 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/formatting/list-of-tests (defcondx_Dbar, defcondx_Ubar):
+	Remove.
+	* tp/t/92formatting.t (defcondx_Dbar, defcondx_Ubar): Add.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* tp/Texinfo/Parser.pm (%default_customization_values): Remove
 	'GLOBAL_COMMANDS' array as it is not used anywhere.

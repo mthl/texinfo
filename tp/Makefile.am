@@ -175,6 +175,7 @@ test_files = \
  t/input_files/contents_in_document.texi \
  t/input_files/contents_no_section.texi \
  t/input_files/cpp_lines.texi \
+ t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
  t/input_files/east_asian_in_w.texi \
  t/input_files/empty.texi \
