@@ -359,7 +359,7 @@ sub new_test($;$$$)
               'DEBUG' => $debug, 'test_formats' => $test_formats};
   
   if ($generate) {
-    mkdir "t/results/$name" if (! -d "t/results/$name");
+    mkdir $srcdir."t/results/$name" if (! -d $srcdir."t/results/$name");
   }
   bless $test;
   return $test;
@@ -755,24 +755,24 @@ sub test($$)
         my $base = "t/results/$self->{'name'}/$test_name/";
         my $test_out_dir;
         if ($self->{'generate'}) {
-          $test_out_dir = 'res_'.$format_type;
-          if (-d $base."$test_out_dir/") {
-             unlink_dir_files("t/results/$self->{'name'}/$test_name/$test_out_dir/");
+          $base = $srcdir.$base;
+          $test_out_dir = $base.'res_'.$format_type;
+          if (-d $test_out_dir) {
+            unlink_dir_files($test_out_dir);
           }
         } else {
-          $test_out_dir = 'out_'.$format_type;
+          $test_out_dir = $base.'out_'.$format_type;
         }
         if (!defined($format_converter_options->{'SUBDIR'})) {
           mkdir ($base) 
             if (! -d $base);
-          if (! -d $base."$test_out_dir/") {
-            mkdir ($base."$test_out_dir/"); 
+          if (! -d $test_out_dir) {
+            mkdir ($test_out_dir); 
           } else {
             # remove any files from previous runs
-            unlink glob ($base."$test_out_dir/*"); 
+            unlink glob ("$test_out_dir/*"); 
           }
-          $format_converter_options->{'SUBDIR'} 
-             = $base."$test_out_dir/";
+          $format_converter_options->{'SUBDIR'} = $test_out_dir;
         }
       } elsif (!defined($format_converter_options->{'OUTFILE'})) {
         $format_converter_options->{'OUTFILE'} = '';
@@ -872,10 +872,16 @@ sub test($$)
     local $Data::Dumper::Purity = 1;
     local $Data::Dumper::Indent = 1;
 
-    my $out_file = $new_file;
-    $out_file = $file if ($self->{'generate'});
+    my $out_file;
+    if (!$self->{'generate'}) {
+      $out_file = $new_file;
+      mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
+    } else {
+      $out_file = $srcdir.$file;
+      mkdir $srcdir."t/results/$self->{'name'}"
+        if (! -d $srcdir."t/results/$self->{'name'}");
+    }
 
-    mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".

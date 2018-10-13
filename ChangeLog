@@ -1,5 +1,10 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/test_utils.pl: If -g flag is given to regenerate 
+	reference test results, do so in srcdir rather than builddir.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/formatting/list-of-tests (direntry_dircategory_info_split):
 	Remove.
 	* tp/t/92formatting.t (direntry_dircategory_info_split): Add.
