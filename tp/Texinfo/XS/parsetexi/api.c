@@ -975,6 +975,12 @@ conf_set_CPP_LINE_DIRECTIVES (int i)
 }
 
 void
+conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
+{
+  conf.ignore_space_after_braced_command_name = i;
+}
+
+void
 reset_conf (void)
 {
   memset (&conf, 0, sizeof (conf));

@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -180,6 +180,7 @@ typedef struct GLOBAL_INFO {
 typedef struct CONF {
     int show_menu;
     int cpp_line_directives;
+    int ignore_space_after_braced_command_name;
 } CONF;
 
 typedef struct {

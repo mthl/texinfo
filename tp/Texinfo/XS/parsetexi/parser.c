@@ -1168,9 +1168,7 @@ superfluous_arg:
         }
       else // 4041
         {
-          /* TODO: Check 'IGNORE_SPACES_AFTER_BRACED_COMMAND_NAME' config
-             variable. */
-          if (1)
+          if (conf.ignore_space_after_braced_command_name)
             {
               char *p;
               p = line + strspn (line, whitespace_chars);
