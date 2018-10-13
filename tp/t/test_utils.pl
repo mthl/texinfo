@@ -772,7 +772,7 @@ sub test($$)
             # remove any files from previous runs
             unlink glob ("$test_out_dir/*"); 
           }
-          $format_converter_options->{'SUBDIR'} = $test_out_dir;
+          $format_converter_options->{'SUBDIR'} = "$test_out_dir/";
         }
       } elsif (!defined($format_converter_options->{'OUTFILE'})) {
         $format_converter_options->{'OUTFILE'} = '';
