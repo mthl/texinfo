@@ -113,6 +113,34 @@ my @test_cases = (
   },
   {'SPLIT_SIZE' => 10}
 ],
+['simplest_test_prefix',
+  undef,
+  {'test_file' => 'simplest.texi',
+   'test_formats' => ['file_html']
+  },
+  {'PREFIX' => 'truc'}
+],
+['simplest_test_prefix_info',
+  undef,
+  {'test_file' => 'simplest.texi',
+   'test_formats' => ['file_info']
+  },
+  {'PREFIX' => 'truc'}
+],
+['simplest_test_date_in_header',
+  undef,
+  {'test_file' => 'simplest.texi',
+   'test_formats' => ['file_html']
+  },
+  {'DATE_IN_HEADER' => 1}
+],
+['float_copying',
+  undef,
+  {'test_file' => 'float_copying.texi',
+   'test_formats' => ['file_html']
+  },
+  {'SPLIT' => 'chapter'}
+],
 
 );
 

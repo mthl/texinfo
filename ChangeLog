@@ -1,6 +1,14 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/formatting/list-of-tests
+	(simplest_test_prefix, simplest_test_prefix_info)
+	(simplest_test_date_in_header, float_copying):
+	Remove.
+	* tp/t/92formatting.t: Add the same tests here.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/formatting/list-of-tests
 	(split_nocopying, split_nocopying_split): Remove.
 	* tp/t/92formatting.t
 	(split_nocopying, split_nocopying_split): Add.

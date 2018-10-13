@@ -4,17 +4,11 @@ ignore_and_comments_output ignore_and_comments.texi --init ignore_and_comments_o
 test_redefine_need test_need.texi --init redefine_need.init
 
 # diverse
-split_nocopying split_nocopying.texi --info
-split_nocopying_split split_nocopying.texi --info --split-size 10
 # FIXME /dev/null not portable
 split_nocopying_split_dev_null split_nocopying.texi --info --split-size 1 -o /dev/null
-simplest_test_prefix simplest.texi --set-customization-variable 'PREFIX truc'
-simplest_test_prefix_info simplest.texi --info --set-customization-variable 'PREFIX truc'
 simplest_test_css simplest.texi --css-include file.css
-simplest_test_date_in_header simplest.texi --set-customization-variable 'DATE_IN_HEADER 1'
 documentlanguage_set_option documentlanguage_set.texi --document-language fr
 documentlanguage_set_unknown documentlanguage_set.texi --document-language unknown
 documentlanguage_set_option_info documentlanguage_set.texi --info --document-language fr
-float_copying float_copying.texi --split chapter
 simple_with_menu_docbook_info simple_with_menu.texi --docbook --info
 split_for_format_not_split simplest.texi --xml --split chapter
