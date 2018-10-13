@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -88,8 +88,6 @@ expand_cmd_args_to_texi (ELEMENT *e, TEXT *result)
 
   // TODO node
 
-  // TODO "fix" arg
-
   if (e->args.number > 0)
     {
       int braces, arg_nr, i;
@@ -141,8 +139,6 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
     ADD(e->text.text);
   else
     {
-      // TODO "fix" argument
-
       if (e->cmd
           || e->type == ET_def_line
           || e->type == ET_menu_entry
@@ -169,7 +165,7 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
       if (e->type == ET_bracketed)
         ADD("}");
 
-      // TODO: "fix" arg or raw block command
+      // TODO: raw block command
       if (command_flags (e) & CF_block)
         {
           ADD("@end ");

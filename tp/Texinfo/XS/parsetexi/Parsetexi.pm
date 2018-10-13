@@ -75,7 +75,6 @@ our %default_customization_values = (
 			      # case
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  'GLOBAL_COMMANDS' => [],    # list of commands registered 
   # This is not used directly, but passed to Convert::Text through 
   # Texinfo::Common::_convert_text_options
   'ENABLE_ENCODING' => 1,     # output accented and special characters
@@ -250,30 +249,12 @@ sub get_parser_info {
 
 use File::Basename; # for fileparse
 
-# Replacement for Texinfo::Parser::parse_texi_file (line 835)
-sub parse_texi_file ($$)
-{
-  my $self = shift;
-  my $file_name = shift;
-  my $tree_stream;
+# Handle 'IGNORE_BEFORE_SETFILENAME' conf value.
+# Put everything before @setfilename in a special type.  This allows
+# ignoring everything before @setfilename.
+sub _maybe_ignore_before_setfilename {
+  my ($self, $text_root) = @_;
 
-
-  parse_file ($file_name);
-  my $TREE = build_texinfo_tree ();
-  get_parser_info ($self);
-  _complete_node_menus ($self, $TREE);
-
-  # line 899
-  my $text_root;
-  if ($TREE->{'type'} eq 'text_root') {
-    $text_root = $TREE;
-  } elsif ($TREE->{'contents'} and $TREE->{'contents'}->[0]
-      and $TREE->{'contents'}->[0]->{'type'} eq 'text_root') {
-    $text_root = $TREE->{'contents'}->[0];
-  }
-
-  # Put everything before @setfilename in a special type.  This allows
-  # ignoring everything before @setfilename.
   if ($self->{'IGNORE_BEFORE_SETFILENAME'} and $text_root
       and $self->{'extra'}->{'setfilename'}
       and $self->{'extra'}->{'setfilename'}->{'parent'} eq $text_root) {
@@ -296,6 +277,30 @@ sub parse_texi_file ($$)
         if (@{$before_setfilename->{'contents'}});
     }
   }
+}
+
+# Replacement for Texinfo::Parser::parse_texi_file (line 835)
+sub parse_texi_file ($$)
+{
+  my $self = shift;
+  my $file_name = shift;
+  my $tree_stream;
+
+  parse_file ($file_name);
+  my $TREE = build_texinfo_tree ();
+  get_parser_info ($self);
+  _complete_node_menus ($self, $TREE);
+
+  # line 899
+  my $text_root;
+  if ($TREE->{'type'} eq 'text_root') {
+    $text_root = $TREE;
+  } elsif ($TREE->{'contents'} and $TREE->{'contents'}->[0]
+      and $TREE->{'contents'}->[0]->{'type'} eq 'text_root') {
+    $text_root = $TREE->{'contents'}->[0];
+  }
+
+  _maybe_ignore_before_setfilename($self, $text_root);
 
   ############################################################
 
