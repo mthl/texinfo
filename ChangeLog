@@ -1,5 +1,11 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Makefile.am: List files under tp/t/include_reference.
+	* tp/maintain/regenerate_file_lists.pl: Do not automatically 
+	generate a list of these files.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/maintain/regenerate_file_lists.pl:
 	Do not generate the variable 'test_copied_include_files'.  
 	Remove copyright notice from generated file as the year is 

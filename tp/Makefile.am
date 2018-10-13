@@ -12,7 +12,7 @@
 # WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 # implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# Generated lists of tests and of test result files, and some rules.
+# Generated lists of tests and of test result files
 include $(srcdir)/Makefile.tres
 
 # Generated list of document string locale files and associated rules.
@@ -143,6 +143,13 @@ test_files = \
  t/include/verbatim_encoded.texi \
  t/include/verbatim_encoded_latin1.texi \
  t/include/words.txt \
+ t/include_reference/f--ile.png \
+ t/include_reference/f--ile.txt \
+ t/include_reference/figure.txt \
+ t/include_reference/inc_file.texi \
+ t/include_reference/incl-incl.txi \
+ t/include_reference/macro_included.texi \
+ t/include_reference/section_file.texi \
  t/init/only_toc_out.init \
  t/init/cvs.init \
  t/init/redefine_need.init \
