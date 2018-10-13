@@ -128,7 +128,6 @@ our %default_customization_values = (
                               # case
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  'GLOBAL_COMMANDS' => [],    # list of commands registered 
   # This is not used directly, but passed to Convert::Text through 
   # Texinfo::Common::_convert_text_options
   'ENABLE_ENCODING' => 1,     # output accented and special characters
@@ -685,10 +684,6 @@ sub _setup_parser {
   }
 
   %{$parser->{'global_commands'}} = %global_multiple_commands;
-
-  foreach my $global_command (@{$parser->{'GLOBAL_COMMANDS'}}) {
-    $parser->{'global_commands'}->{$global_command} = 1;
-  }
 
   $parser->Texinfo::Report::new;
 
@@ -5851,12 +5846,6 @@ C<@synindex>).  These options are described below in L</Texinfo Parser options>.
 
 An array reference of the output formats for which C<@ifI<FORMAT>> 
 conditional blocks should be expanded.  Default is empty.
-
-=item GLOBAL_COMMANDS
-
-The associated value is a reference on an array.  All the commands in the
-array are collected during parsing.  They are afterwards available 
-through L<global_informations|/$info = global_informations($parser)>.
 
 =item include_directories
 

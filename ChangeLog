@@ -1,4 +1,10 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* tp/Texinfo/Parser.pm (%default_customization_values): Remove
+	'GLOBAL_COMMANDS' array as it is not used anywhere.
+	(_setup_parser): Do not access 'GLOBAL_COMMANDS' conf value.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Makefile.am: List files under tp/t/include_reference.
 	* tp/maintain/regenerate_file_lists.pl: Do not automatically 
