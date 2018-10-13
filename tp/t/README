@@ -23,6 +23,14 @@ test file can be run on its own with
 Another way, which works when doing an out-of-source build, is
 
   make check TESTS=t/03coverage_braces.t
+ 
+Another way to run a test out-source is:
+
+  s=../../tp
+  srcdir=$s ../pre-inst-env perl -w $s/t/92formatting.t empty
+ 
+where s is the path to the srcdir.  This allows you to run a single 
+sub-test.
 
 Most test files use a testing infrastructure from t/test_utils.pl.
 The run_all function from that file runs the tests that have been 
