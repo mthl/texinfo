@@ -100,6 +100,19 @@ my @test_cases = (
   },
   {'SPLIT_SIZE' => 1}
 ],
+['split_nocopying',
+  undef,
+  {'test_file' => 'split_nocopying.texi',
+   'test_formats' => ['file_info']
+  },
+],
+['split_nocopying_split',
+  undef,
+  {'test_file' => 'split_nocopying.texi',
+   'test_formats' => ['file_info']
+  },
+  {'SPLIT_SIZE' => 10}
+],
 
 );
 

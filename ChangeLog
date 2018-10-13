@@ -1,5 +1,12 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/formatting/list-of-tests
+	(split_nocopying, split_nocopying_split): Remove.
+	* tp/t/92formatting.t
+	(split_nocopying, split_nocopying_split): Add.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/README: Add advice about out-of-source builds.
 
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>

@@ -192,6 +192,7 @@ test_files = \
  t/input_files/one_line.texi \
  t/input_files/one_line_no_content.texi \
  t/input_files/sample_utf8.texi \
+ t/input_files/split_nocopying.texi \
  t/input_files/test_refs.texi \
  t/input_files/things_before_setfilename_no_element.texi \
  t/input_files/things_before_setfilename.texi \
