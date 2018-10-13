@@ -1,5 +1,23 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/indices/list-of-tests
+	(split_chapter_index, index_split, index_split_nodes)
+	(index_no_node ,nodes_before_top, nodes_before_top_nodes)
+	(nodes_before_top_no_nodes, nodes_before_top_and_sections_monolithic):
+	Remove tests.
+
+	* tp/t/95moreindices.t: Add the same tests.
+
+	I checked test results were unchanged by running commands like:
+
+	   T=split_chapter_index
+	   (cd t/results/moreindices/$T/res_html ; for f in * ; do \
+	   echo diff $f ; \
+	   diff $f ../../../../../tests/indices/res_parser/$T/$f ; \
+	   done )
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/95moreindices.t: New test file.
 	* tp/t/95moreindices.t (double_index_entry): Add.
 	* tp/tests/indices/list-of-tests (double_index_entry): Remove.

@@ -184,15 +184,19 @@ test_files = \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
  t/input_files/formatting.texi \
  t/input_files/glossary.texi \
+ t/input_files/index_no_node.texi \
+ t/input_files/index_split.texi \
  t/input_files/japanese_utf8.texi \
  t/input_files/japanese_shift_jis.texi \
  t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
+ t/input_files/nodes_before_top.texi \
  t/input_files/no_monolithic.texi \
  t/input_files/non_break_spaces.texi \
  t/input_files/one_line.texi \
  t/input_files/one_line_no_content.texi \
  t/input_files/sample_utf8.texi \
+ t/input_files/split_chapter_index.texi \
  t/input_files/split_nocopying.texi \
  t/input_files/test_refs.texi \
  t/input_files/things_before_setfilename_no_element.texi \
