@@ -1,4 +1,11 @@
-2018-10-09  Gavin Smith  <gavinsmith0123@gmail.com>
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl: Remove code copying 't/include_reference'
+	to build directory.  Do not include any directories in the 
+	current directory in the include path.
+	* tp/Makefile.am (all-local): Do not depend upon these copied files.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/test_utils.pl, tp/t/nodenormalisation.t:
 	Put tp/t/include_reference in srcdir in include path.

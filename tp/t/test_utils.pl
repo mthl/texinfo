@@ -1,7 +1,7 @@
 # $Id$
 # t/* test support for the Perl modules.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015
+# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
 # Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
@@ -100,23 +100,6 @@ foreach my $dir ('t', 't/results', $output_files_dir) {
   mkdir $dir or $error = $!;
   if (! -d $dir) {
     die "mkdir $dir: $error\n";
-  }
-}
-
-my $include_reference_dir = 't/include_reference';
-my $include_dir = $srcdir.'t/include_reference';
-
-if (! -d $include_dir) {
-  mkdir $include_dir or die "mkdir $include_dir: $!\n";
-  if (opendir DIR, $include_reference_dir) {
-    my @files = grep {-f "$include_reference_dir/$_"} readdir DIR;
-    closedir DIR;
-    foreach my $file (@files) {
-      copy ("$include_reference_dir/$file", "$include_dir/$file")
-        or die "Copy $include_reference_dir/$file $include_dir/$file failed: $!\n";
-    }
-  } else {
-    die "Opendir $include_reference_dir failed: $!\n";
   }
 }
 
@@ -701,8 +684,7 @@ sub test($$)
 
   my $parser = Texinfo::Parser::parser({'TEST' => 1,
                                         'include_directories' => [
-                                          $include_dir,
-                                          't/include/',
+                                          $srcdir.'t/include_reference',
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
