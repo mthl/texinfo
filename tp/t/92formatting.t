@@ -93,6 +93,13 @@ my @test_cases = (
   undef, {'test_file' => 'empty.texi',
   },
 ],
+['direntry_dircategory_info_split',
+  undef,
+  {'test_file' => 'direntry_dircategory.texi',
+   'test_formats' => ['file_info']
+  },
+  {'SPLIT_SIZE' => 1}
+],
 
 );
 
@@ -102,6 +109,7 @@ foreach my $test (@test_cases) {
   }
   $test->[3]->{'TEXI2HTML'} = 1;
   $test->[3]->{'TEST'} = 1;
+  $test->[3]->{'PROGRAM'} = 'texi2any';
 }
 
 our ($arg_test_case, $arg_generate, $arg_debug);
