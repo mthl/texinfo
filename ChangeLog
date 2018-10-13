@@ -1,5 +1,12 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/maintain/regenerate_file_lists.pl:
+	Do not generate the variable 'test_copied_include_files'.  
+	Remove copyright notice from generated file as the year is 
+	out-of-date.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/test_utils.pl: Remove code copying 't/include_reference'
 	to build directory.  Do not include any directories in the 
 	current directory in the include path.
@@ -17,7 +24,7 @@
 	* tp/t/info_tests.t (image_file_search): Remove test.
 	test_include_directories): Remove tests.
 
-	* maintain/regenerate_file_lists.pl: Do not generate rules to 
+	* tp/maintain/regenerate_file_lists.pl: Do not generate rules to 
 	copy files to tp/t/include_dir in build directory.
 
 	This avoids the hassle of copying all the include files to the 
