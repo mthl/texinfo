@@ -1,5 +1,11 @@
 2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Common.pm (labels_information): Move to Common.pm 
+	so that it can be called from tp/Texinfo/XS/parsetexi/Parsetexi.pm.
+
+2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm,
 	* tp/Texinfo/Encoding.pm,
 	* tp/Texinfo/Parser.pm,

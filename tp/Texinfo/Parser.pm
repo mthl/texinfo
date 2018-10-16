@@ -952,70 +952,9 @@ sub global_informations($)
 }
 
 # Setup labels and nodes info and return labels
-sub labels_information($)
+sub labels_information
 {
-  my $self = shift;
-  if (defined $self->{'targets'}) {
-    my %labels = ();
-    for my $target (@{$self->{'targets'}}) {
-      if ($target->{'cmdname'} eq 'node') {
-        if ($target->{'extra'}->{'nodes_manuals'}) {
-          for my $node_manual (@{$target->{'extra'}{'nodes_manuals'}}) {
-            if (defined $node_manual
-                  and defined $node_manual->{'node_content'}) {
-              my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $node_manual->{'node_content'}});
-              $node_manual->{'normalized'} = $normalized;
-            }
-          }
-        }
-      }
-      if (defined $target->{'extra'}->{'node_content'}) {
-        my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $target->{'extra'}->{'node_content'}});
-
-        if ($normalized !~ /[^-]/) {
-          $self->line_error (sprintf(__("empty node name after expansion `%s'"),
-                Texinfo::Convert::Texinfo::convert({'contents' 
-                               => $target->{'extra'}->{'node_content'}})), 
-                $target->{'line_nr'});
-          delete $target->{'extra'}->{'node_content'};
-        } else {
-          if (defined $labels{$normalized}) {
-            $self->line_error(
-              sprintf(__("\@%s `%s' previously defined"), 
-                         $target->{'cmdname'}, 
-                   Texinfo::Convert::Texinfo::convert({'contents' => 
-                       $target->{'extra'}->{'node_content'}})), 
-                           $target->{'line_nr'});
-            $self->line_error(
-              sprintf(__("here is the previous definition as \@%s"),
-                               $labels{$normalized}->{'cmdname'}),
-                       $labels{$normalized}->{'line_nr'});
-            delete $target->{'extra'}->{'node_content'};
-          } else {
-            $labels{$normalized} = $target;
-            $target->{'extra'}->{'normalized'} = $normalized;
-            if ($target->{'cmdname'} eq 'node') {
-              if ($target->{'extra'}
-                  and $target->{'extra'}{'node_argument'}) {
-                $target->{'extra'}{'node_argument'}{'normalized'}
-                  = $normalized;
-              }
-              push @{$self->{'nodes'}}, $target;
-            }
-          }
-        }
-      } else {
-        if ($target->{'cmdname'} eq 'node') {
-          $self->line_error (sprintf(__("empty argument in \@%s"),
-                  $target->{'cmdname'}), $target->{'line_nr'});
-          delete $target->{'extra'}->{'node_content'};
-        }
-      }
-    }
-    $self->{'labels'} = \%labels;
-    delete $self->{'targets'};
-  }
-  return $self->{'labels'};
+  goto &Texinfo::Common::labels_information;
 }
 
 # Following are the internal subroutines.  The most important are
