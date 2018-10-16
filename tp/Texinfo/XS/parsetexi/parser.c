@@ -123,12 +123,161 @@ set_documentlanguage (char *value)
   global_documentlanguage = value;
 }
 
+// 1056
+/* Record the information from a command of global effect.
+   TODO: Could we scrap the first argument and use CURRENT->cmd? */
+int
+register_global_command (enum command_id cmd, ELEMENT *current)
+{
+  if (command_data(cmd).flags & CF_global)
+    {
+      if (!current->line_nr.line_nr)
+        current->line_nr = line_nr;
+      switch (cmd)
+        {
+#define GLOBAL_CASE(cmx) \
+        case CM_##cmx:   \
+          add_to_contents_as_array (&global_info.cmx, current); \
+          break
+
+        case CM_footnote:
+          add_to_contents_as_array (&global_info.footnotes, current);
+          break;
+
+        GLOBAL_CASE(hyphenation);
+        GLOBAL_CASE(insertcopying);
+        GLOBAL_CASE(printindex);
+        GLOBAL_CASE(subtitle);
+        GLOBAL_CASE(titlefont);
+        GLOBAL_CASE(listoffloats);
+        GLOBAL_CASE(detailmenu);
+        GLOBAL_CASE(part);
+
+        /* from Common.pm %document_settable_at_commands */
+        GLOBAL_CASE(allowcodebreaks);
+        GLOBAL_CASE(clickstyle);
+        GLOBAL_CASE(codequotebacktick);
+        GLOBAL_CASE(codequoteundirected);
+        GLOBAL_CASE(contents);
+        GLOBAL_CASE(deftypefnnewline);
+        GLOBAL_CASE(documentencoding);
+        GLOBAL_CASE(documentlanguage);
+        GLOBAL_CASE(exampleindent);
+        GLOBAL_CASE(firstparagraphindent);
+        GLOBAL_CASE(frenchspacing);
+        GLOBAL_CASE(headings);
+        GLOBAL_CASE(kbdinputstyle);
+        GLOBAL_CASE(paragraphindent);
+        GLOBAL_CASE(shortcontents);
+        GLOBAL_CASE(urefbreakstyle);
+        GLOBAL_CASE(xrefautomaticsectiontitle);
+#undef GLOBAL_CASE
+        }
+      /* TODO: Check if all of these are necessary. */
+      return 1;
+    }
+  else if ((command_data(cmd).flags & CF_global_unique))
+    {
+      ELEMENT **where = 0;
+
+      if (cmd == CM_shortcontents)
+        cmd = CM_summarycontents;
+      if (!current->line_nr.line_nr)
+        current->line_nr = line_nr;
+      switch (cmd)
+        {
+          extern int input_number;
+        case CM_setfilename:
+          /* Check if we are inside an @include, and if so, do nothing. */
+          if (top_file_index () > 0)
+            break;
+          where = &global_info.setfilename;
+          break;
+
+#define GLOBAL_UNIQUE_CASE(cmd) \
+        case CM_##cmd: \
+          where = &global_info.cmd; \
+          break
+
+        GLOBAL_UNIQUE_CASE(settitle);
+        GLOBAL_UNIQUE_CASE(copying);
+        GLOBAL_UNIQUE_CASE(titlepage);
+        GLOBAL_UNIQUE_CASE(top);
+        GLOBAL_UNIQUE_CASE(documentdescription);
+        GLOBAL_UNIQUE_CASE(novalidate);
+        GLOBAL_UNIQUE_CASE(validatemenus);
+        GLOBAL_UNIQUE_CASE(pagesizes);
+        GLOBAL_UNIQUE_CASE(fonttextsize);
+        GLOBAL_UNIQUE_CASE(footnotestyle);
+        GLOBAL_UNIQUE_CASE(setchapternewpage);
+        GLOBAL_UNIQUE_CASE(everyheading);
+        GLOBAL_UNIQUE_CASE(everyfooting);
+        GLOBAL_UNIQUE_CASE(evenheading);
+        GLOBAL_UNIQUE_CASE(evenfooting);
+        GLOBAL_UNIQUE_CASE(oddheading);
+        GLOBAL_UNIQUE_CASE(oddfooting);
+        GLOBAL_UNIQUE_CASE(everyheadingmarks);
+        GLOBAL_UNIQUE_CASE(everyfootingmarks);
+        GLOBAL_UNIQUE_CASE(evenheadingmarks);
+        GLOBAL_UNIQUE_CASE(oddheadingmarks);
+        GLOBAL_UNIQUE_CASE(evenfootingmarks);
+        GLOBAL_UNIQUE_CASE(oddfootingmarks);
+        GLOBAL_UNIQUE_CASE(shorttitlepage);
+        GLOBAL_UNIQUE_CASE(title);
+#undef GLOBAL_UNIQUE_CASE
+        /* NOTE: Same list in api.c:build_global_info2 and wipe_global_info. */
+        }
+      if (where)
+        {
+          if (*where)
+            line_warn ("multiple @%s", command_name(cmd));
+          else
+            *where = current;
+        }
+      return 1;
+    }
+
+  return 0;
+}
+
+
 void
 wipe_global_info (void)
 {
   global_clickstyle = "arrow";
   global_kbdinputstyle = kbd_distinct;
   global_documentlanguage = "";
+
+#define GLOBAL_CASE(cmx) \
+  free (global_info.cmx.contents.list)
+
+  GLOBAL_CASE(hyphenation);
+  GLOBAL_CASE(insertcopying);
+  GLOBAL_CASE(printindex);
+  GLOBAL_CASE(subtitle);
+  GLOBAL_CASE(titlefont);
+  GLOBAL_CASE(listoffloats);
+  GLOBAL_CASE(detailmenu);
+  GLOBAL_CASE(part);
+  GLOBAL_CASE(allowcodebreaks);
+  GLOBAL_CASE(clickstyle);
+  GLOBAL_CASE(codequotebacktick);
+  GLOBAL_CASE(codequoteundirected);
+  GLOBAL_CASE(contents);
+  GLOBAL_CASE(deftypefnnewline);
+  GLOBAL_CASE(documentencoding);
+  GLOBAL_CASE(documentlanguage);
+  GLOBAL_CASE(exampleindent);
+  GLOBAL_CASE(firstparagraphindent);
+  GLOBAL_CASE(frenchspacing);
+  GLOBAL_CASE(headings);
+  GLOBAL_CASE(kbdinputstyle);
+  GLOBAL_CASE(paragraphindent);
+  GLOBAL_CASE(shortcontents);
+  GLOBAL_CASE(urefbreakstyle);
+  GLOBAL_CASE(xrefautomaticsectiontitle);
+
+#undef GLOBAL_CASE
   memset (&global_info, 0, sizeof (global_info));
 }
 
