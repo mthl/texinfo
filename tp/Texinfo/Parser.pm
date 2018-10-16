@@ -282,7 +282,7 @@ foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption',
 
 my %global_multiple_commands;
 foreach my $global_multiple_command (
-  'author', 'footnote', 'hyphenation', 'insertcopying', 'printindex',
+  'footnote', 'hyphenation', 'insertcopying', 'printindex',
   'subtitle','titlefont', 'listoffloats', 'detailmenu', 'part',
   keys(%Texinfo::Common::document_settable_at_commands), ) {
   $global_multiple_commands{$global_multiple_command} = 1;
@@ -1095,7 +1095,7 @@ sub _register_global_command($$$$)
   if ($command eq 'summarycontents' and !$self->{'global_commands'}->{$command}) {
     $command = 'shortcontents';
   }
-  if ($self->{'global_commands'}->{$command} and $command ne 'author') {
+  if ($self->{'global_commands'}->{$command}) {
     push @{$self->{'extra'}->{$command}}, $current;
     $current->{'line_nr'} = $line_nr if (!$current->{'line_nr'});
     return 1;

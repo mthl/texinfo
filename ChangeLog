@@ -1,8 +1,21 @@
 2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (%global_multiple_commands): Remove 'author'.
+	(_register_global_command): No exception for 'author'.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/sectioning/list-of-tests,
+	* tp/tests/contents/list-of-tests,
+	* tp/tests/indices/list-of-tests,
+	* tp/tests/tex_htmlindices/list-of-tests,
+	Use -c instead of --set-customization-variable, for brevity.
+
+2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/indices/list-of-tests
 	(split_chapter_index, index_split, index_split_nodes)
-	(index_no_node ,nodes_before_top, nodes_before_top_nodes)
+	(index_no_node, nodes_before_top, nodes_before_top_nodes)
 	(nodes_before_top_no_nodes, nodes_before_top_and_sections_monolithic):
 	Remove tests.
 
