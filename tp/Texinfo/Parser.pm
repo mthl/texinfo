@@ -80,14 +80,6 @@ sub import {
 }
 
 
-
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use Texinfo::Parser ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   parser
   parse_texi_text
@@ -6987,19 +6979,6 @@ These are both used by the C<Texinfo::Structuring> module.
 =head1 SEE ALSO
 
 L<Texinfo manual|http://www.gnu.org/s/texinfo/manual/texinfo/>
-
-=begin :comment
-
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in Unix), or any relevant external documentation such as RFCs or
-standards.
-
-If you have a mailing list set up for your module, mention it here.
-
-If you have a web site set up for your module, mention it here.
-
-=end :comment
 
 =head1 AUTHOR
 

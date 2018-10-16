@@ -22,13 +22,6 @@ require Exporter;
 use vars qw(@ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter);
 
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration      use Texinfo::Parser ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 %EXPORT_TAGS = ( 'all' => [ qw(
   errors
   gdt
@@ -599,14 +592,5 @@ the line I<$line_nr> in the file.
 =head1 AUTHOR
 
 Patrice Dumas, E<lt>pertusus@free.frE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright 2010, 2011, 2012 Free Software Foundation, Inc.
-
-This library is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 3 of the License,
-or (at your option) any later version.
 
 =cut

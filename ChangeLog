@@ -1,4 +1,19 @@
-2018-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm
+	* tp/Texinfo/Encoding.pm
+	* tp/Texinfo/Parser.pm
+	* tp/Texinfo/Report.pm
+	* tp/Texinfo/Structuring.pm
+	* tp/Texinfo/Transformations.pm
+
+	Remove generated content such as "Mention other useful 
+	documentation" and "Items to export into callers namespace by 
+	default" (presumably from h2xs).  Remove copyright and license 
+	from POD section at ends of files, as the copyright statement is 
+	at the beginning of each file.
+
+2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (%global_multiple_commands): Remove 'author'.
 	(_register_global_command): No exception for 'author'.
