@@ -1,17 +1,28 @@
 2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* tp/Texinfo/Common.pm
-	* tp/Texinfo/Encoding.pm
-	* tp/Texinfo/Parser.pm
-	* tp/Texinfo/Report.pm
-	* tp/Texinfo/Structuring.pm
-	* tp/Texinfo/Transformations.pm
+	* tp/Texinfo/Common.pm,
+	* tp/Texinfo/Encoding.pm,
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Report.pm,
+	* tp/Texinfo/Structuring.pm,
+	* tp/Texinfo/Transformations.pm,
+	* tp/Texinfo/Convert/Converter.pm
+	* tp/Texinfo/Convert/DocBook.pm,
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/IXIN.pm,
+	* tp/Texinfo/Convert/NodeNameNormalization.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Convert/Texinfo.pm,
+	* tp/Texinfo/Convert/TexinfoSXML.pm,
+	* tp/Texinfo/Convert/TexinfoXML.pm,
+	* tp/Texinfo/Convert/Text.pm,
+	* tp/Texinfo/Convert/Unicode.pm:
 
 	Remove generated content such as "Mention other useful 
 	documentation" and "Items to export into callers namespace by 
 	default" (presumably from h2xs).  Remove copyright and license 
 	from POD section at ends of files, as the copyright statement is 
-	at the beginning of each file.
+	at the beginning of each file.  Update copyright years.
 
 2018-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
