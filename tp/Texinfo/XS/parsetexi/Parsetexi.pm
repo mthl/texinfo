@@ -173,6 +173,7 @@ sub parser (;$$)
       } elsif ($key eq 'SHOW_MENU') {
         conf_set_show_menu ($conf->{$key});
       } elsif ($key eq 'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME') {
+        die;
         conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});

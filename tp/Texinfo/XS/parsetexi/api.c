@@ -986,6 +986,7 @@ reset_conf (void)
   memset (&conf, 0, sizeof (conf));
   conf.show_menu = 1;
   conf.cpp_line_directives = 1;
+  conf.ignore_space_after_braced_command_name = 1;
 }
 
 /* for debugging */
