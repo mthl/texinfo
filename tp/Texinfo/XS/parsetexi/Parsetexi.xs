@@ -24,22 +24,6 @@ MODULE = Parsetexi		PACKAGE = Parsetexi
 PROTOTYPES: ENABLE
 
 char *
-dump_tree_to_string_1 ()
-
-char *
-dump_tree_to_string_2 ()
-
-char *
-dump_tree_to_string_25 ()
-
-char *
-dump_tree_to_string_3 ()
-
-char *dump_root_element_1 ()
-
-char *dump_root_element_2 ()
-
-char *
 dump_errors ()
 
 void

@@ -96,8 +96,6 @@ ELEMENT *item_line_parent (ELEMENT *current);
 ELEMENT *item_multitable_parent (ELEMENT *current);
 void gather_previous_item (ELEMENT *current, enum command_id next_command);
 
-#include "dump_perl.h"
-
 /* In extra.c */
 void add_extra_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value);

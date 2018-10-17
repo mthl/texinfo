@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,6 @@
 #include "tree_types.h"
 #include "input.h"
 #include "text.h"
-#include "dump_perl.h"
 #include "errors.h"
 
 typedef struct {
@@ -114,6 +113,71 @@ wipe_errors (void)
   for (i = 0; i < error_number; i++)
     free (error_list[i].message);
   error_number = 0;
+}
+
+static int indent = 0;
+
+/* Output INDENT spaces. */
+static void
+dump_indent (TEXT *text)
+{
+  int i;
+
+  for (i = 0; i < indent; i++)
+    text_append_n (text, " ", 1);
+}
+
+/* Ouput S escaping single quotes and backslashes, so that
+   Perl can read it in when it is surrounded by single quotes.  */
+void
+dump_string (char *s, TEXT *text)
+{
+ while (*s)
+   {
+     if (*s == '\''
+       || *s == '\\')
+       text_append_n (text, "\\", 1);
+     text_append_n (text, s++, 1);
+   }
+}
+
+static void
+dump_line_nr (LINE_NR *line_nr, TEXT *text)
+{
+  text_append_n (text, "{\n", 2);
+  indent += 2;
+
+  dump_indent (text);
+  text_printf (text, "'file_name' => '%s',\n",
+               line_nr->file_name ?
+               line_nr->file_name : "");
+
+  if (line_nr->line_nr)
+    {
+      dump_indent (text);
+      text_append (text, "'line_nr' => ");
+      text_printf (text, "%d", line_nr->line_nr);
+      text_append (text, ",\n");
+    }
+
+  /* TODO: macro. */
+  if (line_nr->macro)
+    {
+      dump_indent (text);
+      text_append (text, "'macro' => ");
+      text_printf (text, "'%s'", line_nr->macro);
+      text_append (text, ",\n");
+    }
+  else
+    {
+      dump_indent (text);
+      text_append (text, "'macro' => ''\n");
+    }
+
+
+  indent -= 2;
+  dump_indent (text);
+  text_append_n (text, "},\n", 3);
 }
 
 char *

@@ -64,7 +64,6 @@ Parsetexi_la_SOURCES= Parsetexi.c \
 		  macro.c macro.h \
 		  handle_commands.c handle_commands.h \
 		  def.c def.h \
-		  dump_perl.c dump_perl.h \
 		  extra.c \
 		  menus.c \
 		  labels.c labels.h \
