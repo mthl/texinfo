@@ -2586,7 +2586,8 @@ sub labels_information
           }
         }
       }
-      if (defined $target->{'extra'}->{'node_content'}) {
+      if (defined $target->{'extra'}
+            and defined $target->{'extra'}->{'node_content'}) {
         my $normalized = Texinfo::Convert::NodeNameNormalization::normalize_node({'contents' => $target->{'extra'}->{'node_content'}});
 
         if ($normalized !~ /[^-]/) {
