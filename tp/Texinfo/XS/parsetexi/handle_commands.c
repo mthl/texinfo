@@ -155,7 +155,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           add_to_element_contents (current, misc);
           if (only_in_headings)
             add_extra_integer (misc, "invalid_nesting", 1);
-          register_global_command (cmd, misc);
+          register_global_command (misc);
         }
       mark_and_warn_invalid (cmd, invalid_parent, misc);
       if (close_preformatted_command(cmd))
@@ -303,7 +303,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
 
       mark_and_warn_invalid (cmd, invalid_parent, misc);
-      register_global_command (cmd, misc); // 4423
+      register_global_command (misc); // 4423
 
       if (arg_spec != MISC_special || !has_comment)
         current = end_line (current);
@@ -670,7 +670,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
   mark_and_warn_invalid (cmd, invalid_parent, misc);
 
   if (misc)
-    register_global_command (cmd, misc);
+    register_global_command (misc);
   if (cmd == CM_dircategory)
     add_to_contents_as_array (&global_info.dircategory_direntry, misc);
 
@@ -1031,7 +1031,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
         } /* 4827 */
       block->line_nr = line_nr;
       mark_and_warn_invalid (cmd, invalid_parent, block);
-      register_global_command (cmd, block);
+      register_global_command (block);
       start_empty_line_after_command (current, &line, block);
     }
 

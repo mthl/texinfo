@@ -86,7 +86,7 @@ extern char *global_documentlanguage;
 enum kbd_enum {kbd_none, kbd_code, kbd_example, kbd_distinct };
 extern enum kbd_enum global_kbdinputstyle;
 
-int register_global_command (enum command_id cmd, ELEMENT *current);
+int register_global_command (ELEMENT *current);
 void wipe_global_info (void);
 
 #include "macro.h"

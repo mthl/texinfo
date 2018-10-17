@@ -124,11 +124,12 @@ set_documentlanguage (char *value)
 }
 
 // 1056
-/* Record the information from a command of global effect.
-   TODO: Could we scrap the first argument and use CURRENT->cmd? */
+/* Record the information from a command of global effect. */
 int
-register_global_command (enum command_id cmd, ELEMENT *current)
+register_global_command (ELEMENT *current)
 {
+  enum command_id cmd = current->cmd;
+
   if (command_data(cmd).flags & CF_global)
     {
       if (!current->line_nr.line_nr)

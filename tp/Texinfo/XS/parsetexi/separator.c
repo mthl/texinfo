@@ -502,7 +502,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                 }
             }
         }
-      register_global_command (current->parent->cmd, current->parent);
+      register_global_command (current->parent);
 
       // 5190
       if (current->parent->cmd == CM_anchor
@@ -547,7 +547,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
 
-          register_global_command (current->parent->cmd, current->parent);
+          register_global_command (current->parent);
           // 5220
           current = current->parent->parent;
           if (close_preformatted_command(closed_command))
