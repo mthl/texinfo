@@ -167,6 +167,19 @@ reallocate_list (ELEMENT_LIST *list)
     }
 }
 
+/* Make sure there is space for at least N more elements. */
+static void
+reallocate_list_for (int n, ELEMENT_LIST *list)
+{
+  if (list->number + n >= list->space)
+    {
+      list->space += n + 1;
+      list->list = realloc (list->list, list->space * sizeof (ELEMENT *));
+      if (!list->list)
+        abort (); /* Out of memory. */
+    }
+}
+
 void
 add_to_element_contents (ELEMENT *parent, ELEMENT *e)
 {
@@ -236,6 +249,25 @@ insert_into_args (ELEMENT *parent, ELEMENT *e, int where)
   list->list[where] = e;
   e->parent = parent;
   list->number++;
+}
+
+/* Insert elements to the contents of TO at position WHERE from FROM
+   from START inclusive to END exclusive.  Do not set the parent fields. */
+void
+insert_slice_into_contents (ELEMENT *to, int where, ELEMENT *from,
+                            int start, int end)
+{
+  int num = end - start;
+  reallocate_list_for (num, &to->contents);
+
+  memmove (&to->contents.list[where + num],
+           &to->contents.list[where],
+           (to->contents.number - where) * sizeof (ELEMENT *));
+  memmove (&to->contents.list[where],
+           &from->contents.list[start],
+           num * sizeof (ELEMENT *));
+
+  to->contents.number += num;
 }
 
 ELEMENT *

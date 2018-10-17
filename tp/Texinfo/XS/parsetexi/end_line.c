@@ -855,57 +855,42 @@ NODE_SPEC_EXTRA *
 parse_node_manual (ELEMENT *node)
 {
   NODE_SPEC_EXTRA *result;
-  ELEMENT *trimmed;
-  ELEMENT *manual;
+  ELEMENT *new;
+  int idx = 0; /* index into node->contents */
 
   result = malloc (sizeof (NODE_SPEC_EXTRA));
-  result->manual_content = 0;
-  trimmed = trim_spaces_comment_from_content (node);
+  result->manual_content = result->node_content = 0;
+
 
   /* If the content starts with a '(', try to get a manual name. */
-  if (trimmed->contents.number > 0 && trimmed->contents.list[0]->text.end > 0
-      && trimmed->contents.list[0]->text.text[0] == '(')
+  if (node->contents.number > 0 && node->contents.list[0]->text.end > 0
+      && node->contents.list[0]->text.text[0] == '(')
     {
-      /* Handle nested parentheses in the manual name, for whatever reason. */
-
-      ELEMENT *e;
+      ELEMENT *manual, *first;
       char *opening_bracket, *closing_bracket;
-      int bracket_count = 0;
+
+      /* Handle nested parentheses in the manual name, for whatever reason. */
+      int bracket_count = 1; /* Number of ( seen minus number of ) seen. */
 
       manual = new_element (ET_NONE);
 
-      /* If the first contents element is "(" alone, discard it, otherwise
-         remove the leading "(". */
-      if (trimmed->contents.list[0]->text.end > 1)
+      /* If the first contents element is "(" followed by more text, split
+         the leading "(" into its own element. */
+      first = node->contents.list[0];
+      if (first->text.end > 1)
         {
-          /* Replace the first element with another element with the leading
-             "(" removed. */
-          /* TODO: Would it be simpler to split the text element
-             in node->contents as well, to avoid having out-of-tree
-             elements? */
-          ELEMENT *first;
-          first = malloc (sizeof (ELEMENT));
-          memcpy (first, trimmed->contents.list[0], sizeof (ELEMENT));
-          first->parent_type = route_not_in_tree;
-          first->text.text = malloc (first->text.space);
-          memcpy (first->text.text,
-                  trimmed->contents.list[0]->text.text + 1,
-                  trimmed->contents.list[0]->text.end);
+          memmove (first->text.text, first->text.text + 1, first->text.end);
           first->text.end--;
-          trimmed->contents.list[0] = first;
+          new = new_element (0);
+          text_append_n (&new->text, "(", 1);
+          insert_into_contents (node, new, 0);
         }
-      else
-        {
-          (void) remove_from_contents (trimmed, 0);
-          /* Note the removed element still is present in the original
-             node->contents in the main tree. */
-        }
-      bracket_count++;
+      idx++;
 
-      while (trimmed->contents.number > 0)
+      for (; idx < node->contents.number; idx++)
         {
-          ELEMENT *e = remove_from_contents (trimmed, 0);
-          char *p;
+          ELEMENT *e = node->contents.list[idx];
+          char *p, *q;
 
           if (e->text.end == 0)
             {
@@ -952,62 +937,68 @@ parse_node_manual (ELEMENT *node)
               /* Split the element in two, putting the part before the ")"
                  in the manual name, leaving the part afterwards for the
                  node name. */
-              /* TODO: Same as above re route_not_in_tree. */
-              ELEMENT *before, *after;
+              remove_from_contents (node, idx); /* Remove 'e'. */
 
               p--; /* point at ) */
               if (p > e->text.text)
                 {
-                  before = new_element (ET_NONE);
-                  before->parent_type = route_not_in_tree;
-                  before->parent = node; // FIXME - try not to set this
-                  text_append_n (&before->text, e->text.text,
+                  /* text before ), part of the manual name */
+                  new = new_element (ET_NONE);
+                  text_append_n (&new->text, e->text.text,
                                  p - e->text.text);
-                  add_to_contents_as_array (manual, before);
+                  insert_into_contents (node, new, idx++);
+
+                  add_to_contents_as_array (manual, new);
                 }
+
+              new = new_element (0);
+              text_append_n (&new->text, ")", 1);
+              insert_into_contents (node, new, idx++);
 
               /* Skip ')' and any following whitespace.
                  Note that we don't manage to skip any multibyte
                  UTF-8 space characters here. */
               p++;
-              p += strspn (p, whitespace_chars);
+              q = p + strspn (p, whitespace_chars);
+              if (q > p)
+                {
+                  new = new_element (0);
+                  text_append_n (&new->text, p, q - p);
+                  insert_into_contents (node, new, idx++);
+                }
+
+              p = q;
               if (*p)
                 {
-                  after = new_element (ET_NONE);
-                  text_append_n (&after->text, p,
+                  /* text after ), part of the node name. */
+                  new = new_element (ET_NONE);
+                  text_append_n (&new->text, p,
                                  e->text.text + e->text.end - p);
-
-                  insert_into_contents (trimmed, after, 0);
-                  after->parent_type = route_not_in_tree;
-                  after->parent = node;
+                  insert_into_contents (node, new, idx);
                 }
-              if (e->parent_type == route_not_in_tree)
-                destroy_element (e);
+              destroy_element (e);
               break;
             }
-        }
+        } /* for */
 
       if (bracket_count == 0)
         result->manual_content = manual;
       else /* unbalanced */
         {
-          destroy_element (trimmed);
-          trimmed = manual;
+          destroy_element (manual);
+          idx = 0; /* Back to the start, and consider the whole thing
+                      as a node name. */
         }
     }
 
   /* If anything left, it is the node name. */
-  if (trimmed->contents.number > 0)
+  if (idx < node->contents.number)
     {
-      trimmed->parent_type = route_not_in_tree;
-      trimmed->parent = node;
-      result->node_content = trimmed;
+      new = new_element (0);
+      insert_slice_into_contents (new, 0, node, idx, node->contents.number);
+      result->node_content = new;
     }
-  else
-    {
-      result->node_content = 0;
-      destroy_element (trimmed);
-    }
+
   return result;
 }
 
