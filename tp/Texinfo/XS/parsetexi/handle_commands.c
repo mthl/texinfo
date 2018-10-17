@@ -938,7 +938,10 @@ handle_block_command (ELEMENT *current, char **line_inout,
                     {
                       line = new_line (current);
                       if (!line)
-                        abort (); // TODO
+                        {
+                          line = "";
+                          break;
+                        }
                       line_dummy = line;
                     }
                   e = new_element (ET_empty_line_after_command);
@@ -946,6 +949,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
                   add_to_element_contents (current, e);
 
                   e = new_element (ET_empty_line);
+                  text_append (&e->text, "");
                   add_to_element_contents (current, e);
                   goto funexit;
                 }
