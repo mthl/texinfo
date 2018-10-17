@@ -467,6 +467,9 @@ abc
 fn
 @printindex fn
 '],
+['def_existing_index',
+'@defcodeindex cp
+'],
 ['default_cp_index_and_one_letter_syncodeindex',
 '@node Top
 

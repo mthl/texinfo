@@ -1,4 +1,8 @@
-2018-10-17  gavin smith  <gavinsmith0123@gmail.com>
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/09indices.t (def_existing_index): New test.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/55conditionals.t (false_format_not_closed): New test.
 
@@ -7,7 +11,7 @@
 	* tp/Texinfo/Parser.pm (_expand_macro_arguments): Avoid using a 
 	regex.
 
-2018-10-17  gavin smith  <gavinsmith0123@gmail.com>
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/60macro.t (empty_macro_argument): New test.
 
