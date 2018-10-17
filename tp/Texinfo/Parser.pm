@@ -1019,9 +1019,10 @@ sub _print_tree($)
   return Texinfo::Common::print_tree($tree);
 }
 
-sub _register_global_command($$$$)
-{
-  my ($self, $command, $current, $line_nr) = @_;
+sub _register_global_command {
+  my ($self, $current, $line_nr) = @_;
+
+  my $command = $current->{'cmdname'};
 
   if ($command eq 'summarycontents' and !$self->{'global_commands'}->{$command}) {
     $command = 'shortcontents';
@@ -4153,7 +4154,7 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, $misc;
               # also sets invalid_nesting in that case
               $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
-              _register_global_command($self, $command, $misc, $line_nr);
+              _register_global_command($self, $misc, $line_nr);
             }
             _mark_and_warn_invalid($self, $command, $invalid_parent,
                                    $line_nr, $misc);
@@ -4229,7 +4230,7 @@ sub _parse_texi($;$)
             }
             _mark_and_warn_invalid($self, $command, $invalid_parent,
                                    $line_nr, $misc);
-            _register_global_command($self, $command, $misc, $line_nr);
+            _register_global_command($self, $misc, $line_nr);
             # the end of line is ignored for special commands
             if ($arg_spec ne 'special' or !$has_comment) {
               $current = _end_line($self, $current, $line_nr);
@@ -4459,7 +4460,7 @@ sub _parse_texi($;$)
           _mark_and_warn_invalid($self, $command, $invalid_parent,
                                  $line_nr, $misc);
 
-          _register_global_command($self, $command, $misc, $line_nr)
+          _register_global_command($self, $misc, $line_nr)
             if $misc;
           if ($command eq 'dircategory') {
             push @{$self->{'info'}->{'dircategory_direntry'}}, $misc;
@@ -4682,7 +4683,7 @@ sub _parse_texi($;$)
             $block->{'line_nr'} = $line_nr;
             _mark_and_warn_invalid($self, $command, $invalid_parent,
                                    $line_nr, $block);
-            _register_global_command($self, $command, $block, $line_nr);
+            _register_global_command($self, $block, $line_nr);
 
             $line = _start_empty_line_after_command($line, $current, $block);
           }
@@ -5066,8 +5067,7 @@ sub _parse_texi($;$)
                 }
               }
             }
-            _register_global_command($self, $current->{'parent'}->{'cmdname'},
-                                     $current->{'parent'}, $line_nr);
+            _register_global_command($self, $current->{'parent'}, $line_nr);
             if ($command_ignore_space_after{$current->{'parent'}->{'cmdname'}}) {
               push @{$current->{'parent'}->{'parent'}->{'contents'}}, 
                  {'type' => 'empty_spaces_after_close_brace',
@@ -5099,9 +5099,7 @@ sub _parse_texi($;$)
               }
               print STDERR "CLOSING(context command) \@$current->{'parent'}->{'cmdname'}\n" if ($self->{'DEBUG'});
               my $closed_command = $current->{'parent'}->{'cmdname'};
-              _register_global_command($self,
-                                       $current->{'parent'}->{'cmdname'},
-                                       $current->{'parent'}, $line_nr);
+              _register_global_command($self, $current->{'parent'}, $line_nr);
               $current = $current->{'parent'}->{'parent'};
               $current = _begin_preformatted ($self, $current)
                  if ($close_preformatted_commands{$closed_command});

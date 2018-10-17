@@ -1,5 +1,10 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_register_global_command): Remove an 
+	argument.  Callers updated.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (labels_information): Avoiding creating 
 	'extra' hash by mistake.
 
