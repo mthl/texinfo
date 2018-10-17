@@ -114,6 +114,7 @@ $result_trees{'nodes_before_top_nodes'} = {
         {
           'contents' => [
             {
+              'parent' => {},
               'text' => '('
             },
             {
@@ -121,6 +122,7 @@ $result_trees{'nodes_before_top_nodes'} = {
               'text' => 'dir'
             },
             {
+              'parent' => {},
               'text' => ')'
             }
           ],
@@ -2131,7 +2133,9 @@ $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[0]{'parent'} = $r
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[1];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1];
+$result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3];
+$result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'nodes_before_top_nodes'}{'contents'}[1]{'contents'}[0];

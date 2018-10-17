@@ -1507,9 +1507,12 @@ sub parse_node_manual($)
   # and 'node_content' are in the main tree.
   my $new_contents = [];
   if (defined($result) and defined($result->{'manual_content'})) {
-    @$new_contents = ({'text' => '('}, @$manual);
-    push @$new_contents, {'text' => ')'} if $end_paren;
-    push @$new_contents, {'text' => $spaces_after} if $spaces_after;
+    @$new_contents = ({ 'text' => '(', 'parent' => $node },
+                      @$manual);
+    push @$new_contents, {  'text' => ')', 'parent' => $node }
+      if $end_paren;
+    push @$new_contents, { 'text' => $spaces_after, 'parent' => $node }
+      if $spaces_after;
   }
   if (@contents) {
     @$new_contents = (@$new_contents, @contents);

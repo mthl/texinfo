@@ -155,6 +155,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -162,6 +163,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
                       'text' => 'foo'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     }
                   ],
@@ -605,6 +607,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -612,6 +615,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
                       'text' => 'in_text'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     }
                   ],
@@ -964,7 +968,9 @@ $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
+$result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
+$result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[5]{'contents'}[0];
@@ -1034,7 +1040,9 @@ $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
+$result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
+$result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1];
 $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'direntry_dircategory_info_split'}{'contents'}[2]{'contents'}[3]{'contents'}[1]{'args'}[5]{'contents'}[0];

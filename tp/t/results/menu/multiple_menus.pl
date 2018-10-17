@@ -59,6 +59,7 @@ $result_trees{'multiple_menus'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -66,6 +67,7 @@ $result_trees{'multiple_menus'} = {
                       'text' => 'a'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     },
                     {
@@ -188,6 +190,7 @@ $result_trees{'multiple_menus'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -195,6 +198,7 @@ $result_trees{'multiple_menus'} = {
                       'text' => 'b'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     },
                     {
@@ -320,7 +324,9 @@ $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[0]{'parent'} = $resul
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
+$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
@@ -340,7 +346,9 @@ $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[2]{'parent'} = $resul
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'extra'}{'command'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
+$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
+$result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1];
 $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'multiple_menus'}{'contents'}[1]{'contents'}[3]{'contents'}[1];

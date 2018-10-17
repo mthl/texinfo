@@ -59,6 +59,7 @@ $result_trees{'space_at_menu_end'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -66,6 +67,7 @@ $result_trees{'space_at_menu_end'} = {
                       'text' => 'out'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     }
                   ],
@@ -218,7 +220,9 @@ $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[0]{'parent'} = $re
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'extra'}{'command'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
+$result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
+$result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_at_menu_end'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[3]{'contents'}[0];

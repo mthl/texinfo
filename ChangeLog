@@ -1,5 +1,10 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (parse_node_manual): Set parent fields on 
+	new elements.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (parse_node_manual): Overwrite the 
 	contents array of the element in the main tree.
 

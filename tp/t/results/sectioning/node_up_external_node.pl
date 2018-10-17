@@ -199,6 +199,7 @@ $result_trees{'node_up_external_node'} = [
           {
             'contents' => [
               {
+                'parent' => {},
                 'text' => '('
               },
               {
@@ -206,6 +207,7 @@ $result_trees{'node_up_external_node'} = [
                 'text' => 'manual1'
               },
               {
+                'parent' => {},
                 'text' => ')'
               }
             ],
@@ -218,6 +220,7 @@ $result_trees{'node_up_external_node'} = [
           {
             'contents' => [
               {
+                'parent' => {},
                 'text' => '('
               },
               {
@@ -225,6 +228,7 @@ $result_trees{'node_up_external_node'} = [
                 'text' => 'manual2'
               },
               {
+                'parent' => {},
                 'text' => ')'
               }
             ],
@@ -238,6 +242,7 @@ $result_trees{'node_up_external_node'} = [
           {
             'contents' => [
               {
+                'parent' => {},
                 'text' => '('
               },
               {
@@ -245,6 +250,7 @@ $result_trees{'node_up_external_node'} = [
                 'text' => 'manual3'
               },
               {
+                'parent' => {},
                 'text' => ')'
               }
             ],
@@ -332,11 +338,17 @@ $result_trees{'node_up_external_node'}[0]{'extra'}{'element_command'} = $result_
 $result_trees{'node_up_external_node'}[0]{'extra'}{'node'} = $result_trees{'node_up_external_node'}[0]{'contents'}[1];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2]{'contents'}[1]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2]{'contents'}[2]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3];
+$result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'node_up_external_node'}[1]{'contents'}[0]{'extra'}{'node_content'};

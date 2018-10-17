@@ -188,6 +188,7 @@ $result_trees{'texi_formatting'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -195,6 +196,7 @@ $result_trees{'texi_formatting'} = {
                       'text' => 'formatting'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     }
                   ],
@@ -323,6 +325,7 @@ $result_trees{'texi_formatting'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
                       'text' => '('
                     },
                     {
@@ -330,6 +333,7 @@ $result_trees{'texi_formatting'} = {
                       'text' => 'formatting'
                     },
                     {
+                      'parent' => {},
                       'text' => ')'
                     }
                   ],
@@ -3496,7 +3500,9 @@ $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'a
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[4]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[1]{'args'}[5]{'contents'}[0];
@@ -3521,7 +3527,9 @@ $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'a
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[1];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[1]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3];
+$result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[4]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2];
 $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[5]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_formatting'}{'contents'}[0]{'contents'}[4]{'contents'}[2]{'args'}[5]{'contents'}[0];

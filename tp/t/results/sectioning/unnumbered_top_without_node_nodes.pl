@@ -38,6 +38,7 @@ $result_trees{'unnumbered_top_without_node_nodes'} = [
           {
             'contents' => [
               {
+                'parent' => {},
                 'text' => '('
               },
               {
@@ -45,6 +46,7 @@ $result_trees{'unnumbered_top_without_node_nodes'} = [
                 'text' => 'dir'
               },
               {
+                'parent' => {},
                 'text' => ')'
               }
             ],
@@ -222,6 +224,7 @@ $result_trees{'unnumbered_top_without_node_nodes'} = [
           {
             'contents' => [
               {
+                'parent' => {},
                 'text' => '('
               },
               {
@@ -229,6 +232,7 @@ $result_trees{'unnumbered_top_without_node_nodes'} = [
                 'text' => 'dir'
               },
               {
+                'parent' => {},
                 'text' => ')'
               }
             ],
@@ -333,7 +337,9 @@ $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[0]{
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[1]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1];
+$result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3];
+$result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_top_without_node_nodes'}[0]{'contents'}[1]{'extra'}{'node_content'};
@@ -359,7 +365,9 @@ $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[0]{
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0];
+$result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3];
+$result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_top_without_node_nodes'}[1]{'contents'}[0]{'extra'}{'node_content'};
