@@ -2823,8 +2823,7 @@ sub _end_line($$$)
           $self->_command_error($current, $line_nr, 
               __("%s requires an argument: the formatter for %citem"),
               $current->{'cmdname'}, ord('@'));
-        } elsif (!$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}
-            and !$self->{'definfoenclose'}->{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}) {
+        } elsif (!$brace_commands{$current->{'extra'}->{'command_as_argument'}->{'cmdname'}}) {
           $self->_command_error($current, $line_nr, 
               __("command \@%s not accepting argument in brace should not be on \@%s line"),
               $current->{'extra'}->{'command_as_argument'}->{'cmdname'},
@@ -3798,10 +3797,9 @@ sub _parse_texi($;$)
 
       # The condition below is only caught right after command opening,
       # otherwise we are in the 'args' and not right in the command container.
-      } elsif ($current->{'cmdname'} and 
-          (defined($brace_commands{$current->{'cmdname'}}) or 
-            $self->{'definfoenclose'}->{$current->{'cmdname'}})
-          and !$open_brace) {
+      } elsif ($current->{'cmdname'}
+            and defined($brace_commands{$current->{'cmdname'}})
+            and !$open_brace) {
         # special case for @-command as argument of @itemize or @*table.
         if (_command_with_command_as_argument($current->{'parent'})) {
           print STDERR "FOR PARENT \@$current->{'parent'}->{'parent'}->{'cmdname'} command_as_argument $current->{'cmdname'}\n" if ($self->{'DEBUG'});
@@ -4686,8 +4684,7 @@ sub _parse_texi($;$)
 
             $line = _start_empty_line_after_command($line, $current, $block);
           }
-        } elsif (defined($brace_commands{$command})
-               or defined($self->{'definfoenclose'}->{$command})) {
+        } elsif (defined($brace_commands{$command})) {
           
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current,
@@ -4744,16 +4741,12 @@ sub _parse_texi($;$)
         } elsif ($separator eq '{') {
           _abort_empty_line($self, $current);
           if ($current->{'cmdname'} 
-               and (defined($brace_commands{$current->{'cmdname'}})
-                     or $self->{'definfoenclose'}->{$current->{'cmdname'}})) {
+               and defined($brace_commands{$current->{'cmdname'}})) {
             my $command = $current->{'cmdname'};
             $current->{'args'} = [ { 'parent' => $current,
                                    'contents' => [] } ];
             $current->{'remaining_args'} = $brace_commands{$command} -1
                   if ($brace_commands{$command} and $brace_commands{$command} -1);
-            if ($self->{'definfoenclose'}->{$command}) {
-              $current->{'remaining_args'} = 0;
-            }
             $current = $current->{'args'}->[-1];
             if ($context_brace_commands{$command}) {
               if ($command eq 'caption' or $command eq 'shortcaption') {
@@ -4865,9 +4858,8 @@ sub _parse_texi($;$)
            # the following will not happen for footnote if there is 
            # a paragraph withing the footnote
           } elsif ($current->{'parent'}
-                   and $current->{'parent'}->{'cmdname'}
-                   and (exists $brace_commands{$current->{'parent'}->{'cmdname'}}
-                         or $self->{'definfoenclose'}->{$current->{'parent'}->{'cmdname'}})) {
+              and $current->{'parent'}->{'cmdname'}
+              and exists $brace_commands{$current->{'parent'}->{'cmdname'}}) {
             # for math and footnote out of paragraph
             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
               my $context_command = pop @{$self->{'context_stack'}};
@@ -5451,6 +5443,8 @@ sub _parse_line_command_args($$$)
       $args = [$1, $2, $3 ];
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'DEBUG'});
+
+      $brace_commands{$1} = 1;
 
       # Warning: there is a risk of mixing of data between a built-in 
       # command and a user command defined with @definfoenclose.
