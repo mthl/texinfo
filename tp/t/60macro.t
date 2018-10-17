@@ -993,6 +993,13 @@ in inlinefmt tex
 
 @mymacro{}.
 '],
+['empty_macro_argument',
+'@macro mymacro{}
+text
+@end macro
+
+@mymacro{} @mymacro{ } @mymacro{  } @mymacro{  x}'
+],
 );
 
 my @todo =(
