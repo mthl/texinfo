@@ -15,6 +15,8 @@ my @test_cases = (
 @end multitable' ],
 [ 'not_fraction','@multitable @columnfractions aaa
 @end multitable' ],
+[ 'invalid','@multitable @columnfractions 2x.2 2.23x
+@end multitable' ],
 [ 'empty', '@multitable @columnfractions 
 @end multitable' ],
 [ 'empty_comment', '@multitable @columnfractions @c

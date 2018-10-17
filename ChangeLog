@@ -1,5 +1,11 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/06columnfractions.t (invalid): New test.
+	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@columnfractions>:
+	Change regex for a valid column fraction.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@definfoenclose>:
 	Add new command to %brace_commands.  This avoids having to check
 	whether a command has been added with @definfoenclose in several 

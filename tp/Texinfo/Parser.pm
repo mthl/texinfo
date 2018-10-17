@@ -5460,7 +5460,7 @@ sub _parse_line_command_args($$$)
                              $line_nr);
     } else {
       foreach my $fraction (@possible_fractions) {
-        if ($fraction =~ /^(\d*\.\d+)|(\d+)\.?$/) {
+        if ($fraction =~ /^\d*\.\d+$|^\d+\.?$/) {
           push @$args, $fraction;
         } else {
           $self->line_error (sprintf(
