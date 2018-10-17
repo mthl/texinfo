@@ -497,7 +497,6 @@ parse_line_command_args (ELEMENT *line_command)
            BASE.NAME in the same directory.  This is to prevent such
            files being overwritten by the files read by texindex. */
         {
-          /* TODO: Also forbid existing index names. */
           static char *forbidden_index_names[] = {
             "info", "ps", "pdf", "htm", "html",
             "log", "aux", "dvi", "texi", "txi",
@@ -507,6 +506,9 @@ parse_line_command_args (ELEMENT *line_command)
           for (ptr = forbidden_index_names; *ptr; ptr++)
             if (!strcmp (name, *ptr))
               goto defindex_reserved;
+
+          if (index_by_name (name))
+            goto defindex_reserved;
         }
 
         add_index (name, cmd == CM_defcodeindex ? 1 : 0);
