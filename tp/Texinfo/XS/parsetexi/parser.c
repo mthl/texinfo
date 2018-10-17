@@ -633,15 +633,13 @@ isolate_last_space_internal (ELEMENT *current)
   char *text = element_text (last_elt);
 
   int text_len = last_elt->text.end;
-  /* Does the text end in whitespace? */
 
   /* If text all whitespace */
   if (text[strspn (text, whitespace_chars)] == '\0')
     {
       add_extra_string_dup (current, "spaces_after_argument",
                             last_elt->text.text);
-      pop_element_from_contents (current);
-      /* FIXME: destroy_element? */
+      destroy_element (pop_element_from_contents (current));
     }
   else
     {
