@@ -455,9 +455,6 @@ parse_line_command_args (ELEMENT *line_command)
             if (!is_decimal_number (arg))
               {
                 line_error ("column fraction not a number: %s", arg);
-
-                /* FIXME: Possible bug in the Perl version - it accepts
-                   2x.2, 2.23x */
               }
             else
               {

@@ -210,7 +210,7 @@ element_to_perl_hash (ELEMENT *e)
       sv = newRV_inc ((SV *) e->parent->hv);
       hv_store (e->hv, "parent", strlen ("parent"), sv, 0);
     }
-  /* FIXME: this assumes we don't have nested out-of-tree subtrees,
+  /* This assumes we don't have nested out-of-tree subtrees,
      i.e. the only out-of-tree elements are simple text elements
      (or other elements with no children) - otherwise we shall fail
      to set "parent" properly. */
@@ -231,7 +231,7 @@ element_to_perl_hash (ELEMENT *e)
       /* TODO: Same optimizations as for 'type'. */
     }
 
-  /* FIXME sort out all these special cases */
+  /* TODO sort out all these special cases */
   if (e->contents.number > 0
       || e->type == ET_text_root
       || e->type == ET_root_line
@@ -262,8 +262,8 @@ element_to_perl_hash (ELEMENT *e)
               || command_data(e->cmd).data == BRACE_other
               || command_data(e->cmd).data == BRACE_accent
               ))
-      || e->cmd == CM_node) // FIXME special case
-    // FIXME: Makes no sense to have 'contents' created for glyph commands like
+      || e->cmd == CM_node) // TODO special case
+    // TODO: Makes no sense to have 'contents' created for glyph commands like
     // @arrow{} or for accent commands.
     {
       AV *av;
@@ -305,8 +305,8 @@ element_to_perl_hash (ELEMENT *e)
         hv_store (e->hv, "type", strlen ("type"), sv, 0);
 
       SvUTF8_on (sv);
-      /* FIXME: Check that the strings we have are in UTF-8 to start with.
-         This would lead to an unnecessary round trip with "@documentencoding 
+      /* The strings here have to be in UTF-8 to start with.
+         This leads to an unnecessary round trip with "@documentencoding 
          ISO-8859-1" for Info and plain text output, when we first convert the 
          characters in the input file to UTF-8, and convert them back again for 
          the output.

@@ -282,8 +282,7 @@ close_current (ELEMENT *current,
                   parent = current->parent;
                   destroy_element (pop_element_from_contents (parent));
                 }
-              /* FIXME: Why not avoid adding the element
-                 in the first place? */
+              /* TODO: Maybe avoid adding the element in the first place. */
             }
           if (command_data(cmd).flags
               & (CF_preformatted | CF_menu | CF_format_raw))
