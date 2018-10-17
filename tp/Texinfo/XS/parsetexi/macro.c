@@ -236,9 +236,9 @@ lookup_macro_parameter (char *name, ELEMENT *macro)
   return -1;
 }
 
-/* LINE points to after the opening brace in a macro invocation.  CMD is the
-   command identifier of the macro command.  Return array of the arguments.
-   Return value to be freed by caller.  */
+/* LINE points the first non-whitespace character after the opening brace in a 
+   macro invocation.  CMD is the command identifier of the macro command.  
+   Return array of the arguments.  Return value to be freed by caller.  */
 // 1984
 char **
 expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
@@ -336,7 +336,6 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
               else
                 arg_list[arg_number++] = strdup ("");
               text_init (&arg);
-              // TODO: is "@m {     }" one empty argument or none?
 
               debug ("MACRO NEW ARG");
               pline = sep + 1;
@@ -358,6 +357,14 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
 
   debug ("END MACRO ARGS EXPANSION");
   line = pline;
+
+  if (args_total == 0 && arg_number > 0
+      && arg_list[0] && *arg_list[0])
+    {
+      line_error
+        ("macro `%s' declared without argument called with an argument",
+         command_name(cmd));
+    }
 
 funexit:
   *line_inout = line;
