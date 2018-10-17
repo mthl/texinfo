@@ -91,18 +91,8 @@ typedef struct ELEMENT {
     size_t extra_number;
     size_t extra_space;
 
-    /* Set to route_not_in_tree if element not in main tree.  Also
-       used for routing information along with 'index_in_parent' when
-       dumping to a text stream. */
+    /* Set to route_not_in_tree if element not in main tree. */
     enum route_element_type parent_type;
-
-    /********* Used when dumping to a text stream only. ************/
-
-    int index_in_parent;
-
-    PENDING_REFERENCE *pending_references;
-    size_t pending_number;
-    size_t pending_space;
 
     /********* Used when building Perl tree only ********************/
     /* should be HV *hv; */
