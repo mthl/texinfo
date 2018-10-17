@@ -1751,9 +1751,24 @@ end_line_misc_line (ELEMENT *current)
 
       if (nodes_manuals[0])
         {
-          add_extra_contents (current, "node_content",
-                              nodes_manuals[0]->node_content);
-          register_label (current, nodes_manuals[0]->node_content);
+          ELEMENT *label = 0;
+          if (nodes_manuals[0]->node_content)
+            {
+              /* Copy the first 'node_content' array, to avoid the complication
+                 of it being referenced in two different places.
+                 This might be better with a separate function. */
+
+              label = new_element (0);
+              int i;
+
+              for (i = 0; i<nodes_manuals[0]->node_content->contents.number;
+                   i++)
+                {
+                  add_to_contents_as_array (label,
+                   contents_child_by_index(nodes_manuals[0]->node_content, i));
+                }
+            }
+          register_label (current, label);
         }
 
       current_node = current;

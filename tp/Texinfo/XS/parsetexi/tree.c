@@ -99,6 +99,23 @@ destroy_element (ELEMENT *e)
               free (nse);
               break;
             }
+        case extra_node_spec_array:
+            {
+              NODE_SPEC_EXTRA **array = (NODE_SPEC_EXTRA **) e->extra[i].value;
+              NODE_SPEC_EXTRA **nse;
+
+              for (nse = array; (*nse); nse++)
+                {
+                  if ((*nse)->manual_content)
+                    destroy_element ((*nse)->manual_content);
+                  if ((*nse)->node_content)
+                    destroy_element ((*nse)->node_content);
+                  free (*nse);
+                  /* FIXME: same problem as above */
+                }
+              free (array);
+              break;
+            }
         case extra_float_type:
           {
             EXTRA_FLOAT_TYPE *eft = (EXTRA_FLOAT_TYPE *) e->extra[i].value;
