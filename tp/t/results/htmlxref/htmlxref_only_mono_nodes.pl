@@ -823,8 +823,18 @@ $result_trees{'htmlxref_only_mono_nodes'} = {
                 {
                   'contents' => [
                     {
+                      'text' => '('
+                    },
+                    {
                       'parent' => {},
-                      'text' => '(mtexinfo)Cross References'
+                      'text' => 'mtexinfo'
+                    },
+                    {
+                      'text' => ')'
+                    },
+                    {
+                      'parent' => {},
+                      'text' => 'Cross References'
                     }
                   ],
                   'parent' => {},
@@ -836,16 +846,10 @@ $result_trees{'htmlxref_only_mono_nodes'} = {
               'extra' => {
                 'node_argument' => {
                   'manual_content' => [
-                    {
-                      'parent' => {},
-                      'text' => 'mtexinfo'
-                    }
+                    {}
                   ],
                   'node_content' => [
-                    {
-                      'parent' => {},
-                      'text' => 'Cross References'
-                    }
+                    {}
                   ]
                 }
               },
@@ -2930,10 +2934,11 @@ $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'conten
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[0];
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14];
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[1]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14];
-$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0];
+$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0];
+$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0];
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2];
-$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'extra'}{'node_argument'}{'manual_content'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0];
-$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0];
+$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'extra'}{'node_argument'}{'manual_content'}[0] = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'contents'}[1];
+$result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'args'}[0]{'contents'}[3];
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'line_nr'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[0]{'line_nr'};
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[2]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14];
 $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14]{'contents'}[3]{'parent'} = $result_trees{'htmlxref_only_mono_nodes'}{'contents'}[2]{'contents'}[14];

@@ -1452,6 +1452,8 @@ sub parse_node_manual($)
 
   my $manual;
   my $result;
+  my ($end_paren, $spaces_after);
+
   if ($contents[0] and $contents[0]->{'text'} and $contents[0]->{'text'} =~ /^\(/) {
     my $braces_count = 1;
     if ($contents[0]->{'text'} !~ /^\($/) {
@@ -1477,10 +1479,12 @@ sub parse_node_manual($)
         ($before, $after, $braces_count) = _find_end_brace($content->{'text'},
                                                               $braces_count);
         if ($braces_count == 0) {
-          $before =~ s/\)$//;
+          $before =~ s/(\))$//;
+          $end_paren = $1;
           push @$manual, { 'text' => $before, 'parent' => $content->{'parent'} }
             if ($before ne '');
-          $after =~ s/^\s*//;
+          $after =~ s/^(\s*)//;
+          $spaces_after = $1;
           unshift @contents,  { 'text' => $after, 'parent' => $content->{'parent'} }
             if ($after ne '');
           last;
@@ -1498,6 +1502,20 @@ sub parse_node_manual($)
   if (@contents) {
     $result->{'node_content'} = \@contents;
   }
+
+  # Overwrite the contents array so that all the elements in 'manual_content'
+  # and 'node_content' are in the main tree.
+  my $new_contents = [];
+  if (defined($result) and defined($result->{'manual_content'})) {
+    @$new_contents = ({'text' => '('}, @$manual);
+    push @$new_contents, {'text' => ')'} if $end_paren;
+    push @$new_contents, {'text' => $spaces_after} if $spaces_after;
+  }
+  if (@contents) {
+    @$new_contents = (@$new_contents, @contents);
+  }
+  $node->{'contents'} = $new_contents;
+
   return $result;
 }
 

@@ -1,5 +1,10 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (parse_node_manual): Overwrite the 
+	contents array of the element in the main tree.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/06columnfractions.t (invalid): New test.
 	* tp/Texinfo/Parser.pm (_parse_line_command_args) <@columnfractions>:
 	Change regex for a valid column fraction.
