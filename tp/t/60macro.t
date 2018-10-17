@@ -998,7 +998,13 @@ in inlinefmt tex
 text
 @end macro
 
-@mymacro{} @mymacro{ } @mymacro{  } @mymacro{  x}'
+@mymacro{} @mymacro{ } @mymacro{  } @mymacro{  x}
+
+@macro mytwo{arg}
+X\arg\X
+@end macro
+
+@mytwo{} @mytwo{ } @mytwo{  } @mytwo{  x}'
 ],
 );
 
