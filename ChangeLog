@@ -1,5 +1,10 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_expand_macro_arguments): Avoid using a 
+	regex.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/60macro.t (empty_macro_argument): New test.
 
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>

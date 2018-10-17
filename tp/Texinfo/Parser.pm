@@ -1981,7 +1981,7 @@ sub _expand_macro_arguments($$$$)
       }
     }
   }
-  if ($args_total == 0 and $arguments->[0] =~ /\S/) {
+  if ($args_total == 0 and $arguments->[0] ne '') {
     $self->line_error(sprintf(__(
                "macro `%s' declared without argument called with an argument"), 
                                 $name), $line_nr);
