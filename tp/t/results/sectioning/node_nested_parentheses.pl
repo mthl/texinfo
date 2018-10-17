@@ -285,6 +285,10 @@ $result_trees{'node_nested_parentheses'} = {
                 {
                   'contents' => [
                     {
+                      'parent' => {},
+                      'text' => '('
+                    },
+                    {
                       'args' => [
                         {
                           'contents' => [
@@ -342,9 +346,10 @@ $result_trees{'node_nested_parentheses'} = {
                 'menu_entry_node' => {
                   'node_content' => [
                     {},
+                    {},
                     {}
                   ],
-                  'normalized' => '_0029_0029_0029-error'
+                  'normalized' => '_0028_0029_0029_0029-error'
                 }
               },
               'line_nr' => {},
@@ -467,10 +472,11 @@ $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'line_nr'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'args'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
-$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'args'}[0];
-$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1];
+$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1];
+$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[2]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[3]{'contents'}[0];
@@ -479,7 +485,8 @@ $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_description'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[3];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_node'}{'node_content'}[0] = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_node'}{'node_content'}[1] = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1];
-$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[0]{'line_nr'};
+$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'extra'}{'menu_entry_node'}{'node_content'}[2] = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[2];
+$result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'line_nr'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'args'}[1]{'contents'}[1]{'line_nr'};
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'args'}[0];
 $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'node_nested_parentheses'}{'contents'}[1]{'contents'}[1]{'contents'}[5];
@@ -496,7 +503,7 @@ $result_texis{'node_nested_parentheses'} = '@node Top
 * ((some) file)::
 * (other (file))node name::
 * (@code{open(}) close)::
-* @code{)))} error::
+* (@code{)))} error::
 @end menu
 ';
 
@@ -505,7 +512,7 @@ $result_texts{'node_nested_parentheses'} = '
 * ((some) file)::
 * (other (file))node name::
 * (open() close)::
-* ))) error::
+* ())) error::
 ';
 
 $result_sectioning{'node_nested_parentheses'} = {};
@@ -575,12 +582,12 @@ $result_menus{'node_nested_parentheses'} = {
 
 $result_errors{'node_nested_parentheses'} = [
   {
-    'error_line' => ':7: @menu reference to nonexistent node `@code{)))} error\'
+    'error_line' => ':7: @menu reference to nonexistent node `(@code{)))} error\'
 ',
     'file_name' => '',
     'line_nr' => 7,
     'macro' => '',
-    'text' => '@menu reference to nonexistent node `@code{)))} error\'',
+    'text' => '@menu reference to nonexistent node `(@code{)))} error\'',
     'type' => 'error'
   }
 ];

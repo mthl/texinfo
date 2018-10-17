@@ -1,5 +1,10 @@
 2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (parse_node_manual): Don't lose a leading (
+	in the case of incorrectly nested parentheses.
+
+2018-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (parse_node_manual): Set parent fields on 
 	new elements.
 

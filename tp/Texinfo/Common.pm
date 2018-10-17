@@ -1496,7 +1496,7 @@ sub parse_node_manual($)
     if ($braces_count == 0) {
       $result->{'manual_content'} = $manual if (defined($manual));
     } else {
-      @contents = @$manual;
+      @contents = ({ 'text' => '(', 'parent' => $node }, @$manual);
     }
   }
   if (@contents) {
