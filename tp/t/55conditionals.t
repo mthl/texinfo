@@ -88,6 +88,10 @@ not tex
 @end ifnottex
 
 After.'],
+['false_format_not_closed',
+'@html
+blah blah
+'],
 ['many_conditionals',
 '@html
 This is html text.
