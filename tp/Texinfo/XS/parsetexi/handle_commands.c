@@ -584,7 +584,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
                     break;
                   if (parent->cmd == CM_titlepage)
                     {
-                      // TODO 4595 global author
                       add_extra_element (current, "titlepage", parent);
                       found = 1; break;
                     }

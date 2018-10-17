@@ -4406,7 +4406,6 @@ sub _parse_texi($;$)
                           and $parent->{'type'} eq 'brace_command_context');
                   if ($parent->{'cmdname'}) {
                     if ($parent->{'cmdname'} eq 'titlepage') {
-                      push @{$self->{'extra'}->{'author'}}, $current;
                       $current->{'extra'}->{'titlepage'} = $parent;
                       $found = 1;
                     } elsif ($parent->{'cmdname'} eq 'quotation' or
