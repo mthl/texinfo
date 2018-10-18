@@ -505,7 +505,6 @@ void
 input_reset_input_stack (void)
 {
   int i;
-  input_number = 0;
   for (i = 0; i < input_number; i++)
     {
       switch (input_stack[i].type)

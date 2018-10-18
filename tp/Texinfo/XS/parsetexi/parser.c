@@ -120,6 +120,7 @@ enum kbd_enum global_kbdinputstyle = kbd_distinct;
 void
 set_documentlanguage (char *value)
 {
+  free (global_documentlanguage);
   global_documentlanguage = value;
 }
 
@@ -249,8 +250,9 @@ wipe_global_info (void)
   free (global_documentlanguage);
   global_clickstyle = strdup ("arrow");
   global_documentlanguage = strdup ("");
-
   global_kbdinputstyle = kbd_distinct;
+
+  free (global_info.input_perl_encoding);
 
   free (global_info.footnotes.contents.list);
 
