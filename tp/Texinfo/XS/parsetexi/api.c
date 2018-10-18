@@ -46,6 +46,8 @@ void
 reset_parser (void)
 {
   debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
+
+  wipe_indices (); /* do before destroying tree to check route_not_in_tree */
   if (Root)
     {
       destroy_element_and_children (Root);
@@ -54,7 +56,6 @@ reset_parser (void)
   wipe_user_commands ();
   wipe_values ();
   wipe_macros ();
-  wipe_indices ();
   init_index_commands ();
   wipe_errors ();
   reset_context_stack ();
