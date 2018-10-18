@@ -624,12 +624,13 @@ input_push_file (char *filename)
       q = strchr (q + 1, '/');
     }
   if (p)
-    filename = strdup (p+1);
+    filename = save_string (p+1);
+  else
+    filename = save_string (filename);
 
   input_stack[input_number].type = IN_file;
   input_stack[input_number].file = stream;
-  input_stack[input_number].line_nr.file_name
-                                       = filename ? strdup (filename) : 0;
+  input_stack[input_number].line_nr.file_name = filename;
   input_stack[input_number].line_nr.line_nr = 0;
   input_stack[input_number].line_nr.macro = 0;
   input_stack[input_number].text = 0;
