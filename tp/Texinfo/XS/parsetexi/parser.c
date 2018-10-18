@@ -121,10 +121,9 @@ void
 set_documentlanguage (char *value)
 {
   free (global_documentlanguage);
-  global_documentlanguage = value;
+  global_documentlanguage = strdup (value);
 }
 
-// 1056
 /* Record the information from a command of global effect. */
 int
 register_global_command (ELEMENT *current)
