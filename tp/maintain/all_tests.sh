@@ -53,7 +53,7 @@ else
   . ./defs || exit 1
 
   if [ "$command" = 'generate' ]; then
-    for file in t/*.t; do
+    for file in $srcdir/t/*.t; do
       set -e
       $PERL -w $file -g
     done
