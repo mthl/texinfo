@@ -65,6 +65,7 @@ reset_parser (void)
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
+  free_small_strings ();
   reset_conf ();
 
   current_node = current_section = current_part = 0;

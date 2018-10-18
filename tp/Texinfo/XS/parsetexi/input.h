@@ -12,6 +12,9 @@ int expanding_macro (char *macro);
 int top_file_index (void);
 char *locate_include_file (char *filename);
 
+char *save_string (char *string);
+void free_small_strings (void);
+
 extern LINE_NR line_nr;
 
 extern int input_number;

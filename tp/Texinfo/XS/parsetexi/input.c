@@ -401,9 +401,10 @@ next_text (ELEMENT *current)
           if (file != stdin)
             {
               if (fclose (input_stack[input_number - 1].file) == EOF)
-                abort (); // error
+                abort (); // FIXME: error
             }
         }
+
       input_number--;
     }
   return 0;
@@ -429,11 +430,50 @@ input_push (char *text, char *macro, char *filename, int line_number)
   if (!macro)
     line_number--;
   input_stack[input_number].line_nr.line_nr = line_number;
-  input_stack[input_number].line_nr.file_name
-                                       = filename ? strdup (filename) : 0;
-  input_stack[input_number].line_nr.macro = macro ? strdup (macro) : 0;
+  input_stack[input_number].line_nr.file_name = save_string (filename);
+  input_stack[input_number].line_nr.macro = save_string (macro);
   input_number++;
 }
+
+/* For filenames and macro names, it is possible that they won't be referenced 
+   in the line number of any element.  It would be too much work to keep track, 
+   so just keep them all here, and free them all together at the end. */
+static char **small_strings;
+static size_t small_strings_num;
+static size_t small_strings_space;
+
+char *
+save_string (char *string)
+{
+  char *ret = string ? strdup (string) : 0;
+  if (ret)
+    {
+      if (small_strings_num == small_strings_space)
+        {
+          small_strings_space++;
+          small_strings_space += (small_strings_space >> 2);
+          small_strings = realloc (small_strings, small_strings_space
+                                   * sizeof (char *));
+          if (!small_strings)
+            abort ();
+        }
+      small_strings[small_strings_num++] = ret;
+    }
+  return ret;
+}
+
+/* Called in reset_parser. */
+void
+free_small_strings (void)
+{
+  size_t i;
+  for (i = 0; i < small_strings_num; i++)
+    {
+      free (small_strings[i]);
+    }
+  small_strings_num = 0;
+}
+
 
 /* Store TEXT as a source for Texinfo content.  TEXT should be a UTF-8
    string.  TEXT will be later free'd and must be allocated on the heap.

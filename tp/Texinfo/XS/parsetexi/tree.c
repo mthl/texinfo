@@ -91,11 +91,6 @@ destroy_element (ELEMENT *e)
                 destroy_element (nse->manual_content);
               if (nse->node_content)
                 destroy_element (nse->node_content);
-              /* Problem - some of the elements in 'node_content' may not
-                 have been in the main tree and need to be freed as well.
-                 We can't rely on checking whether the elements are 
-                 'route_not_in_tree' as the elements may have been freed 
-                 already. */
               free (nse);
               break;
             }
@@ -111,7 +106,6 @@ destroy_element (ELEMENT *e)
                   if ((*nse)->node_content)
                     destroy_element ((*nse)->node_content);
                   free (*nse);
-                  /* FIXME: same problem as above */
                 }
               free (array);
               break;

@@ -249,6 +249,8 @@ wipe_global_info (void)
   global_kbdinputstyle = kbd_distinct;
   global_documentlanguage = "";
 
+  free (global_info.footnotes.contents.list);
+
 #define GLOBAL_CASE(cmx) \
   free (global_info.cmx.contents.list)
 
@@ -1787,7 +1789,7 @@ value_invalid:
 #if 0
       else
         {
-          /* error: unknown command */
+          /* TODO: error: unknown command */
         }
 #endif
     }
@@ -1864,7 +1866,8 @@ ELEMENT *
 parse_texi (ELEMENT *root_elt)
 {
   ELEMENT *current = root_elt;
-  char *allocated_line = 0, *line;
+  static char *allocated_line;
+  char *line;
 
   /* Read input file line-by-line. */
   while (1)
@@ -1942,7 +1945,7 @@ finished_totally:
         current = current->parent;
     }
 
-  /* Check for "unclosed stacks". */
+  /* TODO: Check for "unclosed stacks". */
 
   return current;
 } /* 5372 */

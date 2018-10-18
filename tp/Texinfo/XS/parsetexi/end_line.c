@@ -794,48 +794,6 @@ kdbinputstyle_invalid:
 #undef ADD_ARG
 }
 
-/* Return a new element whose contents are the same as those of ORIGINAL,
-   but with some elements representing empty spaces removed. */
-ELEMENT *
-trim_spaces_comment_from_content (ELEMENT *original)
-{
-  ELEMENT *trimmed;
-  int i, j, k;
-  enum element_type t;
-
-  trimmed = new_element (ET_NONE);
-  trimmed->parent_type = route_not_in_tree;
-
-  if (original->contents.number == 0)
-    return trimmed;
-
-  i = 1;
-  t = original->contents.list[0]->type;
-  if (t != ET_empty_line_after_command
-      && t != ET_empty_spaces_after_command
-      && t != ET_empty_spaces_before_argument
-      && t != ET_empty_space_at_end_def_bracketed
-      && t != ET_empty_spaces_after_close_brace)
-    i = 0;
-
-  for (j = original->contents.number - 1; j >= 0; j--)
-    {
-      enum element_type t = original->contents.list[j]->type;
-      if (original->contents.list[j]->cmd != CM_c
-          && original->contents.list[j]->cmd != CM_comment
-          && t != ET_spaces_at_end
-          && t != ET_space_at_end_block_command)
-        break;
-    }
-  for (k = i; k <= j; k++)
-    {
-      add_to_contents_as_array (trimmed, original->contents.list[k]);
-    }
-
-  return trimmed;
-}
-
-// 2257
 /* NODE->contents is the Texinfo for the specification of a node.  This
    function sets three fields on the returned object:
 
@@ -860,7 +818,6 @@ parse_node_manual (ELEMENT *node)
 
   result = malloc (sizeof (NODE_SPEC_EXTRA));
   result->manual_content = result->node_content = 0;
-
 
   /* If the content starts with a '(', try to get a manual name. */
   if (node->contents.number > 0 && node->contents.list[0]->text.end > 0
