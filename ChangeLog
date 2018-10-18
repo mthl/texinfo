@@ -1,5 +1,11 @@
 2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README: State that we may use a range like 2008-2010 in 
+	listing copyright years.  (The GNU maintainers guide requires 
+	such a statement.)
+
+2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/defs.in: Add srcdir.
 	* tp/maintain/all_tests.sh (generate): Run test scripts in srcdir.
 
