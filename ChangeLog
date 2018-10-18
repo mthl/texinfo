@@ -2,8 +2,15 @@
 	
 	* tp/tests/formatting/list-of-tests
 	(documentlanguage_set_option, documentlanguage_set_unknown):
+	(formatting_documentlanguage_set_option_info)
+	(formatting_split_for_format_not_split)
 	Remove.
 	* tp/t/92formatting.t: Add the same tests.
+
+	* tp/tests/formatting/list-of-tests
+	(simple_with_menu_docbook_info): Remove.  This tested the 
+	combination of "--docbook --info" which is equivalent to just 
+	"--info".
 
 2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 

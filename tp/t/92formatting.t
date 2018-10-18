@@ -148,10 +148,24 @@ my @test_cases = (
    'documentlanguage' => 'unknown'},
   {'documentlanguage' => 'unknown'},
 ],
+['documentlanguage_set_option_info',
+  undef,
+  {'test_file' => 'documentlanguage_set.texi',
+   'test_formats' => ['file_info'],
+   'documentlanguage' => 'fr'},
+  {'documentlanguage' => 'fr'},
+],
 ['float_copying',
   undef,
   {'test_file' => 'float_copying.texi',
    'test_formats' => ['file_html']
+  },
+  {'SPLIT' => 'chapter'}
+],
+['split_for_format_not_split',
+  undef,
+  {'test_file' => 'simplest.texi',
+   'test_formats' => ['file_xml']
   },
   {'SPLIT' => 'chapter'}
 ],
