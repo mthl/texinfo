@@ -177,6 +177,7 @@ test_files = \
  t/input_files/cpp_lines.texi \
  t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
+ t/input_files/documentlanguage_set.texi \
  t/input_files/double_index_entry.texi \
  t/input_files/east_asian_in_w.texi \
  t/input_files/empty.texi \
@@ -196,6 +197,7 @@ test_files = \
  t/input_files/one_line.texi \
  t/input_files/one_line_no_content.texi \
  t/input_files/sample_utf8.texi \
+ t/input_files/simplest.texi \
  t/input_files/split_chapter_index.texi \
  t/input_files/split_nocopying.texi \
  t/input_files/test_refs.texi \
