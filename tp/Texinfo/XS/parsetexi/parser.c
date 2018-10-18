@@ -254,6 +254,7 @@ wipe_global_info (void)
 
   free (global_info.input_perl_encoding);
 
+  free (global_info.dircategory_direntry.contents.list);
   free (global_info.footnotes.contents.list);
 
 #define GLOBAL_CASE(cmx) \

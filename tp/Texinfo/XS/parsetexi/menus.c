@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -37,10 +36,12 @@ register_extra_menu_entry_information (ELEMENT *current)
         {
           add_extra_element (current, "menu_entry_name", arg);
           if (arg->contents.number == 0)
-            line_warn ("empty menu entry name in `%s'",
-                       convert_to_texinfo (current));
-
-          // Check menu label isn't empty
+            {
+              char *texi = convert_to_texinfo (current);
+              line_warn ("empty menu entry name in `%s'", texi);
+              free (texi);
+            }
+          // FIXME: Check menu label isn't empty
         }
       else if (arg->type == ET_menu_entry_node)
         {

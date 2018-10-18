@@ -179,6 +179,7 @@ convert_to_texinfo_internal (ELEMENT *e, TEXT *result)
 }
 #undef ADD
 
+/* Return value to be freed by caller. */
 char *
 convert_to_texinfo (ELEMENT *e)
 {

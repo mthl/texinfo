@@ -70,14 +70,6 @@ typedef struct LINE_NR {
 enum route_element_type { route_uninitialized, route_contents, route_args,
     route_not_in_tree };
 
-typedef struct {
-    /* Element that contains a reference to this one. */
-    struct ELEMENT *element;
-
-    /* Index into the referring element's extra keys that is the reference. */
-    int extra_index;
-} PENDING_REFERENCE;
-
 typedef struct ELEMENT {
     enum command_id cmd;
     TEXT text;
@@ -104,7 +96,7 @@ typedef struct GLOBAL_INFO {
     char *input_encoding_name;
     char *input_perl_encoding;
     int sections_level;
-    ELEMENT dircategory_direntry;
+    ELEMENT dircategory_direntry; /* an array of elements */
 
     /* Elements that should be unique. */
     // 288 and Common.pm:164
