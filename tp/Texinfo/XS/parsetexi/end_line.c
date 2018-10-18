@@ -146,7 +146,7 @@ parse_special_misc_command (char *line, enum command_id cmd, int *has_comment)
 
   ELEMENT *args = new_element (ET_NONE);
   char *p = 0, *q = 0, *r = 0;
-  char *value, *remaining = 0;;
+  char *value = 0, *remaining = 0;;
 
   switch (cmd)
     {
@@ -206,6 +206,7 @@ set_invalid:
       flag = read_command_name (&q);
       if (!flag)
         goto clear_invalid;
+      free (flag);
       r = q + strspn (q, whitespace_chars);
       if (*r)
         goto clear_invalid; /* Trailing argument. */
@@ -230,7 +231,7 @@ clear_invalid:
       value = read_command_name (&q);
       if (!value)
         goto unmacro_badname;
-      /* TODO: Check comment syntax is right */
+      /* FIXME: Check comment syntax is right */
       delete_macro (value);
       ADD_ARG(value, q - p);
       debug ("UNMACRO %s", value);
@@ -252,15 +253,16 @@ unmacro_badname:
       if (!value)
         goto clickstyle_invalid;
       ADD_ARG (p - 1, q - p + 1);
-      global_clickstyle = value;
+      free (global_clickstyle); global_clickstyle = value;
       if (!memcmp (q, "{}", 2))
         q += 2;
       remaining = q;
-      /* TODO: check comment */
+      /* FIXME: check comment */
       break;
 clickstyle_invalid:
       line_error ("@clickstyle should only accept an @-command as argument, "
                    "not `%s'", line);
+      free (value);
       break;
     default:
       abort ();
@@ -515,9 +517,11 @@ parse_line_command_args (ELEMENT *line_command)
       defindex_invalid:
         line_error ("bad argument to @%s: %s",
                      command_name(cmd), line);
+        free (name);
         break;
       defindex_reserved:
         line_error ("reserved index name %s", name);
+        free (name);
         break;
       }
     case CM_synindex:
@@ -1521,6 +1525,7 @@ end_line_misc_line (ELEMENT *current)
                         }
                     }
                 }
+              free (text2);
 
               if (perl_encoding)
                 {
@@ -1543,7 +1548,8 @@ end_line_misc_line (ELEMENT *current)
                     }
                   add_extra_string_dup (current, "input_perl_encoding",
                                         perl_encoding);
-                  global_info.input_perl_encoding = perl_encoding;
+                  free (global_info.input_perl_encoding);
+                  global_info.input_perl_encoding = strdup (perl_encoding);
                 }
               else
                 {
@@ -1648,7 +1654,7 @@ end_line_misc_line (ELEMENT *current)
                 }
 
               global_documentlanguage = strdup (text);
-              /* TODO: check customization variable */
+              /* FIXME: check customization variable */
             }
         }
       if (superfluous_arg)
@@ -1748,7 +1754,7 @@ end_line_misc_line (ELEMENT *current)
             }
           else
             {
-              // 3273 possibly check for @def... command
+              // 3273 FIXME possibly check for @def... command
             }
 
 
@@ -1791,7 +1797,7 @@ end_line_misc_line (ELEMENT *current)
             {
               /* shouldn't get here, but got here
                  on 2015.11.30 for t/16raw.t */
-              //abort (); // 3335
+              //FIXME abort (); // 3335
             }
           else
             { // 3295
@@ -1799,7 +1805,7 @@ end_line_misc_line (ELEMENT *current)
               add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 
-              // 3301 INLINE_INSERTCOPYING
+              // 3301 FIXME INLINE_INSERTCOPYING
 
               add_to_element_contents (closed_command, end_elt); // 3321
 
@@ -2243,7 +2249,6 @@ end_line (ELEMENT *current)
            && contents_child_by_index(current, -2)
            && contents_child_by_index(current, -2)->cmd == CM_verbatim)
     {
-      // I don't know what this means.  raw command is @html etc.?
       /*
      if we are after a @end verbatim, we must restart a preformatted if needed,
      since there is no @end command explicitly associated to raw commands

@@ -137,6 +137,7 @@ wipe_index (INDEX *idx)
       //destroy_element (ie->content);
       // TODO - check if above is required
     }
+  free (idx->name);
   free (idx->index_entries);
 }
 
@@ -217,7 +218,7 @@ init_index_commands (void)
   for (p = default_indices; p->name; p++)
     {
       /* Both @cindex and @cpindex are added. */
-      idx = add_index_internal (p->name, p->in_code);
+      idx = add_index_internal (strdup (p->name), p->in_code);
 
       *name = p->name[0];
       add_index_command (name, idx); /* @cindex */

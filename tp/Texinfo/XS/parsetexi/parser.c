@@ -112,8 +112,8 @@ COUNTER count_cells;
 /* Information that is not local to where it is set in the Texinfo input,
    for example document language and encoding. */
 GLOBAL_INFO global_info;
-char *global_clickstyle = "arrow";
-char *global_documentlanguage = "";
+char *global_clickstyle = 0;
+char *global_documentlanguage = 0;
 
 enum kbd_enum global_kbdinputstyle = kbd_distinct;
 
@@ -245,9 +245,12 @@ register_global_command (ELEMENT *current)
 void
 wipe_global_info (void)
 {
-  global_clickstyle = "arrow";
+  free (global_clickstyle);
+  free (global_documentlanguage);
+  global_clickstyle = strdup ("arrow");
+  global_documentlanguage = strdup ("");
+
   global_kbdinputstyle = kbd_distinct;
-  global_documentlanguage = "";
 
   free (global_info.footnotes.contents.list);
 
@@ -300,7 +303,7 @@ parse_texi_file (char *filename)
   status = input_push_file (filename);
   if (status)
     {
-      /* TODO document_error */
+      /* FIXME document_error */
       abort ();
     }
 
@@ -1944,12 +1947,10 @@ finished_totally:
       while (current->parent)
         current = current->parent;
     }
+  
+  input_reset_input_stack (); /* to avoid a memory leak if @bye is given */
 
   /* TODO: Check for "unclosed stacks". */
 
   return current;
-} /* 5372 */
-
-
-
-/* 5793 - end of code in Parser.pm */
+}
