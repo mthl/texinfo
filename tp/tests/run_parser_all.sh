@@ -181,6 +181,8 @@ if [ "z$srcdir" = 'z' ]; then
   srcdir=.
 fi
 
+. $testdir/../../defs || exit 1
+
 one_test_logs_dir=$testdir/test_log
 logfile=$testdir/tests.log
 
@@ -282,8 +284,6 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
   done < "$driving_file"
   exit 0
 fi
-
-. $testdir/../../defs || exit 1
 
 test -d $testdir/$diffs_dir || mkdir $testdir/$diffs_dir
 staging_dir_res=$testdir/$diffs_dir/staging_res/

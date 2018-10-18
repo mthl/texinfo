@@ -1,5 +1,10 @@
 2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Source 'defs' before setting 
+	srcdir.
+
+2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README: State that we may use a range like 2008-2010 in 
 	listing copyright years.  (The GNU maintainers guide requires 
 	such a statement.)
