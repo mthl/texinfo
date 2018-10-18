@@ -1,4 +1,11 @@
 2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* tp/tests/formatting/list-of-tests
+	(documentlanguage_set_option, documentlanguage_set_unknown):
+	Remove.
+	* tp/t/92formatting.t: Add the same tests.
+
+2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/run_parser_all.sh: Source 'defs' before setting 
 	srcdir.
