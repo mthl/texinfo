@@ -1969,7 +1969,7 @@ end_line (ELEMENT *current)
           if (current->contents.number == 0)
             {
               current = current->parent;
-              pop_element_from_contents (current);
+              destroy_element (pop_element_from_contents (current));
             }
           else
             current = current->parent;
