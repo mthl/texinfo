@@ -663,6 +663,14 @@ sub test($$)
     }
     delete $parser_options->{'test_split'};
   }
+
+  if (!$self->{'generate'}) {
+    mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
+  } else {
+    mkdir $srcdir."t/results/$self->{'name'}"
+      if (! -d $srcdir."t/results/$self->{'name'}");
+  }
+
   my %todos;
   if ($parser_options->{'todo'}) {
     %todos = %{$parser_options->{'todo'}};
@@ -782,9 +790,14 @@ sub test($$)
            = &{$formats{$format}}($self, $test_name, $format_type, 
                                   $result, $parser, 
                                   $parser_options, $format_converter_options);
+
+      # TODO: is it really useful to give this warning?
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
       if (defined($converted{$format}) and $format =~ /^file_/) {
-        warn "Warning: output generated for $format by $test_name\n";
+        warn "Warning: errors printed for $format by $test_name\n";
+        foreach my $error_message (@{$converted_errors{$format}}) {
+          warn $error_message->{'error_line'};
+        }
       }
       #print STDERR "$format: \n$converted{$format}";
 
@@ -875,13 +888,9 @@ sub test($$)
     my $out_file;
     if (!$self->{'generate'}) {
       $out_file = $new_file;
-      mkdir "t/results/$self->{'name'}" if (! -d "t/results/$self->{'name'}");
     } else {
       $out_file = $srcdir.$file;
-      mkdir $srcdir."t/results/$self->{'name'}"
-        if (! -d $srcdir."t/results/$self->{'name'}");
     }
-
     open (OUT, ">$out_file") or die "Open $out_file: $!\n";
     binmode (OUT, ":encoding(utf8)");
     print OUT 'use vars qw(%result_texis %result_texts %result_trees %result_errors '."\n".

@@ -1,3 +1,13 @@
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl: Create the output directory for the test
+	before running the conversion.  This means that if the test 
+	needs to create output files, the directory to contain them will 
+	exist.  It didn't exist the first time a test file was run when 
+	the very first test in the file needed to create output.
+	If there are conversion errors from texi2any, print them instead 
+	of just printing a message "Warning: output generated".
+
 2018-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 	
 	* tp/tests/formatting/list-of-tests
