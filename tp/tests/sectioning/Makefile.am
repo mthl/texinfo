@@ -19,6 +19,7 @@ EXTRA_DIST = \
  top_node_up_implicit.texi \
  top_node_up_explicit.texi \
  two_footnotes_in_nodes.texi \
+ version.texi \
  \
  renamednodes.cnf-ref \
  list-of-tests \

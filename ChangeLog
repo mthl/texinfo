@@ -1,5 +1,10 @@
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/sectioning/list-of-tests (test_two_include): Move an 
+	input file to this directory.
+
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/test_utils.pl: Create the output directory for the test
 	before running the conversion.  This means that if the test 
 	needs to create output files, the directory to contain them will 
