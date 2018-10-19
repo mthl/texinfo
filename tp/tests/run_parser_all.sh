@@ -2,8 +2,7 @@
 # $Id$
 # Run all Texinfo tests.
 # 
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-# Free Software Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -317,8 +316,7 @@ while read line; do
   fi
 
   basename=`basename $file .texi`
-  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//' \
-      | sed 's,@PATH_SEPARATOR@,'"${PATH_SEPARATOR}$srcdir/$testdir/"',g'`
+  remaining=`echo $line | sed 's/[a-zA-Z0-9_./-]*  *[a-zA-Z0-9_./-]* *//'`
   src_file="$srcdir/$testdir/$file"
   
   for command_dir in $commands; do

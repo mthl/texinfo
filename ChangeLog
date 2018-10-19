@@ -1,5 +1,15 @@
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/run_parser_all.sh: Do not substitute a
+	"@PATH_SEPARATOR@" sequence in the list-of-tests files.
+	It is only used in one test so is not worth the complication.
+	* tp/tests/sectioning/list-of-tests (test_two_include):
+	Remove this test.
+	
+	* tp/defs.in: Do not set PATH_SEPARATOR.
+
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/sectioning/list-of-tests:
 	(no_section_no_top, no_section_no_top_no_node)
 	(more_nodes_than_sections, one_node_no_node, one_node)

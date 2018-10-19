@@ -5,7 +5,6 @@
 node_footnote_end node_footnote.texi --footnote-style=end
 node_footnote_use_node node_footnote.texi -c 'USE_NODES 1' --node-files --footnote-style=end --split node
 node_footnote_separated node_footnote.texi --footnote-style=separate
-test_two_include test_two_include.texi -I .@PATH_SEPARATOR@../formatting
 equivalent_nodes equivalent_nodes.texi -c 'USE_NODES 1'
 equivalent_nodes_no_node equivalent_nodes.texi
 equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
