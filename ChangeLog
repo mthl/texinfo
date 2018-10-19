@@ -1,5 +1,13 @@
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/sectioning/list-of-tests:
+	(no_section_no_top, no_section_no_top_no_node)
+	(more_nodes_than_sections, one_node_no_node, one_node)
+	(no_node_chapter_split):
+	Remove.  Similar tests exist under tp/t/30sectioning.t.
+
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/defs.in: Do not set srcdir if it is already set.
 
 	"make distcheck" works again now.
