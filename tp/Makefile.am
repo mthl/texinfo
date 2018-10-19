@@ -177,12 +177,14 @@ test_files = \
  t/input_files/cpp_lines.texi \
  t/input_files/defxcond.texi \
  t/input_files/delcomment.texi \
+ t/input_files/direntry_dircategory.texi \
  t/input_files/documentlanguage_set.texi \
  t/input_files/double_index_entry.texi \
  t/input_files/east_asian_in_w.texi \
  t/input_files/empty.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename.texi \
  t/input_files/empty_lines_at_beginning_no_setfilename_no_element.texi \
+ t/input_files/float_copying.texi \
  t/input_files/formatting.texi \
  t/input_files/glossary.texi \
  t/input_files/index_no_node.texi \
@@ -192,6 +194,7 @@ test_files = \
  t/input_files/navigation.texi \
  t/input_files/nodequote.texi \
  t/input_files/nodes_before_top.texi \
+ t/input_files/nodes_before_top_and_sections.texi \
  t/input_files/no_monolithic.texi \
  t/input_files/non_break_spaces.texi \
  t/input_files/one_line.texi \
