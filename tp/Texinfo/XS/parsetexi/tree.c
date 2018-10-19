@@ -70,6 +70,24 @@ destroy_element (ELEMENT *e)
           if (e->extra[i].value)
             destroy_element ((ELEMENT *) e->extra[i].value);
           break;
+        case extra_contents_oot:
+          {
+            /* Only used for 'prototypes' */
+            /* Destroy each element in the array, but not any children
+               of each element. */
+            int j;
+            ELEMENT *array = e->extra[i].value;
+            for (j = 0 ; j < array->contents.number; j++)
+              {
+                if (array->contents.list[j])
+                  {
+                    free (array->contents.list[j]->text.text);
+                    free (array->contents.list[j]);
+                  }
+              }
+            destroy_element (array);
+            break;
+          }
         case extra_contents_array:
           {
             int j;

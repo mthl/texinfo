@@ -100,6 +100,7 @@ void gather_previous_item (ELEMENT *current, enum command_id next_command);
 void add_extra_element (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_contents (ELEMENT *e, char *key, ELEMENT *value);
+void add_extra_contents_oot (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_text (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);

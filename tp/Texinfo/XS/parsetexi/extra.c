@@ -68,6 +68,13 @@ add_extra_contents (ELEMENT *e, char *key, ELEMENT *value)
   add_extra_key (e, key, value, extra_contents);
 }
 
+/* Like add_extra_contents but all of the contents are out-of-tree. */
+void
+add_extra_contents_oot (ELEMENT *e, char *key, ELEMENT *value)
+{
+  add_extra_key (e, key, value, extra_contents_oot);
+}
+
 /* An array of content arrays. */
 void
 add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)

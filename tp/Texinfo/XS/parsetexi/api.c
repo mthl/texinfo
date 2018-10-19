@@ -359,6 +359,7 @@ element_to_perl_hash (ELEMENT *e)
               STORE(newRV_inc ((SV *)f->hv));
               break;
             case extra_contents:
+            case extra_contents_oot:
               {
               int j;
               if (f)

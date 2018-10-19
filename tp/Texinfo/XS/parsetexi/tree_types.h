@@ -28,6 +28,7 @@ enum extra_type {
     extra_element,
     extra_element_oot,
     extra_contents,
+    extra_contents_oot,
     extra_contents_array,
     extra_text,
     extra_index_entry,

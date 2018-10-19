@@ -1050,37 +1050,25 @@ end_line_starting_block (ELEMENT *current)
             }
           else // 2913
             {
-              // Perl code was sceptical whether we could get here,
-              // but we got here from t/21multitable.t on 2015.11.30.
-              // FIXME: put an abort() here and run the tests
               if (!e->cmd)
                 {
                   command_warn (current, "unexpected argument on @%s line:",
                                 command_name(current->cmd));
                   // TODO: Convert argument to Texinfo
                 }
-              else if (e->cmd != CM_c && e->cmd != CM_comment)
-                {
-                  add_to_contents_as_array (prototypes, e);
-                }
             }
         }
 
       {
-      char *s; /* FIXME: could just use prototypes instead */
       int max_columns = prototypes->contents.number;
-      asprintf (&s, "%d", max_columns);
-      add_extra_string (current->parent, "max_columns", s);
+      add_extra_integer (current->parent, "max_columns", max_columns);
       if (max_columns == 0)
         command_warn (current->parent, "empty multitable");
       }
-      add_extra_contents (current->parent, "prototypes", prototypes);
-      isolate_last_space (current);
+      add_extra_contents_oot (current->parent, "prototypes", prototypes);
+      /* See code in destroy_element for how prototypes is deallocated. */
     }
-  else
-    {
-      isolate_last_space (current);
-    }
+  isolate_last_space (current);
 
   current = current->parent; //2965
   if (counter_value (&count_remaining_args, current) != -1)
