@@ -1,5 +1,11 @@
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/defs.in: Do not set srcdir if it is already set.
+
+	"make distcheck" works again now.
+
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/sectioning/list-of-tests (test_two_include): Move an 
 	input file to this directory.
 
