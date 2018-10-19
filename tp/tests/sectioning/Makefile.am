@@ -20,12 +20,12 @@ EXTRA_DIST = \
  \
  renamednodes.cnf-ref \
  list-of-tests \
- res_parser res_parser_html
+ res_parser
 
 DISTCLEANFILES = tests.log tests.out equivalent_nodes-noderename.cnf
 
 distclean-local:
-	rm -rf out_parser out_parser_html diffs test_log
+	rm -rf out_parser diffs test_log
 
 dist-hook:
-	rm -rf `find $(distdir)/res_parser $(distdir)/res_parser_html -name .svn`
+	rm -rf `find $(distdir)/res_parser -name .svn`

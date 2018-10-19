@@ -1,5 +1,11 @@
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/sectioning/list-of-tests: Do not run every test
+	twice, once with '--html', once with '-c TEXI2HTML'.  Only use 
+	the latter.
+
+2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/run_parser_all.sh: Do not substitute a
 	"@PATH_SEPARATOR@" sequence in the list-of-tests files.
 	It is only used in one test so is not worth the complication.
