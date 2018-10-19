@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,14 +65,14 @@ add_extra_element_oot (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_contents (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_element_contents);
+  add_extra_key (e, key, value, extra_contents);
 }
 
 /* An array of content arrays. */
 void
 add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_element_contents_array);
+  add_extra_key (e, key, value, extra_contents_array);
 }
 
 /* Add an extra key that is a reference to the text field of another
@@ -81,7 +80,7 @@ add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value)
 void
 add_extra_text (ELEMENT *e, char *key, ELEMENT *value)
 {
-  add_extra_key (e, key, value, extra_element_text);
+  add_extra_key (e, key, value, extra_text);
 }
 
 void

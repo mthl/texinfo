@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -67,11 +66,11 @@ destroy_element (ELEMENT *e)
         case extra_element_oot:
           destroy_element_and_children (e->extra[i].value);
           break;
-        case extra_element_contents:
+        case extra_contents:
           if (e->extra[i].value)
             destroy_element ((ELEMENT *) e->extra[i].value);
           break;
-        case extra_element_contents_array:
+        case extra_contents_array:
           {
             int j;
             ELEMENT *array = e->extra[i].value;

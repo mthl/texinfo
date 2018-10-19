@@ -1052,6 +1052,7 @@ end_line_starting_block (ELEMENT *current)
             {
               // Perl code was sceptical whether we could get here,
               // but we got here from t/21multitable.t on 2015.11.30.
+              // FIXME: put an abort() here and run the tests
               if (!e->cmd)
                 {
                   command_warn (current, "unexpected argument on @%s line:",

@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -359,16 +358,16 @@ element_to_perl_hash (ELEMENT *e)
                 element_to_perl_hash (f);
               STORE(newRV_inc ((SV *)f->hv));
               break;
-            case extra_element_contents:
+            case extra_contents:
               {
               int j;
               if (f)
                 STORE(build_perl_array (&f->contents));
               break;
               }
-            case extra_element_contents_array:
+            case extra_contents_array:
               {
-              /* Like extra_element_contents, but this time output an array
+              /* Like extra_contents, but this time output an array
                  of arrays (instead of an array). */
               int j, k;
               AV *av;

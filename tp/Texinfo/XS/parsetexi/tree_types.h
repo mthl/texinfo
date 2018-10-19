@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,9 +27,9 @@ typedef struct TEXT {
 enum extra_type {
     extra_element,
     extra_element_oot,
-    extra_element_contents,
-    extra_element_contents_array,
-    extra_element_text,
+    extra_contents,
+    extra_contents_array,
+    extra_text,
     extra_index_entry,
     extra_misc_args,
     extra_node_spec,
