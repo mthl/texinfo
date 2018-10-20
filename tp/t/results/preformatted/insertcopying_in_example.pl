@@ -20,6 +20,14 @@ $result_trees{'insertcopying_in_example'} = {
           'type' => 'empty_line_after_command'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'insertcopying',
           'line_nr' => {
             'file_name' => '',
@@ -30,11 +38,6 @@ $result_trees{'insertcopying_in_example'} = {
         },
         {
           'contents' => [
-            {
-              'parent' => {},
-              'text' => '
-'
-            },
             {
               'parent' => {},
               'text' => 'text
@@ -90,9 +93,9 @@ $result_trees{'insertcopying_in_example'} = {
 };
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[0]{'extra'}{'command'} = $result_trees{'insertcopying_in_example'}{'contents'}[0];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0];
+$result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[1];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[2];
-$result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[2];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'insertcopying_in_example'}{'contents'}[0]{'contents'}[3];
@@ -107,35 +110,30 @@ text
 ';
 
 
-$result_texts{'insertcopying_in_example'} = '
-text
+$result_texts{'insertcopying_in_example'} = 'text
 ';
 
 $result_errors{'insertcopying_in_example'} = [];
 
 
 
-$result_converted{'plaintext'}->{'insertcopying_in_example'} = '
-     text
+$result_converted{'plaintext'}->{'insertcopying_in_example'} = '     text
 ';
 
 
 $result_converted{'html_text'}->{'insertcopying_in_example'} = '<div class="example">
-<pre class="example">
-
-text
+<pre class="example">text
 </pre></div>
 ';
 
 
-$result_converted{'docbook'}->{'insertcopying_in_example'} = '<screen>
-text
+$result_converted{'docbook'}->{'insertcopying_in_example'} = '<screen>text
 </screen>';
 
 
 $result_converted{'xml'}->{'insertcopying_in_example'} = '<example endspaces=" ">
-<insertcopying></insertcopying><pre xml:space="preserve">
-text
+<insertcopying></insertcopying>
+<pre xml:space="preserve">text
 </pre></example>
 ';
 

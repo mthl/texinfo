@@ -43,9 +43,21 @@ $result_trees{'recursive_copying'} = {
           'type' => 'empty_line'
         },
         {
-          'parent' => {},
-          'text' => '
-'
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
+          'cmdname' => 'insertcopying',
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
+          'parent' => {}
         },
         {
           'args' => [
@@ -95,6 +107,14 @@ $result_trees{'recursive_copying'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'insertcopying',
       'line_nr' => {
         'file_name' => '',
@@ -102,11 +122,6 @@ $result_trees{'recursive_copying'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
     }
   ],
   'type' => 'text_root'
@@ -117,6 +132,7 @@ $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[1]{'parent'} = $re
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[2];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[3]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0];
+$result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[4];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[4]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0];
 $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
@@ -124,14 +140,14 @@ $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5]{'parent'} = $re
 $result_trees{'recursive_copying'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'recursive_copying'}{'contents'}[0]{'contents'}[5];
 $result_trees{'recursive_copying'}{'contents'}[0]{'parent'} = $result_trees{'recursive_copying'};
 $result_trees{'recursive_copying'}{'contents'}[1]{'parent'} = $result_trees{'recursive_copying'};
+$result_trees{'recursive_copying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'recursive_copying'}{'contents'}[2];
 $result_trees{'recursive_copying'}{'contents'}[2]{'parent'} = $result_trees{'recursive_copying'};
-$result_trees{'recursive_copying'}{'contents'}[3]{'parent'} = $result_trees{'recursive_copying'};
 
 $result_texis{'recursive_copying'} = '@copying
 
 In copying.
 
-
+@insertcopying
 @end copying
 
 @insertcopying
@@ -139,20 +155,9 @@ In copying.
 
 
 $result_texts{'recursive_copying'} = '
-
 ';
 
-$result_errors{'recursive_copying'} = [
-  {
-    'error_line' => ':5: @insertcopying not allowed inside `@copying\' block
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@insertcopying not allowed inside `@copying\' block',
-    'type' => 'error'
-  }
-];
+$result_errors{'recursive_copying'} = [];
 
 
 1;

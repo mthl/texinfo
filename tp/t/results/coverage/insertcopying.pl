@@ -165,6 +165,14 @@ $result_trees{'insertcopying'} = {
       'type' => 'empty_line'
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'insertcopying',
       'line_nr' => {
         'file_name' => '',
@@ -172,11 +180,6 @@ $result_trees{'insertcopying'} = {
         'macro' => ''
       },
       'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '
-'
     }
   ],
   'type' => 'text_root'
@@ -204,8 +207,8 @@ $result_trees{'insertcopying'}{'contents'}[1]{'parent'} = $result_trees{'insertc
 $result_trees{'insertcopying'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'insertcopying'}{'contents'}[2];
 $result_trees{'insertcopying'}{'contents'}[2]{'parent'} = $result_trees{'insertcopying'};
 $result_trees{'insertcopying'}{'contents'}[3]{'parent'} = $result_trees{'insertcopying'};
+$result_trees{'insertcopying'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'insertcopying'}{'contents'}[4];
 $result_trees{'insertcopying'}{'contents'}[4]{'parent'} = $result_trees{'insertcopying'};
-$result_trees{'insertcopying'}{'contents'}[5]{'parent'} = $result_trees{'insertcopying'};
 
 $result_texis{'insertcopying'} = '@copying
 License.
@@ -223,7 +226,6 @@ License:
 
 $result_texts{'insertcopying'} = '
 License:
-
 
 ';
 
@@ -247,7 +249,6 @@ $result_converted{'html_text'}->{'insertcopying'} = '
 <blockquote>
 <p>You are not allowed.
 </p></blockquote>
-
 ';
 
 
@@ -274,7 +275,6 @@ $result_converted{'docbook'}->{'insertcopying'} = '<bookinfo><legalnotice><para>
 <para>License.
 </para>
 <blockquote><para>You are not allowed.
-</para></blockquote>
-';
+</para></blockquote>';
 
 1;

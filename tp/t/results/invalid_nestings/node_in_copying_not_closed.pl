@@ -127,6 +127,14 @@ $result_trees{'node_in_copying_not_closed'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'insertcopying',
           'line_nr' => {
             'file_name' => '',
@@ -134,11 +142,6 @@ $result_trees{'node_in_copying_not_closed'} = {
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
         }
       ],
       'extra' => {
@@ -172,8 +175,8 @@ $result_trees{'node_in_copying_not_closed'}{'contents'}[1]{'parent'} = $result_t
 $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'args'}[0];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2];
+$result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'contents'}[1];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2];
-$result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'node_in_copying_not_closed'}{'contents'}[2];
 $result_trees{'node_in_copying_not_closed'}{'contents'}[2]{'parent'} = $result_trees{'node_in_copying_not_closed'};
 
 $result_texis{'node_in_copying_not_closed'} = '@copying
@@ -190,7 +193,6 @@ This is an unterminatted copyright notice
 
 $result_texts{'node_in_copying_not_closed'} = 'Top section
 ***********
-
 
 ';
 

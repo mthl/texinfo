@@ -1,8 +1,7 @@
 # $Id$
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-# Free Software Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -424,7 +423,7 @@ our %misc_commands = (
   'contents'          => 'skipline', # no arg
   'shortcontents'     => 'skipline', # no arg
   'summarycontents'   => 'skipline', # no arg
-  'insertcopying'     => 'noarg', # no arg
+  'insertcopying'     => 'skipline', # no arg
   'clickstyle'        => 'special', # arg should be an @-command
   # more relevant in preamble
   'documentencoding'  => 'text', # or 1?

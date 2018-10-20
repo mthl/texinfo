@@ -1,5 +1,11 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%misc_commands):
+	Change @insertcopying argument type from 'noarg' to 'skipline'.
+	* NEWS: Mention this change and the warning for @multitable.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_end_line) <@multitable>: Give a warning 
 	messaage for any @-command appearing on the multitable line 
 	outside of a braced prototype.

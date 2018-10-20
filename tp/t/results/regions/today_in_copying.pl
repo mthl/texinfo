@@ -165,6 +165,14 @@ $result_trees{'today_in_copying'} = {
           'type' => 'empty_line'
         },
         {
+          'args' => [
+            {
+              'parent' => {},
+              'text' => '
+',
+              'type' => 'misc_arg'
+            }
+          ],
           'cmdname' => 'insertcopying',
           'line_nr' => {
             'file_name' => '',
@@ -172,11 +180,6 @@ $result_trees{'today_in_copying'} = {
             'macro' => ''
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-'
         }
       ],
       'extra' => {
@@ -214,8 +217,8 @@ $result_trees{'today_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'toda
 $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0];
 $result_trees{'today_in_copying'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
+$result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[1];
 $result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
-$result_trees{'today_in_copying'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'}{'contents'}[2];
 $result_trees{'today_in_copying'}{'contents'}[2]{'parent'} = $result_trees{'today_in_copying'};
 
 $result_texis{'today_in_copying'} = '@copying
@@ -232,7 +235,6 @@ $result_texis{'today_in_copying'} = '@copying
 $result_texts{'today_in_copying'} = '
 top
 ***
-
 
 ';
 
@@ -368,8 +370,7 @@ ul.no-bullet {list-style: none}
 <h1 class="top">top</h1>
 
 <p>a sunny day.
-</p>
-<hr>
+</p><hr>
 
 
 

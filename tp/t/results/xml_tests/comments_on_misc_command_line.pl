@@ -164,33 +164,19 @@ $result_trees{'comments_on_misc_command_line'} = {
       'parent' => {}
     },
     {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '  @comment  (noarg)
+',
+          'type' => 'misc_arg'
+        }
+      ],
       'cmdname' => 'insertcopying',
       'line_nr' => {
         'file_name' => '',
         'line_nr' => 5,
         'macro' => ''
-      },
-      'parent' => {}
-    },
-    {
-      'parent' => {},
-      'text' => '  '
-    },
-    {
-      'args' => [
-        {
-          'parent' => {},
-          'text' => '  (noarg)
-',
-          'type' => 'misc_arg'
-        }
-      ],
-      'cmdname' => 'comment',
-      'extra' => {
-        'misc_args' => [
-          '  (noarg)
-'
-        ]
       },
       'parent' => {}
     },
@@ -337,25 +323,23 @@ $result_trees{'comments_on_misc_command_line'}{'contents'}[2]{'extra'}{'comment_
 $result_trees{'comments_on_misc_command_line'}{'contents'}[2]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[3];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[3]{'parent'} = $result_trees{'comments_on_misc_command_line'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[4];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[4]{'parent'} = $result_trees{'comments_on_misc_command_line'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'args'}[0];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[5];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'extra'}{'comment_at_end'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'args'}[0];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[5]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 $result_trees{'comments_on_misc_command_line'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[6];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[6]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'args'}[0];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[7]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[8];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[8]{'parent'} = $result_trees{'comments_on_misc_command_line'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[9]{'extra'}{'command'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[8];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[9]{'parent'} = $result_trees{'comments_on_misc_command_line'};
+$result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'contents'}[0];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10];
+$result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'contents'}[1]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10];
 $result_trees{'comments_on_misc_command_line'}{'contents'}[10]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[11]{'extra'}{'command'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[10];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[11]{'parent'} = $result_trees{'comments_on_misc_command_line'};
-$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[0]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'contents'}[1]{'parent'} = $result_trees{'comments_on_misc_command_line'}{'contents'}[12];
-$result_trees{'comments_on_misc_command_line'}{'contents'}[12]{'parent'} = $result_trees{'comments_on_misc_command_line'};
 
 $result_texis{'comments_on_misc_command_line'} = '@setfilename  comments_on_misc_command_line.info  @c setfilename (text)
 @definfoenclose phoo,;,:  @c definfoenclose (number)
@@ -370,7 +354,7 @@ Para.
 ';
 
 
-$result_texts{'comments_on_misc_command_line'} = '  
+$result_texts{'comments_on_misc_command_line'} = '
 Para.
 ';
 
@@ -382,7 +366,7 @@ $result_converted{'xml'}->{'comments_on_misc_command_line'} = '<setfilename file
 <definfoenclose command="phoo" open=";" close=":" line="phoo,;,:  "></definfoenclose><!-- c definfoenclose (number) -->
 <firstparagraphindent value="none" line="none "></firstparagraphindent><!-- c c (number) -->
 <raisesections line=" @c raisesections (skipline)"></raisesections>
-<insertcopying></insertcopying>  <!-- comment  (noarg) -->
+<insertcopying line="  @comment  (noarg)"></insertcopying>
 <pagesizes spaces=" ">200mm </pagesizes><!-- c pagesizes  (line) -->
 <everyheading> @thispage @| aaa @c everyheading (lineraw)</everyheading>
 
