@@ -4415,53 +4415,49 @@ sub _parse_texi($;$)
                 }
               }
             }
-            # a container for what is on the @-command line, considered to
-            # be the @-command argument
-            if (1) {
-              $current = $current->{'contents'}->[-1];
-              $current->{'args'} = [{ 'type' => 'misc_line_arg', 
-                                      'contents' => [], 
-                                      'parent' => $current }];
-              # @node is the only misc command with args separated with comma
-              # FIXME a 3 lingering here deep into the code may not
-              # be very wise...  However having a hash only for one @-command
-              # is not very appealing either...
-              if ($command eq 'node') {
-                $current->{'remaining_args'} = 3;
-              } elsif ($command eq 'author') {
-                my $parent = $current;
-                my $found;
-                while ($parent->{'parent'}) {
-                  $parent = $parent->{'parent'};
-                  last if ($parent->{'type'}
-                          and $parent->{'type'} eq 'brace_command_context');
-                  if ($parent->{'cmdname'}) {
-                    if ($parent->{'cmdname'} eq 'titlepage') {
-                      $current->{'extra'}->{'titlepage'} = $parent;
-                      $found = 1;
-                    } elsif ($parent->{'cmdname'} eq 'quotation' or
-                        $parent->{'cmdname'} eq 'smallquotation') {
-                      push @{$parent->{'extra'}->{'authors'}}, $current;
-                      $current->{'extra'}->{'quotation'} = $parent;
-                      $found = 1;
-                    }
-                    last if ($found);
+            $current = $current->{'contents'}->[-1];
+            $current->{'args'} = [{ 'type' => 'misc_line_arg', 
+                                    'contents' => [], 
+                                    'parent' => $current }];
+            # @node is the only misc command with args separated with comma
+            # FIXME a 3 lingering here deep into the code may not
+            # be very wise...  However having a hash only for one @-command
+            # is not very appealing either...
+            if ($command eq 'node') {
+              $current->{'remaining_args'} = 3;
+            } elsif ($command eq 'author') {
+              my $parent = $current;
+              my $found;
+              while ($parent->{'parent'}) {
+                $parent = $parent->{'parent'};
+                last if ($parent->{'type'}
+                        and $parent->{'type'} eq 'brace_command_context');
+                if ($parent->{'cmdname'}) {
+                  if ($parent->{'cmdname'} eq 'titlepage') {
+                    $current->{'extra'}->{'titlepage'} = $parent;
+                    $found = 1;
+                  } elsif ($parent->{'cmdname'} eq 'quotation' or
+                      $parent->{'cmdname'} eq 'smallquotation') {
+                    push @{$parent->{'extra'}->{'authors'}}, $current;
+                    $current->{'extra'}->{'quotation'} = $parent;
+                    $found = 1;
                   }
+                  last if ($found);
                 }
-                if (!$found) {
-                  $self->line_warn(sprintf(__(
-               "\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"),
-                                 $command), $current->{'line_nr'});
-                }
-              } elsif ($command eq 'dircategory' and $self->{'current_node'}) {
-                  $self->line_warn(__("\@dircategory after first node"),
-                               $line_nr);
               }
-
-              $current = $current->{'args'}->[-1];
-              push @{$self->{'context_stack'}}, 'line' 
-                unless ($def_commands{$command});
+              if (!$found) {
+                $self->line_warn(sprintf(__(
+             "\@%s not meaningful outside `\@titlepage' and `\@quotation' environments"),
+                               $command), $current->{'line_nr'});
+              }
+            } elsif ($command eq 'dircategory' and $self->{'current_node'}) {
+                $self->line_warn(__("\@dircategory after first node"),
+                             $line_nr);
             }
+
+            $current = $current->{'args'}->[-1];
+            push @{$self->{'context_stack'}}, 'line' 
+              unless ($def_commands{$command});
             $line = _start_empty_line_after_command($line, $current, $misc);
           }
           _mark_and_warn_invalid($self, $command, $invalid_parent,
