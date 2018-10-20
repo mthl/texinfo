@@ -500,10 +500,6 @@ our %line_commands = (
   # obsolete @-commands.
   'setcontentsaftertitlepage'      => 'skipline', # no arg
   'setshortcontentsaftertitlepage' => 'skipline', # no arg
-  # Remove spaces and end of lines after the 
-  # commands? If no, they can lead to empty lines
-  'quote-arg'         => 'skipline',
-  'allow-recursion'   => 'skipline',
 );
 
 # commands that do not take the whole line as argument
@@ -879,8 +875,6 @@ foreach my $item_line_command ('table', 'ftable', 'vtable') {
 
 our %deprecated_commands = (
   'ctrl' => '',
-  'allow-recursion' => N__('recursion is always allowed'),
-  'quote-arg' => N__('arguments are quoted by default'),
 
   'setcontentsaftertitlepage' =>
 N__('move your @contents command if you want the contents after the title page'),

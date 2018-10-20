@@ -1,5 +1,11 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%line_commands, %deprecated_commands): 
+	Remove @quote-arg and @allow-recursion.
+	* NEWS: Mention this change.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%misc_commands)
 	(%line_commands, %other_commands): Split %misc_commands into two 
 	hashes.

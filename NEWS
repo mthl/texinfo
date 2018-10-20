@@ -2,9 +2,7 @@ $Id$
 This NEWS file records noteworthy changes, very tersely.
 See the manual for detailed information.
 
-  Copyright 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
-  2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
-  2013, 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+  Copyright 1992-2018 Free Software Foundation, Inc.
 
   Copying and distribution of this file, with or without modification,
   are permitted in any medium without royalty provided the copyright
@@ -16,6 +14,11 @@ See the manual for detailed information.
   . New commands @&, @ampchar{}.
 
 * texi2any
+  . the newline after an @insertcopying is not output
+  . warning given for @multitable prototypes not in braces
+  . @quote-arg and @allow-recursion are not recognised (these two used
+    to be recognised by makeinfo in macro definitions but were never 
+    implemented in texinfo.tex).
   . `FIX_TEXINFO' removed as a customization variable
   . extension modules fixed to work with the "thread-safe locales" of
     Perl 5.28 and newer
