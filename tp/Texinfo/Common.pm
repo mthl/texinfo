@@ -384,8 +384,6 @@ our %no_brace_commands;             # commands never taking braces
 # lineraw:     no value and macro expansion, the line is kept as-is, not 
 #              analysed
 # skipline:    no argument, everything else on the line is skipped
-# skipspace:   no argument, following spaces are skipped.
-# noarg:       no argument
 # text:        the line is parsed as texinfo, and the argument is converted
 #              to simple text (in _end_line)
 # line:        the line is parsed as texinfo
@@ -395,9 +393,9 @@ our %no_brace_commands;             # commands never taking braces
 #              The number is an indication of the number of arguments of 
 #              the command.
 #
-# Beware that @item and @itemx may be like 'line' or 'skipspace' depending
-# on the context.
-our %misc_commands = (
+# Beware that @item and @itemx may be 'line' commands or 'other' commands
+# depending on the context.
+our %line_commands = (
   'node'              => 'line', # special arg
   'bye'               => 'skipline', # no arg
   'end'               => 'text',
@@ -494,9 +492,29 @@ our %misc_commands = (
   'page'              => 'skipline', # no arg (pagebreak)
   'need'              => 1, # one numerical/real arg
   # formatting
-  'noindent'          => 'skipspace', # no arg
-  'indent'            => 'skipspace',
   'exdent'            => 'line',
+  'item'              => 'line', # or skipspace, depending on the context
+  'itemx'             => 'line', # or skipspace, depending on the context
+  # not valid for info (should be in @iftex)
+  'vskip'             => 'lineraw', # arg line in TeX
+  # obsolete @-commands.
+  'setcontentsaftertitlepage'      => 'skipline', # no arg
+  'setshortcontentsaftertitlepage' => 'skipline', # no arg
+  # Remove spaces and end of lines after the 
+  # commands? If no, they can lead to empty lines
+  'quote-arg'         => 'skipline',
+  'allow-recursion'   => 'skipline',
+);
+
+# commands that do not take the whole line as argument
+#
+# skipspace:   no argument, following spaces are skipped.
+# noarg:       no argument
+#
+our %other_commands = (
+  # formatting
+  'noindent'          => 'skipspace',
+  'indent'            => 'skipspace',
   'headitem'          => 'skipspace',
   'item'              => 'skipspace', # or line, depending on the context
   'itemx'             => 'skipspace', # or line, depending on the context
@@ -508,17 +526,11 @@ our %misc_commands = (
   'thisfile'          => 'noarg',
   'thispage'          => 'noarg',
   'thistitle'         => 'noarg',
-  # not valid for info (should be in @iftex)
-  'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
-  'refill'            => 'noarg',   # no arg (obsolete, to be ignored)
-  'setcontentsaftertitlepage'      => 'skipline', # no arg
-  'setshortcontentsaftertitlepage' => 'skipline', # no arg
-  # Remove spaces and end of lines after the 
-  # commands? If no, they can lead to empty lines
-  'quote-arg'         => 'skipline',
-  'allow-recursion'   => 'skipline',
+  'refill'            => 'noarg',
 );
+
+our %misc_commands = (%line_commands, %other_commands);
 
 our %index_names = (
  'cp' => {'in_code' => 0},

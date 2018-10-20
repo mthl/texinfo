@@ -1,5 +1,11 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%misc_commands)
+	(%line_commands, %other_commands): Split %misc_commands into two 
+	hashes.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%misc_commands):
 	Change @insertcopying argument type from 'noarg' to 'skipline'.
 	* NEWS: Mention this change and the warning for @multitable.
