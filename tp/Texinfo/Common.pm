@@ -526,8 +526,6 @@ our %other_commands = (
   'refill'            => 'noarg',
 );
 
-our %misc_commands = (%line_commands, %other_commands);
-
 our %index_names = (
  'cp' => {'in_code' => 0},
  'fn' => {'in_code' => 1},
@@ -547,7 +545,7 @@ foreach my $index_name (keys (%index_names)) {
   if ($index_name =~ /^(.).$/) {
     my $index_prefix = $1;
     # only put the one letter versions in the hash.
-    $misc_commands{$index_prefix.'index'} = 'line';
+    $line_commands{$index_prefix.'index'} = 'line';
     $default_index_commands{$index_prefix.'index'} = 1;
   }
 }
@@ -751,7 +749,7 @@ foreach my $def_command(keys %def_map) {
     $def_aliases{$def_command} = $real_command;
   }
   $block_commands{$def_command} = 'def';
-  $misc_commands{$def_command.'x'} = 'line';
+  $line_commands{$def_command.'x'} = 'line';
   $def_commands{$def_command} = 1;
   $def_commands{$def_command.'x'} = 1;
   $command_index{$def_command.'x'} = $command_index{$def_command};
@@ -951,7 +949,7 @@ $command_structuring_level{'centerchap'} = 1;
 our %sectioning_commands;
 
 foreach my $sectioning_command (keys (%command_structuring_level)) {
-  $misc_commands{$sectioning_command} = 'line';
+  $line_commands{$sectioning_command} = 'line';
   if ($sectioning_command =~ /heading/) {
     $close_paragraph_commands{$sectioning_command} = 1;
   } else {
@@ -959,6 +957,7 @@ foreach my $sectioning_command (keys (%command_structuring_level)) {
   }
   $sectioning_commands{$sectioning_command} = 1;
 }
+
 
 # misc commands that may be formatted as text.
 # index commands may be too, but index command may be added with
@@ -971,6 +970,9 @@ foreach my $formatted_misc_command ('insertcopying', 'contents',
    'itemx', 'tab', 'node', keys(%sectioning_commands)) {
   $formatted_misc_commands{$formatted_misc_command} = 1;
 }
+
+
+our %misc_commands = (%line_commands, %other_commands);
 
 $root_commands{'node'} = 1;
 

@@ -1,5 +1,23 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%line_commands): Add all the sectioning, 
+	index and def commands.
+	* tp/Texinfo/Parser.pm (%misc_commands): Remove.
+	(%line_commands): Add.
+	(_setup_parser, simple_parser): Set 'line_commands' on parser 
+	rather than 'misc_commands'.
+	(_end_line, _parse_texi, _parse): Update.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>:
+	Deal with the commands that do not take a whole line as an 
+	argument separately from those that do, using %other_commands 
+	hash from Common.pm.  Reinstate error message for @insertcopying 
+	inside @copying.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_item_line_parent): If current element 
 	is an @item or @itemx, do not check the parent of the parent of 
 	the current element.  This leads to a false positive for a 

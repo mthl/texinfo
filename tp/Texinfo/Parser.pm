@@ -158,7 +158,7 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 # input                   a stack, with last at bottom.  Holds the opened files
 #                         or text.  Pending macro expansion or text expansion
 #                         is also in that structure.
-# misc_commands           the same as %misc_commands in Texinfo::Common, 
+# line_commands           the same as %line_commands in Texinfo::Common, 
 #                         but with index entry commands dynamically added
 # close_paragraph_commands      same than %close_paragraph_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
@@ -213,7 +213,7 @@ my %initialization_overrides = (
 );
 
 my %no_brace_commands         = %Texinfo::Common::no_brace_commands;
-my %misc_commands             = %Texinfo::Common::misc_commands;
+my %line_commands             = %Texinfo::Common::line_commands;
 my %other_commands            = %Texinfo::Common::other_commands;
 my %brace_commands            = %Texinfo::Common::brace_commands;    
 my %accent_commands           = %Texinfo::Common::accent_commands;
@@ -319,7 +319,8 @@ foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption',
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
 }
 
-foreach my $no_paragraph_command (keys(%misc_commands)) {
+foreach my $no_paragraph_command (keys(%line_commands),
+                                  keys(%other_commands)) {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
   $begin_line_commands{$no_paragraph_command} = 1;
 }
@@ -412,13 +413,13 @@ foreach my $in_index_command ('sortas') {
 
 # commands that only accept simple text as argument in any context.
 my %simple_text_commands;
-foreach my $misc_command(keys(%misc_commands)) {
-  if ($misc_commands{$misc_command} =~ /^\d+$/ 
-      or ($misc_commands{$misc_command} eq 'line' 
-          and !($sectioning_commands{$misc_command}
-                or $def_commands{$misc_command}))
-      or $misc_commands{$misc_command} eq 'text') {
-    $simple_text_commands{$misc_command} = 1;
+foreach my $line_command(keys(%line_commands)) {
+  if ($line_commands{$line_command} =~ /^\d+$/ 
+      or ($line_commands{$line_command} eq 'line' 
+          and !($sectioning_commands{$line_command}
+                or $def_commands{$line_command}))
+      or $line_commands{$line_command} eq 'text') {
+    $simple_text_commands{$line_command} = 1;
   }
 }
 
@@ -615,7 +616,7 @@ sub _setup_parser {
 
   # Now initialize command hash that are dynamically modified, notably
   # those for index commands, and lists, based on defaults and user provided.
-  $parser->{'misc_commands'} = dclone(\%misc_commands);
+  $parser->{'line_commands'} = dclone(\%line_commands);
   $parser->{'valid_nestings'} = dclone(\%default_valid_nestings);
   $parser->{'no_paragraph_commands'} = { %default_no_paragraph_commands };
   $parser->{'index_names'} = dclone(\%index_names);
@@ -643,7 +644,7 @@ sub _setup_parser {
       $parser->{'index_names'}->{$index}->{'contained_indices'}->{$index} = 1;
     }
     foreach my $prefix ($index, substr($index, 0, 1)) {
-      $parser->{'misc_commands'}->{$prefix.'index'} = 'line';
+      $parser->{'line_commands'}->{$prefix.'index'} = 'line';
       $parser->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
       $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_index_commands;
       $parser->{'command_index'}->{$prefix.'index'} = $index;
@@ -685,7 +686,7 @@ sub _setup_parser {
 # simple parser initialization, fit for strings of Texinfo, not whole 
 # documents, targetting speed.
 # all the simple_parsers share the dynamic informations
-my $simple_parser_misc_commands = dclone(\%misc_commands);
+my $simple_parser_line_commands = dclone(\%line_commands);
 my $simple_parser_valid_nestings = dclone(\%default_valid_nestings);
 my $simple_parser_no_paragraph_commands = { %default_no_paragraph_commands };
 my $simple_parser_index_names = dclone(\%index_names);
@@ -701,7 +702,7 @@ sub simple_parser(;$)
 
   _setup_conf($parser, $conf, "Texinfo::Parser::simple_parser");
 
-  $parser->{'misc_commands'} = $simple_parser_misc_commands;
+  $parser->{'line_commands'} = $simple_parser_line_commands;
   $parser->{'valid_nestings'} = $simple_parser_valid_nestings;
   $parser->{'no_paragraph_commands'} = $simple_parser_no_paragraph_commands;
   $parser->{'index_names'} = $simple_parser_index_names;
@@ -2921,7 +2922,7 @@ sub _end_line($$$)
     my $command = $current->{'cmdname'};
     my $end_command;
     print STDERR "MISC END \@$command\n" if ($self->{'DEBUG'});
-    if ($self->{'misc_commands'}->{$command} =~ /^\d$/) {
+    if ($self->{'line_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
       if ($command eq 'validatemenus') {
@@ -2934,7 +2935,7 @@ sub _end_line($$$)
           }
         }
       }
-    } elsif ($self->{'misc_commands'}->{$command} eq 'text') {
+    } elsif ($self->{'line_commands'}->{$command} eq 'text') {
       my $text = '';
       my $superfluous_arg = 0;
       for my $c (@{$current->{'args'}->[0]->{'contents'}}) {
@@ -4243,7 +4244,7 @@ sub _parse_texi($;$)
               $line_nr, $misc);
           }
         # line commands
-        } elsif ($line_arg or defined($self->{'misc_commands'}->{$command})) {
+        } elsif ($line_arg or defined($self->{'line_commands'}->{$command})) {
           if ($root_commands{$command} or $command eq 'bye') {
             $current = _close_commands($self, $current, $line_nr, undef, 
                                        $command);
@@ -4263,7 +4264,7 @@ sub _parse_texi($;$)
           }
 
           # skipline text line lineraw /^\d$/
-          my $arg_spec = $self->{'misc_commands'}->{$command};
+          my $arg_spec = $self->{'line_commands'}->{$command};
           my $misc;
 
           # all the cases using the raw line
@@ -5299,7 +5300,7 @@ sub _parse_texi($;$)
 }
 
 # parse special line @-commands, unmacro, set, clear, clickstyle.
-# Also remove spaces or ignore text, as specified in the misc_commands hash.
+# Also remove spaces or ignore text, as specified in the line_commands hash.
 sub _parse_special_misc_command($$$$)
 {
   my ($self, $line, $command, $line_nr) = @_;
@@ -5500,7 +5501,7 @@ sub _parse_line_command_args($$$)
         if (!exists($self->{'index_names'}->{$name}->{'contained_indices'})) {
           $self->{'index_names'}->{$name}->{'contained_indices'}->{$name} = 1;
         }
-        $self->{'misc_commands'}->{$name.'index'} = 'line';
+        $self->{'line_commands'}->{$name.'index'} = 'line';
         $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
         $self->{'valid_nestings'}->{$name.'index'} = \%in_index_commands;
         $self->{'command_index'}->{$name.'index'} = $name;
