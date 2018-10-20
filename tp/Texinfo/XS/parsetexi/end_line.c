@@ -1798,8 +1798,6 @@ end_line_misc_line (ELEMENT *current)
               add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 
-              // 3301 FIXME INLINE_INSERTCOPYING
-
               add_to_element_contents (closed_command, end_elt); // 3321
 
               // 3324 ET_menu_comment
