@@ -2922,6 +2922,7 @@ sub _end_line($$$)
     my $command = $current->{'cmdname'};
     my $end_command;
     print STDERR "MISC END \@$command\n" if ($self->{'DEBUG'});
+
     if ($self->{'line_commands'}->{$command} =~ /^\d$/) {
       my $args = _parse_line_command_args($self, $current, $line_nr);
       $current->{'extra'}->{'misc_args'} = $args if (defined($args));
@@ -3109,6 +3110,7 @@ sub _end_line($$$)
         $current->{'extra'}->{'missing_argument'} = 1;
       } else {
         if (($command eq 'item' or $command eq 'itemx')
+            and $current->{'parent'}->{'cmdname'}
             and $self->{'command_index'}->{$current->{'parent'}->{'cmdname'}}) {
           _enter_index_entry($self, $current->{'parent'}->{'cmdname'}, 
                              $command, $current,
@@ -4097,13 +4099,8 @@ sub _parse_texi($;$)
           $current = _end_preformatted($self, $current, $line_nr);
         }
 
-        my $line_arg = 0;
-
-        if ($command eq 'item' or $command eq 'itemx') {
-          $line_arg = 1 if _item_line_parent($current);
-        }
-
-        if (!$line_arg and defined($other_commands{$command})) {
+        if (defined($other_commands{$command})
+            and ($command ne 'item' or !_item_line_parent($current))) {
           # noarg skipspace
           my $arg_spec = $other_commands{$command};
           my $misc;
@@ -4125,8 +4122,8 @@ sub _parse_texi($;$)
             $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
           } else {
-            if ($command eq 'item' or $command eq 'itemx' 
-               or $command eq 'headitem' or $command eq 'tab') {
+            if ($command eq 'item'
+                or $command eq 'headitem' or $command eq 'tab') {
               my $parent;
               # @itemize or @enumerate
               if ($parent = _item_container_parent($current)) {
@@ -4244,7 +4241,7 @@ sub _parse_texi($;$)
               $line_nr, $misc);
           }
         # line commands
-        } elsif ($line_arg or defined($self->{'line_commands'}->{$command})) {
+        } elsif (defined($self->{'line_commands'}->{$command})) {
           if ($root_commands{$command} or $command eq 'bye') {
             $current = _close_commands($self, $current, $line_nr, undef, 
                                        $command);
@@ -4369,12 +4366,19 @@ sub _parse_texi($;$)
             # $arg_spec is text, line or a number
             # @item or @itemx in @table
             if ($command eq 'item' or $command eq 'itemx') {
+              my $parent;
               print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
-              $current = _item_line_parent($current);
-              _gather_previous_item($self, $current, $command, $line_nr);
+              if ($parent = _item_line_parent($current)) {
+                $current = $parent;
+                _gather_previous_item($self, $current, $command, $line_nr);
+              } else {
+                $self->line_error (sprintf(__(
+                   "\@%s outside of table or list"), $command), $line_nr);
+                $current = _begin_preformatted($self, $current);
+              }
               $misc = { 'cmdname' => $command, 'parent' => $current };
               push @{$current->{'contents'}}, $misc;
-              $misc->{'line_nr'} = $line_nr if (defined($misc));
+              $misc->{'line_nr'} = $line_nr;
             } else {
               $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };

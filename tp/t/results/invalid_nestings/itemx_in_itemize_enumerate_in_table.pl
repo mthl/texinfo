@@ -111,20 +111,32 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => ' ',
-                          'type' => 'empty_spaces_after_command'
-                        },
-                        {
-                          'contents' => [
+                          'args' => [
                             {
-                              'parent' => {},
-                              'text' => 'in nested itemize itemx
+                              'contents' => [
+                                {
+                                  'parent' => {},
+                                  'text' => 'in nested itemize itemx'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
 '
+                              },
+                              'parent' => {},
+                              'type' => 'misc_line_arg'
                             }
                           ],
-                          'parent' => {},
-                          'type' => 'paragraph'
+                          'cmdname' => 'itemx',
+                          'extra' => {
+                            'spaces_before_argument' => ' '
+                          },
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 6,
+                            'macro' => ''
+                          },
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -193,20 +205,32 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
                     {
                       'contents' => [
                         {
-                          'parent' => {},
-                          'text' => ' ',
-                          'type' => 'empty_spaces_after_command'
-                        },
-                        {
-                          'contents' => [
+                          'args' => [
                             {
-                              'parent' => {},
-                              'text' => 'in nested enumerate itemx
+                              'contents' => [
+                                {
+                                  'parent' => {},
+                                  'text' => 'in nested enumerate itemx'
+                                }
+                              ],
+                              'extra' => {
+                                'spaces_after_argument' => '
 '
+                              },
+                              'parent' => {},
+                              'type' => 'misc_line_arg'
                             }
                           ],
-                          'parent' => {},
-                          'type' => 'paragraph'
+                          'cmdname' => 'itemx',
+                          'extra' => {
+                            'spaces_before_argument' => ' '
+                          },
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 10,
+                            'macro' => ''
+                          },
+                          'parent' => {}
                         }
                       ],
                       'parent' => {},
@@ -322,9 +346,9 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'extra'}{'command'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1];
-$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[2];
@@ -335,9 +359,9 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0];
+$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1];
-$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[1];
-$result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0];
 $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'itemx_in_itemize_enumerate_in_table'}{'contents'}[0]{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[2];
@@ -360,11 +384,11 @@ $result_texis{'itemx_in_itemize_enumerate_in_table'} = '@table @strong
 
 In item, nested itemize
 @itemize
- in nested itemize itemx
+@itemx in nested itemize itemx
 @end itemize
 
 @enumerate
- in nested enumerate itemx
+@itemx in nested enumerate itemx
 @end enumerate
 
 @end table
@@ -382,12 +406,12 @@ in nested enumerate itemx
 
 $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
   {
-    'error_line' => ':6: @itemx not meaningful inside `@itemize\' block
+    'error_line' => ':6: @itemx outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
-    'text' => '@itemx not meaningful inside `@itemize\' block',
+    'text' => '@itemx outside of table or list',
     'type' => 'error'
   },
   {
@@ -400,12 +424,12 @@ $result_errors{'itemx_in_itemize_enumerate_in_table'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: @itemx not meaningful inside `@enumerate\' block
+    'error_line' => ':10: @itemx outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@itemx not meaningful inside `@enumerate\' block',
+    'text' => '@itemx outside of table or list',
     'type' => 'error'
   },
   {

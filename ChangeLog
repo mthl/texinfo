@@ -1,5 +1,14 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%other_commands): Remove 'itemx'.  
+	@itemx is always a line command.
+	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>:
+	Only @item can sometimes be an 'other' command', not @itemx.  
+	Error message for incorrectly nested @item or @itemx.
+	(_end_line): Add a check for an undefined value.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%line_commands): Add all the sectioning, 
 	index and def commands.
 	* tp/Texinfo/Parser.pm (%misc_commands): Remove.

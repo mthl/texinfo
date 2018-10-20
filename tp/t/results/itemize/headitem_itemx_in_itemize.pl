@@ -42,20 +42,32 @@ $result_trees{'headitem_itemx_in_itemize'} = {
               'type' => 'paragraph'
             },
             {
-              'parent' => {},
-              'text' => ' ',
-              'type' => 'empty_spaces_after_command'
-            },
-            {
-              'contents' => [
+              'args' => [
                 {
-                  'parent' => {},
-                  'text' => 'itemx
+                  'contents' => [
+                    {
+                      'parent' => {},
+                      'text' => 'itemx'
+                    }
+                  ],
+                  'extra' => {
+                    'spaces_after_argument' => '
 '
+                  },
+                  'parent' => {},
+                  'type' => 'misc_line_arg'
                 }
               ],
-              'parent' => {},
-              'type' => 'paragraph'
+              'cmdname' => 'itemx',
+              'extra' => {
+                'spaces_before_argument' => ' '
+              },
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 3,
+                'macro' => ''
+              },
+              'parent' => {}
             },
             {
               'parent' => {},
@@ -135,12 +147,12 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0]{'extra'
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[2];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
+$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[4];
-$result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0];
 $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'contents'}[2];
@@ -151,7 +163,7 @@ $result_trees{'headitem_itemx_in_itemize'}{'contents'}[0]{'parent'} = $result_tr
 
 $result_texis{'headitem_itemx_in_itemize'} = '@itemize
 @item item
- itemx
+@itemx itemx
  headitem
 @end itemize
 ';
@@ -164,12 +176,12 @@ headitem
 
 $result_errors{'headitem_itemx_in_itemize'} = [
   {
-    'error_line' => ':3: @itemx not meaningful inside `@itemize\' block
+    'error_line' => ':3: @itemx outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 3,
     'macro' => '',
-    'text' => '@itemx not meaningful inside `@itemize\' block',
+    'text' => '@itemx outside of table or list',
     'type' => 'error'
   },
   {

@@ -393,7 +393,7 @@ our %no_brace_commands;             # commands never taking braces
 #              The number is an indication of the number of arguments of 
 #              the command.
 #
-# Beware that @item and @itemx may be 'line' commands or 'other' commands
+# Beware that @item may be a 'line' command or an 'other' command
 # depending on the context.
 our %line_commands = (
   'node'              => 'line', # special arg
@@ -513,7 +513,6 @@ our %other_commands = (
   'indent'            => 'skipspace',
   'headitem'          => 'skipspace',
   'item'              => 'skipspace', # or line, depending on the context
-  'itemx'             => 'skipspace', # or line, depending on the context
   'tab'               => 'skipspace', 
   # only valid in heading or footing
   'thischapter'       => 'noarg',
