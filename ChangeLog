@@ -1,3 +1,9 @@
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_end_line) <@multitable>: Give a warning 
+	messaage for any @-command appearing on the multitable line 
+	outside of a braced prototype.
+
 2018-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/sectioning/list-of-tests: Do not run every test

@@ -85,13 +85,12 @@ $result_trees{'prototype_no_brace'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'max_columns' => 4,
+        'max_columns' => 3,
         'prototypes' => [
           {
             'text' => 'aa',
             'type' => 'row_prototype'
           },
-          {},
           {
             'text' => 'b',
             'type' => 'row_prototype'
@@ -142,7 +141,6 @@ $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'co
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'}{'contents'}[0];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'contents'}[0];
-$result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'extra'}{'prototypes_line'}[1] = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1];
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'line_nr'} = $result_trees{'prototype_no_brace'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'prototype_no_brace'}{'contents'}[0]{'parent'} = $result_trees{'prototype_no_brace'};
@@ -154,7 +152,17 @@ $result_texis{'prototype_no_brace'} = '@multitable aa@var{FF} b    cc
 
 $result_texts{'prototype_no_brace'} = '';
 
-$result_errors{'prototype_no_brace'} = [];
+$result_errors{'prototype_no_brace'} = [
+  {
+    'error_line' => ':1: warning: unexpected argument on @multitable line: @var{FF}
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'unexpected argument on @multitable line: @var{FF}',
+    'type' => 'warning'
+  }
+];
 
 
 

@@ -1018,7 +1018,7 @@ $result_trees{'commands_and_spaces'} = {
           ],
           'extra' => {
             'end_command' => {},
-            'max_columns' => 6,
+            'max_columns' => 5,
             'prototypes' => [
               {
                 'contents' => [],
@@ -1028,7 +1028,6 @@ $result_trees{'commands_and_spaces'} = {
                 'contents' => [],
                 'type' => 'bracketed_multitable_prototype'
               },
-              {},
               {
                 'text' => 'gg',
                 'type' => 'row_prototype'
@@ -1947,7 +1946,6 @@ $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'contents'}[
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'end_command'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[0]{'contents'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes'}[1]{'contents'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[2]{'contents'};
-$result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes'}[2] = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[4];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes_line'}[0] = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes_line'}[2] = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[2];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'extra'}{'prototypes_line'}[4] = $result_trees{'commands_and_spaces'}{'contents'}[1]{'contents'}[27]{'args'}[0]{'contents'}[4];
@@ -2228,7 +2226,17 @@ $result_menus{'commands_and_spaces'} = {
   }
 };
 
-$result_errors{'commands_and_spaces'} = [];
+$result_errors{'commands_and_spaces'} = [
+  {
+    'error_line' => ':41: warning: unexpected argument on @multitable line: @var{cmd}
+',
+    'file_name' => '',
+    'line_nr' => 41,
+    'macro' => '',
+    'text' => 'unexpected argument on @multitable line: @var{cmd}',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'commands_and_spaces'} = {

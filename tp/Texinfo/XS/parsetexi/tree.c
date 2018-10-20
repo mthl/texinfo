@@ -73,7 +73,7 @@ destroy_element (ELEMENT *e)
         case extra_contents_oot:
           {
             /* Only used for 'prototypes' */
-            /* Destroy each element in the array, but not any children
+            /* Free each element in the array, but not any children
                of each element. */
             int j;
             ELEMENT *array = e->extra[i].value;

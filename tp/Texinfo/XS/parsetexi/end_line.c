@@ -1050,11 +1050,15 @@ end_line_starting_block (ELEMENT *current)
             }
           else // 2913
             {
-              if (!e->cmd)
+              if (e->cmd != CM_c && e->cmd != CM_comment)
                 {
-                  command_warn (current, "unexpected argument on @%s line:",
-                                command_name(current->cmd));
-                  // TODO: Convert argument to Texinfo
+                  char *texi;
+                  texi = convert_to_texinfo (e);
+                  command_warn (current,
+                                "unexpected argument on @%s line: %s",
+                                command_name(current->parent->cmd),
+                                texi);
+                  free (texi);
                 }
             }
         }

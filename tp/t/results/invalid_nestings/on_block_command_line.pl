@@ -167,13 +167,12 @@ $result_trees{'on_block_command_line'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'max_columns' => 2,
+        'max_columns' => 1,
         'prototypes' => [
           {
             'contents' => [],
             'type' => 'bracketed_multitable_prototype'
-          },
-          {}
+          }
         ],
         'spaces_before_argument' => ' '
       },
@@ -388,7 +387,6 @@ $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{
 $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'}{'contents'}[0];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'};
-$result_trees{'on_block_command_line'}{'contents'}[0]{'extra'}{'prototypes'}[1] = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'on_block_command_line'}{'contents'}[0]{'line_nr'} = $result_trees{'on_block_command_line'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'on_block_command_line'}{'contents'}[0]{'parent'} = $result_trees{'on_block_command_line'};
 $result_trees{'on_block_command_line'}{'contents'}[1]{'parent'} = $result_trees{'on_block_command_line'};
@@ -445,6 +443,15 @@ $result_errors{'on_block_command_line'} = [
     'line_nr' => 1,
     'macro' => '',
     'text' => '@titlefont should not appear in @multitable',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: warning: unexpected argument on @multitable line: @titlefont{in titlefont}
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'unexpected argument on @multitable line: @titlefont{in titlefont}',
     'type' => 'warning'
   },
   {

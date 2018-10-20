@@ -2732,6 +2732,9 @@ sub _end_line($$$)
           push @prototype_row, { 'contents' => $content->{'contents'},
                                  'type' => 'bracketed_multitable_prototype'};
         } elsif ($content->{'text'}) {
+          # TODO: this should be a warning or an error - all prototypes
+          # on a @multitable line should be in braces, as documented in the
+          # Texinfo manual.
           if ($content->{'text'} =~ /\S/) {
             foreach my $prototype (split /\s+/, $content->{'text'}) {
               push @prototype_row, { 'text' => $prototype, 
@@ -2739,16 +2742,13 @@ sub _end_line($$$)
             }
           }
         } else {
-          # FIXME could this happen?  Should be a debug message?
-          if (!$content->{'cmdname'}) { 
+          if (!$content->{'cmdname'}
+                or ($content->{'cmdname'} ne 'c'
+                    and $content->{'cmdname'} ne 'comment')) {
             $self->_command_warn($current, $line_nr, 
                 __("unexpected argument on \@%s line: %s"),
-                   $current->{'cmdname'}, 
-         Texinfo::Convert::Texinfo::convert({ $content->{'contents'} }));
-          } elsif ($content->{'cmdname'} eq 'c' 
-                   or $content->{'cmdname'} eq 'comment') {
-          } else {
-            push @prototype_row, $content;
+                     $current->{'parent'}->{'cmdname'}, 
+                     Texinfo::Convert::Texinfo::convert($content));
           }
         }
       }
@@ -2760,10 +2760,8 @@ sub _end_line($$$)
                              __("empty multitable"));
       }
       $multitable->{'extra'}->{'prototypes'} = \@prototype_row;
-      _isolate_last_space($self, $current);
-    } else {
-      _isolate_last_space($self, $current);
-    } 
+    }
+    _isolate_last_space($self, $current);
     $current = $current->{'parent'};
     delete $current->{'remaining_args'};
     # don't consider empty argument of block @-commands as argument,
