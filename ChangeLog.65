@@ -125,7 +125,7 @@
 	* tp/texi2any.pl (%formats_table): Remove 'debugcount' section
 	as the corresponding module doesn't exist any more.
 
-2017-07-23   Alexis Bienvenüe <pado@passoire.fr>  (tiny change)
+2017-07-23   Alexis BienvenÃ¼e <pado@passoire.fr>  (tiny change)
 
 	* tp/Texinfo/Common.pm (expand_today):
 	Honour the SOURCE_DATE_EPOCH environment variable to get a 
@@ -1055,7 +1055,7 @@
 2017-04-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/maintain/regenerate_docstr.sh: Use Makefile in build 
-	directory to build .gmo files.  Report from Hans Bernhard-Bröker.
+	directory to build .gmo files.  Report from Hans Bernhard-BrÃ¶ker.
 
 2017-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1437,7 +1437,7 @@
 	* info/echo-area.c (initialize_input_line): Don't consider
 	possibility that the prompt argument is null.  This removes the
 	appearance that we call 'strlen' on a pointer when it could be 
-	null.  (Report from Hans-Bernhard Bröker.)
+	null.  (Report from Hans-Bernhard BrÃ¶ker.)
 	(info_read_in_echo_area): Don't mention the possibility of a 
 	null prompt argument in a comment.
 	* info/variables.c (read_variable_name): Declare as static.
@@ -1445,7 +1445,7 @@
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/infodoc.c (replace_in_documentation): Remove redundant 
-	assignment.  (Report from Hans-Bernhard Bröker.)
+	assignment.  (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1453,7 +1453,7 @@
 	error message that would use a freed pointer.  (It is not 
 	actually executed because info_read_completing_in_echo_area will 
 	not return anything outside the list of permissible completions.)
-	(Report from Hans-Bernhard Bröker.)
+	(Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1461,42 +1461,42 @@
 	variables so they do not appear to be used uninitialized.  (They 
 	were not actually used uninitialized because if they were not 
 	initialized, the loop where they were used was broken out of 
-	beforehand.)  (Report from Hans-Bernhard Bröker.)
+	beforehand.)  (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/session.c (info_intuit_options_node): Do not free a 
 	pointer to a node record if following a menu entry to the next 
-	node failed.  (Report from Hans-Bernhard Bröker.)
+	node failed.  (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info.c (add_initial_nodes): Avoid a condition on an 
-	uninitialized value.  (Report from Hans-Bernhard Bröker.)
+	uninitialized value.  (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/window.c (window_change_window_height): Simplify some 
 	conditions to avoid appearing to possibly dereference a pointer
 	after it has been checked for being null.
-	(Report from Hans-Bernhard Bröker.)
+	(Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/search.c (skip_line): Remove unused function (which had a
-	useless null pointer check in it.) (Report from Hans-Bernhard Bröker.)
+	useless null pointer check in it.) (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/indices.c (next_index_match): Return a value instead of
 	passing a pointer to a value to be set so that it is clear that
 	calling code does not depend on an uninitialized value.  All 
-	callers updated.  (Report from Hans-Bernhard Bröker.)
+	callers updated.  (Report from Hans-Bernhard BrÃ¶ker.)
 
 2017-02-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/display.c (display_update_one_window): Remove a useless
-	check of a null pointer.  Report from Hans-Bernhard Bröker, 
+	check of a null pointer.  Report from Hans-Bernhard BrÃ¶ker, 
 	found using static code analysis with clang.
 
 2017-01-30  Gavin Smith  <gavinsmith0123@gmail.com>
@@ -1504,7 +1504,7 @@
 	* info/tag.c (tag_expand): Take a pointer as an argument 
 	pointing to the end of the buffer that is being processed, and 
 	check against this pointer to make sure we don't read too far.  
-	Invalid read reported by Hanno Böck.
+	Invalid read reported by Hanno BÃ¶ck.
 
 2017-01-29  Jason Hood  <jadoxa@yahoo.com.au>
 
@@ -1560,13 +1560,13 @@
 	of 'memcmp' when checking for "* Menu:" string to avoid possibly 
 	looking past the end of the file buffer, detected with 
 	'-fsanitize=address' passed to gcc.  Invalid read reported by 
-	Hanno Böck.
+	Hanno BÃ¶ck.
 
 2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (scan_reference_label): Properly check 
 	return value of 'read_quoted_string' to avoid reading past the 
-	end of the buffer.  Invalid read reported by Hanno Böck.
+	end of the buffer.  Invalid read reported by Hanno BÃ¶ck.
 
 2017-01-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1574,13 +1574,13 @@
 	end of the region where we search for the node separator are
 	within the file buffer, to avoid invalidly reading memory in 
 	case the file tags table had an incorrect offset.  Invalid read
-	reported by Hanno Böck.
+	reported by Hanno BÃ¶ck.
 
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/nodes.c (get_tags_of_indirect_tags_table): Check if 
 	'tags' field of file buffer record is null.  This avoids 
-	dereferencing a null pointer.  (Report from Hanno Böck.)
+	dereferencing a null pointer.  (Report from Hanno BÃ¶ck.)
 
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1597,7 +1597,7 @@
 	* info/nodes.c (build_tags_and_nodes): Check that a buffer 
 	offset isn't 0 before subtracting 1 from it.  This is to avoid 
 	reading outside allocated memory for malformed input.  (Report 
-	from Hanno Böck.)
+	from Hanno BÃ¶ck.)
 
 2017-01-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -1610,7 +1610,7 @@
 	* info/info-utils.c (read_quoted_string): If no 177 byte is
 	found to close a string, return 0 as intended.  This is intended 
 	to avoid reading past the end of allocated memory, which could 
-	happen for malformed input.  (Hanno Böck, bug-texinfo 2016-10-18.)
+	happen for malformed input.  (Hanno BÃ¶ck, bug-texinfo 2016-10-18.)
 
 2017-01-21  Jason Hood  <jadoxa@yahoo.com.au>  (tiny change)
 
@@ -1644,7 +1644,7 @@
 2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/MiscXS/configure.ac: Remove calls to gl_EARLY and 
-	gl_INIT.  (Report from Hans Bernhard Bröker.)
+	gl_INIT.  (Report from Hans Bernhard BrÃ¶ker.)
 
 2017-01-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -2657,7 +2657,7 @@
 
 	* info/info-utils.c (parse_top_node_line):  Check if the
 	buffer ends before the end of the first line.  Out-of-bounds
-	read reported by Hanno Böck.  Some comments changed.
+	read reported by Hanno BÃ¶ck.  Some comments changed.
 	* info/nodes.c (node_set_body_start): Don't try to advance the
 	'body_start' past the end of the first line of the node: it is 
 	not necessary, and the current code breaks if the buffer ends 
@@ -2732,7 +2732,7 @@
 
 	* info/nodes.c (build_tag_table): Check if node name in tag table
 	is empty (possible for malformed input).  Crash reported
-	by Hanno Böck.
+	by Hanno BÃ¶ck.
 
 2016-10-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -3458,7 +3458,7 @@
 2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/info-utils.c (forward_to_info_syntax): Avoid reading past 
-	end of string.  Report by Hanno Böck.
+	end of string.  Report by Hanno BÃ¶ck.
 
 2016-07-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -3621,7 +3621,7 @@
 	immediately after the '@verbatim' line, or after the entire 
 	block.
 
-2016-06-13  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+2016-06-13  Vincent BelaÃ¯che  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (run_tex): Inline function listing unusual 
 	characters and pass through literal backslash-newline sequence 
@@ -3701,7 +3701,7 @@
 
 	* util/texi2dvi (run_tex): Use \ followed by newline instead of 
 	"\n" in replacement text of 'sed' 's' command.  Problem with 
-	some versions of sed reported by Vincent Belaïche.
+	some versions of sed reported by Vincent BelaÃ¯che.
 
 2016-06-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
@@ -3715,7 +3715,7 @@
 
 	* util/texi2dvi (run_tex): Only check for certain unusual 
 	characters in the filename, using 'sed'.  (Suggestion from 
-	Vincent Belaïche.)  Loop through any that occurred and change the
+	Vincent BelaÃ¯che.)  Loop through any that occurred and change the
 	catcode to 12 within a TeX group.
 
 2016-05-30  Gavin Smith  <gavinsmith0123@gmail.com>
@@ -3880,7 +3880,7 @@
 	* doc/short-sample-ja.tex: New File.
 	Short sample of Japanese Texinfo support files.
 
-2016-05-05  Vincent Belaïche  <vincentb1@users.sourceforge.net>, and
+2016-05-05  Vincent BelaÃ¯che  <vincentb1@users.sourceforge.net>, and
 	    Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi (make_tex_cmd): Remove use of 'catcode_special'
@@ -4297,7 +4297,7 @@
 	* info/dir.c (build_dir_node): Update message in dir node to 
 	account for change in binding for '?' key, and use 'H' instead.
 
-2016-02-27  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+2016-02-27  Vincent BelaÃ¯che  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (make_openout_test): make compilation of openout
 	test in batch mode with using batch variable, rather than taking
@@ -4354,7 +4354,7 @@
 	case-insensitive dir match when invoking.  Problem reported by 
 	Vincent Lefevre.
 
-2016-02-24  Vincent Belaïche  <vincentb1@users.sourceforge.net>
+2016-02-24  Vincent BelaÃ¯che  <vincentb1@users.sourceforge.net>
 
 	* util/texi2dvi (filter_files): Ensure that this function does not
 	make any non zero return status when the list of new xref files is
@@ -6238,7 +6238,7 @@
 
 	* info/t/inc-sea-bs-after-strip-cr.sh: New test.
 
-2015-09-24  Vincent BelaÃ¯che  <vincent.belaiche@gmail.com>
+2015-09-24  Vincent BelaÃƒÂ¯che  <vincent.belaiche@gmail.com>
 
 	* util/texi2dvi: Exempt msys as well as cygwin from using 
 	semicolon as a path separator.
@@ -6558,7 +6558,7 @@
 
 	* util/texi2dvi (make_openout_test): Add a comment.
 
-2015-09-08  Vincent Belaïche  <vincent.belaiche@gmail.com>
+2015-09-08  Vincent BelaÃ¯che  <vincent.belaiche@gmail.com>
 
 	* util/texi2dvi (make_openout_test): Save and restore 
 	catcode_special, and use catcode_special=false for make_tex_cmd.
@@ -6663,7 +6663,7 @@
 	(\balancecolumns): Remove glue from bottom of first column to 
 	make sure it is higher than the second.
 
-2015-09-04  Vincent Belaïche  <vincent.belaiche@gmail.com>, and
+2015-09-04  Vincent BelaÃ¯che  <vincent.belaiche@gmail.com>, and
 	    Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2dvi
@@ -10475,7 +10475,7 @@
 
 	* doc/texinfo.texi (Node Line Requirements): Tweak wording to 
 	avoid implying that a node name with normalized whitespace has 
-	to be used in all circumstances.  Report by Vincent BelaÃ¯che 
+	to be used in all circumstances.  Report by Vincent BelaÃƒÂ¯che 
 	2014-08-21 (bug #43042).
 
 2014-10-03  Ken Brown  <kbrown@cornell.edu> (tiny change)
@@ -10980,7 +10980,7 @@
 2014-08-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* info/texinfo.texi: Remove extra space in menu references to
-	"@- @hyphenation" node.  Report from Vincent BelaÃ¯che.
+	"@- @hyphenation" node.  Report from Vincent BelaÃƒÂ¯che.
 
 	* info/info-stnd.texi (Searching Commands): Add reference to explain
 	regular expressions.
