@@ -1,8 +1,7 @@
 # $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1795,10 +1794,7 @@ sub _item_container_parent($)
 sub _item_line_parent($)
 {
   my $current = shift;
-  if ($current->{'cmdname'} and ($current->{'cmdname'} eq 'item'
-       or $current->{'cmdname'} eq 'itemx')) {
-      $current = $current->{'parent'}->{'parent'};
-  } elsif ($current->{'type'} and $current->{'type'} eq 'before_item'
+  if ($current->{'type'} and $current->{'type'} eq 'before_item'
             and $current->{'parent'}) {
     $current = $current->{'parent'};
   }

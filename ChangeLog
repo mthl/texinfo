@@ -1,5 +1,16 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_item_line_parent): If current element 
+	is an @item or @itemx, do not check the parent of the parent of 
+	the current element.  This leads to a false positive for a 
+	@table nested within an @enumerate.  It is possible that this 
+	was intended to account for the parent element being a 
+	'table_term' element, but the condition is not met in the entire
+	test suite.  (The false positive was not hit in practice due to 
+	_item_container_parent being called before _item_line_parent.)
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%line_commands, %deprecated_commands): 
 	Remove @quote-arg and @allow-recursion.
 	* NEWS: Mention this change.
