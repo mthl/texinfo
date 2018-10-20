@@ -158,7 +158,7 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 # input                   a stack, with last at bottom.  Holds the opened files
 #                         or text.  Pending macro expansion or text expansion
 #                         is also in that structure.
-# misc_commands           the same than %misc_commands in Texinfo::Common, 
+# misc_commands           the same as %misc_commands in Texinfo::Common, 
 #                         but with index entry commands dynamically added
 # close_paragraph_commands      same than %close_paragraph_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
@@ -214,6 +214,7 @@ my %initialization_overrides = (
 
 my %no_brace_commands         = %Texinfo::Common::no_brace_commands;
 my %misc_commands             = %Texinfo::Common::misc_commands;
+my %other_commands            = %Texinfo::Common::other_commands;
 my %brace_commands            = %Texinfo::Common::brace_commands;    
 my %accent_commands           = %Texinfo::Common::accent_commands;
 my %context_brace_commands    = %Texinfo::Common::context_brace_commands;
@@ -4095,153 +4096,38 @@ sub _parse_texi($;$)
           $current = _end_preformatted($self, $current, $line_nr);
         }
 
-        # commands without braces and not block commands, ie no @end
-        if (defined($self->{'misc_commands'}->{$command})) {
-          if ($root_commands{$command} or $command eq 'bye') {
-            $current = _close_commands($self, $current, $line_nr, undef, 
-                                       $command);
-            # root_level commands leads to setting a new root
-            # for the whole document and stuffing the preceding text
-            # as the first content, this is done only once.
-            if ($current->{'type'} and $current->{'type'} eq 'text_root') {
-              if ($command ne 'bye') {
-                $root = { 'type' => 'document_root', 'contents' => [$current] };
-                $current->{'parent'} = $root;
-                $current = $root;
-              }
-            } else {
-              die if (!defined($current->{'parent'}));
-              $current = $current->{'parent'};
-            }
-          }
+        my $line_arg = 0;
 
-          # noarg skipline skipspace text line lineraw /^\d$/
-          my $arg_spec = $self->{'misc_commands'}->{$command};
+        if ($command eq 'item' or $command eq 'itemx') {
+          $line_arg = 1 if _item_line_parent($current);
+        }
+
+        if (!$line_arg and defined($other_commands{$command})) {
+          # noarg skipspace
+          my $arg_spec = $other_commands{$command};
           my $misc;
 
           if ($arg_spec eq 'noarg') {
-            my $ignored = 0;
             my $only_in_headings = 0;
-            if ($command eq 'insertcopying') {
-              my $parent = $current;
-              while ($parent) {
-                if ($parent->{'cmdname'} and $parent->{'cmdname'} eq 'copying') {
-                  $self->line_error(
-                     sprintf(__("\@%s not allowed inside `\@%s' block"), 
-                             $command, $parent->{'cmdname'}), $line_nr);
-                  $ignored = 1;
-                  last;
-                }
-                $parent = $parent->{'parent'};
-              }
-            } elsif ($in_heading_commands{$command}) {
+            if ($in_heading_commands{$command}) {
               $self->line_error(
                 sprintf(__("\@%s should only appear in heading or footing"),
                         $command), $line_nr);
               $only_in_headings = 1;
             }
-            if (!$ignored) {
-              $misc = {'cmdname' => $command,
-                       'parent' => $current};
-              push @{$current->{'contents'}}, $misc;
-              # also sets invalid_nesting in that case
-              $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
-              _register_global_command($self, $misc, $line_nr);
-            }
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $misc);
-            $current = _begin_preformatted($self, $current)
-              if ($close_preformatted_commands{$command});
-
-          # all the cases using the raw line
-          } elsif ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
-                   or $arg_spec eq 'special') {
-            # complete the line if there was a user macro expansion
-            if ($line !~ /\n/) {
-              my ($new_line, $new_line_nr) = _new_line($self, $line_nr, undef);
-              $line .= $new_line if (defined($new_line));
-            }
-            $misc = {'cmdname' => $command,
-                     'parent' => $current};
-            my $args = [];
-            my $has_comment;
-            if ($arg_spec eq 'lineraw' or $arg_spec eq 'skipline') {
-              $args = [ $line ];
-            } elsif ($arg_spec eq 'special') {
-              ($args, $has_comment) 
-               = _parse_special_misc_command($self, $line, $command, $line_nr);
-              $misc->{'extra'}->{'arg_line'} = $line;
-            }
-
-            # if using the @set txi* instead of a proper @-command, replace
-            # by the tree obtained with the @-command.  Even though
-            # _end_line is called below, as $current is not misc_line_arg
-            # there should not be anything done in addition than what is
-            # done for @clear or @set.
-            if (($command eq 'set' or $command eq 'clear')
-                 and scalar(@$args) >= 1
-                 and $set_flag_command_equivalent{$args->[0]}) {
-              my $arg; 
-              if ($command eq 'set') {
-                $arg = 'on';
-              } else {
-                $arg = 'off';
-              }
-              $command = $set_flag_command_equivalent{$args->[0]};
-              $misc = {'cmdname' => $command,
-                       'parent' => $current,
-                       'line_nr' => $line_nr,
-                       'extra' => {'misc_args' => [$arg]}};
-              my $misc_line_args = {'type' => 'misc_line_arg',
-                     'parent' => $misc};
-              $misc->{'args'} = [$misc_line_args];
-              $misc->{'extra'}->{'spaces_before_argument'} = ' ';
-              $misc_line_args->{'contents'} = [
-                { 'text' => $arg,
-                  'parent' => $misc_line_args, },
-                { 'text' => "\n",
-                  'parent' => $misc_line_args,
-                  'type' => 'spaces_at_end', } ];
-              push @{$current->{'contents'}}, $misc;
-            } else {
-              push @{$current->{'contents'}}, $misc;
-              foreach my $arg (@$args) {
-                push @{$misc->{'args'}},
-                  { 'type' => 'misc_arg', 'text' => $arg, 
-                    'parent' => $current->{'contents'}->[-1] };
-              }
-              $misc->{'extra'}->{'misc_args'} = $args 
-                 if (scalar(@$args) and $arg_spec ne 'skipline');
-            }
-            if ($command eq 'raisesections') {
-              $self->{'sections_level'}++;
-            } elsif ($command eq 'lowersections') {
-              $self->{'sections_level'}--;
-            } elsif ($command eq 'novalidate') {
-              $self->{'info'}->{'novalidate'} = 1;
-            }
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $misc);
+            $misc = {'cmdname' => $command, 'parent' => $current};
+            push @{$current->{'contents'}}, $misc;
+            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             _register_global_command($self, $misc, $line_nr);
-            # the end of line is ignored for special commands
-            if ($arg_spec ne 'special' or !$has_comment) {
-              $current = _end_line($self, $current, $line_nr);
-            }
-
-            last NEXT_LINE if ($command eq 'bye');
-            # Even if _end_line is called, it is not done since there is 
-            # no misc_line_arg
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $misc);
             $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
-            last;
           } else {
-            # $arg_spec is text, line, skipspace or a number
-            my $line_arg = 0;
-            $line_arg = 1 if ($arg_spec ne 'skipspace');
             if ($command eq 'item' or $command eq 'itemx' 
                or $command eq 'headitem' or $command eq 'tab') {
               my $parent;
-              # itemize or enumerate
+              # @itemize or @enumerate
               if ($parent = _item_container_parent($current)) {
                 if ($command eq 'item') {
                   print STDERR "ITEM_CONTAINER\n" if ($self->{'DEBUG'});
@@ -4258,24 +4144,13 @@ sub _parse_texi($;$)
                                    $command, $parent->{'cmdname'}), $line_nr);
                 }
                 $current = _begin_preformatted($self, $current);
-              # *table
+              # @*table
               } elsif ($parent = _item_line_parent($current)) {
-                if ($command eq 'item' or $command eq 'itemx') {
-                  print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
-                  $current = $parent;
-                  _gather_previous_item($self, $current, $command, $line_nr);
-                  $misc = { 'cmdname' => $command, 'parent' => $current };
-                  push @{$current->{'contents'}}, $misc;
-                  # since in the %misc_commands hash the entry for those 
-                  # commands is 'skipspace' we set $line_arg here.
-                  $line_arg = 1;
-                } else {
-                  $self->line_error(sprintf(__(
-                                  "\@%s not meaningful inside `\@%s' block"), 
-                                    $command, $parent->{'cmdname'}), $line_nr);
-                  $current = _begin_preformatted($self, $current);
-                }
-              # multitable
+                $self->line_error(sprintf(__(
+                      "\@%s not meaningful inside `\@%s' block"), 
+                    $command, $parent->{'cmdname'}), $line_nr);
+                $current = _begin_preformatted($self, $current);
+              # @multitable
               } elsif ($parent = _item_multitable_parent($current)) {
                 if ($command eq 'item' or $command eq 'headitem'
                      or $command eq 'tab') {
@@ -4339,6 +4214,170 @@ sub _parse_texi($;$)
               $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
               push @{$current->{'contents'}}, $misc;
+            }
+            $line = _start_empty_line_after_command($line, $current, $misc);
+            if ($command eq 'indent'
+                or $command eq 'noindent') {
+              if ($line !~ /\n/) {
+                my ($new_line, $new_line_nr) =
+                _new_line($self, $line_nr, undef);
+                $line .= $new_line if (defined($new_line));
+              }
+              $line =~ s/^(\s*)//;
+              if ($1) {
+                $current = _merge_text($self, $current, $1);
+              }
+              if ($line ne ''
+                  and $current->{'contents'}->[-1]->{'type'} eq
+                'empty_line_after_command') {
+                $current->{'contents'}->[-1]->{'type'}
+                = 'empty_spaces_after_command';
+              }
+              my $paragraph = _begin_paragraph($self, $current, $line_nr);
+              $current = $paragraph if $paragraph;
+              if ($line eq '') {
+                last;
+              }
+            }
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+              $line_nr, $misc);
+          }
+        # line commands
+        } elsif ($line_arg or defined($self->{'misc_commands'}->{$command})) {
+          if ($root_commands{$command} or $command eq 'bye') {
+            $current = _close_commands($self, $current, $line_nr, undef, 
+                                       $command);
+            # root_level commands leads to setting a new root
+            # for the whole document and stuffing the preceding text
+            # as the first content, this is done only once.
+            if ($current->{'type'} and $current->{'type'} eq 'text_root') {
+              if ($command ne 'bye') {
+                $root = { 'type' => 'document_root', 'contents' => [$current] };
+                $current->{'parent'} = $root;
+                $current = $root;
+              }
+            } else {
+              die if (!defined($current->{'parent'}));
+              $current = $current->{'parent'};
+            }
+          }
+
+          # skipline text line lineraw /^\d$/
+          my $arg_spec = $self->{'misc_commands'}->{$command};
+          my $misc;
+
+          # all the cases using the raw line
+          if ($arg_spec eq 'skipline' or $arg_spec eq 'lineraw'
+                   or $arg_spec eq 'special') {
+            my $ignored = 0;
+            if ($command eq 'insertcopying') {
+              my $parent = $current;
+              while ($parent) {
+                if ($parent->{'cmdname'} and $parent->{'cmdname'} eq 'copying') {
+                  $self->line_error(
+                     sprintf(__("\@%s not allowed inside `\@%s' block"), 
+                             $command, $parent->{'cmdname'}), $line_nr);
+                  $ignored = 1;
+                  last;
+                }
+                $parent = $parent->{'parent'};
+              }
+            } 
+
+            # complete the line if there was a user macro expansion
+            if ($line !~ /\n/) {
+              my ($new_line, $new_line_nr) = _new_line($self, $line_nr, undef);
+              $line .= $new_line if (defined($new_line));
+            }
+            $misc = {'cmdname' => $command,
+                     'parent' => $current};
+            my $args = [];
+            my $has_comment;
+            if ($arg_spec eq 'lineraw' or $arg_spec eq 'skipline') {
+              $args = [ $line ];
+            } elsif ($arg_spec eq 'special') {
+              ($args, $has_comment) 
+               = _parse_special_misc_command($self, $line, $command, $line_nr);
+              $misc->{'extra'}->{'arg_line'} = $line;
+            }
+
+            # if using the @set txi* instead of a proper @-command, replace
+            # by the tree obtained with the @-command.  Even though
+            # _end_line is called below, as $current is not misc_line_arg
+            # there should not be anything done in addition than what is
+            # done for @clear or @set.
+            if (($command eq 'set' or $command eq 'clear')
+                 and scalar(@$args) >= 1
+                 and $set_flag_command_equivalent{$args->[0]}) {
+              my $arg; 
+              if ($command eq 'set') {
+                $arg = 'on';
+              } else {
+                $arg = 'off';
+              }
+              $command = $set_flag_command_equivalent{$args->[0]};
+              $misc = {'cmdname' => $command,
+                       'parent' => $current,
+                       'line_nr' => $line_nr,
+                       'extra' => {'misc_args' => [$arg]}};
+              my $misc_line_args = {'type' => 'misc_line_arg',
+                     'parent' => $misc};
+              $misc->{'args'} = [$misc_line_args];
+              $misc->{'extra'}->{'spaces_before_argument'} = ' ';
+              $misc_line_args->{'contents'} = [
+                { 'text' => $arg,
+                  'parent' => $misc_line_args, },
+                { 'text' => "\n",
+                  'parent' => $misc_line_args,
+                  'type' => 'spaces_at_end', } ];
+              push @{$current->{'contents'}}, $misc;
+            } else {
+              if (!$ignored) {
+                push @{$current->{'contents'}}, $misc;
+                foreach my $arg (@$args) {
+                  push @{$misc->{'args'}},
+                    { 'type' => 'misc_arg', 'text' => $arg, 
+                      'parent' => $current->{'contents'}->[-1] };
+                }
+                $misc->{'extra'}->{'misc_args'} = $args 
+                if (scalar(@$args) and $arg_spec ne 'skipline');
+              }
+            }
+            if ($command eq 'raisesections') {
+              $self->{'sections_level'}++;
+            } elsif ($command eq 'lowersections') {
+              $self->{'sections_level'}--;
+            } elsif ($command eq 'novalidate') {
+              $self->{'info'}->{'novalidate'} = 1;
+            }
+            _mark_and_warn_invalid($self, $command, $invalid_parent,
+                                   $line_nr, $misc);
+            _register_global_command($self, $misc, $line_nr);
+            # the end of line is ignored for special commands
+            if ($arg_spec ne 'special' or !$has_comment) {
+              $current = _end_line($self, $current, $line_nr);
+            }
+
+            last NEXT_LINE if ($command eq 'bye');
+            # Even if _end_line is called, it is not done since there is 
+            # no misc_line_arg
+            $current = _begin_preformatted($self, $current)
+              if ($close_preformatted_commands{$command});
+            last;
+          } else {
+            # $arg_spec is text, line or a number
+            # @item or @itemx in @table
+            if ($command eq 'item' or $command eq 'itemx') {
+              print STDERR "ITEM_LINE\n" if ($self->{'DEBUG'});
+              $current = _item_line_parent($current);
+              _gather_previous_item($self, $current, $command, $line_nr);
+              $misc = { 'cmdname' => $command, 'parent' => $current };
+              push @{$current->{'contents'}}, $misc;
+              $misc->{'line_nr'} = $line_nr if (defined($misc));
+            } else {
+              $misc = { 'cmdname' => $command, 'parent' => $current,
+                  'line_nr' => $line_nr };
+              push @{$current->{'contents'}}, $misc;
               if ($sectioning_commands{$command}) {
                 if ($self->{'sections_level'}) {
                   $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
@@ -4378,7 +4417,7 @@ sub _parse_texi($;$)
             }
             # a container for what is on the @-command line, considered to
             # be the @-command argument
-            if ($line_arg) {
+            if (1) {
               $current = $current->{'contents'}->[-1];
               $current->{'args'} = [{ 'type' => 'misc_line_arg', 
                                       'contents' => [], 
@@ -4424,29 +4463,6 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $line = _start_empty_line_after_command($line, $current, $misc);
-            if ($command eq 'indent'
-                or $command eq 'noindent') {
-              if ($line !~ /\n/) {
-                my ($new_line, $new_line_nr) =
-                  _new_line($self, $line_nr, undef);
-                $line .= $new_line if (defined($new_line));
-              }
-              $line =~ s/^(\s*)//;
-              if ($1) {
-                $current = _merge_text($self, $current, $1);
-              }
-              if ($line ne ''
-                  and $current->{'contents'}->[-1]->{'type'} eq
-                                                'empty_line_after_command') {
-                $current->{'contents'}->[-1]->{'type'}
-                                              = 'empty_spaces_after_command';
-              }
-              my $paragraph = _begin_paragraph($self, $current, $line_nr);
-              $current = $paragraph if $paragraph;
-              if ($line eq '') {
-                last;
-              }
-            }
           }
           _mark_and_warn_invalid($self, $command, $invalid_parent,
                                  $line_nr, $misc);
