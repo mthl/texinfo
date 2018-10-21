@@ -494,7 +494,7 @@ our %line_commands = (
   # formatting
   'exdent'            => 'line',
   'item'              => 'line', # or skipspace, depending on the context
-  'itemx'             => 'line', # or skipspace, depending on the context
+  'itemx'             => 'line',
   # not valid for info (should be in @iftex)
   'vskip'             => 'lineraw', # arg line in TeX
   # obsolete @-commands.
@@ -514,16 +514,17 @@ our %other_commands = (
   'headitem'          => 'skipspace',
   'item'              => 'skipspace', # or line, depending on the context
   'tab'               => 'skipspace', 
-  # only valid in heading or footing
-  'thischapter'       => 'noarg',
-  'thischaptername'   => 'noarg',
-  'thischapternum'    => 'noarg',
-  'thisfile'          => 'noarg',
-  'thispage'          => 'noarg',
-  'thistitle'         => 'noarg',
-  # obsolete @-commands.
-  'refill'            => 'noarg',
+  'refill'            => 'noarg',     # obsolete
 );
+
+# only valid in heading or footing
+our %in_heading_commands;
+foreach my $in_heading_command ('thischapter', 'thischaptername',
+  'thischapternum', 'thisfile', 'thispage', 'thistitle') {
+  $in_heading_commands{$in_heading_command} = 1;
+
+  $other_commands{$in_heading_command} = 'noarg';
+}
 
 our %index_names = (
  'cp' => {'in_code' => 0},
@@ -665,12 +666,6 @@ foreach my $ref_command ('xref','ref','pxref','inforef') {
   $ref_commands{$ref_command} = 1;
 }
 
-
-our %in_heading_commands;
-foreach my $in_heading_command ('thischapter', 'thischaptername',
-  'thischapternum', 'thisfile', 'thispage', 'thistitle') {
-  $in_heading_commands{$in_heading_command} = 1;
-}
 
 # brace command that is not replaced with text.
 my %unformatted_brace_commands;

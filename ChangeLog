@@ -1,5 +1,9 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%line_commands): Change a comment.
+
+2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%other_commands): Remove 'itemx'.  
 	@itemx is always a line command.
 	* tp/Texinfo/Parser.pm (_parse_texi) <misc commands>:
