@@ -1,5 +1,52 @@
 2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/sectioning/list-of-tests
+	(node_footnote_end, node_footnote_use_node, node_footnote_separated)
+	(equivalent_nodes, equivalent_nodes_no_node)
+	(nodes_after_top_before_chapter)
+	(nodes_after_top_before_chapter_use_nodes_chapter)
+	(nodes_after_top_before_section)
+	(nodes_after_top_before_section_use_nodes)
+	(nodes_after_top_before_section_use_nodes_chapter)
+	(sectioning_frames, placed_things_before_element)
+	(more_sections_than_nodes, two_footnotes_in_nodes)
+	(two_footnotes_in_nodes_separated, top_node_up_implicit)
+	(top_node_up_explicit):
+	Remove tests.
+
+	* tp/t/96moresectioning.t: New test file.  Add equivalent tests.
+
+	I checked the results were the same by running:
+
+	for T in \
+	  node_footnote_end \
+	  node_footnote_use_node \
+	  node_footnote_separated \
+	  equivalent_nodes \
+	  equivalent_nodes_no_node \
+	  nodes_after_top_before_chapter \
+	  nodes_after_top_before_chapter_use_nodes_chapter \
+	  nodes_after_top_before_section \
+	  nodes_after_top_before_section_use_nodes \
+	  nodes_after_top_before_section_use_nodes_chapter \
+	  sectioning_frames \
+	  placed_things_before_element \
+	  more_sections_than_nodes \
+	  two_footnotes_in_nodes \
+	  two_footnotes_in_nodes_separated \
+	  top_node_up_implicit \
+	  top_node_up_explicit
+	do
+	  echo TEST $T
+	  (cd t/results/moresectioning/$T/res_html
+	   for f in * ; do
+	     echo diff $f
+	     diff $f ../../../../../tests/sectioning/res_parser/$T/$f
+	   done)
+	done
+
+2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi):
 	Issue an error message right after checking for an invalid 
 	nesting.  This produces little functional change but is intended 
@@ -48,6 +95,7 @@
 	(_end_line): Add a check for an undefined value.
 
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 
 	* tp/Texinfo/Common.pm (%line_commands): Add all the sectioning, 
 	index and def commands.

@@ -1,23 +1,6 @@
 # $Id$
 # Public domain.  Originally created by Patrice Dumas.
 
-node_footnote_end node_footnote.texi --footnote-style=end
-node_footnote_use_node node_footnote.texi -c 'USE_NODES 1' --node-files --footnote-style=end --split node
-node_footnote_separated node_footnote.texi --footnote-style=separate
-equivalent_nodes equivalent_nodes.texi -c 'USE_NODES 1'
-equivalent_nodes_no_node equivalent_nodes.texi
+node_footnote_use_node node_footnote.texi --node-files
 equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
-nodes_after_top_before_chapter nodes_after_top_before_chapter.texi
-nodes_after_top_before_chapter_use_nodes_chapter nodes_after_top_before_chapter.texi -c 'USE_NODES 1' --split chapter
-nodes_after_top_before_section nodes_after_top_before_section.texi --split chapter
-nodes_after_top_before_section_use_nodes nodes_after_top_before_section.texi -c 'USE_NODES 1'
-nodes_after_top_before_section_use_nodes_chapter nodes_after_top_before_section.texi -c 'USE_NODES 1' --split chapter
 sectioning_directions sectioning.texi --init test_directions.init
-sectioning_frames sectioning.texi --split chapter -c 'FRAMES 1'
-# really different from what is in t/*?
-placed_things_before_element placed_things_before_element.texi
-more_sections_than_nodes more_sections_than_nodes.texi
-two_footnotes_in_nodes two_footnotes_in_nodes.texi
-two_footnotes_in_nodes_separated two_footnotes_in_nodes.texi --footnote-style=separate
-top_node_up_implicit top_node_up_implicit.texi -c TOP_NODE_UP_URL=http://itop.example.org
-top_node_up_explicit top_node_up_explicit.texi -c TOP_NODE_UP_URL=http://etop.example.org
