@@ -1,6 +1,7 @@
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Common.pm (%line_commands): Change a comment.
+	(%other_commands): Set from %in_heading_commands.
 
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
