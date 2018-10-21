@@ -147,7 +147,6 @@ $result_trees{'float_in_style_command'} = {
       'extra' => {
         'caption' => {},
         'end_command' => {},
-        'invalid_nesting' => 1,
         'node_content' => [
           {}
         ],

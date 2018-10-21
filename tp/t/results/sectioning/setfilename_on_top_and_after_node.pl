@@ -78,7 +78,6 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'very badly placed setfilename'
               },

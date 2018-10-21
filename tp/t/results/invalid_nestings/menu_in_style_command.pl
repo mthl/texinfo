@@ -174,8 +174,7 @@ $result_trees{'menu_in_style_command'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'invalid_nesting' => 1
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',

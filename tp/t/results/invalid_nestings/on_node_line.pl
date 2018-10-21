@@ -71,7 +71,6 @@ $result_trees{'on_node_line'} = {
               'cmdname' => 'ref',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
                 'node_argument' => {
                   'node_content' => [
                     {}
@@ -123,7 +122,6 @@ $result_trees{'on_node_line'} = {
               'cmdname' => 'pxref',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
                 'node_argument' => {
                   'manual_content' => [
                     {}
@@ -160,7 +158,6 @@ $result_trees{'on_node_line'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
                 'node_content' => [
                   {}
                 ],
@@ -190,9 +187,6 @@ $result_trees{'on_node_line'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -219,7 +213,6 @@ $result_trees{'on_node_line'} = {
               ],
               'cmdname' => 'exdent',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},

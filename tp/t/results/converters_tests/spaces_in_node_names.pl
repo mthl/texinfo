@@ -407,8 +407,7 @@ $result_trees{'spaces_in_node_names'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
-                'delimiter' => ':',
-                'invalid_nesting' => 1
+                'delimiter' => ':'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -584,8 +583,7 @@ $result_trees{'spaces_in_node_names'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
-                        'delimiter' => ':',
-                        'invalid_nesting' => 1
+                        'delimiter' => ':'
                       },
                       'line_nr' => {
                         'file_name' => '',

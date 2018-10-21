@@ -115,7 +115,6 @@ $result_trees{'enumerate_in_style_command'} = {
       'extra' => {
         'end_command' => {},
         'enumerate_specification' => '1',
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'line_nr' => {

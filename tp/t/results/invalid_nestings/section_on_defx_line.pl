@@ -195,7 +195,6 @@ $result_trees{'section_on_defx_line'} = {
         }
       ],
       'extra' => {
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'level' => 2,

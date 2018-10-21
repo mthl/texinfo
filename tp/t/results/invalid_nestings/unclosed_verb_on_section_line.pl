@@ -50,8 +50,7 @@ $result_trees{'unclosed_verb_on_section_line'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
-                'delimiter' => 'T',
-                'invalid_nesting' => 1
+                'delimiter' => 'T'
               },
               'line_nr' => {
                 'file_name' => '',

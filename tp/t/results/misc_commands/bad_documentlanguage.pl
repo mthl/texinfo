@@ -85,7 +85,6 @@ $result_trees{'bad_documentlanguage'} = {
               ],
               'cmdname' => 'documentlanguage',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => '  ',
                 'text_arg' => 'en'
               },

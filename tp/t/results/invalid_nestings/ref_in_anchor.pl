@@ -55,7 +55,6 @@ $result_trees{'ref_in_anchor'} = {
                   'cmdname' => 'ref',
                   'contents' => [],
                   'extra' => {
-                    'invalid_nesting' => 1,
                     'label' => {},
                     'node_argument' => {
                       'node_content' => [

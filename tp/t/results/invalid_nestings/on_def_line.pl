@@ -32,7 +32,6 @@ $result_trees{'on_def_line'} = {
                       'cmdname' => 'anchor',
                       'contents' => [],
                       'extra' => {
-                        'invalid_nesting' => 1,
                         'node_content' => [
                           {}
                         ],
@@ -77,8 +76,7 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'titlefont',
                   'contents' => [],
                   'extra' => {
-                    'def_role' => 'name',
-                    'invalid_nesting' => 1
+                    'def_role' => 'name'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -113,8 +111,7 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'footnote',
                   'contents' => [],
                   'extra' => {
-                    'def_role' => 'arg',
-                    'invalid_nesting' => 1
+                    'def_role' => 'arg'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -147,7 +144,6 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'exdent',
                   'extra' => {
                     'def_role' => 'arg',
-                    'invalid_nesting' => 1,
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {},
@@ -207,7 +203,6 @@ $result_trees{'on_def_line'} = {
                       'cmdname' => 'anchor',
                       'contents' => [],
                       'extra' => {
-                        'invalid_nesting' => 1,
                         'node_content' => [
                           {}
                         ],
@@ -252,8 +247,7 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'titlefont',
                   'contents' => [],
                   'extra' => {
-                    'def_role' => 'name',
-                    'invalid_nesting' => 1
+                    'def_role' => 'name'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -288,8 +282,7 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'footnote',
                   'contents' => [],
                   'extra' => {
-                    'def_role' => 'arg',
-                    'invalid_nesting' => 1
+                    'def_role' => 'arg'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -322,7 +315,6 @@ $result_trees{'on_def_line'} = {
                   'cmdname' => 'exdent',
                   'extra' => {
                     'def_role' => 'arg',
-                    'invalid_nesting' => 1,
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {},

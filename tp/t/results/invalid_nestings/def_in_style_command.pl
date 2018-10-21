@@ -181,7 +181,6 @@ $result_trees{'def_in_style_command'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},

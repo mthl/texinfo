@@ -129,8 +129,7 @@ $result_trees{'quotation_in_ref'} = {
             }
           ],
           'extra' => {
-            'end_command' => {},
-            'invalid_nesting' => 1
+            'end_command' => {}
           },
           'line_nr' => {
             'file_name' => '',

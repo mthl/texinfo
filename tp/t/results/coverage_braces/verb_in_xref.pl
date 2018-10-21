@@ -88,8 +88,7 @@ $result_trees{'verb_in_xref'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
-                        'delimiter' => '*',
-                        'invalid_nesting' => 1
+                        'delimiter' => '*'
                       },
                       'line_nr' => {
                         'file_name' => '',

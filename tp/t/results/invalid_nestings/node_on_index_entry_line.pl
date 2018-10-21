@@ -154,7 +154,6 @@ $result_trees{'node_on_index_entry_line'} = {
         }
       ],
       'extra' => {
-        'invalid_nesting' => 1,
         'node_content' => [
           {}
         ],

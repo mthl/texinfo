@@ -42,7 +42,6 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
                       ],
                       'cmdname' => 'include',
                       'extra' => {
-                        'invalid_nesting' => 1,
                         'spaces_before_argument' => ' ',
                         'text_arg' => 'are you joking!'
                       },
@@ -60,7 +59,6 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
               ],
               'cmdname' => 'setfilename',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'other file '
               },

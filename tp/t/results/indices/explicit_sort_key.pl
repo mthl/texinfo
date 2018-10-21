@@ -333,9 +333,6 @@ $result_trees{'explicit_sort_key'} = {
                           ],
                           'cmdname' => 'sortas',
                           'contents' => [],
-                          'extra' => {
-                            'invalid_nesting' => 1
-                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 9,
@@ -443,9 +440,6 @@ $result_trees{'explicit_sort_key'} = {
                       ],
                       'cmdname' => 'sortas',
                       'contents' => [],
-                      'extra' => {
-                        'invalid_nesting' => 1
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -499,9 +493,6 @@ $result_trees{'explicit_sort_key'} = {
                       ],
                       'cmdname' => 'b',
                       'contents' => [],
-                      'extra' => {
-                        'invalid_nesting' => 1
-                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 13,
@@ -547,9 +538,6 @@ $result_trees{'explicit_sort_key'} = {
                       ],
                       'cmdname' => 'sortas',
                       'contents' => [],
-                      'extra' => {
-                        'invalid_nesting' => 1
-                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 14,

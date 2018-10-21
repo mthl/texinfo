@@ -13,9 +13,6 @@ $result_trees{'on_itemize_line'} = {
           'contents' => [
             {
               'cmdname' => 'indent',
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -46,9 +43,6 @@ $result_trees{'on_itemize_line'} = {
               ],
               'cmdname' => 'titlefont',
               'contents' => [],
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -72,7 +66,6 @@ $result_trees{'on_itemize_line'} = {
               'cmdname' => 'anchor',
               'contents' => [],
               'extra' => {
-                'invalid_nesting' => 1,
                 'node_content' => [
                   {}
                 ],
@@ -102,9 +95,6 @@ $result_trees{'on_itemize_line'} = {
               ],
               'cmdname' => 'footnote',
               'contents' => [],
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -131,7 +121,6 @@ $result_trees{'on_itemize_line'} = {
               ],
               'cmdname' => 'exdent',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},

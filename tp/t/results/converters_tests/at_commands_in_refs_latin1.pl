@@ -9592,8 +9592,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
-                'delimiter' => '.',
-                'invalid_nesting' => 1
+                'delimiter' => '.'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -9650,8 +9649,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
               'cmdname' => 'verb',
               'contents' => [],
               'extra' => {
-                'delimiter' => '.',
-                'invalid_nesting' => 1
+                'delimiter' => '.'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -14132,8 +14130,7 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       'cmdname' => 'verb',
                       'contents' => [],
                       'extra' => {
-                        'delimiter' => '.',
-                        'invalid_nesting' => 1
+                        'delimiter' => '.'
                       },
                       'line_nr' => {
                         'file_name' => '',

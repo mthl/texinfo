@@ -3420,16 +3420,13 @@ sub _command_with_command_as_argument($)
 # $marked_as_invalid_command may be undef, if there is no
 # tree element because the @-command construct is incorrect, for example
 # wrong @tab.
-sub _mark_and_warn_invalid($$$$$)
+sub _mark_and_warn_invalid($$$$)
 {
-  my ($self, $command, $invalid_parent, $line_nr,
-      $marked_as_invalid_command) = @_;
+  my ($self, $command, $invalid_parent, $line_nr) = @_;
 
   if (defined($invalid_parent)) {
     $self->line_warn(sprintf(__("\@%s should not appear in \@%s"), 
               $command, $invalid_parent), $line_nr);
-    $marked_as_invalid_command->{'extra'}->{'invalid_nesting'} = 1
-      if (defined($marked_as_invalid_command));
   }
 }
 
@@ -4118,8 +4115,7 @@ sub _parse_texi($;$)
             push @{$current->{'contents'}}, $misc;
             $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             _register_global_command($self, $misc, $line_nr);
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $misc);
+            _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
             $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
           } else {
@@ -4238,8 +4234,7 @@ sub _parse_texi($;$)
                 last;
               }
             }
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-              $line_nr, $misc);
+            _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
           }
         # line commands
         } elsif (defined($self->{'line_commands'}->{$command})) {
@@ -4349,8 +4344,7 @@ sub _parse_texi($;$)
             } elsif ($command eq 'novalidate') {
               $self->{'info'}->{'novalidate'} = 1;
             }
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $misc);
+            _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
             _register_global_command($self, $misc, $line_nr);
             # the end of line is ignored for special commands
             if ($arg_spec ne 'special' or !$has_comment) {
@@ -4466,8 +4460,7 @@ sub _parse_texi($;$)
               unless ($def_commands{$command});
             $line = _start_empty_line_after_command($line, $current, $misc);
           }
-          _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                 $line_nr, $misc);
+          _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
 
           _register_global_command($self, $misc, $line_nr)
             if $misc;
@@ -4480,8 +4473,7 @@ sub _parse_texi($;$)
             my $macro = _parse_macro_command_line($self, $command, $line, 
                                                   $current, $line_nr);
             push @{$current->{'contents'}}, $macro;
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $current->{'contents'}->[-1]);
+            _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
             $current = $current->{'contents'}->[-1];
             last;
           } elsif ($block_commands{$command} eq 'conditional') {
@@ -4690,8 +4682,7 @@ sub _parse_texi($;$)
                 unless ($def_commands{$command});
             }
             $block->{'line_nr'} = $line_nr;
-            _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                   $line_nr, $block);
+            _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
             _register_global_command($self, $block, $line_nr);
 
             $line = _start_empty_line_after_command($line, $current, $block);
@@ -4704,8 +4695,7 @@ sub _parse_texi($;$)
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command}
                 and !$self->{'definfoenclose'}->{$command});
-          _mark_and_warn_invalid($self, $command, $invalid_parent,
-                                 $line_nr, $current->{'contents'}->[-1]);
+          _mark_and_warn_invalid($self, $command, $invalid_parent, $line_nr);
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
             $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
@@ -6652,11 +6642,6 @@ The C<@end> associated to the block @-command.
 =item missing_argument
 
 Set for some @-commands with line arguments and a missing argument.
-
-=item invalid_nesting
-
-Set if the @-command appears in a context it shouldn't appear in,
-like a block @-command on sectioning @-command line.
 
 =item arg_line
 

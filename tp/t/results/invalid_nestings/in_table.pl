@@ -51,9 +51,6 @@ $result_trees{'in_table'} = {
                 {
                   'cmdname' => 'xref',
                   'contents' => [],
-                  'extra' => {
-                    'invalid_nesting' => 1
-                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 4,
@@ -154,9 +151,6 @@ $result_trees{'in_table'} = {
                           'contents' => [
                             {
                               'cmdname' => 'indent',
-                              'extra' => {
-                                'invalid_nesting' => 1
-                              },
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 8,
@@ -265,7 +259,6 @@ $result_trees{'in_table'} = {
                               ],
                               'cmdname' => 'exdent',
                               'extra' => {
-                                'invalid_nesting' => 1,
                                 'spaces_before_argument' => ' '
                               },
                               'line_nr' => {},
@@ -453,7 +446,6 @@ $result_trees{'in_table'} = {
                               ],
                               'cmdname' => 'center',
                               'extra' => {
-                                'invalid_nesting' => 1,
                                 'spaces_before_argument' => ' '
                               },
                               'line_nr' => {
@@ -522,7 +514,6 @@ $result_trees{'in_table'} = {
                                   'node' => {},
                                   'number' => 1
                                 },
-                                'invalid_nesting' => 1,
                                 'spaces_before_argument' => ' '
                               },
                               'line_nr' => {
@@ -663,7 +654,6 @@ $result_trees{'in_table'} = {
                                   'node' => {},
                                   'number' => 2
                                 },
-                                'invalid_nesting' => 1,
                                 'spaces_before_argument' => ' '
                               },
                               'line_nr' => {
@@ -789,7 +779,6 @@ $result_trees{'in_table'} = {
                                   'node' => {},
                                   'number' => 3
                                 },
-                                'invalid_nesting' => 1,
                                 'spaces_before_argument' => ' '
                               },
                               'line_nr' => {

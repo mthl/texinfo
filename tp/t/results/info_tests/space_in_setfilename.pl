@@ -34,8 +34,7 @@ $result_trees{'space_in_setfilename'} = {
                   'cmdname' => 'verb',
                   'contents' => [],
                   'extra' => {
-                    'delimiter' => ':',
-                    'invalid_nesting' => 1
+                    'delimiter' => ':'
                   },
                   'line_nr' => {
                     'file_name' => '',

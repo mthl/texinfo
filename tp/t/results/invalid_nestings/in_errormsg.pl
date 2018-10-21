@@ -73,7 +73,6 @@ $result_trees{'in_errormsg'} = {
                   'cmdname' => 'anchor',
                   'contents' => [],
                   'extra' => {
-                    'invalid_nesting' => 1,
                     'node_content' => [
                       {}
                     ],
@@ -107,7 +106,6 @@ $result_trees{'in_errormsg'} = {
                   'cmdname' => 'ref',
                   'contents' => [],
                   'extra' => {
-                    'invalid_nesting' => 1,
                     'label' => {},
                     'node_argument' => {
                       'node_content' => [
@@ -265,7 +263,6 @@ $result_trees{'in_errormsg'} = {
       'extra' => {
         'command_as_argument' => {},
         'end_command' => {},
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},

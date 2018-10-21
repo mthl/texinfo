@@ -330,7 +330,6 @@ $result_trees{'double_command'} = {
                       'key' => 'plot2',
                       'number' => 1
                     },
-                    'invalid_nesting' => 1,
                     'not_after_command' => 1,
                     'original_def_cmdname' => 'deffnx',
                     'spaces_before_argument' => ' '
@@ -565,7 +564,6 @@ $result_trees{'double_command'} = {
                   ],
                   'extra' => {
                     'def_role' => 'arg',
-                    'invalid_nesting' => 1,
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {},

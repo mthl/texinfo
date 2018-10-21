@@ -166,7 +166,6 @@ $result_trees{'item_in_ref'} = {
                   ],
                   'cmdname' => 'item',
                   'extra' => {
-                    'invalid_nesting' => 1,
                     'spaces_before_argument' => ' '
                   },
                   'line_nr' => {

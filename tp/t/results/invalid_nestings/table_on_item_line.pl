@@ -79,7 +79,6 @@ $result_trees{'table_on_item_line'} = {
                           ],
                           'extra' => {
                             'command_as_argument' => {},
-                            'invalid_nesting' => 1,
                             'spaces_before_argument' => ' '
                           },
                           'line_nr' => {},

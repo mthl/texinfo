@@ -77,9 +77,6 @@ $result_trees{'ignore_in_xref'} = {
                           'type' => 'last_raw_newline'
                         }
                       ],
-                      'extra' => {
-                        'invalid_nesting' => 1
-                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 4,

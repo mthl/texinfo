@@ -108,9 +108,6 @@ $result_trees{'accents'} = {
                   ],
                   'cmdname' => 'code',
                   'contents' => [],
-                  'extra' => {
-                    'invalid_nesting' => 1
-                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 5,
@@ -152,7 +149,6 @@ $result_trees{'accents'} = {
                   'cmdname' => 'anchor',
                   'contents' => [],
                   'extra' => {
-                    'invalid_nesting' => 1,
                     'node_content' => [
                       {}
                     ],

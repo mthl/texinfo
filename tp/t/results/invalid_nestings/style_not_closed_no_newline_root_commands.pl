@@ -253,7 +253,6 @@ $result_trees{'style_not_closed_no_newline_root_commands'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
-        'invalid_nesting' => 1,
         'node_content' => [
           {}
         ],
@@ -350,9 +349,6 @@ $result_trees{'style_not_closed_no_newline_root_commands'} = {
         }
       ],
       'cmdname' => 'bye',
-      'extra' => {
-        'invalid_nesting' => 1
-      },
       'parent' => {}
     }
   ],

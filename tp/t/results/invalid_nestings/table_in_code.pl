@@ -158,7 +158,6 @@ $result_trees{'table_in_code'} = {
       'extra' => {
         'command_as_argument' => {},
         'end_command' => {},
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},

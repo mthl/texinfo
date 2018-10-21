@@ -169,7 +169,6 @@ $result_trees{'section_in_math'} = {
       'cmdname' => 'section',
       'contents' => [],
       'extra' => {
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'level' => 2,

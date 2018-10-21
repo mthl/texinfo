@@ -175,7 +175,6 @@ $result_trees{'multitable_in_style_command'} = {
       ],
       'extra' => {
         'end_command' => {},
-        'invalid_nesting' => 1,
         'max_columns' => 2,
         'prototypes' => [
           {

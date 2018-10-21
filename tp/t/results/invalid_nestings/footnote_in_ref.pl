@@ -95,9 +95,6 @@ $result_trees{'footnote_in_ref'} = {
                       ],
                       'cmdname' => 'footnote',
                       'contents' => [],
-                      'extra' => {
-                        'invalid_nesting' => 1
-                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 3,

@@ -13,9 +13,6 @@ $result_trees{'center'} = {
           'contents' => [
             {
               'cmdname' => 'indent',
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 1,
@@ -161,7 +158,6 @@ $result_trees{'center'} = {
                   'key' => 'cindex',
                   'number' => 1
                 },
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {
@@ -207,9 +203,6 @@ $result_trees{'center'} = {
                   'type' => 'empty_line_after_command'
                 }
               ],
-              'extra' => {
-                'invalid_nesting' => 1
-              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -273,7 +266,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {
@@ -402,7 +394,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -479,7 +470,6 @@ $result_trees{'center'} = {
       ],
       'cmdname' => 'center',
       'extra' => {
-        'invalid_nesting' => 1,
         'spaces_before_argument' => ' '
       },
       'line_nr' => {},
@@ -788,7 +778,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
-                'invalid_nesting' => 1,
                 'missing_argument' => 1
               },
               'line_nr' => {
@@ -861,7 +850,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -929,7 +917,6 @@ $result_trees{'center'} = {
               ],
               'cmdname' => 'center',
               'extra' => {
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
@@ -1247,7 +1234,6 @@ $result_trees{'center'} = {
               ],
               'extra' => {
                 'command_as_argument' => {},
-                'invalid_nesting' => 1,
                 'spaces_before_argument' => ' '
               },
               'line_nr' => {},
