@@ -122,12 +122,6 @@ anchor}
 ['space_in_anchor',
 '@anchor{   anchor  name   }.
 '],
-['ctrl',
-'
-@ctrl{A}
-
-With @ctrl{B}.
-'],
 ['test_w',
 '@w{aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa bbbbbbbbbbbbb bbbbb bbb b b b b b b b b b bb .
 ccc dddd}.

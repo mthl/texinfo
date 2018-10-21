@@ -1,8 +1,7 @@
 # $Id$
 # Plaintext.pm: output tree as text with filling.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015,
-# 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -271,7 +270,7 @@ foreach my $command (keys(%style_map)) {
 }
 
 # math is special
-my @asis_commands = ('asis', 'w', 'b', 'ctrl', 'i', 'sc', 't', 'r',
+my @asis_commands = ('asis', 'w', 'b', 'i', 'sc', 't', 'r',
   'slanted', 'sansserif', 'var', 'verb', 'clicksequence',
   'headitemfont', 'dmn');
 

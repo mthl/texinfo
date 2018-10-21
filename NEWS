@@ -14,15 +14,18 @@ See the manual for detailed information.
   . New commands @&, @ampchar{}.
 
 * texi2any
+  . extension modules fixed to work with the "thread-safe locales" of
+    Perl 5.28 and newer
+  . some code changed to stop warnings being given by newer versions of Perl
   . the newline after an @insertcopying is not output
   . warning given for @multitable prototypes not in braces
+  . @ctrl is no longer recognised (it was a way to insert literal
+    control characters in Info files, but deprecated since about the 
+    time of Texinfo version 2)
   . @quote-arg and @allow-recursion are not recognised (these two used
     to be recognised by makeinfo in macro definitions but were never 
     implemented in texinfo.tex).
   . `FIX_TEXINFO' removed as a customization variable
-  . extension modules fixed to work with the "thread-safe locales" of
-    Perl 5.28 and newer
-  . some code changed to stop warnings being given by newer versions of Perl
 
 
 6.5 (12 September 2017)

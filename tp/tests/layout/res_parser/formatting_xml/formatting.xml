@@ -150,7 +150,6 @@ but , ,@:
 @code{@@cite@{--a@}} @cite{--a}
 @code{@@code@{--a@}} @code{--a}
 @code{@@command@{--a@}} @command{--a}
-@code{@@ctrl@{--a@}} @ctrl{--a}
 @code{@@dfn@{--a@}} @dfn{--a}
 @code{@@dmn@{--a@}} @dmn{--a}
 @code{@@email@{--a,--b@}} @email{--a,--b}
@@ -887,7 +886,6 @@ but , ,&noeos;
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
 <code>&arobase;code&lbrace;--a&rbrace;</code> <code>--a</code>
 <code>&arobase;command&lbrace;--a&rbrace;</code> <command>--a</command>
-<code>&arobase;ctrl&lbrace;--a&rbrace;</code> <ctrl>&textndash;a</ctrl>
 <code>&arobase;dfn&lbrace;--a&rbrace;</code> <dfn>&textndash;a</dfn>
 <code>&arobase;dmn&lbrace;--a&rbrace;</code> <dmn>&textndash;a</dmn>
 <code>&arobase;email&lbrace;--a,--b&rbrace;</code> <email><emailaddress>--a</emailaddress><emailname>&textndash;b</emailname></email>
@@ -1487,7 +1485,6 @@ but , ,&noeos;
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
 <code>&arobase;code&lbrace;--a&rbrace;</code> <code>--a</code>
 <code>&arobase;command&lbrace;--a&rbrace;</code> <command>--a</command>
-<code>&arobase;ctrl&lbrace;--a&rbrace;</code> <ctrl>&textndash;a</ctrl>
 <code>&arobase;dfn&lbrace;--a&rbrace;</code> <dfn>&textndash;a</dfn>
 <code>&arobase;dmn&lbrace;--a&rbrace;</code> <dmn>&textndash;a</dmn>
 <code>&arobase;email&lbrace;--a,--b&rbrace;</code> <email><emailaddress>--a</emailaddress><emailname>&textndash;b</emailname></email>
@@ -2087,7 +2084,6 @@ but , ,&noeos;
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>&textndash;a</cite>
 <code>&arobase;code&lbrace;--a&rbrace;</code> <code>--a</code>
 <code>&arobase;command&lbrace;--a&rbrace;</code> <command>--a</command>
-<code>&arobase;ctrl&lbrace;--a&rbrace;</code> <ctrl>&textndash;a</ctrl>
 <code>&arobase;dfn&lbrace;--a&rbrace;</code> <dfn>&textndash;a</dfn>
 <code>&arobase;dmn&lbrace;--a&rbrace;</code> <dmn>&textndash;a</dmn>
 <code>&arobase;email&lbrace;--a,--b&rbrace;</code> <email><emailaddress>--a</emailaddress><emailname>&textndash;b</emailname></email>
@@ -2681,7 +2677,6 @@ but , ,&noeos;
 <code>&arobase;cite&lbrace;--a&rbrace;</code> <cite>--a</cite>
 <code>&arobase;code&lbrace;--a&rbrace;</code> <code>--a</code>
 <code>&arobase;command&lbrace;--a&rbrace;</code> <command>--a</command>
-<code>&arobase;ctrl&lbrace;--a&rbrace;</code> <ctrl>--a</ctrl>
 <code>&arobase;dfn&lbrace;--a&rbrace;</code> <dfn>--a</dfn>
 <code>&arobase;dmn&lbrace;--a&rbrace;</code> <dmn>--a</dmn>
 <code>&arobase;email&lbrace;--a,--b&rbrace;</code> <email><emailaddress>--a</emailaddress><emailname>--b</emailname></email>

@@ -599,7 +599,7 @@ foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
   $style_commands{$command} = 1;
 }
 
-foreach my $one_arg_command ('U', 'ctrl', 'dmn', 'w', 'key',
+foreach my $one_arg_command ('U', 'dmn', 'w', 'key',
     'titlefont', 'hyphenation', 'anchor', 'errormsg', 'sortas') {
   $brace_commands{$one_arg_command} = 1;
 }
@@ -866,8 +866,6 @@ foreach my $item_line_command ('table', 'ftable', 'vtable') {
 }
 
 our %deprecated_commands = (
-  'ctrl' => '',
-
   'setcontentsaftertitlepage' =>
 N__('move your @contents command if you want the contents after the title page'),
 

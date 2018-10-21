@@ -1,8 +1,7 @@
 # $Id$
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2011-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1838,24 +1837,6 @@ sub _convert_indicateurl_command($$$$)
 
 $default_commands_conversion{'indicateurl'} = \&_convert_indicateurl_command;
 
-
-
-sub _convert_ctrl_command($$$$)
-{
-  my $self = shift;
-  my $cmdname = shift;
-  my $command = shift;
-  my $args = shift;
-
-  my $text = $args->[0]->{'normal'};
-  if (!defined($text)) {
-    # happens with bogus @-commands without argument, like @strong something
-    return '';
-  }
-  return $self->protect_text('^') .$text;
-}
-
-$default_commands_conversion{'ctrl'} = \&_convert_ctrl_command;
 
 sub _convert_titlefont_command($$$$)
 {

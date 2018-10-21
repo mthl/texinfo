@@ -322,16 +322,17 @@ foreach my $no_paragraph_command ('titlefont', 'caption', 'shortcaption',
 foreach my $no_paragraph_command (keys(%line_commands),
                                   keys(%other_commands)) {
   $default_no_paragraph_commands{$no_paragraph_command} = 1;
+}
+
+foreach my $no_paragraph_command (keys(%line_commands)) {
   $begin_line_commands{$no_paragraph_command} = 1;
 }
 
 # verbatiminclude is not said to begin at the beginning of the line
 # in the manual
-foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'refill', 
-                                'noindent', 'indent', 'columnfractions',
-                                'tab', 'item', 'headitem', 'verbatiminclude',
-                                'set', 'clear',
-                                'vskip', keys(%in_heading_commands)) {
+foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'columnfractions',
+                                 'item', 'verbatiminclude',
+                                 'set', 'clear', 'vskip') {
   delete $begin_line_commands{$misc_not_begin_line};
 }
 

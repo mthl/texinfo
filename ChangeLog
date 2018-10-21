@@ -1,3 +1,17 @@
+2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: @ctrl removed.
+
+	* tp/Texinfo/Common.pm (%brace_commands, %deprecated_commands):
+	Remove @ctrl.
+	* tp/Texinfo/Convert/HTML.pm (_convert_ctrl_command): Remove.
+	* tp/Texinfo/Convert/Plaintext.pm (@asis_commands): Remove @ctrl.
+
+	* tp/t/03coverage_braces.t (ctrl): Remove test.
+	* tp/tests/coverage_macro.texi: Remove test of @ctrl.
+
+	(Karl, bug-texinfo 2012-04-01).
+
 2018-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Common.pm (%line_commands): Change a comment.

@@ -146,7 +146,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -646,7 +645,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -1147,7 +1145,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -1648,7 +1645,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -2148,7 +2144,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>&#8211;a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>&#8211;a</firstterm>
 <literal>@dmn{--a}</literal> &#8211;a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">&#8211;b</ulink>
@@ -2644,7 +2639,6 @@ but , ,
 <literal>@cite{--a}</literal> <citetitle>--a</citetitle>
 <literal>@code{--a}</literal> <literal>--a</literal>
 <literal>@command{--a}</literal> <command>--a</command>
-<literal>@ctrl{--a}</literal> 
 <literal>@dfn{--a}</literal> <firstterm>--a</firstterm>
 <literal>@dmn{--a}</literal> --a
 <literal>@email{--a,--b}</literal> <ulink url="mailto:--a">--b</ulink>
