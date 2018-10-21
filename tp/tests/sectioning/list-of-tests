@@ -1,6 +1,5 @@
 # $Id$
 # Public domain.  Originally created by Patrice Dumas.
 
-node_footnote_use_node node_footnote.texi --node-files
 equivalent_nodes_test_renamed_nodes equivalent_nodes.texi --init test_renamed_nodes.init
 sectioning_directions sectioning.texi --init test_directions.init
