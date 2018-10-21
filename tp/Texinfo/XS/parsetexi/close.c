@@ -289,7 +289,7 @@ close_current (ELEMENT *current,
             {
               pop_context ();
             }
-          if (command_data(cmd).flags & CF_region)
+          if (command_data(cmd).data == BLOCK_region)
             {
               pop_region ();
             }
@@ -407,8 +407,7 @@ close_commands (ELEMENT *current, enum command_id closed_command,
             abort ();
         }
 
-      // 1784
-      if (command_data(current->cmd).flags & CF_region)
+      if (command_data(current->cmd).data == BLOCK_region)
         pop_region ();
 
       *closed_element = current;

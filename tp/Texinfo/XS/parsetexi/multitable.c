@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -21,9 +20,7 @@
 ELEMENT *
 item_line_parent (ELEMENT *current)
 {
-  if (current->cmd == CM_item || current->cmd == CM_itemx)
-    current = current->parent->parent;
-  else if (current->type == ET_before_item && current->parent)
+  if (current->type == ET_before_item && current->parent)
     current = current->parent;
 
   if (item_line_command (current->cmd))

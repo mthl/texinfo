@@ -1,5 +1,8 @@
 
-ELEMENT *handle_misc_command (ELEMENT *current, char **line_inout,
+ELEMENT *handle_other_command (ELEMENT *current, char **line_inout,
+                     enum command_id cmd_id, int *status,
+                     enum command_id invalid_parent);
+ELEMENT *handle_line_command (ELEMENT *current, char **line_inout,
                      enum command_id cmd_id, int *status,
                      enum command_id invalid_parent);
 ELEMENT *handle_block_command (ELEMENT *current, char **line_inout,

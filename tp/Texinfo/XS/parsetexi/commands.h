@@ -43,9 +43,9 @@ void wipe_user_commands (void);
 /* In indices.c */
 void init_index_commands (void);
 
-/* Available command flags.  Based on tp/Texinfo/Common.pm. */
+/* Available command flags. */
 
-#define CF_misc			        0x0001
+#define CF_line			        0x0001
 #define CF_deprecated   	        0x0002
 #define CF_root			        0x0004
 #define CF_sectioning		        0x0008
@@ -67,7 +67,7 @@ void init_index_commands (void);
 #define CF_def_alias	        	0x00040000
 #define CF_menu		        	0x00080000
 #define CF_align	        	0x00100000
-#define CF_region	        	0x00200000
+#define CF_other	        	0x00200000
 #define CF_preformatted	        	0x00400000
 #define CF_preformatted_code		0x00800000
 #define CF_item_container		0x01000000
@@ -80,8 +80,7 @@ void init_index_commands (void);
 #define CF_global_unique		0x80000000
 
 /* NOTE: We've run out of spaces for flags, but some of these may not
-   be used, or may not be necessary. For example, region could be done
-   as BLOCK_region in data instead.
+   be used, or may not be necessary.
      CF_code_style, CF_deprecated are hardly used.
 
    Candidates for flags:
@@ -90,20 +89,22 @@ void init_index_commands (void);
    Could combine CF_MACRO, CF_ALIAS, and CF_INFOENCLOSE into 2 bits.
  */
 
-/* Types of misc command (has CF_misc flag).  Values for COMMAND.data. */
-/* See Common.pm:376 */
-#define MISC_special -1
-#define MISC_lineraw -2
-#define MISC_skipline -3
-#define MISC_skipspace -4
-#define MISC_noarg -5
-#define MISC_text -6
-#define MISC_line -7
+/* Types of line command (has CF_line flag).  Values for COMMAND.data. */
+#define LINE_special -1
+#define LINE_lineraw -2
+#define LINE_skipline -3
+#define LINE_text -6
+#define LINE_line -7
 
-/* Types of block command (CF_block).  Common.pm:687. */
+/* Types of other command (has CF_other flag). */
+#define OTHER_skipspace -1
+#define OTHER_noarg -2
+
+/* Types of block command (CF_block). */
 #define BLOCK_conditional -1
 #define BLOCK_raw -2
 #define BLOCK_multitable -3
+#define BLOCK_region -4
 
 /* Types of brace command (CF_brace). */
 #define BRACE_context -1 /* Can enclose paragraph breaks. */

@@ -104,5 +104,8 @@ EXTRA_DIST+=debug_perl.txt makeinfo-debug.txt
 element_types.c element_types.h: element_types.txt element_types.awk
 	awk -f element_types.awk element_types.txt >element_types.h
 
-command_data.c command_ids.h: command_data.txt command_data.awk
-	awk -f command_data.awk command_data.txt >command_ids.h
+$(srcdir)/command_data.c $(srcdir)/command_ids.h: command_data.txt command_data.awk
+	awk -f $(srcdir)/command_data.awk $(srcdir)/command_data.txt  \
+		>$(srcdir)/command_ids.h ; \
+	cp command_data.c $(srcdir)/command_data.c
+

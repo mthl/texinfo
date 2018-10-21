@@ -81,11 +81,242 @@ check_no_text (ELEMENT *current)
   return after_paragraph;
 }
 
-/* Line 4289 */
+/* noarg skipspace */
+ELEMENT *
+handle_other_command (ELEMENT *current, char **line_inout,
+                     enum command_id cmd, int *status,
+                     enum command_id invalid_parent)
+{
+  ELEMENT *misc = 0;
+  char *line = *line_inout;
+  int arg_spec;
+
+  arg_spec = command_data(cmd).data;
+  if (arg_spec == OTHER_noarg)
+    {
+      int only_in_headings = 0;
+      if (command_data(cmd).flags & CF_in_heading)
+        {
+          line_error ("@%s should only appear in heading or footing",
+                      command_name(cmd));
+          only_in_headings = 1;
+        }
+
+      misc = new_element (ET_NONE);
+      misc->cmd = cmd;
+      add_to_element_contents (current, misc);
+      if (only_in_headings)
+        add_extra_integer (misc, "invalid_nesting", 1);
+      register_global_command (misc);
+      mark_and_warn_invalid (cmd, invalid_parent, misc);
+      if (close_preformatted_command(cmd))
+        current = begin_preformatted (current);
+    }
+  else
+    {
+      /* @item can occur in several contents: in an @itemize, a @table, or
+         a @multitable. */
+      if (cmd == CM_item || cmd == CM_headitem || cmd == CM_tab)
+        {
+          ELEMENT *parent;
+
+          /* @itemize or @enumerate */
+          if ((parent = item_container_parent (current)))
+            {
+              if (cmd == CM_item)
+                {
+                  debug ("ITEM CONTAINER");
+                  counter_inc (&count_items);
+                  misc = new_element (ET_NONE);
+                  misc->cmd = CM_item;
+
+                  add_extra_integer (misc, "item_number",
+                                     counter_value (&count_items, parent));
+
+                  add_to_element_contents (parent, misc);
+                  current = misc;
+                }
+              else
+                {
+                  line_error ("@%s not meaningful inside `@%s' block",
+                              command_name(cmd),
+                              command_name(parent->cmd));
+                }
+              current = begin_preformatted (current);
+            }
+          /* @table, @vtable, @ftable */
+          else if ((parent = item_line_parent (current)))
+            {
+              line_error ("@%s not meaningful inside `@%s' block",
+                          command_name(cmd),
+                          command_name(parent->cmd));
+              current = begin_preformatted (current);
+            }
+          /* In a @multitable */
+          else if ((parent = item_multitable_parent (current))) // 4477
+            {
+              if (cmd != CM_item && cmd != CM_headitem
+                  && cmd != CM_tab)
+                {
+                  line_error ("@%s not meaningful inside @%s block",
+                              command_name(cmd),
+                              command_name(parent->cmd)); // 4521
+                }
+              else
+                { /* 4480 */
+                  int max_columns = 0;
+                  KEY_PAIR *prototypes;
+
+                  prototypes = lookup_extra  (parent, "prototypes");
+                  if (prototypes)
+                    max_columns = prototypes->value->contents.number;
+                  else
+                    {
+                      prototypes = lookup_extra(parent, "columnfractions");
+                      if (prototypes)
+                        {
+                          prototypes = lookup_extra((ELEMENT *) prototypes->value,
+                                                    "misc_args");
+                          if (prototypes)
+                            max_columns = prototypes->value->contents.number;
+                        }
+                    }
+
+                  if (max_columns == 0)
+                    {
+                      line_warn ("@%s in empty multitable",
+                                 command_name(cmd));
+                    }
+                  else if (cmd == CM_tab)
+                    {
+                      ELEMENT *row;
+                      row = last_contents_child (parent);
+                      if (row->type == ET_before_item)
+                        line_error ("@tab before @item");
+                      else if (counter_value (&count_cells, row)
+                               >= max_columns)
+                        {
+                          line_error ("too many columns in multitable item"
+                                      " (max %d)", max_columns);
+                        }
+                      else
+                        {
+                          counter_inc (&count_cells);
+                          misc = new_element (ET_NONE);
+                          misc->cmd = cmd;
+                          add_to_element_contents (row, misc);
+                          current = misc;
+                          debug ("TAB");
+
+                          add_extra_integer (current, "cell_number",
+                                             counter_value (&count_cells, row));
+                        }
+                    }
+                  else /* 4505 @item or @headitem */
+                    {
+                      ELEMENT *row; char *s;
+
+                      debug ("ROW");
+                      row = new_element (ET_row);
+                      add_to_element_contents (parent, row);
+
+                      /* FIXME:The "row_number" extra value,
+                         isn't actually used anywhere. */
+                      asprintf (&s, "%d", parent->contents.number-1);
+                      add_extra_string (row, "row_number", s);
+
+                      misc = new_element (ET_NONE);
+                      misc->cmd = cmd;
+                      add_to_element_contents (row, misc);
+                      current = misc;
+
+                      if (counter_value (&count_cells, parent) != -1)
+                        counter_pop (&count_cells);
+                      counter_push (&count_cells, row, 1);
+                      asprintf (&s, "%d",
+                                counter_value (&count_cells, row));
+                      add_extra_string (current, "cell_number", s);
+                    }
+                }
+              current = begin_preformatted (current);
+            } /* In @multitable */
+          else if (cmd == CM_tab) // 4526
+            {
+              line_error ("ignoring @tab outside of multitable");
+              current = begin_preformatted (current);
+            }
+          else
+            {
+              line_error ("@%s outside of table or list",
+                          command_name(cmd));
+              current = begin_preformatted (current);
+            }
+          if (misc)
+            misc->line_nr = line_nr; // 4535
+        }
+      else
+        {
+          misc = new_element (ET_NONE);
+          misc->cmd = cmd;
+          misc->line_nr = line_nr;
+          add_to_element_contents (current, misc);
+        }
+      start_empty_line_after_command (current, &line, misc);
+      if (cmd == CM_indent || cmd == CM_noindent)
+        {
+          /* Start a new paragraph if not in one already. */
+          int spaces;
+          enum element_type t;
+          ELEMENT *paragraph;
+
+          /* Check if if we should change an ET_empty_line_after_command
+             element to ET_empty_spaces_after_command by looking ahead
+             to see what comes next. */
+          if (!strchr (line, '\n'))
+            {
+              char *line2;
+              input_push_text (strdup (line), 0);
+              line2 = new_line (current);
+              if (line2)
+                line = line2;
+            }
+          spaces = strspn (line, whitespace_chars);
+          if (spaces > 0)
+            {
+              char saved = line[spaces];
+              line[spaces] = '\0';
+              current = merge_text (current, line);
+              line[spaces] = saved;
+              line += spaces;
+            }
+          if (*line
+              && last_contents_child(current)->type
+              == ET_empty_line_after_command)
+            {
+              last_contents_child(current)->type
+                = ET_empty_spaces_after_command;
+            }
+          paragraph = begin_paragraph (current);
+          if (paragraph)
+            current = paragraph;
+          if (!*line)
+            {
+              *status = 1; /* Get a new line. */
+              goto funexit;
+            }
+        }
+      mark_and_warn_invalid (cmd, invalid_parent, misc);
+    }
+
+funexit:
+  *line_inout = line;
+  return current;
+}
+
 /* STATUS is set to 1 if we should get a new line after this,
    2 if we should stop processing completely. */
 ELEMENT *
-handle_misc_command (ELEMENT *current, char **line_inout,
+handle_line_command (ELEMENT *current, char **line_inout,
                      enum command_id cmd, int *status,
                      enum command_id invalid_parent)
 {
@@ -117,15 +348,20 @@ handle_misc_command (ELEMENT *current, char **line_inout,
         }
     }
 
-  /* Look up information about this command ( noarg skipline skipspace text 
-     line lineraw /^\d$/). */
+  /* Look up information about this command ( skipline text 
+     line lineraw (a number) ). */
   arg_spec = command_data(cmd).data;
 
-  /* noarg 4312 */
-  if (arg_spec == MISC_noarg)
+  /* All the cases using the raw line.
+     TODO: I don't understand what the difference is between these. */
+  if (arg_spec == LINE_skipline || arg_spec == LINE_lineraw
+           || arg_spec == LINE_special)
     {
+      ELEMENT *args = 0;
+      enum command_id equivalent_cmd = 0;
+      int has_comment = 0;
       int ignored = 0;
-      int only_in_headings = 0;
+
       if (cmd == CM_insertcopying)
         {
           ELEMENT *p = current;
@@ -141,35 +377,6 @@ handle_misc_command (ELEMENT *current, char **line_inout,
               p = p->parent;
             }
         }
-      else if (command_data(cmd).flags & CF_in_heading)
-        {
-          line_error ("@%s should only appear in heading or footing",
-                      command_name(cmd));
-          only_in_headings = 1;
-        }
-
-      if (!ignored)
-        {
-          misc = new_element (ET_NONE);
-          misc->cmd = cmd;
-          add_to_element_contents (current, misc);
-          if (only_in_headings)
-            add_extra_integer (misc, "invalid_nesting", 1);
-          register_global_command (misc);
-        }
-      mark_and_warn_invalid (cmd, invalid_parent, misc);
-      if (close_preformatted_command(cmd))
-        current = begin_preformatted (current);
-    }
-  /* All the cases using the raw line.
-     I don't understand what the difference is between these. */
-  else if (arg_spec == MISC_skipline /* 4347 */
-           || arg_spec == MISC_lineraw
-           || arg_spec == MISC_special)
-    {
-      ELEMENT *args = 0;
-      enum command_id equivalent_cmd = 0;
-      int has_comment = 0;
 
       /* 4350 If the current input is the result of a macro expansion,
          it may not be a complete line.  Check for this and acquire the rest
@@ -193,7 +400,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       misc = new_element (ET_NONE);
       misc->cmd = cmd;
 
-      if (arg_spec == MISC_skipline || arg_spec == MISC_lineraw)
+      if (arg_spec == LINE_skipline || arg_spec == LINE_lineraw)
         {
           ELEMENT *arg;
           args = new_element (ET_NONE);
@@ -201,14 +408,14 @@ handle_misc_command (ELEMENT *current, char **line_inout,
           add_to_element_contents (args, arg);
           text_append (&arg->text, line);
         }
-      else /* arg_spec == MISC_special */
+      else /* arg_spec == LINE_special */
         {
           args = parse_special_misc_command (line, cmd, &has_comment); //4362
           add_extra_string (misc, "arg_line", strdup (line));
         }
 
       /* Handle @set txicodequoteundirected as an
-         obsolete alternative to @codequoteundirected. */
+         alternative to @codequoteundirected. */
       if (cmd == CM_set || cmd == CM_clear)
         {
           if (args->contents.number > 0
@@ -266,19 +473,22 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       else // 4402
         {
           int i;
-          add_to_element_contents (current, misc);
-
-          for (i = 0; i < args->contents.number; i++)
+          if (!ignored)
             {
-              ELEMENT *misc_arg = new_element (ET_misc_arg);
-              text_append_n (&misc_arg->text, 
-                             args->contents.list[i]->text.text,
-                             args->contents.list[i]->text.end);
-              add_to_element_args (misc, misc_arg);
-            }
-          /* TODO: Could we have just set misc->args directly as args? */
+              add_to_element_contents (current, misc);
 
-          if (args->contents.number > 0 && arg_spec != MISC_skipline)
+              for (i = 0; i < args->contents.number; i++)
+                {
+                  ELEMENT *misc_arg = new_element (ET_misc_arg);
+                  text_append_n (&misc_arg->text, 
+                                 args->contents.list[i]->text.text,
+                                 args->contents.list[i]->text.end);
+                  add_to_element_args (misc, misc_arg);
+                }
+              /* TODO: Could we have just set misc->args directly as args? */
+            }
+
+          if (args->contents.number > 0 && arg_spec != LINE_skipline)
             add_extra_misc_args (misc, "misc_args", args);
           else
             {
@@ -305,7 +515,7 @@ handle_misc_command (ELEMENT *current, char **line_inout,
       mark_and_warn_invalid (cmd, invalid_parent, misc);
       register_global_command (misc); // 4423
 
-      if (arg_spec != MISC_special || !has_comment)
+      if (arg_spec != LINE_special || !has_comment)
         current = end_line (current);
 
       // 4429
@@ -323,177 +533,31 @@ handle_misc_command (ELEMENT *current, char **line_inout,
     }
   else
     {
-      /* line 4435 - text, line, skipspace or a number.
-         (This includes handling of "@end", which is MISC_text.) */
+      ELEMENT *arg;
 
-      int line_arg = 0;
-
-      if (arg_spec != MISC_skipspace)
-        line_arg = 1;
-
-      /* 4439 */
-      /*************************************************************/
-      /* Special handling of @item because it can appear
-         in several contents: in an @itemize, a @table, or
-         a @multitable. */
-      if (cmd == CM_item || cmd == CM_itemx
-          || cmd == CM_headitem || cmd == CM_tab)
+      /* line 4435 - text, line, or a number.
+         (This includes handling of "@end", which is LINE_text.) */
+      if (cmd == CM_item_LINE || cmd == CM_itemx)
         {
           ELEMENT *parent;
-
-          /* @itemize or @enumerate */ // 4443
-          if ((parent = item_container_parent (current)))
+          if (parent = item_line_parent (current))
             {
-              if (cmd == CM_item)
-                {
-                  char *s;
-                  debug ("ITEM CONTAINER");
-                  counter_inc (&count_items);
-                  misc = new_element (ET_NONE);
-                  misc->cmd = CM_item;
-
-                  asprintf (&s, "%d", counter_value (&count_items, parent));
-                  add_extra_string (misc, "item_number", s);
-
-                  add_to_element_contents (parent, misc);
-                  current = misc;
-                }
-              else
-                {
-                  line_error ("@%s not meaningful inside `@%s' block",
-                              command_name(cmd),
-                              command_name(parent->cmd));
-                }
-              current = begin_preformatted (current);
-            }
-          /* @table, @vtable, @ftable */
-          else if ((parent = item_line_parent (current)))
-            {
-              if (cmd == CM_item || cmd == CM_itemx)
-                {
-                  debug ("ITEM_LINE");
-                  current = parent;
-                  gather_previous_item (current, cmd);
-                  misc = new_element (ET_NONE);
-                  misc->cmd = cmd;
-                  add_to_element_contents (current, misc);
-                  line_arg = 1;
-                }
-              else
-                {
-                  line_error ("@%s not meaningful inside `@%s' block",
-                              command_name(cmd),
-                              command_name(parent->cmd));
-                  current = begin_preformatted (current);
-                }
-            }
-          /* In a @multitable */
-          else if ((parent = item_multitable_parent (current))) // 4477
-            {
-              if (cmd != CM_item && cmd != CM_headitem
-                  && cmd != CM_tab)
-                {
-                  line_error ("@%s not meaningful inside @%s block",
-                              command_name(cmd),
-                              command_name(parent->cmd)); // 4521
-                }
-              else
-                { /* 4480 */
-                  int max_columns = 0;
-                  KEY_PAIR *prototypes;
-
-                  prototypes = lookup_extra  (parent, "prototypes");
-                  if (prototypes)
-                    max_columns = prototypes->value->contents.number;
-                  else
-                    {
-                      prototypes = lookup_extra(parent, "columnfractions");
-                      if (prototypes)
-                        {
-                          prototypes = lookup_extra((ELEMENT *) prototypes->value,
-                                                    "misc_args");
-                          if (prototypes)
-                            max_columns = prototypes->value->contents.number;
-                        }
-                    }
-
-                  if (max_columns == 0)
-                    {
-                      line_warn ("@%s in empty multitable",
-                                 command_name(cmd));
-                    }
-                  else if (cmd == CM_tab)
-                    { // 4484
-                      ELEMENT *row;
-                      row = last_contents_child (parent);
-                      if (row->type == ET_before_item)
-                        line_error ("@tab before @item");
-                      // 4489
-                      else if (counter_value (&count_cells, row)
-                               >= max_columns)
-                        {
-                          line_error ("too many columns in multitable item"
-                                      " (max %d)", max_columns);
-                        }
-                      else // 4493
-                        {
-                          char *s;
-                          counter_inc (&count_cells);
-                          misc = new_element (ET_NONE);
-                          misc->cmd = cmd;
-                          add_to_element_contents (row, misc);
-                          current = misc;
-                          debug ("TAB");
-
-                          asprintf (&s, "%d",
-                                    counter_value (&count_cells, row));
-                          add_extra_string (current, "cell_number", s);
-                        }
-                    }
-                  else /* 4505 @item or @headitem */
-                    {
-                      ELEMENT *row; char *s;
-
-                      debug ("ROW");
-                      row = new_element (ET_row);
-                      add_to_element_contents (parent, row);
-
-                      /* FIXME:The "row_number" extra value,
-                         isn't actually used anywhere. */
-                      asprintf (&s, "%d", parent->contents.number-1);
-                      add_extra_string (row, "row_number", s);
-
-                      misc = new_element (ET_NONE);
-                      misc->cmd = cmd;
-                      add_to_element_contents (row, misc);
-                      current = misc;
-
-                      if (counter_value (&count_cells, parent) != -1)
-                        counter_pop (&count_cells);
-                      counter_push (&count_cells, row, 1);
-                      asprintf (&s, "%d",
-                                counter_value (&count_cells, row));
-                      add_extra_string (current, "cell_number", s);
-                    }
-                }
-              current = begin_preformatted (current);
-            } /* In @multitable */
-          else if (cmd == CM_tab) // 4526
-            {
-              line_error ("ignoring @tab outside of multitable");
-              current = begin_preformatted (current);
+              debug ("ITEM_LINE");
+              current = parent;
+              gather_previous_item (current, cmd);
             }
           else
             {
               line_error ("@%s outside of table or list",
-                          command_name(cmd));
+                          cmd == CM_item_LINE ? "item" : "itemx");
               current = begin_preformatted (current);
             }
-          if (misc)
-            misc->line_nr = line_nr; // 4535
+          misc = new_element (ET_NONE);
+          misc->cmd = (cmd == CM_item_LINE) ? CM_item : CM_itemx;
+          misc->line_nr = line_nr;
+          add_to_element_contents (current, misc);
         }
-      /*************************************************************/
-      else /* Not @item, @itemx, @headitem, nor @tab 4536 */
+      else
         {
           /* Add to contents */
           misc = new_element (ET_NONE);
@@ -555,117 +619,67 @@ handle_misc_command (ELEMENT *current, char **line_inout,
             }
         } /* 4571 */
 
-      // Rest of the line is the argument - true unless is MISC_skipspace. */
-      if (line_arg)
-        {
-          ELEMENT *arg;
-          /* 4576 - change 'current' to its last child.  This is ELEMENT *misc 
-             above.  */
-          current = last_contents_child (current);
-          arg = new_element (ET_misc_line_arg);
-          add_to_element_args (current, arg);
+      /* 4576 - change 'current' to its last child.  This is ELEMENT *misc 
+         above.  */
+      current = last_contents_child (current);
+      arg = new_element (ET_misc_line_arg);
+      add_to_element_args (current, arg);
 
-          if (cmd == CM_node) // 4584
+      if (cmd == CM_node) // 4584
+        {
+          /* At most three comma-separated arguments to @node.  This
+             is the only (non-block) line command taking comma-separated
+             arguments.  Its arguments will be gathered the same as
+             those of some block line commands and brace commands. */
+          counter_push (&count_remaining_args, current, 3);
+        }
+      else if (cmd == CM_author)
+        {
+          ELEMENT *parent = current;
+          int found = 0;
+          while (parent->parent)
             {
-              /* At most three comma-separated arguments to @node.  This
-                 is the only (non-block) line command taking comma-separated
-                 arguments.  Its arguments will be gathered the same as
-                 those of some block line commands and brace commands. */
-              counter_push (&count_remaining_args, current, 3);
-            }
-          else if (cmd == CM_author)
-            {
-              ELEMENT *parent = current;
-              int found = 0;
-              while (parent->parent)
+              parent = parent->parent;
+              if (parent->type == ET_brace_command_context)
+                break;
+              if (parent->cmd == CM_titlepage)
                 {
-                  parent = parent->parent;
-                  if (parent->type == ET_brace_command_context)
-                    break;
-                  if (parent->cmd == CM_titlepage)
-                    {
-                      add_extra_element (current, "titlepage", parent);
-                      found = 1; break;
-                    }
-                  else if (parent->cmd == CM_quotation
-                           || parent->cmd == CM_smallquotation)
-                    {
-                      KEY_PAIR *k; ELEMENT *e;
-                      k = lookup_extra (parent, "authors");
-                      if (k)
-                        e = k->value;
-                      else
-                        {
-                          e = new_element (ET_NONE);
-                          add_extra_contents (parent, "authors", e);
-                        }
-                      add_to_contents_as_array (e, current);
-                      add_extra_element (current, "quotation", parent);
-                      found = 1; break;
-                    }
+                  add_extra_element (current, "titlepage", parent);
+                  found = 1; break;
                 }
-              if (!found)
-                line_warn ("@author not meaningful outside "
-                           "`@titlepage' and `@quotation' environments");
+              else if (parent->cmd == CM_quotation
+                       || parent->cmd == CM_smallquotation)
+                {
+                  KEY_PAIR *k; ELEMENT *e;
+                  k = lookup_extra (parent, "authors");
+                  if (k)
+                    e = k->value;
+                  else
+                    {
+                      e = new_element (ET_NONE);
+                      add_extra_contents (parent, "authors", e);
+                    }
+                  add_to_contents_as_array (e, current);
+                  add_extra_element (current, "quotation", parent);
+                  found = 1; break;
+                }
             }
-          else if (cmd == CM_dircategory && current_node)
-            line_warn ("@dircategory after first node");
-
-          current = last_args_child (current); /* arg */
-
-          /* add 'line' to context_stack (Parser.pm:141).  This will be the
-             case while we read the argument on this line. */
-          if (!(command_data(cmd).flags & CF_def))
-            push_context (ct_line);
+          if (!found)
+            line_warn ("@author not meaningful outside "
+                       "`@titlepage' and `@quotation' environments");
         }
-      start_empty_line_after_command (current, &line, misc); //4621
+      else if (cmd == CM_dircategory && current_node)
+        line_warn ("@dircategory after first node");
 
-      if (cmd == CM_indent || cmd == CM_noindent)
-        {
-          /* Start a new paragraph if not in one already. */
-          int spaces;
-          enum element_type t;
-          ELEMENT *paragraph;
+      current = last_args_child (current);
 
-          /* Check if if we should change an ET_empty_line_after_command
-             element to ET_empty_spaces_after_command by looking ahead
-             to see what comes next. */
-          if (!strchr (line, '\n'))
-            {
-              char *line2;
-              input_push_text (strdup (line), 0);
-              line2 = new_line (current);
-              if (line2)
-                line = line2;
-            }
-          spaces = strspn (line, whitespace_chars);
-          if (spaces > 0)
-            {
-              char saved = line[spaces];
-              line[spaces] = '\0';
-              current = merge_text (current, line);
-              line[spaces] = saved;
-              line += spaces;
-            }
-          if (*line
-              && last_contents_child(current)->type
-                == ET_empty_line_after_command)
-            {
-              last_contents_child(current)->type
-                                              = ET_empty_spaces_after_command;
-            }
-          paragraph = begin_paragraph (current);
-          if (paragraph)
-            current = paragraph;
-          if (!*line)
-            {
-              *status = 1; /* Get a new line. */
-              goto funexit;
-            }
-        }
+      /* add 'line' to context_stack.  This will be the
+         case while we read the argument on this line. */
+      if (!(command_data(cmd).flags & CF_def))
+        push_context (ct_line);
+      start_empty_line_after_command (current, &line, misc);
     }
 
-  // 4622
   mark_and_warn_invalid (cmd, invalid_parent, misc);
 
   if (misc)
@@ -956,7 +970,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
             }
 
           // 4775
-          if (command_data(cmd).flags & CF_region)
+          else if (command_data(cmd).data == BLOCK_region)
             {
               if (current_region_cmd ())
                 {

@@ -1,4 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
+/* Copyright 2010-2018
    Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -71,8 +71,8 @@ add_index_command (char *cmdname, INDEX *idx)
 {
   enum command_id new = add_texinfo_command (cmdname);
   user_defined_command_data[new & ~USER_COMMAND_BIT].flags
-    = CF_misc | CF_index_entry_command;
-  user_defined_command_data[new & ~USER_COMMAND_BIT].data = MISC_line;
+    = CF_line | CF_index_entry_command;
+  user_defined_command_data[new & ~USER_COMMAND_BIT].data = LINE_line;
   associate_command_to_index (new, idx);
 }
 

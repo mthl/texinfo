@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -19,7 +18,6 @@
 #include "parser.h"
 #include "text.h"
 
-// 1471
 void
 gather_def_item (ELEMENT *current, enum command_id next_command)
 {
@@ -39,7 +37,7 @@ gather_def_item (ELEMENT *current, enum command_id next_command)
      "This may happen for a construct like:
      @deffnx a b @section
      but otherwise the end of line will lead to the command closing." */
-  if (command_data(current->cmd).flags & CF_misc)
+  if (command_data(current->cmd).flags & CF_line)
     return;
 
   def_item = new_element (type);

@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1461,22 +1460,16 @@ value_invalid:
           && !abort_empty_line (&current, NULL)
           && ((cmd == CM_node || cmd == CM_bye)
               || (command_data(cmd).flags & CF_block)
-              || ((command_data(cmd).flags & CF_misc)
+              || ((command_data(cmd).flags & CF_line)
                   && cmd != CM_comment
                   && cmd != CM_c
                   && cmd != CM_sp
-                  && cmd != CM_refill
-                  && cmd != CM_noindent
-                  && cmd != CM_indent
                   && cmd != CM_columnfractions
-                  && cmd != CM_tab
                   && cmd != CM_item
-                  && cmd != CM_headitem
                   && cmd != CM_verbatiminclude
                   && cmd != CM_set
                   && cmd != CM_clear
-                  && cmd != CM_vskip
-                  && !(command_data(cmd).flags & CF_in_heading))))
+                  && cmd != CM_vskip)))
         {
           line_warn ("@%s should only appear at the beginning of a line", 
                      command_name(cmd));
@@ -1509,11 +1502,11 @@ value_invalid:
           // much TODO here.
 
           /* 409 "simple text commands" */
-          if ((outer_flags & CF_misc
+          if ((outer_flags & CF_line
                     && (command_data(outer).data >= 0
-                        || (command_data(outer).data == MISC_line
+                        || (command_data(outer).data == LINE_line
                             && !(outer_flags & (CF_def | CF_sectioning)))
-                        || command_data(outer).data == MISC_text)
+                        || command_data(outer).data == LINE_text)
                     && outer != CM_center
                     && outer != CM_exdent) // 423
               || outer == CM_titlefont // 425
@@ -1686,9 +1679,8 @@ value_invalid:
         }
 
       /* 4276 check command doesn't start a paragraph */
-      /* TODO store this in cmd->flags.  Or better, change the meaning
-         of CF_misc. */
-      if (!(command_data(cmd).flags & (CF_misc | CF_block)
+      /* TODO store this in cmd->flags. */
+      if (!(command_data(cmd).flags & (CF_line | CF_other | CF_block)
             || cmd == CM_titlefont
             || cmd == CM_caption
             || cmd == CM_shortcaption
@@ -1699,15 +1691,6 @@ value_invalid:
             || cmd == CM_errormsg
             || (command_data(cmd).flags & CF_index_entry_command)))
           {
-          /*
-             Unless no paragraph commands (line 311):
-             All misc commands
-             All block commands
-             'titlefont', 'caption', 'shortcaption',
-             'image', '*', 'hyphenation', 'anchor', 'errormsg'
-             Index commands
-           */
-
           ELEMENT *paragraph;
           paragraph = begin_paragraph (current);
           if (paragraph)
@@ -1729,14 +1712,30 @@ value_invalid:
           retval = 1;
           goto funexit;
         }
-      /* line 4289 */
-      /* the 'misc-commands' - no braces and not block commands (includes
-         @end).  Mostly taking a line argument, except for a small number
-         of exceptions, like @tab. */
-      else if (command_data(cmd).flags & CF_misc)
+
+      if (cmd == CM_item && item_line_parent (current))
+        cmd = CM_item_LINE;
+
+      if (command_data(cmd).flags & CF_other)
         {
           int status;
-          current = handle_misc_command (current, &line, cmd, &status,
+          current = handle_other_command (current, &line, cmd, &status,
+                                         invalid_parent);
+        if (status == 1)
+          {
+            retval = GET_A_NEW_LINE;
+            goto funexit;
+          }
+        else if (status == 2)
+          {
+            retval = FINISHED_TOTALLY;
+            goto funexit;
+          }
+        }
+      else if (command_data(cmd).flags & CF_line)
+        {
+          int status;
+          current = handle_line_command (current, &line, cmd, &status,
                                          invalid_parent);
           if (status == 1)
             {

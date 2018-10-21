@@ -1327,7 +1327,7 @@ end_line_misc_line (ELEMENT *current)
       if (args)
         add_extra_misc_args (current, "misc_args", args);
     }
-  else if (arg_type == MISC_text) /* 3118 */
+  else if (arg_type == LINE_text) /* 3118 */
     {
       char *text = 0;
       int superfluous_arg = 0;
@@ -2146,7 +2146,7 @@ end_line (ELEMENT *current)
 
       def_command = original_def_command;
       /* Strip an trailing x from the command, e.g. @deffnx -> @deffn */
-      if (command_data(def_command).flags & CF_misc)
+      if (command_data(def_command).flags & CF_line)
         {
           char *stripped = strdup (command_name(def_command));
           stripped[strlen (stripped) - 1] = '\0';
