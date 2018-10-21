@@ -1,5 +1,13 @@
 2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (find_innermost_accent_command):
+	Do not check for invalid nesting.
+	* tp/Texinfo/Convert/HTML.pm (_convert): Remove some 
+	commented-out code.
+	* tp/t/accents.t (command in accent): Remove test.
+
+2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: @ctrl removed.
 
 	* tp/Texinfo/Common.pm (%brace_commands, %deprecated_commands):

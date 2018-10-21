@@ -1358,8 +1358,7 @@ sub find_innermost_accent_contents($;$)
     # inside the argument of an accent
     my $text_contents = [];
     foreach my $content (@{$arg->{'contents'}}) {
-      if (!($content->{'extra'} and $content->{'extra'}->{'invalid_nesting'})
-         and !($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
+      if (!($content->{'cmdname'} and ($content->{'cmdname'} eq 'c'
                                   or $content->{'cmdname'} eq 'comment'))) {
         if ($content->{'cmdname'} and $accent_commands{$content->{'cmdname'}}) {
           $current = $content;

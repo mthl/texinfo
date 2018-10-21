@@ -228,7 +228,7 @@ $result_texts{'accents'} = 'Valid
 TeX~. @~.
 
 Invalid
-~.  ^.
+a~.  ^.
 ';
 
 $result_errors{'accents'} = [

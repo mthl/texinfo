@@ -5,7 +5,7 @@ use Texinfo::ModulePath (undef, undef, 'updirs' => 2);
 
 use Test::More;
 
-BEGIN { plan tests => 63; }
+BEGIN { plan tests => 59; }
 
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Converter;
@@ -166,7 +166,6 @@ foreach my $test (
   ['@v{@\'{r}}',            'utf8 possible inside', 'r\'<', 'r\'&lt;', 
                                                     '&#341;&lt;', 
                                                     chrx('0155','030c')],
-  ['@={@code{@\'{@`{r}}}}', 'command in accent',   '=', '=', '=', chrx('0304')]
             ) {
   test_enable_encoding($test);
 }
