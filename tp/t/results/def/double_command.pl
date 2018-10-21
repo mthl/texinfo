@@ -788,15 +788,6 @@ $result_errors{'double_command'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: must be after `@deffn\' to use `@deffnx\'
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'must be after `@deffn\' to use `@deffnx\'',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':1: warning: @deffnx should not appear in @deffn
 ',
     'file_name' => '',
@@ -804,6 +795,15 @@ $result_errors{'double_command'} = [
     'macro' => '',
     'text' => '@deffnx should not appear in @deffn',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: must be after `@deffn\' to use `@deffnx\'
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => 'must be after `@deffn\' to use `@deffnx\'',
+    'type' => 'error'
   },
   {
     'error_line' => ':1: warning: entry for index `fn\' outside of any node

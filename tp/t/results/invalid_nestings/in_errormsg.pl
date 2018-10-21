@@ -349,15 +349,6 @@ $result_errors{'in_errormsg'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: @errormsg missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@errormsg missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':6: warning: @table should not appear in @errormsg
 ',
     'file_name' => '',
@@ -365,6 +356,15 @@ $result_errors{'in_errormsg'} = [
     'macro' => '',
     'text' => '@table should not appear in @errormsg',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: @errormsg missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@errormsg missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':9: misplaced }

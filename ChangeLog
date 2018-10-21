@@ -1,5 +1,13 @@
 2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_parse_texi):
+	Issue an error message right after checking for an invalid 
+	nesting.  This produces little functional change but is intended 
+	to make the code easier to understand.
+	(_mark_and_warn_invalid): Remove.
+
+2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_mark_and_warn_invalid): Do not set 
 	'invalid_nesting'.
 

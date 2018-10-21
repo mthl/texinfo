@@ -389,15 +389,6 @@ $result_errors{'on_itemize_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':5: @item outside of table or list
-',
-    'file_name' => '',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => '@item outside of table or list',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':5: warning: @item should not appear in @itemize
 ',
     'file_name' => '',
@@ -405,6 +396,15 @@ $result_errors{'on_itemize_line'} = [
     'macro' => '',
     'text' => '@item should not appear in @itemize',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: @item outside of table or list
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => '@item outside of table or list',
+    'type' => 'error'
   }
 ];
 

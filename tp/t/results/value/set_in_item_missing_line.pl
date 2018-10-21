@@ -382,15 +382,6 @@ xx jj
 
 $result_errors{'set_in_item_missing_line'} = [
   {
-    'error_line' => ':8: @item outside of table or list
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@item outside of table or list',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':8: warning: @item should not appear in @item
 ',
     'file_name' => '',
@@ -398,6 +389,15 @@ $result_errors{'set_in_item_missing_line'} = [
     'macro' => '',
     'text' => '@item should not appear in @item',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: @item outside of table or list
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => '@item outside of table or list',
+    'type' => 'error'
   }
 ];
 

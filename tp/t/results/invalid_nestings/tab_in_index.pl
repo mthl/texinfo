@@ -256,15 +256,6 @@ $result_texts{'tab_in_index'} = 'one nonlettered character aaa
 
 $result_errors{'tab_in_index'} = [
   {
-    'error_line' => ':3: ignoring @tab outside of multitable
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'ignoring @tab outside of multitable',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':3: warning: @tab should not appear in @vindex
 ',
     'file_name' => '',
@@ -272,6 +263,15 @@ $result_errors{'tab_in_index'} = [
     'macro' => '',
     'text' => '@tab should not appear in @vindex',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: ignoring @tab outside of multitable
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'ignoring @tab outside of multitable',
+    'type' => 'error'
   },
   {
     'error_line' => ':3: warning: entry for index `vr\' outside of any node

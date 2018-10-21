@@ -237,15 +237,6 @@ line in code in item
 
 $result_errors{'style_not_closed_in_table_line'} = [
   {
-    'error_line' => ':4: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 4,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':4: warning: @item should not appear in @code
 ',
     'file_name' => '',
@@ -253,6 +244,15 @@ $result_errors{'style_not_closed_in_table_line'} = [
     'macro' => '',
     'text' => '@item should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
   }
 ];
 

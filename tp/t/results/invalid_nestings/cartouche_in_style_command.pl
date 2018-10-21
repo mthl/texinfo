@@ -138,15 +138,6 @@ cartouche
 
 $result_errors{'cartouche_in_style_command'} = [
   {
-    'error_line' => ':1: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':2: warning: @cartouche should not appear in @code
 ',
     'file_name' => '',
@@ -154,6 +145,15 @@ $result_errors{'cartouche_in_style_command'} = [
     'macro' => '',
     'text' => '@cartouche should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: misplaced }

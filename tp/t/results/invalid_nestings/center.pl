@@ -1704,15 +1704,6 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 15,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':15: warning: @center should not appear in @code
 ',
     'file_name' => '',
@@ -1720,6 +1711,15 @@ $result_errors{'center'} = [
     'macro' => '',
     'text' => '@center should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':15: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 15,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':17: misplaced }
@@ -1740,15 +1740,6 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':19: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 19,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':19: warning: @center should not appear in @code
 ',
     'file_name' => '',
@@ -1758,21 +1749,21 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':19: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 19,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':19: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 19,
     'macro' => '',
     'text' => 'misplaced }',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':22: @item outside of table or list
-',
-    'file_name' => '',
-    'line_nr' => 22,
-    'macro' => '',
-    'text' => '@item outside of table or list',
     'type' => 'error'
   },
   {
@@ -1785,12 +1776,30 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':22: @item outside of table or list
+',
+    'file_name' => '',
+    'line_nr' => 22,
+    'macro' => '',
+    'text' => '@item outside of table or list',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':21: warning: @table has text but no @item
 ',
     'file_name' => '',
     'line_nr' => 21,
     'macro' => '',
     'text' => '@table has text but no @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':27: warning: @item should not appear in @center
+',
+    'file_name' => '',
+    'line_nr' => 27,
+    'macro' => '',
+    'text' => '@item should not appear in @center',
     'type' => 'warning'
   },
   {
@@ -1801,15 +1810,6 @@ $result_errors{'center'} = [
     'macro' => '',
     'text' => '@item outside of table or list',
     'type' => 'error'
-  },
-  {
-    'error_line' => ':27: warning: @item should not appear in @center
-',
-    'file_name' => '',
-    'line_nr' => 27,
-    'macro' => '',
-    'text' => '@item should not appear in @center',
-    'type' => 'warning'
   },
   {
     'error_line' => ':31: warning: @center should not appear in @center
@@ -1839,15 +1839,6 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':33: @samp missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 33,
-    'macro' => '',
-    'text' => '@samp missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':33: warning: @center should not appear in @samp
 ',
     'file_name' => '',
@@ -1855,6 +1846,15 @@ $result_errors{'center'} = [
     'macro' => '',
     'text' => '@center should not appear in @samp',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':33: @samp missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 33,
+    'macro' => '',
+    'text' => '@samp missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':33: misplaced }
@@ -1875,15 +1875,6 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: @samp missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 35,
-    'macro' => '',
-    'text' => '@samp missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':35: warning: @center should not appear in @samp
 ',
     'file_name' => '',
@@ -1893,21 +1884,21 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':35: @samp missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => '@samp missing closing brace',
+    'type' => 'error'
+  },
+  {
     'error_line' => ':37: misplaced }
 ',
     'file_name' => '',
     'line_nr' => 37,
     'macro' => '',
     'text' => 'misplaced }',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':41: @item outside of table or list
-',
-    'file_name' => '',
-    'line_nr' => 41,
-    'macro' => '',
-    'text' => '@item outside of table or list',
     'type' => 'error'
   },
   {
@@ -1920,12 +1911,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: ignoring @tab outside of multitable
+    'error_line' => ':41: @item outside of table or list
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'ignoring @tab outside of multitable',
+    'text' => '@item outside of table or list',
     'type' => 'error'
   },
   {
@@ -1938,12 +1929,12 @@ $result_errors{'center'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':42: @item outside of table or list
+    'error_line' => ':41: ignoring @tab outside of multitable
 ',
     'file_name' => '',
-    'line_nr' => 42,
+    'line_nr' => 41,
     'macro' => '',
-    'text' => '@item outside of table or list',
+    'text' => 'ignoring @tab outside of multitable',
     'type' => 'error'
   },
   {
@@ -1954,6 +1945,15 @@ $result_errors{'center'} = [
     'macro' => '',
     'text' => '@item should not appear in @center',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':42: @item outside of table or list
+',
+    'file_name' => '',
+    'line_nr' => 42,
+    'macro' => '',
+    'text' => '@item outside of table or list',
+    'type' => 'error'
   },
   {
     'error_line' => ':45: warning: @table should only appear at the beginning of a line

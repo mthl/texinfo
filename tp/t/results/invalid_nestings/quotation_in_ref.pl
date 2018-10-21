@@ -244,15 +244,6 @@ $result_menus{'quotation_in_ref'} = {
 
 $result_errors{'quotation_in_ref'} = [
   {
-    'error_line' => ':3: @xref missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@xref missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':4: warning: @quotation should not appear in @xref
 ',
     'file_name' => '',
@@ -260,6 +251,15 @@ $result_errors{'quotation_in_ref'} = [
     'macro' => '',
     'text' => '@quotation should not appear in @xref',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: @xref missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@xref missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':7: misplaced }

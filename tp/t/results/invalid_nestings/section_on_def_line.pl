@@ -158,15 +158,6 @@ $result_errors{'section_on_def_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: @section seen before @end deffn
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => '@section seen before @end deffn',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':1: warning: @section should not appear in @deffn
 ',
     'file_name' => '',
@@ -174,6 +165,15 @@ $result_errors{'section_on_def_line'} = [
     'macro' => '',
     'text' => '@section should not appear in @deffn',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':1: @section seen before @end deffn
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@section seen before @end deffn',
+    'type' => 'error'
   },
   {
     'error_line' => ':5: unmatched `@end deffn\'

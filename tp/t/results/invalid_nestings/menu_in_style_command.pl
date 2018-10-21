@@ -319,15 +319,6 @@ $result_menus{'menu_in_style_command'} = {
 
 $result_errors{'menu_in_style_command'} = [
   {
-    'error_line' => ':3: @code missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@code missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':4: warning: @menu should not appear in @code
 ',
     'file_name' => '',
@@ -335,6 +326,15 @@ $result_errors{'menu_in_style_command'} = [
     'macro' => '',
     'text' => '@menu should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: @code missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@code missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':7: misplaced }

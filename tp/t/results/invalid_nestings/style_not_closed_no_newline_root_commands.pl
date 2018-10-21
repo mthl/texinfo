@@ -560,15 +560,6 @@ $result_menus{'style_not_closed_no_newline_root_commands'}{'menu_child'}{'menu_u
 
 $result_errors{'style_not_closed_no_newline_root_commands'} = [
   {
-    'error_line' => ':8: @node seen before @code closing brace
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => '@node seen before @code closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':9: warning: @node should not appear in @code
 ',
     'file_name' => '',
@@ -578,12 +569,12 @@ $result_errors{'style_not_closed_no_newline_root_commands'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':12: @bye seen before @code closing brace
+    'error_line' => ':8: @node seen before @code closing brace
 ',
     'file_name' => '',
-    'line_nr' => 12,
+    'line_nr' => 8,
     'macro' => '',
-    'text' => '@bye seen before @code closing brace',
+    'text' => '@node seen before @code closing brace',
     'type' => 'error'
   },
   {
@@ -594,6 +585,15 @@ $result_errors{'style_not_closed_no_newline_root_commands'} = [
     'macro' => '',
     'text' => '@bye should not appear in @code',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':12: @bye seen before @code closing brace
+',
+    'file_name' => '',
+    'line_nr' => 12,
+    'macro' => '',
+    'text' => '@bye seen before @code closing brace',
+    'type' => 'error'
   }
 ];
 

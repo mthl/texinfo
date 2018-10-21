@@ -281,15 +281,6 @@ $result_errors{'section_in_math'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':6: @section seen before @math closing brace
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => '@section seen before @math closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':8: warning: @section should not appear in @math
 ',
     'file_name' => '',
@@ -297,6 +288,15 @@ $result_errors{'section_in_math'} = [
     'macro' => '',
     'text' => '@section should not appear in @math',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: @section seen before @math closing brace
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => '@section seen before @math closing brace',
+    'type' => 'error'
   }
 ];
 

@@ -213,15 +213,6 @@ $result_menus{'verbatim_in_ref'} = {
 
 $result_errors{'verbatim_in_ref'} = [
   {
-    'error_line' => ':3: @xref missing closing brace
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => '@xref missing closing brace',
-    'type' => 'error'
-  },
-  {
     'error_line' => ':4: warning: @verbatim should not appear in @xref
 ',
     'file_name' => '',
@@ -229,6 +220,15 @@ $result_errors{'verbatim_in_ref'} = [
     'macro' => '',
     'text' => '@verbatim should not appear in @xref',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: @xref missing closing brace
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@xref missing closing brace',
+    'type' => 'error'
   },
   {
     'error_line' => ':8: misplaced }
