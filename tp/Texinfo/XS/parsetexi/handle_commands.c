@@ -1,6 +1,5 @@
 /* handle_commands.c -- what to do when a command name is first read */
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -680,7 +679,8 @@ handle_line_command (ELEMENT *current, char **line_inout,
       start_empty_line_after_command (current, &line, misc);
     }
 
-  mark_and_warn_invalid (cmd, invalid_parent, misc);
+  mark_and_warn_invalid (cmd == CM_item_LINE ? CM_item : cmd,
+                         invalid_parent, misc);
 
   if (misc)
     register_global_command (misc);
