@@ -828,6 +828,208 @@ is_end_current_command (ELEMENT *current, char **line,
   return 1;
 }
 
+void
+check_valid_nesting (ELEMENT *current, enum command_id cmd)
+{
+  enum command_id invalid_parent = 0;
+
+  /* Check whether outer command can contain cmd.  Commands are
+     classified according to what commands they can contain:
+
+     accents
+     full text
+     simple text
+     full line
+     full line no refs
+
+   */
+
+  int ok = 0; /* Whether nesting is allowed. */
+
+  /* Whether command is a "simple text" command.  Use a variable
+     to avoid repeating a complex conditional. */
+  int simple_text_command = 0;
+
+  enum command_id outer = current->parent->cmd;
+  unsigned long outer_flags = command_data(outer).flags;
+  unsigned long cmd_flags = command_data(cmd).flags;
+
+  // much TODO here.
+
+  /* 409 "simple text commands" */
+  if ((outer_flags & CF_line
+            && (command_data(outer).data >= 0
+                || (command_data(outer).data == LINE_line
+                    && !(outer_flags & (CF_def | CF_sectioning)))
+                || command_data(outer).data == LINE_text)
+            && outer != CM_center
+            && outer != CM_exdent) // 423
+      || outer == CM_titlefont // 425
+      || outer == CM_anchor
+      || outer == CM_xref
+      || outer == CM_ref
+      || outer == CM_pxref
+      || outer == CM_inforef
+      || outer == CM_shortcaption
+      || outer == CM_math
+      || outer == CM_indicateurl
+      || outer == CM_email
+      || outer == CM_uref
+      || outer == CM_url
+      || outer == CM_image
+      || outer == CM_abbr
+      || outer == CM_acronym
+      || outer == CM_dmn
+      || (outer_flags & CF_index_entry_command) // 563
+      || (outer_flags & CF_block // 475
+          && !(outer_flags & CF_def)
+          && command_data(outer).data != BLOCK_raw
+          && command_data(outer).data != BLOCK_conditional))
+    {
+      simple_text_command = 1;
+    }
+
+  if (outer_flags & CF_root && current->type != ET_line_arg)
+    ok = 1; // 4242
+  else if (outer_flags & CF_block
+           && current->type != ET_block_line_arg)
+    ok = 1; // 4247
+  else if ((outer == CM_item
+           || outer == CM_itemx)
+           && current->type != ET_line_arg)
+    ok = 1; // 4252
+  else if (outer_flags & CF_accent) // 358
+    {
+      if (cmd_flags & (CF_nobrace | CF_accent))
+        ok = 1;
+      else if (cmd_flags & CF_brace
+               && command_data(cmd).data == 0)
+        ok = 1; /* glyph command */
+      if (cmd == CM_c || cmd == CM_comment)
+        ok = 1;
+    }
+
+
+  else if (outer == CM_ctrl
+           || outer == CM_errormsg
+           || outer == CM_sortas)
+    {
+      ok = 0;
+    }
+  // 432 "full text commands"
+  else if ((outer_flags & CF_brace
+             && ((outer_flags & CF_inline)
+                 || command_data(outer).data == BRACE_style))
+
+  // 445 "full line commands"
+           || outer == CM_center
+           || outer == CM_exdent
+           || outer == CM_item
+           || outer == CM_itemx
+
+           || (!current->parent->cmd && current_context () == ct_def)
+
+  // 420 "full line no refs commands"
+           || (outer_flags & (CF_sectioning | CF_def))
+  // 4261
+           || (!current->parent->cmd && current_context () == ct_def)
+
+  // 409 "simple text commands"
+           || simple_text_command)
+    {
+      // "in full text commands".
+      if (cmd_flags & CF_nobrace) // 370
+        ok = 1;
+      if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE)) // 370
+        ok = 1;
+      else if (cmd == CM_c
+               || cmd == CM_comment
+               || cmd == CM_refill
+               || cmd == CM_noindent
+               || cmd == CM_indent
+               || cmd == CM_columnfractions
+               || cmd == CM_set
+               || cmd == CM_clear
+               || cmd == CM_end) // 373
+        ok = 1;
+      else if (cmd_flags & CF_format_raw)
+        ok = 1; // 379
+      if (cmd == CM_caption || cmd == CM_shortcaption)
+        ok = 0; // 381
+      if (cmd_flags & CF_block
+          && command_data(cmd).data == BLOCK_conditional)
+        ok = 1; // 384
+
+      /* Additional commands allowed in indices only. */
+      if (cmd == CM_sortas)
+        {
+          if (outer_flags & CF_index_entry_command)
+            ok = 1;
+          else
+            ok = 0;
+        }
+
+      // 390 exceptions for all of "full line commands",
+      //     "full line commands no refs" and "simple text commands"
+     if (!(outer_flags & CF_brace
+             && (command_data(outer).data == 1)))
+        {
+          if (cmd == CM_indent || cmd == CM_noindent)
+            ok = 0;
+        }
+
+      // 396 exceptions for "full line no refs" and "simple text"
+      if (outer_flags & (CF_sectioning | CF_def)
+          // 4261
+          || (!current->parent->cmd && current_context () == ct_def)
+          || simple_text_command)
+        {
+          if (cmd == CM_titlefont
+              || cmd == CM_anchor
+              || cmd == CM_footnote
+              || cmd == CM_verb
+              || cmd == CM_indent || cmd == CM_noindent)
+            ok = 0;
+        }
+
+      // 405 exceptions for "simple text commands" only
+      if (simple_text_command)
+        {
+          if (cmd == CM_xref
+              || cmd == CM_ref
+              || cmd == CM_pxref
+              || cmd == CM_inforef) // 404
+            ok = 0;
+        }
+    }
+  else
+    {
+      /* Default to valid nesting, for example for commands for which 
+         it is not defined which commands can occur within them (e.g. 
+         @tab?). */
+      ok = 1;
+    }
+
+  if (!ok)
+    {
+      invalid_parent = current->parent->cmd;
+      if (!invalid_parent)
+        {
+          /* current_context () == ct_def.  Find def block containing 
+             command.  4258 */
+          ELEMENT *d = current;
+          while (d->parent
+                 && d->parent->type != ET_def_line)
+            d = d->parent;
+          invalid_parent = d->parent->parent->cmd;
+        }
+
+      line_warn ("@%s should not appear in @%s",
+                 command_name(cmd),
+                 command_name(invalid_parent));
+    }
+}
+
 /* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
@@ -1328,7 +1530,6 @@ superfluous_arg:
   /* Any other @-command. */
   else if (cmd)
     {
-      enum command_id invalid_parent = 0;
       int def_line_continuation;
 
       line = line_after_command;
@@ -1457,207 +1658,8 @@ value_invalid:
                      command_name(cmd));
         }
 
-      /* 4233 invalid nestings */
       if (current->parent)
-        {
-          /* Check whether outer command can contain cmd.  Commands are
-             classified according to what commands they can contain:
-
-             accents
-             full text
-             simple text
-             full line
-             full line no refs
-
-           */
-
-          int ok = 0; /* Whether nesting is allowed. */
-
-          /* Whether command is a "simple text" command.  Use a variable
-             to avoid repeating a complex conditional. */
-          int simple_text_command = 0;
-
-          enum command_id outer = current->parent->cmd;
-          unsigned long outer_flags = command_data(outer).flags;
-          unsigned long cmd_flags = command_data(cmd).flags;
-
-          // much TODO here.
-
-          /* 409 "simple text commands" */
-          if ((outer_flags & CF_line
-                    && (command_data(outer).data >= 0
-                        || (command_data(outer).data == LINE_line
-                            && !(outer_flags & (CF_def | CF_sectioning)))
-                        || command_data(outer).data == LINE_text)
-                    && outer != CM_center
-                    && outer != CM_exdent) // 423
-              || outer == CM_titlefont // 425
-              || outer == CM_anchor
-              || outer == CM_xref
-              || outer == CM_ref
-              || outer == CM_pxref
-              || outer == CM_inforef
-              || outer == CM_shortcaption
-              || outer == CM_math
-              || outer == CM_indicateurl
-              || outer == CM_email
-              || outer == CM_uref
-              || outer == CM_url
-              || outer == CM_image
-              || outer == CM_abbr
-              || outer == CM_acronym
-              || outer == CM_dmn
-              || (outer_flags & CF_index_entry_command) // 563
-              || (outer_flags & CF_block // 475
-                  && !(outer_flags & CF_def)
-                  && command_data(outer).data != BLOCK_raw
-                  && command_data(outer).data != BLOCK_conditional))
-            {
-              simple_text_command = 1;
-            }
-
-          if (outer_flags & CF_root && current->type != ET_line_arg)
-            ok = 1; // 4242
-          else if (outer_flags & CF_block
-                   && current->type != ET_block_line_arg)
-            ok = 1; // 4247
-          else if ((outer == CM_item
-                   || outer == CM_itemx)
-                   && current->type != ET_line_arg)
-            ok = 1; // 4252
-          else if (outer_flags & CF_accent) // 358
-            {
-              if (cmd_flags & (CF_nobrace | CF_accent))
-                ok = 1;
-              else if (cmd_flags & CF_brace
-                       && command_data(cmd).data == 0)
-                ok = 1; /* glyph command */
-              if (cmd == CM_c || cmd == CM_comment)
-                ok = 1;
-            }
-
-
-          else if (outer == CM_ctrl
-                   || outer == CM_errormsg
-                   || outer == CM_sortas)
-            {
-              ok = 0;
-            }
-          // 432 "full text commands"
-          else if ((outer_flags & CF_brace
-                     && ((outer_flags & CF_inline)
-                         || command_data(outer).data == BRACE_style))
-
-          // 445 "full line commands"
-                   || outer == CM_center
-                   || outer == CM_exdent
-                   || outer == CM_item
-                   || outer == CM_itemx
-
-                   || (!current->parent->cmd && current_context () == ct_def)
-
-          // 420 "full line no refs commands"
-                   || (outer_flags & (CF_sectioning | CF_def))
-          // 4261
-                   || (!current->parent->cmd && current_context () == ct_def)
-
-          // 409 "simple text commands"
-                   || simple_text_command)
-            {
-              // "in full text commands".
-              if (cmd_flags & CF_nobrace) // 370
-                ok = 1;
-              if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE)) // 370
-                ok = 1;
-              else if (cmd == CM_c
-                       || cmd == CM_comment
-                       || cmd == CM_refill
-                       || cmd == CM_noindent
-                       || cmd == CM_indent
-                       || cmd == CM_columnfractions
-                       || cmd == CM_set
-                       || cmd == CM_clear
-                       || cmd == CM_end) // 373
-                ok = 1;
-              else if (cmd_flags & CF_format_raw)
-                ok = 1; // 379
-              if (cmd == CM_caption || cmd == CM_shortcaption)
-                ok = 0; // 381
-              if (cmd_flags & CF_block
-                  && command_data(cmd).data == BLOCK_conditional)
-                ok = 1; // 384
-
-              /* Additional commands allowed in indices only. */
-              if (cmd == CM_sortas)
-                {
-                  if (outer_flags & CF_index_entry_command)
-                    ok = 1;
-                  else
-                    ok = 0;
-                }
-
-              // 390 exceptions for all of "full line commands",
-              //     "full line commands no refs" and "simple text commands"
-             if (!(outer_flags & CF_brace
-                     && (command_data(outer).data == 1)))
-                {
-                  if (cmd == CM_indent || cmd == CM_noindent)
-                    ok = 0;
-                }
-
-              // 396 exceptions for "full line no refs" and "simple text"
-              if (outer_flags & (CF_sectioning | CF_def)
-                  // 4261
-                  || (!current->parent->cmd && current_context () == ct_def)
-                  || simple_text_command)
-                {
-                  if (cmd == CM_titlefont
-                      || cmd == CM_anchor
-                      || cmd == CM_footnote
-                      || cmd == CM_verb
-                      || cmd == CM_indent || cmd == CM_noindent)
-                    ok = 0;
-                }
-
-              // 405 exceptions for "simple text commands" only
-              if (simple_text_command)
-                {
-                  if (cmd == CM_xref
-                      || cmd == CM_ref
-                      || cmd == CM_pxref
-                      || cmd == CM_inforef) // 404
-                    ok = 0;
-                }
-            }
-          else
-            {
-              /* Default to valid nesting, for example for commands for which 
-                 it is not defined which commands can occur within them (e.g. 
-                 @tab?). */
-              ok = 1;
-            }
-
-          if (!ok)
-            {
-              invalid_parent = current->parent->cmd;
-              if (!invalid_parent)
-                {
-                  /* current_context () == ct_def.  Find def block containing 
-                     command.  4258 */
-                  ELEMENT *d = current;
-                  while (d->parent
-                         && d->parent->type != ET_def_line)
-                    d = d->parent;
-                  invalid_parent = d->parent->parent->cmd;
-                }
-            }
-        }
-      if (invalid_parent)
-        {
-          line_warn ("@%s should not appear in @%s",
-                     command_name(cmd),
-                     command_name(invalid_parent));
-        }
+        check_valid_nesting (current, cmd);
 
       if (def_line_continuation)
         {
