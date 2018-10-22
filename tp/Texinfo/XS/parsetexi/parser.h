@@ -69,6 +69,12 @@ void start_empty_line_after_command (ELEMENT *current, char **line_inout,
 ELEMENT *begin_paragraph (ELEMENT *current);
 int format_expanded_p (char *format);
 
+/* Return values */
+#define GET_A_NEW_LINE 0
+#define STILL_MORE_TO_PROCESS 1
+#define FINISHED_TOTALLY 2
+
+
 extern const char *whitespace_chars, *whitespace_chars_except_newline;
 extern const char *digit_chars;
 

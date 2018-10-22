@@ -560,7 +560,8 @@ merge_text (ELEMENT *current, char *text)
   return current;
 }
 
-/* 2106 */
+/* If last contents child of CURRENT is an empty line element, remove
+   or merge text, and return true. */
 int
 abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
 {
@@ -580,6 +581,8 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
     {
       ELEMENT *owning_element = 0, *e;
       KEY_PAIR *k;
+
+      retval = 1;
 
       k = lookup_extra (last_child, "command");
       if (k)
@@ -622,7 +625,6 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
               last_child->type = ET_empty_spaces_after_command;
             }
         }
-      retval = 1;
     }
   else
     retval = 0;
@@ -826,10 +828,6 @@ is_end_current_command (ELEMENT *current, char **line,
   return 1;
 }
 
-#define GET_A_NEW_LINE 0
-#define STILL_MORE_TO_PROCESS 1
-#define FINISHED_TOTALLY 2
-
 /* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
@@ -839,7 +837,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
   ELEMENT *current = *current_inout;
   char *line = *line_inout;
   char *line_after_command;
-  int retval = 1; /* Return value of function */
+  int retval = STILL_MORE_TO_PROCESS;
   enum command_id end_cmd;
   char *p;
 
@@ -1702,14 +1700,9 @@ value_invalid:
         {
           int status;
           current = handle_other_command (current, &line, cmd, &status);
-          if (status == 1)
+          if (status == GET_A_NEW_LINE || status == FINISHED_TOTALLY)
             {
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
-          else if (status == 2)
-            {
-              retval = FINISHED_TOTALLY;
+              retval = status;
               goto funexit;
             }
         }
@@ -1717,14 +1710,9 @@ value_invalid:
         {
           int status;
           current = handle_line_command (current, &line, cmd, &status);
-          if (status == 1)
+          if (status == GET_A_NEW_LINE || status == FINISHED_TOTALLY)
             {
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
-          else if (status == 2)
-            {
-              retval = FINISHED_TOTALLY;
+              retval = status;
               goto funexit;
             }
         }
@@ -1736,7 +1724,8 @@ value_invalid:
             {
               /* For @macro, to get a new line.  This is done instead of
                  doing the EMPTY TEXT (3879) code on the next time round. */
-              retval = GET_A_NEW_LINE; goto funexit;
+              retval = GET_A_NEW_LINE;
+              goto funexit;
             }
         }
       else if (command_data(cmd).flags & CF_brace
@@ -1791,7 +1780,7 @@ value_invalid:
         *line = saved;
       }
 
-      retval = 1;
+      retval = STILL_MORE_TO_PROCESS;
       goto funexit;
     }
   else /* 5331 End of line */

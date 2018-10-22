@@ -89,7 +89,8 @@ handle_other_command (ELEMENT *current, char **line_inout,
   char *line = *line_inout;
   int arg_spec;
 
-  *status = 0;
+  *status = STILL_MORE_TO_PROCESS;
+
   arg_spec = command_data(cmd).data;
   if (arg_spec == OTHER_noarg)
     {
@@ -299,7 +300,7 @@ handle_other_command (ELEMENT *current, char **line_inout,
             current = paragraph;
           if (!*line)
             {
-              *status = 1; /* Get a new line. */
+              *status = GET_A_NEW_LINE;
               goto funexit;
             }
         }
@@ -310,8 +311,8 @@ funexit:
   return current;
 }
 
-/* STATUS is set to 1 if we should get a new line after this,
-   2 if we should stop processing completely. */
+/* STATUS is set to GET_A_NEW_LINE if we should get a new line after this,
+   to FINISHED_TOTALLY if we should stop processing completely. */
 ELEMENT *
 handle_line_command (ELEMENT *current, char **line_inout,
                      enum command_id cmd, int *status)
@@ -320,7 +321,8 @@ handle_line_command (ELEMENT *current, char **line_inout,
   char *line = *line_inout;
   int arg_spec;
 
-  *status = 0;
+  *status = STILL_MORE_TO_PROCESS;
+
   /* Root commands (like @node) and @bye 4290 */
   if (command_data(cmd).flags & CF_root || cmd == CM_bye)
     {
@@ -506,6 +508,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_novalidate)
         {
+          // FIXME - what goes in here?
         }
 
       register_global_command (misc); // 4423
@@ -516,14 +519,14 @@ handle_line_command (ELEMENT *current, char **line_inout,
       // 4429
       if (cmd == CM_bye)
         {
-          *status = 2; /* Finish processing completely. */
+          *status = FINISHED_TOTALLY;
           goto funexit;
         }
 
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
 
-      *status = 1; /* Get a new line */
+      *status = GET_A_NEW_LINE;
       goto funexit;
     }
   else
