@@ -1169,28 +1169,33 @@ superfluous_arg:
         {
           char *command = read_command_name (&line_after_command);
 
+          cmd = 0;
           if (command)
             {
+              ELEMENT *paragraph;
+
               cmd = lookup_command (command);
               if (!cmd)
                 {
-                  line_error ("unknown command `%s'", command); // 4877
-                  line = line_after_command;
+                  line_error ("unknown command `%s'", command);
                   debug ("COMMAND (UNKNOWN) %s", command);
-                }
-            }
-          free (command);
-          if (!cmd)
-            {
-              ELEMENT *paragraph;
-              // 4226
-              abort_empty_line (&current, 0);
+                  free (command);
 
-              // 4276
-              paragraph = begin_paragraph (current);
-              if (paragraph)
-                current = paragraph;
-              //goto funexit;
+                  abort_empty_line (&current, 0);
+                  paragraph = begin_paragraph (current);
+                  if (paragraph)
+                    current = paragraph;
+
+                  line = line_after_command;
+                  retval = STILL_MORE_TO_PROCESS;
+                  goto funexit;
+                }
+              free (command);
+            }
+          else
+            {
+              /* @ was followed by gibberish.  "unexpected @" is printed
+                 below. */
             }
         }
       if (cmd && (command_data(cmd).flags & CF_ALIAS))
@@ -1681,8 +1686,7 @@ value_invalid:
             current = paragraph;
         }
 
-      // 4281
-      if (cmd != 0)
+      if (cmd)
         {
           if (close_paragraph_command (cmd))
             current = end_paragraph (current, 0, 0);
@@ -1690,13 +1694,7 @@ value_invalid:
             current = end_preformatted (current, 0, 0);
         }
 
-      if (cmd == 0)
-        {
-          // 4287 Unknown command
-          retval = 1;
-          goto funexit;
-        }
-
+      /* TODO: do this before nesting check? */
       if (cmd == CM_item && item_line_parent (current))
         cmd = CM_item_LINE;
 
@@ -1766,14 +1764,8 @@ value_invalid:
               goto funexit;
             }
         }
-#if 0
-      else
-        {
-          /* TODO: error: unknown command */
-        }
-#endif
     }
-  /* "Separator" - line 4881 */
+  /* "Separator" character */
   else if (*line != '\0' && strchr ("{}@,:\t.\f", *line))
     {
       char separator = *line++;
