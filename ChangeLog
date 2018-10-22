@@ -1,3 +1,8 @@
+2018-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi): Check for unknown command
+	right after reading the command.
+
 2018-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/sectioning/list-of-tests

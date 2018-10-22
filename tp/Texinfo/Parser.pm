@@ -3963,12 +3963,26 @@ sub _parse_texi($;$)
           $command = $at_command;
           substr($line, 0, $at_command_length) = '';
         }
+
+        print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
+        if (!$all_commands{$command}
+            and !$self->{'macros'}->{$command}
+            and !$self->{'definfoenclose'}->{$command}
+            and !$self->{'aliases'}->{$command}
+            and !$self->{'command_index'}->{$command}) {
+          $self->line_error(sprintf(__("unknown command `%s'"), 
+                                      $command), $line_nr);
+          _abort_empty_line($self, $current);
+          my $paragraph = _begin_paragraph($self, $current, $line_nr);
+          $current = $paragraph if ($paragraph);
+          next;
+        }
+
         my $alias_command;
         if (exists($self->{'aliases'}->{$command})) {
           $alias_command = $command;
           $command = $self->{'aliases'}->{$command};
         }
-        print STDERR "COMMAND $command\n" if ($self->{'DEBUG'});
 
         if ($command eq 'value') {
           $line =~ s/^\s*// 
@@ -4712,9 +4726,6 @@ sub _parse_texi($;$)
             $current = _end_line($self, $current, $line_nr);
             last;
           }
-        } else {
-          $self->line_error(sprintf(__("unknown command `%s'"), 
-                                      $command), $line_nr);
         }
       } elsif ($separator_match) {
         my $separator = $separator_match;
