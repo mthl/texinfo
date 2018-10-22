@@ -30,12 +30,31 @@ valgrind --vgdb-error=0 perl texi2any-C.pl texinfo.texi
 
 =====================================================================
 
-Can compare execution runs of parsetexi and Perl makeinfo with
+To see contents of leaked memory
 
-makeinfo -C DEBUG=1 node_structure.texi |& less
+Run with valgrind, e.g.
 
-vs.
+s=../../tp
+export srcdir=$s builddir=. top_srcdir=../../ top_builddir=..
+export TEXINFO_XS_PARSER=1
+valgrind --leak-check=full --vgdb-error=0 --vgdb-stop-at=exit \
+  perl -w $s/t/18itemize.t
 
-./parsetexi node_structure.texi |& less
+at end of run, in gdb:
+
+(gdb) monitor leak_check definiteleak any
+==10409== 480 (80 direct, 400 indirect) bytes in 1 blocks are definitely lost in loss record 3,261 of 4,374
+
+...
+
+(gbd) monitor block_list 3261
+
+
+Get log files specific to tests with
+
+$ grep '^\['\' $s/t/18itemize.t | sed -e 's/^..//' -e 's/..$//' >test-list
+$ for t in `cat test-list` ;  do valgrind --log-file=val.log.$t  \
+--leak-check=full perl -w $s/t/18itemize.t $t ; done
+
 
 

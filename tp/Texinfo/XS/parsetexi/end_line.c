@@ -1784,23 +1784,16 @@ end_line_misc_line (ELEMENT *current)
           /* This closes tree elements (e.g. paragraphs) until we reach
              end_command.  It can print an error if another block command
              is found first. */
-          current = close_commands (current, end_id,
-                          &closed_command, 0); /* 3292 */
+          current = close_commands (current, end_id, &closed_command, 0);
           if (!closed_command)
-            {
-              /* shouldn't get here, but got here
-                 on 2015.11.30 for t/16raw.t */
-              //FIXME abort (); // 3335
-            }
+            destroy_element_and_children (end_elt);
           else
-            { // 3295
-              // FIXME: end_elt correct?
+            {
               add_extra_element (closed_command, "end_command", end_elt);
               close_command_cleanup (closed_command);
 
-              add_to_element_contents (closed_command, end_elt); // 3321
+              add_to_element_contents (closed_command, end_elt);
 
-              // 3324 ET_menu_comment
               if (command_flags(closed_command) & CF_menu
                   && current_context () == ct_menu)
                 {

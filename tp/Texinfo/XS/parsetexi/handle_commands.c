@@ -89,6 +89,7 @@ handle_other_command (ELEMENT *current, char **line_inout,
   char *line = *line_inout;
   int arg_spec;
 
+  *status = 0;
   arg_spec = command_data(cmd).data;
   if (arg_spec == OTHER_noarg)
     {

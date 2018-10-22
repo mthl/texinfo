@@ -1702,16 +1702,16 @@ value_invalid:
         {
           int status;
           current = handle_other_command (current, &line, cmd, &status);
-        if (status == 1)
-          {
-            retval = GET_A_NEW_LINE;
-            goto funexit;
-          }
-        else if (status == 2)
-          {
-            retval = FINISHED_TOTALLY;
-            goto funexit;
-          }
+          if (status == 1)
+            {
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
+          else if (status == 2)
+            {
+              retval = FINISHED_TOTALLY;
+              goto funexit;
+            }
         }
       else if (command_data(cmd).flags & CF_line)
         {
