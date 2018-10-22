@@ -83,8 +83,7 @@ check_no_text (ELEMENT *current)
 /* noarg skipspace */
 ELEMENT *
 handle_other_command (ELEMENT *current, char **line_inout,
-                     enum command_id cmd, int *status,
-                     enum command_id invalid_parent)
+                     enum command_id cmd, int *status)
 {
   ELEMENT *misc = 0;
   char *line = *line_inout;
@@ -107,7 +106,6 @@ handle_other_command (ELEMENT *current, char **line_inout,
       if (only_in_headings)
         add_extra_integer (misc, "invalid_nesting", 1);
       register_global_command (misc);
-      mark_and_warn_invalid (cmd, invalid_parent, misc);
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
     }
@@ -304,7 +302,6 @@ handle_other_command (ELEMENT *current, char **line_inout,
               goto funexit;
             }
         }
-      mark_and_warn_invalid (cmd, invalid_parent, misc);
     }
 
 funexit:
@@ -316,8 +313,7 @@ funexit:
    2 if we should stop processing completely. */
 ELEMENT *
 handle_line_command (ELEMENT *current, char **line_inout,
-                     enum command_id cmd, int *status,
-                     enum command_id invalid_parent)
+                     enum command_id cmd, int *status)
 {
   ELEMENT *misc = 0;
   char *line = *line_inout;
@@ -511,7 +507,6 @@ handle_line_command (ELEMENT *current, char **line_inout,
         {
         }
 
-      mark_and_warn_invalid (cmd, invalid_parent, misc);
       register_global_command (misc); // 4423
 
       if (arg_spec != LINE_special || !has_comment)
@@ -679,9 +674,6 @@ handle_line_command (ELEMENT *current, char **line_inout,
       start_empty_line_after_command (current, &line, misc);
     }
 
-  mark_and_warn_invalid (cmd == CM_item_LINE ? CM_item : cmd,
-                         invalid_parent, misc);
-
   if (misc)
     register_global_command (misc);
   if (cmd == CM_dircategory)
@@ -754,8 +746,7 @@ format_expanded_p (char *format)
    "end_line_misc_line" in end_line.c processes the @end command. */
 ELEMENT *
 handle_block_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd, int *get_new_line,
-                      enum command_id invalid_parent)
+                      enum command_id cmd, int *get_new_line)
 {
   char *line = *line_inout;
   unsigned long flags = command_data(cmd).flags;
@@ -766,8 +757,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
       ELEMENT *macro;
       macro = parse_macro_command_line (cmd, &line, current);
       add_to_element_contents (current, macro);
-      mark_and_warn_invalid (cmd, invalid_parent,
-                             last_contents_child(current));
       current = macro;
 
       /* 4640 */
@@ -1045,9 +1034,8 @@ handle_block_command (ELEMENT *current, char **line_inout,
                contents in 'end_line'. */
 
           }
-        } /* 4827 */
+        }
       block->line_nr = line_nr;
-      mark_and_warn_invalid (cmd, invalid_parent, block);
       register_global_command (block);
       start_empty_line_after_command (current, &line, block);
     }
@@ -1059,9 +1047,7 @@ funexit:
 
 /* 4835 */
 ELEMENT *
-handle_brace_command (ELEMENT *current, char **line_inout,
-                      enum command_id cmd,
-                      enum command_id invalid_parent)
+handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
 {
   char *line = *line_inout;
   ELEMENT *e;
@@ -1080,7 +1066,6 @@ handle_brace_command (ELEMENT *current, char **line_inout,
   add_to_element_contents (current, e);
   current = e;
 
-  mark_and_warn_invalid (cmd, invalid_parent, e);
   if (cmd == CM_click)
     {
       add_extra_string_dup (e, "clickstyle", global_clickstyle);

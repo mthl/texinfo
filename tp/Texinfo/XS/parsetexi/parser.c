@@ -791,27 +791,6 @@ command_with_command_as_argument (ELEMENT *current)
   // all non-whitespace characters??
 }
 
-// 3633
-/* If INVALID_PARENT is defined, then that command was used in the input
-   document and contained, incorrectly, a COMMAND command. Issue
-   a warning message. */
-void
-mark_and_warn_invalid (enum command_id command,
-                       enum command_id invalid_parent,
-                       ELEMENT *marked_as_invalid_command)
-{
-  if (invalid_parent)
-    {
-      line_warn ("@%s should not appear in @%s",
-                 command_name(command),
-                 command_name(invalid_parent));
-      if (marked_as_invalid_command)
-        add_extra_string_dup (marked_as_invalid_command, "invalid_nesting",
-                              "1");
-    }
-}
-
-/* Used at line 3755 */
 /* Check if line is "@end ..." for current command.  If so, advance LINE. */
 int
 is_end_current_command (ELEMENT *current, char **line,
@@ -1670,8 +1649,13 @@ value_invalid:
                 }
             }
         }
+      if (invalid_parent)
+        {
+          line_warn ("@%s should not appear in @%s",
+                     command_name(cmd),
+                     command_name(invalid_parent));
+        }
 
-      /* 4274 */
       if (def_line_continuation)
         {
           retval = GET_A_NEW_LINE;
@@ -1690,7 +1674,7 @@ value_invalid:
             || cmd == CM_anchor
             || cmd == CM_errormsg
             || (command_data(cmd).flags & CF_index_entry_command)))
-          {
+        {
           ELEMENT *paragraph;
           paragraph = begin_paragraph (current);
           if (paragraph)
@@ -1719,8 +1703,7 @@ value_invalid:
       if (command_data(cmd).flags & CF_other)
         {
           int status;
-          current = handle_other_command (current, &line, cmd, &status,
-                                         invalid_parent);
+          current = handle_other_command (current, &line, cmd, &status);
         if (status == 1)
           {
             retval = GET_A_NEW_LINE;
@@ -1735,8 +1718,7 @@ value_invalid:
       else if (command_data(cmd).flags & CF_line)
         {
           int status;
-          current = handle_line_command (current, &line, cmd, &status,
-                                         invalid_parent);
+          current = handle_line_command (current, &line, cmd, &status);
           if (status == 1)
             {
               retval = GET_A_NEW_LINE;
@@ -1748,13 +1730,10 @@ value_invalid:
               goto funexit;
             }
         }
-
-      /* line 4632 */
       else if (command_data(cmd).flags & CF_block)
         {
           int new_line = 0;
-          current = handle_block_command (current, &line, cmd, &new_line,
-                                          invalid_parent);
+          current = handle_block_command (current, &line, cmd, &new_line);
           if (new_line)
             {
               /* For @macro, to get a new line.  This is done instead of
@@ -1762,14 +1741,11 @@ value_invalid:
               retval = GET_A_NEW_LINE; goto funexit;
             }
         }
-
       else if (command_data(cmd).flags & CF_brace
                || command_data(cmd).flags & CF_accent) /* line 4835 */
         {
-          current = handle_brace_command (current, &line,
-                                          cmd, invalid_parent);
+          current = handle_brace_command (current, &line, cmd);
         }
-
       /* No-brace command */
       else if (command_data(cmd).flags & CF_nobrace) /* 4864 */
         {

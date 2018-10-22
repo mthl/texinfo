@@ -58,9 +58,6 @@ ELEMENT *end_paragraph (ELEMENT *current,
                         enum command_id interrupting_command);
 void isolate_last_space (ELEMENT *current);
 int command_with_command_as_argument (ELEMENT *current);
-void mark_and_warn_invalid (enum command_id command,
-                            enum command_id invalid_parent,
-                            ELEMENT *marked_as_invalid_command);
 ELEMENT *begin_preformatted (ELEMENT *current);
 ELEMENT *end_preformatted (ELEMENT *current,
                            enum command_id closed_command,
