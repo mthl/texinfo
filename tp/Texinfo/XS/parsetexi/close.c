@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -338,7 +337,7 @@ close_current (ELEMENT *current,
             current = current->parent;
 
           break;
-        case ET_misc_line_arg:
+        case ET_line_arg:
         case ET_block_line_arg:
           c = pop_context ();
           if (c != ct_line && c != ct_def)

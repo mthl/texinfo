@@ -427,7 +427,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
       if (equivalent_cmd)
         {
           char *arg = 0;
-          ELEMENT *misc_line_args;
+          ELEMENT *line_args;
           ELEMENT *e;
 
           if (cmd == CM_set)
@@ -449,19 +449,19 @@ handle_line_command (ELEMENT *current, char **line_inout,
           misc->cmd = equivalent_cmd;
           misc->line_nr = line_nr;
 
-          misc_line_args = new_element (ET_misc_line_arg);
-          add_to_element_args (misc, misc_line_args);
+          line_args = new_element (ET_line_arg);
+          add_to_element_args (misc, line_args);
           add_extra_misc_args (misc, "misc_args", args);
 
           add_extra_string_dup (misc, "spaces_before_argument", " ");
 
           e = new_element (ET_NONE);
           text_append (&e->text, arg);
-          add_to_element_contents (misc_line_args, e);
+          add_to_element_contents (line_args, e);
 
           e = new_element (ET_spaces_at_end);
           text_append_n (&e->text, "\n", 1);
-          add_to_element_contents (misc_line_args, e);
+          add_to_element_contents (line_args, e);
 
           add_to_element_contents (current, misc);
         }
@@ -616,7 +616,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
       /* 4576 - change 'current' to its last child.  This is ELEMENT *misc 
          above.  */
       current = last_contents_child (current);
-      arg = new_element (ET_misc_line_arg);
+      arg = new_element (ET_line_arg);
       add_to_element_args (current, arg);
 
       if (cmd == CM_node) // 4584

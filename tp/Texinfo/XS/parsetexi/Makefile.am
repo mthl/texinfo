@@ -101,8 +101,9 @@ EXTRA_DIST+=complete_tree.pl
 # Notes
 EXTRA_DIST+=debug_perl.txt makeinfo-debug.txt
 
-element_types.c element_types.h: element_types.txt element_types.awk
-	awk -f element_types.awk element_types.txt >element_types.h
+$(srcdir)/element_types.c $(srcdir)/element_types.h: element_types.txt element_types.awk
+	awk -v srcdir=$(srcdir) -f $(srcdir)/element_types.awk \
+	     $(srcdir)/element_types.txt
 
 $(srcdir)/command_data.c $(srcdir)/command_ids.h: command_data.txt command_data.awk
 	awk -v srcdir=$(srcdir) -f $(srcdir)/command_data.awk \

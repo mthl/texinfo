@@ -2248,8 +2248,7 @@ end_line (ELEMENT *current)
 
       current = begin_preformatted (current);
     }
-  /* if it's a misc line arg 3100 */
-  else if (current->type == ET_misc_line_arg)
+  else if (current->type == ET_line_arg)
     {
       current = end_line_misc_line (current);
     }
@@ -2302,8 +2301,8 @@ end_line (ELEMENT *current)
       else
         {
           while (current->parent
-                 && current->type != ET_block_line_arg
-                 && current->type != ET_misc_line_arg)
+                 && current->type != ET_line_arg
+                 && current->type != ET_block_line_arg)
             {
               current = close_current (current, 0, 0);
             }

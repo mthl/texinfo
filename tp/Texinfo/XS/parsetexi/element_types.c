@@ -33,7 +33,7 @@ char *element_type_names[] = {
 "brace_command_arg",
 "brace_command_context",
 "block_line_arg",
-"misc_line_arg",
+"line_arg",
 "misc_arg",
 "menu_entry",
 "menu_entry_leading_text",

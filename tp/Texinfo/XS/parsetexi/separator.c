@@ -771,7 +771,7 @@ handle_separator (ELEMENT *current, char separator, char **line_inout)
     {
       current = handle_comma (current, &line);
     }
-  else if (separator == ',' && current->type == ET_misc_line_arg
+  else if (separator == ',' && current->type == ET_line_arg
            && current->parent->cmd == CM_node) // 5297
     {
       line_warn ("superfluous arguments for node");

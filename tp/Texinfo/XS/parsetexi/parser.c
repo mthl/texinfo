@@ -736,7 +736,7 @@ isolate_last_space (ELEMENT *current)
   text = element_text (last_elt);
   if (!text || !*text
       || (last_elt->type && (!current->type
-                             || current->type != ET_misc_line_arg)))
+                             || current->type != ET_line_arg)))
     return;
 
   text_len = last_elt->text.end;
@@ -1518,14 +1518,14 @@ value_invalid:
               simple_text_command = 1;
             }
 
-          if (outer_flags & CF_root && current->type != ET_misc_line_arg)
+          if (outer_flags & CF_root && current->type != ET_line_arg)
             ok = 1; // 4242
           else if (outer_flags & CF_block
                    && current->type != ET_block_line_arg)
             ok = 1; // 4247
           else if ((outer == CM_item
                    || outer == CM_itemx)
-                   && current->type != ET_misc_line_arg)
+                   && current->type != ET_line_arg)
             ok = 1; // 4252
           else if (outer_flags & CF_accent) // 358
             {

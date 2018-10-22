@@ -238,7 +238,7 @@ element_to_perl_hash (ELEMENT *e)
       || e->type == ET_root_line
       || e->type == ET_bracketed
       || e->type == ET_bracketed_def_content
-      || e->type == ET_misc_line_arg
+      || e->type == ET_line_arg
       || e->cmd == CM_image // why image?
       || e->cmd == CM_item && e->parent && e->parent->type == ET_row
       || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
