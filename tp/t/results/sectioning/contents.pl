@@ -26,7 +26,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -63,7 +63,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -101,7 +101,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -139,7 +139,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsection',
@@ -177,7 +177,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsubsection',
@@ -215,7 +215,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'part',
@@ -252,7 +252,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -291,7 +291,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -329,7 +329,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
@@ -366,7 +366,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',
@@ -404,7 +404,7 @@ $result_trees{'contents'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendixsec',

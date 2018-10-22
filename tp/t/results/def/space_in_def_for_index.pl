@@ -26,7 +26,7 @@ $result_trees{'space_in_def_for_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -239,7 +239,7 @@ $result_trees{'space_in_def_for_index'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'deffnx',
@@ -286,7 +286,7 @@ $result_trees{'space_in_def_for_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -330,7 +330,7 @@ $result_trees{'space_in_def_for_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

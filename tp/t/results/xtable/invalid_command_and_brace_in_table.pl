@@ -78,7 +78,7 @@ $result_trees{'invalid_command_and_brace_in_table'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

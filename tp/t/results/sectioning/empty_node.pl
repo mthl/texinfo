@@ -21,7 +21,7 @@ $result_trees{'empty_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -50,7 +50,7 @@ $result_trees{'empty_node'} = {
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -63,7 +63,7 @@ $result_trees{'empty_node'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -76,7 +76,7 @@ $result_trees{'empty_node'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -91,7 +91,7 @@ $result_trees{'empty_node'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

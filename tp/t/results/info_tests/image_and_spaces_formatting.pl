@@ -26,7 +26,7 @@ $result_trees{'image_and_spaces_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

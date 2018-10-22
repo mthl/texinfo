@@ -1,8 +1,7 @@
 # $Id$
 # DocBook.pm: output tree as DocBook.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2011-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1381,7 +1380,7 @@ sub _convert($$;$)
      if ($root->{'type'} and $root->{'type'} eq 'bracketed'
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
-               and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
+               and $root->{'parent'}->{'type'} ne 'line_arg')));
   foreach my $element (@close_elements) {
     $result .= "</$element>";
   }

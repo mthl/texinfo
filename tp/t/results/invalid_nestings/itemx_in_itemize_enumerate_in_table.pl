@@ -51,7 +51,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -124,7 +124,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
@@ -156,7 +156,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
@@ -218,7 +218,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
@@ -250,7 +250,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
@@ -306,7 +306,7 @@ $result_trees{'itemx_in_itemize_enumerate_in_table'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

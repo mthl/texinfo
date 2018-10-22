@@ -387,7 +387,7 @@ $result_trees{'menu_entry_node_comments'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

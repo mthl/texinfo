@@ -47,7 +47,7 @@ $result_trees{'simplest_test_prefix_info'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -86,7 +86,7 @@ $result_trees{'simplest_test_prefix_info'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

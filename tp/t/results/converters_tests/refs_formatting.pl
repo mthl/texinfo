@@ -26,7 +26,7 @@ $result_trees{'refs_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -65,7 +65,7 @@ $result_trees{'refs_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

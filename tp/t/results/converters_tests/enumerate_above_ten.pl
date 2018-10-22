@@ -66,7 +66,7 @@ $result_trees{'enumerate_above_ten'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

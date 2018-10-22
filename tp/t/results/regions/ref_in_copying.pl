@@ -53,7 +53,7 @@ $result_trees{'ref_in_copying'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'node',
@@ -115,7 +115,7 @@ $result_trees{'ref_in_copying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -166,7 +166,7 @@ $result_trees{'ref_in_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -205,7 +205,7 @@ $result_trees{'ref_in_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -322,7 +322,7 @@ $result_trees{'ref_in_copying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -382,7 +382,7 @@ $result_trees{'ref_in_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

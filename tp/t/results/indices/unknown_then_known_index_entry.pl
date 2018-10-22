@@ -28,7 +28,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defindex',
@@ -59,7 +59,7 @@ $result_trees{'unknown_then_known_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'someindex',

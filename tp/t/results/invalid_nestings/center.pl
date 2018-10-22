@@ -104,7 +104,7 @@ $result_trees{'center'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -142,7 +142,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -170,7 +170,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -212,7 +212,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -261,7 +261,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -277,7 +277,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -322,7 +322,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -389,7 +389,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -401,7 +401,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -465,7 +465,7 @@ $result_trees{'center'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -532,7 +532,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -564,7 +564,7 @@ $result_trees{'center'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -639,7 +639,7 @@ $result_trees{'center'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -682,7 +682,7 @@ $result_trees{'center'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'center',
@@ -718,7 +718,7 @@ $result_trees{'center'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -773,7 +773,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -789,7 +789,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -845,7 +845,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -857,7 +857,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -912,7 +912,7 @@ $result_trees{'center'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'center',
@@ -924,7 +924,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -1067,7 +1067,7 @@ $result_trees{'center'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'center',
@@ -1100,7 +1100,7 @@ $result_trees{'center'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'center',
@@ -1147,7 +1147,7 @@ $result_trees{'center'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -1241,7 +1241,7 @@ $result_trees{'center'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

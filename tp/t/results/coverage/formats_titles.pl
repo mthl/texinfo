@@ -84,7 +84,7 @@ $result_trees{'formats_titles'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -187,7 +187,7 @@ $result_trees{'formats_titles'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -282,7 +282,7 @@ $result_trees{'formats_titles'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -318,7 +318,7 @@ $result_trees{'formats_titles'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -410,7 +410,7 @@ $result_trees{'formats_titles'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -457,7 +457,7 @@ $result_trees{'formats_titles'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -506,7 +506,7 @@ $result_trees{'formats_titles'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -624,7 +624,7 @@ $result_trees{'formats_titles'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

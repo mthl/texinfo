@@ -344,7 +344,7 @@ $result_trees{'placed_things_before_node'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -522,7 +522,7 @@ $result_trees{'placed_things_before_node'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -569,7 +569,7 @@ $result_trees{'placed_things_before_node'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -619,7 +619,7 @@ $result_trees{'placed_things_before_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -658,7 +658,7 @@ $result_trees{'placed_things_before_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

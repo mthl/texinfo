@@ -21,7 +21,7 @@ $result_trees{'east_asian_in_w'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

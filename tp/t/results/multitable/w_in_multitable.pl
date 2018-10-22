@@ -150,7 +150,7 @@ $result_trees{'w_in_multitable'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

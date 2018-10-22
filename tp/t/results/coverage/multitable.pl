@@ -31,7 +31,7 @@ $result_trees{'multitable'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -245,7 +245,7 @@ $result_trees{'multitable'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
@@ -343,7 +343,7 @@ $result_trees{'multitable'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -490,7 +490,7 @@ $result_trees{'multitable'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

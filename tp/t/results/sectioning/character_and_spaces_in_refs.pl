@@ -26,7 +26,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -65,7 +65,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -159,7 +159,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -206,7 +206,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -535,7 +535,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -584,7 +584,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -597,7 +597,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -610,7 +610,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -625,7 +625,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -720,7 +720,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -730,7 +730,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -740,7 +740,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -755,7 +755,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -892,12 +892,12 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -907,7 +907,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -921,7 +921,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -1017,7 +1017,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1030,7 +1030,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1043,7 +1043,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1058,7 +1058,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1115,7 +1115,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1323,7 +1323,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

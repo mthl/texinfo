@@ -23,7 +23,7 @@ $result_trees{'multiple'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -192,7 +192,7 @@ $result_trees{'multiple'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -230,7 +230,7 @@ $result_trees{'multiple'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -281,7 +281,7 @@ $result_trees{'multiple'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -428,7 +428,7 @@ $result_trees{'multiple'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -495,7 +495,7 @@ $result_trees{'multiple'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -652,7 +652,7 @@ $result_trees{'multiple'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

@@ -75,7 +75,7 @@ $result_trees{'table_in_example_in_display'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
@@ -128,7 +128,7 @@ $result_trees{'table_in_example_in_display'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -167,7 +167,7 @@ $result_trees{'table_in_example_in_display'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -208,7 +208,7 @@ $result_trees{'table_in_example_in_display'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -32,7 +32,7 @@ $result_trees{'setfilename_in_paragraph'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',

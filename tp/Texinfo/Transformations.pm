@@ -108,7 +108,7 @@ sub fill_gaps_in_sectioning($)
           $new_section->{'contents'} = [{'type' => 'empty_line', 
                                          'text' => "\n",
                                          'parent' => $new_section}];
-          $new_section->{'args'} = [{'type' => 'misc_line_arg',
+          $new_section->{'args'} = [{'type' => 'line_arg',
                                      'parent' => $new_section}];
           $new_section->{'args'}->[0]->{'contents'} = [
              {'cmdname' => 'asis',

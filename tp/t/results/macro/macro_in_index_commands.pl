@@ -146,7 +146,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -178,7 +178,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -268,7 +268,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'defindex',
@@ -404,7 +404,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defcodeindex',
@@ -490,7 +490,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -515,7 +515,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'trucindex',
@@ -642,7 +642,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'codeidxindex',
@@ -689,7 +689,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'kindex',
@@ -730,7 +730,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pindex',
@@ -788,7 +788,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -836,7 +836,7 @@ $result_trees{'macro_in_index_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

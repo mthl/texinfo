@@ -26,7 +26,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -55,7 +55,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'columnfractions',
@@ -269,7 +269,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
@@ -402,7 +402,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -589,7 +589,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
@@ -784,7 +784,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -843,7 +843,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

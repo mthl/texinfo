@@ -92,7 +92,7 @@ $result_trees{'enumerate_argument_item'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -208,7 +208,7 @@ $result_trees{'enumerate_argument_item'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -345,7 +345,7 @@ $result_trees{'enumerate_argument_item'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

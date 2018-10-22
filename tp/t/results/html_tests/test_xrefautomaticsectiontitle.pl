@@ -26,7 +26,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -65,7 +65,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -159,7 +159,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -218,7 +218,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -257,7 +257,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -282,7 +282,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'xrefautomaticsectiontitle',
@@ -367,7 +367,7 @@ $result_trees{'test_xrefautomaticsectiontitle'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'xrefautomaticsectiontitle',

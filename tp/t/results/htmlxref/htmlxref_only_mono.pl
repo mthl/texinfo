@@ -47,7 +47,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -80,7 +80,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -119,7 +119,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -213,7 +213,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -260,7 +260,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -420,7 +420,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -581,7 +581,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -753,7 +753,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -909,7 +909,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -956,7 +956,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -1112,7 +1112,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1159,7 +1159,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -1238,7 +1238,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1251,7 +1251,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1264,7 +1264,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1279,7 +1279,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -1321,7 +1321,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
@@ -1449,7 +1449,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1540,7 +1540,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1550,7 +1550,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1560,7 +1560,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1575,7 +1575,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         'spaces_before_argument' => ' '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -1617,7 +1617,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
@@ -1749,7 +1749,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1890,7 +1890,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1984,12 +1984,12 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -1999,7 +1999,7 @@ $result_trees{'htmlxref_only_mono'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     },
                     {
                       'contents' => [
@@ -2013,7 +2013,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'node',
@@ -2055,7 +2055,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
@@ -2178,7 +2178,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -2233,7 +2233,7 @@ $result_trees{'htmlxref_only_mono'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2246,7 +2246,7 @@ $result_trees{'htmlxref_only_mono'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2259,7 +2259,7 @@ $result_trees{'htmlxref_only_mono'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2274,7 +2274,7 @@ $result_trees{'htmlxref_only_mono'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2331,7 +2331,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -2379,7 +2379,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -2520,7 +2520,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -2750,7 +2750,7 @@ $result_trees{'htmlxref_only_mono'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

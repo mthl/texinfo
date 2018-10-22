@@ -27,7 +27,7 @@ $result_trees{'bad_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',
@@ -83,7 +83,7 @@ $result_trees{'bad_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',

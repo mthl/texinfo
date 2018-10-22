@@ -95,7 +95,7 @@ $result_trees{'empty_def_command'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -266,7 +266,7 @@ $result_trees{'empty_def_command'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -316,7 +316,7 @@ $result_trees{'empty_def_command'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

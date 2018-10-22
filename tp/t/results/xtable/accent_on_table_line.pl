@@ -57,7 +57,7 @@ $result_trees{'accent_on_table_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -119,7 +119,7 @@ $result_trees{'accent_on_table_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -151,7 +151,7 @@ $result_trees{'accent_on_table_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

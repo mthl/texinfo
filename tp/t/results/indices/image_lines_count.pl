@@ -26,7 +26,7 @@ $result_trees{'image_lines_count'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -85,7 +85,7 @@ $result_trees{'image_lines_count'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -132,7 +132,7 @@ $result_trees{'image_lines_count'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

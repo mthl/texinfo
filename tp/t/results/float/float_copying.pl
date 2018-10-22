@@ -167,7 +167,7 @@ $result_trees{'float_copying'} = {
 '
                                           },
                                           'parent' => {},
-                                          'type' => 'misc_line_arg'
+                                          'type' => 'line_arg'
                                         }
                                       ],
                                       'cmdname' => 'cindex',
@@ -208,7 +208,7 @@ $result_trees{'float_copying'} = {
 '
                                           },
                                           'parent' => {},
-                                          'type' => 'misc_line_arg'
+                                          'type' => 'line_arg'
                                         }
                                       ],
                                       'cmdname' => 'findex',
@@ -277,7 +277,7 @@ $result_trees{'float_copying'} = {
 '
                                                   },
                                                   'parent' => {},
-                                                  'type' => 'misc_line_arg'
+                                                  'type' => 'line_arg'
                                                 }
                                               ],
                                               'cmdname' => 'node',
@@ -415,7 +415,7 @@ $result_trees{'float_copying'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
@@ -456,7 +456,7 @@ $result_trees{'float_copying'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'findex',
@@ -516,7 +516,7 @@ $result_trees{'float_copying'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -568,7 +568,7 @@ $result_trees{'float_copying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -619,7 +619,7 @@ $result_trees{'float_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -658,7 +658,7 @@ $result_trees{'float_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -775,7 +775,7 @@ $result_trees{'float_copying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -835,7 +835,7 @@ $result_trees{'float_copying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',
@@ -900,7 +900,7 @@ $result_trees{'float_copying'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
@@ -938,7 +938,7 @@ $result_trees{'float_copying'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -969,7 +969,7 @@ $result_trees{'float_copying'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

@@ -122,7 +122,7 @@ $result_trees{'caption_not_closed'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

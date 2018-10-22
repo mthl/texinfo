@@ -47,7 +47,7 @@ $result_trees{'table_command_comment'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -79,7 +79,7 @@ $result_trees{'table_command_comment'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

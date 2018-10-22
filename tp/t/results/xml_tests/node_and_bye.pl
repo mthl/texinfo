@@ -27,7 +27,7 @@ $result_trees{'node_and_bye'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',

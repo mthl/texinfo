@@ -43,7 +43,7 @@ $result_trees{'unclosed_verb_on_misc_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',

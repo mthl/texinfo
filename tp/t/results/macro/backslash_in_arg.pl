@@ -26,7 +26,7 @@ $result_trees{'backslash_in_arg'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -101,7 +101,7 @@ $result_trees{'backslash_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -142,7 +142,7 @@ $result_trees{'backslash_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -183,7 +183,7 @@ $result_trees{'backslash_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -224,7 +224,7 @@ $result_trees{'backslash_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -265,7 +265,7 @@ $result_trees{'backslash_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

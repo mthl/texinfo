@@ -60,7 +60,7 @@ $result_trees{'macro_in_invalid_documentencoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

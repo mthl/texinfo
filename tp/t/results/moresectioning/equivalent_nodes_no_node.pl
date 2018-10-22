@@ -47,7 +47,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -82,7 +82,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -113,12 +113,12 @@ $result_trees{'equivalent_nodes_no_node'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -140,7 +140,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -194,7 +194,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -319,7 +319,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -387,7 +387,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -471,7 +471,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -519,7 +519,7 @@ $result_trees{'equivalent_nodes_no_node'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',

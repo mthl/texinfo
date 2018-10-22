@@ -41,7 +41,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -141,7 +141,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -465,7 +465,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -510,7 +510,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -549,7 +549,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -745,7 +745,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -792,7 +792,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'include',
@@ -855,7 +855,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -914,7 +914,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'title',
@@ -942,7 +942,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'subtitle',
@@ -970,7 +970,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'subtitle',
@@ -1042,7 +1042,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
@@ -1067,7 +1067,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
@@ -1146,7 +1146,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1283,7 +1283,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1330,7 +1330,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1371,7 +1371,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1412,7 +1412,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1453,7 +1453,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1494,7 +1494,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1535,7 +1535,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1576,7 +1576,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1617,7 +1617,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1658,7 +1658,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1699,7 +1699,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1763,7 +1763,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1811,7 +1811,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1859,7 +1859,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1907,7 +1907,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1955,7 +1955,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -2003,7 +2003,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -2064,7 +2064,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2103,7 +2103,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -2332,7 +2332,7 @@ $result_trees{'texi_formatting'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -2373,7 +2373,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -2454,7 +2454,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2491,7 +2491,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -2752,7 +2752,7 @@ $result_trees{'texi_formatting'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -2793,7 +2793,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -2853,7 +2853,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2892,7 +2892,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsection',
@@ -3043,7 +3043,7 @@ $result_trees{'texi_formatting'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -3143,7 +3143,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -3182,7 +3182,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsubsection',
@@ -3220,7 +3220,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -3259,7 +3259,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsubsection',
@@ -3297,7 +3297,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -3336,7 +3336,7 @@ $result_trees{'texi_formatting'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'centerchap',
@@ -3361,7 +3361,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -3392,7 +3392,7 @@ $result_trees{'texi_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

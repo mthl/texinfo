@@ -45,7 +45,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename_no_element'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

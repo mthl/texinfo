@@ -633,7 +633,7 @@ $result_trees{'macro_in_menu'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

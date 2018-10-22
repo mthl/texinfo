@@ -39,7 +39,7 @@ $result_trees{'defcondx_Dbar'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',
@@ -197,7 +197,7 @@ $result_trees{'defcondx_Dbar'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -260,7 +260,7 @@ $result_trees{'defcondx_Dbar'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -37,7 +37,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'include',
@@ -54,7 +54,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
@@ -67,7 +67,7 @@ $result_trees{'include_setfilename_on_setfilename_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',

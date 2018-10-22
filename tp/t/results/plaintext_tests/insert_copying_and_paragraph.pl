@@ -44,7 +44,7 @@ $result_trees{'insert_copying_and_paragraph'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

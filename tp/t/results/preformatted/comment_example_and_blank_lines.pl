@@ -78,7 +78,7 @@ $result_trees{'comment_example_and_blank_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -182,7 +182,7 @@ $result_trees{'comment_example_and_blank_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -263,7 +263,7 @@ $result_trees{'comment_example_and_blank_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -350,7 +350,7 @@ $result_trees{'comment_example_and_blank_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -73,7 +73,7 @@ $result_trees{'bad_style_nesting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

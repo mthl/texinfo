@@ -26,7 +26,7 @@ $result_trees{'unknown_nodes_renamed'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

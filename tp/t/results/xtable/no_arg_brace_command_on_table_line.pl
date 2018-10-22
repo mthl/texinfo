@@ -57,7 +57,7 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -93,7 +93,7 @@ $result_trees{'no_arg_brace_command_on_table_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

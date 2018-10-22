@@ -81,7 +81,7 @@ $result_trees{'close_paragraph_command'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',

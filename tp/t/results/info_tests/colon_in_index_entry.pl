@@ -26,7 +26,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -51,7 +51,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -89,7 +89,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -166,7 +166,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -214,7 +214,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -464,7 +464,7 @@ $result_trees{'colon_in_index_entry'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'defvrx',
@@ -511,7 +511,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -555,7 +555,7 @@ $result_trees{'colon_in_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

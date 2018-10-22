@@ -88,7 +88,7 @@ $result_trees{'space_macro_after_end'} = {
                 'spaces_after_argument' => '   '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

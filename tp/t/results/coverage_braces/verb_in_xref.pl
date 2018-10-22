@@ -26,7 +26,7 @@ $result_trees{'verb_in_xref'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

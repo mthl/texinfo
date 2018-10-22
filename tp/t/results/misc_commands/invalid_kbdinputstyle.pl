@@ -27,7 +27,7 @@ $result_trees{'invalid_kbdinputstyle'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'kbdinputstyle',

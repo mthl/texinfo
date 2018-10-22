@@ -26,7 +26,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -185,7 +185,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -303,7 +303,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -504,7 +504,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'findex',
@@ -572,7 +572,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -603,7 +603,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -640,7 +640,7 @@ $result_trees{'at_commands_in_raw'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',

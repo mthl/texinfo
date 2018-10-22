@@ -26,7 +26,7 @@ $result_trees{'ignore_in_xref'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

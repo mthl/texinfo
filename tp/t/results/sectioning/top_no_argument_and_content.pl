@@ -21,7 +21,7 @@ $result_trees{'top_no_argument_and_content'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

@@ -65,7 +65,7 @@ $result_trees{'tab_item_in_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

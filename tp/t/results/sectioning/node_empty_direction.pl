@@ -22,7 +22,7 @@ $result_trees{'node_empty_direction'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -30,7 +30,7 @@ $result_trees{'node_empty_direction'} = {
             'spaces_after_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

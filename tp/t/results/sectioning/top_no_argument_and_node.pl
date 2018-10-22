@@ -26,7 +26,7 @@ $result_trees{'top_no_argument_and_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -60,7 +60,7 @@ $result_trees{'top_no_argument_and_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

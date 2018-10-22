@@ -45,7 +45,7 @@ $result_trees{'titlefont_in_center'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

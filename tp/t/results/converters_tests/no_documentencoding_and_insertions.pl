@@ -163,7 +163,7 @@ $result_trees{'no_documentencoding_and_insertions'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

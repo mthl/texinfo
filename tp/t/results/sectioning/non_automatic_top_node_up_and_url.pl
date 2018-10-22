@@ -23,7 +23,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -36,7 +36,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -105,7 +105,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -172,7 +172,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -228,7 +228,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -322,7 +322,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
 '
                     },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
@@ -387,7 +387,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
@@ -395,7 +395,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -408,7 +408,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -479,7 +479,7 @@ $result_trees{'non_automatic_top_node_up_and_url'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',

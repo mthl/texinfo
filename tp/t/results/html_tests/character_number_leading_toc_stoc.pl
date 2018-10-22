@@ -26,7 +26,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -56,7 +56,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -87,7 +87,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
@@ -117,7 +117,7 @@ $result_trees{'character_number_leading_toc_stoc'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',

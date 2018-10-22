@@ -25,7 +25,7 @@ $result_trees{'not_fraction'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -56,7 +56,7 @@ $result_trees{'not_fraction'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -26,7 +26,7 @@ $result_trees{'cindex_in_caption'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -51,7 +51,7 @@ $result_trees{'cindex_in_caption'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
@@ -141,7 +141,7 @@ $result_trees{'cindex_in_caption'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
@@ -208,7 +208,7 @@ $result_trees{'cindex_in_caption'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -266,7 +266,7 @@ $result_trees{'cindex_in_caption'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

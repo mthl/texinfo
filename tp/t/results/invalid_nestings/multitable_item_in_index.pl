@@ -67,7 +67,7 @@ $result_trees{'multitable_item_in_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'vindex',
@@ -111,7 +111,7 @@ $result_trees{'multitable_item_in_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

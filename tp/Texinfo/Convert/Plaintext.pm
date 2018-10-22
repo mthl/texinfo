@@ -2464,7 +2464,7 @@ sub _convert($$)
     } elsif (($command eq 'item' or $command eq 'itemx')
             and $root->{'args'} and $root->{'args'}->[0] 
             and $root->{'args'}->[0]->{'type'}
-            and $root->{'args'}->[0]->{'type'} eq 'misc_line_arg') {
+            and $root->{'args'}->[0]->{'type'} eq 'line_arg') {
       if ($root->{'args'} and @{$root->{'args'}}
           and $root->{'args'}->[0]->{'contents'}) {
 

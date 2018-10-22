@@ -49,7 +49,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -187,7 +187,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -234,7 +234,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -365,7 +365,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -422,7 +422,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -461,7 +461,7 @@ $result_trees{'direntry_dircategory_and_commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

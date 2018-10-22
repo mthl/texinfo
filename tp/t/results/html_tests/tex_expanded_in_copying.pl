@@ -56,7 +56,7 @@ $result_trees{'tex_expanded_in_copying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -97,7 +97,7 @@ $result_trees{'tex_expanded_in_copying'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

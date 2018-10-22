@@ -21,7 +21,7 @@ $result_trees{'author_outside_titlepage_quotation'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'author',

@@ -26,7 +26,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -64,7 +64,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -150,7 +150,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -194,7 +194,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -453,7 +453,7 @@ $result_trees{'empty_string_index_entry'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'defunx',
@@ -500,7 +500,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -544,7 +544,7 @@ $result_trees{'empty_string_index_entry'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

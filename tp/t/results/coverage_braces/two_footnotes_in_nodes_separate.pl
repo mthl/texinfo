@@ -23,7 +23,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'footnotestyle',
@@ -58,7 +58,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -97,7 +97,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -323,7 +323,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -382,7 +382,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -421,7 +421,7 @@ $result_trees{'two_footnotes_in_nodes_separate'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

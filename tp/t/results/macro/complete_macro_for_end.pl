@@ -74,7 +74,7 @@ $result_trees{'complete_macro_for_end'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

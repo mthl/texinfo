@@ -37,7 +37,7 @@ $result_trees{'chinese_mixed_with_en'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentencoding',
@@ -72,7 +72,7 @@ $result_trees{'chinese_mixed_with_en'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -101,7 +101,7 @@ $result_trees{'chinese_mixed_with_en'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
@@ -139,7 +139,7 @@ $result_trees{'chinese_mixed_with_en'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

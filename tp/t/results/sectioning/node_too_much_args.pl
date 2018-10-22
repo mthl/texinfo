@@ -22,7 +22,7 @@ $result_trees{'node_too_much_args'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -30,7 +30,7 @@ $result_trees{'node_too_much_args'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -38,7 +38,7 @@ $result_trees{'node_too_much_args'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -59,7 +59,7 @@ $result_trees{'node_too_much_args'} = {
             'spaces_before_argument' => '  '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

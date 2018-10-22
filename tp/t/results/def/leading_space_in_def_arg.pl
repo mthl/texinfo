@@ -118,7 +118,7 @@ $result_trees{'leading_space_in_def_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -21,7 +21,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'definfoenclose',
@@ -89,7 +89,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'item',
@@ -117,7 +117,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'itemx',
@@ -176,7 +176,7 @@ $result_trees{'definfoenclose_on_table_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

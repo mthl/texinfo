@@ -200,7 +200,7 @@ $result_trees{'defx_in_example'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'deffnx',
@@ -246,7 +246,7 @@ $result_trees{'defx_in_example'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -284,7 +284,7 @@ $result_trees{'defx_in_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

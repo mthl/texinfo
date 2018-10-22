@@ -37,7 +37,7 @@ $result_trees{'sp'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',
@@ -68,7 +68,7 @@ $result_trees{'sp'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',
@@ -109,7 +109,7 @@ $result_trees{'sp'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',
@@ -151,7 +151,7 @@ $result_trees{'sp'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',

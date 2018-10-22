@@ -272,7 +272,7 @@ $result_trees{'float_with_at_commands'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -362,7 +362,7 @@ $result_trees{'float_with_at_commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'listoffloats',

@@ -123,7 +123,7 @@ $result_trees{'section_on_defx_line'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'deffnx',
@@ -165,7 +165,7 @@ $result_trees{'section_on_defx_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',

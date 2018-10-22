@@ -17,7 +17,7 @@ $result_trees{'unknown_macro_on_line_command'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',

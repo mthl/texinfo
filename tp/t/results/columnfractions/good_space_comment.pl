@@ -24,7 +24,7 @@ $result_trees{'good_space_comment'} = {
                     'spaces_after_argument' => '  '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -77,7 +77,7 @@ $result_trees{'good_space_comment'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

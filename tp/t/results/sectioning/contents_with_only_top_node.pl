@@ -33,7 +33,7 @@ $result_trees{'contents_with_only_top_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

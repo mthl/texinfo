@@ -47,7 +47,7 @@ $result_trees{'simplest_test_date_in_header'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -86,7 +86,7 @@ $result_trees{'simplest_test_date_in_header'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

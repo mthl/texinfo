@@ -80,7 +80,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -184,7 +184,7 @@ $result_trees{'itemize_line_commands_with_brace'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

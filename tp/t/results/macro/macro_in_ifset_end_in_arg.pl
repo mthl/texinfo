@@ -83,7 +83,7 @@ $result_trees{'macro_in_ifset_end_in_arg'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

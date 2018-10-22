@@ -26,7 +26,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -120,7 +120,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -184,7 +184,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'cindex',
@@ -269,7 +269,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'cindex',
@@ -360,7 +360,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -385,7 +385,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

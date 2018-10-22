@@ -108,7 +108,7 @@ $result_trees{'tab_in_index'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'vindex',
@@ -171,7 +171,7 @@ $result_trees{'tab_in_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

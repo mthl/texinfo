@@ -66,7 +66,7 @@ $result_trees{'style_not_closed_in_block_command'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -152,7 +152,7 @@ $result_trees{'protect_spaces_on_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'exdent',
@@ -176,7 +176,7 @@ $result_trees{'protect_spaces_on_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

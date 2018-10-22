@@ -56,7 +56,7 @@ $result_trees{'quote_dash_in_display'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

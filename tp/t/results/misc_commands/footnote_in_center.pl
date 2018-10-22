@@ -97,7 +97,7 @@ $result_trees{'footnote_in_center'} = {
 '
                                           },
                                           'parent' => {},
-                                          'type' => 'misc_line_arg'
+                                          'type' => 'line_arg'
                                         }
                                       ],
                                       'cmdname' => 'item',
@@ -150,7 +150,7 @@ $result_trees{'footnote_in_center'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'end',
@@ -189,7 +189,7 @@ $result_trees{'footnote_in_center'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
@@ -240,7 +240,7 @@ $result_trees{'footnote_in_center'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

@@ -23,17 +23,17 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -55,7 +55,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -160,7 +160,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
 '
                     },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
@@ -240,12 +240,12 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -255,7 +255,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -269,7 +269,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',

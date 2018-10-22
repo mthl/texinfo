@@ -23,7 +23,7 @@ $result_trees{'settitle_and_empty_top'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
@@ -56,7 +56,7 @@ $result_trees{'settitle_and_empty_top'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

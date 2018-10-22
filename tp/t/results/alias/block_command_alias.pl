@@ -21,7 +21,7 @@ $result_trees{'block_command_alias'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',
@@ -78,7 +78,7 @@ $result_trees{'block_command_alias'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

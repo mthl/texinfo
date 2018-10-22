@@ -38,7 +38,7 @@ $result_trees{'no_empty_line_after_section'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -86,7 +86,7 @@ $result_trees{'no_empty_line_after_section'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -171,7 +171,7 @@ $result_trees{'no_empty_line_after_section'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -229,7 +229,7 @@ $result_trees{'no_empty_line_after_section'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'sp',
@@ -273,7 +273,7 @@ $result_trees{'no_empty_line_after_section'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',

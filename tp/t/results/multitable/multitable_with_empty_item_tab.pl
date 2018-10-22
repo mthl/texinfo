@@ -25,7 +25,7 @@ $result_trees{'multitable_with_empty_item_tab'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -204,7 +204,7 @@ $result_trees{'multitable_with_empty_item_tab'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

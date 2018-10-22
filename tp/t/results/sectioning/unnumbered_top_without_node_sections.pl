@@ -23,17 +23,17 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -55,7 +55,7 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -101,7 +101,7 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
@@ -165,7 +165,7 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -219,17 +219,17 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -251,7 +251,7 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -297,7 +297,7 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',

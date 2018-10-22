@@ -141,7 +141,7 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
@@ -211,7 +211,7 @@ $result_trees{'table_not_closed_in_menu_comment'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

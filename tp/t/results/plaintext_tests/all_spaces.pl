@@ -23,7 +23,7 @@ $result_trees{'all_spaces'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -64,7 +64,7 @@ $result_trees{'all_spaces'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

@@ -21,7 +21,7 @@ $result_trees{'recursive_synindex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -52,7 +52,7 @@ $result_trees{'recursive_synindex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -83,7 +83,7 @@ $result_trees{'recursive_synindex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'synindex',
@@ -111,7 +111,7 @@ $result_trees{'recursive_synindex'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'synindex',

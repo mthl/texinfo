@@ -45,7 +45,7 @@ $result_trees{'sp_with_text_before_in_example'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'sp',
@@ -85,7 +85,7 @@ $result_trees{'sp_with_text_before_in_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

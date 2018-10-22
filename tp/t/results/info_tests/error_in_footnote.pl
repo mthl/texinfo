@@ -33,7 +33,7 @@ $result_trees{'error_in_footnote'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -258,7 +258,7 @@ $result_trees{'error_in_footnote'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -316,7 +316,7 @@ $result_trees{'error_in_footnote'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
@@ -354,7 +354,7 @@ $result_trees{'error_in_footnote'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',

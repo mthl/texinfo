@@ -39,7 +39,7 @@ $result_trees{'defcondx_Ubar'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',
@@ -212,7 +212,7 @@ $result_trees{'defcondx_Ubar'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

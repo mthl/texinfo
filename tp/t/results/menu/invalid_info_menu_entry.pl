@@ -26,7 +26,7 @@ $result_trees{'invalid_info_menu_entry'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -557,7 +557,7 @@ $result_trees{'invalid_info_menu_entry'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

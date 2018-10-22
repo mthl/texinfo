@@ -132,7 +132,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -183,7 +183,7 @@ $result_trees{'anchor_in_copying_in_footnote'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

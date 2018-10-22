@@ -22,7 +22,7 @@ $result_trees{'include_at_end_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'include',

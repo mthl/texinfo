@@ -42,7 +42,7 @@ $result_trees{'comment_on_cartouche_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

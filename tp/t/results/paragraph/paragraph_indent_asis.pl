@@ -21,7 +21,7 @@ $result_trees{'paragraph_indent_asis'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'paragraphindent',
@@ -113,7 +113,7 @@ $result_trees{'paragraph_indent_asis'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -75,7 +75,7 @@ $result_trees{'comment_and_itemx_before_item'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'itemx',
@@ -111,7 +111,7 @@ $result_trees{'comment_and_itemx_before_item'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

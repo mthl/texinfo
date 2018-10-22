@@ -112,7 +112,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -245,7 +245,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -309,7 +309,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -408,7 +408,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -460,7 +460,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -600,7 +600,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -733,7 +733,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -820,7 +820,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -919,7 +919,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -971,7 +971,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -1087,7 +1087,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -1257,7 +1257,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -1319,7 +1319,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -1484,7 +1484,7 @@ $result_trees{'itemize_and_empty_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

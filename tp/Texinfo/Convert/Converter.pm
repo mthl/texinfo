@@ -1,8 +1,7 @@
 # $Id$
 # Converter.pm: Common code for Converters.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2011-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1231,8 +1230,7 @@ sub convert_document_nodes($$;$)
 
 # if in this container, we are 'inline', within a running text
 my @inline_types = ('def_line', 'paragraph', 'preformatted',
-  'misc_command_arg', 'misc_line_arg', 'block_line_arg',
-  'menu_entry_name', 'menu_entry_node');
+  'line_arg', 'block_line_arg', 'menu_entry_name', 'menu_entry_node');
 
 my %inline_types;
 foreach my $type (@inline_types) {

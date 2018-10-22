@@ -29,7 +29,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -58,7 +58,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -99,7 +99,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -138,7 +138,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -163,7 +163,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -280,7 +280,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -411,7 +411,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -448,7 +448,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -489,7 +489,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -530,7 +530,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -571,7 +571,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -612,7 +612,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -653,7 +653,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -694,7 +694,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -735,7 +735,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -776,7 +776,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -817,7 +817,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -858,7 +858,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -899,7 +899,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -940,7 +940,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -981,7 +981,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1022,7 +1022,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1063,7 +1063,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1104,7 +1104,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1145,7 +1145,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1186,7 +1186,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1227,7 +1227,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1268,7 +1268,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1309,7 +1309,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1350,7 +1350,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1391,7 +1391,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1432,7 +1432,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1473,7 +1473,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1514,7 +1514,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1555,7 +1555,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1609,7 +1609,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1659,7 +1659,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1740,7 +1740,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1849,7 +1849,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1899,7 +1899,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1949,7 +1949,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1999,7 +1999,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2049,7 +2049,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2099,7 +2099,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2149,7 +2149,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2199,7 +2199,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2236,7 +2236,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2277,7 +2277,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2331,7 +2331,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2381,7 +2381,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2431,7 +2431,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2468,7 +2468,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2509,7 +2509,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2550,7 +2550,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2591,7 +2591,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2632,7 +2632,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2673,7 +2673,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2714,7 +2714,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2755,7 +2755,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2802,7 +2802,7 @@ $result_trees{'encoding_index_utf8_enable_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

@@ -29,7 +29,7 @@ $result_trees{'unknown_encoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -68,7 +68,7 @@ $result_trees{'unknown_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

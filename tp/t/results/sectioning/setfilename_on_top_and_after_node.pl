@@ -26,7 +26,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -73,7 +73,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'setfilename',
@@ -90,7 +90,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -115,7 +115,7 @@ $result_trees{'setfilename_on_top_and_after_node'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',

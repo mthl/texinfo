@@ -81,7 +81,7 @@ $result_trees{'empty_line_style_command'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

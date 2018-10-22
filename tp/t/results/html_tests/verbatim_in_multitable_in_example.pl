@@ -37,7 +37,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'columnfractions',
@@ -208,7 +208,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'verbatiminclude',
@@ -259,7 +259,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -299,7 +299,7 @@ $result_trees{'verbatim_in_multitable_in_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

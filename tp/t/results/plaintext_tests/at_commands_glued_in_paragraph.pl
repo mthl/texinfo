@@ -380,7 +380,7 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'sp',
@@ -454,7 +454,7 @@ $result_trees{'at_commands_glued_in_paragraph'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',

@@ -88,7 +88,7 @@ $result_trees{'normal_font_in_monospace'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

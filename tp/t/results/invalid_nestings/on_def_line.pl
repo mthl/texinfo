@@ -138,7 +138,7 @@ $result_trees{'on_def_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
@@ -309,7 +309,7 @@ $result_trees{'on_def_line'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'exdent',
@@ -322,7 +322,7 @@ $result_trees{'on_def_line'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -368,7 +368,7 @@ $result_trees{'on_def_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

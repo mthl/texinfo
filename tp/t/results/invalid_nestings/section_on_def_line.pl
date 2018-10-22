@@ -62,7 +62,7 @@ $result_trees{'section_on_def_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',

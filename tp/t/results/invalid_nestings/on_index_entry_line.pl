@@ -116,7 +116,7 @@ $result_trees{'on_index_entry_line'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'exdent',
@@ -128,7 +128,7 @@ $result_trees{'on_index_entry_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'cindex',

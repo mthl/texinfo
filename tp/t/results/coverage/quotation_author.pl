@@ -39,7 +39,7 @@ $result_trees{'quotation_author'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'author',
@@ -101,7 +101,7 @@ $result_trees{'quotation_author'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'author',
@@ -141,7 +141,7 @@ $result_trees{'quotation_author'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

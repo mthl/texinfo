@@ -212,7 +212,7 @@ $result_trees{'defx_after_comment'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -254,7 +254,7 @@ $result_trees{'defx_after_comment'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -21,7 +21,7 @@ $result_trees{'wrong_synindex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -48,7 +48,7 @@ $result_trees{'wrong_synindex'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'synindex',

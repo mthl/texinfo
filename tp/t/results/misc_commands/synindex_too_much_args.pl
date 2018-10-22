@@ -21,7 +21,7 @@ $result_trees{'synindex_too_much_args'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'syncodeindex',

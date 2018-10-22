@@ -29,7 +29,7 @@ $result_trees{'encoding_us_ascii'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -70,7 +70,7 @@ $result_trees{'encoding_us_ascii'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

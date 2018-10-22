@@ -56,7 +56,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
@@ -109,7 +109,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
@@ -134,7 +134,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
@@ -173,7 +173,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -202,7 +202,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -231,7 +231,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -260,7 +260,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -306,7 +306,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -353,7 +353,7 @@ $result_trees{'invalid_documentencoding'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',

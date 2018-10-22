@@ -42,7 +42,7 @@ $result_trees{'heading_in_footnote'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'heading',
@@ -71,7 +71,7 @@ $result_trees{'heading_in_footnote'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'cindex',

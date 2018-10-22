@@ -180,7 +180,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -287,7 +287,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
@@ -345,7 +345,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
@@ -374,7 +374,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -432,7 +432,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',
@@ -557,7 +557,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -677,7 +677,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -796,7 +796,7 @@ $result_trees{'verbatim_and_verbatiminclude'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

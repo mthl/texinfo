@@ -26,7 +26,7 @@ $result_trees{'complex_nestings'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -300,7 +300,7 @@ $result_trees{'complex_nestings'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'defunx',
@@ -676,7 +676,7 @@ $result_trees{'complex_nestings'} = {
                                         }
                                       ],
                                       'parent' => {},
-                                      'type' => 'misc_line_arg'
+                                      'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'defvarx',
@@ -777,7 +777,7 @@ $result_trees{'complex_nestings'} = {
 '
                                                       },
                                                       'parent' => {},
-                                                      'type' => 'misc_line_arg'
+                                                      'type' => 'line_arg'
                                                     }
                                                   ],
                                                   'cmdname' => 'item',
@@ -845,7 +845,7 @@ $result_trees{'complex_nestings'} = {
 '
                                                       },
                                                       'parent' => {},
-                                                      'type' => 'misc_line_arg'
+                                                      'type' => 'line_arg'
                                                     }
                                                   ],
                                                   'cmdname' => 'item',
@@ -881,7 +881,7 @@ $result_trees{'complex_nestings'} = {
 '
                                               },
                                               'parent' => {},
-                                              'type' => 'misc_line_arg'
+                                              'type' => 'line_arg'
                                             }
                                           ],
                                           'cmdname' => 'end',
@@ -941,7 +941,7 @@ $result_trees{'complex_nestings'} = {
 '
                                       },
                                       'parent' => {},
-                                      'type' => 'misc_line_arg'
+                                      'type' => 'line_arg'
                                     }
                                   ],
                                   'cmdname' => 'end',
@@ -983,7 +983,7 @@ $result_trees{'complex_nestings'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'end',
@@ -1025,7 +1025,7 @@ $result_trees{'complex_nestings'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -1075,7 +1075,7 @@ $result_trees{'complex_nestings'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

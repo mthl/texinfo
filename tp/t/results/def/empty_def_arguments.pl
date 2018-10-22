@@ -187,7 +187,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -218,7 +218,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -256,7 +256,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -321,7 +321,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -366,7 +366,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -432,7 +432,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -481,7 +481,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -541,7 +541,7 @@ $result_trees{'empty_def_arguments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deffnx',
@@ -571,7 +571,7 @@ $result_trees{'empty_def_arguments'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

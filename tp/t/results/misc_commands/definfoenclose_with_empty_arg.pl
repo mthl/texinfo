@@ -27,7 +27,7 @@ $result_trees{'definfoenclose_with_empty_arg'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'definfoenclose',

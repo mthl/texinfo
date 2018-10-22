@@ -17,7 +17,7 @@ $result_trees{'simple'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',

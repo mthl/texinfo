@@ -55,7 +55,7 @@ $result_trees{'headitem_itemx_in_itemize'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'itemx',
@@ -111,7 +111,7 @@ $result_trees{'headitem_itemx_in_itemize'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

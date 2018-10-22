@@ -388,7 +388,7 @@ $result_trees{'at_commands_glued_in_example'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'sp',
@@ -460,7 +460,7 @@ $result_trees{'at_commands_glued_in_example'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -504,7 +504,7 @@ $result_trees{'at_commands_glued_in_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

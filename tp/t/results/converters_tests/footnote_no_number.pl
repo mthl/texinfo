@@ -26,7 +26,7 @@ $result_trees{'footnote_no_number'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

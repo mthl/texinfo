@@ -27,7 +27,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -73,7 +73,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -121,7 +121,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
@@ -169,7 +169,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsection',
@@ -217,7 +217,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsubsection',
@@ -265,7 +265,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'part',
@@ -302,7 +302,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -351,7 +351,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -399,7 +399,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
@@ -446,7 +446,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'appendix',
@@ -494,7 +494,7 @@ $result_trees{'sectioning_part_appendix'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'appendixsec',

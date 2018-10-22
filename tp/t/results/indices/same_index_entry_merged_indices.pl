@@ -23,7 +23,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -65,7 +65,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -99,7 +99,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -262,7 +262,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -404,7 +404,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -448,7 +448,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

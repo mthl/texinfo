@@ -34,7 +34,7 @@ $result_trees{'empty_center_with_arg'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

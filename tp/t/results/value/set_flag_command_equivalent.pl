@@ -23,7 +23,7 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'codequoteundirected',
@@ -79,7 +79,7 @@ $result_trees{'set_flag_command_equivalent'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'codequoteundirected',

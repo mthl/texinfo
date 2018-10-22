@@ -33,7 +33,7 @@ $result_trees{'bad_documentlanguage'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -80,7 +80,7 @@ $result_trees{'bad_documentlanguage'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'documentlanguage',
@@ -97,7 +97,7 @@ $result_trees{'bad_documentlanguage'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentlanguage',
@@ -128,7 +128,7 @@ $result_trees{'bad_documentlanguage'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentlanguage',

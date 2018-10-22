@@ -27,7 +27,7 @@ $result_trees{'part_before_section'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'part',
@@ -64,7 +64,7 @@ $result_trees{'part_before_section'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',

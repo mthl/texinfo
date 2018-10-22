@@ -311,7 +311,7 @@ $result_trees{'also_not_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subheading',
@@ -411,7 +411,7 @@ $result_trees{'also_not_line'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'exdent',

@@ -54,7 +54,7 @@ $result_trees{'raw_block_commands_expand_tex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -128,7 +128,7 @@ $result_trees{'raw_block_commands_expand_tex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -202,7 +202,7 @@ $result_trees{'raw_block_commands_expand_tex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -317,7 +317,7 @@ $result_trees{'raw_block_commands_expand_tex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

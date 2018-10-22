@@ -27,7 +27,7 @@ $result_trees{'part_node_chapter_after_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -66,7 +66,7 @@ $result_trees{'part_node_chapter_after_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -217,7 +217,7 @@ $result_trees{'part_node_chapter_after_top'} = [
 '
                     },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
@@ -286,7 +286,7 @@ $result_trees{'part_node_chapter_after_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'part',
@@ -319,7 +319,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -332,7 +332,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -345,7 +345,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -360,7 +360,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -431,7 +431,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -444,12 +444,12 @@ $result_trees{'part_node_chapter_after_top'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -464,7 +464,7 @@ $result_trees{'part_node_chapter_after_top'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -516,7 +516,7 @@ $result_trees{'part_node_chapter_after_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',

@@ -175,7 +175,7 @@ $result_trees{'commands_in_alt'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

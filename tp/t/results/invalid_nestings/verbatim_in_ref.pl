@@ -26,7 +26,7 @@ $result_trees{'verbatim_in_ref'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

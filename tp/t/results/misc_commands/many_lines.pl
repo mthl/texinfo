@@ -35,7 +35,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pagesizes',
@@ -99,7 +99,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'headings',
@@ -293,7 +293,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'need',
@@ -325,7 +325,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'need',
@@ -360,7 +360,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setchapternewpage',
@@ -424,7 +424,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'kbdinputstyle',
@@ -504,7 +504,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'paragraphindent',
@@ -539,7 +539,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'paragraphindent',
@@ -574,7 +574,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'paragraphindent',
@@ -609,7 +609,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'paragraphindent',
@@ -644,7 +644,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'firstparagraphindent',
@@ -679,7 +679,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'exampleindent',
@@ -711,7 +711,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'exampleindent',
@@ -746,7 +746,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'footnotestyle',
@@ -781,7 +781,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'footnotestyle',
@@ -816,7 +816,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -845,7 +845,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -880,7 +880,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'frenchspacing',
@@ -915,7 +915,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'frenchspacing',
@@ -950,7 +950,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'fonttextsize',
@@ -985,7 +985,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'everyheadingmarks',
@@ -1013,7 +1013,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'allowcodebreaks',
@@ -1044,7 +1044,7 @@ $result_trees{'many_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'allowcodebreaks',

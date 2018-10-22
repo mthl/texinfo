@@ -82,7 +82,7 @@ $result_trees{'multitable_begin_with_tab'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -243,7 +243,7 @@ $result_trees{'multitable_begin_with_tab'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -338,7 +338,7 @@ $result_trees{'commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'cindex',
@@ -402,7 +402,7 @@ $result_trees{'commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'majorheading',

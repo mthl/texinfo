@@ -23,7 +23,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
@@ -78,7 +78,7 @@ $result_trees{'comment_space_command_on_line'} = {
             'spaces_after_argument' => '  '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -138,7 +138,7 @@ $result_trees{'comment_space_command_on_line'} = {
             'spaces_after_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -162,7 +162,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'frenchspacing',
@@ -220,7 +220,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -288,7 +288,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 'spaces_after_argument' => '    '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'heading',
@@ -340,7 +340,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -435,7 +435,7 @@ $result_trees{'comment_space_command_on_line'} = {
                     'spaces_after_argument' => ' '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -511,7 +511,7 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',

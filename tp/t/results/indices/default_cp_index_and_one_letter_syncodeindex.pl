@@ -26,7 +26,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -51,7 +51,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -89,7 +89,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -130,7 +130,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cpindex',
@@ -177,7 +177,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

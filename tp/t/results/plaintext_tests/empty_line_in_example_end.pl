@@ -50,7 +50,7 @@ $result_trees{'empty_line_in_example_end'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

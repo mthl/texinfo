@@ -60,7 +60,7 @@ $result_trees{'noindent_after_smallexample'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

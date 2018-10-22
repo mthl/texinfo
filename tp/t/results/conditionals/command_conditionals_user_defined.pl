@@ -66,7 +66,7 @@ $result_trees{'command_conditionals_user_defined'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -103,7 +103,7 @@ $result_trees{'command_conditionals_user_defined'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'definfoenclose',
@@ -142,7 +142,7 @@ $result_trees{'command_conditionals_user_defined'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'alias',

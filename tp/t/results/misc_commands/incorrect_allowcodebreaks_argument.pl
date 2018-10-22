@@ -21,7 +21,7 @@ $result_trees{'incorrect_allowcodebreaks_argument'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'allowcodebreaks',

@@ -47,7 +47,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -82,7 +82,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -123,7 +123,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -162,7 +162,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -187,7 +187,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -521,7 +521,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -580,7 +580,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -619,7 +619,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -657,7 +657,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -696,7 +696,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -734,7 +734,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -773,7 +773,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -811,7 +811,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -850,7 +850,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -888,7 +888,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -927,7 +927,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1144,7 +1144,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1185,7 +1185,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1226,7 +1226,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1267,7 +1267,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1308,7 +1308,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1349,7 +1349,7 @@ $result_trees{'char_latin1_latin1_in_refs'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',

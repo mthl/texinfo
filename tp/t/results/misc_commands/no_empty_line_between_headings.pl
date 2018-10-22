@@ -26,7 +26,7 @@ $result_trees{'no_empty_line_between_headings'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -45,7 +45,7 @@ $result_trees{'no_empty_line_between_headings'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'subheading',
@@ -86,7 +86,7 @@ $result_trees{'no_empty_line_between_headings'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -117,7 +117,7 @@ $result_trees{'no_empty_line_between_headings'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',

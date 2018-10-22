@@ -54,7 +54,7 @@ $result_trees{'format_on_first_footnote_line'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',
@@ -153,7 +153,7 @@ $result_trees{'format_on_first_footnote_line'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',

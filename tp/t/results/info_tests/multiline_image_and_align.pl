@@ -40,7 +40,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -93,7 +93,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -146,7 +146,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -203,7 +203,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -396,7 +396,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -496,7 +496,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -583,7 +583,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -670,7 +670,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -761,7 +761,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',
@@ -1090,7 +1090,7 @@ $result_trees{'multiline_image_and_align'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

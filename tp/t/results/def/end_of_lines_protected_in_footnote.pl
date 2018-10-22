@@ -275,7 +275,7 @@ $result_trees{'end_of_lines_protected_in_footnote'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',

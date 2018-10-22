@@ -151,7 +151,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -339,7 +339,7 @@ $result_trees{'wrong_braces_with_end_of_lines'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

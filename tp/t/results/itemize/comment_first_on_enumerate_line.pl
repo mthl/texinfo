@@ -57,7 +57,7 @@ $result_trees{'comment_first_on_enumerate_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

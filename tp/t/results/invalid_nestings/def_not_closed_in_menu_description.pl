@@ -211,7 +211,7 @@ $result_trees{'def_not_closed_in_menu_description'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

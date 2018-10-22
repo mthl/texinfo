@@ -69,7 +69,7 @@ $VERSION = '6.5dev';
 
 
 my %types_to_enter;
-foreach my $type_to_enter ('brace_command_arg', 'misc_line_arg',
+foreach my $type_to_enter ('brace_command_arg', 'line_arg',
     'paragraph') {
   $types_to_enter{$type_to_enter} = 1;
 }
@@ -1320,7 +1320,7 @@ sub new_block_command($$$)
                  {'command_argument' => $command_name,
                   'text_arg' => $command_name}};
   push @{$end->{'args'}},
-    {'type' => 'misc_line_arg', 'parent' => $end};
+    {'type' => 'line_arg', 'parent' => $end};
   push @{$end->{'args'}->[0]->{'contents'}},
          ({'text' => $command_name, 'parent' => $end->{'args'}->[0]},
           {'type' => 'spaces_at_end', 'text' => "\n", 

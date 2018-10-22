@@ -65,7 +65,7 @@ $result_trees{'indent_in_quotation'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -21,7 +21,7 @@ $result_trees{'no_punctuation_commands_frenchspacing'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'frenchspacing',

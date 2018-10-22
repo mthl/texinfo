@@ -57,7 +57,7 @@ $result_trees{'ifclear_in_ifset_set'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'end',
@@ -86,7 +86,7 @@ $result_trees{'ifclear_in_ifset_set'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'end',

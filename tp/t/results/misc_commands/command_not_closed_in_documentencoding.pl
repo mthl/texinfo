@@ -30,7 +30,7 @@ $result_trees{'command_not_closed_in_documentencoding'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

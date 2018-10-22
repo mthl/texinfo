@@ -21,7 +21,7 @@ $result_trees{'index_entries'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'cindex',
@@ -67,7 +67,7 @@ $result_trees{'index_entries'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defindex',
@@ -104,7 +104,7 @@ $result_trees{'index_entries'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'trucindex',

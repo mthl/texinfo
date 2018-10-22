@@ -29,7 +29,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -71,7 +71,7 @@ $result_trees{'def_syn_indices'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -103,7 +103,7 @@ $result_trees{'def_syn_indices'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'defindex',
@@ -149,7 +149,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'trucindex',
@@ -196,7 +196,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defcodeindex',
@@ -313,7 +313,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'codeidxindex',
@@ -356,7 +356,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -403,7 +403,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -441,7 +441,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'kindex',
@@ -482,7 +482,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'pindex',
@@ -529,7 +529,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -567,7 +567,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defindex',
@@ -598,7 +598,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defindex',
@@ -635,7 +635,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -667,7 +667,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -705,7 +705,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defgindex',
@@ -752,7 +752,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'abcindex',
@@ -810,7 +810,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -858,7 +858,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -906,7 +906,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -954,7 +954,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1002,7 +1002,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1050,7 +1050,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1098,7 +1098,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1146,7 +1146,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1194,7 +1194,7 @@ $result_trees{'def_syn_indices'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

@@ -26,7 +26,7 @@ $result_trees{'hole_in_sectioning'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -63,7 +63,7 @@ $result_trees{'hole_in_sectioning'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -101,7 +101,7 @@ $result_trees{'hole_in_sectioning'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'section',
@@ -139,7 +139,7 @@ $result_trees{'hole_in_sectioning'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsubsection',
@@ -177,7 +177,7 @@ $result_trees{'hole_in_sectioning'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'subsection',

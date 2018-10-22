@@ -102,7 +102,7 @@ $result_trees{'xml_protected_in_verb'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',

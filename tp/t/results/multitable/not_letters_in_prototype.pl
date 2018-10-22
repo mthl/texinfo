@@ -102,7 +102,7 @@ $result_trees{'not_letters_in_prototype'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -26,7 +26,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -51,7 +51,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -89,7 +89,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -127,7 +127,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -174,7 +174,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'vindex',
@@ -221,7 +221,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -268,7 +268,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defcodeindex',
@@ -305,7 +305,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'synindex',
@@ -343,7 +343,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cdiindex',
@@ -390,7 +390,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'defindex',
@@ -427,7 +427,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'syncodeindex',
@@ -465,7 +465,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'ddiindex',
@@ -512,7 +512,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

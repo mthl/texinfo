@@ -75,7 +75,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -114,7 +114,7 @@ $result_trees{'empty_lines_at_beginning_no_setfilename'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

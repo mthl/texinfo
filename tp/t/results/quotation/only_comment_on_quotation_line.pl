@@ -42,7 +42,7 @@ $result_trees{'only_comment_on_quotation_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

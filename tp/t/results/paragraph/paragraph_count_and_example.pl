@@ -44,7 +44,7 @@ $result_trees{'paragraph_count_and_example'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

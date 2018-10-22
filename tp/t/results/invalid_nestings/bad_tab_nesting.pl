@@ -140,7 +140,7 @@ $result_trees{'bad_tab_nesting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

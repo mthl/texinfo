@@ -51,7 +51,7 @@ $result_trees{'itemx_before_item'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'itemx',
@@ -87,7 +87,7 @@ $result_trees{'itemx_before_item'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

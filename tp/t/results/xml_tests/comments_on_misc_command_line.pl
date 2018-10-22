@@ -20,7 +20,7 @@ $result_trees{'comments_on_misc_command_line'} = {
             'spaces_after_argument' => '  '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'setfilename',
@@ -66,7 +66,7 @@ $result_trees{'comments_on_misc_command_line'} = {
             'spaces_after_argument' => '  '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'definfoenclose',
@@ -116,7 +116,7 @@ $result_trees{'comments_on_misc_command_line'} = {
             'spaces_after_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'firstparagraphindent',
@@ -193,7 +193,7 @@ $result_trees{'comments_on_misc_command_line'} = {
             'spaces_after_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'pagesizes',

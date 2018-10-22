@@ -50,7 +50,7 @@ $result_trees{'prototype_brace_no_brace'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

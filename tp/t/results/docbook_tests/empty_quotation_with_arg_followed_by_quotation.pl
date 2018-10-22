@@ -40,7 +40,7 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -111,7 +111,7 @@ $result_trees{'empty_quotation_with_arg_followed_by_quotation'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

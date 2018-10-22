@@ -21,7 +21,7 @@ $result_trees{'utf8_no_use_entity_enable_encoding_no_use_iso'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

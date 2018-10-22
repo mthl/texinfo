@@ -33,7 +33,7 @@ $result_trees{'in_table'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -84,7 +84,7 @@ $result_trees{'in_table'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -254,7 +254,7 @@ $result_trees{'in_table'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'exdent',
@@ -266,7 +266,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -384,7 +384,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -441,7 +441,7 @@ $result_trees{'in_table'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'center',
@@ -457,7 +457,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -497,7 +497,7 @@ $result_trees{'in_table'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
@@ -526,7 +526,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -558,7 +558,7 @@ $result_trees{'in_table'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -637,7 +637,7 @@ $result_trees{'in_table'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
@@ -666,7 +666,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -762,7 +762,7 @@ $result_trees{'in_table'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'cindex',
@@ -791,7 +791,7 @@ $result_trees{'in_table'} = {
                             }
                           ],
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -879,7 +879,7 @@ $result_trees{'in_table'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -924,7 +924,7 @@ $result_trees{'in_table'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -961,7 +961,7 @@ $result_trees{'in_table'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

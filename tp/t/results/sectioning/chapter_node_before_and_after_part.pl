@@ -33,7 +33,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -72,7 +72,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -166,7 +166,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -226,7 +226,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'part',
@@ -263,7 +263,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -302,7 +302,7 @@ $result_trees{'chapter_node_before_and_after_part'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

@@ -33,7 +33,7 @@ $result_trees{'raw_block_on_line'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'cindex',

@@ -55,7 +55,7 @@ $result_trees{'raw_expanded_in_style'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'end',

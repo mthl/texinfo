@@ -101,7 +101,7 @@ $result_trees{'empty_multitable_with_cells'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -21,7 +21,7 @@ $result_trees{'two_unnumbered_no_argument'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',
@@ -46,7 +46,7 @@ $result_trees{'two_unnumbered_no_argument'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'unnumbered',

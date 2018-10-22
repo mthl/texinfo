@@ -21,7 +21,7 @@ $result_trees{'punctuation_and_footnotes_frenchspacing'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'frenchspacing',

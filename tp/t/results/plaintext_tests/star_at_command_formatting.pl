@@ -715,7 +715,7 @@ $result_trees{'star_at_command_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -1062,7 +1062,7 @@ $result_trees{'star_at_command_formatting'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -21,7 +21,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
@@ -58,7 +58,7 @@ $result_trees{'verbatiminclude_and_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',

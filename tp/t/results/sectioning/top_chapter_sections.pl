@@ -27,7 +27,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -73,7 +73,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
@@ -120,7 +120,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -168,7 +168,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
@@ -216,7 +216,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -264,7 +264,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
@@ -312,7 +312,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsection',
@@ -360,7 +360,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsection',
@@ -408,7 +408,7 @@ $result_trees{'top_chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',

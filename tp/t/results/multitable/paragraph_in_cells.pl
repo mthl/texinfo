@@ -219,7 +219,7 @@ $result_trees{'paragraph_in_cells'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

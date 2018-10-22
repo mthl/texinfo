@@ -197,10 +197,10 @@ sub _convert($;$)
   return '' if (($root->{'type'} and $ignored_types{$root->{'type'}})
           or ($root->{'cmdname'} 
              and ($ignored_brace_commands{$root->{'cmdname'}} 
-             # here ignore the misc commands
+             # here ignore the line commands
                  or ($root->{'args'} and $root->{'args'}->[0] 
                      and $root->{'args'}->[0]->{'type'} 
-                     and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
+                     and ($root->{'args'}->[0]->{'type'} eq 'line_arg'
                          or $root->{'args'}->[0]->{'type'} eq 'misc_arg')))));
   my $result = '';
   if (defined($root->{'text'})) {

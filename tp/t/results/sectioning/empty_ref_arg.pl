@@ -26,7 +26,7 @@ $result_trees{'empty_ref_arg'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

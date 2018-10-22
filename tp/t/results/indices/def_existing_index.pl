@@ -21,7 +21,7 @@ $result_trees{'def_existing_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'defcodeindex',

@@ -21,7 +21,7 @@ $result_trees{'punctuation_and_upper_case_commands_utf8'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

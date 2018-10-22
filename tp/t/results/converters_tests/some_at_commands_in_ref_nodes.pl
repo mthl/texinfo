@@ -33,7 +33,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -72,7 +72,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -413,7 +413,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -710,7 +710,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -944,7 +944,7 @@ $result_trees{'some_at_commands_in_ref_nodes'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

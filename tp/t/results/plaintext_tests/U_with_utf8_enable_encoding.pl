@@ -21,7 +21,7 @@ $result_trees{'U_with_utf8_enable_encoding'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',

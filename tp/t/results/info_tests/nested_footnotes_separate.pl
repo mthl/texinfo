@@ -23,7 +23,7 @@ $result_trees{'nested_footnotes_separate'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'footnotestyle',
@@ -58,7 +58,7 @@ $result_trees{'nested_footnotes_separate'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

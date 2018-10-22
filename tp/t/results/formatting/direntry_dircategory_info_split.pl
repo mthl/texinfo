@@ -47,7 +47,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -108,7 +108,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -246,7 +246,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -293,7 +293,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -424,7 +424,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -481,7 +481,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -520,7 +520,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -556,7 +556,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'dircategory',
@@ -676,7 +676,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -792,7 +792,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -851,7 +851,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -890,7 +890,7 @@ $result_trees{'direntry_dircategory_info_split'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

@@ -26,7 +26,7 @@ $result_trees{'no_node_but_top'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

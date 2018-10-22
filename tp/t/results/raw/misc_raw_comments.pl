@@ -43,7 +43,7 @@ $result_trees{'misc_raw_comments'} = {
                 }
               ],
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -145,7 +145,7 @@ $result_trees{'misc_raw_comments'} = {
                 'spaces_after_argument' => '    '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

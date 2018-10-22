@@ -21,7 +21,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'documentencoding',
@@ -194,7 +194,7 @@ $result_trees{'documentencoding_utf8_and_insertions'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

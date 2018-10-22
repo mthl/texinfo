@@ -68,7 +68,7 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -107,7 +107,7 @@ $result_trees{'contents_setcontentsaftertitlepage_before_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

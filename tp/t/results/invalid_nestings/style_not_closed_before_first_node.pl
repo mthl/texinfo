@@ -62,7 +62,7 @@ $result_trees{'style_not_closed_before_first_node'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

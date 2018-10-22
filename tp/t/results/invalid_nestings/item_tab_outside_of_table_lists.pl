@@ -21,7 +21,7 @@ $result_trees{'item_tab_outside_of_table_lists'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'itemx',

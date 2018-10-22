@@ -51,7 +51,7 @@ $result_trees{'comment_on_quotation_line'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

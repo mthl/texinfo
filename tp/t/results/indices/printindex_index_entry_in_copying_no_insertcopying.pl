@@ -41,7 +41,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'findex',
@@ -228,7 +228,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
                         }
                       ],
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'defunx',
@@ -296,7 +296,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -370,7 +370,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'item',
@@ -410,7 +410,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                               },
                               'parent' => {},
-                              'type' => 'misc_line_arg'
+                              'type' => 'line_arg'
                             }
                           ],
                           'cmdname' => 'itemx',
@@ -458,7 +458,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -503,7 +503,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'printindex',
@@ -540,7 +540,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -591,7 +591,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -630,7 +630,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -741,7 +741,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -800,7 +800,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -839,7 +839,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -870,7 +870,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',

@@ -159,7 +159,7 @@ $result_trees{'value_expansion_in_include'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -237,7 +237,7 @@ $result_trees{'value_expansion_in_include'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
@@ -331,7 +331,7 @@ $result_trees{'value_expansion_in_include'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',
@@ -425,7 +425,7 @@ $result_trees{'value_expansion_in_include'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'verbatiminclude',

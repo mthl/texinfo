@@ -429,7 +429,7 @@ $result_trees{'simple_no_menu'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

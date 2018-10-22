@@ -1,5 +1,30 @@
 2018-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm,
+	* tp/Texinfo/Structuring.pm,
+	* tp/Texinfo/Transformations.pm,
+	* tp/Texinfo/Convert/Converter.pm,
+	* tp/Texinfo/Convert/DocBook.pm,
+	* tp/Texinfo/Convert/NodeNameNormalization.pm,
+	* tp/Texinfo/Convert/Plaintext.pm,
+	* tp/Texinfo/Convert/TexinfoXML.pm,
+	* tp/Texinfo/Convert/Text.pm,
+	* tp/Texinfo/Convert/TextContent.pm:
+	Change 'misc_line_arg' to 'line_arg'.
+
+	* tp/Texinfo/Parser.pm
+	(%begin_line_commands, %in_full_text_commands):
+	Initialising code changed.
+
+	* tp/Texinfo/Convert/Common.pm (@inline_types): Remove 
+	'misc_command_arg', as no such element type is used anywhere.
+
+	The reason for this change is that "line command" is more 
+	descriptive than "miscellaneous command".  No functional changes 
+	intended.
+
+2018-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi): Check for unknown command
 	right after reading the command.
 

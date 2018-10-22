@@ -27,7 +27,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -66,7 +66,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',
@@ -274,7 +274,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
                     },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
@@ -339,7 +339,7 @@ $result_trees{'two_nodes_at_the_end'} = [
               }
             ],
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -352,7 +352,7 @@ $result_trees{'two_nodes_at_the_end'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -365,7 +365,7 @@ $result_trees{'two_nodes_at_the_end'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           },
           {
             'contents' => [
@@ -380,7 +380,7 @@ $result_trees{'two_nodes_at_the_end'} = [
               'spaces_before_argument' => ' '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -437,7 +437,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -475,7 +475,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -521,7 +521,7 @@ $result_trees{'two_nodes_at_the_end'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',

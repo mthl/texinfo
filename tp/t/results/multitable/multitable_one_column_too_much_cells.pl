@@ -297,7 +297,7 @@ $result_trees{'multitable_one_column_too_much_cells'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

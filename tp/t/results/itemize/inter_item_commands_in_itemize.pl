@@ -67,7 +67,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -137,7 +137,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -210,7 +210,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -291,7 +291,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -350,7 +350,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -442,7 +442,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'cindex',
@@ -516,7 +516,7 @@ $result_trees{'inter_item_commands_in_itemize'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

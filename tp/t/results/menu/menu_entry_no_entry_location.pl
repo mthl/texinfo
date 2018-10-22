@@ -245,7 +245,7 @@ $result_trees{'menu_entry_no_entry_location'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -26,7 +26,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -65,7 +65,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -134,7 +134,7 @@ $result_trees{'test_index'} = {
 '
                         },
                         'parent' => {},
-                        'type' => 'misc_line_arg'
+                        'type' => 'line_arg'
                       }
                     ],
                     'cmdname' => 'chapter',
@@ -159,7 +159,7 @@ $result_trees{'test_index'} = {
 '
                             },
                             'parent' => {},
-                            'type' => 'misc_line_arg'
+                            'type' => 'line_arg'
                           }
                         ],
                         'cmdname' => 'cindex',
@@ -187,7 +187,7 @@ $result_trees{'test_index'} = {
 '
                                   },
                                   'parent' => {},
-                                  'type' => 'misc_line_arg'
+                                  'type' => 'line_arg'
                                 }
                               ],
                               'cmdname' => 'node',
@@ -307,7 +307,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -348,7 +348,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -402,7 +402,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -439,7 +439,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -662,7 +662,7 @@ $result_trees{'test_index'} = {
                     }
                   ],
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'deffnx',
@@ -725,7 +725,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -799,7 +799,7 @@ $result_trees{'test_index'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -874,7 +874,7 @@ $result_trees{'test_index'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'item',
@@ -914,7 +914,7 @@ $result_trees{'test_index'} = {
 '
                           },
                           'parent' => {},
-                          'type' => 'misc_line_arg'
+                          'type' => 'line_arg'
                         }
                       ],
                       'cmdname' => 'itemx',
@@ -974,7 +974,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1145,7 +1145,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1204,7 +1204,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1243,7 +1243,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1268,7 +1268,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1309,7 +1309,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -1363,7 +1363,7 @@ $result_trees{'test_index'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'findex',
@@ -1504,7 +1504,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -2826,7 +2826,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -2887,7 +2887,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',
@@ -2912,7 +2912,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2981,7 +2981,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -3018,7 +3018,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -3076,7 +3076,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -3126,7 +3126,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendixsec',
@@ -3164,7 +3164,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendixsubsec',
@@ -3202,7 +3202,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendixsubsubsec',
@@ -3227,7 +3227,7 @@ $result_trees{'test_index'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'chapheading',
@@ -3275,7 +3275,7 @@ $result_trees{'test_index'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'centerchap',

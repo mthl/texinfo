@@ -66,7 +66,7 @@ $result_trees{'macro_with_error_at_end_line_after_macro'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'center',

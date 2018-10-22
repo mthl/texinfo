@@ -33,7 +33,7 @@ $result_trees{'part_chapter_appendix'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'part',
@@ -70,7 +70,7 @@ $result_trees{'part_chapter_appendix'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -109,7 +109,7 @@ $result_trees{'part_chapter_appendix'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'appendix',

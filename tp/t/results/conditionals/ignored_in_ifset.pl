@@ -34,7 +34,7 @@ $result_trees{'ignored_in_ifset'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
@@ -73,7 +73,7 @@ $result_trees{'ignored_in_ifset'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'end',
@@ -115,7 +115,7 @@ $result_trees{'ignored_in_ifset'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

@@ -27,7 +27,7 @@ $result_trees{'unnumbered_before_node_top_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
@@ -90,7 +90,7 @@ $result_trees{'unnumbered_before_node_top_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -129,7 +129,7 @@ $result_trees{'unnumbered_before_node_top_top'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'top',

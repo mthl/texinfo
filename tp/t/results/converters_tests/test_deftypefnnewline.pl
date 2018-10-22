@@ -29,7 +29,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deftypefnnewline',
@@ -70,7 +70,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -218,7 +218,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -354,7 +354,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -398,7 +398,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'deftypefnnewline',
@@ -564,7 +564,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -700,7 +700,7 @@ $result_trees{'test_deftypefnnewline'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

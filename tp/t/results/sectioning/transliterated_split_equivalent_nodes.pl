@@ -27,7 +27,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -263,7 +263,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
 '
                     },
                     'parent' => {},
-                    'type' => 'misc_line_arg'
+                    'type' => 'line_arg'
                   }
                 ],
                 'cmdname' => 'end',
@@ -358,7 +358,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -410,7 +410,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',
@@ -484,7 +484,7 @@ $result_trees{'transliterated_split_equivalent_nodes'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'node',

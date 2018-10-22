@@ -330,10 +330,10 @@ foreach my $no_paragraph_command (keys(%line_commands)) {
 
 # verbatiminclude is not said to begin at the beginning of the line
 # in the manual
-foreach my $misc_not_begin_line ('comment', 'c', 'sp', 'columnfractions',
+foreach my $not_begin_line_command ('comment', 'c', 'sp', 'columnfractions',
                                  'item', 'verbatiminclude',
                                  'set', 'clear', 'vskip') {
-  delete $begin_line_commands{$misc_not_begin_line};
+  delete $begin_line_commands{$not_begin_line_command};
 }
 
 my %block_arg_commands;
@@ -370,9 +370,9 @@ my %in_full_text_commands;
 foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
-foreach my $misc_command_in_full_text('c', 'comment', 'refill', 'noindent',
+foreach my $in_full_text_command ('c', 'comment', 'refill', 'noindent',
                          'indent', 'columnfractions', 'set', 'clear', 'end') {
-  $in_full_text_commands{$misc_command_in_full_text} = 1;
+  $in_full_text_commands{$in_full_text_command} = 1;
 }
 
 foreach my $out_format (keys(%format_raw_commands)) {
@@ -1645,7 +1645,7 @@ sub _close_current($$$;$$)
       if (!@{$current->{'contents'}}) {
         pop @{$current->{'parent'}->{'contents'}};
       }
-    } elsif ($current->{'type'} eq 'misc_line_arg'
+    } elsif ($current->{'type'} eq 'line_arg'
              or $current->{'type'} eq 'block_line_arg') {
       my $context = pop @{$self->{'context_stack'}};
       if ($context ne 'line' and $context ne 'def') {
@@ -2109,7 +2109,7 @@ sub _isolate_last_space
             or !defined($current->{'contents'}->[-1]->{'text'}) 
             or ($current->{'contents'}->[-1]->{'type'}
                   and (!$current->{'type'}
-                        or $current->{'type'} ne 'misc_line_arg'))
+                        or $current->{'type'} ne 'line_arg'))
             or $current->{'contents'}->[-1]->{'text'} !~ /\s+$/;
 
   if ($current->{'type'} and $current->{'type'} eq 'menu_entry_node') {
@@ -2909,10 +2909,10 @@ sub _end_line($$$)
   # misc command line arguments
   # Never go here if skipline/noarg/...
   } elsif ($current->{'type'} 
-           and $current->{'type'} eq 'misc_line_arg') {
+           and $current->{'type'} eq 'line_arg') {
     my $context = pop @{$self->{'context_stack'}};
     if ($context ne 'line') {
-      $self->_bug_message("context $context instead of line in misc_line_arg", 
+      $self->_bug_message("context $context instead of line in line_arg", 
                           $line_nr, $current);
     }
     _isolate_last_space($self, $current);
@@ -3279,7 +3279,7 @@ sub _end_line($$$)
     } else {
       while ($current->{'parent'} and !($current->{'type'}
              and ($current->{'type'} eq 'block_line_arg'
-                  or $current->{'type'} eq 'misc_line_arg'))) {
+                  or $current->{'type'} eq 'line_arg'))) {
         $current = _close_current($self, $current, $line_nr);
       }
     }
@@ -4056,7 +4056,7 @@ sub _parse_texi($;$)
                 # not in contents
                 and (!$root_commands{$current->{'parent'}->{'cmdname'}}
                      or ($current->{'type'}
-                         and $current->{'type'} eq 'misc_line_arg'))
+                         and $current->{'type'} eq 'line_arg'))
                 # we make sure that we are on a block @-command line and 
                 # not in contents
                 and (!($block_commands{$current->{'parent'}->{'cmdname'}})
@@ -4067,7 +4067,7 @@ sub _parse_texi($;$)
                 and (($current->{'parent'}->{'cmdname'} ne 'itemx'
                      and $current->{'parent'}->{'cmdname'} ne 'item')
                      or ($current->{'type'}
-                              and $current->{'type'} eq 'misc_line_arg'))) {
+                              and $current->{'type'} eq 'line_arg'))) {
               $invalid_parent = $current->{'parent'}->{'cmdname'};
             }
           } elsif ($self->{'context_stack'}->[-1] eq 'def'
@@ -4301,7 +4301,7 @@ sub _parse_texi($;$)
 
             # if using the @set txi* instead of a proper @-command, replace
             # by the tree obtained with the @-command.  Even though
-            # _end_line is called below, as $current is not misc_line_arg
+            # _end_line is called below, as $current is not line_arg
             # there should not be anything done in addition than what is
             # done for @clear or @set.
             if (($command eq 'set' or $command eq 'clear')
@@ -4318,7 +4318,7 @@ sub _parse_texi($;$)
                        'parent' => $current,
                        'line_nr' => $line_nr,
                        'extra' => {'misc_args' => [$arg]}};
-              my $misc_line_args = {'type' => 'misc_line_arg',
+              my $misc_line_args = {'type' => 'line_arg',
                      'parent' => $misc};
               $misc->{'args'} = [$misc_line_args];
               $misc->{'extra'}->{'spaces_before_argument'} = ' ';
@@ -4356,7 +4356,7 @@ sub _parse_texi($;$)
 
             last NEXT_LINE if ($command eq 'bye');
             # Even if _end_line is called, it is not done since there is 
-            # no misc_line_arg
+            # no line_arg
             $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});
             last;
@@ -4419,7 +4419,7 @@ sub _parse_texi($;$)
               }
             }
             $current = $current->{'contents'}->[-1];
-            $current->{'args'} = [{ 'type' => 'misc_line_arg', 
+            $current->{'args'} = [{ 'type' => 'line_arg', 
                                     'contents' => [], 
                                     'parent' => $current }];
             # @node is the only misc command with args separated with comma
@@ -5216,7 +5216,7 @@ sub _parse_texi($;$)
                   'extra' => {'command' => $current}
                 };
         } elsif ($separator eq ',' and $current->{'type'}
-            and $current->{'type'} eq 'misc_line_arg'
+            and $current->{'type'} eq 'line_arg'
             and $current->{'parent'}->{'cmdname'} 
             and $current->{'parent'}->{'cmdname'} eq 'node') {
           $self->line_warn(__("superfluous arguments for node"), $line_nr);
@@ -6223,7 +6223,7 @@ The type of the element.  For C<@verb> it is the delimiter.  But otherwise
 it is the type of element considered as a container.  Frequent types 
 encountered are I<paragraph> for a paragraph container, 
 I<brace_command_arg> for the container holding the brace @-commands 
-contents, I<misc_line_arg> and I<block_line_arg> contain the arguments 
+contents, I<line_arg> and I<block_line_arg> contain the arguments 
 appearing on the line of @-commands.  Text fragments may have a type to
 give an information of the kind of text fragment, for example 
 C<empty_spaces_before_argument> is associated to spaces after a brace 
@@ -6464,7 +6464,7 @@ menu comments...).
 
 =item brace_command_context
 
-=item misc_line_arg
+=item line_arg
 
 =item block_line_arg
 
@@ -6474,7 +6474,7 @@ taking arguments surrounded by braces (and in some cases separated by
 commas).  I<brace_command_context> is used for @-commands with braces 
 that start a new context (C<@footnote>, C<@caption>, C<@math>).
 
-I<misc_line_arg> is used for commands that take the texinfo code on the
+I<line_arg> is used for commands that take the texinfo code on the
 rest of the line as their argument (for example (C<@settitle>, C<@node>, 
 C<@section> and similar).  I<block_line_arg> is similar but is used for 
 commands that start a new block (which is to be ended with C<@end>).

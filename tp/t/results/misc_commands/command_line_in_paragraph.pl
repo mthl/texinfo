@@ -28,7 +28,7 @@ $result_trees{'command_line_in_paragraph'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',

@@ -73,7 +73,7 @@ $result_trees{'flushright_not_closed_and_format'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

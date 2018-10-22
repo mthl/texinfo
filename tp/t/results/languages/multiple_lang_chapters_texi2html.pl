@@ -23,7 +23,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -52,7 +52,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentencoding',
@@ -93,7 +93,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -132,7 +132,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -454,7 +454,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -501,7 +501,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -542,7 +542,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -581,7 +581,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -774,7 +774,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -818,7 +818,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -860,7 +860,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -899,7 +899,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1092,7 +1092,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1136,7 +1136,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -1178,7 +1178,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1217,7 +1217,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1364,7 +1364,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1408,7 +1408,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -1450,7 +1450,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1489,7 +1489,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -1514,7 +1514,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'documentlanguage',
@@ -1556,7 +1556,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1595,7 +1595,7 @@ $result_trees{'multiple_lang_chapters_texi2html'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',

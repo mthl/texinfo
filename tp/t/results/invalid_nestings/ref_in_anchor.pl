@@ -26,7 +26,7 @@ $result_trees{'ref_in_anchor'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

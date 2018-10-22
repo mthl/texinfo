@@ -76,7 +76,7 @@ $result_trees{'node_in_copying_not_closed'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -115,7 +115,7 @@ $result_trees{'node_in_copying_not_closed'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',

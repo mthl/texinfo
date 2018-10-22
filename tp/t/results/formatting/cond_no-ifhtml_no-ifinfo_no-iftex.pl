@@ -41,7 +41,7 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -80,7 +80,7 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -119,7 +119,7 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -233,7 +233,7 @@ $result_trees{'cond_no-ifhtml_no-ifinfo_no-iftex'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',

@@ -71,7 +71,7 @@ $result_trees{'paragraphindent_none_first'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'paragraphindent',

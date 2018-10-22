@@ -69,7 +69,7 @@ $result_trees{'listoffloats_with_commands'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'listoffloats',

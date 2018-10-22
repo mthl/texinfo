@@ -1,7 +1,6 @@
 # Text.pm: output tree as simple text.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc., 
+# Copyright 2010-2018 Free Software Foundation, Inc., 
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -367,7 +366,7 @@ sub _convert($;$)
              # here ignore most of the misc commands
                  or ($root->{'args'} and $root->{'args'}->[0] 
                      and $root->{'args'}->[0]->{'type'} 
-                     and ($root->{'args'}->[0]->{'type'} eq 'misc_line_arg'
+                     and ($root->{'args'}->[0]->{'type'} eq 'line_arg'
                          or $root->{'args'}->[0]->{'type'} eq 'misc_arg') 
                      and !$formatting_misc_commands{$root->{'cmdname'}})))));
   my $result = '';
@@ -586,7 +585,7 @@ sub _convert($;$)
      if ($root->{'type'} and $root->{'type'} eq 'bracketed'
          and (!$root->{'parent'}->{'type'} or
               ($root->{'parent'}->{'type'} ne 'block_line_arg'
-               and $root->{'parent'}->{'type'} ne 'misc_line_arg')));
+               and $root->{'parent'}->{'type'} ne 'line_arg')));
   #print STDERR "  RR ($root) -> $result\n";
   return $result;
 }

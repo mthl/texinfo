@@ -47,7 +47,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'setfilename',
@@ -88,7 +88,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -101,7 +101,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -109,7 +109,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -131,7 +131,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -150,7 +150,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -208,7 +208,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -250,7 +250,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -361,7 +361,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -437,17 +437,17 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -461,7 +461,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -486,7 +486,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -538,7 +538,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -586,7 +586,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -664,7 +664,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -672,7 +672,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -686,7 +686,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -705,7 +705,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -757,7 +757,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -794,7 +794,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -848,7 +848,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -913,7 +913,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -932,7 +932,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1179,7 +1179,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1234,12 +1234,12 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1249,7 +1249,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1264,7 +1264,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1290,7 +1290,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -1331,7 +1331,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'findex',
@@ -1372,7 +1372,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'cindex',
@@ -1423,7 +1423,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1529,7 +1529,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1606,17 +1606,17 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1630,7 +1630,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1775,7 +1775,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -1822,7 +1822,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -1884,7 +1884,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -1892,7 +1892,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1905,7 +1905,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -1920,7 +1920,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -1945,7 +1945,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -1986,7 +1986,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -2027,7 +2027,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2104,7 +2104,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2117,7 +2117,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
@@ -2125,7 +2125,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2139,7 +2139,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2158,7 +2158,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2205,7 +2205,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -2242,7 +2242,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'findex',
@@ -2283,7 +2283,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',
@@ -2330,7 +2330,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -2397,7 +2397,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2407,12 +2407,12 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2426,7 +2426,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2478,7 +2478,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'chapter',
@@ -2503,7 +2503,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'printindex',
@@ -2549,12 +2549,12 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             }
           ],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [],
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2567,7 +2567,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
             'spaces_before_argument' => ' '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         },
         {
           'contents' => [
@@ -2581,7 +2581,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',
@@ -2606,7 +2606,7 @@ $result_trees{'nodes_before_top_and_sections_monolithic'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'cindex',

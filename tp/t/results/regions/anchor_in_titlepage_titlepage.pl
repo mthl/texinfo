@@ -78,7 +78,7 @@ $result_trees{'anchor_in_titlepage_titlepage'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'end',
@@ -129,7 +129,7 @@ $result_trees{'anchor_in_titlepage_titlepage'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'top',
@@ -159,7 +159,7 @@ $result_trees{'anchor_in_titlepage_titlepage'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'node',

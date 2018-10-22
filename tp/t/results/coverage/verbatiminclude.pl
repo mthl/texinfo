@@ -27,7 +27,7 @@ $result_trees{'verbatiminclude'} = {
 '
           },
           'parent' => {},
-          'type' => 'misc_line_arg'
+          'type' => 'line_arg'
         }
       ],
       'cmdname' => 'verbatiminclude',

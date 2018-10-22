@@ -51,7 +51,7 @@ $result_trees{'spaces_info_lost'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

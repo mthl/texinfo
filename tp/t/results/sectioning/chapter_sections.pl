@@ -27,7 +27,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'unnumbered',
@@ -73,7 +73,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -121,7 +121,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
@@ -169,7 +169,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',
@@ -217,7 +217,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'section',
@@ -265,7 +265,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsection',
@@ -313,7 +313,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'subsection',
@@ -361,7 +361,7 @@ $result_trees{'chapter_sections'} = [
 '
             },
             'parent' => {},
-            'type' => 'misc_line_arg'
+            'type' => 'line_arg'
           }
         ],
         'cmdname' => 'chapter',

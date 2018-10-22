@@ -72,7 +72,7 @@ $result_trees{'empty_multitable_in_itemize'} = {
 '
                       },
                       'parent' => {},
-                      'type' => 'misc_line_arg'
+                      'type' => 'line_arg'
                     }
                   ],
                   'cmdname' => 'end',
@@ -133,7 +133,7 @@ $result_trees{'empty_multitable_in_itemize'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',

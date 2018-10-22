@@ -25,7 +25,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
 '
                   },
                   'parent' => {},
-                  'type' => 'misc_line_arg'
+                  'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
@@ -277,7 +277,7 @@ $result_trees{'multitable_two_columns_too_much_cells'} = {
 '
               },
               'parent' => {},
-              'type' => 'misc_line_arg'
+              'type' => 'line_arg'
             }
           ],
           'cmdname' => 'end',
