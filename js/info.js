@@ -1,5 +1,5 @@
 /* info.js - Javascript UI for Texinfo manuals
-   Copyright © 2017 Free Software Foundation, Inc.
+   Copyright © 2017-2018 Free Software Foundation, Inc.
 
    This file is part of GNU Texinfo.
 
