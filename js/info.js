@@ -1726,7 +1726,7 @@
   function
   linkid_contains_index (linkid)
   {
-    return linkid.match (/^.*-index$/i);
+    return linkid.match (/^.*-index$/i) || linkid.match (/^Index$/);
   }
 
   /** Retrieve PREV, NEXT, and UP links, and local menu from CONTENT and
