@@ -70,6 +70,9 @@ EXTRA_DIST += HACKING README TODO \
 	      tsconfig.json \
 	      yarn.lock
 
+info_TEXINFOS=texinfo-js.texi
+EXTRA_DIST += fdl.texi
+
 ## ---------- ##
 ## Examples.  ##
 ## ---------- ##
