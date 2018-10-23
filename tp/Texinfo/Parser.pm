@@ -160,14 +160,14 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 #                         is also in that structure.
 # line_commands           the same as %line_commands in Texinfo::Common, 
 #                         but with index entry commands dynamically added
-# close_paragraph_commands      same than %close_paragraph_commands, but with
+# close_paragraph_commands      same as %close_paragraph_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
-# close_preformatted_commands   same than %close_preformatted_commands, but with
+# close_preformatted_commands   same as %close_preformatted_commands, but with
 #                               insertcopying removed if INLINE_INSERTCOPYING
-# no_paragraph_commands   the same than %default_no_paragraph_commands
+# no_paragraph_commands   the same as %default_no_paragraph_commands
 #                         below, with index
 #                         entry commands dynamically added
-# simple_text_commands    the same than %simple_text_commands below, but 
+# simple_text_commands    the same as %simple_text_commands below, but 
 #                         with index entry commands dynamically added
 # current_node            last seen node.
 # current_section         last seen section.
@@ -454,7 +454,7 @@ foreach my $brace_command (keys (%brace_commands)) {
   }
 }
 
-# commands that accept almost the same than in full text, except
+# commands that accept almost the same as in full text, except
 # what do not make sense on a line.
 my %full_line_commands;
 $full_line_commands{'center'} = 1;
@@ -2063,7 +2063,7 @@ sub _abort_empty_line {
       pop @{$current->{'contents'}};
 
     } elsif ($spaces_element->{'type'} eq 'empty_line') {
-      # exactly the same condition than to begin a paragraph
+      # exactly the same condition as to begin a paragraph
       if ((!$current->{'type'} or $type_with_paragraph{$current->{'type'}})
          and !$no_paragraph_contexts{$self->{'context_stack'}->[-1]}) {
         $spaces_element->{'type'} = 'empty_spaces_before_paragraph';
@@ -5957,7 +5957,7 @@ This information is available through the method C<floats_information>.
 
 I<$float_types> is a hash reference whose keys are normalized float
 types (the first float argument, or the C<@listoffloats> argument).
-The normalization is the same than for node names. The value is the list
+The normalization is the same as for node names. The value is the list
 of float tree elements appearing in the texinfo document.
 
 =back
