@@ -432,7 +432,7 @@ delete $simple_text_commands{'exdent'};
 foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref', 
                      'inforef', 'shortcaption', 'math', 'indicateurl',
                      'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
-                     'dmn', 'ctrl', 'errormsg', 'U') {
+                     'dmn', 'errormsg', 'U') {
   $simple_text_commands{$command} = 1;
 }
 
@@ -3154,7 +3154,7 @@ sub _end_line($$$)
             push @{$self->{'context_stack'}}, 'preformatted';
           }
         } else {
-          #print STDERR "LLLLLLLLLLLL Cannot be here...\n";
+          # block command not found for @end
         }
         $current = _begin_preformatted($self, $current)
           if ($close_preformatted_commands{$end_command});
