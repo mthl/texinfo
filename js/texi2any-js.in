@@ -16,6 +16,64 @@
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
+# option parsing
+
+version () {
+  cat <<EOF
+texi2any-js 0.0.90
+
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+EOF
+    exit 0
+}
+
+help () {
+  cat <<EOF
+Usage: texi2any-js MANUAL [texi2any options]"
+
+Run texi2any on MANUAL, adding a JavaScript browsing interface.  Any
+extra options are passed through to texi2any.
+
+Report bugs to bug-texinfo@gnu.org,
+GNU Texinfo home page: <http://www.gnu.org/software/texinfo/>
+General help using GNU software: <http://www.gnu.org/gethelp/>
+EOF
+
+}
+
+manual=
+
+while test x"$1" != x ; do
+  case $1 in
+    --version)
+      version
+      exit 0
+      ;;
+    --help)
+      help
+      exit 0
+      ;;
+    -*)
+      echo "unknown option -$1"
+      exit 1 ;;
+    *)
+      manual=$1
+      shift
+      break ;;
+  esac
+  shift
+done
+
+if test x$manual = x; then
+  help
+  exit 1
+fi
+
+makeinfo_flags=$@
+
 MAKEINFO=${MAKEINFO:-texi2any}
 
 # substituted by Makefile
@@ -29,14 +87,6 @@ extra_head='
 <script src="modernizr.js" type="text/javascript"></script>
 <script src="info.js" type="text/javascript"></script>
 '
-
-if test $# -lt 1 ; then
-  echo "usage: $0 manual"
-  exit 1
-fi
-
-manual=$1 ; shift
-makeinfo_flags=$@
 
 js_scripts="$pkgdatadir/modernizr.js $pkgdatadir/info.js"
 for f in $js_scripts ; do

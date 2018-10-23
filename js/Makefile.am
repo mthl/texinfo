@@ -61,6 +61,14 @@ texi2any-js: texi2any-js.in
 	sed -e 's,@pkgdatadir@,'$(pkgdatadir)',g' $(srcdir)/texi2any-js.in >$@
 	chmod a+x $@
 
+EXTRA_DIST += HACKING README TODO \
+	      build-aux/eslint.json \
+	      build-aux/modernizr.json \
+	      modernizr.js \
+	      package.json \
+	      server.js \
+	      tsconfig.json \
+	      yarn.lock
 
 ## ---------- ##
 ## Examples.  ##
