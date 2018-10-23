@@ -775,14 +775,13 @@ handle_block_command (ELEMENT *current, char **line_inout,
       if (cmd == CM_ifclear || cmd == CM_ifset
           || cmd == CM_ifcommanddefined || cmd == CM_ifcommandnotdefined)
         {
-          char *flag;
           char *p = line;
           p = line + strspn (line, whitespace_chars);
           if (!*p)
             line_error ("@%s requires a name", command_name(cmd));
           else
             {
-              flag = read_command_name (&p);
+              char *flag = read_command_name (&p);
               if (!flag)
                 goto bad_value;
               else
@@ -826,7 +825,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
               bad_value:
                   line_error ("bad name for @%s", command_name(cmd));
                 }
-
+              free (flag);
             }
         }
       else if (!memcmp (command_name(cmd), "if", 2)) //4687

@@ -30,6 +30,7 @@ static void convert_to_texinfo_internal (ELEMENT *e, TEXT *result);
 
 #define ADD(x) text_append (result, x)
 
+/* Return value to be freed by caller. */
 char *
 node_extra_to_texi (NODE_SPEC_EXTRA *nse)
 {

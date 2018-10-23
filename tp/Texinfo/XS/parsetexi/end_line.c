@@ -33,8 +33,9 @@ check_internal_node (NODE_SPEC_EXTRA *nse)
   if (nse && nse->manual_content
       && nse->manual_content->contents.number > 0)
     {
-      line_error ("syntax for an external node used for `%s'",
-                  node_extra_to_texi (nse));
+      char *texi = node_extra_to_texi (nse);
+      line_error ("syntax for an external node used for `%s'", texi);
+      free (texi);
     }
 }
 
@@ -1444,6 +1445,7 @@ end_line_misc_line (ELEMENT *current)
                                      "@include: could not open %s:",
                                      text,
                                      strerror (status));
+                      free (fullpath);
                     }
                   else
                     included_file = 1;
