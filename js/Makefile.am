@@ -1,5 +1,5 @@
 ## Process this file with automake to produce Makefile.in
-# Copyright (C) 2017  Free Software Foundation, Inc.
+# Copyright (C) 2017-2018  Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -16,7 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
-all: $(examples)
 
 phony =
 
@@ -45,14 +44,7 @@ modernizr:
 endif
 
 .PHONY: $(phony)
-
-## ---------- ##
-## Examples.  ##
-## ---------- ##
-
-examples = \
-  examples/hello-html \
-  examples/kawa-html
+EXTRA_DIST =
 
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included
@@ -60,13 +52,41 @@ js_scripts = \
   modernizr.js \
   info.js
 
+dist_pkgdata_DATA=$(js_scripts) info.css
+
+bin_SCRIPTS = texi2any-js
+EXTRA_DIST += texi2any-js.in
+
+texi2any-js: texi2any-js.in
+	sed -e 's,@pkgdatadir@,'$(pkgdatadir)',g' $(srcdir)/texi2any-js.in >$@
+	chmod a+x $@
+
+
+## ---------- ##
+## Examples.  ##
+## ---------- ##
+
+examples: $(examples)
+
+examples = \
+  examples/hello-html \
+  examples/kawa-html
+
+examples_src = \
+  examples/hello \
+  examples/kawa \
+  kawa.css
+
+EXTRA_DIST += $(examples_src)
+
+
 hello_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
 examples/hello-html: examples/hello/hello.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(hello_extra_head) \
 	  examples/hello/hello.texi -o $@ && \
-	cp $(js_scripts) style/info.css $@
+	cp $(js_scripts) info.css $@
 
 kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
@@ -74,7 +94,7 @@ examples/kawa-html: examples/kawa/kawa.texi
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(kawa_extra_head) \
 	  examples/kawa/kawa.texi -o $@ && \
-	cp $(js_scripts) style/info.css style/kawa.css $@
+	cp $(js_scripts) info.css kawa.css $@
 
 clean-local:
 	rm -rf $(examples)

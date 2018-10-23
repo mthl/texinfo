@@ -11,7 +11,7 @@ execute the following commands:
 
   autoreconf -fi
   ./configure
-  make
+  make examples
 
 note: The Makefile doesn't support out of tree build.
 

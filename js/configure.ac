@@ -1,5 +1,4 @@
-dnl Process this file with autoconf to produce a configure script.
-# Copyright (C) 2017  Free Software Foundation, Inc.
+# Copyright (C) 2017-2018  Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -16,7 +15,7 @@ dnl Process this file with autoconf to produce a configure script.
 # You should have received a copy of the GNU General Public License
 # along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([info.js], [0.1], [bug-texinfo@gnu.org])
+AC_INIT([texinfo-js], [0.0.90], [bug-texinfo@gnu.org])
 AC_CONFIG_SRCDIR([info.js])
 AC_CONFIG_AUX_DIR([build-aux])
 
