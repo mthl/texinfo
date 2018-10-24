@@ -89,6 +89,7 @@ extra_head='
 '
 
 js_scripts="$pkgdatadir/modernizr.js $pkgdatadir/info.js"
+css_files="$pkgdatadir/info.css"
 for f in $js_scripts $css_files ; do
   if ! test -f $f ; then
     echo "$f not found"
