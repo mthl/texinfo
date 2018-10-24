@@ -705,6 +705,7 @@ inlinefmtifelse_done:
          scan forward to the closing brace. */
       if (!expandp)
         {
+          static char *alloc_line;
           ELEMENT *e;
           int brace_count = 1;
           e = new_element (ET_elided);
@@ -721,10 +722,11 @@ inlinefmtifelse_done:
                   brace_count--;
                   break;
                 default:
-                  line = next_text (current);
+                  free (alloc_line);
+                  alloc_line = line = next_text (current);
                   if (!line)
                     {
-                      /* ERROR - unbalanced brace */
+                      /* FIXME: ERROR - unbalanced brace */
                     }
                   continue;
                 }

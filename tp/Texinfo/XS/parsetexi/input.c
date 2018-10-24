@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -255,6 +254,10 @@ expanding_macro (char *macro)
   return 0;
 }
 
+/* Check for a #line directive.
+   FIXME: Really shouldn't have to be checking whether we are inside
+   @verb etc. all the way down in here.  Then we could avoid passing
+   CURRENT as an argument. */
 static int
 check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
 {

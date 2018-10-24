@@ -441,7 +441,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
           /* Now manufacture the parse tree for the equivalent
              command and add it to the tree. */
 
-          destroy_element (args);
+          destroy_element_and_children (args);
           args = new_element (ET_NONE);
           e = new_element (ET_NONE);
           text_append (&e->text, arg);
@@ -489,13 +489,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
           if (args->contents.number > 0 && arg_spec != LINE_skipline)
             add_extra_misc_args (misc, "misc_args", args);
           else
-            {
-              for (i = 0; i < args->contents.number; i++)
-                {
-                  destroy_element (args->contents.list[i]);
-                }
-              destroy_element (args);
-            }
+            destroy_element_and_children (args);
         }
 
       if (cmd == CM_raisesections)
