@@ -1445,10 +1445,10 @@ end_line_misc_line (ELEMENT *current)
                                      "@include: could not open %s:",
                                      text,
                                      strerror (status));
-                      free (fullpath);
                     }
                   else
                     included_file = 1;
+                  free (fullpath);
                 }
             }
           else if (current->cmd == CM_verbatiminclude)
