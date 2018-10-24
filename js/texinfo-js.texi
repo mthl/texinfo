@@ -84,9 +84,21 @@ HTML files which are output.
 @appendix History
 
 The Texinfo JS Interface was created by Matthieu Lirzin in 2017 as part
-of a Google Summer of Code project.  Advice was given by Per Bothner and 
-Gavin Smith.
+of a Google Summer of Code (GSOC) project.  Advice was given by Per 
+Bothner and Gavin Smith.
 
+Some historical links:
+
+@itemize
+@item 
+@uref{https://www.gnu.org/software/soc-projects/ideas-2017.html#texinfo,
+GSOC 2017 project suggestions for Texinfo}
+
+@item
+@uref{http://mathieu.lirzin.emi.u-bordeaux.fr/archives/,
+Reports on the development of the system during GSOC}
+
+@end itemize
 
 @node GNU Free Documentation License
 @appendix GNU Free Documentation License
