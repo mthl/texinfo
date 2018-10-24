@@ -40,8 +40,8 @@ This manual describes how to add the Texinfo JS Interface to HTML
 manuals generated from Texinfo.
 @end ifnottex
 
-@node @command{texi2any-js}
-@chapter @command{texi2any-js}
+@node @command{texinfo-js}
+@chapter @command{texinfo-js}
 
 The Texinfo JS Interface is an attempt to make browsing features
 provided by the Info mode of Emacs and the @command{info} program
@@ -60,20 +60,20 @@ right-hand
 corner.
 
 To add the Texinfo JS Interface to HTML
-manuals generated from Texinfo, use the @command{texi2any-js} command.
+manuals generated from Texinfo, use the @command{texinfo-js} command.
 For example:
 
 @example
-texi2any-js elisp.texi
+texinfo-js elisp.texi
 @end example
 
 @noindent The HTML manual is created in the @code{elisp-html} directory.
 
-Any extra arguments given to @command{texi2any-js} are passed on to
+Any extra arguments given to @command{texinfo-js} are passed on to
 @command{texi2any}.  For example:
 
 @example
-texi2any-js elisp.texi --css-ref=kawa.css
+texinfo-js elisp.texi --css-ref=kawa.css
 @end example
 
 @noindent causes the @file{kawa.css} CSS file to be referenced in the

@@ -20,7 +20,7 @@
 
 version () {
   cat <<EOF
-texi2any-js 0.0.90
+texinfo-js 0.0.90
 
 Copyright (C) 2018 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -32,7 +32,7 @@ EOF
 
 help () {
   cat <<EOF
-Usage: texi2any-js MANUAL [texi2any options]"
+Usage: texinfo-js MANUAL [texi2any options]"
 
 Run texi2any on MANUAL, adding a JavaScript browsing interface.  Any
 extra options are passed through to texi2any.
@@ -72,9 +72,9 @@ if test x$manual = x; then
   exit 1
 fi
 
-makeinfo_flags=$@
+texi2any_flags=$@
 
-MAKEINFO=${MAKEINFO:-texi2any}
+TEXI2ANY=${TEXI2ANY:-texi2any}
 
 # substituted by Makefile
 pkgdatadir=@pkgdatadir@
@@ -89,33 +89,22 @@ extra_head='
 '
 
 js_scripts="$pkgdatadir/modernizr.js $pkgdatadir/info.js"
-for f in $js_scripts ; do
+for f in $js_scripts $css_files ; do
   if ! test -f $f ; then
     echo "$f not found"
     exit 1
   fi
 done
 
-css_files="$pkgdatadir/info.css"
-for f in $css_files ; do
-  if ! test -f $f ; then
-    echo "$f not found"
-    exit 1
-  fi
-done
-
-
-if test x$outdir = x ; then
-  outdir=`basename $manual`
-  outdir=${outdir%.texi}-html
+if test x$OUTDIR = x ; then
+  OUTDIR=`basename $manual`
+  OUTDIR=${OUTDIR%.texi}-html
 fi
 
-$MAKEINFO --html -c EXTRA_HEAD="$extra_head" $manual -o $outdir $makeinfo_flags
+$TEXI2ANY --html -c EXTRA_HEAD="$extra_head" $manual -o $OUTDIR $texi2any_flags
 if test $? -ne 0 ; then
-  echo "makeinfo failed"
+  echo "texi2any failed"
   exit 1
 else
-  cp $js_scripts $css_files $outdir
+  cp $js_scripts $css_files $OUTDIR
 fi
-
-

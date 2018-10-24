@@ -54,11 +54,11 @@ js_scripts = \
 
 dist_pkgdata_DATA=$(js_scripts) info.css
 
-bin_SCRIPTS = texi2any-js
-EXTRA_DIST += texi2any-js.in
+bin_SCRIPTS = texinfo-js
+EXTRA_DIST += texinfo-js.in
 
-texi2any-js: texi2any-js.in
-	sed -e 's,@pkgdatadir@,'$(pkgdatadir)',g' $(srcdir)/texi2any-js.in >$@
+texinfo-js: texinfo-js.in
+	sed -e 's,@pkgdatadir@,'$(pkgdatadir)',g' $(srcdir)/texinfo-js.in >$@
 	chmod a+x $@
 
 EXTRA_DIST += HACKING README TODO \
