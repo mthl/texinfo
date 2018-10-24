@@ -447,7 +447,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
           text_append (&e->text, arg);
           add_to_element_contents (args, e);
 
-          destroy_element (misc);
+          destroy_element_and_children (misc);
           misc = new_element (ET_NONE);
           misc->cmd = equivalent_cmd;
           misc->line_nr = line_nr;
@@ -468,7 +468,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
 
           add_to_element_contents (current, misc);
         }
-      else // 4402
+      else
         {
           int i;
           if (!ignored)
@@ -484,12 +484,17 @@ handle_line_command (ELEMENT *current, char **line_inout,
                   add_to_element_args (misc, misc_arg);
                 }
               /* TODO: Could we have just set misc->args directly as args? */
+              if (args->contents.number > 0 && arg_spec != LINE_skipline)
+                add_extra_misc_args (misc, "misc_args", args);
+              else
+                destroy_element_and_children (args);
             }
-
-          if (args->contents.number > 0 && arg_spec != LINE_skipline)
-            add_extra_misc_args (misc, "misc_args", args);
           else
-            destroy_element_and_children (args);
+            {
+              destroy_element_and_children (misc);
+              destroy_element_and_children (args);
+              misc = 0;
+            }
         }
 
       if (cmd == CM_raisesections)
@@ -502,15 +507,15 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_novalidate)
         {
-          // FIXME - what goes in here?
+          /* do nothing -  novalidate is set in build_global_info */
         }
 
-      register_global_command (misc); // 4423
+      if (misc) 
+        register_global_command (misc);
 
       if (arg_spec != LINE_special || !has_comment)
         current = end_line (current);
 
-      // 4429
       if (cmd == CM_bye)
         {
           *status = FINISHED_TOTALLY;
