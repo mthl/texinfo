@@ -1254,7 +1254,7 @@ end_line_starting_block (ELEMENT *current)
         }
       else if (item_line_command (current->cmd)
           && !lookup_extra (current, "command_as_argument"))
-        { // 3064
+        {
           ELEMENT *e, *contents, *contents2;
 
           e = new_element (ET_command_as_argument_inserted);
@@ -1774,7 +1774,6 @@ end_line_misc_line (ELEMENT *current)
       ELEMENT *end_elt;
 
       debug ("END COMMAND %s", end_command);
-      free (end_command);
 
       /* Reparent the "@end" element to be a child of the block element. */
       end_elt = pop_element_from_contents (current);

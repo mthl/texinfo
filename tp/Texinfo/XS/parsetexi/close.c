@@ -18,7 +18,6 @@
 #include "parser.h"
 #include "errors.h"
 
-// 1246
 /* Possibly print an error message, and return CURRENT->parent. */
 static ELEMENT *
 close_brace_command (ELEMENT *current,
@@ -279,9 +278,9 @@ close_current (ELEMENT *current,
               if (command_data(current->cmd).data == BLOCK_conditional)
                 {
                   parent = current->parent;
-                  destroy_element (pop_element_from_contents (parent));
+                  destroy_element_and_children (pop_element_from_contents
+                                                          (parent));
                 }
-              /* TODO: Maybe avoid adding the element in the first place. */
             }
           if (command_data(cmd).flags
               & (CF_preformatted | CF_menu | CF_format_raw))
@@ -365,7 +364,7 @@ close_current (ELEMENT *current,
 /* 1725 */
 /* Return lowest level ancestor of CURRENT containing a CLOSED_COMMAND
    element.  Set CLOSED_ELEMENT to the element itself.  INTERRUPTING is used in 
-   close_brace_command 1246 to display an error message.  Remove a context from 
+   close_brace_command to display an error message.  Remove a context from 
    context stack if it was added by this command. */
 ELEMENT *
 close_commands (ELEMENT *current, enum command_id closed_command,
