@@ -11,6 +11,26 @@ $result_trees{'comment_on_group_line'} = {
       'args' => [
         {
           'contents' => [],
+          'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
+              'parent' => {}
+            }
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -60,24 +80,6 @@ $result_trees{'comment_on_group_line'} = {
         }
       ],
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment
-'
-            ]
-          },
-          'parent' => {}
-        },
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -91,14 +93,14 @@ $result_trees{'comment_on_group_line'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0];
-$result_trees{'comment_on_group_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'extra'}{'comment_at_end'};
-$result_trees{'comment_on_group_line'}{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'args'}[0];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'comment_on_group_line'}{'contents'}[0]{'contents'}[1];
 $result_trees{'comment_on_group_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_on_group_line'};
 

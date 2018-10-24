@@ -26,6 +26,26 @@ $result_trees{'prototype_brace_no_brace_comment'} = {
               'text' => ' bb'
             }
           ],
+          'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' cc
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' cc
+'
+                ]
+              },
+              'parent' => {}
+            }
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -64,24 +84,6 @@ $result_trees{'prototype_brace_no_brace_comment'} = {
         }
       ],
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' cc
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'comment',
-          'extra' => {
-            'misc_args' => [
-              ' cc
-'
-            ]
-          },
-          'parent' => {}
-        },
         'end_command' => {},
         'max_columns' => 2,
         'prototypes' => [
@@ -120,12 +122,12 @@ $result_trees{'prototype_brace_no_brace_comment'} = {
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0];
+$result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0];
-$result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'comment_at_end'};
-$result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'contents'}[0];
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'prototypes'}[0]{'contents'} = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'contents'};
 $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'extra'}{'prototypes_line'}[0] = $result_trees{'prototype_brace_no_brace_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];

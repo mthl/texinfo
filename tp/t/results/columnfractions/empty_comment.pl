@@ -15,30 +15,32 @@ $result_trees{'empty_comment'} = {
               'args' => [
                 {
                   'contents' => [],
+                  'extra' => {
+                    'comment_at_end' => {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => '
+',
+                          'type' => 'misc_arg'
+                        }
+                      ],
+                      'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          '
+'
+                        ]
+                      },
+                      'parent' => {}
+                    }
+                  },
                   'parent' => {},
                   'type' => 'line_arg'
                 }
               ],
               'cmdname' => 'columnfractions',
               'extra' => {
-                'comment_at_end' => {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => '
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      '
-'
-                    ]
-                  },
-                  'parent' => {}
-                },
                 'missing_argument' => 1,
                 'spaces_before_argument' => ' '
               },
@@ -94,9 +96,9 @@ $result_trees{'empty_comment'} = {
   ],
   'type' => 'text_root'
 };
+$result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'};
-$result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0];
 $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'empty_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];

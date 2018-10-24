@@ -1,6 +1,6 @@
 # Texinfo.pm: output a Texinfo tree as Texinfo.
 #
-# Copyright 2010, 2011, 2012, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -88,15 +88,15 @@ sub convert
       }
     }
     if (defined($root->{'contents'})) {
-      die "bad contents type(" . ref($root->{'contents'})
-          . ") $root->{'contents'}\n" if (ref($root->{'contents'}) ne 'ARRAY');
       foreach my $child (@{$root->{'contents'}}) {
         $result .= convert($child);
       }
     }
-    if ($root->{'extra'}
-        and $root->{'extra'}->{'spaces_after_argument'}) {
-       $result .= $root->{'extra'}->{'spaces_after_argument'};
+    if ($root->{'extra'} and $root->{'extra'}->{'spaces_after_argument'}) {
+      $result .= $root->{'extra'}->{'spaces_after_argument'};
+    }
+    if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
+      $result .= convert($root->{'extra'}->{'comment_at_end'});
     }
     $result .= '}' if ($root->{'type'}
                        and ($root->{'type'} eq 'bracketed'
@@ -205,8 +205,6 @@ sub _expand_cmd_args_to_texi {
       if $cmd->{'extra'} and $cmd->{'extra'}->{'spaces_before_argument'};
   }
   $result .= '{'.$cmd->{'type'}.'}' if ($cmdname eq 'value');
-  $result .= convert($cmd->{'extra'}->{'comment_at_end'})
-     if $cmd->{'extra'} and $cmd->{'extra'}->{'comment_at_end'};
   return $result;
 }
 

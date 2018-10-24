@@ -688,8 +688,8 @@ sub _convert_argument_and_end_line($$)
     $converted .= $root->{'args'}->[-1]->{'extra'}->{'spaces_after_argument'};
   }
 
-  if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
-    $end_line = $self->convert_tree($root->{'extra'}->{'comment_at_end'});
+  if ($root->{'args'}->[-1]->{'extra'} and $root->{'args'}->[-1]->{'extra'}->{'comment_at_end'}) {
+    $end_line = $self->convert_tree($root->{'args'}->[-1]->{'extra'}->{'comment_at_end'});
   } else {
     if (chomp($converted)) {
       $end_line = "\n";
@@ -828,8 +828,8 @@ sub _convert($$;$)
         if ($root->{'args'}->[0]->{'extra'} and $root->{'args'}->[0]->{'extra'}->{'spaces_after_argument'}) {
           $result .= $root->{'args'}->[0]->{'extra'}->{'spaces_after_argument'};
          }
-        if ($root->{'extra'} and $root->{'extra'}->{'comment_at_end'}) {
-          $result .= $self->_convert($root->{'extra'}->{'comment_at_end'});
+        if ($root->{'args'}->[-1]->{'extra'} and $root->{'args'}->[-1]->{'extra'}->{'comment_at_end'}) {
+          $result .= $self->_convert($root->{'args'}->[-1]->{'extra'}->{'comment_at_end'});
         }
         pop @{$self->{'document_context'}->[-1]->{'monospace'}} 
           if (defined($in_monospace_not_normal));

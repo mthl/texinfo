@@ -22,30 +22,32 @@ $result_trees{'comment_space_command_on_line'} = {
                   'parent' => {}
                 }
               ],
+              'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' settittle
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' settittle
+'
+                    ]
+                  },
+                  'parent' => {}
+                }
+              },
               'parent' => {},
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'settitle',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' settittle
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' settittle
-'
-                ]
-              },
-              'parent' => {}
-            },
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
@@ -75,6 +77,24 @@ $result_trees{'comment_space_command_on_line'} = {
             }
           ],
           'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' @node Top
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' @node Top
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_after_argument' => '  '
           },
           'parent' => {},
@@ -84,24 +104,6 @@ $result_trees{'comment_space_command_on_line'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' @node Top
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'comment',
-          'extra' => {
-            'misc_args' => [
-              ' @node Top
-'
-            ]
-          },
-          'parent' => {}
-        },
         'node_content' => [
           {}
         ],
@@ -135,6 +137,24 @@ $result_trees{'comment_space_command_on_line'} = {
             }
           ],
           'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' @top
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'comment',
+              'extra' => {
+                'misc_args' => [
+                  ' @top
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_after_argument' => ' '
           },
           'parent' => {},
@@ -159,6 +179,24 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' comment frenchspacing
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' comment frenchspacing
+'
+                    ]
+                  },
+                  'parent' => {}
+                },
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
@@ -167,24 +205,6 @@ $result_trees{'comment_space_command_on_line'} = {
           ],
           'cmdname' => 'frenchspacing',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' comment frenchspacing
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' comment frenchspacing
-'
-                ]
-              },
-              'parent' => {}
-            },
             'misc_args' => [
               'on'
             ],
@@ -217,6 +237,24 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' index entry
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' index entry
+'
+                    ]
+                  },
+                  'parent' => {}
+                },
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
@@ -225,24 +263,6 @@ $result_trees{'comment_space_command_on_line'} = {
           ],
           'cmdname' => 'cindex',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' index entry
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' index entry
-'
-                ]
-              },
-              'parent' => {}
-            },
             'index_entry' => {
               'command' => {},
               'content' => [],
@@ -285,6 +305,24 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' heading
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' heading
+'
+                    ]
+                  },
+                  'parent' => {}
+                },
                 'spaces_after_argument' => '    '
               },
               'parent' => {},
@@ -293,24 +331,6 @@ $result_trees{'comment_space_command_on_line'} = {
           ],
           'cmdname' => 'heading',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' heading
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' heading
-'
-                ]
-              },
-              'parent' => {}
-            },
             'spaces_before_argument' => ' '
           },
           'level' => 2,
@@ -337,6 +357,24 @@ $result_trees{'comment_space_command_on_line'} = {
                 }
               ],
               'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' printindex 
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' printindex 
+'
+                    ]
+                  },
+                  'parent' => {}
+                },
                 'spaces_after_argument' => ' '
               },
               'parent' => {},
@@ -345,24 +383,6 @@ $result_trees{'comment_space_command_on_line'} = {
           ],
           'cmdname' => 'printindex',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' printindex 
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' printindex 
-'
-                ]
-              },
-              'parent' => {}
-            },
             'misc_args' => [
               'cp'
             ],
@@ -432,6 +452,24 @@ $result_trees{'comment_space_command_on_line'} = {
                     }
                   ],
                   'extra' => {
+                    'comment_at_end' => {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => ' end
+',
+                          'type' => 'misc_arg'
+                        }
+                      ],
+                      'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' end
+'
+                        ]
+                      },
+                      'parent' => {}
+                    },
                     'spaces_after_argument' => ' '
                   },
                   'parent' => {},
@@ -441,24 +479,6 @@ $result_trees{'comment_space_command_on_line'} = {
               'cmdname' => 'end',
               'extra' => {
                 'command_argument' => 'float',
-                'comment_at_end' => {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' end
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' end
-'
-                    ]
-                  },
-                  'parent' => {}
-                },
                 'spaces_before_argument' => ' ',
                 'text_arg' => 'float'
               },
@@ -510,30 +530,32 @@ $result_trees{'comment_space_command_on_line'} = {
                   'parent' => {}
                 }
               ],
+              'extra' => {
+                'comment_at_end' => {
+                  'args' => [
+                    {
+                      'parent' => {},
+                      'text' => ' listoffloats
+',
+                      'type' => 'misc_arg'
+                    }
+                  ],
+                  'cmdname' => 'c',
+                  'extra' => {
+                    'misc_args' => [
+                      ' listoffloats
+'
+                    ]
+                  },
+                  'parent' => {}
+                }
+              },
               'parent' => {},
               'type' => 'line_arg'
             }
           ],
           'cmdname' => 'listoffloats',
           'extra' => {
-            'comment_at_end' => {
-              'args' => [
-                {
-                  'parent' => {},
-                  'text' => ' listoffloats
-',
-                  'type' => 'misc_arg'
-                }
-              ],
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' listoffloats
-'
-                ]
-              },
-              'parent' => {}
-            },
             'spaces_before_argument' => ' ',
             'type' => {
               'content' => [],
@@ -555,24 +577,6 @@ $result_trees{'comment_space_command_on_line'} = {
         }
       ],
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' @top
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'comment',
-          'extra' => {
-            'misc_args' => [
-              ' @top
-'
-            ]
-          },
-          'parent' => {}
-        },
         'spaces_before_argument' => ' '
       },
       'level' => 0,
@@ -600,34 +604,36 @@ $result_trees{'comment_space_command_on_line'} = {
 };
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0];
-$result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1];
-$result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'extra'}{'node_content'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[2]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'command'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'args'}[0]{'contents'};
@@ -636,15 +642,15 @@ $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[3]{'pa
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[4]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[5]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[6]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[7]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[8]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'args'}[0];
@@ -654,9 +660,9 @@ $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'ar
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'extra'}{'end_command'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'contents'}[1];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'extra'}{'float_section'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
@@ -666,14 +672,12 @@ $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[9]{'pa
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[10]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0];
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'extra'}{'type'}{'content'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'args'}[0]{'contents'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[11]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'contents'}[12]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2];
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'comment_at_end'};
-$result_trees{'comment_space_command_on_line'}{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'args'}[0];
 $result_trees{'comment_space_command_on_line'}{'contents'}[2]{'parent'} = $result_trees{'comment_space_command_on_line'};
 $result_trees{'comment_space_command_on_line'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'comment_space_command_on_line'}{'contents'}[3];
 $result_trees{'comment_space_command_on_line'}{'contents'}[3]{'parent'} = $result_trees{'comment_space_command_on_line'};
@@ -726,26 +730,8 @@ $result_sectioning{'comment_space_command_on_line'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
-            'comment_at_end' => {
-              'cmdname' => 'comment',
-              'extra' => {
-                'misc_args' => [
-                  ' @node Top
-'
-                ]
-              }
-            },
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
-          }
-        },
-        'comment_at_end' => {
-          'cmdname' => 'comment',
-          'extra' => {
-            'misc_args' => [
-              ' @top
-'
-            ]
           }
         },
         'spaces_before_argument' => ' '
@@ -763,27 +749,9 @@ $result_nodes{'comment_space_command_on_line'} = {
     'associated_section' => {
       'cmdname' => 'top',
       'extra' => {
-        'comment_at_end' => {
-          'cmdname' => 'comment',
-          'extra' => {
-            'misc_args' => [
-              ' @top
-'
-            ]
-          }
-        },
         'spaces_before_argument' => ' '
       },
       'level' => 0
-    },
-    'comment_at_end' => {
-      'cmdname' => 'comment',
-      'extra' => {
-        'misc_args' => [
-          ' @node Top
-'
-        ]
-      }
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
@@ -805,15 +773,6 @@ $result_nodes{'comment_space_command_on_line'}{'node_up'}{'extra'}{'top_node_up'
 $result_menus{'comment_space_command_on_line'} = {
   'cmdname' => 'node',
   'extra' => {
-    'comment_at_end' => {
-      'cmdname' => 'comment',
-      'extra' => {
-        'misc_args' => [
-          ' @node Top
-'
-        ]
-      }
-    },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -831,15 +790,6 @@ $result_floats{'comment_space_command_on_line'} = {
           'cmdname' => 'end',
           'extra' => {
             'command_argument' => 'float',
-            'comment_at_end' => {
-              'cmdname' => 'c',
-              'extra' => {
-                'misc_args' => [
-                  ' end
-'
-                ]
-              }
-            },
             'spaces_before_argument' => ' ',
             'text_arg' => 'float'
           }
@@ -847,15 +797,6 @@ $result_floats{'comment_space_command_on_line'} = {
         'float_section' => {
           'cmdname' => 'top',
           'extra' => {
-            'comment_at_end' => {
-              'cmdname' => 'comment',
-              'extra' => {
-                'misc_args' => [
-                  ' @top
-'
-                ]
-              }
-            },
             'spaces_before_argument' => ' '
           },
           'level' => 0
@@ -929,15 +870,15 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
 ';
 
 
-$result_converted{'docbook'}->{'comment_space_command_on_line'} = '<title>Settitle &#160;</title><!-- settittle -->
+$result_converted{'docbook'}->{'comment_space_command_on_line'} = '<title>Settitle &#160;</title>
 
 <chapter label="" id="Top">
-<title>top element&#160;</title><!-- @top -->
+<title>top element&#160;</title>
 
 
 <indexterm role="cp"><primary>index entry &#160;</primary></indexterm><!-- index entry -->
 
-<bridgehead renderas="sect1">Heading &#160;</bridgehead><!-- heading -->
+<bridgehead renderas="sect1">Heading &#160;</bridgehead>
 
 <index role="cp"></index>
 
@@ -984,13 +925,13 @@ $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=
 <node name="Top" spaces=" "><nodename trailingspaces="  ">Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
 <top spaces=" "><sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!-- comment @top -->
 
-<frenchspacing value="on" line="on "></frenchspacing><!-- c comment frenchspacing -->
+<frenchspacing value="on" line="on @c comment frenchspacing"></frenchspacing><!-- c comment frenchspacing -->
 
 <cindex index="cp" spaces=" "><indexterm index="cp" number="1">index entry <spacecmd type="spc"/></indexterm></cindex><!-- c index entry -->
 
 <heading spaces=" ">Heading <spacecmd type="spc"/>    </heading><!-- c heading -->
 
-<printindex value="cp" line="cp "></printindex><!-- c printindex  -->
+<printindex value="cp" line="cp @c printindex "></printindex><!-- c printindex  -->
 
 <float name="label" type="Text" number="1" spaces=" " endspaces=" "><floattype>Text</floattype><floatname spaces=" ">label</floatname>
 <para>float

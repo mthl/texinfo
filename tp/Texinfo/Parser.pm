@@ -2101,8 +2101,9 @@ sub _isolate_last_space
       and $current->{'contents'}->[-1]->{'cmdname'}
       and ($current->{'contents'}->[-1]->{'cmdname'} eq 'c'
             or $current->{'contents'}->[-1]->{'cmdname'} eq 'comment')) {
-     $current->{'parent'}->{'extra'}->{'comment_at_end'}
-       = pop @{$current->{'contents'}}; 
+     $current->{'extra'}->{'comment_at_end'} = pop @{$current->{'contents'}}; 
+     # TODO: @c should probably not be allowed inside most brace commands
+     # as this would be difficult to implement properly in TeX.
   }
 
   return if !@{$current->{'contents'}}

@@ -1,3 +1,17 @@
+2018-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_isolate_last_space): Set 
+	'comment_at_end' value on element instead of parent.  As well as 
+	gaining consistency with 'spaces_after_argument', this means 
+	that a comment at the end of a brace command argument is not 
+	lost or output at the wrong place.  Add a comment noting that 
+	comments should not be inside brace commands anyway.
+
+	* tp/Texinfo/Convert/TexinfoXML.pm (_convert_argument_and_end_line),
+	* tp/Texinfo/Convert/Texinfo.pm (convert, _expand_cmd_args_to_texi):
+	* tp/Texinfo/Convert/Converter.pm _expand_cmd_args_to_texi): 
+	Access 'comment_at_end' in the new place.
+
 2018-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm: Change 'same than' to 'same as' in

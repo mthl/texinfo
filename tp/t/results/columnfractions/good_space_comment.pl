@@ -21,6 +21,24 @@ $result_trees{'good_space_comment'} = {
                     }
                   ],
                   'extra' => {
+                    'comment_at_end' => {
+                      'args' => [
+                        {
+                          'parent' => {},
+                          'text' => ' space comment
+',
+                          'type' => 'misc_arg'
+                        }
+                      ],
+                      'cmdname' => 'c',
+                      'extra' => {
+                        'misc_args' => [
+                          ' space comment
+'
+                        ]
+                      },
+                      'parent' => {}
+                    },
                     'spaces_after_argument' => '  '
                   },
                   'parent' => {},
@@ -29,24 +47,6 @@ $result_trees{'good_space_comment'} = {
               ],
               'cmdname' => 'columnfractions',
               'extra' => {
-                'comment_at_end' => {
-                  'args' => [
-                    {
-                      'parent' => {},
-                      'text' => ' space comment
-',
-                      'type' => 'misc_arg'
-                    }
-                  ],
-                  'cmdname' => 'c',
-                  'extra' => {
-                    'misc_args' => [
-                      ' space comment
-'
-                    ]
-                  },
-                  'parent' => {}
-                },
                 'misc_args' => [
                   '0',
                   '1'
@@ -107,9 +107,9 @@ $result_trees{'good_space_comment'} = {
   'type' => 'text_root'
 };
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
+$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'};
-$result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0];
 $result_trees{'good_space_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'good_space_comment'}{'contents'}[0]{'contents'}[0]{'args'}[0];

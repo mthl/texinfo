@@ -55,6 +55,24 @@ $result_trees{'simple'} = {
             }
           ],
           'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_after_argument' => ' '
           },
           'parent' => {},
@@ -63,24 +81,6 @@ $result_trees{'simple'} = {
       ],
       'cmdname' => 'alias',
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment
-'
-            ]
-          },
-          'parent' => {}
-        },
         'misc_args' => [
           'o-theralias',
           'verb'
@@ -192,9 +192,9 @@ $result_trees{'simple'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'sim
 $result_trees{'simple'}{'contents'}[0]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[1]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
+$result_trees{'simple'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'simple'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
 $result_trees{'simple'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2];
-$result_trees{'simple'}{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[2]{'extra'}{'comment_at_end'};
-$result_trees{'simple'}{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'simple'}{'contents'}[2]{'args'}[0];
 $result_trees{'simple'}{'contents'}[2]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[3]{'parent'} = $result_trees{'simple'};
 $result_trees{'simple'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'simple'}{'contents'}[4];

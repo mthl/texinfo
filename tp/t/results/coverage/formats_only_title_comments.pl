@@ -114,6 +114,26 @@ $result_trees{'formats_only_title_comments'} = {
       'args' => [
         {
           'contents' => [],
+          'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment on enumerate line
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on enumerate line
+'
+                ]
+              },
+              'parent' => {}
+            }
+          },
           'parent' => {},
           'type' => 'block_line_arg'
         }
@@ -187,24 +207,6 @@ $result_trees{'formats_only_title_comments'} = {
         }
       ],
       'extra' => {
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment on enumerate line
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment on enumerate line
-'
-            ]
-          },
-          'parent' => {}
-        },
         'end_command' => {},
         'enumerate_specification' => 1,
         'spaces_before_argument' => ' '
@@ -345,6 +347,24 @@ $result_trees{'formats_only_title_comments'} = {
             }
           ],
           'extra' => {
+            'comment_at_end' => {
+              'args' => [
+                {
+                  'parent' => {},
+                  'text' => ' comment on vtable line
+',
+                  'type' => 'misc_arg'
+                }
+              ],
+              'cmdname' => 'c',
+              'extra' => {
+                'misc_args' => [
+                  ' comment on vtable line
+'
+                ]
+              },
+              'parent' => {}
+            },
             'spaces_after_argument' => ' '
           },
           'parent' => {},
@@ -403,24 +423,6 @@ $result_trees{'formats_only_title_comments'} = {
       ],
       'extra' => {
         'command_as_argument' => {},
-        'comment_at_end' => {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => ' comment on vtable line
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'c',
-          'extra' => {
-            'misc_args' => [
-              ' comment on vtable line
-'
-            ]
-          },
-          'parent' => {}
-        },
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
@@ -569,6 +571,8 @@ $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'command_as
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'formats_only_title_comments'}{'contents'}[0]{'contents'}[2];
 $result_trees{'formats_only_title_comments'}{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'};
+$result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[0]{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[0];
@@ -578,8 +582,6 @@ $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[0]{'pare
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2];
-$result_trees{'formats_only_title_comments'}{'contents'}[2]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'extra'}{'comment_at_end'};
-$result_trees{'formats_only_title_comments'}{'contents'}[2]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'extra'}{'end_command'} = $result_trees{'formats_only_title_comments'}{'contents'}[2]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[2]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[3]{'parent'} = $result_trees{'formats_only_title_comments'};
@@ -599,6 +601,8 @@ $result_trees{'formats_only_title_comments'}{'contents'}[4]{'line_nr'} = $result
 $result_trees{'formats_only_title_comments'}{'contents'}[4]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[5]{'parent'} = $result_trees{'formats_only_title_comments'};
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0];
+$result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'extra'}{'comment_at_end'};
+$result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[0]{'contents'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[0];
@@ -607,8 +611,6 @@ $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[1]{'args
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'extra'}{'command_as_argument'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'contents'}[0];
-$result_trees{'formats_only_title_comments'}{'contents'}[6]{'extra'}{'comment_at_end'}{'args'}[0]{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'extra'}{'comment_at_end'};
-$result_trees{'formats_only_title_comments'}{'contents'}[6]{'extra'}{'comment_at_end'}{'parent'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'extra'}{'end_command'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'contents'}[1];
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'line_nr'} = $result_trees{'formats_only_title_comments'}{'contents'}[6]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'formats_only_title_comments'}{'contents'}[6]{'parent'} = $result_trees{'formats_only_title_comments'};
