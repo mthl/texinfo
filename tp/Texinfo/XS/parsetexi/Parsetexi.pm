@@ -59,6 +59,7 @@ sub get_conf($$)
 
 # Copied from Parser.pm
 # Customization variables obeyed by the Parser, and the default values.
+# TODO: delete these, as they are not used by the XS module itself.
 our %default_customization_values = (
   'TEST' => 0,
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
