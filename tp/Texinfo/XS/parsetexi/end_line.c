@@ -1388,13 +1388,13 @@ end_line_misc_line (ELEMENT *current)
                             {
                           conditional_stack_fail:
                               command_error (current, "unmatched `@end'");
-                              end_command = 0;
+                              free (end_command); end_command = 0;
                             }
                         }
                       if (end_command)
                         {
                           add_extra_string (current, "command_argument",
-                                            strdup (end_command));
+                                            end_command);
                         }
                       if (end_command
                           && (superfluous_arg

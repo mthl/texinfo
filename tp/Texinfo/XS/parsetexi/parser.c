@@ -1106,7 +1106,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
             }
         }
 
-      /* 3755 Else check if line is "@end ..." for current command. */
+      /* Else check if line is "@end ..." for current command. */
       p = line;
       if (is_end_current_command (current, &line, &end_cmd))
         {
@@ -1122,6 +1122,7 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
               int n = strspn (line, whitespace_chars);
               e = new_element (ET_raw);
               text_append_n (&e->text, line, n);
+              add_to_element_contents (current, e);
               line += n;
               line_warn ("@end %s should only appear at the "
                          "beginning of a line", command_name(end_cmd));
