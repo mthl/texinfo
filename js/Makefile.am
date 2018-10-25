@@ -46,6 +46,8 @@ endif
 .PHONY: $(phony)
 EXTRA_DIST =
 
+EXTRA_DIST += INSTALL
+
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included
 js_scripts = \

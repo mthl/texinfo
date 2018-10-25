@@ -1,6 +1,10 @@
 This subdirectory contains a JavaScript system used to browse the HTML 
 output of texi2any.  This work was done by Matthieu Lirzin in 2017.
 
+See INSTALL for generic installation instructions.
+
+See COPYING for copying conditions.
+
 See https://www.gnu.org/software/soc-projects/ideas-2017.html#texinfo
 and http://mathieu.lirzin.emi.u-bordeaux.fr/categories/gsoc/ for some
 background information.
