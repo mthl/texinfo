@@ -432,7 +432,7 @@ delete $simple_text_commands{'exdent'};
 foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref', 
                      'inforef', 'shortcaption', 'math', 'indicateurl',
                      'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
-                     'dmn', 'errormsg', 'U') {
+                     'dmn', 'errormsg', 'U', 'sortas') {
   $simple_text_commands{$command} = 1;
 }
 
@@ -447,7 +447,6 @@ my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
   if ($brace_commands{$brace_command} == 1 
       and !$simple_text_commands{$brace_command} 
-      and $brace_command ne 'sortas'
       and !$context_brace_commands{$brace_command}
       and !$accent_commands{$brace_command}) {
     $full_text_commands{$brace_command} = 1;
@@ -4339,7 +4338,9 @@ sub _parse_texi($;$)
                       'parent' => $current->{'contents'}->[-1] };
                 }
                 $misc->{'extra'}->{'misc_args'} = $args 
-                if (scalar(@$args) and $arg_spec ne 'skipline');
+                  if (scalar(@$args) and $arg_spec ne 'skipline');
+              } else {
+                $misc = undef;
               }
             }
             if ($command eq 'raisesections') {
@@ -4349,7 +4350,8 @@ sub _parse_texi($;$)
             } elsif ($command eq 'novalidate') {
               $self->{'info'}->{'novalidate'} = 1;
             }
-            _register_global_command($self, $misc, $line_nr);
+            _register_global_command($self, $misc, $line_nr)
+              if $misc;
             # the end of line is ignored for special commands
             if ($arg_spec ne 'special' or !$has_comment) {
               $current = _end_line($self, $current, $line_nr);

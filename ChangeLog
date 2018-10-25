@@ -1,3 +1,9 @@
+2018-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (%simple_text_commands): Add 'sortas'.
+	(%full_text_commands): No special case for 'sortas'.
+	(_parse_texi) <@copying in @insertcopying>: Undefine a variable.
+
 2018-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_isolate_last_space): Set 
