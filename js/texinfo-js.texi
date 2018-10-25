@@ -2,7 +2,7 @@
 @setfilename texinfo-js.info
 
 @copying
-This file describes how to add the Texinfo JS Interface to HTML
+This file describes how to add the Texinfo JavaScript Interface to HTML
 manuals generated from Texinfo.
 
 Copyright @copyright{} 2018 Free Software Foundation, Inc.
@@ -22,11 +22,11 @@ modify this GNU manual.''
 
 @dircategory Texinfo documentation system
 @direntry
-* Texinfo JS Interface: (texinfo-js).
+* Texinfo JavaScript Interface: (texinfo-js).
 @end direntry
 
 @titlepage
-@title Texinfo JS Interface
+@title Texinfo JavaScript Interface
 
 @author Gavin Smith
 @end titlepage
@@ -35,15 +35,15 @@ modify this GNU manual.''
 
 @ifnottex
 @node Top
-@top Texinfo JS Interface
-This manual describes how to add the Texinfo JS Interface to HTML
+@top Texinfo JavaScript Interface
+This manual describes how to add the Texinfo JavaScript Interface to HTML
 manuals generated from Texinfo.
 @end ifnottex
 
 @node Invoking @command{texinfo-js}
 @chapter Invoking @command{texinfo-js}
 
-The Texinfo JS Interface is an attempt to use JavaScript to make 
+The Texinfo JavaScript Interface is an attempt to use JavaScript to make 
 browsing features
 provided by the Info mode of Emacs and the @command{info} program
 available to read HTML manuals in a standard web browser.  These 
@@ -56,11 +56,11 @@ features include:
 @end itemize
 
 To see a list of available commands while reading a manual using
-the Texinfo JS Interface, click on the `?'@: symbol in the top 
+the Texinfo JavaScript Interface, click on the `?'@: symbol in the top 
 right-hand
 corner.
 
-To add the Texinfo JS Interface to HTML
+To add the Texinfo JavaScript Interface to HTML
 manuals generated from Texinfo, use the @command{texinfo-js} command.
 For example:
 
@@ -84,7 +84,8 @@ HTML files which are output.
 @node History
 @appendix History
 
-The Texinfo JS Interface was created by Matthieu Lirzin in 2017 as part
+The Texinfo JavaScript Interface was created by
+Matthieu Lirzin in 2017 as part
 of a Google Summer of Code (GSOC) project.  Advice was given by Per 
 Bothner and Gavin Smith.
 
