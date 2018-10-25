@@ -579,7 +579,7 @@ foreach my $accent_command ('"','~','^','`',"'",',','=',
                            'ringaccent','H','dotaccent','u','ubaraccent',
                            'udotaccent','v','ogonek','tieaccent', 'dotless') {
   $accent_commands{$accent_command} = 1;
-  $brace_commands{$accent_command} = 1;
+  $brace_commands{$accent_command} = 'accent';
 }
 
 our %style_commands;
@@ -588,28 +588,37 @@ foreach my $style_command ('asis','cite','clicksequence',
   'sc', 't', 'var',
   'headitemfont', 'code', 'command', 'env', 'file', 'kbd',
   'option', 'samp', 'strong', 'sub', 'sup') {
-  $brace_commands{$style_command} = 1;
+  $brace_commands{$style_command} = 'style';
   $style_commands{$style_command} = 1;
 }
 
 our %regular_font_style_commands;
 foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
   $regular_font_style_commands{$command} = 1;
-  $brace_commands{$command} = 1;
+  $brace_commands{$command} = 'style';
   $style_commands{$command} = 1;
 }
 
-foreach my $one_arg_command ('U', 'dmn', 'w', 'key',
-    'titlefont', 'hyphenation', 'anchor', 'errormsg', 'sortas') {
+foreach my $one_arg_command ('U', 'dmn', 'key',
+    'titlefont', 'anchor', 'errormsg', 'sortas') {
   $brace_commands{$one_arg_command} = 1;
+}
+
+# FIXME: 'key', 'verb', 't'?
+foreach my $other_arg_command ('w', 'hyphenation') {
+  $brace_commands{$other_arg_command} = 'other';
 }
 
 our %code_style_commands;
 foreach my $command ('code', 'command', 'env', 'file', 'kbd', 'key', 'option',
-   'samp', 'indicateurl', 'verb', 't') {
+   'samp', 'verb', 't') {
   $code_style_commands{$command} = 1;
-  $brace_commands{$command} = 1;
+  $brace_commands{$command} = 'style';
 }
+
+# FIXME: a special case?
+$code_style_commands{'indicateurl'} = 1;
+$brace_commands{'indicateurl'} = 1;
 
 
 # Commands that enclose full texts, that can contain multiple paragraphs.
@@ -617,7 +626,7 @@ our %context_brace_commands;
 foreach my $context_brace_command ('footnote', 'caption',
     'shortcaption', 'math') {
   $context_brace_commands{$context_brace_command} = $context_brace_command;
-  $brace_commands{$context_brace_command} = 1;
+  $brace_commands{$context_brace_command} = 'context';
 }
 
 our %explained_commands;
@@ -625,6 +634,7 @@ foreach my $explained_command ('abbr', 'acronym') {
   $explained_commands{$explained_command} = 1;
   $brace_commands{$explained_command} = 2;
 }
+
 
 our %inline_format_commands;
 our %inline_commands;
@@ -643,9 +653,6 @@ foreach my $inline_conditional_command ('inlineifclear', 'inlineifset') {
   $brace_commands{$inline_conditional_command} = 2;
   $inline_commands{$inline_conditional_command} = 1;
 }
-
-# 'inlineset', 'inlineclear'
-#$brace_commands{'inlineclear'} = 1;
 
 foreach my $two_arg_command('email') {
   $brace_commands{$two_arg_command} = 2;

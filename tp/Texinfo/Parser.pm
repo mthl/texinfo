@@ -429,10 +429,16 @@ my %full_line_commands_no_refs = (%sectioning_commands,
 
 delete $simple_text_commands{'center'};
 delete $simple_text_commands{'exdent'};
-foreach my $command ('titlefont', 'anchor', 'xref','ref', 'pxref', 
+
+foreach my $command (keys (%brace_commands)) {
+  if ($brace_commands{$command} eq '1') {
+    $simple_text_commands{$command} = 1;
+  }
+}
+
+foreach my $command ('xref','ref', 'pxref', 
                      'inforef', 'shortcaption', 'math', 'indicateurl',
-                     'email', 'uref', 'url', 'image', 'abbr', 'acronym', 
-                     'dmn', 'errormsg', 'U', 'sortas') {
+                     'email', 'uref', 'url', 'image', 'abbr', 'acronym') {
   $simple_text_commands{$command} = 1;
 }
 
@@ -445,10 +451,7 @@ foreach my $command ('errormsg', 'U', 'sortas') {
 # commands that accept full text, but no block or top-level commands
 my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
-  if ($brace_commands{$brace_command} == 1 
-      and !$simple_text_commands{$brace_command} 
-      and !$context_brace_commands{$brace_command}
-      and !$accent_commands{$brace_command}) {
+  if ($brace_commands{$brace_command} eq 'style') {
     $full_text_commands{$brace_command} = 1;
   }
 }
@@ -4745,8 +4748,13 @@ sub _parse_texi($;$)
             my $command = $current->{'cmdname'};
             $current->{'args'} = [ { 'parent' => $current,
                                    'contents' => [] } ];
-            $current->{'remaining_args'} = $brace_commands{$command} -1
-                  if ($brace_commands{$command} and $brace_commands{$command} -1);
+
+            if ($brace_commands{$command}
+                and $brace_commands{$command} =~ /^\d$/
+                and $brace_commands{$command} > 1) {
+              $current->{'remaining_args'} = $brace_commands{$command} - 1;
+            }
+
             $current = $current->{'args'}->[-1];
             if ($context_brace_commands{$command}) {
               if ($command eq 'caption' or $command eq 'shortcaption') {
@@ -4793,8 +4801,8 @@ sub _parse_texi($;$)
             } else {
               $current->{'type'} = 'brace_command_arg';
               if ($brace_commands{$command}
-                  and ($brace_commands{$command} > 1
-                       or $simple_text_commands{$command})) {
+                  and $brace_commands{$command} =~ /^\d$/
+                  and $brace_commands{$command} > 0) {
                 push @{$current->{'contents'}}, 
                   {'type' => 'empty_spaces_before_argument',
                             'text' => '',
@@ -4802,10 +4810,8 @@ sub _parse_texi($;$)
                             'extra' => {'command' => $current}
                                       };
               }
-              if ($inline_commands{$command}) {
-                push @{$self->{'context_stack'}}, $command
-                  if ($command eq 'inlineraw');
-              }
+              push @{$self->{'context_stack'}}, $command
+                if ($command eq 'inlineraw');
             }
             print STDERR "OPENED \@$current->{'parent'}->{'cmdname'}, remaining: "
               .(defined($current->{'parent'}->{'remaining_args'}) ? "remaining: $current->{'parent'}->{'remaining_args'}, " : '')
@@ -4872,8 +4878,8 @@ sub _parse_texi($;$)
             # first is the arg.
             
             if ($brace_commands{$current->{'parent'}->{'cmdname'}} 
-                and ($brace_commands{$current->{'parent'}->{'cmdname'}} > 1
-                   or $simple_text_commands{$current->{'parent'}->{'cmdname'}})
+                and $brace_commands{$current->{'parent'}{'cmdname'}} =~ /^\d$/
+                and $brace_commands{$current->{'parent'}->{'cmdname'}} > 0
                 and $current->{'parent'}->{'cmdname'} ne 'math') {
               # @inline* always have end spaces considered as normal text 
               _isolate_last_space($self, $current) 
@@ -4884,7 +4890,7 @@ sub _parse_texi($;$)
               if ($self->{'DEBUG'});
             delete $current->{'parent'}->{'remaining_args'};
             if (defined($brace_commands{$closed_command}) 
-                 and $brace_commands{$closed_command} == 0
+                 and $brace_commands{$closed_command} eq '0'
                  and @{$current->{'contents'}}) {
               $self->line_warn(sprintf(__(
                                  "command \@%s does not accept arguments"), 
@@ -5444,7 +5450,7 @@ sub _parse_line_command_args($$$)
       $self->{'definfoenclose'}->{$1} = [ $2, $3 ];
       print STDERR "DEFINFOENCLOSE \@$1: $2, $3\n" if ($self->{'DEBUG'});
 
-      $brace_commands{$1} = 1;
+      $brace_commands{$1} = 'style';
 
       # Warning: there is a risk of mixing of data between a built-in 
       # command and a user command defined with @definfoenclose.

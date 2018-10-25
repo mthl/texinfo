@@ -1,5 +1,35 @@
 2018-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%brace_commands): Change meaning of 1
+	as a value.  Now only commands that were in
+	%simple_text_commands in Parser.pm have 1.  Use words as well as 
+	numbers, as is done for %line_commands.  Accent commands get 
+	'accent'.  Style commands get 'style'.  Context brace commands
+	get 'context'.  Various other brace commands get 'other'.
+	(_parse_line_command_args): Commands defined by @definfoenclose
+	get 'style'.
+
+	* tp/Texinfo/Parser.pm
+	(%simple_text_commands): Change initialising code to use 
+	%brace_commands for some brace commands. This shortens a 
+	seemingly arbitrary list.
+
+	(%full_text_commands): Update initialising code for new meaning 
+	of %brace_commands.
+
+	(_parse_texi): Change two conditions to compare values of 
+	%brace_commands hash, without needing to look at 
+	%simple_text_commands.  Remove an unnecessary conditional.
+
+	* tp/Texinfo/Parser.pm (_parse_texi),
+	* tp/Texinfo/Convert/Plaintext.pm (%brace_no_arg_commands):
+	Use "eq '0'" instead of "== 0" for %brace_commands values.
+
+	No functional changes intended.  This brings the implementation
+	closer to the C version under tp/Texinfo/XS/parsetexi.
+
+2018-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (%simple_text_commands): Add 'sortas'.
 	(%full_text_commands): No special case for 'sortas'.
 	(_parse_texi) <@copying in @insertcopying>: Undefine a variable.
