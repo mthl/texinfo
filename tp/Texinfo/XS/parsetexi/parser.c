@@ -910,8 +910,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
     }
 
 
-  else if (outer == CM_ctrl
-           || outer == CM_errormsg
+  else if (outer == CM_errormsg
            || outer == CM_sortas)
     {
       ok = 0;
