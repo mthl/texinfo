@@ -254,6 +254,8 @@ expanding_macro (char *macro)
   return 0;
 }
 
+char *save_string (char *string);
+
 /* Check for a #line directive.
    FIXME: Really shouldn't have to be checking whether we are inside
    @verb etc. all the way down in here.  Then we could avoid passing
@@ -293,13 +295,15 @@ check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
   p += strspn (p, " \t");
   if (*p == '"')
     {
+      char c;
       p++;
       q = strchr (p, '"');
       if (!q)
         return 0;
-      filename = malloc (q - p + 1);
-      memcpy (filename, p, q - p);
-      filename[q - p] = '\0';
+      c = *q;
+      *q = 0;
+      filename = save_string (p);
+      *q = c;
       p = q + 1;
       p += strspn (p, " \t");
 
@@ -312,7 +316,6 @@ check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
   line_nr->line_nr = line_no;
   if (filename)
     {
-      // free (line_nr->file_name); // FIXME: could still be referenced
       line_nr->file_name = filename;
     }
   return 1;
