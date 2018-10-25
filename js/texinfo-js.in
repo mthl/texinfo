@@ -32,7 +32,7 @@ EOF
 
 help () {
   cat <<EOF
-Usage: texinfo-js MANUAL [texi2any options]"
+Usage: $progname MANUAL [texi2any options]"
 
 Run texi2any on MANUAL, adding a JavaScript browsing interface.  Any
 extra options are passed through to texi2any.
@@ -43,6 +43,9 @@ General help using GNU software: <http://www.gnu.org/gethelp/>
 EOF
 
 }
+
+progname=$0
+progname=`echo $progname | sed -e s,.*/,,`
 
 manual=
 
@@ -57,7 +60,7 @@ while test x"$1" != x ; do
       exit 0
       ;;
     -*)
-      echo "unknown option -$1"
+      echo "$progname: unknown option -$1"
       exit 1 ;;
     *)
       manual=$1
@@ -92,7 +95,7 @@ js_scripts="$pkgdatadir/modernizr.js $pkgdatadir/info.js"
 css_files="$pkgdatadir/info.css"
 for f in $js_scripts $css_files ; do
   if ! test -f $f ; then
-    echo "$f not found"
+    echo "$progname: $f not found"
     exit 1
   fi
 done
@@ -102,9 +105,11 @@ if test x$OUTDIR = x ; then
   OUTDIR=${OUTDIR%.texi}-html
 fi
 
+echo $TEXI2ANY --html -c EXTRA_HEAD="$extra_head" $manual -o $OUTDIR $texi2any_flags
 $TEXI2ANY --html -c EXTRA_HEAD="$extra_head" $manual -o $OUTDIR $texi2any_flags
+
 if test $? -ne 0 ; then
-  echo "texi2any failed"
+  echo "$progname: texi2any failed"
   exit 1
 else
   cp $js_scripts $css_files $OUTDIR
