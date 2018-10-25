@@ -59,6 +59,10 @@ new_macro (char *name, ELEMENT *macro)
       new &= ~USER_COMMAND_BIT;
       user_defined_command_data[new].flags |= CF_MACRO;
     }
+  else
+    {
+      free (m->macro_name);
+    }
 
   m->macro_name = strdup (name);
   m->element = macro;
@@ -273,6 +277,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
             {
               line_error ("@%s missing closing brace", command_name(cmd));
               line = "\n";
+              free (arg.text);
               goto funexit;
             }
           pline = line;
@@ -318,7 +323,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
               break;
             }
 
-          // 2021 check for too many args
+          // check for too many args
           if (*sep == '}' || arg_number < args_total - 1)
             {
               /* Add the last argument read to the list. */
