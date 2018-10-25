@@ -19,7 +19,7 @@ AC_INIT([texinfo-js], [0.0.90], [bug-texinfo@gnu.org])
 AC_CONFIG_SRCDIR([info.js])
 AC_CONFIG_AUX_DIR([build-aux])
 
-AM_INIT_AUTOMAKE([foreign])
+AM_INIT_AUTOMAKE([foreign readme-alpha])
 AM_SILENT_RULES([yes])
 
 AC_PATH_PROG([MAKEINFO], [makeinfo])
