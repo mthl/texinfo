@@ -13,8 +13,6 @@ execute the following commands:
   ./configure
   make examples
 
-note: The Makefile doesn't support out of tree build.
-
 To check the result of EXAMPLE:
 
   firefox examples/EXAMPLE-html/index.html

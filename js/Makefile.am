@@ -93,19 +93,25 @@ EXTRA_DIST += $(examples_src)
 
 hello_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
-examples/hello-html: examples/hello/hello.texi
+examples/hello-html: examples/hello/hello.texi examples
+	mkdir -p examples
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(hello_extra_head) \
-	  examples/hello/hello.texi -o $@ && \
-	cp $(js_scripts) info.css $@
+	  $(srcdir)/examples/hello/hello.texi -o $@ && \
+	for f in $(js_scripts) info.css ; do \
+	  cp $(srcdir)/$$f $@ ; \
+	done
 
 kawa_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><link rel="stylesheet" type="text/css" href="kawa.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
 examples/kawa-html: examples/kawa/kawa.texi
+	mkdir -p examples
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(kawa_extra_head) \
-	  examples/kawa/kawa.texi -o $@ && \
-	cp $(js_scripts) info.css kawa.css $@
+	  $(srcdir)/examples/kawa/kawa.texi -o $@ && \
+	for f in $(js_scripts) info.css kawa.css ; do \
+	  cp $(srcdir)/$$f $@ ; \
+	done
 
 clean-local:
 	rm -rf $(examples)
