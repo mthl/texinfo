@@ -90,20 +90,20 @@ get_root (void)
 void
 parse_string (char *string)
 {
-  ELEMENT *root;
-  root = new_element (ET_root_line);
+  if (Root)
+    destroy_element_and_children (Root);
   input_push_text (strdup (string), 0);
-  Root = parse_texi (root);
+  Root = parse_texi (new_element (ET_root_line));
 }
 
 /* Used for parse_texi_text.  STRING should be a UTF-8 buffer. */
 void
 parse_text (char *string)
 {
-  ELEMENT *root;
-  root = new_element (ET_text_root);
+  if (Root)
+    destroy_element_and_children (Root);
   input_push_text_with_line_nos (strdup (string), 1);
-  Root = parse_texi (root);
+  Root = parse_texi (new_element (ET_text_root));
 }
 
 
