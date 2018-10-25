@@ -273,12 +273,8 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
-      else if (command_data(current->parent->cmd).data > 0
-                 /* (the Perl code has > 1 here, but this is a deliberate
-                    difference) */
-               && current->parent->cmd != CM_sortas) /* FIXME special case */
+      else if (command_data(current->parent->cmd).data > 0)
         {
-          // 5033
           /* @inline* always have end spaces considered as normal text */
           if (!(command_flags(current->parent) & CF_inline))
             isolate_last_space (current);
