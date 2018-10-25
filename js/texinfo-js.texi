@@ -40,10 +40,11 @@ This manual describes how to add the Texinfo JS Interface to HTML
 manuals generated from Texinfo.
 @end ifnottex
 
-@node @command{texinfo-js}
-@chapter @command{texinfo-js}
+@node Invoking @command{texinfo-js}
+@chapter Invoking @command{texinfo-js}
 
-The Texinfo JS Interface is an attempt to make browsing features
+The Texinfo JS Interface is an attempt to use JavaScript to make 
+browsing features
 provided by the Info mode of Emacs and the @command{info} program
 available to read HTML manuals in a standard web browser.  These 
 features include:
