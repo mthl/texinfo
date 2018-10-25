@@ -56,6 +56,7 @@ dist_pkgdata_DATA=$(js_scripts) info.css
 
 bin_SCRIPTS = texinfo-js
 EXTRA_DIST += texinfo-js.in
+CLEANFILES = texinfo-js
 
 texinfo-js: texinfo-js.in
 	sed -e 's,@pkgdatadir@,'$(pkgdatadir)',g' $(srcdir)/texinfo-js.in >$@
