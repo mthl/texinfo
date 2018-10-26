@@ -152,24 +152,6 @@ $result_texts{'test_errormsg'} = 'Some text
 
 $result_errors{'test_errormsg'} = [
   {
-    'error_line' => ':2: warning: @~ should not appear in @errormsg
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@~ should not appear in @errormsg',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':2: warning: @code should not appear in @errormsg
-',
-    'file_name' => '',
-    'line_nr' => 2,
-    'macro' => '',
-    'text' => '@code should not appear in @errormsg',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':2: Text 
 ',
     'file_name' => '',

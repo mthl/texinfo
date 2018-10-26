@@ -1,5 +1,13 @@
 2018-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (%no_command_commands): Remove this list 
+	of commands that shouldn't contain any other commands.  Although 
+	it is valid, it makes the picture of which commands can contain 
+	others more complicated for the sake of only a few commands.
+	Introduced on 2016-07-09 for @errormsg and @U.
+
+2018-10-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%brace_commands): Change meaning of 1
 	as a value.  Now only commands that were in
 	%simple_text_commands in Parser.pm have 1.  Use words as well as 

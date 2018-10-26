@@ -442,12 +442,6 @@ foreach my $command ('xref','ref', 'pxref',
   $simple_text_commands{$command} = 1;
 }
 
-# Commands that don't contain other @-commands.
-my %no_command_commands;
-foreach my $command ('errormsg', 'U', 'sortas') {
-  $no_command_commands{$command} = 1;
-}
-
 # commands that accept full text, but no block or top-level commands
 my %full_text_commands;
 foreach my $brace_command (keys (%brace_commands)) {  
@@ -480,9 +474,6 @@ foreach my $command (keys(%full_text_commands)) {
 }
 foreach my $command (keys(%simple_text_commands)) {
   $default_valid_nestings{$command} = \%in_simple_text_commands;
-}
-foreach my $command (keys(%no_command_commands)) {
-  $default_valid_nestings{$command} = {};
 }
 foreach my $command (keys(%full_line_commands)) {
   $default_valid_nestings{$command} = \%in_full_line_commands;
