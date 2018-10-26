@@ -1,5 +1,13 @@
 2018-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_check_valid_nesting): New sub, split 
+	out from _parse_texi.
+	(_parser_texi): Call it.
+	(%in_full_line_commands): Remove useless variable, as the same
+	as %in_full_text_commands.
+
+2018-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (%in_full_text_commands): Do not
 	allow @indent, @noindent.
 	(%in_full_line_commands): No exception for @indent, @noindent.

@@ -386,12 +386,9 @@ foreach my $block_command (keys(%block_commands)) {
     if ($block_commands{$block_command} eq 'conditional');
 }
 
-# commands that may happen on lines where everything is
-# permitted
-my %in_full_line_commands = %in_full_text_commands;
 
-# commands that may happen on sectioning commands 
-my %in_full_line_commands_no_refs = %in_full_line_commands;
+# commands that may appear inside sectioning commands 
+my %in_full_line_commands_no_refs = %in_full_text_commands;
 foreach my $not_in_full_line_commands_no_refs ('titlefont', 
                                    'anchor', 'footnote', 'verb') {
   delete $in_full_line_commands_no_refs{$not_in_full_line_commands_no_refs};
@@ -448,36 +445,35 @@ foreach my $brace_command (keys (%brace_commands)) {
 }
 
 # commands that accept almost the same as in full text, except
-# what do not make sense on a line.
+# what does not make sense on a line.
 my %full_line_commands;
 $full_line_commands{'center'} = 1;
 $full_line_commands{'exdent'} = 1;
 $full_line_commands{'item'} = 1;
 $full_line_commands{'itemx'} = 1;
 
-# Fill the valid nestings hash.  All commands not in that hash 
-# are considered to accept anything within.  There are additional
-# context tests, to make sure, for instance that we are testing
-# @-commands on the block, misc or node @-command line and not
+# Fill the valid nestings hash.  The keys are the containing commands and
+# the values arrays of commands that are allowed to occur inside those
+# commands. All commands not in this hash are considered to accept anything.
+# There are additional context tests, to make sure, for instance that we are 
+# testing @-commands on the block, line or node @-command line and not
 # in the content.
-# index entry commands are dynamically set as in_index_commands
+# Index entry commands are dynamically set as %in_index_commands
 my %default_valid_nestings;
 
 foreach my $command (keys(%accent_commands)) {
   $default_valid_nestings{$command} = \%in_accent_commands;
 }
-foreach my $command (keys(%full_text_commands)) {
-  $default_valid_nestings{$command} = \%in_full_text_commands;
-}
 foreach my $command (keys(%simple_text_commands)) {
   $default_valid_nestings{$command} = \%in_simple_text_commands;
 }
-foreach my $command (keys(%full_line_commands)) {
-  $default_valid_nestings{$command} = \%in_full_line_commands;
+foreach my $command (keys(%full_text_commands), keys(%full_line_commands)) {
+  $default_valid_nestings{$command} = \%in_full_text_commands;
 }
 foreach my $command (keys(%full_line_commands_no_refs)) {
   $default_valid_nestings{$command} = \%in_full_line_commands_no_refs;
 }
+
 # Only for block commands with line arguments
 foreach my $command (keys(%block_commands)) {
   if ($block_commands{$command} and $block_commands{$command} ne 'raw'
@@ -494,8 +490,8 @@ foreach my $preformatted_context (@preformatted_contexts) {
   $preformatted_contexts{$preformatted_context} = 1;
 }
 
-# contexts on the context_stack stack where empty line don't trigger
-# paragraph
+# contexts on the context_stack stack where empty line doesn't trigger
+# a paragraph
 my %no_paragraph_contexts;
 foreach my $no_paragraph_context ('math', 'menu', @preformatted_contexts, 
                                   'def', 'inlineraw') {
@@ -3434,6 +3430,56 @@ sub _parse_texi_regex {
     $separator_match, $misc_text);
 }
 
+# Check whether $COMMAND can appear within $CURRENT->{'parent'}.
+sub _check_valid_nesting {
+  my ($self, $current, $command, $line_nr) = @_;
+
+  my $invalid_parent;
+  # error messages for forbidden constructs, like @node in @r, 
+  # block command on line command, @xref in @anchor or node...
+  if ($current->{'parent'}) { 
+    if ($current->{'parent'}->{'cmdname'}) {
+      if (defined($self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}})
+          and !$self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}}->{$command}
+          # we make sure that we are on a root @-command line and 
+          # not in contents
+          and (!$root_commands{$current->{'parent'}->{'cmdname'}}
+               or ($current->{'type'}
+                   and $current->{'type'} eq 'line_arg'))
+          # we make sure that we are on a block @-command line and 
+          # not in contents
+          and (!($block_commands{$current->{'parent'}->{'cmdname'}})
+               or ($current->{'type'} 
+                    and $current->{'type'} eq 'block_line_arg'))
+          # we make sure that we are on an @item/@itemx line and
+          # not in an @enumerate, @multitable or @itemize @item.
+          and (($current->{'parent'}->{'cmdname'} ne 'itemx'
+               and $current->{'parent'}->{'cmdname'} ne 'item')
+               or ($current->{'type'}
+                        and $current->{'type'} eq 'line_arg'))) {
+        $invalid_parent = $current->{'parent'}->{'cmdname'};
+      }
+    } elsif ($self->{'context_stack'}->[-1] eq 'def'
+      # FIXME instead of hardcoding in_full_line_commands_no_refs
+      # it would be better to use the parent command valid_nesting.
+             and !$in_full_line_commands_no_refs{$command}) {
+      my $def_block = $current;
+      while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
+                           or $def_block->{'parent'}->{'type'} ne 'def_line')) {
+        $def_block = $def_block->{'parent'};
+      }
+
+      $invalid_parent = $def_block->{'parent'}->{'parent'}->{'cmdname'};
+    }
+  }
+
+  if (defined($invalid_parent)) {
+    $self->line_warn(sprintf(__("\@%s should not appear in \@%s"), 
+              $command, $invalid_parent), $line_nr);
+  }
+}
+
+
 # the main subroutine
 sub _parse_texi($;$)
 {
@@ -4036,49 +4082,7 @@ sub _parse_texi($;$)
                       $command), $line_nr);
         }
 
-        my $invalid_parent;
-        # error messages for forbidden constructs, like @node in @r, 
-        # block command on line command, @xref in @anchor or node...
-        if ($current->{'parent'}) { 
-          if ($current->{'parent'}->{'cmdname'}) {
-            if (defined($self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}})
-                and !$self->{'valid_nestings'}->{$current->{'parent'}->{'cmdname'}}->{$command}
-                # we make sure that we are on a root @-command line and 
-                # not in contents
-                and (!$root_commands{$current->{'parent'}->{'cmdname'}}
-                     or ($current->{'type'}
-                         and $current->{'type'} eq 'line_arg'))
-                # we make sure that we are on a block @-command line and 
-                # not in contents
-                and (!($block_commands{$current->{'parent'}->{'cmdname'}})
-                     or ($current->{'type'} 
-                          and $current->{'type'} eq 'block_line_arg'))
-                # we make sure that we are on an @item/@itemx line and
-                # not in an @enumerate, @multitable or @itemize @item.
-                and (($current->{'parent'}->{'cmdname'} ne 'itemx'
-                     and $current->{'parent'}->{'cmdname'} ne 'item')
-                     or ($current->{'type'}
-                              and $current->{'type'} eq 'line_arg'))) {
-              $invalid_parent = $current->{'parent'}->{'cmdname'};
-            }
-          } elsif ($self->{'context_stack'}->[-1] eq 'def'
-            # FIXME instead of hardcoding in_full_line_commands_no_refs
-            # it would be better to use the parent command valid_nesting.
-                   and !$in_full_line_commands_no_refs{$command}) {
-            my $def_block = $current;
-            while ($def_block->{'parent'} and (!$def_block->{'parent'}->{'type'} 
-                                 or $def_block->{'parent'}->{'type'} ne 'def_line')) {
-              $def_block = $def_block->{'parent'};
-            }
-
-            $invalid_parent = $def_block->{'parent'}->{'parent'}->{'cmdname'};
-          }
-        }
-
-        if (defined($invalid_parent)) {
-          $self->line_warn(sprintf(__("\@%s should not appear in \@%s"), 
-                    $command, $invalid_parent), $line_nr);
-        }
+        _check_valid_nesting ($self, $current, $command, $line_nr);
 
         last if ($def_line_continuation);
 
