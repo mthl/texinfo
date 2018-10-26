@@ -365,13 +365,13 @@ foreach my $no_brace_command (keys(%no_brace_commands)) {
 $in_accent_commands{'c'} = 1;
 $in_accent_commands{'comment'} = 1;
 
-# commands that may appear in texts arguments
+# commands that may appear in text arguments
 my %in_full_text_commands;
 foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
-foreach my $in_full_text_command ('c', 'comment', 'refill', 'noindent',
-                         'indent', 'columnfractions', 'set', 'clear', 'end') {
+foreach my $in_full_text_command ('c', 'comment', 'refill',
+                         'columnfractions', 'set', 'clear', 'end') {
   $in_full_text_commands{$in_full_text_command} = 1;
 }
 
@@ -389,9 +389,6 @@ foreach my $block_command (keys(%block_commands)) {
 # commands that may happen on lines where everything is
 # permitted
 my %in_full_line_commands = %in_full_text_commands;
-foreach my $not_in_full_line_commands('noindent', 'indent') {
-  delete $in_full_line_commands{$not_in_full_line_commands};
-}
 
 # commands that may happen on sectioning commands 
 my %in_full_line_commands_no_refs = %in_full_line_commands;

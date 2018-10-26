@@ -1,5 +1,12 @@
 2018-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (%in_full_text_commands): Do not
+	allow @indent, @noindent.
+	(%in_full_line_commands): No exception for @indent, @noindent.
+	* NEWS: Mention change in allowed nesting.
+
+2018-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (%simple_text_commands): Add all the 
 	commands that have a number >= 1 as their argument type in
 	%brace_commands, except for inline conditional commands.  This 
