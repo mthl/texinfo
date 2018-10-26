@@ -431,14 +431,14 @@ delete $simple_text_commands{'center'};
 delete $simple_text_commands{'exdent'};
 
 foreach my $command (keys (%brace_commands)) {
-  if ($brace_commands{$command} eq '1') {
+  if ($brace_commands{$command} =~ /\d/
+      and $brace_commands{$command} > 0
+      and !$inline_conditional_commands{$command}) {
     $simple_text_commands{$command} = 1;
   }
 }
 
-foreach my $command ('xref','ref', 'pxref', 
-                     'inforef', 'shortcaption', 'math', 'indicateurl',
-                     'email', 'uref', 'url', 'image', 'abbr', 'acronym') {
+foreach my $command ('shortcaption', 'math') {
   $simple_text_commands{$command} = 1;
 }
 
