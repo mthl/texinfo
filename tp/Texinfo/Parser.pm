@@ -4684,9 +4684,9 @@ sub _parse_texi($;$)
                 and !$self->{'definfoenclose'}->{$command});
 
           if ($in_index_commands{$command}
-              and $current->{'parent'}->{'cmdname'}
-              and !$self->{'command_index'}
-                        ->{$current->{'parent'}->{'cmdname'}}) {
+              and (!$current->{'parent'}->{'cmdname'}
+                    or !$self->{'command_index'}
+                             ->{$current->{'parent'}->{'cmdname'}})) {
             $self->line_warn(
               sprintf(__("\@%s should only appear in an index entry"),
                       $command), $line_nr);

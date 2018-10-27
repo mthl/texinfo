@@ -801,48 +801,48 @@ $result_menus{'explicit_sort_key'} = {
 
 $result_errors{'explicit_sort_key'} = [
   {
-    'error_line' => ':9: warning: @sortas should not appear in @b
+    'error_line' => ':9: warning: @sortas should only appear in an index entry
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => '@sortas should not appear in @b',
+    'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: @sortas should not appear in @top
+    'error_line' => ':11: warning: @sortas should only appear in an index entry
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => '@sortas should not appear in @top',
+    'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
-    'error_line' => ':11: warning: @sortas should not appear in @code
+    'error_line' => ':11: warning: @sortas should only appear in an index entry
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
-    'text' => '@sortas should not appear in @code',
+    'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
-    'error_line' => ':13: warning: @sortas should not appear in @top
+    'error_line' => ':13: warning: @sortas should only appear in an index entry
 ',
     'file_name' => '',
     'line_nr' => 13,
     'macro' => '',
-    'text' => '@sortas should not appear in @top',
+    'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   },
   {
-    'error_line' => ':14: warning: @sortas should not appear in @url
+    'error_line' => ':14: warning: @sortas should only appear in an index entry
 ',
     'file_name' => '',
     'line_nr' => 14,
     'macro' => '',
-    'text' => '@sortas should not appear in @url',
+    'text' => '@sortas should only appear in an index entry',
     'type' => 'warning'
   }
 ];
