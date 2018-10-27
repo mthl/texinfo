@@ -29,7 +29,7 @@ dump_errors ()
 void
 wipe_errors ()
 
-void
+int
 parse_file(filename)
         char * filename
 

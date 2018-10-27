@@ -2,7 +2,7 @@
 extern ELEMENT *Root;
 extern CONF conf;
 
-void parse_file (char *filename);
+int parse_file (char *filename);
 ELEMENT *get_root (void);
 char *element_type_name (ELEMENT *element);
 int num_contents_children (ELEMENT *e);

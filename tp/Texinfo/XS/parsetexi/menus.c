@@ -20,7 +20,6 @@
 #include "input.h"
 #include "text.h"
 
-// 3549
 /* Save 'menu_entry_name' 'menu_entry_node', and 'menu_entry_description'
    extra keys on the top-level @menu element. */
 void
@@ -41,7 +40,6 @@ register_extra_menu_entry_information (ELEMENT *current)
               line_warn ("empty menu entry name in `%s'", texi);
               free (texi);
             }
-          // FIXME: Check menu label isn't empty
         }
       else if (arg->type == ET_menu_entry_node)
         {
@@ -96,7 +94,6 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
   char *line = *line_inout;
   int retval = 1;
 
-  // 4052
   /* A "*" at the start of a line beginning a menu entry. */
   if (*line == '*'
       && current->type == ET_preformatted
@@ -117,7 +114,6 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
 
       /* The ET_menu_star element won't appear in the final tree. */
     }
-  // 4067
   /* A space after a "*" at the beginning of a line. */
   else if (strchr (whitespace_chars, *line)
            && current->contents.number > 0
@@ -160,7 +156,7 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
         }
 
       if (pop_context () != ct_preformatted)
-        abort (); // bug
+        abort (); /* bug */
 
       menu_entry = new_element (ET_menu_entry);
       leading_text = new_element (ET_menu_entry_leading_text);
@@ -174,7 +170,6 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
       text_append_n (&leading_text->text, line, leading_spaces);
       line += leading_spaces;
     }
-  // 4116
   /* A "*" followed by anything other than a space. */
   else if (current->contents.number > 0
            && last_contents_child(current)->type == ET_menu_star)
@@ -182,7 +177,6 @@ handle_menu (ELEMENT **current_inout, char **line_inout)
       debug ("ABORT MENU STAR");
       last_contents_child(current)->type = ET_NONE;
     }
-  // 4122
   /* After a separator in a menu (which would have been added in
      handle_separator in separator.c). */
   else if (current->args.number > 0

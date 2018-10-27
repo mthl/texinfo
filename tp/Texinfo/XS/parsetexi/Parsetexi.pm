@@ -289,7 +289,13 @@ sub parse_texi_file ($$)
   my $file_name = shift;
   my $tree_stream;
 
-  parse_file ($file_name);
+  my $status = parse_file ($file_name);
+  if ($status) {
+    # TODO: internationalise this message?
+    $self->document_error(sprintf("could not open %s: %s", $file_name, $!));
+    return undef;
+  }
+
   my $TREE = build_texinfo_tree ();
   get_parser_info ($self);
   _complete_node_menus ($self, $TREE);

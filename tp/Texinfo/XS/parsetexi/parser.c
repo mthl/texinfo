@@ -289,7 +289,6 @@ wipe_global_info (void)
 }
 
 
-/* 835 */
 ELEMENT *
 parse_texi_file (char *filename)
 {
@@ -303,12 +302,7 @@ parse_texi_file (char *filename)
   
   status = input_push_file (filename);
   if (status)
-    {
-      /* FIXME document_error */
-      abort ();
-    }
-
-  //filename = strdup (filename);
+    return 0;
 
   /* Strip off a leading directory path, by looking for the last
      '/' in filename. */

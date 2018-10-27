@@ -78,11 +78,14 @@ reset_parser (void)
 }
 
 /* Set ROOT to root of tree obtained by parsing FILENAME. */
-void
+int
 parse_file (char *filename)
 {
   debug_output = 0;
   Root = parse_texi_file (filename);
+  if (Root)
+    return 0;
+  return 1;
 }
 
 ELEMENT *
