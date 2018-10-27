@@ -856,30 +856,17 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
 
   // much TODO here.
 
-  /* 409 "simple text commands" */
   if ((outer_flags & CF_line
             && (command_data(outer).data >= 0
                 || (command_data(outer).data == LINE_line
                     && !(outer_flags & (CF_def | CF_sectioning)))
                 || command_data(outer).data == LINE_text)
             && outer != CM_center
-            && outer != CM_exdent) // 423
-      || outer == CM_titlefont // 425
-      || outer == CM_anchor
-      || outer == CM_xref
-      || outer == CM_ref
-      || outer == CM_pxref
-      || outer == CM_inforef
+            && outer != CM_exdent)
+      || ((outer_flags & CF_brace)
+           && command_data(outer).data > 0)
       || outer == CM_shortcaption
       || outer == CM_math
-      || outer == CM_indicateurl
-      || outer == CM_email
-      || outer == CM_uref
-      || outer == CM_url
-      || outer == CM_image
-      || outer == CM_abbr
-      || outer == CM_acronym
-      || outer == CM_dmn
       || (outer_flags & CF_index_entry_command) // 563
       || (outer_flags & CF_block // 475
           && !(outer_flags & CF_def)
@@ -908,19 +895,9 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       if (cmd == CM_c || cmd == CM_comment)
         ok = 1;
     }
-
-
-  else if (outer == CM_errormsg
-           || outer == CM_sortas)
-    {
-      ok = 0;
-    }
-  // 432 "full text commands"
-  else if ((outer_flags & CF_brace
-             && ((outer_flags & CF_inline)
-                 || command_data(outer).data == BRACE_style))
-
-  // 445 "full line commands"
+  /* "full text commands" */
+  else if ((outer_flags & CF_brace) && command_data(outer).data == BRACE_style
+  /* "full line commands" */
            || outer == CM_center
            || outer == CM_exdent
            || outer == CM_item
@@ -944,8 +921,6 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       else if (cmd == CM_c
                || cmd == CM_comment
                || cmd == CM_refill
-               || cmd == CM_noindent
-               || cmd == CM_indent
                || cmd == CM_columnfractions
                || cmd == CM_set
                || cmd == CM_clear
@@ -965,15 +940,6 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
           if (outer_flags & CF_index_entry_command)
             ok = 1;
           else
-            ok = 0;
-        }
-
-      // 390 exceptions for all of "full line commands",
-      //     "full line commands no refs" and "simple text commands"
-     if (!(outer_flags & CF_brace
-             && (command_data(outer).data == 1)))
-        {
-          if (cmd == CM_indent || cmd == CM_noindent)
             ok = 0;
         }
 

@@ -105,8 +105,6 @@ handle_other_command (ELEMENT *current, char **line_inout,
       misc = new_element (ET_NONE);
       misc->cmd = cmd;
       add_to_element_contents (current, misc);
-      if (only_in_headings)
-        add_extra_integer (misc, "invalid_nesting", 1);
       register_global_command (misc);
       if (close_preformatted_command(cmd))
         current = begin_preformatted (current);
