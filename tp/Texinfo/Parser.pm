@@ -4105,16 +4105,13 @@ sub _parse_texi($;$)
           my $misc;
 
           if ($arg_spec eq 'noarg') {
-            my $only_in_headings = 0;
             if ($in_heading_commands{$command}) {
               $self->line_error(
                 sprintf(__("\@%s should only appear in heading or footing"),
                         $command), $line_nr);
-              $only_in_headings = 1;
             }
             $misc = {'cmdname' => $command, 'parent' => $current};
             push @{$current->{'contents'}}, $misc;
-            $misc->{'extra'}->{'invalid_nesting'} = 1 if ($only_in_headings);
             _register_global_command($self, $misc, $line_nr);
             $current = _begin_preformatted($self, $current)
               if ($close_preformatted_commands{$command});

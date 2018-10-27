@@ -1,3 +1,8 @@
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <in heading commands>:
+	Do not set an 'invalid_nesting' value.
+
 2018-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_check_valid_nesting): New sub, split 
