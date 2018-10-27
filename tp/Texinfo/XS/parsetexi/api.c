@@ -42,10 +42,8 @@ reset_floats ()
 }
 
 void
-reset_parser (void)
+reset_parser_except_conf (void)
 {
-  debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
-
   wipe_indices (); /* do before destroying tree to check route_not_in_tree */
   if (Root)
     {
@@ -60,15 +58,23 @@ reset_parser (void)
   reset_context_stack ();
   reset_region_stack ();
   reset_floats ();
-  clear_expanded_formats ();
   wipe_global_info ();
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
   free_small_strings ();
-  reset_conf ();
 
   current_node = current_section = current_part = 0;
+}
+
+void
+reset_parser (void)
+{
+  debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
+
+  reset_parser_except_conf ();
+  clear_expanded_formats ();
+  reset_conf ();
 }
 
 /* Set ROOT to root of tree obtained by parsing FILENAME. */
@@ -90,8 +96,7 @@ get_root (void)
 void
 parse_string (char *string)
 {
-  if (Root)
-    destroy_element_and_children (Root);
+  reset_parser_except_conf ();
   input_push_text (strdup (string), 0);
   Root = parse_texi (new_element (ET_root_line));
 }
@@ -100,8 +105,7 @@ parse_string (char *string)
 void
 parse_text (char *string)
 {
-  if (Root)
-    destroy_element_and_children (Root);
+  reset_parser_except_conf ();
   input_push_text_with_line_nos (strdup (string), 1);
   Root = parse_texi (new_element (ET_text_root));
 }

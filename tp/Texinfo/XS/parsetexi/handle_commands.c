@@ -686,7 +686,6 @@ funexit:
 }
 
 
-          /* TODO: Allow user to change which formats are true. */
 struct expanded_format {
     char *format;
     int expandedp;

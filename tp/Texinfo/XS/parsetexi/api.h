@@ -8,20 +8,13 @@ char *element_type_name (ELEMENT *element);
 int num_contents_children (ELEMENT *e);
 int num_args_children (ELEMENT *e);
 void reset_parser (void);
+void reset_parser_except_conf (void);
 
 /* In parser.c */
 void set_documentlanguage (char *);
 
 //HV *build_global_info (void);
 //HV *build_global_info2 (void);
-
-/* Defined in dump_perl.c */
-char *dump_tree_to_string_1 (void);
-char *dump_tree_to_string_2 (void);
-char *dump_tree_to_string_25 (void);
-char *dump_tree_to_string_3 (void);
-char *dump_root_element_1 (void);
-char *dump_root_element_2 (void);
 
 /* In input.c */
 void add_include_directory (char *filename);
