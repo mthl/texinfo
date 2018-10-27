@@ -1,5 +1,11 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (@titlefont @center @sp):
+	Do not mention the possibility of using these outside of a title 
+	page.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%in_index_commands): New hash, 
 	containing only 'sortas'.
 	* tp/Texinfo/Parser.pm (%in_full_text_commands): Do not 

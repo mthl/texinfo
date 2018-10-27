@@ -2322,9 +2322,6 @@ A template for this method looks like this:
 
 The spacing of the example fits an 8.5 by 11 inch manual.
 
-You can in fact use these commands anywhere, not just on a title page,
-but since they are not logical markup commands, we don't recommend
-them.
 
 @node @code{@@title @@subtitle @@author}
 @subsection @code{@@title}, @code{@@subtitle}, and @code{@@author}
