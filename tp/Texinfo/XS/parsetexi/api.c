@@ -51,7 +51,6 @@ reset_parser_except_conf (void)
       Root = 0;
     }
   wipe_user_commands ();
-  wipe_values ();
   wipe_macros ();
   init_index_commands ();
   wipe_errors ();
@@ -73,6 +72,7 @@ reset_parser (void)
   debug ("!!!!!!!!!!!!!!!! RESETTING THE PARSER !!!!!!!!!!!!!!!!!!!!!");
 
   reset_parser_except_conf ();
+  wipe_values ();
   clear_expanded_formats ();
   reset_conf ();
 }
