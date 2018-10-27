@@ -407,7 +407,9 @@ next_text (ELEMENT *current)
           if (file != stdin)
             {
               if (fclose (input_stack[input_number - 1].file) == EOF)
-                abort (); // FIXME: error
+                fprintf (stderr, "error on closing %s: %s",
+                        input_stack[input_number - 1].line_nr.file_name,
+                        strerror (errno));
             }
         }
 

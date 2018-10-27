@@ -117,15 +117,16 @@ wipe_errors (void)
 static void
 bug_message_internal (char *format, va_list v)
 {
-  printf ("You found a bug: ");
-  vprintf (format, v);
-  printf ("\n");
+  fprintf (stderr, "You found a bug: ");
+  vfprintf (stderr, format, v);
+  fprintf (stderr, "\n");
   if (line_nr.file_name)
     {
-      printf ("last location %s:%d", line_nr.file_name, line_nr.line_nr);
+      fprintf (stderr,
+               "last location %s:%d", line_nr.file_name, line_nr.line_nr);
       if (line_nr.macro)
-        printf (" (possibly involving @%s)", line_nr.macro);
-      printf ("\n");
+        fprintf (stderr, " (possibly involving @%s)", line_nr.macro);
+      fprintf (stderr, "\n");
     }
   exit (1);
 }
