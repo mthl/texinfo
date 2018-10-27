@@ -237,6 +237,7 @@ my %ref_commands              = %Texinfo::Common::ref_commands;
 my %region_commands           = %Texinfo::Common::region_commands;
 my %code_style_commands       = %Texinfo::Common::code_style_commands;
 my %in_heading_commands       = %Texinfo::Common::in_heading_commands;
+my %in_index_commands         = %Texinfo::Common::in_index_commands;
 my %explained_commands        = %Texinfo::Common::explained_commands;
 my %inline_format_commands    = %Texinfo::Common::inline_format_commands;
 my %inline_commands           = %Texinfo::Common::inline_commands;
@@ -380,7 +381,6 @@ foreach my $out_format (keys(%format_raw_commands)) {
 }
 delete $in_full_text_commands{'caption'};
 delete $in_full_text_commands{'shortcaption'};
-delete $in_full_text_commands{'sortas'};
 foreach my $block_command (keys(%block_commands)) {
   $in_full_text_commands{$block_command} = 1 
     if ($block_commands{$block_command} eq 'conditional');
@@ -398,12 +398,6 @@ foreach my $not_in_full_line_commands_no_refs ('titlefont',
 my %in_simple_text_commands = %in_full_line_commands_no_refs;
 foreach my $not_in_simple_text_command('xref', 'ref', 'pxref', 'inforef') {
   delete $in_simple_text_commands{$not_in_simple_text_command};
-}
-
-# commands that may occur in index entries
-my %in_index_commands = %in_simple_text_commands;
-foreach my $in_index_command ('sortas') {
-  $in_index_commands{$in_index_command} = 1;
 }
 
 # commands that only accept simple text as argument in any context.
@@ -458,7 +452,7 @@ $full_line_commands{'itemx'} = 1;
 # There are additional context tests, to make sure, for instance that we are 
 # testing @-commands on the block, line or node @-command line and not
 # in the content.
-# Index entry commands are dynamically set as %in_index_commands
+# Index entry commands are dynamically set as %in_simple_text_commands
 my %default_valid_nestings;
 
 foreach my $command (keys(%accent_commands)) {
@@ -633,7 +627,7 @@ sub _setup_parser {
     foreach my $prefix ($index, substr($index, 0, 1)) {
       $parser->{'line_commands'}->{$prefix.'index'} = 'line';
       $parser->{'no_paragraph_commands'}->{$prefix.'index'} = 1;
-      $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_index_commands;
+      $parser->{'valid_nestings'}->{$prefix.'index'} = \%in_simple_text_commands;
       $parser->{'command_index'}->{$prefix.'index'} = $index;
     }
   }
@@ -4682,13 +4676,22 @@ sub _parse_texi($;$)
             $line = _start_empty_line_after_command($line, $current, $block);
           }
         } elsif (defined($brace_commands{$command})) {
-          
           push @{$current->{'contents'}}, { 'cmdname' => $command, 
                                             'parent' => $current,
                                             'contents' => [] };
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command}
                 and !$self->{'definfoenclose'}->{$command});
+
+          if ($in_index_commands{$command}
+              and $current->{'parent'}->{'cmdname'}
+              and !$self->{'command_index'}
+                        ->{$current->{'parent'}->{'cmdname'}}) {
+            $self->line_warn(
+              sprintf(__("\@%s should only appear in an index entry"),
+                      $command), $line_nr);
+          }
+          
           $current = $current->{'contents'}->[-1];
           if ($command eq 'click') {
             $current->{'extra'}->{'clickstyle'} = $self->{'clickstyle'};
@@ -5491,7 +5494,7 @@ sub _parse_line_command_args($$$)
         }
         $self->{'line_commands'}->{$name.'index'} = 'line';
         $self->{'no_paragraph_commands'}->{$name.'index'} = 1;
-        $self->{'valid_nestings'}->{$name.'index'} = \%in_index_commands;
+        $self->{'valid_nestings'}->{$name.'index'} = \%in_simple_text_commands;
         $self->{'command_index'}->{$name.'index'} = $name;
       }
     } else {

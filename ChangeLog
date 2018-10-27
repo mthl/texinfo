@@ -1,5 +1,17 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (%in_index_commands): New hash, 
+	containing only 'sortas'.
+	* tp/Texinfo/Parser.pm (%in_full_text_commands): Do not 
+	specially remove 'sortas'.
+	(_setup_parser, _parse_command_line_args): Use 
+	%in_simple_text_commands for the commands that may appear in 
+	index commands.  This was done until 2017-04-01.
+	(_parse_texi) <brace commands>: Move check for valid nesting of 
+	@sortas here.  Change error message to mention index entry.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_parse_texi) <in heading commands>:
 	Do not set an 'invalid_nesting' value.
 

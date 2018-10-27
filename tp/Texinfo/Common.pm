@@ -526,6 +526,14 @@ foreach my $in_heading_command ('thischapter', 'thischaptername',
   $other_commands{$in_heading_command} = 'noarg';
 }
 
+
+# only valid in index entries
+our %in_index_commands;
+foreach my $in_index_command ('sortas') {
+  $in_index_commands{$in_index_command} = 1;
+}
+
+
 our %index_names = (
  'cp' => {'in_code' => 0},
  'fn' => {'in_code' => 1},

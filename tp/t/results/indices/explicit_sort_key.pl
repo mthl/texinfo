@@ -810,12 +810,30 @@ $result_errors{'explicit_sort_key'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':11: warning: @sortas should not appear in @top
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@sortas should not appear in @top',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':11: warning: @sortas should not appear in @code
 ',
     'file_name' => '',
     'line_nr' => 11,
     'macro' => '',
     'text' => '@sortas should not appear in @code',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':13: warning: @sortas should not appear in @top
+',
+    'file_name' => '',
+    'line_nr' => 13,
+    'macro' => '',
+    'text' => '@sortas should not appear in @top',
     'type' => 'warning'
   },
   {
