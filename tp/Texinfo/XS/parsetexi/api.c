@@ -341,17 +341,7 @@ element_to_perl_hash (ELEMENT *e)
               /* For references to other parts of the tree, create the hash so 
                  we can point to it.  */
               if (!f->hv)
-                {
-                  if (f->parent_type != route_not_in_tree)
-                    {
-                      /* TODO: Set all out-of-tree elements with
-                         add_extra_element_oot and then eliminate
-                         use of 'parent_type' to differentiate. */
-                      f->hv = newHV ();
-                    }
-                  else
-                    element_to_perl_hash (f);
-                }
+                f->hv = newHV ();
               STORE(newRV_inc ((SV *)f->hv));
               break;
             case extra_element_oot:
