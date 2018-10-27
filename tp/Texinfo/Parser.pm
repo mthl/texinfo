@@ -1809,9 +1809,9 @@ sub _save_line_directive
 
 # returns next text fragment, be it pending from a macro expansion or 
 # text or file
-sub _next_text($$$)
+sub _next_text($$)
 {
-  my ($self, $line_nr, $current) = @_;
+  my ($self, $line_nr) = @_;
  
   while (@{$self->{'input'}}) {
     my $input = $self->{'input'}->[0];
@@ -1854,15 +1854,15 @@ sub _next_text($$$)
 }
 
 # collect text and line numbers until an end of line is found.
-sub _new_line($$$)
+sub _new_line($$)
 {
-  my ($self, $line_nr, $current) = @_;
+  my ($self, $line_nr) = @_;
 
   my $new_line = '';
 
   while (1) {
     my $new_text;
-    ($new_text, $line_nr) = _next_text($self, $line_nr, $current);
+    ($new_text, $line_nr) = _next_text($self, $line_nr);
     if (!defined($new_text)) {
       $new_line = undef if ($new_line eq '');
       last;
@@ -1936,7 +1936,7 @@ sub _expand_macro_arguments($$$$)
       print STDERR "MACRO ARG end of line\n" if ($self->{'DEBUG'});
       $arguments->[-1] .= $line;
 
-      ($line, $line_nr) = _new_line($self, $line_nr, $macro);
+      ($line, $line_nr) = _new_line($self, $line_nr);
       if (!defined($line)) {
         $self->line_error(sprintf(__("\@%s missing closing brace"), 
            $name), $line_nr_orig);
@@ -3479,7 +3479,7 @@ sub _parse_texi($;$)
  NEXT_LINE:
   while (1) {
     my $line;
-    ($line, $line_nr) = _next_text($self, $line_nr, $current);
+    ($line, $line_nr) = _next_text($self, $line_nr);
     last if (!defined($line));
 
     if ($self->{'DEBUG'}) {
@@ -3628,7 +3628,7 @@ sub _parse_texi($;$)
             }
             # Ignore until end of line
             if ($line !~ /\n/) {
-              ($line, $line_nr) = _new_line($self, $line_nr, $conditional);
+              ($line, $line_nr) = _new_line($self, $line_nr);
               print STDERR "IGNORE CLOSE line: $line" if ($self->{'DEBUG'});
             }
             print STDERR "CLOSED conditional $end_command\n" if ($self->{'DEBUG'});
@@ -3692,7 +3692,7 @@ sub _parse_texi($;$)
       while ($line eq '') {
         print STDERR "EMPTY TEXT\n"
           if ($self->{'DEBUG'});
-        ($line, $line_nr) = _next_text($self, $line_nr, $current);
+        ($line, $line_nr) = _next_text($self, $line_nr);
         if (!defined($line)) {
           # end of the file or of a text fragment.
           $current = _end_line ($self, $current, $line_nr);
@@ -3740,7 +3740,7 @@ sub _parse_texi($;$)
              if ($args_number >= 2);
         } else {
           if ($line !~ /\n/) {
-            ($line, $line_nr) = _new_line($self, $line_nr, $expanded_macro);
+            ($line, $line_nr) = _new_line($self, $line_nr);
             $line = '' if (!defined($line));
           }
           $line =~ s/^\s*// if ($line =~ /\S/);
@@ -4198,8 +4198,7 @@ sub _parse_texi($;$)
             if ($command eq 'indent'
                 or $command eq 'noindent') {
               if ($line !~ /\n/) {
-                my ($new_line, $new_line_nr) =
-                _new_line($self, $line_nr, undef);
+                my ($new_line, $new_line_nr) = _new_line($self, $line_nr);
                 $line .= $new_line if (defined($new_line));
               }
               $line =~ s/^(\s*)//;
@@ -4263,7 +4262,7 @@ sub _parse_texi($;$)
 
             # complete the line if there was a user macro expansion
             if ($line !~ /\n/) {
-              my ($new_line, $new_line_nr) = _new_line($self, $line_nr, undef);
+              my ($new_line, $new_line_nr) = _new_line($self, $line_nr);
               $line .= $new_line if (defined($new_line));
             }
             $misc = {'cmdname' => $command,
@@ -4592,7 +4591,7 @@ sub _parse_texi($;$)
                     'contents' => []
                   };
                   while (not $line =~ /^\s*\@end\s+$command/) {
-                    ($line, $line_nr) = _new_line($self, $line_nr, $current);
+                    ($line, $line_nr) = _new_line($self, $line_nr);
                     if (!$line) {
                       # unclosed block
                       $line = '';
@@ -5150,8 +5149,7 @@ sub _parse_texi($;$)
                     }
                   } else {
                     my $new_text;
-                    ($new_text, $line_nr) = _next_text($self,
-                                                       $line_nr, $current);
+                    ($new_text, $line_nr) = _next_text($self, $line_nr);
                     if (!$new_text) {
                       # ERROR - unbalanced brace
                     }
@@ -5186,8 +5184,7 @@ sub _parse_texi($;$)
                   }
                 } else {
                   my $new_text;
-                  ($new_text, $line_nr) = _next_text($self,
-                                                     $line_nr, $current);
+                  ($new_text, $line_nr) = _next_text($self, $line_nr);
                   $line .= $new_text;
                   if (!$line) {
                     # ERROR - unbalanced brace

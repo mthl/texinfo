@@ -1,5 +1,11 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_next_text, _new_line): Do not pass
+	$current as an argument, as it is not used any more now the
+	check for the #line directive has been moved out.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/80include.t (cpp_lines): Add test of macro where a
 	line that looks like a #line directive is not the very first
 	line, as these may be treated differently by Parser.pm.
