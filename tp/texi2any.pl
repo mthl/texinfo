@@ -386,9 +386,6 @@ sub set_from_init_file($$) {
     main::document_warn(sprintf(main::__("%s: unknown variable %s"), 
                                 'set_from_init_file', $var));
     return 0;
-  } elsif (Texinfo::Common::obsolete_option($var)) {
-    main::document_warn(sprintf(main::__("%s: obsolete variable %s\n"), 
-                                  'set_from_init_file', $var));
   }
   return 0 if (defined($cmdline_options->{$var}));
   delete $default_options->{$var};
@@ -405,9 +402,6 @@ sub set_from_cmdline($$) {
     main::document_warn(sprintf(main::__("%s: unknown variable %s\n"), 
                                 'set_from_cmdline', $var));
     return 0;
-  } elsif (Texinfo::Common::obsolete_option($var)) {
-    main::document_warn(sprintf(main::__("obsolete variable %s\n"), 
-                                'set_from_cmdline', $var));
   }
   $cmdline_options->{$var} = $value;
   return 1;

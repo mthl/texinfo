@@ -204,14 +204,6 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
 # all are lower cased in texi2any.pl
 my @parser_options = map {uc($_)} (keys(%default_parser_state_configuration));
 
-my @obsolete_variables = ('TOP_HEADING_AT_BEGINNING', 'USE_SECTIONS',
-  'IDX_SUMMARY', 'I18N_PERL_HASH', 'USE_UNICODE', 'USE_NLS',
-  'USE_UP_FOR_ADJACENT_NODES', 'SEPARATE_DESCRIPTION', 
-  'NEW_CROSSREF_STYLE', 'SHORT_REF', 'IGNORE_PREAMBLE_TEXT',
-  'OUT_ENCODING', 'IN_ENCODING', 'DEFAULT_ENCODING',
-  'MACRO_BODY_IGNORES_LEADING_SPACE', 'INLINE_INSERTCOPYING'
-);
-
 my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
   'SPLIT_INDEX');
 
@@ -285,26 +277,14 @@ foreach my $var (keys(%document_settable_at_commands),
          keys(%document_settable_unique_at_commands),
          @command_line_settables, @variable_string_settables, 
          @variable_other_settables, @parser_options,
-         @formats_settable,
-         @obsolete_variables, @variable_settables_not_used) {
+         @formats_settable, @variable_settables_not_used) {
   $valid_options{$var} = 1;
-}
-
-my %obsolete_options;
-foreach my $var (@obsolete_variables) {
-  $obsolete_options{$var} = 1;
 }
 
 sub valid_option($)
 {
   my $option = shift;
   return $valid_options{$option};
-}
-
-sub obsolete_option($)
-{
-  my $option = shift;
-  return $obsolete_options{$option};
 }
 
 my %customization_variable_classes = (
@@ -315,7 +295,7 @@ my %customization_variable_classes = (
   'variable_other_settables' => \@variable_other_settables,
   'parser_options' => \@parser_options,
   #'formats_settable' => \@formats_settable,
-  'obsolete_variables' => \@obsolete_variables,
+  #'obsolete_variables' => \@obsolete_variables,
   'variable_settables_not_used' => \@variable_settables_not_used,
 );
 

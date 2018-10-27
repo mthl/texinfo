@@ -1,5 +1,22 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Common.pm (@obsolete_variables): Remove.
+	(obsolete_option): Remove.
+	(%customization_variable_classes): Remove 'obsolete_variables'.
+	* tp/texi2any.pl (set_from_init_file, set_from_cmdline),
+	* tp/Texinfo/Convert/Converter.pm (set_conf, force_conf):
+	Do not call Texinfo::Common::obsolete_option.
+	* NEWS: Mention that obsolete customization variables are no 
+	longer recognized.
+
+	* tp/Texinfo/Parser.pm (_setup_parser): Do not look at 
+	'INLINE_INSERTCOPYING'.
+
+	If more variables are deprecated, then it may be worth 
+	reinstating some of this code.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_command_with_command_as_argument):
 	Remove code checking for a case where the command has two 
 	elements in 'args', the first all whitespace, as this case never 
