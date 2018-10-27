@@ -3408,6 +3408,7 @@ sub _check_line_directive {
   my ($self, $line, $line_nr) = @_;
 
   if ($self->{'CPP_LINE_DIRECTIVES'}
+      and defined($line_nr->{'name'})
       and !$line_nr->{'macro'}
       and $line =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/) {
     _save_line_directive ($self, $2, $5);
