@@ -1,5 +1,13 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_check_line_directive, _save_line_directive)
+	(_next_text): Split out sub from _next_text.
+	(_parse_texi) <BEGIN LINE>: Call _check_line_directive and
+	_save_line_directive.  The condition for #line being meaningful 
+	is the same as what was in _next_text.  
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (#line directive) <CPP_LINE_DIRECTIVES>:
 	Add a missing ).
 

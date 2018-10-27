@@ -1797,6 +1797,16 @@ sub _item_multitable_parent($)
   return undef;
 }
 
+sub _save_line_directive
+{
+  my ($self, $line_nr, $file_name) = @_;
+
+  my $input = $self->{'input'}->[0];
+  return if !$input;
+  $input->{'line_nr'} = $line_nr if $line_nr;
+  $input->{'name'} = $file_name if $file_name;
+}
+
 # returns next text fragment, be it pending from a macro expansion or 
 # text or file
 sub _next_text($$$)
@@ -1817,36 +1827,16 @@ sub _next_text($$$)
     } elsif ($input->{'fh'}) {
       my $fh = $input->{'fh'};
       my $line = <$fh>;
-      while (defined($line)) {
+      if (defined($line)) {
         # add an end of line if there is none at the end of file
         if (eof($fh) and $line !~ /\n/) {
           $line .= "\n";
         }
         $line =~ s/\x{7F}.*\s*//;
-        if ($self->{'CPP_LINE_DIRECTIVES'}
-            # no cpp directives in ignored/macro/verbatim
-            and defined ($current)
-            and not 
-             (($current->{'cmdname'}
-              and $block_commands{$current->{'cmdname'}}
-               and ($block_commands{$current->{'cmdname'}} eq 'raw'
-                    or $block_commands{$current->{'cmdname'}} eq 'conditional'))
-             or 
-              ($current->{'parent'} and $current->{'parent'}->{'cmdname'}
-               and $current->{'parent'}->{'cmdname'} eq 'verb')
-             )
-            and $line =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/) {
-          $input->{'line_nr'} = $2;
-          if (defined($5)) {
-            $input->{'name'} = $5;
-          }
-          $line = <$fh>;
-        } else {
-          $input->{'line_nr'}++;
-          return ($line, {'line_nr' => $input->{'line_nr'}, 
-                          'file_name' => $input->{'name'},
-                          'macro' => ''});
-        }
+        $input->{'line_nr'}++;
+        return ($line, {'line_nr' => $input->{'line_nr'}, 
+            'file_name' => $input->{'name'},
+            'macro' => ''});
       }
     }
     my $previous_input = shift(@{$self->{'input'}});
@@ -3414,6 +3404,18 @@ sub _parse_texi_regex {
     $separator_match, $misc_text);
 }
 
+sub _check_line_directive {
+  my ($self, $line, $line_nr) = @_;
+
+  if ($self->{'CPP_LINE_DIRECTIVES'}
+      and !$line_nr->{'macro'}
+      and $line =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/) {
+    _save_line_directive ($self, $2, $5);
+    return 1;
+  }
+  return 0;
+}
+
 # Check whether $COMMAND can appear within $CURRENT->{'parent'}.
 sub _check_valid_nesting {
   my ($self, $current, $command, $line_nr) = @_;
@@ -3499,6 +3501,7 @@ sub _parse_texi($;$)
           )
         # not def line
         and $self->{'context_stack'}->[-1] ne 'def') {
+      next NEXT_LINE if _check_line_directive ($self, $line, $line_nr);
       print STDERR "BEGIN LINE\n" if ($self->{'DEBUG'});
 
       if ($current->{'contents'}
