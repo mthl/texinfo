@@ -1,5 +1,12 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Parser.pm (_command_with_command_as_argument):
+	Remove code checking for a case where the command has two 
+	elements in 'args', the first all whitespace, as this case never 
+	seems to happen.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (@titlefont @center @sp):
 	Do not mention the possibility of using these outside of a title 
 	page.

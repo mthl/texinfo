@@ -3391,11 +3391,7 @@ sub _command_with_command_as_argument($)
       and $current->{'parent'}->{'cmdname'} and
      ($current->{'parent'}->{'cmdname'} eq 'itemize'
       or $item_line_commands{$current->{'parent'}->{'cmdname'}})
-      and (scalar(@{$current->{'contents'}}) == 1
-           or (scalar(@{$current->{'contents'}}) == 2
-            and defined($current->{'contents'}->[0]->{'text'})
-            and $current->{'contents'}->[0]->{'text'}
-                               =~ /^[^\S\r\n]*/)))
+      and scalar(@{$current->{'contents'}}) == 1);
 }
 
 # This combines several regular expressions used in '_parse_texi' to
