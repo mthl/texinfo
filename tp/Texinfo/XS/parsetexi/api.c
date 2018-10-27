@@ -204,19 +204,13 @@ element_to_perl_hash (ELEMENT *e)
       e->hv = newHV ();
     }
 
-  if (e->parent) // && e->parent_type != route_not_in_tree)
+  if (e->parent)
     {
       if (!e->parent->hv)
         e->parent->hv = newHV ();
       sv = newRV_inc ((SV *) e->parent->hv);
       hv_store (e->hv, "parent", strlen ("parent"), sv, 0);
     }
-  /* This assumes we don't have nested out-of-tree subtrees,
-     i.e. the only out-of-tree elements are simple text elements
-     (or other elements with no children) - otherwise we shall fail
-     to set "parent" properly. */
-  /* FIXME: Sometimes extra values have parent set - try to remove this
-     in the Perl code as well. */
 
   if (e->type)
     {
@@ -232,7 +226,9 @@ element_to_perl_hash (ELEMENT *e)
       /* TODO: Same optimizations as for 'type'. */
     }
 
-  /* TODO sort out all these special cases */
+  /* TODO sort out all these special cases.
+     Makes no sense to have 'contents' created for glyph commands like
+     @arrow{} or for accent commands. */
   if (e->contents.number > 0
       || e->type == ET_text_root
       || e->type == ET_root_line
@@ -263,9 +259,7 @@ element_to_perl_hash (ELEMENT *e)
               || command_data(e->cmd).data == BRACE_other
               || command_data(e->cmd).data == BRACE_accent
               ))
-      || e->cmd == CM_node) // TODO special case
-    // TODO: Makes no sense to have 'contents' created for glyph commands like
-    // @arrow{} or for accent commands.
+      || e->cmd == CM_node)
     {
       AV *av;
       int i;
@@ -670,15 +664,14 @@ build_single_index_data (INDEX *i)
 
       if (i->contained_hv)
         {
+          /* This is unlikely to happen, as if this index is merged into
+             another one, any indices merged into this index would have been
+             recorded under that one, and not this one. */
           hv_delete (i->hv,
                      "contained_indices", strlen ("contained_indices"),
                      G_DISCARD);
           i->contained_hv = 0;
         }
-
-      /* See also code in end_line.c (parse_line_command_args) <CM_synindex>.
-         FIXME: Do we need to keep the original values of contained_indices?
-         I don't think so. */
     }
   else
     {
@@ -745,7 +738,6 @@ build_single_index_data (INDEX *i)
               /* Copy the reference to the array. */
               STORE2("content", newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
 
-              /* FIXME: Allow to be different. */
               STORE2("content_normalized",
                      newRV_inc ((SV *)(AV *)SvRV(*contents_array)));
             }
@@ -755,6 +747,9 @@ build_single_index_data (INDEX *i)
               STORE2("content_normalized", newRV_inc ((SV *)newAV ()));
             }
         }
+      else
+        ; /* will be set in Texinfo::Common::complete_indices */
+
       if (e->node)
         STORE2("node", newRV_inc ((SV *)e->node->hv));
       if (e->sortas)

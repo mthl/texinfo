@@ -569,6 +569,9 @@ parse_line_command_args (ELEMENT *line_command)
                 from_index->in_code = (cmd == CM_syncodeindex);
                 ADD_ARG(from);
                 ADD_ARG(to);
+                /* Note that 'current_to' may not end up as the index
+                   'from_index' merges into if there are further @synindex 
+                   commands. */
               }
             else
               line_warn ("@%s leads to a merging of %s in itself, ignoring",
