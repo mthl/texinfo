@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018
-   Free Software Foundation, Inc.
+/* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -113,6 +112,31 @@ wipe_errors (void)
   for (i = 0; i < error_number; i++)
     free (error_list[i].message);
   error_number = 0;
+}
+
+static void
+bug_message_internal (char *format, va_list v)
+{
+  printf ("You found a bug: ");
+  vprintf (format, v);
+  printf ("\n");
+  if (line_nr.file_name)
+    {
+      printf ("last location %s:%d", line_nr.file_name, line_nr.line_nr);
+      if (line_nr.macro)
+        printf (" (possibly involving @%s)", line_nr.macro);
+      printf ("\n");
+    }
+  exit (1);
+}
+
+void
+bug_message (char *format, ...)
+{
+  va_list v;
+
+  va_start (v, format);
+  bug_message_internal (format, v);
 }
 
 static int indent = 0;

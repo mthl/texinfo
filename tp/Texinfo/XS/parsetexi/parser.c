@@ -45,7 +45,6 @@ looking_at (char *s1, char *s2)
    first isn't a hyphen.  This is the format of (non-single-character) Texinfo 
    commands, but is also used elsewhere.  Return value to be freed by caller.
    *PTR is advanced past the read name.  Return 0 if name is invalid. */
-// 4161
 char *
 read_command_name (char **ptr)
 {
@@ -328,7 +327,6 @@ parse_texi_file (char *filename)
     {
       ELEMENT *l;
 
-      /* FIXME: _next_text isn't used in Perl. */
       free (line);
       line = next_text (0);
       if (!line)
@@ -356,7 +354,7 @@ parse_texi_file (char *filename)
     add_to_element_contents (root, preamble);
 
   return parse_texi (root);
-} /* 916 */
+}
 
 
 int
@@ -370,7 +368,6 @@ begin_paragraph_p (ELEMENT *current)
          && in_paragraph_context (current_context ());
 }
 
-/* Line 1146 */
 /* If in a context where paragraphs are to be started, start a new 
    paragraph.  */
 ELEMENT *
@@ -407,8 +404,8 @@ begin_paragraph (ELEMENT *current)
 
       e = new_element (ET_paragraph);
       if (indent)
-        add_extra_string_dup (e, indent == CM_indent ? "indent" : "noindent",
-                              "1");
+        add_extra_integer (e, indent == CM_indent ? "indent" : "noindent",
+                              1);
       add_to_element_contents (current, e);
       current = e;
 
@@ -417,7 +414,7 @@ begin_paragraph (ELEMENT *current)
   return current;
 }
 
-// 1190
+/* Begin a preformatted element if in a preformatted context. */
 ELEMENT *
 begin_preformatted (ELEMENT *current)
 {
@@ -535,7 +532,7 @@ merge_text (ELEMENT *current, char *text)
          produces such an element that shouldn't be merged with. */
       && (last_child->text.space > 0
             && !strchr (last_child->text.text, '\n')
-             ) //|| last_child->type == ET_empty_spaces_before_argument)
+             ) /* || last_child->type == ET_empty_spaces_before_argument) */
       && last_child->cmd != CM_value
       && !no_merge_with_following_text)
     {
@@ -580,9 +577,7 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
 
       k = lookup_extra (last_child, "command");
       if (k)
-        {
-          owning_element = (ELEMENT *) k->value;
-        }
+        owning_element = (ELEMENT *) k->value;
 
       debug ("ABORT EMPTY %s additional text |%s| "
              "current |%s|",
@@ -592,11 +587,10 @@ abort_empty_line (ELEMENT **current_inout, char *additional_spaces)
       text_append (&last_child->text, additional_spaces);
 
       /* Remove element altogether if it's empty. */
-      if (last_child->text.end == 0) //2121
+      if (last_child->text.end == 0)
         {
           e = pop_element_from_contents (current);
           destroy_element (e);
-          /* TODO: Maybe we could avoid adding it in the first place? */
         }
       else if (last_child->type == ET_empty_line)
         {
@@ -747,7 +741,6 @@ isolate_last_space (ELEMENT *current)
 }
 
 
-/* 3491 */
 /* Add an "ET_empty_line_after_command" element containing the whitespace at 
    the beginning of the rest of the line.  This element can be later changed to 
    a "ET_empty_spaces_after_command" element in 'abort_empty_line' if more
@@ -781,10 +774,8 @@ command_with_command_as_argument (ELEMENT *current)
 {
   return current->type == ET_block_line_arg
     && (current->parent->cmd == CM_itemize
-        || item_line_command (current->parent->cmd));
-//    && (current->contents.number == 1);
-  //    || current->contents.number == 2 and the first child's text is
-  // all non-whitespace characters??
+        || item_line_command (current->parent->cmd))
+    && (current->contents.number == 1);
 }
 
 /* Check if line is "@end ..." for current command.  If so, advance LINE. */
@@ -1646,9 +1637,9 @@ value_invalid:
             current = end_preformatted (current, 0, 0);
         }
 
-      /* TODO: do this before nesting check? */
       if (cmd == CM_item && item_line_parent (current))
         cmd = CM_item_LINE;
+      /* We could possibly have done this before check_valid_nesting. */
 
       if (command_data(cmd).flags & CF_other)
         {
@@ -1677,18 +1668,17 @@ value_invalid:
           if (new_line)
             {
               /* For @macro, to get a new line.  This is done instead of
-                 doing the EMPTY TEXT (3879) code on the next time round. */
+                 doing the EMPTY TEXT code on the next time round. */
               retval = GET_A_NEW_LINE;
               goto funexit;
             }
         }
-      else if (command_data(cmd).flags & CF_brace
-               || command_data(cmd).flags & CF_accent) /* line 4835 */
+      else if (command_data(cmd).flags & (CF_brace | CF_accent))
         {
           current = handle_brace_command (current, &line, cmd);
         }
       /* No-brace command */
-      else if (command_data(cmd).flags & CF_nobrace) /* 4864 */
+      else if (command_data(cmd).flags & CF_nobrace)
         {
           ELEMENT *nobrace;
 
@@ -1719,7 +1709,7 @@ value_invalid:
         current = handle_separator (current, separator, &line);
     } /* 5326 */
   /* "Misc text except end of line." */
-  else if (*line && *line != '\n') /* 5326 */
+  else if (*line && *line != '\n')
     {
       size_t len;
       
@@ -1737,7 +1727,7 @@ value_invalid:
       retval = STILL_MORE_TO_PROCESS;
       goto funexit;
     }
-  else /* 5331 End of line */
+  else /*  End of line */
     {
       if (current->type)
         debug ("END LINE (%s)", element_type_names[current->type]);
@@ -1762,7 +1752,10 @@ value_invalid:
           line++;
         }
       else
-        ;//abort ();
+        {
+          if (input_number > 0)
+            bug_message ("Text remaining without normal text but `%s'", line);
+        }
 
       /* '@end' is processed in here. */
       current = end_line (current); /* 5344 */
