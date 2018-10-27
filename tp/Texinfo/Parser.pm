@@ -160,10 +160,8 @@ my %parser_default_configuration = (%Texinfo::Common::default_parser_state_confi
 #                         is also in that structure.
 # line_commands           the same as %line_commands in Texinfo::Common, 
 #                         but with index entry commands dynamically added
-# close_paragraph_commands      same as %close_paragraph_commands, but with
-#                               insertcopying removed if INLINE_INSERTCOPYING
-# close_preformatted_commands   same as %close_preformatted_commands, but with
-#                               insertcopying removed if INLINE_INSERTCOPYING
+# close_paragraph_commands      same as %close_paragraph_commands
+# close_preformatted_commands   same as %close_preformatted_commands
 # no_paragraph_commands   the same as %default_no_paragraph_commands
 #                         below, with index
 #                         entry commands dynamically added
@@ -604,10 +602,6 @@ sub _setup_parser {
   $parser->{'command_index'} = {%command_index};
   $parser->{'close_paragraph_commands'} = {%close_paragraph_commands};
   $parser->{'close_preformatted_commands'} = {%close_preformatted_commands};
-  if ($parser->{'INLINE_INSERTCOPYING'}) {
-    delete $parser->{'close_paragraph_commands'}->{'insertcopying'};
-    delete $parser->{'close_preformatted_commands'}->{'insertcopying'};
-  }
   # a hash is simply concatenated.  It should be like %index_names.
   if (ref($parser->{'indices'}) eq 'HASH') {
     %{$parser->{'index_names'}} = (%{$parser->{'index_names'}}, 
