@@ -14440,7 +14440,7 @@ such lines.
 
 @vindex CPP_LINE_DIRECTIVES
 The @command{makeinfo} program recognizes these lines by default,
-except within @code{@@verbatim} blocks (@pxref{@code{@@verbatim}}.
+except within @code{@@verbatim} blocks (@pxref{@code{@@verbatim}}).
 Their recognition can be turned off completely with
 @code{CPP_LINE_DIRECTIVES} (@pxref{Other Customization Variables}),
 though there is normally no reason to do so.

@@ -1,5 +1,10 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (#line directive) <CPP_LINE_DIRECTIVES>:
+	Add a missing ).
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (@obsolete_variables): Remove.
 	(obsolete_option): Remove.
 	(%customization_variable_classes): Remove 'obsolete_variables'.
