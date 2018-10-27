@@ -895,9 +895,11 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       if (cmd == CM_c || cmd == CM_comment)
         ok = 1;
     }
-  /* "full text commands" */
-  else if ((outer_flags & CF_brace) && command_data(outer).data == BRACE_style
-  /* "full line commands" */
+  else if (simple_text_command
+           /* "full text commands" */
+           || (outer_flags & CF_brace)
+                 && command_data(outer).data == BRACE_style
+           /* "full line commands" */
            || outer == CM_center
            || outer == CM_exdent
            || outer == CM_item
@@ -908,12 +910,10 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
   // 420 "full line no refs commands"
            || (outer_flags & (CF_sectioning | CF_def))
   // 4261
-           || (!current->parent->cmd && current_context () == ct_def)
-
-  // 409 "simple text commands"
-           || simple_text_command)
+           || (!current->parent->cmd && current_context () == ct_def))
     {
-      // "in full text commands".
+      /* Start by checking if the command is allowed inside a "full text 
+         command" - this is the most permissive. */
       if (cmd_flags & CF_nobrace) // 370
         ok = 1;
       if (cmd_flags & CF_brace && !(cmd_flags & CF_INFOENCLOSE)) // 370
@@ -934,16 +934,8 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
           && command_data(cmd).data == BLOCK_conditional)
         ok = 1; // 384
 
-      /* Additional commands allowed in indices only. */
-      if (cmd == CM_sortas)
-        {
-          if (outer_flags & CF_index_entry_command)
-            ok = 1;
-          else
-            ok = 0;
-        }
-
-      // 396 exceptions for "full line no refs" and "simple text"
+      /* Now add more restrictions for "full line no refs" commands and "simple 
+         text" commands. */
       if (outer_flags & (CF_sectioning | CF_def)
           // 4261
           || (!current->parent->cmd && current_context () == ct_def)
@@ -957,7 +949,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
             ok = 0;
         }
 
-      // 405 exceptions for "simple text commands" only
+      /* Exceptions for "simple text commands" only. */
       if (simple_text_command)
         {
           if (cmd == CM_xref

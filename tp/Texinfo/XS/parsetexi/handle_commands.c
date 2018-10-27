@@ -1064,6 +1064,16 @@ handle_brace_command (ELEMENT *current, char **line_inout, enum command_id cmd)
   e->line_nr = line_nr;
 
   add_to_element_contents (current, e);
+
+  if (cmd == CM_sortas)
+    {
+      if (!(command_flags(current->parent) & CF_index_entry_command))
+        {
+          line_warn ("@%s should only appear in an index entry",
+                     command_name(cmd));
+        }
+    }
+
   current = e;
 
   if (cmd == CM_click)
