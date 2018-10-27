@@ -1,5 +1,11 @@
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/80include.t (cpp_lines): Add test of macro where a
+	line that looks like a #line directive is not the very first
+	line, as these may be treated differently by Parser.pm.
+
+2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Parser.pm (_check_line_directive, _save_line_directive)
 	(_next_text): Split out sub from _next_text.
 	(_parse_texi) <BEGIN LINE>: Call _check_line_directive and
