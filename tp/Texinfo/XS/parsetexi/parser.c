@@ -328,7 +328,7 @@ parse_texi_file (char *filename)
       ELEMENT *l;
 
       free (line);
-      line = next_text (0);
+      line = next_text ();
       if (!line)
         break;
 
@@ -1161,7 +1161,7 @@ superfluous_arg:
               /* Ignore until end of line */
               if (!strchr (line, '\n'))
                 {
-                  line = new_line (popped);
+                  line = new_line ();
                   debug ("IGNORE CLOSE LINE");
                 }
               destroy_element_and_children (popped);
@@ -1282,7 +1282,7 @@ superfluous_arg:
          input in a static variable like allocated_text, to prevent
          memory leaks.  */
       free (allocated_text);
-      line = allocated_text = next_text (current);
+      line = allocated_text = next_text ();
 
       if (!line)
         {
@@ -1353,7 +1353,7 @@ superfluous_arg:
       line = line_after_command;
       current = handle_macro (current, &line, cmd);
       free (allocated_line);
-      allocated_line = next_text (current);
+      allocated_line = next_text ();
       line = allocated_line;
     }
 
@@ -1768,8 +1768,67 @@ funexit:
   return retval;
 }
 
+/* Check for a #line directive. */
+static int
+check_line_directive (char *line)
+{
+  char *p = line, *q;
+  int line_no = 0;
+  char *filename = 0;
+
+  if (!conf.cpp_line_directives)
+    return 0;
+
+  /* Check input is coming directly from a file. */
+  if (!line_nr.file_name || !line_nr.file_name
+      || (line_nr.macro && *line_nr.macro))
+    return 0;
+
+  p += strspn (p, " \t");
+  if (*p != '#')
+    return 0;
+  p++;
+
+  q = p + strspn (p, " \t");
+  if (!memcmp (q, "line", strlen ("line")))
+    p = q + strlen ("line");
+
+  if (!strchr (" \t", *p))
+    return 0;
+  p += strspn (p, " \t");
+
+  /* p should now be at the line number */
+  if (!strchr ("0123456789", *p))
+    return 0;
+  line_no = strtoul (p, &p, 10);
+
+  p += strspn (p, " \t");
+  if (*p == '"')
+    {
+      char c;
+      p++;
+      q = strchr (p, '"');
+      if (!q)
+        return 0;
+      c = *q;
+      *q = 0;
+      filename = save_string (p);
+      *q = c;
+      p = q + 1;
+      p += strspn (p, " \t");
+
+      p += strspn (p, "0123456789");
+      p += strspn (p, " \t");
+    }
+  if (*p && *p != '\n')
+    return 0; /* trailing text on line */
+
+  save_line_directive (line_no, filename);
+
+  return 1;
+}
+
 /* Pass in and return root of a "Texinfo tree". */
-/* 3676 */
 ELEMENT *
 parse_texi (ELEMENT *root_elt)
 {
@@ -1781,13 +1840,12 @@ parse_texi (ELEMENT *root_elt)
   while (1)
     {
       free (allocated_line);
-      line = allocated_line = next_text (current);
+      line = allocated_line = next_text ();
       if (!allocated_line)
         break; /* Out of input. */
 
       debug_nonl ("NEW LINE %s", line);
 
-      // 3706
       /* If not in 'raw' or 'conditional' and parent isn't a 'verb', collect
          leading whitespace and save as an "ET_empty_line" element.  This
          element type can be changed in 'abort_empty_line' when more text is
@@ -1801,6 +1859,9 @@ parse_texi (ELEMENT *root_elt)
           ELEMENT *e;
           int n;
           
+          if (check_line_directive (line))
+            continue;
+
           debug ("BEGIN LINE");
 
           if (current->contents.number > 0

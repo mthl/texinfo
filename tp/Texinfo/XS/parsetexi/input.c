@@ -60,7 +60,19 @@ int input_space = 0;
 /* Current filename and line number.  Used for reporting. */
 LINE_NR line_nr;
 
-// 1961
+/* Change the line number of filename of the top input source.  Used to
+   record a #line directive.  If FILENAME is non-null, it should hbae
+   been returned from save_string. */
+void
+save_line_directive (int line_nr, char *filename)
+{
+  INPUT *top = &input_stack[input_number - 1];
+  if (line_nr)
+    top->line_nr.line_nr = line_nr;
+  if (filename)
+    top->line_nr.file_name = filename;
+}
+
 /* Collect text from the input sources until a newline is found.  This is used 
    instead of next_text when we need to be sure we get an entire line of 
    Texinfo input (for example as a line argument to a command), which might not 
@@ -69,7 +81,7 @@ LINE_NR line_nr;
    Return value should not be freed by caller, and becomes invalid after
    a subsequent call. */
 char *
-new_line (ELEMENT *current)
+new_line (void)
 {
   static TEXT t;
   char *new = 0;
@@ -78,7 +90,7 @@ new_line (ELEMENT *current)
 
   while (1)
     {
-      new = next_text (current);
+      new = next_text ();
       if (!new)
         break;
       text_append (&t, new);
@@ -256,74 +268,9 @@ expanding_macro (char *macro)
 
 char *save_string (char *string);
 
-/* Check for a #line directive.
-   FIXME: Really shouldn't have to be checking whether we are inside
-   @verb etc. all the way down in here.  Then we could avoid passing
-   CURRENT as an argument. */
-static int
-check_line_directive (char *line, ELEMENT *current, LINE_NR *line_nr)
-{
-  char *p = line, *q;
-  int line_no = 0;
-  char *filename = 0;
-
-  if (current && current->parent && current->parent->cmd == CM_verb)
-    return 0;
-  if (current && (command_flags(current) & CF_block)
-      && (command_data(current->cmd).data == BLOCK_raw
-          || command_data(current->cmd).data == BLOCK_conditional))
-    return 0;
-
-  p += strspn (p, " \t");
-  if (*p != '#')
-    return 0;
-  p++;
-
-  q = p + strspn (p, " \t");
-  if (!memcmp (q, "line", strlen ("line")))
-    p = q + strlen ("line");
-
-  if (!strchr (" \t", *p))
-    return 0;
-  p += strspn (p, " \t");
-
-  /* p should now be at the line number */
-  if (!strchr ("0123456789", *p))
-    return 0;
-  line_no = strtoul (p, &p, 10);
-
-  p += strspn (p, " \t");
-  if (*p == '"')
-    {
-      char c;
-      p++;
-      q = strchr (p, '"');
-      if (!q)
-        return 0;
-      c = *q;
-      *q = 0;
-      filename = save_string (p);
-      *q = c;
-      p = q + 1;
-      p += strspn (p, " \t");
-
-      p += strspn (p, "0123456789");
-      p += strspn (p, " \t");
-    }
-  if (*p && *p != '\n')
-    return 0; /* trailing text on line */
-
-  line_nr->line_nr = line_no;
-  if (filename)
-    {
-      line_nr->file_name = filename;
-    }
-  return 1;
-}
-
 /* Return value to be freed by caller.  Return null if we are out of input. */
 char *
-next_text (ELEMENT *current)
+next_text (void)
 {
   ssize_t status;
   char *line = 0;
@@ -380,12 +327,6 @@ next_text (ELEMENT *current)
               comment = strchr (line, '\x7F');
               if (comment)
                 *comment = '\0';
-
-              if (conf.cpp_line_directives)
-                {
-                  if (check_line_directive (line, current, &i->line_nr))
-                    continue;
-                }
 
               i->line_nr.line_nr++;
               line_nr = i->line_nr;

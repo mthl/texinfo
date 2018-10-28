@@ -272,7 +272,7 @@ expand_macro_arguments (ELEMENT *macro, char **line_inout, enum command_id cmd)
         {
           debug ("MACRO ARG end of line");
           text_append (&arg, pline);
-          line = new_line (macro);
+          line = new_line ();
           if (!line)
             {
               line_error ("@%s missing closing brace", command_name(cmd));
@@ -524,7 +524,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     {
       line = p;
       line++;
-      /* In the Perl version formfeed is excluded for some reason. */
+      /* FIXME: In the Perl version formfeed is excluded for some reason. */
       line += strspn (line, whitespace_chars);
       arguments = expand_macro_arguments (macro, &line, cmd);
     }
@@ -545,7 +545,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
          input already, call new_line. */
       if (!strchr (line, '\n'))
         {
-          line = new_line (current);
+          line = new_line ();
           if (!line)
             line = "";
         }

@@ -670,10 +670,10 @@ handle_comma (ELEMENT *current, char **line_inout)
                       brace_count--;
                       break;
                     default:
-                      line = next_text (current);
+                      line = next_text ();
                       if (!line)
                         {
-                          /* ERROR - unbalanced brace */
+                          /* FIXME: error - unbalanced brace */
                         }
                       continue;
                     }
@@ -719,10 +719,10 @@ inlinefmtifelse_done:
                   break;
                 default:
                   free (alloc_line);
-                  alloc_line = line = next_text (current);
+                  alloc_line = line = next_text ();
                   if (!line)
                     {
-                      /* FIXME: ERROR - unbalanced brace */
+                      /* FIXME: error - unbalanced brace */
                     }
                   continue;
                 }
