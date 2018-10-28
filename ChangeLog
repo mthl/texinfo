@@ -1,3 +1,8 @@
+2018-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_check_line_directive): Fix code for
+	checking if input is coming from a file.
+
 2018-10-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_next_text, _new_line): Do not pass
