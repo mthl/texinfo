@@ -386,7 +386,7 @@ element_to_perl_hash (ELEMENT *e)
               break;
               }
             case extra_integer:
-              { /* A simple string. */
+              { /* A simple integer. */
               int value = (int) f;
               STORE(newSViv (value));
               break;

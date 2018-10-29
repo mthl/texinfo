@@ -1850,20 +1850,18 @@ end_line_misc_line (ELEMENT *current)
         }
       else
         {
-          // pop and check context stack
           pop_context (); /* ct_line */;
 
           current = current->parent;
 
           if ((misc_args = lookup_extra (misc_cmd, "misc_args")))
             {
-              char *s;
               add_extra_element (current, "columnfractions", misc_cmd);
-              asprintf (&s, "%d", misc_args->value->contents.number);
-              add_extra_string (current, "max_columns", s);
+              add_extra_integer (current, "max_columns",
+                                 misc_args->value->contents.number);
             }
           else
-              add_extra_string_dup (current, "max_columns", "0");
+            add_extra_integer (current, "max_columns", 0);
 
           before_item = new_element (ET_before_item);
           add_to_element_contents (current, before_item);
@@ -1925,14 +1923,12 @@ end_line_misc_line (ELEMENT *current)
   return current;
 }
 
-/* 2610 */
 /* Actions to be taken when a whole line of input has been processed */
 ELEMENT *
 end_line (ELEMENT *current)
 {
   ELEMENT *current_old = current; /* Used at very end of function */
 
-  // 2621
   /* If empty line, start a new paragraph. */
   if (last_contents_child (current)
       && last_contents_child (current)->type == ET_empty_line)

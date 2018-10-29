@@ -211,16 +211,16 @@ handle_other_command (ELEMENT *current, char **line_inout,
                     }
                   else /* 4505 @item or @headitem */
                     {
-                      ELEMENT *row; char *s;
+                      ELEMENT *row;
 
                       debug ("ROW");
                       row = new_element (ET_row);
                       add_to_element_contents (parent, row);
 
-                      /* FIXME:The "row_number" extra value,
-                         isn't actually used anywhere. */
-                      asprintf (&s, "%d", parent->contents.number-1);
-                      add_extra_string (row, "row_number", s);
+                      /* Note that the "row_number" extra value,
+                         isn't actually used anywhere at present. */
+                      add_extra_integer (row, "row_number",
+                                         parent->contents.number - 1);
 
                       misc = new_element (ET_NONE);
                       misc->cmd = cmd;
@@ -230,9 +230,8 @@ handle_other_command (ELEMENT *current, char **line_inout,
                       if (counter_value (&count_cells, parent) != -1)
                         counter_pop (&count_cells);
                       counter_push (&count_cells, row, 1);
-                      asprintf (&s, "%d",
-                                counter_value (&count_cells, row));
-                      add_extra_string (current, "cell_number", s);
+                      add_extra_integer (current, "cell_number",
+                                         counter_value (&count_cells, row));
                     }
                 }
               current = begin_preformatted (current);

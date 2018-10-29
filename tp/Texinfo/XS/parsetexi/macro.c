@@ -524,7 +524,6 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
     {
       line = p;
       line++;
-      /* FIXME: In the Perl version formfeed is excluded for some reason. */
       line += strspn (line, whitespace_chars);
       arguments = expand_macro_arguments (macro, &line, cmd);
     }
