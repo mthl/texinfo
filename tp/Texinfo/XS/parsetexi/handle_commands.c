@@ -348,7 +348,8 @@ handle_line_command (ELEMENT *current, char **line_inout,
   arg_spec = command_data(cmd).data;
 
   /* All the cases using the raw line.
-     TODO: I don't understand what the difference is between these. */
+     TODO: I don't understand what the difference is between these.
+     LINE_skipline is used where the command takes no argument at all. */
   if (arg_spec == LINE_skipline || arg_spec == LINE_lineraw
            || arg_spec == LINE_special)
     {
@@ -739,7 +740,6 @@ format_expanded_p (char *format)
   return 0;
 }
 
-/* line 4632 */
 /* A command name has been read that starts a multiline block, which should
    end in @end <command name>.  The block will be processed until 
    "end_line_misc_line" in end_line.c processes the @end command. */
@@ -764,7 +764,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
       *get_new_line = 1;
       goto funexit;
     }
-  else if (command_data(cmd).data == BLOCK_conditional) //4641
+  else if (command_data(cmd).data == BLOCK_conditional)
     {
       int iftrue = 0; /* Whether the conditional is true. */
       if (cmd == CM_ifclear || cmd == CM_ifset
@@ -796,7 +796,6 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 }
               if (1)
                 {
-                  // 4652
                   if (cmd == CM_ifclear || cmd == CM_ifset)
                     {
                       char *val = fetch_value (flag, strlen (flag));
@@ -823,11 +822,10 @@ handle_block_command (ELEMENT *current, char **line_inout,
               free (flag);
             }
         }
-      else if (!memcmp (command_name(cmd), "if", 2)) //4687
+      else if (!memcmp (command_name(cmd), "if", 2)) /* e.g. @ifhtml */
         {
           int i; char *p;
           /* Handle @if* and @ifnot* */
-          /* FIXME: Check @if and @ifnot* a nicer way, without memcmp. */
 
           p = command_name(cmd) + 2; /* After "if". */
           if (!memcmp (p, "not", 3))
@@ -845,31 +843,30 @@ handle_block_command (ELEMENT *current, char **line_inout,
             iftrue = !iftrue;
         }
       else
-        abort (); // BUG
+        bug_message ("unknown conditional command @%s", command_name(cmd));
 
 
-      // 4699 - If conditional true, push onto conditional stack.  Otherwise
-      // open a new element (which we shall later remove, in
-      // process_remaining_on_line ("CLOSED conditional").
+      /* If conditional true, push onto conditional stack.  Otherwise
+         open a new element (which we shall later remove, in
+         process_remaining_on_line ("CLOSED conditional")). *.
 
       debug ("CONDITIONAL %s %d", command_name(cmd), iftrue);
       if (iftrue)
         push_conditional_stack (cmd);
       else
         {
-          // Ignored.
+          /* Ignored. */
           ELEMENT *e;
           e = new_element (ET_NONE);
           e->cmd = cmd;
           add_to_element_contents (current, e);
           current = e;
         }
-      // 4709 ("last;")
       line = strchr (line, '\0');
       *get_new_line = 1;
       goto funexit;
     }
-  else /* line 4710 */
+  else
     {
       ELEMENT *block = 0;
       // 4715
