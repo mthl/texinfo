@@ -1,3 +1,18 @@
+2018-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <inline conditionals>:
+	Avoid an infinite loop when skipping an unexpanded conditional
+	in case we run out of input.
+	* tp/t/55conditionals.t (inlineifset_false_not_closed): New test.
+
+2018-10-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Parser.pm (_parse_texi) <@inlinefmtifelse>:
+	Avoid an infinite loop if there is no more input.
+	* tp/t/55conditionals.t
+	(inlineiffmtifelse_not_closed, inlineiffmtifelse_not_closed_two_arg)
+	(inlineiffmtifelse_not_closed_three_arg): New tests.
+
 2018-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Parser.pm (_check_line_directive): Fix code for

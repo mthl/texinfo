@@ -473,6 +473,9 @@ strongalias @@alias is wrongly not defined
 ['inlineiffmtifelse_not_closed_three_arg',
 '@inlinefmtifelse{html, hhhhh, ggggg
 '],
+['inlineifset_false_not_closed',
+'@inlineifset{aaa, bbb
+'],
 );
 
 for my $test (@test_cases) {

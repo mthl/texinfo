@@ -5187,10 +5187,10 @@ sub _parse_texi($;$)
                 } else {
                   my $new_text;
                   ($new_text, $line_nr) = _next_text($self, $line_nr);
-                  $line .= $new_text;
-                  if (!$line) {
-                    # ERROR - unbalanced brace
+                  if (!$new_text) {
+                    next NEXT_LINE; # error - unbalanced brace
                   }
+                  $line .= $new_text;
                 }
               }
               $current = $current->{'args'}->[-1];
