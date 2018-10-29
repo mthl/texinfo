@@ -5153,7 +5153,7 @@ sub _parse_texi($;$)
                     my $new_text;
                     ($new_text, $line_nr) = _next_text($self, $line_nr);
                     if (!$new_text) {
-                      # ERROR - unbalanced brace
+                      next NEXT_LINE; # error - unbalanced brace
                     }
                     $line .= $new_text;
                   }

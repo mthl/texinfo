@@ -464,6 +464,15 @@ strongalias @@alias is defined.
 strongalias @@alias is wrongly not defined
 @end ifcommandnotdefined
 '],
+['inlineiffmtifelse_not_closed',
+'@inlinefmtifelse{html,
+'],
+['inlineiffmtifelse_not_closed_two_arg',
+'@inlinefmtifelse{html, hhhhh
+'],
+['inlineiffmtifelse_not_closed_three_arg',
+'@inlinefmtifelse{html, hhhhh, ggggg
+'],
 );
 
 for my $test (@test_cases) {
