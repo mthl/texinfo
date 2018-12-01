@@ -23,7 +23,7 @@ $(srcdir)/Makefile.tres: maintain/regenerate_file_lists.pl
 $(srcdir)/Makefile.docstr: maintain/regenerate_docstr.sh \
                            $(srcdir)/../po_document/LINGUAS
 	cd $(srcdir) \
-	&& $(SHELL) ./maintain/regenerate_docstr.sh "$@"
+	&& $(SHELL) ./maintain/regenerate_docstr.sh Makefile.docstr
 
 
 SUBDIRS =
