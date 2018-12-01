@@ -30,6 +30,9 @@ See the manual for detailed information.
   . `FIX_TEXINFO' removed as a customization variable
   . do not recognise or warn about obsolete customization variables
 
+* Development: switch from Subversion to git
+  https://savannah.gnu.org/git/?group=texinfo
+
 
 6.5 (12 September 2017)
 * info:
