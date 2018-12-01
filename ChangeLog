@@ -1,5 +1,13 @@
 2018-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix info/t/all-only.sh test in out-of-source builds.
+
+	* info/dir.c (dir_entry_of_infodir): Prefix a non-absolute path 
+	with "./" so that other parts of the code recognize it is the 
+	full path.
+
+2018-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Development now uses git.
 
 2018-10-29  Gavin Smith  <gavinsmith0123@gmail.com>

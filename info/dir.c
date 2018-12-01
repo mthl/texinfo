@@ -284,6 +284,13 @@ dir_entry_of_infodir (char *label, char *searchdir)
       if (!dir_fullpath)
         continue;
 
+      if (!IS_ABSOLUTE(dir_fullpath))
+        {
+          char *tmp;
+          asprintf (&tmp, "./%s", dir_fullpath);
+          free (dir_fullpath);
+          dir_fullpath = tmp;
+        }
       dir_node = info_get_node (dir_fullpath, "Top");
       free (dir_fullpath);
       entry = info_get_menu_entry_by_label (dir_node, label, 1);
