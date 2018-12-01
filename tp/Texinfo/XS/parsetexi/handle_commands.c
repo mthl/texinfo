@@ -848,7 +848,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
 
       /* If conditional true, push onto conditional stack.  Otherwise
          open a new element (which we shall later remove, in
-         process_remaining_on_line ("CLOSED conditional")). *.
+         process_remaining_on_line ("CLOSED conditional")). */
 
       debug ("CONDITIONAL %s %d", command_name(cmd), iftrue);
       if (iftrue)
