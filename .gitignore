@@ -21,6 +21,8 @@
 
 **/test-suite.log
 
+pre-inst-env
+
 po/*.gmo
 po/POTFILES
 po/remove-potcdate.sed
@@ -122,6 +124,12 @@ doc/tp_api/man/makeinfo.1
 doc/tp_api/man/texi2dvi.1
 doc/tp_api/man/texindex.1
 
+man/info.1
+man/install-info.1
+man/makeinfo.1
+man/texi2dvi.1
+man/texindex.1
+
 info/doc.c
 info/funs.h
 info/ginfo
@@ -149,6 +157,14 @@ tp/Makefile.tres
 tp/t/results/**/out_*
 tp/t/results/**/*.new
 
+tp/maintain/catalog.xml
+
+tp/t/include_dir
+tp/t/locales
+tp/t/output_files
+tp/t/*.trs
+tp/t/*.log
+
 tp/tests/Makefile.onetst
 tp/tests/*/tests.log
 tp/tests/*/tests.out
@@ -159,20 +175,14 @@ tp/tests/*/raw_out_parser
 tp/tests/*/raw_out_parser_info
 tp/tests/*/test_log
 
-tp/maintain/catalog.xml
-
-tp/t/include_dir
-tp/t/locales
-tp/t/output_files
-tp/t/*.trs
-tp/t/*.log
-
 tp/tests/*.log
 tp/tests/*.trs
 tp/tests/t/*.log
 tp/tests/t/*.trs
 tp/tests/test_scripts/*.log
 tp/tests/test_scripts/*.trs
+
+tp/tests/equivalent_nodes-noderename.cnf
 
 tp/tests/formatting/unknown_nodes_renamed-noderename.cnf
 
@@ -205,6 +215,7 @@ tp/Texinfo/XS/*.la
 tp/Texinfo/XS/.libs
 
 tp/Texinfo/XS/TestXS.c
+tp/Texinfo/XS/MiscXS.c
 tp/Texinfo/XS/XSParagraph.c
 tp/Texinfo/XS/ar-lib
 tp/Texinfo/XS/compile
@@ -218,6 +229,10 @@ tp/Texinfo/XS/libtool
 tp/Texinfo/XS/ltmain.sh
 tp/Texinfo/XS/missing
 tp/Texinfo/XS/stamp-h1
+
+tp/Texinfo/XS/gnulib/lib/.libs
+tp/Texinfo/XS/gnulib/lib/*.lo
+tp/Texinfo/XS/gnulib/lib/libgnu.la
 
 tp/Texinfo/XS/gnulib/lib/alloca.h
 tp/Texinfo/XS/gnulib/lib/limits.h
@@ -239,6 +254,10 @@ tp/Texinfo/XS/parsetexi/config.sub
 tp/Texinfo/XS/parsetexi/libtool
 tp/Texinfo/XS/parsetexi/ltmain.sh
 tp/Texinfo/XS/parsetexi/stamp-h1
+
+tp/Texinfo/XS/parsetexi/.libs
+tp/Texinfo/XS/parsetexi/*.la
+tp/Texinfo/XS/parsetexi/*.lo
 
 texindex/texindex.awk
 texindex/texindex.awk.in
@@ -278,13 +297,13 @@ contrib/perldoc-all/*.aux
 contrib/perldoc-all/perldoc-all.??
 contrib/perldoc-all/perldoc-all.???
 
-
 js/build-aux/install-sh
 js/build-aux/missing
 js/examples/hello-html
 js/examples/kawa-html
 js/node_modules
 
+Pod-Simple-Texinfo/pod2texi
 Pod-Simple-Texinfo/*.log
 Pod-Simple-Texinfo/*.tmp
 Pod-Simple-Texinfo/*.trs
