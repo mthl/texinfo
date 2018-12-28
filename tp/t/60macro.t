@@ -863,11 +863,6 @@ two spaces   @@noindent @noindentmacro{}    @@refill @refillmacro{}
 
 @vskip @atext{}
 
-@macro cropmarksmacro
-@cropmarks
-@end macro
-@cropmarksmacro{}
-
 @macro exdentmacro 
 @exdent
 @end macro

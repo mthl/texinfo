@@ -126,24 +126,6 @@ $result_trees{'commands_and_spaces'} = {
           'text' => '
 ',
           'type' => 'empty_line'
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '  after  cropmarks.
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'cropmarks',
-          'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => '
-',
-          'type' => 'empty_line'
         }
       ],
       'parent' => {},
@@ -258,7 +240,7 @@ $result_trees{'commands_and_spaces'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 13,
+            'line_nr' => 11,
             'macro' => ''
           },
           'parent' => {}
@@ -273,7 +255,7 @@ $result_trees{'commands_and_spaces'} = {
           'cmdname' => 'indent',
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 15,
+            'line_nr' => 13,
             'macro' => ''
           },
           'parent' => {}
@@ -310,7 +292,7 @@ $result_trees{'commands_and_spaces'} = {
           'cmdname' => 'indent',
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 17,
+            'line_nr' => 15,
             'macro' => ''
           },
           'parent' => {}
@@ -348,7 +330,7 @@ $result_trees{'commands_and_spaces'} = {
           'cmdname' => 'indent',
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 20,
+            'line_nr' => 18,
             'macro' => ''
           },
           'parent' => {}
@@ -452,7 +434,7 @@ $result_trees{'commands_and_spaces'} = {
           'contents' => [],
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 23,
+            'line_nr' => 21,
             'macro' => ''
           },
           'parent' => {}
@@ -542,7 +524,7 @@ $result_trees{'commands_and_spaces'} = {
           'contents' => [],
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 25,
+            'line_nr' => 23,
             'macro' => ''
           },
           'parent' => {}
@@ -613,7 +595,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 30,
+                'line_nr' => 28,
                 'macro' => ''
               },
               'parent' => {}
@@ -625,7 +607,7 @@ $result_trees{'commands_and_spaces'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 28,
+            'line_nr' => 26,
             'macro' => ''
           },
           'parent' => {}
@@ -707,7 +689,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 34,
+                'line_nr' => 32,
                 'macro' => ''
               },
               'parent' => {}
@@ -749,7 +731,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 35,
+                'line_nr' => 33,
                 'macro' => ''
               },
               'parent' => {}
@@ -790,7 +772,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 36,
+                'line_nr' => 34,
                 'macro' => ''
               },
               'parent' => {}
@@ -812,7 +794,7 @@ $result_trees{'commands_and_spaces'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 32,
+            'line_nr' => 30,
             'macro' => ''
           },
           'number' => 1,
@@ -855,7 +837,7 @@ $result_trees{'commands_and_spaces'} = {
                   },
                   'line_nr' => {
                     'file_name' => '',
-                    'line_nr' => 38,
+                    'line_nr' => 36,
                     'macro' => ''
                   },
                   'parent' => {}
@@ -892,7 +874,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 39,
+                'line_nr' => 37,
                 'macro' => ''
               },
               'parent' => {}
@@ -965,7 +947,7 @@ $result_trees{'commands_and_spaces'} = {
                   'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
-                    'line_nr' => 41,
+                    'line_nr' => 39,
                     'macro' => ''
                   },
                   'parent' => {}
@@ -1010,7 +992,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 42,
+                'line_nr' => 40,
                 'macro' => ''
               },
               'parent' => {}
@@ -1107,7 +1089,7 @@ $result_trees{'commands_and_spaces'} = {
           'extra' => {},
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 44,
+            'line_nr' => 42,
             'macro' => ''
           },
           'parent' => {}
@@ -1172,7 +1154,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 50,
+                'line_nr' => 48,
                 'macro' => ''
               },
               'parent' => {}
@@ -1183,7 +1165,7 @@ $result_trees{'commands_and_spaces'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 48,
+            'line_nr' => 46,
             'macro' => ''
           },
           'parent' => {}
@@ -1242,7 +1224,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 54,
+                'line_nr' => 52,
                 'macro' => ''
               },
               'parent' => {}
@@ -1253,7 +1235,7 @@ $result_trees{'commands_and_spaces'} = {
           },
           'line_nr' => {
             'file_name' => '',
-            'line_nr' => 52,
+            'line_nr' => 50,
             'macro' => ''
           },
           'parent' => {}
@@ -1273,7 +1255,7 @@ $result_trees{'commands_and_spaces'} = {
                   'contents' => [],
                   'line_nr' => {
                     'file_name' => '',
-                    'line_nr' => 56,
+                    'line_nr' => 54,
                     'macro' => ''
                   },
                   'parent' => {},
@@ -1317,7 +1299,7 @@ $result_trees{'commands_and_spaces'} = {
                       },
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 57,
+                        'line_nr' => 55,
                         'macro' => ''
                       },
                       'parent' => {}
@@ -1355,7 +1337,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 58,
+                'line_nr' => 56,
                 'macro' => ''
               },
               'parent' => {}
@@ -1407,7 +1389,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 60,
+                'line_nr' => 58,
                 'macro' => ''
               },
               'parent' => {}
@@ -1450,7 +1432,7 @@ $result_trees{'commands_and_spaces'} = {
                       ],
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 62,
+                        'line_nr' => 60,
                         'macro' => ''
                       },
                       'parent' => {},
@@ -1511,7 +1493,7 @@ $result_trees{'commands_and_spaces'} = {
               'contents' => [],
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 64,
+                'line_nr' => 62,
                 'macro' => ''
               },
               'parent' => {}
@@ -1552,7 +1534,7 @@ $result_trees{'commands_and_spaces'} = {
                       },
                       'line_nr' => {
                         'file_name' => '',
-                        'line_nr' => 66,
+                        'line_nr' => 64,
                         'macro' => ''
                       },
                       'parent' => {},
@@ -1738,7 +1720,7 @@ $result_trees{'commands_and_spaces'} = {
               },
               'line_nr' => {
                 'file_name' => '',
-                'line_nr' => 68,
+                'line_nr' => 66,
                 'macro' => ''
               },
               'parent' => {}
@@ -1788,7 +1770,7 @@ $result_trees{'commands_and_spaces'} = {
       },
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 11,
+        'line_nr' => 9,
         'macro' => ''
       },
       'parent' => {}
@@ -1810,9 +1792,6 @@ $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[5]{'parent'} = $
 $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[6];
 $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[6]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[7]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[8]{'args'}[0]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[8];
-$result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[8]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0];
-$result_trees{'commands_and_spaces'}{'contents'}[0]{'contents'}[9]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[0]{'parent'} = $result_trees{'commands_and_spaces'};
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1]{'args'}[0];
 $result_trees{'commands_and_spaces'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands_and_spaces'}{'contents'}[1];
@@ -2071,8 +2050,6 @@ $result_texis{'commands_and_spaces'} = '@set  foo   some @value
 
 @clickstyle  @arrow
 
-@cropmarks  after  cropmarks.
-
 @node a ,(b),(c) , (d)   
 
 @center  centered  
@@ -2136,7 +2113,6 @@ T
 
 
 $result_texts{'commands_and_spaces'} = '
-
 
 
 
@@ -2228,10 +2204,10 @@ $result_menus{'commands_and_spaces'} = {
 
 $result_errors{'commands_and_spaces'} = [
   {
-    'error_line' => ':41: warning: unexpected argument on @multitable line: @var{cmd}
+    'error_line' => ':39: warning: unexpected argument on @multitable line: @var{cmd}
 ',
     'file_name' => '',
-    'line_nr' => 41,
+    'line_nr' => 39,
     'macro' => '',
     'text' => 'unexpected argument on @multitable line: @var{cmd}',
     'type' => 'warning'
@@ -2292,8 +2268,6 @@ $result_converted{'xml'}->{'commands_and_spaces'} = '<set name="foo" line="  foo
 <unmacro name="ggg" line="  ggg"></unmacro>
 
 <clickstyle command="arrow" line="  @arrow">@arrow</clickstyle>
-
-<cropmarks line="  after  cropmarks."></cropmarks>
 
 <node name="a" spaces=" "><nodename trailingspaces=" ">a</nodename><nodenext>(b)</nodenext><nodeprev trailingspaces=" ">(c)</nodeprev><nodeup spaces=" " trailingspaces="   ">(d)</nodeup></node>
 

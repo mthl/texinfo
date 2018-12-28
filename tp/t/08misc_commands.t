@@ -75,7 +75,6 @@ novalidate @novalidate something
 
 Only valid between iftex:
 vskip @vskip 
-cropmarks @cropmarks
 
 exdent @exdent line after exdent
 '],

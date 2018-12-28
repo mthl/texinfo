@@ -360,22 +360,6 @@ $result_trees{'also_not_line'} = {
             ]
           },
           'parent' => {}
-        },
-        {
-          'parent' => {},
-          'text' => 'cropmarks '
-        },
-        {
-          'args' => [
-            {
-              'parent' => {},
-              'text' => '
-',
-              'type' => 'misc_arg'
-            }
-          ],
-          'cmdname' => 'cropmarks',
-          'parent' => {}
         }
       ],
       'parent' => {},
@@ -420,7 +404,7 @@ $result_trees{'also_not_line'} = {
       },
       'line_nr' => {
         'file_name' => '',
-        'line_nr' => 24,
+        'line_nr' => 23,
         'macro' => ''
       },
       'parent' => {}
@@ -488,9 +472,6 @@ $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[0]{'parent'} = $resul
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[1]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2];
 $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[2]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
-$result_trees{'also_not_line'}{'contents'}[19]{'contents'}[3]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
-$result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4];
-$result_trees{'also_not_line'}{'contents'}[19]{'contents'}[4]{'parent'} = $result_trees{'also_not_line'}{'contents'}[19];
 $result_trees{'also_not_line'}{'contents'}[19]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[20]{'parent'} = $result_trees{'also_not_line'};
 $result_trees{'also_not_line'}{'contents'}[21]{'contents'}[0]{'parent'} = $result_trees{'also_not_line'}{'contents'}[21];
@@ -520,7 +501,6 @@ novalidate @novalidate something
 
 Only valid between iftex:
 vskip @vskip 
-cropmarks @cropmarks
 
 exdent @exdent line after exdent
 ';
@@ -541,7 +521,7 @@ special
 -------
 
 Only valid between iftex:
-vskip cropmarks 
+vskip 
 exdent line after exdent
 ';
 
@@ -574,19 +554,10 @@ $result_errors{'also_not_line'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: @cropmarks should only appear at the beginning of a line
+    'error_line' => ':23: warning: @exdent should only appear at the beginning of a line
 ',
     'file_name' => '',
-    'line_nr' => 22,
-    'macro' => '',
-    'text' => '@cropmarks should only appear at the beginning of a line',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':24: warning: @exdent should only appear at the beginning of a line
-',
-    'file_name' => '',
-    'line_nr' => 24,
+    'line_nr' => 23,
     'macro' => '',
     'text' => '@exdent should only appear at the beginning of a line',
     'type' => 'warning'

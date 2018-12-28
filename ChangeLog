@@ -1,5 +1,17 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove implementation of @cropmarks in texi2any.
+
+	* tp/Texinfo/Common.pm (%line_commands): Remove 'cropmarks'.
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Remove cropmarks.
+	* tp/t/xml_tests.t (commands_and_spaces),
+	* tp/t/08misc_commands.t (also_not_line),
+	* tp/t/50value.t (value_in_misc_commands),
+	* tp/t/60macro.t (macro_in_misc_commands):
+	Remove @cropmarks from tests.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove documentation of @cropmarks command.
 
 	* doc/texinfo.texi (Cropmarks and Magnification, Magnification):

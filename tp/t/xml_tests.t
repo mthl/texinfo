@@ -223,8 +223,6 @@ Para
 
 @clickstyle  @arrow
 
-@cropmarks  after  cropmarks.
-
 @node a ,(b),(c) , (d)   
 
 @center  centered  

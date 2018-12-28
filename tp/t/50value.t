@@ -271,9 +271,6 @@ After page on it\'s own line.
 
 @vskip @value{text}
 
-@set cropmarks_command @cropmarks
-@value{cropmarks_command}
-
 @set exdent_macro @exdent
 @value{exdent_macro} line after exdent
 
