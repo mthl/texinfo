@@ -1,5 +1,13 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Avoid memory leak for malformed files.
+
+	* info/nodes.c (info_load_file): Free 'contents' and 'encoding' 
+	fields of file structure in case the node table couldn't be 
+	built.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix call to info_find_file.
 
 	* info/nodes.c (info_get_nodes_with_defaults): Restore the value 

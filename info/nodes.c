@@ -735,6 +735,8 @@ info_load_file (char *fullpath, int is_subfile)
         {
           free (file_buffer->fullpath);
           free (file_buffer->filename);
+          free (file_buffer->contents);
+          free (file_buffer->encoding);
           free (file_buffer);
           return 0;
         }
