@@ -945,13 +945,13 @@ info_get_node_with_defaults (char *filename_in, char *nodename_in,
             {
               saved_char = *p;
               *p = 0;
-
               file_in_same_dir = info_add_extension (defaults->fullpath,
                                                      filename, 0);
+              *p = saved_char;
+
               if (file_in_same_dir)
                 file_buffer = info_find_file (file_in_same_dir);
               free (file_in_same_dir);
-              *p = saved_char;
             }
         }
     }

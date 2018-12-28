@@ -1,3 +1,15 @@
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix call to info_find_file.
+
+	* info/nodes.c (info_get_nodes_with_defaults): Restore the value 
+	of the 'fullpath' field of a file structure before calling 
+	info_find_file.  Otherwise, info_find_file will not recognize 
+	that a file has been loaded, and load it again.  This can lead 
+	to a file buffer being freed incorrectly in 
+	gc_file_buffers_and_nodes, leading to a segmentation fault.  
+	Segmentation fault reported by Keith Thompson.
+
 2018-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Makefile.am (Makefile.docstr): Fix to work out-of-source.
