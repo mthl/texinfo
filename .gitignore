@@ -170,6 +170,7 @@ tp/tests/*/tests.log
 tp/tests/*/tests.out
 tp/tests/*/diffs
 tp/tests/*/out_parser
+tp/tests/*/out_parser_info
 tp/tests/*/out_info
 tp/tests/*/raw_out_parser
 tp/tests/*/raw_out_parser_info
@@ -191,6 +192,9 @@ tp/tests/many_input_files/index_split
 tp/tests/many_input_files/tex_l2h
 tp/tests/many_input_files/tex_t4ht
 tp/tests/many_input_files/raw_out
+tp/tests/many_input_files/*.log
+tp/tests/many_input_files/*.trs
+tp/tests/many_input_files/indices.out
 
 tp/tests/sectioning/equivalent_nodes-noderename.cnf
 
@@ -275,6 +279,7 @@ texindex/texindex.info
 texindex/texindex
 texindex/ti.t2d
 texindex/tests/*.trs
+texindex/tests/*.log
 
 util/defs
 
