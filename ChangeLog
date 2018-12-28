@@ -1,5 +1,15 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Tidy up info test suite infrastructure.
+
+	* info/t/Init-test.inc: Do not set GINFO_NAME variable as it is 
+	not used.  Do not set infodir variable.  Do not try to set 
+	srcdir, as it is already set.  Change some shell variables to be 
+	lower-case, to avoid confusion with variables exported to the 
+	environment.  Remove unused variable GINFO_OPTIONS.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Select correct cross-reference.
 
 	* info/session.c (info_menu_or_ref_item): If there is more than 

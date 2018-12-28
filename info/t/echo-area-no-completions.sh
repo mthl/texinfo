@@ -20,8 +20,8 @@ srcdir=${srcdir:-.}
 run_ginfo -f intera -n xrefnode
 # Enter echo area and try to follow a cross-reference that doesn't exist
 
-printf 'fs\r\r\r\r\r\r' >$PTY_TYPE
-printf '\030\030q' >$PTY_TYPE
+printf 'fs\r\r\r\r\r\r' >$pty_type
+printf '\030\030q' >$pty_type
 
 timeout_test
 cleanup

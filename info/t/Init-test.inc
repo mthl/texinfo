@@ -1,4 +1,4 @@
-# Copyright (C) 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright (C) 2014-2018 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,37 +19,29 @@
 # write each expanded command to the *.log file for the test.
 set -x
 
-# Allow running with "make check" and individual tests at the command-line
-srcdir=${srcdir:-.}
-
 # Use the second line to run the program under valgrind.
-GINFO="./ginfo --init-file $srcdir/t/Infokey-config"
-#GINFO="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
-
-# Set this to the name of the process
-GINFO_NAME=ginfo
-#GINFO_NAME=memcheck-x86-li
+ginfo="./ginfo --init-file $srcdir/t/Infokey-config"
+#ginfo="valgrind --log-file=$0.val.log --leak-check=full ./ginfo --init-file $srcdir/t/Infokey-config"
 
 # Only look for Info files in our test directory
-infodir=$srcdir/t/infodir; export infodir
-INFOPATH=$infodir; export INFOPATH
+INFOPATH=$srcdir/t/infodir; export INFOPATH
 
 t=$srcdir/t; export t
 
-GINFO_OUTPUT=t/`basename $0.out`
+ginfo_output=t/`basename $0.out`
 
 # These are only used for interactive tests
-PIPEIN=t/`basename $0.pipein`
-PTY_TYPE=t/`basename $0.pipeout`
+pipein=t/`basename $0.pipein`
+pty_type=t/`basename $0.pipeout`
 
 # Remove left over file from previous tests
-rm -f $GINFO_OUTPUT
+rm -f $ginfo_output
 
 # File to dump nodes to with M-x print-node
-INFO_PRINT_COMMAND=">$GINFO_OUTPUT"; export INFO_PRINT_COMMAND
+INFO_PRINT_COMMAND=">$ginfo_output"; export INFO_PRINT_COMMAND
 
 # Not an interactive test
-PTY_PID=0
+pty_pid=0
 
 # Get error messages in English
 LC_ALL=C; export LC_ALL
@@ -65,13 +57,13 @@ trap cleanup 2
 cleanup ()
 {
   # Delete created files and kill spawned processes if any.
-  test $PTY_PID -ne 0 && kill $PTY_PID
+  test $pty_pid -ne 0 && kill $pty_pid
 
-  rm -f $GINFO_OUTPUT
-  rm -f $PIPEIN $PTY_TYPE
+  rm -f $ginfo_output
+  rm -f $pipein $pty_type
   
   #killall `basename $0`  # see below
-  exit $RETVAL
+  exit $retval
 }
 
 # Uncomment this line and "killall" above if previous test runs were not
@@ -81,20 +73,20 @@ cleanup ()
 
 timeout_test ()
 {
-  wait $GINFO_PID
+  wait $ginfo_pid
   status=$?
 
   # If the program was not ended by a signal, kill the subshell that 
   # is waiting to send it a signal.
-  test $status -lt 128 && kill $KILLER_PID
+  test $status -lt 128 && kill $killer_pid
   
-  RETVAL=0
+  retval=0
   if test $status != 0; then
-    RETVAL=1
+    retval=1
   fi
   
   # Program is gone, so avoid trying to kill it in cleanup
-  GINFO_PID=0
+  ginfo_pid=0
 }
 
 # Functions for interactive tests
@@ -142,12 +134,12 @@ init_interactive_test ()
   TERM=vt100; export TERM
   
   # Create named pipes to communicate with pseudotty program, or quit.
-  rm -f $PIPEIN $PTY_TYPE # must already be defined
+  rm -f $pipein $pty_type # must already be defined
   if findprog mkfifo; then
-    mkfifo $PIPEIN
-    mkfifo $PTY_TYPE
+    mkfifo $pipein
+    mkfifo $pty_type
     #
-    if test ! -r $PIPEIN || test ! -r $PTY_TYPE; then
+    if test ! -r $pipein || test ! -r $pty_type; then
       echo "$0: could not mkfifo pipes" >&2
       exit 77
     fi
@@ -157,18 +149,18 @@ init_interactive_test ()
     exit 77
   fi
   
-  # We can feed input bytes into $PTY_TYPE to be passed onto ginfo, as
+  # We can feed input bytes into $pty_type to be passed onto ginfo, as
   # if they were typed by a user in an interactive session.
   # We redirect to the FIFO within a subshell, because under NetBSD 6.1.4
   # it hangs otherwise.
-  (exec ./pseudotty "$PTY_TYPE" >$PIPEIN) &
-  PTY_PID=$!
+  (exec ./pseudotty "$pty_type" >$pipein) &
+  pty_pid=$!
   # Get name of pseudo-terminal slave device
-  read PTS_DEVICE <$PIPEIN
+  read pts_device <$pipein
   
   # Keeping the FIFO open for writing prevents the select call in
-  # pseudotty returning EOF after a single "printf something >$PTY_TYPE".
-  exec 7>$PTY_TYPE
+  # pseudotty returning EOF after a single "printf something >$pty_type".
+  exec 7>$pty_type
   
   # glibc can kill a running process if it detects a condition like a
   # double free.  This specifies that the message it prints when it does
@@ -183,9 +175,9 @@ run_ginfo ()
 
   (
     exec 7>&- ; # Close fd from parent shell
-    exec $GINFO $GINFO_OPTIONS "$@" 0<>$PTS_DEVICE 1<&0 ;
+    exec $ginfo "$@" 0<>$pts_device 1<&0 ;
   ) &
-  GINFO_PID=$!
-  (sleep 3 ; kill $GINFO_PID) &
-  KILLER_PID=$!
+  ginfo_pid=$!
+  (sleep 3 ; kill $ginfo_pid) &
+  killer_pid=$!
 }
