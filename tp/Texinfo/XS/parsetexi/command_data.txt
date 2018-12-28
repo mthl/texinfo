@@ -125,8 +125,6 @@ evenheadingmarks		line,global_unique		1
 oddheadingmarks			line,global_unique		1
 evenfootingmarks		line,global_unique		1
 oddfootingmarks			line,global_unique		1
-# not valid for info (should be in @iftex)
-cropmarks			line		LINE_skipline
 
 # formatting
 center				line		LINE_line

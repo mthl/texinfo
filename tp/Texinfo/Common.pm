@@ -454,8 +454,6 @@ our %line_commands = (
   'oddheadingmarks'   => 1,
   'evenfootingmarks'  => 1,
   'oddfootingmarks'   => 1,
-  # not valid for info (should be in @iftex)
-  'cropmarks'         => 'skipline', # no arg
 
   # formatting
   'center'            => 'line',
