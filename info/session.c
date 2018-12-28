@@ -2347,10 +2347,9 @@ info_menu_or_ref_item (WINDOW *window, int menu_item, int xref, int ask_p)
         {
           closest = which;
 
-          /* If a reference contains the point, prefer it.  Otherwise prefer a
-             reference after the cursor to one before it. */
-          if (window->point >= refs[which]->start
-              && window->point < refs[which]->end)
+          /* Use the first reference that either contains the point
+             or is after the point. */
+          if (refs[which]->end > window->point)
             break;
         }
     }

@@ -1,5 +1,16 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Select correct cross-reference.
+
+	* info/session.c (info_menu_or_ref_item): If there is more than 
+	one cross-reference in the line after the point and no 
+	cross-reference contains the point, use the first 
+	cross-reference after the point, not the last one in the line.  
+	This means that the cross-reference that is highlighted as 
+	"active" will be the one that is used.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Avoid memory leak for malformed files.
 
 	* info/nodes.c (info_load_file): Free 'contents' and 'encoding' 
