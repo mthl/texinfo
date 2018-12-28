@@ -1,5 +1,13 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Upgrade to libintl-perl 1.31.
+	
+	* tp/maintain/lib/libintl-perl: Replace directory with contents 
+	of https://cpan.metacpan.org/authors/id/G/GU/GUIDO/libintl-perl-1.31.tar.gz
+	* tp/maintain/lib/README: Note new origin.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove implementation of @cropmarks in texi2any.
 
 	* tp/Texinfo/Common.pm (%line_commands): Remove 'cropmarks'.
