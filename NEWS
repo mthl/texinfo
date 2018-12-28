@@ -12,6 +12,7 @@ See the manual for detailed information.
 
 * Language:
   . New commands @&, @ampchar{}.
+  . @cropmarks command removed
 
 * texi2any
   . extension modules fixed to work with the "thread-safe locales" of

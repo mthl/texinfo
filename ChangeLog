@@ -1,5 +1,19 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove @cropmarks command.
+
+	* doc/texinfo.tex (\cropmarks, \ifcropmarks, \onepageout): 
+	Remove implementation of @cropmarks.
+	* NEWS: Mention @cropmarks removal.
+
+	This command has hardly ever been used and it is questionable 
+	whether it has worked correctly for many years.  See bug-texinfo 
+	discussion November 2018.
+	The code was introduced in 1986 by Pierre MacKay for use by 
+	"Near East Publications".
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Tidy up info test suite infrastructure.
 
 	* info/t/Init-test.inc: Do not set GINFO_NAME variable as it is 
