@@ -1,5 +1,12 @@
 2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove documentation of @cropmarks command.
+
+	* doc/texinfo.texi (Cropmarks and Magnification, Magnification):
+	Rename and remove mention of @cropmarks.
+
+2018-12-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove @cropmarks command.
 
 	* doc/texinfo.tex (\cropmarks, \ifcropmarks, \onepageout): 

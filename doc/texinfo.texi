@@ -571,8 +571,7 @@ Formatting and Printing Hardcopy
 * @code{@@smallbook}::                  How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * @code{@@pagesizes}::                  How to print with customized page sizes.
-* Cropmarks and Magnification:: How to print marks to indicate the size
-                                 of pages and how to print scaled up output.
+* Magnification::               How to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 * Obtaining @TeX{}::               How to obtain @TeX{}.
 
@@ -14899,8 +14898,7 @@ Details are in the following sections.
 * @code{@@smallbook}::                  How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * @code{@@pagesizes}::                  How to print with customized page sizes.
-* Cropmarks and Magnification:: How to print marks to indicate the size
-                                 of pages and how to print scaled up output.
+* Magnification::               How to print scaled up output.
 * PDF Output::                  Portable Document Format output.
 * Obtaining @TeX{}::               How to obtain @TeX{}.
 @end menu
@@ -15853,32 +15851,9 @@ for other ways to specify @code{@@pagesizes} that do not require
 changing the source file.
 
 
-@node Cropmarks and Magnification
-@section Cropmarks and Magnification
-
-@findex cropmarks
-@cindex Cropmarks for printing
-@cindex Printing cropmarks
-You can (attempt to) direct @TeX{} to print cropmarks at the corners
-of pages with the @code{@@cropmarks} command.  Write the
-@code{@@cropmarks} command on a line by itself near the beginning of
-the Texinfo file, before the title page, like this:
-
-@example
-@@cropmarks
-@end example
-
-This command is mainly for printers that typeset several pages on one
-sheet of film; but you can attempt to use it to mark the corners of a
-book set to 7 by 9.25 inches with the @code{@@smallbook} command.
-(Printers will not produce cropmarks for regular sized output that is
-printed on regular sized paper.)  Since different printing machines
-work in different ways, you should explore the use of this command
-with a spirit of adventure.  You may have to redefine the command in
-@file{texinfo.tex}.
-
-The @code{@@cropmarks} command is recognized and ignored in non-@TeX{}
-output formats.
+@node Magnification
+@section Magnification
+@anchor{Cropmarks and Magnification} @c old name
 
 @findex \mag @r{(raw @TeX{} magnification)}
 @cindex Magnified printing
