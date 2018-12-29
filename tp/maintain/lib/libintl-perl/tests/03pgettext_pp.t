@@ -50,27 +50,14 @@ my $bound_domain = textdomain $textdomain;
 ok defined $bound_domain;
 ok $bound_domain, $textdomain;
 
-my $missing_locale = 'locale de_AT missing';
-my $setlocale = Locale::Messages::setlocale (POSIX::LC_ALL() => '');
-if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
-        $missing_locale = '';
-} else {
-        require Locale::Util;
-
-        $setlocale = Locale::Util::set_locale (POSIX::LC_ALL(), 'de', 'AT');
-        if ($setlocale && $setlocale =~ /(?:austria|at)/i) {
-                $missing_locale = '';
-        }
-}
-
 # Default case.
-skip $missing_locale, gettext ('View'), 'Anzeigen';
+ok gettext ('View'), 'Anzeigen';
 
 # Default context case.
-skip $missing_locale, pgettext ('Which folder would you like to view?','View'), 'Ansicht';
+ok pgettext ('Which folder would you like to view?','View'), 'Ansicht';
 
 # msgid eq msgstr.
-skip $missing_locale, pgettext ('Which folder would you like to view? (2)','View'), 'View 2';
+ok pgettext ('Which folder would you like to view? (2)','View'), 'View 2';
 
 # Unknown.
 ok pgettext ('none', 'Not translated'), 'Not translated';

@@ -7,13 +7,16 @@ use strict;
 
 use Test;
 
-use constant NUM_TESTS => 8;
+use constant NUM_TESTS => 6;
 
 use Locale::Messages qw (bindtextdomain textdomain gettext);
 require POSIX;
 require File::Spec;
 
 BEGIN {
+	# The xs version of this test is omitted on purpose.  We can
+	# only test it when the locale de and de_AT are installed, but
+	# checking for them will spoil our results.
 	my $package;
 	if ($0 =~ /_pp\.t$/) {
 		$package = 'gettext_pp';
@@ -30,13 +33,6 @@ BEGIN {
 	plan tests => NUM_TESTS;
 }
 
-# Clean environment first.
-foreach my $var (keys %ENV) {
-    if ('LC_' eq substr $var, 0, 3) {
-        Locale::Messages::nl_putenv ("$var");
-    }
-}
-
 Locale::Messages::nl_putenv ("LANGUAGE=de_AT");
 Locale::Messages::nl_putenv ("LC_ALL=de_AT");
 Locale::Messages::nl_putenv ("LANG=de_AT");
@@ -45,9 +41,9 @@ Locale::Messages::nl_putenv ("LC_MESSAGES=de_AT");
 # de will be installed, too, if de_AT is.  This test does not
 # use Locale::Util::set_locale() for setting the locale, and 
 # that is on purpose.
-my $missing_locale = Locale::Messages::setlocale (POSIX::LC_ALL() => '') ?
+my $missing_locale = POSIX::setlocale (POSIX::LC_ALL() => '') ?
     '' : 'locale de_AT missing';
-Locale::Messages::setlocale (POSIX::LC_ALL() => 'C');
+POSIX::setlocale (POSIX::LC_ALL() => 'C');
 
 my $locale_dir = $0;
 $locale_dir =~ s,[^\\/]+$,, or $locale_dir = '.';
@@ -55,11 +51,11 @@ $locale_dir .= '/LocaleData';
 
 my $textdomain = 'existing';
 Locale::Messages::nl_putenv ("LANG=whatever");
-Locale::Messages::nl_putenv ("LC_ALL=de_DE");
+Locale::Messages::nl_putenv ("LC_ALL=whatever");
 Locale::Messages::nl_putenv ("LC_MESSAGES=whatever");
 Locale::Messages::nl_putenv ("LANGUAGE=ab_CD:ef_GH:de_AT:de");
 Locale::Messages::nl_putenv ("OUTPUT_CHARSET=iso-8859-1");
-Locale::Messages::setlocale (POSIX::LC_ALL(), '');
+POSIX::setlocale (POSIX::LC_ALL(), '');
 
 my $bound_dir = bindtextdomain $textdomain => $locale_dir;
 
@@ -76,19 +72,7 @@ skip $missing_locale, gettext ('January'), 'Jänner';
 my $translation = gettext ('January');
 
 Locale::Messages::nl_putenv ("LANGUAGE=ab_CD:ef_GH:de:de_AT");
-skip $missing_locale, gettext ('February'), 'Februar'; # not 'Feber'!
-
-# Check that LC_ALL works.
-Locale::Messages::nl_putenv ("LANGUAGE");
-Locale::Messages::nl_putenv ("LC_ALL=de_DE.utf-8");
-Locale::Messages::setlocale (POSIX::LC_ALL(), '');
-skip $missing_locale, gettext ('February'), 'Februar';
-
-# But LANGUAGE has precedence.
-Locale::Messages::nl_putenv ("LANGUAGE=de_AT.utf-8");
-Locale::Messages::nl_putenv ("LC_ALL=de_DE.utf-8");
-Locale::Messages::setlocale (POSIX::LC_ALL(), '');
-skip $missing_locale, gettext ('February'), 'Feber';
+ok gettext ('February'), 'Februar'; # not 'Feber'!
 
 __END__
 

@@ -30,7 +30,6 @@ See the manual for detailed information.
     implemented in texinfo.tex)
   . `FIX_TEXINFO' removed as a customization variable
   . do not recognise or warn about obsolete customization variables
-  . bundled version of libintl-perl upgraded to 1.31
 
 * Development: switch from Subversion to git
   https://savannah.gnu.org/git/?group=texinfo
