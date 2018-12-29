@@ -2,8 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018 
-# Free Software Foundation, Inc.
+# Copyright 2010-2018 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1369,6 +1368,13 @@ foreach my $unclosed_file (keys(%unclosed_files)) {
 }
 
 if ($call_texi2dvi) {
+  if (%{$parser_default_options->{'values'}}) {
+    for my $flag (keys %{$parser_default_options->{'values'}}) {
+      my $value = $parser_default_options->{'values'}->{$flag};
+      push @texi2dvi_args, "--command=\@set $flag $value";
+    }
+    # Do this now rather than when the options are read in case -U follows -D
+  }
   if (get_conf('DEBUG') or get_conf('VERBOSE')) {
     print STDERR "EXEC ".join('|', (get_conf('TEXI2DVI'), @texi2dvi_args, @ARGV)) 
        ."\n";
