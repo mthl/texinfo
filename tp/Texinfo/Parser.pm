@@ -19,6 +19,9 @@
 # Original author: Patrice Dumas <pertusus@free.fr>
 # Parts (also from Patrice Dumas) come from texi2html.pl or texi2html.init.
 
+# Note: This file may not be loaded if TEXINFO_XS_PARSER is set in the
+# environment, due to a hook placed in @INC by Texinfo::ModulePath.
+
 # The organization of the file is the following:
 #  module definitions.
 #  default parser state.  With explanation of the internal structures.

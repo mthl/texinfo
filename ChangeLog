@@ -1,3 +1,12 @@
+2018-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Document 'TEXINFO_XS_PARSER'.
+
+	* NEWS: Mention the XS parser implementation.
+	* tp/Texinfo/Parser.pm: Note that this module can be overridden.
+	* doc/texinfo.texi (texi2any Environment Variables):
+	Add TEXINFO_XS_PARSER.
+
 2018-12-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Pass on -D to texi2dvi.
