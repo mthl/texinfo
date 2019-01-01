@@ -1,3 +1,10 @@
+2019-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix error message from texinfo-js.
+
+	* js/texinfo-js.in: Remove extra `-' from an error message.  
+	Report from Stefan Husmann.
+
 2018-12-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Document 'TEXINFO_XS_PARSER'.
