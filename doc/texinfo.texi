@@ -17191,6 +17191,11 @@ HTML file; default unset.
 For HTML@.  If set, output the program name and miscellaneous related
 information in the page footers; default false.
 
+@item SECTION_NAME_IN_TITLE
+For HTML@.  If set,  when output is split, use the argument of the 
+chapter structuring command (e.g., @code{@@chapter} or @code{@@section})
+in the @code{<title>} instead of the argument to @code{@@node}.
+
 @item SHORTEXTN
 For HTML@.  If set, use @samp{.htm} as extension; default false.
 
