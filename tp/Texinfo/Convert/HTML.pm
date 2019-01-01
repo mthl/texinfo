@@ -1007,6 +1007,7 @@ my %defaults = (
   'documentlanguage'     => 'en',
   'xrefautomaticsectiontitle' => 'off',
   'SHOW_TITLE'           => 1,
+  'SECTION_NAME_IN_TITLE' => 0,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
   'MONOLITHIC'           => 1,
   'CHAPTER_HEADER_LEVEL' => 2,
@@ -6225,7 +6226,8 @@ $pre_body_close
 }
 
 # This is used for normal output files and other files, like renamed
-# nodes file headers, or redirection file headers.
+# nodes file headers, or redirection file headers.  $COMMAND is the tree
+# element for a @node that is being output in the file.
 sub _file_header_informations($$)
 {
   my $self = shift;
@@ -6239,9 +6241,20 @@ sub _file_header_informations($$)
         and $command_string ne $self->{'title_string'}) {
       print STDERR "DO <title>\n"
         if ($self->get_conf('DEBUG'));
+
+      my $element_tree;
+      if ($self->get_conf('SECTION_NAME_IN_TITLE')
+          and $command->{'extra'}
+          and $command->{'extra'}->{'associated_section'}
+          and $command->{'extra'}->{'associated_section'}->{'args'}
+          and $command->{'extra'}->{'associated_section'}->{'args'}->[0]) {
+        $element_tree = $command->{'extra'}->{'associated_section'}->{'args'}->[0];
+      } else {
+        $element_tree = $self->command_text($command, 'tree');
+      }
       my $title_tree = $self->gdt('{element_text} ({title})', 
                    { 'title' => $self->{'title_tree'}, 
-                   'element_text' => $self->command_text($command, 'tree')});
+                     'element_text' => $element_tree });
       $title = $self->convert_tree_new_formatting_context(
           {'type' => '_string', 'contents' => [$title_tree]}, 
           $command->{'cmdname'}, 'element_title');

@@ -1,5 +1,18 @@
 2019-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	New customization variable SECTION_NAME_IN_TITLE.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables),
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	Add SECTION_NAME_IN_TITLE.
+	* tp/Texinfo/Convert/HTML.pm (_file_header_information): For 
+	split output, if SECTION_NAME_IN_TITLE is set, try to use the 
+	argument of the chapter structuring command instead of @node for 
+	the contents of <title>.  Feature suggestion from Akim Demaille
+	(help-texinfo, Nov. 2018).
+
+2019-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix error message from texinfo-js.
 
 	* js/texinfo-js.in: Remove extra `-' from an error message.  
