@@ -503,11 +503,10 @@ $result_converted{'plaintext'}->{'syncode_index_print_both'} = 'Print fn
 
 
 $result_converted{'html_text'}->{'syncode_index_print_both'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="index-c_002d_002d_002doncept"></a>
-<a name="index-f_002d_002d_002dun"></a>
+<span id="index-c_002d_002d_002doncept"></span>
+<span id="index-f_002d_002d_002dun"></span>
 
 
 <p>Print fn
@@ -523,10 +522,10 @@ $result_converted{'html_text'}->{'syncode_index_print_both'} = '
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-c_002d_002d_002doncept">c&mdash;oncept</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f_002d_002d_002dun"><code>f---un</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

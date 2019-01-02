@@ -286,19 +286,17 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="top"></a>
-<h1 class="top">top</h1>
-<a name="index-node"></a>
-<h4 class="node-heading">index node</h4>
+<span id="top"></span><h1 class="top">top</h1>
+<span id="index-node"></span><h4 class="node-heading">index node</h4>
 
-<a name="index-node-1"></a>
+<span id="index-node-1"></span>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#index-node_cp_letter-N"><b>N</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="index-node_cp_letter-N">N</a></th><td></td><td></td></tr>
+<tr><th id="index-node_cp_letter-N">N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-node-1">node</a>:</td><td>&nbsp;</td><td valign="top"><a href="#index-node">index node</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

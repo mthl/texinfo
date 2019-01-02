@@ -1053,13 +1053,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter-1" accesskey="1">chapter 1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1071,25 +1069,21 @@ Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a>, Up: <a href="
 </table>
 
 <hr>
-<a name="chapter-1"></a>
-<div class="header">
+<span id="chapter-1"></span><div class="header">
 <p>
 Next: <a href="#node-after-chapter-1" accesskey="n" rel="next">node after chapter 1</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="chapter-c1"></a>
-<h2 class="chapter">1 chapter c1</h2>
+<span id="chapter-c1"></span><h2 class="chapter">1 chapter c1</h2>
 
 <hr>
-<a name="node-after-chapter-1"></a>
-<div class="header">
+<span id="node-after-chapter-1"></span><div class="header">
 <p>
 Next: <a href="#node-after-chapter-2" accesskey="n" rel="next">node after chapter 2</a>, Previous: <a href="#chapter-1" accesskey="p" rel="prev">chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">node after chapter 1</h4>
 
 <hr>
-<a name="node-after-chapter-2"></a>
-<div class="header">
+<span id="node-after-chapter-2"></span><div class="header">
 <p>
 Previous: <a href="#node-after-chapter-1" accesskey="p" rel="prev">node after chapter 1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>

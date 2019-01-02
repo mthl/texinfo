@@ -955,26 +955,25 @@ $result_converted{'plaintext'}->{'test_deftypefnnewline'} = ' -- Function:
 
 $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 <dl>
-<dt><a name="index-name"></a>Function:<br> <em>data-type</em><br> <strong>name</strong> <em>arguments...</em></dt>
+<dt id="index-name">Function:<br> <em>data-type</em><br> <strong>name</strong> <em>arguments...</em></dt>
 <dd><p>aaa
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-arg"></a>fun: <strong>arg</strong></dt>
+<dt id="index-arg">fun: <strong>arg</strong></dt>
 <dd><p>fff
 </p></dd></dl>
 
 
 <dl>
-<dt><a name="index-name2"></a>Function: <em>data-type2</em> <strong>name2</strong> <em>arguments2...</em></dt>
+<dt id="index-name2">Function: <em>data-type2</em> <strong>name2</strong> <em>arguments2...</em></dt>
 <dd><p>aaa2
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-arg2"></a>fun2: <strong>arg2</strong></dt>
+<dt id="index-arg2">fun2: <strong>arg2</strong></dt>
 <dd><p>fff2
 </p></dd></dl>
 <hr>

@@ -581,13 +581,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="SEC_Top"></a>
-
+<span id="SEC_Top"></span>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#c1" accesskey="1">c1</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
@@ -598,31 +596,25 @@ Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </table>
 
 <hr>
-<a name="c1"></a>
-<div class="header">
+<span id="c1"></span><div class="header">
 <p>
 Next: <a href="#c2" accesskey="n" rel="next">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="c1-1"></a>
-<h2 class="chapter">1 c1</h2>
+<span id="c1-1"></span><h2 class="chapter">1 c1</h2>
 
 <hr>
-<a name="c2"></a>
-<div class="header">
+<span id="c2"></span><div class="header">
 <p>
 Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" accesskey="p" rel="prev">c1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="c2-1"></a>
-<h2 class="chapter">2 c2</h2>
+<span id="c2-1"></span><h2 class="chapter">2 c2</h2>
 
 <hr>
-<a name="c3"></a>
-<div class="header">
+<span id="c3"></span><div class="header">
 <p>
 Previous: <a href="#c2" accesskey="p" rel="prev">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="c3-1"></a>
-<h2 class="chapter">3 c3</h2>
+<span id="c3-1"></span><h2 class="chapter">3 c3</h2>
 <hr>
 
 

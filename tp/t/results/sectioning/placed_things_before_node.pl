@@ -1208,7 +1208,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="An-anchor"></a>
+<span id="An-anchor"></span>
 <p>Ref to the anchor:
 <a href="#An-anchor">An anchor</a>
 </p>
@@ -1217,7 +1217,7 @@ ul.no-bullet {list-style: none}
 </p>
 <p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
-<div class="float"><a name="float-anchor"></a>
+<div class="float"><span id="float-anchor"></span>
 <p>In float
 </p><div class="float-caption"><p><strong>1
 </strong></p></div></div>
@@ -1229,11 +1229,9 @@ ul.no-bullet {list-style: none}
 </td></tr>
 </table>
 
-<a name="index-index-entry"></a>
+<span id="index-index-entry"></span>
 
-<a name="Top"></a>
-<a name="top-section"></a>
-<h1 class="top">top section</h1>
+<span id="Top"></span><span id="top-section"></span><h1 class="top">top section</h1>
 
 <p>Ref to anchor
 <a href="#An-anchor">An anchor</a>
@@ -1247,7 +1245,7 @@ ul.no-bullet {list-style: none}
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote.
 </p>
-<a name="Anchor-in-footnote"></a>
+<span id="Anchor-in-footnote"></span>
 <p>Ref to main text anchor
 <a href="#An-anchor">An anchor</a>
 </p>

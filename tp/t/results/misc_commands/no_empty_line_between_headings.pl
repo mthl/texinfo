@@ -230,14 +230,10 @@ Subheading
 ';
 
 
-$result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<a name="Top"></a>
-<h1 class="top">Top</h1>
-<a name="Subheading"></a>
-<h4 class="subheading">Subheading</h4>
-<a name="Chapter"></a>
-<h2 class="chapter">1 Chapter</h2>
-<a name="Section"></a>
-<h3 class="section">1.1 Section</h3>
+$result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<span id="Top"></span><h1 class="top">Top</h1>
+<span id="Subheading"></span><h4 class="subheading">Subheading</h4>
+<span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
+<span id="Section"></span><h3 class="section">1.1 Section</h3>
 <hr>
 ';
 

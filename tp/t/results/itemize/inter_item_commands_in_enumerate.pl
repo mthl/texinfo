@@ -346,7 +346,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_enumerate'} = '<ol>
 
 <ol>
 <li>Title
-<a name="index-cindex"></a>
+<span id="index-cindex"></span>
 </li><li> enum
 </li></ol>
 ';

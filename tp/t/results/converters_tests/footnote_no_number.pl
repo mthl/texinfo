@@ -237,8 +237,7 @@ $result_converted{'plaintext'}->{'footnote_no_number'} = 'Para(*).
 ';
 
 
-$result_converted{'html_text'}->{'footnote_no_number'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'footnote_no_number'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p>Para<a name="DOCF1" href="#FOOT1"><sup>*</sup></a>.
 </p>

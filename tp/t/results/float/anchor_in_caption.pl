@@ -456,17 +456,16 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="listoffloats">
 <dt><a href="#label">fl 1</a></dt><dd><p>in caption</p></dd>
 </dl>
 
-<div class="float"><a name="label"></a>
+<div class="float"><span id="label"></span>
 <p>In float.
 </p>
-<div class="float-caption"><p><strong>fl 1: </strong>in caption<a name="in-anchor"></a></p></div></div><hr>
+<div class="float-caption"><p><strong>fl 1: </strong>in caption<span id="in-anchor"></span></p></div></div><hr>
 
 
 

@@ -2637,24 +2637,24 @@ $result_converted{'html_text'}->{'table_nested'} = '
 </p><blockquote>
 <dl compact="compact">
 <dt>first item
-<a name="index-first-item"></a>
+<span id="index-first-item"></span>
 </dt>
 <dt>second itemx
-<a name="index-second-itemx"></a>
+<span id="index-second-itemx"></span>
 </dt>
 <dd>
 <p>Text.
 </p>
 </dd>
 <dt>second item
-<a name="index-second-item"></a>
+<span id="index-second-item"></span>
 </dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
 <dt>last
-<a name="index-last"></a>
+<span id="index-last"></span>
 </dt>
 </dl>
 
@@ -2674,10 +2674,10 @@ $result_converted{'html_text'}->{'table_nested'} = '
 </p><div class="example">
 <dl compact="compact">
 <dt><tt>first item</tt>
-<a name="index-first-item-1"></a>
+<span id="index-first-item-1"></span>
 </dt>
 <dt><tt>second itemx</tt>
-<a name="index-second-itemx-1"></a>
+<span id="index-second-itemx-1"></span>
 </dt>
 <dd><pre class="example">
 
@@ -2685,7 +2685,7 @@ Text.
 
 </pre></dd>
 <dt><tt>second item</tt>
-<a name="index-second-item-1"></a>
+<span id="index-second-item-1"></span>
 </dt>
 <dd><pre class="example">
 
@@ -2693,7 +2693,7 @@ Text 2
 
 </pre></dd>
 <dt><tt>last</tt>
-<a name="index-last-1"></a>
+<span id="index-last-1"></span>
 </dt>
 </dl>
 <pre class="example">
@@ -2715,24 +2715,24 @@ Something.
 <blockquote>
 <dl compact="compact">
 <dt>first item
-<a name="index-first-item-2"></a>
+<span id="index-first-item-2"></span>
 </dt>
 <dt>second itemx
-<a name="index-second-itemx-2"></a>
+<span id="index-second-itemx-2"></span>
 </dt>
 <dd>
 <p>Text.
 </p>
 </dd>
 <dt>second item
-<a name="index-second-item-2"></a>
+<span id="index-second-item-2"></span>
 </dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
 <dt>last
-<a name="index-last-2"></a>
+<span id="index-last-2"></span>
 </dt>
 </dl>
 

@@ -687,13 +687,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#g_t_0028manual_0029-name" accesskey="n" rel="next">(manual) name</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#g_t_0028manual_0029-name" accesskey="1">(manual) name</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -701,14 +699,13 @@ Next: <a href="#g_t_0028manual_0029-name" accesskey="n" rel="next">(manual) name
 </table>
 
 <hr>
-<a name="g_t_0028manual_0029-name"></a>
-<div class="header">
+<span id="g_t_0028manual_0029-name"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">(manual) name</h4>
 
-<a name="g_t_0028manual2_0029-name2"></a>
+<span id="g_t_0028manual2_0029-name2"></span>
 <p><a href="#g_t_0028manual2_0029-name2">(manual2) name2</a>.
 </p><hr>
 

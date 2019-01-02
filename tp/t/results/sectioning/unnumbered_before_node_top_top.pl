@@ -448,14 +448,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="before-nodes"></a>
-<h2 class="unnumbered">before nodes</h2>
+<span id="before-nodes"></span><h2 class="unnumbered">before nodes</h2>
 
 <p>in unnumbered
 </p>
-<a name="Top"></a>
-<a name="top-section"></a>
-<h2 class="unnumbered">top section</h2>
+<span id="Top"></span><span id="top-section"></span><h2 class="unnumbered">top section</h2>
 <p>Top node
 </p><hr>
 

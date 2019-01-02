@@ -388,14 +388,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="Top"></span>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 <hr>
 
 

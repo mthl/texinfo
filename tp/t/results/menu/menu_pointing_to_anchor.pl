@@ -469,13 +469,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>Text
 </p>
-<a name="An-anchor"></a>
+<span id="An-anchor"></span>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#An-anchor" accesskey="1">An anchor</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">menu entry pointing to the anchor.
 </td></tr>

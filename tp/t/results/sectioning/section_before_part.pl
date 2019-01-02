@@ -244,14 +244,12 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="section"></a>
-<h3 class="section">1 section</h3>
+<span id="section"></span><h3 class="section">1 section</h3>
 
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

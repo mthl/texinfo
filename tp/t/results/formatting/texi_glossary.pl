@@ -1623,8 +1623,7 @@ ul.no-bullet {list-style: none}
 
 
 
-<a name="Top"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="Top"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#glossary" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -1632,8 +1631,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Top-1"></a>
-<h1 class="top">Top</h1>
+<span id="Top-1"></span><h1 class="top">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#glossary">1 glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1646,8 +1644,7 @@ ul.no-bullet {list-style: none}
  is quite specific
 </p>
 <hr size="6">
-<a name="glossary"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="glossary"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -1662,10 +1659,9 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="glossary-1"></a>
-<h1 class="chapter">1 glossary</h1>
+<span id="glossary-1"></span><h1 class="chapter">1 glossary</h1>
 
-<p>name2 <a name="id2"></a>text2
+<p>name2 <span id="id2"></span>text2
 </p>
 
 <hr>

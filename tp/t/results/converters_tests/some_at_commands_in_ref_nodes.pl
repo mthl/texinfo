@@ -1668,13 +1668,11 @@ trema i" E=` and exclamdown !::.
 
 
 $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="Top-1"></a>
-<h1 class="top">Top</h1>
+<span id="Top-1"></span><h1 class="top">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1" accesskey="1">A <small>SC &Ntilde; &Aring; TeX</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1682,13 +1680,11 @@ $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
 </table>
 
 <hr>
-<a name="A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1"></a>
-<div class="header">
+<span id="A-SC-_00d1-_00c5-TeX-node-_00ef-_00ef-_1e14-_0142-_1e08-_00a1"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="A-SC-node-i-i-E-l-C-_00a1"></a>
-<h2 class="chapter">1 A <small>SC</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</h2>
+<span id="A-SC-node-i-i-E-l-C-_00a1"></span><h2 class="chapter">1 A <small>SC</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</h2>
 
 <p>see <a href="manual.html#a-strong-ref-with-SC_002c-a-i-trema-_00ef_002c-a-dotless-i-trema-_00ef-_1e14-and-exclamdown-_00a1">(manual)a <strong>strong</strong> ref with <small>SC</small>, a i trema &iuml;, a dotless i trema &iuml; &#274;` and exclamdown &iexcl;</a>.
 </p><hr>

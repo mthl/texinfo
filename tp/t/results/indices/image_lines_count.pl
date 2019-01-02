@@ -288,12 +288,11 @@ ff
 ';
 
 
-$result_converted{'html_text'}->{'image_lines_count'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'image_lines_count'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <img src="count_image.png" alt="count_image">
 
-<a name="index-index-entry"></a>
+<span id="index-index-entry"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
@@ -301,7 +300,7 @@ $result_converted{'html_text'}->{'image_lines_count'} = '<a name="Top"></a>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry">index entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

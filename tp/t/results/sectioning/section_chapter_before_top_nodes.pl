@@ -896,22 +896,18 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="section-node"></a>
-<div class="header">
+<span id="section-node"></span><div class="header">
 <p>
 Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="#chapter-node" accesskey="u" rel="up">chapter node</a> &nbsp; </p>
 </div>
-<a name="section"></a>
-<h3 class="section">1 section</h3>
+<span id="section"></span><h3 class="section">1 section</h3>
 
 <hr>
-<a name="chapter-node"></a>
-<div class="header">
+<span id="chapter-node"></span><div class="header">
 <p>
 Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="chapter"></a>
-<h3 class="section">2 chapter</h3>
+<span id="chapter"></span><h3 class="section">2 chapter</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -919,13 +915,11 @@ Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" 
 </table>
 
 <hr>
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h3 class="unnumberedsec">top</h3>
+<span id="top"></span><h3 class="unnumberedsec">top</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">

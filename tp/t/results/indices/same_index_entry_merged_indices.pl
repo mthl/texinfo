@@ -729,18 +729,16 @@ $result_converted{'plaintext'}->{'same_index_entry_merged_indices'} = 'Text.
 
 
 $result_converted{'html_text'}->{'same_index_entry_merged_indices'} = '
-<a name="Top"></a>
-<a name="SEC_Top"></a>
-
+<span id="Top"></span><span id="SEC_Top"></span>
 <p>Text.
 </p>
 <dl>
-<dt><a name="index-mmm_002dmode"></a>Command: <strong>mmm-mode</strong> <em><var>arg</var></em></dt>
+<dt id="index-mmm_002dmode">Command: <strong>mmm-mode</strong> <em><var>arg</var></em></dt>
 <dd><p>Toggle the state of MMM Mode.
 </p></dd></dl>
 
 <dl>
-<dt><a name="index-mmm_002dmode-1"></a>Variable: <strong>mmm-mode</strong></dt>
+<dt id="index-mmm_002dmode-1">Variable: <strong>mmm-mode</strong></dt>
 <dd><p>This variable represents MMM Mode.
 </p></dd></dl>
 
@@ -750,7 +748,7 @@ $result_converted{'html_text'}->{'same_index_entry_merged_indices'} = '
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-M">M</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-M">M</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mmm_002dmode"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-mmm_002dmode-1"><code>mmm-mode</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>

@@ -1497,7 +1497,7 @@ D
 
 $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact="compact">
 <dt><code>a</code>
-<a name="index-a-1"></a>
+<span id="index-a-1"></span>
 </dt>
 <dd><p>l&ndash;ine
 </p></dd>
@@ -1505,10 +1505,10 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 
 <dl compact="compact">
 <dt>a
-<a name="index-a-2"></a>
+<span id="index-a-2"></span>
 </dt>
 <dt>b
-<a name="index-b-1"></a>
+<span id="index-b-1"></span>
 </dt>
 <dd><p>l&ndash;ine
 </p></dd>
@@ -1516,25 +1516,25 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 
 <dl compact="compact">
 <dt><var>a</var>
-<a name="index-a"></a>
+<span id="index-a"></span>
 </dt>
-<dd><a name="index-index-entry-between-item-and-itemx"></a>
+<dd><span id="index-index-entry-between-item-and-itemx"></span>
 </dd>
 <dt><var>b</var>
-<a name="index-b"></a>
+<span id="index-b"></span>
 </dt>
 <dd><p>l&ndash;ine
 </p></dd>
 <dt><var>c</var>
-<a name="index-c"></a>
+<span id="index-c"></span>
 </dt>
 <dt><var>d</var>
-<a name="index-d"></a>
+<span id="index-d"></span>
 </dt>
 </dl>
 
 <dl compact="compact">
-<dd><a name="index-cindex-in-table"></a>
+<dd><span id="index-cindex-in-table"></span>
 </dd>
 <dt><code>abb</code></dt>
 <dd><p>l&ndash;ine
@@ -1542,7 +1542,7 @@ $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact=
 </dl>
 
 <dl compact="compact">
-<dd><a name="index-cindex-in-table-1"></a>
+<dd><span id="index-cindex-in-table-1"></span>
 <p>Texte before first item.
 </p></dd>
 <dt><code>abb</code></dt>

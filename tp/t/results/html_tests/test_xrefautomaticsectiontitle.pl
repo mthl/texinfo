@@ -720,13 +720,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="1">chap</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -734,13 +732,11 @@ Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Up: <a href="dir.html#T
 </table>
 
 <hr>
-<a name="chap"></a>
-<div class="header">
+<span id="chap"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="chapter"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 
 <p>See section <a href="#chap">chapter</a>.

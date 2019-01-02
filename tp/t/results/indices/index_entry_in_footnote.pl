@@ -297,8 +297,7 @@ $result_converted{'plaintext'}->{'index_entry_in_footnote'} = 'Top node(1)
 ';
 
 
-$result_converted{'html_text'}->{'index_entry_in_footnote'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'index_entry_in_footnote'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p>Top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -308,7 +307,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote'} = '<a name="Top"></a
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry-in-footnote">index entry in footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -321,7 +320,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote'} = '<a name="Top"></a
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote
-<a name="index-index-entry-in-footnote"></a>
+<span id="index-index-entry-in-footnote"></span>
 </p>
 </div>
 <hr>

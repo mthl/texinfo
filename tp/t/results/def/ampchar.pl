@@ -381,7 +381,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <dl>
-<dt><a name="index-b-on-a"></a>Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em></dt>
+<dt id="index-b-on-a">Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em></dt>
 </dl>
 <p>&amp; &amp; &amp; { } @
 </p>

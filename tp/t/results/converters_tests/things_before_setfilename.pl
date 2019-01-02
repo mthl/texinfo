@@ -1558,9 +1558,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<a name="top-section"></a>
-<h1 class="top">top section</h1>
+<span id="Top"></span><span id="top-section"></span><h1 class="top">top section</h1>
 
 <p>Ref to anchor
 <a href="#An-anchor">An anchor</a>

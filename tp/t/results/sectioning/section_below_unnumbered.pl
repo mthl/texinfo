@@ -942,7 +942,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -956,13 +956,11 @@ ul.no-bullet {list-style: none}
 </div>
 
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#Unn" accesskey="n" rel="next">Unn</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="Top-1"></a>
-<h1 class="top">Top</h1>
+<span id="Top-1"></span><h1 class="top">Top</h1>
 
 <p>Top node.
 </p>
@@ -973,13 +971,11 @@ Next: <a href="#Unn" accesskey="n" rel="next">Unn</a>, Up: <a href="dir.html#Top
 
 
 <hr>
-<a name="Unn"></a>
-<div class="header">
+<span id="Unn"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="Unn-1"></a>
-<h2 class="unnumbered">Unn</h2>
+<span id="Unn-1"></span><h2 class="unnumbered">Unn</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Sec" accesskey="1">Sec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -987,13 +983,11 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 </table>
 
 <hr>
-<a name="Sec"></a>
-<div class="header">
+<span id="Sec"></span><div class="header">
 <p>
 Up: <a href="#Unn" accesskey="u" rel="up">Unn</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="Sec-1"></a>
-<h3 class="section">Sec</h3>
+<span id="Sec-1"></span><h3 class="section">Sec</h3>
 
 <p>Should be unnumbered.
 </p>

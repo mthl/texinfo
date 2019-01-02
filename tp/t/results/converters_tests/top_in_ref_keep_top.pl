@@ -4228,8 +4228,7 @@ $result_errors{'top_in_ref_keep_top'} = [];
 
 
 
-$result_converted{'html_text'}->{'top_in_ref_keep_top'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'top_in_ref_keep_top'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p><code>@ref{Top,cross ref name}</code> <a href="#Top">cross ref name</a>
 <code>@ref{Top,,title}</code> <a href="#Top">title</a>

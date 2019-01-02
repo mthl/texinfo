@@ -3192,9 +3192,7 @@ should be e\': è è
 
 
 $result_converted{'html_text'}->{'accentenc'} = '
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>should be e&lsquo;: &egrave; &egrave;
 </p>

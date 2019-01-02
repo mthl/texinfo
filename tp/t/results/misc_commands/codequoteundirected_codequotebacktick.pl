@@ -5167,9 +5167,7 @@ $result_converted{'html_text'}->{'codequoteundirected_codequotebacktick'} = '
 
 
 
-<a name="Top"></a>
-<a name="test-quotes"></a>
-<h1 class="top">test quotes</h1>
+<span id="Top"></span><span id="test-quotes"></span><h1 class="top">test quotes</h1>
 
 <p>&ldquo;simple-double&ndash;three&mdash;four&mdash;-&rdquo; &lsquo;simple&rsquo; quotedblleft: &ldquo; <br>
 code: <code>``simple-double--three---four----\'\' `simple\' quotedblleft: &ldquo;</code> <br>

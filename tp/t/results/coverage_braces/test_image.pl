@@ -3811,8 +3811,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
@@ -3833,7 +3832,7 @@ In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
 </pre></div>
 
-<div class="float"><a name="Image-with-commands"></a>
+<div class="float"><span id="Image-with-commands"></span>
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a
@@ -4050,8 +4049,7 @@ $result_converted_errors{'plaintext'}->{'test_image'} = [
 
 $result_converted{'html_text'}->{'test_image'} = '
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
@@ -4072,7 +4070,7 @@ In text [ alt <b>&icirc;&ndash;le..</b>  a
 &lt;&quot;%@<tt>  &lt; &amp; @ % &quot; </tt> ].
 </pre></div>
 
-<div class="float"><a name="Image-with-commands"></a>
+<div class="float"><span id="Image-with-commands"></span>
 <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; ">
 
 <p>In text <img src="f@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; .ext@i--le..  a@&lt;&quot;%@  &lt; &amp; @ % &quot; " alt="alt &icirc;&ndash;le..  a

@@ -1568,7 +1568,7 @@ $result_converted{'html_text'}->{'commands_in_flushright'} = '
 </p></td><td width="50%">text col2</td></tr>
 </table>
 
-<div class="float"><a name="type"></a>
+<div class="float"><span id="type"></span>
 
 <p>in float
 </p>

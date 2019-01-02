@@ -377,14 +377,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr">
 
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
-<a name="dernier"></a>
-<h2 class="appendix">Annexe A dernier</h2>
+<span id="dernier"></span><h2 class="appendix">Annexe A dernier</h2>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table des mati&egrave;res</h2>
 
 <div class="contents">

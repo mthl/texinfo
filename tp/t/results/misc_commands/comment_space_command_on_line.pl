@@ -837,15 +837,12 @@ Text 1
 
 
 $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
-<a name="Top"></a>
-<a name="top-element-"></a>
-<h1 class="top">top element&nbsp;</h1>
+<span id="Top"></span><span id="top-element-"></span><h1 class="top">top element&nbsp;</h1>
 
 
-<a name="index-index-entry--"></a>
+<span id="index-index-entry--"></span>
 
-<a name="Heading--"></a>
-<h3 class="heading">Heading &nbsp;</h3>
+<span id="Heading--"></span><h3 class="heading">Heading &nbsp;</h3>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-I"><b>I</b></a>
  &nbsp; 
@@ -853,7 +850,7 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry--">index entry &nbsp;</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -861,7 +858,7 @@ $result_converted{'html_text'}->{'comment_space_command_on_line'} = '
  &nbsp; 
 </td></tr></table>
 
-<div class="float"><a name="label"></a>
+<div class="float"><span id="label"></span>
 <p>float
 </p><div class="float-caption"><p><strong>Text 1
 </strong></p></div></div>

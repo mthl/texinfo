@@ -281,7 +281,7 @@ $result_converted{'plaintext'}->{'form_feed_in_brace_commands'} = '\' aa\'
 ';
 
 
-$result_converted{'html_text'}->{'form_feed_in_brace_commands'} = '<p><samp> &#12;aa</samp> <a name="aa"></a></p>&#12;<p>something <a href="mailto:aaa">fff</a><a name="DOCF1" href="#FOOT1"><sup>1</sup></a> <a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
+$result_converted{'html_text'}->{'form_feed_in_brace_commands'} = '<p><samp> &#12;aa</samp> <span id="aa"></span></p>&#12;<p>something <a href="mailto:aaa">fff</a><a name="DOCF1" href="#FOOT1"><sup>1</sup></a> <a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
 </p><div class="footnote">
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>

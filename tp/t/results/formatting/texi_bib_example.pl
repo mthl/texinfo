@@ -5688,8 +5688,7 @@ ul.no-bullet {list-style: none}
 
 
 
-<a name="Top"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="Top"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#Introduction" title="Next section in reading order"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -5697,8 +5696,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Top-1"></a>
-<h1 class="top">Top</h1>
+<span id="Top-1"></span><h1 class="top">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#Introduction">1 Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5710,8 +5708,7 @@ ul.no-bullet {list-style: none}
 </pre></th></tr></table>
 
 <hr size="6">
-<a name="Introduction"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="Introduction"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -5726,8 +5723,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="Introduction-1"></a>
-<h1 class="chapter">1 Introduction</h1>
+<span id="Introduction-1"></span><h1 class="chapter">1 Introduction</h1>
 
 <p>The ability of a documentation format to make cross references to a
 bibliography, a feature of LaTeX (See item [LaTeX2e] in <a href="#References">LaTeX2e</a>.)
@@ -5735,8 +5731,7 @@ bibliography, a feature of LaTeX (See item [LaTeX2e] in <a href="#References">La
 currently supported in Texinfo.
 </p>
 <hr>
-<a name="References"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="References"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Introduction" title="Beginning of this chapter or previous chapter"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Introduction" title="Previous section in reading order"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Up section"> Up </a>]</td>
@@ -5751,11 +5746,10 @@ currently supported in Texinfo.
 <td valign="middle" align="left">[Index]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="About (help)"> ? </a>]</td>
 </tr></table>
-<a name="References-1"></a>
-<h1 class="chapter">2 References</h1>
+<span id="References-1"></span><h1 class="chapter">2 References</h1>
 
 <ul class="no-bullet">
-<li> <a name="LaTeX2e"></a>[LaTeX2e]
+<li> <span id="LaTeX2e"></span>[LaTeX2e]
  Leslie Lamport, LaTeX User&rsquo;s Guide and
 Reference Manual, 2nd edition, Addison-Wesley, Reading,
 Massachusetts, 1994.

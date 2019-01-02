@@ -433,13 +433,13 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl compact="compact">
 </p>
 </dd>
 <dt>first item
-<a name="index-first-item"></a>
+<span id="index-first-item"></span>
 </dt>
 <dt>after an empty itemx, before an empty item
-<a name="index-after-an-empty-itemx_002c-before-an-empty-item"></a>
+<span id="index-after-an-empty-itemx_002c-before-an-empty-item"></span>
 </dt>
 <dt>in item before end table
-<a name="index-in-item-before-end-table"></a>
+<span id="index-in-item-before-end-table"></span>
 </dt>
 </dl>
 ';

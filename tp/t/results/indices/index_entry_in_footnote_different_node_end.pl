@@ -651,8 +651,7 @@ $result_converted{'plaintext'}->{'index_entry_in_footnote_different_node_end'} =
 ';
 
 
-$result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -666,8 +665,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 <p>Top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <hr>
-<a name="First"></a>
-<div class="header">
+<span id="First"></span><div class="header">
 <p>
  &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -681,10 +679,10 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-counting-entry">counting entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry-in-footnote">index entry in footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -699,13 +697,13 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_different_node_end'} =
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>in footnote
-<a name="index-index-entry-in-footnote"></a>
+<span id="index-index-entry-in-footnote"></span>
 </p>
 <p>Blah
 </p>
 <p>Blih
 </p>
-<a name="index-counting-entry"></a>
+<span id="index-counting-entry"></span>
 </div>
 <hr>
 ';

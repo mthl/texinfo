@@ -3113,9 +3113,7 @@ $result_errors{'accentenc_enable_encoding'} = [];
 
 
 $result_converted{'html_text'}->{'accentenc_enable_encoding'} = '
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>should be e&lsquo;: è è
 </p>

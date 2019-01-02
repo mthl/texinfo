@@ -542,19 +542,18 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="listoffloats">
 <dt><a href="#label">fl 1</a></dt><dd><p>in caption
 </p></dd>
 </dl>
 
-<div class="float"><a name="label"></a>
+<div class="float"><span id="label"></span>
 <p>In float.
 </p>
 <div class="float-caption"><p><strong>fl 1: </strong>in caption
-<a name="index-index-entry"></a>
+<span id="index-index-entry"></span>
 </p></div></div>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_cp_letter-I"><b>I</b></a>
  &nbsp; 
@@ -562,7 +561,7 @@ ul.no-bullet {list-style: none}
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="Top_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry">index entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

@@ -246,7 +246,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -257,8 +257,7 @@ ul.no-bullet {list-style: none}
 </div>
 
 
-<a name="for-example"></a>
-<h1 class="top">for example</h1>
+<span id="for-example"></span><h1 class="top">for example</h1>
 
 <h2 class="chapter">1 </h2>
 

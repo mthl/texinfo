@@ -2275,9 +2275,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<a name="SEC_Top"></a>
-
+<span id="Top"></span><span id="SEC_Top"></span>
 <div class="menu">
 <pre class="menu-preformatted">&bull; <a href="ggg.html#Top" accesskey="1">(ggg)</a>:: description
 </pre><ul>

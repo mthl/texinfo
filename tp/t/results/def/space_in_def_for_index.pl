@@ -547,12 +547,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-name"></a>Category: <strong>name</strong> <em>argument argument2...</em></dt>
-<dt><a name="index-AAA2"></a>AAA1: <strong>AAA2</strong> <em>arg3</em></dt>
+<dt id="index-name">Category: <strong>name</strong> <em>argument argument2...</em></dt>
+<dt id="index-AAA2">AAA1: <strong>AAA2</strong> <em>arg3</em></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_letter-A"><b>A</b></a>
@@ -563,10 +562,10 @@ ul.no-bullet {list-style: none}
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-AAA2"><code>AAA2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-N">N</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-N">N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-name"><code>name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

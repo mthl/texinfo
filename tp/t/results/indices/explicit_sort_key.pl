@@ -944,14 +944,12 @@ $result_converted{'plaintext'}->{'explicit_sort_key'} = 'in a reuglar para .  \'
 ';
 
 
-$result_converted{'html_text'}->{'explicit_sort_key'} = '<a name="Top"></a>
-<a name="SEC_Top"></a>
+$result_converted{'html_text'}->{'explicit_sort_key'} = '<span id="Top"></span><span id="SEC_Top"></span>
 
-
-<a name="index-Abbbbbbb-_0028first_0029"></a>
-<a name="index-Baaaaaaa-_0028second_0029"></a>
-<a name="index-0zero-sort-key"></a>
-<a name="index-aaa-invalid-nesting"></a>
+<span id="index-Abbbbbbb-_0028first_0029"></span>
+<span id="index-Baaaaaaa-_0028second_0029"></span>
+<span id="index-0zero-sort-key"></span>
+<span id="index-aaa-invalid-nesting"></span>
 
 <p>in a reuglar para . <code>inside another </code>.
 </p>
@@ -969,14 +967,14 @@ $result_converted{'html_text'}->{'explicit_sort_key'} = '<a name="Top"></a>
 <table class="index-SK" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_SK_symbol-1">0</a></th><td></td><td></td></tr>
+<tr><th id="t_h_SK_symbol-1">0</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-0zero-sort-key">zero sort key</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_SK_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="t_h_SK_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Abbbbbbb-_0028first_0029">bbbbbbb (first)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aaa-invalid-nesting"><b>aaa </b></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_SK_letter-B">B</a></th><td></td><td></td></tr>
+<tr><th id="t_h_SK_letter-B">B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Baaaaaaa-_0028second_0029">aaaaaaa (second)</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

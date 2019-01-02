@@ -1188,9 +1188,7 @@ top! After punc
 
 
 $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
-<a name="node_0021-After-punc"></a>
-<a name="top_0021-After-punc"></a>
-<h1 class="top">top! After punc</h1>
+<span id="node_0021-After-punc"></span><span id="top_0021-After-punc"></span><h1 class="top">top! After punc</h1>
 
 <dl compact="compact">
 <dt>item! After punc</dt>
@@ -1201,11 +1199,11 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 </p><p>exdent quotation! After punc
 </p></blockquote>
 
-<div class="float"><a name="float-label_0021-After-punc"></a>
+<div class="float"><span id="float-label_0021-After-punc"></span>
 <p>In float
 </p>
 <div class="float-caption"><p><strong>float type! After punc 1: </strong>shortcaption! After punc</p></div></div>
-<div class="float"><a name="label-with-caption"></a>
+<div class="float"><span id="label-with-caption"></span>
 <p>In float with caption.
 </p>
 <div class="float-caption"><p><strong>float type! After punc 2: </strong>caption! After punc</p></div></div>
@@ -1214,10 +1212,9 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 <dt><a href="#label-with-caption">float type! After punc 2</a></dt><dd><p>caption! After punc</p></dd>
 </dl>
 
-<a name="index-index_0021-After-punc"></a>
+<span id="index-index_0021-After-punc"></span>
 
-<a name="heading_0021-After-punc"></a>
-<h3 class="heading">heading! After punc</h3>
+<span id="heading_0021-After-punc"></span><h3 class="heading">heading! After punc</h3>
 
 <h1 class="titlefont">titlefont! After punc</h1>
 
@@ -1229,7 +1226,7 @@ $result_converted{'html_text'}->{'punctuation_in_line_commands'} = '
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index_0021-After-punc">index! After punc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#node_0021-After-punc">node! After punc</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

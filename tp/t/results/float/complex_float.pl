@@ -4754,13 +4754,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="Test-floats"></a>
-<h1 class="top">Test floats</h1>
+<span id="Test-floats"></span><h1 class="top">Test floats</h1>
 
 <p>A list of floats at the beginning.
 </p><dl class="listoffloats">
@@ -4807,12 +4805,12 @@ A footnote 2.
 </td></tr>
 </table>
 
-<div class="float"><a name="text-with-a-lot-of-features"></a>
+<div class="float"><span id="text-with-a-lot-of-features"></span>
 <p>An example of float <small class="enddots">...</small>
 </p>
 
 <p>An index entry
-<a name="index-float-example"></a>
+<span id="index-float-example"></span>
 </p>
 <p>A table.
 </p><dl compact="compact">
@@ -4844,7 +4842,7 @@ An example.
 <pre class="example">example
 </pre></div>
 
-<a name="Anchor-in-caption"></a>
+<span id="Anchor-in-caption"></span>
 <p>A table.
 </p><dl compact="compact">
 <dt><em>truc</em></dt>
@@ -4858,7 +4856,7 @@ An example.
 <tr><td>truc</td><td>bidule</td></tr>
 </table>
 <p>An index entry
-<a name="index-float-example-in-caption"></a>
+<span id="index-float-example-in-caption"></span>
 </p>
 <p>An itemize.
 </p><ul class="no-bullet">
@@ -4874,15 +4872,13 @@ A footnote.
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="A-chapter"></a>
-<h2 class="chapter">1 A chapter</h2>
+<span id="A-chapter"></span><h2 class="chapter">1 A chapter</h2>
 
-<div class="float"><a name="float-with-a-lot-of-features-and-no-shortcaption"></a>
+<div class="float"><span id="float-with-a-lot-of-features-and-no-shortcaption"></span>
 
 <p>Float text of a float with a lot of features.
 </p>
@@ -4907,7 +4903,7 @@ An example 2.
 <tr><td>truc 2</td><td>bidule</td></tr>
 </table>
 <p>An index entry 2
-<a name="index-float-example-in-caption-2"></a>
+<span id="index-float-example-in-caption-2"></span>
 </p>
 <p>An itemize 2.
 </p><ul class="no-bullet">
@@ -4915,7 +4911,7 @@ An example 2.
 line
 </li></ul>
 
-<a name="Anchor-in-caption-2"></a>
+<span id="Anchor-in-caption-2"></span>
 <p>A ref 2.
 See <a href="#Top">xref Text with features caption</a>.
 A footnote 2.

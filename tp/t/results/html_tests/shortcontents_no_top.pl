@@ -272,16 +272,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="chap"></a>
-<h2 class="chapter">1 chap</h2>
+<span id="chap"></span><h2 class="chapter">1 chap</h2>
 
-<a name="chap2"></a>
-<h2 class="chapter">2 chap2</h2>
+<span id="chap2"></span><h2 class="chapter">2 chap2</h2>
 
-<a name="sec"></a>
-<h3 class="section">2.1 sec</h3>
+<span id="sec"></span><h3 class="section">2.1 sec</h3>
 
-<a name="SEC_Overview"></a>
+<span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

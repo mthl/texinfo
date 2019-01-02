@@ -402,9 +402,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 
 
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <hr>
 

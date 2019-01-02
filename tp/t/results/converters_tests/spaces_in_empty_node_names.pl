@@ -951,8 +951,7 @@ $result_converted{'plaintext'}->{'spaces_in_empty_node_names'} = '*note   ::
 ';
 
 
-$result_converted{'html_text'}->{'spaces_in_empty_node_names'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'spaces_in_empty_node_names'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>

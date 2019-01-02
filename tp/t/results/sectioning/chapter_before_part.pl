@@ -268,11 +268,9 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="chapter"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 <hr>
 

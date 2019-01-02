@@ -889,13 +889,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="g_t2-footnotes-in-2-nodes"></a>
-<h1 class="top">2 footnotes in 2 nodes</h1>
+<span id="g_t2-footnotes-in-2-nodes"></span><h1 class="top">2 footnotes in 2 nodes</h1>
 
 <p>A<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -907,13 +905,11 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 </table>
 
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="chapter-1"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
 <p>C<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>
@@ -1025,13 +1021,11 @@ C(1) (*note chapter-Footnote-1::)
 ';
 
 
-$result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="g_t2-footnotes-in-2-nodes"></a>
-<h1 class="top">2 footnotes in 2 nodes</h1>
+<span id="g_t2-footnotes-in-2-nodes"></span><h1 class="top">2 footnotes in 2 nodes</h1>
 
 <p>A<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -1043,13 +1037,11 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<a name="
 </table>
 
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="chapter-1"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
 <p>C<a name="DOCF3" href="#FOOT3"><sup>3</sup></a>
 </p>

@@ -749,8 +749,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
@@ -766,24 +765,21 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a>, 
 </table>
 
 <hr>
-<a name="Chap-first-here"></a>
-<div class="header">
+<span id="Chap-first-here"></span><div class="header">
 <p>
 Next: <a href="#Test-title" accesskey="n" rel="next">Test               title</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">Chap first  here</h4>
 
 <hr>
-<a name="Test-title"></a>
-<div class="header">
+<span id="Test-title"></span><div class="header">
 <p>
 Next: <a href="#Last-with-spaces" accesskey="n" rel="next">Last with spaces</a>, Previous: <a href="#Chap-first-here" accesskey="p" rel="prev">Chap first  here</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">Test               title</h4>
 
 <hr>
-<a name="Last-with-spaces"></a>
-<div class="header">
+<span id="Last-with-spaces"></span><div class="header">
 <p>
 Previous: <a href="#Test-title" accesskey="p" rel="prev">Test               title</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>

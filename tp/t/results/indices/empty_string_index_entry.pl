@@ -883,20 +883,19 @@ $result_converted_errors{'plaintext'}->{'empty_string_index_entry'} = [
 
 
 
-$result_converted{'html_text'}->{'empty_string_index_entry'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'empty_string_index_entry'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="index-"></a>
+<span id="index-"></span>
 
 <dl compact="compact">
 <dt><code><!-- /@w --></code>
-<a name="index--1"></a>
+<span id="index--1"></span>
 </dt>
 </dl>
 
 <dl>
-<dt><a name="index--2"></a>Function: <strong><!-- /@w --></strong> <em> </em></dt>
-<dt><a name="index--3"></a>Function: <strong><!-- /@w --></strong> <em> </em></dt>
+<dt id="index--2">Function: <strong><!-- /@w --></strong> <em> </em></dt>
+<dt id="index--3">Function: <strong><!-- /@w --></strong> <em> </em></dt>
 </dl>
 
 <hr>

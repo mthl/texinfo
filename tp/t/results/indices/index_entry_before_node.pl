@@ -745,8 +745,7 @@ $result_converted{'plaintext'}->{'index_entry_before_node'} = 'Para.
 ';
 
 
-$result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'index_entry_before_node'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -760,8 +759,7 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a
 </table>
 
 <hr>
-<a name="first"></a>
-<div class="header">
+<span id="first"></span><div class="header">
 <p>
  &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -769,11 +767,10 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a
 
 <p>Para.
 </p>
-<a name="index-lone-entry"></a>
+<span id="index-lone-entry"></span>
 
 <hr>
-<a name="second"></a>
-<div class="header">
+<span id="second"></span><div class="header">
 <p>
  &nbsp; [<a href="#second" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -785,7 +782,7 @@ $result_converted{'html_text'}->{'index_entry_before_node'} = '<a name="Top"></a
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-L">L</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-lone-entry">lone entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#first">first</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

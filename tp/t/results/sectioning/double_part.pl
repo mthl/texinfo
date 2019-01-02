@@ -922,27 +922,23 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#node-chapter" accesskey="n" rel="next">node chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#node-chapter" accesskey="1">node chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
-<a name="part-first"></a>
-<h1 class="part">part first</h1>
+<span id="part-first"></span><h1 class="part">part first</h1>
 <hr>
 
 <p>Text part first.
 </p><hr>
-<a name="part-second"></a>
-<div class="header">
+<span id="part-second"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
@@ -950,9 +946,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <hr>
 <p>Text part second.
 </p>
-<a name="node-chapter"></a>
-<a name="chapter-after-2-parts"></a>
-<h2 class="chapter">1 chapter after 2 parts</h2>
+<span id="node-chapter"></span><span id="chapter-after-2-parts"></span><h2 class="chapter">1 chapter after 2 parts</h2>
 
 <hr>
 

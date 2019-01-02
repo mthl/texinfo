@@ -974,24 +974,23 @@ ul.no-bullet {list-style: none}
 <body lang="pt">
 
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-BBB-of-fr"></a>Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
+<dt id="index-BBB-of-fr">Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em></dt>
+<dt id="index-copying-a-of-copying">Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 
 <dl>
-<dt><a name="index-BBB-of-pt"></a>Instance Variable da pt: <strong>BBB</strong> <em>CCC</em></dt>
+<dt id="index-BBB-of-pt">Instance Variable da pt: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-copying-a-of-copying"></a>Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
+<dt id="index-copying-a-of-copying">Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 <hr>
 

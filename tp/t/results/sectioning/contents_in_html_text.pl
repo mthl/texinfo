@@ -312,17 +312,13 @@ $result_errors{'contents_in_html_text'} = [];
 
 
 
-$result_converted{'html_text'}->{'contents_in_html_text'} = '<a name="top"></a>
-<h1 class="top">top</h1>
+$result_converted{'html_text'}->{'contents_in_html_text'} = '<span id="top"></span><h1 class="top">top</h1>
 
-<a name="Chap1"></a>
-<h2 class="chapter">1 Chap1</h2>
+<span id="Chap1"></span><h2 class="chapter">1 Chap1</h2>
 
-<a name="Sec-1"></a>
-<h3 class="section">1.1 Sec 1</h3>
+<span id="Sec-1"></span><h3 class="section">1.1 Sec 1</h3>
 
-<a name="Chap2"></a>
-<h2 class="chapter">2 Chap2</h2>
+<span id="Chap2"></span><h2 class="chapter">2 Chap2</h2>
 
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 

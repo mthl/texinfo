@@ -373,19 +373,18 @@ $result_converted{'plaintext'}->{'default_cp_index_and_one_letter_syncodeindex'}
 ';
 
 
-$result_converted{'html_text'}->{'default_cp_index_and_one_letter_syncodeindex'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'default_cp_index_and_one_letter_syncodeindex'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
-<a name="index-_002d_002dcindex"></a>
-<a name="index-_002d_002dcpindex"></a>
+<span id="index-_002d_002dcindex"></span>
+<span id="index-_002d_002dcpindex"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_symbol-1"><b>-</b></a>
 </td></tr></table>
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_symbol-1">-</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_symbol-1">-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dcindex"><code>--cindex</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dcpindex"><code>--cpindex</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>

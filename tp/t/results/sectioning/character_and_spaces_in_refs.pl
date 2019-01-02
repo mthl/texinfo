@@ -2010,21 +2010,18 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="Test-refs"></a>
-<h1 class="top">Test refs</h1>
+<span id="Test-refs"></span><h1 class="top">Test refs</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#other-nodes" accesskey="1">other nodes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
-<a name="Testing-distant-nodes"></a>
-<h4 class="subheading">Testing distant nodes</h4>
+<span id="Testing-distant-nodes"></span><h4 class="subheading">Testing distant nodes</h4>
 
 <p><a href="manual.html#a-node">(manual)a  node</a>
 <a href="manual.html#g_t_003a">(manual):</a>
@@ -2032,8 +2029,7 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a>, Up: <a hr
 <a href="texinfo.html#Cross-References">(texinfo)Cross References</a>
 <a href="doc.html#node">(../manual/doc.texi)node</a>
 </p>
-<a name="Testing-local-nodes"></a>
-<h4 class="subheading">Testing local nodes</h4>
+<span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
 
 <p><a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e">!_&quot;#$%&amp;\'()*+-.</a>
 <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e">/;&lt;=&gt;?[\\]^_`|~</a>
@@ -2041,13 +2037,11 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a>, Up: <a hr
 <a href="#local-node">local   node</a>
 </p>
 <hr>
-<a name="other-nodes"></a>
-<div class="header">
+<span id="other-nodes"></span><div class="header">
 <p>
 Next: <a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e" accesskey="n" rel="next">!_&quot;#$%&amp;\'()*+-.</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="Chapter-with-nodes"></a>
-<h2 class="chapter">1 Chapter with nodes</h2>
+<span id="Chapter-with-nodes"></span><h2 class="chapter">1 Chapter with nodes</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e" accesskey="1">!_&quot;#$%&amp;\'()*+-.</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2059,24 +2053,21 @@ Next: <a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_
 </table>
 
 <hr>
-<a name="g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e"></a>
-<div class="header">
+<span id="g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e"></span><div class="header">
 <p>
 Next: <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e" accesskey="n" rel="next">/;&lt;=&gt;?[\\]^_`|~</a>, Previous: <a href="#other-nodes" accesskey="p" rel="prev">other nodes</a>, Up: <a href="#other-nodes" accesskey="u" rel="up">other nodes</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">!_&quot;#$%&amp;\'()*+-.</h4>
 
 <hr>
-<a name="g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e"></a>
-<div class="header">
+<span id="g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e"></span><div class="header">
 <p>
 Next: <a href="#local-node" accesskey="n" rel="next">local   node</a>, Previous: <a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e" accesskey="p" rel="prev">!_&quot;#$%&amp;\'()*+-.</a>, Up: <a href="#other-nodes" accesskey="u" rel="up">other nodes</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">/;&lt;=&gt;?[\\]^_`|~</h4>
 
 <hr>
-<a name="local-node"></a>
-<div class="header">
+<span id="local-node"></span><div class="header">
 <p>
 Previous: <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e" accesskey="p" rel="prev">/;&lt;=&gt;?[\\]^_`|~</a>, Up: <a href="#other-nodes" accesskey="u" rel="up">other nodes</a> &nbsp; </p>
 </div>

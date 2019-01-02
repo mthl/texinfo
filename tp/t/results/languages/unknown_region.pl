@@ -415,11 +415,10 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr_NOWHERE">
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl>
-<dt><a name="index-BBB-of-AAA"></a>Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
+<dt id="index-BBB-of-AAA">Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 <hr>
 

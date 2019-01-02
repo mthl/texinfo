@@ -708,20 +708,20 @@ $result_converted{'plaintext'}->{'inter_item_commands_in_itemize'} = '   - e-mph
 
 
 $result_converted{'html_text'}->{'inter_item_commands_in_itemize'} = '<ul class="no-bullet">
-<li><a name="index-also-a-cindex-in-itemize"></a>
+<li><span id="index-also-a-cindex-in-itemize"></span>
 </li><li>- e&ndash;mph item
 </li></ul>
 
 <ul>
-<li><a name="index-index-entry-within-itemize"></a>
+<li><span id="index-index-entry-within-itemize"></span>
 </li><li> i&ndash;tem 1
-</li><li> <a name="index-index-entry-right-after-_0040item"></a>
+</li><li> <span id="index-index-entry-right-after-_0040item"></span>
 i&ndash;tem 2
 </li></ul>
 
 <ul>
 <li>T&ndash;ext before items.
-<a name="index-also-a-cindex-in-itemize-1"></a>
+<span id="index-also-a-cindex-in-itemize-1"></span>
 </li><li> bullet item
 </li></ul>
 ';

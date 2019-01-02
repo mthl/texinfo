@@ -773,24 +773,23 @@ $result_converted{'plaintext'}->{'printindex_merged_indices_code_style'} = '* Me
 ';
 
 
-$result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
 
-<a name="index-c_0060_0060b"></a>
+<span id="index-c_0060_0060b"></span>
 
-<a name="index-v_0060_0060j"></a>
+<span id="index-v_0060_0060j"></span>
 
-<a name="index-f_0060_0060g"></a>
-
-
-
-<a name="index-cdi_0060_0060h"></a>
+<span id="index-f_0060_0060g"></span>
 
 
 
-<a name="index-ddi_0060_0060g"></a>
+<span id="index-cdi_0060_0060h"></span>
+
+
+
+<span id="index-ddi_0060_0060g"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
  &nbsp; 
@@ -804,17 +803,17 @@ $result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<a n
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-c_0060_0060b">c&ldquo;b</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cdi_0060_0060h">cdi&ldquo;h</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-D">D</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-D">D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ddi_0060_0060g"><code>ddi``g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-f_0060_0060g"><code>f``g</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-V">V</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-V">V</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-v_0060_0060j">v&ldquo;j</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

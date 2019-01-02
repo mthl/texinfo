@@ -1759,29 +1759,28 @@ $result_converted{'plaintext'}->{'def_syn_indices'} = 'definedx truc after
 
 $result_converted{'html_text'}->{'def_syn_indices'} = '
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p>definedx truc
 after
 </p>
-<a name="index-index-truc"></a>
+<span id="index-index-truc"></span>
 
 
-<a name="index-a-index-entry-te-i"></a>
+<span id="index-a-index-entry-te-i"></span>
 
-<a name="index-cindex-entry"></a>
-
-
-<a name="index-truc-kindex"></a>
-<a name="index-pindex-codeidx"></a>
+<span id="index-cindex-entry"></span>
 
 
+<span id="index-truc-kindex"></span>
+<span id="index-pindex-codeidx"></span>
 
 
-<a name="index-defg-index-entry"></a>
 
-<a name="index-abc-index-entry"></a>
+
+<span id="index-defg-index-entry"></span>
+
+<span id="index-abc-index-entry"></span>
 
 <p>pg
 </p><table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_pg_letter-A"><b>A</b></a>
@@ -1796,16 +1795,16 @@ after
 <table class="index-pg" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_pg_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="t_h_pg_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-abc-index-entry">abc index entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_pg_letter-D">D</a></th><td></td><td></td></tr>
+<tr><th id="t_h_pg_letter-D">D</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-defg-index-entry">defg index entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_pg_letter-P">P</a></th><td></td><td></td></tr>
+<tr><th id="t_h_pg_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pindex-codeidx"><code>pindex codeidx</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_pg_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="t_h_pg_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-truc-kindex"><code>truc kindex</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -1842,10 +1841,10 @@ after
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cindex-entry"><code>cindex entry</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-truc">index truc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

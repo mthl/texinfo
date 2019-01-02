@@ -72,6 +72,6 @@ $result_errors{'end_line_in_anchor'} = [];
 $result_converted{'plaintext'}->{'end_line_in_anchor'} = '';
 
 
-$result_converted{'html_text'}->{'end_line_in_anchor'} = '<a name="an-anchor"></a>';
+$result_converted{'html_text'}->{'end_line_in_anchor'} = '<span id="an-anchor"></span>';
 
 1;

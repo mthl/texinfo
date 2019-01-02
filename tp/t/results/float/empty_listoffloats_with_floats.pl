@@ -705,11 +705,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<div class="float"><a name="label1"></a>
+<div class="float"><span id="label1"></span>
 <p>Label no caption.
 </p><div class="float-caption"><p><strong>1
 </strong></p></div></div>
-<div class="float"><a name="label2"></a>
+<div class="float"><span id="label2"></span>
 <p>Label and caption.
 </p>
 <div class="float-caption"><p><strong>2: </strong>caption with label</p></div></div>

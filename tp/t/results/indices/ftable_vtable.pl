@@ -913,38 +913,37 @@ _var3_
 
 
 $result_converted{'html_text'}->{'ftable_vtable'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl compact="compact">
 <dt><em>function1</em>
-<a name="index-function1"></a>
+<span id="index-function1"></span>
 </dt>
 <dt><em>function2x</em>
-<a name="index-function2x"></a>
+<span id="index-function2x"></span>
 </dt>
 <dd><p>Text
 </p></dd>
 <dt><em>fun3</em>
-<a name="index-fun3"></a>
+<span id="index-fun3"></span>
 </dt>
 </dl>
 
 <dl compact="compact">
 <dt><em>var1 error&rarr;</em>
-<a name="index-var1-error_002d_002d_003e"></a>
+<span id="index-var1-error_002d_002d_003e"></span>
 </dt>
 <dt><em>varx2</em>
-<a name="index-varx2"></a>
+<span id="index-varx2"></span>
 </dt>
 <dd><p>Text
 </p></dd>
 <dt><em>var3</em>
-<a name="index-var3"></a>
+<span id="index-var3"></span>
 </dt>
 </dl>
 
-<a name="index-function1-1"></a>
+<span id="index-function1-1"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-F"><b>F</b></a>
  &nbsp; 
@@ -952,7 +951,7 @@ $result_converted{'html_text'}->{'ftable_vtable'} = '
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fun3"><code>fun3</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-function1"><code>function1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-function1-1"><code>function1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -969,7 +968,7 @@ $result_converted{'html_text'}->{'ftable_vtable'} = '
 <table class="index-vr" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_vr_letter-V">V</a></th><td></td><td></td></tr>
+<tr><th id="t_h_vr_letter-V">V</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-var1-error_002d_002d_003e"><code>var1 error&rarr;</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-var3"><code>var3</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-varx2"><code>varx2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>

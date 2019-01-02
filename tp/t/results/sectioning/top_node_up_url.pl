@@ -581,13 +581,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up"><acronym title="GNU&rsquo;s Not Unix">GNU</acronym> (<acronym>GNU</acronym>\'s Not Unix) manuals</a> &nbsp; </p>
 </div>
-<a name="internal-top-node-up"></a>
-<h1 class="top">internal top node up</h1>
+<span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -595,8 +593,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://w
 </table>
 
 <hr>
-<a name="first"></a>
-<div class="header">
+<span id="first"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>

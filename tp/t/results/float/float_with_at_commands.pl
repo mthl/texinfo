@@ -573,7 +573,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<div class="float"><a name="premi_00e8re-entr_00e9e"></a>
+<div class="float"><span id="premi_00e8re-entr_00e9e"></span>
 
 <p>Ceci est notre premi&egrave;re entr&eacute;e.
 </p>

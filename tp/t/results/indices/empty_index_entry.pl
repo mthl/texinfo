@@ -307,8 +307,7 @@ $result_converted{'plaintext'}->{'empty_index_entry'} = ' -- :
 ';
 
 
-$result_converted{'html_text'}->{'empty_index_entry'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'empty_index_entry'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl>
 <dt>: <strong></strong></dt>

@@ -1127,13 +1127,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1143,29 +1141,24 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 </table>
 
 <hr>
-<a name="chapter-node"></a>
-<div class="header">
+<span id="chapter-node"></span><div class="header">
 <p>
 Next: <a href="#part-chapter-node" accesskey="n" rel="next">part chapter node</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 
-<a name="chapter-node-1"></a>
-<h2 class="chapter">1 chapter node</h2>
+<span id="chapter-node-1"></span><h2 class="chapter">1 chapter node</h2>
 
 <hr>
-<a name="part-chapter-node"></a>
-<div class="header">
+<span id="part-chapter-node"></span><div class="header">
 <p>
 Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 
-<a name="chapter-with-part-node"></a>
-<h2 class="chapter">2 chapter with part node</h2>
+<span id="chapter-with-part-node"></span><h2 class="chapter">2 chapter with part node</h2>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

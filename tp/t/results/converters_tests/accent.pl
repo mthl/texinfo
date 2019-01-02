@@ -3146,9 +3146,7 @@ should be e\': e` e`
 ';
 
 
-$result_converted{'html_text'}->{'accent'} = '<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+$result_converted{'html_text'}->{'accent'} = '<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>should be e&lsquo;: &egrave; &egrave;
 </p>

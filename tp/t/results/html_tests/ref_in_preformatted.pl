@@ -473,8 +473,7 @@ $result_errors{'ref_in_preformatted'} = [];
 
 
 
-$result_converted{'html_text'}->{'ref_in_preformatted'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'ref_in_preformatted'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
@@ -491,8 +490,7 @@ node name</a>
 </pre></div>
 
 <hr>
-<a name="nnn-the-node-name"></a>
-<div class="header">
+<span id="nnn-the-node-name"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>

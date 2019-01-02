@@ -807,41 +807,30 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
-<a name="chapter"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
-<a name="section"></a>
-<h3 class="section">1.1 section</h3>
+<span id="section"></span><h3 class="section">1.1 section</h3>
 
-<a name="subsection"></a>
-<h4 class="subsection">1.1.1 subsection</h4>
+<span id="subsection"></span><h4 class="subsection">1.1.1 subsection</h4>
 
-<a name="subsubsection"></a>
-<h4 class="subsubsection">1.1.1.1 subsubsection</h4>
+<span id="subsubsection"></span><h4 class="subsubsection">1.1.1.1 subsubsection</h4>
 
-<a name="part"></a>
-<h1 class="part">part</h1>
+<span id="part"></span><h1 class="part">part</h1>
 <hr>
 
-<a name="chapter-in-part"></a>
-<h2 class="chapter">2 chapter in part</h2>
+<span id="chapter-in-part"></span><h2 class="chapter">2 chapter in part</h2>
 
-<a name="second-chapter-in-part"></a>
-<h2 class="chapter">3 second chapter in part</h2>
+<span id="second-chapter-in-part"></span><h2 class="chapter">3 second chapter in part</h2>
 
-<a name="unnumbered"></a>
-<h2 class="unnumbered">unnumbered</h2>
+<span id="unnumbered"></span><h2 class="unnumbered">unnumbered</h2>
 
-<a name="appendix"></a>
-<h2 class="appendix">Appendix A appendix</h2>
+<span id="appendix"></span><h2 class="appendix">Appendix A appendix</h2>
 
-<a name="appendixsec"></a>
-<h3 class="appendixsec">A.1 appendixsec</h3>
+<span id="appendixsec"></span><h3 class="appendixsec">A.1 appendixsec</h3>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

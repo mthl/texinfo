@@ -855,13 +855,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="..html#Top" accesskey="n" rel="next">(../there/no_existing_no_manual_direction)</a>, Previous: <a href="#first" accesskey="p" rel="prev">first</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <p><a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
 <a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
@@ -874,8 +872,7 @@ Next: <a href="..html#Top" accesskey="n" rel="next">(../there/no_existing_no_man
 </table>
 
 <hr>
-<a name="first"></a>
-<div class="header">
+<span id="first"></span><div class="header">
 <p>
 Next: <a href="no_existing_no_manual.html#Top" accesskey="n" rel="next">(no_existing_no_manual.info)</a> &nbsp; </p>
 </div>

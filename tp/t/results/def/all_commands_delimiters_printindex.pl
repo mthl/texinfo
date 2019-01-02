@@ -15356,198 +15356,196 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 <dl>
-<dt><a name="index-forward_002d_002dchar"></a>Command: <strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-forward_002d_002dchar">Command: <strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-fill_002dcolumn"></a>Variable: <strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-fill_002dcolumn">Variable: <strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-foobar"></a>Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em></dt>
+<dt id="index-foobar">Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-foobar-1"></a>Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em></dt>
+<dt id="index-foobar-1">Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-foobug"></a>Library Function: <em>int</em> <strong>foobug</strong> <em>[something</em></dt>
+<dt id="index-foobug">Library Function: <em>int</em> <strong>foobug</strong> <em>[something</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-push"></a>stacks: <em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em></dt>
+<dt id="index-push">stacks: <em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-enable"></a>Global Flag: <em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-enable">Global Flag: <em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-pair"></a>Data type: <strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-pair">Data type: <strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-border_002dpattern"></a>Class Option of Window: <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-border_002dpattern">Class Option of Window: <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-border_002dpattern-of-Window"></a>Class Option2 of Window: <em><code>int</code></em> <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-border_002dpattern-of-Window">Class Option2 of Window: <em><code>int</code></em> <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-expose-on-windows"></a>Operation on windows: <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-expose-on-windows">Operation on windows: <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-expose-on-W_002cindow"></a>Operation2 on W,indow: <em><code>int</code></em> <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-expose-on-W_002cindow">Operation2 on W,indow: <em><code>int</code></em> <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-expose-on-Window"></a>Operation5 on Window: <em><code>int</code></em> <strong>expose</strong> <em>type arg</em></dt>
+<dt id="index-expose-on-Window">Operation5 on Window: <em><code>int</code></em> <strong>expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_002cxpose-on-W_002cindow"></a>Operation3 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_002cxpose-on-W_002cindow">Operation3 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_002cexpose-on-_002cWindow"></a>Operation4 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
+<dt id="index-_002cexpose-on-_002cWindow">Operation4 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_002cxpose-on-W_002cindow-1"></a>Operation6 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_002cxpose-on-W_002cindow-1">Operation6 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_002cexpose-on-_002cWindow-1"></a>Operation7 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
+<dt id="index-_002cexpose-on-_002cWindow-1">Operation7 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_0029xpose-on-W_0029indow"></a>Operation13 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_0029xpose-on-W_0029indow">Operation13 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_0029expose-on-_0029Window"></a>Operation14 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
+<dt id="index-_0029expose-on-_0029Window">Operation14 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_0029xpose-on-W_0029indow-1"></a>Operation16 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_0029xpose-on-W_0029indow-1">Operation16 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_0029expose-on-_0029Window-1"></a>Operation17 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
+<dt id="index-_0029expose-on-_0029Window-1">Operation17 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_003bxpose-on-W_003bindow"></a>Operation18 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_003bxpose-on-W_003bindow">Operation18 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_003bexpose-on-_003bWindow"></a>Operation19 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
+<dt id="index-_003bexpose-on-_003bWindow">Operation19 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-e_003bxpose-on-W_003bindow-1"></a>Operation20 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_003bxpose-on-W_003bindow-1">Operation20 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-_003bexpose-on-_003bWindow-1"></a>Operation21 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
+<dt id="index-_003bexpose-on-_003bWindow-1">Operation21 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-name-on-Windowint"></a>Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong></dt>
+<dt id="index-name-on-Windowint">Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong></dt>
 </dl>
 
 <dl>
-<dt><a name="index-apply"></a>Function: <strong>apply</strong> <em>function &amp;rest arguments</em></dt>
+<dt id="index-apply">Function: <strong>apply</strong> <em>function &amp;rest arguments</em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2"></a><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-1"></a><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-1"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-5"></a><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2-5"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-6"></a><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-6"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3"></a><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3"><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-1"></a><code>A1</code>: <em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-1"><code>A1</code>: <em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-2"></a><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-2"><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-3"></a><code>A1</code>: <em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-3"><code>A1</code>: <em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-2"></a><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2-2"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-3"></a><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-3"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-4"></a><var>A1</var> of <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-4"><var>A1</var> of <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A2-4"></a><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A2-4"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A4-of-A2"></a><var>A1</var> of <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
+<dt id="index-A4-of-A2"><var>A1</var> of <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A4-of-A2-1"></a><code>A1</code> of <code>A2</code>: <em><samp>A3</samp></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
+<dt id="index-A4-of-A2-1"><code>A1</code> of <code>A2</code>: <em><samp>A3</samp></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-on-A2"></a><var>A1</var> on <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-on-A2"><var>A1</var> on <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A3-on-A2-1"></a><code>A1</code> on <code>A2</code>: <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-on-A2-1"><code>A1</code> on <code>A2</code>: <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A4-on-A2"></a><var>A1</var> on <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
+<dt id="index-A4-on-A2"><var>A1</var> on <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-A4-on-A2-1"></a><code>A1</code> on <code>A2</code>: <em><code>A3</code></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
+<dt id="index-A4-on-A2-1"><code>A1</code> on <code>A2</code>: <em><code>A3</code></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-fun_005fname"></a>code then var: <em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em></dt>
+<dt id="index-fun_005fname">code then var: <em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em></dt>
 </dl>
 
 <dl>
-<dt><a name="index-fun_005fname1"></a>var then code: <em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em></dt>
+<dt id="index-fun_005fname1">var then code: <em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em></dt>
 </dl>
 
-<a name="Functions"></a>
-<h3 class="heading">Functions</h3>
+<span id="Functions"></span><h3 class="heading">Functions</h3>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_symbol-1"><b>)</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Top_fn_symbol-2"><b>,</b></a>
@@ -15569,19 +15567,19 @@ ul.no-bullet {list-style: none}
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_symbol-1">)</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_symbol-1">)</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0029expose-on-_0029Window"><code>)expose on )Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_0029expose-on-_0029Window-1"><code>)expose on )Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_symbol-2">,</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_symbol-2">,</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002cexpose-on-_002cWindow"><code>,expose on ,Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002cexpose-on-_002cWindow-1"><code>,expose on ,Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_symbol-3">;</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_symbol-3">;</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003bexpose-on-_003bWindow"><code>;expose on ;Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003bexpose-on-_003bWindow-1"><code>;expose on ;Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2"><code><var>A2</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-1"><code><code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A3"><code><var>A3</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -15592,7 +15590,7 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-A4-on-A2-1"><code><code>A4</code> on <code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-apply"><code>apply</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-E">E</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e_0029xpose-on-W_0029indow"><code>e)xpose on W)indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e_0029xpose-on-W_0029indow-1"><code>e)xpose on W)indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-e_002cxpose-on-W_002cindow"><code>e,xpose on W,indow</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -15603,7 +15601,7 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-expose-on-Window"><code>expose on Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-expose-on-windows"><code>expose on windows</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-foobar"><code>foobar</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-foobar-1"><code>foobar</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-foobug"><code>foobug</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -15611,10 +15609,10 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-fun_005fname"><code>fun_name</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fun_005fname1"><code>fun_name1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-N">N</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-N">N</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-name-on-Windowint"><code>name on Window<code>int</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-P">P</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-push"><code>push</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -15637,8 +15635,7 @@ ul.no-bullet {list-style: none}
  &nbsp; 
 </td></tr></table>
 
-<a name="Types"></a>
-<h3 class="heading">Types</h3>
+<span id="Types"></span><h3 class="heading">Types</h3>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_tp_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Top_tp_letter-P"><b>P</b></a>
@@ -15647,12 +15644,12 @@ ul.no-bullet {list-style: none}
 <table class="index-tp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_tp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_tp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-2"><code><var>A2</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-3"><code><code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-4"><code><code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_tp_letter-P">P</a></th><td></td><td></td></tr>
+<tr><th id="Top_tp_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-pair"><code>pair</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -15662,8 +15659,7 @@ ul.no-bullet {list-style: none}
  &nbsp; 
 </td></tr></table>
 
-<a name="Variables"></a>
-<h3 class="heading">Variables</h3>
+<span id="Variables"></span><h3 class="heading">Variables</h3>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_vr_letter-A"><b>A</b></a>
  &nbsp; 
 <a class="summary-letter" href="#Top_vr_letter-B"><b>B</b></a>
@@ -15676,7 +15672,7 @@ ul.no-bullet {list-style: none}
 <table class="index-vr" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_vr_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_vr_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-5"><code><var>A2</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A2-6"><code><code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A3-2"><code><var>A3</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
@@ -15685,14 +15681,14 @@ ul.no-bullet {list-style: none}
 <tr><td></td><td valign="top"><a href="#index-A4-of-A2"><code><var>A4</var> of <var>A2</var></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-A4-of-A2-1"><code><code>A4</code> of <code>A2</code></code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_vr_letter-B">B</a></th><td></td><td></td></tr>
+<tr><th id="Top_vr_letter-B">B</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-border_002dpattern"><code>border-pattern</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-border_002dpattern-of-Window"><code>border-pattern of Window</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_vr_letter-E">E</a></th><td></td><td></td></tr>
+<tr><th id="Top_vr_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-enable"><code>enable</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_vr_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="Top_vr_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fill_002dcolumn"><code>fill-column</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

@@ -1635,24 +1635,22 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#Copying-and-floats" accesskey="n" rel="next">Copying and floats</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Top-1"></a>
-<h1 class="top">Top</h1>
+<span id="Top-1"></span><h1 class="top">Top</h1>
 
 
-<div class="float"><a name="public-domain"></a>
+<div class="float"><span id="public-domain"></span>
 
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
 <div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
-<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
-<a name="index-copying-indexed-caption-function"></a>
+<span id="public-domain-anchor"></span><span id="index-copying-indexed-caption"></span>
+<span id="index-copying-indexed-caption-function"></span>
 </div></div>
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" accesskey="1">Copying and floats</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1660,34 +1658,32 @@ the author abandon his copyright.
 </table>
 
 <hr>
-<a name="Copying-and-floats"></a>
-<div class="header">
+<span id="Copying-and-floats"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#Copying-and-floats" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Copying-and-floats-1"></a>
-<h2 class="appendix">Appendix A Copying and floats</h2>
+<span id="Copying-and-floats-1"></span><h2 class="appendix">Appendix A Copying and floats</h2>
 
 
-<div class="float"><a name="public-domain"></a>
+<div class="float"><span id="public-domain"></span>
 
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
 <div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>
 </p>
-<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
-<a name="index-copying-indexed-caption-function"></a>
+<span id="public-domain-anchor"></span><span id="index-copying-indexed-caption"></span>
+<span id="index-copying-indexed-caption-function"></span>
 </div></div>
-<div class="float"><a name="public-domain"></a>
+<div class="float"><span id="public-domain"></span>
 
 <p>Public domain is not really a licence, as it means than
 the author abandon his copyright.
 </p>
 <div class="float-caption"><p><strong>Copyright notice 1: </strong>The Public Domain notice<a name="DOCF1_3" href="#FOOT1_3"><sup>3</sup></a>
 </p>
-<a name="public-domain-anchor"></a><a name="index-copying-indexed-caption"></a>
-<a name="index-copying-indexed-caption-function"></a>
+<span id="public-domain-anchor"></span><span id="index-copying-indexed-caption"></span>
+<span id="index-copying-indexed-caption-function"></span>
 </div></div>
 <dl class="listoffloats">
 <dt><a href="#public-domain">Copyright notice 1</a></dt><dd><p>The Public Domain notice<a name="t_hlistoffloats_DOCF1_4" href="#t_hlistoffloats_FOOT1_4"><sup>4</sup></a>
@@ -1701,7 +1697,7 @@ the author abandon his copyright.
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Copying-and-floats_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="Copying-and-floats_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-indexed-caption">indexed caption</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-indexed-caption-copying-footnote">indexed caption copying footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -1717,10 +1713,10 @@ the author abandon his copyright.
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Copying-and-floats_fn_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="Copying-and-floats_fn_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-indexed-caption-function"><code>indexed caption function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Copying-and-floats_fn_letter-P">P</a></th><td></td><td></td></tr>
+<tr><th id="Copying-and-floats_fn_letter-P">P</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-public-domain-function"><code>public domain function</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -1735,25 +1731,25 @@ the author abandon his copyright.
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>The caption copying footnote
-<a name="caption-copying-footnote-anchor"></a></p>
-<a name="index-copying-indexed-caption-copying-footnote"></a>
-<a name="index-copying-public-domain-function"></a>
+<span id="caption-copying-footnote-anchor"></span></p>
+<span id="index-copying-indexed-caption-copying-footnote"></span>
+<span id="index-copying-public-domain-function"></span>
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
 <h3><a name="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>The caption copying footnote
-<a name="caption-copying-footnote-anchor"></a></p>
-<a name="index-copying-indexed-caption-copying-footnote"></a>
-<a name="index-copying-public-domain-function"></a>
+<span id="caption-copying-footnote-anchor"></span></p>
+<span id="index-copying-indexed-caption-copying-footnote"></span>
+<span id="index-copying-public-domain-function"></span>
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
 <h3><a name="FOOT1_3" href="#DOCF1_3">(3)</a></h3>
 <p>The caption copying footnote
-<a name="caption-copying-footnote-anchor"></a></p>
-<a name="index-copying-indexed-caption-copying-footnote"></a>
-<a name="index-copying-public-domain-function"></a>
+<span id="caption-copying-footnote-anchor"></span></p>
+<span id="index-copying-indexed-caption-copying-footnote"></span>
+<span id="index-copying-public-domain-function"></span>
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>

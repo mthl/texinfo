@@ -209,9 +209,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<a name="SEC_Top"></a>
-<hr>
+<span id="Top"></span><span id="SEC_Top"></span><hr>
 
 
 

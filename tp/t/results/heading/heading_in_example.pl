@@ -199,8 +199,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <div class="example">
-<a name="in-example-_0040-heading"></a>
-<strong>in example @ <em>heading</em></strong>
+<span id="in-example-_0040-heading"></span><strong>in example @ <em>heading</em></strong>
 </div>
 
 

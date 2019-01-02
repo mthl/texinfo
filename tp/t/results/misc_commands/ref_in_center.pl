@@ -292,8 +292,7 @@ $result_converted{'plaintext'}->{'ref_in_center'} = '                           
 ';
 
 
-$result_converted{'html_text'}->{'ref_in_center'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'ref_in_center'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <div align="center"><a href="#Top">Top</a>
 </div>

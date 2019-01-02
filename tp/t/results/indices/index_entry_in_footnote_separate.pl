@@ -687,8 +687,7 @@ $result_converted{'plaintext'}->{'index_entry_in_footnote_separate'} = 'Top node
 ';
 
 
-$result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -702,8 +701,7 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<a name=
 <p>Top node<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 <hr>
-<a name="First"></a>
-<div class="header">
+<span id="First"></span><div class="header">
 <p>
  &nbsp; [<a href="#First" title="Index" rel="index">Index</a>]</p>
 </div>
@@ -717,10 +715,10 @@ $result_converted{'html_text'}->{'index_entry_in_footnote_separate'} = '<a name=
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-counting-entry">counting entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-I">I</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-I">I</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-index-entry-in-footnote">index entry in footnote</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

@@ -226,9 +226,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="one-node"></a>
-<a name="The-subsection"></a>
-<h4 class="subsection">1 The subsection</h4>
+<span id="one-node"></span><span id="The-subsection"></span><h4 class="subsection">1 The subsection</h4>
 <hr>
 
 

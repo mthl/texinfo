@@ -176,10 +176,8 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="U"></a>
-<h2 class="unnumbered">U</h2>
-<a name="S"></a>
-<h3 class="section">S</h3>
+<span id="U"></span><h2 class="unnumbered">U</h2>
+<span id="S"></span><h3 class="section">S</h3>
 <hr>
 
 

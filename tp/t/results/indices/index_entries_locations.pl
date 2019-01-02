@@ -542,22 +542,21 @@ $result_converted{'plaintext'}->{'index_entries_locations'} = 'Initial paragraph
 
 
 $result_converted{'html_text'}->{'index_entries_locations'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p>Initial paragraph.
 </p>
 <p>Paragraph
-<a name="index-entry-in-paragraph"></a>
+<span id="index-entry-in-paragraph"></span>
 end paragraph.
-<a name="index-entry-at-end-of-paragraph_002e"></a>
+<span id="index-entry-at-end-of-paragraph_002e"></span>
 </p>
 <p>New paragraph.
 </p>
-<a name="index-Entry-before-paragraph"></a>
+<span id="index-Entry-before-paragraph"></span>
 <p>Another paragraph.
 </p>
-<a name="index-lone-entry"></a>
+<span id="index-lone-entry"></span>
 
 <p>Last paragraph.
 </p>
@@ -569,12 +568,12 @@ end paragraph.
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-E">E</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-entry-at-end-of-paragraph_002e">entry at end of paragraph.</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-Entry-before-paragraph">Entry before paragraph</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-entry-in-paragraph">entry in paragraph</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-L">L</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-L">L</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-lone-entry">lone entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

@@ -1201,12 +1201,11 @@ $result_converted{'plaintext'}->{'at_commands_in_raw'} = '<b>in b(1).</b>
 ';
 
 
-$result_converted{'html_text'}->{'at_commands_in_raw'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
 <b>in b<a name="DOCF1" href="#FOOT1"><sup>1</sup></a>.</b>
-<a name="anchor-in-html"></a><p><kbd>in kbd before tex</kbd><a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
+<span id="anchor-in-html"></span><p><kbd>in kbd before tex</kbd><a name="DOCF2" href="#FOOT2"><sup>2</sup></a>.
 </p>
 
 
@@ -1218,7 +1217,7 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<a name="Top"></a>
 <p>See <a href="#anchor-in-html">anchor in html</a>.
 </p>
 <p>&lsquo;anchor in tex&rsquo;.
-<a name="index-fentry2"></a>
+<span id="index-fentry2"></span>
 </p>
 <p> newidx entry
 </p>
@@ -1228,7 +1227,7 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<a name="Top"></a>
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-fentry2"><code>fentry2</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

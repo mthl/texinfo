@@ -2499,13 +2499,11 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 </div>
 
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="for-example-node-_0028node_0029-_0028Top_0029"></a>
-<h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
+<span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1">node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -2515,58 +2513,42 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 </table>
 
 <hr>
-<a name="node"></a>
-<div class="header">
+<span id="node"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="node_002e"></a>
-<h2 class="chapter">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</h2>
+<span id="node_002e"></span><h2 class="chapter">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</h2>
 
 <hr>
-<a name="chap"></a>
-<div class="header">
+<span id="chap"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
-<a name="node-just-node"></a>
-<h2 class="chapter">2 <a href="#node">node</a> just node</h2>
+<span id="node-just-node"></span><h2 class="chapter">2 <a href="#node">node</a> just node</h2>
 
-<a name="node-node_002c-crossref-arg2"></a>
-<h3 class="section">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</h3>
+<span id="node-node_002c-crossref-arg2"></span><h3 class="section">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</h3>
 
-<a name="node-code-node_002c-samptitle-arg3"></a>
-<h3 class="section">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</h3>
+<span id="node-code-node_002c-samptitle-arg3"></span><h3 class="section">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</h3>
 
-<a name="node-code-node_002c-file-name"></a>
-<h3 class="section">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</h3>
+<span id="node-code-node_002c-file-name"></span><h3 class="section">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</h3>
 
-<a name="node-node-and-manual"></a>
-<h3 class="section">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</h3>
+<span id="node-node-and-manual"></span><h3 class="section">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</h3>
 
-<a name="Top-Top-and-manual"></a>
-<h3 class="section">2.5 <cite>Manual</cite> Top and manual</h3>
+<span id="Top-Top-and-manual"></span><h3 class="section">2.5 <cite>Manual</cite> Top and manual</h3>
 
-<a name="Manual-no-node-just-manual"></a>
-<h3 class="section">2.6 <cite>Manual</cite> no node just manual</h3>
+<span id="Manual-no-node-just-manual"></span><h3 class="section">2.6 <cite>Manual</cite> no node just manual</h3>
 
-<a name="file-name-no-node-just-file-name"></a>
-<h3 class="section">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</h3>
+<span id="file-name-no-node-just-file-name"></span><h3 class="section">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</h3>
 
-<a name="a-inforef-a-b-c"></a>
-<h3 class="section">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</h3>
+<span id="a-inforef-a-b-c"></span><h3 class="section">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</h3>
 
-<a name="g_t_0028Top_0029-pxref-Top-file-name_002c-spaces"></a>
-<h3 class="section">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</h3>
+<span id="g_t_0028Top_0029-pxref-Top-file-name_002c-spaces"></span><h3 class="section">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</h3>
 
-<a name="g_t_0028file-name_0029-pxref-file-name-only_002c-spaces"></a>
-<h3 class="section">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</h3>
+<span id="g_t_0028file-name_0029-pxref-file-name-only_002c-spaces"></span><h3 class="section">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</h3>
 
-<a name="Top_002c-xref-Top-filename-only_002c-no-spaces"></a>
-<h3 class="section">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</h3>
+<span id="Top_002c-xref-Top-filename-only_002c-no-spaces"></span><h3 class="section">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</h3>
 
-<a name="filename_002e-xref-filename-only_002c-no-spaces"></a>
-<h3 class="section">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</h3>
+<span id="filename_002e-xref-filename-only_002c-no-spaces"></span><h3 class="section">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</h3>
 
 <hr>
 ';

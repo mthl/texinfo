@@ -624,9 +624,7 @@ i~=
 
 
 $result_converted{'html_text'}->{'weird_accents_disable_encoding'} = '
-<a name="Top"></a>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
 <p>&#297;=
 </p>

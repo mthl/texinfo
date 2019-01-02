@@ -1134,13 +1134,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -1150,30 +1148,24 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 </table>
 
 <hr>
-<a name="Part-1"></a>
-<div class="header">
+<span id="Part-1"></span><div class="header">
 <p>
 Next: <a href="#appendix-node" accesskey="n" rel="next">appendix node</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h1 class="part">Part 1</h1>
 <hr>
 
-<a name="chapter-node"></a>
-<a name="chapter"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter-node"></span><span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 <hr>
-<a name="Part-Appendix"></a>
-<div class="header">
+<span id="Part-Appendix"></span><div class="header">
 <p>
 Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h1 class="part">Part Appendix</h1>
 <hr>
 
-<a name="appendix-node"></a>
-<a name="Appendix"></a>
-<h2 class="appendix">Appendix A Appendix</h2>
+<span id="appendix-node"></span><span id="Appendix"></span><h2 class="appendix">Appendix A Appendix</h2>
 <hr>
 
 

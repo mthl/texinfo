@@ -280,10 +280,9 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="g_t0"></a><p>.
+<span id="g_t0"></span><p>.
 </p>
 <p>See <a href="#g_t0">0</a>.
 </p><hr>

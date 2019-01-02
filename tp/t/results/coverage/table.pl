@@ -679,16 +679,16 @@ $result_converted{'html_text'}->{'table'} = '
 </dl>
 
 <dl compact="compact">
-<dd><a name="index-index-entry"></a>
+<dd><span id="index-index-entry"></span>
 
 </dd>
 <dt>&lsquo;<samp>vtable item</samp>&rsquo;
-<a name="index-vtable-item"></a>
+<span id="index-vtable-item"></span>
 </dt>
-<dd><a name="index-key"></a>
+<dd><span id="index-key"></span>
 </dd>
 <dt>&lsquo;<samp>itemx vtable</samp>&rsquo;
-<a name="index-itemx-vtable"></a>
+<span id="index-itemx-vtable"></span>
 </dt>
 </dl>
 ';

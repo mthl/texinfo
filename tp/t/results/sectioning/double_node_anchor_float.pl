@@ -896,8 +896,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="node1"></a>
-<div class="header">
+<span id="node1"></span><div class="header">
 <p>
  &nbsp; </p>
 </div>
@@ -910,7 +909,7 @@ ul.no-bullet {list-style: none}
 </div>
 
 
-<a name="anchor1"></a>
+<span id="anchor1"></span>
 <hr>
 <div class="header">
 <p>
@@ -923,7 +922,7 @@ ul.no-bullet {list-style: none}
 <div class="float">
 <div class="float-caption"><p><strong>Text
 </strong></p></div></div>
-<div class="float"><a name="float1"></a>
+<div class="float"><span id="float1"></span>
 <div class="float-caption"><p><strong>Text 1
 </strong></p></div></div>
 <hr>

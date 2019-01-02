@@ -466,37 +466,34 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="top"></a>
-<div class="header">
+<span id="top"></span><div class="header">
 <p>
  &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h1 class="top">top</h1>
 
 <hr>
-<a name="chap"></a>
-<div class="header">
+<span id="chap"></span><div class="header">
 <p>
  &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h2 class="chapter">1 chap</h2>
 
 <hr>
-<a name="sec"></a>
-<div class="header">
+<span id="sec"></span><div class="header">
 <p>
  &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h3 class="section">1.1 sec</h3>
 
-<a name="index-entry"></a>
+<span id="index-entry"></span>
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#sec_cp_letter-E"><b>E</b></a>
  &nbsp; 
 </td></tr></table>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="sec_cp_letter-E">E</a></th><td></td><td></td></tr>
+<tr><th id="sec_cp_letter-E">E</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-entry">entry</a>:</td><td>&nbsp;</td><td valign="top"><a href="#sec">1.1 sec</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

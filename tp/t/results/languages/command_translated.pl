@@ -337,9 +337,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="fr">
 
-<a name="Top"></a>
-<a name="top-error_002d_002d_003e"></a>
-<h1 class="top">top erreur&rarr;</h1>
+<span id="Top"></span><span id="top-error_002d_002d_003e"></span><h1 class="top">top erreur&rarr;</h1>
 
 <p>erreur&rarr;
 </p><hr>

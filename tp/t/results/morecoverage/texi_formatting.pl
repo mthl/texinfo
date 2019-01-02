@@ -4845,13 +4845,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Top-section"></a>
-<h1 class="top">Top section</h1>
+<span id="Top-section"></span><h1 class="top">Top section</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">chapter
@@ -4880,16 +4878,16 @@ Menu comment
 
 </pre></div>
 
-<a name="index-t_002d_002druc"></a>
-<a name="index-T_002d_002druc"></a>
-<a name="index-_002e"></a>
-<a name="index-_003f"></a>
-<a name="index-a"></a>
-<a name="index-t_002d_002druc-1"></a>
-<a name="index-T_002d_002druc-1"></a>
-<a name="index-_002e-1"></a>
-<a name="index-_003f-1"></a>
-<a name="index-a-1"></a>
+<span id="index-t_002d_002druc"></span>
+<span id="index-T_002d_002druc"></span>
+<span id="index-_002e"></span>
+<span id="index-_003f"></span>
+<span id="index-a"></span>
+<span id="index-t_002d_002druc-1"></span>
+<span id="index-T_002d_002druc-1"></span>
+<span id="index-_002e-1"></span>
+<span id="index-_003f-1"></span>
+<span id="index-a-1"></span>
 
 
 <p>cp
@@ -4906,16 +4904,16 @@ Menu comment
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_cp_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="Top_cp_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e">.</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_cp_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="Top_cp_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f">?</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a">a</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="Top_cp_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc">t&ndash;ruc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc">T&ndash;ruc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4945,16 +4943,16 @@ Menu comment
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e-1"><code>.</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f-1"><code>?</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a-1"><code>a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top_fn_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="Top_fn_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc-1"><code>t--ruc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc-1"><code>T--ruc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4981,13 +4979,11 @@ Menu comment
 
 
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
 Next: <a href="#chapter2" accesskey="n" rel="next">chapter2</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="chapter-1"></a>
-<h2 class="chapter">1 chapter</h2>
+<span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
 <p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -5004,13 +5000,11 @@ Menu comment
 </div>
 
 <hr>
-<a name="s_002d_002dect_002cion"></a>
-<div class="header">
+<span id="s_002d_002dect_002cion"></span><div class="header">
 <p>
 Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="A-section"></a>
-<h3 class="section">1.1 A section</h3>
+<span id="A-section"></span><h3 class="section">1.1 A section</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#subsection" accesskey="1">subsection</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5026,13 +5020,11 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_
 </table>
 
 <hr>
-<a name="subsection"></a>
-<div class="header">
+<span id="subsection"></span><div class="header">
 <p>
 Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">s--ect,ion</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="subsection-1"></a>
-<h4 class="subsection">1.1.1 subsection</h4>
+<span id="subsection-1"></span><h4 class="subsection">1.1.1 subsection</h4>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="1">subsubsection ``simple-double--</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5041,33 +5033,27 @@ Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">s--ect,ion</a> &nbs
 </td></tr>
 </table>
 
-<a name="anchor"></a>
+<span id="anchor"></span>
 <hr>
-<a name="subsubsection-_0060_0060simple_002ddouble_002d_002d"></a>
-<div class="header">
+<span id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></span><div class="header">
 <p>
 Next: <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="n" rel="next">subsubsection three---four----\'\'</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></a>
-<h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</h4>
+<span id="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></span><h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</h4>
 
 <hr>
-<a name="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
-<div class="header">
+<span id="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><div class="header">
 <p>
 Previous: <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="p" rel="prev">subsubsection ``simple-double--</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
-<h4 class="subsubsection">1.1.1.2 three&mdash;four&mdash;-&rdquo;</h4>
+<span id="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><h4 class="subsubsection">1.1.1.2 three&mdash;four&mdash;-&rdquo;</h4>
 
 <hr>
-<a name="chapter2"></a>
-<div class="header">
+<span id="chapter2"></span><div class="header">
 <p>
 Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="chapter-2"></a>
-<h2 class="centerchap" align="center">chapter 2</h2>
+<span id="chapter-2"></span><h2 class="centerchap" align="center">chapter 2</h2>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#chapter2_cp_symbol-1"><b>.</b></a>
  &nbsp; 
@@ -5082,16 +5068,16 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_cp_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_cp_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e">.</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_cp_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_cp_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f">?</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a">a</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_cp_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc">t&ndash;ruc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc">T&ndash;ruc</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -5119,16 +5105,16 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_fn_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_fn_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e-1"><code>.</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_fn_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_fn_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f-1"><code>?</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a-1"><code>a</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter2_fn_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="chapter2_fn_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc-1"><code>t--ruc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc-1"><code>T--ruc</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -5144,7 +5130,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
  &nbsp; 
 </td></tr></table>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -5165,7 +5151,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 </ul>
 </div>
 
-<a name="SEC_Overview"></a>
+<span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

@@ -469,16 +469,15 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 
 
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
 <p>Copying.
-<a name="Copying-information"></a></p>
+<span id="Copying-information"></span></p>
 
 
 <p>Copying.
-<a name="Copying-information"></a></p>
+<span id="Copying-information"></span></p>
 
 <p>See <a href="#Copying-information">Copying information</a>.
 </p>

@@ -340,16 +340,12 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="top"></a>
-<h1 class="top">top</h1>
-<a name="g_t0"></a>
-<h2 class="chapter">1 0</h2>
-<a name="g_t_005f"></a>
-<h2 class="unnumbered">_</h2>
-<a name="g_t_003f"></a>
-<h3 class="section">?</h3>
+<span id="top"></span><h1 class="top">top</h1>
+<span id="g_t0"></span><h2 class="chapter">1 0</h2>
+<span id="g_t_005f"></span><h2 class="unnumbered">_</h2>
+<span id="g_t_003f"></span><h3 class="section">?</h3>
 
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
@@ -364,7 +360,7 @@ ul.no-bullet {list-style: none}
 </div>
 
 
-<a name="SEC_Overview"></a>
+<span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
 <div class="shortcontents">

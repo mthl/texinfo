@@ -745,13 +745,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="top-section"></a>
-<h1 class="top">top section</h1>
+<span id="top-section"></span><h1 class="top">top section</h1>
 <p>Top node
 </p>
 <table class="menu" border="0" cellspacing="0">
@@ -759,23 +757,20 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a>, Up: <a 
 </td></tr>
 </table>
 
-<a name="Chapter"></a>
-<h2 class="chapter">1 Chapter</h2>
+<span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
 
 <p>In chapter
 </p>
 <hr>
-<a name="section-node"></a>
-<div class="header">
+<span id="section-node"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
-<a name="section"></a>
-<h3 class="section">1.1 section</h3>
+<span id="section"></span><h3 class="section">1.1 section</h3>
 
 <p>section.
 </p>
-<a name="SEC_Contents"></a>
+<span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">

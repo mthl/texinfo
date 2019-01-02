@@ -482,9 +482,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="another_UNKNOWN">
 
-<a name="Top"></a>
-<a name="unknkown-language"></a>
-<h1 class="top">unknkown language</h1>
+<span id="Top"></span><span id="unknkown-language"></span><h1 class="top">unknkown language</h1>
 
 <p>Unknown language. See <a href="#Top">Top</a>.
 </p>

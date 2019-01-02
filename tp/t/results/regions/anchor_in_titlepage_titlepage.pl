@@ -398,12 +398,10 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="in-titlepage"></a><hr>
+<span id="in-titlepage"></span><hr>
 
-<a name="top"></a>
-<h1 class="top">top</h1>
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="top"></span><h1 class="top">top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <p>See <a href="#in-titlepage">in titlepage</a>.
 </p><hr>

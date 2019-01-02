@@ -1409,21 +1409,20 @@ $result_converted{'plaintext'}->{'complex_nestings'} = '     deffs
 ';
 
 
-$result_converted{'html_text'}->{'complex_nestings'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'complex_nestings'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <div class="example">
 <pre class="example">deffs
 </pre><dl>
-<dt><a name="index-my-def"></a>Function: <strong>my def</strong> <em>args <var>arg</var> &hellip;</em></dt>
-<dt><a name="index-other-def"></a>Function: <strong>other def</strong> <em>no args</em></dt>
+<dt id="index-my-def">Function: <strong>my def</strong> <em>args <var>arg</var> &hellip;</em></dt>
+<dt id="index-other-def">Function: <strong>other def</strong> <em>no args</em></dt>
 <dd><dl>
-<dt><a name="index-name"></a>type: <strong>name</strong> <em>and now the args</em></dt>
+<dt id="index-name">type: <strong>name</strong> <em>and now the args</em></dt>
 <dd><dl>
-<dt><a name="index-variables"></a>Variable: <strong>variables</strong> <em>variable-name</em></dt>
+<dt id="index-variables">Variable: <strong>variables</strong> <em>variable-name</em></dt>
 <dd><pre class="example">
 
-</pre></dd><dt><a name="index-variables-too"></a>Variable: <strong>variables too</strong> <em>other-variable</em></dt>
+</pre></dd><dt id="index-variables-too">Variable: <strong>variables too</strong> <em>other-variable</em></dt>
 <dd><pre class="example">THis is the defvar
 
 A table within the def

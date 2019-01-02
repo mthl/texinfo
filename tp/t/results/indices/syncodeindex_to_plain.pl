@@ -515,12 +515,11 @@ $result_converted{'plaintext'}->{'syncodeindex_to_plain'} = 'cp index.
 
 
 $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="index-_002d_002dk1"></a>
-<a name="index-_002d_002dv"></a>
-<a name="index-_002d_002dc"></a>
+<span id="index-_002d_002dk1"></span>
+<span id="index-_002d_002dv"></span>
+<span id="index-_002d_002dc"></span>
 
 <p>cp index.
 </p><table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_symbol-1"><b>-</b></a>
@@ -528,7 +527,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_symbol-1">-</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_symbol-1">-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dk1"><code>--k1</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dc">&ndash;c</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -542,7 +541,7 @@ $result_converted{'html_text'}->{'syncodeindex_to_plain'} = '
 <table class="index-vr" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_vr_symbol-1">-</a></th><td></td><td></td></tr>
+<tr><th id="t_h_vr_symbol-1">-</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002d_002dv"><code>--v</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

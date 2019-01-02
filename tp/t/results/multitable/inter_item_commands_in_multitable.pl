@@ -1018,7 +1018,7 @@ thing
 $result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
 <tr><td>truc
 
-<a name="index-index-entry-between-empty-lines"></a></td></tr>
+<span id="index-index-entry-between-empty-lines"></span></td></tr>
 <tr><td>trouc</td></tr>
 </table>
 
@@ -1026,13 +1026,13 @@ $result_converted{'html_text'}->{'inter_item_commands_in_multitable'} = '<table>
 <thead><tr><th width="60%">mu&ndash;ltitable headitem</th><th width="40%">another tab</th></tr></thead>
 <tr><td width="60%">mu&ndash;ltitable item</td><td width="40%">multitable tab</td></tr>
 <tr><td width="60%">mu&ndash;ltitable item 2</td><td width="40%">multitable tab 2
-<a name="index-index-entry-within-multitable"></a></td></tr>
+<span id="index-index-entry-within-multitable"></span></td></tr>
 <tr><td width="60%">lone mu&ndash;ltitable item</td></tr>
 </table>
 
 <table>
 <tr><td>Title
-<a name="index-cindex"></a></td></tr>
+<span id="index-cindex"></span></td></tr>
 <tr><td>thing</td></tr>
 </table>
 

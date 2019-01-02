@@ -463,13 +463,11 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </div>
-<a name="empty-top-node-up"></a>
-<h1 class="top">empty top node up</h1>
+<span id="empty-top-node-up"></span><h1 class="top">empty top node up</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -477,8 +475,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a> &nbsp; </p>
 </table>
 
 <hr>
-<a name="first"></a>
-<div class="header">
+<span id="first"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>

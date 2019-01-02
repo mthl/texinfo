@@ -2633,8 +2633,7 @@ Out of code -- out-of-code. \'1aaa\' \'2aaa-\' \'-3bbb\' \'4aaa-bbb\'  \' 5aaa-b
 ';
 
 
-$result_converted{'html_text'}->{'test_allowcodebreaks'} = '<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+$result_converted{'html_text'}->{'test_allowcodebreaks'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 
 
@@ -2644,7 +2643,7 @@ Out of code &mdash; out-of-code.
 <code> 5aaa-bb</code> <code>6aaa-bb </code> <code>ccc 7aaa-bbb</code> <code>ccc 8aaa-bbb ddd</code>
 <code>9aaa-bbb rrr_vv</code>
 &lsquo;<samp>fff-- --- minus-b aa-tt&eacute;ff_gg aa<span class="roman">r-oman</span> 
-anc-hor<a name="A-node0"></a></samp>&rsquo;
+anc-hor<span id="A-node0"></span></samp>&rsquo;
 </p>
 <div class="example">
 <pre class="example"><code>in-example</code>
@@ -2656,14 +2655,14 @@ Out of code &mdash; out-of-code.
 <code> 5aaa-bb</code> <code>6aaa-bb </code> <code>ccc 7aaa-bbb</code> <code>ccc 8aaa-bbb ddd</code>
 <code>9aaa-bbb rrr_vv</code>
 &lsquo;<samp>fff-- --- minus-b aa-tt&eacute;ff_gg aa<span class="roman">r-oman</span> 
-anc-hor<a name="A-node1"></a></samp>&rsquo;
+anc-hor<span id="A-node1"></span></samp>&rsquo;
 </p>
 <div class="example">
 <pre class="example"><code>in-example</code>
 </pre></div>
 
 <p>In w:
-Out&nbsp;of&nbsp;code&nbsp;&mdash;&nbsp;<span class="nolinebreak">out-of-code.</span>&nbsp;<code>1aaa</code>&nbsp;<code><span class="nolinebreak">2aaa-</span></code>&nbsp;<code><span class="nolinebreak">-3bbb</span></code>&nbsp;<code><span class="nolinebreak">4aaa-bbb</span></code>&nbsp;&nbsp;<code>&nbsp;<span class="nolinebreak">5aaa-bb</span></code>&nbsp;<code><span class="nolinebreak">6aaa-bb</span>&nbsp;</code>&nbsp;<code>ccc&nbsp;<span class="nolinebreak">7aaa-bbb</span></code>&nbsp;<code>ccc&nbsp;<span class="nolinebreak">8aaa-bbb</span>&nbsp;ddd</code>&nbsp;<code><span class="nolinebreak">9aaa-bbb</span>&nbsp;<span class="nolinebreak">rrr_vv</span></code>&nbsp;&lsquo;<samp><span class="nolinebreak">fff--</span>&nbsp;<span class="nolinebreak">---</span>&nbsp;minus-b&nbsp;<span class="nolinebreak">aa-tt</span>&eacute;<span class="nolinebreak">ff_gg</span>&nbsp;aa<span class="roman"><span class="nolinebreak">r-oman</span></span>&nbsp;&nbsp;<span class="nolinebreak">anc-hor</span><a name="A-nodew"></a></samp>&rsquo;&nbsp;<!-- /@w -->
+Out&nbsp;of&nbsp;code&nbsp;&mdash;&nbsp;<span class="nolinebreak">out-of-code.</span>&nbsp;<code>1aaa</code>&nbsp;<code><span class="nolinebreak">2aaa-</span></code>&nbsp;<code><span class="nolinebreak">-3bbb</span></code>&nbsp;<code><span class="nolinebreak">4aaa-bbb</span></code>&nbsp;&nbsp;<code>&nbsp;<span class="nolinebreak">5aaa-bb</span></code>&nbsp;<code><span class="nolinebreak">6aaa-bb</span>&nbsp;</code>&nbsp;<code>ccc&nbsp;<span class="nolinebreak">7aaa-bbb</span></code>&nbsp;<code>ccc&nbsp;<span class="nolinebreak">8aaa-bbb</span>&nbsp;ddd</code>&nbsp;<code><span class="nolinebreak">9aaa-bbb</span>&nbsp;<span class="nolinebreak">rrr_vv</span></code>&nbsp;&lsquo;<samp><span class="nolinebreak">fff--</span>&nbsp;<span class="nolinebreak">---</span>&nbsp;minus-b&nbsp;<span class="nolinebreak">aa-tt</span>&eacute;<span class="nolinebreak">ff_gg</span>&nbsp;aa<span class="roman"><span class="nolinebreak">r-oman</span></span>&nbsp;&nbsp;<span class="nolinebreak">anc-hor</span><span id="A-nodew"></span></samp>&rsquo;&nbsp;<!-- /@w -->
 </p>
 <div class="example">
 <pre class="example"><code>in-example</code><!-- /@w -->
@@ -2675,7 +2674,7 @@ Out of code &mdash; out-of-code.
 <code> 5aaa-bb</code> <code>6aaa-bb </code> <code>ccc 7aaa-bbb</code> <code>ccc 8aaa-bbb ddd</code>
 <code>9aaa-bbb rrr_vv</code>
 &lsquo;<samp>fff-- --- minus-b aa-tt&eacute;ff_gg aa<span class="roman">r-oman</span> 
-anc-hor<a name="A-node2"></a></samp>&rsquo;
+anc-hor<span id="A-node2"></span></samp>&rsquo;
 </p>
 <div class="example">
 <pre class="example"><code>in-example</code>

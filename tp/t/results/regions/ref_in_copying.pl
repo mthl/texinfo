@@ -706,13 +706,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <p><a href="#GFDL">GFDL</a>
 </p>
@@ -722,13 +720,11 @@ Next: <a href="#GFDL" accesskey="n" rel="next">GFDL</a>, Up: <a href="dir.html#T
 </table>
 
 <hr>
-<a name="GFDL"></a>
-<div class="header">
+<span id="GFDL"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="GFDL-1"></a>
-<h2 class="chapter">1 GFDL</h2>
+<span id="GFDL-1"></span><h2 class="chapter">1 GFDL</h2>
 
 <hr>
 

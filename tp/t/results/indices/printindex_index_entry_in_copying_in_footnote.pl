@@ -890,13 +890,11 @@ Copying(1).
 
 
 $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'} = '
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
  &nbsp; [<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="top"></a>
-<h1 class="top">top</h1>
+<span id="top"></span><h1 class="top">top</h1>
 
 <p>Top.
 </p>
@@ -908,7 +906,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-Copying-this-document">Copying this document</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -923,13 +921,11 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 </table>
 
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
  &nbsp; [<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
-<a name="Chapter"></a>
-<h2 class="chapter">1 Chapter</h2>
+<span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
 
 
 <p>Copying<a name="DOCF1_2" href="#FOOT1_2"><sup>2</sup></a>.
@@ -940,7 +936,7 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-copying-Copying-this-document">Copying this document</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>
@@ -955,11 +951,11 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying_in_footnote'
 
 <h3><a name="FOOT1" href="#DOCF1">(1)</a></h3>
 <p>In footnote
-<a name="index-copying-Copying-this-document"></a>
+<span id="index-copying-Copying-this-document"></span>
 </p>
 <h3><a name="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
 <p>In footnote
-<a name="index-copying-Copying-this-document"></a>
+<span id="index-copying-Copying-this-document"></span>
 </p>
 </div>
 <hr>

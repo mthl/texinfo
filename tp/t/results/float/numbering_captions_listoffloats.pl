@@ -8164,15 +8164,13 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
-<a name="Test-floats"></a>
-<h1 class="top">Test floats</h1>
+<span id="Test-floats"></span><h1 class="top">Test floats</h1>
 
-<div class="float"><a name="text-with-a-lot-of-features"></a>
+<div class="float"><span id="text-with-a-lot-of-features"></span>
 
 
 
@@ -8183,14 +8181,14 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 
 
 <div class="float-caption"><p><strong>Text: </strong>C No label</p></div></div>
-<div class="float"><a name="label-but-no-type"></a>
+<div class="float"><span id="label-but-no-type"></span>
 <p>No type but caption and shortcaption.
 </p>
 
 
 <div class="float-caption"><p><strong>1: </strong>C No type</p></div></div>
 
-<div class="float"><a name="label-but-no-type-and-no-caption"></a>
+<div class="float"><span id="label-but-no-type-and-no-caption"></span>
 <p>No type but label and no caption nor shortcaption.
 </p>
 <div class="float-caption"><p><strong>2
@@ -8205,13 +8203,13 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 </p>
 
 <div class="float-caption"><p>C No label, no type, but caption and shortcaption.</p></div></div>
-<div class="float"><a name="label-but-no-type-2"></a>
+<div class="float"><span id="label-but-no-type-2"></span>
 <p>Second float with no type.
 </p>
 
 
 <div class="float-caption"><p><strong>3: </strong>C No type 2</p></div></div>
-<div class="float"><a name="warning-in-top"></a>
+<div class="float"><span id="warning-in-top"></span>
 <p>A warning
 </p>
 
@@ -8231,34 +8229,32 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 </table>
 
 <hr>
-<a name="chapter"></a>
-<div class="header">
+<span id="chapter"></span><div class="header">
 <p>
 Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="A-chapter"></a>
-<h2 class="chapter">1 A chapter</h2>
+<span id="A-chapter"></span><h2 class="chapter">1 A chapter</h2>
 
-<div class="float"><a name="text-in-chapter"></a>
+<div class="float"><span id="text-in-chapter"></span>
 <p>Text in chapter
 </p>
 
 <div class="float-caption"><p><strong>Text 1.1: </strong>C Text in chapter</p></div></div>
-<div class="float"><a name="float-with-a-lot-of-features-and-no-shortcaption"></a>
+<div class="float"><span id="float-with-a-lot-of-features-and-no-shortcaption"></span>
 
 <div class="float-caption"><p><strong>Text 1.2: </strong>An example of float caption, no shortcaption<small class="enddots">...</small></p></div></div>
-<div class="float"><a name="theoreme"></a>
+<div class="float"><span id="theoreme"></span>
 <p>A th&eacute;or&egrave;me
 </p>
 
 <div class="float-caption"><p><strong>th&eacute;or&egrave;me 1.1: </strong>C A th&eacute;or&egrave;me</p></div></div>
-<div class="float"><a name="label-but-no-type-in-chapter"></a>
+<div class="float"><span id="label-but-no-type-in-chapter"></span>
 <p>float with no type.
 </p>
 
 
 <div class="float-caption"><p><strong>1.1: </strong>C No type in chapter</p></div></div>
-<div class="float"><a name="warning-in-chapter"></a>
+<div class="float"><span id="warning-in-chapter"></span>
 <p>A warning
 </p>
 
@@ -8270,38 +8266,34 @@ Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <
 </table>
 
 <hr>
-<a name="section"></a>
-<div class="header">
+<span id="section"></span><div class="header">
 <p>
 Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 </div>
-<a name="A-section"></a>
-<h3 class="section">1.1 A section</h3>
+<span id="A-section"></span><h3 class="section">1.1 A section</h3>
 
-<div class="float"><a name="text-in-section"></a>
+<div class="float"><span id="text-in-section"></span>
 
 <p>A text in float no caption a label a type.
 </p>
 <div class="float-caption"><p><strong>Text 1.3
 </strong></p></div></div>
 <hr>
-<a name="Unnumbered"></a>
-<div class="header">
+<span id="Unnumbered"></span><div class="header">
 <p>
 Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="Unnumbered-1"></a>
-<h2 class="unnumbered">Unnumbered</h2>
+<span id="Unnumbered-1"></span><h2 class="unnumbered">Unnumbered</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#Section-within-unnumbered" accesskey="1">Section within unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
-<div class="float"><a name="unnumbered-float"></a>
+<div class="float"><span id="unnumbered-float"></span>
 <p>unnum
 </p>
 
-<div class="float-caption"><p><strong>Text 5: </strong>C unnumbered float</p></div></div><div class="float"><a name="label-but-no-type-in-unnumbered"></a>
+<div class="float-caption"><p><strong>Text 5: </strong>C unnumbered float</p></div></div><div class="float"><span id="label-but-no-type-in-unnumbered"></span>
 <p>float with no type.
 </p>
 
@@ -8309,81 +8301,71 @@ Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with
 <div class="float-caption"><p><strong>5: </strong>C No type in unnumbered</p></div></div>
 
 <hr>
-<a name="Section-within-unnumbered"></a>
-<div class="header">
+<span id="Section-within-unnumbered"></span><div class="header">
 <p>
 Up: <a href="#Unnumbered" accesskey="u" rel="up">Unnumbered</a> &nbsp; </p>
 </div>
-<a name="Section-within-unnumbered-1"></a>
-<h3 class="section">Section within unnumbered</h3>
+<span id="Section-within-unnumbered-1"></span><h3 class="section">Section within unnumbered</h3>
 
 
-<div class="float"><a name="Section-within-unnumbered-float"></a>
+<div class="float"><span id="Section-within-unnumbered-float"></span>
 <p>Section within unnumbered
 </p>
 
 <div class="float-caption"><p><strong>Text 6: </strong>C Section within unnumbered</p></div></div>
 <hr>
-<a name="Chapter-with-unnumbsubsec"></a>
-<div class="header">
+<span id="Chapter-with-unnumbsubsec"></span><div class="header">
 <p>
 Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="prev">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="Chapter-with-unnumbsubsec-1"></a>
-<h2 class="chapter">2 Chapter with unnumbsubsec</h2>
+<span id="Chapter-with-unnumbsubsec-1"></span><h2 class="chapter">2 Chapter with unnumbsubsec</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#unnumbered-sec" accesskey="1">unnumbered sec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
-<div class="float"><a name="Chapter-with-subsec-float"></a>
+<div class="float"><span id="Chapter-with-subsec-float"></span>
 <p>Chap
 </p>
 
 <div class="float-caption"><p><strong>Text 2.1: </strong>C Chapter with subsec</p></div></div>
 <hr>
-<a name="unnumbered-sec"></a>
-<div class="header">
+<span id="unnumbered-sec"></span><div class="header">
 <p>
 Up: <a href="#Chapter-with-unnumbsubsec" accesskey="u" rel="up">Chapter with unnumbsubsec</a> &nbsp; </p>
 </div>
-<a name="unnumbered-sec-1"></a>
-<h3 class="unnumberedsec">unnumbered sec</h3>
+<span id="unnumbered-sec-1"></span><h3 class="unnumberedsec">unnumbered sec</h3>
 
-<div class="float"><a name="unnumbered-sec-float"></a>
+<div class="float"><span id="unnumbered-sec-float"></span>
 <p>Chap
 </p>
 
 <div class="float-caption"><p><strong>Text 2.2: </strong>C unnumbered sec float</p></div></div>
-<div class="float"><a name="label-but-no-type-in-unnumbered-subsec-in-chapter"></a>
+<div class="float"><span id="label-but-no-type-in-unnumbered-subsec-in-chapter"></span>
 <p>float with no type.
 </p>
 
 
 <div class="float-caption"><p><strong>2.1: </strong>C No type in unnumbered subsec in chapter</p></div></div>
 <hr>
-<a name="Appendix-for-float"></a>
-<div class="header">
+<span id="Appendix-for-float"></span><div class="header">
 <p>
 Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="prev">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="Appendix-for-float-1"></a>
-<h2 class="appendix">Appendix A Appendix for float</h2>
+<span id="Appendix-for-float-1"></span><h2 class="appendix">Appendix A Appendix for float</h2>
 
-<div class="float"><a name="appendix-sec-float"></a>
+<div class="float"><span id="appendix-sec-float"></span>
 
 <p>Appendix
 </p>
 
 <div class="float-caption"><p><strong>Text A.1: </strong>C appendix sec float</p></div></div>
 <hr>
-<a name="list-of-floats"></a>
-<div class="header">
+<span id="list-of-floats"></span><div class="header">
 <p>
 Previous: <a href="#Appendix-for-float" accesskey="p" rel="prev">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
-<a name="list-of-floats-1"></a>
-<h2 class="unnumbered">list of floats</h2>
+<span id="list-of-floats-1"></span><h2 class="unnumbered">list of floats</h2>
 
 <p>See <a href="#text-in-section">Text 1.3</a>.
 And (see <a href="#text-in-chapter">Text 1.1</a>).

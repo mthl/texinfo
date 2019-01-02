@@ -654,18 +654,17 @@ $result_converted{'plaintext'}->{'double_index_entry'} = 'Text
 ';
 
 
-$result_converted{'html_text'}->{'double_index_entry'} = '<a name="Top"></a>
-<div class="header">
+$result_converted{'html_text'}->{'double_index_entry'} = '<span id="Top"></span><div class="header">
 <p>
  &nbsp; [<a href="#other-node" title="Index" rel="index">Index</a>]</p>
 </div>
 <h1 class="node-heading">Top</h1>
 
-<a name="index-aaa"></a>
+<span id="index-aaa"></span>
 
 <p>Text
 </p>
-<a name="index-aaa-1"></a>
+<span id="index-aaa-1"></span>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top">&bull; <a href="#other-node" accesskey="1">other node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -673,14 +672,13 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<a name="Top"></a>
 </table>
 
 <hr>
-<a name="other-node"></a>
-<div class="header">
+<span id="other-node"></span><div class="header">
 <p>
  &nbsp; [<a href="#other-node" title="Index" rel="index">Index</a>]</p>
 </div>
 <h4 class="node-heading">other node</h4>
 
-<a name="index-aaa-2"></a>
+<span id="index-aaa-2"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_cp_letter-A"><b>A</b></a>
  &nbsp; 
@@ -688,7 +686,7 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<a name="Top"></a>
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="t_h_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aaa">aaa</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aaa-1">aaa</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-aaa-2">aaa</a>:</td><td>&nbsp;</td><td valign="top"><a href="#other-node">other node</a></td></tr>

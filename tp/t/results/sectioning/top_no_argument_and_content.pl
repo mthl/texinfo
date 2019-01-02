@@ -137,8 +137,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="SEC_Top"></a>
-
+<span id="SEC_Top"></span>
 <p>A.
 </p><hr>
 

@@ -4854,8 +4854,7 @@ ul.no-bullet {list-style: none}
 
 </p><hr>
 
-<a name="Top"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="Top"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[ &lt; ]</td>
 <td valign="middle" align="left">[<a href="#chapter" title="Section suivante dans l&rsquo;ordre de lecture"> &gt; </a>]</td>
 <td valign="middle" align="left"> &nbsp; </td>
@@ -4863,8 +4862,7 @@ ul.no-bullet {list-style: none}
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="Top-section"></a>
-<h1 class="top">Top section</h1>
+<span id="Top-section"></span><h1 class="top">Top section</h1>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#chapter">1 chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
@@ -4892,16 +4890,16 @@ Menu comment
 
 </pre></div>
 
-<a name="index-t_002d_002druc"></a>
-<a name="index-T_002d_002druc"></a>
-<a name="index-_002e"></a>
-<a name="index-_003f"></a>
-<a name="index-a"></a>
-<a name="index-t_002d_002druc-1"></a>
-<a name="index-T_002d_002druc-1"></a>
-<a name="index-_002e-1"></a>
-<a name="index-_003f-1"></a>
-<a name="index-a-1"></a>
+<span id="index-t_002d_002druc"></span>
+<span id="index-T_002d_002druc"></span>
+<span id="index-_002e"></span>
+<span id="index-_003f"></span>
+<span id="index-a"></span>
+<span id="index-t_002d_002druc-1"></span>
+<span id="index-T_002d_002druc-1"></span>
+<span id="index-_002e-1"></span>
+<span id="index-_003f-1"></span>
+<span id="index-a-1"></span>
 
 
 <p>cp
@@ -4918,16 +4916,16 @@ Menu comment
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_cp_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_cp_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e">.</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_cp_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_cp_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f">?</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a">a</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_cp_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc">t&ndash;ruc</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc">T&ndash;ruc</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4957,16 +4955,16 @@ Menu comment
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_fn_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_fn_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e-1"><code>.</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_fn_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_fn_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f-1"><code>?</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a-1"><code>a</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="Top-section_fn_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="Top-section_fn_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc-1"><code>t--ruc</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc-1"><code>T--ruc</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -4993,8 +4991,7 @@ Menu comment
 
 
 <hr size="6">
-<a name="chapter"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="chapter"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#Top" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5009,8 +5006,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="chapter-1"></a>
-<h1 class="chapter">1 chapter</h1>
+<span id="chapter-1"></span><h1 class="chapter">1 chapter</h1>
 
 <p><a name="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
@@ -5027,8 +5023,7 @@ Menu comment
 </div>
 
 <hr>
-<a name="s_002d_002dect_002cion"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="s_002d_002dect_002cion"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#chapter" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#chapter" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5043,8 +5038,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="A-section"></a>
-<h2 class="section">1.1 A section</h2>
+<span id="A-section"></span><h2 class="section">1.1 A section</h2>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsection">1.1.1 subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5060,8 +5054,7 @@ Menu comment
 </table>
 
 <hr>
-<a name="subsection"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="subsection"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#s_002d_002dect_002cion" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#s_002d_002dect_002cion" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5076,8 +5069,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="subsection-1"></a>
-<h3 class="subsection">1.1.1 subsection</h3>
+<span id="subsection-1"></span><h3 class="subsection">1.1.1 subsection</h3>
 
 <table class="menu" border="0" cellspacing="0">
 <tr><td align="left" valign="top"><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
@@ -5086,10 +5078,9 @@ Menu comment
 </td></tr>
 </table>
 
-<a name="anchor"></a>
+<span id="anchor"></span>
 <hr>
-<a name="subsubsection-_0060_0060simple_002ddouble_002d_002d"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#subsection" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#subsection" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5104,12 +5095,10 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></a>
-<h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</h4>
+<span id="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></span><h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</h4>
 
 <hr>
-<a name="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#subsection" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5124,12 +5113,10 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></a>
-<h4 class="subsubsection">1.1.1.2 three&mdash;four&mdash;-&rdquo;</h4>
+<span id="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><h4 class="subsubsection">1.1.1.2 three&mdash;four&mdash;-&rdquo;</h4>
 
 <hr>
-<a name="chapter2"></a>
-<table class="header" cellpadding="1" cellspacing="1" border="0">
+<span id="chapter2"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
 <tr><td valign="middle" align="left">[<a href="#chapter" title="D&eacute;but de ce chapitre ou chapitre pr&eacute;c&eacute;dent"> &lt;&lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" title="Section pr&eacute;c&eacute;dente dans l&rsquo;ordre de lecture"> &lt; </a>]</td>
 <td valign="middle" align="left">[<a href="#Top" title="Section sup&eacute;rieure">Plus haut</a>]</td>
@@ -5144,8 +5131,7 @@ Menu comment
 <td valign="middle" align="left">[<a href="#Top" title="Index">Index</a>]</td>
 <td valign="middle" align="left">[<a href="#SEC_About" title="A propos (page d&rsquo;aide)"> ? </a>]</td>
 </tr></table>
-<a name="chapter-2"></a>
-<h1 class="centerchap" align="center">chapter 2</h1>
+<span id="chapter-2"></span><h1 class="centerchap" align="center">chapter 2</h1>
 
 <table><tr><th valign="top">Aller &agrave;: &nbsp; </th><td><a class="summary-letter" href="#chapter-2_cp_symbol-1"><b>.</b></a>
  &nbsp; 
@@ -5160,16 +5146,16 @@ Menu comment
 <table class="index-cp" border="0">
 <tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_cp_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_cp_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e">.</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_cp_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_cp_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f">?</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_cp_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_cp_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a">a</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_cp_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_cp_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc">t&ndash;ruc</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc">T&ndash;ruc</a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -5197,16 +5183,16 @@ Menu comment
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Entr&eacute;e d&rsquo;index</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_fn_symbol-1">.</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_fn_symbol-1">.</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_002e-1"><code>.</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_fn_symbol-2">?</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_fn_symbol-2">?</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-_003f-1"><code>?</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_fn_letter-A">A</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_fn_letter-A">A</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-a-1"><code>a</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="chapter-2_fn_letter-T">T</a></th><td></td><td></td></tr>
+<tr><th id="chapter-2_fn_letter-T">T</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-t_002d_002druc-1"><code>t--ruc</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-T_002d_002druc-1"><code>T--ruc</code></a></td><td>&nbsp;</td><td valign="top"><a href="#Top">Top section</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>

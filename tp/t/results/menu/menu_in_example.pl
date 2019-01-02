@@ -778,8 +778,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <div class="example">
 <table class="menu" border="0" cellspacing="0"><tr><td>

@@ -456,11 +456,10 @@ $result_converted{'plaintext'}->{'double_syncodeindex'} = '* Menu:
 
 
 $result_converted{'html_text'}->{'double_syncodeindex'} = '
-<a name="Top"></a>
-<h1 class="node-heading">Top</h1>
+<span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<a name="index-cindex-entry"></a>
-<a name="index-findex-entry"></a>
+<span id="index-cindex-entry"></span>
+<span id="index-findex-entry"></span>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
  &nbsp; 
@@ -470,10 +469,10 @@ $result_converted{'html_text'}->{'double_syncodeindex'} = '
 <table class="index-fn" border="0">
 <tr><td></td><th align="left">Index Entry</th><td>&nbsp;</td><th align="left"> Section</th></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-C">C</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-C">C</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-cindex-entry"><code>cindex entry</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
-<tr><th><a name="t_h_fn_letter-F">F</a></th><td></td><td></td></tr>
+<tr><th id="t_h_fn_letter-F">F</th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-findex-entry"><code>findex entry</code></a>:</td><td>&nbsp;</td><td valign="top"><a href="#Top">Top</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 </table>

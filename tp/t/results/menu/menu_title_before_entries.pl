@@ -410,8 +410,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<a name="Top"></a>
-<div class="header">
+<span id="Top"></span><div class="header">
 <p>
 Next: <a href="#subnode" accesskey="n" rel="next">subnode</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
@@ -424,8 +423,7 @@ Next: <a href="#subnode" accesskey="n" rel="next">subnode</a>, Up: <a href="dir.
 </table>
 
 <hr>
-<a name="subnode"></a>
-<div class="header">
+<span id="subnode"></span><div class="header">
 <p>
 Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
