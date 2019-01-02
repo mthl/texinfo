@@ -1,5 +1,14 @@
 2019-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove unused variable in test suite.
+
+	* tp/maintain/regenerate_cmd_tests.sh: Do not set 'srcdir_test' 
+	in generated test scripts, as this variable is no longer used 
+	anywhere.
+	* tp/tests/run_parser_all.sh: Remove commented-out code.
+
+2019-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove commented-out code.
 	
 	* tp/tests/parser-tests.sh: Remove commented-out code.

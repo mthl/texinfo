@@ -13,7 +13,6 @@ dir=layout
 name='no_monolithic_only_toc_out'
 [ -d "$dir" ] || mkdir $dir
 
-srcdir_test=$dir; export srcdir_test;
 "$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log

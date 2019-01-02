@@ -13,7 +13,6 @@ dir=indices
 name='index_special_region_no_insertcopying'
 [ -d "$dir" ] || mkdir $dir
 
-srcdir_test=$dir; export srcdir_test;
 "$srcdir"/run_parser_all.sh -dir $dir $name
 exit_status=$?
 cat $dir/$one_test_logs_dir/$name.log

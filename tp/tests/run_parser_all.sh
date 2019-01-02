@@ -2,7 +2,7 @@
 # $Id$
 # Run all Texinfo tests.
 # 
-# Copyright 2010-2018 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -135,8 +135,6 @@ post_process_output ()
   fi
 }
 
-#echo "SRCDIR $srcdir srcdir_test $srcdir_test"
-
 LC_ALL=C; export LC_ALL
 
 prepended_command=
@@ -213,8 +211,6 @@ if test -n "$1"; then
   test -d $one_test_logs_dir || mkdir $one_test_logs_dir
   logfile=$one_test_logs_dir/$test_name.log
 fi
-
-#echo "testdir $testdir srcdir_test $srcdir_test" 1>&2
 
 base_results_dir=$testdir/
 test_file=list-of-tests
