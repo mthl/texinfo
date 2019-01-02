@@ -28,13 +28,13 @@ tex-html-checks: all
 copy-tests:
 	for dir in $(test_dirs); do \
 		if [ -d "$$dir" ]; then \
-			if [ -d "$${dir}_res" ]; then \
-				rm -f "$${dir}_res/"*.* ;\
+			if [ -d "${srcdir}/$${dir}_res" ]; then \
+				rm -f "${srcdir}/$${dir}_res/"*.* ;\
 			else \
-				mkdir "$${dir}_res/" ; \
+				mkdir ${srcdir}/"$${dir}_res/" ; \
 			fi ;\
-			cp -p "$$dir/"*.* "$${dir}_res/"; \
-			rm -f "$${dir}_res/"*.png "$${dir}_res/"*_l2h.css; \
+			cp -p "$$dir/"*.* "${srcdir}/$${dir}_res/"; \
+			rm -f ${srcdir}/"$${dir}_res/"*.png ${srcdir}/"$${dir}_res/"*_l2h.css; \
 		else \
 			echo "No dir $$dir/"; \
 		fi; \
@@ -43,13 +43,13 @@ copy-tests:
 copy-tex-html:
 	for dir in $(tex_html_dirs); do \
 		if [ -d "$$dir" ]; then \
-			if [ -d "$${dir}_res" ]; then \
-				rm -f "$${dir}_res/"*.* ;\
+			if [ -d "${srcdir}/$${dir}_res" ]; then \
+				rm -f "${srcdir}/$${dir}_res/"*.* ;\
 			else \
-				mkdir "$${dir}_res/" ; \
+				mkdir "${srcdir}/$${dir}_res/" ; \
 			fi ;\
-			cp -p "$$dir/"*.* "$${dir}_res/"; \
-			rm -f "$${dir}_res/"*.png "$${dir}_res/"*_l2h.css; \
+			cp -p "$$dir/"*.* "${srcdir}/$${dir}_res/"; \
+			rm -f "${srcdir}/$${dir}_res/"*.png "${srcdir}/$${dir}_res/"*_l2h.css; \
 		else \
 			echo "No dir $$dir/"; \
 		fi; \

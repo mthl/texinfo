@@ -1,3 +1,10 @@
+2019-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix Makefile rule for out-of-source builds.
+
+	* tp/tests/many_input_files/Makefile.am
+	(copy-tests, copy-tex-html): Work properly in out-of-source builds.
+
 2019-01-02   Per Bother  <per@bothner.com>
 
 	Use 'id' attribute instead of 'name' on <a>.
