@@ -1564,7 +1564,7 @@ sub _convert_anchor_command($$$$)
   my $id = $self->command_id($command);
   if (defined($id) and $id ne '' and !@{$self->{'multiple_pass'}}
       and !$self->in_string()) {
-    return "<a name=\"$id\"></a>";
+    return "<span id=\"$id\"></span>";
   }
   return '';
 }
@@ -2309,7 +2309,7 @@ sub _convert_heading_command($$$$$)
   }
 
   my $element_id = $self->command_id($command);
-  $result .= "<a name=\"$element_id\"></a>\n" 
+  $result .= "<span id=\"$element_id\"></span>"
     if (defined($element_id) and $element_id ne '');
 
   print STDERR "Process $command "
@@ -2820,7 +2820,7 @@ sub _convert_float_command($$$$$)
   my $id = $self->command_id($command);
   my $label;
   if (defined($id) and $id ne '') {
-    $label = "<a name=\"$id\"></a>";
+    $label = "<span id=\"$id\"></span>";
   } else {
     $label = '';
   }
@@ -3071,7 +3071,7 @@ sub _convert_item_command($$$$)
       }
       my $index_id = $self->command_id ($command);
       if (defined($index_id) and $index_id ne '') {
-        $result .= "\n<a name=\"$index_id\"></a>\n";
+        $result .= "\n<span id=\"$index_id\"></span>\n";
       }
     
       return '<dt>' .$result. '</dt>' . "\n";
@@ -3378,7 +3378,7 @@ sub _convert_index_command($$$$)
   if (defined($index_id) and $index_id ne '' 
       and !@{$self->{'multiple_pass'}} 
       and !$self->in_string()) {
-    my $result = "<a name=\"$index_id\"></a>";
+    my $result = "<span id=\"$index_id\"></span>";
     $result .= "\n" unless ($self->in_preformatted());
     return $result;
   }
@@ -3537,8 +3537,8 @@ sub _convert_printindex_command($$$$)
        $entries_text .= "</td></tr>\n";
     }
     # a letter and associated indice entries
-    $result .= '<tr><th>' . 
-    "<a name=\"$letter_id{$letter}\">".$self->protect_text($letter).'</a>'
+    $result .= '<tr>' . 
+    "<th id=\"$letter_id{$letter}\">".$self->protect_text($letter)
         .  "</th><td></td><td></td></tr>\n" . $entries_text .
        "<tr><td colspan=\"4\"> ".$self->get_conf('DEFAULT_RULE')."</td></tr>\n";
 
@@ -3567,7 +3567,7 @@ sub _contents_inline_element($$$)
     if ($special_element) {
       my $id = $self->command_id($special_element);
       if ($id ne '') {
-        $result .= "<a name=\"$id\"></a>\n";
+        $result .= "<span id=\"$id\"></span>\n";
       }
       $heading = $self->command_text($special_element);
     } else {
@@ -4055,7 +4055,7 @@ sub _convert_def_line_type($$$$)
   my $index_label = '';
   my $index_id = $self->command_id($command);
   if (defined($index_id) and $index_id ne '' and !@{$self->{'multiple_pass'}}) {
-    $index_label = "<a name=\"$index_id\"></a>";
+    $index_label = " id=\"$index_id\"";
   }
   my $arguments
     = Texinfo::Common::definition_arguments_content($command);
@@ -4234,7 +4234,7 @@ sub _convert_def_line_type($$$$)
       }
     }
 
-    return '<dt>'.$index_label.$self->convert_tree({'type' => '_code',
+    return "<dt$index_label>".$self->convert_tree({'type' => '_code',
                              'contents' => [$tree]}) . "</dt>\n";
   } else {
     my $category_prepared = '';
@@ -4272,9 +4272,8 @@ sub _convert_def_line_type($$$$)
     $type_name .= ' <strong>' . $name . '</strong>' if ($name ne '');
     $type_name .= $arguments_text;
 
-    return "<tr><td align=\"left\">" . $type_name .
-       "</td><td align=\"right\">" . $category_prepared . 
-       $index_label . "</td></tr>\n";
+    return "<tr$index_label><td align=\"left\">" . $type_name .
+       "</td><td align=\"right\">" . $category_prepared . "</td></tr>\n";
   }
 }
 
@@ -4431,7 +4430,7 @@ sub _convert_element_type($$$$)
     $special_element = $element->{'extra'}->{'special_element'};
     my $id = $self->command_id($element);
     if ($id ne '') {
-      $result .= "<a name=\"$id\"></a>\n";
+      $result .= "<span id=\"$id\"></span>\n";
     }
     if ($self->get_conf('HEADERS') 
         # first in page

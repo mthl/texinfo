@@ -1,3 +1,21 @@
+2019-01-02   Per Bother  <per@bothner.com>
+
+	Use 'id' attribute instead of 'name' on <a>.
+
+	* tp/Texinfo/Convert/HTML.pm:
+	(_convert_float_command, _convert_item_command)
+	(_convert_index_command, _contents_inline_element)
+	(_convert_element_type, _convert_heading_command):
+	Use '<span id>' instead of '<a name>'.
+	(_convert_printindex_command, _convert_def_line_type):
+	Add 'id' attribute to <th> and <dt> elements, and remove
+	<a name>.
+
+	The 'name' attribute of <a> to define a hyperlink target is 
+	deprecated in the HTML 5 standards.  'id' for this purpose was 
+	specified by HTML 4 (in 1997) and can be expected to be 
+	supported by all browsers.
+
 2019-01-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Document SECTION_NAME_IN_TITLE.
