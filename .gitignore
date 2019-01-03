@@ -3,6 +3,7 @@
 texinfo-*
 build
 **/test
+**/diffs
 
 **/Makefile
 **/Makefile.in
