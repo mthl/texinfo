@@ -1,7 +1,6 @@
-# $Id$
 # Parser.pm: parse texinfo code into a tree.
 #
-# Copyright 2010-2018 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

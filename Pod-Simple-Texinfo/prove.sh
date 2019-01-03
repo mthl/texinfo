@@ -1,6 +1,5 @@
 #! /bin/sh -x
-# $Id$
-# Copyright 2010, 2012 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright

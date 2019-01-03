@@ -1,4 +1,3 @@
-# $Id$
 # Public domain.
 # This little Makefile is written by hand.  Left in just in case it ends
 # up being convenient to use for development instead of the automade version.

@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 # Created 2003-08-29, Karl Berry.  Public domain.
 
 if test "x$1" = x-n; then

@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 # Written by Thomas Esser.  Public domain.
 # Execute texi2dvi --pdf.
 

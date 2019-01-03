@@ -1,7 +1,5 @@
-# $Id$
 # Makefile.am for texinfo/tp/tests.
-# Copyright 2012, 2013, 2014, 2015, 2016, 2017, 2018 Free Software 
-# Foundation, Inc.
+# Copyright 2012-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

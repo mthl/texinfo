@@ -1,8 +1,7 @@
 #! /bin/sh
-# $Id$
 # Helper script for tests.
 #
-# Copyright 2011, 2012, 2013, 2014, 2015, 2018 Free Software Foundation, Inc.
+# Copyright 2011-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

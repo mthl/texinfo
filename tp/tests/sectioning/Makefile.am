@@ -1,4 +1,3 @@
-# $Id$
 # sectioning/Makefile.am - public domain.
  
 EXTRA_DIST = \

@@ -1,6 +1,5 @@
 \input texinfo   @c -*-texinfo-*-
 @c vim: filetype=texinfo tabstop=2 expandtab
-@c $Id$
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @settitle Texindex @VERSION@: A program for sorting indices

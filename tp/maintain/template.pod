@@ -1,4 +1,3 @@
-# $Id$
 # Automatically generated from maintain/template.pod
 
 =head1 NAME
