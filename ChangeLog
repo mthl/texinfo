@@ -1,5 +1,12 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove SVN keyword.
+
+	* util/texi2dvi (version): Do not use '$Revision$' keyword as 
+	this doesn't work with git.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Update instructions for git.
 
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>

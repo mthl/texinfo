@@ -33,9 +33,6 @@ set -e
 # In case the default sed doesn't suffice.
 : ${SED=sed}
 
-# This string is expanded automatically when this file is checked out.
-rcs_revision='$Revision$'
-rcs_version=`set - $rcs_revision; echo $2`
 program=`echo $0 | $SED -e 's!.*/!!'`
 
 build_mode=${TEXI2DVI_BUILD_MODE:-local}
@@ -215,9 +212,9 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 6.5) $rcs_version
+texi2dvi (GNU Texinfo 6.5dev)
 
-Copyright (C) 2017 Free Software Foundation, Inc.
+Copyright (C) 2019 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
