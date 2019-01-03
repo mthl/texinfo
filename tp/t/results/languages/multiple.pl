@@ -898,9 +898,9 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr :
 
  -- Variable d\'instance de copying : a b
 
- -- Instance Variable da pt: BBB CCC
+ -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- VariÃ¡vel de instÃ¢ncia da copying: a b
 ';
 
 
@@ -915,9 +915,9 @@ File: ,  Node: Top,  Up: (dir)
 
  -- Variable d\'instance de copying : a b
 
- -- Instance Variable da pt: BBB CCC
+ -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
 
- -- Instance Variable da copying: a b
+ -- VariÃ¡vel de instÃ¢ncia da copying: a b
 
 
 Tag Table:
@@ -929,7 +929,7 @@ End Tag Table
 
 $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Instance Variable da copying: a b -->
+<!-- Variável de instância da copying: a b -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -986,11 +986,11 @@ ul.no-bullet {list-style: none}
 
 
 <dl>
-<dt id="index-BBB-of-pt">Instance Variable da pt: <strong>BBB</strong> <em>CCC</em></dt>
+<dt id="index-BBB-of-pt">Variável de instância da pt: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
 <dl>
-<dt id="index-copying-a-of-copying">Instance Variable da copying: <strong>a</strong> <em>b</em></dt>
+<dt id="index-copying-a-of-copying">Variável de instância da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 <hr>
 
