@@ -1,5 +1,15 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove documentation of \ifusebracesinindexes conditional.
+
+	* doc/texinfo.tex: Add a comment at definition of 
+	\ifusebracesinindexes.
+	* doc/texinfo.texi: Remove use of \usebracesinindexestrue.
+	(Details of texindex): Remove the documentation of it.
+	* NEWS: Mention that this is not required any more.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Update refcard.
 
 	* doc/refcard/txirefcard.tex: @setfilename is no longer 

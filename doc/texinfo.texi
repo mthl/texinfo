@@ -22,10 +22,6 @@
 @syncodeindex vr cp
 @syncodeindex pg cp
 
-@tex
-\global\usebracesinindexestrue
-@end tex
-
 @c finalout
 
 @comment %**end of header
@@ -15238,29 +15234,6 @@ initial'' shown in the index:
 @@printindex cp
 @end example
 
-@findex \usebracesinindexestrue
-However, to enable this behavior, it's necessary (for the time being)
-to give a special option to @TeX{} early in a source document:
-
-@example
-@@tex
-\global\usebracesinindexestrue
-@@end tex
-@end example
-
-@cindex Sort string, incorrect @samp{|}
-This is because the previous @command{texindex} implementation aborted
-with an incorrect error message (@samp{No page number in \entry...})
-on such index entries when handled in the normal way.  Therefore
-@TeX{} wrote out an incorrect ``sort string'' using the @samp{|}
-character; this did not affect the text of the entry, but the index
-initial was the incorrect @samp{|}, and sorting was not perfect.
-
-Because of that fatal error, and because relatively few documents have
-index entries beginning with braces, we want to provide some
-transition time for installations to have the new @command{texindex}.
-At some point in the future, we'll make @code{\usebracesinindexes}
-true by default (the above @TeX{} code will continue to work fine).
 
 @cindex Literate programming, with Texinfo and @code{awk}
 @cindex Texinfo, and literate programming
