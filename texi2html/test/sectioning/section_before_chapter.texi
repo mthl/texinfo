@@ -1,8 +1,0 @@
-\input texinfo.tex    @c -*-texinfo-*-
-
-
-@section section 
-
-@chapter chapter
-
-@bye

@@ -106,8 +106,7 @@ po-check:
 	    # don't look at sources from some subdirs.			\
 	    case $$file in						\
 	      contrib/* ) continue;;					\
-	      djgpp/* | makeinfo/* | man/* | texi2html/* ) continue;;	\
-	      tp/parsetexi/*) continue;;				\
+	      djgpp/* | man/* ) continue;;	\
 	      texinfo-*/*) continue;;					\
               tp/maintain/* ) continue;;				\
 	    esac;							\

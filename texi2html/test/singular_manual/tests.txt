@@ -1,2 +1,0 @@
-texi singular.texi
-singular_plain singular.texi --split chapter

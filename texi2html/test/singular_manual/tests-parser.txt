@@ -1,3 +1,0 @@
-texi singular.texi
-singular_plain singular.texi --split chapter
-#singular_html singular.texi --init-file t2h_singular.init --no-verbose --html

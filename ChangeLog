@@ -1,3 +1,11 @@
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove texi2html and C makeinfo.
+
+	* makeinfo, texi2html: Remove subdirectories.
+	* Makefile.am (po-check): Update list of skipped subdirectories.
+	* README-hacking: Remove mention of these subdirectories.
+
 2019-01-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove unused variable in test suite.

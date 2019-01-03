@@ -1,2 +1,0 @@
-singular ../singular_manual/singular.texi --init-file t2h_singular.init --set-customization-variable 'L2H 1' --set-customization-variable 'SHORTEXTN 1' --set-customization-variable 'PREFIX sing' --set-customization-variable 'TOP_FILE index.htm' --no-verbose
-singular_httex ../singular_manual/singular.texi --init-file t2h_singular.init --init tex4ht.pm --set-customization-variable 'SHORTEXTN 1' --set-customization-variable 'PREFIX sing' --set-customization-variable 'TOP_FILE index.htm' --no-verbose
