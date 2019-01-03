@@ -1,4 +1,4 @@
-/* Copyright 2010-2018 Free Software Foundation, Inc.
+/* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1706,7 +1706,15 @@ value_invalid:
       if (separator == '@')
         line_error ("unexpected @");
       else
-        current = handle_separator (current, separator, &line);
+        {
+          int status = STILL_MORE_TO_PROCESS;
+          current = handle_separator (current, separator, &line, &status);
+          if (status == GET_A_NEW_LINE)
+            {
+              retval = GET_A_NEW_LINE;
+              goto funexit;
+            }
+        }
     } /* 5326 */
   /* "Misc text except end of line." */
   else if (*line && *line != '\n')

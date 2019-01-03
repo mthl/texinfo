@@ -1,4 +1,4 @@
-/* Copyright 2010-2018 Free Software Foundation, Inc.
+/* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -568,9 +568,8 @@ funexit:
 
 
 /* Handle a comma separating arguments to a Texinfo command. */
-/* 5228 */
 ELEMENT *
-handle_comma (ELEMENT *current, char **line_inout)
+handle_comma (ELEMENT *current, char **line_inout, int *status)
 {
   char *line = *line_inout;
   enum element_type type;
@@ -582,7 +581,6 @@ handle_comma (ELEMENT *current, char **line_inout)
   type = current->type;
   current = current->parent;
 
-  // 5244
   if (command_flags(current) & CF_inline)
     {
       KEY_PAIR *k;
@@ -673,7 +671,8 @@ handle_comma (ELEMENT *current, char **line_inout)
                       line = next_text ();
                       if (!line)
                         {
-                          /* FIXME: error - unbalanced brace */
+                          *status = GET_A_NEW_LINE; /* unbalanced brace */
+                          goto funexit;
                         }
                       continue;
                     }
@@ -722,7 +721,8 @@ inlinefmtifelse_done:
                   alloc_line = line = next_text ();
                   if (!line)
                     {
-                      /* FIXME: error - unbalanced brace */
+                      *status = GET_A_NEW_LINE; /* error - unbalanced brace */
+                      goto funexit;
                     }
                   continue;
                 }
@@ -750,31 +750,32 @@ funexit:
 
 /* Actions to be taken when a special character appears in the input. */
 ELEMENT *
-handle_separator (ELEMENT *current, char separator, char **line_inout)
+handle_separator (ELEMENT *current, char separator, char **line_inout,
+                  int *status)
 {
   char *line = *line_inout;
 
-  if (separator == '{') // 4888
+  if (separator == '{')
     {
       current = handle_open_brace (current, &line);
     }
-  else if (separator == '}') // 5007
+  else if (separator == '}')
     {
       current = handle_close_brace (current, &line);
     }
   /* If a comma is seen after all the arguments for the command have been
      read, it is included in the last argument. */
-  else if (separator == ',' // 5228
+  else if (separator == ','
            && counter_value (&count_remaining_args, current->parent) > 0)
     {
-      current = handle_comma (current, &line);
+      current = handle_comma (current, &line, status);
     }
   else if (separator == ',' && current->type == ET_line_arg
-           && current->parent->cmd == CM_node) // 5297
+           && current->parent->cmd == CM_node)
     {
       line_warn ("superfluous arguments for node");
     }
-  /* 5303 After a separator in a menu. */
+  /* After a separator in a menu. */
   else if ((separator == ','
             || separator == '\t'
             || separator == '.')

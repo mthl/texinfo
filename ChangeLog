@@ -1,5 +1,13 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix unclosed @inlinefmtifelse.
+
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_comma): If we run 
+	out of input inside @inlinefmtifelse, exit the function.  This 
+	matches change to Perl code made on 2018-10-29.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Update instructions to use git.
 
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
