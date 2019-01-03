@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.91\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2017-05-21 18:07+0200\n"
 "Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
@@ -129,7 +129,7 @@ msgstr "Regulesprimo tro grandas"
 msgid "Unmatched ) or \\)"
 msgstr "Senpara ) aŭ \\)"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Mankas antaŭa regulesprimo"
 
@@ -3606,21 +3606,6 @@ msgstr "%s: eraro dum fermo de %s (dosiero de internaj ligoj): %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 
-#~ msgid "recursion is always allowed"
-#~ msgstr "rikuro ĉiam permesatas"
-
-#~ msgid "arguments are quoted by default"
-#~ msgstr "argumentoj citatas defaŭlte"
-
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Arkaika variablo %s\n"
-
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "%s: arkaika variablo %s\n"
-
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "arkaika variablo %s\n"
-
 #~ msgid ""
 #~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"
 #~ "      --no-raw-escapes         output escapes as literal text.\n"
@@ -3634,8 +3619,23 @@ msgstr "%s: ne eblas malfermi %s por skribi: %s\n"
 #~ "      --restore=DOSIERO        legi la unuajn klavofrapojn el DOSIERO\n"
 #~ "  -O, --show-options, --usage  montri la nodon pri komandliniaj opcioj"
 
+#~ msgid "recursion is always allowed"
+#~ msgstr "rikuro ĉiam permesatas"
+
+#~ msgid "arguments are quoted by default"
+#~ msgstr "argumentoj citatas defaŭlte"
+
+#~ msgid "Obsolete variable %s\n"
+#~ msgstr "Arkaika variablo %s\n"
+
 #~ msgid "@%s should not be associated with @top"
 #~ msgstr "'@%s' ne devus esti rilatita al '@top'"
+
+#~ msgid "%s: obsolete variable %s\n"
+#~ msgstr "%s: arkaika variablo %s\n"
+
+#~ msgid "obsolete variable %s\n"
+#~ msgstr "arkaika variablo %s\n"
 
 #~ msgid "readline: Out of virtual memory!\n"
 #~ msgstr "readline: Mankas sufiĉa virtuala memoro!\n"

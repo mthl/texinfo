@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2017-06-24 09:41+0300\n"
 "Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
 "Language-Team: Russian <gnu@d07.ru>\n"
@@ -129,7 +129,7 @@ msgstr "Регулярное выражение слишком большое"
 msgid "Unmatched ) or \\)"
 msgstr "Непарная ) или \\)"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Нет предыдущего регулярного выражения"
 
@@ -3617,14 +3617,14 @@ msgstr "%s: невозможно открыть %s для записи: %s\n"
 #~ msgid "Obsolete variable %s\n"
 #~ msgstr "Устаревшая переменная %s\n"
 
+#~ msgid "@%s should not be associated with @top"
+#~ msgstr "@%s не должен быть связан с @top"
+
 #~ msgid "%s: obsolete variable %s\n"
 #~ msgstr "%s: устаревшая переменная %s\n"
 
 #~ msgid "obsolete variable %s\n"
 #~ msgstr "устаревшая переменная %s\n"
-
-#~ msgid "@%s should not be associated with @top"
-#~ msgstr "@%s не должен быть связан с @top"
 
 #~ msgid ""
 #~ "  -R, --raw-escapes            output \"raw\" ANSI escapes (default).\n"

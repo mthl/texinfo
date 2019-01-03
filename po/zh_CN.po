@@ -2,20 +2,23 @@
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # This file is distributed under the same license as the texinfo package.
 # Wang Li <charles@linux.net.cn>, 2002.
-# Ji ZhengYu <zhengyuji@gmail.com>, 2008, 2009
+# Ji ZhengYu <zhengyuji@gmail.com>, 2008, 2009.
+# Boyuan Yang <073plan@gmail.com>, 2018.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 4.13\n"
+"Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
-"PO-Revision-Date: 2009-05-21 15:08中国标准时间\n"
-"Last-Translator: Ji ZhengYu <zhengyuji@gmail.com>\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
+"PO-Revision-Date: 2018-01-23 10:13+0800\n"
+"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 2.0.5\n"
 
 #: gnulib/lib/error.c:195
 msgid "Unknown system error"
@@ -58,7 +61,7 @@ msgstr "%s：选项需要一个参数 -- %c\n"
 
 #: gnulib/lib/regcomp.c:135
 msgid "Success"
-msgstr ""
+msgstr "成功"
 
 #: gnulib/lib/regcomp.c:138
 msgid "No match"
@@ -81,7 +84,7 @@ msgstr "@var 中不可靠的字符 %c"
 
 #: gnulib/lib/regcomp.c:150
 msgid "Trailing backslash"
-msgstr ""
+msgstr "尾端的反斜杠"
 
 #: gnulib/lib/regcomp.c:153
 msgid "Invalid back reference"
@@ -134,7 +137,7 @@ msgstr "使用正则表达式来查寻"
 msgid "Unmatched ) or \\)"
 msgstr "不匹配的 }"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "没有上次搜索字符串"
@@ -244,7 +247,6 @@ msgstr "唯一的补齐"
 msgid "%d completion:\n"
 msgid_plural "%d completions:\n"
 msgstr[0] "%d 个补齐：\n"
-msgstr[1] "%d 个补齐：\n"
 
 #: info/echo-area.c:1166
 msgid "Insert completion"
@@ -406,7 +408,7 @@ msgstr ""
 #: info/info.c:635
 #, c-format
 msgid "invalid number: %s\n"
-msgstr ""
+msgstr "无效数字：%s\n"
 
 #: info/info.c:815
 #, c-format
@@ -1045,7 +1047,7 @@ msgstr ""
 #: info/session.c:63
 #, c-format
 msgid "No file index"
-msgstr ""
+msgstr "无文件索引"
 
 #. TRANSLATORS: Try to keep this message (when "expanded") at most 79
 #. characters; anything after the 79th character will not actually be
@@ -1201,7 +1203,6 @@ msgstr "选择本菜单项目"
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
 msgstr[0] "本菜单中没有第 %d 个项目。"
-msgstr[1] "本菜单中没有第 %d 个项目。"
 
 #: info/session.c:2260
 msgid "Select the last item in this node's menu"
@@ -1583,7 +1584,7 @@ msgstr "显示版本信息并退出"
 #: info/session.c:5317
 #, c-format
 msgid "GNU Info version %s"
-msgstr ""
+msgstr "GNU Info 版本 %s"
 
 #: info/session.c:5322
 msgid "Redraw the display"
@@ -2010,9 +2011,9 @@ msgid "No dir file specified; try --help for more information."
 msgstr "没有指定目录文件；试用 --help 以获得更多信息。"
 
 #: install-info/install-info.c:2301
-#, fuzzy, c-format
+#, c-format
 msgid "Could not read %s."
-msgstr "无法创建输出文件“%s”。"
+msgstr "无法读取 %s。"
 
 #: install-info/install-info.c:2448
 #, c-format
@@ -2366,7 +2367,7 @@ msgstr ""
 #: tp/Texinfo/Parser.pm:1018 tp/Texinfo/Structuring.pm:437
 #, perl-format
 msgid "multiple @%s"
-msgstr ""
+msgstr "多个 @%s"
 
 #: tp/Texinfo/Parser.pm:1056
 #, perl-format
@@ -2458,9 +2459,9 @@ msgid "macro `%s' called with too many args"
 msgstr "在第 %2$d 行中以过多的参数调用宏“%1$s”"
 
 #: tp/Texinfo/Parser.pm:1943
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s missing closing brace"
-msgstr "%c%s 遗漏闭合花括号"
+msgstr "@%s 遗漏闭合花括号"
 
 #: tp/Texinfo/Parser.pm:1951
 #, fuzzy, perl-format
@@ -3537,18 +3538,22 @@ msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: 无法打开 --css-file: %s"
 
 #, fuzzy
+#~| msgid "@quote-arg is deprecated; arguments are quoted by default"
 #~ msgid "arguments are quoted by default"
 #~ msgstr "不赞成使用 @quote-arg；参数是默认引用的"
 
 #, fuzzy
+#~| msgid "Set variable: "
 #~ msgid "Obsolete variable %s\n"
 #~ msgstr "设定变量："
 
 #, fuzzy
+#~| msgid "Set variable: "
 #~ msgid "%s: obsolete variable %s\n"
 #~ msgstr "设定变量："
 
 #, fuzzy
+#~| msgid "Set variable: "
 #~ msgid "obsolete variable %s\n"
 #~ msgstr "设定变量："
 

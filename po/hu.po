@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.x\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2006-02-18 16:00+0100\n"
 "Last-Translator: Máté LABÁDI <labadimate@freemail.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -130,7 +130,7 @@ msgid "Unmatched ) or \\)"
 msgstr "Pár nélküli }"
 
 # keresési feltétel / keresési szöveg / keresett szöveg ? LM
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Nincs korábbi keresési feltétel"
@@ -2798,9 +2798,9 @@ msgid ""
 msgstr "esetleg a @top oldalt @ifnottex-be kellene tenni, @ifinfo helyett"
 
 #: tp/Texinfo/Parser.pm:4687
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in an index entry"
-msgstr "Törlés a sor elejéig"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4716
 #, perl-format
@@ -3518,18 +3518,6 @@ msgstr ""
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: A CSS fájl nem nyitható meg: %s"
-
-#, fuzzy
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Változó beállítása:"
-
-#, fuzzy
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "Változó beállítása:"
-
-#, fuzzy
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "Változó beállítása:"
 
 #~ msgid "%s: illegal option -- %c\n"
 #~ msgstr "%s: érvénytelen opció -- %c\n"

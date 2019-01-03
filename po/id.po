@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2014-08-11 17:30+0700\n"
 "Last-Translator: Arif E. Nugroho <arif_endro@yahoo.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
@@ -126,7 +126,7 @@ msgstr "Menggunakan ekspresi regular untuk pencarian."
 msgid "Unmatched ) or \\)"
 msgstr "Tidak cocok ) atau \\)"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Tidak ada string pencarian sebelumnya"
 
@@ -3628,21 +3628,6 @@ msgstr "%s: mengabaikan keluaran link internal kedua `%s'. %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 
-#~ msgid "recursion is always allowed"
-#~ msgstr "recursion is always allowed"
-
-#~ msgid "arguments are quoted by default"
-#~ msgstr "@quote-arg sudah ditinggalkan; argumen telah diquote secara baku"
-
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Set variabel: %s\n"
-
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "%s Set variabel: %s\n"
-
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "Set variabel: %s\n"
-
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: opsi '--%s' tidak mengijinkan sebuah argumen\n"
 
@@ -3964,11 +3949,26 @@ msgstr "%s: tidak dapat membuka %s --css-file: %s\n"
 #~ msgid " Subfile: %s"
 #~ msgstr " Subfile: %s"
 
+#~ msgid "recursion is always allowed"
+#~ msgstr "recursion is always allowed"
+
+#~ msgid "arguments are quoted by default"
+#~ msgstr "@quote-arg sudah ditinggalkan; argumen telah diquote secara baku"
+
+#~ msgid "Obsolete variable %s\n"
+#~ msgstr "Set variabel: %s\n"
+
 #~ msgid "@%s should only appear at beginning or end of document"
 #~ msgstr "@%s should only appear at beginning or end of document"
 
 #~ msgid "@%s should not be associated with @top"
 #~ msgstr "@%s should not be associated with @top"
+
+#~ msgid "%s: obsolete variable %s\n"
+#~ msgstr "%s Set variabel: %s\n"
+
+#~ msgid "obsolete variable %s\n"
+#~ msgstr "Set variabel: %s\n"
 
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "Penggunaan: [OPSI]... BERKAS-TEXINFO...\n"

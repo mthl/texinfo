@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2005-05-03 12:00+05\n"
 "Last-Translator: Laurentiu Buzdugan <lbuz@rolix.org>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -131,7 +131,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "} fãrã pereche"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Nici un ºir cãutat anterior"
@@ -2719,9 +2719,9 @@ msgstr ""
 "@ifinfo?"
 
 #: tp/Texinfo/Parser.pm:4687
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in an index entry"
-msgstr "ªterge (kill) pânã la începutul liniei"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4716
 #, perl-format
@@ -3517,18 +3517,6 @@ msgstr ""
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: nu am putut deschide --css-file: %s"
-
-#, fuzzy
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Seteazã variabilã: "
-
-#, fuzzy
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "Seteazã variabilã: "
-
-#, fuzzy
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "Seteazã variabilã: "
 
 #~ msgid "Insert this character"
 #~ msgstr "Insereazã acest caracter"

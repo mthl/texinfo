@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.1.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2017-01-22 20:47+0100\n"
 "Last-Translator: Johnny A. Solbu <johnny@solbu.net>\n"
 "Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
@@ -128,7 +128,7 @@ msgstr "Regulært uttrykk for stort"
 msgid "Unmatched ) or \\)"
 msgstr "Ubalansert ) eller \\)"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Intet foregående regulært uttrykk"
 
@@ -3592,21 +3592,6 @@ msgstr "%s: feil ved lukking av intern lenkefil %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kunne ikke åpne %s for skriving: %s\n"
 
-#~ msgid "recursion is always allowed"
-#~ msgstr "rekursjon er alltid tillatt"
-
-#~ msgid "arguments are quoted by default"
-#~ msgstr "argumenter siteres som standard"
-
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Foreldet variabel %s\n"
-
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "%s: foreldet variabel %s\n"
-
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "foreldet variabel %s\n"
-
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: valget «--%s» tillater ikke et argument\n"
 
@@ -3640,6 +3625,21 @@ msgstr "%s: kunne ikke åpne %s for skriving: %s\n"
 
 #~ msgid "readline: Out of virtual memory!\n"
 #~ msgstr "readline: Tomt for virtuelt minne!\n"
+
+#~ msgid "recursion is always allowed"
+#~ msgstr "rekursjon er alltid tillatt"
+
+#~ msgid "arguments are quoted by default"
+#~ msgstr "argumenter siteres som standard"
+
+#~ msgid "Obsolete variable %s\n"
+#~ msgstr "Foreldet variabel %s\n"
+
+#~ msgid "%s: obsolete variable %s\n"
+#~ msgstr "%s: foreldet variabel %s\n"
+
+#~ msgid "obsolete variable %s\n"
+#~ msgstr "foreldet variabel %s\n"
 
 #, fuzzy
 #~ msgid "No file given for node '%s'."

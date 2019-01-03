@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.13\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2012-08-10 18:31+0100\n"
 "Last-Translator: Klemen Košir <klemen.kosir@gmx.com>\n"
 "Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
@@ -136,7 +136,7 @@ msgstr "Uporaba logičnih izrazov za iskanja"
 msgid "Unmatched ) or \\)"
 msgstr "Neujemajoč }"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "Brez niza predhodnega iskanja"
@@ -2770,9 +2770,9 @@ msgstr ""
 "Morda bi vaše vozlišče @top moralo biti ovito v @ifnottex namesto @ifinfo?"
 
 #: tp/Texinfo/Parser.pm:4687
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in an index entry"
-msgstr "Uniči do začetka vrstice"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4716
 #, perl-format
@@ -3578,22 +3578,6 @@ msgstr "%s: prezrtje drugega notranjega izhoda povezav `%s'.\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: ni mogoče odpreti --css-file: %s"
 
-#, fuzzy
-#~ msgid "arguments are quoted by default"
-#~ msgstr "@quote-arg je zastarel; argumenti so privzeto navedeni"
-
-#, fuzzy
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Nastavi spremenljivko: "
-
-#, fuzzy
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "Nastavi spremenljivko: "
-
-#, fuzzy
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "Nastavi spremenljivko: "
-
 #~ msgid "%s: illegal option -- %c\n"
 #~ msgstr "%s: nedovoljena možnost -- %c\n"
 
@@ -4076,6 +4060,9 @@ msgstr "%s: ni mogoče odpreti --css-file: %s"
 
 #~ msgid "@allow-recursion is deprecated; please use @rmacro instead"
 #~ msgstr "@allow-recursion je zastarela; namesto tega uporabite @rmacro"
+
+#~ msgid "@quote-arg is deprecated; arguments are quoted by default"
+#~ msgstr "@quote-arg je zastarel; argumenti so privzeto navedeni"
 
 #~ msgid "mismatched @end %s with @%s"
 #~ msgstr "neujemajoč @end %s z @%s"

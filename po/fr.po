@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2017-06-19 19:03+0200\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -134,7 +134,7 @@ msgstr "Expression rationnelle trop longue"
 msgid "Unmatched ) or \\)"
 msgstr ") ou \\) sans correspondance"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Aucune expression rationnelle antérieure"
 
@@ -3672,11 +3672,11 @@ msgstr "%s : impossible d'ouvrir %s en écriture : %s\n"
 #~ msgid "Obsolete variable %s\n"
 #~ msgstr "Variable %s obsolète\n"
 
+#~ msgid "@%s should not be associated with @top"
+#~ msgstr "@%s ne devrait pas être associé à @top"
+
 #~ msgid "%s: obsolete variable %s\n"
 #~ msgstr "%s : variable %s obsolète\n"
 
 #~ msgid "obsolete variable %s\n"
 #~ msgstr "variable %s obsolète\n"
-
-#~ msgid "@%s should not be associated with @top"
-#~ msgstr "@%s ne devrait pas être associé à @top"

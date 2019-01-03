@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2014-11-07 08:03+0000\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -132,7 +132,7 @@ msgstr "正規表現が大きすぎます"
 msgid "Unmatched ) or \\)"
 msgstr ") または \\) が不一致です"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "以前に正規表現がありません"
 
@@ -2798,7 +2798,7 @@ msgstr "多分 @top ノードは @ifinfo よりは @ifnottex に覆われるべ�
 #: tp/Texinfo/Parser.pm:4687
 #, fuzzy, perl-format
 msgid "@%s should only appear in an index entry"
-msgstr "行頭までを切り取る"
+msgstr "%s: --css-file %s を開くことができません"
 
 #: tp/Texinfo/Parser.pm:4716
 #, perl-format
@@ -3633,22 +3633,6 @@ msgstr "出力ファイル `%s' を閉じる際にエラーが発生しました
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: --css-file %s を開くことができません"
 
-#, fuzzy
-#~ msgid "arguments are quoted by default"
-#~ msgstr "@quote-arg は廃止されました。引数はデフォルトで引用符でくくられます"
-
-#, fuzzy
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "変数を設定: "
-
-#, fuzzy
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "変数を設定: "
-
-#, fuzzy
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "変数を設定: "
-
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: オプション '--%s' は引数を取ることができません\n"
 
@@ -3972,6 +3956,22 @@ msgstr "%s: --css-file %s を開くことができません"
 
 #~ msgid " Subfile: %s"
 #~ msgstr " 副ファイル: %s"
+
+#, fuzzy
+#~ msgid "arguments are quoted by default"
+#~ msgstr "@quote-arg は廃止されました。引数はデフォルトで引用符でくくられます"
+
+#, fuzzy
+#~ msgid "Obsolete variable %s\n"
+#~ msgstr "変数を設定: "
+
+#, fuzzy
+#~ msgid "%s: obsolete variable %s\n"
+#~ msgstr "変数を設定: "
+
+#, fuzzy
+#~ msgid "obsolete variable %s\n"
+#~ msgstr "変数を設定: "
 
 #~ msgid "Usage: makeinfo [OPTION]... TEXINFO-FILE...\n"
 #~ msgstr "使用法: makeinfo [OPTION]... TEXINFO-FILE...\n"

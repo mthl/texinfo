@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.9.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2015-03-02 13:41+0100\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -155,7 +155,7 @@ msgstr "Regulärer Ausdruck zu groß"
 msgid "Unmatched ) or \\)"
 msgstr "Nicht übereinstimmende ) oder \\)"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Keine vorheriger regulärer Ausdruck"
 
@@ -3715,21 +3715,6 @@ msgstr "%s: Fehler beim Schließen der internen Verknüpfungsdatei %s: %s\n"
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
-#~ msgid "recursion is always allowed"
-#~ msgstr "Rekursion ist immer erlaubt"
-
-#~ msgid "arguments are quoted by default"
-#~ msgstr "Argumente werden standardmäßig in Anführungszeichen eingeschlossen"
-
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Veraltete Variable %s\n"
-
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "%s: veraltete Variable %s\n"
-
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "veraltete Variable %s\n"
-
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: Option „--%s“ erlaubt kein Argument\n"
 
@@ -3795,6 +3780,15 @@ msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 #~ msgid " Subfile: %s"
 #~ msgstr " Unterdatei: %s"
 
+#~ msgid "recursion is always allowed"
+#~ msgstr "Rekursion ist immer erlaubt"
+
+#~ msgid "arguments are quoted by default"
+#~ msgstr "Argumente werden standardmäßig in Anführungszeichen eingeschlossen"
+
+#~ msgid "Obsolete variable %s\n"
+#~ msgstr "Veraltete Variable %s\n"
+
 #~ msgid "@%s should only appear at beginning or end of document"
 #~ msgstr "@%s sollte nur am Anfang oder Ende eines Dokuments erscheinen"
 
@@ -3803,3 +3797,9 @@ msgstr "%s: %s konnte nicht zum Schreiben geöffnet werden: %s\n"
 
 #~ msgid "argument for @U exceeds size of integer: %s"
 #~ msgstr "das Argument für @U übersteigt die Grenze einer Ganzzahl: %s"
+
+#~ msgid "%s: obsolete variable %s\n"
+#~ msgstr "%s: veraltete Variable %s\n"
+
+#~ msgid "obsolete variable %s\n"
+#~ msgstr "veraltete Variable %s\n"

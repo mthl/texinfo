@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.2\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
 "PO-Revision-Date: 2002-04-03 12:31+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -130,7 +130,7 @@ msgstr ""
 msgid "Unmatched ) or \\)"
 msgstr "גוז-ןב ול ןיאש }"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 #, fuzzy
 msgid "No previous regular expression"
 msgstr "ןורחא שופיחמ תזורחמ ןיא"
@@ -2691,9 +2691,9 @@ msgid ""
 msgstr "?@ifinfo םוקמב @ifnottex-ב תפקומ תויהל התיה הכירצ @top תקסיפ יכ ןכתייה"
 
 #: tp/Texinfo/Parser.pm:4687
-#, fuzzy, perl-format
+#, perl-format
 msgid "@%s should only appear in an index entry"
-msgstr "הרוש תליחת דע קחמ"
+msgstr ""
 
 #: tp/Texinfo/Parser.pm:4716
 #, perl-format
@@ -3460,18 +3460,6 @@ msgstr ""
 #, fuzzy, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s ץבוק לש (%s) האירקב ןהו (%s) הריציב ןה הלקת\n"
-
-#, fuzzy
-#~ msgid "Obsolete variable %s\n"
-#~ msgstr "Set variable: "
-
-#, fuzzy
-#~ msgid "%s: obsolete variable %s\n"
-#~ msgstr "Set variable: "
-
-#, fuzzy
-#~ msgid "obsolete variable %s\n"
-#~ msgstr "Set variable: "
 
 #~ msgid "Insert this character"
 #~ msgstr "הז ות ףסוה"

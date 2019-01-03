@@ -7,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.3.90\n"
+"Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-01-03 13:38+0000\n"
-"PO-Revision-Date: 2017-04-24 06:41+0700\n"
+"POT-Creation-Date: 2019-01-03 20:10+0000\n"
+"PO-Revision-Date: 2017-07-11 14:12+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
 "Language: vi\n"
@@ -129,7 +129,7 @@ msgstr "Biểu thức chính quy quá lớn"
 msgid "Unmatched ) or \\)"
 msgstr "Có một ký tự “)” hay “\\)” lẻ đôi"
 
-#: gnulib/lib/regcomp.c:687
+#: gnulib/lib/regcomp.c:676
 msgid "No previous regular expression"
 msgstr "Không có biểu thức chính quy đi trước"
 
@@ -291,9 +291,9 @@ msgid "Look up a string in the index for this file"
 msgstr "Tra tìm chuỗi trong chỉ mục cho tập tin này"
 
 #: info/indices.c:213
-#, fuzzy, c-format
+#, c-format
 msgid "No indices found"
-msgstr "Không tìm thấy chỉ mục."
+msgstr "Không tìm thấy chỉ mục"
 
 #: info/indices.c:217
 msgid "Index entry: "
@@ -317,19 +317,19 @@ msgstr ""
 "cuối cùng"
 
 #: info/indices.c:457
-#, fuzzy, c-format
+#, c-format
 msgid "No previous index search string"
-msgstr "Không có chuỗi tìm kiếm chỉ mục trước"
+msgstr "Không có chuỗi tìm kiếm chỉ mục kế trước"
 
 #: info/indices.c:475
-#, fuzzy, c-format
+#, c-format
 msgid "No more index entries containing '%s'"
-msgstr "Không có thêm mục nào trong mục lục có chứa “%s”."
+msgstr "Không có thêm mục nào trong mục lục có chứa “%s”"
 
 #: info/indices.c:476
-#, fuzzy, c-format
+#, c-format
 msgid "No index entries containing '%s'"
-msgstr "Không có mục nào trong mục lục có chứa “%s”."
+msgstr "Không có mục nào trong mục lục có chứa “%s”"
 
 # Type: text
 # Description
@@ -380,29 +380,29 @@ msgid "No index entries containing '%s'."
 msgstr "Không có mục nào trong mục lục có chứa “%s”."
 
 #: info/indices.h:40
-#, fuzzy, c-format
+#, c-format
 msgid "No available info files have '%s' in their indices"
-msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ mục ."
+msgstr "Không có tập tin thông tin sẵn sàng chứa “%s” trong chỉ mục"
 
 #: info/info-utils.c:878
-#, fuzzy, c-format
+#, c-format
 msgid "Error converting file character encoding"
-msgstr "Gặp lỗi khi chuyển đổi bộ mã ký tự tập tin."
+msgstr "Gặp lỗi khi chuyển đổi bộ mã ký tự tập tin"
 
 #: info/info.c:277 info/session.c:2820
-#, fuzzy, c-format
+#, c-format
 msgid "No menu item '%s' in node '%s'"
-msgstr "Không có mục trình đơn “%s” trong nút “%s”."
+msgstr "Không có mục trình đơn “%s” trong nút “%s”"
 
 #: info/info.c:415 info/info.c:1181
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find node '%s'"
-msgstr "Không thể tìm thấy nút thông tin “%s”."
+msgstr "Không thể tìm thấy nút thông tin “%s”"
 
 #: info/info.c:437
-#, fuzzy, c-format
+#, c-format
 msgid "No program name given"
-msgstr "Chưa đưa ra tên chương trình."
+msgstr "Chưa đưa ra tên chương trình"
 
 #: info/info.c:635
 #, c-format
@@ -461,7 +461,6 @@ msgstr ""
 "Đọc tài liệu hướng dẫn theo định dạng Info.\n"
 
 #: info/info.c:1095
-#, fuzzy
 msgid ""
 "Frequently-used options:\n"
 "  -a, --all                    use all matching manuals\n"
@@ -469,53 +468,46 @@ msgid ""
 "  -d, --directory=DIR          add DIR to INFOPATH\n"
 "  -f, --file=MANUAL            specify Info manual to visit"
 msgstr ""
-"Tùy chọn:\n"
+"Những tùy chọn hay dùng:\n"
+"  -a, --all                    dùng mọi hướng dẫn khớp mẫu\n"
 "  -k, --apropos=CHUỖI          tra cứu chuỗi này trong mọi chỉ mục của mọi "
-"sổ tay.\n"
-"  -d, --directory=THƯ_MỤC      thêm thư mục này vào đường dẫn INFOPATH.\n"
-"      --dribble=TẬP_TIN        lưu các cú bấm phím vào TẬP-TIN này.\n"
+"sổ tay\n"
+"  -d, --directory=THƯ_MỤC      thêm THƯ MỤC này vào đường dẫn INFOPATH.\n"
 "  -f, --file=TẬP_TIN           chỉ định phần hướng dẫn Info muốn xem."
 
 #: info/info.c:1102
-#, fuzzy
 msgid ""
 "  -h, --help                   display this help and exit\n"
 "      --index-search=STRING    go to node pointed by index entry STRING\n"
 "  -n, --node=NODENAME          specify nodes in first visited Info file\n"
 "  -o, --output=FILE            output selected nodes to FILE"
 msgstr ""
-"  -h, --help                   hiển thị trợ giúp này rồi thoát.\n"
-"      --index-search=CHUỖI     đi tới nút được chỉ bởi chuỗi chỉ mục này.\n"
+"  -h, --help                   hiển thị trợ giúp này rồi thoát\n"
+"      --index-search=CHUỖI     đi tới nút được chỉ bởi chuỗi chỉ mục này\n"
 "  -n, --node=TÊN_NÚT           chỉ định rõ nút trong tập tin Info được thăm "
-"đầu tiên.\n"
-"  -o, --output=TẬP_TIN         xuất các nút đã chọn vào tập tin này."
+"đầu tiên\n"
+"  -o, --output=TẬP_TIN         xuất các nút đã chọn vào tập tin này"
 
 #: info/info.c:1108
 msgid "  -O, --show-options, --usage  go to command-line options node"
-msgstr ""
+msgstr "  -O, --show-options, --usage  đi đến nút tùy chọn dòng-lệnh"
 
 #: info/info.c:1112
-#, fuzzy
 msgid "  -b, --speech-friendly        be friendly to speech synthesizers"
 msgstr ""
-"  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói."
+"  -b, --speech-friendly        thân thiện với thiết bị tổng hợp tiếng nói"
 
 #: info/info.c:1116
-#, fuzzy
 msgid ""
 "      --subnodes               recursively output menu items\n"
 "  -v, --variable VAR=VALUE     assign VALUE to Info variable VAR\n"
 "      --version                display version information and exit\n"
 "  -w, --where, --location      print physical location of Info file"
 msgstr ""
-"      --strict-node-location   (dành để gỡ lỗi) dùng như là các con trỏ tập "
-"tin Info.\n"
 "      --subnodes               kết xuất đệ quy các mục trình đơn.\n"
-"  -v, --variable BIẾN=GIÁ-TRỊ  gán GIÁ-TRỊ vào BIẾN Info.\n"
-"      --vi-keys                dùng các tổ hợp phím kiểu Vi và Less.\n"
+"  -v, --variable BIẾN=GIÁ-TRỊ  gán GIÁ-TRỊ vào BIẾN Info\n"
 "      --version                hiển thị thông tin phiên bản rồi thoát\n"
-"  -w, --where, --location      in vị trí vật lý của tập tin Info.\n"
-"  -x, --debug=SỐ               đặt mức gỡ lỗi (-1 là tất cả).\n"
+"  -w, --where, --location      in vị trí vật lý của tập tin Info"
 
 #: info/info.c:1122
 msgid ""
@@ -543,7 +535,6 @@ msgstr ""
 "Để xem bản tóm tắt các tổ hợp phím, hãy gõ “H” bên trong Info."
 
 #: info/info.c:1132
-#, fuzzy
 msgid ""
 "\n"
 "Examples:\n"
@@ -561,18 +552,19 @@ msgid ""
 msgstr ""
 "\n"
 "Ví dụ:\n"
-"  info                       hiển thị trình đơn thư mục cấp cao nhất (đỉnh)\n"
-"  info info                  hiển thị sổ tay chung cho trình đọc Info\n"
-"  info info-stnd             hiển thị sổ tay đặc tả cho trình Info này\n"
-"  info emacs                 bắt đầu ở nút emacs từ thư mục cấp cao nhất\n"
-"  info emacs buffers         bắt đầu ở nút bộ đệm bên trong sổ tay emacs\n"
-"  info emacs -n Files        bắt đầu tại nút Files nằm bên trong sổ tay "
+"  info                         hiển thị trình đơn thư mục cấp cao nhất "
+"(đỉnh)\n"
+"  info info-stnd               hiển thị sổ tay đặc tả cho trình Info này\n"
+"  info emacs                   bắt đầu ở nút emacs từ thư mục cấp cao nhất\n"
+"  info emacs buffers           bắt đầu ở nút bộ đệm bên trong sổ tay emacs\n"
+"  info emacs -n Files          bắt đầu tại nút Files nằm bên trong sổ tay "
 "hướng dẫn emacs\n"
-"  info “(emacs)Files”        cách thay thế để bắt đầu tại nút Files\n"
-"  info --show-options emacs  bắt đầu ở nút chứa các tùy chọn dòng lệnh của "
+"  info “(emacs)Files”          cách thay thế để bắt đầu tại nút Files\n"
+"  info --show-options emacs    bắt đầu ở nút chứa các tùy chọn dòng lệnh của "
 "emacs\n"
-"  info --subnodes -o out.txt emacs đổ toàn bộ sổ tay vào tập tin “out.txt”\n"
-"  info -f ./foo.info         hiển thị tập tin “./foo.info”, không tìm kiếm "
+"  info --subnodes -o out.txt emacs\n"
+"                               đổ toàn bộ sổ tay vào tập tin “out.txt”\n"
+"  info -f ./foo.info           hiển thị tập tin “./foo.info”, không tìm kiếm "
 "thư mục"
 
 #: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:807
@@ -587,9 +579,9 @@ msgstr ""
 "Trang chủ texinfo: http://www.gnu.org/software/texinfo/"
 
 #: info/info.c:1182
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find node '(%s)%s'"
-msgstr "Không thể tìm thấy nút thông tin “(%s)%s”."
+msgstr "Không thể tìm thấy nút thông tin “(%s)%s”"
 
 #: info/info.c:1183
 msgid "Cannot find a window!"
@@ -600,64 +592,55 @@ msgid "Point doesn't appear within this window's node!"
 msgstr "Điểm không xuất hiện bên trong cái nút thông tin của cửa sổ này."
 
 #: info/info.c:1185
-#, fuzzy
 msgid "Cannot delete the last window"
-msgstr "Không thể xóa cửa sổ cuối cùng."
+msgstr "Không thể xóa cửa sổ cuối cùng"
 
 #: info/info.c:1186
-#, fuzzy
 msgid "No menu in this node"
-msgstr "Không có trình đơn trong nút thông tin này."
+msgstr "Không có trình đơn trong nút thông tin này"
 
 #: info/info.c:1187
-#, fuzzy
 msgid "No footnotes in this node"
-msgstr "Không có cước chú trong nút thông tin này."
+msgstr "Không có cước chú trong nút thông tin này"
 
 #: info/info.c:1188
-#, fuzzy
 msgid "No cross references in this node"
-msgstr "Không có tham chiếu chéo trong nút thông tin này."
+msgstr "Không có tham chiếu chéo trong nút thông tin này"
 
 #: info/info.c:1189
-#, fuzzy, c-format
+#, c-format
 msgid "No '%s' pointer for this node"
-msgstr "Không có con trỏ “%s” cho nút này."
+msgstr "Không có con trỏ “%s” cho nút này"
 
 #: info/info.c:1190
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown Info command '%c'; try '?' for help"
-msgstr "Không nhận ra lệnh Info “%c”; hãy thử lệnh “?” để xem trợ giúp."
+msgstr "Không nhận ra lệnh Info “%c”; hãy thử lệnh “?” để xem trợ giúp"
 
 #: info/info.c:1191
-#, fuzzy, c-format
+#, c-format
 msgid "Terminal type '%s' is not smart enough to run Info"
-msgstr "Thiết bị cuối kiểu “%s” không đủ khéo để chạy Info."
+msgstr "Thiết bị cuối kiểu “%s” không đủ khéo để chạy Info"
 
 #: info/info.c:1192
-#, fuzzy
 msgid "You are already at the last page of this node"
-msgstr "Bạn ở trang cuối cùng của nút thông tin này."
+msgstr "Bạn ở trang cuối cùng của nút thông tin này"
 
 #: info/info.c:1193
-#, fuzzy
 msgid "You are already at the first page of this node"
-msgstr "Bạn ở trang đầu tiên của nút thông tin này."
+msgstr "Bạn ở trang đầu tiên của nút thông tin này"
 
 #: info/info.c:1194
-#, fuzzy
 msgid "Only one window"
-msgstr "Chỉ một cửa sổ."
+msgstr "Chỉ một cửa sổ"
 
 #: info/info.c:1195
-#, fuzzy
 msgid "Resulting window would be too small"
-msgstr "Cửa sổ kết quả quá nhỏ."
+msgstr "Cửa sổ kết quả quá nhỏ"
 
 #: info/info.c:1196
-#, fuzzy
 msgid "Not enough room for a help window, please delete a window"
-msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ."
+msgstr "Không đủ chỗ cho cửa sổ trợ giúp: hãy xóa một cửa sổ"
 
 #: info/infodoc.c:38
 msgid "Basic Info command keys\n"
@@ -854,9 +837,9 @@ msgid "Describe key: %s"
 msgstr "Diễn tả khóa: %s"
 
 #: info/infodoc.c:471 info/infodoc.c:507
-#, fuzzy, c-format
+#, c-format
 msgid "%s is undefined"
-msgstr "Chưa định nghĩa %s."
+msgstr "Chưa định nghĩa %s"
 
 #: info/infodoc.c:795
 msgid "Show what to type to execute a given command"
@@ -872,14 +855,14 @@ msgid "'%s' is not on any keys"
 msgstr "“%s” không phải trên khóa nào"
 
 #: info/infodoc.c:827
-#, fuzzy, c-format
+#, c-format
 msgid "%s can only be invoked via %s"
-msgstr "chỉ có thể gọi %s thông qua %s."
+msgstr "chỉ có thể gọi %s thông qua %s"
 
 #: info/infodoc.c:831
-#, fuzzy, c-format
+#, c-format
 msgid "%s can be invoked via %s"
-msgstr "%s có thể được gọi bằng %s."
+msgstr "%s có thể được gọi bằng %s"
 
 #: info/infodoc.c:836
 #, c-format
@@ -974,9 +957,9 @@ msgid "Read a command name in the echo area and execute it"
 msgstr "Đọc tên lệnh trong vùng phản hồi và thực hiện nó"
 
 #: info/m-x.c:134
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot execute an 'echo-area' command here"
-msgstr "Không thể thực hiện lệnh “echo-area” ở đây."
+msgstr "Không thể thực hiện lệnh “echo-area” ở đây"
 
 #: info/m-x.c:148
 msgid "Set the height of the displayed window"
@@ -1215,10 +1198,10 @@ msgid "Select this menu item"
 msgstr "Chọn mục trình đơn này"
 
 #: info/session.c:2251
-#, fuzzy, c-format
+#, c-format
 msgid "There isn't %d item in this menu"
 msgid_plural "There aren't %d items in this menu"
-msgstr[0] "Không có %d mục nào trong trình đơn này."
+msgstr[0] "Không có %d mục nào trong trình đơn này"
 
 #: info/session.c:2260
 msgid "Select the last item in this node's menu"
@@ -1243,9 +1226,9 @@ msgid "Follow xref: "
 msgstr "Theo tham chiếu chéo: "
 
 #: info/session.c:2458
-#, fuzzy, c-format
+#, c-format
 msgid "The reference disappeared! (%s)"
-msgstr "Tham chiếu đã biến mất! (%s)."
+msgstr "Tham chiếu đã biến mất! (%s)"
 
 #: info/session.c:2470
 msgid "Read a menu item and select its node"
@@ -1276,14 +1259,14 @@ msgid "Select reference or menu item appearing on this line"
 msgstr "Chọn tham chiếu hay mục trình đơn xuất hiện trên dòng này"
 
 #: info/session.c:2798
-#, fuzzy, c-format
+#, c-format
 msgid "No menu in node '%s'"
-msgstr "Không có trình đơn trong nút “%s”."
+msgstr "Không có trình đơn trong nút “%s”"
 
 #: info/session.c:2845
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to find node referenced by '%s' in '%s'"
-msgstr "Không tìm thấy nút được tham chiếu bởi “%s” trong “%s”."
+msgstr "Không tìm thấy nút được tham chiếu bởi “%s” trong “%s”"
 
 #: info/session.c:2901
 msgid "Read a list of menus starting from dir and follow them"
@@ -1318,14 +1301,12 @@ msgid "Select the first node in this file"
 msgstr "Chọn nút đầu trong tập tin này"
 
 #: info/session.c:3195
-#, fuzzy
 msgid "No more nodes within this document"
-msgstr "Không có nút nữa trong tài liệu này."
+msgstr "Không có nút nữa trong tài liệu này"
 
 #: info/session.c:3239 info/session.c:3278
-#, fuzzy
 msgid "No 'Prev' or 'Up' for this node within this document"
-msgstr "Không có “Lùi” hay “Lên” cho nút này trong tài liệu này."
+msgstr "Không có “Lùi” hay “Lên” cho nút này trong tài liệu này"
 
 #: info/session.c:3291
 msgid "Move forwards or down through node structure"
@@ -1390,14 +1371,14 @@ msgid "Find file: "
 msgstr "Tìm tập tin: "
 
 #: info/session.c:3699
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot find '%s'"
-msgstr "Không tìm thấy “%s”."
+msgstr "Không tìm thấy “%s”"
 
 #: info/session.c:3747
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create output file '%s'"
-msgstr "Không thể tạo tập tin xuất “%s”."
+msgstr "Không thể tạo tập tin xuất “%s”"
 
 #: info/session.c:3761
 #, c-format
@@ -1421,9 +1402,9 @@ msgstr ""
 "lệnh)"
 
 #: info/session.c:3893
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot open pipe to '%s'"
-msgstr "Không thể mở ống dẫn đến “%s”."
+msgstr "Không thể mở ống dẫn đến “%s”"
 
 #: info/session.c:3898
 #, c-format
@@ -1440,24 +1421,22 @@ msgid "Toggle the usage of regular expressions in searches"
 msgstr "Bật/tắt khả năng sử dụng biểu thức chính quy khi tìm kiếm"
 
 #: info/session.c:3942
-#, fuzzy, c-format
+#, c-format
 msgid "Using regular expressions for searches"
-msgstr "Dùng biểu thức chính quy khi tìm kiếm."
+msgstr "Dùng biểu thức chính quy khi tìm kiếm"
 
 #: info/session.c:3943
-#, fuzzy, c-format
+#, c-format
 msgid "Using literal strings for searches"
-msgstr "Dùng chuỗi nghĩa chữ khi tìm kiếm."
+msgstr "Dùng chuỗi nghĩa chữ khi tìm kiếm"
 
 #: info/session.c:4145
-#, fuzzy
 msgid "Search continued from the end of the document"
-msgstr "Tiến trình tìm kiếm đã tiếp tục từ cuối của tài liệu."
+msgstr "Tiến trình tìm kiếm đã tiếp tục từ cuối của tài liệu"
 
 #: info/session.c:4150
-#, fuzzy
 msgid "Search continued from the beginning of the document"
-msgstr "Tiến trình tìm kiếm đã tiếp tục từ đầu của tài liệu."
+msgstr "Tiến trình tìm kiếm đã tiếp tục từ đầu của tài liệu"
 
 #: info/session.c:4167
 #, c-format
@@ -1465,9 +1444,9 @@ msgid "Searching subfile %s ..."
 msgstr "Đang tìm kiếm tập tin phụ %s…"
 
 #: info/session.c:4203 info/session.c:4466 info/session.c:4579
-#, fuzzy, c-format
+#, c-format
 msgid "Search failed"
-msgstr "Gặp lỗi khi tìm kiếm."
+msgstr "Gặp lỗi khi tìm kiếm"
 
 #: info/session.c:4220
 #, c-format
@@ -1505,20 +1484,19 @@ msgid "Going back to last match from %s"
 msgstr "Trở lại đến chỗ khớp cuối từ %s"
 
 #: info/session.c:4466 info/session.c:4579
-#, fuzzy, c-format
+#, c-format
 msgid "No more matches"
-msgstr "Không tìm thấy thêm nữa."
+msgstr "Không tìm thấy thêm nữa"
 
 #: info/session.c:4606
-#, fuzzy
 msgid "Search this node and subnodes for a string"
-msgstr "Tìm một chuỗi trong nút này và nút con."
+msgstr "Tìm một chuỗi trong nút này và nút con"
 
 #. TRANSLATORS: %s is the title of a node.
 #: info/session.c:4613
-#, fuzzy, c-format
+#, c-format
 msgid "Search under %s: "
-msgstr "Đang tìm kiếm tập tin phụ %s…"
+msgstr "Tìm kiếm dưới %s:"
 
 #: info/session.c:4628
 msgid "Go to next match in Info sub-tree"
@@ -1615,9 +1593,9 @@ msgid "Run command bound to this key's lowercase variant"
 msgstr "Chạy lệnh đã đóng kết đến biến thế chữ thường của phím này"
 
 #: info/session.c:5386
-#, fuzzy, c-format
+#, c-format
 msgid "Unknown command (%s)"
-msgstr "Lệnh lạ (%s)."
+msgstr "Lệnh lạ (%s)"
 
 #: info/session.c:5389
 #, c-format
@@ -3696,6 +3674,9 @@ msgstr "%s: không thể mở “%s” để ghi: %s\n"
 #~ msgid "Obsolete variable %s\n"
 #~ msgstr "Biến %s đã lạc hậu\n"
 
+#~ msgid "@%s should not be associated with @top"
+#~ msgstr "@%s không được tổ hợp cùng với @top"
+
 #~ msgid "%s: obsolete variable %s\n"
 #~ msgstr "%s: biến %s đã lạc hậu\n"
 
@@ -3714,9 +3695,6 @@ msgstr "%s: không thể mở “%s” để ghi: %s\n"
 #~ "      --restore=TẬP_TIN        đọc các cú bấm phím đầu tiên từ TẬP_TIN "
 #~ "này.\n"
 #~ "  -O, --show-options, --usage  đi tới nút chứa các tùy chọn dòng lệnh."
-
-#~ msgid "@%s should not be associated with @top"
-#~ msgstr "@%s không được tổ hợp cùng với @top"
 
 #~ msgid "%s: option '--%s' doesn't allow an argument\n"
 #~ msgstr "%s: tùy chọn “--%s” không cho phép đối số\n"
