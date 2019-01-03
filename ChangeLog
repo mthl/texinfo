@@ -1,5 +1,23 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Ignore .git directories in dist-hook.
+
+	* Makefile.am (dist-hook),
+	* tp/Makefile.am (dist-hook),
+	* tp/tests/Makefile.am (dist-hook),
+	* tp/tests/contents/Makefile.am (dist-hook),
+	* tp/tests/coverage/Makefile.am (dist-hook),
+	* tp/tests/formatting/Makefile.am (dist-hook),
+	* tp/tests/indices/Makefile.am (dist-hook),
+	* tp/tests/layout/Makefile.am (dist-hook),
+	* tp/tests/many_input_files/Makefile.am (dist-hook),
+	* tp/tests/nested_formats/Makefile.am (dist-hook),
+	* tp/tests/sectioning/Makefile.am (dist-hook),
+	* tp/tests/tex_html/Makefile.am (dist-hook): Remove .git directories
+	instead of removing .svn directories.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove obsolete comment.
 
 	* util/texi2dvi: Remove comment about use of file descriptors

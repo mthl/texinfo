@@ -72,4 +72,4 @@ DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \
  equivalent_nodes-noderename.cnf
 
 dist-hook:
-	rm -rf `find $(distdir)/reference -name .svn`
+	rm -rf `find $(distdir)/reference -name .git`

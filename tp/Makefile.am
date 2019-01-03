@@ -334,7 +334,7 @@ install-exec-hook:
 	-makeinfo_f=`echo makeinfo | sed -e '$(transform)'`; texi2any_f=`echo texi2any| sed -e '$(transform)'`; $(LN_S) $$texi2any_f $(DESTDIR)$(bindir)/$$makeinfo_f
 
 dist-hook:
-	rm -rf `find $(distdir)/maintain/lib -name .svn`
+	rm -rf `find $(distdir)/maintain/lib -name .git`
 
 uninstall-local:
 	rm -rf $(DESTDIR)$(pkgdatadir)/lib/

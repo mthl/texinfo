@@ -22,10 +22,10 @@ EXTRA_DIST = ChangeLog.46 INSTALL.generic README-hacking \
   system.h gnulib/m4/gnulib-cache.m4 \
   contrib djgpp
 
-# include contrib perl manual, exclude .svn.
+# include contrib perl manual, exclude .git.
 dist-hook:
 	cd $(top_distdir)/contrib/perldoc-all && $(MAKE) distclean
-	rm -rf `find $(distdir) -type d -name .svn`
+	rm -rf `find $(distdir) -type d -name .git`
 
 # This is to prevent texinfo.tex from being included in the top-level
 # distribution directory.

@@ -61,5 +61,5 @@ distclean-local:
 
 dist-hook:
 	for dir in $(test_dirs) $(tex_html_dirs); do \
-		rm -rf `find "$(distdir)/$${dir}_res" -name .svn` ;\
+		rm -rf `find "$(distdir)/$${dir}_res" -name .git` ;\
 	done
