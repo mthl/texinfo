@@ -44,7 +44,7 @@ extern int debug_output;
 
 /* In separator.c */
 ELEMENT *handle_separator (ELEMENT *current, char separator,
-                           char **line_inout, int *status);
+                           char **line_inout);
 
 /* In parser.c */
 ELEMENT *parse_texi (ELEMENT *root_elt);

@@ -1468,8 +1468,6 @@ superfluous_arg:
     {
       ; /* Nothing - everything was done in handle_menu. */
     }
-
-  /* line 4161 */
   /* Any other @-command. */
   else if (cmd)
     {
@@ -1706,16 +1704,8 @@ value_invalid:
       if (separator == '@')
         line_error ("unexpected @");
       else
-        {
-          int status = STILL_MORE_TO_PROCESS;
-          current = handle_separator (current, separator, &line, &status);
-          if (status == GET_A_NEW_LINE)
-            {
-              retval = GET_A_NEW_LINE;
-              goto funexit;
-            }
-        }
-    } /* 5326 */
+        current = handle_separator (current, separator, &line);
+    }
   /* "Misc text except end of line." */
   else if (*line && *line != '\n')
     {

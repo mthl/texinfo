@@ -24,14 +24,12 @@
 #include "input.h"
 #include "labels.h"
 
-/* 4888 */
 ELEMENT *
 handle_open_brace (ELEMENT *current, char **line_inout)
 {
   char *line = *line_inout;
 
   abort_empty_line (&current, NULL);
-  /* 4890 */
   if (command_flags(current) & CF_brace)
     {
       enum command_id command;
@@ -569,7 +567,7 @@ funexit:
 
 /* Handle a comma separating arguments to a Texinfo command. */
 ELEMENT *
-handle_comma (ELEMENT *current, char **line_inout, int *status)
+handle_comma (ELEMENT *current, char **line_inout)
 {
   char *line = *line_inout;
   enum element_type type;
@@ -670,10 +668,7 @@ handle_comma (ELEMENT *current, char **line_inout, int *status)
                     default:
                       line = next_text ();
                       if (!line)
-                        {
-                          *status = GET_A_NEW_LINE; /* unbalanced brace */
-                          goto funexit;
-                        }
+                        goto funexit;
                       continue;
                     }
                   line++;
@@ -718,12 +713,10 @@ inlinefmtifelse_done:
                   break;
                 default:
                   free (alloc_line);
-                  alloc_line = line = next_text ();
-                  if (!line)
-                    {
-                      *status = GET_A_NEW_LINE; /* error - unbalanced brace */
-                      goto funexit;
-                    }
+                  alloc_line = next_text ();
+                  if (!alloc_line)
+                    goto funexit;
+                  line = alloc_line;
                   continue;
                 }
               line++;
@@ -750,8 +743,7 @@ funexit:
 
 /* Actions to be taken when a special character appears in the input. */
 ELEMENT *
-handle_separator (ELEMENT *current, char separator, char **line_inout,
-                  int *status)
+handle_separator (ELEMENT *current, char separator, char **line_inout)
 {
   char *line = *line_inout;
 
@@ -768,7 +760,7 @@ handle_separator (ELEMENT *current, char separator, char **line_inout,
   else if (separator == ','
            && counter_value (&count_remaining_args, current->parent) > 0)
     {
-      current = handle_comma (current, &line, status);
+      current = handle_comma (current, &line);
     }
   else if (separator == ',' && current->type == ET_line_arg
            && current->parent->cmd == CM_node)
@@ -804,7 +796,7 @@ handle_separator (ELEMENT *current, char separator, char **line_inout,
       e = new_element (ET_empty_line);
       add_to_element_contents (current, e);
     }
-  else // 5322
+  else
     {
       /* Default - merge the character as usual. */
       char t[2];
