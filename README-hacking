@@ -6,9 +6,9 @@ This file describes the development environment for Texinfo.
   are permitted in any medium without royalty provided the copyright
   notice and this notice are preserved.
 
-The development sources for GNU Texinfo are available through anonymous
-Subversion at Savannah:
-  http://savannah.gnu.org/svn/?group=texinfo
+The development sources for GNU Texinfo are available through git
+at Savannah:
+  https://savannah.gnu.org/git/?group=texinfo
 
 This distribution uses whatever versions of Automake, Autoconf, and
 Gettext are listed in NEWS; usually the latest official releases.  If
@@ -74,6 +74,8 @@ build-aux gnulib") and add them to the repository with "svn add";
 likewise for removals, likewise for adding new generated files
 (typically gnulib/lib/foo.h from foo.h.in) to the ignore list (e.g.,
   svn propedit svn:ignore gnulib/lib).
+Since we are using git now, when you do this, please update these 
+instructions to use git instead.
 
 
 Subdirectories in repository
@@ -146,6 +148,8 @@ check OpenCSW build reports at
   https://buildfarm.opencsw.org/buildbot/waterfall?category=texinfo
 try groff.texinfo from groff source repo.
 process doc/texinfo-tex-test.texi with TeX and check that output is good.
+
+change instructions below to use git instead of svn.
 
 - First checks:
 Ensure texinfo.tex, texi2dvi, and htmlxref.cnf are updated on ftp.gnu.org.
