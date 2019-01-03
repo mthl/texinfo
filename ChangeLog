@@ -1,5 +1,14 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove obsolete comment.
+
+	* util/texi2dvi: Remove comment about use of file descriptors
+	3 and 4.  (See info node '(autoconf)File Descriptors'.)  Remove 
+	comment about EGREP variable alluding to the fact that the 
+	'egrep' command is not in Posix.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove texi2html and C makeinfo.
 
 	* makeinfo, texi2html: Remove subdirectories.

@@ -78,7 +78,6 @@ newline='
 '
 IFS="$space$tab$newline"
 
-# In case someone pedantic insists on using grep -E.
 : ${EGREP=egrep}
 
 # Systems which define $COMSPEC or $ComSpec use semicolons to separate
@@ -1925,8 +1924,6 @@ fi
 # 0 standard input
 # 1 standard output (--verbose messages)
 # 2 standard error
-# 3 some systems may open it to /dev/tty
-# 4 used on the Kubota Titan
 # 5 tools output (turned off by --quiet)
 # 6 tracing/debugging (set -x output, etc.)
 
