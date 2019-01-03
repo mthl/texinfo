@@ -1,5 +1,12 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Update NEWS.
+
+	* NEWS: Mention change to use 'id' attribute.  Mention that 
+	texi2any can pass flags set with -D on to TeX.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove SVN keyword.
 
 	* util/texi2dvi (version): Do not use '$Revision$' keyword as 

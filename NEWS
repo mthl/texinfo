@@ -16,13 +16,16 @@ See the manual for detailed information.
 * texi2any
   . extension modules fixed to work with the "thread-safe locales" of
     Perl 5.28 and newer
+  . some code changed to stop warnings being given by newer versions of Perl
+  . for HTML output, use `id' to define link targets instead of the `name'
+    attribute on <a>
   . A native-code implementation of the Texinfo parser has been included
     on an experimental basis.  Set the `TEXINFO_XS_PARSER' environment 
     variable to 1 to use.
   . for HTML output, new customization variable `SECTION_NAME_IN_TITLE'
     to use the argument to @chapter, @section etc. as the document 
     <title>
-  . some code changed to stop warnings being given by newer versions of Perl
+  . pass on flags set with -D to TeX.
   . the newline after an @insertcopying is not output
   . warning given for @multitable prototypes not in braces
   . @indent and @noindent are not allowed inside the arguments to
