@@ -1,5 +1,13 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Update refcard.
+
+	* doc/refcard/txirefcard.tex: @setfilename is no longer 
+	mandatory.  Do not mention @validatemenus or explicitly giving 
+	@node pointers, as these are not very important features.  
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/sectioning/Makefile.am: Update file list.
 
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
