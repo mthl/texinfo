@@ -49,6 +49,8 @@ gnulib/lib/configmake.h
 gnulib/lib/errno.h
 gnulib/lib/fcntl.h
 gnulib/lib/getopt.h
+gnulib/lib/langinfo.h
+gnulib/lib/locale.h
 gnulib/lib/stdarg.h
 gnulib/lib/stdbool.h
 gnulib/lib/stdint.h
