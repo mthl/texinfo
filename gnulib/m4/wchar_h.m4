@@ -1,13 +1,13 @@
 dnl A placeholder for ISO C99 <wchar.h>, for platforms that have issues.
 
-dnl Copyright (C) 2007-2017 Free Software Foundation, Inc.
+dnl Copyright (C) 2007-2019 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
 
 dnl Written by Eric Blake.
 
-# wchar_h.m4 serial 42
+# wchar_h.m4 serial 43
 
 AC_DEFUN([gl_WCHAR_H],
 [
@@ -63,8 +63,8 @@ dnl Check whether <wchar.h> is usable at all.
 AC_DEFUN([gl_WCHAR_H_INLINE_OK],
 [
   dnl Test whether <wchar.h> suffers due to the transition from '__inline' to
-  dnl 'gnu_inline'. See <http://sourceware.org/bugzilla/show_bug.cgi?id=4022>
-  dnl and <http://gcc.gnu.org/bugzilla/show_bug.cgi?id=42440>. In summary,
+  dnl 'gnu_inline'. See <https://sourceware.org/bugzilla/show_bug.cgi?id=4022>
+  dnl and <https://gcc.gnu.org/bugzilla/show_bug.cgi?id=42440>. In summary,
   dnl glibc version 2.5 or older, together with gcc version 4.3 or newer and
   dnl the option -std=c99 or -std=gnu99, leads to a broken <wchar.h>.
   AC_CACHE_CHECK([whether <wchar.h> uses 'inline' correctly],
@@ -90,7 +90,8 @@ int main () { return zero(); }
      dnl that the object file has the latter name from the start.
      save_ac_compile="$ac_compile"
      ac_compile=`echo "$save_ac_compile" | sed s/conftest/conftest1/`
-     if AC_TRY_EVAL([ac_compile]); then
+     if echo '#include "conftest.c"' >conftest1.c &&
+        AC_TRY_EVAL([ac_compile]); then
        AC_LANG_CONFTEST([
          AC_LANG_SOURCE([[#define wcstod renamed_wcstod
 /* Tru64 with Desktop Toolkit C has a bug: <stdio.h> must be included before
@@ -105,7 +106,8 @@ int zero (void) { return 0; }
 ]])])
        dnl See note above about renaming object files.
        ac_compile=`echo "$save_ac_compile" | sed s/conftest/conftest2/`
-       if AC_TRY_EVAL([ac_compile]); then
+       if echo '#include "conftest.c"' >conftest2.c &&
+          AC_TRY_EVAL([ac_compile]); then
          if $CC -o conftest$ac_exeext $CFLAGS $LDFLAGS conftest1.$ac_objext conftest2.$ac_objext $LIBS >&AS_MESSAGE_LOG_FD 2>&1; then
            :
          else
@@ -114,7 +116,7 @@ int zero (void) { return 0; }
        fi
      fi
      ac_compile="$save_ac_compile"
-     rm -f conftest1.$ac_objext conftest2.$ac_objext conftest$ac_exeext
+     rm -f conftest[12].c conftest[12].$ac_objext conftest$ac_exeext
     ])
   if test $gl_cv_header_wchar_h_correct_inline = no; then
     AC_MSG_ERROR([<wchar.h> cannot be used with this compiler ($CC $CFLAGS $CPPFLAGS).
@@ -122,7 +124,7 @@ This is a known interoperability problem of glibc <= 2.5 with gcc >= 4.3 in
 C99 mode. You have four options:
   - Add the flag -fgnu89-inline to CC and reconfigure, or
   - Fix your include files, using parts of
-    <http://sourceware.org/git/?p=glibc.git;a=commitdiff;h=b037a293a48718af30d706c2e18c929d0e69a621>, or
+    <https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=b037a293a48718af30d706c2e18c929d0e69a621>, or
   - Use a gcc version older than 4.3, or
   - Don't use the flags -std=c99 or -std=gnu99.
 Configuration aborted.])

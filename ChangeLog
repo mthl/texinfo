@@ -1,5 +1,11 @@
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Update gnulib.
+
+	* (top-level), tp/Texinfo/XS: Run gnulib-tool --add-import.
+
+2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove documentation of \ifusebracesinindexes conditional.
 
 	* doc/texinfo.tex: Add a comment at definition of 
