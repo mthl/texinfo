@@ -1,5 +1,11 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	pretest 6.5.90.
+
+	* configure.ac: version
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi: Include config.h in all files.
 
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
