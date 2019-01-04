@@ -15,44 +15,39 @@
 doc/texinfo.tex					build-aux
 
 
-# Maintained in Emacs, which uses doclicense.texi instead of the usual
-# fdl.texi; seems cleaner to change it than to have two copies of the FDL.
-$EMACSSRC/doc/misc/info.texi			doc	doclicense
-
-
-$GETTEXT/gettext-runtime/ABOUT-NLS		.
+$GETTEXT gettext-runtime/ABOUT-NLS		.
 #
-$GETTEXT/gettext-tools/po/Makefile.in.in	po_document
+$GETTEXT gettext-tools/po/Makefile.in.in	po_document
 # must merge by hand, not just copy, until .twjr is supported by gettext.
-#$GETTEXT/gettext-tools/po/Makefile.in.in	po
-$GETTEXT/gettext-tools/po/Makevars.template	po
-$GETTEXT/gettext-tools/po/Rules-quot		po
-$GETTEXT/gettext-tools/po/boldquot.sed		po
-$GETTEXT/gettext-tools/po/en@boldquot.header	po
-$GETTEXT/gettext-tools/po/en@quot.header	po
-$GETTEXT/gettext-tools/po/insert-header.sin	po
-$GETTEXT/gettext-tools/po/quot.sed		po
-$GETTEXT/gettext-tools/po/remove-potcdate.sin	po
-$GETTEXT/gettext-tools/po/remove-potcdate.sin	po_document
+#$GETTEXT gettext-tools/po/Makefile.in.in	po
+$GETTEXT gettext-tools/po/Makevars.template	po
+$GETTEXT gettext-tools/po/Rules-quot		po
+$GETTEXT gettext-tools/po/boldquot.sed		po
+$GETTEXT gettext-tools/po/en@boldquot.header	po
+$GETTEXT gettext-tools/po/en@quot.header	po
+$GETTEXT gettext-tools/po/insert-header.sin	po
+$GETTEXT gettext-tools/po/quot.sed		po
+$GETTEXT gettext-tools/po/remove-potcdate.sin	po
+$GETTEXT gettext-tools/po/remove-potcdate.sin	po_document
 
 
-$GNULIBSRC/build-aux/compile		build-aux
-$GNULIBSRC/build-aux/config.guess	build-aux
-$GNULIBSRC/build-aux/config.rpath	build-aux
-$GNULIBSRC/build-aux/config.sub		build-aux
-$GNULIBSRC/build-aux/depcomp		build-aux
-$GNULIBSRC/build-aux/install-sh		build-aux
-$GNULIBSRC/build-aux/mdate-sh		build-aux
+$GNULIB build-aux/compile		build-aux
+$GNULIB build-aux/config.guess  	build-aux
+$GNULIB build-aux/config.rpath  	build-aux
+$GNULIB build-aux/config.sub		build-aux
+$GNULIB build-aux/depcomp		build-aux
+$GNULIB build-aux/install-sh		build-aux
+$GNULIB build-aux/mdate-sh		build-aux
 #
-$GNULIBSRC/doc/COPYINGv3		./COPYING
-$GNULIBSRC/doc/INSTALL			./INSTALL.generic
-$GNULIBSRC/doc/fdl.texi			doc
+$GNULIB doc/COPYINGv3	        	./COPYING
+$GNULIB doc/INSTALL			./INSTALL.generic
+$GNULIB doc/fdl.texi			doc
 
 
 # Should only need to be updated after major Automake releases.
-$AUTOMAKE/tap-driver.sh			build-aux
-$AUTOMAKE/test-driver			build-aux
-$AUTOMAKE/missing			build-aux
+$AUTOMAKE lib/tap-driver.sh		build-aux
+$AUTOMAKE lib/test-driver		build-aux
+$AUTOMAKE lib/missing			build-aux
 
 
-$GSASL/doc/gdoc 			contrib
+$GSASL doc/gdoc 			contrib

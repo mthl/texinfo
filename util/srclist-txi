@@ -15,12 +15,16 @@
 # per-user overrides.
 case $LOGNAME in
 karl)
-  : ${EMACSSRC=/usr/local/gnu/src/dist-emacs};      export EMACSSRC
   : ${GETTEXT=/usr/local/gnu/src/dist-gettext};     export GETTEXT
   : ${AUTOMAKE=/usr/local/gnu/share/automake-1.15}; export AUTOMAKE
   : ${GSASL=$HOME/gnu/src/gsasl};                   export GSASL
   : ${GNULIB=$HOME/gnu/src/gnulib};                 export GNULIB
   ;;
+g)
+  : ${GNULIB=$HOME/src/texinfo/gnulib} ; export GNULIB
+  : ${GSASL=$HOME/src/texinfo/gsasl} ; export GSASL
+  : ${AUTOMAKE=$HOME/extsrc/automake-1.16} ; export AUTOMAKE
+  : ${GETTEXT=$HOME/extsrc/gettext-0.19.8} ; export GETTEXT
 esac
 
 mydir=`dirname $0`

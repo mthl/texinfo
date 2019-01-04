@@ -48,13 +48,13 @@
 % Much of the text is based on, and sometimes copied from, the @-Command
 % Summary node in the Texinfo manual, originally written by Bob Chassell.
 
-\def\versionyear{2017}          % year manual was updated
-\def\versionTexinfo{6.5}        % version of Texinfo this manual is for
+\def\versionyear{2019}          % year manual was updated
+\def\versionTexinfo{6.5.90}     % version of Texinfo this manual is for
 
 \def\copyrightnotice{%
 \vskip 1ex plus 1filll\begingroup\small
 \advance\baselineskip by 1pt
-\centerline{Copyright \copyright\ 2016 Free Software Foundation, Inc.}
+\centerline{Copyright \copyright\ 2019 Free Software Foundation, Inc.}
 \centerline{for Texinfo version \versionTexinfo, \versionyear}
 \centerline{by Robert D. Solimeno}
 \centerline{and the Texinfo maintainers}
@@ -680,6 +680,7 @@ index entry.}
 \txicmd{@\lbracechar}{, \code{@lbracechar\ttbraced{}}}{Insert a left brace, `$\{$'.}
 \txicmd{@\rbracechar}{, \code{@rbracechar\ttbraced{}}}{Insert a right brace, `$\}$'.}
 \txicmd{@backslashchar}{\ttbraced{}}{Insert a typewriter backslash, {\tt\char`\\}.}
+\txicmd{@\&}{, \code{@ampchar\ttbraced{}}}{Insert an ampersand, `\&'.}
 \txicmd{@comma}{\ttbraced{}}{Insert a comma character; needed only when a literal comma would be an argument separator, as in \code{@xref}.}
 \txicmd{@hashchar}{\ttbraced{}}{Insert a hash character, \#; needed only when a literal hash would introduce a \code{\#line} directive.}
 \txicmd{@\var{whitespace}}{}{An \code{@} followed by a space, tab, or newline produces a normal, stretchable, interword space.}

@@ -1,5 +1,19 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Prepare for pretest release.
+
+	* util/srclist-txi: Remove EMACSSRC.
+	Add a per-user override.
+	* util/srclist.txt: Remove info.texi, as this is not distributed 
+	with Texinfo any more.  Update to three-column format used now 
+	by gnulib srclist-update.  Update locations of automake files.
+	* README-hacking: Update instructions for git.
+	* configure.ac (TEXINFO_DTD_VERSION): Increase to 6.6.
+	* doc/refcard/txirefcard.tex: Update version and copyright year.  
+	Document @& and @ampchar.
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: automake 1.16.
 
 2019-01-03  Gavin Smith  <gavinsmith0123@gmail.com>
