@@ -37,7 +37,8 @@ refcard_files = refcard/Makefile refcard/txicmdcheck \
 EXTRA_DIST = epsf.tex texinfo.tex \
              fdl.texi \
 	     $(man_MANS) $(TXI_XLATE) \
-             $(refcard_files) texinfo-tex-test.texi \
+             $(refcard_files) \
+	     texinfo-tex-test.texi texinfo-tex-test.WIDOWs \
              texinfo-ja.tex short-sample-ja.texi
 
 if INSTALL_WARNINGS

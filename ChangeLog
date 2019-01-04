@@ -1,5 +1,9 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/Makefile.am (EXTRA_DIST): List texinfo-tex-test.WIDOWs.
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Update copyright years.
 
 	* info/info.c (main),
