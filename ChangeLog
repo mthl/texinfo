@@ -1,5 +1,13 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Update texinfo-tex-test.texi.
+
+	* doc/texinfo-tex-test.texi (Final page of index hard to balance):
+	Update the description of what the output should look like.  
+	(Changed on 2017-11-16).
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/Makefile.am (EXTRA_DIST): List texinfo-tex-test.WIDOWs.
 
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
