@@ -253,17 +253,7 @@ Check for removed files with, e.g. ls -ltu $(www_target)/*/html_node,
 followed by cvs rm -f.  Likewise, check for added files with
 cvs -qn update, followed by cvs add.  When done, run cvs commit.
 
-#  Official releases only: ... update texinfo at tug.org
-#  (contact root@tug.org):
-prev=6.0
-ver=6.1
-cd ~ftp/tex
-rm -rf texinfo-$prev*
-cp ~/texinfo-$ver.tar.{gz,xz} .
-tar xzf texinfo-$ver.tar.gz
-ln -s texinfo-$ver.tar.gz texinfo.tar.gz
-!!:gs/gz/xz
-relink texinfo $ver
+#  Official releases only: Contact root@tug.org to update texinfo at tug.org
 
 #  For pretest release, send announcement to bug-texinfo and
 bcc coordinator@translationproject.org.
@@ -276,7 +266,3 @@ news item at savannah.
 #  ... post-release, or when development resumes:
 configure.ac, util/texi2dvi: add "dev" to versions for clarity,
 until it's time to do pretests again.
-
-#  ... [personal for karl] move mail:
-mv ~/mail/txi.done $ver.mail
-bzip2 $ver.mail
