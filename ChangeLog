@@ -1,3 +1,10 @@
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Improve XS loading error message.
+
+	* tp/Texinfo/XSLoader.pm: Improve error message in the case that 
+	a module couldn't be loaded.
+
 2019-01-05  Bruno Haible  <bruno@clisp.org>
 
 	Fix build errors on AIX 7.1.
