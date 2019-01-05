@@ -177,7 +177,7 @@ EXTRA_DIST += $p/command_data.c
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
 
-BUILT_SOURCES=parsetexi/element_types.c
+BUILT_SOURCES=parsetexi/element_types.c \
               parsetexi/element_types.h \
               parsetexi/command_data.c \
 	      parsetexi/command_ids.h
