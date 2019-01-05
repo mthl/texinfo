@@ -1,3 +1,16 @@
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Combine Makefiles for XS modules.
+
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES): Remove Makefile 
+	in parsetexi subdirectory.
+	* tp/Texinfo/XS/Makefile.am: Merge in contents of 
+	tp/Texinfo/XS/parsetexi/Makefile.am.
+	* tp/Texinfo/XS/parsetexi/Makefile.am: Remove file.
+
+	This means that passing -lperl when linking will always be 
+	conditional on HOST_NEEDS_NO_UNDEFINED.
+
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.90.

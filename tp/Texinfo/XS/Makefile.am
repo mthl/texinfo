@@ -1,6 +1,6 @@
 # Makefile.am for XS modules
 #
-# Copyright 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2015-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -36,12 +36,14 @@ xsdir = $(pkglibdir)
 
 PERL_INC = $(PERL_CONF_archlibexp)/CORE
 
-XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap
-
-EXTRA_DIST+= TestXS.pm fail.pl
+# note that passing `-typemap parsetexi/typemap' doesn't work as xsubpp 
+# seems to work relative to the subdirectory
+XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
 
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
+
+EXTRA_DIST+= TestXS.pm fail.pl typemap
 
 # -------------------------------------------------------
 
@@ -113,6 +115,70 @@ perl_specific_files = \
 
 # EXTRA_DIST += $(perl_specific_files)
 
-##########################
-SUBDIRS += parsetexi
+########################## parsetexi
+
+p=parsetexi
+
+modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
+dist_modules_DATA = $p/Parsetexi.pm
+
+
+# bin_PROGRAMS=parsetexi
+xs_LTLIBRARIES += Parsetexi.la
+
+Parsetexi_la_CFLAGS = $(AM_CFLAGS)
+Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
+
+
+Parsetexi_la_SOURCES= $p/Parsetexi.c \
+                  $p/api.c $p/api.h \
+		  $p/parser.c $p/parser.h $p/tree_types.h \
+		  $p/element_types.c $p/element_types.h \
+		  $p/commands.c $p/commands.h \
+		  $p/command_ids.h \
+		  $p/input.c $p/input.h \
+		  $p/tree.c $p/tree.h $p/close.c \
+		  $p/text.c $p/text.h \
+		  $p/context_stack.c $p/context_stack.h \
+		  $p/debug.c \
+		  $p/convert.c $p/convert.h \
+		  $p/end_line.c \
+		  $p/separator.c \
+		  $p/multitable.c \
+		  $p/indices.c $p/indices.h \
+		  $p/macro.c $p/macro.h \
+		  $p/handle_commands.c $p/handle_commands.h \
+		  $p/def.c $p/def.h \
+		  $p/extra.c \
+		  $p/menus.c \
+		  $p/labels.c $p/labels.h \
+		  $p/errors.c $p/errors.h \
+		  $p/counter.c $p/counter.h
+EXTRA_DIST += $p/command_data.c
+
+Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
+Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
+
+BUILT_SOURCES=$p/element_types.c $p/element_types.h \
+              $p/command_data.c $p/command_ids.h
+
+# Need to be distributed
+EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \
+	   $p/command_data.txt $p/command_data.awk
+
+# For reference
+EXTRA_DIST+=$p/Common.pm $p/Parser-5556.pm
+
+EXTRA_DIST+=$p/complete_tree.pl
+
+# Notes
+EXTRA_DIST+=$p/debug_perl.txt $p/makeinfo-debug.txt
+
+$(srcdir)/$p/element_types.c $(srcdir)/$p/element_types.h: $p/element_types.txt $p/element_types.awk
+	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/element_types.awk \
+	     $(srcdir)/$p/element_types.txt
+
+$(srcdir)/$p/command_data.c $(srcdir)/$p/command_ids.h: $p/command_data.txt $p/command_data.awk
+	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/command_data.awk \
+	     $(srcdir)/$p/command_data.txt
 

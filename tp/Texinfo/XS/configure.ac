@@ -1,6 +1,6 @@
 # configure.ac for XSParagraph
 #
-# Copyright 2015, 2016, 2017 Free Software Foundation, Inc.
+# Copyright 2015-2019 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -141,5 +141,5 @@ lookup_perl_conf([privlibexp])
 AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile gnulib/lib/Makefile parsetexi/Makefile])
+AC_CONFIG_FILES([Makefile gnulib/lib/Makefile])
 AC_OUTPUT
