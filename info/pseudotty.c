@@ -34,7 +34,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#if HAVE_STROPTS_H
+#if defined __sun || defined __hpux /* Solaris, HP-UX */
 #include <stropts.h>
 #endif
 
@@ -69,23 +69,14 @@ main (int argc, char *argv[])
   if (slave == -1)
     exit (1);
 
-#ifdef HAVE_STROPTS_H
-  if (!isatty (slave))
+#if defined __sun || defined __hpux /* Solaris, HP-UX */
+  if (isastream (slave))
     {
       error (0, 0, "performing STREAMS ioctl's on slave");
-      if (isastream (slave))
-        {
-          if (ioctl (slave, I_PUSH, "ptem") < 0
-              || ioctl (slave, I_PUSH, "ldterm") < 0)
-            error (1, 0, "STREAMS ioctl's failed");
-        }
+      if (ioctl (slave, I_PUSH, "ptem") < 0
+          || ioctl (slave, I_PUSH, "ldterm") < 0)
+        error (1, 0, "STREAMS ioctl's failed");
     }
-  /* Don't close it because it just leads to an EOF read at the master end. */
-  /*
-  error (0, 0, "closing slave device");
-  close (slave);
-  error (0, 0, "...closed");
-  */
 #endif
 
 #if defined (HAVE_TERMIOS_H)

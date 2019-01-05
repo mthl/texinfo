@@ -1,5 +1,16 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix info test suite hang under HP-UX 11.31.
+
+	* info/pseudotty.c [HAVE_STROPTS_H]: Do not call isatty on 
+	pseudoterminal file descriptor.  Bruno Haible reported that this 
+	made a test hang.  Do not use HAVE_STROPTS_H condition: replace 
+	with "#if defined(__hpux) || defined(__sun)", as is done in 
+	gnulib.  Remove some commented-out code.
+	* configure.ac (AC_CHECK_HEADERS): Do not check for stropts.h.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Improve XS loading error message.
 
 	* tp/Texinfo/XSLoader.pm: Improve error message in the case that 
