@@ -107,9 +107,6 @@ new_line (void)
 }
 
 
-/* TODO: integrate with gnulib */
-#define ICONV_CONST
-
 static iconv_t iconv_from_latin1 = (iconv_t) 0;
 static iconv_t iconv_from_latin2;
 static iconv_t iconv_from_shiftjis;

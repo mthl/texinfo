@@ -1,5 +1,11 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Integrate parsetexi with gnulib.
+
+	* tp/Texinfo/XS/parsetexi/input.c: Do not define ICONV_CONST.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fall back to pure Perl module when TEXINFO_XS_PARSER is set.
 
 	* tp/Texinfo/Parser.pm, tp/Texinfo/ParserNonXS.pm: Rename file.
