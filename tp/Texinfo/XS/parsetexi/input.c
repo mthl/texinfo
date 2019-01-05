@@ -20,9 +20,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#if HAVE_ICONV
-# include <iconv.h>
-#endif
+#include <iconv.h>
 #include <errno.h>
 #include <sys/stat.h>
 

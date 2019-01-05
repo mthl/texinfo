@@ -1,5 +1,15 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Include iconv.h unconditionally.
+
+	* tp/Texinfo/XS/parsetexi/input.c: Do not depend on HAVE_ICONV 
+	for #include <iconv.h>.  Use of iconv_t, iconv_open etc. later 
+	on in the file is not conditional, and we don't have a way to 
+	avoid using these.  It's possible that gnulib set HAVE_ICONV to 
+	0 because it found that iconv.h was buggy, even if it existed.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Don't use variable in SOURCES in Makefile.am.
 
 	* tp/Texinfo/XS/Makefile.am (Parsetexi_la_SOURCES, BUILT_SOURCES):
