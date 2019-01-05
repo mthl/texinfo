@@ -1,5 +1,19 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fall back to pure Perl module when TEXINFO_XS_PARSER is set.
+
+	* tp/Texinfo/Parser.pm, tp/Texinfo/ParserNonXS.pm: Rename file.
+	* tp/Texinfo/ParserNonXS.pm: Make module symbols available under 
+	both Texinfo::Parser and Texinfo::ParserNonXS.
+	* tp/Texinfo/ModulePath.pm.in: If TEXINFO_XS_PARSER is not set, 
+	load Texinfo/ParserNonXS.pm instead of Texinfo/Parser.pm.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Pass Texinfo::ParserNonXS
+	as a fallback module to Texinfo::XSLoader::init.  Comment out 
+	line to reset_parser in END block, as this won't work if 
+	Texinfo::ParserNonXS is loaded.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix info test suite hang under HP-UX 11.31.
 
 	* info/pseudotty.c [HAVE_STROPTS_H]: Do not call isatty on 
