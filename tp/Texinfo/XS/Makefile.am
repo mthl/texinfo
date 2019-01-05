@@ -130,37 +130,57 @@ Parsetexi_la_CFLAGS = $(AM_CFLAGS)
 Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
 
 
-Parsetexi_la_SOURCES= $p/Parsetexi.c \
-                  $p/api.c $p/api.h \
-		  $p/parser.c $p/parser.h $p/tree_types.h \
-		  $p/element_types.c $p/element_types.h \
-		  $p/commands.c $p/commands.h \
-		  $p/command_ids.h \
-		  $p/input.c $p/input.h \
-		  $p/tree.c $p/tree.h $p/close.c \
-		  $p/text.c $p/text.h \
-		  $p/context_stack.c $p/context_stack.h \
-		  $p/debug.c \
-		  $p/convert.c $p/convert.h \
-		  $p/end_line.c \
-		  $p/separator.c \
-		  $p/multitable.c \
-		  $p/indices.c $p/indices.h \
-		  $p/macro.c $p/macro.h \
-		  $p/handle_commands.c $p/handle_commands.h \
-		  $p/def.c $p/def.h \
-		  $p/extra.c \
-		  $p/menus.c \
-		  $p/labels.c $p/labels.h \
-		  $p/errors.c $p/errors.h \
-		  $p/counter.c $p/counter.h
+Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
+                      parsetexi/api.c \
+		      parsetexi/api.h \
+		      parsetexi/parser.c \
+		      parsetexi/parser.h \
+		      parsetexi/tree_types.h \
+		      parsetexi/element_types.c \
+		      parsetexi/element_types.h \
+		      parsetexi/commands.c \
+		      parsetexi/commands.h \
+		      parsetexi/command_ids.h \
+		      parsetexi/input.c \
+		      parsetexi/input.h \
+		      parsetexi/tree.c \
+		      parsetexi/tree.h \
+		      parsetexi/close.c \
+		      parsetexi/text.c \
+		      parsetexi/text.h \
+		      parsetexi/context_stack.c \
+		      parsetexi/context_stack.h \
+		      parsetexi/debug.c \
+		      parsetexi/convert.c \
+		      parsetexi/convert.h \
+		      parsetexi/end_line.c \
+		      parsetexi/separator.c \
+		      parsetexi/multitable.c \
+		      parsetexi/indices.c \
+		      parsetexi/indices.h \
+		      parsetexi/macro.c \
+		      parsetexi/macro.h \
+		      parsetexi/handle_commands.c \
+		      parsetexi/handle_commands.h \
+		      parsetexi/def.c \
+		      parsetexi/def.h \
+		      parsetexi/extra.c \
+		      parsetexi/menus.c \
+		      parsetexi/labels.c \
+		      parsetexi/labels.h \
+		      parsetexi/errors.c \
+		      parsetexi/errors.h \
+		      parsetexi/counter.c \
+		      parsetexi/counter.h
 EXTRA_DIST += $p/command_data.c
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBICONV)
 
-BUILT_SOURCES=$p/element_types.c $p/element_types.h \
-              $p/command_data.c $p/command_ids.h
+BUILT_SOURCES=parsetexi/element_types.c
+              parsetexi/element_types.h \
+              parsetexi/command_data.c \
+	      parsetexi/command_ids.h
 
 # Need to be distributed
 EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \

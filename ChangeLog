@@ -1,5 +1,15 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Don't use variable in SOURCES in Makefile.am.
+
+	* tp/Texinfo/XS/Makefile.am (Parsetexi_la_SOURCES, BUILT_SOURCES):
+	Write out "parsetexi" explicitly instead of hiding it inside $p.
+	Although the latter works with automake 1.16 (which we are 
+	using), the OpenCSW buildbot still uses automake 1.15.1, leading 
+	to build failures.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Integrate parsetexi with gnulib.
 
 	* tp/Texinfo/XS/parsetexi/input.c: Do not define ICONV_CONST.
