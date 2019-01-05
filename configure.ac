@@ -60,16 +60,17 @@ AC_ARG_VAR([PERL_EXT_CPPFLAGS], [C preprocessor flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
-AC_MSG_CHECKING([Perl version and Encode module])
-if $PERL -e "use 5.007_003; use Encode;" > /dev/null 2>&1; then
+AC_MSG_CHECKING([Perl version and modules])
+if $PERL -e "use 5.007_003; use Encode; use Data::Dumper" >/dev/null 2>&1; then
   perl_version_requirement='yes'
 else
   perl_version_requirement='no'
 fi
 AC_MSG_RESULT($perl_version_requirement)
 if test z"$perl_version_requirement" = 'zno' ; then
-  AC_MSG_ERROR([perl >= 5.7.3 with Encode required by Texinfo.])
+  AC_MSG_ERROR([perl >= 5.7.3 with Encode and Data::Dumper required by Texinfo.])
 fi
+
 
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 AC_PROG_AWK

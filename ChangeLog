@@ -1,5 +1,12 @@
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Check for Data::Dumper.
+
+	* configure.ac: Check for Data::Dumper as well as Encode.  Bruno 
+	Haible reported that Data::Dumper was missing on CentOS 7.3.
+
+2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Combine Makefiles for XS modules.
 
 	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES): Remove Makefile 
