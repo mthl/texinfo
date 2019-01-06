@@ -1,5 +1,14 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No buffering for pseudotty output.
+
+	* info/pseudotty.c: Set VMIN value on the c_cc array in the 
+	termios structure to 1, meaning 'read' can return with a single 
+	byte.  (The default value on Solaris 10 was found to be 4, which 
+	may be C-d for end-of-file.)  Also set VTIME to 0.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Turn off canonical input processing in pseudotty.
 
 	* info/pseudotty.c [HAVE_TERMIOS_H]: Clear the ICANON and ECHO 
