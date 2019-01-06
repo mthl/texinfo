@@ -1,5 +1,13 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Avoid possible infinite loop in info test suite.
+
+	* info/t/replace-viewed.sh: Replace a loop that waits for ginfo 
+	to create a file with a "sleep" statement.  If the file weren't 
+	created, this would be an infinte loop.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove useless code in info test suite.
 
 	* info/t/replace-viewed.sh,

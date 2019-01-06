@@ -25,8 +25,11 @@ cp $t/infodir/sample.info t/replace-viewed.info
 
 run_ginfo -f t/replace-viewed.info
 
+# for debugging - show what node we got to
 printf 'D' >$pty_type
-while test ! -f $ginfo_output ; do sleep 1 ; done
+
+# give ginfo time to load the node
+sleep 1
 cat $ginfo_output
 
 # Now replace the file while it is being viewed.
