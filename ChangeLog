@@ -1,3 +1,14 @@
+2019-01-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix info tests under Solaris.
+
+	* info/pseudotty.c [__sun]: Additionally perform a "ttycompat"
+	ioctl on the slave fd.  This is what is done in the gnulib 
+	openpty module.  Since these ioctls were no longer guarded by 
+	isatty, it would lead to some of the info tests failing.  I 
+	don't know under what conditions the ioctls are actually needed 
+	under Solaris: possibly they aren't needed at all.
+
 2019-01-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Include iconv.h unconditionally.

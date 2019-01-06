@@ -74,7 +74,11 @@ main (int argc, char *argv[])
     {
       error (0, 0, "performing STREAMS ioctl's on slave");
       if (ioctl (slave, I_PUSH, "ptem") < 0
-          || ioctl (slave, I_PUSH, "ldterm") < 0)
+          || ioctl (slave, I_PUSH, "ldterm") < 0
+#  if defined __sun
+          || ioctl (slave, I_PUSH, "ttcompat") < 0
+#  endif
+         )
         error (1, 0, "STREAMS ioctl's failed");
     }
 #endif
