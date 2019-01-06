@@ -1,5 +1,21 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Turn off canonical input processing in pseudotty.
+
+	* info/pseudotty.c [HAVE_TERMIOS_H]: Clear the ICANON and ECHO 
+	flags.
+
+	In the test suite, if bytes were passed through the pseudotty 
+	program before ginfo could make this change, they could be 
+	subject to undesired processing.  This was not apparent as info 
+	treated '\n' the same as '\r'.  This could be shown by using a 
+	"dribble" file and inserting a "sleep" in one of the test scripts.
+	Tests were failing on Solaris 10 and Solaris 11 because bytes 
+	that were supposed to be sent to ginfo were being buffered, 
+	awaiting a newline.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not send debug output to infodebug file.
 
 	* info/session.c (vinfo_debug): Always sent debugging output to 

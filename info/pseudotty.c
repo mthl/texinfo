@@ -96,6 +96,7 @@ main (int argc, char *argv[])
       t.c_cc[VSTOP] = disable;  /* C-s */
       t.c_cc[VKILL] = disable;  /* C-u */
       t.c_cc[VINTR] = disable;  /* C-c */
+      t.c_lflag &= (~ICANON & ~ECHO);
       if (tcsetattr (slave, TCSANOW, &t) == -1)
         error (0, 0, "error calling tcsetattr");
     }
