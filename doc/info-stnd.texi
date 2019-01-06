@@ -323,10 +323,7 @@ Print operations relating to @env{INFOPATH}.
 Print information about node searching.
 @end table
 
-@cindex @file{infodebug} output file
-Before Info's full-screen output is initialized, debugging output goes
-to standard error.  After it is initialized, the debugging output is
-written to the file @file{infodebug} in the current working directory.
+Debugging output goes to standard error.
 
 @item --directory @var{directory-path}
 @itemx -d @var{directory-path}

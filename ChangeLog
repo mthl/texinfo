@@ -1,5 +1,19 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not send debug output to infodebug file.
+
+	* info/session.c (vinfo_debug): Always sent debugging output to 
+	stderr.
+	(close_debugfile, debug_file): Remove.
+	* doc/info-stnd.texi (Invoking Info): Update.
+	* NEWS: Mention change.
+
+	This is to make all the debugging output from info appear 
+	together in a log files when output is diverted from a test 
+	script.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Avoid possible infinite loop in info test suite.
 
 	* info/t/replace-viewed.sh: Replace a loop that waits for ginfo 
