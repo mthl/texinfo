@@ -58,6 +58,9 @@ AC_ARG_ENABLE([perl-xs],
 # "make dist" will work.
 if test x$disable_xs != xyes; then
   AC_PATH_PROG([PERL], [perl])
+
+  # PERL_EXT_var are user variables, allowing configuring at the top-level 
+  # with e.g. "./configure CFLAGS='-g -O0' PERL_EXT_CFLAGS='-g'".
   
   if test -n "$PERL_EXT_CC" ; then
     CC=$PERL_EXT_CC
@@ -68,6 +71,14 @@ if test x$disable_xs != xyes; then
     lookup_perl_conf([cc])
     CC=$conf_value
   fi
+
+  # Override these variables set by configure at the top level, because 
+  # the compiler used in this subdirectory might be different.  Change 
+  # these now so they are used in the gnulib checks.
+  
+  CFLAGS=$PERL_EXT_CFLAGS
+  CPPFLAGS=$PERL_EXT_CPPFLAGS
+  LDFLAGS=$PERL_EXT_LDFLAGS
 
   # Wipe cache values in case -C was given at the top level
   ac_cv_prog_CC= ; unset ac_cv_prog_CC

@@ -1,5 +1,15 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Set PERL_EXT_var in configure.ac.
+
+	* tp/Texinfo/XS/configure.ac,
+	* tp/Texinfo/XS/Makefile.am: Move setting of CFLAGS, CPPFLAGS 
+	and LDFLAGS from PERL_EXT_CFLAGS, PERL_EXT_CPPFLAGS and 
+	PERL_EXT_LDFLAGS from Makefile.am to configure.ac in order that 
+	they are used during the Gnulib checks.  Report from Bruno Haible.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No buffering for pseudotty output.
 
 	* info/pseudotty.c: Set VMIN value on the c_cc array in the 
