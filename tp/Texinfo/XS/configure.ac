@@ -109,6 +109,9 @@ esac
 AM_CONDITIONAL([HOST_NEEDS_NO_UNDEFINED],
                [test "x$host_needs_no_undefined" = "xyes"])
 
+AM_CONDITIONAL([HAVE_ICONV],
+               [test "x$am_func_iconv" = "xyes"])
+
 # User variables for a Perl XS extension, which may be different, for
 # example if the Perl interpreter being used was compiled with a
 # different compiler.  Also in top-level configure.ac.

@@ -114,8 +114,9 @@ modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
 dist_modules_DATA = $p/Parsetexi.pm
 
 
-# bin_PROGRAMS=parsetexi
+if HAVE_ICONV
 xs_LTLIBRARIES += Parsetexi.la
+endif
 
 Parsetexi_la_CFLAGS = $(AM_CFLAGS)
 Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"

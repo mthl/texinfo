@@ -1,5 +1,14 @@
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make Parsetexi XS module conditional on iconv.
+
+	* tp/Texinfo/XS/configure.ac: Add an AM_CONDITIONAL checking 
+	whether gnulib found that iconv worked.
+	* tp/Texinfo/XS/Makefile.am: Make building Parsetexi module 
+	conditional.
+
+2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Set PERL_EXT_var in configure.ac.
 
 	* tp/Texinfo/XS/configure.ac,
