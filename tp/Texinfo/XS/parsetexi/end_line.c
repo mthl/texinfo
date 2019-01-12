@@ -26,7 +26,6 @@
 #include "convert.h"
 #include "labels.h"
 #include "indices.h"
-#include "errors.h"
 
 void
 check_internal_node (NODE_SPEC_EXTRA *nse)

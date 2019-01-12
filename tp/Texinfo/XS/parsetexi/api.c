@@ -33,7 +33,6 @@
 #include "labels.h"
 #include "indices.h"
 #include "api.h"
-#include "errors.h"
 
 ELEMENT *Root;
 

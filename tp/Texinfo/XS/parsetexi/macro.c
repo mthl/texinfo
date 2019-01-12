@@ -18,12 +18,12 @@
 #include <config.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "parser.h"
 #include "tree.h"
 #include "text.h"
 #include "input.h"
-#include "errors.h"
 #include "convert.h"
 
 static MACRO *macro_list;

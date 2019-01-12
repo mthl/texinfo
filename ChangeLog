@@ -1,3 +1,7 @@
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi: Fix implicit function declarations.
+
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Make Parsetexi XS module conditional on iconv.

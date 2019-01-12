@@ -15,7 +15,6 @@
 
 #include <config.h>
 #include "parser.h"
-#include "errors.h"
 
 /* Return the parent if in an item_line command, @*table */
 ELEMENT *

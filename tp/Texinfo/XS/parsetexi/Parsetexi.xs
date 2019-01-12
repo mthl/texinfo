@@ -10,6 +10,7 @@
 #include "api.h"
 #include "errors.h"
 #include "macro.h"
+#include "handle_commands.h"
 
 HV *build_texinfo_tree (void);
 AV *build_label_list (void);

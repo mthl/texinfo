@@ -21,7 +21,6 @@
 #include "parser.h"
 #include "input.h"
 #include "text.h"
-#include "errors.h"
 
 /* Return a containing @itemize or @enumerate if inside it. */
 // 1847

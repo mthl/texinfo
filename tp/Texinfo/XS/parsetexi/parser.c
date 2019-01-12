@@ -24,7 +24,6 @@
 #include "input.h"
 #include "tree.h"
 #include "api.h"
-#include "errors.h"
 
 
 /* Utility functions */

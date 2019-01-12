@@ -19,7 +19,6 @@
 #include <string.h>
 
 #include "parser.h"
-#include "errors.h"
 
 /* Possibly print an error message, and return CURRENT->parent. */
 static ELEMENT *
