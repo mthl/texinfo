@@ -1,4 +1,10 @@
-2019-01-12  Hans-Bernhard Br�ker  <HBBroeker@t-online.de>
+2019-01-12  Hans-Bernhard Bröker  <HBBroeker@t-online.de>
+
+	Fix some warnings.
+
+	* tp/Texinfo/XS/parsetexi/close.c: Initialize a variable.
+
+2019-01-12  Hans-Bernhard Bröker  <HBBroeker@t-online.de>
 
 	Fix some warnings.
 
