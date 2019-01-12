@@ -1566,6 +1566,8 @@ value_invalid:
               msg = "move your @shortcontents and @contents command if "
                     "you want the contents after the title page";
               break;
+            default:
+              break;
             }
           if (!msg)
             line_warn ("@%s is obsolete.", command_name(cmd));

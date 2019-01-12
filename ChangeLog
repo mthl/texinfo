@@ -1,5 +1,12 @@
 2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Add a default case.
+
+	* tp/Texinfo/XS/parsetexi/parser.c (process_remaining_on_line): 
+	Add an empty default clause in switch block.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi: Fix implicit function declarations.
 
 2019-01-07  Gavin Smith  <gavinsmith0123@gmail.com>
