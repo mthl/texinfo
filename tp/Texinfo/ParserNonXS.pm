@@ -3560,7 +3560,6 @@ sub _parse_texi($;$)
         } elsif ($line =~ /^(\s*?)\@end\s+([a-zA-Z][\w-]*)/
                  and ($2 eq $current->{'cmdname'})) {
           my $end_command = $2;
-          my $raw_command = $current;
           $line =~ s/^(\s*?)(\@end\s+$current->{'cmdname'})//;
           if ($1 eq '') {
             # FIXME exclude other formats, like @macro, @ifset, @ignore?

@@ -1,5 +1,12 @@
 2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove an unused variable.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi): Remove an unused 
+	variable.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add a default case.
 
 	* tp/Texinfo/XS/parsetexi/parser.c (process_remaining_on_line): 
