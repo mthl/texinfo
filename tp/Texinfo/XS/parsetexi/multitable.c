@@ -64,7 +64,7 @@ void
 gather_previous_item (ELEMENT *current, enum command_id next_command)
 {
   ELEMENT *gathered;
-  enum command_id type;
+  enum element_type type;
   int i, contents_count;
 
   if (last_contents_child(current)

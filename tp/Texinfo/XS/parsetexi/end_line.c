@@ -1,4 +1,4 @@
-/* end_line.c -- what to do at the end of a whole line of input
+/* end_line.c -- what to do at the end of a whole line of input */
 /* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -46,6 +46,7 @@ check_empty_node (NODE_SPEC_EXTRA *nse,
   if (!nse || !nse->node_content || nse->node_content->contents.number == 0)
     {
       line_error ("empty argument in @%s", command_name(cmd));
+      return 0;
     }
   else
     return 1;

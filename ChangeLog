@@ -1,3 +1,15 @@
+2019-01-12  Hans-Bernhard Bröker  <HBBroeker@t-online.de>
+
+	Fix some warnings.
+
+	* tp/Texinfo/XS/parsetexi/end_line.c: Fix an unterminated 
+	comment.
+	(check_empty_node): Avoid reaching end of undefined function.
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command): 
+	Add default cases.
+	* tp/Texinfo/XS/parsetexi/multitable.c (gather_previous_item):
+	Correct enum type in variable declaration.
+
 2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove unused variables.
@@ -10,7 +22,7 @@
 	(end_line_starting_block, end_line_misc_line),
 	* tp/Texinfo/XS/parsetexi/macro.c (expand_macro_body),
 	* tp/Texinfo/XS/parsetexi/handle_commands.c (handle_other_command),
-	* tp/Texinfo/XS/parsetexi/def.c (split_delimiters, split_def_args):
+	* tp/Texinfo/XS/parsetexi/def.c (split_delimiters, split_def_args)
 	(parse_def): Remove declarations of unused variables.
 
 2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>

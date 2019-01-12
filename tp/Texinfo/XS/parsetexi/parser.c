@@ -171,6 +171,9 @@ register_global_command (ELEMENT *current)
         GLOBAL_CASE(urefbreakstyle);
         GLOBAL_CASE(xrefautomaticsectiontitle);
 #undef GLOBAL_CASE
+        default:
+          /* do nothing; just silence -Wswitch about lots of un-covered cases */
+          break;
         }
       /* TODO: Check if all of these are necessary. */
       return 1;
@@ -224,6 +227,9 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(title);
 #undef GLOBAL_UNIQUE_CASE
         /* NOTE: Same list in api.c:build_global_info2 and wipe_global_info. */
+        default:
+          /* do nothing; just silence -Wswitch about lots of un-covered cases */
+          break;
         }
       if (where)
         {
