@@ -353,7 +353,6 @@ element_to_perl_hash (ELEMENT *e)
             case extra_contents:
             case extra_contents_oot:
               {
-              int j;
               if (f)
                 STORE(build_perl_array (&f->contents));
               break;
@@ -362,7 +361,7 @@ element_to_perl_hash (ELEMENT *e)
               {
               /* Like extra_contents, but this time output an array
                  of arrays (instead of an array). */
-              int j, k;
+              int j;
               AV *av;
               av = newAV ();
               STORE(newRV_inc ((SV *)av));
@@ -424,7 +423,6 @@ element_to_perl_hash (ELEMENT *e)
               break;
             case extra_node_spec_array:
               {
-              int j;
               AV *av;
               NODE_SPEC_EXTRA **array;
               av = newAV ();

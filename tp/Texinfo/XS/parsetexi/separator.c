@@ -303,10 +303,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
             }
           free (parsed_anchor);
         }
-      else if (command_data(closed_command).flags & CF_ref) // 5062
+      else if (command_data(closed_command).flags & CF_ref)
         {
           ELEMENT *ref = current->parent;
-          KEY_PAIR *k;
           if (ref->args.number > 0)
             {
               if ((closed_command == CM_inforef
@@ -387,10 +386,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                 }
             }
         }
-      else if (closed_command == CM_image) // 5109
+      else if (closed_command == CM_image)
         {
           ELEMENT *image = current->parent;
-          KEY_PAIR *k;
           if (image->args.number == 0
               || image->args.list[0]->contents.number == 0)
             {

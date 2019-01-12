@@ -185,7 +185,6 @@ register_global_command (ELEMENT *current)
         current->line_nr = line_nr;
       switch (cmd)
         {
-          extern int input_number;
         case CM_setfilename:
           /* Check if we are inside an @include, and if so, do nothing. */
           if (top_file_index () > 0)
@@ -972,7 +971,6 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
     }
 }
 
-/* line 3725 */
 /* *LINEP is a pointer into the line being processed.  It is advanced past any
    bytes processed.  Return 0 when we need to read a new line. */
 int
@@ -989,11 +987,10 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
 
   /********* BLOCK_raw or (ignored) BLOCK_conditional ******************/
   /* If in raw block, or ignored conditional block. */
-  // 3727
   if (command_flags(current) & CF_block
       && (command_data(current->cmd).data == BLOCK_raw
           || command_data(current->cmd).data == BLOCK_conditional))
-    { /* 3730 */
+    {
       /* Check if we are using a macro within a macro. */
       if (current->cmd == CM_macro || current->cmd == CM_rmacro)
         {
@@ -1053,7 +1050,6 @@ process_remaining_on_line (ELEMENT **current_inout, char **line_inout)
       if (is_end_current_command (current, &line, &end_cmd))
         {
           ELEMENT *last_child;
-          ELEMENT *raw_command = current;
           char *tmp = 0;
 
           last_child = last_contents_child (current);

@@ -1,5 +1,20 @@
 2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove unused variables.
+
+	* tp/Texinfo/XS/parsetexi/api.c (element_to_perl_hash),
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command)
+	(process_remaining_on_line),
+	* tp/Texinfo/XS/parsetexi/convert.c (expand_cmd_args_to_texi),
+	* tp/Texinfo/XS/parsetexi/end_line.c (parse_line_command_args)
+	(end_line_starting_block, end_line_misc_line),
+	* tp/Texinfo/XS/parsetexi/macro.c (expand_macro_body),
+	* tp/Texinfo/XS/parsetexi/handle_commands.c (handle_other_command),
+	* tp/Texinfo/XS/parsetexi/def.c (split_delimiters, split_def_args):
+	(parse_def): Remove declarations of unused variables.
+
+2019-01-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove an unused variable.
 
 	* tp/Texinfo/ParserNonXS.pm (_parse_texi): Remove an unused 
