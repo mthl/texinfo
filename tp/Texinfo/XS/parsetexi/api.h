@@ -1,4 +1,3 @@
-/* In api.c */
 extern ELEMENT *Root;
 extern CONF conf;
 
@@ -13,9 +12,12 @@ void reset_parser (void);
 void reset_parser_except_conf (void);
 void set_debug (int);
 void wipe_values (void);
+void reset_context_stack (void);
 
-/* In parser.c */
-void set_documentlanguage (char *);
+void conf_set_show_menu (int i);
+void conf_set_CPP_LINE_DIRECTIVES (int i);
+void conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i);
+void reset_conf (void);
 
 //HV *build_global_info (void);
 //HV *build_global_info2 (void);
@@ -23,10 +25,3 @@ void set_documentlanguage (char *);
 /* In input.c */
 void add_include_directory (char *filename);
 
-/* In api.c */
-void reset_context_stack (void);
-
-void conf_set_show_menu (int i);
-void conf_set_CPP_LINE_DIRECTIVES (int i);
-void conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i);
-void reset_conf (void);

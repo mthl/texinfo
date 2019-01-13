@@ -71,6 +71,7 @@ ELEMENT *begin_paragraph (ELEMENT *current);
 int format_expanded_p (char *format);
 int is_end_current_command (ELEMENT *current, char **line,
                             enum command_id *end_cmd);
+void set_documentlanguage (char *);
 
 /* Return values */
 #define GET_A_NEW_LINE 0

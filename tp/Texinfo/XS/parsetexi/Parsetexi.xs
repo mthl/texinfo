@@ -1,17 +1,20 @@
+/* Avoid namespace conflicts. */
+#define context perl_context
+
 #define PERL_NO_GET_CONTEXT
 #include "EXTERN.h"
 #include "perl.h"
 #include "XSUB.h"
 
+#undef context
+
 #include "ppport.h"
 
-#include "tree_types.h"
-#include "tree.h"
+#include "parser.h"
 #include "api.h"
 #include "errors.h"
 #include "macro.h"
 #include "indices.h"
-#include "handle_commands.h"
 
 HV *build_texinfo_tree (void);
 AV *build_label_list (void);
