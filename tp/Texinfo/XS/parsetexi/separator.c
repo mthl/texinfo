@@ -246,7 +246,6 @@ check_empty_expansion (ELEMENT *e)
   return 1;
 }
 
-/* 5007 */
 ELEMENT *
 handle_close_brace (ELEMENT *current, char **line_inout)
 {
@@ -263,11 +262,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
   else if (command_flags(current->parent) & CF_brace)
     {
       enum command_id closed_command;
-      // 5019
       if (command_data(current->parent->cmd).data == BRACE_context)
         {
-          enum context c;
-          c = pop_context ();
+          (void) pop_context ();
           /* The Perl code here checks that the popped context and the
              parent command match as strings. */
         }
@@ -282,13 +279,12 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       debug ("CLOSING(brace) %s", command_data(closed_command).cmdname);
       counter_pop (&count_remaining_args);
 
-      // 5044
       if (current->contents.number > 0
           && command_data(closed_command).data == 0)
         line_warn ("command @%s does not accept arguments",
                    command_name(closed_command));
 
-      if (closed_command == CM_anchor) // 5051
+      if (closed_command == CM_anchor)
         {
           NODE_SPEC_EXTRA *parsed_anchor;
           current->parent->line_nr = line_nr;
@@ -526,32 +522,29 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       add_to_element_contents (current, e);
       goto funexit;
     }
-  // 5203 -- context brace command (e.g. @footnote)
+  /* context brace command (e.g. @footnote) */
   else if (current_context() == ct_footnote
            || current_context() == ct_caption
            || current_context() == ct_shortcaption
            || current_context() == ct_math)
     {
-      enum context c;
-
       current = end_paragraph (current, 0, 0);
       if (current->parent
           && (command_flags(current->parent) & CF_brace)
           && (command_data(current->parent->cmd).data == BRACE_context))
         {
           enum command_id closed_command;
-          c = pop_context ();
+          (void) pop_context ();
           debug ("CLOSING(context command)");
           closed_command = current->parent->cmd;
 
           register_global_command (current->parent);
-          // 5220
           current = current->parent->parent;
           if (close_preformatted_command(closed_command))
             current = begin_preformatted (current);
         }
     }
-  else // 5224
+  else
     {
       line_error ("misplaced }");
       goto funexit;

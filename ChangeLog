@@ -1,5 +1,12 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove some unused variables.
+
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):
+	Remove some unused variables.
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	pretest 6.5.91.
 
 	* configure.ac: version
