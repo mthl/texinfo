@@ -13,8 +13,9 @@
 #include "parser.h"
 #include "api.h"
 #include "errors.h"
-#include "macro.h"
 #include "indices.h"
+#include "input.h"
+#include "macro.h"
 
 HV *build_texinfo_tree (void);
 AV *build_label_list (void);

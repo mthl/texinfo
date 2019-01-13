@@ -22,6 +22,3 @@ void reset_conf (void);
 //HV *build_global_info (void);
 //HV *build_global_info2 (void);
 
-/* In input.c */
-void add_include_directory (char *filename);
-
