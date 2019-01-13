@@ -1,5 +1,7 @@
 extern INDEX **index_names;
 
+void init_index_commands (void);
+
 INDEX *index_by_name (char *name);
 void add_index (char *name, int in_code);
 INDEX *index_of_command (enum command_id cmd);

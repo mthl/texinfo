@@ -23,9 +23,6 @@ void set_documentlanguage (char *);
 /* In input.c */
 void add_include_directory (char *filename);
 
-/* In indices.c */
-void init_index_commands (void);
-
 /* In api.c */
 void reset_context_stack (void);
 

@@ -1,5 +1,4 @@
-/* Copyright 2010, 2011, 2012, 2013, 2014, 2015
-   Free Software Foundation, Inc.
+/* Copyright 2010-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -39,9 +38,6 @@ enum command_id lookup_command (char *cmdname);
 enum command_id add_texinfo_command (char *name);
 void remove_texinfo_command (enum command_id cmd);
 void wipe_user_commands (void);
-
-/* In indices.c */
-void init_index_commands (void);
 
 /* Available command flags. */
 
