@@ -35,6 +35,9 @@ enum command_id lookup_command (char *cmdname);
 #define command_flags(e) (!(e) ? 0 : (command_data((e)->cmd).flags))
 #define command_name(cmd) (command_data(cmd).cmdname)
 
+int close_paragraph_command (enum command_id cmd_id);
+int close_preformatted_command (enum command_id cmd_id);
+int item_line_command (enum command_id cmd_id);
 enum command_id add_texinfo_command (char *name);
 void remove_texinfo_command (enum command_id cmd);
 void wipe_user_commands (void);

@@ -6,11 +6,6 @@
 #include "def.h"
 #include "errors.h"
 
-/* In commands.c */
-int close_paragraph_command (enum command_id cmd_id);
-int close_preformatted_command (enum command_id cmd_id);
-int item_line_command (enum command_id cmd_id);
-
 /* In close.c */
 void close_command_cleanup (ELEMENT *current);
 ELEMENT *close_commands (ELEMENT *current, enum command_id closed_command,
