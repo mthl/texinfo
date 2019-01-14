@@ -115,18 +115,6 @@ parse_text (char *string)
 }
 
 
-int
-num_contents_children (ELEMENT *e)
-{
-  return e->contents.number;
-}
-
-int
-num_args_children (ELEMENT *e)
-{
-  return e->args.number;
-}
-
 static void element_to_perl_hash (ELEMENT *e);
 
 /* Return reference to Perl array built from e.  If any of

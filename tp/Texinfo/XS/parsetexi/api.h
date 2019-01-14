@@ -5,8 +5,6 @@ void parse_text (char *);
 void parse_string(char *);
 int parse_file (char *filename);
 ELEMENT *get_root (void);
-int num_contents_children (ELEMENT *e);
-int num_args_children (ELEMENT *e);
 void reset_parser (void);
 void reset_parser_except_conf (void);
 void set_debug (int);

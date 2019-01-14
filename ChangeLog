@@ -1,5 +1,16 @@
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove unused API functions.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs (element_type_name)
+	(num_contents_children, num_args_children, contents_child_by_index):
+	Remove ununused XSUB's.
+
+	* tp/Texinfo/XS/parsetexi/api.c (num_contents_children) 
+	(num_args_children): Remove unused.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove a generated comment.
 
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
