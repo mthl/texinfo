@@ -17,14 +17,6 @@
 #include "input.h"
 #include "macro.h"
 
-HV *build_texinfo_tree (void);
-AV *build_label_list (void);
-AV *build_internal_xref_list (void);
-HV *build_float_list (void);
-HV *build_index_data (void);
-HV *build_global_info (void);
-HV *build_global_info2 (void);
-
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 
 PROTOTYPES: ENABLE

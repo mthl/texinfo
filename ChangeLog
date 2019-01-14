@@ -1,5 +1,14 @@
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Move function declarations to header file.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs: Move function 
+	declarations to header file, api.h.  This means the compiler can 
+	check the declarations are consistent with the definitions in 
+	api.c.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove an unnecessary #include.
 
 	* tp/Texinfo/XS/parsetexi/input.c,

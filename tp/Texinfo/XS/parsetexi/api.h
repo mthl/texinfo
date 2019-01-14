@@ -18,6 +18,12 @@ void conf_set_CPP_LINE_DIRECTIVES (int i);
 void conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i);
 void reset_conf (void);
 
-//HV *build_global_info (void);
-//HV *build_global_info2 (void);
+HV *build_texinfo_tree (void);
+AV *build_label_list (void);
+AV *build_internal_xref_list (void);
+HV *build_float_list (void);
+HV *build_index_data (void);
+HV *build_global_info (void);
+HV *build_global_info2 (void);
+
 
