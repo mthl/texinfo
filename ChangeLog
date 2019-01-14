@@ -1,5 +1,13 @@
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Split code into separate file.
+
+	* tp/Texinfo/XS/parsetexi/conf.c: New file, along with header.  
+	This helps us to avoid declaring the 'conf' variable in two 
+	different header files.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Rearrange header files.
 
 	* tp/Texinfo/XS/parsetexi/debug.c: Include header file 

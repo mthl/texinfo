@@ -33,6 +33,7 @@
 #include "labels.h"
 #include "indices.h"
 #include "api.h"
+#include "conf.h"
 
 ELEMENT *Root;
 
@@ -933,40 +934,10 @@ build_global_info2 (void)
   return hv;
 }
 
-
-/* Configuration values. */
-CONF conf;
-
-void
-conf_set_show_menu (int i)
-{
-  conf.show_menu = i;
-}
-
-void
-conf_set_CPP_LINE_DIRECTIVES (int i)
-{
-  conf.cpp_line_directives = i;
-}
-
-void
-conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME (int i)
-{
-  conf.ignore_space_after_braced_command_name = i;
-}
-
-void
-reset_conf (void)
-{
-  memset (&conf, 0, sizeof (conf));
-  conf.show_menu = 1;
-  conf.cpp_line_directives = 1;
-  conf.ignore_space_after_braced_command_name = 1;
-}
-
 /* for debugging */
 void
 set_debug (int value)
 {
   debug_output = value;
 }
+

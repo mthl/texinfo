@@ -140,6 +140,8 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/close.c \
 		      parsetexi/text.c \
 		      parsetexi/text.h \
+		      parsetexi/conf.c \
+		      parsetexi/conf.h \
 		      parsetexi/context_stack.c \
 		      parsetexi/context_stack.h \
 		      parsetexi/debug.c \

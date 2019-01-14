@@ -7,6 +7,7 @@
 #include "errors.h"
 #include "counter.h"
 #include "macro.h"
+#include "conf.h"
 
 /* In close.c */
 void close_command_cleanup (ELEMENT *current);
@@ -122,6 +123,3 @@ KEY_PAIR *lookup_extra (ELEMENT *e, char *key);
 /* In menus.c */
 int handle_menu (ELEMENT **current_inout, char **line_inout);
 ELEMENT *enter_menu_entry_node (ELEMENT *current);
-
-/* In api.c */
-extern CONF conf;
