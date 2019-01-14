@@ -115,12 +115,6 @@ parse_text (char *string)
 }
 
 
-char *
-element_type_name (ELEMENT *e)
-{
-  return element_type_names[(e)->type];
-}
-
 int
 num_contents_children (ELEMENT *e)
 {

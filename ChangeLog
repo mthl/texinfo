@@ -1,5 +1,13 @@
 2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Move a function between files.
+
+	* tp/Texinfo/XS/parsetexi/api.c,
+	* tp/Texinfo/XS/parsetexi/parser.c (element_type_name): Move to 
+	parser.c.
+
+2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove some unused variables.
 
 	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):

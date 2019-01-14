@@ -22,7 +22,6 @@
 #include "parser.h"
 #include "text.h"
 #include "input.h"
-#include "tree.h"
 #include "api.h"
 
 
@@ -63,6 +62,13 @@ read_command_name (char **ptr)
   *ptr = p;
   return ret;
 }
+
+char *
+element_type_name (ELEMENT *e)
+{
+  return element_type_names[(e)->type];
+}
+
 
 
 /* Current node, section and part. */
