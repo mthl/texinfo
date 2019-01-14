@@ -1,5 +1,9 @@
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove a generated comment.
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Move function declarations to header file.
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.xs: Move function 

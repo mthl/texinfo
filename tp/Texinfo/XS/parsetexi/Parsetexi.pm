@@ -1,4 +1,4 @@
-# Copyright 2014-2018 Free Software Foundation, Inc.
+# Copyright 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,13 +30,6 @@ use Texinfo::Encoding;
 use Texinfo::Convert::NodeNameNormalization;
 
 our @ISA = qw(Exporter DynaLoader Texinfo::Report);
-# Items to export into callers namespace by default. Note: do not export
-# names by default without a very good reason. Use EXPORT_OK instead.
-# Do not simply export all your public functions/methods/constants.
-
-# This allows declaration	use XSParagraph ':all';
-# If you do not need this, moving things directly into @EXPORT or @EXPORT_OK
-# will save memory.
 our %EXPORT_TAGS = ( 'all' => [ qw(
     parser
     parse_texi_text
