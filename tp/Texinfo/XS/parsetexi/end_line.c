@@ -20,7 +20,6 @@
 #include <ctype.h>
 
 #include "parser.h"
-#include "tree.h"
 #include "text.h"
 #include "input.h"
 #include "convert.h"

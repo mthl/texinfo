@@ -5,6 +5,8 @@
 #include "handle_commands.h"
 #include "def.h"
 #include "errors.h"
+#include "counter.h"
+#include "macro.h"
 
 /* In close.c */
 void close_command_cleanup (ELEMENT *current);
@@ -92,7 +94,7 @@ extern enum kbd_enum global_kbdinputstyle;
 int register_global_command (ELEMENT *current);
 void wipe_global_info (void);
 
-#include "macro.h"
+extern COUNTER count_remaining_args, count_items, count_cells;
 
 /* In multitable.c */
 ELEMENT *item_line_parent (ELEMENT *current);
@@ -120,10 +122,6 @@ KEY_PAIR *lookup_extra (ELEMENT *e, char *key);
 /* In menus.c */
 int handle_menu (ELEMENT **current_inout, char **line_inout);
 ELEMENT *enter_menu_entry_node (ELEMENT *current);
-
-#include "counter.h"
-/* Defined in parser.c */
-extern COUNTER count_remaining_args, count_items, count_cells;
 
 /* In api.c */
 extern CONF conf;
