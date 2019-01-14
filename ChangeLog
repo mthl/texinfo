@@ -1,4 +1,12 @@
-2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove an unnecessary #include.
+
+	* tp/Texinfo/XS/parsetexi/input.c,
+	* tp/Texinfo/XS/parsetexi/parser.c: Remove an unnecessary 
+	#include "api.h".
+
+2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Move a function between files.
 
@@ -6,14 +14,14 @@
 	* tp/Texinfo/XS/parsetexi/parser.c (element_type_name): Move to 
 	parser.c.
 
-2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove some unused variables.
 
 	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):
 	Remove some unused variables.
 
-2019-01-04  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-01-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.91.
 

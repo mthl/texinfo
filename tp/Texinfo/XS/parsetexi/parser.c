@@ -22,7 +22,6 @@
 #include "parser.h"
 #include "text.h"
 #include "input.h"
-#include "api.h"
 
 
 /* Utility functions */
