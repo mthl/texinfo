@@ -1,3 +1,11 @@
+2019-01-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Documentation of colons in index entries.
+
+	* doc/texinfo.texi (Index Commands):
+	Water down the proscription of colons in an index entry, as this
+	works with some Info readers.
+
 2019-01-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Split code into separate file.

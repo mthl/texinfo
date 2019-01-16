@@ -9057,6 +9057,12 @@ Hello, there!
 whatever context) ends up before the material, where readers want to
 be, instead of after.
 
+Try to avoid using a colon in an index entry, as this may confuse some 
+Info readers.  @xref{Menu Parts} for more information about the
+structure of a menu entry.
+@c At the time of writing, it always works in standalone info, and a
+@c single colon not followed by a space works in Emacs.
+
 @cindex Index font types
 By default, entries for a concept index are printed in a small roman
 font and entries for the other indices are printed in a small
@@ -9090,13 +9096,6 @@ txiindexbackslashignore} causes the @samp{\mathopsup} entry in the
 index for this manual to be sorted as if it were @samp{mathopsup},
 so that it appears among the other entries beginning `M'.
 
-
-@quotation Caution
-Do not use a colon in an index entry.  In Info, a colon separates the
-menu entry name from the node name, so a colon in the entry itself
-confuses Info.  @xref{Menu Parts}, for more information about the
-structure of a menu entry.
-@end quotation
 
 @node Index Entries
 @section Making Index Entries
