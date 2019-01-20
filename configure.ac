@@ -75,6 +75,9 @@ fi
 AC_REQUIRE_AUX_FILE([tap-driver.sh])
 AC_PROG_AWK
 
+# for generating texindex.awk
+AM_MISSING_PROG(GAWK, gawk)
+
 # Checks for programs.
 AC_PROG_CC
 

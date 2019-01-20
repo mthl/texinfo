@@ -1,3 +1,17 @@
+2019-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Check for gawk version for rebuilding texindex.awk.
+
+	* configure.ac: Use AM_MISSING_PROG to look for gawk.
+	* texindex/Makefile.am (texindex.awk, ti.twjr): Use $(GAWK) 
+	instead of $(AWK).
+	* texindex/jrtangle: Add a check for the version number of gawk 
+	and, if too old, exit with status 63 in order to let the 
+	"missing" script know it is too old.
+
+	Bruno Haible reported that the rule to regenerate texindex.awk
+	was being run on OpenBSD 6.3 where there was no gawk.
+
 2019-01-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Documentation of colons in index entries.
