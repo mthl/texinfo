@@ -1,3 +1,15 @@
+2019-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Pass on -D flags to texi2dvi.
+
+	* tp/texi2any.pl: If calling texi2dvi, only pass along the 
+	values of flags before the file is parsed: not the values after 
+	the file is parsed.  These values might be wrong for the start 
+	of the file.
+
+	Stefan Husmann found that the Tramp manual wouldn't build with 
+	pretest texinfo-6.5.91
+
 2019-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Check for gawk version for rebuilding texindex.awk.
