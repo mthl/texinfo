@@ -1,3 +1,19 @@
+2019-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Attempt to make test suite parallel safe.
+
+	* tp/maintain/regenerate_cmd_tests.sh: Use 'mkdir -p' instead
+	of testing whether directory exists.
+	* tp/tests/run_parser_all.sh: Use 'mkdir -p' instead of testing 
+	if a directory exists.  Do not delete a temporary directory at 
+	the end.  Redirect stdin with "exec" instead of just redirecting 
+	a "while" loop in order to avoid problem with redirecting output 
+	under Solaris 10 shell.
+
+	Andreas Schwab reported that the test suite was not parallel 
+	safe.
+
+
 2019-01-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Pass on -D flags to texi2dvi.
