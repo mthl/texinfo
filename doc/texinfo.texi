@@ -14975,8 +14975,8 @@ is either @samp{latex} or @samp{texinfo}.
 
 @opindex --command@r{, for @command{texi2dvi}}
 One useful option to @code{texi2dvi} is @samp{--command=@var{cmd}}.
-This inserts @var{cmd} on a line by itself, after a
-@code{@@setfilename} line in a temporary copy of the input file, before
+This inserts @var{cmd} on a line by itself at the start of the file
+in a temporary copy of the input file, before
 running @TeX{}.  With this, you can specify different printing
 formats, such as @code{@@smallbook} (@pxref{@code{@@smallbook}}),
 @code{@@afourpaper} (@pxref{A4 Paper}), or @code{@@pagesizes}
