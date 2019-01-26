@@ -1,3 +1,13 @@
+2019-01-26  Bruno Haible  <bruno@clisp.org>
+
+	Fix test failures on HP-UX.
+
+	Reported by Richard Lloyd in
+	<https://lists.gnu.org/archive/html/bug-texinfo/2013-02/msg00030.html>.
+
+	* install-info/tests/ii-0041-test: Simulate zdiff.
+	* install-info/tests/ii-0050-test: Likewise.
+
 2019-01-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Make "texi2dvi --command" work without @setfilename in file.
