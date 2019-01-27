@@ -1,3 +1,4 @@
+/* tree_types.h - types for the parse tree that are used in many places */
 /* Copyright 2010-2018 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -93,7 +94,6 @@ typedef struct GLOBAL_INFO {
     ELEMENT dircategory_direntry; /* an array of elements */
 
     /* Elements that should be unique. */
-    // 288 and Common.pm:164
     ELEMENT *settitle; /* Title of document. */
     ELEMENT *copying;
     ELEMENT *title;
@@ -152,12 +152,6 @@ typedef struct GLOBAL_INFO {
     ELEMENT urefbreakstyle;
     ELEMENT xrefautomaticsectiontitle;
 } GLOBAL_INFO;
-
-typedef struct CONF {
-    int show_menu;
-    int cpp_line_directives;
-    int ignore_space_after_braced_command_name;
-} CONF;
 
 typedef struct {
     char *index_name;

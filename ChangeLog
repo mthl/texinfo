@@ -1,5 +1,15 @@
 2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Comments in parsetexi header files.
+
+	* tp/Texinfo/XS/parsetexi: Add a brief comment at the start of 
+	each header file.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/conf.h (CONF): Move to conf.h.
+	* tp/Texinfo/XS/parsetexi/errors.c: Remove #define _GNU_SOURCE.
+
+2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Header file changes and small fixes for parsetexi.
 
 	* tp/Texinfo/XS/parsetexi/tree_types.h,

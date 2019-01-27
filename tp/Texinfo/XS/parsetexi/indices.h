@@ -1,3 +1,5 @@
+/* indices.h - declarations for indices.h */
+
 extern INDEX **index_names;
 
 void init_index_commands (void);

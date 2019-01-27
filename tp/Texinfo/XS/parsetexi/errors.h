@@ -1,3 +1,5 @@
+/* errors.h - declarations for error.c */
+
 enum error_type { error, warning };
 
 void line_error (char *format, ...);

@@ -1,4 +1,4 @@
-#include <stdio.h>
+/* input.h - declarations for input.c */
 
 char *new_line (void);
 char *next_text (void);

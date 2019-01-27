@@ -1,3 +1,7 @@
+/* parser.h - include many other header files.  declarations for close.c,
+   end_line.c, debug.c, separator.c, parser.c, multitable.c, extra.c and 
+   menu.c. */
+
 #include "tree_types.h"
 #include "tree.h"
 #include "context_stack.h"

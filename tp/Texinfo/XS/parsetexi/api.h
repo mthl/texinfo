@@ -1,3 +1,4 @@
+/* api.h - declarations for api.c */
 extern ELEMENT *Root;
 
 void parse_text (char *);
