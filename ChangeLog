@@ -1,3 +1,18 @@
+2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Header file changes and small fixes for parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/macro.h (INFO_ENCLOSE, MACRO):
+	Move to text.h.
+	* tp/Texinfo/XS/parsetexi/close.c (close_command_cleanup): Fix 
+	incorrect comparison of enum values.
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace): 
+	Remove an unused variable.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/errors.h (enum error_type):
+	Move to text.h.
+
 2019-01-26  Bruno Haible  <bruno@clisp.org>
 
 	Fix test failures on HP-UX.

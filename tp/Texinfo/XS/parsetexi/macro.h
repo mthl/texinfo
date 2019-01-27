@@ -1,3 +1,16 @@
+typedef struct {
+    enum command_id cmd;
+    char *begin;
+    char *end;
+} INFO_ENCLOSE;
+
+typedef struct {
+    char *macro_name;
+    ELEMENT *element;
+    enum command_id cmd;
+    char *macrobody;
+} MACRO;
+
 void new_macro (char *name, ELEMENT *macro);
 ELEMENT *parse_macro_command_line (enum command_id, char **line_inout,
                                    ELEMENT *parent);

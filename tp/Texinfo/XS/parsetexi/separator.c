@@ -477,7 +477,6 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       else if (current->parent->cmd == CM_sortas)
         {
-          int i;
           ELEMENT *e = current->contents.list[0];
 
           if (e->text.end > 0)

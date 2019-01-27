@@ -1,3 +1,5 @@
+enum error_type { error, warning };
+
 void line_error (char *format, ...);
 void line_warn (char *format, ...);
 void command_error (ELEMENT *e, char *format, ...);

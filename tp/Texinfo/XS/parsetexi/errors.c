@@ -20,6 +20,7 @@
 #include <stdio.h>
 
 #include "tree_types.h"
+#include "errors.h"
 #include "input.h"
 #include "text.h"
 

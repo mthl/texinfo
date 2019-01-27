@@ -12,10 +12,8 @@
 
 #include "parser.h"
 #include "api.h"
-#include "errors.h"
 #include "indices.h"
 #include "input.h"
-#include "macro.h"
 
 MODULE = Parsetexi		PACKAGE = Parsetexi		
 

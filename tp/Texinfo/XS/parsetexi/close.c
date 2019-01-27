@@ -221,7 +221,7 @@ close_command_cleanup (ELEMENT *current)
                       if (e->cmd != CM_NONE
                           && (e->cmd != CM_c && e->cmd != CM_comment
                               && e->cmd != CM_end)
-                          || e->type != CM_NONE
+                          || e->type != ET_NONE
                           && e->type != ET_empty_line_after_command)
                         {
                           empty_format = 0;

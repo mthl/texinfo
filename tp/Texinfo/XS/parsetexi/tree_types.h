@@ -48,12 +48,6 @@ typedef struct KEY_PAIR {
     struct ELEMENT *value;
 } KEY_PAIR;
 
-typedef struct {
-    enum command_id cmd;
-    char *begin;
-    char *end;
-} INFO_ENCLOSE;
-
 typedef struct ELEMENT_LIST {
     struct ELEMENT **list;
     size_t number;
@@ -230,14 +224,5 @@ typedef struct {
     ELEMENT *content;
     char *normalized;
 } EXTRA_FLOAT_TYPE;
-
-enum error_type { error, warning };
-
-typedef struct {
-    char *macro_name;
-    ELEMENT *element;
-    enum command_id cmd;
-    char *macrobody;
-} MACRO;
 
 
