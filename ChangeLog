@@ -1,3 +1,11 @@
+2019-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use 'id' instead of 'name' attribute.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_footnote_command),
+	(_default_contents):
+	Use 'id' instead of 'name' attribute on <a> tag.
+
 2019-01-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Comments in parsetexi header files.
