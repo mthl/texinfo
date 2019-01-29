@@ -25,7 +25,7 @@
 	remove auxiliary index files) as this may delete the *.tar.gz 
 	file the user has just downloaded.
 
-	Keith Thomson reported problems with building Perl manuals with 
+	Keith Thompson reported problems with building Perl manuals with 
 	this system.
 
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
