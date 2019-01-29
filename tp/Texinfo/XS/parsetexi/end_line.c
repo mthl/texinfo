@@ -1010,7 +1010,6 @@ end_line_starting_block (ELEMENT *current)
 
       int i;
       ELEMENT *prototypes = new_element (ET_NONE);
-      prototypes->parent_type = route_not_in_tree;
 
       for (i = 0; i < current->contents.number; i++)
         {
@@ -1026,7 +1025,6 @@ end_line_starting_block (ELEMENT *current)
               new->type = ET_bracketed_multitable_prototype;
               new->parent = 0;
               new->extra_number = 0;
-              new->parent_type = route_not_in_tree;
               add_to_contents_as_array (prototypes, new);
             }
           else if (e->text.end > 0)
@@ -1042,7 +1040,6 @@ end_line_starting_block (ELEMENT *current)
                     break;
                   p = p2 + strcspn (p2, whitespace_chars);
                   new = new_element (ET_row_prototype);
-                  new->parent_type = route_not_in_tree;
                   text_append_n (&new->text, p2, p - p2);
                   add_to_contents_as_array (prototypes, new);
                 }
@@ -2171,7 +2168,6 @@ end_line (ELEMENT *current)
               else
                 {
                   index_contents = new_element (ET_NONE);
-                  index_contents->parent_type = route_not_in_tree;
                   if (index_contents->contents.number == 0)
                     add_to_contents_as_array (index_contents, index_entry);
                 }

@@ -1,5 +1,20 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove 'parent_type' field.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h (ELEMENT):
+	Remove field 'parent_type'.
+	(enum route_element_type): Remove.
+	* tp/Texinfo/XS/parsetexi/end_line.c (end_line_starting_block)
+	(end_line),
+	* tp/Texinfo/XS/parsetexi/indices.c (wipe_index),
+	* tp/Texinfo/XS/parsetexi/api.c (build_perl_array)
+	(build_single_index_data): Check whether 'parent' is null to see 
+	if an element is in tree.  This should work for all elements 
+	except the root of the tree.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove reference line numbers in parsetexi.
 
 	* tp/Texinfo/XS/parsetexi: Remove most of the comments with what 

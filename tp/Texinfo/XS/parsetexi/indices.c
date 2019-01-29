@@ -134,7 +134,8 @@ wipe_index (INDEX *idx)
   for (i = 0; i < idx->index_number; i++)
     {
       ie = &idx->index_entries[i];
-      if (ie->content && ie->content->parent_type == route_not_in_tree)
+      /* Destroy element if it is not in the main tree */
+      if (ie->content && !ie->content->parent)
         destroy_element (ie->content);
     }
   free (idx->name);

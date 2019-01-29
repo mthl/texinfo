@@ -61,10 +61,6 @@ typedef struct LINE_NR {
     char *macro;
 } LINE_NR;
 
-/* Type of a link in the route from the root of the tree to an element. */
-enum route_element_type { route_uninitialized, route_contents, route_args,
-    route_not_in_tree };
-
 typedef struct ELEMENT {
     enum command_id cmd;
     TEXT text;
@@ -78,12 +74,10 @@ typedef struct ELEMENT {
     size_t extra_number;
     size_t extra_space;
 
-    /* Set to route_not_in_tree if element not in main tree. */
-    enum route_element_type parent_type;
-
     /********* Used when building Perl tree only ********************/
-    /* should be HV *hv; */
     void *hv;
+    /* This should be HV *hv, but we don't want to include the Perl headers 
+       everywhere; */
 } ELEMENT;
 
 typedef struct GLOBAL_INFO {
