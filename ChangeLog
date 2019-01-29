@@ -1,5 +1,19 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Try to fix contrib/perldoc-all.
+
+	* contrib/perldoc-all/gendocs-sh: Add, from gendocs.sh in gnulib 
+	project.
+	* contrib/perldoc-all/Makefile.am: Access it instead of relying 
+	on gendocs.sh being in path.  Do not remove *.?? (intending to 
+	remove auxiliary index files) as this may delete the *.tar.gz 
+	file the user has just downloaded.
+
+	Keith Thomson reported problems with building Perl manuals with 
+	this system.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Centralise parser configuration values.
 
 	* tp/Texinfo/ParserNonXS.pm,

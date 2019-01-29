@@ -33,10 +33,10 @@ gendocs_args += --tex "--batch -t @finalout"
 gendocs_title = "Perl documentation in Texinfo"
 
 all: $(texi_pod_doc_incl)
-	rm -rf manual *.aux *.toc *.??
+	rm -rf manual *.aux *.toc
 # turns out the combined docs overflow one of TeX's arrays; increase it.
 	env save_size=100000 \
-	  gendocs.sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
+	  ./gendocs-sh $(gendocs_args) $(texi_pod_doc) $(gendocs_title)
 
 $(texi_pod_doc_incl): $(perl_pod_subdir)/*.pod
 	rm -rf $(texi_pod_subdir)
