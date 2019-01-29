@@ -1,5 +1,21 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove relics of ExtUtils::MakeMaker build system.
+
+	* tp/Makefile.PL, tp/MANIFEST: Remove.
+	* tp/maintain/MANIFEST_generated_files: Remove.
+	* tp/maintain/MANIFEST_perl_po: Remove.
+	* tp/maintain/prepare_perl_module_files.sh,
+	* tp/maintain/prepare_perl_standalone_module_archive.sh,
+	* tp/maintain/clean_perl_module_files.sh: Remove.
+
+	* tp/Makefile.am (MANIFEST, perl_specific_files): Remove.
+
+	This was for creating "standalone modules", but it is 
+	out-of-date, doesn't work and has never been used.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove test from 'many_input_files' subdirectory.
 
 	* tp/tests/many_input_files/indices.sh: Remove.
