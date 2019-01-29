@@ -1,3 +1,24 @@
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove test from 'many_input_files' subdirectory.
+
+	* tp/tests/many_input_files/indices.sh: Remove.
+	* tp/tests/indices/list_of_tests (index_table): New test to 
+	partially replace indices.sh.  Only one input file is tested.
+
+	This test tested that texi2any would work with several manuals 
+	to process given to it on the command line.  I suspect this 
+	feature is rarely used.  The extra complexity this gave to the 
+	test suite is not worth it IMHO.
+	Now the many_input_files subdirectory only contains the 
+	latex2html and tex4ht tests, which are not run by default.
+
+	I checks that the output for the index_table.texi file was the 
+	same by checking the same files were output and that the 
+	contents were the same, with a command like
+	  for f in * ; do echo DIFF $f ;
+	  diff $f ../../../many_input_files/indices_res/$f ; done
+
 2019-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Use 'id' instead of 'name' attribute.
