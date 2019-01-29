@@ -1,5 +1,13 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Continue search after a node wasn't found.
+
+	* info/session.c (info_search_internal): If a node couldn't be 
+	found, go onto the next node.
+	This could happen if there was a comma in a node name.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove duplicate sub definition.
 
 	* Pod-Simple-Texinfo/pod2texi.pl (__): Remove definition as 
