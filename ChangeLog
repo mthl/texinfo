@@ -1,5 +1,13 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove old files from parsetexi subdirectory.
+
+	* tp/Texinfo/XS/parsetexi/complete_tree.pl,
+	* tp/Texinfo/XS/parsetexi/debug_perl.txt,
+	* tp/Texinfo/XS/parsetexi/makeinfo-debug.txt: Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove relics of ExtUtils::MakeMaker build system.
 
 	* tp/Texinfo/XS/Makefile.PL,
