@@ -1,5 +1,13 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove duplicate sub definition.
+
+	* Pod-Simple-Texinfo/pod2texi.pl (__): Remove definition as 
+	there is already one exported by Texinfo::Common (for translated 
+	strings).
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Try to fix contrib/perldoc-all.
 
 	* contrib/perldoc-all/gendocs-sh: Add, from gendocs.sh in gnulib 
