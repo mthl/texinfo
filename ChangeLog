@@ -1,5 +1,15 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Centralise parser configuration values.
+
+	* tp/Texinfo/ParserNonXS.pm,
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Move to Common.pm.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Use this hash instead of 
+	having a separate copy for this module.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove 'parent_type' field.
 
 	* tp/Texinfo/XS/parsetexi/tree_types.h (ELEMENT):
