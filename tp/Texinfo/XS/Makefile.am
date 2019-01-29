@@ -98,14 +98,6 @@ endif
 AM_LDFLAGS = -avoid-version -module $(PERL_CONF_ccdlflags)
 AM_LDFLAGS += $(PLATFORM_LDFLAGS)
 
-# only used to regenerate a stand-alone perl module
-perl_specific_files = \
-  Makefile.PL \
-  MANIFEST \
-  prepare_standalone_perl_module.sh
-
-# EXTRA_DIST += $(perl_specific_files)
-
 ########################## parsetexi
 
 p=parsetexi

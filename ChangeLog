@@ -2,6 +2,15 @@
 
 	Remove relics of ExtUtils::MakeMaker build system.
 
+	* tp/Texinfo/XS/Makefile.PL,
+	* tp/Texinfo/XS/MANIFEST,
+	* tp/Texinfo/XS/prepare_standalone_perl_module.sh: Remove.
+	* tp/Texinfo/XS/Makefile.am (perl_specific_files): Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove relics of ExtUtils::MakeMaker build system.
+
 	* tp/Makefile.PL, tp/MANIFEST: Remove.
 	* tp/maintain/MANIFEST_generated_files: Remove.
 	* tp/maintain/MANIFEST_perl_po: Remove.
