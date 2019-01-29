@@ -173,7 +173,7 @@ EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \
 	   $p/command_data.txt $p/command_data.awk
 
 # For reference
-EXTRA_DIST+=$p/Common.pm $p/Parser-5556.pm
+EXTRA_DIST+=$p/Parser-5556.pm
 
 $(srcdir)/$p/element_types.c $(srcdir)/$p/element_types.h: $p/element_types.txt $p/element_types.awk
 	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/element_types.awk \

@@ -134,7 +134,6 @@ skip_comment (char *q, int *has_comment)
 }
 
 /* Process argument to special line command. */
-// 5377
 ELEMENT *
 parse_special_misc_command (char *line, enum command_id cmd, int *has_comment)
 {
@@ -523,7 +522,7 @@ parse_line_command_args (ELEMENT *line_command)
         break;
       }
     case CM_synindex:
-    case CM_syncodeindex: // 5595
+    case CM_syncodeindex:
       {
         /* synindex FROM TO */
         char *from = 0, *to = 0;
@@ -555,7 +554,7 @@ parse_line_command_args (ELEMENT *line_command)
           line_error ("unknown destination index in @%s: %s",
                       command_name(cmd), to);
 
-        if (from_index && to_index) // 5606
+        if (from_index && to_index)
           {
             INDEX *current_to = to_index;
             /* Find ultimate index this merges to. */
@@ -580,13 +579,13 @@ parse_line_command_args (ELEMENT *line_command)
         free (to);
 
         break;
-      synindex_invalid: // 5638
+      synindex_invalid:
         line_error ("bad argument to @%s: %s",
                      command_name(cmd), line);
         free (from); free (to);
         break;
       }
-    case CM_printindex: // 5641
+    case CM_printindex:
       {
         char *arg;
         char *p = line;
@@ -600,7 +599,6 @@ parse_line_command_args (ELEMENT *line_command)
               line_error ("unknown index `%s' in @printindex", arg);
             else
               {
-                // 5650
                 if (idx->merged_in)
                   {
                     INDEX *i2;
@@ -1005,7 +1003,6 @@ end_line_starting_block (ELEMENT *current)
   if (c != ct_line)
     abort ();
 
-  // 2881
   if (current->parent->cmd == CM_multitable)
     {
       /* Parse prototype row for a @multitable.  Handling
@@ -1032,7 +1029,7 @@ end_line_starting_block (ELEMENT *current)
               new->parent_type = route_not_in_tree;
               add_to_contents_as_array (prototypes, new);
             }
-          else if (e->text.end > 0) // 2893
+          else if (e->text.end > 0)
             {
               /* Split the text up by whitespace. */
               char *p, *p2;
@@ -1050,7 +1047,7 @@ end_line_starting_block (ELEMENT *current)
                   add_to_contents_as_array (prototypes, new);
                 }
             }
-          else // 2913
+          else
             {
               if (e->cmd != CM_c && e->cmd != CM_comment)
                 {
@@ -1076,7 +1073,7 @@ end_line_starting_block (ELEMENT *current)
     }
   isolate_last_space (current);
 
-  current = current->parent; //2965
+  current = current->parent;
   if (counter_value (&count_remaining_args, current) != -1)
     counter_pop (&count_remaining_args);
 
@@ -1091,7 +1088,7 @@ end_line_starting_block (ELEMENT *current)
       destroy_element (pop_element_from_args (current));
     }
 
-  if (current->cmd == CM_float) // 2943
+  if (current->cmd == CM_float)
     {
       char *type = "";
       KEY_PAIR *k;
@@ -1099,7 +1096,6 @@ end_line_starting_block (ELEMENT *current)
       current->line_nr = line_nr;
       if (current->args.number >= 2)
         {
-          // 2950
           NODE_SPEC_EXTRA *float_label;
           float_label = parse_node_manual (args_child_by_index (current, 1));
           check_internal_node (float_label);
@@ -1116,7 +1112,7 @@ end_line_starting_block (ELEMENT *current)
           eft = (EXTRA_FLOAT_TYPE *) k->value;
           type = eft->normalized;
         }
-      // add to global 'floats' array
+      /* add to global 'floats' array */
       if (floats_number == floats_space)
         {
           floats_list = realloc (floats_list,
@@ -1128,7 +1124,7 @@ end_line_starting_block (ELEMENT *current)
         add_extra_element (current, "float_section", current_section);
     }
 
-  if (command_flags(current) & CF_blockitem) // 2981
+  if (command_flags(current) & CF_blockitem)
     {
       if (current->cmd == CM_enumerate)
         {
@@ -1156,7 +1152,7 @@ end_line_starting_block (ELEMENT *current)
             }
           add_extra_string_dup (current, "enumerate_specification", spec);
         }
-      else if (item_line_command (current->cmd)) // 3002
+      else if (item_line_command (current->cmd))
         {
           KEY_PAIR *k;
           k = lookup_extra (current, "command_as_argument");
@@ -1185,7 +1181,7 @@ end_line_starting_block (ELEMENT *current)
 
       /* check that command_as_argument of the @itemize is alone on the line,
          otherwise it is not a command_as_argument */
-      if (current->cmd == CM_itemize) // 3019
+      if (current->cmd == CM_itemize)
         {
           KEY_PAIR *k;
           k = lookup_extra (current, "command_as_argument");
@@ -1220,7 +1216,7 @@ end_line_starting_block (ELEMENT *current)
             }
         }
 
-      // 3040 Check if command_as_argument isn't an accent command
+      // Check if command_as_argument isn't an accent command
       if (current->cmd == CM_itemize || item_line_command(current->cmd))
         {
           KEY_PAIR *k = lookup_extra (current, "command_as_argument");
@@ -1344,7 +1340,7 @@ end_line_misc_line (ELEMENT *current)
       else
         {
           add_extra_string (current, "text_arg", text);
-          if (current->cmd == CM_end) /* 3128 */
+          if (current->cmd == CM_end)
             {
               char *line = text;
 
@@ -1362,8 +1358,7 @@ end_line_misc_line (ELEMENT *current)
                   else
                     {
                       debug ("END BLOCK %s", end_command);
-                      /* 3140 Handle conditional block commands (e.g.  
-                         @ifinfo) */
+                      /* Handle conditional block commands (e.g. @ifinfo) */
 
                       /* If we are in a non-ignored conditional, there is not
                          an element for the block in the tree; it is recorded 
@@ -1421,7 +1416,7 @@ end_line_misc_line (ELEMENT *current)
             {
               /* An error message is issued below. */
             }
-          else if (current->cmd == CM_include) // 3166
+          else if (current->cmd == CM_include)
             {
               int status;
               char *fullpath;
@@ -1454,7 +1449,7 @@ end_line_misc_line (ELEMENT *current)
                 add_extra_string_dup (current, "input_perl_encoding",
                                       global_info.input_perl_encoding);
             }
-          else if (current->cmd == CM_documentencoding) // 3190
+          else if (current->cmd == CM_documentencoding)
             {
               int i; char *p, *text2;
               char *texinfo_encoding, *perl_encoding, *input_encoding;
@@ -1593,11 +1588,11 @@ end_line_misc_line (ELEMENT *current)
                   add_extra_string_dup (current, "input_encoding_name",
                                         input_encoding);
 
-                  global_info.input_encoding_name = input_encoding; // 3210
+                  global_info.input_encoding_name = input_encoding;
                   set_input_encoding (input_encoding);
                 }
             }
-          else if (current->cmd == CM_documentlanguage) // 3223
+          else if (current->cmd == CM_documentlanguage)
             {
               char *p, *q;
 
@@ -1672,7 +1667,7 @@ end_line_misc_line (ELEMENT *current)
           free (p);
         }
     }
-  else if (current->cmd == CM_node) /* 3235 */
+  else if (current->cmd == CM_node)
     {
       int i;
       ELEMENT *arg;
@@ -1718,7 +1713,7 @@ end_line_misc_line (ELEMENT *current)
 
       current_node = current;
     }
-  else if (current->cmd == CM_listoffloats) /* 3248 */
+  else if (current->cmd == CM_listoffloats)
     {
       parse_float_type (current);
     }
@@ -1760,7 +1755,7 @@ end_line_misc_line (ELEMENT *current)
         }
     }
 
-  current = current->parent; /* 3285 */
+  current = current->parent;
   if (end_command) /* Set above */
     {
       /* More processing of @end */
@@ -1771,7 +1766,7 @@ end_line_misc_line (ELEMENT *current)
       /* Reparent the "@end" element to be a child of the block element. */
       end_elt = pop_element_from_contents (current);
 
-      /* 3289 If not a conditional */
+      /* If not a conditional */
       if (command_data(end_id).data != BLOCK_conditional)
         {
           ELEMENT *closed_command;
@@ -1808,25 +1803,19 @@ end_line_misc_line (ELEMENT *current)
              conditional block. */
           destroy_element_and_children (end_elt);
         }
-    } /* 3340 */
+    }
   else
     {
       if (close_preformatted_command (cmd))
         current = begin_preformatted (current);
     }
 
-  /* 3346 */
   /* If a file was included, remove the include command completely.
      Also ignore @setfilename in included file, as said in the manual. */
   if (included_file || (cmd == CM_setfilename && top_file_index () > 0))
     destroy_element_and_children (pop_element_from_contents (current));
-
-  /* 3350 */
   else if (cmd == CM_setfilename && (current_node || current_section))
-    {
-      command_warn (misc_cmd, "@setfilename after the first element");
-    }
-  /* 3355 columnfractions */
+    command_warn (misc_cmd, "@setfilename after the first element");
   else if (cmd == CM_columnfractions)
     {
       ELEMENT *before_item;
@@ -1858,13 +1847,13 @@ end_line_misc_line (ELEMENT *current)
           current = before_item;
         }
     }
-  else if (command_data(cmd).flags & CF_root) /* 3380 */
+  else if (command_data(cmd).flags & CF_root)
     {
       current = last_contents_child (current);
       if (cmd == CM_node)
         counter_pop (&count_remaining_args);
       
-      /* 3383 Destroy all contents (why do we do this?) */
+      /* Destroy all contents (TODO: check why do we do this?) */
       while (last_contents_child (current))
         destroy_element (pop_element_from_contents (current));
 
@@ -1882,7 +1871,6 @@ end_line_misc_line (ELEMENT *current)
                 }
             }
 
-          // "current parts" - 3394
           if (current_part)
             {
               add_extra_element (current, "associated_part", current_part);
@@ -1908,7 +1896,7 @@ end_line_misc_line (ELEMENT *current)
                          "associated with nodes");
             }
         }
-    } /* 3416 */
+    }
 
   return current;
 }
@@ -1924,7 +1912,7 @@ end_line (ELEMENT *current)
       && last_contents_child (current)->type == ET_empty_line)
     {
       debug ("END EMPTY LINE");
-      if (current->type == ET_paragraph) /* 2625 */
+      if (current->type == ET_paragraph)
         {
           ELEMENT *e;
           /* Remove empty_line element. */
@@ -1972,8 +1960,6 @@ end_line (ELEMENT *current)
           current = end_paragraph (current, 0, 0);
         }
     }
-
-  // 2667
   /* The end of the line of a menu. */
   else if (current->type == ET_menu_entry_name
            || current->type == ET_menu_entry_node)
@@ -2004,7 +1990,6 @@ end_line (ELEMENT *current)
             }
         }
 
-      // 2689
       /* Abort the menu entry if there is no destination node given. */
       if (empty_menu_entry_node || current->type == ET_menu_entry_name)
         {
@@ -2014,7 +1999,7 @@ end_line (ELEMENT *current)
           menu_entry = pop_element_from_contents (menu);
           if (menu->contents.number > 0
               && last_contents_child(menu)->type == ET_menu_entry)
-            { // 2697
+            {
               ELEMENT *entry, *description = 0;
               int j;
 
@@ -2038,7 +2023,7 @@ end_line (ELEMENT *current)
             }
           else if (menu->contents.number > 0
                    && last_contents_child(menu)->type == ET_menu_comment)
-            { // 2716
+            {
               description_or_menu_comment = last_contents_child(menu);
             }
           if (description_or_menu_comment)
@@ -2058,7 +2043,7 @@ end_line (ELEMENT *current)
                 }
               push_context (ct_preformatted);
             }
-          else // 2735
+          else
             {
               ELEMENT *e;
               e = new_element (ET_menu_comment);
@@ -2099,7 +2084,7 @@ end_line (ELEMENT *current)
           destroy_element (menu_entry);
           }
         }
-      else // 2768
+      else
         {
           debug ("MENU ENTRY END LINE");
           current = current->parent;
@@ -2109,7 +2094,7 @@ end_line (ELEMENT *current)
         }
     }
 
-  /* End of a definition line, like @deffn */ // 2778
+  /* End of a definition line, like @deffn */
   else if (current->parent && current->parent->type == ET_def_line)
     {
       enum command_id def_command, original_def_command;
@@ -2152,7 +2137,7 @@ end_line (ELEMENT *current)
 
           add_extra_def_info (current->parent, "def_parsed_hash", def_info);
 
-          if (def_info->name) // 2811
+          if (def_info->name)
             {
               char *t;
               /* Set index_entry unless an empty ET_bracketed_def_content. */
@@ -2167,11 +2152,10 @@ end_line (ELEMENT *current)
                 index_entry = def_info->name;
             }
 
-          if (index_entry) // 2822
+          if (index_entry)
             {
               ELEMENT *index_contents = 0;
 
-              // 2824
               if (def_info->class &&
                   (def_command == CM_defop
                       || def_command == CM_deftypeop
@@ -2195,7 +2179,7 @@ end_line (ELEMENT *current)
               enter_index_entry (def_command,
                                  original_def_command,
                                  current->parent,
-                                 index_contents); // 2853
+                                 index_contents);
             }
           else
             {
@@ -2204,18 +2188,16 @@ end_line (ELEMENT *current)
             }
         }
 
-      current = current->parent->parent; // 2868
+      current = current->parent->parent;
       current = begin_preformatted (current);
     }
-
-  // 2872
   /* End of a line starting a block. */
   else if (current->type == ET_block_line_arg)
     {
       current = end_line_starting_block (current);
     }
 
-  /* after an "@end verbatim" 3090 */
+  /* after an "@end verbatim" */
   else if (current->contents.number
            && last_contents_child(current)->type == ET_empty_line_after_command
            && contents_child_by_index(current, -2)
@@ -2233,7 +2215,6 @@ end_line (ELEMENT *current)
     {
       current = end_line_misc_line (current);
     }
-  /* 3419 */
   else if (current->contents.number == 1
            && current->contents.list[0]->type == ET_empty_line_after_command
            || current->contents.number == 2
@@ -2296,5 +2277,5 @@ end_line (ELEMENT *current)
       current = end_line (current);
     }
   return current;
-} /* end_line 3487 */
+}
 

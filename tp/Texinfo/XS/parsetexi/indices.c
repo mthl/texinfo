@@ -251,7 +251,6 @@ init_index_commands (void)
 }
 
 
-// 2530
 /* INDEX_TYPE_COMMAND is used to determine which index to enter the entry in.
    INDEX_AT_COMMAND is the Texinfo @-command defining the index entry.
    CONTENT is an element whose contents represent the text of the

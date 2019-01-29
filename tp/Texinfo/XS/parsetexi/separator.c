@@ -36,7 +36,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       ELEMENT *arg;
 
       command = current->cmd;
-      /* 4896 */
       counter_push (&count_remaining_args, current,
                     command_data(current->cmd).data);
       counter_dec (&count_remaining_args);
@@ -62,7 +61,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
               add_extra_string_dup (current->parent, "delimiter", c);
             }
         }
-        /* 4903 */
       else if (command_data(command).data == BRACE_context)
         {
           if (command == CM_caption || command == CM_shortcaption)
@@ -134,8 +132,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
           }
           current->type = ET_brace_command_context;
         }
-
-      /* 4945 */
       else /* not context brace */
         {
           current->type = ET_brace_command_arg;
@@ -157,8 +153,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
         }
       debug ("OPENED");
     }
-
-  /* 4967 */
   else if (current->parent && (current->parent->cmd == CM_multitable
            || current->parent->type == ET_def_line))
     {
@@ -184,8 +178,6 @@ handle_open_brace (ELEMENT *current, char **line_inout)
       text_append (&e->text, "{");
       add_to_element_contents (current, e);
     }
-
-  // 4993
   else if (current_context() == ct_math
            || current_context() == ct_rawpreformatted
            || current_context() == ct_inlineraw)
@@ -409,7 +401,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       else if ((command_data(closed_command).flags & CF_inline)
                || closed_command == CM_abbr
                || closed_command == CM_acronym)
-        { // 5129
+        {
           if (current->parent->cmd == CM_inlineraw)
             {
               if (ct_inlineraw != pop_context ())
@@ -422,7 +414,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                          command_name(current->parent->cmd));
             }
         }
-      else if (closed_command == CM_errormsg) // 5173
+      else if (closed_command == CM_errormsg)
         {
           char *arg = current->contents.list[0]->text.text;
           if (arg)
@@ -496,7 +488,6 @@ handle_close_brace (ELEMENT *current, char **line_inout)
         }
       register_global_command (current->parent);
 
-      // 5190
       if (current->parent->cmd == CM_anchor
           || current->parent->cmd == CM_hyphenation
           || current->parent->cmd == CM_caption
@@ -513,7 +504,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
       if (close_preformatted_command(closed_command))
         current = begin_preformatted (current);
     } /* CF_brace */
-  else if (current->type == ET_rawpreformatted) // 5199
+  else if (current->type == ET_rawpreformatted)
     {
       /* lone right braces are accepted in a rawpreformatted */
       ELEMENT *e = new_element (ET_NONE);

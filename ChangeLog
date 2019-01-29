@@ -1,5 +1,16 @@
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove reference line numbers in parsetexi.
+
+	* tp/Texinfo/XS/parsetexi: Remove most of the comments with what 
+	the line numbers were of the corresponding Perl code at the time 
+	that parsetexi was first started.  Leave some where more work 
+	might be needed.
+	* tp/Texinfo/XS/parsetexi/main.c: Remove.
+	* tp/Texinfo/XS/parsetexi/Common.pm: Remove.
+
+2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove old files from parsetexi subdirectory.
 
 	* tp/Texinfo/XS/parsetexi/complete_tree.pl,
