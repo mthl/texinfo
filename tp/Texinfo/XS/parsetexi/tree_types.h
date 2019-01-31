@@ -178,9 +178,9 @@ typedef struct INDEX {
     void *contained_hv;
 } INDEX;
 
-/* Used when dumping to a text stream only.  A reference to an
-   index entry, in the "index_entry" extra key of an element.
-   index->index_entries[entry] is the referred-to index entry. */
+/* A reference to an index entry, in the "index_entry" extra key of
+   an element.  index->index_entries[entry] is the referred-to index
+   entry.  Not actually used in api.c (element_to_perl_hash). */
 typedef struct {
     INDEX *index;
     int entry;
@@ -192,7 +192,6 @@ typedef struct {
     ELEMENT *node_content;
 } NODE_SPEC_EXTRA;
 
-
 /* For 'def_parsed_hash'. */
 typedef struct {
     ELEMENT *category;
@@ -200,13 +199,6 @@ typedef struct {
     ELEMENT *type;
     ELEMENT *name;
 } DEF_INFO;
-
-typedef struct {
-    char **labels;
-    ELEMENT **elements;
-    int nelements;
-    int space;
-} DEF_ARGS_EXTRA;
 
 typedef struct {
     ELEMENT *content;
