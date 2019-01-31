@@ -1,5 +1,13 @@
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Centralise parser configuration values.
+
+	* tp/texi2any.pl: Refer to %default_customization_values in 
+	Texinfo::Common instead of Texinfo::Parser.  Continues change 
+	made on 2019-01-29.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	perldoc-all Makefile change
 
 	* contrib/perldoc-all/GNUmakefile: Change distclean target to 

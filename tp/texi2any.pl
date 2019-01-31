@@ -1071,7 +1071,7 @@ if (defined($formats_table{$format}->{'module'})) {
 # using no warnings is wrong, but a way to avoid a spurious warning.
 no warnings 'once';
 foreach my $parser_settable_option (
-                keys(%Texinfo::Parser::default_customization_values)) {
+                keys(%Texinfo::Common::default_customization_values)) {
   if (defined(get_conf($parser_settable_option))) {
     $parser_default_options->{$parser_settable_option} 
        = get_conf($parser_settable_option);
