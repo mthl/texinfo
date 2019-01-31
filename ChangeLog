@@ -1,5 +1,13 @@
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove ununused output variable.
+
+	* tp/Texinfo/XS/configure.ac (XSPARAGRAPH_INTERFACE_VERSION):
+	Do not set with AC_SUBST.  This was intended to be used when 
+	building XSParagraph as a stand-alone module.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use an m4 loop.
 
 	* tp/Texinfo/XS/configure.ac (lookup_perl_conf_values): New 
