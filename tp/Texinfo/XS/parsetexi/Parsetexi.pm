@@ -413,7 +413,7 @@ BEGIN {
     "Parsetexi",
     "Texinfo::ParserNonXS",
     "Parsetexi",
-    1);
+    0);
 } # end BEGIN
 
 END {

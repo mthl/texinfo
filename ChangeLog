@@ -1,5 +1,12 @@
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Unify AM_CFLAGS for XS modules.
+
+	* tp/Texinfo/XS/Makefile.am (AM_CFLAGS): Put flags for C 
+	compiler in here, rather than in target-specific variables.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix loading of XS module.
 
 	* tp/Texinfo/Conver/Paragraph.pm: Use 0 as the XS interface 

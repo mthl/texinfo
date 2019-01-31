@@ -75,16 +75,8 @@ EXTRA_DIST += MiscXS.xs
 
 
 AM_CFLAGS = $(PERL_CONF_ccflags) $(PERL_CONF_optimize)
-
-XSParagraph_la_CFLAGS = $(AM_CFLAGS)
-XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"
-
-TestXS_la_CFLAGS = $(AM_CFLAGS)
-TestXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
-
-MiscXS_la_CFLAGS = $(AM_CFLAGS)
-MiscXS_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"  "-I$(PERL_INC)"
-
+AM_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(VERSION)\"
+AM_CFLAGS += -I$(PERL_INC)
 
 if HOST_NEEDS_NO_UNDEFINED
   PLATFORM_LDFLAGS = -no-undefined -L$(PERL_INC) $(PERL_CONF_libperl)
@@ -105,14 +97,9 @@ p=parsetexi
 modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
 dist_modules_DATA = $p/Parsetexi.pm
 
-
 if HAVE_ICONV
 xs_LTLIBRARIES += Parsetexi.la
 endif
-
-Parsetexi_la_CFLAGS = $(AM_CFLAGS)
-Parsetexi_la_CFLAGS += -DVERSION=\"$(VERSION)\" "-I$(PERL_INC)"
-
 
 Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
                       parsetexi/api.c \
