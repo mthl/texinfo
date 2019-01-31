@@ -60,7 +60,7 @@ BEGIN {
     "Texinfo::XS::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
     "XSParagraph",
-    1,
+    0,
     $warning_message,
     $fatal_message
   );
