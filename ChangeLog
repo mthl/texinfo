@@ -1,3 +1,10 @@
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	perldoc-all Makefile change
+
+	* contrib/perldoc-all/GNUmakefile: Change distclean target to 
+	dist-hook to avoid deleting inappropriate files with distclean.
+
 2019-01-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Continue search after a node wasn't found.

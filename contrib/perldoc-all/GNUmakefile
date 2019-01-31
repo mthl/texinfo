@@ -77,6 +77,7 @@ mostlyclean:
 
 # when running make dist, ensure we have none of the build files,
 # since the whole contrib/ directory is included in its entirety.
-distclean:
-	rm -rf manual perl-5.*.* $(texi_pod_doc) $(texi_pod_doc_incl)
+dist-hook:
+	cd $(distdir) && \
+	rm -rf manual perl-5.*.* $(texi_pod_doc) $(texi_pod_doc_incl) && \
 	rm -rf *.?? *.??? *.info *~ \#*
