@@ -394,7 +394,7 @@ if test $enable_xs = check; then
    && TEXINFO_XS=debug ; export TEXINFO_XS \
    && ${PERL} -I . \
               -I ${xs_srcdir} \
-              -w ${xs_srcdir}/Texinfo/XS/fail.pl \
+              -e 'require Texinfo::XS::TestXS;' \
       | grep 'message from XS module') \
   && enable_xs=yes
   AC_MSG_CHECKING([whether we can build Perl extension (XS) modules])

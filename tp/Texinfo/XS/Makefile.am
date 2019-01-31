@@ -43,7 +43,7 @@ XSUBPPARGS = -typemap $(PERL_CONF_privlibexp)/ExtUtils/typemap -typemap typemap
 .xs.c:
 	$(XSUBPP) $(XSUBPPARGS) $< > $*.xsc && mv $*.xsc $*.c
 
-EXTRA_DIST+= TestXS.pm fail.pl typemap
+EXTRA_DIST += TestXS.pm typemap
 
 # -------------------------------------------------------
 
