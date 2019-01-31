@@ -74,7 +74,7 @@ CLEANFILES += MiscXS.c
 EXTRA_DIST += MiscXS.xs
 
 
-AM_CFLAGS = $(PERL_CONF_ccflags)
+AM_CFLAGS = $(PERL_CONF_ccflags) $(PERL_CONF_optimize)
 
 XSParagraph_la_CFLAGS = $(AM_CFLAGS)
 XSParagraph_la_CFLAGS += -DVERSION=\"$(VERSION)\" -DXS_VERSION=\"$(XSPARAGRAPH_INTERFACE_VERSION)\"  "-I$(PERL_INC)"

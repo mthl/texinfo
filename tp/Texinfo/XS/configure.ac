@@ -122,7 +122,7 @@ AC_ARG_VAR([PERL_EXT_LDFLAGS], [Linker flags for a Perl extension])
 AC_ARG_VAR([PERL_EXT_CC], [Compiler for a Perl extension])
 
 if test x$disable_xs != xyes; then
-    lookup_perl_conf_values([[ccflags], [cccdlflags]])
+    lookup_perl_conf_values([[ccflags], [cccdlflags], [optimize]])
     
     # flags for linking the extension, e.g. -rpath.
     lookup_perl_conf([ccdlflags])
