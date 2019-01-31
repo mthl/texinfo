@@ -1,5 +1,13 @@
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use an m4 loop.
+
+	* tp/Texinfo/XS/configure.ac (lookup_perl_conf_values): New 
+	macro, to use m4_foreach (from autoconf m4sugar) to look up 
+	several values with lookup_perl_conf.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not require xsubpp.
 
 	* tp/Texinfo/XS/configure.ac: Check for xsubpp with 
