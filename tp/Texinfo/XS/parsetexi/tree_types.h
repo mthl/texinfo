@@ -80,73 +80,6 @@ typedef struct ELEMENT {
        everywhere; */
 } ELEMENT;
 
-typedef struct GLOBAL_INFO {
-    char *input_file_name;
-    char *input_encoding_name;
-    char *input_perl_encoding;
-    int sections_level;
-    ELEMENT dircategory_direntry; /* an array of elements */
-
-    /* Elements that should be unique. */
-    ELEMENT *settitle; /* Title of document. */
-    ELEMENT *copying;
-    ELEMENT *title;
-    ELEMENT *titlepage;
-    ELEMENT *top;
-    ELEMENT *setfilename;
-    ELEMENT *documentdescription;
-    ELEMENT *setcontentsaftertitlepage;
-    ELEMENT *setshortcontentsaftertitlepage;
-    ELEMENT *novalidate;
-    ELEMENT *validatemenus;
-    ELEMENT *pagesizes;
-    ELEMENT *fonttextsize;
-    ELEMENT *footnotestyle;
-    ELEMENT *setchapternewpage;
-    ELEMENT *everyheading;
-    ELEMENT *everyfooting;
-    ELEMENT *evenheading;
-    ELEMENT *evenfooting;
-    ELEMENT *oddheading;
-    ELEMENT *oddfooting;
-    ELEMENT *everyheadingmarks;
-    ELEMENT *everyfootingmarks;
-    ELEMENT *evenheadingmarks;
-    ELEMENT *oddheadingmarks;
-    ELEMENT *evenfootingmarks;
-    ELEMENT *oddfootingmarks;
-    ELEMENT *shorttitlepage;
-
-    /* Arrays of elements */
-    ELEMENT footnotes;
-    ELEMENT hyphenation;
-    ELEMENT insertcopying;
-    ELEMENT printindex;
-    ELEMENT subtitle;
-    ELEMENT titlefont;
-    ELEMENT listoffloats;
-    ELEMENT detailmenu;
-    ELEMENT part;
-
-    ELEMENT allowcodebreaks;
-    ELEMENT clickstyle;
-    ELEMENT codequotebacktick;
-    ELEMENT codequoteundirected;
-    ELEMENT contents;
-    ELEMENT deftypefnnewline;
-    ELEMENT documentencoding;
-    ELEMENT documentlanguage;
-    ELEMENT exampleindent;
-    ELEMENT firstparagraphindent;
-    ELEMENT frenchspacing;
-    ELEMENT headings;
-    ELEMENT kbdinputstyle;
-    ELEMENT paragraphindent;
-    ELEMENT shortcontents;
-    ELEMENT urefbreakstyle;
-    ELEMENT xrefautomaticsectiontitle;
-} GLOBAL_INFO;
-
 typedef struct {
     char *index_name;
     char *index_prefix;
@@ -177,14 +110,6 @@ typedef struct INDEX {
     void *hv;
     void *contained_hv;
 } INDEX;
-
-/* A reference to an index entry, in the "index_entry" extra key of
-   an element.  index->index_entries[entry] is the referred-to index
-   entry.  Not actually used in api.c (element_to_perl_hash). */
-typedef struct {
-    INDEX *index;
-    int entry;
-} INDEX_ENTRY_REF;
 
 /* See parse_node_manual function. */
 typedef struct {

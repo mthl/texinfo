@@ -1,6 +1,21 @@
-/* parser.h - include many other header files.  declarations for close.c,
-   end_line.c, debug.c, separator.c, parser.c, multitable.c, extra.c and 
-   menu.c. */
+/* parser.h - include many other header files.  type declarations.  
+   declarations for close.c, end_line.c, debug.c, separator.c, parser.c, 
+   multitable.c, extra.c and menu.c. */
+
+/* Copyright 2010-2019 Free Software Foundation, Inc.
+
+   This program is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "tree_types.h"
 #include "tree.h"
@@ -12,6 +27,74 @@
 #include "counter.h"
 #include "macro.h"
 #include "conf.h"
+
+typedef struct GLOBAL_INFO {
+    char *input_file_name;
+    char *input_encoding_name;
+    char *input_perl_encoding;
+    int sections_level;
+    ELEMENT dircategory_direntry; /* an array of elements */
+
+    /* Elements that should be unique. */
+    ELEMENT *settitle; /* Title of document. */
+    ELEMENT *copying;
+    ELEMENT *title;
+    ELEMENT *titlepage;
+    ELEMENT *top;
+    ELEMENT *setfilename;
+    ELEMENT *documentdescription;
+    ELEMENT *setcontentsaftertitlepage;
+    ELEMENT *setshortcontentsaftertitlepage;
+    ELEMENT *novalidate;
+    ELEMENT *validatemenus;
+    ELEMENT *pagesizes;
+    ELEMENT *fonttextsize;
+    ELEMENT *footnotestyle;
+    ELEMENT *setchapternewpage;
+    ELEMENT *everyheading;
+    ELEMENT *everyfooting;
+    ELEMENT *evenheading;
+    ELEMENT *evenfooting;
+    ELEMENT *oddheading;
+    ELEMENT *oddfooting;
+    ELEMENT *everyheadingmarks;
+    ELEMENT *everyfootingmarks;
+    ELEMENT *evenheadingmarks;
+    ELEMENT *oddheadingmarks;
+    ELEMENT *evenfootingmarks;
+    ELEMENT *oddfootingmarks;
+    ELEMENT *shorttitlepage;
+
+    /* Arrays of elements */
+    ELEMENT footnotes;
+    ELEMENT hyphenation;
+    ELEMENT insertcopying;
+    ELEMENT printindex;
+    ELEMENT subtitle;
+    ELEMENT titlefont;
+    ELEMENT listoffloats;
+    ELEMENT detailmenu;
+    ELEMENT part;
+
+    ELEMENT allowcodebreaks;
+    ELEMENT clickstyle;
+    ELEMENT codequotebacktick;
+    ELEMENT codequoteundirected;
+    ELEMENT contents;
+    ELEMENT deftypefnnewline;
+    ELEMENT documentencoding;
+    ELEMENT documentlanguage;
+    ELEMENT exampleindent;
+    ELEMENT firstparagraphindent;
+    ELEMENT frenchspacing;
+    ELEMENT headings;
+    ELEMENT kbdinputstyle;
+    ELEMENT paragraphindent;
+    ELEMENT shortcontents;
+    ELEMENT urefbreakstyle;
+    ELEMENT xrefautomaticsectiontitle;
+} GLOBAL_INFO;
+
 
 /* In close.c */
 void close_command_cleanup (ELEMENT *current);
@@ -113,7 +196,6 @@ void add_extra_contents (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_contents_oot (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_contents_array (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_text (ELEMENT *e, char *key, ELEMENT *value);
-void add_extra_index_entry (ELEMENT *e, char *key, INDEX_ENTRY_REF *value);
 void add_extra_misc_args (ELEMENT *e, char *key, ELEMENT *value);
 void add_extra_node_spec (ELEMENT *e, char *key, NODE_SPEC_EXTRA *value);
 void add_extra_node_spec_array (ELEMENT *, char *, NODE_SPEC_EXTRA **value);

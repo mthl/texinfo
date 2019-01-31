@@ -1,5 +1,20 @@
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reorganize parsetexi header files.
+
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/parser.h (GLOBAL_INFO): Move to 
+	parser.h.
+	* tp/Texinfo/XS/parsetexi/extra.c (add_extra_index_entry): 
+	Comment out function with preprocessor.
+	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry): Don't 
+	call add_extra_index_entry.
+	* tp/Texinfo/XS/parsetexi/tree_types.h,
+	* tp/Texinfo/XS/parsetexi/indices.c (INDEX_ENTRY_REF):
+	Move to indices.c.
+
+2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Avoid a warning.
 
 	* tp/Texinfo/XS/configure.ac: Get perl conf value 'optimize'.
