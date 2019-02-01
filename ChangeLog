@@ -1,3 +1,10 @@
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use 'id' instead of 'name'.
+
+	* js/info.js (add_header, scan_toc): Use 'id' instead of 'name' 
+	attribute.
+
 2019-01-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Inline test script.

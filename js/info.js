@@ -1,5 +1,5 @@
 /* info.js - Javascript UI for Texinfo manuals
-   Copyright © 2017-2018 Free Software Foundation, Inc.
+   Copyright (C) 2017-2019 Free Software Foundation, Inc.
 
    This file is part of GNU Texinfo.
 
@@ -1170,7 +1170,7 @@
       if (linkid === config.INDEX_ID)
         {
           hide_grand_child_nodes (ul);
-          res = elem.querySelector ("a[name=\"" + linkid + "\"]");
+          res = elem.querySelector ('#' + linkid);
         }
       else
         {
@@ -1229,7 +1229,7 @@
           var header = document.createElement ("header");
           var a = document.createElement ("a");
           a.setAttribute ("href", config.INDEX_NAME);
-          a.setAttribute ("name", config.INDEX_ID);
+          a.setAttribute ("id", config.INDEX_ID);
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
