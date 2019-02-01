@@ -1,5 +1,11 @@
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	pretest 6.5.92.
+
+	* configure.ac: version
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Improve txicmdcheck.
 
 	* doc/refcard/txicmdcheck: Special case for @& and @ampchar{}.
