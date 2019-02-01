@@ -1,5 +1,16 @@
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix too wide space in @verbatiminclude.
+
+	* doc/texinfo.tex (\verbatiminclude): Confine the effect of 
+	\indexnofonts to a group where the filename is read, as is done 
+	in \include.  Otherwise, there is an inappropriate definition of 
+	'\ ' while the file is being input.  Werner Lemberg reported 
+	that a wider space would be output after a colon in a file input 
+	with @verbatiminclude.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use 'id' instead of 'name'.
 
 	* js/info.js (add_header, scan_toc): Use 'id' instead of 'name' 
