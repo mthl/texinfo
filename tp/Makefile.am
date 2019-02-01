@@ -249,8 +249,6 @@ maintenance_files = \
   maintain/all_tests.sh \
   maintain/change_perl_modules_version.sh \
   maintain/language-subtag-registry \
-  maintain/Makefile_perl_po \
-  maintain/MANIFEST_generated_files \
   maintain/regenerate_cmd_tests.sh \
   maintain/regenerate_converters_documentation.sh \
   maintain/regenerate_docstr.sh \
