@@ -1,5 +1,14 @@
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Improve txicmdcheck.
+
+	* doc/refcard/txicmdcheck: Special case for @& and @ampchar{}.
+	* doc/refcard/txirefcard.tex: Add commands we deliberately 
+	ignored at the end of the file.
+	* doc/texinfo.texi (Command List): Add @&, @ampchar{}.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Automatically build pod2texi.1 man page.
 
 	* man/Makefile.am (pod2texi.1): Add rule.

@@ -19649,6 +19649,10 @@ end-of-sentence capital letter).  @xref{Ending a Sentence}.
 Generate an umlaut or acute accent, respectively, over the next
 character, as in @"o and @'o.  @xref{Inserting Accents}.
 
+@item @@&
+@itemx @@ampchar@{@}
+Generate an ampersand.  @xref{Inserting an Ampersand}.
+
 @item @@*
 Force a line break.  @xref{Line Breaks}.
 
