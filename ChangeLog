@@ -1,5 +1,13 @@
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Automatically build pod2texi.1 man page.
+
+	* man/Makefile.am (pod2texi.1): Add rule.
+	* configure.ac: Check for pod2man with AM_MISSING_PROG.
+	* README-hacking: Remove instruction.
+
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* README-hacking: Update.
 
 2019-02-01  Werner Lemberg  <wl@gnu.org>

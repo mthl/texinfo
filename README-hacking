@@ -190,7 +190,6 @@ Check that translations have been updated, e.g.:
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo/ po
   rsync  -Lrtzv  translationproject.org::tp/latest/texinfo_document/ \
                  po_document # note the trailing slashes in these commands
-pod2man Pod-Simple-Texinfo/pod2texi.pl >man/pod2texi.1 # until we fix deps
 
 make
 make update-po            # both po and po_document needed, build a dist first
