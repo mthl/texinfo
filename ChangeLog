@@ -1,3 +1,7 @@
+2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Update.
+
 2019-02-01  Werner Lemberg  <wl@gnu.org>
 
 	* doc/texinfo.tex (\setupverbatim): Fix a comment.
