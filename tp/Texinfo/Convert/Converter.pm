@@ -28,10 +28,7 @@ use File::Basename;
 use File::Spec;
 use Encode;
 
-use Texinfo::Report;
 use Texinfo::Common;
-use Texinfo::Convert::Text;
-use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
 
 use Carp qw(cluck);
@@ -278,6 +275,10 @@ sub converter(;$)
   foreach my $expanded_format(@{$converter->{'expanded_formats'}}) {
     $converter->{'expanded_formats_hash'}->{$expanded_format} = 1;
   }
+
+  require Texinfo::Report;
+  # 'require' here instead of 'use' at top of file to cut down run time of 
+  # 'texi2any --help'
 
   $converter->Texinfo::Report::new();
 
@@ -1348,6 +1349,8 @@ sub sort_element_counts($$;$$)
 
   my $max_count = 0;
   my @name_counts_array;
+
+  require Texinfo::Convert::Texinfo;
   foreach my $element (@$elements) {
     my $name = 'UNNAMED element';
     if ($element->{'extra'} 
