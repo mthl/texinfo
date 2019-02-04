@@ -1,3 +1,16 @@
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fixes for MS-Windows.
+
+	* tp/Texinfo/XS/misc.c (xs_process_text): Add dTHX at start so 
+	that realloc will work.
+	* tp/Texinfo/XS/parsetexi/command_data.awk:
+	Output "#undef CM_NONE" in command_ids.h.
+	* tp/Texinfo/XS/parsetexi/input.c (convert_to_utf8): Use 
+	ICONV_CONST in a variable declaration.
+
+	All reported by Eli Zaretskii.
+
 2019-02-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.92.
