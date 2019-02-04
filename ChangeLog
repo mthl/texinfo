@@ -1,5 +1,14 @@
 2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not install useless static libraries.
+
+	* tp/Texinfo/XS/Makefile.am (LT_INIT): Use option 'disable-static'.
+	* NEWS: Mention change.
+
+	Report from Eli Zaretskii.
+
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove parsetexi typemap.
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
