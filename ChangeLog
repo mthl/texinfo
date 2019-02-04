@@ -1,5 +1,20 @@
 2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove parsetexi typemap.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
+	* tp/Texinfo/XS/parsetexi/api.c (get_root): Remove, as it is 
+	unused and relies on casting a pointer to an integer.
+	* tp/Texinfo/XS/parsetexi/typemap: Remove.
+	* tp/Texinfo/XS/Makefile.am (XSUBPPARGS): Remove reference to 
+	typemap file.
+	(EXTRA_DIST): Distribute Parsetexi.xs.
+
+	Eli Zaretskii reported a warning "cast from pointer to integer 
+	of different size" when compiling on MS-Windows.
+
+2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fixes for MS-Windows.
 
 	* tp/Texinfo/XS/misc.c (xs_process_text): Add dTHX at start so 

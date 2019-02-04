@@ -51,9 +51,6 @@ reset_context_stack ()
 void
 init_index_commands ()
 
-ELEMENT *
-get_root()
-
 void
 add_include_directory (filename)
         char *filename
