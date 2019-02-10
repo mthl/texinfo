@@ -1,3 +1,12 @@
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No colon in HTML menus.
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults) <MENU_ENTRY_COLON>:
+	Set to ''.
+	* doc/texinfo.texi (Other Customization Variables): Update.
+	* NEWS: Mention change.
+
 2019-02-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Do not install useless static libraries.

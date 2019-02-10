@@ -679,7 +679,7 @@ Next: <a href="#after" accesskey="n" rel="next">after</a>, Up: <a href="dir.html
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#after" accesskey="1">after</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#after" accesskey="1">after</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

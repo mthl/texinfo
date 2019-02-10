@@ -17372,7 +17372,7 @@ avoid infinite recursions.
 
 @item MENU_ENTRY_COLON
 Symbol used between the menu entry and the description; default
-@samp{:}.
+empty.
 
 @item NO_USE_SETFILENAME
 If set, do not use @code{@@setfilename} to set the document name;

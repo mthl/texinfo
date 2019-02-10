@@ -556,7 +556,7 @@ Next: <a href="#node" accesskey="n" rel="next">&lsquo;<samp>node</samp>&rsquo;</
 <h1 class="node-heading">Top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1"><strong>node</strong></a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1"><strong>node</strong></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

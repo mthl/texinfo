@@ -865,9 +865,9 @@ Next: <a href="..html#Top" accesskey="n" rel="next">(../there/no_existing_no_man
 <a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
 </p>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="other_no_existing_no_manual.html#Top" accesskey="2">(other_no_existing_no_manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="other_no_existing_no_manual.html#Top" accesskey="2">(other_no_existing_no_manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

@@ -8216,15 +8216,15 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 
 <div class="float-caption"><p><strong>Warning 1: </strong>C A warning</p></div></div>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Unnumbered" accesskey="2">Unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Unnumbered" accesskey="2">Unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Chapter-with-unnumbsubsec" accesskey="3">Chapter with unnumbsubsec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Chapter-with-unnumbsubsec" accesskey="3">Chapter with unnumbsubsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Appendix-for-float" accesskey="4">Appendix for float</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Appendix-for-float" accesskey="4">Appendix for float</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#list-of-floats" accesskey="5">list of floats</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#list-of-floats" accesskey="5">list of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8261,7 +8261,7 @@ Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <
 
 <div class="float-caption"><p><strong>Warning 1.1: </strong>C A warning in chapter</p></div></div>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -8286,7 +8286,7 @@ Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with
 <span id="Unnumbered-1"></span><h2 class="unnumbered">Unnumbered</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Section-within-unnumbered" accesskey="1">Section within unnumbered</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Section-within-unnumbered" accesskey="1">Section within unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 <div class="float"><span id="unnumbered-float"></span>
@@ -8321,7 +8321,7 @@ Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float<
 <span id="Chapter-with-unnumbsubsec-1"></span><h2 class="chapter">2 Chapter with unnumbsubsec</h2>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sec" accesskey="1">unnumbered sec</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sec" accesskey="1">unnumbered sec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 <div class="float"><span id="Chapter-with-subsec-float"></span>

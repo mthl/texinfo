@@ -418,7 +418,7 @@ Next: <a href="#subnode" accesskey="n" rel="next">subnode</a>, Up: <a href="dir.
 
 <table class="menu" border="0" cellspacing="0">
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">Horizontal space
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#subnode" accesskey="1">subnode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#subnode" accesskey="1">subnode</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

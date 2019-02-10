@@ -727,7 +727,7 @@ Next: <a href="#chap" accesskey="n" rel="next">chap</a>, Up: <a href="dir.html#T
 <span id="top"></span><h1 class="top">top</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="1">chap</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="1">chap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

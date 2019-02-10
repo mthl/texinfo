@@ -910,7 +910,7 @@ Next: <a href="#Top" accesskey="n" rel="next">Top</a>, Previous: <a href="#Top" 
 <span id="chapter"></span><h3 class="section">2 chapter</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -922,7 +922,7 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a>, Up: <a 
 <span id="top"></span><h3 class="unnumberedsec">top</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

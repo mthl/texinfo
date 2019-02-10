@@ -588,7 +588,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="#node_00
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

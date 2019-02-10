@@ -423,15 +423,15 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">begin description
+<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="1">(manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">begin description
 * not an entry ?
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="2">(manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">an entry
+<tr><td align="left" valign="top">&bull; <a href="manual.html#Top" accesskey="2">(manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">an entry
   in description
 * and here ?
 with text.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="last manual.html#Top" accesskey="3">(last manual)</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="last manual.html#Top" accesskey="3">(last manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

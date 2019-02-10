@@ -4852,13 +4852,13 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.
 <span id="Top-section"></span><h1 class="top">Top section</h1>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">chapter
+<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">chapter
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" accesskey="2">description</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" accesskey="2">description</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
 </td></tr>
 </table>
 
@@ -5007,15 +5007,15 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_
 <span id="A-section"></span><h3 class="section">1.1 A section</h3>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#subsection" accesskey="1">subsection</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#subsection" accesskey="1">subsection</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
 </pre></th></tr><tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">In detailmenu
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="2">subsubsection ``simple-double--</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="2">subsubsection ``simple-double--</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="3">subsubsection three---four----\'\'</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="3">subsubsection three---four----\'\'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
@@ -5027,9 +5027,9 @@ Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">s--ect,ion</a> &nbs
 <span id="subsection-1"></span><h4 class="subsection">1.1.1 subsection</h4>
 
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="1">subsubsection ``simple-double--</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="1">subsubsection ``simple-double--</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="2">subsubsection three---four----\'\'</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="2">subsubsection three---four----\'\'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 
