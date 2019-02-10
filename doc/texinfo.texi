@@ -7623,16 +7623,15 @@ Texinfo has ``small'' example-style commands.  These are
 @code{@@smalldisplay}, @code{@@smallexample}, @code{@@smallformat},
 and @code{@@smalllisp}.
 
-In Info output, the @code{@@small@dots{}} commands are equivalent to
-their non-small companion commands.
+In Info and HTML output, the @code{@@small@dots{}} commands are 
+equivalent to their non-small companion commands.
 
 In @TeX{}, however, the @code{@@small@dots{}} commands typeset text in
 a smaller font than the non-small example commands.  Thus, for
 instance, code examples can contain longer lines and still fit on a
 page without needing to be rewritten.
 
-A smaller font size is also requested in HTML output, and (as usual)
-retained in the Texinfo@tie{}XML transliteration.
+A smaller font size is also retained in the Texinfo@tie{}XML transliteration.
 
 Mark the end of a @code{@@small@dots{}} block with a corresponding
 @code{@@end small@dots{}}.  For example, pair @code{@@smallexample} with

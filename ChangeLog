@@ -1,5 +1,23 @@
 2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No special CSS for @small* commands.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(%css_map): Remove css for @smallexample etc.
+	(%small_alias): New hash.
+	(_convert): Use %small_alias to treat e.g. @smallexample exactly 
+	the same as @example, so that no extra CSS is needed.
+	(%default_commands_conversion): Do not add entries for some 
+	@small* commands.
+	(_convert_quotation_command): Do not check if the passed command 
+	name is different to 'quotation', as it will not be.
+
+	* doc/texinfo.texi (@small...): Do not say that @small...  
+	commands produce a smaller font in HTML output.
+	* NEWS: Mention change.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Wrap introductory comment in @ifinfo block.
 
 2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
