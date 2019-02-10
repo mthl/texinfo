@@ -1752,6 +1752,7 @@ sub collect_renamed_nodes($$;$$)
     $renamed_nodes_file = $basename . '-noderename.cnf';
   }
   if (defined($renamed_nodes_file)) {
+    $self->document_warn(sprintf(__("using a renamed nodes file (`%s') is deprecated"), $renamed_nodes_file));
     my ($renamed_nodes, $renamed_nodes_lines)
      = parse_renamed_nodes_file($self, $renamed_nodes_file, $renamed_nodes,
                                 $renamed_nodes_lines);

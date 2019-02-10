@@ -1,5 +1,14 @@
 2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Deprecate MANUAL-noderename.cnf.
+
+	* tp/Texinfo/Common.pm (collect_renamed_nodes): Give a warning 
+	if a renamed nodes file is being used.
+	* doc/texinfo.texi (HTML Xref Link Preservation),
+	* NEWS: Document deprecation.
+
+2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No special CSS for @small* commands.
 
 	* tp/Texinfo/Convert/HTML.pm

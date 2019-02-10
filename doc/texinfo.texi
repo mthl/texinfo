@@ -19511,11 +19511,23 @@ nature of the web, however, links may exist anywhere to such a removed
 node (renaming appears the same as removal for this purpose), and it's
 not ideal for those links to simply break.
 
-@vindex RENAMED_NODES_FILE
-Therefore, Texinfo provides a way for manual authors to specify old
+The preferred approach to preserving links to deleted or renamed nodes 
+is to use anchors (@pxref{@code{@@anchor}}), as this works with all 
+output formats, including Info.
+However, Texinfo provides an alternative method to do this for HTML 
+output via a separate file which specifes old
 node names and the new nodes to which the old names should be
-redirected, via the file @var{manual}@file{-noderename.cnf}, where
-@var{manual} is the base name of the manual.  For example, the manual
+redirected.
+This method is deprecated, and support for these files will be removed 
+in future Texinfo releases. It is specific to HTML and supporting 
+@@-commands in node names in these files in practice complicates the 
+implementation in @command{texi2any}.
+
+@vindex RENAMED_NODES_FILE
+The @dfn{renamed nodes file} is named 
+@var{manual}@file{-noderename.cnf}, where
+@var{manual} is the base name of the manual.
+For example, the manual
 @file{texinfo.texi} would be supplemented by a file
 @file{texinfo-noderename}.cnf.  (This name can be overridden by
 setting the @file{RENAMED_NODES_FILE} customization variable;
@@ -19540,10 +19552,6 @@ Thus, external links to the old node are preserved.
 Lines consisting only of whitespace are ignored.  Comments are
 indicated with a @samp{@@c} at the beginning of a line, optionally
 preceded by whitespace.
-
-Another approach to preserving links to deleted or renamed nodes is to
-use anchors (@pxref{@code{@@anchor}}).  There is no effective
-difference between the two approaches.
 
 
 @node @@-Command Details
