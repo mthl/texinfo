@@ -1,5 +1,11 @@
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix make update-po in out-of-source build.
+
+	* Makefile.am (update-po): Remove reference to $srcdir.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use a single include directory in test suite.
 
 	* tp/t/include_reference: Move all files to tp/t/include.
