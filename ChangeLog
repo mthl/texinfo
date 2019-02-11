@@ -1,3 +1,8 @@
+2019-02-10  Robert Pluim  <rpluim@gmail.com>
+
+	* doc/texinfo.texi (Inserting):
+	Document 'M-x texinfo-insert-dwim-@ref'.
+
 2019-02-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Deprecate MANUAL-noderename.cnf.

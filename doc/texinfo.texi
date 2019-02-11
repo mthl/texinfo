@@ -21935,6 +21935,18 @@ Leave point after the @code{@@node}.
 Insert @code{@@noindent} and put the
 cursor at the beginning of the next line.
 
+@item  C-c C-c r
+@itemx M-x texinfo-insert-dwim-@@ref
+@findex texinfo-insert-dwim-@@ref
+This function and binding were added in Emacs 27.1.
+Inserts one of @code{@@pxref@{@}}, @code{@@xref@{@}}, or
+@code{@@ref@{@}} based on the text around point; calling it near an
+unclosed preceding open parenthesis results in @code{@@pxref@{@}}, at
+the beginning of a sentence or at @code{(point-min)} yields
+@code{@@xref@{@}}, any other location (including inside a word), will
+result in @code{@@ref@{@}}.  A numeric argument says how many words
+the braces should surround.  Puts the cursor between the braces.
+
 @item  C-c C-c s
 @itemx M-x texinfo-insert-@@samp
 @findex texinfo-insert-@@samp
