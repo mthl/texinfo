@@ -1,5 +1,13 @@
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Be less optimistic about HTML 3.2 compatibility.
+
+	* doc/texinfo.texi (HTML Translation): Mention that <span> is 
+	used.  Mention that 'id' atttibute is used.  Say that html32.pm 
+	hasn't been tested recently.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix make update-po in out-of-source build.
 
 	* Makefile.am (update-po): Remove reference to $srcdir.
