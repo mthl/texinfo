@@ -1,5 +1,15 @@
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use a single include directory in test suite.
+
+	* tp/t/include_reference: Move all files to tp/t/include.
+
+	* tp/Makefile.am,
+	* tp/t/test_utils.pl (test),
+	* tp/t/nodenormalization.t: Do not refer to tp/t/include_reference.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use section names in generated HTML menus.
 
 	* tp/Texinfo/Structuring.pm (new_node_menu_entry): Add argument 
