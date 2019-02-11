@@ -17,6 +17,7 @@ build
 **/configure
 **/stamp-h1
 **/.deps
+**/.dirstamp
 
 **/*.exe
 **/*.o
