@@ -1,5 +1,23 @@
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use section names in generated HTML menus.
+
+	* tp/Texinfo/Structuring.pm (new_node_menu_entry): Add argument 
+	saying whether to use the section name in the menu entry.
+	(menu_of_node, _menu_of_node): Rename.
+	(node_menu_of_node, section_menu_of_node): Two new functions 
+	wrapping _menu_of_node.
+	* tp/Texinfo/Convert/HTML.pm (_convert_heading_command):
+	Call section_menu_of_node instead of menu_of_node.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Call 
+	node_menu_of_node instead of menu_of_node.  This is the existing 
+	behaviour.
+	* NEWS: Mention change.
+
+	* tp/Texinfo/Transformations.pm (complete_node_menu): Update.
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Advice on node names.
 
 	* doc/texinfo.texi (Node Names): Mention that HTML filenames are 

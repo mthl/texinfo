@@ -3240,7 +3240,8 @@ sub _convert($$)
       if ($node) {
         if (!$self->{'seenmenus'}->{$node}) {
           $self->{'seenmenus'}->{$node} = 1;
-          my $menu_node = Texinfo::Structuring::menu_of_node (undef, $node);
+          my $menu_node
+            = Texinfo::Structuring::node_menu_of_node (undef, $node);
           if ($menu_node) {
             my $menu_text = $self->_convert ($menu_node);
             if ($menu_text) {
