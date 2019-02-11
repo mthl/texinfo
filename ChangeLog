@@ -1,3 +1,12 @@
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Advice on node names.
+
+	* doc/texinfo.texi (Node Names): Mention that HTML filenames are 
+	based on the node names.  Do not link to 'HTML Xref Link 
+	Preservation' node.
+	(@anchor): Remove link to the same node.
+
 2019-02-10  Robert Pluim  <rpluim@gmail.com>
 
 	* doc/texinfo.texi (Inserting):

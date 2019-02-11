@@ -3193,12 +3193,19 @@ and chapter titles.  In this manual, initial and significant words are
 capitalized; others are not.  In other manuals, just initial words and
 proper nouns are capitalized.  Either way is fine; we recommend just
 being consistent.
+
+@item
+In HTML output, any characters in the node name other than plain ASCII 
+letters, numbers or spaces will be changed in the file name.  
+(@xref{HTML Xref Node Name Expansion}.)
+This can make the URL's for the pages in your manual less user-friendly;
+for example in this manual the @samp{@@dots} node is output as
+@file{__0040dots.html}.
 @end itemize
 
 Because node names are used in cross-references, it is not desirable
 to casually change them once published.  Such name changes invalidate
 references from other manuals, from mail archives, and so on.
-@xref{HTML Xref Link Preservation}.
 
 The pointers from a given node enable you to reach other nodes and
 consist simply of the names of those nodes.  The pointers are usually
@@ -5432,12 +5439,7 @@ Also like node names, anchor names cannot include some characters
 Because of this duality, when you delete or rename a node, it is
 usually a good idea to define an @code{@@anchor} with the old name.
 That way, any links to the old node, whether from other Texinfo
-manuals or general web pages, keep working.  You can also do this with
-the @file{RENAMED_NODES_FILE} feature of @command{makeinfo}
-(@pxref{HTML Xref Link Preservation}).  Both methods keep links
-on the web working; the only substantive difference is that defining
-anchors also makes the old node names available when reading the
-document in Info.
+manuals or general web pages, keep working.
 
 
 @node @code{@@inforef}
