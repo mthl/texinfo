@@ -1,5 +1,11 @@
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	pretest 6.5.93.
+
+	* configure.ac: version
+
+2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Be less optimistic about HTML 3.2 compatibility.
 
 	* doc/texinfo.texi (HTML Translation): Mention that <span> is 

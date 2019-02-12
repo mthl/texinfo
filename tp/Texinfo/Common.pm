@@ -64,7 +64,7 @@ valid_tree_transformation
 __ __p print_tree
 );
 
-$VERSION = '6.5.92';
+$VERSION = '6.5.93';
 
 # i18n
 sub N__($)
