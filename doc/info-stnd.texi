@@ -382,8 +382,8 @@ With this option, it starts by trying to visit
 @file{@var{manual}.info}.  As above, it tries various file extensions
 to find the file. If no such file (or node) can be found, Info exits
 without doing anything.  As with the @file{dir} lookup described above,
-any extra @var{menu-item} arguments are used to locate a node within the
-loaded file.
+any extra @var{menu-or-index-item} arguments are used to locate a node 
+within the loaded file.
 
 If @var{manual} is an absolute file name, or begins with @file{./} or
 @file{../}, or contains an intermediate directory, Info will only look
@@ -583,15 +583,16 @@ is the same as the notation used within the Emacs manual
 key @var{x}.  @kbd{M-@var{x}} means press the @kbd{META} key and
 the key @var{x}.  On many terminals the @kbd{META} key is known as
 the @kbd{ALT} key.  @kbd{SPC} is the space bar.  The other keys are
-usually called by the names imprinted on them.
+usually called by the names printed on them.
 
 The following table lists the basic cursor movement commands in Info.
 Each entry consists of the key sequence you should type to execute the
-cursor movement, the @code{M-x}@footnote{@code{M-x} is also a command;
+cursor movement, the @code{M-x} command name (displayed
+in parentheses), and a short description of what the command
+does.@footnote{@code{M-x} is also a command;
 it invokes @code{execute-extended-command}, letting you run a command
 by name.  @xref{M-x, , Executing an extended command, emacs, The GNU
-Emacs Manual}, for more detailed information.} command name (displayed
-in parentheses), and a short description of what the command does.
+Emacs Manual}, for more detailed information.}
 All of the cursor motion commands can take a @dfn{numeric} argument
 (see @ref{Miscellaneous Commands, @code{universal-argument}} to find
 out how to supply them).  With a numeric argument, the motion commands
@@ -988,12 +989,12 @@ manuals which describe several programs.
 
 If you need to find the Invocation node of a program that is documented
 in another Info file, you need to visit that file before invoking
-@samp{I}.  For example, if you are reading the Emacs manual and want to
+@samp{O}.  For example, if you are reading the Emacs manual and want to
 see the command-line options of the @code{makeinfo} program, type @kbd{g
 (texinfo) @key{RET}} and then @kbd{I makeinfo @key{RET}}.  If you don't
-know what Info file documents the command, or if invoking @samp{I}
+know what Info file documents the command, or if invoking @samp{O}
 doesn't display the right node, go to the @samp{(dir)} node (using the
-@samp{d} command) and invoke @samp{I} from there.
+@samp{d} command) and invoke @samp{O} from there.
 
 @item @kbd{G} (@code{menu-sequence})
 @kindex G
@@ -1631,13 +1632,6 @@ Insert the next character verbatim.  This is how you can insert control
 characters into a search string, for example, or the @samp{?} character
 when Info prompts with completion.
 
-@item @var{printing character} (@code{echo-area-insert})
-@kindex printing characters, in the echo area
-@findex echo-area-insert
-Insert the character.  Characters that have their 8th bit set, and not
-bound to @samp{M-} commands, are also inserted verbatim; this is useful
-for terminals which support Latin scripts.
-
 @item @kbd{M-TAB} (@code{echo-area-tab-insert})
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
 @kindex M-TAB, in the echo area
@@ -1654,6 +1648,11 @@ On DOS/Windows only, the @kbd{Shift-@key{TAB}} key is an alias for
 @kindex C-t, in the echo area
 @findex echo-area-transpose-chars
 Transpose the characters at the cursor.
+
+@item @var{printing character}
+@kindex printing characters, in the echo area
+Insert the character.
+
 @end table
 
 The next group of commands deal with @dfn{killing}, and @dfn{yanking}
@@ -1713,16 +1712,10 @@ The following commands are available when completing in the echo area:
 
 @table @asis
 @item @key{TAB} (@code{echo-area-complete})
-@itemx @key{SPC}
 @kindex TAB, in the echo area
-@kindex SPC, in the echo area
 @findex echo-area-complete
-Insert as much of a completion as is possible.
-
-@item @kbd{?} (@code{echo-area-possible-completions})
-@kindex ?, in the echo area
-@findex echo-area-possible-completions
-Display a window containing a list of the possible completions of what
+Insert as much of a completion as is possible.  Otherwise,
+display a window containing a list of the possible completions of what
 you have typed so far.  For example, if the available choices are:
 
 @example
@@ -1735,8 +1728,12 @@ forget
 @end example
 
 @noindent
-and you have typed an @samp{f}, followed by @samp{?}, Info will pop up a
-window showing a node called @samp{*Completions*} which lists the
+and you have typed an @samp{f}, followed by @key{TAB}, this
+would result in @samp{fo} appearing in the echo area, since
+all of the choices which begin with @samp{f} continue with @samp{o}.
+
+Now if you type @key{TAB} again, Info will pop
+up a window showing a node called @samp{*Completions*} which lists the
 possible completions like this:
 
 @example
@@ -1748,9 +1745,8 @@ forget
 @end example
 
 @noindent
-i.e., all of the choices which begin with @samp{f}.  Pressing @key{SPC}
-or @key{TAB} would result in @samp{fo} appearing in the echo area, since
-all of the choices which begin with @samp{f} continue with @samp{o}.
+i.e., all of the choices which begin with @samp{fo}.
+
 Now, typing @samp{l} followed by @samp{TAB} results in @samp{foliate}
 appearing in the echo area, since that is the only choice which begins
 with @samp{fol}.
@@ -2034,7 +2030,7 @@ size.
 @item cursor-movement-scrolls
 When set to @code{On}, when cursor movement commands reach the
 top or bottom of a node, another node is loaded depending on the
-value of @code{scroll-behaviour} (see below).  This is the default.
+value of @code{scroll-behavior} (see below).  This is the default.
 When this variable is set to @code{Off}, cursor movements stop at the
 top or bottom of a node.
 
@@ -2053,7 +2049,7 @@ all reference each other and whose versions should match each other.
 (For example, various manuals relating to a particular version of
 Emacs.)
 
-The alternative behaviour, with @code{path}, may be useful when your
+The alternative behavior, with @code{path}, may be useful when your
 Info file search path parallels your command shell's search path, and
 you always want to find documentation of the version of the program that
 the shell would execute.
@@ -2195,7 +2191,7 @@ message. This is the default.
 Go to the top node of the document.
 @end table
 
-This variable is in effect only if @code{scroll-behaviour} is set to
+This variable is in effect only if @code{scroll-behavior} is set to
 @code{Continuous}.
 
 @item scroll-step
@@ -2247,7 +2243,7 @@ are available to do this:
 Used for cross-references and menu entries.
 
 @item active-link-style
-Used for a cross-references or menu entry when typing @key{RET} would 
+Used for a cross-reference or menu entry when typing @key{RET} would 
 have the effect of following said cross-reference or menu entry.
 
 @item match-style
@@ -2267,11 +2263,11 @@ values in the following table:
 @itemx magenta
 @itemx cyan
 @itemx white
-@cindex Coloured foreground
+@cindex Colored foreground
 Use the color specified for text.
 
-@item nocolour
-@itemx nocolor
+@item nocolor
+@itemx nocolour
 Turn off any color that was in effect, using the terminal's default color.
 
 @item  bgblack
@@ -2282,11 +2278,11 @@ Turn off any color that was in effect, using the terminal's default color.
 @itemx bgmagenta
 @itemx bgcyan
 @itemx bgwhite
-@cindex Coloured background
+@cindex Colored background
 Use the color specified for the background.
 
-@item bgnocolour
-@itemx bgnocolor
+@item bgnocolor
+@itemx bgnocolour
 Use the terminal's default background color.
 
 @item underline
@@ -2318,16 +2314,16 @@ Here is an sample excerpt from an @file{.infokey} file:
 #var
 link-style=yellow
 active-link-style=yellow,bold
-match-style=underline,bold,nocolour
+match-style=underline,bold,nocolor
 @end example
 
 @noindent With this, cross-references are all yellow, and active 
 cross-references are additionally displayed in bold.  Any search
 matches will be shown in bold, and underlined.  Moreover, if there is a 
-search match inside a cross-reference, the @samp{nocolour} rendition 
-style will cancel the yellow colour, leaving the text in the match the 
-terminal's default colour.  (Note, however, that the rendition styles 
-for active cross-references take priority over those for search matches,
+search match inside a cross-reference, the @samp{nocolor} rendition 
+style will cancel the yellow color, leaving the text in the match the 
+terminal's default color.  (Note, however, that the rendition styles for 
+active cross-references take priority over those for search matches,
 so search matches there will still be displayed in yellow.)
 
 

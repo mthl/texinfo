@@ -1,3 +1,25 @@
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Minor changes to info-stnd.texi.
+
+	* doc/info-stnd.texi
+	(Invoking Info): Use a consistent name for menu arguments.
+	(Moving the Cursor): Change 'imprinted on' to 'printed on'.  
+	Move a footnote reference to the end of a sentence.
+	(Node Commands): Correct key used in description.
+	(The Echo Area) <printing characters>: Do not mention this 
+	command, as self-inserting characters are inserted with a 
+	different part of the code.  Do not mention about checking 
+	whether a Meta key is bound, as this only applies if ISO-Latin 
+	is 'Off'.
+	<echo-area-complete>: SPC is not bound to this command any more.
+	<echo-area-possible-completions>: Merge text with documentation 
+	of 'echo-area-complete'.  '?' does not run this command any 
+	more.
+	(Colors and Styles): Privilege American spelling of "color".
+	Fix typo ("a cross-references").
+	(Variables): Privilege American spelling of "behavior".
+
 2019-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	pretest 6.5.93.
