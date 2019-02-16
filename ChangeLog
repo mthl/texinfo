@@ -1,5 +1,15 @@
 2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Tweak index formatting.
+
+	* doc/texinfo.tex (\balancecolumns): Increase length that the 
+	final column of an index can be without being split.  Move some 
+	code and add a comment.
+	(\doublecolumnout, \begindoublecolumns): Move a comment to where 
+	it was supposed to be.  Add another comment.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Multi-line macro argument):
 	Add note on how a bug might be fixed.
 
