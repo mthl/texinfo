@@ -1,5 +1,13 @@
 2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not end a sentence after an inserted '.'.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <ref commands>:
+	Do not end a sentence after an inserted '.' after @xref.  @xref
+	can easily constitute only the first part of a sentence.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Documentation of @pxref.
 
 	* doc/texinfo.texi (@pxref): Do not encourage using @pxref 
