@@ -5307,10 +5307,10 @@ Sea surges are described in *note Hurricanes::.
 @cindex References using @code{@@pxref}
 
 The parenthetical reference command, @code{@@pxref}, is nearly the
-same as @code{@@xref}, but it is best used at the end of a sentence or
-before a closing parenthesis.  The command differs from @code{@@xref}
-in that @TeX{} typesets the reference for the printed manual with a
-lowercase `see' rather than an uppercase `See'.
+same as @code{@@xref}, but it is best used within parentheses.
+The command differs from @code{@@xref} in that @TeX{} typesets the 
+reference for the printed manual with a lowercase `see' rather than an 
+uppercase `See'.
 
 @noindent
 With one argument, a parenthetical cross-reference looks like this:
@@ -5368,24 +5368,11 @@ in a printed manual.
 
 In past versions of Texinfo, it was not allowed to write punctuation
 after a @code{@@pxref}, so it could be used @emph{only} before a
-right parenthesis.  This is no longer the case, so now it can be used
-(for example) at the end of a sentence, where a lowercase ``see''
-works best.  For instance:
-
-@example
-@dots{} For more information, @@pxref@{More@}.
-@end example
-
-@noindent
-which outputs (in Info):
-
-@example
-@dots{} For more information, *note More::.
-@end example
-
-As a matter of style, @code{@@pxref} is best used at the ends of
-sentences.  Although it technically works in the middle of a sentence,
-that location breaks up the flow of reading.
+right parenthesis.  This is no longer the case.
+The effect of @samp{@@pxref@{@var{node-name}@}} is similar to that of
+@samp{see @@ref@{@var{node-name}@}}.  However, in many circumstance the
+latter is preferrable, as this makes it clear in the Info output that 
+the word ``see'' should be present.
 
 
 @node @code{@@anchor}
