@@ -1,5 +1,9 @@
 2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* README-hacking: Update for git, no keyword expansion.
+
+2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Tweak index formatting.
 
 	* doc/texinfo.tex (\balancecolumns): Increase length that the 
