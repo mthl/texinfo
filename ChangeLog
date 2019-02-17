@@ -1,5 +1,35 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove noderename.cnf feature.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables):
+	Remove 'RENAMED_NODES_DIRECTIONS', 'RENAMED_NODES_FILE'.
+	(collect_renamed_nodes, parse_renamed_nodes_file): Remove.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(converter_initialize): Do not check Texinfo::Config::renamed_nodes.
+	(_file_header_informations): Change a comment.
+	(output): Do not call Texinfo::Common::collect_renamed_nodes.  
+	Remove code dealing with renamed nodes.
+	(_parse_node_and_warn_external): Remove unused.  This eliminates 
+	the dependecy of Texinfo::Convert::HTML on Texinfo::Parser.
+
+	* tp/tests/Makefile.am: Remove code dealing with copying 
+	renamednodes.cnf-ref.
+	* tp/tests/sectioning/renamednodes.cnf-ref: Remove.
+	* tp/tests/sectioning (equivalent_nodes_test_renamed_nodes): Remove.
+	* tp/tests/README: Update instructions for git.
+
+	* tp/t/92formatting.t (unknown_nodes_renamed): Remove.
+
+	* doc/texinfo.texi (Other Customization Variables) 
+	<RENAMED_NODES_FILE, RENAMED_NODES_REDIRECTIONS>: Remove.  
+	RENAMED_NODES_REDIRECTIONS was not actually used anywhere.
+	(HTML Xref Link Preservation): Remove node.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+
 	* tp/test_utils.pl: Check if errors were output properly.
 
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>

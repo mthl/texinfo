@@ -4878,9 +4878,6 @@ sub converter_initialize($)
        = $default_formatting_references{$formatting_reference};
     }
   }
-  if ($Texinfo::Config::renamed_nodes) {
-    %{$self->{'renamed_nodes'}} = %{$Texinfo::Config::renamed_nodes};
-  }
 
   $self->{'document_context'} = [];
   $self->{'multiple_pass'} = [];
@@ -6207,9 +6204,9 @@ $pre_body_close
 ";
 }
 
-# This is used for normal output files and other files, like renamed
-# nodes file headers, or redirection file headers.  $COMMAND is the tree
-# element for a @node that is being output in the file.
+# This is used for normal output files and other files, like
+# redirection file headers.  $COMMAND is the tree element for
+# a @node that is being output in the file.
 sub _file_header_informations($$)
 {
   my $self = shift;
@@ -6826,13 +6823,6 @@ sub output($$)
   $self->_set_outfile();
   return undef unless $self->_create_destination_directory();
 
-  # collect renamed nodes
-  ($self->{'renamed_nodes'}, $self->{'renamed_nodes_lines'}, 
-       $self->{'renamed_nodes_file'})
-    = Texinfo::Common::collect_renamed_nodes($self, $self->{'input_basename_name'},
-                                             $self->{'renamed_nodes'});
-
-
   # Get the list of "elements" to be processed, i.e. nodes or sections.
   # This should return undef if called on a tree without node or sections.
   my ($elements, $special_elements) = $self->_prepare_elements($root);
@@ -7151,129 +7141,6 @@ sub output($$)
       }
     }
   }
-  if ($self->{'renamed_nodes'}
-      and $self->{'labels'} and $self->{'output_file'} ne '') {
-    # do a fresh parser, to avoid, for example adding new labels if renamed
-    # nodes incorrectly define anchors...
-    my $parser_for_renamed_nodes;
-    if ($self->{'parser'}) {
-      $parser_for_renamed_nodes
-                       = Texinfo::Parser::duplicate_parser($self->{'parser'});
-    }
-    my %warned_new_node;
-    foreach my $old_node_name (sort(keys(%{$self->{'renamed_nodes'}}))) {
-      my $parsed_old_node = $self->_parse_node_and_warn_external(
-         $old_node_name, $parser_for_renamed_nodes,
-         $self->{'renamed_nodes_lines'}->{$old_node_name},
-         $self->{'renamed_nodes_file'});
-      if ($parsed_old_node) {
-        if ($self->label_command($parsed_old_node->{'normalized'})) {
-          $self->file_line_error(sprintf(__(
-               "old name for `%s' is a node of the document"), $old_node_name),
-                                $self->{'renamed_nodes_file'},
-                                $self->{'renamed_nodes_lines'}->{$old_node_name});
-          $parsed_old_node = undef;
-        } elsif ($parsed_old_node->{'normalized'} !~ /[^-]/) {
-          $self->file_line_error(sprintf(__(
-               "file empty for renamed node `%s'"), $old_node_name),
-                                $self->{'renamed_nodes_file'},
-                                $self->{'renamed_nodes_lines'}->{$old_node_name});
-          $parsed_old_node = undef;
-        }
-      }
-      my $new_node_name = $self->{'renamed_nodes'}->{$old_node_name};
-      my $parsed_new_node = $self->_parse_node_and_warn_external(
-         $new_node_name, $parser_for_renamed_nodes,
-         $self->{'renamed_nodes_lines'}->{$new_node_name},
-         $self->{'renamed_nodes_file'});
-      if (!$self->label_command($parsed_new_node->{'normalized'})) {
-        if (!$warned_new_node{$new_node_name}) {
-           $self->file_line_warn(sprintf(__(
-            "target node (new name for `%s') not in document: %s"), 
-             $old_node_name, $new_node_name), $self->{'renamed_nodes_file'},
-             $self->{'renamed_nodes_lines'}->{$new_node_name});
-          $warned_new_node{$new_node_name} = 1;
-        }
-        $parsed_new_node = undef;
-      }
-      if ($parsed_new_node and $parsed_old_node) {
-        my ($filename, $target) = $self->_node_id_file($parsed_old_node);
-        $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-            and $self->get_conf('NODE_FILE_EXTENSION') ne '');
-        my $redirection_page 
-          = &{$self->{'format_node_redirection_page'}}($self, 
-                       $self->label_command($parsed_new_node->{'normalized'}));
-        my $out_filename;
-        if (defined($self->{'destination_directory'}) 
-            and $self->{'destination_directory'} ne '') {
-          $out_filename = File::Spec->catfile($self->{'destination_directory'}, 
-                                              $filename);
-        } else {
-          $out_filename = $filename;
-        }
-        my $file_fh = $self->Texinfo::Common::open_out($out_filename);
-        if (!$file_fh) {
-         $self->document_error(sprintf(__("could not open %s for writing: %s"),
-                                    $out_filename, $!));
-        } else {
-          print $file_fh $redirection_page;
-          $self->register_close_file($out_filename);
-          if (!close ($file_fh)) {
-            $self->document_error(sprintf(__(
-                   "error on closing renamed node redirection file %s: %s"),
-                                    $out_filename, $!));
-            return undef;
-          }
-        }
-      }
-    }
-  }
-}
-
-sub _parse_node_and_warn_external($$$$$)
-{
-  my $self = shift;
-  my $node_texi = shift;
-  my $parser = shift;
-  my $line_number = shift;
-  my $file = shift;
-
-  # NOTE nothing to check that there is an invalid nesting.  Indeed, there
-  # is no information given to the parser stating that we are in a label
-  # command.  
-  # A possibility would be to consider
-  # 'root_line' type as a $simple_text_command, or, to avoid spurious 
-  # messages, $full_text_command.  This would imply really using
-  # the gdt 4th argument to pass 'translated_paragraph' when in a 
-  # less constrained environment, for instance @center in @quotation for
-  # @author
-  #
-  # it is unlikely, however that invalid nesting does much harm, since
-  # the tree is mostly used to be normalized and this converter should
-  # be rather foolproof.
-  my $node_tree = Texinfo::Parser::parse_texi_line($parser,
-                                          $node_texi, $line_number, $file);
-  if ($node_tree) {
-    my $node_normalized_result = Texinfo::Common::parse_node_manual(
-          $node_tree);
-    my $line_nr = {'line_nr' => $line_number, 'file_name' => $file };
-    if (!$node_normalized_result) {
-      $self->line_warn(__('empty node name'), $line_nr);
-    } elsif ($node_normalized_result->{'manual_content'}) {
-      $self->line_error(sprintf(__("syntax for an external node used for `%s'"),
-         $node_texi), $line_nr);
-
-    } else {
-      if ($node_normalized_result->{'node_content'}) {
-        $node_normalized_result->{'normalized'} =
-          Texinfo::Convert::NodeNameNormalization::normalize_node(
-            {'contents' => $node_normalized_result->{'node_content'}});
-      }
-      return $node_normalized_result;
-    }
-  }
-  return undef;
 }
 
 # Convert the 'contents' of a tree element.

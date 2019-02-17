@@ -260,8 +260,7 @@ my @variable_string_settables = (
   'USE_NODE_TARGET',
   'PROGRAM_NAME_IN_FOOTER', 'NODE_FILENAMES',
   'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
-  'CSS_LINES', 'RENAMED_NODES_REDIRECTIONS', 'RENAMED_NODES_FILE',
-  'CPP_LINE_DIRECTIVES',
+  'CSS_LINES', 'CPP_LINE_DIRECTIVES',
   'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
   'INPUT_ENCODING_NAME', 'INPUT_PERL_ENCODING', 
   'OUTPUT_ENCODING_NAME', 'OUTPUT_PERL_ENCODING', 
@@ -1676,91 +1675,6 @@ sub is_content_empty($;$)
   }
   return 1;
 }
-
-sub parse_renamed_nodes_file($$;$$)
-{
-  my $self = shift;
-  my $renamed_nodes_file = shift;
-  # if not given they are automatically created
-  my $renamed_nodes = shift;
-  my $renamed_nodes_lines = shift;
-
-  my $input_directory = $self->{'info'}->{'input_directory'};
-  
-  # check for noderename.cnf in directory of source, and in current
-  # directory.
-  if ($input_directory
-        and open(RENAMEDFILE, "<$input_directory$renamed_nodes_file")
-      or open(RENAMEDFILE, "<$renamed_nodes_file")) {
-    if ($self->get_conf('INPUT_PERL_ENCODING')) {
-      binmode(RENAMEDFILE, ":encoding(".
-                       $self->get_conf('INPUT_PERL_ENCODING').")");
-    }
-    my $renamed_nodes_line_nr = 0;
-    my @old_names = ();
-    while (<RENAMEDFILE>) {
-      $renamed_nodes_line_nr++;
-      next unless (/\S/);
-      next if (/^\s*\@c\b/);
-      if (s/^\s*\@\@\{\}\s+(\S)/$1/) {
-        chomp;
-        if (scalar(@old_names)) {
-          foreach my $old_node_name (@old_names) {
-            $renamed_nodes->{$old_node_name} = $_;
-          }
-          $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
-          @old_names = ();
-        } else {
-          $self->file_line_warn(__("no node to be renamed"),
-                        $renamed_nodes_file, $renamed_nodes_line_nr);
-        }
-      } else {
-        chomp;
-        s/^\s*//;
-        $renamed_nodes_lines->{$_} = $renamed_nodes_line_nr;
-        push @old_names, $_;
-      }
-    }
-    if (scalar(@old_names)) {
-      $self->file_line_warn(__("nodes without a new name at the end of file"),
-             $renamed_nodes_file, $renamed_nodes_line_nr);
-    }
-    if (!close(RENAMEDFILE)) {
-      $self->document_warn(sprintf(__p(
-          "see HTML Xref Link Preservation in the Texinfo manual for context",
-          "error on closing node-renaming configuration file %s: %s"), 
-                            $renamed_nodes_file, $!));
-    }
-  } else {
-    $self->document_warn(sprintf(__("could not open %s: %s"), 
-                         $renamed_nodes_file, $!));
-  }
-  return ($renamed_nodes, $renamed_nodes_lines);
-}
-
-sub collect_renamed_nodes($$;$$)
-{
-  my $self = shift;
-  my $basename = shift;
-  my $renamed_nodes = shift;
-  my $renamed_nodes_lines = shift;
-
-  my $renamed_nodes_file;
-  if (defined($self->get_conf('RENAMED_NODES_FILE'))) {
-    $renamed_nodes_file = $self->get_conf('RENAMED_NODES_FILE');
-  } elsif (-f $basename . '-noderename.cnf') {
-    $renamed_nodes_file = $basename . '-noderename.cnf';
-  }
-  if (defined($renamed_nodes_file)) {
-    $self->document_warn(sprintf(__("using a renamed nodes file (`%s') is deprecated"), $renamed_nodes_file));
-    my ($renamed_nodes, $renamed_nodes_lines)
-     = parse_renamed_nodes_file($self, $renamed_nodes_file, $renamed_nodes,
-                                $renamed_nodes_lines);
-    return ($renamed_nodes, $renamed_nodes_lines, $renamed_nodes_file);
-  }
-  return (undef, undef, undef);
-}
-
 sub normalize_top_node_name($)
 {
   my $node = shift;

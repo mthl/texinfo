@@ -53,23 +53,8 @@ all-checks all-check: all
 tex-html-checks tex-html-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes
 
-# This is done in this directory to be sure that the files are there
-# when check is done in this directory.
-# Some files are in 2 directories in order to get the same result
-# in both test run locations.
-all-local: equivalent_nodes-noderename.cnf sectioning/equivalent_nodes-noderename.cnf
-
-sectioning/equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
-	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
-
-equivalent_nodes-noderename.cnf: sectioning/renamednodes.cnf-ref
-	${INSTALL_DATA} $(srcdir)/sectioning/renamednodes.cnf-ref $@
-
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
  $(one_test_files_generated_list) coverage_macro.texi $(other_tests) reference
-
-DISTCLEANFILES = unknown_nodes_renamed-noderename.cnf \
- equivalent_nodes-noderename.cnf
 
 dist-hook:
 	rm -rf `find $(distdir)/reference -name .git`
