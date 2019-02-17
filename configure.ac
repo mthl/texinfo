@@ -140,10 +140,9 @@ fi
 AC_SUBST([DIFF_A_OPTION])
 
 # Checks for header files.
-AC_CHECK_HEADERS(io.h limits.h pwd.h string.h strings.h \
+AC_CHECK_HEADERS(io.h pwd.h \
   termcap.h termios.h unistd.h \
-  sys/file.h sys/ioctl.h sys/stream.h \
-  sys/time.h sys/ttold.h sys/wait.h)
+  sys/ioctl.h sys/time.h sys/wait.h)
 
 AC_SYS_POSIX_TERMIOS
 

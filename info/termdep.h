@@ -28,10 +28,6 @@
 #  include <sys/ioctl.h>
 #endif
 
-#ifdef HAVE_SYS_TTOLD_H
-#  include <sys/ttold.h>
-#endif /* HAVE_SYS_TTOLD_H */
-
 #ifdef _WIN32
 extern unsigned sleep (unsigned);
 #endif

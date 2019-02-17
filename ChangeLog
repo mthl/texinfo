@@ -1,5 +1,15 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not check for some header files.
+
+	* configure.ac (AC_CHECK_HEADERS): Do not check for limits.h,
+	string.h, strings.h, sys/file.h, sys/stream.h or sys/ttold.h.
+	* system.h: Unconditionally include limits.h.  Never include 
+	sys/file.h.
+	* info/termdep.h: Do not try to include sys/ttold.h.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not check for fcntl.h or sys/fcntl.h.
 
 	* configure.ac (AC_CHECK_HEADERS): Do not check for fcntl.h or 

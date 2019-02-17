@@ -69,9 +69,8 @@ extern int errno;
 extern char *strerror ();
 #endif
 
-#ifdef HAVE_LIMITS_H
 #include <limits.h>
-#endif
+
 #ifndef PATH_MAX
 #ifndef _POSIX_PATH_MAX
 # define _POSIX_PATH_MAX 255
@@ -90,10 +89,6 @@ extern int strcoll ();
 #if !defined(S_ISDIR) && defined(S_IFDIR)
 # define S_ISDIR(mode) (((mode) & S_IFMT) == S_IFDIR)
 #endif
-
-#ifdef HAVE_SYS_FILE_H
-#include <sys/file.h>
-#endif /* HAVE_SYS_FILE_H */
 
 /* MS-DOS and similar non-Posix systems have some peculiarities:
     - they distinguish between binary and text files;
