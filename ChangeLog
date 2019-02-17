@@ -1,5 +1,13 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove BSD signals support.
+
+	* configure.ac: Do not check for sigblock or sigsetmask.
+	* info/signals.c: Do not check HAVE_SIGSETMASK.
+	(sigprocmask): Remove this replacement function.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove AC_REPLACE_FUNCS.
 
 	* configure.ac: Remove AC_REPLACE_FUNCS.  This has likely been 

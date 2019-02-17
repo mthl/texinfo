@@ -139,9 +139,6 @@ if test "z$diff_accepts_a_option" = 'zyes' ; then
 fi
 AC_SUBST([DIFF_A_OPTION])
 
-# Needed on sysV68 for sigblock, sigsetmask.  But check for it in libc first.
-AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
-
 # Checks for header files.
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
   termcap.h termios.h unistd.h \
@@ -155,7 +152,7 @@ AC_TYPE_OFF_T
 # Checks for library functions.
 AC_FUNC_STRCOLL
 AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
-	       sigsetmask strchr posix_openpt)
+	       strchr posix_openpt)
 
 # Used for Info tests
 AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])
