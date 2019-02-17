@@ -30,8 +30,7 @@ t=$srcdir/t; export t
 
 ginfo_output=t/`basename $0.out`
 
-# These are only used for interactive tests
-pipein=t/`basename $0.pipein`
+# Only used for interactive tests
 pty_type=t/`basename $0.pipeout`
 
 # Remove left over file from previous tests
@@ -60,7 +59,7 @@ cleanup ()
   test $pty_pid -ne 0 && kill $pty_pid
 
   rm -f $ginfo_output
-  rm -f $pipein $pty_type
+  rm -f $pty_type
   
   #killall `basename $0`  # see below
   exit $retval
@@ -133,13 +132,12 @@ init_interactive_test ()
   # Avoid ginfo complaining that terminal is too dumb
   TERM=vt100; export TERM
   
-  # Create named pipes to communicate with pseudotty program, or quit.
-  rm -f $pipein $pty_type # must already be defined
+  # Create named pipe to communicate with pseudotty program, or quit.
+  rm -f $pty_type # must already be defined
   if findprog mkfifo; then
-    mkfifo $pipein
     mkfifo $pty_type
     #
-    if test ! -r $pipein || test ! -r $pty_type; then
+    if test ! -r $pty_type; then
       echo "$0: could not mkfifo pipes" >&2
       exit 77
     fi
@@ -153,10 +151,10 @@ init_interactive_test ()
   # if they were typed by a user in an interactive session.
   # We redirect to the FIFO within a subshell, because under NetBSD 6.1.4
   # it hangs otherwise.
-  (exec ./pseudotty "$pty_type" >$pipein) &
+  (exec ./pseudotty 0<>$pty_type 1>&0 ) &
   pty_pid=$!
   # Get name of pseudo-terminal slave device
-  read pts_device <$pipein
+  read pts_device < $pty_type
   
   # Keeping the FIFO open for writing prevents the select call in
   # pseudotty returning EOF after a single "printf something >$pty_type".

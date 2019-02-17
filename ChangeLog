@@ -1,3 +1,13 @@
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use only one FIFO to communicate with pseudotty.
+
+	* info/pseudotty.c: Do not use a separate control channel
+	to get bytes to be sent from the pseudoterminal: use the bytes 
+	received from standard input.
+	* info/t/Init-test.inc: Do not pass pseudotty the name of 
+	a FIFO on the command line.
+
 2019-02-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: Bump version to 6.6dev.
