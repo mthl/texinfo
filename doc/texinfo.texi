@@ -16837,11 +16837,9 @@ meaning of the options.
 @vindex NODE_FILES
 @option{--node-files}        @tab @code{NODE_FILES}
 @item
-@vindex OUT
 @vindex OUTFILE
 @vindex SUBDIR
-@option{--output}            @tab @code{OUT}, @code{OUTFILE},
-                                        @code{SUBDIR}
+@option{--output}            @tab @code{OUTFILE}, @code{SUBDIR}
 @item
 @vindex paragraphindent
 @option{--paragraph-indent}  @tab @code{paragraphindent}

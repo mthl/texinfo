@@ -864,7 +864,6 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
       $var = 'SUBDIR';
     }
     set_from_cmdline($var, $_[1]);
-    set_from_cmdline('OUT', $_[1]);
     push @texi2dvi_args, '-o', $_[1];
   },
  'no-validate|no-pointer-validate' => sub {
@@ -1011,7 +1010,7 @@ if (defined($ENV{'TEXINFO_OUTPUT_FORMAT'})
 }
 
 if ($call_texi2dvi) {
-  if (defined(get_conf('OUT')) and @ARGV > 1) {
+  if (defined(get_conf('OUTFILE')) and @ARGV > 1) {
     die sprintf(__('%s: when generating %s, only one input FILE may be specified with -o'."\n"),
                 $real_command_name, format_name($format));
   }
@@ -1263,7 +1262,6 @@ while(@input_files) {
 
   if ($file_number != 0) {
     delete $cmdline_options->{'OUTFILE'} if exists($cmdline_options->{'OUTFILE'});
-    delete $cmdline_options->{'OUT'} if exists($cmdline_options->{'OUT'});
     delete $cmdline_options->{'PREFIX'} if exists($cmdline_options->{'PREFIX'});
     delete $cmdline_options->{'SUBDIR'} 
       if (exists($cmdline_options->{'SUBDIR'}) and get_conf('SPLIT'));

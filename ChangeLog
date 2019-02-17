@@ -1,5 +1,16 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove customization value OUT.
+
+	* tp/Texinfo/Common.pm (@command_line_settables),
+	* doc/texinfo.texi (Customization Variables and Options):
+	Remove 'OUT'.
+	* tp/texi2any.pl: Do not use 'OUT' as a customization variable 
+	and use 'OUTFILE' instead to check if the name of the output 
+	file has been given.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Re-use open file descriptor.
 
 	* info/t/Init-test.inc: Change a comment.
