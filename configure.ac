@@ -144,16 +144,9 @@ AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 
 # Checks for header files.
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
-  termcap.h termio.h termios.h unistd.h \
+  termcap.h termios.h unistd.h \
   sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
   sys/time.h sys/ttold.h sys/wait.h)
-
-# sys/ptem.h requires sys/stream.h for mblk_t on Solaris.
-AC_CHECK_HEADERS([sys/ptem.h],,,
-[#if HAVE_SYS_STREAM_H
-#include <sys/stream.h>
-#endif
-])
 
 AC_SYS_POSIX_TERMIOS
 

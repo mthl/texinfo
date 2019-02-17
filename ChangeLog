@@ -1,5 +1,13 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove 'termio' support.
+
+	* configure.ac: Do not check for termio.h or sys/ptem.h.
+	* info/termdep.h, info/terminal.c:
+	Remove all code for when termios.h is not present.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove obsolete configure checks.
 
 	* configure.ac: Remove AC_HEADER_STAT, AC_HEADER_STDC, 
