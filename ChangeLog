@@ -1,5 +1,12 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove AC_REPLACE_FUNCS.
+
+	* configure.ac: Remove AC_REPLACE_FUNCS.  This has likely been 
+	unused since gnulib was integrated into the sources.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove 'termio' support.
 
 	* configure.ac: Do not check for termio.h or sys/ptem.h.
