@@ -41,6 +41,8 @@
 #include <getopt.h>
 #include <unistd.h>
 
+#include <fcntl.h>
+
 /* For gettext (NLS).  */
 #include "gettext.h"
 
@@ -92,18 +94,6 @@ extern int strcoll ();
 #ifdef HAVE_SYS_FILE_H
 #include <sys/file.h>
 #endif /* HAVE_SYS_FILE_H */
-
-#ifndef O_RDONLY
-/* Since <fcntl.h> is POSIX, prefer that to <sys/fcntl.h>.
-   This also avoids some useless warnings on (at least) Linux.  */
-#ifdef HAVE_FCNTL_H
-#include <fcntl.h>
-#else /* not HAVE_FCNTL_H */
-#ifdef HAVE_SYS_FCNTL_H
-#include <sys/fcntl.h>
-#endif /* not HAVE_SYS_FCNTL_H */
-#endif /* not HAVE_FCNTL_H */
-#endif /* not O_RDONLY */
 
 /* MS-DOS and similar non-Posix systems have some peculiarities:
     - they distinguish between binary and text files;

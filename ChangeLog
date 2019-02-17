@@ -1,5 +1,13 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not check for fcntl.h or sys/fcntl.h.
+
+	* configure.ac (AC_CHECK_HEADERS): Do not check for fcntl.h or 
+	sys/fcntl.h.
+	* system.h: Include fcntl.h unconditionally.
+	
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove BSD signals support.
 
 	* configure.ac: Do not check for sigblock or sigsetmask.
