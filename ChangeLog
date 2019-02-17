@@ -1,5 +1,14 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Re-use open file descriptor.
+
+	* info/t/Init-test.inc: Change a comment.
+	* info/t: All tests: Use a file descriptor that is already open 
+	to pass bytes to pseudotty instead of opening the FIFO again 
+	every time.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use only one FIFO to communicate with pseudotty.
 
 	* info/pseudotty.c: Do not use a separate control channel
