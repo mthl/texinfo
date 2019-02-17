@@ -143,8 +143,6 @@ AC_SUBST([DIFF_A_OPTION])
 AC_CHECK_FUNC(sigblock, , [AC_CHECK_LIB(bsd, sigblock)])
 
 # Checks for header files.
-AC_HEADER_STAT
-AC_HEADER_STDC
 AC_CHECK_HEADERS(fcntl.h io.h limits.h pwd.h string.h strings.h \
   termcap.h termio.h termios.h unistd.h \
   sys/fcntl.h sys/file.h sys/ioctl.h sys/stream.h \
@@ -159,21 +157,10 @@ AC_CHECK_HEADERS([sys/ptem.h],,,
 
 AC_SYS_POSIX_TERMIOS
 
-# Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_OFF_T
-AC_TYPE_SIGNAL
-AC_C_CONST
-AC_STRUCT_TM
-
-# Checks for function declarations.
-AC_CHECK_DECLS([memchr, strcoll, strerror])
 
 # Checks for library functions.
 AC_FUNC_STRCOLL
-AC_FUNC_VPRINTF
-# in theory only pre-sysvr3 systems needed this and it's not likely
-# that anyone compiling new texinfo still has such a thing? we'll see.
-# AC_FUNC_SETVBUF_REVERSED
 AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
 	       sigsetmask strchr posix_openpt)
 AC_REPLACE_FUNCS(memcpy memmove strdup strerror)

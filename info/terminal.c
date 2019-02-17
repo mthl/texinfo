@@ -170,7 +170,7 @@ output_character_function (int c)
 static void
 terminal_begin_using_terminal (void)
 {
-  RETSIGTYPE (*sigsave) (int signum);
+  void (*sigsave) (int signum);
 
   /* Turn on mouse reporting.  This is "normal tracking mode" supported by
      xterm.  The presence of the Km capability may not be a reliable way to
@@ -211,7 +211,7 @@ terminal_begin_using_terminal (void)
 static void
 terminal_end_using_terminal (void)
 {
-  RETSIGTYPE (*sigsave) (int signum);
+  void (*sigsave) (int signum);
 
   /* Turn off mouse reporting ("normal tracking mode"). */
   if (term_Km)

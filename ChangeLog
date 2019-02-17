@@ -1,5 +1,19 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove obsolete configure checks.
+
+	* configure.ac: Remove AC_HEADER_STAT, AC_HEADER_STDC, 
+	AC_TYPE_SIGNAL, AC_C_CONST, AC_STRUCT_TM, AC_FUNC_VPRINTF.  
+	Remove commented-out use of AC_FUNC_SETVBUF_REVERSED.
+
+	* info/signals.c, info/terminal.c: Remove use of RETSIGTYPE for 
+	signal handlers.
+
+	Some of these are noted in the autoconf or gnulib manuals as 
+	being unnecessary.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove customization value OUT.
 
 	* tp/Texinfo/Common.pm (@command_line_settables),
