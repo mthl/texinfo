@@ -1,5 +1,16 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove some function checks.
+
+	* configure.ac: Remove AC_FUNC_STRCOLL.
+	(AC_CHECK_FUNCS): Do not check for bzero, getcwd, memset, 
+	setvbuf or strchr.
+	* system.h: Never declare strcoll.
+	* info/dribble.c (open_dribble_file): Do not check HAVE_SETVBUF 
+	or SETVBUF_REVERSED.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not check for some header files.
 
 	* configure.ac (AC_CHECK_HEADERS): Do not check for limits.h,

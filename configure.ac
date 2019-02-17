@@ -149,9 +149,7 @@ AC_SYS_POSIX_TERMIOS
 AC_TYPE_OFF_T
 
 # Checks for library functions.
-AC_FUNC_STRCOLL
-AC_CHECK_FUNCS(bzero getcwd memset setlocale setvbuf sigaction sigprocmask \
-	       strchr posix_openpt)
+AC_CHECK_FUNCS(setlocale sigaction sigprocmask posix_openpt)
 
 # Used for Info tests
 AM_CONDITIONAL([have_ptys], [test x$ac_cv_func_posix_openpt = xyes])

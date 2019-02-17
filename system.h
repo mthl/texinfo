@@ -78,10 +78,6 @@ extern char *strerror ();
 #define PATH_MAX _POSIX_PATH_MAX
 #endif
 
-#ifndef HAVE_DECL_STRCOLL
-extern int strcoll ();
-#endif
-
 #include <sys/stat.h>
 #if STAT_MACROS_BROKEN
 # undef S_ISDIR
