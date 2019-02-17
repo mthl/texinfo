@@ -790,7 +790,7 @@ sub test($$)
 
       # TODO: is it really useful to give this warning?
       $converted_errors{$format} = undef if (!@{$converted_errors{$format}});
-      if (defined($converted{$format}) and $format =~ /^file_/) {
+      if (defined($converted_errors{$format}) and $format =~ /^file_/) {
         warn "Warning: errors printed for $format by $test_name\n";
         foreach my $error_message (@{$converted_errors{$format}}) {
           warn $error_message->{'error_line'};

@@ -1,5 +1,9 @@
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/test_utils.pl: Check if errors were output properly.
+
+2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove some function checks.
 
 	* configure.ac: Remove AC_FUNC_STRCOLL.
