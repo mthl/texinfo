@@ -46,7 +46,7 @@ const char *program_name = "pseudotty";
 int
 main (int argc, char *argv[])
 {
-  int master, slave;
+  int master, slave, control;
   char *name;
   fd_set read_set;
 
@@ -122,17 +122,23 @@ main (int argc, char *argv[])
   if (fclose (stdout) != 0)
     error (1, 0, "error closing stdout: aborting");
 
+  error (0, 0, "opening control channel");
+  control = open (argv[1], O_RDONLY);
+  if (control == -1)
+    error (1, 0, "error opening control channel: aborting");
+
+
   FD_ZERO (&read_set);
 
   error (0, 0, "entering main loop");
   while (1)
     {
       FD_SET (master, &read_set);
-      FD_SET (STDIN_FILENO, &read_set);
+      FD_SET (control, &read_set);
 
       select (FD_SETSIZE, &read_set, 0, 0, 0);
 
-      if (FD_ISSET (STDIN_FILENO, &read_set))
+      if (FD_ISSET (control, &read_set))
         {
           char c;
           int success;
@@ -140,7 +146,7 @@ main (int argc, char *argv[])
           while (1)
             {
               error (0, 0, "trying to read");
-              success = read (STDIN_FILENO, &c, 1);
+              success = read (control, &c, 1);
               if (success < 0)
                 {
                   if (errno != EINTR)
