@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.3.92\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"POT-Creation-Date: 2019-02-18 17:46+0000\n"
 "PO-Revision-Date: 2017-07-11 14:12+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
@@ -2020,22 +2020,22 @@ msgstr "không tìm thấy mục nhập cho “%s” nên không xóa gì"
 
 #: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:833
 #: tp/Texinfo/Convert/Converter.pm:871 tp/Texinfo/Convert/Converter.pm:1159
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6596
-#: tp/Texinfo/Convert/HTML.pm:6620 tp/Texinfo/Convert/HTML.pm:7001
-#: tp/Texinfo/Convert/HTML.pm:7060 tp/Texinfo/Convert/HTML.pm:7139
-#: tp/Texinfo/Convert/HTML.pm:7217 tp/Texinfo/Convert/IXIN.pm:286
-#: tp/Texinfo/Convert/Info.pm:296 tp/Texinfo/Convert/TexinfoXML.pm:451
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6593
+#: tp/Texinfo/Convert/HTML.pm:6617 tp/Texinfo/Convert/HTML.pm:6991
+#: tp/Texinfo/Convert/HTML.pm:7050 tp/Texinfo/Convert/HTML.pm:7129
+#: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:296
+#: tp/Texinfo/Convert/TexinfoXML.pm:451
 #, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "không thể mở “%s” để ghi: %s"
 
-#: tp/Texinfo/Common.pm:892
+#: tp/Texinfo/Common.pm:891
 msgid ""
 "move your @contents command if you want the contents after the title page"
 msgstr ""
 "di chuyển lệnh @contents của bạn nếu bạn muốn các nội dung sau trang tiêu đề"
 
-#: tp/Texinfo/Common.pm:895
+#: tp/Texinfo/Common.pm:894
 msgid ""
 "move your @shortcontents and @contents commands if you want the contents "
 "after the title page"
@@ -2043,75 +2043,57 @@ msgstr ""
 "di chuyển lệnh @shortcontents và @contents của bạn nếu bạn muốn các nội dung "
 "sau trang tiêu đề"
 
-#: tp/Texinfo/Common.pm:1152
+#: tp/Texinfo/Common.pm:1151
 #, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s không phải mã ngôn ngữ hợp lệ"
 
-#: tp/Texinfo/Common.pm:1157
+#: tp/Texinfo/Common.pm:1156
 #, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s không phải mã vùng hợp lệ"
 
-#: tp/Texinfo/Common.pm:1174
+#: tp/Texinfo/Common.pm:1173
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "“%s” không phải là khả năng chia tách (split) hợp lệ"
 
-#: tp/Texinfo/Common.pm:1196
+#: tp/Texinfo/Common.pm:1195
 #, perl-format
 msgid "could not read %s: %s"
 msgstr "không thể đọc %s: %s"
 
-#: tp/Texinfo/Common.pm:1216
+#: tp/Texinfo/Common.pm:1215
 #, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin @verbatiminclude %s: %s"
 
-#: tp/Texinfo/Common.pm:1222 tp/Texinfo/ParserNonXS.pm:2980
+#: tp/Texinfo/Common.pm:1221 tp/Texinfo/ParserNonXS.pm:2980
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s: không tìm thấy %s"
 
-#: tp/Texinfo/Common.pm:1714
-msgid "no node to be renamed"
-msgstr "không có nút nào được đổi tên"
-
-#: tp/Texinfo/Common.pm:1725
-msgid "nodes without a new name at the end of file"
-msgstr "các nút không có tên mới tại cuối tập tin"
-
-#: tp/Texinfo/Common.pm:1735 tp/Texinfo/ParserNonXS.pm:777
-#, perl-format
-msgid "could not open %s: %s"
-msgstr "không thể mở %s: %s"
-
-#: tp/Texinfo/Common.pm:1755
-#, fuzzy, perl-format
-msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr "Gặp lỗi khi đóng tập tin nút được đổi tên %s: %s"
-
-#: tp/Texinfo/Common.pm:2254
+#: tp/Texinfo/Common.pm:2168
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "không thể bảo vệ ký tự băm trong @%s"
 
-#: tp/Texinfo/Common.pm:2636
+#: tp/Texinfo/Common.pm:2550
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "tên nút trống rỗng sau phần mở rộng “%s”"
 
-#: tp/Texinfo/Common.pm:2644
+#: tp/Texinfo/Common.pm:2558
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s “%s” đã định nghĩa từ trước"
 
-#: tp/Texinfo/Common.pm:2650
+#: tp/Texinfo/Common.pm:2564
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "ở đây có định nghĩa trước như là @%s"
 
-#: tp/Texinfo/Common.pm:2669 tp/Texinfo/ParserNonXS.pm:3273
+#: tp/Texinfo/Common.pm:2583 tp/Texinfo/ParserNonXS.pm:3273
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "đối số trống rỗng trong @%s"
@@ -2122,8 +2104,8 @@ msgid "%s: output incompatible with split"
 msgstr "%s: kết xuất không tương thích với split (chia tách)"
 
 #: tp/Texinfo/Convert/Converter.pm:854 tp/Texinfo/Convert/Converter.pm:887
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7027
-#: tp/Texinfo/Convert/HTML.pm:7086 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7017
+#: tp/Texinfo/Convert/HTML.pm:7076 tp/Texinfo/Convert/IXIN.pm:909
 #: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
 #: tp/Texinfo/Convert/Info.pm:213 tp/Texinfo/Convert/Info.pm:276
 #: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1827
@@ -2179,90 +2161,61 @@ msgstr "không nhận ra kiểu: %s"
 msgid "error on closing html refs config file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin cấu hình tham chiếu cho html %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5022
+#: tp/Texinfo/Convert/HTML.pm:5019
 msgid "string not closed in css file"
 msgstr "chuỗi chưa được đóng trong tập tin css"
 
-#: tp/Texinfo/Convert/HTML.pm:5024
+#: tp/Texinfo/Convert/HTML.pm:5021
 msgid "--css-include ended in comment"
 msgstr "“--css-include” kết thúc tại phần ghi chú"
 
-#: tp/Texinfo/Convert/HTML.pm:5026
+#: tp/Texinfo/Convert/HTML.pm:5023
 msgid "@import not finished in css file"
 msgstr "@import chưa hoàn thiện trong tập tin css"
 
-#: tp/Texinfo/Convert/HTML.pm:5052
+#: tp/Texinfo/Convert/HTML.pm:5049
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "không tìm thấy tập tin CSS %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5058
+#: tp/Texinfo/Convert/HTML.pm:5055
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "không thể mở --include-file %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5068
+#: tp/Texinfo/Convert/HTML.pm:5065
 #, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin CSS %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5882 tp/Texinfo/Convert/HTML.pm:5886
+#: tp/Texinfo/Convert/HTML.pm:5879 tp/Texinfo/Convert/HTML.pm:5883
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "không tìm thấy mục htmlxref.cnf dành cho “%s”"
 
-#: tp/Texinfo/Convert/HTML.pm:6591
+#: tp/Texinfo/Convert/HTML.pm:6588
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin khung (frame) %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6615
+#: tp/Texinfo/Convert/HTML.pm:6612
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin khung (frame) TOC %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6730
+#: tp/Texinfo/Convert/HTML.pm:6727
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "bộ tiếp hợp %s của trạng thái %s mức ưu tiên %s gặp lỗi"
 
-#: tp/Texinfo/Convert/HTML.pm:6935
+#: tp/Texinfo/Convert/HTML.pm:6925
 msgid "must specify a title with a title command or @top"
 msgstr "phải chỉ định một tiêu đề cùng với lệnh title hay @top"
 
-#: tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/HTML.pm:7136
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "gặp lỗi khi đóng tập tin nút chuyển hướng %s: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7172
-#, perl-format
-msgid "old name for `%s' is a node of the document"
-msgstr "tên cũ dành cho “%s” là một nút tài liệu"
-
-#: tp/Texinfo/Convert/HTML.pm:7178
-#, perl-format
-msgid "file empty for renamed node `%s'"
-msgstr "tập tin trống rỗng cho nút được đổi tên “%s”"
-
-#: tp/Texinfo/Convert/HTML.pm:7192
-#, perl-format
-msgid "target node (new name for `%s') not in document: %s"
-msgstr "nút đích (tên mới cho “%s”) không ở trong tài liệu: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7224
-#, perl-format
-msgid "error on closing renamed node redirection file %s: %s"
-msgstr "gặp lỗi khi đóng tập tin nút chuyển hướng được đổi tên %s: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7262
-msgid "empty node name"
-msgstr "tên nút rỗng"
-
-#: tp/Texinfo/Convert/HTML.pm:7264 tp/Texinfo/ParserNonXS.pm:3286
-#, perl-format
-msgid "syntax for an external node used for `%s'"
-msgstr "cú pháp cho nút mở rộng được dùng cho “%s”"
 
 #: tp/Texinfo/Convert/Info.pm:104
 msgid "document without nodes"
@@ -2362,6 +2315,11 @@ msgstr "tên nút mục trình đơn không được chứa dấu hai chấm “
 #: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "tên mục trình đơn không được chứa dấu hai chấm “:”"
+
+#: tp/Texinfo/ParserNonXS.pm:777
+#, perl-format
+msgid "could not open %s: %s"
+msgstr "không thể mở %s: %s"
 
 #: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:436
 #, perl-format
@@ -2573,6 +2531,11 @@ msgstr "@%s chỉ có nghĩa khi ở dòng @multitable"
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr ""
 "@node đứng trước @%s, nhưng bộ phận của nó không được tổ hợp cùng với các nút"
+
+#: tp/Texinfo/ParserNonXS.pm:3286
+#, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr "cú pháp cho nút mở rộng được dùng cho “%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:3309
 #, perl-format
@@ -3580,7 +3543,7 @@ msgstr ""
 " * end        cuối\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:937
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
@@ -3590,54 +3553,54 @@ msgstr ""
 " * asis       như thế\n"
 "không phải “%s”.\n"
 
-#: tp/texi2any.pl:1015
+#: tp/texi2any.pl:1014
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s: khi đang tạo %s, chỉ một TẬP-TIN đầu vào có thể được chỉ ra cùng với tùy "
 "chọn -o\n"
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:1018
 msgid "--Xopt option without printed output"
 msgstr "tùy chọn --Xopt không in ra kết xuất"
 
-#: tp/texi2any.pl:1035
+#: tp/texi2any.pl:1034
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "không hiểu sự biến đổi cây %s"
 
-#: tp/texi2any.pl:1042
+#: tp/texi2any.pl:1041
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "bỏ qua việc chia cắt cho định dạng %s"
 
-#: tp/texi2any.pl:1101
+#: tp/texi2any.pl:1100
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: thiếu đối số tập tin.\n"
 
-#: tp/texi2any.pl:1102
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Hãy thử lệnh trợ giúp “%s --help” để xem thông tin thêm.\n"
 
-#: tp/texi2any.pl:1169
+#: tp/texi2any.pl:1168
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "chuyển đổi dạng fill_gaps_in_sectioning không trả về kết quả nào. Không có "
 "chương nào à?"
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1191
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "gặp lỗi khi đóng tập tin vĩ lệnh mở rộng %s: %s\n"
 
-#: tp/texi2any.pl:1198
+#: tp/texi2any.pl:1197
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "không thể mở “%s” để ghi: %s\n"
 
-#: tp/texi2any.pl:1223
+#: tp/texi2any.pl:1222
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3645,20 +3608,45 @@ msgstr ""
 "sự biến đổi insert_nodes_for_sectioning_commands không trả về kết quả. Không "
 "có chương nào à?"
 
-#: tp/texi2any.pl:1292 tp/texi2any.pl:1368
+#: tp/texi2any.pl:1290 tp/texi2any.pl:1366
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: lỗi đóng tập tin %s: %s\n"
 
-#: tp/texi2any.pl:1315 tp/texi2any.pl:1349
+#: tp/texi2any.pl:1313 tp/texi2any.pl:1347
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: gặp lỗi khi đóng tập tin liên kết nội tại %s: %s\n"
 
-#: tp/texi2any.pl:1321 tp/texi2any.pl:1355
+#: tp/texi2any.pl:1319 tp/texi2any.pl:1353
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: không thể mở “%s” để ghi: %s\n"
+
+#~ msgid "no node to be renamed"
+#~ msgstr "không có nút nào được đổi tên"
+
+#~ msgid "nodes without a new name at the end of file"
+#~ msgstr "các nút không có tên mới tại cuối tập tin"
+
+#, fuzzy
+#~ msgid "using a renamed nodes file (`%s') is deprecated"
+#~ msgstr "Gặp lỗi khi đóng tập tin nút được đổi tên %s: %s"
+
+#~ msgid "old name for `%s' is a node of the document"
+#~ msgstr "tên cũ dành cho “%s” là một nút tài liệu"
+
+#~ msgid "file empty for renamed node `%s'"
+#~ msgstr "tập tin trống rỗng cho nút được đổi tên “%s”"
+
+#~ msgid "target node (new name for `%s') not in document: %s"
+#~ msgstr "nút đích (tên mới cho “%s”) không ở trong tài liệu: %s"
+
+#~ msgid "error on closing renamed node redirection file %s: %s"
+#~ msgstr "gặp lỗi khi đóng tập tin nút chuyển hướng được đổi tên %s: %s"
+
+#~ msgid "empty node name"
+#~ msgstr "tên nút rỗng"
 
 #~ msgid "can't open %s: %s"
 #~ msgstr "không thể mở %s: %s"

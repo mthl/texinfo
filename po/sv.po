@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-02-16 17:15+0000\n"
+"POT-Creation-Date: 2019-02-18 17:46+0000\n"
 "PO-Revision-Date: 2019-02-13 23:23+0100\n"
 "Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -2079,22 +2079,22 @@ msgstr "inga poster hittades för \"%s\"; ingenting togs bort"
 
 #: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:833
 #: tp/Texinfo/Convert/Converter.pm:871 tp/Texinfo/Convert/Converter.pm:1159
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6596
-#: tp/Texinfo/Convert/HTML.pm:6620 tp/Texinfo/Convert/HTML.pm:7001
-#: tp/Texinfo/Convert/HTML.pm:7060 tp/Texinfo/Convert/HTML.pm:7139
-#: tp/Texinfo/Convert/HTML.pm:7217 tp/Texinfo/Convert/IXIN.pm:286
-#: tp/Texinfo/Convert/Info.pm:296 tp/Texinfo/Convert/TexinfoXML.pm:451
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6593
+#: tp/Texinfo/Convert/HTML.pm:6617 tp/Texinfo/Convert/HTML.pm:6991
+#: tp/Texinfo/Convert/HTML.pm:7050 tp/Texinfo/Convert/HTML.pm:7129
+#: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:296
+#: tp/Texinfo/Convert/TexinfoXML.pm:451
 #, perl-format
 msgid "could not open %s for writing: %s"
 msgstr "kunde inte öppna %s för skrivning: %s"
 
-#: tp/Texinfo/Common.pm:892
+#: tp/Texinfo/Common.pm:891
 msgid ""
 "move your @contents command if you want the contents after the title page"
 msgstr ""
 "flygga ditt @contents-kommando om du vill ha innehållet efter titelsidan"
 
-#: tp/Texinfo/Common.pm:895
+#: tp/Texinfo/Common.pm:894
 msgid ""
 "move your @shortcontents and @contents commands if you want the contents "
 "after the title page"
@@ -2102,75 +2102,57 @@ msgstr ""
 "flytta dina @shortcontents- och @contents-kommando om du vill ha innehållet "
 "efter titelsidan"
 
-#: tp/Texinfo/Common.pm:1152
+#: tp/Texinfo/Common.pm:1151
 #, perl-format
 msgid "%s is not a valid language code"
 msgstr "%s är inte en giltig landskod"
 
-#: tp/Texinfo/Common.pm:1157
+#: tp/Texinfo/Common.pm:1156
 #, perl-format
 msgid "%s is not a valid region code"
 msgstr "%s är inte en giltig regionkod"
 
-#: tp/Texinfo/Common.pm:1174
+#: tp/Texinfo/Common.pm:1173
 #, perl-format
 msgid "%s is not a valid split possibility"
 msgstr "%s är inte en giltig delningsmöjlighet"
 
-#: tp/Texinfo/Common.pm:1196
+#: tp/Texinfo/Common.pm:1195
 #, perl-format
 msgid "could not read %s: %s"
 msgstr "kunde inte läsa %s: %s"
 
-#: tp/Texinfo/Common.pm:1216
+#: tp/Texinfo/Common.pm:1215
 #, perl-format
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "fel vid stängning av @verbatiminclude-fil %s: %s"
 
-#: tp/Texinfo/Common.pm:1222 tp/Texinfo/ParserNonXS.pm:2980
+#: tp/Texinfo/Common.pm:1221 tp/Texinfo/ParserNonXS.pm:2980
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "%s: kunde inte hitta %s"
 
-#: tp/Texinfo/Common.pm:1714
-msgid "no node to be renamed"
-msgstr "inge nod att byta namn på"
-
-#: tp/Texinfo/Common.pm:1725
-msgid "nodes without a new name at the end of file"
-msgstr "noder utan ett nytt namn vid filslut"
-
-#: tp/Texinfo/Common.pm:1735 tp/Texinfo/ParserNonXS.pm:777
-#, perl-format
-msgid "could not open %s: %s"
-msgstr "kunde inte öppna %s: %s"
-
-#: tp/Texinfo/Common.pm:1755
-#, perl-format
-msgid "using a renamed nodes file (`%s') is deprecated"
-msgstr "att använda en nodfil (”%s”) med nytt namn är föråldrat"
-
-#: tp/Texinfo/Common.pm:2254
+#: tp/Texinfo/Common.pm:2168
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "kunde inte skydda hashtecken i @%s"
 
-#: tp/Texinfo/Common.pm:2636
+#: tp/Texinfo/Common.pm:2550
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "tomt nodnamn efter expansion ”%s”"
 
-#: tp/Texinfo/Common.pm:2644
+#: tp/Texinfo/Common.pm:2558
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s ”%s” är redan definierat"
 
-#: tp/Texinfo/Common.pm:2650
+#: tp/Texinfo/Common.pm:2564
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "här är den tidigare definitionen av @%s"
 
-#: tp/Texinfo/Common.pm:2669 tp/Texinfo/ParserNonXS.pm:3273
+#: tp/Texinfo/Common.pm:2583 tp/Texinfo/ParserNonXS.pm:3273
 #, perl-format
 msgid "empty argument in @%s"
 msgstr "tomt argument i @%s"
@@ -2181,8 +2163,8 @@ msgid "%s: output incompatible with split"
 msgstr "%s: utmatning inkompatibel med delning"
 
 #: tp/Texinfo/Convert/Converter.pm:854 tp/Texinfo/Convert/Converter.pm:887
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7027
-#: tp/Texinfo/Convert/HTML.pm:7086 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7017
+#: tp/Texinfo/Convert/HTML.pm:7076 tp/Texinfo/Convert/IXIN.pm:909
 #: tp/Texinfo/Convert/Info.pm:159 tp/Texinfo/Convert/Info.pm:185
 #: tp/Texinfo/Convert/Info.pm:213 tp/Texinfo/Convert/Info.pm:276
 #: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1827
@@ -2238,90 +2220,61 @@ msgstr "okänd typ: %s"
 msgid "error on closing html refs config file %s: %s"
 msgstr "fel vid stängning av html-referenskonfigurationsfil %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5022
+#: tp/Texinfo/Convert/HTML.pm:5019
 msgid "string not closed in css file"
 msgstr "sträng stängs inte i css-fil"
 
-#: tp/Texinfo/Convert/HTML.pm:5024
+#: tp/Texinfo/Convert/HTML.pm:5021
 msgid "--css-include ended in comment"
 msgstr "--css-include slutade med kommentar"
 
-#: tp/Texinfo/Convert/HTML.pm:5026
+#: tp/Texinfo/Convert/HTML.pm:5023
 msgid "@import not finished in css file"
 msgstr "@import avslutades inte i css-fil"
 
-#: tp/Texinfo/Convert/HTML.pm:5052
+#: tp/Texinfo/Convert/HTML.pm:5049
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "CSS-fil %s hittades inte"
 
-#: tp/Texinfo/Convert/HTML.pm:5058
+#: tp/Texinfo/Convert/HTML.pm:5055
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "kunde inte öppna --include-fil %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5068
+#: tp/Texinfo/Convert/HTML.pm:5065
 #, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "fel vid stängning av CSS-fil %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5882 tp/Texinfo/Convert/HTML.pm:5886
+#: tp/Texinfo/Convert/HTML.pm:5879 tp/Texinfo/Convert/HTML.pm:5883
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "ingen htmlxref.cnf-post hittad för ”%s”"
 
-#: tp/Texinfo/Convert/HTML.pm:6591
+#: tp/Texinfo/Convert/HTML.pm:6588
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "fel vid stängning av ramfil %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6615
+#: tp/Texinfo/Convert/HTML.pm:6612
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr "fel vid stängning av TOC-ramfil %s: %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6730
+#: tp/Texinfo/Convert/HTML.pm:6727
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "hanterare %s för steg %s prioritet %s misslyckades"
 
-#: tp/Texinfo/Convert/HTML.pm:6935
+#: tp/Texinfo/Convert/HTML.pm:6925
 msgid "must specify a title with a title command or @top"
 msgstr "måste ange en titel med ett titelkommando eller @top"
 
-#: tp/Texinfo/Convert/HTML.pm:7146
+#: tp/Texinfo/Convert/HTML.pm:7136
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "fel vid stängning av omdirigeringsnodsfil %s: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7172
-#, perl-format
-msgid "old name for `%s' is a node of the document"
-msgstr "gammalt namn för ”%s” är en nod i dokumentet"
-
-#: tp/Texinfo/Convert/HTML.pm:7178
-#, perl-format
-msgid "file empty for renamed node `%s'"
-msgstr "fil tomt för namnändrad nod ”%s”"
-
-#: tp/Texinfo/Convert/HTML.pm:7192
-#, perl-format
-msgid "target node (new name for `%s') not in document: %s"
-msgstr "målnod (nytt namn för ”%s”) finns inte dokument: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7224
-#, perl-format
-msgid "error on closing renamed node redirection file %s: %s"
-msgstr "fel vid stängning av nodomdirigeringsfil %s som bytt namn: %s"
-
-#: tp/Texinfo/Convert/HTML.pm:7262
-msgid "empty node name"
-msgstr "tomt nodnamn"
-
-#: tp/Texinfo/Convert/HTML.pm:7264 tp/Texinfo/ParserNonXS.pm:3286
-#, perl-format
-msgid "syntax for an external node used for `%s'"
-msgstr "syntax för en extern nod använd för ”%s”"
 
 #: tp/Texinfo/Convert/Info.pm:104
 msgid "document without nodes"
@@ -2430,6 +2383,11 @@ msgstr "nodnamn för menyobjekt borde inte innehålla ”:”"
 #: tp/Texinfo/Convert/Plaintext.pm:2983
 msgid "menu entry name should not contain `:'"
 msgstr "namn för menyobjekt borde inte innehålla ”:”"
+
+#: tp/Texinfo/ParserNonXS.pm:777
+#, perl-format
+msgid "could not open %s: %s"
+msgstr "kunde inte öppna %s: %s"
 
 #: tp/Texinfo/ParserNonXS.pm:997 tp/Texinfo/Structuring.pm:436
 #, perl-format
@@ -2641,6 +2599,11 @@ msgstr "@%s är inte meningsfullt utanför @multitabell-rad"
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr "@node föregår @%s, men delar kanske inte associeras med noder"
+
+#: tp/Texinfo/ParserNonXS.pm:3286
+#, perl-format
+msgid "syntax for an external node used for `%s'"
+msgstr "syntax för en extern nod använd för ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:3309
 #, perl-format
@@ -3603,59 +3566,59 @@ msgstr ""
 "%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
 "\"%s\".\n"
 
-#: tp/texi2any.pl:938
+#: tp/texi2any.pl:937
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
 "inte \"%s\".\n"
 
-#: tp/texi2any.pl:1015
+#: tp/texi2any.pl:1014
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr "%s: vid generering av %s får endast en indata-FIL anges med -o\n"
 
-#: tp/texi2any.pl:1019
+#: tp/texi2any.pl:1018
 msgid "--Xopt option without printed output"
 msgstr "--Xopt flagga utan utskrift"
 
-#: tp/texi2any.pl:1035
+#: tp/texi2any.pl:1034
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "okänd trädtransformation %s"
 
-#: tp/texi2any.pl:1042
+#: tp/texi2any.pl:1041
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "hoppar över uppdelning för format %s"
 
-#: tp/texi2any.pl:1101
+#: tp/texi2any.pl:1100
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s: filargument saknas.\n"
 
-#: tp/texi2any.pl:1102
+#: tp/texi2any.pl:1101
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Prova \"%s --help\" för mer information.\n"
 
-#: tp/texi2any.pl:1169
+#: tp/texi2any.pl:1168
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "fill_gaps_in_sectioning-transformation returnerade inget resultat. Inget "
 "avsnitt?"
 
-#: tp/texi2any.pl:1192
+#: tp/texi2any.pl:1191
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "fel vid stängning av makroexpansionsfil %s: %s\n"
 
-#: tp/texi2any.pl:1198
+#: tp/texi2any.pl:1197
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "kunde inte öppna %s för skrivning: %s\n"
 
-#: tp/texi2any.pl:1223
+#: tp/texi2any.pl:1222
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3663,20 +3626,44 @@ msgstr ""
 "insert_nodes_for_sectioning_commans-transformering returnerade inget "
 "resultat. Inget avsnitt?"
 
-#: tp/texi2any.pl:1292 tp/texi2any.pl:1368
+#: tp/texi2any.pl:1290 tp/texi2any.pl:1366
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s: fel vid stängning %s: %s\n"
 
-#: tp/texi2any.pl:1315 tp/texi2any.pl:1349
+#: tp/texi2any.pl:1313 tp/texi2any.pl:1347
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s: fel vid stängning av intern länkfil %s: %s\n"
 
-#: tp/texi2any.pl:1321 tp/texi2any.pl:1355
+#: tp/texi2any.pl:1319 tp/texi2any.pl:1353
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kunde inte öppna %s för skrivning: %s\n"
+
+#~ msgid "no node to be renamed"
+#~ msgstr "inge nod att byta namn på"
+
+#~ msgid "nodes without a new name at the end of file"
+#~ msgstr "noder utan ett nytt namn vid filslut"
+
+#~ msgid "using a renamed nodes file (`%s') is deprecated"
+#~ msgstr "att använda en nodfil (”%s”) med nytt namn är föråldrat"
+
+#~ msgid "old name for `%s' is a node of the document"
+#~ msgstr "gammalt namn för ”%s” är en nod i dokumentet"
+
+#~ msgid "file empty for renamed node `%s'"
+#~ msgstr "fil tomt för namnändrad nod ”%s”"
+
+#~ msgid "target node (new name for `%s') not in document: %s"
+#~ msgstr "målnod (nytt namn för ”%s”) finns inte dokument: %s"
+
+#~ msgid "error on closing renamed node redirection file %s: %s"
+#~ msgstr "fel vid stängning av nodomdirigeringsfil %s som bytt namn: %s"
+
+#~ msgid "empty node name"
+#~ msgstr "tomt nodnamn"
 
 #~ msgid "can't open %s: %s"
 #~ msgstr "kan inte ta bort filen %s: %s"
