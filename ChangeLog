@@ -1,3 +1,19 @@
+2019-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@documentencoding is not file-specific.
+
+	* tp/Texinfo/XS/parsetexi/input.c (input_encoding): New 
+	variable.
+	(set_input_encoding, next_text):
+	Use that encoding instead of an encoding on the input stack.
+
+	(INPUT): Remove field 'encoding'.
+	(input_push, input_push_file): Update.
+
+	Eli Zaretskii reported that a @documentencoding command in an
+	@include'd file would not take effect outside of that file, 
+	which was wrong for the Emacs manuals.
+	
 2019-02-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove noderename.cnf feature.
