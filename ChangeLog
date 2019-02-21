@@ -1,5 +1,13 @@
 2019-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Prefer @url in the documentation.
+
+	* doc/texinfo.texi (@url, @url Examples): Use @url consistently 
+	and say that @uref is a synonym.  Akim Demaille reported that a 
+	confusing mixture of the two was being used.
+
+2019-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	@documentencoding is not file-specific.
 
 	* tp/Texinfo/XS/parsetexi/input.c (input_encoding): New 

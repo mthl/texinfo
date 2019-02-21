@@ -5507,23 +5507,25 @@ refer to printed works for which no Info form exists.
 @section @code{@@url}, @code{@@uref@{@var{url}[, @var{text}][, @var{replacement}]@}}
 
 @anchor{uref}@c old name
-@findex uref
+@anchor{url}
 @cindex Uniform resource locator, referring to
 @cindex URL, referring to
 
+@findex url
 @cindex @code{href}, producing HTML
-@code{@@uref} produces a reference to a uniform resource locator
+@code{@@url} produces a reference to a uniform resource locator
 (url).  It takes one mandatory argument, the url, and two optional
 arguments which control the text that is displayed.  In HTML and PDF
-output, @code{@@uref} produces a link you can follow.  (To merely
+output, @code{@@url} produces a link you can follow.  (To merely
 indicate a url without creating a link people can follow, use
 @code{@@indicateurl}, @pxref{@code{@@indicateurl}}.)
 
-@findex url
-@anchor{url}@code{@@url} is a synonym for @code{@@uref}.
-(Originally, @code{@@url} had the meaning of @code{@@indicateurl}, but
-in practice it was almost always misused.  So we've changed the
-meaning.)
+@findex uref
+@code{@@uref} is a synonym for @code{@@url}.
+(Originally, @code{@@url} had the meaning of @code{@@indicateurl}
+and @code{@@uref} was required to produce a working link, but
+in practice @code{@@url} was almost always misused.  So we've changed 
+the meaning.)
 
 The second argument, if specified, is the text to display (the default
 is the url itself); in Info, DVI, and PDF output, but not in HTML
@@ -5554,25 +5556,25 @@ just one argument.  The given url is both the target and the visible
 text of the link:
 
 @example
-The official GNU ftp site is @@uref@{http://ftp.gnu.org/gnu@}.
+The official GNU ftp site is @@url@{http://ftp.gnu.org/gnu@}.
 @end example
 
 @noindent produces:
 @display
-The official GNU ftp site is @uref{http://ftp.gnu.org/gnu}.
+The official GNU ftp site is @url{http://ftp.gnu.org/gnu}.
 @end display
 
 @subsubheading Two-argument form of @code{@@url}
 
 Here is an example of the two-argument form:
 @example
-The official @@uref@{http://ftp.gnu.org/gnu, GNU ftp site@}
+The official @@url@{http://ftp.gnu.org/gnu, GNU ftp site@}
 holds programs and texts.
 @end example
 
 @noindent which produces:
 @display
-The official @uref{http://ftp.gnu.org/gnu, GNU ftp site}
+The official @url{http://ftp.gnu.org/gnu, GNU ftp site}
 holds programs and texts.
 @end display
 
@@ -5592,12 +5594,12 @@ holds programs and texts.
 
 Finally, an example of the three-argument form:
 @example
-The @@uref@{/man.cgi/1/ls,,ls@} program @dots{}
+The @@url@{/man.cgi/1/ls,,ls@} program @dots{}
 @end example
 
 @noindent which, except for HTML, produces:
 @display
-The @uref{/man.cgi/1/ls,,ls} program @dots{}
+The @url{/man.cgi/1/ls,,ls} program @dots{}
 @end display
 
 @noindent but with HTML:
