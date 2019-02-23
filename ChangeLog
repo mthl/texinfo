@@ -1,3 +1,24 @@
+2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Avoid package typeglob assignment.
+
+	* tp/Texinfo/ParserNonXS.pm: Use "package Texinfo::Parser" 
+	instead of "package Texinfo::ParserNonXS" and then aliasing the 
+	package namespace hash with a typeglob assignment.  Move
+	"use Texinfo::Report" earlier in file and remove lengthy 
+	comment.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs: Use "Texinfo::Parser" 
+	instead of "Parsetexi" in MODULE and PACAKGE declarations.
+
+	Package typeglob assignment is not recommended in the Perl 
+	documentation anywhere, and has confusing effects.  It appears 
+	that when a Perl source file is read, the symbols are 
+	interpreted in terms of a particular package namespace hash.  
+	This hash does not change if the package hash is later 
+	reassigned, which can lead to undefined symbols, especially with 
+	complicated situations when files "use" one another.
+
 2019-02-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Prefer @url in the documentation.

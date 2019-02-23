@@ -15,7 +15,7 @@
 #include "indices.h"
 #include "input.h"
 
-MODULE = Parsetexi		PACKAGE = Parsetexi		
+MODULE = Texinfo::Parser	PACKAGE = Texinfo::Parser
 
 PROTOTYPES: ENABLE
 

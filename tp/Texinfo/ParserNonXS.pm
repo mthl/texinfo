@@ -28,11 +28,7 @@
 #  user visible subroutines.
 #  internal subroutines, doing the parsing.
 
-package Texinfo::ParserNonXS;
-
-no strict 'refs';
-BEGIN { *Texinfo::Parser:: = \%Texinfo::ParserNonXS::; }
-use strict 'refs';
+package Texinfo::Parser;
 
 # We need the unicode stuff.
 use 5.006;
