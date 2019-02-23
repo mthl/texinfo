@@ -174,12 +174,6 @@ my %parser_default_configuration = (
 # line_nr    current line number in the file
 # fh         filehandle for the file
 
-# content is not copied but reference is copied when duplicating a parser.
-my %tree_informations;
-foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels') {
-  $tree_informations{$tree_information} = 1;
-}
-
 # The commands in initialization_overrides are not set in the document if
 # set at the parser initialization.
 my %initialization_overrides = (
@@ -525,31 +519,6 @@ sub _setup_conf($$$)
       }
     }
   }
-}
-
-# Duplicate an existing parser.
-sub duplicate_parser {
-  my $old_parser = shift;
-
-  my $parser = dclone(\%parser_default_configuration);
-
-  foreach my $key (keys(%parser_default_configuration)) {
-    if ($tree_informations{$key}) {
-      if (defined($old_parser->{$key})) {
-        foreach my $info_key (keys(%{$old_parser->{$key}})) {
-          $parser->{$key}->{$info_key}
-          = $old_parser->{$key}->{$info_key};
-        }
-      }
-    } elsif(ref($old_parser->{$key})) {
-      $parser->{$key} = dclone($old_parser->{$key});
-    } else {
-      $parser->{$key} = $old_parser->{$key};
-    }
-  }
-  bless $parser, ref($old_parser);
-
-  return _setup_parser($parser, undef);
 }
 
 # initialization entry point.  Set up a parser.

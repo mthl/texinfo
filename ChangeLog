@@ -1,5 +1,13 @@
 2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove unused code.
+
+	* tp/Texinfo/Parser.pm (%tree_informations, duplicate_parser),
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (duplicate_parser):
+	Remove unused.
+
+2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Make UTF-8 default input encoding.
 
 	* doc/texinfo.tex: Remove line setting catcodes of non-ASCII 

@@ -62,31 +62,6 @@ foreach my $tree_information ('values', 'macros', 'explained_commands', 'labels'
 
 use Storable qw(dclone); # standard in 5.007003
 
-sub duplicate_parser {
-  my $old_parser = shift;
-
-  my $parser = dclone(\%parser_default_configuration);
-
-  foreach my $key (keys(%parser_default_configuration)) {
-    if ($tree_informations{$key}) {
-      if (defined($old_parser->{$key})) {
-        foreach my $info_key (keys(%{$old_parser->{$key}})) {
-          $parser->{$key}->{$info_key}
-          = $old_parser->{$key}->{$info_key};
-        }
-      }
-    } elsif(ref($old_parser->{$key})) {
-      $parser->{$key} = dclone($old_parser->{$key});
-    } else {
-      $parser->{$key} = $old_parser->{$key};
-    }
-  }
-  bless $parser, ref($old_parser);
-
-  $parser->Texinfo::Report::new;
-  return $parser;
-}
-
 sub simple_parser {
   goto &parser;
 }
