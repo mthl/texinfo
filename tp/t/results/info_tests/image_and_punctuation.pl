@@ -58,7 +58,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -102,7 +104,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 5,
@@ -147,7 +151,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 8,
@@ -191,7 +197,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -235,7 +243,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 12,
@@ -280,7 +290,9 @@ $result_trees{'image_and_punctuation'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 15,

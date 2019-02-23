@@ -9,6 +9,10 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+* Language:
+  . UTF-8 is the default input encoding
+
+
 6.6 (16 February 2019)
 * Language:
   . new commands @&, @ampchar{}

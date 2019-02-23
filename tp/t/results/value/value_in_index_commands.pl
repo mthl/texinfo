@@ -550,7 +550,7 @@ $result_trees{'value_in_index_commands'} = {
               'index_at_command' => 'codeidxindex',
               'index_name' => 'codeidx',
               'index_type_command' => 'codeidxindex',
-              'key' => 'a index entry te\' i^',
+              'key' => "a index entry t\x{e9} \x{ee}",
               'node' => {},
               'number' => 1
             },

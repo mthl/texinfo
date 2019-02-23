@@ -24,6 +24,9 @@ $result_trees{'image_inline_or_not'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8-strict'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 1,
@@ -63,6 +66,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 3,
@@ -168,6 +174,9 @@ $result_trees{'image_inline_or_not'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8-strict'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 8,
@@ -207,6 +216,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 10,
@@ -264,6 +276,9 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 14,
@@ -302,6 +317,9 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 17,
@@ -384,6 +402,9 @@ $result_trees{'image_inline_or_not'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 20,
@@ -417,6 +438,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 21,
@@ -522,6 +546,9 @@ $result_trees{'image_inline_or_not'} = {
                               ],
                               'cmdname' => 'image',
                               'contents' => [],
+                              'extra' => {
+                                'input_perl_encoding' => 'utf-8-strict'
+                              },
                               'line_nr' => {
                                 'file_name' => '',
                                 'line_nr' => 25,
@@ -572,6 +599,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 27,
@@ -611,6 +641,9 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'contents' => [],
+                          'extra' => {
+                            'input_perl_encoding' => 'utf-8-strict'
+                          },
                           'line_nr' => {
                             'file_name' => '',
                             'line_nr' => 29,
@@ -648,6 +681,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 31,
@@ -749,6 +785,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 35,
@@ -784,6 +823,9 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'contents' => [],
+                          'extra' => {
+                            'input_perl_encoding' => 'utf-8-strict'
+                          },
                           'line_nr' => {},
                           'parent' => {}
                         },
@@ -838,6 +880,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 36,
@@ -883,6 +928,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -955,6 +1003,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 38,
@@ -1053,6 +1104,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 41,
@@ -1106,6 +1160,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 42,
@@ -1161,6 +1218,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 46,
@@ -1256,6 +1316,9 @@ $result_trees{'image_inline_or_not'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 51,
@@ -1293,6 +1356,9 @@ $result_trees{'image_inline_or_not'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 53,
@@ -1321,6 +1387,9 @@ $result_trees{'image_inline_or_not'} = {
                           ],
                           'cmdname' => 'image',
                           'contents' => [],
+                          'extra' => {
+                            'input_perl_encoding' => 'utf-8-strict'
+                          },
                           'line_nr' => {},
                           'parent' => {}
                         }

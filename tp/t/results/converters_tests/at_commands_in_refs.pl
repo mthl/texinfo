@@ -3014,6 +3014,9 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 23,
@@ -3080,7 +3083,9 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
-                      'extra' => {},
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -9275,6 +9280,9 @@ $result_trees{'at_commands_in_refs'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 90,
@@ -9341,7 +9349,9 @@ $result_trees{'at_commands_in_refs'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             }
@@ -9393,6 +9403,9 @@ $result_trees{'at_commands_in_refs'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 92,
@@ -9459,7 +9472,9 @@ $result_trees{'at_commands_in_refs'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             }
@@ -13926,6 +13941,9 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {
                         'file_name' => '',
                         'line_nr' => 145,
@@ -13992,7 +14010,9 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'image',
                       'contents' => [],
-                      'extra' => {},
+                      'extra' => {
+                        'input_perl_encoding' => 'utf-8-strict'
+                      },
                       'line_nr' => {},
                       'parent' => {}
                     }

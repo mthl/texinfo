@@ -150,11 +150,10 @@ our %default_customization_values = (
   'SHOW_MENU' => 1,             # if false no menu error related.
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
-  'INPUT_PERL_ENCODING' => undef, # input perl encoding name, set from 
-                              # @documentencoding in the default case
-  'INPUT_ENCODING_NAME' => undef, # encoding name normalized as preferred
-                              # IANA, set from @documentencoding in the default
-                              # case
+  'INPUT_ENCODING_NAME' => 'utf-8', # encoding name normalized as preferred
+                                    # IANA, set from @documentencoding
+  'INPUT_PERL_ENCODING' => 'utf-8-strict', # input perl encoding name, set from 
+                                           # @documentencoding
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   # This is not used directly, but passed to Convert::Text through 

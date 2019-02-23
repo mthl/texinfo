@@ -898,9 +898,9 @@ $result_converted{'plaintext'}->{'multiple'} = ' -- Variable d\'instance de fr :
 
  -- Variable d\'instance de copying : a b
 
- -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
+ -- Variável de instância da pt: BBB CCC
 
- -- VariÃ¡vel de instÃ¢ncia da copying: a b
+ -- Variável de instância da copying: a b
 ';
 
 
@@ -915,9 +915,9 @@ File: ,  Node: Top,  Up: (dir)
 
  -- Variable d\'instance de copying : a b
 
- -- VariÃ¡vel de instÃ¢ncia da pt: BBB CCC
+ -- Variável de instância da pt: BBB CCC
 
- -- VariÃ¡vel de instÃ¢ncia da copying: a b
+ -- Variável de instância da copying: a b
 
 
 Tag Table:

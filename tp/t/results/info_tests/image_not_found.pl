@@ -46,6 +46,9 @@ $result_trees{'image_not_found'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
+          'extra' => {
+            'input_perl_encoding' => 'utf-8-strict'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 2,

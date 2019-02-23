@@ -96,7 +96,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -172,7 +174,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -253,7 +257,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -339,7 +345,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -430,7 +438,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -536,7 +546,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -627,6 +639,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -836,6 +851,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -859,7 +877,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 11,
@@ -886,7 +906,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {},
               'parent' => {}
             },
@@ -976,7 +998,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1052,7 +1076,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1133,7 +1159,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1219,7 +1247,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1310,7 +1340,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1416,7 +1448,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1507,6 +1541,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1716,6 +1753,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1739,7 +1779,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {
                     'file_name' => '',
                     'line_nr' => 22,
@@ -1766,7 +1808,9 @@ $result_trees{'image_formatting'} = {
                   ],
                   'cmdname' => 'image',
                   'contents' => [],
-                  'extra' => {},
+                  'extra' => {
+                    'input_perl_encoding' => 'utf-8-strict'
+                  },
                   'line_nr' => {},
                   'parent' => {}
                 },
@@ -1861,7 +1905,9 @@ $result_trees{'image_formatting'} = {
           ],
           'cmdname' => 'image',
           'contents' => [],
-          'extra' => {},
+          'extra' => {
+            'input_perl_encoding' => 'utf-8-strict'
+          },
           'line_nr' => {
             'file_name' => '',
             'line_nr' => 25,
@@ -1922,7 +1968,9 @@ $result_trees{'image_formatting'} = {
               ],
               'cmdname' => 'image',
               'contents' => [],
-              'extra' => {},
+              'extra' => {
+                'input_perl_encoding' => 'utf-8-strict'
+              },
               'line_nr' => {
                 'file_name' => '',
                 'line_nr' => 28,
