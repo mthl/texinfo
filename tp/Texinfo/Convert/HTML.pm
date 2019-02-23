@@ -7141,6 +7141,7 @@ sub output($$)
       }
     }
   }
+  return undef;
 }
 
 # Convert the 'contents' of a tree element.

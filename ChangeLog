@@ -1,5 +1,14 @@
 2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Avoid unnecessary change in test results.
+
+	* tp/Texinfo/Convert/HTML.pm: Add 'return undef' to end of 
+	function.  This stops an empty string being returned from the 
+	sub for some reason.  This led to a change in the results
+	for 'file_html' tests.
+
+2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Load more modules on demand.
 
 	* tp/Texinfo/Convert/Converter.pm: Use fewer "use" declarations.
