@@ -1,5 +1,23 @@
 2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Load more modules on demand.
+
+	* tp/Texinfo/Convert/Converter.pm: Use fewer "use" declarations.
+	(converter, sort_element_count): Use "require" statements
+	to load modules on demand.  This cuts down the run time of
+	'texi2any --help' as it stops Texinfo::Parser being loaded
+	(about 0.6 sec -> 0.4 sec on my computer).
+
+	This change depends on the previous change for module 
+	namespaces; otherwise, the Texinfo::Parser::parser subroutine 
+	can't be called in texi2any.pl, as the wrong hash is being 
+	referenced for %Texinfo::Parser::.  This could be worked around 
+	by putting the call within an 'eval' statement to delay the 
+	choice of which namespace hash to use; however, this would be 
+	too distracting if done too much.
+
+2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Avoid package typeglob assignment.
 
 	* tp/Texinfo/ParserNonXS.pm: Use "package Texinfo::Parser" 
