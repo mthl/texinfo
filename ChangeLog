@@ -1,5 +1,10 @@
 2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (@titlepage): Remove documentation of 
+	@setcontentsaftertitlepage.
+
+2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove unused code.
 
 	* tp/Texinfo/Parser.pm (%tree_informations, duplicate_parser),

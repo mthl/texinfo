@@ -2203,8 +2203,6 @@ The @code{@@end titlepage} command starts a new page and turns on page
 numbering (@pxref{Heading Generation}).  All the
 material that you want to appear on unnumbered pages should be put
 between the @code{@@titlepage} and @code{@@end titlepage} commands.
-You can force the table of contents to appear there with the
-@code{@@setcontentsaftertitlepage} command (@pxref{Contents}).
 
 @findex page@r{, within @code{@@titlepage}}
 By using the @code{@@page} command you can force a page break within the
