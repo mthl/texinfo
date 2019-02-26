@@ -1657,6 +1657,11 @@ Tag Table:
 Node: Top87
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -398,20 +398,26 @@ sub converter_initialize($)
   }
 
   %{$self->{'style_map'}} = %style_map;
+  $self->{'convert_text_options'} 
+      = {Texinfo::Common::_convert_text_options($self)};
+
   if ($self->get_conf('ENABLE_ENCODING') and $self->get_conf('OUTPUT_ENCODING_NAME')
       and $self->get_conf('OUTPUT_ENCODING_NAME') eq 'utf-8') {
     # cache this to avoid redoing calls to get_conf
     $self->{'to_utf8'} = 1;
-
-    foreach my $quoted_command (@quoted_commands) {
-      # Directed single quotes
-      $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
+    if (!$self->{'extra'}->{'documentencoding'}) {
+      # Do not use curly quotes or some other unnecessary non-ASCII characters
+      # if '@documentencoding UTF-8' is not given.
+      $self->{'convert_text_options'}->{'no_extra_unicode'} = 1;
+    } else {
+      foreach my $quoted_command (@quoted_commands) {
+        # Directed single quotes
+        $self->{'style_map'}->{$quoted_command} = ["\x{2018}", "\x{2019}"];
+      }
+      # Directed double quotes
+      $self->{'style_map'}->{'dfn'} = ["\x{201C}", "\x{201D}"];
     }
-    # Directed double quotes
-    $self->{'style_map'}->{'dfn'} = ["\x{201C}", "\x{201D}"];
   }
-  $self->{'convert_text_options'} 
-      = {Texinfo::Common::_convert_text_options($self)};
   if (defined($self->get_conf('OPEN_QUOTE_SYMBOL'))) {
     foreach my $quoted_command (@quoted_commands) {
       $self->{'style_map'}->{$quoted_command}->[0] 
@@ -565,7 +571,8 @@ sub _process_text($$$)
     $text = uc($text);
   }
 
-  if ($self->{'to_utf8'}) {
+  if ($self->{'to_utf8'}
+      and $self->{'extra'}->{'documentencoding'}) {
     return Texinfo::Convert::Unicode::unicode_text($text, 
             $context->{'font_type_stack'}->[-1]->{'monospace'});
   } elsif (!$context->{'font_type_stack'}->[-1]->{'monospace'}) {

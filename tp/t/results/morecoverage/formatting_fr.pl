@@ -4624,11 +4624,11 @@ $result_errors{'formatting_fr'} = [
 $result_converted{'info'}->{'formatting_fr'} = 'This is formatting.info, produced from formatting.texi.
 
 In copying
-INFO-DIR-SECTION Formatting e\' \'@ TeX\' test
+INFO-DIR-SECTION Formatting é \'@ TeX\' test
 START-INFO-DIR-ENTRY
 * Truc: (formatting).           The GNU documentation truc.
-* \'@ e\' ==\': (formatting).  "-- something"
-                           \'cmd\' a`
+* \'@ é ==\': (formatting).  "-- something"
+                           \'cmd\' à
 END-INFO-DIR-ENTRY
 
 
@@ -4780,6 +4780,11 @@ Node: subsubsection three---four----\'\'2194
 Node: chapter22366
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'formatting_fr'} = [

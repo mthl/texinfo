@@ -1,3 +1,26 @@
+2019-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use UTF-8 input and output by default for Info.
+
+	* tp/Texinfo/ParserNonXS.pm (_open_in): New function.
+	(parse_texi_file),
+	(_end_line) <@include>: Use it.
+	(parse_texi_file): Set the input encoding on $self->{'info'}.
+
+	* tp/Texinfo/Convert/Unicode.pm (%extra_unicode_map): New hash,
+	to contain a subset of %unicode_map.
+	* tp/Texinfo/Convert/Plaintext.pm (converter_initialize):
+	If @documentencoding were not given and we are converting to 
+	UTF-8, set 'no_extra_unicode' on the 'convert_text_options' 
+	hash, and do not use any curly quotes for style commands.
+	* tp/Texinfo/Convert/Plaintext.pm (_process_text): Do not 
+	convert `` into “, etc unless @documentencoding was in the 
+	document.
+	* tp/Texinfo/Convert/Text.pm (brace_no_arg_command):
+	Check 'no_extra_unicode' in the options and if it is set, 
+	exclude commands in %extra_unicode_map being output as non-ASCII 
+	UTF-8 sequences.
+
 2019-02-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (@titlepage): Remove documentation of 

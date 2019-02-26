@@ -732,13 +732,35 @@ sub parse_texi_text($$;$$$$)
   return $tree;
 }
 
+sub _open_in {
+  my ($self, $filehandle, $file_name) = @_;
+
+  if (open($filehandle, $file_name)) {
+    if (defined($self->{'INPUT_PERL_ENCODING'})) {
+      if ($self->{'INPUT_PERL_ENCODING'} eq 'utf-8-strict') {
+        binmode($filehandle, ":utf8");
+      } else {
+        binmode($filehandle, ":encoding($self->{'INPUT_PERL_ENCODING'}")
+          if (defined($self->{'INPUT_PERL_ENCODING'}));
+        # For UTF-8, this would lead to errors in Latin-1 input the first time 
+        # a line is read from the file, even though the binmode is changed 
+        # later.  Evidently Perl is checking ahead in the file to see if the 
+        # input is valid.
+      }
+    }
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
 # parse a texi file
 sub parse_texi_file($$)
 {
   my ($self, $file_name) = @_;
 
   my $filehandle = do { local *FH };
-  if (! open($filehandle, $file_name)) { 
+  if (!_open_in($self, $filehandle, $file_name)) {
     $self->document_error(sprintf(__("could not open %s: %s"), 
                                   $file_name, $!));
     return undef;
@@ -785,6 +807,9 @@ sub parse_texi_file($$)
         }];
   $self->{'info'}->{'input_file_name'} = $file_name;
   $self->{'info'}->{'input_directory'} = $directories;
+  $self->{'info'}->{'input_perl_encoding'} = $self->{'INPUT_PERL_ENCODING'};
+  $self->{'info'}->{'input_encoding_name'} = $self->{'INPUT_ENCODING_NAME'};
+
   my $tree = $self->_parse_texi($root);
 
   # Find 'text_root', which contains everything before first node/section.
@@ -2922,10 +2947,8 @@ sub _end_line($$$)
           my $file = Texinfo::Common::locate_include_file($self, $text) ;
           if (defined($file)) {
             my $filehandle = do { local *FH };
-            if (open ($filehandle, $file)) {
+            if (_open_in ($self, $filehandle, $file)) {
               $included_file = 1;
-              binmode($filehandle, ":encoding($self->{'INPUT_PERL_ENCODING'})")
-                if (defined($self->{'INPUT_PERL_ENCODING'}));
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
               my ($directories, $suffix);
               ($file, $directories, $suffix) = fileparse($file)

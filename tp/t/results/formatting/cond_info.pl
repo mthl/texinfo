@@ -461,6 +461,11 @@ Tag Table:
 Node: Top65
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;
