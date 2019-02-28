@@ -1,5 +1,13 @@
 2019-02-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove obsolete and unused code.
+
+	* doc/texinfo.tex (\cindexsub): Remove.  It has been in 
+	texinfo.tex for a very long time but is not documented or 
+	implemented in makeinfo.
+
+2019-02-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Better support for @sortas at end of index entry.
 
 	* doc/texinfo.tex (\dosubindwrite): Use \eatspaces to trim 

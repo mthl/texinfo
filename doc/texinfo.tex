@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-02-28.19}
+\def\texinfoversion{2019-02-28.20}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5418,11 +5418,6 @@ end
 \def\vindex {\vrindex}
 \def\tindex {\tpindex}
 \def\pindex {\pgindex}
-
-\def\cindexsub {\begingroup\obeylines\cindexsub}
-{\obeylines %
-\gdef\cindexsub "#1" #2^^M{\endgroup %
-\dosubind{cp}{#2}{#1}}}
 
 % Define the macros used in formatting output of the sorted index material.
 
