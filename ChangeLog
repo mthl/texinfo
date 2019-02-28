@@ -1,3 +1,16 @@
+2019-02-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Better support for @sortas at end of index entry.
+
+	* doc/texinfo.tex (\dosubindwrite): Use \eatspaces to trim 
+	leading and trailing spaces from the index entry.  This means a 
+	@sortas command can occur at the end of the index entry with a 
+	space before it, and the space will be removed when writing to 
+	the index file.
+	(\sortas): Expand to empty.
+	(\dosubind): Do not set \toks0: use a \def instead to store the 
+	index entry text.
+
 2019-02-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Use UTF-8 input and output by default for Info.
