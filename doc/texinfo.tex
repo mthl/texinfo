@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-02.15}
+\def\texinfoversion{2019-03-02.16}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5279,9 +5279,6 @@ end
   @gdef@useindexbackslash{@def\{{@indexbackslash}}}
 }
 
-% Definition for writing index entry text.
-\def\sortas#1{}%
-
 % Definition for writing index entry sort key.
 {
 \catcode`\-=13
@@ -5293,6 +5290,67 @@ end
   \xdef\indexsortkey{#1}\endgroup}
 }
 
+% Given index entry text like "aaa @subentry bbb @sortas{ZZZ}":
+%   * Set \bracedtext to "{aaa}{bbb}"
+%   * Set \fullindexsortkey to "aaa @subentry ZZZ"
+%
+\def\splitindexentry#1{%
+  \gdef\fullindexsortkey{}%
+  \xdef\bracedtext{}%
+  \def\sep{}%
+  \expandafter\doindexsegment#1\subentry\finish\subentry
+}
+
+% append the results from the next segment
+\def\doindexsegment#1\subentry{%
+  \def\segment{#1}%
+  \ifx\segment\isfinish
+  \else
+    %
+    % Fully expand the segment, throwing away any @sortas directives, and 
+    % trim spaces.
+    \def\sortas##1{}%
+    \edef\trimmed{\segment}%
+    \edef\trimmed{\expandafter\eatspaces\expandafter{\trimmed}}%
+    %
+    \xdef\bracedtext{\bracedtext{\trimmed}}%
+    %
+    % Get the string to sort by.  Process the segment with all
+    % font commands turned off.
+    \bgroup
+      \let\sortas\indexwritesortas
+      \indexnofonts
+      % The braces around the commands are recognized by texindex.
+      \def\lbracechar{{\indexlbrace}}%
+      \def\rbracechar{{\indexrbrace}}%
+      \let\{=\lbracechar
+      \let\}=\rbracechar
+      %
+      \let\indexsortkey\empty
+      % Execute the segment and throw away the typeset output.  This executes
+      % any @sortas commands in this segment.
+      \setbox\dummybox = \hbox{\segment}%
+      \ifx\indexsortkey\empty{%
+        \indexnonalnumdisappear
+        \xdef\trimmed{\segment}%
+        \xdef\trimmed{\expandafter\eatspaces\expandafter{\trimmed}}%
+        \xdef\indexsortkey{\trimmed}%
+        \ifx\indexsortkey\empty\xdef\indexsortkey{ }\fi
+      }\fi
+      %
+      % Append to \fullindexsortkey.
+      \edef\tmp{\gdef\noexpand\fullindexsortkey{%
+                  \fullindexsortkey\sep\indexsortkey}}%
+      \tmp
+    \egroup
+    \def\sep{\subentry}%
+    %
+    \expandafter\doindexsegment
+  \fi
+}
+\def\isfinish{\finish}%
+
+\let\subentry\relax
 
 % Write the entry in \toks0 to the index file.
 %
@@ -5306,24 +5364,10 @@ end
   \indexdummies % Must do this here, since \bf, etc expand at this stage
   \useindexbackslash % \indexbackslash isn't defined now so it will be output 
                      % as is; and it will print as backslash.
-  % The braces around \indexbrace are recognized by texindex.
   %
-  % Get the string to sort by, by processing the index entry with all
-  % font commands turned off.
-  {\indexnofonts
-   \def\lbracechar{{\indexlbrace}}%
-   \def\rbracechar{{\indexrbrace}}%
-   \let\{=\lbracechar
-   \let\}=\rbracechar
-   \indexnonalnumdisappear
-   \xdef\indexsortkey{}%
-   \let\sortas=\indexwritesortas
-   \setbox\dummybox = \hbox{\indextext}% Execute any \sortas
-   \ifx\indexsortkey\empty
-     \xdef\indexsortkey{\indextext}%
-     \ifx\indexsortkey\empty\xdef\indexsortkey{ }\fi
-   \fi
-  }%
+  % Split the entry into primary entry and any subentries, and get the index 
+  % sort key.
+  \splitindexentry\indextext
   %
   % Set up the complete index entry, with both the sort key and
   % the original text, including any font commands.  We write
@@ -5331,13 +5375,9 @@ end
   % subentry case), texindex reduces to two when writing the .??s
   % sorted result.
   %
-  % Fully expand the text of the index entry and trim spaces.
-  \edef\indextext{\indextext}%
-  \edef\indextext{\expandafter\eatspaces\expandafter{\indextext}}%
-  \toks0=\expandafter{\indextext}%
   \edef\temp{%
     \write\writeto{%
-      \string\entry{\indexsortkey}{\noexpand\folio}{\the\toks0}}%
+      \string\entry{\fullindexsortkey}{\noexpand\folio}\bracedtext}%
   }%
   \temp
 }

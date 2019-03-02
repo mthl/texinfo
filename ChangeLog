@@ -1,5 +1,18 @@
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Implement index subentries in texinfo.tex.
+
+	* doc/texinfo.tex (\splitindexentry): New macro.
+	(\dosubindwrite): Call it to get the index text split up into 
+	primary entry and possible secondary and further entries
+	separated by @subentry, as well as the index sort key.  For one 
+	subentry only, this is the same format as was output in the past 
+	and recognized by the C implementation of texindex.
+
+	This feature is experimental.
+
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Change how marks are preserved.
 
 	* doc/texinfo.tex (\savemarks, \restoremarks): Remove.  No 
