@@ -1,5 +1,32 @@
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Change how marks are preserved.
+
+	* doc/texinfo.tex (\savemarks, \restoremarks): Remove.  No 
+	longer propagate marks by running an output routine.  This could 
+	lead to whatsits being thrown away in \restoremarks.
+	(\savedtopmark, \savetopmark, \iftopmarksaved): New.  Save 
+	\topmark only in \savedtopmark, a token list register.
+	(\gettopheadingmarks, \getcolormarks, \onepageout)
+	(\begindoublecolumns, \doublecolumnout):
+	Use \savetopmark instead.
+	
+	The old behaviour made texinfo.tex less hackable, as simple 
+	input like:
+
+	  \input texinfo
+	  
+	  @cindex dddddd
+	  @cindex fff
+	  
+	  @printindex cp
+	  @bye
+
+	could lead to an empty *.cp file, which was confusing, even if 
+	this kind of problem would never occur in real documents.
+
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add test material for headings and footings.
 
 	* doc/texinfo-tex-test.texi (Headings and footings): New section.

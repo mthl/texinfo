@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-02.12}
+\def\texinfoversion{2019-03-02.15}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -288,11 +288,11 @@
 % @setcolor (or @url, or @link, etc.) between @contents and the very
 % first @chapter.
 \def\gettopheadingmarks{%
-  \ifcase0\topmark\fi
+  \ifcase0\the\savedtopmark\fi
   \ifx\thischapter\empty \ifcase0\firstmark\fi \fi
 }
 \def\getbottomheadingmarks{\ifcase1\botmark\fi}
-\def\getcolormarks{\ifcase2\topmark\fi}
+\def\getcolormarks{\ifcase2\the\savedtopmark\fi}
 
 % Avoid "undefined control sequence" errors.
 \def\currentchapterdefs{}
@@ -310,10 +310,32 @@
 % Main output routine.
 %
 \chardef\PAGE = 255
-\output = {\onepageout{\pagecontents\PAGE}}
+\output = {\savetopmark\onepageout{\pagecontents\PAGE}}
 
 \newbox\headlinebox
 \newbox\footlinebox
+
+% When outputting the double column layout for indices, an output routine
+% is run several times, which hides the original value of \topmark.  This
+% can lead to a page heading being output and duplicating the chapter heading
+% of the index.  Hence, save the contents of \topmark at the beginning of
+% the output routine.  The saved contents are valid until we actually
+% \shipout a page.
+%
+% (We used to run a short output routine to actually set \topmark and 
+% \firstmark to the right values, but if this was called with an empty page 
+% containing whatsits for writing index entries, the whatsits would be thrown 
+% away and the index auxiliary file would remain empty.)
+%
+\newtoks\savedtopmark
+\newif\iftopmarksaved
+\topmarksavedtrue
+\def\savetopmark{%
+  \iftopmarksaved\else
+    \global\savedtopmark=\expandafter{\topmark}%
+    \global\topmarksavedtrue
+  \fi
+}
 
 % \onepageout takes a vbox as an argument.
 % \shipout a vbox for a single page, adding an optional header, footer
@@ -331,7 +353,7 @@
   % values in \headline and \footline.
   %
   % This is used to check if we are on the first page of a chapter.
-  \ifcase1\topmark\fi
+  \ifcase1\the\savedtopmark\fi
   \let\prevchaptername\thischaptername
   \ifcase0\firstmark\fi
   \let\curchaptername\thischaptername
@@ -385,8 +407,9 @@
         \unvbox\footlinebox
       \fi
       %
-    }% end of \shipout\vbox
-  }% end of group with \indexdummies
+    }%
+  }%
+  \global\topmarksavedfalse
   \advancepageno
   \ifnum\outputpenalty>-20000 \else\dosupereject\fi
 }
@@ -5790,34 +5813,13 @@ end
 \newbox\partialpage
 \newdimen\doublecolumnhsize
 
-% Use inside an output routine to save \topmark and \firstmark
-\def\savemarks{%
-  \global\savedtopmark=\expandafter{\topmark }%
-  \global\savedfirstmark=\expandafter{\firstmark }%
-}
-\newtoks\savedtopmark
-\newtoks\savedfirstmark
-
-% Set \topmark and \firstmark for next time \output runs.
-% Can't be run from withinside \output (because any material
-% added while an output routine is active, including 
-% penalties, is saved for after it finishes).  The page so far
-% should be empty, otherwise what's on it will be thrown away.
-\def\restoremarks{%
-  \mark{\the\savedtopmark}%
-  \bgroup\output = {%
-    \setbox\dummybox=\box\PAGE
-  }abc\eject\egroup
-  % "abc" because output routine doesn't fire for a completely empty page.
-  \mark{\the\savedfirstmark}%
-}
-
 \def\begindoublecolumns{\begingroup % ended by \enddoublecolumns
   % If not much space left on page, start a new page.
   \ifdim\pagetotal>0.8\vsize\vfill\eject\fi
   %
   % Grab any single-column material above us.
   \output = {%
+    \savetopmark
     %
     % Here is a possibility not foreseen in manmac: if we accumulate a
     % whole lot of material, we might end up calling this \output
@@ -5835,15 +5837,8 @@ end
       \unvbox\PAGE
       \kern-\topskip \kern\baselineskip
     }%
-    \savemarks
   }%
   \eject % run that output routine to set \partialpage
-  \restoremarks
-  %
-  % We recover the two marks that the last output routine saved in order
-  % to propagate the information in marks added around a chapter heading,
-  % which could be otherwise be lost by the time the final page is output.
-  %
   %
   % Use the double-column output routine for subsequent pages.
   \output = {\doublecolumnout}%
@@ -5884,6 +5879,7 @@ end
 %
 \def\doublecolumnout{%
   %
+  \savetopmark
   \splittopskip=\topskip \splitmaxdepth=\maxdepth
   \dimen@ = \vsize
   \divide\dimen@ by 2
@@ -5939,7 +5935,7 @@ end
   %
   \output = {%
     % Split the last of the double-column material.
-    \savemarks
+    \savetopmark
     \balancecolumns
   }%
   \eject % call the \output just set
@@ -5950,7 +5946,6 @@ end
     \global\output = {\onepageout{\pagecontents\PAGE}}%
     %
     \endgroup % started in \begindoublecolumns
-    \restoremarks
     % Leave the double-column material on the current page, no automatic
     % page break.
     \box\balancedcolumns
