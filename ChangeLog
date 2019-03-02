@@ -1,5 +1,18 @@
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Rename \lastchapterdefs.
+
+	* doc/texinfo.tex:
+	(\lastchapterdefs, \currentchapterdefs)
+	(\lastsectiondefs, \currentsectiondefs)
+	(\lastcolordefs, \currentcolordefs)
+	(\lastsection, \currentsection):
+	Rename, as it is confusing to have both \lastchapterdefs and 
+	\prevchapterdefs: both "last" and "previous" mean the same 
+	thing.
+
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix @everyheadingmarks top.
 
 	* doc/texinfo.tex (\onepageout): Separate the code for setting 

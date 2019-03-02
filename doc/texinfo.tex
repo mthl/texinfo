@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-02.10}
+\def\texinfoversion{2019-03-02.12}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -258,8 +258,8 @@
 
 % \domark is called twice inside \chapmacro, to add one
 % mark before the section break, and one after.
-%   In the second call \prevchapterdefs is the same as \lastchapterdefs,
-% and \prevsectiondefs is the same as \lastsectiondefs.
+%   In the second call \prevchapterdefs is the same as \currentchapterdefs,
+% and \prevsectiondefs is the same as \currentsectiondefs.
 %   Then if the page is not broken at the mark, some of the previous
 % section appears on the page, and we can get the name of this section
 % from \firstmark for @everyheadingmarks top.
@@ -267,11 +267,11 @@
 %
 % See page 260 of The TeXbook.
 \def\domark{%
-  \toks0=\expandafter{\lastchapterdefs}%
-  \toks2=\expandafter{\lastsectiondefs}%
+  \toks0=\expandafter{\currentchapterdefs}%
+  \toks2=\expandafter{\currentsectiondefs}%
   \toks4=\expandafter{\prevchapterdefs}%
   \toks6=\expandafter{\prevsectiondefs}%
-  \toks8=\expandafter{\lastcolordefs}%
+  \toks8=\expandafter{\currentcolordefs}%
   \mark{%
                    \the\toks0 \the\toks2  % 0: marks for @everyheadingmarks top
       \noexpand\or \the\toks4 \the\toks6  % 1: for @everyheadingmarks bottom
@@ -295,12 +295,12 @@
 \def\getcolormarks{\ifcase2\topmark\fi}
 
 % Avoid "undefined control sequence" errors.
-\def\lastchapterdefs{}
-\def\lastsectiondefs{}
-\def\lastsection{}
+\def\currentchapterdefs{}
+\def\currentsectiondefs{}
+\def\currentsection{}
 \def\prevchapterdefs{}
 \def\prevsectiondefs{}
-\def\lastcolordefs{}
+\def\currentcolordefs{}
 
 % Margin to add to right of even pages, to left of odd pages.
 \newdimen\bindingoffset
@@ -1162,7 +1162,7 @@ output) for that.)}
   % Set color, and create a mark which defines \thiscolor accordingly,
   % so that \makeheadline knows which color to restore.
   \def\setcolor#1{%
-    \xdef\lastcolordefs{\gdef\noexpand\thiscolor{#1}}%
+    \xdef\currentcolordefs{\gdef\noexpand\thiscolor{#1}}%
     \domark
     \pdfsetcolor{#1}%
   }
@@ -1170,7 +1170,7 @@ output) for that.)}
   \def\maincolor{\rgbBlack}
   \pdfsetcolor{\maincolor}
   \edef\thiscolor{\maincolor}
-  \def\lastcolordefs{}
+  \def\currentcolordefs{}
   %
   \def\makefootline{%
     \baselineskip24pt
@@ -1548,7 +1548,7 @@ output) for that.)}
   % Set color, and create a mark which defines \thiscolor accordingly,
   % so that \makeheadline knows which color to restore.
   \def\setcolor#1{%
-    \xdef\lastcolordefs{\gdef\noexpand\thiscolor{#1}}%
+    \xdef\currentcolordefs{\gdef\noexpand\thiscolor{#1}}%
     \domark
     \pdfsetcolor{#1}%
   }
@@ -1556,7 +1556,7 @@ output) for that.)}
   \def\maincolor{\rgbBlack}
   \pdfsetcolor{\maincolor}
   \edef\thiscolor{\maincolor}
-  \def\lastcolordefs{}
+  \def\currentcolordefs{}
   %
   \def\makefootline{%
     \baselineskip24pt
@@ -6466,21 +6466,21 @@ end
     \checkenv{}% chapters, etc., should not start inside an environment.
   \fi
   % Insert the first mark before the heading break (see notes for \domark).
-  \let\prevchapterdefs=\lastchapterdefs
-  \let\prevsectiondefs=\lastsectiondefs
-  \gdef\lastsectiondefs{\gdef\thissectionname{}\gdef\thissectionnum{}%
+  \let\prevchapterdefs=\currentchapterdefs
+  \let\prevsectiondefs=\currentsectiondefs
+  \gdef\currentsectiondefs{\gdef\thissectionname{}\gdef\thissectionnum{}%
                         \gdef\thissection{}}%
   %
   \def\temptype{#2}%
   \ifx\temptype\Ynothingkeyword
-    \gdef\lastchapterdefs{\gdef\thischaptername{#1}\gdef\thischapternum{}%
+    \gdef\currentchapterdefs{\gdef\thischaptername{#1}\gdef\thischapternum{}%
                           \gdef\thischapter{\thischaptername}}%
   \else\ifx\temptype\Yomitfromtockeyword
-    \gdef\lastchapterdefs{\gdef\thischaptername{#1}\gdef\thischapternum{}%
+    \gdef\currentchapterdefs{\gdef\thischaptername{#1}\gdef\thischapternum{}%
                           \gdef\thischapter{}}%
   \else\ifx\temptype\Yappendixkeyword
     \toks0={#1}%
-    \xdef\lastchapterdefs{%
+    \xdef\currentchapterdefs{%
       \gdef\noexpand\thischaptername{\the\toks0}%
       \gdef\noexpand\thischapternum{\appendixletter}%
       % \noexpand\putwordAppendix avoids expanding indigestible
@@ -6491,7 +6491,7 @@ end
     }%
   \else
     \toks0={#1}%
-    \xdef\lastchapterdefs{%
+    \xdef\currentchapterdefs{%
       \gdef\noexpand\thischaptername{\the\toks0}%
       \gdef\noexpand\thischapternum{\the\chapno}%
       % \noexpand\putwordChapter avoids expanding indigestible
@@ -6511,18 +6511,18 @@ end
   %
   % Now the second mark, after the heading break.  No break points
   % between here and the heading.
-  \let\prevchapterdefs=\lastchapterdefs
-  \let\prevsectiondefs=\lastsectiondefs
+  \let\prevchapterdefs=\currentchapterdefs
+  \let\prevsectiondefs=\currentsectiondefs
   \domark
   %
   {%
     \chapfonts \rm
     \let\footnote=\errfootnoteheading % give better error message
     %
-    % Have to define \lastsection before calling \donoderef, because the
+    % Have to define \currentsection before calling \donoderef, because the
     % xref code eventually uses it.  On the other hand, it has to be called
     % after \pchapsepmacro, or the headline will change too soon.
-    \gdef\lastsection{#1}%
+    \gdef\currentsection{#1}%
     %
     % Only insert the separating space if we have a chapter/appendix
     % number, and don't print the unnumbered ``number''.
@@ -6611,10 +6611,10 @@ end
     \csname #2fonts\endcsname \rm
     %
     % Insert first mark before the heading break (see notes for \domark).
-    \let\prevsectiondefs=\lastsectiondefs
+    \let\prevsectiondefs=\currentsectiondefs
     \ifx\temptype\Ynothingkeyword
       \ifx\sectionlevel\seckeyword
-        \gdef\lastsectiondefs{\gdef\thissectionname{#1}\gdef\thissectionnum{}%
+        \gdef\currentsectiondefs{\gdef\thissectionname{#1}\gdef\thissectionnum{}%
                               \gdef\thissection{\thissectionname}}%
       \fi
     \else\ifx\temptype\Yomitfromtockeyword
@@ -6622,7 +6622,7 @@ end
     \else\ifx\temptype\Yappendixkeyword
       \ifx\sectionlevel\seckeyword
         \toks0={#1}%
-        \xdef\lastsectiondefs{%
+        \xdef\currentsectiondefs{%
           \gdef\noexpand\thissectionname{\the\toks0}%
           \gdef\noexpand\thissectionnum{#4}%
           % \noexpand\putwordSection avoids expanding indigestible
@@ -6635,7 +6635,7 @@ end
     \else
       \ifx\sectionlevel\seckeyword
         \toks0={#1}%
-        \xdef\lastsectiondefs{%
+        \xdef\currentsectiondefs{%
           \gdef\noexpand\thissectionname{\the\toks0}%
           \gdef\noexpand\thissectionnum{#4}%
           % \noexpand\putwordSection avoids expanding indigestible
@@ -6661,28 +6661,28 @@ end
     %
     % Now the second mark, after the heading break.  No break points
     % between here and the heading.
-    \global\let\prevsectiondefs=\lastsectiondefs
+    \global\let\prevsectiondefs=\currentsectiondefs
     \domark
     %
     % Only insert the space after the number if we have a section number.
     \ifx\temptype\Ynothingkeyword
       \setbox0 = \hbox{}%
       \def\toctype{unn}%
-      \gdef\lastsection{#1}%
+      \gdef\currentsection{#1}%
     \else\ifx\temptype\Yomitfromtockeyword
       % for @headings -- no section number, don't include in toc,
-      % and don't redefine \lastsection.
+      % and don't redefine \currentsection.
       \setbox0 = \hbox{}%
       \def\toctype{omit}%
       \let\sectionlevel=\empty
     \else\ifx\temptype\Yappendixkeyword
       \setbox0 = \hbox{#4\enspace}%
       \def\toctype{app}%
-      \gdef\lastsection{#1}%
+      \gdef\currentsection{#1}%
     \else
       \setbox0 = \hbox{#4\enspace}%
       \def\toctype{num}%
-      \gdef\lastsection{#1}%
+      \gdef\currentsection{#1}%
     \fi\fi\fi
     %
     % Write the toc entry (before \donoderef).  See comments in \chapmacro.
@@ -8746,7 +8746,7 @@ end
 
 % \setref{NAME}{SNT} defines a cross-reference point NAME (a node or an
 % anchor), which consists of three parts:
-% 1) NAME-title - the current sectioning name taken from \lastsection,
+% 1) NAME-title - the current sectioning name taken from \currentsection,
 %                 or the anchor name.
 % 2) NAME-snt   - section number and type, passed as the SNT arg, or
 %                 empty for anchors.
@@ -8768,7 +8768,7 @@ end
 	\write\auxfile{@xrdef{#1-% #1 of \setref, expanded by the \edef
 	  ##1}{##2}}% these are parameters of \writexrdef
       }%
-      \toks0 = \expandafter{\lastsection}%
+      \toks0 = \expandafter{\currentsection}%
       \immediate \writexrdef{title}{\the\toks0 }%
       \immediate \writexrdef{snt}{\csname #2\endcsname}% \Ynumbered etc.
       \safewhatsit{\writexrdef{pg}{\folio}}% will be written later, at \shipout
@@ -9566,13 +9566,13 @@ end
       \global\advance\floatno by 1
       %
       {%
-        % This magic value for \lastsection is output by \setref as the
+        % This magic value for \currentsection is output by \setref as the
         % XREFLABEL-title value.  \xrefX uses it to distinguish float
         % labels (which have a completely different output format) from
         % node and anchor labels.  And \xrdef uses it to construct the
         % lists of floats.
         %
-        \edef\lastsection{\floatmagic=\safefloattype}%
+        \edef\currentsection{\floatmagic=\safefloattype}%
         \setref{\floatlabel}{Yfloat}%
       }%
     \fi
@@ -9695,7 +9695,7 @@ end
 
 % #1 is the control sequence we are passed; we expand into a conditional
 % which is true if #1 represents a float ref.  That is, the magic
-% \lastsection value which we \setref above.
+% \currentsection value which we \setref above.
 %
 \def\iffloat#1{\expandafter\doiffloat#1==\finish}
 %
