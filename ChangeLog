@@ -1,5 +1,14 @@
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix @everyheadingmarks top.
+
+	* doc/texinfo.tex (\onepageout): Separate the code for setting 
+	\headlinebox and \footlinebox.  Otherwise, the definitions for 
+	the footline would overwrite those for the headline, rendering 
+	'@everyheadingmarks top' ineffective.
+
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\chapmacro): Remove obsolete comment about 
 	\setcontentsaftertitlepage.
 

@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-02.07}
+\def\texinfoversion{2019-03-02.10}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -326,11 +326,6 @@
   \ifodd\pageno  \advance\hoffset by \bindingoffset
   \else \advance\hoffset by -\bindingoffset\fi
   %
-  % Common context changes for both heading and footing.
-  % Do this outside of the \shipout so @code etc. will be expanded in
-  % the headline as they should be, not taken literally (outputting ''code).
-  \def\commmonheadfootline{\let\hsize=\txipagewidth \texinfochars}
-  %
   % Retrieve the information for the headings from the marks in the page,
   % and call Plain TeX's \makeheadline and \makefootline, which use the
   % values in \headline and \footline.
@@ -342,7 +337,6 @@
   \let\curchaptername\thischaptername
   %
   \ifodd\pageno \getoddheadingmarks \else \getevenheadingmarks \fi
-  \ifodd\pageno \getoddfootingmarks \else \getevenfootingmarks \fi
   %
   \ifx\curchaptername\prevchaptername
     \let\thischapterheading\thischapter
@@ -353,7 +347,14 @@
     \def\thischapterheading{}%
   \fi
   %
+  % Common context changes for both heading and footing.
+  % Do this outside of the \shipout so @code etc. will be expanded in
+  % the headline as they should be, not taken literally (outputting ''code).
+  \def\commmonheadfootline{\let\hsize=\txipagewidth \texinfochars}
+  %
   \global\setbox\headlinebox = \vbox{\commmonheadfootline \makeheadline}%
+  %
+  \ifodd\pageno \getoddfootingmarks \else \getevenfootingmarks \fi
   \global\setbox\footlinebox = \vbox{\commmonheadfootline \makefootline}%
   %
   {%
