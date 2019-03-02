@@ -1606,5 +1606,55 @@ aaaaa/bbbbb/aaaaa/bbbbb/}
 par
 
 
+@chapter Headings and footings
+
+test of @samp{@@everyheadingmarks top}
+@c due to the way that @chapter outputs a pair of marks, possibly one on 
+@c the page before, following @page directly by @chapter can cause the 
+@c wrong chapter in the heading line, because then both marks are output 
+@c on the new page.
+
+@everyheading @thischapter
+@everyheadingmarks top
+@setchapternewpage off
+
+@chapter One
+
+one
+
+@page
+
+two
+
+@chapter Two
+
+@chapter Three
+
+@page
+
+ffffff
+
+@chapter Four
+
+@page
+
+test of @samp{@@everyheadingmarks bottom}
+
+@everyheading @thischapter
+@everyheadingmarks bottom
+
+@page
+
+@chapter One
+
+@chapter Two
+
+@chapter Three
+
+@page
+
+ffffff
+
+@chapter Four
 
 @bye

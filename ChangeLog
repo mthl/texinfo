@@ -1,5 +1,11 @@
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Add test material for headings and footings.
+
+	* doc/texinfo-tex-test.texi (Headings and footings): New section.
+
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Rename \lastchapterdefs.
 
 	* doc/texinfo.tex:
