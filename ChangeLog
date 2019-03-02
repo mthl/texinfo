@@ -1,3 +1,8 @@
+2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\chapmacro): Remove obsolete comment about 
+	\setcontentsaftertitlepage.
+
 2019-02-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove obsolete and unused code.
