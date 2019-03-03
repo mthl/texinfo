@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-03.12}
+\def\texinfoversion{2019-03-03.15}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -310,7 +310,9 @@
 % Main output routine.
 %
 \chardef\PAGE = 255
-\output = {\savetopmark\onepageout{\pagecontents\PAGE}}
+\newtoks\defaultoutput
+\defaultoutput = {\savetopmark\onepageout{\pagecontents\PAGE}}
+\output=\expandafter{\the\defaultoutput}
 
 \newbox\headlinebox
 \newbox\footlinebox
@@ -5964,7 +5966,7 @@ end
     % Having called \balancecolumns once, we do not
     % want to call it again.  Therefore, reset \output to its normal
     % definition right away.
-    \global\output = {\onepageout{\pagecontents\PAGE}}%
+    \global\output=\expandafter{\the\defaultoutput}
     %
     \endgroup % started in \begindoublecolumns
     % Leave the double-column material on the current page, no automatic

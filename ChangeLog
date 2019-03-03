@@ -1,5 +1,16 @@
 2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reset output routine correctly.
+
+	* doc/texinfo.tex (\defaultoutput): New token list, to contain
+	default output routine.
+	(\enddoublecolumns): Use it to correctly use \savetopmark in the 
+	output routine after the output of an index is finished.
+	* doc/texinfo-tex-test.texi: Remove @bye line ending file by 
+	mistake.
+
+2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No stretch around breakable characters in URL's.
 
 	* doc/texinfo.tex

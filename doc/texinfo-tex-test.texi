@@ -1616,13 +1616,6 @@ foo foo foo foo foo foo foof see the @url{https://www.gnu.org/software/libc/manu
 
 
 
-
-@bye
-@printindex cp
-
-
-
-
 @chapter Headings and footings
 
 test of @samp{@@everyheadingmarks top}
