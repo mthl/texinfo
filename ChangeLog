@@ -1,3 +1,13 @@
+2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Tidy up index writing.
+
+	* doc/texinfo.tex (\dosubindwrite, \doindwrite): Rename.
+	(\doind, \dosubind): Make \dosubind call \doind, not vice versa.  
+	Move definition of \dosubind nearer where it is used.
+
+	(\deffngeneral): Remove a comment.
+
 2019-03-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Implement index subentries in texinfo.tex.
