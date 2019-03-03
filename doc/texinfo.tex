@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-03.11}
+\def\texinfoversion{2019-03-03.12}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -3056,41 +3056,33 @@ end
   \global\def/{\normalslash}
 }
 
-% we put a little stretch before and after the breakable chars, to help
-% line breaking of long url's.  The unequal skips make look better in
-% cmtt at least, especially for dots.
-\def\urefprestretchamount{.13em}
-\def\urefpoststretchamount{.1em}
-\def\urefprestretch{\urefprebreak \hskip0pt plus\urefprestretchamount\relax}
-\def\urefpoststretch{\urefpostbreak \hskip0pt plus\urefprestretchamount\relax}
-%
-\def\urefcodeamp{\urefprestretch \&\urefpoststretch}
-\def\urefcodedot{\urefprestretch .\urefpoststretch}
-\def\urefcodehash{\urefprestretch \#\urefpoststretch}
-\def\urefcodequest{\urefprestretch ?\urefpoststretch}
+\def\urefcodeamp{\urefprebreak \&\urefpostbreak}
+\def\urefcodedot{\urefprebreak .\urefpostbreak}
+\def\urefcodehash{\urefprebreak \#\urefpostbreak}
+\def\urefcodequest{\urefprebreak ?\urefpostbreak}
 \def\urefcodeslash{\futurelet\next\urefcodeslashfinish}
 {
   \catcode`\/=\active
   \global\def\urefcodeslashfinish{%
-    \urefprestretch \slashChar
+    \urefprebreak \slashChar
     % Allow line break only after the final / in a sequence of
     % slashes, to avoid line break between the slashes in http://.
-    \ifx\next/\else \urefpoststretch \fi
+    \ifx\next/\else \urefpostbreak \fi
   }
 }
 
-% One more complication: by default we'll break after the special
-% characters, but some people like to break before the special chars, so
-% allow that.  Also allow no breaking at all, for manual control.
+% By default we'll break after the special characters, but some people like to 
+% break before the special chars, so allow that.  Also allow no breaking at 
+% all, for manual control.
 % 
 \parseargdef\urefbreakstyle{%
   \def\txiarg{#1}%
   \ifx\txiarg\wordnone
     \def\urefprebreak{\nobreak}\def\urefpostbreak{\nobreak}
   \else\ifx\txiarg\wordbefore
-    \def\urefprebreak{\allowbreak}\def\urefpostbreak{\nobreak}
+    \def\urefprebreak{\urefallowbreak}\def\urefpostbreak{\nobreak}
   \else\ifx\txiarg\wordafter
-    \def\urefprebreak{\nobreak}\def\urefpostbreak{\allowbreak}
+    \def\urefprebreak{\nobreak}\def\urefpostbreak{\urefallowbreak}
   \else
     \errhelp = \EMsimple
     \errmessage{Unknown @urefbreakstyle setting `\txiarg'}%
@@ -3099,6 +3091,14 @@ end
 \def\wordafter{after}
 \def\wordbefore{before}
 \def\wordnone{none}
+
+% Allow a ragged right output to aid breaking long URL's.  Putting stretch in 
+% between characters of the URL doesn't look good.
+\def\urefallowbreak{%
+  \hskip 0pt plus 1fil\relax
+  \allowbreak
+  \hskip 0pt plus -1fil\relax
+}
 
 \urefbreakstyle after
 
@@ -7355,13 +7355,9 @@ end
 
 
 % @raggedright does more-or-less normal line breaking but no right
-% justification.  From plain.tex.  Don't stretch around special
-% characters in urls in this environment, since the stretch at the right
-% should be enough.
+% justification.  From plain.tex.
 \envdef\raggedright{%
   \rightskip0pt plus2.4em \spaceskip.3333em \xspaceskip.5em\relax
-  \def\urefprestretchamount{0pt}%
-  \def\urefpoststretchamount{0pt}%
 }
 \let\Eraggedright\par
 

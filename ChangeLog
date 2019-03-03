@@ -1,5 +1,22 @@
 2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No stretch around breakable characters in URL's.
+
+	* doc/texinfo.tex
+	(\urefprestretchamount, \urefpoststretchamount): Remove.
+	(\urefprestretch, \urefpoststretch): Remove.  Replace calls with
+	\urefprebreak and \urefpostbreak.
+	(\urefallowbreak): New macro, to allow a ragged right break 
+	within a URL.
+
+	* doc/texinfo-tex-test.texi (URL line breaking): New section.
+
+	This could lead to too much space being inserted, for example 
+	around the two slashes in "http://".  The ragged right break 
+	prevents under-full or over-full boxes.  (bug-texinfo, July 2018.)
+
+2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Tidy up index writing.
 
 	* doc/texinfo.tex (\dosubindwrite, \doindwrite): Rename.
