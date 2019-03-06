@@ -412,7 +412,8 @@ The first character must be either @samp{\} or @samp{@@}
 
 @cindex @code{Special_chars} variable
 @code{Special_chars} are the two characters that must be preceded by
-the command character inside the first key.
+the command character inside the first key. This includes the command
+character itself.
 
 @cindex @code{beginfile()} function
 @cindex @code{Output_file} variable
@@ -443,7 +444,7 @@ function beginfile(filename)
       || substr($0, 2, 5) != "entry")
     fatal(_"%s is not a Texinfo index file\n", filename)
 
-  Special_chars = "{}"
+  Special_chars = "{}" Command_char
 }
 @
 
