@@ -1,3 +1,7 @@
+2019-03-06         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Add Command_char to list of special characters.
+
 2015-02-27         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* jrweave, jrtangle: Updated to current version. In particular,
