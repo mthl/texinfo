@@ -1,5 +1,39 @@
 2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use @ as escape character in index files.
+
+	* doc/texinfo.tex
+	(\indexdummies): Do not change \escapechar to backslash.
+	Call \otherbackslash in order to keep backslash as it is.
+	(\doindwrite, \indexnonalnumreappear):
+	Do not call \useindexbackslash or change the definition of \@.
+	(\indexbackslash, \useindexbackslash): Remove.
+	(\splitindexentry): Convert @@ and @atchar{} to {@indexatchar}.
+	texindex does not currently output given a sort key beginning 
+	with @ as @initial{@@}, outputting @initial{@} instead.
+
+	(\onepageout): Remove comment about backslash in index files.  
+	Call \turnoffactive instead of \normalturnoffactive in order to 
+	output backslash as itself in index files.
+
+	(\printindex): Do not change catcode of \ or @.
+	(\printindex, \initialglyphs): Move setting \indexlbrace and 
+	\indexrbrace to \initialglyphs, and add \indexatchar too.  Do 
+	not set \indexbackslash.
+
+	(\atdummies): Comment changed so as no longer to imply that the 
+	aux and toc files are the only auxiliary files using @.
+
+	(\printindex): Cheeck first character of index file, and if it 
+	is a backslash, skip reading the file.
+
+	* doc/texinfo-tex-test.texi (Test of certain characters in index):
+	New section.
+	* util/texi2dvi (index_file_p): Check for a @entry in index 
+	files as well as \entry.
+
+2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reset output routine correctly.
 
 	* doc/texinfo.tex (\defaultoutput): New token list, to contain

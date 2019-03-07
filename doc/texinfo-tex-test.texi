@@ -1344,6 +1344,16 @@ ffff\arg\ggggg
 @BBindex @MacTwo{DDDD @@}
 @printindex BB
 
+@section Test of certain characters in index
+
+@defindex CC
+@CCindex \, backslash
+@CCindex @{, open brace
+@CCindex @}, close brace
+@CCindex @}, close brace
+
+@printindex CC
+
 
 @section Test of @code{@@synindex}
 

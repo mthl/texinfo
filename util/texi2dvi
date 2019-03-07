@@ -705,6 +705,8 @@ index_file_p ()
     latex:*:*:"\\indexentry{"*|latex:*:*:"\\indexentry {"*) echo $1;;
 
     texinfo:*:*:"\\entry{"*) echo $1;;
+    texinfo:*:*:"@entry{"*) echo $1;;
+    # @entry is output from newer versions of texinfo.tex
   esac
   return 0
 }
