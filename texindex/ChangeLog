@@ -1,3 +1,9 @@
+2019-03-08         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Fix "the the", http --> https, remove unnecessary
+	semicolons, add History section. Remove references to unimplemented
+	-o option.
+
 2019-03-06         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Add Command_char to list of special characters.

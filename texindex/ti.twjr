@@ -39,7 +39,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see @url{http://www.gnu.org/licenses/}.
+along with this program.  If not, see @url{https://www.gnu.org/licenses/}.
 @end quotation
 @end copying
 
@@ -80,7 +80,8 @@ files produced by the @file{texinfo.tex} file.
 This file defines @file{texindex.awk}, a reimplementation of the C
 program @file{texindex.c}.  The purpose is to make the program more
 maintainable.  As a practical benefit, it also supports correct sorting
-and initials for the @samp{@{} and @samp{@}} characters in an index.
+and initials for the @samp{@{} and @samp{@}} characters in an index,
+and multi-level index entries.
 @cindex @{ (left brace), example index entry for
 @cindex @} (right brace), example index entry for
 
@@ -89,16 +90,17 @@ and initials for the @samp{@{} and @samp{@}} characters in an index.
 This is a @dfn{literate program}, written using the
 @uref{https://github.com/arnoldrobbins/texiwebjr, @sc{TexiWeb Jr.@:}
 literate programming system}.  The underlying documentation system is
-@uref{http://www.gnu.org/software/texinfo, Texinfo} the GNU
+@uref{https://www.gnu.org/software/texinfo, Texinfo} the GNU
 documentation formatting language.  A single source file produces the
 runnable program, a printable document, and an online document.
 
 @menu
 * Intended audience::           
+* History::
 @end menu
 
 @node Intended audience
-@section Intended audience
+@section Intended Audience
 
 You should read this if you want to understand how @file{texindex.awk}
 works.  You should be familiar with the @command{awk} programming
@@ -110,9 +112,20 @@ the wrong place.  @xref{knuth}.
 @c Scale figure to 4.5 inches which is good for both smallbook
 @c and regular.  TeX will scale height also automatically.
 @float Figure,knuth
-@caption{Indexing (@url{http://xkcd.com/163/})}
+@caption{Indexing (@url{https://xkcd.com/163/})}
 @center @image{dek_idx, 5in, , Indexing}
 @end float
+
+@node History
+@section Development History
+
+This program was originally developed in 2014 in order to enable
+using left and right braces in index entries, and to provide a program
+that would be more easily maintainable going forward than the C version.
+
+In 2019, discssions on the Texinfo bug mailing list around adding
+multi-level indexing and ``see'' and ``see also'' entries motivated
+reworking the program.
 
 @node Requirements
 @chapter Requirements
@@ -154,15 +167,13 @@ Historically, @file{texinfo.tex} has used @samp{\} as the command
 character in index files.  This causes complications with index entries
 containing backslashes and braces; C @command{texindex} has never output
 the correct initial (a left brace) for an index entry like
-@samp{@@cindex @@@{@}}, or done technically-correct sorting with such
-entries.  @xref{Details of @t{texindex},,, texinfo, GNU Texinfo}.
+@samp{@@cindex @@@{@ (left brace)}, or done technically-correct sorting
+with such entries.  @xref{Details of @t{texindex},,, texinfo, GNU Texinfo}.
 
-The present @code{awk} implementation handles these cases better.  It
-also supports @samp{@@} as the command character, which allows
-@file{texinfo.tex} to output cleaner raw index files.  (For
-compatibility, for now this is only done if a ``secret'' @TeX{} variable
-is set: @code{\global\usebracesinindexestrue}.)  The first character of
-the raw input file is taken as the command character.
+The present @code{awk} implementation handles these cases better.
+It also supports @samp{@@} as the command character, which allows
+@file{texinfo.tex} to output cleaner raw index files. The first character
+of the raw input file is taken as the command character.
 
 @subheading Processing
 
@@ -229,8 +240,8 @@ accumulating the page numbers.
 For the same sort key and text, page numbers will be monotonically
 increasing.  This means we can just use a new page number when it comes
 in, and not have to sort entries based on both sort key and page number.
-(Which, in turn, means that we don't need to worry about page numbers
-that are roman numerals.)
+In turn, means that we don't need to worry about page numbers
+that are roman numerals.
 
 @end enumerate
 
@@ -241,6 +252,11 @@ means ``new'' @command{awk} as defined in the 1988 book by Aho,
 Weinberger and Kernighan.  This gives us functions, multidimensional
 arrays and a number of other important features over the original
 @command{awk} shipped with V7 Unix.
+
+In practice, we can also rely on basic features added in POSIX
+@command{awk} should we need to (such as @code{CONVFMT}), although
+at the moment there are no features used by @file{texindex.awk} that
+were added in POSIX after the book on ``new'' @command{awk} came out.
 
 @node High-level organization
 @chapter High-level organization
@@ -347,12 +363,6 @@ they're not treated as filenames.  The options that print version or
 help information automatically exit, so there's no need to mess with
 @code{ARGV} in those cases.
 
-@cindex @code{-o} (@code{--output}) option, unimplemented
-The C implementation of @command{texindex} provided an option @code{-o}
-(@code{--output}) @var{file} to write the output to @var{file}.  We've
-chosen to omit it from this incarnation of the program unless and until
-we receive information that it was ever useful.
-
 @cindex @code{-h} (@code{--help}) option
 @cindex @code{-k} (@code{--keep}), no-op option
 @cindex @code{--} option
@@ -400,9 +410,7 @@ At the beginning of each input file, the @code{beginfile()} function
 clears our variables from any previous processing (@code{Data},
 @code{Keys}, etc.)@: and sets up the output file name.  We always append
 an @samp{s} to the name of the input file, which has become the standard
-convention.  (As mentioned above, the @option{-o} option in the C
-implementation of @command{texindex} has been omitted here, until the
-need is seen.)
+convention.
 
 When @code{beginfile()} is called, the first record has already been
 read, so it's possible to perform the checks for a Texinfo index file:
@@ -529,7 +537,7 @@ something like the following:
 \entry@{@{\tt \indexbackslash @} (backslash)@}@{14@}@{\code @{@{\tt @dots{}
 @end example
 
-Earlier versions of @command{texindex} took the the first non-brace 
+Earlier versions of @command{texindex} took the first non-brace 
 character as the initial, in this example @samp{\}, and output it as 
 @samp{\\}; this was not, however, a control sequence recognized by the 
 older versions of @file{texinfo.tex}.
@@ -601,7 +609,7 @@ text = fields[3]
 We use a traditional @command{awk} multidimensional array, @code{Data}.
 The sort key from the input is invariant across entries, so we use that
 as the basis for the keys in the @code{Data} array.
-The @code{Data} values are the the output @code{"text"}, the
+The @code{Data} values are the output @code{"text"}, the
 @code{"pagenum"} list, and the @code{"initial"}.
 
 In the event that a particular key has more than one associated output
@@ -1073,7 +1081,7 @@ Every program needs a copyright statement.
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, see <http://www.gnu.org/licenses/>.
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
 @
 
 @node Library functions
@@ -1232,6 +1240,8 @@ similar in nature to the various macros in the C @code{<ctype.h>} header
 file.  Since each one returns a count, the return value could be used to
 compute which character from the set was seen; this turned out not to be
 necessary in this program but might be useful in some other context.
+By using @code{index()} with lists of letters, these functions will
+also work on EBCDIC systems, should that ever be necessary.
 
 @<Helper functions@>=
 function isupper(c)
@@ -1262,7 +1272,7 @@ For @command{gawk}, we can arrange for the various messages, e.g., in
 the @code{usage()} and @code{version()} functions, to be translated.  We
 do this by setting the text domain at startup.  For more information on
 internationalization in @command{gawk},
-@pxref{Internationalization.html,,, gawk, GNU Awk User's Guide}.
+@pxref{Internationalization,,, gawk, GNU Awk User's Guide}.
 
 @<Initial setup@>=
 TEXTDOMAIN = "texinfo"
@@ -1271,7 +1281,7 @@ TEXTDOMAIN = "texinfo"
 @noindent On non-GNU versions of @command{awk}, this is a harmless
 assignment, and the @code{_"..."} construct below is a harmless
 concatenation of an unassigned variable @code{_}, i.e., the empty
-string.
+string, with the following string constant.
 
 The @code{usage()} and @code{version()} functions print the necessary
 information and then exit.  The strings that can and should be
@@ -1299,7 +1309,7 @@ function usage(exit_val)
   print ""
   print _"Email bug reports to bug-texinfo@gnu.org,\n\
 general questions and discussion to help-texinfo@gnu.org.\n\
-Texinfo home page: http://www.gnu.org/software/texinfo/";
+Texinfo home page: https://www.gnu.org/software/texinfo/"
 
   exit exit_val
 }
@@ -1309,9 +1319,9 @@ function version()
   print "texindex (GNU texinfo)", Texindex_version
   print ""
   printf _"Copyright (C) %s Free Software Foundation, Inc.\n\
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n\
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>\n\
 This is free software: you are free to change and redistribute it.\n\
-There is NO WARRANTY, to the extent permitted by law.\n", "2019";
+There is NO WARRANTY, to the extent permitted by law.\n", "2019"
 
   exit EXIT_SUCCESS
 }
