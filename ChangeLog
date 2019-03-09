@@ -1,5 +1,11 @@
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No catcode changes in \scanmacro.
+
+	* doc/texinfo.tex (\scanmacro): Do not change catcode of @ or \.
+
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix marginindex flag.
 
 	(\doindwrite, \maybemarginindex): Move code to put index entry 

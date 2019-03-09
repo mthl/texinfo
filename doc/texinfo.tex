@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-09.12}
+\def\texinfoversion{2019-03-09.13}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -8041,33 +8041,17 @@ end
 % alias because \c means cedilla in @tex or @math
 \let\texinfoc=\c
 
-\newcount\savedcatcodeone
-\newcount\savedcatcodetwo
-
 % Used at the time of macro expansion.
 % Argument is macro body with arguments substituted
 \def\scanmacro#1{%
   \newlinechar`\^^M
   \def\xeatspaces{\eatspaces}%
   %
-  % Temporarily undo catcode changes of \printindex.  Set catcode of @ to
-  % 0 so that @-commands in macro expansions aren't printed literally when 
-  % formatting an index file, where \ is used as the escape character.
-  \savedcatcodeone=\catcode`\@
-  \savedcatcodetwo=\catcode`\\
-  \catcode`\@=0
-  \catcode`\\=\active
-  %
   % Process the macro body under the current catcode regime.
   \scantokens{#1@texinfoc}%
   %
-  \catcode`\@=\savedcatcodeone
-  \catcode`\\=\savedcatcodetwo
-  %
   % The \texinfoc is to remove the \newlinechar added by \scantokens, and
   % can be noticed by \parsearg.
-  %   We avoid surrounding the call to \scantokens with \bgroup and \egroup
-  % to allow macros to open or close groups themselves.
 }
 
 % Used for copying and captions
