@@ -1,5 +1,14 @@
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove unused backslash macros.
+
+	* doc/texinfo.tex (\rawbackslash): Remove.  It appears to be
+	unnecessary as @t and @code work fine without it.
+	(\t, \tclose): Do not call \rawbackslash.
+	(\rawbackslashxx, \doublebackslash): Remove.
+
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Index display): Use @ as the escape 
 	character.
 	(@,c in macro argument): @, doesn't work any more in macro 

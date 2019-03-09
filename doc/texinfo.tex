@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-09.17}
+\def\texinfoversion{2019-03-09.18}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -2838,7 +2838,7 @@ end
 
 % @t, explicit typewriter.
 \def\t#1{%
-  {\tt \rawbackslash \plainfrenchspacing #1}%
+  {\tt \plainfrenchspacing #1}%
   \null
 }
 
@@ -2865,7 +2865,6 @@ end
     % Turn off hyphenation.
     \nohyphenation
     %
-    \rawbackslash
     \plainfrenchspacing
     #1%
   }%
@@ -11508,11 +11507,9 @@ directory should work if nowhere else does.}
 % \backslashcurfont outputs one backslash character in current font,
 % as in \char`\\.
 \global\chardef\backslashcurfont=`\\
-\global\let\rawbackslashxx=\backslashcurfont  % let existing .??s files work
 
-% \realbackslash is an actual character `\' with catcode other, and
-% \doublebackslash is two of them (for the pdf outlines).
-{\catcode`\\=\other @gdef@realbackslash{\} @gdef@doublebackslash{\\}}
+% \realbackslash is an actual character `\' with catcode other.
+{\catcode`\\=\other @gdef@realbackslash{\}}
 
 % In Texinfo, backslash is an active character; it prints the backslash
 % in fixed width font.
@@ -11530,10 +11527,8 @@ directory should work if nowhere else does.}
 @def@ttbackslash{{@tt @ifmmode @mathchar29020 @else @backslashcurfont @fi}}
 @let@backslashchar = @ttbackslash % @backslashchar{} is for user documents.
 
-% \rawbackslash defines an active \ to do \backslashcurfont.
 % \otherbackslash defines an active \ to be a literal `\' character with
-% catcode other.  We switch back and forth between these.
-@gdef@rawbackslash{@let\=@backslashcurfont}
+% catcode other.
 @gdef@otherbackslash{@let\=@realbackslash}
 
 % Same as @turnoffactive except outputs \ as {\tt\char`\\} instead of
