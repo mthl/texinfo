@@ -1,3 +1,12 @@
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove \indexdummies.
+
+	* doc/texinfo.tex (\indexdummies): Remove.
+	(\doindwrite): Call \atdummies instead of \indexdummies and move 
+	the special definitions of \{ and \} here.
+	(\onepageout): Call \atdummies instead of \indexdummies.
+
 2019-03-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Use @ as escape character in index files.
