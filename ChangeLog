@@ -1,5 +1,10 @@
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\macroargctxt, \macrolineargctxt): Set 
+	catcode of @ to other.
+
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove description of a bug fixed by the last change.
 
 	* doc/texinfo-tex-test.texi: Remove description of why a Texinfo 

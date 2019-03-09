@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-09.13}
+\def\texinfoversion{2019-03-09.17}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -8152,12 +8152,14 @@ end
 \def\macroargctxt{%
   \scanctxt
   \catcode`\ =\active
+  \catcode`\@=\other
   \catcode`\^^M=\other
   \catcode`\\=\active
 }
 
 \def\macrolineargctxt{% used for whole-line arguments without braces
   \scanctxt
+  \catcode`\@=\other
   \catcode`\{=\other
   \catcode`\}=\other
 }
