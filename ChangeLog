@@ -1,5 +1,15 @@
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove description of a bug fixed by the last change.
+
+	* doc/texinfo-tex-test.texi: Remove description of why a Texinfo 
+	command inside an @example inside a macro didn't work.  It works 
+	now that @ is no longer an escape character when a macro body is 
+	read.  This means that \scantokens no longer sees any control 
+	sequences in the macro body and does not insert extra spaces.
+
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No catcode changes in \scanmacro.
 
 	* doc/texinfo.tex (\scanmacro): Do not change catcode of @ or \.
