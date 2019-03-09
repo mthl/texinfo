@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-09.11}
+\def\texinfoversion{2019-03-09.12}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5196,8 +5196,6 @@ end
 
 
 
-\let\SETmarginindex=\relax % put index entries in margin (undocumented)?
-
 % #1 is the index name, #2 is the entry text.
 \def\doind#1#2{%
   \iflinks
@@ -5240,6 +5238,9 @@ end
   \xdef\indexsortkey{#1}\endgroup}
 }
 
+% The default definition
+\def\sortas#1{}%
+
 % Given index entry text like "aaa @subentry bbb @sortas{ZZZ}":
 %   * Set \bracedtext to "{aaa}{bbb}"
 %   * Set \fullindexsortkey to "aaa @subentry ZZZ"
@@ -5259,7 +5260,6 @@ end
     %
     % Fully expand the segment, throwing away any @sortas directives, and 
     % trim spaces.
-    \def\sortas##1{}%
     \edef\trimmed{\segment}%
     \edef\trimmed{\expandafter\eatspaces\expandafter{\trimmed}}%
     %
@@ -5301,16 +5301,14 @@ end
   \fi
 }
 \def\isfinish{\finish}%
+\newbox\dummybox % used above
 
 \let\subentry\relax
 
 % Write the entry in \toks0 to the index file.
 %
 \def\doindwrite{%
-  % Put the index entry in the margin if desired.
-  \ifx\SETmarginindex\relax\else
-    \insert\margin{\hbox{\vrule height8pt depth3pt width0pt \the\toks0}}%
-  \fi
+  \maybemarginindex
   %
   \atdummies
   %
@@ -5334,7 +5332,15 @@ end
   }%
   \temp
 }
-\newbox\dummybox % used above
+
+% Put the index entry in the margin if desired (undocumented).
+\def\maybemarginindex{%
+  \ifx\SETmarginindex\relax\else
+    \insert\margin{\hbox{\vrule height8pt depth3pt width0pt \relax\indextext}}%
+  \fi
+}
+\let\SETmarginindex=\relax
+
 
 % Take care of unwanted page breaks/skips around a whatsit:
 %

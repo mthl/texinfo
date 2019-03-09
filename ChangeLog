@@ -1,5 +1,12 @@
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix marginindex flag.
+
+	(\doindwrite, \maybemarginindex): Move code to put index entry 
+	in the margin to a new macro, and make it work again.
+
+2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove \indexdummies.
 
 	* doc/texinfo.tex (\indexdummies): Remove.
