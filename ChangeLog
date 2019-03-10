@@ -1,5 +1,23 @@
 2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove code for preventing widowed index entries.
+
+	(\finishentry): Output the index entry directly to the current 
+	vertical list instead of storing it in a box and then calling 
+	\dotheinsertentrybox.
+	(\insertentrybox, \dotheinsertentrybox)
+	(\dotheinsertentryboxwithpenalty, \ourunvbox): Remove.
+	(\entry): No redefinition of \domark.
+	(\printindex): Do not redefine \dotheinsertentrybox.  Read file 
+	with \input instead of line-by-line with \read.
+	(\indexinputprocessing, \loopdo): Remove.
+
+	This code added an awful lot of complexity for not much benefit.
+	It is better to use the processes provided in TeX (\input and 
+	\unvbox) where possible, instead of creating a separate version.
+
+2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use <h5> for footnote labels.
 
 	* tp/Texinfo/Convert/HTML.pm (_convert_footnote_command): Use 
