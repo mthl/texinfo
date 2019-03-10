@@ -1,5 +1,15 @@
 2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use <h5> for footnote labels.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_footnote_command): Use 
+	<h5> instead of <h3> for the numbered footnote labels.  
+	Jean-Christophe Helary reported that the <h3> level being used 
+	was greater than that for the main footnotes heading, which was 
+	only <h4>.
+
+2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix indentation of @table within @itemize.
 
 	* tp/Texinfo/Convert/Plaintext.pm (ensure_end_of_line):
