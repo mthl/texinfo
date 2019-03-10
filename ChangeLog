@@ -1,3 +1,13 @@
+2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix indentation of @table within @itemize.
+
+	* tp/Texinfo/Convert/Plaintext.pm (ensure_end_of_line):
+	Set 'counter' on top-most 'text_element_context' to zero.  This 
+	makes a @table be indented correctly within an @itemize and also
+	means an @item immediately following the @table is indented 
+	properly.  Report from Alan Mackenzie.
+
 2019-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove unused backslash macros.

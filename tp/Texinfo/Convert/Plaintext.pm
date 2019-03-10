@@ -1376,6 +1376,7 @@ sub ensure_end_of_line($$)
     $self->{'count_context'}->[-1]->{'lines'} -= 1;
   }
   $text .= "\n";
+  $self->{'text_element_context'}->[-1]->{'counter'} = 0;
   _add_text_count($self, "\n");
   _add_lines_count($self, 1);
   return $text;
