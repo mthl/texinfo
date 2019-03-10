@@ -1,7 +1,14 @@
 2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Test of index widow elimination):
+	Comment out.
+	(No page number in index): New section.
+
+2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove code for preventing widowed index entries.
 
+	* doc/texinfo.tex
 	(\finishentry): Output the index entry directly to the current 
 	vertical list instead of storing it in a box and then calling 
 	\dotheinsertentrybox.

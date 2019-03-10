@@ -1,6 +1,6 @@
 % texinfo-tex-test.texi -- test file for texinfo.tex
 %
-% Copyright 2015, 2016 Free Software Foundation, Inc.
+% Copyright 2015-2019 Free Software Foundation, Inc.
 %
 % This file is free software: you can redistribute it and/or
 % modify it under the terms of the GNU General Public License as
@@ -444,6 +444,18 @@ Like an argument to @b{@@footnote}.
 In these examples, a horizontal rule is at the end of each run of double 
 column material in order to show if any material extends below the
 box containing it.
+
+@section No page number in index
+
+No leaders unless there is also a page number
+
+@commenceindex
+@entry {whatever}{}
+@entry {more}{}
+@entry {whatever}{123}
+@entry {again}{}
+@finishindex
+
 
 @section Long index entries
 
@@ -1221,6 +1233,10 @@ More text before index.
 
 
 
+@ignore
+@c this is not currently implemented, as it added a lot of complexity
+@c for not much benefit.
+
 @section Test of index widow elimination
 
 First time shows without widow elimination.  Second time shows it with
@@ -1236,6 +1252,7 @@ case.
 @page
 
 @printindex WIDOW
+@end ignore
 
 
 @section Non-alphanumeric Index Initials
