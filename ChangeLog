@@ -1,3 +1,33 @@
+2019-03-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Active backslash in \setupdatafile.
+
+	* doc/texinfo.tex (\setupdatafile): Make backslash active rather 
+	than other.  This means that a section title is printed 
+	correctly with input like the following:
+
+	   \input texinfo
+	   @xrefautomaticsectiontitle on
+	   
+	   @node One
+	   @chapter One
+	   
+	   One.  @xref{Two}.
+	   
+	   @node Two
+	   @chapter Two \
+	   
+	   @bye
+	
+	Without this, the backslash typesets as quotation marks.  Delete 
+	an old comment stating that catcode other is needed for \csname 
+	to work in \xrdef.  Currently, \turnoffactive called in \xrdef
+	gives backslash the needed definition.  In any case, backslashes 
+	in node names appear to produce buggy PDF files in many cases.
+
+	* doc/texinfo.tex (\setupdatafile): Remove out-of-date comment 
+	about why we do not support ^^ notation in auxiliary files.
+
 2019-03-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Test of index widow elimination):
