@@ -1,3 +1,13 @@
+2019-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Only load lcircle10 if @cartouche is used.
+
+	* doc/texinfo.tex (\cartouchefontdefs): New macro.  Put loading 
+	lcircle10 font in here.
+	(\cartouche): Use it.
+
+	This is a similar approach to that used for @euro{}.
+
 2019-03-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Active backslash in \setupdatafile.
