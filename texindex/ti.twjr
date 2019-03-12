@@ -5,9 +5,6 @@
 @settitle Texindex @VERSION@: A program for sorting indices
 @c %**end of header (This is for running Texinfo on a region.)
 
-@c Better brace handling, this texindex is needed to process!
-@allowindexbraces
-
 @c Merge the function and variable indexes into the concept index,
 @c but without the code font; in the index entries we'll do the
 @c font management ourselves.  Also merge in the chunk definition
@@ -18,6 +15,20 @@
 @synindex vr cp
 @synindex cd cp
 @synindex cr cp
+
+@ifnottex
+@ifnotdocbook
+@macro ii{text}
+@i{\text\}
+@end macro
+@end ifnotdocbook
+@end ifnottex
+
+@ifdocbook
+@macro ii{text}
+@inlineraw{docbook,<lineannotation>\text\</lineannotation>}
+@end macro
+@end ifdocbook
 
 @copying
 This @command{texindex} program (version @VERSION@, @UPDATED@) sorts the
@@ -95,8 +106,8 @@ documentation formatting language.  A single source file produces the
 runnable program, a printable document, and an online document.
 
 @menu
-* Intended audience::           
-* History::
+* Intended audience::          Who should read this document. 
+* History::                    @file{texindex.awk} development history.
 @end menu
 
 @node Intended audience
@@ -131,51 +142,213 @@ reworking the program.
 @chapter Requirements
 
 The input to this program is the list of unsorted index entries produced
-by @file{texinfo.tex} when a Texinfo document is processed.  For
-example, two lines resulting from the @command{gawk} manual might look
-like this:
+by @file{texinfo.tex} when a Texinfo document is processed.
 
-@example
-\entry@{POSIX awk@}@{5@}@{POSIX \command @{awk@}@}
-@dots{}
-\entry@{POSIX awk@}@{106@}@{POSIX \command @{awk@}@}
-@end example
+@menu
+* Desred printed output::       What a printed index should look like.
+* Texinfo indexing commands::   How to write indexing commands.
+* Input form::                  The input to @file{texindex.awk}.
+* Output form::                 The output from @file{texindex.awk}.
+* Processing::                  Processing the data.
+* Assumptions::                 Additional assumptions.
+@end menu
 
-As shown, there are three ``fields'' enclosed in braces:
+@node Desired printed output
+@section Where We're Going
+
+Let's first look at the kind of output desired. (Apologies in advance
+for the use of a constant-width font.)   A high-quality index has
+several types of entries:
 
 @itemize @bullet
-@item
-The sort key.  This is the text of the entry with all markup removed.
-It should contain only ASCII characters.
+@item Single level entries
+These are the most common; each entry has text and a list of one
+or more page numbers.
 
-@item
-The page number for this entry.
+@item Double level entries
+These entries have subtopics; the top level entry may also have a
+page number, or it may not.
 
-@item
-The display text to be shown in the printed index, which can include markup.
+@item Triple level entries
+These entries have subtopics for the subtopics; the top level
+and secondary entries may also have
+page numbers, or they may not.
+
+@item ``See @dots{}'' entries
+Entries that point at other entries in the index, generally without
+any subtopics. ``See'' entries do not have a page number of their own.
+
+@item ``See also @dots{}'' entries
+Entries that point at other entries, but often do have
+subsequent direct references of their own.
+``See also'' entries do not have a page number of their own.
 @end itemize
+
+Here's what they might look like when printed:
+
+@example
+coffee makers . . . . . . . . . . 15         @ii{Single level entry}
+       electric . . . . . . . 17, 22         @ii{Double level entry}
+             blue . . . . . . . . 42         @ii{Triple level entry}
+             pink . . . . . . . . 35         @ii{Another triple level entry}
+@end example
+
+The same heirarchy might appear without page nubmers:
+
+@example
+coffee makers,                               @ii{Single level entry}
+       electric,                             @ii{Double level entry}
+             blue . . . . . . . . . . 42     @ii{Triple level entry}
+             pink . . . . . . . . . . 35     @ii{Another triple level entry}
+@end example
+
+@strong{FIXME}: See if we want commas on the primary and secondary lines.
+
+The ``See' and ``See also'' entries don't have page numbers:
+
+@example
+espresso makers, @ii{See} coffee makers
+toasters, @ii{See Also} coffee makers
+@end example
+
+@node Texinfo indexing commands
+@section Texinfo Indexing Commands
+
+Texinfo provides a number of different command for putting entries
+into different indices.  For discussion we will use the @code{@@cindex}
+command in the following examples.  Of intereest to @file{texindex.awk}
+is the text of the one to three parts of an entry, and how the index
+should be sorted.  Some examples:
+
+@example
+@@cindex coffee makers                                    @ii{One level}
+@@cindex coffee makers @@subentry electric                 @ii{Tow levels}
+@@cindex coffee makers @@subentry electric @@subentry blue  @ii{Three levels}
+@end example
+
+Here, the @code{@@subentry} separates the secondary and tertiary parts of
+the entry from the primary part.
+
+Additionally, each part may have an @code{@@sortas} clause:
+
+@example
+@@cindex coffee makers @@sortas@{Coffee Makers@}
+@end example
+
+The form of ``See'' and ``See also'' entries aren't yet defined, but
+let's assume they look something like this:
+
+@example
+@@cindex espresso makers, @@see@{coffee makers@}
+@@cindex toasters, @@seealso@{coffee makers@}
+@end example
+
+@node Input form
+@section Input To The Program
+
+The output from @file{texinfo.tex} contain the data for the
+different kind of index entries described in the previous
+section.  Each line is an ``entry.'' Each entry has from three
+to five fields, where the first three fields represent the same
+data for all entries.  Entries look as follows:
+
+@example
+@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}
+@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}
+@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}@{@var{tertiary}@}
+@end example
 
 The braces are balanced in all cases, although for use by this program,
 literal braces (not necessarily balanced) can be included in the sort
-key by escaping them with the @dfn{command character}.  This is the
-first character on the line.  It is either the backslash used by @TeX{}
-(@samp{\}) or the at sign used by Texinfo (@samp{@@}).
+key by escaping them with the @dfn{command character}.
 
 @cindex backslash vs.@: at
 @cindex command character, @samp{\} vs.@: @samp{@@}
-Historically, @file{texinfo.tex} has used @samp{\} as the command
-character in index files.  This causes complications with index entries
-containing backslashes and braces; C @command{texindex} has never output
-the correct initial (a left brace) for an index entry like
-@samp{@@cindex @@@{@ (left brace)}, or done technically-correct sorting
-with such entries.  @xref{Details of @t{texindex},,, texinfo, GNU Texinfo}.
+In the example above, the command character is @samp{@@}
+(as in Texinfo itself).  However, prior to March, 2019, the command
+character was a backslash (@samp{\}), so @file{texindex.awk} must be
+able to work with both kinds of input.
+The command character is determined at run time by looking at the
+first character on the first line.
 
-The present @code{awk} implementation handles these cases better.
-It also supports @samp{@@} as the command character, which allows
-@file{texinfo.tex} to output cleaner raw index files. The first character
-of the raw input file is taken as the command character.
+The fields are as follows:
 
-@subheading Processing
+@table @var
+@item sortkey
+The text to use for sorting index entries.
+Generally, this is the text of the line with all markup removed.
+When an @code{@@sortas} clause is provided, that is used instead.
+This field should contain only ASCII characters.
+
+When there are subentries, the sort key is the concatenation of three
+fields (or their sort @code{@@sortas} clauses), separated by
+@code{@@subentry} and a space. @file{texindex.awk} will need to recognize
+where there are multiple sort keys in order to sort entries appropriately.
+
+@item page or see
+Either a page number (as a roman numeral or an integer), or an
+indication that that this is a ``See'' or ``See also'' entry.
+
+@item primary
+The primary text of the index entry.
+
+@item secondary
+The (optional) secondary text of the index entry.
+
+@item tertiary
+The (optional) tertiary text of the index entry.
+@end table
+
+Our mission (which we choose to accept) is to read the above input,
+sort it appropriately, and produce the correct output.
+
+@node Output form
+@section What The Output Shoud Look Like
+
+Output consists four different commands, derived from the indexing input.
+Each can have variant where there is no page number, except for the last.
+
+@example
+@@initial@{A@}                         @ii{For the initial over each group}
+
+@@entry@{@var{indexing text}@}@{@var{pagenum}@}      @ii{Primary entry}
+@@entry@{@var{indexing text}@}@{@}             @ii{Primary entry without page number}
+
+@@secondary@{@var{indexing text}@}@{@var{pagenum}@}  @ii{Secondary entry}
+@@secondary@{@var{indexing text}@}@{@}         @ii{Secondary entry without page number}
+
+@@tertiary@{@var{indexing text}@}@{@var{pagenum}@}   @ii{Tertiary entry}
+@end example
+
+The commands are:
+
+@table @code
+@item @@inital
+This is discussed later on. @strong{FIXME}: xref here.
+
+@item @@entry
+This is for a plain index entry, or for the primary term in a multi-level
+index entry.  When the primary appears only with a secondary entry,
+there won't be a page number.
+
+@strong{FIXME}: VERIFY.  The page number will also be empty when there
+is an @code{@@see} or @code{@@seealso} in the entry. In that case,
+the output from @file{texindex.awk} should be a combination of
+the original input fields 3 and 2.
+
+@item @@secondary
+This is for a secondary index entry in a multi-level
+index entry.  When the secondary appears only with a tertiary entry,
+there won't be a page number.
+
+@item @@tertiary
+This is for a tertiary index entry in a multi-level
+index entry.  This one always has a page number.
+@end table
+
+
+@node Processing
+@section Processing
 
 The job is to sort the entries, and merge those which are identical
 except for the page numbers.  Thus, for the above two entries, the
@@ -201,7 +374,8 @@ output looks like:
 \initial @{A@}
 @end example
 
-@subheading Assumptions
+@node Assumptions
+@section Assumptions
 
 In the rest of the program we make two fundamental assumptions:
 
