@@ -130,7 +130,7 @@ the wrong place.  @xref{knuth}.
 @node History
 @section Development History
 
-This program was originally developed in 2014 in order to enable
+This program was originally written in 2014 in order to enable
 using left and right braces in index entries, and to provide a program
 that would be more easily maintainable going forward than the C version.
 
@@ -143,6 +143,10 @@ reworking the program.
 
 The input to this program is the list of unsorted index entries produced
 by @file{texinfo.tex} when a Texinfo document is processed.
+This chapter presents the input to the program, the Texinfo
+commands that produce that input, and the expected output from
+this program.  It also presents some additional notes concerning
+the requirements.
 
 @menu
 * Desred printed output::       What a printed index should look like.
@@ -156,11 +160,11 @@ by @file{texinfo.tex} when a Texinfo document is processed.
 @node Desired printed output
 @section Where We're Going
 
-Let's first look at the kind of output desired. (Apologies in advance
-for the use of a constant-width font.)   A high-quality index has
+Let's first look at the kind of output desired.
+A high-quality index has
 several types of entries:
 
-@itemize @bullet
+@table @asis
 @item Single level entries
 These are the most common; each entry has text and a list of one
 or more page numbers.
@@ -182,9 +186,11 @@ any subtopics. ``See'' entries do not have a page number of their own.
 Entries that point at other entries, but often do have
 subsequent direct references of their own.
 ``See also'' entries do not have a page number of their own.
-@end itemize
+@end table
 
-Here's what they might look like when printed:
+Here's what they might look like when printed
+(apologies in advance
+for the use of a constant-width font):
 
 @example
 coffee makers . . . . . . . . . . 15         @ii{Single level entry}
@@ -216,7 +222,7 @@ toasters, @ii{See Also} coffee makers
 
 Texinfo provides a number of different command for putting entries
 into different indices.  For discussion we will use the @code{@@cindex}
-command in the following examples.  Of intereest to @file{texindex.awk}
+command in the following examples.  Of interest to @file{texindex.awk}
 is the text of the one to three parts of an entry, and how the index
 should be sorted.  Some examples:
 
@@ -247,7 +253,7 @@ let's assume they look something like this:
 @section Input To The Program
 
 The output from @file{texinfo.tex} contain the data for the
-different kind of index entries described in the previous
+different kinds of index entries described in the previous
 section.  Each line is an ``entry.'' Each entry has from three
 to five fields, where the first three fields represent the same
 data for all entries.  Entries look as follows:
@@ -324,7 +330,15 @@ The commands are:
 
 @table @code
 @item @@inital
-This is discussed later on. @strong{FIXME}: xref here.
+Besides the index entries,
+@file{texindex.awk} must output special lines indicating the
+first character (the @dfn{initial}) of keys grouped together, but only
+if there is more than one initial used throughout the input file.  This
+output looks like:
+
+@example
+@@initial @{A@}
+@end example
 
 @item @@entry
 This is for a plain index entry, or for the primary term in a multi-level
@@ -351,28 +365,16 @@ index entry.  This one always has a page number.
 @section Processing
 
 The job is to sort the entries, and merge those which are identical
-except for the page numbers.  Thus, for the above two entries, the
-output should be:
-
-@example
-\entry @{POSIX \command @{awk@}@}@{5, 106@}
-@end example
-
+except for the page numbers.
 The sorting should be in the order of: all symbols first, then all
 digits, then all letters, with uppercase letters following lowercase
 ones, so we will need some smarts.
 
+Once sorted, the lines must be output in the correct form, depending
+upon how many fields (entries and subentries) they have.
+
 Input lines might be duplicated (same entry, same page, more than once),
 so we will have to deal with that.
-
-In addition, @command{texindex} must output special lines indicating the
-first character (the @dfn{initial}) of keys grouped together, but only
-if there is more than one initial used throughout the input file.  This
-output looks like:
-
-@example
-\initial @{A@}
-@end example
 
 @node Assumptions
 @section Assumptions
@@ -395,18 +397,19 @@ first.  As an example, consider these two Texinfo commands:
 
 @noindent
 They produce the following output via @file{texinfo.tex},
-which in turn is the input to @command{texindex}:
+which in turn is the input to @file{texindex.awk}:
 
 @example
-\entry@{field_split() function@}@{2@}@{\file @{field_split()@} function@}
-\entry@{field_split() function@}@{7@}@{\code @{field_split()@} function@}
+@@entry@{field_split() function@}@{2@}@{@@file @{field_split()@} function@}
+@@entry@{field_split() function@}@{7@}@{@@code @{field_split()@} function@}
 @end example
 
-@noindent The result will be a single entry, using @code{\file},
+@noindent
+The result will be a single entry, using @code{@@file},
 accumulating the page numbers.
 
 @example
-\entry @{\file @{field_split()@} function@}@{2, 7@}
+@@entry @{@@file @{field_split()@} function@}@{2, 7@}
 @end example
 
 @item
@@ -414,8 +417,8 @@ accumulating the page numbers.
 For the same sort key and text, page numbers will be monotonically
 increasing.  This means we can just use a new page number when it comes
 in, and not have to sort entries based on both sort key and page number.
-In turn, means that we don't need to worry about page numbers
-that are roman numerals.
+In turn, this means that we don't need to worry about page numbers
+that are roman numerals (which can occur).
 
 @end enumerate
 
@@ -429,8 +432,7 @@ arrays and a number of other important features over the original
 
 In practice, we can also rely on basic features added in POSIX
 @command{awk} should we need to (such as @code{CONVFMT}), although
-at the moment there are no features used by @file{texindex.awk} that
-were added in POSIX after the book on ``new'' @command{awk} came out.
+at the moment there are no such features used by @file{texindex.awk}.
 
 @node High-level organization
 @chapter High-level organization
