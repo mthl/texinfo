@@ -439,8 +439,6 @@ at the moment there are no such features used by @file{texindex.awk}.
 
 The general outline is as follows:
 
-@file_update_recipe
-@end file_update_recipe
 @file_update texindex.awk . ""
 
 @(texindex.awk@) =
@@ -574,10 +572,41 @@ pulling apart each record, sorting the data at the end, and writing out
 the data properly.
 
 @menu
-* Setup for each input file::   What happens at the start of each file.
-* Processing each record::
-* End-of-file sorting and printing::
+* Printing the data::                Printing the final results.
+* Setup for each input file::        What happens at the start of each file.
+* Processing each record::           Pulling apart the fields and storing data.
+* End-of-file sorting and printing:: Printing the entries for each index.
 @end menu
+
+@node Printing the data
+@section Printing The Final Results
+
+We start at the end of the process, so to speak.  By writing the code to print
+the different kind of index entries, we will see what data we need to keep track
+of, and how to track it.  That will then enlighten us as to how to build the
+needed data structures.
+
+@<print index entry (old)@>=
+function write_index_entry(current)
+{
+  # write the actual line \entry {...}{...}
+  printf("%centry {%s}{%s}\n",
+    Command_char,
+    Data[Keys[current], "text"],
+    Data[Keys[current], "pagenum"]) > Output_file
+}
+@
+
+@<print index entry@>=
+function write_index_entry(current)
+{
+}
+@
+
+
+@<Work functions@>=
+@<print index entry@>
+@
 
 @node Setup for each input file
 @section Setup for each input file
@@ -970,11 +999,7 @@ function endfile(filename,    i, prev_initial, initial)
       print_initial(initial)
     }
 
-    # write the actual line \entry {...}{...}
-    printf("%centry {%s}{%s}\n",
-      Command_char,
-      Data[Keys[i], "text"],
-      Data[Keys[i], "pagenum"]) > Output_file
+    write_index_entry(i)
   }
   close(Output_file)
 }
