@@ -1,3 +1,14 @@
+2019-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/18itemize.t (table_in_itemize): New test.
+
+2019-03-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Examples of special characters in PDF destinations.
+
+	* doc/texinfo-tex-test.texi
+	(Test of characters in node names for PDF): New test.
+
 2019-03-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Only load lcircle10 if @cartouche is used.

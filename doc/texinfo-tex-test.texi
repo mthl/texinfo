@@ -1380,6 +1380,34 @@ Should be two entries, not one below.
 @printindex SK
 
 
+@page
+@section Test of characters in node names for PDF
+
+@ifx@pdfescapestring@thisisundefined
+
+This test requires newer @command{pdfetex}.
+
+@else
+
+@anchor{anchor}.
+
+@anchor{backslash \}.
+
+@anchor{closing bracket )}.
+
+@anchor{opening bracket (}.
+
+@xref{anchor}.
+
+@xref{backslash \}.
+
+@xref{closing bracket )}.
+
+@xref{opening bracket (}.
+
+@fi
+
+
 @chapter @code{@@set} and @code{@@value}
 
 @section Another test of @t{@@value}
