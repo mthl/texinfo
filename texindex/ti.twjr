@@ -1,5 +1,5 @@
 \input texinfo   @c -*-texinfo-*-
-@c vim: filetype=texinfo tabstop=2 expandtab
+@c vim: filetype=texinfo tabstop=4 shiftwidth=4
 @c %**start of header (This is for running Texinfo on a region.)
 @setfilename texindex.info
 @settitle Texindex @VERSION@: A program for sorting indices
@@ -597,12 +597,123 @@ function write_index_entry(current)
 }
 @
 
+So, let's start. The logic is going to be a little complicated:
+
 @<print index entry@>=
 function write_index_entry(current)
 {
+	if (@<@code{current} entry has 1 level@>) {
+		if (@<@code{current} entry is a ``see'' or ``see'' also@>) {
+			printf("%centry{%s, %s}{}\n",
+					Command_char,
+					@<@code{current} field #1@>,
+					@<@code{current} see or see also@>) > Output_file
+		} else {
+			printf("%centry{%s}{%s}\n",
+					Command_char,
+					@<@code{current} field #1@>,
+					@<@code{current} pagenum@>) > Output_file
+			@<note that @code{current} sortkey #1 has been printed@>
+		}
+	} else if (@<@code{current} entry has 2 levels@>) {
+		@<print primary entry if necessary@>
+		printf("%csecondary{%s}{%s}\n",
+				Command_char,
+				@<@code{current} field #2@>,
+				@<@code{current} pagenum@>) > Output_file
+		@<note that @code{current} sortkey #2 has been printed@>
+	} else if (@<@code{current} entry has 3 levels@>) {
+		@<print primary entry if necessary@>
+		@<print secondary entry if necessary@>
+		printf("%ctertiary{%s}{%s}\n",
+				Command_char,
+				@<@code{current} field #3@>,
+				@<@code{current} pagenum@>) > Output_file
+	}
 }
 @
 
+@<print primary entry if necessary@>=
+if (@<@code{current} sortkey #1 has not been printed@>) {
+	printf("%centry{%s}{}\n",
+			Command_char,
+			@<@code{current} field #1@>)
+	@<note that @code{current} sortkey #1 has been printed@>
+}
+@
+
+@<print secondary entry if necessary@>=
+if (@<@code{current} sortkey #2 has not been printed@>) {
+	printf("%csecondary{%s}{}\n",
+			Command_char,
+			@<@code{current} field #2@>)
+	@<note that @code{current} sortkey #2 has been printed@>
+}
+@
+
+OK, so now we have the basic algorithm that handles ``See @dots{}''
+and ``See Also @dots{}'' entries, as well as single-, double-,
+and triple-level entries.  It should handle all of the following
+cases:
+
+@c These should make a nice test case!
+@cindex coffee makers
+
+@cindex toasters @subentry british
+@cindex toasters @subentry american
+
+@cindex microwaves @subentry electic @subentry 110 volt
+@cindex microwaves @subentry electic @subentry 220 volt
+
+@cindex children
+@cindex children @subentry small
+@cindex children @subentry small @subentry toddlers
+@cindex children @subentry small @subentry infants
+@cindex children @subentry teenagers
+@cindex children @subentry adult
+@example
+@@c Top level entry, with page
+@@cindex coffee makers
+
+@@c Double level, no separate top level
+@@cindex toasters @@subentry british
+@@cindex toasters @@subentry american
+
+@@c Triple level, no separate 1st or 2nd level
+@@cindex microwaves @@subentry electic @@subentry 110 volt
+@@cindex microwaves @@subentry electic @@subentry 220 volt
+
+@@c All 3 levels, with pages
+@@cindex children
+@@cindex children @@subentry small
+@@cindex children @@subentry small @@subentry toddlers
+@@cindex children @@subentry small @@subentry infants
+@@cindex children @@subentry teenagers
+@@cindex children @@subentry adult
+@end example
+
+We need the following:
+
+@table @asis
+@item The full sortkey for each line
+This will be @code{Keys[current]}.
+
+@item The split-out sort keys for each line
+This will be @code{Keys[current, "key1"]},
+@code{Keys[current, "key2"]}, and @code{Keys[current, "key3"]}.
+Note that the latter two may not exist.
+
+@item A way to track if a key was printed
+This will be
+@code{Printed[Keys[current, "key1"]]},
+and
+@code{Printed[Keys[current, "key1"], Keys[current, "key2"]]}.
+We only need worry about the first two keys as we don't have
+fourth level entries.
+
+@end table
+
+Finally, add the above code into the set of work functions:
 
 @<Work functions@>=
 @<print index entry@>
