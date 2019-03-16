@@ -1,5 +1,18 @@
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	@seealso in index entries (experimental).
+	
+	* doc/texinfo.tex
+	(\seealso, \putwordSeeAlso): Add default definitions for reading 
+	in a sorted index file.
+	(\splitindexentry): Record value of any @seealso directive in 
+	the index entry inside \pagenumbertext.  Make @seealso expansion 
+	empty when getting the sort key.
+	(\doindwrite): If \pagenumbertext set, use its contents instead 
+	of \folio in the page number field.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo-tex-test.texi (Index subentries): New section.
 
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>

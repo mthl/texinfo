@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-16.19}
+\def\texinfoversion{2019-03-16.20}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5236,17 +5236,25 @@ end
   \xdef\indexsortkey{#1}\endgroup}
 }
 
-% The default definition
+\def\indexwriteseealso#1{
+  \gdef\pagenumbertext{@seealso{#1}}%
+}
+
+% The default definitions
 \def\sortas#1{}%
+\def\seealso#1{\i{\putwordSeeAlso}\ #1}% for sorted index file only
+\def\putwordSeeAlso{see also}
 
 % Given index entry text like "aaa @subentry bbb @sortas{ZZZ}":
 %   * Set \bracedtext to "{aaa}{bbb}"
 %   * Set \fullindexsortkey to "aaa @subentry ZZZ"
+%   * If @seealso occurs, set \pagenumbertext
 %
 \def\splitindexentry#1{%
   \gdef\fullindexsortkey{}%
   \xdef\bracedtext{}%
   \def\sep{}%
+  \def\seealso##1{}%
   \expandafter\doindexsegment#1\subentry\finish\subentry
 }
 
@@ -5267,6 +5275,7 @@ end
     % font commands turned off.
     \bgroup
       \let\sortas\indexwritesortas
+      \let\seealso\indexwriteseealso
       \indexnofonts
       % The braces around the commands are recognized by texindex.
       \def\lbracechar{{\indexlbrace}}%
@@ -5277,8 +5286,9 @@ end
       \def\atchar##1{\@}%
       %
       \let\indexsortkey\empty
+      \global\let\pagenumbertext\empty
       % Execute the segment and throw away the typeset output.  This executes
-      % any @sortas commands in this segment.
+      % any @sortas or @seealso commands in this segment.
       \setbox\dummybox = \hbox{\segment}%
       \ifx\indexsortkey\empty{%
         \indexnonalnumdisappear
@@ -5326,7 +5336,9 @@ end
   %
   \edef\temp{%
     \write\writeto{%
-      \string\entry{\fullindexsortkey}{\noexpand\folio}\bracedtext}%
+      \string\entry{\fullindexsortkey}%
+        {\ifx\pagenumbertext\empty\noexpand\folio\else\pagenumbertext\fi}%
+        \bracedtext}%
   }%
   \temp
 }
