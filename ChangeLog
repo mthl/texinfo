@@ -1,5 +1,9 @@
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Index subentries): New section.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Combine pdftex and XeTeX conditionals.
 
 	* doc/texinfo.tex (\ifpdforxetex): New conditional.  Use it in

@@ -1254,6 +1254,37 @@ case.
 @printindex WIDOW
 @end ignore
 
+@section Index subentries
+
+Check that entries are indented properly.
+
+Possible issues with subentries being separated from superentries by a 
+page or column break.  (There may not be much that can be done in some 
+cases.)
+
+@commenceindex
+@entry{tea makers}{19}
+@entry{coffee makers}{}
+@secondary{gerbil-driven long line line line line line line line line 
+line line line line line line}{9, 42}
+@secondary{gerbil-driven}{9, 42}
+@secondary{electric}{}
+@tertiary{orange}{5, 62}
+@tertiary{green}{727}
+@tertiary{pink}{5, 62, 45, 81, 45, 81, 123, 2314, 123, 2314, 123, 2314, 
+123, 2314, 123, 2314}
+@entry{tea makers}{19}
+@entry{coffee makers}{}
+@secondary{gerbil-driven long line line line line line line line line 
+line line line line line line}{9, 42}
+@secondary{gerbil-driven}{9, 42}
+@secondary{electric}{}
+@tertiary{orange}{5, 62}
+@tertiary{green}{727}
+@tertiary{pink}{5, 62, 45, 81, 45, 81, 123, 2314, 123, 2314, 123, 2314, 
+123, 2314, 123, 2314}
+@finishindex
+
 
 @section Non-alphanumeric Index Initials
 
