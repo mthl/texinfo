@@ -515,7 +515,19 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 @url{and cmd @sortas{inside}}.
 
 @printindex SK
-']
+'],
+['subentries',
+'@node Top
+@top
+
+@cindex aa
+@cindex bb @subentry cc
+@cindex ddd @subentry eee @subentry fff
+@cindex ggg @subentry hhh jjj @subentry kkk @subentry lll
+
+@printindex cp
+', {'test_formats' => ['docbook']}
+]
 );
 
 sub encoding_index_text($)
