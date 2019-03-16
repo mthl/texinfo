@@ -1,5 +1,16 @@
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make @subentry the same level as index command in tree.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi) <@subentry>:
+	Call _end_line to avoid @subentry becoming a child of an index 
+	command or another @subentry command.
+
+	This means that we convert back to Texinfo correctly without 
+	misplacing spaces before the @subentry command.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove unused function.
 
 	* tp/Texinfo/Convert/Converter.pm (_register_command_arg): Remove.

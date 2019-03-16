@@ -4340,21 +4340,18 @@ sub _parse_texi($;$)
               push @{$current->{'contents'}}, $misc;
               $misc->{'line_nr'} = $line_nr;
             } else {
-              $misc = { 'cmdname' => $command, 'parent' => $current,
-                  'line_nr' => $line_nr };
+              $misc = { 'cmdname' => $command, 'line_nr' => $line_nr };
               if ($command eq 'subentry') {
-                _isolate_last_space($self, $current);
-                if (!_is_index_element($self, $current->{'parent'})) {
+                my $parent = $current->{'parent'};
+                if (!_is_index_element($self, $parent)) {
                   $self->line_warn(
                     sprintf(__("\@%s should only appear in an index entry"),
                             $command), $line_nr);
                 }
-                $current->{'parent'}->{'extra'}->{'subentry'} = $misc;
+                $parent->{'extra'}->{'subentry'} = $misc;
                 my $subentry_level = 1;
-                if ($current->{'parent'}->{'cmdname'}
-                    and $current->{'parent'}->{'cmdname'} eq 'subentry') {
-                  $subentry_level = $current->{'parent'}->{'extra'}->{'level'};
-                  $subentry_level++;
+                if ($parent->{'cmdname'} eq 'subentry') {
+                  $subentry_level = $parent->{'extra'}->{'level'} + 1;
                 }
                 $misc->{'extra'}->{'level'} = $subentry_level;
                 if ($subentry_level > 2) {
@@ -4362,8 +4359,13 @@ sub _parse_texi($;$)
               "no more than two levels of index subentry are allowed"),
                            $line_nr);
                 }
+                # Do not make the @subentry element a child of the index
+                # command.  This means that spaces are preserved properly
+                # when converting back to Texinfo.
+                $current = _end_line($self, $current, $line_nr);
               }
               push @{$current->{'contents'}}, $misc;
+              $misc->{'parent'} = $current;
               if ($sectioning_commands{$command}) {
                 if ($self->{'sections_level'}) {
                   $current->{'contents'}->[-1]->{'extra'}->{'sections_level'}
