@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-16.18}
+\def\texinfoversion{2019-03-16.19}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -1124,6 +1124,16 @@ where each line of input produces a line of output.}
     \fi
   \fi
 \fi
+
+\newif\ifpdforxetex
+\pdforxetexfalse
+\ifpdf
+  \pdforxetextrue
+\fi
+\ifx\XeTeXrevision\thisisundefined\else
+  \pdforxetextrue
+\fi
+
 
 % PDF uses PostScript string constants for the names of xref targets,
 % for display in the outlines, and in other places.  Thus, we have to
@@ -3105,7 +3115,7 @@ end
 % So now @email is just like @uref, unless we are pdf.
 %
 %\def\email#1{\angleleft{\tt #1}\angleright}
-\ifpdf
+\ifpdforxetex
   \def\email#1{\doemail#1,,\finish}
   \def\doemail#1,#2,#3\finish{\begingroup
     \unsepspaces
@@ -3115,18 +3125,7 @@ end
     \endlink
   \endgroup}
 \else
-  \ifx\XeTeXrevision\thisisundefined
-    \let\email=\uref
-  \else
-    \def\email#1{\doemail#1,,\finish}
-    \def\doemail#1,#2,#3\finish{\begingroup
-      \unsepspaces
-      \pdfurl{mailto:#1}%
-      \setbox0 = \hbox{\ignorespaces #2}%
-      \ifdim\wd0>0pt\unhbox0\else\code{#1}\fi
-      \endlink
-    \endgroup}
-  \fi
+  \let\email=\uref
 \fi
 
 % @kbdinputstyle -- arg is `distinct' (@kbd uses slanted tty font always),
@@ -5624,16 +5623,11 @@ end
         %
         \null\nobreak\indexdotfill % Have leaders before the page number.
         %
-        \ifpdf
+        \ifpdforxetex
           \pdfgettoks#1.%
           \hskip\skip\thinshrinkable\the\toksA
         \else
-          \ifx\XeTeXrevision\thisisundefined
-            \hskip\skip\thinshrinkable #1%
-          \else
-            \pdfgettoks#1.%
-            \hskip\skip\thinshrinkable\the\toksA
-          \fi
+          \hskip\skip\thinshrinkable #1%
         \fi
       \fi
     \egroup % end \boxA
@@ -6692,13 +6686,8 @@ end
   % 1 and 2 (the page numbers aren't printed), and so are the first
   % two pages of the document.  Thus, we'd have two destinations named
   % `1', and two named `2'.
-  \ifpdf
+  \ifpdforxetex
     \global\pdfmakepagedesttrue
-  \else
-    \ifx\XeTeXrevision\thisisundefined
-    \else
-      \global\pdfmakepagedesttrue
-    \fi
   \fi
 }
 

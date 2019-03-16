@@ -1,5 +1,12 @@
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Combine pdftex and XeTeX conditionals.
+
+	* doc/texinfo.tex (\ifpdforxetex): New conditional.  Use it in
+	several places.  This removes some code duplication.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Support @tertiary in sorted index file.
 
 	* doc/texinfo.tex (\indententry): New.
