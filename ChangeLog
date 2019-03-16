@@ -1,5 +1,14 @@
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Support @tertiary in sorted index file.
+
+	* doc/texinfo.tex (\indententry): New.
+	(\secondary, \tertiary): Use it.
+	(\entry): Fix case when there are no page numbers and no leaders 
+	are being printed.  Indent code that is outputting inside a box.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\printindex): Fix detection of backslash in 
 	sorted index file.
 

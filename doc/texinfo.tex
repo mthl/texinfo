@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-16.17}
+\def\texinfoversion{2019-03-16.18}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5427,9 +5427,14 @@ end
 %  \entry {topic}{pagelist}
 %     for a topic that is used without subtopics
 %  \primary {topic}
+%  \entry {topic}{}
 %     for the beginning of a topic that is used with subtopics
 %  \secondary {subtopic}{pagelist}
 %     for each subtopic.
+%  \secondary {subtopic}{}
+%     for a subtopic with sub-subtopics
+%  \tertiary {subtopic}{subsubtopic}{pagelist}
+%     for each sub-subtopic.
 
 % Define the user-accessible indexing commands
 % @findex, @vindex, @kindex, @cindex.
@@ -5606,33 +5611,35 @@ end
 \gdef\finishentry#1{%
     \egroup % end box A
     \dimen@ = \wd\boxA % Length of text of entry
-    \global\setbox\boxA=\hbox\bgroup\unhbox\boxA
-    % #1 is the page number.
-    %
-    % Get the width of the page numbers, and only use
-    % leaders if they are present.
-    \global\setbox\boxB = \hbox{#1}%
-    \ifdim\wd\boxB = 0pt
-      \null\nobreak\hfill\ %
-    \else
+    \global\setbox\boxA=\hbox\bgroup
+      \unhbox\boxA
+      % #1 is the page number.
       %
-      \null\nobreak\indexdotfill % Have leaders before the page number.
-      %
-      \ifpdf
-        \pdfgettoks#1.%
-        \hskip\skip\thinshrinkable\the\toksA
+      % Get the width of the page numbers, and only use
+      % leaders if they are present.
+      \global\setbox\boxB = \hbox{#1}%
+      \ifdim\wd\boxB = 0pt
+        \null\nobreak\hfill\ %
       \else
-        \ifx\XeTeXrevision\thisisundefined
-          \hskip\skip\thinshrinkable #1%
-        \else
+        %
+        \null\nobreak\indexdotfill % Have leaders before the page number.
+        %
+        \ifpdf
           \pdfgettoks#1.%
           \hskip\skip\thinshrinkable\the\toksA
+        \else
+          \ifx\XeTeXrevision\thisisundefined
+            \hskip\skip\thinshrinkable #1%
+          \else
+            \pdfgettoks#1.%
+            \hskip\skip\thinshrinkable\the\toksA
+          \fi
         \fi
       \fi
-    \fi
     \egroup % end \boxA
     \ifdim\wd\boxB = 0pt
-      \unhbox\boxA
+      \noindent\unhbox\boxA\par
+      \nobreak
     \else\bgroup
       % We want the text of the entries to be aligned to the left, and the
       % page numbers to be aligned to the right.
@@ -5713,24 +5720,15 @@ end
 
 \def\primary #1{\line{#1\hfil}}
 
-\newskip\secondaryindent \secondaryindent=0.5cm
-\def\secondary#1#2{{%
-  \parfillskip=0in
-  \parskip=0in
-  \hangindent=1in
-  \hangafter=1
-  \noindent\hskip\secondaryindent\hbox{#1}\indexdotfill
-  \ifpdf
-    \pdfgettoks#2.\ \the\toksA % The page number ends the paragraph.
-  \else
-    \ifx\XeTeXrevision\thisisundefined
-      #2
-    \else
-      \pdfgettoks#2.\ \the\toksA % The page number ends the paragraph.
-    \fi
-  \fi
-  \par
-}}
+\def\secondary{\indententry{0.5cm}}
+\def\tertiary{\indententry{1cm}}
+
+\def\indententry#1#2#3{%
+  \bgroup
+  \leftskip=#1
+  \entry{#2}{#3}%
+  \egroup
+}
 
 % Define two-column mode, which we use to typeset indexes.
 % Adapted from the TeXbook, page 416, which is to say,
