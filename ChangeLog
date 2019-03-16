@@ -1,3 +1,25 @@
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Start on supporting @subentry in parser and Info output.
+
+	* tp/Texinfo/Common.pm (%line_commands): Add 'subentry'.
+	* tp/Texinfo/ParserNonXS.pm
+	(%in_full_text_commands): Include 'subentry' so that @subentry 
+	can appear inside an index command.
+	(%begin_line_commands): Allow @subentry to occur other than at 
+	the beginning of a line.
+	(_is_index_element): New.
+	(_parse_texi): Use _is_index_element to check if we are in an 
+	index command.
+	(_parse_texi) <line commands>: Handle @subentry.  Check valid 
+	nesting.  Keep track of how many @subentry's have been used.
+	* tp/Texinfo/Convert/Plaintext.pm (_printindex_formatted): If 
+	there are index subentries, add them to the end of the text of 
+	the index entry, separated by commas.
+
+	This represents index subentries as a line command at the end of 
+	the index entry.  A second @subentry is nested inside the first.
+
 2019-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/18itemize.t (table_in_itemize): New test.

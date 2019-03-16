@@ -302,7 +302,7 @@ foreach my $no_paragraph_command (keys(%line_commands)) {
 # in the manual
 foreach my $not_begin_line_command ('comment', 'c', 'sp', 'columnfractions',
                                  'item', 'verbatiminclude',
-                                 'set', 'clear', 'vskip') {
+                                 'set', 'clear', 'vskip', 'subentry') {
   delete $begin_line_commands{$not_begin_line_command};
 }
 
@@ -340,7 +340,7 @@ my %in_full_text_commands;
 foreach my $command (keys(%brace_commands), keys(%no_brace_commands)) {
   $in_full_text_commands{$command} = 1;
 }
-foreach my $in_full_text_command ('c', 'comment', 'refill',
+foreach my $in_full_text_command ('c', 'comment', 'refill', 'subentry',
                          'columnfractions', 'set', 'clear', 'end') {
   $in_full_text_commands{$in_full_text_command} = 1;
 }
@@ -3347,6 +3347,17 @@ sub _command_with_command_as_argument($)
       and scalar(@{$current->{'contents'}}) == 1);
 }
 
+sub _is_index_element {
+  my ($self, $element) = @_;
+
+  if (!$element->{'cmdname'}
+        or (!$self->{'command_index'}->{$element->{'cmdname'}}
+             and $element->{'cmdname'} ne 'subentry')) {
+    return 0;
+  }
+  return 1;
+}
+
 # This combines several regular expressions used in '_parse_texi' to
 # look at what is next on the remaining part of the line.
 # NOTE - this sub has an XS override
@@ -4331,6 +4342,27 @@ sub _parse_texi($;$)
             } else {
               $misc = { 'cmdname' => $command, 'parent' => $current,
                   'line_nr' => $line_nr };
+              if ($command eq 'subentry') {
+                _isolate_last_space($self, $current);
+                if (!_is_index_element($self, $current->{'parent'})) {
+                  $self->line_warn(
+                    sprintf(__("\@%s should only appear in an index entry"),
+                            $command), $line_nr);
+                }
+                $current->{'parent'}->{'extra'}->{'subentry'} = $misc;
+                my $subentry_level = 1;
+                if ($current->{'parent'}->{'cmdname'}
+                    and $current->{'parent'}->{'cmdname'} eq 'subentry') {
+                  $subentry_level = $current->{'parent'}->{'extra'}->{'level'};
+                  $subentry_level++;
+                }
+                $misc->{'extra'}->{'level'} = $subentry_level;
+                if ($subentry_level > 2) {
+                  $self->line_error(__(
+              "no more than two levels of index subentry are allowed"),
+                           $line_nr);
+                }
+              }
               push @{$current->{'contents'}}, $misc;
               if ($sectioning_commands{$command}) {
                 if ($self->{'sections_level'}) {
@@ -4644,11 +4676,8 @@ sub _parse_texi($;$)
           $current->{'contents'}->[-1]->{'line_nr'} = $line_nr
             if ($keep_line_nr_brace_commands{$command}
                 and !$self->{'definfoenclose'}->{$command});
-
           if ($in_index_commands{$command}
-              and (!$current->{'parent'}->{'cmdname'}
-                    or !$self->{'command_index'}
-                             ->{$current->{'parent'}->{'cmdname'}})) {
+              and !_is_index_element($self, $current->{'parent'})) {
             $self->line_warn(
               sprintf(__("\@%s should only appear in an index entry"),
                       $command), $line_nr);
@@ -5012,8 +5041,8 @@ sub _parse_texi($;$)
               my $arg = $current->{'contents'}->[0]->{'text'};
               if (defined($arg)) {
                 my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
-                if ($index_element and $index_element->{'cmdname'}
-             and $self->{'command_index'}->{$index_element->{'cmdname'}}) {
+                if ($index_element
+                    and _is_index_element($self, $index_element)) {
                   $index_element->{'extra'}->{'sortas'} = $arg;
                 }
               }

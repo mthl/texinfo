@@ -1245,6 +1245,14 @@ sub _printindex_formatted($$;$)
     $entry_text .= $self->convert_line($entry_tree, {'indent' => 0,
                                                      'suppress_styles' => 1});
     next if ($entry_text !~ /\S/);
+    # add any subentries
+    my $tmp = $entry->{'command'};
+    while ($tmp->{'extra'} and $tmp->{'extra'}->{'subentry'}) {
+      $tmp = $tmp->{'extra'}->{'subentry'};
+      $entry_text .= ', ';
+      $entry_text .= $self->convert_line($tmp->{'args'}->[0], {'indent' => 0,
+                                                'suppress_styles' => 1});
+    }
     # FIXME protect instead
     if ($entry_text =~ /:/ and $self->get_conf('INDEX_SPECIAL_CHARS_WARNING')) {
       $self->line_warn (sprintf(__("Index entry in \@%s with : produces invalid Info: %s"),
