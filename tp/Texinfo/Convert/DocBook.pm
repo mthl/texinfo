@@ -407,13 +407,31 @@ sub _index_entry($$)
   if ($root->{'extra'} and $root->{'extra'}->{'index_entry'}) {
     my $index_entry = $root->{'extra'}->{'index_entry'};
     # FIXME DocBook 5 role->type
-    my $result = "<indexterm role=\"$index_entry->{'index_name'}\"><primary>";
+    my $result = "<indexterm role=\"$index_entry->{'index_name'}\">";
+
     push @{$self->{'document_context'}}, {'monospace' => [0], 'upper_case' => [0]};
     $self->{'document_context'}->[-1]->{'monospace'}->[-1] = 1
       if ($index_entry->{'in_code'});
+
+    $result .= "<primary>";
     $result .= $self->_convert({'contents' => $index_entry->{'content'}});
+    $result .= "</primary>";
+
+    # Add any index subentries.
+    my $tmp = $index_entry->{'command'};
+    my $level = "secondary";
+    while ($tmp->{'extra'}->{'subentry'}) {
+      $result .= "<$level>";
+      $tmp = $tmp->{'extra'}->{'subentry'};
+      $result .= $self->_convert($tmp->{'args'}->[0]);
+      $result .= "</$level>";
+      $level = "tertiary";
+    }
+
     pop @{$self->{'document_context'}};
-    return $result ."</primary></indexterm>"
+
+    $result .= "</indexterm>";
+    return $result;
   }
   return '';
 }
