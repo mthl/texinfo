@@ -3481,6 +3481,7 @@ sub _convert_printindex_command($$$$)
       } else {
         $entry = $self->convert_tree({'contents' => $index_entry_ref->{'content'}});
       }
+      $entry .= $self->convert_index_subentries($index_entry_ref);
       if ($already_formatted) {
         $self->{'ignore_notice'}--;
       }
