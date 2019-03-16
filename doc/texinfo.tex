@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-12.20}
+\def\texinfoversion{2019-03-16.17}
 
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
@@ -5474,7 +5474,7 @@ end
     \ifeof 1
       \putwordIndexIsEmpty
     \else
-      \expandafter\printindexzz{#1}\thisline\relax\relax\finish%
+      \expandafter\printindexzz\thisline\relax\relax\finish%
     \fi
   \fi
   \closein 1
@@ -5484,14 +5484,14 @@ end
 % file altogether.  If somebody upgrades texinfo.tex they may still have
 % old index files using \ as the escape character.  Reading this would
 % at best lead to typesetting garbage, at worst a TeX syntax error.
-\def\printindexzz#1#2#3\finish{%
+\def\printindexzz#1#2\finish{%
   % NB this won't work if the index file starts with a group...
-  \uccode`\~=`\\ \uppercase{\if\noexpand~}\noexpand#2
+  \uccode`\~=`\\ \uppercase{\if\noexpand~}\noexpand#1
     \message{skipping sorted index file}%
     (Skipped sorted index file in obsolete format)
   \else
     \begindoublecolumns
-    \input \jobname.#1s
+    \input \jobname.\indexname s
     \enddoublecolumns
   \fi
 }
