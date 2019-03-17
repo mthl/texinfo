@@ -1,5 +1,17 @@
 2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Find translatable strings in parsetexi.
+
+	* tp/Texinfo/XS/po/Makevars (XGETTEXT_OPTIONS): Use line_error 
+	and similar functions to mark translatable strings.  (This 
+	should maybe be done in the top-level po/Makevars instead.)
+	* tp/Texinfo/XS/parsetexi/errors.c (line_error_internal):
+	Pass message string to gettext function.
+	* tp/Texinfo/XS/po/POTFILES.in: List files containing 
+	translatable strings.
+
+2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add gettext to XS modules.
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
@@ -31,7 +43,6 @@
         * tp/Texinfo/XS/gnulib/m4/nls.m4: New file, from gettext-0.19.8.
         * tp/Texinfo/XS/gnulib/m4/po.m4: New file, from gettext-0.19.8.
         * tp/Texinfo/XS/gnulib/m4/progtest.m4: New file, from gettext-0.19.8.
-
 
 2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
