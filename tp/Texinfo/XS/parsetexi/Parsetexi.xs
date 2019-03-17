@@ -19,6 +19,9 @@ MODULE = Texinfo::Parser	PACKAGE = Texinfo::Parser
 
 PROTOTYPES: ENABLE
 
+int
+init ()
+
 char *
 dump_errors ()
 

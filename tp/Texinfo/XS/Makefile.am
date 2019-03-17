@@ -26,11 +26,13 @@ XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la \
 
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
-SUBDIRS=gnulib/lib
+SUBDIRS= po gnulib/lib
 
 EXTRA_DIST+=gnulib/m4/gnulib-cache.m4
 
 ################### End Gnulib section #########################
+
+AM_CPPFLAGS += -DDATADIR=\"$(datadir)\"
 
 xsdir = $(pkglibdir)
 

@@ -93,6 +93,7 @@ AC_PROG_CC
 
 gl_EARLY
 
+AM_GNU_GETTEXT([external])
 AM_MISSING_PROG([XSUBPP], [xsubpp])
 
 gl_INIT
@@ -141,5 +142,5 @@ if test x$disable_xs != xyes; then
     AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile gnulib/lib/Makefile])
+AC_CONFIG_FILES([Makefile gnulib/lib/Makefile po/Makefile.in])
 AC_OUTPUT
