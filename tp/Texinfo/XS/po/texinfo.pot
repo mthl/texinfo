@@ -1,0 +1,705 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# This file is distributed under the same license as the texinfo package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: texinfo 0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-17 17:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: parsetexi/close.c:42
+#, c-format
+msgid "@end %s seen before @%s closing brace"
+msgstr ""
+
+#: parsetexi/close.c:47
+#, c-format
+msgid "@%s seen before @%s closing brace"
+msgstr ""
+
+#: parsetexi/close.c:52 parsetexi/macro.c:277
+#, c-format
+msgid "@%s missing closing brace"
+msgstr ""
+
+#: parsetexi/close.c:58
+#, c-format
+msgid "@%s missing closing delimiter sequence: %s}"
+msgstr ""
+
+#: parsetexi/close.c:232
+#, c-format
+msgid "@%s has text but no @item"
+msgstr ""
+
+#: parsetexi/close.c:262
+#, c-format
+msgid "`@end' expected `%s', but saw `%s'"
+msgstr ""
+
+#: parsetexi/close.c:268
+#, c-format
+msgid "@%s seen before @end %s"
+msgstr ""
+
+#: parsetexi/close.c:274
+#, c-format
+msgid "no matching `@end %s'"
+msgstr ""
+
+#: parsetexi/close.c:312 parsetexi/separator.c:193
+msgid "misplaced {"
+msgstr ""
+
+#: parsetexi/close.c:415
+#, c-format
+msgid "unmatched `@end %s'"
+msgstr ""
+
+#: parsetexi/end_line.c:36
+#, c-format
+msgid "syntax for an external node used for `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:47
+#, c-format
+msgid "empty argument in @%s"
+msgstr ""
+
+#: parsetexi/end_line.c:191
+msgid "@set requires a name"
+msgstr ""
+
+#: parsetexi/end_line.c:194
+msgid "bad name for @set"
+msgstr ""
+
+#: parsetexi/end_line.c:218
+msgid "@clear requires a name"
+msgstr ""
+
+#: parsetexi/end_line.c:221
+msgid "bad name for @clear"
+msgstr ""
+
+#: parsetexi/end_line.c:240
+msgid "@unmacro requires a name"
+msgstr ""
+
+#: parsetexi/end_line.c:243
+msgid "bad name for @unmacro"
+msgstr ""
+
+#: parsetexi/end_line.c:262
+#, c-format
+msgid "@clickstyle should only accept an @-command as argument, not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:275
+#, c-format
+msgid "remaining argument on @%s line: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:304 parsetexi/end_line.c:1333 parsetexi/end_line.c:1724
+#, c-format
+msgid "@%s missing argument"
+msgstr ""
+
+#: parsetexi/end_line.c:311 parsetexi/end_line.c:1134
+#, c-format
+msgid "superfluous argument to @%s"
+msgstr ""
+
+#: parsetexi/end_line.c:355
+#, c-format
+msgid "environment command %s as argument to @alias"
+msgstr ""
+
+#: parsetexi/end_line.c:373
+msgid "bad argument to @alias"
+msgstr ""
+
+#: parsetexi/end_line.c:424
+msgid "bad argument to @definfoenclose"
+msgstr ""
+
+#: parsetexi/end_line.c:436
+msgid "empty @columnfractions"
+msgstr ""
+
+#: parsetexi/end_line.c:456
+#, c-format
+msgid "column fraction not a number: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:478
+#, c-format
+msgid "@sp arg must be numeric, not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:515 parsetexi/end_line.c:583 parsetexi/end_line.c:1662
+#, c-format
+msgid "bad argument to @%s: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:520
+#, c-format
+msgid "reserved index name %s"
+msgstr ""
+
+#: parsetexi/end_line.c:551
+#, c-format
+msgid "unknown source index in @%s: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:554
+#, c-format
+msgid "unknown destination index in @%s: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:574
+#, c-format
+msgid "@%s leads to a merging of %s in itself, ignoring"
+msgstr ""
+
+#: parsetexi/end_line.c:594
+#, c-format
+msgid "bad argument to @printindex: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:599
+#, c-format
+msgid "unknown index `%s' in @printindex"
+msgstr ""
+
+#: parsetexi/end_line.c:608
+#, c-format
+msgid "printing an index `%s' merged in another one, `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:613
+#, c-format
+msgid "printindex before document beginning: @printindex %s"
+msgstr ""
+
+#: parsetexi/end_line.c:634
+#, c-format
+msgid "@%s arg must be `top' or `bottom', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:646
+#, c-format
+msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:657
+#, c-format
+msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:669
+#, c-format
+msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:680
+#, c-format
+msgid "bad argument to @need: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:690
+#, c-format
+msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:701
+#, c-format
+msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:711
+#, c-format
+msgid "@exampleindent arg must be numeric/`asis', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:726
+#, c-format
+msgid "expected @%s on or off, not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:746
+#, c-format
+msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:758
+#, c-format
+msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:770
+#, c-format
+msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:783
+#, c-format
+msgid "bad argument to @headings: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1054
+#, c-format
+msgid "unexpected argument on @%s line: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1066
+msgid "empty multitable"
+msgstr ""
+
+#: parsetexi/end_line.c:1147
+#, c-format
+msgid "bad argument to @%s"
+msgstr ""
+
+#: parsetexi/end_line.c:1158
+#, c-format
+msgid "%s requires an argument: the formatter for @item"
+msgstr ""
+
+#: parsetexi/end_line.c:1167
+#, c-format
+msgid "command @%s not accepting argument in brace should not be on @%s line"
+msgstr ""
+
+#: parsetexi/end_line.c:1225
+#, c-format
+msgid "accent command `@%s' not allowed as @%s argument"
+msgstr ""
+
+#: parsetexi/end_line.c:1352
+#, c-format
+msgid "unknown @end %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1379
+msgid "unmatched `@end'"
+msgstr ""
+
+#: parsetexi/end_line.c:1399 parsetexi/parser.c:1104
+#, c-format
+msgid "superfluous argument to @end %s: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1409
+#, c-format
+msgid "bad argument to @end: %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1426
+#, c-format
+msgid "@include: could not find %s"
+msgstr ""
+
+#: parsetexi/end_line.c:1434
+#, c-format
+msgid "@include: could not open %s:"
+msgstr ""
+
+#: parsetexi/end_line.c:1485
+#, c-format
+msgid "encoding `%s' is not a canonical texinfo encoding"
+msgstr ""
+
+#: parsetexi/end_line.c:1539
+#, c-format
+msgid "unrecognized encoding name `%s'"
+msgstr ""
+
+#: parsetexi/end_line.c:1607 parsetexi/end_line.c:1617
+#, c-format
+msgid "%s is not a valid language code"
+msgstr ""
+
+#: parsetexi/end_line.c:1634
+#, c-format
+msgid "%s is not a valid region code"
+msgstr ""
+
+#: parsetexi/end_line.c:1815
+msgid "@setfilename after the first element"
+msgstr ""
+
+#: parsetexi/end_line.c:1825
+msgid "@columnfractions only meaningful on a @multitable line"
+msgstr ""
+
+#: parsetexi/end_line.c:1879
+msgid "@part should not be associated with @top"
+msgstr ""
+
+#: parsetexi/end_line.c:1892
+msgid "@node precedes @part, but parts may not be associated with nodes"
+msgstr ""
+
+#: parsetexi/end_line.c:2128
+#, c-format
+msgid "missing category for @%s"
+msgstr ""
+
+#: parsetexi/end_line.c:2182
+#, c-format
+msgid "missing name for @%s"
+msgstr ""
+
+#: parsetexi/handle_commands.c:97
+#, c-format
+msgid "@%s should only appear in heading or footing"
+msgstr ""
+
+#: parsetexi/handle_commands.c:134 parsetexi/handle_commands.c:143
+#, c-format
+msgid "@%s not meaningful inside `@%s' block"
+msgstr ""
+
+#: parsetexi/handle_commands.c:154
+#, c-format
+msgid "@%s not meaningful inside @%s block"
+msgstr ""
+
+#: parsetexi/handle_commands.c:180
+#, c-format
+msgid "@%s in empty multitable"
+msgstr ""
+
+#: parsetexi/handle_commands.c:188
+msgid "@tab before @item"
+msgstr ""
+
+#: parsetexi/handle_commands.c:192
+#, c-format
+msgid "too many columns in multitable item (max %d)"
+msgstr ""
+
+#: parsetexi/handle_commands.c:237
+msgid "ignoring @tab outside of multitable"
+msgstr ""
+
+#: parsetexi/handle_commands.c:242 parsetexi/handle_commands.c:541
+#, c-format
+msgid "@%s outside of table or list"
+msgstr ""
+
+#: parsetexi/handle_commands.c:363
+#, c-format
+msgid "@%s not allowed inside `@copying' block"
+msgstr ""
+
+#: parsetexi/handle_commands.c:604
+#, c-format
+msgid "must be after `@%s' to use `@%s'"
+msgstr ""
+
+#: parsetexi/handle_commands.c:657
+msgid ""
+"@author not meaningful outside `@titlepage' and `@quotation' environments"
+msgstr ""
+
+#: parsetexi/handle_commands.c:661
+msgid "@dircategory after first node"
+msgstr ""
+
+#: parsetexi/handle_commands.c:769 parsetexi/macro.c:107
+#, c-format
+msgid "@%s requires a name"
+msgstr ""
+
+#: parsetexi/handle_commands.c:813 parsetexi/macro.c:101
+#, c-format
+msgid "bad name for @%s"
+msgstr ""
+
+#: parsetexi/handle_commands.c:949
+#, c-format
+msgid "region %s inside region %s is not allowed"
+msgstr ""
+
+#: parsetexi/handle_commands.c:971
+msgid "@direntry after first node"
+msgstr ""
+
+#: parsetexi/handle_commands.c:976
+msgid "@menu in invalid context"
+msgstr ""
+
+#: parsetexi/handle_commands.c:985
+#, c-format
+msgid "@%s seen before first @node"
+msgstr ""
+
+#: parsetexi/handle_commands.c:987
+msgid ""
+"perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
+msgstr ""
+
+#: parsetexi/handle_commands.c:1049
+#, c-format
+msgid "@%s should only appear in an index entry"
+msgstr ""
+
+#: parsetexi/indices.c:324
+#, c-format
+msgid "entry for index `%s' outside of any node"
+msgstr ""
+
+#: parsetexi/macro.c:159
+#, c-format
+msgid "bad or empty @%s formal argument: "
+msgstr ""
+
+#: parsetexi/macro.c:181
+#, c-format
+msgid "bad or empty @%s formal argument: %s"
+msgstr ""
+
+#: parsetexi/macro.c:204
+#, c-format
+msgid "bad syntax for @%s argument: %s"
+msgstr ""
+
+#: parsetexi/macro.c:351
+#, c-format
+msgid "macro `%s' called with too many args"
+msgstr ""
+
+#: parsetexi/macro.c:367
+#, c-format
+msgid "macro `%s' declared without argument called with an argument"
+msgstr ""
+
+#: parsetexi/macro.c:430
+#, c-format
+msgid "\\ in @%s expansion followed `%s' instead of parameter name or \\"
+msgstr ""
+
+#: parsetexi/macro.c:529
+#, c-format
+msgid ""
+"@%s defined with zero or more than one argument should be invoked with {}"
+msgstr ""
+
+#: parsetexi/macro.c:568
+#, c-format
+msgid ""
+"macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
+"value %d)"
+msgstr ""
+
+#: parsetexi/macro.c:578
+#, c-format
+msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
+msgstr ""
+
+#: parsetexi/menus.c:43
+#, c-format
+msgid "empty menu entry name in `%s'"
+msgstr ""
+
+#: parsetexi/menus.c:57
+msgid "empty node name in menu entry"
+msgstr ""
+
+#: parsetexi/multitable.c:73
+#, c-format
+msgid "@itemx should not begin @%s"
+msgstr ""
+
+#: parsetexi/multitable.c:129
+msgid "@itemx must follow @item"
+msgstr ""
+
+#: parsetexi/parser.c:242
+#, c-format
+msgid "multiple @%s"
+msgstr ""
+
+#: parsetexi/parser.c:974
+#, c-format
+msgid "@%s should not appear in @%s"
+msgstr ""
+
+#: parsetexi/parser.c:1071
+#, c-format
+msgid "@end %s should only appear at the beginning of a line"
+msgstr ""
+
+#: parsetexi/parser.c:1132
+#, c-format
+msgid "macro `%s' previously defined"
+msgstr ""
+
+#: parsetexi/parser.c:1134
+#, c-format
+msgid "here is the previous definition of `%s'"
+msgstr ""
+
+#: parsetexi/parser.c:1139
+#, c-format
+msgid "redefining Texinfo language command: @%s"
+msgstr ""
+
+#: parsetexi/parser.c:1323
+#, c-format
+msgid "unknown command `%s'"
+msgstr ""
+
+#: parsetexi/parser.c:1407
+#, c-format
+msgid "accent command `@%s' must not be followed by whitespace"
+msgstr ""
+
+#: parsetexi/parser.c:1414
+#, c-format
+msgid "use braces to give a command as an argument to @%s"
+msgstr ""
+
+#: parsetexi/parser.c:1431
+#, c-format
+msgid "@dotless expects `i' or `j' as argument, not `%c'"
+msgstr ""
+
+#: parsetexi/parser.c:1444
+#, c-format
+msgid "accent command `@%s' must not be followed by new line"
+msgstr ""
+
+#: parsetexi/parser.c:1462
+#, c-format
+msgid "@%s expected braces"
+msgstr ""
+
+#: parsetexi/parser.c:1518
+#, c-format
+msgid "undefined flag: %.*s"
+msgstr ""
+
+#: parsetexi/parser.c:1549
+msgid "bad syntax for @value"
+msgstr ""
+
+#: parsetexi/parser.c:1573
+#, c-format
+msgid "@%s is obsolete."
+msgstr ""
+
+#: parsetexi/parser.c:1575
+#, c-format
+msgid "@%s is obsolete; %s"
+msgstr ""
+
+#: parsetexi/parser.c:1599
+#, c-format
+msgid "@%s should only appear at the beginning of a line"
+msgstr ""
+
+#: parsetexi/parser.c:1690
+msgid "@\\ should only appear in math context"
+msgstr ""
+
+#: parsetexi/parser.c:1706
+msgid "unexpected @"
+msgstr ""
+
+#: parsetexi/parser.c:1900
+#, c-format
+msgid "expected @end %s"
+msgstr ""
+
+#: parsetexi/separator.c:53
+msgid "@verb without associated character"
+msgstr ""
+
+#: parsetexi/separator.c:78
+#, c-format
+msgid "@%s is not meaningful outside `@float' environment"
+msgstr ""
+
+#: parsetexi/separator.c:84
+#, c-format
+msgid "@%s should be right below `@float'"
+msgstr ""
+
+#: parsetexi/separator.c:92
+#, c-format
+msgid "ignoring multiple @%s"
+msgstr ""
+
+#: parsetexi/separator.c:276
+#, c-format
+msgid "command @%s does not accept arguments"
+msgstr ""
+
+#: parsetexi/separator.c:312
+#, c-format
+msgid "command @%s missing a node or external manual argument"
+msgstr ""
+
+#: parsetexi/separator.c:350
+#, c-format
+msgid "in @%s empty cross reference name after expansion `%s'"
+msgstr ""
+
+#: parsetexi/separator.c:368
+#, c-format
+msgid "in @%s empty cross reference title after expansion `%s'"
+msgstr ""
+
+#: parsetexi/separator.c:383
+msgid "@image missing filename argument"
+msgstr ""
+
+#: parsetexi/separator.c:396
+#, c-format
+msgid "@dotless expects `i' or `j' as argument, not `%s'"
+msgstr ""
+
+#: parsetexi/separator.c:413
+#, c-format
+msgid "@%s missing first argument"
+msgstr ""
+
+#: parsetexi/separator.c:427
+msgid "no argument specified for @U"
+msgstr ""
+
+#: parsetexi/separator.c:435
+#, c-format
+msgid "non-hex digits in argument for @U: %s"
+msgstr ""
+
+#: parsetexi/separator.c:440
+#, c-format
+msgid "fewer than four hex digits in argument for @U: %s"
+msgstr ""
+
+#: parsetexi/separator.c:455
+#, c-format
+msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
+msgstr ""
+
+#: parsetexi/separator.c:539
+msgid "misplaced }"
+msgstr ""
+
+#: parsetexi/separator.c:749
+msgid "superfluous arguments for node"
+msgstr ""

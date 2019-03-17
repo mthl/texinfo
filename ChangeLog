@@ -1,3 +1,149 @@
+2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Find translatable strings in parsetexi.
+
+	* tp/Texinfo/XS/po/Makevars (XGETTEXT_OPTIONS): Use line_error 
+	and similar functions to mark translatable strings.  (This 
+	should maybe be done in the top-level po/Makevars instead.)
+	* tp/Texinfo/XS/parsetexi/errors.c (line_error_internal):
+	Pass message string to gettext function.
+	* tp/Texinfo/XS/po/POTFILES.in: List files containing 
+	translatable strings.
+
+2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Add gettext to XS modules.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
+	* tp/Texinfo/XS/parsetexi/api.c (init):
+	Add, to be called from Texinfo::XSLoader.  Initialize gettext.
+
+	* tp/Texinfo/XS/parsetexi/api.c: Include libintl.h.
+
+	* tp/Texinfo/XS/configure.ac: Add AM_GNU_GETTEXT([external]).
+	* tp/Texinfo/XS/Makefile.am (AM_CPPFLAGS): Define DATADIR.
+
+	* tp/Texinfo/XS: Run 'gettextize'.
+	I do not know if '--po-dir=../../../po -f' should have been used 
+	here - should we share the po directory with the top-level 
+	project?
+	* tp/Texinfo/XS: Run 'aclocal -I gnulib/m4'.
+	* tp/Texinfo/XS/po/Makevars: Copy from Makevars.template.  I'm 
+	not sure if this will be used.
+
+	Changes made by gettextize:
+	* tp/Texinfo/XS/Makefile.am (SUBDIRS): Add po.
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES): Add po/Makefile.in.
+
+        * tp/Texinfo/XS/gnulib/m4/gettext.m4: New file, from gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/iconv.m4: Upgrade to gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/lib-ld.m4: Upgrade to gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/lib-link.m4: Upgrade to gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/lib-prefix.m4: Upgrade to gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/nls.m4: New file, from gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/po.m4: New file, from gettext-0.19.8.
+        * tp/Texinfo/XS/gnulib/m4/progtest.m4: New file, from gettext-0.19.8.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@seealso in index entries (experimental).
+	
+	* doc/texinfo.tex
+	(\seealso, \putwordSeeAlso): Add default definitions for reading 
+	in a sorted index file.
+	(\splitindexentry): Record value of any @seealso directive in 
+	the index entry inside \pagenumbertext.  Make @seealso expansion 
+	empty when getting the sort key.
+	(\doindwrite): If \pagenumbertext set, use its contents instead 
+	of \folio in the page number field.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Index subentries): New section.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Combine pdftex and XeTeX conditionals.
+
+	* doc/texinfo.tex (\ifpdforxetex): New conditional.  Use it in
+	several places.  This removes some code duplication.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Support @tertiary in sorted index file.
+
+	* doc/texinfo.tex (\indententry): New.
+	(\secondary, \tertiary): Use it.
+	(\entry): Fix case when there are no page numbers and no leaders 
+	are being printed.  Indent code that is outputting inside a box.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\printindex): Fix detection of backslash in 
+	sorted index file.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make @subentry the same level as index command in tree.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi) <@subentry>:
+	Call _end_line to avoid @subentry becoming a child of an index 
+	command or another @subentry command.
+
+	This means that we convert back to Texinfo correctly without 
+	misplacing spaces before the @subentry command.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove unused function.
+
+	* tp/Texinfo/Convert/Converter.pm (_register_command_arg): Remove.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Test of @subentry.
+
+	* tp/t/09indices.t (subentries): New test.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@subentry in DocBook output.
+
+	* tp/Texinfo/Convert/DocBook.pm (_index_entry):
+	Possibly output index subentries inside <secondary> or 
+	<tertiary> elements.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@subentry in HTML output.
+
+	* tp/Texinfo/Convert/Converter.pm (convert_index_subentries): New.
+	* tp/Texinfo/Convert/HTML.pm (_convert_printindex_command): Use it.
+	* tp/Texinfo/Convert/Plaintext.pm (_printindex_formatted): 
+	Inline code from convert_line and call convert_index_subentries.
+
+2019-03-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Start on supporting @subentry in parser and Info output.
+
+	* tp/Texinfo/Common.pm (%line_commands): Add 'subentry'.
+	* tp/Texinfo/ParserNonXS.pm
+	(%in_full_text_commands): Include 'subentry' so that @subentry 
+	can appear inside an index command.
+	(%begin_line_commands): Allow @subentry to occur other than at 
+	the beginning of a line.
+	(_is_index_element): New.
+	(_parse_texi): Use _is_index_element to check if we are in an 
+	index command.
+	(_parse_texi) <line commands>: Handle @subentry.  Check valid 
+	nesting.  Keep track of how many @subentry's have been used.
+	* tp/Texinfo/Convert/Plaintext.pm (_printindex_formatted): If 
+	there are index subentries, add them to the end of the text of 
+	the index entry, separated by commas.
+
+	This represents index subentries as a line command at the end of 
+	the index entry.  A second @subentry is nested inside the first.
+
 2019-03-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/t/18itemize.t (table_in_itemize): New test.

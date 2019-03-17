@@ -1242,9 +1242,18 @@ sub _printindex_formatted($$;$)
       $entry_tree->{'type'} = 'frenchspacing';
     }
     my $entry_text = '';
-    $entry_text .= $self->convert_line($entry_tree, {'indent' => 0,
-                                                     'suppress_styles' => 1});
+
+    my $formatter = $self->new_formatter('line',
+                                   {'indent' => 0, 'suppress_styles' => 1});
+    push @{$self->{'formatters'}}, $formatter;
+    $entry_text = $self->_convert($entry_tree);
+    $entry_text .= $self->convert_index_subentries($entry);
+    $entry_text .= _count_added($self, $formatter->{'container'},
+                  Texinfo::Convert::Paragraph::end($formatter->{'container'}));
+    pop @{$self->{'formatters'}};
+
     next if ($entry_text !~ /\S/);
+
     # FIXME protect instead
     if ($entry_text =~ /:/ and $self->get_conf('INDEX_SPECIAL_CHARS_WARNING')) {
       $self->line_warn (sprintf(__("Index entry in \@%s with : produces invalid Info: %s"),

@@ -505,6 +505,7 @@ our %line_commands = (
   # obsolete @-commands.
   'setcontentsaftertitlepage'      => 'skipline', # no arg
   'setshortcontentsaftertitlepage' => 'skipline', # no arg
+  'subentry'          => 'line', 
 );
 
 # commands that do not take the whole line as argument

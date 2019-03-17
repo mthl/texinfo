@@ -1086,19 +1086,6 @@ sub _collect_leading_trailing_spaces_arg($$)
   return @result;
 }
 
-sub _register_command_arg($$$)
-{
-  my ($self, $current, $type) = @_;
-
-  my @contents = @{$current->{'contents'}};
-  Texinfo::Common::trim_spaces_comment_from_content(\@contents);
-  if (scalar(@contents)) {
-    push @{$current->{'parent'}->{'extra'}->{$type}}, \@contents;
-  } else {
-    push @{$current->{'parent'}->{'extra'}->{$type}}, undef;
-  }
-}
-
 sub _table_item_content_tree($$$)
 {
   my $self = shift;
@@ -1406,6 +1393,21 @@ sub xml_protect_text($$)
   $text =~ s/\"/&quot;/g;
   return $text;
 }
+
+# Add any index sub-entries specified with @subentry, separated by commas.
+sub convert_index_subentries {
+  my ($self, $entry) = @_;
+
+  my $result = '';
+  my $tmp = $entry->{'command'};
+  while ($tmp->{'extra'} and $tmp->{'extra'}->{'subentry'}) {
+    $tmp = $tmp->{'extra'}->{'subentry'};
+    $result .= $self->_convert({'text' => ', '});
+    $result .= $self->_convert($tmp->{'args'}->[0]);
+  }
+  return $result;
+}
+
 
 # 'today' is not set here.
 our %default_xml_commands_formatting; 

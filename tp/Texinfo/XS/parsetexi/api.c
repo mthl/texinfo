@@ -25,6 +25,8 @@
 
 #undef context
 
+#include <libintl.h>
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -35,6 +37,23 @@
 #include "api.h"
 
 ELEMENT *Root;
+
+#define LOCALEDIR DATADIR "/locale"
+#define DATADIR2 "/usr/local/share"
+
+int
+init (void)
+{
+  /* Initialize gettext. */
+  /* TODO: Does this interfere with Perl or any other modules? */
+  setlocale (LC_ALL, "");
+
+  /* TODO: Use installed or uninstalled translation files. */
+  bindtextdomain (PACKAGE, DATADIR "/locale");
+  textdomain (PACKAGE);
+
+  return 1;
+}
 
 static void
 reset_floats ()
