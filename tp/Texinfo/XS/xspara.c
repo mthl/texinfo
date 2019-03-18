@@ -239,7 +239,7 @@ iswupper (wint_t wi)
 #endif
 
 int
-xspara_init (void)
+xspara_init (int ununsed)
 {
   char *utf8_locale = 0;
   int len;

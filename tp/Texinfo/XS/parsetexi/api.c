@@ -42,7 +42,7 @@ ELEMENT *Root;
 #define DATADIR2 "/usr/local/share"
 
 int
-init (void)
+init (int texinfo_uninstalled)
 {
   /* Initialize gettext. */
   /* TODO: Does this interfere with Perl or any other modules? */

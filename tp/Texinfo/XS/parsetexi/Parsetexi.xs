@@ -20,7 +20,8 @@ MODULE = Texinfo::Parser	PACKAGE = Texinfo::Parser
 PROTOTYPES: ENABLE
 
 int
-init ()
+init (texinfo_uninstalled)
+     int texinfo_uninstalled
 
 char *
 dump_errors ()

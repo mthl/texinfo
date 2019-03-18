@@ -12,6 +12,10 @@ $VERSION = '6.3dev';
 use File::Basename;
 use File::Spec;
 
+# Used as a flag to say whether to look for data files in uninstalled 
+# locations.
+our $texinfo_uninstalled = 0;
+
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)
 # use them to add directories
@@ -26,6 +30,10 @@ sub init {
   my $lib_dir = shift;
   my $libexec_dir = shift;
   my %named_args = @_;
+
+  if ($named_args{'uninstalled'}) {
+    $texinfo_uninstalled = 1;
+  }
 
   if (!$ENV{'top_srcdir'} and !$ENV{'top_builddir'}
       and $named_args{'updirs'}) {

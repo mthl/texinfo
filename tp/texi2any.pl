@@ -73,7 +73,7 @@ BEGIN
     unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
     require Texinfo::ModulePath;
-    Texinfo::ModulePath::init();
+    Texinfo::ModulePath::init(undef, undef, 'uninstalled' => 1);
   } else {
     # Look for modules in their installed locations.
 
@@ -179,16 +179,11 @@ my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 # gettext.
 Locale::Messages->select_package('gettext_pp');
 
-#my @search_locale_dirs = ("$datadir/locale", (map $_ . '/LocaleData', @INC),
-#  qw (/usr/share/locale /usr/local/share/locale));
-my @search_locale_dirs = ();
-
-if (($command_suffix eq '.pl' and !(defined($ENV{'TEXINFO_DEV_SOURCE'}) 
-     and $ENV{'TEXINFO_DEV_SOURCE'} eq 0)) or $ENV{'TEXINFO_DEV_SOURCE'}) {
+if ($Texinfo::ModulePath::texinfo_uninstalled) {
   # in case of build from the source directory, out of source build, 
   # this helps to locate the locales.
   my $locales_dir_found = 0;
-  @search_locale_dirs = (
+  my @search_locale_dirs = (
     File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
     File::Spec->catdir($curdir, 'LocaleData'),
     File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData'),

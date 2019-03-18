@@ -1,3 +1,18 @@
+2019-03-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Pass on to XS modules whether uninstalled files should be used.
+
+	* tp/Texinfo/ModulePath.pm.in ($texinfo_uninstalled): New 
+	variable.
+	(init): Set it if passed the right argument.
+	* tp/texi2any.pl: Pass on to Texinfo::ModulePath::init whether
+	uninstalled files should be used.  Use the value of 
+	$texinfo_uninstalled to decide where to look for locale files.
+	Remove some commented-out code and move a variable declaration 
+	into a smaller block.
+	* tp/Texinfo/XSLoader.pm: Pass on 
+	$Texinfo::ModulePath::texinfo_uninstalled to XS modules.
+
 2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Find translatable strings in parsetexi.
