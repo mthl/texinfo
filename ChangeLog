@@ -1,3 +1,10 @@
+2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\texinfoc): Remove.
+	(\scanmacro): Use \comment instead of \texinfoc.  \comment has 
+	the same meaning inside math mode as outside.
+	(\argremovecomment): Don't bother about @texinfoc.
+
 2019-03-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Pass on to XS modules whether uninstalled files should be used.

@@ -3,8 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-16.20}
-
+\def\texinfoversion{2019-03-22.22}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -449,11 +448,10 @@
   }%
 }
 
-% First remove any @comment, then any @c comment.  Also remove a @texinfoc
-% comment (see \scanmacro for details).  Pass the result on to \argcheckspaces.
+% First remove any @comment, then any @c comment.  Pass the result on to 
+% \argcheckspaces.
 \def\argremovecomment#1\comment#2\ArgTerm{\argremovec #1\c\ArgTerm}
-\def\argremovec#1\c#2\ArgTerm{\argremovetexinfoc #1\texinfoc\ArgTerm}
-\def\argremovetexinfoc#1\texinfoc#2\ArgTerm{\argcheckspaces#1\^^M\ArgTerm}
+\def\argremovec#1\c#2\ArgTerm{\argcheckspaces#1\^^M\ArgTerm}
 
 % Each occurrence of `\^^M' or `<space>\^^M' is replaced by a single space.
 %
@@ -7960,9 +7958,6 @@ end
   }
 \fi
 
-% alias because \c means cedilla in @tex or @math
-\let\texinfoc=\c
-
 % Used at the time of macro expansion.
 % Argument is macro body with arguments substituted
 \def\scanmacro#1{%
@@ -7970,10 +7965,11 @@ end
   \def\xeatspaces{\eatspaces}%
   %
   % Process the macro body under the current catcode regime.
-  \scantokens{#1@texinfoc}%
+  \scantokens{#1@comment}%
   %
-  % The \texinfoc is to remove the \newlinechar added by \scantokens, and
-  % can be noticed by \parsearg.
+  % The \comment is to remove the \newlinechar added by \scantokens, and
+  % can be noticed by \parsearg.  Note \c isn't used because this means cedilla 
+  % in math mode.
 }
 
 % Used for copying and captions
@@ -11503,7 +11499,7 @@ directory should work if nowhere else does.}
   @ifx\@eatinput @let\ = @ttbackslash @fi
   @catcode13=5 % regular end of line
   @enableemergencynewline
-  @let@c=@texinfoc
+  @let@c=@comment
   @let@parsearg@originalparsearg
   % Also turn back on active characters that might appear in the input
   % file name, in case not using a pre-dumped format.
