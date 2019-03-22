@@ -1,5 +1,12 @@
 2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Ignore Top node in texinfo.tex even without @ifnottex.
+
+	* doc/texinfo.tex (\omittopnode): New macro.
+	(\node): Call it.
+
+2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\texinfoc): Remove.
 	(\scanmacro): Use \comment instead of \texinfoc.  \comment has 
 	the same meaning inside math mode as outside.

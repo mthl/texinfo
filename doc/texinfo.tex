@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-22.22}
+\def\texinfoversion{2019-03-22.23}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -8641,7 +8641,21 @@ end
 % also remove a trailing comma, in case of something like this:
 % @node Help-Cross,  ,  , Cross-refs
 \def\donode#1 ,#2\finishnodeparse{\dodonode #1,\finishnodeparse}
-\def\dodonode#1,#2\finishnodeparse{\gdef\lastnode{#1}}
+\def\dodonode#1,#2\finishnodeparse{\gdef\lastnode{#1}\omittopnode}
+
+% Used so that the @top node doesn't have to be wrapped in an @ifnottex
+% conditional.
+% \doignore goes to more effort to skip nested conditionals but we don't need 
+% that here.
+\def\omittopnode{%
+   \ifx\lastnode\wordTop
+   \expandafter\ignorenode\fi
+}
+\def\wordTop{Top}
+\def\ignorenode{\bgroup\obeylines
+\catcode`\@=\other \catcode`\{=\other \catcode`\}=\other
+\ignorenodex}
+{\obeylines \catcode`\@=\other \long\gdef\ignorenodex#1^^M@node{\egroup\node}}
 
 \let\nwnode=\node
 \let\lastnode=\empty
