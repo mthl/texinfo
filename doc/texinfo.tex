@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-23.00}
+\def\texinfoversion{2019-03-23.09}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -5749,17 +5749,6 @@ end
   % Grab any single-column material above us.
   \output = {%
     \savetopmark
-    %
-    % Here is a possibility not foreseen in manmac: if we accumulate a
-    % whole lot of material, we might end up calling this \output
-    % routine twice in a row (see the doublecol-lose test, which is
-    % essentially a couple of indexes with @setchapternewpage off).  In
-    % that case we just ship out what is in \partialpage with the normal
-    % output routine.  Generally, \partialpage will be empty when this
-    % runs and this will be a no-op.  See the indexspread.tex test case.
-    \ifvoid\partialpage \else
-      \onepageout{\pagecontents\partialpage}%
-    \fi
     %
     \global\setbox\partialpage = \vbox{%
       % Unvbox the main output page.
