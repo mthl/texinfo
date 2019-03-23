@@ -1,5 +1,17 @@
 2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix sort key for undefined @value.
+
+	* doc/texinfo.tex (\indexnofontsvalue): Place a % comment 
+	character after the text for an undefined @value.
+	If this comment character isn't present and the @value is 
+	followed by a space, the rest of the index sort key will be 
+	discarded inside @eatspaces called from @splitindexentry.  It 
+	appears that @eatspaces does not cope with several spaces in a 
+	row in its argument.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add more tests of @value in index.
 
 	* doc/texinfo-tex-test.texi (Test of auxiliary files):

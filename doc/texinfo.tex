@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-23.10}
+\def\texinfoversion{2019-03-23.11}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -4685,7 +4685,7 @@ end
 % if possible, otherwise sort late.
 \def\indexnofontsvalue#1{%
   \expandafter\ifx\csname SET#1\endcsname\relax
-    ZZZZZZZ
+    ZZZZZZZ%
   \else
     \csname SET#1\endcsname
   \fi
