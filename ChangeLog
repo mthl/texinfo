@@ -1,5 +1,16 @@
 2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Add more tests of @value in index.
+
+	* doc/texinfo-tex-test.texi (Test of auxiliary files):
+	Add test of values in index entries containing underscores and 
+	nested Texinfo commands.  Add test of a @value that changes.
+	* doc/texinfo.tex (\expandablevalue): Remove obsolete comment.  
+	@value in index entries is more reliable now that we use @ as 
+	the escape character in index entries.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove apparently unused code.
 
 	* doc/texinfo.tex (\begindoublecolumns): Remove code that is 
