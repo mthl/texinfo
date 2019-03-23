@@ -1,3 +1,11 @@
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Ignore Top node a different way.
+
+	(\omittopnode): Change implementation so as to work when the 
+	next node is hidden inside an included file.
+	(\nwnode, \up, \down): Remove these useless synonyms.
+
 2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Ignore Top node in texinfo.tex even without @ifnottex.

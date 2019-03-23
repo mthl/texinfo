@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-22.23}
+\def\texinfoversion{2019-03-23.00}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -6040,11 +6040,9 @@ end
 
 % @raisesections: treat @section as chapter, @subsection as section, etc.
 \def\raisesections{\global\advance\secbase by -1}
-\let\up=\raisesections % original BFox name
 
 % @lowersections: treat @chapter as section, @section as subsection, etc.
 \def\lowersections{\global\advance\secbase by 1}
-\let\down=\lowersections % original BFox name
 
 % we only have subsub.
 \chardef\maxseclevel = 3
@@ -8652,12 +8650,10 @@ end
    \expandafter\ignorenode\fi
 }
 \def\wordTop{Top}
-\def\ignorenode{\bgroup\obeylines
-\catcode`\@=\other \catcode`\{=\other \catcode`\}=\other
-\ignorenodex}
-{\obeylines \catcode`\@=\other \long\gdef\ignorenodex#1^^M@node{\egroup\node}}
 
-\let\nwnode=\node
+% Divert output to a box that is not output until the next @node command.
+\def\ignorenode{\setbox\dummybox\vbox\bgroup\def\node{\egroup\node}}
+
 \let\lastnode=\empty
 
 % Write a cross-reference definition for the current node.  #1 is the
