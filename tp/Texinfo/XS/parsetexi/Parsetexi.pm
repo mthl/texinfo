@@ -252,6 +252,11 @@ sub parse_texi_file ($$)
 
   ############################################################
 
+  $self->{'info'}->{'input_perl_encoding'} = $self->{'INPUT_PERL_ENCODING'};
+  if (!defined($self->{'info'}->{'input_encoding_name'})) {
+    $self->{'info'}->{'input_encoding_name'} = $self->{'INPUT_ENCODING_NAME'};
+  }
+
   if (defined($self->{'info'}->{'input_encoding_name'})) {
     my ($texinfo_encoding, $perl_encoding, $input_encoding)
       = Texinfo::Encoding::encoding_alias(

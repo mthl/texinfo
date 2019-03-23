@@ -1,5 +1,18 @@
 2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make UTF-8 default input encoding for parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parse_texi_file):
+	Propagate values of INPUT_PERL_ENCODING and INPUT_ENCODING_NAME.
+	* tp/Texinfo/XS/parsetexi/api.c (reset_parser_except_conf):
+	Call 'set_input_encoding' to use "utf-8" as the default.
+	* tp/Texinfo/XS/parsetexi/parser.c (wipe_global_info): Set
+	global_info.input_perl_encoding to "utf-8-strict".
+
+	This replicates changes made on 2019-02-23 and 2019-02-26.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	@subentry in parsetexi.
 
 	* tp/Texinfo/XS/parsetexi/command_data.txt: Add subentry.

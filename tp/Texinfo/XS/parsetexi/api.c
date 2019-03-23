@@ -80,6 +80,7 @@ reset_parser_except_conf (void)
   reset_region_stack ();
   reset_floats ();
   wipe_global_info ();
+  set_input_encoding ("utf-8");
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();
