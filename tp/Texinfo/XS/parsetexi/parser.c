@@ -912,6 +912,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       else if (cmd == CM_c
                || cmd == CM_comment
                || cmd == CM_refill
+               || cmd == CM_subentry
                || cmd == CM_columnfractions
                || cmd == CM_set
                || cmd == CM_clear
@@ -1594,7 +1595,8 @@ value_invalid:
                   && cmd != CM_verbatiminclude
                   && cmd != CM_set
                   && cmd != CM_clear
-                  && cmd != CM_vskip)))
+                  && cmd != CM_vskip)
+                  && cmd != CM_subentry))
         {
           line_warn ("@%s should only appear at the beginning of a line", 
                      command_name(cmd));

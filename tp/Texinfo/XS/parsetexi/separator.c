@@ -477,8 +477,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
               ELEMENT *index_elt;
               if (current->parent->parent
                   && current->parent->parent->parent
-                  && (command_flags(current->parent->parent->parent)
-                      & CF_index_entry_command))
+                  && ((command_flags(current->parent->parent->parent)
+                        & CF_index_entry_command)
+                      || current->parent->parent->parent->cmd == CM_subentry))
                 {
                   index_elt = current->parent->parent->parent;
                   add_extra_string_dup (index_elt, "sortas",

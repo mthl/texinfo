@@ -1,4 +1,4 @@
-# Copyright 2010-2018 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -148,6 +148,8 @@ exdent				line		LINE_line
 
 item_LINE			line    	LINE_line
 itemx				line		LINE_line
+
+subentry                        line            LINE_line
 
 ##########################################################
 #

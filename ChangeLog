@@ -1,5 +1,20 @@
 2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	@subentry in parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Add subentry.
+	* tp/Texinfo/XS/parsetexi/handle_commands.c
+	(handle_line_commands) <@subentry>: Add section.
+	(handle_brace_commands) <@sortas>: Allow to occur inside @subentry.
+	* tp/Texinfo/XS/parsetexi/parser.c (check_valid_nesting): Allow 
+	@subentry to occur inside most commands.
+	(process_remaining_on_line) <@-command>: Allow @subentry to 
+	occur other than at the beginning of a line.
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace) 
+	<@sortas>: Record sort key on @subentry element.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix sort key for undefined @value.
 
 	* doc/texinfo.tex (\indexnofontsvalue): Place a % comment 
