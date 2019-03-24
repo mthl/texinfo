@@ -1,3 +1,14 @@
+2019-03-24         Arnold D. Robbins     <arnold@skeeve.com>
+
+	@see in index entries (experimental).
+	
+	* doc/texinfo.tex
+	(\see, \putwordSee): Add default definitions for reading 
+	in a sorted index file.
+	(\splitindexentry): Record value of any @see directive in 
+	the index entry inside \pagenumbertext.  Make @see expansion 
+	empty when getting the sort key.
+
 2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Update 'mit-scheme-imail'.  From

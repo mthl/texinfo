@@ -5224,11 +5224,16 @@ end
 \def\indexwriteseealso#1{
   \gdef\pagenumbertext{@seealso{#1}}%
 }
+\def\indexwritesee#1{
+  \gdef\pagenumbertext{@see{#1}}%
+}
 
 % The default definitions
 \def\sortas#1{}%
 \def\seealso#1{\i{\putwordSeeAlso}\ #1}% for sorted index file only
-\def\putwordSeeAlso{see also}
+\def\putwordSeeAlso{See also}
+\def\see#1{\i{\putwordSee}\ #1}% for sorted index file only
+\def\putwordSee{see}
 
 % Given index entry text like "aaa @subentry bbb @sortas{ZZZ}":
 %   * Set \bracedtext to "{aaa}{bbb}"
@@ -5240,6 +5245,7 @@ end
   \xdef\bracedtext{}%
   \def\sep{}%
   \def\seealso##1{}%
+  \def\see##1{}%
   \expandafter\doindexsegment#1\subentry\finish\subentry
 }
 
@@ -5261,6 +5267,7 @@ end
     \bgroup
       \let\sortas\indexwritesortas
       \let\seealso\indexwriteseealso
+      \let\see\indexwritesee
       \indexnofonts
       % The braces around the commands are recognized by texindex.
       \def\lbracechar{{\indexlbrace}}%
