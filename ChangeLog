@@ -1,5 +1,42 @@
 2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove INPUT_PERL_ENCODING and INPUT_ENCODING_NAME as 
+	customization variables.
+
+	* tp/Texinfo/Common.pm (%default_customization_values)
+	(@variable_string_settables): Remove INPUT_PERL_ENCODING and 
+	INPUT_ENCODING_NAME.
+	* tp/Texinfo/Convert/Converter.pm (converter),
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parse_texi_file),
+	Remove code propagating INPUT_PERL_ENCODING and 
+	INPUT_ENCODING_NAME.
+
+	* tp/Texinfo/ParserNonXS.pm (%initialization_overrides):
+	Remove 'INPUT_ENCODING_NAME'.
+
+	* tp/Texinfo/ParserNonXS.pm (_open_in, _end_line, _parse_texi),
+	* tp/Texinfo/Convert/Converter.pm (converter),
+	* tp/Texinfo/Convert/IXIN.pm (output_ixin),
+	* tp/Texinfo/Structuring.pm (do_index_keys):
+	Do not use INPUT_PERL_ENCODING or INPUT_ENCODING_NAME: use the 
+	'info' hash instead.
+
+	* tp/Texinfo/Common.pm (_convert_text_options),
+	* tp/Texinfo/Report.pm (gdt),
+	* tp/texi2any.pl:
+	Do not look use INPUT_ENCODING_NAME or INPUT_PERL_ENCODING.
+
+	* doc/texinfo.texi (Other Customization Variables):
+	Remove INPUT_PERL_ENCODING and INPUT_ENCODING_NAME.  Remove 
+	@ifnottex block around Top node.
+
+	This is an attempt at simplifying a complicated picture around 
+	character encoding.  These customization variables had little 
+	use as the encoding is given as @documentencoding in the input.
+
+
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use UTF-8 more consistently in test suite.
 
 	* tp/Texinfo/ParserNonXS.pm (parse_texi_file): Do not set

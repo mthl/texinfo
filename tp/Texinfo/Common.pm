@@ -152,10 +152,6 @@ our %default_customization_values = (
   'SHOW_MENU' => 1,             # if false no menu error related.
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
-  'INPUT_ENCODING_NAME' => 'utf-8', # encoding name normalized as preferred
-                                    # IANA, set from @documentencoding
-  'INPUT_PERL_ENCODING' => 'utf-8-strict', # input perl encoding name, set from 
-                                           # @documentencoding
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
   # This is not used directly, but passed to Convert::Text through 
@@ -263,7 +259,6 @@ my @variable_string_settables = (
   'EXTERNAL_CROSSREF_SPLIT', 'BODYTEXT',
   'CSS_LINES', 'CPP_LINE_DIRECTIVES',
   'TEXI2DVI', 'DUMP_TREE', 'MAX_MACRO_CALL_NESTING',
-  'INPUT_ENCODING_NAME', 'INPUT_PERL_ENCODING', 
   'OUTPUT_ENCODING_NAME', 'OUTPUT_PERL_ENCODING', 
   'PACKAGE_VERSION',
   'PACKAGE_AND_VERSION', 'PACKAGE_URL', 'PACKAGE', 'PACKAGE_NAME', 'PROGRAM',
@@ -1693,8 +1688,6 @@ sub _convert_text_options($)
   if ($self->get_conf('ENABLE_ENCODING')) {
     if ($self->get_conf('OUTPUT_ENCODING_NAME')) {
       $options{'enabled_encoding'} = $self->get_conf('OUTPUT_ENCODING_NAME');
-    } elsif ($self->get_conf('INPUT_ENCODING_NAME')) {
-      $options{'enabled_encoding'} = $self->get_conf('INPUT_ENCODING_NAME');
     }
   }
   $options{'TEST'} = 1 if ($self->get_conf('TEST'));

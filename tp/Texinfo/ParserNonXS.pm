@@ -177,7 +177,6 @@ my %parser_default_configuration = (
 # The commands in initialization_overrides are not set in the document if
 # set at the parser initialization.
 my %initialization_overrides = (
-  'INPUT_ENCODING_NAME' => 1,
   'documentlanguage' => 1,
 );
 
@@ -736,12 +735,11 @@ sub _open_in {
   my ($self, $filehandle, $file_name) = @_;
 
   if (open($filehandle, $file_name)) {
-    if (defined($self->{'INPUT_PERL_ENCODING'})) {
-      if ($self->{'INPUT_PERL_ENCODING'} eq 'utf-8-strict') {
+    if (defined($self->{'info'}->{'input_perl_encoding'})) {
+      if ($self->{'info'}->{'input_perl_encoding'} eq 'utf-8-strict') {
         binmode($filehandle, ":utf8");
       } else {
-        binmode($filehandle, ":encoding($self->{'INPUT_PERL_ENCODING'}")
-          if (defined($self->{'INPUT_PERL_ENCODING'}));
+        binmode($filehandle, ":encoding($self->{'info'}->{'input_perl_encoding'}");
         # For UTF-8, this would lead to errors in Latin-1 input the first time 
         # a line is read from the file, even though the binmode is changed 
         # later.  Evidently Perl is checking ahead in the file to see if the 
@@ -2968,8 +2966,8 @@ sub _end_line($$$)
           }
         } elsif ($command eq 'verbatiminclude') {
           $current->{'extra'}->{'input_perl_encoding'}
-                                          = $self->{'INPUT_PERL_ENCODING'}
-            if defined $self->{'INPUT_PERL_ENCODING'};
+                          = $self->{'info'}->{'input_perl_encoding'}
+            if defined $self->{'info'}->{'input_perl_encoding'};
         } elsif ($command eq 'documentencoding') {
           my ($texinfo_encoding, $perl_encoding, $input_encoding)
             = Texinfo::Encoding::encoding_alias($text);
@@ -2987,18 +2985,12 @@ sub _end_line($$$)
             $current->{'extra'}->{'input_perl_encoding'} = $perl_encoding;
 
             if ($input_encoding) {
-              if (!$self->{'set'}->{'INPUT_ENCODING_NAME'}) {
-                $self->{'INPUT_ENCODING_NAME'} = $input_encoding;
-                $self->{'info'}->{'input_encoding_name'} = $input_encoding;
-              }
+              $self->{'info'}->{'input_encoding_name'} = $input_encoding;
             }
 
-            if (!$self->{'set'}->{'INPUT_PERL_ENCODING'}) {
-              $self->{'INPUT_PERL_ENCODING'} = $perl_encoding;
-              $self->{'info'}->{'input_perl_encoding'} = $perl_encoding;
-              foreach my $input (@{$self->{'input'}}) {
-                binmode($input->{'fh'}, ":encoding($perl_encoding)") if ($input->{'fh'});
-              }
+            $self->{'info'}->{'input_perl_encoding'} = $perl_encoding;
+            foreach my $input (@{$self->{'input'}}) {
+              binmode($input->{'fh'}, ":encoding($perl_encoding)") if ($input->{'fh'});
             }
           }
         } elsif ($command eq 'documentlanguage') {
@@ -4952,8 +4944,8 @@ sub _parse_texi($;$)
                    __("\@image missing filename argument"), $line_nr);
               }
               $image->{'extra'}->{'input_perl_encoding'}
-                           = $self->{'INPUT_PERL_ENCODING'}
-                                  if defined $self->{'INPUT_PERL_ENCODING'};
+                           = $self->{'info'}->{'input_perl_encoding'}
+                                  if defined $self->{'info'}->{'input_perl_encoding'};
             } elsif($current->{'parent'}->{'cmdname'} eq 'dotless') {
               my $dotless = $current->{'parent'};
               if (@{$current->{'contents'}}) {
@@ -6091,15 +6083,6 @@ A string, the command name associated with C<@clickstyle>.
 =item documentlanguage
 
 A string corresponding to a document language set by C<@documentlanguage>.
-
-=item INPUT_ENCODING_NAME
-
-=item INPUT_PERL_ENCODING
-
-C<INPUT_ENCODING_NAME> string is the encoding name as set 
-by C<@documentencoding>.
-C<INPUT_PERL_ENCODING> string is a corresponding perl encoding name.  
-In general those two strings should be set simultaneously.
 
 =item indices
 

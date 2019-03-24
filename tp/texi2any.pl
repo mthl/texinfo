@@ -1176,8 +1176,7 @@ while(@input_files) {
     my $texinfo_text = Texinfo::Convert::Texinfo::convert($tree, 1);
     #print STDERR "$texinfo_text\n";
     my $macro_expand_file = get_conf('MACRO_EXPAND');
-    my $macro_expand_fh = Texinfo::Common::open_out($parser, 
-                        $macro_expand_file, $parser->{'INPUT_PERL_ENCODING'});
+    my $macro_expand_fh = Texinfo::Common::open_out($parser, $macro_expand_file);
 
     my $error_macro_expand_file;
     if (defined($macro_expand_fh)) {
