@@ -451,6 +451,11 @@ Ref: Copying footnote245
 Ref: Top-Footnote-2247
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'anchor_in_copying_in_footnote'} = [

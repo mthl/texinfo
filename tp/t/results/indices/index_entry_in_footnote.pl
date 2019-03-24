@@ -281,6 +281,11 @@ Node: Top27
 Ref: Top-Footnote-1205
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

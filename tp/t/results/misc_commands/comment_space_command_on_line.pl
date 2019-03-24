@@ -914,6 +914,11 @@ Node: Top27
 Ref: label204
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

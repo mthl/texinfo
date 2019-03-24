@@ -316,6 +316,11 @@ Tag Table:
 Node: Top41
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

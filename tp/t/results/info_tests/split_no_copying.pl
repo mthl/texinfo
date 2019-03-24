@@ -629,6 +629,11 @@ Node: Top63
 Node: Ch1179
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -639,6 +639,11 @@ Node: (manual) name120
 Ref: (manual2) name2174
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

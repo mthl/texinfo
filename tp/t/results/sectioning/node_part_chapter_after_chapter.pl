@@ -1079,6 +1079,11 @@ Node: chapter node140
 Node: part chapter node250
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

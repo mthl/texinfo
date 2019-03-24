@@ -384,6 +384,11 @@ Node: Top27
 Ref: label  61
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

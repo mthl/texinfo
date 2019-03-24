@@ -350,6 +350,11 @@ Tag Table:
 Node: Top36
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

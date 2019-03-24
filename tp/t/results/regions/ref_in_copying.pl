@@ -657,6 +657,11 @@ Node: Top41
 Node: GFDL130
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

@@ -516,6 +516,11 @@ Node: Top27
 Node: second node122
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

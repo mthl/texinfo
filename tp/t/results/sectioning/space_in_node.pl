@@ -701,6 +701,11 @@ Node: Test title253
 Node: Last with spaces341
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

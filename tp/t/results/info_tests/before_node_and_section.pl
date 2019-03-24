@@ -1073,6 +1073,11 @@ Ref: Top-Footnote-2336
 Node: node1361
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'before_node_and_section'} = [

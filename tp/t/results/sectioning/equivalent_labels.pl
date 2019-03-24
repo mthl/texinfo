@@ -659,6 +659,11 @@ Ref: anch74
 Ref: floa77
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

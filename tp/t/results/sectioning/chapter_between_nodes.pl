@@ -696,6 +696,11 @@ Node: Top27
 Node: section node177
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

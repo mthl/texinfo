@@ -1481,8 +1481,8 @@ sub do_index_keys($$)
 
   my $options = {'sort_string' => 1};
   if ($self->get_conf('ENABLE_ENCODING') 
-      and $self->get_conf('INPUT_ENCODING_NAME')) {
-    $options->{'enabled_encoding'} = $self->get_conf('INPUT_ENCODING_NAME');
+      and $self->{'info'}->{'input_encoding_name'}) {
+    $options->{'enabled_encoding'} = $self->{'info'}->{'input_encoding_name'};
   }
   my %convert_text_options = Texinfo::Common::_convert_text_options($self);
   $options = {%$options, %convert_text_options};

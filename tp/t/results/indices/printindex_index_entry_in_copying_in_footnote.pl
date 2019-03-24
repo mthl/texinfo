@@ -856,6 +856,11 @@ Node: chapter299
 Ref: chapter-Footnote-1512
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

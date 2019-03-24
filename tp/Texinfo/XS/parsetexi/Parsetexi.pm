@@ -252,13 +252,6 @@ sub parse_texi_file ($$)
 
   ############################################################
 
-  if (defined($self->{'info'}->{'input_encoding_name'})) {
-    my ($texinfo_encoding, $perl_encoding, $input_encoding)
-      = Texinfo::Encoding::encoding_alias(
-            $self->{'info'}->{'input_encoding_name'});
-    $self->{'info'}->{'input_encoding_name'} = $input_encoding;
-  }
-
   my ($basename, $directories, $suffix) = fileparse($file_name);
   $self->{'info'}->{'input_file_name'} = $basename;
   $self->{'info'}->{'input_directory'} = $directories;

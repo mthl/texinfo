@@ -396,9 +396,9 @@ $result_converted{'plaintext'}->{'paragraph_command'} = '@
 
    aaa.
 
-   i also dotless i.
+   ı also dotless i.
 
-   U+0075 also U+0075.
+   u also U+0075.
 
    <m1> email.
 

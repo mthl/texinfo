@@ -640,6 +640,11 @@ Node: Top27
 Node: other node111
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

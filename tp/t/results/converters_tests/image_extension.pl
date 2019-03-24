@@ -147,6 +147,11 @@ $result_converted{'info'}->{'image_extension'} = 'This is , produced from .
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'image_extension'} = [

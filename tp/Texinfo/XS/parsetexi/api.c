@@ -42,7 +42,7 @@ ELEMENT *Root;
 #define DATADIR2 "/usr/local/share"
 
 int
-init (void)
+init (int texinfo_uninstalled)
 {
   /* Initialize gettext. */
   /* TODO: Does this interfere with Perl or any other modules? */
@@ -80,6 +80,7 @@ reset_parser_except_conf (void)
   reset_region_stack ();
   reset_floats ();
   wipe_global_info ();
+  set_input_encoding ("utf-8");
   reset_internal_xrefs ();
   reset_labels ();
   input_reset_input_stack ();

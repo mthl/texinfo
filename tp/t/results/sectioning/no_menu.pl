@@ -534,6 +534,11 @@ Node: c2145
 Node: c3209
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

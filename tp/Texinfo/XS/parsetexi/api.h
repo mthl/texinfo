@@ -1,7 +1,7 @@
 /* api.h - declarations for api.c */
 extern ELEMENT *Root;
 
-int init (void);
+int init (int texinfo_uninstalled);
 
 void parse_text (char *);
 void parse_string(char *);

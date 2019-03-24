@@ -504,6 +504,11 @@ Node: Top27
 Node: chapter node125
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

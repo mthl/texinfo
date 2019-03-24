@@ -347,6 +347,11 @@ Ref: anchor181
 Ref: anchor296
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

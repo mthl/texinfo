@@ -1,3 +1,162 @@
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Update 'mit-scheme-imail'.  From
+	Thérèse Godefroy.
+
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/XS/parsetexi/parser.c (wipe_global_info): Set 
+	input_encoding_name as well as input_perl_encoding.
+
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove INPUT_PERL_ENCODING and INPUT_ENCODING_NAME as 
+	customization variables.
+
+	* tp/Texinfo/Common.pm (%default_customization_values)
+	(@variable_string_settables): Remove INPUT_PERL_ENCODING and 
+	INPUT_ENCODING_NAME.
+	* tp/Texinfo/Convert/Converter.pm (converter),
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parse_texi_file),
+	Remove code propagating INPUT_PERL_ENCODING and 
+	INPUT_ENCODING_NAME.
+
+	* tp/Texinfo/ParserNonXS.pm (%initialization_overrides):
+	Remove 'INPUT_ENCODING_NAME'.
+
+	* tp/Texinfo/ParserNonXS.pm (_open_in, _end_line, _parse_texi),
+	* tp/Texinfo/Convert/Converter.pm (converter),
+	* tp/Texinfo/Convert/IXIN.pm (output_ixin),
+	* tp/Texinfo/Structuring.pm (do_index_keys):
+	Do not use INPUT_PERL_ENCODING or INPUT_ENCODING_NAME: use the 
+	'info' hash instead.
+
+	* tp/Texinfo/Common.pm (_convert_text_options),
+	* tp/Texinfo/Report.pm (gdt),
+	* tp/texi2any.pl:
+	Do not look use INPUT_ENCODING_NAME or INPUT_PERL_ENCODING.
+
+	* doc/texinfo.texi (Other Customization Variables):
+	Remove INPUT_PERL_ENCODING and INPUT_ENCODING_NAME.  Remove 
+	@ifnottex block around Top node.
+
+	This is an attempt at simplifying a complicated picture around 
+	character encoding.  These customization variables had little 
+	use as the encoding is given as @documentencoding in the input.
+
+
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use UTF-8 more consistently in test suite.
+
+	* tp/Texinfo/ParserNonXS.pm (parse_texi_file): Do not set
+	'input_encoding_name' and 'input_perl_encoding' here.
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Set 'input_encoding_name' and 'input_perl_encoding' here.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make UTF-8 default input encoding for parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parse_texi_file):
+	Propagate values of INPUT_PERL_ENCODING and INPUT_ENCODING_NAME.
+	* tp/Texinfo/XS/parsetexi/api.c (reset_parser_except_conf):
+	Call 'set_input_encoding' to use "utf-8" as the default.
+	* tp/Texinfo/XS/parsetexi/parser.c (wipe_global_info): Set
+	global_info.input_perl_encoding to "utf-8-strict".
+
+	This replicates changes made on 2019-02-23 and 2019-02-26.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@subentry in parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Add subentry.
+	* tp/Texinfo/XS/parsetexi/handle_commands.c
+	(handle_line_commands) <@subentry>: Add section.
+	(handle_brace_commands) <@sortas>: Allow to occur inside @subentry.
+	* tp/Texinfo/XS/parsetexi/parser.c (check_valid_nesting): Allow 
+	@subentry to occur inside most commands.
+	(process_remaining_on_line) <@-command>: Allow @subentry to 
+	occur other than at the beginning of a line.
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace) 
+	<@sortas>: Record sort key on @subentry element.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix sort key for undefined @value.
+
+	* doc/texinfo.tex (\indexnofontsvalue): Place a % comment 
+	character after the text for an undefined @value.
+	If this comment character isn't present and the @value is 
+	followed by a space, the rest of the index sort key will be 
+	discarded inside @eatspaces called from @splitindexentry.  It 
+	appears that @eatspaces does not cope with several spaces in a 
+	row in its argument.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Add more tests of @value in index.
+
+	* doc/texinfo-tex-test.texi (Test of auxiliary files):
+	Add test of values in index entries containing underscores and 
+	nested Texinfo commands.  Add test of a @value that changes.
+	* doc/texinfo.tex (\expandablevalue): Remove obsolete comment.  
+	@value in index entries is more reliable now that we use @ as 
+	the escape character in index entries.
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove apparently unused code.
+
+	* doc/texinfo.tex (\begindoublecolumns): Remove code that is 
+	supposed to account for the output routine in 
+	\begindoublecolumns being called twice in a row.  It checks 
+	whether \partialpage is void, but it appears that \partialpage 
+	will always be void.  \doublecolumnout, \balancecolumns and 
+	\pagesofar all clear \partialpage with \unvbox, which I believe 
+	covers all the cases.  I was unable to get this code to run with 
+	various tests.  Remove references to long-lost test files.  
+	(Removed code introduced on Jan 14 16:53:43 1999 according to 
+	ChangeLog entry.)
+
+2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Ignore Top node a different way.
+
+	(\omittopnode): Change implementation so as to work when the 
+	next node is hidden inside an included file.
+	(\nwnode, \up, \down): Remove these useless synonyms.
+
+2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Ignore Top node in texinfo.tex even without @ifnottex.
+
+	* doc/texinfo.tex (\omittopnode): New macro.
+	(\node): Call it.
+
+2019-03-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\texinfoc): Remove.
+	(\scanmacro): Use \comment instead of \texinfoc.  \comment has 
+	the same meaning inside math mode as outside.
+	(\argremovecomment): Don't bother about @texinfoc.
+
+2019-03-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Pass on to XS modules whether uninstalled files should be used.
+
+	* tp/Texinfo/ModulePath.pm.in ($texinfo_uninstalled): New 
+	variable.
+	(init): Set it if passed the right argument.
+	* tp/texi2any.pl: Pass on to Texinfo::ModulePath::init whether
+	uninstalled files should be used.  Use the value of 
+	$texinfo_uninstalled to decide where to look for locale files.
+	Remove some commented-out code and move a variable declaration 
+	into a smaller block.
+	* tp/Texinfo/XSLoader.pm: Pass on 
+	$Texinfo::ModulePath::texinfo_uninstalled to XS modules.
+
 2019-03-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Find translatable strings in parsetexi.

@@ -409,6 +409,11 @@ Ref: label123
 Ref: in anchor150
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

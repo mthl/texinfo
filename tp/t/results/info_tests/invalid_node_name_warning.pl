@@ -1094,6 +1094,11 @@ Node: node,comma221
 Node: bidule:296
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'invalid_node_name_warning'} = [

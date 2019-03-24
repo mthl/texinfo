@@ -884,6 +884,11 @@ Ref: mark inside94
 Ref: mark140
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

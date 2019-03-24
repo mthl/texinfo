@@ -260,6 +260,7 @@ wipe_global_info (void)
   global_kbdinputstyle = kbd_distinct;
 
   free (global_info.input_perl_encoding);
+  free (global_info.input_encoding_name);
 
   free (global_info.dircategory_direntry.contents.list);
   free (global_info.footnotes.contents.list);
@@ -295,6 +296,9 @@ wipe_global_info (void)
 
 #undef GLOBAL_CASE
   memset (&global_info, 0, sizeof (global_info));
+
+  global_info.input_perl_encoding = strdup ("utf-8-strict");
+  global_info.input_encoding_name = strdup ("utf-8");
 }
 
 
@@ -912,6 +916,7 @@ check_valid_nesting (ELEMENT *current, enum command_id cmd)
       else if (cmd == CM_c
                || cmd == CM_comment
                || cmd == CM_refill
+               || cmd == CM_subentry
                || cmd == CM_columnfractions
                || cmd == CM_set
                || cmd == CM_clear
@@ -1594,7 +1599,8 @@ value_invalid:
                   && cmd != CM_verbatiminclude
                   && cmd != CM_set
                   && cmd != CM_clear
-                  && cmd != CM_vskip)))
+                  && cmd != CM_vskip)
+                  && cmd != CM_subentry))
         {
           line_warn ("@%s should only appear at the beginning of a line", 
                      command_name(cmd));

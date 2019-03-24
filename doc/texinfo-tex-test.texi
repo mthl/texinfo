@@ -1342,6 +1342,19 @@ value in index entry, but only defined afterwards
 
 @axindex @b{another}
 
+@set complex @code{foo@b{b@'ar}}
+test of texinfo commands in value in index entry
+@axindex @value{complex} index entry
+
+test of value change after index command
+@set changed original
+@axindex `@value{changed}' should be `original'
+@set changed new
+
+test of underscore in value
+@set underscore _
+@axindex `@value{underscore}' should be `_'
+
 some more text.
 
 test of macro in index entry:

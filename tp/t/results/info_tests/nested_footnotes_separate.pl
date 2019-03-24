@@ -285,6 +285,11 @@ Ref: Top-Footnote-1134
 Ref: Top-Footnote-2189
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

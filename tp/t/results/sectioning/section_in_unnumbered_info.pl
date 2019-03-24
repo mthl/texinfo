@@ -8160,6 +8160,11 @@ Node: unnumbered sub2 44315
 Node: numbered sub2 44471
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

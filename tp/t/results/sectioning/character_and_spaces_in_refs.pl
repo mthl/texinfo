@@ -1950,6 +1950,11 @@ Node: /;<=>?[\\]^_`|~696
 Node: local node789
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'character_and_spaces_in_refs'} = [

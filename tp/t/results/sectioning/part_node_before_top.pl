@@ -635,6 +635,11 @@ Node: part node before top27
 Node: Top100
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

@@ -4628,7 +4628,7 @@ A list of floats at the beginning.
 
 * Menu:
 
-* Text 1: text with a lot of features.   TeX and _te\'i^<an_url>_ AND ...
+* Text 1: text with a lot of features.   TeX and _téî<an_url>_ AND ...
 * Text 1.1: float with a lot of features and no shortcaption.
                                          An example of float ...
 
@@ -4647,7 +4647,7 @@ An itemize.
 
 A ref.  *Note xref Text with features: Top.  A footnote.  (1).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
 Text 1: An example of float caption...  An example.
      example
@@ -4666,7 +4666,7 @@ An itemize.
 
 A ref.  *Note xref Text with features caption: Top.  A footnote.  (2).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
    ---------- Footnotes ----------
 
@@ -4699,7 +4699,7 @@ An itemize 2.
 A ref 2.  *Note xref Text with features caption: Top.  A footnote 2.
 (1).
 
-TeX and _te\'i^<an_url>_ AND it is @verb  a word !@ AE.
+TeX and _téî<an_url>_ AND it is @verb  a word !@ Æ.
 
 *Note Text 1: text with a lot of features.
 

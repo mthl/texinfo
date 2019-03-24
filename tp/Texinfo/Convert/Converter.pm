@@ -204,18 +204,6 @@ sub converter(;$)
       $converter->{'extra'} 
          = $converter->{'parser'}->global_commands_information();
       $converter->{'info'} = $converter->{'parser'}->global_informations();
-      if ($converter->{'info'} 
-          and $converter->{'info'}->{'input_perl_encoding'}
-          and !defined($conf->{'INPUT_PERL_ENCODING'})) {
-        $conf->{'INPUT_PERL_ENCODING'}
-              = $converter->{'info'}->{'input_perl_encoding'};
-      }
-      if ($converter->{'info'} 
-          and $converter->{'info'}->{'input_encoding_name'}
-          and !defined($conf->{'INPUT_ENCODING_NAME'})) {
-        $conf->{'INPUT_ENCODING_NAME'} 
-             = $converter->{'info'}->{'input_encoding_name'};
-      }
       my $floats = $converter->{'parser'}->floats_information();
       my $labels = $converter->{'parser'}->labels_information();
       $converter->{'structuring'} = $converter->{'parser'}->{'structuring'};
@@ -245,8 +233,8 @@ sub converter(;$)
     }
   }
   $converter->set_conf('OUTPUT_ENCODING_NAME', 
-                       $converter->get_conf('INPUT_ENCODING_NAME'))
-     if ($converter->get_conf('INPUT_ENCODING_NAME'));
+                       $converter->{'info'}->{'input_encoding_name'})
+     if ($converter->{'info'}->{'input_encoding_name'});
   if (!$converter->get_conf('OUTPUT_PERL_ENCODING')
        and $converter->get_conf('OUTPUT_ENCODING_NAME')) {
     my $perl_encoding 

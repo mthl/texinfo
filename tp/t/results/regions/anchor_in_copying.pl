@@ -404,6 +404,11 @@ Node: Top37
 Ref: Copying information79
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'anchor_in_copying'} = [

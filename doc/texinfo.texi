@@ -114,15 +114,12 @@ Cover art by Etienne Suvasa.
 @contents
 
 
-@ifnottex
 @node Top
 @top Texinfo
 
 This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
 a documentation system that can produce both online information and a
 printed manual from a single source using semantic markup.
-
-@end ifnottex
 
 @ifinfo
 The first part of this master menu lists the major nodes in this Info
@@ -17342,17 +17339,6 @@ string @samp{::}) in node names, menu items, and cross-references;
 default true.  Do not warn about index entries, since parsing problems
 there don't prevent navigation; readers can still relatively easily
 find their way to the node in question.
-
-@item INPUT_ENCODING_NAME
-Normalized encoding name suitable for output.  Should be a usable
-charset name in HTML, typically one of the preferred IANA encoding
-names.  You should not need to use this variable, since it is set by
-@code{@@documentencoding} (@pxref{@code{@@documentencoding}}).
-
-@item INPUT_PERL_ENCODING
-Perl encoding used to process the Texinfo source.  You should not need
-to use that variable, since it is set by @code{@@documentencoding}
-(@pxref{@code{@@documentencoding}}).
 
 @item MAX_MACRO_CALL_NESTING
 The maximal number of recursive calls of @@-commands defined through

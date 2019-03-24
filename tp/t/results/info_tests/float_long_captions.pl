@@ -538,6 +538,11 @@ Ref: text161
 Ref: text2105
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

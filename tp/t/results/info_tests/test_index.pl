@@ -415,7 +415,7 @@ $result_trees{'test_index'} = {
                   'index_at_command' => 'cindex',
                   'index_name' => 'cp',
                   'index_type_command' => 'cindex',
-                  'key' => '!',
+                  'key' => "\x{a1}",
                   'node' => {},
                   'number' => 3
                 },
@@ -4771,9 +4771,9 @@ Para.
  [index ]
 * Menu:
 
-* !:                                     Top.                   (line 8)
 * ":                                     Top.                   (line 8)
 * @:                                     Top.                   (line 8)
+* ¡:                                     Top.                   (line 8)
 * in Top:                                Top.                   (line 8)
 * index entry in appendix before para:   name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong.
                                                                 (line 6)
@@ -4823,9 +4823,14 @@ Tag Table:
 Node: Top27
 Node: name330
 Node: name1 looooooooooooooooooooooooooooooooooooooooooooooooooooooooong982
-Ref: a counting anchor3070
+Ref: a counting anchor3071
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

@@ -1040,6 +1040,11 @@ Ref: float anchor109
 Ref: Anchor in footnote401
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'placed_things_before_element'} = [
