@@ -1,5 +1,10 @@
 2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/parser.c (wipe_global_info): Set 
+	input_encoding_name as well as input_perl_encoding.
+
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove INPUT_PERL_ENCODING and INPUT_ENCODING_NAME as 
 	customization variables.
 

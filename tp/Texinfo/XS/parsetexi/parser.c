@@ -260,6 +260,7 @@ wipe_global_info (void)
   global_kbdinputstyle = kbd_distinct;
 
   free (global_info.input_perl_encoding);
+  free (global_info.input_encoding_name);
 
   free (global_info.dircategory_direntry.contents.list);
   free (global_info.footnotes.contents.list);
@@ -297,6 +298,7 @@ wipe_global_info (void)
   memset (&global_info, 0, sizeof (global_info));
 
   global_info.input_perl_encoding = strdup ("utf-8-strict");
+  global_info.input_encoding_name = strdup ("utf-8");
 }
 
 
