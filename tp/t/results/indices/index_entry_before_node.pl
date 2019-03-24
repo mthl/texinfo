@@ -733,6 +733,11 @@ Node: first106
 Node: second174
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

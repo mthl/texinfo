@@ -136,6 +136,8 @@ our %default_parser_state_configuration = (
                               # argument.  A Texinfo tree may also be used.
   'info' => {
     'novalidate' => 0,        # same as setting @novalidate.
+    'input_encoding_name' => 'utf-8',
+    'input_perl_encoding' => 'utf-8-strict'
   },
   'in_gdt' => 0 # whether we are being called by gdt
 );

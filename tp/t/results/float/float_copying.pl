@@ -1522,6 +1522,11 @@ Ref: Copying and floats-Footnote-11479
 Ref: Copying and floats-Footnote-21552
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'float_copying'} = [

@@ -1235,6 +1235,11 @@ Ref: anchor in multitable269
 Ref: mark388
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

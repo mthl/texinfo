@@ -1,3 +1,12 @@
+2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use UTF-8 more consistently in test suite.
+
+	* tp/Texinfo/ParserNonXS.pm (parse_texi_file): Do not set
+	'input_encoding_name' and 'input_perl_encoding' here.
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Set 'input_encoding_name' and 'input_perl_encoding' here.
+
 2019-03-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Make UTF-8 default input encoding for parsetexi.

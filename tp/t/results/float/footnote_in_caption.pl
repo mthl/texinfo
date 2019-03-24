@@ -419,6 +419,11 @@ Ref: label126
 Ref: Top-Footnote-1194
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

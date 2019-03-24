@@ -1007,6 +1007,11 @@ Node: a node after part140
 Node: chapter239
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

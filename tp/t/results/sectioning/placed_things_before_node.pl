@@ -1130,6 +1130,11 @@ Ref: Top-Footnote-1445
 Ref: Anchor in footnote466
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'placed_things_before_node'} = [

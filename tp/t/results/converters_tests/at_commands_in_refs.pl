@@ -20423,35 +20423,35 @@ $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 4 LaTeX TeX * , (C) ... ...
 ***************************
 
-5 == error-> Euro ! ==> -
-*************************
+5 == error-> € ¡ ==> -
+**********************
 
-6 >= <= ->
-**********
+6 ≥ ≤ ->
+********
 
-7 a o -!- # -| ? (R)
+7 ª º -!- £ -| ¿ (R)
 ********************
 
-8 => o a b a sunny day aa
-*************************
+8 => ° a b a sunny day å
+************************
 
-9 AA ae oe AE OE /o /O ss /l /L D d TH th
-*****************************************
+9 Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ
+*****************************
 
-10 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
-************************************
+10 ä ẽ î â à é ç ē e̊ e̋ ę
+************************
 
-11 e. e( e_ .e e< j ee[
-***********************
-
-12 i E=` C\',
-************
-
-13 `` \'\' ` \' ,, ,
+11 ė ĕ e̲ ẹ ě j ee͡
 *****************
 
-14 << >> << >> < >
-******************
+12 ı Ḕ Ḉ
+********
+
+13 “ ” ‘ ’ „ ‚
+**************
+
+14 « » « » ‹ ›
+**************
 
 15 " " -- - \' \'
 ***************
@@ -20497,19 +20497,19 @@ $result_converted{'plaintext'}->{'at_commands_in_refs'} = 'Top
 
    *note     !
 . . ? @:: *note @ { } \\ #:: *note LaTeX TeX * , (C) ... ...:: *note ==
-error-> Euro ! ==> -::
+error-> € ¡ ==> -::
 
-   *note >= <= ->::
+   *note ≥ ≤ ->::
 
-   *note a o -!- # -| ? (R):: *note => o a b a sunny day aa:: *note AA
-ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
-e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
-,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
-AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1] Image description""\\.:: *note  @ {} . :: *note cite asis in @w b
-in r SC *str* t VAR dfn i:: *note env code option samp command file C-x
-<ESC>:: *note 8.27in:: *note sansserif slanted:: *note indicateurl::
-*note _{g}H 3^{rd}:: *note <http://somewhere_aaa> text (url) ls::
+   *note ª º -!- £ -| ¿ (R):: *note => ° a b a sunny day å:: *note Å æ œ
+Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě j
+ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note `` \'\'
+--- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD:: *note
+the someone <someone@somewher> <no_explain@there>:: *note [f--ile1] Image description""\\.:: *note
+ @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i:: *note env
+code option samp command file C-x <ESC>:: *note 8.27in:: *note sansserif
+slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
+<http://somewhere_aaa> text (url) ls::
 
 ';
 
@@ -21275,16 +21275,16 @@ Top
  .  . ? @::
 * @ { } \\ #::
 * LaTeX TeX * , (C) ... ...::
-* == error-> Euro ! ==> -::
-* >= <= ->::
-* a o -!- # -| ? (R)::
-* => o a b a sunny day aa::
-* AA ae oe AE OE /o /O ss /l /L D d TH th::
-* a" e~ i^ a^ a` e\' c, e= e* e\'\' e;::
-* e. e( e_ .e e< j ee[::
-* i E=` C\',::
-* `` \'\' ` \' ,, ,::
-* << >> << >> < >::
+* == error-> € ¡ ==> -::
+* ≥ ≤ ->::
+* ª º -!- £ -| ¿ (R)::
+* => ° a b a sunny day å::
+* Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ::
+* ä ẽ î â à é ç ē e̊ e̋ ę::
+* ė ĕ e̲ ẹ ě j ee͡::
+* ı Ḕ Ḉ::
+* “ ” ‘ ’ „ ‚::
+* « » « » ‹ ›::
 * `` \'\' --- -- ` \'::
 * AAA (fff) AAA BBB::
 * CCC (rrr) CCC DDD::
@@ -21322,73 +21322,73 @@ File: ,  Node: @ { } \\ #,  Next: LaTeX TeX * , (C) ... ...,  Prev:     !
 ***********
 
 
-File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error-> Euro ! ==> -,  Prev: @ { } \\ #,  Up: Top
+File: ,  Node: LaTeX TeX * , (C) ... ...,  Next: == error-> € ¡ ==> -,  Prev: @ { } \\ #,  Up: Top
 
 4 LaTeX TeX * , (C) ... ...
 ***************************
 
 
-File: ,  Node: == error-> Euro ! ==> -,  Next: >= <= ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
+File: ,  Node: == error-> € ¡ ==> -,  Next: ≥ ≤ ->,  Prev: LaTeX TeX * , (C) ... ...,  Up: Top
 
-5 == error-> Euro ! ==> -
-*************************
-
-
-File: ,  Node: >= <= ->,  Next: a o -!- # -| ? (R),  Prev: == error-> Euro ! ==> -,  Up: Top
-
-6 >= <= ->
-**********
+5 == error-> € ¡ ==> -
+**********************
 
 
-File: ,  Node: a o -!- # -| ? (R),  Next: => o a b a sunny day aa,  Prev: >= <= ->,  Up: Top
+File: ,  Node: ≥ ≤ ->,  Next: ª º -!- £ -| ¿ (R),  Prev: == error-> € ¡ ==> -,  Up: Top
 
-7 a o -!- # -| ? (R)
+6 ≥ ≤ ->
+********
+
+
+File: ,  Node: ª º -!- £ -| ¿ (R),  Next: => ° a b a sunny day å,  Prev: ≥ ≤ ->,  Up: Top
+
+7 ª º -!- £ -| ¿ (R)
 ********************
 
 
-File: ,  Node: => o a b a sunny day aa,  Next: AA ae oe AE OE /o /O ss /l /L D d TH th,  Prev: a o -!- # -| ? (R),  Up: Top
+File: ,  Node: => ° a b a sunny day å,  Next: Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ,  Prev: ª º -!- £ -| ¿ (R),  Up: Top
 
-8 => o a b a sunny day aa
-*************************
-
-
-File: ,  Node: AA ae oe AE OE /o /O ss /l /L D d TH th,  Next: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Prev: => o a b a sunny day aa,  Up: Top
-
-9 AA ae oe AE OE /o /O ss /l /L D d TH th
-*****************************************
+8 => ° a b a sunny day å
+************************
 
 
-File: ,  Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Next: e. e( e_ .e e< j ee[,  Prev: AA ae oe AE OE /o /O ss /l /L D d TH th,  Up: Top
+File: ,  Node: Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ,  Next: ä ẽ î â à é ç ē e̊ e̋ ę,  Prev: => ° a b a sunny day å,  Up: Top
 
-10 a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
-************************************
-
-
-File: ,  Node: e. e( e_ .e e< j ee[,  Next: i E=` C\',,  Prev: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;,  Up: Top
-
-11 e. e( e_ .e e< j ee[
-***********************
+9 Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ
+*****************************
 
 
-File: ,  Node: i E=` C\',,  Next: `` \'\' ` \' ,, ,,  Prev: e. e( e_ .e e< j ee[,  Up: Top
+File: ,  Node: ä ẽ î â à é ç ē e̊ e̋ ę,  Next: ė ĕ e̲ ẹ ě j ee͡,  Prev: Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ,  Up: Top
 
-12 i E=` C\',
-************
+10 ä ẽ î â à é ç ē e̊ e̋ ę
+************************
 
 
-File: ,  Node: `` \'\' ` \' ,, ,,  Next: << >> << >> < >,  Prev: i E=` C\',,  Up: Top
+File: ,  Node: ė ĕ e̲ ẹ ě j ee͡,  Next: ı Ḕ Ḉ,  Prev: ä ẽ î â à é ç ē e̊ e̋ ę,  Up: Top
 
-13 `` \'\' ` \' ,, ,
+11 ė ĕ e̲ ẹ ě j ee͡
 *****************
 
 
-File: ,  Node: << >> << >> < >,  Next: `` \'\' --- -- ` \',  Prev: `` \'\' ` \' ,, ,,  Up: Top
+File: ,  Node: ı Ḕ Ḉ,  Next: “ ” ‘ ’ „ ‚,  Prev: ė ĕ e̲ ẹ ě j ee͡,  Up: Top
 
-14 << >> << >> < >
-******************
+12 ı Ḕ Ḉ
+********
 
 
-File: ,  Node: `` \'\' --- -- ` \',  Next: AAA (fff) AAA BBB,  Prev: << >> << >> < >,  Up: Top
+File: ,  Node: “ ” ‘ ’ „ ‚,  Next: « » « » ‹ ›,  Prev: ı Ḕ Ḉ,  Up: Top
+
+13 “ ” ‘ ’ „ ‚
+**************
+
+
+File: ,  Node: « » « » ‹ ›,  Next: `` \'\' --- -- ` \',  Prev: “ ” ‘ ’ „ ‚,  Up: Top
+
+14 « » « » ‹ ›
+**************
+
+
+File: ,  Node: `` \'\' --- -- ` \',  Next: AAA (fff) AAA BBB,  Prev: « » « » ‹ ›,  Up: Top
 
 15 " " -- - \' \'
 ***************
@@ -21470,54 +21470,59 @@ File: ,  Node: <http://somewhere_aaa> text (url) ls,  Prev: _{g}H 3^{rd},  Up: T
 
    *note     !
 . . ? @:: *note @ { } \\ #:: *note LaTeX TeX * , (C) ... ...:: *note ==
-error-> Euro ! ==> -::
+error-> € ¡ ==> -::
 
-   *note >= <= ->::
+   *note ≥ ≤ ->::
 
-   *note a o -!- # -| ? (R):: *note => o a b a sunny day aa:: *note AA
-ae oe AE OE /o /O ss /l /L D d TH th:: *note a" e~ i^ a^ a` e\' c, e= e*
-e\'\' e;:: *note e. e( e_ .e e< j ee[:: *note i E=` C\',:: *note `` \'\' ` \'
-,, ,:: *note << >> << >> < >:: *note `` \'\' --- -- ` \':: *note AAA (fff)
-AAA BBB:: *note CCC (rrr) CCC DDD:: *note the someone <someone@somewher>
-<no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note  @ {} . :: *note cite asis in @w b
-in r SC *str* t VAR dfn i:: *note env code option samp command file C-x
-<ESC>:: *note 8.27in:: *note sansserif slanted:: *note indicateurl::
-*note _{g}H 3^{rd}:: *note <http://somewhere_aaa> text (url) ls::
+   *note ª º -!- £ -| ¿ (R):: *note => ° a b a sunny day å:: *note Å æ œ
+Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě j
+ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note `` \'\'
+--- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD:: *note
+the someone <someone@somewher> <no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note
+ @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i:: *note env
+code option samp command file C-x <ESC>:: *note 8.27in:: *note sansserif
+slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
+<http://somewhere_aaa> text (url) ls::
 
 
 
 Tag Table:
 Node: Top27
-Node: { }838
+Node: { }866
 Node:     !
-. . ? @917
-Node: @ { } \\ #1022
-Node: LaTeX TeX * , (C) ... ...1141
-Node: == error-> Euro ! ==> -1302
-Node: >= <= ->1458
-Node: a o -!- # -| ? (R)1577
-Node: => o a b a sunny day aa1716
-Node: AA ae oe AE OE /o /O ss /l /L D d TH th1896
-Node: a" e~ i^ a^ a` e\' c, e= e* e\'\' e;2123
-Node: e. e( e_ .e e< j ee[2337
-Node: i E=` C\',2495
-Node: `` \'\' ` \' ,, ,2612
-Node: << >> << >> < >2734
-Node: `` \'\' --- -- ` \'2865
-Node: AAA (fff) AAA BBB2993
-Node: CCC (rrr) CCC DDD3133
-Node: the someone <someone@somewher> <no_explain@there>3306
-Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]3606
-Node:  @ {} . 3956
-Node: cite asis in @w b in r SC *str* t VAR dfn i4159
-Node: env code option samp command file C-x <ESC>4403
-Node: 8.27in4665
-Node: sansserif slanted4799
-Node: indicateurl4923
-Node: _{g}H 3^{rd}5045
-Node: <http://somewhere_aaa> text (url) ls5184
+. . ? @945
+Node: @ { } \\ #1050
+Node: LaTeX TeX * , (C) ... ...1169
+Node: == error-> € ¡ ==> -1330
+Node: ≥ ≤ ->1485
+Node: ª º -!- £ -| ¿ (R)1610
+Node: => ° a b a sunny day å1760
+Node: Å æ œ Æ Œ ø Ø ß ł Ł Ð ð Þ þ1947
+Node: ä ẽ î â à é ç ē e̊ e̋ ę2169
+Node: ė ĕ e̲ ẹ ě j ee͡2380
+Node: ı Ḕ Ḉ2541
+Node: “ ” ‘ ’ „ ‚2668
+Node: « » « » ‹ ›2810
+Node: `` \'\' --- -- ` \'2954
+Node: AAA (fff) AAA BBB3086
+Node: CCC (rrr) CCC DDD3226
+Node: the someone <someone@somewher> <no_explain@there>3399
+Node: [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]3699
+Node:  @ {} . 4049
+Node: cite asis in @w b in r SC *str* t VAR dfn i4252
+Node: env code option samp command file C-x <ESC>4496
+Node: 8.27in4758
+Node: sansserif slanted4892
+Node: indicateurl5016
+Node: _{g}H 3^{rd}5138
+Node: <http://somewhere_aaa> text (url) ls5277
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
@@ -21546,33 +21551,6 @@ $result_converted_errors{'info'}->{'at_commands_in_refs'} = [
     'line_nr' => 43,
     'macro' => '',
     'text' => '@node name should not contain `,\': LaTeX TeX * , (C) ... ...',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':61: warning: @node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;
-',
-    'file_name' => '',
-    'line_nr' => 61,
-    'macro' => '',
-    'text' => '@node name should not contain `,\': a" e~ i^ a^ a` e\' c, e= e* e\'\' e;',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':67: warning: @node name should not contain `,\': i E=` C\',
-',
-    'file_name' => '',
-    'line_nr' => 67,
-    'macro' => '',
-    'text' => '@node name should not contain `,\': i E=` C\',',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':70: warning: @node name should not contain `,\': `` \'\' ` \' ,, ,
-',
-    'file_name' => '',
-    'line_nr' => 70,
-    'macro' => '',
-    'text' => '@node name should not contain `,\': `` \'\' ` \' ,, ,',
     'type' => 'warning'
   },
   {

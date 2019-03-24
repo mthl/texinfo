@@ -533,6 +533,11 @@ Node: section node27
 Node: Top101
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

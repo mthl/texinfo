@@ -8020,9 +8020,9 @@ Text 1.1: C Text in chapter
 
 Text 1.2: An example of float caption, no shortcaption...
 
-A the\'ore`me
+A théorème
 
-the\'ore`me 1.1: C A the\'ore`me
+théorème 1.1: C A théorème
 
 float with no type.
 
@@ -8115,7 +8115,7 @@ text with a lot of features.
 
 * Menu:
 
-* the\'ore`me 1.1: theoreme.              C A the\'ore`me
+* théorème 1.1: theoreme.                C A théorème
 
 ';
 

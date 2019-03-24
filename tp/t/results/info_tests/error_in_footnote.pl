@@ -606,6 +606,11 @@ Ref: label61
 Ref: Top-Footnote-1343
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'error_in_footnote'} = [

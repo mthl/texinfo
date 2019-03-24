@@ -976,6 +976,11 @@ Ref: chapter-Footnote-1511
 Ref: chapter-Footnote-2548
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

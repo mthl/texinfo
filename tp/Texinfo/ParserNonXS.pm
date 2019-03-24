@@ -807,8 +807,6 @@ sub parse_texi_file($$)
         }];
   $self->{'info'}->{'input_file_name'} = $file_name;
   $self->{'info'}->{'input_directory'} = $directories;
-  $self->{'info'}->{'input_perl_encoding'} = $self->{'INPUT_PERL_ENCODING'};
-  $self->{'info'}->{'input_encoding_name'} = $self->{'INPUT_ENCODING_NAME'};
 
   my $tree = $self->_parse_texi($root);
 

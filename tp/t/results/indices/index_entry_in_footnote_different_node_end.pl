@@ -630,6 +630,11 @@ Ref: Top-Footnote-1144
 Node: First182
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

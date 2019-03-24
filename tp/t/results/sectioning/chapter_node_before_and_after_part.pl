@@ -623,6 +623,11 @@ Node: Top27
 Node: after116
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

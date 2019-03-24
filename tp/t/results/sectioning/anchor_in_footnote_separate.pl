@@ -702,6 +702,11 @@ Ref: Anchor in footnote209
 Node: chapter213
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

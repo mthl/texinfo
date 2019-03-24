@@ -534,6 +534,11 @@ Node: Top27
 Node: first143
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

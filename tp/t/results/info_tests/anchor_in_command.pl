@@ -295,6 +295,11 @@ Node: Top27
 Ref: anchor in emph97
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

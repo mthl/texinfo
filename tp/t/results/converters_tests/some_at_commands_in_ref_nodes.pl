@@ -1659,11 +1659,11 @@ $result_errors{'some_at_commands_in_ref_nodes'} = [];
 $result_converted{'plaintext'}->{'some_at_commands_in_ref_nodes'} = 'Top
 ***
 
-1 A SC node i" i" E=` /l C\', !
-******************************
+1 A SC node ï ï Ḕ ł Ḉ ¡
+***********************
 
-see *note (manual)a *strong* ref with SC, a i trema i", a dotless i
-trema i" E=` and exclamdown !::.
+see *note (manual)a *strong* ref with SC, a i trema ï, a dotless i trema
+ï Ḕ and exclamdown ¡::.
 ';
 
 
@@ -1725,43 +1725,35 @@ $result_converted{'docbook'}->{'some_at_commands_in_ref_nodes'} = '
 $result_converted{'info'}->{'some_at_commands_in_ref_nodes'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: A SC N~ AA TeX node i" i" E=` /l C\', !,  Up: (dir)
+File: ,  Node: Top,  Next: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡,  Up: (dir)
 
 Top
 ***
 
 * Menu:
 
-* A SC N~ AA TeX node i" i" E=` /l C\', !::
+* A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡::
 
 
-File: ,  Node: A SC N~ AA TeX node i" i" E=` /l C\', !,  Prev: Top,  Up: Top
+File: ,  Node: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡,  Prev: Top,  Up: Top
 
-1 A SC node i" i" E=` /l C\', !
-******************************
+1 A SC node ï ï Ḕ ł Ḉ ¡
+***********************
 
-see *note (manual)a *strong* ref with SC, a i trema i", a dotless i
-trema i" E=` and exclamdown !::.
+see *note (manual)a *strong* ref with SC, a i trema ï, a dotless i trema
+ï Ḕ and exclamdown ¡::.
 
 
 Tag Table:
 Node: Top27
-Node: A SC N~ AA TeX node i" i" E=` /l C\', !170
+Node: A SC Ñ Å TeX node ï ï Ḕ ł Ḉ ¡172
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
-
-$result_converted_errors{'info'}->{'some_at_commands_in_ref_nodes'} = [
-  {
-    'error_line' => ':9: warning: @node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@node name should not contain `,\': A SC N~ AA TeX node i" i" E=` /l C\', !',
-    'type' => 'warning'
-  }
-];
-
 
 1;

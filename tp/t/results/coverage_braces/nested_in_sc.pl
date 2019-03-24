@@ -297,7 +297,7 @@ $result_converted{'docbook'}->{'nested_in_sc'} = '<para>AAA &#209; &#197; &tex; 
 </para>';
 
 
-$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA N~ AA TeX AA~ (1), ABR (EXPL), in verb
+$result_converted{'plaintext'}->{'nested_in_sc'} = 'AAA Ñ Å TeX Å̃ (1), ABR (EXPL), in verb
 
    ---------- Footnotes ----------
 

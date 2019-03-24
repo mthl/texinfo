@@ -852,6 +852,11 @@ Node: chapter128
 Node: indices213
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

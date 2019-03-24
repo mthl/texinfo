@@ -982,6 +982,11 @@ Tag Table:
 Node: Top88
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

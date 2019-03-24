@@ -549,6 +549,11 @@ Node: /;<=>?[\\]^_`|~230
 Node: local node323
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

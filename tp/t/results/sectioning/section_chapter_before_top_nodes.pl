@@ -849,6 +849,11 @@ Node: chapter node119
 Node: Top232
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

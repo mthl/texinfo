@@ -1344,6 +1344,11 @@ Node: Top131
 Node: chapter687
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

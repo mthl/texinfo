@@ -795,6 +795,11 @@ Node: second node131
 Node: third node215
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

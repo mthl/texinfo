@@ -1467,6 +1467,11 @@ BBB  [image src="figure.txt" text="  1  A  B
 Tag Table:
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 $result_converted_errors{'info'}->{'multiline_image_and_align'} = [

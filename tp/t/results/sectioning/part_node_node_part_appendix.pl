@@ -1097,6 +1097,11 @@ Node: chapter node136
 Node: appendix part232
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

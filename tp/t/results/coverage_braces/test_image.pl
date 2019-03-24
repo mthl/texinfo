@@ -3981,26 +3981,26 @@ $result_converted_errors{'html'}->{'test_image'} = [
 
 
 $result_converted{'plaintext'}->{'test_image'} = '[f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
    Insertcopying
    Text in copying. [f@i--le..  a@<"%@  < & @ % " ]
 
-   In text [alt i^-le..  a
+   In text [alt î-le..  a
 <"%@  < & @ % " ].
 
      [f@i--le..  a@<"%@  < & @ % " ]
 
-     In text [alt i^-le..  a
+     In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 [f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 Image 1: [f@i--le..  a@<"%@  < & @ % " ]
-In text [alt i^-le..  a
+In text [alt î-le..  a
 <"%@  < & @ % " ].
 
 * Menu:

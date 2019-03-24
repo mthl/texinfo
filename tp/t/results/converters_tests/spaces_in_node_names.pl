@@ -1150,6 +1150,11 @@ Node: b  162
 Node: c  218
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;

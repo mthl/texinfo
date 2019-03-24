@@ -1202,6 +1202,11 @@ Node: section214
 Node: subsection323
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

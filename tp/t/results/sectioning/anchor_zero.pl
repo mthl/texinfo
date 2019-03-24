@@ -233,6 +233,11 @@ Node: Top27
 Ref: 061
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 

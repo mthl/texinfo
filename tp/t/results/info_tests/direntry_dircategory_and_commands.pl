@@ -701,6 +701,11 @@ Tag Table:
 Node: Top264
 
 End Tag Table
+
+
+Local Variables:
+coding: utf-8
+End:
 ';
 
 1;
