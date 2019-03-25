@@ -1,3 +1,11 @@
+2019-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make test results consistent between XS and non-XS modules.
+
+	* tp/Texinfo/XS/xspara.c (xspara_add_text): Treat characters 
+	with wcwidth 0 the same as those with wcwidth 1.  This is wrong, 
+	but gives consistency for the test results.
+
 2019-03-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Update 'mit-scheme-imail'.  From

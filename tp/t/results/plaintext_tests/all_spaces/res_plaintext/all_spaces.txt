@@ -12,7 +12,7 @@ CHARACTER TABULATION: |	|
 
    SPACE: | |
 
-   NEXT LINE (NEL): ||
+   NEXT LINE (NEL): ||
 
    NO-BREAK SPACE: | |
 

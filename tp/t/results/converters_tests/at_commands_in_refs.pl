@@ -20502,13 +20502,13 @@ error-> € ¡ ==> -::
    *note ≥ ≤ ->::
 
    *note ª º -!- £ -| ¿ (R):: *note => ° a b a sunny day å:: *note Å æ œ
-Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě j
-ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note `` \'\'
---- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD:: *note
-the someone <someone@somewher> <no_explain@there>:: *note [f--ile1] Image description""\\.:: *note
- @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i:: *note env
-code option samp command file C-x <ESC>:: *note 8.27in:: *note sansserif
-slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
+Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě
+j ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note ``
+\'\' --- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD::
+*note the someone <someone@somewher> <no_explain@there>:: *note [f--ile1] Image description""\\.::
+*note  @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i::
+*note env code option samp command file C-x <ESC>:: *note 8.27in:: *note
+sansserif slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
 <http://somewhere_aaa> text (url) ls::
 
 ';
@@ -21475,13 +21475,13 @@ error-> € ¡ ==> -::
    *note ≥ ≤ ->::
 
    *note ª º -!- £ -| ¿ (R):: *note => ° a b a sunny day å:: *note Å æ œ
-Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě j
-ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note `` \'\'
---- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD:: *note
-the someone <someone@somewher> <no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]:: *note
- @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i:: *note env
-code option samp command file C-x <ESC>:: *note 8.27in:: *note sansserif
-slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
+Æ Œ ø Ø ß ł Ł Ð ð Þ þ:: *note ä ẽ î â à é ç ē e̊ e̋ ę:: *note ė ĕ e̲ ẹ ě
+j ee͡:: *note ı Ḕ Ḉ:: *note “ ” ‘ ’ „ ‚:: *note « » « » ‹ ›:: *note ``
+\'\' --- -- ` \':: *note AAA (fff) AAA BBB:: *note CCC (rrr) CCC DDD::
+*note the someone <someone@somewher> <no_explain@there>:: *note [f--ile1]  [image src="f--ile.png" alt="alt" text="Image description\\"\\"\\\\." ]::
+*note  @ {} . :: *note cite asis in @w b in r SC *str* t VAR dfn i::
+*note env code option samp command file C-x <ESC>:: *note 8.27in:: *note
+sansserif slanted:: *note indicateurl:: *note _{g}H 3^{rd}:: *note
 <http://somewhere_aaa> text (url) ls::
 
 
