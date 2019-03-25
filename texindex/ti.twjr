@@ -570,229 +570,11 @@ pulling apart each record, sorting the data at the end, and writing out
 the data properly.
 
 @menu
-* Printing the data::                Printing the final results.
 * Setup for each input file::        What happens at the start of each file.
 * Processing each record::           Pulling apart the fields and storing data.
-* End-of-file sorting and printing:: Printing the entries for each index.
+* End-of-file sorting and printing:: Sorting the entries for each index.
+* Printing the data::                Printing the final results.
 @end menu
-
-@node Printing the data
-@section Printing The Final Results
-
-We start at the end of the process, so to speak.  By writing the code to print
-the different kind of index entries, we will see what data we need to keep track
-of, and how to track it.  That will then enlighten us as to how to build the
-needed data structures.
-
-So, let's start. The logic is going to be a little complicated:
-
-@<print index entry@>=
-function write_index_entry(current)
-{
-	if (@<@code{current} entry has 1 level@>) {
-		if (@<@code{current} entry is a ``see'' or ``see'' also@>) {
-			printf("%centry{%s, %s}{}\n",
-					Command_char,
-					@<@code{current} entry #1@>,
-					@<@code{current} see or see also@>) > Output_file
-		} else {
-			@<print primary entry@>
-		}
-	} else if (@<@code{current} entry has 2 levels@>) {
-		@<print primary entry if necessary@>
-		@<print secondary entry@>
-	} else if (@<@code{current} entry has 3 levels@>) {
-		@<print primary entry if necessary@>
-		@<print secondary entry if necessary@>
-		printf("%ctertiary{%s}{%s}\n",
-				Command_char,
-				@<@code{current} entry #3@>,
-				@<@code{current} pagenum@>) > Output_file
-	}
-}
-@
-
-@<print primary entry if necessary@>=
-if (@<@code{current} sortkey #1 has not been printed@>) {
-	@<print primary entry@>
-}
-@
-
-@<print primary entry@>=
-printf("%centry{%s}{}\n",
-		Command_char,
-		@<@code{current} entry #1@>)
-@<note that @code{current} sortkey #1 has been printed@>
-@
-
-@<print secondary entry if necessary@>=
-if (@<@code{current} sortkey #2 has not been printed@>) {
-	@<print secondary entry@>
-}
-@
-
-@<print secondary entry@>=
-printf("%csecondary{%s}{%s}\n",
-		Command_char,
-		@<@code{current} entry #2@>,
-		@<@code{current} pagenum@>) > Output_file
-@<note that @code{current} sortkey #2 has been printed@>
-@
-
-OK, so now we have the basic algorithm that handles ``See @dots{}''
-and ``See Also @dots{}'' entries, as well as single-, double-,
-and triple-level entries.  It should handle all of the following
-cases:
-
-@c These should make a nice test case!
-@cindex coffee makers
-
-@cindex toasters @subentry british
-@cindex toasters @subentry american
-
-@cindex microwaves @subentry electic @subentry 110 volt
-@cindex microwaves @subentry electic @subentry 220 volt
-
-@cindex children
-@cindex children @subentry small
-@cindex children @subentry small @subentry toddlers
-@cindex children @subentry small @subentry infants
-@cindex children @subentry teenagers
-@cindex children @subentry adult
-@example
-@@c Top level entry, with page
-@@cindex coffee makers
-
-@@c Double level, no separate top level
-@@cindex toasters @@subentry british
-@@cindex toasters @@subentry american
-
-@@c Triple level, no separate 1st or 2nd level
-@@cindex microwaves @@subentry electic @@subentry 110 volt
-@@cindex microwaves @@subentry electic @@subentry 220 volt
-
-@@c All 3 levels, with pages
-@@cindex children
-@@cindex children @@subentry small
-@@cindex children @@subentry small @@subentry toddlers
-@@cindex children @@subentry small @@subentry infants
-@@cindex children @@subentry teenagers
-@@cindex children @@subentry adult
-@end example
-
-@cindex @code{Numentries} array
-For simplicity, we will use a number of global arrays to track
-the different bits of info.  Our first
-bit of data is how many entries there are, the @code{Numentries} array:
-
-@<@code{current} entry has 1 level@>=
-Numentries[current] == 1
-@
-
-@<@code{current} entry has 2 levels@>=
-Numentries[current] == 2
-@
-
-@<@code{current} entry has 3 levels@>=
-Numentries[current] == 3
-@
-
-@cindex @code{Pagedata} array
-The next piece of information we need to know is whether a
-particular entry is a ``See'' or ``See also'' entry.
-Such an entry replaces the page number. We call it @code{Pagedata}.
-
-@cindex @code{make_regex()} function
-@<@code{current} entry is a ``see'' or ``see'' also@>=
-see_regex = make_regex("%see(also)?")
-Pagedata[current] ~ see_regex
-@
-
-We discuss the @code{make_regex()} function in a moment.
-
-@cindex @code{Entries} array
-The entries are the actual data to be printed; these
-are the primary, secondary and tertiary entries, if they are there.
-They reside in @code{Entries}.
-
-@<@code{current} entry #1@>=
-Entries[current, 1]
-@
-
-@<@code{current} entry #2@>=
-Entries[current, 2]
-@
-
-@<@code{current} entry #3@>=
-Entries[current, 3]
-@
-
-@cindex @code{Pagedata} array
-@<@code{current} pagenum@>=
-Pagedata[current]
-@
-
-@<@code{current} see or see also@>=
-Pagedata[current]
-@
-
-@cindex @code{Printed} array
-@cindex @code{Sortkeys} array
-We need to know if we have printed a command
-for our current entries.  For that we'll use
-an associative array indexed by the text of the sort keys.
-The array is named @code{Printed}.
-The sort keys are kept in the @code{Sortkeys} array.
-
-@<@code{current} sortkey #1 has not been printed@>=
-! (Sortkeys[current, 1] in Printed)
-@
-
-@<note that @code{current} sortkey #1 has been printed@>=
-Printed[Sortkeys[current, 1]] = TRUE
-@
-
-When looking at a secondary key, we have to track it together
-with the primary key it's under, since the same secondary
-key could appear in different contexts, such as
-@samp{@@cindex tigers @@subentry cubs} and
-@samp{@@cindex bears @@subentry cubs}.
-
-@<@code{current} sortkey #2 has not been printed@>=
-! ((Sortkeys[current, 1], Sortkeys[current, 2]) in Printed)
-@
-
-@<note that @code{current} sortkey #2 has been printed@>=
-Printed[Sortkeys[current, 1], Sortkeys[current, 2]] = TRUE
-@
-
-@file{texindex.awk} has to handle input where the command
-character may be an @samp{@@} or a @samp{\}. When matching
-command strings in regular expressions, if the command character
-is a backslash, it must be doubled in order to be treated
-literally.  The @code{make_regex()} function handles this
-for us; a @samp{%} in the text of the regexp stands for
-the command character and is replaced appropriately.
-
-@cindex @code{make_regex()} function
-@<Helper functions@>=
-function make_regex(regex,	a, sep, n)
-{
-	n = split(regex, a, "%")
-	if (Command_char == "\\")
-		sep = Command_char Command_char
-	else
-		sep = Command_char
-
-	return join(a, 1, n, sep)
-}
-@
-
-Finally, we add the above code into the set of work functions:
-
-@<Work functions@>=
-@<print index entry@>
-@
 
 @node Setup for each input file
 @section Setup for each input file
@@ -810,7 +592,7 @@ The first character must be either @samp{\} or @samp{@@}
 @samp{entry}.
 
 @cindex @code{Special_chars} variable
-@code{Special_chars} are the two characters that must be preceded by
+@code{Special_chars} are the characters that must be preceded by
 the command character inside the first key. This includes the command
 character itself.
 
@@ -838,13 +620,21 @@ function beginfile(filename)
 
 	# Reinitialize these for each input file
 #	del_array(Data)
-#	del_array(Keys)
+	del_array(Keys)
 	del_array(Seen)
 	del_array(Numentries)
 	del_array(Pagedata)
 	del_array(Printed)
 	del_array(Sortkeys)
 	del_array(Lines)
+	del_array(See)				# "see" entries
+	del_array(See_count)		# count "see" entries per index record
+	del_array(Seealso)			# "see also" entries
+	del_array(Seealso_count)	# count "see" entries per index record
+	del_array(Primary)			# primary part of an entry, actual text
+	del_array(Secondary)		# secondary part of an entry, actual text
+	del_array(Tertiary)			# tertiary part of an entry, actual text
+	del_array(Allkeys)
 	Entries = 0
 	Do_initials = FALSE
 	Prev_initial = ""
@@ -856,7 +646,7 @@ function beginfile(filename)
 
 	Special_chars = "{}" Command_char
 
-	Line_count = 1
+#	Line_count = 1
 }
 @
 
@@ -876,12 +666,11 @@ into the separate arrays described earlier.
 @<Process a record@> =
 {
 	@<Remove duplicates@>
-	@<Remove leading @code{\entry}@>
+	@<Remove leading @code{\entry} or @code{@@entry}@>
 	@<Get the initial@>
-#	@<Set up @code{fields} array with the data@>
-#	@<Name the fields@>
-#	@<Store the data for this line in the @code{Data} array@>
-	Lines[Line_count++] = $0
+	@<Set up @code{fields} array with the data@>
+	@<Name the fields@>
+	@<Store the data for this line in the various arrays@>
 	@<Check for more than one initial@>
 }
 @
@@ -911,18 +700,18 @@ on to the next record.
 @<Remove duplicates@>=
 # Remove duplicates, which can happen
 if ($0 in Seen)
-  next
+	next
 Seen[$0] = TRUE
 @
 
 @node Remove leading @code{\entry}
-@subsection Remove leading @code{\entry}
+@subsection Remove leading @code{\entry} or @code{@@entry}
 
 We use @code{substr()} here to avoid possible hassles with leading
 backslashes in @code{sub()}.
 
-@<Remove leading @code{\entry}@>=
-$0 = substr($0, 7)  # remove leading \entry
+@<Remove leading @code{\entry} or @code{@@entry}@>=
+$0 = substr($0, 7)  # remove leading \entry or @@entry
 @
 
 @node Get the initial
@@ -933,8 +722,8 @@ $0 = substr($0, 7)  # remove leading \entry
 initial = extract_initial($0)
 @
 
-The key argument here is the rest of the line after @samp{\entry}, 
-starting with an open brace.
+The sort key is the first of the line after @samp{\entry}, 
+starting with an open brace, and continuing to a matching close brace.
 
 The very first field character of the sort key can be an open brace.
 If so, we extract the component of the sort key surrounded by balanced 
@@ -946,7 +735,7 @@ generated if you needed to index a real backslash, namely an input line
 something like the following:
 
 @example
-\entry@{@{\tt \indexbackslash @} (backslash)@}@{14@}@{\code @{@{\tt @dots{}
+\entry@{@{\tt \indexbackslash @} (backslash)@}@{14@}@{\code @{@{\tt @dots{}@}@}
 @end example
 
 Earlier versions of @command{texindex} took the first non-brace 
@@ -991,17 +780,17 @@ function extract_initial(key,  initial, nextchar, i, l, kchars)
 @node Set up and name fields
 @subsection Set up and name fields
 
-The next part is to pull out the data of interest from the three sets of
+The next part is to pull out the data of interest from the multiple sets of
 braces.  This is delegated to a function named @code{field_split()}.
-There must be exactly three fields.
+There must be at least three fields, and there can be up to five.
 
 @cindex @code{field_split()} function
 @cindex @code{fields} array, setting up
 @<Set up @code{fields} array with the data@>=
 numfields = field_split($0, fields, "{", "}", Command_char)
-if (numfields != 3)
-  fatal(_"%s:%d: Bad entry; expected three fields, not %d\n",
-        FILENAME, FNR, numfields)
+if (numfields < 3 || numfields > 5)
+	fatal(_"%s:%d: Bad entry; expected three, four, or five fields, not %d\n",
+		FILENAME, FNR, numfields)
 @
 
 We give the fields names for later use.
@@ -1009,7 +798,9 @@ We give the fields names for later use.
 @<Name the fields@>=
 key = fields[1]
 pagenum = fields[2]
-text = fields[3]
+primary_text = fields[3]
+secondary_text = (numfields > 3 ? fields[4] : "")
+tertiary_text = (numfields > 4 ? fields[5] : "")
 @
 
 @node Store the data for this line
@@ -1018,11 +809,52 @@ text = fields[3]
 @cindex storing data
 
 @cindex @code{Data} array
-We use a traditional @command{awk} multidimensional array, @code{Data}.
+We use multiple arrays to store different parts of the data.
 The sort key from the input is invariant across entries, so we use that
-as the basis for the keys in the @code{Data} array.
-The @code{Data} values are the output @code{"text"}, the
-@code{"pagenum"} list, and the @code{"initial"}.
+as the basis for the keys in the various arrays.
+We need the following arrays:
+
+@table @code
+@item Primary
+The primary index text. This is the real text, not the stripped
+value appearing in the sort key.
+
+@item Secondary
+The secondary index text, if present.
+
+@item Tertiary
+The tertiary index text, if present.
+
+@item Pagedata
+The page numbers on which identical entries occur.
+
+@item See_count
+The number of ``see @dots{}'' entries for a given
+index line. Nothing prevents there being multiple such:
+
+@cindex toast @see toaster
+@cindex toast @see jam
+@example
+@@cindex toast @@see toaster
+@@cindex toast @@see jam
+@end example
+
+@noindent
+So we have to be prepared to handle such input.
+The @code{See_count} array counts the number of such
+texts as there may be
+
+@item See
+This is the actual texts of the @samp{@@see} value for
+the line's sort key.   Each entry goes into
+@code{See[key, 1}}, @code{See[key, 2]}, etc., up to
+@code{See_count[key]}.
+
+@item Seealso_count
+@itemx Seealso
+These serve the same purpose as @code{See_count} and @code{See},
+but for @code{@@seealso} entries.
+@end table
 
 In the event that a particular key has more than one associated output
 text, we'll keep the first and ignore the remainder (this is the same
@@ -1032,16 +864,19 @@ For page numbers, we merely append the page number field from the input,
 preceded by a comma and space, unless that page number was already the
 last that's been stored.  (We're assuming the page numbers don't jump
 around, which, in fact, they don't, so we don't need a more complex
-approach.)
+approach.)  This also handles any page numbers that appear as roman
+numerals, should there be such.
 
 @cindex @code{Keys} array
 @cindex @code{Entries} variable
-In addition to all this updating of the @code{Data} array, the key is
+In addition to all the previously described arrays, the key is
 stored in the @code{Keys} array the first time it is seen; this array
 is sorted later on.  For now, its indices are just incremented integers,
 stored in the global @code{Entries} variable.
+@c --------------------------------------------------------
+@c The @code{Allkeys} array lets us track if we have seen a key before.
 
-@<Store the data for this line in the @code{Data} array@>=
+@<Store the data for this line in the various arrays@>=
 if (! ((key, "text") in Data)) {
 	# first time we've seen this full line
 	Keys[++Entries] = key
@@ -1449,6 +1284,224 @@ function less_than(left, right,    len_l, len_r, len, chars_l, chars_r)
 
 	return 0
 }
+@
+
+@node Printing the data
+@section Printing The Final Results
+
+We start at the end of the process, so to speak.  By writing the code to print
+the different kind of index entries, we will see what data we need to keep track
+of, and how to track it.  That will then enlighten us as to how to build the
+needed data structures.
+
+So, let's start. The logic is going to be a little complicated:
+
+@<print index entry@>=
+function write_index_entry(current)
+{
+	if (@<@code{current} entry has 1 level@>) {
+		if (@<@code{current} entry is a ``see'' or ``see'' also@>) {
+			printf("%centry{%s, %s}{}\n",
+					Command_char,
+					@<@code{current} entry #1@>,
+					@<@code{current} see or see also@>) > Output_file
+		} else {
+			@<print primary entry@>
+		}
+	} else if (@<@code{current} entry has 2 levels@>) {
+		@<print primary entry if necessary@>
+		@<print secondary entry@>
+	} else if (@<@code{current} entry has 3 levels@>) {
+		@<print primary entry if necessary@>
+		@<print secondary entry if necessary@>
+		printf("%ctertiary{%s}{%s}\n",
+				Command_char,
+				@<@code{current} entry #3@>,
+				@<@code{current} pagenum@>) > Output_file
+	}
+}
+@
+
+@<print primary entry if necessary@>=
+if (@<@code{current} sortkey #1 has not been printed@>) {
+	@<print primary entry@>
+}
+@
+
+@<print primary entry@>=
+printf("%centry{%s}{}\n",
+		Command_char,
+		@<@code{current} entry #1@>)
+@<note that @code{current} sortkey #1 has been printed@>
+@
+
+@<print secondary entry if necessary@>=
+if (@<@code{current} sortkey #2 has not been printed@>) {
+	@<print secondary entry@>
+}
+@
+
+@<print secondary entry@>=
+printf("%csecondary{%s}{%s}\n",
+		Command_char,
+		@<@code{current} entry #2@>,
+		@<@code{current} pagenum@>) > Output_file
+@<note that @code{current} sortkey #2 has been printed@>
+@
+
+OK, so now we have the basic algorithm that handles ``See @dots{}''
+and ``See Also @dots{}'' entries, as well as single-, double-,
+and triple-level entries.  It should handle all of the following
+cases:
+
+@c These should make a nice test case!
+@cindex coffee makers
+
+@cindex toasters @subentry british
+@cindex toasters @subentry american
+
+@cindex microwaves @subentry electic @subentry 110 volt
+@cindex microwaves @subentry electic @subentry 220 volt
+
+@cindex children
+@cindex children @subentry small
+@cindex children @subentry small @subentry toddlers
+@cindex children @subentry small @subentry infants
+@cindex children @subentry teenagers
+@cindex children @subentry adult
+@example
+@@c Top level entry, with page
+@@cindex coffee makers
+
+@@c Double level, no separate top level
+@@cindex toasters @@subentry british
+@@cindex toasters @@subentry american
+
+@@c Triple level, no separate 1st or 2nd level
+@@cindex microwaves @@subentry electic @@subentry 110 volt
+@@cindex microwaves @@subentry electic @@subentry 220 volt
+
+@@c All 3 levels, with pages
+@@cindex children
+@@cindex children @@subentry small
+@@cindex children @@subentry small @@subentry toddlers
+@@cindex children @@subentry small @@subentry infants
+@@cindex children @@subentry teenagers
+@@cindex children @@subentry adult
+@end example
+
+@cindex @code{Numentries} array
+For simplicity, we will use a number of global arrays to track
+the different bits of info.  Our first
+bit of data is how many entries there are, the @code{Numentries} array:
+
+@<@code{current} entry has 1 level@>=
+Numentries[current] == 1
+@
+
+@<@code{current} entry has 2 levels@>=
+Numentries[current] == 2
+@
+
+@<@code{current} entry has 3 levels@>=
+Numentries[current] == 3
+@
+
+@cindex @code{Pagedata} array
+The next piece of information we need to know is whether a
+particular entry is a ``See'' or ``See also'' entry.
+Such an entry replaces the page number. We call it @code{Pagedata}.
+
+@cindex @code{make_regex()} function
+@<@code{current} entry is a ``see'' or ``see'' also@>=
+see_regex = make_regex("%see(also)?")
+Pagedata[current] ~ see_regex
+@
+
+We discuss the @code{make_regex()} function in a moment.
+
+@cindex @code{Entries} array
+The entries are the actual data to be printed; these
+are the primary, secondary and tertiary entries, if they are there.
+They reside in @code{Entries}.
+
+@<@code{current} entry #1@>=
+Entries[current, 1]
+@
+
+@<@code{current} entry #2@>=
+Entries[current, 2]
+@
+
+@<@code{current} entry #3@>=
+Entries[current, 3]
+@
+
+@cindex @code{Pagedata} array
+@<@code{current} pagenum@>=
+Pagedata[current]
+@
+
+@<@code{current} see or see also@>=
+Pagedata[current]
+@
+
+@cindex @code{Printed} array
+@cindex @code{Sortkeys} array
+We need to know if we have printed a command
+for our current entries.  For that we'll use
+an associative array indexed by the text of the sort keys.
+The array is named @code{Printed}.
+The sort keys are kept in the @code{Sortkeys} array.
+
+@<@code{current} sortkey #1 has not been printed@>=
+! (Sortkeys[current, 1] in Printed)
+@
+
+@<note that @code{current} sortkey #1 has been printed@>=
+Printed[Sortkeys[current, 1]] = TRUE
+@
+
+When looking at a secondary key, we have to track it together
+with the primary key it's under, since the same secondary
+key could appear in different contexts, such as
+@samp{@@cindex tigers @@subentry cubs} and
+@samp{@@cindex bears @@subentry cubs}.
+
+@<@code{current} sortkey #2 has not been printed@>=
+! ((Sortkeys[current, 1], Sortkeys[current, 2]) in Printed)
+@
+
+@<note that @code{current} sortkey #2 has been printed@>=
+Printed[Sortkeys[current, 1], Sortkeys[current, 2]] = TRUE
+@
+
+@file{texindex.awk} has to handle input where the command
+character may be an @samp{@@} or a @samp{\}. When matching
+command strings in regular expressions, if the command character
+is a backslash, it must be doubled in order to be treated
+literally.  The @code{make_regex()} function handles this
+for us; a @samp{%} in the text of the regexp stands for
+the command character and is replaced appropriately.
+
+@cindex @code{make_regex()} function
+@<Helper functions@>=
+function make_regex(regex,	a, sep, n)
+{
+	n = split(regex, a, "%")
+	if (Command_char == "\\")
+		sep = Command_char Command_char
+	else
+		sep = Command_char
+
+	return join(a, 1, n, sep)
+}
+@
+
+Finally, we add the above code into the set of work functions:
+
+@<Work functions@>=
+@<print index entry@>
 @
 
 @node Necessary stuff

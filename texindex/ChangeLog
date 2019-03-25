@@ -1,3 +1,7 @@
+2019-03-25         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Rearrange, start on line parsing.
+
 2019-03-18         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Finish up printing code.
