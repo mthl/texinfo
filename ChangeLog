@@ -1,5 +1,13 @@
 2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix test of XS modules.
+
+	* tp/Texinfo/XS/TestXS.pm: Declare init function as having a 
+	single argument, and return a true value.  Otherwise the test 
+	for XS modules fails.  Report from Patrice Dumas.
+
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Small changes.
 
 	* tp/Texinfo/XS/xspara.c (xspara_add_text): Add a comment.
