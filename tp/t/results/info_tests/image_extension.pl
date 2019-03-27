@@ -282,20 +282,8 @@ $result_nodes{'image_extension'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'image_extension'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_extension'};
 
 $result_menus{'image_extension'} = {
   'cmdname' => 'node',

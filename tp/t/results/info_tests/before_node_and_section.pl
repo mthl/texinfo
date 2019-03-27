@@ -955,23 +955,11 @@ $result_nodes{'before_node_and_section'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_prev'} = $result_nodes{'before_node_and_section'};
 $result_nodes{'before_node_and_section'}{'menu_child'}{'node_up'} = $result_nodes{'before_node_and_section'};
 $result_nodes{'before_node_and_section'}{'node_next'} = $result_nodes{'before_node_and_section'}{'menu_child'};
-$result_nodes{'before_node_and_section'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'before_node_and_section'};
 
 $result_menus{'before_node_and_section'} = {
   'cmdname' => 'node',

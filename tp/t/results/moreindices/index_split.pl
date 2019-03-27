@@ -3955,23 +3955,11 @@ $result_nodes{'index_split'} = {
     }
   ],
   'node_next' => {},
-  'node_prev' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_prev' => {}
 };
 $result_nodes{'index_split'}{'menu_child'} = $result_nodes{'index_split'};
 $result_nodes{'index_split'}{'node_next'} = $result_nodes{'index_split'};
 $result_nodes{'index_split'}{'node_prev'} = $result_nodes{'index_split'};
-$result_nodes{'index_split'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_split'};
 
 $result_menus{'index_split'} = {
   'cmdname' => 'node',
@@ -4125,15 +4113,6 @@ $result_menus{'index_split'}{'menu_next'}{'menu_up'} = $result_menus{'index_spli
 $result_menus{'index_split'}{'menu_up'} = $result_menus{'index_split'};
 
 $result_errors{'index_split'} = [
-  {
-    'error_line' => 'index_split.texi:5: warning: for `Top\', up in menu `Top\' and up `(dir)\' don\'t match
-',
-    'file_name' => 'index_split.texi',
-    'line_nr' => 5,
-    'macro' => '',
-    'text' => 'for `Top\', up in menu `Top\' and up `(dir)\' don\'t match',
-    'type' => 'warning'
-  },
   {
     'error_line' => 'index_split.texi:23: warning: node `Top\' is prev for `first\' in menu but not in sectioning
 ',

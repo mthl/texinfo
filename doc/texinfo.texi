@@ -3449,7 +3449,7 @@ for the Info system as a whole.  (Each directory with Info files is
 intended to contain a file named @file{dir}.)
 
 That's fine for Info, but for HTML output, one might well want the Up
-link from the Top node to go somewhere other than @samp{dir.html}.
+link from the Top node to go to some specific place.
 For example, for GNU the natural place would be
 @url{http://www.gnu.org/manual/} (a web page collecting links to most
 GNU manuals), better specified as just @code{/manual/} if the manual
@@ -3461,7 +3461,8 @@ Customization Variables}), as in
 $ @kbd{makeinfo --html -c TOP_NODE_UP_URL=/manual/} ...
 @end example
 
-All links to @code{(dir)} will be replaced by the given url.
+@c the following line is not true anymore
+@c All links to @code{(dir)} will be replaced by the given url.
 
 @item
 @cindex Prev node of Top node
@@ -17184,13 +17185,12 @@ For HTML@.  File name used for the Top node in cross-references;
 default is @code{index}.
 
 @item TOP_NODE_UP_URL
-For HTML@.  A url used for @code{(dir)} references; the default is
-@code{undef}, meaning that the normal rules apply, typically leading
-to a link to @samp{dir.html} from an implicit or explicit reference to
-@samp{(dir)} (@pxref{HTML Xref}).  For more about the Top node
-pointers, @pxref{First Node}.  For overriding the Up pointer in other
-formats, see @code{TOP_NODE_UP} in @ref{Other Customization
-Variables}.
+For HTML@.  A url used for Top node up references; the default is
+@code{undef}, in that case no Top node Up reference is generated.
+For more about the Top node pointers, @pxref{First Node}.  For 
+overriding the Up pointer name in cas @code{TOP_NODE_UP_URL} is set
+and for other formats, see @code{TOP_NODE_UP} in 
+@ref{Other Customization Variables}.
 
 @item USE_ACCESSKEY
 @cindex @code{accesskey}, customization variable for
@@ -17466,9 +17466,10 @@ For stripped text content output (i.e., when
 also output comments.  Default false.
 
 @item TOP_NODE_UP
-Up node for the Top node; default @samp{(dir)}.  For overriding the
-url in HTML output, see @code{TOP_NODE_UP_URL} in @ref{HTML
-Customization Variables}.
+Up node for the Top node; default @samp{(dir)}.  This node name is 
+supposed to be already formatted for the output format.  Used for
+HTML output only if @code{TOP_NODE_UP_URL} is set to override the url, 
+see @code{TOP_NODE_UP_URL} in @ref{HTML Customization Variables}.  
 
 @item TREE_TRANSFORMATIONS
 The associated value is a comma separated list of transformations that

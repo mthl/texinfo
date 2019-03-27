@@ -231,20 +231,8 @@ $result_nodes{'index_entry_in_footnote'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'index_entry_in_footnote'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'index_entry_in_footnote'};
 
 $result_menus{'index_entry_in_footnote'} = {
   'cmdname' => 'node',

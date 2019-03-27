@@ -925,20 +925,8 @@ $result_nodes{'def_in_copying'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'def_in_copying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'def_in_copying'};
 
 $result_menus{'def_in_copying'} = {
   'cmdname' => 'node',

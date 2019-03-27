@@ -755,20 +755,8 @@ $result_nodes{'comment_space_command_on_line'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'comment_space_command_on_line'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'comment_space_command_on_line'};
 
 $result_menus{'comment_space_command_on_line'} = {
   'cmdname' => 'node',
@@ -924,7 +912,7 @@ End:
 
 $result_converted{'xml'}->{'comment_space_command_on_line'} = '<settitle spaces=" ">Settitle <spacecmd type="spc"/></settitle><!-- c settittle -->
 
-<node name="Top" spaces=" "><nodename trailingspaces="  ">Top</nodename><nodeup automatic="on">(dir)</nodeup></node><!-- comment @node Top -->
+<node name="Top" spaces=" "><nodename trailingspaces="  ">Top</nodename></node><!-- comment @node Top -->
 <top spaces=" "><sectiontitle>top element<spacecmd type="spc"/> </sectiontitle><!-- comment @top -->
 
 <frenchspacing value="on" line="on @c comment frenchspacing"></frenchspacing><!-- c comment frenchspacing -->

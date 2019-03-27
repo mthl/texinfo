@@ -271,20 +271,8 @@ $result_nodes{'default_cp_index_and_one_letter_syncodeindex'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'default_cp_index_and_one_letter_syncodeindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'default_cp_index_and_one_letter_syncodeindex'};
 
 $result_menus{'default_cp_index_and_one_letter_syncodeindex'} = {
   'cmdname' => 'node',

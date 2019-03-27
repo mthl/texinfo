@@ -159,7 +159,6 @@ our %default_customization_values = (
   'ENABLE_ENCODING' => 1,     # output accented and special characters
                               # based on @documentencoding
   # following are used in Texinfo::Structuring
-  'TOP_NODE_UP' => '(dir)',   # up node of Top node
   'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
   'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
                                      # section up.

@@ -155,7 +155,7 @@ $result_trees{'encoding_index_utf8'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => "\x{e9} \x{e9}"
+                  'text' => 'é é'
                 }
               ],
               'extra' => {
@@ -3435,20 +3435,8 @@ $result_nodes{'encoding_index_utf8'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'encoding_index_utf8'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'encoding_index_utf8'};
 
 $result_menus{'encoding_index_utf8'} = {
   'cmdname' => 'node',

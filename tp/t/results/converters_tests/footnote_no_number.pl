@@ -197,20 +197,8 @@ $result_nodes{'footnote_no_number'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'footnote_no_number'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_no_number'};
 
 $result_menus{'footnote_no_number'} = {
   'cmdname' => 'node',
@@ -255,7 +243,7 @@ $result_converted{'html_text'}->{'footnote_no_number'} = '<span id="Top"></span>
 ';
 
 
-$result_converted{'xml'}->{'footnote_no_number'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'footnote_no_number'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <para>Para<footnote><para>Footnote 1.</para></footnote>.
 </para>

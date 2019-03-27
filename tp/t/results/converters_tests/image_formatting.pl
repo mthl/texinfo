@@ -2460,20 +2460,8 @@ $result_nodes{'image_formatting'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'image_formatting'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'image_formatting'};
 
 $result_menus{'image_formatting'} = {
   'cmdname' => 'node',
@@ -2623,7 +2611,7 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
 
 
 
-$result_converted{'xml'}->{'image_formatting'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'image_formatting'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <para><code>&arobase;image&lbrace;f--ile&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile></image>
 <code>&arobase;image&lbrace;f--ile,l--i&rbrace;</code> <image where="inline"><imagefile>f--ile</imagefile><imagewidth>l--i</imagewidth></image>

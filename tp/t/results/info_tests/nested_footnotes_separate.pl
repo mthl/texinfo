@@ -233,20 +233,8 @@ $result_nodes{'nested_footnotes_separate'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'nested_footnotes_separate'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'nested_footnotes_separate'};
 
 $result_menus{'nested_footnotes_separate'} = {
   'cmdname' => 'node',

@@ -19921,18 +19921,7 @@ $result_nodes{'at_commands_in_refs'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'};
 $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'at_commands_in_refs'};
@@ -19989,7 +19978,6 @@ $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_next'}{'node_up'} = $re
 $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_prev'} = $result_nodes{'at_commands_in_refs'};
 $result_nodes{'at_commands_in_refs'}{'menu_child'}{'node_up'} = $result_nodes{'at_commands_in_refs'};
 $result_nodes{'at_commands_in_refs'}{'node_next'} = $result_nodes{'at_commands_in_refs'}{'menu_child'};
-$result_nodes{'at_commands_in_refs'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'at_commands_in_refs'};
 
 $result_menus{'at_commands_in_refs'} = {
   'cmdname' => 'node',
@@ -20582,7 +20570,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a> &nbsp; </p>
 </div>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
@@ -20912,7 +20900,7 @@ $result_converted_errors{'html'}->{'at_commands_in_refs'} = [
 
 
 
-$result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodenext><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'at_commands_in_refs'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodenext automatic="on">&hyphenbreak; &lbrace; &rbrace;</nodenext></node>
 <top spaces=" "><sectiontitle>Top</sectiontitle>
 
 <menu endspaces=" ">

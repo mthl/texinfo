@@ -376,7 +376,7 @@ sub command_href($$;$$)
 
   $filename = $self->{'current_filename'} if (!defined($filename));
 
-  if ($command->{'manual_content'} or $command->{'top_node_up'}) {
+  if ($command->{'manual_content'}) {
     return $self->_external_node_href($command, $filename, $link_command);
   }
 
@@ -458,7 +458,7 @@ sub command_text($$;$)
     cluck "in command_text($type) command not defined";
   }
 
-  if ($command->{'manual_content'} or $command->{'top_node_up'}) {
+  if ($command->{'manual_content'}) {
     my $node_content = [];
     $node_content = $command->{'node_content'}
       if (defined($command->{'node_content'}));
@@ -5818,21 +5818,6 @@ sub _external_node_href($$$$)
   my $filename = shift;
   my $link_command = shift;
   
-  # This only overrides an implicit pointer to (dir) as the Top node's Up.
-  # It has no effect if a pointer is explicitly specified,
-  # or if implicit pointers aren't being created (e.g., just a Top node).
-  if ($external_node->{'top_node_up'} 
-      and defined($self->get_conf('TOP_NODE_UP_URL'))) {
-    return $self->get_conf('TOP_NODE_UP_URL');
-  }
-
-  # In addition to that implicit (dir) as the Top node's Up, replace all
-  # other references to external file "dir" with the same TOP_NODE_UP_URL.
-  if (defined($self->get_conf('TOP_NODE_UP_URL'))
-      and $external_node->{'manual_content'}[0]->{'text'} eq "dir") {
-    return $self->get_conf('TOP_NODE_UP_URL');
-  }
-  
   #print STDERR "external_node: ".join('|', keys(%$external_node))."\n";
   my ($target_filebase, $target) = $self->_node_id_file($external_node);
 
@@ -5873,8 +5858,7 @@ sub _external_node_href($$$$)
       $target_split = 1 unless ($split_found eq 'mono');
     } else { # nothing specified for that manual, use default
       $target_split = $default_target_split;
-      if ($self->get_conf('CHECK_HTMLXREF')
-          and !$external_node->{'top_node_up'}) {
+      if ($self->get_conf('CHECK_HTMLXREF')) {
         if (defined($link_command) and $link_command->{'line_nr'}) {
           $self->line_warn(sprintf(__(
               "no htmlxref.cnf entry found for `%s'"), $manual_name),
@@ -5955,6 +5939,7 @@ foreach my $no_number_type ('text', 'tree', 'string') {
   $valid_types{$no_number_type .'_nonumber'} = 1;
 }
 
+# $element can be undef.  TODO when?
 sub _element_direction($$$$;$)
 {
   my $self = shift;
@@ -5980,6 +5965,17 @@ sub _element_direction($$$$;$)
       and $element->{'extra'}->{'directions'}->{$direction}) {
     $element_target
       = $element->{'extra'}->{'directions'}->{$direction};
+  } elsif ($element and $self->element_is_top($element) 
+            and defined($self->get_conf('TOP_NODE_UP_URL')) 
+            and ($direction eq 'Up' or $direction eq 'NodeUp')) {
+    if ($type eq 'href') {
+      return $self->get_conf('TOP_NODE_UP_URL');
+    } elsif ($type eq 'text' or $type eq 'node') {
+      return $self->get_conf('TOP_NODE_UP');
+    } else {
+      cluck("type $type not available for TOP_NODE_UP\n");
+      return '';
+    }
   }
 
   if ($element_target) {
@@ -5990,8 +5986,7 @@ sub _element_direction($$$$;$)
         . "directions :". Texinfo::Structuring::_print_directions($element);
     }
     ########
-    if ($element_target->{'type'} eq 'external_node'
-        or $element_target->{'type'} eq 'top_node_up') {
+    if ($element_target->{'type'} eq 'external_node') {
       my $external_node = $element_target->{'extra'};
       if ($type eq 'href') {
         return $self->command_href($external_node, $filename);

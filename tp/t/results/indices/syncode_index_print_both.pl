@@ -382,20 +382,8 @@ $result_nodes{'syncode_index_print_both'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'syncode_index_print_both'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'syncode_index_print_both'};
 
 $result_menus{'syncode_index_print_both'} = {
   'cmdname' => 'node',

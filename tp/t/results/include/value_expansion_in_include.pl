@@ -583,20 +583,8 @@ $result_nodes{'value_expansion_in_include'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'value_expansion_in_include'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_expansion_in_include'};
 
 $result_menus{'value_expansion_in_include'} = {
   'cmdname' => 'node',

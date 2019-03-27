@@ -343,20 +343,8 @@ $result_nodes{'double_syncodeindex'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'double_syncodeindex'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'double_syncodeindex'};
 
 $result_menus{'double_syncodeindex'} = {
   'cmdname' => 'node',
