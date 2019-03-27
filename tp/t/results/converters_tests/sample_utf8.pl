@@ -1886,18 +1886,7 @@ $result_nodes{'sample_utf8'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'sample_utf8'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'sample_utf8'}{'menu_child'}{'node_next'};
 $result_nodes{'sample_utf8'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'sample_utf8'};
@@ -1906,7 +1895,6 @@ $result_nodes{'sample_utf8'}{'menu_child'}{'node_next'}{'node_up'} = $result_nod
 $result_nodes{'sample_utf8'}{'menu_child'}{'node_prev'} = $result_nodes{'sample_utf8'};
 $result_nodes{'sample_utf8'}{'menu_child'}{'node_up'} = $result_nodes{'sample_utf8'};
 $result_nodes{'sample_utf8'}{'node_next'} = $result_nodes{'sample_utf8'}{'menu_child'};
-$result_nodes{'sample_utf8'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'sample_utf8'};
 
 $result_menus{'sample_utf8'} = {
   'cmdname' => 'node',

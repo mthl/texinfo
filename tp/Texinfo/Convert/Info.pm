@@ -52,6 +52,7 @@ $defaults{'SHOW_MENU'} = 1;
 $defaults{'EXTENSION'} = 'info';
 $defaults{'USE_SETFILENAME_EXTENSION'} = 1;
 $defaults{'OUTFILE'} = undef;
+#$defaults{'TOP_NODE_UP'} = '(dir)';
 
 sub converter_defaults($$)
 {
@@ -448,6 +449,11 @@ sub _node($$)
         $self->{'count_context'}->[-1]->{'bytes'} += $byte_count;
         $result .= $node_text;
       }
+    } elsif ($direction eq 'Up' and $node->{'extra'}->{'normalized'} eq 'Top') {
+      # add an up direction for Top node
+      my $text = ",  $direction: ".$self->get_conf('TOP_NODE_UP');
+      $self->_add_text_count($text);
+      $result .= $text;
     }
   }
   $result .="\n\n";

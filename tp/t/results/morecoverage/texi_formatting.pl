@@ -4436,25 +4436,13 @@ $result_nodes{'texi_formatting'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_next'}{'node_prev'} = $result_nodes{'texi_formatting'}{'menu_child'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_next'}{'node_up'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_prev'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'menu_child'}{'node_up'} = $result_nodes{'texi_formatting'};
 $result_nodes{'texi_formatting'}{'node_next'} = $result_nodes{'texi_formatting'}{'menu_child'};
-$result_nodes{'texi_formatting'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'texi_formatting'};
 
 $result_menus{'texi_formatting'} = {
   'cmdname' => 'node',
@@ -4843,7 +4831,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="Top-section"></span><h1 class="top">Top section</h1>
 

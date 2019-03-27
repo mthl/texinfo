@@ -248,20 +248,8 @@ $result_nodes{'format_in_titlepage_titlepage'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'format_in_titlepage_titlepage'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'format_in_titlepage_titlepage'};
 
 $result_menus{'format_in_titlepage_titlepage'} = {
   'cmdname' => 'node',

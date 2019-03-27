@@ -485,7 +485,7 @@ $result_errors{'equivalent_nodes'} = [
 $result_converted{'info'}->{'equivalent_nodes'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: node
+File: ,  Node: Top,  Next: node,  Up: (dir)
 
 * Menu:
 
@@ -499,7 +499,7 @@ File: ,  Node: node,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: node83
+Node: node95
 
 End Tag Table
 

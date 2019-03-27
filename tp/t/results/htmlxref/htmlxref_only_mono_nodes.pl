@@ -3550,18 +3550,7 @@ $result_nodes{'htmlxref_only_mono_nodes'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_prev'} = $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'menu_child'}{'node_next'};
 $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'menu_child'}{'node_next'}{'node_next'}{'node_up'} = $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'};
@@ -3573,7 +3562,6 @@ $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'node_next'} = $result_n
 $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'node_prev'} = $result_nodes{'htmlxref_only_mono_nodes'};
 $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'}{'node_up'} = $result_nodes{'htmlxref_only_mono_nodes'};
 $result_nodes{'htmlxref_only_mono_nodes'}{'node_next'} = $result_nodes{'htmlxref_only_mono_nodes'}{'menu_child'};
-$result_nodes{'htmlxref_only_mono_nodes'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'htmlxref_only_mono_nodes'};
 
 $result_menus{'htmlxref_only_mono_nodes'} = {
   'cmdname' => 'node',

@@ -3040,20 +3040,8 @@ $result_nodes{'accent'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'accent'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'accent'};
 
 $result_menus{'accent'} = {
   'cmdname' => 'node',
@@ -3225,7 +3213,7 @@ $result_converted{'html_text'}->{'accent'} = '<span id="Top"></span><span id="to
 ';
 
 
-$result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'accent'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 <top spaces=" "><sectiontitle>top</sectiontitle>
 
 <para>should be e&textlsquo;: <accent type="grave">e</accent> <accent type="grave" bracketed="off">e</accent>

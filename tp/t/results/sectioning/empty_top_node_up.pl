@@ -357,18 +357,11 @@ $result_nodes{'empty_top_node_up'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'empty_top_node_up'}{'menu_child'}{'node_prev'} = $result_nodes{'empty_top_node_up'};
 $result_nodes{'empty_top_node_up'}{'menu_child'}{'node_up'} = $result_nodes{'empty_top_node_up'};
 $result_nodes{'empty_top_node_up'}{'node_next'} = $result_nodes{'empty_top_node_up'}{'menu_child'};
-$result_nodes{'empty_top_node_up'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'empty_top_node_up'};
 
 $result_menus{'empty_top_node_up'} = {
   'cmdname' => 'node',
@@ -397,7 +390,7 @@ $result_errors{'empty_top_node_up'} = [];
 $result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: 
+File: ,  Node: Top,  Next: first,  Up: (dir)
 
 empty top node up
 *****************
@@ -413,7 +406,7 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first127
+Node: first132
 
 End Tag Table
 
