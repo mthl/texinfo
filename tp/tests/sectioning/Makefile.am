@@ -1,7 +1,6 @@
 # sectioning/Makefile.am - public domain.
  
 EXTRA_DIST = \
- equivalent_nodes.texi \
  sectioning.texi \
  \
  list-of-tests \

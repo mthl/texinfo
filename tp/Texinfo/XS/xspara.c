@@ -1138,6 +1138,9 @@ xspara_add_text (char *text)
               xspara_allow_end_sentence ();
             }
           /*************** Word character ******************************/
+          /* Note: width == 0 includes accent characters which should not 
+             properly increase the column count.  This is not what the pure 
+             Perl code does, though. */
           else if (width == 1 || width == 0)
             {
               char *added_word;

@@ -1,4 +1,13 @@
-2019-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Small changes.
+
+	* tp/Texinfo/XS/xspara.c (xspara_add_text): Add a comment.
+	* tp/tests/sectioning/Makefile.am: Do not try to distribute a 
+	removed file.
+	* tp/Texinfo/XS/po/texinfo.pot: Untrack in git.
+
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Make test results consistent for older versions of perl.
 
