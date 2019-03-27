@@ -64,6 +64,7 @@ our %all_converters_defaults = (
   'language_config_dirs' => undef,
   'output_format'        => undef,
   'SPLIT_SIZE'           => 300000,
+  'TOP_NODE_UP'          => '(dir)',   # up node of Top node default value
   'paragraphindent'      => 3,
   'fillcolumn'           => 72,
   'expanded_formats'     => undef,

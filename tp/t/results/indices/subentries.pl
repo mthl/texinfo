@@ -554,20 +554,8 @@ $result_nodes{'subentries'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'subentries'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'subentries'};
 
 $result_menus{'subentries'} = {
   'cmdname' => 'node',

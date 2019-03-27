@@ -1,3 +1,37 @@
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix test of XS modules.
+
+	* tp/Texinfo/XS/TestXS.pm: Declare init function as having a 
+	single argument, and return a true value.  Otherwise the test 
+	for XS modules fails.  Report from Patrice Dumas.
+
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Small changes.
+
+	* tp/Texinfo/XS/xspara.c (xspara_add_text): Add a comment.
+	* tp/tests/sectioning/Makefile.am: Do not try to distribute a 
+	removed file.
+	* tp/Texinfo/XS/po/texinfo.pot: Untrack in git.
+
+2019-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make test results consistent for older versions of perl.
+
+	* tp/Texinfo/Convert/Plaintext.pm (@U): Check argument to @U 
+	before attempting to output the character.  The check inside 
+	eval doesn't work for old versions of perl.  Trim down some 
+	comments.
+
+2019-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make test results consistent between XS and non-XS modules.
+
+	* tp/Texinfo/XS/xspara.c (xspara_add_text): Treat characters 
+	with wcwidth 0 the same as those with wcwidth 1.  This is wrong, 
+	but gives consistency for the test results.
+
 2019-03-24         Arnold D. Robbins     <arnold@skeeve.com>
 
 	@see in index entries (experimental).

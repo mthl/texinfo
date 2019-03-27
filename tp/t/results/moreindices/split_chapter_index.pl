@@ -1845,25 +1845,13 @@ $result_nodes{'split_chapter_index'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'split_chapter_index'}{'menu_child'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'split_chapter_index'}{'menu_child'}{'menu_child'};
 $result_nodes{'split_chapter_index'}{'menu_child'}{'menu_child'}{'node_up'} = $result_nodes{'split_chapter_index'}{'menu_child'};
 $result_nodes{'split_chapter_index'}{'menu_child'}{'node_prev'} = $result_nodes{'split_chapter_index'};
 $result_nodes{'split_chapter_index'}{'menu_child'}{'node_up'} = $result_nodes{'split_chapter_index'};
 $result_nodes{'split_chapter_index'}{'node_next'} = $result_nodes{'split_chapter_index'}{'menu_child'};
-$result_nodes{'split_chapter_index'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'split_chapter_index'};
 
 $result_menus{'split_chapter_index'} = {
   'cmdname' => 'node',

@@ -3479,20 +3479,8 @@ $result_nodes{'encoding_index_ascii'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'encoding_index_ascii'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'encoding_index_ascii'};
 
 $result_menus{'encoding_index_ascii'} = {
   'cmdname' => 'node',

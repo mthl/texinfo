@@ -191,20 +191,8 @@ $result_nodes{'note_in_strong_end_of_line'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'note_in_strong_end_of_line'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'note_in_strong_end_of_line'};
 
 $result_menus{'note_in_strong_end_of_line'} = {
   'cmdname' => 'node',

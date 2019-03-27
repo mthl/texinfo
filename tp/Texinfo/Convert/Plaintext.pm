@@ -2277,9 +2277,6 @@ sub _convert($$)
         $arg = $root->{'args'}->[0]->{'contents'}->[0]->{'text'};
       }
       if ($arg) {
-        # The general idea is to output UTF-8 if that has been
-        # explicitly given as the encoding, else simple ASCII.
-        # 
         # Syntactic checks on the value were already done in Parser.pm,
         # but we have one more thing to test: since this is the one
         # place where we might output actual UTF-8 binary bytes, we have
@@ -2287,12 +2284,9 @@ sub _convert($$)
         # and will not output UTF-8 for Unicode non-characters such as
         # U+10FFFF.  In this case, silently fall back to plain text, on
         # the theory that the user wants something.
-        # 
-        # Having an option to output binary bytes nevertheless is
-        # possible, but seems unlikely to be practically useful, so skip
-        # it until it gets requested.
         my $res;
         if ($self->{'to_utf8'}) {
+          my $error = 0;
           # The warning about non-characters is only given when the code
           # point is attempted to be output, not just manipulated.
           # http://stackoverflow.com/questions/5127725/how-could-i-catch-an-unicode-non-character-warning
@@ -2300,8 +2294,7 @@ sub _convert($$)
           # Therefore, we have to try to output it within an eval.
           # Since opening /dev/null or a temporary file means
           # more system-dependent checks, use a string as our
-          # filehandle; this was introduced ca.2000, which should be old
-          # enough.  We hope.
+          # filehandle.
           eval {
             use warnings FATAL => qw(all);
             my ($fh, $string);
@@ -2311,7 +2304,15 @@ sub _convert($$)
           };
           if ($@) {
             warn "\@U chr(hex($arg)) eval failed: $@\n" if ($self->{'DEBUG'});
-            $res = "U+$arg";       # chr won't work
+            $error = 1;
+          } elsif (hex($arg) > 0x10FFFF) {
+            # The check above appears not to work in older versions of perl,
+            # so check the argument is not greater the maximum Unicode code 
+            # point.
+            $error = 1;
+          }
+          if ($error) {
+            $res = "U+$arg";
           } else {
             $res = chr(hex($arg)); # ok to call chr
           }

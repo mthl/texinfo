@@ -1183,23 +1183,11 @@ $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'} = {
       }
     }
   ],
-  'node_next' => {},
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
-  }
+  'node_next' => {}
 };
 $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'}{'menu_child'}{'node_prev'} = $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'};
 $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'}{'menu_child'}{'node_up'} = $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'};
 $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'}{'node_next'} = $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'}{'menu_child'};
-$result_nodes{'printindex_index_entry_in_copying_no_insertcopying'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'};
 
 $result_menus{'printindex_index_entry_in_copying_no_insertcopying'} = {
   'cmdname' => 'node',

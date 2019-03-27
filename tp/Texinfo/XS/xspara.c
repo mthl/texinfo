@@ -1131,8 +1131,17 @@ xspara_add_text (char *text)
                   state.end_sentence = -2;
                 }
             }
+          else if (wc == L'\b')
+            {
+              /* Code to say that a following full stop (or question or
+                 exclamation mark) may be an end of sentence. */
+              xspara_allow_end_sentence ();
+            }
           /*************** Word character ******************************/
-          else if (width == 1)
+          /* Note: width == 0 includes accent characters which should not 
+             properly increase the column count.  This is not what the pure 
+             Perl code does, though. */
+          else if (width == 1 || width == 0)
             {
               char *added_word;
               added_word = malloc (char_len + 1);
@@ -1169,12 +1178,6 @@ xspara_add_text (char *text)
                   state.end_sentence = -2;
                   state.last_letter = wc;
                 }
-            }
-          else if (wc == L'\b')
-            {
-              /* Code to say that a following full stop (or question or
-                 exclamation mark) may be an end of sentence. */
-              xspara_allow_end_sentence ();
             }
           else
             {

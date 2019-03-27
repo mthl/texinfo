@@ -396,20 +396,8 @@ $result_nodes{'paragraphindent_and_preamble'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'paragraphindent_and_preamble'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'paragraphindent_and_preamble'};
 
 $result_menus{'paragraphindent_and_preamble'} = {
   'cmdname' => 'node',

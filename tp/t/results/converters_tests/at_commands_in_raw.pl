@@ -1001,20 +1001,8 @@ $result_nodes{'at_commands_in_raw'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'at_commands_in_raw'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'at_commands_in_raw'};
 
 $result_menus{'at_commands_in_raw'} = {
   'cmdname' => 'node',
@@ -1259,7 +1247,7 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span>
 ';
 
 
-$result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'at_commands_in_raw'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <macro name="othermacro" line=" othermacro{}">Other macro
 </macro>

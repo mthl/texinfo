@@ -677,20 +677,8 @@ $result_nodes{'printindex_merged_indices_code_style'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'printindex_merged_indices_code_style'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'printindex_merged_indices_code_style'};
 
 $result_menus{'printindex_merged_indices_code_style'} = {
   'cmdname' => 'node',
@@ -830,7 +818,7 @@ $result_converted{'html_text'}->{'printindex_merged_indices_code_style'} = '<spa
 ';
 
 
-$result_converted{'xml'}->{'printindex_merged_indices_code_style'} = '<node name="Top" spaces=" "><nodename>Top</nodename><nodeup automatic="on">(dir)</nodeup></node>
+$result_converted{'xml'}->{'printindex_merged_indices_code_style'} = '<node name="Top" spaces=" "><nodename>Top</nodename></node>
 
 <synindex from="cp" to="fn" line="cp fn"></synindex>
 

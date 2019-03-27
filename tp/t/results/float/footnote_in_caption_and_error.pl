@@ -323,20 +323,8 @@ $result_nodes{'footnote_in_caption_and_error'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'footnote_in_caption_and_error'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'footnote_in_caption_and_error'};
 
 $result_menus{'footnote_in_caption_and_error'} = {
   'cmdname' => 'node',

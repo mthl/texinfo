@@ -1006,20 +1006,8 @@ $result_nodes{'placed_things_before_node'} = {
     },
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'placed_things_before_node'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'placed_things_before_node'};
 
 $result_menus{'placed_things_before_node'} = {
   'cmdname' => 'node',

@@ -943,20 +943,8 @@ $result_nodes{'value_in_index_commands'} = {
   'extra' => {
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
-  },
-  'node_up' => {
-    'extra' => {
-      'manual_content' => [
-        {
-          'text' => 'dir'
-        }
-      ],
-      'top_node_up' => {}
-    },
-    'type' => 'top_node_up'
   }
 };
-$result_nodes{'value_in_index_commands'}{'node_up'}{'extra'}{'top_node_up'} = $result_nodes{'value_in_index_commands'};
 
 $result_menus{'value_in_index_commands'} = {
   'cmdname' => 'node',
