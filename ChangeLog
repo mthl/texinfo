@@ -1,5 +1,14 @@
 2019-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make test results consistent for older versions of perl.
+
+	* tp/Texinfo/Convert/Plaintext.pm (@U): Check argument to @U 
+	before attempting to output the character.  The check inside 
+	eval doesn't work for old versions of perl.  Trim down some 
+	comments.
+
+2019-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Make test results consistent between XS and non-XS modules.
 
 	* tp/Texinfo/XS/xspara.c (xspara_add_text): Treat characters 
