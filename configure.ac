@@ -480,7 +480,6 @@ AC_CONFIG_FILES([\
   util/Makefile
   texindex/Makefile
   tp/Makefile
-  tp/Texinfo/ModulePath.pm
   tp/tests/Makefile
   tp/tests/many_input_files/Makefile
   tp/tests/sectioning/Makefile
