@@ -498,7 +498,7 @@ element: @node first
 $result_converted{'info'}->{'top_node_up_url'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: (dir)
+File: ,  Node: Top,  Next: first,  Up: @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
 
 internal top node up
 ********************
@@ -514,7 +514,7 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first138
+Node: first180
 
 End Tag Table
 
@@ -562,7 +562,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Next: <a href="#first" accesskey="n" rel="next">first</a>, Up: <a href="http://www.gnu.org/manual/" accesskey="u" rel="up">@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals</a> &nbsp; </p>
 </div>
 <span id="internal-top-node-up"></span><h1 class="top">internal top node up</h1>
 
