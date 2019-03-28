@@ -101,7 +101,7 @@ and multi-level index entries.
 This is a @dfn{literate program}, written using the
 @uref{https://github.com/arnoldrobbins/texiwebjr, @sc{TexiWeb Jr.@:}
 literate programming system}.  The underlying documentation system is
-@uref{https://www.gnu.org/software/texinfo, Texinfo} the GNU
+@uref{https://www.gnu.org/software/texinfo, Texinfo}, the GNU
 documentation formatting language.  A single source file produces the
 runnable program, a printable document, and an online document.
 
@@ -185,7 +185,7 @@ any subtopics. ``See'' entries do not have a page number of their own.
 
 @item ``See also @dots{}'' entries
 Entries that point at other entries, but often do have
-subsequent direct references of their own.
+subsequent direct page references of their own.
 ``See also'' entries do not have a page number of their own.
 @end table
 
@@ -200,7 +200,7 @@ coffee makers . . . . . . . . . . 15         @ii{Single level entry}
              pink . . . . . . . . 35         @ii{Another triple level entry}
 @end example
 
-The same heirarchy might appear without page numbers:
+The same hierarchy might appear without page numbers:
 
 @example
 coffee makers,                               @ii{Single level entry}
@@ -213,7 +213,7 @@ The ``See'' and ``See also'' entries don't have page numbers:
 
 @example
 espresso makers, @ii{See} coffee makers
-toasters, @ii{See Also} coffee makers
+toasters, @ii{See also} coffee makers
 @end example
 
 @node Texinfo indexing commands
@@ -243,21 +243,21 @@ Additionally, each part may have an @code{@@sortas} clause:
 ``See'' and ``See also'' entries look like this:
 
 @example
-@@cindex espresso makers @@see@{coffee makers@}
+@@cindex espresso makers @@seeentry@{coffee makers@}
 @@cindex toasters @@seealso@{coffee makers@}
 @end example
 
 @noindent
-Note that there is (or should be) no comma between the primary text and the @code{@@see}
+Note that there is (or should be) no comma between the primary text and the @code{@@seeentry}
 or @code{@@seealso}: @file{texindex.awk} supplies a comma in the final
 printed entry.
 
 @node Input form
 @section Input To The Program
 
-The output from @file{texinfo.tex} contain the data for the
+The output from @file{texinfo.tex} contains the data for the
 different kinds of index entries described in the previous
-section.  Each line is an ``entry.'' Each entry has from three
+section.  Each line is an @dfn{entry}. Each entry has from three
 to five fields, where the first three fields represent the same
 data for all entries.  Entries look as follows:
 
@@ -292,11 +292,12 @@ This field should contain only ASCII characters.
 When there are subentries, the sort key is the concatenation of three
 fields (or their sort @code{@@sortas} clauses), separated by
 @code{@@subentry} and a space. @file{texindex.awk} will need to recognize
-where there are multiple sort keys in order to sort entries appropriately.
+where there are multiple sort keys in order to print entries appropriately.
 
 @item page or see
-Either a page number (as a roman numeral or an integer), or an
-indication that that this is a ``See'' or ``See also'' entry.
+Either a page number (as a roman numeral or an integer, possibly
+with additional markup), or an indication that that this is a ``See''
+or ``See also'' entry.
 
 @item primary
 The primary text of the index entry.
@@ -336,22 +337,17 @@ The commands are:
 Besides the index entries,
 @file{texindex.awk} must output special lines indicating the
 first character (the @dfn{initial}) of keys grouped together, but only
-if there is more than one initial used throughout the input file.  This
-output looks like:
-
-@example
-@@initial @{A@}
-@end example
+if there is more than one initial used throughout the input file.
 
 @item @@entry
 This is for a plain index entry, or for the primary term in a multi-level
 index entry.  When the primary appears only with a secondary entry,
 there won't be a page number.
 
-The page number will also be empty when there
-is an @code{@@see} or @code{@@seealso} in the entry. In that case,
+No page number is printed when there
+is an @code{@@seeentry} or @code{@@seealso} in the entry. In that case,
 the output from @file{texindex.awk} should be a combination of
-the original input fields 3 and 2.
+the original input fields three and two.
 
 @item @@secondary
 This is for a secondary index entry in a multi-level
@@ -360,7 +356,8 @@ there won't be a page number.
 
 @item @@tertiary
 This is for a tertiary index entry in a multi-level
-index entry.  This one always has a page number.
+index entry.  This one always has a page number, unless it is
+a ``see'' or ``see also'' entry.
 @end table
 
 
@@ -412,7 +409,7 @@ The result will be a single entry, using @code{@@file},
 accumulating the page numbers.
 
 @example
-@@entry @{@@file @{field_split()@} function@}@{2, 7@}
+@@entry@{@@file @{field_split()@} function@}@{2, 7@}
 @end example
 
 @item
@@ -439,6 +436,8 @@ arrays and a number of other important features over the original
 In practice, we can also rely on basic features added in POSIX
 @command{awk} should we need to (such as @code{CONVFMT}), although
 at the moment there are no such features used by @file{texindex.awk}.
+
+@FIXME{Need to test with multiple versions.}
 
 @node High-level organization
 @chapter High-level Organization
@@ -585,10 +584,9 @@ the data properly.
 @section Setup For Each Input File
 
 At the beginning of each input file, the @code{beginfile()} function
-clears our variables from any previous processing (@code{Data},
-@code{Keys}, etc.)@: and sets up the output file name.  We always append
-an @samp{s} to the name of the input file, which has become the standard
-convention.
+clears our variables from any previous processing and sets up the
+output file name.  We always append an @samp{s} to the name of the input
+file. This is the standard convention.
 
 When @code{beginfile()} is called, the first record has already been
 read, so it's possible to perform the checks for a Texinfo index file:
@@ -601,46 +599,22 @@ The first character must be either @samp{\} or @samp{@@}
 the command character inside the first key. This includes the command
 character itself.
 
+Finally, several variables are set to regular expressions that
+match control sequences of interest.
+
 @cindex @code{beginfile()} function
 @cindex @code{Output_file} variable
-@c @cindex @code{Data} array
-@c @cindex @code{Keys} array
-@cindex @code{Seen} array
-@cindex @code{Numentries} array
-@cindex @code{Entries} variable
-@cindex @code{Pagedata} variable
-@cindex @code{Printed} variable
-@cindex @code{Sortkeys} variable
 @cindex @code{Do_initials} variable
 @cindex @code{Prev_initial} variable
-@cindex @code{del_array()} function
 @cindex @code{Command_char} variable
 @cindex @code{Special_chars} variable
-@cindex @code{See_re} variable
-@cindex @code{See_also} variable
+@cindex @code{Entries} variable
 @<@code{beginfile()} function@>=
 function beginfile(filename)
 {
 	Output_file = filename "s"
 
-	# Reinitialize these for each input file
-	# FIXME: do the del_array where each array is introduced, used an LP stanza here
-#	del_array(Data)
-	del_array(Keys)
-	del_array(Seen)
-	del_array(Numentries)
-	del_array(Pagedata)
-	del_array(Printed)
-	del_array(Sortkeys)
-	del_array(See)				# "see" entries
-	del_array(See_count)		# count "see" entries per index record
-	del_array(Seealso)			# "see also" entries
-	del_array(Seealso_count)	# count "see" entries per index record
-	del_array(Primary)			# primary part of an entry, actual text
-	del_array(Secondary)		# secondary part of an entry, actual text
-	del_array(Tertiary)			# tertiary part of an entry, actual text
-	del_array(Allkeys)
-	del_array(Printed)
+	@<Clear out all data arrays@>
 	Entries = 0
 	Do_initials = FALSE
 	Prev_initial = ""
@@ -652,10 +626,7 @@ function beginfile(filename)
 
 	Special_chars = "{}" Command_char
 
-	See_re = make_regexp("%see")
-	Seealso_re = make_regexp("%seealso")
-
-	Subentry_re = make_regexp(" *%subentry +")
+	@<Set up control sequence regexps@>
 }
 @
 
@@ -706,6 +677,14 @@ if ($0 in Seen)
 Seen[$0] = TRUE
 @
 
+We have to clear out the @code{Seen} array at the start of each input file.
+
+@cindex @code{del_array()} function
+@<Clear out all data arrays@>=
+# Reinitialize these for each input file
+del_array(Seen)
+@
+
 @node Remove leading @code{\entry}
 @subsection Remove The Leading @code{\entry} Or @code{@@entry}
 
@@ -724,12 +703,12 @@ $0 = substr($0, 7)  # remove leading \entry or @@entry
 initial = extract_initial($0)
 @
 
-The sort key is the first of the line after @samp{\entry}, 
+The sort key is the first part of the line after @samp{@@entry}, 
 starting with an open brace, and continuing to a matching close brace.
 
 The very first field character of the sort key can be an open brace.
 If so, we extract the component of the sort key surrounded by balanced 
-braces.  We don't account for \@{ or \@} inside this component, as 
+braces.  We don't account for @samp{\@{} or @samp{\@}} inside this component, as 
 @file{texinfo.tex} isn't expected to produce such output.
 
 An example can be seen in what older versions of @file{texinfo.tex}
@@ -766,7 +745,7 @@ function extract_initial(key,  initial, nextchar, i, l, kchars)
 		initial = substr(key, 2, i - 2)
 	} else if (kchars[2] == Command_char) {
 		nextchar = kchars[3]
-		if (initial == Command_char && (nextchar == "{" || nextchar == "}"))
+		if (initial == Command_char && index("{}", nextchar) > 0)
 			initial = substr(key, 2, 3)
 		else {
 			initial = toupper(nextchar)
@@ -836,23 +815,23 @@ The tertiary index text, if present.
 The page numbers on which identical entries occur.
 
 @item See_count
-The number of ``see @dots{}'' entries for a given
+The number of ``see'' entries for a given
 index line. Nothing prevents there being multiple such:
 
-@cindex toast @see{toaster}
-@cindex toast @see{jam}
+@cindex toast @seeentry{toaster}
+@cindex toast @seeentry{jam}
 @example
-@@cindex toast @@see@{toaster@}
-@@cindex toast @@see@{jam@}
+@@cindex toast @@seeentry@{toaster@}
+@@cindex toast @@seeentry@{jam@}
 @end example
 
 @noindent
 So we have to be prepared to handle such input.
 The @code{See_count} array counts the number of such
-texts as there may be
+texts as there may be.
 
 @item See
-This is the actual texts of the @samp{@@see} value for
+The actual texts of the @samp{@@seeentry} value for
 the line's sort key.   Each entry goes into
 @code{See[key, 1]}, @code{See[key, 2]}, etc., up to
 @code{See_count[key]}.
@@ -865,7 +844,7 @@ but for @code{@@seealso} entries.
 
 In the event that a particular key has more than one associated output
 text, we'll keep the first and ignore the remainder (this is the same
-behavior as the C implementation).  @xref{Requirements}.
+behavior as the C implementation).  @xref{Assumptions}.
 
 For page numbers, we merely append the page number field from the input,
 preceded by a comma and space, unless that page number was already the
@@ -877,13 +856,13 @@ numerals (from the so-called front matter), should there be such.
 @cindex @code{Keys} array
 @cindex @code{Allkeys} array
 @cindex @code{Entries} variable
-In addition to all the previously described arrays, the key is
-stored in the @code{Keys} array the first time it is seen; this array
-is sorted later on.  For now, its indices are just incremented integers,
-stored in the global @code{Entries} variable.
-The @code{Allkeys} associative array lets us track if we have seen a key before.
+In addition to all the previously described arrays, the key is stored in
+the @code{Keys} array the first time it is seen; this array is sorted
+later on.  Its indices are just incremented integers, stored in the
+global @code{Entries} variable.  The @code{Allkeys} associative array
+lets us easily track if we have seen a key before.
 
-@cindex @code{See_re} variable
+@cindex @code{Seeentry_re} variable
 @cindex @code{Seealso_re} variable
 @<Store the data for this line in the various arrays@>=
 if (! (key in Allkeys)) {
@@ -898,7 +877,7 @@ if (! (key in Allkeys)) {
 	if (tertiary_text)
 		Tertiary[key] = tertiary_text
 
-	if (pagenum ~ See_re) {
+	if (pagenum ~ Seeentry_re) {
 		See_count[key]++
 		See[key, See_count[key]] = pagenum
 	} else if (pagenum ~ Seealso_re) {
@@ -914,7 +893,7 @@ if (! (key in Allkeys)) {
 	# earlier removal of exact duplicates, but we could have
 	# an identical key with different formatting of actual text.
 
-	if (pagenum ~ See_re) {
+	if (pagenum ~ Seeentry_re) {
 		See_count[key]++
 		See[key, See_count[key]] = pagenum
 	} else if (pagenum ~ Seealso_re) {
@@ -925,6 +904,37 @@ if (! (key in Allkeys)) {
 		Pagedata[key] = Pagedata[key] ", " pagenum
 	}
 }
+@
+
+The @code{Seeentry_re} and @code{Seealso_re} variables are regular
+expressions that match the corresponding @TeX{} control sequence.
+They're initialized once for each input file.
+The @code{make_regexp} function is described in @ref{@code{make_regexp}}.
+
+@cindex @code{Seeentry_re} variable
+@cindex @code{Seealso_re} variable
+@cindex @code{make_regexp} function
+@<Set up control sequence regexps@>=
+Seeentry_re = make_regexp("%seeentry")
+Seealso_re = make_regexp("%seealso")
+@
+
+Here too, we have to clear out the arrays we've used at the start of
+each input file.
+
+@<Clear out all data arrays@>=
+del_array(Keys)
+del_array(Allkeys)
+del_array(Initials)
+del_array(Numfields)
+del_array(Primary)
+del_array(Secondary)
+del_array(Tertiary)
+del_array(See)
+del_array(See_count)
+del_array(Seealso)
+del_array(Seealso_count)
+del_array(Pagedata)
 @
 
 @node Check for more than one initial
@@ -1000,8 +1010,10 @@ function field_split( \
 }
 @
 
-If the character following the command character is an open brace, close
-brace, or the command character itself, we pull it in.  Otherwise, the
+If the command character is doubled, we pass that on through, so that
+@TeX{} will process it correctly.
+If the character following the command character is an open brace or close
+brace, we pull it in.  Otherwise, the
 command character is left alone as part of the field.
 
 @<Handle the character after the command character@>=
@@ -1041,7 +1053,7 @@ delim_count = 1
 
 Upon end of input, the processing is straightforward: sort the entries
 and write them out.  Additionally, if we are printing the initial,
-handle that.  (That printing task is delegated to a separate function.)
+handle that.  (That printing task is delegated to a small function.)
 
 @cindex @code{endfile()} function
 @cindex @code{quicksort()} function
@@ -1103,7 +1115,7 @@ function print_initial(initial)
 @cindex Hoare, C.A.R.
 
 Sorting uses a standard quicksort algorithm, with a @code{less_than()}
-function (defined in the next function) supplying the comparison.
+function supplying the comparison (@pxref{Comparing index entries}).
 
 @cindex @code{less_than()} function
 @cindex @code{quicksort()} function
@@ -1162,12 +1174,12 @@ following code is based on the original C @command{texindex}, although
 the actual comparison algorithm is more sophisticated.
 
 We set up an @code{Ordval} array to map characters to numeric values.
-Most characters map to their ASCII code.  We add 512 to the value of
-each of the digits.  Both uppercase and lowercase letters map to the
-same numeric value, which is the ASCII code for the uppercase letter
-plus 512. (This code should also work for EBCDIC systems,
-although @TeX{} does everything in ASCII, so it's not likely to make a
-difference.)
+Most characters map to their ASCII code.  We add 512 to the value of each
+of the digits; this causes them to come after all symbols.  Both uppercase
+and lowercase letters map to the same numeric value, which is the ASCII
+code for the uppercase letter plus 512. Thus letters come after digits.
+(This code should also work for EBCDIC systems, although @TeX{} does
+everything in ASCII, so it's not likely to make a difference.)
 
 The table must be built completely before changing the mapping of the
 letters, because all of the uppercase and lowercase letters must be in
@@ -1180,7 +1192,7 @@ BEGIN {
 		c = sprintf("%c", i)
 		Ordval[c] = i  # map character to value
 
-		if ((n = isdigit(c)) > 0) {
+		if (isdigit(c)) {
 			Ordval[c] += 512
 		}
 	}
@@ -1315,7 +1327,7 @@ function less_than(left, right,    len_l, len_r, len, chars_l, chars_r)
 @section Printing The Final Results
 
 Printing an index entry is where all the data we collected
-get used.  Most of the complexity is here, since we have to
+gets used.  Much of the complexity is here, since we have to
 output up to three lines per entry.
 
 @menu
@@ -1357,9 +1369,7 @@ Consider the three-level case, for an entry like:
 There may not have been separate preceding entries like @samp{@@cindex
 coffee makers} or @samp{@@cindex coffee makers @@subentry electric}.  Thus,
 we have to generate the preceding @code{@@entry} and @code{@@secondary}
-lines before generating the final @code{@@tertiary} line.  Thus we
-have to make sure to print the leading primary and secondary entries,
-if necessary.
+lines before generating the final @code{@@tertiary} line.
 
 Printing the entries is similar no matter what kind of entry; there's
 a lot of work to be done so it's isolated in the @code{print_entry()}
@@ -1382,16 +1392,18 @@ print_entry(key, "tertiary", Tertiary)
 
 Printing a single entry is quite involved:
 
-@<actually printing an entry@>=
+@<Print an entry@>=
 function print_entry(key, entry_command, entry_text)
 {
-	if (@<key has one or more ``see'' entries@>) {
-		print_see_entry(key, entry_command, entry_text, See_count, See)
+	if ((key, 1) in See) {		# at least one ``see''
+		print_see_entry(key, entry_command, entry_text,
+						See_count, See)
 	}
-	if (@<key has one or more ``see also'' entries@>) {
-		print_see_entry(key, entry_command, entry_text, Seealso_count, Seealso)
+	if ((key, 1) in Seealso) {	# at least one ``see also''
+		print_see_entry(key, entry_command, entry_text,
+						Seealso_count, Seealso)
 	}
-	if (@<key has page numbers@>) {
+	if (key in Pagedata) {		# at least one page number
 		printf("%c%s{%s}{%s}\n",
 			Command_char, entry_command,
 			entry_text[key], Pagedata[key]) > Output_file
@@ -1400,20 +1412,16 @@ function print_entry(key, entry_command, entry_text)
 }
 @
 
-@<key has one or more ``see'' entries@>=
-(key, 1) in See
+Be sure to empty out @code{Printed} at the start of each file.
+
+@<Clear out all data arrays@>=
+del_array(Printed)
 @
 
-@<key has one or more ``see also'' entries@>=
-(key, 1) in Seealso
-@
-
-@<key has page numbers@>=
-key in Pagedata
-@
+And add our function to the group of work functions.
 
 @<Work functions@>=
-@<actually printing an entry@>
+@<Print an entry@>
 @
 
 Printing ``see'' or ``see also'' entries is potentially messy if there
@@ -1421,8 +1429,9 @@ are more than one. (A good index won't have more than one, but nothing
 prevents there being multiple such entries, so we have to handle them.)
 
 @<print a ``see'' or ``see also'' entry@>=
-function print_see_entry(key, entry_command, entry_text, count_array, see_text_array,
-						i, count, see_entries)
+function print_see_entry(key, entry_command, entry_text,	# parameters
+						count_array, see_text_array,		# parameters
+						i, count, see_entries)				# locals
 {
 	count = count_array[key]
 	if (count == 1) {	# the easy case
@@ -1448,8 +1457,8 @@ function print_see_entry(key, entry_command, entry_text, count_array, see_text_a
 			entry_text[key], see_entries[i]) > Output_file
 }
 @
-@cindex test case @see{testing}
-@cindex test case @see{brief case}
+@cindex test case @seeentry{testing}
+@cindex test case @seeentry{brief case}
 @cindex coffee @seealso{tea}
 @cindex coffee @seealso{coca-cola}
 
@@ -1459,11 +1468,23 @@ function print_see_entry(key, entry_command, entry_text, count_array, see_text_a
 @
 
 Let's take a look at printing leading higher level entries
-when needed:
+when needed. First, we need the subparts of the sort key.
 
+@cindex @code{Subentry_re} variable
 @<split the sort key into subparts@>=
 n = split(key, subparts, Subentry_re)
 @
+
+@<Set up control sequence regexps@>=
+Subentry_re = make_regexp(" *%subentry +")
+@
+
+The subparts represent the key for that entry,
+which will have an index in @code{Printed} if
+we already printed such an entry.
+
+Once we have the subparts, we can check if the
+relevant entry was printed.
 
 @<print primary entry if necessary@>=
 if (! (subparts[1] in Printed)) {
@@ -1473,7 +1494,7 @@ if (! (subparts[1] in Printed)) {
 }
 @
 
-Printing the secondary is a little subtle; we have to check
+Printing the secondary entry is a little subtle; we have to check
 that the combination of primary and secondary have been
 printed and use that combination as the index into @code{Printed}.
 
@@ -1485,6 +1506,9 @@ if (! (subkey in Printed)) {
 	Printed[subkey] = True
 }
 @
+
+Finally, we declare the relevant local variables
+that we've just used.
 
 @<@code{write_index()} local_variables@>=
 n, subkey, subparts
@@ -1528,29 +1552,6 @@ Here are some test cases:
 @@cindex children @@subentry adult
 @end example
 
-
-@file{texindex.awk} has to handle input where the command
-character may be an @samp{@@} or a @samp{\}. When matching
-command strings in regular expressions, if the command character
-is a backslash, it must be doubled in order to be treated
-literally.  The @code{make_regexp()} function handles this
-for us; a @samp{%} in the text of the regexp stands for
-the command character and is replaced appropriately.
-
-@cindex @code{make_regex()} function
-@<Helper functions@>=
-function make_regexp(regexp,	a, sep, n)
-{
-	n = split(regexp, a, "%")
-	if (Command_char == "\\")
-		sep = Command_char Command_char
-	else
-		sep = Command_char
-
-	return join(a, 1, n, sep)
-}
-@
-
 Finally, we add the above code into the set of work functions:
 
 @<Work functions@>=
@@ -1564,8 +1565,8 @@ This chapter provides some necessary but unexciting elements.
 
 @menu
 * Copyright statement:: Copyright info.
-* Library functions::   From the @code{gawk} library: @file{ftrans.awk}, @code{join}.
-* Helper functions::    @code{del_array}, @code{check_split}, @code{fatal}, @dots{}
+* Library functions::   From the @code{gawk} library: @file{ftrans.awk}, @code{join()}.
+* Helper functions::    @code{del_array()}, @code{check_split_null()}, @code{fatal()}, @dots{}
 * I18N::                Internationalization.
 @end menu
 
@@ -1663,6 +1664,7 @@ These helper functions make the main code easier to follow.
 * @code{char_split}::			Splitting a line into individual characters.
 * @code{fatal}::				Printing fatal errors.
 * @code{is@dots{}} functions::	Checking character types.
+* @code{make_regexp}::          Make a regexp to match @TeX{} control sequences.
 @end menu
 
 @node @code{del_array}
@@ -1686,7 +1688,7 @@ function del_array(a)
 
 @code{check_split_null()} determines whether the @command{awk} running
 this program supports using the null string for the separator, splitting
-each character off into a separate element.  If so, the return value
+each character off into a separate element.  If so, the return value from @code{split()}
 will be the number of elements in the array, and it will be more than
 one.  It is called at program startup.
 
@@ -1779,6 +1781,32 @@ function isdigit(c)
 	return index("0123456789", c)
 }
 @
+
+@node @code{make_regexp}
+@section Making A Regexp To Match @TeX{} Control Sequences.
+
+@file{texindex.awk} has to handle input where the command
+character may be an @samp{@@} or a @samp{\}. When matching
+command strings in regular expressions, if the command character
+is a backslash, it must be doubled in order to be treated
+literally.  The @code{make_regexp()} function handles this
+for us; a @samp{%} in the text of the regexp stands for
+the command character and is replaced appropriately.
+
+@cindex @code{make_regexp()} function
+@<Helper functions@>=
+function make_regexp(regexp,	a, sep, n)
+{
+	n = split(regexp, a, "%")
+	if (Command_char == "\\")
+		sep = Command_char Command_char
+	else
+		sep = Command_char
+
+	return join(a, 1, n, sep)
+}
+@
+
 
 @node I18N
 @section Internationalization
