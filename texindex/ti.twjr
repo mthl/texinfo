@@ -1340,21 +1340,21 @@ output up to three lines per entry.
 
 So, let's start. The logic is going to be a little complicated:
 
-@<print index entry@>=
+@<Print index entry@>=
 function write_index_entry(current,		key,
 							@<@code{write_index()} local_variables@>)
 {
 	key = Keys[current]		# current sort key
-	@<split the sort key into subparts@>
+	@<Split the sort key into subparts@>
 	if (Numfields[key] == 1) {
-		@<print primary entry@>
+		@<Print primary entry@>
 	} else if (Numfields[key] == 2) {
-		@<print primary entry if necessary@>
-		@<print secondary entry@>
+		@<Print primary entry if necessary@>
+		@<Print secondary entry@>
 	} else if (Numfields[key] == 3) {
-		@<print primary entry if necessary@>
-		@<print secondary entry if necessary@>
-		@<print tertiary entry@>
+		@<Print primary entry if necessary@>
+		@<Print secondary entry if necessary@>
+		@<Print tertiary entry@>
 	}
 }
 @
@@ -1375,15 +1375,15 @@ Printing the entries is similar no matter what kind of entry; there's
 a lot of work to be done so it's isolated in the @code{print_entry()}
 function described in the next section.
 
-@<print primary entry@>=
+@<Print primary entry@>=
 print_entry(key, "entry", Primary)
 @
 
-@<print secondary entry@>=
+@<Print secondary entry@>=
 print_entry(key, "secondary", Secondary)
 @
 
-@<print tertiary entry@>=
+@<Print tertiary entry@>=
 print_entry(key, "tertiary", Tertiary)
 @
 
@@ -1428,7 +1428,7 @@ Printing ``see'' or ``see also'' entries is potentially messy if there
 are more than one. (A good index won't have more than one, but nothing
 prevents there being multiple such entries, so we have to handle them.)
 
-@<print a ``see'' or ``see also'' entry@>=
+@<Print a ``see'' or ``see also'' entry@>=
 function print_see_entry(key, entry_command, entry_text,	# parameters
 						count_array, see_text_array,		# parameters
 						i, count, see_entries)				# locals
@@ -1464,14 +1464,14 @@ function print_see_entry(key, entry_command, entry_text,	# parameters
 
 
 @<Work functions@>=
-@<print a ``see'' or ``see also'' entry@>
+@<Print a ``see'' or ``see also'' entry@>
 @
 
 Let's take a look at printing leading higher level entries
 when needed. First, we need the subparts of the sort key.
 
 @cindex @code{Subentry_re} variable
-@<split the sort key into subparts@>=
+@<Split the sort key into subparts@>=
 n = split(key, subparts, Subentry_re)
 @
 
@@ -1486,7 +1486,7 @@ we already printed such an entry.
 Once we have the subparts, we can check if the
 relevant entry was printed.
 
-@<print primary entry if necessary@>=
+@<Print primary entry if necessary@>=
 if (! (subparts[1] in Printed)) {
 	printf("%centry{%s,}{}\n",
 		Command_char, Primary[key]) > Output_file
@@ -1498,7 +1498,7 @@ Printing the secondary entry is a little subtle; we have to check
 that the combination of primary and secondary have been
 printed and use that combination as the index into @code{Printed}.
 
-@<print secondary entry if necessary@>=
+@<Print secondary entry if necessary@>=
 subkey = (subparts[1] Command_char "subentry " subparts[2])
 if (! (subkey in Printed)) {
 	printf("%csecondary{%s,}{}\n",
@@ -1555,7 +1555,7 @@ Here are some test cases:
 Finally, we add the above code into the set of work functions:
 
 @<Work functions@>=
-@<print index entry@>
+@<Print index entry@>
 @
 
 @node Necessary stuff
