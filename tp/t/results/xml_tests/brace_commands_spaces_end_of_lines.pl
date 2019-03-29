@@ -27,7 +27,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -67,7 +67,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -117,7 +117,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -167,7 +167,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -217,7 +217,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -267,7 +267,7 @@ $result_trees{'brace_commands_spaces_end_of_lines'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',

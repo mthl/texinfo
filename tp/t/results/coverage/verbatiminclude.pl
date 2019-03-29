@@ -32,7 +32,7 @@ $result_trees{'verbatiminclude'} = {
       ],
       'cmdname' => 'verbatiminclude',
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict',
+        'input_perl_encoding' => 'utf-8',
         'spaces_before_argument' => ' ',
         'text_arg' => 'incl-incl.txi'
       },

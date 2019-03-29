@@ -297,7 +297,7 @@ wipe_global_info (void)
 #undef GLOBAL_CASE
   memset (&global_info, 0, sizeof (global_info));
 
-  global_info.input_perl_encoding = strdup ("utf-8-strict");
+  global_info.input_perl_encoding = strdup ("utf-8");
   global_info.input_encoding_name = strdup ("utf-8");
 }
 

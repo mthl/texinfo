@@ -137,7 +137,7 @@ our %default_parser_state_configuration = (
   'info' => {
     'novalidate' => 0,        # same as setting @novalidate.
     'input_encoding_name' => 'utf-8',
-    'input_perl_encoding' => 'utf-8-strict'
+    'input_perl_encoding' => 'utf-8'
   },
   'in_gdt' => 0 # whether we are being called by gdt
 );
@@ -1115,7 +1115,9 @@ sub open_out($$;$$)
   # before setting the encoding filters with binmode.
   binmode($filehandle) if $use_binmode;
   if ($encoding) {
-    if ($encoding eq 'utf8' or $encoding eq 'utf-8-strict') {
+    if ($encoding eq 'utf8'
+        or $encoding eq 'utf-8'
+        or $encoding eq 'utf-8-strict') {
       binmode($filehandle, ':utf8');
     } else { # FIXME also right for shiftijs or similar encodings?
       binmode($filehandle, ':bytes');
@@ -1710,7 +1712,8 @@ sub count_bytes($$;$)
     $encoding = $self->get_conf('OUTPUT_PERL_ENCODING');
   }
 
-  if ($encoding eq 'utf-8-strict') {
+  if ($encoding eq 'utf-8'
+      or $encoding eq 'utf-8-strict') {
     if (Encode::is_utf8($string)) {
       # Get the number of bytes in the underlying storage.  This may
       # be slightly faster than calling Encode::encode_utf8.

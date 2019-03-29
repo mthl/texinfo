@@ -59,7 +59,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -105,7 +105,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -152,7 +152,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -198,7 +198,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -244,7 +244,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -291,7 +291,7 @@ $result_trees{'image_and_punctuation'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
