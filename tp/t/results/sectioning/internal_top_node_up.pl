@@ -498,7 +498,7 @@ element: @node first
 $result_converted{'info'}->{'internal_top_node_up'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: (dir)
+File: ,  Node: Top,  Next: first,  Up: node@@ node
 
 internal top node up
 ********************
@@ -514,7 +514,7 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first138
+Node: first144
 
 End Tag Table
 

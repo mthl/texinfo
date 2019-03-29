@@ -831,7 +831,7 @@ element: @node first
 $result_converted{'info'}->{'non_automatic_internal_top_node_up'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: (dir)
+File: ,  Node: Top,  Next: first,  Up: @acronym{GNU, @acronym{GNU}\'s Not Unix} manuals
 
 internal top node up
 ********************
@@ -847,7 +847,7 @@ File: ,  Node: first,  Prev: Top
 
 Tag Table:
 Node: Top27
-Node: first138
+Node: first180
 
 End Tag Table
 

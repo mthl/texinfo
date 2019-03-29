@@ -390,7 +390,7 @@ $result_errors{'empty_top_node_up'} = [];
 $result_converted{'info'}->{'empty_top_node_up'} = 'This is , produced from .
 
 
-File: ,  Node: Top,  Next: first,  Up: (dir)
+File: ,  Node: Top,  Next: first,  Up: 
 
 empty top node up
 *****************
@@ -406,7 +406,7 @@ File: ,  Node: first,  Prev: Top,  Up: Top
 
 Tag Table:
 Node: Top27
-Node: first132
+Node: first127
 
 End Tag Table
 
