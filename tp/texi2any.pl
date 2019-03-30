@@ -58,22 +58,21 @@ BEGIN
   my $package = '@PACKAGE@';
   my $packagedir = '@pkglibdir@';
 
-  if ($datadir eq '@' .'datadir@' or $package eq '@' . 'PACKAGE@'
-      or $packagedir eq '@' .'pkglibdir@'
+  if ($datadir eq '@' .'datadir@'
       or defined($ENV{'TEXINFO_DEV_SOURCE'})
          and $ENV{'TEXINFO_DEV_SOURCE'} ne '0')
   {
     # Use uninstalled modules
 
     # To find Texinfo::ModulePath
-    if (!defined($ENV{'top_builddir'})) {
-      $ENV{'top_builddir'} = File::Spec->catdir($command_directory, $updir);
-      $ENV{'top_srcdir'} = File::Spec->catdir($command_directory, $updir);
+    if (defined($ENV{'top_builddir'})) {
+      unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
+    } else {
+      unshift @INC, File::Spec->catdir($command_directory);
     }
-    unshift @INC, File::Spec->catdir($ENV{'top_builddir'}, 'tp');
 
     require Texinfo::ModulePath;
-    Texinfo::ModulePath::init(undef, undef, 'uninstalled' => 1);
+    Texinfo::ModulePath::init(undef, undef, 'updirs' => 1);
   } else {
     # Look for modules in their installed locations.
 
@@ -81,7 +80,7 @@ BEGIN
     unshift @INC, $lib_dir;
 
     require Texinfo::ModulePath;
-    Texinfo::ModulePath::init($lib_dir, $packagedir);
+    Texinfo::ModulePath::init($lib_dir, $packagedir, 'installed' => 1);
   }
 } # end BEGIN
 

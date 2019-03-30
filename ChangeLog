@@ -1,5 +1,21 @@
 2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Module search path changes (no functional changes intended).
+
+	* tp/texi2any.pl:
+	Only check if one variable has been substituted by the Makefile 
+	to create this file.  Do not set environment variables: only add 
+	a directory to @INC so that Texinfo:ModulePath might be found.
+	Pass an 'updirs' argument into Texinfo::ModulePath.
+	* tp/Texinfo/ModulePath.pm.in (init): Change argument from 
+	'uninstalled' to 'installed', so that the uninstalled case is 
+	the default.  Place code for using uninstalled files and 
+	checking environment variables inside a conditional so it is 
+	clearer when this code is used.  Do not set any environment 
+	variables: use them for input only.
+
+2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Introduce blank lines in test case.
 
 	* tp/t/converter_tests.t ($at_commands_in_refs_text): Introduce 
