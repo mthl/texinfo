@@ -1,5 +1,13 @@
 2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Skip a test.
+
+	* tp/t/converters_tests.t (at_commands_in_refs): Skip plaintext
+	output until we can get consistent results on Solaris 10 and 
+	Solaris 11.
+
+2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/test_utils.pl: Do not print errors from conversions.
 
 2019-03-29  Gavin Smith  <gavinsmith0123@gmail.com>

@@ -370,7 +370,11 @@ see @ref{a @strong{strong} ref with @sc{sc}@comma{} a i trema @"i@comma{} a dotl
 '],
 ['at_commands_in_refs',
 $at_commands_in_refs_text, 
-{}, {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
+{'todo' =>
+   {'plaintext' => 'different results depending on system wcwidth',
+    'info' => 'different results depending on system wcwidth',
+  }},
+ {'TEST' => 1}], # TEST => 1 triggers @today constant expansion for diffs
 ['refs_formatting',
 '@node chapter
 @chapter chapter
