@@ -1,5 +1,17 @@
 2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Introduce blank lines in test case.
+
+	* tp/t/converter_tests.t ($at_commands_in_refs_text): Introduce 
+	blank lines in input Texinfo to avoid problems with varying line 
+	break decisions due to different wcwidth implementations.
+	* tp/t/converters_tests.t (at_commands_in_refs): Do not skip.
+	(at_commands_in_refs_utf8): Do not skip this one either, since 
+	we are now counting combining accents in the XS code as having 
+	width.
+
+2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Skip tests instead of marking them as expected failures.
 
 	* tp/t/test_utils (test): If a test case is marked as 'todo', 
