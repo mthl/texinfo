@@ -1,6 +1,5 @@
 # List of source files which contain translatable strings.
 
-parsetexi/Parsetexi.c
 parsetexi/api.c
 parsetexi/close.c
 parsetexi/command_data.c
