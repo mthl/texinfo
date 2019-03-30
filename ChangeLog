@@ -1,3 +1,7 @@
+2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/t/test_utils.pl: Do not print errors from conversions.
+
 2019-03-29  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Use 'utf-8' instead of 'utf-8-strict' as name of encoding.
