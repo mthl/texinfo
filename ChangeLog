@@ -1,5 +1,14 @@
 2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Skip tests instead of marking them as expected failures.
+
+	* tp/t/test_utils (test): If a test case is marked as 'todo', 
+	always skip the test with 'skip' from Test::More, instead of 
+	putting it inside a 'TODO' block.  Remove some commented-out 
+	code.
+
+2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Skip a test.
 
 	* tp/t/converters_tests.t (at_commands_in_refs): Skip plaintext
