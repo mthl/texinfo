@@ -142,5 +142,5 @@ if test x$disable_xs != xyes; then
     AC_CONFIG_HEADERS([config.h:config.in])
 fi # not disable_xs
 
-AC_CONFIG_FILES([Makefile gnulib/lib/Makefile po/Makefile.in])
+AC_CONFIG_FILES([Makefile gnulib/lib/Makefile])
 AC_OUTPUT

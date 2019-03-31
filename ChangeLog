@@ -1,5 +1,17 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove XS po directory.
+
+	* tp/Texinfo/XS/po: Remove.
+	* tp/Texinfo/XS/configure.ac (AC_CONFIG_FILES): Remove 
+	po/Makefile.in.
+
+	This keeps AM_GNU_GETTEXT in the XS subdirectory.  Apparently 
+	AM_PO_SUBDIRS is also still used, even there is no po 
+	subdirectory.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Only use a single po directory.
 
 	* po/POTFILES.in: List parsetexi input files.
