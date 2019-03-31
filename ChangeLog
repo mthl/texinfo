@@ -1,3 +1,9 @@
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Inserting Unicode): Include the Ĳ ligature 
+	in the output.  Do not say that a UTF-8 encoding must be 
+	explicitly requested.
+
 2019-03-30  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Module search path changes (no functional changes intended).
