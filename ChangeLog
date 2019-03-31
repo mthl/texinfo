@@ -1,5 +1,15 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Pass on srcdir to XS modules.
+
+	* tp/Texinfo/ModulePath.pm.in ($srcdir): New variable.
+	(init) [uninstalled]: Set it.
+	* tp/Texinfo/XSLoader.pm: Pass on $Texinfo::ModulePath::srcdir 
+	to XS modules.
+	* tp/Texinfo/XS/parsetexi/api.c (init): Save value of srcdir.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Output message if file ended inside Top node.
 
 	* doc/texinfo.tex (\omittopnode): Redefine @bye and put a 

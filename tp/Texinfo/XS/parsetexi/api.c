@@ -41,8 +41,10 @@ ELEMENT *Root;
 #define LOCALEDIR DATADIR "/locale"
 #define DATADIR2 "/usr/local/share"
 
+char *srcdir;
+
 int
-init (int texinfo_uninstalled)
+init (int texinfo_uninstalled, char *srcdir_in)
 {
   /* Initialize gettext. */
   /* TODO: Does this interfere with Perl or any other modules? */
@@ -51,6 +53,7 @@ init (int texinfo_uninstalled)
   /* TODO: Use installed or uninstalled translation files. */
   bindtextdomain (PACKAGE, DATADIR "/locale");
   textdomain (PACKAGE);
+  srcdir = srcdir_in;
 
   return 1;
 }

@@ -16,6 +16,10 @@ use File::Spec;
 # locations.
 our $texinfo_uninstalled = 0;
 
+# Pathname of the tp/ directory in the sources.  Used to find the locale
+# data.
+our $srcdir = '';
+
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)
 # use them to add directories
@@ -55,6 +59,8 @@ sub init {
       unshift @INC, File::Spec->catdir($top_srcdir, 'tp');
 
       $lib_dir = File::Spec->catdir($top_srcdir, 'tp', 'maintain');
+
+      $srcdir = File::Spec->catdir($top_srcdir, 'tp');
     }
 
     # Find XS modules in the build directory
