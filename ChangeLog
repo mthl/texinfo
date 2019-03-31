@@ -1,5 +1,16 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make texi2dvi --batch the default.
+
+	* util/texi2dvi: (batch): Remove variable.
+	(usage): Do not mention --batch.
+	(make_tex_command): Unconditionally run in batch mode.
+	(make_openout_test): Do not save and restore $batch.
+	(input_file_name_decode): Do not set $batch for AUC-Tex input.
+	(usage): Remove a comment about 'echo' compatibility.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Inserting Unicode): Include the Ĳ ligature 
 	in the output.  Do not say that a UTF-8 encoding must be 
 	explicitly requested.
