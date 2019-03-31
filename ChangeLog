@@ -1,5 +1,14 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Output message if file ended inside Top node.
+
+	* doc/texinfo.tex (\omittopnode): Redefine @bye and put a 
+	message in the output file to say the Top node was omitted.  
+	This is most likely for short test files that consist only of a 
+	Top node.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Add some news items.
 
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
