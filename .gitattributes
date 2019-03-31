@@ -1,0 +1,3 @@
+**/*.info       diff
+**/index_nodes  diff
+**/one_node     diff
