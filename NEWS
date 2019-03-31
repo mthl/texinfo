@@ -22,6 +22,7 @@ See the manual for detailed information.
   . support of noderename.cnf files has been removed
   . INPUT_PERL_ENCODING and INPUT_ENCODING_NAME removed as customization
     variables.
+  . error messages translated when the XS parser module is in use
 
 * texi2dvi
   . unconditionally run in --batch mode, i.e. without stopping if there

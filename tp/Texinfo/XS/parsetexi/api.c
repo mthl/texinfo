@@ -29,6 +29,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <dirent.h>
+#include <string.h>
 
 #include "parser.h"
 #include "input.h"
@@ -38,22 +40,63 @@
 
 ELEMENT *Root;
 
-#define LOCALEDIR DATADIR "/locale"
-#define DATADIR2 "/usr/local/share"
 
-char *srcdir;
+#define LOCALEDIR DATADIR "/locale"
+
+/* Use the uninstalled locales dir.
+   NB the texinfo.mo files are not actually created here, only the
+   texinfo_document.mo files, which aren't used by parsetexi.
+   Hence, error messages will be translated only when the program is 
+   installed. */
+static void
+find_locales_dir (char *srcdir)
+{
+  DIR *dir;
+  char *s;
+  char **p;
+  static char *try_dirs[] = {
+      "LocaleData",
+      "../../../tp/LocaleData",
+      "../../LocaleData", 0 };
+
+  asprintf (&s, "%s/LocaleData", srcdir);
+  dir = opendir (s);
+  if (!dir)
+    {
+      free (s);
+      for (p = try_dirs; (*p); p++)
+        {
+          dir = opendir (*p);
+          if (dir)
+            {
+              closedir (dir);
+              bindtextdomain (PACKAGE, *p);
+              return;
+            }
+        }
+      fprintf (stderr, "Locales dir for document strings not found: %s\n",
+               strerror (errno));
+    }
+  else
+    {
+      bindtextdomain (PACKAGE, s);
+      free (s);
+      closedir (dir);
+    }
+}
 
 int
-init (int texinfo_uninstalled, char *srcdir_in)
+init (int texinfo_uninstalled, char *srcdir)
 {
-  /* Initialize gettext. */
-  /* TODO: Does this interfere with Perl or any other modules? */
   setlocale (LC_ALL, "");
 
-  /* TODO: Use installed or uninstalled translation files. */
-  bindtextdomain (PACKAGE, DATADIR "/locale");
+  /* Use installed or uninstalled translation files for gettext. */
+  if (texinfo_uninstalled)
+    find_locales_dir (srcdir);
+  else
+    bindtextdomain (PACKAGE, LOCALEDIR);
+
   textdomain (PACKAGE);
-  srcdir = srcdir_in;
 
   return 1;
 }

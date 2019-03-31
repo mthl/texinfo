@@ -1,5 +1,14 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Find translation directory for parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/api.c (find_locales_dir): New 
+	function.
+	(init): Call it.
+	* NEWS: Mention change.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Pass on srcdir to XS modules.
 
 	* tp/Texinfo/ModulePath.pm.in ($srcdir): New variable.
