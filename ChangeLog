@@ -1,5 +1,13 @@
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Only use a single po directory.
+
+	* po/POTFILES.in: List parsetexi input files.
+	* po/Makevars (XGETTEXT_OPTIONS): Move options from
+	tp/Texinfo/XS/po/Makevars.
+
+2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Find translation directory for parsetexi.
 
 	* tp/Texinfo/XS/parsetexi/api.c (find_locales_dir): New 
