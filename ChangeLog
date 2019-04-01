@@ -1,3 +1,14 @@
+2019-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make search-next and search-previous work for tree search.
+
+	* info/session.c (info_search_next, info_search_previous):
+	If there is an active tree search, carry on with it.  This means 
+	that the '}' and '{' keys can be used to go through the results 
+	from a tree search (instead of 'M-}' and 'M-{').
+	(info_search_1): Disable any active tree search.
+	* NEWS: Mention change.
+
 2019-03-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove XS po directory.

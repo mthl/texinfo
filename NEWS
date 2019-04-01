@@ -50,7 +50,11 @@ See the manual for detailed information.
    may solve the problem: i.e., for a manual file.texi, run
    'rm file.?? file.??s' before running texi2dvi again.
 
-* Distribution
+* info
+  . for a tree search (with M-/), '}' and '{' work as well as 'M-}' and
+    'M-{' to go through the results
+
+* Distribution:
   . Several obsolete portability checks removed
 
 
