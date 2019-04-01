@@ -913,6 +913,8 @@ if (! (key in Allkeys)) {
 	} else if (pagenum ~ Seealso_re) {
 		Seealso_count[key]++
 		Seealso[key, Seealso_count[key]] = pagenum
+	} else if (! (key in Pagedata)) {
+		Pagedata[key] = pagenum
 	} else if (Pagedata[key] != pagenum \
 				&& Pagedata[key] !~  (", " pagenum "$")) {
 		Pagedata[key] = Pagedata[key] ", " pagenum
@@ -1452,10 +1454,15 @@ function print_entry(key, entry_command, entry_text)
 		printf("%c%s{%s}{%s}\n",
 			Command_char, entry_command,
 			entry_text[key], Pagedata[key]) > Output_file
+
+		Printed[key] = True		# mark this key as printed
 	}
-	Printed[key] = True		# mark this key as printed
 }
 @
+
+Note that we only take note of having printed the key
+for lines with page numbers. Otherwise, a ``see'' entry followed
+by a regular multilevel entry is not handled correctly.
 
 Be sure to empty out @code{Printed} at the start of each file.
 

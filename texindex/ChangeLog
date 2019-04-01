@@ -2,6 +2,8 @@
 
 	* ti.twjr: Finish adding indexing of program variables etc.
 	* jrweave: Fix 'do not edit' banner.
+	* ti.twjr: Bug fixes in page numbers, seealso mixed with multilevel
+	entries.
 
 2019-03-28         Arnold D. Robbins     <arnold@skeeve.com>
 
