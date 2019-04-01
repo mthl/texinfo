@@ -245,6 +245,7 @@ my %global_multiple_commands;
 foreach my $global_multiple_command (
   'footnote', 'hyphenation', 'insertcopying', 'printindex',
   'subtitle','titlefont', 'listoffloats', 'detailmenu', 'part',
+  'math', 'tex', # for init/tex4ht.pm and init/latex2html.pm
   keys(%Texinfo::Common::document_settable_at_commands), ) {
   $global_multiple_commands{$global_multiple_command} = 1;
 }

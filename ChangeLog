@@ -1,5 +1,21 @@
 2019-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Add @math and @tex as 'global commands.'
+
+	* tp/Texinfo/ParserNonXS.pm (%global_multiple_commands),
+	* tp/Texinfo/XS/parsetexi/api.c (build_global_info2),
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command),
+	* tp/Texinfo/XS/parsetexi/parser.h (GLOBAL_INFO): Add 'math' and 
+	'tex'.
+	* tp/init/latex2html.pm, tp/init/tex4ht.pm: Do not add values to 
+	GLOBAL_COMMANDS.
+
+	Patrice Dumas reported that tex4ht.pm and latex2html.pm were 
+	broken since the GLOBAL_COMMANDS array was removed as a 
+	customization value for init files (on 2018-10-13).
+
+2019-04-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Make search-next and search-previous work for tree search.
 
 	* info/session.c (info_search_next, info_search_previous):

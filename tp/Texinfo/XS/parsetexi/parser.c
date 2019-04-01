@@ -156,6 +156,8 @@ register_global_command (ELEMENT *current)
         GLOBAL_CASE(listoffloats);
         GLOBAL_CASE(detailmenu);
         GLOBAL_CASE(part);
+        GLOBAL_CASE(math);
+        GLOBAL_CASE(tex);
 
         /* from Common.pm %document_settable_at_commands */
         GLOBAL_CASE(allowcodebreaks);
