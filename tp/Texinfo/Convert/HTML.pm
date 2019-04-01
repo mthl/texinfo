@@ -5939,7 +5939,13 @@ foreach my $no_number_type ('text', 'tree', 'string') {
   $valid_types{$no_number_type .'_nonumber'} = 1;
 }
 
-# $element can be undef.  TODO when?
+# $element can be undef.
+# $element undef happens at least when there is no output file, or for
+# the table of content when frames are used.  That call would result
+# for instance from _element_direction being called from _get_links,
+# itself called from 'format_begin_file' which, in the default case
+# points to _default_begin_file.
+# TODO are there other cases?
 sub _element_direction($$$$;$)
 {
   my $self = shift;
@@ -5965,8 +5971,12 @@ sub _element_direction($$$$;$)
       and $element->{'extra'}->{'directions'}->{$direction}) {
     $element_target
       = $element->{'extra'}->{'directions'}->{$direction};
-  } elsif ($element and $self->element_is_top($element) 
-            and defined($self->get_conf('TOP_NODE_UP_URL')) 
+  # output TOP_NODE_UP related infos even if element is not
+  # defined which should mostly correspond to cases when there is no
+  # output file, for example in the tests.
+  } elsif ((not defined($element)
+             or ($element and $self->element_is_top($element)))
+            and defined($self->get_conf('TOP_NODE_UP_URL'))
             and ($direction eq 'Up' or $direction eq 'NodeUp')) {
     if ($type eq 'href') {
       return $self->get_conf('TOP_NODE_UP_URL');
@@ -6302,7 +6312,7 @@ sub _get_links ($$$)
     foreach my $link (@$link_buttons) {
       my $link_href = $self->_element_direction($element,
                                           $link, 'href', $filename);
-      #print STDERR "$title: $link -> $link_href \n";
+      #print STDERR "$link -> $link_href \n";
       if ($link_href and $link_href ne '') {
         my $link_string = $self->_element_direction($element,
                                           $link, 'string');
