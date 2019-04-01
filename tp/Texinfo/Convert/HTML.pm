@@ -444,7 +444,7 @@ sub command_contents_href($$$$)
 #  'tree' - return a tree
 #  'tree_nonumber' - return tree representing text without a chapter number
 #                    being included.
-#  'string'
+#  'string' - return simpler text that can be used in element attributes
 sub command_text($$;$)
 {
   my $self = shift;
