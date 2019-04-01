@@ -64,8 +64,8 @@ post_process_output ()
     cp -pr ${outdir}$dir/ "${raw_outdir}"
 
     # remove files that are not reproducible
-    rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png \
-          ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_tex4ht_*.log \
+    rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png ${outdir}$dir/*.svg \
+          ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_l2h_images.pdf ${outdir}$dir/*_tex4ht_*.log \
           ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
           ${outdir}$dir/*_l2h.html.* \
           ${outdir}$dir/*_tex4ht_tex.html*
