@@ -65,7 +65,8 @@ else
   outdir=$basename
   cp -pr $outdir $raw_output_dir
   rm -f $outdir/*_l2h_images.log $outdir/*.aux $outdir/*_l2h.css \
-        $outdir/*_l2h_images.out $outdir/*_l2h_images.pl $outdir/*.png
+        $outdir/*_l2h_images.out $outdir/*_l2h_images.pl $outdir/*_l2h_images.pdf \
+        $outdir/*.png $outdir/*.svg
   sed -e 's/^texexpand.*/texexpand /' \
       -e '/is no longer supported at.*line/d' "$raw_outdir/$basename.2" > "$outdir/$basename.2"
 
