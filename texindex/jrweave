@@ -87,8 +87,8 @@ function print_do_not_edit(filename,	i, pl, pr, l, s, t)
 	l = length(s)
 	pl = (l - length(t)) / 2	# padding on left side
 	pr = l - (pl + length(t))	# padding on right side
-	if (pl * 2 < l)				# account for odd lengths
-		pr++
+#	if (pl * 2 < l)				# account for odd lengths
+#		pr++
 	for (i = 1; i <= l + 4; i++)
 		printf("%%")
 	printf "\n"

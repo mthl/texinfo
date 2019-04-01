@@ -1,3 +1,8 @@
+2019-04-01         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Finish adding indexing of program variables etc.
+	* jrweave: Fix 'do not edit' banner.
+
 2019-03-28         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Lots of polish to code and doc. Almost done.

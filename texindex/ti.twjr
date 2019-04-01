@@ -511,6 +511,8 @@ individual characters or if we have to do it manually.
 @cindex @code{EXIT_FAILURE} constant
 @cindex @code{Texindex_version} variable
 @cindex @code{check_split_null()} function
+@cindex @code{Can_split_null} variable
+@cindex @code{Invocation_name} variable
 @<Initial setup@>=
 TRUE = 1
 FALSE = 0
@@ -543,6 +545,8 @@ help information automatically exit, so there's no need to mess with
 @cindex @code{-k} (@code{--keep}), no-op option
 @cindex @code{--} option
 @cindex @code{--version} option
+@cindex @code{EXIT_SUCCESS} constant
+@cindex @code{EXIT_FAILURE} constant
 @<Argument processing@>=
 for (i = 1; i < ARGC; i++) {
 	if (ARGV[i] == "-h" || ARGV[i] == "--help") {
@@ -670,6 +674,7 @@ each incoming line as the index of an array named @code{Seen}.  If a
 line is not there, it has not been seen.  Otherwise it has, and we move
 on to the next record.
 
+@cindex @code{Seen} array
 @<Remove duplicates@>=
 # Remove duplicates, which can happen
 if ($0 in Seen)
@@ -853,17 +858,26 @@ around, which, in fact, they don't, so we don't need a more complex
 approach.)  This also handles any page numbers that appear as roman
 numerals (from the so-called front matter), should there be such.
 
-@cindex @code{Keys} array
-@cindex @code{Allkeys} array
-@cindex @code{Entries} variable
 In addition to all the previously described arrays, the key is stored in
 the @code{Keys} array the first time it is seen; this array is sorted
 later on.  Its indices are just incremented integers, stored in the
 global @code{Entries} variable.  The @code{Allkeys} associative array
 lets us easily track if we have seen a key before.
 
+@cindex @code{Keys} array
+@cindex @code{Allkeys} array
+@cindex @code{Entries} variable
 @cindex @code{Seeentry_re} variable
 @cindex @code{Seealso_re} variable
+@cindex @code{Primary} array
+@cindex @code{Secondary} array
+@cindex @code{Tertiary} array
+@cindex @code{Nunfields} array
+@cindex @code{See} array
+@cindex @code{See_count} array
+@cindex @code{Seealso} array
+@cindex @code{Seealso_count} array
+@cindex @code{Pagedata} array
 @<Store the data for this line in the various arrays@>=
 if (! (key in Allkeys)) {
 	# first time we've seen this full line
@@ -913,7 +927,7 @@ The @code{make_regexp} function is described in @ref{@code{make_regexp}}.
 
 @cindex @code{Seeentry_re} variable
 @cindex @code{Seealso_re} variable
-@cindex @code{make_regexp} function
+@cindex @code{make_regexp()} function
 @<Set up control sequence regexps@>=
 Seeentry_re = make_regexp("%seeentry")
 Seealso_re = make_regexp("%seealso")
@@ -922,6 +936,19 @@ Seealso_re = make_regexp("%seealso")
 Here too, we have to clear out the arrays we've used at the start of
 each input file.
 
+@cindex @code{Keys} array
+@cindex @code{Allkeys} array
+@cindex @code{Initials} array
+@cindex @code{Nunfields} array
+@cindex @code{Primary} array
+@cindex @code{Secondary} array
+@cindex @code{Tertiary} array
+@cindex @code{See} array
+@cindex @code{See_count} array
+@cindex @code{Seealso} array
+@cindex @code{Seealso_count} array
+@cindex @code{Pagedata} array
+@cindex @code{del_array()} function
 @<Clear out all data arrays@>=
 del_array(Keys)
 del_array(Allkeys)
@@ -1016,6 +1043,8 @@ If the character following the command character is an open brace or close
 brace, we pull it in.  Otherwise, the
 command character is left alone as part of the field.
 
+@cindex @code{Command_char} variable
+@cindex @code{Special_chars} variable
 @<Handle the character after the command character@>=
 if (chars[i+1] == Command_char) {	# input was @@
 	out[k++] = chars[i+1]
@@ -1035,6 +1064,8 @@ an open brace, then the line is bad and we print a fatal error.
 Otherwise, we reset @code{delim_count} to one.
 
 @cindex @code{join()} function
+@cindex @code{del_array()} function
+@cindex @code{fatal()} function
 @<Finish off the field, set up for next field@>=
 fields[j++] = join(out, 1, k-1, SUBSEP)
 del_array(out)  # reset for next time through
@@ -1057,6 +1088,7 @@ handle that.  (That printing task is delegated to a small function.)
 
 @cindex @code{endfile()} function
 @cindex @code{quicksort()} function
+@cindex @code{write_index_entry()} function
 @cindex @code{Entries} variable
 @cindex @code{Keys} array
 @cindex @code{Initials} array
@@ -1111,7 +1143,7 @@ function print_initial(initial)
 @node Quicksort
 @subsection Quicksort
 
-@cindex quicksort
+@cindex quicksort algorithm
 @cindex Hoare, C.A.R.
 
 Sorting uses a standard quicksort algorithm, with a @code{less_than()}
@@ -1186,6 +1218,8 @@ letters, because all of the uppercase and lowercase letters must be in
 the table before we can change their values.
 
 @cindex @code{Ordval} array
+@cindex @code{isdigit()} function
+@cindex @code{isupper()} function
 @<Work functions@>=
 BEGIN {
 	for (i = 0; i < 256; i++) {
@@ -1340,6 +1374,9 @@ output up to three lines per entry.
 
 So, let's start. The logic is going to be a little complicated:
 
+@cindex @code{write_index_entry()} function
+@cindex @code{Keys} array
+@cindex @code{Numfields} array
 @<Print index entry@>=
 function write_index_entry(current,		key,
 							@<@code{write_index()} local_variables@>)
@@ -1392,6 +1429,14 @@ print_entry(key, "tertiary", Tertiary)
 
 Printing a single entry is quite involved:
 
+@cindex @code{print_entry()} function
+@cindex @code{print_see_entry()} function
+@cindex @code{See} array
+@cindex @code{See_count} array
+@cindex @code{Seealso} array
+@cindex @code{Seealso_count} array
+@cindex @code{Pagedata} array
+@cindex @code{Printed} array
 @<Print an entry@>=
 function print_entry(key, entry_command, entry_text)
 {
@@ -1414,6 +1459,8 @@ function print_entry(key, entry_command, entry_text)
 
 Be sure to empty out @code{Printed} at the start of each file.
 
+@cindex @code{Printed} array
+@cindex @code{del_array()} function
 @<Clear out all data arrays@>=
 del_array(Printed)
 @
@@ -1428,6 +1475,8 @@ Printing ``see'' or ``see also'' entries is potentially messy if there
 are more than one. (A good index won't have more than one, but nothing
 prevents there being multiple such entries, so we have to handle them.)
 
+@cindex @code{print_see_entry()} function
+@cindex @code{quicksort()} function
 @<Print a ``see'' or ``see also'' entry@>=
 function print_see_entry(key, entry_command, entry_text,	# parameters
 						count_array, see_text_array,		# parameters
@@ -1475,6 +1524,8 @@ when needed. First, we need the subparts of the sort key.
 n = split(key, subparts, Subentry_re)
 @
 
+@cindex @code{Subentry_re} variable
+@cindex @code{make_regexp()} function
 @<Set up control sequence regexps@>=
 Subentry_re = make_regexp(" *%subentry +")
 @
@@ -1486,6 +1537,7 @@ we already printed such an entry.
 Once we have the subparts, we can check if the
 relevant entry was printed.
 
+@cindex @code{Printed} array
 @<Print primary entry if necessary@>=
 if (! (subparts[1] in Printed)) {
 	printf("%centry{%s,}{}\n",
@@ -1498,6 +1550,7 @@ Printing the secondary entry is a little subtle; we have to check
 that the combination of primary and secondary have been
 printed and use that combination as the index into @code{Printed}.
 
+@cindex @code{Printed} array
 @<Print secondary entry if necessary@>=
 subkey = (subparts[1] Command_char "subentry " subparts[2])
 if (! (subkey in Printed)) {
@@ -1610,6 +1663,8 @@ infrastructure for the @code{beginfile()} and @code{endfile()} functions.
 for an explanation of how this function works.
 
 @cindex @file{ftrans.awk} library file
+@cindex @code{beginfile()} function
+@cindex @code{endfile()} function
 @<Library functions@>=
 # ftrans.awk --- handle data file transitions
 #
@@ -1734,6 +1789,7 @@ function char_split(string, array,    n, i)
 The @code{fatal()} function prints a @code{printf}-formatted message to
 standard error and then exits badly.
 
+@cindex @code{EXIT_FAILURE} constant
 @cindex @code{fatal()} function
 @<Helper functions@>=
 function fatal(format, arg1, arg2, arg3, arg4, arg5,
@@ -1783,7 +1839,7 @@ function isdigit(c)
 @
 
 @node @code{make_regexp}
-@section Making A Regexp To Match @TeX{} Control Sequences.
+@subsection @code{make_regexp()}: Matching @TeX{} Control Sequences
 
 @file{texindex.awk} has to handle input where the command
 character may be an @samp{@@} or a @samp{\}. When matching
@@ -1817,6 +1873,7 @@ do this by setting the text domain at startup.  For more information on
 internationalization in @command{gawk},
 @pxref{Internationalization,,, gawk, GNU Awk User's Guide}.
 
+@cindex @code{TEXTDOMAIN} variable
 @<Initial setup@>=
 TEXTDOMAIN = "texinfo"
 @
@@ -1839,6 +1896,7 @@ translated are prefixed with an underscore.
 \global\hfuzz=\maxdimen
 @end tex
 
+@cindex @code{EXIT_SUCCESS} constant
 @<Helper functions@>=
 function usage(exit_val)
 {
