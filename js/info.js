@@ -1367,7 +1367,8 @@
         if ((target instanceof Element) && target.matches ("a"))
           {
             var href = target.getAttribute ("href");
-            if (href && !absolute_url_p (href))
+            if (href && !absolute_url_p (href)
+                  && !external_manual_url_p (href))
               {
                 var linkid = href_hash (href) || config.INDEX_ID;
                 store.dispatch (actions.set_current_url (linkid));
@@ -1594,6 +1595,8 @@
           continue;
         else if (absolute_url_p (href))
           link.setAttribute ("target", "_blank");
+        else if (external_manual_url_p (href))
+          link.setAttribute ("target", "_top");
         else
           {
             var href$ = with_sidebar_query (href);
@@ -1666,6 +1669,17 @@
       throw new TypeError ("'" + url + "' is not a string");
 
     return url.includes (":");
+  }
+
+  /** Check if 'URL' is a link to another manual.  For locally installed 
+      manuals only. */
+  function
+  external_manual_url_p (url)
+  {
+    if (typeof url !== "string")
+      throw new TypeError ("'" + url + "' is not a string");
+
+    return url.match(/^..\//);
   }
 
   /** Return PATHNAME with any leading directory components removed.  If

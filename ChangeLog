@@ -1,3 +1,16 @@
+2019-04-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Support links between locally-installed manuals.
+
+	* js/info.js (external_manual_url_p): New function.
+	(fix_links): If a link to an external manual, open link in the 
+	same browser tab.
+	(on_click): No special handling of links to external manuals.
+
+	This is intended to support links between locally-installed HTML 
+	manuals.  For this to work, links to other manuals must begin 
+	with "../", so htmlxref.cnf would need to be overridden.
+
 2019-04-01  Patrice Dumas  <pertusus@free.fr>
 
 	In _element_direction() output TOP_NODE_UP related infos even if element is not defined
