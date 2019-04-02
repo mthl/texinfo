@@ -18,7 +18,10 @@ See the manual for detailed information.
   . UTF-8 is the default input encoding
 
 * texi2any
-  . [ TOP_NODE_UP/TOP_NODE_UP_URL change ]
+  . TOP_NODE_UP is now only used in HTML if TOP_NODE_UP_URL is set.
+    Also TOP_NODE_UP should now be formatted in the output format.
+    In HTML TOP_NODE_UP should be suitable for inclusion in HTML 
+    element attributes, so for instance should not contain elements.
   . support of noderename.cnf files has been removed
   . INPUT_PERL_ENCODING and INPUT_ENCODING_NAME removed as customization
     variables.
