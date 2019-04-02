@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-03-23.11}
+\def\texinfoversion{2019-04-02.14}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -3098,9 +3098,9 @@ end
 % Allow a ragged right output to aid breaking long URL's.  Putting stretch in 
 % between characters of the URL doesn't look good.
 \def\urefallowbreak{%
-  \hskip 0pt plus 1fil\relax
+  \hskip 0pt plus 4 em\relax
   \allowbreak
-  \hskip 0pt plus -1fil\relax
+  \hskip 0pt plus -4 em\relax
 }
 
 \urefbreakstyle after

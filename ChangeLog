@@ -1,5 +1,11 @@
 2019-04-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.tex (\urefallowbreak): Reduce stretch from 1fil to 4em.
+
+	This discourages breaking too early in the line.
+
+2019-04-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Support links between locally-installed manuals.
 
 	* js/info.js (external_manual_url_p): New function.
