@@ -1,3 +1,10 @@
+2019-04-02  Patrice Dumas  <pertusus@free.fr>
+
+	Avoid side effects in HTML formatting fonctions that can be overriden
+	
+	* tests/tex_html: regenerate formatting_singular tests that overrides
+	the menu formatting function.
+
 2019-04-01  Patrice Dumas  <pertusus@free.fr>
 
 	In _element_direction() output TOP_NODE_UP related infos even if element is not defined
