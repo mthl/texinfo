@@ -34,13 +34,6 @@ use File::Spec;
 # For __(
 use Texinfo::Common;
 
-my $global_cmds = get_conf('GLOBAL_COMMANDS');
-if (!defined($global_cmds)) {
-  set_from_init_file('GLOBAL_COMMANDS', []);
-  $global_cmds = get_conf('GLOBAL_COMMANDS');
-}
-push @$global_cmds, ('math', 'tex');
-
 texinfo_register_handler('structure', \&l2h_process);
 texinfo_register_handler('finish', \&l2h_finish);
 
@@ -213,6 +206,7 @@ sub l2h_process($)
                    or $self->get_conf('L2H_SKIP'));
 
   foreach my $command ('tex', 'math') {
+    # we rely on @tex and @math being recorded as 'global commands'
     if ($self->{'extra'}->{$command}) {
       my $counter = 0;
       foreach my $root (@{$self->{'extra'}->{$command}}) {
@@ -534,8 +528,8 @@ sub l2h_do_tex($$)
     # counter is undefined
     $invalid_counter_count++;
     $self->document_warn(
-           sprintf(__("l2h: could not determine the fragment %d for \@%s",
-                   $counter, $cmdname)));
+           sprintf(__("l2h: could not determine the fragment %d for \@%s"),
+                   $counter, $cmdname));
     return ("<!-- l2h: ". __LINE__ . " undef count for ${cmdname}_$counter -->")
       if ($debug);
     return '';

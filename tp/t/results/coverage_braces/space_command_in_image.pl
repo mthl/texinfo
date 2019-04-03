@@ -43,7 +43,7 @@ $result_trees{'space_command_in_image'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {
         'file_name' => '',
@@ -92,7 +92,7 @@ $result_trees{'space_command_in_image'} = {
       'cmdname' => 'image',
       'contents' => [],
       'extra' => {
-        'input_perl_encoding' => 'utf-8-strict'
+        'input_perl_encoding' => 'utf-8'
       },
       'line_nr' => {},
       'parent' => {}

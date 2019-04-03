@@ -26,7 +26,7 @@ XSParagraph_la_LIBADD = $(builddir)/gnulib/lib/libgnu.la \
 
 ACLOCAL_AMFLAGS = -I gnulib/m4
 
-SUBDIRS= po gnulib/lib
+SUBDIRS=gnulib/lib
 
 EXTRA_DIST+=gnulib/m4/gnulib-cache.m4
 

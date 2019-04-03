@@ -97,7 +97,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -175,7 +175,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -258,7 +258,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -346,7 +346,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -439,7 +439,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -547,7 +547,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -640,7 +640,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -852,7 +852,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -878,7 +878,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',
@@ -907,7 +907,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {},
               'parent' => {}
@@ -999,7 +999,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1077,7 +1077,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1160,7 +1160,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1248,7 +1248,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1341,7 +1341,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1449,7 +1449,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1542,7 +1542,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1754,7 +1754,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1780,7 +1780,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {
                     'file_name' => '',
@@ -1809,7 +1809,7 @@ $result_trees{'image_formatting'} = {
                   'cmdname' => 'image',
                   'contents' => [],
                   'extra' => {
-                    'input_perl_encoding' => 'utf-8-strict'
+                    'input_perl_encoding' => 'utf-8'
                   },
                   'line_nr' => {},
                   'parent' => {}
@@ -1906,7 +1906,7 @@ $result_trees{'image_formatting'} = {
           'cmdname' => 'image',
           'contents' => [],
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict'
+            'input_perl_encoding' => 'utf-8'
           },
           'line_nr' => {
             'file_name' => '',
@@ -1969,7 +1969,7 @@ $result_trees{'image_formatting'} = {
               'cmdname' => 'image',
               'contents' => [],
               'extra' => {
-                'input_perl_encoding' => 'utf-8-strict'
+                'input_perl_encoding' => 'utf-8'
               },
               'line_nr' => {
                 'file_name' => '',

@@ -870,6 +870,7 @@ $result_converted{'html'}->{'non_automatic_top_node_up_and_url'} = '<!DOCTYPE ht
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <link href="#Top" rel="start" title="Top">
+<link href="http://www.gnu.org/manual/" rel="up" title="@acronym{GNU, @acronym{GNU}\'s Not Unix} manuals">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}

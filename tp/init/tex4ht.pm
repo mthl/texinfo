@@ -36,13 +36,6 @@ use strict;
 # For __(
 use Texinfo::Common;
 
-my $global_cmds = get_conf('GLOBAL_COMMANDS');
-if (!defined($global_cmds)) {
-  set_from_init_file('GLOBAL_COMMANDS', []);
-  $global_cmds = get_conf('GLOBAL_COMMANDS');
-}
-push @$global_cmds, ('math', 'tex');
-
 texinfo_register_handler('structure', \&tex4ht_prepare);
 texinfo_register_handler('init', \&tex4ht_convert);
 texinfo_register_handler('finish', \&tex4ht_finish);
@@ -120,6 +113,7 @@ sub tex4ht_prepare($)
     $commands{$command}->{'counter'} = 0;
     $commands{$command}->{'output_counter'} = 0;
 
+    # we rely on 'math' and 'tex' being recorded as global commands
     if ($self->{'extra'}->{$command}) {
       local *TEX4HT_TEXFILE;
       unless (open (*TEX4HT_TEXFILE, ">$rfile")) {

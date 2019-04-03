@@ -222,7 +222,8 @@ LOAD:
   no strict 'refs';
   
   if (defined &{"${module}::init"}
-      and !&{"${module}::init"} ($Texinfo::ModulePath::texinfo_uninstalled)) {
+      and !&{"${module}::init"} ($Texinfo::ModulePath::texinfo_uninstalled,
+                                 $Texinfo::ModulePath::srcdir)) {
     _fatal "$module_name: error initializing";
     goto FALLBACK;
   }

@@ -11099,8 +11099,7 @@ now produces:
 
 The command @code{@@U@{@var{hex}@}} inserts a representation of the
 Unicode character U+@var{hex}.  For example, @code{@@U@{0132@}}
-inserts the Dutch `IJ' ligature (poorly shown here as simply the two
-letters `I' and `J').
+inserts the Dutch `IJ' ligature (`@U{0132}').
 
 The @var{hex} value should be at least four hex digits; leading zeros
 are @emph{not} added.  In general, @var{hex} must specify a valid
@@ -11130,14 +11129,9 @@ entity reference of the form @samp{&#x@var{hex};}, as in
 HTML document uses some other encoding (say, Latin@tie{}1) and the
 given character is not supported in that encoding.
 
-@cindex UTF-8, output from @code{@@U}
-In Info and plain text, if the document encoding is specified
-explicitly to be UTF-8, the output will be the UTF-8 representation of
-the character U+@var{hex} (presuming it's a valid character).  In all
-other cases, the output is the ASCII sequence @samp{U+@var{hex}}, as
-in the six ASCII characters @samp{U+0132} for the example above.
-
-That's all.  No magic!
+In Info and plain text, if the output encoding is not UTF-8, the output 
+is the ASCII sequence @samp{U+@var{hex}}, as in the six ASCII characters 
+@samp{U+0132} for the example above.
 
 
 @node Breaks
@@ -17467,7 +17461,8 @@ also output comments.  Default false.
 
 @item TOP_NODE_UP
 Up node for the Top node; default @samp{(dir)}.  This node name is 
-supposed to be already formatted for the output format.  Used for
+supposed to be already formatted for the output format.  In HTML
+can be used in attribute, so should not contain any element.  Used for
 HTML output only if @code{TOP_NODE_UP_URL} is set to override the url, 
 see @code{TOP_NODE_UP_URL} in @ref{HTML Customization Variables}.  
 

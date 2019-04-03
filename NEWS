@@ -10,7 +10,55 @@ See the manual for detailed information.
 ------------------------------------------------------------------------------
 
 * Language:
+  . support of index subentries and sub-subentries with @subentry
+  . new commands @seeentry and @seealso in index entries [not fully
+    implemented/documented yet?]
+  . no need to wrap Top node in @ifnottex - omitted automatically when
+    processed with TeX
   . UTF-8 is the default input encoding
+
+* texi2any
+  . TOP_NODE_UP is now only used in HTML if TOP_NODE_UP_URL is set.
+    Also TOP_NODE_UP should now be formatted in the output format.
+    In HTML TOP_NODE_UP should be suitable for inclusion in HTML 
+    element attributes, so for instance should not contain elements.
+  . support of noderename.cnf files has been removed
+  . INPUT_PERL_ENCODING and INPUT_ENCODING_NAME removed as customization
+    variables.
+  . error messages translated when the XS parser module is in use
+
+* texi2dvi
+  . unconditionally run in --batch mode, i.e. without stopping if there
+    is a TeX error
+
+* texinfo.tex
+  . @ is now used as the escape character in index files.  This should
+    have few user-visible effects, apart from a few obscure bugs being 
+    fixed.  Existing index files should be converted automatically when 
+    texi2dvi is run.
+
+    There are some incompatibilities:
+    . If the C implementation of texindex is used (from Texinfo versions
+      before 6.0), then the indices will not display.  It is not 
+      possible to support output from this version of texindex, because 
+      if it is given input using @ as the escape character in its input, 
+      both backslash and @ can appear as escape characters in its 
+      output.  texinfo.tex cannot tell whether @ should be treated as an 
+      escape character or not here.
+    . If an older version of texi2dvi is used, then the indices will not
+      display, due to it not recognizing the unsorted index files as 
+      such.
+   
+   If there are problems, deleting any existing index files for a manual 
+   may solve the problem: i.e., for a manual file.texi, run
+   'rm file.?? file.??s' before running texi2dvi again.
+
+* info
+  . for a tree search (with M-/), '}' and '{' work as well as 'M-}' and
+    'M-{' to go through the results
+
+* Distribution:
+  . Several obsolete portability checks removed
 
 
 6.6 (16 February 2019)

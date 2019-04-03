@@ -242,7 +242,7 @@ $result_trees{'value_expansion_in_include'} = {
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict',
+            'input_perl_encoding' => 'utf-8',
             'spaces_before_argument' => ' ',
             'text_arg' => 'incl-incl.txi'
           },
@@ -337,7 +337,7 @@ $result_trees{'value_expansion_in_include'} = {
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict',
+            'input_perl_encoding' => 'utf-8',
             'spaces_before_argument' => ' ',
             'text_arg' => 'incl-incl.txi'
           },
@@ -432,7 +432,7 @@ $result_trees{'value_expansion_in_include'} = {
           ],
           'cmdname' => 'verbatiminclude',
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict',
+            'input_perl_encoding' => 'utf-8',
             'spaces_before_argument' => ' ',
             'text_arg' => 'incl-incl.txi'
           },

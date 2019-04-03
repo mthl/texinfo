@@ -53,7 +53,7 @@ $result_trees{'image_text_lines_count'} = {
           'cmdname' => 'image',
           'contents' => [],
           'extra' => {
-            'input_perl_encoding' => 'utf-8-strict'
+            'input_perl_encoding' => 'utf-8'
           },
           'line_nr' => {
             'file_name' => '',

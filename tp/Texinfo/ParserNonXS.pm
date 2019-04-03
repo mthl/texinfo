@@ -245,6 +245,7 @@ my %global_multiple_commands;
 foreach my $global_multiple_command (
   'footnote', 'hyphenation', 'insertcopying', 'printindex',
   'subtitle','titlefont', 'listoffloats', 'detailmenu', 'part',
+  'math', 'tex', # for init/tex4ht.pm and init/latex2html.pm
   keys(%Texinfo::Common::document_settable_at_commands), ) {
   $global_multiple_commands{$global_multiple_command} = 1;
 }
@@ -736,10 +737,10 @@ sub _open_in {
 
   if (open($filehandle, $file_name)) {
     if (defined($self->{'info'}->{'input_perl_encoding'})) {
-      if ($self->{'info'}->{'input_perl_encoding'} eq 'utf-8-strict') {
+      if ($self->{'info'}->{'input_perl_encoding'} eq 'utf-8') {
         binmode($filehandle, ":utf8");
       } else {
-        binmode($filehandle, ":encoding($self->{'info'}->{'input_perl_encoding'}");
+        binmode($filehandle, ":encoding($self->{'info'}->{'input_perl_encoding'})");
         # For UTF-8, this would lead to errors in Latin-1 input the first time 
         # a line is read from the file, even though the binmode is changed 
         # later.  Evidently Perl is checking ahead in the file to see if the 

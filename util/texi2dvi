@@ -44,7 +44,6 @@ orig_pwd=`pwd`
 # Don't use `unset' since old bourne shells don't have this command.
 # Instead, assign them an empty value.
 action=compile
-batch=false     # interact normally
 debug=false
 escape="\\"
 expand=false    # true for expansion via makeinfo
@@ -106,15 +105,6 @@ CDPATH=${ZSH_VERSION+.}$path_sep
 # usage - display usage and exit successfully.
 usage ()
 {
-  # We used to simply have `echo "$usage"', but coping with the
-  # changing behavior of `echo' is much harder than simply using a
-  # here-doc.
-  #
-  #             echo '\noto'   echo '\\noto'   echo -e '\\noto'
-  # bash 3.1      \noto           \\noto          \noto
-  # bash 3.2       %oto           \noto           -e \noto
-  #
-  # where % denotes the eol character.
   cat <<EOF
 Usage: $program [OPTION]... FILE...
   or:  texi2pdf [OPTION]... FILE...
@@ -130,11 +120,10 @@ When invoked as \`texi2pdf' or given the option --pdf generate PDF output.
 Otherwise, generate DVI.
 
 General options:
-  -b, --batch         no interaction
   -D, --debug         turn on shell debugging (set -x)
   -h, --help          display this help and exit successfully
   -o, --output=OFILE  leave output in OFILE; only one input FILE is allowed
-  -q, --quiet         no output unless errors (implies --batch)
+  -q, --quiet         no output unless errors
   -v, --version       display version information and exit successfully
   -V, --verbose       report on what is done
   --max-iterations=N  don't process files more than N times [$max_iters]
@@ -209,7 +198,7 @@ EOF
 version ()
 {
   cat <<EOF
-texi2dvi (GNU Texinfo 6.6)
+texi2dvi (GNU Texinfo 6.6dev)
 
 Copyright (C) 2019 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -910,13 +899,11 @@ make_tex_cmd ()
   # Tell TeX to allow running external executables
   test -n "$shell_escape" && tex_cmd="$tex_cmd $shell_escape"
 
-  # Tell TeX to be batch if requested.
-  if $batch; then
-    # \batchmode does not show terminal output at all, so we don't
-    # want that.  And even in batch mode, TeX insists on having input
-    # from the user.  Close its stdin to make it impossible.
-    tex_cmd="$tex_cmd </dev/null '${escape}nonstopmode'"
-  fi
+  # Run without interaction.
+  # \batchmode does not show terminal output at all, so we don't
+  # want that.  And even in batch mode, TeX insists on having input
+  # from the user.  Close its stdin to make it impossible.
+  tex_cmd="$tex_cmd </dev/null '${escape}nonstopmode'"
 }
 
 
@@ -1511,10 +1498,7 @@ EOF
     # \bye doesn't work for LaTeX, but it will cause latex
     # to exit with an input error.
     recorder_option_maybe="$1"
-    save_batch=$batch
-    batch=true
     make_tex_cmd
-    batch=$save_batch
     tex_cmd="$tex_cmd '${escape}input' ./openout.tex"
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
@@ -1719,12 +1703,6 @@ cleanup ()
 #   input is preprocessed.
 input_file_name_decode ()
 {
-  # See if we are run from within AUC-Tex, in which case we are
-  # passed `\input{FOO.tex}' or even `\nonstopmode\input{FOO.tex}'.
-  case $command_line_filename in
-    *\\nonstopmode*)
-      batch=true;;
-  esac
   case $command_line_filename in
     *\\input{*}*)
       # Let AUC-TeX error parser deal with line numbers.
@@ -1810,8 +1788,7 @@ while test x"$1" != x"$arg_sep"; do
   case "$1" in
     -@ ) escape=@;;
     -~ ) verbose "Option -~ is obsolete: texi2dvi ignores it.";;
-    # Silently and without documentation accept -b and --b[atch] as synonyms.
-    -b | --batch) batch=true;;
+    -b | --batch) ;; # Obsolete
          --build)      shift; build_mode=$1;;
          --build-dir)  shift; build_dir=$1; build_mode=tidy;;
     -c | --clean) build_mode=clean;;
@@ -1834,7 +1811,7 @@ while test x"$1" != x"$arg_sep"; do
        out_lang_set `echo "x$1" | $SED 's/^x--//'`;;
 
     -p) out_lang_set pdf;;
-    -q | -s | --quiet | --silent) quiet=true; batch=true;;
+    -q | -s | --quiet | --silent) quiet=true;;
     --src-specials) src_specials=--src-specials;;
     --shell-escape) shell_escape=--shell-escape;;  
     --tex4ht) latex2html=tex4ht;;
