@@ -49,7 +49,6 @@ tp/init/tex4ht.pm
 tp/texi2any.pl
 tp/Texinfo/XS/parsetexi/api.c
 tp/Texinfo/XS/parsetexi/close.c
-tp/Texinfo/XS/parsetexi/command_data.c
 tp/Texinfo/XS/parsetexi/commands.c
 tp/Texinfo/XS/parsetexi/conf.c
 tp/Texinfo/XS/parsetexi/context_stack.c
