@@ -1,6 +1,7 @@
 2019-04-03         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Revise sorting to use the subkeys.
+	Add `@set txiindexlessthanignore'.
 
 2019-04-01         Arnold D. Robbins     <arnold@skeeve.com>
 

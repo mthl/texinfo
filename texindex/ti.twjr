@@ -66,6 +66,8 @@ along with this program.  If not, see @url{https://www.gnu.org/licenses/}.
 
 @contents
 
+@set txiindexlessthanignore
+
 @ifnottex
 @node Top
 @top Texindex
