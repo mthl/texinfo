@@ -1170,7 +1170,7 @@
       if (linkid === config.INDEX_ID)
         {
           hide_grand_child_nodes (ul);
-          res = elem.querySelector ('#' + linkid);
+          res = document.getElementById(linkid);
         }
       else
         {

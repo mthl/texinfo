@@ -1,3 +1,8 @@
+2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* js/info.js (scan_toc): Use getElementById instead of 
+	querySelector, as id's are unique.  From Mathieu.
+
 2019-04-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\urefallowbreak): Reduce stretch from 1fil to 4em.
