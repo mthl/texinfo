@@ -46,6 +46,11 @@
 
 	Avoid side effects in HTML formatting fonctions that can be overriden
 	
+	* tp/Texinfo/Convert/HTML.pm (_convert_heading_command,
+	_convert_menu_command, _convert): move code with side effects (setting
+	'seenmenus' and using 'seemenus' to add automatically a menu) out
+	of formatting functions that can be overriden by a user to main
+	converter function.
 	* tests/tex_html: regenerate formatting_singular tests that overrides
 	the menu formatting function.
 
