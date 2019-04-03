@@ -1,5 +1,25 @@
 2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not output literal backslash character in index files.
+
+	* doc/texinfo.tex
+	(\splitindexentry): In the sort key, use '{@indexbackslash }' 
+	for a backslash, instead of a backslash character.
+	(\initialglyphs): Recognize \indexbackslash.
+	(\doindwrite): Output a backslash character as '@backslashchar {}'.
+	(\definedummies): Define \backslashchar as a dummy.
+
+	* doc/texinfo-tex-test.texi (Test of certain characters in index):
+	Add more examples.
+
+	This is intended to make it more reliable for either backslash 
+	or at sign to be used as the escape character in index files, 
+	for use with old versions of texi2dvi.  (This also allows 
+	reading in old index files that used the \indexbackslash 
+	sequence, although that is not very important.)
+
+2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.js (scan_toc): Use getElementById instead of 
 	querySelector, as id's are unique.  From Mathieu.
 

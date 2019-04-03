@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-04-02.14}
+\def\texinfoversion{2019-04-03.09}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -4915,6 +4915,7 @@ end
   % Assorted special characters.
   \definedummyword\atchar
   \definedummyword\arrow
+  \definedummyword\backslashchar
   \definedummyword\bullet
   \definedummyword\comma
   \definedummyword\copyright
@@ -5034,6 +5035,7 @@ end
 \let\indexlbrace\relax
 \let\indexrbrace\relax
 \let\indexatchar\relax
+\let\indexbackslash\relax
 
 {\catcode`\@=0
 \catcode`\\=13
@@ -5269,6 +5271,8 @@ end
       \let\}=\rbracechar
       \def\@{{\indexatchar}}%
       \def\atchar##1{\@}%
+      \def\backslashchar{{\indexbackslash}}%
+      \uccode`\~=`\\ \uppercase{\let~\backslashchar}%
       %
       \let\indexsortkey\empty
       \global\let\pagenumbertext\empty
@@ -5308,6 +5312,7 @@ end
   % For texindex which always views { and } as separators.
   \def\{{\lbracechar{}}%
   \def\}{\rbracechar{}}%
+  \uccode`\~=`\\ \uppercase{\def~{\backslashchar{}}}%
   %
   % Split the entry into primary entry and any subentries, and get the index 
   % sort key.
@@ -5508,6 +5513,7 @@ end
   \let\indexlbrace\{%
   \let\indexrbrace\}%
   \let\indexatchar\@%
+  \def\indexbackslash{\math{\backslash}}%
   %
   % Some changes for non-alphabetic characters.  Using the glyphs from the
   % math fonts looks more consistent than the typewriter font used elsewhere
