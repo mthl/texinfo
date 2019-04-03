@@ -528,8 +528,8 @@ sub l2h_do_tex($$)
     # counter is undefined
     $invalid_counter_count++;
     $self->document_warn(
-           sprintf(__("l2h: could not determine the fragment %d for \@%s",
-                   $counter, $cmdname)));
+           sprintf(__("l2h: could not determine the fragment %d for \@%s"),
+                   $counter, $cmdname));
     return ("<!-- l2h: ". __LINE__ . " undef count for ${cmdname}_$counter -->")
       if ($debug);
     return '';

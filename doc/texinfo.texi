@@ -17461,7 +17461,8 @@ also output comments.  Default false.
 
 @item TOP_NODE_UP
 Up node for the Top node; default @samp{(dir)}.  This node name is 
-supposed to be already formatted for the output format.  Used for
+supposed to be already formatted for the output format.  In HTML
+can be used in attribute, so should not contain any element.  Used for
 HTML output only if @code{TOP_NODE_UP_URL} is set to override the url, 
 see @code{TOP_NODE_UP_URL} in @ref{HTML Customization Variables}.  
 

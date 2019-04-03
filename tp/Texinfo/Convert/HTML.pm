@@ -14,6 +14,22 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+# Formatting functions, registered in %default_types_conversion
+# should not have side effects, such that users can overrides
+# them independently without risking unwanted results.  Also in
+# formatting functions, the state of the converter should only
+# be accessed through functions, such as in_math, in_preformatted,
+# preformatted_classes_stack and similar functions.
+#
+# In most formatting functions, the case where $self->in_string() is
+# true should be handled explicitely and the simplest formatting should be
+# done in that case, without any HTML element such that the result
+# can be in an attribute or in a comment.
+#
+# FIXME: there is already a case with a side effect, with the
+# variable $html_menu_entry_index.
 # 
 # Original author: Patrice Dumas <pertusus@free.fr>
 
@@ -2368,22 +2384,6 @@ sub _convert_heading_command($$$$$)
   }
   $result .= $content if (defined($content));
 
-  if ($cmdname ne 'node'
-      and $self->{'current_node'}
-      and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
-    $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
-    # Generate a menu for this node.
-    my $menu_text;
-    my $menu_node = Texinfo::Structuring::section_menu_of_node (undef,
-      $command->{'extra'}{'associated_node'});
-    if ($menu_node) {
-      $menu_text = _convert ($self, $menu_node);
-      if ($menu_text) {
-        $result .= $menu_text;
-        $result .= "\n";
-      }
-    }
-  }
   return $result;
 }
 
@@ -2759,6 +2759,9 @@ sub _convert_menu_command($$$$)
   if ($content !~ /\S/) {
     return '';
   }
+  # This can probably only happen with incorrect input,
+  # for instance menu in copying
+  # FIXME check?
   if ($self->in_string()) {
     return $content;
   }
@@ -2767,9 +2770,6 @@ sub _convert_menu_command($$$$)
   if ($self->_in_preformatted_in_menu()) {
     $begin_row = '<tr><td>';
     $end_row = '</td></tr>';
-  }
-  if ($self->{'current_node'}) {
-    $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
   }
   return $self->_attribute_class('table', 'menu')
     ." border=\"0\" cellspacing=\"0\">${begin_row}\n"
@@ -2940,7 +2940,7 @@ sub _convert_enumerate_command($$$$)
   if ($content eq '') {
     return '';
   }
-  my $specification = $command->{'extra'}{'enumerate_specification'};
+  my $specification = $command->{'extra'}->{'enumerate_specification'};
   if (defined $specification) {
     my ($start, $type);
     if ($specification =~ /^\d*$/ and $specification ne '1') {
@@ -7460,6 +7460,9 @@ sub _convert($$;$)
       if ($root->{'cmdname'} eq 'node') {
         $self->{'current_node'} = $root;
       }
+      elsif ($root->{'cmdname'} eq 'menu' and $self->{'current_node'}) {
+        $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
+      }
       # args are formatted, now format the command itself
       my $result;
       if ($args_formatted) {
@@ -7473,6 +7476,24 @@ sub _convert($$;$)
       } else {
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
+      }
+      # FIXME add a configuration variable to be able turn automatically 
+      # adding menus off?
+      if ($sectioning_commands{$command_name}
+          and $self->{'current_node'}
+          and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
+        $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
+        # Generate automatically a menu for this node.
+        my $menu_text;
+        my $menu_node = Texinfo::Structuring::section_menu_of_node (undef,
+          $root->{'extra'}->{'associated_node'});
+        if ($menu_node) {
+          $menu_text = _convert ($self, $menu_node);
+          if ($menu_text) {
+            $result .= $menu_text;
+            $result .= "\n";
+          }
+        }
       }
       return $result;
     } else {
