@@ -1825,6 +1825,39 @@ sub _copy_tree($$$)
   return $new;
 }
 
+# for user-defined code
+sub collect_commands_in_tree($$)
+{
+  my $root = shift;
+  my $commands_list = shift;
+
+  my $commands_hash = {};
+  foreach my $command_name (@$commands_list) {
+    $commands_hash->{$command_name} = [];
+  }
+  _collect_commands_in_tree($root, $commands_hash);
+  return $commands_hash;
+}
+
+sub _collect_commands_in_tree($$);
+sub _collect_commands_in_tree($$)
+{
+  my $current = shift;
+  my $commands_hash = shift;
+
+  if (defined($current->{'cmdname'})
+      and defined($commands_hash->{$current->{'cmdname'}})) {
+    push @{$commands_hash->{$current->{'cmdname'}}}, $current;
+  }
+  foreach my $key ('args', 'contents') {
+    if ($current->{$key}) {
+      foreach my $child (@{$current->{$key}}) {
+        _collect_commands_in_tree($child, $commands_hash);
+      }
+    }
+  }
+}
+
 # Not used.
 sub _collect_references($$);
 sub _collect_references($$)
@@ -2884,6 +2917,13 @@ through C<@insertcopying> if in a C<@copying>.
 Return true if the I<$name> is a known tree transformation name
 that may be passed with C<TREE_TRANSFORMATIONS> to modify a texinfo
 tree.
+
+=item collect_commands_in_tree($tree, $commands_list)
+
+Returns a hash reference with keys @-commands names specified
+in the I<$commands_list> array reference and values arrays of
+tree elements corresponding to those @-command found in I<$tree>
+by traversing the tree.
 
 =back
 

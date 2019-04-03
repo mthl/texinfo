@@ -1,3 +1,15 @@
+2019-04-03  Patrice Dumas  <pertusus@free.fr>
+
+	use tree in HTML handlers to collect @-command to be processed
+
+	* tp/Texinfo/Convert/HTML.pm (run_stage_handlers): pass document
+	tree root.
+	* tp/Texinfo/Common.pm (collect_commands_in_tree): add.
+	* tp/init/tex4ht.pm (tex4ht_prepare), tp/init/latex2html.pm (l2h_process):
+	find the math and tex command using 
+	Texinfo::Common::collect_commands_in_tree instead of relying
+	on having those commands collected by the parser.
+
 2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Optionally use backslash as index escape character.
