@@ -1,5 +1,17 @@
 2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Optionally use backslash as index escape character.
+
+	* doc/texinfo.tex
+	(\doindwrite): If the user gave '@set txiindexescapeisbackslash',
+	then use \ as the escape character in the index file.
+	(\splitindexentry): Use \string to output \indexlbrace etc.
+	(\printindex): Under the same condition, read the sorted index 
+	file with backslash as an escape character.  Expand the advice 
+	on how to print the indices properly.
+
+2019-04-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not output literal backslash character in index files.
 
 	* doc/texinfo.tex

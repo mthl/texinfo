@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-04-03.09}
+\def\texinfoversion{2019-04-03.12}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -5265,13 +5265,13 @@ end
       \let\seealso\indexwriteseealso
       \indexnofonts
       % The braces around the commands are recognized by texindex.
-      \def\lbracechar{{\indexlbrace}}%
-      \def\rbracechar{{\indexrbrace}}%
+      \def\lbracechar{{\string\indexlbrace}}%
+      \def\rbracechar{{\string\indexrbrace}}%
       \let\{=\lbracechar
       \let\}=\rbracechar
-      \def\@{{\indexatchar}}%
+      \def\@{{\string\indexatchar}}%
       \def\atchar##1{\@}%
-      \def\backslashchar{{\indexbackslash}}%
+      \def\backslashchar{{\string\indexbackslash}}%
       \uccode`\~=`\\ \uppercase{\let~\backslashchar}%
       %
       \let\indexsortkey\empty
@@ -5302,12 +5302,22 @@ end
 
 \let\subentry\relax
 
-% Write the entry in \toks0 to the index file.
+% Use \ instead of @ in index files.  To support old texi2dvi and texindex.
+% This works without changing the escape character used in the toc or aux
+% files because the index entries are fully expanded here, and \string uses
+% the current value of \escapechar.
+\def\escapeisbackslash{\escapechar=`\\}
+
+% Write the entry in \indextext to the index file.
 %
 \def\doindwrite{%
   \maybemarginindex
   %
   \atdummies
+  %
+  \expandafter\ifx\csname SETtxiindexescapeisbackslash\endcsname\relax\else
+    \escapeisbackslash
+  \fi
   %
   % For texindex which always views { and } as separators.
   \def\{{\lbracechar{}}%
@@ -5491,12 +5501,41 @@ end
 % old index files using \ as the escape character.  Reading this would
 % at best lead to typesetting garbage, at worst a TeX syntax error.
 \def\printindexzz#1#2\finish{%
-  % NB this won't work if the index file starts with a group...
-  \uccode`\~=`\\ \uppercase{\if\noexpand~}\noexpand#1
-    \message{skipping sorted index file}%
-    (Skipped sorted index file in obsolete format)
+  \expandafter\ifx\csname SETtxiindexescapeisbackslash\endcsname\relax
+    \uccode`\~=`\\ \uppercase{\if\noexpand~}\noexpand#1
+      \message{WARNING: skipping sorted index file (see output document for more information)}%
+%
+%
+(A sorted index file in an obsolete format was skipped.
+     
+To fix this problem, please upgrade your version of \command{texi2dvi}
+or \command{texi2pdf} to that at \url{https://ftp.gnu.org/gnu/texinfo}.
+
+If you are using an old version of \command{texindex} (part of the Texinfo 
+distribution), you may also need to upgrade to a newer version (at least 6.0).
+
+You may be able to typeset the index if you run
+\samp{texindex \jobname.\indexname} yourself.
+
+You could also try setting the \code{txiindexescapeisbackslash} flag by 
+running a command like
+\samp{texi2dvi -t '@set txiindexescapeisbackslash' \jobname.texi}.  If you do 
+this, Texinfo will try to use the format in the index files.)
+
+If you continue to have problems, deleting the index files and starting again 
+might help (with \samp{rm \jobname.?? \jobname.??s}).
+%
+%
+    \else
+      \begindoublecolumns
+      \input \jobname.\indexname s
+      \enddoublecolumns
+    \fi
   \else
+    \message{trying to print index \indexname}%
     \begindoublecolumns
+    \catcode`\\=0\relax
+    \catcode`\@=12\relax
     \input \jobname.\indexname s
     \enddoublecolumns
   \fi
