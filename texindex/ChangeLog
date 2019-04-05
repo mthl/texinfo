@@ -1,3 +1,10 @@
+2019-04-05         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* jrweave: Use @sortas for chunk index entries to avoid < and >.
+	Use @subentry also.
+	* ti.twjr: Print see also after page numbers. Adjust logic and
+	sorting.
+
 2019-04-03         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Revise sorting to use the subkeys.

@@ -524,7 +524,7 @@ function print_out_chunk(	x, y, n, i, parts, names,
 			chunk_being_used = \
 				format_chunk_name(name, Chunk_info[name]["chunk number"],
 					Chunk_info[name]["type"])
-			printf("@crindex %s, use\n", chunk_being_used)
+			printf("@crindex %s @sortas{%s} @subentry use\n", chunk_being_used, name)
 			y = y chunk_being_used
 			y = y parts[i+1]
 		}
@@ -533,7 +533,7 @@ function print_out_chunk(	x, y, n, i, parts, names,
 		format_chunk_name(Current_chunk,
 							Chunk_info[Current_chunk]["chunk number"],
 							Chunk_type)
-	printf("@cdindex %s, definition\n", chunk_being_defined)
+	printf("@cdindex %s @sortas{%s} @subentry definition\n", chunk_being_defined, Current_chunk)
 	printf("@noindent\n%s %s@equiv{}\n",
 		chunk_being_defined,
 		Chunk_info[Current_chunk]["redefn"] == 1 ? "" : "+")

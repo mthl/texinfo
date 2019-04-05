@@ -66,8 +66,6 @@ along with this program.  If not, see @url{https://www.gnu.org/licenses/}.
 
 @contents
 
-@set txiindexlessthanignore
-
 @ifnottex
 @node Top
 @top Texindex
@@ -874,7 +872,7 @@ lets us easily track if we have seen a key before.
 @cindex @code{Primary} array
 @cindex @code{Secondary} array
 @cindex @code{Tertiary} array
-@cindex @code{Nunfields} array
+@cindex @code{Numfields} array
 @cindex @code{See} array
 @cindex @code{See_count} array
 @cindex @code{Seealso} array
@@ -932,10 +930,11 @@ for (i = 1; i <= n; i++)
 	Subkeys[key, i] = subparts[i]
 @
 
-The @code{Seeentry_re} and @code{Seealso_re} variables are regular
-expressions that match the corresponding @TeX{} control sequence.
-They're initialized once for each input file.
-The @code{make_regexp} function is described in @ref{@code{make_regexp}}.
+The @code{Seeentry_re}, @code{Seealso_re} and @code{Subentry_re}
+variables are regular expressions that match the corresponding @TeX{}
+control sequence.  They're initialized once for each input file, since
+the command character might be different between files.
+The @code{make_regexp()} function is described in @ref{@code{make_regexp}}.
 
 @cindex @code{Seeentry_re} variable
 @cindex @code{Seealso_re} variable
@@ -954,7 +953,7 @@ each input file.
 @cindex @code{Subkeys} array
 @cindex @code{Allkeys} array
 @cindex @code{Initials} array
-@cindex @code{Nunfields} array
+@cindex @code{Numfields} array
 @cindex @code{Primary} array
 @cindex @code{Secondary} array
 @cindex @code{Tertiary} array
@@ -1536,22 +1535,44 @@ Printing a single entry is quite involved:
 @cindex @code{Pagedata} array
 @cindex @code{Printed} array
 @<Print an entry@>=
-function print_entry(key, entry_command, entry_text)
+function print_entry(key, entry_command, entry_text,
+					@<Local variables for ``see also'' printing@>)
 {
 	if ((key, 1) in See) {		# at least one ``see''
 		print_see_entry(key, entry_command, entry_text,
 						See_count, See)
 	}
-	if ((key, 1) in Seealso) {	# at least one ``see also''
-		print_see_entry(key, entry_command, entry_text,
-						Seealso_count, Seealso)
-	}
+
 	if (key in Pagedata) {		# at least one page number
+		@<Check for ``see also'', add to @code{Pagedata}@>
+
 		printf("%c%s{%s}{%s}\n",
 			Command_char, entry_command,
 			entry_text[key], Pagedata[key]) > Output_file
 
 		Printed[key] = True		# mark this key as printed
+	} else if ((key, 1) in Seealso) {	# at least one ``see also''
+		# Only ``see also'' entry, print it
+		count = Seealso_count[key]
+
+		# Copy the entries to a separate array
+		for (i = 1; i <= count; i++)
+			see_entries[i] = Seealso[key, i]
+
+		# sort them
+		quicksort(see_entries, 1, count, "string")
+
+		printf("%c%s{%s}{",
+			Command_char, entry_command,
+			entry_text[key]) > Output_file
+
+		# now add them to the page data
+		for (i = 1; i <= count; i++) {
+			printf("%s", see_entries[i]) > Output_file
+			if (i != count)
+				printf(", ") > Output_file
+		}
+		printf("}\n") > Output_file
 	}
 }
 @
@@ -1559,6 +1580,35 @@ function print_entry(key, entry_command, entry_text)
 Note that we only take note of having printed the key
 for lines with page numbers. Otherwise, a ``see'' entry followed
 by a regular multilevel entry is not handled correctly.
+
+When there exist both regular index entries for a topic and
+also a ``see also'' entry, we place the ``see entry'' text
+after all the page numbers, so that there is only one printed
+index entry for the topic.
+
+This ends up being involved, since potentially there could be
+multiple ``see also'' entries (even though this is bad form).
+
+@<Check for ``see also'', add to @code{Pagedata}@>=
+if ((key, 1) in Seealso) {
+	count = Seealso_count[key]
+
+	# Copy the entries to a separate array
+	for (i = 1; i <= count; i++)
+		see_entries[i] = Seealso[key, i]
+
+	# sort them
+	quicksort(see_entries, 1, count, "string")
+
+	# now add them to the page data
+	for (i = 1; i <= count; i++)
+		Pagedata[key] = Pagedata[key] ", " see_entries[i]
+}
+@
+
+@<Local variables for ``see also'' printing@>=
+count, see_entries, i
+@
 
 Be sure to empty out @code{Printed} at the start of each file.
 
@@ -1611,8 +1661,11 @@ function print_see_entry(key, entry_command, entry_text,	# parameters
 @
 @cindex test case @seeentry{testing}
 @cindex test case @seeentry{brief case}
+@cindex coffee
 @cindex coffee @seealso{tea}
 @cindex coffee @seealso{coca-cola}
+@cindex whisky @seealso{soda}
+@cindex whisky @seealso{scotch}
 
 
 @<Work functions@>=
@@ -1622,7 +1675,6 @@ function print_see_entry(key, entry_command, entry_text,	# parameters
 The subparts represent the key for that entry,
 which will have an index in @code{Printed} if
 we already printed such an entry.
-
 The subparts are already available in the @code{Subkeys} array.
 
 @cindex @code{Subkeys} array
