@@ -140,9 +140,10 @@ my %global_count = ();         # associate a command name and the
                                # html result array
 
 # set $status to 1, if l2h could be initalized properly, to 0 otherwise
-sub l2h_process($)
+sub l2h_process($$)
 {
   my $self = shift;
+  my $document_root = shift;
   %l2h_to_latex = ();         # associate a latex text with the index in the
                               # html result array.
   @l2h_to_latex = ();         # array used to associate the index with 
@@ -205,11 +206,15 @@ sub l2h_process($)
   l2h_init_cache($self) if (!defined($self->get_conf('L2H_SKIP')) 
                    or $self->get_conf('L2H_SKIP'));
 
-  foreach my $command ('tex', 'math') {
-    # we rely on @tex and @math being recorded as 'global commands'
-    if ($self->{'extra'}->{$command}) {
+  my @replaced_commands = ('tex', 'math');
+  my $collected_commands = Texinfo::Common::collect_commands_in_tree($document_root, \@replaced_commands);
+  foreach my $command (@replaced_commands) {
+    ## we rely on @tex and @math being recorded as 'global commands'
+    #if ($self->{'extra'}->{$command}) {
+    if (scalar(@{$collected_commands->{$command}}) > 0) {
       my $counter = 0;
-      foreach my $root (@{$self->{'extra'}->{$command}}) {
+      #foreach my $root (@{$self->{'extra'}->{$command}}) {
+      foreach my $root (@{$collected_commands->{$command}}) {
         $counter++;
         my $tree;
         if ($command eq 'math') {

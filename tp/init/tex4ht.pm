@@ -78,10 +78,11 @@ my %commands = ();
 my $tex4ht_initial_dir;
 my $tex4ht_out_dir;
 
-sub tex4ht_prepare($)
+sub tex4ht_prepare($$)
 {
   # set file names
   my $self = shift;
+  my $document_root = shift;
 
   return 1 if (defined($self->get_conf('OUTFILE'))
         and $Texinfo::Common::null_device_file{$self->get_conf('OUTFILE')});
@@ -100,7 +101,9 @@ sub tex4ht_prepare($)
   $commands{'tex'}->{'style'} = $Texinfo::TeX4HT::STYLE_TEX;
   $commands{'math'}->{'exec'} = $Texinfo::TeX4HT::tex4ht_command_math;
   $commands{'tex'}->{'exec'} = $Texinfo::TeX4HT::tex4ht_command_tex;
-  foreach my $command ('math', 'tex') {
+  my @replaced_commands = sort(keys(%commands));
+  my $collected_commands = Texinfo::Common::collect_commands_in_tree($document_root, \@replaced_commands);
+  foreach my $command (@replaced_commands) {
     my $style = $commands{$command}->{'style'};
     $commands{$command}->{'basename'} = $tex4ht_basename . "_$command";
     my $suffix = '.tex';
@@ -113,8 +116,10 @@ sub tex4ht_prepare($)
     $commands{$command}->{'counter'} = 0;
     $commands{$command}->{'output_counter'} = 0;
 
-    # we rely on 'math' and 'tex' being recorded as global commands
-    if ($self->{'extra'}->{$command}) {
+    ## we rely on 'math' and 'tex' being recorded as global commands
+    #if ($self->{'extra'}->{$command}) {
+    if (scalar(@{$collected_commands->{$command}}) > 0) {
+      
       local *TEX4HT_TEXFILE;
       unless (open (*TEX4HT_TEXFILE, ">$rfile")) {
         $self->document_warn(sprintf(__("tex4ht.pm: could not open %s: %s"), 
@@ -140,7 +145,8 @@ sub tex4ht_prepare($)
           print $fh "\\csname tex4ht\\endcsname\n";
         }
       }
-      foreach my $root (@{$self->{'extra'}->{$command}}) {
+      #foreach my $root (@{$self->{'extra'}->{$command}}) {
+      foreach my $root (@{$collected_commands->{$command}}) {
         $commands{$command}->{'counter'}++;
         my $counter = $commands{$command}->{'counter'};
         my $tree;

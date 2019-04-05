@@ -6710,9 +6710,10 @@ foreach my $stage (@possible_stages) {
   $possible_stages{$stage} = 1;
 }
 
-sub run_stage_handlers($$)
+sub run_stage_handlers($$$)
 {
   my $converter = shift;
+  my $root = shift;
   my $stage = shift;
   die if (!$possible_stages{$stage});
 
@@ -6724,7 +6725,7 @@ sub run_stage_handlers($$)
       if ($converter->get_conf('DEBUG')) {
         print STDERR "HANDLER($stage) , priority $priority: $handler\n";
       }
-      my $status = &{$handler}($converter, $stage);
+      my $status = &{$handler}($converter, $root, $stage);
       if (!$status) {
         #if ($converter->get_conf('VERBOSE')) {
         #  print STDERR "Handler $handler of $stage($priority) failed\n";
@@ -6819,7 +6820,7 @@ sub output($$)
   }
   $self->set_conf('EXTERNAL_CROSSREF_SPLIT', $self->get_conf('SPLIT'));
 
-  my $setup_status = $self->run_stage_handlers('setup');
+  my $setup_status = $self->run_stage_handlers($root, 'setup');
   return undef unless($setup_status);
 
   $self->_prepare_css();
@@ -6870,7 +6871,7 @@ sub output($$)
   $self->_prepare_index_entries();
   $self->_prepare_footnotes();
 
-  my $structure_status = $self->run_stage_handlers('structure');
+  my $structure_status = $self->run_stage_handlers($root, 'structure');
   return undef unless($structure_status);
 
   &{$self->{'format_css_lines'}}($self);
@@ -6959,7 +6960,7 @@ sub output($$)
     chomp($self->{'documentdescription_string'});
   }
 
-  my $init_status = $self->run_stage_handlers('init');
+  my $init_status = $self->run_stage_handlers($root, 'init');
   return undef unless($init_status);
 
   if ($self->get_conf('FRAMES')) {
@@ -7088,7 +7089,7 @@ sub output($$)
     }
   }
 
-  my $finish_status = $self->run_stage_handlers('finish');
+  my $finish_status = $self->run_stage_handlers($root, 'finish');
   return undef unless($finish_status);
 
   # do node redirection pages
