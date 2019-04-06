@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-04-03.12}
+\def\texinfoversion{2019-04-06.22}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -5503,29 +5503,25 @@ end
 \def\printindexzz#1#2\finish{%
   \expandafter\ifx\csname SETtxiindexescapeisbackslash\endcsname\relax
     \uccode`\~=`\\ \uppercase{\if\noexpand~}\noexpand#1
-      \message{WARNING: skipping sorted index file (see output document for more information)}%
-%
-%
-(A sorted index file in an obsolete format was skipped.
-     
-To fix this problem, please upgrade your version of \command{texi2dvi}
-or \command{texi2pdf} to that at \url{https://ftp.gnu.org/gnu/texinfo}.
-
-If you are using an old version of \command{texindex} (part of the Texinfo 
+      \expandafter\ifx\csname SETtxiskipindexfileswithbackslash\endcsname\relax
+\errmessage{%
+ERROR: A sorted index file in an obsolete format was skipped.  
+To fix this problem, please upgrade your version of 'texi2dvi'
+or 'texi2pdf' to that at <https://ftp.gnu.org/gnu/texinfo>.
+If you are using an old version of 'texindex' (part of the Texinfo 
 distribution), you may also need to upgrade to a newer version (at least 6.0).
-
 You may be able to typeset the index if you run
-\samp{texindex \jobname.\indexname} yourself.
-
-You could also try setting the \code{txiindexescapeisbackslash} flag by 
+'texindex \jobname.\indexname' yourself.
+You could also try setting the 'txiindexescapeisbackslash' flag by 
 running a command like
-\samp{texi2dvi -t '@set txiindexescapeisbackslash' \jobname.texi}.  If you do 
-this, Texinfo will try to use the format in the index files.)
-
+'texi2dvi -t "@set txiindexescapeisbackslash" \jobname.texi'.  If you do 
+this, Texinfo will try to use index files in the old format.
 If you continue to have problems, deleting the index files and starting again 
-might help (with \samp{rm \jobname.?? \jobname.??s}).
-%
-%
+might help (with 'rm \jobname.?? \jobname.??s')%
+}%
+      \else
+        (Skipped sorted index file in obsolete format)
+      \fi
     \else
       \begindoublecolumns
       \input \jobname.\indexname s
