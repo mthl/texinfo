@@ -76,7 +76,7 @@ MainWindow::inject_qwebchannel(bool finished_ok)
     ui->webEngineView->page()->runJavaScript (qwebchannel_js,
       [this](const QVariant&) {
           this->ui->webEngineView->page()->runJavaScript(
-                          "if (typeof init == 'function') { init(); }",
+                 "if (typeof wc_init == 'function') { wc_init(); }",
                           0 );
       });
 }
