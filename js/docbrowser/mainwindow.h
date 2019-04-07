@@ -32,7 +32,6 @@ private:
     QString qwebchannel_js;
     char *datadir;
 
-    bool load_manual (const char *manual);
     void quit();
     void inject_qwebchannel(bool ok);
 };

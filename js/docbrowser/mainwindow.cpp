@@ -3,8 +3,6 @@
 #include "websocketclientwrapper.h"
 #include "websockettransport.h"
 
-#include "infopath.h"
-
 #include <stdlib.h>
 
 #include <QWebEngineView>
@@ -39,7 +37,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(clientWrapper, &WebSocketClientWrapper::clientConnected,
                          channel, &QWebChannel::connectTo);
 
-    auto *core = new Core(ui, this);
+    this->core = new Core(ui, this);
     channel->registerObject(QStringLiteral("core"), core);
 
 
@@ -59,7 +57,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->qwebchannel_js = QString(b);
 
 #define MANUAL "hello-html"
-    load_manual (MANUAL);
+    core->load_manual (MANUAL);
 }
 
 /* Load qwebchannel.js into the current page. */
@@ -84,21 +82,6 @@ MainWindow::inject_qwebchannel(bool finished_ok)
 
 
 
-bool
-MainWindow::load_manual (const char *manual)
-{
-    char *path = locate_manual (manual);
-
-    if (path)
-      {
-        qDebug() << "got path" << path;
-        ui->webEngineView->load(QUrl("file:" + QString(path)));
-        free (path);
-        return true;
-      }
-    return false;
-}
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -117,5 +100,5 @@ void MainWindow::on_quitButton_clicked()
 
 void MainWindow::on_loadButton_clicked()
 {
-    load_manual (qPrintable(ui->manualEdit->text()));
+    core->load_manual (qPrintable(ui->manualEdit->text()));
 }

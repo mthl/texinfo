@@ -1,4 +1,6 @@
 #include "core.h"
+#include "ui_mainwindow.h"
+
 #include <QMessageBox>
 #include <QtGlobal>
 #include <QCoreApplication>
@@ -10,6 +12,7 @@ Core::Core(Ui::MainWindow *ui, QObject *parent)
 {
 }
 
+/* slot */
 void
 Core::external_manual (const QString &url)
 {
@@ -21,3 +24,19 @@ Core::external_manual (const QString &url)
 
     // Repace the file being viewed
 }
+
+bool
+Core::load_manual (const char *manual)
+{
+    char *path = locate_manual (manual);
+
+    if (path)
+      {
+        qDebug() << "got path" << path;
+        ui->webEngineView->load(QUrl("file:" + QString(path)));
+        free (path);
+        return true;
+      }
+    return false;
+}
+

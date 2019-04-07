@@ -1,6 +1,8 @@
 #ifndef CORE_H
 #define CORE_H
 
+#include "infopath.h"
+
 #include <QObject>
 
 namespace Ui {
@@ -12,6 +14,8 @@ class Core : public QObject
     Q_OBJECT
 public:
     explicit Core(Ui::MainWindow *ui, QObject *parent = nullptr);
+
+    bool load_manual (const char *manual);
 
 signals:
     // Signals emitted from the C++ side and received on the HTML client side.
