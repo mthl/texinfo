@@ -26,9 +26,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    QWebChannel *channel;
-    QWebSocketServer *server;
-    WebSocketClientWrapper *clientWrapper;
     Core *core;
 
     QString qwebchannel_js;

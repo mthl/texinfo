@@ -20,21 +20,24 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::quit);
 
-    server = new QWebSocketServer
-(QStringLiteral("QWebChannel Standalone Server"), QWebSocketServer::NonSecureMode);
+    auto *server = new QWebSocketServer
+               (QStringLiteral("QWebChannel Standalone Server"),
+                QWebSocketServer::NonSecureMode,
+                this);
 
 // we shouldn't hardcode a number here.  what if the program is run twice at the same time?
     if (!server->listen(QHostAddress::LocalHost, 12345)) {
         qFatal("Failed to open web socket server.");
     }
 
-    clientWrapper = new WebSocketClientWrapper(server);
+    auto *clientWrapper = new WebSocketClientWrapper(server, this);
 
 
-    channel = new QWebChannel;
+    auto *channel = new QWebChannel(this);
     QObject::connect(clientWrapper, &WebSocketClientWrapper::clientConnected,
                          channel, &QWebChannel::connectTo);
-    core = new Core;
+
+    auto *core = new Core(this);
     channel->registerObject(QStringLiteral("core"), core);
 
 
