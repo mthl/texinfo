@@ -1,3 +1,15 @@
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove @math and @tex as 'global commands.'
+
+	* tp/Texinfo/ParserNonXS.pm (%global_multiple_commands),
+	* tp/Texinfo/XS/parsetexi/api.c (build_global_info2),
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command),
+	* tp/Texinfo/XS/parsetexi/parser.h (GLOBAL_INFO): Remove 'math' 
+	and 'tex'.
+
+	Reverts change on 2019-04-01.  Suggestion from Patrice.
+
 2019-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\printindex): Give an error message with 
