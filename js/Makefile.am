@@ -96,10 +96,11 @@ EXTRA_DIST += $(examples_src)
 
 hello_extra_head = '<link rel="stylesheet" type="text/css" href="info.css"/><script src="modernizr.js" type="text/javascript"></script><script src="info.js" type="text/javascript"></script>'
 
-examples/hello-html: examples/hello/hello.texi examples
+examples/hello-html: examples/hello/hello.texi
 	mkdir -p examples
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(hello_extra_head) \
+	  -c HTMLXREF=$(srcdir)/empty_htmlxref \
 	  $(srcdir)/examples/hello/hello.texi -o $@ && \
 	for f in $(js_scripts) info.css ; do \
 	  cp $(srcdir)/$$f $@ ; \
@@ -111,6 +112,7 @@ examples/kawa-html: examples/kawa/kawa.texi
 	mkdir -p examples
 	$(MAKEINFO) -I=$(srcdir) --html \
 	  -c EXTRA_HEAD=$(kawa_extra_head) \
+	  -c HTMLXREF=$(srcdir)/empty_htmlxref \
 	  $(srcdir)/examples/kawa/kawa.texi -o $@ && \
 	for f in $(js_scripts) info.css kawa.css ; do \
 	  cp $(srcdir)/$$f $@ ; \

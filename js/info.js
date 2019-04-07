@@ -119,6 +119,10 @@
       return { type: "current-url", pointer: pointer, history: "pushState" };
     },
 
+    external_manual: function (linkid, history) {
+      return { type: "external-manual", url: linkid };
+    },
+
     /** @arg {string} dir */
     navigate: function (dir) {
       return { type: "navigate", direction: dir, history: "pushState" };
@@ -226,6 +230,13 @@
           res.highlight = null;
           res.loaded_nodes = Object.assign ({}, res.loaded_nodes);
           res.loaded_nodes[linkid] = res.loaded_nodes[linkid] || {};
+          return res;
+        }
+      case "external-manual":
+        {
+          // This is expected to replace the entire page, therefore the
+          // following return statement shouldn't run.
+          window.location.href = action.url;
           return res;
         }
       case "unfocus":
@@ -1367,14 +1378,23 @@
         if ((target instanceof Element) && target.matches ("a"))
           {
             var href = target.getAttribute ("href");
-            if (href && !absolute_url_p (href)
-                  && !external_manual_url_p (href))
-              {
-                var linkid = href_hash (href) || config.INDEX_ID;
-                store.dispatch (actions.set_current_url (linkid));
-                event.preventDefault ();
-                event.stopPropagation ();
-                return;
+            if (href)
+	      {
+                if (external_manual_url_p (href))
+                  {
+                    store.dispatch (actions.external_manual (href));
+                    event.preventDefault ();
+                    event.stopPropagation ();
+                    return;
+                  }
+                else if (!absolute_url_p (href))
+                  {
+                    var linkid = href_hash (href) || config.INDEX_ID;
+                    store.dispatch (actions.set_current_url (linkid));
+                    event.preventDefault ();
+                    event.stopPropagation ();
+                    return;
+                  }
               }
           }
       }
@@ -2007,4 +2027,86 @@
      doesn't handle the 'Escape' key properly.  See
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
+
+
+/*----------------------------------.
+| For communication with Qt process |
+`----------------------------------*/
+
+// object shared with controlling Qt/C++ process
+var core;
+
+// For use with QWebChannel.  init function to be called after
+// qwebchannel.js has been loaded.
+init = function ()
+{
+  if (!inside_index_page)
+    return;
+
+  if (location.search != "")
+    var baseUrl
+      = (/[?&]webChannelBaseUrl=([A-Za-z0-9\-:/\.]+)/.exec(location.search)[1]);
+  else
+    var baseUrl = "ws://localhost:12345";
+
+  var socket = new WebSocket(baseUrl);
+
+  socket.onclose = function()
+    {
+      console.error("web channel closed");
+    };
+
+  socket.onerror = function(error)
+    {
+      console.error("web channel error: " + error);
+    };
+
+  socket.onopen = function()
+    {
+      new QWebChannel(socket, function(channel)
+        {
+          window.core = channel.objects.core;
+
+          // receive signals from Qt/C++ side
+          // should we inject this code?
+
+          channel.objects.core.setUrl.connect(function(url) {
+            alert("asked to go to " + url);
+          });
+        });
+    };
+
+  var store_dispatch = Store.prototype.dispatch;
+  Store.prototype.dispatch = function (action)
+    {
+      if (!web_channel_override (this, action))
+        store_dispatch.call (this, action);
+    };
+  // Overriding just the dispatch function works better than
+  // assigining 'store' to a different object, as store.state
+  // is used as well.
+}
+
 } (window["Modernizr"], window["INFO_CONFIG"]));
+
+// Make init function visible at external scope
+var init;
+
+// Return true if the standard function doesn't need to be called.
+// This is put in the external scope because we might want to inject
+// this function in the future from Qt/C++.
+function web_channel_override (store, action)
+{
+  switch (action.type)
+    {
+    case "external-manual":
+      {
+        window.core.external_manual (action.url);
+        return 1;
+      }
+    default:
+      {
+        return 0;
+      }
+    }
+}
