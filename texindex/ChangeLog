@@ -1,6 +1,7 @@
 2019-04-07         Arnold D. Robbins     <arnold@skeeve.com>
 
-	* ti.twjr: Improve commentary on sorting.
+	* ti.twjr: Improve commentary on sorting. Index TRUE and FALSE.
+	Make fatal() function more portable.
 
 2019-04-05         Arnold D. Robbins     <arnold@skeeve.com>
 

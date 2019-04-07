@@ -606,6 +606,7 @@ character itself.
 Finally, several variables are set to regular expressions that
 match control sequences of interest.
 
+@cindex @code{FALSE} constant
 @cindex @code{beginfile()} function
 @cindex @code{Output_file} variable
 @cindex @code{Do_initials} variable
@@ -674,6 +675,7 @@ each incoming line as the index of an array named @code{Seen}.  If a
 line is not there, it has not been seen.  Otherwise it has, and we move
 on to the next record.
 
+@cindex @code{TRUE} constant
 @cindex @code{Seen} array
 @<Remove duplicates@>=
 # Remove duplicates, which can happen
@@ -988,6 +990,7 @@ Finally, we need to determine if more than one initial occurs in the
 input.  If so, we set @code{Do_initials} to true.  As soon as it's true,
 we don't need to do further checking on subsequent lines.
 
+@cindex @code{TRUE} constant
 @cindex @code{Do_initials} variable
 @cindex @code{Prev_initial} variable
 @<Check for more than one initial@>=
@@ -1933,18 +1936,26 @@ function char_split(string, array,    n, i)
 @node @code{fatal}
 @subsection @code{fatal()}: Printing Fatal Error Messages
 
+@cindex @command{cat} command
 @cindex stderr
 The @code{fatal()} function prints a @code{printf}-formatted message to
 standard error and then exits badly.
+For maximal portability, it opens a pipeline to @command{cat},
+redirected to standard error; not all systems have a @file{/dev/stderr}
+file, and not all versions of @command{awk} recognize that name
+internally.
 
 @cindex @code{EXIT_FAILURE} constant
 @cindex @code{fatal()} function
 @<Helper functions@>=
 function fatal(format, arg1, arg2, arg3, arg4, arg5,
-				arg6, arg7, arg8, arg9, arg10)
+				arg6, arg7, arg8, arg9, arg10, cat)
 {
+	cat = "cat 1>&2"	# maximal portability
 	printf(format, arg1, arg2, arg3, arg4, arg5,
-		  arg6, arg7, arg8, arg9, arg10) > "/dev/stderr"
+		  arg6, arg7, arg8, arg9, arg10) | cat
+	close(cat)
+
 	exit EXIT_FAILURE
 }
 @
