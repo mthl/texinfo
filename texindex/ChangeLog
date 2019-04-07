@@ -1,3 +1,7 @@
+2019-04-07         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Improve commentary on sorting.
+
 2019-04-05         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* jrweave: Use @sortas for chunk index entries to avoid < and >.

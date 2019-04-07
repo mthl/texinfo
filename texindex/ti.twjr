@@ -1162,11 +1162,11 @@ function print_initial(initial)
 @cindex quicksort algorithm
 @cindex Hoare, C.A.R.
 
-Sorting uses a standard quicksort algorithm, with a @code{less_than()}
-function supplying the comparison
-(@pxref{Multilevel comparisons}, and @pxref{Comparing index entries}).
+Sorting uses a standard quicksort algorithm. It turns out we need to
+sort both multilevel index entries, and regular text. To that end
+the @code{compare} variable indicates which way to do the ``less
+than'' comparison.
 
-@cindex @code{less_than()} function
 @cindex @code{quicksort()} function
 @cindex @code{quicksort_swap()} function
 @<Helper functions@>=
@@ -1203,10 +1203,20 @@ function quicksort_swap(data, i, j, temp)
 }
 @
 
+We set a numeric variable to indicate what kind of
+comparison to do, avoiding repeating the string
+comparison whose result won't change upon each iteration.
+
 @<Set compare mechanism@>=
 use_index = (compare == "index")
 @
 
+The @code{less_than()} function supplies the comparison for index entries
+(@pxref{Multilevel comparisons}, and @pxref{Comparing index entries}).
+The @code{key_compare()} is used for string comparisons.
+
+@cindex @code{less_than()} function
+@cindex @code{key_compare()} function
 @<Do ``less than'' comparison@>=
 lt = (use_index ? less_than(data, i, left) : key_compare(data[i], data[left]) < 0)
 @
@@ -1247,8 +1257,10 @@ function less_than(data, l, r,		left, right, nfields, cmp1, cmp2)
 {
 	left = data[l]
 	right = data[r]
+
 	left_fields = Numfields[left]
 	right_fields = Numfields[right]
+
 	nfields = min(left_fields, right_fields)
 
 	# At least one field, alway check the first subkey
@@ -1257,9 +1269,8 @@ function less_than(data, l, r,		left, right, nfields, cmp1, cmp2)
 		return cmp1 < 0
 
 	# cmp1 == 0: one side has 1 field, other side has 1 to 3 fields
-	if (nfields == 1) {
+	if (nfields == 1)
 		return left_fields < right_fields
-	}
 
 	# At least two fields, check second subkey
 	cmp2 = key_compare(Subkeys[left, 2], Subkeys[right, 2])
@@ -1267,9 +1278,8 @@ function less_than(data, l, r,		left, right, nfields, cmp1, cmp2)
 		return cmp2 < 0
 
 	# cmp1 == 0, cmp2 == 0, one side has 2 fields, other has 2 to 3 fields
-	if (nfields == 2) {
+	if (nfields == 2)
 		return left_fields < right_fields
-	}
 
 	# Three fields
 	return key_compare(Subkeys[left, 3], Subkeys[right, 3]) < 0
@@ -1449,6 +1459,7 @@ function key_compare(left, right,	len_l, len_r, len, chars_l, chars_r)
 	# equal so far, shorter one wins
 	if (len_l < len_r)
 		return -1
+
 	if (len_l > len_r)
 		return 1
 
