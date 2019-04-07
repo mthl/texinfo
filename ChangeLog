@@ -1,5 +1,11 @@
 2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (HTML Customization Variables): Remove text 
+	"For HTML" from the description of each variable, as it is clear 
+	that these variables are all for HTML.
+
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (latex2html Customization Variables): New 
 	node, split from 'HTML Customization Variables'.
 
