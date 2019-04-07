@@ -1,5 +1,10 @@
 2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (latex2html Customization Variables): New 
+	node, split from 'HTML Customization Variables'.
+
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove @math and @tex as 'global commands.'
 
 	* tp/Texinfo/ParserNonXS.pm (%global_multiple_commands),

@@ -16725,6 +16725,7 @@ The sections below give the details for each of these.
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
 * HTML:     HTML Customization Variables.
+* latex2html:  @command{latex2html} Customization Variables.
 * Other:    Other Customization Variables.
 @end menu
 
@@ -16927,7 +16928,7 @@ exec texi2any -c TEXINPUT_OUTPUT_FORMAT=textcontent "$@@"
 
 This table gives the customization variables which apply to HTML
 output only.  A few other customization variable apply to both HTML
-and other output formats; those are given in the next section.
+and other output formats; see @ref{Other Customization Variables}.
 
 @vtable @code
 @item AVOID_MENU_REDUNDANCY
@@ -17072,42 +17073,6 @@ For HTML@.  If set, do not ignore @samp{Top} as the first
 argument for an external ref to a manual, as is done by default.
 @xref{Referring to a Manual as a Whole}.
 
-@item L2H
-For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
-and @code{@@tex} sections; default false.  Best used with @option{--iftex}.
-
-@item L2H_CLEAN
-(Relevant only if @code{L2H} is set.)  If set, the intermediate files
-generated in relation with @command{latex2html} are removed; default
-true.
-
-@item L2H_FILE
-(Relevant only if @code{L2H} is set.)  If set, the given file is used
-as @command{latex2html}'s init file; default unset.
-
-@item L2H_HTML_VERSION
-(Relevant only if @code{L2H} is set.)  The HTML version used in the
-@command{latex2html} call; default unset.
-
-@item L2H_L2H
-(Relevant only if @code{L2H} is set.)  The program invoked as
-@command{latex2html}; default is @code{latex2html}.
-
-@item L2H_SKIP
-(Relevant only if @code{L2H} is set.)  If set to a true value, the
-actual call to @command{latex2html} is skipped; previously generated
-content is reused instead.  If set to 0, the cache is not used at all.
-If set to @samp{undef}, the cache is used for as many @TeX{} fragments as
-possible and for any remaining the command is run.  The default is
-@samp{undef}.
-
-@item L2H_TMP
-(Relevant only if @code{L2H} is set.)  Set the directory used for
-temporary files.  None of the file name components in this directory
-name may start with @samp{.}; otherwise, @command{latex2html} will
-fail (because of @command{dvips}).  The default is the empty string,
-which means the current directory.
-
 @item MAX_HEADER_LEVEL
 For HTML@.  Maximum header formatting level used (higher header
 formatting level numbers correspond to lower sectioning levels);
@@ -17232,6 +17197,53 @@ otherwise use the node name or section name depending on
 @code{USE_NODES}.  The default is @samp{undef}.
 
 @end vtable
+
+
+@node @command{latex2html} Customization Variables
+@subsection @command{latex2html} Customization Variables
+
+This table lists the customization variables which can be used when 
+@command{latex2html} is being used.
+
+@vtable @code
+@item L2H
+For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
+and @code{@@tex} sections; default false.  Best used with @option{--iftex}.
+
+@item L2H_CLEAN
+(Relevant only if @code{L2H} is set.)  If set, the intermediate files
+generated in relation with @command{latex2html} are removed; default
+true.
+
+@item L2H_FILE
+(Relevant only if @code{L2H} is set.)  If set, the given file is used
+as @command{latex2html}'s init file; default unset.
+
+@item L2H_HTML_VERSION
+(Relevant only if @code{L2H} is set.)  The HTML version used in the
+@command{latex2html} call; default unset.
+
+@item L2H_L2H
+(Relevant only if @code{L2H} is set.)  The program invoked as
+@command{latex2html}; default is @code{latex2html}.
+
+@item L2H_SKIP
+(Relevant only if @code{L2H} is set.)  If set to a true value, the
+actual call to @command{latex2html} is skipped; previously generated
+content is reused instead.  If set to 0, the cache is not used at all.
+If set to @samp{undef}, the cache is used for as many @TeX{} fragments as
+possible and for any remaining the command is run.  The default is
+@samp{undef}.
+
+@item L2H_TMP
+(Relevant only if @code{L2H} is set.)  Set the directory used for
+temporary files.  None of the file name components in this directory
+name may start with @samp{.}; otherwise, @command{latex2html} will
+fail (because of @command{dvips}).  The default is the empty string,
+which means the current directory.
+
+@end vtable
+
 
 
 @node Other Customization Variables
