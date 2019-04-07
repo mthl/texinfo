@@ -4,7 +4,7 @@
 
 	* js/Makefile.am: Build the examples with an empty htmlxref file 
 	in order to produce relative links in the output.
-	* js/info.js (init): New function, to connect to a QWebChannel.
+	* js/info.js (wc_init): New function, to connect to a QWebChannel.
 	(web_channel_override): New function, to override action 
 	handling.
 	(core): New object to represent communication channel with a 

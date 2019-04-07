@@ -2038,7 +2038,7 @@ var core;
 
 // For use with QWebChannel.  init function to be called after
 // qwebchannel.js has been loaded.
-init = function ()
+wc_init = function ()
 {
   if (!inside_index_page)
     return;
@@ -2089,8 +2089,8 @@ init = function ()
 
 } (window["Modernizr"], window["INFO_CONFIG"]));
 
-// Make init function visible at external scope
-var init;
+// Make wc_init function visible at external scope
+var wc_init;
 
 // Return true if the standard function doesn't need to be called.
 // This is put in the external scope because we might want to inject
