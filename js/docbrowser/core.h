@@ -3,11 +3,15 @@
 
 #include <QObject>
 
+namespace Ui {
+class MainWindow;
+}
+
 class Core : public QObject
 {
     Q_OBJECT
 public:
-    explicit Core(QObject *parent = nullptr);
+    explicit Core(Ui::MainWindow *ui, QObject *parent = nullptr);
 
 signals:
     // Signals emitted from the C++ side and received on the HTML client side.
@@ -16,6 +20,9 @@ signals:
 public slots:
     // Signals emitted from the HTML client side and received on the HTML side.
     void external_manual (const QString &url);
+
+private:
+    Ui::MainWindow *ui;
 
 };
 

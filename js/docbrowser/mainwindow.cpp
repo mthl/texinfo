@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(clientWrapper, &WebSocketClientWrapper::clientConnected,
                          channel, &QWebChannel::connectTo);
 
-    auto *core = new Core(this);
+    auto *core = new Core(ui, this);
     channel->registerObject(QStringLiteral("core"), core);
 
 
