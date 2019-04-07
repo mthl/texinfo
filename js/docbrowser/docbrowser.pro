@@ -18,11 +18,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     websocketclientwrapper.cpp \
     websockettransport.cpp \
-    core.cpp
+    core.cpp \
+    infopath.c
 
 HEADERS  += mainwindow.h \
     websocketclientwrapper.h \
     websockettransport.h \
-    core.h
+    core.h \
+    infopath.h
 
 FORMS    += mainwindow.ui

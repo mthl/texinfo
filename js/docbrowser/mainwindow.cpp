@@ -3,6 +3,8 @@
 #include "websocketclientwrapper.h"
 #include "websockettransport.h"
 
+#include "infopath.h"
+
 #include <stdlib.h>
 
 #include <QWebEngineView>
@@ -108,4 +110,6 @@ void MainWindow::on_quitButton_clicked()
 void MainWindow::on_loadButton_clicked()
 {
     qDebug() << "load clicked";
+    char *path = locate_manual(qPrintable(ui->manualEdit->text()));
+    qDebug() << "got path" << path;
 }
