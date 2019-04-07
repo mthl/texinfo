@@ -58,7 +58,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QByteArray b = file.readAll();
     this->qwebchannel_js = QString(b);
 
-    load_manual();
+#define MANUAL "hello-html"
+    load_manual (MANUAL);
 }
 
 /* Load qwebchannel.js into the current page. */
@@ -82,13 +83,20 @@ MainWindow::inject_qwebchannel(bool finished_ok)
 }
 
 
-#define MANUAL "hello-html"
 
-void
-MainWindow::load_manual()
+bool
+MainWindow::load_manual (const char *manual)
 {
-    ui->webEngineView->load(QUrl("file:"
-+ QString(this->datadir) + "/examples/" MANUAL "/index.html"));
+    char *path = locate_manual (manual);
+
+    if (path)
+      {
+        qDebug() << "got path" << path;
+        ui->webEngineView->load(QUrl("file:" + QString(path)));
+        free (path);
+        return true;
+      }
+    return false;
 }
 
 MainWindow::~MainWindow()
@@ -109,7 +117,5 @@ void MainWindow::on_quitButton_clicked()
 
 void MainWindow::on_loadButton_clicked()
 {
-    qDebug() << "load clicked";
-    char *path = locate_manual(qPrintable(ui->manualEdit->text()));
-    qDebug() << "got path" << path;
+    load_manual (qPrintable(ui->manualEdit->text()));
 }
