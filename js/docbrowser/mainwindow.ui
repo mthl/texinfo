@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
-    <height>353</height>
+    <width>735</width>
+    <height>507</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,6 +25,23 @@
      </widget>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetMinimumSize</enum>
+      </property>
+      <item>
+       <widget class="QPushButton" name="loadButton">
+        <property name="text">
+         <string>Load Manual</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="manualEdit"/>
+      </item>
+     </layout>
+    </item>
+    <item>
      <widget class="QPushButton" name="quitButton">
       <property name="text">
        <string>Quit</string>
@@ -38,7 +55,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>491</width>
+     <width>735</width>
      <height>19</height>
     </rect>
    </property>

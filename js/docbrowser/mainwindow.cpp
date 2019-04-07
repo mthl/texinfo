@@ -103,3 +103,9 @@ void MainWindow::on_quitButton_clicked()
 {
     QCoreApplication::quit();
 }
+
+
+void MainWindow::on_loadButton_clicked()
+{
+    qDebug() << "load clicked";
+}
