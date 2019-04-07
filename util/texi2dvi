@@ -949,7 +949,7 @@ run_tex ()
       dvi | pdf ) move_to_dest "$in_noext.$out_lang";;
     esac
   else
-    error 1 "$tex exited with bad status, quitting."
+    tex_failed=true
   fi
 }
 
@@ -1151,6 +1151,7 @@ run_tex_suite ()
     suite_cycle=`expr $suite_cycle + 1`
     verbose "Cycle $suite_cycle for $command_line_filename"
 
+    tex_failed=false
     run_core_conversion
     xref_files_changed || break
     xref_files_save
@@ -1161,6 +1162,11 @@ run_tex_suite ()
     run_bibtex
     run_index
   done
+
+  if $tex_failed ; then
+    # TeX failed, and the xref files did not change.
+    error 1 "$tex exited with bad status, quitting."
+  fi
 
   # If we were using thumbpdf and producing PDF, then run thumbpdf
   # and TeX one last time.

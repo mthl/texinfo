@@ -1,3 +1,19 @@
+2019-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\printindex): Give an error message with 
+	\errmessage, instead of putting a message in the output 
+	document, in order to give a hard failure in case an index file 
+	has a backslash.  Suggestion from Karl.  Old index files will 
+	still be upgraded by texi2dvi due to the previous change.
+
+2019-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi: If TeX exits with a bad status, do not quit 
+	immediately: check if the xref files have changed.  If they 
+	have, the error might be corrected on subsequent runs.  This is 
+	intended to help with moving index files to use @ as the escape 
+	character instead of \.
+
 2019-04-03  Patrice Dumas  <pertusus@free.fr>
 
 	use tree in HTML handlers to collect @-command to be processed

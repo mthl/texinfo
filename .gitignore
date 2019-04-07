@@ -247,7 +247,6 @@ tp/Texinfo/XS/gnulib/lib/wchar.h
 
 tp/Texinfo/XS/gnulib/lib/sys/types.h
 
-tp/Texinfo/XS/parsetexi/command_data.c
 tp/Texinfo/XS/parsetexi/Parsetexi.c
 tp/Texinfo/XS/parsetexi/config.h
 tp/Texinfo/XS/parsetexi/config.log
