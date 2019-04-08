@@ -83,6 +83,55 @@ files produced by the @file{texinfo.tex} file.
 * Processing records::          Processing each record.
 * Necessary stuff::             Copyright, helper functions, i18n.
 * Index::                       Combined index.
+
+@detailmenu
+* Intended audience::              Who should read this document.
+* History::                        @file{texindex.awk} development history.
+* Desired printed output::         What a printed index should look like.
+* Texinfo indexing commands::      How to write indexing commands.
+* Input form::                     The input to @file{texindex.awk}.
+* Output form::                    The output from @file{texindex.awk}.
+* Processing::                     Processing the data.
+* Assumptions::                    Additional assumptions.
+* Portability::                    Using portable @command{awk}.
+* First line::                     The first line in the file.
+* Initial setup::                  Set up variables and constants used
+                                   throughout.
+* Argument processing::            Processing command line arguments.
+* Setup for each input file::      What happens at the start of each file.
+* Processing each record::         Pulling apart the fields and storing data.
+* Remove duplicates::              Removing duplicating entries.
+* Remove leading @code{\entry}::   Remove the leading @code{\entry} command.
+* Get the initial::                Get the initial for this entry.
+* Set up and name fields::         Pull apart the line.
+* Store the data for this line::   Store the data for later access.
+* Check for more than one initial:: See if there are multiple initials.
+* Splitting the record::           Split the record apart.
+* End-of-file sorting and printing:: Sorting the entries for each index.
+* Quicksort::                      Sorting our input.
+* Multilevel comparisons::         Handling multilevel entries.
+* Comparing index entries::        The heart of the sorting algorithm.
+* Printing the data::              Printing the final results.
+* printing top level::             Top level logic.
+* printing a single entry::        Handling a single entry.
+* Copyright statement::            Copyright info.
+* Library functions::              From the @code{gawk} library:
+                                   @file{ftrans.awk}, @code{join()}.
+* Helper functions::               @code{del_array()},
+                                   @code{check_split_null()}, @code{fatal()},
+                                   @dots{}
+* @code{del_array}::               Clearing out an array.
+* @code{check_split_null}::        Checking if @command{awk} splits on the
+                                   null string.
+* @code{char_split}::              Splitting a line into individual
+                                   characters.
+* @code{fatal}::                   Printing fatal errors.
+* @code{is@dots{}} functions::     Checking character types.
+* @code{make_regexp}::             Make a regexp to match @TeX{} control
+                                   sequences.
+* @code{min}::                     Get the minimum of two numbers.
+* I18N::                           Internationalization.
+@end detailmenu
 @end menu
 
 @node Preface
@@ -106,8 +155,8 @@ documentation formatting language.  A single source file produces the
 runnable program, a printable document, and an online document.
 
 @menu
-* Intended audience::          Who should read this document. 
-* History::                    @file{texindex.awk} development history.
+* Intended audience::           Who should read this document.
+* History::                     @file{texindex.awk} development history.
 @end menu
 
 @node Intended audience
@@ -186,7 +235,8 @@ any subtopics. ``See'' entries do not have a page number of their own.
 @item ``See also @dots{}'' entries
 Entries that point at other entries, but often do have
 subsequent direct page references of their own.
-``See also'' entries do not have a page number of their own.
+``See also'' entries are merged with regular entries,
+their text coming after the page numbers.
 @end table
 
 Here's what they might look like when printed
@@ -209,20 +259,20 @@ coffee makers,                               @ii{Single level entry}
              pink . . . . . . . . . . 35     @ii{Another triple level entry}
 @end example
 
-The ``See'' and ``See also'' entries don't have page numbers:
+A ``See'' entry doesn't have page numbers:
 
 @example
 espresso makers, @ii{See} coffee makers
-toasters, @ii{See also} coffee makers
+toasters, . . . . . . . . 42, @ii{See also} coffee makers
 @end example
 
 @node Texinfo indexing commands
 @section Texinfo Indexing Commands
 
-Texinfo provides a number of different command for putting entries
-into different indices.  For discussion we will use the @code{@@cindex}
+Texinfo provides a number of different commands for putting entries
+into different indices.  For discussion we use the @code{@@cindex}
 command in the following examples.  Of interest to @file{texindex.awk}
-is the text of the one to three parts of an entry, and how the index
+is the text of the one-to-three parts of an entry, and how the index
 should be sorted.  Some examples:
 
 @example
@@ -286,12 +336,12 @@ The fields are as follows:
 @item sortkey
 The text to use for sorting index entries.
 Generally, this is the text of the line with all markup removed.
-When an @code{@@sortas} clause is provided, that is used instead.
+When an @code{@@sortas} clause is provided, its contents used instead.
 This field should contain only ASCII characters.
 
 When there are subentries, the sort key is the concatenation of three
 fields (or their sort @code{@@sortas} clauses), separated by
-@code{@@subentry} and a space. @file{texindex.awk} will need to recognize
+@code{@@subentry} and a space. @file{texindex.awk} needs to recognize
 where there are multiple sort keys in order to print entries appropriately.
 
 @item page or see
@@ -316,7 +366,7 @@ sort it appropriately, and produce the correct output.
 @section What The Output Should Look Like
 
 Output consists four different commands, derived from the indexing input.
-Each can have variant where there is no page number, except for the last.
+The middle two can have a variant where there is no page number.
 
 @example
 @@initial @{A@}                        @ii{For the initial over each group}
@@ -345,7 +395,7 @@ index entry.  When the primary appears only with a secondary entry,
 there won't be a page number.
 
 No page number is printed when there
-is an @code{@@seeentry} or @code{@@seealso} in the entry. In that case,
+is an @code{@@seeentry} in the entry. In that case,
 the output from @file{texindex.awk} should be a combination of
 the original input fields three and two.
 
@@ -357,7 +407,7 @@ there won't be a page number.
 @item @@tertiary
 This is for a tertiary index entry in a multi-level
 index entry.  This one always has a page number, unless it is
-a ``see'' or ``see also'' entry.
+a ``see'' entry.
 @end table
 
 
@@ -406,7 +456,7 @@ which in turn is the input to @file{texindex.awk}:
 
 @noindent
 The result will be a single entry, using @code{@@file},
-accumulating the page numbers.
+accumulating the page numbers:
 
 @example
 @@entry@{@@file @{field_split()@} function@}@{2, 7@}
@@ -455,16 +505,17 @@ BEGIN {
 	@<Argument processing@>
 }
 
-@<@code{beginfile()} function@>
-@<@code{endfile()} function@>
+@<@code{beginfile()} work function@>
+@<@code{endfile()} work function@>
 @<Process a record@>
 @<Work functions@>
 @
 
 @menu
-* First line::				The first line in the file.
-* Initial setup::			Set up variables and constants used throughout.
-* Argument processing::		Processing command line arguments.
+* First line::                  The first line in the file.
+* Initial setup::               Set up variables and constants used
+                                throughout.
+* Argument processing::         Processing command line arguments.
 @end menu
 
 @node First line
@@ -479,7 +530,7 @@ output file name and how it got made.  We do not use a @samp{#!} header
 because, being a GNU program, we need to accept the @option{--help} and
 @option{--version} options.  This cannot be done with a standalone
 @code{awk} script; we need a shell wrapper, and hence, the @code{awk}
-script itself need not be executable, and it's simpler not to worry
+script itself need not be executable. Also, it's simpler not to worry
 about the location of the @code{awk} program.
 
 @<First line@>=
@@ -563,7 +614,7 @@ for (i = 1; i < ARGC; i++) {
 		fatal(_"%s: unrecognized option `%s'\n" \
 				"Try `%s --help' for more information.\n",
 				Invocation_name, ARGV[i], Invocation_name)
-		exit EXIT_FAILURE
+		# fatal() will do `exit EXIT_FAILURE'
 	} else {
 		break
 	}
@@ -579,7 +630,8 @@ the data properly.
 
 @menu
 * Setup for each input file::        What happens at the start of each file.
-* Processing each record::           Pulling apart the fields and storing data.
+* Processing each record::           Pulling apart the fields and storing
+                                     data.
 * End-of-file sorting and printing:: Sorting the entries for each index.
 * Printing the data::                Printing the final results.
 @end menu
@@ -614,7 +666,7 @@ match control sequences of interest.
 @cindex @code{Command_char} variable
 @cindex @code{Special_chars} variable
 @cindex @code{Entries} variable
-@<@code{beginfile()} function@>=
+@<@code{beginfile()} work function@>=
 function beginfile(filename)
 {
 	Output_file = filename "s"
@@ -654,13 +706,13 @@ sorting and printing once the whole file has been processed.
 @
 
 @menu
-* Remove duplicates::					Removing duplicating entries.
-* Remove leading @code{\entry}::		Remove the leading @code{\entry} command.
-* Get the initial::						Get the initial for this entry.
-* Set up and name fields::				Pull apart the line.
-* Store the data for this line::		Store the data for later access.
-* Check for more than one initial::		See if there are multiple initials.
-* Splitting the record::				Split the record apart.
+* Remove duplicates::               Removing duplicating entries.
+* Remove leading @code{\entry}::    Remove the leading @code{\entry} command.
+* Get the initial::                 Get the initial for this entry.
+* Set up and name fields::          Pull apart the line.
+* Store the data for this line::    Store the data for later access.
+* Check for more than one initial:: See if there are multiple initials.
+* Splitting the record::            Split the record apart.
 @end menu
 
 @node Remove duplicates
@@ -713,7 +765,7 @@ initial = extract_initial($0)
 The sort key is the first part of the line after @samp{@@entry}, 
 starting with an open brace, and continuing to a matching close brace.
 
-The very first field character of the sort key can be an open brace.
+The very first character of the sort key can be an open brace.
 If so, we extract the component of the sort key surrounded by balanced 
 braces.  We don't account for @samp{\@{} or @samp{\@}} inside this component, as 
 @file{texinfo.tex} isn't expected to produce such output.
@@ -768,7 +820,7 @@ function extract_initial(key,  initial, nextchar, i, l, kchars)
 @node Set up and name fields
 @subsection Set Up And Name The Fields
 
-The next part is to pull out the data of interest from the multiple sets of
+The next step is to pull out the data of interest from the multiple sets of
 braces.  This is delegated to a function named @code{field_split()}.
 There must be at least three fields, and there can be up to five.
 
@@ -798,7 +850,7 @@ tertiary_text = (numfields > 4 ? fields[5] : "")
 
 We use multiple arrays to store different parts of the data.
 The sort key from the input is invariant across entries, so we use that
-as the basis for the keys in the various arrays.
+as the index in the various arrays.
 We need the following arrays:
 
 @table @code
@@ -925,6 +977,9 @@ if (! (key in Allkeys)) {
 }
 @
 
+We split the key into subparts, using the @samp{@@subentry} as
+the separator. The subparts are stored in the @code{Subkeys} array.
+
 @cindex @code{Subkeys} array
 @<Split out and store the subparts of the sort key@>=
 n = split(key, subparts, Subentry_re)
@@ -934,7 +989,7 @@ for (i = 1; i <= n; i++)
 
 The @code{Seeentry_re}, @code{Seealso_re} and @code{Subentry_re}
 variables are regular expressions that match the corresponding @TeX{}
-control sequence.  They're initialized once for each input file, since
+control sequences.  They're initialized once for each input file, since
 the command character might be different between files.
 The @code{make_regexp()} function is described in @ref{@code{make_regexp}}.
 
@@ -1112,7 +1167,7 @@ handle that.  (That printing task is delegated to a small function.)
 @cindex @code{Initials} array
 @cindex @code{print_initial()} function
 @cindex @code{Output_file} variable
-@<@code{endfile()} function@>=
+@<@code{endfile()} work function@>=
 function endfile(filename,		i, prev_initial, initial)
 {
 	# sort the entries
@@ -1177,7 +1232,8 @@ than'' comparison.
 #               or almost any algorithms or computer science text
 # Adapted from K&R-II, page 110
 #
-function quicksort(data, left, right, compare,    i, last, use_index, lt)
+function quicksort(data, left, right, compare,	# parameters
+					i, last, use_index, lt)		# locals
 {
 	if (left >= right)  # do nothing if array contains fewer
 		return          # than two elements
@@ -1216,12 +1272,14 @@ use_index = (compare == "index")
 
 The @code{less_than()} function supplies the comparison for index entries
 (@pxref{Multilevel comparisons}, and @pxref{Comparing index entries}).
-The @code{key_compare()} is used for string comparisons.
+The @code{key_compare()} function is used for string comparisons.
 
 @cindex @code{less_than()} function
 @cindex @code{key_compare()} function
 @<Do ``less than'' comparison@>=
-lt = (use_index ? less_than(data, i, left) : key_compare(data[i], data[left]) < 0)
+lt = (use_index \
+		? less_than(data, i, left) \
+		: key_compare(data[i], data[left]) < 0)
 @
 
 @node Multilevel comparisons
@@ -1266,7 +1324,7 @@ function less_than(data, l, r,		left, right, nfields, cmp1, cmp2)
 
 	nfields = min(left_fields, right_fields)
 
-	# At least one field, alway check the first subkey
+	# At least one field, always check the first subkey
 	cmp1 = key_compare(Subkeys[left, 1], Subkeys[right, 1])
 	if (cmp1 != 0)
 		return cmp1 < 0
@@ -1280,7 +1338,8 @@ function less_than(data, l, r,		left, right, nfields, cmp1, cmp2)
 	if (cmp2 != 0)
 		return cmp2 < 0
 
-	# cmp1 == 0, cmp2 == 0, one side has 2 fields, other has 2 to 3 fields
+	# cmp1 == 0, cmp2 == 0, one side has 2 fields,
+	# other has 2 to 3 fields
 	if (nfields == 2)
 		return left_fields < right_fields
 
@@ -1333,9 +1392,8 @@ BEGIN {
 		c = sprintf("%c", i)
 		Ordval[c] = i  # map character to value
 
-		if (isdigit(c)) {
+		if (isdigit(c))
 			Ordval[c] += 512
-		}
 	}
 
 	# Give both 'A' and 'a' the same code
@@ -1478,8 +1536,8 @@ gets used.  Much of the complexity is here, since we have to
 output up to three lines per entry.
 
 @menu
-* printing top level::        Top level logic.
-* printing a single entry::   Handling a single entry.
+* printing top level::          Top level logic.
+* printing a single entry::     Handling a single entry.
 @end menu
 
 @node printing top level
@@ -1552,10 +1610,9 @@ Printing a single entry is quite involved:
 function print_entry(key, entry_command, entry_text,
 					@<Local variables for ``see also'' printing@>)
 {
-	if ((key, 1) in See) {		# at least one ``see''
+	if ((key, 1) in See)		# at least one ``see''
 		print_see_entry(key, entry_command, entry_text,
 						See_count, See)
-	}
 
 	if (key in Pagedata) {		# at least one page number
 		@<Check for ``see also'', add to @code{Pagedata}@>
@@ -1567,14 +1624,7 @@ function print_entry(key, entry_command, entry_text,
 		Printed[key] = True		# mark this key as printed
 	} else if ((key, 1) in Seealso) {	# at least one ``see also''
 		# Only ``see also'' entry, print it
-		count = Seealso_count[key]
-
-		# Copy the entries to a separate array
-		for (i = 1; i <= count; i++)
-			see_entries[i] = Seealso[key, i]
-
-		# sort them
-		quicksort(see_entries, 1, count, "string")
+		@<Prepare and sort ``see also'' entries into @code{see_entries}@>
 
 		printf("%c%s{%s}{",
 			Command_char, entry_command,
@@ -1605,14 +1655,7 @@ multiple ``see also'' entries (even though this is bad form).
 
 @<Check for ``see also'', add to @code{Pagedata}@>=
 if ((key, 1) in Seealso) {
-	count = Seealso_count[key]
-
-	# Copy the entries to a separate array
-	for (i = 1; i <= count; i++)
-		see_entries[i] = Seealso[key, i]
-
-	# sort them
-	quicksort(see_entries, 1, count, "string")
+	@<Prepare and sort ``see also'' entries into @code{see_entries}@>
 
 	# now add them to the page data
 	for (i = 1; i <= count; i++)
@@ -1622,6 +1665,21 @@ if ((key, 1) in Seealso) {
 
 @<Local variables for ``see also'' printing@>=
 count, see_entries, i
+@
+
+Although it's bad practice, there could be multiple
+``see also'' entries for a given key. In that case, we
+must sort them before using them.
+
+@<Prepare and sort ``see also'' entries into @code{see_entries}@>=
+count = Seealso_count[key]
+
+# Copy the entries to a separate array
+for (i = 1; i <= count; i++)
+	see_entries[i] = Seealso[key, i]
+
+# sort them
+quicksort(see_entries, 1, count, "string")
 @
 
 Be sure to empty out @code{Printed} at the start of each file.
@@ -1638,13 +1696,13 @@ And add our function to the group of work functions.
 @<Print an entry@>
 @
 
-Printing ``see'' or ``see also'' entries is potentially messy if there
+Printing ``see'' entries is potentially messy if there
 are more than one. (A good index won't have more than one, but nothing
 prevents there being multiple such entries, so we have to handle them.)
 
 @cindex @code{print_see_entry()} function
 @cindex @code{quicksort()} function
-@<Print a ``see'' or ``see also'' entry@>=
+@<Print a ``see'' entry@>=
 function print_see_entry(key, entry_command, entry_text,	# parameters
 						count_array, see_text_array,		# parameters
 						i, count, see_entries)				# locals
@@ -1683,11 +1741,13 @@ function print_see_entry(key, entry_command, entry_text,	# parameters
 
 
 @<Work functions@>=
-@<Print a ``see'' or ``see also'' entry@>
+@<Print a ``see'' entry@>
 @
 
-The subparts represent the key for that entry,
-which will have an index in @code{Printed} if
+When checking if we need to print the primary and secondary entry,
+we need to use the subparts of the key.
+The subparts represent the key for those entries;
+each will have an index in @code{Printed} if
 we already printed such an entry.
 The subparts are already available in the @code{Subkeys} array.
 
@@ -1755,6 +1815,9 @@ Here are some test cases:
 @@cindex children @@subentry adult
 @end example
 
+@noindent
+@xref{Index}, to see if the above test cases are handled properly.
+
 Finally, we add the above code into the set of work functions:
 
 @<Work functions@>=
@@ -1767,10 +1830,12 @@ Finally, we add the above code into the set of work functions:
 This chapter provides some necessary but unexciting elements.
 
 @menu
-* Copyright statement:: Copyright info.
-* Library functions::   From the @code{gawk} library: @file{ftrans.awk}, @code{join()}.
-* Helper functions::    @code{del_array()}, @code{check_split_null()}, @code{fatal()}, @dots{}
-* I18N::                Internationalization.
+* Copyright statement::         Copyright info.
+* Library functions::           From the @code{gawk} library:
+                                @file{ftrans.awk}, @code{join()}.
+* Helper functions::            @code{del_array()}, @code{check_split_null()},
+                                @code{fatal()}, @dots{}
+* I18N::                        Internationalization.
 @end menu
 
 @node Copyright statement
@@ -1864,12 +1929,14 @@ function join(array, start, end, sep,    result, i)
 These helper functions make the main code easier to follow.
 
 @menu
-* @code{del_array}::			Clearing out an array.
-* @code{check_split_null}::		Checking if @command{awk} splits on the null string.
-* @code{char_split}::			Splitting a line into individual characters.
-* @code{fatal}::				Printing fatal errors.
-* @code{is@dots{}} functions::	Checking character types.
-* @code{make_regexp}::          Make a regexp to match @TeX{} control sequences.
+* @code{del_array}::            Clearing out an array.
+* @code{check_split_null}::     Checking if @command{awk} splits on the null
+                                string.
+* @code{char_split}::           Splitting a line into individual characters.
+* @code{fatal}::                Printing fatal errors.
+* @code{is@dots{}} functions::  Checking character types.
+* @code{make_regexp}::          Make a regexp to match @TeX{} control
+                                sequences.
 * @code{min}::                  Get the minimum of two numbers.
 @end menu
 
@@ -1943,7 +2010,7 @@ standard error and then exits badly.
 For maximal portability, it opens a pipeline to @command{cat},
 redirected to standard error; not all systems have a @file{/dev/stderr}
 file, and not all versions of @command{awk} recognize that name
-internally.
+internally. (Thus, we can't use @samp{print @dots{} > "/dev/stderr"}.)
 
 @cindex @code{EXIT_FAILURE} constant
 @cindex @code{fatal()} function
@@ -1969,7 +2036,7 @@ function fatal(format, arg1, arg2, arg3, arg4, arg5,
 @cindex @code{isdigit()} function
 The following functions help identify what a character is; they are
 similar in nature to the various macros in the C @code{<ctype.h>} header
-file.  Since each one returns a count, the return value could be used to
+file.  Since most of them return a count, the return value could be used to
 compute which character from the set was seen; this turned out not to be
 necessary in this program but might be useful in some other context.
 By using @code{index()} with lists of letters, these functions will
@@ -2023,7 +2090,7 @@ function make_regexp(regexp,	a, sep, n)
 @
 
 @node @code{min}
-@subsection Getting The Minimum of Two Numbers
+@subsection @code{min()}: Getting The Minimum of Two Numbers
 
 It'd be nice if @command{awk} had this built-in@enddots{}
 
@@ -2061,12 +2128,8 @@ translated are prefixed with an underscore.
 @cindex @code{Texindex_version} variable
 @cindex @code{usage()} function
 @cindex @code{version()} function
-@tex
-% avoid useless warnings/overfull boxes in these long strings
-\global\hfuzz=\maxdimen
-@end tex
-
 @cindex @code{EXIT_SUCCESS} constant
+@use_smallexample
 @<Helper functions@>=
 function usage(exit_val)
 {
@@ -2098,6 +2161,7 @@ There is NO WARRANTY, to the extent permitted by law.\n", "2019"
 	exit EXIT_SUCCESS
 }
 @
+@use_example
 
 @node Index
 @unnumbered Index
