@@ -1,5 +1,23 @@
 2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not change directory variables when changing directory.
+
+	* util/texi2dvi (cd_dir, cd_orig): Do not change variables 
+	containing pathnames.  Store a prefix to use with these 
+	variables in $rel.  If either the new directory or in_input is 
+	absolute, change all the pathname variables to be absolute.
+
+	(xref_files_save, xref_files_changed): Prefix $work_bak with 
+	$rel.
+	(run_tex, run_hevea): Prefix $in_input with $rel.
+
+	No functional changes intended.  The code to add and remove the 
+	prefix from all of the variables had tricky quoting.  $rel is 
+	only needed in a small number of places in functions called from 
+	run_tex_suite.
+
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (make_openout_test): Call make_tex_cmd before 
 	cd_dir.  This means that no calls to ensure_dir are called 
 	between cd_dir and cd_orig.
