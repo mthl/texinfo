@@ -1,3 +1,10 @@
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex): Remove use of make_tex_cmd.  I could 
+	find nothing in make_tex_cmd that would change the result 
+	between uses of run_tex.
+	(run_tex_suite): Move use of make_tex_cmd here.
+
 2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (HTML Customization Variables): Remove text 

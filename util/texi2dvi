@@ -910,8 +910,6 @@ make_tex_cmd ()
 # run_tex - Run TeX as "$tex $in_input", taking care of errors and logs.
 run_tex ()
 {
-  make_tex_cmd
-
   # Check for any unusual characters in the filename.
   # However, >, \ and any whitespace characters are not supported
   # filenames.
@@ -1126,6 +1124,8 @@ run_dvipdf ()
 # run_tex_suite - Run the TeX tools until a stable point is reached.
 run_tex_suite ()
 {
+  make_tex_cmd
+
   # Move to the working directory.
   if $tidy; then
     verbose "cd $work_build"
