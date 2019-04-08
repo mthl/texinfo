@@ -58,3 +58,41 @@ locate_manual (const char *manual)
     }
   return s;
 }
+
+/* Extract the manual and node from a URL like "../MANUAL/NODE.html" */
+void
+parse_external_url (const char *url, char **manual, char **node)
+{
+  char *m = 0, *n = 0;
+
+  char *p = strchr (url, '/') + 1; /* after "../" */
+  if (!p)
+    goto failure;
+  char *q = strchr (p, '/');
+  if (!q)
+    goto failure;
+
+  m = malloc (q - p + 1);
+  memcpy (m, p, q - p);
+  m[q - p] = '\0';
+
+  *manual = m;
+
+  q++; /* after '/' */
+  p = strchr (q, '.');
+  if (memcmp (p, ".html", 5) != 0)
+    goto failure;
+  n = malloc (p - q + 1);
+  memcpy (n, q, p - q);
+  n[p - q] = '\0';
+
+  *node = n;
+
+  return;
+
+failure:
+  free (m); free(n);
+  *manual = 0;
+  *node = 0;
+  return;
+}
