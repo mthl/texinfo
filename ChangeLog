@@ -1,5 +1,11 @@
 2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* util/texi2dvi (make_openout_test): Call make_tex_cmd before 
+	cd_dir.  This means that no calls to ensure_dir are called 
+	between cd_dir and cd_orig.
+
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/texi2dvi (run_tex): Remove use of make_tex_cmd.  I could 
 	find nothing in make_tex_cmd that would change the result 
 	between uses of run_tex.

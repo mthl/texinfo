@@ -1494,8 +1494,12 @@ compile ()
 #
 make_openout_test ()
 {
+    recorder_option_maybe="$1"
+    make_tex_cmd
+
     ensure_dir "$workdir"/check_recorder
     cd_dir "$workdir"/check_recorder
+
     cat > openout.tex <<EOF
 \newwrite\ourwrite
 \immediate\openout\ourwrite dum.dum
@@ -1503,8 +1507,6 @@ make_openout_test ()
 EOF
     # \bye doesn't work for LaTeX, but it will cause latex
     # to exit with an input error.
-    recorder_option_maybe="$1"
-    make_tex_cmd
     tex_cmd="$tex_cmd '${escape}input' ./openout.tex"
     # ./ in case . isn't in path
     verbose "$0: running $tex_cmd ..."
