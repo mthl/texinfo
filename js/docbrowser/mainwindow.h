@@ -5,12 +5,12 @@
 #include "core.h"
 
 #include <QMainWindow>
-#include <QWebChannel>
-#include <QtWebSockets/QWebSocketServer>
+#include <QWebEngineProfile>
 
 namespace Ui {
 class MainWindow;
 }
+
 
 class MainWindow : public QMainWindow
 {
@@ -30,10 +30,16 @@ private:
     Core *core;
 
     QString qwebchannel_js;
+    QString info_js;
+    QString modernizr_js;
+    QString info_css;
+
     char *datadir;
 
     void quit();
     void inject_qwebchannel(bool ok);
+    void setup_profile(QWebEngineProfile *profile);
+    void setup_channel();
 };
 
 #endif // MAINWINDOW_H

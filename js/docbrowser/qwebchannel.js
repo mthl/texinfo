@@ -51,8 +51,6 @@
 
 "use strict";
 
-console.log ("I am happy");
-
 var QWebChannelMessageTypes = {
     signal: 1,
     propertyUpdate: 2,

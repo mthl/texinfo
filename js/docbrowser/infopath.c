@@ -19,7 +19,10 @@ locate_manual (const char *manual)
     {
       datadir = getenv ("QTINFO_DATADIR");
       if (!datadir)
-        return 0;
+        {
+          exit (1); /* probably wrong for C++ */
+          return 0;
+        }
       datadir_len = strlen (datadir);
     }
 
@@ -32,9 +35,9 @@ locate_manual (const char *manual)
     }
   closedir (d);
 
-  char *s = malloc (datadir_len + strlen ("/examples/")
+  char *s = malloc (datadir_len + strlen ("/test/")
                     + strlen (manual) + 1);
-  sprintf (s, "%s/examples/%s", datadir, manual);
+  sprintf (s, "%s/test/%s", datadir, manual);
 
   d = opendir (s);
   if (!d)
@@ -46,9 +49,9 @@ locate_manual (const char *manual)
 
   fprintf (stderr, "success so far\n");
   free (s);
-  s = malloc (datadir_len + strlen ("/examples/")
+  s = malloc (datadir_len + strlen ("/test/")
                     + strlen (manual) + strlen ("/index.html") + 1);
-  sprintf (s, "%s/examples/%s/index.html", datadir, manual);
+  sprintf (s, "%s/test/%s/index.html", datadir, manual);
 
   struct stat dummy;
   if (stat (s, &dummy) == -1)
