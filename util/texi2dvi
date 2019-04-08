@@ -211,9 +211,6 @@ EOF
 
 #  Generic auxiliary functions.
 
-# List of variables containing paths to directories or files that
-# we need to update.
-
 # Used to access files and directories after we have changed directory
 # (for --tidy).
 rel=
