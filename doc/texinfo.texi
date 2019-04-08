@@ -16725,6 +16725,7 @@ The sections below give the details for each of these.
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
 * HTML:     HTML Customization Variables.
+* latex2html:  @command{latex2html} Customization Variables.
 * Other:    Other Customization Variables.
 @end menu
 
@@ -16927,15 +16928,15 @@ exec texi2any -c TEXINPUT_OUTPUT_FORMAT=textcontent "$@@"
 
 This table gives the customization variables which apply to HTML
 output only.  A few other customization variable apply to both HTML
-and other output formats; those are given in the next section.
+and other output formats; see @ref{Other Customization Variables}.
 
 @vtable @code
 @item AVOID_MENU_REDUNDANCY
-For HTML@.  If set, and the menu entry and menu description are the
+If set, and the menu entry and menu description are the
 same, then do not print the menu description; default false.
 
 @item AFTER_BODY_OPEN
-For HTML@.  If set, the corresponding text will appear at the
+If set, the corresponding text will appear at the
 beginning of each HTML file; default unset.
 
 @item AFTER_ABOUT
@@ -16944,7 +16945,7 @@ text will appear at the end of the About element; default unset.
 
 @item AFTER_OVERVIEW
 @itemx AFTER_TOC_LINES
-For HTML@.  If set, the corresponding text is output after the short
+If set, the corresponding text is output after the short
 table of contents for @code{AFTER_OVERVIEW} and after the table of
 contents for @code{AFTER_TOC_LINES}; otherwise, a default string is
 used.  At the time of writing, a @code{</div>} element is closed.
@@ -16955,13 +16956,13 @@ In general, you should set @code{BEFORE_OVERVIEW} if
 
 
 @item BASEFILENAME_LENGTH
-For HTML@.  The maximum length of the base filenames; default 245.
+The maximum length of the base filenames; default 245.
 Changing this would make cross-manual references to such long node
 names invalid (@pxref{HTML Xref Link Basics}).
 
 @item BEFORE_OVERVIEW
 @itemx BEFORE_TOC_LINES
-For HTML@.  If set, the corresponding text is output before the short
+If set, the corresponding text is output before the short
 table of contents for @code{BEFORE_OVERVIEW} and before the table of
 contents for @code{BEFORE_TOC_LINES}, otherwise a default string is
 used.  At the time of writing, a @code{<div ...>} element is opened.
@@ -16972,106 +16973,239 @@ In general you should set @code{AFTER_OVERVIEW} if
 
 
 @item BIG_RULE
-For HTML@.  Rule used after and before the top element and before
+Rule used after and before the top element and before
 special elements, but not for footers and headers; default
 @code{<hr>}.
 
 @item BODYTEXT
 @cindex @code{<body>} text, customizing
 @opindex lang@r{, HTML attribute}
-For HTML, the text appearing in @code{<body>}.  By default, sets the
+The text appearing in @code{<body>}.  By default, sets the
 HTML @code{lang} attribute to the document language
 (@pxref{@code{@@documentlanguage}}).
 
 @item CASE_INSENSITIVE_FILENAMES
-For HTML@.  Construct output file names as if the filesystem were case
+Construct output file names as if the filesystem were case
 insensitive (@pxref{HTML Splitting}); default false.
 
 @item CHAPTER_HEADER_LEVEL
-For HTML@.  Header formatting level used for chapter level sectioning
+Header formatting level used for chapter level sectioning
 commands; default @samp{2}.
 
 @item CHECK_HTMLXREF
-For HTML@.  Check that manuals which are the target of external
+Check that manuals which are the target of external
 cross-references (@pxref{Four and Five Arguments}) are present in
 @file{htmlxref.cnf} (@pxref{HTML Xref Configuration}); default false.
 
 @item COMPLEX_FORMAT_IN_TABLE
-For HTML@.  If set, use tables for indentation of complex formats; default
+If set, use tables for indentation of complex formats; default
 false.
 
 @item CSS_LINES
-For HTML@.  CSS output, automatically determined by default (@pxref{HTML CSS}).
+CSS output, automatically determined by default (@pxref{HTML CSS}).
 
 @item DATE_IN_HEADER
-For HTML@.  Put the document generation date in the header; off by default.
+Put the document generation date in the header; off by default.
 
 @item DEF_TABLE
-For HTML@.  If set, a @code{<table>} construction for @code{@@deffn}
+If set, a @code{<table>} construction for @code{@@deffn}
 and similar @@-commands is used (looking more like the @TeX{} output),
 instead of definition lists; default false.
 
 @item DEFAULT_RULE
-For HTML@.  Rule used between element, except before and after the
+Rule used between element, except before and after the
 top element, and before special elements, and for footers and headers;
 default @code{<hr>}.
 
 @item DO_ABOUT
-For HTML@.  If set to 0 never do an About special element;
+If set to 0 never do an About special element;
 if set to 1 always do an About special element;
 default 0.
 @c @xref{Output Elements Defined}.
 
 @item EXTERNAL_DIR
-For HTML@.  Base directory for external manuals; default none.  It is
+Base directory for external manuals; default none.  It is
 better to use the general external cross-reference mechanism
 (@pxref{HTML Xref Configuration}) than this variable.
 
 @item EXTRA_HEAD
-For HTML@.  Additional text appearing within @code{<head>}; default unset.
+Additional text appearing within @code{<head>}; default unset.
 
 @item FOOTNOTE_END_HEADER_LEVEL
-For HTML@.  Header formatting level used for the footnotes header with
+Header formatting level used for the footnotes header with
 the `end' footnotestyle; default @samp{4}.  @xref{Footnote Styles}.
 
 @item FOOTNOTE_SEPARATE_HEADER_LEVEL
-For HTML@.  Header formatting level used for the footnotes header with
+Header formatting level used for the footnotes header with
 the `separate' footnotestyle; default @samp{4}.  @xref{Footnote
 Styles}.
 
 @item FRAMES
-For HTML@.  If set, a file describing the frame layout is generated,
+If set, a file describing the frame layout is generated,
 together with a file with the short table of contents; default false.
 
 @item FRAMESET_DOCTYPE
-For HTML@.  Same as DOCTYPE, but for the file containing the frame
+Same as DOCTYPE, but for the file containing the frame
 description.
 
 @item HEADER_IN_TABLE
-For HTML@.  Use tables for header formatting rather than a simple
+Use tables for header formatting rather than a simple
 @code{<div>} element; default false.
 
 @item ICONS
-For HTML@.  Use icons for the navigation panel; default false.
+Use icons for the navigation panel; default false.
 
 @item IMAGE_LINK_PREFIX
-For HTML@.  If set, the associated value is prepended to the image file
+If set, the associated value is prepended to the image file
 links; default unset.
 
 @item INLINE_CONTENTS
-For HTML@.  If set, output the contents where the @code{@@contents} and
+If set, output the contents where the @code{@@contents} and
 similar @@-commands are located; default true.  This is ignored if
 @code{@@set*contentsaftertitlepage} is set (@pxref{Contents}).
 
 @item INLINE_CSS_STYLE
-For HTML@.  Put CSS directly in HTML elements rather than at the
+Put CSS directly in HTML elements rather than at the
 beginning of the output; default false.
 
 @item KEEP_TOP_EXTERNAL_REF
-For HTML@.  If set, do not ignore @samp{Top} as the first
+If set, do not ignore @samp{Top} as the first
 argument for an external ref to a manual, as is done by default.
 @xref{Referring to a Manual as a Whole}.
 
+@item MAX_HEADER_LEVEL
+Maximum header formatting level used (higher header
+formatting level numbers correspond to lower sectioning levels);
+default @samp{4}.
+
+@item MENU_SYMBOL
+Symbol used in front of menu entries when node names are used
+for menu entries formatting; default @samp{&bull;}.
+
+@item MONOLITHIC
+Output only one file including the table of contents.  Set
+by default, but only relevant when the output is not split.
+
+@item NO_CSS
+Do not use CSS; default false.  @xref{HTML CSS}.
+
+@item NODE_FILE_EXTENSION
+Extension for node files if @code{NODE_FILENAMES} is set;
+default @samp{html}.
+
+@item PRE_ABOUT
+Used when an About element is output.  If set to a text string,
+this text will appear at the beginning of the About element.  If set
+to a reference on a subroutine, the result of the subroutine call will
+appear at the beginning of the About element.  If not set (the
+default), default text is used.
+
+@item PRE_BODY_CLOSE
+If set, the given text will appear at the footer of each
+HTML file; default unset.
+
+@item PROGRAM_NAME_IN_FOOTER
+If set, output the program name and miscellaneous related
+information in the page footers; default false.
+
+@item SECTION_NAME_IN_TITLE
+If set,  when output is split, use the argument of the chapter 
+structuring command (e.g., @code{@@chapter} or @code{@@section})
+in the @code{<title>} instead of the argument to @code{@@node}.
+
+@item SHORTEXTN
+If set, use @samp{.htm} as extension; default false.
+
+@item SHOW_TITLE
+If set, output the title at the beginning of the document;
+default true.
+
+@item SIMPLE_MENU
+If set, use a simple preformatted style for the menu,
+instead of breaking down the different parts of the menu; default false.
+@xref{Menu Parts}.
+
+@item TOC_LINKS
+If set, links from headings to toc entries are created;
+default false.
+
+@item TOP_FILE
+This file name may be used for the top-level file.  The extension is
+set appropriately, if necessary.  This is used to override the default,
+and is, in general, only taken into account when output is split, and
+for HTML@.
+
+@item TOP_NODE_FILE
+File name used for the Top node, if @code{NODE_FILENAMES}
+is set; default is @code{index}.
+
+@item TOP_NODE_FILE_TARGET
+File name used for the Top node in cross-references;
+default is @code{index}.
+
+@item TOP_NODE_UP_URL
+A url used for Top node up references; the default is
+@code{undef}, in that case no Top node Up reference is generated.
+For more about the Top node pointers, @pxref{First Node}.  For 
+overriding the Up pointer name in cas @code{TOP_NODE_UP_URL} is set
+and for other formats, see @code{TOP_NODE_UP} in 
+@ref{Other Customization Variables}.
+
+@item USE_ACCESSKEY
+@cindex @code{accesskey}, customization variable for
+Use @code{accesskey} in cross-references; default true.
+
+@item USE_ISO
+Use entities for doubled single-quote characters
+(@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
+(@pxref{Conventions}); default true.
+
+@item USE_LINKS
+@cindex @code{<link>} HTML tag, in @code{<head>}
+@cindex @code{<head>} HTML tag, and @code{<link>}
+Generate @code{<link>} elements in the HTML @code{<head>}
+output; default true.
+
+@item USE_REL_REV
+Use @code{rel} in cross-references; default true.
+
+@item VERTICAL_HEAD_NAVIGATION
+If set, a vertical navigation panel is used; default false.
+
+@item WORDS_IN_PAGE
+@cindex Navigation panel, bottom of page
+@cindex Navigation footer
+When output is split by nodes, specifies the approximate
+minimum page length at which a navigation panel is placed at the
+bottom of a page.  To avoid ever having the navigation buttons at the
+bottom of a page, set this to a sufficiently large number.  The
+default is 300.
+
+@item XREF_USE_FLOAT_LABEL
+If set, for the float name in cross-references, use the
+float label instead of the type followed by the float number
+(@pxref{@code{@@float}}).  The default is off.
+
+@item XREF_USE_NODE_NAME_ARG
+Only relevant for cross-reference commands with no cross
+reference name (second argument).  If set to@tie{}1, use the node name
+(first) argument in cross-reference @@-commands for the text displayed
+as the hyperlink.  If set to@tie{}0, use the node name if
+@code{USE_NODES} is set, otherwise the section name.  If set to
+@samp{undef}, use the first argument in preformatted environments,
+otherwise use the node name or section name depending on
+@code{USE_NODES}.  The default is @samp{undef}.
+
+@end vtable
+
+
+@node @command{latex2html} Customization Variables
+@subsection @command{latex2html} Customization Variables
+
+This table lists the customization variables which can be used when 
+@command{latex2html} is being used.
+
+@vtable @code
 @item L2H
 For HTML@.  If set, @command{latex2html} is used to convert @code{@@math}
 and @code{@@tex} sections; default false.  Best used with @option{--iftex}.
@@ -17108,130 +17242,8 @@ name may start with @samp{.}; otherwise, @command{latex2html} will
 fail (because of @command{dvips}).  The default is the empty string,
 which means the current directory.
 
-@item MAX_HEADER_LEVEL
-For HTML@.  Maximum header formatting level used (higher header
-formatting level numbers correspond to lower sectioning levels);
-default @samp{4}.
-
-@item MENU_SYMBOL
-For HTML@.  Symbol used in front of menu entries when node names are used
-for menu entries formatting; default @samp{&bull;}.
-
-@item MONOLITHIC
-For HTML@.  Output only one file including the table of contents.  Set
-by default, but only relevant when the output is not split.
-
-@item NO_CSS
-For HTML@.  Do not use CSS; default false.  @xref{HTML CSS}.
-
-@item NODE_FILE_EXTENSION
-For HTML@.  Extension for node files if @code{NODE_FILENAMES} is set;
-default @samp{html}.
-
-@item PRE_ABOUT
-For HTML, when an About element is output.  If set to a text string,
-this text will appear at the beginning of the About element.  If set
-to a reference on a subroutine, the result of the subroutine call will
-appear at the beginning of the About element.  If not set (the
-default), default text is used.
-
-@item PRE_BODY_CLOSE
-For HTML@.  If set, the given text will appear at the footer of each
-HTML file; default unset.
-
-@item PROGRAM_NAME_IN_FOOTER
-For HTML@.  If set, output the program name and miscellaneous related
-information in the page footers; default false.
-
-@item SECTION_NAME_IN_TITLE
-For HTML@.  If set,  when output is split, use the argument of the 
-chapter structuring command (e.g., @code{@@chapter} or @code{@@section})
-in the @code{<title>} instead of the argument to @code{@@node}.
-
-@item SHORTEXTN
-For HTML@.  If set, use @samp{.htm} as extension; default false.
-
-@item SHOW_TITLE
-For HTML@.  If set, output the title at the beginning of the document;
-default true.
-
-@item SIMPLE_MENU
-For HTML@.  If set, use a simple preformatted style for the menu,
-instead of breaking down the different parts of the menu; default false.
-@xref{Menu Parts}.
-
-@item TOC_LINKS
-For HTML@.  If set, links from headings to toc entries are created;
-default false.
-
-@item TOP_FILE
-This file name may be used for the top-level file.  The extension is
-set appropriately, if necessary.  This is used to override the default,
-and is, in general, only taken into account when output is split, and
-for HTML@.
-
-@item TOP_NODE_FILE
-For HTML@.  File name used for the Top node, if @code{NODE_FILENAMES}
-is set; default is @code{index}.
-
-@item TOP_NODE_FILE_TARGET
-For HTML@.  File name used for the Top node in cross-references;
-default is @code{index}.
-
-@item TOP_NODE_UP_URL
-For HTML@.  A url used for Top node up references; the default is
-@code{undef}, in that case no Top node Up reference is generated.
-For more about the Top node pointers, @pxref{First Node}.  For 
-overriding the Up pointer name in cas @code{TOP_NODE_UP_URL} is set
-and for other formats, see @code{TOP_NODE_UP} in 
-@ref{Other Customization Variables}.
-
-@item USE_ACCESSKEY
-@cindex @code{accesskey}, customization variable for
-For HTML@.  Use @code{accesskey} in cross-references; default true.
-
-@item USE_ISO
-For HTML@.  Use entities for doubled single-quote characters
-(@pxref{Inserting Quotation Marks}), and @samp{---} and @samp{--}
-(@pxref{Conventions}); default true.
-
-@item USE_LINKS
-@cindex @code{<link>} HTML tag, in @code{<head>}
-@cindex @code{<head>} HTML tag, and @code{<link>}
-For HTML@.  Generate @code{<link>} elements in the HTML @code{<head>}
-output; default true.
-
-@item USE_REL_REV
-For HTML@.  Use @code{rel} in cross-references; default true.
-
-@item VERTICAL_HEAD_NAVIGATION
-For HTML@.  If set, a vertical navigation panel is used; default false.
-
-@item WORDS_IN_PAGE
-@cindex Navigation panel, bottom of page
-@cindex Navigation footer
-For HTML, with output split at nodes.  Specifies the approximate
-minimum page length at which a navigation panel is placed at the
-bottom of a page.  To avoid ever having the navigation buttons at the
-bottom of a page, set this to a sufficiently large number.  The
-default is 300.
-
-@item XREF_USE_FLOAT_LABEL
-For HTML@.  If set, for the float name in cross-references, use the
-float label instead of the type followed by the float number
-(@pxref{@code{@@float}}).  The default is off.
-
-@item XREF_USE_NODE_NAME_ARG
-For HTML@.  Only relevant for cross-reference commands with no cross
-reference name (second argument).  If set to@tie{}1, use the node name
-(first) argument in cross-reference @@-commands for the text displayed
-as the hyperlink.  If set to@tie{}0, use the node name if
-@code{USE_NODES} is set, otherwise the section name.  If set to
-@samp{undef}, use the first argument in preformatted environments,
-otherwise use the node name or section name depending on
-@code{USE_NODES}.  The default is @samp{undef}.
-
 @end vtable
+
 
 
 @node Other Customization Variables

@@ -975,8 +975,6 @@ build_global_info2 (void)
   BUILD_GLOBAL_ARRAY(listoffloats);
   BUILD_GLOBAL_ARRAY(detailmenu);
   BUILD_GLOBAL_ARRAY(part);
-  BUILD_GLOBAL_ARRAY(tex);
-  BUILD_GLOBAL_ARRAY(math);
 
   /* from Common.pm %document_settable_at_commands */
   BUILD_GLOBAL_ARRAY(allowcodebreaks);

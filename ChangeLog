@@ -1,3 +1,68 @@
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make texi2dvi --tidy more reliable.
+
+	* util/texi2dvi (xref_files_save) [--tidy]: Check for auxiliary 
+	files in the same directory as the input file, and remove them.
+	(cd_dir): Possibly make $in_dir absolute.
+
+	* NEWS: Mention texi2dvi changes.
+
+
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not change directory variables when changing directory.
+
+	* util/texi2dvi (cd_dir, cd_orig): Do not change variables 
+	containing pathnames.  Store a prefix to use with these 
+	variables in $rel.  If either the new directory or in_input is 
+	absolute, change all the pathname variables to be absolute.
+
+	(xref_files_save, xref_files_changed): Prefix $work_bak with 
+	$rel.
+	(run_tex, run_hevea): Prefix $in_input with $rel.
+
+	No functional changes intended.  The code to add and remove the 
+	prefix from all of the variables had tricky quoting.  $rel is 
+	only needed in a small number of places in functions called from 
+	run_tex_suite.
+
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (make_openout_test): Call make_tex_cmd before 
+	cd_dir.  This means that no calls to ensure_dir are called 
+	between cd_dir and cd_orig.
+
+2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (run_tex): Remove use of make_tex_cmd.  I could 
+	find nothing in make_tex_cmd that would change the result 
+	between uses of run_tex.
+	(run_tex_suite): Move use of make_tex_cmd here.
+
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (HTML Customization Variables): Remove text 
+	"For HTML" from the description of each variable, as it is clear 
+	that these variables are all for HTML.
+
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (latex2html Customization Variables): New 
+	node, split from 'HTML Customization Variables'.
+
+2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove @math and @tex as 'global commands.'
+
+	* tp/Texinfo/ParserNonXS.pm (%global_multiple_commands),
+	* tp/Texinfo/XS/parsetexi/api.c (build_global_info2),
+	* tp/Texinfo/XS/parsetexi/parser.c (register_global_command),
+	* tp/Texinfo/XS/parsetexi/parser.h (GLOBAL_INFO): Remove 'math' 
+	and 'tex'.
+
+	Reverts change on 2019-04-01.  Suggestion from Patrice.
+
 2019-04-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\printindex): Give an error message with 

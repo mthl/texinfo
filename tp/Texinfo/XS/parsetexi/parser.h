@@ -75,8 +75,6 @@ typedef struct GLOBAL_INFO {
     ELEMENT listoffloats;
     ELEMENT detailmenu;
     ELEMENT part;
-    ELEMENT math;
-    ELEMENT tex;
 
     ELEMENT allowcodebreaks;
     ELEMENT clickstyle;
