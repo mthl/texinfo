@@ -236,7 +236,7 @@ cd_dir ()
   esac
 
   if $use_absolute ; then
-    for cdd_dir in work_build workdir t2ddir work_bak in_input; do
+    for cdd_dir in work_build workdir t2ddir work_bak in_input in_dir; do
       eval "$cdd_dir=\`absolute \$$cdd_dir\`"
     done
     return
@@ -735,7 +735,7 @@ report 'Once you'\''ve done that, delete the file with an '\''fl'\'' extension.'
 }
 
 
-# xref_files_save - set xref_files_orig from xref_files_orig, and save xref 
+# xref_files_save - set xref_files_orig from xref_files_new, and save xref 
 #                   files in $work_bak.
 xref_files_save ()
 {
@@ -751,6 +751,17 @@ xref_files_save ()
     # (Don't use unset for the sake of ancient shells.)
     TAR_OPTIONS=; export TAR_OPTIONS
     tar cf - $xref_files_orig | (cd "$rel$work_bak" && tar xf -)
+  fi
+
+  # Remove auxiliary files in same directory as main input file.  Otherwise,
+  # these will likely be read instead of those in the build dir.
+  if $tidy ; then
+    secondary_xref_files=`sorted_index_files`
+    for f in $xref_files_new $secondary_xref_files ; do
+      if test -f "$rel$in_dir/$f" ; then
+        remove $rel$in_dir/$f
+      fi
+    done
   fi
 }
 
