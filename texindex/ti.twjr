@@ -487,7 +487,9 @@ In practice, we can also rely on basic features added in POSIX
 @command{awk} should we need to (such as @code{CONVFMT}), although
 at the moment there are no such features used by @file{texindex.awk}.
 
-@FIXME{Need to test with multiple versions.}
+We tested the program with four versions of @command{awk} (@command{gawk},
+@command{mawk}, Brian Kernighan's @command{awk} and Busybox @command{awk})
+on a large index and got byte-identical results from all four.
 
 @node High-level organization
 @chapter High-level Organization
@@ -598,6 +600,7 @@ help information automatically exit, so there's no need to mess with
 @cindex @code{--version} option
 @cindex @code{EXIT_SUCCESS} constant
 @cindex @code{EXIT_FAILURE} constant
+@cindex @code{fatal()} function
 @<Argument processing@>=
 for (i = 1; i < ARGC; i++) {
 	if (ARGV[i] == "-h" || ARGV[i] == "--help") {
@@ -658,6 +661,7 @@ character itself.
 Finally, several variables are set to regular expressions that
 match control sequences of interest.
 
+@cindex @code{fatal()} function
 @cindex @code{FALSE} constant
 @cindex @code{beginfile()} function
 @cindex @code{Output_file} variable
@@ -785,6 +789,7 @@ older versions of @file{texinfo.tex}.
 
 @cindex @code{extract_initial()} function
 @cindex @code{char_split()} function
+@cindex @code{fatal()} function
 @<Work functions@>=
 function extract_initial(key,  initial, nextchar, i, l, kchars)
 {
@@ -824,6 +829,7 @@ The next step is to pull out the data of interest from the multiple sets of
 braces.  This is delegated to a function named @code{field_split()}.
 There must be at least three fields, and there can be up to five.
 
+@cindex @code{fatal()} function
 @cindex @code{field_split()} function
 @cindex @code{fields} array, setting up
 @<Set up @code{fields} array with the data@>=
@@ -1195,6 +1201,7 @@ special characters with the command character.
 @cindex @code{Special_chars} variable
 @cindex @code{Do_initials} variable
 @cindex @code{print_initial()} function
+@cindex @code{Output_file} variable
 @<Work functions@>=
 function print_initial(initial)
 {
@@ -1262,7 +1269,7 @@ function quicksort_swap(data, i, j, temp)
 }
 @
 
-We set a numeric variable to indicate what kind of
+We set a Boolean (numeric) variable to indicate what kind of
 comparison to do, avoiding repeating the string
 comparison whose result won't change upon each iteration.
 
@@ -1378,6 +1385,13 @@ and lowercase letters map to the same numeric value, which is the ASCII
 code for the uppercase letter plus 512. Thus letters come after digits.
 (This code should also work for EBCDIC systems, although @TeX{} does
 everything in ASCII, so it's not likely to make a difference.)
+
+@ignore
+4/2019: FIXME: Next time we mess with this, try adding 256 to the
+value for lower case letters. Then it should not be necessary to
+use a > comparison in the key_compare function since lower case
+will come before upper case but still after all symbols. Test it out.
+@end ignore
 
 The table must be built completely before changing the mapping of the
 letters, because all of the uppercase and lowercase letters must be in
@@ -1581,14 +1595,17 @@ Printing the entries is similar no matter what kind of entry; there's
 a lot of work to be done so it's isolated in the @code{print_entry()}
 function described in the next section.
 
+@cindex @code{print_entry()} function
 @<Print primary entry@>=
 print_entry(key, "entry", Primary)
 @
 
+@cindex @code{print_entry()} function
 @<Print secondary entry@>=
 print_entry(key, "secondary", Secondary)
 @
 
+@cindex @code{print_entry()} function
 @<Print tertiary entry@>=
 print_entry(key, "tertiary", Tertiary)
 @
@@ -1606,6 +1623,7 @@ Printing a single entry is quite involved:
 @cindex @code{Seealso_count} array
 @cindex @code{Pagedata} array
 @cindex @code{Printed} array
+@cindex @code{Output_file} variable
 @<Print an entry@>=
 function print_entry(key, entry_command, entry_text,
 					@<Local variables for ``see also'' printing@>)
@@ -1702,6 +1720,7 @@ prevents there being multiple such entries, so we have to handle them.)
 
 @cindex @code{print_see_entry()} function
 @cindex @code{quicksort()} function
+@cindex @code{Output_file} variable
 @<Print a ``see'' entry@>=
 function print_see_entry(key, entry_command, entry_text,	# parameters
 						count_array, see_text_array,		# parameters
@@ -1753,6 +1772,7 @@ The subparts are already available in the @code{Subkeys} array.
 
 @cindex @code{Subkeys} array
 @cindex @code{Printed} array
+@cindex @code{Output_file} variable
 @<Print primary entry if necessary@>=
 if (! (Subkeys[key, 1] in Printed)) {
 	printf("%centry{%s,}{}\n",
@@ -1767,6 +1787,7 @@ printed and use that combination as the index into @code{Printed}.
 
 @cindex @code{Subkeys} array
 @cindex @code{Printed} array
+@cindex @code{Output_file} variable
 @<Print secondary entry if necessary@>=
 subkey = (Subkeys[key, 1] Command_char "subentry " Subkeys[key, 2])
 if (! (subkey in Printed)) {
@@ -1813,6 +1834,15 @@ Here are some test cases:
 @@cindex children @@subentry small @@subentry infants
 @@cindex children @@subentry teenagers
 @@cindex children @@subentry adult
+
+@@c More examples
+@@cindex test case @@seeentry{testing}
+@@cindex test case @@seeentry{brief case}
+@@cindex coffee
+@@cindex coffee @@seealso{tea}
+@@cindex coffee @@seealso{coca-cola}
+@@cindex whisky @@seealso{soda}
+@@cindex whisky @@seealso{scotch}
 @end example
 
 @noindent
