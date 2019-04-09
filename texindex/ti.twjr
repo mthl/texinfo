@@ -1391,6 +1391,9 @@ everything in ASCII, so it's not likely to make a difference.)
 value for lower case letters. Then it should not be necessary to
 use a > comparison in the key_compare function since lower case
 will come before upper case but still after all symbols. Test it out.
+
+That's not right; we need 'a' and 'A' to both come before 'b'.
+We'll leave it alone for now.
 @end ignore
 
 The table must be built completely before changing the mapping of the
