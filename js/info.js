@@ -900,6 +900,11 @@
               iframe = document.createElement ("iframe");
               iframe.classList.add ("node");
               iframe.setAttribute ("src", linkid_to_url (pageid));
+
+              // For injecting JavaScript into iframe
+              var x = init_iframe(iframe);
+              iframe.onload = x.on_load;
+
               div.appendChild (iframe);
               iframe.addEventListener ("load", function () {
                 store.dispatch ({ type: "iframe-ready", id: pageid });
@@ -1308,25 +1313,56 @@
     };
   }
 
-  /** Initialize iframes which contain pages of the manual.  */
+  /** Initialize iframes which contain pages of the manual.
+      IFRAME is the iframe element in the containing page if we are injecting 
+      Javascript. */
   function
-  init_iframe ()
+  init_iframe (iframe)
   {
+    var w; // the iframe-level window object
+
     /* Initialize the DOM for generic pages loaded in the context of an
        iframe.  */
     function
     on_load ()
     {
-      fix_links (document.links);
+      if (typeof iframe != 'undefined')
+        {
+          /* Injected case. */
+
+          w = iframe.contentWindow;
+
+          /* This function is in the scope of the top-level window, not the
+             iframe.  All attributes of window need to be accessed via the w
+             variable. */
+          /* We don't pass in the window as as an argument to init_iframe,
+             because contentWindow isn't defined immediately after the iframe
+             element is created. */
+          /* Since window.store is the top-level state, creating a Remote_store
+             may not be necessary. */
+
+          /* Add these event listeners which are not otherwise added. */
+          w.addEventListener ("message", on_message, false);
+          w.addEventListener ("beforeunload", on_unload, false);
+          w.addEventListener ("click", on_click, false);
+          w.addEventListener ("keyup", on_keyup, false);
+        }
+      else
+        {
+          /* Non-injected case. */
+          w = window;
+        }
+
+      fix_links (w.document.links);
       var links = {};
-      var linkid = basename (window.location.pathname, /[.]x?html$/);
-      links[linkid] = navigation_links (document);
+      var linkid = basename (w.location.pathname, /[.]x?html$/);
+      links[linkid] = navigation_links (w.document);
       store.dispatch (actions.cache_links (links));
 
       if (linkid_contains_index (linkid))
         {
           /* Scan links that should be added to the index.  */
-          var index_links = document.querySelectorAll ("td[valign=top] a");
+          var index_links = w.document.querySelectorAll ("td[valign=top] a");
           store.dispatch (actions.cache_index_links (index_links));
         }
 
@@ -1343,19 +1379,19 @@
     {
       var data = event.data;
       if (data.message_kind === "highlight")
-        remove_highlight (document.body);
+        remove_highlight (w.document.body);
       else if (data.message_kind === "search")
         {
-          var found = search (document.body, data.regexp);
+          var found = search (w.document.body, data.regexp);
           store.dispatch ({ type: "search-result", found: found });
         }
       else if (data.message_kind === "scroll-to")
         {
           /* Scroll to the anchor corresponding to HASH.  */
           if (data.hash)
-            window.location.replace (data.hash);
+            w.location.replace (data.hash);
           else
-            window.scroll (0, 0);
+            w.scroll (0, 0);
         }
     }
 
@@ -2010,7 +2046,7 @@
   else if (inside_iframe)
     {
       store = new Remote_store ();
-      var iframe = init_iframe ();
+      var iframe = init_iframe (undefined);
       window.addEventListener ("DOMContentLoaded", iframe.on_load, false);
       window.addEventListener ("message", iframe.on_message, false);
     }

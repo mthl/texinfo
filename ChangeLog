@@ -1,3 +1,17 @@
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Preparation for integration with a new help browser with Qt.
+
+	* js/info.js (resolve_page): Call init_iframe explicitly and set 
+	onload attribute of iframe element.
+	(init_iframe): Take an argument which can be an iframe element.
+	(init_iframe) <on_load>: If passed an argument, get the iframe 
+	window object and use it for all window properties.
+
+	This is intended to allow injecting the JavaScript into the 
+	pages of an HTML manual, avoiding the need for them to contain 
+	extra lines.
+
 2019-04-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Preparation for integration with a new help browser with Qt.
