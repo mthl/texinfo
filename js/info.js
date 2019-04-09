@@ -1005,7 +1005,7 @@
     on_load ()
     {
       fix_links (document.links);
-      add_icons ();
+      add_icons (document);
       document.body.classList.add ("mainbar");
 
       /* Move contents of <body> into a a fresh <div> to let the components
@@ -1366,7 +1366,7 @@
           store.dispatch (actions.cache_index_links (index_links));
         }
 
-      add_icons ();
+      add_icons (w.document);
 
       /* Call user hook.  */
       if (config.hooks.on_iframe_load)
@@ -1835,13 +1835,16 @@
   navigation_links.dict = { n: "next", p: "prev", u: "up" };
 
   function
-  add_icons ()
+  add_icons (document)
   {
     var div = document.createElement ("div");
     div.setAttribute ("id", "icon-bar");
+    div.setAttribute ("style", "float: right");
     var span = document.createElement ("span");
     span.innerHTML = "?";
     span.classList.add ("icon");
+    span.setAttribute ("style", "color: darkgrey;font-size: x-large;");
+    // todo: need .icon:hover and .icon:focus as well - see info.css
     span.addEventListener ("click", function () {
       store.dispatch (actions.show_help ());
     }, false);

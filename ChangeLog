@@ -1,5 +1,10 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js (add_icons): Take a document argument.  Add CSS 
+	(not currently injected into iframes).
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Preparation for integration with a new help browser with Qt.
 
 	* js/info.js (resolve_page): Call init_iframe explicitly and set 
