@@ -1334,7 +1334,8 @@
 
           /* This function is in the scope of the top-level window, not the
              iframe.  All attributes of window need to be accessed via the w
-             variable. */
+             variable.  This applies even for types, so we need to write
+             'instanceof w.Element' instead of just 'instanceof Element'! */
           /* We don't pass in the window as as an argument to init_iframe,
              because contentWindow isn't defined immediately after the iframe
              element is created. */
@@ -1344,7 +1345,9 @@
           /* Add these event listeners which are not otherwise added. */
           w.addEventListener ("message", on_message, false);
           w.addEventListener ("beforeunload", on_unload, false);
-          w.addEventListener ("click", on_click, false);
+          w.addEventListener ("click",
+                              function (event) { on_click(event, w) },
+                              false);
           w.addEventListener ("keyup", on_keyup, false);
         }
       else
@@ -1407,11 +1410,14 @@
 
   /** Handle click events.  */
   function
-  on_click (event)
+  on_click (event, win)
   {
+    if (typeof win == "undefined")
+      win = window;
+
     for (var target = event.target; target !== null; target = target.parentNode)
       {
-        if ((target instanceof Element) && target.matches ("a"))
+        if ((target instanceof win.Element) && target.matches ("a"))
           {
             var href = target.getAttribute ("href");
             if (href)

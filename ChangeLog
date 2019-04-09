@@ -1,5 +1,14 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js (init_ifram) <on_load>: Pass iframe window object
+	to "click" event handler.
+	(on_click): Allow window object to be overridden.  Use it to get 
+	a type.
+
+	See https://stackoverflow.com/questions/26248599/instanceof-htmlelement-in-iframe-is-not-element-or-object
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.js (add_icons): Take a document argument.  Add CSS 
 	(not currently injected into iframes).
 
