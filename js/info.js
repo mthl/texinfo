@@ -2112,11 +2112,19 @@ wc_init = function ()
         {
           window.core = channel.objects.core;
 
-          // receive signals from Qt/C++ side
-          // should we inject this code?
+          /* Receive signals from Qt/C++ side.  (Should we inject this code?)
+
+             We don't have code to receive "actions" from the C++ side:
+             the action message-passing architecture is only used to 
+             circumvent same-origin policy restrictions on some browsers for 
+             file: URI's. */
 
           channel.objects.core.setUrl.connect(function(url) {
             alert("asked to go to " + url);
+          });
+
+          channel.objects.core.set_current_url.connect(function(linkid) {
+            store.dispatch (actions.set_current_url (linkid));
           });
         });
     };
@@ -2152,7 +2160,7 @@ function web_channel_override (store, action)
     case "input":
       {
         if (action.input == "index")
-          window.core.show_text_input (action.input);
+          window.core.show_text_input (action.input, store.state.index);
         return 1;
       }
     default:

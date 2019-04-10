@@ -1,5 +1,12 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js (web_channel_override) <input>: Pass 
+	store.state.index as an argument.
+	(wc_init): Receive 'set_current_url' signal and pass on an 
+	action to be dispatched.
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reduce ambiguity of "index".
 
 	(config) <INDEX_NAME>: Rename to TOP_NAME.
