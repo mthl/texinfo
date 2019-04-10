@@ -400,6 +400,7 @@ Indices
 * Predefined Indices::          Use different indices for different kinds
                                  of entries.
 * Indexing Commands::           How to make an index entry.
+* Advanced Indexing::           Advanced indexing commands.
 * Printing Indices & Menus::    How to print an index in hardcopy and
                                  generate index menus in Info.
 * Combining Indices::           How to combine indices.
@@ -8922,7 +8923,7 @@ discussion of each entry.  In a printed manual, this information
 consists of page numbers.  In an Info file, this information is a menu
 entry leading to the first node referenced.
 
-Texinfo provides several predefined kinds of index: an index for
+Texinfo provides several predefined kinds of indices: an index for
 functions, an index for variables, an index for concepts, and so on.
 You can combine indices or use them for other than their canonical
 purpose.  Lastly, you can define your own new indices.
@@ -8931,6 +8932,7 @@ purpose.  Lastly, you can define your own new indices.
 * Predefined Indices::          Use different indices for different kinds
                                  of entries.
 * Indexing Commands::           How to make an index entry.
+* Advanced Indexing::           Advanced indexing commands.
 * Index Entries::               Choose different words for index entries.
 * Printing Indices & Menus::    How to print an index in hardcopy and
                                  generate index menus in Info.
@@ -8949,37 +8951,37 @@ meanings, abbreviations, and the corresponding index entry commands:
 @item cp
 @cindex @code{cp} (concept) index
 @findex cindex
-(@code{@@cindex}) concept index, for general concepts.
+(@code{@@cindex}) Concept index, for general concepts.
 @item fn
 @cindex @code{fn} (function) index
 @findex findex
-(@code{@@findex}) function index, for function and function-like
+(@code{@@findex}) Function index, for function and function-like
 names (such as entry points of libraries).
 @item ky
 @cindex @code{ky} (keystroke) index
 @findex kindex
-(@code{@@kindex}) keystroke index, for keyboard commands.
+(@code{@@kindex}) Keystroke index, for keyboard commands.
 @item pg
 @cindex @code{pg} (program) index
 @findex pindex
-(@code{@@pindex}) program index, for names of programs.
+(@code{@@pindex}) Program index, for names of programs.
 @item tp
 @cindex @code{tp} (data type) index
 @findex tindex
-(@code{@@tindex}) data type index, for type names (such as structures
+(@code{@@tindex}) Data type index, for type names (such as structures
 defined in header files).
 @item vr
 @cindex @code{vr} (variable) index
 @findex vindex
-(@code{@@vindex}) variable index, for variable names (such as global
-variables of libraries).
+(@code{@@vindex}) Variable index, for variable names (such as library global
+variables).
 @end table
 
 @noindent
 Not every manual needs all of these, and most manuals use only two or
 three at most.  The present manual, for example, has two indices: a
-concept index and an @@-command index (that is actually the function
-index but is called a command index in the chapter heading).
+concept index and an @@-command index. (The latter is actually the function
+index but is called a command index in the chapter heading.)
 
 You are not required to use the predefined indices strictly for their
 canonical purposes.  For example, suppose you wish to index some C
@@ -8998,7 +9000,7 @@ Indices}).
 We recommend having a single index in the final document whenever
 possible, however many source indices you use, since then readers have
 only one place to look.  Two or more source indices can be combined
-into one output index using the @code{@@synindex} or
+into one output index by using the @code{@@synindex} or
 @code{@@syncodeindex} commands (@pxref{Combining Indices}).
 
 
@@ -9046,7 +9048,7 @@ Hello, there!
 whatever context) ends up before the material, where readers want to
 be, instead of after.
 
-Try to avoid using a colon in an index entry, as this may confuse some 
+Try to avoid using a colon in index entries, as this may confuse some 
 Info readers.  @xref{Menu Parts} for more information about the
 structure of a menu entry.
 @c At the time of writing, it always works in standalone info, and a
@@ -9064,10 +9066,10 @@ font (@pxref{Fonts}).
 @cindex sort keys for index entries
 @cindex index sorting
 For the printed output, you may specify an explicit sort key for an
-index entry using @code{@@sortas} immediately following the index
-command.  For example: @samp{@@findex @@sortas@{\@} \ @@r@{(literal
-\ in @@code@{@@@@math@})} sorts the index entry this produces under
-backslash.
+index entry using @code{@@sortas} following either the index command
+or the text of the entry.  For example: @samp{@@findex @@sortas@{\@}
+\ @@r@{(literal \ in @@code@{@@@@math@})} sorts the index entry this
+produces under backslash.
 
 @vindex txiindexbackslashignore
 @vindex txiindexhyphenignore
@@ -9083,8 +9085,71 @@ and @samp{@@}, which are ignored by giving as an argument to the
 @code{txiindexatsignignore}.  For example, specifying @samp{@@set
 txiindexbackslashignore} causes the @samp{\mathopsup} entry in the
 index for this manual to be sorted as if it were @samp{mathopsup},
-so that it appears among the other entries beginning `M'.
+so that it appears among the other entries beginning with `M'.
 
+@node Advanced Indexing
+@section Advanced Indexing Commands
+@cindex Indexing, advanced
+@cindex Advanced indexing
+
+Texinfo provides several commands for doing advanced indexing,
+similar to the indices you may see in professionally published books.
+
+@findex @@subentry
+First, you can create @dfn{multilevel} index entries, allowing you
+to group many related subtopics under the same higher level topic.
+You do this by separating the parts of such an entry with the
+@code{@@subentry} command. Such commands might look like this:
+
+@example
+@@cindex Superhumans @@subentry villians
+@@cindex Superhumans @@subentry heros
+@end example
+
+You may have up to three levels in an entry:
+
+@example
+@@cindex coffee makers @@subentry electric @@subentry pink
+@@cindex coffee makers @@subentry electric @@subentry blue
+@end example
+
+You can use the @code{@@sortas} command mentioned earlier with any or
+all of the three parts of an entry to cause them to sort differently
+than they would by default.
+
+@findex @@seeentry
+Second, you may provide an index entry that points to another,
+using the @code{@@seeentry} (``see entry'') command. For example:
+
+@example
+@@cindex Indexes @@seeentry@{Indices@}
+@end example
+
+Such an entry should be unique in your document; the idea is to
+redirect the reader to the other entry where they will find all
+the information they are looking for.
+
+@findex @@seealso
+Finally, you may provide a ``see also'' entry using the @code{@@seealso}
+command. These entries go along with regular entries, and are grouped
+together with them in the final printed index. For example:
+
+@example
+@@cindex Coffee
+@@cindex Coffee @@subentry With milk and sugar
+@@cindex Coffee @@subentry With doughnuts
+@@cindex Coffee @@subentry Decaffeinated
+@@cindex Coffee @@seealso@{Tea@}
+@end example
+
+When using all three of these advanced commands, @emph{do not}
+place a comma betwen the different parts of the index text. The
+@command{texindex} program, which sorts the index entries and
+generates the indexing formatting commands, takes care of placing
+commas in the correct places for you.
+
+These features are most useful with printed documents created
+with @TeX{}, and when translating Texinfo to Docbook.
 
 @node Index Entries
 @section Making Index Entries
@@ -9105,7 +9170,7 @@ This is the case convention we use in most GNU manuals' indices.
 If you don't see how to make an entry terse yet clear, make it longer
 and clear---not terse and confusing.  If many of the entries are
 several words long, the index may look better if you use a different
-convention: to capitalize the first word of each entry.  Whichever
+convention: capitalize the first word of each entry.  Whichever
 case convention you use, use it consistently.
 
 In any event, do not ever capitalize a case-sensitive name such as a C
@@ -9122,6 +9187,8 @@ index entries don't see undifferentiated lists.  Consider this an
 opportunity to make otherwise-identical index entries be more
 specific, so readers can more easily find the exact place they are
 looking for.
+The advanced indexing features described in @ref{Advanced Indexing}
+can help with this, as well.
 
 
 When you are making index entries, it is good practice to think of the
@@ -9130,7 +9197,7 @@ different ways people may look for something.  Different people
 helpful index will have items indexed under all the different words
 that people may use.  For example, one reader may think it obvious
 that the two-letter names for indices should be listed under
-``Indices, two-letter names, since ``Indices'' are the general
+``Indices, two-letter names'', since ``Indices'' are the general
 concept.  But another reader may remember the specific concept of
 two-letter names and search for the entry listed as ``Two letter names
 for indices''.  A good index will have both entries and will help both
@@ -9159,12 +9226,12 @@ process of creating a printed manual, you must run a program called
 sorted index file.  The sorted index file is what is actually used to
 print the index.
 
-Texinfo offers six separate types of predefined index, which suffice
-in most cases.  @xref{Indices}, for information on this, as well
-defining your own new indices, combining indices, and, most
-importantly advice on writing the actual index entries.  This section
-focuses on printing indices, which is done with the
-@code{@@printindex} command.
+Texinfo offers six separate types of predefined index, which suffice in
+most cases. See the other parts of this chapter for information on this,
+as well as advanced indexing commands, defining your own new indices,
+combining indices, and, most importantly, advice on writing the actual
+index entries.  This section focuses on printing indices, which is done
+with the @code{@@printindex} command.
 
 @findex printindex
 @code{@@printindex} takes one argument, a two-letter index
@@ -9265,7 +9332,7 @@ would need to enclose every one of them between the braces of
 
 
 @node @code{@@syncodeindex}
-@subsection @code{@@syncodeindex}: Combining indices using @code{@@code}
+@subsection @code{@@syncodeindex}: Combining Indices Using @code{@@code}
 
 @anchor{syncodeindex}@c old name
 @findex syncodeindex
@@ -9291,17 +9358,17 @@ For this purpose, the indices are given two-letter names:
 
 @table @samp
 @item cp
-concept index
+Concept index
 @item fn
-function index
-@item vr
-variable index
+Function index
 @item ky
-key index
+Key index
 @item pg
-program index
+Program index
 @item tp
-data type index
+Data type index
+@item vr
+Variable index
 @end table
 
 Write a @code{@@syncodeindex} command before or shortly after the
@@ -9314,7 +9381,7 @@ following:
 @end example
 
 @noindent
-This will cause all entries designated for the function index to merge
+This causes all entries designated for the function index to merge
 in with the concept index instead.
 
 To merge both a variables index and a function index into a concept
@@ -9337,7 +9404,7 @@ index into a concept index, all the function names are printed in the
 
 
 @node @code{@@synindex}
-@subsection @code{@@synindex}: Combining indices
+@subsection @code{@@synindex}: Combining Indices
 
 @anchor{synindex}@c old name
 @findex synindex
@@ -9412,17 +9479,17 @@ the predefined indices.  For example:
 @end group
 @end example
 
-The @code{@@defcodeindex} is like the @code{@@defindex} command,
+The @code{@@defcodeindex} command is like the @code{@@defindex} command,
 except that, in the printed output, it prints entries in an
-@code{@@code} font by default instead of a roman font.
+@code{@@code} font by default instead of in a roman font.
 
 You should define new indices before the end-of-header line of a
 Texinfo file, and (of course) before any @code{@@synindex} or
 @code{@@syncodeindex} commands (@pxref{Texinfo File Header}).
 
 As mentioned earlier (@pxref{Predefined Indices}), we recommend having
-a single index in the final document whenever possible, however many
-source indices you use, since then readers have only one place to
+a single index in the final document whenever possible (no matter however many
+source indices you use), since then readers have only one place to
 look.
 
 When creating an index, @TeX{} creates a file whose extension is the
