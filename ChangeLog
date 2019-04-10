@@ -5,6 +5,10 @@
 	(config) <INDEX_NAME>: Rename to TOP_NAME.
 	<INDEX_ID>: Rename to TOP_ID.
 	(init_index_page, init_top_page): Rename.
+	(inside_index_page, inside_top_page): Rename variable.
+	(on_load, Pages):
+	Comments and variable names changed to refer to "top" instead of 
+	"index".
 
 	This tries to leave the word "index" used for the indices of the 
 	manual only.

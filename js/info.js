@@ -729,16 +729,16 @@
     | Component for the pages.  |
     `--------------------------*/
 
-    /** @arg {HTMLDivElement} index_div */
+    /** @arg {HTMLDivElement} top_div */
     function
-    Pages (index_div)
+    Pages (top_div)
     {
-      index_div.setAttribute ("id", config.TOP_ID);
-      index_div.setAttribute ("node", config.TOP_ID);
-      index_div.setAttribute ("hidden", "true");
+      top_div.setAttribute ("id", config.TOP_ID);
+      top_div.setAttribute ("node", config.TOP_ID);
+      top_div.setAttribute ("hidden", "true");
       this.element = document.createElement ("div");
       this.element.setAttribute ("id", "sub-pages");
-      this.element.appendChild (index_div);
+      this.element.appendChild (top_div);
       /** @type {string[]} Currently created divs.  */
       this.ids = [config.TOP_ID];
       /** @type {string} */
@@ -1009,10 +1009,10 @@
       document.body.classList.add ("mainbar");
 
       /* Move contents of <body> into a a fresh <div> to let the components
-         treat the index page like other iframe page.  */
-      var index_div = document.createElement ("div");
+         treat the top page like other iframe page.  */
+      var top_div = document.createElement ("div");
       for (var ch = document.body.firstChild; ch; ch = document.body.firstChild)
-        index_div.appendChild (ch);
+        top_div.appendChild (ch);
 
       /* Aggregation of all the sub-components.  */
       var components = {
@@ -1047,7 +1047,7 @@
         }
       };
 
-      components.add (new Pages (index_div));
+      components.add (new Pages (top_div));
       components.add (new Sidebar ());
       components.add (new Help_page ());
       components.add (new Minibuffer ());
@@ -2019,11 +2019,11 @@
   config = Object.assign (config, user_config);
 
   var inside_iframe = top !== window;
-  var inside_index_page = window.location.pathname === config.TOP_NAME
+  var inside_top_page = window.location.pathname === config.TOP_NAME
       || window.location.pathname.endsWith ("/" + config.TOP_NAME)
       || window.location.pathname.endsWith ("/");
 
-  if (inside_index_page)
+  if (inside_top_page)
     {
       var initial_state = {
         /* Dictionary associating page ids to next, prev, up, forward,
@@ -2085,7 +2085,7 @@ var core;
 // qwebchannel.js has been loaded.
 wc_init = function ()
 {
-  if (!inside_index_page)
+  if (!inside_top_page)
     return;
 
   if (location.search != "")
