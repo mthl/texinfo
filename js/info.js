@@ -2151,7 +2151,8 @@ function web_channel_override (store, action)
       }
     case "input":
       {
-        window.core.show_text_input (action.input);
+        if (action.input == "index")
+          window.core.show_text_input (action.input);
         return 1;
       }
     default:

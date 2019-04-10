@@ -1,5 +1,10 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js (web_channel_override) <input>: Only override for 
+	index searches, not menu searches.
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.js (web_channel_override) <input>: Add override.  This 
 	will be used for index and menus.
 
