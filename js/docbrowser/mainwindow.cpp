@@ -192,6 +192,13 @@ void MainWindow::quit()
     QCoreApplication::quit();
 }
 
+
+void MainWindow::focusChanged (QWidget *old, QWidget *now)
+{
+    if (now != ui->promptCombo)
+       core->hide_prompt();
+}
+
 void MainWindow::on_quitButton_clicked()
 {
     QCoreApplication::quit();
@@ -203,8 +210,8 @@ void MainWindow::on_loadButton_clicked()
     core->load_manual (qPrintable(ui->manualEdit->text()));
 }
 
-void MainWindow::focusChanged (QWidget *old, QWidget *now)
+
+void MainWindow::on_promptCombo_activated(const QString &arg1)
 {
-    if (now != ui->promptCombo)
-       core->hide_prompt();
+    core->activate_input(arg1);
 }

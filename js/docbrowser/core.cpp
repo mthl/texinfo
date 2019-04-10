@@ -5,6 +5,8 @@
 #include <QtGlobal>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QJsonObject>
+#include <QMapIterator>
 
 Core::Core(Ui::MainWindow *ui, QObject *parent)
       : QObject(parent),
@@ -45,6 +47,9 @@ Core::load_manual (const char *manual)
       {
         qDebug() << "got path" << path;
         ui->webEngineView->load(QUrl("file:" + QString(path)));
+
+        this->index_data.clear(); // FIXME: this should be done automatically, maybe by having a separate map for each window.
+
         free (path);
         return true;
       }
@@ -53,11 +58,23 @@ Core::load_manual (const char *manual)
 
 /* Show the text prompt. */
 void
-Core::show_text_input (const QString &input)
+Core::show_text_input (const QString &input, const QJsonObject &data)
 {
+  if (index_data.isEmpty())
+    {
+      index_data = data.toVariantMap();
+      QMapIterator<QString, QVariant> i(index_data);
+      while (i.hasNext())
+        {
+          i.next();
+          ui->promptCombo->addItem(i.key());
+        }
+    }
+
   ui->promptLabel->setVisible(true);
   ui->promptCombo->setVisible(true);
   ui->promptCombo->setFocus();
+  ui->promptCombo->setEditText("");
 }
 
 /* Hide the text prompt.
@@ -71,4 +88,10 @@ Core::hide_prompt()
     ui->promptCombo->setVisible(false);
 }
 
-
+void
+Core::activate_input (const QString &arg)
+{
+    emit set_current_url (index_data[arg].toString());
+    hide_prompt();
+    ui->webEngineView->setFocus();
+}
