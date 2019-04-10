@@ -1,5 +1,10 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js (web_channel_override) <input>: Add override.  This 
+	will be used for index and menus.
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.js (init_ifram) <on_load>: Pass iframe window object
 	to "click" event handler.
 	(on_click): Allow window object to be overridden.  Use it to get 

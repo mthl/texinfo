@@ -2149,6 +2149,11 @@ function web_channel_override (store, action)
         window.core.external_manual (action.url);
         return 1;
       }
+    case "input":
+      {
+        window.core.show_text_input (action.input);
+        return 1;
+      }
     default:
       {
         return 0;
