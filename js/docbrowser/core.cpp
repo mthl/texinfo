@@ -51,3 +51,24 @@ Core::load_manual (const char *manual)
     return false;
 }
 
+/* Show the text prompt. */
+void
+Core::show_text_input (const QString &input)
+{
+  ui->promptLabel->setVisible(true);
+  ui->promptCombo->setVisible(true);
+  ui->promptCombo->setFocus();
+}
+
+/* Hide the text prompt.
+   Allegedly you can put these two as children of a widget, and then
+   just hide a single widget.  I couldn't get it to look right in
+   qtcreator, though. */
+void
+Core::hide_prompt()
+{
+    ui->promptLabel->setVisible(false);
+    ui->promptCombo->setVisible(false);
+}
+
+

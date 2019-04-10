@@ -14,19 +14,23 @@
 #include <QtDebug>
 #include <QWebChannel>
 #include <QWebEngineProfile>
+#include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::quit);
+    connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
     this->datadir = getenv ("QTINFO_DATADIR");
     if (!this->datadir)
       QCoreApplication::quit();
 
     setup_channel ();
+    core->hide_prompt();
 
     auto *profile = new QWebEngineProfile(this);
     setup_profile(profile);
@@ -41,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                     "/test/hello/index.html"));
 }
 
+/* Initialize "core" object. */
 void
 MainWindow::setup_channel()
 {
@@ -66,7 +71,6 @@ MainWindow::setup_channel()
 
     this->core = new Core(ui, this);
     channel->registerObject(QStringLiteral("core"), core);
-
 }
 
 /* Load info.js and qwebchannel.js into the current page. */
@@ -197,4 +201,10 @@ void MainWindow::on_quitButton_clicked()
 void MainWindow::on_loadButton_clicked()
 {
     core->load_manual (qPrintable(ui->manualEdit->text()));
+}
+
+void MainWindow::focusChanged (QWidget *old, QWidget *now)
+{
+    if (now != ui->promptCombo)
+       core->hide_prompt();
 }

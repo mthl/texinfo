@@ -40,6 +40,7 @@ private:
     void inject_qwebchannel(bool ok);
     void setup_profile(QWebEngineProfile *profile);
     void setup_channel();
+    void focusChanged (QWidget *old, QWidget *now);
 };
 
 #endif // MAINWINDOW_H

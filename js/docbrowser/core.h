@@ -16,14 +16,16 @@ public:
     explicit Core(Ui::MainWindow *ui, QObject *parent = nullptr);
 
     bool load_manual (const char *manual);
+    void hide_prompt ();
 
 signals:
     // Signals emitted from the C++ side and received on the HTML client side.
     void setUrl (const QString &text);
 
 public slots:
-    // Signals emitted from the HTML client side and received on the HTML side.
+    // Signals emitted from the HTML client side and received on the C++ side.
     void external_manual (const QString &url);
+    void show_text_input (const QString &input);
 
 private:
     Ui::MainWindow *ui;

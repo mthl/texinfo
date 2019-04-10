@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>735</width>
-    <height>507</height>
+    <width>754</width>
+    <height>407</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,6 +15,71 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="promptLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Prompt:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="promptCombo">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>toasters</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>drinks vending machines</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>cans of pickled onions</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>cans of beans</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>cans of tomatoes</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>light goods vehicles</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>dental floss</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
     <item>
      <widget class="QWebEngineView" name="webEngineView">
       <property name="url">
@@ -55,7 +120,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>735</width>
+     <width>754</width>
      <height>19</height>
     </rect>
    </property>
