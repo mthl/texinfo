@@ -701,7 +701,7 @@
       toc.remove ();
 
       /* Move contents of <body> into a a fresh <div> to let the components
-         treat the index page like other iframe page.  */
+         treat the top page like other iframe page.  */
       var nav = document.createElement ("nav");
       nav.classList.add ("contents");
       for (var ch = toc.firstChild; ch; ch = toc.firstChild)
@@ -882,13 +882,13 @@
           throw new ReferenceError (msg);
         }
 
-      /* Create iframe if necessary unless the div is refering to the Index
+      /* Create iframe if necessary unless the div is refering to the top
          page.  */
       if ((pageid === config.TOP_ID) && visible)
         {
           div.removeAttribute ("hidden");
           /* Unlike iframes, Elements are unlikely to be scrollable (CSSOM
-             Scroll-behavior), so choose an arbitrary element inside "index"
+             Scroll-behavior), so choose an arbitrary element inside "top"
              div and at the top of it.  */
           document.getElementById ("icon-bar").scrollIntoView ();
         }
@@ -1964,7 +1964,7 @@
   /** Depending on the role of the document launching this script, different
       event handlers are registered.  This script can be used in the context of:
 
-      - the index page of the manual which manages the state of the application
+      - the top page of the manual which manages the state of the application
       - the iframe which contains the lateral table of content
       - other iframes which contain other pages of the manual
 
@@ -2042,15 +2042,15 @@
       };
 
       store = new Store (updater, initial_state);
-      var index = init_top_page ();
+      var top_page = init_top_page ();
       var sidebar = init_sidebar ();
       window.addEventListener ("DOMContentLoaded", function () {
-        index.on_load ();
+        top_page.on_load ();
         sidebar.on_load ();
       }, false);
-      window.addEventListener ("message", index.on_message, false);
+      window.addEventListener ("message", top_page.on_message, false);
       window.addEventListener ("message", sidebar.on_message, false);
-      window.onpopstate = index.on_popstate;
+      window.onpopstate = top_page.on_popstate;
     }
   else if (inside_iframe)
     {

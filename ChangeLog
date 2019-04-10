@@ -6,7 +6,8 @@
 	<INDEX_ID>: Rename to TOP_ID.
 	(init_index_page, init_top_page): Rename.
 	(inside_index_page, inside_top_page): Rename variable.
-	(on_load, Pages):
+	(on_load, Pages, Sidebar, resolve_page)
+	(top-level initialization code):
 	Comments and variable names changed to refer to "top" instead of 
 	"index".
 
