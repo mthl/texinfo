@@ -312,9 +312,9 @@ to five fields, where the first three fields represent the same
 data for all entries.  Entries look as follows:
 
 @example
-@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}
-@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}
-@@entry @{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}@{@var{tertiary}@}
+@@entry@{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}
+@@entry@{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}
+@@entry@{@var{sortkey}@}@{@var{page or see}@}@{@var{primary}@}@{@var{secondary}@}@{@var{tertiary}@}
 @end example
 
 The braces are balanced in all cases, although for use by this program,
@@ -1380,21 +1380,16 @@ the actual comparison algorithm is more sophisticated.
 
 We set up an @code{Ordval} array to map characters to numeric values.
 Most characters map to their ASCII code.  We add 512 to the value of each
-of the digits; this causes them to come after all symbols.  Both uppercase
-and lowercase letters map to the same numeric value, which is the ASCII
-code for the uppercase letter plus 512. Thus letters come after digits.
+of the digits; this causes them to come after all symbols.
+
+The letters are handled a little differently. We set things up so that
+lowercase letters come before uppercase ones, but both ``a'' and
+``A'' come before ``b'', and so on.  This then lets us use
+a simple subtraction in the comparison to determine if two letters are
+less than, equal to, or greater than each other. In any case, the mapping
+also ensures that letters come after digits.
 (This code should also work for EBCDIC systems, although @TeX{} does
 everything in ASCII, so it's not likely to make a difference.)
-
-@ignore
-4/2019: FIXME: Next time we mess with this, try adding 256 to the
-value for lower case letters. Then it should not be necessary to
-use a > comparison in the key_compare function since lower case
-will come before upper case but still after all symbols. Test it out.
-
-That's not right; we need 'a' and 'A' to both come before 'b'.
-We'll leave it alone for now.
-@end ignore
 
 The table must be built completely before changing the mapping of the
 letters, because all of the uppercase and lowercase letters must be in
@@ -1413,19 +1408,16 @@ BEGIN {
 			Ordval[c] += 512
 	}
 
-	# Give both 'A' and 'a' the same code
-	i = Ordval["A"]
-	j = Ordval["Z"]
+	# Set things up such that 'a' < 'A' < 'b' < 'B' < ...
+	i = Ordval["a"]
+	j = Ordval["z"]
+	newval = i + 512
 	for (; i <= j; i++) {
 		c = sprintf("%c", i)
 
-		# In ASCII, 'A' is before 'a', so this is
-		# the right order to check
-		#
-		# Checking isupper() lets this work for EBCDIC, too.
-		if (isupper(c)) {
-			Ordval[c] += 512
-			Ordval[tolower(c)] = Ordval[c]
+		if (islower(c)) {
+			Ordval[c] = newval++
+			Ordval[toupper(c)] = newval++
 		}
 	}
 }
@@ -1448,12 +1440,8 @@ three subcases, as follows:
 @c nested table
 @table @i
 @item Same letter, but different case
-This is the complicated case.  First, we want lowercase letters to be
-ordered before uppercase ones, even though this is the opposite of the
-natural ASCII ordering.  To make this happen, we use a @samp{>}
-comparison instead of a @samp{<} comparison.
-
-Second, when two characters are equal, we have to look ahead at the next
+This is the slightly complicated case.
+When two characters are equal, we have to look ahead at the next
 characters to decide whether to continue the loop or quit.  As long as
 we are not at the end of the string, and at least one of the following
 characters in either string is a letter, we continue the loop.
@@ -1504,11 +1492,9 @@ function key_compare(left, right,	len_l, len_r, len, chars_l, chars_r)
 				if (i != len \
 					&& (isalpha(chars_l[i+1]) || isalpha(chars_r[i+1])))
 					continue
-				if (chars_l[i] > chars_r[i])
-					return -1		# "less than"
-				if (chars_l[i] < chars_r[i])
-					return 1		# "greater than"
-				return 0			# equal
+
+				# negative, zero, or positive
+				return Ordval[chars_l[i]] - Ordval[chars_r[i]]
 			}
 			# same case, different char,
 			# or different case, different char:
@@ -1839,13 +1825,13 @@ Here are some test cases:
 @@cindex children @@subentry adult
 
 @@c More examples
-@@cindex test case @@seeentry{testing}
-@@cindex test case @@seeentry{brief case}
+@@cindex test case @@seeentry@{testing@}
+@@cindex test case @@seeentry@{brief case@}
 @@cindex coffee
-@@cindex coffee @@seealso{tea}
-@@cindex coffee @@seealso{coca-cola}
-@@cindex whisky @@seealso{soda}
-@@cindex whisky @@seealso{scotch}
+@@cindex coffee @@seealso@{tea@}
+@@cindex coffee @@seealso@{coca-cola@}
+@@cindex whisky @@seealso@{soda@}
+@@cindex whisky @@seealso@{scotch@}
 @end example
 
 @noindent
