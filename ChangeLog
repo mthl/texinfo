@@ -1,5 +1,16 @@
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reduce ambiguity of "index".
+
+	(config) <INDEX_NAME>: Rename to TOP_NAME.
+	<INDEX_ID>: Rename to TOP_ID.
+	(init_index_page, init_top_page): Rename.
+
+	This tries to leave the word "index" used for the indices of the 
+	manual only.
+
+2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.js (web_channel_override) <input>: Only override for 
 	index searches, not menu searches.
 
