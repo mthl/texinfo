@@ -1,3 +1,13 @@
+2019-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Add wc_controlled conditional.
+
+	* js/info.js: Do not wrap the whole file inside a function 
+	scope.
+	(wc_init): Set wc_controlled to say a QWebChannel is in use.
+	(resolve_page): Only try to make the JavaScript accessible from 
+	the iframe if wc_controlled is set.
+
 2019-04-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* js/info.js (web_channel_override) <input>: Pass 

@@ -16,8 +16,21 @@
    You should have received a copy of the GNU General Public License
    along with GNU Texinfo.  If not, see <http://www.gnu.org/licenses/>.  */
 
-(function (features, user_config) {
-  "use strict";
+
+"use strict";
+
+/* The commented-out function call wrapped the whole file in a scope.
+   This is disabled for now so we can access functions from wc_init
+   and web_channel_override.  We want to put wc_init in the top-level scope 
+   because in the future we might have this in a separate file.  If we have 
+   problems with namespace clashes in the future then we could declare selected 
+   functions and variables at the top level.  */
+
+var features = window["Modernizr"];
+var user_config = window["INFO_CONFIG"];
+
+// (function (features, user_config) {
+
 
   /*-------------------.
   | Define constants.  |
@@ -901,9 +914,13 @@
               iframe.classList.add ("node");
               iframe.setAttribute ("src", linkid_to_url (pageid));
 
-              // For injecting JavaScript into iframe
-              var x = init_iframe(iframe);
-              iframe.onload = x.on_load;
+              if (wc_controlled)
+                {
+                  /* Make the JavaScript functionality work inside the iframe.
+                     In this case, we do not use a Remote_store object. */
+                  var x = init_iframe(iframe);
+                  iframe.onload = x.on_load;
+                }
 
               div.appendChild (iframe);
               iframe.addEventListener ("load", function () {
@@ -1991,6 +2008,8 @@
       };
   }
 
+/* Wrap init code */
+function init() {
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
   if (features && !(features.es5
@@ -2073,20 +2092,31 @@
      https://bugs.chromium.org/p/chromium/issues/detail?id=9061.  */
   window.addEventListener ("keyup", on_keyup, false);
 
+} /* init */
+init ();
+
+
+// } (window["Modernizr"], window["INFO_CONFIG"]));
+/* See comment at top of file */
+
 
 /*----------------------------------.
 | For communication with Qt process |
 `----------------------------------*/
 
-// object shared with controlling Qt/C++ process
+/* object shared with controlling Qt/C++ process */
 var core;
 
-// For use with QWebChannel.  init function to be called after
-// qwebchannel.js has been loaded.
-wc_init = function ()
+/* Whether we are being controlled via a QWebChannel, and the JavaScript is 
+   being injected into the HTML pages.  Try to keep the use of this conditional 
+   to a minimum. */
+var wc_controlled = 0;
+
+/* For use with QWebChannel.  To be called after qwebchannel.js has been 
+   loaded. */
+function wc_init()
 {
-  if (!inside_top_page)
-    return;
+  wc_controlled = 1;
 
   if (location.search != "")
     var baseUrl
@@ -2112,7 +2142,7 @@ wc_init = function ()
         {
           window.core = channel.objects.core;
 
-          /* Receive signals from Qt/C++ side.  (Should we inject this code?)
+          /* Receive signals from Qt/C++ side.
 
              We don't have code to receive "actions" from the C++ side:
              the action message-passing architecture is only used to 
@@ -2135,19 +2165,13 @@ wc_init = function ()
       if (!web_channel_override (this, action))
         store_dispatch.call (this, action);
     };
-  // Overriding just the dispatch function works better than
-  // assigining 'store' to a different object, as store.state
-  // is used as well.
+  /* Overriding just the dispatch function works better than
+     assigining 'store' to a different object, as store.state
+     is used as well. */
 }
 
-} (window["Modernizr"], window["INFO_CONFIG"]));
 
-// Make wc_init function visible at external scope
-var wc_init;
-
-// Return true if the standard function doesn't need to be called.
-// This is put in the external scope because we might want to inject
-// this function in the future from Qt/C++.
+/* Return true if the standard function doesn't need to be called. */
 function web_channel_override (store, action)
 {
   switch (action.type)
