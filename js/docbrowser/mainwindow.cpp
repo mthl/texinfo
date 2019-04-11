@@ -82,16 +82,6 @@ MainWindow::inject_qwebchannel(bool finished_ok)
 
     qDebug() << "injecting into page" << ui->webEngineView->url();
 
-#define QWEBCHANNEL_JS "qwebchannel.js"
-
-    if (qwebchannel_js.isNull()) {
-        QFile file;
-        file.setFileName (QString(this->datadir)
-                          + "/docbrowser/" + QWEBCHANNEL_JS);
-        file.open(QIODevice::ReadOnly);
-        QByteArray b = file.readAll();
-        qwebchannel_js = QString(b);
-    }
 
     auto *page = ui->webEngineView->page();
 
@@ -99,11 +89,9 @@ MainWindow::inject_qwebchannel(bool finished_ok)
        function.  Qt uses an asynchronous callback system for this.  Check if 
        wc_init is defined because this slot is activated even for "about:blank",
        the default page. */
-    page->runJavaScript (qwebchannel_js, [this, page](const QVariant&) {
-      page->runJavaScript(
+    page->runJavaScript(
                   "if (typeof wc_init == 'function') { wc_init(); }",
                    0 );
-      });
 }
 
 void
@@ -144,6 +132,17 @@ MainWindow::setup_profile(QWebEngineProfile *profile)
         info_css = QString(b);
     }
 
+#define QWEBCHANNEL_JS "qwebchannel.js"
+
+    if (qwebchannel_js.isNull()) {
+        QFile file;
+        file.setFileName (QString(this->datadir)
+                          + "/docbrowser/" + QWEBCHANNEL_JS);
+        file.open(QIODevice::ReadOnly);
+        QByteArray b = file.readAll();
+        qwebchannel_js = QString(b);
+    }
+
     /* Set up JavaScript to load info.css.  This relies on there being no 
        single quotes or backslashes in info.css.  The simplified() call
        is needed to fit the CSS in a single line of JavaScript. */
@@ -173,6 +172,12 @@ MainWindow::setup_profile(QWebEngineProfile *profile)
     s3.setInjectionPoint(QWebEngineScript::DocumentCreation);
     s3.setWorldId(QWebEngineScript::MainWorld);
     profile->scripts()->insert(s3);
+
+    QWebEngineScript s4;
+    s4.setSourceCode(qwebchannel_js);
+    s4.setInjectionPoint(QWebEngineScript::DocumentCreation);
+    s4.setWorldId(QWebEngineScript::MainWorld);
+    profile->scripts()->insert(s4);
 
     /* We need the files to be loaded in a particular order.
        Using QWebEngineProfile appears to work.  Calling runJavaScript
