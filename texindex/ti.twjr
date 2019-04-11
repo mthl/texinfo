@@ -487,9 +487,10 @@ In practice, we can also rely on basic features added in POSIX
 @command{awk} should we need to (such as @code{CONVFMT}), although
 at the moment there are no such features used by @file{texindex.awk}.
 
-We tested the program with four versions of @command{awk} (@command{gawk},
-@command{mawk}, Brian Kernighan's @command{awk} and Busybox @command{awk})
-on a large index and got byte-identical results from all four.
+We tested the program with five versions of @command{awk} (@command{gawk},
+@command{mawk}, Brian Kernighan's @command{awk}, @command{goawk},
+and Busybox @command{awk}) on a large index and got byte-identical
+results from all five.
 
 @node High-level organization
 @chapter High-level Organization
