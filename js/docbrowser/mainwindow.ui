@@ -41,41 +41,6 @@
         <property name="editable">
          <bool>true</bool>
         </property>
-        <item>
-         <property name="text">
-          <string>toasters</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>drinks vending machines</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>cans of pickled onions</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>cans of beans</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>cans of tomatoes</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>light goods vehicles</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>dental floss</string>
-         </property>
-        </item>
        </widget>
       </item>
      </layout>

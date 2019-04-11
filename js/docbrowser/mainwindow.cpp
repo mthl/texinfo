@@ -83,6 +83,7 @@ MainWindow::inject_js_file (const QString &filename, QWebEngineProfile *profile)
 
   QWebEngineScript s;
   s.setSourceCode(script);
+  s.setRunsOnSubFrames(true);
   s.setInjectionPoint(QWebEngineScript::DocumentCreation);
   s.setWorldId(QWebEngineScript::MainWorld);
   profile->scripts()->insert(s);
@@ -161,7 +162,7 @@ void MainWindow::quit()
 
 void MainWindow::focusChanged (QWidget *old, QWidget *now)
 {
-    if (now != ui->promptCombo)
+    if (now == ui->webEngineView)
        core->hide_prompt();
 }
 
