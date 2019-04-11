@@ -94,32 +94,33 @@ MainWindow::inject_qwebchannel(bool finished_ok)
                    0 );
 }
 
+QString
+MainWindow::inject_js_file (const QString &filename)
+{
+  QString script;
+  QFile file;
+  file.setFileName (QString(this->datadir)
+                    + "/" + filename);
+  file.open(QIODevice::ReadOnly);
+  QByteArray b = file.readAll();
+  script = QString(b);
+
+  return script;
+}
+
 void
 MainWindow::setup_profile(QWebEngineProfile *profile)
 {
     /* First load the data from disk */
 
+
 #define INFO_JS "info.js"
 
-    if (info_js.isNull()) {
-        QFile file;
-        file.setFileName (QString(this->datadir)
-                          + "/" INFO_JS);
-        file.open(QIODevice::ReadOnly);
-        QByteArray b = file.readAll();
-        info_js = QString(b);
-    }
+  info_js = inject_js_file (INFO_JS);
 
 #define MODERNIZR_JS "modernizr.js"
 
-    if (modernizr_js.isNull()) {
-        QFile file;
-        file.setFileName (QString(this->datadir)
-                      + "/" MODERNIZR_JS);
-        file.open(QIODevice::ReadOnly);
-        QByteArray b = file.readAll();
-        modernizr_js = QString(b);
-    }
+  modernizr_js = inject_js_file (MODERNIZR_JS);
 
 #define INFO_CSS "info.css"
 
@@ -134,14 +135,7 @@ MainWindow::setup_profile(QWebEngineProfile *profile)
 
 #define QWEBCHANNEL_JS "qwebchannel.js"
 
-    if (qwebchannel_js.isNull()) {
-        QFile file;
-        file.setFileName (QString(this->datadir)
-                          + "/docbrowser/" + QWEBCHANNEL_JS);
-        file.open(QIODevice::ReadOnly);
-        QByteArray b = file.readAll();
-        qwebchannel_js = QString(b);
-    }
+  qwebchannel_js = inject_js_file ("docbrowser/" QWEBCHANNEL_JS);
 
     /* Set up JavaScript to load info.css.  This relies on there being no 
        single quotes or backslashes in info.css.  The simplified() call
