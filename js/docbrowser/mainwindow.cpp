@@ -38,9 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webEngineView->setPage(page);
 
-    connect(ui->webEngineView->page(), &QWebEnginePage::loadFinished,
-            this, &MainWindow::inject_qwebchannel);
-
     ui->webEngineView->page()->load(QUrl(QString("file:") + this->datadir +
                                     "/test/hello/index.html"));
 }
@@ -71,27 +68,6 @@ MainWindow::setup_channel()
 
     this->core = new Core(ui, this);
     channel->registerObject(QStringLiteral("core"), core);
-}
-
-/* Load info.js and qwebchannel.js into the current page. */
-void
-MainWindow::inject_qwebchannel(bool finished_ok)
-{
-    if (!finished_ok || ui->webEngineView->url() == QUrl("about:blank"))
-      return;
-
-    qDebug() << "injecting into page" << ui->webEngineView->url();
-
-
-    auto *page = ui->webEngineView->page();
-
-    /* Run the code, and only after that has finished, run the init
-       function.  Qt uses an asynchronous callback system for this.  Check if 
-       wc_init is defined because this slot is activated even for "about:blank",
-       the default page. */
-    page->runJavaScript(
-                  "if (typeof wc_init == 'function') { wc_init(); }",
-                   0 );
 }
 
 QString
@@ -162,6 +138,12 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
     profile->scripts()->insert(s);
     /* This needs to run after the <head> element is accessible, but before
        the DOMContentLoaded event handlers in info.js fire. */
+
+    QWebEngineScript s2;
+    s2.setSourceCode("if (typeof wc_init == 'function') { wc_init(); }");
+    s2.setInjectionPoint(QWebEngineScript::DocumentCreation);
+    s2.setWorldId(QWebEngineScript::MainWorld);
+    profile->scripts()->insert(s2);
 }
 
 
