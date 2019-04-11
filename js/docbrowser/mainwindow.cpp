@@ -95,7 +95,7 @@ MainWindow::inject_qwebchannel(bool finished_ok)
 }
 
 QString
-MainWindow::inject_js_file (const QString &filename)
+MainWindow::inject_js_file (const QString &filename, QWebEngineProfile *profile)
 {
   QString script;
   QFile file;
@@ -105,22 +105,30 @@ MainWindow::inject_js_file (const QString &filename)
   QByteArray b = file.readAll();
   script = QString(b);
 
+  QWebEngineScript s;
+  s.setSourceCode(script);
+  s.setInjectionPoint(QWebEngineScript::DocumentCreation);
+  s.setWorldId(QWebEngineScript::MainWorld);
+  profile->scripts()->insert(s);
+
   return script;
 }
 
 void
-MainWindow::setup_profile(QWebEngineProfile *profile)
+MainWindow::setup_profile (QWebEngineProfile *profile)
 {
-    /* First load the data from disk */
-
 
 #define INFO_JS "info.js"
 
-  info_js = inject_js_file (INFO_JS);
+  info_js = inject_js_file (INFO_JS, profile);
+  /* We need the files to be loaded in a particular order.
+     Using QWebEngineProfile appears to work.  Calling runJavaScript
+     after the page is loaded doesn't work this is too late for
+     DOMContentLoaded event handlers in info.js to fire. */
 
 #define MODERNIZR_JS "modernizr.js"
 
-  modernizr_js = inject_js_file (MODERNIZR_JS);
+  modernizr_js = inject_js_file (MODERNIZR_JS, profile);
 
 #define INFO_CSS "info.css"
 
@@ -135,7 +143,7 @@ MainWindow::setup_profile(QWebEngineProfile *profile)
 
 #define QWEBCHANNEL_JS "qwebchannel.js"
 
-  qwebchannel_js = inject_js_file ("docbrowser/" QWEBCHANNEL_JS);
+  qwebchannel_js = inject_js_file ("docbrowser/" QWEBCHANNEL_JS, profile);
 
     /* Set up JavaScript to load info.css.  This relies on there being no 
        single quotes or backslashes in info.css.  The simplified() call
@@ -147,36 +155,13 @@ MainWindow::setup_profile(QWebEngineProfile *profile)
       "document.head.appendChild(css);\n"
     "})()").arg(info_css.simplified());
 
-    /* This needs to run after the <head> element is accessible, but before
-       the DOMContentLoaded event handlers in info.js fire. */
     QWebEngineScript s;
     s.setSourceCode(insert_css);
     s.setInjectionPoint(QWebEngineScript::DocumentReady);
     s.setWorldId(QWebEngineScript::MainWorld);
     profile->scripts()->insert(s);
-
-    QWebEngineScript s2;
-    s2.setSourceCode(modernizr_js);
-    s2.setInjectionPoint(QWebEngineScript::DocumentCreation);
-    s2.setWorldId(QWebEngineScript::MainWorld);
-    profile->scripts()->insert(s2);
-
-    QWebEngineScript s3;
-    s3.setSourceCode(info_js);
-    s3.setInjectionPoint(QWebEngineScript::DocumentCreation);
-    s3.setWorldId(QWebEngineScript::MainWorld);
-    profile->scripts()->insert(s3);
-
-    QWebEngineScript s4;
-    s4.setSourceCode(qwebchannel_js);
-    s4.setInjectionPoint(QWebEngineScript::DocumentCreation);
-    s4.setWorldId(QWebEngineScript::MainWorld);
-    profile->scripts()->insert(s4);
-
-    /* We need the files to be loaded in a particular order.
-       Using QWebEngineProfile appears to work.  Calling runJavaScript
-       after the page is loaded doesn't work this is too late for
-       DOMContentLoaded event handlers in info.js to fire. */
+    /* This needs to run after the <head> element is accessible, but before
+       the DOMContentLoaded event handlers in info.js fire. */
 }
 
 

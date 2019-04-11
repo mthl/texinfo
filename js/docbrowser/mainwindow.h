@@ -39,7 +39,7 @@ private:
 
     void quit();
     void inject_qwebchannel(bool ok);
-    QString inject_js_file(const QString &filename);
+    QString inject_js_file(const QString &filename, QWebEngineProfile *profile);
     void setup_profile(QWebEngineProfile *profile);
     void setup_channel();
     void focusChanged (QWidget *old, QWidget *now);
