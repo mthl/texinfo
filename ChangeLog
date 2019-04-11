@@ -1,5 +1,10 @@
 2019-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* js/info.js: Remove section at end dealing with QWebChannel, 
+	and place in a new file (js/docbrowser/qtinfo.js).
+
+2019-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add wc_controlled conditional.
 
 	* js/info.js: Do not wrap the whole file inside a function 
