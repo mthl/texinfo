@@ -96,12 +96,30 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
 {
 
 #define INFO_JS "info.js"
+#define QTINFO_JS "docbrowser/qtinfo.js"
 
-  info_js = inject_js_file (INFO_JS, profile);
-  /* We need the files to be loaded in a particular order.
-     Using QWebEngineProfile appears to work.  Calling runJavaScript
-     after the page is loaded doesn't work this is too late for
-     DOMContentLoaded event handlers in info.js to fire. */
+  QString script;
+  QFile file;
+  file.setFileName (QString(this->datadir)
+                    + "/" + INFO_JS);
+  file.open(QIODevice::ReadOnly);
+  QByteArray b = file.readAll();
+  script = QString(b);
+
+  QString script2;
+  QFile file2;
+  file2.setFileName (QString(this->datadir)
+                    + "/" + QTINFO_JS);
+  file2.open(QIODevice::ReadOnly);
+  QByteArray b2 = file2.readAll();
+  script2 = QString(b2);
+
+  QWebEngineScript s1;
+  s1.setSourceCode(script + script2);
+  // s1.setRunsOnSubFrames(true);
+  s1.setInjectionPoint(QWebEngineScript::DocumentCreation);
+  s1.setWorldId(QWebEngineScript::MainWorld);
+  profile->scripts()->insert(s1);
 
 #define MODERNIZR_JS "modernizr.js"
 
@@ -140,11 +158,13 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
     /* This needs to run after the <head> element is accessible, but before
        the DOMContentLoaded event handlers in info.js fire. */
 
+#if 0
     QWebEngineScript s2;
     s2.setSourceCode("if (typeof wc_init == 'function') { wc_init(); }");
     s2.setInjectionPoint(QWebEngineScript::DocumentCreation);
     s2.setWorldId(QWebEngineScript::MainWorld);
     profile->scripts()->insert(s2);
+#endif
 }
 
 
