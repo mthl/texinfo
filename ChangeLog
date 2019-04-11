@@ -1,3 +1,9 @@
+2019-04-11         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* doc/texinfo.texi: Update chapter on Indexing to cover new
+	@seeentry, @seealso and @subentry commands. General smaller
+	revisions to that chapter.
+
 2019-04-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Make texi2dvi --tidy more reliable.
