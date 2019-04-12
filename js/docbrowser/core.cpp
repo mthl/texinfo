@@ -48,12 +48,17 @@ Core::hide_prompt()
     ui->promptCombo->setVisible(false);
 }
 
+/* Return has been pressed in the input box. */
 void
 Core::activate_input (const QString &arg)
 {
+  if (input_search)
+    emit search (arg);
+  else
     emit set_current_url (index_data[arg].toString());
-    hide_prompt();
-    ui->webEngineView->setFocus();
+
+  hide_prompt();
+  ui->webEngineView->setFocus();
 }
 
 /********************* Public Slots **********************/
@@ -62,8 +67,13 @@ Core::activate_input (const QString &arg)
 void
 Core::show_text_input (const QString &input, const QJsonObject &data)
 {
-  if (index_data.isEmpty())
+  if (input == "regexp-search")
     {
+      input_search = true;
+    }
+  else if (index_data.isEmpty())
+    {
+      input_search = false;
       index_data = data.toVariantMap();
       QMapIterator<QString, QVariant> i(index_data);
       while (i.hasNext())
@@ -76,7 +86,9 @@ Core::show_text_input (const QString &input, const QJsonObject &data)
   ui->promptLabel->setVisible(true);
   ui->promptCombo->setVisible(true);
   ui->promptCombo->setFocus();
-  ui->promptCombo->setEditText("");
+
+  if (!input_search)
+    ui->promptCombo->setEditText("");
 }
 
 

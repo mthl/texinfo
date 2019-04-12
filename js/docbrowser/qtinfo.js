@@ -23,16 +23,12 @@
 /* object shared with controlling Qt/C++ process */
 var core;
 
-/* Whether we are being controlled via a QWebChannel, and the JavaScript is 
-   being injected into the HTML pages.  Try to keep the use of this conditional 
-   to a minimum. */
-var wc_controlled = 0;
-
 /* For use with QWebChannel.  To be called after qwebchannel.js has been 
    loaded. */
 function wc_init()
 {
-  wc_controlled = 1;
+  if (!inside_top_page)
+    return;
 
   if (location.search != "")
     var baseUrl
@@ -63,7 +59,7 @@ function wc_init()
              We don't have code to receive "actions" from the C++ side:
              the action message-passing architecture is only used to 
              circumvent same-origin policy restrictions on some browsers for 
-             file: URI's. */
+             file: URI's, and for web_channel_override to hook into. */
 
           channel.objects.core.setUrl.connect(function(url) {
             alert("asked to go to " + url);
@@ -72,6 +68,11 @@ function wc_init()
           channel.objects.core.set_current_url.connect(function(linkid) {
             store.dispatch (actions.set_current_url (linkid));
           });
+
+          channel.objects.core.search.connect(function(string) {
+            store.dispatch (actions.search (string));
+          });
+
         });
     };
 
@@ -110,6 +111,8 @@ function web_channel_override (store, action)
             else
               store.dispatch (actions.warn ("No menu in this node"));
           }
+        else if (action.input == "regexp-search")
+          window.core.show_text_input (action.input, {});
         return 1;
       }
     default:

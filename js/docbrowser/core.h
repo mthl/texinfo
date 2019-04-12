@@ -24,6 +24,7 @@ signals:
     // Signals emitted from the C++ side and received on the HTML client side.
     void setUrl (const QString &text);
     void set_current_url (const QString &text);
+    void search (const QString &text);
 
 public slots:
     // Signals emitted from the HTML client side and received on the C++ side.
@@ -33,6 +34,7 @@ public slots:
 private:
     Ui::MainWindow *ui;
     QVariantMap index_data;
+    bool input_search;
 
 };
 
