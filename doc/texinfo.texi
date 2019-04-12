@@ -15573,29 +15573,30 @@ For more information, see:
 @cindex @sortas{cshrc init} @file{.cshrc} initialization file
 @cindex Initialization file for @TeX{} input
 
-@TeX{} needs to know where to find the @file{texinfo.tex} file that the
+@TeX{} needs to find the @file{texinfo.tex} file that the
 @samp{\input texinfo} command on the first line reads.  The
 @file{texinfo.tex} file tells @TeX{} how to handle @@-commands; it is
 included in all standard GNU distributions.  The latest version
 released for general use is available
 from the usual GNU servers and mirrors:
 
-@smalldisplay
+@display
 @uref{http://ftp.gnu.org/gnu/texinfo/texinfo.tex}
 @uref{http://ftpmirror.gnu.org/texinfo/texinfo.tex}
-@end smalldisplay
+@end display
 
 The latest development version is available from the Texinfo source
 repository:
-@smalldisplay
-@uref{http://svn.savannah.gnu.org/viewvc/trunk/doc/texinfo.tex?root=texinfo&view=log}
-@end smalldisplay
+
+@display
+@uref{http://git.savannah.gnu.org/cgit/texinfo.git/plain/doc/texinfo.tex}
+@end display
 
 @pindex texinfo.tex@r{, installing}
-@file{texinfo.tex} is essentially a standalone file, and compatibility
-is of utmost concern; so, if you need or want to try a newer version
+@file{texinfo.tex} is essentially a standalone file,
+so, if you need or want to try a newer version
 than came with your system, it nearly always suffices to download it
-and put it anywhere that @TeX{} will find it (first).  You can replace
+and put it anywhere that @TeX{} will find it.  You can replace
 any existing @file{texinfo.tex} with a newer version (of course saving
 the original in case of disaster).
 
@@ -15616,73 +15617,53 @@ to have the European Computer Modern fonts (e.g., @file{ecrm1000}) and
 To use the @code{@@euro} command, you'll need the @samp{feym*} fonts
 (e.g., @file{feymr10}).  @xref{@code{@@euro}}.
 
-All of the above files (and a whole lot more) should be installed by
-default in a reasonable @TeX{} installation.
+All of the above files should be installed by default in a reasonable 
+@TeX{} installation.
 
 @pindex texinfo.cnf @r{installation}
 @cindex Customizing of @TeX{} for Texinfo
 @cindex Site-wide Texinfo configuration file
 Optionally, you may create a file @file{texinfo.cnf} for site configuration.
-This file is read by @TeX{} at the beginning of a Texinfo file.
-You can put any commands you like there, according to local site-wide
-conventions.  They will be read by @TeX{} when processing any Texinfo
-document.  For example, if @file{texinfo.cnf} contains the line
+When processing a Texinfo file, @TeX{} looks for this file
+in its search path, which includes the current directory and standard 
+installation directories.
+You can use this file for local conventions.  For example, if 
+@file{texinfo.cnf} contains the line
 @samp{@@afourpaper} (@pxref{A4 Paper}), then all Texinfo documents
 will be processed with that page size in effect.  If you have nothing
 to put in @file{texinfo.cnf}, you do not need to create it.
 
 @cindex Environment variable @code{TEXINPUTS}
 @vindex TEXINPUTS
-If neither of the above locations for these system files suffice, you
-can specify the directories explicitly.  For @file{texinfo.tex}, you
-can do this by writing the complete path for the file after the
-@code{\input} command.  Another way, that works for both
-@file{texinfo.tex} and @file{texinfo.cnf} (and any other file @TeX{}
-might read), is to set the @code{TEXINPUTS} environment variable in
-your @file{.profile} or @file{.cshrc} file.
-
-Whether you use @file{.profile} or @file{.cshrc} depends on
-whether you use a Bourne shell-compatible (@code{sh}, @code{bash},
-@code{ksh}, @dots{}) or C shell-compatible (@code{csh}, @code{tcsh})
-command interpreter, respeictvely.
-
-In a @file{.profile} file, you could use the following @code{sh} command
-sequence:
+You can set the @code{TEXINPUTS} environment variable
+to allow @TeX{} to find @file{texinfo.cnf}.
+(This also works for @file{texinfo.tex} and any other file @TeX{}
+might read).  For example, if you are using a Bourne shell-compatible shell 
+(@code{sh}, @code{bash}, @code{ksh}, @dots{}), your @file{.profile} file
+could contain the lines:
 
 @example
-@group
 TEXINPUTS=.:/home/me/mylib:
 export TEXINPUTS
-@end group
 @end example
 
-@need 1000
-While in a @file{.cshrc} file, you could use the following @code{csh}
-command sequence:
+@noindent
+These settings would cause @TeX{} first to look for an @file{\input} file
+in the current directory, indicated by the @samp{.}, then in a
+hypothetical user @samp{me}'s @file{mylib} directory, and finally in
+the system directories.  (A leading, trailing, or doubled @samp{:}
+indicates searching the system directories at that point.)
 
-@example
-setenv TEXINPUTS .:/home/me/mylib:
-@end example
-
-On MS-DOS/MS-Windows, you'd do this (note the use of the @samp{;}
+On MS-DOS/MS-Windows, you'd do this like this (note the use of the @samp{;}
 character as directory separator, instead of @samp{:}):
 
 @example
-@group
 set TEXINPUTS=.;d:/home/me/mylib;c:
-@end group
 @end example
 
 @noindent
 It is customary for DOS/Windows users to put such commands in the
 @file{autoexec.bat} file, or in the Windows registry.
-
-@noindent
-These settings would cause @TeX{} to look for @file{\input} file first
-in the current directory, indicated by the @samp{.}, then in a
-hypothetical user @samp{me}'s @file{mylib} directory, and finally in
-the system directories.  (A leading, trailing, or doubled @samp{:}
-indicates searching the system directories at that point.)
 
 
 @node Overfull hboxes
