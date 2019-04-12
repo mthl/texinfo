@@ -12,7 +12,7 @@ See the manual for detailed information.
 * Language:
   . support of index subentries and sub-subentries with @subentry
   . new commands @seeentry and @seealso in index entries [not fully
-    implemented/documented yet?]
+    implemented in texi2any yet?]
   . no need to wrap Top node in @ifnottex - omitted automatically when
     processed with TeX
   . UTF-8 is the default input encoding
@@ -23,8 +23,8 @@ See the manual for detailed information.
     In HTML TOP_NODE_UP should be suitable for inclusion in HTML 
     element attributes, so for instance should not contain elements.
   . support of noderename.cnf files has been removed
-  . INPUT_PERL_ENCODING and INPUT_ENCODING_NAME removed as customization
-    variables.
+  . INPUT_PERL_ENCODING, INPUT_ENCODING_NAME, NODE_FILE_EXTENSION,
+    NODE_FILENAMES, SHORTEXTN removed as customization variables.
   . error messages translated when the XS parser module is in use
 
 * texi2dvi

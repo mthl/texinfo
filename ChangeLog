@@ -4,7 +4,8 @@
 
 	* tp/texi2any.pl (HTML Customization Variables):
 	Remove NODE_FILE_EXTENSION, SHORTEXTN.
-	(Other Customization Variables): Remove NODE_FILENAMES.
+	(Other Customization Variables): Remove NODE_FILENAMES.  Remove 
+	mention of INPUT_ENCODING_NAME
 	* NEWS: Mention removal.
 
 2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
