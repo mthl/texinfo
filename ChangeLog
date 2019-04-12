@@ -1,4 +1,11 @@
 2019-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
+	
+	* js/info.js: Don't run init code or set event handlers if the 
+	location is "about:blank".  QWebEngine seems to add scripts even 
+	into this page, which has bad results, e.g. with event handlers 
+	running twice.
+
+2019-04-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* js/info.js: Remove section at end dealing with QWebChannel, 
 	and place in a new file (js/docbrowser/qtinfo.js).

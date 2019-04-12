@@ -1866,8 +1866,6 @@ var user_config = window["INFO_CONFIG"];
     var span = document.createElement ("span");
     span.innerHTML = "?";
     span.classList.add ("icon");
-    span.setAttribute ("style", "color: darkgrey;font-size: x-large;");
-    // todo: need .icon:hover and .icon:focus as well - see info.css
     span.addEventListener ("click", function () {
       store.dispatch (actions.show_help ());
     }, false);
@@ -2008,8 +2006,13 @@ var user_config = window["INFO_CONFIG"];
       };
   }
 
+var inside_top_page;
+
 /* Wrap init code */
 function init() {
+  if (location == "about:blank")
+    return;
+
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
   if (features && !(features.es5
@@ -2038,7 +2041,7 @@ function init() {
   config = Object.assign (config, user_config);
 
   var inside_iframe = top !== window;
-  var inside_top_page = window.location.pathname === config.TOP_NAME
+  inside_top_page = window.location.pathname === config.TOP_NAME
       || window.location.pathname.endsWith ("/" + config.TOP_NAME)
       || window.location.pathname.endsWith ("/");
 
