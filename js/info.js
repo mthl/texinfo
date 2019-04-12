@@ -2098,3 +2098,6 @@ init ();
 
 // } (window["Modernizr"], window["INFO_CONFIG"]));
 /* See comment at top of file */
+
+/* Shared with qtinfo.js. */
+var wc_controlled;
