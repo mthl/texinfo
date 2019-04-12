@@ -602,11 +602,7 @@ sub _top_node_filename($)
     }
     if (defined($top_node_filename)) {
       my $top_node_extension;
-      if ($self->get_conf('NODE_FILENAMES')) {
-        $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
-      } else {
-        $top_node_extension = $self->get_conf('EXTENSION');
-      }
+      $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
       $top_node_filename .= '.'.$top_node_extension 
         if (defined($top_node_extension) and $top_node_extension ne '');
     }
@@ -664,8 +660,7 @@ sub _set_pages_files($$)
   
     my $top_node_filename = $self->_top_node_filename();
     # first determine the top node file name.
-    if ($self->get_conf('NODE_FILENAMES') and $node_top 
-        and defined($top_node_filename)) {
+    if ($node_top and defined($top_node_filename)) {
       my ($node_top_element) = $self->_get_element($node_top);
       die "BUG: No element for top node" if (!defined($node_top));
       $self->_set_element_file($node_top_element, $top_node_filename);
@@ -680,57 +675,48 @@ sub _set_pages_files($$)
       }
       if (!defined($element->{'extra'}->{'first_in_page'}->{'filename'})) {
         my $file_element = $element->{'extra'}->{'first_in_page'};
-        if ($self->get_conf('NODE_FILENAMES')) {
-          foreach my $root_command (@{$file_element->{'contents'}}) {
-            if ($root_command->{'cmdname'} 
-                and $root_command->{'cmdname'} eq 'node') {
-              my $node_filename;
-              # double node are not normalized, they are handled here
-              if (!defined($root_command->{'extra'}->{'normalized'})
-                  or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
-                $node_filename = 'unknown_node';
-              } else {
-                $node_filename = $self->_node_filename($root_command->{'extra'});
-              }
-              $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-                if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-                 and $self->get_conf('NODE_FILE_EXTENSION') ne '');
-              $self->_set_element_file($file_element, $node_filename);
-              last;
-            }
-          }
-          if (!defined($file_element->{'filename'})) {
-            # use section to do the file name if there is no node
-            my $command = $self->element_command($file_element);
-            if ($command) {
-              if ($command->{'cmdname'} eq 'top' and !$node_top
-                  and defined($top_node_filename)) {
-                $self->_set_element_file($file_element, $top_node_filename);
-              } else {
-                my ($normalized_name, $filename) 
-                   = $self->_sectioning_command_normalized_filename($command);
-                $self->_set_element_file($file_element, $filename)
-              }
+        foreach my $root_command (@{$file_element->{'contents'}}) {
+          if ($root_command->{'cmdname'} 
+              and $root_command->{'cmdname'} eq 'node') {
+            my $node_filename;
+            # double node are not normalized, they are handled here
+            if (!defined($root_command->{'extra'}->{'normalized'})
+                or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
+              $node_filename = 'unknown_node';
             } else {
-              # when everything else has failed
-              if ($file_nr == 0 and !$node_top 
-                  and defined($top_node_filename)) {
-                $self->_set_element_file($file_element, $top_node_filename);
-              } else {
-                my $filename = $self->{'document_name'} . "_$file_nr";
-                $filename .= $extension;
-                $self->_set_element_file($element, $filename);
-              }
-              $file_nr++;
+              $node_filename = $self->_node_filename($root_command->{'extra'});
             }
+            $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
+              if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
+               and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+            $self->_set_element_file($file_element, $node_filename);
+            last;
           }
-        } else {
-          my $filename = $self->{'document_name'} . "_$file_nr";
-          $filename .= '.'.$self->get_conf('EXTENSION') 
-            if (defined($self->get_conf('EXTENSION')) 
-                and $self->get_conf('EXTENSION') ne '');
-          $self->_set_element_file($file_element, $filename);
-          $file_nr++;
+        }
+        if (!defined($file_element->{'filename'})) {
+          # use section to do the file name if there is no node
+          my $command = $self->element_command($file_element);
+          if ($command) {
+            if ($command->{'cmdname'} eq 'top' and !$node_top
+                and defined($top_node_filename)) {
+              $self->_set_element_file($file_element, $top_node_filename);
+            } else {
+              my ($normalized_name, $filename) 
+                 = $self->_sectioning_command_normalized_filename($command);
+              $self->_set_element_file($file_element, $filename)
+            }
+          } else {
+            # when everything else has failed
+            if ($file_nr == 0 and !$node_top 
+                and defined($top_node_filename)) {
+              $self->_set_element_file($file_element, $top_node_filename);
+            } else {
+              my $filename = $self->{'document_name'} . "_$file_nr";
+              $filename .= $extension;
+              $self->_set_element_file($element, $filename);
+            }
+            $file_nr++;
+          }
         }
       }
       $element->{'filename'} 
@@ -767,11 +753,7 @@ sub output($$)
   if ($self->get_conf('SPLIT')) {
     $self->set_conf('NODE_FILES', 1);
   }
-  if ($self->get_conf('NODE_FILES') 
-      or ($self->get_conf('SPLIT') and $self->get_conf('SPLIT') eq 'node')) {
-    $self->set_conf('NODE_FILENAMES', 1);
-  }
-  if ($self->get_conf('NODE_FILENAMES') and defined($self->get_conf('EXTENSION'))) {
+  if (defined($self->get_conf('EXTENSION'))) {
      $self->set_conf('NODE_FILE_EXTENSION', $self->get_conf('EXTENSION'));
   }
 
