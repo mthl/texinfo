@@ -940,8 +940,6 @@ my %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
   'OUTPUT_ENCODING_NAME'  => 'utf-8',
-  #'encoding_name'        => undef,
-  #'perl_encoding'        => undef,
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'USE_NODES'            => 1,
@@ -957,7 +955,6 @@ my %defaults = (
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
   'TOP_NODE_FILE'        => 'index',
-  'NODE_FILE_EXTENSION'  => 'html',
   'EXTENSION'            => 'html',
   'TOP_NODE_FILE_TARGET' => 'index',
   'TRANSLITERATE_FILE_NAMES' => 1,
@@ -5218,9 +5215,7 @@ sub _set_root_commands_targets_node_files($$)
   if ($self->{'labels'}) {
     foreach my $root_command (values(%{$self->{'labels'}})) {
       my ($filename, $target) = $self->_node_id_file($root_command->{'extra'});
-      $filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-        if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-            and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+      $filename .= '.html';
       if (defined($Texinfo::Config::node_file_name)) {
         $filename = &$Texinfo::Config::node_file_name($self, $root_command,
                                                      $filename);
@@ -5360,9 +5355,7 @@ sub _set_pages_files($$)
             if (!defined($root_command->{'extra'}->{'normalized'})
                 or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
               $node_filename = 'unknown_node';
-              $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-                if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-                  and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+              $node_filename .= '.html';
             } else {
               if (!defined($self->{'targets'}->{$root_command})
                   or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
@@ -5811,10 +5804,7 @@ sub _external_node_href($$$$)
 
   my $default_target_split = $self->get_conf('EXTERNAL_CROSSREF_SPLIT');
 
-  my $extension = '';
-  $extension = "." . $self->get_conf('NODE_FILE_EXTENSION')
-          if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+  my $extension = '.html';
 
   my $target_split;
   my $file;
@@ -7093,11 +7083,8 @@ sub output($$)
           and $node->{'extra'}->{'normalized'} eq 'Top' 
           and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
         my $extension = '';
-        $extension = "." . $self->get_conf('NODE_FILE_EXTENSION')
-            if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-              and $self->get_conf('NODE_FILE_EXTENSION') ne '');
         $node_filename = $self->get_conf('TOP_NODE_FILE_TARGET')
-                     .$extension;
+                     .'.html';
       } else {
         $node_filename = $target->{'node_filename'};
       }

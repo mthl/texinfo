@@ -1,5 +1,19 @@
 2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove NODE_FILE_EXTENSION.
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	(_set_root_commands_targets_node_files, _set_pages_files)
+	(_external_node_href, output),
+	* tp/Texinfo/Convert/Converter.pm (_set_pages_files, output)
+	(_top_node_filename)
+
+	Do not set or refer to NODE_FILE_EXTENSION.  The extension for 
+	html files will always be '.html'.  Remove some commented-out 
+	code.
+
+2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove SHORTEXTN.
 
 	* tp/Texinfo/Convert/HTML.pm (converter_initialize):

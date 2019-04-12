@@ -601,10 +601,7 @@ sub _top_node_filename($)
       $top_node_filename = $self->{'document_name'};
     }
     if (defined($top_node_filename)) {
-      my $top_node_extension;
-      $top_node_extension = $self->get_conf('NODE_FILE_EXTENSION');
-      $top_node_filename .= '.'.$top_node_extension 
-        if (defined($top_node_extension) and $top_node_extension ne '');
+      $top_node_filename .= '.html';
     }
   }
   return $top_node_filename;
@@ -686,9 +683,7 @@ sub _set_pages_files($$)
             } else {
               $node_filename = $self->_node_filename($root_command->{'extra'});
             }
-            $node_filename .= '.'.$self->get_conf('NODE_FILE_EXTENSION') 
-              if (defined($self->get_conf('NODE_FILE_EXTENSION')) 
-               and $self->get_conf('NODE_FILE_EXTENSION') ne '');
+            $node_filename .= '.html';
             $self->_set_element_file($file_element, $node_filename);
             last;
           }
@@ -752,9 +747,6 @@ sub output($$)
   }
   if ($self->get_conf('SPLIT')) {
     $self->set_conf('NODE_FILES', 1);
-  }
-  if (defined($self->get_conf('EXTENSION'))) {
-     $self->set_conf('NODE_FILE_EXTENSION', $self->get_conf('EXTENSION'));
   }
 
   $self->_set_outfile();
