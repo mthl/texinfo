@@ -116,7 +116,7 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
 
   QWebEngineScript s1;
   s1.setSourceCode(script + script2);
-  // s1.setRunsOnSubFrames(true);
+  s1.setRunsOnSubFrames(true);
   s1.setInjectionPoint(QWebEngineScript::DocumentCreation);
   s1.setWorldId(QWebEngineScript::MainWorld);
   profile->scripts()->insert(s1);
@@ -152,6 +152,7 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
 
     QWebEngineScript s;
     s.setSourceCode(insert_css);
+    s.setRunsOnSubFrames(true);
     s.setInjectionPoint(QWebEngineScript::DocumentReady);
     s.setWorldId(QWebEngineScript::MainWorld);
     profile->scripts()->insert(s);
