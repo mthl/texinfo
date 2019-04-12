@@ -14,26 +14,6 @@ Core::Core(Ui::MainWindow *ui, QObject *parent)
 {
 }
 
-void
-Core::external_manual (const QString &url)
-{
-    qDebug() << "sent url" << url;
-
-    // Repace the file being viewed
-    char *manual, *node;
-    parse_external_url (qPrintable(url), &manual, &node);
-
-    if (manual)
-      {
-        load_manual (manual);
-        // and set node to node
-        qDebug () << "got node" << node;
-        //emit setNode (node);
-     }
-
-    free (manual); free (node);
-}
-
 bool
 Core::load_manual (const char *manual)
 {
@@ -56,6 +36,28 @@ Core::load_manual (const char *manual)
     return false;
 }
 
+
+/* Hide the text prompt.
+   Allegedly you can put these two as children of a widget, and then
+   just hide a single widget.  I couldn't get it to look right in
+   qtcreator, though. */
+void
+Core::hide_prompt()
+{
+    ui->promptLabel->setVisible(false);
+    ui->promptCombo->setVisible(false);
+}
+
+void
+Core::activate_input (const QString &arg)
+{
+    emit set_current_url (index_data[arg].toString());
+    hide_prompt();
+    ui->webEngineView->setFocus();
+}
+
+/********************* Public Slots **********************/
+
 /* Show the text prompt. */
 void
 Core::show_text_input (const QString &input, const QJsonObject &data)
@@ -77,21 +79,23 @@ Core::show_text_input (const QString &input, const QJsonObject &data)
   ui->promptCombo->setEditText("");
 }
 
-/* Hide the text prompt.
-   Allegedly you can put these two as children of a widget, and then
-   just hide a single widget.  I couldn't get it to look right in
-   qtcreator, though. */
-void
-Core::hide_prompt()
-{
-    ui->promptLabel->setVisible(false);
-    ui->promptCombo->setVisible(false);
-}
 
 void
-Core::activate_input (const QString &arg)
+Core::external_manual (const QString &url)
 {
-    emit set_current_url (index_data[arg].toString());
-    hide_prompt();
-    ui->webEngineView->setFocus();
+    qDebug() << "sent url" << url;
+
+    // Repace the file being viewed
+    char *manual, *node;
+    parse_external_url (qPrintable(url), &manual, &node);
+
+    if (manual)
+      {
+        load_manual (manual);
+        // and set node to node
+        qDebug () << "got node" << node;
+        //emit setNode (node);
+     }
+
+    free (manual); free (node);
 }

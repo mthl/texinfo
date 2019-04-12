@@ -158,14 +158,6 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
     profile->scripts()->insert(s);
     /* This needs to run after the <head> element is accessible, but before
        the DOMContentLoaded event handlers in info.js fire. */
-
-#if 0
-    QWebEngineScript s2;
-    s2.setSourceCode("if (typeof wc_init == 'function') { wc_init(); }");
-    s2.setInjectionPoint(QWebEngineScript::DocumentCreation);
-    s2.setWorldId(QWebEngineScript::MainWorld);
-    profile->scripts()->insert(s2);
-#endif
 }
 
 
