@@ -17137,10 +17137,6 @@ by default, but only relevant when the output is not split.
 @item NO_CSS
 Do not use CSS; default false.  @xref{HTML CSS}.
 
-@item NODE_FILE_EXTENSION
-Extension for node files if @code{NODE_FILENAMES} is set;
-default @samp{html}.
-
 @item PRE_ABOUT
 Used when an About element is output.  If set to a text string,
 this text will appear at the beginning of the About element.  If set
@@ -17160,9 +17156,6 @@ information in the page footers; default false.
 If set,  when output is split, use the argument of the chapter 
 structuring command (e.g., @code{@@chapter} or @code{@@section})
 in the @code{<title>} instead of the argument to @code{@@node}.
-
-@item SHORTEXTN
-If set, use @samp{.htm} as extension; default false.
 
 @item SHOW_TITLE
 If set, output the title at the beginning of the document;
@@ -17184,8 +17177,7 @@ and is, in general, only taken into account when output is split, and
 for HTML@.
 
 @item TOP_NODE_FILE
-File name used for the Top node, if @code{NODE_FILENAMES}
-is set; default is @code{index}.
+File name used for the Top node; default is @code{index}.
 
 @item TOP_NODE_FILE_TARGET
 File name used for the Top node in cross-references;
@@ -17408,11 +17400,6 @@ If set, do not use @code{@@setfilename} to set the document name;
 instead, base the output document name only on the input file name.
 The default is false.
 
-@item NODE_FILENAMES
-If set, node names are used to construct file names.  By default, it
-is set if the output is split by node, or if @code{NODE_FILES} is set
-and the output is split in any way.
-
 @item NODE_NAME_IN_INDEX
 If set, use node names in index entries, otherwise prefer section names;
 default true.
@@ -17435,12 +17422,11 @@ output uses a Unicode left quote.
 Normalized encoding name used for output files.  Should be a usable
 charset name in HTML, typically one of the preferred IANA encoding
 names.  By default, if an input encoding is set (typically through
-@code{@@documentencoding} or @code{INPUT_ENCODING_NAME}), this
-information is used to set the output encoding name.  If no input
-encoding is specified, the default output encoding name may be set by
-the output format.  In particular, the XML-based formats use
-@code{utf-8} for @code{OUTPUT_ENCODING_NAME} if the encoding is not
-otherwise specified.  @xref{@code{@@documentencoding}}.
+@code{@@documentencoding}), this information is used to set the output 
+encoding name.  If no input encoding is specified, the default output 
+encoding name may be set by the output format.  In particular, the 
+XML-based formats use @code{utf-8} for @code{OUTPUT_ENCODING_NAME} if 
+the encoding is not otherwise specified.  @xref{@code{@@documentencoding}}.
 
 @item OVERVIEW_LINK_TO_TOC
 If set, the cross-references in the Overview link to the corresponding
@@ -17461,8 +17447,7 @@ The output file prefix, which is prepended to some output file names.
 By default it is set by @code{@@setfilename} or from the input file
 (@pxref{@code{@@setfilename}}).  How this value is used depends on the
 value of other customization variables or command line options, such
-as whether the output is split and @code{NODE_FILENAMES}.  The default
-is unset.
+as whether the output is split.  The default is unset.
 
 @item PROGRAM
 Name of the program used.  By default, it is set to the name of the
