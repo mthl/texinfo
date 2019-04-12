@@ -32,6 +32,8 @@ private slots:
     void on_loadButton_clicked();
     void on_promptCombo_activated(const QString &arg1);
 
+    void on_manualEdit_returnPressed();
+
 private:
     Ui::MainWindow *ui;
 

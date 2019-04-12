@@ -239,3 +239,8 @@ MainWindow::populate_combo (const QMap<QString, QVariant> &data)
       ui->promptCombo->addItem(i.key());
     }
 }
+
+void MainWindow::on_manualEdit_returnPressed()
+{
+  on_loadButton_clicked();
+}
