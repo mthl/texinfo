@@ -90,6 +90,7 @@ function wc_init()
 /* Return true if the standard function doesn't need to be called. */
 function web_channel_override (store, action)
 {
+  var state = store.state;
   switch (action.type)
     {
     case "external-manual":
@@ -100,7 +101,15 @@ function web_channel_override (store, action)
     case "input":
       {
         if (action.input == "index")
-          window.core.show_text_input (action.input, store.state.index);
+          window.core.show_text_input (action.input, state.index);
+        else if (action.input == "menu")
+          {
+            var current_menu = state.loaded_nodes[state.current].menu;
+            if (current_menu)
+              window.core.show_text_input (action.input, current_menu);
+            else
+              store.dispatch (actions.warn ("No menu in this node"));
+          }
         return 1;
       }
     default:
