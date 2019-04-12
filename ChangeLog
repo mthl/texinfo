@@ -1,5 +1,12 @@
 2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove SHORTEXTN.
+
+	* tp/Texinfo/Convert/HTML.pm (converter_initialize):
+	Do not check SHORTEXTN customization variable.
+
+2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove NODE_FILENAMES.
 
 	* tp/Texinfo/Convert/HTML.pm (output, %defaults, _set_pages_files),

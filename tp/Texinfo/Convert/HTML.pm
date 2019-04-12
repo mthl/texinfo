@@ -4749,9 +4749,6 @@ sub converter_initialize($)
 {
   my $self = shift;
 
-  if ($self->get_conf('SHORTEXTN')) {
-    $self->set_conf('EXTENSION', 'htm');
-  }
   $foot_num = 0;
   $foot_lines = '';
   %formatted_index_entries = ();
