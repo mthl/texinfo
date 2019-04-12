@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
       QCoreApplication::quit();
 
     setup_channel ();
-    core->hide_prompt();
+    hide_prompt();
 
     auto *profile = new QWebEngineProfile(this);
     setup_profile(profile);
@@ -38,8 +38,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webEngineView->setPage(page);
 
-    ui->webEngineView->page()->load(QUrl(QString("file:") + this->datadir +
-                                    "/test/hello/index.html"));
+    load_url (QString("file:") + this->datadir + "/test/hello/index.html");
+}
+
+void
+MainWindow::load_url(const QString &string)
+{
+  ui->webEngineView->page()->load(QUrl(string));
 }
 
 /* Initialize "core" object. */
@@ -66,7 +71,7 @@ MainWindow::setup_channel()
     QObject::connect(clientWrapper, &WebSocketClientWrapper::clientConnected,
                          channel, &QWebChannel::connectTo);
 
-    this->core = new Core(ui, this);
+    this->core = new Core(this, this);
     channel->registerObject(QStringLiteral("core"), core);
 }
 
@@ -176,7 +181,7 @@ void MainWindow::quit()
 void MainWindow::focusChanged (QWidget *old, QWidget *now)
 {
     if (now == ui->webEngineView)
-       core->hide_prompt();
+       hide_prompt();
 }
 
 void MainWindow::on_quitButton_clicked()
@@ -193,5 +198,44 @@ void MainWindow::on_loadButton_clicked()
 
 void MainWindow::on_promptCombo_activated(const QString &arg1)
 {
-    core->activate_input(arg1);
+  core->activate_input(arg1);
+  hide_prompt();
+  ui->webEngineView->setFocus();
+}
+
+/* Hide the text prompt.
+   Allegedly you can put these two as children of a widget, and then
+   just hide a single widget.  I couldn't get it to look right in
+   qtcreator, though. */
+void
+MainWindow::hide_prompt()
+{
+  ui->promptLabel->setVisible(false);
+  ui->promptCombo->setVisible(false);
+}
+
+void
+MainWindow::show_prompt()
+{
+  ui->promptLabel->setVisible(true);
+  ui->promptCombo->setVisible(true);
+  ui->promptCombo->setFocus();
+}
+
+
+void
+MainWindow::clear_prompt()
+{
+  ui->promptCombo->setEditText("");
+}
+
+void
+MainWindow::populate_combo (const QMap<QString, QVariant> &data)
+{
+  QMapIterator<QString, QVariant> i(data);
+  while (i.hasNext())
+    {
+      i.next();
+      ui->promptCombo->addItem(i.key());
+    }
 }

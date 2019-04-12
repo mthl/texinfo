@@ -2,22 +2,21 @@
 #define CORE_H
 
 #include "infopath.h"
+#include "mainwindow.h"
 
 #include <QObject>
 #include <QVariantMap>
 
-namespace Ui {
 class MainWindow;
-}
+
 
 class Core : public QObject
 {
     Q_OBJECT
 public:
-    explicit Core(Ui::MainWindow *ui, QObject *parent = nullptr);
+    explicit Core(MainWindow *main_window, QObject *parent = nullptr);
 
     bool load_manual (const char *manual);
-    void hide_prompt ();
     void activate_input (const QString &arg);
 
 signals:
@@ -32,7 +31,7 @@ public slots:
     void show_text_input (const QString &input, const QJsonObject &data);
 
 private:
-    Ui::MainWindow *ui;
+    MainWindow *main_window;
     QVariantMap index_data;
     bool input_search;
 

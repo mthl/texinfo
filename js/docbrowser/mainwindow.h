@@ -7,6 +7,8 @@
 #include <QMainWindow>
 #include <QWebEngineProfile>
 
+class Core;
+
 namespace Ui {
 class MainWindow;
 }
@@ -19,6 +21,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void hide_prompt ();
+    void show_prompt ();
+    void clear_prompt ();
+    void populate_combo (const QMap<QString, QVariant> &data);
+    void load_url (const QString &string);
 
 private slots:
     void on_quitButton_clicked();

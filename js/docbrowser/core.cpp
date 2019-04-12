@@ -1,5 +1,5 @@
 #include "core.h"
-#include "ui_mainwindow.h"
+#include "mainwindow.h"
 
 #include <QMessageBox>
 #include <QtGlobal>
@@ -8,9 +8,9 @@
 #include <QJsonObject>
 #include <QMapIterator>
 
-Core::Core(Ui::MainWindow *ui, QObject *parent)
+Core::Core(MainWindow *main_window, QObject *parent)
       : QObject(parent),
-        ui(ui)
+        main_window (main_window)
 {
 }
 
@@ -19,14 +19,15 @@ Core::load_manual (const char *manual)
 {
     char *path = locate_manual (manual);
 
-    // TODO: we should send it back into the browser for the JavaScript code to 
-    // track multiple manuals at once.
+    /* TODO: we should send it back into the browser for the JavaScript code to 
+       track multiple manuals at once. */
     // emit setUrl (url);
 
     if (path)
       {
         qDebug() << "got path" << path;
-        ui->webEngineView->load(QUrl("file:" + QString(path)));
+
+        main_window->load_url(QString("file:") + path);
 
         this->index_data.clear(); // FIXME: this should be done automatically, maybe by having a separate map for each window.
 
@@ -37,17 +38,6 @@ Core::load_manual (const char *manual)
 }
 
 
-/* Hide the text prompt.
-   Allegedly you can put these two as children of a widget, and then
-   just hide a single widget.  I couldn't get it to look right in
-   qtcreator, though. */
-void
-Core::hide_prompt()
-{
-    ui->promptLabel->setVisible(false);
-    ui->promptCombo->setVisible(false);
-}
-
 /* Return has been pressed in the input box. */
 void
 Core::activate_input (const QString &arg)
@@ -56,9 +46,6 @@ Core::activate_input (const QString &arg)
     emit search (arg);
   else
     emit set_current_url (index_data[arg].toString());
-
-  hide_prompt();
-  ui->webEngineView->setFocus();
 }
 
 /********************* Public Slots **********************/
@@ -67,6 +54,8 @@ Core::activate_input (const QString &arg)
 void
 Core::show_text_input (const QString &input, const QJsonObject &data)
 {
+  bool populate_combo = false;
+
   if (input == "regexp-search")
     {
       input_search = true;
@@ -74,21 +63,18 @@ Core::show_text_input (const QString &input, const QJsonObject &data)
   else if (index_data.isEmpty())
     {
       input_search = false;
+      populate_combo = true;
+    }
+  if (populate_combo)
+    {
       index_data = data.toVariantMap();
-      QMapIterator<QString, QVariant> i(index_data);
-      while (i.hasNext())
-        {
-          i.next();
-          ui->promptCombo->addItem(i.key());
-        }
+      main_window->populate_combo(index_data);
     }
 
-  ui->promptLabel->setVisible(true);
-  ui->promptCombo->setVisible(true);
-  ui->promptCombo->setFocus();
+  main_window->show_prompt();
 
   if (!input_search)
-    ui->promptCombo->setEditText("");
+    main_window->clear_prompt();
 }
 
 
@@ -111,3 +97,4 @@ Core::external_manual (const QString &url)
 
     free (manual); free (node);
 }
+
