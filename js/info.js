@@ -1293,12 +1293,11 @@ var user_config = window["INFO_CONFIG"];
         }
     }
 
-    /*------------------------------------------
-    | Event handlers for the sidebar context.  |
-    `-----------------------------------------*/
+    /*---------------------------------.
+    | Event handlers for the sidebar   |
+    `---------------------------------*/
 
-    /* Initialize TOC_FILENAME which must be loaded in the context of an
-       iframe.  */
+    /* Initialize sidebar. */
     function
     on_load ()
     {
