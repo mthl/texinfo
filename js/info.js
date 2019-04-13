@@ -1106,6 +1106,17 @@ var user_config = window["INFO_CONFIG"];
           /* Follow up actions to the store.  */
           store.dispatch (data.action);
         }
+      else if (data.message_kind === "scroll-to")
+        {
+          /* Used for text search.  Scroll to the anchor corresponding to 
+             HASH.  */
+          var anchor = data.hash.substr(1); /* Remove the #. */
+          document.getElementById(anchor).scrollIntoView ();
+
+          /* 'location.replace (data.hash);' triggers a DOMContentLoaded event
+             which has bad results for the top page. */
+
+        }
     }
 
     /* Event handler for 'popstate' events.  */
