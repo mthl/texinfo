@@ -1635,12 +1635,10 @@ var user_config = window["INFO_CONFIG"];
 
   /** Modify LINKS to handle the iframe based navigation properly.  Relative
       links will be opened inside the corresponding iframe and absolute links
-      will be opened in a new tab.  If ID is true then define an "id"
-      attribute with a linkid value for relative links.
+      will be opened in a new tab.
 
       @typedef {HTMLAnchorElement|HTMLAreaElement} Links
       @arg {Links[]|HTMLCollectionOf<Links>} links
-      @arg {boolean} [id]
       @return void  */
   function
   fix_links (links, id)
@@ -1659,12 +1657,6 @@ var user_config = window["INFO_CONFIG"];
           {
             var href$ = with_sidebar_query (href);
             link.setAttribute ("href", href$);
-            if (id)
-              {
-                var linkid = (href$ === config.TOP_NAME) ?
-                    config.TOP_ID : href_hash (href$);
-                link.setAttribute ("id", linkid);
-              }
           }
       }
   }
