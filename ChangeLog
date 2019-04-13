@@ -1,3 +1,20 @@
+2019-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Defer calling fix_links.
+
+	(init_top_page) <on_load>: Do not call fix_links.
+	(init_iframe) <on_message>: Accept message type "fix-links" to
+	call fix_links.
+	(resolve_page): Pass a "fix-links" message.
+	(actions) <cache_index_links>: Save the entire href attribute, 
+	not just the fragment.
+	(Text_input) <Enter pressed>: Call with_sidebar_query before
+	set_current_url action, as the hrefs in the saved index entries 
+	are what was in the file originally.
+
+	This greatly speeds up opening a manual with a large index (for 
+	example, the Concept Index in Texinfo's manual).
+
 2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove wc_controlled conditional.

@@ -152,7 +152,7 @@ var user_config = window["INFO_CONFIG"];
       for (var i = 0; i < links.length; i += 1)
         {
           var link = links[i];
-          dict[link.textContent] = href_hash (link.getAttribute ("href"));
+          dict[link.textContent] = link.getAttribute ("href");
         }
       return { type: "cache-index-links", links: dict };
     },
@@ -561,7 +561,8 @@ var user_config = window["INFO_CONFIG"];
           {
             var linkid = this.data[this.input.value];
             if (linkid)
-              store.dispatch (actions.set_current_url (linkid));
+              store.dispatch (actions.set_current_url
+                         (href_hash(with_sidebar_query (linkid))));
           }
         event.stopPropagation ();
       }).bind (this));
@@ -932,6 +933,11 @@ var user_config = window["INFO_CONFIG"];
             }
           if (visible)
             {
+              /* Delay fixing the links until the page is actually
+                 due to be displayed. */
+              msg = { message_kind: "fix-links" };
+              post_message (pageid, msg);
+
               div.removeAttribute ("hidden");
               msg = { message_kind: "scroll-to", hash: link.hash };
               post_message (pageid, msg);
@@ -1355,7 +1361,6 @@ var user_config = window["INFO_CONFIG"];
     function
     on_load ()
     {
-      fix_links (document.links);
       var links = {};
       var linkid = basename (location.pathname, /[.]x?html$/);
       links[linkid] = navigation_links (document);
@@ -1386,6 +1391,14 @@ var user_config = window["INFO_CONFIG"];
         {
           var found = search (document.body, data.regexp);
           store.dispatch ({ type: "search-result", found: found });
+        }
+      else if (data.message_kind === "fix-links")
+        {
+          if (!window.links_fixed)
+            {
+              window.links_fixed = 1;
+              fix_links (document.links);
+            }
         }
       else if (data.message_kind === "scroll-to")
         {
@@ -2048,7 +2061,7 @@ function init() {
   else if (inside_iframe)
     {
       store = new Remote_store ();
-      var iframe = init_iframe (undefined);
+      var iframe = init_iframe ();
       window.addEventListener ("DOMContentLoaded", iframe.on_load, false);
       window.addEventListener ("message", iframe.on_message, false);
     }
