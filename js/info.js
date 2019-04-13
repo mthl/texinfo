@@ -811,6 +811,9 @@ var user_config = window["INFO_CONFIG"];
               post_message (old.pageid, msg);
             }
           var div = resolve_page (state.current, true);
+          /* Remove any anchor. */
+          var link = linkid_split (state.current);
+          state.current = link.pageid;
           update_history (state.current, state.history);
           this.prev_id = state.current;
           this.prev_div = div;

@@ -73,7 +73,6 @@ function wc_init()
                in 'linkid' format doesn't change it. */
 
             var linkid = with_sidebar_query (anchor)
-            console.log("LINKID "+linkid);
             store.dispatch (actions.set_current_url (href_hash (linkid)));
           });
 
