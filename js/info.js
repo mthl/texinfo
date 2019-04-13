@@ -728,6 +728,17 @@ var user_config = window["INFO_CONFIG"];
 
       /* Remove table of contents header.  */
       document.querySelector (".contents-heading").remove ();
+
+      /* Also remove any short table of contents.  Links therein would
+         go to the table of contents, which we have just removed. */
+      function maybe_remove (query)
+        {
+          var element = document.querySelector (query);
+          if (element)
+            element.remove ();
+        }
+      maybe_remove (".shortcontents-heading");
+      maybe_remove (".shortcontents");
     }
 
     /* Render 'sidebar' according to STATE which is a new state. */
