@@ -19,7 +19,7 @@
 
 	Defer calling fix_links.
 
-	(init_top_page) <on_load>: Do not call fix_links.
+	(init_iframe) <on_load>: Do not call fix_links.
 	(init_iframe) <on_message>: Accept message type "fix-links" to
 	call fix_links.
 	(resolve_page): Pass a "fix-links" message.
