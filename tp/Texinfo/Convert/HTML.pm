@@ -956,7 +956,7 @@ my %defaults = (
   'USE_ISO'              => 1,
   'TOP_NODE_FILE'        => 'index',
   'EXTENSION'            => 'html',
-  'TOP_NODE_FILE_TARGET' => 'index',
+  'TOP_NODE_FILE_TARGET' => 'index.html',
   'TRANSLITERATE_FILE_NAMES' => 1,
   'USE_LINKS'            => 1,
   'USE_NUMERIC_ENTITY'   => 1,
@@ -5203,6 +5203,8 @@ sub _new_sectioning_command_target($$)
 #  * the target, id and normalized filename of 'labels', ie everything that 
 #    may be the target of a ref, like @node, @float, @anchor...
 # conversion to HTML is done on-demand, upon call to command_text.
+# Note that 'node_filename', which is set here for Top too, is not
+# used later for Top, see the NOTE below.
 sub _set_root_commands_targets_node_files($$)
 {
   my $self = shift;
@@ -5212,10 +5214,14 @@ sub _set_root_commands_targets_node_files($$)
   $no_unidecode = 1 if (defined($self->get_conf('USE_UNIDECODE')) 
                         and !$self->get_conf('USE_UNIDECODE'));
 
+  my $extension = '';
+  $extension = '.'.$self->get_conf('EXTENSION')
+            if (defined($self->get_conf('EXTENSION'))
+                and $self->get_conf('EXTENSION') ne '');
   if ($self->{'labels'}) {
     foreach my $root_command (values(%{$self->{'labels'}})) {
       my ($filename, $target) = $self->_node_id_file($root_command->{'extra'});
-      $filename .= '.html';
+      $filename .= $extension;
       if (defined($Texinfo::Config::node_file_name)) {
         $filename = &$Texinfo::Config::node_file_name($self, $root_command,
                                                      $filename);
@@ -5355,7 +5361,7 @@ sub _set_pages_files($$)
             if (!defined($root_command->{'extra'}->{'normalized'})
                 or !defined($self->{'labels'}->{$root_command->{'extra'}->{'normalized'}})) {
               $node_filename = 'unknown_node';
-              $node_filename .= '.html';
+              $node_filename .= $extension;
             } else {
               if (!defined($self->{'targets'}->{$root_command})
                   or !defined($self->{'targets'}->{$root_command}->{'node_filename'})) {
@@ -5804,7 +5810,7 @@ sub _external_node_href($$$$)
 
   my $default_target_split = $self->get_conf('EXTERNAL_CROSSREF_SPLIT');
 
-  my $extension = '.html';
+  my $external_file_extension = '.html';
 
   my $target_split;
   my $file;
@@ -5868,7 +5874,7 @@ sub _external_node_href($$$$)
         } else {
           $file = $manual_base;
         }
-        $file .= $extension;
+        $file .= $external_file_extension;
       }
     }
   } else {
@@ -5879,8 +5885,7 @@ sub _external_node_href($$$$)
   if ($target eq '') {
     if ($target_split) {
       if (defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
-        return $file . $self->get_conf('TOP_NODE_FILE_TARGET') 
-           . $extension;# . '#Top';
+        return $file . $self->get_conf('TOP_NODE_FILE_TARGET');
       } else {
         return $file;# . '#Top';
       }
@@ -5892,13 +5897,13 @@ sub _external_node_href($$$$)
   if (! $target_split) {
     return $file . '#' . $xml_target;
   } else {
-    my $file_basename;
+    my $file_name;
     if ($target eq 'Top' and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
-      $file_basename = $self->get_conf('TOP_NODE_FILE_TARGET');
+      $file_name = $self->get_conf('TOP_NODE_FILE_TARGET');
     } else {
-      $file_basename = $target_filebase;
+      $file_name = $target_filebase . $external_file_extension;
     }
-    return $file . $file_basename . $extension . '#' . $xml_target;
+    return $file . $file_name . '#' . $xml_target;
   }
 }
 
@@ -7065,6 +7070,10 @@ sub output($$)
   my $finish_status = $self->run_stage_handlers($root, 'finish');
   return undef unless($finish_status);
 
+  my $extension = '';
+  $extension = '.'.$self->get_conf('EXTENSION')
+            if (defined($self->get_conf('EXTENSION'))
+                and $self->get_conf('EXTENSION') ne '');
   # do node redirection pages
   $self->{'current_filename'} = undef;
   if ($self->get_conf('NODE_FILES') 
@@ -7082,9 +7091,7 @@ sub output($$)
       if ($node->{'extra'} and $node->{'extra'}->{'normalized'}
           and $node->{'extra'}->{'normalized'} eq 'Top' 
           and defined($self->get_conf('TOP_NODE_FILE_TARGET'))) {
-        my $extension = '';
-        $node_filename = $self->get_conf('TOP_NODE_FILE_TARGET')
-                     .'.html';
+        $node_filename = $self->get_conf('TOP_NODE_FILE_TARGET');
       } else {
         $node_filename = $target->{'node_filename'};
       }

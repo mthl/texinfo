@@ -25,6 +25,7 @@ See the manual for detailed information.
   . support of noderename.cnf files has been removed
   . INPUT_PERL_ENCODING, INPUT_ENCODING_NAME, NODE_FILE_EXTENSION,
     NODE_FILENAMES, SHORTEXTN removed as customization variables.
+  . TOP_NODE_FILE_TARGET now contains the extension.
   . error messages translated when the XS parser module is in use
 
 * texi2dvi

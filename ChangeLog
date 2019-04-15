@@ -1,3 +1,20 @@
+2019-04-03  Patrice Dumas  <pertusus@free.fr>
+
+	Use EXTENSION instead of hardcoding html and add extension to TOP_NODE_FILE_TARGET
+
+	* tp/Texinfo/Convert/Converter.pm (_top_node_filename),
+	tp/Texinfo/Convert/HTML.pm (_set_root_commands_targets_node_files):
+	use EXTENSION instead of .html.
+	* tp/Texinfo/Convert/HTML.pm (%defaults, _external_node_href),
+	doc/texinfo.texi (TOP_NODE_FILE_TARGET): default is now index.html.
+	* tp/Texinfo/Convert/HTML.pm (_external_node_href): use 
+	$external_file_extension instead of $extension to make clear that
+	it is not the same as EXTENSION.
+	* tp/t/init/t2h_singular.init (t2h_node_file_name): add that 
+	function to replace .htm with .html for node files.
+	* tp/tests/tex_html/list-of-tests: update to match SHORTEXTN 
+	removal.
+
 2019-04-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove some customization variables.
