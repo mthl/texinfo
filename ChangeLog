@@ -1,4 +1,13 @@
-2019-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+2019-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix up pointer to Top node.
+
+	* js/info.js (updater) <"navigate">
+	Check if linkid is Top and if it is, change it to "index".
+	This makes the "u" key work again if we are going up to the Top 
+	node, since we do not call fix_links in on_load any more.
+
+2019-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove a parameter of the Store object.
 

@@ -300,6 +300,12 @@ var user_config = window["INFO_CONFIG"];
             return state;
           else
             {
+              if (linkid === "Top")
+                {
+                  /* This if the link is coming from a file that has not
+                     had fix_links called on it. */
+                  linkid = config.TOP_ID;
+                }
               res.current = linkid;
               res.history = action.history;
               res.text_input = null;
