@@ -1,5 +1,12 @@
 2019-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove a parameter of the Store object.
+
+	* js/info.js (Store): Remove 'reducer' argument: call updater 
+	unconditionally.
+
+2019-04-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix direction after index search.
 
 	* js/info.js (Pages.prototype.render):

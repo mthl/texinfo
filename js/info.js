@@ -72,16 +72,15 @@ var user_config = window["INFO_CONFIG"];
       @arg {function (Object, Action): Object} reducer
       @arg {Object} state  */
   function
-  Store (reducer, state)
+  Store (state)
   {
     this.listeners = [];
-    this.reducer = reducer;
     this.state = state;
   }
 
   /** @arg {Action} action */
   Store.prototype.dispatch = function dispatch (action) {
-    var new_state = this.reducer (this.state, action);
+    var new_state = updater (this.state, action);
     if (new_state !== this.state)
       {
         this.state = new_state;
@@ -195,7 +194,7 @@ var user_config = window["INFO_CONFIG"];
   };
 
   /** Update STATE based on the type of ACTION.  This update is purely
-      fonctional since STATE is not modified in place and a new state object
+      functional since STATE is not modified in place and a new state object
       is returned instead.
       @arg {Object} state
       @arg {Action} action
@@ -399,7 +398,7 @@ var user_config = window["INFO_CONFIG"];
           return res;
         }
       default:
-        console.error ("no reducer for action type:", action.type);
+        console.error ("unhandled action type:", action.type);
         return state;
       }
   }
@@ -2049,7 +2048,7 @@ function init() {
         text_input: null
       };
 
-      store = new Store (updater, initial_state);
+      store = new Store (initial_state);
       var top_page = init_top_page ();
       var sidebar = init_sidebar ();
       window.addEventListener ("DOMContentLoaded", function () {
