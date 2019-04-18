@@ -35,7 +35,6 @@ public slots:
 private:
     MainWindow *main_window;
     QVariantMap index_data;
-    bool input_search;
 
     void clear_prompt ();
 };

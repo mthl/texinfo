@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>754</width>
-    <height>407</height>
+    <height>312</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,7 +39,7 @@
          </sizepolicy>
         </property>
         <property name="editable">
-         <bool>false</bool>
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -94,7 +94,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionQuit">
    <property name="text">
     <string>quit</string>

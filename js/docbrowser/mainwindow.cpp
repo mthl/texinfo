@@ -222,6 +222,7 @@ MainWindow::show_prompt()
   ui->promptLabel->setVisible(true);
   ui->promptCombo->setVisible(true);
   ui->promptCombo->setFocus();
+  ui->promptCombo->lineEdit()->selectAll();
 }
 
 

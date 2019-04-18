@@ -42,7 +42,10 @@ Core::load_manual (const char *manual)
 void
 Core::activate_input (const QString &arg)
 {
-  emit set_current_url (index_data[arg].toString());
+  if (index_data.contains(arg))
+    emit set_current_url (index_data[arg].toString());
+  else
+    ; /* error message? */
 }
 
 void
@@ -57,19 +60,10 @@ Core::do_search (const QString &arg)
 void
 Core::show_text_input (const QString &input, const QJsonObject &data)
 {
-  if (input == "regexp-search")
+  if (index_data.isEmpty())
     {
-      input_search = 1;
-      clear_prompt();
-    }
-  else
-    {
-      input_search = 0;
-      if (index_data.isEmpty())
-        {
-          index_data = data.toVariantMap();
-          main_window->populate_combo(index_data);
-        }
+      index_data = data.toVariantMap();
+      main_window->populate_combo(index_data);
     }
   main_window->show_prompt();
 }
