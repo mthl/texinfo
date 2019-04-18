@@ -35,6 +35,7 @@ private:
     QVariantMap index_data;
     bool input_search;
 
+    void clear_prompt ();
 };
 
 #endif // CORE_H

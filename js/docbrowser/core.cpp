@@ -25,11 +25,11 @@ Core::load_manual (const char *manual)
 
     if (path)
       {
-        qDebug() << "got path" << path;
-
         main_window->load_url(QString("file:") + path);
 
-        this->index_data.clear(); // FIXME: this should be done automatically, maybe by having a separate map for each window.
+        /* Maybe this should be done automatically by having a separate 
+           map for each manual. */
+        this->index_data.clear();
 
         free (path);
         return true;
@@ -54,27 +54,21 @@ Core::activate_input (const QString &arg)
 void
 Core::show_text_input (const QString &input, const QJsonObject &data)
 {
-  bool populate_combo = false;
-
   if (input == "regexp-search")
     {
-      input_search = true;
+      input_search = 1;
+      clear_prompt();
     }
-  else if (index_data.isEmpty())
+  else
     {
-      input_search = false;
-      populate_combo = true;
+      input_search = 0;
+      if (index_data.isEmpty())
+        {
+          index_data = data.toVariantMap();
+          main_window->populate_combo(index_data);
+        }
     }
-  if (populate_combo)
-    {
-      index_data = data.toVariantMap();
-      main_window->populate_combo(index_data);
-    }
-
   main_window->show_prompt();
-
-  if (!input_search)
-    main_window->clear_prompt();
 }
 
 
@@ -90,11 +84,17 @@ Core::external_manual (const QString &url)
     if (manual)
       {
         load_manual (manual);
-        // and set node to node
-        qDebug () << "got node" << node;
         //emit setNode (node);
      }
 
     free (manual); free (node);
+}
+
+/****************** Private Functions **********************/
+void
+Core::clear_prompt ()
+{
+  this->index_data.clear();
+  main_window->clear_prompt();
 }
 

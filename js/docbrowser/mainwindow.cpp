@@ -180,8 +180,8 @@ void MainWindow::quit()
 
 void MainWindow::focusChanged (QWidget *old, QWidget *now)
 {
-    if (now == ui->webEngineView)
-       hide_prompt();
+    if (now != ui->promptCombo && now != ui->promptCombo->view())
+       hide_prompt ();
 }
 
 void MainWindow::on_quitButton_clicked()
@@ -220,18 +220,24 @@ MainWindow::show_prompt()
   ui->promptLabel->setVisible(true);
   ui->promptCombo->setVisible(true);
   ui->promptCombo->setFocus();
+  ui->promptCombo->setEditText("");
 }
 
 
 void
 MainWindow::clear_prompt()
 {
-  ui->promptCombo->setEditText("");
+  ui->promptCombo->clear();
 }
 
+/* Add suggestions for the combo box from DATA.
+   We should be able to do this a faster way with setModel, to choose
+   whether to use the index suggestions or allow free input for the text 
+   search. */
 void
 MainWindow::populate_combo (const QMap<QString, QVariant> &data)
 {
+  clear_prompt();
   QMapIterator<QString, QVariant> i(data);
   while (i.hasNext())
     {
