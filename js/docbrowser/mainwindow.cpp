@@ -200,11 +200,9 @@ void MainWindow::on_loadButton_clicked()
 }
 
 
-void MainWindow::on_promptCombo_activated(const QString &arg1)
+void MainWindow::on_promptCombo_activated(const QString &str)
 {
-  core->activate_input(arg1);
-  hide_prompt();
-  ui->webEngineView->setFocus();
+  core->activate_input(str);
 }
 
 /* Hide the text prompt.

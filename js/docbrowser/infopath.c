@@ -13,16 +13,11 @@ long datadir_len;
 char *
 locate_manual (const char *manual)
 {
-  fprintf (stderr, "In C now, looking for %s\n", manual);
-
   if (!datadir)
     {
       datadir = getenv ("QTINFO_DATADIR");
       if (!datadir)
-        {
-          exit (1); /* probably wrong for C++ */
-          return 0;
-        }
+        return 0;
       datadir_len = strlen (datadir);
     }
 
@@ -47,7 +42,6 @@ locate_manual (const char *manual)
     }
   closedir (d);
 
-  fprintf (stderr, "success so far\n");
   free (s);
   s = malloc (datadir_len + strlen ("/test/")
                     + strlen (manual) + strlen ("/index.html") + 1);
