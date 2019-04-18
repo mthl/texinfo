@@ -110,8 +110,10 @@ function web_channel_override (store, action)
       {
         if (action.input == "index")
           window.core.show_text_input (action.input, state.index);
-        else if (action.input == "menu")
+        else if (0 && action.input == "menu")
           {
+            /* Menu code is disabled currently - it is not especially
+               useful.  */
             var current_menu = state.loaded_nodes[state.current].menu;
             if (current_menu)
               window.core.show_text_input (action.input, current_menu);
@@ -119,7 +121,7 @@ function web_channel_override (store, action)
               store.dispatch (actions.warn ("No menu in this node"));
           }
         else if (action.input == "regexp-search")
-          window.core.show_text_input (action.input, {});
+          window.core.show_search ();
         return 1;
       }
     default:

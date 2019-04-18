@@ -42,10 +42,13 @@ Core::load_manual (const char *manual)
 void
 Core::activate_input (const QString &arg)
 {
-  if (input_search)
-    emit search (arg);
-  else
-    emit set_current_url (index_data[arg].toString());
+  emit set_current_url (index_data[arg].toString());
+}
+
+void
+Core::do_search (const QString &arg)
+{
+  emit search (arg);
 }
 
 /********************* Public Slots **********************/
@@ -71,12 +74,16 @@ Core::show_text_input (const QString &input, const QJsonObject &data)
   main_window->show_prompt();
 }
 
+void
+Core::show_search ()
+{
+  main_window->show_search();
+}
+
 
 void
 Core::external_manual (const QString &url)
 {
-    qDebug() << "sent url" << url;
-
     // Repace the file being viewed
     char *manual, *node;
     parse_external_url (qPrintable(url), &manual, &node);

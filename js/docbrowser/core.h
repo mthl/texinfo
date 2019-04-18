@@ -18,6 +18,7 @@ public:
 
     bool load_manual (const char *manual);
     void activate_input (const QString &arg);
+    void do_search (const QString &arg);
 
 signals:
     // Signals emitted from the C++ side and received on the HTML client side.
@@ -29,6 +30,7 @@ public slots:
     // Signals emitted from the HTML client side and received on the C++ side.
     void external_manual (const QString &url);
     void show_text_input (const QString &input, const QJsonObject &data);
+    void show_search ();
 
 private:
     MainWindow *main_window;

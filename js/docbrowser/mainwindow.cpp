@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     setup_channel ();
     hide_prompt();
+    hide_search();
 
     auto *profile = new QWebEngineProfile(this);
     setup_profile(profile);
@@ -182,6 +183,9 @@ void MainWindow::focusChanged (QWidget *old, QWidget *now)
 {
     if (now != ui->promptCombo && now != ui->promptCombo->view())
        hide_prompt ();
+    if (now != ui->searchEdit)
+       hide_search ();
+
 }
 
 void MainWindow::on_quitButton_clicked()
@@ -220,7 +224,6 @@ MainWindow::show_prompt()
   ui->promptLabel->setVisible(true);
   ui->promptCombo->setVisible(true);
   ui->promptCombo->setFocus();
-  ui->promptCombo->setEditText("");
 }
 
 
@@ -229,6 +232,7 @@ MainWindow::clear_prompt()
 {
   ui->promptCombo->clear();
 }
+
 
 /* Add suggestions for the combo box from DATA.
    We should be able to do this a faster way with setModel, to choose
@@ -246,7 +250,31 @@ MainWindow::populate_combo (const QMap<QString, QVariant> &data)
     }
 }
 
-void MainWindow::on_manualEdit_returnPressed()
+
+void
+MainWindow::show_search()
+{
+  ui->searchLabel->setVisible(true);
+  ui->searchEdit->setVisible(true);
+  ui->searchEdit->setFocus();
+}
+
+void
+MainWindow::hide_search()
+{
+  ui->searchLabel->setVisible(false);
+  ui->searchEdit->setVisible(false);
+}
+
+
+void
+MainWindow::on_manualEdit_returnPressed()
 {
   on_loadButton_clicked();
+}
+
+void
+MainWindow::on_searchEdit_returnPressed()
+{
+  core->do_search (ui->searchEdit->text());
 }

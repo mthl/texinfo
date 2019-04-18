@@ -25,12 +25,15 @@ public:
     void show_prompt ();
     void clear_prompt ();
     void populate_combo (const QMap<QString, QVariant> &data);
+    void show_search();
+    void hide_search();
     void load_url (const QString &string);
 
 private slots:
     void on_quitButton_clicked();
     void on_loadButton_clicked();
     void on_promptCombo_activated(const QString &arg1);
+    void on_searchEdit_returnPressed();
 
     void on_manualEdit_returnPressed();
 
