@@ -25,6 +25,7 @@ signals:
     void setUrl (const QString &text);
     void set_current_url (const QString &text);
     void search (const QString &text);
+    void echo (const QString &message);
 
 public slots:
     // Signals emitted from the HTML client side and received on the C++ side.

@@ -45,7 +45,7 @@ Core::activate_input (const QString &arg)
   if (index_data.contains(arg))
     emit set_current_url (index_data[arg].toString());
   else
-    ; /* error message? */
+    emit echo ("Index entry not found");
 }
 
 void

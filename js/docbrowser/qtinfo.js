@@ -80,6 +80,12 @@ function wc_init()
             store.dispatch (actions.search (string));
           });
 
+          channel.objects.core.echo.connect(function(msg) {
+            store.dispatch ({
+              type: "echo",
+              msg: msg
+            });
+          });
         });
     };
 
