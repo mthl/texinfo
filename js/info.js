@@ -21,8 +21,7 @@
 
 /* The commented-out function call wrapped the whole file in a scope.
    This is disabled for now so we can access functions from wc_init
-   and web_channel_override.  We want to put wc_init in the top-level scope 
-   because in the future we might have this in a separate file.  If we have 
+   and web_channel_override, which are in separate files.  If we have 
    problems with namespace clashes in the future then we could declare selected 
    functions and variables at the top level.  */
 
@@ -54,7 +53,8 @@ var user_config = window["INFO_CONFIG"];
           the iframe context.
           @type {(function (): void)} */
       on_iframe_load: null
-    }
+    },
+    show_welcome_message: true
   };
 
   /*-------------------.
@@ -1099,10 +1099,13 @@ var user_config = window["INFO_CONFIG"];
       links[config.TOP_ID] = navigation_links (document);
       store.dispatch (actions.cache_links (links));
       store.dispatch ({ type: "iframe-ready", id: config.TOP_ID });
-      store.dispatch ({
-        type: "echo",
-        msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
-      });
+      if (config.show_welcome_message)
+        {
+          store.dispatch ({
+            type: "echo",
+            msg: "Welcome to Texinfo documentation viewer 6.1, type '?' for help."
+          });
+        }
 
       /* Call user hook.  */
       if (config.hooks.on_main_load)

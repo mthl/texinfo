@@ -1,3 +1,9 @@
+2019-04-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* info/js (config): Add 'show_welcome_message' field.
+	(on_load) Check show_welcome_message to decide whether to show 
+	welcome message.
+
 2019-04-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix up pointer to Top node.
