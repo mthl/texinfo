@@ -34,8 +34,9 @@ private slots:
     void on_loadButton_clicked();
     void on_promptCombo_activated(const QString &arg1);
     void on_searchEdit_returnPressed();
-
     void on_manualEdit_returnPressed();
+
+    void promptReturnPressed();
 
 private:
     Ui::MainWindow *ui;

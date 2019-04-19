@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionQuit, &QAction::triggered, this, &MainWindow::quit);
     connect(qApp, &QApplication::focusChanged, this, &MainWindow::focusChanged);
 
+    connect(ui->promptCombo->lineEdit(), &QLineEdit::returnPressed,
+            this, &MainWindow::promptReturnPressed);
+
     this->datadir = getenv ("QTINFO_DATADIR");
     if (!this->datadir)
       QCoreApplication::quit();
@@ -214,7 +217,9 @@ void MainWindow::on_loadButton_clicked()
 
 void MainWindow::on_promptCombo_activated(const QString &str)
 {
-  core->activate_input(str);
+  ; // core->activate_input(str);
+  // Only do it for return press, otherwise the up and down
+  // keys cause the index entry to be activated.
 }
 
 /* Hide the text prompt.
@@ -275,6 +280,14 @@ MainWindow::hide_search()
 {
   ui->searchLabel->setVisible(false);
   ui->searchEdit->setVisible(false);
+}
+
+void
+MainWindow::promptReturnPressed()
+{
+  core->activate_input(ui->promptCombo->currentText());
+  hide_prompt();
+  ui->webEngineView->setFocus();
 }
 
 
