@@ -104,6 +104,15 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
 #define INFO_JS "info.js"
 #define QTINFO_JS "docbrowser/qtinfo.js"
 
+  QString config =
+R"(
+"use strict"; /* This must be the first thing in the script. */
+
+var INFO_CONFIG = {
+  show_welcome_message: false
+};
+)";
+
   QString script;
   QFile file;
   file.setFileName (QString(this->datadir)
@@ -120,8 +129,11 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
   QByteArray b2 = file2.readAll();
   script2 = QString(b2);
 
+
+  /* Concatenate and run the scripts.  This makes sure they are run in the 
+     right order. */
   QWebEngineScript s1;
-  s1.setSourceCode(script + script2);
+  s1.setSourceCode(config + script + script2);
   s1.setRunsOnSubFrames(true);
   s1.setInjectionPoint(QWebEngineScript::DocumentCreation);
   s1.setWorldId(QWebEngineScript::MainWorld);
