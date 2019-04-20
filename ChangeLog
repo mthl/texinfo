@@ -1,5 +1,16 @@
 2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Scroll to start of sidebar correctly.
+
+	* js/info.js (add_header, scan_toc):
+	Use "sidebar_start" as the ID of an element added at the start 
+	of the table of contents, instead of "index".  "index" is the ID 
+	of the <div> containing the Top node.  The Top node would be 
+	scrolled right to the start some time after the page had 
+	displayed, even if the user had already scrolled down in it.
+
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Make help optional.
 	
 	* js/info.js

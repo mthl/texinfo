@@ -1228,7 +1228,7 @@ var user_config = window["INFO_CONFIG"];
       if (url === config.TOP_ID)
         {
           hide_grand_child_nodes (ul);
-          res = document.getElementById(url);
+          res = document.getElementById('sidebar_start');
         }
       else
         {
@@ -1287,7 +1287,7 @@ var user_config = window["INFO_CONFIG"];
           var header = document.createElement ("header");
           var a = document.createElement ("a");
           a.setAttribute ("href", config.TOP_NAME);
-          a.setAttribute ("id", config.TOP_ID);
+          a.setAttribute ("id", "sidebar_start");
           header.appendChild (a);
           var div = document.createElement ("div");
           a.appendChild (div);
