@@ -54,7 +54,8 @@ var user_config = window["INFO_CONFIG"];
           @type {(function (): void)} */
       on_iframe_load: null
     },
-    show_welcome_message: true
+    show_welcome_message: true,
+    embedded_help: true
   };
 
   /*-------------------.
@@ -921,10 +922,6 @@ var user_config = window["INFO_CONFIG"];
       if ((pageid === config.TOP_ID) && visible)
         {
           div.removeAttribute ("hidden");
-          /* Unlike iframes, Elements are unlikely to be scrollable (CSSOM
-             Scroll-behavior), so choose an arbitrary element inside "top"
-             div and at the top of it.  */
-          document.getElementById ("icon-bar").scrollIntoView ();
         }
       else
         {
@@ -1834,6 +1831,9 @@ var user_config = window["INFO_CONFIG"];
   function
   add_icons (document)
   {
+    if (!config.embedded_help)
+      return;
+
     var div = document.createElement ("div");
     div.setAttribute ("id", "icon-bar");
     div.setAttribute ("style", "float: right");

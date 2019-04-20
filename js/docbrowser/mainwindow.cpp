@@ -119,7 +119,8 @@ R"(
 "use strict"; /* This must be the first thing in the script. */
 
 var INFO_CONFIG = {
-  show_welcome_message: false
+  show_welcome_message: false,
+  embedded_help: false,
 };
 )";
 

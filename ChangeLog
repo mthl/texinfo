@@ -1,5 +1,14 @@
 2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Make help optional.
+	
+	* js/info.js
+	(config): New option 'embedded_help'.
+	(add_icons): Do nothing unless this is set.
+	(resolve_page): Remove code scrolling to icon bar.
+
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* js/info.css: Comment out overflow properties because of 
 	scrolling problems.
 
