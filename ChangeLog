@@ -1,6 +1,33 @@
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Make fix_links leave internal links alone.
+
+	* js/info.js
+	(fix_links): Do nothing for internal links.  This is to
+	speed up opening a large page, e.g. index.html when a manual is 
+	first loaded, as DOM maniplation is slow.
+	(updater) <"current-url">: Call with_sidebar_query and
+	href_hash on argument.  This means that this message type takes 
+	something more like a URL, instead of the special "linkid" 
+	format.
+	(on_click): Pass argument unaltered to set_current_url.
+	(Text_input) <Enter pressed>: Do not call with_sidebar_query 
+	before calling set_current_url.
+
+	(scan_toc): Do not call linkid_to_url on argument.  Use prefix 
+	in element selector to account for fragment identifier.
+	<on_message> <"update-sidebar">: No extra processing before 
+	calling scan_toc.
+
+	(resolve_page): Do not pass a "fix-links" message.
+	(init_iframe) <on_message>: Message type "fix-links" removed.
+
+	(init): No special check for about:blank, as this can be dealt 
+	with in the QWebEngine code.
+
 2019-04-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
-	* info/js (config): Add 'show_welcome_message' field.
+	* js/info.js (config): Add 'show_welcome_message' field.
 	(on_load) Check show_welcome_message to decide whether to show 
 	welcome message.
 

@@ -233,6 +233,8 @@ var user_config = window["INFO_CONFIG"];
           linkid = (action.pointer) ?
               state.loaded_nodes[action.pointer] : action.url;
 
+          linkid = href_hash(with_sidebar_query(linkid));
+
           res.current = linkid;
           res.history = action.history;
           res.text_input = null;
@@ -566,8 +568,7 @@ var user_config = window["INFO_CONFIG"];
           {
             var linkid = this.data[this.input.value];
             if (linkid)
-              store.dispatch (actions.set_current_url
-                         (href_hash(with_sidebar_query (linkid))));
+              store.dispatch (actions.set_current_url (linkid));
           }
         event.stopPropagation ();
       }).bind (this));
@@ -941,11 +942,6 @@ var user_config = window["INFO_CONFIG"];
             }
           if (visible)
             {
-              /* Delay fixing the links until the page is actually
-                 due to be displayed. */
-              msg = { message_kind: "fix-links" };
-              post_message (pageid, msg);
-
               div.removeAttribute ("hidden");
               msg = { message_kind: "scroll-to", hash: link.hash };
               post_message (pageid, msg);
@@ -1208,11 +1204,10 @@ var user_config = window["INFO_CONFIG"];
         @arg {HTMLElement} elem
         @arg {string} linkid */
     function
-    scan_toc (elem, linkid)
+    scan_toc (elem, url)
     {
       /** @type {Element} */
       var res;
-      var url = with_sidebar_query (linkid_to_url (linkid));
 
       /** Set CURRENT to the node corresponding to URL linkid.
           @arg {Element} elem */
@@ -1220,7 +1215,9 @@ var user_config = window["INFO_CONFIG"];
       find_current (elem)
       {
         /* XXX: No template literals for IE compatibility.  */
-        if (elem.matches ("a[href=\"" + url + "\"]"))
+        /* The ^= is a selector to account for the fragment identifier
+           which follows. */
+        if (elem.matches ("a[href^=\"" + url + "\\.html" + "\"]"))
           {
             elem.setAttribute ("toc-current", "yes");
             var sib = elem.nextElementSibling;
@@ -1344,11 +1341,8 @@ var user_config = window["INFO_CONFIG"];
             elem.removeAttribute ("toc-current");
           }, Node.ELEMENT_NODE);
 
-          /* Remove the hash part for the main page.  */
-          var pageid = linkid_split (data.selected).pageid;
-          var selected = (pageid === config.TOP_ID) ? pageid : data.selected;
           /* Highlight the current LINKID in the table of content.  */
-          var elem = scan_toc (toc_div, selected);
+          var elem = scan_toc (toc_div, data.selected);
           if (elem)
             elem.scrollIntoView (true);
         }
@@ -1402,14 +1396,6 @@ var user_config = window["INFO_CONFIG"];
           var found = search (document.body, data.regexp);
           store.dispatch ({ type: "search-result", found: found });
         }
-      else if (data.message_kind === "fix-links")
-        {
-          if (!window.links_fixed)
-            {
-              window.links_fixed = 1;
-              fix_links (document.links);
-            }
-        }
       else if (data.message_kind === "scroll-to")
         {
           /* Scroll to the anchor corresponding to HASH.  */
@@ -1450,8 +1436,7 @@ var user_config = window["INFO_CONFIG"];
                   }
                 else if (!absolute_url_p (href))
                   {
-                    var linkid = href_hash (href) || config.TOP_ID;
-                    store.dispatch (actions.set_current_url (linkid));
+                    store.dispatch (actions.set_current_url (href));
                     event.preventDefault ();
                     event.stopPropagation ();
                     return;
@@ -1676,11 +1661,6 @@ var user_config = window["INFO_CONFIG"];
           link.setAttribute ("target", "_blank");
         else if (external_manual_url_p (href))
           link.setAttribute ("target", "_top");
-        else
-          {
-            var href$ = with_sidebar_query (href);
-            link.setAttribute ("href", href$);
-          }
       }
   }
 
@@ -2004,9 +1984,6 @@ var inside_top_page;
 
 /* Wrap init code */
 function init() {
-  if (location == "about:blank")
-    return;
-
   /* Check if current browser supports the minimum requirements required for
      properly using this script, otherwise bails out.  */
   if (features && !(features.es5
