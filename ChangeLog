@@ -1,5 +1,18 @@
 2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Avoid white flash when changing node.
+
+	* js/info.js
+	(Pages.prototype.render): Do not hide the div containing the 
+	previous node here.
+	(resolve_page): Take an argument that is the previous div 
+	containing an iframe containing a node.  Hide it only when the 
+	next node is loaded and displayed.  This avoids a "white flash"
+	appearing when the node changes and gives navigation a snappier 
+	feel.
+
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Change Top link in sidebar.
 
 	* js/info.js (init_sidebar): Do not create <header> and <div> 

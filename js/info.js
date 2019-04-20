@@ -809,15 +809,16 @@ init_top_page ()
 
     if (state.current !== this.prev_id)
       {
+        var prev_div;
         if (this.prev_id)
           {
-            this.prev_div.setAttribute ("hidden", "true");
+            prev_div = this.prev_div;
             /* Remove previous highlights.  */
             var old = linkid_split (this.prev_id);
             var msg = { message_kind: "highlight", regexp: null };
             post_message (old.pageid, msg);
           }
-        var div = resolve_page (state.current, true);
+        var div = resolve_page (state.current, true, prev_div);
         /* Remove any anchor. */
         var link = linkid_split (state.current);
         state.current = link.pageid;
@@ -905,7 +906,7 @@ init_top_page ()
       @arg {boolean} [visible]
       @return {HTMLElement} the div element.  */
   function
-  resolve_page (linkid, visible)
+  resolve_page (linkid, visible, prev_div)
   {
     var msg;
     var link = linkid_split (linkid);
@@ -922,6 +923,8 @@ init_top_page ()
     if ((pageid === config.TOP_ID) && visible)
       {
         div.removeAttribute ("hidden");
+        if (visible && prev_div)
+          prev_div.setAttribute ("hidden", "true");
       }
     else
       {
@@ -934,9 +937,15 @@ init_top_page ()
 
             div.appendChild (iframe);
             iframe.addEventListener ("load", function () {
-              store.dispatch ({ type: "iframe-ready", id: pageid });
+              if (visible && prev_div)
+                prev_div.setAttribute ("hidden", "true");
+              store.dispatch ({ type: "iframe-ready", id: pageid,
+                                prev_div: prev_div });
             }, false);
           }
+        else if (visible && prev_div)
+          prev_div.setAttribute ("hidden", "true");
+
         if (visible)
           {
             div.removeAttribute ("hidden");
