@@ -1,5 +1,15 @@
 2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix loading of nodes beginning "g_t".
+
+	* js/info.js:
+	(create_link_dict, navigation_links): Extract the filename instead of 
+	the fragment identifier from the URL.  Usually there is no difference, 
+	but they differ when the node name does not begin with a letter, in 
+	which case the fragment has "g_t" prefixed.
+
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Scroll to start of sidebar correctly.
 
 	* js/info.js (add_header, scan_toc):

@@ -1261,7 +1261,8 @@ var user_config = window["INFO_CONFIG"];
       {
         if (elem.matches ("a") && elem.hasAttribute ("href"))
           {
-            var id = href_hash (elem.getAttribute ("href"));
+            var id = basename (remove_hash (elem.getAttribute ("href")),
+                               /[.]x?html$/);
             links[prev_id] =
               Object.assign ({}, links[prev_id], { forward: id });
             links[id] = Object.assign ({}, links[id], { backward: prev_id });
@@ -1786,6 +1787,13 @@ var user_config = window["INFO_CONFIG"];
       return "";
   }
 
+  /** Remove a fragment identifier from the end of a URL. */
+  function
+  remove_hash (href)
+  {
+    return href.replace (/#.*$/, '');
+  }
+
   /** Check if LINKID corresponds to a page containing index links.  */
   function
   linkid_contains_index (linkid)
@@ -1810,11 +1818,12 @@ var user_config = window["INFO_CONFIG"];
         var nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
         if (nav_id)
           {
-            var href = basename (link.getAttribute ("href"));
-            if (href === config.TOP_NAME)
+            var linkid = basename (remove_hash (link.getAttribute ("href")),
+                                   /[.]x?html$/);
+            if (linkid === config.TOP_NAME)
               res[nav_id] = config.TOP_ID;
             else
-              res[nav_id] = href_hash (href);
+              res[nav_id] = linkid;
           }
         else /* this link is part of local table of content. */
           {
