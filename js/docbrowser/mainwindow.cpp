@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webEngineView->setPage(page);
 
-#define MANUAL "elisp"
+#define MANUAL "hello"
 
     qDebug() << "LOAD URL";
     load_url (QString("file:") + this->datadir + "/test/" MANUAL "/index.html");

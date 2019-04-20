@@ -65,15 +65,8 @@ function wc_init()
             alert("asked to go to " + url);
           });
 
-          channel.objects.core.set_current_url.connect(function(anchor) {
-            /* For deferring the link conversion, as running fix_links on
-               a large index is very slow.
-               If the links have been converted already (the case for menus),
-               this works anyway: running with_sidebar_query on text already
-               in 'linkid' format doesn't change it. */
-
-            var linkid = with_sidebar_query (anchor)
-            store.dispatch (actions.set_current_url (href_hash (linkid)));
+          channel.objects.core.set_current_url.connect(function(url) {
+            store.dispatch (actions.set_current_url (url));
           });
 
           channel.objects.core.search.connect(function(string) {
