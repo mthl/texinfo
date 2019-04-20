@@ -1228,10 +1228,10 @@ var user_config = window["INFO_CONFIG"];
       }
 
       var ul = elem.querySelector ("ul");
-      if (linkid === config.TOP_ID)
+      if (url === config.TOP_ID)
         {
           hide_grand_child_nodes (ul);
-          res = document.getElementById(linkid);
+          res = document.getElementById(url);
         }
       else
         {
