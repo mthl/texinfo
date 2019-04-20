@@ -1,5 +1,15 @@
 2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Change Top link in sidebar.
+
+	* js/info.js (init_sidebar): Do not create <header> and <div> 
+	elements for the link to the Top node in the sidebar.  Remove 
+	the main heading from the Top node once done.  Use a <h3> 
+	element for the text of the link.
+	* js/info.css: Remove styling for header element.
+
+2019-04-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix loading of nodes beginning "g_t".
 
 	* js/info.js:

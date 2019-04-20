@@ -59,10 +59,6 @@ iframe.node {
     padding: 0px;
 }
 
-div.toc-sidebar header {
-    font-size: xx-large;
-}
-
 div.toc-sidebar div {
     padding: 0.25em;
     overflow: auto;

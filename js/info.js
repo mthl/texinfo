@@ -1289,13 +1289,11 @@ init_sidebar ()
         var a = document.createElement ("a");
         a.setAttribute ("href", config.TOP_NAME);
         a.setAttribute ("id", "sidebar_start");
-        header.appendChild (a);
-        var div = document.createElement ("div");
-        a.appendChild (div);
-        var span = document.createElement ("span");
+        var span = document.createElement ("h3");
         span.textContent = h1.textContent;
-        div.appendChild (span);
-        elem.parentElement.insertBefore (header, elem);
+        a.appendChild (span);
+        elem.parentElement.insertBefore (a, elem);
+        h1.remove();
       }
   }
 
