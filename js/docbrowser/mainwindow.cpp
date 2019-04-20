@@ -42,7 +42,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webEngineView->setPage(page);
 
-    load_url (QString("file:") + this->datadir + "/test/hello/index.html");
+#define MANUAL "elisp"
+
+    qDebug() << "LOAD URL";
+    load_url (QString("file:") + this->datadir + "/test/" MANUAL "/index.html");
 }
 
 void
@@ -109,6 +112,10 @@ MainWindow::setup_profile (QWebEngineProfile *profile)
 
   QString config =
 R"(
+// ==UserScript==
+// @exclude about:blank
+// ==/UserScript==
+
 "use strict"; /* This must be the first thing in the script. */
 
 var INFO_CONFIG = {
