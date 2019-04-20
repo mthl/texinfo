@@ -9,7 +9,10 @@ div[node] {
     top: 0pt;
     bottom: 0pt;
     position: absolute;
-    overflow: hidden;
+    // This is commented-out because it caused unresponsive scrolling
+    // with Qt WebEngine, especially when quickly scrolling up and down
+    // with a scroll wheel.
+    // overflow: hidden;
 }
 
 div[node][hidden] {
@@ -18,7 +21,7 @@ div[node][hidden] {
 
 /* Non-iframed main page */
 div[node]#index {
-    overflow: auto
+    // overflow: auto
 }
 
 /* Iframed sub pages */
@@ -108,7 +111,7 @@ table#keyboard-shortcuts th {
     top: 0;
     width: 75%;
     height: 100%;
-    overflow: auto;
+    // overflow: auto;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 }
