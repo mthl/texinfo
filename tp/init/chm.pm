@@ -33,7 +33,6 @@ use Texinfo::Common;
 
 main::set_global_format('html');
 
-set_from_init_file('TOP_NODE_FILE', undef);
 set_from_init_file('TOP_FILE', undef);
 
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements

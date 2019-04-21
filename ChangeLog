@@ -1,3 +1,19 @@
+2019-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove TOP_NODE_FILE.
+
+	* doc/texinfo.texi (HTML Customization Variables): Remove 
+	TOP_NODE_FILE.
+	* tp/Texinfo/Common.pm (@variable_string_settables):
+	Remove TOP_NODE_FILE.
+	* tp/Texinfo/Convert/Converter.pm (_top_node_filename):
+	Do not look at TOP_NODE_FILE.
+	* tp/Texinfo/Convert/HTML.pm (%defaults): Use TOP_FILE instead 
+	of TOP_NODE_FILE.
+	(_set_variables_texi2html): Do not override value of TOP_FILE to 
+	an empty string.
+	* tp/init/chm.pm: Do not try to set TOP_NODE_FILE.
+
 2019-04-03  Patrice Dumas  <pertusus@free.fr>
 
 	Use EXTENSION instead of hardcoding html and add extension to TOP_NODE_FILE_TARGET

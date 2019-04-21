@@ -588,23 +588,17 @@ sub _top_node_filename($)
 {
   my $self = shift;
 
-  my $extension = '';
-  $extension = '.'.$self->get_conf('EXTENSION')
-            if (defined($self->get_conf('EXTENSION'))
-                and $self->get_conf('EXTENSION') ne '');
-
   my $top_node_filename;
   if (defined($self->get_conf('TOP_FILE')) 
       and $self->get_conf('TOP_FILE') ne '') {
     $top_node_filename = $self->get_conf('TOP_FILE');
   } else {
-    if (defined($self->get_conf('TOP_NODE_FILE'))) {
-      $top_node_filename = $self->get_conf('TOP_NODE_FILE');
-    } else {
-      # TOP_NODE_FILE is set in the default case.
-      # If not the manual name is used.
-      $top_node_filename = $self->{'document_name'};
-    }
+    my $extension = '';
+    $extension = '.'.$self->get_conf('EXTENSION')
+      if (defined($self->get_conf('EXTENSION'))
+            and $self->get_conf('EXTENSION') ne '');
+
+    $top_node_filename = $self->{'document_name'};
     if (defined($top_node_filename)) {
       $top_node_filename .= $extension;
     }
