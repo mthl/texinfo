@@ -17176,10 +17176,6 @@ set appropriately, if necessary.  This is used to override the default,
 and is, in general, only taken into account when output is split, and
 for HTML@.
 
-@item TOP_NODE_FILE
-File name used for the Top node; default is @code{index}.  The extension
-is set appropriately, if necessary.
-
 @item TOP_NODE_FILE_TARGET
 File name used for the Top node in cross-references;
 default is @code{index.html}.
