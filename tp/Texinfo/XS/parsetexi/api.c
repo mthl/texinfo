@@ -667,6 +667,7 @@ build_single_index_data (INDEX *i)
   HV *hv;
   AV *entries;
   int j;
+  int entry_number;
 
   dTHX;
 
@@ -733,6 +734,7 @@ build_single_index_data (INDEX *i)
     }
 #undef STORE
 
+  entry_number = 1;
   if (i->index_number > 0)
   for (j = 0; j < i->index_number; j++)
     {
@@ -743,12 +745,6 @@ build_single_index_data (INDEX *i)
       e = &i->index_entries[j];
       entry = newHV ();
 
-      /* Skip these as these entries do not refer to the place in the document 
-         where the index commands occurred. */
-      if (!lookup_extra (e->command, "seeentry")
-          && !lookup_extra (e->command, "seealso"))
-        av_push (entries, newRV_inc ((SV *)entry));
-
       STORE2("index_name", newSVpv (i->name, 0));
       STORE2("index_at_command",
              newSVpv (command_name(e->index_at_command), 0));
@@ -756,7 +752,7 @@ build_single_index_data (INDEX *i)
              newSVpv (command_name(e->index_type_command), 0));
       STORE2("command",
              newRV_inc ((SV *)e->command->hv));
-      STORE2("number", newSViv (j + 1));
+      STORE2("number", newSViv (entry_number));
       if (e->region)
         {
           STORE2("region", newRV_inc ((SV *)e->region->hv));
@@ -801,6 +797,15 @@ build_single_index_data (INDEX *i)
         STORE2("node", newRV_inc ((SV *)e->node->hv));
       if (e->sortas)
         STORE2("sortas", newSVpv (e->sortas, 0));
+
+      /* Skip these as these entries do not refer to the place in the document 
+         where the index commands occurred. */
+      if (!lookup_extra (e->command, "seeentry")
+          && !lookup_extra (e->command, "seealso"))
+        {
+          av_push (entries, newRV_inc ((SV *)entry));
+          entry_number++;
+        }
 
       /* We set this now because the index data structures don't
          exist at the time that the main tree is built. */
