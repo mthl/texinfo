@@ -742,7 +742,12 @@ build_single_index_data (INDEX *i)
 
       e = &i->index_entries[j];
       entry = newHV ();
-      av_push (entries, newRV_inc ((SV *)entry));
+
+      /* Skip these as these entries do not refer to the place in the document 
+         where the index commands occurred. */
+      if (!lookup_extra (e->command, "seeentry")
+          && !lookup_extra (e->command, "seealso"))
+        av_push (entries, newRV_inc ((SV *)entry));
 
       STORE2("index_name", newSVpv (i->name, 0));
       STORE2("index_at_command",

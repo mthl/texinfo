@@ -1,5 +1,13 @@
 2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/ParserNonXS.pm (_enter_index_entry),
+	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry),
+	* tp/Texinfo/XS/parsetexi/api.c (build_single_index_data): 
+	Always create index entry object but do not add it to array of 
+	entries for the index if there was a @seeentry or @seealso.
+
+2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry): Skip if 
 	'seeentry' or 'seealso' was recorded.
 	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):

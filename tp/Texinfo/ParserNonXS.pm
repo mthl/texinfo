@@ -2371,13 +2371,6 @@ sub _enter_index_entry($$$$$$$)
   my ($self, $command_container, $command, $current, $content,
       $content_normalized, $line_nr) = @_;
 
-  # Skip these as these entries do not refer to the place in the document where 
-  # the index commands occurred.
-  if (defined $current->{'extra'}->{'seeentry'}
-      or defined $current->{'extra'}->{'seealso'}) {
-    return;
-  }
-
   $content_normalized = $content if (!defined($content_normalized));
 
   my $index_name = $self->{'command_index'}->{$command_container};
@@ -2405,7 +2398,14 @@ sub _enter_index_entry($$$$$$$)
     $self->line_warn(sprintf(__("entry for index `%s' outside of any node"), 
                              $index_name), $line_nr);
   }
-  push @{$index->{'index_entries'}}, $index_entry;
+
+  # Skip these as these entries do not refer to the place in the document where 
+  # the index commands occurred.
+  if (!defined $current->{'extra'}->{'seeentry'}
+      and !defined $current->{'extra'}->{'seealso'}) {
+    push @{$index->{'index_entries'}}, $index_entry;
+  }
+
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 

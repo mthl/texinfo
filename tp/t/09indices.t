@@ -534,7 +534,7 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 
 @cindex aaa @seeentry{bbb}
 @cindex @seealso{ccc} ddd
-'
+',
 ],
 
 );
