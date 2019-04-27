@@ -295,6 +295,15 @@ $result_errors{'seeentry'} = [];
 
 
 
+$result_converted{'docbook'}->{'seeentry'} = '<chapter label="" id="Top">
+<title></title>
+
+<indexterm role="cp"><primary>aaa </primary><see>bbb</see></indexterm>
+<indexterm role="cp"><primary>ddd</primary><seealso>ccc</seealso></indexterm>
+</chapter>
+';
+
+
 $result_converted{'info'}->{'seeentry'} = 'This is , produced from .
 
 

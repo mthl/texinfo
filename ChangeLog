@@ -1,5 +1,13 @@
 2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	"See also" index entries for DocBook output.
+
+	* tp/Texinfo/Convert/DocBook.pm (_index_entry):
+	Output <see> or <seealso> elements if @seeentry or @seealso 
+	directives were given for the index entry.
+
+2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/ParserNonXS.pm (_enter_index_entry),
 	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry),
 	* tp/Texinfo/XS/parsetexi/api.c (build_single_index_data): 
