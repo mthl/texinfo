@@ -1,5 +1,22 @@
 2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Ignore spaces before @seeentry, @seealso and @sortas.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi): Split off an ignored 
+	spaces element if one of these commands is seen.
+	* tp/Texinfo/XS/parsetexi/parser.c 
+	(isolate_last_space_menu_entry_node, isolate_trailing_space):
+	Rename and add a parameter.
+	(process_remaining_on_line): After these commands are seen, call 
+	isolate_trailing_space.
+
+	* tp/t/09indices.t (subentry_and_sortas): New test.
+
+	This allows these commands to occur at the end of index commands 
+	without trailing spaces being present in the output.
+
+2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	"See also" index entries for DocBook output.
 
 	* tp/Texinfo/Convert/DocBook.pm (_index_entry):

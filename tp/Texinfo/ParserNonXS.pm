@@ -4063,6 +4063,18 @@ sub _parse_texi($;$)
           $current = _end_preformatted($self, $current, $line_nr);
         }
 
+        if ($in_index_commands{$command}
+            and $current->{'contents'}
+            and $current->{'contents'}->[-1]
+            and $current->{'contents'}->[-1]->{'text'}) {
+          $current->{'contents'}->[-1]->{'text'} =~ s/(\s+)$//;
+          if ($1 ne '') {
+            my $new_spaces = { 'text' => $1, 'parent' => $current,
+              'type' => 'empty_spaces_before_argument' };
+            push @{$current->{'contents'}}, $new_spaces;
+          }
+        }
+
         if (defined($other_commands{$command})
             and ($command ne 'item' or !_item_line_parent($current))) {
           # noarg skipspace

@@ -536,6 +536,15 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 @cindex @seealso{ccc} ddd
 ', {'test_formats' => ['docbook']}
 ],
+['subentry_and_sortas',
+'@node Top
+@top
+
+@cindex aaa @sortas{A} @subentry @sortas{B} bbb
+
+@printindex cp
+', {'test_formats' => ['plaintext', 'docbook', 'html']}
+],
 
 );
 

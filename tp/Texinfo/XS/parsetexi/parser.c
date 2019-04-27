@@ -675,7 +675,7 @@ isolate_last_space_internal (ELEMENT *current)
 }
 
 static void
-isolate_last_space_menu_entry_node (ELEMENT *current)
+isolate_trailing_space (ELEMENT *current, enum element_type spaces_type)
 {
   ELEMENT *last_elt;
   char *text;
@@ -689,7 +689,7 @@ isolate_last_space_menu_entry_node (ELEMENT *current)
   /* If text all whitespace */
   if (text[strspn (text, whitespace_chars)] == '\0')
     {
-      last_elt->type = ET_space_at_end_menu_node;
+      last_elt->type = spaces_type;
     }
   else
     {
@@ -702,7 +702,7 @@ isolate_last_space_menu_entry_node (ELEMENT *current)
            i--)
         trailing_spaces++;
 
-      new_spaces = new_element (ET_space_at_end_menu_node);
+      new_spaces = new_element (spaces_type);
       text_append_n (&new_spaces->text,
                      text + text_len - trailing_spaces,
                      trailing_spaces);
@@ -746,7 +746,7 @@ isolate_last_space (ELEMENT *current)
     return;
 
   if (current->type == ET_menu_entry_node)
-    isolate_last_space_menu_entry_node (current);
+    isolate_trailing_space (current, ET_space_at_end_menu_node);
   else
     isolate_last_space_internal (current);
 }
@@ -1640,6 +1640,15 @@ value_invalid:
             current = end_paragraph (current, 0, 0);
           if (close_preformatted_command (cmd))
             current = end_preformatted (current, 0, 0);
+        }
+
+      if ((cmd == CM_sortas
+           || cmd == CM_seeentry
+           || cmd == CM_subentry)
+          && current->contents.number > 0
+          && last_contents_child(current)->text.end > 0)
+        {
+          isolate_trailing_space (current, ET_empty_spaces_before_argument);
         }
 
       if (cmd == CM_item && item_line_parent (current))
