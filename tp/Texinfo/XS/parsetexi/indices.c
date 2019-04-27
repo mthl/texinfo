@@ -278,6 +278,12 @@ enter_index_entry (enum command_id index_type_command,
   INDEX_ENTRY *entry;
   KEY_PAIR *k;
 
+  /* Skip these as these entries do not refer to the place in the document 
+     where the index commands occurred. */
+  if (lookup_extra (current, "seeentry")
+      || lookup_extra (current, "seealso"))
+    return;
+
   idx = index_of_command (index_type_command);
   if (idx->index_number == idx->index_space)
     {

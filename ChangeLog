@@ -1,5 +1,15 @@
 2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/indices.c (enter_index_entry): Skip if 
+	'seeentry' or 'seealso' was recorded.
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):
+	Record values of 'seeentry' and 'seealso' the same way as for 
+	'sortas'.  Ignore spaces following these commands.
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Add 'seeentry', 
+	'seealso'.  Remove comments referring to line numbers in Common.pm.
+
+2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Common.pm (%in_index_commands, %brace_commands):
 	Add 'seeentry', 'seealso'.  These are handled the same way as 
 	'sortas'.
