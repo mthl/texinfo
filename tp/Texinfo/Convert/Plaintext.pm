@@ -2724,8 +2724,11 @@ sub _convert($$)
     } else {
       $unknown_command = 1;
     }
-    if ($unknown_command and !($root->{'extra'} 
-                               and $root->{'extra'}->{'index_entry'})
+    if ($unknown_command
+        and !($root->{'extra'} 
+                and ($root->{'extra'}->{'index_entry'}
+                     or $root->{'extra'}->{'seeentry'}
+                     or $root->{'extra'}->{'seealso'}))
         # commands like def*x are not processed above, since only the def_line
         # associated is processed. If they have no name and no category they 
         # are not considered as index entries either so they have a specific

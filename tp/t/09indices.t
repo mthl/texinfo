@@ -527,7 +527,16 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 
 @printindex cp
 ', {'test_formats' => ['docbook']}
-]
+],
+['seeentry',
+'@node Top
+@top
+
+@cindex aaa @seeentry{bbb}
+@cindex @seealso{ccc} ddd
+'
+],
+
 );
 
 sub encoding_index_text($)

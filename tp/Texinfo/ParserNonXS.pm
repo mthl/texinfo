@@ -237,7 +237,7 @@ foreach my $type ('before_item', 'text_root', 'document_root',
 
 my %command_ignore_space_after;
 foreach my $command ('anchor', 'hyphenation', 'caption', 'shortcaption',
-                     'sortas') {
+                     'sortas', 'seeentry', 'seealso') {
   $command_ignore_space_after{$command} = 1;
 }
 
@@ -2370,6 +2370,13 @@ sub _enter_index_entry($$$$$$$)
 {
   my ($self, $command_container, $command, $current, $content,
       $content_normalized, $line_nr) = @_;
+
+  # Skip these as these entries do not refer to the place in the document where 
+  # the index commands occurred.
+  if (defined $current->{'extra'}->{'seeentry'}
+      or defined $current->{'extra'}->{'seealso'}) {
+    return;
+  }
 
   $content_normalized = $content if (!defined($content_normalized));
 
@@ -5028,14 +5035,16 @@ sub _parse_texi($;$)
                   if (!$current->{'parent'}->{'type'});
                $current->{'parent'}->{'parent'}->{'parent'}->{'extra'}->{'command_as_argument'} 
                   = $current->{'parent'};
-            } elsif ($current->{'parent'}->{'cmdname'} eq 'sortas') {
+            } elsif ($in_index_commands{$current->{'parent'}->{'cmdname'}}) {
+              my $command = $current->{'parent'}->{'cmdname'};
               my @contents = @{$current->{'contents'}};
               my $arg = $current->{'contents'}->[0]->{'text'};
+
               if (defined($arg)) {
                 my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
                 if ($index_element
                     and _is_index_element($self, $index_element)) {
-                  $index_element->{'extra'}->{'sortas'} = $arg;
+                  $index_element->{'extra'}->{$command} = $arg;
                 }
               }
             }

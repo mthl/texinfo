@@ -1,3 +1,20 @@
+2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Common.pm (%in_index_commands, %brace_commands):
+	Add 'seeentry', 'seealso'.  These are handled the same way as 
+	'sortas'.
+	* tp/Texinfo/ParserNonXS.pm (%command_ignore_space_after):
+	Add 'seeentry', 'seealso'.
+	(_parse_texi) <close brace>: Record values of 'seeentry' and 
+	'seealso' in extra hash the same way as for 'sortas'.
+	(_enter_index_entry): Skip the index entry if there is a 
+	'seeentry' or 'seealso' directive.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert): Do not warn about 
+	unhandled commands if a 'seeentry' or 'seealso' directive is 
+	present.
+
+	* tp/t/09indices.t (seeentry): Add test.
+
 2019-04-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove TOP_NODE_FILE.

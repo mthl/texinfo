@@ -531,7 +531,7 @@ foreach my $in_heading_command ('thischapter', 'thischaptername',
 
 # only valid in index entries
 our %in_index_commands;
-foreach my $in_index_command ('sortas') {
+foreach my $in_index_command ('sortas', 'seeentry', 'seealso') {
   $in_index_commands{$in_index_command} = 1;
 }
 
@@ -610,7 +610,7 @@ foreach my $command ('r', 'i', 'b', 'sansserif', 'slanted') {
 }
 
 foreach my $one_arg_command ('U', 'dmn', 'key',
-    'titlefont', 'anchor', 'errormsg', 'sortas') {
+    'titlefont', 'anchor', 'errormsg', 'sortas', 'seeentry', 'seealso') {
   $brace_commands{$one_arg_command} = 1;
 }
 
