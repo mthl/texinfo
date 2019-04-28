@@ -1,5 +1,15 @@
 2019-04-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/Makefile.am
+	(XSParagraph_la_LDFLAGS, Parsetexi_la_LDFLAGS):
+	Put $(LTLIBINTL) and $(LTLIBICONV) in here.  Remove $(TERMLIBS) 
+	which was not used.
+
+	Attempt to fix building under Cygwin, which Hans-Bernhard Bröker 
+	reported was broken.
+
+2019-04-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Set TEXI2DVI in Makefile.
 
 	* doc/Makefile.am: Set TEXI2DVI to use the texi2dvi in the 
