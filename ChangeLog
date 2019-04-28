@@ -1,3 +1,10 @@
+2019-04-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Set TEXI2DVI in Makefile.
+
+	* doc/Makefile.am: Set TEXI2DVI to use the texi2dvi in the 
+	Texinfo sources rather than an installed one.
+
 2019-04-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Ignore spaces before @seeentry, @seealso and @sortas.
