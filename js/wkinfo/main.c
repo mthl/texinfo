@@ -62,7 +62,7 @@ socket_cb (GSocket *socket,
       gtk_main_quit ();
       break;
     }
-  return false;
+  return true;
 }
 
 static void
