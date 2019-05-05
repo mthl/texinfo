@@ -36,19 +36,10 @@ request_callback (WebKitWebPage     *web_page,
 {
   const char *uri = webkit_uri_request_get_uri (request);
 
-  g_print ("Intercepting link <%s>\n", uri);
+  // g_print ("Intercepting link <%s>\n", uri);
 
-  if (!strcmp (uri, "internal:next"))
-    {
-      if (next_link)
-        {
-          g_print ("redirect to |%s|\n", next_link);
+  /* Could block external links here */
 
-           webkit_uri_request_set_uri (request, next_link);
-          /* This doesn't work as webkit_web_page_get_uri still
-             returns "internal:next". */
-        }
-    }
   return false;
 }
 
@@ -114,7 +105,6 @@ document_loaded_callback (WebKitWebPage *web_page,
          }
        if (rel && href)
          {
-           g_print ("rel:href is |%s:%s|\n", rel, href);
            if (!strcmp (rel, "next"))
              {
                free (next_link); next_link = 0;
@@ -138,7 +128,6 @@ document_loaded_callback (WebKitWebPage *web_page,
                        memcpy (next_link, current_uri, p - current_uri);
                        strcpy (next_link + (p - current_uri), href);
                        g_print ("saved ref |%s|\n", next_link);
-
 
                        ssize_t result;
                        result = sendto (socket_id, next_link,

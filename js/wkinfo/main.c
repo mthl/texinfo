@@ -30,6 +30,8 @@ remove_socket (void)
     unlink (socket_file);
 }
 
+static char *next_link;
+
 gboolean
 socket_cb (GSocket *socket,
            GIOCondition condition,
@@ -50,6 +52,9 @@ socket_cb (GSocket *socket,
         }
 
       g_print ("Received le data: <%s>\n", buffer);
+      buffer[255] = '\0';
+      free (next_link);
+      next_link = strdup (buffer);
 
       break;
     case G_IO_ERR:
@@ -179,7 +184,8 @@ static gboolean onkeypress(GtkWidget *webView,
       gtk_main_quit();
       break;
     case GDK_KEY_n:
-      webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webView), "internal:next");
+      webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webView),
+                               next_link);
       break;
     default:
       ;
