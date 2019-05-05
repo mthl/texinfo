@@ -11,7 +11,7 @@
 #include <gio/gunixsocketaddress.h>
 #include <webkit2/webkit2.h>
 
-static void destroyWindowCb(GtkWidget* widget, GtkWidget* window);
+static void destroyWindowCb(GtkWidget *widget, GtkWidget *window);
 static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window);
 static gboolean onkeypress(GtkWidget *webView,
                            GdkEvent  *event,
@@ -30,7 +30,7 @@ remove_socket (void)
     unlink (socket_file);
 }
 
-static char *next_link;
+static char *next_link, *prev_link, *up_link;
 
 gboolean
 socket_cb (GSocket *socket,
@@ -59,15 +59,23 @@ socket_cb (GSocket *socket,
       if (!p)
         break;
       *p = 0;
+
+      char **save_where = 0;
       if (!strcmp (buffer, "next"))
+        save_where = &next_link;
+      else if (!strcmp (buffer, "prev"))
+        save_where = &prev_link;
+      else if (!strcmp (buffer, "up"))
+        save_where = &up_link;
+      if (save_where)
         {
           p++;
           q = strchr (p, '\n');
           if (!q)
             break;
           *q = 0;
-          free (next_link);
-          next_link = strdup (p);
+          free (*save_where);
+          *save_where = strdup (p);
         }
       else
         {
@@ -92,9 +100,6 @@ static void
 initialize_web_extensions (WebKitWebContext *context,
                            gpointer          user_data)
 {
-  /* Web Extensions get a different ID for each Web Process */
-  static guint32 unique_id = 0;
-
   /* Make a Unix domain socket for communication with the browser process.
      Some example code and documentation for WebKitGTK uses dbus instead. */
 
@@ -174,18 +179,18 @@ int main(int argc, char* argv[])
     g_signal_connect(webView, "key_press_event", G_CALLBACK(onkeypress), main_window);
 
     // Load a web page into the browser instance
-    //webkit_web_view_load_uri(webView, "http://www.webkitgtk.org/");
-    webkit_web_view_load_uri(webView, "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
+    webkit_web_view_load_uri (webView,
+                 "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
 
     // Make sure that when the browser area becomes visible, it will get mouse
     // and keyboard events
-    gtk_widget_grab_focus(GTK_WIDGET(webView));
+    gtk_widget_grab_focus (GTK_WIDGET(webView));
 
     // Make sure the main window and all its contents are visible
-    gtk_widget_show_all(main_window);
+    gtk_widget_show_all (main_window);
 
     // Run the main GTK+ event loop
-    gtk_main();
+    gtk_main ();
 
     return 0;
 }
@@ -202,8 +207,16 @@ static gboolean onkeypress(GtkWidget *webView,
       gtk_main_quit();
       break;
     case GDK_KEY_n:
-      webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webView),
-                               next_link);
+      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
+                                next_link);
+      break;
+    case GDK_KEY_p:
+      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
+                                prev_link);
+      break;
+    case GDK_KEY_u:
+      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
+                                up_link);
       break;
     default:
       ;
@@ -214,13 +227,15 @@ static gboolean onkeypress(GtkWidget *webView,
 }
 
 
-static void destroyWindowCb(GtkWidget* widget, GtkWidget* window)
+static void
+destroyWindowCb (GtkWidget *widget, GtkWidget *window)
 {
-    gtk_main_quit();
+  gtk_main_quit ();
 }
 
-static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window)
+static gboolean
+closeWebViewCb(WebKitWebView *webView, GtkWidget *window)
 {
-    gtk_widget_destroy(window);
-    return TRUE;
+  gtk_widget_destroy (window);
+  return TRUE;
 }

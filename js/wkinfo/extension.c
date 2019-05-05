@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <stddef.h>
 #include <stdio.h>
 #include <errno.h>
@@ -8,9 +10,6 @@
 
 #include <gtk/gtk.h>
 #include <webkit2/webkit-web-extension.h>
-
-/* Data retrieved from document */
-static char *next_link;
 
 /* For communicating with the main Gtk process */
 static struct sockaddr_un main_name;
@@ -105,9 +104,11 @@ document_loaded_callback (WebKitWebPage *web_page,
          }
        if (rel && href)
          {
-           if (!strcmp (rel, "next"))
+           if (!strcmp (rel, "next")
+               || !strcmp (rel, "prev")
+               || !strcmp (rel, "up"))
              {
-               free (next_link); next_link = 0;
+               char *link = 0;
 
                const char *current_uri = webkit_web_page_get_uri (web_page);
                if (current_uri)
@@ -124,16 +125,14 @@ document_loaded_callback (WebKitWebPage *web_page,
                      }
                    if (p != current_uri)
                      {
-                       next_link = malloc ((p - current_uri)
+                       link = malloc ((p - current_uri)
                                            + strlen (href) + 1);
-                       memcpy (next_link, current_uri, p - current_uri);
-                       strcpy (next_link + (p - current_uri), href);
-                       g_print ("saved ref |%s|\n", next_link);
+                       memcpy (link, current_uri, p - current_uri);
+                       strcpy (link + (p - current_uri), href);
 
                        char *message;
                        long len;
-                       len = asprintf (&message, "%s\n%s\n", "next",
-                                       next_link);
+                       len = asprintf (&message, "%s\n%s\n", rel, link);
 
                        ssize_t result;
                        result = sendto (socket_id, message, len, 0,
@@ -148,6 +147,7 @@ document_loaded_callback (WebKitWebPage *web_page,
                        free (message);
                      }
                  }
+               free (link);
              }
          }
        g_free (rel); g_free (href);
