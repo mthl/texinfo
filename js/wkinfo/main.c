@@ -51,10 +51,28 @@ socket_cb (GSocket *socket,
           gtk_main_quit ();
         }
 
-      g_print ("Received le data: <%s>\n", buffer);
       buffer[255] = '\0';
-      free (next_link);
-      next_link = strdup (buffer);
+      g_print ("Received le data: <%s>\n", buffer);
+
+      char *p, *q;
+      p = strchr (buffer, '\n'); 
+      if (!p)
+        break;
+      *p = 0;
+      if (!strcmp (buffer, "next"))
+        {
+          p++;
+          q = strchr (p, '\n');
+          if (!q)
+            break;
+          *q = 0;
+          free (next_link);
+          next_link = strdup (p);
+        }
+      else
+        {
+          g_print ("Unknown message type '%s'\n", buffer);
+        }
 
       break;
     case G_IO_ERR:

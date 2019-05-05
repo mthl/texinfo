@@ -116,6 +116,7 @@ document_loaded_callback (WebKitWebPage *web_page,
                    const char *q;
 
                    g_print ("current uri is |%s|\n", current_uri);
+                   /* Set p to after the last '/'. */
                    while ((q = strchr (p, '/')))
                      {
                        q++;
@@ -129,9 +130,13 @@ document_loaded_callback (WebKitWebPage *web_page,
                        strcpy (next_link + (p - current_uri), href);
                        g_print ("saved ref |%s|\n", next_link);
 
+                       char *message;
+                       long len;
+                       len = asprintf (&message, "%s\n%s\n", "next",
+                                       next_link);
+
                        ssize_t result;
-                       result = sendto (socket_id, next_link,
-                                        strlen (next_link), 0,
+                       result = sendto (socket_id, message, len, 0,
                               (struct sockaddr *) &main_name, main_name_size);
 
                        if (result == -1)
@@ -139,6 +144,8 @@ document_loaded_callback (WebKitWebPage *web_page,
                            g_print ("socket write failed: %s\n",
                                     strerror(errno));
                          }
+
+                       free (message);
                      }
                  }
              }
