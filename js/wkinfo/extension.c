@@ -139,10 +139,17 @@ document_loaded_callback (WebKitWebPage *web_page,
                        strcpy (next_link + (p - current_uri), href);
                        g_print ("saved ref |%s|\n", next_link);
 
-                       /*
-                       sendto (socket_id, next_link, strlen (next_link), 0,
-                               (struct sockaddr *) &main_name, main_name_size);
-                       */
+
+                       ssize_t result;
+                       result = sendto (socket_id, next_link,
+                                        strlen (next_link), 0,
+                              (struct sockaddr *) &main_name, main_name_size);
+
+                       if (result == -1)
+                         {
+                           g_print ("socket write failed: %s\n",
+                                    strerror(errno));
+                         }
                      }
                  }
              }
@@ -171,7 +178,7 @@ web_page_created_callback (WebKitWebExtension *extension,
                       NULL, 0);
 }
 
-static int
+static void
 make_named_socket (const char *filename)
 {
   struct sockaddr_un name;
@@ -215,7 +222,7 @@ initialize_socket (const char *main_socket_file)
   if (!our_socket_file)
     {
       our_socket_file = tmpnam (0);
-      socket_id = make_named_socket (our_socket_file);
+      make_named_socket (our_socket_file);
     }
   else
     g_print ("bug: web process initialized twice\n");

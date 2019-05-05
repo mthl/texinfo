@@ -7,6 +7,8 @@
 #include <sys/un.h>
 
 #include <gtk/gtk.h>
+#include <gio/gio.h>
+#include <gio/gunixsocketaddress.h>
 #include <webkit2/webkit2.h>
 
 static void destroyWindowCb(GtkWidget* widget, GtkWidget* window);
@@ -20,6 +22,7 @@ static gboolean onkeypress(GtkWidget *webView,
 static char *socket_file;
 int socket_id;
 
+/* FIXME - not removed if program killed with C-c. */
 static void
 remove_socket (void)
 {
@@ -27,44 +30,39 @@ remove_socket (void)
     unlink (socket_file);
 }
 
-static int
-make_named_socket (const char *filename)
+gboolean
+socket_cb (GSocket *socket,
+           GIOCondition condition,
+           gpointer user_data)
 {
-  struct sockaddr_un name;
-  int sock;
-  size_t size;
+  static char buffer[256];
+  GError *err = 0;
+  gssize result;
 
-  /* Create the socket. */
-  sock = socket (PF_LOCAL, SOCK_DGRAM, 0);
-  if (sock < 0)
+  switch (condition)
     {
-      perror ("socket");
-      exit (EXIT_FAILURE);
+    case G_IO_IN:
+      result = g_socket_receive (socket, buffer, sizeof buffer, NULL, &err);
+      if (result <= 0)
+        {
+          g_print ("socket receive error: %s\n", err->message);
+          gtk_main_quit ();
+        }
+
+      g_print ("Received le data: <%s>\n", buffer);
+
+      break;
+    case G_IO_ERR:
+    case G_IO_HUP:
+      g_print ("socket error\n");
+      gtk_main_quit ();
+      break;
+    default:
+      g_print ("unhandled socket connection\n");
+      gtk_main_quit ();
+      break;
     }
-
-  /* Bind a name to the socket. */
-  name.sun_family = AF_LOCAL;
-  strncpy (name.sun_path, filename, sizeof (name.sun_path));
-  name.sun_path[sizeof (name.sun_path) - 1] = '\0';
-
-  /* The size of the address is
-     the offset of the start of the filename,
-     plus its length (not including the terminating null byte).
-     Alternatively you can just do:
-     size = SUN_LEN (&name);
-   */
-  size = (offsetof (struct sockaddr_un, sun_path)
-	  + strlen (name.sun_path));
-
-  if (bind (sock, (struct sockaddr *) &name, size) < 0)
-    {
-      perror ("bind");
-      exit (EXIT_FAILURE);
-    }
-
-  atexit (&remove_socket);
-
-  return sock;
+  return false;
 }
 
 static void
@@ -78,12 +76,38 @@ initialize_web_extensions (WebKitWebContext *context,
      Some example code and documentation for WebKitGTK uses dbus instead. */
 
   if (!socket_file)
-    {
-      socket_file = tmpnam (0);
-      socket_id = make_named_socket (socket_file);
-    }
+    socket_file = tmpnam (0);
   else
     g_print ("bug: more than one web process started\n");
+
+  GError *err = 0;
+
+  err = 0;
+  GSocket *gsocket = g_socket_new (G_SOCKET_FAMILY_UNIX,
+                                   G_SOCKET_TYPE_DATAGRAM,
+                                   0,
+                                   &err);
+  if (!gsocket)
+    {
+      g_print ("no socket: %s\n", err->message);
+      gtk_main_quit ();
+    }
+
+  err = 0;
+  GSocketAddress *address = g_unix_socket_address_new (socket_file);
+  g_socket_bind (gsocket, address, FALSE, &err);
+  if (!gsocket)
+    {
+      g_print ("bind socket: %s\n", err->message);
+      gtk_main_quit ();
+    }
+  err = 0;
+
+  GSource *gsource = g_socket_create_source (gsocket, G_IO_IN, NULL);
+  g_source_set_callback (gsource, (GSourceFunc)(socket_cb), NULL, NULL);
+  g_source_attach (gsource, NULL);
+
+  atexit (&remove_socket);
 
   webkit_web_context_set_web_extensions_directory (
      context, WEB_EXTENSIONS_DIRECTORY);
@@ -160,6 +184,8 @@ static gboolean onkeypress(GtkWidget *webView,
     default:
       ;
     }
+
+  return false;
 
 }
 
