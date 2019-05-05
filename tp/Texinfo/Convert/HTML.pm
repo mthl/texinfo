@@ -5820,7 +5820,7 @@ sub _external_node_href($$$$)
        { 'code' => 1, 
          Texinfo::Common::_convert_text_options($self)});
     my $manual_base = $manual_name;
-    $manual_base =~ s/\.[^\.]*$//;
+    $manual_base =~ s/\.info*$//;
     $manual_base =~ s/^.*\///;
     my $document_split = $self->get_conf('SPLIT');
     $document_split = 'mono' if (!$document_split);

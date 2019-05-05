@@ -1,3 +1,11 @@
+2019-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_external_node_href): Do not strip
+	off an arbitrary extension from the name of an external manual - 
+	only strip of ".info".  Ludovico Courtès reported that 
+	extensions were being used to distinguish translations of 
+	manuals into other languages.
+
 2019-04-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS/Makefile.am
