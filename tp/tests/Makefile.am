@@ -36,11 +36,7 @@ copy-tex-html:
 clean-tests:
 	$(srcdir)/parser_tests.sh -clean $(base_tests) $(tex_html_tests)
 
-other_tests = \
-	t/stdout.sh \
-	t/stdout_split.sh
-
-TESTS = $(one_test_files_generated_list) $(other_tests)
+TESTS = $(one_test_files_generated_list)
 
 AM_TESTS_ENVIRONMENT = srcdir="$(srcdir)"; export srcdir; top_srcdir="$(top_srcdir)"; export top_srcdir; builddir="$(builddir)"; export buildir; top_builddir="$(top_builddir)"; export top_builddir;
 
@@ -51,7 +47,7 @@ tex-html-checks tex-html-check: all
 	$(MAKE) $(AM_MAKEFLAGS) check TEX_HTML_TESTS=yes
 
 EXTRA_DIST = run_parser_all.sh parser_tests.sh \
- $(one_test_files_generated_list) coverage_macro.texi $(other_tests) reference
+ $(one_test_files_generated_list) coverage_macro.texi
 
 dist-hook:
 	rm -rf `find $(distdir)/reference -name .git`

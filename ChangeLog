@@ -1,5 +1,10 @@
 2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/t/stdout.sh,
+	* tp/tests/t/stdout_split.sh: Remove tests.
+
+2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/Makefile.am (copy-tests): Do not try to make target 
 	in subdirectory.
 
