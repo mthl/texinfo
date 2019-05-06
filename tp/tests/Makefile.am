@@ -26,10 +26,7 @@ tex_html_tests = tex_html
 DIST_SUBDIRS = many_input_files $(base_tests) $(tex_html_tests)
 SUBDIRS = . many_input_files
 
-copy-tests: copy-base
-	cd many_input_files && $(MAKE) copy-tests
-
-copy-base:
+copy-tests:
 	$(srcdir)/parser_tests.sh -copy $(base_tests)
 
 copy-tex-html:

@@ -1,5 +1,10 @@
 2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/Makefile.am (copy-tests): Do not try to make target 
+	in subdirectory.
+
+2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/94htmlxref.t: Remove a ".texi" suffix given as the manual 
 	argument to an xref command.
 
