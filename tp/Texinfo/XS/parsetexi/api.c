@@ -49,31 +49,16 @@ ELEMENT *Root;
    Hence, error messages will be translated only when the program is 
    installed. */
 static void
-find_locales_dir (char *srcdir)
+find_locales_dir (char *builddir)
 {
   DIR *dir;
   char *s;
-  char **p;
-  static char *try_dirs[] = {
-      "LocaleData",
-      "../../../tp/LocaleData",
-      "../../LocaleData", 0 };
 
-  asprintf (&s, "%s/LocaleData", srcdir);
+  asprintf (&s, "%s/LocaleData", builddir);
   dir = opendir (s);
   if (!dir)
     {
       free (s);
-      for (p = try_dirs; (*p); p++)
-        {
-          dir = opendir (*p);
-          if (dir)
-            {
-              closedir (dir);
-              bindtextdomain (PACKAGE, *p);
-              return;
-            }
-        }
       fprintf (stderr, "Locales dir for document strings not found: %s\n",
                strerror (errno));
     }
@@ -86,13 +71,13 @@ find_locales_dir (char *srcdir)
 }
 
 int
-init (int texinfo_uninstalled, char *srcdir)
+init (int texinfo_uninstalled, char *builddir)
 {
   setlocale (LC_ALL, "");
 
   /* Use installed or uninstalled translation files for gettext. */
   if (texinfo_uninstalled)
-    find_locales_dir (srcdir);
+    find_locales_dir (builddir);
   else
     bindtextdomain (PACKAGE, LOCALEDIR);
 

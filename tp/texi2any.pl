@@ -167,11 +167,7 @@ $strings_textdomain = 'texinfo_document'
 my $srcdir;
 if (defined($ENV{'top_srcdir'})) {
   $srcdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-} else {
-  $srcdir = $command_directory;
 }
-
-my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 
 
 # we want a reliable way to switch locale, so we don't use the system
@@ -179,26 +175,15 @@ my $libsrcdir = File::Spec->catdir($srcdir, 'maintain');
 Locale::Messages->select_package('gettext_pp');
 
 if ($Texinfo::ModulePath::texinfo_uninstalled) {
-  # in case of build from the source directory, out of source build, 
-  # this helps to locate the locales.
-  my $locales_dir_found = 0;
-  my @search_locale_dirs = (
-    File::Spec->catdir($libsrcdir, $updir, 'LocaleData'),
-    File::Spec->catdir($curdir, 'LocaleData'),
-    File::Spec->catdir($updir, $updir, $updir, 'tp', 'LocaleData'),
-    File::Spec->catdir($updir, $updir, 'tp', 'LocaleData'));
-  foreach my $locales_dir (@search_locale_dirs) {
-    if (-d $locales_dir) {
-      Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
-      # the messages in this domain are not regenerated automatically, 
-      # only when calling ./maintain/regenerate_perl_module_files.sh
-      Locale::Messages::bindtextdomain ($messages_textdomain, $locales_dir);
-      $locales_dir_found = 1;
-      last;
-    }
-  }
-  if (!$locales_dir_found) {
-    warn "Locales dir for document strings not found (@search_locale_dirs)\n";
+  my $locales_dir = File::Spec->catdir($Texinfo::ModulePath::builddir,
+                                       'LocaleData');
+  if (-d $locales_dir) {
+    Locale::Messages::bindtextdomain ($strings_textdomain, $locales_dir);
+    # the messages in this domain are not regenerated automatically, 
+    # only when calling ./maintain/regenerate_perl_module_files.sh
+    Locale::Messages::bindtextdomain ($messages_textdomain, $locales_dir);
+  } else {
+    warn "Locales dir for document strings not found\n";
   }
 } else {
   Locale::Messages::bindtextdomain ($strings_textdomain, 
@@ -206,9 +191,6 @@ if ($Texinfo::ModulePath::texinfo_uninstalled) {
   Locale::Messages::bindtextdomain ($messages_textdomain,
                                     File::Spec->catdir($datadir, 'locale'));
 }
-
-#Locale::Messages::bindtextdomain ($messages_textdomain, 
-#                                  File::Spec->catdir($datadir, 'locale'));
 
 
 # Version setting is complicated, because we cope with 

@@ -1,5 +1,18 @@
 2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix finding translation files in out-of-source build.
+
+	* tp/Texinfo/ModulePath.pm.in ($builddir, $srcdir):
+	Save builddir instead of srcdir.
+	* tp/Texinfo/XSLoader.pm: Pass on $Texinfo::ModulePath::builddir
+	to XS modules.
+	* tp/Texinfo/XS/parsetexi/api.c (init),
+	* tp/texi2any.pl: When looking for the directory containing the
+	translation files, check in $Texinfo::ModulePath::builddir and
+	nowhere else.
+
+2019-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/t/stdout.sh,
 	* tp/tests/t/stdout_split.sh: Remove tests.
 

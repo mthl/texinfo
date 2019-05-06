@@ -16,9 +16,9 @@ use File::Spec;
 # locations.
 our $texinfo_uninstalled = 0;
 
-# Pathname of the tp/ directory in the sources.  Used to find the locale
+# Pathname of the tp/ build directory.  Used to find the locale
 # data.
-our $srcdir = '';
+our $builddir = '';
 
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)
@@ -59,8 +59,6 @@ sub init {
       unshift @INC, File::Spec->catdir($top_srcdir, 'tp');
 
       $lib_dir = File::Spec->catdir($top_srcdir, 'tp', 'maintain');
-
-      $srcdir = File::Spec->catdir($top_srcdir, 'tp');
     }
 
     # Find XS modules in the build directory
@@ -76,6 +74,8 @@ sub init {
       unshift @INC, File::Spec->catdir($top_builddir, 'tp',
         'Texinfo', 'XS', 'parsetexi');
     }
+
+    $builddir = File::Spec->catdir($top_builddir, 'tp');
   }
 
   if (defined($lib_dir)) {

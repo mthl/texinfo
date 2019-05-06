@@ -223,7 +223,7 @@ LOAD:
   
   if (defined &{"${module}::init"}
       and !&{"${module}::init"} ($Texinfo::ModulePath::texinfo_uninstalled,
-                                 $Texinfo::ModulePath::srcdir)) {
+                                 $Texinfo::ModulePath::builddir)) {
     _fatal "$module_name: error initializing";
     goto FALLBACK;
   }
