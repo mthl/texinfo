@@ -1035,7 +1035,7 @@ $result_trees{'htmlxref_only_split_nodes'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => '../manual/doc.texi'
+                      'text' => '../manual/doc'
                     }
                   ],
                   'extra' => {
@@ -3282,7 +3282,7 @@ split: ../mtexinfo/Cross-References.html#Cross-References
 
 @subheading Testing manual name
 
-@verb{:../manual/doc.texi:} @ref{node,,, ../manual/doc.texi}@*
+@verb{:../manual/doc.texi:} @ref{node,,, ../manual/doc}@*
 @example
 mono : doc.html#node
 split: ../doc/node.html#node
