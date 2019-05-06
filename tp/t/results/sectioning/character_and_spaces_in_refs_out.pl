@@ -481,7 +481,7 @@ $result_trees{'character_and_spaces_in_refs_out'} = [
                     'contents' => [
                       {
                         'parent' => {},
-                        'text' => '../manual/doc.texi'
+                        'text' => '../manual/doc'
                       }
                     ],
                     'extra' => {
@@ -1675,7 +1675,7 @@ $result_texis{'character_and_spaces_in_refs_out'} = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 

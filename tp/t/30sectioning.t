@@ -500,7 +500,7 @@ my $character_and_spaces_in_refs_text = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 

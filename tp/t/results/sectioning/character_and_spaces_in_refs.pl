@@ -480,7 +480,7 @@ $result_trees{'character_and_spaces_in_refs'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => '../manual/doc.texi'
+                      'text' => '../manual/doc'
                     }
                   ],
                   'extra' => {
@@ -1611,7 +1611,7 @@ $result_texis{'character_and_spaces_in_refs'} = '@node Top
 @ref{:,,,manual}
 @ref{ top ,,, manual}
 @ref{(texinfo)Cross References}
-@ref{node,,, ../manual/doc.texi}
+@ref{node,,, ../manual/doc}
 
 @subheading Testing local nodes
 
@@ -1899,7 +1899,7 @@ Testing distant nodes
 ---------------------
 
 *note (manual)a node:: *note (manual)::: *note (manual)top:: *note
-(texinfo)Cross References:: *note (../manual/doc.texi)node::
+(texinfo)Cross References:: *note (../manual/doc)node::
 
 Testing local nodes
 -------------------
@@ -1932,10 +1932,10 @@ File: ,  Node: local node,  Prev: /;<=>?[\\]^_`|~,  Up: other nodes
 
 Tag Table:
 Node: Top27
-Node: other nodes421
-Node: !_"#$%&\'()*+-.602
-Node: /;<=>?[\\]^_`|~696
-Node: local node789
+Node: other nodes416
+Node: !_"#$%&\'()*+-.597
+Node: /;<=>?[\\]^_`|~691
+Node: local node784
 
 End Tag Table
 
@@ -2011,7 +2011,7 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">other nodes</a> &nbsp; </p
 <a href="manual.html#g_t_003a">(manual):</a>
 <a href="manual.html#Top">(manual)top</a>
 <a href="texinfo.html#Cross-References">(texinfo)Cross References</a>
-<a href="doc.html#node">(../manual/doc.texi)node</a>
+<a href="doc.html#node">(../manual/doc)node</a>
 </p>
 <span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
 
