@@ -8,8 +8,11 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 
+#include <glib.h>
 #include <gtk/gtk.h>
 #include <webkit2/webkit-web-extension.h>
+
+#include "common.h"
 
 /* For communicating with the main Gtk process */
 static struct sockaddr_un main_name;
@@ -27,6 +30,8 @@ remove_our_socket (void)
     unlink (our_socket_file);
 }
 
+static int send_index_p = 0;
+
 gboolean
 request_callback (WebKitWebPage     *web_page,
 		  WebKitURIRequest  *request,
@@ -35,11 +40,105 @@ request_callback (WebKitWebPage     *web_page,
 {
   const char *uri = webkit_uri_request_get_uri (request);
 
-  // g_print ("Intercepting link <%s>\n", uri);
+  g_print ("Intercepting link <%s>\n", uri);
+
+  send_index_p = 0;
+  
+  const char *p = strchr (uri, '?');
+  if (p)
+    {
+      char *new_uri = strdup (uri);
+      new_uri[p - uri] = 0;
+      webkit_uri_request_set_uri (request, new_uri);
+      g_print ("new_uri %s\n", new_uri);
+      free (new_uri);
+
+      p++;
+      g_print ("request type %s\n", p);
+      if (!strcmp (p, "send-index"))
+        send_index_p = 1;
+      
+    }
 
   /* Could block external links here */
 
   return false;
+}
+
+void
+send_datagram (GString *s)
+{
+  ssize_t result;
+  result = sendto (socket_id, s->str, s->len + 1, 0,
+         (struct sockaddr *) &main_name, main_name_size);
+
+  if (result == -1)
+    {
+      g_print ("sending datagram failed: %s\n",
+               strerror(errno));
+    }
+}
+
+void
+send_index (WebKitDOMHTMLCollection *links, gulong num_links)
+{
+  g_print ("trying to send index\n");
+
+  gulong i = 0;
+  GString *s = g_string_new (NULL);
+
+  /* Break index information up into datagrams each of size less
+     than PACKET_SIZE. */
+
+  g_string_assign (s, "index\n");
+
+  for (; i < num_links; i++)
+    {
+      WebKitDOMNode *node
+        = webkit_dom_html_collection_item (links, i);
+      if (!node)
+        {
+          g_print ("No node\n");
+          return;
+        }
+
+      WebKitDOMElement *element;
+      if (WEBKIT_DOM_IS_ELEMENT(node))
+        {
+          element = WEBKIT_DOM_ELEMENT(node);
+        }
+      else
+        {
+          /* When would this happen? */
+          g_print ("Not an DOM element\n");
+          continue;
+        }
+
+      gchar *href = webkit_dom_element_get_attribute (element, "href");
+      if (href)
+        {
+          int try = 0;
+          gsize old_len = s->len;
+          do
+            {
+              g_string_append (s, href);
+              g_string_append (s, "\n");
+              if (s->len > PACKET_SIZE && try != 1)
+                {
+                  g_string_truncate (s, old_len);
+                  g_print ("sending packet %u||%s||\n", s->len, s->str);
+                  send_datagram (s);
+                  g_string_assign (s, "index\n");
+                  try++;
+                  continue;
+                }
+            }
+          while (0);
+        }
+    }
+  send_datagram (s);
+
+  g_string_free (s, TRUE);
 }
 
 void
@@ -71,6 +170,12 @@ document_loaded_callback (WebKitWebPage *web_page,
    gulong num_links = webkit_dom_html_collection_get_length (links);
    g_print ("Found %d links\n",
     webkit_dom_html_collection_get_length (links));
+
+   if (send_index_p)
+     {
+       send_index (links, num_links);
+       return;
+     }
 
    gulong i;
    for (i = 0; i < num_links; i++)
