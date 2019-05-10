@@ -163,10 +163,26 @@ initialize_web_extensions (WebKitWebContext *context,
      context, g_variant_new_bytestring (socket_file));
 }
 
+GtkComboBoxText *index_combo = 0;
+
+void
+show_index (void)
+{
+  gtk_widget_show (GTK_WIDGET(index_combo));
+  gtk_widget_grab_focus (GTK_WIDGET(index_combo));
+}
+
+gboolean
+hide_index_cb (GtkWidget *widget,
+               GdkEvent  *event,
+               gpointer   user_data)
+{
+  gtk_widget_hide (GTK_WIDGET(index_combo));
+  return TRUE;
+}
 
 int main(int argc, char* argv[])
 {
-    // Initialize GTK+
     gtk_init(&argc, &argv);
 
     msg ("started\n");
@@ -199,44 +215,64 @@ int main(int argc, char* argv[])
     GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
 
+    GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
+
+    index_combo = GTK_COMBO_BOX_TEXT(gtk_combo_box_text_new ());
+    gtk_combo_box_text_insert (index_combo, 0, NULL, "asdf");
+
+    gtk_box_pack_start (box, GTK_WIDGET(index_combo), FALSE, FALSE, 0);
+    gtk_box_pack_start (box, GTK_WIDGET(webView), TRUE, TRUE, 0);
+
+    gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(box));
+
+    gtk_widget_add_events (GTK_WIDGET(webView), GDK_FOCUS_CHANGE_MASK);
+
+    /* Hide the index search box when it loses focus.
+       Using "focus-out-event" itself on the combo box doesn't work,
+       possibly because the combo box is itself a container and the real focus 
+       is on one of the sub-widgets. */
+    g_signal_connect (webView, "focus-in-event",
+                      G_CALLBACK(hide_index_cb), NULL);
+
+    gtk_widget_hide (GTK_WIDGET(index_combo));
+
     /* Create a web view to parse index files.  */
     WebKitWebView *hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
-
-    // Put the browser area into the main window
-    gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(webView));
-    // Make sure the main window and all its contents are visible
-    gtk_widget_show_all (main_window);
 
     // Set up callbacks so that if either the main window or the browser 
     // instance is closed, the program will exit.
     g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
     g_signal_connect(webView, "close", G_CALLBACK(closeWebViewCb), main_window);
 
-    g_signal_connect(webView, "key_press_event", G_CALLBACK(onkeypress), main_window);
+    g_signal_connect(webView, "key-press-event", G_CALLBACK(onkeypress), main_window);
+
+    gtk_widget_show_all (main_window);
 
     webkit_web_view_load_uri (hiddenWebView,
  "file:/home/g/src/texinfo/GIT/js/test/elisp/Index.html?send-index");
 
-    // Make sure that when the browser area becomes visible, it will get mouse
-    // and keyboard events
+    /* Make sure that when the browser area becomes visible, it will get mouse
+       and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
-
 
     webkit_web_view_load_uri (webView,
                  "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
                  //"file:/home/g/src/texinfo/GIT/js/wkinfo/test.html");
 
-    // Run the main GTK+ event loop
     gtk_main ();
 
     return 0;
 }
 
-static gboolean onkeypress(GtkWidget *webView,
-                           GdkEvent  *event,
-                           gpointer   user_data)
+static gboolean
+onkeypress (GtkWidget *webView,
+            GdkEvent  *event,
+            gpointer   user_data)
 {
   GdkEventKey *k = (GdkEventKey *) event;
+
+  if (k->type != GDK_KEY_PRESS)
+    return FALSE;
 
   switch (k->keyval)
     {
@@ -255,12 +291,15 @@ static gboolean onkeypress(GtkWidget *webView,
       webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
                                 up_link);
       break;
+    case GDK_KEY_i:
+      g_print ("foobar\n");
+      show_index ();
+      break;
     default:
       ;
     }
 
-  return false;
-
+  return FALSE;
 }
 
 
