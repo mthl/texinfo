@@ -181,7 +181,11 @@ hide_index_cb (GtkWidget *widget,
   return TRUE;
 }
 
-int main(int argc, char* argv[])
+
+static GMainLoop *main_loop;
+
+int
+main(int argc, char* argv[])
 {
     gtk_init(&argc, &argv);
 
@@ -197,9 +201,6 @@ int main(int argc, char* argv[])
     /* Disable JavaScript */
     WebKitSettings *settings = webkit_web_view_group_get_settings (group);
     webkit_settings_set_enable_javascript (settings, FALSE);
-
-    webkit_web_context_get_default ();
-
 
     /* Load "extensions".  The web browser is run in a separate process
        and we can only access the DOM in that process. */
@@ -259,7 +260,8 @@ int main(int argc, char* argv[])
                  "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
                  //"file:/home/g/src/texinfo/GIT/js/wkinfo/test.html");
 
-    gtk_main ();
+    main_loop = g_main_loop_new (NULL, FALSE);
+    g_main_loop_run (main_loop);
 
     return 0;
 }
@@ -272,12 +274,12 @@ onkeypress (GtkWidget *webView,
   GdkEventKey *k = (GdkEventKey *) event;
 
   if (k->type != GDK_KEY_PRESS)
-    return FALSE;
+    return TRUE;
 
   switch (k->keyval)
     {
     case GDK_KEY_q:
-      gtk_main_quit();
+      g_main_loop_quit (main_loop);
       break;
     case GDK_KEY_n:
       webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
@@ -292,21 +294,21 @@ onkeypress (GtkWidget *webView,
                                 up_link);
       break;
     case GDK_KEY_i:
-      g_print ("foobar\n");
       show_index ();
       break;
     default:
-      ;
+      return FALSE;
     }
 
-  return FALSE;
+  return TRUE;
+
 }
 
 
 static void
 destroyWindowCb (GtkWidget *widget, GtkWidget *window)
 {
-  gtk_main_quit ();
+  g_main_loop_quit (main_loop);
 }
 
 static gboolean
