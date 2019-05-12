@@ -60,7 +60,7 @@ GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
 
 void
-load_relative_url (char *href)
+load_relative_url (const char *href)
 {
   char *link = 0;
 
@@ -104,7 +104,8 @@ match_selected_cb (GtkEntryCompletion *widget,
 			    1,
 			    &value);
   load_relative_url (g_value_get_string (&value));
-  return TRUE;
+  gtk_widget_hide (GTK_WIDGET(index_entry));
+  return FALSE;
 }
 
 void
@@ -345,14 +346,14 @@ main(int argc, char* argv[])
     gtk_widget_show_all (main_window);
 
     webkit_web_view_load_uri (hiddenWebView,
- "file:/home/g/src/texinfo/GIT/js/test/hello/Concept-index.html?send-index");
+ "file:/home/g/src/texinfo/GIT/js/test/elisp/Index.html?send-index");
 
     /* Make sure that when the browser area becomes visible, it will get mouse
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
     webkit_web_view_load_uri (webView,
-                 "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
+                 "file:/home/g/src/texinfo/GIT/js/test/elisp/index.html");
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);
