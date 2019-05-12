@@ -272,12 +272,20 @@ show_index (void)
   gtk_widget_grab_focus (GTK_WIDGET(index_entry));
 }
 
+void
+hide_index (void)
+{
+  gtk_widget_hide (GTK_WIDGET(index_entry));
+  gtk_widget_grab_focus (GTK_WIDGET(webView));
+}
+
+
 gboolean
 hide_index_cb (GtkWidget *widget,
                GdkEvent  *event,
                gpointer   user_data)
 {
-  gtk_widget_hide (GTK_WIDGET(index_entry));
+  hide_index ();
   return TRUE;
 }
 
@@ -345,20 +353,31 @@ main(int argc, char* argv[])
 
     gtk_widget_show_all (main_window);
 
-    webkit_web_view_load_uri (hiddenWebView,
- "file:/home/g/src/texinfo/GIT/js/test/elisp/Index.html?send-index");
+    char *env = getenv ("INFO_HTML_DIR");
+    if (!env)
+      env = "/home/g/src/texinfo/GIT/js/test/";
+
+    GString *s = g_string_new (NULL);
+    g_string_append (s, "file:");
+    g_string_append (s, env);
+    g_string_append (s, "/elisp/Index.html?send-index");
+
+    webkit_web_view_load_uri (hiddenWebView, s->str);
 
     /* Make sure that when the browser area becomes visible, it will get mouse
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
-    webkit_web_view_load_uri (webView,
-                 "file:/home/g/src/texinfo/GIT/js/test/elisp/index.html");
+    g_string_assign (s, "");
+    g_string_append (s, "file:");
+    g_string_append (s, env);
+    g_string_append (s, "/elisp/index.html");
+    webkit_web_view_load_uri (webView, s->str);
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);
 
-    return 0;
+    exit (0);
 }
 
 static gboolean
