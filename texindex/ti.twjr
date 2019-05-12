@@ -120,16 +120,17 @@ files produced by the @file{texinfo.tex} file.
 * Helper functions::               @code{del_array()},
                                    @code{check_split_null()}, @code{fatal()},
                                    @dots{}
-* @code{del_array}::               Clearing out an array.
-* @code{check_split_null}::        Checking if @command{awk} splits on the
+@ del_array::                      Clearing out an array.
+@ check_split_null::               Checking if @command{awk} splits on the
                                    null string.
-* @code{char_split}::              Splitting a line into individual
+@ char_split::                     Splitting a line into individual
                                    characters.
-* @code{fatal}::                   Printing fatal errors.
-* @code{is@dots{}} functions::     Checking character types.
-* @code{make_regexp}::             Make a regexp to match @TeX{} control
+@ fatal::                          Printing fatal errors.
+@ is@dots{} functions::            Checking character types.
+@ make_regexp::                    Make a regexp to match @TeX{ control
                                    sequences.
-* @code{min}::                     Get the minimum of two numbers.
+@ escape::                         Escaping backslashes for strings.
+@ min::                            Get the minimum of two numbers.
 * I18N::                           Internationalization.
 @end detailmenu
 @end menu
@@ -939,6 +940,7 @@ lets us easily track if we have seen a key before.
 @cindex @code{Seealso} array
 @cindex @code{Seealso_count} array
 @cindex @code{Pagedata} array
+@cindex @code{escape()} function
 @<Store the data for this line in the various arrays@>=
 if (! (key in Allkeys)) {
 	# first time we've seen this full line
@@ -978,7 +980,7 @@ if (! (key in Allkeys)) {
 	} else if (! (key in Pagedata)) {
 		Pagedata[key] = pagenum
 	} else if (Pagedata[key] != pagenum \
-				&& Pagedata[key] !~  (", " pagenum "$")) {
+				&& Pagedata[key] !~  escape(", " pagenum "$")) {
 		Pagedata[key] = Pagedata[key] ", " pagenum
 	}
 }
@@ -998,7 +1000,7 @@ The @code{Seeentry_re}, @code{Seealso_re} and @code{Subentry_re}
 variables are regular expressions that match the corresponding @TeX{}
 control sequences.  They're initialized once for each input file, since
 the command character might be different between files.
-The @code{make_regexp()} function is described in @ref{@code{make_regexp}}.
+The @code{make_regexp()} function is described in @ref{make_regexp}.
 
 @cindex @code{Seeentry_re} variable
 @cindex @code{Seealso_re} variable
@@ -1949,18 +1951,17 @@ function join(array, start, end, sep,    result, i)
 These helper functions make the main code easier to follow.
 
 @menu
-* @code{del_array}::            Clearing out an array.
-* @code{check_split_null}::     Checking if @command{awk} splits on the null
-                                string.
-* @code{char_split}::           Splitting a line into individual characters.
-* @code{fatal}::                Printing fatal errors.
-* @code{is@dots{}} functions::  Checking character types.
-* @code{make_regexp}::          Make a regexp to match @TeX{} control
-                                sequences.
-* @code{min}::                  Get the minimum of two numbers.
+* del_array::            Clearing out an array.
+* check_split_null::     Checking if @command{awk} splits on the null string.
+* char_split::           Splitting a line into individual characters.
+* fatal::                Printing fatal errors.
+* is@dots{} functions::  Checking character types.
+* make_regexp::          Make a regexp to match @TeX{} control sequences.
+* escape::               Escaping backslashes for strings.
+* min::                  Get the minimum of two numbers.
 @end menu
 
-@node @code{del_array}
+@node del_array
 @subsection @code{del_array()}: Deleting An Array
 
 @code{del_array()} clears out an array.
@@ -1976,7 +1977,7 @@ function del_array(a)
 }
 @
 
-@node @code{check_split_null}
+@node check_split_null
 @subsection @code{check_split_null()}: Checking If @command{awk} Splits On The Null String
 
 @code{check_split_null()} determines whether the @command{awk} running
@@ -1994,7 +1995,7 @@ function check_split_null(    n, a)
 }
 @
 
-@node @code{char_split}
+@node char_split
 @subsection @code{char_split()}: Splitting A String Into Characters
 
 @code{char_split()} splits a string into separate characters, letting
@@ -2020,7 +2021,7 @@ function char_split(string, array,    n, i)
 }
 @
 
-@node @code{fatal}
+@node fatal
 @subsection @code{fatal()}: Printing Fatal Error Messages
 
 @cindex @command{cat} command
@@ -2047,7 +2048,7 @@ function fatal(format, arg1, arg2, arg3, arg4, arg5,
 }
 @
 
-@node @code{is@dots{}} functions
+@node is@dots{} functions
 @subsection @code{is@dots{}} Functions: Checking Character Types
 
 @cindex @code{isupper()} function
@@ -2084,7 +2085,7 @@ function isdigit(c)
 }
 @
 
-@node @code{make_regexp}
+@node make_regexp
 @subsection @code{make_regexp()}: Matching @TeX{} Control Sequences
 
 @file{texindex.awk} has to handle input where the command
@@ -2109,7 +2110,30 @@ function make_regexp(regexp,	a, sep, n)
 }
 @
 
-@node @code{min}
+@node escape
+@subsection @code{escape()}: Escaping Backslashes for Strings
+
+If the command character is a backslash, occurrences of backslash need to be
+doubled before the containing string can be used as a regexp. This
+function does that job; it's very similar to @code{make_regexp()}
+(@pxref{make_regexp}).
+
+@cindex @code{escape()} function
+@<Helper functions@>=
+function escape(regexp,		a, n)
+{
+	if (Command_char != "\\")
+		return regexp
+
+	n = split(regexp, a, "\\")
+	if (n == 1)
+		return regexp
+
+	return join(a, 1, n, "\\\\")
+}
+@
+
+@node min
 @subsection @code{min()}: Getting The Minimum of Two Numbers
 
 It'd be nice if @command{awk} had this built-in@enddots{}

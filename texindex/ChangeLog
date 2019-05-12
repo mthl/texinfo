@@ -1,3 +1,11 @@
+2019-05-12         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* ti.twjr: Add escape function and call, fixes things when
+	backslash is the command character.  Remove @code around the
+	names of the nodes for the helper functions.
+	* jrweave: Merge with latest version in TexiWeb Jr. (This
+	version use @subentry.)
+
 2019-04-11         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* ti.twjr: Update about testing - works on 5 different awks!
