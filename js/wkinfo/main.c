@@ -53,6 +53,41 @@ remove_socket (void)
 
 static char *next_link, *prev_link, *up_link;
 
+GtkEntry *index_entry = 0;
+GtkEntryCompletion *index_completion = 0;
+GtkListStore *index_store = 0;
+
+void
+save_completions (char *p)
+{
+  GtkTreeIter iter;
+
+  if (!index_completion)
+    {
+      index_store = gtk_list_store_new (1, G_TYPE_STRING);
+      index_completion = gtk_entry_completion_new ();
+      gtk_entry_completion_set_model (index_completion,
+                                      GTK_TREE_MODEL(index_store));
+      gtk_entry_completion_set_text_column (index_completion, 0);
+      gtk_entry_set_completion (index_entry, index_completion);
+    }
+
+  char *q;
+  while ((q = strchr (p, '\n')))
+    {
+      *q = 0;
+
+      g_print ("add index entry %s\n", p);
+
+      gtk_list_store_append (index_store, &iter);
+      gtk_list_store_set (index_store, &iter,
+                          0, p,
+                          -1);
+
+      p = q + 1;
+    }
+}
+
 gboolean
 socket_cb (GSocket *socket,
            GIOCondition condition,
@@ -73,7 +108,7 @@ socket_cb (GSocket *socket,
         }
 
       buffer[PACKET_SIZE] = '\0';
-      g_print ("Received le data: <%s>\n", buffer);
+      // g_print ("Received le data: <%s>\n", buffer);
 
       char *p, *q;
       p = strchr (buffer, '\n'); 
@@ -97,6 +132,13 @@ socket_cb (GSocket *socket,
           *q = 0;
           free (*save_where);
           *save_where = strdup (p);
+        }
+      else if (!strcmp (buffer, "index"))
+        {
+          p++; /* Set p to the first byte after index line. */
+
+          save_completions (p);
+
         }
       else
         {
@@ -163,13 +205,11 @@ initialize_web_extensions (WebKitWebContext *context,
      context, g_variant_new_bytestring (socket_file));
 }
 
-GtkComboBoxText *index_combo = 0;
-
 void
 show_index (void)
 {
-  gtk_widget_show (GTK_WIDGET(index_combo));
-  gtk_widget_grab_focus (GTK_WIDGET(index_combo));
+  gtk_widget_show (GTK_WIDGET(index_entry));
+  gtk_widget_grab_focus (GTK_WIDGET(index_entry));
 }
 
 gboolean
@@ -177,7 +217,7 @@ hide_index_cb (GtkWidget *widget,
                GdkEvent  *event,
                gpointer   user_data)
 {
-  gtk_widget_hide (GTK_WIDGET(index_combo));
+  gtk_widget_hide (GTK_WIDGET(index_entry));
   return TRUE;
 }
 
@@ -218,24 +258,20 @@ main(int argc, char* argv[])
 
     GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
 
-    index_combo = GTK_COMBO_BOX_TEXT(gtk_combo_box_text_new ());
-    gtk_combo_box_text_insert (index_combo, 0, NULL, "asdf");
+    index_entry = GTK_ENTRY(gtk_entry_new ());
 
-    gtk_box_pack_start (box, GTK_WIDGET(index_combo), FALSE, FALSE, 0);
     gtk_box_pack_start (box, GTK_WIDGET(webView), TRUE, TRUE, 0);
+    gtk_box_pack_start (box, GTK_WIDGET(index_entry), FALSE, FALSE, 0);
 
     gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(box));
 
     gtk_widget_add_events (GTK_WIDGET(webView), GDK_FOCUS_CHANGE_MASK);
 
-    /* Hide the index search box when it loses focus.
-       Using "focus-out-event" itself on the combo box doesn't work,
-       possibly because the combo box is itself a container and the real focus 
-       is on one of the sub-widgets. */
+    /* Hide the index search box when it loses focus. */
     g_signal_connect (webView, "focus-in-event",
                       G_CALLBACK(hide_index_cb), NULL);
 
-    gtk_widget_hide (GTK_WIDGET(index_combo));
+    gtk_widget_hide (GTK_WIDGET(index_entry));
 
     /* Create a web view to parse index files.  */
     WebKitWebView *hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
@@ -250,7 +286,7 @@ main(int argc, char* argv[])
     gtk_widget_show_all (main_window);
 
     webkit_web_view_load_uri (hiddenWebView,
- "file:/home/g/src/texinfo/GIT/js/test/elisp/Index.html?send-index");
+ "file:/home/g/src/texinfo/GIT/js/test/hello/Concept-index.html?send-index");
 
     /* Make sure that when the browser area becomes visible, it will get mouse
        and keyboard events. */
