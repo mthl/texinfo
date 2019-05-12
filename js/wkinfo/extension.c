@@ -115,18 +115,21 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
         }
 
       gchar *href = webkit_dom_element_get_attribute (element, "href");
-      if (href)
+      if (href && strstr (href, "#index-"))
         {
           int try = 0;
           gsize old_len = s->len;
           do
             {
+              g_string_append (s, webkit_dom_node_get_text_content (node));
+              g_string_append (s, "\n");
               g_string_append (s, href);
               g_string_append (s, "\n");
+
               if (s->len > PACKET_SIZE && try != 1)
                 {
                   g_string_truncate (s, old_len);
-                  // g_print ("sending packet %u||%s||\n", s->len, s->str);
+                  g_print ("sending packet %u||%s||\n", s->len, s->str);
                   send_datagram (s);
                   g_string_assign (s, "index\n");
                   try++;

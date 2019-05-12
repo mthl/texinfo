@@ -51,11 +51,61 @@ remove_socket (void)
     unlink (socket_file);
 }
 
+WebKitWebView *webView = 0;
+
 static char *next_link, *prev_link, *up_link;
 
 GtkEntry *index_entry = 0;
 GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
+
+void
+load_relative_url (char *href)
+{
+  char *link = 0;
+
+  const char *current_uri = webkit_web_view_get_uri (webView);
+  if (current_uri)
+    {
+      const char *p = current_uri;
+      const char *q;
+
+      g_print ("current uri is |%s|\n", current_uri);
+      /* Set p to after the last '/'. */
+      while ((q = strchr (p, '/')))
+        {
+          q++;
+          p = q;
+        }
+      if (p != current_uri)
+        {
+          link = malloc ((p - current_uri)
+                         + strlen (href) + 1);
+          memcpy (link, current_uri, p - current_uri);
+          strcpy (link + (p - current_uri), href);
+
+          g_print ("LOADING %s\n", link);
+          webkit_web_view_load_uri (webView, link);
+        }
+    }
+  free (link);
+}
+
+gboolean
+match_selected_cb (GtkEntryCompletion *widget,
+                   GtkTreeModel       *model,
+                   GtkTreeIter        *iter,
+                   gpointer            user_data)
+{
+  GValue value = G_VALUE_INIT;
+
+  gtk_tree_model_get_value (model,
+			    iter,
+			    1,
+			    &value);
+  load_relative_url (g_value_get_string (&value));
+  return TRUE;
+}
 
 void
 save_completions (char *p)
@@ -64,27 +114,36 @@ save_completions (char *p)
 
   if (!index_completion)
     {
-      index_store = gtk_list_store_new (1, G_TYPE_STRING);
+      index_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
       index_completion = gtk_entry_completion_new ();
+      g_signal_connect (index_completion, "match-selected",
+                        G_CALLBACK(match_selected_cb), NULL);
       gtk_entry_completion_set_model (index_completion,
                                       GTK_TREE_MODEL(index_store));
       gtk_entry_completion_set_text_column (index_completion, 0);
       gtk_entry_set_completion (index_entry, index_completion);
     }
 
-  char *q;
+  char *q, *q2;
   while ((q = strchr (p, '\n')))
     {
-      *q = 0;
+      *q++ = 0;
+      q2 = strchr (q, '\n');
+      if (!q2)
+        {
+          g_print ("incomplete packet\n");
+          return;
+        }
+      *q2++ = 0;
 
       g_print ("add index entry %s\n", p);
 
       gtk_list_store_append (index_store, &iter);
       gtk_list_store_set (index_store, &iter,
-                          0, p,
+                          0, p, 1, q,
                           -1);
 
-      p = q + 1;
+      p = q2;
     }
 }
 
@@ -249,7 +308,7 @@ main(int argc, char* argv[])
 		      G_CALLBACK (initialize_web_extensions),
 		      NULL);
 
-    WebKitWebView *webView = WEBKIT_WEB_VIEW(
+    webView = WEBKIT_WEB_VIEW(
                                  webkit_web_view_new_with_group(group));
 
     // Create an 800x600 window that will contain the browser instance
@@ -294,7 +353,6 @@ main(int argc, char* argv[])
 
     webkit_web_view_load_uri (webView,
                  "file:/home/g/src/texinfo/GIT/js/test/hello/index.html");
-                 //"file:/home/g/src/texinfo/GIT/js/wkinfo/test.html");
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);
