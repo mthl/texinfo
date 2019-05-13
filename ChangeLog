@@ -1,3 +1,8 @@
+2019-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/tests/run_parser_all.sh: Do not use a staging directory to 
+	remove CVS and .svn directories, as we don't use CVN or SVN.
+
 2019-05-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Add eww. From Tsuyoshi Kitamoto 
