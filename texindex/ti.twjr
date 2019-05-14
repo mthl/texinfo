@@ -120,17 +120,17 @@ files produced by the @file{texinfo.tex} file.
 * Helper functions::               @code{del_array()},
                                    @code{check_split_null()}, @code{fatal()},
                                    @dots{}
-@ del_array::                      Clearing out an array.
-@ check_split_null::               Checking if @command{awk} splits on the
+* del_array::                      Clearing out an array.
+* check_split_null::               Checking if @command{awk} splits on the
                                    null string.
-@ char_split::                     Splitting a line into individual
+* char_split::                     Splitting a line into individual
                                    characters.
-@ fatal::                          Printing fatal errors.
-@ is@dots{} functions::            Checking character types.
-@ make_regexp::                    Make a regexp to match @TeX{ control
+* fatal::                          Printing fatal errors.
+* is@dots{} functions::            Checking character types.
+* make_regexp::                    Make a regexp to match @TeX{ control
                                    sequences.
-@ escape::                         Escaping backslashes for strings.
-@ min::                            Get the minimum of two numbers.
+* escape::                         Escaping backslashes for strings.
+* min::                            Get the minimum of two numbers.
 * I18N::                           Internationalization.
 @end detailmenu
 @end menu
