@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-04-12.13}
+\def\texinfoversion{2019-05-18.15}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -4952,6 +4952,8 @@ end
   \definedummyword\sup
   \definedummyword\textdegree
   %
+  \definedummyword\subentry
+  %
   % We want to disable all macros so that they are not expanded by \write.
   \macrolist
   \let\value\dummyvalue
@@ -5224,10 +5226,10 @@ end
 }
 
 \def\indexwriteseealso#1{
-  \gdef\pagenumbertext{@seealso{#1}}%
+  \gdef\pagenumbertext{\string\seealso{#1}}%
 }
 \def\indexwriteseeentry#1{
-  \gdef\pagenumbertext{@seeentry{#1}}%
+  \gdef\pagenumbertext{\string\seeentry{#1}}%
 }
 
 % The default definitions
