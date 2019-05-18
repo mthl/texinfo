@@ -1,3 +1,15 @@
+2019-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex: Specify "@set txiindexescapeisbackslash" in 
+	order to use backslashes in index files by default.
+
+2019-05-18  Arnold D. Robbins  <arnold@skeeve.com>
+
+	* doc/texinfo.tex (\definedummies): Define \subentry as a dummy.
+	(\indexwriteseealso, \indexwriteseeentry): Fix writing 
+	'seeentry' and 'seealso' commands for when backslash is the 
+	escape.
+
 2019-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/run_parser_all.sh: Do not use a staging directory to 

@@ -5317,6 +5317,15 @@ end
 % the current value of \escapechar.
 \def\escapeisbackslash{\escapechar=`\\}
 
+% Use \ in index files by default.  texi2dvi didn't support @ as as the escape 
+% character (as it checked for "\entry" in the files, and not "@entry").  When 
+% the new version of texi2dvi has had a chance to become more prevalent, then 
+% the escape character can change back to @ again.  This should be an easy 
+% change to make now because both @ and \ are only used as escape characters in 
+% index files, never standing for themselves. 
+%
+\set txiindexescapeisbackslash
+
 % Write the entry in \indextext to the index file.
 %
 \def\doindwrite{%
