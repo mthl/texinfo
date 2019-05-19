@@ -324,12 +324,19 @@ key by escaping them with the @dfn{command character}.
 
 @cindex backslash vs.@: at
 @cindex command character, @samp{\} vs.@: @samp{@@}
-In the example above, the command character is @samp{@@}
-(as in Texinfo itself).  However, prior to March, 2019, the command
-character was a backslash (@samp{\}), so @file{texindex.awk} must be
-able to work with both kinds of input.
-The command character is determined at run time by looking at the
-first character on the first line of each input file.
+In the example above, the command character is @samp{@@} (as in Texinfo
+itself).  Historically, however, the command character was backslash
+(@samp{\}), and @file{texindex.awk} can handle either one.
+
+Because older versions of @command{texi2dvi} only understand backslash as
+the command character, it remains set to backslash, so that newer versions
+of @file{texinfo.tex} will work with older versions of @command{texi2dvi}.
+Once the newer version of @command{texi2dvi} that also understands
+@samp{@@} has had a chance to spread, (we can hope that) the command
+character will change to @samp{@@}.
+
+The command character is determined at run time by looking at the first
+character on the first line of each input file.
 
 The fields are as follows:
 
@@ -337,7 +344,7 @@ The fields are as follows:
 @item sortkey
 The text to use for sorting index entries.
 Generally, this is the text of the line with all markup removed.
-When an @code{@@sortas} clause is provided, its contents used instead.
+When an @code{@@sortas} clause is provided, its contents are used instead.
 This field should contain only ASCII characters.
 
 When there are subentries, the sort key is the concatenation of three
@@ -757,7 +764,7 @@ We use @code{substr()} here to avoid possible hassles with leading
 backslashes in @code{sub()}.
 
 @<Remove leading @code{\entry} or @code{@@entry}@>=
-$0 = substr($0, 7)  # remove leading \entry or @@entry
+$0 = substr($0, 7)  # remove leading \entry or @entry
 @
 
 @node Get the initial
@@ -1656,7 +1663,7 @@ for lines with page numbers. Otherwise, a ``see'' entry followed
 by a regular multilevel entry is not handled correctly.
 
 When there exist both regular index entries for a topic and
-also a ``see also'' entry, we place the ``see entry'' text
+also a ``see also'' entry, we place the ``see also'' text
 after all the page numbers, so that there is only one printed
 index entry for the topic.
 
