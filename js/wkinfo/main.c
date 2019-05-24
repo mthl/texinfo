@@ -300,9 +300,16 @@ main(int argc, char* argv[])
     msg ("started\n");
 
 
-    webkit_web_context_set_process_model (
-      webkit_web_context_get_default (),
-      WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES); 
+    /* This is used to use a separate process for the web browser
+       that looks up the index files.  This slows the start-up of the program, 
+       but stops the program from freezing while the index files are processed. 
+     */
+    if (1)
+      {
+        webkit_web_context_set_process_model (
+          webkit_web_context_get_default (),
+          WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES); 
+      }
 
     WebKitWebViewGroup *group = webkit_web_view_group_new (NULL);
 
@@ -320,7 +327,6 @@ main(int argc, char* argv[])
     webView = WEBKIT_WEB_VIEW(
                                  webkit_web_view_new_with_group(group));
 
-    // Create an 800x600 window that will contain the browser instance
     GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
 

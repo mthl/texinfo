@@ -30,8 +30,6 @@ remove_our_socket (void)
     unlink (our_socket_file);
 }
 
-static int send_index_p = 0;
-
 gboolean
 request_callback (WebKitWebPage     *web_page,
 		  WebKitURIRequest  *request,
@@ -42,8 +40,6 @@ request_callback (WebKitWebPage     *web_page,
 
   g_print ("Intercepting link <%s>\n", uri);
 
-  send_index_p = 0;
-  
   const char *p = strchr (uri, '?');
   if (p)
     {
@@ -56,7 +52,10 @@ request_callback (WebKitWebPage     *web_page,
       p++;
       g_print ("request type %s\n", p);
       if (!strcmp (p, "send-index"))
-        send_index_p = 1;
+        {
+          g_object_set_data (G_OBJECT(web_page), "send-index",
+                             GINT_TO_POINTER(1));
+        }
       
     }
 
@@ -174,6 +173,8 @@ document_loaded_callback (WebKitWebPage *web_page,
    g_print ("Found %d links\n",
     webkit_dom_html_collection_get_length (links));
 
+   gint send_index_p
+     = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "send-index"));
    if (send_index_p)
      {
        send_index (links, num_links);
