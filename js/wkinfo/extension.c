@@ -128,7 +128,7 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
               if (s->len > PACKET_SIZE && try != 1)
                 {
                   g_string_truncate (s, old_len);
-                  g_print ("sending packet %u||%s||\n", s->len, s->str);
+                  // g_print ("sending packet %u||%s||\n", s->len, s->str);
                   send_datagram (s);
                   g_string_assign (s, "index\n");
                   try++;
@@ -141,6 +141,8 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
   send_datagram (s);
 
   g_string_free (s, TRUE);
+
+  g_print ("index sent\n");
 }
 
 void

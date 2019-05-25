@@ -59,6 +59,31 @@ GtkEntry *index_entry = 0;
 GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
 
+gboolean indices_loaded = FALSE;
+WebKitWebView *hiddenWebView = NULL;
+
+char *info_dir = 0;
+
+void
+load_indices (void)
+{
+  if (indices_loaded)
+    return;
+  indices_loaded = TRUE;
+
+  /* Create a web view to parse index files.  */
+  hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
+
+  GString *s = g_string_new (NULL);
+  g_string_append (s, "file:");
+  g_string_append (s, info_dir);
+  g_string_append (s, "/elisp/Index.html?send-index");
+
+  webkit_web_view_load_uri (hiddenWebView, s->str);
+  g_string_free (s, TRUE);
+}
+
+
 void
 load_relative_url (const char *href)
 {
@@ -137,7 +162,7 @@ save_completions (char *p)
         }
       *q2++ = 0;
 
-      g_print ("add index entry %s\n", p);
+      // g_print ("add index entry %s\n", p);
 
       gtk_list_store_append (index_store, &iter);
       gtk_list_store_set (index_store, &iter,
@@ -297,13 +322,13 @@ main(int argc, char* argv[])
 {
     gtk_init(&argc, &argv);
 
-    msg ("started\n");
-
+    info_dir = getenv ("INFO_HTML_DIR");
+    if (!info_dir)
+      info_dir = "/home/g/src/texinfo/GIT/js/test/";
 
     /* This is used to use a separate process for the web browser
-       that looks up the index files.  This slows the start-up of the program, 
-       but stops the program from freezing while the index files are processed. 
-     */
+       that looks up the index files.  This stops the program from freezing 
+       while the index files are processed.  */
     if (1)
       {
         webkit_web_context_set_process_model (
@@ -324,8 +349,7 @@ main(int argc, char* argv[])
 		      G_CALLBACK (initialize_web_extensions),
 		      NULL);
 
-    webView = WEBKIT_WEB_VIEW(
-                                 webkit_web_view_new_with_group(group));
+    webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_group(group));
 
     GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
@@ -347,9 +371,6 @@ main(int argc, char* argv[])
 
     gtk_widget_hide (GTK_WIDGET(index_entry));
 
-    /* Create a web view to parse index files.  */
-    WebKitWebView *hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
-
     // Set up callbacks so that if either the main window or the browser 
     // instance is closed, the program will exit.
     g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
@@ -359,26 +380,18 @@ main(int argc, char* argv[])
 
     gtk_widget_show_all (main_window);
 
-    char *env = getenv ("INFO_HTML_DIR");
-    if (!env)
-      env = "/home/g/src/texinfo/GIT/js/test/";
-
-    GString *s = g_string_new (NULL);
-    g_string_append (s, "file:");
-    g_string_append (s, env);
-    g_string_append (s, "/elisp/Index.html?send-index");
-
-    webkit_web_view_load_uri (hiddenWebView, s->str);
-
     /* Make sure that when the browser area becomes visible, it will get mouse
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
-    g_string_assign (s, "");
+    GString *s = g_string_new (NULL);
     g_string_append (s, "file:");
-    g_string_append (s, env);
+    g_string_append (s, info_dir);
     g_string_append (s, "/elisp/index.html");
     webkit_web_view_load_uri (webView, s->str);
+    g_string_free (s, TRUE);
+
+    load_indices ();
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);
@@ -414,6 +427,7 @@ onkeypress (GtkWidget *webView,
                                 up_link);
       break;
     case GDK_KEY_i:
+      load_indices ();
       show_index ();
       break;
     default:
