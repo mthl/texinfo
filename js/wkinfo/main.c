@@ -77,7 +77,7 @@ load_indices (void)
   GString *s = g_string_new (NULL);
   g_string_append (s, "file:");
   g_string_append (s, info_dir);
-  g_string_append (s, "/elisp/Index.html?send-index");
+  g_string_append (s, "/hello/Concept-index.html?send-index");
 
   webkit_web_view_load_uri (hiddenWebView, s->str);
   g_string_free (s, TRUE);
@@ -315,6 +315,54 @@ hide_index_cb (GtkWidget *widget,
 }
 
 
+gboolean
+decide_policy_cb (WebKitWebView           *web_view,
+                  WebKitPolicyDecision    *decision,
+                  WebKitPolicyDecisionType type,
+                  gpointer                 user_data)
+{
+  switch (type)
+    {
+    case WEBKIT_POLICY_DECISION_TYPE_NAVIGATION_ACTION: {
+      WebKitNavigationPolicyDecision *navigation_decision
+        = WEBKIT_NAVIGATION_POLICY_DECISION (decision);
+
+      WebKitURIRequest *request
+        = webkit_navigation_policy_decision_get_request (navigation_decision);
+
+      const char *uri = webkit_uri_request_get_uri (request);
+
+      /* Check for an external URL. */
+      if (!memcmp (uri, "http:", 5) || !memcmp(uri, "https:", 6))
+        {
+          g_print ("link blocked");
+          webkit_policy_decision_ignore (decision);
+        }
+      else
+        webkit_policy_decision_use (decision);
+
+      break;
+    }
+    case WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION: {
+       WebKitNavigationPolicyDecision *navigation_decision
+	 = WEBKIT_NAVIGATION_POLICY_DECISION (decision);
+       /* Make a policy decision here. */
+       break;
+    }
+    case WEBKIT_POLICY_DECISION_TYPE_RESPONSE: {
+       WebKitResponsePolicyDecision *response
+	 = WEBKIT_RESPONSE_POLICY_DECISION (decision);
+       /* Make a policy decision here. */
+       break;
+    }
+    default:
+       /* Making no decision results in webkit_policy_decision_use(). */
+       return FALSE;
+    }
+   return TRUE;
+}
+
+
 static GMainLoop *main_loop;
 
 int
@@ -371,6 +419,9 @@ main(int argc, char* argv[])
 
     gtk_widget_hide (GTK_WIDGET(index_entry));
 
+    g_signal_connect (webView, "decide-policy",
+                      G_CALLBACK(decide_policy_cb), NULL);
+
     // Set up callbacks so that if either the main window or the browser 
     // instance is closed, the program will exit.
     g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
@@ -387,7 +438,7 @@ main(int argc, char* argv[])
     GString *s = g_string_new (NULL);
     g_string_append (s, "file:");
     g_string_append (s, info_dir);
-    g_string_append (s, "/elisp/index.html");
+    g_string_append (s, "/hello/index.html");
     webkit_web_view_load_uri (webView, s->str);
     g_string_free (s, TRUE);
 
