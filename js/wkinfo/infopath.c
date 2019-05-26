@@ -43,17 +43,17 @@ locate_manual (const char *manual)
     }
   closedir (d);
 
-  free (s);
-  s = malloc (datadir_len + strlen ("/")
+  char *s2 = malloc (datadir_len + strlen ("/")
                     + strlen (manual) + strlen ("/index.html") + 1);
-  sprintf (s, "%s/%s/index.html", datadir, manual);
+  sprintf (s2, "%s/%s/index.html", datadir, manual);
 
   struct stat dummy;
-  if (stat (s, &dummy) == -1)
+  if (stat (s2, &dummy) == -1)
     {
-      fprintf (stderr, "no file %s\n", s);
+      fprintf (stderr, "no file %s\n", s2);
       return 0;
     }
+
   return s;
 }
 

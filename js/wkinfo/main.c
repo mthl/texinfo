@@ -134,6 +134,12 @@ match_selected_cb (GtkEntryCompletion *widget,
 }
 
 void
+clear_completions (void)
+{
+  gtk_list_store_clear (index_store);
+}
+
+void
 save_completions (char *p)
 {
   GtkTreeIter iter;
@@ -173,11 +179,15 @@ save_completions (char *p)
     }
 }
 
+static char *current_manual_dir;
+
 void
 load_index_nodes (char *p)
 {
   GString *s;
   char *q;
+
+  g_print ("index nodes %s\n", p);
 
   s = g_string_new (NULL);
 
@@ -185,10 +195,13 @@ load_index_nodes (char *p)
     {
       *q = '\0';
       g_string_assign (s, "file:");
+      g_string_append (s, current_manual_dir);
+      g_string_append (s, "/");
       g_string_append (s, p);
       g_string_append (s, "?send-index");
 
       g_print ("load index node %s\n", s->str);
+      webkit_web_view_load_uri (hiddenWebView, s->str);
 
       p = q + 1;
     }
@@ -250,10 +263,19 @@ socket_cb (GSocket *socket,
       else if (!strcmp (buffer, "new-manual"))
         {
           g_print ("NEW MANUAL %s\n", p + 1);
+          clear_completions ();
+
+          char *q = strchr (p + 1, '\n');
+          if (!q)
+            break;
+          *q = 0;
 
           GString *s = g_string_new (NULL);
+          g_string_append (s, "file:");
           g_string_append (s, p + 1);
-          g_string_append (s, "?top-node");
+          free (current_manual_dir);
+          current_manual_dir = strdup (p + 1);
+          g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
 

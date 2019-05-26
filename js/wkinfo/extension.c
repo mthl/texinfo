@@ -58,40 +58,32 @@ static char *current_manual_dir;
 
 /* Called from request_callback. */
 void
-load_manual (char *manual, WebKitURIRequest  *request)
+load_manual (char *manual)
 {
-  char *new_manual = locate_manual (manual);
-  g_print ("NEW MANUAL AT %s\n", new_manual);
+  free (current_manual_dir);
+  current_manual_dir = locate_manual (manual);
+  g_print ("NEW MANUAL AT %s\n", current_manual_dir);
 
-  if (!new_manual)
+  if (!current_manual_dir)
     {
       free (manual);
       return;
     }
 
-  GString *s = g_string_new (NULL);
-  g_string_append (s, "file:");
-  g_string_append (s, new_manual);
-
   current_manual = manual;
-
-  webkit_uri_request_set_uri (request, s->str);
 
   /* Inform the main process the manual has changed so that it can
      load the indices. */
   GString *s1 = g_string_new (NULL);
   g_string_append (s1, "new-manual\n");
-  g_string_append (s1, s->str);
+  g_string_append (s1, current_manual_dir);
   g_string_append (s1, "\n");
 
   g_print ("SENDING %s\n", s1->str);
 
   send_datagram (s1);
 
-  g_string_free (s, TRUE);
   g_string_free (s1, TRUE);
-
-  free (new_manual);
 }
 
 gboolean
@@ -137,17 +129,17 @@ request_callback (WebKitWebPage     *web_page,
 
   if (!memcmp (uri, "file:", 5))
     {
-      g_print ("finding manual and node\n");
 
       char *manual, *node;
       /* The links in the HTML files should be relative links like
          "../MANUAL/NODE.html" but by the time this function is called
          they are absolute paths beginning "file:/". */
       parse_external_url (uri, &manual, &node);
+      g_print ("finding manual and node %s:%s\n", manual, node);
 
       if (!current_manual || strcmp(manual, current_manual) != 0)
         {
-          load_manual (manual, request);
+          load_manual (manual);
         }
     }
 
@@ -208,7 +200,6 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
       free (rel); free (id);
     }
 
-  g_print ("found index nodes %s\n", s->str);
   send_datagram (s);
   g_string_free (s, TRUE);
 }
