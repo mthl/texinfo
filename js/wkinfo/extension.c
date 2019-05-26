@@ -32,6 +32,27 @@ remove_our_socket (void)
 }
 
 
+void
+send_datagram (GString *s)
+{
+  ssize_t result;
+
+  if (s->len > PACKET_SIZE)
+    {
+      g_print ("datagram too big");
+      return;
+    }
+
+  result = sendto (socket_id, s->str, s->len + 1, 0,
+         (struct sockaddr *) &main_name, main_name_size);
+
+  if (result == -1)
+    {
+      g_print ("sending datagram failed: %s\n",
+               strerror(errno));
+    }
+}
+
 static char *current_manual;
 
 /* Called from request_callback. */
@@ -54,7 +75,21 @@ load_manual (char *manual, WebKitURIRequest  *request)
   current_manual = manual;
 
   webkit_uri_request_set_uri (request, s->str);
+
+  /* Inform the main process the manual has changed so that it can
+     load the indices. */
+  GString *s1 = g_string_new (NULL);
+  g_string_append (s1, "new-manual\n");
+  g_string_append (s1, s->str);
+  g_string_append (s1, "\n");
+
+  g_print ("SENDING %s\n", s1->str);
+
+  send_datagram (s1);
+
   g_string_free (s, TRUE);
+  g_string_free (s1, TRUE);
+
   free (new_manual);
 }
 
@@ -105,20 +140,6 @@ request_callback (WebKitWebPage     *web_page,
     }
 
   return FALSE;
-}
-
-void
-send_datagram (GString *s)
-{
-  ssize_t result;
-  result = sendto (socket_id, s->str, s->len + 1, 0,
-         (struct sockaddr *) &main_name, main_name_size);
-
-  if (result == -1)
-    {
-      g_print ("sending datagram failed: %s\n",
-               strerror(errno));
-    }
 }
 
 void

@@ -225,6 +225,14 @@ socket_cb (GSocket *socket,
           save_completions (p);
 
         }
+      else if (!strcmp (buffer, "new-manual"))
+        {
+          g_print ("NEW MANUAL %s\n", p + 1);
+        }
+      else if (!strcmp (buffer, "index-node"))
+        {
+          /* Receive URL of file containing an index. */
+        }
       else
         {
           g_print ("Unknown message type '%s'\n", buffer);
