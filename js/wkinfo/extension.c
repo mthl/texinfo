@@ -54,6 +54,7 @@ send_datagram (GString *s)
 }
 
 static char *current_manual;
+static char *current_manual_dir;
 
 /* Called from request_callback. */
 void
@@ -103,6 +104,12 @@ request_callback (WebKitWebPage     *web_page,
 
   g_print ("Intercepting link <%s>\n", uri);
 
+  /* Clear flags on WebKitWebPage object. */
+  g_object_set_data (G_OBJECT(web_page), "top-node",
+                     GINT_TO_POINTER(0));
+  g_object_set_data (G_OBJECT(web_page), "send-index",
+                     GINT_TO_POINTER(0));
+
   const char *p = strchr (uri, '?');
   if (p)
     {
@@ -117,6 +124,11 @@ request_callback (WebKitWebPage     *web_page,
       if (!strcmp (p, "send-index"))
         {
           g_object_set_data (G_OBJECT(web_page), "send-index",
+                             GINT_TO_POINTER(1));
+        }
+      else if (!strcmp (p, "top-node"))
+        {
+          g_object_set_data (G_OBJECT(web_page), "top-node",
                              GINT_TO_POINTER(1));
         }
       
@@ -140,6 +152,65 @@ request_callback (WebKitWebPage     *web_page,
     }
 
   return FALSE;
+}
+
+/* Given the main index.html Top node in the document, find the nodes 
+   containing indices. */
+void
+find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
+{
+  g_print ("looking for indices\n");
+
+  gulong i = 0;
+  GString *s = g_string_new (NULL);
+
+  g_string_assign (s, "index-nodes\n");
+
+  for (; i < num_links; i++)
+    {
+      WebKitDOMNode *node
+        = webkit_dom_html_collection_item (links, i);
+      if (!node)
+        {
+          g_print ("No node\n");
+          return;
+        }
+
+      WebKitDOMElement *element;
+      if (WEBKIT_DOM_IS_ELEMENT(node))
+        {
+          element = WEBKIT_DOM_ELEMENT(node);
+        }
+      else
+        {
+          /* When would this happen? */
+          g_print ("Not an DOM element\n");
+          continue;
+        }
+
+      gchar *href = webkit_dom_element_get_attribute (element, "href");
+
+
+      char *rel = webkit_dom_element_get_attribute (element, "rel");
+      char *id = webkit_dom_element_get_attribute (element, "id");
+
+      /* Look for links to index nodes in the main menu.
+         This is not the best way to check for index nodes.  We should
+         have <a rel="index"> on the links instead. */
+      if (href && !*rel && !*id
+          && (strstr (href, "-Index.html")
+              || strstr (href, "-index.html")
+              || strstr (href, "/Index.html")))
+        {
+          g_string_append (s, href);
+          g_string_append (s, "\n");
+        }
+      free (rel); free (id);
+    }
+
+  g_print ("found index nodes %s\n", s->str);
+  send_datagram (s);
+  g_string_free (s, TRUE);
 }
 
 void
@@ -241,12 +312,22 @@ document_loaded_callback (WebKitWebPage *web_page,
 
    gint send_index_p
      = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "send-index"));
+   gint top_node_p
+     = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "top-node"));
+
    if (send_index_p)
      {
        send_index (links, num_links);
        return;
      }
 
+   if (top_node_p)
+     {
+       find_indices (links, num_links);
+       return;
+     }
+
+   /* Find and send the Next, Prev and Up links to the main process. */
    gulong i;
    for (i = 0; i < num_links; i++)
      {

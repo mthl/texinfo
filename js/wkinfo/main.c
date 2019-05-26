@@ -173,6 +173,28 @@ save_completions (char *p)
     }
 }
 
+void
+load_index_nodes (char *p)
+{
+  GString *s;
+  char *q;
+
+  s = g_string_new (NULL);
+
+  while ((q = strchr (p, '\n')))
+    {
+      *q = '\0';
+      g_string_assign (s, "file:");
+      g_string_append (s, p);
+      g_string_append (s, "?send-index");
+
+      g_print ("load index node %s\n", s->str);
+
+      p = q + 1;
+    }
+  g_string_free (s, TRUE);
+}
+
 gboolean
 socket_cb (GSocket *socket,
            GIOCondition condition,
@@ -228,10 +250,19 @@ socket_cb (GSocket *socket,
       else if (!strcmp (buffer, "new-manual"))
         {
           g_print ("NEW MANUAL %s\n", p + 1);
+
+          GString *s = g_string_new (NULL);
+          g_string_append (s, p + 1);
+          g_string_append (s, "?top-node");
+          webkit_web_view_load_uri (hiddenWebView, s->str);
+          g_string_free (s, TRUE);
+
         }
-      else if (!strcmp (buffer, "index-node"))
+      else if (!strcmp (buffer, "index-nodes"))
         {
-          /* Receive URL of file containing an index. */
+          /* Receive URL of files containing an index. */
+          p++;
+          load_index_nodes (p);
         }
       else
         {
