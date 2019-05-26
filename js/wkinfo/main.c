@@ -377,7 +377,7 @@ main(int argc, char* argv[])
     /* This is used to use a separate process for the web browser
        that looks up the index files.  This stops the program from freezing 
        while the index files are processed.  */
-    if (1)
+    if (0)
       {
         webkit_web_context_set_process_model (
           webkit_web_context_get_default (),
@@ -435,10 +435,14 @@ main(int argc, char* argv[])
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
+#define MANUAL "hello"
+
     GString *s = g_string_new (NULL);
     g_string_append (s, "file:");
     g_string_append (s, info_dir);
-    g_string_append (s, "/hello/index.html");
+    g_string_append (s, "/");
+    g_string_append (s, MANUAL);
+    g_string_append (s, "/index.html");
     webkit_web_view_load_uri (webView, s->str);
     g_string_free (s, TRUE);
 

@@ -13,6 +13,7 @@
 #include <webkit2/webkit-web-extension.h>
 
 #include "common.h"
+#include "infopath.h"
 
 /* For communicating with the main Gtk process */
 static struct sockaddr_un main_name;
@@ -28,6 +29,33 @@ remove_our_socket (void)
 {
   if (our_socket_file)
     unlink (our_socket_file);
+}
+
+
+static char *current_manual;
+
+/* Called from request_callback. */
+void
+load_manual (char *manual, WebKitURIRequest  *request)
+{
+  char *new_manual = locate_manual (manual);
+  g_print ("NEW MANUAL AT %s\n", new_manual);
+
+  if (!new_manual)
+    {
+      free (manual);
+      return;
+    }
+
+  GString *s = g_string_new (NULL);
+  g_string_append (s, "file:");
+  g_string_append (s, new_manual);
+
+  current_manual = manual;
+
+  webkit_uri_request_set_uri (request, s->str);
+  g_string_free (s, TRUE);
+  free (new_manual);
 }
 
 gboolean
@@ -57,11 +85,26 @@ request_callback (WebKitWebPage     *web_page,
                              GINT_TO_POINTER(1));
         }
       
+      return FALSE;
     }
 
-  /* Could block external links here */
+  if (!memcmp (uri, "file:", 5))
+    {
+      g_print ("finding manual and node\n");
 
-  return false;
+      char *manual, *node;
+      /* The links in the HTML files should be relative links like
+         "../MANUAL/NODE.html" but by the time this function is called
+         they are absolute paths beginning "file:/". */
+      parse_external_url (uri, &manual, &node);
+
+      if (!current_manual || strcmp(manual, current_manual) != 0)
+        {
+          load_manual (manual, request);
+        }
+    }
+
+  return FALSE;
 }
 
 void

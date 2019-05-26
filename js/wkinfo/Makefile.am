@@ -3,7 +3,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 webextension_LTLIBRARIES = libmyappwebextension.la
 webextensiondir = $(libdir)/MyApp/web-extension
-libmyappwebextension_la_SOURCES = extension.c common.h
+libmyappwebextension_la_SOURCES = extension.c common.h infopath.c infopath.h
 libmyappwebextension_la_CFLAGS = $(AM_CFLAGS) $(WEB_EXTENSION_CFLAGS)
 libmyappwebextension_la_LIBADD = $(WEB_EXTENSION_LIBS)
 libmyappwebextension_la_LDFLAGS = -module -avoid-version -no-undefined
