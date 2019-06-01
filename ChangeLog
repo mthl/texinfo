@@ -1,3 +1,8 @@
+2019-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.tex (\printindex): Remove \message printing 
+	informative statement.  Report from Karl Berry.
+
 2019-05-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex: Specify "@set txiindexescapeisbackslash" in 
