@@ -172,7 +172,7 @@ emacs		node	${EMACS}/html_node/emacs/
  eshell		node	${EMACS}/html_node/eshell/
  #
  eww		mono	${EMACS}/html_mono/eww.html
- eww		node	$(EMACS}/html_node/eww/
+ eww		node	${EMACS}/html_node/eww/
  #
  flymake	mono	${EMACS}/html_mono/flymake.html
  flymake	node	${EMACS}/html_node/flymake/
