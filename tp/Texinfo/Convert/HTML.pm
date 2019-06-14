@@ -190,6 +190,17 @@ sub preformatted_number($)
   return $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'preformatted_number'};
 }
 
+sub count_elements_in_filename($$)
+{
+  my $self = shift;
+  my $filename = shift;
+  
+  if (defined($self->{'elements_in_file_count'}->{$filename})) {
+    return $self->{'elements_in_file_count'}->{$filename};
+  }
+  return undef;
+}
+
 sub top_format($)
 {
   my $self = shift;
@@ -415,6 +426,16 @@ sub command_href($$;$$)
     if (!defined($filename) 
          or $filename ne $target_filename) {
       $href .= $target_filename;
+      # omit target if the command is an element command, there is only
+      # one element in file and there is a file in the href
+      if (defined($filename)
+          and defined($self->command_element_command($command))
+          and $self->command_element_command($command) eq $command) {
+        my $count_elements_in_file = $self->count_elements_in_filename($target_filename);
+        if (defined($count_elements_in_file) and $count_elements_in_file == 1) {
+          $target = '';
+        }
+      }
     }
   }
   $href .= '#' . $target if ($target ne '');
@@ -6848,6 +6869,12 @@ sub output($$)
 
   $self->_prepare_index_entries();
   $self->_prepare_footnotes();
+  
+  # 'file_counters' is dynamic, decreased when the element is encountered
+  # 'elements_in_file_count' is not modified afterwards
+  foreach my $filename (keys(%{$self->{'file_counters'}})) {
+    $self->{'elements_in_file_count'}->{$filename} = $self->{'file_counters'}->{$filename};
+  }
 
   my $structure_status = $self->run_stage_handlers($root, 'structure');
   return undef unless($structure_status);

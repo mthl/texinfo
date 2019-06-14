@@ -1,3 +1,16 @@
+2019-06-14  Patrice Dumas  <pertusus@free.fr>
+
+	Do not output HTML target when there is only one element in file
+
+	* tp/Texinfo/Convert/HTML.pm (count_elements_in_filename, command_href, 
+	output): add 'elements_in_file_count' to converter object, set equal 
+	to 'file_counters' to record and keep the information of the number 
+	of elements in files.
+	Add count_elements_in_filename() to return this number.
+	Do not output an HTML target for hrefs to elements (elements are nodes 
+	in most cases) when there is only one element in the href destination 
+	file.
+
 2019-06-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\printindex): Remove \message printing 
