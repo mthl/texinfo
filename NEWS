@@ -11,8 +11,7 @@ See the manual for detailed information.
 
 * Language:
   . support of index subentries and sub-subentries with @subentry
-  . new commands @seeentry and @seealso in index entries [not fully
-    implemented in texi2any yet?]
+  . new commands @seeentry and @seealso in index entries
   . no need to wrap Top node in @ifnottex - omitted automatically when
     processed with TeX
   . UTF-8 is the default input encoding
@@ -37,12 +36,11 @@ See the manual for detailed information.
     runs where --tidy was not used
 
 * texinfo.tex
-  . @ is now used as the escape character in index files.  This should
-    have few user-visible effects, apart from a few obscure bugs being 
-    fixed.  Existing index files should be converted automatically when 
-    texi2dvi is run.
+  . @ can now be used as the escape character in index files.
+    This is disabled for now, until versions of texi2dvi that understand
+    such usage become more widespread. 
 
-    There are some incompatibilities:
+    Enabling the feature opens up some incompatibilities:
     . If the C implementation of texindex is used (from Texinfo versions
       before 6.0), then the indices will not display.  It is not 
       possible to support output from this version of texindex, because 
