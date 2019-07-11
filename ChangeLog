@@ -1,3 +1,9 @@
+2019-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2html: Remove file.  It has not worked for a long 
+	time due to invoking texi2any incorrectly.  Report from Adam 
+	Spiers.
+
 2019-06-14  Patrice Dumas  <pertusus@free.fr>
 
 	Do not output HTML target when there is only one element in file
