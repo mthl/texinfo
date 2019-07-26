@@ -3550,7 +3550,7 @@ Section  Section   Section  Section   Section  Section
 @end group
 @end example
 
-Using explicit pointers (not recommended, but for shown for purposes
+Using explicit pointers (not recommended, but shown for purposes
 of the example), the fully-written command to start Chapter@tie{}2
 would be this:
 

@@ -1,3 +1,8 @@
+2019-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Node Menu Illustration): Minor grammar fix.  
+	Report from Дилян Палаузов <dilyan.palauzov@aegee.org>.
+
 2019-07-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/texi2html: Remove file.  It has not worked for a long 
