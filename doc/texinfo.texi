@@ -21525,8 +21525,8 @@ plain text output, where it's not clear what should be done.
 @vindex VERSION @r{Automake variable}
 @pindex time-stamp.el
 The @file{version.texi} in the @code{@@include} command is maintained
-automatically by Automake (@pxref{Top,,, automake, GNU Automake}).  It
-sets the @samp{VERSION} and @samp{UPDATED} values used elsewhere.  If
+automatically by Automake (@pxref{Texinfo,,, automake, GNU Automake}).
+It sets the @samp{VERSION} and @samp{UPDATED} values used elsewhere.  If
 your distribution doesn't use Automake, but you do use Emacs, you may
 find the time-stamp.el package helpful (@pxref{Time Stamps,,, emacs,
 The GNU Emacs Manual}).
