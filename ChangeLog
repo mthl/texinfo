@@ -1,5 +1,12 @@
 2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Minimum): Put .texi first in the list and 
+	remove footnote about preferring the "longer extensions".  
+	Automake warns if .texi is not used.  Report from Дилян Палаузов 
+	<dilyan.palauzov@aegee.org>.
+
+2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (GNU Sample Texts): Mention UPDATED-MONTH 
 	variable in version.texi.  Report from Дилян Палаузов 
 	<dilyan.palauzov@aegee.org>.

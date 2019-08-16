@@ -1450,11 +1450,8 @@ regarding nesting of such commands, @pxref{Conditional Nesting}.)
 @cindex Texinfo file minimum
 
 By convention, the name of a Texinfo file ends with one of the 
-extensions @file{.texinfo}, @file{.texi}, @file{.txi}, or 
-@file{.tex}.@footnote{The longer extensions are preferred, since they 
-describe more clearly to a human reader the nature of the file.  The 
-shorter extensions are for operating systems that cannot handle long 
-file names.}
+extensions @file{.texi}, @file{.texinfo}, @file{.txi}, or 
+@file{.tex}.
 
 In order to be made into a printed manual and other output
 formats, a Texinfo file must begin with lines like this:
