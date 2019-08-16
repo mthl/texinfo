@@ -21522,14 +21522,15 @@ plain text output, where it's not clear what should be done.
 @item
 @pindex automake@r{, and version info}
 @vindex UPDATED @r{Automake variable}
+@vindex UPDATED-MONTH @r{Automake variable}
 @vindex VERSION @r{Automake variable}
 @pindex time-stamp.el
 The @file{version.texi} in the @code{@@include} command is maintained
 automatically by Automake (@pxref{Texinfo,,, automake, GNU Automake}).
-It sets the @samp{VERSION} and @samp{UPDATED} values used elsewhere.  If
-your distribution doesn't use Automake, but you do use Emacs, you may
-find the time-stamp.el package helpful (@pxref{Time Stamps,,, emacs,
-The GNU Emacs Manual}).
+It sets the @samp{VERSION}, @samp{UPDATED} and @samp{UPDATED-MONTH} 
+values used elsewhere.  If your distribution doesn't use Automake, but
+you do use Emacs, you may find the time-stamp.el package helpful
+(@pxref{Time Stamps,,, emacs, The GNU Emacs Manual}).
 
 @item
 The @code{@@syncodeindex} command reflects the recommendation to use
