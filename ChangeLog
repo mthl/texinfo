@@ -1,5 +1,14 @@
 2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Mark index nodes.
+
+	* tp/Texinfo/ParserNonXS.pm (_parse_texi) <line commands>,
+	* tp/Texinfo/XS/parsetexi/handle_commands.c (handle_line_command):
+	If @printindex is seen, record that the current node is an index 
+	node by setting the "isindex" extra value.
+
+2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Minimum): Put .texi first in the list and 
 	remove footnote about preferring the "longer extensions".  
 	Automake warns if .texi is not used.  Report from Дилян Палаузов 

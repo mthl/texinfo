@@ -644,6 +644,7 @@ $result_trees{'ftable_vtable'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -818,6 +819,7 @@ $result_sectioning{'ftable_vtable'} = {};
 $result_nodes{'ftable_vtable'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -826,6 +828,7 @@ $result_nodes{'ftable_vtable'} = {
 $result_menus{'ftable_vtable'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

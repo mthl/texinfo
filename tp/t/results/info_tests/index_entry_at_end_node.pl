@@ -423,6 +423,7 @@ $result_trees{'index_entry_at_end_node'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -667,6 +668,7 @@ $result_sectioning{'index_entry_at_end_node'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'indices',
                 'spaces_before_argument' => ' '
               }
@@ -732,6 +734,7 @@ $result_nodes{'index_entry_at_end_node'} = {
           'level' => 1,
           'number' => 'A'
         },
+        'isindex' => 1,
         'normalized' => 'indices',
         'spaces_before_argument' => ' '
       },
@@ -779,6 +782,7 @@ $result_menus{'index_entry_at_end_node'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'indices',
         'spaces_before_argument' => ' '
       },

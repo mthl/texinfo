@@ -161,6 +161,7 @@ $result_trees{'index_entry_in_footnote'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -229,6 +230,7 @@ $result_sectioning{'index_entry_in_footnote'} = {};
 $result_nodes{'index_entry_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -237,6 +239,7 @@ $result_nodes{'index_entry_in_footnote'} = {
 $result_menus{'index_entry_in_footnote'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

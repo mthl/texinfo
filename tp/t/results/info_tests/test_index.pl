@@ -193,6 +193,7 @@ $result_trees{'test_index'} = {
                               'cmdname' => 'node',
                               'contents' => [],
                               'extra' => {
+                                'isindex' => 1,
                                 'node_content' => [
                                   {}
                                 ],
@@ -4350,6 +4351,7 @@ $result_sectioning{'test_index'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
                 'spaces_before_argument' => ' '
               }
@@ -4482,6 +4484,7 @@ $result_nodes{'test_index'} = {
           'level' => 1,
           'number' => 'A'
         },
+        'isindex' => 1,
         'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
         'spaces_before_argument' => ' '
       },
@@ -4529,6 +4532,7 @@ $result_menus{'test_index'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'name1-looooooooooooooooooooooooooooooooooooooooooooooooooooooooong',
         'spaces_before_argument' => ' '
       },

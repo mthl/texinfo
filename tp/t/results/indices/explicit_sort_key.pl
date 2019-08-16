@@ -32,6 +32,7 @@ $result_trees{'explicit_sort_key'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -778,6 +779,7 @@ $result_sectioning{'explicit_sort_key'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -798,6 +800,7 @@ $result_nodes{'explicit_sort_key'} = {
       'extra' => {},
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -806,6 +809,7 @@ $result_nodes{'explicit_sort_key'} = {
 $result_menus{'explicit_sort_key'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

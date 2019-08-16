@@ -32,6 +32,7 @@ $result_trees{'subentry_and_sortas'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -294,6 +295,7 @@ $result_sectioning{'subentry_and_sortas'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -314,6 +316,7 @@ $result_nodes{'subentry_and_sortas'} = {
       'extra' => {},
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -322,6 +325,7 @@ $result_nodes{'subentry_and_sortas'} = {
 $result_menus{'subentry_and_sortas'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

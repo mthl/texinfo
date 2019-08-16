@@ -280,6 +280,7 @@ $result_trees{'syncode_index_print_both'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -380,6 +381,7 @@ $result_sectioning{'syncode_index_print_both'} = {};
 $result_nodes{'syncode_index_print_both'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -388,6 +390,7 @@ $result_nodes{'syncode_index_print_both'} = {
 $result_menus{'syncode_index_print_both'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

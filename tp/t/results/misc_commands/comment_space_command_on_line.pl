@@ -104,6 +104,7 @@ $result_trees{'comment_space_command_on_line'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -730,6 +731,7 @@ $result_sectioning{'comment_space_command_on_line'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -753,6 +755,7 @@ $result_nodes{'comment_space_command_on_line'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -761,6 +764,7 @@ $result_nodes{'comment_space_command_on_line'} = {
 $result_menus{'comment_space_command_on_line'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

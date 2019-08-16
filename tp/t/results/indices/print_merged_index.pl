@@ -93,6 +93,7 @@ $result_trees{'print_merged_index'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -140,6 +141,7 @@ $result_sectioning{'print_merged_index'} = {};
 $result_nodes{'print_merged_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -148,6 +150,7 @@ $result_nodes{'print_merged_index'} = {
 $result_menus{'print_merged_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

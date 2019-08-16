@@ -940,6 +940,7 @@ $result_trees{'multitable_anchor_and_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1163,6 +1164,7 @@ $result_sectioning{'multitable_anchor_and_index_entry'} = {};
 $result_nodes{'multitable_anchor_and_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -1171,6 +1173,7 @@ $result_nodes{'multitable_anchor_and_index_entry'} = {
 $result_menus{'multitable_anchor_and_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

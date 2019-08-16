@@ -776,6 +776,7 @@ $result_trees{'at_commands_in_raw'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -999,6 +1000,7 @@ $result_sectioning{'at_commands_in_raw'} = {};
 $result_nodes{'at_commands_in_raw'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -1007,6 +1009,7 @@ $result_nodes{'at_commands_in_raw'} = {
 $result_menus{'at_commands_in_raw'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

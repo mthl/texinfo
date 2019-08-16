@@ -574,6 +574,7 @@ $result_trees{'colon_in_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -720,6 +721,7 @@ $result_sectioning{'colon_in_index_entry'} = {};
 $result_nodes{'colon_in_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -728,6 +730,7 @@ $result_nodes{'colon_in_index_entry'} = {
 $result_menus{'colon_in_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

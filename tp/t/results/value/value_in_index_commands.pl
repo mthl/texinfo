@@ -746,6 +746,7 @@ $result_trees{'value_in_index_commands'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -941,6 +942,7 @@ $result_sectioning{'value_in_index_commands'} = {};
 $result_nodes{'value_in_index_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -949,6 +951,7 @@ $result_nodes{'value_in_index_commands'} = {
 $result_menus{'value_in_index_commands'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

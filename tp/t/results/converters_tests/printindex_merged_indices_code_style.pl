@@ -531,6 +531,7 @@ $result_trees{'printindex_merged_indices_code_style'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -675,6 +676,7 @@ $result_sectioning{'printindex_merged_indices_code_style'} = {};
 $result_nodes{'printindex_merged_indices_code_style'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -683,6 +685,7 @@ $result_nodes{'printindex_merged_indices_code_style'} = {
 $result_menus{'printindex_merged_indices_code_style'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

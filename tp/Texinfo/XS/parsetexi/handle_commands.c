@@ -692,6 +692,8 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_dircategory && current_node)
         line_warn ("@dircategory after first node");
+      else if (cmd == CM_printindex && current_node)
+        add_extra_integer (current_node, "isindex", 1);
 
       current = last_args_child (current);
 

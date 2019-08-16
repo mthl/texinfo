@@ -297,6 +297,7 @@ $result_trees{'syncodeindex_to_plain'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -393,6 +394,7 @@ $result_sectioning{'syncodeindex_to_plain'} = {};
 $result_nodes{'syncodeindex_to_plain'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -401,6 +403,7 @@ $result_nodes{'syncodeindex_to_plain'} = {
 $result_menus{'syncodeindex_to_plain'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

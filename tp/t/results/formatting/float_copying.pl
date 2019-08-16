@@ -342,6 +342,7 @@ $result_trees{'float_copying'} = {
                                               'cmdname' => 'node',
                                               'contents' => [],
                                               'extra' => {
+                                                'isindex' => 1,
                                                 'node_content' => [
                                                   {}
                                                 ],
@@ -1807,6 +1808,7 @@ $result_sectioning{'float_copying'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'Copying-and-floats',
                 'spaces_before_argument' => ' '
               }
@@ -1853,6 +1855,7 @@ $result_nodes{'float_copying'} = {
         'level' => 1,
         'number' => 'A'
       },
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },
@@ -1889,6 +1892,7 @@ $result_menus{'float_copying'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'Copying-and-floats',
       'spaces_before_argument' => ' '
     },

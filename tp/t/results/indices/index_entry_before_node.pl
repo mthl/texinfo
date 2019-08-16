@@ -462,6 +462,7 @@ $result_trees{'index_entry_before_node'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -620,6 +621,7 @@ $result_nodes{'index_entry_before_node'} = {
     'node_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },
@@ -667,6 +669,7 @@ $result_menus{'index_entry_before_node'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'second',
         'spaces_before_argument' => ' '
       },

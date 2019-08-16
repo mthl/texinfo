@@ -613,6 +613,7 @@ $result_trees{'before_node_and_section'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -888,6 +889,7 @@ $result_sectioning{'before_node_and_section'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'node1',
                 'spaces_before_argument' => ' '
               }
@@ -934,6 +936,7 @@ $result_nodes{'before_node_and_section'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'node1',
       'spaces_before_argument' => ' '
     },
@@ -970,6 +973,7 @@ $result_menus{'before_node_and_section'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'node1',
       'spaces_before_argument' => ' '
     },

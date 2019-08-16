@@ -516,6 +516,7 @@ $result_trees{'texi_formatting'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3303,6 +3304,7 @@ $result_trees{'texi_formatting'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -4241,6 +4243,7 @@ $result_sectioning{'texi_formatting'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -4344,6 +4347,7 @@ $result_sectioning{'texi_formatting'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter2',
                 'spaces_before_argument' => ' '
               }
@@ -4385,6 +4389,7 @@ $result_nodes{'texi_formatting'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4412,6 +4417,7 @@ $result_nodes{'texi_formatting'} = {
           },
           'level' => 1
         },
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },
@@ -4447,6 +4453,7 @@ $result_nodes{'texi_formatting'}{'node_next'} = $result_nodes{'texi_formatting'}
 $result_menus{'texi_formatting'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -4459,6 +4466,7 @@ $result_menus{'texi_formatting'} = {
     'menu_next' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'chapter2',
         'spaces_before_argument' => ' '
       },

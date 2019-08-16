@@ -349,6 +349,7 @@ $result_trees{'space_in_def_for_index'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -450,6 +451,7 @@ $result_sectioning{'space_in_def_for_index'} = {};
 $result_nodes{'space_in_def_for_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -458,6 +460,7 @@ $result_nodes{'space_in_def_for_index'} = {
 $result_menus{'space_in_def_for_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

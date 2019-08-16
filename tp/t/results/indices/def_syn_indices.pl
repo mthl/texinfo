@@ -1213,6 +1213,7 @@ $result_trees{'def_syn_indices'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1510,6 +1511,7 @@ $result_sectioning{'def_syn_indices'} = {};
 $result_nodes{'def_syn_indices'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -1518,6 +1520,7 @@ $result_nodes{'def_syn_indices'} = {
 $result_menus{'def_syn_indices'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

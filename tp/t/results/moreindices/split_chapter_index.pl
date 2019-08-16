@@ -348,6 +348,7 @@ $result_trees{'split_chapter_index'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1678,6 +1679,7 @@ $result_sectioning{'split_chapter_index'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'first',
                 'spaces_before_argument' => ' '
               }
@@ -1762,6 +1764,7 @@ $result_nodes{'split_chapter_index'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'first',
       'spaces_before_argument' => ' '
     },
@@ -1862,6 +1865,7 @@ $result_menus{'split_chapter_index'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'first',
       'spaces_before_argument' => ' '
     },

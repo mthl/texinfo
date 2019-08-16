@@ -806,6 +806,7 @@ $result_trees{'printindex_index_entry_in_copying_no_insertcopying'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1116,6 +1117,7 @@ $result_sectioning{'printindex_index_entry_in_copying_no_insertcopying'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter',
                 'spaces_before_argument' => ' '
               }
@@ -1162,6 +1164,7 @@ $result_nodes{'printindex_index_entry_in_copying_no_insertcopying'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },
@@ -1198,6 +1201,7 @@ $result_menus{'printindex_index_entry_in_copying_no_insertcopying'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },

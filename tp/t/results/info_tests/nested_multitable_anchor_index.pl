@@ -671,6 +671,7 @@ $result_trees{'nested_multitable_anchor_index'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -830,6 +831,7 @@ $result_sectioning{'nested_multitable_anchor_index'} = {};
 $result_nodes{'nested_multitable_anchor_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -838,6 +840,7 @@ $result_nodes{'nested_multitable_anchor_index'} = {
 $result_menus{'nested_multitable_anchor_index'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

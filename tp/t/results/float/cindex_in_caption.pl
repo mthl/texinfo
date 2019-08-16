@@ -291,6 +291,7 @@ $result_trees{'cindex_in_caption'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -388,6 +389,7 @@ $result_sectioning{'cindex_in_caption'} = {};
 $result_nodes{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -396,6 +398,7 @@ $result_nodes{'cindex_in_caption'} = {
 $result_menus{'cindex_in_caption'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

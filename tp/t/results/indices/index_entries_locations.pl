@@ -337,6 +337,7 @@ $result_trees{'index_entries_locations'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -460,6 +461,7 @@ $result_sectioning{'index_entries_locations'} = {};
 $result_nodes{'index_entries_locations'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -468,6 +470,7 @@ $result_nodes{'index_entries_locations'} = {
 $result_menus{'index_entries_locations'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

@@ -563,6 +563,7 @@ $result_trees{'empty_string_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -710,6 +711,7 @@ $result_sectioning{'empty_string_index_entry'} = {};
 $result_nodes{'empty_string_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -718,6 +720,7 @@ $result_nodes{'empty_string_index_entry'} = {
 $result_menus{'empty_string_index_entry'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

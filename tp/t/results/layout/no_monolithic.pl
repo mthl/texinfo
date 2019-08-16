@@ -380,6 +380,7 @@ $result_trees{'no_monolithic'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -683,6 +684,7 @@ $result_sectioning{'no_monolithic'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'chapter',
                 'spaces_before_argument' => ' '
               }
@@ -729,6 +731,7 @@ $result_nodes{'no_monolithic'} = {
         'level' => 1,
         'number' => 1
       },
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },
@@ -765,6 +768,7 @@ $result_menus{'no_monolithic'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'chapter',
       'spaces_before_argument' => ' '
     },

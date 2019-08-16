@@ -92,6 +92,7 @@ $result_trees{'index_split_nodes'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -876,6 +877,7 @@ $result_trees{'index_split_nodes'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1477,6 +1479,7 @@ $result_trees{'index_split_nodes'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1963,6 +1966,7 @@ $result_trees{'index_split_nodes'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -2282,6 +2286,7 @@ $result_trees{'index_split_nodes'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -2838,6 +2843,7 @@ $result_trees{'index_split_nodes'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3771,6 +3777,7 @@ $result_sectioning{'index_split_nodes'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -3785,6 +3792,7 @@ $result_sectioning{'index_split_nodes'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'first',
                 'spaces_before_argument' => ' '
               }
@@ -3800,6 +3808,7 @@ $result_sectioning{'index_split_nodes'} = {
                 'associated_node' => {
                   'cmdname' => 'node',
                   'extra' => {
+                    'isindex' => 1,
                     'normalized' => 'section-1',
                     'spaces_before_argument' => ' '
                   }
@@ -3831,6 +3840,7 @@ $result_sectioning{'index_split_nodes'} = {
                     'associated_node' => {
                       'cmdname' => 'node',
                       'extra' => {
+                        'isindex' => 1,
                         'normalized' => 'subsection-2',
                         'spaces_before_argument' => ' '
                       }
@@ -3868,6 +3878,7 @@ $result_sectioning{'index_split_nodes'} = {
                 'associated_node' => {
                   'cmdname' => 'node',
                   'extra' => {
+                    'isindex' => 1,
                     'normalized' => 'section-3',
                     'spaces_before_argument' => ' '
                   }
@@ -3935,6 +3946,7 @@ $result_nodes{'index_split_nodes'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -3964,6 +3976,7 @@ $result_nodes{'index_split_nodes'}{'node_prev'} = $result_nodes{'index_split_nod
 $result_menus{'index_split_nodes'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -3971,12 +3984,14 @@ $result_menus{'index_split_nodes'} = {
   'menu_next' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'first',
       'spaces_before_argument' => ' '
     },
     'menu_child' => {
       'cmdname' => 'node',
       'extra' => {
+        'isindex' => 1,
         'normalized' => 'section-1',
         'spaces_before_argument' => ' '
       },
@@ -3989,6 +4004,7 @@ $result_menus{'index_split_nodes'} = {
         'menu_next' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'subsection-2',
             'spaces_before_argument' => ' '
           },
@@ -4012,6 +4028,7 @@ $result_menus{'index_split_nodes'} = {
         'menu_next' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'section-3',
             'spaces_before_argument' => ' '
           },
@@ -4024,6 +4041,7 @@ $result_menus{'index_split_nodes'} = {
             'menu_next' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'node-2-in-section-3',
                 'spaces_before_argument' => ' '
               },

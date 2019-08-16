@@ -404,6 +404,7 @@ $result_trees{'index_entry_in_footnote_different_node_end'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -531,6 +532,7 @@ $result_nodes{'index_entry_in_footnote_different_node_end'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },
@@ -567,6 +569,7 @@ $result_menus{'index_entry_in_footnote_different_node_end'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'First',
       'spaces_before_argument' => ' '
     },

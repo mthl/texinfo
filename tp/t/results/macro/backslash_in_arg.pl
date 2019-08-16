@@ -284,6 +284,7 @@ $result_trees{'backslash_in_arg'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -375,6 +376,7 @@ $result_sectioning{'backslash_in_arg'} = {};
 $result_nodes{'backslash_in_arg'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -383,6 +385,7 @@ $result_nodes{'backslash_in_arg'} = {
 $result_menus{'backslash_in_arg'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

@@ -260,6 +260,7 @@ $result_trees{'double_syncodeindex'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -341,6 +342,7 @@ $result_sectioning{'double_syncodeindex'} = {};
 $result_nodes{'double_syncodeindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -349,6 +351,7 @@ $result_nodes{'double_syncodeindex'} = {
 $result_menus{'double_syncodeindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

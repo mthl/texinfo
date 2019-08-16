@@ -4450,6 +4450,12 @@ sub _parse_texi($;$)
             } elsif ($command eq 'dircategory' and $self->{'current_node'}) {
                 $self->line_warn(__("\@dircategory after first node"),
                              $line_nr);
+            } elsif ($command eq 'printindex') {
+              # Record that @printindex occurs in this node so we know it
+              # is an index node.
+              if ($self->{'current_node'}) {
+                $self->{'current_node'}->{'extra'}->{'isindex'} = 1;
+              }
             }
 
             $current = $current->{'args'}->[-1];

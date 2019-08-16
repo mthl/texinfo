@@ -105,6 +105,7 @@ $result_trees{'encoding_index_ascii'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3454,6 +3455,7 @@ $result_sectioning{'encoding_index_ascii'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -3477,6 +3479,7 @@ $result_nodes{'encoding_index_ascii'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -3485,6 +3488,7 @@ $result_nodes{'encoding_index_ascii'} = {
 $result_menus{'encoding_index_ascii'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

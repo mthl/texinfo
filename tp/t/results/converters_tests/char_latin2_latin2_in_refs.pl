@@ -123,6 +123,7 @@ $result_trees{'char_latin2_latin2_in_refs'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -661,6 +662,7 @@ $result_sectioning{'char_latin2_latin2_in_refs'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -707,6 +709,7 @@ $result_nodes{'char_latin2_latin2_in_refs'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },
@@ -751,6 +754,7 @@ $result_nodes{'char_latin2_latin2_in_refs'}{'node_next'} = $result_nodes{'char_l
 $result_menus{'char_latin2_latin2_in_refs'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   },

@@ -196,6 +196,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -269,6 +270,7 @@ $result_sectioning{'default_cp_index_and_one_letter_syncodeindex'} = {};
 $result_nodes{'default_cp_index_and_one_letter_syncodeindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -277,6 +279,7 @@ $result_nodes{'default_cp_index_and_one_letter_syncodeindex'} = {
 $result_menus{'default_cp_index_and_one_letter_syncodeindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

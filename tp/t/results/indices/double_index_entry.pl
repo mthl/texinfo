@@ -410,6 +410,7 @@ $result_trees{'double_index_entry'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -549,6 +550,7 @@ $result_nodes{'double_index_entry'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'other-node',
       'spaces_before_argument' => ' '
     },
@@ -585,6 +587,7 @@ $result_menus{'double_index_entry'} = {
   'menu_child' => {
     'cmdname' => 'node',
     'extra' => {
+      'isindex' => 1,
       'normalized' => 'other-node',
       'spaces_before_argument' => ' '
     },

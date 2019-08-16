@@ -71,6 +71,7 @@ $result_trees{'same_index_entry_merged_indices'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -588,6 +589,7 @@ $result_sectioning{'same_index_entry_merged_indices'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -608,6 +610,7 @@ $result_nodes{'same_index_entry_merged_indices'} = {
       'extra' => {},
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -616,6 +619,7 @@ $result_nodes{'same_index_entry_merged_indices'} = {
 $result_menus{'same_index_entry_merged_indices'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

@@ -3149,6 +3149,7 @@ $result_trees{'all_commands_printindex'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -3820,6 +3821,7 @@ $result_sectioning{'all_commands_printindex'} = {};
 $result_nodes{'all_commands_printindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -3828,6 +3830,7 @@ $result_nodes{'all_commands_printindex'} = {
 $result_menus{'all_commands_printindex'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

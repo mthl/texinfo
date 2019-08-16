@@ -1302,6 +1302,7 @@ $result_trees{'sample_utf8'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -1778,6 +1779,7 @@ $result_sectioning{'sample_utf8'} = {
             'associated_node' => {
               'cmdname' => 'node',
               'extra' => {
+                'isindex' => 1,
                 'normalized' => 'Index-node',
                 'spaces_before_argument' => ' '
               }
@@ -1859,6 +1861,7 @@ $result_nodes{'sample_utf8'} = {
             },
             'level' => 1
           },
+          'isindex' => 1,
           'normalized' => 'Index-node',
           'spaces_before_argument' => ' '
         },
@@ -1917,6 +1920,7 @@ $result_menus{'sample_utf8'} = {
       'menu_next' => {
         'cmdname' => 'node',
         'extra' => {
+          'isindex' => 1,
           'normalized' => 'Index-node',
           'spaces_before_argument' => ' '
         },

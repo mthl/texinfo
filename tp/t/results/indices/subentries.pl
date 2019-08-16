@@ -32,6 +32,7 @@ $result_trees{'subentries'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -532,6 +533,7 @@ $result_sectioning{'subentries'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -552,6 +554,7 @@ $result_nodes{'subentries'} = {
       'extra' => {},
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -560,6 +563,7 @@ $result_nodes{'subentries'} = {
 $result_menus{'subentries'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

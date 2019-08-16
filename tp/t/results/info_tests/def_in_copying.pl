@@ -96,6 +96,7 @@ $result_trees{'def_in_copying'} = {
       'cmdname' => 'node',
       'contents' => [],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -900,6 +901,7 @@ $result_sectioning{'def_in_copying'} = {
         'associated_node' => {
           'cmdname' => 'node',
           'extra' => {
+            'isindex' => 1,
             'normalized' => 'Top',
             'spaces_before_argument' => ' '
           }
@@ -923,6 +925,7 @@ $result_nodes{'def_in_copying'} = {
       },
       'level' => 0
     },
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -931,6 +934,7 @@ $result_nodes{'def_in_copying'} = {
 $result_menus{'def_in_copying'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }

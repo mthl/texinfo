@@ -153,6 +153,7 @@ $result_trees{'image_lines_count'} = {
         }
       ],
       'extra' => {
+        'isindex' => 1,
         'node_content' => [
           {}
         ],
@@ -220,6 +221,7 @@ $result_sectioning{'image_lines_count'} = {};
 $result_nodes{'image_lines_count'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
@@ -228,6 +230,7 @@ $result_nodes{'image_lines_count'} = {
 $result_menus{'image_lines_count'} = {
   'cmdname' => 'node',
   'extra' => {
+    'isindex' => 1,
     'normalized' => 'Top',
     'spaces_before_argument' => ' '
   }
