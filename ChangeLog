@@ -1,3 +1,8 @@
+2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Beginning and Ending a File): Minor grammar 
+	fix.  Report from TonyMc <afmcc@btinternet.com>.
+
 2019-07-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Node Menu Illustration): Minor grammar fix.  

@@ -1702,7 +1702,7 @@ This chapter expands on the minimal complete Texinfo source file
 previously given (@pxref{Short Sample}).
 
 Certain pieces of information must be provided at the beginning of a
-Texinfo file, such the title of the document and the Top node.  A table
+Texinfo file, such as the title of the document and the Top node.  A table
 of contents is also generally produced here.
 
 @cindex Frontmatter, text in
