@@ -4850,7 +4850,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#
 
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" accesskey="2">description</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#chapter2" rel="index" accesskey="2">description</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
 </td></tr>
 </table>
 

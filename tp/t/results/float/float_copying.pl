@@ -1641,7 +1641,7 @@ the author abandon his copyright.
 <span id="index-copying-indexed-caption-function"></span>
 </div></div>
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" accesskey="1">Copying and floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+<tr><td align="left" valign="top">&bull; <a href="#Copying-and-floats" rel="index" accesskey="1">Copying and floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
 

@@ -3875,7 +3875,7 @@ sub _convert_menu_entry_type($$$)
   my $command = shift;
   
   my $href;
-  my $node;
+  my $rel = '';
   my $section;
   my $node_entry = $command->{'extra'}->{'menu_entry_node'};
   # external node
@@ -3884,7 +3884,7 @@ sub _convert_menu_entry_type($$$)
     $href = $self->command_href($node_entry, undef, $command); 
     $external_node = 1;
   } else {
-    $node = $self->label_command($node_entry->{'normalized'});
+    my $node = $self->label_command($node_entry->{'normalized'});
     # if !NODE_NAME_IN_MENU, we pick the associated section, except if 
     # the node is the element command
     if ($node->{'extra'}->{'associated_section'} 
@@ -3894,6 +3894,11 @@ sub _convert_menu_entry_type($$$)
       $href = $self->command_href($section, undef, $command);
     } else {
       $href = $self->command_href($node, undef, $command);
+    }
+    if ($node->{'extra'}->{'isindex'}) {
+      # Mark the target as an index.  See
+      # http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions
+      $rel = ' rel="index"';
     }
   }
 
@@ -3917,7 +3922,7 @@ sub _convert_menu_entry_type($$$)
         my $name = $self->convert_tree(
            {'type' => '_code', 'contents' => $arg->{'contents'}});
         if ($href ne '' and !$self->in_string()) {
-          $result .= "<a href=\"$href\"$accesskey>".$name."</a>";
+          $result .= "<a href=\"$href\"$rel$accesskey>".$name."</a>";
         } else {
           $result .= $name;
         }
@@ -3954,16 +3959,11 @@ sub _convert_menu_entry_type($$$)
   my $name;
   my $name_no_number;
   if ($section) {
-    #my $section_name = $self->command_text($section);
     $name = $self->command_text($section);
     $name_no_number = $self->command_text($section, 'text_nonumber');
     if ($href ne '' and $name ne '') {
-      #$name = "<a href=\"$href\"$accesskey>".$section_name."</a>";
-      $name = "<a href=\"$href\"$accesskey>".$name."</a>";
-    }# else {
-    #  $name = $section_name;
-    #}
-    #$name = "$MENU_SYMBOL ".$name if ($section_name eq $name_no_number);
+      $name = "<a href=\"$href\"$rel$accesskey>".$name."</a>";
+    }
   }
   if (!defined($name) or $name eq '') {
     if ($command->{'extra'}->{'menu_entry_name'}) {
@@ -3981,7 +3981,7 @@ sub _convert_menu_entry_type($$$)
     $name =~ s/^\s*//;
     $name_no_number = $name;
     if ($href ne '') {
-      $name = "<a href=\"$href\"$accesskey>".$name."</a>";
+      $name = "<a href=\"$href\"$rel$accesskey>".$name."</a>";
     }
     $name = "$MENU_SYMBOL ".$name;
   }

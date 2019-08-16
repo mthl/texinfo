@@ -1,5 +1,15 @@
 2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Use "rel" attribute to indicate index nodes.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_menu_entry_type):
+	If the target node in a menu entry is an index node, then set 
+	the "rel" attribute on the <a> element to "index".  Remove 
+	commented-out code.
+	* NEWS: Mention change.
+
+2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Mark index nodes.
 
 	* tp/Texinfo/ParserNonXS.pm (_parse_texi) <line commands>,
