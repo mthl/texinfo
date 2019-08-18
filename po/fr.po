@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 6.5.93\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-03-31 20:45+0100\n"
+"POT-Creation-Date: 2019-08-18 21:47+0100\n"
 "PO-Revision-Date: 2019-02-13 18:48+0100\n"
 "Last-Translator: Jean-Charles Malahieude <lilyfan@orange.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
@@ -423,7 +423,7 @@ msgstr "la valeur %s est invalide pour une variable %s"
 msgid "Try --help for more information.\n"
 msgstr "Utilisez --help pour plus d'informations.\n"
 
-#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:813
+#: info/info.c:859 install-info/install-info.c:2236 tp/texi2any.pl:795
 #, c-format, perl-format
 msgid ""
 "Copyright (C) %s Free Software Foundation, Inc.\n"
@@ -568,7 +568,7 @@ msgstr ""
 "  info -f ./foo.info         Affiche ./foo.info, sans parcourir\n"
 "                               l'arborescence."
 
-#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:801
+#: info/info.c:1147 install-info/install-info.c:613 tp/texi2any.pl:783
 msgid ""
 "Email bug reports to bug-texinfo@gnu.org,\n"
 "general questions and discussion to help-texinfo@gnu.org.\n"
@@ -1419,7 +1419,7 @@ msgstr "Poursuite de la recherche depuis le début du document."
 msgid "Searching subfile %s ..."
 msgstr "Recherche dans le sous-fichier « %s »..."
 
-#: info/session.c:4175 info/session.c:4438 info/session.c:4551
+#: info/session.c:4175 info/session.c:4441 info/session.c:4554
 msgid "Search failed"
 msgstr "Échec de la recherche."
 
@@ -1453,138 +1453,138 @@ msgstr "%s%s%s : "
 msgid "Search string too short"
 msgstr "Chaîne à rechercher trop courte"
 
-#: info/session.c:4409
+#: info/session.c:4412
 #, c-format
 msgid "Going back to last match from %s"
 msgstr "Va à la dernière correspondance à partir de %s"
 
-#: info/session.c:4438 info/session.c:4551
+#: info/session.c:4441 info/session.c:4554
 msgid "No more matches"
 msgstr "Pas d'autre correspondance."
 
-#: info/session.c:4578
+#: info/session.c:4581
 msgid "Search this node and subnodes for a string"
 msgstr "Recherche une chaîne dans ce nœud et ses enfants."
 
 #. TRANSLATORS: %s is the title of a node.
-#: info/session.c:4585
+#: info/session.c:4588
 #, c-format
 msgid "Search under %s: "
 msgstr "Recherche dans le sous-fichier « %s »..."
 
-#: info/session.c:4600
+#: info/session.c:4603
 msgid "Go to next match in Info sub-tree"
 msgstr "Va à la correspondance suivante dans l'arborescence Info"
 
-#: info/session.c:4604 info/session.c:4616
+#: info/session.c:4607 info/session.c:4619
 msgid "No active search"
 msgstr "Pas de recherche en cours"
 
-#: info/session.c:4612
+#: info/session.c:4615
 msgid "Go to previous match in Info sub-tree"
 msgstr "Va à la correspondance précédante dans l'arborescence Info"
 
-#: info/session.c:4625
+#: info/session.c:4628
 msgid "Read a string and search for it case-sensitively"
 msgstr "Lit une chaîne et la recherche en respectant la casse"
 
-#: info/session.c:4630
+#: info/session.c:4633
 msgid "Read a string and search for it"
 msgstr "Lit une chaîne et la recherche"
 
-#: info/session.c:4636
+#: info/session.c:4639
 msgid "Read a string and search backward for it"
 msgstr "Lit une chaîne et la recherche vers l'arrière"
 
-#: info/session.c:4644
+#: info/session.c:4647
 msgid "Repeat last search in the same direction"
 msgstr "Recommence la dernière recherche dans la même direction"
 
-#: info/session.c:4652 info/session.c:4697
+#: info/session.c:4661 info/session.c:4712
 msgid "No previous search string"
 msgstr "Aucune chaîne de recherche antérieure"
 
-#: info/session.c:4689
+#: info/session.c:4698
 msgid "Repeat last search in the reverse direction"
 msgstr "Répète la dernière recherche dans la direction opposée"
 
-#: info/session.c:4736
+#: info/session.c:4751
 msgid "Clear displayed search matches"
 msgstr "Efface les mises en surbrillance"
 
-#: info/session.c:4752 info/session.c:4758
+#: info/session.c:4767 info/session.c:4773
 msgid "Search interactively for a string as you type it"
 msgstr "Recherche interactive de la chaîne en cours de frappe"
 
-#: info/session.c:4878
+#: info/session.c:4893
 msgid "Regexp I-search backward: "
 msgstr "Recherche arrière interactive d'exp. ration. : "
 
-#: info/session.c:4879
+#: info/session.c:4894
 msgid "I-search backward: "
 msgstr "Recherche arrière interactive : "
 
-#: info/session.c:4881
+#: info/session.c:4896
 msgid "Regexp I-search: "
 msgstr "Recherche interactive d'exp. ration. : "
 
-#: info/session.c:4882
+#: info/session.c:4897
 msgid "I-search: "
 msgstr "Recherche interactive : "
 
-#: info/session.c:4907 info/session.c:4910
+#: info/session.c:4922 info/session.c:4925
 msgid "Failing "
 msgstr "Échec "
 
-#: info/session.c:5275
+#: info/session.c:5290
 msgid "Cancel current operation"
 msgstr "Annule l'opération en cours"
 
-#: info/session.c:5282
+#: info/session.c:5297
 msgid "Quit"
 msgstr "Quitte"
 
-#: info/session.c:5287
+#: info/session.c:5302
 msgid "Display version of Info being run"
 msgstr "Affiche la version d'Info en cours"
 
-#: info/session.c:5289
+#: info/session.c:5304
 #, c-format
 msgid "GNU Info version %s"
 msgstr "\"GNU Info version %s"
 
-#: info/session.c:5294
+#: info/session.c:5309
 msgid "Redraw the display"
 msgstr "Redessine l'écran"
 
-#: info/session.c:5331
+#: info/session.c:5346
 msgid "Quit using Info"
 msgstr "Quitte Info"
 
-#: info/session.c:5347
+#: info/session.c:5362
 msgid "Run command bound to this key's lowercase variant"
 msgstr "Exécute la commande liée à la minuscule associée à cette touche"
 
-#: info/session.c:5358
+#: info/session.c:5373
 #, c-format
 msgid "Unknown command (%s)"
 msgstr "Commande inconnue (%s)."
 
-#: info/session.c:5361
+#: info/session.c:5376
 #, c-format
 msgid "\"%s\" is invalid"
 msgstr "« %s » est invalide"
 
-#: info/session.c:5362
+#: info/session.c:5377
 #, c-format
 msgid "'%s' is invalid"
 msgstr "« %s » est invalide"
 
-#: info/session.c:5680
+#: info/session.c:5695
 msgid "Add this digit to the current numeric argument"
 msgstr "Ajouter ce chiffre à l'argument numérique courant"
 
-#: info/session.c:5687
+#: info/session.c:5702
 msgid "Start (or multiply by 4) the current numeric argument"
 msgstr "Démarre (ou multiplie par 4) l'argument numérique courant"
 
@@ -2002,11 +2002,11 @@ msgstr "aucune entrée de répertoire Info dans « %s »"
 msgid "no entries found for `%s'; nothing deleted"
 msgstr "aucune entrée pour « %s » ; aucune suppression"
 
-#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:823
-#: tp/Texinfo/Convert/Converter.pm:861 tp/Texinfo/Convert/Converter.pm:1136
-#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6589
-#: tp/Texinfo/Convert/HTML.pm:6613 tp/Texinfo/Convert/HTML.pm:6987
-#: tp/Texinfo/Convert/HTML.pm:7046 tp/Texinfo/Convert/HTML.pm:7125
+#: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:796
+#: tp/Texinfo/Convert/Converter.pm:834 tp/Texinfo/Convert/Converter.pm:1109
+#: tp/Texinfo/Convert/DocBook.pm:318 tp/Texinfo/Convert/HTML.pm:6607
+#: tp/Texinfo/Convert/HTML.pm:6631 tp/Texinfo/Convert/HTML.pm:7009
+#: tp/Texinfo/Convert/HTML.pm:7068 tp/Texinfo/Convert/HTML.pm:7146
 #: tp/Texinfo/Convert/IXIN.pm:286 tp/Texinfo/Convert/Info.pm:297
 #: tp/Texinfo/Convert/TexinfoXML.pm:451
 #, perl-format
@@ -2054,45 +2054,45 @@ msgstr "impossible de lire %s : %s"
 msgid "error on closing @verbatiminclude file %s: %s"
 msgstr "erreur de fermeture du fichier @verbatiminclude %s : %s"
 
-#: tp/Texinfo/Common.pm:1219 tp/Texinfo/ParserNonXS.pm:2964
+#: tp/Texinfo/Common.pm:1219 tp/Texinfo/ParserNonXS.pm:2971
 #, perl-format
 msgid "@%s: could not find %s"
 msgstr "@%s : impossible de trouver %s"
 
-#: tp/Texinfo/Common.pm:2165
+#: tp/Texinfo/Common.pm:2198
 #, perl-format
 msgid "could not protect hash character in @%s"
 msgstr "impossible de protéger le caractère hash dans @%s"
 
-#: tp/Texinfo/Common.pm:2547
+#: tp/Texinfo/Common.pm:2580
 #, perl-format
 msgid "empty node name after expansion `%s'"
 msgstr "nom de nœud vide après expansion de « %s »"
 
-#: tp/Texinfo/Common.pm:2555
+#: tp/Texinfo/Common.pm:2588
 #, perl-format
 msgid "@%s `%s' previously defined"
 msgstr "@%s « %s » déjà défini"
 
-#: tp/Texinfo/Common.pm:2561
+#: tp/Texinfo/Common.pm:2594
 #, perl-format
 msgid "here is the previous definition as @%s"
 msgstr "voici la définition précédente de @%s"
 
-#: tp/Texinfo/Common.pm:2580 tp/Texinfo/ParserNonXS.pm:3251
+#: tp/Texinfo/Common.pm:2613 tp/Texinfo/ParserNonXS.pm:3258
 #: tp/Texinfo/XS/parsetexi/end_line.c:47
 #, c-format, perl-format
 msgid "empty argument in @%s"
 msgstr "argument vide dans @%s"
 
-#: tp/Texinfo/Convert/Converter.pm:762
+#: tp/Texinfo/Convert/Converter.pm:742
 #, perl-format
 msgid "%s: output incompatible with split"
 msgstr "%s : sotie incompatible avec des divisions"
 
-#: tp/Texinfo/Convert/Converter.pm:844 tp/Texinfo/Convert/Converter.pm:877
-#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7013
-#: tp/Texinfo/Convert/HTML.pm:7072 tp/Texinfo/Convert/IXIN.pm:909
+#: tp/Texinfo/Convert/Converter.pm:817 tp/Texinfo/Convert/Converter.pm:850
+#: tp/Texinfo/Convert/DocBook.pm:354 tp/Texinfo/Convert/HTML.pm:7035
+#: tp/Texinfo/Convert/HTML.pm:7094 tp/Texinfo/Convert/IXIN.pm:909
 #: tp/Texinfo/Convert/Info.pm:160 tp/Texinfo/Convert/Info.pm:186
 #: tp/Texinfo/Convert/Info.pm:214 tp/Texinfo/Convert/Info.pm:277
 #: tp/Texinfo/Convert/TexinfoXML.pm:470 tp/Texinfo/ParserNonXS.pm:1813
@@ -2100,109 +2100,109 @@ msgstr "%s : sotie incompatible avec des divisions"
 msgid "error on closing %s: %s"
 msgstr "erreur lors de la fermeture de %s : %s"
 
-#: tp/Texinfo/Convert/Converter.pm:955
+#: tp/Texinfo/Convert/Converter.pm:928
 #, perl-format
 msgid "could not create directories `%s' or `%s': %s"
 msgstr "impossible de créer les répertoires « %s » ou « %s » : %s"
 
-#: tp/Texinfo/Convert/Converter.pm:963
+#: tp/Texinfo/Convert/Converter.pm:936
 #, perl-format
 msgid "could not create directory `%s': %s"
 msgstr "impossible de créer les répertoires « %s » : %s"
 
-#: tp/Texinfo/Convert/DocBook.pm:1011
+#: tp/Texinfo/Convert/DocBook.pm:1022
 #, perl-format
 msgid "@image file `%s' not found, using `%s'"
 msgstr "fichier @image « %s » non trouvé ; utilisation de « %s »"
 
-#: tp/Texinfo/Convert/DocBook.pm:1131 tp/Texinfo/ParserNonXS.pm:4991
+#: tp/Texinfo/Convert/DocBook.pm:1142 tp/Texinfo/ParserNonXS.pm:5016
 #: tp/Texinfo/XS/parsetexi/separator.c:427
 msgid "no argument specified for @U"
 msgstr "aucun argument spécifié à @U"
 
-#: tp/Texinfo/Convert/HTML.pm:1719
+#: tp/Texinfo/Convert/HTML.pm:1752
 #, perl-format
 msgid "@image file `%s' (for HTML) not found, using `%s'"
 msgstr ""
 "fichier @image « %s » (pour le HTML) non trouvé ; utilisation de « %s »"
 
-#: tp/Texinfo/Convert/HTML.pm:2404
+#: tp/Texinfo/Convert/HTML.pm:2421
 #, perl-format
 msgid "raw format %s is not converted"
 msgstr "le format brut %s n'est pas converti"
 
-#: tp/Texinfo/Convert/HTML.pm:4648
+#: tp/Texinfo/Convert/HTML.pm:4665
 #, perl-format
 msgid "could not open html refs config file %s: %s"
 msgstr "impossible d'ouvrir le fichier de param. des réf. html %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4676
+#: tp/Texinfo/Convert/HTML.pm:4693
 msgid "missing type"
 msgstr "type manquant"
 
-#: tp/Texinfo/Convert/HTML.pm:4679
+#: tp/Texinfo/Convert/HTML.pm:4696
 #, perl-format
 msgid "unrecognized type: %s"
 msgstr "type inconnu : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:4696
+#: tp/Texinfo/Convert/HTML.pm:4713
 #, perl-format
 msgid "error on closing html refs config file %s: %s"
 msgstr "erreur de fermeture du fichier de param. des réf. html %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5020
+#: tp/Texinfo/Convert/HTML.pm:5034
 msgid "string not closed in css file"
 msgstr "chaîne non terminée dans le fichier css"
 
-#: tp/Texinfo/Convert/HTML.pm:5022
+#: tp/Texinfo/Convert/HTML.pm:5036
 msgid "--css-include ended in comment"
 msgstr "--css-include s'est terminé dans un commentaire"
 
-#: tp/Texinfo/Convert/HTML.pm:5024
+#: tp/Texinfo/Convert/HTML.pm:5038
 msgid "@import not finished in css file"
 msgstr "@import non terminé dans le fichier css"
 
-#: tp/Texinfo/Convert/HTML.pm:5050
+#: tp/Texinfo/Convert/HTML.pm:5064
 #, perl-format
 msgid "CSS file %s not found"
 msgstr "fichier CSS %s non trouvé"
 
-#: tp/Texinfo/Convert/HTML.pm:5056
+#: tp/Texinfo/Convert/HTML.pm:5070
 #, perl-format
 msgid "could not open --include-file %s: %s"
 msgstr "impossible d'ouvrir --include-file %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5066
+#: tp/Texinfo/Convert/HTML.pm:5080
 #, perl-format
 msgid "error on closing CSS file %s: %s"
 msgstr "erreur de fermeture du fichier CSS %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:5864 tp/Texinfo/Convert/HTML.pm:5868
+#: tp/Texinfo/Convert/HTML.pm:5867 tp/Texinfo/Convert/HTML.pm:5871
 #, perl-format
 msgid "no htmlxref.cnf entry found for `%s'"
 msgstr "aucune entrée htmlxref.cnf trouvée pour « %s »"
 
-#: tp/Texinfo/Convert/HTML.pm:6584
+#: tp/Texinfo/Convert/HTML.pm:6602
 #, perl-format
 msgid "error on closing frame file %s: %s"
 msgstr "erreur de fermeture du fichier-cadre HTML %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6608
+#: tp/Texinfo/Convert/HTML.pm:6626
 #, perl-format
 msgid "error on closing TOC frame file %s: %s"
 msgstr ""
 "erreur de fermeture du fichier-cadre de table des matières (TOC) %s : %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6723
+#: tp/Texinfo/Convert/HTML.pm:6742
 #, perl-format
 msgid "handler %s of stage %s priority %s failed"
 msgstr "échec du gestionnaire %s de l'étape %s priorité %s"
 
-#: tp/Texinfo/Convert/HTML.pm:6921
+#: tp/Texinfo/Convert/HTML.pm:6943
 msgid "must specify a title with a title command or @top"
 msgstr "vous devez indiquer un titre avec @top ou une commande de titrage"
 
-#: tp/Texinfo/Convert/HTML.pm:7132
+#: tp/Texinfo/Convert/HTML.pm:7153
 #, perl-format
 msgid "error on closing redirection node file %s: %s"
 msgstr "erreur de fermeture du fichier de redirection des nœuds %s : %s"
@@ -2294,16 +2294,16 @@ msgstr "« . » ou « , » doit suivre @xref, pas %s"
 msgid "`.' or `,' must follow @xref"
 msgstr "« . » ou « , » doit suivre @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2970
+#: tp/Texinfo/Convert/Plaintext.pm:2973
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "un nom de nœud en entrée de menu ne devrait contenir de « %s »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2981
+#: tp/Texinfo/Convert/Plaintext.pm:2984
 msgid "menu entry node name should not contain `:'"
 msgstr "un nom de nœud en entrée de menu ne devrait contenir de « : »"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3001
+#: tp/Texinfo/Convert/Plaintext.pm:3004
 msgid "menu entry name should not contain `:'"
 msgstr "une entrée de menu ne devrait pas contenir de « : »"
 
@@ -2328,17 +2328,17 @@ msgstr "argument formel @%s erroné ou vide : %s"
 msgid "bad syntax for @%s argument: %s"
 msgstr "syntaxe incorrecte de l'argument de @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:1038 tp/Texinfo/ParserNonXS.pm:4468
-#: tp/Texinfo/ParserNonXS.pm:4494 tp/Texinfo/ParserNonXS.pm:5298
-#: tp/Texinfo/ParserNonXS.pm:5311 tp/Texinfo/ParserNonXS.pm:5325
+#: tp/Texinfo/ParserNonXS.pm:1038 tp/Texinfo/ParserNonXS.pm:4493
+#: tp/Texinfo/ParserNonXS.pm:4519 tp/Texinfo/ParserNonXS.pm:5325
+#: tp/Texinfo/ParserNonXS.pm:5338 tp/Texinfo/ParserNonXS.pm:5352
 #, perl-format
 msgid "%c%s requires a name"
 msgstr "%c%s a besoin d'un nom"
 
-#: tp/Texinfo/ParserNonXS.pm:1042 tp/Texinfo/ParserNonXS.pm:4471
-#: tp/Texinfo/ParserNonXS.pm:4497 tp/Texinfo/ParserNonXS.pm:5301
-#: tp/Texinfo/ParserNonXS.pm:5314 tp/Texinfo/ParserNonXS.pm:5328
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:846
+#: tp/Texinfo/ParserNonXS.pm:1042 tp/Texinfo/ParserNonXS.pm:4496
+#: tp/Texinfo/ParserNonXS.pm:4522 tp/Texinfo/ParserNonXS.pm:5328
+#: tp/Texinfo/ParserNonXS.pm:5341 tp/Texinfo/ParserNonXS.pm:5355
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:848
 #: tp/Texinfo/XS/parsetexi/macro.c:101
 #, c-format, perl-format
 msgid "bad name for @%s"
@@ -2393,13 +2393,13 @@ msgstr "@%s présent avant @end %s"
 msgid "no matching `%cend %s'"
 msgstr "aucun « %cend %s » correspondant"
 
-#: tp/Texinfo/ParserNonXS.pm:1568 tp/Texinfo/ParserNonXS.pm:4831
-#: tp/Texinfo/ParserNonXS.pm:5080
+#: tp/Texinfo/ParserNonXS.pm:1568 tp/Texinfo/ParserNonXS.pm:4856
+#: tp/Texinfo/ParserNonXS.pm:5107
 #, perl-format
 msgid "misplaced %c"
 msgstr "%c mal placée"
 
-#: tp/Texinfo/ParserNonXS.pm:1669 tp/Texinfo/ParserNonXS.pm:2918
+#: tp/Texinfo/ParserNonXS.pm:1669 tp/Texinfo/ParserNonXS.pm:2925
 #, perl-format
 msgid "unmatched `%c%s'"
 msgstr "« %c%s » sans correspondance"
@@ -2427,171 +2427,172 @@ msgstr ""
 "\\ dans l'expansion de @%s suivie par « %s » au lieu du nom du paramètre\n"
 "ou de \\"
 
-#: tp/Texinfo/ParserNonXS.pm:2636 tp/Texinfo/XS/parsetexi/end_line.c:2182
+#: tp/Texinfo/ParserNonXS.pm:2643 tp/Texinfo/XS/parsetexi/end_line.c:2182
 #, c-format, perl-format
 msgid "missing name for @%s"
 msgstr "@%s sans nom"
 
-#: tp/Texinfo/ParserNonXS.pm:2641 tp/Texinfo/XS/parsetexi/end_line.c:2128
+#: tp/Texinfo/ParserNonXS.pm:2648 tp/Texinfo/XS/parsetexi/end_line.c:2128
 #, c-format, perl-format
 msgid "missing category for @%s"
 msgstr "@%s sans catégorie"
 
-#: tp/Texinfo/ParserNonXS.pm:2680 tp/Texinfo/XS/parsetexi/end_line.c:1054
+#: tp/Texinfo/ParserNonXS.pm:2687 tp/Texinfo/XS/parsetexi/end_line.c:1054
 #, c-format, perl-format
 msgid "unexpected argument on @%s line: %s"
 msgstr "argument inattendu à la ligne @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2691 tp/Texinfo/XS/parsetexi/end_line.c:1066
+#: tp/Texinfo/ParserNonXS.pm:2698 tp/Texinfo/XS/parsetexi/end_line.c:1066
 msgid "empty multitable"
 msgstr "multitable vide"
 
-#: tp/Texinfo/ParserNonXS.pm:2736 tp/Texinfo/ParserNonXS.pm:5395
+#: tp/Texinfo/ParserNonXS.pm:2743 tp/Texinfo/ParserNonXS.pm:5422
 #: tp/Texinfo/XS/parsetexi/end_line.c:311
 #: tp/Texinfo/XS/parsetexi/end_line.c:1134
 #, c-format, perl-format
 msgid "superfluous argument to @%s"
 msgstr "argument superflu à @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2742 tp/Texinfo/ParserNonXS.pm:5416
-#: tp/Texinfo/ParserNonXS.pm:5433 tp/Texinfo/XS/parsetexi/end_line.c:1147
+#: tp/Texinfo/ParserNonXS.pm:2749 tp/Texinfo/ParserNonXS.pm:5443
+#: tp/Texinfo/ParserNonXS.pm:5460 tp/Texinfo/XS/parsetexi/end_line.c:1147
 #, c-format, perl-format
 msgid "bad argument to @%s"
 msgstr "mauvais argument à @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2753
+#: tp/Texinfo/ParserNonXS.pm:2760
 #, perl-format
 msgid "%s requires an argument: the formatter for %citem"
 msgstr "%s nécessite un argument : le formateur %citem"
 
-#: tp/Texinfo/ParserNonXS.pm:2757 tp/Texinfo/XS/parsetexi/end_line.c:1167
+#: tp/Texinfo/ParserNonXS.pm:2764 tp/Texinfo/XS/parsetexi/end_line.c:1167
 #, c-format, perl-format
 msgid "command @%s not accepting argument in brace should not be on @%s line"
 msgstr ""
 "une commande @%s n'acceptant pas d'argument entre parenthèses ne devrait\n"
 "pas se trouver sur une ligne @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2791 tp/Texinfo/XS/parsetexi/end_line.c:1225
+#: tp/Texinfo/ParserNonXS.pm:2798 tp/Texinfo/XS/parsetexi/end_line.c:1225
 #, c-format, perl-format
 msgid "accent command `@%s' not allowed as @%s argument"
 msgstr "commande d'accentuation « @%s » interdite en argument à @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:2894 tp/Texinfo/ParserNonXS.pm:3034
-#: tp/Texinfo/ParserNonXS.pm:5388 tp/Texinfo/XS/parsetexi/end_line.c:304
+#: tp/Texinfo/ParserNonXS.pm:2901 tp/Texinfo/ParserNonXS.pm:3041
+#: tp/Texinfo/ParserNonXS.pm:5415 tp/Texinfo/XS/parsetexi/end_line.c:304
 #: tp/Texinfo/XS/parsetexi/end_line.c:1333
 #: tp/Texinfo/XS/parsetexi/end_line.c:1724
 #, c-format, perl-format
 msgid "@%s missing argument"
 msgstr "@%s sans d'argument"
 
-#: tp/Texinfo/ParserNonXS.pm:2908 tp/Texinfo/XS/parsetexi/end_line.c:1352
+#: tp/Texinfo/ParserNonXS.pm:2915 tp/Texinfo/XS/parsetexi/end_line.c:1352
 #, c-format, perl-format
 msgid "unknown @end %s"
 msgstr "@end %s inconnu"
 
-#: tp/Texinfo/ParserNonXS.pm:2931 tp/Texinfo/ParserNonXS.pm:3548
+#: tp/Texinfo/ParserNonXS.pm:2938 tp/Texinfo/ParserNonXS.pm:3555
 #, perl-format
 msgid "superfluous argument to @%s %s: %s"
 msgstr "argument superflu à @%s %s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2937 tp/Texinfo/ParserNonXS.pm:3013
-#: tp/Texinfo/ParserNonXS.pm:5483 tp/Texinfo/ParserNonXS.pm:5528
-#: tp/Texinfo/ParserNonXS.pm:5557 tp/Texinfo/ParserNonXS.pm:5598
-#: tp/Texinfo/ParserNonXS.pm:5676 tp/Texinfo/XS/parsetexi/end_line.c:515
+#: tp/Texinfo/ParserNonXS.pm:2944 tp/Texinfo/ParserNonXS.pm:3020
+#: tp/Texinfo/ParserNonXS.pm:5510 tp/Texinfo/ParserNonXS.pm:5555
+#: tp/Texinfo/ParserNonXS.pm:5584 tp/Texinfo/ParserNonXS.pm:5625
+#: tp/Texinfo/ParserNonXS.pm:5703 tp/Texinfo/XS/parsetexi/end_line.c:515
 #: tp/Texinfo/XS/parsetexi/end_line.c:583
 #: tp/Texinfo/XS/parsetexi/end_line.c:1662
 #, c-format, perl-format
 msgid "bad argument to @%s: %s"
 msgstr "mauvais argument à @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2959
+#: tp/Texinfo/ParserNonXS.pm:2966
 #, perl-format
 msgid "@%s: could not open %s: %s"
 msgstr "@%s : impossible d'ouvrir %s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:2975 tp/Texinfo/XS/parsetexi/end_line.c:1485
+#: tp/Texinfo/ParserNonXS.pm:2982 tp/Texinfo/XS/parsetexi/end_line.c:1485
 #, c-format, perl-format
 msgid "encoding `%s' is not a canonical texinfo encoding"
 msgstr "le codage « %s » n'est pas accepté par texinfo"
 
-#: tp/Texinfo/ParserNonXS.pm:2983 tp/Texinfo/XS/parsetexi/end_line.c:1539
+#: tp/Texinfo/ParserNonXS.pm:2990 tp/Texinfo/XS/parsetexi/end_line.c:1539
 #, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
 msgstr "codage « %s » non reconnu"
 
-#: tp/Texinfo/ParserNonXS.pm:3099
+#: tp/Texinfo/ParserNonXS.pm:3106
 #, perl-format
 msgid "@%s after the first element"
 msgstr "@%s après le premier élément"
 
-#: tp/Texinfo/ParserNonXS.pm:3106
+#: tp/Texinfo/ParserNonXS.pm:3113
 #, perl-format
 msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s n'a de sens que sur une ligne @multitable"
 
-#: tp/Texinfo/ParserNonXS.pm:3142 tp/Texinfo/XS/parsetexi/end_line.c:1879
+#: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
 #, fuzzy
+#| msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgid "@part should not be associated with @top"
 msgstr ""
 "@node précède @%s, mais des parties ne peuvent être associées à des nœuds"
 
-#: tp/Texinfo/ParserNonXS.pm:3153
+#: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
 msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgstr ""
 "@node précède @%s, mais des parties ne peuvent être associées à des nœuds"
 
-#: tp/Texinfo/ParserNonXS.pm:3264 tp/Texinfo/XS/parsetexi/end_line.c:36
+#: tp/Texinfo/ParserNonXS.pm:3271 tp/Texinfo/XS/parsetexi/end_line.c:36
 #, c-format, perl-format
 msgid "syntax for an external node used for `%s'"
 msgstr "utilisation de la syntaxe de nœud externe pour « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:3287 tp/Texinfo/XS/parsetexi/menus.c:43
+#: tp/Texinfo/ParserNonXS.pm:3294 tp/Texinfo/XS/parsetexi/menus.c:43
 #, c-format, perl-format
 msgid "empty menu entry name in `%s'"
 msgstr "entrée de menu vide dans « %s »."
 
-#: tp/Texinfo/ParserNonXS.pm:3295 tp/Texinfo/XS/parsetexi/menus.c:57
+#: tp/Texinfo/ParserNonXS.pm:3302 tp/Texinfo/XS/parsetexi/menus.c:57
 msgid "empty node name in menu entry"
 msgstr "nœud vide dans l'entrée de menu"
 
-#: tp/Texinfo/ParserNonXS.pm:3435 tp/Texinfo/XS/parsetexi/parser.c:979
+#: tp/Texinfo/ParserNonXS.pm:3442 tp/Texinfo/XS/parsetexi/parser.c:979
 #, c-format, perl-format
 msgid "@%s should not appear in @%s"
 msgstr "@%s ne devrait pas apparaître dans @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:3542 tp/Texinfo/XS/parsetexi/parser.c:1076
+#: tp/Texinfo/ParserNonXS.pm:3549 tp/Texinfo/XS/parsetexi/parser.c:1076
 #, c-format, perl-format
 msgid "@end %s should only appear at the beginning of a line"
 msgstr "@end %s ne peut apparaître qu'en début de ligne"
 
-#: tp/Texinfo/ParserNonXS.pm:3563 tp/Texinfo/XS/parsetexi/parser.c:1137
+#: tp/Texinfo/ParserNonXS.pm:3570 tp/Texinfo/XS/parsetexi/parser.c:1137
 #, c-format, perl-format
 msgid "macro `%s' previously defined"
 msgstr "macro « %s » déjà définie"
 
-#: tp/Texinfo/ParserNonXS.pm:3566 tp/Texinfo/XS/parsetexi/parser.c:1139
+#: tp/Texinfo/ParserNonXS.pm:3573 tp/Texinfo/XS/parsetexi/parser.c:1139
 #, c-format, perl-format
 msgid "here is the previous definition of `%s'"
 msgstr "voici la définition précédente de « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:3571 tp/Texinfo/XS/parsetexi/parser.c:1144
+#: tp/Texinfo/ParserNonXS.pm:3578 tp/Texinfo/XS/parsetexi/parser.c:1144
 #, c-format, perl-format
 msgid "redefining Texinfo language command: @%s"
 msgstr "redéfinition de la commande Texinfo : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:3639
+#: tp/Texinfo/ParserNonXS.pm:3646
 #, perl-format
 msgid "@%s without associated character"
 msgstr "@%s sans caractère associé"
 
-#: tp/Texinfo/ParserNonXS.pm:3709 tp/Texinfo/XS/parsetexi/macro.c:529
+#: tp/Texinfo/ParserNonXS.pm:3716 tp/Texinfo/XS/parsetexi/macro.c:529
 #, c-format, perl-format
 msgid ""
 "@%s defined with zero or more than one argument should be invoked with {}"
 msgstr "@%s défini sans ou avec plus d'un argument s'invoque avec {}"
 
-#: tp/Texinfo/ParserNonXS.pm:3734 tp/Texinfo/XS/parsetexi/macro.c:568
+#: tp/Texinfo/ParserNonXS.pm:3741 tp/Texinfo/XS/parsetexi/macro.c:568
 #, c-format, perl-format
 msgid ""
 "macro call nested too deeply (set MAX_NESTED_MACROS to override; current "
@@ -2600,325 +2601,325 @@ msgstr ""
 "appel de macro trop profondément imbriqué (dérogation par "
 "MAX_NESTED_MACROS ; valeur actuelle %d)"
 
-#: tp/Texinfo/ParserNonXS.pm:3743 tp/Texinfo/XS/parsetexi/macro.c:578
+#: tp/Texinfo/ParserNonXS.pm:3750 tp/Texinfo/XS/parsetexi/macro.c:578
 #, c-format, perl-format
 msgid "recursive call of macro %s is not allowed; use @rmacro if needed"
 msgstr "appel récursif de la macro %s interdit ; utiliser @rmacro si besoin"
 
-#: tp/Texinfo/ParserNonXS.pm:3798 tp/Texinfo/XS/parsetexi/parser.c:1412
+#: tp/Texinfo/ParserNonXS.pm:3805 tp/Texinfo/XS/parsetexi/parser.c:1412
 #, c-format, perl-format
 msgid "accent command `@%s' must not be followed by whitespace"
 msgstr "la commande d'accentuation « @%s » doit être suivie d'une espace"
 
-#: tp/Texinfo/ParserNonXS.pm:3804 tp/Texinfo/XS/parsetexi/parser.c:1419
+#: tp/Texinfo/ParserNonXS.pm:3811 tp/Texinfo/XS/parsetexi/parser.c:1419
 #, c-format, perl-format
 msgid "use braces to give a command as an argument to @%s"
 msgstr "utiliser des accolades pour passer une commande en argument à « @%s »"
 
-#: tp/Texinfo/ParserNonXS.pm:3817 tp/Texinfo/ParserNonXS.pm:4956
+#: tp/Texinfo/ParserNonXS.pm:3824 tp/Texinfo/ParserNonXS.pm:4981
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s attend l'argument « i » ou « j », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:3828 tp/Texinfo/XS/parsetexi/parser.c:1449
+#: tp/Texinfo/ParserNonXS.pm:3835 tp/Texinfo/XS/parsetexi/parser.c:1449
 #, c-format, perl-format
 msgid "accent command `@%s' must not be followed by new line"
 msgstr ""
 "la commande d'accentuation « @%s » ne doit pas être suivie d'un saut de ligne"
 
-#: tp/Texinfo/ParserNonXS.pm:3839 tp/Texinfo/XS/parsetexi/parser.c:1467
+#: tp/Texinfo/ParserNonXS.pm:3846 tp/Texinfo/XS/parsetexi/parser.c:1467
 #, c-format, perl-format
 msgid "@%s expected braces"
 msgstr "@%s accolades attendues"
 
-#: tp/Texinfo/ParserNonXS.pm:3968 tp/Texinfo/XS/parsetexi/parser.c:1328
+#: tp/Texinfo/ParserNonXS.pm:3975 tp/Texinfo/XS/parsetexi/parser.c:1328
 #, c-format, perl-format
 msgid "unknown command `%s'"
 msgstr "commande « %s » inconnue"
 
-#: tp/Texinfo/ParserNonXS.pm:4010
+#: tp/Texinfo/ParserNonXS.pm:4017
 #, perl-format
 msgid "undefined flag: %s"
 msgstr "drapeau indéfini : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4014 tp/Texinfo/XS/parsetexi/parser.c:1554
+#: tp/Texinfo/ParserNonXS.pm:4021 tp/Texinfo/XS/parsetexi/parser.c:1554
 msgid "bad syntax for @value"
 msgstr "syntaxe de @value incorrecte"
 
-#: tp/Texinfo/ParserNonXS.pm:4021
+#: tp/Texinfo/ParserNonXS.pm:4028
 #, perl-format
 msgid "%c%s is obsolete."
 msgstr "%c%s est obsolète."
 
-#: tp/Texinfo/ParserNonXS.pm:4024
+#: tp/Texinfo/ParserNonXS.pm:4031
 #, perl-format
 msgid "%c%s is obsolete; %s"
 msgstr "%c%s est obsolète ; %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4039 tp/Texinfo/XS/parsetexi/parser.c:1605
+#: tp/Texinfo/ParserNonXS.pm:4046 tp/Texinfo/XS/parsetexi/parser.c:1605
 #, c-format, perl-format
 msgid "@%s should only appear at the beginning of a line"
 msgstr "@%s ne doit apparaître qu'en début de ligne"
 
-#: tp/Texinfo/ParserNonXS.pm:4068 tp/Texinfo/XS/parsetexi/handle_commands.c:97
+#: tp/Texinfo/ParserNonXS.pm:4087 tp/Texinfo/XS/parsetexi/handle_commands.c:97
 #, c-format, perl-format
 msgid "@%s should only appear in heading or footing"
 msgstr "@%s ne peut apparaître qu'en en-tête ou en pied de page"
 
-#: tp/Texinfo/ParserNonXS.pm:4093 tp/Texinfo/ParserNonXS.pm:4100
-#: tp/Texinfo/ParserNonXS.pm:4149 tp/Texinfo/XS/parsetexi/handle_commands.c:134
+#: tp/Texinfo/ParserNonXS.pm:4112 tp/Texinfo/ParserNonXS.pm:4119
+#: tp/Texinfo/ParserNonXS.pm:4168 tp/Texinfo/XS/parsetexi/handle_commands.c:134
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:143
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
 msgstr "@%s n'a aucun sens dans un bloc « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:4109 tp/Texinfo/XS/parsetexi/handle_commands.c:180
+#: tp/Texinfo/ParserNonXS.pm:4128 tp/Texinfo/XS/parsetexi/handle_commands.c:180
 #, c-format, perl-format
 msgid "@%s in empty multitable"
 msgstr "@%s dans une multitable vide"
 
-#: tp/Texinfo/ParserNonXS.pm:4115 tp/Texinfo/XS/parsetexi/handle_commands.c:188
+#: tp/Texinfo/ParserNonXS.pm:4134 tp/Texinfo/XS/parsetexi/handle_commands.c:188
 msgid "@tab before @item"
 msgstr "@tab avant @item"
 
-#: tp/Texinfo/ParserNonXS.pm:4118 tp/Texinfo/XS/parsetexi/handle_commands.c:192
+#: tp/Texinfo/ParserNonXS.pm:4137 tp/Texinfo/XS/parsetexi/handle_commands.c:192
 #, c-format, perl-format
 msgid "too many columns in multitable item (max %d)"
 msgstr "trop de colonnes dans une entrée de multitable (%d max)"
 
-#: tp/Texinfo/ParserNonXS.pm:4155 tp/Texinfo/XS/parsetexi/handle_commands.c:237
+#: tp/Texinfo/ParserNonXS.pm:4174 tp/Texinfo/XS/parsetexi/handle_commands.c:237
 msgid "ignoring @tab outside of multitable"
 msgstr "@tab non pris en compte hors de multitable"
 
-#: tp/Texinfo/ParserNonXS.pm:4159 tp/Texinfo/ParserNonXS.pm:4326
+#: tp/Texinfo/ParserNonXS.pm:4178 tp/Texinfo/ParserNonXS.pm:4345
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:242
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:541
 #, c-format, perl-format
 msgid "@%s outside of table or list"
 msgstr "@%s en dehors d'une table ou d'une liste"
 
-#: tp/Texinfo/ParserNonXS.pm:4225
+#: tp/Texinfo/ParserNonXS.pm:4244
 #, perl-format
 msgid "@%s not allowed inside `@%s' block"
 msgstr "@%s interdit dans un bloc « @%s »"
 
-#: tp/Texinfo/ParserNonXS.pm:4338 tp/Texinfo/ParserNonXS.pm:4674
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1083
+#: tp/Texinfo/ParserNonXS.pm:4357 tp/Texinfo/ParserNonXS.pm:4699
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1085
 #, c-format, perl-format
 msgid "@%s should only appear in an index entry"
 msgstr "@%s est réservé aux entrées d'index"
 
-#: tp/Texinfo/ParserNonXS.pm:4349 tp/Texinfo/XS/parsetexi/handle_commands.c:580
+#: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
 msgstr ""
 
-#: tp/Texinfo/ParserNonXS.pm:4390 tp/Texinfo/XS/parsetexi/handle_commands.c:637
+#: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
 msgid "must be after `@%s' to use `@%s'"
 msgstr "il faut être après « @%s » pour utiliser « @%s »"
 
-#: tp/Texinfo/ParserNonXS.pm:4428
+#: tp/Texinfo/ParserNonXS.pm:4447
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 "@%s n'a aucun sens hors des environnements « @titlepage » et « @quotation »"
 
-#: tp/Texinfo/ParserNonXS.pm:4432 tp/Texinfo/XS/parsetexi/handle_commands.c:694
+#: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
 msgstr "@dircategory après le premier nœud"
 
-#: tp/Texinfo/ParserNonXS.pm:4608 tp/Texinfo/XS/parsetexi/handle_commands.c:982
+#: tp/Texinfo/ParserNonXS.pm:4633 tp/Texinfo/XS/parsetexi/handle_commands.c:984
 #, c-format, perl-format
 msgid "region %s inside region %s is not allowed"
 msgstr "il n'est pas possible de placer une région %s dans une région %s"
 
-#: tp/Texinfo/ParserNonXS.pm:4625
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1004
+#: tp/Texinfo/ParserNonXS.pm:4650
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1006
 msgid "@direntry after first node"
 msgstr "@direntry après le premier nœud"
 
-#: tp/Texinfo/ParserNonXS.pm:4633
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1009
+#: tp/Texinfo/ParserNonXS.pm:4658
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1011
 msgid "@menu in invalid context"
 msgstr "@menu au sein d'un contexte non valide"
 
-#: tp/Texinfo/ParserNonXS.pm:4639
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1018
+#: tp/Texinfo/ParserNonXS.pm:4664
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1020
 #, c-format, perl-format
 msgid "@%s seen before first @node"
 msgstr "@%s vu avant le premier @node"
 
-#: tp/Texinfo/ParserNonXS.pm:4642
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:1020
+#: tp/Texinfo/ParserNonXS.pm:4667
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:1022
 msgid ""
 "perhaps your @top node should be wrapped in @ifnottex rather than @ifinfo?"
 msgstr ""
 "votre nœud @top ne devrait-il pas être dans @ifnottex plutôt que @ifinfo ?"
 
-#: tp/Texinfo/ParserNonXS.pm:4703
+#: tp/Texinfo/ParserNonXS.pm:4728
 #, perl-format
 msgid "@%s should only appear in math context"
 msgstr "@%s est réservé au contexte math"
 
-#: tp/Texinfo/ParserNonXS.pm:4718 tp/Texinfo/XS/parsetexi/parser.c:1712
+#: tp/Texinfo/ParserNonXS.pm:4743 tp/Texinfo/XS/parsetexi/parser.c:1721
 msgid "unexpected @"
 msgstr "@ inattendu"
 
-#: tp/Texinfo/ParserNonXS.pm:4747 tp/Texinfo/XS/parsetexi/separator.c:78
+#: tp/Texinfo/ParserNonXS.pm:4772 tp/Texinfo/XS/parsetexi/separator.c:78
 #, c-format, perl-format
 msgid "@%s is not meaningful outside `@float' environment"
 msgstr "@%s n'a aucun sens hors de l'environnement « @float »"
 
-#: tp/Texinfo/ParserNonXS.pm:4752 tp/Texinfo/XS/parsetexi/separator.c:84
+#: tp/Texinfo/ParserNonXS.pm:4777 tp/Texinfo/XS/parsetexi/separator.c:84
 #, c-format, perl-format
 msgid "@%s should be right below `@float'"
 msgstr "@%s se place juste en dessous de « @float »"
 
-#: tp/Texinfo/ParserNonXS.pm:4760 tp/Texinfo/XS/parsetexi/separator.c:92
+#: tp/Texinfo/ParserNonXS.pm:4785 tp/Texinfo/XS/parsetexi/separator.c:92
 #, c-format, perl-format
 msgid "ignoring multiple @%s"
 msgstr "@%s multiples ignorés"
 
-#: tp/Texinfo/ParserNonXS.pm:4871 tp/Texinfo/XS/parsetexi/separator.c:276
+#: tp/Texinfo/ParserNonXS.pm:4896 tp/Texinfo/XS/parsetexi/separator.c:276
 #, c-format, perl-format
 msgid "command @%s does not accept arguments"
 msgstr "la commande @%s s'emploie sans argument"
 
-#: tp/Texinfo/ParserNonXS.pm:4901 tp/Texinfo/XS/parsetexi/separator.c:312
+#: tp/Texinfo/ParserNonXS.pm:4926 tp/Texinfo/XS/parsetexi/separator.c:312
 #, c-format, perl-format
 msgid "command @%s missing a node or external manual argument"
 msgstr "la commande @%s doit avoir un argument nœud ou manuel externe"
 
-#: tp/Texinfo/ParserNonXS.pm:4920 tp/Texinfo/XS/parsetexi/separator.c:350
+#: tp/Texinfo/ParserNonXS.pm:4945 tp/Texinfo/XS/parsetexi/separator.c:350
 #, c-format, perl-format
 msgid "in @%s empty cross reference name after expansion `%s'"
 msgstr "dans @%s, nom de renvoi vide après expansion de « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:4931 tp/Texinfo/XS/parsetexi/separator.c:368
+#: tp/Texinfo/ParserNonXS.pm:4956 tp/Texinfo/XS/parsetexi/separator.c:368
 #, c-format, perl-format
 msgid "in @%s empty cross reference title after expansion `%s'"
 msgstr "dans @%s, titre du renvoi vide après expansion de « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:4944 tp/Texinfo/XS/parsetexi/separator.c:383
+#: tp/Texinfo/ParserNonXS.pm:4969 tp/Texinfo/XS/parsetexi/separator.c:383
 msgid "@image missing filename argument"
 msgstr "@image sans nom de fichier"
 
-#: tp/Texinfo/ParserNonXS.pm:4978 tp/Texinfo/XS/parsetexi/separator.c:413
+#: tp/Texinfo/ParserNonXS.pm:5003 tp/Texinfo/XS/parsetexi/separator.c:413
 #, c-format, perl-format
 msgid "@%s missing first argument"
 msgstr "@%s sans premier argument"
 
-#: tp/Texinfo/ParserNonXS.pm:4996 tp/Texinfo/XS/parsetexi/separator.c:435
+#: tp/Texinfo/ParserNonXS.pm:5021 tp/Texinfo/XS/parsetexi/separator.c:435
 #, c-format, perl-format
 msgid "non-hex digits in argument for @U: %s"
 msgstr "nombre non hex en argument à @U : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5001 tp/Texinfo/XS/parsetexi/separator.c:440
+#: tp/Texinfo/ParserNonXS.pm:5026 tp/Texinfo/XS/parsetexi/separator.c:440
 #, c-format, perl-format
 msgid "fewer than four hex digits in argument for @U: %s"
 msgstr "moins de quatre nombres hex en argument à @U : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5018 tp/Texinfo/XS/parsetexi/separator.c:455
+#: tp/Texinfo/ParserNonXS.pm:5043 tp/Texinfo/XS/parsetexi/separator.c:455
 #, c-format, perl-format
 msgid "argument for @U exceeds Unicode maximum 0x10FFFF: %s"
 msgstr "l'argument à @U dépasse la limite Unicode de 0x10FFFF : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5204 tp/Texinfo/XS/parsetexi/separator.c:750
+#: tp/Texinfo/ParserNonXS.pm:5231 tp/Texinfo/XS/parsetexi/separator.c:755
 msgid "superfluous arguments for node"
 msgstr "arguments de nœud superflus"
 
-#: tp/Texinfo/ParserNonXS.pm:5253 tp/Texinfo/XS/parsetexi/parser.c:1906
+#: tp/Texinfo/ParserNonXS.pm:5280 tp/Texinfo/XS/parsetexi/parser.c:1915
 #, c-format, perl-format
 msgid "expected @end %s"
 msgstr "@end %s attendu"
 
-#: tp/Texinfo/ParserNonXS.pm:5340
+#: tp/Texinfo/ParserNonXS.pm:5367
 #, perl-format
 msgid "@%s should only accept an @-command as argument, not `%s'"
 msgstr "@%s ne devrait accepter en argument qu'une @-commande, pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5350 tp/Texinfo/XS/parsetexi/end_line.c:275
+#: tp/Texinfo/ParserNonXS.pm:5377 tp/Texinfo/XS/parsetexi/end_line.c:275
 #, c-format, perl-format
 msgid "remaining argument on @%s line: %s"
 msgstr "argument restant à la ligne @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5411
+#: tp/Texinfo/ParserNonXS.pm:5438
 #, perl-format
 msgid "environment command %s as argument to @%s"
 msgstr "commande d'environnement %s en argument de @%s"
 
-#: tp/Texinfo/ParserNonXS.pm:5438
+#: tp/Texinfo/ParserNonXS.pm:5465
 #, perl-format
 msgid "empty @%s"
 msgstr "@%s vide"
 
-#: tp/Texinfo/ParserNonXS.pm:5446 tp/Texinfo/XS/parsetexi/end_line.c:456
+#: tp/Texinfo/ParserNonXS.pm:5473 tp/Texinfo/XS/parsetexi/end_line.c:456
 #, c-format, perl-format
 msgid "column fraction not a number: %s"
 msgstr "fraction de colonne non numérique : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5455 tp/Texinfo/XS/parsetexi/end_line.c:478
+#: tp/Texinfo/ParserNonXS.pm:5482 tp/Texinfo/XS/parsetexi/end_line.c:478
 #, c-format, perl-format
 msgid "@sp arg must be numeric, not `%s'"
 msgstr "l'argument de @sp doit être numérique, pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5464 tp/Texinfo/XS/parsetexi/end_line.c:520
+#: tp/Texinfo/ParserNonXS.pm:5491 tp/Texinfo/XS/parsetexi/end_line.c:520
 #, c-format, perl-format
 msgid "reserved index name %s"
 msgstr "%s est un nom d'index réservé"
 
-#: tp/Texinfo/ParserNonXS.pm:5490 tp/Texinfo/XS/parsetexi/end_line.c:551
+#: tp/Texinfo/ParserNonXS.pm:5517 tp/Texinfo/XS/parsetexi/end_line.c:551
 #, c-format, perl-format
 msgid "unknown source index in @%s: %s"
 msgstr "source d'index inconnue dans @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5493 tp/Texinfo/XS/parsetexi/end_line.c:554
+#: tp/Texinfo/ParserNonXS.pm:5520 tp/Texinfo/XS/parsetexi/end_line.c:554
 #, c-format, perl-format
 msgid "unknown destination index in @%s: %s"
 msgstr "destination d'index inconnue dans @%s : %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5523 tp/Texinfo/XS/parsetexi/end_line.c:574
+#: tp/Texinfo/ParserNonXS.pm:5550 tp/Texinfo/XS/parsetexi/end_line.c:574
 #, c-format, perl-format
 msgid "@%s leads to a merging of %s in itself, ignoring"
 msgstr "@%s conduit à une fusion de %s avec lui-même ; ignoré"
 
-#: tp/Texinfo/ParserNonXS.pm:5536 tp/Texinfo/XS/parsetexi/end_line.c:599
+#: tp/Texinfo/ParserNonXS.pm:5563 tp/Texinfo/XS/parsetexi/end_line.c:599
 #, c-format, perl-format
 msgid "unknown index `%s' in @printindex"
 msgstr "index « %s » inconnu dans @printindex"
 
-#: tp/Texinfo/ParserNonXS.pm:5542 tp/Texinfo/XS/parsetexi/end_line.c:608
+#: tp/Texinfo/ParserNonXS.pm:5569 tp/Texinfo/XS/parsetexi/end_line.c:608
 #, c-format, perl-format
 msgid "printing an index `%s' merged in another one, `%s'"
 msgstr "impression d'un index « %s » fusionné dans un autre, « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5550 tp/Texinfo/XS/parsetexi/end_line.c:613
+#: tp/Texinfo/ParserNonXS.pm:5577 tp/Texinfo/XS/parsetexi/end_line.c:613
 #, c-format, perl-format
 msgid "printindex before document beginning: @printindex %s"
 msgstr "printindex avant le début du document : @printindex %s"
 
-#: tp/Texinfo/ParserNonXS.pm:5566 tp/Texinfo/XS/parsetexi/end_line.c:634
+#: tp/Texinfo/ParserNonXS.pm:5593 tp/Texinfo/XS/parsetexi/end_line.c:634
 #, c-format, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
 msgstr "l'argument de @%s doit être « top » ou « bottom », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5574
+#: tp/Texinfo/ParserNonXS.pm:5601
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgstr "Seuls @%s 10 ou 11 sont autorisés, pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5582
+#: tp/Texinfo/ParserNonXS.pm:5609
 #, perl-format
 msgid "@%s arg must be `separate' or `end', not `%s'"
 msgstr "l'argument à @%s doit être « separate » ou « end », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5590
+#: tp/Texinfo/ParserNonXS.pm:5617
 #, perl-format
 msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgstr ""
 "l'argument de @%s doit être « on », « off » ou « odd », mais pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5608 tp/Texinfo/ParserNonXS.pm:5613
+#: tp/Texinfo/ParserNonXS.pm:5635 tp/Texinfo/ParserNonXS.pm:5640
 #: tp/Texinfo/XS/parsetexi/end_line.c:690
 #, c-format, perl-format
 msgid "@paragraphindent arg must be numeric/`none'/`asis', not `%s'"
@@ -2926,38 +2927,38 @@ msgstr ""
 "l'argument de @paragraphindent doit être numérique, « none » ou « asis », "
 "pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5621
+#: tp/Texinfo/ParserNonXS.pm:5648
 #, perl-format
 msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgstr ""
 "l'argument de @firstparagraphindent doit être « none » ou « insert », pas "
 "« %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5631 tp/Texinfo/XS/parsetexi/end_line.c:711
+#: tp/Texinfo/ParserNonXS.pm:5658 tp/Texinfo/XS/parsetexi/end_line.c:711
 #, c-format, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
 msgstr ""
 "l'argument de @exampleindent doit être numérique ou « asis », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5643 tp/Texinfo/XS/parsetexi/end_line.c:726
+#: tp/Texinfo/ParserNonXS.pm:5670 tp/Texinfo/XS/parsetexi/end_line.c:726
 #, c-format, perl-format
 msgid "expected @%s on or off, not `%s'"
 msgstr "@%s peut être « on » ou « off », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5652 tp/Texinfo/XS/parsetexi/end_line.c:746
+#: tp/Texinfo/ParserNonXS.pm:5679 tp/Texinfo/XS/parsetexi/end_line.c:746
 #, c-format, perl-format
 msgid "@kbdinputstyle arg must be `code'/`example'/`distinct', not `%s'"
 msgstr ""
 "l'argument de @kbdinputstyle doit être « code », « example » ou "
 "« distinct », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5660 tp/Texinfo/XS/parsetexi/end_line.c:758
+#: tp/Texinfo/ParserNonXS.pm:5687 tp/Texinfo/XS/parsetexi/end_line.c:758
 #, c-format, perl-format
 msgid "@allowcodebreaks arg must be `true' or `false', not `%s'"
 msgstr ""
 "l'argument de @allowcodebreaks doit être « true » ou « false », pas « %s »"
 
-#: tp/Texinfo/ParserNonXS.pm:5668 tp/Texinfo/XS/parsetexi/end_line.c:770
+#: tp/Texinfo/ParserNonXS.pm:5695 tp/Texinfo/XS/parsetexi/end_line.c:770
 #, c-format, perl-format
 msgid "@urefbreakstyle arg must be `after'/`before'/`none', not `%s'"
 msgstr ""
@@ -3058,55 +3059,55 @@ msgstr "@%s pour « %s », différent de %s nommé « %s »"
 msgid "empty index key in @%s"
 msgstr "entrée d'index vide dans @%s"
 
-#: tp/init/chm.pm:224 tp/init/chm.pm:280 tp/init/chm.pm:350
+#: tp/init/chm.pm:223 tp/init/chm.pm:279 tp/init/chm.pm:349
 #, perl-format
 msgid "chm.pm: could not open %s for writing: %s\n"
 msgstr "chm.pm : impossible d'ouvrir %s en écriture : %s\n"
 
-#: tp/init/chm.pm:270 tp/init/chm.pm:340 tp/init/chm.pm:401
+#: tp/init/chm.pm:269 tp/init/chm.pm:339 tp/init/chm.pm:400
 #, perl-format
 msgid "chm.pm: error on closing %s: %s"
 msgstr "chm.pm : erreur lors de la fermeture de %s : %s"
 
-#: tp/init/latex2html.pm:203
+#: tp/init/latex2html.pm:197
 #, perl-format
 msgid "l2h: could not open latex file %s for writing: %s"
 msgstr "l2h : impossible d'ouvrir %s en écriture : %s"
 
-#: tp/init/latex2html.pm:344
+#: tp/init/latex2html.pm:343
 msgid "l2h: L2H_TMP directory contains a dot"
 msgstr "l2h : le répertoire L2H_TMP contient un point"
 
-#: tp/init/latex2html.pm:349
+#: tp/init/latex2html.pm:348
 msgid "l2h: current directory contains a dot"
 msgstr "l2h : le répertoire courant contient un point"
 
-#: tp/init/latex2html.pm:377
+#: tp/init/latex2html.pm:376
 #, perl-format
 msgid "l2h: command did not succeed: %s"
 msgstr "l2h : commande en échec : %s"
 
-#: tp/init/latex2html.pm:425
+#: tp/init/latex2html.pm:424
 #, perl-format
 msgid "l2h: image has invalid extension: %s"
 msgstr "l2h : extension d'image invalide : %s"
 
-#: tp/init/latex2html.pm:441
+#: tp/init/latex2html.pm:440
 #, perl-format
 msgid "l2h: rename %s as %s failed: %s"
 msgstr "l2h : échec du renommage de %s en %s : %s"
 
-#: tp/init/latex2html.pm:463
+#: tp/init/latex2html.pm:462
 #, perl-format
 msgid "l2h: could not open %s: %s"
 msgstr "l2h : impossible d'ouvrir %s : %s"
 
-#: tp/init/latex2html.pm:496
+#: tp/init/latex2html.pm:495
 #, perl-format
 msgid "latex2html.pm: end of @%s item %d not found"
 msgstr "latex2html.pm : fin de @%s élément %d non trouvé"
 
-#: tp/init/latex2html.pm:507
+#: tp/init/latex2html.pm:506
 #, perl-format
 msgid ""
 "latex2html.pm: processing produced %d items in HTML; expected %d, the number "
@@ -3115,12 +3116,12 @@ msgstr ""
 "latex2html.pm : le traitement a produit %d éléments HTML ; %d étaient "
 "attendus, correspondant au nombre d'éléments du document"
 
-#: tp/init/latex2html.pm:537
+#: tp/init/latex2html.pm:536
 #, perl-format
 msgid "l2h: could not determine the fragment %d for @%s"
 msgstr "l2h : impossible de déterminer le fragment %d pour @%s"
 
-#: tp/init/latex2html.pm:563
+#: tp/init/latex2html.pm:562
 #, perl-format
 msgid ""
 "l2h: could not extract the fragment %d for @%s with output counter %d from "
@@ -3129,17 +3130,17 @@ msgstr ""
 "l2h : impossible d'extraire le fragment %d pour @%s avec un compteur HTML de "
 "sortie %d"
 
-#: tp/init/latex2html.pm:624
+#: tp/init/latex2html.pm:623
 #, perl-format
 msgid "l2h: could not load %s: %s"
 msgstr "l2h : impossible de charger %s : %s"
 
-#: tp/init/latex2html.pm:637
+#: tp/init/latex2html.pm:636
 #, perl-format
 msgid "l2h: could not open %s for writing: %s"
 msgstr "l2h : impossible d'ouvrir %s en écriture : %s"
 
-#: tp/init/tex4ht.pm:126 tp/init/tex4ht.pm:270
+#: tp/init/tex4ht.pm:125 tp/init/tex4ht.pm:270
 #, perl-format
 msgid "tex4ht.pm: could not open %s: %s"
 msgstr "tex4ht.pm : impossible d'ouvrir %s : %s"
@@ -3192,37 +3193,37 @@ msgstr ""
 "tex4ht.pm : le traitement a récupéré %d éléments HTML ; %d étaient attendus, "
 "correspondant au nombre d'éléments du document pour @%s"
 
-#: tp/texi2any.pl:366
+#: tp/texi2any.pl:348
 #, perl-format
 msgid "error loading %s: %s\n"
 msgstr "erreur de chargement de %s : %s\n"
 
-#: tp/texi2any.pl:379
+#: tp/texi2any.pl:361
 #, perl-format
 msgid "%s: unknown variable %s"
 msgstr "%s : variable %s inconnue"
 
-#: tp/texi2any.pl:395
+#: tp/texi2any.pl:377
 #, perl-format
 msgid "%s: unknown variable %s\n"
 msgstr "%s : variable %s inconnue\n"
 
-#: tp/texi2any.pl:431
+#: tp/texi2any.pl:413
 #, perl-format
 msgid "could not read init file %s"
 msgstr "impossible de lire le fichier init %s"
 
-#: tp/texi2any.pl:587
+#: tp/texi2any.pl:569
 #, perl-format
 msgid "ignoring unrecognized TEXINFO_OUTPUT_FORMAT value `%s'\n"
 msgstr "valeur « %s » de TEXINFO_OUTPUT_FORMAT non reconnue, ignorée.\n"
 
-#: tp/texi2any.pl:670
+#: tp/texi2any.pl:652
 #, perl-format
 msgid "Usage: %s [OPTION]... TEXINFO-FILE...\n"
 msgstr "Utilisation : %s [OPTION]... FICHIER-TEXINFO...\n"
 
-#: tp/texi2any.pl:673
+#: tp/texi2any.pl:655
 msgid ""
 "Translate Texinfo source documentation to various other formats, by default\n"
 "Info files suitable for reading online with Emacs or standalone GNU Info.\n"
@@ -3237,7 +3238,7 @@ msgstr ""
 "Ce programme s'installe sous les noms de « makeinfo » et « texi2any » ;\n"
 "le comportement est identique et ne dépend pas du nom de l'installation.\n"
 
-#: tp/texi2any.pl:679
+#: tp/texi2any.pl:661
 #, perl-format
 msgid ""
 "General options:\n"
@@ -3274,7 +3275,7 @@ msgstr ""
 "  -v, --verbose               Explique ce qui est fait.\n"
 "      --version               Affiche la version du logiciel et s'arrête.\n"
 
-#: tp/texi2any.pl:695
+#: tp/texi2any.pl:677
 msgid ""
 "Output format selection (default is to produce Info):\n"
 "      --docbook               output Docbook XML rather than Info.\n"
@@ -3293,7 +3294,7 @@ msgstr ""
 "                                resultat demandé, après contrôle de\n"
 "                                validité de FICHIER-TEXINFO.\n"
 
-#: tp/texi2any.pl:703
+#: tp/texi2any.pl:685
 msgid ""
 "General output options:\n"
 "  -E, --macro-expand=FILE     output macro-expanded source to FILE,\n"
@@ -3345,7 +3346,7 @@ msgstr ""
 "                                 par un /,  y dépose le fichier résultant.\n"
 "                                Sinon, DEST sera le nom du fichier.\n"
 
-#: tp/texi2any.pl:723
+#: tp/texi2any.pl:705
 #, perl-format
 msgid ""
 "Options for Info and plain text:\n"
@@ -3387,7 +3388,7 @@ msgstr ""
 "      --split-size=NB         Divise les fichiers Info à la taille NB (par\n"
 "                                défaut %d).\n"
 
-#: tp/texi2any.pl:740
+#: tp/texi2any.pl:722
 msgid ""
 "Options for HTML:\n"
 "      --css-include=FILE      include FILE in HTML <style> output;\n"
@@ -3416,7 +3417,7 @@ msgstr ""
 "                                nœuds et ancres ; défini par défaut\n"
 "                                uniquement avec l'option « split ».\n"
 
-#: tp/texi2any.pl:751
+#: tp/texi2any.pl:733
 msgid ""
 "Options for XML and Docbook:\n"
 "      --output-indent=VAL     does nothing, retained for compatibility.\n"
@@ -3424,7 +3425,7 @@ msgstr ""
 "Options des formats XML et Docbook :\n"
 "      --output-indent=VAL     sans objet (conservé pour compatibilité).\n"
 
-#: tp/texi2any.pl:754
+#: tp/texi2any.pl:736
 msgid ""
 "Options for DVI/PS/PDF:\n"
 "      --Xopt=OPT              pass OPT to texi2dvi; can be repeated.\n"
@@ -3432,7 +3433,7 @@ msgstr ""
 "Options des formats DVI, PS et PDF :\n"
 "      --Xopt=OPTION           Passe OPTION à texi2dvi ; peut être répété.\n"
 
-#: tp/texi2any.pl:757
+#: tp/texi2any.pl:739
 msgid ""
 "Input file options:\n"
 "      --commands-in-node-names  does nothing, retained for compatibility.\n"
@@ -3454,7 +3455,7 @@ msgstr ""
 "  -U VAR                        Supprime la variable VAR, comme avec "
 "@clear.\n"
 
-#: tp/texi2any.pl:765
+#: tp/texi2any.pl:747
 msgid ""
 "Conditional processing in input:\n"
 "  --ifdocbook       process @ifdocbook and @docbook even if\n"
@@ -3491,7 +3492,7 @@ msgstr ""
 "\n"
 "  De plus, pour les options --no-ifFORMAT, traite les @ifnotFORMAT.\n"
 
-#: tp/texi2any.pl:782
+#: tp/texi2any.pl:764
 msgid ""
 "  The defaults for the @if... conditionals depend on the output format:\n"
 "  if generating Docbook, --ifdocbook is on and the others are off;\n"
@@ -3509,7 +3510,7 @@ msgstr ""
 "  Si on produit du texte, --ifplaintext est « on » et les autres « off ».\n"
 "  Si on produit du format XML, --ifxml est « on » et les autres « off ».\n"
 
-#: tp/texi2any.pl:789
+#: tp/texi2any.pl:771
 msgid ""
 "Examples:\n"
 "  makeinfo foo.texi                      write Info to foo's @setfilename\n"
@@ -3544,63 +3545,63 @@ msgstr ""
 "  makeinfo --no-split foo.texi           Écrit un seul fichier Info\n"
 "                                           quelque soit sa taille\n"
 
-#: tp/texi2any.pl:836
+#: tp/texi2any.pl:818
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr "%s: --footnote-style est « separate » ou « end », pas « %s ».\n"
 
-#: tp/texi2any.pl:931
+#: tp/texi2any.pl:913
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
 "%s : --paragraph-indent est numérique, « none » ou « asis », pas « %s ».\n"
 
-#: tp/texi2any.pl:1008
+#: tp/texi2any.pl:990
 #, perl-format
 msgid "%s: when generating %s, only one input FILE may be specified with -o\n"
 msgstr ""
 "%s : pour produire %s, un seul fichier d'entrée peut être spécifié par -o\n"
 
-#: tp/texi2any.pl:1012
+#: tp/texi2any.pl:994
 msgid "--Xopt option without printed output"
 msgstr "option --Xopt sans sortie imprimée"
 
-#: tp/texi2any.pl:1028
+#: tp/texi2any.pl:1010
 #, perl-format
 msgid "unknown tree transformation %s"
 msgstr "transformation d'arbre inconnue %s"
 
-#: tp/texi2any.pl:1035
+#: tp/texi2any.pl:1017
 #, perl-format
 msgid "ignoring splitting for format %s"
 msgstr "découpage sans objet pour le format %s"
 
-#: tp/texi2any.pl:1094
+#: tp/texi2any.pl:1076
 #, perl-format
 msgid "%s: missing file argument.\n"
 msgstr "%s : argument fichier absent.\n"
 
-#: tp/texi2any.pl:1095
+#: tp/texi2any.pl:1077
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
 msgstr "Consultez « %s --help » pour plus d'informations.\n"
 
-#: tp/texi2any.pl:1162
+#: tp/texi2any.pl:1144
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
 msgstr ""
 "la transformation fill_gaps_in_sectioning ne renvoie rien. Pas de section ?"
 
-#: tp/texi2any.pl:1184
+#: tp/texi2any.pl:1166
 #, perl-format
 msgid "error on closing macro expand file %s: %s\n"
 msgstr "erreur de fermeture du fichier d'expansion de macros %s : %s\n"
 
-#: tp/texi2any.pl:1190
+#: tp/texi2any.pl:1172
 #, perl-format
 msgid "could not open %s for writing: %s\n"
 msgstr "impossible d'ouvrir %s en écriture : %s\n"
 
-#: tp/texi2any.pl:1215
+#: tp/texi2any.pl:1197
 msgid ""
 "insert_nodes_for_sectioning_commands transformation return no result. No "
 "section?"
@@ -3608,119 +3609,139 @@ msgstr ""
 "la transformation insert_nodes_for_sectioning_commands ne renvoie rien. Pas "
 "de section ?"
 
-#: tp/texi2any.pl:1283 tp/texi2any.pl:1359
+#: tp/texi2any.pl:1265 tp/texi2any.pl:1341
 #, perl-format
 msgid "%s: error on closing %s: %s\n"
 msgstr "%s : erreur de fermeture de %s : %s\n"
 
-#: tp/texi2any.pl:1306 tp/texi2any.pl:1340
+#: tp/texi2any.pl:1288 tp/texi2any.pl:1322
 #, perl-format
 msgid "%s: error on closing internal links file %s: %s\n"
 msgstr "%s : erreur de fermeture du fichiers de liens internes %s : %s\n"
 
-#: tp/texi2any.pl:1312 tp/texi2any.pl:1346
+#: tp/texi2any.pl:1294 tp/texi2any.pl:1328
 #, perl-format
 msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s : impossible d'ouvrir %s en écriture : %s\n"
 
 #: tp/Texinfo/XS/parsetexi/close.c:274
 #, fuzzy, c-format
+#| msgid "no matching `%cend %s'"
 msgid "no matching `@end %s'"
 msgstr "aucun « %cend %s » correspondant"
 
 #: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
 #, fuzzy
+#| msgid "misplaced %c"
 msgid "misplaced {"
 msgstr "%c mal placée"
 
 #: tp/Texinfo/XS/parsetexi/close.c:415
 #, fuzzy, c-format
+#| msgid "unmatched `%c%s'"
 msgid "unmatched `@end %s'"
 msgstr "« %c%s » sans correspondance"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:191
 #, fuzzy
+#| msgid "%c%s requires a name"
 msgid "@set requires a name"
 msgstr "%c%s a besoin d'un nom"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:194
 #, fuzzy
+#| msgid "bad name for @%s"
 msgid "bad name for @set"
 msgstr "mauvais nom pour @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:218
 #, fuzzy
+#| msgid "%c%s requires a name"
 msgid "@clear requires a name"
 msgstr "%c%s a besoin d'un nom"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:221
 #, fuzzy
+#| msgid "bad name for @%s"
 msgid "bad name for @clear"
 msgstr "mauvais nom pour @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:240
 #, fuzzy
+#| msgid "%c%s requires a name"
 msgid "@unmacro requires a name"
 msgstr "%c%s a besoin d'un nom"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:243
 #, fuzzy
+#| msgid "bad name for @%s"
 msgid "bad name for @unmacro"
 msgstr "mauvais nom pour @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:262
 #, fuzzy, c-format
+#| msgid "@%s should only accept an @-command as argument, not `%s'"
 msgid "@clickstyle should only accept an @-command as argument, not `%s'"
 msgstr "@%s ne devrait accepter en argument qu'une @-commande, pas « %s »"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:355
 #, fuzzy, c-format
+#| msgid "environment command %s as argument to @%s"
 msgid "environment command %s as argument to @alias"
 msgstr "commande d'environnement %s en argument de @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:373
 #, fuzzy
+#| msgid "bad argument to @%s"
 msgid "bad argument to @alias"
 msgstr "mauvais argument à @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:424
 #, fuzzy
+#| msgid "bad argument to @%s"
 msgid "bad argument to @definfoenclose"
 msgstr "mauvais argument à @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:436
 #, fuzzy
+#| msgid "empty argument in @%s"
 msgid "empty @columnfractions"
 msgstr "argument vide dans @%s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:594
 #, fuzzy, c-format
+#| msgid "bad argument to @%s: %s"
 msgid "bad argument to @printindex: %s"
 msgstr "mauvais argument à @%s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:646
 #, fuzzy, c-format
+#| msgid "Only @%s 10 or 11 is supported, not `%s'"
 msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
 msgstr "Seuls @%s 10 ou 11 sont autorisés, pas « %s »"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:657
 #, fuzzy, c-format
+#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
 msgstr "%s: --footnote-style est « separate » ou « end », pas « %s ».\n"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:669
 #, fuzzy, c-format
+#| msgid "@%s arg must be `on', `off' or `odd', not `%s'"
 msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
 msgstr ""
 "l'argument de @%s doit être « on », « off » ou « odd », mais pas « %s »"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:680
 #, fuzzy, c-format
+#| msgid "bad argument to @%s: %s"
 msgid "bad argument to @need: %s"
 msgstr "mauvais argument à @%s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:701
 #, fuzzy, c-format
+#| msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
 msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
 msgstr ""
 "l'argument de @firstparagraphindent doit être « none » ou « insert », pas "
@@ -3728,126 +3749,151 @@ msgstr ""
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:783
 #, fuzzy, c-format
+#| msgid "bad argument to @%s: %s"
 msgid "bad argument to @headings: %s"
 msgstr "mauvais argument à @%s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1158
 #, fuzzy, c-format
+#| msgid "%s requires an argument: the formatter for %citem"
 msgid "%s requires an argument: the formatter for @item"
 msgstr "%s nécessite un argument : le formateur %citem"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1379
 #, fuzzy
+#| msgid "unmatched `%c%s'"
 msgid "unmatched `@end'"
 msgstr "« %c%s » sans correspondance"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1399
 #: tp/Texinfo/XS/parsetexi/parser.c:1109
 #, fuzzy, c-format
+#| msgid "superfluous argument to @%s %s: %s"
 msgid "superfluous argument to @end %s: %s"
 msgstr "argument superflu à @%s %s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1409
 #, fuzzy, c-format
+#| msgid "bad argument to @%s: %s"
 msgid "bad argument to @end: %s"
 msgstr "mauvais argument à @%s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1426
 #, fuzzy, c-format
+#| msgid "@%s: could not find %s"
 msgid "@include: could not find %s"
 msgstr "@%s : impossible de trouver %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1434
 #, fuzzy, c-format
+#| msgid "@%s: could not open %s: %s"
 msgid "@include: could not open %s:"
 msgstr "@%s : impossible d'ouvrir %s : %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1815
 #, fuzzy
+#| msgid "@%s after the first element"
 msgid "@setfilename after the first element"
 msgstr "@%s après le premier élément"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1825
 #, fuzzy
+#| msgid "@%s only meaningful on a @multitable line"
 msgid "@columnfractions only meaningful on a @multitable line"
 msgstr "@%s n'a de sens que sur une ligne @multitable"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1892
 #, fuzzy
+#| msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgid "@node precedes @part, but parts may not be associated with nodes"
 msgstr ""
 "@node précède @%s, mais des parties ne peuvent être associées à des nœuds"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:154
 #, fuzzy, c-format
+#| msgid "@%s not meaningful inside `@%s' block"
 msgid "@%s not meaningful inside @%s block"
 msgstr "@%s n'a aucun sens dans un bloc « %s »"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:363
 #, fuzzy, c-format
+#| msgid "@%s not allowed inside `@%s' block"
 msgid "@%s not allowed inside `@copying' block"
 msgstr "@%s interdit dans un bloc « @%s »"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:565
 #, fuzzy
+#| msgid "@%s should only appear in an index entry"
 msgid "@subentry should only occur in an index entry"
 msgstr "@%s est réservé aux entrées d'index"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:690
 #, fuzzy
+#| msgid ""
+#| "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgid ""
 "@author not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
 "@%s n'a aucun sens hors des environnements « @titlepage » et « @quotation »"
 
-#: tp/Texinfo/XS/parsetexi/handle_commands.c:802
+#: tp/Texinfo/XS/parsetexi/handle_commands.c:804
 #: tp/Texinfo/XS/parsetexi/macro.c:107
 #, fuzzy, c-format
+#| msgid "%c%s requires a name"
 msgid "@%s requires a name"
 msgstr "%c%s a besoin d'un nom"
 
 #: tp/Texinfo/XS/parsetexi/macro.c:159
 #, fuzzy, c-format
+#| msgid "bad or empty @%s formal argument: %s"
 msgid "bad or empty @%s formal argument: "
 msgstr "argument formel @%s erroné ou vide : %s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1436
 #, fuzzy, c-format
+#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgid "@dotless expects `i' or `j' as argument, not `%c'"
 msgstr "%c%s attend l'argument « i » ou « j », pas « %s »"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1523
 #, fuzzy, c-format
+#| msgid "undefined flag: %s"
 msgid "undefined flag: %.*s"
 msgstr "drapeau indéfini : %s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1578
 #, fuzzy, c-format
+#| msgid "%c%s is obsolete."
 msgid "@%s is obsolete."
 msgstr "%c%s est obsolète."
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1580
 #, fuzzy, c-format
+#| msgid "%c%s is obsolete; %s"
 msgid "@%s is obsolete; %s"
 msgstr "%c%s est obsolète ; %s"
 
-#: tp/Texinfo/XS/parsetexi/parser.c:1696
+#: tp/Texinfo/XS/parsetexi/parser.c:1705
 #, fuzzy
+#| msgid "@%s should only appear in math context"
 msgid "@\\ should only appear in math context"
 msgstr "@%s est réservé au contexte math"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:53
 #, fuzzy
+#| msgid "@%s without associated character"
 msgid "@verb without associated character"
 msgstr "@%s sans caractère associé"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:396
 #, fuzzy, c-format
+#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
 msgid "@dotless expects `i' or `j' as argument, not `%s'"
 msgstr "%c%s attend l'argument « i » ou « j », pas « %s »"
 
-#: tp/Texinfo/XS/parsetexi/separator.c:540
+#: tp/Texinfo/XS/parsetexi/separator.c:545
 #, fuzzy
+#| msgid "misplaced %c"
 msgid "misplaced }"
 msgstr "%c mal placée"
 
@@ -3857,18 +3903,23 @@ msgstr "%c mal placée"
 #~ msgid "nodes without a new name at the end of file"
 #~ msgstr "nœuds sans nouveau nom à la fin du fichier"
 
+#, perl-format
 #~ msgid "using a renamed nodes file (`%s') is deprecated"
 #~ msgstr "l'utilisation d'un fichier de nœuds renommés (%s) est désapprouvé"
 
+#, perl-format
 #~ msgid "old name for `%s' is a node of the document"
 #~ msgstr "l'ancien nom de « %s » est un nœud de ce document"
 
+#, perl-format
 #~ msgid "file empty for renamed node `%s'"
 #~ msgstr "le nœud renommé « %s » est un fichier vide"
 
+#, perl-format
 #~ msgid "target node (new name for `%s') not in document: %s"
 #~ msgstr "nœud cible (nouveau nom de « %s ») absent du document : %s"
 
+#, perl-format
 #~ msgid "error on closing renamed node redirection file %s: %s"
 #~ msgstr ""
 #~ "erreur de fermeture du fichier de redirection des nœuds renommés %s : %s"
