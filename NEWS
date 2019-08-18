@@ -37,27 +37,6 @@ See the manual for detailed information.
   . with --tidy (or --build-dir), avoid reading index files from previous
     runs where --tidy was not used
 
-* texinfo.tex
-  . @ can now be used as the escape character in index files.
-    This is disabled for now, until versions of texi2dvi that understand
-    such usage become more widespread. 
-
-    Enabling the feature opens up some incompatibilities:
-    . If the C implementation of texindex is used (from Texinfo versions
-      before 6.0), then the indices will not display.  It is not 
-      possible to support output from this version of texindex, because 
-      if it is given input using @ as the escape character in its input, 
-      both backslash and @ can appear as escape characters in its 
-      output.  texinfo.tex cannot tell whether @ should be treated as an 
-      escape character or not here.
-    . If an older version of texi2dvi is used, then the indices will not
-      display, due to it not recognizing the unsorted index files as 
-      such.
-   
-   If there are problems, deleting any existing index files for a manual 
-   may solve the problem: i.e., for a manual file.texi, run
-   'rm file.?? file.??s' before running texi2dvi again.
-
 * info
   . for a tree search (with M-/), '}' and '{' work as well as 'M-}' and
     'M-{' to go through the results

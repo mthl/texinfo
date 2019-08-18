@@ -1,3 +1,8 @@
+2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* NEWS: Remove announcement of use of @ as escape character in 
+	index files.
+
 2019-08-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Use "rel" attribute to indicate index nodes.
