@@ -1,5 +1,11 @@
 2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/HTML.pm (default_contents): Use
+	<a rel="index"> for links to index nodes.
+	* NEWS: Mention change.
+
+2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Remove announcement of use of @ as escape character in 
 	index files.
 

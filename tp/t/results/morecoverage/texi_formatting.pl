@@ -5139,7 +5139,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
       </ul></li>
     </ul></li>
   </ul></li>
-  <li><a id="toc-chapter-2" href="#chapter2">chapter 2</a></li>
+  <li><a id="toc-chapter-2" href="#chapter2" rel="index">chapter 2</a></li>
 </ul>
 </div>
 
@@ -5149,7 +5149,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <div class="shortcontents">
 <ul class="no-bullet">
 <li><a id="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
-<li><a id="stoc-chapter-2" href="#toc-chapter-2">chapter 2</a></li>
+<li><a id="stoc-chapter-2" href="#toc-chapter-2" rel="index">chapter 2</a></li>
 </ul>
 </div>
 

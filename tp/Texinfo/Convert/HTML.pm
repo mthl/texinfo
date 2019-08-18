@@ -6111,13 +6111,19 @@ sub _default_contents($$;$$)
           if ($toc_id ne '' or $href ne '') {
             my $toc_name_attribute = '';
             if ($toc_id ne '') {
-              $toc_name_attribute = "id=\"$toc_id\" ";
+              $toc_name_attribute = " id=\"$toc_id\"";
             }
             my $href_attribute = '';
             if ($href ne '') {
-              $href_attribute = "href=\"$href\"";
+              $href_attribute = " href=\"$href\"";
             }
-            $result .= "<li><a ${toc_name_attribute}${href_attribute}>$text</a>";
+            my $rel = '';
+            if ($section->{'extra'}
+                and $section->{'extra'}->{'associated_node'}
+                and $section->{'extra'}->{'associated_node'}->{'extra'}->{'isindex'}) {
+              $rel = ' rel="index"';
+            }
+            $result .= "<li><a${toc_name_attribute}${href_attribute}$rel>$text</a>";
           } else {
             $result .= "<li>$text";
           }
