@@ -1,3 +1,17 @@
+2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix @value in index entry.
+
+	* doc/texinfo.tex (\dummyvalue): Use \string\value instead of 
+	\noexpand\value.  This means that a backslash is correctly used 
+	as the escape character in the output, rather than an at sign.
+
+2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo-tex-test.texi (Test of macros with @ in index):
+	Comment out, as it doesn't work with \ as the index file escape 
+	character.
+
 2019-08-18  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* gnulib/m4/gettext.m4: Upgrade to gettext-0.20.1.
