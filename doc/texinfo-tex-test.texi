@@ -1375,6 +1375,10 @@ ffff\arg\ggggg
 @printindex ax
 
 
+@ignore
+@c This section doesn't work while we use \ as the escape character
+@c in the index files.
+
 @section Test of macros with @samp{@@} in index
 
 @defindex BB
@@ -1391,6 +1395,7 @@ ffff\arg\ggggg
 
 @BBindex @MacTwo{DDDD @@}
 @printindex BB
+@end ignore
 
 
 @section Test of certain characters in index
