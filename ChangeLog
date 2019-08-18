@@ -1,3 +1,12 @@
+2019-08-18  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gnulib/m4/gettext.m4: Upgrade to gettext-0.20.1.
+	* gnulib/m4/intlmacosx.m4: Upgrade to gettext-0.20.1.
+	* gnulib/m4/nls.m4: Upgrade to gettext-0.20.1.
+	* gnulib/m4/po.m4: Upgrade to gettext-0.20.1.
+	* gnulib/m4/progtest.m4: Upgrade to gettext-0.20.1.
+	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.20.
+
 2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm (default_contents): Use
