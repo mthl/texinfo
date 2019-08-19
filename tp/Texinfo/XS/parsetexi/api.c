@@ -54,6 +54,8 @@ find_locales_dir (char *builddir)
   DIR *dir;
   char *s;
 
+  dTHX;
+
   asprintf (&s, "%s/LocaleData", builddir);
   dir = opendir (s);
   if (!dir)
