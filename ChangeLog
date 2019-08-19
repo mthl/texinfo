@@ -1,3 +1,8 @@
+2019-08-19  Eli Zaretskii  <eliz@gnu.org>
+
+	* info/pcterm.c (kill): Don't use RETSIGTYPE, it is no longer
+	defined by config.h.
+
 2019-08-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix @value in index entry.
