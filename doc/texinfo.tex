@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2019-08-18.20}
+\def\texinfoversion{2019-08-25.20}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -4843,6 +4843,7 @@ end
   \definedummyletter\ %
   \definedummyletter\{%
   \definedummyletter\}%
+  \definedummyletter\&%
   %
   % Do the redefinitions.
   \definedummies
@@ -4913,6 +4914,7 @@ end
   \definedummyword\TeX
   %
   % Assorted special characters.
+  \definedummyword\ampchar
   \definedummyword\atchar
   \definedummyword\arrow
   \definedummyword\backslashchar
