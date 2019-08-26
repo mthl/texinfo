@@ -2959,6 +2959,11 @@ sub _convert($$)
         my ($pre_quote, $post_quote);
         if ($arg->{'type'} eq 'menu_entry_node') {
           $self->{'formatters'}->[-1]->{'suppress_styles'} = 1;
+
+          # Flush a leading space
+          $result .= _count_added($self, $formatter->{'container'},
+                           add_pending_word($formatter->{'container'}, 1));
+
           my $node_text = _convert($self, {'type' => '_code',
                                       'contents' => $arg->{'contents'}});
 

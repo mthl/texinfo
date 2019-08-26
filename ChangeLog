@@ -1,3 +1,10 @@
+2019-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <menu_entry_node>: 
+	Put a pending space in the output so it is not included in the 
+	node name when INFO_SPECIAL_CHARS_QUOTE is set.  Faulty menu in 
+	output reported by Didier Verna.
+
 2019-08-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.tex (\atdummies, \definedummies): Define \& and 
