@@ -1,3 +1,13 @@
+2019-09-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix LuaTeX errors in anchors.
+
+	* doc/texinfo.tex (\pdfescstr) [LuaTeX]:
+	Change definition of PDFescstr so to only output tokens of 
+	catcode 10 or 12 back into TeX.  This is intended to prevent 
+	errors when using @-commands inside anchors, reported by Didier 
+	Verna.
+
 2019-08-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <menu_entry_node>: 
