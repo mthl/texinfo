@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 4.7.94\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -2344,17 +2344,17 @@ msgstr ""
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "Kuri"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 #, fuzzy
 msgid "menu entry node name should not contain `:'"
 msgstr "Kuri"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "Kuri"

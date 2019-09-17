@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo 5.1.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2014-11-07 08:03+0000\n"
 "Last-Translator: Yasuaki Taniguchi <yasuakit@gmail.com>\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -2450,16 +2450,16 @@ msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければ
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' または `,' には `%2$c' では無く @%1$s が続かなければいけません。"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, fuzzy, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "ノード `%s' にメニューがありません。"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 #, fuzzy
 msgid "menu entry name should not contain `:'"
 msgstr "ノード `%s' にメニューがありません。"

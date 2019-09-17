@@ -7,12 +7,12 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2013, 2015, 2016, 2017, 2019.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.93\n"
+"Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
-"PO-Revision-Date: 2019-02-12 21:27+0200\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
+"PO-Revision-Date: 2019-08-20 12:39+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
+"Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 19.03.70\n"
+"X-Generator: Lokalize 19.11.70\n"
 
 #: gnulib/lib/error.c:195
 msgid "Unknown system error"
@@ -2285,16 +2285,16 @@ msgstr "після @xref має бути «.» або «,», але не %s"
 msgid "`.' or `,' must follow @xref"
 msgstr "після @xref має бути «.» або «,»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "у назві вузла пункту меню не повинно бути «%s»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr "у назві вузла пункту меню не повинно бути «:»"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr "у назві пункту меню не повинно бути «:»"
 
@@ -2520,10 +2520,8 @@ msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s має сенс лише у рядку @multitable"
 
 #: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
-#, fuzzy
-#| msgid "@%s should not be associated with @top"
 msgid "@part should not be associated with @top"
-msgstr "@%s не повинно бути пов’язано з @top"
+msgstr "@part не повинно бути пов’язано з @top"
 
 #: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
@@ -2703,6 +2701,8 @@ msgstr "@%s має використовуватися лише у записі �
 #: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
 msgstr ""
+"не можна використовувати більше ніж два рівні вкладеності для записів "
+"покажчика"
 
 #: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
@@ -2712,7 +2712,7 @@ msgstr "має бути розташовано після «@%s», щоб мож
 #: tp/Texinfo/ParserNonXS.pm:4447
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%s не має сенсу ззовні оточень `@titlepage' та `@quotation'"
+msgstr "@%s не має сенсу поза середовищами «@titlepage» та «@quotation»"
 
 #: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
@@ -3614,274 +3614,210 @@ msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: не вдалося відкрити %s для запису даних: %s\n"
 
 #: tp/Texinfo/XS/parsetexi/close.c:274
-#, fuzzy, c-format
-#| msgid "no matching `%cend %s'"
+#, c-format
 msgid "no matching `@end %s'"
-msgstr "не знайдено відповідного `%cend %s'"
+msgstr "не знайдено відповідного «@end %s»"
 
 #: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced {"
-msgstr "неправильно розташоване %c"
+msgstr "неправильно розташована {"
 
 #: tp/Texinfo/XS/parsetexi/close.c:415
-#, fuzzy, c-format
-#| msgid "unmatched `%c%s'"
+#, c-format
 msgid "unmatched `@end %s'"
-msgstr "«%c%s» без відповідника"
+msgstr "«@end %s» без відповідника"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:191
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@set requires a name"
-msgstr "%c%s вимагає вказати назву"
+msgstr "%set потребує визначення назви"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:194
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @set"
-msgstr "помилкова назва @%s"
+msgstr "помилкова назва у @set"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:218
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@clear requires a name"
-msgstr "%c%s вимагає вказати назву"
+msgstr "%clear потребує визначення назви"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:221
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @clear"
-msgstr "помилкова назва @%s"
+msgstr "помилкова назва у @clear"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:240
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@unmacro requires a name"
-msgstr "%c%s вимагає вказати назву"
+msgstr "%unmacro потребує визначення назви"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:243
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @unmacro"
-msgstr "помилкова назва @%s"
+msgstr "помилкова назва у @unmacro"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:262
-#, fuzzy, c-format
-#| msgid "@%s should only accept an @-command as argument, not `%s'"
+#, c-format
 msgid "@clickstyle should only accept an @-command as argument, not `%s'"
-msgstr "@%s приймає як аргумент лише @-команди, але не «%s»"
+msgstr "@clickstyle приймає як аргумент лише @-команди, але не «%s»"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:355
-#, fuzzy, c-format
-#| msgid "environment command %s as argument to @%s"
+#, c-format
 msgid "environment command %s as argument to @alias"
-msgstr "команда середовища %s як аргумент @%s"
+msgstr "команда середовища %s як аргумент @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:373
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @alias"
-msgstr "помилковий аргумент до @%s"
+msgstr "помилковий аргумент до @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:424
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @definfoenclose"
-msgstr "помилковий аргумент до @%s"
+msgstr "помилковий аргумент до @definfoenclose"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:436
-#, fuzzy
-#| msgid "empty argument in @%s"
 msgid "empty @columnfractions"
-msgstr "порожній аргумент у @%s"
+msgstr "порожнє @columnfractions"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:594
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @printindex: %s"
-msgstr "помилковий аргумент @%s: %s"
+msgstr "помилковий аргумент @printindex: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:646
-#, fuzzy, c-format
-#| msgid "Only @%s 10 or 11 is supported, not `%s'"
+#, c-format
 msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
-msgstr "Підтримуються лише @%s 10 чи 11, а не `%s'"
+msgstr "Передбачено підтримку лише @fonttextsize 10 чи 11, але не «%s»"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:657
-#, fuzzy, c-format
-#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+#, c-format
 msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
 msgstr ""
-"%s: аргумент до --footnote-style має бути `separate' чи `end', а не `%s'.\n"
+"аргументом до @footnotestyle має бути «separate» чи «end», але не «%s»."
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:669
-#, fuzzy, c-format
-#| msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+#, c-format
 msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
-msgstr "аргументом @%s має бути «on», «off» або «odd», але не «%s»"
+msgstr ""
+"аргументом @setchapternewpage має бути «on», «off» або «odd», але не «%s»"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:680
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @need: %s"
-msgstr "помилковий аргумент @%s: %s"
+msgstr "помилковий аргумент @need: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:701
-#, fuzzy, c-format
-#| msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+#, c-format
 msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
-msgstr ""
-"аргументом @firstparagraphindent має бути «none» або «insert», але не «%s»"
+msgstr "аргументом @firstparagraph має бути «none» або «insert», але не «%s»"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:783
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @headings: %s"
-msgstr "помилковий аргумент @%s: %s"
+msgstr "помилковий аргумент @headings: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1158
-#, fuzzy, c-format
-#| msgid "%s requires an argument: the formatter for %citem"
+#, c-format
 msgid "%s requires an argument: the formatter for @item"
-msgstr "%s потребує аргументу: форматер для %citem"
+msgstr "%s потребує аргументу: засіб форматування для @item"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1379
-#, fuzzy
-#| msgid "unmatched `%c%s'"
 msgid "unmatched `@end'"
-msgstr "«%c%s» без відповідника"
+msgstr "«@end» без відповідника"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1399
 #: tp/Texinfo/XS/parsetexi/parser.c:1109
-#, fuzzy, c-format
-#| msgid "superfluous argument to @%s %s: %s"
+#, c-format
 msgid "superfluous argument to @end %s: %s"
-msgstr "зайвий аргумент @%s, %s: %s"
+msgstr "зайвий аргумент @end, %s: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1409
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @end: %s"
-msgstr "помилковий аргумент @%s: %s"
+msgstr "помилковий аргумент @end: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1426
-#, fuzzy, c-format
-#| msgid "@%s: could not find %s"
+#, c-format
 msgid "@include: could not find %s"
-msgstr "@%s: не вдалося знайти %s"
+msgstr "@include: не вдалося знайти %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1434
-#, fuzzy, c-format
-#| msgid "@%s: could not open %s: %s"
+#, c-format
 msgid "@include: could not open %s:"
-msgstr "@%s: не вдалося відкрити %s: %s"
+msgstr "@include: не вдалося відкрити %s:"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1815
-#, fuzzy
-#| msgid "@%s after the first element"
 msgid "@setfilename after the first element"
-msgstr "@%s після першого елемента"
+msgstr "@setfilename після першого елемента"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1825
-#, fuzzy
-#| msgid "@%s only meaningful on a @multitable line"
 msgid "@columnfractions only meaningful on a @multitable line"
-msgstr "@%s має сенс лише у рядку @multitable"
+msgstr "@columnfractions має сенс лише у рядку @multitable"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1892
-#, fuzzy
-#| msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgid "@node precedes @part, but parts may not be associated with nodes"
-msgstr "@node передує @%s, але частини не можна пов’язувати з вузлами"
+msgstr "@node передує @part, але частини не можна пов’язувати з вузлами"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:154
-#, fuzzy, c-format
-#| msgid "@%s not meaningful inside `@%s' block"
+#, c-format
 msgid "@%s not meaningful inside @%s block"
-msgstr "@%s не має сенсу усередині блоку `%s'"
+msgstr "@%s не має сенсу усередині блоку %s"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:363
-#, fuzzy, c-format
-#| msgid "@%s not allowed inside `@%s' block"
+#, c-format
 msgid "@%s not allowed inside `@copying' block"
-msgstr "@%s не можна використовувати всередині блоку «@%s»"
+msgstr "@%s не можна використовувати всередині блоку «@copying»"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:565
-#, fuzzy
-#| msgid "@%s should only appear in an index entry"
 msgid "@subentry should only occur in an index entry"
-msgstr "@%s має використовуватися лише у записі покажчика"
+msgstr "@subentry має використовуватися лише у записі покажчика"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:690
-#, fuzzy
-#| msgid ""
-#| "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgid ""
 "@author not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%s не має сенсу ззовні оточень `@titlepage' та `@quotation'"
+msgstr "@author не має сенсу поза середовищами «@titlepage» та «@quotation»"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:804
 #: tp/Texinfo/XS/parsetexi/macro.c:107
-#, fuzzy, c-format
-#| msgid "%c%s requires a name"
+#, c-format
 msgid "@%s requires a name"
-msgstr "%c%s вимагає вказати назву"
+msgstr "@%s вимагає вказати назву"
 
 #: tp/Texinfo/XS/parsetexi/macro.c:159
-#, fuzzy, c-format
-#| msgid "bad or empty @%s formal argument: %s"
+#, c-format
 msgid "bad or empty @%s formal argument: "
-msgstr "помилковий або порожній формальний аргумент @%s: %s"
+msgstr "помилковий або порожній формальний аргумент @%s: "
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1436
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s потрібен аргумент «i» або «j», але не «%s»"
+msgstr "@dotless потрібен аргумент «i» або «j», але не «%c»"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1523
-#, fuzzy, c-format
-#| msgid "undefined flag: %s"
+#, c-format
 msgid "undefined flag: %.*s"
-msgstr "невідомий прапорець: %s"
+msgstr "невідомий прапорець: %.*s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1578
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete."
+#, c-format
 msgid "@%s is obsolete."
-msgstr "%c%s є застарілим."
+msgstr "@%s є застарілим."
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1580
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete; %s"
+#, c-format
 msgid "@%s is obsolete; %s"
-msgstr "%c%s є застарілим; %s"
+msgstr "@%s є застарілим; %s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1705
-#, fuzzy
-#| msgid "@%s should only appear in math context"
 msgid "@\\ should only appear in math context"
-msgstr "@%s має використовуватися лише у контексті формул"
+msgstr "@\\ має використовуватися лише у контексті формул"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:53
-#, fuzzy
-#| msgid "@%s without associated character"
 msgid "@verb without associated character"
-msgstr "@%s без пов’язаного символу"
+msgstr "@verb без пов’язаного символу"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:396
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s потрібен аргумент «i» або «j», але не «%s»"
+msgstr "@dotless потрібен аргумент «i» або «j», але не «%s»"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:545
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced }"
-msgstr "неправильно розташоване %c"
+msgstr "неправильно розташована }"
 
 #~ msgid "no node to be renamed"
 #~ msgstr "немає вузла для перейменування"
@@ -3889,25 +3825,20 @@ msgstr "неправильно розташоване %c"
 #~ msgid "nodes without a new name at the end of file"
 #~ msgstr "вузли без нової назви наприкінці файла"
 
-#, perl-format
 #~ msgid "using a renamed nodes file (`%s') is deprecated"
 #~ msgstr ""
 #~ "використання файла перейменованих вузлів («%s») вважається застарілим"
 
-#, perl-format
 #~ msgid "old name for `%s' is a node of the document"
 #~ msgstr "старою назвою для «%s» є вузол документа"
 
-#, perl-format
 #~ msgid "file empty for renamed node `%s'"
 #~ msgstr "файл перейменованого вузла «%s» є порожнім"
 
-#, perl-format
 #~ msgid "target node (new name for `%s') not in document: %s"
 #~ msgstr ""
 #~ "вузол призначення (нова назва для «%s») перебуває за межами документа: %s"
 
-#, perl-format
 #~ msgid "error on closing renamed node redirection file %s: %s"
 #~ msgstr ""
 #~ "помилка під час спроби закриття файла переспрямування перейменованого "

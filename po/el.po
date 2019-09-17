@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNU texinfo 6.0.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2015-12-28 00:59+0200\n"
 "Last-Translator: Tsiolkas Michail <cs112152@cs.uoi.gr>\n"
 "Language-Team: Greek <team@lists.gnome.gr>\n"
@@ -2117,16 +2117,16 @@ msgstr ""
 msgid "`.' or `,' must follow @xref"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr ""
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr ""
 

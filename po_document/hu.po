@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 6.4.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:55+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2018-01-20 14:27+0100\n"
 "Last-Translator: Balázs Úr <urbalazs@gmail.com>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -372,7 +372,7 @@ msgstr "@tie{}-- {category} - {class}:@*{type}@*{name}"
 msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "@tie{}-- {category} - {class}: {type} {name}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3255 tp/Texinfo/Convert/HTML.pm:2896
+#: tp/Texinfo/Convert/Plaintext.pm:3260 tp/Texinfo/Convert/HTML.pm:2896
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr "@center --- @emph{{author}}\n"

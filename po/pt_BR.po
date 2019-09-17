@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.93\n"
+"Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
-"PO-Revision-Date: 2019-02-13 06:15-0200\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
+"PO-Revision-Date: 2019-08-20 06:38-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
 "net>\n"
@@ -1316,10 +1316,8 @@ msgid "No more nodes within this document"
 msgstr "Nenhum nodo anterior no histórico"
 
 #: info/session.c:3205 info/session.c:3244
-#, fuzzy
-#| msgid "old name for `%s' is a node of the document"
 msgid "No 'Prev' or 'Up' for this node within this document"
-msgstr "nome antigo de `%s' é um nodo do documento"
+msgstr ""
 
 #: info/session.c:3257
 msgid "Move forwards or down through node structure"
@@ -2346,16 +2344,16 @@ msgstr "`.' ou `,' deve seguir @xref, não %s"
 msgid "`.' or `,' must follow @xref"
 msgstr "`.' ou `,' deve seguir @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "entrada de menu com nome de nodo não deve conter `%s'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr "entrada de menu com nome de nodo não deve conter `:'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr "nome de entrada de menu não deve conter `:'"
 
@@ -2758,7 +2756,7 @@ msgstr "@%s deve somente aparecer em contexto matemático"
 
 #: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
-msgstr ""
+msgstr "não mais que dois níveis de subentrada de índice são permitidos"
 
 #: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
@@ -3928,33 +3926,3 @@ msgstr "%c%s espera `i' ou `j' como argumento, não `%s'"
 #| msgid "misplaced %c"
 msgid "misplaced }"
 msgstr "perdido %c"
-
-#~ msgid "no node to be renamed"
-#~ msgstr "nenhum nodo para ser renomeado"
-
-#~ msgid "nodes without a new name at the end of file"
-#~ msgstr "nodos sem um novo nome ao final do arquivo"
-
-#, perl-format
-#~ msgid "using a renamed nodes file (`%s') is deprecated"
-#~ msgstr "uso de um arquivo de nodos renomeado (`%s') está desatualizado"
-
-#, perl-format
-#~ msgid "old name for `%s' is a node of the document"
-#~ msgstr "nome antigo de `%s' é um nodo do documento"
-
-#, perl-format
-#~ msgid "file empty for renamed node `%s'"
-#~ msgstr "arquivo vazio para o nodo renomeado `%s'"
-
-#, perl-format
-#~ msgid "target node (new name for `%s') not in document: %s"
-#~ msgstr "nodo alvo (novo nome `%s') não está no documento: %s"
-
-#, perl-format
-#~ msgid "error on closing renamed node redirection file %s: %s"
-#~ msgstr ""
-#~ "erro ao fechar o arquivo de redirecionamento de nodo renomeado %s: %s"
-
-#~ msgid "empty node name"
-#~ msgstr "nome de nodo vazio"

@@ -12,10 +12,10 @@
 # Ivo Timmermans <zarq@iname.com>, 1998.
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo-6.5.90\n"
+"Project-Id-Version: texinfo-6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
-"PO-Revision-Date: 2019-01-06 18:01+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
+"PO-Revision-Date: 2019-08-20 16:40+0200\n"
 "Last-Translator: Benno Schulenberg <vertaling@coevern.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "Language: nl\n"
@@ -2296,16 +2296,16 @@ msgstr "'.' of ',' moet volgen op @xref, niet '%s'"
 msgid "`.' or `,' must follow @xref"
 msgstr "'.' of ',' moet volgen op '@xref'"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "paginanaam in menu-item hoort geen '%s' te bevatten"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr "paginanaam in menu-item hoort geen ':' te bevatten"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr "menu-itemnaam hoort geen ':' te bevatten"
 
@@ -2537,10 +2537,8 @@ msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s is alleen zinvol op een '@multitable'-regel"
 
 #: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
-#, fuzzy
-#| msgid "@%s should not be associated with @top"
 msgid "@part should not be associated with @top"
-msgstr "@%s hoort niet gerelateerd te zijn aan @top"
+msgstr "@part hoort niet gerelateerd te zijn aan @top"
 
 #: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
@@ -2720,7 +2718,7 @@ msgstr "@%s hoort alleen voor te komen in een index-item"
 
 #: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
-msgstr ""
+msgstr "niet meer dan twee niveaus van index-subitems zijn toegestaan"
 
 #: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
@@ -3613,282 +3611,216 @@ msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kan %s niet openen om te schrijven: %s\n"
 
 #: tp/Texinfo/XS/parsetexi/close.c:274
-#, fuzzy, c-format
-#| msgid "no matching `%cend %s'"
+#, c-format
 msgid "no matching `@end %s'"
-msgstr "geen overeenkomende '%cend %s'"
+msgstr "geen overeenkomende '@end %s'"
 
 #: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced {"
-msgstr "verkeerd geplaatste %c"
+msgstr "verkeerd geplaatste {"
 
 #: tp/Texinfo/XS/parsetexi/close.c:415
-#, fuzzy, c-format
-#| msgid "unmatched `%c%s'"
+#, c-format
 msgid "unmatched `@end %s'"
-msgstr "ongepaarde '%c%s'"
+msgstr "ongepaarde '@end %s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:191
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@set requires a name"
-msgstr "%c%s vereist een naam"
+msgstr "@set vereist een naam"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:194
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @set"
-msgstr "foute naam voor @%s"
+msgstr "foute naam voor @set"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:218
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@clear requires a name"
-msgstr "%c%s vereist een naam"
+msgstr "@clear vereist een naam"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:221
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @clear"
-msgstr "foute naam voor @%s"
+msgstr "foute naam voor @clear"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:240
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@unmacro requires a name"
-msgstr "%c%s vereist een naam"
+msgstr "@unmacro vereist een naam"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:243
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @unmacro"
-msgstr "foute naam voor @%s"
+msgstr "foute naam voor @unmacro"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:262
-#, fuzzy, c-format
-#| msgid "@%s should only accept an @-command as argument, not `%s'"
+#, c-format
 msgid "@clickstyle should only accept an @-command as argument, not `%s'"
-msgstr "@%s hoort alleen een @-commando als argument te accepteren, niet '%s'"
+msgstr ""
+"@clickstyle hoort alleen een @-commando als argument te accepteren, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:355
-#, fuzzy, c-format
-#| msgid "environment command %s as argument to @%s"
+#, c-format
 msgid "environment command %s as argument to @alias"
-msgstr "omgevingscommando %s is gebruikt als argument van @%s"
+msgstr "omgevingscommando %s is gebruikt als argument van @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:373
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @alias"
-msgstr "fout argument van @%s"
+msgstr "fout argument van @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:424
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @definfoenclose"
-msgstr "fout argument van @%s"
+msgstr "fout argument van @definfoenclose"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:436
-#, fuzzy
-#| msgid "empty argument in @%s"
 msgid "empty @columnfractions"
-msgstr "leeg argument in @%s"
+msgstr "leeg argument van @columnfractions"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:594
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @printindex: %s"
-msgstr "fout argument van @%s: %s"
+msgstr "fout argument van @printindex: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:646
-#, fuzzy, c-format
-#| msgid "Only @%s 10 or 11 is supported, not `%s'"
+#, c-format
 msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
-msgstr "Bij @%s is alleen 10 of 11 mogelijk, niet '%s'"
+msgstr "Bij @fonttextsize is alleen 10 of 11 mogelijk, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:657
-#, fuzzy, c-format
-#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+#, c-format
 msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
-msgstr ""
-"%s: Argument van --footnote-style moet 'separate' of 'end' zijn, niet '%s'.\n"
+msgstr "argument van @footnotestyle moet 'separate' of 'end' zijn, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:669
-#, fuzzy, c-format
-#| msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+#, c-format
 msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
-msgstr "Argument van @%s moet 'on' of 'off' zijn, niet '%s'"
+msgstr "argument van @setchapternewpage moet 'on' of 'off' zijn, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:680
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @need: %s"
-msgstr "fout argument van @%s: %s"
+msgstr "fout argument van @need: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:701
-#, fuzzy, c-format
-#| msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+#, c-format
 msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
-msgstr ""
-"Argument van @firstparagraphindent moet 'none' of 'insert' zijn, niet '%s'"
+msgstr "argument van @firstparagraph moet 'none' of 'insert' zijn, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:783
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @headings: %s"
-msgstr "fout argument van @%s: %s"
+msgstr "fout argument van @headings: %s"
 
 # FIXME: formatter?
 #: tp/Texinfo/XS/parsetexi/end_line.c:1158
-#, fuzzy, c-format
-#| msgid "%s requires an argument: the formatter for %citem"
+#, c-format
 msgid "%s requires an argument: the formatter for @item"
-msgstr "%s vereist een argument: de formatteerder voor %c-item"
+msgstr "%s vereist een argument: de formatteerder voor @item"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1379
-#, fuzzy
-#| msgid "unmatched `%c%s'"
 msgid "unmatched `@end'"
-msgstr "ongepaarde '%c%s'"
+msgstr "ongepaarde '@end'"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1399
 #: tp/Texinfo/XS/parsetexi/parser.c:1109
-#, fuzzy, c-format
-#| msgid "superfluous argument to @%s %s: %s"
+#, c-format
 msgid "superfluous argument to @end %s: %s"
-msgstr "overtollig argument van @%s %s: %s"
+msgstr "overtollig argument van @end %s: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1409
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @end: %s"
-msgstr "fout argument van @%s: %s"
+msgstr "fout argument van @end: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1426
-#, fuzzy, c-format
-#| msgid "@%s: could not find %s"
+#, c-format
 msgid "@include: could not find %s"
-msgstr "@%s: kan %s niet vinden"
+msgstr "@include: kan %s niet vinden"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1434
-#, fuzzy, c-format
-#| msgid "@%s: could not open %s: %s"
+#, c-format
 msgid "@include: could not open %s:"
-msgstr "@%s: kan %s niet openen: %s"
+msgstr "@include: kan %s niet openen:"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1815
-#, fuzzy
-#| msgid "@%s after the first element"
 msgid "@setfilename after the first element"
-msgstr "@%s na het eerste element"
+msgstr "@setfilename na het eerste element"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1825
-#, fuzzy
-#| msgid "@%s only meaningful on a @multitable line"
 msgid "@columnfractions only meaningful on a @multitable line"
-msgstr "@%s is alleen zinvol op een '@multitable'-regel"
+msgstr "@columnfractions is alleen zinvol op een '@multitable'-regel"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1892
-#, fuzzy
-#| msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgid "@node precedes @part, but parts may not be associated with nodes"
 msgstr ""
-"@node gevonden vóór @%s, maar delen mogen niet gerelateerd zijn aan pagina's"
+"@node gevonden vóór @part, maar delen mogen niet gerelateerd zijn aan "
+"pagina's"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:154
-#, fuzzy, c-format
-#| msgid "@%s not meaningful inside `@%s' block"
+#, c-format
 msgid "@%s not meaningful inside @%s block"
-msgstr "@%s is zinloos in een '@%s'-blok"
+msgstr "@%s is zinloos binnen een '@%s'-blok"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:363
-#, fuzzy, c-format
-#| msgid "@%s not allowed inside `@%s' block"
+#, c-format
 msgid "@%s not allowed inside `@copying' block"
-msgstr "@%s is niet toegestaan in een '@%s'-blok"
+msgstr "@%s is niet toegestaan binnen een '@copying'-blok"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:565
-#, fuzzy
-#| msgid "@%s should only appear in an index entry"
 msgid "@subentry should only occur in an index entry"
-msgstr "@%s hoort alleen voor te komen in een index-item"
+msgstr "@subentry hoort alleen voor te komen in een index-item"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:690
-#, fuzzy
-#| msgid ""
-#| "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgid ""
 "@author not meaningful outside `@titlepage' and `@quotation' environments"
-msgstr "@%s is niet zinvol buiten '@titlepage'- en '@quotation'-omgevingen"
+msgstr "@author is niet zinvol buiten '@titlepage'- en '@quotation'-omgevingen"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:804
 #: tp/Texinfo/XS/parsetexi/macro.c:107
-#, fuzzy, c-format
-#| msgid "%c%s requires a name"
+#, c-format
 msgid "@%s requires a name"
-msgstr "%c%s vereist een naam"
+msgstr "@%s vereist een naam"
 
 #: tp/Texinfo/XS/parsetexi/macro.c:159
-#, fuzzy, c-format
-#| msgid "bad or empty @%s formal argument: %s"
+#, c-format
 msgid "bad or empty @%s formal argument: "
-msgstr "onjuist of leeg formeel argument van @%s: %s"
+msgstr "onjuist of leeg formeel argument van @%s: "
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1436
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s verwacht 'i' of 'j' als argument, niet '%s'"
+msgstr "@dotless verwacht 'i' of 'j' als argument, niet '%c'"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1523
-#, fuzzy, c-format
-#| msgid "undefined flag: %s"
+#, c-format
 msgid "undefined flag: %.*s"
-msgstr "ongedefinieerde vlag: %s"
+msgstr "ongedefinieerde vlag: %.*s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1578
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete."
+#, c-format
 msgid "@%s is obsolete."
-msgstr "%c%s is verouderd."
+msgstr "@%s is verouderd."
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1580
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete; %s"
+#, c-format
 msgid "@%s is obsolete; %s"
-msgstr "%c%s is verouderd; %s"
+msgstr "@%s is verouderd; %s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1705
-#, fuzzy
-#| msgid "@%s should only appear in math context"
 msgid "@\\ should only appear in math context"
-msgstr "@%s hoort alleen voor te komen in mathematische context"
+msgstr "@\\ hoort alleen voor te komen in mathematische context"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:53
-#, fuzzy
-#| msgid "@%s without associated character"
 msgid "@verb without associated character"
-msgstr "@%s zonder gerelateerd teken"
+msgstr "@verb zonder gerelateerd teken"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:396
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s verwacht 'i' of 'j' als argument, niet '%s'"
+msgstr "@dotless verwacht 'i' of 'j' als argument, niet '%s'"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:545
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced }"
-msgstr "verkeerd geplaatste %c"
+msgstr "verkeerd geplaatste }"
 
-#, c-format
 #~ msgid "can't open %s: %s"
 #~ msgstr "kan %s niet openen: %s"
 
-#, c-format
 #~ msgid "debugging output diverted to \"%s\""
 #~ msgstr "debugging-uitvoer is omgeleid naar '%s'"
 
@@ -3898,20 +3830,16 @@ msgstr "verkeerd geplaatste %c"
 #~ msgid "nodes without a new name at the end of file"
 #~ msgstr "pagina's zonder nieuwe naam aan einde van bestand"
 
-#, perl-format
 #~ msgid "old name for `%s' is a node of the document"
 #~ msgstr "oude naam van '%s' is een pagina in het document"
 
-#, perl-format
 #~ msgid "file empty for renamed node `%s'"
 #~ msgstr "bestand is leeg voor hernoemde pagina '%s'"
 
-#, perl-format
 #~ msgid "target node (new name for `%s') not in document: %s"
 #~ msgstr "doelpagina (nieuwe naam voor '%s') zit niet in document: %s"
 
 # XXX Is het node of nodes?
-#, perl-format
 #~ msgid "error on closing renamed node redirection file %s: %s"
 #~ msgstr ""
 #~ "fout bij sluiten van %s, bestand met doorverwijzingen van hernoemde "

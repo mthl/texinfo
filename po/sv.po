@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: texinfo 6.5.93\n"
+"Project-Id-Version: texinfo 6.6.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:47+0100\n"
-"PO-Revision-Date: 2019-02-13 23:23+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
+"PO-Revision-Date: 2019-08-20 15:18+0200\n"
 "Last-Translator: Sebastian Rasmussen <sebras@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: gnulib/lib/error.c:195
@@ -42,7 +42,7 @@ msgstr "%s: okänd flagga ”%s%s”\n"
 #: gnulib/lib/getopt.c:345
 #, c-format
 msgid "%s: option '%s%s' doesn't allow an argument\n"
-msgstr "%s: flaggan \"%s%s\" tillåter inget argument\n"
+msgstr "%s: flaggan ”%s%s” tillåter inget argument\n"
 
 #: gnulib/lib/getopt.c:360
 #, c-format
@@ -545,7 +545,7 @@ msgstr ""
 "\n"
 "Det första argumentet som inte är en flagga är, om det finns, menyposten\n"
 "att börja från. Det söks efter i alla ”dir”-filer i INFOPATH.\n"
-"Om den inte finns slår info samman alla \"dir\"-filer och visar resultatet.\n"
+"Om den inte finns slår info samman alla ”dir”-filer och visar resultatet.\n"
 "Alla återstående argument betraktas som namnen på menyposter\n"
 "relativa till den först besökta noden."
 
@@ -917,7 +917,7 @@ msgstr "kan inte binda nyckelsekvens till menysiffra"
 #: info/infokey.c:478
 #, c-format
 msgid "unknown action `%s'"
-msgstr "okänd åtgärd \"%s\""
+msgstr "okänd åtgärd ”%s”"
 
 #: info/infokey.c:503
 msgid "action name too long"
@@ -926,7 +926,7 @@ msgstr "åtgärdsnamnet är för långt"
 #: info/infokey.c:516
 #, c-format
 msgid "extra characters following action `%s'"
-msgstr "extra tecken följer på åtgärden \"%s\""
+msgstr "extra tecken följer på åtgärden ”%s”"
 
 #: info/infokey.c:527
 msgid "missing variable name"
@@ -934,7 +934,7 @@ msgstr "variabelnamn saknas"
 
 #: info/infokey.c:536
 msgid "missing `=' immediately after variable name"
-msgstr "\"=\" saknas direkt efter variabelnamnet"
+msgstr "”=” saknas direkt efter variabelnamnet"
 
 #: info/infokey.c:543
 msgid "variable name too long"
@@ -947,7 +947,7 @@ msgstr "värdet är för långt"
 #: info/infokey.c:613
 #, c-format
 msgid "\"%s\", line %u: "
-msgstr "\"%s\", rad %u: "
+msgstr "”%s”, rad %u: "
 
 #: info/m-x.c:64
 msgid "Read the name of an Info command and describe it"
@@ -1626,7 +1626,7 @@ msgstr "Okänt kommando (%s)"
 #: info/session.c:5376
 #, c-format
 msgid "\"%s\" is invalid"
-msgstr "\"%s\" är ogiltigt"
+msgstr "”%s” är ogiltigt"
 
 #: info/session.c:5377
 #, c-format
@@ -1643,30 +1643,29 @@ msgstr "Börja (eller multiplicera med 4) det numeriska argumentet"
 
 #: info/variables.c:67
 msgid "When \"On\", footnotes appear and disappear automatically"
-msgstr "När detta är \"On\" visas och försvinner fotnoter automatiskt"
+msgstr "När detta är ”On” visas och försvinner fotnoter automatiskt"
 
 #: info/variables.c:71
 msgid "When \"On\", creating or deleting a window resizes other windows"
 msgstr ""
-"När detta är \"On\" ändrar skapande eller borttagande av ett fönster\n"
+"När detta är ”On” ändrar skapande eller borttagande av ett fönster\n"
 "storleken på andra fönster"
 
 #: info/variables.c:75
 msgid "When \"On\", flash the screen instead of ringing the bell"
-msgstr ""
-"När detta är \"On\" blinkar skärmen till istället för att klockan ringer"
+msgstr "När detta är ”On” blinkar skärmen till istället för att klockan ringer"
 
 #: info/variables.c:79
 msgid "When \"On\", errors cause the bell to ring"
-msgstr "När detta är \"On\" gör fel att klockan ringer"
+msgstr "När detta är ”On” gör fel att klockan ringer"
 
 #: info/variables.c:83
 msgid "When \"On\", Info garbage collects files which had to be uncompressed"
-msgstr "När detta är \"On\" skräpsamlar Info filer som behövde packas upp"
+msgstr "När detta är ”On” skräpsamlar Info filer som behövde packas upp"
 
 #: info/variables.c:86
 msgid "When \"On\", the portion of the matched search string is highlighted"
-msgstr "När detta är \"On\" markeras delen av den matchade söksträngen"
+msgstr "När detta är ”On” markeras delen av den matchade söksträngen"
 
 #: info/variables.c:90
 msgid "Controls what happens when scrolling is requested at the end of a node"
@@ -1682,11 +1681,11 @@ msgstr "Antalet rader att rulla då markören flyttas utanför fönstret"
 
 #: info/variables.c:103
 msgid "Controls whether scroll-behavior affects cursor movement commands"
-msgstr "Styr huruvida \"scroll-behavior\" påverkar flyttkommandon för markören"
+msgstr "Styr huruvida ”scroll-behavior” påverkar flyttkommandon för markören"
 
 #: info/variables.c:107
 msgid "When \"On\", Info accepts and displays ISO Latin characters"
-msgstr "När detta är \"On\" accepterar och visar Info ISO Latin-tecken"
+msgstr "När detta är ”On” accepterar och visar Info ISO Latin-tecken"
 
 #: info/variables.c:111
 msgid ""
@@ -1791,7 +1790,7 @@ msgstr "%s för %s"
 #: install-info/install-info.c:530
 #, c-format
 msgid "\tTry `%s --help' for a complete list of options.\n"
-msgstr "\tProva \"%s --help\" för en fullständig lista med flaggor.\n"
+msgstr "\tProva ”%s --help” för en fullständig lista med flaggor.\n"
 
 #: install-info/install-info.c:538
 #, c-format
@@ -1977,9 +1976,9 @@ msgstr ""
 "%s\tDetta är översta noden i INFO-trädet\n"
 "\n"
 "  Denna nod (katalognoden) erbjuder en meny med huvudrubriker.\n"
-"  Att skriva \"q\" avslutar, \"H\" visar alla Info-kommandon, \"d\"\n"
-"  återvänder hit, \"h\" visar en hjälp för förstagångsanvändare,\n"
-"  \"mEmacs<Retur>\" besöker Emacs-manualen, osv.\n"
+"  Att skriva ”q” avslutar, ”H” visar alla Info-kommandon, ”d”\n"
+"  återvänder hit, ”h” visar en hjälp för förstagångsanvändare,\n"
+"  ”mEmacs<Retur>” besöker Emacs-manualen, osv.\n"
 "\n"
 "  I Emacs kan du klicka med musknapp 2 på en menypost eller korsreferens\n"
 "  för att välja den.\n"
@@ -2012,17 +2011,17 @@ msgstr "%s: Ange Info-filen endast en gång.\n"
 #: install-info/install-info.c:2200
 #, c-format
 msgid "Extra regular expression specified, ignoring `%s'"
-msgstr "Extra reguljärt uttryck angivet, ignorerar \"%s\""
+msgstr "Extra reguljärt uttryck angivet, ignorerar ”%s”"
 
 #: install-info/install-info.c:2212
 #, c-format
 msgid "Error in regular expression `%s': %s"
-msgstr "Fel i reguljära uttrycket \"%s\": %s"
+msgstr "Fel i reguljära uttrycket ”%s”: %s"
 
 #: install-info/install-info.c:2274
 #, c-format
 msgid "excess command line argument `%s'"
-msgstr "för många kommandoradsargument \"%s\""
+msgstr "för många kommandoradsargument ”%s”"
 
 #: install-info/install-info.c:2278
 msgid "No input file specified; try --help for more information."
@@ -2040,12 +2039,12 @@ msgstr "Kunde inte läsa %s."
 #: install-info/install-info.c:2448
 #, c-format
 msgid "no info dir entry in `%s'"
-msgstr "ingen info-katalogpost i \"%s\""
+msgstr "ingen info-katalogpost i ”%s”"
 
 #: install-info/install-info.c:2696
 #, c-format
 msgid "no entries found for `%s'; nothing deleted"
-msgstr "inga poster hittades för \"%s\"; ingenting togs bort"
+msgstr "inga poster hittades för ”%s”; ingenting togs bort"
 
 #: tp/DebugTexinfo/DebugTree.pm:63 tp/Texinfo/Convert/Converter.pm:796
 #: tp/Texinfo/Convert/Converter.pm:834 tp/Texinfo/Convert/Converter.pm:1109
@@ -2296,7 +2295,7 @@ msgstr "fel vid stängning av bildtextfil %s: %s"
 #: tp/Texinfo/Convert/Plaintext.pm:1424
 #, perl-format
 msgid "@image file `%s' unreadable: %s"
-msgstr "@image-filen \"%s\" är oläslig: %s"
+msgstr "@image-filen ”%s” är oläslig: %s"
 
 #: tp/Texinfo/Convert/Plaintext.pm:1445
 #, perl-format
@@ -2345,16 +2344,16 @@ msgstr "”.” eller ”,” måste följa på @xref, inte %s"
 msgid "`.' or `,' must follow @xref"
 msgstr "”.” eller ”,” måste följa på @xref"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2973
+#: tp/Texinfo/Convert/Plaintext.pm:2978
 #, perl-format
 msgid "menu entry node name should not contain `%s'"
 msgstr "nodnamn för menyobjekt borde inte innehålla ”%s”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:2984
+#: tp/Texinfo/Convert/Plaintext.pm:2989
 msgid "menu entry node name should not contain `:'"
 msgstr "nodnamn för menyobjekt borde inte innehålla ”:”"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3004
+#: tp/Texinfo/Convert/Plaintext.pm:3009
 msgid "menu entry name should not contain `:'"
 msgstr "namn för menyobjekt borde inte innehålla ”:”"
 
@@ -2432,7 +2431,7 @@ msgstr "@%s har text men inte @item"
 #: tp/Texinfo/ParserNonXS.pm:1537 tp/Texinfo/XS/parsetexi/close.c:262
 #, c-format, perl-format
 msgid "`@end' expected `%s', but saw `%s'"
-msgstr "\"@end\" förväntade \"%s\", men såg \"%s\""
+msgstr "”@end” förväntade ”%s”, men såg ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:1540 tp/Texinfo/XS/parsetexi/close.c:268
 #, c-format, perl-format
@@ -2567,7 +2566,7 @@ msgstr "kodningen ”%s” är inte en kanonisk texinfo-kodning"
 #: tp/Texinfo/ParserNonXS.pm:2990 tp/Texinfo/XS/parsetexi/end_line.c:1539
 #, c-format, perl-format
 msgid "unrecognized encoding name `%s'"
-msgstr "okänt kodningsnamn \"%s\""
+msgstr "okänt kodningsnamn ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:3106
 #, perl-format
@@ -2580,10 +2579,8 @@ msgid "@%s only meaningful on a @multitable line"
 msgstr "@%s är inte meningsfullt utanför @multitabell-rad"
 
 #: tp/Texinfo/ParserNonXS.pm:3149 tp/Texinfo/XS/parsetexi/end_line.c:1879
-#, fuzzy
-#| msgid "@%s should not be associated with @top"
 msgid "@part should not be associated with @top"
-msgstr "@%s borde inte associeras med @top"
+msgstr "@part borde inte associeras med @top"
 
 #: tp/Texinfo/ParserNonXS.pm:3160
 #, perl-format
@@ -2617,12 +2614,12 @@ msgstr "@end %s ska bara uppträda vid böjran på en rad"
 #: tp/Texinfo/ParserNonXS.pm:3570 tp/Texinfo/XS/parsetexi/parser.c:1137
 #, c-format, perl-format
 msgid "macro `%s' previously defined"
-msgstr "makrot \"%s\" är redan definierat"
+msgstr "makrot ”%s” är redan definierat"
 
 #: tp/Texinfo/ParserNonXS.pm:3573 tp/Texinfo/XS/parsetexi/parser.c:1139
 #, c-format, perl-format
 msgid "here is the previous definition of `%s'"
-msgstr "här är den tidigare definitionen av \"%s\""
+msgstr "här är den tidigare definitionen av ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:3578 tp/Texinfo/XS/parsetexi/parser.c:1144
 #, c-format, perl-format
@@ -2668,7 +2665,7 @@ msgstr "använd klamrar för att ge ett kommando som ett argument till @%s"
 #: tp/Texinfo/ParserNonXS.pm:3824 tp/Texinfo/ParserNonXS.pm:4981
 #, perl-format
 msgid "%c%s expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s förväntar ”i” eller ”j” som argument, inte ”%s”"
+msgstr "%c%s förväntar sig ”i” eller ”j” som argument, inte ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:3835 tp/Texinfo/XS/parsetexi/parser.c:1449
 #, c-format, perl-format
@@ -2719,7 +2716,7 @@ msgstr "@%s borde endast förekomma i rubriker eller fotnoter"
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:143
 #, c-format, perl-format
 msgid "@%s not meaningful inside `@%s' block"
-msgstr "@%s är inte meningsfullt inuti \"@%s\"-block"
+msgstr "@%s är inte meningsfullt inuti ”@%s”-block"
 
 #: tp/Texinfo/ParserNonXS.pm:4128 tp/Texinfo/XS/parsetexi/handle_commands.c:180
 #, c-format, perl-format
@@ -2759,7 +2756,7 @@ msgstr "@%s borde endast förekomma i en indexpost"
 
 #: tp/Texinfo/ParserNonXS.pm:4368 tp/Texinfo/XS/parsetexi/handle_commands.c:580
 msgid "no more than two levels of index subentry are allowed"
-msgstr ""
+msgstr "fler än två nivåer av index underposter tillåts"
 
 #: tp/Texinfo/ParserNonXS.pm:4409 tp/Texinfo/XS/parsetexi/handle_commands.c:637
 #, c-format, perl-format
@@ -2770,7 +2767,7 @@ msgstr "måste vara efter ”@%s” för att använda ”@%s”"
 #, perl-format
 msgid "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
-"@%s är inte meningsfullt utanför \"@titlepage\"- och \"@quotation\"-omgivning"
+"@%s är inte meningsfullt utanför ”@titlepage”- och ”@quotation”-omgivning"
 
 #: tp/Texinfo/ParserNonXS.pm:4451 tp/Texinfo/XS/parsetexi/handle_commands.c:694
 msgid "@dircategory after first node"
@@ -2948,12 +2945,12 @@ msgstr "prindindex före dokument börjar: @printindex %s"
 #: tp/Texinfo/ParserNonXS.pm:5593 tp/Texinfo/XS/parsetexi/end_line.c:634
 #, c-format, perl-format
 msgid "@%s arg must be `top' or `bottom', not `%s'"
-msgstr "@%s argument måste vara ”top” eller ”bottom”, inte \"%s\""
+msgstr "@%s argument måste vara ”top” eller ”bottom”, inte ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:5601
 #, perl-format
 msgid "Only @%s 10 or 11 is supported, not `%s'"
-msgstr "Endast @%s 10 eller 11 stöds, inte \"%s\""
+msgstr "Endast @%s 10 eller 11 stöds, inte ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:5609
 #, perl-format
@@ -2981,7 +2978,7 @@ msgstr ""
 #: tp/Texinfo/ParserNonXS.pm:5658 tp/Texinfo/XS/parsetexi/end_line.c:711
 #, c-format, perl-format
 msgid "@exampleindent arg must be numeric/`asis', not `%s'"
-msgstr "@exampleindent-argument måste vara numeriskt/”asis\", inte ”%s”"
+msgstr "@exampleindent-argument måste vara numeriskt/”asis”, inte ”%s”"
 
 #: tp/Texinfo/ParserNonXS.pm:5670 tp/Texinfo/XS/parsetexi/end_line.c:726
 #, c-format, perl-format
@@ -3042,7 +3039,7 @@ msgstr "@%s postnodsnamn ”%s” skiljer sig från %s namn ”%s”"
 #: tp/Texinfo/Structuring.pm:498
 #, perl-format
 msgid "unreferenced node `%s'"
-msgstr "orefererad nod \"%s\""
+msgstr "orefererad nod ”%s”"
 
 #: tp/Texinfo/Structuring.pm:549
 #, perl-format
@@ -3398,15 +3395,15 @@ msgstr ""
 "      --fill-column=ANTAL     radbryt Info-rader vid ANTAL tecken\n"
 "                                (standardvärde %d).\n"
 "      --footnote-style=STIL   generera fotnoter i Info som följer STIL:\n"
-"                                \"separate\" för att placera fotnoter i sin\n"
+"                                ”separate” för att placera fotnoter i sin\n"
 "                                egen nod,\n"
-"                                \"end\" för att placera fotnoter i slutet\n"
+"                                ”end” för att placera fotnoter i slutet\n"
 "                                av den nod där de är definierade\n"
 "                                (standardalternativ).\n"
 "      --paragraph-indent=VÄRDE gör indrag i Info-stycken med VÄRDE\n"
 "                                blanksteg (standardvärde %d).\n"
-"                                Om VÄRDE är \"none\" görs inga indrag; om\n"
-"                                VÄRDE är \"asis\" bevaras befintliga\n"
+"                                Om VÄRDE är ”none” görs inga indrag; om\n"
+"                                VÄRDE är ”asis” bevaras befintliga\n"
 "                                indrag.\n"
 "      --split-size=ANTAL      dela upp Info-filer vid storleken ANTAL\n"
 "                                (standardvärde %d).\n"
@@ -3566,15 +3563,15 @@ msgstr ""
 #, perl-format
 msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
 msgstr ""
-"%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
-"\"%s\".\n"
+"%s: argumentet --footnote-style måste vara ”separate” eller ”end”, inte "
+"”%s”.\n"
 
 #: tp/texi2any.pl:913
 #, perl-format
 msgid "%s: --paragraph-indent arg must be numeric/`none'/`asis', not `%s'.\n"
 msgstr ""
-"%s: argumentet --paragraph-indent måste vara numeriskt/\"none\"/\"asis\", "
-"inte \"%s\".\n"
+"%s: argumentet --paragraph-indent måste vara numeriskt/”none”/”asis”, inte "
+"”%s”.\n"
 
 #: tp/texi2any.pl:990
 #, perl-format
@@ -3603,7 +3600,7 @@ msgstr "%s: filargument saknas.\n"
 #: tp/texi2any.pl:1077
 #, perl-format
 msgid "Try `%s --help' for more information.\n"
-msgstr "Prova \"%s --help\" för mer information.\n"
+msgstr "Prova ”%s --help” för mer information.\n"
 
 #: tp/texi2any.pl:1144
 msgid "fill_gaps_in_sectioning transformation return no result. No section?"
@@ -3645,276 +3642,211 @@ msgid "%s: could not open %s for writing: %s\n"
 msgstr "%s: kunde inte öppna %s för skrivning: %s\n"
 
 #: tp/Texinfo/XS/parsetexi/close.c:274
-#, fuzzy, c-format
-#| msgid "no matching `%cend %s'"
+#, c-format
 msgid "no matching `@end %s'"
-msgstr "inge matchning ”%cend %s”"
+msgstr "inget matchande ”@end %s”"
 
 #: tp/Texinfo/XS/parsetexi/close.c:312 tp/Texinfo/XS/parsetexi/separator.c:193
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced {"
-msgstr "felplacerat %c"
+msgstr "felplacerat {"
 
 #: tp/Texinfo/XS/parsetexi/close.c:415
-#, fuzzy, c-format
-#| msgid "unmatched `%c%s'"
+#, c-format
 msgid "unmatched `@end %s'"
-msgstr "omatchat ”%c%s”"
+msgstr "omatchat ”@end %s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:191
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@set requires a name"
-msgstr "%c%s kräver ett namn"
+msgstr "@set kräver ett namn"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:194
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @set"
-msgstr "felaktigt namn för @%s"
+msgstr "felaktigt namn för @set"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:218
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@clear requires a name"
-msgstr "%c%s kräver ett namn"
+msgstr "@clear kräver ett namn"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:221
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @clear"
-msgstr "felaktigt namn för @%s"
+msgstr "felaktigt namn för @clear"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:240
-#, fuzzy
-#| msgid "%c%s requires a name"
 msgid "@unmacro requires a name"
-msgstr "%c%s kräver ett namn"
+msgstr "@unmacro kräver ett namn"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:243
-#, fuzzy
-#| msgid "bad name for @%s"
 msgid "bad name for @unmacro"
-msgstr "felaktigt namn för @%s"
+msgstr "felaktigt namn för @unmacro"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:262
-#, fuzzy, c-format
-#| msgid "@%s should only accept an @-command as argument, not `%s'"
+#, c-format
 msgid "@clickstyle should only accept an @-command as argument, not `%s'"
-msgstr "@%s borde endas acceptera ett @-kommando som argument, inte ”%s”"
+msgstr ""
+"@clickstyle borde endast acceptera ett @-kommando som argument, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:355
-#, fuzzy, c-format
-#| msgid "environment command %s as argument to @%s"
+#, c-format
 msgid "environment command %s as argument to @alias"
-msgstr "miljökommando %s som argument till @%s"
+msgstr "miljökommando %s som argument till @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:373
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @alias"
-msgstr "felaktigt argument till @%s"
+msgstr "felaktigt argument till @alias"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:424
-#, fuzzy
-#| msgid "bad argument to @%s"
 msgid "bad argument to @definfoenclose"
-msgstr "felaktigt argument till @%s"
+msgstr "felaktigt argument till @definfoenclose"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:436
-#, fuzzy
-#| msgid "empty argument in @%s"
 msgid "empty @columnfractions"
-msgstr "tomt argument i @%s"
+msgstr "tom @columnfractions"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:594
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @printindex: %s"
-msgstr "felaktigt argument till @%s: %s"
+msgstr "felaktigt argument till @printindex: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:646
-#, fuzzy, c-format
-#| msgid "Only @%s 10 or 11 is supported, not `%s'"
+#, c-format
 msgid "Only @fonttextsize 10 or 11 is supported, not `%s'"
-msgstr "Endast @%s 10 eller 11 stöds, inte \"%s\""
+msgstr "Endast @fonttextsize 10 eller 11 stöds, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:657
-#, fuzzy, c-format
-#| msgid "%s: --footnote-style arg must be `separate' or `end', not `%s'.\n"
+#, c-format
 msgid "@footnotestyle arg must be `separate' or `end', not `%s'"
-msgstr ""
-"%s: argumentet --footnote-style måste vara \"separate\" eller \"end\", inte "
-"\"%s\".\n"
+msgstr "@footnotestyle-argument måste vara ”separate” eller ”end”, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:669
-#, fuzzy, c-format
-#| msgid "@%s arg must be `on', `off' or `odd', not `%s'"
+#, c-format
 msgid "@setchapternewpage arg must be `on', `off' or `odd', not `%s'"
-msgstr "@%s argument måste vara ”on”, ”off” eller ”odd”, inte ”%s”"
+msgstr ""
+"@setchapternewpage argument måste vara ”on”, ”off” eller ”odd”, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:680
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @need: %s"
-msgstr "felaktigt argument till @%s: %s"
+msgstr "felaktigt argument till @need: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:701
-#, fuzzy, c-format
-#| msgid "@firstparagraphindent arg must be `none' or `insert', not `%s'"
+#, c-format
 msgid "@firstparagraph arg must be `none' or `insert', not `%s'"
-msgstr ""
-"@firstparagraphindent-argument måste vara ”none” eller ”insert”, inte ”%s”"
+msgstr "@firstparagraph-argument måste vara ”none” eller ”insert”, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:783
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @headings: %s"
-msgstr "felaktigt argument till @%s: %s"
+msgstr "felaktigt argument till @headings: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1158
-#, fuzzy, c-format
-#| msgid "%s requires an argument: the formatter for %citem"
+#, c-format
 msgid "%s requires an argument: the formatter for @item"
-msgstr "%s kräver ett argument: formateraren för %citem"
+msgstr "%s kräver ett argument: formateraren för @item"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1379
-#, fuzzy
-#| msgid "unmatched `%c%s'"
 msgid "unmatched `@end'"
-msgstr "omatchat ”%c%s”"
+msgstr "omatchat ”@end”"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1399
 #: tp/Texinfo/XS/parsetexi/parser.c:1109
-#, fuzzy, c-format
-#| msgid "superfluous argument to @%s %s: %s"
+#, c-format
 msgid "superfluous argument to @end %s: %s"
-msgstr "överflödigt argument till @%s %s: %s"
+msgstr "överflödigt argument till @end %s: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1409
-#, fuzzy, c-format
-#| msgid "bad argument to @%s: %s"
+#, c-format
 msgid "bad argument to @end: %s"
-msgstr "felaktigt argument till @%s: %s"
+msgstr "felaktigt argument till @end: %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1426
-#, fuzzy, c-format
-#| msgid "@%s: could not find %s"
+#, c-format
 msgid "@include: could not find %s"
-msgstr "%s: kunde inte hitta %s"
+msgstr "@include: kunde inte hitta %s"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1434
-#, fuzzy, c-format
-#| msgid "@%s: could not open %s: %s"
+#, c-format
 msgid "@include: could not open %s:"
-msgstr "@%s: kunde inte öppna %s: %s"
+msgstr "@include: kunde inte öppna %s:"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1815
-#, fuzzy
-#| msgid "@%s after the first element"
 msgid "@setfilename after the first element"
-msgstr "@%s efter första elementet"
+msgstr "@setfilename efter första elementet"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1825
-#, fuzzy
-#| msgid "@%s only meaningful on a @multitable line"
 msgid "@columnfractions only meaningful on a @multitable line"
-msgstr "@%s är inte meningsfullt utanför @multitabell-rad"
+msgstr "@columnfractions är inte meningsfullt utanför @multitabell-rad"
 
 #: tp/Texinfo/XS/parsetexi/end_line.c:1892
-#, fuzzy
-#| msgid "@node precedes @%s, but parts may not be associated with nodes"
 msgid "@node precedes @part, but parts may not be associated with nodes"
-msgstr "@node föregår @%s, men delar kanske inte associeras med noder"
+msgstr "@node föregår @part, men delar kanske inte associeras med noder"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:154
-#, fuzzy, c-format
-#| msgid "@%s not meaningful inside `@%s' block"
+#, c-format
 msgid "@%s not meaningful inside @%s block"
-msgstr "@%s är inte meningsfullt inuti \"@%s\"-block"
+msgstr "@%s är inte meningsfullt inuti ”@%s”-block"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:363
-#, fuzzy, c-format
-#| msgid "@%s not allowed inside `@%s' block"
+#, c-format
 msgid "@%s not allowed inside `@copying' block"
-msgstr "@%s är inte tillåtet inuti ”@%s”-block"
+msgstr "@%s är inte tillåtet inuti ”@copying”-block"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:565
-#, fuzzy
-#| msgid "@%s should only appear in an index entry"
 msgid "@subentry should only occur in an index entry"
-msgstr "@%s borde endast förekomma i en indexpost"
+msgstr "@subentry borde endast förekomma i en indexpost"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:690
-#, fuzzy
-#| msgid ""
-#| "@%s not meaningful outside `@titlepage' and `@quotation' environments"
 msgid ""
 "@author not meaningful outside `@titlepage' and `@quotation' environments"
 msgstr ""
-"@%s är inte meningsfullt utanför \"@titlepage\"- och \"@quotation\"-omgivning"
+"@author är inte meningsfullt utanför ”@titlepage”- och ”@quotation”-omgivning"
 
 #: tp/Texinfo/XS/parsetexi/handle_commands.c:804
 #: tp/Texinfo/XS/parsetexi/macro.c:107
-#, fuzzy, c-format
-#| msgid "%c%s requires a name"
+#, c-format
 msgid "@%s requires a name"
-msgstr "%c%s kräver ett namn"
+msgstr "@%s kräver ett namn"
 
 #: tp/Texinfo/XS/parsetexi/macro.c:159
-#, fuzzy, c-format
-#| msgid "bad or empty @%s formal argument: %s"
+#, c-format
 msgid "bad or empty @%s formal argument: "
-msgstr "felaktigt eller tomt formellt argument till @%s: %s"
+msgstr "felaktigt eller tomt @%s formellt argument: "
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1436
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%c'"
-msgstr "%c%s förväntar ”i” eller ”j” som argument, inte ”%s”"
+msgstr "@dotless förväntar sig ”i” eller ”j” som argument, inte ”%c”"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1523
-#, fuzzy, c-format
-#| msgid "undefined flag: %s"
+#, c-format
 msgid "undefined flag: %.*s"
-msgstr "odefinierad flagga: %s"
+msgstr "odefinierad flagga: %.*s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1578
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete."
+#, c-format
 msgid "@%s is obsolete."
-msgstr "%c%s är föråldrat."
+msgstr "@%s är föråldrat."
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1580
-#, fuzzy, c-format
-#| msgid "%c%s is obsolete; %s"
+#, c-format
 msgid "@%s is obsolete; %s"
-msgstr "%c%s är föråldrat; %s"
+msgstr "@%s är föråldrat; %s"
 
 #: tp/Texinfo/XS/parsetexi/parser.c:1705
-#, fuzzy
-#| msgid "@%s should only appear in math context"
 msgid "@\\ should only appear in math context"
-msgstr "@%s borde endast förekomma i matematikkontext"
+msgstr "@\\ borde endast förekomma i matematikkontext"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:53
-#, fuzzy
-#| msgid "@%s without associated character"
 msgid "@verb without associated character"
-msgstr "@%s utan associerat tecken"
+msgstr "@verb utan associerat tecken"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:396
-#, fuzzy, c-format
-#| msgid "%c%s expects `i' or `j' as argument, not `%s'"
+#, c-format
 msgid "@dotless expects `i' or `j' as argument, not `%s'"
-msgstr "%c%s förväntar ”i” eller ”j” som argument, inte ”%s”"
+msgstr "@dotless förväntar sig ”i” eller ”j” som argument, inte ”%s”"
 
 #: tp/Texinfo/XS/parsetexi/separator.c:545
-#, fuzzy
-#| msgid "misplaced %c"
 msgid "misplaced }"
-msgstr "felplacerat %c"
+msgstr "felplacerat }"
 
 #~ msgid "no node to be renamed"
 #~ msgstr "inge nod att byta namn på"
@@ -3922,23 +3854,18 @@ msgstr "felplacerat %c"
 #~ msgid "nodes without a new name at the end of file"
 #~ msgstr "noder utan ett nytt namn vid filslut"
 
-#, perl-format
 #~ msgid "using a renamed nodes file (`%s') is deprecated"
 #~ msgstr "att använda en nodfil (”%s”) med nytt namn är föråldrat"
 
-#, perl-format
 #~ msgid "old name for `%s' is a node of the document"
 #~ msgstr "gammalt namn för ”%s” är en nod i dokumentet"
 
-#, perl-format
 #~ msgid "file empty for renamed node `%s'"
 #~ msgstr "fil tomt för namnändrad nod ”%s”"
 
-#, perl-format
 #~ msgid "target node (new name for `%s') not in document: %s"
 #~ msgstr "målnod (nytt namn för ”%s”) finns inte dokument: %s"
 
-#, perl-format
 #~ msgid "error on closing renamed node redirection file %s: %s"
 #~ msgstr "fel vid stängning av nodomdirigeringsfil %s som bytt namn: %s"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: texinfo_document 6.5.90\n"
 "Report-Msgid-Bugs-To: bug-texinfo@gnu.org\n"
-"POT-Creation-Date: 2019-08-18 21:55+0100\n"
+"POT-Creation-Date: 2019-09-17 18:48+0100\n"
 "PO-Revision-Date: 2019-01-05 07:11-0300\n"
 "Last-Translator: Jorge Barros de Abreu <ficmatin10@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge."
@@ -400,7 +400,7 @@ msgstr "{category} da {class}:@* @emph{{type}}@* @strong{{name}}"
 msgid "@tie{}-- {category} of {class}: {type} {name}"
 msgstr "{category} da {class}: @emph{{type}} @strong{{name}}"
 
-#: tp/Texinfo/Convert/Plaintext.pm:3255 tp/Texinfo/Convert/HTML.pm:2896
+#: tp/Texinfo/Convert/Plaintext.pm:3260 tp/Texinfo/Convert/HTML.pm:2896
 #, perl-brace-format
 msgid "@center --- @emph{{author}}\n"
 msgstr "@center --- @emph{{author}}\n"
