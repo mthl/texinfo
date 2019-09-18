@@ -49,7 +49,7 @@ xml_accents
 @EXPORT = qw(
 );
 
-$VERSION = '6.6dev';
+$VERSION = '6.6.91';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
