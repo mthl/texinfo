@@ -57,7 +57,6 @@ license to the document, as described in section 6 of the license.
 
 @contents
 
-@ifnottex
 @node Top
 @top Stand-alone GNU Info
 
@@ -69,7 +68,6 @@ If you are new to the Info reader, then you can get started by typing
 rest of this manual by typing @key{SPC} and @key{DEL} (or @key{Space}
 and @key{Backspace}) to move forwards and backwards in it.
 
-@end ifnottex
 
 @menu
 * Stand-alone Info::            What is Info?

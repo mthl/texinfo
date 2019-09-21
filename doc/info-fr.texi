@@ -113,7 +113,6 @@ de l'ensemble, vous le pouvez à condition d'ajouter une copie de la
 licence à ce document, comme indiqué à la section 6 de la licence.
 @end titlepage
 
-@ifnottex
 @node Top, , Pour Démarrer,
 @top Info: Une Introduction
 
@@ -132,7 +131,6 @@ Pour apprendre des commandes avancées d'Info, tapez deux fois @kbd{n}.
 Vous serez conduit à @cite{Info pour les Experts}, en sautant le
 chapitre @w{« Pour} @w{Démarrer ».}
 @end ifinfo
-@end ifnottex
 
 @menu
 * Pour Démarrer::               Commencer à utiliser un navigateur Info.
