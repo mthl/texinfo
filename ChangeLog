@@ -1,3 +1,12 @@
+2019-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Avoid gcc warnings about strncat.
+
+	* install-info/install-info.c (split_entry, format_entry):
+	Replace some calls to strncat with strcat.  This avoids a
+	"'strncat' specified bound 2 equals source length 
+	[-Wstringop-overflow=]" warning with gcc 8.
+
 2019-09-21  YOKOTA Hiroshi  <yokota.hgml@gmail.com>  (tiny change)
 
 	Japanese language support changes.
