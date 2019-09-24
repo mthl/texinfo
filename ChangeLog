@@ -1,3 +1,14 @@
+2019-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@url line-breaking.
+
+	* doc/texinfo.tex (\urefallowbreak): Allow a break within a URL 
+	without any extra stretch at all.  There is no point to having a 
+	small amount of glue at the very end of a line when it is not 
+	needed.  Report from Vincent Lefevre.
+	* doc/texinfo-tex-test.texi (URL line breaking): Add a test 
+	case.
+
 2019-09-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	6.7.

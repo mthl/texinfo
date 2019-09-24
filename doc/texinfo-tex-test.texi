@@ -1703,12 +1703,20 @@ par
 
 @chapter URL line breaking
 
-Some use of @code{@@url}.
+Some use of @code{@@url}.  Ragged-right output should only be used where
+necessary.
 
 see the 
 @url{https://www.gnu.org/software/libc/manual/html_node/Message-catalogs-with-gettext.html} 
 
 foo foo foo foo foo foo foof see the @url{https://www.gnu.org/software/libc/manual/html_node/}
+
+In case of problem, please read the @file{INSTALL} file carefully
+before reporting a bug, in particular section ``In case of problem''.
+Some problems are due to bad configuration on the user side (not
+specific to MPFR)@. Problems are also mentioned in the FAQ
+@url{https://www.mpfr.org/faq.html}.
+
 
 
 
