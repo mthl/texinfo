@@ -1,3 +1,9 @@
+2019-09-28  Eli Zaretskii  <eliz@gnu.org>
+
+	* tp/Texinfo/XS/parsetexi/api.c (find_locales_dir): Don't use
+	asprintf, as that could cause Perl crashes due to different malloc
+	implementations.
+
 2019-09-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	@url line-breaking.

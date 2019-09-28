@@ -56,7 +56,12 @@ find_locales_dir (char *builddir)
 
   dTHX;
 
-  asprintf (&s, "%s/LocaleData", builddir);
+  /* Can't use asprintf here, because it might come from Gnulib, and
+     will then use malloc that is different from Perl's malloc, wheres
+     free below is redirected to Perl's implementation.  This could
+     cause crashes if the two malloc/free implementations were different.  */
+  s = malloc (strlen (builddir) + strlen ("/LocaleData") + 1);
+  sprintf (s, "%s/LocaleData", builddir);
   dir = opendir (s);
   if (!dir)
     {
