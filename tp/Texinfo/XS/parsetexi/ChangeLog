@@ -1,8 +1,3 @@
-2019-08-19  Eli Zaretskii  <eliz@gnu.org>
-
-	* api.c (find_locales_dir): Add trhe "dTHX" boilerplate, as this
-	function uses Perl API functions.
-
 2016-12-102-10vin Smith  <gavinsmith0123@gmail.com>
 
 	* Parsetexi.pm: Use Texinfo::XSLoader module.

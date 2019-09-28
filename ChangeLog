@@ -88,6 +88,11 @@
 
 2019-08-19  Eli Zaretskii  <eliz@gnu.org>
 
+	* api.c (find_locales_dir): Add the "dTHX" boilerplate, as this
+	function uses Perl API functions.
+
+2019-08-19  Eli Zaretskii  <eliz@gnu.org>
+
 	* info/pcterm.c (kill): Don't use RETSIGTYPE, it is no longer
 	defined by config.h.
 
