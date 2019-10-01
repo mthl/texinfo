@@ -164,11 +164,6 @@ my $strings_textdomain = '@PACKAGE@' . '_document';
 $strings_textdomain = 'texinfo_document' 
    if ($strings_textdomain eq '@'.'PACKAGE@' . '_document');
 
-my $srcdir;
-if (defined($ENV{'top_srcdir'})) {
-  $srcdir = File::Spec->catdir($ENV{'top_srcdir'}, 'tp');
-}
-
 
 # we want a reliable way to switch locale, so we don't use the system
 # gettext.
@@ -210,7 +205,8 @@ if ($configured_version eq '@' . 'PACKAGE_VERSION@') {
   # in configure.ac
   if (defined($hardcoded_version)) {
     if (open (CONFIGURE, 
-              "< ".File::Spec->catfile($srcdir, $updir, 'configure.ac'))) {
+              "< ".File::Spec->catfile($Texinfo::ModulePath::top_srcdir,
+                                       'configure.ac'))) {
       while (<CONFIGURE>) {
         if (/^AC_INIT\(\[[^\]]+\]\s*,\s*\[([^\]]+)\]\s*,/) {
           $configured_version = "$1+dev"; # +dev to distinguish from installed
@@ -259,7 +255,8 @@ if ($texinfo_dtd_version eq '@' . 'TEXINFO_DTD_VERSION@') {
   $texinfo_dtd_version = undef;
   if (defined($hardcoded_version)) {
     if (open (CONFIGURE, 
-            "< ".File::Spec->catfile($srcdir, $updir, 'configure.ac'))) {
+            "< ".File::Spec->catfile($Texinfo::ModulePath::top_srcdir,
+                                     'configure.ac'))) {
       while (<CONFIGURE>) {
         if (/^TEXINFO_DTD_VERSION=([0-9]\S*)/) {
           $texinfo_dtd_version = "$1";

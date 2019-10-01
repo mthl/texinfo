@@ -1,5 +1,14 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix running texi2any.pl from the source directory.
+
+	* tp/Texinfo/ModulePath.pm.in: Make $top_builddir and 
+	$top_srcdir variables available.
+	* tp/texi2any.pl: Use $Texinfo::ModulePath::top_srcdir instead
+	of referring to an environment variable which may not be set.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Enable XS parser by default.
 
 	* tp/Texinfo/ModulePath.pm.in: Reverse sense of the check for 

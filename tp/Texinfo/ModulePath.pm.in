@@ -20,6 +20,9 @@ our $texinfo_uninstalled = 0;
 # data.
 our $builddir = '';
 
+our $top_builddir;
+our $top_srcdir;
+
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)
 # use them to add directories
@@ -38,7 +41,6 @@ sub init {
   if (!$named_args{'installed'}) {
     $texinfo_uninstalled = 1;
 
-    my $top_srcdir;
     if ($ENV{'top_srcdir'}) {
       $top_srcdir = $ENV{'top_srcdir'};
     } elsif (defined $named_args{'updirs'}) {
@@ -62,7 +64,6 @@ sub init {
     }
 
     # Find XS modules in the build directory
-    my $top_builddir;
     if (defined($ENV{'top_builddir'})) {
       $top_builddir = $ENV{'top_builddir'};
     } else {
