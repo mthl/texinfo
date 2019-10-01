@@ -62,8 +62,9 @@ sub _find_file($) {
  
 # Make symbols accessible under
 # namespace $FULL_MODULE_NAME (e.g. Texinfo::Convert::Paragraph),
-# either from XS implementation in $MODULE, or non-XS implementation 
-# $FALLBACK_MODULE.  $MODULE_NAME is the name of a Libtool file used for
+# either from XS implementation in $MODULE along with Perl file 
+# $PERL_EXTRA_FILE, or non-XS implementation $FALLBACK_MODULE.
+# $MODULE_NAME is the name of a Libtool file used for
 # loading the XS subroutines.
 # $INTERFACE_VERSION is a module interface number, to be changed when the XS 
 # interface changes.  
@@ -72,6 +73,7 @@ sub init {
      $module,
      $fallback_module,
      $module_name,
+     $perl_extra_file,
      $interface_version,
      $warning_message,
      $fatal_message
@@ -230,6 +232,9 @@ LOAD:
   
   *{"${full_module_name}::"} = \%{"${module}::"};
 
+  if ($perl_extra_file) {
+    eval "require $perl_extra_file";
+  }
   
   return $module;
   

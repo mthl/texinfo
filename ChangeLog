@@ -1,5 +1,22 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Attempt to fix fallback to pure Perl Texinfo::Parser.
+
+	* tp/Texinfo/ModulePath.pm.in: Remove hook from @INC to load the 
+	right version of Texinfo::Parser.
+	* tp/Texinfo/XSLoader.pm: Add argument for an extra Perl file
+	to be loaded in addition to the XS module.
+	* tp/Texinfo/Parser.pm: Load XS or pure Perl module by
+	calling Texinfo:XSLoader::init.  This is the same approach as 
+	for Texinfo::Convert::Paragraph.  Load 
+	tp/Texinfo/XS/parsetexi/Parsetexi.pm only after the XS 
+	module has been successfully loaded.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove call to 
+	Texinfo:XSLoader::init.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* configure.ac: Bump version to 6.7dev, remove dist-xz from 
 	options.
 

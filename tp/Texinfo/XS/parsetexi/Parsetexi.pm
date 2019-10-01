@@ -13,9 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-package Texinfo::Parser;
+# File to be loaded in conjunction with Parsetexi.xs module
 
-use Texinfo::XSLoader;
+package Texinfo::Parser;
 
 # same as texi2any.pl, although I don't know what the real requirement
 # is for this module.
@@ -374,19 +374,6 @@ sub global_informations($)
 sub labels_information($)
 {
   goto &Texinfo::Common::labels_information;
-}
-
-BEGIN {
-  Texinfo::XSLoader::init (
-    "Texinfo::Parser",
-    "Texinfo::Parser",
-    "Texinfo::ParserNonXS",
-    "Parsetexi",
-    0);
-} # end BEGIN
-
-END {
-  #reset_parser (); # for debugging memory leaks
 }
 
 1;

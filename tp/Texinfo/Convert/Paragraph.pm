@@ -1,4 +1,4 @@
-# Copyright 2014, 2015, 2016, 2017, 2018 Free Software Foundation, Inc.
+# Copyright 2014-2019 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -60,6 +60,7 @@ BEGIN {
     "Texinfo::XS::XSParagraph",
     "Texinfo::Convert::ParagraphNonXS",
     "XSParagraph",
+    undef,
     0,
     $warning_message,
     $fatal_message
