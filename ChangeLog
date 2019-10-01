@@ -1,5 +1,10 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/Convert/ParagraphNonXS.pm: Use 
+	Texinfo::Convert::Paragraph namespace.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reinstate TEXINFO_XS_PARSER variable.
 
 	* tp/Texinfo/Parser.pm: If TEXINFO_XS_PARSER is set to 0, do not 
