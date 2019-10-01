@@ -214,7 +214,7 @@ FALLBACK:
     die "unset the TEXINFO_XS environment variable to use the "
        ."pure Perl modules\n";
   } elsif ($TEXINFO_XS eq 'warn' or $TEXINFO_XS eq 'debug') {
-    warn "falling back to pure Perl module\n";
+    warn "falling back to pure Perl module $fallback_module\n";
   }
   if (!defined $fallback_module) {
     warn "no fallback module for $module\n";

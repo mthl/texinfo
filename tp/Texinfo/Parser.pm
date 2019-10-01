@@ -28,8 +28,14 @@ BEGIN {
   our $warning_message = undef;
   our $fatal_message = undef;
 
+  my $xs_package = "Texinfo::Parser";
+  if (defined $ENV{TEXINFO_XS_PARSER}
+      and $ENV{TEXINFO_XS_PARSER} eq '0') {
+    undef $xs_package;
+  }
+
   my $package = Texinfo::XSLoader::init (
-      "Texinfo::Parser",
+      $xs_package,
       "Texinfo::ParserNonXS",
       "Parsetexi",
       "Texinfo::XS::parsetexi::Parsetexi",
