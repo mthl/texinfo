@@ -1,5 +1,10 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* configure.ac: Bump version to 6.7dev, remove dist-xz from 
+	options.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix running texi2any.pl from the source directory.
 
 	* tp/Texinfo/ModulePath.pm.in: Make $top_builddir and 
