@@ -1,3 +1,10 @@
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Enable XS parser by default.
+
+	* tp/Texinfo/ModulePath.pm.in: Reverse sense of the check for 
+	TEXINFO_XS_PARSER: try to load XS parser module by default.
+
 2019-09-28  Eli Zaretskii  <eliz@gnu.org>
 
 	* tp/Texinfo/XS/parsetexi/api.c (find_locales_dir): Don't use
