@@ -79,12 +79,8 @@ sub init {
  # Possible values for TEXINFO_XS environment variable:
  #
  # TEXINFO_XS=omit         # don't try loading xs at all
- # TEXINFO_XS=default      # try xs, libtool and then perl paths,
- #                         # silent fallback
- # TEXINFO_XS=libtool      # try xs, libtool only, silent fallback
- # TEXINFO_XS=standalone   # try xs, perl paths only, silent fallback
- # TEXINFO_XS=warn         # try xs, libtool and then perl paths, warn
- #                         # on failure
+ # TEXINFO_XS=default      # try xs, libtool, silent fallback
+ # TEXINFO_XS=warn         # try xs, libtool warn on failure
  # TEXINFO_XS=required     # abort if not loadable, no fallback
  # TEXINFO_XS=debug        # voluminuous debugging
  #
@@ -118,36 +114,18 @@ sub init {
    goto FALLBACK;
  }
  
- my ($libtool_dir, $libtool_archive);
- if ($TEXINFO_XS ne 'standalone') {
-   ($libtool_dir, $libtool_archive) = _find_file("$module_name.la");
-   if (!$libtool_archive) {
-     if ($TEXINFO_XS eq 'libtool') {
-       _fatal "$module_name: couldn't find Libtool archive file";
-       goto FALLBACK;
-     }
-     _debug "$module_name: couldn't find Libtool archive file";
+ my ($libtool_dir, $libtool_archive) = _find_file("$module_name.la");
+ if (!$libtool_archive) {
+   if ($TEXINFO_XS eq 'libtool') {
+     _fatal "$module_name: couldn't find Libtool archive file";
+     goto FALLBACK;
    }
+   _debug "$module_name: couldn't find Libtool archive file";
+   goto FALLBACK;
  }
  
  my $dlname = undef;
  my $dlpath = undef;
- 
- # Try perl paths
- if (!$libtool_archive) {
-   my @modparts = split(/::/,$module);
-   my $dlname = $modparts[-1];
-   my $modpname = join('/',@modparts);
-   # the directories with -L prepended setup directories to
-   # be in the search path. Then $dlname is prepended as it is
-   # the name really searched for.
-   $dlpath = DynaLoader::dl_findfile(map("-L$_/auto/$modpname", @INC), $dlname);
-   if (!$dlpath) {
-     _fatal "$module_name:  couldn't find $module";
-     goto FALLBACK;
-   }
-   goto LOAD;
- }
  
  my $fh;
  open $fh, $libtool_archive;
@@ -178,8 +156,6 @@ sub init {
    goto FALLBACK;
  }
  
-LOAD:
-  
   #my $flags = dl_load_flags $module; # This is 0 in DynaLoader
   my $flags = 0;
   my $libref = DynaLoader::dl_load_file($dlpath, $flags);

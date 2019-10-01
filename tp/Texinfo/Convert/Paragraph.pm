@@ -56,7 +56,7 @@ BEGIN {
   my $import_fn = \&import;
 
   my $package = Texinfo::XSLoader::init (
-    "Texinfo::XS::XSParagraph",
+    "Texinfo::Convert::Paragraph",
     "Texinfo::Convert::ParagraphNonXS",
     "XSParagraph",
     undef,

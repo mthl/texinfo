@@ -1,5 +1,21 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix XS module loading.
+
+	* tp/Texinfo/XSLoader.pm (init): Remove code looking for a Perl 
+	file in Perl's search path based on the package name of the 
+	module.  This does not correspond to a file and will be the same
+	package name for XS and non-XS modules.  Remove 'standalone' and 
+	'libtool' options for TEXINFO_XS variable.
+
+	* tp/Texinfo/MiscXS.pm, tp/Texinfo/XS/MiscXS.xs: Use 
+	Texinfo::MiscXS namespace.
+
+	* tp/Texinfo/Convert/Paragraph.pm, tp/Texinfo/XS/XSParagraph.xs:
+	Use Texinfo::Convert::Paragraph namespace.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix XS fallback.
 
 	* tp/Texinfo/XSLoader.pm (init): Do not take an argument of a 

@@ -11,7 +11,7 @@
 
 #include "xspara.h"
 
-MODULE = Texinfo::XS::XSParagraph PACKAGE = Texinfo::XS::XSParagraph PREFIX = xspara_
+MODULE = Texinfo::Convert::Paragraph PACKAGE = Texinfo::Convert::Paragraph PREFIX = xspara_
 
 #  Copyright 2010-2019 Free Software Foundation, Inc.
 #
@@ -60,7 +60,7 @@ xspara_new (class, ...)
 
         /* Create a blessed integer, which the other functions
            need as their first argument. */
-        pkg = gv_stashpv ("Texinfo::Convert::XSParagraph::XSParagraph", 0);
+        pkg = gv_stashpv ("Texinfo::Convert::Paragraph", 0);
         RETVAL = newSViv (id);
     OUTPUT:
         RETVAL

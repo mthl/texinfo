@@ -28,7 +28,7 @@ use Texinfo::XSLoader;
 
 BEGIN {
   Texinfo::XSLoader::init (
-    "Texinfo::MiscXSXS",
+    "Texinfo::MiscXS",
     "Texinfo::MiscXS",
     "MiscXS",
     undef,
