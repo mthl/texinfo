@@ -28,7 +28,6 @@ use Texinfo::XSLoader;
 
 BEGIN {
   Texinfo::XSLoader::init (
-    "Texinfo::MiscXS",
     "Texinfo::MiscXSXS",
     "Texinfo::MiscXS",
     "MiscXS",

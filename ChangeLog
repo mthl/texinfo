@@ -1,5 +1,14 @@
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix XS fallback.
+
+	* tp/Texinfo/XSLoader.pm (init): Do not take an argument of a 
+	package name to use for the symbols found in the loaded module - 
+	rely on the loaded module using the correct package name in the 
+	first place.
+
+2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Attempt to fix fallback to pure Perl Texinfo::Parser.
 
 	* tp/Texinfo/ModulePath.pm.in: Remove hook from @INC to load the 
