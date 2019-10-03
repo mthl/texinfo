@@ -1506,22 +1506,17 @@ superfluous_arg:
       if (cmd == CM_value)
         {
           char *arg_start;
+          char *flag;
           line += strspn (line, whitespace_chars);
           if (*line != '{')
             goto value_invalid;
 
           line++;
-          if (!isalnum (*line) && *line != '-' && *line != '_')
-            {
-              line--;
-              goto value_invalid;
-            }
           arg_start = line;
+          flag = read_flag_name (&line);
+          if (!flag)
+            goto value_invalid;
 
-          line++;
-          line = strpbrk (line,
-                   " \t\f\r\n"       /* whitespace */
-                   "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
           if (*line != '}')
             {
               line = arg_start - 1;
@@ -1532,7 +1527,7 @@ superfluous_arg:
             {
               char *value;
 value_valid:
-              value = fetch_value (arg_start, line - arg_start);
+              value = fetch_value (flag, strlen (flag));
               if (!value)
                 {
                   /* Add element for unexpanded @value.
@@ -1541,14 +1536,13 @@ value_valid:
                      in undefined values. */
                   ELEMENT *value_elt;
 
-                  line_warn ("undefined flag: %.*s", line - arg_start, 
-                             arg_start);
+                  line_warn ("undefined flag: %s", flag);
 
                   abort_empty_line (&current, NULL);
                   value_elt = new_element (ET_NONE);
                   value_elt->cmd = CM_value;
-                  text_append_n (&value_elt->text, arg_start,
-                                 line - arg_start);
+                  text_append (&value_elt->text, flag);
+
                   /* In the Perl code, the name of the flag is stored in
                      the "type" field.  We need to store in 'text' instead
                      and then output it as the type in
@@ -1567,6 +1561,7 @@ value_valid:
                   line += strlen (line);
                   retval = STILL_MORE_TO_PROCESS;
                 }
+              free (flag);
               goto funexit;
             }
           else

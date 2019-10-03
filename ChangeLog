@@ -1,5 +1,11 @@
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/parser.c
+	(process_remaining_on_line) <@value>:
+	Use read_flag_name to read name of flag.
+
+2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix test suite running under non-American locales.
 
 	* tp/t/test_utils.pl: Set LC_ALL to 'C'.  I found test failures
