@@ -476,6 +476,10 @@ strongalias @@alias is wrongly not defined
 ['inlineifset_false_not_closed',
 '@inlineifset{aaa, bbb
 '],
+['ifset_nonalpha',
+'@ifset A/B
+@end ifset
+'],
 );
 
 for my $test (@test_cases) {

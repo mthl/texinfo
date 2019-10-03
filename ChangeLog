@@ -1,5 +1,9 @@
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/55conditionals.t (ifset_nonalpha): New test.
+
+2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Support unusual characters in flag name in XS parser.
 
 	* tp/Texinfo/XS/parsetexi/parser.c (read_flag_name): New 
