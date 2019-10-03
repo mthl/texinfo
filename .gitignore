@@ -89,6 +89,11 @@ doc/info-stnd.dvi
 doc/info-stnd.info*
 doc/info-stnd.log
 doc/info-stnd.toc
+doc/info-fr.aux
+doc/info-fr.cp
+doc/info-fr.cps
+doc/info-fr.log
+doc/info-fr.toc
 doc/short-sample-ja.aux
 doc/short-sample-ja.dvi
 doc/short-sample-ja.texi
