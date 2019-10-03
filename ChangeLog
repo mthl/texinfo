@@ -1,3 +1,16 @@
+2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Support unusual characters in flag name in XS parser.
+
+	* tp/Texinfo/XS/parsetexi/parser.c (read_flag_name): New 
+	function.
+	* tp/Texinfo/XS/parsetexi/handle_commands.c
+	(handle_block_command) <@ifset>: Call read_flag_name instead of 
+	read_command_name.
+
+	Hans-Bernhard Bröker reported that flag names containing slashes 
+	didn't work in binutils' as.texi.
+
 2019-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/ParagraphNonXS.pm: Use 

@@ -62,6 +62,27 @@ read_command_name (char **ptr)
   return ret;
 }
 
+/* Read a name used for @set and @value. */
+char *
+read_flag_name (char **ptr)
+{
+  char *p = *ptr, *q;
+  char *ret = 0;
+
+  q = p;
+  if (!isalnum (*q) && *q != '-' && *q != '_')
+    return 0; /* Invalid. */
+
+  while (!strchr (whitespace_chars, *q)
+         && !strchr ("{\\}~`^+\"<>|@", *q))
+    q++;
+  ret = strndup (p, q - p);
+  p = q;
+
+  *ptr = p;
+  return ret;
+}
+
 char *
 element_type_name (ELEMENT *e)
 {

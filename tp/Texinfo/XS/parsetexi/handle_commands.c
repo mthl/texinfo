@@ -804,7 +804,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
             line_error ("@%s requires a name", command_name(cmd));
           else
             {
-              char *flag = read_command_name (&p);
+              char *flag = read_flag_name (&p);
               if (!flag)
                 goto bad_value;
               else
