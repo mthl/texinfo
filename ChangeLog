@@ -1,5 +1,14 @@
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix test suite running under non-American locales.
+
+	* tp/t/test_utils.pl: Set LC_ALL to 'C'.  I found test failures
+	when my locale was en_GB.utf8 due to some translation files 
+	provided by the "language-pack-en-base" package of Linux Mint 
+	("recognized" was changed to "recognised").
+
+2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/TestXS.pm: Update use of Texinfo::XSLoader.
 
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>

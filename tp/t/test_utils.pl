@@ -26,6 +26,9 @@ BEGIN {
 require Texinfo::ModulePath;
 Texinfo::ModulePath::init(undef, undef, 'updirs' => 2);
 
+# For consistent test results, use the C locale
+$ENV{LC_ALL} = 'C';
+
 } # end BEGIN
 
 use Test::More;
