@@ -160,6 +160,7 @@ parse_special_misc_command (char *line, enum command_id cmd, int *has_comment)
       q = strpbrk (p,
                    " \t\f\r\n"       /* whitespace */
                    "{\\}~^+\"<>|@"); /* other bytes that aren't allowed */
+      /* see also read_flag_name function in end_line.c */
 
       r = skip_comment (p, has_comment);
 
@@ -196,28 +197,29 @@ set_invalid:
       }
     case CM_clear:
       {
-      char *flag;
+      char *flag = 0;
       p = line;
       p += strspn (p, whitespace_chars);
       if (!*p)
         goto clear_no_name;
       q = p;
-      flag = read_command_name (&q);
+      flag = read_flag_name (&q);
       if (!flag)
         goto clear_invalid;
-      free (flag);
       r = q + strspn (q, whitespace_chars);
       if (*r)
         goto clear_invalid; /* Trailing argument. */
 
       ADD_ARG (p, q - p);
-      clear_value (p, q - p);
+      clear_value (flag);
+      free (flag);
       
       break;
 clear_no_name:
       line_error ("@clear requires a name");
       break;
 clear_invalid:
+      free (flag);
       line_error ("bad name for @clear");
       break;
       }

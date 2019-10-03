@@ -37,8 +37,8 @@ MACRO *lookup_macro (enum command_id cmd);
 void wipe_macros (void);
 
 void store_value (char *name, char *value);
-char *fetch_value (char *name, int len);
-void clear_value (char *name, int len);
+char *fetch_value (char *name);
+void clear_value (char *name);
 INFO_ENCLOSE *lookup_infoenclose (enum command_id cmd);
 void add_infoenclose (enum command_id cmd, char *begin, char *end);
 

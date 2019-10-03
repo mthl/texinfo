@@ -663,14 +663,13 @@ store_value (char *name, char *value)
   v->value = strdup (value);
 }
 
-/* Clear the value the name of which is LEN bytes at NAME */
 void
-clear_value (char *name, int len)
+clear_value (char *name)
 {
   int i;
   for (i = 0; i < value_number; i++)
     {
-      if (!strncmp (value_list[i].name, name, len) && !value_list[i].name[len])
+      if (!strcmp (value_list[i].name, name))
         {
           value_list[i].name[0] = '\0';
           value_list[i].value[0] = '\0';
@@ -680,12 +679,12 @@ clear_value (char *name, int len)
 
 /* Look for a value the name of which is LEN bytes at NAME */
 char *
-fetch_value (char *name, int len)
+fetch_value (char *name)
 {
   int i;
   for (i = 0; i < value_number; i++)
     {
-      if (!strncmp (value_list[i].name, name, len) && !value_list[i].name[len])
+      if (!strcmp (value_list[i].name, name))
         return value_list[i].value;
     }
 

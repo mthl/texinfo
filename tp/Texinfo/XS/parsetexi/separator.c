@@ -606,7 +606,7 @@ handle_comma (ELEMENT *current, char **line_inout)
                    || current->cmd == CM_inlineifclear)
             {
               expandp = 0;
-              if (fetch_value (inline_type, strlen (inline_type)))
+              if (fetch_value (inline_type))
                 expandp = 1;
               if (current->cmd == CM_inlineifclear)
                 expandp = !expandp;

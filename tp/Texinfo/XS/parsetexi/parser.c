@@ -1527,7 +1527,7 @@ superfluous_arg:
             {
               char *value;
 value_valid:
-              value = fetch_value (flag, strlen (flag));
+              value = fetch_value (flag);
               if (!value)
                 {
                   /* Add element for unexpanded @value.

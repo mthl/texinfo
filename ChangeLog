@@ -1,5 +1,14 @@
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/end_line.c 
+	(parse_special_misc_command) <CM_clear>:
+	Use read_flag_name to read name of flag instead of 
+	read_command_name.
+	* tp/Texinfo/XS/parsetexi/macro.c
+	(fetch_value, clear_value): Remove length argument.
+
+2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/parser.c
 	(process_remaining_on_line) <@value>:
 	Use read_flag_name to read name of flag.

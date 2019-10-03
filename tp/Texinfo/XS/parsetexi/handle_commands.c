@@ -826,7 +826,7 @@ handle_block_command (ELEMENT *current, char **line_inout,
                 {
                   if (cmd == CM_ifclear || cmd == CM_ifset)
                     {
-                      char *val = fetch_value (flag, strlen (flag));
+                      char *val = fetch_value (flag);
                       if (val)
                         iftrue = 1;
                       if (cmd == CM_ifclear)
