@@ -1,5 +1,10 @@
 2019-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/input.c (locate_include_file): Return 
+	value to be freed by caller.
+
+2019-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix parsetexi macro handling.
 
 	* tp/Texinfo/XS/parsetexi/macro.c (handle_macro): For a macro 

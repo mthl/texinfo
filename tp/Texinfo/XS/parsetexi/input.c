@@ -501,6 +501,7 @@ add_include_directory (char *filename)
     filename[len - 1] = '\0';
 }
 
+/* Return value to be freed by caller. */
 char *
 locate_include_file (char *filename)
 {
@@ -519,7 +520,7 @@ locate_include_file (char *filename)
     {
       status = stat (filename, &dummy);
       if (status == 0)
-        return filename;
+        return strdup (filename);
     }
   else
     {
