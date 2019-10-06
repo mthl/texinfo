@@ -542,7 +542,7 @@ handle_macro (ELEMENT *current, char **line_inout, enum command_id cmd)
           if (!line)
             line = "";
         }
-      line += strspn (line, whitespace_chars);
+      line += strspn (line, whitespace_chars_except_newline);
 
       arguments = malloc (sizeof (char *) * 2);
       arguments[0] = strdup (line);

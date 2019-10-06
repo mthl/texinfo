@@ -1,3 +1,16 @@
+2019-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix parsetexi macro handling.
+
+	* tp/Texinfo/XS/parsetexi/macro.c (handle_macro): For a macro 
+	taking a single argument, if the rest of the line is empty, 
+	leave the newline on the line.  Otherwise, a command on the next 
+	line would not be recognized as occurring at the beginning of 
+	the line.  This led to errors with as.texi from binutils, 
+	reported by Hans-Bernhard Bröker.
+
+	* tp/t/60macro.t (include_after_empty_line_arg): New test.
+
 2019-10-03  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS/parsetexi/end_line.c 
