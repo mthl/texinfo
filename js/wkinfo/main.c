@@ -22,11 +22,17 @@ vmsg (char *fmt, va_list v)
   vprintf (fmt, v);
 }
 
+int debug_level = 1;
+
 void
-msg (char *fmt, ...)
+debug (int level, char *fmt, ...)
 {
+  if (level > debug_level)
+    return;
+
   va_list v;
   va_start (v, fmt);
+
   printf ("%lu: ", clock ());
   vmsg (fmt, v);
   va_end (v);
@@ -88,7 +94,7 @@ load_relative_url (const char *href)
           memcpy (link, current_uri, p - current_uri);
           strcpy (link + (p - current_uri), href);
 
-          g_print ("LOADING %s\n", link);
+          debug (1, "LOADING %s\n", link);
           webkit_web_view_load_uri (webView, link);
         }
     }
@@ -143,12 +149,12 @@ save_completions (char *p)
       q2 = strchr (q, '\n');
       if (!q2)
         {
-          g_print ("incomplete packet\n");
+          debug (1, "incomplete packet\n");
           return;
         }
       *q2++ = 0;
 
-      g_print ("add index entry %s\n", p);
+      // debug (2, "add index entry %s\n", p);
 
       gtk_list_store_append (index_store, &iter);
       gtk_list_store_set (index_store, &iter,
@@ -167,7 +173,7 @@ load_index_nodes (char *p)
   GString *s;
   char *q;
 
-  g_print ("index nodes %s\n", p);
+  debug (1, "index nodes %s\n", p);
 
   s = g_string_new (NULL);
 
@@ -180,7 +186,7 @@ load_index_nodes (char *p)
       g_string_append (s, p);
       g_string_append (s, "?send-index");
 
-      g_print ("load index node %s\n", s->str);
+      debug (1, "load index node %s\n", s->str);
       webkit_web_view_load_uri (hiddenWebView, s->str);
 
       p = q + 1;
@@ -203,12 +209,12 @@ socket_cb (GSocket *socket,
       result = g_socket_receive (socket, buffer, sizeof buffer, NULL, &err);
       if (result <= 0)
         {
-          g_print ("socket receive error: %s\n", err->message);
+          debug (1, "socket receive error: %s\n", err->message);
           gtk_main_quit ();
         }
 
       buffer[PACKET_SIZE] = '\0';
-      // g_print ("Received le data: <%s>\n", buffer);
+      // debug (2, "Received le data: <%s>\n", buffer);
 
       char *p, *q;
       p = strchr (buffer, '\n'); 
@@ -242,7 +248,7 @@ socket_cb (GSocket *socket,
         }
       else if (!strcmp (buffer, "new-manual"))
         {
-          g_print ("NEW MANUAL %s\n", p + 1);
+          debug (1, "NEW MANUAL %s\n", p + 1);
           clear_completions ();
 
           char *q = strchr (p + 1, '\n');
@@ -375,7 +381,7 @@ decide_policy_cb (WebKitWebView           *web_view,
       /* Check for an external URL. */
       if (!memcmp (uri, "http:", 5) || !memcmp(uri, "https:", 6))
         {
-          g_print ("link blocked");
+          debug (1, "link blocked");
           webkit_policy_decision_ignore (decision);
         }
       else

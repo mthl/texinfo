@@ -15,6 +15,28 @@
 #include "common.h"
 #include "infopath.h"
 
+void
+vmsg (char *fmt, va_list v)
+{
+  vprintf (fmt, v);
+}
+
+int debug_level = 1;
+
+void
+debug (int level, char *fmt, ...)
+{
+  if (level > debug_level)
+    return;
+
+  va_list v;
+  va_start (v, fmt);
+
+  printf ("SUBTHREAD: ");
+  vmsg (fmt, v);
+  va_end (v);
+}
+
 /* For communicating with the main Gtk process */
 static struct sockaddr_un main_name;
 static size_t main_name_size;
@@ -37,10 +59,10 @@ send_datagram (GString *s)
 {
   ssize_t result;
 
-  g_print ("send datagram %s", s->str);
+  //debug (2, "send datagram %s", s->str);
   if (s->len > PACKET_SIZE)
     {
-      g_print ("datagram too big");
+      debug (0, "datagram too big");
       return;
     }
 
@@ -49,7 +71,7 @@ send_datagram (GString *s)
 
   if (result == -1)
     {
-      g_print ("sending datagram failed: %s\n",
+      debug (0, "sending datagram failed: %s\n",
                strerror(errno));
     }
 }
@@ -63,7 +85,7 @@ load_manual (char *manual)
 {
   free (current_manual_dir);
   current_manual_dir = locate_manual (manual);
-  g_print ("NEW MANUAL AT %s\n", current_manual_dir);
+  debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
 
   if (!current_manual_dir)
     {
@@ -80,8 +102,6 @@ load_manual (char *manual)
   g_string_append (s1, current_manual_dir);
   g_string_append (s1, "\n");
 
-  g_print ("SENDING %s\n", s1->str);
-
   send_datagram (s1);
 
   g_string_free (s1, TRUE);
@@ -97,7 +117,7 @@ request_callback (WebKitWebPage     *web_page,
 {
   const char *uri = webkit_uri_request_get_uri (request);
 
-  g_print ("Intercepting link <%s>\n", uri);
+  debug (1, "Intercepting link <%s>\n", uri);
 
   /* Clear flags on WebKitWebPage object. */
   g_object_set_data (G_OBJECT(web_page), "top-node",
@@ -111,11 +131,11 @@ request_callback (WebKitWebPage     *web_page,
       char *new_uri = strdup (uri);
       new_uri[p - uri] = 0;
       webkit_uri_request_set_uri (request, new_uri);
-      g_print ("new_uri %s\n", new_uri);
+      debug (1, "new_uri %s\n", new_uri);
       free (new_uri);
 
       p++;
-      g_print ("request type %s\n", p);
+      debug (1, "request type %s\n", p);
       if (!strcmp (p, "send-index"))
         {
           g_object_set_data (G_OBJECT(web_page), "send-index",
@@ -138,7 +158,7 @@ request_callback (WebKitWebPage     *web_page,
          "../MANUAL/NODE.html" but by the time this function is called
          they are absolute paths beginning "file:/". */
       parse_external_url (uri, &manual, &node);
-      g_print ("finding manual and node %s:%s\n", manual, node);
+      debug (1, "finding manual and node %s:%s\n", manual, node);
 
       if (!current_manual || strcmp(manual, current_manual) != 0)
         {
@@ -155,7 +175,7 @@ request_callback (WebKitWebPage     *web_page,
 void
 find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
 {
-  g_print ("looking for indices\n");
+  debug (1, "looking for indices\n");
 
   gulong i = 0;
   GString *s = g_string_new (NULL);
@@ -168,7 +188,7 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
         = webkit_dom_html_collection_item (links, i);
       if (!node)
         {
-          g_print ("No node\n");
+          debug (1, "No node\n");
           return;
         }
 
@@ -180,7 +200,7 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
       else
         {
           /* When would this happen? */
-          g_print ("Not an DOM element\n");
+          debug (1, "Not an DOM element\n");
           continue;
         }
 
@@ -190,11 +210,14 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
       char *rel = webkit_dom_element_get_attribute (element, "rel");
       char *id = webkit_dom_element_get_attribute (element, "id");
 
-      /* Look for links to index nodes in the main menu by checking the "rel" 
-         attribute. */
-      if (href && (!id || !*id) && rel && !strcmp(rel, "index"))
+      /* Look for links to index nodes in top node by checking the "rel" 
+         attribute.  Only use links in the table of contents to avoid
+         loading the same index more than once. */
+      if (href
+          && id && !strncmp (id, "toc-", 4)
+          && rel && !strcmp(rel, "index"))
         {
-          g_print ("index node at |%s|\n", href);
+          debug (1, "index node at |%s|\n", href);
           g_string_append (s, href);
           g_string_append (s, "\n");
         }
@@ -208,7 +231,7 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
 void
 send_index (WebKitDOMHTMLCollection *links, gulong num_links)
 {
-  g_print ("trying to send index\n");
+  debug (1, "trying to send index\n");
 
   gulong i = 0;
   GString *s = g_string_new (NULL);
@@ -224,7 +247,7 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
         = webkit_dom_html_collection_item (links, i);
       if (!node)
         {
-          g_print ("No node\n");
+          debug (1, "No node\n");
           return;
         }
 
@@ -236,7 +259,7 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
       else
         {
           /* When would this happen? */
-          g_print ("Not an DOM element\n");
+          debug (1, "Not an DOM element\n");
           continue;
         }
 
@@ -255,7 +278,7 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
               if (s->len > PACKET_SIZE && try != 1)
                 {
                   g_string_truncate (s, old_len);
-                  // g_print ("sending packet %u||%s||\n", s->len, s->str);
+                  // debug (2, "sending packet %u||%s||\n", s->len, s->str);
                   send_datagram (s);
                   g_string_assign (s, "index\n");
                   try++;
@@ -269,15 +292,14 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
 
   g_string_free (s, TRUE);
 
-  g_print ("index sent\n");
+  debug (1, "index sent\n");
 }
 
 void
 document_loaded_callback (WebKitWebPage *web_page,
                           gpointer       user_data)
 {
-  g_print ("Page %d loaded for %s\n", 
-           webkit_web_page_get_id (web_page),
+  debug (1, "Page %d loaded for %s\n", webkit_web_page_get_id (web_page),
            webkit_web_page_get_uri (web_page));
 
   WebKitDOMDocument *dom_document
@@ -285,7 +307,7 @@ document_loaded_callback (WebKitWebPage *web_page,
 
   if (!dom_document)
     {
-      g_print ("No DOM document\n");
+      debug (1, "No DOM document\n");
       return;
     }
 
@@ -294,12 +316,12 @@ document_loaded_callback (WebKitWebPage *web_page,
 
   if (!links)
     {
-      g_print ("No links\n");
+      debug (1, "No links\n");
       return;
     }
 
    gulong num_links = webkit_dom_html_collection_get_length (links);
-   g_print ("Found %d links\n",
+   debug (1, "Found %d links\n",
     webkit_dom_html_collection_get_length (links));
 
    gint send_index_p
@@ -327,7 +349,7 @@ document_loaded_callback (WebKitWebPage *web_page,
          = webkit_dom_html_collection_item (links, i);
        if (!node)
          {
-           g_print ("No node\n");
+           debug (1, "No node\n");
            return;
          }
 
@@ -339,7 +361,7 @@ document_loaded_callback (WebKitWebPage *web_page,
        else
          {
            /* When would this happen? */
-           g_print ("Not an DOM element\n");
+           debug (1, "Not an DOM element\n");
            continue;
          }
 
@@ -387,7 +409,7 @@ document_loaded_callback (WebKitWebPage *web_page,
 
                        if (result == -1)
                          {
-                           g_print ("socket write failed: %s\n",
+                           debug (1, "socket write failed: %s\n",
                                     strerror(errno));
                          }
 
@@ -408,7 +430,7 @@ web_page_created_callback (WebKitWebExtension *extension,
                            WebKitWebPage      *web_page,
                            gpointer            user_data)
 {
-    g_print ("Page %d created for %s\n", 
+    debug (1, "Page %d created for %s\n",
              webkit_web_page_get_id (web_page),
              webkit_web_page_get_uri (web_page));
 
@@ -481,7 +503,7 @@ webkit_web_extension_initialize_with_user_data (WebKitWebExtension *extension,
                                                 GVariant *user_data)
 {
   const char *socket_file = g_variant_get_bytestring (user_data);
-  g_print ("thread id %s\n", socket_file);
+  debug (1, "thread id %s\n", socket_file);
 
   initialize_socket (socket_file);
   
