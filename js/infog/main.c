@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <stddef.h>
 #include <stdio.h>
 #include <errno.h>
@@ -43,8 +45,6 @@ static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window);
 static gboolean onkeypress(GtkWidget *webView,
                            GdkEvent  *event,
                            gpointer   user_data);
-
-#define WEB_EXTENSIONS_DIRECTORY "/home/g/src/texinfo/GIT/js/infog/.libs"
 
 static char *socket_file;
 int socket_id;
@@ -310,6 +310,8 @@ socket_cb (GSocket *socket,
   return true;
 }
 
+char *extensions_directory;
+
 static void
 initialize_web_extensions (WebKitWebContext *context,
                            gpointer          user_data)
@@ -350,8 +352,11 @@ initialize_web_extensions (WebKitWebContext *context,
       atexit (&remove_socket);
     }
 
-  webkit_web_context_set_web_extensions_directory (
-     context, WEB_EXTENSIONS_DIRECTORY);
+  char *d;
+  asprintf (&d, "%s/%s", extensions_directory, ".libs");
+  webkit_web_context_set_web_extensions_directory (context, d);
+  free (d);
+
   webkit_web_context_set_web_extensions_initialization_user_data (
      context, g_variant_new_bytestring (socket_file));
 }
@@ -429,12 +434,33 @@ decide_policy_cb (WebKitWebView           *web_view,
 }
 
 
+void
+find_extensions_directory (int argc, char *argv[])
+{
+  char *p;
+  if (argc == 0 || !argv[0])
+    {
+      g_print ("cannot get program name; quitting\n");
+      exit (1);
+    }
+
+  if (!(p = strchr (argv[0], '/')))
+    {
+      g_print ("running installed program not yet supported\n");
+      exit (1);
+    }
+
+  extensions_directory = strdup (argv[0]);
+  extensions_directory[p - argv[0]] = '\0';
+}
+
 static GMainLoop *main_loop;
 
 int
-main(int argc, char* argv[])
+main (int argc, char *argv[])
 {
-    gtk_init(&argc, &argv);
+    gtk_init (&argc, &argv);
+    find_extensions_directory (argc, argv);
 
     info_dir = getenv ("INFO_HTML_DIR");
     if (!info_dir)
