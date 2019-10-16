@@ -95,7 +95,6 @@ load_relative_url (const char *href)
       const char *p = current_uri;
       const char *q;
 
-      g_print ("current uri is |%s|\n", current_uri);
       /* Set p to after the last '/'. */
       while ((q = strchr (p, '/')))
         {
@@ -168,7 +167,7 @@ save_completions (char *p)
         }
       *q2++ = 0;
 
-      // g_print ("add index entry %s\n", p);
+      g_print ("add index entry %s\n", p);
 
       gtk_list_store_append (index_store, &iter);
       gtk_list_store_set (index_store, &iter,
@@ -433,7 +432,10 @@ main(int argc, char* argv[])
 
     info_dir = getenv ("INFO_HTML_DIR");
     if (!info_dir)
-      info_dir = "/home/g/src/texinfo/GIT/js/test/";
+      {
+        g_print ("Please set INFO_HTML_DIR\n");
+        return 0;
+      }
 
     /* This is used to use a separate process for the web browser
        that looks up the index files.  This stops the program from freezing 
@@ -494,7 +496,7 @@ main(int argc, char* argv[])
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
-#define MANUAL "texinfo"
+#define MANUAL "hello"
 
     GString *s = g_string_new (NULL);
     g_string_append (s, "file:");
