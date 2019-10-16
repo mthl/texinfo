@@ -67,6 +67,8 @@ char *info_dir = 0;
 void
 load_indices (void)
 {
+  return;
+
   if (indices_loaded)
     return;
   indices_loaded = TRUE;
@@ -265,7 +267,6 @@ socket_cb (GSocket *socket,
           g_print ("NEW MANUAL %s\n", p + 1);
           clear_completions ();
 
-#if 0
           char *q = strchr (p + 1, '\n');
           if (!q)
             break;
@@ -279,7 +280,6 @@ socket_cb (GSocket *socket,
           g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
-#endif
         }
       else if (!strcmp (buffer, "index-nodes"))
         {
@@ -509,7 +509,10 @@ main(int argc, char* argv[])
     webkit_web_view_load_uri (webView, s->str);
     g_string_free (s, TRUE);
 
-    load_indices ();
+    // load_indices ();
+
+    /* Create a web view to parse index files.  */
+    hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);

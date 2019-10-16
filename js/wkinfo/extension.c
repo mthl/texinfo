@@ -193,7 +193,7 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
       /* Look for links to index nodes in the main menu.
          This is not the best way to check for index nodes.  We should
          have <a rel="index"> on the links instead. */
-      if (href && !*rel && !*id
+      if (href && (!rel || !*rel) && (!id || !*id)
           && (strstr (href, "-Index.html")
               || strstr (href, "-index.html")
               || strstr (href, "/Index.html")))
