@@ -190,15 +190,11 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
       char *rel = webkit_dom_element_get_attribute (element, "rel");
       char *id = webkit_dom_element_get_attribute (element, "id");
 
-      /* Look for links to index nodes in the main menu.
-         This is not the best way to check for index nodes.  We should
-         have <a rel="index"> on the links instead. */
-      if (href && (!rel || !*rel) && (!id || !*id)
-          && (strstr (href, "-Index.html")
-              || strstr (href, "-index.html")
-              || strstr (href, "/Index.html")))
+      /* Look for links to index nodes in the main menu by checking the "rel" 
+         attribute. */
+      if (href && (!id || !*id) && rel && !strcmp(rel, "index"))
         {
-          g_print ("AAAAAAA AAAAAAA index node at |%s|\n", href);
+          g_print ("index node at |%s|\n", href);
           g_string_append (s, href);
           g_string_append (s, "\n");
         }
