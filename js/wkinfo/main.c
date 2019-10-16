@@ -265,6 +265,7 @@ socket_cb (GSocket *socket,
           g_print ("NEW MANUAL %s\n", p + 1);
           clear_completions ();
 
+#if 0
           char *q = strchr (p + 1, '\n');
           if (!q)
             break;
@@ -278,7 +279,7 @@ socket_cb (GSocket *socket,
           g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
-
+#endif
         }
       else if (!strcmp (buffer, "index-nodes"))
         {

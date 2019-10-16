@@ -37,6 +37,7 @@ send_datagram (GString *s)
 {
   ssize_t result;
 
+  g_print ("send datagram %s", s->str);
   if (s->len > PACKET_SIZE)
     {
       g_print ("datagram too big");
@@ -56,8 +57,8 @@ send_datagram (GString *s)
 static char *current_manual;
 static char *current_manual_dir;
 
-/* Called from request_callback. */
-void
+/* Called from request_callback.  Return 0 on failure. */
+int
 load_manual (char *manual)
 {
   free (current_manual_dir);
@@ -67,7 +68,7 @@ load_manual (char *manual)
   if (!current_manual_dir)
     {
       free (manual);
-      return;
+      return 0;
     }
 
   current_manual = manual;
@@ -84,6 +85,8 @@ load_manual (char *manual)
   send_datagram (s1);
 
   g_string_free (s1, TRUE);
+  
+  return 1;
 }
 
 gboolean
@@ -139,7 +142,8 @@ request_callback (WebKitWebPage     *web_page,
 
       if (!current_manual || strcmp(manual, current_manual) != 0)
         {
-          load_manual (manual);
+          if (!load_manual (manual))
+            ;// return TRUE; /* Cancel load request */
         }
     }
 
@@ -194,6 +198,7 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
               || strstr (href, "-index.html")
               || strstr (href, "/Index.html")))
         {
+          g_print ("AAAAAAA AAAAAAA index node at |%s|\n", href);
           g_string_append (s, href);
           g_string_append (s, "\n");
         }
@@ -363,7 +368,6 @@ document_loaded_callback (WebKitWebPage *web_page,
                    const char *p = current_uri;
                    const char *q;
 
-                   g_print ("current uri is |%s|\n", current_uri);
                    /* Set p to after the last '/'. */
                    while ((q = strchr (p, '/')))
                      {
