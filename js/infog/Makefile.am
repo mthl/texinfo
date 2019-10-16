@@ -8,9 +8,9 @@ libmyappwebextension_la_CFLAGS = $(AM_CFLAGS) $(WEB_EXTENSION_CFLAGS)
 libmyappwebextension_la_LIBADD = $(WEB_EXTENSION_LIBS)
 libmyappwebextension_la_LDFLAGS = -module -avoid-version -no-undefined
 
-bin_PROGRAMS=webkit
+bin_PROGRAMS=infog
 
-webkit_SOURCES=main.c common.h
+infog_SOURCES=main.c common.h
 
 AM_CFLAGS=`pkg-config --cflags gtk+-3.0 webkit2gtk-4.0`
 

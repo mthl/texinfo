@@ -44,7 +44,7 @@ static gboolean onkeypress(GtkWidget *webView,
                            GdkEvent  *event,
                            gpointer   user_data);
 
-#define WEB_EXTENSIONS_DIRECTORY "/home/g/src/texinfo/GIT/js/wkinfo/.libs"
+#define WEB_EXTENSIONS_DIRECTORY "/home/g/src/texinfo/GIT/js/infog/.libs"
 
 static char *socket_file;
 int socket_id;
