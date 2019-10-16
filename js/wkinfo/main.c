@@ -167,32 +167,50 @@ save_completions (char *p)
 
 static char *current_manual_dir;
 
+char *index_list = 0;
+char *index_list_ptr = 0;
+
+/* Load a single index node in the list in index_list.  We only do one
+   at a time to give the subprocess time to do it before we load the next one.  
+   If only there were some way of getting the subthread to load pages itself
+   instead of having to call webkit_web_view_load_uri here. */
 void
-load_index_nodes (char *p)
+continue_to_load_index_nodes (void)
 {
   GString *s;
   char *q;
 
-  debug (1, "index nodes %s\n", p);
+  if (!index_list_ptr || !(q = strchr (index_list_ptr, '\n')))
+    {
+      free (index_list);
+      index_list_ptr = index_list = 0;
+      return;
+    }
 
   s = g_string_new (NULL);
 
-  while ((q = strchr (p, '\n')))
-    {
-      *q = '\0';
-      g_string_assign (s, "file:");
-      g_string_append (s, current_manual_dir);
-      g_string_append (s, "/");
-      g_string_append (s, p);
-      g_string_append (s, "?send-index");
+  *q = '\0';
+  g_string_assign (s, "file:");
+  g_string_append (s, current_manual_dir);
+  g_string_append (s, "/");
+  g_string_append (s, index_list_ptr);
+  g_string_append (s, "?send-index");
 
-      debug (1, "load index node %s\n", s->str);
-      webkit_web_view_load_uri (hiddenWebView, s->str);
+  debug (1, "load index node %s\n", s->str);
+  webkit_web_view_load_uri (hiddenWebView, s->str);
 
-      p = q + 1;
-    }
   g_string_free (s, TRUE);
+
+  index_list_ptr = q + 1;
 }
+
+void
+load_index_nodes (char *p)
+{
+  index_list_ptr = index_list = strdup (p);
+  continue_to_load_index_nodes ();
+}
+
 
 gboolean
 socket_cb (GSocket *socket,
@@ -244,7 +262,9 @@ socket_cb (GSocket *socket,
           p++; /* Set p to the first byte after index line. */
 
           save_completions (p);
-
+          continue_to_load_index_nodes ();
+          /* Note - an index could be sent in several packets.  Should we wait 
+             until all of them have been sent before loading the next one? */
         }
       else if (!strcmp (buffer, "new-manual"))
         {
