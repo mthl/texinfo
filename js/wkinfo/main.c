@@ -135,7 +135,8 @@ match_selected_cb (GtkEntryCompletion *widget,
 void
 clear_completions (void)
 {
-  gtk_list_store_clear (index_store);
+  if (index_store)
+    gtk_list_store_clear (index_store);
 }
 
 void
