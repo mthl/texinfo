@@ -65,28 +65,6 @@ WebKitWebView *hiddenWebView = NULL;
 char *info_dir = 0;
 
 void
-load_indices (void)
-{
-  return;
-
-  if (indices_loaded)
-    return;
-  indices_loaded = TRUE;
-
-  /* Create a web view to parse index files.  */
-  hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
-
-  GString *s = g_string_new (NULL);
-  g_string_append (s, "file:");
-  g_string_append (s, info_dir);
-  g_string_append (s, "/hello/Concept-index.html?send-index");
-
-  webkit_web_view_load_uri (hiddenWebView, s->str);
-  g_string_free (s, TRUE);
-}
-
-
-void
 load_relative_url (const char *href)
 {
   char *link = 0;
@@ -509,8 +487,6 @@ main(int argc, char* argv[])
     webkit_web_view_load_uri (webView, s->str);
     g_string_free (s, TRUE);
 
-    // load_indices ();
-
     /* Create a web view to parse index files.  */
     hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
@@ -548,7 +524,6 @@ onkeypress (GtkWidget *webView,
                                 up_link);
       break;
     case GDK_KEY_i:
-      load_indices ();
       show_index ();
       break;
     default:
