@@ -12,6 +12,6 @@ bin_PROGRAMS=webkit
 
 webkit_SOURCES=main.c common.h
 
-AM_CFLAGS=`pkg-config --cflags gtk+-3.0 webkit2gtk-3.0`
+AM_CFLAGS=`pkg-config --cflags gtk+-3.0 webkit2gtk-4.0`
 
-AM_LDFLAGS=`pkg-config --libs gtk+-3.0 webkit2gtk-3.0`
+AM_LDFLAGS=`pkg-config --libs gtk+-3.0 webkit2gtk-4.0`
