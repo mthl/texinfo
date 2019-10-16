@@ -445,10 +445,8 @@ main(int argc, char* argv[])
           WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES); 
       }
 
-    WebKitWebViewGroup *group = webkit_web_view_group_new (NULL);
-
     /* Disable JavaScript */
-    WebKitSettings *settings = webkit_web_view_group_get_settings (group);
+    WebKitSettings *settings = webkit_settings_new ();
     webkit_settings_set_enable_javascript (settings, FALSE);
 
     /* Load "extensions".  The web browser is run in a separate process
@@ -458,7 +456,7 @@ main(int argc, char* argv[])
 		      G_CALLBACK (initialize_web_extensions),
 		      NULL);
 
-    webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_group(group));
+    webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
 
     GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
@@ -496,7 +494,7 @@ main(int argc, char* argv[])
        and keyboard events. */
     gtk_widget_grab_focus (GTK_WIDGET(webView));
 
-#define MANUAL "hello"
+#define MANUAL "texinfo"
 
     GString *s = g_string_new (NULL);
     g_string_append (s, "file:");
