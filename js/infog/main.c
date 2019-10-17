@@ -345,8 +345,7 @@ initialize_web_extensions (WebKitWebContext *context,
 
       err = 0;
       GSocketAddress *address = g_unix_socket_address_new (socket_file);
-      g_socket_bind (gsocket, address, FALSE, &err);
-      if (!gsocket)
+      if (!g_socket_bind (gsocket, address, FALSE, &err))
         {
           g_print ("bind socket: %s\n", err->message);
           gtk_main_quit ();
@@ -356,6 +355,7 @@ initialize_web_extensions (WebKitWebContext *context,
       GSource *gsource = g_socket_create_source (gsocket, G_IO_IN, NULL);
       g_source_set_callback (gsource, (GSourceFunc)(socket_cb), NULL, NULL);
       g_source_attach (gsource, NULL);
+      g_object_unref (address);
 
       atexit (&remove_socket);
     }
