@@ -110,7 +110,9 @@ request_callback (WebKitWebPage     *web_page,
 
   debug (1, "Intercepting link <%s>\n", uri);
 
-  /* Clear flags on WebKitWebPage object. */
+  /* Clear flags on WebKitWebPage object.  These flags are checked after
+     the page is actually loaded.  We can't use global variables for this
+     because multiple WebKitWebViews may share them. */
   g_object_set_data (G_OBJECT(web_page), "top-node",
                      GINT_TO_POINTER(0));
   g_object_set_data (G_OBJECT(web_page), "send-index",
@@ -287,6 +289,57 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
 }
 
 void
+packetize (char *msg_type, GString *msg)
+{
+  GString *s;
+  s = g_string_new (NULL);
+  g_string_append (s, msg_type);
+  g_string_append (s, "\n");
+  g_string_append_len (s, msg->str, msg->len);
+  send_datagram (s);
+  g_string_free (s, TRUE);
+}
+
+void
+send_toc (WebKitDOMDocument *dom_document)
+{
+  GString *toc;
+  WebKitDOMElement *e, *e1;
+  int level = 0;
+  char *s, *s1, *s2, *s3;
+
+  WebKitDOMElement *toc_elt = webkit_dom_document_query_selector
+                            (dom_document, "div.contents ul", NULL);
+  if (!toc_elt)
+    return;
+
+  toc = g_string_new (NULL);
+
+  e = webkit_dom_element_get_first_element_child (toc_elt);
+  while (e)
+    {
+      s = webkit_dom_element_get_tag_name (e);
+      if (!strcmp (s, "LI") || !strcmp (s, "li"))
+        {
+          e1 = webkit_dom_element_get_first_element_child (e);
+          s2 = webkit_dom_element_get_tag_name (e1);
+          if (!strcmp (s2, "a") || !strcmp (s2, "A"))
+            {
+              s3 = webkit_dom_element_get_inner_html (e1);
+              g_string_append (toc, s3);
+              g_string_append (toc, "\n");
+            }
+        }
+
+      e = webkit_dom_element_get_next_element_sibling (e);
+    }
+
+  g_print ("BUILT TOC %s\n", toc->str);
+  packetize ("toc", toc);
+  g_string_free (toc, TRUE);
+}
+
+void
 document_loaded_callback (WebKitWebPage *web_page,
                           gpointer       user_data)
 {
@@ -328,6 +381,7 @@ document_loaded_callback (WebKitWebPage *web_page,
 
    if (top_node_p)
      {
+       send_toc (dom_document);
        find_indices (links, num_links);
        return;
      }

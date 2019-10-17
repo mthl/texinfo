@@ -219,6 +219,12 @@ load_index_nodes (char *p)
   continue_to_load_index_nodes ();
 }
 
+void
+load_toc (char *p)
+{
+  g_print ("ASKED TO LOAD TOC |%s|\n", p);
+}
+
 
 gboolean
 socket_cb (GSocket *socket,
@@ -292,6 +298,11 @@ socket_cb (GSocket *socket,
           g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
+        }
+      else if (!strcmp (buffer, "toc"))
+        {
+          p++;
+          load_toc (p);
         }
       else if (!strcmp (buffer, "index-nodes"))
         {
