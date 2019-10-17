@@ -514,14 +514,14 @@ build_gui (void)
 
   GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
 
-  GtkBox *box2 = GTK_BOX(gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
-  gtk_box_pack_start (box, GTK_WIDGET(box2), TRUE, TRUE, 0);
+  GtkPaned *paned = GTK_PANED(gtk_paned_new (GTK_ORIENTATION_HORIZONTAL));
+  gtk_box_pack_start (box, GTK_WIDGET(paned), TRUE, TRUE, 0);
 
   toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
-  gtk_box_pack_start (box2, GTK_WIDGET(toc_pane), TRUE, TRUE, 0);
+  gtk_paned_pack1 (paned, GTK_WIDGET(toc_pane), FALSE, TRUE);
 
   webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
-  gtk_box_pack_start (box2, GTK_WIDGET(webView), TRUE, TRUE, 0);
+  gtk_paned_pack2 (paned, GTK_WIDGET(webView), TRUE, TRUE);
 
   index_entry = GTK_ENTRY(gtk_entry_new ());
   gtk_box_pack_start (box, GTK_WIDGET(index_entry), FALSE, FALSE, 0);
