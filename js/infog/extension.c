@@ -41,18 +41,9 @@ debug (int level, char *fmt, ...)
 static struct sockaddr_un main_name;
 static size_t main_name_size;
 
-/* Name of the socket that we create in this process to send to the socket
+/* The socket that we create in this process to send to the socket
    of the main process. */
-static char *our_socket_file;
 static int socket_id;
-
-static void
-remove_our_socket (void)
-{
-  if (our_socket_file)
-    unlink (our_socket_file);
-}
-
 
 void
 send_datagram (GString *s)
@@ -443,12 +434,9 @@ web_page_created_callback (WebKitWebExtension *extension,
                       NULL, 0);
 }
 
-static void
-make_named_socket (const char *filename)
+void
+initialize_socket (const char *main_socket_file)
 {
-  struct sockaddr_un name;
-  size_t size;
-
   /* Create the socket. */
   socket_id = socket (PF_LOCAL, SOCK_DGRAM, 0);
   if (socket_id < 0)
@@ -456,41 +444,6 @@ make_named_socket (const char *filename)
       perror ("socket (web process)");
       exit (EXIT_FAILURE);
     }
-
-  /* Bind a name to the socket. */
-  name.sun_family = AF_LOCAL;
-  strncpy (name.sun_path, filename, sizeof (name.sun_path));
-  name.sun_path[sizeof (name.sun_path) - 1] = '\0';
-
-  /* The size of the address is
-     the offset of the start of the filename,
-     plus its length (not including the terminating null byte).
-     Alternatively you can just do:
-     size = SUN_LEN (&name);
-   */
-  size = (offsetof (struct sockaddr_un, sun_path)
-	  + strlen (name.sun_path));
-
-  if (bind (socket_id, (struct sockaddr *) &name, size) < 0)
-    {
-      perror ("bind (web process)");
-      exit (EXIT_FAILURE);
-    }
-  /* Do we really need to bind the socket if we are not receiving messages? */
-
-  atexit (&remove_our_socket);
-}
-
-void
-initialize_socket (const char *main_socket_file)
-{
-  if (!our_socket_file)
-    {
-      our_socket_file = tmpnam (0);
-      make_named_socket (our_socket_file);
-    }
-  else
-    g_print ("bug: web process initialized twice\n");
 
   /* Set the address of the socket in the main Gtk process. */
   main_name.sun_family = AF_LOCAL;

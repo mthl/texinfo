@@ -53,7 +53,7 @@ int socket_id;
 static void
 remove_socket (void)
 {
-  debug (1, "removing socket\n");
+  debug (1, "removing socket %s\n", socket_file);
   if (socket_file)
     unlink (socket_file);
 }
