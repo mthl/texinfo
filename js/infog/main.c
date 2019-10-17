@@ -53,6 +53,7 @@ int socket_id;
 static void
 remove_socket (void)
 {
+  debug (1, "removing socket\n");
   if (socket_file)
     unlink (socket_file);
 }
@@ -99,6 +100,13 @@ load_relative_url (const char *href)
         }
     }
   free (link);
+}
+
+void
+hide_index (void)
+{
+  gtk_widget_hide (GTK_WIDGET(index_entry));
+  gtk_widget_grab_focus (GTK_WIDGET(webView));
 }
 
 gboolean
@@ -366,13 +374,6 @@ show_index (void)
 {
   gtk_widget_show (GTK_WIDGET(index_entry));
   gtk_widget_grab_focus (GTK_WIDGET(index_entry));
-}
-
-void
-hide_index (void)
-{
-  gtk_widget_hide (GTK_WIDGET(index_entry));
-  gtk_widget_grab_focus (GTK_WIDGET(webView));
 }
 
 
