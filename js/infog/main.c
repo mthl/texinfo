@@ -62,9 +62,14 @@ WebKitWebView *webView = 0;
 
 static char *next_link, *prev_link, *up_link;
 
+GtkWidget *main_window = 0;
+
 GtkEntry *index_entry = 0;
 GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
+
+GtkTreeView *toc_pane;
+GtkListStore *toc_store = 0;
 
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
@@ -219,10 +224,39 @@ load_index_nodes (char *p)
   continue_to_load_index_nodes ();
 }
 
+GtkCellRenderer *toc_renderer = 0;
+GtkTreeViewColumn *toc_column = 0;
+
 void
 load_toc (char *p)
 {
-  g_print ("ASKED TO LOAD TOC |%s|\n", p);
+  GtkTreeIter iter;
+
+  if (!toc_store)
+    {
+      toc_store = gtk_list_store_new (1, G_TYPE_STRING);
+      gtk_tree_view_set_model (toc_pane, GTK_TREE_MODEL(toc_store));
+
+      toc_renderer = gtk_cell_renderer_text_new ();
+      toc_column = gtk_tree_view_column_new_with_attributes (NULL,
+                                                   toc_renderer,
+                                                   "text", 0,
+                                                   NULL);
+      gtk_tree_view_append_column (GTK_TREE_VIEW (toc_pane), toc_column);
+    }
+
+  char *q, *q2;
+  while ((q = strchr (p, '\n')))
+    {
+      *q++ = 0;
+      debug (1, "add toc entry %s\n", p);
+
+      gtk_list_store_append (toc_store, &iter);
+      gtk_list_store_set (toc_store, &iter,
+                          0, p, -1);
+
+      p = q;
+    }
 }
 
 
@@ -468,6 +502,56 @@ find_extensions_directory (int argc, char *argv[])
 
 static GMainLoop *main_loop;
 
+void
+build_gui (void)
+{
+  /* Disable JavaScript */
+  WebKitSettings *settings = webkit_settings_new ();
+  webkit_settings_set_enable_javascript (settings, FALSE);
+
+  main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
+
+  GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
+
+  GtkBox *box2 = GTK_BOX(gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0));
+  gtk_box_pack_start (box, GTK_WIDGET(box2), TRUE, TRUE, 0);
+
+  toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
+  gtk_box_pack_start (box2, GTK_WIDGET(toc_pane), TRUE, TRUE, 0);
+
+  webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
+  gtk_box_pack_start (box2, GTK_WIDGET(webView), TRUE, TRUE, 0);
+
+  index_entry = GTK_ENTRY(gtk_entry_new ());
+  gtk_box_pack_start (box, GTK_WIDGET(index_entry), FALSE, FALSE, 0);
+
+  gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(box));
+
+  gtk_widget_add_events (GTK_WIDGET(webView), GDK_FOCUS_CHANGE_MASK);
+
+  /* Hide the index search box when it loses focus. */
+  g_signal_connect (webView, "focus-in-event",
+                    G_CALLBACK(hide_index_cb), NULL);
+  gtk_widget_hide (GTK_WIDGET(index_entry));
+
+  g_signal_connect (webView, "decide-policy",
+                    G_CALLBACK(decide_policy_cb), NULL);
+
+  // Set up callbacks so that if either the main window or the browser 
+  // instance is closed, the program will exit.
+  g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
+  g_signal_connect(webView, "close", G_CALLBACK(closeWebViewCb), main_window);
+
+  g_signal_connect(webView, "key-press-event", G_CALLBACK(onkeypress), main_window);
+
+  gtk_widget_show_all (main_window);
+
+  /* Make sure that when the browser area becomes visible, it will get mouse
+     and keyboard events. */
+  gtk_widget_grab_focus (GTK_WIDGET(webView));
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -491,10 +575,6 @@ main (int argc, char *argv[])
           WEBKIT_PROCESS_MODEL_MULTIPLE_SECONDARY_PROCESSES); 
       }
 
-    /* Disable JavaScript */
-    WebKitSettings *settings = webkit_settings_new ();
-    webkit_settings_set_enable_javascript (settings, FALSE);
-
     /* Load "extensions".  The web browser is run in a separate process
        and we can only access the DOM in that process. */
     g_signal_connect (webkit_web_context_get_default (),
@@ -502,42 +582,7 @@ main (int argc, char *argv[])
 		      G_CALLBACK (initialize_web_extensions),
 		      NULL);
 
-    webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
-
-    GtkWidget *main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
-
-    GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
-
-    index_entry = GTK_ENTRY(gtk_entry_new ());
-
-    gtk_box_pack_start (box, GTK_WIDGET(webView), TRUE, TRUE, 0);
-    gtk_box_pack_start (box, GTK_WIDGET(index_entry), FALSE, FALSE, 0);
-
-    gtk_container_add(GTK_CONTAINER(main_window), GTK_WIDGET(box));
-
-    gtk_widget_add_events (GTK_WIDGET(webView), GDK_FOCUS_CHANGE_MASK);
-
-    /* Hide the index search box when it loses focus. */
-    g_signal_connect (webView, "focus-in-event",
-                      G_CALLBACK(hide_index_cb), NULL);
-    gtk_widget_hide (GTK_WIDGET(index_entry));
-
-    g_signal_connect (webView, "decide-policy",
-                      G_CALLBACK(decide_policy_cb), NULL);
-
-    // Set up callbacks so that if either the main window or the browser 
-    // instance is closed, the program will exit.
-    g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
-    g_signal_connect(webView, "close", G_CALLBACK(closeWebViewCb), main_window);
-
-    g_signal_connect(webView, "key-press-event", G_CALLBACK(onkeypress), main_window);
-
-    gtk_widget_show_all (main_window);
-
-    /* Make sure that when the browser area becomes visible, it will get mouse
-       and keyboard events. */
-    gtk_widget_grab_focus (GTK_WIDGET(webView));
+    build_gui ();
 
 #define MANUAL "hello"
 
