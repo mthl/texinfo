@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Conditional Nesting (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Conditional Nesting (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Conditional Nesting (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Conditionals.html" rel="up" title="Conditionals">
+<link href="Defining-New-Texinfo-Commands.html" rel="next" title="Defining New Texinfo Commands">
+<link href="Testing-for-Texinfo-Commands.html" rel="prev" title="Testing for Texinfo Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Conditional-Nesting"></span><div class="header">
+<p>
+Previous: <a href="Testing-for-Texinfo-Commands.html" accesskey="p" rel="prev">Testing for Texinfo Commands</a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Conditional-Nesting-1"></span><h3 class="section">16.7 Conditional Nesting</h3>
+<span id="index-Conditionals_002c-nested"></span>
+<span id="index-Nesting-conditionals"></span>
+
+<p>Conditionals can be nested; however, the details are a little tricky.
+The difficulty comes with failing conditionals, such as
+<code>@ifhtml</code> when HTML is not being produced, where the included
+text is to be ignored.  However, it is not to be <em>completely</em>
+ignored, since it is useful to have one <code>@ifset</code> inside another,
+for example&mdash;that is a way to include text only if two conditions are
+met.  Here&rsquo;s an example:
+</p>
+<div class="example">
+<pre class="example">@ifset somevar
+@ifset anothervar
+Both somevar and anothervar are set.
+@end ifset
+@ifclear anothervar
+Somevar is set, anothervar is not.
+@end ifclear
+@end ifset
+</pre></div>
+
+<p>Technically, Texinfo requires that for a failing conditional, the
+ignored text must be properly nested with respect to that failing
+conditional.  Unfortunately, it&rsquo;s not always feasible to check that
+<em>all</em> conditionals are properly nested, because then the
+processors could have to fully interpret the ignored text, which
+defeats the purpose of the command.  Here&rsquo;s an example illustrating
+these rules:
+</p>
+<div class="example">
+<pre class="example">@ifset a
+@ifset b
+@ifclear ok  - ok, ignored
+@end junky   - ok, ignored
+@end ifset
+@c WRONG - missing @end ifset.
+</pre></div>
+
+<p>Finally, as mentioned above, all conditional commands must be on lines
+by themselves, with no text (even spaces) before or after.  Otherwise,
+the processors cannot reliably determine which commands to consider
+for nesting purposes.
+</p>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@documentencoding (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@documentencoding (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@documentencoding (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Internationalization.html" rel="up" title="Internationalization">
+<link href="Conditionals.html" rel="next" title="Conditionals">
+<link href="_0040documentlanguage.html" rel="prev" title="@documentlanguage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040documentencoding"></span><div class="header">
+<p>
+Previous: <a href="_0040documentlanguage.html" accesskey="p" rel="prev"><code>@documentlanguage</code></a>, Up: <a href="Internationalization.html" accesskey="u" rel="up">Internationalization</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040documentencoding-enc_003a-Set-Input-Encoding"></span><h3 class="section">15.2 <code>@documentencoding <var>enc</var></code>: Set Input Encoding</h3>
+
+<span id="documentencoding"></span><span id="index-documentencoding"></span>
+<span id="index-Encoding_002c-declaring"></span>
+<span id="index-Input-encoding_002c-declaring"></span>
+<span id="index-Character-set_002c-declaring"></span>
+<span id="index-Document-input-encoding"></span>
+
+<p>The <code>@documentencoding</code> command declares the input document
+encoding, and can also affect the encoding of the output.  Write it on
+a line by itself, with a valid encoding specification following, near
+the beginning of the file.
+</p>
+<div class="example">
+<pre class="example">@documentencoding <var>enc</var>
+</pre></div>
+
+<p>Texinfo supports these encodings:
+</p>
+<dl compact="compact">
+<dt><code>US-ASCII</code></dt>
+<dd><p>This has no particular effect, but it&rsquo;s included for completeness.
+</p>
+</dd>
+<dt><code>UTF-8</code></dt>
+<dd><p>The vast global character encoding, expressed in 8-bit bytes.
+</p>
+</dd>
+<dt><code>ISO-8859-1</code></dt>
+<dt><code>ISO-8859-15</code></dt>
+<dt><code>ISO-8859-2</code></dt>
+<dd><span id="index-Euro-symbol_002c-and-encodings"></span>
+<p>These specify the standard encodings for Western European (the first
+two) and Eastern European languages (the third), respectively.  ISO
+8859-15 replaces some little-used characters from 8859-1 (e.g.,
+precomposed fractions) with more commonly needed ones, such as the
+Euro symbol (&euro;).
+</p>
+<p>A full description of the encodings is beyond our scope here;
+one useful reference is <a href="http://czyborra.com/charsets/iso8859.html">http://czyborra.com/charsets/iso8859.html</a>.
+</p>
+</dd>
+<dt><code>koi8-r</code></dt>
+<dd><p>This is the commonly used encoding for the Russian language.
+</p>
+</dd>
+<dt><code>koi8-u</code></dt>
+<dd><p>This is the commonly used encoding for the Ukrainian language.
+</p>
+</dd>
+</dl>
+
+<p>Specifying an encoding <var>enc</var> has the following effects:
+</p>
+<span id="index-Local-Variables-section_002c-for-encoding"></span>
+<span id="index-Info-output_002c-and-encoding"></span>
+<p>In Info output, a so-called &lsquo;Local Variables&rsquo; section (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/File-Variables.html#File-Variables">File
+Variables</a> in <cite>The GNU Emacs Manual</cite>) is output including
+<var>enc</var>.  This allows Info readers to set the encoding
+appropriately.  It looks like this:
+</p>
+<div class="example">
+<pre class="example">Local Variables:
+coding: <var>enc</var>
+End:
+</pre></div>
+
+<p>Also, in Info and plain text output, unless the option
+<samp>--disable-encoding</samp> is given to <code>makeinfo</code>, accent
+constructs and special characters, such as <code>@'e</code>, are output as
+the actual 8-bit or UTF-8 character in the given encoding where
+possible.
+</p>
+<span id="index-HTML-output_002c-and-encodings"></span>
+<span id="index-http_002dequiv_002c-and-charset-specification"></span>
+<span id="index-_003cmeta_003e-HTML-tag_002c-and-charset-specification"></span>
+<p>In HTML output, a &lsquo;<samp>&lt;meta&gt;</samp>&rsquo; tag is output, in the &lsquo;<samp>&lt;head&gt;</samp>&rsquo;
+section of the HTML, that specifies <var>enc</var>.  Web servers and
+browsers cooperate to use this information so the correct encoding is
+used to display the page, if supported by the system.  That looks like
+this:
+</p>
+<div class="example">
+<pre class="example">&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+     charset=<var>enc</var>&quot;&gt;
+</pre></div>
+
+<p>In XML and Docbook output, UTF-8 is always used for the output,
+according to the conventions of those formats.
+</p>
+<span id="index-Computer-Modern-fonts"></span>
+<p>In TeX output, the characters which are supported in the standard
+Computer Modern fonts are output accordingly.  For example, this
+means using constructed accents rather than precomposed glyphs.
+Using a missing character generates a warning message, as does
+specifying an unimplemented encoding.
+</p>
+<p>Although modern TeX systems support nearly every script in use in
+the world, this wide-ranging support is not available in
+<samp>texinfo.tex</samp>, and it&rsquo;s not feasible to duplicate or incorporate
+all that effort.  (Our plan to support other scripts is to create a
+LaTeX back-end to <code>texi2any</code>, where the support is already
+present.)
+</p>
+<p>For maximum portability of Texinfo documents across the many different
+user environments in the world, we recommend sticking to 7-bit ASCII
+in the input unless your particular manual needs a substantial amount
+of non-ASCII, e.g., it&rsquo;s written in German.  You can use the
+<code>@U</code> command to insert an occasional needed character
+(see <a href="Inserting-Unicode.html">Inserting Unicode</a>).
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="_0040documentlanguage.html" accesskey="p" rel="prev"><code>@documentlanguage</code></a>, Up: <a href="Internationalization.html" accesskey="u" rel="up">Internationalization</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

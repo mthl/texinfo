@@ -1,0 +1,630 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Invoking texi2any (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Invoking texi2any (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Invoking texi2any (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="texi2any-Environment-Variables.html" rel="next" title="texi2any Environment Variables">
+<link href="Reference-Implementation.html" rel="prev" title="Reference Implementation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Invoking-texi2any"></span><div class="header">
+<p>
+Next: <a href="texi2any-Environment-Variables.html" accesskey="n" rel="next"><code>texi2any</code> Environment Variables</a>, Previous: <a href="Reference-Implementation.html" accesskey="p" rel="prev">Reference Implementation</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Invoking-texi2any_002fmakeinfo-from-a-Shell"></span><h3 class="section">20.2 Invoking <code>texi2any</code>/<code>makeinfo</code> from a Shell</h3>
+
+<span id="Invoking-makeinfo"></span><span id="index-makeinfo"></span>
+<span id="index-texi2any"></span>
+
+<p>To process a Texinfo file, invoke <code>texi2any</code> or
+<code>makeinfo</code> (the two names are synonyms for the same program;
+we&rsquo;ll use the names interchangeably) followed by the name of the
+Texinfo file.  Also select the format you want to output with the
+appropriate command line option (default is Info).  Thus, to create
+the Info file for Bison, type the following to the shell:
+</p>
+<div class="example">
+<pre class="example">texi2any --info bison.texinfo
+</pre></div>
+
+<p>You can specify more than one input file name; each is processed in
+turn.  If an input file name is &lsquo;<samp>-</samp>&rsquo;, standard input is read.
+</p>
+<span id="makeinfo-Options"></span><span id="index-makeinfo-options"></span>
+<span id="index-Options-for-makeinfo"></span>
+<span id="texi2any-Options"></span><span id="index-texi2any-options"></span>
+<span id="index-Options-for-texi2any"></span>
+
+<p>The <code>texi2any</code> program accepts many options.  Perhaps the
+most basic are those that change the output format.  By default,
+<code>texi2any</code> outputs Info.
+</p>
+<p>Each command line option is either a long name preceded by &lsquo;<samp>--</samp>&rsquo;
+or a single letter preceded by &lsquo;<samp>-</samp>&rsquo;.  You can use abbreviations
+for the long option names as long as they are unique.
+</p>
+<p>For example, you could use the following shell command to create an
+Info file for <samp>bison.texinfo</samp> in which lines are filled to only
+68 columns:
+</p>
+<div class="example">
+<pre class="example">texi2any --fill-column=68 bison.texinfo
+</pre></div>
+
+<p>You can write two or more options in sequence, like this:
+</p>
+<div class="example">
+<pre class="example">texi2any --no-split --fill-column=70 &hellip;
+</pre></div>
+
+<p>(This would keep the Info file together as one possibly very long
+file and would also set the fill column to 70.)
+</p>
+<p>The options are (approximately in alphabetical order):
+</p>
+<dl compact="compact">
+<dt><code>--commands-in-node-names</code></dt>
+<dd><span id="index-_002d_002dcommands_002din_002dnode_002dnames"></span>
+<p>This option now does nothing, but remains for compatibility.  (It used
+to ensure that @-commands in node names were expanded throughout the
+document, especially <code>@value</code>.  This is now done by default.)
+</p>
+</dd>
+<dt><code>--conf-dir=<var>path</var></code></dt>
+<dd><span id="index-_002d_002dconf_002ddir_003dpath"></span>
+<p>Prepend <var>path</var> to the directory search list for finding
+customization files that may be loaded with <samp>--init-file</samp> (see
+below).  The <var>path</var> value can be a single directory, or a list of
+several directories separated by the usual path separator character
+(&lsquo;<samp>:</samp>&rsquo; on Unix-like systems, &lsquo;<samp>;</samp>&rsquo; on Windows). </p>
+</dd>
+<dt><code>--css-include=<var>file</var></code></dt>
+<dd><span id="index-_002d_002dcss_002dinclude"></span>
+<p>When producing HTML, literally include the contents of <var>file</var>,
+which should contain W3C cascading style sheets specifications, in the
+&lsquo;<samp>&lt;style&gt;</samp>&rsquo; block of the HTML output.  If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;,
+read standard input.  See <a href="HTML-CSS.html">HTML CSS</a>.
+</p>
+</dd>
+<dt><code>--css-ref=<var>url</var></code></dt>
+<dd><span id="index-_002d_002dcss_002dref"></span>
+<p>When producing HTML, add a &lsquo;<samp>&lt;link&gt;</samp>&rsquo; tag to the output which
+references a cascading style sheet at <var>url</var>.  This allows using
+standalone style sheets.
+</p>
+</dd>
+<dt><code>-D <var>var</var></code></dt>
+<dt><code>-D '<var>var</var> <var>value</var>'</code></dt>
+<dd><span id="index-_002dD-var"></span>
+<p>Cause the Texinfo variable <var>var</var> to be defined.  This is
+equivalent to <code>@set <var>var</var></code> in the Texinfo file
+(see <a href="_0040set-_0040clear-_0040value.html"><code>@set @clear @value</code></a>).
+</p>
+<p>The argument to the option is always one word to the shell; if it
+contains internal whitespace, the first word is taken as the variable
+name and the remainder as the value.  For example, <code>-D 'myvar
+someval'</code> is equivalent to <code>@set myvar someval</code>.
+</p>
+</dd>
+<dt><code>--disable-encoding</code></dt>
+<dt><code>--enable-encoding</code></dt>
+<dd><span id="index-_002d_002ddisable_002dencoding"></span>
+<span id="index-_002d_002denable_002dencoding"></span>
+<p>By default, or with <samp>--enable-encoding</samp>, output accented and
+special characters in Info and plain text output based on
+&lsquo;<samp>@documentencoding</samp>&rsquo;.  With <samp>--disable-encoding</samp>, 7-bit
+ASCII transliterations are output.  See <a href="_0040documentencoding.html"><code>@documentencoding</code></a>,
+and <a href="Inserting-Accents.html">Inserting Accents</a>.
+</p>
+</dd>
+<dt><code>--docbook</code></dt>
+<dd><span id="index-_002d_002ddocbook"></span>
+<p>Generate Docbook output (rather than Info).
+</p>
+</dd>
+<dt><code>--document-language=<var>lang</var></code></dt>
+<dd><span id="index-_002d_002ddocument_002dlanguage"></span>
+<p>Use <var>lang</var> to translate Texinfo keywords which end up in the
+output document.  The default is the locale specified by the
+<code>@documentlanguage</code> command if there is one, otherwise English
+(see <a href="_0040documentlanguage.html"><code>@documentlanguage</code></a>).
+</p>
+</dd>
+<dt><code>--dvi</code></dt>
+<dd><span id="index-_002d_002ddvi"></span>
+<p>Generate a TeX DVI file using <code>texi2dvi</code>, rather than Info
+(see <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>).
+</p>
+</dd>
+<dt><code>--dvipdf</code></dt>
+<dd><span id="index-_002d_002ddvipdf"></span>
+<p>Generate a PDF file using <code>texi2dvi --dvipdf</code>, rather than
+Info (see <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>).
+</p>
+</dd>
+<dt><code>--error-limit=<var>limit</var></code></dt>
+<dt><code>-e <var>limit</var></code></dt>
+<dd><span id="index-_002d_002derror_002dlimit_003dlimit"></span>
+<span id="index-_002de-limit"></span>
+<p>Report <var>LIMIT</var> errors before aborting (on the assumption that
+continuing would be useless); default 100.
+</p>
+</dd>
+<dt><code>--fill-column=<var>width</var></code></dt>
+<dt><code>-f <var>width</var></code></dt>
+<dd><span id="index-_002d_002dfill_002dcolumn_003dwidth"></span>
+<span id="index-_002df-width"></span>
+<p>Specify the maximum number of columns in a line; this is the
+right-hand edge of a line.  Paragraphs that are filled will be filled
+to this width.  (Filling is the process of breaking up and connecting
+lines so that lines are the same length as or shorter than the number
+specified as the fill column.  Lines are broken between words.) The
+default value is 72.
+</p>
+</dd>
+<dt><code>--footnote-style=<var>style</var></code></dt>
+<dt><code>-s <var>style</var></code></dt>
+<dd><span id="index-_002d_002dfootnote_002dstyle_003dstyle"></span>
+<span id="index-_002ds-style"></span>
+<p>Set the footnote style to <var>style</var>: either &lsquo;<samp>end</samp>&rsquo; for the end
+node style (the default) or &lsquo;<samp>separate</samp>&rsquo; for the separate node
+style.  The value set by this option overrides the value set in a
+Texinfo file by a <code>@footnotestyle</code> command (see <a href="Footnote-Styles.html">Footnote Styles</a>).
+</p>
+<p>When the footnote style is &lsquo;<samp>separate</samp>&rsquo;, <code>makeinfo</code> makes a
+new node containing the footnotes found in the current node.  When the
+footnote style is &lsquo;<samp>end</samp>&rsquo;, <code>makeinfo</code> places the footnote
+references at the end of the current node.
+</p>
+<p>In HTML, when the footnote style is &lsquo;<samp>end</samp>&rsquo;, or if the output is
+not split, footnotes are put at the end of the output.  If set to
+&lsquo;<samp>separate</samp>&rsquo;, and the output is split, they are placed in a
+separate file.
+</p>
+</dd>
+<dt><code>--force</code></dt>
+<dt><code>-F</code></dt>
+<dd><span id="index-_002d_002dforce"></span>
+<span id="index-_002dF"></span>
+<p>Ordinarily, if the input file has errors, the output files are not
+created.  With this option, they are preserved.
+</p>
+</dd>
+<dt><code>--help</code></dt>
+<dt><code>-h</code></dt>
+<dd><span id="index-_002d_002dhelp_002c-for-texi2any"></span>
+<span id="index-_002dh"></span>
+<p>Print a message with available options and basic usage, then exit
+successfully.
+</p>
+</dd>
+<dt><code>--html</code></dt>
+<dd><span id="index-_002d_002dhtml"></span>
+<p>Generate HTML output (rather than Info).  By default, the HTML output
+is split into one output file per Texinfo source node, and the split
+output is written into a subdirectory based on the name of the
+top-level Info file.  See <a href="Generating-HTML.html">Generating HTML</a>.
+</p>
+</dd>
+<dt><code>-I <var>path</var></code></dt>
+<dd><span id="index-_002dI-path"></span>
+<p>Append <var>path</var> to the directory search list for finding files that
+are included using the <code>@include</code> command.  By default,
+<code>texi2any</code> searches only the current directory.  If <var>path</var> is
+not given, the current directory is appended.  The <var>path</var> value
+can be a single directory or a list of several directories separated
+by the usual path separator character (&lsquo;<samp>:</samp>&rsquo; on Unix-like systems,
+&lsquo;<samp>;</samp>&rsquo; on Windows).
+</p>
+</dd>
+<dt><code>--ifdocbook</code></dt>
+<dd><span id="index-_002d_002difdocbook"></span>
+</dd>
+<dt><code>--ifhtml</code></dt>
+<dd><span id="index-_002d_002difhtml"></span>
+</dd>
+<dt><code>--ifinfo</code></dt>
+<dd><span id="index-_002d_002difinfo"></span>
+</dd>
+<dt><code>--ifplaintext</code></dt>
+<dd><span id="index-_002d_002difplaintext"></span>
+</dd>
+<dt><code>--iftex</code></dt>
+<dd><span id="index-_002d_002diftex"></span>
+</dd>
+<dt><code>--ifxml</code></dt>
+<dd><span id="index-_002d_002difxml"></span>
+<p>For the given format, process &lsquo;<samp>@if<var>format</var></samp>&rsquo; and
+&lsquo;<samp>@<var>format</var></samp>&rsquo; commands, and do not process
+&lsquo;<samp>@ifnot<var>format</var></samp>&rsquo;, regardless of the format being output.
+For instance, if <samp>--iftex</samp> is given, then &lsquo;<samp>@iftex</samp>&rsquo; and
+&lsquo;<samp>@tex</samp>&rsquo; blocks will be read, and &lsquo;<samp>@ifnottex</samp>&rsquo; blocks will be
+ignored.
+</p>
+</dd>
+<dt><code>--info</code></dt>
+<dd><span id="index-_002d_002dinfo"></span>
+<p>Generate Info output.  By default, if the output file contains more
+than about 300,000 bytes, it is split into shorter subfiles of about
+that size.  The name of the output file and any subfiles is determined
+by <code>@setfilename</code> (see <a href="_0040setfilename.html"><code>@setfilename</code></a>).  See <a href="Tag-and-Split-Files.html">Tag and Split Files</a>.
+</p>
+</dd>
+<dt><code>--init-file=<var>file</var></code></dt>
+<dd><span id="index-_002d_002dinit_002dfile_003dfile"></span>
+<p>Load <var>file</var> as code to modify the behavior and output of the
+generated manual.  It is customary to use the <code>.pm</code> or the
+<code>.init</code> extensions for these customization files, but that is not
+enforced; the <var>file</var> name can be anything.  The
+<samp>--conf-dir</samp> option (see above) can be used to add to the list
+of directories in which these customization files are searched for.
+</p>
+</dd>
+<dt><code>--internal-links=<var>file</var></code></dt>
+<dd><span id="index-_002d_002dinternal_002dlinks_003dfile"></span>
+<span id="index-Internal-links_002c-of-HTML"></span>
+<p>In HTML mode, output a tab-separated file containing three columns:
+the internal link to an indexed item or item in the table of contents,
+the name of the index (or table of contents) in which it occurs, and
+the term which was indexed or entered.  The items are in the natural
+sorting order for the given element.  This dump can be useful for
+post-processors.
+</p>
+</dd>
+<dt><code>--macro-expand=<var>file</var></code></dt>
+<dt><code>-E <var>file</var></code></dt>
+<dd><span id="index-_002d_002dmacro_002dexpand_003dfile"></span>
+<span id="index-_002dE-file"></span>
+<p>Output the Texinfo source, with all Texinfo macros expanded, to
+<var>file</var>.  Normally, the result of macro expansion is used
+internally by <code>makeinfo</code> and then discarded.
+</p>
+</dd>
+<dt><code>--no-headers</code></dt>
+<dd><span id="index-_002d_002dno_002dheaders"></span>
+<span id="index-Node-separators_002c-omitting-with-_002d_002dno_002dheaders"></span>
+<span id="index-Generating-plain-text-files-with-_002d_002dno_002dheaders"></span>
+<span id="index-Menus_002c-omitting-with-_002d_002dno_002dheaders"></span>
+<p>Do not include menus or node separator lines in the output.
+</p>
+<p>When generating Info, this is the same as using <samp>--plaintext</samp>,
+resulting in a simple plain text file.  Furthermore,
+<code>@setfilename</code> is ignored, and output is to standard output
+unless overridden with <samp>-o</samp>.  (This behavior is for backward
+compatibility.)
+</p>
+<span id="index-Navigation-links_002c-omitting"></span>
+<p>When generating HTML, and output is split, also output navigation
+links only at the beginning of each file.  If output is not split, do
+not include navigation links at the top of each node at all.
+See <a href="Generating-HTML.html">Generating HTML</a>.
+</p>
+</dd>
+<dt><code>--no-ifdocbook</code></dt>
+<dd><span id="index-_002d_002dno_002difdocbook"></span>
+</dd>
+<dt><code>--no-ifhtml</code></dt>
+<dd><span id="index-_002d_002dno_002difhtml"></span>
+</dd>
+<dt><code>--no-ifinfo</code></dt>
+<dd><span id="index-_002d_002dno_002difinfo"></span>
+</dd>
+<dt><code>--no-ifplaintext</code></dt>
+<dd><span id="index-_002d_002dno_002difplaintext"></span>
+</dd>
+<dt><code>--no-iftex</code></dt>
+<dd><span id="index-_002d_002dno_002diftex"></span>
+</dd>
+<dt><code>--no-ifxml</code></dt>
+<dd><span id="index-_002d_002dno_002difxml"></span>
+<p>For the given format, do not process &lsquo;<samp>@if<var>format</var></samp>&rsquo; and
+&lsquo;<samp>@<var>format</var></samp>&rsquo; commands, and do process
+&lsquo;<samp>@ifnot<var>format</var></samp>&rsquo;, regardless of the format being output.
+For instance, if <samp>--no-ifhtml</samp> is given, then &lsquo;<samp>@ifhtml</samp>&rsquo;
+and &lsquo;<samp>@html</samp>&rsquo; blocks will not be read, and &lsquo;<samp>@ifnothtml</samp>&rsquo;
+blocks will be.
+</p>
+</dd>
+<dt><code>--no-node-files</code></dt>
+<dt><code>--node-files</code></dt>
+<dd><span id="index-_002d_002dno_002dnode_002dfiles"></span>
+<span id="index-_002d_002dnode_002dfiles"></span>
+<p>When generating HTML, create redirection files for anchors and any
+nodes not already output with the file name corresponding to the node
+name (see <a href="HTML-Xref-Node-Name-Expansion.html">HTML Xref Node Name Expansion</a>).  This makes it possible
+for section- and chapter-level cross-manual references to succeed
+(see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>).
+</p>
+<p>If the output is split, this is enabled by default.  If the output is
+not split, <samp>--node-files</samp> enables the creation of the
+redirection files, in addition to the monolithic main output file.
+<samp>--no-node-files</samp> suppresses the creation of redirection files
+in any case.  This option has no effect with any output format other
+than HTML.  See <a href="Generating-HTML.html">Generating HTML</a>.
+</p>
+</dd>
+<dt><code>--no-number-footnotes</code></dt>
+<dd><span id="index-_002d_002dno_002dnumber_002dfootnotes"></span>
+<p>Suppress automatic footnote numbering.  By default, footnotes are
+numbered sequentially within a node, i.e., the current footnote number
+is reset to 1 at the start of each node.
+</p>
+</dd>
+<dt><code>--no-number-sections</code></dt>
+<dt><code>--number-sections</code></dt>
+<dd><span id="index-_002d_002dno_002dnumber_002dsections"></span>
+<span id="index-_002d_002dnumber_002dsections"></span>
+<p>With <samp>--number_sections</samp> (the default), output chapter,
+section, and appendix numbers as in printed manuals.  This works only
+with hierarchically-structured manuals.  You should specify
+<code>--no-number-sections</code> if your manual is not normally structured.
+</p>
+</dd>
+<dt><code>--no-pointer-validate</code></dt>
+<dt><code>--no-validate</code></dt>
+<dd><span id="index-_002d_002dno_002dpointer_002dvalidate"></span>
+<span id="index-_002d_002dno_002dvalidate"></span>
+<span id="index-Pointer-validation_002c-suppressing-from-command-line"></span>
+<p>Suppress the pointer-validation phase of <code>makeinfo</code>&mdash;a dangerous
+thing to do.  This can also be done with the <code>@novalidate</code>
+command (see <a href="Use-TeX.html">Use TeX</a>).  Normally, consistency checks are made
+to ensure that cross-references can be resolved, etc.  See <a href="Pointer-Validation.html">Pointer Validation</a>.
+</p>
+</dd>
+<dt><code>--no-warn</code></dt>
+<dd><span id="index-_002d_002dno_002dwarn"></span>
+<p>Suppress warning messages (but not error messages).
+</p>
+</dd>
+<dt><code>--output=<var>file</var></code></dt>
+<dt><code>-o <var>file</var></code></dt>
+<dd><span id="index-_002d_002doutput_003dfile"></span>
+<span id="index-_002do-file"></span>
+<p>Specify that the output should be directed to <var>file</var>.  This
+overrides any file name specified in a <code>@setfilename</code> command
+found in the Texinfo source.  If neither <code>@setfilename</code> nor this
+option are specified, the input file name is used to determine the
+output name.  See <a href="_0040setfilename.html"><code>@setfilename</code></a>.
+</p>
+<p>If <var>file</var> is &lsquo;<samp>-</samp>&rsquo;, output goes to standard output and
+&lsquo;<samp>--no-split</samp>&rsquo; is implied.
+</p>
+<p>If <var>file</var> is a directory or ends with a &lsquo;<samp>/</samp>&rsquo; the usual rules
+are used to determine the output file name (namely, use
+<code>@setfilename</code> or the input file name) but the files are written
+to the <var>file</var> directory.  For example, &lsquo;<samp>makeinfo -o bar/
+foo.texi</samp>&rsquo;, with or without <samp>--no-split</samp>, will write
+<samp>bar/foo.info</samp>, and possibly other files, under <samp>bar/</samp>.
+</p>
+<p>When generating HTML and output is split, <var>file</var> is used as the
+name for the directory into which all files are written.  For example,
+&lsquo;<samp>makeinfo -o bar --html foo.texi</samp>&rsquo; will write
+<samp>bar/index.html</samp>, among other files.
+</p>
+</dd>
+<dt><code>--output-indent=<var>val</var></code></dt>
+<dd><span id="index-_002d_002doutputindent"></span>
+<p>This option now does nothing, but remains for compatibility.  (It used
+to alter indentation in XML/Docbook output.)
+</p>
+</dd>
+<dt><code>-P <var>path</var></code></dt>
+<dd><span id="index-_002dP-path"></span>
+<p>Prepend <var>path</var> to the directory search list for <code>@include</code>.
+If <var>path</var> is not given, the current directory is prepended.  See
+&lsquo;<samp>-I</samp>&rsquo; above.
+</p>
+</dd>
+<dt><code>--paragraph-indent=<var>indent</var></code></dt>
+<dt><code>-p <var>indent</var></code></dt>
+<dd><span id="index-_002d_002dparagraph_002dindent_003dindent"></span>
+<span id="index-_002dp-indent"></span>
+<p>Set the paragraph indentation style to <var>indent</var>.  The value set by
+this option overrides the value set in a Texinfo file by an
+<code>@paragraphindent</code> command (see <a href="_0040paragraphindent.html"><code>@paragraphindent</code></a>).
+The value of <var>indent</var> is interpreted as follows:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>asis</samp>&rsquo;</dt>
+<dd><p>Preserve any existing indentation (or lack thereof) at the beginnings
+of paragraphs.
+</p>
+</dd>
+<dt>&lsquo;<samp>0</samp>&rsquo; or &lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>Delete any existing indentation.
+</p>
+</dd>
+<dt><var>num</var></dt>
+<dd><p>Indent each paragraph by <var>num</var> spaces.
+</p></dd>
+</dl>
+
+<p>The default is to indent by two spaces, except for paragraphs
+following a section heading, which are not indented.
+</p>
+</dd>
+<dt><code>--pdf</code></dt>
+<dd><span id="index-_002d_002dpdf"></span>
+<p>Generate a PDF file using <code>texi2dvi --pdf</code>, rather than Info
+(see <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>).
+</p>
+</dd>
+<dt><code>--plaintext</code></dt>
+<dd><span id="index-_002d_002dplaintext"></span>
+<span id="index-Plain-text-output-with-_002d_002dplaintext"></span>
+<span id="index-ASCII-text-output-with-_002d_002dplaintext"></span>
+<span id="index-Generating-plain-text-files-with-_002d_002dplaintext"></span>
+<span id="index-Node-separators_002c-omitting-with-_002d_002dplaintext"></span>
+<span id="index-Menus_002c-omitting-with-_002d_002dplaintext"></span>
+<span id="index-INSTALL-file_002c-generating"></span>
+<p>Output a plain text file (rather than Info): do not include menus or
+node separator lines in the output.  This results in a straightforward
+plain text file that you can (for example) send in email without
+complications, or include in a distribution (for example, an
+<samp>INSTALL</samp> file).
+</p>
+<p>With this option, <code>@setfilename</code> is ignored and the output goes
+to standard output by default; this can be overridden with <samp>-o</samp>.
+</p>
+</dd>
+<dt><code>--ps</code></dt>
+<dd><span id="index-_002d_002dps"></span>
+<p>Generate a PostScript file using <code>texi2dvi --ps</code>, rather than
+Info (see <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>).
+</p>
+</dd>
+<dt><code>--set-customization-variable <var>var</var>=<var>value</var></code></dt>
+<dt><code>-c <var>var</var>=<var>value</var></code></dt>
+<dd><span id="index-_002d_002dset_002dcustomization_002dvariable-var_003dvalue"></span>
+<span id="index-_002dc-var_003dvalue"></span>
+<p>Set the customization variable <var>var</var> to <var>value</var>.  The <code>=</code>
+is optional, but both <var>var</var> and <var>value</var> must be quoted to the
+shell as necessary so the result is a single word.  Many aspects of
+<code>texi2any</code> behavior and output may be controlled by
+customization variables, beyond what can be set in the document by
+@-commands and with other command line switches.  See <a href="Customization-Variables.html">Customization Variables</a>.
+</p>
+</dd>
+<dt><code>--split=<var>how</var></code></dt>
+<dt><code>--no-split</code></dt>
+<dd><span id="index-_002d_002dsplit_003dhow"></span>
+<span id="index-_002d_002dno_002dsplit"></span>
+<span id="index-Splitting-of-output-files"></span>
+<span id="index-Output-file-splitting"></span>
+<span id="Splitting-Output"></span><p>When generating Info, by default large output files are split into
+smaller subfiles, of approximately 300k bytes.  When generating HTML,
+by default each output file contains one node (see <a href="Generating-HTML.html">Generating HTML</a>).  <samp>--no-split</samp> suppresses this splitting of the output.
+</p>
+<p>Alternatively, <samp>--split=<var>how</var></samp> may be used to specify at
+which level the HTML output should be split.  The possible values for
+<var>how</var> are:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>chapter</samp>&rsquo;</dt>
+<dd><p>The output is split at <code>@chapter</code> and other sectioning
+@-commands at this level (<code>@appendix</code>, etc.).
+</p>
+</dd>
+<dt>&lsquo;<samp>section</samp>&rsquo;</dt>
+<dd><p>The output is split at <code>@section</code> and similar.
+</p>
+</dd>
+<dt>&lsquo;<samp>node</samp>&rsquo;</dt>
+<dd><p>The output is split at every node.  This is the default.
+</p></dd>
+</dl>
+
+<p>Plain text output can be split similarly to HTML.  This may be useful
+for extracting sections from a Texinfo document and making them
+available as separate files.
+</p>
+</dd>
+<dt><code>--split-size=<var>num</var></code></dt>
+<dd><span id="index-_002d_002dsplit_002dsize_003dnum"></span>
+<p>Keep Info files to at most <var>num</var> characters if possible; default
+is 300,000.  (However, a single node will never be split across Info
+files.)
+</p>
+</dd>
+<dt><code>--transliterate-file-names</code></dt>
+<dd><span id="index-_002d_002dtransliterate_002dfile_002dnames"></span>
+<p>Enable transliteration of 8-bit characters in node names for the
+purpose of file name creation.  See <a href="HTML-Xref-8_002dbit-Character-Expansion.html">HTML Xref 8-bit Character Expansion</a>.
+</p>
+</dd>
+<dt><code>-U <var>var</var></code></dt>
+<dd><p>Cause <var>var</var> to be undefined.  This is equivalent to <code>@clear
+<var>var</var></code> in the Texinfo file (see <a href="_0040set-_0040clear-_0040value.html"><code>@set @clear @value</code></a>).
+</p>
+</dd>
+<dt><code>--verbose</code></dt>
+<dd><span id="index-_002d_002dverbose"></span>
+<p>Cause <code>makeinfo</code> to display messages saying what it is doing.
+Normally, <code>makeinfo</code> only outputs messages if there are errors or
+warnings.
+</p>
+</dd>
+<dt><code>--version</code></dt>
+<dt><code>-V</code></dt>
+<dd><span id="index-_002d_002dversion_002c-for-texi2any"></span>
+<span id="index-_002dV"></span>
+<p>Print the version number, then exit successfully.
+</p>
+</dd>
+<dt><code>--Xopt <var>str</var></code></dt>
+<dd><span id="index-_002d_002dXopt-str"></span>
+<p>Pass <var>str</var> (a single shell word) to <code>texi2dvi</code>; may be
+repeated (see <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>).
+</p>
+</dd>
+<dt><code>--xml</code></dt>
+<dd><span id="index-_002d_002dxml"></span>
+<p>Generate Texinfo XML output (rather than Info).
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="texi2any-Environment-Variables.html" accesskey="n" rel="next"><code>texi2any</code> Environment Variables</a>, Previous: <a href="Reference-Implementation.html" accesskey="p" rel="prev">Reference Implementation</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Heading Generation (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Heading Generation (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Heading Generation (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Titlepage-_0026-Copyright-Page.html" rel="up" title="Titlepage &amp; Copyright Page">
+<link href="Contents.html" rel="next" title="Contents">
+<link href="Copyright.html" rel="prev" title="Copyright">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Heading-Generation"></span><div class="header">
+<p>
+Previous: <a href="Copyright.html" accesskey="p" rel="prev">Copyright</a>, Up: <a href="Titlepage-_0026-Copyright-Page.html" accesskey="u" rel="up">Titlepage &amp; Copyright Page</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Heading-Generation-1"></span><h4 class="subsection">3.4.5 Heading Generation</h4>
+
+<span id="end-titlepage"></span><span id="index-Headings_002c-page_002c-begin-to-appear"></span>
+<span id="index-Titlepage-end-starts-headings"></span>
+<span id="index-End-titlepage-starts-headings"></span>
+<span id="index-Generating-page-headings"></span>
+
+<p>Like all <code>@end</code> commands (see <a href="Quotations-and-Examples.html">Quotations and Examples</a>), the
+<code>@end titlepage</code> command must be written at the beginning of a
+line by itself, with only one space between the <code>@end</code> and the
+<code>titlepage</code>.  It not only marks the end of the title and
+copyright pages, but also causes TeX to start generating page
+headings and page numbers.
+</p>
+<p>Texinfo has two standard page heading formats, one for documents
+printed on one side of each sheet of paper (single-sided printing),
+and the other for documents printed on both sides of each sheet
+(double-sided printing).
+</p>
+<p>In full generality, you can control the headings in different ways:
+</p>
+<ul>
+<li> The conventional way is to write a <code>@setchapternewpage</code> command
+before the title page commands, if required, and then have the
+<code>@end titlepage</code> command start generating page headings in the
+manner desired.
+
+<p>Most documents are formatted with the standard single-sided or
+double-sided headings, (sometimes) using <code>@setchapternewpage
+odd</code> for double-sided printing and (almost always) no
+<code>@setchapternewpage</code> command for single-sided printing
+(see <a href="_0040setchapternewpage.html"><code>@setchapternewpage</code></a>).
+</p>
+</li><li> Alternatively, you can use the <code>@headings</code> command to prevent
+page headings from being generated or to start them for either single
+or double-sided printing.  Write a <code>@headings</code> command
+immediately after the <code>@end titlepage</code> command.  To turn off
+headings, write <code>@headings off</code>.  See <a href="_0040headings.html"><code>@headings</code></a>.
+
+</li><li> Or, you may specify your own page heading and footing format.
+See <a href="Headings.html">Headings</a>.
+</li></ul>
+
+
+
+
+
+</body>
+</html>

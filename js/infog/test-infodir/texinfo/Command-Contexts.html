@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Command Contexts (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Command Contexts (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Command Contexts (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="_0040_002dCommand-Details.html" rel="up" title="@-Command Details">
+<link href="Obsolete-_0040_002dCommands.html" rel="next" title="Obsolete @-Commands">
+<link href="Command-List.html" rel="prev" title="Command List">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Command-Contexts"></span><div class="header">
+<p>
+Next: <a href="Obsolete-_0040_002dCommands.html" accesskey="n" rel="next">Obsolete @-Commands</a>, Previous: <a href="Command-List.html" accesskey="p" rel="prev">Command List</a>, Up: <a href="_0040_002dCommand-Details.html" accesskey="u" rel="up">@-Command Details</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040_002dCommand-Contexts"></span><h3 class="section">A.3 @-Command Contexts</h3>
+
+<span id="index-Contexts_002c-of-_0040_002dcommands"></span>
+
+<p>Here we describe approximately which @-commands can be used in which
+contexts.  It not exhaustive or meant to be a complete reference.
+Discrepancies between the information here and the <code>makeinfo</code> or
+TeX implementations are most likely to be resolved in favor of the
+implementation.
+</p>
+<p>By <em>general text</em> below, we mean anything except sectioning and
+other such outer-level document commands, such as <code>@section</code>,
+<code>@node</code>, and <code>@setfilename</code>.
+</p>
+<p><code>@c</code>, <code>@comment</code> and <code>@if ... @end if</code> conditional
+commands may appear anywhere (except the conditionals must still be on
+lines by themselves).  <code>@caption</code> may only appear in
+<code>@float</code> but may contain general text.  <code>@footnote</code>
+content likewise.
+</p>
+<p>@-commands with braces marking text (such as <code>@strong</code>,
+<code>@sc</code>, <code>@asis</code>) may contain raw formatter commands such as
+<code>@html</code> but no other block commands (other commands terminated
+by <code>@end</code>) and may not be split across paragraphs, but may
+otherwise contain general text.
+</p>
+<p>In addition to the block command restriction, on <code>@center</code>,
+<code>@exdent</code> and <code>@item</code> in <code>@table</code> lines, @-commands
+that makes only sense in a paragraph are not accepted, such as
+<code>@indent</code>.
+</p>
+<p>In addition to the above, sectioning commands cannot contain
+<code>@anchor</code>, <code>@footnote</code> or <code>@verb</code>.
+</p>
+<p>In addition to the above, remaining commands (<code>@node</code>,
+<code>@anchor</code>, <code>@printindex</code>, <code>@ref</code>, <code>@math</code>,
+<code>@cindex</code>, <code>@url</code>, <code>@image</code>, and so on) cannot
+contain cross-reference commands (<code>@ref</code>, <code>@xref</code>,
+<code>@pxref</code> and <code>@inforef</code>).  In one last addition,
+<code>@shortcaption</code> may only appear inside <code>@float</code>.
+</p>
+<p>For precise and complete information, we suggest looking into the
+test suite in the sources, which exhaustively tries combinations.
+</p>
+
+
+
+
+</body>
+</html>

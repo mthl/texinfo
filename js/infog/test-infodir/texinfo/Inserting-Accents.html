@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inserting Accents (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Inserting Accents (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Inserting Accents (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Insertions.html" rel="up" title="Insertions">
+<link href="Inserting-Quotation-Marks.html" rel="next" title="Inserting Quotation Marks">
+<link href="_0040dmn.html" rel="prev" title="@dmn">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Inserting-Accents"></span><div class="header">
+<p>
+Next: <a href="Inserting-Quotation-Marks.html" accesskey="n" rel="next">Inserting Quotation Marks</a>, Previous: <a href="Inserting-Space.html" accesskey="p" rel="prev">Inserting Space</a>, Up: <a href="Insertions.html" accesskey="u" rel="up">Insertions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Inserting-Accents-1"></span><h3 class="section">12.4 Inserting Accents</h3>
+
+<span id="index-Inserting-accents"></span>
+<span id="index-Accents_002c-inserting"></span>
+<span id="index-Floating-accents_002c-inserting"></span>
+
+<p>Here is a table with the commands Texinfo provides for inserting
+floating accents.  They all need an argument, the character to accent,
+which can either be given in braces as usual (<code>@'{e}</code>), or, as
+a special case, the braces can be omitted, in which case the argument
+is the next character (<code>@'e</code>).  This is to make the source as
+convenient as possible to type and read, since accented characters are
+very common in some languages.
+</p>
+<p>If the command is alphabetic, such as <code>@dotaccent</code>, then there
+must be a space between the command name and argument if braces are
+not used.  If the command is non-alphabetic, such as <code>@'</code>, then
+there must <em>not</em> be a space; the argument is the very next
+character.
+</p>
+<p>Exception: the argument to <code>@tieaccent</code> must be enclosed in
+braces (since it is two characters instead of one).
+</p>
+<p>To get the true accented characters output in Info, not just the ASCII
+transliterations, it is necessary to specify <code>@documentencoding</code>
+with an encoding which supports the required characters
+(see <a href="_0040documentencoding.html"><code>@documentencoding</code></a>).  In this case, you can also use
+non-ASCII (e.g., pre-accented) characters in the source file.
+</p>
+<span id="index-_0022-_0028umlaut-accent_0029"></span>
+<span id="index-Umlaut-accent"></span>
+<span id="index-_0027-_0028acute-accent_0029"></span>
+<span id="index-Acute-accent"></span>
+<span id="index-_003d-_0028macron-accent_0029"></span>
+<span id="index-Macron-accent"></span>
+<span id="index-_005e-_0028circumflex-accent_0029"></span>
+<span id="index-Circumflex-accent"></span>
+<span id="index-_0060-_0028grave-accent_0029"></span>
+<span id="index-Grave-accent"></span>
+<span id="index-_007e-_0028tilde-accent_0029"></span>
+<span id="index-Tilde-accent"></span>
+<span id="index-_002c-_0028cedilla-accent_0029"></span>
+<span id="index-Cedilla-accent"></span>
+<span id="index-dotaccent"></span>
+<span id="index-Dot-accent"></span>
+<span id="index-H-_0028Hungarian-umlaut-accent_0029"></span>
+<span id="index-Hungarian-umlaut-accent"></span>
+<span id="index-ogonek"></span>
+<span id="index-Ogonek-diacritic"></span>
+<span id="index-ringaccent"></span>
+<span id="index-Ring-accent"></span>
+<span id="index-tieaccent"></span>
+<span id="index-Tie_002dafter-accent"></span>
+<span id="index-u-_0028breve-accent_0029"></span>
+<span id="index-Breve-accent"></span>
+<span id="index-ubaraccent"></span>
+<span id="index-Underbar-accent"></span>
+<span id="index-udotaccent"></span>
+<span id="index-Underdot-accent"></span>
+<span id="index-v-_0028caron_0029"></span>
+<span id="index-Hacek-accent"></span>
+<span id="index-Check-accent"></span>
+<span id="index-Caron"></span>
+<table>
+<thead><tr><th>Command</th><th>Output</th><th>What</th></tr></thead>
+<tr><td><tt>@&quot;o</tt></td><td>&ouml;</td><td>umlaut accent</td></tr>
+<tr><td><tt>@'o</tt></td><td>&oacute;</td><td>acute accent</td></tr>
+<tr><td><tt>@,{c}</tt></td><td>&ccedil;</td><td>cedilla accent</td></tr>
+<tr><td><tt>@=o</tt></td><td>&#333;</td><td>macron/overbar accent</td></tr>
+<tr><td><tt>@^o</tt></td><td>&ocirc;</td><td>circumflex accent</td></tr>
+<tr><td><tt>@`o</tt></td><td>&ograve;</td><td>grave accent</td></tr>
+<tr><td><tt>@~o</tt></td><td>&otilde;</td><td>tilde accent</td></tr>
+<tr><td><tt>@dotaccent{o}</tt></td><td>&#559;</td><td>overdot accent</td></tr>
+<tr><td><tt>@H{o}</tt></td><td>&#337;</td><td>long Hungarian umlaut</td></tr>
+<tr><td><tt>@ogonek{a}</tt></td><td>&#261;</td><td>ogonek</td></tr>
+<tr><td><tt>@ringaccent{o}</tt></td><td>o*</td><td>ring accent</td></tr>
+<tr><td><tt>@tieaccent{oo}</tt></td><td>oo[</td><td>tie-after accent</td></tr>
+<tr><td><tt>@u{o}</tt></td><td>&#335;</td><td>breve accent</td></tr>
+<tr><td><tt>@ubaraccent{o}</tt></td><td>o_</td><td>underbar accent</td></tr>
+<tr><td><tt>@udotaccent{o}</tt></td><td>&#7885;</td><td>underdot accent</td></tr>
+<tr><td><tt>@v{o}</tt></td><td>&#466;</td><td>caron/hacek/check accent</td></tr>
+</table>
+
+<p>This table lists the Texinfo commands for inserting other characters
+commonly used in languages other than English.
+</p>
+<span id="index-questiondown"></span>
+<span id="index-_00bf"></span>
+<span id="index-exclamdown"></span>
+<span id="index-_00a1"></span>
+<span id="index-aa-1"></span>
+<span id="index-aa"></span>
+<span id="index-AA-1"></span>
+<span id="index-AA"></span>
+<span id="index-ae-1"></span>
+<span id="index-ae"></span>
+<span id="index-AE-1"></span>
+<span id="index-AE"></span>
+<span id="index-Icelandic"></span>
+<span id="index-Eth"></span>
+<span id="index-dh"></span>
+<span id="index-d"></span>
+<span id="index-DH"></span>
+<span id="index-D"></span>
+<span id="index-dotless"></span>
+<span id="index-i-_0028dotless-i_0029"></span>
+<span id="index-j-_0028dotless-j_0029"></span>
+<span id="index-Dotless-i_002c-j"></span>
+<span id="index-l-1"></span>
+<span id="index-l"></span>
+<span id="index-L-1"></span>
+<span id="index-L"></span>
+<span id="index-o-1"></span>
+<span id="index-o"></span>
+<span id="index-O-1"></span>
+<span id="index-O"></span>
+<span id="index-oe-1"></span>
+<span id="index-oe"></span>
+<span id="index-OE-1"></span>
+<span id="index-OE"></span>
+<span id="index-Romance-ordinals"></span>
+<span id="index-Ordinals_002c-Romance"></span>
+<span id="index-Feminine-ordinal"></span>
+<span id="index-ordf"></span>
+<span id="index-_00aa"></span>
+<span id="index-Masculine-ordinal"></span>
+<span id="index-ordm"></span>
+<span id="index-_00ba"></span>
+<span id="index-ss-1"></span>
+<span id="index-ss"></span>
+<span id="index-Es_002dzet"></span>
+<span id="index-Sharp-S"></span>
+<span id="index-German-S"></span>
+<span id="index-Thorn"></span>
+<span id="index-th-1"></span>
+<span id="index-th"></span>
+<span id="index-TH-1"></span>
+<span id="index-TH"></span>
+<table>
+<tr><td><tt>@exclamdown{}</tt></td><td>&iexcl;</td><td>upside-down !</td></tr>
+<tr><td><tt>@questiondown{}</tt></td><td>&iquest;</td><td>upside-down ?</td></tr>
+<tr><td><tt>@aa{} @AA{}</tt></td><td>&aring; &Aring;</td><td>a,A with circle</td></tr>
+<tr><td><tt>@ae{} @AE{}</tt></td><td>&aelig; &AElig;</td><td>ae,AE ligatures</td></tr>
+<tr><td><tt>@dh{} @DH{}</tt></td><td>&eth; &ETH;</td><td>Icelandic eth</td></tr>
+<tr><td><tt>@dotless{i}</tt></td><td>i</td><td>dotless i</td></tr>
+<tr><td><tt>@dotless{j}</tt></td><td>j</td><td>dotless j</td></tr>
+<tr><td><tt>@l{} @L{}</tt></td><td>&#322; &#321;</td><td>suppressed-L,l</td></tr>
+<tr><td><tt>@o{} @O{}</tt></td><td>&oslash; &Oslash;</td><td>O,o with slash</td></tr>
+<tr><td><tt>@oe{} @OE{}</tt></td><td>&oelig; &OElig;</td><td>oe,OE ligatures</td></tr>
+<tr><td><tt>@ordf{} @ordm{}</tt></td><td>&ordf; &ordm;</td><td>Spanish ordinals</td></tr>
+<tr><td><tt>@ss{}</tt></td><td>&szlig;</td><td>es-zet or sharp S</td></tr>
+<tr><td><tt>@th{} @TH{}</tt></td><td>&thorn; &THORN;</td><td>Icelandic thorn</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Inserting-Quotation-Marks.html" accesskey="n" rel="next">Inserting Quotation Marks</a>, Previous: <a href="Inserting-Space.html" accesskey="p" rel="prev">Inserting Space</a>, Up: <a href="Insertions.html" accesskey="u" rel="up">Insertions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

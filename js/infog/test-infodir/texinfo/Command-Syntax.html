@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Command Syntax (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Command Syntax (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Command Syntax (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="_0040_002dCommand-Details.html" rel="up" title="@-Command Details">
+<link href="Command-List.html" rel="next" title="Command List">
+<link href="_0040_002dCommand-Details.html" rel="prev" title="@-Command Details">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Command-Syntax"></span><div class="header">
+<p>
+Next: <a href="Command-List.html" accesskey="n" rel="next">Command List</a>, Up: <a href="_0040_002dCommand-Details.html" accesskey="u" rel="up">@-Command Details</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040_002dCommand-Syntax"></span><h3 class="section">A.1 @-Command Syntax</h3>
+<span id="index-_0040_002dcommand-syntax"></span>
+<span id="index-Syntax_002c-of-_0040_002dcommands"></span>
+<span id="index-Command-syntax"></span>
+
+<p>Texinfo has the following types of @-command:
+</p>
+<dl compact="compact">
+<dt>1. Brace commands</dt>
+<dd><p>These commands start with @ followed by a letter or a word, followed by an
+argument within braces.  For example, the command <code>@dfn</code> indicates
+the introductory or defining use of a term; it is used as follows: &lsquo;<samp>In
+Texinfo, @@-commands are @dfn{mark-up} commands.</samp>&rsquo;
+</p>
+</dd>
+<dt>2. Line commands</dt>
+<dd><p>These commands occupy an entire line.  The line starts with @,
+followed by the name of the command (a word); for example, <code>@center</code>
+or <code>@cindex</code>.  If no argument is needed, the word is followed by
+the end of the line.  If there is an argument, it is separated from
+the command name by a space.  Braces are not used.
+</p>
+</dd>
+<dt>3. Block commands</dt>
+<dd><p>These commands are written at the start of a line, with general text on
+following lines, terminated by a matching <code>@end</code> command on a
+line of its own.  For example, <code>@example</code>, then the lines of a
+coding example, then <code>@end example</code>.  Some of these block commands
+take arguments as line commands do; for example, <code>@enumerate A</code>
+opening an environment terminated by <code>@end enumerate</code>.  Here
+&lsquo;<samp>A</samp>&rsquo; is the argument.
+</p>
+</dd>
+<dt>4. Symbol insertion commands with no arguments</dt>
+<dd><p>These commands start with @ followed by a word followed by a
+left and right- brace.  These commands insert special symbols in
+the document; they do not take arguments.  Some examples:
+<code>@dots{}</code> &rArr; &lsquo;<samp>&hellip;</samp>&rsquo;, <code>@equiv{}</code>
+&rArr; &lsquo;<samp>&equiv;</samp>&rsquo;, <code>@TeX{}</code> &rArr; &lsquo;TeX&rsquo;, and
+<code>@bullet{}</code> &rArr; &lsquo;<samp>&bull;</samp>&rsquo;.
+</p>
+</dd>
+<dt>5. Non-alphabetic commands</dt>
+<dd><p>The names of commands in all of the above categories consist of
+alphabetic characters, almost entirely in lower-case.  Unlike those, the
+non-alphabetic commands commands consist of an @ followed by a
+punctuation mark or other character that is not part of the Latin
+alphabet.  Non-alphabetic commands are almost always part of text
+within a paragraph.  The non-alphabetic commands include <code>@@</code>,
+<code>@{</code>, <code>@}</code>, <code>@.</code>, <code>@<kbd>SPACE</kbd></code>, and most of
+the accent commands.
+</p>
+</dd>
+<dt>6. Miscellaneous commands</dt>
+<dd><p>There are a handful of commands that don&rsquo;t fit into any of the above
+categories; for example, the obsolete command <code>@refill</code>, which is
+always used at the end of a paragraph immediately following the final
+period or other punctuation character.  <code>@refill</code> takes no
+argument and does not require braces.  Likewise, <code>@tab</code> used in a
+<code>@multitable</code> block does not take arguments, and is not followed 
+by braces.
+</p></dd>
+</dl>
+
+<span id="index-Braces-and-argument-syntax"></span>
+<p>Thus, the alphabetic commands fall into classes that have
+different argument syntaxes.  You cannot tell to which class a command
+belongs by the appearance of its name, but you can tell by the
+command&rsquo;s meaning: if the command stands for a glyph, it is in
+class 4 and does not require an argument; if it makes sense to use the
+command among other text as part of a paragraph, the command
+is in class 1 and must be followed by an argument in braces.  The
+non-alphabetic commands, such as <code>@:</code>, are exceptions to the
+rule; they do not need braces.
+</p>
+<p>The purpose of having different syntax for commands is to make Texinfo
+files easier to read, and also to help the GNU Emacs paragraph and
+filling commands work properly.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Command-List.html" accesskey="n" rel="next">Command List</a>, Up: <a href="_0040_002dCommand-Details.html" accesskey="u" rel="up">@-Command Details</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>GNU Sample Texts (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="GNU Sample Texts (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="GNU Sample Texts (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Sample-Texinfo-Files.html" rel="up" title="Sample Texinfo Files">
+<link href="Verbatim-Copying-License.html" rel="next" title="Verbatim Copying License">
+<link href="Short-Sample-Texinfo-File.html" rel="prev" title="Short Sample Texinfo File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="GNU-Sample-Texts"></span><div class="header">
+<p>
+Next: <a href="Verbatim-Copying-License.html" accesskey="n" rel="next">Verbatim Copying License</a>, Previous: <a href="Short-Sample-Texinfo-File.html" accesskey="p" rel="prev">Short Sample Texinfo File</a>, Up: <a href="Sample-Texinfo-Files.html" accesskey="u" rel="up">Sample Texinfo Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="GNU-Sample-Texts-1"></span><h3 class="section">C.2 GNU Sample Texts</h3>
+
+<span id="index-GNU-sample-texts"></span>
+<span id="index-Sample-texts_002c-GNU"></span>
+<span id="index-Full-texts_002c-GNU"></span>
+
+<p>Following is a sample Texinfo document with the full texts that should
+be used (adapted as necessary) in GNU manuals.
+</p>
+<p>As well as the legal texts, it also serves as a practical example of how
+many elements in a GNU system can affect the manual.  If you&rsquo;re not
+familiar with all these different elements, don&rsquo;t worry.  They&rsquo;re not
+required and a perfectly good manual can be written without them.
+They&rsquo;re included here nonetheless because many manuals do (or could)
+benefit from them.
+</p>
+<p>See <a href="Short-Sample.html">Short Sample</a>, for a minimal example of a Texinfo file.
+See <a href="Beginning-and-Ending-a-File.html">Beginning and Ending a File</a>, for a full explanation of that
+minimal example.
+</p>
+<p>Here are some notes on the example:
+</p>
+<ul>
+<li> <span id="index-_0024Id"></span>
+<span id="index-CVS-_0024Id"></span>
+<span id="index-RCS-_0024Id"></span>
+<span id="index-Documentation-identification"></span>
+<span id="index-Identification-of-documentation"></span>
+The &lsquo;<samp>$Id:</samp>&rsquo; comment is for the CVS
+(<a href="http://www.nongnu.org/cvs/">http://www.nongnu.org/cvs/</a>), RCS (see <cite><a href="https://www.gnu.org/software/rcs/manual/html_node/index.html#Top">Revision
+Control System</a></cite>) and other version control systems, which expand it
+into a string such as:
+
+<div class="example">
+<pre class="example">$Id$
+</pre></div>
+
+<p>(This is potentially useful in all sources that use version control,
+not just manuals.)  You may wish to include the &lsquo;<samp>$Id:</samp>&rsquo; comment in
+the <code>@copying</code> text, if you want a completely unambiguous
+reference to the documentation source version.
+</p>
+<p>If you want to literally write <tt>$<!-- /@w -->Id$</tt>, use <code>@w</code>:
+<code>@w{$}Id$</code>.  Unfortunately, this technique does not work in
+plain text output, where it&rsquo;s not clear what should be done.
+</p>
+</li><li> <span id="index-automake_002c-and-version-info"></span>
+<span id="index-UPDATED-Automake-variable"></span>
+<span id="index-VERSION-Automake-variable"></span>
+<span id="index-time_002dstamp_002eel"></span>
+The <samp>version.texi</samp> in the <code>@include</code> command is maintained
+automatically by Automake (see <cite><a href="https://www.gnu.org/software/automake/manual/html_node/index.html#Top">GNU Automake</a></cite>).  It
+sets the &lsquo;<samp>VERSION</samp>&rsquo; and &lsquo;<samp>UPDATED</samp>&rsquo; values used elsewhere.  If
+your distribution doesn&rsquo;t use Automake, but you do use Emacs, you may
+find the time-stamp.el package helpful (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Time-Stamps.html#Time-Stamps">Time Stamps</a> in <cite>The GNU Emacs Manual</cite>).
+
+</li><li> The <code>@syncodeindex</code> command reflects the recommendation to use
+only one index where possible, to make it easier for readers to look up
+index entries.
+
+</li><li> The <code>@dircategory</code> is for constructing the Info directory.
+See <a href="Installing-Dir-Entries.html">Installing Dir Entries</a>, which includes a variety of recommended
+category names.
+
+</li><li> The &lsquo;Invoking&rsquo; node is a GNU standard to help users find the basic
+information about command-line usage of a given program.  See <a href="https://www.gnu.org/prep/standards/html_node/Manual-Structure-Details.html#Manual-Structure-Details">Manual
+Structure Details</a> in <cite>GNU Coding Standards</cite>.
+
+</li><li> <span id="index-GNU-Free-Documentation-License_002c-including-entire"></span>
+<span id="index-Free-Documentation-License_002c-including-entire"></span>
+It is best to include the entire GNU Free Documentation License in a GNU
+manual, unless the manual is only a few pages long.  Of course this
+sample is even shorter than that, but it includes the FDL anyway in
+order to show one conventional way to do so.  The <samp>fdl.texi</samp> file
+is available on the GNU machines and in the Texinfo and other GNU
+source distributions.
+
+<p>The FDL provides for omitting itself under certain conditions, but in
+that case the sample texts given here have to be modified.  See <a href="GNU-Free-Documentation-License.html">GNU Free Documentation License</a>.
+</p>
+</li><li> If the FSF is not the copyright holder, then use the appropriate name.
+
+</li><li> If your manual is published on paper by the FSF or is longer than 400
+pages, you should include the standard FSF cover texts (see <a href="https://www.gnu.org/prep/maintain/html_node/License-Notices-for-Documentation.html#License-Notices-for-Documentation">License
+Notices for Documentation</a> in <cite>GNU Maintainer Information</cite>).
+
+</li><li> For documents that express your personal views, feelings or
+experiences, it is more appropriate to use a license permitting only
+verbatim copying, rather than the FDL.  See <a href="Verbatim-Copying-License.html">Verbatim Copying License</a>.
+
+</li></ul>
+
+<p>Here is the sample document:
+</p>
+<pre class="verbatim">\input texinfo   @c -*-texinfo-*-
+@comment $Id@w{$}
+@comment %**start of header
+@include version.texi
+@settitle GNU Sample @value{VERSION}
+@syncodeindex pg cp
+@comment %**end of header
+@copying
+This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}),
+which is an example in the Texinfo documentation.
+
+Copyright @copyright{} 2016 Free Software Foundation, Inc.
+
+@quotation
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled
+``GNU Free Documentation License''.
+@end quotation
+@end copying
+
+@dircategory Texinfo documentation system
+@direntry
+* sample: (sample)Invoking sample.
+@end direntry
+
+@titlepage
+@title GNU Sample
+@subtitle for version @value{VERSION}, @value{UPDATED}
+@author A.U. Thor (@email{bug-sample@@gnu.org})
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+
+@contents
+
+@ifnottex
+@node Top
+@top GNU Sample
+
+This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}).
+@end ifnottex
+
+@menu
+* Invoking sample::
+* GNU Free Documentation License::
+* Index::
+@end menu
+
+
+@node Invoking sample
+@chapter Invoking sample
+
+@pindex sample
+@cindex invoking @command{sample}
+
+This is a sample manual.  There is no sample program to
+invoke, but if there were, you could see its basic usage
+and command line options here.
+
+
+@node GNU Free Documentation License
+@appendix GNU Free Documentation License
+
+@include fdl.texi
+
+
+@node Index
+@unnumbered Index
+
+@printindex cp
+
+@bye
+</pre>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Verbatim-Copying-License.html" accesskey="n" rel="next">Verbatim Copying License</a>, Previous: <a href="Short-Sample-Texinfo-File.html" accesskey="p" rel="prev">Short Sample Texinfo File</a>, Up: <a href="Sample-Texinfo-Files.html" accesskey="u" rel="up">Sample Texinfo Files</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

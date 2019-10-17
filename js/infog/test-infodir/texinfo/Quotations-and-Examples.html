@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Quotations and Examples (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Quotations and Examples (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Quotations and Examples (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Block-Enclosing-Commands.html" rel="next" title="Block Enclosing Commands">
+<link href="Fonts.html" rel="prev" title="Fonts">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Quotations-and-Examples"></span><div class="header">
+<p>
+Next: <a href="Lists-and-Tables.html" accesskey="n" rel="next">Lists and Tables</a>, Previous: <a href="Marking-Text.html" accesskey="p" rel="prev">Marking Text</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Quotations-and-Examples-1"></span><h2 class="chapter">8 Quotations and Examples</h2>
+
+<p>Quotations and examples are blocks of text consisting of one or more
+whole paragraphs that are set off from the bulk of the text and
+treated differently.  They are usually indented in the output.
+</p>
+<span id="index-end"></span>
+<p>In Texinfo, you always begin a quotation or example by writing an
+@-command at the beginning of a line by itself, and end it by writing
+an <code>@end</code> command that is also at the beginning of a line by
+itself.  For instance, you begin an example by writing
+<code>@example</code> by itself at the beginning of a line and end the
+example by writing <code>@end example</code> on a line by itself, at the
+beginning of that line, and with only one space between the
+<code>@end</code> and the <code>example</code>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Block-Enclosing-Commands.html" accesskey="1">Block Enclosing Commands</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Different constructs for different purposes.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040quotation.html" accesskey="2"><code>@quotation</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing a quotation.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040indentedblock.html" accesskey="3"><code>@indentedblock</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Block of text indented on left.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040example.html" accesskey="4"><code>@example</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing an example in a fixed-width font.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040verbatim.html" accesskey="5"><code>@verbatim</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing a verbatim example.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040lisp.html" accesskey="6"><code>@lisp</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Illustrating Lisp code.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040display.html" accesskey="7"><code>@display</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing an example in the current font.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040format.html" accesskey="8"><code>@format</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Writing an example without narrowed margins.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040exdent.html" accesskey="9"><code>@exdent</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Undo indentation on a line.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040flushleft-_0040flushright.html"><code>@flushleft @flushright</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Pushing text flush left or flush right.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040raggedright.html"><code>@raggedright</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Avoiding justification on the right.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040noindent.html"><code>@noindent</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Preventing paragraph indentation.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040indent.html"><code>@indent</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Forcing paragraph indentation.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040cartouche.html"><code>@cartouche</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Drawing rounded rectangles around text.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040small_2026.html"><code>@small&hellip;</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Examples in a smaller font.
+</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Lists-and-Tables.html" accesskey="n" rel="next">Lists and Tables</a>, Previous: <a href="Marking-Text.html" accesskey="p" rel="prev">Marking Text</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

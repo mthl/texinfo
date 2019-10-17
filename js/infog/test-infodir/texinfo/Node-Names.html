@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Node Names (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Node Names (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Node Names (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Nodes.html" rel="up" title="Nodes">
+<link href="Writing-a-Node.html" rel="next" title="Writing a Node">
+<link href="Texinfo-Document-Structure.html" rel="prev" title="Texinfo Document Structure">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Node-Names"></span><div class="header">
+<p>
+Next: <a href="Writing-a-Node.html" accesskey="n" rel="next">Writing a Node</a>, Previous: <a href="Texinfo-Document-Structure.html" accesskey="p" rel="prev">Texinfo Document Structure</a>, Up: <a href="Nodes.html" accesskey="u" rel="up">Nodes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Choosing-Node-Names"></span><h3 class="section">4.2 Choosing Node Names</h3>
+
+<span id="index-Node-names_002c-choosing"></span>
+<p>The name of a node identifies the node.  For all the details of node
+names, see <a href="Node-Line-Requirements.html">Node Line Requirements</a>).
+</p>
+<span id="Node-Line-Tips"></span><p>Here are some suggestions for node names:
+</p>
+<ul>
+<li> Try to pick node names that are informative but short.
+
+<p>In the Info file, the file name, node name, and pointer names are all
+inserted on one line, which may run into the right edge of the window.
+(This does not cause a problem with Info, but is ugly.)
+</p>
+</li><li> Try to pick node names that differ from each other near the beginnings
+of their names.  This way, it is easy to use automatic name completion in
+Info.
+
+</li><li> Conventionally, node names are capitalized in the same way as section
+and chapter titles.  In this manual, initial and significant words are
+capitalized; others are not.  In other manuals, just initial words and
+proper nouns are capitalized.  Either way is fine; we recommend just
+being consistent.
+
+</li><li> In HTML output, any characters in the node name other than plain ASCII 
+letters, numbers or spaces will be changed in the file name.  
+(See <a href="HTML-Xref-Node-Name-Expansion.html">HTML Xref Node Name Expansion</a>.)
+This can make the URL&rsquo;s for the pages in your manual less user-friendly;
+for example in this manual the &lsquo;<samp>@dots</samp>&rsquo; node is output as
+<samp>__0040dots.html</samp>.
+</li></ul>
+
+<p>Because node names are used in cross-references, it is not desirable
+to casually change them once published.  Such name changes invalidate
+references from other manuals, from mail archives, and so on.
+</p>
+<p>The pointers from a given node enable you to reach other nodes and
+consist simply of the names of those nodes.  The pointers are usually
+not specified explicitly, as <code>makeinfo</code> can determine them
+(see <a href="makeinfo-Pointer-Creation.html"><code>makeinfo</code> Pointer Creation</a>).
+</p>
+<p>Normally, a node&rsquo;s &lsquo;Up&rsquo; pointer contains the name of the node whose
+menu mentions that node.  The node&rsquo;s &lsquo;Next&rsquo; pointer contains the name
+of the node that follows the present node in that menu and its
+&lsquo;Previous&rsquo; pointer contains the name of the node that precedes it in
+that menu.  When a node&rsquo;s &lsquo;Previous&rsquo; node is the same as its &lsquo;Up&rsquo;
+node, both pointers name the same node.
+</p>
+<p>Usually, the first node of a Texinfo file is the &lsquo;Top&rsquo; node, and its
+&lsquo;Up&rsquo; pointer points to the <samp>dir</samp> file, which contains the main menu
+for all of Info.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Writing-a-Node.html" accesskey="n" rel="next">Writing a Node</a>, Previous: <a href="Texinfo-Document-Structure.html" accesskey="p" rel="prev">Texinfo Document Structure</a>, Up: <a href="Nodes.html" accesskey="u" rel="up">Nodes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

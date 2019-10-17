@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Image Syntax (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Image Syntax (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Image Syntax (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Images.html" rel="up" title="Images">
+<link href="Image-Scaling.html" rel="next" title="Image Scaling">
+<link href="Images.html" rel="prev" title="Images">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Image-Syntax"></span><div class="header">
+<p>
+Next: <a href="Image-Scaling.html" accesskey="n" rel="next">Image Scaling</a>, Up: <a href="Images.html" accesskey="u" rel="up">Images</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Image-Syntax-1"></span><h4 class="subsection">10.2.1 Image Syntax</h4>
+
+<p>Here is the synopsis of the <code>@image</code> command:
+</p>
+<div class="example">
+<pre class="example">@image{<var>filename</var><span class="roman">[,</span> <var>width</var><span class="roman">[,</span> <var>height</var><span class="roman">[,</span> <var>alttext</var><span class="roman">[, </span><var>extension</var><span class="roman">]]]]</span>}
+</pre></div>
+
+<span id="index-Formats-for-images"></span>
+<span id="index-Image-formats"></span>
+<p>The <var>filename</var> argument is mandatory, and must not have an
+extension, because the different processors support different formats:
+</p>
+<ul>
+<li> <span id="index-eps-image-format"></span>
+TeX (DVI output) reads the file <samp><var>filename</var>.eps</samp>
+(Encapsulated PostScript format).
+
+</li><li> <span id="index-pdftex_002c-and-images"></span>
+<span id="index-png-image-format"></span>
+<span id="index-jpeg-image-format"></span>
+<span id="index-pdf-image-inclusions"></span>
+pdfTeX reads <samp><var>filename</var>.pdf</samp>, <samp><var>filename</var>.png</samp>,
+<samp><var>filename</var>.jpg</samp>, or <samp><var>filename</var>.jpeg</samp> (in that
+order).  It also tries uppercase versions of the extensions.  The PDF
+format does not support EPS images, so such must be converted first.
+
+</li><li> For Info, <code>makeinfo</code> includes <samp><var>filename</var>.txt</samp> verbatim
+(more or less as if it were in <code>@verbatim</code>).  The Info output
+may also include a reference to <samp><var>filename</var>.png</samp> or
+<samp><var>filename</var>.jpg</samp>.  (See below.)
+
+</li><li> For HTML, <code>makeinfo</code> outputs a reference to
+<samp><var>filename</var>.png</samp>, <samp><var>filename</var>.jpg</samp>,
+<samp><var>filename</var>.jpeg</samp> or <samp><var>filename</var>.gif</samp> (in that
+order).  If none of those exist, it gives an error, and outputs a
+reference to <samp><var>filename</var>.jpg</samp> anyway.
+
+</li><li> <span id="index-SVG-images_002c-used-in-Docbook"></span>
+For Docbook, <code>makeinfo</code> outputs references to
+<samp><var>filename</var>.eps</samp>, <samp><var>filename</var>.gif</samp>
+<samp><var>filename</var>.jpeg</samp>, <samp><var>filename</var>.jpg</samp>,
+<samp><var>filename</var>.pdf</samp>, <samp><var>filename</var>.png</samp> and
+<samp><var>filename</var>.svg</samp>, for every file found.  Also,
+<samp><var>filename</var>.txt</samp> is included verbatim, if present.  (The
+subsequent Docbook processor is supposed to choose the appropriate one.)
+
+</li><li> For Info and HTML output, <code>makeinfo</code> uses the optional fifth
+argument <var>extension</var> to <code>@image</code> for the filename extension,
+if it is specified and the file is found.  Any leading period should
+be included in <var>extension</var>.  For example:
+
+<span id="index-XPM-image-format"></span>
+<div class="example">
+<pre class="example">@image{foo,,,,.xpm}
+</pre></div>
+
+</li></ul>
+
+<p>If you want to install image files for use by Info readers too, we
+recommend putting them in a subdirectory like &lsquo;<samp><var>foo</var>-figures</samp>&rsquo;
+for a package <var>foo</var>.  Copying the files into
+<code>$(infodir)/<var>foo</var>-figures/</code> should be done in your
+<code>Makefile</code>.
+</p>
+<p>The <var>width</var> and <var>height</var> arguments are described in the next
+section.
+</p>
+<p>For TeX output, if an image is the only thing in a paragraph it
+will ordinarily be displayed on a line by itself, respecting the
+current environment indentation, but without the normal paragraph
+indentation.  If you want it centered, use <code>@center</code>
+(see <a href="_0040titlefont-_0040center-_0040sp.html"><code>@titlefont @center @sp</code></a>).
+</p>
+<span id="index-Alt-attribute-for-images"></span>
+<span id="index-Images_002c-alternate-text-for"></span>
+<span id="index-_002d_002d-_0028in-image-alt-string_0029"></span>
+<p>For HTML output, <code>makeinfo</code> sets the <em>alt attribute</em> for
+inline images to the optional <var>alttext</var> (fourth) argument to
+<code>@image</code>, if supplied.  If not supplied, <code>makeinfo</code> uses
+the full file name of the image being displayed.  The <var>alttext</var> is
+processed as Texinfo text, so special characters such as &lsquo;<samp>&quot;</samp>&rsquo; and
+&lsquo;<samp>&lt;</samp>&rsquo; and &lsquo;<samp>&amp;</samp>&rsquo; are escaped in the HTML output; also, you can
+get an empty <code>alt</code> string with <code>@-</code> (a command that
+produces no output; see <a href="_0040_002d-_0040hyphenation.html"><code>@- @hyphenation</code></a>).
+</p>
+<p>For Info output, the <code>alt</code> string is also processed as Texinfo
+text and output.  In this case, &lsquo;<samp>\</samp>&rsquo; is escaped as &lsquo;<samp>\\</samp>&rsquo; and
+&lsquo;<samp>&quot;</samp>&rsquo; as &lsquo;<samp>\&quot;</samp>&rsquo;; no other escapes are done.
+</p>
+<p>In Info output, <code>makeinfo</code> writes a reference to the binary image
+file (trying <var>filename</var> suffixed with <samp><var>extension</var></samp>,
+<samp><var>.extension</var></samp>, <samp>.png</samp>, or <samp>.jpg</samp>, in that order)
+if one exists.  It also literally includes the <samp>.txt</samp> file if one
+exists.  This way, Info readers which can display images (such as the
+Emacs Info browser, running under X) can do so, whereas Info readers
+which can only use text (such as the standalone Info reader) can
+display the textual version.
+</p>
+<span id="index-_005e_0040_005eH-for-images-in-Info"></span>
+<p>The implementation of this is to put the following construct into the
+Info output:
+</p>
+<div class="example">
+<pre class="example">^@^H[image src=&quot;<var>binaryfile</var>&quot; text=&quot;<var>txtfile</var>&quot;
+           alt=&quot;<var>alttext</var> ... ^@^H]
+</pre></div>
+
+<p>where &lsquo;<samp>^@</samp>&rsquo; and &lsquo;<samp>^H</samp>&rsquo; stand for the actual null and
+backspace control characters.  If one of the files is not present, the
+corresponding argument is omitted.
+</p>
+<p>The reason for mentioning this here is that older Info browsers (this
+feature was introduced in Texinfo version 4.6) will display the above
+literally, which, although not pretty, should not be harmful.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Image-Scaling.html" accesskey="n" rel="next">Image Scaling</a>, Up: <a href="Images.html" accesskey="u" rel="up">Images</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

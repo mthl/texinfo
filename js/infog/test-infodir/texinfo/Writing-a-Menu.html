@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Writing a Menu (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Writing a Menu (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Writing a Menu (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Menus.html" rel="up" title="Menus">
+<link href="Menu-Example.html" rel="next" title="Menu Example">
+<link href="Menus.html" rel="prev" title="Menus">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Writing-a-Menu"></span><div class="header">
+<p>
+Next: <a href="Menu-Example.html" accesskey="n" rel="next">Menu Example</a>, Up: <a href="Menus.html" accesskey="u" rel="up">Menus</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Writing-a-Menu-1"></span><h4 class="subsection">4.9.1 Writing a Menu</h4>
+<span id="index-Writing-a-menu"></span>
+<span id="index-Menu-writing"></span>
+
+<p>A menu consists of a <code>@menu</code> command on a line by itself,
+followed by menu entry lines or menu comment lines, and then followed
+by an <code>@end menu</code> command on a line by itself.
+</p>
+<p>A menu looks like this:
+</p>
+<div class="example">
+<pre class="example">@menu
+Larger Units of Text
+
+* Files::                       All about handling files.
+* Multiples: Buffers.           Multiple buffers; editing
+                                 several files at once.
+@end menu
+</pre></div>
+
+<span id="index-Spaces_002c-in-menus"></span>
+<p>In a menu, every line that begins with an &lsquo;<samp>*&nbsp;</samp>&rsquo;<!-- /@w --> is a <em>menu
+entry</em>.  (Note the space after the asterisk.)
+</p>
+<p>A line that does not start with an &lsquo;<samp>*&nbsp;</samp>&rsquo;<!-- /@w --> may also appear in a
+menu.  Such a line is not a menu entry but rather a <em>menu comment</em>
+line that appears in the Info file.  In the example above, the line
+&lsquo;<samp>Larger Units of Text</samp>&rsquo; is such a menu comment line; the two lines
+starting with &lsquo;<samp>*&nbsp;</samp>&rsquo;<!-- /@w --> are menu entries.
+</p>
+<span id="index-Hierarchical-documents_002c-and-menus"></span>
+<p>Technically, menus can carry you to any node, regardless of the
+structure of the document; even to nodes in a different Info file.
+However, we do not recommend making use of this, because it is hard
+for readers to follow.  Also, the <code>makeinfo</code> implicit pointer
+creation feature (see <a href="makeinfo-Pointer-Creation.html"><code>makeinfo</code> Pointer Creation</a>) and GNU
+Emacs Texinfo mode updating commands work only to create menus of
+subordinate nodes in a hierarchically structured document.  It is much
+better to use cross-references to refer to arbitrary nodes.
+</p>
+<span id="index-Menus_002c-automatically-generating"></span>
+<span id="index-validatemenus"></span>
+<p><code>makeinfo</code> can automatically generate menus in nodes for Info 
+and HTML output, based on the chapter structure of the document.  To 
+specify that you want it to do this, place the line 
+&lsquo;<samp>@validatemenus off</samp>&rsquo; near the beginning of the document.
+</p>
+<p>In Info, a user selects a node with the <kbd>m</kbd> (<code>Info-menu</code>)
+command.  The menu entry name is what the user types after the <kbd>m</kbd>
+command.
+<span id="index-accesskey_002c-in-HTML-output-of-menus"></span>
+In the HTML output from <code>makeinfo</code>, the <code>accesskey</code>
+attribute is used with the values &lsquo;<samp>1</samp>&rsquo;&hellip;&lsquo;<samp>9</samp>&rsquo; for the
+first nine entries.  This allows people using web browsers to follow
+the first menu entries using (typically) <kbd>M-<var>digit</var></kbd>, e.g.,
+<kbd>M-1</kbd> for the first entry.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Menu-Example.html" accesskey="n" rel="next">Menu Example</a>, Up: <a href="Menus.html" accesskey="u" rel="up">Menus</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

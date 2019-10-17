@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cross Reference Parts (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Cross Reference Parts (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Cross Reference Parts (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Cross-References.html" rel="up" title="Cross References">
+<link href="_0040xref.html" rel="next" title="@xref">
+<link href="Cross-Reference-Commands.html" rel="prev" title="Cross Reference Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Cross-Reference-Parts"></span><div class="header">
+<p>
+Next: <a href="_0040xref.html" accesskey="n" rel="next"><code>@xref</code></a>, Previous: <a href="Cross-Reference-Commands.html" accesskey="p" rel="prev">Cross Reference Commands</a>, Up: <a href="Cross-References.html" accesskey="u" rel="up">Cross References</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Parts-of-a-Cross_002dreference"></span><h3 class="section">6.3 Parts of a Cross-reference</h3>
+<span id="index-Cross_002dreference-parts"></span>
+<span id="index-Parts-of-a-cross_002dreference"></span>
+<span id="Reference-Syntax"></span>
+<p>A cross-reference command requires only one argument, which is
+the name of the node to which it refers.  Here is a simple example:
+</p>
+<div class="example">
+<pre class="example">@xref{Node name}.
+</pre></div>
+
+<p>In Info output, this produces
+</p>
+<div class="example">
+<pre class="example">*Note Node name::.
+</pre></div>
+
+<p>In a printed manual, the output is
+</p>
+<blockquote>
+<p>See Section <var>nnn</var> [Node name], page <var>ppp</var>.
+</p></blockquote>
+
+<p>A cross-reference command may contain up to four additional arguments.
+By using these arguments, you can provide a cross-reference name,
+a topic description or section title for the printed output, the name
+of a different manual file, and the name of a different printed manual.
+To refer to another manual as a whole, the manual file and/or the name
+of the printed manual are the only required arguments (see <a href="Referring-to-a-Manual-as-a-Whole.html">Referring to a Manual as a Whole</a>).
+</p>
+<p>Here is an example of a full five-part cross-reference:
+</p>
+<div class="example">
+<pre class="example">@xref{Node name, Online Label, Printed Label,
+info-file-name, A Printed Manual}, for details.
+</pre></div>
+
+<p>which produces
+</p>
+<div class="example">
+<pre class="example">*Note Online Label: (info-file-name)Node name,
+for details.
+</pre></div>
+
+<p>in Info and
+</p>
+<blockquote>
+<p>See section &ldquo;Printed Label&rdquo; in <i>A Printed Manual</i>, for details.
+</p></blockquote>
+
+<p>in a printed book.
+</p>
+<p>The five possible arguments for a cross-reference are:
+</p>
+<ol>
+<li> The node or anchor name (required, except for reference to whole
+manuals).  This is the location to which the cross-reference takes
+you.  In a printed document, the location of the node provides the
+page reference only for references within the same document.
+Use <code>@node</code> to define the node (see <a href="Writing-a-Node.html">Writing a Node</a>), or 
+<code>@anchor</code> (see <a href="_0040anchor.html"><code>@anchor</code></a>).
+
+<p>Write a node name in a cross-reference in exactly the same way as in
+the <code>@node</code> line, including the same capitalization; otherwise, the
+formatters may not find the reference.
+</p>
+</li><li> A label for online output.  It is usually omitted; then
+the topic description (third argument) is used if it was specified;
+if that was omitted as well, the node name is used.
+
+</li><li> A label for printed output.  Often, this is the title or topic of the
+section.  This is used as the name of the reference in the printed
+manual.  If omitted, the node name is used.
+
+</li><li> The name of the manual file in which the reference is located, if it is
+different from the current file.  This name is used both for Info and
+HTML.
+
+</li><li> The name of a printed manual from a different Texinfo file.
+</li></ol>
+
+<p>The template for a full five argument cross-reference looks like
+this:
+</p>
+<div class="example">
+<pre class="example">@xref{<var>node-name</var>, <var>online-label</var>, <var>printed-label</var>,
+<var>info-file-name</var>, <var>printed-manual-title</var>}
+</pre></div>
+
+<p>Whitespace before and after the commas separating these arguments is
+ignored.  To include a comma in one of the arguments, use
+<code>@comma{}</code> (see <a href="Inserting-a-Comma.html">Inserting a Comma</a>).
+</p>
+<span id="index-Comma-after-cross_002dreference"></span>
+<p>When processing with TeX, a comma is automatically inserted after the
+page number for cross-references to within the same manual, unless the
+closing brace of the argument is followed by non-whitespace (such as a
+comma or period).  This gives you the choice of whether to have a comma
+there in Info or HTML output.  For example,
+</p>
+<div class="example">
+<pre class="example">@xref{Another Section} for more information
+</pre></div>
+
+<p>produces
+&lsquo;See&nbsp;Another&nbsp;Section,&nbsp;page&nbsp;<var>ppp</var>,&nbsp;for&nbsp;more&nbsp;information&rsquo;<!-- /@w --> in the 
+printed output, and
+&lsquo;<samp>*Note&nbsp;Another&nbsp;Section::&nbsp;for&nbsp;more&nbsp;information</samp>&rsquo;<!-- /@w --> in the Info 
+output.
+</p>
+<p>If an unwanted comma is added, follow the argument
+with a command such as &lsquo;<samp>@:</samp>&rsquo;.  For example,
+&lsquo;<samp>@xref{Hurricanes}@:&nbsp;<span class="nolinebreak">---</span>&nbsp;for&nbsp;the&nbsp;details</samp>&rsquo;<!-- /@w --> produces
+</p>
+<blockquote>
+<p>See Hurricanes, page <var>ppp</var> &mdash; for the details
+</p></blockquote>
+
+<p>instead of
+&lsquo;See&nbsp;Hurricanes,&nbsp;page&nbsp;<var>ppp</var>,&nbsp;&mdash;&nbsp;for&nbsp;the&nbsp;details&rsquo;<!-- /@w -->.
+</p>
+<p>Cross-references with one, two, three, four, and five arguments are
+described separately following the description of <code>@xref</code>.
+</p>
+<p><code>makeinfo</code> warns when the text of a cross-reference (and node
+names and menu items) contains a problematic construct that will
+interfere with its parsing in Info.  If you don&rsquo;t want to see the
+warnings, you can set the customization variable
+<code>INFO_SPECIAL_CHARS_WARNING</code> to &lsquo;<samp>0</samp>&rsquo; (see <a href="Other-Customization-Variables.html">Other Customization Variables</a>).
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040xref.html" accesskey="n" rel="next"><code>@xref</code></a>, Previous: <a href="Cross-Reference-Commands.html" accesskey="p" rel="prev">Cross Reference Commands</a>, Up: <a href="Cross-References.html" accesskey="u" rel="up">Cross References</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

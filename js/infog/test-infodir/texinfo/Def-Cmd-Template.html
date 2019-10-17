@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Def Cmd Template (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Def Cmd Template (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Def Cmd Template (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Definition-Commands.html" rel="up" title="Definition Commands">
+<link href="Def-Cmd-Continuation-Lines.html" rel="next" title="Def Cmd Continuation Lines">
+<link href="Definition-Commands.html" rel="prev" title="Definition Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Def-Cmd-Template"></span><div class="header">
+<p>
+Next: <a href="Def-Cmd-Continuation-Lines.html" accesskey="n" rel="next">Def Cmd Continuation Lines</a>, Up: <a href="Definition-Commands.html" accesskey="u" rel="up">Definition Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="The-Template-for-a-Definition"></span><h3 class="section">14.1 The Template for a Definition</h3>
+<span id="index-Definition-template"></span>
+<span id="index-Template-for-a-definition"></span>
+
+<p>The <code>@deffn</code> command is used for definitions of entities that
+resemble functions.  To write a definition using the <code>@deffn</code>
+command, write the <code>@deffn</code> command at the beginning of a line
+and follow it on the same line by the category of the entity, the name
+of the entity itself, and its arguments (if any).  Then write the body
+of the definition on succeeding lines.  (You may embed examples in the
+body.)  Finally, end the definition with an <code>@end deffn</code> command
+written on a line of its own.
+</p>
+<p>The other definition commands follow the same format: a line with the
+<code>@def&hellip;</code> command and whatever arguments are appropriate for
+that command; the body of the definition; and a corresponding
+<code>@end</code> line.
+</p>
+<p>The template for a definition looks like this:
+</p>
+<div class="example">
+<pre class="example">@deffn <var>category</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end deffn
+</pre></div>
+
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@deffn Command forward-word count
+This command moves point forward @var{count} words
+(or backward if @var{count} is negative). &hellip;
+@end deffn
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<dl>
+<dt id="index-forward_002dword">Command: <strong>forward-word</strong> <em>count</em></dt>
+<dd><p>This command moves point forward <var>count</var> words
+(or backward if <var>count</var> is negative). &hellip;
+</p></dd></dl>
+</blockquote>
+
+<p>Capitalize the category name like a title.  If the name of the
+category contains spaces, as in the phrase &lsquo;Interactive Command&rsquo;,
+enclose it in braces.  For example:
+</p>
+<div class="example">
+<pre class="example">@deffn {Interactive Command} isearch-forward
+&hellip;
+@end deffn
+</pre></div>
+
+<p>Otherwise, the second word will be mistaken for the name of the
+entity.  As a general rule, when any of the arguments in the heading
+line <em>except</em> the last one are more than one word, you need to
+enclose them in braces.  This may also be necessary if the text
+contains commands, for example, &lsquo;<samp>{declaraci@'on}</samp>&rsquo; if you are
+writing in Spanish.
+</p>
+<p>Some of the definition commands are more general than others.  The
+<code>@deffn</code> command, for example, is the general definition command
+for functions and the like&mdash;for entities that may take arguments.
+When you use this command, you specify the category to which the
+entity belongs.  Three predefined, specialized variations
+(<code>@defun</code>, <code>@defmac</code>, and <code>@defspec</code>) specify the
+category for you: &ldquo;Function&rdquo;, &ldquo;Macro&rdquo;, and &ldquo;Special Form&rdquo;
+respectively.  (In Lisp, a special form is an entity much like a
+function.)  Similarly, the general <code>@defvr</code> command is
+accompanied by several specialized variations for describing
+particular kinds of variables.
+</p>
+<p>See <a href="Sample-Function-Definition.html">Sample Function Definition</a>, for a detailed example of a
+function definition, including the use of <code>@example</code> inside the
+definition.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Def-Cmd-Continuation-Lines.html" accesskey="n" rel="next">Def Cmd Continuation Lines</a>, Up: <a href="Definition-Commands.html" accesskey="u" rel="up">Definition Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

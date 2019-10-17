@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Using Info-validate (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Using Info-validate (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Using Info-validate (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Running-Info_002dvalidate.html" rel="up" title="Running Info-validate">
+<link href="Unsplit.html" rel="next" title="Unsplit">
+<link href="Running-Info_002dvalidate.html" rel="prev" title="Running Info-validate">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Using-Info_002dvalidate"></span><div class="header">
+<p>
+Next: <a href="Unsplit.html" accesskey="n" rel="next">Unsplit</a>, Up: <a href="Running-Info_002dvalidate.html" accesskey="u" rel="up">Running <code>Info-validate</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Using-Info_002dvalidate-1"></span><h4 class="subsection">F.6.1 Using <code>Info-validate</code></h4>
+
+<span id="index-Using-Info_002dvalidate"></span>
+<span id="index-Info-validating-a-large-file"></span>
+<span id="index-Validating-a-large-file"></span>
+
+<p>To use <code>Info-validate</code>, visit the Info file you wish to check and
+type:
+</p>
+<div class="example">
+<pre class="example">M-x Info-validate
+</pre></div>
+
+<p>Note that the <code>Info-validate</code> command requires an uppercase
+&lsquo;I&rsquo;.  You may also need to create a tag table before running
+<code>Info-validate</code>.  See <a href="Tagifying.html">Tagifying</a>.
+</p>
+<p>If your file is valid, you will receive a message that says &ldquo;File appears
+valid&rdquo;.  However, if you have a pointer that does not point to a node,
+error messages will be displayed in a buffer called &lsquo;<samp>*problems in
+info file*</samp>&rsquo;.
+</p>
+<p>For example, <code>Info-validate</code> was run on a test file that contained
+only the first node of this manual.  One of the messages said:
+</p>
+<div class="example">
+<pre class="example">In node &quot;Overview&quot;, invalid Next: Texinfo Mode
+</pre></div>
+
+<p>This meant that the node called &lsquo;<samp>Overview</samp>&rsquo; had a &lsquo;Next&rsquo; pointer that
+did not point to anything (which was true in this case, since the test file
+had only one node in it).
+</p>
+<p>Now suppose we add a node named &lsquo;<samp>Texinfo Mode</samp>&rsquo; to our test case
+but we do not specify a &lsquo;Previous&rsquo; for this node.  Then we will get
+the following error message:
+</p>
+<div class="example">
+<pre class="example">In node &quot;Texinfo Mode&quot;, should have Previous: Overview
+</pre></div>
+
+<p>This is because every &lsquo;Next&rsquo; pointer should be matched by a
+&lsquo;Previous&rsquo; (in the node where the &lsquo;Next&rsquo; points) which points back.
+</p>
+<p><code>Info-validate</code> also checks that all menu entries and cross-references
+point to actual nodes.
+</p>
+<p><code>Info-validate</code> requires a tag table and does not work with files
+that have been split.  (The <code>texinfo-format-buffer</code> command
+automatically splits large files.)  In order to use <code>Info-validate</code>
+on a large file, you must run <code>texinfo-format-buffer</code> with an
+argument so that it does not split the Info file; and you must create a
+tag table for the unsplit file.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Unsplit.html" accesskey="n" rel="next">Unsplit</a>, Up: <a href="Running-Info_002dvalidate.html" accesskey="u" rel="up">Running <code>Info-validate</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

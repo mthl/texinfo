@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Multiple Spaces (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Multiple Spaces (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Multiple Spaces (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inserting-Space.html" rel="up" title="Inserting Space">
+<link href="Not-Ending-a-Sentence.html" rel="next" title="Not Ending a Sentence">
+<link href="Inserting-Space.html" rel="prev" title="Inserting Space">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Multiple-Spaces"></span><div class="header">
+<p>
+Next: <a href="Not-Ending-a-Sentence.html" accesskey="n" rel="next">Not Ending a Sentence</a>, Up: <a href="Inserting-Space.html" accesskey="u" rel="up">Inserting Space</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Multiple-Spaces-1"></span><h4 class="subsection">12.3.1 Multiple Spaces</h4>
+
+<span id="index-Multiple-spaces"></span>
+<span id="index-Whitespace_002c-inserting"></span>
+<span id="index-Space_002c-inserting-horizontal"></span>
+<span id="index-_003cspace_003e"></span>
+<span id="index-_003ctab_003e"></span>
+<span id="index-_003cnewline_003e"></span>
+
+<p>Ordinarily, multiple whitespace characters (space, tab, and newline)
+are collapsed into a single space.
+</p>
+<p>Occasionally, you may want to produce several consecutive spaces,
+either for purposes of example (e.g., what your program does with
+multiple spaces as input), or merely for purposes of appearance in
+headings or lists.  Texinfo supports three commands:
+<code>@<kbd>SPACE</kbd></code>, <code>@<kbd>TAB</kbd></code>, and <code>@<kbd>NL</kbd></code>, all
+of which insert a single space into the output.  (Here,
+<code>@<kbd>SPACE</kbd></code> represents an &lsquo;<samp>@</samp>&rsquo; character followed by a
+space, i.e., &lsquo;<samp>@ </samp>&rsquo;, <kbd>TAB</kbd> represents an actual tab character,
+and <code>@<kbd>NL</kbd></code> represents an &lsquo;<samp>@</samp>&rsquo; character and end-of-line, 
+i.e., when &lsquo;<samp>@</samp>&rsquo; is the last character on a line.)
+</p>
+<p>For example,
+</p><div class="example">
+<pre class="example">Spacey@ @ @ @
+example.
+</pre></div>
+
+<p>produces
+</p>
+<div class="example">
+<pre class="example">Spacey&nbsp;&nbsp;&nbsp;&nbsp;example.
+</pre></div>
+
+<p>Other possible uses of <code>@<kbd>SPACE</kbd></code> have been subsumed by
+<code>@multitable</code> (see <a href="Multi_002dcolumn-Tables.html">Multi-column Tables</a>).
+</p>
+<p>Do not follow any of these commands with braces.
+</p>
+<p>To produce a non-breakable space, see <a href="_0040tie.html"><code>@tie</code></a>.
+</p>
+
+
+
+
+</body>
+</html>

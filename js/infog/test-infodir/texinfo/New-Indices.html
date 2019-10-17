@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>New Indices (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="New Indices (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="New Indices (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Indices.html" rel="up" title="Indices">
+<link href="Insertions.html" rel="next" title="Insertions">
+<link href="_0040synindex.html" rel="prev" title="@synindex">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="New-Indices"></span><div class="header">
+<p>
+Previous: <a href="Combining-Indices.html" accesskey="p" rel="prev">Combining Indices</a>, Up: <a href="Indices.html" accesskey="u" rel="up">Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Defining-New-Indices"></span><h3 class="section">11.6 Defining New Indices</h3>
+
+<span id="index-Defining-new-indices"></span>
+<span id="index-Indices_002c-defining-new"></span>
+<span id="index-New-index-defining"></span>
+<span id="index-defindex"></span>
+<span id="index-defcodeindex"></span>
+
+<p>In addition to the predefined indices (see <a href="Predefined-Indices.html">Predefined Indices</a>),
+you may use the <code>@defindex</code> and <code>@defcodeindex</code> commands
+to define new indices.  These commands create new indexing @-commands
+with which you mark index entries.  The <code>@defindex</code> command is
+used like this:
+</p>
+<div class="example">
+<pre class="example">@defindex <var>name</var>
+</pre></div>
+
+<p>New index names are usually two-letter words, such as &lsquo;<samp>au</samp>&rsquo;.
+For example:
+</p>
+<div class="example">
+<pre class="example">@defindex au
+</pre></div>
+
+<p>This defines a new index, called the &lsquo;<samp>au</samp>&rsquo; index.  At the same
+time, it creates a new indexing command, <code>@auindex</code>, that you
+can use to make index entries.  Use this new indexing command just as
+you would use a predefined indexing command.
+</p>
+<p>For example, here is a section heading followed by a concept index
+entry and two &lsquo;<samp>au</samp>&rsquo; index entries.
+</p>
+<div class="example">
+<pre class="example">@section Cognitive Semantics
+@cindex kinesthetic image schemas
+@auindex Johnson, Mark
+@auindex Lakoff, George
+</pre></div>
+
+<p>(Evidently, &lsquo;<samp>au</samp>&rsquo; serves here as an abbreviation for &ldquo;author&rdquo;.)
+</p>
+<p>Texinfo constructs the new indexing command by concatenating the name
+of the index with &lsquo;<samp>index</samp>&rsquo;; thus, defining an &lsquo;<samp>xy</samp>&rsquo; index
+leads to the automatic creation of an <code>@xyindex</code> command.
+</p>
+<p>Use the <code>@printindex</code> command to print the index, as you do with
+the predefined indices.  For example:
+</p>
+<div class="example">
+<pre class="example">@node Author Index
+@unnumbered Author Index
+
+@printindex au
+</pre></div>
+
+<p>The <code>@defcodeindex</code> is like the <code>@defindex</code> command,
+except that, in the printed output, it prints entries in an
+<code>@code</code> font by default instead of a roman font.
+</p>
+<p>You should define new indices before the end-of-header line of a
+Texinfo file, and (of course) before any <code>@synindex</code> or
+<code>@syncodeindex</code> commands (see <a href="Texinfo-File-Header.html">Texinfo File Header</a>).
+</p>
+<p>As mentioned earlier (see <a href="Predefined-Indices.html">Predefined Indices</a>), we recommend having
+a single index in the final document whenever possible, however many
+source indices you use, since then readers have only one place to
+look.
+</p>
+<p>When creating an index, TeX creates a file whose extension is the
+name of the index (see <a href="Format-with-tex_002ftexindex.html#Names-of-index-files">Names of index files</a>).  Therefore you
+should avoid using index names that collide with extensions used for
+other purposes, such as &lsquo;<samp>.aux</samp>&rsquo; or &lsquo;<samp>.xml</samp>&rsquo;.
+<code>makeinfo</code> already reports an error if a new index conflicts
+well-known extension name.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Combining-Indices.html" accesskey="p" rel="prev">Combining Indices</a>, Up: <a href="Indices.html" accesskey="u" rel="up">Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

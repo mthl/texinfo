@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>External Macro Processors (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="External Macro Processors (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="External Macro Processors (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Defining-New-Texinfo-Commands.html" rel="up" title="Defining New Texinfo Commands">
+<link href="_0023line-Directive.html" rel="next" title="#line Directive">
+<link href="_0040definfoenclose.html" rel="prev" title="@definfoenclose">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="External-Macro-Processors"></span><div class="header">
+<p>
+Previous: <a href="_0040definfoenclose.html" accesskey="p" rel="prev"><code>@definfoenclose</code></a>, Up: <a href="Defining-New-Texinfo-Commands.html" accesskey="u" rel="up">Defining New Texinfo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="External-Macro-Processors_003a-Line-Directives"></span><h3 class="section">17.6 External Macro Processors: Line Directives</h3>
+<span id="index-External-macro-processors"></span>
+<span id="index-Macro-processors_002c-external"></span>
+
+<p>Texinfo macros (and its other text substitution facilities) work fine
+in straightforward cases.  If your document needs unusually complex
+processing, however, their fragility and limitations can be a problem.
+In this case, you may want to use a different macro processor
+altogether, such as M4 (see <cite><a href="https://www.gnu.org/software/m4/manual/html_node/index.html#Top">M4</a></cite>) or CPP (see <cite><a href="https://gcc.gnu.org/onlinedocs/cpp/index.html#Top">The C Preprocessor</a></cite>).
+</p>
+<p>With one exception, Texinfo does not need to know whether its input is
+&ldquo;original&rdquo; source or preprocessed from some other source file.
+Therefore, you can arrange your build system to invoke whatever
+programs you like to handle macro expansion or other preprocessing
+needs.  Texinfo does not offer built-in support for any particular
+preprocessor, since no one program seemed likely to suffice for the
+requirements of all documents.
+</p>
+<span id="index-Line-numbers_002c-in-error-messages"></span>
+<span id="index-Error-messages_002c-line-numbers-in"></span>
+<p>The one exception is line numbers in error messages.  In that case,
+the line number should refer to the original source file, whatever it
+may be.  There&rsquo;s a well-known mechanism for this: the so-called
+&lsquo;<samp>#line</samp>&rsquo; directive.  Texinfo supports this.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="_0023line-Directive.html" accesskey="1">&lsquo;<samp>#line</samp>&rsquo; Directive</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0023line-and-TeX.html" accesskey="2">TeX</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0023line-Syntax-Details.html" accesskey="3">Syntax</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
+
+
+
+
+
+</body>
+</html>

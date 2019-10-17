@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Printed Books (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Printed Books (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Printed Books (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Overview.html" rel="up" title="Overview">
+<link href="Adding-Output-Formats.html" rel="next" title="Adding Output Formats">
+<link href="Info-Files.html" rel="prev" title="Info Files">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Printed-Books"></span><div class="header">
+<p>
+Next: <a href="Adding-Output-Formats.html" accesskey="n" rel="next">Adding Output Formats</a>, Previous: <a href="Info-Files.html" accesskey="p" rel="prev">Info Files</a>, Up: <a href="Overview.html" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Printed-Books-1"></span><h3 class="section">1.4 Printed Books</h3>
+<span id="index-Printed-book-and-manual-characteristics"></span>
+<span id="index-Manual-characteristics_002c-printed"></span>
+<span id="index-Book-characteristics_002c-printed"></span>
+<span id="index-Texinfo-printed-book-characteristics"></span>
+<span id="index-Characteristics_002c-printed-books-or-manuals"></span>
+
+<span id="index-Knuth_002c-Donald"></span>
+<p>A Texinfo file can be formatted and typeset as a printed book or
+manual.  To do this, you need TeX, a sophisticated typesetting
+program written by Donald Knuth of Stanford University.
+</p>
+<p>A Texinfo-based book is similar to any other typeset, printed work: it
+can have a title page, copyright page, table of contents, and preface,
+as well as chapters, numbered or unnumbered sections and subsections,
+page headers, cross-references, footnotes, and indices.
+</p>
+<p>TeX is a general purpose typesetting program.  Texinfo provides a
+file <samp>texinfo.tex</samp> that contains information (definitions or
+<em>macros</em>) that TeX uses when it typesets a Texinfo file.
+(<samp>texinfo.tex</samp> tells TeX how to convert the Texinfo @-commands
+to TeX commands, which TeX can then process to create the typeset
+document.)  <samp>texinfo.tex</samp> contains the specifications for printing
+a document.  You can get the latest version of <samp>texinfo.tex</samp> from
+the Texinfo home page, <a href="http://www.gnu.org/software/texinfo/">http://www.gnu.org/software/texinfo/</a>.
+</p>
+<p>In the United States, documents are most often printed on 8.5 inch by
+11 inch pages (216mm by 280mm); this is the default size.
+But you can also print for 7 inch by 9.25 inch pages (178mm by
+235mm, the <code>@smallbook</code> size; or on A4 or A5 size paper
+(<code>@afourpaper</code>, <code>@afivepaper</code>).
+See <a href="_0040smallbook.html"><code>@smallbook</code></a>, and <a href="A4-Paper.html">A4 Paper</a>.
+</p>
+<span id="index-Literate-programming"></span>
+<p>TeX is freely distributable.  It is written in a superset of Pascal
+for literate programming called WEB and can be compiled either in
+Pascal or (by using a conversion program that comes with the TeX
+distribution) in C.
+</p>
+<p>TeX is very powerful and has a great many features.  Because a
+Texinfo file must be able to present information both on a
+character-only terminal in Info form and in a typeset book, the
+formatting commands that Texinfo supports are necessarily limited.
+</p>
+<p>See <a href="Obtaining-TeX.html">Obtaining TeX</a>, for information on acquiring TeX.  It is
+not part of the Texinfo distribution.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Adding-Output-Formats.html" accesskey="n" rel="next">Adding Output Formats</a>, Previous: <a href="Info-Files.html" accesskey="p" rel="prev">Info Files</a>, Up: <a href="Overview.html" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

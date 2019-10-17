@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@table (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@table (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@table (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Two_002dcolumn-Tables.html" rel="up" title="Two-column Tables">
+<link href="_0040ftable-_0040vtable.html" rel="next" title="@ftable @vtable">
+<link href="Two_002dcolumn-Tables.html" rel="prev" title="Two-column Tables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040table"></span><div class="header">
+<p>
+Next: <a href="_0040ftable-_0040vtable.html" accesskey="n" rel="next"><code>@ftable @vtable</code></a>, Up: <a href="Two_002dcolumn-Tables.html" accesskey="u" rel="up">Two-column Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Using-the-_0040table-Command"></span><h4 class="subsection">9.4.1 Using the <code>@table</code> Command</h4>
+
+<span id="table"></span>
+<span id="index-Definition-lists_002c-typesetting"></span>
+<p>Use the <code>@table</code> command to produce a two-column table.  This 
+command is typically used when you have a list of items and a brief text 
+with each one, such as a list of definitions.
+</p>
+<p>Write the <code>@table</code> command at the beginning of a line, after a
+blank line, and follow it on the same line with an argument that is an
+&lsquo;indicating&rsquo; command, such as <code>@code</code>, <code>@samp</code>,
+<code>@var</code>, <code>@option</code>, or <code>@kbd</code> (see <a href="Indicating.html">Indicating</a>).
+This command will be applied to the text in the first column.  For 
+example, <code>@table @code</code> will cause the text in the first column 
+to be output as if it had been the argument to a <code>@code</code> command.
+</p>
+<span id="g_t_0040asis"></span><span id="index-asis"></span>
+<p>You may use the <code>@asis</code> command as an argument to
+<code>@table</code>.  <code>@asis</code> is a command that does nothing: if you
+use this command after <code>@table</code>, the first column entries are
+output without added highlighting (&ldquo;as is&rdquo;).
+</p>
+<p>The <code>@table</code> command works with other commands besides those
+explicitly mentioned here.  However, you can only use predefined
+Texinfo commands that take an argument in braces.  You cannot
+reliably use a new command defined with <code>@macro</code>, although an
+<code>@alias</code> (for a suitable predefined command) is acceptable.
+See <a href="Defining-New-Texinfo-Commands.html">Defining New Texinfo Commands</a>.
+</p>
+<span id="index-item-1"></span>
+<p>Begin each table entry with an <code>@item</code> command at the beginning
+of a line.  Write the text for the first column on the same line as the
+<code>@item</code> command.  Write the text for the second column on the line
+following the <code>@item</code> line and on subsequent lines.  You may
+write as many lines of supporting text as you wish, even several
+paragraphs.  But only the text on the same line as the <code>@item</code>
+will be placed in the first column (including any footnotes).
+You do not need to type anything for an empty second column.
+</p>
+<p>Normally, you should put a blank line before an <code>@item</code> line
+(except the first one).  This puts a blank line in the Info file.
+Except when the entries are very brief, a blank line looks better.
+End the table with a line consisting of <code>@end table</code>, followed
+by a blank line.  TeX will always start a new paragraph after the
+table, so the blank line is needed for the Info output to be analogous.
+</p>
+<p>For example, the following table highlights the text in the first
+column with the <code>@samp</code> command:
+</p>
+<div class="example">
+<pre class="example">@table @samp
+@item foo
+This is the text for
+@samp{foo}.
+
+@item bar
+Text for @samp{bar}.
+@end table
+</pre></div>
+
+<p>This produces:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>foo</samp>&rsquo;</dt>
+<dd><p>This is the text for
+&lsquo;<samp>foo</samp>&rsquo;.
+</p></dd>
+<dt>&lsquo;<samp>bar</samp>&rsquo;</dt>
+<dd><p>Text for &lsquo;<samp>bar</samp>&rsquo;.
+</p></dd>
+</dl>
+
+<p>If you want to list two or more named items with a single block of
+text, use the <code>@itemx</code> command.  (See <a href="_0040itemx.html"><code>@itemx</code></a>.)
+</p>
+<p>The <code>@table</code> command (see <a href="#g_t_0040table"><code>@table</code></a>) is not supported
+inside <code>@display</code>.  Since <code>@display</code> is line-oriented, it
+doesn&rsquo;t make sense to use them together.  If you want to indent a
+table, try <code>@quotation</code> (see <a href="_0040quotation.html"><code>@quotation</code></a>) or
+<code>@indentedblock</code> (see <a href="_0040indentedblock.html"><code>@indentedblock</code></a>).
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040ftable-_0040vtable.html" accesskey="n" rel="next"><code>@ftable @vtable</code></a>, Up: <a href="Two_002dcolumn-Tables.html" accesskey="u" rel="up">Two-column Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

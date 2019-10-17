@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML Xref Command Expansion (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML Xref Command Expansion (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML Xref Command Expansion (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="HTML-Xref.html" rel="up" title="HTML Xref">
+<link href="HTML-Xref-8_002dbit-Character-Expansion.html" rel="next" title="HTML Xref 8-bit Character Expansion">
+<link href="HTML-Xref-Node-Name-Expansion.html" rel="prev" title="HTML Xref Node Name Expansion">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-Xref-Command-Expansion"></span><div class="header">
+<p>
+Next: <a href="HTML-Xref-8_002dbit-Character-Expansion.html" accesskey="n" rel="next">HTML Xref 8-bit Character Expansion</a>, Previous: <a href="HTML-Xref-Node-Name-Expansion.html" accesskey="p" rel="prev">HTML Xref Node Name Expansion</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-Cross_002dreference-Command-Expansion"></span><h4 class="subsection">22.4.3 HTML Cross-reference Command Expansion</h4>
+<span id="index-HTML-cross_002dreference-command-expansion"></span>
+
+<p>Node names may contain @-commands (see <a href="Node-Line-Requirements.html">Node Line Requirements</a>).
+This section describes how they are handled.
+</p>
+<p>First, comments are removed.
+</p>
+<p>Next, any <code>@value</code> commands (see <a href="_0040set-_0040value.html"><code>@set @value</code></a>) and
+macro invocations (see <a href="Invoking-Macros.html">Invoking Macros</a>) are fully expanded.
+</p>
+<p>Then, for the following commands, the command name and braces are removed,
+and the text of the argument is recursively transformed:
+</p>
+<div class="example">
+<pre class="example">@asis @b @cite @code @command @dfn @dmn @dotless
+@emph @env @file @i @indicateurl @kbd @key
+@samp @sansserif @sc @slanted @strong @sub @sup
+@t @U @var @verb @w
+</pre></div>
+
+<p>For <code>@sc</code>, any letters are capitalized.
+</p>
+<p>In addition, the following commands are replaced by constant text, as
+shown below.  If any of these commands have non-empty arguments, as in
+<code>@TeX{bad}</code>, it is an error, and the result is unspecified.
+In this table, &lsquo;(space)&rsquo; means a space character and &lsquo;(nothing)&rsquo; means
+the empty string.  The notation &lsquo;U+<var>hhhh</var>&rsquo; means Unicode code
+point <var>hhhh</var> (in hex, as usual).
+</p>
+<p>There are further transformations of many of these expansions to yield
+the final file or other target name, such as space characters to
+&lsquo;<samp>-</samp>&rsquo;, etc., according to the other rules.
+</p>
+<table>
+<tr><td width="30%"><code>@(newline)</code></td><td width="50%">(space)</td></tr>
+<tr><td width="30%"><code>@(space)</code></td><td width="50%">(space)</td></tr>
+<tr><td width="30%"><code>@(tab)</code></td><td width="50%">(space)</td></tr>
+<tr><td width="30%"><code>@!</code></td><td width="50%">&lsquo;<samp>!</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@*</code></td><td width="50%">(space)</td></tr>
+<tr><td width="30%"><code>@-</code></td><td width="50%">(nothing)</td></tr>
+<tr><td width="30%"><code>@.</code></td><td width="50%">&lsquo;<samp>.</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@:</code></td><td width="50%">(nothing)</td></tr>
+<tr><td width="30%"><code>@?</code></td><td width="50%">&lsquo;<samp>?</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@@</code></td><td width="50%">&lsquo;<samp>@</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@{</code></td><td width="50%">&lsquo;<samp>{</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@}</code></td><td width="50%">&lsquo;<samp>}</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@LaTeX</code></td><td width="50%">&lsquo;<samp>LaTeX</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@TeX</code></td><td width="50%">&lsquo;<samp>TeX</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@arrow</code></td><td width="50%">U+2192</td></tr>
+<tr><td width="30%"><code>@bullet</code></td><td width="50%">U+2022</td></tr>
+<tr><td width="30%"><code>@comma</code></td><td width="50%">&lsquo;<samp>,</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@copyright</code></td><td width="50%">U+00A9</td></tr>
+<tr><td width="30%"><code>@dots</code></td><td width="50%">U+2026</td></tr>
+<tr><td width="30%"><code>@enddots</code></td><td width="50%">&lsquo;<samp>...</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@equiv</code></td><td width="50%">U+2261</td></tr>
+<tr><td width="30%"><code>@error</code></td><td width="50%">&lsquo;<samp>error--&gt;</samp>&rsquo;</td></tr>
+<tr><td width="30%"><code>@euro</code></td><td width="50%">U+20AC</td></tr>
+<tr><td width="30%"><code>@exclamdown</code></td><td width="50%">U+00A1</td></tr>
+<tr><td width="30%"><code>@expansion</code></td><td width="50%">U+21A6</td></tr>
+<tr><td width="30%"><code>@geq</code></td><td width="50%">U+2265</td></tr>
+<tr><td width="30%"><code>@leq</code></td><td width="50%">U+2264</td></tr>
+<tr><td width="30%"><code>@minus</code></td><td width="50%">U+2212</td></tr>
+<tr><td width="30%"><code>@ordf</code></td><td width="50%">U+00AA</td></tr>
+<tr><td width="30%"><code>@ordm</code></td><td width="50%">U+00BA</td></tr>
+<tr><td width="30%"><code>@point</code></td><td width="50%">U+2605</td></tr>
+<tr><td width="30%"><code>@pounds</code></td><td width="50%">U+00A3</td></tr>
+<tr><td width="30%"><code>@print</code></td><td width="50%">U+22A3</td></tr>
+<tr><td width="30%"><code>@questiondown</code></td><td width="50%">U+00BF</td></tr>
+<tr><td width="30%"><code>@registeredsymbol</code></td><td width="50%">U+00AE</td></tr>
+<tr><td width="30%"><code>@result</code></td><td width="50%">U+21D2</td></tr>
+<tr><td width="30%"><code>@textdegree</code></td><td width="50%">U+00B0</td></tr>
+<tr><td width="30%"><code>@tie</code></td><td width="50%">(space)</td></tr>
+</table>
+
+<p>Quotation mark @-commands (<code>@quotedblright{}</code> and the like),
+are likewise replaced by their Unicode values.  Normal quotation
+<em>characters</em> (e.g., ASCII &lsquo; and &rsquo;) are not altered.
+See <a href="Inserting-Quotation-Marks.html">Inserting Quotation Marks</a>.
+</p>
+<p>Any <code>@acronym</code>, <code>@abbr</code>, <code>@email</code>, and
+<code>@image</code> commands are replaced by their first argument.  (For
+these commands, all subsequent arguments are optional, and ignored
+here.)  See <a href="_0040acronym.html"><code>@acronym</code></a>, and <a href="_0040email.html"><code>@email</code></a>, and <a href="Images.html">Images</a>.
+</p>
+<p>Accents are handled according to the next section.
+</p>
+<p>Any other command is an error, and the result is unspecified.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="HTML-Xref-8_002dbit-Character-Expansion.html" accesskey="n" rel="next">HTML Xref 8-bit Character Expansion</a>, Previous: <a href="HTML-Xref-Node-Name-Expansion.html" accesskey="p" rel="prev">HTML Xref Node Name Expansion</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

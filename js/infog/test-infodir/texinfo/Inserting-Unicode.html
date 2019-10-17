@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inserting Unicode (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Inserting Unicode (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Inserting Unicode (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Insertions.html" rel="up" title="Insertions">
+<link href="Breaks.html" rel="next" title="Breaks">
+<link href="Click-Sequences.html" rel="prev" title="Click Sequences">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Inserting-Unicode"></span><div class="header">
+<p>
+Previous: <a href="Glyphs-for-Programming.html" accesskey="p" rel="prev">Glyphs for Programming</a>, Up: <a href="Insertions.html" accesskey="u" rel="up">Insertions</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Inserting-Unicode_003a-_0040U"></span><h3 class="section">12.10 Inserting Unicode: <code>@U</code></h3>
+
+<span id="index-Unicode-character_002c-inserting"></span>
+<span id="index-Code-point-of-Unicode-character_002c-inserting-by"></span>
+<span id="index-U"></span>
+
+<p>The command <code>@U{<var>hex</var>}</code> inserts a representation of the
+Unicode character U+<var>hex</var>.  For example, <code>@U{0132}</code>
+inserts the Dutch &lsquo;IJ&rsquo; ligature (&lsquo;&#x0132;&rsquo;).
+</p>
+<p>The <var>hex</var> value should be at least four hex digits; leading zeros
+are <em>not</em> added.  In general, <var>hex</var> must specify a valid
+normal Unicode character; e.g., U+10FFFF (the very last code point) is
+invalid by definition, and thus cannot be inserted this way.
+</p>
+<span id="index-ASCII_002c-source-document-portability-using"></span>
+<p><code>@U</code> is useful for inserting occasional glyphs for which Texinfo
+has no dedicated command, while allowing the Texinfo source to remain
+purely 7-bit ASCII for maximum portability.
+</p>
+<span id="index-Unicode-and-TeX"></span>
+<p>This command has many limitations&mdash;the same limitations as inserting
+Unicode characters in UTF-8 or another binary form.  First and most
+importantly, TeX knows nothing about most of Unicode.  Supporting
+specific additional glyphs upon request is possible, but it&rsquo;s not
+viable for <samp>texinfo.tex</samp> to support whole additional scripts
+(Japanese, Urdu, &hellip;).  The <code>@U</code> command does nothing to
+change this.  If the specified character is not supported in TeX,
+an error is given.  (See <a href="_0040documentencoding.html"><code>@documentencoding</code></a>.)
+</p>
+<span id="index-Entity-reference-in-HTML-et-al_002e"></span>
+<span id="index-_0026_0023xhex_003b_002c-output-from-_0040U"></span>
+<p>In HTML, XML, and Docbook, the output from <code>@U</code> is always an
+entity reference of the form &lsquo;<samp>&amp;#x<var>hex</var>;</samp>&rsquo;, as in
+&lsquo;<samp>&amp;#x0132;</samp>&rsquo; for the example above.  This should work even when an
+HTML document uses some other encoding (say, Latin&nbsp;1) and the
+given character is not supported in that encoding.
+</p>
+<p>In Info and plain text, if the output encoding is not UTF-8, the output 
+is the ASCII sequence &lsquo;<samp>U+<var>hex</var></samp>&rsquo;, as in the six ASCII characters 
+&lsquo;<samp>U+0132</samp>&rsquo; for the example above.
+</p>
+
+
+
+
+</body>
+</html>

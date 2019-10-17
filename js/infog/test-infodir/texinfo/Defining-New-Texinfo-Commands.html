@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Defining New Texinfo Commands (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Defining New Texinfo Commands (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Defining New Texinfo Commands (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Defining-Macros.html" rel="next" title="Defining Macros">
+<link href="Conditional-Nesting.html" rel="prev" title="Conditional Nesting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Defining-New-Texinfo-Commands"></span><div class="header">
+<p>
+Next: <a href="Include-Files.html" accesskey="n" rel="next">Include Files</a>, Previous: <a href="Conditionals.html" accesskey="p" rel="prev">Conditionals</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Defining-New-Texinfo-Commands-1"></span><h2 class="chapter">17 Defining New Texinfo Commands</h2>
+
+<span id="index-Macros"></span>
+<span id="index-Defining-new-Texinfo-commands"></span>
+<span id="index-New-Texinfo-commands_002c-defining"></span>
+<span id="index-Texinfo-commands_002c-defining-new"></span>
+<span id="index-User_002ddefined-Texinfo-commands"></span>
+
+<p>Texinfo provides several ways to define new commands (in all cases,
+it&rsquo;s not recommended to try redefining existing commands):
+</p>
+<ul>
+<li> A Texinfo <em>macro</em> allows you to define a new Texinfo command as any
+sequence of text and/or existing commands (including other macros).  The
+macro can have any number of <em>parameters</em>&mdash;text you supply each
+time you use the macro.
+
+<p>Incidentally, these macros have nothing to do with the <code>@defmac</code>
+command, which is for documenting macros in the subject area of the
+manual (see <a href="Def-Cmd-Template.html">Def Cmd Template</a>).
+</p>
+</li><li> &lsquo;<samp>@alias</samp>&rsquo; is a convenient way to define a new name for an existing
+command.
+
+</li><li> &lsquo;<samp>@definfoenclose</samp>&rsquo; allows you to define new commands with
+customized output for all non-TeX output formats.
+
+</li></ul>
+
+<p>Most generally of all (not just for defining new commands), it is
+possible to invoke any external macro processor and have Texinfo
+recognize so-called <code>#line</code> directives for error reporting.
+</p>
+<p>If you want to do simple text substitution, <code>@set</code> and
+<code>@value</code> is the simplest approach (see <a href="_0040set-_0040clear-_0040value.html"><code>@set @clear @value</code></a>).
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Defining-Macros.html" accesskey="1">Defining Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Defining and undefining new commands.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Invoking-Macros.html" accesskey="2">Invoking Macros</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using a macro, once you&rsquo;ve defined it.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Macro-Details.html" accesskey="3">Macro Details</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Limitations of Texinfo macros.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040alias.html" accesskey="4"><code>@alias</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Command aliases.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040definfoenclose.html" accesskey="5"><code>@definfoenclose</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Customized highlighting.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="External-Macro-Processors.html" accesskey="6">External Macro Processors</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>#line</code> directives.
+</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Include-Files.html" accesskey="n" rel="next">Include Files</a>, Previous: <a href="Conditionals.html" accesskey="p" rel="prev">Conditionals</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

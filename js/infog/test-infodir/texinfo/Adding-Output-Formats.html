@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Adding Output Formats (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Adding Output Formats (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Adding Output Formats (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Overview.html" rel="up" title="Overview">
+<link href="History.html" rel="next" title="History">
+<link href="Printed-Books.html" rel="prev" title="Printed Books">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Adding-Output-Formats"></span><div class="header">
+<p>
+Next: <a href="History.html" accesskey="n" rel="next">History</a>, Previous: <a href="Printed-Books.html" accesskey="p" rel="prev">Printed Books</a>, Up: <a href="Overview.html" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Adding-Output-Formats-1"></span><h3 class="section">1.5 Adding Output Formats</h3>
+<span id="index-Additional-output-formats"></span>
+
+<p>The output formats in the previous sections handle a wide variety of
+usage, but of course there is always room for more.
+</p>
+<span id="index-Output-formats_002c-supporting-more"></span>
+<span id="index-SGML_002dtools-output-format"></span>
+<p>If you are a programmer and would like to contribute to the GNU
+project by implementing additional output formats for Texinfo, that
+would be excellent.  The way to do this that would be most useful is
+to write a new back-end for <code>texi2any</code>, our reference
+implementation of a Texinfo parser; it creates a tree representation
+of the Texinfo input that you can use for the conversion.  The
+documentation in the source file
+<samp>tp/Texinfo/Convert/Converter.pm</samp> is a good place to start.
+See <a href="Generic-Translator-texi2any.html">Generic Translator <code>texi2any</code></a>.
+</p>
+<p>Another viable approach is use the Texinfo XML output from
+<code>texi2any</code> as your input.  This XML is an essentially complete
+representation of the input, but without the Texinfo syntax and option
+peculiarities, as described above.
+</p>
+<span id="index-Texinfo-parsers_002c-discouraging-more"></span>
+<p>If you still cannot resist the temptation of writing a new program
+that reads Texinfo source directly, let us give some more caveats:
+please do not underestimate the amount of work required.  Texinfo is
+by no means a simple language to parse correctly, and remains under
+development, so you would be committing to an ongoing task.  You
+are advised to check that the tests of the language that come with
+<code>texi2any</code> give correct results with your new program.
+</p>
+<span id="index-Man-page-output_002c-not-supported"></span>
+<p>From time to time, proposals are made to generate traditional Unix man
+pages from Texinfo source.  However, because man pages have a strict
+conventional format, creating a good man page requires a completely
+different source from that needed for the typical Texinfo applications 
+of writing a good user tutorial and/or a good reference manual.  This 
+makes generating man pages incompatible with the Texinfo design
+goal of not having to document the same information in different
+ways for different output formats.  You might as well write the man
+page directly.
+</p>
+<span id="index-help2man"></span>
+<span id="index-O_0027Dea_002c-Brendan"></span>
+<p>As an alternative way to support man pages, you may find the program
+<code>help2man</code> to be useful.  It generates a traditional man page
+from the &lsquo;<samp>--help</samp>&rsquo; output of a program.  In fact, the man pages
+for the programs in the Texinfo distribution are generated with this.
+It is GNU software written by Brendan O&rsquo;Dea, available from
+<a href="http://www.gnu.org/software/help2man">http://www.gnu.org/software/help2man</a>.
+</p>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="History.html" accesskey="n" rel="next">History</a>, Previous: <a href="Printed-Books.html" accesskey="p" rel="prev">Printed Books</a>, Up: <a href="Overview.html" accesskey="u" rel="up">Overview</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

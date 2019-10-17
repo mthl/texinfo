@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Other Customization Variables (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Other Customization Variables (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Other Customization Variables (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Customization-Variables.html" rel="up" title="Customization Variables">
+<link href="Internationalization-of-Document-Strings.html" rel="next" title="Internationalization of Document Strings">
+<link href="HTML-Customization-Variables.html" rel="prev" title="HTML Customization Variables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Other-Customization-Variables"></span><div class="header">
+<p>
+Previous: <a href="HTML-Customization-Variables.html" accesskey="p" rel="prev">HTML Customization Variables</a>, Up: <a href="Customization-Variables.html" accesskey="u" rel="up">Customization Variables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Other-Customization-Variables-1"></span><h4 class="subsection">20.6.4 Other Customization Variables</h4>
+
+<p>This table gives the remaining customization variables, which apply to
+multiple formats, or affect global behavior, or otherwise don&rsquo;t fit
+into the categories of the previous sections.
+</p>
+<dl compact="compact">
+<dt><code>CLOSE_QUOTE_SYMBOL</code>
+<span id="index-CLOSE_005fQUOTE_005fSYMBOL"></span>
+</dt>
+<dd><p>When a closing quote is needed, use this character; default <code>&amp;rsquo;</code>
+in HTML, <code>&amp;#8217;</code> in Docbook.  The default for Info is the same
+as <code>OPEN_QUOTE_SYMBOL</code> (see below).
+</p>
+
+</dd>
+<dt><code>CPP_LINE_DIRECTIVES</code>
+<span id="index-CPP_005fLINE_005fDIRECTIVES-1"></span>
+</dt>
+<dd><p>Recognize <code>#line</code> directives in a &ldquo;preprocessing&rdquo; pass
+(see <a href="External-Macro-Processors.html">External Macro Processors</a>); on by default.
+</p>
+</dd>
+<dt><code>DEBUG</code>
+<span id="index-DEBUG"></span>
+</dt>
+<dd><p>If set, debugging output is generated; default is off (zero).
+</p>
+</dd>
+<dt><code>DOCTYPE</code>
+<span id="index-DOCTYPE"></span>
+</dt>
+<dd><span id="index-SystemLiteral"></span>
+<p>For Docbook, HTML, XML.  Specifies the <code>SystemLiteral</code>, the
+entity&rsquo;s system identifier.  This is a URI which may be used to
+retrieve the entity, and identifies the canonical DTD for the
+document.  The default value is different for each of HTML, Docbook
+and Texinfo&nbsp;XML.
+</p>
+</dd>
+<dt><code>DUMP_TEXI</code>
+<span id="index-DUMP_005fTEXI"></span>
+</dt>
+<dd><p>For debugging.  If set, no conversion is done, only parsing and macro
+expansion.  If the option <samp>--macro-expand</samp> is set, the Texinfo
+source is also expanded to the corresponding file.  Default false.
+</p>
+</dd>
+<dt><code>DUMP_TREE</code>
+<span id="index-DUMP_005fTREE"></span>
+</dt>
+<dd><p>For debugging.  If set, the tree constructed upon parsing a Texinfo
+document is output to standard error; default false.
+</p>
+</dd>
+<dt><code>ENABLE_ENCODING_USE_ENTITY</code>
+<span id="index-ENABLE_005fENCODING_005fUSE_005fENTITY"></span>
+</dt>
+<dd><p>For HTML, XML.  If <samp>--enable-encoding</samp> is set, and there is an
+entity corresponding with the letter or the symbol being output,
+prefer the entity.  Set by default for HTML, but not XML.
+</p>
+</dd>
+<dt><code>EXTERNAL_CROSSREF_SPLIT</code>
+<span id="index-EXTERNAL_005fCROSSREF_005fSPLIT"></span>
+</dt>
+<dd><p>For cross-references to other manuals, this determines if the other
+manual is considered to be split or monolithic.  By default, it is set
+based on the value of <code>SPLIT</code>.  See <a href="HTML-Xref.html">HTML Xref</a>, and see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>.
+</p>
+</dd>
+<dt><code>EXTENSION</code>
+<span id="index-EXTENSION"></span>
+</dt>
+<dd><p>The extension added to the output file name.  The default is different
+for each output format.
+</p>
+
+</dd>
+<dt><code>IGNORE_BEFORE_SETFILENAME</code>
+<span id="index-IGNORE_005fBEFORE_005fSETFILENAME"></span>
+</dt>
+<dd><p>If set, begin outputting at <code>@setfilename</code>, if
+<code>@setfilename</code> is present; default true.
+</p>
+</dd>
+<dt><code>IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME</code>
+<span id="index-IGNORE_005fSPACE_005fAFTER_005fBRACED_005fCOMMAND_005fNAME"></span>
+</dt>
+<dd><p>If set, spaces are ignored after an @-command that takes braces.
+Default true, matching the TeX behavior.
+</p>
+</dd>
+<dt><code>INDEX_ENTRY_COLON</code>
+<span id="index-INDEX_005fENTRY_005fCOLON"></span>
+</dt>
+<dd><p>Symbol used between the index entry and the associated node or section;
+default &lsquo;<samp>:</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>INDEX_SPECIAL_CHARS_WARNING</code>
+<span id="index-INDEX_005fSPECIAL_005fCHARS_005fWARNING"></span>
+</dt>
+<dd><p>If set, warn about &lsquo;<samp>:</samp>&rsquo; in index entry, as it leads to invalid entries in
+index menus in output Info files.  For Info and plaintext only.
+</p>
+<span id="INFO_005fSPECIAL_005fCHARS_005fQUOTE"></span></dd>
+<dt><code>INFO_SPECIAL_CHARS_QUOTE</code>
+<span id="index-INFO_005fSPECIAL_005fCHARS_005fQUOTE"></span>
+</dt>
+<dd><p>If set, whenever there are problematic characters for Info output in
+places such as node names or menu items, surround the part of the
+construct where they appear with quoting characters, as described in
+<a href="Info-Format-Specification.html">Info Format Specification</a>.  See <a href="Node-Line-Requirements.html">Node Line Requirements</a>.
+</p>
+</dd>
+<dt><code>INFO_SPECIAL_CHARS_WARNING</code>
+<span id="index-INFO_005fSPECIAL_005fCHARS_005fWARNING"></span>
+</dt>
+<dd><p>If set, warn about problematic constructs for Info output (such as the
+string &lsquo;<samp>::</samp>&rsquo;) in node names, menu items, and cross-references;
+default true.  Do not warn about index entries, since parsing problems
+there don&rsquo;t prevent navigation; readers can still relatively easily
+find their way to the node in question.
+</p>
+</dd>
+<dt><code>MAX_MACRO_CALL_NESTING</code>
+<span id="index-MAX_005fMACRO_005fCALL_005fNESTING"></span>
+</dt>
+<dd><p>The maximal number of recursive calls of @-commands defined through
+<code>@rmacro</code>; default 100000.  The purpose of this variable is to
+avoid infinite recursions.
+</p>
+</dd>
+<dt><code>MENU_ENTRY_COLON</code>
+<span id="index-MENU_005fENTRY_005fCOLON"></span>
+</dt>
+<dd><p>Symbol used between the menu entry and the description; default
+empty.
+</p>
+</dd>
+<dt><code>NO_USE_SETFILENAME</code>
+<span id="index-NO_005fUSE_005fSETFILENAME"></span>
+</dt>
+<dd><p>If set, do not use <code>@setfilename</code> to set the document name;
+instead, base the output document name only on the input file name.
+The default is false.
+</p>
+</dd>
+<dt><code>NODE_FILENAMES</code>
+<span id="index-NODE_005fFILENAMES"></span>
+</dt>
+<dd><p>If set, node names are used to construct file names.  By default, it
+is set if the output is split by node, or if <code>NODE_FILES</code> is set
+and the output is split in any way.
+</p>
+</dd>
+<dt><code>NODE_NAME_IN_INDEX</code>
+<span id="index-NODE_005fNAME_005fIN_005fINDEX"></span>
+</dt>
+<dd><p>If set, use node names in index entries, otherwise prefer section names;
+default true.
+</p>
+</dd>
+<dt><code>NODE_NAME_IN_MENU</code>
+<span id="index-NODE_005fNAME_005fIN_005fMENU"></span>
+</dt>
+<dd><p>If set, use node names in menu entries, otherwise prefer section names;
+default true.
+</p>
+</dd>
+<dt><code>OPEN_QUOTE_SYMBOL</code>
+<span id="index-OPEN_005fQUOTE_005fSYMBOL"></span>
+</dt>
+<dd><p>When an opening quote is needed, e.g., for &lsquo;<samp>@samp</samp>&rsquo; output, use
+the specified character; default <code>&amp;lsquo;</code> for HTML,
+<code>&amp;#8216;</code> for Docbook.  For Info, the default depends on the
+enabled document encoding (see <a href="_0040documentencoding.html"><code>@documentencoding</code></a>); if no
+document encoding is set, or the encoding is US-ASCII, etc., &lsquo;<samp>'</samp>&rsquo;
+is used.  This character usually appears as an undirected single quote
+on modern systems.  If the document encoding is Unicode, the Info
+output uses a Unicode left quote.
+</p>
+</dd>
+<dt><code>OUTPUT_ENCODING_NAME</code>
+<span id="index-OUTPUT_005fENCODING_005fNAME"></span>
+</dt>
+<dd><p>Normalized encoding name used for output files.  Should be a usable
+charset name in HTML, typically one of the preferred IANA encoding
+names.  By default, if an input encoding is set (typically through
+<code>@documentencoding</code> or <code>INPUT_ENCODING_NAME</code>), this
+information is used to set the output encoding name.  If no input
+encoding is specified, the default output encoding name may be set by
+the output format.  In particular, the XML-based formats use
+<code>utf-8</code> for <code>OUTPUT_ENCODING_NAME</code> if the encoding is not
+otherwise specified.  See <a href="_0040documentencoding.html"><code>@documentencoding</code></a>.
+</p>
+</dd>
+<dt><code>OVERVIEW_LINK_TO_TOC</code>
+<span id="index-OVERVIEW_005fLINK_005fTO_005fTOC"></span>
+</dt>
+<dd><p>If set, the cross-references in the Overview link to the corresponding
+Table of Contents entries; default true.
+</p>
+</dd>
+<dt><code>PACKAGE</code>
+<span id="index-PACKAGE"></span>
+</dt>
+<dt><code>PACKAGE_VERSION</code>
+<span id="index-PACKAGE_005fVERSION"></span>
+</dt>
+<dt><code>PACKAGE_AND_VERSION</code>
+<span id="index-PACKAGE_005fAND_005fVERSION"></span>
+</dt>
+<dt><code>PACKAGE_URL</code>
+<span id="index-PACKAGE_005fURL"></span>
+</dt>
+<dt><code>PACKAGE_NAME</code>
+<span id="index-PACKAGE_005fNAME"></span>
+</dt>
+<dd><p>The implementation&rsquo;s short package name, package version, package name
+and version concatenated, package url, and full package name,
+respectively.  By default, these variables are all set through
+Autoconf, Automake, and <code>configure</code>.
+</p>
+</dd>
+<dt><code>PREFIX</code>
+<span id="index-PREFIX"></span>
+</dt>
+<dd><p>The output file prefix, which is prepended to some output file names.
+By default it is set by <code>@setfilename</code> or from the input file
+(see <a href="_0040setfilename.html"><code>@setfilename</code></a>).  How this value is used depends on the
+value of other customization variables or command line options, such
+as whether the output is split and <code>NODE_FILENAMES</code>.  The default
+is unset.
+</p>
+</dd>
+<dt><code>PROGRAM</code>
+<span id="index-PROGRAM"></span>
+</dt>
+<dd><p>Name of the program used.  By default, it is set to the name of the
+program launched, with a trailing &lsquo;<samp>.pl</samp>&rsquo; removed.
+</p>
+</dd>
+<dt><code>SHOW_MENU</code>
+<span id="index-SHOW_005fMENU"></span>
+</dt>
+<dd><span id="index-HEADERS"></span>
+<span id="index-_002d_002dno_002dheaders-1"></span>
+<p>If set, Texinfo menus are output.  By default, it is set unless
+generating Docbook or if <samp>--no-headers</samp> is specified.
+</p>
+</dd>
+<dt><code>SORT_ELEMENT_COUNT</code>
+<span id="index-SORT_005fELEMENT_005fCOUNT"></span>
+</dt>
+<dd><span id="index-texi_002delements_002dby_002dsize"></span>
+<span id="index-Longest-nodes_002c-finding"></span>
+<span id="index-Sorting-nodes-by-size"></span>
+<p>If set, the name of a file to which a list of elements (nodes or
+sections, depending on the output format) is dumped, sorted by the
+number of lines they contain after removal of @-commands; default
+unset.  This is used by the program <code>texi-elements-by-size</code> in
+the <samp>util/</samp> directory of the Texinfo source distribution
+(see <a href="Tips.html#texi_002delements_002dby_002dsize">texi-elements-by-size</a>).
+</p>
+</dd>
+<dt><code>SORT_ELEMENT_COUNT_WORDS</code>
+<span id="index-SORT_005fELEMENT_005fCOUNT_005fWORDS"></span>
+</dt>
+<dd><p>When dumping the elements-by-size file (see preceding item), use word
+counts instead of line counts; default false.
+</p>
+
+</dd>
+<dt><code>TEST</code>
+<span id="index-TEST"></span>
+</dt>
+<dd><p>If set to true, some variables which are normally dynamically
+generated anew for each run (date, program name, version) are set to
+fixed and given values.  This is useful to compare the output to a
+reference file, as is done for the tests.  The default is false.
+</p>
+</dd>
+<dt><code>TEXI2DVI</code>
+<span id="index-TEXI2DVI"></span>
+</dt>
+<dd><p>Name of the command used to produce PostScript, PDF, and DVI; default
+&lsquo;<samp>texi2dvi</samp>&rsquo;.  See <a href="texi2any-Printed-Output.html"><code>texi2any</code> Printed Output</a>.
+</p>
+</dd>
+<dt><code>TEXI2HTML</code>
+<span id="index-TEXI2HTML"></span>
+</dt>
+<dd><span id="index-compatibility_002c-with-texi2html"></span>
+<p>Generate HTML and try to be as compatible as possible with
+<code>texi2html</code>; default false.
+</p>
+</dd>
+<dt><code>TEXINFO_DTD_VERSION</code>
+<span id="index-TEXINFO_005fDTD_005fVERSION"></span>
+</dt>
+<dd><p>For XML.  Version of the DTD used in the XML output preamble.  The
+default is set based on a variable in <samp>configure.ac</samp>.
+</p>
+</dd>
+<dt><code>TEXTCONTENT_COMMENT</code>
+<span id="index-TEXTCONTENT_005fCOMMENT"></span>
+</dt>
+<dd><p>For stripped text content output (i.e., when
+<code>TEXINFO_OUTPUT_FORMAT</code> is set to <code>textcontent</code>).  If set,
+also output comments.  Default false.
+</p>
+</dd>
+<dt><code>TOP_NODE_UP</code>
+<span id="index-TOP_005fNODE_005fUP"></span>
+</dt>
+<dd><p>Up node for the Top node; default &lsquo;<samp>(dir)</samp>&rsquo;.  This node name is 
+supposed to be already formatted for the output format.  In HTML
+can be used in attribute, so should not contain any element.  Used for
+HTML output only if <code>TOP_NODE_UP_URL</code> is set to override the url, 
+see <code>TOP_NODE_UP_URL</code> in <a href="HTML-Customization-Variables.html">HTML Customization Variables</a>.  
+</p>
+</dd>
+<dt><code>TREE_TRANSFORMATIONS</code>
+<span id="index-TREE_005fTRANSFORMATIONS"></span>
+</dt>
+<dd><p>The associated value is a comma separated list of transformations that
+can be applied to the Texinfo tree prior to outputting the result.  If
+more than one is specified, the ordering is irrelevant; each is always
+applied at the necessary point during processing.
+</p>
+<p>The only one executed by default is
+&lsquo;<samp>move_index_entries_after_items</samp>&rsquo; for HTML and Docbook output.
+Here&rsquo;s an example of updating the master menu in a document:
+</p>
+<div class="example">
+<pre class="example">makeinfo \
+  -c TREE_TRANSFORMATIONS=regenerate_master_menu \
+  -c PLAINTEXINFO=1 \
+  mydoc.texi \
+  -o /tmp/out
+</pre></div>
+
+<p>(Caveat: Since <code>PLAINTEXINFO</code> output does expand
+Texinfo macros and conditionals, it&rsquo;s necessary to remove any such
+differences before installing the updates in the original document.
+This will be remedied in a future release.)
+</p>
+<p>The following transformations are currently supported (many are used
+in the <code>pod2texi</code> utility distributed with Texinfo;
+see <a href="Invoking-pod2texi.html">Invoking <code>pod2texi</code></a>):
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>complete_tree_nodes_menus</samp>&rsquo;
+<span id="index-complete_005ftree_005fnodes_005fmenus"></span>
+</dt>
+<dd><p>Add menu entries or whole menus for nodes associated with sections of
+any level, based on the sectioning tree.
+</p>
+</dd>
+<dt>&lsquo;<samp>fill_gaps_in_sectioning</samp>&rsquo;
+<span id="index-fill_005fgaps_005fin_005fsectioning"></span>
+</dt>
+<dd><p>Adds empty <code>@unnumbered...</code> sections in a tree to fill gaps in
+sectioning.  For example, an <code>@unnumberedsec</code> will be inserted
+if a <code>@chapter</code> is followed by a <code>@subsection</code>.
+</p>
+</dd>
+<dt>&lsquo;<samp>insert_nodes_for_sectioning_commands</samp>&rsquo;
+<span id="index-insert_005fnodes_005ffor_005fsectioning_005fcommands"></span>
+</dt>
+<dd><p>Insert nodes for sectioning commands lacking a corresponding node.
+</p>
+</dd>
+<dt>&lsquo;<samp>move_index_entries_after_items</samp>&rsquo;
+<span id="index-move_005findex_005fentries_005fafter_005fitems"></span>
+</dt>
+<dd><p>In <code>@enumerate</code> and <code>@itemize</code>, move index entries
+appearing just before an <code>@item</code> to just after the
+<code>@item</code>.  Comment lines between index entries are moved too.  As
+mentioned, this is always done for HTML and Docbook output.
+</p>
+</dd>
+<dt>&lsquo;<samp>regenerate_master_menu</samp>&rsquo;
+<span id="index-regenerate_005fmaster_005fmenu"></span>
+</dt>
+<dd><p>Update the Top node master menu, either replacing the (first)
+<code>@detailmenu</code> in the Top node menu, or creating it at the end of
+the Top node menu.
+</p>
+</dd>
+<dt>&lsquo;<samp>simple_menu</samp>&rsquo;
+<span id="index-simple_005fmenu"></span>
+</dt>
+<dd><p>Mostly the same as <code>SIMPLE_MENU</code>: use a simple preformatted style
+for the menu.  It differs from setting <code>SIMPLE_MENU</code> in that
+<code>SIMPLE_MENU</code> only has an effect in HTML output.
+</p>
+</dd>
+</dl>
+
+</dd>
+<dt><code>USE_NODES</code>
+<span id="index-USE_005fNODES"></span>
+</dt>
+<dd><p>Preferentially use nodes to decide where elements are separated.  If
+set to false, preferentially use sectioning to decide where elements
+are separated.  The default is true.
+</p>
+</dd>
+<dt><code>USE_NODE_TARGET</code>
+<span id="index-USE_005fNODE_005fTARGET"></span>
+</dt>
+<dd><p>If set, use the node associated with a section for the section target
+in cross-references; default true.
+</p>
+</dd>
+<dt><code>USE_NUMERIC_ENTITY</code>
+<span id="index-USE_005fNUMERIC_005fENTITY"></span>
+</dt>
+<dd><p>For HTML and XML.  If set, use numeric entities instead of ASCII
+characters when there is no named entity.  By default, set to true for
+HTML.
+</p>
+</dd>
+<dt><code>USE_UP_NODE_FOR_ELEMENT_UP</code>
+<span id="index-USE_005fUP_005fNODE_005fFOR_005fELEMENT_005fUP"></span>
+</dt>
+<dd><p>Fill in up sectioning direction with node direction when there is no
+sectioning up direction.  In practice this can only happen when there
+is no @top section.  Not set by default.
+</p>
+</dd>
+<dt><code>USE_SETFILENAME_EXTENSION</code>
+<span id="index-USE_005fSETFILENAME_005fEXTENSION"></span>
+</dt>
+<dd><p>Default is on for Info, off for other output.  If set, use exactly
+what <code>@setfilename</code> gives for the output file name, including
+the extension.  You should not need to explicitly set this variable.
+</p>
+</dd>
+<dt><code>USE_TITLEPAGE_FOR_TITLE</code>
+<span id="index-USE_005fTITLEPAGE_005fFOR_005fTITLE"></span>
+</dt>
+<dd><p>Use the full <code>@titlepage</code> as the title, not a simple title string;
+default false.
+</p>
+</dd>
+<dt><code>USE_UNIDECODE</code>
+<span id="index-USE_005fUNIDECODE"></span>
+</dt>
+<dd><span id="index-Text_003a_003aUnidecode"></span>
+<p>If set to false, do not use the <code>Text::Unidecode</code> Perl module to
+transliterate more characters; default true.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="HTML-Customization-Variables.html" accesskey="p" rel="prev">HTML Customization Variables</a>, Up: <a href="Customization-Variables.html" accesskey="u" rel="up">Customization Variables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

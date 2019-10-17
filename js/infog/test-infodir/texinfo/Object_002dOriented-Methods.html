@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Object-Oriented Methods (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Object-Oriented Methods (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Object-Oriented Methods (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Abstract-Objects.html" rel="up" title="Abstract Objects">
+<link href="Def-Cmd-Conventions.html" rel="next" title="Def Cmd Conventions">
+<link href="Object_002dOriented-Variables.html" rel="prev" title="Object-Oriented Variables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Object_002dOriented-Methods"></span><div class="header">
+<p>
+Previous: <a href="Object_002dOriented-Variables.html" accesskey="p" rel="prev">Object-Oriented Variables</a>, Up: <a href="Abstract-Objects.html" accesskey="u" rel="up">Abstract Objects</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Object_002dOriented-Methods-1"></span><h4 class="subsubsection">14.5.6.2 Object-Oriented Methods</h4>
+
+<span id="index-Methods_002c-object_002doriented"></span>
+
+<p>These commands allow you to define different sorts of function-like
+entities resembling methods in object-oriented programming languages.
+These entities take arguments, as functions do, but are associated with
+particular classes of objects.
+</p>
+<dl compact="compact">
+<dd>
+<span id="index-defop"></span>
+</dd>
+<dt><code>@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@defop</code> command is the general definition command for these
+method-like entities.
+</p>
+<p>For example, some systems have constructs called <em>wrappers</em> that
+are associated with classes as methods are, but that act more like
+macros than like functions.  You could use <code>@defop Wrapper</code> to
+describe one of these.
+</p>
+<p>Sometimes it is useful to distinguish methods and <em>operations</em>.
+You can think of an operation as the specification for a method.
+Thus, a window system might specify that all window classes have a
+method named <code>expose</code>; we would say that this window system
+defines an <code>expose</code> operation on windows in general.  Typically,
+the operation has a name and also specifies the pattern of arguments;
+all methods that implement the operation must accept the same
+arguments, since applications that use the operation do so without
+knowing which method will implement it.
+</p>
+<p>Often it makes more sense to document operations than methods.  For
+example, window application developers need to know about the
+<code>expose</code> operation, but need not be concerned with whether a
+given class of windows has its own method to implement this operation.
+To describe this operation, you would write:
+</p>
+<div class="example">
+<pre class="example">@defop Operation windows expose
+</pre></div>
+
+<p>The <code>@defop</code> command is written at the beginning of a line and
+is followed on the same line by the overall name of the category of
+operation, the name of the class of the operation, the name of the
+operation, and its arguments, if any.
+</p>
+<p>The template is:
+</p><div class="example">
+<pre class="example">@defop <var>category</var> <var>class</var> <var>name</var> <var>arguments</var>&hellip;
+<var>body-of-definition</var>
+@end defop
+</pre></div>
+
+<p><code>@defop</code> creates an entry, such as &lsquo;<code>expose</code> on
+<code>windows</code>&rsquo;, in the index of functions.
+</p>
+<span id="index-deftypeop"></span>
+</dd>
+<dt><code>@deftypeop <var>category</var> <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><p>The <code>@deftypeop</code> command is the definition command for typed
+operations in object-oriented programming.  It is similar to
+<code>@defop</code> with the addition of the <var>data-type</var> parameter to
+specify the return type of the method.  <code>@deftypeop</code> creates an
+entry in the index of functions.
+</p>
+</dd>
+<dt><code>@defmethod <var>class</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><span id="index-defmethod"></span>
+<p>The <code>@defmethod</code> command is the definition command for methods
+in object-oriented programming.  A method is a kind of function that
+implements an operation for a particular class of objects and its
+subclasses.
+</p>
+<p><code>@defmethod</code> is equivalent to &lsquo;<samp>@defop Method &hellip;</samp>&rsquo;.
+The command is written at the beginning of a line and is followed by
+the name of the class of the method, the name of the method, and its
+arguments, if any.
+</p>
+<p>For example:
+</p><div class="example">
+<pre class="example">@defmethod <code>bar-class</code> bar-method argument
+&hellip;
+@end defmethod
+</pre></div>
+
+<p>illustrates the definition for a method called <code>bar-method</code> of
+the class <code>bar-class</code>.  The method takes an argument.
+</p>
+<p><code>@defmethod</code> creates an entry in the index of functions.
+</p>
+</dd>
+<dt><code>@deftypemethod <var>class</var> <var>data-type</var> <var>name</var> <var>arguments</var>&hellip;</code></dt>
+<dd><span id="index-deftypemethod"></span>
+<p>The <code>@deftypemethod</code> command is the definition command for methods
+in object-oriented typed languages, such as C++ and Java.  It is similar
+to the <code>@defmethod</code> command with the addition of the
+<var>data-type</var> parameter to specify the return type of the method.
+<code>@deftypemethod</code> creates an entry in the index of functions.
+</p>
+</dd>
+</dl>
+
+<p>The typed commands are affected by the <code>@deftypefnnewline</code>
+option (see <a href="Typed-Functions.html">Functions in Typed Languages</a>).
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Object_002dOriented-Variables.html" accesskey="p" rel="prev">Object-Oriented Variables</a>, Up: <a href="Abstract-Objects.html" accesskey="u" rel="up">Abstract Objects</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

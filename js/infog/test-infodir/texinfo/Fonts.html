@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Fonts (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Fonts (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Fonts (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Emphasis.html" rel="up" title="Emphasis">
+<link href="Quotations-and-Examples.html" rel="next" title="Quotations and Examples">
+<link href="Smallcaps.html" rel="prev" title="Smallcaps">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Fonts"></span><div class="header">
+<p>
+Previous: <a href="Smallcaps.html" accesskey="p" rel="prev">Smallcaps</a>, Up: <a href="Emphasis.html" accesskey="u" rel="up">Emphasis</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Fonts-for-Printing"></span><h4 class="subsection">7.2.3 Fonts for Printing</h4>
+<span id="index-Fonts-for-printing"></span>
+
+<span id="index-fonttextsize"></span>
+<span id="index-Font-size_002c-reducing"></span>
+<span id="index-Reducing-font-size"></span>
+<span id="index-Smaller-fonts"></span>
+<p>Texinfo provides one command to change the size of the main body font
+in the TeX output for a document: <code>@fonttextsize</code>.  It has no
+effect in other output.  It takes a single argument on the remainder
+of the line, which must be either &lsquo;<samp>10</samp>&rsquo; or &lsquo;<samp>11</samp>&rsquo;.  For
+example:
+</p>
+<div class="example">
+<pre class="example">@fonttextsize 10
+</pre></div>
+
+<span id="index-Printing-cost_002c-reducing"></span>
+<p>The effect is to reduce the body font to a 10pt size (the
+default is 11pt).  Fonts for other elements, such as sections
+and chapters, are reduced accordingly.  This should only be used in
+conjunction with <code>@smallbook</code> (see <a href="_0040smallbook.html"><code>@smallbook</code></a>) or
+similar, since 10pt fonts on standard paper (8.5x11 or A4) are
+too small.  One reason to use this command is to save pages, and hence
+printing cost, for physical books.
+</p>
+<p>Texinfo does not at present have commands to switch the font family
+to use, or more general size-changing commands.
+</p>
+<p>Texinfo also provides a number of font commands that specify font
+changes in the printed manual and (where possible) in the HTML output.
+They have no effect in Info.  All the commands apply to a following
+argument surrounded by braces.
+</p>
+<dl compact="compact">
+<dt><code>@b</code></dt>
+<dd><span id="index-b-_0028bold-font_0029"></span>
+<span id="index-Bold-font"></span>
+<p>selects <b>bold</b> face;
+</p>
+</dd>
+<dt><code>@i</code></dt>
+<dd><span id="index-i-_0028italic-font_0029"></span>
+<span id="index-Italic-font"></span>
+<p>selects an <i>italic</i> font;
+</p>
+</dd>
+<dt><code>@r</code></dt>
+<dd><span id="index-r-_0028roman-font_0029"></span>
+<span id="index-Roman-font"></span>
+<span id="index-Default-font"></span>
+<p>selects a <span class="roman">roman</span> font, which is the usual font in which text is
+printed.  It may or may not be seriffed.
+</p>
+</dd>
+<dt><code>@sansserif</code></dt>
+<dd><span id="index-sansserif-_0028sans-serif-font_0029"></span>
+<span id="index-Sans-serif-font"></span>
+<p>selects a <span class="sansserif">sans serif</span> font;
+</p>
+</dd>
+<dt><code>@slanted</code></dt>
+<dd><span id="index-slanted-_0028slanted-font_0029"></span>
+<span id="index-Slanted-font"></span>
+<span id="index-Oblique-font"></span>
+<p>selects a <i>slanted</i> font;
+</p>
+</dd>
+<dt><code>@t</code></dt>
+<dd><span id="index-t-_0028typewriter-font_0029"></span>
+<span id="index-Monospace-font"></span>
+<span id="index-Fixed_002dwidth-font"></span>
+<span id="index-Typewriter-font"></span>
+<p>selects the <tt>fixed-width</tt>, typewriter-style font used by <code>@code</code>;
+</p>
+</dd>
+</dl>
+
+<p>(The commands with longer names were invented much later than the
+others, at which time it did not seem desirable to use very short
+names for such infrequently needed features.)
+</p>
+<span id="index-_003clineannotation_003e-Docbook-tag"></span>
+<p>The <code>@r</code> command can be useful in example-like environments, to
+write comments in the standard roman font instead of the fixed-width
+font.  This looks better in printed output, and produces a
+<code>&lt;lineannotation&gt;</code> tag in Docbook output.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@lisp
+(+ 2 2)    ; @r{Add two plus two.}
+@end lisp
+</pre></div>
+
+<p>produces
+</p>
+<div class="lisp">
+<pre class="lisp">(+ 2 2)    ; <span class="roman">Add two plus two.</span>
+</pre></div>
+
+<p>The <code>@t</code> command can occasionally be useful to produce output in
+a typewriter font where that is supported (e.g., HTML and PDF), but no
+distinction is needed in Info or plain text: <code>@t{foo}</code>
+produces <tt>foo</tt>, cf. <code>@code{foo}</code> producing <code>foo</code>.
+</p>
+<p>In general, the other font commands are unlikely to be useful; they
+exist primarily to make it possible to document the functionality of
+specific font effects, such as in TeX and related packages.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Smallcaps.html" accesskey="p" rel="prev">Smallcaps</a>, Up: <a href="Emphasis.html" accesskey="u" rel="up">Emphasis</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

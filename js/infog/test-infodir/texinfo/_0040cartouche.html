@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@cartouche (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@cartouche (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@cartouche (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Quotations-and-Examples.html" rel="up" title="Quotations and Examples">
+<link href="_0040small_2026.html" rel="next" title="@small&hellip;">
+<link href="_0040indent.html" rel="prev" title="@indent">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040cartouche"></span><div class="header">
+<p>
+Next: <a href="_0040small_2026.html" accesskey="n" rel="next"><code>@small&hellip;</code></a>, Previous: <a href="_0040indent.html" accesskey="p" rel="prev"><code>@indent</code></a>, Up: <a href="Quotations-and-Examples.html" accesskey="u" rel="up">Quotations and Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040cartouche_003a-Rounded-Rectangles"></span><h3 class="section">8.14 <code>@cartouche</code>: Rounded Rectangles</h3>
+
+<span id="cartouche"></span><span id="index-cartouche"></span>
+<span id="index-Box-with-rounded-corners"></span>
+<span id="index-Rounded-rectangles_002c-around-text"></span>
+
+<p>In a printed manual, the <code>@cartouche</code> command draws a box with
+rounded corners around its contents.  In HTML, a normal rectangle is
+drawn.  <code>@cartouche</code> has no effect in Info output.
+</p>
+<p>You can use this command to further highlight an example or quotation.
+For instance, you could write a manual in which one type of example is
+surrounded by a cartouche for emphasis.
+</p>
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@cartouche
+@example
+% pwd
+/usr/local/share/emacs
+@end example
+@end cartouche
+</pre></div>
+
+<p>surrounds the two-line example with a box with rounded corners, in the
+printed manual.
+</p>
+<p>The output from the example looks like this (if you&rsquo;re reading this in
+Info, you&rsquo;ll see the <code>@cartouche</code> had no effect):
+</p>
+<table class="cartouche" border="1"><tr><td>
+<div class="example">
+<pre class="example">% pwd
+/usr/local/share/emacs
+</pre></div>
+</td></tr></table>
+
+<p><code>@cartouche</code> also implies <code>@group</code> (see <a href="_0040group.html"><code>@group</code></a>).
+</p>
+
+
+
+</body>
+</html>

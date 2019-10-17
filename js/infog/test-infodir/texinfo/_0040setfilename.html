@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@setfilename (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@setfilename (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@setfilename (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Texinfo-File-Header.html" rel="up" title="Texinfo File Header">
+<link href="_0040settitle.html" rel="next" title="@settitle">
+<link href="Start-of-Header.html" rel="prev" title="Start of Header">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040setfilename"></span><div class="header">
+<p>
+Next: <a href="_0040settitle.html" accesskey="n" rel="next"><code>@settitle</code></a>, Previous: <a href="Start-of-Header.html" accesskey="p" rel="prev">Start of Header</a>, Up: <a href="Texinfo-File-Header.html" accesskey="u" rel="up">Texinfo File Header</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040setfilename_003a-Set-the-Output-File-Name"></span><h4 class="subsection">3.2.3 <code>@setfilename</code>: Set the Output File Name</h4>
+
+<span id="setfilename"></span><span id="index-setfilename"></span>
+<span id="index-Texinfo-requires-_0040setfilename"></span>
+<span id="index-Output-file-name_002c-required"></span>
+
+<p>The <code>@setfilename</code> line specifies the name of the output file to
+be generated.
+When present, it should be the first Texinfo command (that is, after
+&lsquo;<samp>\input texinfo</samp>&rsquo;).
+Write the <code>@setfilename</code> command at the beginning of a line and
+follow it on the same line by the Info file name.
+</p>
+<div class="example">
+<pre class="example">@setfilename <var>info-file-name</var>
+</pre></div>
+
+<p>The name must be different from the name of the
+Texinfo file.  There are two conventions for choosing the name: you
+can either remove the extension (such as &lsquo;<samp>.texi</samp>&rsquo;) entirely from
+the input file name, or (recommended) replace it with the &lsquo;<samp>.info</samp>&rsquo;
+extension.
+</p>
+<span id="index-Ignored-before-_0040setfilename"></span>
+<span id="index-_005cinput-source-line-ignored"></span>
+<p>When a <code>@setfilename</code> line is present, the Texinfo processors
+ignore everything written before the <code>@setfilename</code> line.  This
+is why the very first line of the file (the <code>\input</code> line) does
+not show up in the output.
+</p>
+<p>If there is no <code>@setfilename</code> line, <code>makeinfo</code> uses the
+input file name to determine the output name: first, any of the
+extensions <code>.texi</code>, <code>.tex</code>, <code>.txi</code> or <code>.texinfo</code>
+is removed from the input file name; then, the output format specific
+extension is added&mdash;<code>.html</code> when generating HTML, <code>.info</code>
+when generating Info, etc.  The <code>\input</code> line is still ignored in
+this processing, as well as leading blank lines.
+</p>
+<p>When producing another output format, <code>makeinfo</code> will replace any
+final extension with the output format-specific extension (&lsquo;<samp>html</samp>&rsquo;
+when generating HTML, for example), or add a dot followed by the
+extension (&lsquo;<samp>.html</samp>&rsquo; for HTML) if the given name has no extension.
+</p>
+<p><code>@setfilename</code> used to be required by the Texinfo processors, and 
+some other programs may still expect it to be present; for example, 
+Automake (see <a href="https://www.gnu.org/software/automake/manual/html_node/Texinfo.html#Texinfo">Texinfo</a> in <cite>GNU Automake</cite>).
+</p>
+<span id="index-Length-of-file-names"></span>
+<span id="index-File-name-collision"></span>
+<span id="index-Info-file-name_002c-choosing"></span>
+<p>Although an explicit &lsquo;<samp>.info</samp>&rsquo; extension is preferable, some
+operating systems cannot handle long file names.  You can run into a
+problem even when the file name you specify is itself short enough.
+This occurs because the Info formatters split a long Info file into
+short indirect subfiles, and name them by appending &lsquo;<samp>-1</samp>&rsquo;,
+&lsquo;<samp>-2</samp>&rsquo;, &hellip;, &lsquo;<samp>-10</samp>&rsquo;, &lsquo;<samp>-11</samp>&rsquo;, and so on, to the original
+file name.  (See <a href="Tag-and-Split-Files.html">Tag and Split Files</a>.)  The subfile name
+<samp>texinfo.info-10</samp>, for example, is too long for old systems with
+a 14-character limit on filenames; so the Info file name for this
+document is <samp>texinfo</samp> rather than <samp>texinfo.info</samp>.  When
+<code>makeinfo</code> is running on operating systems such as MS-DOS which
+impose severe limits on file names, it may remove some characters from
+the original file name to leave enough space for the subfile suffix,
+thus producing files named <samp>texin-10</samp>, <samp>gcc.i12</samp>, etc.
+</p>
+<p>See also the <samp>--output</samp> option in <a href="Invoking-texi2any.html">Invoking <code>texi2any</code></a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040settitle.html" accesskey="n" rel="next"><code>@settitle</code></a>, Previous: <a href="Start-of-Header.html" accesskey="p" rel="prev">Start of Header</a>, Up: <a href="Texinfo-File-Header.html" accesskey="u" rel="up">Texinfo File Header</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

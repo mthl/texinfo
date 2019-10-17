@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@titlefont @center @sp (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@titlefont @center @sp (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@titlefont @center @sp (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Titlepage-_0026-Copyright-Page.html" rel="up" title="Titlepage &amp; Copyright Page">
+<link href="_0040title-_0040subtitle-_0040author.html" rel="next" title="@title @subtitle @author">
+<link href="_0040titlepage.html" rel="prev" title="@titlepage">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040titlefont-_0040center-_0040sp"></span><div class="header">
+<p>
+Next: <a href="_0040title-_0040subtitle-_0040author.html" accesskey="n" rel="next"><code>@title @subtitle @author</code></a>, Previous: <a href="_0040titlepage.html" accesskey="p" rel="prev"><code>@titlepage</code></a>, Up: <a href="Titlepage-_0026-Copyright-Page.html" accesskey="u" rel="up">Titlepage &amp; Copyright Page</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040titlefont_002c-_0040center_002c-and-_0040sp"></span><h4 class="subsection">3.4.2 <code>@titlefont</code>, <code>@center</code>, and <code>@sp</code></h4>
+
+<span id="titlefont-center-sp"></span><span id="index-titlefont"></span>
+<span id="index-center"></span>
+<span id="index-sp-_0028titlepage-line-spacing_0029"></span>
+
+<p>You can use the <code>@titlefont</code>, <code>@sp</code>, and <code>@center</code>
+commands to create a title page for a printed document.  (This is the
+first of the two methods for creating a title page in Texinfo.)
+</p>
+<p>Use the <code>@titlefont</code> command to select a large font suitable for
+the title itself.  You can use <code>@titlefont</code> more than once if you
+have an especially long title.
+</p>
+<p>For HTML output, each <code>@titlefont</code> command produces an
+<code>&lt;h1&gt;</code> heading, but the HTML document <code>&lt;title&gt;</code> is not
+affected.  For that, you must put a <code>@settitle</code> command before
+the <code>@titlefont</code> command (see <a href="_0040settitle.html"><code>@settitle</code></a>).
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@titlefont{Texinfo}
+</pre></div>
+
+<p>Use the <code>@center</code> command at the beginning of a line to center
+the remaining text on that line.  Thus,
+</p>
+<div class="example">
+<pre class="example">@center @titlefont{Texinfo}
+</pre></div>
+
+<p>centers the title, which in this example is &ldquo;Texinfo&rdquo; printed
+in the title font.
+</p>
+<p>Use the <code>@sp</code> command to insert vertical space.  For example:
+</p>
+<div class="example">
+<pre class="example">@sp 2
+</pre></div>
+
+<p>This inserts two blank lines on the printed page.
+(See <a href="_0040sp.html"><code>@sp</code></a>, for more information about the <code>@sp</code>
+command.)
+</p>
+<p>A template for this method looks like this:
+</p>
+<div class="example">
+<pre class="example">@titlepage
+@sp 10
+@center @titlefont{<var>name-of-manual-when-printed</var>}
+@sp 2
+@center <var>subtitle-if-any</var>
+@sp 2
+@center <var>author</var>
+&hellip;
+@end titlepage
+</pre></div>
+
+<p>The spacing of the example fits an 8.5 by 11 inch manual.
+</p>
+
+
+
+
+</body>
+</html>

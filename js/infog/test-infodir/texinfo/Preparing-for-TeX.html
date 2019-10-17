@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Preparing for TeX (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Preparing for TeX (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Preparing for TeX (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Hardcopy.html" rel="up" title="Hardcopy">
+<link href="Overfull-hboxes.html" rel="next" title="Overfull hboxes">
+<link href="Requirements-Summary.html" rel="prev" title="Requirements Summary">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Preparing-for-TeX"></span><div class="header">
+<p>
+Next: <a href="Overfull-hboxes.html" accesskey="n" rel="next">Overfull hboxes</a>, Previous: <a href="Requirements-Summary.html" accesskey="p" rel="prev">Requirements Summary</a>, Up: <a href="Hardcopy.html" accesskey="u" rel="up">Hardcopy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Preparing-for-TeX-1"></span><h3 class="section">19.9 Preparing for TeX</h3>
+<span id="index-Preparing-for-TeX"></span>
+<span id="index-TeX-input-initialization"></span>
+<span id="index-profile-init_002eprofile-initialization-file"></span>
+<span id="index-cshrc-init_002ecshrc-initialization-file"></span>
+<span id="index-Initialization-file-for-TeX-input"></span>
+
+<p>TeX needs to know where to find the <samp>texinfo.tex</samp> file that the
+&lsquo;<samp>\input texinfo</samp>&rsquo; command on the first line reads.  The
+<samp>texinfo.tex</samp> file tells TeX how to handle @-commands; it is
+included in all standard GNU distributions.  The latest version
+released for general use is available
+from the usual GNU servers and mirrors:
+</p>
+<div class="display">
+<pre class="display"><a href="http://ftp.gnu.org/gnu/texinfo/texinfo.tex">http://ftp.gnu.org/gnu/texinfo/texinfo.tex</a>
+<a href="http://ftpmirror.gnu.org/texinfo/texinfo.tex">http://ftpmirror.gnu.org/texinfo/texinfo.tex</a>
+</pre></div>
+
+<p>The latest development version is available from the Texinfo source
+repository:
+</p><div class="display">
+<pre class="display"><a href="http://svn.savannah.gnu.org/viewvc/trunk/doc/texinfo.tex?root=texinfo&amp;view=log">http://svn.savannah.gnu.org/viewvc/trunk/doc/texinfo.tex?root=texinfo&amp;view=log</a>
+</pre></div>
+
+<span id="index-texinfo_002etex_002c-installing"></span>
+<p><samp>texinfo.tex</samp> is essentially a standalone file, and compatibility
+is of utmost concern; so, if you need or want to try a newer version
+than came with your system, it nearly always suffices to download it
+and put it anywhere that TeX will find it (first).  You can replace
+any existing <samp>texinfo.tex</samp> with a newer version (of course saving
+the original in case of disaster).
+</p>
+<span id="index-epsf_002etex_002c-installing"></span>
+<p>Also, you should install <samp>epsf.tex</samp>, if it is not already installed
+from another distribution.  More details are at the end of the description
+of the <code>@image</code> command (see <a href="Images.html">Images</a>).
+</p>
+<span id="index-European-Computer-Modern-fonts_002c-installing"></span>
+<span id="index-EC-fonts_002c-installing"></span>
+<span id="index-CM_002dSuper-fonts_002c-installing"></span>
+<p>To use quotation marks other than those used in English, you&rsquo;ll need
+to have the European Computer Modern fonts (e.g., <samp>ecrm1000</samp>) and
+(for PDF output) CM-Super fonts (see <a href="Inserting-Quotation-Marks.html">Inserting Quotation Marks</a>).
+</p>
+<span id="index-feymr10_002c-installing"></span>
+<span id="index-Euro-font_002c-installing"></span>
+<p>To use the <code>@euro</code> command, you&rsquo;ll need the &lsquo;<samp>feym*</samp>&rsquo; fonts
+(e.g., <samp>feymr10</samp>).  See <a href="_0040euro.html"><code>@euro</code></a>.
+</p>
+<p>All of the above files (and a whole lot more) should be installed by
+default in a reasonable TeX installation.
+</p>
+<span id="index-texinfo_002ecnf-installation"></span>
+<span id="index-Customizing-of-TeX-for-Texinfo"></span>
+<span id="index-Site_002dwide-Texinfo-configuration-file"></span>
+<p>Optionally, you may create a file <samp>texinfo.cnf</samp> for site configuration.
+This file is read by TeX at the beginning of a Texinfo file.
+You can put any commands you like there, according to local site-wide
+conventions.  They will be read by TeX when processing any Texinfo
+document.  For example, if <samp>texinfo.cnf</samp> contains the line
+&lsquo;<samp>@afourpaper</samp>&rsquo; (see <a href="A4-Paper.html">A4 Paper</a>), then all Texinfo documents
+will be processed with that page size in effect.  If you have nothing
+to put in <samp>texinfo.cnf</samp>, you do not need to create it.
+</p>
+<span id="index-Environment-variable-TEXINPUTS"></span>
+<span id="index-TEXINPUTS"></span>
+<p>If neither of the above locations for these system files suffice, you
+can specify the directories explicitly.  For <samp>texinfo.tex</samp>, you
+can do this by writing the complete path for the file after the
+<code>\input</code> command.  Another way, that works for both
+<samp>texinfo.tex</samp> and <samp>texinfo.cnf</samp> (and any other file TeX
+might read), is to set the <code>TEXINPUTS</code> environment variable in
+your <samp>.profile</samp> or <samp>.cshrc</samp> file.
+</p>
+<p>Whether you use <samp>.profile</samp> or <samp>.cshrc</samp> depends on
+whether you use a Bourne shell-compatible (<code>sh</code>, <code>bash</code>,
+<code>ksh</code>, &hellip;) or C shell-compatible (<code>csh</code>, <code>tcsh</code>)
+command interpreter, respeictvely.
+</p>
+<p>In a <samp>.profile</samp> file, you could use the following <code>sh</code> command
+sequence:
+</p>
+<div class="example">
+<pre class="example">TEXINPUTS=.:/home/me/mylib:
+export TEXINPUTS
+</pre></div>
+
+<p>While in a <samp>.cshrc</samp> file, you could use the following <code>csh</code>
+command sequence:
+</p>
+<div class="example">
+<pre class="example">setenv TEXINPUTS .:/home/me/mylib:
+</pre></div>
+
+<p>On MS-DOS/MS-Windows, you&rsquo;d do this (note the use of the &lsquo;<samp>;</samp>&rsquo;
+character as directory separator, instead of &lsquo;<samp>:</samp>&rsquo;):
+</p>
+<div class="example">
+<pre class="example">set TEXINPUTS=.;d:/home/me/mylib;c:
+</pre></div>
+
+<p>It is customary for DOS/Windows users to put such commands in the
+<samp>autoexec.bat</samp> file, or in the Windows registry.
+</p>
+<p>These settings would cause TeX to look for <samp>\input</samp> file first
+in the current directory, indicated by the &lsquo;<samp>.</samp>&rsquo;, then in a
+hypothetical user &lsquo;<samp>me</samp>&rsquo;&rsquo;s <samp>mylib</samp> directory, and finally in
+the system directories.  (A leading, trailing, or doubled &lsquo;<samp>:</samp>&rsquo;
+indicates searching the system directories at that point.)
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Overfull-hboxes.html" accesskey="n" rel="next">Overfull hboxes</a>, Previous: <a href="Requirements-Summary.html" accesskey="p" rel="prev">Requirements Summary</a>, Up: <a href="Hardcopy.html" accesskey="u" rel="up">Hardcopy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

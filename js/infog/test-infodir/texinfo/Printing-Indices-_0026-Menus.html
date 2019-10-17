@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Printing Indices &amp; Menus (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Printing Indices &amp; Menus (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Printing Indices &amp; Menus (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Indices.html" rel="up" title="Indices">
+<link href="Combining-Indices.html" rel="next" title="Combining Indices">
+<link href="Index-Entries.html" rel="prev" title="Index Entries">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Printing-Indices-_0026-Menus"></span><div class="header">
+<p>
+Next: <a href="Combining-Indices.html" accesskey="n" rel="next">Combining Indices</a>, Previous: <a href="Index-Entries.html" accesskey="p" rel="prev">Index Entries</a>, Up: <a href="Indices.html" accesskey="u" rel="up">Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Printing-Indices-and-Menus"></span><h3 class="section">11.4 Printing Indices and Menus</h3>
+<span id="index-Printing-an-index"></span>
+<span id="index-Indices_002c-printing-and-menus"></span>
+<span id="index-Generating-menus-with-indices"></span>
+<span id="index-Menus-generated-with-indices"></span>
+
+<p>To print an index means to include it as part of a manual or Info file.
+This does not happen automatically just because you use <code>@cindex</code>
+or other index-entry generating commands in the Texinfo file; those just
+cause the raw data for the index to be accumulated.  To generate an
+index, you must include the <code>@printindex</code> command at the place in
+the document where you want the index to appear.  Also, as part of the
+process of creating a printed manual, you must run a program called
+<code>texindex</code> (see <a href="Hardcopy.html">Hardcopy</a>) to sort the raw data to produce a
+sorted index file.  The sorted index file is what is actually used to
+print the index.
+</p>
+<p>Texinfo offers six separate types of predefined index, which suffice
+in most cases.  See <a href="Indices.html">Indices</a>, for information on this, as well
+defining your own new indices, combining indices, and, most
+importantly advice on writing the actual index entries.  This section
+focuses on printing indices, which is done with the
+<code>@printindex</code> command.
+</p>
+<span id="index-printindex"></span>
+<p><code>@printindex</code> takes one argument, a two-letter index
+abbreviation.  It reads the corresponding sorted index file (for
+printed output), and formats it appropriately into an index.
+</p>
+<p>The <code>@printindex</code> command does not generate a chapter heading
+for the index, since different manuals have different needs.
+Consequently, you should precede the <code>@printindex</code> command with
+a suitable section or chapter command (usually <code>@appendix</code> or
+<code>@unnumbered</code>) to supply the chapter heading and put the index
+into the table of contents.  Precede the chapter heading with an
+<code>@node</code> line as usual.
+</p>
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">@node Variable Index
+@unnumbered Variable Index
+
+@printindex vr
+</pre><pre class="example">
+
+</pre><pre class="example">@node Concept Index
+@unnumbered Concept Index
+
+@printindex cp
+</pre></div>
+
+<p>If you have more than one index, we recommend placing the concept index last.
+</p>
+<ul>
+<li> In printed output, <code>@printindex</code> produces a traditional
+two-column index, with dot leaders between the index terms and page
+numbers.
+
+</li><li> In Info output, <code>@printindex</code> produces a special menu containing
+the line number of the entry, relative to the start of the node.  Info
+readers can use this to go to the exact line of an entry, not just the
+containing node.  (Older Info readers will just go to the node.)
+Here&rsquo;s an example:
+
+<div class="example">
+<pre class="example">* First index entry:   Top.   (line  7)
+</pre></div>
+
+<p>The actual number of spaces is variable, to right-justify
+the line number; it&rsquo;s been reduced here to make the line fit in the
+printed manual.
+</p>
+</li><li> In plain text output, <code>@printindex</code> produces the same menu, but
+the line numbers are relative to the start of the file, since that&rsquo;s
+more convenient for that format.
+
+</li><li> In HTML output, <code>@printindex</code> produces links to the index
+entries.
+
+</li><li> In XML and Docbook output, it simply records the index to be printed.
+</li></ul>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Combining-Indices.html" accesskey="n" rel="next">Combining Indices</a>, Previous: <a href="Index-Entries.html" accesskey="p" rel="prev">Index Entries</a>, Up: <a href="Indices.html" accesskey="u" rel="up">Indices</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

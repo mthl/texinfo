@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Catching Mistakes (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Catching Mistakes (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Catching Mistakes (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="makeinfo-Preferred.html" rel="next" title="makeinfo Preferred">
+<link href="Custom-Headings.html" rel="prev" title="Custom Headings">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Catching-Mistakes"></span><div class="header">
+<p>
+Next: <a href="Info-Format-Specification.html" accesskey="n" rel="next">Info Format Specification</a>, Previous: <a href="Headings.html" accesskey="p" rel="prev">Headings</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Catching-Mistakes-1"></span><h2 class="appendix">Appendix F Catching Mistakes</h2>
+<span id="index-Structure_002c-catching-mistakes-in"></span>
+<span id="index-Nodes_002c-catching-mistakes"></span>
+<span id="index-Catching-mistakes"></span>
+<span id="index-Correcting-mistakes"></span>
+<span id="index-Mistakes_002c-catching"></span>
+<span id="index-Problems_002c-catching"></span>
+<span id="index-Debugging-the-Texinfo-structure"></span>
+
+<p>Besides mistakes in the content of your documentation, there are two
+kinds of mistake you can make with Texinfo: you can make mistakes with
+@-commands, and you can make mistakes with the structure of the nodes
+and chapters.
+</p>
+<p>Emacs has two tools for catching the @-command mistakes and two for
+catching structuring mistakes.
+</p>
+<p>For finding problems with @-commands, you can run TeX or a region
+formatting command on the region that has a problem; indeed, you can
+run these commands on each region as you write it.
+</p>
+<p>For finding problems with the structure of nodes and chapters, you can use
+<kbd>C-c C-s</kbd> (<code>texinfo-show-structure</code>) and the related <code>occur</code>
+command and you can use the <kbd>M-x Info-validate</kbd> command.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="makeinfo-Preferred.html" accesskey="1"><code>makeinfo</code> Preferred</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"><code>makeinfo</code> finds errors.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Debugging-with-Info.html" accesskey="2">Debugging with Info</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to catch errors with Info formatting.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Debugging-with-TeX.html" accesskey="3">Debugging with TeX</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to catch errors with TeX formatting.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-texinfo_002dshow_002dstructure.html" accesskey="4">Using <code>texinfo-show-structure</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to use <code>texinfo-show-structure</code>.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-occur.html" accesskey="5">Using <code>occur</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to list all lines containing a pattern.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Running-Info_002dvalidate.html" accesskey="6">Running <code>Info-validate</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">How to find badly referenced nodes.
+</td></tr>
+</table>
+
+
+
+
+
+</body>
+</html>

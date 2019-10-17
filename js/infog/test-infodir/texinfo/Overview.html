@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Overview (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Overview (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Overview (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Reporting-Bugs.html" rel="next" title="Reporting Bugs">
+<link href="Copying-Conditions.html" rel="prev" title="Copying Conditions">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Overview"></span><div class="header">
+<p>
+Next: <a href="Writing-a-Texinfo-File.html" accesskey="n" rel="next">Writing a Texinfo File</a>, Previous: <a href="Copying-Conditions.html" accesskey="p" rel="prev">Copying Conditions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Overview-of-Texinfo"></span><h2 class="chapter">1 Overview of Texinfo</h2>
+<span id="index-Overview-of-Texinfo"></span>
+<span id="index-Texinfo-overview"></span>
+<span id="index-Using-Texinfo-in-general"></span>
+<span id="index-Texinfo_002c-introduction-to"></span>
+<span id="index-Introduction-to-Texinfo"></span>
+<span id="Using-Texinfo"></span>
+<p><em>Texinfo</em> is a documentation system that uses a single source file
+to produce both online information and printed output.  This means
+that instead of writing several different documents, one for each output 
+format, you need only write one document.
+</p>
+<p>Using Texinfo, you can create a printed document (via the TeX
+typesetting system) in PDF or PostScript format, including chapters,
+sections, cross-references, and indices.  From the same Texinfo source
+file, you can create an HTML output file suitable for use with a web
+browser, you can create an Info file with special features to make
+browsing documentation easy, and also create a Docbook file or a
+transliteration to XML format.
+</p>
+<span id="index-Source-file-format"></span>
+<span id="index-Semantic-markup"></span>
+<p>A Texinfo source file is a plain text file containing text interspersed
+with <em>@-commands</em> (words preceded by an &lsquo;<samp>@</samp>&rsquo;) that tell the
+Texinfo processors what to do.  Texinfo&rsquo;s markup commands are almost 
+entirely <em>semantic</em>; that is, they specify the intended meaning
+of text in the document, rather than physical formatting instructions.
+You can edit a Texinfo file with any text editor, but it is especially
+convenient to use GNU Emacs since that editor has a special mode,
+called Texinfo mode, that provides various Texinfo-related features.
+(See <a href="Texinfo-Mode.html">Texinfo Mode</a>.)
+</p>
+<span id="index-Limited-scope-of-Texinfo"></span>
+<p>Texinfo was devised specifically for the purpose of writing software
+documentation and manuals.  If you want to write a good manual for
+your program, Texinfo has many features which we hope will make your
+job easier.  However, it provides almost no commands for controlling
+the final formatting.  Texinfo is not intended to be a general-purpose
+formatting program, so if you need to lay out a newspaper, devise a
+glossy magazine ad, or follow the exact formatting requirements of
+a publishing house, Texinfo may not be the simplest tool.
+</p>
+<span id="index-Spelling-of-Texinfo"></span>
+<span id="index-Pronunciation-of-Texinfo"></span>
+<p>Spell &ldquo;Texinfo&rdquo; with a capital &ldquo;T&rdquo; and the other letters in
+lowercase.  The first syllable of &ldquo;Texinfo&rdquo; is pronounced like
+&ldquo;speck&rdquo;, not &ldquo;hex&rdquo;.  This odd pronunciation is derived from the
+pronunciation of TeX.  Pronounce TeX as if the &lsquo;<samp>X</samp>&rsquo; were
+the last sound in the name &lsquo;Bach&rsquo;.  In the word TeX, the &lsquo;<samp>X</samp>&rsquo;
+is, rather than the English letter &ldquo;ex&rdquo;, actually the Greek letter
+&ldquo;chi&rdquo;.
+</p>
+<p>Texinfo is the official documentation format of the GNU project.
+More information, including manuals for GNU packages, is available
+at the <a href="http://www.gnu.org/doc/">GNU documentation web page</a>.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Reporting-Bugs.html" accesskey="1">Reporting Bugs</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Submitting effective bug reports.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Output-Formats.html" accesskey="2">Output Formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Overview of the supported output formats.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Info-Files.html" accesskey="3">Info Files</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">What is an Info file?
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Printed-Books.html" accesskey="4">Printed Books</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Characteristics of a printed book or manual.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Adding-Output-Formats.html" accesskey="5">Adding Output Formats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Man pages and implementing new formats.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="History.html" accesskey="6">History</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Acknowledgements, contributors and genesis.
+</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Writing-a-Texinfo-File.html" accesskey="n" rel="next">Writing a Texinfo File</a>, Previous: <a href="Copying-Conditions.html" accesskey="p" rel="prev">Copying Conditions</a>, Up: <a href="index.html" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

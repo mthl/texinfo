@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Multitable Rows (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Multitable Rows (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Multitable Rows (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Multi_002dcolumn-Tables.html" rel="up" title="Multi-column Tables">
+<link href="Special-Displays.html" rel="next" title="Special Displays">
+<link href="Multitable-Column-Widths.html" rel="prev" title="Multitable Column Widths">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Multitable-Rows"></span><div class="header">
+<p>
+Previous: <a href="Multitable-Column-Widths.html" accesskey="p" rel="prev">Multitable Column Widths</a>, Up: <a href="Multi_002dcolumn-Tables.html" accesskey="u" rel="up">Multi-column Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Multitable-Rows-1"></span><h4 class="subsection">9.5.2 Multitable Rows</h4>
+
+<span id="index-Multitable-rows"></span>
+<span id="index-Rows_002c-of-a-multitable"></span>
+
+<span id="index-item-2"></span>
+<span id="index-tab"></span>
+<p>After the <code>@multitable</code> command defining the column widths (see
+the previous section), you begin each row in the body of a multitable
+with <code>@item</code>, and separate the column entries with <code>@tab</code>.
+Line breaks are not special within the table body, and you may break
+input lines in your source file as necessary.
+</p>
+<span id="index-headitem"></span>
+<span id="index-Heading-row_002c-in-table"></span>
+<span id="index-_003cthead_003e-HTML_002fXML-tag"></span>
+<p>You can also use <code>@headitem</code> instead of <code>@item</code> to produce
+a <em>heading row</em>.  The TeX output for such a row is in bold, and
+the HTML and Docbook output uses the <code>&lt;thead&gt;</code> tag.  In Info, the
+heading row is followed by a separator line made of dashes (&lsquo;<samp>-</samp>&rsquo;
+characters).
+</p>
+<span id="index-headitemfont"></span>
+<span id="index-Font-for-multitable-heading-rows"></span>
+<p>The command <code>@headitemfont</code> can be used in templates when the
+entries in a <code>@headitem</code> row need to be used in a template.  It
+is a synonym for <code>@b</code>, but using <code>@headitemfont</code> avoids
+any dependency on that particular font style, in case we provide a way
+to change it in the future.
+</p>
+<p>Here is a complete example of a multi-column table (the text is from
+<cite>The GNU Emacs Manual</cite>, see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Split-Window.html#Split-Window">Splitting Windows</a> in <cite>The GNU Emacs Manual</cite>):
+</p>
+<div class="example">
+<pre class="example">@multitable @columnfractions .15 .45 .4
+@headitem Key @tab Command @tab Description
+@item C-x 2
+@tab @code{split-window-vertically}
+@tab Split the selected window into two windows,
+with one above the other.
+@item C-x 3
+@tab @code{split-window-horizontally}
+@tab Split the selected window into two windows
+positioned side by side.
+@item C-Mouse-2
+@tab
+@tab In the mode line or scroll bar of a window,
+split that window.
+@end multitable
+</pre></div>
+
+<p>produces:
+</p>
+<table>
+<thead><tr><th width="15%">Key</th><th width="45%">Command</th><th width="40%">Description</th></tr></thead>
+<tr><td width="15%">C-x 2</td><td width="45%"><code>split-window-vertically</code></td><td width="40%">Split the selected window into two windows,
+with one above the other.</td></tr>
+<tr><td width="15%">C-x 3</td><td width="45%"><code>split-window-horizontally</code></td><td width="40%">Split the selected window into two windows
+positioned side by side.</td></tr>
+<tr><td width="15%">C-Mouse-2</td><td width="45%"></td><td width="40%">In the mode line or scroll bar of a window,
+split that window.</td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Multitable-Column-Widths.html" accesskey="p" rel="prev">Multitable Column Widths</a>, Up: <a href="Multi_002dcolumn-Tables.html" accesskey="u" rel="up">Multi-column Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

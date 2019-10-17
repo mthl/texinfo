@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>URL Line Breaking (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="URL Line Breaking (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="URL Line Breaking (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="_0040url.html" rel="up" title="@url">
+<link href="_0040url-PDF-Output-Format.html" rel="next" title="@url PDF Output Format">
+<link href="_0040url-Examples.html" rel="prev" title="@url Examples">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="URL-Line-Breaking"></span><div class="header">
+<p>
+Next: <a href="_0040url-PDF-Output-Format.html" accesskey="n" rel="next"><code>@url</code> PDF Output Format</a>, Previous: <a href="_0040url-Examples.html" accesskey="p" rel="prev"><code>@url</code> Examples</a>, Up: <a href="_0040url.html" accesskey="u" rel="up"><code>@url</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="URL-Line-Breaking-1"></span><h4 class="subsection">6.10.2 URL Line Breaking</h4>
+
+<span id="index-Line-breaking_002c-and-urls"></span>
+<span id="index-Breakpoints-within-urls"></span>
+<p>TeX allows line breaking within urls at only a few characters
+(which are special in urls): &lsquo;<samp>&amp;</samp>&rsquo;, &lsquo;<samp>.</samp>&rsquo;, &lsquo;<samp>#</samp>&rsquo;, &lsquo;<samp>?</samp>&rsquo;,
+and &lsquo;<samp>/</samp>&rsquo; (but not between two &lsquo;<samp>/</samp>&rsquo; characters).  A tiny amount
+of stretchable space is also inserted around these characters to help
+with line breaking.
+</p>
+<p>For HTML output, modern browsers will also do line breaking within
+displayed urls.  If you need to allow breaks at other characters you
+can insert <code>@/</code> as needed (see <a href="Line-Breaks.html">Line Breaks</a>).
+</p>
+<span id="index-urefbreakstyle"></span>
+<p>By default, in TeX any such breaks at special characters will occur
+after the character.  Some people prefer such breaks to happen before
+the special character.  This can be controlled with the
+<code>@urefbreakstyle</code> command (this command has effect only in
+TeX):
+</p>
+<div class="example">
+<pre class="example">@urefbreakstyle <var>how</var>
+</pre></div>
+
+<p>where the argument <var>how</var> is one of these words:
+</p>
+<span id="index-after_002c-value-for-_0040urefbreakstyle"></span>
+<span id="index-before_002c-value-for-_0040urefbreakstyle"></span>
+<span id="index-none_002c-value-for-_0040urefbreakstyle"></span>
+<dl compact="compact">
+<dt>&lsquo;<samp>after</samp>&rsquo;</dt>
+<dd><p>(the default) Potentially break after the special characters.
+</p></dd>
+<dt>&lsquo;<samp>before</samp>&rsquo;</dt>
+<dd><p>Potentially break before the special characters.
+</p></dd>
+<dt>&lsquo;<samp>none</samp>&rsquo;</dt>
+<dd><p>Do not consider breaking at the special characters at all; any potential
+breaks must be manually inserted.
+</p></dd>
+</dl>
+
+
+
+
+
+</body>
+</html>

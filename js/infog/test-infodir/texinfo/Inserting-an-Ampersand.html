@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inserting an Ampersand (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Inserting an Ampersand (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Inserting an Ampersand (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Special-Characters.html" rel="up" title="Special Characters">
+<link href="Inserting-Quote-Characters.html" rel="next" title="Inserting Quote Characters">
+<link href="Inserting-a-Hashsign.html" rel="prev" title="Inserting a Hashsign">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Inserting-an-Ampersand"></span><div class="header">
+<p>
+Previous: <a href="Inserting-a-Hashsign.html" accesskey="p" rel="prev">Inserting a Hashsign</a>, Up: <a href="Special-Characters.html" accesskey="u" rel="up">Special Characters</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Inserting-_0060_0026_0027-with-_0040_0026-and-_0040ampchar_007b_007d"></span><h4 class="subsection">12.1.6 Inserting &lsquo;&amp;&rsquo; with <code>@&amp;</code> and <code>@ampchar{}</code></h4>
+
+<span id="index-ampchar_007b_007d-_0028literal-_0026_0029"></span>
+<span id="index-Inserting-_0026"></span>
+<span id="index-Ampersand_002c-inserting"></span>
+
+<p>Ordinarily, an ampersand &lsquo;&amp;&rsquo; is a normal character in Texinfo that can be
+simply typed in your input where you need it.  The result is to
+typeset the ampersand character.
+</p>
+<p>However, the ampersand character has a special meaning in Texinfo in 
+just one restricted context.  In the argument to a definition command
+(see <a href="Definition-Commands.html">Definition Commands</a>), Emacs Lisp keywords beginning with 
+ampersands are recognized and typeset specially.  See <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/A-Sample-Function-Description.html#A-Sample-Function-Description">A Sample 
+Function Description</a> in <cite>GNU Emacs Lisp Reference Manual</cite>.
+For example:
+</p>
+<div class="example">
+<pre class="example">@defun foo integer1 &amp;optional integer2 &amp;rest integers
+@code{foo} described here.
+@end defun
+</pre></div>
+
+<p>leads to the output
+</p>
+<dl>
+<dt id="index-foo">Function: <strong>foo</strong> <em>integer1 &amp;optional integer2 &amp;rest integers</em></dt>
+<dd><p><code>foo</code> described here.
+</p></dd></dl>
+
+<p>So, in order to typeset an ampersand in such a context (for example, in 
+documentation of a C++ function taking a reference as a parameter),
+it&rsquo;s necessary to use <code>@&amp;</code> or some other construct.
+Here&rsquo;s an example:
+</p>
+<div class="example">
+<pre class="example">@deftypefn Function int foo (@code{const std::vector&lt;int&gt;@&amp;} bar)
+Documentation of @code{foo}.
+@end deftypefn
+</pre></div>
+
+<p>This gives the output 
+</p>
+<dl>
+<dt id="index-foo-1">Function: <em>int</em> <strong>foo</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code> bar)</em></dt>
+<dd><p>Documentation of <code>foo</code>.
+</p></dd></dl>
+
+<p>Although &lsquo;<samp>@&amp;</samp>&rsquo; and &lsquo;<samp>@ampchar{}</samp>&rsquo; can be used nearly 
+anywhere, there is no need for them anywhere except this unusual case.
+</p>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Introducing Lists (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Introducing Lists (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Introducing Lists (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Lists-and-Tables.html" rel="up" title="Lists and Tables">
+<link href="_0040itemize.html" rel="next" title="@itemize">
+<link href="Lists-and-Tables.html" rel="prev" title="Lists and Tables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Introducing-Lists"></span><div class="header">
+<p>
+Next: <a href="_0040itemize.html" accesskey="n" rel="next"><code>@itemize</code></a>, Up: <a href="Lists-and-Tables.html" accesskey="u" rel="up">Lists and Tables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Introducing-Lists-1"></span><h3 class="section">9.1 Introducing Lists</h3>
+
+<p>Texinfo automatically indents the text in lists or tables, and numbers
+an enumerated list.  This last feature is useful if you modify the
+list, since you do not need to renumber it yourself.
+</p>
+<p>Numbered lists and tables begin with the appropriate @-command at the
+beginning of a line, and end with the corresponding <code>@end</code>
+command on a line by itself.  The table and itemized-list commands
+also require that you write formatting information on the same line as
+the beginning @-command.
+</p>
+<p>Begin an enumerated list, for example, with an <code>@enumerate</code>
+command and end the list with an <code>@end enumerate</code> command.
+Begin an itemized list with an <code>@itemize</code> command, followed on
+the same line by a formatting command such as <code>@bullet</code>, and end
+the list with an <code>@end itemize</code> command.
+<span id="index-end-1"></span>
+</p>
+<p>Precede each element of a list with an <code>@item</code> or <code>@itemx</code>
+command.
+</p>
+<br>
+<p>Here is an itemized list of the different kinds of table and lists:
+</p>
+<ul>
+<li> Itemized lists with and without bullets.
+
+</li><li> Enumerated lists, using numbers or letters.
+
+</li><li> Two-column tables with highlighting.
+</li></ul>
+
+<br>
+<p>Here is an enumerated list with the same items:
+</p>
+<ol>
+<li> Itemized lists with and without bullets.
+
+</li><li> Enumerated lists, using numbers or letters.
+
+</li><li> Two-column tables with highlighting.
+</li></ol>
+
+<br>
+<p>And here is a two-column table with the same items and their
+@<span class="nolinebreak">-commands</span><!-- /@w -->:
+</p>
+<dl compact="compact">
+<dt><code>@itemize</code></dt>
+<dd><p>Itemized lists with and without bullets.
+</p>
+</dd>
+<dt><code>@enumerate</code></dt>
+<dd><p>Enumerated lists, using numbers or letters.
+</p>
+</dd>
+<dt><code>@table</code></dt>
+<dt><code>@ftable</code></dt>
+<dt><code>@vtable</code></dt>
+<dd><p>Two-column tables, optionally with indexing.
+</p></dd>
+</dl>
+
+
+
+
+
+</body>
+</html>

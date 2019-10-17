@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML Xref Link Basics (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML Xref Link Basics (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML Xref Link Basics (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="HTML-Xref.html" rel="up" title="HTML Xref">
+<link href="HTML-Xref-Node-Name-Expansion.html" rel="next" title="HTML Xref Node Name Expansion">
+<link href="HTML-Xref.html" rel="prev" title="HTML Xref">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-Xref-Link-Basics"></span><div class="header">
+<p>
+Next: <a href="HTML-Xref-Node-Name-Expansion.html" accesskey="n" rel="next">HTML Xref Node Name Expansion</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-Cross_002dreference-Link-Basics"></span><h4 class="subsection">22.4.1 HTML Cross-reference Link Basics</h4>
+<span id="index-HTML-cross_002dreference-link-basics"></span>
+
+<p>For our purposes, an HTML link consists of four components: a host
+name, a directory part, a file part, and a target part.  We
+always assume the <code>http</code> protocol.  For example:
+</p>
+<div class="example">
+<pre class="example">http://<var>host</var>/<var>dir</var>/<var>file</var>.html#<var>target</var>
+</pre></div>
+
+<p>The information to construct a link comes from the node name and
+manual name in the cross-reference command in the Texinfo source
+(see <a href="Cross-References.html">Cross References</a>), and from <em>external information</em>
+(see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>).
+</p>
+<p>We now consider each part in turn.
+</p>
+<p>The <var>host</var> is hardwired to be the local host.  This could either
+be the literal string &lsquo;<samp>localhost</samp>&rsquo;, or, according to the rules for
+HTML links, the &lsquo;<samp>http://localhost/</samp>&rsquo; could be omitted entirely.
+</p>
+<p>The <var>dir</var> and <var>file</var> parts are more complicated, and depend on
+the relative split/mono nature of both the manual being processed and
+the manual that the cross-reference refers to.  The underlying idea is
+that there is one directory for Texinfo manuals in HTML, and a given
+<var>manual</var> is either available as a monolithic file
+<samp><var>manual</var>.html</samp>, or a split subdirectory
+<samp><var>manual</var>/*.html</samp>.  Here are the cases:
+</p>
+<ul>
+<li> If the present manual is split, and the referent manual is also split,
+the directory is &lsquo;<samp>../<var>referent/</var></samp>&rsquo; and the file is the
+expanded node name (described later).
+
+</li><li> If the present manual is split, and the referent manual is mono, the
+directory is &lsquo;<samp>../</samp>&rsquo; and the file is <samp><var>referent</var>.html</samp>.
+
+</li><li> If the present manual is mono, and the referent manual is split, the
+directory is <samp><var>referent</var>/</samp> and the file is the expanded node
+name.
+
+</li><li> If the present manual is mono, and the referent manual is also mono,
+the directory is <samp>./</samp> (or just the empty string), and the file is
+<samp><var>referent</var>.html</samp>.
+
+</li></ul>
+
+<span id="index-BASEFILENAME_005fLENGTH-1"></span>
+<p>Another rule, that only holds for filenames, is that base filenames
+are truncated to 245 characters, to allow for an extension to be
+appended and still comply with the 255-character limit which is common
+to many filesystems.  Although technically this can be changed with
+the <code>BASEFILENAME_LENGTH</code> customization variable (see <a href="Other-Customization-Variables.html">Other Customization Variables</a>), doing so would make cross-manual references
+to such nodes invalid.
+</p>
+<p>Any directory part in the filename argument of the source cross
+reference command is ignored.  Thus, <code>@xref{,,,../foo}</code> and
+<code>@xref{,,,foo}</code> both use &lsquo;<samp>foo</samp>&rsquo; as the manual name.  This
+is because any such attempted hardwiring of the directory is very
+unlikely to be useful for both Info and HTML output.
+</p>
+<p>Finally, the <var>target</var> part is always the expanded node name.
+</p>
+<p>Whether the present manual is split or mono is determined by user
+option; <code>makeinfo</code> defaults to split, with the
+<samp>--no-split</samp> option overriding this.
+</p>
+<p>Whether the referent manual is split or mono, however, is another bit
+of the external information (see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>).  By
+default, <code>makeinfo</code> uses the same form of the referent manual
+as the present manual.
+</p>
+<p>Thus, there can be a mismatch between the format of the referent
+manual that the generating software assumes, and the format it&rsquo;s
+actually present in.  See <a href="HTML-Xref-Mismatch.html">HTML Xref Mismatch</a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="HTML-Xref-Node-Name-Expansion.html" accesskey="n" rel="next">HTML Xref Node Name Expansion</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

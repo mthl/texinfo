@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Info Format Cross Reference (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Info Format Cross Reference (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Info Format Cross Reference (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Info-Format-Text-Constructs.html" rel="up" title="Info Format Text Constructs">
+<link href="GNU-Free-Documentation-License.html" rel="next" title="GNU Free Documentation License">
+<link href="Info-Format-Printindex.html" rel="prev" title="Info Format Printindex">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Info-Format-Cross-Reference"></span><div class="header">
+<p>
+Previous: <a href="Info-Format-Printindex.html" accesskey="p" rel="prev">Info Format Printindex</a>, Up: <a href="Info-Format-Text-Constructs.html" accesskey="u" rel="up">Info Format Text Constructs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Info-Format_003a-Cross_002dreference"></span><h4 class="subsection">G.2.4 Info Format: Cross-reference</h4>
+
+<span id="index-Cross_002dreferences_002c-in-Info-format"></span>
+
+<p>A general cross-reference in Info format has one of the following two forms:
+</p>
+<div class="example">
+<pre class="example">    &lt;cross-reference&gt; =
+  * (N|n)ote &lt;id&gt;::
+| * (N|n)ote &lt;label&gt;:&lt;id&gt;(.|,)
+
+     &lt;id&gt; = (&lt;lparen&gt;&lt;infofile&gt;&lt;rparen&gt;)?(&lt;del&gt;?&lt;nodename&gt;&lt;del&gt;?)?
+|    &lt;id&gt; = (&lt;lparen&gt;&lt;infofile&gt;&lt;rparen&gt;)?(&lt;nodename&gt;)?
+    &lt;label&gt; = &lt;del&gt;?&lt;label text&gt;&lt;del&gt;?
+</pre></div>
+
+<p>No space should occur between the &lsquo;<samp>*</samp>&rsquo; character and the following
+&lsquo;<samp>N</samp>&rsquo; or &lsquo;<samp>n</samp>&rsquo;.  &lsquo;<samp>*Note</samp>&rsquo; should be used at the start of a
+sentence, otherwise &lsquo;<samp>*note</samp>&rsquo; should be used.  (Some Info readers,
+such as the one in Emacs, can display &lsquo;<samp>*Note</samp>&rsquo; and &lsquo;<samp>*note</samp>&rsquo; as
+&lsquo;<samp>See</samp>&rsquo; and &lsquo;<samp>see</samp>&rsquo; respectively.) In both cases, <tt>&lt;label
+text&gt;</tt> is descriptive text.
+</p>
+<p>In both forms the <tt>&lt;id&gt;</tt> refers to a node or anchor, in the same way
+as a reference in the node information line does (see <a href="Info-Format-Regular-Nodes.html">Info Format Regular Nodes</a>).  The optional parenthesized &lsquo;<samp>&lt;infofile&gt;</samp>&rsquo; is the
+filename of the manual being referenced, and the <tt>&lt;nodename&gt;</tt> is the
+node or anchor within that manual,
+</p>
+<p>The second form has a descriptive label.  A cross-reference in this form
+should usually be terminated with a comma or period, to make it
+feasible to find the end of the <tt>&lt;id&gt;</tt>.
+</p>
+<p>If <tt>&lt;label&gt;</tt> contains a colon character (<tt>:</tt>), it should be
+surrounded with a pair of <tt>&lt;del&gt;</tt> characters.  Likewise, if
+<tt>&lt;nodename&gt;</tt> contains problematic characters (such as commas or
+periods), it should be surrounded by a pair of <tt>&lt;del&gt;</tt> characters;
+then a terminating comma or period is not needed.
+</p>
+<p>As with node names, this quoting mechanism has as of the time of 
+writing limited support in Info-reading programs; hence we do not 
+recommend using it until this changes.
+</p>
+<p>The format does not prescribe how to find other manuals to resolve
+such references.
+</p>
+<p>Here are some examples:
+</p>
+<div class="example">
+<pre class="example">*note GNU Free Documentation License::
+*note Tag table: Info Format Tag Table, for details.
+*Note Overview: (make)Top.
+*Note ^?:^?: (bash)Bourne Shell Builtins.
+*Note alloca.h: (gnulib)^?alloca.h^?.
+</pre></div>
+
+<p>The first shows a reference to a node in the current manual using the 
+short form.
+</p>
+<p>The second also refers to a node in the current manual, namely &lsquo;Info
+Format Tag Table&rsquo;; the &lsquo;Tag table&rsquo; before the &lsquo;<samp>:</samp>&rsquo; is only a label
+on this particular reference, and the &lsquo;<samp>for details.</samp>&rsquo; is text
+belonging to the sentence, not part of the reference.
+</p>
+<p>The third example refers to the node &lsquo;Top&rsquo; in another manual, namely
+&lsquo;<samp>make</samp>&rsquo;, with &lsquo;Overview&rsquo; being the label for this cross-reference.
+</p>
+<p>The fourth example shows a colon character being quoted in a label,
+and the fifth example shows a period being quoted in a node name.
+</p>
+<p>See <a href="Cross-References.html">Cross References</a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Info-Format-Printindex.html" accesskey="p" rel="prev">Info Format Printindex</a>, Up: <a href="Info-Format-Text-Constructs.html" accesskey="u" rel="up">Info Format Text Constructs</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

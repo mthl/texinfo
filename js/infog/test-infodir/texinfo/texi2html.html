@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>texi2html (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="texi2html (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="texi2html (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="Creating-and-Installing-Info-Files.html" rel="next" title="Creating and Installing Info Files">
+<link href="Invoking-pod2texi.html" rel="prev" title="Invoking pod2texi">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="texi2html"></span><div class="header">
+<p>
+Previous: <a href="Invoking-pod2texi.html" accesskey="p" rel="prev">Invoking <code>pod2texi</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="texi2html_003a-Ancestor-of-texi2any"></span><h3 class="section">20.9 <code>texi2html</code>: Ancestor of <code>texi2any</code></h3>
+
+<span id="index-texi2html"></span>
+
+<span id="index-Cons_002c-Lionel-1"></span>
+<p>Conceptually, the <code>texi2html</code> program is the parent of today&rsquo;s
+<code>texi2any</code> program.  <code>texi2html</code> was developed
+independently, originally by Lionel Cons in 1998; at the time,
+<code>makeinfo</code> could not generate HTML.  Many other people
+contributed to <code>texi2html</code> over the years.
+</p>
+<p>The present <code>texi2any</code> uses little of the actual code of
+<code>texi2html</code>, and has quite a different basic approach to the
+implementation (namely, parsing the Texinfo document into a tree), but
+still, there is a family resemblance.
+</p>
+<p>By design, <code>texi2any</code> supports nearly all the features of
+<code>texi2html</code> in some way.  However, we did not attempt to
+maintain strict compatibility, so no <code>texi2html</code> executable is
+installed by the Texinfo package.  An approximation can be run with an
+invocation like this (available as <samp>util/texi2html</samp> in the
+Texinfo source):
+</p>
+<div class="example">
+<pre class="example">texi2any --set-customization-variable TEXI2HTML=1 ...
+</pre></div>
+
+<p>but, to emphasize, this is <em>not</em> a drop-in replacement
+for the previous <code>texi2html</code>.  Here are the biggest differences:
+</p>
+<ul>
+<li> Most blatantly, the command line options of <code>texi2html</code>
+are now customization variables, for the most part.  A table of
+approximate equivalents is given below.
+
+</li><li> The program-level customization API is very different in
+<code>texi2any</code>.
+
+</li><li> Indices cannot be split.
+
+</li><li> Translated strings cannot be customized; we hope to introduce
+this feature in <code>texi2any</code> in the future.
+
+</li></ul>
+
+<p>Aside from the last, we do not intend to reimplement these
+differences.  Therefore, the route forward for authors is alter
+manuals and build processes as necessary to use the new features and
+methods of <code>texi2any</code>.  The <code>texi2html</code> maintainers
+(one of whom is the principal author of <code>texi2any</code>) do not
+intend to make further releases.
+</p>
+<span id="index-Options-of-texi2html"></span>
+<span id="index-Command_002dline-options-of-texi2html"></span>
+<p>Here is the table showing <code>texi2html</code> options and
+corresponding <code>texi2any</code> customization variables.
+</p>
+<table>
+<tr><td><samp>--toc-links</samp></td><td><code>TOC_LINKS</code></td></tr>
+<tr><td><samp>--short-ext</samp></td><td><code>SHORTEXTN</code></td></tr>
+<tr><td><samp>--prefix</samp></td><td><code>PREFIX</code></td></tr>
+<tr><td><samp>--short-ref</samp></td><td><code>SHORT_REF</code></td></tr>
+<tr><td><samp>--idx-sum</samp></td><td><code>IDX_SUMMARY</code></td></tr>
+<tr><td><samp>--def-table</samp></td><td><code>DEF_TABLE</code></td></tr>
+<tr><td><samp>--ignore-preamble-text</samp></td><td><code>IGNORE_PREAMBLE_TEXT</code></td></tr>
+<tr><td><samp>--html-xref-prefix</samp></td><td><code>EXTERNAL_DIR</code></td></tr>
+<tr><td><samp>--l2h</samp></td><td><code>L2H</code></td></tr>
+<tr><td><samp>--l2h-l2h</samp></td><td><code>L2H_L2H</code></td></tr>
+<tr><td><samp>--l2h-skip</samp></td><td><code>L2H_SKIP</code></td></tr>
+<tr><td><samp>--l2h-tmp</samp></td><td><code>L2H_TMP</code></td></tr>
+<tr><td><samp>--l2h-file</samp></td><td><code>L2H_FILE</code></td></tr>
+<tr><td><samp>--l2h-clean</samp></td><td><code>L2H_CLEAN</code></td></tr>
+<tr><td><samp>--use-nodes</samp></td><td><code>USE_NODES</code></td></tr>
+<tr><td><samp>--monolithic</samp></td><td><code>MONOLITHIC</code></td></tr>
+<tr><td><samp>--top-file</samp></td><td><code>TOP_FILE</code></td></tr>
+<tr><td><samp>--toc-file</samp></td><td><code>TOC_FILE</code></td></tr>
+<tr><td><samp>--frames</samp></td><td><code>FRAMES</code></td></tr>
+<tr><td><samp>--menu</samp></td><td><code>SHOW_MENU</code></td></tr>
+<tr><td><samp>--debug</samp></td><td><code>DEBUG</code></td></tr>
+<tr><td><samp>--doctype</samp></td><td><code>DOCTYPE</code></td></tr>
+<tr><td><samp>--frameset-doctype</samp></td><td><code>FRAMESET_DOCTYPE</code></td></tr>
+<tr><td><samp>--test</samp></td><td><code>TEST</code></td></tr>
+</table>
+
+<span id="index-texi2oldapi_002etexi_002c-for-texi2any"></span>
+<p>Finally, any <code>texi2html</code> users seeking more detailed
+information can check the draft file <samp>doc/texi2oldapi.texi</samp> in
+the Texinfo source repository.  It consists mainly of very rough
+notes, but may still be useful to some.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Invoking-pod2texi.html" accesskey="p" rel="prev">Invoking <code>pod2texi</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

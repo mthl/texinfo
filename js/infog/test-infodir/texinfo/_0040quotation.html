@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@quotation (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@quotation (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@quotation (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Quotations-and-Examples.html" rel="up" title="Quotations and Examples">
+<link href="_0040indentedblock.html" rel="next" title="@indentedblock">
+<link href="Block-Enclosing-Commands.html" rel="prev" title="Block Enclosing Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040quotation"></span><div class="header">
+<p>
+Next: <a href="_0040indentedblock.html" accesskey="n" rel="next"><code>@indentedblock</code></a>, Previous: <a href="Block-Enclosing-Commands.html" accesskey="p" rel="prev">Block Enclosing Commands</a>, Up: <a href="Quotations-and-Examples.html" accesskey="u" rel="up">Quotations and Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040quotation_003a-Block-Quotations"></span><h3 class="section">8.2 <code>@quotation</code>: Block Quotations</h3>
+<span id="quotation"></span>
+<span id="index-Quotations"></span>
+<span id="index-quotation"></span>
+
+<p>The text of a quotation is processed like normal text (regular font,
+text is filled) except that:
+</p>
+<ul>
+<li> both the left and right margins are closer to the center of the page,
+so the whole of the quotation is indented;
+
+</li><li> the first lines of paragraphs are indented no more than other lines; and
+
+</li><li> an <code>@author</code> command may be given to specify the author of the
+quotation.
+</li></ul>
+
+<blockquote>
+<p>This is an example of text written between a <code>@quotation</code>
+command and an <code>@end quotation</code> command.  A <code>@quotation</code>
+command is most often used to indicate text that is excerpted from
+another (real or hypothetical) printed work.
+</p></blockquote>
+
+<p>Write a <code>@quotation</code> command as text on a line by itself.  This
+line will disappear from the output.  Mark the end of the quotation
+with a line beginning with and containing only <code>@end quotation</code>.
+The <code>@end quotation</code> line will likewise disappear from the
+output.
+</p>
+<p><code>@quotation</code> takes one optional argument, given on the remainder
+of the line.  This text, if present, is included at the beginning of
+the quotation in bold or otherwise emphasized, and followed with a
+&lsquo;<samp>:</samp>&rsquo;.  For example:
+</p>
+<div class="example">
+<pre class="example">@quotation Note
+This is
+a foo.
+@end quotation
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<p><b>Note:</b> This is
+a foo.
+</p></blockquote>
+
+<p>If the <code>@quotation</code> argument is one of these English words
+(case-insensitive):
+</p>
+<div class="example">
+<pre class="example">Caution  Important  Note  Tip  Warning
+</pre></div>
+
+<span id="index-_003ccaution_003e-Docbook-tag"></span>
+<span id="index-_003cimportant_003e-Docbook-tag"></span>
+<span id="index-_003cnote_003e-Docbook-tag"></span>
+<span id="index-_003ctip_003e-Docbook-tag"></span>
+<span id="index-_003cwarning_003e-Docbook-tag"></span>
+<span id="index-_003cblockquote_003e-HTML-tag"></span>
+<p>then the Docbook output uses corresponding special tags
+(<code>&lt;note&gt;</code>, etc.) instead of the default <code>&lt;blockquote&gt;</code>.
+HTML output always uses <code>&lt;blockquote&gt;</code>.
+</p>
+<p>If the author of the quotation is specified in the <code>@quotation</code>
+block with the <code>@author</code> command, a line with the author name is
+displayed after the quotation:
+</p>
+<div class="example">
+<pre class="example">@quotation
+People sometimes ask me if it is a sin in the Church of Emacs to use
+vi.  Using a free version of vi is not a sin; it is a penance.  So happy
+hacking.
+
+@author Richard Stallman
+@end quotation
+</pre></div>
+
+<p>produces
+</p>
+<blockquote>
+<p>People sometimes ask me if it is a sin in the Church of Emacs to use
+vi.  Using a free version of vi is not a sin; it is a penance.  So happy
+hacking.
+</p>
+</blockquote>
+<div align="center">&mdash; <em>Richard Stallman</em>
+</div>
+<span id="index-smallquotation"></span>
+<p>Texinfo also provides a command <code>@smallquotation</code>, which is just
+like <code>@quotation</code> but uses a smaller font size where possible.
+See <a href="_0040small_2026.html"><code>@small&hellip;</code></a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040indentedblock.html" accesskey="n" rel="next"><code>@indentedblock</code></a>, Previous: <a href="Block-Enclosing-Commands.html" accesskey="p" rel="prev">Block Enclosing Commands</a>, Up: <a href="Quotations-and-Examples.html" accesskey="u" rel="up">Quotations and Examples</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

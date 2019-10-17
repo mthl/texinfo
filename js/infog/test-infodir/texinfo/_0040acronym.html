@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@acronym (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@acronym (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@acronym (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Indicating.html" rel="up" title="Indicating">
+<link href="_0040indicateurl.html" rel="next" title="@indicateurl">
+<link href="_0040abbr.html" rel="prev" title="@abbr">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040acronym"></span><div class="header">
+<p>
+Next: <a href="_0040indicateurl.html" accesskey="n" rel="next"><code>@indicateurl</code></a>, Previous: <a href="_0040abbr.html" accesskey="p" rel="prev"><code>@abbr</code></a>, Up: <a href="Indicating.html" accesskey="u" rel="up">Indicating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040acronym_007bacronym_005b_002c-meaning_005d_007d"></span><h4 class="subsection">7.1.14 <code>@acronym</code>{<var>acronym</var>[, <var>meaning</var>]}</h4>
+
+<span id="acronym"></span><span id="index-acronym"></span>
+
+<span id="index-NASA_002c-as-acronym"></span>
+<span id="index-Acronyms_002c-tagging"></span>
+<p>You can use the <code>@acronym</code> command for abbreviations written in
+all capital letters, such as &lsquo;<acronym>NASA</acronym>&rsquo;.  The abbreviation is
+given as the single argument in braces, as in
+&lsquo;<samp>@acronym{NASA}</samp>&rsquo;.  As a matter of style, or for particular
+acronyms, you may prefer to use periods, as in
+&lsquo;<samp>@acronym{N.A.S.A.}</samp>&rsquo;.
+</p>
+<p><code>@acronym</code> accepts an optional second argument, intended to be
+used for the meaning of the acronym.
+</p>
+<p>If the acronym is at the end of a sentence, and if there is no second
+argument, remember to use the <code>@.</code> or similar command
+(see <a href="Ending-a-Sentence.html">Ending a Sentence</a>) to get the correct spacing.
+</p>
+<span id="index-_003cacronym_003e-tag"></span>
+<p>In TeX, the acronym is printed in slightly smaller font.  In the
+Info output, the argument is printed as-is.  In either format, if the
+second argument is present, it is printed in parentheses after the
+acronym.  In HTML and Docbook the <code>&lt;acronym&gt;</code> tag is used.
+</p>
+<p>For instance (since GNU is a recursive acronym, we use
+<code>@acronym</code> recursively):
+</p>
+<div class="example">
+<pre class="example">@acronym{GNU, @acronym{GNU}'s Not Unix}
+</pre></div>
+
+<p>produces:
+</p>
+<div class="display">
+<pre class="display"><acronym title="GNU&rsquo;s Not Unix">GNU</acronym> (<acronym>GNU</acronym>&rsquo;s Not Unix)
+</pre></div>
+
+<span id="index-Family-names_002c-in-all-capitals"></span>
+<p>In some circumstances, it is conventional to print family names in all
+capitals.  Don&rsquo;t use <code>@acronym</code> for this, since a name is not an
+acronym.  Use <code>@sc</code> instead (see <a href="Smallcaps.html">Smallcaps</a>).
+</p>
+<p><code>@abbr</code> and <code>@acronym</code> are closely related commands: they
+both signal to the reader that a shortened form is being used, and
+possibly give a meaning.  When choosing whether to use these two
+commands, please bear the following in mind.
+</p>
+<ul class="no-bullet">
+<li>- In common English usage, acronyms are a subset of abbreviations: they
+include pronounceable words like &lsquo;<acronym>NATO</acronym>&rsquo;, &lsquo;radar&rsquo;, and
+&lsquo;snafu&rsquo;; some sources also include syllable acronyms like
+&lsquo;Usenet&rsquo;, hybrids like &lsquo;<acronym>SIGGRAPH</acronym>&rsquo;, and unpronounceable
+initialisms like &lsquo;<acronym>FBI</acronym>&rsquo;.
+
+</li><li>- In Texinfo, an acronym (but not an abbreviation) should consist only
+of capital letters and periods, no lowercase.
+
+</li><li>- In TeX, an acronym (but not an abbreviation) is printed in a
+slightly smaller font.
+
+</li><li>- Some browsers place a dotted bottom border under abbreviations but not
+acronyms.
+
+</li><li>- It usually turns out to be quite difficult and/or time-consuming to
+consistently use <code>@acronym</code> for all sequences of uppercase
+letters.  Furthermore, it looks strange for some acronyms to be in the
+normal font size and others to be smaller.  Thus, a simpler approach
+you may wish to consider is to avoid <code>@acronym</code> and just typeset
+everything as normal text in all capitals: &lsquo;<samp>GNU</samp>&rsquo;, producing the
+output &lsquo;GNU&rsquo;.
+
+</li><li>- In general, it&rsquo;s not essential to use either of these commands for all
+abbreviations; use your judgment.  Text is perfectly readable without
+them.
+</li></ul>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040indicateurl.html" accesskey="n" rel="next"><code>@indicateurl</code></a>, Previous: <a href="_0040abbr.html" accesskey="p" rel="prev"><code>@abbr</code></a>, Up: <a href="Indicating.html" accesskey="u" rel="up">Indicating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

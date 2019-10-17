@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Reference Implementation (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Reference Implementation (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Reference Implementation (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="Invoking-texi2any.html" rel="next" title="Invoking texi2any">
+<link href="Generic-Translator-texi2any.html" rel="prev" title="Generic Translator texi2any">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Reference-Implementation"></span><div class="header">
+<p>
+Next: <a href="Invoking-texi2any.html" accesskey="n" rel="next">Invoking <code>texi2any</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="texi2any_003a-A-Texinfo-Reference-Implementation"></span><h3 class="section">20.1 <code>texi2any</code>: A Texinfo Reference Implementation</h3>
+
+<span id="index-texi2any_002c-as-reference-implementation"></span>
+<span id="index-Reference-implementation"></span>
+<span id="index-Implementation_002c-texi2any-as-reference"></span>
+
+<p>Above, we called <code>texi2any</code> &ldquo;the&rdquo; translator for Texinfo
+instead of just &ldquo;a&rdquo; translator, even though (of course) it&rsquo;s
+technically and legally possible for other implementations to be
+written.  The reason is that alternative implementations are very
+likely to have subtle, or not-so-subtle, differences in behavior, and
+thus Texinfo documents would become dependent on the processor.
+Therefore, it is important to have a reference implementation that
+defines parts of the language not fully specified by the manual (often
+intentionally so).  It is equally important to have consistent
+command-line options and other behavior for all processors.
+</p>
+<span id="index-Tree-representation-of-documents"></span>
+<span id="index-Syntax-tree-representation-of-documents"></span>
+<span id="index-Abstract-syntax-tree-representation-of-documents"></span>
+<p>For this reason, the once-independent <code>texi2html</code> Perl Texinfo
+processor was made compatible with the C implementation of
+<code>makeinfo</code>, to avoid continuing with two different
+implementations (see <a href="History.html">History</a>).  The current implementation,
+<code>texi2any</code>, serves as the reference implementation.  It
+inherited the design of customization and other features from
+<code>texi2html</code> (for more on <code>texi2html</code> compatibility,
+see <a href="texi2html.html"><code>texi2html</code></a>).  However, <code>texi2any</code> is a full
+reimplementation: it constructs a tree-based representation of the
+input document for all back-ends to work from.
+</p>
+<span id="index-Texinfo-language-tests"></span>
+<span id="index-Tests_002c-of-Texinfo-language"></span>
+<p>Extensive tests of the language were developed at the same time as
+<code>texi2any</code>; we plead with anyone thinking of writing a program
+to parse Texinfo input to at least make use of these tests.
+</p>
+<span id="index-Examples-of-using-texi2any"></span>
+<span id="index-Texinfo_003a_003aParser-module"></span>
+<p>The <code>texi2html</code> wrapper script (see <a href="texi2html.html"><code>texi2html</code></a>)
+provides a very simple example of calling <code>texi2any</code> from a
+shell script; it&rsquo;s in <samp>util/texi2html</samp> in the Texinfo sources.
+More consequentially, <code>texi-elements-by-size</code> is an example
+Perl script using the <code>Texinfo::Parser</code> module interface; it&rsquo;s
+also in the <samp>util</samp> source directory.  (Its functionality may also
+be useful to authors; see <a href="Tips.html#texi_002delements_002dby_002dsize">texi-elements-by-size</a>.)
+</p>
+<span id="index-Future-of-Texinfo-implementations"></span>
+<p>With the release of <code>texi2any</code> as the reference
+implementation, development of both the C implementation of
+<code>makeinfo</code> and <code>texi2html</code> has been halted.  Going
+forward, we ask authors of Texinfo documents to use only
+<code>texi2any</code>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Invoking-texi2any.html" accesskey="n" rel="next">Invoking <code>texi2any</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

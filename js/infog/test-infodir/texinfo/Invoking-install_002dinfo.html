@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Invoking install-info (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Invoking install-info (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Invoking install-info (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Installing-an-Info-File.html" rel="up" title="Installing an Info File">
+<link href="Generating-HTML.html" rel="next" title="Generating HTML">
+<link href="Installing-Dir-Entries.html" rel="prev" title="Installing Dir Entries">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Invoking-install_002dinfo"></span><div class="header">
+<p>
+Previous: <a href="Installing-Dir-Entries.html" accesskey="p" rel="prev">Installing Dir Entries</a>, Up: <a href="Installing-an-Info-File.html" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Invoking-install_002dinfo-1"></span><h4 class="subsection">21.2.5 Invoking <code>install-info</code></h4>
+
+<span id="index-install_002dinfo"></span>
+
+<p><code>install-info</code> inserts menu entries from an Info file into the
+top-level <samp>dir</samp> file in the Info system (see the previous sections
+for an explanation of how the <samp>dir</samp> file works).  <code>install-info</code>
+also removes menu entries from the <samp>dir</samp> file.  It&rsquo;s most often
+run as part of software installation, or when constructing a <samp>dir</samp> file
+for all manuals on a system.  Synopsis:
+</p>
+<div class="example">
+<pre class="example">install-info [<var>option</var>&hellip;] [<var>info-file</var> [<var>dir-file</var>]]
+</pre></div>
+
+<p>If <var>info-file</var> or <var>dir-file</var> are not specified, the options
+(described below) that define them must be.  There are no compile-time
+defaults, and standard input is never used.  <code>install-info</code> can
+read only one Info file and write only one <samp>dir</samp> file per invocation.
+</p>
+<span id="index-dir_002c-created-by-install_002dinfo"></span>
+<p>If <var>dir-file</var> (however specified) does not exist,
+<code>install-info</code> creates it if possible (with no entries).
+</p>
+<span id="index-Compressed-dir-files_002c-reading"></span>
+<span id="index-XZ_002dcompressed-dir-files_002c-reading"></span>
+<span id="index-Bzipped-dir-files_002c-reading"></span>
+<span id="index-Lzip_002dcompressed-dir-files_002c-reading"></span>
+<span id="index-LZMA_002dcompressed-dir-files_002c-reading"></span>
+<span id="index-Dir-files_002c-compressed"></span>
+<p>If any input file is compressed with <code>gzip</code> (see <cite><a href="https://www.gnu.org/software/gzip/manual/html_node/index.html#Top">Gzip</a></cite>), <code>install-info</code> automatically uncompresses it for reading.
+And if <var>dir-file</var> is compressed, <code>install-info</code> also
+automatically leaves it compressed after writing any changes.  If
+<var>dir-file</var> itself does not exist, <code>install-info</code> tries to
+open <samp><var>dir-file</var>.gz</samp>, <samp><var>dir-file</var>.xz</samp>,
+<samp><var>dir-file</var>.bz2</samp>, <samp><var>dir-file</var>.lz</samp>, and
+<samp><var>dir-file</var>.lzma</samp>, in that order.
+</p>
+<p>Options:
+</p>
+<dl compact="compact">
+<dt><code>--add-once</code></dt>
+<dd><span id="index-_002d_002dadd_002donce_002c-for-install_002dinfo"></span>
+<p>Specifies that the entry or entries will only be put into a single section.
+</p>
+</dd>
+<dt><code>--align=<var>column</var></code></dt>
+<dd><span id="index-_002d_002dalign_003dcolumn_002c-for-install_002dinfo"></span>
+<p>Specifies the column that the second and subsequent lines of menu entry&rsquo;s
+description will be formatted to begin at.  The default for this option is
+&lsquo;<samp>35</samp>&rsquo;.  It is used in conjunction with the &lsquo;<samp>--max-width</samp>&rsquo; option.
+<var>column</var> starts counting at 1.
+</p>
+</dd>
+<dt><code>--append-new-sections</code></dt>
+<dd><span id="index-_002d_002dappend_002dnew_002dsections_002c-for-install_002dinfo"></span>
+<p>Instead of alphabetizing new sections, place them at the end of the DIR file.
+</p>
+</dd>
+<dt><code>--calign=<var>column</var></code></dt>
+<dd><span id="index-_002d_002dcalign_003dcolumn_002c-for-install_002dinfo"></span>
+<p>Specifies the column that the first line of menu entry&rsquo;s description will
+be formatted to begin at.  The default for this option is &lsquo;<samp>33</samp>&rsquo;.  It is
+used in conjunction with the &lsquo;<samp>--max-width</samp>&rsquo; option.
+When the name of the menu entry exceeds this column, entry&rsquo;s description
+will start on the following line.
+<var>column</var> starts counting at 1.
+</p>
+</dd>
+<dt><code>--debug</code></dt>
+<dd><span id="index-_002d_002ddebug_002c-for-install_002dinfo"></span>
+<p>Report what is being done.
+</p>
+</dd>
+<dt><code>--delete</code></dt>
+<dd><span id="index-_002d_002ddelete_002c-for-install_002dinfo"></span>
+<p>Delete the entries in <var>info-file</var> from <var>dir-file</var>.  The file
+name in the entry in <var>dir-file</var> must be <var>info-file</var> (except for
+an optional &lsquo;<samp>.info</samp>&rsquo; in either one).  Don&rsquo;t insert any new entries.
+Any empty sections that result from the removal are also removed.
+</p>
+</dd>
+<dt><code>--description=<var>text</var></code></dt>
+<dd><span id="index-_002d_002ddescription_003dtext_002c-for-install_002dinfo"></span>
+<p>Specify the explanatory portion of the menu entry.  If you don&rsquo;t specify
+a description (either via &lsquo;<samp>--entry</samp>&rsquo;, &lsquo;<samp>--item</samp>&rsquo; or this option),
+the description is taken from the Info file itself.
+</p>
+</dd>
+<dt><code>--dir-file=<var>name</var></code></dt>
+<dd><span id="index-_002d_002ddir_002dfile_003dname_002c-for-install_002dinfo"></span>
+<p>Specify file name of the Info directory file.  This is equivalent to
+using the <var>dir-file</var> argument.
+</p>
+</dd>
+<dt><code>--dry-run</code></dt>
+<dd><span id="index-_002d_002ddry_002drun_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--test</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--entry=<var>text</var></code></dt>
+<dd><span id="index-_002d_002dentry_003dtext_002c-for-install_002dinfo"></span>
+<p>Insert <var>text</var> as an Info directory entry; <var>text</var> should have the
+form of an Info menu item line plus zero or more extra lines starting
+with whitespace.  If you specify more than one entry, they are all
+added.  If you don&rsquo;t specify any entries, they are determined from
+information in the Info file itself.
+</p>
+</dd>
+<dt><code>--help</code></dt>
+<dd><span id="index-_002d_002dhelp_002c-for-texindex"></span>
+<p>Display a usage message with basic usage and all available options,
+then exit successfully.
+</p>
+</dd>
+<dt><code>--info-file=<var>file</var></code></dt>
+<dd><span id="index-_002d_002dinfo_002dfile_003dfile_002c-for-install_002dinfo"></span>
+<p>Specify Info file to install in the directory.  This is
+equivalent to using the <var>info-file</var> argument.
+</p>
+</dd>
+<dt><code>--info-dir=<var>dir</var></code></dt>
+<dd><span id="index-_002d_002dinfo_002ddir_003ddir_002c-for-install_002dinfo"></span>
+<p>Specify the directory where the directory file <samp>dir</samp> resides.
+Equivalent to &lsquo;<samp>--dir-file=<var>dir</var>/dir</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--infodir=<var>dir</var></code></dt>
+<dd><span id="index-_002d_002dinfodir_003ddir_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--info-dir</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--item=<var>text</var></code></dt>
+<dd><span id="index-_002d_002ditem_003dtext_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--entry=<var>text</var></samp>&rsquo;.  An Info directory entry is actually
+a menu item.
+</p>
+</dd>
+<dt><code>--keep-old</code></dt>
+<dd><span id="index-_002d_002dkeep_002dold_002c-for-install_002dinfo"></span>
+<p>Do not replace pre-existing menu entries.  When &lsquo;<samp>--remove</samp>&rsquo; is specified,
+this option means that empty sections are not removed.
+</p>
+</dd>
+<dt><code>--max-width=<var>column</var></code></dt>
+<dd><span id="index-_002d_002dmax_002dwidth_003dcolumn_002c-for-install_002dinfo"></span>
+<p>Specifies the column that the menu entry&rsquo;s description will be word-wrapped
+at.  <var>column</var> starts counting at 1.
+</p>
+</dd>
+<dt><code>--maxwidth=<var>column</var></code></dt>
+<dd><span id="index-_002d_002dmaxwidth_003dcolumn_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--max-width</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--menuentry=<var>text</var></code></dt>
+<dd><span id="index-_002d_002dmenuentry_003dtext_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--name</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--name=<var>text</var></code></dt>
+<dd><span id="index-_002d_002dname_003dtext_002c-for-install_002dinfo"></span>
+<p>Specify the name portion of the menu entry.  If the <var>text</var> does
+not start with an asterisk &lsquo;<samp>*</samp>&rsquo;, it is presumed to be the text
+after the &lsquo;<samp>*</samp>&rsquo; and before the parentheses that specify the Info
+file.  Otherwise <var>text</var> is taken verbatim, and is taken as
+defining the text up to and including the first period (a space is
+appended if necessary).  If you don&rsquo;t specify the name (either via
+&lsquo;<samp>--entry</samp>&rsquo;, &lsquo;<samp>--item</samp>&rsquo; or this option), it is taken from the
+Info file itself.  If the Info does not contain the name, the basename
+of the Info file is used.
+</p>
+</dd>
+<dt><code>--no-indent</code></dt>
+<dd><span id="index-_002d_002dno_002dindent_002c-for-install_002dinfo"></span>
+<p>Suppress formatting of new entries into the <samp>dir</samp> file.
+</p>
+</dd>
+<dt><code>--quiet</code></dt>
+<dt><code>--silent</code></dt>
+<dd><span id="index-_002d_002dquiet_002c-for-install_002dinfo"></span>
+<span id="index-_002d_002dsilent_002c-for-install_002dinfo"></span>
+<p>Suppress warnings, etc., for silent operation.
+</p>
+</dd>
+<dt><code>--remove</code></dt>
+<dd><span id="index-_002d_002dremove_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--delete</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--remove-exactly</code></dt>
+<dd><span id="index-_002d_002dremove_002dexactly_002c-for-install_002dinfo"></span>
+<p>Also like &lsquo;<samp>--delete</samp>&rsquo;, but only entries if the Info file name
+matches exactly; <code>.info</code> and/or <code>.gz</code> suffixes are
+<em>not</em> ignored.
+</p>
+</dd>
+<dt><code>--section=<var>sec</var></code></dt>
+<dd><span id="index-_002d_002dsection_003dsec_002c-for-install_002dinfo"></span>
+<p>Put this file&rsquo;s entries in section <var>sec</var> of the directory.  If you
+specify more than one section, all the entries are added in each of the
+sections.  If you don&rsquo;t specify any sections, they are determined from
+information in the Info file itself.  If the Info file doesn&rsquo;t specify
+a section, the menu entries are put into the Miscellaneous section.
+</p>
+</dd>
+<dt><code>--section <var>regex</var> <var>sec</var></code></dt>
+<dd><span id="index-_002d_002dsection-regex-sec_002c-for-install_002dinfo"></span>
+<p>Same as &lsquo;<samp>--regex=<var>regex</var> --section=<var>sec</var> --add-once</samp>&rsquo;.
+</p>
+<p><code>install-info</code> tries to detect when this alternate syntax is used,
+but does not always guess correctly.  Here is the heuristic that
+<code>install-info</code> uses:
+</p><ol>
+<li> If the second argument to <code>--section</code> starts with a hyphen, the
+original syntax is presumed.
+
+</li><li> If the second argument to <code>--section</code> is a file that can be
+opened, the original syntax is presumed.
+
+</li><li> Otherwise the alternate syntax is used.
+</li></ol>
+
+<p>When the heuristic fails because your section title starts with a
+hyphen, or it happens to be a filename that can be opened, the syntax
+should be changed to &lsquo;<samp>--regex=<var>regex</var> --section=<var>sec</var>
+--add-once</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>--regex=<var>regex</var></code></dt>
+<dd><span id="index-_002d_002dregex_003dregex_002c-for-install_002dinfo"></span>
+<p>Put this file&rsquo;s entries into any section that matches <var>regex</var>.  If
+more than one section matches, all of the entries are added in each of the
+sections.  Specify <var>regex</var> using basic regular expression syntax, more
+or less as used with <code>grep</code>, for example.
+</p>
+</dd>
+<dt><code>--test</code></dt>
+<dd><span id="index-_002d_002dtest_002c-for-install_002dinfo"></span>
+<p>Suppress updating of the directory file.
+</p>
+</dd>
+<dt><code>--version</code></dt>
+<dd><span id="index-_002d_002dversion_002c-for-install_002dinfo"></span>
+<span id="index-Version-number_002c-for-install_002dinfo"></span>
+<p>Display version information and exit successfully.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Installing-Dir-Entries.html" accesskey="p" rel="prev">Installing Dir Entries</a>, Up: <a href="Installing-an-Info-File.html" accesskey="u" rel="up">Installing an Info File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

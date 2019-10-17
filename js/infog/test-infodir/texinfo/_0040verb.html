@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@verb (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@verb (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@verb (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Indicating.html" rel="up" title="Indicating">
+<link href="_0040var.html" rel="next" title="@var">
+<link href="_0040samp.html" rel="prev" title="@samp">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040verb"></span><div class="header">
+<p>
+Next: <a href="_0040var.html" accesskey="n" rel="next"><code>@var</code></a>, Previous: <a href="_0040samp.html" accesskey="p" rel="prev"><code>@samp</code></a>, Up: <a href="Indicating.html" accesskey="u" rel="up">Indicating</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040verb_007bchartextchar_007d"></span><h4 class="subsection">7.1.6 <code>@verb</code>{<var>char</var><var>text</var><var>char</var>}</h4>
+
+<span id="verb"></span><span id="index-verb"></span>
+<span id="index-Verbatim-in_002dline-text"></span>
+
+<span id="index-Delimiter-character_002c-for-verbatim"></span>
+<p>Use the <code>@verb</code> command to print a verbatim sequence of
+characters.
+</p>
+<p>Like LaTeX&rsquo;s <code>\verb</code> command, the verbatim text can be quoted using
+any unique delimiter character.  Enclose the verbatim text, including the
+delimiters, in braces.  Text is printed in a fixed-width font:
+</p>
+<div class="example">
+<pre class="example">How many @verb{|@|}-escapes does one need to print this
+@verb{.@a @b.@c.} string or @verb{+@'e?`{}!`\+} this?
+</pre></div>
+
+<p>produces
+</p>
+<div class="example">
+<pre class="example">How many <tt>@</tt>-escapes does one need to print this
+<tt>@a @b.@c</tt> string or <tt>@'e?`{}!`\</tt> this?
+</pre></div>
+
+<p>This is in contrast to <code>@samp</code> (see the previous section),
+<code>@code</code>, and similar commands; in those cases, the argument is
+normal Texinfo text, where the three characters <code>@{}</code> are
+special, as usual.  With <code>@verb</code>, nothing is special except the
+delimiter character you choose.
+</p>
+<p>The delimiter character itself may appear inside the verbatim text, as
+shown above.  As another example, &lsquo;<samp>@verb{...}</samp>&rsquo; prints a single
+(fixed-width) period.
+</p>
+<p>It is not reliable to use <code>@verb</code> inside other Texinfo
+constructs.  In particular, it does not work to use <code>@verb</code> in
+anything related to cross-referencing, such as section titles or
+figure captions.
+</p>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Custom Headings (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Custom Headings (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Custom Headings (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Headings.html" rel="up" title="Headings">
+<link href="Catching-Mistakes.html" rel="next" title="Catching Mistakes">
+<link href="Heading-Choice.html" rel="prev" title="Heading Choice">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Custom-Headings"></span><div class="header">
+<p>
+Previous: <a href="Heading-Choice.html" accesskey="p" rel="prev">Heading Choice</a>, Up: <a href="Headings.html" accesskey="u" rel="up">Headings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="How-to-Make-Your-Own-Headings"></span><h3 class="section">E.4 How to Make Your Own Headings</h3>
+
+<p>You can use the standard headings provided with Texinfo or specify
+your own.  By default, Texinfo has no footers, so if you specify them,
+the available page size for the main text will be slightly reduced.
+</p>
+<p>Texinfo provides six commands for specifying headings and
+footings:
+</p><ul>
+<li> <code>@everyheading</code> and <code>@everyfooting</code> generate page headers and
+footers that are the same for both even- and odd-numbered pages.
+</li><li> <code>@evenheading</code> and <code>@evenfooting</code> command generate headers
+and footers for even-numbered (left-hand) pages.
+</li><li> <code>@oddheading</code> and <code>@oddfooting</code> generate headers and footers
+for odd-numbered (right-hand) pages.
+</li></ul>
+
+<p>Write custom heading specifications in the Texinfo file immediately
+after the <code>@end titlepage</code> command.  You must cancel the
+predefined heading commands with the <code>@headings off</code> command
+before defining your own specifications.
+</p>
+<p>Here is how to tell TeX to place the chapter name at the left, the
+page number in the center, and the date at the right of every header
+for both even- and odd-numbered pages:
+</p>
+<div class="example">
+<pre class="example">@headings off
+@everyheading @thischapter @| @thispage @| @today{}
+</pre></div>
+
+<p>You need to divide the left part from the central part and the central
+part from the right part by inserting &lsquo;<samp>@|</samp>&rsquo; between parts.
+Otherwise, the specification command will not be able to tell where
+the text for one part ends and the next part begins.
+</p>
+<p>Each part can contain text or @-commands.  The text is printed as if
+the part were within an ordinary paragraph in the body of the page.
+The @-commands replace themselves with the page number, date, chapter
+name, or whatever.
+</p>
+<p>Here are the six heading and footing commands:
+</p>
+<dl compact="compact">
+<dt><code>@everyheading <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dt><code>@everyfooting <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dd><span id="index-everyheading"></span>
+<span id="index-everyfooting"></span>
+<p>The &lsquo;every&rsquo; commands specify the format for both even- and odd-numbered
+pages.  These commands are for documents that are printed on one side
+of each sheet of paper, or for documents in which you want symmetrical
+headers or footers.
+</p>
+</dd>
+<dt><code>@evenheading <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dt><code>@oddheading  <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dt><code>@evenfooting <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dt><code>@oddfooting  <var>left</var> @| <var>center</var> @| <var>right</var></code></dt>
+<dd><span id="index-evenheading"></span>
+<span id="index-evenfooting"></span>
+<span id="index-oddheading"></span>
+<span id="index-oddfooting"></span>
+<p>The &lsquo;even&rsquo; and &lsquo;odd&rsquo; commands specify the format for even-numbered
+pages and odd-numbered pages.  These commands are for books and
+manuals that are printed on both sides of each sheet of paper.
+</p></dd>
+</dl>
+
+<p>Use the &lsquo;<samp>@this&hellip;</samp>&rsquo; series of @-commands to
+provide the names of chapters
+and sections and the page number.  You can use the
+&lsquo;<samp>@this&hellip;</samp>&rsquo; commands in the left, center, or right portions
+of headers and footers, or anywhere else in a Texinfo file so long as
+they are between <code>@iftex</code> and <code>@end iftex</code> commands.
+</p>
+<p>Here are the &lsquo;<samp>@this&hellip;</samp>&rsquo; commands:
+</p>
+<dl compact="compact">
+<dt><code>@thispage</code></dt>
+<dd><span id="index-thispage"></span>
+<p>Expands to the current page number.
+</p>
+</dd>
+<dt><code>@thissectionname</code></dt>
+<dd><span id="index-thissectionname"></span>
+<p>Expands to the name of the current section.
+</p>
+</dd>
+<dt><code>@thissectionnum</code></dt>
+<dd><span id="index-thissectionnum"></span>
+<p>Expands to the number of the current section.
+</p>
+</dd>
+<dt><code>@thissection</code></dt>
+<dd><span id="index-thissection"></span>
+<p>Expands to the number and name of the current section, in the format
+&lsquo;Section 1: Title&rsquo;.
+</p>
+</dd>
+<dt><code>@thischaptername</code></dt>
+<dd><span id="index-thischaptername"></span>
+<p>Expands to the name of the current chapter.
+</p>
+</dd>
+<dt><code>@thischapternum</code></dt>
+<dd><span id="index-thischapternum"></span>
+<p>Expands to the number of the current chapter, or letter of the current
+appendix.
+</p>
+</dd>
+<dt><code>@thischapter</code></dt>
+<dd><span id="index-thischapter"></span>
+<p>Expands to the number and name of the current
+chapter, in the format &lsquo;Chapter 1: Title&rsquo;.
+</p>
+</dd>
+<dt><code>@thistitle</code></dt>
+<dd><span id="index-thistitle"></span>
+<p>Expands to the name of the document, as specified by the
+<code>@settitle</code> command.
+</p>
+</dd>
+<dt><code>@thisfile</code></dt>
+<dd><span id="index-thisfile"></span>
+<p>For <code>@include</code> files only: expands to the name of the current
+<code>@include</code> file.  If the current Texinfo source file is not an
+<code>@include</code> file, this command has no effect.  This command does
+<em>not</em> provide the name of the current Texinfo source file unless
+it is an <code>@include</code> file.  (See <a href="Include-Files.html">Include Files</a>, for more
+information about <code>@include</code> files.)
+</p></dd>
+</dl>
+
+<p>You can also use the <code>@today{}</code> command, which expands to the
+current date, in &lsquo;1 Jan 1900&rsquo; format.
+<span id="index-today"></span>
+</p>
+<p>Other @-commands and text are printed in a header or footer just as
+if they were in the body of a page.  It is useful to incorporate text,
+particularly when you are writing drafts:
+</p>
+<div class="example">
+<pre class="example">@headings off
+@everyheading @emph{Draft!} @| @thispage @| @thischapter
+@everyfooting @| @| Version: 0.27: @today{}
+</pre></div>
+
+<p>Beware of overlong titles: they may overlap another part of the
+header or footer and blot it out.
+</p>
+<p>If you have very short chapters and/or sections, several of them can
+appear on a single page.  You can specify which chapters and sections
+you want <code>@thischapter</code>, <code>@thissection</code> and other such
+macros to refer to on such pages as follows:
+</p>
+<dl compact="compact">
+<dt><code>@everyheadingmarks <var>ref</var></code></dt>
+<dt><code>@everyfootingmarks <var>ref</var></code></dt>
+<dd><span id="index-everyheadingmarks"></span>
+<span id="index-everyfootingmarks"></span>
+<p>The <var>ref</var> argument can be either <code>top</code> (the <code>@this...</code>
+commands will refer to the chapter/section at the top of a page) or
+<code>bottom</code> (the commands will reflect the situation at the bottom
+of a page).  These &lsquo;<samp>@every...</samp>&rsquo; commands specify what to do on
+both even- and odd-numbered pages.
+</p>
+</dd>
+<dt><code>@evenheadingmarks <var>ref</var></code></dt>
+<dt><code>@oddheadingmarks <var>ref</var></code></dt>
+<dt><code>@evenfootingmarks <var>ref</var></code></dt>
+<dt><code>@oddfootingmarks <var>ref</var></code></dt>
+<dd><span id="index-evenheadingmarks"></span>
+<span id="index-oddheadingmarks"></span>
+<span id="index-evenfootingmarks"></span>
+<span id="index-oddfootingmarks"></span>
+<p>These &lsquo;<samp>@even...</samp>&rsquo; and &lsquo;<samp>@odd...</samp>&rsquo; commands specify what to do
+on only even- or odd-numbered pages, respectively.  The <var>ref</var>
+argument is the same as with the &lsquo;<samp>@every...</samp>&rsquo; commands.
+</p></dd>
+</dl>
+
+<p>Write these commands immediately after the <code>@...contents</code>
+commands, or after the <code>@end titlepage</code> command if you don&rsquo;t
+have a table of contents or if it is printed at the end of your
+manual.
+</p>
+<p>By default the <code>@this...</code> commands reflect the situation at the
+bottom of a page both in headings and in footings.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Heading-Choice.html" accesskey="p" rel="prev">Heading Choice</a>, Up: <a href="Headings.html" accesskey="u" rel="up">Headings</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

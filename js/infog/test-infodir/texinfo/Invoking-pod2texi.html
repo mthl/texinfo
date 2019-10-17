@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Invoking pod2texi (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Invoking pod2texi (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Invoking pod2texi (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="texi2html.html" rel="next" title="texi2html">
+<link href="Internationalization-of-Document-Strings.html" rel="prev" title="Internationalization of Document Strings">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Invoking-pod2texi"></span><div class="header">
+<p>
+Next: <a href="texi2html.html" accesskey="n" rel="next"><code>texi2html</code></a>, Previous: <a href="Internationalization-of-Document-Strings.html" accesskey="p" rel="prev">Internationalization of Document Strings</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Invoking-pod2texi_003a-Convert-POD-to-Texinfo"></span><h3 class="section">20.8 Invoking <code>pod2texi</code>: Convert POD to Texinfo</h3>
+
+<span id="index-pod2texi"></span>
+<span id="index-Invoking-pod2texi"></span>
+<span id="index-POD_002c-converting-to-Texinfo"></span>
+<span id="index-Perl-POD_002c-converting-to-Texinfo"></span>
+
+<p>The <code>pod2texi</code> program translates Perl pod documentation file(s)
+to Texinfo.  There are two basic modes of operation: generating a
+standalone manual from each input pod, or (if <code>--base-level=1</code> or
+higher is given) generating Texinfo subfiles suitable for use
+with <code>@include</code>.
+</p>
+<p>Although ordinarily this documentation in the Texinfo manual would be
+the best place to look, in this case we have documented all the
+options and examples in the <code>pod2texi</code> program itself, since it
+may be useful outside of the rest of Texinfo.  Thus, please see the
+output of <code>pod2texi --help</code>, the version on the web at
+<a href="http://www.gnu.org/software/texinfo/manual/pod2texi.html">http://www.gnu.org/software/texinfo/manual/pod2texi.html</a>, etc.
+</p>
+<p>For an example of using <code>pod2texi</code> to make Texinfo out of the
+Perl documentation itself, see
+<a href="http://svn.savannah.gnu.org/viewvc/trunk/contrib/perldoc-all/?root=texinfo"><samp>contrib/perldoc-all</samp></a> in the Texinfo source distribution (the
+output is available at <a href="http://www.gnu.org/software/perl/manual">http://www.gnu.org/software/perl/manual</a>).
+</p>
+
+
+
+
+</body>
+</html>

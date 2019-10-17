@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Structuring Command Types (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Structuring Command Types (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Structuring Command Types (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Chapter-Structuring.html" rel="up" title="Chapter Structuring">
+<link href="_0040chapter.html" rel="next" title="@chapter">
+<link href="Tree-Structuring.html" rel="prev" title="Tree Structuring">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Structuring-Command-Types"></span><div class="header">
+<p>
+Next: <a href="_0040chapter.html" accesskey="n" rel="next"><code>@chapter</code></a>, Previous: <a href="Tree-Structuring.html" accesskey="p" rel="prev">Tree Structuring</a>, Up: <a href="Chapter-Structuring.html" accesskey="u" rel="up">Chapter Structuring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Structuring-Command-Types-1"></span><h3 class="section">5.2 Structuring Command Types</h3>
+
+<p>The chapter structuring commands fall into four groups or series, each
+of which contains structuring commands corresponding to the
+hierarchical levels of chapters, sections, subsections, and
+subsubsections.
+</p>
+<p>The four groups of commands are the <code>@chapter</code> series, the
+<code>@unnumbered</code> series, the <code>@appendix</code> series, and the
+<code>@heading</code> series.  Each command produces a title with a
+different appearance in the body of the document.  Some of the
+commands list their titles in the tables of contents, while others do
+not.  Here are the details:
+</p>
+<ul>
+<li> The <code>@chapter</code> and <code>@appendix</code> series of commands produce
+numbered or lettered entries both in the body of a document and in its
+table of contents.
+
+</li><li> The <code>@unnumbered</code> series of commands produce unnumbered entries
+both in the body of a document and in its table of contents.  The
+<code>@top</code> command, which has a special use, is a member of this
+series (see <a href="_0040top-Command.html"><code>@top</code> Command</a>).  An <code>@unnumbered</code> section
+is a normal part of the document structure.
+
+</li><li> The <code>@heading</code> series of commands produce simple unnumbered
+headings that do not appear in a table of contents, are not associated
+with nodes, and cannot be cross-referenced.  These heading commands
+never start a new page.
+</li></ul>
+
+<p>When a <code>@setchapternewpage</code> command says to do so, the
+<code>@chapter</code>, <code>@unnumbered</code>, and <code>@appendix</code> commands
+start new pages in the printed manual; the <code>@heading</code> commands
+do not.  See <a href="_0040setchapternewpage.html"><code>@setchapternewpage</code></a>.
+</p>
+<p>Here is a summary:
+</p>
+
+<table>
+<tr><td width="19%"></td><td width="30%"></td><td width="28%"></td><td width="22%">No new page</td></tr>
+<tr><td width="19%"><i>Numbered</i></td><td width="30%"><i>Unnumbered</i></td><td width="28%"><i>Lettered/numbered</i></td><td width="22%"><i>Unnumbered</i></td></tr>
+<tr><td width="19%">In contents</td><td width="30%">In contents</td><td width="28%">In contents</td><td width="22%">Not in contents</td></tr>
+<tr><td width="19%"></td><td width="30%"><code>@top</code></td><td width="28%"></td><td width="22%"><code>@majorheading</code></td></tr>
+<tr><td width="19%"><code>@chapter</code></td><td width="30%"><code>@unnumbered</code></td><td width="28%"><code>@appendix</code></td><td width="22%"><code>@chapheading</code></td></tr>
+<tr><td width="19%"><code>@section</code></td><td width="30%"><code>@unnumberedsec</code></td><td width="28%"><code>@appendixsec</code></td><td width="22%"><code>@heading</code></td></tr>
+<tr><td width="19%"><code>@subsection</code></td><td width="30%"><code>@unnumberedsubsec</code></td><td width="28%"><code>@appendixsubsec</code></td><td width="22%"><code>@subheading</code></td></tr>
+<tr><td width="19%"><code>@subsubsection</code></td><td width="30%"><code>@unnumberedsubsubsec</code></td><td width="28%"><code>@appendixsubsubsec</code></td><td width="22%"><code>@subsubheading</code></td></tr>
+</table>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040chapter.html" accesskey="n" rel="next"><code>@chapter</code></a>, Previous: <a href="Tree-Structuring.html" accesskey="p" rel="prev">Tree Structuring</a>, Up: <a href="Chapter-Structuring.html" accesskey="u" rel="up">Chapter Structuring</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

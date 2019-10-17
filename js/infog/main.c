@@ -114,7 +114,7 @@ match_selected_cb (GtkEntryCompletion *widget,
 			    1,
 			    &value);
   load_relative_url (g_value_get_string (&value));
-  gtk_widget_hide (GTK_WIDGET(index_entry));
+  hide_index ();
   return FALSE;
 }
 
@@ -509,7 +509,6 @@ main (int argc, char *argv[])
     /* Hide the index search box when it loses focus. */
     g_signal_connect (webView, "focus-in-event",
                       G_CALLBACK(hide_index_cb), NULL);
-
     gtk_widget_hide (GTK_WIDGET(index_entry));
 
     g_signal_connect (webView, "decide-policy",

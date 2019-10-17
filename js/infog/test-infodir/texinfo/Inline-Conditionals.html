@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inline Conditionals (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Inline Conditionals (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Inline Conditionals (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Conditionals.html" rel="up" title="Conditionals">
+<link href="_0040set-_0040clear-_0040value.html" rel="next" title="@set @clear @value">
+<link href="Raw-Formatter-Commands.html" rel="prev" title="Raw Formatter Commands">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Inline-Conditionals"></span><div class="header">
+<p>
+Next: <a href="_0040set-_0040clear-_0040value.html" accesskey="n" rel="next"><code>@set @clear @value</code></a>, Previous: <a href="Raw-Formatter-Commands.html" accesskey="p" rel="prev">Raw Formatter Commands</a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Inline-Conditionals_003a-_0040inline_002c-_0040inlineifelse_002c-_0040inlineraw"></span><h3 class="section">16.4 Inline Conditionals: <code>@inline</code>, <code>@inlineifelse</code>, <code>@inlineraw</code></h3>
+<span id="index-inlinefmt"></span>
+<span id="index-inlinefmtifelse"></span>
+<span id="index-inlineraw"></span>
+<span id="index-Inline-conditionals"></span>
+<span id="index-Conditional-commands_002c-inline"></span>
+<span id="index-Brace_002ddelimited-conditional-text"></span>
+<span id="index-Newlines_002c-avoiding-in-conditionals"></span>
+<span id="index-Whitespace_002c-controlling-in-conditionals"></span>
+
+<p>Texinfo provides a set of conditional commands with arguments given
+within braces:
+</p>
+<dl compact="compact">
+<dt><code>@inlinefmt{<var>format</var>, <var>text</var>}</code></dt>
+<dd><p>Process the Texinfo <var>text</var> if <var>format</var> output is being
+generated.
+</p>
+</dd>
+<dt><code>@inlinefmtifelse{<var>format</var>, <var>then-text</var>, <var>else-text</var>}</code></dt>
+<dd><p>Process the Texinfo <var>then-text</var> if <var>format</var> output is being
+generated; otherwise, process <var>else-text</var>.
+</p>
+</dd>
+<dt><code>@inlineraw{<var>format</var>, <var>text</var>}</code></dt>
+<dd><p>Similar, but for raw <var>text</var> (see <a href="Raw-Formatter-Commands.html">Raw Formatter Commands</a>).
+</p></dd>
+</dl>
+
+<p>The supported <var>format</var> names are:
+</p>
+<div class="example">
+<pre class="example">docbook  html  info  plaintext  tex  xml
+</pre></div>
+
+<p>For example,
+</p>
+<div class="example">
+<pre class="example">@inlinefmt{html, @emph{HTML-only text}}
+</pre></div>
+
+<p>is nearly equivalent to
+</p>
+<div class="example">
+<pre class="example">@ifhtml
+@emph{HTML-only text}
+@end ifhtml
+</pre></div>
+
+<p>except that no whitespace is added, as happens in the latter
+(environment) case.
+</p>
+<p>In these commands, whitespace is ignored after the comma separating
+the arguments, as usual, but is <em>not</em> ignored at the end of
+<var>text</var>.
+</p>
+<p>To insert a literal at sign, left brace, or right brace in one of the
+arguments, you must use the alphabetic commands <code>@atchar{}</code>
+(see <a href="Inserting-an-Atsign.html">Inserting an Atsign</a>), and <code>@lbracechar{}</code> or
+<code>@rbracechar{}</code> (see <a href="Inserting-Braces.html">Inserting Braces</a>), or the parsing
+will become confused.
+</p>
+<p>With <code>@inlinefmtifelse</code>, it is also necessary to use
+<code>@comma{}</code> to avoid mistaking a &lsquo;<samp>,</samp>&rsquo; in the text for the
+delimiter.  With <code>@inlinefmt</code> and <code>@inlineraw</code>,
+<code>@comma{}</code> is not required (though it&rsquo;s fine to use it), since
+these commands always have exactly two arguments.
+</p>
+<p>For TeX, the processed <var>text</var> cannot contain newline-delimited
+commands.  Text to be ignored (i.e., for non-TeX) can, though.
+</p>
+<p>Two other <code>@inline...</code> conditionals complement the
+<code>@ifset</code> and <code>@ifclear</code> commands; see the next section.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040set-_0040clear-_0040value.html" accesskey="n" rel="next"><code>@set @clear @value</code></a>, Previous: <a href="Raw-Formatter-Commands.html" accesskey="p" rel="prev">Raw Formatter Commands</a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

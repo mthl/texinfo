@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Conventions (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Conventions (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Conventions (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Writing-a-Texinfo-File.html" rel="up" title="Writing a Texinfo File">
+<link href="Comments.html" rel="next" title="Comments">
+<link href="Writing-a-Texinfo-File.html" rel="prev" title="Writing a Texinfo File">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Conventions"></span><div class="header">
+<p>
+Next: <a href="Comments.html" accesskey="n" rel="next">Comments</a>, Up: <a href="Writing-a-Texinfo-File.html" accesskey="u" rel="up">Writing a Texinfo File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="General-Syntactic-Conventions"></span><h3 class="section">2.1 General Syntactic Conventions</h3>
+<span id="index-General-syntactic-conventions"></span>
+<span id="index-Syntactic-conventions"></span>
+<span id="index-Conventions_002c-syntactic"></span>
+<span id="index-Characters_002c-basic-input"></span>
+<span id="Formatting-Commands"></span>
+<p>This section describes the general conventions used in all Texinfo documents.
+</p>
+<ul>
+<li> <span id="index-Source-files_002c-characters-used"></span>
+All printable ASCII characters except &lsquo;<samp>@</samp>&rsquo;, &lsquo;<samp>{</samp>&rsquo; and
+&lsquo;<samp>}</samp>&rsquo; can appear in a Texinfo file and stand for themselves.
+&lsquo;<samp>@</samp>&rsquo; is the escape character which introduces commands, while
+&lsquo;<samp>{</samp>&rsquo; and &lsquo;<samp>}</samp>&rsquo; are used to surround arguments to certain
+commands.  To put one of these special characters into the document, put
+an &lsquo;<samp>@</samp>&rsquo; character in front of it, like this: &lsquo;<samp>@@</samp>&rsquo;,
+&lsquo;<samp>@{</samp>&rsquo;, and &lsquo;<samp>@}</samp>&rsquo;.
+
+</li><li> <span id="index-_0040_002dcommands"></span>
+<span id="index-Formatting-commands"></span>
+In a Texinfo file, the commands you write to describe the contents of
+the manual are preceded by an &lsquo;<samp>@</samp>&rsquo; character; they are called
+<em>@-commands</em>.  (The &lsquo;<samp>@</samp>&rsquo; in Texinfo has the same meaning that
+&lsquo;<samp>\</samp>&rsquo; has in plain TeX.)
+
+<span id="index-Braces_002c-when-to-use"></span>
+<p>Depending on what they do or what arguments<a id="DOCF1" href="#FOOT1"><sup>1</sup></a> they take, you
+need to write @-commands on lines of their own, or as part of
+sentences.  As a general rule, a command requires braces if it mingles 
+among other text; but it does not need braces if it is on a line of its 
+own.  For more details of Texinfo command syntax, see <a href="Command-Syntax.html">Command Syntax</a>.
+</p>
+
+</li><li> Whitespace following an @-command name is optional and (usually)
+ignored if present.  The exceptions are contexts when whitespace is
+significant, e.g., an <code>@example</code> environment.
+
+
+</li><li> Texinfo supports the usual quotation marks used in English and in
+other languages; see <a href="Inserting-Quotation-Marks.html">Inserting Quotation Marks</a>.
+
+</li><li> <span id="index-Multiple-dashes-in-source"></span>
+<span id="index-Dashes-in-source"></span>
+<span id="index-Hyphens-in-source_002c-two-or-three-in-a-row"></span>
+<span id="index-Em-dash_002c-producing"></span>
+<span id="index-En-dash_002c-producing"></span>
+Use three hyphens in a row, &lsquo;<samp>---</samp>&rsquo;, to produce a long dash&mdash;like
+this (called an <em>em dash</em>), used for punctuation in sentences.
+Use two hyphens, &lsquo;<samp>--</samp>&rsquo;, to produce a medium dash (called an
+<em>en dash</em>), used primarily for numeric ranges, as in &ldquo;June
+25&ndash;26&rdquo;.  Use a single hyphen, &lsquo;<samp>-</samp>&rsquo;, to produce a standard hyphen
+used in compound words.  For display on the screen, Info reduces three
+hyphens to two and two hyphens to one (not transitively!).  Of course,
+any number of hyphens in the source remain as they are in literal
+contexts, such as <code>@code</code> and <code>@example</code>.
+
+</li><li> <span id="index-Form-feed-characters"></span>
+<span id="index-CTRL_002dl"></span>
+Form feed (<kbd>CTRL-l</kbd>) characters in the input are handled as
+follows:
+
+<dl compact="compact">
+<dt>PDF/DVI</dt>
+<dd><p>In normal text, treated as ending any open paragraph; essentially
+ignored between paragraphs.
+</p>
+</dd>
+<dt>Info</dt>
+<dd><p>Output as-is between paragraphs (their most common use); in other
+contexts, they may be treated as regular spaces (and thus consolidated
+with surrounding whitespace).
+</p>
+</dd>
+<dt>HTML</dt>
+<dd><p>Written as a numeric entity except contexts where spaces are ignored;
+for example, in &lsquo;<samp>@footnote{ ^L foo}</samp>&rsquo;, the form feed is
+ignored.
+</p>
+</dd>
+<dt>XML</dt>
+<dd><p>Keep them everywhere; in attributes, escaped as &lsquo;<samp>\f</samp>&rsquo;; also,
+&lsquo;<samp>\</samp>&rsquo; is escaped as &lsquo;<samp>\\</samp>&rsquo; and newline as &lsquo;<samp>\n</samp>&rsquo;.
+</p>
+</dd>
+<dt>Docbook</dt>
+<dd><p>Completely removed, as they are not allowed.
+</p></dd>
+</dl>
+
+<p>As you can see, because of these differing requirements of the output
+formats, it&rsquo;s not possible to use form feeds completely portably.
+</p>
+</li><li> <span id="index-Tabs_003b-don_0027t-use_0021"></span>
+<strong>Caution:</strong> Last, do not use tab characters in a Texinfo file!
+(Except perhaps in verbatim modes.)  TeX uses variable-width fonts,
+which means that it is impractical at best to define a tab to work in
+all circumstances.  Consequently, TeX treats tabs like single
+spaces, and that is not what they look like in the source.
+Furthermore, <code>makeinfo</code> does nothing special with tabs, and thus
+a tab character in your input file will usually have a different
+appearance in the output.
+
+<p>To avoid this problem, Texinfo mode in GNU Emacs inserts
+multiple spaces when you press the <tt class="key">TAB</tt> key.  Also, you can run
+<code>untabify</code> in Emacs to convert tabs in a region to multiple
+spaces, or use the <code>unexpand</code> command from the shell.
+</p></li></ul>
+
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<p>The word
+<em>argument</em> comes from the way it is used in mathematics and does not
+refer to a dispute between two people; it refers to the information
+presented to the command.  According to the <cite>Oxford English
+Dictionary</cite>, the word derives from the Latin for <em>to make clear,
+prove</em>; thus it came to mean &lsquo;the evidence offered as proof&rsquo;, which is
+to say, &lsquo;the information offered&rsquo;, which led to its mathematical
+meaning.  In its other thread of derivation, the word came to mean &lsquo;to
+assert in a manner against which others may make counter assertions&rsquo;,
+which led to the meaning of &lsquo;argument&rsquo; as a dispute.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Comments.html" accesskey="n" rel="next">Comments</a>, Up: <a href="Writing-a-Texinfo-File.html" accesskey="u" rel="up">Writing a Texinfo File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

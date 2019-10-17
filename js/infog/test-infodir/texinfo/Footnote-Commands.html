@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Footnote Commands (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Footnote Commands (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Footnote Commands (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Footnotes.html" rel="up" title="Footnotes">
+<link href="Footnote-Styles.html" rel="next" title="Footnote Styles">
+<link href="Footnotes.html" rel="prev" title="Footnotes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Footnote-Commands"></span><div class="header">
+<p>
+Next: <a href="Footnote-Styles.html" accesskey="n" rel="next">Footnote Styles</a>, Up: <a href="Footnotes.html" accesskey="u" rel="up">Footnotes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Footnote-Commands-1"></span><h4 class="subsection">10.3.1 Footnote Commands</h4>
+
+<p>In Texinfo, footnotes are created with the <code>@footnote</code> command.
+This command is followed immediately by a left brace, then by the text
+of the footnote, and then by a terminating right brace.  Footnotes may
+be of any length (they will be broken across pages if necessary), but
+are usually short.  The template is:
+</p>
+<div class="example">
+<pre class="example">ordinary text@footnote{<var>text of footnote</var>}
+</pre></div>
+
+<p>As shown here, the <code>@footnote</code> command should come right after the
+text being footnoted, with no intervening space; otherwise, the footnote
+marker might end up starting a line.
+</p>
+<p>For example, this clause is followed by a sample footnote<a id="DOCF5" href="#FOOT5"><sup>5</sup></a>; in the Texinfo source, it looks like
+this:
+</p>
+<div class="example">
+<pre class="example">&hellip;a sample footnote@footnote{Here is the sample
+footnote.}; in the Texinfo source&hellip;
+</pre></div>
+
+<p>As you can see, this source includes two punctuation marks next to
+each other; in this case, &lsquo;<samp>.};</samp>&rsquo; is the sequence.  This is normal
+(the first ends the footnote and the second belongs to the sentence
+being footnoted), so don&rsquo;t worry that it looks odd.  (Another style,
+perfectly acceptable, is to put the footnote after punctuation
+belonging to the sentence, as in &lsquo;<samp>;@footnote{...</samp>&rsquo;.)
+</p>
+<p>In a printed manual or book, the reference mark for a footnote is a
+small, superscripted number; the text of the footnote appears at the
+bottom of the page, below a horizontal line.
+</p>
+<p>In Info, the reference mark for a footnote is a pair of parentheses
+with the footnote number between them, like this: &lsquo;<samp>(1)</samp>&rsquo;.  The
+reference mark is followed by a cross-reference link to the footnote
+text if footnotes are put in separate nodes (see <a href="Footnote-Styles.html">Footnote Styles</a>).
+</p>
+<p>In the HTML output, footnote references are generally marked with a
+small, superscripted number which is rendered as a hypertext link to
+the footnote text.
+</p>
+<span id="index-Critical-editions"></span>
+<span id="index-Nested-footnotes"></span>
+<p>Footnotes cannot be nested, and cannot appear in section headings of
+any kind or other &ldquo;unusual&rdquo; places.
+</p>
+<p>A final tip: footnotes in the argument of an <code>@item</code> command for
+an <code>@table</code> must be entirely on the same line as the
+<code>@item</code> (as usual).  See <a href="Two_002dcolumn-Tables.html">Two-column Tables</a>.
+</p>
+
+<div class="footnote">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5><a id="FOOT5" href="#DOCF5">(5)</a></h3>
+<p>Here
+is the sample footnote.</p>
+</div>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Footnote-Styles.html" accesskey="n" rel="next">Footnote Styles</a>, Up: <a href="Footnotes.html" accesskey="u" rel="up">Footnotes</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Print with lpr (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Print with lpr (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Print with lpr (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Hardcopy.html" rel="up" title="Hardcopy">
+<link href="Within-Emacs.html" rel="next" title="Within Emacs">
+<link href="Details-of-texindex.html" rel="prev" title="Details of texindex">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Print-with-lpr"></span><div class="header">
+<p>
+Next: <a href="Within-Emacs.html" accesskey="n" rel="next">Within Emacs</a>, Previous: <a href="Format-with-tex_002ftexindex.html" accesskey="p" rel="prev">Format with <code>tex</code>/<code>texindex</code></a>, Up: <a href="Hardcopy.html" accesskey="u" rel="up">Hardcopy</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Print-with-lpr-from-Shell"></span><h3 class="section">19.4 Print with <code>lpr</code> from Shell</h3>
+
+<span id="index-lpr-_0028DVI-print-command_0029"></span>
+
+<p>The way to print a DVI file depends on your system installation.  Two
+common ones are &lsquo;<samp>dvips foo.dvi -o</samp>&rsquo; to make a PostScript file
+first and then print that, and &lsquo;<samp>lpr -d foo.dvi</samp>&rsquo; to print a DVI
+file directly.
+</p>
+<p>For example, the following commands will (probably) suffice to sort
+the indices, format, and print this manual using the <code>texi2dvi</code>
+shell script (see <a href="Format-with-texi2dvi.html">Format with <code>texi2dvi</code></a>).
+</p>
+<div class="example">
+<pre class="example">texi2dvi texinfo.texi
+dvips texinfo.dvi -o
+lpr texinfo.ps
+</pre></div>
+
+<p>Depending on the <code>lpr</code> setup on your machine, you might able to
+combine the last two steps into <code>lpr -d texinfo.dvi</code>.
+</p>
+<span id="index-PCL-file_002c-for-printing"></span>
+<p>You can also generate a PDF file by running <code>texi2pdf</code> instead of
+<code>texi2dvi</code>; a PDF is often directly printable.  Or you can
+generate a PCL file by using <code>dvilj</code> instead of <code>dvips</code>, if
+you have a printer that prefers that format.
+</p>
+<span id="index-Shell-printing_002c-on-MS_002dDOS_002fMS_002dWindows"></span>
+<span id="index-Printing-DVI-files_002c-on-MS_002dDOS_002fMS_002dWindows"></span>
+<span id="index-lpr_002dd_002c-replacements-on-MS_002dDOS_002fMS_002dWindows"></span>
+<p><code>lpr</code> is a standard program on Unix systems, but it is usually
+absent on MS-DOS/MS-Windows.  If so, just create a PostScript or PDF
+or PCL file, whatever is most convenient, and print that in the usual
+way for your machine (e.g., by sending to the appropriate port,
+usually &lsquo;<samp>PRN</samp>&rsquo;).
+</p>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Showing the Structure (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Showing the Structure (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Showing the Structure (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Texinfo-Mode.html" rel="up" title="Texinfo Mode">
+<link href="Updating-Nodes-and-Menus.html" rel="next" title="Updating Nodes and Menus">
+<link href="Inserting.html" rel="prev" title="Inserting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Showing-the-Structure"></span><div class="header">
+<p>
+Next: <a href="Updating-Nodes-and-Menus.html" accesskey="n" rel="next">Updating Nodes and Menus</a>, Previous: <a href="Inserting.html" accesskey="p" rel="prev">Inserting</a>, Up: <a href="Texinfo-Mode.html" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Showing-the-Sectioning-Structure-of-a-File"></span><h3 class="section">D.4 Showing the Sectioning Structure of a File</h3>
+<span id="index-Showing-the-sectioning-structure-of-a-file"></span>
+<span id="index-Sectioning-structure-of-a-file_002c-showing"></span>
+<span id="index-Structure-of-a-file_002c-showing"></span>
+<span id="index-Outline-of-file-structure_002c-showing"></span>
+<span id="index-Contents_002dlike-outline-of-file-structure"></span>
+<span id="index-File-sectioning-structure_002c-showing"></span>
+<span id="index-Texinfo-file-sectioning-structure_002c-showing"></span>
+
+<p>You can show the sectioning structure of a Texinfo file by using the
+<kbd>C-c C-s</kbd> command (<code>texinfo-show-structure</code>).  This command
+lists the lines that begin with the @-commands for <code>@chapter</code>,
+<code>@section</code>, and the like.  It constructs what amounts to a table
+of contents.  These lines are displayed in another buffer called the
+&lsquo;<samp>*Occur*</samp>&rsquo; buffer.  In that buffer, you can position the cursor
+over one of the lines and use the <kbd>C-c C-c</kbd> command
+(<code>occur-mode-goto-occurrence</code>), to jump to the corresponding spot
+in the Texinfo file.
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-s</kbd></dt>
+<dt><kbd>M-x texinfo-show-structure</kbd></dt>
+<dd><span id="index-texinfo_002dshow_002dstructure"></span>
+<p>Show the <code>@chapter</code>, <code>@section</code>, and such lines of a
+Texinfo file.
+</p>
+</dd>
+<dt><kbd>C-c C-c</kbd></dt>
+<dt><kbd>M-x occur-mode-goto-occurrence</kbd></dt>
+<dd><span id="index-occur_002dmode_002dgoto_002doccurrence"></span>
+<p>Go to the line in the Texinfo file corresponding to the line under the
+cursor in the <samp>*Occur*</samp> buffer.
+</p></dd>
+</dl>
+
+<p>If you call <code>texinfo-show-structure</code> with a prefix argument by
+typing <kbd><span class="nolinebreak">C-u</span>&nbsp;<span class="nolinebreak">C-c</span>&nbsp;<span class="nolinebreak">C-s</span></kbd><!-- /@w -->, it will list not only those lines with the
+@-commands for <code>@chapter</code>, <code>@section</code>, and the like, but
+also the <code>@node</code> lines.  You can use <code>texinfo-show-structure</code>
+with a prefix argument to check whether the &lsquo;Next&rsquo;, &lsquo;Previous&rsquo;, and &lsquo;Up&rsquo;
+pointers of an <code>@node</code> line are correct.
+</p>
+<p>Often, when you are working on a manual, you will be interested only
+in the structure of the current chapter.  In this case, you can mark
+off the region of the buffer that you are interested in by using the
+<kbd>C-x n n</kbd> (<code>narrow-to-region</code>) command and
+<code>texinfo-show-structure</code> will work on only that region.  To see
+the whole buffer again, use <kbd><span class="nolinebreak">C-x</span>&nbsp;n&nbsp;w</kbd><!-- /@w --> (<code>widen</code>).
+(See <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Narrowing.html#Narrowing">Narrowing</a> in <cite>The GNU Emacs Manual</cite>, for more
+information about the narrowing commands.)
+</p>
+<span id="index-page_002ddelimiter"></span>
+<span id="index-Page-delimiter-in-Texinfo-mode"></span>
+<p>In addition to providing the <code>texinfo-show-structure</code> command,
+Texinfo mode sets the value of the page delimiter variable to match
+the chapter-level @-commands.  This enables you to use the <kbd>C-x
+]</kbd> (<code>forward-page</code>) and <kbd>C-x [</kbd> (<code>backward-page</code>)
+commands to move forward and backward by chapter, and to use the
+<kbd>C-x n p</kbd> (<code>narrow-to-page</code>) command to narrow to a chapter.
+See <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Pages.html#Pages">Pages</a> in <cite>The GNU Emacs Manual</cite>, for more information
+about the page commands.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Updating-Nodes-and-Menus.html" accesskey="n" rel="next">Updating Nodes and Menus</a>, Previous: <a href="Inserting.html" accesskey="p" rel="prev">Inserting</a>, Up: <a href="Texinfo-Mode.html" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

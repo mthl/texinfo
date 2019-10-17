@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML CSS (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML CSS (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML CSS (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generating-HTML.html" rel="up" title="Generating HTML">
+<link href="HTML-Xref.html" rel="next" title="HTML Xref">
+<link href="HTML-Splitting.html" rel="prev" title="HTML Splitting">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-CSS"></span><div class="header">
+<p>
+Next: <a href="HTML-Xref.html" accesskey="n" rel="next">HTML Xref</a>, Previous: <a href="HTML-Splitting.html" accesskey="p" rel="prev">HTML Splitting</a>, Up: <a href="Generating-HTML.html" accesskey="u" rel="up">Generating HTML</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-CSS-1"></span><h3 class="section">22.3 HTML CSS</h3>
+<span id="index-HTML_002c-and-CSS"></span>
+<span id="index-CSS_002c-and-HTML-output"></span>
+<span id="index-Cascading-Style-Sheets_002c-and-HTML-output"></span>
+
+<p>Cascading Style Sheets (CSS for short) is an Internet standard for
+influencing the display of HTML documents: see
+<a href="http://www.w3.org/Style/CSS/">http://www.w3.org/Style/CSS/</a>.
+</p>
+<p>By default, <code>makeinfo</code> includes a few simple CSS commands to
+better implement the appearance of some Texinfo environments.  Here
+are two of them, as an example:
+</p>
+<div class="example">
+<pre class="example">pre.display { font-family:inherit }
+pre.smalldisplay { font-family:inherit; font-size:smaller }
+</pre></div>
+
+<p>A full explanation of CSS is (far) beyond this manual; please see the
+reference above.  In brief, however, the above tells the web browser
+to use a &lsquo;smaller&rsquo; font size for <code>@smalldisplay</code> text, and to
+use the same font as the main document for both <code>@smalldisplay</code>
+and <code>@display</code>.  By default, the HTML &lsquo;<samp>&lt;pre&gt;</samp>&rsquo; command uses
+a monospaced font.
+</p>
+<p>You can influence the CSS in the HTML output with two
+<code>makeinfo</code> options: <samp>--css-include=<var>file</var></samp> and
+<samp>--css-ref=<var>url</var></samp>.
+</p>
+<span id="index-texinfo_002dbright_002dcolors_002ecss"></span>
+<span id="index-Visualizing-Texinfo-CSS"></span>
+<p>The option <samp>--css-ref=<var>url</var></samp> adds to each output HTML file
+a &lsquo;<samp>&lt;link&gt;</samp>&rsquo; tag referencing a CSS at the given <var>url</var>.  This
+allows using external style sheets.  You may find the file
+<samp>texi2html/examples/texinfo-bright-colors.css</samp> useful for
+visualizing the CSS elements in Texinfo output.
+</p>
+<p>The option <samp>--css-include=<var>file</var></samp> includes the contents
+<var>file</var> in the HTML output, as you might expect.  However, the
+details are somewhat tricky, as described in the following, to provide
+maximum flexibility.
+</p>
+<span id="index-_0040import-specifications_002c-in-CSS-files"></span>
+<p>The CSS file may begin with so-called &lsquo;<samp>@import</samp>&rsquo; directives,
+which link to external CSS specifications for browsers to use when
+interpreting the document.  Again, a full description is beyond our
+scope here, but we&rsquo;ll describe how they work syntactically, so we can
+explain how <code>makeinfo</code> handles them.
+</p>
+<span id="index-Comments_002c-in-CSS-files"></span>
+<p>There can be more than one &lsquo;<samp>@import</samp>&rsquo;, but they have to come
+first in the file, with only whitespace and comments interspersed, no
+normal definitions.  (Technical exception: a &lsquo;<samp>@charset</samp>&rsquo;
+directive may precede the &lsquo;<samp>@import</samp>&rsquo;&rsquo;s.  This does not alter
+<code>makeinfo</code>&rsquo;s behavior, it just copies the &lsquo;<samp>@charset</samp>&rsquo; if
+present.)  Comments in CSS files are delimited by &lsquo;<samp>/* ... */</samp>&rsquo;, as
+in C.  An &lsquo;<samp>@import</samp>&rsquo; directive must be in one of these two forms:
+</p>
+<div class="example">
+<pre class="example">@import url(http://example.org/foo.css);
+@import &quot;http://example.net/bar.css&quot;;
+</pre></div>
+
+<p>As far as <code>makeinfo</code> is concerned, the crucial characters are
+the &lsquo;<samp>@</samp>&rsquo; at the beginning and the semicolon terminating the
+directive.  When reading the CSS file, it simply copies any such
+&lsquo;<samp>@</samp>&rsquo;-directive into the output, as follows:
+</p>
+<ul>
+<li> If <var>file</var> contains only normal CSS declarations, it is
+included after <code>makeinfo</code>&rsquo;s default CSS, thus overriding it.
+
+</li><li> If <var>file</var> begins with &lsquo;<samp>@import</samp>&rsquo; specifications (see
+below), then the &lsquo;<samp>import</samp>&rsquo;&rsquo;s are included first (they have to come
+first, according to the standard), and then <code>makeinfo</code>&rsquo;s
+default CSS is included.  If you need to override <code>makeinfo</code>&rsquo;s
+defaults from an &lsquo;<samp>@import</samp>&rsquo;, you can do so with the &lsquo;<samp>!
+important</samp>&rsquo; CSS construct, as in:
+<div class="example">
+<pre class="example">pre.smallexample { font-size: inherit ! important }
+</pre></div>
+
+</li><li> If <var>file</var> contains both &lsquo;<samp>@import</samp>&rsquo; and inline CSS
+specifications, the &lsquo;<samp>@import</samp>&rsquo;&rsquo;s are included first, then
+<code>makeinfo</code>&rsquo;s defaults, and lastly the inline CSS from
+<var>file</var>.
+
+</li><li> Any @-directive other than &lsquo;<samp>@import</samp>&rsquo; and &lsquo;<samp>@charset</samp>&rsquo;
+is treated as a CSS declaration, meaning <code>makeinfo</code> includes
+its default CSS and then the rest of the file.
+</li></ul>
+
+<p>If the CSS file is malformed or erroneous, <code>makeinfo</code>&rsquo;s output
+is unspecified.  <code>makeinfo</code> does not try to interpret the
+meaning of the CSS file in any way; it just looks for the special
+&lsquo;<samp>@</samp>&rsquo; and &lsquo;<samp>;</samp>&rsquo; characters and blindly copies the text into the
+output.  Comments in the CSS file may or may not be included in the
+output.
+</p>
+<p>In addition to the possibilities offered by CSS, <code>makeinfo</code>
+has many user-definable customization variables with which you can
+influence the HTML output.  See <a href="Customization-Variables.html">Customization Variables</a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="HTML-Xref.html" accesskey="n" rel="next">HTML Xref</a>, Previous: <a href="HTML-Splitting.html" accesskey="p" rel="prev">HTML Splitting</a>, Up: <a href="Generating-HTML.html" accesskey="u" rel="up">Generating HTML</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

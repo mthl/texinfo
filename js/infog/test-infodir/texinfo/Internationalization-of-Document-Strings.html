@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Internationalization of Document Strings (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Internationalization of Document Strings (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Internationalization of Document Strings (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="Invoking-pod2texi.html" rel="next" title="Invoking pod2texi">
+<link href="Other-Customization-Variables.html" rel="prev" title="Other Customization Variables">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Internationalization-of-Document-Strings"></span><div class="header">
+<p>
+Next: <a href="Invoking-pod2texi.html" accesskey="n" rel="next">Invoking <code>pod2texi</code></a>, Previous: <a href="Customization-Variables.html" accesskey="p" rel="prev">Customization Variables</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Internationalization-of-Document-Strings-1"></span><h3 class="section">20.7 Internationalization of Document Strings</h3>
+
+<span id="index-I18n_002c-of-document-strings"></span>
+<span id="index-Internationalization-of-document-strings"></span>
+<span id="index-Document-strings_002c-internationalization-of"></span>
+<span id="index-Output-document-strings_002c-internationalization-of"></span>
+<span id="index-Translating-strings-in-output-documents"></span>
+
+<span id="index-documentlanguage-customization-variable"></span>
+<p><code>texi2any</code> writes fixed strings into the output document at
+various places: cross-references, page footers, the help page,
+alternate text for images, and so on.  The string chosen depends on
+the value of the <code>documentlanguage</code> at the time of the string
+being output (see <a href="_0040documentlanguage.html"><code>@documentlanguage</code></a>, for the Texinfo
+command interface).
+</p>
+<span id="index-libintl_002dperl-Gettext-implementation"></span>
+<p>The Gettext framework is used for those strings (see <cite><a href="https://www.gnu.org/software/gettext/manual/html_node/index.html#Top">Gettext</a></cite>).  The <code>libintl-perl</code> package is used as the
+<code>gettext</code> implementation; more specifically, the pure Perl
+implementation is used, so Texinfo can support consistent behavior
+across all platforms and installations, which would not otherwise be
+possible.  <code>libintl-perl</code> is included in the Texinfo distribution
+and always installed, to ensure that it is available if needed.  It is
+also possible to use the system <code>gettext</code> (the choice can be made
+at build-time).
+</p>
+<span id="index-texinfo_005fdocument-Gettext-domain"></span>
+<span id="index-Perl-format-strings-for-translation"></span>
+<p>The Gettext domain &lsquo;<samp>texinfo_document</samp>&rsquo; is used for the strings.
+Translated strings are written as Texinfo, and may include
+@-commands.  In translated strings, the varying parts of the string
+are not usually denoted by <code>%s</code> and the like, but by
+&lsquo;<samp>{arg_name}</samp>&rsquo;.  (This convention is common for <code>gettext</code> in
+Perl and is fully supported in GNU Gettext; see <a href="https://www.gnu.org/software/gettext/manual/html_node/perl_002dformat.html#perl_002dformat">Perl
+Format Strings</a> in <cite>GNU Gettext</cite>.)  For example, in the
+following, &lsquo;<samp>{section}</samp>&rsquo; will be replaced by the section name:
+</p>
+<div class="example">
+<pre class="example">see {section}
+</pre></div>
+
+<p>These Perl-style brace format strings are used for two reasons: first,
+changing the order of <code>printf</code> arguments is only available since
+Perl&nbsp;5.8.0; second, and more importantly, the order of arguments
+is unpredictable, since @-command expansion may lead to different
+orders depending on the output format.
+</p>
+<p>The expansion of a translation string is done like this:
+</p>
+<ol>
+<li> First, the string is translated.  The locale
+is <var>@documentlanguage</var><code>.</code><var>@documentencoding</var>.
+
+<span id="index-us_002dascii-encoding_002c-and-translations"></span>
+<p>If the <var>@documentlanguage</var> has the form &lsquo;<samp>ll_CC</samp>&rsquo;, that is
+tried first, and then just &lsquo;<samp>ll</samp>&rsquo;.  If that does not exist, and the
+encoding is not <code>us-ascii</code>, then <code>us-ascii</code> is tried.
+</p>
+<p>The idea is that if there is a <code>us-ascii</code> encoding, it means that
+all the characters in the charset may be expressed as @-commands.
+For example, there is a <code>fr.us-ascii</code> locale that can accommodate
+any encoding, since all the Latin&nbsp;1 characters have associated
+@-commands.  On the other hand, Japanese has only a translation
+<code>ja.utf-8</code>, since there are no @-commands for Japanese
+characters.
+</p>
+</li><li> Next, the string is expanded as Texinfo, and converted.
+The arguments are substituted; for example, &lsquo;<samp>{arg_name}</samp>&rsquo; is
+replaced by the corresponding actual argument.
+
+</li></ol>
+
+<p>In the following example, &lsquo;<samp>{date}</samp>&rsquo;, &lsquo;<samp>{program_homepage}</samp>&rsquo;
+and &lsquo;<samp>{program}</samp>&rsquo; are the arguments of the string.  Since they
+are used in <code>@uref</code>, their order is not predictable.
+&lsquo;<samp>{date}</samp>&rsquo;, &lsquo;<samp>{program_homepage}</samp>&rsquo; and &lsquo;<samp>{program}</samp>&rsquo; are
+substituted after the expansion:
+</p>
+<div class="example">
+<pre class="example">Generated on @emph{{date}} using
+@uref{{program_homepage}, @emph{{program}}}.
+</pre></div>
+
+<p>This approach is admittedly a bit complicated.  Its usefulness is that
+it supports having translations available in different encodings for
+encodings which can be covered by @-commands, and also specifying how
+the formatting for some commands is done, independently of the output
+format&mdash;yet still be language-dependent.  For example, the
+&lsquo;<samp>@pxref</samp>&rsquo; translation string can be like this:
+</p>
+<div class="example">
+<pre class="example">see {node_file_href} section `{section}\' in @cite{{book}}
+</pre></div>
+
+<p>which allows for specifying a string independently of the output
+format, while nevertheless with rich formatting it may be translated
+appropriately in many languages.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Invoking-pod2texi.html" accesskey="n" rel="next">Invoking <code>pod2texi</code></a>, Previous: <a href="Customization-Variables.html" accesskey="p" rel="prev">Customization Variables</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML Xref Configuration (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML Xref Configuration (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML Xref Configuration (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="HTML-Xref.html" rel="up" title="HTML Xref">
+<link href="_0040_002dCommand-Details.html" rel="next" title="@-Command Details">
+<link href="HTML-Xref-Mismatch.html" rel="prev" title="HTML Xref Mismatch">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-Xref-Configuration"></span><div class="header">
+<p>
+Previous: <a href="HTML-Xref-Mismatch.html" accesskey="p" rel="prev">HTML Xref Mismatch</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-Cross_002dreference-Configuration_003a-htmlxref_002ecnf"></span><h4 class="subsection">22.4.6 HTML Cross-reference Configuration: <samp>htmlxref.cnf</samp></h4>
+
+<span id="index-htmlxref_002ecnf"></span>
+<span id="index-HTML-cross_002dreference-configuration"></span>
+<span id="index-Cross_002dreference-configuration_002c-for-HTML"></span>
+<span id="index-Configuration_002c-for-HTML-cross_002dmanual-references"></span>
+
+<p><code>makeinfo</code> reads a file named <samp>htmlxref.cnf</samp> to gather
+information for cross-references to other manuals in HTML output.  It
+is looked for in the following directories:
+</p>
+<dl compact="compact">
+<dt><samp>./</samp></dt>
+<dd><p>(the current directory)
+</p>
+</dd>
+<dt><samp>./.texinfo/</samp></dt>
+<dd><p>(under the current directory)
+</p>
+</dd>
+<dt><samp>~/.texinfo/</samp></dt>
+<dd><p>(where <code>~</code> is the current user&rsquo;s home directory)
+</p>
+</dd>
+<dt><samp><var>sysconfdir</var>/texinfo/</samp></dt>
+<dd><p>(where <var>sysconfdir</var> is the system configuration directory
+specified at compile-time, e.g., <samp>/usr/local/etc</samp>)
+</p>
+</dd>
+<dt><samp><var>datadir</var>/texinfo/</samp></dt>
+<dd><p>(likewise specified at compile time, e.g., <samp>/usr/local/share</samp>)
+</p></dd>
+</dl>
+
+<p>All files found are used, with earlier entries overriding later ones.
+The Texinfo distribution includes a default file which handles many
+GNU manuals; it is installed in the last of the above directories,
+i.e., <samp><var>datadir</var>/texinfo/htmlxref.cnf</samp>.
+</p>
+<p>The file is line-oriented.  Lines consisting only of whitespace are
+ignored.  Comments are indicated with a &lsquo;<samp>#</samp>&rsquo; at the beginning of a
+line, optionally preceded by whitespace.  Since &lsquo;<samp>#</samp>&rsquo; can occur in
+urls (like almost any character), it does not otherwise start a
+comment.
+</p>
+<p>Each non-blank non-comment line must be either a <em>variable
+assignment</em> or <em>manual information</em>.
+</p>
+<p>A variable assignment line looks like this:
+</p>
+<div class="example">
+<pre class="example"><var>varname</var> = <var>varvalue</var>
+</pre></div>
+
+<p>Whitespace around the &lsquo;<samp>=</samp>&rsquo; is optional and ignored.  The
+<var>varname</var> should consist of letters; case is significant.  The
+<var>varvalue</var> is an arbitrary string, continuing to the end of the
+line.  Variables are then referenced with &lsquo;<samp>${<var>varname</var>}</samp>&rsquo;;
+variable references can occur in the <var>varvalue</var>.
+</p>
+<p>A manual information line looks like this:
+</p>
+<div class="example">
+<pre class="example"><var>manual</var> <var>keyword</var> <var>urlprefix</var>
+</pre></div>
+
+<p>with <var>manual</var> the short identifier for a manual, <var>keyword</var>
+being one of: <code>mono</code>, <code>node</code>, <code>section</code>,
+<code>chapter</code>, and <var>urlprefix</var> described below.  Variable
+references can occur only in the <var>urlprefix</var>.  For example (used
+in the canonical <samp>htmlxref.cnf</samp>):
+</p>
+<div class="example">
+<pre class="example">G = http://www.gnu.org
+GS = ${G}/software
+hello mono    ${GS}/hello/manual/hello.html
+hello chapter ${GS}/hello/manual/html_chapter/
+hello section ${GS}/hello/manual/html_section/
+hello node    ${GS}/hello/manual/html_node/
+</pre></div>
+
+<span id="index-monolithic-manuals_002c-for-HTML-cross_002dreferences"></span>
+<p>If the keyword is <code>mono</code>, <var>urlprefix</var> gives the host,
+directory, and file name for <var>manual</var> as one monolithic file.
+</p>
+<span id="index-split-manuals_002c-for-HTML-cross_002dreferences"></span>
+<p>If the keyword is <code>node</code>, <code>section</code>, or <code>chapter</code>,
+<var>urlprefix</var> gives the host and directory for <var>manual</var> split
+into nodes, sections, or chapters, respectively.
+</p>
+<p>When available, <code>makeinfo</code> will use the &ldquo;corresponding&rdquo;
+value for cross-references between manuals.  That is, when generating
+monolithic output (<samp>--no-split</samp>), the <code>mono</code> url will be
+used, when generating output that is split by node, the <code>node</code>
+url will be used, etc.  However, if a manual is not available in that
+form, anything that is available can be used.  Here is the search
+order for each style:
+</p>
+<div class="example">
+<pre class="example">node    &rArr; node,    section, chapter, mono
+section &rArr; section, chapter, node,    mono
+chapter &rArr; chapter, section, node,    mono
+mono    &rArr; mono,    chapter, section, node
+</pre></div>
+
+<span id="index-_002d_002dnode_002dfiles_002c-and-HTML-cross_002dreferences"></span>
+<p>These section- and chapter-level cross-manual references can succeed
+only when the target manual was created using <samp>--node-files</samp>;
+this is the default for split output.
+</p>
+<p>If you have additions or corrections to the <samp>htmlxref.cnf</samp>
+distributed with Texinfo, please email <a href="mailto:bug-texinfo@gnu.org">bug-texinfo@gnu.org</a> as
+usual.  You can get the latest version from
+<a href="http://ftpmirror.gnu.org/texinfo/htmlxref.cnf">http://ftpmirror.gnu.org/texinfo/htmlxref.cnf</a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="HTML-Xref-Mismatch.html" accesskey="p" rel="prev">HTML Xref Mismatch</a>, Up: <a href="HTML-Xref.html" accesskey="u" rel="up">HTML Xref</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

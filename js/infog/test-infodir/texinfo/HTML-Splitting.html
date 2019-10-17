@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML Splitting (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML Splitting (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML Splitting (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generating-HTML.html" rel="up" title="Generating HTML">
+<link href="HTML-CSS.html" rel="next" title="HTML CSS">
+<link href="HTML-Translation.html" rel="prev" title="HTML Translation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-Splitting"></span><div class="header">
+<p>
+Next: <a href="HTML-CSS.html" accesskey="n" rel="next">HTML CSS</a>, Previous: <a href="HTML-Translation.html" accesskey="p" rel="prev">HTML Translation</a>, Up: <a href="Generating-HTML.html" accesskey="u" rel="up">Generating HTML</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-Splitting-1"></span><h3 class="section">22.2 HTML Splitting</h3>
+<span id="index-Split-HTML-output"></span>
+<span id="index-HTML-output_002c-split"></span>
+
+<p>When splitting output at nodes (which is the default),
+<code>makeinfo</code> writes HTML output into (basically) one output file
+per Texinfo source <code>@node</code>.
+</p>
+<p>Each output file name is the node name with spaces replaced by
+&lsquo;<samp>-</samp>&rsquo;&rsquo;s and special characters changed to &lsquo;<samp>_</samp>&rsquo; followed by
+their code point in hex (see <a href="HTML-Xref.html">HTML Xref</a>).  This is to make it
+portable and easy to use as a filename.  In the unusual case of two
+different nodes having the same name after this treatment, they are
+written consecutively to the same file, with HTML anchors so each can
+be referred to independently.
+</p>
+<p>If <code>makeinfo</code> is run on a system which does not distinguish
+case in file names, nodes which are the same except for case (e.g.,
+&lsquo;<samp>index</samp>&rsquo; and &lsquo;<samp>Index</samp>&rsquo;) will also be folded into the same
+output file with anchors.  You can also pretend to be on a case
+insensitive filesystem by setting the customization variable
+<code>CASE_INSENSITIVE_FILENAMES</code>.
+</p>
+<p>It is also possible to split at chapters or sections with
+<samp>--split</samp> (see <a href="Invoking-texi2any.html">Invoking <code>texi2any</code></a>).  In that case,
+the file names are constructed after the name of the node associated
+with the relevant sectioning command.  Also, unless
+<samp>--no-node-files</samp> is specified, a redirection file is output
+for every node in order to more reliably support cross-references to
+that manual (see <a href="HTML-Xref.html">HTML Xref</a>).
+</p>
+<p>When splitting, the HTML output files are written into a subdirectory,
+with the name chosen as follows:
+</p>
+<ol>
+<li> <code>makeinfo</code> first tries the subdirectory with the base name
+from <code>@setfilename</code> (that is, any extension is removed).  For
+example, HTML output for <code>@setfilename gcc.info</code> would be
+written into a subdirectory named &lsquo;<samp>gcc/</samp>&rsquo;.
+
+</li><li> If that directory cannot be created for any reason, then
+<code>makeinfo</code> tries appending &lsquo;<samp>.html</samp>&rsquo; to the directory name.
+For example, output for <code>@setfilename texinfo</code> would be written
+to &lsquo;<samp>texinfo.html/</samp>&rsquo;.
+
+</li><li> If the &lsquo;<samp><var>name</var>.html</samp>&rsquo; directory can&rsquo;t be created either,
+<code>makeinfo</code> gives up.
+
+</li></ol>
+
+<p>In any case, the top-level output file within the directory
+is always named &lsquo;<samp>index.html</samp>&rsquo;.
+</p>
+<p>Monolithic output (<code>--no-split</code>) is named according to
+<code>@setfilename</code> (with any &lsquo;<samp>.info</samp>&rsquo; extension is replaced with
+&lsquo;<samp>.html</samp>&rsquo;), <code>--output</code> (the argument is used literally), or
+based on the input file name as a last resort
+(see <a href="_0040setfilename.html"><code>@setfilename</code></a>).
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="HTML-CSS.html" accesskey="n" rel="next">HTML CSS</a>, Previous: <a href="HTML-Translation.html" accesskey="p" rel="prev">HTML Translation</a>, Up: <a href="Generating-HTML.html" accesskey="u" rel="up">Generating HTML</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

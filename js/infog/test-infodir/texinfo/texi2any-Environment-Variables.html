@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>texi2any Environment Variables (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="texi2any Environment Variables (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="texi2any Environment Variables (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Generic-Translator-texi2any.html" rel="up" title="Generic Translator texi2any">
+<link href="texi2any-Printed-Output.html" rel="next" title="texi2any Printed Output">
+<link href="Invoking-texi2any.html" rel="prev" title="Invoking texi2any">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="texi2any-Environment-Variables"></span><div class="header">
+<p>
+Next: <a href="texi2any-Printed-Output.html" accesskey="n" rel="next"><code>texi2any</code> Printed Output</a>, Previous: <a href="Invoking-texi2any.html" accesskey="p" rel="prev">Invoking <code>texi2any</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Environment-Variables-Recognized-by-texi2any"></span><h3 class="section">20.3 Environment Variables Recognized by <code>texi2any</code></h3>
+
+<span id="index-TEXINFO_005fOUTPUT_005fFORMAT"></span>
+<span id="index-Environment-variable-TEXINFO_005fOUTPUT_005fFORMAT"></span>
+<p><code>makeinfo</code> also reads the environment variable
+<code>TEXINFO_OUTPUT_FORMAT</code> to determine the output format, if not
+overridden by a command line option.  The value should be one of:
+</p>
+<div class="example">
+<pre class="example">docbook  dvi  dvipdf  html  info  pdf  plaintext  ps  xml
+</pre></div>
+
+<p>If not set or otherwise specified, Info output is the default.
+</p>
+<p>The customization variable of the same name is also read; if set, that
+overrides an environment variable setting, but not a command-line
+option.  See <a href="Customization-Variables-and-Options.html">Customization Variables and Options</a>.
+</p>
+<span id="index-TEXINFO_005fXS"></span>
+<span id="index-Perl-extension-modules-_0028XS_0029"></span>
+<p>You can control <code>texi2any</code>&rsquo;s use of Perl extension modules
+by setting the <code>TEXINFO_XS</code> environment variable.  These modules
+are compiled native code that the interpreted Perl code can use.
+Ideally, these extension modules should just work, and the only noticable
+difference they should make is that <code>texi2any</code> finishes running
+sooner.  However, you can use this environment variable for the purposes
+of troubleshooting: for example, if you have problems with the output of
+<code>texi2any</code> varying depending on whether the extension modules are
+in use.
+</p>
+<p>The following values of <code>TEXINFO_XS</code> are recognized by
+<code>texi2any</code>:
+</p>
+<dl compact="compact">
+<dt>&lsquo;<samp>default</samp>&rsquo;</dt>
+<dd><p>The default behavior.  Try to load extension modules, and silently fall
+back to the interpreted Perl implementations if this fails.
+</p>
+</dd>
+<dt>&lsquo;<samp>warn</samp>&rsquo;</dt>
+<dd><p>Try to load extension modules, and if this fails, give a warning message
+before falling back to the interpreted Perl implementations.
+</p>
+</dd>
+<dt>&lsquo;<samp>debug</samp>&rsquo;</dt>
+<dd><p>Try to load extension modules, printing many messages while doing so.
+</p>
+</dd>
+<dt>&lsquo;<samp>omit</samp>&rsquo;</dt>
+<dd><p>Do not use extension modules.
+</p>
+</dd>
+</dl>
+
+<span id="index-TEXINFO_005fXS_005fPARSER"></span>
+<p>Set <code>TEXINFO_XS_PARSER</code> to &lsquo;<samp>1</samp>&rsquo; to enable the use of the native
+code implementation of the parser module.  This is the part of 
+<code>texi2any</code> that converts Texinfo input into an internal tree 
+format used for further processing into output formats.  This is not 
+enabled by default due to the greater complexity of this module compared 
+with the other modules that have a native code implementation, and the 
+lack of confidence we have that the native code implementation matches 
+the Perl code in all significant aspects.  Despite the lack of maturity 
+of this module in terms of development and testing, it may be useful for 
+decreasing <code>texi2any</code> run times when working on Texinfo 
+documentation files.  Note that some error and warning messages will not 
+be translated from English if this module is used.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="texi2any-Printed-Output.html" accesskey="n" rel="next"><code>texi2any</code> Printed Output</a>, Previous: <a href="Invoking-texi2any.html" accesskey="p" rel="prev">Invoking <code>texi2any</code></a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

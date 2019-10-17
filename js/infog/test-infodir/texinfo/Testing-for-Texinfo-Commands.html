@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Testing for Texinfo Commands (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Testing for Texinfo Commands (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Testing for Texinfo Commands (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Conditionals.html" rel="up" title="Conditionals">
+<link href="Conditional-Nesting.html" rel="next" title="Conditional Nesting">
+<link href="_0040value-Example.html" rel="prev" title="@value Example">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Testing-for-Texinfo-Commands"></span><div class="header">
+<p>
+Next: <a href="Conditional-Nesting.html" accesskey="n" rel="next">Conditional Nesting</a>, Previous: <a href="_0040set-_0040clear-_0040value.html" accesskey="p" rel="prev"><code>@set @clear @value</code></a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Testing-for-Texinfo-Commands_003a-_0040ifcommanddefined_002c-_0040ifcommandnotdefined"></span><h3 class="section">16.6 Testing for Texinfo Commands: <code>@ifcommanddefined</code>, <code>@ifcommandnotdefined</code></h3>
+
+<span id="index-Testing-for-Texinfo-commands"></span>
+<span id="index-Checking-for-Texinfo-commands"></span>
+<span id="index-Texinfo-commands_002c-testing-for"></span>
+<span id="index-Commands_002c-testing-for-Texinfo"></span>
+<span id="index-Versions-of-Texinfo_002c-adapting-to"></span>
+<span id="index-Features-of-Texinfo_002c-adapting-to"></span>
+<span id="index-ifcommanddefined"></span>
+<span id="index-ifcommandnotdefined"></span>
+
+<p>Occasionally, you may want to arrange for your manual to test if a
+given Texinfo command is available and (presumably) do some sort of
+fallback formatting if not.  There are conditionals
+<code>@ifcommanddefined</code> and <code>@ifcommandnotdefined</code> to do this.
+For example:
+</p>
+<div class="example">
+<pre class="example">@ifcommanddefined node
+Good, @samp{@@node} is defined.
+@end ifcommanddefined
+</pre></div>
+
+<p>will output the expected &lsquo;Good, &lsquo;<samp>@node</samp>&rsquo; is defined.&rsquo;.
+</p>
+<p>This conditional will also consider any new commands defined by
+the document via <code>@macro</code>, <code>@alias</code>,
+<code>@definfoenclose</code>, and <code>@def<span class="roman">(</span>code<span class="roman">)</span>index</code>
+(see <a href="Defining-New-Texinfo-Commands.html">Defining New Texinfo Commands</a>) to be true.  Caveat: the TeX
+implementation reports internal TeX commands, in addition to all
+the Texinfo commands, as being &ldquo;defined&rdquo;; the <code>makeinfo</code>
+implementation is reliable in this regard, however.
+</p>
+<span id="index-NEWS-file-for-Texinfo"></span>
+<p>You can check the <samp>NEWS</samp> file in the Texinfo source distribution
+and linked from the Texinfo home page
+(<a href="http://www.gnu.org/software/texinfo">http://www.gnu.org/software/texinfo</a>) to see when a particular
+command was added.
+</p>
+<span id="index-txicommandconditionals"></span>
+<p>These command-checking conditionals themselves were added in
+Texinfo&nbsp;5.0, released in 2013&mdash;decades after Texinfo&rsquo;s
+inception.  In order to test if they themselves are available,
+the predefined flag <code>txicommandconditionals</code> can be tested, like
+this:
+</p>
+<div class="example">
+<pre class="example">@ifset txicommandconditionals
+@ifcommandnotdefined foobarnode
+(Good, @samp{@@foobarnode} is not defined.)
+@end ifcommandnotdefined
+@end ifset
+</pre></div>
+
+<p>Since flags (see the previous section) were added early in the
+existence of Texinfo, there is no problem with assuming they are
+available.
+</p>
+<p>We recommend avoiding these tests whenever possible&mdash;which is usually
+the case.  For many software packages, it is reasonable for all
+developers to have a given version of Texinfo (or newer) installed,
+and thus no reason to worry about older versions.  (It is
+straightforward for anyone to download and install the Texinfo source;
+it does not have any problematic dependencies.)
+</p>
+<p>The issue of Texinfo versions does not generally arise for end-users.
+With properly distributed packages, users need not process the Texinfo
+manual simply to build and install the package; they can use
+preformatted Info (or other) output files.  This is desirable in
+general, to avoid unnecessary dependencies between packages
+(see <a href="https://www.gnu.org/prep/standards/html_node/Releases.html#Releases">Releases</a> in <cite>GNU Coding Standards</cite>).
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Conditional-Nesting.html" accesskey="n" rel="next">Conditional Nesting</a>, Previous: <a href="_0040set-_0040clear-_0040value.html" accesskey="p" rel="prev"><code>@set @clear @value</code></a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

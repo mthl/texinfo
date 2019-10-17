@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@value Example (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@value Example (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@value Example (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="_0040set-_0040clear-_0040value.html" rel="up" title="@set @clear @value">
+<link href="Testing-for-Texinfo-Commands.html" rel="next" title="Testing for Texinfo Commands">
+<link href="_0040inlineifset-_0040inlineifclear.html" rel="prev" title="@inlineifset @inlineifclear">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040value-Example"></span><div class="header">
+<p>
+Previous: <a href="_0040inlineifset-_0040inlineifclear.html" accesskey="p" rel="prev"><code>@inlineifset @inlineifclear</code></a>, Up: <a href="_0040set-_0040clear-_0040value.html" accesskey="u" rel="up"><code>@set @clear @value</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040value-Example-1"></span><h4 class="subsection">16.5.4 <code>@value</code> Example</h4>
+
+<span id="value-Example"></span>
+<p>You can use the <code>@value</code> command to minimize the number of
+places you need to change when you record an update to a manual.
+See <a href="GNU-Sample-Texts.html">GNU Sample Texts</a>, for the full text of an example of using this
+to work with Automake distributions.
+</p>
+<p>This example is adapted from <cite><a href="https://www.gnu.org/software/make/manual/html_node/index.html#Top">The GNU Make Manual</a></cite>.
+</p>
+<ol>
+<li> Set the flags:
+
+<div class="example">
+<pre class="example">@set EDITION 0.35 Beta
+@set VERSION 3.63 Beta
+@set UPDATED 14 August 1992
+@set UPDATE-MONTH August 1992
+</pre></div>
+
+</li><li> Write text for the <code>@copying</code> section (see <a href="_0040copying.html"><code>@copying</code></a>):
+
+<div class="example">
+<pre class="example">@copying
+This is Edition @value{EDITION},
+last updated @value{UPDATED},
+of @cite{The GNU Make Manual},
+for @code{make}, version @value{VERSION}.
+
+Copyright &hellip;
+
+Permission is granted &hellip;
+@end copying
+</pre></div>
+
+</li><li> Write text for the title page, for people reading the printed manual:
+
+<div class="example">
+<pre class="example">@titlepage
+@title GNU Make
+@subtitle A Program for Directing Recompilation
+@subtitle Edition @value{EDITION}, &hellip;
+@subtitle @value{UPDATE-MONTH}
+@page
+@insertcopying
+&hellip;
+@end titlepage
+</pre></div>
+
+<p>(On a printed cover, a date listing the month and the year looks less
+fussy than a date listing the day as well as the month and year.)
+</p>
+</li><li> Write text for the Top node, for people reading the Info file:
+
+<div class="example">
+<pre class="example">@ifnottex
+@node Top
+@top Make
+
+This is Edition @value{EDITION},
+last updated @value{UPDATED},
+of @cite{The GNU Make Manual},
+for @code{make}, version @value{VERSION}.
+@end ifnottex
+</pre></div>
+
+<p>After you format the manual, the <code>@value</code> constructs have been
+expanded, so the output contains text like this:
+</p>
+<div class="example">
+<pre class="example">This is Edition 0.35 Beta, last updated 14 August 1992,
+of `The GNU Make Manual', for `make', Version 3.63 Beta.
+</pre></div>
+</li></ol>
+
+<p>When you update the manual, you change only the values of the flags; you
+do not need to edit the three sections.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="_0040inlineifset-_0040inlineifclear.html" accesskey="p" rel="prev"><code>@inlineifset @inlineifclear</code></a>, Up: <a href="_0040set-_0040clear-_0040value.html" accesskey="u" rel="up"><code>@set @clear @value</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

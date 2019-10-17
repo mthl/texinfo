@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Short Sample (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Short Sample (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Short Sample (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Writing-a-Texinfo-File.html" rel="up" title="Writing a Texinfo File">
+<link href="Beginning-and-Ending-a-File.html" rel="next" title="Beginning and Ending a File">
+<link href="Minimum.html" rel="prev" title="Minimum">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Short-Sample"></span><div class="header">
+<p>
+Previous: <a href="Minimum.html" accesskey="p" rel="prev">Minimum</a>, Up: <a href="Writing-a-Texinfo-File.html" accesskey="u" rel="up">Writing a Texinfo File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="A-Short-Sample-Texinfo-File"></span><h3 class="section">2.4 A Short Sample Texinfo File</h3>
+<span id="index-Sample-Texinfo-file_002c-with-comments"></span>
+
+<p>Here is a short but complete Texinfo file, so you can see how Texinfo
+source appears in practice.  The first three parts of the file are
+mostly boilerplate: when writing a manual, you simply change
+the names as appropriate.
+</p>
+<p>The complete file, without interspersed comments, is shown in
+<a href="Short-Sample-Texinfo-File.html">Short Sample Texinfo File</a>.
+</p>
+<p>See <a href="Beginning-and-Ending-a-File.html">Beginning and Ending a File</a>, for more documentation on the
+commands listed here.
+</p>
+
+<span id="Header"></span><h4 class="subheading">Header</h4>
+
+<p>The header tells TeX which definitions file to
+use, names the manual, and carries out other such housekeeping tasks.
+</p>
+<div class="example">
+<pre class="example">\input texinfo
+@settitle Sample Manual 1.0
+</pre></div>
+
+
+<span id="Summary-Description-and-Copyright"></span><h4 class="subheading">Summary Description and Copyright</h4>
+
+<p>This segment describes the document and contains the copyright notice 
+and copying permissions.  This is done with the <code>@copying</code> command.
+</p>
+<p>A real manual includes more text here, according to the license under
+which it is distributed.  See <a href="GNU-Sample-Texts.html">GNU Sample Texts</a>.
+</p>
+<div class="example">
+<pre class="example">@copying
+This is a short example of a complete Texinfo file, version 1.0.
+
+Copyright @copyright{} 2016 Free Software Foundation, Inc.
+@end copying
+</pre></div>
+
+<span id="Titlepage_002c-Copyright_002c-Contents"></span><h4 class="subheading">Titlepage, Copyright, Contents</h4>
+
+<p>The title and copyright segment contains the title and copyright
+pages for the printed manual.  The segment must be enclosed between
+<code>@titlepage</code> and <code>@end titlepage</code> commands.  The title and
+copyright page does not appear in the online output.
+</p>
+<p>We use the <code>@insertcopying</code> command to
+include the permission text from the previous section, instead of
+writing it out again; it is output on the back of the title page.  The
+<code>@contents</code> command generates a table of contents.
+</p>
+<div class="example">
+<pre class="example">@titlepage
+@title Sample Title
+</pre><pre class="example">
+
+</pre><pre class="example">@c The following two commands start the copyright page.
+@page
+@vskip 0pt plus 1filll
+@insertcopying
+@end titlepage
+</pre><pre class="example">
+
+@c Output the table of contents at the beginning.
+@contents
+</pre></div>
+
+<span id="g_t_0060Top_0027-Node-and-Master-Menu"></span><h4 class="subheading">&lsquo;Top&rsquo; Node and Master Menu</h4>
+
+<p>The &lsquo;Top&rsquo; node starts off the online output; it does not appear in the
+printed manual.  We repeat the short description from the beginning of
+the &lsquo;<samp>@copying</samp>&rsquo; text, but there&rsquo;s no need to repeat the copyright
+information, so we don&rsquo;t use &lsquo;<samp>@insertcopying</samp>&rsquo; here.
+</p>
+<p>The &lsquo;<samp>@top</samp>&rsquo; command itself helps <code>makeinfo</code> determine
+the relationships between nodes.  The &lsquo;Top&rsquo; node contains at least a
+top-level <em>menu</em> listing the chapters, and possibly a <em>Master
+Menu</em> listing all the nodes in the entire document.
+</p>
+
+<div class="example">
+<pre class="example">@ifnottex
+@node Top
+@top Short Sample
+
+This is a short sample Texinfo file.
+@end ifnottex
+
+</pre><pre class="example">@menu
+* First Chapter::    The first chapter is the
+                       only chapter in this sample.
+* Index::            Complete index.
+@end menu
+</pre></div>
+
+
+<span id="The-Body-of-the-Document"></span><h4 class="subheading">The Body of the Document</h4>
+
+<p>The body segment contains all the text of the document, but not the
+indices or table of contents.  This example illustrates a node and a
+chapter containing an enumerated list.
+</p>
+<div class="example">
+<pre class="example">@node First Chapter
+@chapter First Chapter
+
+@cindex chapter, first
+</pre><pre class="example">
+
+</pre><pre class="example">This is the first chapter.
+@cindex index entry, another
+</pre><pre class="example">
+
+</pre><pre class="example">Here is a numbered list.
+
+@enumerate
+@item
+This is the first item.
+
+@item
+This is the second item.
+@end enumerate
+</pre></div>
+
+
+<span id="The-End-of-the-Document"></span><h4 class="subheading">The End of the Document</h4>
+
+<p>This may contain commands for printing indices, and
+closes with the <code>@bye</code> command, which marks the end of the document.
+</p>
+<div class="example">
+<pre class="example">@node Index
+@unnumbered Index
+</pre><pre class="example">
+
+</pre><pre class="example">@printindex cp
+
+@bye
+</pre></div>
+
+
+<span id="Some-Results"></span><h4 class="subheading">Some Results</h4>
+
+<p>Here is what the contents of the first chapter of the sample look like:
+</p>
+<br>
+<blockquote>
+<p>This is the first chapter.
+</p>
+<p>Here is a numbered list.
+</p>
+<ol>
+<li> This is the first item.
+
+</li><li> This is the second item.
+</li></ol>
+</blockquote>
+
+
+<hr>
+<div class="header">
+<p>
+Previous: <a href="Minimum.html" accesskey="p" rel="prev">Minimum</a>, Up: <a href="Writing-a-Texinfo-File.html" accesskey="u" rel="up">Writing a Texinfo File</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

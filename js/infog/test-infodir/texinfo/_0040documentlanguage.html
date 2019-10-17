@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@documentlanguage (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@documentlanguage (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@documentlanguage (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Internationalization.html" rel="up" title="Internationalization">
+<link href="_0040documentencoding.html" rel="next" title="@documentencoding">
+<link href="Internationalization.html" rel="prev" title="Internationalization">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040documentlanguage"></span><div class="header">
+<p>
+Next: <a href="_0040documentencoding.html" accesskey="n" rel="next"><code>@documentencoding</code></a>, Up: <a href="Internationalization.html" accesskey="u" rel="up">Internationalization</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040documentlanguage-ll_005b_005fcc_005d_003a-Set-the-Document-Language"></span><h3 class="section">15.1 <code>@documentlanguage <var>ll</var>[_<var>cc</var>]</code>: Set the Document Language</h3>
+<span id="documentlanguage"></span>
+<span id="index-documentlanguage"></span>
+<span id="index-Language_002c-declaring"></span>
+<span id="index-Locale_002c-declaring"></span>
+<span id="index-Document-language_002c-declaring"></span>
+
+<p>The <code>@documentlanguage</code> command declares the current document
+locale.  Write it on a line by itself, near the beginning of the file.
+</p>
+<div class="example">
+<pre class="example">@documentlanguage <var>ll</var>[_<var>cc</var>]
+</pre></div>
+
+<p>Include a two-letter ISO&nbsp;639-2 language code (<var>ll</var>) following
+the command name, optionally followed by an underscore and two-letter
+ISO&nbsp;3166 two-letter country code (<var>cc</var>).  If you have a
+multilingual document, the intent is to be able to use this command
+multiple times, to declare each language change.  If the command is
+not used at all, the default is <code>en_US</code> for US English.
+</p>
+<p>As with GNU Gettext (see <cite><a href="https://www.gnu.org/software/gettext/manual/html_node/index.html#Top">Gettext</a></cite>), if the country
+code is omitted, the main dialect is assumed where possible.  For
+example, <code>de</code> is equivalent to <code>de_DE</code> (German as spoken in
+Germany).
+</p>
+<span id="index-Document-strings_002c-translation-of"></span>
+<p>For Info and other online output, this command changes the translation
+of various <em>document strings</em> such as &ldquo;see&rdquo; in cross-references
+(see <a href="Cross-References.html">Cross References</a>), &ldquo;Function&rdquo; in defuns (see <a href="Definition-Commands.html">Definition Commands</a>), and so on.  Some strings, such as &ldquo;Node:&rdquo;, &ldquo;Next:&rdquo;,
+&ldquo;Menu:&rdquo;, etc., are keywords in Info output, so are not translated
+there; they are translated in other output formats.
+</p>
+<span id="index-txi_002dcc_002etex"></span>
+<p>For TeX, this command causes a file <samp>txi-<var>locale</var>.tex</samp> to
+be read (if it exists).  If <code>@documentlanguage</code> argument
+contains the optional &lsquo;<samp>_<var>cc</var></samp>&rsquo; suffix, this is tried first.
+For example, with <code>@documentlanguage de_DE</code>, TeX first looks
+for <samp>txi-de_DE.tex</samp>, then <samp>txi-de.tex</samp>.
+</p>
+<p>Such a <samp>txi-*</samp> file is intended to redefine the various English
+words used in TeX output, such as &lsquo;Chapter&rsquo;, &lsquo;See&rsquo;, and so on.  We
+are aware that individual words like these cannot always be translated
+in isolation, and that a very different strategy would be required for
+ideographic (among other) scripts.  Help in improving Texinfo&rsquo;s
+language support is welcome.
+</p>
+<span id="index-Hyphenation-patterns_002c-language_002ddependent"></span>
+<p><code>@documentlanguage</code> also changes TeX&rsquo;s current hyphenation
+patterns, if the TeX program being run has the necessary support
+included.  This will generally not be the case for <code>tex</code>
+itself, but will usually be the case for up-to-date distributions of
+the extended TeX programs <code>etex</code> (DVI output) and
+<code>pdftex</code> (PDF output).  <code>texi2dvi</code> will use the
+extended TeXs if they are available (see <a href="Format-with-texi2dvi.html">Format with <code>texi2dvi</code></a>).
+</p>
+<p>In September 2006, the W3C Internationalization Activity released a
+new recommendation for specifying languages:
+<a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">http://www.rfc-editor.org/rfc/bcp/bcp47.txt</a>.  When Gettext
+supports this new scheme, Texinfo will too.
+</p>
+<span id="index-ISO-639_002d2-language-codes"></span>
+<span id="index-ISO-3166-country-codes"></span>
+<span id="index-Language-codes"></span>
+<span id="index-Country-codes"></span>
+<p>Since the lists of language codes and country codes are updated
+relatively frequently, we don&rsquo;t attempt to list them here.  The valid
+language codes are on the official home page for ISO&nbsp;639,
+<a href="http://www.loc.gov/standards/iso639-2/">http://www.loc.gov/standards/iso639-2/</a>.  The country codes and
+the official web site for ISO&nbsp;3166 can be found via
+<a href="http://en.wikipedia.org/wiki/ISO_3166">http://en.wikipedia.org/wiki/ISO_3166</a>.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040documentencoding.html" accesskey="n" rel="next"><code>@documentencoding</code></a>, Up: <a href="Internationalization.html" accesskey="u" rel="up">Internationalization</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

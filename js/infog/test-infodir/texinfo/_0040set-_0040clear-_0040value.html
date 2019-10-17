@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@set @clear @value (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@set @clear @value (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@set @clear @value (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Conditionals.html" rel="up" title="Conditionals">
+<link href="_0040set-_0040value.html" rel="next" title="@set @value">
+<link href="Inline-Conditionals.html" rel="prev" title="Inline Conditionals">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040set-_0040clear-_0040value"></span><div class="header">
+<p>
+Next: <a href="Testing-for-Texinfo-Commands.html" accesskey="n" rel="next">Testing for Texinfo Commands</a>, Previous: <a href="Inline-Conditionals.html" accesskey="p" rel="prev">Inline Conditionals</a>, Up: <a href="Conditionals.html" accesskey="u" rel="up">Conditionals</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Flags_003a-_0040set_002c-_0040clear_002c-conditionals_002c-and-_0040value"></span><h3 class="section">16.5 Flags: <code>@set</code>, <code>@clear</code>, conditionals, and <code>@value</code></h3>
+
+<span id="set-clear-value"></span><p>You can direct the Texinfo formatting commands to format or ignore parts
+of a Texinfo file with the <code>@set</code>, <code>@clear</code>, <code>@ifset</code>,
+and <code>@ifclear</code> commands.
+</p>
+<p>Here are brief descriptions of these commands, see the following
+sections for more details:
+</p>
+<dl compact="compact">
+<dt><code>@set <var>flag</var> [<var>value</var>]</code></dt>
+<dd><p>Set the variable <var>flag</var>, to the optional <var>value</var> if specified.
+</p>
+</dd>
+<dt><code>@clear <var>flag</var></code></dt>
+<dd><p>Undefine the variable <var>flag</var>, whether or not it was previously defined.
+</p>
+</dd>
+<dt><code>@ifset <var>flag</var></code></dt>
+<dd><p>If <var>flag</var> is set, text through the next <code>@end ifset</code> command
+is formatted.  If <var>flag</var> is clear, text through the following
+<code>@end ifset</code> command is ignored.
+</p>
+</dd>
+<dt><code>@inlineifset{<var>flag</var>, <var>text</var>}</code></dt>
+<dd><p>Brace-delimited version of <code>@ifset</code>.
+</p>
+</dd>
+<dt><code>@ifclear <var>flag</var></code></dt>
+<dd><p>If <var>flag</var> is set, text through the next <code>@end ifclear</code> command
+is ignored.  If <var>flag</var> is clear, text through the following
+<code>@end ifclear</code> command is formatted.
+</p>
+</dd>
+<dt><code>@inlineifclear{<var>flag</var>, <var>text</var>}</code></dt>
+<dd><p>Brace-delimited version of <code>@ifclear</code>.
+</p>
+</dd>
+</dl>
+
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="_0040set-_0040value.html" accesskey="1"><code>@set @value</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Expand a flag variable to a string.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040ifset-_0040ifclear.html" accesskey="2"><code>@ifset @ifclear</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Format a region if a flag is set.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040inlineifset-_0040inlineifclear.html" accesskey="3"><code>@inlineifset @inlineifclear</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Brace-delimited flag conditionals.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="_0040value-Example.html" accesskey="4"><code>@value</code> Example</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">An easy way to update edition information.
+</td></tr>
+</table>
+
+
+
+
+
+</body>
+</html>

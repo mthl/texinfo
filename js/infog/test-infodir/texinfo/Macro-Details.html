@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Macro Details (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Macro Details (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Macro Details (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Defining-New-Texinfo-Commands.html" rel="up" title="Defining New Texinfo Commands">
+<link href="_0040alias.html" rel="next" title="@alias">
+<link href="Invoking-Macros.html" rel="prev" title="Invoking Macros">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Macro-Details"></span><div class="header">
+<p>
+Next: <a href="_0040alias.html" accesskey="n" rel="next"><code>@alias</code></a>, Previous: <a href="Invoking-Macros.html" accesskey="p" rel="prev">Invoking Macros</a>, Up: <a href="Defining-New-Texinfo-Commands.html" accesskey="u" rel="up">Defining New Texinfo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Macro-Details-and-Caveats"></span><h3 class="section">17.3 Macro Details and Caveats</h3>
+<span id="index-Macro-details"></span>
+<span id="index-Details-of-macro-usage"></span>
+<span id="index-Caveats-for-macro-usage"></span>
+
+<span id="index-Macro-expansion_002c-contexts-for"></span>
+<span id="index-Expansion-of-macros_002c-contexts-for"></span>
+<p>By design, macro expansion does not happen in the following contexts
+in <code>makeinfo</code>:
+</p>
+<ul>
+<li> <code>@macro</code> and <code>@unmacro</code> lines;
+
+</li><li> <code>@if...</code> lines, including <code>@ifset</code> and similar;
+
+</li><li> <code>@set</code>, <code>@clear</code>, <code>@value</code>;
+
+</li><li> <code>@clickstyle</code> lines;
+
+</li><li> <code>@end</code> lines.
+</li></ul>
+
+<p>Unfortunately, TeX may do some expansion in these situations,
+possibly yielding errors.
+</p>
+<p>Also, quite a few macro-related constructs cause problems with TeX;
+some of the caveats are listed below.  Thus, if you get macro-related
+errors when producing the printed version of a manual, you might try
+expanding the macros with <code>makeinfo</code> by invoking
+<code>texi2dvi</code> with the &lsquo;<samp>-E</samp>&rsquo; option (see <a href="Format-with-texi2dvi.html">Format with <code>texi2dvi</code></a>).  Or, more reliably, eschew Texinfo macros altogether
+and use a language designed for macro processing, such as M4
+(see <a href="External-Macro-Processors.html">External Macro Processors</a>).
+</p>
+<ul>
+<li> As mentioned earlier, macro names must consist entirely of letters.
+
+</li><li> It is not advisable to redefine any TeX primitive, plain, or
+Texinfo command name as a macro. Unfortunately this is a large and
+open-ended set of names, and the possible resulting errors are
+unpredictable.
+
+</li><li> Arguments to macros taking more than one argument cannot cross lines.
+
+</li><li> Macros containing a command which must be on a line by itself, such as
+a conditional, cannot be invoked in the middle of a line.  Similarly,
+macros containing line-oriented commands or text, such as
+<code>@example</code> environments, may behave unpredictably in TeX.
+
+</li><li> If you have problems using conditionals within a macro, an alternative
+is to use separate macro definitions inside conditional blocks.  For
+example, instead of
+
+<div class="example">
+<pre class="example">@macro Mac
+@iftex
+text for TeX output
+@end iftex
+@ifnottex
+text for not TeX output
+@end ifnottex
+@end macro
+</pre></div>
+
+<p>you can do the following instead:
+</p>
+<div class="example">
+<pre class="example">@iftex
+@macro Mac
+text for TeX output
+@end macro
+@end iftex
+
+@ifnottex
+@macro Mac
+text for not TeX output
+@end macro
+@end ifnottex
+</pre></div>
+
+</li><li> Texinfo commands in the expansion of a macro in the text of an index 
+entry may end up being typeset as literal text (including an &ldquo;@&rdquo; 
+sign), instead of being interpreted with their intended meaning.
+
+</li><li> White space is ignored at the beginnings of lines.
+
+</li><li> Macros can&rsquo;t be reliably used in the argument to accent commands
+(see <a href="Inserting-Accents.html">Inserting Accents</a>).
+
+</li><li> The backslash escape for commas in macro arguments does not work;
+<code>@comma{}</code> must be used.
+
+</li><li> Likewise, if you want to pass an argument with the Texinfo command 
+<code>@,</code> (to produce a cedilla, see <a href="Inserting-Accents.html">Inserting Accents</a>), you have 
+to use <code>@value</code> or another work-around.  Otherwise, the comma
+may be taken as separating the arguments.  For example,
+
+<div class="example">
+<pre class="example">@macro mactwo{argfirst, argsecond}
+\argfirst\+\argsecond\.
+@end macro
+@set fc Fran@,cois
+@mactwo{@value{fc},}
+</pre></div>
+
+<p>produces:
+</p>
+<div class="display">
+<pre class="display">Fran&ccedil;ois+.
+</pre></div>
+
+
+</li><li> Ending a macro body with &lsquo;<samp>@c</samp>&rsquo; may cause text following the macro
+invocation to be ignored as a comment in <code>makeinfo</code>.  This is 
+not the case when processing with TeX.  This was often done
+to &ldquo;comment out&rdquo; an unwanted newline at the end of a macro body, but 
+this is not necessary any more, as the final newline before &lsquo;<samp>@end 
+macro</samp>&rsquo; is not included in the macro body anyway.
+
+</li><li> In general, you can&rsquo;t arbitrarily substitute a macro (or
+<code>@value</code>) call for Texinfo command arguments, even when the text
+is the same.  Texinfo is not M4 (or even plain TeX).  It might work
+with some commands, it fails with others.  Best not to do it at all.
+For instance, this fails:
+
+<div class="example">
+<pre class="example">@macro offmacro
+off
+@end macro
+@headings @offmacro
+</pre></div>
+
+<p>This looks equivalent to <code>@headings off</code>, but for TeXnical
+reasons, it fails with a mysterious error message (namely,
+&lsquo;<samp>Paragraph ended before @headings was complete</samp>&rsquo;).
+</p>
+</li><li> Macros cannot define macros in the natural way.  To do this, you must
+use conditionals and raw TeX.  For example:
+
+<div class="example">
+<pre class="example">@ifnottex
+@macro ctor {name, arg}
+@macro \name\
+something involving \arg\ somehow
+@end macro
+@end macro
+@end ifnottex
+@tex
+\gdef\ctor#1{\ctorx#1,}
+\gdef\ctorx#1,#2,{\def#1{something involving #2 somehow}}
+@end tex
+</pre></div>
+</li></ul>
+
+<p>The <code>makeinfo</code> implementation also has the following
+limitations (by design):
+</p>
+<ul>
+<li> <code>@verbatim</code> and macros do not mix; for instance, you can&rsquo;t start
+a verbatim block inside a macro and end it outside
+(see <a href="_0040verbatim.html"><code>@verbatim</code></a>).  Starting any environment inside a macro
+and ending it outside may or may not work, for that matter.
+
+</li><li> Macros that completely define macros are ok, but it&rsquo;s not possible to
+have incompletely nested macro definitions.  That is, <code>@macro</code>
+and <code>@end macro</code> (likewise for <code>@rmacro</code>) must be
+correctly paired.  For example, you cannot start a macro definition
+within a macro, and then end that nested definition outside the macro.
+</li></ul>
+
+<p>In the <code>makeinfo</code> implementation before Texinfo 5.0, ends of
+lines from expansion of a <code>@macro</code> definition did not end an
+@-command line-delimited argument (<code>@chapter</code>, <code>@center</code>,
+etc.).  This is no longer the case.  For example:
+</p>
+<div class="example">
+<pre class="example">@macro twolines{}
+aaa
+bbb
+@end macro
+@center @twolines{}
+</pre></div>
+
+<p>In the current <code>makeinfo</code>, this is equivalent to:
+</p>
+<div class="example">
+<pre class="example">@center aaa
+bbb
+</pre></div>
+
+<p>with just &lsquo;<samp>aaa</samp>&rsquo; as the argument to <code>@center</code>.  In
+the earlier implementation, it would have been parsed as this:
+</p>
+<div class="example">
+<pre class="example">@center aaa bbb
+</pre></div>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="_0040alias.html" accesskey="n" rel="next"><code>@alias</code></a>, Previous: <a href="Invoking-Macros.html" accesskey="p" rel="prev">Invoking Macros</a>, Up: <a href="Defining-New-Texinfo-Commands.html" accesskey="u" rel="up">Defining New Texinfo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

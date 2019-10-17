@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Inserting (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Inserting (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Inserting (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Texinfo-Mode.html" rel="up" title="Texinfo Mode">
+<link href="Showing-the-Structure.html" rel="next" title="Showing the Structure">
+<link href="Emacs-Editing.html" rel="prev" title="Emacs Editing">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Inserting"></span><div class="header">
+<p>
+Next: <a href="Showing-the-Structure.html" accesskey="n" rel="next">Showing the Structure</a>, Previous: <a href="Emacs-Editing.html" accesskey="p" rel="prev">Emacs Editing</a>, Up: <a href="Texinfo-Mode.html" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Inserting-Frequently-Used-Commands"></span><h3 class="section">D.3 Inserting Frequently Used Commands</h3>
+<span id="index-Inserting-frequently-used-commands"></span>
+<span id="index-Frequently-used-commands_002c-inserting"></span>
+<span id="index-Commands_002c-inserting-them"></span>
+
+<p>Texinfo mode provides commands to insert various frequently used
+@-commands into the buffer.  You can use these commands to save
+keystrokes.
+</p>
+<p>The insert commands are invoked by typing <kbd>C-c</kbd> twice and then the
+first letter of the @-command:
+</p>
+<dl compact="compact">
+<dt><kbd>C-c C-c c</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@code</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040code"></span>
+<p>Insert <code>@code{}</code> and put the
+cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c d</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@dfn</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040dfn"></span>
+<p>Insert <code>@dfn{}</code> and put the
+cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c e</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@end</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040end"></span>
+<p>Insert <code>@end</code> and attempt to insert the correct following word,
+such as &lsquo;<samp>example</samp>&rsquo; or &lsquo;<samp>table</samp>&rsquo;.  (This command does not handle
+nested lists correctly, but inserts the word appropriate to the
+immediately preceding list.)
+</p>
+</dd>
+<dt><kbd>C-c C-c i</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@item</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040item"></span>
+<p>Insert <code>@item</code> and put the
+cursor at the beginning of the next line.
+</p>
+</dd>
+<dt><kbd>C-c C-c k</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@kbd</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040kbd"></span>
+<p>Insert <code>@kbd{}</code> and put the
+cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c n</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@node</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040node"></span>
+<p>Insert <code>@node</code> and a comment line
+listing the sequence for the &lsquo;Next&rsquo;,
+&lsquo;Previous&rsquo;, and &lsquo;Up&rsquo; nodes.
+Leave point after the <code>@node</code>.
+</p>
+</dd>
+<dt><kbd>C-c C-c o</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@noindent</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040noindent"></span>
+<p>Insert <code>@noindent</code> and put the
+cursor at the beginning of the next line.
+</p>
+</dd>
+<dt><kbd>C-c C-c r</kbd></dt>
+<dt><kbd>M-x texinfo-insert-dwim-@ref</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002ddwim_002d_0040ref"></span>
+<p>This function and binding were added in Emacs 27.1.
+Inserts one of <code>@pxref{}</code>, <code>@xref{}</code>, or
+<code>@ref{}</code> based on the text around point; calling it near an
+unclosed preceding open parenthesis results in <code>@pxref{}</code>, at
+the beginning of a sentence or at <code>(point-min)</code> yields
+<code>@xref{}</code>, any other location (including inside a word), will
+result in <code>@ref{}</code>.  A numeric argument says how many words
+the braces should surround.  Puts the cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c s</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@samp</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040samp"></span>
+<p>Insert <code>@samp{}</code> and put the
+cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c t</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@table</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040table"></span>
+<p>Insert <code>@table</code> followed by a <tt class="key">SPC</tt>
+and leave the cursor after the <tt class="key">SPC</tt>.
+</p>
+</dd>
+<dt><kbd>C-c C-c v</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@var</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040var"></span>
+<p>Insert <code>@var{}</code> and put the
+cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c C-c x</kbd></dt>
+<dt><kbd>M-x texinfo-insert-@example</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002d_0040example"></span>
+<p>Insert <code>@example</code> and put the
+cursor at the beginning of the next line.
+</p>
+</dd>
+<dt><kbd>C-c C-c {</kbd></dt>
+<dt><kbd>M-x texinfo-insert-braces</kbd></dt>
+<dd><span id="index-texinfo_002dinsert_002dbraces"></span>
+<p>Insert <code>{}</code> and put the cursor between the braces.
+</p>
+</dd>
+<dt><kbd>C-c }</kbd></dt>
+<dt><kbd>C-c  ]</kbd></dt>
+<dt><kbd>M-x up-list</kbd></dt>
+<dd><span id="index-up_002dlist"></span>
+<p>Move from between a pair of braces forward past the closing brace.
+Typing <kbd>C-c ]</kbd> is easier than typing <kbd>C-c }</kbd>, which
+is, however, more mnemonic; hence the two keybindings.  (Also, you can
+move out from between braces by typing <kbd>C-f</kbd>.)
+</p></dd>
+</dl>
+
+<p>To put a command such as <code>@code{&hellip;}</code><!-- /@w --> around an
+<em>existing</em> word, position the cursor in front of the word and type
+<kbd>C-u 1 C-c C-c c</kbd>.  This makes it easy to edit existing plain text.
+The value of the prefix argument tells Emacs how many words following
+point to include between braces&mdash;&lsquo;<samp>1</samp>&rsquo; for one word, &lsquo;<samp>2</samp>&rsquo; for
+two words, and so on.  Use a negative argument to enclose the previous
+word or words.  If you do not specify a prefix argument, Emacs inserts
+the @-command string and positions the cursor between the braces.  This
+feature works only for those @-commands that operate on a word or words
+within one line, such as <code>@kbd</code> and <code>@var</code>.
+</p>
+<p>This set of insert commands was created after analyzing the frequency
+with which different @-commands are used in the <cite>GNU Emacs
+Manual</cite> and the <cite>GDB Manual</cite>.  If you wish to add your own insert
+commands, you can bind a keyboard macro to a key, use abbreviations,
+or extend the code in <samp>texinfo.el</samp>.
+</p>
+<span id="index-texinfo_002dstart_002dmenu_002ddescription"></span>
+<span id="index-Menu-description_002c-start"></span>
+<span id="index-Description-for-menu_002c-start"></span>
+<p><kbd>C-c C-c C-d</kbd> (<code>texinfo-start-menu-description</code>) is an insert
+command that works differently from the other insert commands.  It
+inserts a node&rsquo;s section or chapter title in the space for the
+description in a menu entry line.  (A menu entry has three parts, the
+entry name, the node name, and the description.  Only the node name is
+required, but a description helps explain what the node is about.
+See <a href="Menu-Parts.html">The Parts of a Menu</a>.)
+</p>
+<p>To use <code>texinfo-start-menu-description</code>, position point in a menu
+entry line and type <kbd>C-c C-c C-d</kbd>.  The command looks for and copies
+the title that goes with the node name, and inserts the title as a
+description; it positions point at beginning of the inserted text so you
+can edit it.  The function does not insert the title if the menu entry
+line already contains a description.
+</p>
+<p>This command is only an aid to writing descriptions; it does not do the
+whole job.  You must edit the inserted text since a title tends to use
+the same words as a node name but a useful description uses different
+words.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Showing-the-Structure.html" accesskey="n" rel="next">Showing the Structure</a>, Previous: <a href="Emacs-Editing.html" accesskey="p" rel="prev">Emacs Editing</a>, Up: <a href="Texinfo-Mode.html" accesskey="u" rel="up">Texinfo Mode</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

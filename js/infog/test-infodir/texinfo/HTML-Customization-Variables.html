@@ -1,0 +1,572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>HTML Customization Variables (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="HTML Customization Variables (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="HTML Customization Variables (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Customization-Variables.html" rel="up" title="Customization Variables">
+<link href="Other-Customization-Variables.html" rel="next" title="Other Customization Variables">
+<link href="Customization-Variables-and-Options.html" rel="prev" title="Customization Variables and Options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="HTML-Customization-Variables"></span><div class="header">
+<p>
+Next: <a href="Other-Customization-Variables.html" accesskey="n" rel="next">Other Customization Variables</a>, Previous: <a href="Customization-Variables-and-Options.html" accesskey="p" rel="prev">Customization Variables and Options</a>, Up: <a href="Customization-Variables.html" accesskey="u" rel="up">Customization Variables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="HTML-Customization-Variables-1"></span><h4 class="subsection">20.6.3 HTML Customization Variables</h4>
+
+<p>This table gives the customization variables which apply to HTML
+output only.  A few other customization variable apply to both HTML
+and other output formats; those are given in the next section.
+</p>
+<dl compact="compact">
+<dt><code>AVOID_MENU_REDUNDANCY</code>
+<span id="index-AVOID_005fMENU_005fREDUNDANCY"></span>
+</dt>
+<dd><p>For HTML.  If set, and the menu entry and menu description are the
+same, then do not print the menu description; default false.
+</p>
+</dd>
+<dt><code>AFTER_BODY_OPEN</code>
+<span id="index-AFTER_005fBODY_005fOPEN"></span>
+</dt>
+<dd><p>For HTML.  If set, the corresponding text will appear at the
+beginning of each HTML file; default unset.
+</p>
+</dd>
+<dt><code>AFTER_ABOUT</code>
+<span id="index-AFTER_005fABOUT"></span>
+</dt>
+<dd><p>For HTML, when an About-element is output.  If set, the corresponding
+text will appear at the end of the About element; default unset.
+</p>
+</dd>
+<dt><code>AFTER_OVERVIEW</code>
+<span id="index-AFTER_005fOVERVIEW"></span>
+</dt>
+<dt><code>AFTER_TOC_LINES</code>
+<span id="index-AFTER_005fTOC_005fLINES"></span>
+</dt>
+<dd><p>For HTML.  If set, the corresponding text is output after the short
+table of contents for <code>AFTER_OVERVIEW</code> and after the table of
+contents for <code>AFTER_TOC_LINES</code>; otherwise, a default string is
+used.  At the time of writing, a <code>&lt;/div&gt;</code> element is closed.
+</p>
+<p>In general, you should set <code>BEFORE_OVERVIEW</code> if
+<code>AFTER_OVERVIEW</code> is set, and you should set
+<code>BEFORE_TOC_LINES</code> if <code>AFTER_TOC_LINES</code> is set.
+</p>
+
+</dd>
+<dt><code>BASEFILENAME_LENGTH</code>
+<span id="index-BASEFILENAME_005fLENGTH"></span>
+</dt>
+<dd><p>For HTML.  The maximum length of the base filenames; default 245.
+Changing this would make cross-manual references to such long node
+names invalid (see <a href="HTML-Xref-Link-Basics.html">HTML Xref Link Basics</a>).
+</p>
+</dd>
+<dt><code>BEFORE_OVERVIEW</code>
+<span id="index-BEFORE_005fOVERVIEW"></span>
+</dt>
+<dt><code>BEFORE_TOC_LINES</code>
+<span id="index-BEFORE_005fTOC_005fLINES"></span>
+</dt>
+<dd><p>For HTML.  If set, the corresponding text is output before the short
+table of contents for <code>BEFORE_OVERVIEW</code> and before the table of
+contents for <code>BEFORE_TOC_LINES</code>, otherwise a default string is
+used.  At the time of writing, a <code>&lt;div ...&gt;</code> element is opened.
+</p>
+<p>In general you should set <code>AFTER_OVERVIEW</code> if
+<code>BEFORE_OVERVIEW</code> is set, and you should set
+<code>AFTER_TOC_LINES</code> if <code>BEFORE_TOC_LINES</code> is set.
+</p>
+
+</dd>
+<dt><code>BIG_RULE</code>
+<span id="index-BIG_005fRULE"></span>
+</dt>
+<dd><p>For HTML.  Rule used after and before the top element and before
+special elements, but not for footers and headers; default
+<code>&lt;hr&gt;</code>.
+</p>
+</dd>
+<dt><code>BODYTEXT</code>
+<span id="index-BODYTEXT"></span>
+</dt>
+<dd><span id="index-_003cbody_003e-text_002c-customizing"></span>
+<span id="index-lang_002c-HTML-attribute"></span>
+<p>For HTML, the text appearing in <code>&lt;body&gt;</code>.  By default, sets the
+HTML <code>lang</code> attribute to the document language
+(see <a href="_0040documentlanguage.html"><code>@documentlanguage</code></a>).
+</p>
+</dd>
+<dt><code>CASE_INSENSITIVE_FILENAMES</code>
+<span id="index-CASE_005fINSENSITIVE_005fFILENAMES"></span>
+</dt>
+<dd><p>For HTML.  Construct output file names as if the filesystem were case
+insensitive (see <a href="HTML-Splitting.html">HTML Splitting</a>); default false.
+</p>
+</dd>
+<dt><code>CHAPTER_HEADER_LEVEL</code>
+<span id="index-CHAPTER_005fHEADER_005fLEVEL"></span>
+</dt>
+<dd><p>For HTML.  Header formatting level used for chapter level sectioning
+commands; default &lsquo;<samp>2</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>CHECK_HTMLXREF</code>
+<span id="index-CHECK_005fHTMLXREF"></span>
+</dt>
+<dd><p>For HTML.  Check that manuals which are the target of external
+cross-references (see <a href="Four-and-Five-Arguments.html">Four and Five Arguments</a>) are present in
+<samp>htmlxref.cnf</samp> (see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>); default false.
+</p>
+</dd>
+<dt><code>COMPLEX_FORMAT_IN_TABLE</code>
+<span id="index-COMPLEX_005fFORMAT_005fIN_005fTABLE"></span>
+</dt>
+<dd><p>For HTML.  If set, use tables for indentation of complex formats; default
+false.
+</p>
+</dd>
+<dt><code>CSS_LINES</code>
+<span id="index-CSS_005fLINES"></span>
+</dt>
+<dd><p>For HTML.  CSS output, automatically determined by default (see <a href="HTML-CSS.html">HTML CSS</a>).
+</p>
+</dd>
+<dt><code>DATE_IN_HEADER</code>
+<span id="index-DATE_005fIN_005fHEADER"></span>
+</dt>
+<dd><p>For HTML.  Put the document generation date in the header; off by default.
+</p>
+</dd>
+<dt><code>DEF_TABLE</code>
+<span id="index-DEF_005fTABLE"></span>
+</dt>
+<dd><p>For HTML.  If set, a <code>&lt;table&gt;</code> construction for <code>@deffn</code>
+and similar @-commands is used (looking more like the TeX output),
+instead of definition lists; default false.
+</p>
+</dd>
+<dt><code>DEFAULT_RULE</code>
+<span id="index-DEFAULT_005fRULE"></span>
+</dt>
+<dd><p>For HTML.  Rule used between element, except before and after the
+top element, and before special elements, and for footers and headers;
+default <code>&lt;hr&gt;</code>.
+</p>
+</dd>
+<dt><code>DO_ABOUT</code>
+<span id="index-DO_005fABOUT"></span>
+</dt>
+<dd><p>For HTML.  If set to 0 never do an About special element;
+if set to 1 always do an About special element;
+default 0.
+</p>
+</dd>
+<dt><code>EXTERNAL_DIR</code>
+<span id="index-EXTERNAL_005fDIR"></span>
+</dt>
+<dd><p>For HTML.  Base directory for external manuals; default none.  It is
+better to use the general external cross-reference mechanism
+(see <a href="HTML-Xref-Configuration.html">HTML Xref Configuration</a>) than this variable.
+</p>
+</dd>
+<dt><code>EXTRA_HEAD</code>
+<span id="index-EXTRA_005fHEAD"></span>
+</dt>
+<dd><p>For HTML.  Additional text appearing within <code>&lt;head&gt;</code>; default unset.
+</p>
+</dd>
+<dt><code>FOOTNOTE_END_HEADER_LEVEL</code>
+<span id="index-FOOTNOTE_005fEND_005fHEADER_005fLEVEL"></span>
+</dt>
+<dd><p>For HTML.  Header formatting level used for the footnotes header with
+the &lsquo;end&rsquo; footnotestyle; default &lsquo;<samp>4</samp>&rsquo;.  See <a href="Footnote-Styles.html">Footnote Styles</a>.
+</p>
+</dd>
+<dt><code>FOOTNOTE_SEPARATE_HEADER_LEVEL</code>
+<span id="index-FOOTNOTE_005fSEPARATE_005fHEADER_005fLEVEL"></span>
+</dt>
+<dd><p>For HTML.  Header formatting level used for the footnotes header with
+the &lsquo;separate&rsquo; footnotestyle; default &lsquo;<samp>4</samp>&rsquo;.  See <a href="Footnote-Styles.html">Footnote Styles</a>.
+</p>
+</dd>
+<dt><code>FRAMES</code>
+<span id="index-FRAMES"></span>
+</dt>
+<dd><p>For HTML.  If set, a file describing the frame layout is generated,
+together with a file with the short table of contents; default false.
+</p>
+</dd>
+<dt><code>FRAMESET_DOCTYPE</code>
+<span id="index-FRAMESET_005fDOCTYPE"></span>
+</dt>
+<dd><p>For HTML.  Same as DOCTYPE, but for the file containing the frame
+description.
+</p>
+</dd>
+<dt><code>HEADER_IN_TABLE</code>
+<span id="index-HEADER_005fIN_005fTABLE"></span>
+</dt>
+<dd><p>For HTML.  Use tables for header formatting rather than a simple
+<code>&lt;div&gt;</code> element; default false.
+</p>
+</dd>
+<dt><code>ICONS</code>
+<span id="index-ICONS"></span>
+</dt>
+<dd><p>For HTML.  Use icons for the navigation panel; default false.
+</p>
+</dd>
+<dt><code>IMAGE_LINK_PREFIX</code>
+<span id="index-IMAGE_005fLINK_005fPREFIX"></span>
+</dt>
+<dd><p>For HTML.  If set, the associated value is prepended to the image file
+links; default unset.
+</p>
+</dd>
+<dt><code>INLINE_CONTENTS</code>
+<span id="index-INLINE_005fCONTENTS"></span>
+</dt>
+<dd><p>For HTML.  If set, output the contents where the <code>@contents</code> and
+similar @-commands are located; default true.  This is ignored if
+<code>@set*contentsaftertitlepage</code> is set (see <a href="Contents.html">Contents</a>).
+</p>
+</dd>
+<dt><code>INLINE_CSS_STYLE</code>
+<span id="index-INLINE_005fCSS_005fSTYLE"></span>
+</dt>
+<dd><p>For HTML.  Put CSS directly in HTML elements rather than at the
+beginning of the output; default false.
+</p>
+</dd>
+<dt><code>KEEP_TOP_EXTERNAL_REF</code>
+<span id="index-KEEP_005fTOP_005fEXTERNAL_005fREF"></span>
+</dt>
+<dd><p>For HTML.  If set, do not ignore &lsquo;<samp>Top</samp>&rsquo; as the first
+argument for an external ref to a manual, as is done by default.
+See <a href="Referring-to-a-Manual-as-a-Whole.html">Referring to a Manual as a Whole</a>.
+</p>
+</dd>
+<dt><code>L2H</code>
+<span id="index-L2H"></span>
+</dt>
+<dd><p>For HTML.  If set, <code>latex2html</code> is used to convert <code>@math</code>
+and <code>@tex</code> sections; default false.  Best used with <samp>--iftex</samp>.
+</p>
+</dd>
+<dt><code>L2H_CLEAN</code>
+<span id="index-L2H_005fCLEAN"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  If set, the intermediate files
+generated in relation with <code>latex2html</code> are removed; default
+true.
+</p>
+</dd>
+<dt><code>L2H_FILE</code>
+<span id="index-L2H_005fFILE"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  If set, the given file is used
+as <code>latex2html</code>&rsquo;s init file; default unset.
+</p>
+</dd>
+<dt><code>L2H_HTML_VERSION</code>
+<span id="index-L2H_005fHTML_005fVERSION"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  The HTML version used in the
+<code>latex2html</code> call; default unset.
+</p>
+</dd>
+<dt><code>L2H_L2H</code>
+<span id="index-L2H_005fL2H"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  The program invoked as
+<code>latex2html</code>; default is <code>latex2html</code>.
+</p>
+</dd>
+<dt><code>L2H_SKIP</code>
+<span id="index-L2H_005fSKIP"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  If set to a true value, the
+actual call to <code>latex2html</code> is skipped; previously generated
+content is reused instead.  If set to 0, the cache is not used at all.
+If set to &lsquo;<samp>undef</samp>&rsquo;, the cache is used for as many TeX fragments as
+possible and for any remaining the command is run.  The default is
+&lsquo;<samp>undef</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>L2H_TMP</code>
+<span id="index-L2H_005fTMP"></span>
+</dt>
+<dd><p>(Relevant only if <code>L2H</code> is set.)  Set the directory used for
+temporary files.  None of the file name components in this directory
+name may start with &lsquo;<samp>.</samp>&rsquo;; otherwise, <code>latex2html</code> will
+fail (because of <code>dvips</code>).  The default is the empty string,
+which means the current directory.
+</p>
+</dd>
+<dt><code>MAX_HEADER_LEVEL</code>
+<span id="index-MAX_005fHEADER_005fLEVEL"></span>
+</dt>
+<dd><p>For HTML.  Maximum header formatting level used (higher header
+formatting level numbers correspond to lower sectioning levels);
+default &lsquo;<samp>4</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>MENU_SYMBOL</code>
+<span id="index-MENU_005fSYMBOL"></span>
+</dt>
+<dd><p>For HTML.  Symbol used in front of menu entries when node names are used
+for menu entries formatting; default &lsquo;<samp>&amp;bull;</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>MONOLITHIC</code>
+<span id="index-MONOLITHIC"></span>
+</dt>
+<dd><p>For HTML.  Output only one file including the table of contents.  Set
+by default, but only relevant when the output is not split.
+</p>
+</dd>
+<dt><code>NO_CSS</code>
+<span id="index-NO_005fCSS"></span>
+</dt>
+<dd><p>For HTML.  Do not use CSS; default false.  See <a href="HTML-CSS.html">HTML CSS</a>.
+</p>
+</dd>
+<dt><code>NODE_FILE_EXTENSION</code>
+<span id="index-NODE_005fFILE_005fEXTENSION"></span>
+</dt>
+<dd><p>For HTML.  Extension for node files if <code>NODE_FILENAMES</code> is set;
+default &lsquo;<samp>html</samp>&rsquo;.
+</p>
+</dd>
+<dt><code>PRE_ABOUT</code>
+<span id="index-PRE_005fABOUT"></span>
+</dt>
+<dd><p>For HTML, when an About element is output.  If set to a text string,
+this text will appear at the beginning of the About element.  If set
+to a reference on a subroutine, the result of the subroutine call will
+appear at the beginning of the About element.  If not set (the
+default), default text is used.
+</p>
+</dd>
+<dt><code>PRE_BODY_CLOSE</code>
+<span id="index-PRE_005fBODY_005fCLOSE"></span>
+</dt>
+<dd><p>For HTML.  If set, the given text will appear at the footer of each
+HTML file; default unset.
+</p>
+</dd>
+<dt><code>PROGRAM_NAME_IN_FOOTER</code>
+<span id="index-PROGRAM_005fNAME_005fIN_005fFOOTER"></span>
+</dt>
+<dd><p>For HTML.  If set, output the program name and miscellaneous related
+information in the page footers; default false.
+</p>
+</dd>
+<dt><code>SECTION_NAME_IN_TITLE</code>
+<span id="index-SECTION_005fNAME_005fIN_005fTITLE"></span>
+</dt>
+<dd><p>For HTML.  If set,  when output is split, use the argument of the 
+chapter structuring command (e.g., <code>@chapter</code> or <code>@section</code>)
+in the <code>&lt;title&gt;</code> instead of the argument to <code>@node</code>.
+</p>
+</dd>
+<dt><code>SHORTEXTN</code>
+<span id="index-SHORTEXTN"></span>
+</dt>
+<dd><p>For HTML.  If set, use &lsquo;<samp>.htm</samp>&rsquo; as extension; default false.
+</p>
+</dd>
+<dt><code>SHOW_TITLE</code>
+<span id="index-SHOW_005fTITLE"></span>
+</dt>
+<dd><p>For HTML.  If set, output the title at the beginning of the document;
+default true.
+</p>
+</dd>
+<dt><code>SIMPLE_MENU</code>
+<span id="index-SIMPLE_005fMENU"></span>
+</dt>
+<dd><p>For HTML.  If set, use a simple preformatted style for the menu,
+instead of breaking down the different parts of the menu; default false.
+See <a href="Menu-Parts.html">Menu Parts</a>.
+</p>
+</dd>
+<dt><code>TOC_LINKS</code>
+<span id="index-TOC_005fLINKS"></span>
+</dt>
+<dd><p>For HTML.  If set, links from headings to toc entries are created;
+default false.
+</p>
+</dd>
+<dt><code>TOP_FILE</code>
+<span id="index-TOP_005fFILE"></span>
+</dt>
+<dd><p>This file name may be used for the top-level file.  The extension is
+set appropriately, if necessary.  This is used to override the default,
+and is, in general, only taken into account when output is split, and
+for HTML.
+</p>
+</dd>
+<dt><code>TOP_NODE_FILE</code>
+<span id="index-TOP_005fNODE_005fFILE"></span>
+</dt>
+<dd><p>For HTML.  File name used for the Top node, if <code>NODE_FILENAMES</code>
+is set; default is <code>index</code>.
+</p>
+</dd>
+<dt><code>TOP_NODE_FILE_TARGET</code>
+<span id="index-TOP_005fNODE_005fFILE_005fTARGET"></span>
+</dt>
+<dd><p>For HTML.  File name used for the Top node in cross-references;
+default is <code>index</code>.
+</p>
+</dd>
+<dt><code>TOP_NODE_UP_URL</code>
+<span id="index-TOP_005fNODE_005fUP_005fURL"></span>
+</dt>
+<dd><p>For HTML.  A url used for Top node up references; the default is
+<code>undef</code>, in that case no Top node Up reference is generated.
+For more about the Top node pointers, see <a href="First-Node.html">First Node</a>.  For 
+overriding the Up pointer name in cas <code>TOP_NODE_UP_URL</code> is set
+and for other formats, see <code>TOP_NODE_UP</code> in 
+<a href="Other-Customization-Variables.html">Other Customization Variables</a>.
+</p>
+</dd>
+<dt><code>USE_ACCESSKEY</code>
+<span id="index-USE_005fACCESSKEY"></span>
+</dt>
+<dd><span id="index-accesskey_002c-customization-variable-for"></span>
+<p>For HTML.  Use <code>accesskey</code> in cross-references; default true.
+</p>
+</dd>
+<dt><code>USE_ISO</code>
+<span id="index-USE_005fISO"></span>
+</dt>
+<dd><p>For HTML.  Use entities for doubled single-quote characters
+(see <a href="Inserting-Quotation-Marks.html">Inserting Quotation Marks</a>), and &lsquo;<samp>---</samp>&rsquo; and &lsquo;<samp>--</samp>&rsquo;
+(see <a href="Conventions.html">Conventions</a>); default true.
+</p>
+</dd>
+<dt><code>USE_LINKS</code>
+<span id="index-USE_005fLINKS"></span>
+</dt>
+<dd><span id="index-_003clink_003e-HTML-tag_002c-in-_003chead_003e"></span>
+<span id="index-_003chead_003e-HTML-tag_002c-and-_003clink_003e"></span>
+<p>For HTML.  Generate <code>&lt;link&gt;</code> elements in the HTML <code>&lt;head&gt;</code>
+output; default true.
+</p>
+</dd>
+<dt><code>USE_REL_REV</code>
+<span id="index-USE_005fREL_005fREV"></span>
+</dt>
+<dd><p>For HTML.  Use <code>rel</code> in cross-references; default true.
+</p>
+</dd>
+<dt><code>VERTICAL_HEAD_NAVIGATION</code>
+<span id="index-VERTICAL_005fHEAD_005fNAVIGATION"></span>
+</dt>
+<dd><p>For HTML.  If set, a vertical navigation panel is used; default false.
+</p>
+</dd>
+<dt><code>WORDS_IN_PAGE</code>
+<span id="index-WORDS_005fIN_005fPAGE"></span>
+</dt>
+<dd><span id="index-Navigation-panel_002c-bottom-of-page"></span>
+<span id="index-Navigation-footer"></span>
+<p>For HTML, with output split at nodes.  Specifies the approximate
+minimum page length at which a navigation panel is placed at the
+bottom of a page.  To avoid ever having the navigation buttons at the
+bottom of a page, set this to a sufficiently large number.  The
+default is 300.
+</p>
+</dd>
+<dt><code>XREF_USE_FLOAT_LABEL</code>
+<span id="index-XREF_005fUSE_005fFLOAT_005fLABEL"></span>
+</dt>
+<dd><p>For HTML.  If set, for the float name in cross-references, use the
+float label instead of the type followed by the float number
+(see <a href="_0040float.html"><code>@float</code></a>).  The default is off.
+</p>
+</dd>
+<dt><code>XREF_USE_NODE_NAME_ARG</code>
+<span id="index-XREF_005fUSE_005fNODE_005fNAME_005fARG"></span>
+</dt>
+<dd><p>For HTML.  Only relevant for cross-reference commands with no cross
+reference name (second argument).  If set to&nbsp;1, use the node name
+(first) argument in cross-reference @-commands for the text displayed
+as the hyperlink.  If set to&nbsp;0, use the node name if
+<code>USE_NODES</code> is set, otherwise the section name.  If set to
+&lsquo;<samp>undef</samp>&rsquo;, use the first argument in preformatted environments,
+otherwise use the node name or section name depending on
+<code>USE_NODES</code>.  The default is &lsquo;<samp>undef</samp>&rsquo;.
+</p>
+</dd>
+</dl>
+
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Other-Customization-Variables.html" accesskey="n" rel="next">Other Customization Variables</a>, Previous: <a href="Customization-Variables-and-Options.html" accesskey="p" rel="prev">Customization Variables and Options</a>, Up: <a href="Customization-Variables.html" accesskey="u" rel="up">Customization Variables</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

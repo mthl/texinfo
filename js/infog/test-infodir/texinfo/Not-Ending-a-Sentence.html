@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Not Ending a Sentence (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="Not Ending a Sentence (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="Not Ending a Sentence (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Inserting-Space.html" rel="up" title="Inserting Space">
+<link href="Ending-a-Sentence.html" rel="next" title="Ending a Sentence">
+<link href="Multiple-Spaces.html" rel="prev" title="Multiple Spaces">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="Not-Ending-a-Sentence"></span><div class="header">
+<p>
+Next: <a href="Ending-a-Sentence.html" accesskey="n" rel="next">Ending a Sentence</a>, Previous: <a href="Multiple-Spaces.html" accesskey="p" rel="prev">Multiple Spaces</a>, Up: <a href="Inserting-Space.html" accesskey="u" rel="up">Inserting Space</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="Not-Ending-a-Sentence-1"></span><h4 class="subsection">12.3.2 Not Ending a Sentence</h4>
+
+<span id="index-Not-ending-a-sentence"></span>
+<span id="index-Sentence-non_002dending-punctuation"></span>
+<span id="index-Periods_002c-inserting"></span>
+<span id="index-Spacing_002c-in-the-middle-of-sentences"></span>
+<p>When a period, exclamation point or question mark is
+at the end of a sentence, slightly more space is
+inserted after it in a typeset manual.
+</p>
+<span id="index-_003ccolon_003e-_0028suppress-end_002dof_002dsentence-space_0029"></span>
+<span id="index-_003a"></span>
+<p>Usually, Texinfo can determine automatically when a period ends a 
+sentence.  However, special commands are needed in some circumstances.
+Use the <code>@:</code> command after a period, question mark, exclamation
+mark or colon that should not be followed by extra space.  This is 
+necessary in the following situations:
+</p>
+<ol>
+<li> After a period that ends a lowercase abbreviation which is not at 
+the end of a sentences.
+
+</li><li> When a parenthetical remark in the middle of a sentence (like
+this one!) ends with a period, exclamation point or question mark,
+<code>@:</code> should be used after the right parenthesis.  Similarly for
+right brackets and right quotes (both single and double).
+</li></ol>
+
+<p>For example:
+</p>
+<div class="example">
+<pre class="example">&lsquo;<samp>foo vs.@: bar (or?)@: baz</samp>&rsquo;,
+</pre></div>
+
+<p>The first line below shows the output, and for comparison, the second 
+line shows the spacing when the &lsquo;<samp>@:</samp>&rsquo; commands were not used.
+</p>
+<blockquote>
+<p>foo vs. bar (or?) baz<br>
+foo vs. bar (or?) baz
+</p></blockquote>
+
+
+<p>It may help you to remember what <code>@:</code> does by imagining that it 
+stands for an invisible lower-case character that stops a word ending in 
+a period.
+</p>
+<p>A few Texinfo commands force normal interword spacing, so that you
+don&rsquo;t have to insert <code>@:</code> where you otherwise would.  These are
+the code-like highlighting commands, <code>@var</code>, <code>@abbr</code>, and
+<code>@acronym</code> (see <a href="Useful-Highlighting.html">Useful Highlighting</a>).  For example, in
+&lsquo;<samp>@code{foo. bar}</samp>&rsquo; the period is not considered to be the end of a
+sentence, and no extra space is inserted.
+</p>
+<p><code>@:</code> has no effect on the HTML or Docbook output.
+</p>
+
+<hr>
+<div class="header">
+<p>
+Next: <a href="Ending-a-Sentence.html" accesskey="n" rel="next">Ending a Sentence</a>, Previous: <a href="Multiple-Spaces.html" accesskey="p" rel="prev">Multiple Spaces</a>, Up: <a href="Inserting-Space.html" accesskey="u" rel="up">Inserting Space</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+a documentation system that can produce both online information and a
+printed manual from a single source using semantic markup.
+
+Copyright (C) 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
+1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
+Foundation, Inc.
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being "A GNU Manual",
+and with the Back-Cover Texts as in (a) below.  A copy of the license
+is included in the section entitled "GNU Free Documentation
+License".
+
+(a) The FSF's Back-Cover Text is: "You have the freedom to copy and
+modify this GNU manual.  Buying copies from the FSF supports it in
+developing GNU and promoting software freedom." -->
+<!-- Created by GNU Texinfo 6.7dev, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>@allowcodebreaks (GNU Texinfo 6.7dev)</title>
+
+<meta name="description" content="@allowcodebreaks (GNU Texinfo 6.7dev)">
+<meta name="keywords" content="@allowcodebreaks (GNU Texinfo 6.7dev)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="texi2any">
+<link href="index.html" rel="start" title="Top">
+<link href="Command-and-Variable-Index.html" rel="index" title="Command and Variable Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Breaks.html" rel="up" title="Breaks">
+<link href="_0040w.html" rel="next" title="@w">
+<link href="_0040_002d-_0040hyphenation.html" rel="prev" title="@- @hyphenation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+kbd {font-style: oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<span id="g_t_0040allowcodebreaks"></span><div class="header">
+<p>
+Next: <a href="_0040w.html" accesskey="n" rel="next"><code>@w</code></a>, Previous: <a href="_0040_002d-_0040hyphenation.html" accesskey="p" rel="prev"><code>@- @hyphenation</code></a>, Up: <a href="Breaks.html" accesskey="u" rel="up">Breaks</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<span id="g_t_0040allowcodebreaks_003a-Control-Line-Breaks-in-_0040code"></span><h3 class="section">13.4 <code>@allowcodebreaks</code>: Control Line Breaks in <code>@code</code></h3>
+
+<span id="allowcodebreaks"></span><span id="index-allowcodebreaks"></span>
+<span id="index-Breaks_002c-within-_0040code"></span>
+<span id="index-_002d_002d_002c-breakpoint-within-_0040code"></span>
+<span id="index-Hyphen_002c-breakpoint-within-_0040code"></span>
+<span id="index-Dash_002c-breakpoint-within-_0040code"></span>
+<span id="index-_005f_002c-breakpoint-within-_0040code"></span>
+<span id="index-Underscore_002c-breakpoint-within-_0040code"></span>
+
+<p>Ordinarily, TeX considers breaking lines at &lsquo;<samp>-</samp>&rsquo; and &lsquo;<samp>_</samp>&rsquo;
+characters within <code>@code</code> and related commands
+(see <a href="_0040code.html"><code>@code</code></a>), more or less as if they were &ldquo;empty&rdquo;
+hyphenation points.
+</p>
+<p>This is necessary since many manuals, especially for Lisp-family
+languages, must document very long identifiers.  On the other hand,
+some manuals don&rsquo;t have this problems, and you may not wish to allow a
+line break at the underscore in, for example, <code>SIZE_MAX</code>, or even
+worse, after any of the four underscores in <code>__typeof__</code>.
+</p>
+<p>So Texinfo provides this command:
+</p>
+<div class="example">
+<pre class="example">@allowcodebreaks false
+</pre></div>
+
+<p>to prevent from breaking at &lsquo;<samp>-</samp>&rsquo; or &lsquo;<samp>_</samp>&rsquo; within
+<code>@code</code>.  You can go back to allowing such breaks with
+<code>@allowcodebreaks true</code>.  Write these commands on lines by
+themselves.
+</p>
+<p>These commands can be given anywhere in the document.  For example,
+you may have just one problematic paragraph where you need to turn off
+the breaks, but want them in general, or vice versa.
+</p>
+<p>This command has no effect except in HTML and TeX output.
+</p>
+
+
+
+
+</body>
+</html>
