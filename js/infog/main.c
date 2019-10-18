@@ -70,6 +70,7 @@ GtkListStore *index_store = 0;
 
 GtkTreeView *toc_pane;
 GtkListStore *toc_store = 0;
+GtkTreeSelection *toc_selection = 0;
 
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
@@ -263,6 +264,23 @@ load_toc (char *p)
     }
 }
 
+void
+toc_selected_cb (GtkTreeSelection *selection, gpointer user_data)
+{
+  bool success;
+  GtkTreeIter iter;
+  GtkTreeModel *model;
+  char *url;
+
+  success = gtk_tree_selection_get_selected (selection, &model, &iter);
+  if (!success)
+    return;
+
+  gtk_tree_model_get (model, &iter, 1, &url, -1);
+
+  load_relative_url (url);
+  g_free (url);
+}
 
 gboolean
 socket_cb (GSocket *socket,
@@ -523,6 +541,9 @@ build_gui (void)
 
   toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
   gtk_tree_view_set_headers_visible (toc_pane, FALSE);
+  toc_selection = gtk_tree_view_get_selection (toc_pane);
+  g_signal_connect (toc_selection, "changed",
+                    G_CALLBACK(toc_selected_cb), NULL);
 
   gtk_paned_pack1 (paned, GTK_WIDGET(toc_pane), FALSE, TRUE);
 
