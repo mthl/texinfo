@@ -518,6 +518,8 @@ build_gui (void)
   gtk_box_pack_start (box, GTK_WIDGET(paned), TRUE, TRUE, 0);
 
   toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
+  gtk_tree_view_set_headers_visible (toc_pane, FALSE);
+
   gtk_paned_pack1 (paned, GTK_WIDGET(toc_pane), FALSE, TRUE);
 
   webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
