@@ -234,7 +234,7 @@ load_toc (char *p)
 
   if (!toc_store)
     {
-      toc_store = gtk_list_store_new (1, G_TYPE_STRING);
+      toc_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
       gtk_tree_view_set_model (toc_pane, GTK_TREE_MODEL(toc_store));
 
       toc_renderer = gtk_cell_renderer_text_new ();
@@ -249,13 +249,17 @@ load_toc (char *p)
   while ((q = strchr (p, '\n')))
     {
       *q++ = 0;
-      debug (1, "add toc entry %s\n", p);
+      q2 = strchr (q, '\n');
+      if (!q2)
+        break;
+      *q2++ = 0;
+      debug (1, "add toc entry %s:%s\n", p, q);
 
       gtk_list_store_append (toc_store, &iter);
       gtk_list_store_set (toc_store, &iter,
-                          0, p, -1);
+                          0, p, 1, q, -1);
 
-      p = q;
+      p = q2;
     }
 }
 

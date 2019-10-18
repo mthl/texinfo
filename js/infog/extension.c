@@ -328,6 +328,10 @@ send_toc (WebKitDOMDocument *dom_document)
               s3 = webkit_dom_element_get_inner_html (e1);
               g_string_append (toc, s3);
               g_string_append (toc, "\n");
+
+              s3 = webkit_dom_element_get_attribute (e1, "href");
+              g_string_append (toc, s3);
+              g_string_append (toc, "\n");
             }
         }
 
