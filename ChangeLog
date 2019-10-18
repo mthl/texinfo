@@ -1,3 +1,9 @@
+2019-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/texi2dvi (xref_files_changed): Move call to 
+	generated_files_get earlier so that xref_files_new will still be 
+	updated if the log files indicate that LaTeX should be re-run.
+
 2019-10-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS/parsetexi/input.c (locate_include_file): Return 
