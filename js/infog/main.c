@@ -71,6 +71,7 @@ GtkListStore *index_store = 0;
 GtkTreeView *toc_pane;
 GtkListStore *toc_store = 0;
 GtkTreeSelection *toc_selection = 0;
+GtkWidget *toc_scroll = 0;
 
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
@@ -538,13 +539,15 @@ build_gui (void)
   GtkPaned *paned = GTK_PANED(gtk_paned_new (GTK_ORIENTATION_HORIZONTAL));
   gtk_box_pack_start (box, GTK_WIDGET(paned), TRUE, TRUE, 0);
 
+  toc_scroll = gtk_scrolled_window_new (NULL, NULL);
   toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
   gtk_tree_view_set_headers_visible (toc_pane, FALSE);
   toc_selection = gtk_tree_view_get_selection (toc_pane);
   g_signal_connect (toc_selection, "changed",
                     G_CALLBACK(toc_selected_cb), NULL);
 
-  gtk_paned_pack1 (paned, GTK_WIDGET(toc_pane), FALSE, TRUE);
+  gtk_container_add (GTK_CONTAINER (toc_scroll), GTK_WIDGET(toc_pane));
+  gtk_paned_pack1 (paned, GTK_WIDGET(toc_scroll), FALSE, TRUE);
 
   webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
   gtk_paned_pack2 (paned, GTK_WIDGET(webView), TRUE, TRUE);
