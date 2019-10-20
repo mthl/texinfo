@@ -221,73 +221,8 @@ find_indices (WebKitDOMHTMLCollection *links, gulong num_links)
   g_string_free (s, TRUE);
 }
 
-void
-send_index (WebKitDOMHTMLCollection *links, gulong num_links)
-{
-  debug (1, "trying to send index\n");
-
-  gulong i = 0;
-  GString *s = g_string_new (NULL);
-
-  /* Break index information up into datagrams each of size less
-     than PACKET_SIZE. */
-
-  g_string_assign (s, "index\n");
-
-  for (; i < num_links; i++)
-    {
-      WebKitDOMNode *node
-        = webkit_dom_html_collection_item (links, i);
-      if (!node)
-        {
-          debug (1, "No node\n");
-          return;
-        }
-
-      WebKitDOMElement *element;
-      if (WEBKIT_DOM_IS_ELEMENT(node))
-        {
-          element = WEBKIT_DOM_ELEMENT(node);
-        }
-      else
-        {
-          /* When would this happen? */
-          debug (1, "Not an DOM element\n");
-          continue;
-        }
-
-      gchar *href = webkit_dom_element_get_attribute (element, "href");
-      if (href && strstr (href, "#index-"))
-        {
-          int try = 0;
-          gsize old_len = s->len;
-          do
-            {
-              g_string_append (s, webkit_dom_node_get_text_content (node));
-              g_string_append (s, "\n");
-              g_string_append (s, href);
-              g_string_append (s, "\n");
-
-              if (s->len > PACKET_SIZE && try != 1)
-                {
-                  g_string_truncate (s, old_len);
-                  // debug (2, "sending packet %u||%s||\n", s->len, s->str);
-                  send_datagram (s);
-                  g_string_assign (s, "index\n");
-                  try++;
-                  continue;
-                }
-            }
-          while (0);
-        }
-    }
-  send_datagram (s);
-
-  g_string_free (s, TRUE);
-
-  debug (1, "index sent\n");
-}
-
+/* Split up msg into packets of size no more than PACKET_SIZE so it can
+   be sent over the socket. */
 void
 packetize (char *msg_type, GString *msg)
 {
@@ -323,6 +258,52 @@ next_packet:
     }
   send_datagram (s);
   g_string_free (s, TRUE);
+}
+
+void
+send_index (WebKitDOMHTMLCollection *links, gulong num_links)
+{
+  debug (1, "trying to send index\n");
+
+  gulong i = 0;
+  GString *s = g_string_new (NULL);
+
+  for (; i < num_links; i++)
+    {
+      WebKitDOMNode *node
+        = webkit_dom_html_collection_item (links, i);
+      if (!node)
+        {
+          debug (1, "No node\n");
+          return;
+        }
+
+      WebKitDOMElement *element;
+      if (WEBKIT_DOM_IS_ELEMENT(node))
+        {
+          element = WEBKIT_DOM_ELEMENT(node);
+        }
+      else
+        {
+          /* When would this happen? */
+          debug (1, "Not an DOM element\n");
+          continue;
+        }
+
+      gchar *href = webkit_dom_element_get_attribute (element, "href");
+      if (href && strstr (href, "#index-"))
+        {
+          g_string_append (s, webkit_dom_node_get_text_content (node));
+          g_string_append (s, "\n");
+          g_string_append (s, href);
+          g_string_append (s, "\n");
+        }
+    }
+  packetize ("index", s);
+
+  g_string_free (s, TRUE);
+
+  debug (1, "index sent\n");
 }
 
 void
