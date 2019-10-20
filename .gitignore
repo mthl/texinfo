@@ -249,8 +249,9 @@ tp/Texinfo/XS/gnulib/lib/stdint.h
 tp/Texinfo/XS/gnulib/lib/stdio.h
 tp/Texinfo/XS/gnulib/lib/string.h
 tp/Texinfo/XS/gnulib/lib/wchar.h
-
 tp/Texinfo/XS/gnulib/lib/sys/types.h
+
+tp/Texinfo/XS/gnulib/m4/libtool.m4
 
 tp/Texinfo/XS/parsetexi/command_data.c
 tp/Texinfo/XS/parsetexi/Parsetexi.c
