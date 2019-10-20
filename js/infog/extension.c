@@ -292,10 +292,35 @@ void
 packetize (char *msg_type, GString *msg)
 {
   GString *s;
+  char *p, *q;
+  int try = 0; /* To check if a single record is too long for a packet. */
+
+  p = msg->str;
   s = g_string_new (NULL);
+
+next_packet:
+  g_string_truncate (s, 0);
   g_string_append (s, msg_type);
   g_string_append (s, "\n");
-  g_string_append_len (s, msg->str, msg->len);
+
+  /* Get next two lines and try to fit them in the buffer. */
+  while ((q = strchr (p, '\n')) && (q = strchr (q + 1, '\n')))
+    {
+      gsize old_len = s->len;
+      g_string_append_len (s, p, q - p + 1);
+      if (s->len > PACKET_SIZE)
+        {
+          if (try == 1)
+            break;
+          g_string_truncate (s, old_len);
+          send_datagram (s);
+          try = 1;
+          goto next_packet;
+        }
+
+      try = 0;
+      p = q + 1;
+    }
   send_datagram (s);
   g_string_free (s, TRUE);
 }
