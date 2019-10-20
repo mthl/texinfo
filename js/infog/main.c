@@ -333,13 +333,12 @@ socket_cb (GSocket *socket,
 
           save_completions (p);
           continue_to_load_index_nodes ();
-          /* Note - an index could be sent in several packets.  Should we wait 
-             until all of them have been sent before loading the next one? */
         }
       else if (!strcmp (buffer, "new-manual"))
         {
           debug (1, "NEW MANUAL %s\n", p + 1);
           clear_completions ();
+          gtk_list_store_clear (toc_store);
 
           char *q = strchr (p + 1, '\n');
           if (!q)
