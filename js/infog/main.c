@@ -7,9 +7,9 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <sys/un.h>
-
 #include <time.h>
 #include <stdarg.h>
+#include <signal.h>
 
 #include <gtk/gtk.h>
 #include <gio/gio.h>
@@ -49,7 +49,6 @@ static gboolean onkeypress(GtkWidget *webView,
 static char *socket_file;
 int socket_id;
 
-/* FIXME - not removed if program killed with C-c. */
 static void
 remove_socket (void)
 {
@@ -581,6 +580,13 @@ build_gui (void)
   gtk_widget_grab_focus (GTK_WIDGET(webView));
 }
 
+/* Used to make sure atexit functions run. */
+void
+termination_handler (int signum)
+{
+  exit (0);
+}
+
 int
 main (int argc, char *argv[])
 {
@@ -593,6 +599,14 @@ main (int argc, char *argv[])
         g_print ("Please set INFO_HTML_DIR\n");
         return 0;
       }
+
+    if (signal (SIGINT, termination_handler) == SIG_IGN)
+      signal (SIGINT, SIG_IGN);
+    if (signal (SIGHUP, termination_handler) == SIG_IGN)
+      signal (SIGHUP, SIG_IGN);
+    if (signal (SIGTERM, termination_handler) == SIG_IGN)
+      signal (SIGTERM, SIG_IGN);
+
 
     /* This is used to use a separate process for the web browser
        that looks up the index files.  This stops the program from freezing 
