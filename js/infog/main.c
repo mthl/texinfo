@@ -241,7 +241,8 @@ load_toc (char *p)
 
   if (!toc_store)
     {
-      toc_store = gtk_tree_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+      toc_store = gtk_tree_store_new (3, G_TYPE_STRING, G_TYPE_STRING,
+                                      G_TYPE_BOOLEAN);
       gtk_tree_view_set_model (toc_pane, GTK_TREE_MODEL(toc_store));
 
       toc_renderer = gtk_cell_renderer_text_new ();
@@ -294,30 +295,42 @@ load_toc (char *p)
 
       gtk_tree_store_append (toc_store, &last_iter, toc_iter_ptr);
       gtk_tree_store_set (toc_store, &last_iter,
-                          0, p, 1, q, -1);
+                          0, p, 1, q, 2, FALSE, -1);
       toc_empty = 0;
 
       if (last)
         {
           GtkTreeIter parent;
-          q++;
+
+          /* Mark the parent entry as having no more children. */
+          gtk_tree_store_set (toc_store, &toc_iter, 2, TRUE, -1);
+
           if (!toc_iter_ptr)
             {
               g_print ("BUG: toc_iter_ptr undef\n");
             }
           else
             {
-              bool result = gtk_tree_model_iter_parent
-                (GTK_TREE_MODEL(toc_store), &parent, &toc_iter);
-              if (result)
+              while (1)
                 {
-                  toc_iter = parent;
-                  /* Then check if the parent itself was also the last entry.
-                     If so, keep on going up. */
-                }
-              else
-                {
-                  toc_iter_ptr = NULL; /* At top level. */
+                  bool result = gtk_tree_model_iter_parent
+                    (GTK_TREE_MODEL(toc_store), &parent, &toc_iter);
+                  if (result)
+                    {
+                      toc_iter = parent;
+                    }
+                  else
+                    {
+                      toc_iter_ptr = NULL; /* At top level. */
+                      break;
+                    }
+
+                  bool no_more;
+                  gtk_tree_model_get (GTK_TREE_MODEL(toc_store),
+                                      &toc_iter, 2, &no_more, -1);
+
+                  if (!no_more)
+                    break;
                 }
             }
         }
