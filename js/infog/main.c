@@ -338,7 +338,8 @@ socket_cb (GSocket *socket,
         {
           debug (1, "NEW MANUAL %s\n", p + 1);
           clear_completions ();
-          gtk_tree_store_clear (toc_store);
+          if (toc_store)
+            gtk_tree_store_clear (toc_store);
 
           char *q = strchr (p + 1, '\n');
           if (!q)
