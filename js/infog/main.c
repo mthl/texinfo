@@ -237,6 +237,8 @@ int toc_empty = 1;
 void
 load_toc (char *p)
 {
+  int last;
+
   if (!toc_store)
     {
       toc_store = gtk_tree_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
@@ -253,6 +255,7 @@ load_toc (char *p)
   char *q, *q2;
   while ((q = strchr (p, '\n')))
     {
+      last = 0;
       *q++ = 0;
       q2 = strchr (q, '\n');
       if (!q2)
@@ -283,7 +286,18 @@ load_toc (char *p)
               toc_iter = last_iter;
             }
         }
-      else if (0 && *q == '-')
+      else if (*q == '-')
+        {
+          q++;
+          last = 1;
+        }
+
+      gtk_tree_store_append (toc_store, &last_iter, toc_iter_ptr);
+      gtk_tree_store_set (toc_store, &last_iter,
+                          0, p, 1, q, -1);
+      toc_empty = 0;
+
+      if (last)
         {
           GtkTreeIter parent;
           q++;
@@ -293,19 +307,20 @@ load_toc (char *p)
             }
           else
             {
-              gtk_tree_model_iter_parent (GTK_TREE_MODEL(toc_store),
-                                          &parent, toc_iter_ptr);
-              toc_iter = parent;
-              /* Then check if the parent itself was also the last entry.
-                 If so, keep on going up. */
+              bool result = gtk_tree_model_iter_parent
+                (GTK_TREE_MODEL(toc_store), &parent, &toc_iter);
+              if (result)
+                {
+                  toc_iter = parent;
+                  /* Then check if the parent itself was also the last entry.
+                     If so, keep on going up. */
+                }
+              else
+                {
+                  toc_iter_ptr = NULL; /* At top level. */
+                }
             }
-
         }
-
-      gtk_tree_store_append (toc_store, &last_iter, toc_iter_ptr);
-      gtk_tree_store_set (toc_store, &last_iter,
-                          0, p, 1, q, -1);
-      toc_empty = 0;
 
       p = q2;
     }

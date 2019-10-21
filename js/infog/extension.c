@@ -320,6 +320,8 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
       if (!strcmp (s, "LI") || !strcmp (s, "li"))
         {
           e1 = webkit_dom_element_get_first_element_child (e);
+          e = webkit_dom_element_get_next_element_sibling (e);
+
           s2 = webkit_dom_element_get_tag_name (e1);
           if (!strcmp (s2, "a") || !strcmp (s2, "A"))
             {
@@ -332,6 +334,10 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
                 {
                   first = 0;
                   g_string_append (toc, "+");
+                }
+              else if (!e)
+                {
+                  g_string_append (toc, "-");
                 }
               g_string_append (toc, s3);
               g_string_append (toc, "\n");
@@ -347,7 +353,8 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
                 }
             }
         }
-      e = webkit_dom_element_get_next_element_sibling (e);
+      else
+        break;
     }
 }
 
@@ -365,6 +372,7 @@ send_toc (WebKitDOMDocument *dom_document)
 
   build_toc_string (toc, toc_elt);
 
+  g_print ("SEND TOB |%s|\n", toc->str);
   packetize ("toc", toc);
   g_string_free (toc, TRUE);
 }
