@@ -628,7 +628,7 @@ build_gui (void)
   webkit_settings_set_enable_javascript (settings, FALSE);
 
   main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
+  gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 700);
 
   header_bar = GTK_HEADER_BAR(gtk_header_bar_new ());
   gtk_header_bar_set_title (header_bar, "Info");
@@ -654,6 +654,7 @@ build_gui (void)
                     G_CALLBACK(toc_selected_cb), NULL);
 
   gtk_container_add (GTK_CONTAINER (toc_scroll), GTK_WIDGET(toc_pane));
+  gtk_paned_set_position (paned, 200);
   gtk_paned_pack1 (paned, GTK_WIDGET(toc_scroll), FALSE, TRUE);
 
   webView = WEBKIT_WEB_VIEW(webkit_web_view_new_with_settings(settings));
@@ -669,7 +670,6 @@ build_gui (void)
   /* Hide the index search box when it loses focus. */
   g_signal_connect (webView, "focus-in-event",
                     G_CALLBACK(hide_index_cb), NULL);
-  gtk_widget_hide (GTK_WIDGET(index_entry));
 
   g_signal_connect (webView, "decide-policy",
                     G_CALLBACK(decide_policy_cb), NULL);
@@ -682,6 +682,7 @@ build_gui (void)
   g_signal_connect(webView, "key-press-event", G_CALLBACK(onkeypress), main_window);
 
   gtk_widget_show_all (main_window);
+  gtk_widget_hide (GTK_WIDGET(index_entry));
 
   /* Make sure that when the browser area becomes visible, it will get mouse
      and keyboard events. */
