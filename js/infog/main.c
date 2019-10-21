@@ -68,7 +68,7 @@ GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
 
 GtkTreeView *toc_pane;
-GtkListStore *toc_store = 0;
+GtkTreeStore *toc_store = 0;
 GtkTreeSelection *toc_selection = 0;
 GtkWidget *toc_scroll = 0;
 
@@ -235,7 +235,7 @@ load_toc (char *p)
 
   if (!toc_store)
     {
-      toc_store = gtk_list_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
+      toc_store = gtk_tree_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
       gtk_tree_view_set_model (toc_pane, GTK_TREE_MODEL(toc_store));
 
       toc_renderer = gtk_cell_renderer_text_new ();
@@ -256,8 +256,8 @@ load_toc (char *p)
       *q2++ = 0;
       debug (1, "add toc entry %s:%s\n", p, q);
 
-      gtk_list_store_append (toc_store, &iter);
-      gtk_list_store_set (toc_store, &iter,
+      gtk_tree_store_append (toc_store, &iter, NULL);
+      gtk_tree_store_set (toc_store, &iter,
                           0, p, 1, q, -1);
 
       p = q2;
@@ -338,7 +338,7 @@ socket_cb (GSocket *socket,
         {
           debug (1, "NEW MANUAL %s\n", p + 1);
           clear_completions ();
-          gtk_list_store_clear (toc_store);
+          gtk_tree_store_clear (toc_store);
 
           char *q = strchr (p + 1, '\n');
           if (!q)
