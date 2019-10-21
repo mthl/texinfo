@@ -228,11 +228,15 @@ load_index_nodes (char *p)
 GtkCellRenderer *toc_renderer = 0;
 GtkTreeViewColumn *toc_column = 0;
 
+GtkTreeIter toc_iter; /* The entry to add new entries under. */
+GtkTreeIter last_iter;
+
+GtkTreeIter *toc_iter_ptr;
+int toc_empty = 1;
+
 void
 load_toc (char *p)
 {
-  GtkTreeIter iter;
-
   if (!toc_store)
     {
       toc_store = gtk_tree_store_new (2, G_TYPE_STRING, G_TYPE_STRING);
@@ -269,9 +273,39 @@ load_toc (char *p)
             }
         }
 
-      gtk_tree_store_append (toc_store, &iter, NULL);
-      gtk_tree_store_set (toc_store, &iter,
+      if (*q == '+')
+        {
+          q++;
+          if (!toc_empty)
+            {
+              /* Add items under the last item added.  */
+              toc_iter_ptr = &toc_iter;
+              toc_iter = last_iter;
+            }
+        }
+      else if (0 && *q == '-')
+        {
+          GtkTreeIter parent;
+          q++;
+          if (!toc_iter_ptr)
+            {
+              g_print ("BUG: toc_iter_ptr undef\n");
+            }
+          else
+            {
+              gtk_tree_model_iter_parent (GTK_TREE_MODEL(toc_store),
+                                          &parent, toc_iter_ptr);
+              toc_iter = parent;
+              /* Then check if the parent itself was also the last entry.
+                 If so, keep on going up. */
+            }
+
+        }
+
+      gtk_tree_store_append (toc_store, &last_iter, toc_iter_ptr);
+      gtk_tree_store_set (toc_store, &last_iter,
                           0, p, 1, q, -1);
+      toc_empty = 0;
 
       p = q2;
     }
@@ -360,6 +394,8 @@ socket_cb (GSocket *socket,
             {
               gtk_tree_selection_set_mode (toc_selection, GTK_SELECTION_NONE);
               gtk_tree_store_clear (toc_store);
+              toc_iter_ptr = 0;
+              toc_empty = 1;
               gtk_tree_selection_set_mode (toc_selection,
                                            GTK_SELECTION_SINGLE);
               /* If we do not change the selection mode, it appears that 

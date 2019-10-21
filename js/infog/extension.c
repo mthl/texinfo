@@ -311,6 +311,7 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
 {
   char *s, *s1, *s2, *s3;
   WebKitDOMElement *e, *e1;
+  int first = 1;
 
   e = webkit_dom_element_get_first_element_child (elt);
   while (e)
@@ -327,6 +328,11 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
               g_string_append (toc, "\n");
 
               s3 = webkit_dom_element_get_attribute (e1, "href");
+              if (first)
+                {
+                  first = 0;
+                  g_string_append (toc, "+");
+                }
               g_string_append (toc, s3);
               g_string_append (toc, "\n");
             }
