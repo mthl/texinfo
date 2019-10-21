@@ -254,7 +254,7 @@ load_toc (char *p)
       if (!q2)
         break;
       *q2++ = 0;
-      debug (1, "add toc entry %s:%s\n", p, q);
+      debug (2, "add toc entry %s:%s\n", p, q);
 
       gtk_tree_store_append (toc_store, &iter, NULL);
       gtk_tree_store_set (toc_store, &iter,
@@ -272,9 +272,14 @@ toc_selected_cb (GtkTreeSelection *selection, gpointer user_data)
   GtkTreeModel *model;
   char *url;
 
+  debug (1, "TOC ENTRY SELECTED\n");
+
   success = gtk_tree_selection_get_selected (selection, &model, &iter);
   if (!success)
-    return;
+    {
+      debug (1, "NONE SELECTED\n");
+      return;
+    }
 
   gtk_tree_model_get (model, &iter, 1, &url, -1);
 
@@ -339,7 +344,17 @@ socket_cb (GSocket *socket,
           debug (1, "NEW MANUAL %s\n", p + 1);
           clear_completions ();
           if (toc_store)
-            gtk_tree_store_clear (toc_store);
+            {
+              gtk_tree_selection_set_mode (toc_selection, GTK_SELECTION_NONE);
+              gtk_tree_store_clear (toc_store);
+              gtk_tree_selection_set_mode (toc_selection,
+                                           GTK_SELECTION_SINGLE);
+              /* If we do not change the selection mode, it appears that 
+                 gtk_tree_store_clear causes every row to be selected in turn, 
+                 so toc_selected_cb runs and loads all the nodes in the old 
+                 manual.  */
+            }
+          debug (1, "CLEARED TOC %s\n", p + 1);
 
           char *q = strchr (p + 1, '\n');
           if (!q)
@@ -543,6 +558,7 @@ build_gui (void)
   toc_pane = GTK_TREE_VIEW(gtk_tree_view_new ());
   gtk_tree_view_set_headers_visible (toc_pane, FALSE);
   toc_selection = gtk_tree_view_get_selection (toc_pane);
+  gtk_tree_selection_set_mode (toc_selection, GTK_SELECTION_SINGLE);
   g_signal_connect (toc_selection, "changed",
                     G_CALLBACK(toc_selected_cb), NULL);
 

@@ -344,7 +344,6 @@ send_toc (WebKitDOMDocument *dom_document)
       e = webkit_dom_element_get_next_element_sibling (e);
     }
 
-  g_print ("BUILT TOC %s\n", toc->str);
   packetize ("toc", toc);
   g_string_free (toc, TRUE);
 }
