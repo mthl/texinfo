@@ -616,6 +616,10 @@ find_extensions_directory (int argc, char *argv[])
 
 static GMainLoop *main_loop;
 
+GtkHeaderBar *header_bar;
+GtkWidget *back_button;
+GtkWidget *help_button;
+
 void
 build_gui (void)
 {
@@ -625,6 +629,16 @@ build_gui (void)
 
   main_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
   gtk_window_set_default_size(GTK_WINDOW(main_window), 800, 600);
+
+  header_bar = GTK_HEADER_BAR(gtk_header_bar_new ());
+  gtk_header_bar_set_title (header_bar, "Info");
+  gtk_header_bar_set_show_close_button (header_bar, TRUE);
+  gtk_window_set_titlebar (GTK_WINDOW(main_window), GTK_WIDGET(header_bar));
+
+  back_button = gtk_button_new_with_mnemonic ("_Back");
+  gtk_header_bar_pack_start (header_bar, back_button);
+  help_button = gtk_button_new_with_mnemonic ("_Help");
+  gtk_header_bar_pack_start (header_bar, help_button);
 
   GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
 

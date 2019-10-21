@@ -372,7 +372,6 @@ send_toc (WebKitDOMDocument *dom_document)
 
   build_toc_string (toc, toc_elt);
 
-  g_print ("SEND TOB |%s|\n", toc->str);
   packetize ("toc", toc);
   g_string_free (toc, TRUE);
 }
