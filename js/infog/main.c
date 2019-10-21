@@ -256,6 +256,19 @@ load_toc (char *p)
       *q2++ = 0;
       debug (2, "add toc entry %s:%s\n", p, q);
 
+      if (strchr (p, '<'))
+	{
+          /* Strip HTML tags. */
+          char *p1, *p2;
+          char *q3 = q2;
+          while ((p1 = strchr (p, '<')) && (p2 = strchr (p1, '>')))
+            {
+              p2++;
+              memmove (p1, p2, q3 - p2);
+              q3 -= p2 - p1;
+            }
+        }
+
       gtk_tree_store_append (toc_store, &iter, NULL);
       gtk_tree_store_set (toc_store, &iter,
                           0, p, 1, q, -1);
