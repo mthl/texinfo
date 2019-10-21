@@ -260,7 +260,7 @@ load_toc (char *p)
 	{
           /* Strip HTML tags. */
           char *p1, *p2;
-          char *q3 = q2;
+          char *q3 = q;
           while ((p1 = strchr (p, '<')) && (p2 = strchr (p1, '>')))
             {
               p2++;
@@ -657,7 +657,7 @@ main (int argc, char *argv[])
 
     build_gui ();
 
-#define MANUAL "hello"
+#define MANUAL "texinfo"
 
     GString *s = g_string_new (NULL);
     g_string_append (s, "file:");

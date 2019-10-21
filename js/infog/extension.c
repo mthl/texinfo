@@ -307,21 +307,12 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
 }
 
 void
-send_toc (WebKitDOMDocument *dom_document)
+build_toc_string (GString *toc, WebKitDOMElement *elt)
 {
-  GString *toc;
-  WebKitDOMElement *e, *e1;
-  int level = 0;
   char *s, *s1, *s2, *s3;
+  WebKitDOMElement *e, *e1;
 
-  WebKitDOMElement *toc_elt = webkit_dom_document_query_selector
-                            (dom_document, "div.contents ul", NULL);
-  if (!toc_elt)
-    return;
-
-  toc = g_string_new (NULL);
-
-  e = webkit_dom_element_get_first_element_child (toc_elt);
+  e = webkit_dom_element_get_first_element_child (elt);
   while (e)
     {
       s = webkit_dom_element_get_tag_name (e);
@@ -339,10 +330,34 @@ send_toc (WebKitDOMDocument *dom_document)
               g_string_append (toc, s3);
               g_string_append (toc, "\n");
             }
-        }
 
+          e1 = webkit_dom_element_get_next_element_sibling (e1);
+          if (e1)
+            {
+              s2 = webkit_dom_element_get_tag_name (e1);
+              if (!strcmp (s2, "UL") || !strcmp (s2, "ul"))
+                {
+                  build_toc_string (toc, e1);
+                }
+            }
+        }
       e = webkit_dom_element_get_next_element_sibling (e);
     }
+}
+
+void
+send_toc (WebKitDOMDocument *dom_document)
+{
+  GString *toc;
+
+  WebKitDOMElement *toc_elt = webkit_dom_document_query_selector
+                            (dom_document, "div.contents ul", NULL);
+  if (!toc_elt)
+    return;
+
+  toc = g_string_new (NULL);
+
+  build_toc_string (toc, toc_elt);
 
   packetize ("toc", toc);
   g_string_free (toc, TRUE);
