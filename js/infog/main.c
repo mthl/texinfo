@@ -139,7 +139,8 @@ clear_completions (void)
     gtk_list_store_clear (index_store);
 }
 
-void
+/* Save index entries.  Return 1 if it is the end of this index. */
+int
 save_completions (char *p)
 {
   GtkTreeIter iter;
@@ -164,9 +165,12 @@ save_completions (char *p)
       if (!q2)
         {
           debug (1, "incomplete packet\n");
-          return;
+          return 1;
         }
       *q2++ = 0;
+
+      if (!*p && !*q)
+        return 1; /* end of index */
 
       // debug (2, "add index entry %s\n", p);
 
@@ -177,6 +181,7 @@ save_completions (char *p)
 
       p = q2;
     }
+  return 0;
 }
 
 static char *current_manual;
@@ -463,8 +468,8 @@ socket_cb (GSocket *socket,
         {
           p++; /* Set p to the first byte after index line. */
 
-          save_completions (p);
-          continue_to_load_index_nodes ();
+          if (save_completions (p))
+            continue_to_load_index_nodes ();
         }
       else if (!strcmp (buffer, "new-manual"))
         {

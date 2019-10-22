@@ -287,6 +287,11 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
           g_string_append (s, "\n");
         }
     }
+
+  /* Mark end of index. */
+  g_string_append (s, "\n");
+  g_string_append (s, "\n");
+
   packetize ("index", s);
 
   g_string_free (s, TRUE);
