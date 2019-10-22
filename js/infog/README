@@ -1,0 +1,31 @@
+Must have GTK 3 development files installed and libwebkit2gtk-4.0.
+
+Run ./autogen.sh after git checkout.
+
+Then configure and make.
+
+Set INFO_HTML_DIR to the directory containing the documentation files.
+Each manual is in its own directory, named with the name of the manual.
+For links to work, create an empty file with "touch dummy" and create
+the manuals with e.g.
+
+texi2any -c HTMLXREF=dummy --html  --no-number-sections ../../../hello.texi
+
+The HTMLXREF option makes inter-manual links begin with "../".  (Texinfo 
+6.7 needed if indices are to be found.)
+
+
+Notes on architecture -
+
+When a link is clicked, external links are blocked by 
+main.c:decide_policy_cb.  file: links are intercepted in 
+extension.c:request_callback.
+
+If it's a link to a different manual, load_manual is called.
+This in turn informs the main process that a new manual has been loaded 
+via the socket.
+
+The main thread should then do a ?top-node request in the hidden web 
+view.  The top-node request should pass back a list of index nodes.
+
+Then each of those should be used to give an index node to load.
