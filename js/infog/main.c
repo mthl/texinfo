@@ -292,7 +292,7 @@ load_toc (char *p)
               toc_iter = last_iter;
             }
         }
-      else if (*q == '-')
+      if (*q == '-')
         {
           q++;
           last = 1;

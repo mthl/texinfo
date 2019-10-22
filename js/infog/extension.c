@@ -323,7 +323,7 @@ build_toc_string (GString *toc, WebKitDOMElement *elt)
                   first = 0;
                   g_string_append (toc, "+");
                 }
-              else if (!e)
+              if (!e)
                 {
                   g_string_append (toc, "-");
                 }
