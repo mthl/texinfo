@@ -63,6 +63,7 @@ WebKitWebView *webView = 0;
 static char *next_link, *prev_link, *up_link;
 
 GtkWidget *main_window = 0;
+GtkHeaderBar *header_bar;
 
 GtkEntry *index_entry = 0;
 GtkEntryCompletion *index_completion = 0;
@@ -428,6 +429,7 @@ socket_cb (GSocket *socket,
 
           free (current_manual);
           current_manual = strdup (p + 1);
+          gtk_header_bar_set_title (header_bar, current_manual);
 
           clear_completions ();
           if (toc_store)
@@ -618,11 +620,73 @@ find_extensions_directory (int argc, char *argv[])
   extensions_directory[p - argv[0]] = '\0';
 }
 
+void
+load_manual (char *manual)
+{
+  GString *s = g_string_new (NULL);
+  g_string_append (s, "file:");
+  g_string_append (s, info_dir);
+  g_string_append (s, "/");
+  g_string_append (s, manual);
+  g_string_append (s, "/index.html");
+  webkit_web_view_load_uri (webView, s->str);
+  g_string_free (s, TRUE);
+}
+
+
 static GMainLoop *main_loop;
 
-GtkHeaderBar *header_bar;
 GtkWidget *back_button;
 GtkWidget *help_button;
+GtkWidget *manual_button;
+
+GtkWidget *manual_dialog, *manual_entry;
+
+void
+manual_entry_cb (GtkDialog *dialog,
+                 gint       response_id,
+                 gpointer   user_data)
+{
+  char *new_manual = gtk_entry_get_text (GTK_ENTRY(manual_entry));
+  if (new_manual)
+    {
+      new_manual = strdup (new_manual);
+    }
+  gtk_widget_destroy (manual_dialog);
+  if (new_manual)
+    {
+      load_manual (new_manual);
+      free (new_manual);
+    }
+}
+
+void
+manual_clicked_cb (GtkButton *button, gpointer user_data)
+{
+  GtkDialogFlags flags = GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT;
+  manual_dialog = gtk_dialog_new_with_buttons ("Enter manual name",
+                                        GTK_WINDOW(main_window),
+                                        flags,
+                                        "_OK",
+                                        GTK_RESPONSE_ACCEPT,
+                                        NULL);
+
+  GtkWidget *content_area = gtk_dialog_get_content_area
+                              (GTK_DIALOG (manual_dialog));
+
+  manual_entry = gtk_entry_new ();
+  gtk_container_add (GTK_CONTAINER (content_area), manual_entry);
+
+  g_signal_connect_swapped (manual_dialog,
+                           "response",
+                           G_CALLBACK (manual_entry_cb),
+                           NULL);
+  g_signal_connect_swapped (manual_entry,
+                           "activate",
+                           G_CALLBACK (manual_entry_cb),
+                           NULL);
+  gtk_widget_show_all (manual_dialog);
+}
 
 void
 back_clicked_cb (GtkButton *button, gpointer user_data)
@@ -671,8 +735,13 @@ build_gui (void)
   back_button = gtk_button_new_with_mnemonic ("_Back");
   g_signal_connect (back_button, "clicked",
                     G_CALLBACK(back_clicked_cb), NULL);
-
   gtk_header_bar_pack_start (header_bar, back_button);
+
+  manual_button = gtk_button_new_with_mnemonic ("_Load manual");
+  g_signal_connect (manual_button, "clicked",
+                    G_CALLBACK(manual_clicked_cb), NULL);
+  gtk_header_bar_pack_start (header_bar, manual_button);
+
   help_button = gtk_button_new_with_mnemonic ("_Help");
   g_signal_connect (help_button, "clicked",
                     G_CALLBACK(help_clicked_cb), NULL);
@@ -777,16 +846,9 @@ main (int argc, char *argv[])
 
     build_gui ();
 
-#define MANUAL "texinfo"
+#define FIRST_MANUAL "hello"
 
-    GString *s = g_string_new (NULL);
-    g_string_append (s, "file:");
-    g_string_append (s, info_dir);
-    g_string_append (s, "/");
-    g_string_append (s, MANUAL);
-    g_string_append (s, "/index.html");
-    webkit_web_view_load_uri (webView, s->str);
-    g_string_free (s, TRUE);
+    load_manual (FIRST_MANUAL);
 
     /* Create a web view to parse index files.  */
     hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
