@@ -68,37 +68,6 @@ send_datagram (GString *s)
 }
 
 static char *current_manual;
-static char *current_manual_dir;
-
-/* Called from request_callback.  Return 0 on failure. */
-int
-load_manual_old (char *manual)
-{
-  free (current_manual_dir);
-  current_manual_dir = locate_manual (manual);
-  debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
-
-  if (!current_manual_dir)
-    {
-      free (manual);
-      return 0;
-    }
-
-  current_manual = manual;
-
-  /* Inform the main process the manual has changed so that it can
-     load the indices. */
-  GString *s1 = g_string_new (NULL);
-  g_string_append (s1, "new-manual\n");
-  g_string_append (s1, current_manual_dir);
-  g_string_append (s1, "\n");
-
-  send_datagram (s1);
-
-  g_string_free (s1, TRUE);
-  
-  return 1;
-}
 
 int
 load_manual (char *manual)

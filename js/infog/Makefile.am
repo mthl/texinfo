@@ -10,7 +10,7 @@ libmyappwebextension_la_LDFLAGS = -module -avoid-version -no-undefined
 
 bin_PROGRAMS=infog
 
-infog_SOURCES=main.c common.h infopath.c
+infog_SOURCES=main.c common.h infopath.c infopath.h
 
 AM_CFLAGS=`pkg-config --cflags gtk+-3.0 webkit2gtk-4.0`
 
