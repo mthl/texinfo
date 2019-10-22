@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- This manual is for GNU Texinfo (version 6.7dev, 23 September 2019),
+<!-- This manual is for GNU Texinfo (version 6.7dev, 18 October 2019),
 a documentation system that can produce both online information and a
 printed manual from a single source using semantic markup.
 
@@ -64,7 +64,7 @@ ul.no-bullet {list-style: none}
 Next: <a href="Invoking-pod2texi.html" accesskey="n" rel="next">Invoking <code>pod2texi</code></a>, Previous: <a href="Customization-Variables.html" accesskey="p" rel="prev">Customization Variables</a>, Up: <a href="Generic-Translator-texi2any.html" accesskey="u" rel="up">Generic Translator <code>texi2any</code></a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-and-Variable-Index.html" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
-<span id="Internationalization-of-Document-Strings-1"></span><h3 class="section">20.7 Internationalization of Document Strings</h3>
+<span id="Internationalization-of-Document-Strings-1"></span><h3 class="section">Internationalization of Document Strings</h3>
 
 <span id="index-I18n_002c-of-document-strings"></span>
 <span id="index-Internationalization-of-document-strings"></span>
@@ -81,7 +81,7 @@ being output (see <a href="_0040documentlanguage.html"><code>@documentlanguage</
 command interface).
 </p>
 <span id="index-libintl_002dperl-Gettext-implementation"></span>
-<p>The Gettext framework is used for those strings (see <cite><a href="https://www.gnu.org/software/gettext/manual/html_node/index.html#Top">Gettext</a></cite>).  The <code>libintl-perl</code> package is used as the
+<p>The Gettext framework is used for those strings (see <cite><a href="../gettext/index.html#Top">Gettext</a></cite>).  The <code>libintl-perl</code> package is used as the
 <code>gettext</code> implementation; more specifically, the pure Perl
 implementation is used, so Texinfo can support consistent behavior
 across all platforms and installations, which would not otherwise be
@@ -97,7 +97,7 @@ Translated strings are written as Texinfo, and may include
 @-commands.  In translated strings, the varying parts of the string
 are not usually denoted by <code>%s</code> and the like, but by
 &lsquo;<samp>{arg_name}</samp>&rsquo;.  (This convention is common for <code>gettext</code> in
-Perl and is fully supported in GNU Gettext; see <a href="https://www.gnu.org/software/gettext/manual/html_node/perl_002dformat.html#perl_002dformat">Perl
+Perl and is fully supported in GNU Gettext; see <a href="../gettext/perl_002dformat.html#perl_002dformat">Perl
 Format Strings</a> in <cite>GNU Gettext</cite>.)  For example, in the
 following, &lsquo;<samp>{section}</samp>&rsquo; will be replaced by the section name:
 </p>
