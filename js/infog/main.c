@@ -42,9 +42,9 @@ debug (int level, char *fmt, ...)
 
 static void destroyWindowCb(GtkWidget *widget, GtkWidget *window);
 static gboolean closeWebViewCb(WebKitWebView* webView, GtkWidget* window);
-static gboolean onkeypress(GtkWidget *webView,
-                           GdkEvent  *event,
-                           gpointer   user_data);
+static gboolean key_press_cb(GtkWidget *webView,
+                             GdkEvent  *event,
+                             gpointer   user_data);
 
 static char *socket_file;
 int socket_id;
@@ -542,7 +542,7 @@ hide_index_cb (GtkWidget *widget,
                gpointer   user_data)
 {
   hide_index ();
-  return TRUE;
+  return FALSE;
 }
 
 
@@ -702,7 +702,7 @@ build_gui (void)
   gtk_widget_add_events (GTK_WIDGET(webView), GDK_FOCUS_CHANGE_MASK);
 
   /* Hide the index search box when it loses focus. */
-  g_signal_connect (webView, "focus-in-event",
+  g_signal_connect (index_entry, "focus-out-event",
                     G_CALLBACK(hide_index_cb), NULL);
 
   g_signal_connect (webView, "decide-policy",
@@ -713,7 +713,10 @@ build_gui (void)
   g_signal_connect(main_window, "destroy", G_CALLBACK(destroyWindowCb), NULL);
   g_signal_connect(webView, "close", G_CALLBACK(closeWebViewCb), main_window);
 
-  g_signal_connect(webView, "key-press-event", G_CALLBACK(onkeypress), main_window);
+  g_signal_connect(webView, "key-press-event", G_CALLBACK(key_press_cb), NULL);
+
+  g_signal_connect(toc_pane, "key-press-event", G_CALLBACK(key_press_cb), 
+                   NULL);
 
   gtk_widget_show_all (main_window);
   gtk_widget_hide (GTK_WIDGET(index_entry));
@@ -791,7 +794,7 @@ main (int argc, char *argv[])
 }
 
 static gboolean
-onkeypress (GtkWidget *webView,
+key_press_cb (GtkWidget *webView,
             GdkEvent  *event,
             gpointer   user_data)
 {
