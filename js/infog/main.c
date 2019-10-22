@@ -621,6 +621,12 @@ GtkWidget *back_button;
 GtkWidget *help_button;
 
 void
+back_clicked_cb (GtkButton *button, gpointer user_data)
+{
+  webkit_web_view_go_back (webView);
+}
+
+void
 build_gui (void)
 {
   /* Disable JavaScript */
@@ -636,6 +642,9 @@ build_gui (void)
   gtk_window_set_titlebar (GTK_WINDOW(main_window), GTK_WIDGET(header_bar));
 
   back_button = gtk_button_new_with_mnemonic ("_Back");
+  g_signal_connect (back_button, "clicked",
+                    G_CALLBACK(back_clicked_cb), NULL);
+
   gtk_header_bar_pack_start (header_bar, back_button);
   help_button = gtk_button_new_with_mnemonic ("_Help");
   gtk_header_bar_pack_start (header_bar, help_button);
