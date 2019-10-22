@@ -77,8 +77,6 @@ GtkWidget *toc_scroll = 0;
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
 
-char *info_dir = 0;
-
 void
 load_relative_url (const char *href)
 {
@@ -361,6 +359,57 @@ toc_selected_cb (GtkTreeSelection *selection, gpointer user_data)
   g_free (url);
 }
 
+int
+new_manual (char *manual)
+{
+  debug (1, "NEW MANUAL %s\n", manual);
+
+  free (current_manual_dir);
+  current_manual_dir = locate_manual (manual);
+
+  if (!current_manual_dir)
+    {
+      debug (1, "MANUAL NOT FOUND\n");
+      return 0;
+    }
+  debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
+
+  free (current_manual);
+  current_manual = strdup (manual);
+  gtk_header_bar_set_title (header_bar, current_manual);
+
+  clear_completions ();
+  if (toc_store)
+    {
+      gtk_tree_selection_set_mode (toc_selection, GTK_SELECTION_NONE);
+      gtk_tree_store_clear (toc_store);
+      toc_iter_ptr = 0;
+      toc_empty = 1;
+      gtk_tree_selection_set_mode (toc_selection,
+                                   GTK_SELECTION_SINGLE);
+      /* If we do not change the selection mode, it appears that 
+         gtk_tree_store_clear causes every row to be selected in turn, 
+         so toc_selected_cb runs and loads all the nodes in the old 
+         manual.  */
+    }
+  return 1;
+}
+
+void
+load_manual (char *manual)
+{
+  if (!new_manual (manual))
+    return;
+
+  GString *s = g_string_new (NULL);
+  g_string_append (s, "file:");
+  g_string_append (s, current_manual_dir);
+  g_string_append (s, "/index.html");
+  webkit_web_view_load_uri (webView, s->str);
+  g_string_free (s, TRUE);
+}
+
+
 gboolean
 socket_cb (GSocket *socket,
            GIOCondition condition,
@@ -415,36 +464,8 @@ socket_cb (GSocket *socket,
         }
       else if (!strcmp (buffer, "new-manual"))
         {
-          debug (1, "NEW MANUAL %s\n", p + 1);
-
-          free (current_manual_dir);
-          current_manual_dir = locate_manual (p + 1);
-          debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
-
-          if (!current_manual_dir)
-            {
-              debug (1, "MANUAL NOT FOUND\n");
-              break;
-            }
-
-          free (current_manual);
-          current_manual = strdup (p + 1);
-          gtk_header_bar_set_title (header_bar, current_manual);
-
-          clear_completions ();
-          if (toc_store)
-            {
-              gtk_tree_selection_set_mode (toc_selection, GTK_SELECTION_NONE);
-              gtk_tree_store_clear (toc_store);
-              toc_iter_ptr = 0;
-              toc_empty = 1;
-              gtk_tree_selection_set_mode (toc_selection,
-                                           GTK_SELECTION_SINGLE);
-              /* If we do not change the selection mode, it appears that 
-                 gtk_tree_store_clear causes every row to be selected in turn, 
-                 so toc_selected_cb runs and loads all the nodes in the old 
-                 manual.  */
-            }
+          if (!new_manual (p + 1))
+            break;
 
           GString *s = g_string_new (NULL);
           g_string_append (s, "file:");
@@ -618,19 +639,6 @@ find_extensions_directory (int argc, char *argv[])
 
   extensions_directory = strdup (argv[0]);
   extensions_directory[p - argv[0]] = '\0';
-}
-
-void
-load_manual (char *manual)
-{
-  GString *s = g_string_new (NULL);
-  g_string_append (s, "file:");
-  g_string_append (s, info_dir);
-  g_string_append (s, "/");
-  g_string_append (s, manual);
-  g_string_append (s, "/index.html");
-  webkit_web_view_load_uri (webView, s->str);
-  g_string_free (s, TRUE);
 }
 
 
@@ -812,8 +820,7 @@ main (int argc, char *argv[])
     gtk_init (&argc, &argv);
     find_extensions_directory (argc, argv);
 
-    info_dir = getenv ("INFO_HTML_DIR");
-    if (!info_dir)
+    if (!getenv ("INFO_HTML_DIR"))
       {
         g_print ("Please set INFO_HTML_DIR\n");
         return 0;
