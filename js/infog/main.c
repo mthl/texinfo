@@ -627,6 +627,29 @@ back_clicked_cb (GtkButton *button, gpointer user_data)
 }
 
 void
+help_clicked_cb (GtkButton *button, gpointer user_data)
+{
+  char *help_string =
+    "Summary of key commands\n"
+    "\n"
+    "n\tnext node\n"
+    "p\tprevious node\n"
+    "u\tgo up to parent node\n"
+    "i\tindex search\n"
+    "q\tquit"
+    ;
+
+  GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+  GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(main_window),
+				   flags,
+				   GTK_MESSAGE_INFO,
+				   GTK_BUTTONS_CLOSE,
+				   "%s", help_string);
+  gtk_dialog_run (GTK_DIALOG (dialog));
+  gtk_widget_destroy (dialog);
+}
+
+void
 build_gui (void)
 {
   /* Disable JavaScript */
@@ -647,6 +670,8 @@ build_gui (void)
 
   gtk_header_bar_pack_start (header_bar, back_button);
   help_button = gtk_button_new_with_mnemonic ("_Help");
+  g_signal_connect (help_button, "clicked",
+                    G_CALLBACK(help_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, help_button);
 
   GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
