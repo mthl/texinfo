@@ -235,6 +235,10 @@ GtkTreeIter last_iter;
 GtkTreeIter *toc_iter_ptr;
 int toc_empty = 1;
 
+/* P is a pointer to lines sent from the web process extension representing the 
+   table of contents.  The lines are in pairs: the first, with the user-visible 
+   text, the second, with the URL.  The hierarchical structure of the TOC is 
+   represented by "+" and "-" characters in front of the URL's. */
 void
 load_toc (char *p)
 {
@@ -303,11 +307,11 @@ load_toc (char *p)
         {
           GtkTreeIter parent;
 
-          /* Mark the parent entry as having no more children. */
-          gtk_tree_store_set (toc_store, &toc_iter, 2, TRUE, -1);
-
           if (toc_iter_ptr)
             {
+              /* Mark the parent entry as having no more children. */
+              gtk_tree_store_set (toc_store, toc_iter_ptr, 2, TRUE, -1);
+
               while (1)
                 {
                   bool result = gtk_tree_model_iter_parent
