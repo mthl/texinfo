@@ -72,7 +72,7 @@ static char *current_manual_dir;
 
 /* Called from request_callback.  Return 0 on failure. */
 int
-load_manual (char *manual)
+load_manual_old (char *manual)
 {
   free (current_manual_dir);
   current_manual_dir = locate_manual (manual);
@@ -92,6 +92,25 @@ load_manual (char *manual)
   g_string_append (s1, "new-manual\n");
   g_string_append (s1, current_manual_dir);
   g_string_append (s1, "\n");
+
+  send_datagram (s1);
+
+  g_string_free (s1, TRUE);
+  
+  return 1;
+}
+
+int
+load_manual (char *manual)
+{
+  current_manual = manual;
+
+  /* Inform the main process the manual has changed so that it can
+     load the TOC and indices. */
+  g_print ("LOAD MANUAL %s\n", manual);
+  GString *s1 = g_string_new (NULL);
+  g_string_append (s1, "new-manual\n");
+  g_string_append (s1, manual);
 
   send_datagram (s1);
 

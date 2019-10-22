@@ -17,6 +17,7 @@
 #include <webkit2/webkit2.h>
 
 #include "common.h"
+#include "infopath.h"
 
 void
 vmsg (char *fmt, va_list v)
@@ -179,6 +180,7 @@ save_completions (char *p)
     }
 }
 
+static char *current_manual;
 static char *current_manual_dir;
 
 char *index_list = 0;
@@ -305,11 +307,7 @@ load_toc (char *p)
           /* Mark the parent entry as having no more children. */
           gtk_tree_store_set (toc_store, &toc_iter, 2, TRUE, -1);
 
-          if (!toc_iter_ptr)
-            {
-              g_print ("BUG: toc_iter_ptr undef\n");
-            }
-          else
+          if (toc_iter_ptr)
             {
               while (1)
                 {
@@ -417,6 +415,20 @@ socket_cb (GSocket *socket,
       else if (!strcmp (buffer, "new-manual"))
         {
           debug (1, "NEW MANUAL %s\n", p + 1);
+
+          free (current_manual_dir);
+          current_manual_dir = locate_manual (p + 1);
+          debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
+
+          if (!current_manual_dir)
+            {
+              debug (1, "MANUAL NOT FOUND\n");
+              break;
+            }
+
+          free (current_manual);
+          current_manual = strdup (p + 1);
+
           clear_completions ();
           if (toc_store)
             {
@@ -431,18 +443,10 @@ socket_cb (GSocket *socket,
                  so toc_selected_cb runs and loads all the nodes in the old 
                  manual.  */
             }
-          debug (1, "CLEARED TOC %s\n", p + 1);
-
-          char *q = strchr (p + 1, '\n');
-          if (!q)
-            break;
-          *q = 0;
 
           GString *s = g_string_new (NULL);
           g_string_append (s, "file:");
-          g_string_append (s, p + 1);
-          free (current_manual_dir);
-          current_manual_dir = strdup (p + 1);
+          g_string_append (s, current_manual_dir);
           g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
