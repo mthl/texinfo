@@ -886,7 +886,7 @@ main (int argc, char *argv[])
 }
 
 static gboolean
-key_press_cb (GtkWidget *webView,
+key_press_cb (GtkWidget *widget,
             GdkEvent  *event,
             gpointer   user_data)
 {
