@@ -256,6 +256,9 @@ load_toc (char *p)
       gtk_tree_view_set_model (toc_pane, GTK_TREE_MODEL(toc_store));
 
       toc_renderer = gtk_cell_renderer_text_new ();
+      g_object_set (G_OBJECT(toc_renderer),
+                    "ellipsize", PANGO_ELLIPSIZE_END, NULL);
+
       toc_column = gtk_tree_view_column_new_with_attributes (NULL,
                                                    toc_renderer,
                                                    "text", 0,
