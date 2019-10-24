@@ -757,16 +757,19 @@ build_gui (void)
                                                GTK_ICON_SIZE_MENU);
   g_signal_connect (back_button, "clicked",
                     G_CALLBACK(back_clicked_cb), NULL);
+  gtk_widget_set_focus_on_click (back_button, FALSE);
   gtk_header_bar_pack_start (header_bar, back_button);
 
   manual_button = gtk_button_new_with_mnemonic ("_Load manual");
   g_signal_connect (manual_button, "clicked",
                     G_CALLBACK(manual_clicked_cb), NULL);
+  gtk_widget_set_focus_on_click (manual_button, FALSE);
   gtk_header_bar_pack_start (header_bar, manual_button);
 
   // help_button = gtk_button_new_with_mnemonic ("_Help");
   help_button = gtk_button_new_from_icon_name ("dialog-information", 
                                                GTK_ICON_SIZE_MENU);
+  gtk_widget_set_focus_on_click (help_button, FALSE);
   g_signal_connect (help_button, "clicked",
                     G_CALLBACK(help_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, help_button);
