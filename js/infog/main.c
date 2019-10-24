@@ -729,10 +729,10 @@ help_clicked_cb (GtkButton *button, gpointer user_data)
 
   GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
   GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(main_window),
-				   flags,
-				   GTK_MESSAGE_INFO,
-				   GTK_BUTTONS_CLOSE,
-				   "%s", help_string);
+                                   flags,
+                                   GTK_MESSAGE_OTHER,
+                                   GTK_BUTTONS_CLOSE,
+                                   "%s", help_string);
   gtk_dialog_run (GTK_DIALOG (dialog));
   gtk_widget_destroy (dialog);
 }
@@ -752,7 +752,9 @@ build_gui (void)
   gtk_header_bar_set_show_close_button (header_bar, TRUE);
   gtk_window_set_titlebar (GTK_WINDOW(main_window), GTK_WIDGET(header_bar));
 
-  back_button = gtk_button_new_with_mnemonic ("_Back");
+  // back_button = gtk_button_new_with_mnemonic ("_Back");
+  back_button = gtk_button_new_from_icon_name ("go-previous-symbolic", 
+                                               GTK_ICON_SIZE_MENU);
   g_signal_connect (back_button, "clicked",
                     G_CALLBACK(back_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, back_button);
@@ -762,7 +764,9 @@ build_gui (void)
                     G_CALLBACK(manual_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, manual_button);
 
-  help_button = gtk_button_new_with_mnemonic ("_Help");
+  // help_button = gtk_button_new_with_mnemonic ("_Help");
+  help_button = gtk_button_new_from_icon_name ("dialog-information", 
+                                               GTK_ICON_SIZE_MENU);
   g_signal_connect (help_button, "clicked",
                     G_CALLBACK(help_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, help_button);
