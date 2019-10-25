@@ -69,10 +69,14 @@ GtkEntry *index_entry = 0;
 GtkEntryCompletion *index_completion = 0;
 GtkListStore *index_store = 0;
 
-GtkTreeView *toc_pane;
 GtkTreeStore *toc_store = 0;
+enum { COLUMN_TEXT, COLUMN_URL, COLUMN_CHILD_FULL };
+
+GtkTreeView *toc_pane;
 GtkTreeSelection *toc_selection = 0;
 GtkWidget *toc_scroll = 0;
+GtkWidget *toc_revealer = 0;
+GtkPaned *paned;
 
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
@@ -128,6 +132,8 @@ match_selected_cb (GtkEntryCompletion *widget,
 			    1,
 			    &value);
   load_relative_url (g_value_get_string (&value));
+  g_value_unset (&value);
+
   hide_index ();
   return FALSE;
 }
@@ -224,9 +230,14 @@ continue_to_load_index_nodes (void)
   index_list_ptr = q + 1;
 }
 
+/* P points to a list of URL's for index nodes, each on one line.  Start
+   to load them one at a time. */
 void
 load_index_nodes (char *p)
 {
+  /* In case we were in the middle of loading indices for another manual. */
+  free (index_list);
+
   index_list_ptr = index_list = strdup (p);
   continue_to_load_index_nodes ();
 }
@@ -261,7 +272,7 @@ load_toc (char *p)
 
       toc_column = gtk_tree_view_column_new_with_attributes (NULL,
                                                    toc_renderer,
-                                                   "text", 0,
+                                                   "text", COLUMN_TEXT,
                                                    NULL);
       gtk_tree_view_append_column (GTK_TREE_VIEW (toc_pane), toc_column);
     }
@@ -290,7 +301,7 @@ load_toc (char *p)
             }
         }
 
-      if (*q == '+')
+      if (*q == '+') /* First sub-section in section. */
         {
           q++;
           if (!toc_empty)
@@ -300,7 +311,7 @@ load_toc (char *p)
               toc_iter = last_iter;
             }
         }
-      if (*q == '-')
+      if (*q == '-') /* Last sub-section in section. */
         {
           q++;
           last = 1;
@@ -308,7 +319,9 @@ load_toc (char *p)
 
       gtk_tree_store_append (toc_store, &last_iter, toc_iter_ptr);
       gtk_tree_store_set (toc_store, &last_iter,
-                          0, p, 1, q, 2, FALSE, -1);
+                          COLUMN_TEXT, p,
+                          COLUMN_URL, q,
+                          COLUMN_CHILD_FULL, FALSE, -1);
       toc_empty = 0;
 
       if (last)
@@ -318,7 +331,8 @@ load_toc (char *p)
           if (toc_iter_ptr)
             {
               /* Mark the parent entry as having no more children. */
-              gtk_tree_store_set (toc_store, toc_iter_ptr, 2, TRUE, -1);
+              gtk_tree_store_set (toc_store, toc_iter_ptr,
+                                  COLUMN_CHILD_FULL, TRUE, -1);
 
               while (1)
                 {
@@ -335,8 +349,8 @@ load_toc (char *p)
                     }
 
                   bool no_more;
-                  gtk_tree_model_get (GTK_TREE_MODEL(toc_store),
-                                      &toc_iter, 2, &no_more, -1);
+                  gtk_tree_model_get (GTK_TREE_MODEL(toc_store), &toc_iter,
+                                      COLUMN_CHILD_FULL, &no_more, -1);
 
                   if (!no_more)
                     break;
@@ -614,14 +628,14 @@ decide_policy_cb (WebKitWebView           *web_view,
       break;
     }
     case WEBKIT_POLICY_DECISION_TYPE_NEW_WINDOW_ACTION: {
-       WebKitNavigationPolicyDecision *navigation_decision
-	 = WEBKIT_NAVIGATION_POLICY_DECISION (decision);
+       /* WebKitNavigationPolicyDecision *navigation_decision
+            = WEBKIT_NAVIGATION_POLICY_DECISION (decision); */
        /* Make a policy decision here. */
        break;
     }
     case WEBKIT_POLICY_DECISION_TYPE_RESPONSE: {
-       WebKitResponsePolicyDecision *response
-	 = WEBKIT_RESPONSE_POLICY_DECISION (decision);
+       /* WebKitResponsePolicyDecision *response
+            = WEBKIT_RESPONSE_POLICY_DECISION (decision); */
        /* Make a policy decision here. */
        break;
     }
@@ -656,6 +670,7 @@ find_extensions_directory (int argc, char *argv[])
 
 static GMainLoop *main_loop;
 
+GtkWidget *toc_button;
 GtkWidget *back_button;
 GtkWidget *help_button;
 GtkWidget *manual_button;
@@ -667,11 +682,10 @@ manual_entry_cb (GtkDialog *dialog,
                  gint       response_id,
                  gpointer   user_data)
 {
-  char *new_manual = gtk_entry_get_text (GTK_ENTRY(manual_entry));
-  if (new_manual)
-    {
-      new_manual = strdup (new_manual);
-    }
+  const char *p = gtk_entry_get_text (GTK_ENTRY(manual_entry));
+  char *new_manual = 0;
+  if (p)
+    new_manual = strdup (p);
   gtk_widget_destroy (manual_dialog);
   if (new_manual)
     {
@@ -715,6 +729,15 @@ back_clicked_cb (GtkButton *button, gpointer user_data)
 }
 
 void
+toc_clicked_cb (GtkButton *button, gpointer user_data)
+{
+  if (gtk_paned_get_position (paned) != 0)
+    gtk_paned_set_position (paned, 0);
+  else
+    gtk_paned_set_position (paned, 200);
+}
+
+void
 help_clicked_cb (GtkButton *button, gpointer user_data)
 {
   char *help_string =
@@ -726,7 +749,6 @@ help_clicked_cb (GtkButton *button, gpointer user_data)
     "i\tindex search\n"
     "q\tquit"
     ;
-
   GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
   GtkWidget *dialog = gtk_message_dialog_new (GTK_WINDOW(main_window),
                                    flags,
@@ -752,6 +774,11 @@ build_gui (void)
   gtk_header_bar_set_show_close_button (header_bar, TRUE);
   gtk_window_set_titlebar (GTK_WINDOW(main_window), GTK_WIDGET(header_bar));
 
+  toc_button = gtk_button_new_with_mnemonic ("Hide _TOC");
+  g_signal_connect (toc_button, "clicked",
+                    G_CALLBACK(toc_clicked_cb), NULL);
+  gtk_header_bar_pack_start (header_bar, toc_button);
+
   // back_button = gtk_button_new_with_mnemonic ("_Back");
   back_button = gtk_button_new_from_icon_name ("go-previous-symbolic", 
                                                GTK_ICON_SIZE_MENU);
@@ -776,7 +803,8 @@ build_gui (void)
 
   GtkBox *box = GTK_BOX(gtk_box_new (GTK_ORIENTATION_VERTICAL, 0));
 
-  GtkPaned *paned = GTK_PANED(gtk_paned_new (GTK_ORIENTATION_HORIZONTAL));
+  paned = GTK_PANED(gtk_paned_new (GTK_ORIENTATION_HORIZONTAL));
+  gtk_paned_set_wide_handle (paned, TRUE);
   gtk_box_pack_start (box, GTK_WIDGET(paned), TRUE, TRUE, 0);
 
   toc_scroll = gtk_scrolled_window_new (NULL, NULL);
@@ -788,6 +816,7 @@ build_gui (void)
                     G_CALLBACK(toc_selected_cb), NULL);
 
   gtk_container_add (GTK_CONTAINER (toc_scroll), GTK_WIDGET(toc_pane));
+
   gtk_paned_set_position (paned, 200);
   gtk_paned_pack1 (paned, GTK_WIDGET(toc_scroll), FALSE, TRUE);
 
