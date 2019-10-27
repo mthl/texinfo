@@ -146,6 +146,11 @@ request_callback (WebKitWebPage     *web_page,
           if (!load_manual (manual))
             ;// return TRUE; /* Cancel load request */
         }
+      GString *s = g_string_new (NULL);
+      g_string_append (s, "new-node\n");
+      g_string_append (s, node);
+      send_datagram (s);
+      g_string_free (s, TRUE);
     }
 
   return FALSE;

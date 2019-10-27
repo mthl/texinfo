@@ -75,8 +75,14 @@ enum { COLUMN_TEXT, COLUMN_URL, COLUMN_CHILD_FULL };
 GtkTreeView *toc_pane;
 GtkTreeSelection *toc_selection = 0;
 GtkWidget *toc_scroll = 0;
-GtkWidget *toc_revealer = 0;
 GtkPaned *paned;
+GTree *toc_paths = 0;
+
+gint
+toc_cmp (const void *a, const void *b, void *ignored)
+{
+  return strcmp ((char *)a, (char *)b);
+}
 
 gboolean indices_loaded = FALSE;
 WebKitWebView *hiddenWebView = NULL;
@@ -260,6 +266,9 @@ load_toc (char *p)
 {
   int last;
 
+  if (!toc_paths)
+    toc_paths = g_tree_new_full (toc_cmp, NULL, free, free);
+
   if (!toc_store)
     {
       toc_store = gtk_tree_store_new (3, G_TYPE_STRING, G_TYPE_STRING,
@@ -322,6 +331,18 @@ load_toc (char *p)
                           COLUMN_TEXT, p,
                           COLUMN_URL, q,
                           COLUMN_CHILD_FULL, FALSE, -1);
+
+      GtkTreeIter *saved_iter = malloc (sizeof (last_iter));
+      *saved_iter = last_iter;
+
+      /* Strip off file extension. */
+      char *node = strdup (q);
+      char *dot = strchr (node, '.');
+      if (dot)
+        *dot = '\0';
+
+      g_tree_insert (toc_paths, node, saved_iter);
+
       toc_empty = 0;
 
       if (last)
@@ -418,6 +439,11 @@ new_manual (char *manual)
          so toc_selected_cb runs and loads all the nodes in the old 
          manual.  */
     }
+  if (toc_paths)
+    {
+      g_tree_destroy (toc_paths);
+      toc_paths = 0;
+    }
   return 1;
 }
 
@@ -499,6 +525,31 @@ socket_cb (GSocket *socket,
           g_string_append (s, "/index.html?top-node");
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
+        }
+      else if (!strcmp (buffer, "new-node"))
+        {
+          p++;
+          GtkTreeIter *iter = g_tree_lookup (toc_paths, p);
+          if (iter)
+            {
+              char *path = gtk_tree_model_get_string_from_iter
+                             (GTK_TREE_MODEL(toc_store), iter);
+              if (path)
+                {
+                  GtkTreePath *path2 = gtk_tree_path_new_from_string (path);
+                  GtkTreePath *parent = gtk_tree_path_copy (path2);
+
+                  if (gtk_tree_path_up (parent))
+                    gtk_tree_view_expand_to_path (toc_pane, parent);
+
+                  gtk_tree_selection_select_path (toc_selection, path2);
+                  gtk_tree_view_scroll_to_cell (toc_pane, path2,
+                                                NULL, TRUE, 0.5, 0);
+                  gtk_tree_path_free (path2);
+                  gtk_tree_path_free (parent);
+                  free (path);
+                }
+            }
         }
       else if (!strcmp (buffer, "toc"))
         {
