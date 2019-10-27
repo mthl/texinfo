@@ -9094,8 +9094,8 @@ You do this by separating the parts of such an entry with the
 @code{@@subentry} command. Such commands might look like this:
 
 @example
-@@cindex Superhumans @@subentry villians
-@@cindex Superhumans @@subentry heros
+@@cindex Superhumans @@subentry villains
+@@cindex Superhumans @@subentry heroes
 @end example
 
 You may have up to three levels in an entry:
