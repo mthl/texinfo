@@ -826,6 +826,7 @@ build_gui (void)
   gtk_window_set_titlebar (GTK_WINDOW(main_window), GTK_WIDGET(header_bar));
 
   toc_button = gtk_button_new_with_mnemonic ("Hide _TOC");
+  gtk_widget_set_focus_on_click (toc_button, FALSE);
   g_signal_connect (toc_button, "clicked",
                     G_CALLBACK(toc_clicked_cb), NULL);
   gtk_header_bar_pack_start (header_bar, toc_button);
