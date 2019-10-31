@@ -4,57 +4,82 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
+#include <gmodule.h>
+
 #include "infopath.h"
 
-static char *datadir;
-long datadir_len;
+char *default_path[] = { "/usr/share/info/html",
+                         "/usr/local/share/info/html",
+                         NULL };
 
-/* Return pathname of the main index.html file for a HTML manual.*/
+static GArray *dirs;
+
+static int initialized = 0;
+
+void
+init_infopath (void)
+{
+  initialized = 1;
+
+  dirs = g_array_new (TRUE, TRUE, sizeof (char *));
+
+  char **p;
+  for (p = default_path; (*p); p++)
+    {
+      g_array_append_val (dirs, *p);
+    }
+
+  char *datadir = getenv ("INFO_HTML_DIR");
+  if (datadir)
+    {
+      g_array_append_val (dirs, datadir);
+    }
+}
+
+/* Return pathname of the idirectory containing an HTML manual.*/
 char *
 locate_manual (const char *manual)
 {
-  if (!datadir)
+  if (!initialized)
+    init_infopath ();
+
+  int i;
+  char *datadir;
+
+  for (i = 0; (datadir = g_array_index (dirs, char *, i)); i++)
     {
-      datadir = getenv ("INFO_HTML_DIR");
-      if (!datadir)
-        return 0;
-      datadir_len = strlen (datadir);
-      g_print ("datadir is %s\n", datadir);
+      /* Check if datadir exists. */
+      DIR *d = opendir (datadir);
+      if (!d)
+        continue;
+      closedir (d);
+
+      char *s = malloc (strlen (datadir) + strlen ("/") + strlen (manual) + 1);
+      sprintf (s, "%s/%s", datadir, manual);
+
+      d = opendir (s);
+      if (!d)
+        {
+          free (s);
+          continue;
+        }
+      closedir (d);
+
+      char *s2 = malloc (strlen (datadir) + strlen ("/")
+                         + strlen (manual) + strlen ("/index.html") + 1);
+      sprintf (s2, "%s/%s/index.html", datadir, manual);
+
+      struct stat dummy;
+      if (stat (s2, &dummy) == -1)
+        {
+          free (s); free (s2);
+          continue;
+        }
+
+      free (s2);
+      return s;
     }
-
-  /* Check if datadir exists. */
-  DIR *d = opendir (datadir);
-  if (!d)
-    {
-      fprintf (stderr, "Could not open %s\n", datadir);
-      return 0;
-    }
-  closedir (d);
-
-  char *s = malloc (datadir_len + strlen ("/") + strlen (manual) + 1);
-  sprintf (s, "%s/%s", datadir, manual);
-
-  d = opendir (s);
-  if (!d)
-    {
-      fprintf (stderr, "Could not open %s\n", s);
-      free (s);
-      return 0;
-    }
-  closedir (d);
-
-  char *s2 = malloc (datadir_len + strlen ("/")
-                    + strlen (manual) + strlen ("/index.html") + 1);
-  sprintf (s2, "%s/%s/index.html", datadir, manual);
-
-  struct stat dummy;
-  if (stat (s2, &dummy) == -1)
-    {
-      fprintf (stderr, "no file %s\n", s2);
-      return 0;
-    }
-
-  return s;
+  return 0;
 }
 
 /* Extract the manual and node from a URL like "file:/.../MANUAL/NODE.html".  */

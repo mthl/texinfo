@@ -919,12 +919,6 @@ main (int argc, char *argv[])
     gtk_init (&argc, &argv);
     find_extensions_directory (argc, argv);
 
-    if (!getenv ("INFO_HTML_DIR"))
-      {
-        g_print ("Please set INFO_HTML_DIR\n");
-        return 0;
-      }
-
     if (signal (SIGINT, termination_handler) == SIG_IGN)
       signal (SIGINT, SIG_IGN);
     if (signal (SIGHUP, termination_handler) == SIG_IGN)
