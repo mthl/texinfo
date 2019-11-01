@@ -48,7 +48,7 @@ static gboolean key_press_cb(GtkWidget *webView,
                              gpointer   user_data);
 
 static char *socket_file;
-int socket_id;
+static int socket_id;
 
 static void
 remove_socket (void)
@@ -199,8 +199,8 @@ save_completions (char *p)
 static char *current_manual;
 static char *current_manual_dir;
 
-char *index_list = 0;
-char *index_list_ptr = 0;
+static char *index_list = 0;
+static char *index_list_ptr = 0;
 
 /* Load a single index node in the list in index_list.  We only do one
    at a time to give the subprocess time to do it before we load the next one.  
@@ -721,12 +721,12 @@ find_extensions_directory (int argc, char *argv[])
 
 static GMainLoop *main_loop;
 
-GtkWidget *toc_button;
-GtkWidget *back_button;
-GtkWidget *help_button;
-GtkWidget *manual_button;
+static GtkWidget *toc_button;
+static GtkWidget *back_button;
+static GtkWidget *help_button;
+static GtkWidget *manual_button;
 
-GtkWidget *manual_dialog, *manual_entry;
+static GtkWidget *manual_dialog, *manual_entry;
 
 void
 manual_entry_cb (GtkDialog *dialog,
