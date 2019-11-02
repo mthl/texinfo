@@ -17101,8 +17101,7 @@ links; default unset.
 
 @item INLINE_CONTENTS
 If set, output the contents where the @code{@@contents} and
-similar @@-commands are located; default true.  This is ignored if
-@code{@@set*contentsaftertitlepage} is set (@pxref{Contents}).
+similar @@-commands are located; default true.
 
 @item INLINE_CSS_STYLE
 Put CSS directly in HTML elements rather than at the
