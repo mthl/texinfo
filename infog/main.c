@@ -556,6 +556,8 @@ socket_cb (GSocket *socket,
           p++;
           if (toc_paths)
             switch_node (p);
+          free (next_link); free (prev_link); free (up_link);
+          next_link = prev_link = up_link = 0;
         }
       else if (!strcmp (buffer, "toc"))
         {
@@ -982,16 +984,16 @@ key_press_cb (GtkWidget *widget,
       g_main_loop_quit (main_loop);
       break;
     case GDK_KEY_n:
-      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
-                                next_link);
+      if (next_link)
+        webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView), next_link);
       break;
     case GDK_KEY_p:
-      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
-                                prev_link);
+      if (prev_link)
+        webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView), prev_link);
       break;
     case GDK_KEY_u:
-      webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView),
-                                up_link);
+      if (up_link)
+        webkit_web_view_load_uri (WEBKIT_WEB_VIEW(webView), up_link);
       break;
     case GDK_KEY_i:
       show_index ();
