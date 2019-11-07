@@ -120,7 +120,4 @@ $result_errors{'line_after_recursive_call'} = [
 ];
 
 
-$result_floats{'line_after_recursive_call'} = {};
-
-
 1;

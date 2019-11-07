@@ -101,11 +101,7 @@ $result_trees{'protect_in_body'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => 'macroone'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -127,11 +123,7 @@ $result_trees{'protect_in_body'} = {
           ],
           'cmdname' => 'emph',
           'contents' => [],
-          'line_nr' => {
-            'file_name' => '',
-            'line_nr' => 5,
-            'macro' => 'macroone'
-          },
+          'line_nr' => {},
           'parent' => {}
         },
         {
@@ -159,10 +151,12 @@ $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'conte
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'line_nr'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3];
+$result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'line_nr'} = $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
 $result_trees{'protect_in_body'}{'contents'}[3]{'contents'}[4]{'parent'} = $result_trees{'protect_in_body'}{'contents'}[3];
 $result_trees{'protect_in_body'}{'contents'}[3]{'parent'} = $result_trees{'protect_in_body'};
@@ -180,9 +174,6 @@ the result: f\\irst arg protected \\ -> \\arg1\\ second arg  after macro.
 ';
 
 $result_errors{'protect_in_body'} = [];
-
-
-$result_floats{'protect_in_body'} = {};
 
 
 1;

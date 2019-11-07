@@ -174,7 +174,4 @@ a, macro2text for macro2
 $result_errors{'macro_in_macro_arg_simpler'} = [];
 
 
-$result_floats{'macro_in_macro_arg_simpler'} = {};
-
-
 1;

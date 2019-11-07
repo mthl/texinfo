@@ -90,7 +90,4 @@ $result_texts{'macro_for_ignored_line_command'} = '
 $result_errors{'macro_for_ignored_line_command'} = [];
 
 
-$result_floats{'macro_for_ignored_line_command'} = {};
-
-
 1;

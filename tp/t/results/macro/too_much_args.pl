@@ -128,7 +128,4 @@ $result_errors{'too_much_args'} = [
 ];
 
 
-$result_floats{'too_much_args'} = {};
-
-
 1;

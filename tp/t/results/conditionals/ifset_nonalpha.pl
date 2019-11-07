@@ -18,7 +18,4 @@ $result_texts{'ifset_nonalpha'} = '';
 $result_errors{'ifset_nonalpha'} = [];
 
 
-$result_floats{'ifset_nonalpha'} = {};
-
-
 1;

@@ -98,7 +98,4 @@ Macro
 $result_errors{'macro_zero'} = [];
 
 
-$result_floats{'macro_zero'} = {};
-
-
 1;

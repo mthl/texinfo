@@ -121,7 +121,4 @@ arg
 $result_errors{'ifset_in_macro_set'} = [];
 
 
-$result_floats{'ifset_in_macro_set'} = {};
-
-
 1;

@@ -169,7 +169,4 @@ $result_texts{'expansion_order'} = '
 $result_errors{'expansion_order'} = [];
 
 
-$result_floats{'expansion_order'} = {};
-
-
 1;

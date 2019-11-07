@@ -132,7 +132,4 @@ This blah and that bli-bli.
 $result_errors{'macro_name_with_hyphen'} = [];
 
 
-$result_floats{'macro_name_with_hyphen'} = {};
-
-
 1;

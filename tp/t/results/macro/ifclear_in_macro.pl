@@ -121,7 +121,4 @@ arg
 $result_errors{'ifclear_in_macro'} = [];
 
 
-$result_floats{'ifclear_in_macro'} = {};
-
-
 1;

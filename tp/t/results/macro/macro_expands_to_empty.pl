@@ -105,7 +105,4 @@ aa
 $result_errors{'macro_expands_to_empty'} = [];
 
 
-$result_floats{'macro_expands_to_empty'} = {};
-
-
 1;

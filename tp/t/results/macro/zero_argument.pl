@@ -120,7 +120,4 @@ $result_texts{'zero_argument'} = '
 $result_errors{'zero_argument'} = [];
 
 
-$result_floats{'zero_argument'} = {};
-
-
 1;

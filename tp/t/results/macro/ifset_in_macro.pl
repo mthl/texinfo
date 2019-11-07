@@ -97,7 +97,4 @@ $result_texts{'ifset_in_macro'} = '
 $result_errors{'ifset_in_macro'} = [];
 
 
-$result_floats{'ifset_in_macro'} = {};
-
-
 1;

@@ -62,7 +62,4 @@ $result_errors{'macro_not_closed'} = [
 ];
 
 
-$result_floats{'macro_not_closed'} = {};
-
-
 1;

@@ -137,7 +137,4 @@ $result_texts{'macro_in_end_argument'} = '
 $result_errors{'macro_in_end_argument'} = [];
 
 
-$result_floats{'macro_in_end_argument'} = {};
-
-
 1;

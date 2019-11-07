@@ -434,7 +434,4 @@ after in mymacro
 $result_errors{'two_macros_on_a_line'} = [];
 
 
-$result_floats{'two_macros_on_a_line'} = {};
-
-
 1;

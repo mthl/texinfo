@@ -112,7 +112,4 @@ Some  here
 $result_errors{'leading_spaces_no_ignore'} = [];
 
 
-$result_floats{'leading_spaces_no_ignore'} = {};
-
-
 1;

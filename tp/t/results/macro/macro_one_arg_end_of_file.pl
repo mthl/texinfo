@@ -93,7 +93,4 @@ Arg .';
 $result_errors{'macro_one_arg_end_of_file'} = [];
 
 
-$result_floats{'macro_one_arg_end_of_file'} = {};
-
-
 1;

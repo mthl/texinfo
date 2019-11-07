@@ -70,7 +70,4 @@ $result_texts{'empty_end'} = '';
 $result_errors{'empty_end'} = [];
 
 
-$result_floats{'empty_end'} = {};
-
-
 1;

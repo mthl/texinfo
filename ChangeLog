@@ -1,3 +1,10 @@
+2019-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (command_href): Omit fragment 
+	identifier from URL if linking to a section with an associated 
+	node.  This means that links from the table of contents will go
+	to the top of the page, rather than scrolling the page slightly.
+
 2019-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (HTML Customization Variables) <INLINE_CONTENTS>:

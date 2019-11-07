@@ -53,7 +53,4 @@ $result_errors{'macro_no_argument'} = [
 ];
 
 
-$result_floats{'macro_no_argument'} = {};
-
-
 1;

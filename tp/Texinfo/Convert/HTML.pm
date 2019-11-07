@@ -428,9 +428,14 @@ sub command_href($$;$$)
       $href .= $target_filename;
       # omit target if the command is an element command, there is only
       # one element in file and there is a file in the href
+      my $command_element_command = $self->command_element_command($command);
       if (defined($filename)
-          and defined($self->command_element_command($command))
-          and $self->command_element_command($command) eq $command) {
+          and defined($command_element_command)
+          and ($command_element_command eq $command
+            or (defined($command_element_command->{'extra'})
+              and defined($command_element_command->{'extra'}->{'associated_section'})
+              and $command_element_command->{'extra'}->{'associated_section'}
+                    eq $command))) {
         my $count_elements_in_file = $self->count_elements_in_filename($target_filename);
         if (defined($count_elements_in_file) and $count_elements_in_file == 1) {
           $target = '';

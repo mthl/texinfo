@@ -701,7 +701,4 @@ $result_errors{'complex_argument'} = [
 ];
 
 
-$result_floats{'complex_argument'} = {};
-
-
 1;

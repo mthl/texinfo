@@ -231,7 +231,4 @@ g a{rgline v
 $result_errors{'form_feeds'} = [];
 
 
-$result_floats{'form_feeds'} = {};
-
-
 1;

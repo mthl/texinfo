@@ -245,7 +245,4 @@ a, hello text for macro2 after arg
 $result_errors{'macro_in_macro_arg'} = [];
 
 
-$result_floats{'macro_in_macro_arg'} = {};
-
-
 1;

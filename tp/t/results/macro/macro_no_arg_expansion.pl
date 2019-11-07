@@ -90,7 +90,4 @@ res1 abc
 $result_errors{'macro_no_arg_expansion'} = [];
 
 
-$result_floats{'macro_no_arg_expansion'} = {};
-
-
 1;
