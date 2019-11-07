@@ -48,7 +48,6 @@ static gboolean key_press_cb(GtkWidget *webView,
                              gpointer   user_data);
 
 static char *socket_file;
-static int socket_id;
 
 static void
 remove_socket (void)
@@ -461,6 +460,32 @@ load_manual (char *manual)
   g_string_free (s, TRUE);
 }
 
+void
+switch_node (char *p)
+{
+  GtkTreeIter *iter = g_tree_lookup (toc_paths, p);
+  if (iter)
+    {
+      char *path = gtk_tree_model_get_string_from_iter
+                     (GTK_TREE_MODEL(toc_store), iter);
+      if (path)
+        {
+          GtkTreePath *path2 = gtk_tree_path_new_from_string (path);
+          GtkTreePath *parent = gtk_tree_path_copy (path2);
+
+          if (gtk_tree_path_up (parent))
+            gtk_tree_view_expand_to_path (toc_pane, parent);
+
+          gtk_tree_selection_select_path (toc_selection, path2);
+          gtk_tree_view_scroll_to_cell (toc_pane, path2,
+                                        NULL, TRUE, 0.5, 0);
+          gtk_tree_path_free (path2);
+          gtk_tree_path_free (parent);
+          free (path);
+        }
+    }
+}
+
 
 gboolean
 socket_cb (GSocket *socket,
@@ -482,13 +507,13 @@ socket_cb (GSocket *socket,
         }
 
       buffer[PACKET_SIZE] = '\0';
-      // debug (2, "Received le data: <%s>\n", buffer);
 
       char *p, *q;
       p = strchr (buffer, '\n'); 
       if (!p)
         break;
       *p = 0;
+      debug (1, "received message of type |%s|\n", buffer);
 
       char **save_where = 0;
       if (!strcmp (buffer, "next"))
@@ -529,27 +554,8 @@ socket_cb (GSocket *socket,
       else if (!strcmp (buffer, "new-node"))
         {
           p++;
-          GtkTreeIter *iter = g_tree_lookup (toc_paths, p);
-          if (iter)
-            {
-              char *path = gtk_tree_model_get_string_from_iter
-                             (GTK_TREE_MODEL(toc_store), iter);
-              if (path)
-                {
-                  GtkTreePath *path2 = gtk_tree_path_new_from_string (path);
-                  GtkTreePath *parent = gtk_tree_path_copy (path2);
-
-                  if (gtk_tree_path_up (parent))
-                    gtk_tree_view_expand_to_path (toc_pane, parent);
-
-                  gtk_tree_selection_select_path (toc_selection, path2);
-                  gtk_tree_view_scroll_to_cell (toc_pane, path2,
-                                                NULL, TRUE, 0.5, 0);
-                  gtk_tree_path_free (path2);
-                  gtk_tree_path_free (parent);
-                  free (path);
-                }
-            }
+          if (toc_paths)
+            switch_node (p);
         }
       else if (!strcmp (buffer, "toc"))
         {
@@ -947,12 +953,12 @@ main (int argc, char *argv[])
 
     build_gui ();
 
+    /* Create a web view to parse index files.  */
+    hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
+
 #define FIRST_MANUAL "hello"
 
     load_manual (FIRST_MANUAL);
-
-    /* Create a web view to parse index files.  */
-    hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
     main_loop = g_main_loop_new (NULL, FALSE);
     g_main_loop_run (main_loop);

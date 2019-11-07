@@ -23,7 +23,9 @@ extension.c:request_callback.
 
 If it's a link to a different manual, load_manual is called.
 This in turn informs the main process that a new manual has been loaded 
-via the socket.
+via the socket, with a "new-manual" message.
+
+A "new-node" message is also sent to say the node has changed.
 
 The main thread should then do a ?top-node request in the hidden web 
 view.  The top-node request should pass back a list of index nodes.
