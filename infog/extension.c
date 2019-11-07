@@ -307,7 +307,7 @@ send_index (WebKitDOMHTMLCollection *links, gulong num_links)
 void
 build_toc_string (GString *toc, WebKitDOMElement *elt)
 {
-  char *s, *s1, *s2, *s3;
+  char *s, *s2, *s3;
   WebKitDOMElement *e, *e1;
   int first = 1;
 
@@ -375,6 +375,53 @@ send_toc (WebKitDOMDocument *dom_document)
 }
 
 void
+send_pointer (WebKitDOMElement *link_elt,
+              const char *rel, const char *current_uri)
+{
+  char *link = 0;
+  char *href = webkit_dom_element_get_attribute (link_elt, "href");
+
+  if (current_uri)
+    {
+      const char *p = current_uri;
+      const char *q;
+
+      /* Set p to after the last '/'. */
+      while ((q = strchr (p, '/')))
+        {
+          q++;
+          p = q;
+        }
+      if (p != current_uri)
+        {
+          link = malloc ((p - current_uri)
+                              + strlen (href) + 1);
+          memcpy (link, current_uri, p - current_uri);
+          strcpy (link + (p - current_uri), href);
+
+          char *message;
+          long len;
+          len = asprintf (&message, "%s\n%s\n", rel, link);
+
+          ssize_t result;
+          result = sendto (socket_id, message, len, 0,
+                 (struct sockaddr *) &main_name, main_name_size);
+
+          if (result == -1)
+            {
+              debug (1, "socket write failed: %s\n",
+                       strerror(errno));
+            }
+
+          free (message);
+        }
+    }
+  g_free (href);
+  free (link);
+}
+
+
+void
 document_loaded_callback (WebKitWebPage *web_page,
                           gpointer       user_data)
 {
@@ -390,119 +437,47 @@ document_loaded_callback (WebKitWebPage *web_page,
       return;
     }
 
+  gint send_index_p
+    = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "send-index"));
+  gint top_node_p
+    = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "top-node"));
+
   WebKitDOMHTMLCollection *links =
     webkit_dom_document_get_links (dom_document);
+  gulong num_links = webkit_dom_html_collection_get_length (links);
 
-  if (!links)
+  if (send_index_p)
     {
-      debug (1, "No links\n");
+      send_index (links, num_links);
       return;
     }
 
-   gulong num_links = webkit_dom_html_collection_get_length (links);
-   debug (1, "Found %d links\n",
-    webkit_dom_html_collection_get_length (links));
+  if (top_node_p)
+    {
+      send_toc (dom_document);
+      find_indices (links, num_links);
+      return;
+    }
 
-   gint send_index_p
-     = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "send-index"));
-   gint top_node_p
-     = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(web_page), "top-node"));
+  WebKitDOMElement *link_elt;
 
-   if (send_index_p)
-     {
-       send_index (links, num_links);
-       return;
-     }
+  const char *current_uri = webkit_web_page_get_uri (web_page);
 
-   if (top_node_p)
-     {
-       send_toc (dom_document);
-       find_indices (links, num_links);
-       return;
-     }
+  link_elt = webkit_dom_document_query_selector
+    (dom_document, "a[rel=\"up\"]", NULL);
+  if (link_elt)
+    send_pointer (link_elt, "up", current_uri);
+  
+  link_elt = webkit_dom_document_query_selector
+    (dom_document, "a[rel=\"next\"]", NULL);
+  if (link_elt)
+    send_pointer (link_elt, "next", current_uri);
 
-   /* Find and send the Next, Prev and Up links to the main process. */
-   gulong i;
-   for (i = 0; i < num_links; i++)
-     {
-       WebKitDOMNode *node
-         = webkit_dom_html_collection_item (links, i);
-       if (!node)
-         {
-           debug (1, "No node\n");
-           return;
-         }
-
-       WebKitDOMElement *element;
-       if (WEBKIT_DOM_IS_ELEMENT(node))
-         {
-           element = WEBKIT_DOM_ELEMENT(node);
-         }
-       else
-         {
-           /* When would this happen? */
-           debug (1, "Not an DOM element\n");
-           continue;
-         }
-
-       gchar *rel = 0, *href = 0;
-
-       rel = webkit_dom_element_get_attribute (element, "rel");
-       if (rel && *rel)
-         {
-           href = webkit_dom_element_get_attribute (element, "href");
-         }
-       if (rel && href)
-         {
-           if (!strcmp (rel, "next")
-               || !strcmp (rel, "prev")
-               || !strcmp (rel, "up"))
-             {
-               char *link = 0;
-
-               const char *current_uri = webkit_web_page_get_uri (web_page);
-               if (current_uri)
-                 {
-                   const char *p = current_uri;
-                   const char *q;
-
-                   /* Set p to after the last '/'. */
-                   while ((q = strchr (p, '/')))
-                     {
-                       q++;
-                       p = q;
-                     }
-                   if (p != current_uri)
-                     {
-                       link = malloc ((p - current_uri)
-                                           + strlen (href) + 1);
-                       memcpy (link, current_uri, p - current_uri);
-                       strcpy (link + (p - current_uri), href);
-
-                       char *message;
-                       long len;
-                       len = asprintf (&message, "%s\n%s\n", rel, link);
-
-                       ssize_t result;
-                       result = sendto (socket_id, message, len, 0,
-                              (struct sockaddr *) &main_name, main_name_size);
-
-                       if (result == -1)
-                         {
-                           debug (1, "socket write failed: %s\n",
-                                    strerror(errno));
-                         }
-
-                       free (message);
-                     }
-                 }
-               free (link);
-             }
-         }
-       g_free (rel); g_free (href);
-     }
+  link_elt = webkit_dom_document_query_selector
+    (dom_document, "a[rel=\"prev\"]", NULL);
+  if (link_elt)
+    send_pointer (link_elt, "prev", current_uri);
 }
-
 
 
 static void
