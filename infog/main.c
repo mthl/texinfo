@@ -658,6 +658,18 @@ hide_index_cb (GtkWidget *widget,
 }
 
 
+/* Replace any ' characters with '\'' in preparation for being used in a
+   single-quoted string in a shell invocation. */
+void
+escape_uri (char **out, const char *uri)
+{
+  static GRegex *gregex;
+  if (!gregex)
+    gregex = g_regex_new ("'", 0, 0, 0);
+
+  *out = g_regex_replace_literal (gregex, uri, -1, 0, "'\\''", 0, NULL);
+}
+
 gboolean
 decide_policy_cb (WebKitWebView           *web_view,
                   WebKitPolicyDecision    *decision,
@@ -680,6 +692,19 @@ decide_policy_cb (WebKitWebView           *web_view,
         {
           debug (1, "link blocked");
           webkit_policy_decision_ignore (decision);
+
+          char *s1 = 0;
+          if (strchr (uri, '\''))
+            {
+              escape_uri (&s1, uri);
+              uri = s1;
+            }
+
+          char *s;
+          asprintf (&s, "xdg-open '%s'", uri);
+          system (s);
+          free (s);
+          free (s1);
         }
       else
         webkit_policy_decision_use (decision);
