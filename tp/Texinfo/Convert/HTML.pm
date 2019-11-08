@@ -1005,7 +1005,7 @@ my %defaults = (
                              [ 'NodeUp', \&_default_node_direction ], ' ',
                              'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
-                              'NodeUp', 'NextFile', 'PrevFile'],
+                              'NodeUp', 'NodeNext', 'NodePrev'],
 #  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
 #                             'Contents', 'Index', 'About'],
 #
