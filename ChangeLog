@@ -1,3 +1,20 @@
+2019-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/ParserNonXS.pm (_convert_to_text):
+	New function.  Include text elements which are '0'.  Support 
+	@atchar{}, @lbracechar{} and @rbracechar{}.
+	(_end_line) <text commands>: Call _convert_to_text.
+	(_parse_texi) <in index commands>: Call _convert_to_text in 
+	order to support {, }, @ inside index sort keys.
+
+	* tp/Texinfo/XS/parsetexi/convert.c (convert_to_text):
+	Support @atchar{}, @lbracechar{} and @rbracechar{}.
+	* tp/Texinfo/XS/parsetexi/separator.c
+	(handle_close_brace) <in index commands>: Call convert_to_text.
+
+	Georg-Johann Lay reported that @{ was not recognised inside a 
+	@sortas directive.
+
 2019-11-08  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/Texinfo/Convert/HTML.pm (%defaults) <LINKS_BUTTONS>:

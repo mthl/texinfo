@@ -2406,6 +2406,38 @@ sub _enter_index_entry($$$$$$$)
   $current->{'extra'}->{'index_entry'} = $index_entry;
 }
 
+# Used for file names and index sort strings to allow including the special 
+# Texinfo characters.
+sub _convert_to_text {
+  my $e = shift;
+
+  my ($text,  $superfluous_arg) = ('', 0);
+
+  for my $c (@{$e->{'contents'}}) {
+    # Allow @@, @{ and @} to give a way for @, { and } to appear in
+    # filenames (although it's not a good idea to use these characters
+    # in filenames).
+    if (defined $c->{'text'}) {
+      $text .= $c->{'text'};
+    } elsif ($c->{'cmdname'}
+        and ($c->{'cmdname'} eq '@'
+             or $c->{'cmdname'} eq 'atchar')) {
+      $text .= '@';
+    } elsif ($c->{'cmdname'}
+        and ($c->{'cmdname'} eq '{'
+             or $c->{'cmdname'} eq 'lbracechar')) {
+      $text .= '{';
+    } elsif ($c->{'cmdname'}
+        and ($c->{'cmdname'} eq '}'
+             or $c->{'cmdname'} eq 'rbracechar')) {
+      $text .= '}';
+    } else {
+      $superfluous_arg = 1;
+    }
+  }
+  return ($text,  $superfluous_arg);
+}
+
 # close constructs and do stuff at end of line (or end of the document)
 sub _end_line($$$);
 sub _end_line($$$)
@@ -2874,24 +2906,9 @@ sub _end_line($$$)
         }
       }
     } elsif ($self->{'line_commands'}->{$command} eq 'text') {
-      my $text = '';
-      my $superfluous_arg = 0;
-      for my $c (@{$current->{'args'}->[0]->{'contents'}}) {
-        # Allow @@, @{ and @} to give a way for @, { and } to appear in
-        # filenames (although it's not a good idea to use these characters
-        # in filenames).
-        if ($c->{'text'}) {
-          $text .= $c->{'text'};
-        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '@') {
-          $text .= '@';
-        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '{') {
-          $text .= '{';
-        } elsif ($c->{'cmdname'} and $c->{'cmdname'} eq '}') {
-          $text .= '}';
-        } else {
-          $superfluous_arg = 1;
-        }
-      }
+      my ($text, $superfluous_arg)
+        = _convert_to_text ($current->{'args'}->[0]);
+
       if ($text eq '') {
         if (not $superfluous_arg) {
           $self->_command_warn($current, $line_nr, 
@@ -5052,9 +5069,8 @@ sub _parse_texi($;$)
                   = $current->{'parent'};
             } elsif ($in_index_commands{$current->{'parent'}->{'cmdname'}}) {
               my $command = $current->{'parent'}->{'cmdname'};
-              my @contents = @{$current->{'contents'}};
-              my $arg = $current->{'contents'}->[0]->{'text'};
 
+              my ($arg, $superfluous_arg) = _convert_to_text($current);
               if (defined($arg)) {
                 my $index_element = $current->{'parent'}->{'parent'}->{'parent'};
                 if ($index_element

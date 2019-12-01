@@ -472,9 +472,10 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                || current->parent->cmd == CM_seeentry
                || current->parent->cmd == CM_seealso)
         {
-          ELEMENT *e = current->contents.list[0];
+          int superfluous_arg;
+          char *arg = convert_to_text (current, &superfluous_arg);
 
-          if (e->text.end > 0)
+          if (arg && *arg);
             {
               ELEMENT *index_elt;
               if (current->parent->parent
@@ -484,9 +485,9 @@ handle_close_brace (ELEMENT *current, char **line_inout)
                       || current->parent->parent->parent->cmd == CM_subentry))
                 {
                   index_elt = current->parent->parent->parent;
-                  add_extra_string_dup (index_elt,
-                                        command_name(current->parent->cmd),
-                                        e->text.text);
+                  add_extra_string (index_elt,
+                                    command_name(current->parent->cmd),
+                                    arg);
                 }
             }
         }
