@@ -1,3 +1,10 @@
+2019-12-15  Paul Eggert  <eggert@cs.ucla.edu>
+
+	Fix misspelling of "common" in texinfo.tex
+	* doc/texinfo.tex (commonheadfootline):
+	Rename from name mispelled with 'mmm' instead of 'mm'.
+	All uses changed.
+
 2019-12-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/ParserNonXS.pm (_convert_to_text):
