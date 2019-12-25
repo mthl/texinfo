@@ -922,10 +922,10 @@ End:
 
 $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- Variável de instância da copying: a b -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Variável de instância da copying: a b -->
 <title>Documento Sem Nome</title>
 
 <meta name="description" content="Documento Sem Nome">

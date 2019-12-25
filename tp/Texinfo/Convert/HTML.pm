@@ -6361,10 +6361,10 @@ sub _default_begin_file($$$)
 
   my $result = "$doctype
 <html>
-$copying_comment<!-- Created by $program_and_version, $program_homepage -->
+<!-- Created by $program_and_version, $program_homepage -->
 <head>
 $encoding
-<title>$title</title>
+$copying_comment<title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">
@@ -6398,11 +6398,11 @@ sub _default_node_redirection_page($$)
       { 'href' => {'type' => '_converted', 'text' => $direction }}));
   my $result = "$doctype
 <html>
-$copying_comment<!-- Created by $program_and_version, $program_homepage -->
+<!-- Created by $program_and_version, $program_homepage -->
 <!-- This file redirects to the location of a node or anchor -->
 <head>
 $encoding
-<title>$title</title>
+$copying_comment<title>$title</title>
 
 $description
 <meta name=\"keywords\" content=\"$title\">

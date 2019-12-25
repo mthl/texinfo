@@ -3781,13 +3781,13 @@ $result_floats{'test_image'}{'Image'}[0]{'extra'}{'caption'}{'extra'}{'float'} =
 
 $result_converted{'html'}->{'test_image'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- Text in copying.
 f@i-le..  a@<"%@  < & @ % " 
 
 In text f@i-le..  a@<"%@  < & @ % " . -->
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
 <meta name="description" content="Untitled Document">

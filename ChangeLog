@@ -1,3 +1,11 @@
+2019-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_redirection_page)
+	(_default_begin_file): Move encoding declaration above the 
+	copyright text so that it will always be present in the first 
+	1024 bytes of the file.  See 
+	https://www.w3.org/International/questions/qa-html-encoding-declarations
+
 2019-12-15  Paul Eggert  <eggert@cs.ucla.edu>
 
 	Fix misspelling of "common" in texinfo.tex

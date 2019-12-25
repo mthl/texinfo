@@ -1582,15 +1582,15 @@ $result_converted_errors{'info'}->{'float_copying'} = [
 
 $result_converted{'html'}->{'float_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 
 Copyright notice, public domain
 
 Public domain is not really a licence, as it means than
 the author abandon his copyright.
  -->
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Top</title>
 
 <meta name="description" content="Top">

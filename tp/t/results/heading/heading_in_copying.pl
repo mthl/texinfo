@@ -397,15 +397,15 @@ second in copying @ _subheading_
 
 $result_converted{'html'}->{'heading_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- 
 in copying @ heading
 ====================
 
 second in copying @ subheading
 - -->
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Untitled Document</title>
 
 <meta name="description" content="Untitled Document">

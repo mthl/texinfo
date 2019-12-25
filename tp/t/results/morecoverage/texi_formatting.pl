@@ -4799,11 +4799,11 @@ $result_converted_errors{'info'}->{'texi_formatting'} = [
 
 $result_converted{'html'}->{'texi_formatting'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<!-- In copying
- -->
 <!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- In copying
+ -->
 <title>title &ndash;a</title>
 
 <meta name="description" content="title &ndash;a">
