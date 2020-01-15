@@ -1,6 +1,6 @@
 # HTML.pm: output tree as HTML.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1006,6 +1006,7 @@ my %defaults = (
                              'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'NodeUp', 'NodeNext', 'NodePrev'],
+# The following are set to SECTION_BUTTONS below
 #  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
 #                             'Contents', 'Index', 'About'],
 #
@@ -1014,7 +1015,10 @@ my %defaults = (
 #                              ' ', ' ', ' ', ' ',
 #                              'Top', 'Contents', 'Index', 'About', ],
 #  'SECTION_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
-#  'NODE_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
+  'NODE_FOOTER_BUTTONS'  => [[ 'NodeNext', \&_default_node_direction_footer ],
+                             [ 'NodePrev', \&_default_node_direction_footer ],
+                             [ 'NodeUp', \&_default_node_direction_footer ],
+                             ' ', 'Contents', 'Index'],
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
                              'Contents' => 'SEC_Contents',
@@ -1071,7 +1075,7 @@ my %defaults = (
   'output_format'        => 'html',
 );
 
-foreach my $buttons ('CHAPTER_BUTTONS', 'SECTION_FOOTER_BUTTONS', 'NODE_FOOTER_BUTTONS',
+foreach my $buttons ('CHAPTER_BUTTONS', 'SECTION_FOOTER_BUTTONS',
   'MISC_BUTTONS', 'TOP_BUTTONS') {
   $defaults{$buttons} = [@{$defaults{'SECTION_BUTTONS'}}];
 }
@@ -1964,7 +1968,7 @@ sub _default_heading_text($$$$$)
   return $result;
 }
 
-# Associated to a button
+# Associated to a button.  Return text to use for a link in button bar.
 sub _default_node_direction($$)
 {
   my $self = shift;
@@ -1982,6 +1986,29 @@ sub _default_node_direction($$)
   #} elsif (defined($node) and $node =~ /\S/) {
   #  $anchor = $node; 
   #} else {
+  }
+  if (defined($anchor)) {
+    # i18n
+    $result = $self->get_conf('BUTTONS_TEXT')->{$direction}.": $anchor";
+  }
+  return $result;  
+}
+
+# Used for button bar at the foot of a node, with "rel" and "accesskey"
+# attributes omitted.
+sub _default_node_direction_footer($$)
+{
+  my $self = shift;
+  my $direction = shift;
+  
+  my $result = undef;
+  my $href = $self->_element_direction($self->{'current_element'},
+                                           $direction, 'href');
+  my $node = $self->_element_direction($self->{'current_element'},
+                                           $direction, 'node');
+  my $anchor;
+  if (defined($href) and defined($node) and $node =~ /\S/) {
+    $anchor = "<a href=\"$href\">$node</a>";
   }
   if (defined($anchor)) {
     # i18n

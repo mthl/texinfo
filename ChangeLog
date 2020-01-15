@@ -1,5 +1,19 @@
 2020-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No accesskey attribute in footer.
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_direction_footer):
+	New function, based on _default_node_direction.
+	(%defaults) <'NODE_FOOTER_BUTTONS'>:
+	Use _default_node_direction_footer.
+
+	Daniel Nagy reported that in Firefox, when a page had accesskeys 
+	defined in both a header and a footer of a node, that focus 
+	would switch between the two elements, instead of following the 
+	link.
+
+2020-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Suppress text decoration inside @def*.
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@def* commands>:
