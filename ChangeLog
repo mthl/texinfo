@@ -1,3 +1,12 @@
+2020-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Suppress text decoration inside @def*.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert) <@def* commands>:
+	Set 'suppress_styles' on the converter to prevent a @code 
+	command inside a @def* command producing single quotes.
+	* tp/t/19def.t (code_in_def): New test.
+
 2019-12-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/Convert/HTML.pm (_default_node_redirection_page)
