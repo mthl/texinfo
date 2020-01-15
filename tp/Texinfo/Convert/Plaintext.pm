@@ -1,6 +1,6 @@
 # Plaintext.pm: output tree as text with filling.
 #
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -2942,7 +2942,9 @@ sub _convert($$)
 
         my $def_paragraph = $self->new_formatter('paragraph', 
          { 'indent_length' => ($self->{'format_context'}->[-1]->{'indent_level'} -1) *$indent_length,
-           'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length});
+           'indent_length_next' => (1+$self->{'format_context'}->[-1]->{'indent_level'})*$indent_length,
+           'suppress_styles' => 1
+         });
         push @{$self->{'formatters'}}, $def_paragraph;
 
         $result .= _convert($self, {'type' => '_code', 'contents' => [$tree]});
