@@ -332,7 +332,7 @@ $result_errors{'ampchar'} = [
 
 
 
-$result_converted{'plaintext'}->{'ampchar'} = ' -- Constructor on a: b (\'const std::vector<int>&\')
+$result_converted{'plaintext'}->{'ampchar'} = ' -- Constructor on a: b (const std::vector<int>&)
    & & & { } @
 ';
 
