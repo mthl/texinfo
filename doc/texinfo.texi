@@ -33,8 +33,8 @@ printed manual from a single source using semantic markup.
 
 Copyright @copyright{} 1988, 1990, 1991, 1992, 1993, 1995, 1996, 1997,
 1998, 1999, 2001, 2001, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
-2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019 Free Software
-Foundation, Inc.
+2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020
+Free Software Foundation, Inc.
 
 @quotation
 Permission is granted to copy, distribute and/or modify this document
@@ -609,7 +609,7 @@ Creating an Info File
 
 Installing an Info File
 
-* Directory File::              The top level menu for all Info files.
+* Directory File::              The top-level menu for all Info files.
 * New Info File::               Listing a new Info file.
 * Other Info Directories::      How to specify Info files that are
                                  located in other directories.
@@ -2195,7 +2195,7 @@ material that you want to appear on unnumbered pages should be put
 between the @code{@@titlepage} and @code{@@end titlepage} commands.
 
 @findex page@r{, within @code{@@titlepage}}
-By using the @code{@@page} command you can force a page break within the
+By using the @code{@@page} command, you can force a page break within the
 region delineated by the @code{@@titlepage} and @code{@@end titlepage}
 commands and thereby create more than one unnumbered page.  This is how
 the copyright page is produced.  (The @code{@@titlepage} command might
@@ -2222,7 +2222,7 @@ centered.
 The second method uses the @code{@@title}, @code{@@subtitle}, and
 @code{@@author} commands to create a title page with black rules under
 the title and author lines and the subtitle text set flush to the
-right hand side of the page.  With this method, you do not specify any
+right-hand side of the page.  With this method, you do not specify any
 of the actual formatting of the title page.  You specify the text
 you want, and Texinfo does the formatting.
 
@@ -2835,7 +2835,7 @@ specify the output you want.
 @anchor{headings on off}@c old name
 @findex headings
 
-The @code{@@headings} command is rarely used.  It specifies what kind of
+The @code{@@headings} command is rarely used.  It specifies what kinds of
 page headings and footings to print on each page.  Usually, this is
 controlled by the @code{@@setchapternewpage} command.  You need the
 @code{@@headings} command only if the @code{@@setchapternewpage} command
@@ -2869,7 +2869,7 @@ For example, suppose you write @code{@@setchapternewpage off} before the
 @code{@@titlepage} command to tell @TeX{} to start a new chapter on the
 same page as the end of the last chapter.  This command also causes
 @TeX{} to typeset page headers for single-sided printing.  To cause
-@TeX{} to typeset for double sided printing, write @code{@@headings
+@TeX{} to typeset for double-sided printing, write @code{@@headings
 double} after the @code{@@end titlepage} command.
 
 You can stop @TeX{} from generating any page headings at all by
@@ -3073,7 +3073,7 @@ that do not fit a hierarchical structure.
 
 Normally, you put a node command immediately before each chapter
 structuring command---for example, an @code{@@section} or
-@code{@@subsection} line.  (@xref{Chapter Structuring}.).
+@code{@@subsection} line.  (@xref{Chapter Structuring}.)
 You must do this even if you do not intend to format the file for Info.
 This is because @TeX{} uses both @code{@@node} names and
 chapter-structuring names in the output for cross-references.  The only
@@ -3186,7 +3186,7 @@ In HTML output, any characters in the node name other than plain ASCII
 letters, numbers or spaces will be changed in the file name.  
 (@xref{HTML Xref Node Name Expansion}.)
 This can make the URL's for the pages in your manual less user-friendly;
-for example in this manual the @samp{@@dots} node is output as
+for example, in this manual the @samp{@@dots} node is output as
 @file{__0040dots.html}.
 @end itemize
 
@@ -9089,7 +9089,7 @@ similar to the indices you may see in professionally published books.
 
 @findex @@subentry
 First, you can create @dfn{multilevel} index entries, allowing you
-to group many related subtopics under the same higher level topic.
+to group many related subtopics under the same higher-level topic.
 You do this by separating the parts of such an entry with the
 @code{@@subentry} command. Such commands might look like this:
 
@@ -9135,7 +9135,7 @@ together with them in the final printed index. For example:
 @end example
 
 When using all three of these advanced commands, @emph{do not}
-place a comma betwen the different parts of the index text. The
+place a comma between the different parts of the index text. The
 @command{texindex} program, which sorts the index entries and
 generates the indexing formatting commands, takes care of placing
 commas in the correct places for you.
@@ -9376,7 +9376,7 @@ following:
 This causes all entries designated for the function index to merge
 in with the concept index instead.
 
-To merge both a variables index and a function index into a concept
+To merge both a variable index and a function index into a concept
 index, write the following:
 
 @example
@@ -9480,7 +9480,7 @@ Texinfo file, and (of course) before any @code{@@synindex} or
 @code{@@syncodeindex} commands (@pxref{Texinfo File Header}).
 
 As mentioned earlier (@pxref{Predefined Indices}), we recommend having
-a single index in the final document whenever possible (no matter however many
+a single index in the final document whenever possible (no matter how many
 source indices you use), since then readers have only one place to
 look.
 
@@ -9893,7 +9893,7 @@ necessary in the following situations:
 
 @enumerate
 @item After a period that ends a lowercase abbreviation which is not at 
-the end of a sentences.
+the end of a sentence.
 
 @item When a parenthetical remark in the middle of a sentence (like
 this one!)@: ends with a period, exclamation point or question mark,
@@ -10257,7 +10257,7 @@ left- and right-hand doubled quotation marks,
 ``like this'',
 @end iftex
 and Info converts doubled single-quote characters to ASCII
-double-quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
+double quotes: @w{@t{`@w{}`@dots{}'@w{}'}} becomes @w{@t{"@dots{}"}}.
 
 You may occasionally need to produce two consecutive single quotes;
 for example, in documenting a computer language such as Maxima where
@@ -10290,7 +10290,7 @@ Latin@tie{}9).
 @cindex EC fonts
 The standard @TeX{} fonts support the usual quotation marks used in
 English (the ones produced with single and doubled ASCII
-single-quotes).  For the other quotation marks, @TeX{} uses European
+single quotes).  For the other quotation marks, @TeX{} uses European
 Computer Modern (EC) fonts (@file{ecrm1000} and other variants).
 These fonts are freely available, of course; you can download them
 from @url{http://ctan.org/pkg/ec}, among other places.
@@ -10380,7 +10380,7 @@ manual.  Sometimes aliases (@pxref{@code{@@alias}}) can simplify the
 usage and make the source code more readable.  For example, in German,
 @code{@@quotedblbase} is used for the left double quote, and the right
 double quote is the glyph produced by @code{@@quotedblleft}, which is
-counter-intuitive.  Thus, in this case the following aliases would be
+counterintuitive.  Thus, in this case the following aliases would be
 convenient:
 
 @example
@@ -10584,7 +10584,7 @@ incorrect @code{La@@TeX@{@}}.  In Info, the result is just
 @TeX{}, very loosely analogous to Texinfo in that it emphasizes
 logical structure, but much (much) larger.)
 
-The spelling of these commands are unusual for Texinfo, in that they
+The spelling of these commands is unusual for Texinfo, in that they
 use both uppercase and lowercase letters.
 
 
@@ -11210,7 +11210,7 @@ For example, in a printed manual, page breaks may occur awkwardly in
 the middle of an example; to prevent this, you can hold text together
 using a grouping command that keeps the text from being split across
 two pages.  Conversely, you may want to force a page break where none
-would occur normally.
+would normally occur.
 
 You can use the break, break prevention, or pagination commands to fix
 problematic line and page breaks.
@@ -11306,7 +11306,7 @@ The @code{@@/} command can be useful within long urls or other
 identifiers where @TeX{} can't find a good place to break.  @TeX{}
 will automatically break urls at the natural places (@pxref{URL Line
 Breaking}), so only use @code{@@/} if you need it.  @code{@@/} has no
-effect in the other output format.
+effect on the other output format.
 
 
 @node @code{@@- @@hyphenation}
@@ -11365,7 +11365,7 @@ hyphenation points.
 
 This is necessary since many manuals, especially for Lisp-family
 languages, must document very long identifiers.  On the other hand,
-some manuals don't have this problems, and you may not wish to allow a
+some manuals don't have this problem, and you may not wish to allow a
 line break at the underscore in, for example, @code{SIZE_MAX}, or even
 worse, after any of the four underscores in @code{__typeof__}.
 
@@ -12216,7 +12216,7 @@ style is to put the return type on a line by itself.  So Texinfo
 provides an option to do that: @code{@@deftypefnnewline on}.
 
 This affects typed functions only---not untyped functions, not typed
-variables, etc..  Specifically, it affects the commands in this
+variables, etc.  Specifically, it affects the commands in this
 section, and the analogous commands for object-oriented languages,
 namely @code{@@deftypeop} and @code{@@deftypemethod}
 (@pxref{Object-Oriented Methods}).
@@ -13126,7 +13126,7 @@ commands.  All plain @TeX{} commands and category codes are restored
 within a @code{@@tex} region.  The sole exception is that the
 @code{@@} character still introduces a command, so that @code{@@end
 tex} can be recognized.  Texinfo processors will not output material
-in such a region, unless @TeX{} output is being produced.
+in such a region unless @TeX{} output is being produced.
 
 @findex \gdef @r{within @code{@@tex}}
 @findex \globaldefs @r{within @code{@@tex}}
@@ -13703,7 +13703,7 @@ and thus no reason to worry about older versions.  (It is
 straightforward for anyone to download and install the Texinfo source;
 it does not have any problematic dependencies.)
 
-The issue of Texinfo versions does not generally arise for end-users.
+The issue of Texinfo versions does not generally arise for end users.
 With properly distributed packages, users need not process the Texinfo
 manual simply to build and install the package; they can use
 preformatted Info (or other) output files.  This is desirable in
@@ -14106,7 +14106,7 @@ As mentioned earlier, macro names must consist entirely of letters.
 
 @item
 It is not advisable to redefine any @TeX{} primitive, plain, or
-Texinfo command name as a macro. Unfortunately this is a large and
+Texinfo command name as a macro. Unfortunately, this is a large and
 open-ended set of names, and the possible resulting errors are
 unpredictable.
 
@@ -14170,7 +14170,7 @@ The backslash escape for commas in macro arguments does not work;
 @item
 Likewise, if you want to pass an argument with the Texinfo command 
 @code{@@,} (to produce a cedilla, see @ref{Inserting Accents}), you have 
-to use @code{@@value} or another work-around.  Otherwise, the comma
+to use @code{@@value} or another workaround.  Otherwise, the comma
 may be taken as separating the arguments.  For example,
 
 @example
@@ -14402,7 +14402,7 @@ argument to @code{@@phoo} in italics.
 Each definition applies to its own formatter: one for @TeX{}, the
 other for everything else.  The raw @TeX{} commands need to be in
 @samp{@@iftex}.  @code{@@definfoenclose} command need not be within
-@samp{@@ifinfo}, unless you want to use different definitions for
+@samp{@@ifinfo} unless you want to use different definitions for
 different output formats.
 
 @findex headword
@@ -15189,7 +15189,7 @@ up-to-date index entries.
 Finally, you may need to run @code{tex} one more time, to get the page
 numbers in the cross-references correct.
 
-To summarize, this is a five step process.  (Alternatively, it's a
+To summarize, this is a five-step process.  (Alternatively, it's a
 one-step process: run @code{texi2dvi}; see the previous section.)
 
 @enumerate
@@ -15317,7 +15317,7 @@ lpr texinfo.ps
 @end group
 @end example
 
-Depending on the @code{lpr} setup on your machine, you might able to
+Depending on the @code{lpr} setup on your machine, you might be able to
 combine the last two steps into @code{lpr -d texinfo.dvi}.
 
 @cindex PCL file, for printing
@@ -16366,7 +16366,7 @@ is reset to 1 at the start of each node.
 @opindex --number-sections
 With @option{--number_sections} (the default), output chapter,
 section, and appendix numbers as in printed manuals.  This works only
-with hierarchically-structured manuals.  You should specify
+with hierarchically structured manuals.  You should specify
 @code{--no-number-sections} if your manual is not normally structured.
 
 @item --no-pointer-validate
@@ -16579,7 +16579,7 @@ option.  @xref{Customization Variables and Options}.
 You can control @command{texi2any}'s use of Perl extension modules
 by setting the @env{TEXINFO_XS} environment variable.  These modules
 are compiled native code that the interpreted Perl code can use.
-Ideally, these extension modules should just work, and the only noticable
+Ideally, these extension modules should just work, and the only noticeable
 difference they should make is that @command{texi2any} finishes running
 sooner.  However, you can use this environment variable for the purposes
 of troubleshooting: for example, if you have problems with the output of
@@ -16967,7 +16967,7 @@ exec texi2any -c TEXINPUT_OUTPUT_FORMAT=textcontent "$@@"
 @subsection HTML Customization Variables
 
 This table gives the customization variables which apply to HTML
-output only.  A few other customization variable apply to both HTML
+output only.  A few other customization variables apply to both HTML
 and other output formats; see @ref{Other Customization Variables}.
 
 @vtable @code
@@ -17175,7 +17175,7 @@ default is @code{index.html}.
 A url used for Top node up references; the default is
 @code{undef}, in that case no Top node Up reference is generated.
 For more about the Top node pointers, @pxref{First Node}.  For 
-overriding the Up pointer name in cas @code{TOP_NODE_UP_URL} is set
+overriding the Up pointer name in case @code{TOP_NODE_UP_URL} is set
 and for other formats, see @code{TOP_NODE_UP} in 
 @ref{Other Customization Variables}.
 
@@ -18145,7 +18145,7 @@ built into Emacs.  (@xref{Top,,, info, Info}, for an introduction to
 Info.)
 
 @menu
-* Directory File::              The top level menu for all Info files.
+* Directory File::              The top-level menu for all Info files.
 * New Info File::               Listing a new Info file.
 * Other Info Directories::      How to specify Info files that are
                                  located in other directories.
@@ -18159,12 +18159,12 @@ Info.)
 @subsection The Directory File @file{dir}
 
 For Info to work, the @file{info} directory must contain a file that
-serves as a top level directory for the Info system.  By convention,
+serves as a top-level directory for the Info system.  By convention,
 this file is called @file{dir}.  (You can find the location of this file
 within Emacs by typing @kbd{C-h i} to enter Info and then typing
 @kbd{C-x C-f} to see the pathname to the @file{info} directory.)
 
-The @file{dir} file is itself an Info file.  It contains the top level
+The @file{dir} file is itself an Info file.  It contains the top-level
 menu for all the Info files in the system.  The menu looks like
 this:
 
@@ -19320,7 +19320,7 @@ the @option{--transliterate-file-names} command line option.  This
 option enables @dfn{transliteration} of node names into ASCII
 characters for the purposes of file name creation and referencing.
 The transliteration is based on phonetic principles, which makes the
-generated file names more easily understanable.
+generated file names more easily understandable.
 
 @cindex Normalization Form C, Unicode
 For the definition of Unicode Normalization Form@tie{}C, see Unicode
@@ -19335,8 +19335,7 @@ web.
 @cindex Mismatched HTML cross-reference source and target
 
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
-software may need to guess whether a given manual being cross
-referenced is available in split or monolithic form---and, inevitably,
+software may need to guess whether a given manual being cross-referenced is available in split or monolithic form---and, inevitably,
 it might guess wrong.  However, when the @emph{referent} manual is
 generated, it is possible to handle at least some mismatches.
 
@@ -19538,7 +19537,7 @@ the document; they do not take arguments.  Some examples:
 @item 5. Non-alphabetic commands
 The names of commands in all of the above categories consist of
 alphabetic characters, almost entirely in lower-case.  Unlike those, the
-non-alphabetic commands commands consist of an @@ followed by a
+non-alphabetic commands consist of an @@ followed by a
 punctuation mark or other character that is not part of the Latin
 alphabet.  Non-alphabetic commands are almost always part of text
 within a paragraph.  The non-alphabetic commands include @code{@@@@},
@@ -20274,7 +20273,7 @@ Read the contents of Texinfo source file @var{filename}.  @xref{Include Files}.
 Insert paragraph indentation.  @xref{@code{@@indent}}.
 
 @item @@indentedblock
-Indent a block of arbitary text on the left.  Pair with @code{@@end
+Indent a block of arbitrary text on the left.  Pair with @code{@@end
 indentedblock}.  @xref{@code{@@indentedblock}}.
 
 @item @@indicateurl@{@var{indicateurl}@}
@@ -20885,7 +20884,7 @@ references.  @xref{Three Arguments}.
 @cindex Contexts, of @@-commands
 
 Here we describe approximately which @@-commands can be used in which
-contexts.  It not exhaustive or meant to be a complete reference.
+contexts.  It is not exhaustive or meant to be a complete reference.
 Discrepancies between the information here and the @code{makeinfo} or
 @TeX{} implementations are most likely to be resolved in favor of the
 implementation.
@@ -21542,7 +21541,7 @@ Structure Details,,, standards, GNU Coding Standards}.
 @cindex GNU Free Documentation License, including entire
 @cindex Free Documentation License, including entire
 It is best to include the entire GNU Free Documentation License in a GNU
-manual, unless the manual is only a few pages long.  Of course this
+manual unless the manual is only a few pages long.  Of course this
 sample is even shorter than that, but it includes the FDL anyway in
 order to show one conventional way to do so.  The @file{fdl.texi} file
 is available on the GNU machines and in the Texinfo and other GNU
@@ -21664,7 +21663,7 @@ On the other hand, for documents that express your personal views,
 feelings or experiences, it is more appropriate to use a license
 permitting only verbatim copying.
 
-Here is sample text for such a license permitting verbatim copying only.
+Here is a sample text for such a license permitting verbatim copying only.
 This is just the license text itself.  For a complete sample document,
 see the previous sections.
 
@@ -21698,7 +21697,7 @@ lines long) and rough documentation (README files, INSTALL files, etc.),
 the full FDL would be overkill.  They can use a simple all-permissive
 license.
 
-Here is sample text for such an all-permissive license.  This is just
+Here is a sample text for such an all-permissive license.  This is just
 the license text itself.  For a complete sample document, see the
 previous sections.
 
@@ -21956,7 +21955,7 @@ required, but a description helps explain what the node is about.
 To use @code{texinfo-start-menu-description}, position point in a menu
 entry line and type @kbd{C-c C-c C-d}.  The command looks for and copies
 the title that goes with the node name, and inserts the title as a
-description; it positions point at beginning of the inserted text so you
+description; it positions point at the beginning of the inserted text so you
 can edit it.  The function does not insert the title if the menu entry
 line already contains a description.
 
@@ -22833,7 +22832,7 @@ footings:
 @code{@@everyheading} and @code{@@everyfooting} generate page headers and
 footers that are the same for both even- and odd-numbered pages.
 @item
-@code{@@evenheading} and @code{@@evenfooting} command generate headers
+@code{@@evenheading} and @code{@@evenfooting} commands generate headers
 and footers for even-numbered (left-hand) pages.
 @item
 @code{@@oddheading} and @code{@@oddfooting} generate headers and footers
@@ -23588,7 +23587,7 @@ commands do this job for you.  @xref{Creating an Info File}.)
 The split-off files are called the indirect subfiles.
 
 Info files are split to save memory.  With smaller files, Emacs does not
-have make such a large buffer to hold the information.
+have to make such a large buffer to hold the information.
 
 If an Info file has more than 30 nodes, you should also make a tag
 table for it.  @xref{Using @code{Info-validate}}, for information

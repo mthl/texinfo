@@ -1,3 +1,8 @@
+2020-01-17 Jean-Christophe Helary <jean.christophe.helary@traduction-libre.org>
+
+	* doc/texinfo.texi: Grammar fixes throughout, especially 
+	involving hyphens.
+
 2020-01-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	No accesskey attribute in footer.
