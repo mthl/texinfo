@@ -1,3 +1,17 @@
+2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>, and
+	    Patrice Dumas  <pertusus@free.fr>
+
+	Implement mini-tables of contents.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables),
+	* tp/Texinfo/Convert/HTML.pm (%defaults): New customization 
+	variable 'MINI_TOC'.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_mini_toc): New subroutine.
+	(_convert) <sectioning commands> [MINI_TOC]: Call _mini_toc.
+	(%contents_commands): Remove unused.
+
 2020-01-17 Jean-Christophe Helary <jean.christophe.helary@traduction-libre.org>
 
 	* doc/texinfo.texi: Grammar fixes throughout, especially 

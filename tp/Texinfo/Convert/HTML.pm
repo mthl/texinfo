@@ -965,6 +965,7 @@ my %PASSIVE_ICONS = (
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
   'SHOW_MENU'            => 1,
+  'MINI_TOC'             => 0,
   'OUTPUT_ENCODING_NAME'  => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -1195,12 +1196,6 @@ sub converter_global_commands($)
 {
   return @informative_global_commands;
 }
-
-my %contents_commands = (
- 'contents' => 1,
- 'shortcontents' => 1,
- 'summarycontents' => 1,
-);
 
 #my %ignored_misc_commands;
 foreach my $misc_command (keys(%misc_commands)) {
@@ -6078,6 +6073,38 @@ sub _element_direction($$$$;$)
   }
 }
 
+# Output a list of the nodes immediately below this one
+sub _mini_toc
+{
+  my ($self, $command) = @_;
+
+  my $filename = $self->{'current_filename'};
+  my $result = '';
+
+  if ($command->{'section_childs'} and @{$command->{'section_childs'}}) {
+    $result .= $self->_attribute_class('ul', $NO_BULLET_LIST_CLASS).">\n";
+
+    foreach my $section (@{$command->{'section_childs'}}) {
+      my $text = $self->command_text($section);
+      my $href = $self->command_href($section, $filename);
+      if ($text ne '') {
+        if ($href ne '') {
+          my $href_attribute = '';
+          if ($href ne '') {
+            $href_attribute = " href=\"$href\"";
+          }
+          $result .= "<li><a${href_attribute}>$text</a>";
+        } else {
+          $result .= "<li>$text";
+        }
+        $result .= "</li>\n";
+      }
+    }
+    $result .= "</ul>\n";
+  }
+  return $result;
+}
+
 sub _default_contents($$;$$)
 {
   my $self = shift;
@@ -7537,6 +7564,14 @@ sub _convert($$;$)
             $result .= "\n";
           }
         }
+      }
+      if ($self->get_conf('MINI_TOC')
+          and $sectioning_commands{$command_name}
+          and $self->{'current_node'}
+          and $self->{'current_node'}->{'extra'}
+          and $self->{'current_node'}->{'extra'}->{'associated_section'}) {
+        $result .= _mini_toc
+          ($self, $self->{'current_node'}->{'extra'}->{'associated_section'});
       }
       return $result;
     } else {
