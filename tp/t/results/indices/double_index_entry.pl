@@ -662,10 +662,6 @@ $result_converted{'html_text'}->{'double_index_entry'} = '<span id="Top"></span>
 </p>
 <span id="index-aaa-1"></span>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#other-node" rel="index" accesskey="1">other node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="other-node"></span><div class="header">

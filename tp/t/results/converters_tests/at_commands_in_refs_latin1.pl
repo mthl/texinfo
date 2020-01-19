@@ -2720,9 +2720,6 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'acronym',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -2745,9 +2742,6 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'acronym',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -2858,9 +2852,6 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'abbr',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -2883,9 +2874,6 @@ $result_trees{'at_commands_in_refs_latin1'} = {
                       ],
                       'cmdname' => 'abbr',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -16029,7 +16017,6 @@ $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'conte
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2];
-$result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'extra'}{'explanation_contents'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[0]{'args'}[1]{'contents'};
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
@@ -16059,7 +16046,6 @@ $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'conte
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2];
-$result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'extra'}{'explanation_contents'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[0]{'args'}[1]{'contents'};
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
 $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'at_commands_in_refs_latin1'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
@@ -20841,15 +20827,6 @@ $result_errors{'at_commands_in_refs_latin1'} = [
 
 
 $result_converted_errors{'file_html'}->{'at_commands_in_refs_latin1'} = [
-  {
-    'error_line' => ':26: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
-',
-    'file_name' => '',
-    'line_nr' => 26,
-    'macro' => '',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning'
-  },
   {
     'error_line' => ':93: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',

@@ -894,10 +894,6 @@ Next: <a href="#node-chapter" accesskey="n" rel="next">node chapter</a> &nbsp; <
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#node-chapter" accesskey="1">node chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <span id="part-first"></span><h1 class="part">part first</h1>
 <hr>

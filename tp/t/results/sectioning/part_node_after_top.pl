@@ -640,10 +640,6 @@ Next: <a href="#part-node-after-top" accesskey="n" rel="next">part node after to
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#part-node-after-top" accesskey="1">part node after top</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="part-node-after-top"></span><div class="header">

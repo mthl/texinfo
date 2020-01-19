@@ -1037,12 +1037,6 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; <
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter-node" accesskey="1">chapter node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#appendix-node" accesskey="2">appendix node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="Part-1"></span><div class="header">

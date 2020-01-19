@@ -851,12 +851,6 @@ Next: <a href="no_existing_no_manual_direction.html#Top" accesskey="n" rel="next
 <p><a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
 <a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#first" accesskey="1">first</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="other_no_existing_no_manual.html#Top" accesskey="2">(other_no_existing_no_manual)</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="first"></span><div class="header">
@@ -901,15 +895,6 @@ $result_converted_errors{'html'}->{'check_htmlxref'} = [
     'line_nr' => 6,
     'macro' => '',
     'text' => 'no htmlxref.cnf entry found for `no_existing_no_manual.info\'',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: no htmlxref.cnf entry found for `other_no_existing_no_manual\'
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'no htmlxref.cnf entry found for `other_no_existing_no_manual\'',
     'type' => 'warning'
   }
 ];

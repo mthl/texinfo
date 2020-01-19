@@ -943,10 +943,6 @@ Next: <a href="#Unn" accesskey="n" rel="next">Unn</a> &nbsp; [<a href="#SEC_Cont
 
 <p>Top node.
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Unn" accesskey="1">Unn</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 
 <hr>
@@ -956,11 +952,10 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 </div>
 <span id="Unn-1"></span><h2 class="unnumbered">Unn</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Sec" accesskey="1">Sec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="no-bullet">
+<li><a href="#Sec">Sec</a></li>
+</ul>
 <hr>
 <span id="Sec"></span><div class="header">
 <p>

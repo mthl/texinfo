@@ -8194,18 +8194,6 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 
 
 <div class="float-caption"><p><strong>Warning 1: </strong>C A warning</p></div></div>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Unnumbered" accesskey="2">Unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Chapter-with-unnumbsubsec" accesskey="3">Chapter with unnumbsubsec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Appendix-for-float" accesskey="4">Appendix for float</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#list-of-floats" accesskey="5">list of floats</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="chapter"></span><div class="header">
@@ -8239,11 +8227,10 @@ Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <
 
 
 <div class="float-caption"><p><strong>Warning 1.1: </strong>C A warning in chapter</p></div></div>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section" accesskey="1">section</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
+<ul class="no-bullet">
+<li><a href="#section">1.1 A section</a></li>
+</ul>
 <hr>
 <span id="section"></span><div class="header">
 <p>
@@ -8264,10 +8251,6 @@ Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with
 </div>
 <span id="Unnumbered-1"></span><h2 class="unnumbered">Unnumbered</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Section-within-unnumbered" accesskey="1">Section within unnumbered</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 <div class="float"><span id="unnumbered-float"></span>
 <p>unnum
 </p>
@@ -8279,6 +8262,9 @@ Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with
 
 <div class="float-caption"><p><strong>5: </strong>C No type in unnumbered</p></div></div>
 
+<ul class="no-bullet">
+<li><a href="#Section-within-unnumbered">Section within unnumbered</a></li>
+</ul>
 <hr>
 <span id="Section-within-unnumbered"></span><div class="header">
 <p>
@@ -8299,15 +8285,14 @@ Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float<
 </div>
 <span id="Chapter-with-unnumbsubsec-1"></span><h2 class="chapter">2 Chapter with unnumbsubsec</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#unnumbered-sec" accesskey="1">unnumbered sec</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 <div class="float"><span id="Chapter-with-subsec-float"></span>
 <p>Chap
 </p>
 
 <div class="float-caption"><p><strong>Text 2.1: </strong>C Chapter with subsec</p></div></div>
+<ul class="no-bullet">
+<li><a href="#unnumbered-sec">unnumbered sec</a></li>
+</ul>
 <hr>
 <span id="unnumbered-sec"></span><div class="header">
 <p>

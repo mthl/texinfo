@@ -2493,12 +2493,6 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 </div>
 <span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#node" accesskey="1">node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chap" accesskey="2">chap</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="node"></span><div class="header">
@@ -2514,30 +2508,212 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 </div>
 <span id="node-just-node"></span><h2 class="chapter">2 <a href="#node">node</a> just node</h2>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="node-node_002c-crossref-arg2"></span><h3 class="section">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="node-code-node_002c-samptitle-arg3"></span><h3 class="section">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="node-code-node_002c-file-name"></span><h3 class="section">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="node-node-and-manual"></span><h3 class="section">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="Top-Top-and-manual"></span><h3 class="section">2.5 <cite>Manual</cite> Top and manual</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="Manual-no-node-just-manual"></span><h3 class="section">2.6 <cite>Manual</cite> no node just manual</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="file-name-no-node-just-file-name"></span><h3 class="section">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="a-inforef-a-b-c"></span><h3 class="section">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="g_t_0028Top_0029-pxref-Top-file-name_002c-spaces"></span><h3 class="section">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="g_t_0028file-name_0029-pxref-file-name-only_002c-spaces"></span><h3 class="section">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="Top_002c-xref-Top-filename-only_002c-no-spaces"></span><h3 class="section">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <span id="filename_002e-xref-filename-only_002c-no-spaces"></span><h3 class="section">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</h3>
 
+<ul class="no-bullet">
+<li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
+<li><a href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
+<li><a href="#node-code-node_002c-file-name">2.3 <a href="file name.html#node">(file name)<code>node</code></a> code node, file name</a></li>
+<li><a href="#node-node-and-manual">2.4 &lsquo;node&rsquo; in <cite>Manual</cite> node and manual</a></li>
+<li><a href="#Top-Top-and-manual">2.5 <cite>Manual</cite> Top and manual</a></li>
+<li><a href="#Manual-no-node-just-manual">2.6 <cite>Manual</cite> no node just manual</a></li>
+<li><a href="#file-name-no-node-just-file-name">2.7 <a href="file name.html#Top">(file name)</a> no node just file name</a></li>
+<li><a href="#a-inforef-a-b-c">2.8 See <a href="c.html#a">(c)b</a> inforef a b c</a></li>
+<li><a href="#g_t_0028Top_0029-pxref-Top-file-name_002c-spaces">2.9 (see <a href="file name.html#Top">(file name)Top</a>) pxref Top file name, spaces</a></li>
+<li><a href="#g_t_0028file-name_0029-pxref-file-name-only_002c-spaces">2.10 (see <a href="file name.html#Top">(file name)</a>) pxref file name only, spaces</a></li>
+<li><a href="#Top_002c-xref-Top-filename-only_002c-no-spaces">2.11 See <a href="filename.html#Top">(filename)Top</a>, xref Top filename only, no spaces</a></li>
+<li><a href="#filename_002e-xref-filename-only_002c-no-spaces">2.12 See <a href="filename.html#Top">(filename)</a>. xref filename only, no spaces</a></li>
+</ul>
 <hr>
 ';
 

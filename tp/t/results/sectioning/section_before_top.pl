@@ -577,10 +577,6 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a> &nbsp; <
 </div>
 <span id="top"></span><h3 class="unnumberedsec">top</h3>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 <hr>
 
 

@@ -878,10 +878,6 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </p>
 <p>B<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="chapter"></span><div class="header">
@@ -1015,10 +1011,6 @@ $result_converted{'html_text'}->{'two_footnotes_in_nodes_separate'} = '<span id=
 </p>
 <p>B<a id="DOCF2" href="#FOOT2"><sup>2</sup></a>
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="chapter"></span><div class="header">

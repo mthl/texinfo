@@ -964,8 +964,8 @@ my %PASSIVE_ICONS = (
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 1,
-  'MINI_TOC'             => 0,
+  'SHOW_MENU'            => 0,
+  'MINI_TOC'             => 1,
   'OUTPUT_ENCODING_NAME'  => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -7549,7 +7549,8 @@ sub _convert($$;$)
       }
       # FIXME add a configuration variable to be able turn automatically 
       # adding menus off?
-      if ($sectioning_commands{$command_name}
+      if ($self->get_conf('SHOW_MENU')
+          and $sectioning_commands{$command_name}
           and $self->{'current_node'}
           and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
         $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
@@ -7567,6 +7568,7 @@ sub _convert($$;$)
       }
       if ($self->get_conf('MINI_TOC')
           and $sectioning_commands{$command_name}
+          and $command_name ne 'top'
           and $self->{'current_node'}
           and $self->{'current_node'}->{'extra'}
           and $self->{'current_node'}->{'extra'}->{'associated_section'}) {

@@ -698,12 +698,6 @@ ul.no-bullet {list-style: none}
 <p>In float
 </p><div class="float-caption"><p><strong>truc 1
 </strong></p></div></div>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#anch" accesskey="1">anch</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#floa" accesskey="2"><code>floa</code></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 <hr>
 
 

@@ -570,15 +570,6 @@ ul.no-bullet {list-style: none}
  &nbsp; </p>
 </div>
 <span id="SEC_Top"></span>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#c1" accesskey="1">c1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#c2" accesskey="2">c2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#c3" accesskey="3">c3</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
-
 <hr>
 <span id="c1"></span><div class="header">
 <p>

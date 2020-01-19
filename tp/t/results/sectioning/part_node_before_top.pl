@@ -668,10 +668,6 @@ Next: <a href="#part-node-before-top" accesskey="n" rel="next">part node before 
 
 <span id="Top"></span><span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#part-node-before-top" accesskey="1">part node before top</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 <hr>
 
 

@@ -736,15 +736,14 @@ Next: <a href="#section-node" accesskey="n" rel="next">section node</a> &nbsp; [
 <span id="top-section"></span><h1 class="top">top section</h1>
 <p>Top node
 </p>
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#section-node" accesskey="1">section node</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
 
 <p>In chapter
 </p>
+<ul class="no-bullet">
+<li><a href="#Chapter">1 Chapter</a></li>
+</ul>
 <hr>
 <span id="section-node"></span><div class="header">
 <p>

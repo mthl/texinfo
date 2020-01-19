@@ -662,10 +662,6 @@ Next: <a href="#after" accesskey="n" rel="next">after</a> &nbsp; [<a href="#SEC_
 </div>
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#after" accesskey="1">after</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="part"></span><div class="header">

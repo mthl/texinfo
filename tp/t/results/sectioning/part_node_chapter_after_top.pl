@@ -1031,12 +1031,6 @@ Next: <a href="#a-node-after-part" accesskey="n" rel="next">a node after part</a
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#a-node-after-part" accesskey="1">a node after part</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chapter" accesskey="2">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="part"></span><div class="header">

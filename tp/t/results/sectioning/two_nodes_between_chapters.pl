@@ -1174,14 +1174,6 @@ Next: <a href="#chapter-1" accesskey="n" rel="next">chapter 1</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter-1" accesskey="1">chapter 1</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#node-between-chapters" accesskey="2">node between chapters</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#chapter-2" accesskey="3">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="chapter-1"></span><div class="header">

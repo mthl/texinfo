@@ -2653,9 +2653,6 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'acronym',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -2678,9 +2675,6 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'acronym',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -2791,9 +2785,6 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'abbr',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     },
@@ -2816,9 +2807,6 @@ $result_trees{'at_commands_in_refs'} = {
                       ],
                       'cmdname' => 'abbr',
                       'contents' => [],
-                      'extra' => {
-                        'explanation_contents' => []
-                      },
                       'line_nr' => {},
                       'parent' => {}
                     }
@@ -15955,7 +15943,6 @@ $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[1
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2];
-$result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'extra'}{'explanation_contents'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[0]{'args'}[1]{'contents'};
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[16]{'args'}[1];
@@ -15985,7 +15972,6 @@ $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[1
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2];
-$result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'extra'}{'explanation_contents'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[0]{'args'}[1]{'contents'};
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'line_nr'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[2]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
 $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1]{'contents'}[3]{'parent'} = $result_trees{'at_commands_in_refs'}{'contents'}[2]{'contents'}[1]{'contents'}[17]{'args'}[1];
@@ -20979,62 +20965,6 @@ Next: <a href="#-_007b-_007d" accesskey="n" rel="next"> { }</a> &nbsp; </p>
 </div>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#-_007b-_007d" accesskey="1">{ }</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#----_0021---_002e--_002e-_003f-_0040" accesskey="2">&nbsp; &nbsp; ! <br> .  . ? @</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_0040-_007b-_007d-_005c-_0023" accesskey="3">@ { } \\ #</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#LaTeX-TeX-_2022-_002c-_00a9-_2026-_002e_002e_002e" accesskey="4">LaTeX TeX &bull; , &copy; &hellip; <small class="enddots">...</small></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_2261-error_002d_002d_003e-_20ac-_00a1-_21a6-_2212" accesskey="5">&equiv; error&rarr; &euro; &iexcl; &rarr; -</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_2265-_2264-_2192" accesskey="6">&ge; &le; &rarr;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_00aa-_00ba-_2605-_00a3-_22a3-_00bf-_00ae" accesskey="7">&ordf; &ordm; &lowast; &pound; -| &iquest; &reg;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_21d2-_00b0-a-b--_00e5" accesskey="8">&rArr; &deg; a&nbsp;b a sunny day &aring;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_00c5-_00e6-_0153-_00c6-_0152-_00f8-_00d8-_00df-_0142-_0141-_00d0-_00f0-_00de-_00fe" accesskey="9">&Aring; &aelig; &oelig; &AElig; &OElig; &oslash; &Oslash; &szlig; &#322; &#321; &ETH; &eth; &THORN; &thorn;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_00e4-_1ebd-_00ee-_00e2-_00e0-_00e9-_00e7-_0113-e_030a-e_030b-_0119">&auml; &#7869; &icirc; &acirc; &agrave; &eacute; &ccedil; &#275; e* e\'\' &#281;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_0117-_0115-e_0332-_1eb9-_011b-j-ee_0361">&#279; &#277; e_ &#7865; &#283; j ee[</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_0131-_1e14-_1e08">i &#274;` &#262;,</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_201c-_201d-_2018-_2019-_201e-_201a">&ldquo; &rdquo; &lsquo; &rsquo; &bdquo; &sbquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_00ab-_00bb-_00ab-_00bb-_2039-_203a">&laquo; &raquo; &laquo; &raquo; &lsaquo; &rsaquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t_0060_0060-_0027_0027-_002d_002d_002d-_002d_002d-_0060-_0027">`` \'\' --- -- ` \'</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#AAA-AAA-BBB"><acronym title="fff">AAA</acronym> (fff) <acronym title="fff">AAA</acronym> <acronym>BBB</acronym></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#CCC-CCC-DDD"><abbr title="rrr">CCC</abbr> (rrr) <abbr title="rrr">CCC</abbr> <abbr>DDD</abbr></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#someone_0040somewher-no_005fexplain_0040there"><a href="mailto:someone@somewher">the someone</a> <a href="mailto:no_explain@there">no_explain@there</a></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#f_002d_002dile1-f_002d_002dile"><img src="f--ile1.jpg" alt="f--ile1">  <img src="f--ile.png" alt="alt"></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#-_0040-_007b_007d-_002e-"><tt> @ {} . </tt></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#cite-asis-in-_0040w-b-in-r-SC-str-t-var-dfn-i"><cite>cite asis</cite> in&nbsp;@w&nbsp;<b>b</b><!-- /@w --> <span class="roman">in r</span> <small>SC</small> <strong>str</strong> <tt>t</tt> <var>var</var> <em>dfn</em> <i>i</i></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#env-code-option-samp-command-file-C_002dx-ESC"><code>env</code> <code>code</code> <samp>option</samp> &lsquo;<samp>samp</samp>&rsquo; <code>command</code> <samp>file</samp> <kbd>C-x <span class="key">ESC</span></kbd></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#g_t8_002e27in">8.27in</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#sansserif-slanted"><span class="sansserif">sansserif</span> <i>slanted</i></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#indicateurl">&lsquo;<code>indicateurl</code>&rsquo;</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#gH-3rd"><sub>g</sub>H 3<sup>rd</sup></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#http_003a_002f_002fsomewhere_005faaa-url-_002fman_002ecgi_002f1_002fls"><a href="http://somewhere_aaa">http://somewhere_aaa</a> <a href="url">text</a> <a href="/man.cgi/1/ls">ls</a></a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="-_007b-_007d"></span><div class="header">
@@ -21288,15 +21218,6 @@ Previous: <a href="#gH-3rd" accesskey="p" rel="prev"><sub>g</sub>H 3<sup>rd</sup
 ';
 
 $result_converted_errors{'html'}->{'at_commands_in_refs'} = [
-  {
-    'error_line' => ':23: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
-    'type' => 'warning'
-  },
   {
     'error_line' => ':90: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',

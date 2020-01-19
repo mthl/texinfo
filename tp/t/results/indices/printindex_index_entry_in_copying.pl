@@ -1450,10 +1450,6 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 </td></tr></table>
 
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#chapter" rel="index" accesskey="1">chapter</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="chapter"></span><div class="header">

@@ -1994,6 +1994,9 @@ Next: <a href="#chapter-2" accesskey="n" rel="next">chapter 2</a>, Previous: <a 
 </td></tr>
 </table>
 
+<ul class="no-bullet">
+<li><a href="#section">1.1 section</a></li>
+</ul>
 <hr>
 <span id="section"></span><div class="header">
 <p>
@@ -2015,6 +2018,10 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 </td></tr>
 </table>
 
+<ul class="no-bullet">
+<li><a href="#section-chap-2">2.1 section chap 2</a></li>
+<li><a href="#unnumberedsec">unnumberedsec</a></li>
+</ul>
 <hr>
 <span id="section-chap-2"></span><div class="header">
 <p>

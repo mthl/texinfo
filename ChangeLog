@@ -1,3 +1,13 @@
+2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No menus for HTML output by default.
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults): Set SHOW_MENU to 0 and 
+	MINI_TOC to 1.
+	(_convert) <sectioning commands>: Do not generate a mini-TOC for 
+	the @top node.  Do not generate a menu for a node missing one 
+	unless SHOW_MENU is set.
+
 2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>, and
 	    Patrice Dumas  <pertusus@free.fr>
 

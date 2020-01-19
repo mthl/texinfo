@@ -739,14 +739,6 @@ Next: <a href="#Chap-first-here" accesskey="n" rel="next">Chap first  here</a> &
 </div>
 <h1 class="node-heading">Top</h1>
 
-<table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="#Chap-first-here" accesskey="1">Chap    first here</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Test-title" accesskey="2">Test    title   </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Last-with-spaces" accesskey="3">Last with spaces    </a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
-</td></tr>
-</table>
 
 <hr>
 <span id="Chap-first-here"></span><div class="header">
