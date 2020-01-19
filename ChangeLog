@@ -1,5 +1,10 @@
 2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Info Format General Layout): Change 
+	@subsection to @subheading so that nodes appear in menu.
+
+2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No menus for HTML output by default.
 
 	* tp/Texinfo/Convert/HTML.pm (%defaults): Set SHOW_MENU to 0 and 

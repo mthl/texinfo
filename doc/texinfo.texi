@@ -23688,7 +23688,7 @@ This section describes the overall layout of Info manuals.
 
 
 @node Info Format Whole Manual
-@subheading Info Format: A Whole Manual
+@subsection Info Format: A Whole Manual
 
 @cindex Nonsplit manuals, Info format of
 @cindex Split manuals, Info format of
@@ -23732,7 +23732,7 @@ with the indirect table to deduce which subfile a particular node is in.
 
 
 @node Info Format Preamble
-@subheading Info Format: Preamble
+@subsection Info Format: Preamble
 
 @cindex Preamble, in Info format
 
@@ -23767,7 +23767,7 @@ commands present in the manual (@pxref{Installing Dir Entries}).
 
 
 @node Info Format Indirect Table
-@subheading Info Format: Indirect Table
+@subsection Info Format: Indirect Table
 
 @cindex Indirect table, in Info format
 
@@ -23810,7 +23810,7 @@ giving up immediately if the position is not exactly at a node beginning.
 
 
 @node Info Format Tag Table
-@subheading Info Format: Tag Table
+@subsection Info Format: Tag Table
 
 @cindex Tag table, in Info format
 
@@ -23862,7 +23862,7 @@ table entry.
 
 
 @node Info Format Local Variables
-@subheading Info Format: Local Variables
+@subsection Info Format: Local Variables
 
 @cindex Local variable section, in Info format
 
@@ -23881,7 +23881,7 @@ End:
 
 
 @node Info Format Regular Nodes
-@subheading Info Format: Regular Nodes
+@subsection Info Format: Regular Nodes
 
 @cindex Info nodes, in Info format
 
