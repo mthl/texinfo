@@ -468,10 +468,10 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><span id="unknkown-language"></span><h1 class="top">unknkown language</h1>
 
-<p>Unknown language. See <a href="#Top">Top</a>.
+<p>Unknown language. See <a href="#Top">unknkown language</a>.
 </p>
 
-<p>Another unknown language. See <a href="#Top">Top</a>.
+<p>Another unknown language. See <a href="#Top">unknkown language</a>.
 </p><hr>
 
 

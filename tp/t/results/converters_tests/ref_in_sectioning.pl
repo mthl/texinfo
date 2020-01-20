@@ -2468,7 +2468,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 
 <ul class="no-bullet">
   <li><a id="toc-node_002e" href="#node">1 See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a></li>
-  <li><a id="toc-node-just-node" href="#chap">2 <a href="#node">node</a> just node</a>
+  <li><a id="toc-node-just-node" href="#chap">2 <a href="#node">See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a> just node</a>
   <ul class="no-bullet">
     <li><a id="toc-node-node_002c-crossref-arg2" href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>
     <li><a id="toc-node-code-node_002c-samptitle-arg3" href="#node-code-node_002c-samptitle-arg3">2.2 <a href="#node">&lsquo;<samp>title</samp>&rsquo;</a>  code node, samptitle arg3</a></li>
@@ -2491,7 +2491,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <p>
  &nbsp; </p>
 </div>
-<span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">node</a> (see <a href="#node">node</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
+<span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a> (see <a href="#node">See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a>) (see <cite><a href="file.html#Top">Manual</a></cite>)</h1>
 
 
 <hr>
@@ -2506,7 +2506,7 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
 <p>
  &nbsp; </p>
 </div>
-<span id="node-just-node"></span><h2 class="chapter">2 <a href="#node">node</a> just node</h2>
+<span id="node-just-node"></span><h2 class="chapter">2 <a href="#node">See <a href="file name.html#node">title</a> in <cite>Manual</cite>.</a> just node</h2>
 
 <ul class="no-bullet">
 <li><a href="#node-node_002c-crossref-arg2">2.1 <a href="#node">cross ref name</a>  node, crossref arg2</a></li>

@@ -1047,7 +1047,7 @@ my %defaults = (
   'INDEX_ENTRY_COLON'    => ':',
   'BODYTEXT'             => undef,
   'documentlanguage'     => 'en',
-  'xrefautomaticsectiontitle' => 'off',
+  'xrefautomaticsectiontitle' => 'on',
   'SHOW_TITLE'           => 1,
   'SECTION_NAME_IN_TITLE' => 0,
   'USE_TITLEPAGE_FOR_TITLE' => 0,
@@ -3236,21 +3236,11 @@ sub _convert_xref_commands($$$$)
                       and $command->{'cmdname'} ne 'anchor'
                       and $command->{'cmdname'} ne 'float');
     if ($cmdname eq 'pxref') {
-      if ($is_section) {
-        $tree = $self->gdt('see section {reference_name}', 
-         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
-      } else {
-        $tree = $self->gdt('see {reference_name}', 
-         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
-      }
+      $tree = $self->gdt('see {reference_name}', 
+        { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
     } elsif ($cmdname eq 'xref' or $cmdname eq 'inforef') {
-      if ($is_section) {
-        $tree = $self->gdt('See section {reference_name}',
-         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
-      } else {
-        $tree = $self->gdt('See {reference_name}',
-         { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
-      }
+      $tree = $self->gdt('See {reference_name}',
+        { 'reference_name' => {'type' => '_converted', 'text' => $reference} });
     } elsif ($cmdname eq 'ref') {
       $tree = $self->gdt('{reference_name}',
          { 'reference_name' => {'type' => '_converted', 'text' => $reference} });

@@ -714,7 +714,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 
-<p>See section <a href="#chap">chapter</a>.
+<p>See <a href="#chap">chapter</a>.
 </p>
 
 <p>See <a href="#chap">chap</a>.

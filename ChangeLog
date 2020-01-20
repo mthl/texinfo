@@ -1,3 +1,12 @@
+2020-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Use section names in HTML output.
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	Set xrefautomaticsectiontitle to 'on'.
+	(_convert_xref_commands): Do not insert word "section" before 
+	hyperlink.
+
 2020-01-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Info Format General Layout): Change 
