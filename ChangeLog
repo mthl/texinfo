@@ -1,5 +1,18 @@
 2020-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix test results.
+
+	* tp/tests/run_parser_all.sh: Specify
+	"-c SHOW_MENU=1  -c MINI_TOC=0" by default.
+
+	* tp/tests/layout/list-of-tests (formatting_plaintext),
+	* tp/tests/contents/list-of-tests (double_contents_book):
+	Specify "-c SHOW_MENU=0" on the command line.
+
+	Update the test results for the last change.
+
+2020-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Use section names in HTML output.
 
 	* tp/Texinfo/Convert/HTML.pm (%defaults):
