@@ -1,3 +1,7 @@
+2020-01-24 Jean-Christophe Helary <jean.christophe.helary@traduction-libre.org>
+
+	* doc/texinfo.tex (Smallcaps): Use correct French.
+
 2020-01-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix test results.

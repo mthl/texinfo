@@ -6701,14 +6701,14 @@ Use the @samp{@@sc} command to set text in @sc{a small caps font}
 braces in lowercase, like this:
 
 @example
-Richard @@sc@{Stallman@} commenc@'{e} GNU.
+Richard @@sc@{Stallman@} a commenc@'{e} le projet GNU.
 @end example
 
 @noindent
 This produces:
 
 @display
-Richard @sc{Stallman} commenc@'{e} GNU.
+Richard @sc{Stallman} a commenc@'{e} le projet GNU.
 @end display
 
 As shown here, we recommend reserving @code{@@sc} for special cases
