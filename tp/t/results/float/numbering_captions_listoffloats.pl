@@ -8145,7 +8145,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">A chapter</a> &nbsp; </p>
 </div>
 <span id="Test-floats"></span><h1 class="top">Test floats</h1>
 
@@ -8198,7 +8198,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 <hr>
 <span id="chapter"></span><div class="header">
 <p>
-Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Test floats</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="A-chapter"></span><h2 class="chapter">1 A chapter</h2>
 
@@ -8234,7 +8234,7 @@ Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <
 <hr>
 <span id="section"></span><div class="header">
 <p>
-Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
+Up: <a href="#chapter" accesskey="u" rel="up">A chapter</a> &nbsp; </p>
 </div>
 <span id="A-section"></span><h3 class="section">1.1 A section</h3>
 
@@ -8247,7 +8247,7 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; </p>
 <hr>
 <span id="Unnumbered"></span><div class="header">
 <p>
-Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with unnumbsubsec</a>, Previous: <a href="#chapter" accesskey="p" rel="prev">A chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="Unnumbered-1"></span><h2 class="unnumbered">Unnumbered</h2>
 
@@ -8281,7 +8281,7 @@ Up: <a href="#Unnumbered" accesskey="u" rel="up">Unnumbered</a> &nbsp; </p>
 <hr>
 <span id="Chapter-with-unnumbsubsec"></span><div class="header">
 <p>
-Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="prev">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float</a>, Previous: <a href="#Unnumbered" accesskey="p" rel="prev">Unnumbered</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="Chapter-with-unnumbsubsec-1"></span><h2 class="chapter">2 Chapter with unnumbsubsec</h2>
 
@@ -8314,7 +8314,7 @@ Up: <a href="#Chapter-with-unnumbsubsec" accesskey="u" rel="up">Chapter with unn
 <hr>
 <span id="Appendix-for-float"></span><div class="header">
 <p>
-Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="prev">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Previous: <a href="#Chapter-with-unnumbsubsec" accesskey="p" rel="prev">Chapter with unnumbsubsec</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="Appendix-for-float-1"></span><h2 class="appendix">Appendix A Appendix for float</h2>
 
@@ -8327,7 +8327,7 @@ Next: <a href="#list-of-floats" accesskey="n" rel="next">list of floats</a>, Pre
 <hr>
 <span id="list-of-floats"></span><div class="header">
 <p>
-Previous: <a href="#Appendix-for-float" accesskey="p" rel="prev">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Appendix-for-float" accesskey="p" rel="prev">Appendix for float</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="list-of-floats-1"></span><h2 class="unnumbered">list of floats</h2>
 

@@ -1,3 +1,15 @@
+2020-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Section names in HTML navigation bar instead of node names.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_element_direction): Accept 'section' as the type of text to 
+	return.
+	(_default_node_direction, _default_node_direction_footer)
+	[xrefautomaticsectiontitle]: Call '_element_direction' with 
+	'section'.  Combine text of both subroutines and make one call 
+	the other.
+
 2020-01-24 Jean-Christophe Helary <jean.christophe.helary@traduction-libre.org>
 
 	* doc/texinfo.tex (Smallcaps): Use correct French.

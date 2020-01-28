@@ -928,7 +928,7 @@ Next: <a href="#second-node" accesskey="n" rel="next">second node</a> &nbsp; </p
 <hr>
 <span id="second-node"></span><div class="header">
 <p>
-Next: <a href="#third-node" accesskey="n" rel="next">third node</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#third-node" accesskey="n" rel="next">subsection</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">second node</h4>
 

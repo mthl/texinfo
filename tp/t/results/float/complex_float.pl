@@ -4735,7 +4735,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; </p>
+Next: <a href="#chapter" accesskey="n" rel="next">A chapter</a> &nbsp; </p>
 </div>
 <span id="Test-floats"></span><h1 class="top">Test floats</h1>
 
@@ -4849,7 +4849,7 @@ A footnote.
 <hr>
 <span id="chapter"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">Test floats</a>, Up: <a href="#Top" accesskey="u" rel="up">Test floats</a> &nbsp; </p>
 </div>
 <span id="A-chapter"></span><h2 class="chapter">1 A chapter</h2>
 

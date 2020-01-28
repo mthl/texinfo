@@ -573,21 +573,21 @@ ul.no-bullet {list-style: none}
 <hr>
 <span id="c1"></span><div class="header">
 <p>
-Next: <a href="#c2" accesskey="n" rel="next">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#c2" accesskey="n" rel="next">c2</a> &nbsp; </p>
 </div>
 <span id="c1-1"></span><h2 class="chapter">1 c1</h2>
 
 <hr>
 <span id="c2"></span><div class="header">
 <p>
-Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" accesskey="p" rel="prev">c1</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Next: <a href="#c3" accesskey="n" rel="next">c3</a>, Previous: <a href="#c1" accesskey="p" rel="prev">c1</a> &nbsp; </p>
 </div>
 <span id="c2-1"></span><h2 class="chapter">2 c2</h2>
 
 <hr>
 <span id="c3"></span><div class="header">
 <p>
-Previous: <a href="#c2" accesskey="p" rel="prev">c2</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#c2" accesskey="p" rel="prev">c2</a> &nbsp; </p>
 </div>
 <span id="c3-1"></span><h2 class="chapter">3 c3</h2>
 <hr>

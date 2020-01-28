@@ -779,7 +779,7 @@ Next: <a href="#first" accesskey="n" rel="next">first</a>, Previous: <a href="di
 <hr>
 <span id="first"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">internal top node up</a>, Up: <a href="dir.html#Top" accesskey="u" rel="up">(dir)</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">first</h4>
 <hr>

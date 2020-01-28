@@ -1964,23 +1964,33 @@ sub _default_heading_text($$$$$)
 }
 
 # Associated to a button.  Return text to use for a link in button bar.
-sub _default_node_direction($$)
+sub _default_node_direction($$;$)
 {
   my $self = shift;
   my $direction = shift;
+  my $omit_rel = shift;
   
   my $result = undef;
   my $href = $self->_element_direction($self->{'current_element'},
                                            $direction, 'href');
-  my $node = $self->_element_direction($self->{'current_element'},
-                                           $direction, 'node');
+  my $node;
+
+
+  if ($self->get_conf('xrefautomaticsectiontitle') eq 'on') {
+    $node = $self->_element_direction($self->{'current_element'},
+                                             $direction, 'section');
+  }
+
+  if (!defined($node)) {
+    $node = $self->_element_direction($self->{'current_element'},
+                                      $direction, 'node');
+  }
+
   my $anchor;
   if (defined($href) and defined($node) and $node =~ /\S/) {
-    my $anchor_attributes = $self->_direction_href_attributes($direction);
+    my $anchor_attributes = $omit_rel ? ''
+      : $self->_direction_href_attributes($direction);
     $anchor = "<a href=\"$href\"${anchor_attributes}>$node</a>";
-  #} elsif (defined($node) and $node =~ /\S/) {
-  #  $anchor = $node; 
-  #} else {
   }
   if (defined($anchor)) {
     # i18n
@@ -1995,21 +2005,8 @@ sub _default_node_direction_footer($$)
 {
   my $self = shift;
   my $direction = shift;
-  
-  my $result = undef;
-  my $href = $self->_element_direction($self->{'current_element'},
-                                           $direction, 'href');
-  my $node = $self->_element_direction($self->{'current_element'},
-                                           $direction, 'node');
-  my $anchor;
-  if (defined($href) and defined($node) and $node =~ /\S/) {
-    $anchor = "<a href=\"$href\">$node</a>";
-  }
-  if (defined($anchor)) {
-    # i18n
-    $result = $self->get_conf('BUTTONS_TEXT')->{$direction}.": $anchor";
-  }
-  return $result;  
+
+  return _default_node_direction($self, $direction, 1);
 }
 
 # how to create IMG tag
@@ -5952,12 +5949,18 @@ my %valid_types = (
   'tree' => 1,
   'target' => 1,
   'node' => 1,
+  'section' => 1
 );
 
 foreach my $no_number_type ('text', 'tree', 'string') {
   $valid_types{$no_number_type .'_nonumber'} = 1;
 }
 
+# sub _element_direction($SELF, $ELEMENT, $DIRECTION, $TYPE, $FILENAME)
+#
+# Return text used for linking from $ELEMENT in direction $DIRECTION.  The
+# text returned depends on $TYPE.
+#
 # $element can be undef.
 # $element undef happens at least when there is no output file, or for
 # the table of content when frames are used.  That call would result
@@ -6028,6 +6031,10 @@ sub _element_direction($$$$;$)
       $command = $element_target->{'extra'}->{'node'};
       $target = $self->{'targets'}->{$command} if ($command);
       $type = 'text';
+    } elsif ($type eq 'section') {
+      $command = $element_target->{'extra'}->{'section'};
+      $target = $self->{'targets'}->{$command} if ($command);
+      $type = 'text_nonumber';
     } else {
       if ($element_target->{'extra'}->{'special_element'}) {
         $command = $element_target;

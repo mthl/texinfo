@@ -658,7 +658,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#after" accesskey="n" rel="next">after</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Next: <a href="#after" accesskey="n" rel="next">chapter 2</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
@@ -666,7 +666,7 @@ Next: <a href="#after" accesskey="n" rel="next">after</a> &nbsp; [<a href="#SEC_
 <hr>
 <span id="part"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
+Previous: <a href="#Top" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>]</p>
 </div>
 <h1 class="part">part</h1>
 <hr>

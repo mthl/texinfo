@@ -4963,7 +4963,7 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#
 <hr>
 <span id="chapter"></span><div class="header">
 <p>
-Next: <a href="#chapter2" accesskey="n" rel="next">chapter2</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#chapter2" accesskey="n" rel="next">chapter 2</a>, Previous: <a href="#Top" accesskey="p" rel="prev">Top section</a>, Up: <a href="#Top" accesskey="u" rel="up">Top section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="chapter-1"></span><h2 class="chapter">1 chapter</h2>
 
@@ -4987,7 +4987,7 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_
 <hr>
 <span id="subsection"></span><div class="header">
 <p>
-Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">s--ect,ion</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">A section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="subsection-1"></span><h4 class="subsection">1.1.1 subsection</h4>
 
@@ -5000,21 +5000,21 @@ Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">s--ect,ion</a> &nbs
 <hr>
 <span id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></span><div class="header">
 <p>
-Next: <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="n" rel="next">subsubsection three---four----\'\'</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" accesskey="n" rel="next">three&mdash;four&mdash;-&rdquo;</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="subsubsection-_0060_0060simple_002ddouble_002d_002d-1"></span><h4 class="subsubsection">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</h4>
 
 <hr>
 <span id="subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><div class="header">
 <p>
-Previous: <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="p" rel="prev">subsubsection ``simple-double--</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d" accesskey="p" rel="prev">subsubsection &ldquo;simple-double&ndash;</a>, Up: <a href="#subsection" accesskey="u" rel="up">subsection</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027"></span><h4 class="subsubsection">1.1.1.2 three&mdash;four&mdash;-&rdquo;</h4>
 
 <hr>
 <span id="chapter2"></span><div class="header">
 <p>
-Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top" accesskey="u" rel="up">Top section</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Top" title="Index" rel="index">Index</a>]</p>
 </div>
 <span id="chapter-2"></span><h2 class="centerchap" align="center">chapter 2</h2>
 

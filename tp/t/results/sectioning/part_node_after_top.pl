@@ -644,7 +644,7 @@ Next: <a href="#part-node-after-top" accesskey="n" rel="next">part node after to
 <hr>
 <span id="part-node-after-top"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
 <h4 class="node-heading">part node after top</h4>
 <span id="part"></span><h1 class="part">part</h1>

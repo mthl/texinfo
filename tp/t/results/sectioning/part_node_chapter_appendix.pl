@@ -841,7 +841,7 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><div class="header">
 <p>
-Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; </p>
+Next: <a href="#chapter-node" accesskey="n" rel="next">chapter</a> &nbsp; </p>
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
@@ -849,7 +849,7 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; <
 <hr>
 <span id="Part-1"></span><div class="header">
 <p>
-Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; </p>
+Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" accesskey="u" rel="up">top</a> &nbsp; </p>
 </div>
 <h1 class="part">Part 1</h1>
 <hr>
