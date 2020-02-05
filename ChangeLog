@@ -1,3 +1,8 @@
+2019-02-05  Hans-Bernhard Bröker  <HBBroeker@t-online.de>  (tiny change)
+
+	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):
+	Remove incorrect semicolon after if condition.
+
 2020-01-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Section names in HTML navigation bar instead of node names.

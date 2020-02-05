@@ -475,7 +475,7 @@ handle_close_brace (ELEMENT *current, char **line_inout)
           int superfluous_arg;
           char *arg = convert_to_text (current, &superfluous_arg);
 
-          if (arg && *arg);
+          if (arg && *arg)
             {
               ELEMENT *index_elt;
               if (current->parent->parent
