@@ -1,3 +1,12 @@
+2020-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix parsetexi out-of-source build.
+
+	* tp/Texinfo/XS/Makefile.am: Add -I option to locate include 
+	files under out-of-source builds.  Suggestion by Hans-Bernhard 
+	Bröker.  Problem reported by Werner Lemberg 
+	https://lists.gnu.org/archive/html/bug-texinfo/2020-01/msg00021.html.
+
 2019-02-05  Hans-Bernhard Bröker  <HBBroeker@t-online.de>  (tiny change)
 
 	* tp/Texinfo/XS/parsetexi/separator.c (handle_close_brace):

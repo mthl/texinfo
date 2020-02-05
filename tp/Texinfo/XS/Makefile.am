@@ -154,6 +154,9 @@ EXTRA_DIST += $p/Parsetexi.xs
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
 
+# To locate include files under out-of-source builds.
+Parsetexi_la_CPPFLAGS = -I$(srcdir)/parsetexi $(AM_CPPFLAGS)
+
 BUILT_SOURCES=parsetexi/element_types.c \
               parsetexi/element_types.h \
               parsetexi/command_data.c \
