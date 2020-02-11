@@ -1,3 +1,16 @@
+2020-02-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix @xrefautomaticsectiontitle with active chars in node names.
+
+	* doc/texinfo.tex (\refx): Turn off active characters when
+	constructing a control sequence with \csname.  This allows 
+	retrieving a section name for use with @xrefautomaticsectiontitle.
+	(\xrefX): Do not turn off active characters before using \refx 
+	for the section number.
+
+	Akim Demaille reported an error message when using
+	@xrefautomaticsectiontitle with a '+' in a node name.
+
 2020-02-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix parsetexi out-of-source build.
