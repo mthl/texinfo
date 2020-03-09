@@ -1241,9 +1241,9 @@ $result_converted{'html_text'}->{'at_commands_in_raw'} = '<span id="Top"></span>
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>in footnote</p>
-<h5><a id="FOOT2" href="#DOCF2">(2)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(2)</a></h5>
 <p>second footnote</p>
 </div>
 <hr>

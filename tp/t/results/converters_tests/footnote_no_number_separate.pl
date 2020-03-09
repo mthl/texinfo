@@ -232,9 +232,9 @@ $result_converted{'html_text'}->{'footnote_no_number_separate'} = '<span id="Top
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(*)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(*)</a></h5>
 <p>Footnote 1.</p>
-<h5><a id="FOOT2" href="#DOCF2">(*)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(*)</a></h5>
 <p>Footnote 2.</p>
 </div>
 <hr>

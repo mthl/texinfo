@@ -1713,7 +1713,7 @@ the author abandon his copyright.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1721,7 +1721,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h3>
+<h5><a id="FOOT1_2" href="#DOCF1_2">(2)</a></h5>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1729,7 +1729,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h5><a id="FOOT1_3" href="#DOCF1_3">(3)</a></h3>
+<h5><a id="FOOT1_3" href="#DOCF1_3">(3)</a></h5>
 <p>The caption copying footnote
 <span id="caption-copying-footnote-anchor"></span></p>
 <span id="index-copying-indexed-caption-copying-footnote"></span>
@@ -1737,7 +1737,7 @@ the author abandon his copyright.
 
 <p>see <a href="#Copying-and-floats">Copying and floats</a>.
 </p>
-<h5><a id="t_hlistoffloats_FOOT1_4" href="#t_hlistoffloats_DOCF1_4">(4)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT1_4" href="#t_hlistoffloats_DOCF1_4">(4)</a></h5>
 <p>The caption copying footnote
 </p>
 

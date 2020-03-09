@@ -5128,7 +5128,7 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="FOOT1" href="#DOCF1">(1)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(1)</a></h5>
 <p>in footnote</p>
 </div>
 <hr>

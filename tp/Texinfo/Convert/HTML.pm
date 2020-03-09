@@ -1678,7 +1678,7 @@ sub _convert_footnote_command($$$$)
   }
 
   $foot_lines .= '<h5>' .
-   "<a id=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h3>\n"
+   "<a id=\"$footid\" href=\"$document_filename#$docid\">($number_in_doc)</a></h5>\n"
    . $footnote_text;
 
   my $footnote_number_text;

@@ -4900,13 +4900,13 @@ A footnote 2.
 <hr>
 <h4 class="footnotes-heading">Footnotes</h4>
 
-<h5><a id="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h3>
+<h5><a id="t_hlistoffloats_FOOT3_1" href="#t_hlistoffloats_DOCF3_1">(1)</a></h5>
 <p>footnote Text with features caption 2</p>
-<h5><a id="FOOT1" href="#DOCF1">(2)</a></h3>
+<h5><a id="FOOT1" href="#DOCF1">(2)</a></h5>
 <p>footnote Text with features</p>
-<h5><a id="FOOT2" href="#DOCF2">(3)</a></h3>
+<h5><a id="FOOT2" href="#DOCF2">(3)</a></h5>
 <p>footnote Text with features caption</p>
-<h5><a id="FOOT3" href="#DOCF3">(4)</a></h3>
+<h5><a id="FOOT3" href="#DOCF3">(4)</a></h5>
 <p>footnote Text with features caption 2</p>
 </div>
 <hr>
