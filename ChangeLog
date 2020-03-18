@@ -1,3 +1,7 @@
+2020-03-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Add dejagnu.  From Karl.
+
 2020-03-09  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix closing tag for footnotes heading.
