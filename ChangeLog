@@ -1,3 +1,7 @@
+2020-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Add info.
+
 2020-03-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Add dejagnu.  From Karl.

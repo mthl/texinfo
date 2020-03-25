@@ -1,6 +1,6 @@
 # htmlxref.cnf - reference file for free Texinfo manuals on the web.
 
-htmlxrefversion=2020-03-18.09; # UTC
+htmlxrefversion=2020-03-25.13; # UTC
 
 # Copyright 2010-2020 Free Software Foundation, Inc.
 # 
@@ -184,6 +184,9 @@ emacs		node	${EMACS}/html_node/emacs/
  #
  idlwave	mono	${EMACS}/html_mono/idlwave.html
  idlwave	node	${EMACS}/html_node/idlwave/
+ #
+ info   	mono	${EMACS}/html_mono/info.html
+ info   	node	${EMACS}/html_node/info/
  #
  message	mono	${EMACS}/html_mono/message.html
  message	node	${EMACS}/html_node/message/
