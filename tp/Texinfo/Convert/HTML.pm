@@ -6461,6 +6461,7 @@ $description
 <meta name=\"distribution\" content=\"global\">${generator}$date
 $css_lines
 <meta http-equiv=\"Refresh\" content=\"0; url=$href\">
+<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
 $extra_head
 </head>
 

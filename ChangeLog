@@ -1,3 +1,11 @@
+2020-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Viewport declaration.
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_redirection_page):
+	Add <meta name="viewport"> tag in header for better rendering on 
+	mobile devices.  From Karl.
+
 2020-03-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Add info.
