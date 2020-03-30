@@ -10829,7 +10829,7 @@ Here is a summary of the glyph commands:
 @code{@@point@{@}} shows the location of point.
 
 @item @clicksequence{A @click{} B}
-@code{@@clicksequence@{A @@click@{@} B} indicates a GUI operation
+@code{@@clicksequence@{A @@click@{@} B@}} indicates a GUI operation
 sequence: first A, then clicking B, or choosing B from a menu, or
 otherwise selecting it.
 @end table
