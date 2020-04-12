@@ -159,7 +159,7 @@ info ls
 Assuming the normal @code{dir} entry for @code{ls}, this will show the
 @code{ls} documentation, which happens to be within the
 @code{coreutils} manual rather than a separate manual.  The @code{dir}
-entries can point to an any node within a manual, so that users don't
+entries can point to any node within a manual, so that users don't
 have to be concerned with the exact structure used by different
 authors.
 

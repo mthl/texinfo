@@ -1,3 +1,7 @@
+2020-04-12  Matthew Kraai <kraai@ftbfs.org>  (tiny change)
+
+	* doc/info-stnd.texi (Invoking Info): Fix typo.
+
 2020-03-27  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Viewport declaration.
