@@ -1,3 +1,7 @@
+2020-04-14  Vincent Lefevre <vincent@vinc17.net>  (tiny change)
+
+	* doc/texinfo.tex (\urefallowbreak): Fix typos in comment.
+
 2020-04-12  Matthew Kraai <kraai@ftbfs.org>  (tiny change)
 
 	* doc/info-stnd.texi (Invoking Info): Fix typo.

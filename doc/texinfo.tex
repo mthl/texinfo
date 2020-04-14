@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-02-11.09}
+\def\texinfoversion{2020-04-14.13}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -3101,10 +3101,10 @@ end
 
 % Allow a ragged right output to aid breaking long URL's.  There can
 % be a break at the \allowbreak with no extra glue (if the existing stretch in 
-% the line is sufficent), a break at the \penalty100 with extra glue added
+% the line is sufficient), a break at the \penalty100 with extra glue added
 % at the end of the line, or no break at all here.
 %   Changing the value of the penalty and/or the amount of stretch affects how 
-% preferrable one choice is over the other.
+% preferable one choice is over the other.
 \def\urefallowbreak{%
   \allowbreak
   \hskip 0pt plus 2 em\relax
