@@ -1,3 +1,8 @@
+2020-04-22  Masamichi Hosoda <trueroad@trueroad.jp>
+
+	* doc/txi-ja.tex: Change default Japanese font to haranoaji.
+	From TeX Live 2020, Japanese default font has become HaranoAji.
+
 2020-04-14  Vincent Lefevre <vincent@vinc17.net>  (tiny change)
 
 	* doc/texinfo.tex (\urefallowbreak): Fix typos in comment.
