@@ -553,10 +553,13 @@
     \XeTeXlinebreakskip=0em plus 0.1em minus 0.01em
     \XeTeXlinebreakpenalty=0
 
-    % For copy & paste Unicode characters (XeTeX 0.99995+)
+    % For copy & paste Unicode characters (XeTeX 0.99995 - 0.99998)
     \ifx\XeTeXgenerateactualtext\thisisundefined
     \else
-      \XeTeXgenerateactualtext=1
+      % XeTeX 0.99999+ doesn't need this workaround.
+      \ifnum\strcmp{\the\XeTeXversion\XeTeXrevision}{0.99999}<0
+        \XeTeXgenerateactualtext=1
+      \fi
     \fi
 
   \fi % XeTeX
