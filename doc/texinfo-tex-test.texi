@@ -1808,4 +1808,27 @@ chapter text (date at left)
 next page
 (date at right)
 
+
+@chapter Test of @code{@@*footing}
+@oddfooting @thistitle @| @thispage @| @thissection
+@evenfooting @thissection @| @thispage @| @thistitle
+@everyfootingmarks top
+
+aaa
+
+@section AA
+
+bbb
+
+@page
+
+ccc
+
+@section DD
+
+ee
+
+
+
+
 @bye
