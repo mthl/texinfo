@@ -1795,4 +1795,17 @@ ffffff
 
 @chapter Four
 
+
+@setchapternewpage odd
+@chapter Test of @code{@@*heading}
+
+@headings off
+@oddheading @today{} @| @thispage @| @thischapter{}
+@evenheading @thischapter @| @thispage @| @today{}
+chapter text (date at left)
+
+@page
+next page
+(date at right)
+
 @bye

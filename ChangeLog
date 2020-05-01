@@ -1,3 +1,12 @@
+2020-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Simplify output routine.
+
+	* doc/texinfo.tex (\onepageout, \checkchapterpage):
+	Split code to check if we are on a chapter page into a new 
+	macro.
+	* doc/texinfo-tex-test.texi (Test of @*heading): New section.
+
 2020-04-23  Masamichi Hosoda <trueroad@trueroad.jp>
 
 	* doc/txi-ja.tex: Remove \XeTeXgenerateactualtext=1 for XeTeX 0.99999+
