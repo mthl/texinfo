@@ -1,3 +1,13 @@
+2020-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix blank heading on last page of a chapter.
+
+	(\checkchapterpage): Use \gettopheadingmarks or 
+	\getbottomheadingmarks to determine the current chapter name.  
+	\firstmark was wrong for this as it could give the wrong value 
+	on the last page of a chapter.  Inconsistent output reported by
+	Sebastian Urban.
+
 2020-05-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Test of @*footing): Add.

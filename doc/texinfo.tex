@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-01.01}
+\def\texinfoversion{2020-05-02.00}
 %
 % Copyright 1985, 1986, 1988, 1990-2019 Free Software Foundation, Inc.
 %
@@ -410,12 +410,12 @@
 
 % Check if we are on the first page of a chapter.
 \def\checkchapterpage{%
+  % Get the chapter that was current at the end of the last page
   \ifcase1\the\savedtopmark\fi
   \let\prevchaptername\thischaptername
-  \ifcase0\firstmark\fi
-  \let\curchaptername\thischaptername
   %
   \ifodd\pageno \getoddheadingmarks \else \getevenheadingmarks \fi
+  \let\curchaptername\thischaptername
   %
   \ifx\curchaptername\prevchaptername
     \let\thischapterheading\thischapter
