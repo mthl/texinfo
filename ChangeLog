@@ -1,3 +1,12 @@
+2020-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fixed-width directed double quotation marks.
+
+	* doc/texinfo.tex (\quotedblleft, quotedblright): If we
+	are in a fixed-width font, then use glyphs from European
+	Computer Modern.  Sebastian Urban reported that “ and ”
+	were output incorrectly.
+
 2020-05-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix blank heading on last page of a chapter.
