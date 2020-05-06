@@ -1,5 +1,14 @@
 2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fixed-width pounds sign.
+
+	* doc/texinfo.tex (\pounds): Use \ecfont glyph for fixed-width 
+	British pound sign.
+	(\quotedblleft, \quotedblright): Use \ifmonospace instead of 
+	\curfontstyle.
+
+2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix braced group at start of @verbatim line.
 
 	* doc/texinfo.tex (\setupverbatim):  Do not call \starttabbox 

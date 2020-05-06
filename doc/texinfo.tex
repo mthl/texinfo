@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-06.12}
+\def\texinfoversion{2020-05-06.13}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -3512,7 +3512,7 @@ end
 
 % @pounds{} is a sterling sign, which Knuth put in the CM italic font.
 %
-\def\pounds{{\it\$}}
+\def\pounds{\ifmonospace{\ecfont\char"BF}\else{\it\$}\fi}
 
 % @euro{} comes from a separate font, depending on the current style.
 % We use the free feym* fonts from the eurosym package by Henrik
@@ -3667,19 +3667,11 @@ end
 % only change font for tt for correct kerning and to avoid using
 % \ecfont unless necessary.
 \def\quotedblleft{%
-  \ifx\curfontstyle\ttstylename
-    {\ecfont\char"10}%
-  \else
-    {\char"5C}%
-  \fi
+  \ifmonospace{\ecfont\char"10}\else{\char"5C}\fi
 }
 
 \def\quotedblright{%
-  \ifx\curfontstyle\ttstylename
-    {\ecfont\char"11}%
-  \else
-    {\char`\"}%
-  \fi
+  \ifmonospace{\ecfont\char"11}\else{\char`\"}\fi
 }
 
 
