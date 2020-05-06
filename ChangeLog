@@ -1,3 +1,22 @@
+2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix braced group at start of @verbatim line.
+
+	* doc/texinfo.tex (\setupverbatim):  Do not call \starttabbox 
+	with \everypar.  Call \starttabbox at end of \par, and do not 
+	call \leavevmode at start of \par.
+	(\doverbatim): Call \starttabbox before processing contents of 
+	@verbatim block.  Close a group at the end with \egroup.
+	(\starttabbox): No need for \global in assignment.
+	(\tabexpand): Call \leavevmode before adding box.
+
+	If a character such as Ð at the start of a line expanded to a
+	braced group (like {\ecfont \char"D0}), then \everypar would not 
+	insert an opening brace until after the first opening brace, 
+	leading the closing brace to close \verbbox prematurely.  The 
+	single character in the box would be printed at the end of the 
+	line.
+
 2020-05-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fixed-width directed double quotation marks.
