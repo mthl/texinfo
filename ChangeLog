@@ -1,5 +1,10 @@
 2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo-tex-test.texi (Environments, @verbatim): New 
+	section.
+
+2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fixed-width pounds sign.
 
 	* doc/texinfo.tex (\pounds): Use \ecfont glyph for fixed-width 

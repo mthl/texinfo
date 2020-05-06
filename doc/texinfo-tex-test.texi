@@ -1556,6 +1556,19 @@ List of floats now:
 @listoffloats Figure
 
 
+@chapter Environments
+
+@section @code{@@verbatim}
+
+@verbatim
+                   ‘MENU’
+                   ------
+
+chicken		pizza	beefburger	hotdog
+£0.44		$2.50	€1.50		42¢
+
+“Please come again”
+@end verbatim
 
 
 @chapter Document encoding
