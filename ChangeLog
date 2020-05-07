@@ -1,3 +1,11 @@
+2020-05-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Chapter numbers in PDF outlines.
+
+	* doc/texinfo.tex (\pdfmakeoutlines) [pdftex, XeTeX]:
+	Add chapter numbers in the PDF outline for chapters and 
+	appendices only.  Suggestion from Sebastian Urban.
+
 2020-05-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo-tex-test.texi (Environments, @verbatim): New 

@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-06.13}
+\def\texinfoversion{2020-05-07.17}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -1430,7 +1430,13 @@ output) for that.)}
       % subentries, which we calculated on our first read of the .toc above.
       %
       % We use the node names as the destinations.
+      %
+      % Currently we prefix the section name with the section number
+      % for chapter and appendix headings only in order to avoid too much 
+      % horizontal space being required in the PDF viewer.
       \def\numchapentry##1##2##3##4{%
+        \dopdfoutline{##2 ##1}{count-\expnumber{chap##2}}{##3}{##4}}%
+      \def\unnchapentry##1##2##3##4{%
         \dopdfoutline{##1}{count-\expnumber{chap##2}}{##3}{##4}}%
       \def\numsecentry##1##2##3##4{%
         \dopdfoutline{##1}{count-\expnumber{sec##2}}{##3}{##4}}%
@@ -1672,9 +1678,13 @@ output) for that.)}
       % Therefore, we read toc only once.
       %
       % We use node names as destinations.
+      %
+      % Currently we prefix the section name with the section number
+      % for chapter and appendix headings only in order to avoid too much 
+      % horizontal space being required in the PDF viewer.
       \def\partentry##1##2##3##4{}% ignore parts in the outlines
       \def\numchapentry##1##2##3##4{%
-        \dopdfoutline{##1}{1}{##3}{##4}}%
+        \dopdfoutline{##2 ##1}{1}{##3}{##4}}%
       \def\numsecentry##1##2##3##4{%
         \dopdfoutline{##1}{2}{##3}{##4}}%
       \def\numsubsecentry##1##2##3##4{%
@@ -1686,7 +1696,8 @@ output) for that.)}
       \let\appsecentry\numsecentry%
       \let\appsubsecentry\numsubsecentry%
       \let\appsubsubsecentry\numsubsubsecentry%
-      \let\unnchapentry\numchapentry%
+      \def\unnchapentry##1##2##3##4{%
+        \dopdfoutline{##1}{1}{##3}{##4}}%
       \let\unnsecentry\numsecentry%
       \let\unnsubsecentry\numsubsecentry%
       \let\unnsubsubsecentry\numsubsubsecentry%
