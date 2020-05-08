@@ -1,5 +1,10 @@
 2020-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Global Document Commands): Relegate to 
+	appendix.
+
+2020-05-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\indexnofonts):
 	Give many commands a definition that removes the {} after use.  
 	Sebastian Urban reported that @TeX{} appeared as "TeX{}" in a 
