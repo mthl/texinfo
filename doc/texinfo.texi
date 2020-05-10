@@ -1,10 +1,5 @@
 \input texinfo.tex    @c -*-texinfo-*-
 
-@c Everything between the start/end of header lines will be passed by
-@c Emacs's {texinfo,makeinfo}-format region commands.  See the `start of
-@c header' node for more info.
-@c %**start of header
-
 @c Automake requires this
 @setfilename texinfo.info
 
@@ -23,8 +18,6 @@
 @syncodeindex pg cp
 
 @c finalout
-
-@comment %**end of header
 
 @copying
 This manual is for GNU Texinfo (version @value{VERSION}, @value{UPDATED}),
