@@ -22823,8 +22823,7 @@ are generally all given before the Top node, if they are given at all.
 * @code{@@paragraphindent}::            Specify paragraph indentation.
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
-* @code{@@smallbook}::                  How to print small format books 
-and manuals.
+* @code{@@smallbook}::                  How to print small format books and manuals.
 * A4 Paper::                    How to print on A4 or A5 paper.
 * @code{@@pagesizes}::                  How to print with customized page sizes.
 * Magnification::               How to print scaled up output.
