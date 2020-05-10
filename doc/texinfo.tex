@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-08.18}
+\def\texinfoversion{2020-05-10.15}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -408,7 +408,8 @@
 \ifr@ggedbottom \kern-\dimen@ \vfil \fi}
 }
 
-% Check if we are on the first page of a chapter.
+% Check if we are on the first page of a chapter.  Used for printing headings.
+\newif\ifchapterpage
 \def\checkchapterpage{%
   % Get the chapter that was current at the end of the last page
   \ifcase1\the\savedtopmark\fi
@@ -418,12 +419,9 @@
   \let\curchaptername\thischaptername
   %
   \ifx\curchaptername\prevchaptername
-    \let\thischapterheading\thischapter
+    \chapterpagefalse
   \else
-    % \thischapterheading is the same as \thischapter except it is blank
-    % for the first page of a chapter.  This is to prevent the chapter name 
-    % being shown twice.
-    \def\thischapterheading{}%
+    \chapterpagetrue
   \fi
 }
 
@@ -3806,12 +3804,19 @@ end
 
 \newtoks\evenheadline    % headline on even pages
 \newtoks\oddheadline     % headline on odd pages
+\newtoks\evenchapheadline% headline on even pages with a new chapter
+\newtoks\oddchapheadline % headline on odd pages with a new chapter
 \newtoks\evenfootline    % footline on even pages
 \newtoks\oddfootline     % footline on odd pages
 
 % Now make \makeheadline and \makefootline in Plain TeX use those variables
-\headline={{\textfonts\rm \ifodd\pageno \the\oddheadline
-                            \else \the\evenheadline \fi}}
+\headline={{\textfonts\rm
+            \ifchapterpage
+              \ifodd\pageno\the\oddchapheadline\else\the\evenchapheadline\fi
+            \else
+              \ifodd\pageno\the\oddheadline\else\the\evenheadline\fi
+            \fi}}
+
 \footline={{\textfonts\rm \ifodd\pageno \the\oddfootline
                             \else \the\evenfootline \fi}\HEADINGShook}
 \let\HEADINGShook=\relax
@@ -3827,12 +3832,14 @@ end
 \def\evenheading{\parsearg\evenheadingxxx}
 \def\evenheadingxxx #1{\evenheadingyyy #1\|\|\|\|\finish}
 \def\evenheadingyyy #1\|#2\|#3\|#4\finish{%
-\global\evenheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
+  \global\evenheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}
+  \global\evenchapheadline=\evenheadline}
 
 \def\oddheading{\parsearg\oddheadingxxx}
 \def\oddheadingxxx #1{\oddheadingyyy #1\|\|\|\|\finish}
 \def\oddheadingyyy #1\|#2\|#3\|#4\finish{%
-\global\oddheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}}
+  \global\oddheadline={\rlap{\centerline{#2}}\line{#1\hfil#3}}%
+  \global\oddchapheadline=\oddheadline}
 
 \parseargdef\everyheading{\oddheadingxxx{#1}\evenheadingxxx{#1}}%
 
@@ -3899,8 +3906,8 @@ end
 \parseargdef\headings{\csname HEADINGS#1\endcsname}
 
 \def\headingsoff{% non-global headings elimination
-  \evenheadline={\hfil}\evenfootline={\hfil}%
-   \oddheadline={\hfil}\oddfootline={\hfil}%
+  \evenheadline={\hfil}\evenfootline={\hfil}\evenchapheadline={\hfil}%
+   \oddheadline={\hfil}\oddfootline={\hfil}\oddchapheadline={\hfil}%
 }
 
 \def\HEADINGSoff{{\globaldefs=1 \headingsoff}} % global setting
@@ -3913,11 +3920,7 @@ end
 % edge of all pages.
 \def\HEADINGSdouble{%
 \global\pageno=1
-\global\evenfootline={\hfil}
-\global\oddfootline={\hfil}
-\global\evenheadline={\line{\folio\hfil\thistitle}}
-\global\oddheadline={\line{\thischapterheading\hfil\folio}}
-\global\let\contentsalignmacro = \chapoddpage
+\HEADINGSdoublex
 }
 \let\contentsalignmacro = \chappager
 
@@ -3925,11 +3928,7 @@ end
 % page number on top right.
 \def\HEADINGSsingle{%
 \global\pageno=1
-\global\evenfootline={\hfil}
-\global\oddfootline={\hfil}
-\global\evenheadline={\line{\thischapterheading\hfil\folio}}
-\global\oddheadline={\line{\thischapterheading\hfil\folio}}
-\global\let\contentsalignmacro = \chappager
+\HEADINGSsinglex
 }
 \def\HEADINGSon{\HEADINGSdouble}
 
@@ -3939,7 +3938,9 @@ end
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
 \global\evenheadline={\line{\folio\hfil\thistitle}}
-\global\oddheadline={\line{\thischapterheading\hfil\folio}}
+\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\evenchapheadline={\line{\folio\hfil}}
+\global\oddchapheadline={\line{\hfil\folio}}
 \global\let\contentsalignmacro = \chapoddpage
 }
 
@@ -3947,8 +3948,10 @@ end
 \def\HEADINGSsinglex{%
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
-\global\evenheadline={\line{\thischapterheading\hfil\folio}}
-\global\oddheadline={\line{\thischapterheading\hfil\folio}}
+\global\evenheadline={\line{\thischapter\hfil\folio}}
+\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\evenchapheadline={\line{\hfil\folio}}
+\global\oddchapheadline={\line{\hfil\folio}}
 \global\let\contentsalignmacro = \chappager
 }
 

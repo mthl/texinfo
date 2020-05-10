@@ -1,5 +1,21 @@
 2020-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Omit title on chapter pages in "@headings double" format.
+
+	* doc/texinfo.tex (\checkchapterpage): Set a new conditional,
+	\ifchapterpage.
+	(\evenchapheadline, \oddchapheadline): Add.
+	(\headline): Use \ifchapterpage to possibly use 
+	\evenchapheadline or \oddchapheadline.
+	(\evenheadline, \oddheadline): Also set \evenchapheadline and 
+	\oddchapheadline.
+	(\HEADINGSdouble, \HEADINGSsingle): Call \HEADINGSdoublex and
+	\HEADINGSsinglex.
+	(\HEADINGSdoublex, \HEADINGSsinglex): Set \evenchapheadline and 
+	\oddchapheadline omitting \thistitle and \thischapter.
+
+2020-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reorganise manual.
 
 	* doc/texinfo.texi (Heading Choice): Remove most of node as it 
