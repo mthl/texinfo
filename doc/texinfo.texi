@@ -157,9 +157,9 @@ Appendices
 * Tips::                        Hints on how to write a Texinfo document.
 * Sample Texinfo Files::        Complete examples, including full texts.
 * Texinfo Mode::                Using the GNU Emacs Texinfo mode.
+* Catching Mistakes::           How to find mistakes in formatting.
 * Global Document Commands::    Affecting formatting throughout.
 * Headings::                    How to write page headings and footings.
-* Catching Mistakes::           How to find mistakes in formatting.
 * Info Format Specification::   Technical details of the Info file format.
 * GNU Free Documentation License:: Copying this manual.
 * Command and Variable Index::  A menu containing commands and variables.
@@ -651,6 +651,14 @@ Updating Nodes and Menus
 * Other Updating Commands::     How to indent descriptions, insert
                                   missing nodes lines, and update
                                   nodes in sequence.
+Catching Mistakes
+
+* @command{makeinfo} Preferred::          @code{makeinfo} finds errors.
+* Debugging with Info::         How to catch errors with Info formatting.
+* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
+* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
+* Using @code{occur}::                 How to list all lines containing a pattern.
+* Running @code{Info-validate}::       How to find badly referenced nodes.
 
 Global Document Commands
 
@@ -667,15 +675,6 @@ Page Headings
 * Heading Format::              Standard page heading formats.
 * Heading Choice::              How to specify the type of page heading.
 * Custom Headings::             How to create your own headings and footings.
-
-Catching Mistakes
-
-* @command{makeinfo} Preferred::          @code{makeinfo} finds errors.
-* Debugging with Info::         How to catch errors with Info formatting.
-* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
-* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
-* Using @code{occur}::                 How to list all lines containing a pattern.
-* Running @code{Info-validate}::       How to find badly referenced nodes.
 
 Finding Badly Referenced Nodes
 
@@ -22373,6 +22372,616 @@ M-x texinfo-sequential-node-update
 @end example
 
 
+@node Catching Mistakes
+@appendix Catching Mistakes
+@cindex Structure, catching mistakes in
+@cindex Nodes, catching mistakes
+@cindex Catching mistakes
+@cindex Correcting mistakes
+@cindex Mistakes, catching
+@cindex Problems, catching
+@cindex Debugging the Texinfo structure
+
+Besides mistakes in the content of your documentation, there are two
+kinds of mistake you can make with Texinfo: you can make mistakes with
+@@-commands, and you can make mistakes with the structure of the nodes
+and chapters.
+
+Emacs has two tools for catching the @@-command mistakes and two for
+catching structuring mistakes.
+
+For finding problems with @@-commands, you can run @TeX{} or a region
+formatting command on the region that has a problem; indeed, you can
+run these commands on each region as you write it.
+
+For finding problems with the structure of nodes and chapters, you can use
+@kbd{C-c C-s} (@code{texinfo-show-structure}) and the related @code{occur}
+command and you can use the @kbd{M-x Info-validate} command.
+
+@menu
+* @command{makeinfo} Preferred::          @code{makeinfo} finds errors.
+* Debugging with Info::         How to catch errors with Info formatting.
+* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
+* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
+* Using @code{occur}::                 How to list all lines containing a pattern.
+* Running @code{Info-validate}::       How to find badly referenced nodes.
+@end menu
+
+
+@node @command{makeinfo} Preferred
+@section @command{makeinfo} Preferred
+
+@c anchor{makeinfo Preferred}@c prev name
+
+The @code{makeinfo} program does an excellent job of catching errors
+and reporting them---far better than @code{texinfo-format-region} or
+@code{texinfo-format-buffer}.  In addition, the various functions for
+automatically creating and updating node pointers and menus remove
+many opportunities for human error.
+
+If you can, use the updating commands to create and insert pointers
+and menus.  These prevent many errors.  Then use @code{makeinfo} (or
+its Texinfo mode manifestations, @code{makeinfo-region} and
+@code{makeinfo-buffer}) to format your file and check for other
+errors.  This is the best way to work with Texinfo.  But if you
+cannot use @code{makeinfo}, or your problem is very puzzling, then you
+may want to use the tools described in this appendix.
+
+
+@node Debugging with Info
+@section Catching Errors with Info Formatting
+@cindex Catching errors with Info formatting
+@cindex Debugging with Info formatting
+
+After you have written part of a Texinfo file, you can use the
+@code{texinfo-format-region} or the @code{makeinfo-region} command to
+see whether the region formats properly.
+
+Most likely, however, you are reading this section because for some
+reason you cannot use the @code{makeinfo-region} command; therefore, the
+rest of this section presumes that you are using
+@code{texinfo-format-region}.
+
+If you have made a mistake with an @@-command,
+@code{texinfo-format-region} will stop processing at or after the
+error and display an error message.  To see where in the buffer the
+error occurred, switch to the @samp{*Info Region*} buffer; the cursor
+will be in a position that is after the location of the error.  Also,
+the text will not be formatted after the place where the error
+occurred (or more precisely, where it was detected).
+
+For example, if you accidentally end a menu with the command @code{@@end
+menus} with an `s' on the end, instead of with @code{@@end menu}, you
+will see an error message that says:
+
+@example
+@@end menus is not handled by texinfo
+@end example
+
+@noindent
+The cursor will stop at the point in the buffer where the error
+occurs, or not long after it.  The buffer will look like this:
+
+@example
+@group
+---------- Buffer: *Info Region* ----------
+* Menu:
+
+* Using texinfo-show-structure::  How to use
+                                 `texinfo-show-structure'
+                                 to catch mistakes.
+* Running Info-validate::         How to check for
+                                 unreferenced nodes.
+@@end menus
+@point{}
+---------- Buffer: *Info Region* ----------
+@end group
+@end example
+
+The @code{texinfo-format-region} command sometimes provides slightly
+odd error messages.  For example, the following cross-reference fails
+to format:
+
+@example
+(@@xref@{Catching Mistakes, for more info.)
+@end example
+
+@noindent
+In this case, @code{texinfo-format-region} detects the missing closing
+brace but displays a message that says @samp{Unbalanced parentheses}
+rather than @samp{Unbalanced braces}.  This is because the formatting
+command looks for mismatches between braces as if they were
+parentheses.
+
+Sometimes @code{texinfo-format-region} fails to detect mistakes.  For
+example, in the following, the closing brace is swapped with the
+closing parenthesis:
+
+@example
+(@@xref@{Catching Mistakes), for more info.@}
+@end example
+
+@noindent
+Formatting produces:
+@example
+(*Note for more info.: Catching Mistakes)
+@end example
+
+The only way for you to detect this error is to realize that the
+reference should have looked like this:
+
+@example
+(*Note Catching Mistakes::, for more info.)
+@end example
+
+Incidentally, if you are reading this node in Info and type @kbd{f
+@key{RET}} (@code{Info-follow-reference}), you will generate an error
+message that says:
+
+@example
+No such node: "Catching Mistakes) The only way @dots{}
+@end example
+
+@noindent
+This is because Info perceives the example of the error as the first
+cross-reference in this node and if you type a @key{RET} immediately
+after typing the Info @kbd{f} command, Info will attempt to go to the
+referenced node.  If you type @kbd{f catch @key{TAB} @key{RET}}, Info
+will complete the node name of the correctly written example and take
+you to the `Catching Mistakes' node.  (If you try this, you can return
+from the `Catching Mistakes' node by typing @kbd{l}
+(@code{Info-last}).)
+
+
+@node Debugging with @TeX{}
+@section Debugging with @TeX{}
+@cindex Catching errors with @TeX{} formatting
+@cindex Debugging with @TeX{} formatting
+
+You can also catch mistakes when you format a file with @TeX{}.
+
+Usually, you will want to do this after you have run
+@code{texinfo-format-buffer} (or, better, @code{makeinfo-buffer}) on
+the same file, because @code{texinfo-format-buffer} sometimes displays
+error messages that make more sense than @TeX{}.  (@xref{Debugging
+with Info}, for more information.)
+
+For example, @TeX{} was run on a Texinfo file, part of which is shown
+here:
+
+@example
+---------- Buffer: texinfo.texi ----------
+name of the Texinfo file as an extension.  The
+@@samp@{??@} are `wildcards' that cause the shell to
+substitute all the raw index files.  (@@xref@{sorting
+indices, for more information about sorting
+indices.)@@refill
+---------- Buffer: texinfo.texi ----------
+@end example
+
+@noindent
+(The cross-reference lacks a closing brace.)
+@TeX{} produced the following output, after which it stopped:
+
+@example
+---------- Buffer: *tex-shell* ----------
+Runaway argument?
+@{sorting indices, for more information about sorting
+indices.) @@refill @@ETC.
+! Paragraph ended before @@xref was complete.
+<to be read again>
+                  @@par
+l.27
+
+?
+---------- Buffer: *tex-shell* ----------
+@end example
+
+In this case, @TeX{} produced an accurate and
+understandable error message:
+
+@example
+Paragraph ended before @@xref was complete.
+@end example
+
+@noindent
+@samp{@@par} is an internal @TeX{} command of no relevance to Texinfo.
+@samp{l.27} means that @TeX{} detected the problem on line 27 of the
+Texinfo file.  The @samp{?} is the prompt @TeX{} uses in this
+circumstance.
+
+Unfortunately, @TeX{} is not always so helpful, and sometimes you must
+truly be a Sherlock Holmes to discover what went wrong.
+
+In any case, if you run into a problem like this, you can do one of three
+things.
+
+@enumerate
+@item
+You can tell @TeX{} to continue running and ignore just this error by
+typing @key{RET} at the @samp{?} prompt.
+
+@item
+You can tell @TeX{} to continue running and to ignore all errors as best
+it can by typing @kbd{r @key{RET}} at the @samp{?} prompt.
+
+This is often the best thing to do.  However, beware: the one error
+may produce a cascade of additional error messages as its consequences
+are felt through the rest of the file.  To stop @TeX{} when it is
+producing such an avalanche of error messages, type @kbd{C-c} (or
+@kbd{C-c C-c}, if you are running a shell inside Emacs).
+
+@item
+You can tell @TeX{} to stop this run by typing @kbd{x @key{RET}}
+at the @samp{?} prompt.
+@end enumerate
+
+If you are running @TeX{} inside Emacs, you need to switch to the shell
+buffer and line at which @TeX{} offers the @samp{?} prompt.
+
+Sometimes @TeX{} will format a file without producing error messages even
+though there is a problem.  This usually occurs if a command is not ended
+but @TeX{} is able to continue processing anyhow.  For example, if you fail
+to end an itemized list with the @code{@@end itemize} command, @TeX{} will
+write a DVI file that you can print out.  The only error message that
+@TeX{} will give you is the somewhat mysterious comment:
+
+@example
+(@@end occurred inside a group at level 1)
+@end example
+
+@noindent
+However, if you print the DVI file, you will find that the text
+of the file that follows the itemized list is entirely indented as if
+it were part of the last item in the itemized list.  The error message
+is the way @TeX{} says that it expected to find an @code{@@end}
+command somewhere in the file; but that it could not determine where
+it was needed.
+
+Another source of notoriously hard-to-find errors is a missing
+@code{@@end group} command.  If you ever are stumped by
+incomprehensible errors, look for a missing @code{@@end group} command
+first.
+
+If the Texinfo file lacks header lines,
+@TeX{} may stop in the
+beginning of its run and display output that looks like the following.
+The @samp{*} indicates that @TeX{} is waiting for input.
+
+@example
+This is TeX, Version 3.14159 (Web2c 7.0)
+(test.texinfo [1])
+*
+@end example
+
+@noindent
+In this case, simply type @kbd{\end @key{RET}} after the asterisk.  Then
+write the header lines in the Texinfo file and run the @TeX{} command
+again. (Note the use of the backslash, @samp{\}.  @TeX{} uses @samp{\}
+instead of @samp{@@}; and in this circumstance, you are working
+directly with @TeX{}, not with Texinfo.)
+
+@node Using @code{texinfo-show-structure}
+@section Using @code{texinfo-show-structure}
+
+@cindex Showing the structure of a file
+@findex texinfo-show-structure
+
+It is not always easy to keep track of the nodes, chapters, sections, and
+subsections of a Texinfo file.  This is especially true if you are revising
+or adding to a Texinfo file that someone else has written.
+
+In GNU Emacs, in Texinfo mode, the @code{texinfo-show-structure}
+command lists all the lines that begin with the @@-commands that
+specify the structure: @code{@@chapter}, @code{@@section},
+@code{@@appendix}, and so on.  With an argument (@w{@kbd{C-u}}
+as prefix argument, if interactive),
+the command also shows the @code{@@node} lines.  The
+@code{texinfo-show-structure} command is bound to @kbd{C-c C-s} in
+Texinfo mode, by default.
+
+The lines are displayed in a buffer called the @samp{*Occur*} buffer,
+indented by hierarchical level.  For example, here is a part of what was
+produced by running @code{texinfo-show-structure} on this manual:
+
+@example
+@group
+Lines matching "^@@\\(chapter \\|sect\\|subs\\|subh\\|
+unnum\\|major\\|chapheading \\|heading \\|appendix\\)"
+in buffer texinfo.texi.
+@dots{}
+4177:@@chapter Nodes
+4198:    @@heading Two Paths
+4231:    @@section Node and Menu Illustration
+4337:    @@section The @@code@{@@@@node@} Command
+4393:        @@subheading Choosing Node and Pointer Names
+4417:        @@subsection How to Write a @@code@{@@@@node@} Line
+4469:        @@subsection @@code@{@@@@node@} Line Tips
+@dots{}
+@end group
+@end example
+
+This says that lines 4337, 4393, and 4417 of @file{texinfo.texi} begin
+with the @code{@@section}, @code{@@subheading}, and @code{@@subsection}
+commands respectively.  If you move your cursor into the @samp{*Occur*}
+window, you can position the cursor over one of the lines and use the
+@kbd{C-c C-c} command (@code{occur-mode-goto-occurrence}), to jump to
+the corresponding spot in the Texinfo file.  @xref{Other Repeating
+Search, , Using Occur, emacs, The GNU Emacs Manual}, for more
+information about @code{occur-mode-goto-occurrence}.
+
+The first line in the @samp{*Occur*} window describes the @dfn{regular
+expression} specified by @var{texinfo-heading-pattern}.  This regular
+expression is the pattern that @code{texinfo-show-structure} looks for.
+@xref{Regexps, , Using Regular Expressions, emacs, The GNU Emacs Manual},
+for more information.
+
+When you invoke the @code{texinfo-show-structure} command, Emacs will
+display the structure of the whole buffer.  If you want to see the
+structure of just a part of the buffer, of one chapter, for example,
+use the @kbd{C-x n n} (@code{narrow-to-region}) command to mark the
+region.  (@xref{Narrowing, , , emacs, The GNU Emacs Manual}.)  This is
+how the example used above was generated.  (To see the whole buffer
+again, use @kbd{C-x n w} (@code{widen}).)
+
+If you call @code{texinfo-show-structure} with a prefix argument by
+typing @w{@kbd{C-u C-c C-s}}, it will list lines beginning with
+@code{@@node} as well as the lines beginning with the @@-sign commands
+for @code{@@chapter}, @code{@@section}, and the like.
+
+You can remind yourself of the structure of a Texinfo file by looking at
+the list in the @samp{*Occur*} window; and if you have mis-named a node
+or left out a section, you can correct the mistake.
+
+@node Using @code{occur}
+@section Using @code{occur}
+
+@cindex Occurrences, listing with @code{@@occur}
+@findex occur
+
+Sometimes the @code{texinfo-show-structure} command produces too much
+information.  Perhaps you want to remind yourself of the overall structure
+of a Texinfo file, and are overwhelmed by the detailed list produced by
+@code{texinfo-show-structure}.  In this case, you can use the @code{occur}
+command directly.  To do this, type:
+
+@example
+@kbd{M-x occur}
+@end example
+
+@noindent
+and then, when prompted, type a @dfn{regexp}, a regular expression for
+the pattern you want to match.  (@xref{Regexps, , Regular Expressions,
+emacs, The GNU Emacs Manual}.)  The @code{occur} command works from
+the current location of the cursor in the buffer to the end of the
+buffer.  If you want to run @code{occur} on the whole buffer, place
+the cursor at the beginning of the buffer.
+
+For example, to see all the lines that contain the word
+@samp{@@chapter} in them, just type @samp{@@chapter}.  This will
+produce a list of the chapters.  It will also list all the sentences
+with @samp{@@chapter} in the middle of the line.
+
+If you want to see only those lines that start with the word
+@samp{@@chapter}, type @samp{^@@chapter} when prompted by
+@code{occur}.  If you want to see all the lines that end with a word
+or phrase, end the last word with a @samp{$}; for example,
+@samp{catching mistakes$}.  This can be helpful when you want to see
+all the nodes that are part of the same chapter or section and
+therefore have the same `Up' pointer.
+
+@xref{Other Repeating Search, , Using Occur, emacs , The GNU Emacs Manual},
+for more information.
+
+
+@node Running @code{Info-validate}
+@section Finding Badly Referenced Nodes
+
+@anchor{Running Info-Validate}@c old name
+@findex Info-validate
+@cindex Nodes, checking for badly referenced
+@cindex Checking for badly referenced nodes
+@cindex Looking for badly referenced nodes
+@cindex Finding badly referenced nodes
+@cindex Badly referenced nodes
+
+You can use the @code{Info-validate} command to check whether any of
+the `Next', `Previous', `Up' or other node pointers fail to point to a
+node.  This command checks that every node pointer points to an
+existing node.  The @code{Info-validate} command works only on Info
+files, not on Texinfo files.
+
+The @code{makeinfo} program validates pointers automatically, so you
+do not need to use the @code{Info-validate} command if you are using
+@code{makeinfo}.  You only may need to use @code{Info-validate} if you
+are unable to run @code{makeinfo} and instead must create an Info file
+using @code{texinfo-format-region} or @code{texinfo-format-buffer}, or
+if you write an Info file from scratch.
+
+@menu
+* Using @code{Info-validate}::         How to run @code{Info-validate}.
+* Unsplit::                     How to create an unsplit file.
+* Tagifying::                   How to tagify a file.
+* Splitting::                   How to split a file manually.
+@end menu
+
+
+@node Using @code{Info-validate}
+@subsection Using @code{Info-validate}
+
+@cindex Using @code{Info-validate}
+@cindex Info validating a large file
+@cindex Validating a large file
+
+To use @code{Info-validate}, visit the Info file you wish to check and
+type:
+
+@example
+M-x Info-validate
+@end example
+
+@noindent
+Note that the @code{Info-validate} command requires an uppercase
+`I'@.  You may also need to create a tag table before running
+@code{Info-validate}.  @xref{Tagifying}.
+
+If your file is valid, you will receive a message that says ``File appears
+valid''.  However, if you have a pointer that does not point to a node,
+error messages will be displayed in a buffer called @samp{*problems in
+info file*}.
+
+For example, @code{Info-validate} was run on a test file that contained
+only the first node of this manual.  One of the messages said:
+
+@example
+In node "Overview", invalid Next: Texinfo Mode
+@end example
+
+@noindent
+This meant that the node called @samp{Overview} had a `Next' pointer that
+did not point to anything (which was true in this case, since the test file
+had only one node in it).
+
+Now suppose we add a node named @samp{Texinfo Mode} to our test case
+but we do not specify a `Previous' for this node.  Then we will get
+the following error message:
+
+@example
+In node "Texinfo Mode", should have Previous: Overview
+@end example
+
+@noindent
+This is because every `Next' pointer should be matched by a
+`Previous' (in the node where the `Next' points) which points back.
+
+@code{Info-validate} also checks that all menu entries and cross-references
+point to actual nodes.
+
+@code{Info-validate} requires a tag table and does not work with files
+that have been split.  (The @code{texinfo-format-buffer} command
+automatically splits large files.)  In order to use @code{Info-validate}
+on a large file, you must run @code{texinfo-format-buffer} with an
+argument so that it does not split the Info file; and you must create a
+tag table for the unsplit file.
+
+@node Unsplit
+@subsection Creating an Unsplit File
+@cindex Creating an unsplit file
+@cindex Unsplit file creation
+
+You can run @code{Info-validate} only on a single Info file that has a
+tag table.  The command will not work on the indirect subfiles that
+are generated when a master file is split.  If you have a large file
+(longer than 300,000 bytes or so), you need to run the
+@code{texinfo-format-buffer} or @code{makeinfo-buffer} command in such
+a way that it does not create indirect subfiles.  You will also need
+to create a tag table for the Info file.  After you have done this,
+you can run @code{Info-validate} and look for badly referenced
+nodes.
+
+The first step is to create an unsplit Info file.  To prevent
+@code{texinfo-format-buffer} from splitting a Texinfo file into
+smaller Info files, give a prefix to the @kbd{M-x
+texinfo-format-buffer} command:
+
+@example
+C-u M-x texinfo-format-buffer
+@end example
+
+@noindent
+or else
+
+@example
+C-u C-c C-e C-b
+@end example
+
+@noindent
+When you do this, Texinfo will not split the file and will not create
+a tag table for it.
+@cindex Making a tag table manually
+@cindex Tag table, making manually
+
+@node Tagifying
+@subsection Tagifying a File
+
+After creating an unsplit Info file, you must create a tag table for
+it.  Visit the Info file you wish to tagify and type:
+
+@example
+M-x Info-tagify
+@end example
+
+@noindent
+(Note the uppercase @samp{I} in @code{Info-tagify}.)  This creates an
+Info file with a tag table that you can validate.
+
+The third step is to validate the Info file:
+
+@example
+M-x Info-validate
+@end example
+
+@noindent
+(Note the uppercase @samp{I} in @code{Info-validate}.)
+In brief, the steps are:
+
+@example
+@group
+C-u M-x texinfo-format-buffer
+M-x Info-tagify
+M-x Info-validate
+@end group
+@end example
+
+After you have validated the node structure, you can rerun
+@code{texinfo-format-buffer} in the normal way so it will construct a
+tag table and split the file automatically, or you can make the tag
+table and split the file manually.
+
+@node Splitting
+@subsection Splitting a File Manually
+@cindex Splitting an Info file manually
+@cindex Info file, splitting manually
+
+You should split a large file or else let the
+@code{texinfo-format-buffer} or @code{makeinfo-buffer} command do it
+for you automatically.  (Generally you will let one of the formatting
+commands do this job for you.  @xref{Creating an Info File}.)
+
+The split-off files are called the indirect subfiles.
+
+Info files are split to save memory.  With smaller files, Emacs does not
+have to make such a large buffer to hold the information.
+
+If an Info file has more than 30 nodes, you should also make a tag
+table for it.  @xref{Using @code{Info-validate}}, for information
+about creating a tag table.  (Again, tag tables are usually created
+automatically by the formatting command; you only need to create a tag
+table yourself if you are doing the job manually.  Most likely, you
+will do this for a large, unsplit file on which you have run
+@code{Info-validate}.)
+
+Visit the Info file you wish to tagify and split and type the two
+commands:
+
+@example
+M-x Info-tagify
+M-x Info-split
+@end example
+
+@noindent
+(Note that the @samp{I} in @samp{Info} is uppercase.)
+
+When you use the @code{Info-split} command, the buffer is modified into a
+(small) Info file which lists the indirect subfiles.  This file should be
+saved in place of the original visited file.  The indirect subfiles are
+written in the same directory the original file is in, with names generated
+by appending @samp{-} and a number to the original file name.
+
+The primary file still functions as an Info file, but it contains just
+the tag table and a directory of subfiles.
+
+
 @node Global Document Commands
 @appendix Global Document Commands
 @cindex Global Document Commands
@@ -23008,615 +23617,6 @@ manual.
 By default the @code{@@this...} commands reflect the situation at the
 bottom of a page both in headings and in footings.
 
-
-@node Catching Mistakes
-@appendix Catching Mistakes
-@cindex Structure, catching mistakes in
-@cindex Nodes, catching mistakes
-@cindex Catching mistakes
-@cindex Correcting mistakes
-@cindex Mistakes, catching
-@cindex Problems, catching
-@cindex Debugging the Texinfo structure
-
-Besides mistakes in the content of your documentation, there are two
-kinds of mistake you can make with Texinfo: you can make mistakes with
-@@-commands, and you can make mistakes with the structure of the nodes
-and chapters.
-
-Emacs has two tools for catching the @@-command mistakes and two for
-catching structuring mistakes.
-
-For finding problems with @@-commands, you can run @TeX{} or a region
-formatting command on the region that has a problem; indeed, you can
-run these commands on each region as you write it.
-
-For finding problems with the structure of nodes and chapters, you can use
-@kbd{C-c C-s} (@code{texinfo-show-structure}) and the related @code{occur}
-command and you can use the @kbd{M-x Info-validate} command.
-
-@menu
-* @command{makeinfo} Preferred::          @code{makeinfo} finds errors.
-* Debugging with Info::         How to catch errors with Info formatting.
-* Debugging with @TeX{}::          How to catch errors with @TeX{} formatting.
-* Using @code{texinfo-show-structure}:: How to use @code{texinfo-show-structure}.
-* Using @code{occur}::                 How to list all lines containing a pattern.
-* Running @code{Info-validate}::       How to find badly referenced nodes.
-@end menu
-
-
-@node @command{makeinfo} Preferred
-@section @command{makeinfo} Preferred
-
-@c anchor{makeinfo Preferred}@c prev name
-
-The @code{makeinfo} program does an excellent job of catching errors
-and reporting them---far better than @code{texinfo-format-region} or
-@code{texinfo-format-buffer}.  In addition, the various functions for
-automatically creating and updating node pointers and menus remove
-many opportunities for human error.
-
-If you can, use the updating commands to create and insert pointers
-and menus.  These prevent many errors.  Then use @code{makeinfo} (or
-its Texinfo mode manifestations, @code{makeinfo-region} and
-@code{makeinfo-buffer}) to format your file and check for other
-errors.  This is the best way to work with Texinfo.  But if you
-cannot use @code{makeinfo}, or your problem is very puzzling, then you
-may want to use the tools described in this appendix.
-
-
-@node Debugging with Info
-@section Catching Errors with Info Formatting
-@cindex Catching errors with Info formatting
-@cindex Debugging with Info formatting
-
-After you have written part of a Texinfo file, you can use the
-@code{texinfo-format-region} or the @code{makeinfo-region} command to
-see whether the region formats properly.
-
-Most likely, however, you are reading this section because for some
-reason you cannot use the @code{makeinfo-region} command; therefore, the
-rest of this section presumes that you are using
-@code{texinfo-format-region}.
-
-If you have made a mistake with an @@-command,
-@code{texinfo-format-region} will stop processing at or after the
-error and display an error message.  To see where in the buffer the
-error occurred, switch to the @samp{*Info Region*} buffer; the cursor
-will be in a position that is after the location of the error.  Also,
-the text will not be formatted after the place where the error
-occurred (or more precisely, where it was detected).
-
-For example, if you accidentally end a menu with the command @code{@@end
-menus} with an `s' on the end, instead of with @code{@@end menu}, you
-will see an error message that says:
-
-@example
-@@end menus is not handled by texinfo
-@end example
-
-@noindent
-The cursor will stop at the point in the buffer where the error
-occurs, or not long after it.  The buffer will look like this:
-
-@example
-@group
----------- Buffer: *Info Region* ----------
-* Menu:
-
-* Using texinfo-show-structure::  How to use
-                                 `texinfo-show-structure'
-                                 to catch mistakes.
-* Running Info-validate::         How to check for
-                                 unreferenced nodes.
-@@end menus
-@point{}
----------- Buffer: *Info Region* ----------
-@end group
-@end example
-
-The @code{texinfo-format-region} command sometimes provides slightly
-odd error messages.  For example, the following cross-reference fails
-to format:
-
-@example
-(@@xref@{Catching Mistakes, for more info.)
-@end example
-
-@noindent
-In this case, @code{texinfo-format-region} detects the missing closing
-brace but displays a message that says @samp{Unbalanced parentheses}
-rather than @samp{Unbalanced braces}.  This is because the formatting
-command looks for mismatches between braces as if they were
-parentheses.
-
-Sometimes @code{texinfo-format-region} fails to detect mistakes.  For
-example, in the following, the closing brace is swapped with the
-closing parenthesis:
-
-@example
-(@@xref@{Catching Mistakes), for more info.@}
-@end example
-
-@noindent
-Formatting produces:
-@example
-(*Note for more info.: Catching Mistakes)
-@end example
-
-The only way for you to detect this error is to realize that the
-reference should have looked like this:
-
-@example
-(*Note Catching Mistakes::, for more info.)
-@end example
-
-Incidentally, if you are reading this node in Info and type @kbd{f
-@key{RET}} (@code{Info-follow-reference}), you will generate an error
-message that says:
-
-@example
-No such node: "Catching Mistakes) The only way @dots{}
-@end example
-
-@noindent
-This is because Info perceives the example of the error as the first
-cross-reference in this node and if you type a @key{RET} immediately
-after typing the Info @kbd{f} command, Info will attempt to go to the
-referenced node.  If you type @kbd{f catch @key{TAB} @key{RET}}, Info
-will complete the node name of the correctly written example and take
-you to the `Catching Mistakes' node.  (If you try this, you can return
-from the `Catching Mistakes' node by typing @kbd{l}
-(@code{Info-last}).)
-
-
-@node Debugging with @TeX{}
-@section Debugging with @TeX{}
-@cindex Catching errors with @TeX{} formatting
-@cindex Debugging with @TeX{} formatting
-
-You can also catch mistakes when you format a file with @TeX{}.
-
-Usually, you will want to do this after you have run
-@code{texinfo-format-buffer} (or, better, @code{makeinfo-buffer}) on
-the same file, because @code{texinfo-format-buffer} sometimes displays
-error messages that make more sense than @TeX{}.  (@xref{Debugging
-with Info}, for more information.)
-
-For example, @TeX{} was run on a Texinfo file, part of which is shown
-here:
-
-@example
----------- Buffer: texinfo.texi ----------
-name of the Texinfo file as an extension.  The
-@@samp@{??@} are `wildcards' that cause the shell to
-substitute all the raw index files.  (@@xref@{sorting
-indices, for more information about sorting
-indices.)@@refill
----------- Buffer: texinfo.texi ----------
-@end example
-
-@noindent
-(The cross-reference lacks a closing brace.)
-@TeX{} produced the following output, after which it stopped:
-
-@example
----------- Buffer: *tex-shell* ----------
-Runaway argument?
-@{sorting indices, for more information about sorting
-indices.) @@refill @@ETC.
-! Paragraph ended before @@xref was complete.
-<to be read again>
-                  @@par
-l.27
-
-?
----------- Buffer: *tex-shell* ----------
-@end example
-
-In this case, @TeX{} produced an accurate and
-understandable error message:
-
-@example
-Paragraph ended before @@xref was complete.
-@end example
-
-@noindent
-@samp{@@par} is an internal @TeX{} command of no relevance to Texinfo.
-@samp{l.27} means that @TeX{} detected the problem on line 27 of the
-Texinfo file.  The @samp{?} is the prompt @TeX{} uses in this
-circumstance.
-
-Unfortunately, @TeX{} is not always so helpful, and sometimes you must
-truly be a Sherlock Holmes to discover what went wrong.
-
-In any case, if you run into a problem like this, you can do one of three
-things.
-
-@enumerate
-@item
-You can tell @TeX{} to continue running and ignore just this error by
-typing @key{RET} at the @samp{?} prompt.
-
-@item
-You can tell @TeX{} to continue running and to ignore all errors as best
-it can by typing @kbd{r @key{RET}} at the @samp{?} prompt.
-
-This is often the best thing to do.  However, beware: the one error
-may produce a cascade of additional error messages as its consequences
-are felt through the rest of the file.  To stop @TeX{} when it is
-producing such an avalanche of error messages, type @kbd{C-c} (or
-@kbd{C-c C-c}, if you are running a shell inside Emacs).
-
-@item
-You can tell @TeX{} to stop this run by typing @kbd{x @key{RET}}
-at the @samp{?} prompt.
-@end enumerate
-
-If you are running @TeX{} inside Emacs, you need to switch to the shell
-buffer and line at which @TeX{} offers the @samp{?} prompt.
-
-Sometimes @TeX{} will format a file without producing error messages even
-though there is a problem.  This usually occurs if a command is not ended
-but @TeX{} is able to continue processing anyhow.  For example, if you fail
-to end an itemized list with the @code{@@end itemize} command, @TeX{} will
-write a DVI file that you can print out.  The only error message that
-@TeX{} will give you is the somewhat mysterious comment:
-
-@example
-(@@end occurred inside a group at level 1)
-@end example
-
-@noindent
-However, if you print the DVI file, you will find that the text
-of the file that follows the itemized list is entirely indented as if
-it were part of the last item in the itemized list.  The error message
-is the way @TeX{} says that it expected to find an @code{@@end}
-command somewhere in the file; but that it could not determine where
-it was needed.
-
-Another source of notoriously hard-to-find errors is a missing
-@code{@@end group} command.  If you ever are stumped by
-incomprehensible errors, look for a missing @code{@@end group} command
-first.
-
-If the Texinfo file lacks header lines,
-@TeX{} may stop in the
-beginning of its run and display output that looks like the following.
-The @samp{*} indicates that @TeX{} is waiting for input.
-
-@example
-This is TeX, Version 3.14159 (Web2c 7.0)
-(test.texinfo [1])
-*
-@end example
-
-@noindent
-In this case, simply type @kbd{\end @key{RET}} after the asterisk.  Then
-write the header lines in the Texinfo file and run the @TeX{} command
-again. (Note the use of the backslash, @samp{\}.  @TeX{} uses @samp{\}
-instead of @samp{@@}; and in this circumstance, you are working
-directly with @TeX{}, not with Texinfo.)
-
-@node Using @code{texinfo-show-structure}
-@section Using @code{texinfo-show-structure}
-
-@cindex Showing the structure of a file
-@findex texinfo-show-structure
-
-It is not always easy to keep track of the nodes, chapters, sections, and
-subsections of a Texinfo file.  This is especially true if you are revising
-or adding to a Texinfo file that someone else has written.
-
-In GNU Emacs, in Texinfo mode, the @code{texinfo-show-structure}
-command lists all the lines that begin with the @@-commands that
-specify the structure: @code{@@chapter}, @code{@@section},
-@code{@@appendix}, and so on.  With an argument (@w{@kbd{C-u}}
-as prefix argument, if interactive),
-the command also shows the @code{@@node} lines.  The
-@code{texinfo-show-structure} command is bound to @kbd{C-c C-s} in
-Texinfo mode, by default.
-
-The lines are displayed in a buffer called the @samp{*Occur*} buffer,
-indented by hierarchical level.  For example, here is a part of what was
-produced by running @code{texinfo-show-structure} on this manual:
-
-@example
-@group
-Lines matching "^@@\\(chapter \\|sect\\|subs\\|subh\\|
-unnum\\|major\\|chapheading \\|heading \\|appendix\\)"
-in buffer texinfo.texi.
-@dots{}
-4177:@@chapter Nodes
-4198:    @@heading Two Paths
-4231:    @@section Node and Menu Illustration
-4337:    @@section The @@code@{@@@@node@} Command
-4393:        @@subheading Choosing Node and Pointer Names
-4417:        @@subsection How to Write a @@code@{@@@@node@} Line
-4469:        @@subsection @@code@{@@@@node@} Line Tips
-@dots{}
-@end group
-@end example
-
-This says that lines 4337, 4393, and 4417 of @file{texinfo.texi} begin
-with the @code{@@section}, @code{@@subheading}, and @code{@@subsection}
-commands respectively.  If you move your cursor into the @samp{*Occur*}
-window, you can position the cursor over one of the lines and use the
-@kbd{C-c C-c} command (@code{occur-mode-goto-occurrence}), to jump to
-the corresponding spot in the Texinfo file.  @xref{Other Repeating
-Search, , Using Occur, emacs, The GNU Emacs Manual}, for more
-information about @code{occur-mode-goto-occurrence}.
-
-The first line in the @samp{*Occur*} window describes the @dfn{regular
-expression} specified by @var{texinfo-heading-pattern}.  This regular
-expression is the pattern that @code{texinfo-show-structure} looks for.
-@xref{Regexps, , Using Regular Expressions, emacs, The GNU Emacs Manual},
-for more information.
-
-When you invoke the @code{texinfo-show-structure} command, Emacs will
-display the structure of the whole buffer.  If you want to see the
-structure of just a part of the buffer, of one chapter, for example,
-use the @kbd{C-x n n} (@code{narrow-to-region}) command to mark the
-region.  (@xref{Narrowing, , , emacs, The GNU Emacs Manual}.)  This is
-how the example used above was generated.  (To see the whole buffer
-again, use @kbd{C-x n w} (@code{widen}).)
-
-If you call @code{texinfo-show-structure} with a prefix argument by
-typing @w{@kbd{C-u C-c C-s}}, it will list lines beginning with
-@code{@@node} as well as the lines beginning with the @@-sign commands
-for @code{@@chapter}, @code{@@section}, and the like.
-
-You can remind yourself of the structure of a Texinfo file by looking at
-the list in the @samp{*Occur*} window; and if you have mis-named a node
-or left out a section, you can correct the mistake.
-
-@node Using @code{occur}
-@section Using @code{occur}
-
-@cindex Occurrences, listing with @code{@@occur}
-@findex occur
-
-Sometimes the @code{texinfo-show-structure} command produces too much
-information.  Perhaps you want to remind yourself of the overall structure
-of a Texinfo file, and are overwhelmed by the detailed list produced by
-@code{texinfo-show-structure}.  In this case, you can use the @code{occur}
-command directly.  To do this, type:
-
-@example
-@kbd{M-x occur}
-@end example
-
-@noindent
-and then, when prompted, type a @dfn{regexp}, a regular expression for
-the pattern you want to match.  (@xref{Regexps, , Regular Expressions,
-emacs, The GNU Emacs Manual}.)  The @code{occur} command works from
-the current location of the cursor in the buffer to the end of the
-buffer.  If you want to run @code{occur} on the whole buffer, place
-the cursor at the beginning of the buffer.
-
-For example, to see all the lines that contain the word
-@samp{@@chapter} in them, just type @samp{@@chapter}.  This will
-produce a list of the chapters.  It will also list all the sentences
-with @samp{@@chapter} in the middle of the line.
-
-If you want to see only those lines that start with the word
-@samp{@@chapter}, type @samp{^@@chapter} when prompted by
-@code{occur}.  If you want to see all the lines that end with a word
-or phrase, end the last word with a @samp{$}; for example,
-@samp{catching mistakes$}.  This can be helpful when you want to see
-all the nodes that are part of the same chapter or section and
-therefore have the same `Up' pointer.
-
-@xref{Other Repeating Search, , Using Occur, emacs , The GNU Emacs Manual},
-for more information.
-
-
-@node Running @code{Info-validate}
-@section Finding Badly Referenced Nodes
-
-@anchor{Running Info-Validate}@c old name
-@findex Info-validate
-@cindex Nodes, checking for badly referenced
-@cindex Checking for badly referenced nodes
-@cindex Looking for badly referenced nodes
-@cindex Finding badly referenced nodes
-@cindex Badly referenced nodes
-
-You can use the @code{Info-validate} command to check whether any of
-the `Next', `Previous', `Up' or other node pointers fail to point to a
-node.  This command checks that every node pointer points to an
-existing node.  The @code{Info-validate} command works only on Info
-files, not on Texinfo files.
-
-The @code{makeinfo} program validates pointers automatically, so you
-do not need to use the @code{Info-validate} command if you are using
-@code{makeinfo}.  You only may need to use @code{Info-validate} if you
-are unable to run @code{makeinfo} and instead must create an Info file
-using @code{texinfo-format-region} or @code{texinfo-format-buffer}, or
-if you write an Info file from scratch.
-
-@menu
-* Using @code{Info-validate}::         How to run @code{Info-validate}.
-* Unsplit::                     How to create an unsplit file.
-* Tagifying::                   How to tagify a file.
-* Splitting::                   How to split a file manually.
-@end menu
-
-
-@node Using @code{Info-validate}
-@subsection Using @code{Info-validate}
-
-@cindex Using @code{Info-validate}
-@cindex Info validating a large file
-@cindex Validating a large file
-
-To use @code{Info-validate}, visit the Info file you wish to check and
-type:
-
-@example
-M-x Info-validate
-@end example
-
-@noindent
-Note that the @code{Info-validate} command requires an uppercase
-`I'@.  You may also need to create a tag table before running
-@code{Info-validate}.  @xref{Tagifying}.
-
-If your file is valid, you will receive a message that says ``File appears
-valid''.  However, if you have a pointer that does not point to a node,
-error messages will be displayed in a buffer called @samp{*problems in
-info file*}.
-
-For example, @code{Info-validate} was run on a test file that contained
-only the first node of this manual.  One of the messages said:
-
-@example
-In node "Overview", invalid Next: Texinfo Mode
-@end example
-
-@noindent
-This meant that the node called @samp{Overview} had a `Next' pointer that
-did not point to anything (which was true in this case, since the test file
-had only one node in it).
-
-Now suppose we add a node named @samp{Texinfo Mode} to our test case
-but we do not specify a `Previous' for this node.  Then we will get
-the following error message:
-
-@example
-In node "Texinfo Mode", should have Previous: Overview
-@end example
-
-@noindent
-This is because every `Next' pointer should be matched by a
-`Previous' (in the node where the `Next' points) which points back.
-
-@code{Info-validate} also checks that all menu entries and cross-references
-point to actual nodes.
-
-@code{Info-validate} requires a tag table and does not work with files
-that have been split.  (The @code{texinfo-format-buffer} command
-automatically splits large files.)  In order to use @code{Info-validate}
-on a large file, you must run @code{texinfo-format-buffer} with an
-argument so that it does not split the Info file; and you must create a
-tag table for the unsplit file.
-
-@node Unsplit
-@subsection Creating an Unsplit File
-@cindex Creating an unsplit file
-@cindex Unsplit file creation
-
-You can run @code{Info-validate} only on a single Info file that has a
-tag table.  The command will not work on the indirect subfiles that
-are generated when a master file is split.  If you have a large file
-(longer than 300,000 bytes or so), you need to run the
-@code{texinfo-format-buffer} or @code{makeinfo-buffer} command in such
-a way that it does not create indirect subfiles.  You will also need
-to create a tag table for the Info file.  After you have done this,
-you can run @code{Info-validate} and look for badly referenced
-nodes.
-
-The first step is to create an unsplit Info file.  To prevent
-@code{texinfo-format-buffer} from splitting a Texinfo file into
-smaller Info files, give a prefix to the @kbd{M-x
-texinfo-format-buffer} command:
-
-@example
-C-u M-x texinfo-format-buffer
-@end example
-
-@noindent
-or else
-
-@example
-C-u C-c C-e C-b
-@end example
-
-@noindent
-When you do this, Texinfo will not split the file and will not create
-a tag table for it.
-@cindex Making a tag table manually
-@cindex Tag table, making manually
-
-@node Tagifying
-@subsection Tagifying a File
-
-After creating an unsplit Info file, you must create a tag table for
-it.  Visit the Info file you wish to tagify and type:
-
-@example
-M-x Info-tagify
-@end example
-
-@noindent
-(Note the uppercase @samp{I} in @code{Info-tagify}.)  This creates an
-Info file with a tag table that you can validate.
-
-The third step is to validate the Info file:
-
-@example
-M-x Info-validate
-@end example
-
-@noindent
-(Note the uppercase @samp{I} in @code{Info-validate}.)
-In brief, the steps are:
-
-@example
-@group
-C-u M-x texinfo-format-buffer
-M-x Info-tagify
-M-x Info-validate
-@end group
-@end example
-
-After you have validated the node structure, you can rerun
-@code{texinfo-format-buffer} in the normal way so it will construct a
-tag table and split the file automatically, or you can make the tag
-table and split the file manually.
-
-@node Splitting
-@subsection Splitting a File Manually
-@cindex Splitting an Info file manually
-@cindex Info file, splitting manually
-
-You should split a large file or else let the
-@code{texinfo-format-buffer} or @code{makeinfo-buffer} command do it
-for you automatically.  (Generally you will let one of the formatting
-commands do this job for you.  @xref{Creating an Info File}.)
-
-The split-off files are called the indirect subfiles.
-
-Info files are split to save memory.  With smaller files, Emacs does not
-have to make such a large buffer to hold the information.
-
-If an Info file has more than 30 nodes, you should also make a tag
-table for it.  @xref{Using @code{Info-validate}}, for information
-about creating a tag table.  (Again, tag tables are usually created
-automatically by the formatting command; you only need to create a tag
-table yourself if you are doing the job manually.  Most likely, you
-will do this for a large, unsplit file on which you have run
-@code{Info-validate}.)
-
-Visit the Info file you wish to tagify and split and type the two
-commands:
-
-@example
-M-x Info-tagify
-M-x Info-split
-@end example
-
-@noindent
-(Note that the @samp{I} in @samp{Info} is uppercase.)
-
-When you use the @code{Info-split} command, the buffer is modified into a
-(small) Info file which lists the indirect subfiles.  This file should be
-saved in place of the original visited file.  The indirect subfiles are
-written in the same directory the original file is in, with names generated
-by appending @samp{-} and a number to the original file name.
-
-The primary file still functions as an Info file, but it contains just
-the tag table and a directory of subfiles.
 
 
 @node Info Format Specification
