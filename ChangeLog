@@ -1,5 +1,11 @@
 2020-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Remove commented out "@set smallbook".  
+	There is no corresponding "@ifset smallbook" anywhere else in 
+	the file and apparently has not been for a long time.
+
+2020-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Remove "start of header" and "end of header" 
 	lines.
 

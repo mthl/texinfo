@@ -51,14 +51,6 @@ Texts.  A copy of the license is included in the section entitled
 * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
 @end direntry
 
-@c Set smallbook if printing in smallbook format so the example of the
-@c smallbook font is actually written using smallbook; in bigbook, a kludge
-@c is used for TeX output.  Do this through the -t option to texi2dvi,
-@c so this same source can be used for other paper sizes as well.
-@c smallbook
-@c set smallbook
-@c @@clear smallbook
-
 @c If you like blank pages, add through texi2dvi -t.
 @c setchapternewpage odd
 
