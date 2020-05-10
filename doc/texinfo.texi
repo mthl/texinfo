@@ -613,6 +613,7 @@ Generating HTML
 * HTML Splitting::         How HTML output is split.
 * HTML CSS::               Influencing HTML output with Cascading Style Sheets.
 * HTML Xref::              Cross-references in HTML output.
+* @code{@@documentdescription}::   Document summary for the HTML output.
 
 HTML Cross-references
 
@@ -653,7 +654,6 @@ Updating Nodes and Menus
 
 Global Document Commands
 
-* @code{@@documentdescription}::        Document summary for the HTML output.
 * @code{@@setchapternewpage}::          Start chapters on right-hand pages.
 * @code{@@headings}::                   An option for turning headings on and off
                                         and double or single sided printing.
@@ -18387,6 +18387,7 @@ for a brief overview of all the output formats.
 * HTML Splitting::         How HTML output is split.
 * HTML CSS::               Influencing HTML output with Cascading Style Sheets.
 * HTML Xref::              Cross-references in HTML output.
+* @code{@@documentdescription}::   Document summary for the HTML output.
 @end menu
 
 
@@ -19167,6 +19168,41 @@ If you have additions or corrections to the @file{htmlxref.cnf}
 distributed with Texinfo, please email @email{bug-texinfo@@gnu.org} as
 usual.  You can get the latest version from
 @url{http://ftpmirror.gnu.org/@/texinfo/@/htmlxref.cnf}.
+
+@node @code{@@documentdescription}
+@section @code{@@documentdescription}: Summary Text
+@anchor{documentdescription}@c old name
+
+@cindex Document description
+@cindex Description of document
+@cindex Summary of document
+@cindex Abstract of document
+@cindex @code{<meta>} HTML tag, and document description
+@findex documentdescription
+
+When producing HTML output for a document, @command{makeinfo} writes a
+@samp{<meta>} element in the @samp{<head>} to give some idea of the
+content of the document.  By default, this @dfn{description} is the
+title of the document, taken from the @code{@@settitle} command
+(@pxref{@code{@@settitle}}).  To change this, use the
+@code{@@documentdescription} environment, as in:
+
+@example
+@@documentdescription
+descriptive text.
+@@end documentdescription
+@end example
+
+@noindent
+This will produce the following output in the @samp{<head>} of the HTML:
+
+@example
+<meta name=description content="descriptive text.">
+@end example
+
+@code{@@documentdescription} must be specified before the first node of
+the document.
+
 
 
 @node @@-Command Details
@@ -22345,7 +22381,6 @@ Here are additional commands which affect the document as a whole.  They
 are generally all given before the Top node, if they are given at all.
 
 @menu
-* @code{@@documentdescription}::        Document summary for the HTML output.
 * @code{@@setchapternewpage}::          Start chapters on right-hand pages.
 * @code{@@headings}::                   An option for turning headings on and off
                                         and double or single sided printing.
@@ -22355,41 +22390,6 @@ are generally all given before the Top node, if they are given at all.
 @end menu
 
 @raisesections
-
-@node @code{@@documentdescription}
-@subsection @code{@@documentdescription}: Summary Text
-@anchor{documentdescription}@c old name
-
-@cindex Document description
-@cindex Description of document
-@cindex Summary of document
-@cindex Abstract of document
-@cindex @code{<meta>} HTML tag, and document description
-@findex documentdescription
-
-When producing HTML output for a document, @command{makeinfo} writes a
-@samp{<meta>} element in the @samp{<head>} to give some idea of the
-content of the document.  By default, this @dfn{description} is the
-title of the document, taken from the @code{@@settitle} command
-(@pxref{@code{@@settitle}}).  To change this, use the
-@code{@@documentdescription} environment, as in:
-
-@example
-@@documentdescription
-descriptive text.
-@@end documentdescription
-@end example
-
-@noindent
-This will produce the following output in the @samp{<head>} of the HTML:
-
-@example
-<meta name=description content="descriptive text.">
-@end example
-
-@code{@@documentdescription} must be specified before the first node of
-the document.
-
 
 @node @code{@@setchapternewpage}
 @subsection @code{@@setchapternewpage}: Blank Pages Before Chapters
