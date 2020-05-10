@@ -672,7 +672,6 @@ Page Headings
 
 * Headings Introduced::         Conventions for using page headings.
 * Heading Format::              Standard page heading formats.
-* Heading Choice::              How to specify the type of page heading.
 * Custom Headings::             How to create your own headings and footings.
 
 Finding Badly Referenced Nodes
@@ -22852,10 +22851,8 @@ should format headers for printing on one or both sides of the paper
 (single-sided or double-sided printing).
 
 Write the @code{@@setchapternewpage} command at the beginning of a
-line followed by its argument.
-
-For example, you would write the following to cause each chapter to
-start on a fresh odd-numbered page:
+line followed by its argument.  For example, you would write the 
+following to cause each chapter to start on a fresh odd-numbered page:
 
 @example
 @@setchapternewpage odd
@@ -23273,7 +23270,6 @@ formats.
 @menu
 * Headings Introduced::         Conventions for using page headings.
 * Heading Format::              Standard page heading formats.
-* Heading Choice::              How to specify the type of page heading.
 * Custom Headings::             How to create your own headings and footings.
 @end menu
 
@@ -23301,6 +23297,10 @@ separated from the preceding text by a small amount of whitespace.
 
 The @code{@@setchapternewpage} command controls whether chapters begin
 on new pages, and whether one of the standard heading formats is used.
+@TeX{} starts to generate page headings for a standard Texinfo
+file after it reaches the @code{@@end titlepage} command.  The
+title and copyright pages are not numbered.
+
 In addition, Texinfo has several heading and footing commands that you
 can use to generate your own heading and footing formats.
 
@@ -23378,42 +23378,6 @@ Two pages, side by side as in an open book, look like this:
 The chapter name is preceded by the word ``Chapter'', the chapter number
 and a colon.  This makes it easier to keep track of where you are in the
 manual.
-
-@node Heading Choice
-@section Specifying the Type of Heading
-
-@TeX{} does not begin to generate page headings for a standard Texinfo
-file until it reaches the @code{@@end titlepage} command.  Thus, the
-title and copyright pages are not numbered.  The @code{@@end
-titlepage} command causes @TeX{} to begin to generate page headings
-according to a standard format specified by the
-@code{@@setchapternewpage} command that precedes the
-@code{@@titlepage} section.
-
-@need 1000
-There are four possibilities:
-
-@table @asis
-@item No @code{@@setchapternewpage} command
-Cause @TeX{} to specify the single-sided heading format, with chapters
-on new pages. This is the same as @code{@@setchapternewpage on}.
-
-@item @code{@@setchapternewpage on}
-Specify the single-sided heading format, with chapters on new pages.
-
-@item @code{@@setchapternewpage off}
-Cause @TeX{} to start a new chapter on the same page as the last page
-of the preceding chapter, after skipping some vertical whitespace.
-Also cause @TeX{} to typeset for single-sided printing.  (You can
-override the headers format with the @code{@@headings double} command;
-@pxref{@code{@@headings}}.)
-
-@item @code{@@setchapternewpage odd}
-Specify the double-sided heading format, with chapters on new pages.
-@end table
-
-@noindent
-Texinfo lacks a @code{@@setchapternewpage even} command.
 
 
 @node Custom Headings
