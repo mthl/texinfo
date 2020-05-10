@@ -551,7 +551,6 @@ Formatting and Printing Hardcopy
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * PDF Output::                  Portable Document Format output.
-* Obtaining @TeX{}::               How to obtain @TeX{}.
 
 Format with @command{tex}/@command{texindex}
 
@@ -1041,42 +1040,27 @@ The @command{info} program itself does not follow URIs of any kind.
 @cindex Knuth, Donald
 A Texinfo file can be formatted and typeset as a printed book or
 manual.  To do this, you need @TeX{}, a sophisticated typesetting
-program written by Donald Knuth of Stanford University.
+program written by Donald Knuth of Stanford University.  It is not part 
+of the Texinfo distribution.
+
+Texinfo provides a file @file{texinfo.tex} that contains the definitions
+that @TeX{} uses when it typesets a Texinfo file.
+You can get the latest version of @file{texinfo.tex} from
+the Texinfo home page, @uref{http://www.gnu.org/software/texinfo/}.
 
 A Texinfo-based book is similar to any other typeset, printed work: it
 can have a title page, copyright page, table of contents, and preface,
 as well as chapters, numbered or unnumbered sections and subsections,
 page headers, cross-references, footnotes, and indices.
 
-@TeX{} is a general purpose typesetting program.  Texinfo provides a
-file @file{texinfo.tex} that contains information (definitions or
-@dfn{macros}) that @TeX{} uses when it typesets a Texinfo file.
-(@file{texinfo.tex} tells @TeX{} how to convert the Texinfo @@-commands
-to @TeX{} commands, which @TeX{} can then process to create the typeset
-document.)  @file{texinfo.tex} contains the specifications for printing
-a document.  You can get the latest version of @file{texinfo.tex} from
-the Texinfo home page, @uref{http://www.gnu.org/software/texinfo/}.
-
-In the United States, documents are most often printed on 8.5 inch by
-11 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.
-But you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
-235@dmn{mm}, the @code{@@smallbook} size; or on A4 or A5 size paper
-(@code{@@afourpaper}, @code{@@afivepaper}).
-@xref{@code{@@smallbook}}, and @ref{A4 Paper}.
-
-@cindex Literate programming
-@TeX{} is freely distributable.  It is written in a superset of Pascal
-for literate programming called WEB and can be compiled either in
-Pascal or (by using a conversion program that comes with the @TeX{}
-distribution) in C.
-
-@TeX{} is very powerful and has a great many features.  Because a
-Texinfo file must be able to present information both on a
+@TeX{} is very powerful and has a great many features.  However,
+because a Texinfo file must be able to present information both on a
 character-only terminal in Info form and in a typeset book, the
 formatting commands that Texinfo supports are necessarily limited.
 
-@xref{Obtaining @TeX{}}, for information on acquiring @TeX{}.  It is
-not part of the Texinfo distribution.
+@xref{Hardcopy}, for more information on processing a manual with 
+@TeX{}.
+
 
 
 @node Adding Output Formats
@@ -14596,6 +14580,14 @@ format a file, sort the indices, and print the result, Texinfo mode
 offers key bindings for commands to recenter the output buffer, show the
 print queue, and delete a job from the print queue.
 
+In the United States, documents are most often printed on 8.5 inch by
+11 inch pages (216@dmn{mm} by 280@dmn{mm}); this is the default size.
+But you can also print for 7 inch by 9.25 inch pages (178@dmn{mm} by
+235@dmn{mm}, the @code{@@smallbook} size; or on A4 or A5 size paper
+(@code{@@afourpaper}, @code{@@afivepaper}).
+@xref{@code{@@smallbook}}, and @ref{A4 Paper}.
+
+
 Details are in the following sections.
 
 @menu
@@ -14610,7 +14602,6 @@ Details are in the following sections.
 * Preparing for @TeX{}::           What to do before you use @TeX{}.
 * Overfull hboxes::             What are and what to do with overfull hboxes.
 * PDF Output::                  Portable Document Format output.
-* Obtaining @TeX{}::               How to obtain @TeX{}.
 @end menu
 
 
@@ -14619,11 +14610,22 @@ Details are in the following sections.
 
 The typesetting program called @TeX{} is used to format a Texinfo
 document for printable output.  @TeX{} is a very powerful typesetting
-program and, when used correctly, does an exceptionally good job.
-
-@xref{Obtaining @TeX{}}, for information on how to obtain @TeX{}.  It
-is not included in the Texinfo package, being a vast suite of software
+program and, when used correctly, does an exceptionally good job.  It is 
+not included in the Texinfo package, being a vast suite of software
 in itself.
+
+@anchor{Obtaining @TeX{}}
+@cindex Obtaining @TeX{}
+@cindex @TeX{}, how to obtain
+@TeX{} is a document formatter that is used by the FSF for its
+documentation.  It is the easiest way to get printed output (e.g., PDF
+and PostScript) for Texinfo manuals.  TeX is freely redistributable,
+and you can get it over the Internet or on physical media.  See
+@url{http://tug.org/texlive}.
+
+@c please keep that text in sync with www.gnu.org/prep/FTP
+
+
 
 
 @node Format with @command{texi2dvi}
@@ -15446,20 +15448,6 @@ be much larger than the DVI files output by @TeX{} by default.
 Nevertheless, a PDF file does define an actual typeset document in a
 self-contained file, notably including all the fonts that are used, so
 it has its place.
-
-
-@node Obtaining @TeX{}
-@section Obtaining @TeX{}
-@cindex Obtaining @TeX{}
-@cindex @TeX{}, how to obtain
-
-@TeX{} is a document formatter that is used by the FSF for its
-documentation.  It is the easiest way to get printed output (e.g., PDF
-and PostScript) for Texinfo manuals.  TeX is freely redistributable,
-and you can get it over the Internet or on physical media.  See
-@url{http://tug.org/texlive}.
-
-@c please keep that text in sync with www.gnu.org/prep/FTP
 
 
 @node Generic Translator @command{texi2any}
