@@ -1,3 +1,17 @@
+2020-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove unused macro.
+
+	* doc\texinfo.tex (\pagealignmacro): Remove macro.  It was not 
+	used except in \bye.
+	(\bye): Use \chappager instead of \pagealignmacro.  Presumably 
+	we do not need an extra blank page at the very end of the 
+	document if "@setchapternewpage odd" to make sure that we end on 
+	an even page.
+	(\startcontents): Remove a comment.  The comment credited
+	Torbjorn Granlund <tege@matematik.su.se> for the 
+	\contentsalignmacro, presumably added 1996-08-03.
+
 2020-05-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi: Remove commented out "@set smallbook".  

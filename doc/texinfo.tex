@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-10.19}
+\def\texinfoversion{2020-05-13.20}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -1011,7 +1011,7 @@ where each line of input produces a line of output.}
 \let\setfilename=\comment
 
 % @bye.
-\outer\def\bye{\pagealignmacro\tracingstats=1\ptexend}
+\outer\def\bye{\chappager\tracingstats=1\ptexend}
 
 
 \message{pdf,}
@@ -6430,19 +6430,16 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 
 \def\CHAPPAGoff{%
 \global\let\contentsalignmacro = \chappager
-\global\let\pchapsepmacro=\chapbreak
-\global\let\pagealignmacro=\chappager}
+\global\let\pchapsepmacro=\chapbreak}
 
 \def\CHAPPAGon{%
 \global\let\contentsalignmacro = \chappager
 \global\let\pchapsepmacro=\chappager
-\global\let\pagealignmacro=\chappager
 \global\def\HEADINGSon{\HEADINGSsingle}}
 
 \def\CHAPPAGodd{%
 \global\let\contentsalignmacro = \chapoddpage
 \global\let\pchapsepmacro=\chapoddpage
-\global\let\pagealignmacro=\chapoddpage
 \global\def\HEADINGSon{\HEADINGSdouble}}
 
 \CHAPPAGon
@@ -6807,9 +6804,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 %
 \def\startcontents#1{%
   % If @setchapternewpage on, and @headings double, the contents should
-  % start on an odd page, unlike chapters.  Thus, we maintain
-  % \contentsalignmacro in parallel with \pagealignmacro.
-  % From: Torbjorn Granlund <tege@matematik.su.se>
+  % start on an odd page, unlike chapters.
   \contentsalignmacro
   \immediate\closeout\tocfile
   %
