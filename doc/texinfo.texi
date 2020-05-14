@@ -18370,19 +18370,16 @@ influencing the display of HTML documents: see
 
 By default, @command{makeinfo} includes a few simple CSS commands to
 better implement the appearance of some Texinfo environments.  Here
-are two of them, as an example:
+is one of them, as an example:
 
 @example
 pre.display @{ font-family:inherit @}
-pre.smalldisplay @{ font-family:inherit; font-size:smaller @}
 @end example
 
 A full explanation of CSS is (far) beyond this manual; please see the
-reference above.  In brief, however, the above tells the web browser
-to use a `smaller' font size for @code{@@smalldisplay} text, and to
-use the same font as the main document for both @code{@@smalldisplay}
-and @code{@@display}.  By default, the HTML @samp{<pre>} command uses
-a monospaced font.
+reference above.  In brief, however, the above tells the web browser to
+use the same font as the main document for @code{@@display}.
+By default, the HTML @samp{<pre>} command uses a monospaced font.
 
 You can influence the CSS in the HTML output with two
 @command{makeinfo} options: @option{--css-include=@var{file}} and
@@ -18438,7 +18435,7 @@ default CSS is included.  If you need to override @command{makeinfo}'s
 defaults from an @samp{@@import}, you can do so with the @samp{!@:
 important} CSS construct, as in:
 @example
-pre.smallexample @{ font-size: inherit ! important @}
+pre.example @{ font-size: inherit ! important @}
 @end example
 
 @item If @var{file} contains both @samp{@@import} and inline CSS
