@@ -1,5 +1,15 @@
 2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Input encoding error.
+
+	* tp/Texinfo/ParserNonXS.pm (_open_in): Use ':encoding(utf-8)'
+	instead of 'utf-8'.  Hopefully this makes encoding errors 
+	non-fatal for Latin-1 files that aren't marked as such.  The 
+	output would be mostly OK if only a few non-ASCII characters are 
+	used.
+
+2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* info/session.c (mouse_event_handler): Clear echo area.
 
 2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
