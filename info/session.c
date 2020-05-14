@@ -555,6 +555,7 @@ unsigned char mouse_cb, mouse_cx, mouse_cy;
 void
 mouse_event_handler (void)
 {
+  window_clear_echo_area();
   if (mouse_cb & 0x40)
     {
       switch (mouse_cb & 0x03)
