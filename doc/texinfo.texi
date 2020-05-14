@@ -1259,7 +1259,7 @@ an @samp{@@} character in front of it, like this: @samp{@@@@},
 @samp{@@@{}, and @samp{@@@}}.
 
 @item
-@cindex @@-commands
+@cindex @sortas{at} @@-commands
 @cindex Formatting commands
 In a Texinfo file, the commands you write to describe the contents of
 the manual are preceded by an @samp{@@} character; they are called
@@ -1407,7 +1407,6 @@ regarding nesting of such commands, @pxref{Conditional Nesting}.)
 @node Minimum
 @section What a Texinfo File Must Have
 @cindex Minimal Texinfo file (requirements)
-@cindex Must have in Texinfo file
 @cindex Required in Texinfo file
 @cindex Texinfo file minimum
 
@@ -1859,8 +1858,6 @@ change it if you wish by setting the @code{tex-start-of-header} and/or
 
 @anchor{setfilename}@c old name
 @findex setfilename
-@cindex Texinfo requires @code{@@setfilename}
-@cindex Output file name, required
 
 The @code{@@setfilename} line specifies the name of the output file to
 be generated.
@@ -1977,8 +1974,8 @@ Texinfo comment that looks like this:
 
 @node Document Permissions
 @section Document Permissions
-@cindex Document Permissions
-@cindex Copying Permissions
+@cindex Document permissions
+@cindex Copying permissions
 
 The copyright notice and copying permissions for a document need to
 appear in several places in the various Texinfo output formats.
@@ -2196,7 +2193,7 @@ the sections below.
 
 @findex shorttitlepage
 @cindex Bastard title page
-@cindex Title page, bastard
+@cindex Title page @subentry bastard
 For sufficiently simple documents, and for the bastard title page in
 traditional book frontmatter, Texinfo also provides a command
 @code{@@shorttitlepage} which takes the rest of the line as the title.
@@ -2767,7 +2764,7 @@ is the same as the order of the children in the menu of the parent
 chapter.  Each child node records the parent node name as its `Up'
 pointer.
 
-@opindex accesskey@r{, in HTML output of nodes}
+@cindex @code{accesskey} @subentry in HTML output of nodes
 The Info and HTML output from @command{makeinfo} for each node includes
 links to the `Next', `Previous', and `Up' nodes.  The HTML also uses
 the @code{accesskey} attribute with the values @samp{n}, @samp{p}, and
@@ -2955,7 +2952,7 @@ sections are all different.
 
 @item
 @cindex Commands in node names
-@cindex @@-commands in node names
+@cindex @sortas{at} @@-commands @subentry in node names
 Node names can contain @@-commands.  The output is generally the
 natural result of the command; for example, using @code{@@TeX@{@}} in a
 node name results in the @TeX{} logo being output, as it would be in
@@ -3413,7 +3410,7 @@ specify that you want it to do this, place the line
 In Info, a user selects a node with the @kbd{m} (@code{Info-menu})
 command.  The menu entry name is what the user types after the @kbd{m}
 command.
-@opindex accesskey@r{, in HTML output of menus}
+@cindex @code{accesskey} @subentry in HTML output of menus
 In the HTML output from @command{makeinfo}, the @code{accesskey}
 attribute is used with the values @samp{1}@dots{}@samp{9} for the
 first nine entries.  This allows people using web browsers to follow
@@ -5143,8 +5140,7 @@ refer to printed works for which no Info form exists.
 
 @anchor{uref}@c old name
 @anchor{url}
-@cindex Uniform resource locator, referring to
-@cindex URL, referring to
+@cindex URL @subentry referring to
 
 @findex url
 @cindex @code{href}, producing HTML
@@ -5184,7 +5180,7 @@ the third argument is given, the second argument is ignored.
 @subsection @code{@@url} Examples
 
 @cindex @code{@@url}, examples of using
-@cindex URL, examples of displaying
+@cindex URL @subentry examples of displaying
 
 First, here is an example of the simplest form of @code{@@url}, with
 just one argument.  The given url is both the target and the visible
@@ -5261,7 +5257,7 @@ already has to detect them without the @samp{<URL:}.
 @node URL Line Breaking
 @subsection URL Line Breaking
 
-@cindex Line breaking, and urls
+@cindex Line breaks @subentry URL's
 @cindex Breakpoints within urls
 @TeX{} allows line breaking within urls at only a few characters
 (which are special in urls): @samp{&}, @samp{.}, @samp{#}, @samp{?},
@@ -6220,8 +6216,7 @@ them.
 
 @anchor{indicateurl}@c old name
 @findex indicateurl
-@cindex Uniform resource locator, indicating
-@cindex URL, indicating
+@cindex URL @subentry indicating
 
 Use the @code{@@indicateurl} command to indicate a uniform resource
 locator on the World Wide Web.  This is purely for markup purposes and
@@ -7964,7 +7959,7 @@ Another group of commands is for creating footnotes in Texinfo.
 
 @node Floats
 @section Floats
-@cindex Floats, in general
+@cindex Floats
 
 A @dfn{float} is a display which is set off from the main text.  It is
 typically labeled as being a ``Figure'', ``Table'', ``Example'', or
@@ -8029,7 +8024,7 @@ float is automatically given a number, and will appear in any
 @code{@@listoffloats} output (@pxref{@code{@@listoffloats}}).  Cross
 references to @var{label} are allowed.
 
-@cindex Floats, making unnumbered
+@cindex Floats @subentry making unnumbered
 @cindex Unnumbered float, creating
 On the other hand, if @var{label} is not given, then the float will
 not be numbered and consequently will not appear in the
@@ -8039,7 +8034,7 @@ not be numbered and consequently will not appear in the
 @noindent Ordinarily, you specify both @var{type} and @var{label}, to get a
 labeled and numbered float.
 
-@cindex Floats, numbering of
+@cindex Floats @subentry numbering of
 @cindex Numbering of floats
 In Texinfo, all floats are numbered in the same way: with the chapter
 number (or appendix letter), a period, and the float number, which
@@ -8115,7 +8110,7 @@ there is a @code{@@shortcaption}.
 @anchor{listoffloats}@c old name
 @findex listoffloats
 @cindex List of floats
-@cindex Floats, list of
+@cindex Floats @subentry list of
 @cindex Table of contents, for floats
 
 You can write a @code{@@listoffloats} command to generate a list of
@@ -8164,7 +8159,7 @@ from the list of floats.
 @node Images
 @section Inserting Images
 
-@cindex Images, inserting
+@cindex Images
 @cindex Pictures, inserting
 @findex image
 
@@ -8261,7 +8256,7 @@ indentation.  If you want it centered, use @code{@@center}
 (@pxref{@code{@@titlefont @@center @@sp}}).
 
 @cindex Alt attribute for images
-@cindex Images, alternate text for
+@cindex Images @subentry alternate text for
 @findex @sortas{-} -@r{ (in image alt string)}
 For HTML output, @code{makeinfo} sets the @dfn{alt attribute} for
 inline images to the optional @var{alttext} (fourth) argument to
@@ -8306,7 +8301,7 @@ literally, which, although not pretty, should not be harmful.
 @node Image Scaling
 @subsection Image Scaling
 
-@cindex Images, scaling
+@cindex Images @subentry scaling
 @cindex Scaling images
 @cindex Width of images
 @cindex Height of images
@@ -9431,8 +9426,8 @@ be the undirected single quote, like this:
 
 @item @@codequotebacktick @var{on-off}
 @findex codequotebacktick
-@cindex backtick
-@cindex grave accent, standalone
+@cindex Backtick
+@cindex Grave accent @subentry standalone
 causes the output for the @code{`} character in code environments to
 be the backtick character (standalone grave accent), like this:
 @set txicodequotebacktick on
@@ -9912,7 +9907,7 @@ for example, in documenting a computer language such as Maxima where
 the double-quote characters.
 
 @cindex Unicode quotation characters
-@cindex Grave accent, vs. left quote
+@cindex Grave accent @subentry vs. left quote
 The left quote character (@t{`}, ASCII code 96) used in Texinfo is a
 grave accent in ANSI and ISO character set standards.  We use it as a
 quote character because that is how @TeX{} is set up, by default.
@@ -10845,7 +10840,7 @@ is the ASCII sequence @samp{U+@var{hex}}, as in the six ASCII characters
 @cindex Forcing line and page breaks
 @cindex Making line and page breaks
 @cindex Preventing line and page breaks
-@cindex Line breaks, awkward
+@cindex Line breaks @subentry awkward
 @cindex Page breaks, awkward
 
 Line and page breaks can sometimes occur in the `wrong' place in one
@@ -10924,7 +10919,7 @@ Start a new page if not enough space on this one.
 
 @findex * @r{(force line break)}
 @findex / @r{(allow line break)}
-@cindex Line breaks, controlling
+@cindex Line breaks @subentry controlling
 @cindex Controlling line breaks
 @cindex Breaks in a line
 @cindex Force line break
@@ -14154,7 +14149,7 @@ disabled inside verbatim blocks.
 @subsection @samp{#line} and @TeX{}
 
 @cindex @TeX{} and @samp{#line} directives
-@cindex @samp{#line} directives, not processing with @TeX{}
+@cindex @samp{#line} directive @subentry not processing with @TeX{}
 
 As mentioned, @command{makeinfo} recognizes the @samp{#line}
 directives described in the previous section.  However,
@@ -14196,7 +14191,7 @@ Advantages}).
 @node @samp{#line} Syntax Details
 @subsection @samp{#line} Syntax Details
 
-@cindex @samp{#line} syntax details
+@cindex @samp{#line} directive @subentry syntax details
 @cindex Syntax details, @samp{#line}
 @cindex Regular expression, for @samp{#line}
 
@@ -14888,7 +14883,7 @@ written for the cross-references.
 @cindex Partial documents, formatting
 @cindex Chapters, formatting one at a time
 @cindex Auxiliary files, omitting
-@cindex Pointer validation, suppressing
+@cindex Pointer validation @subentry suppressing
 @findex novalidate
 
 Sometimes you may wish to print a document while you know it is
@@ -15257,14 +15252,14 @@ Also, you should install @file{epsf.tex}, if it is not already installed
 from another distribution.  More details are at the end of the description
 of the @code{@@image} command (@pxref{Images}).
 
-@cindex European Computer Modern fonts, installing
+@cindex European Computer Modern fonts @subentry installing
 @cindex EC fonts, installing
-@cindex CM-Super fonts, installing
+@cindex CM-Super fonts @subentry installing
 To use quotation marks other than those used in English, you'll need
 to have the European Computer Modern fonts (e.g., @file{ecrm1000}) and
 (for PDF output) CM-Super fonts (@pxref{Inserting Quotation Marks}).
 
-@pindex feymr10@r{, installing}
+@cindex @code{feymr10} @subentry installing
 @cindex Euro font, installing
 To use the @code{@@euro} command, you'll need the @samp{feym*} fonts
 (e.g., @file{feymr10}).  @xref{@code{@@euro}}.
@@ -15863,7 +15858,7 @@ with hierarchically structured manuals.  You should specify
 @itemx --no-validate
 @opindex --no-pointer-validate
 @opindex --no-validate
-@cindex Pointer validation, suppressing from command line
+@cindex Pointer validation @subentry suppressing from command line
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
 command (@pxref{Use @TeX{}}).  Normally, consistency checks are made
@@ -16169,7 +16164,7 @@ invokes @command{texi2dvi}, only diagnostic messages.
 
 @node Pointer Validation
 @section Pointer Validation
-@cindex Pointer validation with @code{makeinfo}
+@cindex Pointer validation @subentry with @code{makeinfo}
 @cindex Validation of pointers
 
 If you do not suppress pointer validation with the
@@ -16264,7 +16259,7 @@ The sections below give the details for each of these.
 @subsection Customization Variables for @@-Commands
 
 @cindex Customization variables for @@-commands
-@cindex @@-commands, customization variables for
+@cindex @sortas{at} @@-commands @subentry customization variables for
 
 Each of the following @@-commands has an associated customization
 variable with the same name (minus the leading @code{@@}):
@@ -16670,7 +16665,7 @@ and for other formats, see @code{TOP_NODE_UP} in
 @ref{Other Customization Variables}.
 
 @item USE_ACCESSKEY
-@cindex @code{accesskey}, customization variable for
+@cindex @code{accesskey} @subentry customization variable for
 Use @code{accesskey} in cross-references; default true.
 
 @item USE_ISO
@@ -17626,7 +17621,7 @@ validate the structure of the nodes, see @ref{Using
 @node Installing an Info File
 @section Installing an Info File
 @cindex Installing an Info file
-@cindex Info file installation
+@cindex Info files @subentry installation
 @cindex @file{dir} directory for Info installation
 
 Info files are usually kept in the @file{info} directory.  You can
@@ -17700,7 +17695,7 @@ true in general, it is a special case for @file{dir}.
 @cindex Adding a new Info file
 @cindex Listing a new Info file
 @cindex New Info file, listing it in @file{dir} file
-@cindex Info file, listing a new
+@cindex Info files @subentry listing a new
 @cindex @file{dir} file listing
 
 To add a new Info file to your system, you must write a menu entry to
@@ -18503,7 +18498,7 @@ The algorithm was primarily devised by Patrice Dumas in 2003--04.
 
 @node HTML Xref Link Basics
 @subsection HTML Cross-reference Link Basics
-@cindex HTML cross-reference link basics
+@cindex HTML cross-references @subentry link basics
 
 For our purposes, an HTML link consists of four components: a host
 name, a directory part, a file part, and a target part.  We
@@ -18587,7 +18582,7 @@ actually present in.  @xref{HTML Xref Mismatch}.
 
 @node HTML Xref Node Name Expansion
 @subsection HTML Cross-reference Node Name Expansion
-@cindex HTML cross-reference node name expansion
+@cindex HTML cross-references @subentry node name expansion
 @cindex node name expansion, in HTML cross-references
 @cindex expansion, of node names in HTML cross-references
 
@@ -18675,7 +18670,7 @@ independent of operating system.
 
 @node HTML Xref Command Expansion
 @subsection HTML Cross-reference Command Expansion
-@cindex HTML cross-reference command expansion
+@cindex HTML cross-references @subentry command expansion
 
 Node names may contain @@-commands (@pxref{Node Line Requirements}).
 This section describes how they are handled.
@@ -18766,7 +18761,7 @@ Any other command is an error, and the result is unspecified.
 
 @node HTML Xref 8-bit Character Expansion
 @subsection HTML Cross-reference 8-bit Character Expansion
-@cindex HTML cross-reference 8-bit character expansion
+@cindex HTML cross-references @subentry 8-bit character expansion
 @cindex 8-bit characters, in HTML cross-references
 @cindex Expansion of 8-bit characters in HTML cross-references
 @cindex Transliteration of 8-bit characters in HTML cross-references
@@ -18822,7 +18817,7 @@ web.
 
 @node HTML Xref Mismatch
 @subsection HTML Cross-reference Mismatch
-@cindex HTML cross-reference mismatch
+@cindex HTML cross-references @subentry mismatch
 @cindex Mismatched HTML cross-reference source and target
 
 As mentioned earlier (@pxref{HTML Xref Link Basics}), the generating
@@ -18871,7 +18866,7 @@ control.
 @subsection HTML Cross-reference Configuration: @file{htmlxref.cnf}
 
 @pindex htmlxref.cnf
-@cindex HTML cross-reference configuration
+@cindex HTML cross-references @subentry configuration
 @cindex Cross-reference configuration, for HTML
 @cindex Configuration, for HTML cross-manual references
 
@@ -19023,7 +19018,7 @@ list of commands, and information about where commands can appear.
 
 @node Command Syntax
 @section @@-Command Syntax
-@cindex @@-command syntax
+@cindex @sortas{at} @@-commands @subentry syntax
 @cindex Syntax, of @@-commands
 @cindex Command syntax
 
@@ -19100,7 +19095,7 @@ filling commands work properly.
 @section @@-Command List
 @cindex Alphabetical @@-command list
 @cindex List of @@-commands
-@cindex @@-command list
+@cindex @sortas{at} @@-commands @subentry list of
 @cindex Reference to @@-commands
 
 Here is an alphabetical list of the @@-commands in Texinfo.  Square
@@ -22752,7 +22747,7 @@ table and split the file manually.
 @node Splitting
 @subsection Splitting a File Manually
 @cindex Splitting an Info file manually
-@cindex Info file, splitting manually
+@cindex Info files @subentry splitting manually
 
 You should split a large file or else let the
 @code{texinfo-format-buffer} or @code{makeinfo-buffer} command do it
@@ -23920,7 +23915,7 @@ be displayed as part of the menu, as-is (@pxref{Writing a Menu}).
 @node Info Format Image
 @subsection Info Format: Image
 
-@cindex Images, in Info format
+@cindex Images @subentry in Info format
 
 The @code{@@image} command results in the following special directive
 within the Info file (@pxref{Images}):

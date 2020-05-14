@@ -1,5 +1,9 @@
 2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi: Revise some index entries and use @subentry.
+
+2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No title in headings in TOC with '@headings double'.
 
 	* doc/texinfo.tex (\startcontents): Define @thistitle to be 
