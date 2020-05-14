@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-13.20}
+\def\texinfoversion{2020-05-14.12}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -3955,6 +3955,18 @@ end
 \global\let\contentsalignmacro = \chappager
 }
 
+% for @setchapternewpage off
+\def\HEADINGSsinglechapoff{%
+\global\pageno=1
+\global\evenfootline={\hfil}
+\global\oddfootline={\hfil}
+\global\evenheadline={\line{\thischapter\hfil\folio}}
+\global\oddheadline={\line{\thischapter\hfil\folio}}
+\global\evenchapheadline=\evenheadline
+\global\oddchapheadline=\oddheadline
+\global\let\contentsalignmacro = \chappager
+}
+
 % Subroutines used in generating headings
 % This produces Day Month Year style of output.
 % Only define if not already defined, in case a txi-??.tex file has set
@@ -6430,7 +6442,8 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 
 \def\CHAPPAGoff{%
 \global\let\contentsalignmacro = \chappager
-\global\let\pchapsepmacro=\chapbreak}
+\global\let\pchapsepmacro=\chapbreak
+\global\def\HEADINGSon{\HEADINGSsinglechapoff}}
 
 \def\CHAPPAGon{%
 \global\let\contentsalignmacro = \chappager

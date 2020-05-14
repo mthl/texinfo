@@ -1,3 +1,12 @@
+2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	'@setchapternewpage off' headings.
+
+	* doc/texinfo.tex (\CHAPPAGoff): Redefine \HEADINGSon as is done 
+	for \CHAPPAGon and \CHAPPAGodd.
+	(\HEADINGSsinglechapoff): The new definition.  Chapter pages 
+	have the same headings as other pages.
+
 2020-05-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Remove unused macro.
