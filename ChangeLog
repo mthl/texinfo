@@ -1,5 +1,12 @@
 2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Update TODO.
+
+	* TODO: Remove many items which have either been done or are 
+	unlikely to be done.
+
+2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	PDF page labels.
 
 	(\pagelabels) [PDF]: New macro.
