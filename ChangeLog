@@ -1,3 +1,18 @@
+2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	PDF page labels.
+
+	(\pagelabels) [PDF]: New macro.
+	(\bye): Call it.
+	(\pagecount, \romancount, \arabiccount): New counts.
+	(\advancepageno) [PDF]: Increment \pagecount.
+	(\headings, \startcontents, \contents, \shortcontents):
+	Set \romancount, \arabiccount appropriately.
+
+	This means that the page numbers displayed in some PDF readers 
+	can actually match the numbers printed on the pages.
+
+
 2020-05-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Input encoding error.

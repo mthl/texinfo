@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-14.13}
+\def\texinfoversion{2020-05-20.20}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -1011,7 +1011,7 @@ where each line of input produces a line of output.}
 \let\setfilename=\comment
 
 % @bye.
-\outer\def\bye{\chappager\tracingstats=1\ptexend}
+\outer\def\bye{\chappager\pagelabels\tracingstats=1\ptexend}
 
 
 \message{pdf,}
@@ -1135,6 +1135,45 @@ where each line of input produces a line of output.}
 \fi
 \ifx\XeTeXrevision\thisisundefined\else
   \pdforxetextrue
+\fi
+
+
+% Output page labels information.
+% See PDF reference v.1.7 p.594, section 8.3.1.
+\ifpdf
+\def\pagelabels{%
+  \def\title{0 << /P (T-) /S /D >>}%
+  \edef\roman{\the\romancount << /S /r >>}%
+  \edef\arabic{\the\arabiccount << /S /D >>}%
+  %
+  % Page label ranges must be increasing.  Remove any duplicates.
+  % (There is a slight chance of this being wrong if e.g. there is
+  % a @contents but no @titlepage, etc.)
+  %
+  \ifnum\romancount=0 \def\roman{}\fi
+  \ifnum\arabiccount=0 \def\title{}%
+  \else
+    \ifnum\romancount=\arabiccount \def\roman{}\fi
+  \fi
+  %
+  \ifnum\romancount<\arabiccount
+    \pdfcatalog{/PageLabels << /Nums [\title \roman \arabic ] >> }\relax
+  \else
+    \pdfcatalog{/PageLabels << /Nums [\title \arabic \roman ] >> }\relax
+  \fi
+}
+\else
+  \let\pagelabels\relax
+\fi
+
+\newcount\pagecount \pagecount=0
+\newcount\romancount \romancount=0
+\newcount\arabiccount \arabiccount=0
+\ifpdf
+  \let\ptxadvancepageno\advancepageno
+  \def\advancepageno{%
+    \ptxadvancepageno\global\advance\pagecount by 1
+  }
 \fi
 
 
@@ -3914,12 +3953,17 @@ end
 \HEADINGSoff  % it's the default
 
 % When we turn headings on, set the page number to 1.
+\def\pageone{
+  \global\pageno=1
+  \global\arabiccount = \pagecount
+}
+
 % For double-sided printing, put current file name in lower left corner,
 % chapter name on inside top of right hand pages, document
 % title on inside top of left hand pages, and page numbers on outside top
 % edge of all pages.
 \def\HEADINGSdouble{%
-\global\pageno=1
+\pageone
 \HEADINGSdoublex
 }
 \let\contentsalignmacro = \chappager
@@ -3927,7 +3971,7 @@ end
 % For single-sided printing, chapter title goes across top left of page,
 % page number on top right.
 \def\HEADINGSsingle{%
-\global\pageno=1
+\pageone
 \HEADINGSsinglex
 }
 \def\HEADINGSon{\HEADINGSdouble}
@@ -3957,7 +4001,7 @@ end
 
 % for @setchapternewpage off
 \def\HEADINGSsinglechapoff{%
-\global\pageno=1
+\pageone
 \global\evenfootline={\hfil}
 \global\oddfootline={\hfil}
 \global\evenheadline={\line{\thischapter\hfil\folio}}
@@ -6832,7 +6876,9 @@ might help (with 'rm \jobname.?? \jobname.??s')%
     %
     % Roman numerals for page numbers.
     \ifnum \pageno>0 \global\pageno = \lastnegativepageno \fi
-    \def\thistitle{}% no title in double-sided heaings
+    \def\thistitle{}% no title in double-sided headings
+    % Record where the Roman numerals started.
+    \ifnum\romancount=0 \global\romancount=\pagecount \fi
 }
 
 % redefined for the two-volume lispref.  We always output on
@@ -6855,8 +6901,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
     \fi
     \closein 1
   \endgroup
-  \lastnegativepageno = \pageno
-  \global\pageno = \savepageno
+  \contentsendroman
 }
 
 % And just the chapters.
@@ -6891,10 +6936,20 @@ might help (with 'rm \jobname.?? \jobname.??s')%
     \vfill \eject
     \contentsalignmacro % in case @setchapternewpage odd is in effect
   \endgroup
-  \lastnegativepageno = \pageno
-  \global\pageno = \savepageno
+  \contentsendroman
 }
 \let\shortcontents = \summarycontents
+
+% Get ready to use Arabic numerals again
+\def\contentsendroman{%
+  \lastnegativepageno = \pageno
+  \global\pageno = \savepageno
+  %
+  % If \romancount > \arabiccount, the contents are at the end of the
+  % document.  Otherwise, advance where the Arabic numerals start for
+  % the page numbers.
+  \ifnum\romancount>\arabiccount\else\global\arabiccount=\pagecount\fi
+}
 
 % Typeset the label for a chapter or appendix for the short contents.
 % The arg is, e.g., `A' for an appendix, or `3' for a chapter.
