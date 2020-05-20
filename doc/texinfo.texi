@@ -68,9 +68,6 @@ Texts.  A copy of the license is included in the section entitled
 @author Robert J. Chassell
 @author Richard M. Stallman
 
-@c Include the Distribution inside the titlepage so
-@c that headings are turned off.
-
 @page
 @vskip 0pt plus 1filll
 @insertcopying
@@ -2532,23 +2529,14 @@ main text of the document.
 @cindex Node, `Top'
 
 The `Top' node is the node in which a reader enters an Info manual.
-As such, it should begin with a brief description of the manual
-(including the version number), and end with a master menu for the
-whole manual.  Of course you should include any other general
-information you feel a reader would find helpful.
+As such, it should contain a very brief description of the manual
+(including the version number) and a master menu for the whole manual.  
+The contents of the `Top' node do not appear in printed output.
 
 @findex top
-It is conventional and desirable to write a @code{@@top} sectioning
-command line containing the title of the document immediately after
-the @code{@@node Top} line (@pxref{@code{@@top} Command}).
-
-The contents of the `Top' node should appear only in the online output;
-none of it should appear in printed output, so enclose it between
-@code{@@ifnottex} and @code{@@end ifnottex} commands.  (@TeX{} does not
-print either an @code{@@node} line or a menu; they appear only in Info;
-strictly speaking, you are not required to enclose these parts between
-@code{@@ifnottex} and @code{@@end ifnottex}, but it is simplest to do
-so.  @xref{Conditionals, , Conditionally Visible Text}.)
+It is conventional to write a @code{@@top} sectioning command line 
+containing the title of the document immediately after the @code{@@node 
+Top} line (@pxref{@code{@@top} Command}).
 
 @menu
 * Top Node Example::
@@ -2565,12 +2553,10 @@ Here is an example of a Top node.
 
 @example
 @group
-@@ifnottex
 @@node Top
 @@top Sample Title
 
 This is the text of the top node.
-@@end ifnottex
 @end group
 
 Additional general information.
@@ -2684,15 +2670,9 @@ the last line to be processed.  For example:
 
 @findex bye
 @anchor{File End}
-An @code{@@bye} command terminates Texinfo processing.  None of the
-formatters process anything following @code{@@bye}; any such text is
-completely ignored.  The @code{@@bye} command should be on a line by
-itself.
-
-Thus, if you wish, you may follow the @code{@@bye} line with arbitrary
-notes.  Also, you may follow the @code{@@bye} line with a local
-variables list for Emacs, most typically a @samp{compile-command}
-(@pxref{Compile-Command,, Using the Local Variables List}).
+A @code{@@bye} command terminates Texinfo processing.  It should be on
+a line by itself.  Anything following @code{@@bye} is completely
+ignored.
 
 
 @node Nodes

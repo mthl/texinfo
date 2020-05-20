@@ -1,5 +1,13 @@
 2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Doc updates.
+
+	* doc/texinfo.texi (title page): Remove non-sensical comment.
+	(The Top Node): Omitted automatically with TeX.
+	(Ending a File): Abbreviate.
+
+2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Update TODO.
 
 	* TODO: Remove many items which have either been done or are 
