@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-05-20.20}
+\def\texinfoversion{2020-05-22.11}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -7631,7 +7631,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
       \wlog{texinfo.tex: doing @verbatiminclude of #1^^J}%
       \edef\tmp{\noexpand\input #1 }
       \expandafter
-    }\tmp
+    }\expandafter\starttabbox\tmp\egroup
     \afterenvbreak
   }%
 }

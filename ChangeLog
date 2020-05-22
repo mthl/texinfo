@@ -1,3 +1,14 @@
+2020-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix @verbatiminclude.
+
+	* doc/texinfo.tex (\doverbatiminclude): Call \starttabbox before
+	\input-ing the file, and do \egroup afterwards.  Otherwise the 
+	catcode changes from \setupverbatim are cancelled at the end of 
+	the first line with the \egroup from \par.
+
+	Report from Akira Kakuto.
+
 2020-05-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Doc updates.
