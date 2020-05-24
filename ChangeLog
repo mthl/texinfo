@@ -1,3 +1,11 @@
+2020-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix info hang.
+
+	* info/search.c (find_node_in_binding): Add a check to prevent 
+	an infinite loop in case of a malformed input file.  Report by 
+	Nathaniel Beaver.
+
 2020-05-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix @verbatiminclude.
