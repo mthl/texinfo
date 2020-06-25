@@ -1,5 +1,21 @@
 2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix index features in code index.
+
+	* doc/texinfo.tex (\docind): New macro, like \doind but for code 
+	indices.
+	(\docindwrite): Likewise, for \doindwrite.
+	(\splitindexentry): Check whether we are in a code index and add 
+	\code if we are.
+	(\docodeindex): Use \docind rather than \doind and wrapping 
+	argument in \code.
+
+	This allows @subentry and @sortas to work correctly.  Reports 
+	from Werner Lemberg (June 2020) and Akim Demaille (November 
+	2019).
+
+2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Try to fix macro expansion in index entries.
 
 	* doc/texinfo.tex (\printindex) <\ is escape character>:
