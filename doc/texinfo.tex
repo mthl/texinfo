@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-06-25.11}
+\def\texinfoversion{2020-06-25.14}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -5645,7 +5645,11 @@ might help (with 'rm \jobname.?? \jobname.??s')%
   \else
     \begindoublecolumns
     \catcode`\\=0\relax
-    \catcode`\@=12\relax
+    %
+    % Make @ an escape character to give macros a chance to work.  This
+    % should work because we (hopefully) don't otherwise use @ in index files.
+    %\catcode`\@=12\relax
+    \catcode`\@=0\relax
     \input \jobname.\indexname s
     \enddoublecolumns
   \fi

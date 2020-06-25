@@ -1,5 +1,13 @@
 2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Try to fix macro expansion in index entries.
+
+	* doc/texinfo.tex (\printindex) <\ is escape character>:
+	Made @ an escape character too in case one appears in a macro 
+	expansion.  Report from Werner Lemberg.
+
+2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix indentation of nested @verbatim.
 
 	* doc/texinfo.tex (\setupverbatim): Call \leavevmode so that 
