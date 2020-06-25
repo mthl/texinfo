@@ -1,3 +1,11 @@
+2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix indentation of nested @verbatim.
+
+	* doc/texinfo.tex (\setupverbatim): Call \leavevmode so that 
+	\leftskip glue is correctly added.  Fixes bug introduced on
+	2020-05-06.  Report from Werner Lemberg.
+
 2020-05-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix info hang.
