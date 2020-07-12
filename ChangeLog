@@ -1,3 +1,7 @@
+2020-07-12  Juha-Matti Huusko  <juha-matti.huusko@uef.fi>
+
+	* doc/txi-fi.tex: Add Finnish translation.
+
 2020-06-25  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix index features in code index.

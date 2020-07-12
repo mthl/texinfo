@@ -26,9 +26,9 @@ TEXI2DVI = $(top_srcdir)/util/texi2dvi
 # INSTALL_INFO = $(top_builddir)/$(native_tools)/util/ginstall-info
 
 TXI_XLATE = txi-ca.tex txi-cs.tex txi-de.tex txi-en.tex txi-es.tex \
-            txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex txi-ja.tex \
-            txi-nb.tex txi-nl.tex txi-nn.tex txi-pl.tex txi-pt.tex \
-            txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
+	    txi-fi.tex txi-fr.tex txi-hu.tex txi-is.tex txi-it.tex \
+	    txi-ja.tex txi-nb.tex txi-nl.tex txi-nn.tex txi-pl.tex \
+	    txi-pt.tex txi-ru.tex txi-sr.tex txi-tr.tex txi-uk.tex
 
 refcard_files = refcard/Makefile refcard/txicmdcheck \
                 refcard/txirefcard-a4.pdf refcard/txirefcard.pdf \
