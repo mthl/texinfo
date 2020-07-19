@@ -1,3 +1,8 @@
+2020-07-19  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf: Update mit-scheme.  From Thérèse Godefroy 
+	<godef.th@free.fr>.
+
 2020-07-12  Juha-Matti Huusko  <juha-matti.huusko@uef.fi>
 
 	* doc/txi-fi.tex: Add Finnish translation.
