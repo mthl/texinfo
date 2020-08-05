@@ -379,6 +379,8 @@ AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
+AC_CONFIG_SUBDIRS([js])
+
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
 dnl We cannot enable the TeX-related tests, so don't waste time

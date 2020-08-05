@@ -64,6 +64,7 @@ endif
 endif
   SUBDIRS += install-info po po_document tp Pod-Simple-Texinfo texindex util \
              doc man
+  SUBDIRS += js
 endif
 
 distclean-local:

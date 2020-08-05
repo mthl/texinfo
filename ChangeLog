@@ -1,3 +1,11 @@
+2020-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Add js subdirectory to build system.
+
+	* Makefile.am: Add js to SUBDIRS.
+	* configure.ac: Add js to AC_CONFIG_SUBDIRS
+	* autogen.sh: Run autoreconf in js.
+
 2020-07-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* util/htmlxref.cnf: Update mit-scheme.  From Thérèse Godefroy 
