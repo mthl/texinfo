@@ -279,7 +279,7 @@ my @variable_string_settables = (
   'TEXINFO_DTD_VERSION', 'TEXINFO_OUTPUT_FORMAT',
   'INFO_SPECIAL_CHARS_WARNING',
   'INDEX_SPECIAL_CHARS_WARNING', 'INFO_SPECIAL_CHARS_QUOTE',
-  'HTMLXREF'
+  'HTMLXREF', 'INFO_JS_DIR'
 );
 # Not strings. 
 # FIXME To be documented somewhere, but where?

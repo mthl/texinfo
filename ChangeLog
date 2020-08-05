@@ -1,5 +1,15 @@
 2020-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Start adding option to use Javascript interface.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables):
+	Add INFO_JS_DIR.
+	* tp/Texinfo/Convert/HTML.pm (_file_header_informations):
+	If INFO_JS_DIR is set, then add extra lines in the <head> 
+	element.
+
+2020-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add js subdirectory to build system.
 
 	* Makefile.am: Add js to SUBDIRS.

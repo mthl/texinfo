@@ -6358,6 +6358,21 @@ sub _file_header_informations($$)
     $generator = "\n<meta name=\"Generator\" content=\"$program\">";
   }
 
+  if (defined($self->get_conf('INFO_JS_DIR'))) {
+    my $jsdir = $self->get_conf('INFO_JS_DIR');
+    if ($jsdir eq '.') {
+      $jsdir = '';
+    } else {
+      $jsdir =~ s,/*$,/,; # append a single slash
+    }
+
+    $extra_head .=
+'<link rel="stylesheet" type="text/css" href="'.$jsdir.'info.css"/>
+<script src="'.$jsdir.'modernizr.js" type="text/javascript"></script>
+<script src="'.$jsdir.'info.js" type="text/javascript"></script>';
+
+  }
+
   return ($title, $description, $encoding, $date, $css_lines, 
           $doctype, $bodytext, $copying_comment, $after_body_open,
           $extra_head, $program_and_version, $program_homepage,
