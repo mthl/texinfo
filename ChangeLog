@@ -1,3 +1,15 @@
+2020-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Copy JS files to HTML output.
+
+	* tp/Texinfo/ModulePath.pm.in: Make $lib_dir and $libexec_dir 
+	accessible outside of module.
+	* tp/Texinfo/Convert/HTML.pm (output):
+	If INFO_JS_DIR is given, try to copy the JS Interface files 
+	there.  Remove some debugging statements.
+	(_file_header_informations): Give an error if INFO_JS_DIR is 
+	used for non-split output.
+
 2020-08-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Start adding option to use Javascript interface.

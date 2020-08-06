@@ -55,6 +55,8 @@ use Texinfo::Convert::NodeNameNormalization;
 
 use Carp qw(cluck);
 
+use File::Copy qw(copy);
+
 require Exporter;
 use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
 @ISA = qw(Exporter Texinfo::Convert::Converter);
@@ -6359,18 +6361,23 @@ sub _file_header_informations($$)
   }
 
   if (defined($self->get_conf('INFO_JS_DIR'))) {
-    my $jsdir = $self->get_conf('INFO_JS_DIR');
-    if ($jsdir eq '.') {
-      $jsdir = '';
+    if (!$self->get_conf('SPLIT')) {
+      $self->document_error(
+        sprintf(__("%s not meaningful for non-split output"),
+                   'INFO_JS_DIR'));
     } else {
-      $jsdir =~ s,/*$,/,; # append a single slash
-    }
+      my $jsdir = $self->get_conf('INFO_JS_DIR');
+      if ($jsdir eq '.') {
+        $jsdir = '';
+      } else {
+        $jsdir =~ s,/*$,/,; # append a single slash
+      }
 
-    $extra_head .=
+      $extra_head .=
 '<link rel="stylesheet" type="text/css" href="'.$jsdir.'info.css"/>
 <script src="'.$jsdir.'modernizr.js" type="text/javascript"></script>
 <script src="'.$jsdir.'info.js" type="text/javascript"></script>';
-
+    }
   }
 
   return ($title, $description, $encoding, $date, $css_lines, 
@@ -7121,13 +7128,11 @@ sub output($$)
       my $file_fh;
       $self->{'current_filename'} = $element->{'filename'};
       $self->{'counter_in_file'}->{$element->{'filename'}}++;
-      #print STDERR "TTTTTTT($element) $element->{'filename'}: $self->{'file_counters'}->{$element->{'filename'}} (out_filename $element->{'out_filename'})\n";
       # First do the special pages, to avoid outputting these if they are
       # empty.
       my $special_element_content;
       if ($element->{'extra'} and $element->{'extra'}->{'special_element'}) {
         $special_element_content .= $self->_convert($element);
-        #print STDERR "Special element converter: $element->{'extra'}->{'special_element'}\n";
         if ($special_element_content eq '') {
           $self->{'file_counters'}->{$element->{'filename'}}--;
           next ;
@@ -7166,6 +7171,36 @@ sub output($$)
             $self->document_error(sprintf(__("error on closing %s: %s"),
                                   $element->{'out_filename'}, $!));
             return undef;
+          }
+        }
+      }
+    }
+    if ($self->get_conf('INFO_JS_DIR')) {
+      my $jsdir = File::Spec->catdir($self->{'destination_directory'}, 
+                                     $self->get_conf('INFO_JS_DIR'));
+      if (!-d $jsdir) {
+        if (-f $jsdir) {
+          $self->document_error(
+            sprintf(__("%s already exists but is not a directory"), $jsdir));
+        } else {
+          mkdir $jsdir;
+        }
+      }
+      if (-d $jsdir) {
+        my $jssrcdir;
+        if (!$Texinfo::ModulePath::texinfo_uninstalled) {
+          $jssrcdir = File::Spec->catdir(
+            $Texinfo::ModulePath::lib_dir, 'js');
+        } else {
+          $jssrcdir = File::Spec->catdir(
+            $Texinfo::ModulePath::top_srcdir, 'js');
+        }
+        for my $f ('info.js', 'modernizr.js', 'info.css') {
+          my $from = File::Spec->catfile($jssrcdir, $f);
+
+          if (!copy($from, $jsdir)) {
+            $self->document_error(
+              sprintf(__("error on copying %s into %s"), $from, $jsdir));
           }
         }
       }

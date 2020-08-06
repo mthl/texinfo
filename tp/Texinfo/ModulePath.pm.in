@@ -23,6 +23,9 @@ our $builddir = '';
 our $top_builddir;
 our $top_srcdir;
 
+our $lib_dir;
+our $libexec_dir;
+
 # If $LIB_DIR and $LIBEXEC_DIR are given,
 # (likely the installation directories)
 # use them to add directories
@@ -34,8 +37,8 @@ our $top_srcdir;
 # otherwise use 'top_srcdir'
 # and 'top_builddir' environment variables.
 sub init {
-  my $lib_dir = shift;
-  my $libexec_dir = shift;
+  $lib_dir = shift;
+  $libexec_dir = shift;
   my %named_args = @_;
 
   if (!$named_args{'installed'}) {
