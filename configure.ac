@@ -1,6 +1,6 @@
 # Process this file with autoconf to produce a configure script.
 #
-# Copyright 2002-2019 Free Software Foundation, Inc.
+# Copyright 2002-2020 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -379,7 +379,20 @@ AC_SUBST([enable_xs])
 
 AM_CONDITIONAL([DISABLE_XS], [test "z$enable_xs" = zno])
 
-AC_CONFIG_SUBDIRS([js])
+# Texinfo JS Interface
+npm_path="${srcdir}/js/node_modules/.bin${PATH_SEPARATOR}$PATH"
+
+AC_PATH_PROG([ESLINT], [eslint], [], [$npm_path])
+AM_CONDITIONAL([HAVE_ESLINT], [test "x$ac_cv_path_ESLINT" != "x"])
+
+AC_PATH_PROG([TSC], [tsc], [], [$npm_path])
+AM_CONDITIONAL([HAVE_TYPESCRIPT], [test "x$ac_cv_path_TSC" != "x"])
+
+AC_PATH_PROG([UGLIFYJS], [uglifyjs], [], [$npm_path])
+AM_CONDITIONAL([HAVE_UGLIFYJS], [test "x$ac_cv_path_UGLIFYJS" != "x"])
+
+AC_PATH_PROG([MODERNIZR], [modernizr], [], [$npm_path])
+AM_CONDITIONAL([HAVE_MODERNIZR], [test "x$ac_cv_path_MODERNIZR" != "x"])
 
 # Tests.
 AC_CONFIG_FILES([install-info/tests/defs])
@@ -492,6 +505,7 @@ AC_CONFIG_FILES([\
   tp/tests/layout/Makefile
   tp/tests/tex_html/Makefile
   tp/defs
+  js/Makefile
   Pod-Simple-Texinfo/Makefile
 ])
 

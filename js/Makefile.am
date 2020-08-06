@@ -48,13 +48,15 @@ EXTRA_DIST =
 
 EXTRA_DIST += INSTALL
 
+jsdir=$(pkgdatadir)/js
+
 # Javascript files that will be included in the html pages.  The order
 # of those files is the order in which they will be included
 js_scripts = \
   modernizr.js \
   info.js
 
-dist_pkgdata_DATA=$(js_scripts) info.css
+dist_js_DATA=$(js_scripts) info.css
 
 bin_SCRIPTS = texinfo-js
 EXTRA_DIST += texinfo-js.in

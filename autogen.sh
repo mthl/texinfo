@@ -46,10 +46,6 @@ cmd="(cd tp/Texinfo/XS && ${LIBTOOLIZE} \
 echo "  $cmd"
 $chicken eval $cmd || exit 1
 
-cmd="(cd js && autoreconf --force --verbose --install --symlink)"
-$chicken eval $cmd || exit 1
-
-
 echo
 echo "Now run configure with your desired options, for instance:"
 echo "  ./configure CFLAGS='-g'"
