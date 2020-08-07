@@ -1790,6 +1790,8 @@
     div.setAttribute ("id", "icon-bar");
     var span = document.createElement ("span");
     span.innerHTML = "?";
+    // Set tool-tip (on hover)
+    span.setAttribute ("title", "Help for keyboard shortcuts");
     span.classList.add ("icon");
     span.addEventListener ("click", function () {
       store.dispatch (actions.show_help ());
