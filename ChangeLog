@@ -1,3 +1,10 @@
+2020-08-07  Per Bother  <per@bothner.com>
+
+	Add sidebar customization hook.
+
+	* js/info.js (header): Check window.sidebarLinkAppendContents
+	hook.
+
 2020-08-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	No separate configure.ac for js subdirectory.

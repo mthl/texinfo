@@ -1231,11 +1231,16 @@
           a.setAttribute ("href", config.INDEX_NAME);
           a.setAttribute ("id", config.INDEX_ID);
           header.appendChild (a);
-          var div = document.createElement ("div");
-          a.appendChild (div);
-          var span = document.createElement ("span");
-          span.textContent = h1.textContent;
-          div.appendChild (span);
+          if (window.sidebarLinkAppendContents)
+            window.sidebarLinkAppendContents(a, h1.textContent);
+          else
+            {
+              var div = document.createElement ("div");
+              a.appendChild (div);
+              var span = document.createElement ("span");
+              span.textContent = h1.textContent;
+              div.appendChild (span);
+            }
           elem.parentElement.insertBefore (header, elem);
         }
     }
