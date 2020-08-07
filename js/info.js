@@ -135,7 +135,7 @@
       for (var i = 0; i < links.length; i += 1)
         {
           var link = links[i];
-          dict[link.textContent] = href_hash (link.getAttribute ("href"));
+          dict[link.textContent] = href_hash (link_href (alink));
         }
       return { type: "cache-index-links", links: dict };
     },
@@ -1201,9 +1201,10 @@
       function
       add_link (elem)
       {
-        if (elem.matches ("a") && elem.hasAttribute ("href"))
+        let href;
+          if (elem.matches ("a") && (href = link_href(elem)))
           {
-            var id = href_hash (elem.getAttribute ("href"));
+            var id = href_hash (href);
             links[prev_id] =
               Object.assign ({}, links[prev_id], { forward: id });
             links[id] = Object.assign ({}, links[id], { backward: prev_id });
@@ -1371,7 +1372,7 @@
       {
         if ((target instanceof Element) && target.matches ("a"))
           {
-            var href = target.getAttribute ("href");
+            var href = link_href(target);
             if (href && !absolute_url_p (href)
                   && !external_manual_url_p (href))
               {
@@ -1595,7 +1596,7 @@
     for (var i = 0; i < links.length; i += 1)
       {
         var link = links[i];
-        var href = link.getAttribute ("href");
+        var href = link_href(link);
         if (!href)
           continue;
         else if (absolute_url_p (href))
@@ -1605,7 +1606,14 @@
         else
           {
             var href$ = with_sidebar_query (href);
-            link.setAttribute ("href", href$);
+            if (href !== href$)
+              {
+                let protocol = location.protocol;
+                if (protocol == "https:" || protocol == "http:")
+                  link._href = href$;
+                else
+                  link.setAttribute ("href", href$);
+              }
             if (id)
               {
                 var linkid = (href$ === config.INDEX_NAME) ?
@@ -1726,6 +1734,13 @@
       depth_first_walk (child, func, node_type);
   }
 
+  /** Return the "effective" href attribute of a link (a) element. */
+  function
+  link_href (alink)
+  {
+    return alink._href || alink.getAttribute("href");
+  }
+
   /** Return the hash part of HREF without the '#' prefix.  HREF must be a
       string.  If there is no hash part in HREF then return the empty
       string.  */
@@ -1765,7 +1780,7 @@
         var nav_id = navigation_links.dict[link.getAttribute ("accesskey")];
         if (nav_id)
           {
-            var href = basename (link.getAttribute ("href"));
+            var href = basename (link_href (link));
             if (href === config.INDEX_NAME)
               res[nav_id] = config.INDEX_ID;
             else
@@ -1774,7 +1789,7 @@
         else /* this link is part of local table of content. */
           {
             res.menu = res.menu || {};
-            res.menu[link.text] = href_hash (link.getAttribute ("href"));
+            res.menu[link.text] = href_hash (link_href (link));
           }
       }
 
