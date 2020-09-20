@@ -1,3 +1,8 @@
+2020-09-20  Moritz Klammler  <moritz.klammler@cetitec.com>  (tiny change)
+
+	* tp/texi2any.pl: Fix accidental duplication of
+	variable value passed via texi2any's -D option to texi2dvi.
+
 2020-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Headings Introduced): Remove text that 

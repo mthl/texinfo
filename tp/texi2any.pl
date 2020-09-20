@@ -863,7 +863,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
       push @texi2dvi_args, "--command=\@set $var 1";
     } else {
       $parser_default_options->{'values'}->{$field[0]} = $field[1];
-      push @texi2dvi_args, "--command=\@set $var $field[1]";
+      push @texi2dvi_args, "--command=\@set $field[0] $field[1]";
     }
  },
  'U=s' => sub {
