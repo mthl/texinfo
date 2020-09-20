@@ -22920,295 +22920,8 @@ You can also specify your own style of page heading and footing.
 @xref{Headings, , Page Headings}, for more information.
 
 
-@node @code{@@paragraphindent}
-@subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
-
-@anchor{paragraphindent}@c old name
-@findex paragraphindent
-@cindex Indenting paragraphs, control of
-@cindex Paragraph indentation control
-
-The Texinfo processors may insert whitespace at the beginning of the
-first line of each paragraph, thereby indenting that paragraph.  You can
-use the @code{@@paragraphindent} command to specify this indentation.
-Write a @code{@@paragraphindent} command at the beginning of a line
-followed by either @samp{asis} or a number:
-
-@example
-@@paragraphindent @var{indent}
-@end example
-
-The indentation is according to the value of @var{indent}:
-
-@table @asis
-@item @code{asis}
-Do not change the existing indentation (not implemented in @TeX{}).
-
-@item @code{none}
-@itemx 0
-Omit all indentation.
-
-@item @var{n}
-Indent by @var{n} space characters in Info output, by @var{n} ems in
-@TeX{}.
-
-@end table
-
-The default value of @var{indent} is 3.  @code{@@paragraphindent} is
-ignored for HTML output.
-
-It is best to write the @code{@@paragraphindent} command before the
-end-of-header line at the beginning of a Texinfo file, so the region
-formatting commands indent paragraphs as specified.  @xref{Start of
-Header}.
-
-
-@node @code{@@firstparagraphindent}
-@subsection @code{@@firstparagraphindent}: Indenting After Headings
-
-@anchor{firstparagraphindent}@c old name
-@findex firstparagraphindent
-@cindex First paragraph, suppressing indentation of
-@cindex Suppressing first paragraph indentation
-@cindex Preventing first paragraph indentation
-@cindex Indenting, suppressing of first paragraph
-@cindex Headings, indentation after
-
-As you can see in the present manual, the first paragraph in any
-section is not indented by default.  Typographically, indentation is a
-paragraph separator, which means that it is unnecessary when a new
-section begins.  This indentation is controlled with the
-@code{@@firstparagraphindent} command:
-
-@example
-@@firstparagraphindent @var{word}
-@end example
-
-The first paragraph after a heading is indented according to the value
-of @var{word}:
-
-@table @asis
-@item @code{none}
-Prevents the first paragraph from being indented (default).
-This option is ignored by @command{makeinfo} if
-@code{@@paragraphindent asis} is in effect.
-
-@item @code{insert}
-Include normal paragraph indentation.  This respects the paragraph
-indentation set by a @code{@@paragraphindent} command
-(@pxref{@code{@@paragraphindent}}).
-@end table
-
-@code{@@firstparagraphindent} is ignored for HTML and Docbook output.
-
-It is best to write the @code{@@firstparagraphindent} command before the
-end-of-header line at the beginning of a Texinfo file, so the region
-formatting commands indent paragraphs as specified.  @xref{Start of
-Header}.
-
-
-@node @code{@@exampleindent}
-@subsection @code{@@exampleindent}: Environment Indenting
-
-@anchor{exampleindent}@c old name
-@findex exampleindent
-@cindex Indenting environments
-@cindex Environment indentation
-@cindex Example indentation
-
-The Texinfo processors indent each line of @code{@@example} and similar
-environments.  You can use the @code{@@exampleindent} command to specify
-this indentation.  Write an @code{@@exampleindent} command at the
-beginning of a line followed by either @samp{asis} or a number:
-
-@example
-@@exampleindent @var{indent}
-@end example
-
-The indentation is according to the value of @var{indent}:
-
-@table @asis
-@item @code{asis}
-Do not change the existing indentation (not implemented in @TeX{}).
-
-@item 0
-Omit all indentation.
-
-@item @var{n}
-Indent environments by @var{n} space characters in Info output, by
-@var{n} ems in @TeX{}.
-
-@end table
-
-The default value of @var{indent} is 5 spaces in Info, and 0.4@dmn{in}
-in @TeX{}, which is somewhat less.  (The reduction is to help @TeX{}
-fit more characters onto physical lines.)
-
-It is best to write the @code{@@exampleindent} command before the
-end-of-header line at the beginning of a Texinfo file, so the region
-formatting commands indent paragraphs as specified.  @xref{Start of
-Header}.
-
-@lowersections @c Global Document Commands
-
-@node @code{@@smallbook}
-@section @code{@@smallbook}: Printing ``Small'' Books
-
-@anchor{smallbook}@c old name
-@findex smallbook
-@cindex Small book size
-@cindex Book, printing small
-@cindex Page sizes for books
-@cindex Size of printed book
-
-By default, @TeX{} typesets pages for printing in an 8.5 by 11 inch
-format.  However, you can direct @TeX{} to typeset a document in a 7 by
-9.25 inch format that is suitable for bound books by inserting the
-following command on a line by itself at the beginning of the Texinfo
-file, before the title page:
-
-@example
-@@smallbook
-@end example
-
-@noindent
-(Since many books are about 7 by 9.25 inches, this command might better
-have been called the @code{@@regularbooksize} command, but it came to be
-called the @code{@@smallbook} command by comparison to the 8.5 by 11
-inch format.)
-
-If you write the @code{@@smallbook} command between the
-start-of-header and end-of-header lines, the Texinfo mode @TeX{}
-region formatting command, @code{texinfo-tex-region}, will format the
-region in ``small'' book size (@pxref{Start of Header}).
-
-@xref{@code{@@small@dots{}}}, for information about commands that make
-it easier to produce examples for a smaller manual.
-
-@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
-for other ways to format with @code{@@smallbook} that do not require
-changing the source file.
-
-
-@node A4 Paper
-@section Printing on A4 Paper
-@cindex A4 paper, printing on
-@cindex A5 paper, printing on
-@cindex Paper size, A4
-@cindex European A4 paper
-@findex afourpaper
-@findex afivepaper
-
-You can tell @TeX{} to format a document for printing on European size
-A4 paper (or A5) with the @code{@@afourpaper} (or @code{@@afivepaper})
-command.  Write the command on a line by itself near the beginning of
-the Texinfo file, before the title page.  For example, this is how you
-would write the header for this manual:
-
-@example
-@group
-\input texinfo    @@c -*-texinfo-*-
-@@c %**start of header
-@@settitle Texinfo
-@@afourpaper
-@@c %**end of header
-@end group
-@end example
-
-@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
-for other ways to format for different paper sizes that do not require
-changing the source file.
-
-@findex afourlatex
-@findex afourwide
-You may or may not prefer the formatting that results from the command
-@code{@@afourlatex}.  There's also @code{@@afourwide} for A4 paper in
-wide format.
-
-
-@node @code{@@pagesizes}
-@section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
-@anchor{pagesizes}@c old node name
-
-@findex pagesizes
-@cindex Custom page sizes
-@cindex Page sizes, customized
-@cindex Text width and height
-@cindex Width of text area
-@cindex Height of text area
-@cindex Depth of text area
-
-You can explicitly specify the height and (optionally) width of the main
-text area on the page with the @code{@@pagesizes} command.  Write this
-on a line by itself near the beginning of the Texinfo file, before the
-title page.  The height comes first, then the width if desired,
-separated by a comma.  Examples:
-
-@example
-@@pagesizes 200mm,150mm  @c for b5 paper
-@end example
-@noindent and
-@example
-@@pagesizes 11.5in       @c for legal paper
-@end example
-
-@cindex B5 paper, printing on
-@cindex Legal paper, printing on
-This would be reasonable for printing on B5-size paper.  To emphasize,
-this command specifies the size of the @emph{text area}, not the size of
-the paper (which is 250@dmn{mm} by 177@dmn{mm} for B5, 14@dmn{in} by
-8.5@dmn{in} for legal).
-
-@cindex Margins on page, not controllable
-To make more elaborate changes, such as changing any of the page
-margins, you must define a new command in @file{texinfo.tex} or
-@file{texinfo.cnf}.
-
-@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
-for other ways to specify @code{@@pagesizes} that do not require
-changing the source file.
-
-
-@node Magnification
-@section Magnification
-@anchor{Cropmarks and Magnification} @c old name
-
-@findex \mag @r{(raw @TeX{} magnification)}
-@cindex Magnified printing
-@cindex Larger or smaller pages
-You can attempt to direct @TeX{} to typeset pages larger or smaller
-than usual with the @code{\mag} @TeX{} command.  Everything that is
-typeset is scaled proportionally larger or smaller.  (@code{\mag}
-stands for ``magnification''.)  This is @emph{not} a Texinfo
-@@-command, but is a raw @TeX{} command that is prefixed with a
-backslash.  You have to write this command between @code{@@tex} and
-@code{@@end tex} (@pxref{Raw Formatter Commands}).
-
-Follow the @code{\mag} command with an @samp{=} and then a number that
-is 1000 times the magnification you desire.  For example, to print pages
-at 1.2 normal size, write the following near the beginning of the
-Texinfo file, before the title page:
-
-@example
-@group
-@@tex
-\global\mag=1200
-@@end tex
-@end group
-@end example
-
-With some printing technologies, you can print normal-sized copies that
-look better than usual by giving a larger-than-normal master to your
-print shop.  They do the reduction, thus effectively increasing the
-resolution.
-
-Depending on your system, DVI files prepared with a
-nonstandard-@code{\mag} may not print or may print only with certain
-magnifications.  Be prepared to experiment.
-
-
-
-
+@lowersections
+@lowersections
 @node Headings
 @appendix Page Headings
 @cindex Headings
@@ -23525,7 +23238,296 @@ manual.
 
 By default the @code{@@this...} commands reflect the situation at the
 bottom of a page both in headings and in footings.
+@raisesections
+@raisesections
 
+
+
+@node @code{@@paragraphindent}
+@subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
+
+@anchor{paragraphindent}@c old name
+@findex paragraphindent
+@cindex Indenting paragraphs, control of
+@cindex Paragraph indentation control
+
+The Texinfo processors may insert whitespace at the beginning of the
+first line of each paragraph, thereby indenting that paragraph.  You can
+use the @code{@@paragraphindent} command to specify this indentation.
+Write a @code{@@paragraphindent} command at the beginning of a line
+followed by either @samp{asis} or a number:
+
+@example
+@@paragraphindent @var{indent}
+@end example
+
+The indentation is according to the value of @var{indent}:
+
+@table @asis
+@item @code{asis}
+Do not change the existing indentation (not implemented in @TeX{}).
+
+@item @code{none}
+@itemx 0
+Omit all indentation.
+
+@item @var{n}
+Indent by @var{n} space characters in Info output, by @var{n} ems in
+@TeX{}.
+
+@end table
+
+The default value of @var{indent} is 3.  @code{@@paragraphindent} is
+ignored for HTML output.
+
+It is best to write the @code{@@paragraphindent} command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  @xref{Start of
+Header}.
+
+
+@node @code{@@firstparagraphindent}
+@subsection @code{@@firstparagraphindent}: Indenting After Headings
+
+@anchor{firstparagraphindent}@c old name
+@findex firstparagraphindent
+@cindex First paragraph, suppressing indentation of
+@cindex Suppressing first paragraph indentation
+@cindex Preventing first paragraph indentation
+@cindex Indenting, suppressing of first paragraph
+@cindex Headings, indentation after
+
+As you can see in the present manual, the first paragraph in any
+section is not indented by default.  Typographically, indentation is a
+paragraph separator, which means that it is unnecessary when a new
+section begins.  This indentation is controlled with the
+@code{@@firstparagraphindent} command:
+
+@example
+@@firstparagraphindent @var{word}
+@end example
+
+The first paragraph after a heading is indented according to the value
+of @var{word}:
+
+@table @asis
+@item @code{none}
+Prevents the first paragraph from being indented (default).
+This option is ignored by @command{makeinfo} if
+@code{@@paragraphindent asis} is in effect.
+
+@item @code{insert}
+Include normal paragraph indentation.  This respects the paragraph
+indentation set by a @code{@@paragraphindent} command
+(@pxref{@code{@@paragraphindent}}).
+@end table
+
+@code{@@firstparagraphindent} is ignored for HTML and Docbook output.
+
+It is best to write the @code{@@firstparagraphindent} command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  @xref{Start of
+Header}.
+
+
+@node @code{@@exampleindent}
+@subsection @code{@@exampleindent}: Environment Indenting
+
+@anchor{exampleindent}@c old name
+@findex exampleindent
+@cindex Indenting environments
+@cindex Environment indentation
+@cindex Example indentation
+
+The Texinfo processors indent each line of @code{@@example} and similar
+environments.  You can use the @code{@@exampleindent} command to specify
+this indentation.  Write an @code{@@exampleindent} command at the
+beginning of a line followed by either @samp{asis} or a number:
+
+@example
+@@exampleindent @var{indent}
+@end example
+
+The indentation is according to the value of @var{indent}:
+
+@table @asis
+@item @code{asis}
+Do not change the existing indentation (not implemented in @TeX{}).
+
+@item 0
+Omit all indentation.
+
+@item @var{n}
+Indent environments by @var{n} space characters in Info output, by
+@var{n} ems in @TeX{}.
+
+@end table
+
+The default value of @var{indent} is 5 spaces in Info, and 0.4@dmn{in}
+in @TeX{}, which is somewhat less.  (The reduction is to help @TeX{}
+fit more characters onto physical lines.)
+
+It is best to write the @code{@@exampleindent} command before the
+end-of-header line at the beginning of a Texinfo file, so the region
+formatting commands indent paragraphs as specified.  @xref{Start of
+Header}.
+
+@lowersections @c Global Document Commands
+
+@node @code{@@smallbook}
+@section @code{@@smallbook}: Printing ``Small'' Books
+
+@anchor{smallbook}@c old name
+@findex smallbook
+@cindex Small book size
+@cindex Book, printing small
+@cindex Page sizes for books
+@cindex Size of printed book
+
+By default, @TeX{} typesets pages for printing in an 8.5 by 11 inch
+format.  However, you can direct @TeX{} to typeset a document in a 7 by
+9.25 inch format that is suitable for bound books by inserting the
+following command on a line by itself at the beginning of the Texinfo
+file, before the title page:
+
+@example
+@@smallbook
+@end example
+
+@noindent
+(Since many books are about 7 by 9.25 inches, this command might better
+have been called the @code{@@regularbooksize} command, but it came to be
+called the @code{@@smallbook} command by comparison to the 8.5 by 11
+inch format.)
+
+If you write the @code{@@smallbook} command between the
+start-of-header and end-of-header lines, the Texinfo mode @TeX{}
+region formatting command, @code{texinfo-tex-region}, will format the
+region in ``small'' book size (@pxref{Start of Header}).
+
+@xref{@code{@@small@dots{}}}, for information about commands that make
+it easier to produce examples for a smaller manual.
+
+@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to format with @code{@@smallbook} that do not require
+changing the source file.
+
+
+@node A4 Paper
+@section Printing on A4 Paper
+@cindex A4 paper, printing on
+@cindex A5 paper, printing on
+@cindex Paper size, A4
+@cindex European A4 paper
+@findex afourpaper
+@findex afivepaper
+
+You can tell @TeX{} to format a document for printing on European size
+A4 paper (or A5) with the @code{@@afourpaper} (or @code{@@afivepaper})
+command.  Write the command on a line by itself near the beginning of
+the Texinfo file, before the title page.  For example, this is how you
+would write the header for this manual:
+
+@example
+@group
+\input texinfo    @@c -*-texinfo-*-
+@@c %**start of header
+@@settitle Texinfo
+@@afourpaper
+@@c %**end of header
+@end group
+@end example
+
+@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to format for different paper sizes that do not require
+changing the source file.
+
+@findex afourlatex
+@findex afourwide
+You may or may not prefer the formatting that results from the command
+@code{@@afourlatex}.  There's also @code{@@afourwide} for A4 paper in
+wide format.
+
+
+@node @code{@@pagesizes}
+@section @code{@@pagesizes} [@var{width}][, @var{height}]: Custom Page Sizes
+@anchor{pagesizes}@c old node name
+
+@findex pagesizes
+@cindex Custom page sizes
+@cindex Page sizes, customized
+@cindex Text width and height
+@cindex Width of text area
+@cindex Height of text area
+@cindex Depth of text area
+
+You can explicitly specify the height and (optionally) width of the main
+text area on the page with the @code{@@pagesizes} command.  Write this
+on a line by itself near the beginning of the Texinfo file, before the
+title page.  The height comes first, then the width if desired,
+separated by a comma.  Examples:
+
+@example
+@@pagesizes 200mm,150mm  @c for b5 paper
+@end example
+@noindent and
+@example
+@@pagesizes 11.5in       @c for legal paper
+@end example
+
+@cindex B5 paper, printing on
+@cindex Legal paper, printing on
+This would be reasonable for printing on B5-size paper.  To emphasize,
+this command specifies the size of the @emph{text area}, not the size of
+the paper (which is 250@dmn{mm} by 177@dmn{mm} for B5, 14@dmn{in} by
+8.5@dmn{in} for legal).
+
+@cindex Margins on page, not controllable
+To make more elaborate changes, such as changing any of the page
+margins, you must define a new command in @file{texinfo.tex} or
+@file{texinfo.cnf}.
+
+@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
+for other ways to specify @code{@@pagesizes} that do not require
+changing the source file.
+
+
+@node Magnification
+@section Magnification
+@anchor{Cropmarks and Magnification} @c old name
+
+@findex \mag @r{(raw @TeX{} magnification)}
+@cindex Magnified printing
+@cindex Larger or smaller pages
+You can attempt to direct @TeX{} to typeset pages larger or smaller
+than usual with the @code{\mag} @TeX{} command.  Everything that is
+typeset is scaled proportionally larger or smaller.  (@code{\mag}
+stands for ``magnification''.)  This is @emph{not} a Texinfo
+@@-command, but is a raw @TeX{} command that is prefixed with a
+backslash.  You have to write this command between @code{@@tex} and
+@code{@@end tex} (@pxref{Raw Formatter Commands}).
+
+Follow the @code{\mag} command with an @samp{=} and then a number that
+is 1000 times the magnification you desire.  For example, to print pages
+at 1.2 normal size, write the following near the beginning of the
+Texinfo file, before the title page:
+
+@example
+@group
+@@tex
+\global\mag=1200
+@@end tex
+@end group
+@end example
+
+With some printing technologies, you can print normal-sized copies that
+look better than usual by giving a larger-than-normal master to your
+print shop.  They do the reduction, thus effectively increasing the
+resolution.
+
+Depending on your system, DVI files prepared with a
+nonstandard-@code{\mag} may not print or may print only with certain
+magnifications.  Be prepared to experiment.
 
 
 @node Info Format Specification
