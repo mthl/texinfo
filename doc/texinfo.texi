@@ -22786,10 +22786,8 @@ are generally all given before the Top node, if they are given at all.
 * Magnification::               How to print scaled up output.
 @end menu
 
-@raisesections
-
 @node @code{@@setchapternewpage}
-@subsection @code{@@setchapternewpage}: Blank Pages Before Chapters
+@section @code{@@setchapternewpage}: Blank Pages Before Chapters
 
 @anchor{setchapternewpage}@c old name
 @findex setchapternewpage
@@ -22862,7 +22860,7 @@ specify the output you want.
 
 
 @node @code{@@headings}
-@subsection The @code{@@headings} Command
+@section The @code{@@headings} Command
 
 @anchor{headings on off}@c old name
 @findex headings
@@ -22921,10 +22919,8 @@ You can also specify your own style of page heading and footing.
 @xref{Headings, , Page Headings}, for more information.
 
 
-@lowersections
-@lowersections
 @node Headings
-@appendix Page Headings
+@section Page Headings
 @cindex Headings
 @cindex Footings
 @cindex Page numbering
@@ -22945,7 +22941,7 @@ formats.
 @end menu
 
 @node Headings Introduced
-@section Headings Introduced
+@subsection Headings Introduced
 
 Texinfo provides standard page heading formats for manuals that are
 printed on one side of each sheet of paper and for manuals that are
@@ -22985,7 +22981,7 @@ right part is set flushright.
 
 
 @node Heading Format
-@section Standard Heading Formats
+@subsection Standard Heading Formats
 
 Texinfo provides two standard heading formats, one for manuals printed
 on one side of each sheet of paper, and the other for manuals printed
@@ -23052,7 +23048,7 @@ manual.
 
 
 @node Custom Headings
-@section How to Make Your Own Headings
+@subsection How to Make Your Own Headings
 
 You can use the standard headings provided with Texinfo or specify
 your own.  By default, Texinfo has no footers, so if you specify them,
@@ -23239,13 +23235,10 @@ manual.
 
 By default the @code{@@this...} commands reflect the situation at the
 bottom of a page both in headings and in footings.
-@raisesections
-@raisesections
-
 
 
 @node @code{@@paragraphindent}
-@subsection @code{@@paragraphindent}: Controlling Paragraph Indentation
+@section @code{@@paragraphindent}: Controlling Paragraph Indentation
 
 @anchor{paragraphindent}@c old name
 @findex paragraphindent
@@ -23288,7 +23281,7 @@ Header}.
 
 
 @node @code{@@firstparagraphindent}
-@subsection @code{@@firstparagraphindent}: Indenting After Headings
+@section @code{@@firstparagraphindent}: Indenting After Headings
 
 @anchor{firstparagraphindent}@c old name
 @findex firstparagraphindent
@@ -23332,7 +23325,7 @@ Header}.
 
 
 @node @code{@@exampleindent}
-@subsection @code{@@exampleindent}: Environment Indenting
+@section @code{@@exampleindent}: Environment Indenting
 
 @anchor{exampleindent}@c old name
 @findex exampleindent
@@ -23373,7 +23366,6 @@ end-of-header line at the beginning of a Texinfo file, so the region
 formatting commands indent paragraphs as specified.  @xref{Start of
 Header}.
 
-@lowersections @c Global Document Commands
 
 @node @code{@@smallbook}
 @section @code{@@smallbook}: Printing ``Small'' Books
