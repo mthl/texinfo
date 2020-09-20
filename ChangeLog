@@ -1,5 +1,16 @@
 2020-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Headings Introduced): Remove text that 
+	duplicates what is in @setchapternewpage.  Merge node with 
+	Headings node.
+	(Heading Format): Remove text duplicating material from other 
+	nodes.
+	(@headings): Subordinate to Headings node.
+	(Global Document Commands): Make a note that these are nearly 
+	all for printed output.
+
+2020-09-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Page Headings): Move to section of Global 
 	Document Commands appendix.
 

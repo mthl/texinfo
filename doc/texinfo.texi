@@ -641,7 +641,7 @@ Global Document Commands
 * @code{@@setchapternewpage}::          Start chapters on right-hand pages.
 * @code{@@headings}::                   An option for turning headings on and off
                                         and double or single sided printing.
-* Headings::                            Page headings
+* Headings::                    Page headings
 * @code{@@paragraphindent}::            Specify paragraph indentation.
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
@@ -652,7 +652,8 @@ Global Document Commands
 
 Page Headings
 
-* Headings Introduced::         Conventions for using page headings.
+* @code{@@headings}::                   An option for turning headings on and off
+                                        and double or single sided printing.
 * Heading Format::              Standard page heading formats.
 * Custom Headings::             How to create your own headings and footings.
 
@@ -22769,14 +22770,14 @@ the tag table and a directory of subfiles.
 @appendix Global Document Commands
 @cindex Global Document Commands
 
-Here are additional commands which affect the document as a whole.  They 
-are generally all given before the Top node, if they are given at all.
+Here are additional commands which affect the document as a whole.  Nearly all 
+of these commands are for customizing the appearance of the printed output when 
+processing with @TeX{}.  They are generally all given before the Top node, if 
+they are given at all.
 
 @menu
 * @code{@@setchapternewpage}::          Start chapters on right-hand pages.
-* @code{@@headings}::                   An option for turning headings on and off
-                                        and double or single sided printing.
-* Headings::                            Page headings.
+* Headings::                    Page headings.
 * @code{@@paragraphindent}::            Specify paragraph indentation.
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
@@ -22859,8 +22860,49 @@ pages) use the @option{--texinfo} option to @command{texi2dvi} to
 specify the output you want.
 
 
+
+@node Headings
+@section Page Headings
+@anchor{Headings Introduced}@c old name
+@cindex Headings
+@cindex Footings
+@cindex Page numbering
+@cindex Page headings
+@cindex Formatting headings and footings
+
+Most printed manuals contain headings along the top of every page
+except the title and copyright pages.  Some manuals also contain
+footings. @c HTML output also supports something like these, but in a
+@c completely different way: @pxref{Customizing HTML Page Layout}.
+Headings and footings have no meaning in Info or the other output
+formats.
+
+Texinfo provides two standard heading formats, one for manuals printed
+on one side of each sheet of paper, and the other for manuals printed
+on both sides of the paper.
+By default, nothing is specified for the footing of a Texinfo file,
+so the footing remains blank.
+
+Texinfo also has several heading and footing commands that you
+can use to generate your own heading and footing formats.
+
+In Texinfo, headings and footings are single lines at the tops and
+bottoms of pages; you cannot create multiline headings or footings.
+Each header or footer line is divided into three parts: a left part, a
+middle part, and a right part.  Any part, or a whole line, may be left
+blank.  Text for the left part of a header or footer line is set
+flushleft; text for the middle part is centered; and, text for the
+right part is set flushright.
+
+@menu
+* @code{@@headings}::                   An option for turning headings on and off
+                                        and double or single sided printing.
+* Heading Format::              Standard page heading formats.
+* Custom Headings::             How to create your own headings and footings.
+@end menu
+
 @node @code{@@headings}
-@section The @code{@@headings} Command
+@subsection The @code{@@headings} Command
 
 @anchor{headings on off}@c old name
 @findex headings
@@ -22914,70 +22956,6 @@ line containing the @code{@@end titlepage} command, like this:
 @noindent
 The @code{@@headings off} command overrides the @code{@@end titlepage}
 command, which would otherwise cause @TeX{} to print page headings.
-
-You can also specify your own style of page heading and footing.
-@xref{Headings, , Page Headings}, for more information.
-
-
-@node Headings
-@section Page Headings
-@cindex Headings
-@cindex Footings
-@cindex Page numbering
-@cindex Page headings
-@cindex Formatting headings and footings
-
-Most printed manuals contain headings along the top of every page
-except the title and copyright pages.  Some manuals also contain
-footings. @c HTML output also supports something like these, but in a
-@c completely different way: @pxref{Customizing HTML Page Layout}.
-Headings and footings have no meaning in Info or the other output
-formats.
-
-@menu
-* Headings Introduced::         Conventions for using page headings.
-* Heading Format::              Standard page heading formats.
-* Custom Headings::             How to create your own headings and footings.
-@end menu
-
-@node Headings Introduced
-@subsection Headings Introduced
-
-Texinfo provides standard page heading formats for manuals that are
-printed on one side of each sheet of paper and for manuals that are
-printed on both sides of the paper.  Typically, you will use these
-formats, but you can specify your own format if you wish.
-
-In addition, you can specify whether chapters should begin on a new
-page, or merely continue the same page as the previous chapter; and if
-chapters begin on new pages, you can specify whether they must be
-odd-numbered pages.
-
-By convention, a book is printed on both sides of each sheet of paper.
-When you open a book, the right-hand page is odd-numbered, and
-chapters begin on right-hand pages---a preceding left-hand page is
-left blank if necessary.  Reports, however, are often printed on just
-one side of paper, and chapters begin on a fresh page immediately
-following the end of the preceding chapter.  In short or informal
-reports, chapters often do not begin on a new page at all, but are
-separated from the preceding text by a small amount of whitespace.
-
-The @code{@@setchapternewpage} command controls whether chapters begin
-on new pages, and whether one of the standard heading formats is used.
-@TeX{} starts to generate page headings for a standard Texinfo
-file after it reaches the @code{@@end titlepage} command.  The
-title and copyright pages are not numbered.
-
-In addition, Texinfo has several heading and footing commands that you
-can use to generate your own heading and footing formats.
-
-In Texinfo, headings and footings are single lines at the tops and
-bottoms of pages; you cannot create multiline headings or footings.
-Each header or footer line is divided into three parts: a left part, a
-middle part, and a right part.  Any part, or a whole line, may be left
-blank.  Text for the left part of a header or footer line is set
-flushleft; text for the middle part is centered; and, text for the
-right part is set flushright.
 
 
 @node Heading Format
