@@ -51,9 +51,6 @@ Texts.  A copy of the license is included in the section entitled
 * texindex: (texinfo)Format with tex/texindex.  Sort Texinfo index files.
 @end direntry
 
-@c If you like blank pages, add through texi2dvi -t.
-@c setchapternewpage odd
-
 @set txiindexatsignignore
 @set txiindexbackslashignore
 @set txiindexlessthanignore
@@ -109,7 +106,6 @@ the menu lists all the lower-level nodes in the document.
 * Copying Conditions::          Your rights.
 * Overview::                    Texinfo in brief.
 * Writing a Texinfo File::      Format of a Texinfo source file.
-* Beginning and Ending a File:: Beginning and end of a Texinfo file.
 * Nodes::                       Writing nodes, the basic unit of Texinfo.
 * Chapter Structuring::         Creating chapters, sections, appendices, etc.
 * Cross References::            Writing cross-references.
@@ -165,9 +161,6 @@ Writing a Texinfo File
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
 * Short Sample::                A short sample Texinfo file.
-
-Beginning and Ending a Texinfo File
-
 * Sample Beginning::            A sample beginning for a Texinfo file.
 * Texinfo File Header::         The first lines.
 * Document Permissions::        Ensuring your manual is free.
@@ -1222,16 +1215,32 @@ role of @command{texi2any}.
 
 
 @node Writing a Texinfo File
+@anchor{Beginning and Ending a File}@c old name
 @chapter Writing a Texinfo File
 
 This chapter describes Texinfo syntax and what is required in a Texinfo 
 file, and gives a short sample file.
+
+Certain pieces of information must be provided at the beginning of a
+Texinfo file, such as the title of the document and the Top node.  A table
+of contents is also generally produced here.
+
+@cindex Frontmatter, text in
+Straight text before the Top node outside of any node should be
+avoided.
 
 @menu
 * Conventions::                 General rules for writing a Texinfo file.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
 * Short Sample::                A short sample Texinfo file.
+* Sample Beginning::            A sample beginning for a Texinfo file.
+* Texinfo File Header::         The first lines.
+* Document Permissions::        Ensuring your manual is free.
+* Titlepage & Copyright Page::  Creating the title and copyright pages.
+* Contents::                    How to create a table of contents.
+* The Top Node::                Creating the `Top' node and master menu.
+* Ending a File::               What is at the end of a Texinfo file?
 @end menu
 
 
@@ -1474,7 +1483,7 @@ the names as appropriate.
 The complete file, without interspersed comments, is shown in
 @ref{Short Sample Texinfo File}.
 
-@xref{Beginning and Ending a File}, for more documentation on the
+See later sections in this chapter for more documentation on the
 commands listed here.
 
 
@@ -1645,37 +1654,6 @@ This is the first item.
 This is the second item.
 @end enumerate
 @end quotation
-
-
-@node Beginning and Ending a File
-@anchor{Beginning a File} @c old name
-@chapter Beginning and Ending a Texinfo File
-@cindex Beginning a Texinfo file
-@cindex Texinfo file beginning
-@cindex File beginning
-
-This chapter expands on the minimal complete Texinfo source file
-previously given (@pxref{Short Sample}).
-
-Certain pieces of information must be provided at the beginning of a
-Texinfo file, such as the title of the document and the Top node.  A table
-of contents is also generally produced here.
-
-@cindex Frontmatter, text in
-Straight text outside of any command before the Top node should be
-avoided.  Such text is treated differently in the different output
-formats: at the time of writing, it is visible in @TeX{} and HTML, by
-default not shown in Info readers, and so on.
-
-@menu
-* Sample Beginning::            A sample beginning for a Texinfo file.
-* Texinfo File Header::         The first lines.
-* Document Permissions::        Ensuring your manual is free.
-* Titlepage & Copyright Page::  Creating the title and copyright pages.
-* Contents::                    How to create a table of contents.
-* The Top Node::                Creating the `Top' node and master menu.
-* Ending a File::               What is at the end of a Texinfo file?
-@end menu
 
 
 @node Sample Beginning
@@ -20978,8 +20956,6 @@ They're included here nonetheless because many manuals do (or could)
 benefit from them.
 
 @xref{Short Sample}, for a minimal example of a Texinfo file.
-@xref{Beginning and Ending a File}, for a full explanation of that
-minimal example.
 
 Here are some notes on the example:
 
