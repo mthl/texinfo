@@ -1,5 +1,22 @@
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Manual revisions.
+
+	* doc/texinfo.texi (Conventions): Remove footnote about meaning 
+	of argument.  Make warning about tab characters less 
+	conspicuous.  Remove an unnecessary @noindent.
+	(Sample Texinfo File Beginning, Ending a File): Move together.
+	(Sample Texinfo File Beginning): Remove unnecessary text from 
+	intro.
+	(Texinfo File Header): Do not recommend start- and end-of-header 
+	lines.
+	(GNU Sample Texts): Remove use of $Id$ keyword as this is not 
+	used with git.  Remove use of @ifnottex around @top node as this 
+	is no longer necessary.  Refer to GNU website for guidance on 
+	obtaining and using FDL.
+
+2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi: Remove commented out @setchapternewpage 
 	line.
 	(Beginning and Ending a Texinfo File): Merge with previous 

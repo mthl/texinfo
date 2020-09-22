@@ -162,12 +162,12 @@ Writing a Texinfo File
 * Minimum::                     What a Texinfo file must have.
 * Short Sample::                A short sample Texinfo file.
 * Sample Beginning::            A sample beginning for a Texinfo file.
+* Ending a File::               What is at the end of a Texinfo file?
 * Texinfo File Header::         The first lines.
 * Document Permissions::        Ensuring your manual is free.
 * Titlepage & Copyright Page::  Creating the title and copyright pages.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
-* Ending a File::               What is at the end of a Texinfo file?
 
 Texinfo File Header
 
@@ -1235,12 +1235,12 @@ avoided.
 * Minimum::                     What a Texinfo file must have.
 * Short Sample::                A short sample Texinfo file.
 * Sample Beginning::            A sample beginning for a Texinfo file.
+* Ending a File::               What is at the end of a Texinfo file?
 * Texinfo File Header::         The first lines.
 * Document Permissions::        Ensuring your manual is free.
 * Titlepage & Copyright Page::  Creating the title and copyright pages.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
-* Ending a File::               What is at the end of a Texinfo file?
 @end menu
 
 
@@ -1274,16 +1274,7 @@ the manual are preceded by an @samp{@@} character; they are called
 @samp{\} has in plain @TeX{}.)
 
 @cindex Braces, when to use
-Depending on what they do or what arguments@footnote{The word
-@dfn{argument} comes from the way it is used in mathematics and does not
-refer to a dispute between two people; it refers to the information
-presented to the command.  According to the @cite{Oxford English
-Dictionary}, the word derives from the Latin for @dfn{to make clear,
-prove}; thus it came to mean `the evidence offered as proof', which is
-to say, `the information offered', which led to its mathematical
-meaning.  In its other thread of derivation, the word came to mean `to
-assert in a manner against which others may make counter assertions',
-which led to the meaning of `argument' as a dispute.} they take, you
+Depending on what they do or what arguments they take, you
 need to write @@-commands on lines of their own, or as part of
 sentences.  As a general rule, a command requires braces if it mingles 
 among other text; but it does not need braces if it is on a line of its 
@@ -1350,8 +1341,7 @@ As you can see, because of these differing requirements of the output
 formats, it's not possible to use form feeds completely portably.
 
 @item
-@cindex Tabs; don't use!
-@strong{Caution:} Last, do not use tab characters in a Texinfo file!
+Last, do not use tab characters in a Texinfo file!
 (Except perhaps in verbatim modes.)  @TeX{} uses variable-width fonts,
 which means that it is impractical at best to define a tab to work in
 all circumstances.  Consequently, @TeX{} treats tabs like single
@@ -1360,7 +1350,6 @@ Furthermore, @code{makeinfo} does nothing special with tabs, and thus
 a tab character in your input file will usually have a different
 appearance in the output.
 
-@noindent
 To avoid this problem, Texinfo mode in GNU Emacs inserts
 multiple spaces when you press the @key{TAB} key.  Also, you can run
 @code{untabify} in Emacs to convert tabs in a region to multiple
@@ -1662,11 +1651,7 @@ This is the second item.
 @cindex Example beginning of Texinfo file
 
 The following sample shows what is needed.  The elements given here are
-explained in more detail in the following sections.  Other commands are
-often included at the beginning of Texinfo files, but the ones here are
-the most critical.
-
-@xref{GNU Sample Texts}, for the full texts to be used in GNU manuals.
+explained in more detail in following sections.
 
 @example
 \input texinfo
@@ -1733,6 +1718,33 @@ This manual is for @var{program}, version @var{version}.
 @end example
 
 
+@node Ending a File
+@section Ending a Texinfo File
+@cindex Ending a Texinfo file
+@cindex Texinfo file ending
+@cindex File ending
+@findex bye
+
+The end of a Texinfo file should include commands to create indices
+(@pxref{Printing Indices & Menus}), and the @code{@@bye} command to mark
+the last line to be processed.  For example:
+
+@example
+@@node Index
+@@unnumbered Index
+
+@@printindex cp
+
+@@bye
+@end example
+
+@findex bye
+@anchor{File End}
+A @code{@@bye} command terminates Texinfo processing.  It should be on
+a line by itself.  Anything following @code{@@bye} is completely
+ignored.
+
+
 @node Texinfo File Header
 @section Texinfo File Header
 @cindex Header for Texinfo files
@@ -1741,10 +1753,9 @@ This manual is for @var{program}, version @var{version}.
 Texinfo files start with at least two lines.  These are the
 @code{\input texinfo} line and the @code{@@settitle} line.
 
-Also, if you want to format just part of the Texinfo file in Emacs,
-you must write the @code{@@settitle} line between start-of-header and
-end-of-header lines.  These start- and end-of-header lines are optional,
-but they do no harm, so you might as well always include them.
+Also, you can optionally write the @code{@@settitle} line between 
+start-of-header and end-of-header lines
+if you want to format just part of the Texinfo file in Emacs.
 
 Any command that affects document formatting as a whole makes sense to
 include in the header.  @code{@@synindex} (@pxref{@code{@@synindex}}),
@@ -2625,33 +2636,6 @@ Beginning a Texinfo File
 @@end menu
 @end group
 @end example
-
-
-@node Ending a File
-@section Ending a Texinfo File
-@cindex Ending a Texinfo file
-@cindex Texinfo file ending
-@cindex File ending
-@findex bye
-
-The end of a Texinfo file should include commands to create indices
-(@pxref{Printing Indices & Menus}), and the @code{@@bye} command to mark
-the last line to be processed.  For example:
-
-@example
-@@node Index
-@@unnumbered Index
-
-@@printindex cp
-
-@@bye
-@end example
-
-@findex bye
-@anchor{File End}
-A @code{@@bye} command terminates Texinfo processing.  It should be on
-a line by itself.  Anything following @code{@@bye} is completely
-ignored.
 
 
 @node Nodes
@@ -20961,30 +20945,6 @@ Here are some notes on the example:
 
 @itemize @bullet
 @item
-@cindex $Id
-@cindex CVS $Id
-@cindex RCS $Id
-@cindex Documentation identification
-@cindex Identification of documentation
-The @samp{$Id:} comment is for the CVS
-(@url{http://www.nongnu.org/cvs/}), RCS (@pxref{Top,,, rcs, Revision
-Control System}) and other version control systems, which expand it
-into a string such as:
-
-@example
-$Id$
-@end example
-
-(This is potentially useful in all sources that use version control,
-not just manuals.)  You may wish to include the @samp{$Id:} comment in
-the @code{@@copying} text, if you want a completely unambiguous
-reference to the documentation source version.
-
-If you want to literally write @t{@w{$}Id$}, use @code{@@w}:
-@code{@@w@{$@}Id$}.  Unfortunately, this technique does not work in
-plain text output, where it's not clear what should be done.
-
-@item
 @pindex automake@r{, and version info}
 @vindex UPDATED @r{Automake variable}
 @vindex UPDATED-MONTH @r{Automake variable}
@@ -21015,24 +20975,15 @@ Structure Details,,, standards, GNU Coding Standards}.
 @item
 @cindex GNU Free Documentation License, including entire
 @cindex Free Documentation License, including entire
-It is best to include the entire GNU Free Documentation License in a GNU
-manual unless the manual is only a few pages long.  Of course this
-sample is even shorter than that, but it includes the FDL anyway in
-order to show one conventional way to do so.  The @file{fdl.texi} file
-is available on the GNU machines and in the Texinfo and other GNU
-source distributions.
-
-The FDL provides for omitting itself under certain conditions, but in
-that case the sample texts given here have to be modified.  @xref{GNU
-Free Documentation License}.
+This sample shows how to includes the FDL in a manual using the 
+@command{@@include} command.  The @file{fdl.texi} file
+is available in the Texinfo and other GNU source distributions.  It is
+also available on the GNU website (at 
+@uref{https://www.gnu.org/licenses/fdl-1.3.html}) along with guidance 
+for using it.
 
 @item
 If the FSF is not the copyright holder, then use the appropriate name.
-
-@item
-If your manual is published on paper by the FSF or is longer than 400
-pages, you should include the standard FSF cover texts (@pxref{License
-Notices for Documentation,,, maintain, GNU Maintainer Information}).
 
 @item
 For documents that express your personal views, feelings or
@@ -21046,7 +20997,6 @@ Here is the sample document:
 
 @verbatim
 \input texinfo   @c -*-texinfo-*-
-@comment $Id@w{$}
 @comment %**start of header
 @include version.texi
 @settitle GNU Sample @value{VERSION}
@@ -21084,12 +21034,10 @@ Texts.  A copy of the license is included in the section entitled
 
 @contents
 
-@ifnottex
 @node Top
 @top GNU Sample
 
 This manual is for GNU Sample (version @value{VERSION}, @value{UPDATED}).
-@end ifnottex
 
 @menu
 * Invoking sample::
