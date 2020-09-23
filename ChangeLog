@@ -1,5 +1,12 @@
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Propagate DEBUG setting to parsetexi.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):
+	Call set_debug for DEBUG value.
+
+2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Correctly propagate novalidate setting for Texinfo XS parser.
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,

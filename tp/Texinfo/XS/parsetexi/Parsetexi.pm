@@ -120,6 +120,8 @@ sub parser (;$$)
         conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});
+      } elsif ($key eq 'DEBUG') {
+        set_debug($conf->{$key});
       } else {
         #warn "ignoring parser configuration value \"$key\"\n";
       }
