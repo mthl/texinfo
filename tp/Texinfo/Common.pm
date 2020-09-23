@@ -110,7 +110,6 @@ our %default_parser_state_configuration = (
   'indices' => [],
   # the following are dynamically modified during the document parsing.
   'aliases' => {},            # key is a command name value is the alias
-  'clickstyle' => 'arrow',
   'documentlanguage' => undef,
                               # Current documentlanguage set by 
                               # @documentlanguage
@@ -120,7 +119,6 @@ our %default_parser_state_configuration = (
                               # corresponding command, the value is the 
                               # contents array of the previous command with
                               # this first arg and a second arg.
-  'kbdinputstyle' => 'distinct',
   'labels'          => {},    # keys are normalized label names, as described
                               # in the `HTML Xref' node.  Value should be
                               # a node/anchor or float in the tree.

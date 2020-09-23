@@ -1,5 +1,18 @@
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Simplify parser configuration.
+
+	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
+	Remove 'clickstyle' and 'kdbinputstyle' values as there is no 
+	user-visible way to set these and this avoids the question of 
+	how to pass them into Parsetexi.
+	* tp/Texinfo/ParserNonXS.pm (%parser_default_configuration):
+	Add them here.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser): Ignore 'in_gdt' 
+	setting.
+
+2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Propagate DEBUG setting to parsetexi.
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):

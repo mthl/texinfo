@@ -1542,6 +1542,10 @@ value_valid:
                   ELEMENT *value_elt;
 
                   line_warn ("undefined flag: %s", flag);
+                  /* Note: In the Perl code, this warning is conditional on 
+                     in_gdt setting, but the only effect that this possibly has 
+                     is on speed, as these warnings would not be printed to the 
+                     user. */
 
                   abort_empty_line (&current, NULL);
                   value_elt = new_element (ET_NONE);
