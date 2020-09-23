@@ -1494,13 +1494,11 @@ Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
 @@c Output the table of the contents at the beginning.
 @@contents
 
-@@ifnottex
 @@node Top
 @@top GNU Sample
 
 This manual is for GNU Sample
 (version @@value@{VERSION@}, @@value@{UPDATED@}).
-@@end ifnottex
 
 @@menu
 * First Chapter::    The first chapter is the
@@ -1631,12 +1629,10 @@ Menu} listing all the nodes in the entire document.
 
 
 @example
-@@ifnottex
 @@node Top
 @@top Short Sample
 
 This is a short sample Texinfo file.
-@@end ifnottex
 
 @group
 @@menu
@@ -1768,12 +1764,10 @@ Published by @dots{}
 @@c So the toc is printed at the start.
 @@contents
 
-@@ifnottex
 @@node Top
 @@top @var{title}
 
 This manual is for @var{program}, version @var{version}.
-@@end ifnottex
 
 @group
 @@menu
@@ -3159,10 +3153,14 @@ formatter which node is to be used as the root of the node tree.
 It produces the same sort of output as @code{@@unnumbered}
 (@pxref{@code{@@unnumbered @@appendix}}).
 
-The @code{@@top} node is conventionally wrapped in an
-@code{@@ifnottex} conditional so that it will not appear in @TeX{}
-output (@pxref{Conditionals}).
-Thus, in practice, a Top node usually looks like this:
+@code{@@top} is ignored when raising or lowering sections.  That is,
+it is never lowered and nothing can be raised to it
+(@pxref{Raise/lower sections}).
+
+It used to be conventionial to wrap the @samp{Top} node
+in an @code{@@ifnottex} conditional so that it would not appear in 
+@TeX{} output (@pxref{Conditionals}).  Thus, a Top node often looked 
+like this:
 
 @example
 @@ifnottex
@@ -3173,9 +3171,8 @@ Thus, in practice, a Top node usually looks like this:
 @@end ifnottex
 @end example
 
-@code{@@top} is ignored when raising or lowering sections.  That is,
-it is never lowered and nothing can be raised to it
-(@pxref{Raise/lower sections}).
+This is no longer necessary, as the @samp{Top} node is now never output 
+for @TeX{} output.
 
 
 @node Node Menu Illustration
