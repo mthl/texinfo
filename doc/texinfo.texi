@@ -160,6 +160,7 @@ Writing a Texinfo File
 * Conventions::                 General rules for writing a Texinfo file.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
+* Short Sample Texinfo File::   A short sample Texinfo file.
 * Short Sample::                A short sample Texinfo file.
 * Sample Beginning::            A sample beginning for a Texinfo file.
 * Ending a File::               What is at the end of a Texinfo file?
@@ -595,7 +596,6 @@ HTML Cross-references
 
 Sample Texinfo Files
 
-* Short Sample Texinfo File::
 * GNU Sample Texts::
 * Verbatim Copying License::
 * All-permissive Copying License::
@@ -1233,6 +1233,7 @@ avoided.
 * Conventions::                 General rules for writing a Texinfo file.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
+* Short Sample Texinfo File::   A short sample Texinfo file.
 * Short Sample::                A short sample Texinfo file.
 * Sample Beginning::            A sample beginning for a Texinfo file.
 * Ending a File::               What is at the end of a Texinfo file?
@@ -1458,6 +1459,82 @@ indices, and the like, all of which are explained in this manual.  But
 the minimum, which can be useful for short documents, is just the two
 lines at the beginning and the one line at the end.
 
+
+
+@node Short Sample Texinfo File
+@section Short Sample
+@cindex Sample Texinfo file, no comments
+
+Here is a complete, short sample Texinfo file.  You can see this file, 
+with comments, in the next section.  @xref{Short Sample}.
+
+In a nutshell: The @command{makeinfo} program transforms a Texinfo
+source file such as this into an Info file or HTML; and @TeX{} typesets
+it for a printed manual.
+
+
+@sp 1
+@example
+\input texinfo
+@@settitle Sample Manual 1.0
+
+@@copying
+This is a short example of a complete Texinfo file.
+
+Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
+@@end copying
+
+@@titlepage
+@@title Sample Title
+@@page
+@@vskip 0pt plus 1filll
+@@insertcopying
+@@end titlepage
+
+@@c Output the table of the contents at the beginning.
+@@contents
+
+@@ifnottex
+@@node Top
+@@top GNU Sample
+
+This manual is for GNU Sample
+(version @@value@{VERSION@}, @@value@{UPDATED@}).
+@@end ifnottex
+
+@@menu
+* First Chapter::    The first chapter is the
+                      only chapter in this sample.
+* Index::            Complete index.
+@@end menu
+
+
+@@node First Chapter
+@@chapter First Chapter
+
+@@cindex chapter, first
+
+This is the first chapter.
+@@cindex index entry, another
+
+Here is a numbered list.
+
+@@enumerate
+@@item
+This is the first item.
+
+@@item
+This is the second item.
+@@end enumerate
+
+
+@@node Index
+@@unnumbered Index
+
+@@printindex cp
+
+@@bye
+@end example
 
 
 @node Short Sample
@@ -20834,92 +20911,13 @@ Write notes for yourself at the very end of a Texinfo file after the
 @appendix Sample Texinfo Files
 @cindex Sample Texinfo files
 
-The first example from the first chapter (@pxref{Short Sample}) is
-given here in its entirety, without commentary.  The second example
-includes the full texts to be used in GNU manuals.
+This appendix includes texts to be used in GNU manuals.
 
 @menu
-* Short Sample Texinfo File::
 * GNU Sample Texts::
 * Verbatim Copying License::
 * All-permissive Copying License::
 @end menu
-
-
-@node Short Sample Texinfo File
-@section Short Sample
-@cindex Sample Texinfo file, no comments
-
-Here is a complete, short sample Texinfo file.  You can see this file, 
-with comments, in the first chapter.  @xref{Short Sample}.
-
-In a nutshell: The @command{makeinfo} program transforms a Texinfo
-source file such as this into an Info file or HTML; and @TeX{} typesets
-it for a printed manual.
-
-
-@sp 1
-@example
-\input texinfo
-@@settitle Sample Manual 1.0
-
-@@copying
-This is a short example of a complete Texinfo file.
-
-Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
-@@end copying
-
-@@titlepage
-@@title Sample Title
-@@page
-@@vskip 0pt plus 1filll
-@@insertcopying
-@@end titlepage
-
-@@c Output the table of the contents at the beginning.
-@@contents
-
-@@ifnottex
-@@node Top
-@@top GNU Sample
-
-This manual is for GNU Sample
-(version @@value@{VERSION@}, @@value@{UPDATED@}).
-@@end ifnottex
-
-@@menu
-* First Chapter::    The first chapter is the
-                      only chapter in this sample.
-* Index::            Complete index.
-@@end menu
-
-
-@@node First Chapter
-@@chapter First Chapter
-
-@@cindex chapter, first
-
-This is the first chapter.
-@@cindex index entry, another
-
-Here is a numbered list.
-
-@@enumerate
-@@item
-This is the first item.
-
-@@item
-This is the second item.
-@@end enumerate
-
-
-@@node Index
-@@unnumbered Index
-
-@@printindex cp
-
-@@bye
-@end example
 
 
 @node GNU Sample Texts

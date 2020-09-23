@@ -1,5 +1,12 @@
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Manual revisions.
+
+	* doc/texinfo.texi (Short Sample Texinfo File): Move from
+	appendix to introductory chapter.
+
+2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Simplify parser configuration.
 
 	* tp/Texinfo/Common.pm (%default_parser_state_configuration):
