@@ -915,7 +915,6 @@ build_global_info2 (void)
   BUILD_GLOBAL_UNIQ(documentdescription);
   BUILD_GLOBAL_UNIQ(setcontentsaftertitlepage);
   BUILD_GLOBAL_UNIQ(setshortcontentsaftertitlepage);
-  BUILD_GLOBAL_UNIQ(novalidate);
   BUILD_GLOBAL_UNIQ(validatemenus);
   BUILD_GLOBAL_UNIQ(pagesizes);
   BUILD_GLOBAL_UNIQ(fonttextsize);

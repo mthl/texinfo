@@ -1,5 +1,19 @@
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Correctly propagate novalidate setting for Texinfo XS parser.
+
+	* tp/Texinfo/XS/parsetexi/Parsetexi.xs,
+	* tp/Texinfo/XS/parsetexi/handle_commands.c (set_novalidate):
+	New function.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser): Check for 
+	'novalidate' setting in parser conf and propagate into XS 
+	module.
+
+	Octave required on the --no-validate option in its documentation 
+	build process.  Report by Stefan Husman.
+
+2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Manual revisions.
 
 	* doc/texinfo.texi (Conventions): Remove footnote about meaning 

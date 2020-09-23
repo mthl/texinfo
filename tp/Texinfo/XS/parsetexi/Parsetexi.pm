@@ -66,7 +66,7 @@ sub simple_parser {
   goto &parser;
 }
 
-# Stub for Texinfo::Parser::parser (line 574)
+# Stub for Texinfo::Parser::parser
 sub parser (;$$)
 {
   my $conf = shift;
@@ -109,6 +109,10 @@ sub parser (;$$)
       } elsif ($key eq 'documentlanguage') {
         if (defined ($conf->{$key})) {
           set_documentlanguage ($conf->{$key});
+        }
+      } elsif ($key eq 'info') {
+        if (defined($conf->{$key}->{'novalidate'})) { 
+          set_novalidate($conf->{$key}->{'novalidate'});
         }
       } elsif ($key eq 'SHOW_MENU') {
         conf_set_show_menu ($conf->{$key});

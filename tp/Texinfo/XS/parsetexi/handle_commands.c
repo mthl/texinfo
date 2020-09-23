@@ -500,7 +500,7 @@ handle_line_command (ELEMENT *current, char **line_inout,
         }
       else if (cmd == CM_novalidate)
         {
-          /* do nothing -  novalidate is set in build_global_info */
+          global_info.novalidate = 1;
         }
 
       if (misc) 

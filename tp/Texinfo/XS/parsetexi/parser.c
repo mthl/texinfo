@@ -148,6 +148,12 @@ set_documentlanguage (char *value)
   global_documentlanguage = strdup (value);
 }
 
+void
+set_novalidate (int value)
+{
+  global_info.novalidate = value;
+}
+
 /* Record the information from a command of global effect. */
 int
 register_global_command (ELEMENT *current)
@@ -231,7 +237,6 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(titlepage);
         GLOBAL_UNIQUE_CASE(top);
         GLOBAL_UNIQUE_CASE(documentdescription);
-        GLOBAL_UNIQUE_CASE(novalidate);
         GLOBAL_UNIQUE_CASE(validatemenus);
         GLOBAL_UNIQUE_CASE(pagesizes);
         GLOBAL_UNIQUE_CASE(fonttextsize);
