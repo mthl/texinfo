@@ -288,8 +288,7 @@ AM_CONDITIONAL(INSTALL_WARNINGS,
 
 USE_EXTERNAL_EASTASIANWIDTH=no
 AC_ARG_WITH([external-Unicode-EastAsianWidth],
-   AC_HELP_STRING([--with-external-Unicode-EastAsianWidth],
-      [use external Unicode-EastAsianWidth (default: no)]),
+   AS_HELP_STRING([--with-external-Unicode-EastAsianWidth],[use external Unicode-EastAsianWidth (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_EASTASIANWIDTH=yes
    fi]
@@ -299,8 +298,7 @@ AC_SUBST([USE_EXTERNAL_EASTASIANWIDTH])
 
 USE_EXTERNAL_UNIDECODE=no
 AC_ARG_WITH([external-Text-Unidecode],
-    AC_HELP_STRING([--with-external-Text-Unidecode],
-           [use external Text::Unidecode (default: no)]),
+    AS_HELP_STRING([--with-external-Text-Unidecode],[use external Text::Unidecode (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_UNIDECODE=yes
    fi]
@@ -317,8 +315,7 @@ AM_GNU_GETTEXT([external])
 
 USE_EXTERNAL_LIBINTL=no
 AC_ARG_WITH([external-libintl-perl],
-   AC_HELP_STRING([--with-external-libintl-perl],
-      [use external libintl-perl (default: no)]),
+   AS_HELP_STRING([--with-external-libintl-perl],[use external libintl-perl (default: no)]),
    [if test $withval = 'yes'; then
       USE_EXTERNAL_LIBINTL=yes
    fi]
@@ -327,8 +324,7 @@ AC_ARG_WITH([external-libintl-perl],
 AC_SUBST([USE_EXTERNAL_LIBINTL])
 
 AC_ARG_ENABLE([perl-xs],
-    AC_HELP_STRING([--enable-perl-xs],
-              [build Perl XS modules for speed (default: check)]),
+    AS_HELP_STRING([--enable-perl-xs],[build Perl XS modules for speed (default: check)]),
     [ enable_xs=$enableval],
     [ enable_xs=check])
 
@@ -406,8 +402,7 @@ AC_CHECK_PROGS([PROVE], [prove], [])
 
 tp_tests='no'
 AC_ARG_ENABLE([tp-tests],
-    AC_HELP_STRING([--enable-tp-tests],
-        [run the parser and converters testsuite (default: detected)]),
+    AS_HELP_STRING([--enable-tp-tests],[run the parser and converters testsuite (default: detected)]),
     [if test $enableval = 'no'; then
        tp_tests='no'
      else
@@ -430,8 +425,7 @@ AM_CONDITIONAL([TP_TESTS], [test "z$tp_tests" = 'zyes'])
 
 build_perl_api_texi='no'
 AC_ARG_ENABLE([perl-api-texi-build],
-    AC_HELP_STRING([--enable-perl-api-texi-build],
-        [build the perl api texinfo files (default: detected)]),
+    AS_HELP_STRING([--enable-perl-api-texi-build],[build the perl api texinfo files (default: detected)]),
     [if test $enableval = 'no'; then
        build_perl_api_texi='no'
      else
@@ -452,8 +446,7 @@ AM_CONDITIONAL([BUILD_PERL_API_TEXI], [test "z$build_perl_api_texi" = 'zyes'])
 
 pod_simple_texinfo_tests='no'
 AC_ARG_ENABLE([pod-simple-texinfo-tests],
-    AC_HELP_STRING([--enable-pod-simple-texinfo-tests],
-        [run the parser and converters testsuite (default: detected)]),
+    AS_HELP_STRING([--enable-pod-simple-texinfo-tests],[run the parser and converters testsuite (default: detected)]),
     [if test $enableval = 'no'; then
        pod_simple_texinfo_tests='no'
      else

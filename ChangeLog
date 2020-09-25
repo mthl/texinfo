@@ -1,3 +1,11 @@
+2020-09-25  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Run autoupdate.
+
+	* configure.ac: Change AC_HELP_STRING to AS_HELP_STRING.  The 
+	upcoming autoconf 2.70 release will warn about AC_HELP_STRING.
+
+
 2020-09-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Manual revisions.
