@@ -1,5 +1,5 @@
 /* Program name management.
-   Copyright (C) 2016-2019 Free Software Foundation, Inc.
+   Copyright (C) 2016-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -51,7 +51,7 @@
 # include <sys/procfs.h>
 #endif
 
-#include "dirname.h"
+#include "basename-lgpl.h"
 
 #ifndef HAVE_GETPROGNAME             /* not Mac OS X, FreeBSD, NetBSD, OpenBSD >= 5.4, Cygwin */
 char const *
@@ -223,7 +223,7 @@ getprogname (void)
   int fd;
 
   sprintf (filename, "/proc/pinfo/%d", (int) getpid ());
-  fd = open (filename, O_RDONLY);
+  fd = open (filename, O_RDONLY | O_CLOEXEC);
   if (0 <= fd)
     {
       prpsinfo_t buf;
