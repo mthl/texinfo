@@ -2,6 +2,16 @@
 
 	Manual revisions.
 
+	* doc/texinfo.texi (Body of the Document): New node.
+	(Texinfo File Header): Merge text from "Minimum" in here.
+	(Document Permissions)
+	(Titlepage & Copyright Page)
+	(Ending a File): Finish merging text.
+
+2020-09-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
+
 	* doc/texinfo.texi (Sample Beginning, Short Sample): Remove.
 	(Ending a File): Move later.
 	(Short Sample): Merge into following nodes.
