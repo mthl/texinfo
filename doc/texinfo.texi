@@ -208,7 +208,6 @@ Nodes
 * First Node::                  How to write a `Top' node.
 * @code{@@top} Command::                How to use the @code{@@top} command.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
-* @command{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
 * Menus::                       Listing subordinate nodes.
 
 Menus
@@ -2592,7 +2591,6 @@ other formats.
 * First Node::                  How to write a `Top' node.
 * @code{@@top} Command::                How to use the @code{@@top} command.
 * Node Menu Illustration::      A diagram, and sample nodes and menus.
-* @command{makeinfo} Pointer Creation::   Letting makeinfo determine node pointers.
 * Menus::                       Listing subordinate nodes.
 @end menu
 
@@ -2696,9 +2694,7 @@ to casually change them once published.  Such name changes invalidate
 references from other manuals, from mail archives, and so on.
 
 The pointers from a given node enable you to reach other nodes and
-consist simply of the names of those nodes.  The pointers are usually
-not specified explicitly, as @command{makeinfo} can determine them
-(@pxref{@command{makeinfo} Pointer Creation}).
+consist simply of the names of those nodes.
 
 Normally, a node's `Up' pointer contains the name of the node whose
 menu mentions that node.  The node's `Next' pointer contains the name
@@ -2713,25 +2709,86 @@ for all of Info.
 
 
 @node Writing a Node
-@section Writing an @code{@@node} Line
-@cindex Writing an @code{@@node} line
+@section Writing a @code{@@node} Line
+@cindex Writing a @code{@@node} line
 @cindex @code{@@node} line writing
 @cindex Node line writing
 
 @findex node
-The easiest way to write an @code{@@node} line is to write @code{@@node}
-at the beginning of a line and then the name of the node, like this:
+Write @code{@@node} at the beginning of a line followed by the name of 
+the node, like this:
 
 @example
 @@node @var{node-name}
 @end example
 
-After you have inserted an @code{@@node} line, you should immediately
+After you have inserted a @code{@@node} line, you should immediately
 write an @@-command for the chapter or section and insert its name.
-Next (and this is important!), put in several index entries.  Usually,
-you will find at least two and often as many as four or five ways of
-referring to the node in the index.  Use them all.  This will make it
-much easier for people to find the node.
+
+You may optionally follow the node name argument to @code{@@node}
+with up to three optional arguments on the rest of the same line,
+separating the arguments with commas.  These are the names of the
+`Next', `Previous', and `Up' pointers, in that order.  Hence,
+the template for a fully-written-out node line with `Next', `Previous',
+and `Up' pointers looks like this:
+
+@example
+@@node @var{node-name}, @var{next}, @var{previous}, @var{up}
+@end example
+
+The @var{node-name} argument must be present, but the others are
+optional.  If you wish to specify some but not others, just insert
+commas as needed, as in: @samp{@@node mynode,,,uppernode}.
+Any spaces before or after each name on the @code{@@node} line are
+ignored.  However, if your Texinfo document is hierarchically organized,
+as virtually all are, we recommend leaving off all the pointers and 
+letting @code{makeinfo} determine them.
+
+@cindex Creating pointers with @code{makeinfo}
+@cindex Pointer creation with @code{makeinfo}
+@cindex Automatic pointer creation with @code{makeinfo}
+@cindex Implicit pointer creation with @code{makeinfo}
+The @code{makeinfo} program automatically determines node pointers
+for a hierarchically organized document.  For it do to do this, each 
+@code{@@node} command should be followed immediately by a sectioning 
+command such as @code{@@chapter} or @code{@@section} (except that 
+comment lines may intervene).  Also, you must write the name of each 
+node (except for the `Top' node) in a menu that is one or more 
+hierarchical levels above the node's level.  Finally, you must follow 
+the `Top' @code{@@node} line with a line beginning with @code{@@top} to 
+mark the top-level node in the file.  @xref{@code{@@top} Command}.
+
+@cindex Detail menu
+@findex detailmenu
+If you use a detailed menu in your master menu (@pxref{Master Menu
+Parts}), mark it with the @code{@@detailmenu @dots{} @@end
+detailmenu} environment, or @command{makeinfo} will get confused,
+typically about the last and/or first node in the document.
+
+Even when you explicitly specify all pointers, you cannot write the
+nodes in the Texinfo source file in an arbitrary order.
+You must write the nodes in the order you wish them to appear in the 
+output.  For Info format one can imagine that the order may not matter, 
+but it matters for the other formats.
+
+In most cases, you will want to take advantage of the pointer creation 
+feature, and not redundantly specify node pointers that the programs can 
+determine.
+However, Texinfo documents are not required to be organized
+hierarchically or in fact to contain sectioning commands at all (for
+example, if you never intend the document to be printed), so node
+pointers may still be specified explicitly, in full generality.
+
+If you are using GNU Emacs, you can use the update node commands
+provided by Texinfo mode to insert the names of the pointers.
+(@xref{Updating Nodes and Menus}.)
+
+Alternatively, you can insert the `Next', `Previous', and `Up'
+pointers yourself.  If you do this, you may find it helpful to use the
+Texinfo mode keyboard command @kbd{C-c C-c n}.  This command inserts
+@samp{@@node} and a comment line listing the names of the pointers in
+their proper order.  The comment line helps you keep track of which
+arguments are for which pointers.
 
 If you wish, you can ignore @code{@@node} lines altogether in your
 first draft and then use the @code{texinfo-insert-node-lines} command
@@ -2741,50 +2798,6 @@ that you write a segment so you can easily make cross-references.
 Useful cross-references are an especially important feature of a good
 Texinfo manual.
 
-Even when you explicitly specify all pointers, you cannot write the
-nodes in the Texinfo source file in an arbitrary order!  Because
-formatters must process the file sequentially, irrespective of node
-pointers, you must write the nodes in the order you wish them to
-appear in the output.  For Info format one can imagine that the order
-may not matter, but it matters for the other formats.
-
-You may optionally follow the node name argument to @code{@@node}
-with up to three optional arguments on the rest of the same line,
-separating the arguments with commas.  These are the names of the
-`Next', `Previous', and `Up' pointers, in that order.  We recommend
-omitting them if your Texinfo document is hierarchically organized,
-as virtually all are (@pxref{@command{makeinfo} Pointer Creation}).
-
-Any spaces before or after each name on the @code{@@node} line are
-ignored.
-
-The template for a fully-written-out node line with `Next', `Previous',
-and `Up' pointers looks like this:
-
-@example
-@@node @var{node-name}, @var{next}, @var{previous}, @var{up}
-@end example
-
-The @var{node-name} argument must be present, but the others are
-optional.  If you wish to specify some but not others, just insert
-commas as needed, as in: @samp{@@node mynode,,,uppernode}.  However,
-we recommend leaving off all the pointers and letting @code{makeinfo}
-determine them.
-
-If you are using GNU Emacs, you can use the update node commands
-provided by Texinfo mode to insert the names of the pointers; or
-(recommended), you can leave the pointers out of the Texinfo file and
-let @code{makeinfo} insert node pointers into the Info file it
-creates.  (@xref{Texinfo Mode}, and @ref{@command{makeinfo} Pointer
-Creation}.)
-
-Alternatively, you can insert the `Next', `Previous', and `Up'
-pointers yourself.  If you do this, you may find it helpful to use the
-Texinfo mode keyboard command @kbd{C-c C-c n}.  This command inserts
-@samp{@@node} and a comment line listing the names of the pointers in
-their proper order.  The comment line helps you keep track of which
-arguments are for which pointers.  This comment line is especially useful
-if you are not familiar with Texinfo.
 
 
 @node Node Line Requirements
@@ -2871,16 +2884,16 @@ either special insertions (@pxref{Inserting a Comma}) or @code{@@asis}
 As an example of avoiding the special characters, the following is a
 section title in this manual:
 
-@smallexample
-@@section @@code@{@@@@unnumbered@}, @@code@{@@@@appendix@}: ...
-@end smallexample
+@example
+@@section @@code@{@@@@unnumbered@}, @@code@{@@@@appendix@}: Chapters with@enddots{}
+@end example
 
 @noindent
 But the corresponding node name lacks the commas and the subtitle:
 
-@smallexample
-@@node @code{@@unnumbered @@appendix}
-@end smallexample
+@example
+@@node @@code@{@@@@unnumbered @@@@appendix@}
+@end example
 
 @cindex Case in node name
 @item
@@ -2906,12 +2919,6 @@ In menu entries, this is the name that should be used: no leading or
 trailing spaces, and a single internal space.  (For cross-references,
 the node name used in the Texinfo sources is automatically normalized
 in this way.)
-
-@item
-The next/previous/up pointers on @code{@@node} lines must be the names
-of nodes.  (It's recommended to leave out these explicit node pointer
-names, which automatically avoids any problem here; @pxref{@command{makeinfo}
-Pointer Creation}.)
 @end itemize
 
 
@@ -3062,9 +3069,8 @@ This @code{@@node} line says that the name of this node is
 ``Chapter@tie{}2'', the name of the `Next' node is ``Chapter 3'', the
 name of the `Previous' node is ``Chapter@tie{}1'', and the name of the
 `Up' node is ``Top''.  You can (and should) omit writing out these
-node names if your document is hierarchically organized
-(@pxref{@command{makeinfo} Pointer Creation}), but the pointer
-relationships still obtain.
+node names if your document is hierarchically organized , but the 
+pointer relationships still obtain.
 
 @quotation Note
 `Next' and `Previous' refer to nodes at the @emph{same hierarchical
@@ -3116,7 +3122,7 @@ construct to determine the relationships between nodes and sectioning
 commands.
 
 Here is the beginning of the chapter in this manual called ``Ending a
-Texinfo File''.  This shows an @code{@@node} line followed by an
+Texinfo File''.  This shows a @code{@@node} line followed by a
 @code{@@chapter} line, and then by indexing lines.
 
 @example
@@ -3128,75 +3134,6 @@ Texinfo File''.  This shows an @code{@@node} line followed by an
 @@cindex File ending
 @end group
 @end example
-
-An earlier version of the manual used explicit node pointers.  Here is
-the beginning of the same chapter for that case.  This shows an
-@code{@@node} line followed by a comment line, a @code{@@chapter}
-line, and then by indexing lines.
-
-@example
-@group
-@@node    Ending a File, Structuring, Beginning a File, Top
-@@comment node-name,     next,        previous,         up
-@@chapter Ending a Texinfo File
-@@cindex Ending a Texinfo file
-@dots{}
-@end group
-@end example
-
-
-@node @command{makeinfo} Pointer Creation
-@section @code{makeinfo} Pointer Creation
-
-@cindex Creating pointers with @code{makeinfo}
-@cindex Pointer creation with @code{makeinfo}
-@cindex Automatic pointer creation with @code{makeinfo}
-@cindex Implicit pointer creation with @code{makeinfo}
-
-The @code{makeinfo} program can automatically determine node pointers
-for a hierarchically organized document.  This implicit node pointer
-creation feature in @code{makeinfo} relieves you from the need to
-update menus and pointers manually or with Texinfo mode commands.
-(@xref{Updating Nodes and Menus}.)  We highly recommend taking
-advantage of this.
-
-To do so, write your @code{@@node} lines with just the name of the
-node:
-
-@example
-@@node My Node
-@end example
-
-@noindent
-You do not need to write out the `Next', `Previous', and `Up'
-pointers.
-
-Then, you must write a sectioning command, such as @code{@@chapter}
-or @code{@@section}, on the line immediately following each truncated
-@code{@@node} line (except that comment lines may intervene).  This is
-where it normally goes.
-
-Also, you must write the name of each node (except for the `Top' node)
-in a menu that is one or more hierarchical levels above the node's
-level.
-
-Finally, you must follow the `Top' @code{@@node} line with a line
-beginning with @code{@@top} to mark the top-level node in the file.
-@xref{@code{@@top} Command}.
-
-@cindex Detail menu
-@findex detailmenu
-If you use a detailed menu in your master menu (@pxref{Master Menu
-Parts}), mark it with the @code{@@detailmenu @dots{} @@end
-detailmenu} environment, or @command{makeinfo} will get confused,
-typically about the last and/or first node in the document.
-
-In most cases, you will want to take advantage of this feature and not
-redundantly specify node pointers that the programs can determine.
-However, Texinfo documents are not required to be organized
-hierarchically or in fact to contain sectioning commands at all (for
-example, if you never intend the document to be printed), so node
-pointers may still be specified explicitly, in full generality.
 
 
 @node Menus
@@ -3256,7 +3193,7 @@ Technically, menus can carry you to any node, regardless of the
 structure of the document; even to nodes in a different Info file.
 However, we do not recommend making use of this, because it is hard
 for readers to follow.  Also, the @command{makeinfo} implicit pointer
-creation feature (@pxref{@command{makeinfo} Pointer Creation}) and GNU
+creation feature (@pxref{Writing a Node}) and GNU
 Emacs Texinfo mode updating commands work only to create menus of
 subordinate nodes in a hierarchically structured document.  It is much
 better to use cross-references to refer to arbitrary nodes.
@@ -20138,12 +20075,9 @@ Headings, , How to Make Your Own Headings}.
 @item @@top @var{title}
 Mark the topmost @code{@@node} in the file, which must be defined on
 the line immediately preceding the @code{@@top} command.  The title is
-formatted as a chapter-level heading.  The entire top node, including
-the @code{@@node} and @code{@@top} lines, are normally enclosed with
-@code{@@ifnottex ... @@end ifnottex}.  In @TeX{} and
+formatted as a chapter-level heading.  In @TeX{} and
 @code{texinfo-format-buffer}, the @code{@@top} command is merely a
-synonym for @code{@@unnumbered}.  @xref{@command{makeinfo} Pointer
-Creation}.
+synonym for @code{@@unnumbered}.
 
 @item @@U@{@var{hex}@}
 Output a representation of Unicode character U+@var{hex}.

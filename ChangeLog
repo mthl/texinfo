@@ -2,6 +2,15 @@
 
 	Manual revisions.
 
+	* doc/texinfo.texi (makeinfo Pointer Creation): Merge contents 
+	into "Writing a Node" chapter.
+	(Writing a Node): Revise.
+	(Command List): Update documentation of @top.
+
+2020-09-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
+
 	* doc/texinfo.texi (Body of the Document): New node.
 	(Texinfo File Header): Merge text from "Minimum" in here.
 	(Document Permissions)
