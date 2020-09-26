@@ -161,14 +161,12 @@ Writing a Texinfo File
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
 * Short Sample Texinfo File::   A short sample Texinfo file.
-* Short Sample::                A short sample Texinfo file.
-* Sample Beginning::            A sample beginning for a Texinfo file.
-* Ending a File::               What is at the end of a Texinfo file?
 * Texinfo File Header::         The first lines.
 * Document Permissions::        Ensuring your manual is free.
 * Titlepage & Copyright Page::  Creating the title and copyright pages.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
+* Ending a File::               What is at the end of a Texinfo file?
 
 Texinfo File Header
 
@@ -1234,14 +1232,12 @@ avoided.
 * Comments::                    Writing comments and ignored text in general.
 * Minimum::                     What a Texinfo file must have.
 * Short Sample Texinfo File::   A short sample Texinfo file.
-* Short Sample::                A short sample Texinfo file.
-* Sample Beginning::            A sample beginning for a Texinfo file.
-* Ending a File::               What is at the end of a Texinfo file?
 * Texinfo File Header::         The first lines.
 * Document Permissions::        Ensuring your manual is free.
 * Titlepage & Copyright Page::  Creating the title and copyright pages.
 * Contents::                    How to create a table of contents.
 * The Top Node::                Creating the `Top' node and master menu.
+* Ending a File::               What is at the end of a Texinfo file?
 @end menu
 
 
@@ -1462,11 +1458,14 @@ lines at the beginning and the one line at the end.
 
 
 @node Short Sample Texinfo File
+@anchor{Short Sample}@c
+@anchor{Sample Beginning}@c
 @section Short Sample
 @cindex Sample Texinfo file, no comments
 
-Here is a complete, short sample Texinfo file.  You can see this file, 
-with comments, in the next section.  @xref{Short Sample}.
+Here is a complete, short sample Texinfo file, given without commentary.
+See later sections in this chapter for more documentation on the
+commands listed here.
 
 In a nutshell: The @command{makeinfo} program transforms a Texinfo
 source file such as this into an Info file or HTML; and @TeX{} typesets
@@ -1535,8 +1534,6 @@ This is the second item.
 @end example
 
 
-@node Short Sample
-@section A Short Sample Texinfo File
 @cindex Sample Texinfo file, with comments
 
 Here is a short but complete Texinfo file, so you can see how Texinfo
@@ -1544,104 +1541,10 @@ source appears in practice.  The first three parts of the file are
 mostly boilerplate: when writing a manual, you simply change
 the names as appropriate.
 
-The complete file, without interspersed comments, is shown in
-@ref{Short Sample Texinfo File}.
 
 See later sections in this chapter for more documentation on the
 commands listed here.
 
-
-@subheading Header
-
-@noindent
-The header tells @TeX{} which definitions file to
-use, names the manual, and carries out other such housekeeping tasks.
-
-@example
-@group
-\input texinfo
-@@settitle Sample Manual 1.0
-@end group
-@end example
-
-
-@subheading Summary Description and Copyright
-
-This segment describes the document and contains the copyright notice 
-and copying permissions.  This is done with the @code{@@copying} command.
-
-@noindent
-A real manual includes more text here, according to the license under
-which it is distributed.  @xref{GNU Sample Texts}.
-
-@example
-@group
-@@copying
-This is a short example of a complete Texinfo file, version 1.0.
-
-Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
-@@end copying
-@end group
-@end example
-
-@subheading Titlepage, Copyright, Contents
-
-The title and copyright segment contains the title and copyright
-pages for the printed manual.  The segment must be enclosed between
-@code{@@titlepage} and @code{@@end titlepage} commands.  The title and
-copyright page does not appear in the online output.
-
-@noindent
-We use the @code{@@insertcopying} command to
-include the permission text from the previous section, instead of
-writing it out again; it is output on the back of the title page.  The
-@code{@@contents} command generates a table of contents.
-
-@example
-@group
-@@titlepage
-@@title Sample Title
-@end group
-
-@group
-@@c The following two commands start the copyright page.
-@@page
-@@vskip 0pt plus 1filll
-@@insertcopying
-@@end titlepage
-@end group
-
-@@c Output the table of contents at the beginning.
-@@contents
-@end example
-
-@subheading `Top' Node and Master Menu
-
-The `Top' node starts off the online output; it does not appear in the
-printed manual.  We repeat the short description from the beginning of
-the @samp{@@copying} text, but there's no need to repeat the copyright
-information, so we don't use @samp{@@insertcopying} here.
-
-The @samp{@@top} command itself helps @command{makeinfo} determine
-the relationships between nodes.  The `Top' node contains at least a
-top-level @dfn{menu} listing the chapters, and possibly a @dfn{Master
-Menu} listing all the nodes in the entire document.
-
-
-@example
-@@node Top
-@@top Short Sample
-
-This is a short sample Texinfo file.
-
-@group
-@@menu
-* First Chapter::    The first chapter is the
-                       only chapter in this sample.
-* Index::            Complete index.
-@@end menu
-@end group
-@end example
 
 
 @subheading The Body of the Document
@@ -1678,24 +1581,6 @@ This is the second item.
 @end example
 
 
-@subheading The End of the Document
-
-This may contain commands for printing indices, and
-closes with the @code{@@bye} command, which marks the end of the document.
-
-@example
-@group
-@@node Index
-@@unnumbered Index
-@end group
-
-@group
-@@printindex cp
-
-@@bye
-@end group
-@end example
-
 
 @subheading Some Results
 
@@ -1718,108 +1603,22 @@ This is the second item.
 @end quotation
 
 
-@node Sample Beginning
-@section Sample Texinfo File Beginning
-
-@cindex Example beginning of Texinfo file
-
-The following sample shows what is needed.  The elements given here are
-explained in more detail in following sections.
-
-@example
-\input texinfo
-@@settitle @var{name-of-manual} @var{version}
-
-@@copying
-This manual is for @var{program}, version @var{version}.
-
-Copyright @@copyright@{@} @var{years} @var{copyright-owner}.
-
-@group
-@@quotation
-Permission is granted to @dots{}
-@@end quotation
-@@end copying
-@end group
-
-@group
-@@titlepage
-@@title @var{name-of-manual-when-printed}
-@@subtitle @var{subtitle-if-any}
-@@subtitle @var{second-subtitle}
-@@author @var{author}
-@end group
-
-@group
-@@c  The following two commands
-@@c  start the copyright page.
-@@page
-@@vskip 0pt plus 1filll
-@@insertcopying
-@end group
-
-Published by @dots{}
-@@end titlepage
-
-@@c So the toc is printed at the start.
-@@contents
-
-@@node Top
-@@top @var{title}
-
-This manual is for @var{program}, version @var{version}.
-
-@group
-@@menu
-* First Chapter::    Getting started @dots{}
-* Second Chapter::          @dots{}
- @dots{}
-* Copying::          Your rights and freedoms.
-@@end menu
-@end group
-
-@group
-@@node First Chapter
-@@chapter First Chapter
-
-@@cindex first chapter
-@@cindex chapter, first
-@dots{}
-@end group
-@end example
-
-
-@node Ending a File
-@section Ending a Texinfo File
-@cindex Ending a Texinfo file
-@cindex Texinfo file ending
-@cindex File ending
-@findex bye
-
-The end of a Texinfo file should include commands to create indices
-(@pxref{Printing Indices & Menus}), and the @code{@@bye} command to mark
-the last line to be processed.  For example:
-
-@example
-@@node Index
-@@unnumbered Index
-
-@@printindex cp
-
-@@bye
-@end example
-
-@findex bye
-@anchor{File End}
-A @code{@@bye} command terminates Texinfo processing.  It should be on
-a line by itself.  Anything following @code{@@bye} is completely
-ignored.
 
 
 @node Texinfo File Header
 @section Texinfo File Header
 @cindex Header for Texinfo files
 @cindex Texinfo file header
+
+The header tells @TeX{} which definitions file to
+use, names the manual, and carries out other such housekeeping tasks.
+
+@example
+@group
+\input texinfo
+@@settitle Sample Manual 1.0
+@end group
+@end example
 
 Texinfo files start with at least two lines.  These are the
 @code{\input texinfo} line and the @code{@@settitle} line.
@@ -1841,8 +1640,6 @@ like this:
 @@settitle Sample Manual 1.0
 @end group
 @end example
-
-(@xref{GNU Sample Texts} for complete sample texts.)
 
 @menu
 * First Line::                  The first line of a Texinfo file.
@@ -2035,6 +1832,24 @@ Texinfo comment that looks like this:
 @cindex Document permissions
 @cindex Copying permissions
 
+This segment describes the document and contains the copyright notice 
+and copying permissions.  This is done with the @code{@@copying} command.
+
+@noindent
+A real manual includes more text here, according to the license under
+which it is distributed.  @xref{GNU Sample Texts}.
+
+@example
+@group
+@@copying
+This is a short example of a complete Texinfo file, version 1.0.
+
+Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
+@@end copying
+@end group
+@end example
+
+
 The copyright notice and copying permissions for a document need to
 appear in several places in the various Texinfo output formats.
 Therefore, Texinfo provides a command (@code{@@copying}) to declare
@@ -2173,6 +1988,38 @@ automatically at the beginning of the XML and Docbook output files.
 
 @node Titlepage & Copyright Page
 @section Title and Copyright Pages
+
+@subheading Titlepage, Copyright, Contents
+
+The title and copyright segment contains the title and copyright
+pages for the printed manual.  The segment must be enclosed between
+@code{@@titlepage} and @code{@@end titlepage} commands.  The title and
+copyright page does not appear in the online output.
+
+@noindent
+We use the @code{@@insertcopying} command to
+include the permission text from the previous section, instead of
+writing it out again; it is output on the back of the title page.  The
+@code{@@contents} command generates a table of contents.
+
+@example
+@group
+@@titlepage
+@@title Sample Title
+@end group
+
+@group
+@@c The following two commands start the copyright page.
+@@page
+@@vskip 0pt plus 1filll
+@@insertcopying
+@@end titlepage
+@end group
+
+@@c Output the table of contents at the beginning.
+@@contents
+@end example
+
 
 In hard copy output, the manual's name and author are usually printed on
 a title page.  Copyright information is usually printed on the back of
@@ -2589,6 +2436,33 @@ main text of the document.
 @cindex Top node
 @cindex Node, `Top'
 
+The `Top' node starts off the online output; it does not appear in the
+printed manual.  We repeat the short description from the beginning of
+the @samp{@@copying} text, but there's no need to repeat the copyright
+information, so we don't use @samp{@@insertcopying} here.
+
+The @samp{@@top} command itself helps @command{makeinfo} determine
+the relationships between nodes.  The `Top' node contains at least a
+top-level @dfn{menu} listing the chapters, and possibly a @dfn{Master
+Menu} listing all the nodes in the entire document.
+
+
+@example
+@@node Top
+@@top Short Sample
+
+This is a short sample Texinfo file.
+
+@group
+@@menu
+* First Chapter::    The first chapter is the
+                       only chapter in this sample.
+* Index::            Complete index.
+@@end menu
+@end group
+@end example
+
+
 The `Top' node is the node in which a reader enters an Info manual.
 As such, it should contain a very brief description of the manual
 (including the version number) and a master menu for the whole manual.  
@@ -2707,6 +2581,51 @@ Beginning a Texinfo File
 @@end menu
 @end group
 @end example
+
+@node Ending a File
+@section Ending a Texinfo File
+@cindex Ending a Texinfo file
+@cindex Texinfo file ending
+@cindex File ending
+@findex bye
+
+This may contain commands for printing indices, and
+closes with the @code{@@bye} command, which marks the end of the document.
+
+@example
+@group
+@@node Index
+@@unnumbered Index
+@end group
+
+@group
+@@printindex cp
+
+@@bye
+@end group
+@end example
+
+
+The end of a Texinfo file should include commands to create indices
+(@pxref{Printing Indices & Menus}), and the @code{@@bye} command to mark
+the last line to be processed.  For example:
+
+@example
+@@node Index
+@@unnumbered Index
+
+@@printindex cp
+
+@@bye
+@end example
+
+@findex bye
+@anchor{File End}
+A @code{@@bye} command terminates Texinfo processing.  It should be on
+a line by itself.  Anything following @code{@@bye} is completely
+ignored.
+
+
 
 
 @node Nodes
