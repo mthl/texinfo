@@ -510,5 +510,5 @@ AC_OUTPUT
 # Summarize warnings to make them more visible.
 if test $have_termlib = no; then
   AC_MSG_WARN([Could not find a terminal library among ${TERMLIB_VARIANTS}])
-  AC_MSG_WARN([The programs from \`info' directory will not be built.])
+  AC_MSG_WARN([The programs from `info' directory will not be built.])
 fi
