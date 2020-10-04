@@ -8,8 +8,11 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   notice and this notice are preserved.
 
 * Language:
-  - generalize @vtable/@htable to any defined index.
   - generalize @deffn/etc. with variants that don't make index entries.
+    - could use "@deffn @index{IX} ..." to use index IX instead of default
+  - Better def... command syntax, explicitly marking variables, etc.
+  - generalize @vtable/@ftable to any defined index.
+    - maybe "@ftable @asis @index{IX}"
   - @mergeindex to do @syn*index without changing fonts.
   - multicolumn * width to take up `the rest'.
   - Allow @hsep/@vsep at @item, instead of just in template.
@@ -17,7 +20,6 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
     into M columns (see eplain).
   - support bibliographies with BibTeX (see web2c/doc for kludge prototype).
   - Support automatic line numbering of examples.
-  - Better def... command syntax, explicitly marking variables, etc.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
 
 * Makeinfo:
