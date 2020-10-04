@@ -185,10 +185,10 @@ Document Permissions
 Title and Copyright Pages
 
 * @code{@@titlepage}::                  Create a title for the printed document.
-* @code{@@titlefont @@center @@sp}::      The @code{@@titlefont}, @code{@@center},
-                                 and @code{@@sp} commands.
 * @code{@@title @@subtitle @@author}::    The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
+* @code{@@titlefont @@center @@sp}::      The @code{@@titlefont}, @code{@@center},
+                                 and @code{@@sp} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
 * Heading Generation::          Turn on page headings after the title and
@@ -508,8 +508,6 @@ Include Files
 * Include Files Requirements::  @code{texinfo-multiple-files-update} needs.
 * Sample Include File::         A sample outer file with included files
                                      within it; and a sample included file.
-* Include Files Evolution::     How use of the @code{@@include} command
-                                     has changed over time.
 
 Formatting and Printing Hardcopy
 
@@ -1889,8 +1887,7 @@ automatically at the beginning of the XML and Docbook output files.
 
 In hard copy output, the manual's name and author are usually printed on
 a title page.  Copyright information is usually printed on the back 
-(verso) of the title page.  The title and copyright pages do not appear 
-in the online output.  This segment must be enclosed between
+(verso) of the title page.  This segment must be enclosed between
 @code{@@titlepage} and @code{@@end titlepage} commands:
 
 @example
@@ -1914,16 +1911,14 @@ include the permission text from the previous section, instead of
 writing it out again.
 
 The title and copyright pages appear in printed manuals, but not in
-most other output formats.  Because of this, it is possible to use
-several slightly obscure typesetting commands that are not to be used
-in the main text.
+most other output formats.
 
 @menu
 * @code{@@titlepage}::                  Create a title for the printed document.
-* @code{@@titlefont @@center @@sp}::      The @code{@@titlefont}, @code{@@center},
-                                 and @code{@@sp} commands.
 * @code{@@title @@subtitle @@author}::    The @code{@@title}, @code{@@subtitle},
                                  and @code{@@author} commands.
+* @code{@@titlefont @@center @@sp}::      The @code{@@titlefont}, @code{@@center},
+                                 and @code{@@sp} commands.
 * Copyright::                   How to write the copyright notice and
                                  include copying permissions.
 * Heading Generation::          Turn on page headings after the title and
@@ -1967,20 +1962,18 @@ This helps readers keep track of which manual is for which version of
 the program.  (The `Top' node should also contain this information; see
 @ref{The Top Node}.)
 
-Texinfo provides two main methods for creating a title page.  One method
-uses the @code{@@titlefont}, @code{@@sp}, and @code{@@center} commands
-to generate a title page in which the words on the page are
-centered.
-
-The second method uses the @code{@@title}, @code{@@subtitle}, and
+One method uses the @code{@@title}, @code{@@subtitle}, and
 @code{@@author} commands to create a title page with black rules under
 the title and author lines and the subtitle text set flush to the
 right-hand side of the page.  With this method, you do not specify any
 of the actual formatting of the title page.  You specify the text
 you want, and Texinfo does the formatting.
 
-You may use either method, or you may combine them; see the examples in
-the sections below.
+Texinfo also provides a second method for creating a title page.
+using typesetting commands that are not to be used in the main text.
+This method uses uses the @code{@@titlefont}, @code{@@sp}, and @code{@@center} 
+commands to generate a title page in which the words on the page are
+centered.
 
 @findex shorttitlepage
 @cindex Bastard title page
@@ -1992,73 +1985,6 @@ The argument is typeset on a page by itself and followed by a blank
 page.
 
 
-@node @code{@@titlefont @@center @@sp}
-@subsection @code{@@titlefont}, @code{@@center}, and @code{@@sp}
-
-@anchor{titlefont center sp}@c old name
-@findex titlefont
-@findex center
-@findex sp @r{(titlepage line spacing)}
-
-You can use the @code{@@titlefont}, @code{@@sp}, and @code{@@center}
-commands to create a title page for a printed document.  (This is the
-first of the two methods for creating a title page in Texinfo.)
-
-Use the @code{@@titlefont} command to select a large font suitable for
-the title itself.  You can use @code{@@titlefont} more than once if you
-have an especially long title.
-
-For HTML output, each @code{@@titlefont} command produces an
-@code{<h1>} heading, but the HTML document @code{<title>} is not
-affected.  For that, you must put a @code{@@settitle} command before
-the @code{@@titlefont} command (@pxref{@code{@@settitle}}).
-
-@need 700
-For example:
-
-@example
-@@titlefont@{Texinfo@}
-@end example
-
-Use the @code{@@center} command at the beginning of a line to center
-the remaining text on that line.  Thus,
-
-@example
-@@center @@titlefont@{Texinfo@}
-@end example
-
-@noindent
-centers the title, which in this example is ``Texinfo'' printed
-in the title font.
-
-Use the @code{@@sp} command to insert vertical space.  For example:
-
-@example
-@@sp 2
-@end example
-
-@noindent
-This inserts two blank lines on the printed page.
-(@xref{@code{@@sp}}, for more information about the @code{@@sp}
-command.)
-
-A template for this method looks like this:
-
-@example
-@group
-@@titlepage
-@@sp 10
-@@center @@titlefont@{@var{name-of-manual-when-printed}@}
-@@sp 2
-@@center @var{subtitle-if-any}
-@@sp 2
-@@center @var{author}
-@dots{}
-@@end titlepage
-@end group
-@end example
-
-The spacing of the example fits an 8.5 by 11 inch manual.
 
 
 @node @code{@@title @@subtitle @@author}
@@ -2071,9 +1997,7 @@ The spacing of the example fits an 8.5 by 11 inch manual.
 
 You can use the @code{@@title}, @code{@@subtitle}, and @code{@@author}
 commands to create a title page in which the vertical and horizontal
-spacing is done for you automatically.  This contrasts with the method
-described in the previous section, in which the @code{@@sp} command is
-needed to adjust vertical spacing.
+spacing is done for you automatically.
 
 Write the @code{@@title}, @code{@@subtitle}, or @code{@@author}
 commands at the beginning of a line followed by the title, subtitle,
@@ -2140,6 +2064,74 @@ A template for this method looks like this:
 @@end titlepage
 @end group
 @end example
+
+
+@node @code{@@titlefont @@center @@sp}
+@subsection @code{@@titlefont}, @code{@@center}, and @code{@@sp}
+
+@anchor{titlefont center sp}@c old name
+@findex titlefont
+@findex center
+@findex sp @r{(titlepage line spacing)}
+
+You can also use the @code{@@titlefont}, @code{@@sp}, and @code{@@center}
+commands to create a title page for a printed document.
+
+Use the @code{@@titlefont} command to select a large font suitable for
+the title itself.  You can use @code{@@titlefont} more than once if you
+have an especially long title.
+
+For HTML output, each @code{@@titlefont} command produces an
+@code{<h1>} heading, but the HTML document @code{<title>} is not
+affected.  For that, you must put a @code{@@settitle} command before
+the @code{@@titlefont} command (@pxref{@code{@@settitle}}).
+
+@need 700
+For example:
+
+@example
+@@titlefont@{Texinfo@}
+@end example
+
+Use the @code{@@center} command at the beginning of a line to center
+the remaining text on that line.  Thus,
+
+@example
+@@center @@titlefont@{Texinfo@}
+@end example
+
+@noindent
+centers the title, which in this example is ``Texinfo'' printed
+in the title font.
+
+Use the @code{@@sp} command to insert vertical space.  For example:
+
+@example
+@@sp 2
+@end example
+
+@noindent
+This inserts two blank lines on the printed page.
+(@xref{@code{@@sp}}, for more information about the @code{@@sp}
+command.)
+
+A template for this method looks like this:
+
+@example
+@group
+@@titlepage
+@@sp 10
+@@center @@titlefont@{@var{name-of-manual-when-printed}@}
+@@sp 2
+@@center @var{subtitle-if-any}
+@@sp 2
+@@center @var{author}
+@dots{}
+@@end titlepage
+@end group
+@end example
+
+The spacing of the example fits an 8.5 by 11 inch manual.
 
 
 @node Copyright
@@ -2607,11 +2599,10 @@ other formats.
 Nodes can contain @dfn{menus}, which contain the names of @dfn{child
 nodes} within the parent node; for example, a node corresponding to a
 chapter would have a menu of the sections in that chapter.  The menus
-allow the user to move to the child nodes in a natural way in the online
-output.
+allow the user to move to the child nodes in the Info output.
 
 In addition, nodes contain @dfn{node pointers} that name other nodes.
-The `Next' and `Previous' pointers form nodes at the same sectioning
+The `Next' and `Previous' pointers link nodes at the same sectioning
 level into a chain.  As you might imagine, the `Next' pointer links to
 the next node, and the `Previous' pointer links to the previous node.
 Thus, for example, all the nodes that are at the level of sections
@@ -14046,8 +14037,6 @@ collection of conveniently small parts.
 * Sample Include File::         A sample outer file with included files
                                      within it; and a sample included file.
 * @code{@@verbatiminclude}::            Including a file verbatim.
-* Include Files Evolution::     How use of the @code{@@include} command
-                                     has changed over time.
 @end menu
 
 
@@ -14290,6 +14279,8 @@ For a method on printing the file contents in a smaller font size, see
 the end of the section on @code{@@verbatim}.
 
 
+@ignore
+
 @node Include Files Evolution
 @section Evolution of Include Files
 
@@ -14328,6 +14319,8 @@ with the @code{@@include} command so as to create a single large Info
 file that is split into smaller files if necessary.  This means that
 you can write menus and cross-references without naming the different
 Texinfo files.
+
+@end ignore
 
 
 @node Hardcopy

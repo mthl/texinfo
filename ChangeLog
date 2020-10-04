@@ -1,3 +1,11 @@
+2020-10-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
+
+	* doc/texinfo.texi
+	(Include Files Evolution): Comment out node.
+	(@titlefont @centre @sp): Swap with following node.
+
 2020-09-26  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* configure.ac: Do not escape backquote in AC_MSG_WARN argument.
