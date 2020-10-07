@@ -1,3 +1,16 @@
+2020-10-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Implement MathJax support.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables): Add 'HTML_MATH'.
+	* tp/Texinfo/Convert/HTML.pm (%style_attribute_commands):
+	Remove 'math'.
+	(_convert_math_command): Uncomment.  Check HTML_MATH variable, and
+	if set, wrap output in '\(' and '\)'.  If neither HTML_MATH nor
+	L2H is set, issue a warning.
+	(_file_header_informations):  Add <script> element in header if
+	'HTML_MATH' is set.
+
 2020-10-04  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* TODO: An idea for @def* and @findex.

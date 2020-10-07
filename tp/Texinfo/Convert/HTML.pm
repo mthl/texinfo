@@ -1352,7 +1352,6 @@ $style_attribute_commands{'normal'} = {
       't'           => 'tt',
       'var'         => 'var',
       'verb'        => 'tt',
-      'math'        => 'em',
 };
 
 my %style_commands_formatting;
@@ -1786,17 +1785,32 @@ sub _convert_image_command($$$$)
 
 $default_commands_conversion{'image'} = \&_convert_image_command;
 
-#sub _convert_math_command($$$$)
-#{
-#  my $self = shift;
-#  my $cmdname = shift;
-#  my $command = shift;
-#  my $args = shift;
-#
-#  return $args->[0]->{'normal'};
-#}
+sub _convert_math_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $args = shift;
 
-#$default_commands_conversion{'math'} = \&_convert_math_command;
+  my $math_type = $self->get_conf('HTML_MATH');
+  if (!defined($math_type)) {
+    if (!defined($self->get_conf('L2H'))) {
+      $self->line_warn(
+        __("\@math will not be correctly formatted: use HTML_MATH variable"),
+        $command->{'line_nr'});
+    }
+    return '<em>'.$args->[0]->{'normal'}.'</em>';
+  } elsif ($math_type eq 'default') {
+    return '<em>'.$args->[0]->{'normal'}.'</em>';
+  } elsif ($math_type eq 'mathjax') {
+    return '\('.$args->[0]->{'normal'}.'\)';
+  } else {
+    # invalid value
+    return '<em>'.$args->[0]->{'normal'}.'</em>';
+  }
+}
+
+$default_commands_conversion{'math'} = \&_convert_math_command;
 
 sub _convert_accent_command($$$$)
 {
@@ -6378,6 +6392,12 @@ sub _file_header_informations($$)
 <script src="'.$jsdir.'modernizr.js" type="text/javascript"></script>
 <script src="'.$jsdir.'info.js" type="text/javascript"></script>';
     }
+  }
+  if (defined($self->get_conf('HTML_MATH'))) {
+    $extra_head .=
+'<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>'
   }
 
   return ($title, $description, $encoding, $date, $css_lines, 
