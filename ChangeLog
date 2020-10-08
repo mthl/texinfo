@@ -1,3 +1,13 @@
+2020-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	MathJax fixes.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_math_command): Use
+	<em class='math'> around text to be processed by MathJax.
+	(_file_header_informations): Set MathJax options to include the
+	contents of <pre> elements (used for @display).  Only process inside
+	elements with class 'math' by adding attribute to <body> element.
+
 2020-10-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Implement MathJax support.

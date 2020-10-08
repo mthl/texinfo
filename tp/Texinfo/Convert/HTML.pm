@@ -1803,7 +1803,7 @@ sub _convert_math_command($$$$)
   } elsif ($math_type eq 'default') {
     return '<em>'.$args->[0]->{'normal'}.'</em>';
   } elsif ($math_type eq 'mathjax') {
-    return '\('.$args->[0]->{'normal'}.'\)';
+    return '<em class=\'math\'>\\('.$args->[0]->{'normal'}.'\\)</em>';
   } else {
     # invalid value
     return '<em>'.$args->[0]->{'normal'}.'</em>';
@@ -6357,6 +6357,11 @@ sub _file_header_informations($$)
   }
   my $doctype = $self->get_conf('DOCTYPE');
   my $bodytext = $self->get_conf('BODYTEXT');
+  if ($self->get_conf('HTML_MATH')) {
+    if ($self->get_conf('HTML_MATH') eq 'mathjax') {
+      $bodytext .= ' class="tex2jax_ignore"';
+    }
+  }
   my $copying_comment = '';
   $copying_comment = $self->{'copying_comment'} 
     if (defined($self->{'copying_comment'}));
@@ -6395,8 +6400,17 @@ sub _file_header_informations($$)
   }
   if (defined($self->get_conf('HTML_MATH'))) {
     $extra_head .=
-'<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+"<script type='text/javascript'>
+MathJax = {
+  options: {
+    skipHtmlTags: {'[-]': ['pre']},
+    ignoreHtmlClass: 'tex2jax_ignore',
+    processHtmlClass: 'math'
+  },
+};
+</script>"
+.'<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
 </script>'
   }
 
