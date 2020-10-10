@@ -1793,19 +1793,12 @@ sub _convert_math_command($$$$)
   my $args = shift;
 
   my $math_type = $self->get_conf('HTML_MATH');
-  if (!defined($math_type)) {
-    if (!defined($self->get_conf('L2H'))) {
-      $self->line_warn(
-        __("\@math will not be correctly formatted: use HTML_MATH variable"),
-        $command->{'line_nr'});
-    }
-    return '<em>'.$args->[0]->{'normal'}.'</em>';
-  } elsif ($math_type eq 'default') {
+  if (!defined($math_type) or $math_type eq 'default') {
     return '<em>'.$args->[0]->{'normal'}.'</em>';
   } elsif ($math_type eq 'mathjax') {
     return '<em class=\'math\'>\\('.$args->[0]->{'normal'}.'\\)</em>';
   } else {
-    # invalid value
+    # invalid value - give warning?
     return '<em>'.$args->[0]->{'normal'}.'</em>';
   }
 }
@@ -4519,8 +4512,6 @@ sub _default_element_footer($$$$)
   # no 'parent' defined happens if there are no pages, and there are elements 
   # which should only happen when called with $self->{'output_file'} 
   # set to ''.
-  #print STDERR "$element $element->{'filename'} $self->{'file_counters'}->{$element->{'filename'}}\n";
-  #print STDERR "next: $element->{'element_next'}->{'filename'}\n" if ($element->{'element_next'});
   my $end_page = (!$element->{'element_next'}
        or (defined($element->{'filename'}) 
            and $element->{'filename'} ne $element->{'element_next'}->{'filename'}
@@ -6282,6 +6273,14 @@ sub _default_end_file($)
   }
   my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
   $pre_body_close = '' if (!defined($pre_body_close));
+
+  if (defined($self->{'jslicenses'})) {
+    $pre_body_close .=
+'<a href="js_licenses.html" rel="jslicense">'
+.$self->convert_tree($self->gdt('JavaScript license information'))
+.'</a>';
+
+  }
   return "$program_text
 
 $pre_body_close
@@ -6304,9 +6303,6 @@ sub _file_header_informations($$)
       $self->command_text($command, 'string');
     if (defined($command_string) 
         and $command_string ne $self->{'title_string'}) {
-      print STDERR "DO <title>\n"
-        if ($self->get_conf('DEBUG'));
-
       my $element_tree;
       if ($self->get_conf('SECTION_NAME_IN_TITLE')
           and $command->{'extra'}
@@ -6398,7 +6394,8 @@ sub _file_header_informations($$)
 <script src="'.$jsdir.'info.js" type="text/javascript"></script>';
     }
   }
-  if (defined($self->get_conf('HTML_MATH'))) {
+  if (defined($self->get_conf('HTML_MATH'))
+        and $self->get_conf('HTML_MATH') eq 'mathjax') {
     $extra_head .=
 "<script type='text/javascript'>
 MathJax = {
@@ -6410,7 +6407,7 @@ MathJax = {
 };
 </script>"
 .'<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
 </script>'
   }
 
@@ -6663,6 +6660,46 @@ EOT
     my $result = $foot_lines;
     $foot_lines = '';
     return $result;
+  }
+}
+
+# TODO: Need to have config vars for:
+#   * MathJax source code location
+#   * whether to output js_licenses.html or to refer to an existing file
+sub _do_jslicenses_file {
+  my $self = shift;
+
+  my $a = '';
+  $a .= '<!DOCTYPE html>
+<html><head><title>jslicense labels</title></head>
+<body>
+<table id="jslicense-labels1">
+';
+  my $h = $self->{'jslicenses'};
+
+  for my $file (keys %{$self->{'jslicenses'}}) {
+    $a .= "<tr>\n";
+    $a .= "<td><a href=\"$file\">$file</a></td>\n";
+    $a .= "<td><a href=\"$h->{$file}->[1]\">$h->{$file}->[0]</a></td>\n";
+    $a .= "<td><a href=\"$h->{$file}->[2]\">$h->{$file}->[2]</a></td>\n";
+    $a .= "</tr>\n";
+  }
+
+  $a .= "</body></html>\n";
+
+  my $license_file = File::Spec->catdir($self->{'destination_directory'}, 
+                                 'js_licenses.html');
+  my $fh = $self->Texinfo::Common::open_out($license_file);
+  if (defined($fh)) {
+    print $fh $a;
+    $self->register_close_file($license_file);
+    if (!close ($fh)) {
+      $self->document_error(sprintf(__("error on closing %s: %s"),
+                                    $license_file, $!));
+    }
+  } else {
+    $self->document_error(sprintf(__("could not open %s for writing: %s"),
+                                  $license_file, $!));
   }
 }
 
@@ -6980,8 +7017,6 @@ sub output($$)
         $special_element->{'filename'} = $elements->[0]->{'filename'};
         $special_element->{'out_filename'} = $elements->[0]->{'out_filename'};
         $self->{'file_counters'}->{$special_element->{'filename'}}++;
-        print STDERR "Special page $special_element: $special_element->{'filename'}($self->{'file_counters'}->{$special_element->{'filename'}})\n"
-          if ($self->get_conf('DEBUG'));
       }
     }
   }
@@ -7115,17 +7150,12 @@ sub output($$)
       } else {
         $outfile = $self->{'output_file'};
       }
-      print STDERR "DO No pages, output in $outfile\n"
-        if ($self->get_conf('DEBUG'));
       $fh = $self->Texinfo::Common::open_out($outfile);
       if (!$fh) {
         $self->document_error(sprintf(__("could not open %s for writing: %s"),
                                       $outfile, $!));
         return undef;
       }
-    } else {
-      print STDERR "DO No pages, string output\n"
-        if ($self->get_conf('DEBUG'));
     }
     $self->{'current_filename'} = $self->{'output_filename'};
     my $header = &{$self->{'format_begin_file'}}($self, 
@@ -7238,7 +7268,26 @@ sub output($$)
           }
         }
       }
+      $self->{'jslicenses'}->{'js/info.js'} =
+        [ 'GNU General Public License 3.0 or later',
+          'http://www.gnu.org/licenses/gpl-3.0.html',
+          'js/info.js' ];
+
+      $self->{'jslicenses'}->{'js/modernizr.js'} =
+        [ 'Expat',
+          'http://www.jclark.com/xml/copying.txt',
+          'js/modernizr.js' ];
     }
+  }
+  if ($self->get_conf('HTML_MATH') eq 'mathjax') {
+    $self->{'jslicenses'}->{'tex-svg.js'} =
+        [ 'Apache License, Version 2.0.',
+          'https://www.apache.org/licenses/LICENSE-2.0',
+          'mathjax-with-dependencies.tar.xz' ]; #FIXME
+  }
+
+  if ($self->{'jslicenses'} and %{$self->{'jslicenses'}}) {
+    $self->_do_jslicenses_file();
   }
 
   my $finish_status = $self->run_stage_handlers($root, 'finish');

@@ -1,3 +1,21 @@
+2020-10-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	MathJax and jslicenses file.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_do_jslicenses_file): New function.
+	(output): Call it.  Add files to $self->{'jslicenses'} if
+	INFO_JS_DIR or HTML_MATH is set.
+
+	(_convert_math_commands):
+	No warning if HTML is not used.
+	(_default_end_files): Only refer to mathjax files if HTML_MATH
+	is set to 'mathjax'.  Use tex-svg.js instead of tex-chtml.js.
+
+	* tp/Texinfo/Common.pm (open_out),
+	* tp/Texinfo/Convert/HTML.pm (_default_element_footer, output)
+	Remove commented-out or debugging statements.
+
 2020-10-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	MathJax fixes.
