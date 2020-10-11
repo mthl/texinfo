@@ -246,6 +246,7 @@ if [ "z$clean" = 'zyes' -o "z$copy" = 'zyes' ]; then
         resdir="$srcdir/$testdir/${res_dir}${dir_suffix}/"
         if [ -d "${outdir}$dir" ]; then
           mkdir -p "${resdir}$dir/"
+          rm -rf "${resdir}$dir/"*
           cp -r "${outdir}$dir/"* "${resdir}$dir/"
         else
           echo "$0: No dir ${outdir}$dir" >&2

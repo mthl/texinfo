@@ -1,5 +1,14 @@
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Wipe res_parser etc.
+
+	* tp/tests/run_parser_all.sh: For -copy option, wipe the
+	contents of res_* directories before copying files over, so
+	that leftover files do not cause test failures after running
+	"make copy-tests".
+
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove texi2html conditionality in tests.
 	
 	* tp/tests/coverage_macro.texi: Remove some "@ifset texi2html"
