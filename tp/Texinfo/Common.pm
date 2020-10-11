@@ -1,6 +1,6 @@
 # Common.pm: definition of commands. Common code of other Texinfo modules.
 #
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -226,12 +226,6 @@ my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
 # all are lower cased in texi2any.pl
 my @parser_options = map {uc($_)} (keys(%default_parser_state_configuration));
 
-my @variable_settables_not_used = ('COMPLETE_IMAGE_PATHS', 'TOC_FILE',
-  'SPLIT_INDEX');
-
-my @formats_settable = (
-);
-
 my @variable_string_settables = (
   'DEBUG', 'FRAMES', 'FRAMESET_DOCTYPE', 'DOCTYPE', 'TEST', 'DUMP_TEXI',
   'TOP_FILE', 'SHOW_MENU', 'MINI_TOC', 'USE_NODES', 'TOC_LINKS', 'SHORTEXTN',
@@ -279,6 +273,7 @@ my @variable_string_settables = (
   'INDEX_SPECIAL_CHARS_WARNING', 'INFO_SPECIAL_CHARS_QUOTE',
   'HTMLXREF', 'INFO_JS_DIR'
 );
+
 # Not strings. 
 # FIXME To be documented somewhere, but where?
 my @variable_other_settables = (
@@ -297,8 +292,7 @@ my %valid_options;
 foreach my $var (keys(%document_settable_at_commands), 
          keys(%document_settable_unique_at_commands),
          @command_line_settables, @variable_string_settables, 
-         @variable_other_settables, @parser_options,
-         @formats_settable, @variable_settables_not_used) {
+         @variable_other_settables, @parser_options) {
   $valid_options{$var} = 1;
 }
 
@@ -315,27 +309,7 @@ my %customization_variable_classes = (
   'variable_string_settables' => \@variable_string_settables,
   'variable_other_settables' => \@variable_other_settables,
   'parser_options' => \@parser_options,
-  #'formats_settable' => \@formats_settable,
-  #'obsolete_variables' => \@obsolete_variables,
-  'variable_settables_not_used' => \@variable_settables_not_used,
 );
-
-my @secondary_customization_variables = (
-  'obsolete_variables', 'variable_settables_not_used'
-);
-sub _customization_variable_classes(;$)
-{
-  my $print_all = shift;
-  my $result = '';
-  foreach my $type (sort(keys(%customization_variable_classes))) {
-    next if (!$print_all 
-             and grep {$_ eq $type} @secondary_customization_variables);
-    foreach my $variable (@{$customization_variable_classes{$type}}) {
-      $result .= "$variable\t$type\n";
-    }
-  }
-  return $result;
-}
 
 my %valid_tree_transformations;
 foreach my $valid_transformation ('simple_menus', 

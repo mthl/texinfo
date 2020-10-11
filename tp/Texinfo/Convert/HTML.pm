@@ -7823,7 +7823,6 @@ sub _set_variables_texi2html()
   ['USE_NODES', 0],
   ['USE_NUMERIC_ENTITY', 1],
   ['SPLIT', ''],
-  ['SPLIT_INDEX', 100],
   ['PROGRAM_NAME_IN_FOOTER', 1],
   ['HEADER_IN_TABLE', 1],
   ['USE_TITLEPAGE_FOR_TITLE', 1],

@@ -1,5 +1,16 @@
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove "not used" variables.
+
+	* tp/Texinfo/Common.pm (@variable_settables_not_used)
+	(@formats_settable, @secondary_customization_variables)
+	(_customization_variable_classes): Remove.
+	* doc/texinfo.texi, tp/init/chm.pm, tp/Texinfo/Convert/HTML.pm:
+	Remove mention of COMPLETE_IMAGE_PATHS, SPLIT_INDEX and TOC_FILE
+	variables.
+
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/tests/layout/list-of-tests: Pass -c TEXI2HTML=undef to
 	some tests to avoid 'texi2any' flag being reset by normalize_config.
 

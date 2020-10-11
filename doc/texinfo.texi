@@ -16563,10 +16563,6 @@ When a closing quote is needed, use this character; default @code{&rsquo;}
 in HTML, @code{&#8217;} in Docbook.  The default for Info is the same
 as @code{OPEN_QUOTE_SYMBOL} (see below).
 
-@c @item COMPLETE_IMAGE_PATHS
-@c If set, the image files are computed to be relative from the document
-@c directory to the source manual directory, and then to the image.
-
 @item CPP_LINE_DIRECTIVES
 Recognize @code{#line} directives in a ``preprocessing'' pass
 (@pxref{External Macro Processors}); on by default.
@@ -16737,12 +16733,6 @@ the @file{util/} directory of the Texinfo source distribution
 @item SORT_ELEMENT_COUNT_WORDS
 When dumping the elements-by-size file (see preceding item), use word
 counts instead of line counts; default false.
-
-@c @item SPLIT_INDEX
-@c For HTML@.  If set, the output is split, and the output from
-@c @code{@@printindex} happens in a sectioning element at the level of
-@c splitting, then split index pages at the next letter after they have
-@c more than that many entries.  If set to 0, no index splitting.
 
 @item TEST
 If set to true, some variables which are normally dynamically
@@ -17077,7 +17067,6 @@ corresponding @command{texi2any} customization variables.
 @item @option{--use-nodes}            @tab @code{USE_NODES}
 @item @option{--monolithic}           @tab @code{MONOLITHIC}
 @item @option{--top-file}             @tab @code{TOP_FILE}
-@item @option{--toc-file}             @tab @code{TOC_FILE}
 @item @option{--frames}               @tab @code{FRAMES}
 @item @option{--menu}                 @tab @code{SHOW_MENU}
 @item @option{--debug}                @tab @code{DEBUG}

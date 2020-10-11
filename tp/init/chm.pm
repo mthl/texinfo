@@ -4,7 +4,7 @@
 #
 # chm.pm: convert to chm intermediate formats hhp, hhc, hhk and html files
 #
-#    Copyright 2004, 2006, 2009, 2011, 2012, 2013, 2018 Free Software
+#    Copyright 2004, 2006, 2009, 2011, 2012, 2013, 2018, 2020 Free Software
 #    Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -39,7 +39,6 @@ set_from_init_file('TOP_FILE', undef);
 set_from_init_file('SHOW_MENU', 0);
 set_from_init_file('SPLIT', 'node');
 set_from_init_file('contents', 1);
-#set_from_init_file('SPLIT_INDEX', undef);
 
 set_from_init_file('DEFAULT_RULE', '');
 set_from_init_file('BIG_RULE', '');
