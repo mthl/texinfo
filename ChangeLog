@@ -1,5 +1,10 @@
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/texi2any.pl (normalize_config): Make '-c HTML_MATH=l2h'
+	a synonym for '-c L2H=1'.
+
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl (normalize_config): New function
 	to centralize special treatment of config vars, including
 	TEXINFO_OUTPUT_FORMAT, TEXI2HTML and L2H.

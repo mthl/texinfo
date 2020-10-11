@@ -2,7 +2,7 @@
 
 # texi2any: Texinfo converter.
 #
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -935,22 +935,24 @@ exit 1 if (!$result_options);
 sub normalize_config {
   my $conf = shift;
 
-  # special format
   if (defined($conf->{'TEXINFO_OUTPUT_FORMAT'})) {
     $format = set_format($conf->{'TEXINFO_OUTPUT_FORMAT'}, $format, 1);
   } elsif (defined($conf->{'TEXI2HTML'})) {
     $format = set_format('html', $format, 1);
     $parser_default_options->{'values'}->{'texi2html'} = 1;
   }
-
-  # FIXME do this here or inside format-specific code?
-  if (defined($conf->{'L2H'})) {
-    locate_and_load_init_file($latex2html_file, 
-                          [ @conf_dirs, @program_init_dirs ]);
+  if (defined($conf->{'HTML_MATH'}) and $conf->{'HTML_MATH'} eq 'l2h') {
+    $conf->{'L2H'} = 1;
   }
 }
 
 normalize_config($cmdline_options);
+
+# FIXME do this here or inside format-specific code?
+if (defined($cmdline_options->{'L2H'})) {
+  locate_and_load_init_file($latex2html_file, 
+                        [ @conf_dirs, @program_init_dirs ]);
+}
 
 # For tests, set some strings to values not changing with releases
 my %test_conf = (
