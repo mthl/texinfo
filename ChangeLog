@@ -1,3 +1,9 @@
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl (normalize_config): New function
+	to centralize special treatment of config vars, including
+	TEXINFO_OUTPUT_FORMAT, TEXI2HTML and L2H.
+
 2020-10-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	MathJax and jslicenses file.

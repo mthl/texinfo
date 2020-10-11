@@ -881,19 +881,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
      if ($value =~ /^undef$/i) {
        $value = undef;
      }
-     # special format
-     if ($var eq 'TEXINFO_OUTPUT_FORMAT') {
-       $format = set_format($value, $format, 1);
-     } elsif ($var eq 'TEXI2HTML') {
-       $format = set_format('html', $format, 1);
-       $parser_default_options->{'values'}->{'texi2html'} = 1;
-     }
      set_from_cmdline($var, $value);
-     # FIXME do that here or when all command line options are processed?
-     if ($var eq 'L2H' and get_conf('L2H')) {
-       locate_and_load_init_file($latex2html_file, 
-                             [ @conf_dirs, @program_init_dirs ]);
-     }
    }
  },
  'css-include=s' => \@css_files,
@@ -939,7 +927,30 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
                    push @texi2dvi_args, '--'.$_[0]; },
 );
 
+
+
 exit 1 if (!$result_options);
+
+# Change some options depending on the settings of other ones
+sub normalize_config {
+  my $conf = shift;
+
+  # special format
+  if (defined($conf->{'TEXINFO_OUTPUT_FORMAT'})) {
+    $format = set_format($conf->{'TEXINFO_OUTPUT_FORMAT'}, $format, 1);
+  } elsif (defined($conf->{'TEXI2HTML'})) {
+    $format = set_format('html', $format, 1);
+    $parser_default_options->{'values'}->{'texi2html'} = 1;
+  }
+
+  # FIXME do this here or inside format-specific code?
+  if (defined($conf->{'L2H'})) {
+    locate_and_load_init_file($latex2html_file, 
+                          [ @conf_dirs, @program_init_dirs ]);
+  }
+}
+
+normalize_config($cmdline_options);
 
 # For tests, set some strings to values not changing with releases
 my %test_conf = (
