@@ -1,5 +1,10 @@
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/tests/layout/list-of-tests: Pass -c TEXI2HTML=undef to
+	some tests to avoid 'texi2any' flag being reset by normalize_config.
+
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl (normalize_config): Make '-c HTML_MATH=l2h'
 	a synonym for '-c L2H=1'.
 
