@@ -7279,7 +7279,8 @@ sub output($$)
           'js/modernizr.js' ];
     }
   }
-  if ($self->get_conf('HTML_MATH') eq 'mathjax') {
+  if ($self->get_conf('HTML_MATH')
+        and $self->get_conf('HTML_MATH') eq 'mathjax') {
     $self->{'jslicenses'}->{'tex-svg.js'} =
         [ 'Apache License, Version 2.0.',
           'https://www.apache.org/licenses/LICENSE-2.0',
