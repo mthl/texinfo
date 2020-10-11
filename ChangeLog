@@ -1,5 +1,12 @@
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove texi2html conditionality in tests.
+	
+	* tp/tests/coverage_macro.texi: Remove some "@ifset texi2html"
+	conditions.
+
+2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove "not used" variables.
 
 	* tp/Texinfo/Common.pm (@variable_settables_not_used)

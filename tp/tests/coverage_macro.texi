@@ -181,10 +181,8 @@ but , ,@:
 @code{@@v@{--a@}} @v{--a}
 @code{@@,@{c@}} @,{c}
 @code{@@,@{--c@}} @,{--c}
-@ifset texi2html
 @code{@@ogonek@{a@}} @ogonek{a}
 @code{@@ogonek@{--a@}} @ogonek{--a}
-@end ifset
 @code{@@footnote@{in footnote@}} @footnote{in footnote}
 @code{@@footnote@{in footnote2@}} @footnote{in footnote2}
 
@@ -260,20 +258,6 @@ Note, the note
 
 @quotation @*
 @end quotation
-
-@ifset texi2html
-@smallquotation 
-A small quot---ation
-@end smallquotation
-
-@smallquotation Note
-A small Note
-@end smallquotation
-
-@smallquotation something, other thing
-something, other thing
-@end smallquotation
-@end ifset
 
 @itemize
 @item i--temize
@@ -609,8 +593,6 @@ docbook ''
 
 @subsubheading subsubheading
 
-@c makeinfo cannot handle that
-@ifset texi2html
 
 @code{@@acronym@{--a,an accronym @@comma@{@} @@enddots@{@}@}} @acronym{--a,an accronym @comma{} @enddots{}}
 @code{@@abbr@{@@'E--. @@comma@{@}A., @@'Etude--@@comma@{@} @@b@{Autonome@} @}} @abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }
@@ -622,10 +604,9 @@ docbook ''
 @code{@@image@{f--ile,aze,az,@@verb@{:jk _" %@@:@} @@b@{in b "@},e--xt@}} @image{f--ile,aze,az,@verb{:jk _" %@:} @b{in b "},e--xt}
 @code{@@image@{file@@verb@{:jk _" %@@:@},,,alt@@verb@{:jk _" %@@:@}@}} @image{file@verb{:jk _" %@:},,,alt@verb{:jk _" %@:}}
 
+
+
 @set invalid
-@end ifset
-
-
 @c invalid texinfo
 @ifset invalid
 

@@ -200,6 +200,8 @@ but , ,
 <literal>@v{--a}</literal> &#8211;a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> &#8211;c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> &#8211;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
@@ -249,7 +251,6 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
-
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -503,10 +504,118 @@ docbook ''
 
 <bridgehead renderas="sect3">subsubheading</bridgehead>
 
-<!-- makeinfo cannot handle that -->
+
+<para><literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>&#8211;a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev> (&#201;tude&#8211;&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev>
+</para>
+<para><literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+</para>
+<para><literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+</para>
 
 
 <!-- invalid texinfo -->
+
+<para>Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+</para>
+<para>Invalid use of @&#8217;:
+
+@&#8217; '
+
+
+@&#8217;@&quot;u '&#252;
+</para>
+<!-- only i or j as arg -->
+<para>@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> &#8211;a
+<literal>@dotless{a}</literal> a
+</para>
+<!-- @U arg must be specified and within range -->
+<para>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</para>
+<!-- braces missing -->
+<para>@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+</para>
+<!-- no arg -->
+<para><literal>@w{--a}</literal> &#8211;a<!-- /@w -->
+</para>
+<!-- no file -->
+<para><literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+</para>
+
+<!-- braces missing -->
+<itemizedlist><listitem><para> after emph e&#8211;mph item
+</para></listitem></itemizedlist>
+<!-- braces missing -->
+<itemizedlist><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+</para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
+</para></listitem></itemizedlist>
+<!-- deffnx after deff lines -->
+<synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<!-- comment -->
+<para>Various deff lines
+</para><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+
+<!-- node is non existent, or missing first arg -->
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
 
 </legalnotice></bookinfo>
 <para>In titlepage
@@ -699,6 +808,8 @@ but , ,
 <literal>@v{--a}</literal> &#8211;a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> &#8211;c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> &#8211;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
@@ -748,7 +859,6 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
-
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -1002,10 +1112,118 @@ docbook ''
 
 <bridgehead renderas="sect3">subsubheading</bridgehead>
 
-<!-- makeinfo cannot handle that -->
+
+<para><literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>&#8211;a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev> (&#201;tude&#8211;&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev>
+</para>
+<para><literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+</para>
+<para><literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+</para>
 
 
 <!-- invalid texinfo -->
+
+<para>Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+</para>
+<para>Invalid use of @&#8217;:
+
+@&#8217; '
+
+
+@&#8217;@&quot;u '&#252;
+</para>
+<!-- only i or j as arg -->
+<para>@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> &#8211;a
+<literal>@dotless{a}</literal> a
+</para>
+<!-- @U arg must be specified and within range -->
+<para>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</para>
+<!-- braces missing -->
+<para>@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+</para>
+<!-- no arg -->
+<para><literal>@w{--a}</literal> &#8211;a<!-- /@w -->
+</para>
+<!-- no file -->
+<para><literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+</para>
+
+<!-- braces missing -->
+<itemizedlist><listitem><para> after emph e&#8211;mph item
+</para></listitem></itemizedlist>
+<!-- braces missing -->
+<itemizedlist><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+</para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
+</para></listitem></itemizedlist>
+<!-- deffnx after deff lines -->
+<synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<!-- comment -->
+<para>Various deff lines
+</para><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+
+<!-- node is non existent, or missing first arg -->
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
 
 
 <para>Insercopying in titlepage
@@ -1199,6 +1417,8 @@ but , ,
 <literal>@v{--a}</literal> &#8211;a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> &#8211;c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> &#8211;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
@@ -1248,7 +1468,6 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
-
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -1502,10 +1721,118 @@ docbook ''
 
 <bridgehead renderas="sect3">subsubheading</bridgehead>
 
-<!-- makeinfo cannot handle that -->
+
+<para><literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>&#8211;a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev> (&#201;tude&#8211;&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev>
+</para>
+<para><literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+</para>
+<para><literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+</para>
 
 
 <!-- invalid texinfo -->
+
+<para>Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+</para>
+<para>Invalid use of @&#8217;:
+
+@&#8217; '
+
+
+@&#8217;@&quot;u '&#252;
+</para>
+<!-- only i or j as arg -->
+<para>@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> &#8211;a
+<literal>@dotless{a}</literal> a
+</para>
+<!-- @U arg must be specified and within range -->
+<para>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</para>
+<!-- braces missing -->
+<para>@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+</para>
+<!-- no arg -->
+<para><literal>@w{--a}</literal> &#8211;a<!-- /@w -->
+</para>
+<!-- no file -->
+<para><literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+</para>
+
+<!-- braces missing -->
+<itemizedlist><listitem><para> after emph e&#8211;mph item
+</para></listitem></itemizedlist>
+<!-- braces missing -->
+<itemizedlist><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+</para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
+</para></listitem></itemizedlist>
+<!-- deffnx after deff lines -->
+<synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<!-- comment -->
+<para>Various deff lines
+</para><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+
+<!-- node is non existent, or missing first arg -->
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
 
 
 <para>Insertcopying in normal text
@@ -1699,6 +2026,8 @@ but , ,
 <literal>@v{--a}</literal> &#8211;a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> &#8211;c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> &#8211;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
@@ -1748,7 +2077,6 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
-
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -2002,10 +2330,118 @@ docbook ''
 
 <bridgehead renderas="sect3">subsubheading</bridgehead>
 
-<!-- makeinfo cannot handle that -->
+
+<para><literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>&#8211;a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev> (&#201;tude&#8211;&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev>
+</para>
+<para><literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+</para>
+<para><literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+</para>
 
 
 <!-- invalid texinfo -->
+
+<para>Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+</para>
+<para>Invalid use of @&#8217;:
+
+@&#8217; '
+
+
+@&#8217;@&quot;u '&#252;
+</para>
+<!-- only i or j as arg -->
+<para>@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> &#8211;a
+<literal>@dotless{a}</literal> a
+</para>
+<!-- @U arg must be specified and within range -->
+<para>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</para>
+<!-- braces missing -->
+<para>@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+</para>
+<!-- no arg -->
+<para><literal>@w{--a}</literal> &#8211;a<!-- /@w -->
+</para>
+<!-- no file -->
+<para><literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+</para>
+
+<!-- braces missing -->
+<itemizedlist><listitem><para> after emph e&#8211;mph item
+</para></listitem></itemizedlist>
+<!-- braces missing -->
+<itemizedlist><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+</para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
+</para></listitem></itemizedlist>
+<!-- deffnx after deff lines -->
+<synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<!-- comment -->
+<para>Various deff lines
+</para><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+
+<!-- node is non existent, or missing first arg -->
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
 
 
 <para>Normal text
@@ -2198,6 +2634,8 @@ but , ,
 <literal>@v{--a}</literal> &#8211;a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> &#8211;c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> &#8211;a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 </para>
@@ -2247,7 +2685,6 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
-
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -2501,10 +2938,118 @@ docbook ''
 
 <bridgehead renderas="sect3">subsubheading</bridgehead>
 
-<!-- makeinfo cannot handle that -->
+
+<para><literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>&#8211;a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev> (&#201;tude&#8211;&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;&#8211;. &#44;A.</abbrev>
+</para>
+<para><literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+</para>
+<para><literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+</para>
 
 
 <!-- invalid texinfo -->
+
+<para>Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+</para>
+<para>Invalid use of @&#8217;:
+
+@&#8217; '
+
+
+@&#8217;@&quot;u '&#252;
+</para>
+<!-- only i or j as arg -->
+<para>@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> &#8211;a
+<literal>@dotless{a}</literal> a
+</para>
+<!-- @U arg must be specified and within range -->
+<para>@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+</para>
+<!-- braces missing -->
+<para>@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+</para>
+<!-- no arg -->
+<para><literal>@w{--a}</literal> &#8211;a<!-- /@w -->
+</para>
+<!-- no file -->
+<para><literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+</para>
+
+<!-- braces missing -->
+<itemizedlist><listitem><para> after emph e&#8211;mph item
+</para></listitem></itemizedlist>
+<!-- braces missing -->
+<itemizedlist><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 1
+</para></listitem><listitem><para>&#8226; a&#8211;n itemize line i&#8211;tem 2
+</para></listitem></itemizedlist>
+<!-- deffnx after deff lines -->
+<synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<!-- comment -->
+<para>Various deff lines
+</para><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+
+<!-- node is non existent, or missing first arg -->
+<para><literal>@ref{node}</literal> <link linkend="node">node</link>
+</para>
+<para><literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section &#8220;node&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section &#8220;cross ref name&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section &#8220;title&#8221; in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+</para>
+<para><literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+</para>
 
 
 <para>In example.
@@ -2693,6 +3238,8 @@ but , ,
 <literal>@v{--a}</literal> --a&lt;
 <literal>@,{c}</literal> &#231;
 <literal>@,{--c}</literal> --c,
+<literal>@ogonek{a}</literal> &#261;
+<literal>@ogonek{--a}</literal> --a;
 <literal>@footnote{in footnote}</literal> <footnote><para>in footnote</para></footnote>
 <literal>@footnote{in footnote2}</literal> <footnote><para>in footnote2</para></footnote>
 
@@ -2742,7 +3289,6 @@ After clickstyle &#8658;
 </screen><blockquote></blockquote><screen>
 </screen><blockquote></blockquote><screen>
 </screen><blockquote></blockquote><screen>
-
 </screen><itemizedlist><listitem><screen>i--temize
 </screen></listitem></itemizedlist><screen>
 </screen><itemizedlist><listitem><screen>+ i--tem +
@@ -2992,10 +3538,118 @@ docbook ''
 <screen>
 </screen><bridgehead renderas="sect3">subsubheading</bridgehead>
 <screen>
-<!-- makeinfo cannot handle that -->
+
+<literal>@acronym{--a,an accronym @comma{} @enddots{}}</literal> <acronym>--a</acronym> (an accronym &#44; ...)
+<literal>@abbr{@'E--. @comma{}A., @'Etude--@comma{} @b{Autonome} }</literal> <abbrev>&#201;--. &#44;A.</abbrev> (&#201;tude--&#44; <emphasis role="bold">Autonome</emphasis>)
+<literal>@abbr{@'E--. @comma{}A.}</literal> <abbrev>&#201;--. &#44;A.</abbrev>
+
+<literal>@math{--a@minus{} {\frac{1}{2}}}</literal> <inlineequation><mathphrase>--a&#8722; {\frac{1}{2}}</mathphrase></inlineequation>
+
+<literal>@image{f-ile,,,alt@verb{:jk _&quot; %}}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{f--ile,aze,az,@verb{:jk _&quot; %@:} @b{in b &quot;},e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+aaa</literallayout></textobject></inlinemediaobject>
+<literal>@image{file@verb{:jk _&quot; %@:},,,alt@verb{:jk _&quot; %@:}}</literal> <inlinemediaobject><imageobject><imagedata fileref="filejk _&quot; %@.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+
 
 
 <!-- invalid texinfo -->
+
+Somehow invalid use of @,:
+
+@, ,
+
+
+@,@&quot;u ,&#252;
+
+Invalid use of @':
+
+@' '
+
+
+@'@&quot;u '&#252;
+
+<!-- only i or j as arg -->
+@dotless{truc} truc
+@dotless{ij} ij
+<literal>@dotless{--a}</literal> --a
+<literal>@dotless{a}</literal> a
+
+<!-- @U arg must be specified and within range -->
+@U, without braces @U{}, with empty arg 
+@U{z}, with non-hex arg &#xz;
+@U{abc}, with &lt;4 hex digits &#xabc;
+@U{FFFFFFFFFFFFFF}, value much too large &#xFFFFFFFFFFFFFF;
+@U{110000}, value just beyond Unicode &#x110000;
+
+<!-- braces missing -->
+@TeX, but without brace &tex;<!-- unknown command -->
+<literal>@#</literal> #
+
+<!-- no arg -->
+<literal>@w{--a}</literal> --a<!-- /@w -->
+
+<!-- no file -->
+<literal>@image{,1--xt}</literal> 
+<literal>@image{,,2--xt}</literal> 
+<literal>@image{,,,3--xt}</literal> 
+
+
+<!-- braces missing -->
+</screen><itemizedlist><listitem><screen> after emph e--mph item
+</screen></listitem></itemizedlist><screen>
+<!-- braces missing -->
+</screen><itemizedlist><listitem><screen>&#8226; a--n itemize line i--tem 1
+</screen></listitem><listitem><screen>&#8226; a--n itemize line i--tem 2
+</screen></listitem></itemizedlist><screen>
+<!-- deffnx after deff lines -->
+</screen><synopsis><phrase role="category"><emphasis role="bold">fun</emphasis>:</phrase></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable>  <replaceable>after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable></replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>machin</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>machin</function> <replaceable>bidule</replaceable> <replaceable>chose</replaceable> <replaceable>and</replaceable> <replaceable>and after</replaceable></synopsis>
+<synopsis><indexterm role="fn"><primary>followed</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>followed</function> <replaceable>by</replaceable> <replaceable>a</replaceable> <replaceable>comment</replaceable></synopsis>
+<screen><!-- comment -->
+Various deff lines
+</screen><synopsis><indexterm role="fn"><primary>after</primary></indexterm><phrase role="category"><emphasis role="bold">truc</emphasis>:</phrase> <function>after</function> <replaceable>a</replaceable> <replaceable>deff</replaceable> <replaceable>item</replaceable></synopsis>
+<screen>
+<!-- node is non existent, or missing first arg -->
+<literal>@ref{node}</literal> <link linkend="node">node</link>
+
+<literal>@ref{,cross ref name}</literal> <link>cross ref name</link>
+<literal>@ref{,,title}</literal> <link>title</link>
+<literal>@ref{,,,file name}</literal> 
+<literal>@ref{,,,,manual}</literal> <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name}</literal> <link linkend="node">cross ref name</link>
+<literal>@ref{node,,title}</literal> <link linkend="node">title</link>
+<literal>@ref{node,,,file name}</literal> 
+<literal>@ref{node,,,,manual}</literal> section ``node'' in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,}</literal> <link linkend="node">title</link>
+<literal>@ref{node,cross ref name,,file name}</literal> 
+<literal>@ref{node,cross ref name,,,manual}</literal> section ``cross ref name'' in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title,file name}</literal> 
+<literal>@ref{node,cross ref name,title,,manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{node,cross ref name,title, file name, manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{node,,title,file name}</literal> 
+<literal>@ref{node,,title,,manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{chapter,,title, file name, manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{node,,title, file name, manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{node,,,file name,manual}</literal> section ``node'' in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,}</literal> <link>title</link>
+<literal>@ref{,cross ref name,,file name}</literal> 
+<literal>@ref{,cross ref name,,,manual}</literal> section ``cross ref name'' in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title,file name}</literal> 
+<literal>@ref{,cross ref name,title,,manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{,cross ref name,title, file name, manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{,,title,file name}</literal> 
+<literal>@ref{,,title,,manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{,,title, file name, manual}</literal> section ``title'' in <citetitle>manual</citetitle>
+<literal>@ref{,,,file name,manual}</literal> <citetitle>manual</citetitle>
+
+<literal>@inforef{,cross ref name }</literal> 
+<literal>@inforef{,,file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{,cross ref name, file name}</literal> See Info file <filename>file name</filename>
+<literal>@inforef{}</literal> 
+
 
 </screen>
 <indexterm role="cp"><primary>t&#8211;ruc</primary></indexterm>
