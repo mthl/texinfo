@@ -121,7 +121,7 @@ sub parser (;$$)
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});
       } elsif ($key eq 'DEBUG') {
-        set_debug($conf->{$key});
+        set_debug($conf->{$key}) if $conf->{'key'};
       } elsif ($key eq 'in_gdt') {
         # no action needed
       } else {

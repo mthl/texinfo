@@ -1,5 +1,10 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):
+	Check for undef DEBUG.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi
 	(Writing a Menu, Customization Variables for @-Commands)
 	(Command List),
@@ -8,7 +13,7 @@
 	* tp/Texinfo/XS/Makefile.am (command_ids.h): Use gawk instead
 	of awk.  Avoid discouraged "$p" usage, using "$(p)" instead.
 	* tp/Texinfo/XS/configure.ac: Check for gawk.
-	
+
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* NEWS: Update.
