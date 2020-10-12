@@ -1,3 +1,11 @@
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Move index entries for customization variables.
+
+	* doc/texinfo.texi (Customization Variables and Options):
+	(Invoking texi2any): Move @vindex entries to Invoking texi2any
+	node.
+
 2020-10-11  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Wipe res_parser etc.
