@@ -1,5 +1,18 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	MathJax fixes.
+
+	* tp/texi2any.pl (_file_header_informations): Use math2jax_process
+	instead of 'math' class.  (Suggestion from Patrice.)
+	(_convert_math_command): Add 'math' class to <em> elements for
+	math unless we are using mathjax, in which case use
+	'math2jax_process'.
+	(output): Set 'jslicenses' earlier to ensure the jslicense link
+	is output.
+	(default_end_file): Wrap jslicense link in <small>.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove SILENT variable.
 
 	* tp/Texinfo/Common.pm (@command_line_settables): Remove

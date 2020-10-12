@@ -1794,12 +1794,13 @@ sub _convert_math_command($$$$)
 
   my $math_type = $self->get_conf('HTML_MATH');
   if (!defined($math_type) or $math_type eq 'default') {
-    return '<em>'.$args->[0]->{'normal'}.'</em>';
+    return '<em class=\'math\'>'.$args->[0]->{'normal'}.'</em>';
   } elsif ($math_type eq 'mathjax') {
-    return '<em class=\'math\'>\\('.$args->[0]->{'normal'}.'\\)</em>';
+    return '<em class=\'tex2jax_process\'>\\('
+             .$args->[0]->{'normal'}.'\\)</em>';
   } else {
     # invalid value - give warning?
-    return '<em>'.$args->[0]->{'normal'}.'</em>';
+    return '<em class=\'math\'>'.$args->[0]->{'normal'}.'</em>';
   }
 }
 
@@ -6276,9 +6277,9 @@ sub _default_end_file($)
 
   if (defined($self->{'jslicenses'})) {
     $pre_body_close .=
-'<a href="js_licenses.html" rel="jslicense">'
+'<a href="js_licenses.html" rel="jslicense"><small>'
 .$self->convert_tree($self->gdt('JavaScript license information'))
-.'</a>';
+.'</small></a>';
 
   }
   return "$program_text
@@ -6402,7 +6403,7 @@ MathJax = {
   options: {
     skipHtmlTags: {'[-]': ['pre']},
     ignoreHtmlClass: 'tex2jax_ignore',
-    processHtmlClass: 'math'
+    processHtmlClass: 'tex2jax_process'
   },
 };
 </script>"
@@ -7127,6 +7128,14 @@ sub output($$)
     return undef if (!$status);
   }
 
+  if ($self->get_conf('HTML_MATH')
+        and $self->get_conf('HTML_MATH') eq 'mathjax') {
+    $self->{'jslicenses'}->{'tex-svg.js'} =
+        [ 'Apache License, Version 2.0.',
+          'https://www.apache.org/licenses/LICENSE-2.0',
+          'mathjax-with-dependencies.tar.xz' ]; #FIXME
+  }
+
   # FIXME here call _unset_global_multiple_commands?  Problem is
   # that some conversion, for instance for page header requires
   # that the correct language is set, for instance.  The @-command
@@ -7279,14 +7288,6 @@ sub output($$)
           'js/modernizr.js' ];
     }
   }
-  if ($self->get_conf('HTML_MATH')
-        and $self->get_conf('HTML_MATH') eq 'mathjax') {
-    $self->{'jslicenses'}->{'tex-svg.js'} =
-        [ 'Apache License, Version 2.0.',
-          'https://www.apache.org/licenses/LICENSE-2.0',
-          'mathjax-with-dependencies.tar.xz' ]; #FIXME
-  }
-
   if ($self->{'jslicenses'} and %{$self->{'jslicenses'}}) {
     $self->_do_jslicenses_file();
   }
