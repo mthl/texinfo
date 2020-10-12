@@ -1,4 +1,4 @@
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2020 Free Software Foundation, Inc.
 #
 # This file is part of GNU Texinfo.
 #
@@ -78,7 +78,6 @@ setcontentsaftertitlepage	line,deprecated 	LINE_skipline
 setshortcontentsaftertitlepage	line,deprecated 	LINE_skipline
 documentencoding		line,global		LINE_text
 novalidate			line,global_unique	LINE_skipline
-validatemenus			line,global_unique     	1
 dircategory			line		LINE_line
 # with direntry is significant
 pagesizes			line,global_unique	LINE_line
@@ -247,7 +246,6 @@ guilsinglleft	brace		0
 guilsinglright	brace		0
 
 # accent commands - can be called with or without braces
-# TODO do we need "brace" here as well?
 \"		brace,accent	BRACE_accent
 ~ 		brace,accent	BRACE_accent
 ^ 		brace,accent	BRACE_accent

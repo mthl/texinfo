@@ -95,6 +95,7 @@ gl_EARLY
 
 AM_GNU_GETTEXT([external])
 AM_MISSING_PROG([XSUBPP], [xsubpp])
+AM_MISSING_PROG([GAWK], [gawk])
 
 gl_INIT
 

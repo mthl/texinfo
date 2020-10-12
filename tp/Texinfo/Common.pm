@@ -127,7 +127,6 @@ our %default_parser_state_configuration = (
                               # value is the reference on a macro element 
                               # as obtained by parsing the @macro
   'merged_indices' => {},     # the key is merged in the value
-  'validatemenus' => 0,       # same as setting @validatemenus.
   'sections_level' => 0,      # modified by raise/lowersections
   'values' => {'txicommandconditionals' => 1},
                               # the key is the name, the value the @set name 
@@ -197,7 +196,6 @@ our %document_settable_unique_at_commands = (
   'fonttextsize' => 11, 
   'footnotestyle' => 'end', 
   'novalidate' => 0,
-  'validatemenus' => 0,
   'oddfootingmarks' => undef,
   'oddheadingmarks' => undef,
   # FIXME not clear here.
@@ -471,7 +469,6 @@ our %line_commands = (
   # more relevant in preamble
   'documentencoding'  => 'text', # or 1?
   'novalidate'        => 'skipline', # no arg
-  'validatemenus'     => 1, # on off
   'dircategory'       => 'line', # line. Position with regard 
                                  # with direntry is significant
   'pagesizes'         => 'line', # can have 2 args 

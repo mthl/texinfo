@@ -1,6 +1,6 @@
 # Makefile.am for XS modules
 #
-# Copyright 2015-2019 Free Software Foundation, Inc.
+# Copyright 2015-2020 Free Software Foundation, Inc.
 #
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without
@@ -97,7 +97,7 @@ XSParagraph_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
 p=parsetexi
 
 modulesdir = $(pkgdatadir)/Texinfo/XS/parsetexi
-dist_modules_DATA = $p/Parsetexi.pm
+dist_modules_DATA = $(p)/Parsetexi.pm
 
 if HAVE_ICONV
 xs_LTLIBRARIES += Parsetexi.la
@@ -147,9 +147,9 @@ Parsetexi_la_SOURCES= parsetexi/Parsetexi.c \
 		      parsetexi/errors.h \
 		      parsetexi/counter.c \
 		      parsetexi/counter.h
-EXTRA_DIST += $p/command_data.c
+EXTRA_DIST += $(p)/command_data.c
 
-EXTRA_DIST += $p/Parsetexi.xs
+EXTRA_DIST += $(p)/Parsetexi.xs
 
 Parsetexi_la_LIBADD = $(top_builddir)/gnulib/lib/libgnu.la
 Parsetexi_la_LDFLAGS = $(AM_LDFLAGS) $(LTLIBINTL) $(LTLIBICONV)
@@ -163,14 +163,14 @@ BUILT_SOURCES=parsetexi/element_types.c \
 	      parsetexi/command_ids.h
 
 # Need to be distributed
-EXTRA_DIST+=$p/element_types.txt $p/element_types.awk \
-	   $p/command_data.txt $p/command_data.awk
+EXTRA_DIST+=$(p)/element_types.txt $(p)/element_types.awk \
+	   $(p)/command_data.txt $(p)/command_data.awk
 
-$(srcdir)/$p/element_types.c $(srcdir)/$p/element_types.h: $p/element_types.txt $p/element_types.awk
-	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/element_types.awk \
-	     $(srcdir)/$p/element_types.txt
+$(srcdir)/$(p)/element_types.c $(srcdir)/$(p)/element_types.h: $(p)/element_types.txt $(p)/element_types.awk
+	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/element_types.awk \
+	     $(srcdir)/$(p)/element_types.txt
 
-$(srcdir)/$p/command_data.c $(srcdir)/$p/command_ids.h: $p/command_data.txt $p/command_data.awk
-	awk -v srcdir=$(srcdir)/$p -f $(srcdir)/$p/command_data.awk \
-	     $(srcdir)/$p/command_data.txt
+$(srcdir)/$(p)/command_data.c $(srcdir)/$(p)/command_ids.h: $(p)/command_data.txt $(p)/command_data.awk
+	$(GAWK) -v srcdir=$(srcdir)/$(p) -f $(srcdir)/$(p)/command_data.awk \
+	     $(srcdir)/$(p)/command_data.txt
 

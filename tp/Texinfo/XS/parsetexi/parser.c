@@ -237,7 +237,6 @@ register_global_command (ELEMENT *current)
         GLOBAL_UNIQUE_CASE(titlepage);
         GLOBAL_UNIQUE_CASE(top);
         GLOBAL_UNIQUE_CASE(documentdescription);
-        GLOBAL_UNIQUE_CASE(validatemenus);
         GLOBAL_UNIQUE_CASE(pagesizes);
         GLOBAL_UNIQUE_CASE(fonttextsize);
         GLOBAL_UNIQUE_CASE(footnotestyle);

@@ -1,4 +1,4 @@
-/* Copyright 2010-2019 Free Software Foundation, Inc.
+/* Copyright 2010-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -915,7 +915,6 @@ build_global_info2 (void)
   BUILD_GLOBAL_UNIQ(documentdescription);
   BUILD_GLOBAL_UNIQ(setcontentsaftertitlepage);
   BUILD_GLOBAL_UNIQ(setshortcontentsaftertitlepage);
-  BUILD_GLOBAL_UNIQ(validatemenus);
   BUILD_GLOBAL_UNIQ(pagesizes);
   BUILD_GLOBAL_UNIQ(fonttextsize);
   BUILD_GLOBAL_UNIQ(footnotestyle);
