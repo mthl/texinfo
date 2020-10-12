@@ -9,6 +9,7 @@ formatting_weird_quotes formatting.texi -c 'OPEN_QUOTE_SYMBOL @' -c "CLOSE_QUOTE
 formatting_html formatting.texi --html --no-split
 formatting_html_nodes formatting.texi --html --split node --node-files -c 'TOP_FILE index.html'
 formatting_plaintext formatting.texi -c SHOW_MENU=0 --plaintext -c TEXI2HTML=undef -U texi2html
+formatting_mathjax formatting.texi --html -c HTML_MATH=mathjax
 #formatting_mediawiki formatting.texi --init mediawiki.pm
 formatting_html32 formatting.texi --init html32.pm
 formatting_regions formatting_regions.texi

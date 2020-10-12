@@ -1,3 +1,9 @@
+2020-10-12  Patrice Dumas  <pertusus@free.fr>
+
+	Add mathjax test in layout coverage tests
+
+	* tp/tests/layout/list-of-tests: add formatting_mathjax.
+
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fix test suite for non-XS.
