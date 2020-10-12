@@ -1,5 +1,13 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix test suite for non-XS.
+	
+	* tp/Texinfo/ParserNonXS.pm (_open_in): Use ':utf8' layer
+	for UTF-8 input.  This was leading to errors in the test suite
+	for Shift-JIS files.  This reverses change on 2020/05/14.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove MINI_TOC variable, using SHOW_MENU instead.
 	
 	* tp/Texinfo/Common.pm (@variable_string_settables):

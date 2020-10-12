@@ -736,18 +736,16 @@ sub _open_in {
 
   if (open($filehandle, $file_name)) {
     if (defined($self->{'info'}->{'input_perl_encoding'})) {
-      binmode($filehandle, ":encoding($self->{'info'}->{'input_perl_encoding'})");
-      # Use ':encoding(utf-8)' instead of ':utf8' as the latter would do no 
-      # error checking so leads to a fatal error in case a Latin-1 file does 
-      # not have a @documentencoding declaration.
-      #
-      # TODO: delete this note and the comment below if the issue doesn't arise 
-      # again with ':encoding(utf-8)'.  This TODO note added 2020/05/14.
-      #
-      # For UTF-8, this would lead to errors in Latin-1 input the first time 
-      # a line is read from the file, even though the binmode is changed 
-      # later.  Evidently Perl is checking ahead in the file to see if the 
-      # input is valid.
+      if ($self->{'info'}->{'input_perl_encoding'} eq 'utf-8') {
+        binmode($filehandle, ":utf8");
+        # Use :utf8 instead of :encoding(utf-8), as the latter does
+        # error checking and has (unreliably) led to fatal errors
+        # when reading the first few lines of e.g. Latin-1 or Shift-JIS
+        # files, even though @documentencoding is given early on in the file.
+        # Evidently Perl is checking ahead in the file.
+      } else {
+        binmode($filehandle, ":encoding($self->{'info'}->{'input_perl_encoding'})");
+      }
     }
     return 1;
   } else {
