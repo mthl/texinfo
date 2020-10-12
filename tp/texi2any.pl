@@ -910,9 +910,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2017";
  'output-indent=i' => sub { ;},
  'reference-limit=i' => sub { ;},
  'Xopt=s' => sub {push @texi2dvi_args, $_[1]; $Xopt_arg_nr++},
- 'silent|quiet' => sub {set_from_cmdline('SILENT', $_[1]);
-                         push @texi2dvi_args, '--'.$_[0];},
-   
+ 'silent|quiet' => sub { push @texi2dvi_args, '--'.$_[0];},
  'plaintext' => sub {$format = set_format($_[0].'');},
  'html' => sub {$format = set_format($_[0].'');},
  'info' => sub {$format = set_format($_[0].'');},

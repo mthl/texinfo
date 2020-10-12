@@ -212,14 +212,12 @@ our %document_settable_unique_at_commands = (
   'oddfooting'        => undef,
 );
 
-my @command_line_settables = ('FILLCOLUMN', 'SPLIT', 'SPLIT_SIZE',
-  'HEADERS',
-  'MACRO_EXPAND', 'NUMBER_SECTIONS',
-  'NUMBER_FOOTNOTES', 'NODE_FILES',
-  'NO_WARN', 'VERBOSE',
-  'TRANSLITERATE_FILE_NAMES', 'ERROR_LIMIT', 'ENABLE_ENCODING',
-  'FORCE', 'INTERNAL_LINKS', 'OUTFILE', 'SUBDIR',
-  'SILENT', 'CASE_INSENSITIVE_FILENAMES',
+my @command_line_settables = (
+  'CASE_INSENSITIVE_FILENAMES', 'ENABLE_ENCODING', 'ERROR_LIMIT',
+  'FILLCOLUMN', 'FORCE', 'HEADERS', 'INTERNAL_LINKS', 'MACRO_EXPAND',
+  'NODE_FILES', 'NO_WARN', 'NUMBER_FOOTNOTES', 'NUMBER_SECTIONS',
+  'OUTFILE', 'SPLIT', 'SPLIT_SIZE', 'SUBDIR', 'TRANSLITERATE_FILE_NAMES',
+  'VERBOSE'
 );
 
 # documented in the Texinfo::Parser pod section

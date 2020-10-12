@@ -1,5 +1,14 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove SILENT variable.
+
+	* tp/Texinfo/Common.pm (@command_line_settables): Remove
+	'SILENT' as it is not used anywhere, and sort the variables
+	in alphabetical order.
+	* tp/texi2any.pl: Do not set SILENT for --silent option.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Move index entries for customization variables.
 
 	* doc/texinfo.texi (Customization Variables and Options):
