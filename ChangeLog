@@ -1,5 +1,9 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Update.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	MATHJAX_SCRIPT and MATHJAX_SOURCE
 
 	* tp/Texinfo/Common.pm (@variable_string_settables): Add
