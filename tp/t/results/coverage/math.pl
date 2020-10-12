@@ -557,13 +557,13 @@ $result_converted{'plaintext'}->{'math'} = 'Simple math --{x^i}\\over{\\tan y}
 
 
 $result_converted{'html_text'}->{'math'} = '<p>Simple math
-<em>--{x^i}\\over{\\tan y}</em>
+<em class=\'math\'>--{x^i}\\over{\\tan y}</em>
 </p>
 <p>Math with @-command
-<em><code>math code</code> a &lt; b \\sum<sub>i</sub> q<sup>2</sup></em>
+<em class=\'math\'><code>math code</code> a &lt; b \\sum<sub>i</sub> q<sup>2</sup></em>
 </p>
 <p>Complex
-<em>\\underline{<code>math \\hbox{ code }</code>} \\i \\sum_{i}{\\underline{f}}</em>
+<em class=\'math\'>\\underline{<code>math \\hbox{ code }</code>} \\i \\sum_{i}{\\underline{f}}</em>
 </p>
 <p>@\\ outside of math
 \\
