@@ -1,5 +1,22 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove MINI_TOC variable, using SHOW_MENU instead.
+	
+	* tp/Texinfo/Common.pm (@variable_string_settables):
+	Remove MINI_TOC.
+	* tp/Texinfo/Convert/HTML.pm (%defaults): Remove MINI_TOC
+	value, and set SHOW_MENU to 'sectiontoc' to mean the same thing.
+	(_convert): Make showing menu and generating a "mini-TOC" mutually
+	exclusive, controlled through the SHOW_MENU setting.
+	* tp/Texinfo/Convert/HTML.pm,
+	* tp/Texinfo/Convert/Structuring.pm,
+	* tp/Texinfo/ParserNonXS.pm,
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Check whether SHOW_MENU
+	has value '1' instead of whether it is true.
+	* tp/tests/run_parser_all.sh: Do not pass '-c MINI_TOC=0' option.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):
 	Check for undef DEBUG.
 

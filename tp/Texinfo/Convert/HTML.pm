@@ -966,8 +966,7 @@ my %PASSIVE_ICONS = (
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 0,
-  'MINI_TOC'             => 1,
+  'SHOW_MENU'            => 'sectiontoc',
   'OUTPUT_ENCODING_NAME'  => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -4825,7 +4824,7 @@ sub converter_initialize($)
       $self->{'commands_conversion'}->{$command} 
           = $Texinfo::Config::texinfo_commands_conversion{$command};
     } else {
-      if (!$self->get_conf('SHOW_MENU') 
+      if ($self->get_conf('SHOW_MENU') ne '1'
            and ($command eq 'menu' or $command eq 'detailmenu')) {
         $self->{'commands_conversion'}->{$command} = undef;
       } elsif ($format_raw_commands{$command}
@@ -7701,7 +7700,7 @@ sub _convert($$;$)
       }
       # FIXME add a configuration variable to be able turn automatically 
       # adding menus off?
-      if ($self->get_conf('SHOW_MENU')
+      if ($self->get_conf('SHOW_MENU') eq '1'
           and $sectioning_commands{$command_name}
           and $self->{'current_node'}
           and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
@@ -7717,8 +7716,7 @@ sub _convert($$;$)
             $result .= "\n";
           }
         }
-      }
-      if ($self->get_conf('MINI_TOC')
+      } elsif ($self->get_conf('SHOW_MENU') eq 'sectiontoc'
           and $sectioning_commands{$command_name}
           and $command_name ne 'top'
           and $self->{'current_node'}

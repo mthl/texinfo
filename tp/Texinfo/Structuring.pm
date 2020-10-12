@@ -410,14 +410,14 @@ sub nodes_tree($)
   my $top_node;
 
   my $check_menu_entries = (!$self->{'info'}->{'novalidate'}
-                              and $self->{'SHOW_MENU'});
+                              and $self->{'SHOW_MENU'} eq '1');
 
   foreach my $node (@{$self->{'nodes'}}) {
     if ($node->{'extra'}->{'normalized'} eq 'Top') {
       $top_node = $node;
     }
     if ($node->{'menus'}) {
-      if ($self->{'SHOW_MENU'} and @{$node->{'menus'}} > 1) {
+      if ($self->{'SHOW_MENU'} eq '1' and @{$node->{'menus'}} > 1) {
         foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
           $self->line_warn(sprintf(__("multiple \@%s"), 
                         $menu->{'cmdname'}), $menu->{'line_nr'});
@@ -529,7 +529,7 @@ sub nodes_tree($)
             # If set, a direction was found using sections.  Check consistency
             # with menus.
             if ($node->{'node_'.$direction}) {
-              if ($self->{'SHOW_MENU'}) {
+              if ($self->{'SHOW_MENU'} eq '1') {
 
                 if (($section->{'section_up'}{'extra'}
           and $section->{'section_up'}{'extra'}{'associated_node'}
@@ -563,7 +563,8 @@ sub nodes_tree($)
           # commands.
           if ($node->{'menu_'.$direction} 
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
-            if ($self->{'SHOW_MENU'} and $node->{'extra'}->{'associated_section'}) {
+            if ($self->{'SHOW_MENU'} eq '1'
+                  and $node->{'extra'}->{'associated_section'}) {
               $self->line_warn(sprintf(
                   __("node `%s' is %s for `%s' in menu but not in sectioning"), 
                 node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
@@ -628,7 +629,7 @@ sub nodes_tree($)
     # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}.
     # The node_up should always be different from the menu_up, therefore
     # if in a menu, the second condition/error message applies.
-    if ($self->{'SHOW_MENU'} and $node->{'node_up'} 
+    if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'} 
         and ($node->{'node_up'}->{'extra'}->{'manual_content'}
          or !$node->{'menu_up_hash'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {

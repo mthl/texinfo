@@ -284,7 +284,6 @@ my @variable_string_settables = (
 'MAX_MACRO_CALL_NESTING',
 'MENU_ENTRY_COLON',
 'MENU_SYMBOL',
-'MINI_TOC',
 'MONOLITHIC',
 'NO_CSS',
 'NODE_FILE_EXTENSION',

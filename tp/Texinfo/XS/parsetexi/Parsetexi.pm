@@ -115,7 +115,11 @@ sub parser (;$$)
           set_novalidate($conf->{$key}->{'novalidate'});
         }
       } elsif ($key eq 'SHOW_MENU') {
-        conf_set_show_menu ($conf->{$key});
+        if ($conf->{$key} eq '1') {
+          conf_set_show_menu (1);
+        } else {
+          conf_set_show_menu (0);
+        }
       } elsif ($key eq 'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME') {
         conf_set_IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME ($conf->{$key});
       } elsif ($key eq 'CPP_LINE_DIRECTIVES') {
