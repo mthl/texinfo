@@ -34,8 +34,8 @@
 
 	MathJax fixes.
 
-	* tp/texi2any.pl (_file_header_informations): Use math2jax_process
-	instead of 'math' class.  (Suggestion from Patrice.)
+	* tp/Texinfo/Convert/HTML.pm (_file_header_informations): Use
+	math2jax_process instead of 'math' class.  (Suggestion from Patrice.)
 	(_convert_math_command): Add 'math' class to <em> elements for
 	math unless we are using mathjax, in which case use
 	'math2jax_process'.
