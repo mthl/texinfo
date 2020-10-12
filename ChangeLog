@@ -1,5 +1,17 @@
 2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	MATHJAX_SCRIPT and MATHJAX_SOURCE
+
+	* tp/Texinfo/Common.pm (@variable_string_settables): Add
+	MATHJAX_SCRIPT and MATHJAX_SOURCE.  Give variables in alphabetical
+	order.
+	* tp/Texinfo/Convert/HTML.pm (output) Set MATHJAX_SCRIPT and
+	MATHJAX_SOURCE to default values and use their values in the
+	jslicenses file.
+	(_file_header_informations): Use value of MATHJAX_SCRIPT.
+
+2020-10-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	MathJax fixes.
 
 	* tp/texi2any.pl (_file_header_informations): Use math2jax_process

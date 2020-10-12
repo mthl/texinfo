@@ -6397,6 +6397,8 @@ sub _file_header_informations($$)
   }
   if (defined($self->get_conf('HTML_MATH'))
         and $self->get_conf('HTML_MATH') eq 'mathjax') {
+    my $mathjax_script = $self->get_conf('MATHJAX_SCRIPT');
+
     $extra_head .=
 "<script type='text/javascript'>
 MathJax = {
@@ -6408,7 +6410,7 @@ MathJax = {
 };
 </script>"
 .'<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  src="'.$mathjax_script.'">
 </script>'
   }
 
@@ -7077,7 +7079,6 @@ sub output($$)
   my $html_title_string;
   if ($fulltitle) {
     $self->{'title_tree'} = $fulltitle;
-    print STDERR "DO fulltitle_string\n" if ($self->get_conf('DEBUG'));
     $html_title_string = $self->convert_tree_new_formatting_context(
           {'type' => '_string', 'contents' => [$self->{'title_tree'}]}, 
           'title_string');
@@ -7097,7 +7098,6 @@ sub output($$)
 
   # copying comment
   if ($self->{'extra'}->{'copying'}) {
-    print STDERR "DO copying_comment\n" if ($self->get_conf('DEBUG'));
     my $copying_comment = Texinfo::Convert::Text::convert(
      {'contents' => $self->{'extra'}->{'copying'}->{'contents'}}, 
      {Texinfo::Common::_convert_text_options($self)});
@@ -7111,7 +7111,6 @@ sub output($$)
     $self->{'documentdescription_string'} 
       = $self->get_conf('documentdescription');
   } elsif ($self->{'extra'}->{'documentdescription'}) {
-    print STDERR "DO documentdescription\n" if ($self->get_conf('DEBUG'));
     $self->{'documentdescription_string'} 
       = $self->convert_tree_new_formatting_context(
        {'type' => '_string',
@@ -7130,10 +7129,30 @@ sub output($$)
 
   if ($self->get_conf('HTML_MATH')
         and $self->get_conf('HTML_MATH') eq 'mathjax') {
-    $self->{'jslicenses'}->{'tex-svg.js'} =
+    # See https://www.gnu.org/licenses/javascript-labels.html
+    #
+    # The link to the source for mathjax does not strictly follow the advice
+    # there: instead we link to instructions for obtaining the full source in
+    # its preferred form of modification.
+
+    my ($mathjax_script, $mathjax_source);
+
+    $mathjax_script = $self->get_conf('MATHJAX_SCRIPT');
+    if (!$mathjax_script) {
+      $mathjax_script = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js';
+      $self->set_conf('MATHJAX_SCRIPT', $mathjax_script);
+    }
+
+    $mathjax_source = $self->get_conf('MATHJAX_SOURCE');
+    if (!$mathjax_source) {
+      $mathjax_source = 'http://docs.mathjax.org/en/latest/web/hosting.html#getting-mathjax-via-git';
+      $self->set_conf('MATHJAX_SOURCE', $mathjax_source);
+    }
+
+    $self->{'jslicenses'}->{$mathjax_script} =
         [ 'Apache License, Version 2.0.',
           'https://www.apache.org/licenses/LICENSE-2.0',
-          'mathjax-with-dependencies.tar.xz' ]; #FIXME
+          $mathjax_source ];
   }
 
   # FIXME here call _unset_global_multiple_commands?  Problem is
