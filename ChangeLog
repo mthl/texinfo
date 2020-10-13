@@ -1,5 +1,18 @@
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	URL line breaking.
+	
+	* doc/texinfo.tex (\urefbreak): Temporarily set \pretolerance
+	to a negative value.
+	\urefallowbreak: Increase value of penalty.
+	* doc/texinfo-tex-test.texi (URL line breaking): Add another
+	example.
+	(Nested URL): New section.
+	
+	Substandard URL line breaking reported by Werner Lemberg.
+
+2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	JS_WEBLABELS and JS_WEBLABELS_FILE
 	
 	* tp/Texinfo/Common.pm (@variable_string_settables):

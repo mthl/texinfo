@@ -1719,6 +1719,11 @@ par
 Some use of @code{@@url}.  Ragged-right output should only be used where
 necessary.
 
+In a different way, the full range of colors defined for
+@uref{https://en.wikipedia.org/wiki/X11_color_names, defined for X11}
+can be accessed by using the Scheme function @code{x11-color}.
+That function takes one argument.
+
 see the 
 @url{https://www.gnu.org/software/libc/manual/html_node/Message-catalogs-with-gettext.html} 
 
@@ -1753,6 +1758,28 @@ first part of the URL: blah blah blah blah blah blah blah blah.
 @url{https://www.1234567890123456789012345678901234.invalid}.
 Text to test the justification of the line containing the last part
 of the URL: blah blah blah blah blah blah blah blah.
+
+@chapter Nested URL
+
+In @command{@@lisp}
+
+@lisp
+one
+@url{www.gnu.org}
+three
+four
+
+six
+
+
+nine @url{http://example.com/} nine
+@end lisp
+
+in footnote@footnote{see @url{http://example.com/}.}. after footnote
+
+next para.
+
+next para.
 
 
 
