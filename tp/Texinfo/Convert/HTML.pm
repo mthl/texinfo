@@ -977,6 +977,8 @@ my %defaults = (
   'INLINE_CSS_STYLE'     => 0,
 # if set, no css is used.
   'NO_CSS'               => 0,
+  'JS_WEBLABELS'	 => 'generate',
+  'JS_WEBLABELS_FILE'	 => 'js_licenses.html', # no clash with node name
 # if set, use node anchors for sections targets
   'USE_NODE_TARGET'      => 1,
   'OPEN_QUOTE_SYMBOL'    => '&lsquo;',
@@ -1008,15 +1010,6 @@ my %defaults = (
                              'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'NodeUp', 'NodeNext', 'NodePrev'],
-# The following are set to SECTION_BUTTONS below
-#  'TOP_BUTTONS'          => ['Back', 'Forward', ' ',
-#                             'Contents', 'Index', 'About'],
-#
-#  'MISC_BUTTONS'         => [ 'Top', 'Contents', 'Index', 'About' ],
-#  'CHAPTER_BUTTONS'      => [ 'FastBack', 'FastForward', ' ',
-#                              ' ', ' ', ' ', ' ',
-#                              'Top', 'Contents', 'Index', 'About', ],
-#  'SECTION_FOOTER_BUTTONS' => [ 'FastBack', 'Back', 'Up', 'Forward', 'FastForward' ],
   'NODE_FOOTER_BUTTONS'  => [[ 'NodeNext', \&_default_node_direction_footer ],
                              [ 'NodePrev', \&_default_node_direction_footer ],
                              [ 'NodeUp', \&_default_node_direction_footer ],
@@ -6274,13 +6267,17 @@ sub _default_end_file($)
   my $pre_body_close = $self->get_conf('PRE_BODY_CLOSE');
   $pre_body_close = '' if (!defined($pre_body_close));
 
-  if (defined($self->{'jslicenses'})) {
+  my $setting = $self->get_conf('JS_WEBLABELS');
+  my $path = $self->get_conf('JS_WEBLABELS_FILE');
+  if ($setting and $path
+        and ($setting eq 'generate' and defined($self->{'jslicenses'})
+              or $setting eq 'reference')) {
     $pre_body_close .=
-'<a href="js_licenses.html" rel="jslicense"><small>'
+"<a href='$path' rel='jslicense'><small>"
 .$self->convert_tree($self->gdt('JavaScript license information'))
 .'</small></a>';
-
   }
+
   return "$program_text
 
 $pre_body_close
@@ -6665,11 +6662,17 @@ EOT
   }
 }
 
-# TODO: Need to have config vars for:
-#   * MathJax source code location
-#   * whether to output js_licenses.html or to refer to an existing file
 sub _do_jslicenses_file {
   my $self = shift;
+
+  my $setting = $self->get_conf('JS_WEBLABELS');
+  my $path = $self->get_conf('JS_WEBLABELS_FILE');
+
+  # Possible settings:
+  #   'generate' - create file at JS_WEBLABELS_FILE
+  #   'reference' - reference file at JS_WEBLABELS_FILE but do not create it
+  #   'omit' - do nothing
+  return if (!$setting or $setting ne 'generate');
 
   my $a = '';
   $a .= '<!DOCTYPE html>
@@ -6689,8 +6692,13 @@ sub _do_jslicenses_file {
 
   $a .= "</body></html>\n";
 
-  my $license_file = File::Spec->catdir($self->{'destination_directory'}, 
-                                 'js_licenses.html');
+  if (File::Spec->file_name_is_absolute($path) or $path =~ /^[A-Za-z]*:/) {
+    $self->document_warn(sprintf(
+__("cannot use absolute path or URL `%s' for JS_WEBLABELS_FILE when generating web labels file"), $path));
+    return;
+  }
+  my $license_file = File::Spec->catdir($self->{'destination_directory'},
+                                        $path);
   my $fh = $self->Texinfo::Common::open_out($license_file);
   if (defined($fh)) {
     print $fh $a;

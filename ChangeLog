@@ -1,5 +1,17 @@
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	JS_WEBLABELS and JS_WEBLABELS_FILE
+	
+	* tp/Texinfo/Common.pm (@variable_string_settables):
+	Add JS_WEBLABELS and JSWEBLABELS_FILE.
+	* tp/Texinfo/Convert/HTML.pm (%defaults): Provide default values.
+	(_do_jslicenses_file): Create this file according to the values of
+	these variables.
+	(_default_end_file): Output link to jslicense file depending on the
+	values of these variables.
+
+2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* TODO: Update with some bugs.
 
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
