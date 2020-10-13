@@ -2532,6 +2532,10 @@ key bindings, you must supply enough new key bindings to enable all
 necessary actions.  Failure to bind any key to the @code{quit} command,
 for example, can lead to frustration.
 
+Note that some keys (such as @key{C-c}) have special meanings
+to terminals, and any bindings for these would not be effective.
+@xref{Special Characters,,, coreutils, GNU Coreutils}.
+
 The order in which key bindings are defined in the @file{.infokey} file is
 not important, except that the command summary produced by the
 @code{get-help-window} command only displays the @emph{first} key that

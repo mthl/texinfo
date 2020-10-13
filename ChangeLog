@@ -1,5 +1,10 @@
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/info-stnd.texi (infokey format):
+	Add note that you can't effectively bind C-c.
+
+2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (The Echo Area): Remove mention of using
 	? for completions.
 
