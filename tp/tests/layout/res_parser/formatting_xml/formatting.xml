@@ -282,6 +282,18 @@ Note, the note
 @quotation @*
 @end quotation
 
+@smallquotation 
+A small quot---ation
+@end smallquotation
+
+@smallquotation Note
+A small Note
+@end smallquotation
+
+@smallquotation something, other thing
+something, other thing
+@end smallquotation
+
 @itemize
 @item i--temize
 @end itemize
@@ -998,6 +1010,18 @@ After clickstyle &result;
 <quotation spaces=" " endspaces=" "><quotationtype>&linebreak;</quotationtype>
 </quotation>
 
+<smallquotation endspaces=" "> 
+<para>A small quot&textmdash;ation
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>A small Note
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>something, other thing
+</para></smallquotation>
+
 <itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
@@ -1707,6 +1731,18 @@ After clickstyle &result;
 
 <quotation spaces=" " endspaces=" "><quotationtype>&linebreak;</quotationtype>
 </quotation>
+
+<smallquotation endspaces=" "> 
+<para>A small quot&textmdash;ation
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>A small Note
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>something, other thing
+</para></smallquotation>
 
 <itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
@@ -2418,6 +2454,18 @@ After clickstyle &result;
 <quotation spaces=" " endspaces=" "><quotationtype>&linebreak;</quotationtype>
 </quotation>
 
+<smallquotation endspaces=" "> 
+<para>A small quot&textmdash;ation
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>A small Note
+</para></smallquotation>
+
+<smallquotation spaces=" " endspaces=" ">
+<para>something, other thing
+</para></smallquotation>
+
 <itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><para>i&textndash;temize
 </para></listitem></itemize>
@@ -3121,6 +3169,18 @@ After clickstyle &result;
 <pre xml:space="preserve">
 </pre><quotation spaces=" " endspaces=" "><quotationtype>&linebreak;</quotationtype>
 </quotation>
+<pre xml:space="preserve">
+</pre><smallquotation endspaces=" "> 
+<pre xml:space="preserve">A small quot---ation
+</pre></smallquotation>
+<pre xml:space="preserve">
+</pre><smallquotation spaces=" " endspaces=" ">
+<pre xml:space="preserve">A small Note
+</pre></smallquotation>
+<pre xml:space="preserve">
+</pre><smallquotation spaces=" " endspaces=" ">
+<pre xml:space="preserve">something, other thing
+</pre></smallquotation>
 <pre xml:space="preserve">
 </pre><itemize commandarg="bullet" endspaces=" "><itemprepend>&bullet;</itemprepend>
 <listitem spaces=" "><prepend>&bullet;</prepend><pre xml:space="preserve">i--temize

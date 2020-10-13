@@ -251,6 +251,12 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
+<blockquote><para>A small quot&#8212;ation
+</para></blockquote>
+<note><para>A small Note
+</para></note>
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</para></blockquote>
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -859,6 +865,12 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
+<blockquote><para>A small quot&#8212;ation
+</para></blockquote>
+<note><para>A small Note
+</para></note>
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</para></blockquote>
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -1468,6 +1480,12 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
+<blockquote><para>A small quot&#8212;ation
+</para></blockquote>
+<note><para>A small Note
+</para></note>
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</para></blockquote>
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -2077,6 +2095,12 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
+<blockquote><para>A small quot&#8212;ation
+</para></blockquote>
+<note><para>A small Note
+</para></note>
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</para></blockquote>
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -2685,6 +2709,12 @@ After clickstyle &#8658;
 <blockquote></blockquote>
 <blockquote></blockquote>
 <blockquote></blockquote>
+<blockquote><para>A small quot&#8212;ation
+</para></blockquote>
+<note><para>A small Note
+</para></note>
+<blockquote><para><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</para></blockquote>
 <itemizedlist><listitem><para>i&#8211;temize
 </para></listitem></itemizedlist>
 <itemizedlist><listitem><para>+ i&#8211;tem +
@@ -3289,6 +3319,12 @@ After clickstyle &#8658;
 </screen><blockquote></blockquote><screen>
 </screen><blockquote></blockquote><screen>
 </screen><blockquote></blockquote><screen>
+</screen><blockquote><screen>A small quot---ation
+</screen></blockquote><screen>
+</screen><note><screen>A small Note
+</screen></note><screen>
+</screen><blockquote><screen><emphasis role="bold">something, other thing:</emphasis> something, other thing
+</screen></blockquote><screen>
 </screen><itemizedlist><listitem><screen>i--temize
 </screen></listitem></itemizedlist><screen>
 </screen><itemizedlist><listitem><screen>+ i--tem +
