@@ -1,3 +1,8 @@
+2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/info-stnd.texi (The Echo Area): Remove mention of using
+	? for completions.
+
 2020-10-12  Patrice Dumas  <pertusus@free.fr>
 
 	Add mathjax test in layout coverage tests

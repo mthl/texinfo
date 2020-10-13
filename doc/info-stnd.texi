@@ -1622,8 +1622,7 @@ Accept (or forces completion of) the current input line.
 @kindex C-q, in the echo area
 @findex echo-area-quoted-insert
 Insert the next character verbatim.  This is how you can insert control
-characters into a search string, for example, or the @samp{?} character
-when Info prompts with completion.
+characters into a search string.
 
 @item @kbd{M-TAB} (@code{echo-area-tab-insert})
 @itemx @kbd{Shift-@key{TAB}} (on DOS/Windows only)
