@@ -1,5 +1,9 @@
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* TODO: Update with some bugs.
+
+2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/info-stnd.texi (infokey format):
 	Add note that you can't effectively bind C-c.
 

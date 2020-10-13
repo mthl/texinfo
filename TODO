@@ -23,6 +23,10 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Glossary/general definition support (dumas msg 28 Nov 2003 17:09:57 +0100).
 
 * Makeinfo:
+  - upgrade bundled libintl-perl once this issue is resolved:
+      https://github.com/gflohr/libintl-perl/issues/5
+  - print diffs for failed test under tp/tests (but don't print old
+    diffs if the program doesn't finish)
   - Improve the HTML customization API.
   - HTML: support thumbnails.
   - HTML: have a library of different CSS styles.
@@ -58,6 +62,13 @@ If you are interested in working on any of these, email bug-texinfo@gnu.org.
   - Documentation of the HTML customization is missing.
 
 * Info:
+  - For 'u' command, position cursor on the menu entry for the node
+    we just came from
+  - If K is describe-key, K M-left changes the node as M-left is
+    analysed as multiple keys
+  - unnecessary screen redrawing when scroll-last-node=Stop and you
+    try to scroll at the bottom of the last node
+  - a line continuation backslash sometimes flickers when moving a cursor
   - Perhaps comply with LANGUAGE setting on a per-node basis, to allow
     incremental translation of Texinfo files.
   - Display images when running under X, as Emacs 22+ can.
