@@ -183,7 +183,7 @@ util/srclist-txi          # for pretest, to sync files with other sources
 
 - Official releases only:
 version and date in NEWS.
-version number in texi2dvi, texi2pdf, txirefcard.tex.
+version number in texi2any.pl, texi2dvi, texi2pdf, txirefcard.tex.
 (cd tp && maintain/regenerate_documentlanguages.pl)
   -- regenerates tp/Texinfo/Documentlanguages.pm
 
