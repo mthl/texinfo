@@ -98,7 +98,11 @@ $result_trees{'ampchar'} = {
                   'extra' => {
                     'def_role' => 'arg'
                   },
-                  'line_nr' => {},
+                  'line_nr' => {
+                    'file_name' => '',
+                    'line_nr' => 1,
+                    'macro' => ''
+                  },
                   'parent' => {}
                 },
                 {
@@ -155,7 +159,11 @@ $result_trees{'ampchar'} = {
             },
             'original_def_cmdname' => 'defop'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -194,7 +202,11 @@ $result_trees{'ampchar'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -273,7 +285,6 @@ $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[6]
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'line_nr'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[8]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[9]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0];
@@ -286,13 +297,11 @@ $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[2] = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1];
 $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[0];
 $result_trees{'ampchar'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[1];
-$result_trees{'ampchar'}{'contents'}[0]{'line_nr'} = $result_trees{'ampchar'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'ampchar'}{'contents'}[0]{'parent'} = $result_trees{'ampchar'};
 $result_trees{'ampchar'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
 $result_trees{'ampchar'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'ampchar'}{'contents'}[1];
@@ -329,6 +338,9 @@ $result_errors{'ampchar'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'ampchar'} = {};
 
 
 

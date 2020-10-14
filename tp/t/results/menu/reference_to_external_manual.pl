@@ -168,7 +168,9 @@ $result_trees{'reference_to_external_manual'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -210,7 +212,7 @@ $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'con
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'}{'contents'}[1];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'reference_to_external_manual'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'reference_to_external_manual'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'reference_to_external_manual'}{'contents'}[1]{'parent'} = $result_trees{'reference_to_external_manual'};
 
 $result_texis{'reference_to_external_manual'} = '
@@ -281,6 +283,9 @@ $result_menus{'reference_to_external_manual'} = {
 };
 
 $result_errors{'reference_to_external_manual'} = [];
+
+
+$result_floats{'reference_to_external_manual'} = {};
 
 
 

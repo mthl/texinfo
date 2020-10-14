@@ -228,6 +228,9 @@ $result_sectioning{'shortcontents_no_top'}{'section_childs'}[1]{'toplevel_prev'}
 $result_errors{'shortcontents_no_top'} = [];
 
 
+$result_floats{'shortcontents_no_top'} = {};
+
+
 
 $result_converted{'html'}->{'shortcontents_no_top'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

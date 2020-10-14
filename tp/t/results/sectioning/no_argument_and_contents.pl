@@ -116,7 +116,11 @@ $result_trees{'no_argument_and_contents'} = {
         'spaces_before_argument' => ' '
       },
       'level' => 1,
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 5,
+        'macro' => ''
+      },
       'number' => 1,
       'parent' => {}
     }
@@ -135,7 +139,6 @@ $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'contents'}[0]{'parent'} = $result_trees{'no_argument_and_contents'}{'contents'}[2];
-$result_trees{'no_argument_and_contents'}{'contents'}[2]{'line_nr'} = $result_trees{'no_argument_and_contents'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'no_argument_and_contents'}{'contents'}[2]{'parent'} = $result_trees{'no_argument_and_contents'};
 
 $result_texis{'no_argument_and_contents'} = '@contents
@@ -188,6 +191,9 @@ $result_sectioning{'no_argument_and_contents'}{'section_childs'}[0]{'section_chi
 $result_sectioning{'no_argument_and_contents'}{'section_childs'}[0]{'section_up'} = $result_sectioning{'no_argument_and_contents'};
 
 $result_errors{'no_argument_and_contents'} = [];
+
+
+$result_floats{'no_argument_and_contents'} = {};
 
 
 

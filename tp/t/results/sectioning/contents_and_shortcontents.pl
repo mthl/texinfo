@@ -747,6 +747,9 @@ $result_sectioning{'contents_and_shortcontents'}{'section_childs'}[2]{'toplevel_
 $result_errors{'contents_and_shortcontents'} = [];
 
 
+$result_floats{'contents_and_shortcontents'} = {};
+
+
 
 $result_converted{'plaintext'}->{'contents_and_shortcontents'} = 'top
 ***

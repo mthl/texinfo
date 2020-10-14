@@ -396,6 +396,9 @@ $result_errors{'definfoenclose'} = [
 ];
 
 
+$result_floats{'definfoenclose'} = {};
+
+
 
 $result_converted{'plaintext'}->{'definfoenclose'} = 'definfoenclose phoo,//,\\
 

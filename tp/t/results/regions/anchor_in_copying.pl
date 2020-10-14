@@ -264,7 +264,9 @@ $result_trees{'anchor_in_copying'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -319,7 +321,7 @@ $result_trees{'anchor_in_copying'}{'contents'}[1]{'contents'}[5]{'contents'}[1]{
 $result_trees{'anchor_in_copying'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'anchor_in_copying'}{'contents'}[1];
 $result_trees{'anchor_in_copying'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'anchor_in_copying'}{'contents'}[1];
 $result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'anchor_in_copying'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_in_copying'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_in_copying'}{'contents'}[1]{'parent'} = $result_trees{'anchor_in_copying'};
 
 $result_texis{'anchor_in_copying'} = '
@@ -369,6 +371,9 @@ $result_menus{'anchor_in_copying'} = {
 };
 
 $result_errors{'anchor_in_copying'} = [];
+
+
+$result_floats{'anchor_in_copying'} = {};
 
 
 

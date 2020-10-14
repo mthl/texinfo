@@ -214,6 +214,9 @@ $result_sectioning{'no_empty_line_between_headings'}{'section_childs'}[0]{'secti
 $result_errors{'no_empty_line_between_headings'} = [];
 
 
+$result_floats{'no_empty_line_between_headings'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_empty_line_between_headings'} = 'Top
 ***

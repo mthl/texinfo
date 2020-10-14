@@ -66,7 +66,9 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'a-node'
             },
             undef,
@@ -262,7 +264,9 @@ $result_trees{'unnumbered_top_without_node_sections'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'second'
             },
             undef,
@@ -352,7 +356,7 @@ $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[3]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[1]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[0];
 $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[0]{'contents'}[2]{'args'}[0];
@@ -383,7 +387,7 @@ $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[3]{'contents'}[2]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[3];
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'args'}[3]{'contents'}[1];
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[2];
 $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_top_without_node_sections'}[2]{'contents'}[1]{'args'}[0];
@@ -528,6 +532,9 @@ $result_errors{'unnumbered_top_without_node_sections'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'unnumbered_top_without_node_sections'} = {};
 
 
 $result_elements{'unnumbered_top_without_node_sections'} = [

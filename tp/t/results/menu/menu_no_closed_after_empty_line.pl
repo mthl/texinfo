@@ -181,4 +181,7 @@ $result_errors{'menu_no_closed_after_empty_line'} = [
 ];
 
 
+$result_floats{'menu_no_closed_after_empty_line'} = {};
+
+
 1;

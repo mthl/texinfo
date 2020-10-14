@@ -136,7 +136,9 @@ $result_trees{'footnote_no_number_separate'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -173,7 +175,7 @@ $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'contents'}[3]{'cont
 $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'contents'}[3]{'contents'}[2]{'parent'} = $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'contents'}[3];
 $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'footnote_no_number_separate'}{'contents'}[1];
 $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'footnote_no_number_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'footnote_no_number_separate'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_no_number_separate'}{'contents'}[1]{'parent'} = $result_trees{'footnote_no_number_separate'};
 
 $result_texis{'footnote_no_number_separate'} = '@node Top
@@ -209,6 +211,9 @@ $result_menus{'footnote_no_number_separate'} = {
 };
 
 $result_errors{'footnote_no_number_separate'} = [];
+
+
+$result_floats{'footnote_no_number_separate'} = {};
 
 
 

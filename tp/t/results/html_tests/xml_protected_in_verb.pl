@@ -156,6 +156,9 @@ $result_texts{'xml_protected_in_verb'} = '<a>
 $result_errors{'xml_protected_in_verb'} = [];
 
 
+$result_floats{'xml_protected_in_verb'} = {};
+
+
 
 $result_converted{'html'}->{'xml_protected_in_verb'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -202,7 +202,9 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -246,7 +248,7 @@ $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'co
 $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'contents'}[6]{'args'}[0]{'parent'} = $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'contents'}[6];
 $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'contents'}[6]{'parent'} = $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1];
 $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'default_cp_index_and_one_letter_syncodeindex'}{'contents'}[1]{'parent'} = $result_trees{'default_cp_index_and_one_letter_syncodeindex'};
 
 $result_texis{'default_cp_index_and_one_letter_syncodeindex'} = '@node Top
@@ -333,6 +335,9 @@ $result_indices{'default_cp_index_and_one_letter_syncodeindex'} = {
     }
   }
 };
+
+
+$result_floats{'default_cp_index_and_one_letter_syncodeindex'} = {};
 
 
 

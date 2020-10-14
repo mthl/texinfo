@@ -311,6 +311,9 @@ $result_sectioning{'contents_in_html_text'}{'section_childs'}[0]{'section_up'} =
 $result_errors{'contents_in_html_text'} = [];
 
 
+$result_floats{'contents_in_html_text'} = {};
+
+
 
 $result_converted{'html_text'}->{'contents_in_html_text'} = '<span id="top"></span><h1 class="top">top</h1>
 

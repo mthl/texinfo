@@ -78,6 +78,9 @@ $result_sectioning{'one_subsection'}{'section_childs'}[0]{'section_up'} = $resul
 $result_errors{'one_subsection'} = [];
 
 
+$result_floats{'one_subsection'} = {};
+
+
 
 $result_converted{'plaintext'}->{'one_subsection'} = '1 The subsection
 ----------------

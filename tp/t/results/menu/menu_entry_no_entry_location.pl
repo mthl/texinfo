@@ -366,6 +366,9 @@ $result_errors{'menu_entry_no_entry_location'} = [
 ];
 
 
+$result_floats{'menu_entry_no_entry_location'} = {};
+
+
 
 $result_converted{'plaintext'}->{'menu_entry_no_entry_location'} = '* Menu:
 

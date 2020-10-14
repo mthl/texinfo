@@ -56,7 +56,11 @@ $result_trees{'listoffloats_with_commands'} = {
               ],
               'cmdname' => '`',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 1,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -76,11 +80,21 @@ $result_trees{'listoffloats_with_commands'} = {
       'extra' => {
         'spaces_before_argument' => ' ',
         'type' => {
-          'content' => [],
+          'content' => [
+            {},
+            {},
+            {},
+            {},
+            {}
+          ],
           'normalized' => 'th@\'eor@`eme'
         }
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -93,12 +107,14 @@ $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3];
-$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'line_nr'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[4]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0];
-$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'};
-$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'line_nr'} = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[0] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[0];
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[1] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[1];
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[2] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[2];
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[3] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[3];
+$result_trees{'listoffloats_with_commands'}{'contents'}[0]{'extra'}{'type'}{'content'}[4] = $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'args'}[0]{'contents'}[4];
 $result_trees{'listoffloats_with_commands'}{'contents'}[0]{'parent'} = $result_trees{'listoffloats_with_commands'};
 
 $result_texis{'listoffloats_with_commands'} = '@listoffloats th@\'eor@`eme
@@ -108,6 +124,9 @@ $result_texis{'listoffloats_with_commands'} = '@listoffloats th@\'eor@`eme
 $result_texts{'listoffloats_with_commands'} = '';
 
 $result_errors{'listoffloats_with_commands'} = [];
+
+
+$result_floats{'listoffloats_with_commands'} = {};
 
 
 

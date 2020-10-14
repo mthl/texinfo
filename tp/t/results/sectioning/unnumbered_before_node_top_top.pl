@@ -101,7 +101,9 @@ $result_trees{'unnumbered_before_node_top_top'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'Top'
             }
           ],
@@ -180,7 +182,7 @@ $result_trees{'unnumbered_before_node_top_top'}[0]{'extra'}{'section'} = $result
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'args'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unnumbered_before_node_top_top'}[1]{'contents'}[1];
@@ -281,6 +283,9 @@ $result_errors{'unnumbered_before_node_top_top'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'unnumbered_before_node_top_top'} = {};
 
 
 $result_elements{'unnumbered_before_node_top_top'} = [

@@ -67,7 +67,11 @@ $result_trees{'commands_in_alt'} = {
       'extra' => {
         'input_perl_encoding' => 'utf-8'
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     },
     {
@@ -155,7 +159,11 @@ $result_trees{'commands_in_alt'} = {
               'extra' => {
                 'input_perl_encoding' => 'utf-8'
               },
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -220,7 +228,6 @@ $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'
 $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1];
 $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3];
 $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[0]{'line_nr'} = $result_trees{'commands_in_alt'}{'contents'}[0]{'args'}[3]{'contents'}[1]{'line_nr'};
 $result_trees{'commands_in_alt'}{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'};
 $result_trees{'commands_in_alt'}{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'};
 $result_trees{'commands_in_alt'}{'contents'}[2]{'parent'} = $result_trees{'commands_in_alt'};
@@ -235,7 +242,6 @@ $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'a
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1];
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3];
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'args'}[3]{'contents'}[1]{'line_nr'};
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1];
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1];
 $result_trees{'commands_in_alt'}{'contents'}[3]{'contents'}[1]{'parent'} = $result_trees{'commands_in_alt'}{'contents'}[3];
@@ -259,6 +265,9 @@ f--ile
 ';
 
 $result_errors{'commands_in_alt'} = [];
+
+
+$result_floats{'commands_in_alt'} = {};
 
 
 

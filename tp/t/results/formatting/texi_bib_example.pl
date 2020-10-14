@@ -3769,7 +3769,9 @@ $result_trees{'texi_bib_example'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -4036,7 +4038,9 @@ $result_trees{'texi_bib_example'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Introduction'
           }
         ],
@@ -4162,7 +4166,9 @@ $result_trees{'texi_bib_example'} = {
                     ],
                     'nodes_manuals' => [
                       {
-                        'node_content' => [],
+                        'node_content' => [
+                          {}
+                        ],
                         'normalized' => 'References'
                       }
                     ],
@@ -4429,7 +4435,11 @@ $result_trees{'texi_bib_example'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => 'bib-example.texi',
+            'line_nr' => 50,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -4920,7 +4930,7 @@ $result_trees{'texi_bib_example'}{'contents'}[0]{'parent'} = $result_trees{'texi
 $result_trees{'texi_bib_example'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[1]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[1];
 $result_trees{'texi_bib_example'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'texi_bib_example'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'texi_bib_example'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'texi_bib_example'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[2]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[2];
@@ -4960,7 +4970,7 @@ $result_trees{'texi_bib_example'}{'contents'}[2]{'parent'} = $result_trees{'texi
 $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[3];
 $result_trees{'texi_bib_example'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'texi_bib_example'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'texi_bib_example'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'texi_bib_example'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[3]{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[4]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4];
@@ -4977,7 +4987,7 @@ $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'args'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'args'}[0]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'};
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'extra'}{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
-$result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'extra'}{'node_content'};
+$result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'args'}[0]{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'label'}{'parent'} = $result_trees{'texi_bib_example'};
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'extra'}{'node_argument'}{'node_content'}[0] = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[4]{'contents'}[1];
@@ -5015,7 +5025,6 @@ $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1];
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'contents'}[2];
-$result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'line_nr'} = $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[1]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6];
 $result_trees{'texi_bib_example'}{'contents'}[6]{'contents'}[2]{'parent'} = $result_trees{'texi_bib_example'}{'contents'}[6];
 $result_trees{'texi_bib_example'}{'contents'}[6]{'parent'} = $result_trees{'texi_bib_example'};
@@ -5583,6 +5592,9 @@ $result_errors{'texi_bib_example'} = [
 ];
 
 
+$result_floats{'texi_bib_example'} = {};
+
+
 
 $result_converted{'html'}->{'texi_bib_example'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -5677,6 +5689,14 @@ ul.no-bullet {list-style: none}
 </tr></table>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#Introduction">1 Introduction</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><td align="left" valign="top"><a href="#References">2 References</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+<tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
+</pre></th></tr></table>
 
 <hr size="6">
 <span id="Introduction"></span><table class="header" cellpadding="1" cellspacing="1" border="0">

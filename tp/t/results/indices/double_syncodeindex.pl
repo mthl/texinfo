@@ -266,7 +266,9 @@ $result_trees{'double_syncodeindex'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -316,7 +318,7 @@ $result_trees{'double_syncodeindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'c
 $result_trees{'double_syncodeindex'}{'contents'}[1]{'contents'}[5]{'args'}[0]{'parent'} = $result_trees{'double_syncodeindex'}{'contents'}[1]{'contents'}[5];
 $result_trees{'double_syncodeindex'}{'contents'}[1]{'contents'}[5]{'parent'} = $result_trees{'double_syncodeindex'}{'contents'}[1];
 $result_trees{'double_syncodeindex'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'double_syncodeindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'double_syncodeindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'double_syncodeindex'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'double_syncodeindex'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'double_syncodeindex'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'double_syncodeindex'}{'contents'}[1]{'parent'} = $result_trees{'double_syncodeindex'};
 
 $result_texis{'double_syncodeindex'} = '@syncodeindex cp fn
@@ -415,6 +417,9 @@ $result_indices{'double_syncodeindex'} = {
     }
   }
 };
+
+
+$result_floats{'double_syncodeindex'} = {};
 
 
 

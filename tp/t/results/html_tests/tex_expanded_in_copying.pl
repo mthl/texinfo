@@ -157,6 +157,9 @@ $result_texts{'tex_expanded_in_copying'} = '';
 $result_errors{'tex_expanded_in_copying'} = [];
 
 
+$result_floats{'tex_expanded_in_copying'} = {};
+
+
 
 $result_converted{'html'}->{'tex_expanded_in_copying'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

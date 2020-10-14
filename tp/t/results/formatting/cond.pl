@@ -305,7 +305,9 @@ $result_trees{'cond'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -378,7 +380,7 @@ $result_trees{'cond'}{'contents'}[1]{'contents'}[14]{'contents'}[0]{'parent'} = 
 $result_trees{'cond'}{'contents'}[1]{'contents'}[14]{'parent'} = $result_trees{'cond'}{'contents'}[1];
 $result_trees{'cond'}{'contents'}[1]{'contents'}[15]{'parent'} = $result_trees{'cond'}{'contents'}[1];
 $result_trees{'cond'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'cond'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'cond'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'cond'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'cond'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'cond'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'cond'}{'contents'}[1]{'parent'} = $result_trees{'cond'};
 $result_trees{'cond'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'cond'}{'contents'}[2];
 $result_trees{'cond'}{'contents'}[2]{'parent'} = $result_trees{'cond'};
@@ -446,6 +448,9 @@ $result_menus{'cond'} = {
 };
 
 $result_errors{'cond'} = [];
+
+
+$result_floats{'cond'} = {};
 
 
 

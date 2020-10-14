@@ -182,6 +182,9 @@ $result_errors{'heading_in_footnote'} = [
 ];
 
 
+$result_floats{'heading_in_footnote'} = {};
+
+
 
 $result_converted{'plaintext'}->{'heading_in_footnote'} = 'T(1)
 

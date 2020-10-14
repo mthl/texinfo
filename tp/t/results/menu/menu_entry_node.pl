@@ -466,6 +466,9 @@ $result_errors{'menu_entry_node'} = [
 ];
 
 
+$result_floats{'menu_entry_node'} = {};
+
+
 
 $result_converted{'plaintext'}->{'menu_entry_node'} = '* Menu:
 

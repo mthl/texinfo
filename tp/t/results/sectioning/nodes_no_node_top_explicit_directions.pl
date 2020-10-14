@@ -200,7 +200,9 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'first'
             },
             undef,
@@ -292,7 +294,9 @@ $result_trees{'nodes_no_node_top_explicit_directions'} = [
           ],
           'nodes_manuals' => [
             {
-              'node_content' => [],
+              'node_content' => [
+                {}
+              ],
               'normalized' => 'second-node'
             },
             undef,
@@ -359,7 +363,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'conten
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'contents'}[3]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'extra'}{'nodes_manuals'}[3]{'manual_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'args'}[3]{'contents'}[1];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'extra'}{'element_command'} = $result_trees{'nodes_no_node_top_explicit_directions'}[0]{'contents'}[1];
@@ -374,7 +378,7 @@ $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
-$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'node_content'};
+$result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[2]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[2]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'extra'}{'nodes_manuals'}[3]{'node_content'}[0] = $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'args'}[3]{'contents'}[0];
 $result_trees{'nodes_no_node_top_explicit_directions'}[1]{'contents'}[0]{'parent'} = $result_trees{'nodes_no_node_top_explicit_directions'}[1];
@@ -467,6 +471,9 @@ $result_menus{'nodes_no_node_top_explicit_directions'} = {
 $result_menus{'nodes_no_node_top_explicit_directions'}{'menu_child'}{'menu_up'} = $result_menus{'nodes_no_node_top_explicit_directions'};
 
 $result_errors{'nodes_no_node_top_explicit_directions'} = [];
+
+
+$result_floats{'nodes_no_node_top_explicit_directions'} = {};
 
 
 $result_elements{'nodes_no_node_top_explicit_directions'} = [

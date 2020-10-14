@@ -146,6 +146,9 @@ inew p after sp';
 $result_errors{'close_paragraph_command'} = [];
 
 
+$result_floats{'close_paragraph_command'} = {};
+
+
 
 $result_converted{'plaintext'}->{'close_paragraph_command'} = 'para
 in titlefont

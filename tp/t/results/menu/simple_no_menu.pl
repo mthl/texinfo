@@ -600,6 +600,9 @@ After menu.
 $result_errors{'simple_no_menu'} = [];
 
 
+$result_floats{'simple_no_menu'} = {};
+
+
 
 $result_converted{'plaintext'}->{'simple_no_menu'} = 'Before menu.
 

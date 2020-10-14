@@ -34,6 +34,9 @@ $result_texts{'one_line'} = 'AB
 $result_errors{'one_line'} = [];
 
 
+$result_floats{'one_line'} = {};
+
+
 
 $result_converted{'html'}->{'one_line'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

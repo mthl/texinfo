@@ -368,7 +368,9 @@ $result_trees{'texi_glossary'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -1110,7 +1112,9 @@ $result_trees{'texi_glossary'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'glossary'
           }
         ],
@@ -1180,7 +1184,7 @@ $result_trees{'texi_glossary'}{'contents'}[0]{'parent'} = $result_trees{'texi_gl
 $result_trees{'texi_glossary'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[1]{'args'}[0];
 $result_trees{'texi_glossary'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[1];
 $result_trees{'texi_glossary'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'texi_glossary'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'texi_glossary'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'texi_glossary'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'texi_glossary'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_glossary'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_glossary'}{'contents'}[1]{'parent'} = $result_trees{'texi_glossary'};
 $result_trees{'texi_glossary'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2]{'args'}[0];
 $result_trees{'texi_glossary'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[2];
@@ -1285,7 +1289,7 @@ $result_trees{'texi_glossary'}{'contents'}[2]{'parent'} = $result_trees{'texi_gl
 $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0];
 $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'texi_glossary'}{'contents'}[3];
 $result_trees{'texi_glossary'}{'contents'}[3]{'extra'}{'node_content'}[0] = $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'contents'}[0];
-$result_trees{'texi_glossary'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'texi_glossary'}{'contents'}[3]{'extra'}{'node_content'};
+$result_trees{'texi_glossary'}{'contents'}[3]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'texi_glossary'}{'contents'}[3]{'args'}[0]{'contents'}[0];
 $result_trees{'texi_glossary'}{'contents'}[3]{'parent'} = $result_trees{'texi_glossary'};
 $result_trees{'texi_glossary'}{'contents'}[4] = $result_trees{'texi_glossary'}{'contents'}[2]{'contents'}[3]{'contents'}[10]{'extra'}{'label'}{'parent'}{'parent'};
 
@@ -1562,6 +1566,9 @@ $result_errors{'texi_glossary'} = [
 ];
 
 
+$result_floats{'texi_glossary'} = {};
+
+
 
 $result_converted{'html'}->{'texi_glossary'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -1612,6 +1619,10 @@ ul.no-bullet {list-style: none}
 </tr></table>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#glossary">1 glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <p>The &lsquo;name1&rsquo;
  is used in many cases while

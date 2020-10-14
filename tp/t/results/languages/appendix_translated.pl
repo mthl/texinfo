@@ -73,7 +73,9 @@ $result_trees{'appendix_translated'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -190,7 +192,7 @@ $result_trees{'appendix_translated'}{'contents'}[0]{'parent'} = $result_trees{'a
 $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0];
 $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[1];
 $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'appendix_translated'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'appendix_translated'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'appendix_translated'}{'contents'}[1]{'parent'} = $result_trees{'appendix_translated'};
 $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0];
 $result_trees{'appendix_translated'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'appendix_translated'}{'contents'}[2];
@@ -285,6 +287,9 @@ $result_menus{'appendix_translated'} = {
 };
 
 $result_errors{'appendix_translated'} = [];
+
+
+$result_floats{'appendix_translated'} = {};
 
 
 

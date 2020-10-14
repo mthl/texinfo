@@ -150,6 +150,9 @@ aa
 $result_errors{'no_paragraph_commands'} = [];
 
 
+$result_floats{'no_paragraph_commands'} = {};
+
+
 
 $result_converted{'plaintext'}->{'no_paragraph_commands'} = '
 title font

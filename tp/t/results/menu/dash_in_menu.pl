@@ -248,6 +248,9 @@ $result_errors{'dash_in_menu'} = [
 ];
 
 
+$result_floats{'dash_in_menu'} = {};
+
+
 
 $result_converted{'plaintext'}->{'dash_in_menu'} = '* Menu:
 

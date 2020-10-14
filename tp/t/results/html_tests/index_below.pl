@@ -324,6 +324,9 @@ $result_sectioning{'index_below'}{'section_childs'}[0]{'section_up'} = $result_s
 $result_errors{'index_below'} = [];
 
 
+$result_floats{'index_below'} = {};
+
+
 $result_elements{'index_below'} = [
   {
     'extra' => {

@@ -73,7 +73,9 @@ $result_trees{'unknown_language'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -268,7 +270,7 @@ $result_trees{'unknown_language'}{'contents'}[0]{'parent'} = $result_trees{'unkn
 $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[1];
 $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_language'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unknown_language'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_language'}{'contents'}[1]{'parent'} = $result_trees{'unknown_language'};
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0];
 $result_trees{'unknown_language'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'unknown_language'}{'contents'}[2];
@@ -393,6 +395,9 @@ $result_errors{'unknown_language'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'unknown_language'} = {};
 
 
 

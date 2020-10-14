@@ -259,7 +259,9 @@ $result_trees{'index_entry_in_preformatted'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -315,7 +317,7 @@ $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'contents'}[1]{'cont
 $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'contents'}[1]{'contents'}[2];
 $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_preformatted'}{'contents'}[1];
 $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'index_entry_in_preformatted'}{'contents'}[1]{'parent'} = $result_trees{'index_entry_in_preformatted'};
 
 $result_texis{'index_entry_in_preformatted'} = '@node Top
@@ -356,6 +358,9 @@ $result_menus{'index_entry_in_preformatted'} = {
 };
 
 $result_errors{'index_entry_in_preformatted'} = [];
+
+
+$result_floats{'index_entry_in_preformatted'} = {};
 
 
 

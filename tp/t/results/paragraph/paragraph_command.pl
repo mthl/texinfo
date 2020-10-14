@@ -391,6 +391,9 @@ m1 email.
 $result_errors{'paragraph_command'} = [];
 
 
+$result_floats{'paragraph_command'} = {};
+
+
 
 $result_converted{'plaintext'}->{'paragraph_command'} = '@
 

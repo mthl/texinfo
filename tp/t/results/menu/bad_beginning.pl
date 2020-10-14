@@ -171,4 +171,7 @@ $result_errors{'bad_beginning'} = [
 ];
 
 
+$result_floats{'bad_beginning'} = {};
+
+
 1;

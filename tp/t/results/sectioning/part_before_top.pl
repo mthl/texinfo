@@ -157,6 +157,9 @@ $result_errors{'part_before_top'} = [
 ];
 
 
+$result_floats{'part_before_top'} = {};
+
+
 $result_elements{'part_before_top'} = [
   {
     'extra' => {

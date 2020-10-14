@@ -37,7 +37,9 @@ $result_trees{'verb_in_menu_description'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -268,7 +270,7 @@ $result_trees{'verb_in_menu_description'}{'contents'}[0]{'parent'} = $result_tre
 $result_trees{'verb_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[1]{'args'}[0];
 $result_trees{'verb_in_menu_description'}{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[1];
 $result_trees{'verb_in_menu_description'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'verb_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'verb_in_menu_description'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'verb_in_menu_description'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'verb_in_menu_description'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'verb_in_menu_description'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'verb_in_menu_description'}{'contents'}[1]{'parent'} = $result_trees{'verb_in_menu_description'};
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[2]{'args'}[0];
 $result_trees{'verb_in_menu_description'}{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'verb_in_menu_description'}{'contents'}[2];
@@ -406,6 +408,9 @@ $result_menus{'verb_in_menu_description'} = {
 };
 
 $result_errors{'verb_in_menu_description'} = [];
+
+
+$result_floats{'verb_in_menu_description'} = {};
 
 
 

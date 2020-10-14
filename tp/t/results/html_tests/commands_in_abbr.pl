@@ -59,7 +59,11 @@ $result_trees{'commands_in_abbr'} = {
           ],
           'cmdname' => 'abbr',
           'contents' => [],
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -141,7 +145,11 @@ $result_trees{'commands_in_abbr'} = {
               ],
               'cmdname' => 'abbr',
               'contents' => [],
-              'line_nr' => {},
+              'line_nr' => {
+                'file_name' => '',
+                'line_nr' => 4,
+                'macro' => ''
+              },
               'parent' => {}
             },
             {
@@ -204,7 +212,6 @@ $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'cont
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0];
-$result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[0];
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[0];
 $result_trees{'commands_in_abbr'}{'contents'}[0]{'parent'} = $result_trees{'commands_in_abbr'};
@@ -218,7 +225,6 @@ $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0];
-$result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'line_nr'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'args'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1];
 $result_trees{'commands_in_abbr'}{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'commands_in_abbr'}{'contents'}[2];
@@ -242,6 +248,9 @@ A (abbr -- b).
 ';
 
 $result_errors{'commands_in_abbr'} = [];
+
+
+$result_floats{'commands_in_abbr'} = {};
 
 
 

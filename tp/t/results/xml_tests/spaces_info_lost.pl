@@ -155,6 +155,9 @@ in verbatim @g
 $result_errors{'spaces_info_lost'} = [];
 
 
+$result_floats{'spaces_info_lost'} = {};
+
+
 
 $result_converted{'xml'}->{'spaces_info_lost'} = '<example spaces="  " endspaces="  "> 
 <pre xml:space="preserve">in bad example

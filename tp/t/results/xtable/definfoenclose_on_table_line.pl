@@ -264,6 +264,9 @@ $result_errors{'definfoenclose_on_table_line'} = [
 ];
 
 
+$result_floats{'definfoenclose_on_table_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'definfoenclose_on_table_line'} = ':item:
 :item x:

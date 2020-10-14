@@ -131,7 +131,9 @@ $result_trees{'anchor_zero'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -167,7 +169,7 @@ $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4]{'contents'}[0]{'paren
 $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4];
 $result_trees{'anchor_zero'}{'contents'}[1]{'contents'}[4]{'parent'} = $result_trees{'anchor_zero'}{'contents'}[1];
 $result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'anchor_zero'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'anchor_zero'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'anchor_zero'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'anchor_zero'}{'contents'}[1]{'parent'} = $result_trees{'anchor_zero'};
 
 $result_texis{'anchor_zero'} = '@node Top
@@ -203,6 +205,9 @@ $result_menus{'anchor_zero'} = {
 };
 
 $result_errors{'anchor_zero'} = [];
+
+
+$result_floats{'anchor_zero'} = {};
 
 
 

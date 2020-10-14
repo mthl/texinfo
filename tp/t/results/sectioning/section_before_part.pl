@@ -191,6 +191,9 @@ $result_errors{'section_before_part'} = [
 ];
 
 
+$result_floats{'section_before_part'} = {};
+
+
 
 $result_converted{'plaintext'}->{'section_before_part'} = '1 section
 =========

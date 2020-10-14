@@ -138,6 +138,9 @@ $result_sectioning{'footnote_no_node'}{'section_childs'}[0]{'section_up'} = $res
 $result_errors{'footnote_no_node'} = [];
 
 
+$result_floats{'footnote_no_node'} = {};
+
+
 
 $result_converted{'plaintext'}->{'footnote_no_node'} = 'top
 ***

@@ -131,6 +131,9 @@ $result_errors{'verbatim_in_brace_command'} = [
 ];
 
 
+$result_floats{'verbatim_in_brace_command'} = {};
+
+
 
 $result_converted{'plaintext'}->{'verbatim_in_brace_command'} = '\' \'
 in verbatim

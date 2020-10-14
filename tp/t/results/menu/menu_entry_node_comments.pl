@@ -526,6 +526,9 @@ $result_errors{'menu_entry_node_comments'} = [
 ];
 
 
+$result_floats{'menu_entry_node_comments'} = {};
+
+
 
 $result_converted{'plaintext'}->{'menu_entry_node_comments'} = '* Menu:
 

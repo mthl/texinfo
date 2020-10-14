@@ -319,6 +319,9 @@ $result_errors{'example_in_menu_comment'} = [
 ];
 
 
+$result_floats{'example_in_menu_comment'} = {};
+
+
 
 $result_converted{'plaintext'}->{'example_in_menu_comment'} = '* Menu:
 

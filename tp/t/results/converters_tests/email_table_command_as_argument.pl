@@ -134,7 +134,11 @@ $result_trees{'email_table_command_as_argument'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -157,7 +161,6 @@ $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'contents'}[1]{'
 $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_trees{'email_table_command_as_argument'}{'contents'}[0];
 $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'extra'}{'command_as_argument'} = $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0];
 $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'contents'}[1];
-$result_trees{'email_table_command_as_argument'}{'contents'}[0]{'line_nr'} = $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'email_table_command_as_argument'}{'contents'}[0]{'parent'} = $result_trees{'email_table_command_as_argument'};
 
 $result_texis{'email_table_command_as_argument'} = '@table @email
@@ -172,6 +175,9 @@ discussion
 ';
 
 $result_errors{'email_table_command_as_argument'} = [];
+
+
+$result_floats{'email_table_command_as_argument'} = {};
 
 
 

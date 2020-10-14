@@ -230,7 +230,11 @@ $result_trees{'unknown_region'} = {
             'end_command' => {},
             'spaces_before_argument' => ' '
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 5,
+            'macro' => ''
+          },
           'parent' => {}
         }
       ],
@@ -240,7 +244,9 @@ $result_trees{'unknown_region'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -287,10 +293,9 @@ $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'ar
 $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1];
 $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[1];
-$result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'contents'}[0]{'line_nr'};
 $result_trees{'unknown_region'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'unknown_region'}{'contents'}[1];
 $result_trees{'unknown_region'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'unknown_region'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'unknown_region'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'unknown_region'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'unknown_region'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'unknown_region'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'unknown_region'}{'contents'}[1]{'parent'} = $result_trees{'unknown_region'};
 
 $result_texis{'unknown_region'} = '@documentlanguage fr_NOWHERE
@@ -336,6 +341,9 @@ $result_errors{'unknown_region'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'unknown_region'} = {};
 
 
 

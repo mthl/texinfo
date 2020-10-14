@@ -387,4 +387,7 @@ $result_indices{'command_conditionals_user_defined'} = {
 };
 
 
+$result_floats{'command_conditionals_user_defined'} = {};
+
+
 1;

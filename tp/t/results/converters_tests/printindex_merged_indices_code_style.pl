@@ -537,7 +537,9 @@ $result_trees{'printindex_merged_indices_code_style'} = {
         ],
         'nodes_manuals' => [
           {
-            'node_content' => [],
+            'node_content' => [
+              {}
+            ],
             'normalized' => 'Top'
           }
         ],
@@ -626,7 +628,7 @@ $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[23]{'args'}[0]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[23];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'contents'}[23]{'parent'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'args'}[0]{'contents'}[0];
-$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'} = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'node_content'};
+$result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_content'}[0] = $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'printindex_merged_indices_code_style'}{'contents'}[1]{'parent'} = $result_trees{'printindex_merged_indices_code_style'};
 
 $result_texis{'printindex_merged_indices_code_style'} = '@node Top
@@ -750,6 +752,9 @@ $result_indices{'printindex_merged_indices_code_style'} = {
     }
   }
 };
+
+
+$result_floats{'printindex_merged_indices_code_style'} = {};
 
 
 

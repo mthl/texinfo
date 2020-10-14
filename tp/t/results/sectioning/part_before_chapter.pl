@@ -149,6 +149,9 @@ $result_sectioning{'part_before_chapter'}{'section_childs'}[0]{'section_up'} = $
 $result_errors{'part_before_chapter'} = [];
 
 
+$result_floats{'part_before_chapter'} = {};
+
+
 $result_elements{'part_before_chapter'} = [
   {
     'extra' => {

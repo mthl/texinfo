@@ -123,4 +123,7 @@ In included file.
 $result_errors{'include_after_empty_line_arg'} = [];
 
 
+$result_floats{'include_after_empty_line_arg'} = {};
+
+
 1;

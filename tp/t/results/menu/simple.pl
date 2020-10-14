@@ -619,6 +619,9 @@ $result_errors{'simple'} = [
 ];
 
 
+$result_floats{'simple'} = {};
+
+
 
 $result_converted{'plaintext'}->{'simple'} = 'Before menu.
 

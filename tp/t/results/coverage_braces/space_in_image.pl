@@ -113,7 +113,11 @@ $result_trees{'space_in_image'} = {
           'extra' => {
             'input_perl_encoding' => 'utf-8'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {}
         },
         {
@@ -141,7 +145,6 @@ $result_trees{'space_in_image'}{'contents'}[0]{'parent'} = $result_trees{'space_
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1];
-$result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'line_nr'} = $result_trees{'space_in_image'}{'contents'}[0]{'line_nr'};
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
 $result_trees{'space_in_image'}{'contents'}[1]{'parent'} = $result_trees{'space_in_image'};
@@ -152,6 +155,9 @@ $result_texis{'space_in_image'} = '@image{ a ,bb, cc,dd ,e }. @image{ f }.';
 $result_texts{'space_in_image'} = 'a. f.';
 
 $result_errors{'space_in_image'} = [];
+
+
+$result_floats{'space_in_image'} = {};
 
 
 

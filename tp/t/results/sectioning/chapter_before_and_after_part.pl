@@ -251,6 +251,9 @@ $result_sectioning{'chapter_before_and_after_part'}{'section_childs'}[1]{'sectio
 $result_errors{'chapter_before_and_after_part'} = [];
 
 
+$result_floats{'chapter_before_and_after_part'} = {};
+
+
 $result_elements{'chapter_before_and_after_part'} = [
   {
     'extra' => {

@@ -711,6 +711,9 @@ $result_errors{'menu_entry_name_comment'} = [
 ];
 
 
+$result_floats{'menu_entry_name_comment'} = {};
+
+
 
 $result_converted{'plaintext'}->{'menu_entry_name_comment'} = '* Menu:
 

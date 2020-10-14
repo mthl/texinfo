@@ -172,7 +172,11 @@ $result_trees{'footnote_in_center'} = {
                             'end_command' => {},
                             'spaces_before_argument' => ' '
                           },
-                          'line_nr' => {},
+                          'line_nr' => {
+                            'file_name' => '',
+                            'line_nr' => 5,
+                            'macro' => ''
+                          },
                           'parent' => {}
                         },
                         {
@@ -247,7 +251,11 @@ $result_trees{'footnote_in_center'} = {
       'extra' => {
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -275,7 +283,6 @@ $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'command_as_argument'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'extra'}{'end_command'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'contents'}[1];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'line_nr'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'args'}[0]{'contents'}[0]{'line_nr'};
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'args'}[0]{'contents'}[2]{'contents'}[2];
@@ -286,7 +293,6 @@ $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'ar
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[2]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0];
 $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'parent'} = $result_trees{'footnote_in_center'}{'contents'}[0];
-$result_trees{'footnote_in_center'}{'contents'}[0]{'line_nr'} = $result_trees{'footnote_in_center'}{'contents'}[0]{'args'}[0]{'contents'}[1]{'line_nr'};
 $result_trees{'footnote_in_center'}{'contents'}[0]{'parent'} = $result_trees{'footnote_in_center'};
 
 $result_texis{'footnote_in_center'} = '@center Centered text with a footnote@footnote{This footnote
@@ -306,6 +312,9 @@ $result_texts{'footnote_in_center'} = 'Centered text with a footnote and text af
 ';
 
 $result_errors{'footnote_in_center'} = [];
+
+
+$result_floats{'footnote_in_center'} = {};
 
 
 

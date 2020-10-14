@@ -421,6 +421,9 @@ $result_errors{'text_on_command_line'} = [
 ];
 
 
+$result_floats{'text_on_command_line'} = {};
+
+
 
 $result_converted{'plaintext'}->{'text_on_command_line'} = '
      normal text

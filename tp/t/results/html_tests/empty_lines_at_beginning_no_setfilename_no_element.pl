@@ -131,6 +131,9 @@ Some text.
 $result_errors{'empty_lines_at_beginning_no_setfilename_no_element'} = [];
 
 
+$result_floats{'empty_lines_at_beginning_no_setfilename_no_element'} = {};
+
+
 
 $result_converted{'html'}->{'empty_lines_at_beginning_no_setfilename_no_element'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

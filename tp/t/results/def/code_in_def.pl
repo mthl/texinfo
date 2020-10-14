@@ -145,9 +145,7 @@ $result_trees{'code_in_def'} = {
               'content' => [
                 {}
               ],
-              'content_normalized' => [
-                {}
-              ],
+              'content_normalized' => [],
               'in_code' => 1,
               'index_at_command' => 'deftypefn',
               'index_name' => 'fn',
@@ -157,7 +155,11 @@ $result_trees{'code_in_def'} = {
             },
             'original_def_cmdname' => 'deftypefn'
           },
-          'line_nr' => {},
+          'line_nr' => {
+            'file_name' => '',
+            'line_nr' => 1,
+            'macro' => ''
+          },
           'parent' => {},
           'type' => 'def_line'
         },
@@ -239,7 +241,11 @@ $result_trees{'code_in_def'} = {
         'end_command' => {},
         'spaces_before_argument' => ' '
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -266,8 +272,7 @@ $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'type'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0];
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[4];
-$result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'line_nr'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'line_nr'};
+$result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'code_in_def'}{'contents'}[0];
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[1]{'args'}[0];
@@ -280,7 +285,6 @@ $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'parent'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[2];
 $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'code_in_def'}{'contents'}[0];
 $result_trees{'code_in_def'}{'contents'}[0]{'extra'}{'end_command'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[2];
-$result_trees{'code_in_def'}{'contents'}[0]{'line_nr'} = $result_trees{'code_in_def'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[7]{'line_nr'};
 $result_trees{'code_in_def'}{'contents'}[0]{'parent'} = $result_trees{'code_in_def'};
 
 $result_texis{'code_in_def'} = '@deftypefn Function int foo (@code{const std::vector<int>@&} bar)
@@ -304,6 +308,9 @@ $result_errors{'code_in_def'} = [
     'type' => 'warning'
   }
 ];
+
+
+$result_floats{'code_in_def'} = {};
 
 
 

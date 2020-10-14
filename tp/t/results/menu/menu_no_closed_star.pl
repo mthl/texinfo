@@ -90,4 +90,7 @@ $result_errors{'menu_no_closed_star'} = [
 ];
 
 
+$result_floats{'menu_no_closed_star'} = {};
+
+
 1;

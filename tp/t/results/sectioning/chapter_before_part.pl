@@ -164,6 +164,9 @@ $result_errors{'chapter_before_part'} = [
 ];
 
 
+$result_floats{'chapter_before_part'} = {};
+
+
 $result_elements{'chapter_before_part'} = [
   {
     'extra' => {

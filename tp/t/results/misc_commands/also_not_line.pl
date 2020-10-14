@@ -565,4 +565,7 @@ $result_errors{'also_not_line'} = [
 ];
 
 
+$result_floats{'also_not_line'} = {};
+
+
 1;

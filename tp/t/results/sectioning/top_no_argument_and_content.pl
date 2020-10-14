@@ -89,6 +89,9 @@ $result_sectioning{'top_no_argument_and_content'}{'section_childs'}[0]{'section_
 $result_errors{'top_no_argument_and_content'} = [];
 
 
+$result_floats{'top_no_argument_and_content'} = {};
+
+
 
 $result_converted{'plaintext'}->{'top_no_argument_and_content'} = 'A.
 ';

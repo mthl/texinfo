@@ -115,6 +115,9 @@ $result_texts{'image_in_paragraph'} = 'Para. aa. After image.
 $result_errors{'image_in_paragraph'} = [];
 
 
+$result_floats{'image_in_paragraph'} = {};
+
+
 
 $result_converted{'plaintext'}->{'image_in_paragraph'} = 'Para. Text for image out of paragraph..  After image.
 ';

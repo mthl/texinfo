@@ -94,7 +94,11 @@ $result_trees{'space_command_in_image'} = {
       'extra' => {
         'input_perl_encoding' => 'utf-8'
       },
-      'line_nr' => {},
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 1,
+        'macro' => ''
+      },
       'parent' => {}
     }
   ],
@@ -114,7 +118,6 @@ $result_trees{'space_command_in_image'}{'contents'}[2]{'args'}[1]{'parent'} = $r
 $result_trees{'space_command_in_image'}{'contents'}[2]{'args'}[2]{'parent'} = $result_trees{'space_command_in_image'}{'contents'}[2];
 $result_trees{'space_command_in_image'}{'contents'}[2]{'args'}[3]{'contents'}[0]{'parent'} = $result_trees{'space_command_in_image'}{'contents'}[2]{'args'}[3];
 $result_trees{'space_command_in_image'}{'contents'}[2]{'args'}[3]{'parent'} = $result_trees{'space_command_in_image'}{'contents'}[2];
-$result_trees{'space_command_in_image'}{'contents'}[2]{'line_nr'} = $result_trees{'space_command_in_image'}{'contents'}[0]{'line_nr'};
 $result_trees{'space_command_in_image'}{'contents'}[2]{'parent'} = $result_trees{'space_command_in_image'};
 
 $result_texis{'space_command_in_image'} = '@image{f--ile,,,@ } @image{f--ile,,,@:}';
@@ -123,6 +126,9 @@ $result_texis{'space_command_in_image'} = '@image{f--ile,,,@ } @image{f--ile,,,@
 $result_texts{'space_command_in_image'} = 'f--ile f--ile';
 
 $result_errors{'space_command_in_image'} = [];
+
+
+$result_floats{'space_command_in_image'} = {};
 
 
 
