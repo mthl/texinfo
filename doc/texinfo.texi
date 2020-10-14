@@ -543,6 +543,8 @@ Customization Variables
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
 * HTML:     HTML Customization Variables.
+* latex2html:  @command{latex2html} Customization Variables.
+* MathJax:  MathJax Customization Variables.
 * Other:    Other Customization Variables.
 
 Creating and Installing Info Files
@@ -16005,6 +16007,7 @@ The sections below give the details for each of these.
 * Commands: Customization Variables for @@-Commands.
 * Options:  Customization Variables and Options.
 * HTML:     HTML Customization Variables.
+* MathJax:  MathJax Customization Variables.
 * latex2html:  @command{latex2html} Customization Variables.
 * Other:    Other Customization Variables.
 @end menu
@@ -16298,6 +16301,12 @@ description.
 Use tables for header formatting rather than a simple
 @code{<div>} element; default false.
 
+@item HTML_MATH
+Method to use to render @code{@@math}.  This can be unset, set to
+@samp{mathjax} (@pxref{MathJax Customization Variables}),
+or set to @samp{l2h}, which has the same effect as setting @code{L2H}
+(@pxref{@command{latex2html} Customization Variables}).
+
 @item ICONS
 Use icons for the navigation panel; default false.
 
@@ -16452,6 +16461,36 @@ as the hyperlink.  If set to@tie{}0, use the node name if
 otherwise use the node name or section name depending on
 @code{USE_NODES}.  The default is @samp{undef}.
 
+@end vtable
+
+
+@node MathJax Customization Variables
+@subsection MathJax Customization Variables
+
+This table lists the customization variables which can be used when 
+MathJax is being used, which will be the case when @code{HTML_MATH}
+is set to @samp{mathjax}.
+
+@vtable @code
+@item MATHJAX_SCRIPT
+URL of the MathJax component file (e.g. @file{tex-svg.js}) you are using.
+@command{texi2any} provides a default value for this variable, but you
+are encouraged to host this file yourself on your website so that you are
+not dependent on others' hosting.
+
+@item MATHJAX_SOURCE
+A URL of the full source code in its preferred form for modification,
+or instructions for obtaining such source code, for the component file
+named by @code{MATHJAX_SCRIPT}.  `Preferred form for modification'
+means that this should not be in a `minified' form.  Used in the
+license labels page (@pxref{HTML Customization Variables}, under
+@code{JS_WEBLABELS}).
+
+Again, @command{texi2any} provides a default value for this variable,
+but you are encouraged to host the source code for MathJax and its
+dependencies yourself.  This is in order to make the source code
+available reliably, and to reduce you and your users' dependence on
+others' distribution systems.
 @end vtable
 
 
