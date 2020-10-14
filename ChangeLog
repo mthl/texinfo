@@ -1,5 +1,12 @@
 2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Customization Variables for @-Commands):
+	Remove @contents and @shortcontents, as it is not meaningful to
+	set these from the command line, even if they are viewed as
+	settings internally.
+
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Document JS_WEBLABELS and JS_WEBLABELS_FILE.
 	
 	* doc/texinfo.texi (HTML Customization Variables): Add

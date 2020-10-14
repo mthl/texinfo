@@ -16019,30 +16019,14 @@ The sections below give the details for each of these.
 Each of the following @@-commands has an associated customization
 variable with the same name (minus the leading @code{@@}):
 
-@smallexample
-@@allowcodebreaks @@clickstyle
-@@codequotebacktick @@codequoteundirected
-@@contents @@deftypefnnewline
-@@documentdescription @@documentencoding @@documentlanguage
-@@exampleindent @@firstparagraphindent
-@@footnotestyle @@frenchspacing
-@@kbdinputstyle @@novalidate
-@@paragraphindent @@setfilename
-@@shortcontents  @@urefbreakstyle
-@@xrefautomaticsectiontitle
-@end smallexample
-
-@c Relevant to TeX only.
-@c @@evenfooting   @@evenfootingmarks
-@c @@evenheading   @@evenheadingmarks
-@c @@everyfooting  @@everyfootingmarks
-@c @@everyheading  @@everyheadingmarks
-@c @@fonttextsize
-@c @@headings
-@c @@oddfooting    @@oddfootingmarks
-@c @@oddheading    @@oddheadingmarks
-@c @@pagesizes
-@c @@setchapternewpage
+@example
+@@allowcodebreaks       @@clickstyle        @@codequotebacktick
+@@codequoteundirected   @@deftypefnnewline  @@documentdescription
+@@documentencoding      @@documentlanguage  @@exampleindent
+@@firstparagraphindent  @@footnotestyle     @@frenchspacing
+@@kbdinputstyle         @@novalidate        @@paragraphindent
+@@setfilename           @@urefbreakstyle    @@xrefautomaticsectiontitle
+@end example
 
 Setting such a customization variable to a value @samp{foo} is similar
 to executing @code{@@@var{cmd} foo}.  It is not exactly the same,
