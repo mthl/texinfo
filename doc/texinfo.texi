@@ -16329,6 +16329,28 @@ similar @@-commands are located; default true.
 Put CSS directly in HTML elements rather than at the
 beginning of the output; default false.
 
+@item JS_WEBLABELS
+@itemx JS_WEBLABELS_FILE
+Specify how to use a @dfn{JavaScript license web labels} page to
+give licensing information and source code for any JavaScript used
+in the HTML files for the manual.
+(See @uref{https://www.gnu.org/licenses/javascript-labels.html}).
+
+With the value @samp{generate} (the default), generate a labels page
+at @code{JS_WEBLABELS_FILE}, and link to it in the HTML output files.
+Only do this if actually referencing JavaScript files (either with
+@code{HTML_MATH} set to @samp{mathjax}, or when using the experimental
+JS browsing interface when @code{INFO_JS_DIR} is set).  With this
+setting, @code{JS_WEBLABELS_FILE} must be a relative path.
+
+With the value @samp{reference}, unconditionally link to the labels
+file given by @code{JS_WEBLABELS_FILE} in the output, and do not
+generate a labels file.  This setting is useful if you separately
+maintain a single labels file for a larger website that includes
+your manual.
+
+With @samp{omit}, neither generate nor link to a labels file.
+
 @item KEEP_TOP_EXTERNAL_REF
 If set, do not ignore @samp{Top} as the first
 argument for an external ref to a manual, as is done by default.

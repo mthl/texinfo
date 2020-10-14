@@ -17,6 +17,7 @@ See the manual for detailed information.
       xrefautomaticsectiontitle customization variable)
     . MathJax support for display of math.  new variables HTML_MATH,
       MATHJAX_SCRIPT and MATHJAX_SOURCE.
+    . new variables JS_WEBLABELS and JS_WEBLABELS_FILE
     . Texinfo JS Interface (experimental)
 
 * texinfo.tex

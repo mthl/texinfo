@@ -1,5 +1,13 @@
 2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Document JS_WEBLABELS and JS_WEBLABELS_FILE.
+	
+	* doc/texinfo.texi (HTML Customization Variables): Add
+	JS_WEBLABELS and JS_WEBLABELS_FILE.
+	* NEWS: Same.
+
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Manual revisions.
 	
 	* doc/texinfo.texi (History, Reference Implementation):
