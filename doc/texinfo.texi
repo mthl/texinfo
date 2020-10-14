@@ -534,7 +534,6 @@ Format with @command{tex}/@command{texindex}
 * Invoking @command{texi2any}::           Running the translator from a shell.
 * @command{texi2any} Environment Variables::
 * @command{texi2any} Printed Output::     Calling @command{texi2dvi}.
-* Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
 * Invoking @command{pod2texi}::           Translating Perl pod to Texinfo.
@@ -14687,7 +14686,7 @@ Thus, the beginning of your file would look approximately like this:
 
 @noindent @code{@@novalidate} also turns off validation in
 @code{makeinfo}, just like its @code{--no-validate} option
-(@pxref{Pointer Validation}).
+(@pxref{Invoking @command{texi2any}}).
 
 Furthermore, you need not run @code{texindex} each time after you run
 @code{tex}.  The @code{tex} formatting command simply uses whatever
@@ -15251,7 +15250,6 @@ The rest of this chapter goes into the details.
 * Invoking @command{texi2any}::           Running the translator from a shell.
 * @command{texi2any} Environment Variables::
 * @command{texi2any} Printed Output::     Calling @command{texi2dvi}.
-* Pointer Validation::          How to check that pointers point somewhere.
 * Customization Variables::     Configuring @command{texi2any}.
 * Internationalization of Document Strings:: Translating program-inserted text.
 * Invoking @command{pod2texi}::           Translating Perl pod to Texinfo.
@@ -15649,16 +15647,43 @@ section, and appendix numbers as in printed manuals.  This works only
 with hierarchically structured manuals.  You should specify
 @code{--no-number-sections} if your manual is not normally structured.
 
-@item --no-pointer-validate
-@itemx --no-validate
-@opindex --no-pointer-validate
+@item --no-validate
+@itemx --no-pointer-validate
 @opindex --no-validate
-@cindex Pointer validation @subentry suppressing from command line
+@opindex --no-pointer-validate
+@cindex Pointer validation
+@anchor{Pointer Validation}@c
 Suppress the pointer-validation phase of @code{makeinfo}---a dangerous
 thing to do.  This can also be done with the @code{@@novalidate}
-command (@pxref{Use @TeX{}}).  Normally, consistency checks are made
-to ensure that cross-references can be resolved, etc.  @xref{Pointer
-Validation}.
+command (@pxref{Formatting Partial Documents}).
+
+If you do not suppress pointer validation, @code{makeinfo} will check the
+validity of cross-references and menus in the Texinfo file.
+
+If node pointers are implicitly determined, @code{makeinfo} checks
+that the tree constructed from the document's menus matches the
+tree constructed from the sectioning commands.  For example, if a
+chapter-level menu mentions nodes @var{n1} and @var{n2}, in that order,
+nodes @var{n1} and @var{n2} must be associated with @code{@@section}
+commands in the chapter.
+
+If node pointers are explicitly determined, here is the list of what
+is checked:
+
+@enumerate
+@item
+If a `Next', `Previous', or `Up' node reference is a reference to a
+node in the current file and is not an external reference such as to
+@file{(dir)}, then the referenced node must exist.
+
+@item
+Every node except the `Top' node must have an `Up' pointer.
+
+@item
+The node referenced by an `Up' pointer must itself reference the
+current node through a menu item, unless the node referenced by `Up'
+has the form @samp{(@var{file})}.
+@end enumerate
 
 @item --no-warn
 @opindex --no-warn
@@ -15962,50 +15987,6 @@ Variables}).  As you might guess, the default is @samp{texi2dvi}.
 
 @command{texi2any} itself does not generate any normal output when it
 invokes @command{texi2dvi}, only diagnostic messages.
-
-
-@node Pointer Validation
-@section Pointer Validation
-@cindex Pointer validation @subentry with @code{makeinfo}
-@cindex Validation of pointers
-
-If you do not suppress pointer validation with the
-@samp{--no-validate} option or the @code{@@novalidate} command in the
-source file (@pxref{Use @TeX{}}), @code{makeinfo} will check the
-validity of the Texinfo file.
-
-Most validation checks are different depending on whether node
-pointers are explicitly or implicitly determined.  With explicit node
-pointers, here is the list of what is checked:
-
-@enumerate
-@item
-If a `Next', `Previous', or `Up' node reference is a reference to a
-node in the current file and is not an external reference such as to
-@file{(dir)}, then the referenced node must exist.
-
-@item
-Every node except the `Top' node must have an `Up' pointer.
-
-@item
-The node referenced by an `Up' pointer must itself reference the
-current node through a menu item, unless the node referenced by `Up'
-has the form @samp{(@var{file})}.
-@end enumerate
-
-With implicit node pointers, the above error cannot occur, as such.
-(Which is a major reason why we recommend using this feature of
-@code{makeinfo}, and not specifying any node pointers yourself.)
-
-Instead, @code{makeinfo} checks that the tree constructed from the
-document's menus matches the tree constructed from the sectioning
-commands.  For example, if a chapter-level menu mentions nodes
-@var{n1} and @var{n2}, in that order, nodes @var{n1} and @var{n2} must
-be associated with @code{@@section} commands in the chapter.
-
-Finally, with both explicit and implicit node pointers,
-@code{makeinfo} checks that every node except the `Top' node is
-referenced in a menu.
 
 
 @node Customization Variables

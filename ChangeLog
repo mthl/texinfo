@@ -1,5 +1,12 @@
 2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Manual revisions.
+
+	* doc/texinfo.texi (Pointer Validation, Invoking texi2any):
+	Merge the former into the latter.
+
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Change warning messages.
 	
 	* tp/Texinfo/Structuring.pm (nodes_tree): Reword warning messages.
