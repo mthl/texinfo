@@ -1,3 +1,14 @@
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Change warning messages.
+	
+	* tp/Texinfo/Structuring.pm (nodes_tree): Reword warning messages.
+
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* README-hacking: Add a file to update the copyright year of.
+	* tp/texi2any.pl: Update copyright year.
+
 2020-10-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	URL line breaking.

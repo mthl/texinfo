@@ -1021,12 +1021,12 @@ $result_errors{'semi_auto'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':16: warning: node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu
+    'error_line' => ':16: warning: node next for `Sec in chapter\' is `Section non auto\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 16,
     'macro' => '',
-    'text' => 'node `Section non auto\' is next for `Sec in chapter\' in sectioning but not in menu',
+    'text' => 'node next for `Sec in chapter\' is `Section non auto\' in sectioning but not in menu',
     'type' => 'warning'
   }
 ];

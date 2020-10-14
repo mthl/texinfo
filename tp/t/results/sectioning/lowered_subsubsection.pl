@@ -1918,30 +1918,30 @@ $result_menus{'lowered_subsubsection'}{'menu_child'}{'menu_up'} = $result_menus{
 
 $result_errors{'lowered_subsubsection'} = [
   {
-    'error_line' => ':34: warning: node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu
+    'error_line' => ':34: warning: node next for `Lowered subsec\' is `Lowered subsubsection\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
-    'text' => 'node `Lowered subsubsection\' is next for `Lowered subsec\' in sectioning but not in menu',
+    'text' => 'node next for `Lowered subsec\' is `Lowered subsubsection\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: warning: node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu
+    'error_line' => ':41: warning: node prev for `Lowered subsubsection\' is `Lowered subsec\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'node `Lowered subsec\' is prev for `Lowered subsubsection\' in sectioning but not in menu',
+    'text' => 'node prev for `Lowered subsubsection\' is `Lowered subsec\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: warning: node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ
+    'error_line' => ':41: warning: node up for `Lowered subsubsection\' is `Subsection\' in sectioning but `Lowered subsec\' in menu
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'node up `Lowered subsubsection\' in menu `Lowered subsec\' and in sectioning `Subsection\' differ',
+    'text' => 'node up for `Lowered subsubsection\' is `Subsection\' in sectioning but `Lowered subsec\' in menu',
     'type' => 'warning'
   },
   {

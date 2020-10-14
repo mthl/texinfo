@@ -1211,39 +1211,39 @@ $result_errors{'special_docbook_unnumbered'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':18: warning: node next `preface\' in menu `acknowledgements\' and in sectioning `colophon\' differ
+    'error_line' => ':18: warning: node next for `preface\' is `colophon\' in sectioning but `acknowledgements\' in menu
 ',
     'file_name' => '',
     'line_nr' => 18,
     'macro' => '',
-    'text' => 'node next `preface\' in menu `acknowledgements\' and in sectioning `colophon\' differ',
+    'text' => 'node next for `preface\' is `colophon\' in sectioning but `acknowledgements\' in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: node `acknowledgements\' is next for `colophon\' in sectioning but not in menu
+    'error_line' => ':23: warning: node next for `colophon\' is `acknowledgements\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'node `acknowledgements\' is next for `colophon\' in sectioning but not in menu',
+    'text' => 'node next for `colophon\' is `acknowledgements\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: node `preface\' is prev for `colophon\' in sectioning but not in menu
+    'error_line' => ':23: warning: node prev for `colophon\' is `preface\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'node `preface\' is prev for `colophon\' in sectioning but not in menu',
+    'text' => 'node prev for `colophon\' is `preface\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':23: warning: node `Top\' is up for `colophon\' in sectioning but not in menu
+    'error_line' => ':23: warning: node up for `colophon\' is `Top\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 23,
     'macro' => '',
-    'text' => 'node `Top\' is up for `colophon\' in sectioning but not in menu',
+    'text' => 'node up for `colophon\' is `Top\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
@@ -1256,12 +1256,12 @@ $result_errors{'special_docbook_unnumbered'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':28: warning: node prev `acknowledgements\' in menu `preface\' and in sectioning `colophon\' differ
+    'error_line' => ':28: warning: node prev for `acknowledgements\' is `colophon\' in sectioning but `preface\' in menu
 ',
     'file_name' => '',
     'line_nr' => 28,
     'macro' => '',
-    'text' => 'node prev `acknowledgements\' in menu `preface\' and in sectioning `colophon\' differ',
+    'text' => 'node prev for `acknowledgements\' is `colophon\' in sectioning but `preface\' in menu',
     'type' => 'warning'
   }
 ];

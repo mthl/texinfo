@@ -1214,30 +1214,30 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ
+    'error_line' => ':15: warning: node next for `Other node\' is `node\' in sectioning but `(manual)node\' in menu
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'node next `Other node\' in menu `(manual)node\' and in sectioning `node\' differ',
+    'text' => 'node next for `Other node\' is `node\' in sectioning but `(manual)node\' in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: node `Other node\' is prev for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node prev for `node\' is `Other node\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'node `Other node\' is prev for `node\' in sectioning but not in menu',
+    'text' => 'node prev for `node\' is `Other node\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: warning: node `Top\' is up for `node\' in sectioning but not in menu
+    'error_line' => ':22: warning: node up for `node\' is `Top\' in sectioning but not in menu
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
-    'text' => 'node `Top\' is up for `node\' in sectioning but not in menu',
+    'text' => 'node up for `node\' is `Top\' in sectioning but not in menu',
     'type' => 'warning'
   },
   {

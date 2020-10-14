@@ -531,27 +531,26 @@ sub nodes_tree($)
             if ($node->{'node_'.$direction}) {
               if ($self->{'SHOW_MENU'} eq '1') {
 
-                if (($section->{'section_up'}{'extra'}
+                if ($section->{'section_up'}{'extra'}
           and $section->{'section_up'}{'extra'}{'associated_node'}
           and $section->{'section_up'}{'extra'}{'associated_node'}{'menus'}
           and @{$section->{'section_up'}{'extra'}{'associated_node'}{'menus'}}
-                     or $self->{'validatemenus'})
                     and !$node->{'menu_'.$direction}) {
                   $self->line_warn(sprintf(
-               __("node `%s' is %s for `%s' in sectioning but not in menu"), 
-                    node_extra_to_texi($node->{'node_'.$direction}->{'extra'}), 
-                                       $direction,
-                    node_extra_to_texi($node->{'extra'})),
-                                       $node->{'line_nr'});
+               __("node %s for `%s' is `%s' in sectioning but not in menu"), 
+                  $direction,
+                  node_extra_to_texi($node->{'extra'}),
+                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'})), 
+                    $node->{'line_nr'});
                 } elsif ($node->{'menu_'.$direction}
                          and $node->{'menu_'.$direction}
                              ne $node->{'node_'.$direction}) {
                   $self->line_warn(sprintf(
-                    __("node %s `%s' in menu `%s' and in sectioning `%s' differ"), 
-                    $direction,
-                    node_extra_to_texi($node->{'extra'}),
-                    node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}), 
-                    node_extra_to_texi($node->{'node_'.$direction}->{'extra'})),
+               __("node %s for `%s' is `%s' in sectioning but `%s' in menu"), 
+                  $direction,
+                  node_extra_to_texi($node->{'extra'}),
+                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'}),
+                  node_extra_to_texi($node->{'menu_'.$direction}->{'extra'})), 
                     $node->{'line_nr'});
                 }
               }
