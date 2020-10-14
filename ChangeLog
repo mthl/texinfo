@@ -1,6 +1,17 @@
 2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Manual revisions.
+	
+	* doc/texinfo.texi (History, Reference Implementation):
+	Merge the latter into the former.  Remove reference to
+	removed 'util/texi2html' script.
+	* TODO: Remove some install-info points that will never be done
+	(by install-info).
+	* tp/Texinfo/Structuring.pm: Remove reference to removed value.
+
+2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
 
 	* doc/texinfo.texi (Pointer Validation, Invoking texi2any):
 	Merge the former into the latter.

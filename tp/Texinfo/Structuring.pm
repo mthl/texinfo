@@ -632,8 +632,7 @@ sub nodes_tree($)
         and ($node->{'node_up'}->{'extra'}->{'manual_content'}
          or !$node->{'menu_up_hash'}
          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
-      if (($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
-           or $self->{'validatemenus'})
+      if ($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
           and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node is a real node but has no menu entry
         $self->line_error(sprintf(
