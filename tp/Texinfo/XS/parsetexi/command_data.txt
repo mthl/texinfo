@@ -433,6 +433,7 @@ verbatim		block		BLOCK_raw
 ignore			block		BLOCK_raw
 macro			block		BLOCK_raw
 rmacro			block		BLOCK_raw
+displaymath		block		BLOCK_raw
 
 table		block,blockitem		1
 ftable		block,blockitem		1

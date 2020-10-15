@@ -1,5 +1,13 @@
 2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Add @displaymath.
+	
+	* tp/Texinfo/Common.pm (%block_commands, %raw_commands),
+	* tp/Texinfo/XS/parsetexi/command_data.txt:
+	Add 'displaymath'.  It is treated like @verbatim by default.
+
+2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	@displaymath and \frac
 
 	* doc/texinfo.tex (@displaymath): Implement.

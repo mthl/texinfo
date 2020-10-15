@@ -860,7 +860,7 @@ foreach my $format_raw_command('html', 'tex', 'xml', 'docbook') {
 
 our %raw_commands;
 # macro/rmacro are special
-foreach my $raw_command ('verbatim',
+foreach my $raw_command ('verbatim', 'displaymath',
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
   $raw_commands{$raw_command} = 1;
