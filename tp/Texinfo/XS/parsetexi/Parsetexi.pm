@@ -1,4 +1,4 @@
-# Copyright 2014-2019 Free Software Foundation, Inc.
+# Copyright 2014-2020 Free Software Foundation, Inc.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -233,7 +233,7 @@ sub _maybe_ignore_before_setfilename {
   }
 }
 
-# Replacement for Texinfo::Parser::parse_texi_file (line 835)
+# Replacement for Texinfo::Parser::parse_texi_file
 sub parse_texi_file ($$)
 {
   my $self = shift;
@@ -251,7 +251,6 @@ sub parse_texi_file ($$)
   get_parser_info ($self);
   _complete_node_menus ($self, $TREE);
 
-  # line 899
   my $text_root;
   if ($TREE->{'type'} eq 'text_root') {
     $text_root = $TREE;
@@ -289,7 +288,7 @@ sub _get_errors($)
   }
 }
 
-# Replacement for Texinfo::Parser::parse_texi_text (line 757)
+# Replacement for Texinfo::Parser::parse_texi_text
 #
 # Used in tests under tp/t.
 sub parse_texi_text($$;$$$$)
@@ -326,7 +325,7 @@ sub parse_texi_text($$;$$$$)
     return $tree;
 }
 
-# Replacement for Texinfo::Parser::parse_texi_line (line 918)
+# Replacement for Texinfo::Parser::parse_texi_line
 sub parse_texi_line($$;$$$$)
 {
     my $self = shift;
@@ -345,7 +344,7 @@ sub parse_texi_line($$;$$$$)
     return $tree;
 }
 
-# Public interfaces of Texinfo::Parser (starting line 942)
+# Public interfaces of Texinfo::Parser
 sub indices_information($)
 {
   my $self = shift;

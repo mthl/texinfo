@@ -1,5 +1,10 @@
 2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove reference
+	to line numbers in ParserNonXS.pm.
+
+2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Add @displaymath.
 	
 	* tp/Texinfo/Common.pm (%block_commands, %raw_commands),
