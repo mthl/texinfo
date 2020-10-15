@@ -1,5 +1,12 @@
 2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	@displaymath for HTML.
+	
+	* tp/Texinfo/Convert/HTML.pm (_convert_displaymath_command):
+	New function.
+
+2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Remove reference
 	to line numbers in ParserNonXS.pm.
 

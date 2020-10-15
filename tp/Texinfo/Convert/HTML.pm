@@ -2573,6 +2573,28 @@ sub _convert_verbatim_command($$$$)
 
 $default_commands_conversion{'verbatim'} = \&_convert_verbatim_command;
 
+sub _convert_displaymath_command($$$$)
+{
+  my $self = shift;
+  my $cmdname = shift;
+  my $command = shift;
+  my $content = shift;
+
+  if ($self->in_string) {
+    return $content;
+  }
+  if ($self->get_conf('HTML_MATH')
+        and $self->get_conf('HTML_MATH') eq 'mathjax') {
+    return $self->_attribute_class('em', 'tex2jax_process').'>' 
+          ."\\[$content\\]".'</em>';
+  } else {
+    return $self->_attribute_class('em', 'displaymath').'>' 
+          .$content . '</em>';
+  }
+}
+
+$default_commands_conversion{'displaymath'} = \&_convert_displaymath_command;
+
 sub _convert_verbatiminclude_command($$$$)
 {
   my $self = shift;
