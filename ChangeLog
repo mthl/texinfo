@@ -1,3 +1,10 @@
+2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@displaymath and \frac
+
+	* doc/texinfo.tex (@displaymath): Implement.
+	* doc/texinfo.tex (\frac): Provide.
+
 2020-10-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	HTML_MATH, MATHJAX_SCRIPT and MATHJAX_SOURCE
