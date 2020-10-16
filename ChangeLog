@@ -1,5 +1,9 @@
 2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/t/19raw.t (displaymath): New test.
+
+2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/HTML.pm (_mini_toc): Add bullets to
 	list and remove section numbers.
 
