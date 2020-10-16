@@ -551,6 +551,7 @@ Creating and Installing Info Files
 
 * Creating an Info File::
 * Installing an Info File::
+* Info Format FAQ::
 
 Creating an Info File
 
@@ -17083,6 +17084,7 @@ itself.
 @menu
 * Creating an Info File::
 * Installing an Info File::
+* Info Format FAQ::
 @end menu
 
 
@@ -17938,6 +17940,76 @@ Suppress updating of the directory file.
 Display version information and exit successfully.
 
 @end table
+
+@node Info Format FAQ
+@section Info Format FAQ
+
+Here are some questions that have been frequently asked on
+the project mailing lists and elsewhere.
+
+@table @asis
+@item Why when I run @samp{info @var{foo}} do I get the same output as @samp{man @var{foo}}?
+
+Check that the Info manuals are installed.  Not all GNU/Linux distribtions
+install all the Info manuals by default.
+
+@item Why not use HTML instead of Info?
+
+Manuals are rarely written in the Info format itself, but are generated
+from Texinfo source by the @command{texi2any} program.
+@command{texi2any} can generate HTML as well as Info from Texinfo
+source.  
+
+@item Why provide the command-line @command{info} program when it is not very good?
+
+@command{info} has index lookup and mouse scrolling support, unlike
+@command{pinfo}.  It can also be configured to color cross-references
+and search results, as well as change the default key bindings.
+
+@item Why do I have `see' appearing in front of all of my links?
+
+By default, Emacs Info mode either changes the marker @samp{*note} for
+cross-references to `see', or hides it completely.  Unfortunately,
+there is no way to do this reliably, as both the @code{@@pxref}
+and @code{@@ref} commands in Texinfo output this marker in the Info
+output, and the `see' text is only appropriate for @code{@@pxref}.
+
+@item Yes, but how do I get a plain link, with no extra markup?
+
+You can't.  Info is a plain text format that is displayed mostly as-is
+in the viewers, and without the @samp{*note} text there would be nothing
+to mark text as a link.  Additionally, in printed output there is no
+such thing as a plain link, as the page number of the target would have
+to be printed somewhere.
+
+If you really want a plain link in HTML output without affecting other
+output formats, you could create a macro with conditional definitions for
+each output format.
+
+@item Lines containing links appear mysteriously short.
+
+This due to Emacs (or @command{info} with @code{hide-note-references}
+set to @samp{On}) hiding @samp{*note} strings, as mentioned above.
+
+@item Can the Info format be extended to support fonts, colors or reflowable text?
+
+Any extension would be incompatible with existing Info-viewing programs.
+Extra markup added to Info files would be displayed to the user, making
+files ugly and unreadable.
+
+When Texinfo files are processed into Info files, information about
+which Texinfo commands were used to markup text is lost.  Moreover,
+it is not possible to reliably detect whether text can be reflowed
+(e.g.@: a paragraph of prose), or whether line breaks should be kept
+(e.g.@: a code sample, or poem).
+
+Info's core purpose is to display documentation on text terminals.
+If you want more, you are recommended to use the HTML output from
+@command{texi2any} instead.
+
+@end table
+
+
 
 
 @node Generating HTML

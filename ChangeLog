@@ -1,5 +1,9 @@
 2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Info Format FAQ): New node.
+
+2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/t/19raw.t (displaymath): New test.
 
 2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
