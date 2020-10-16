@@ -16474,7 +16474,7 @@ is set to @samp{mathjax}.
 
 @vtable @code
 @item MATHJAX_SCRIPT
-URL of the MathJax component file (e.g. @file{tex-svg.js}) you are using.
+URL of the MathJax component file (e.g.@: @file{tex-svg.js}) you are using.
 @command{texi2any} provides a default value for this variable, but you
 are encouraged to host this file yourself on your website so that you are
 not dependent on others' hosting.
@@ -17950,7 +17950,7 @@ the project mailing lists and elsewhere.
 @table @asis
 @item Why when I run @samp{info @var{foo}} do I get the same output as @samp{man @var{foo}}?
 
-Check that the Info manuals are installed.  Not all GNU/Linux distribtions
+Check that the Info manuals are installed.  Not all GNU/Linux distributions
 install all the Info manuals by default.
 
 @item Why not use HTML instead of Info?
