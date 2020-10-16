@@ -5054,8 +5054,8 @@ ul.no-bullet {list-style: none}
 <p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 
-<ul class="no-bullet">
-<li><a href="#s_002d_002dect_002cion">1.1 A section</a></li>
+<ul class="section-toc">
+<li><a href="#s_002d_002dect_002cion">A section</a></li>
 </ul>
 <hr>
 <span id="s_002d_002dect_002cion"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -5076,8 +5076,8 @@ ul.no-bullet {list-style: none}
 <span id="A-section"></span><h2 class="section">1.1 A section</h2>
 
 
-<ul class="no-bullet">
-<li><a href="#subsection">1.1.1 subsection</a></li>
+<ul class="section-toc">
+<li><a href="#subsection">subsection</a></li>
 </ul>
 <hr>
 <span id="subsection"></span><table class="header" cellpadding="1" cellspacing="1" border="0">
@@ -5099,9 +5099,9 @@ ul.no-bullet {list-style: none}
 
 
 <span id="anchor"></span>
-<ul class="no-bullet">
-<li><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
-<li><a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
+<ul class="section-toc">
+<li><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">subsubsection &ldquo;simple-double&ndash;</a></li>
+<li><a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">three&mdash;four&mdash;-&rdquo;</a></li>
 </ul>
 <hr>
 <span id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></span><table class="header" cellpadding="1" cellspacing="1" border="0">

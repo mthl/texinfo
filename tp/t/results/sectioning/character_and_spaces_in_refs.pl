@@ -2015,8 +2015,8 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 
 
 <span id="Testing-distant-nodes"></span><h4 class="subheading">Testing distant nodes</h4>
-<ul class="no-bullet">
-<li><a href="#other-nodes">1 Chapter with nodes</a></li>
+<ul class="section-toc">
+<li><a href="#other-nodes">Chapter with nodes</a></li>
 </ul>
 
 <p><a href="manual.html#a-node">(manual)a  node</a>
@@ -2026,8 +2026,8 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 <a href="doc.html#node">(../manual/doc)node</a>
 </p>
 <span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
-<ul class="no-bullet">
-<li><a href="#other-nodes">1 Chapter with nodes</a></li>
+<ul class="section-toc">
+<li><a href="#other-nodes">Chapter with nodes</a></li>
 </ul>
 
 <p><a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e">!_&quot;#$%&amp;\'()*+-.</a>

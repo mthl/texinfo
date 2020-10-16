@@ -962,7 +962,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 <span id="Unn-1"></span><h2 class="unnumbered">Unn</h2>
 
 
-<ul class="no-bullet">
+<ul class="section-toc">
 <li><a href="#Sec">Sec</a></li>
 </ul>
 <hr>

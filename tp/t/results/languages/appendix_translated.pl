@@ -380,8 +380,8 @@ ul.no-bullet {list-style: none}
 </ul>
 </div>
 
-<ul class="no-bullet">
-<li><a href="#dernier">Annexe A dernier</a></li>
+<ul class="section-toc">
+<li><a href="#dernier">dernier</a></li>
 </ul>
 <hr>
 

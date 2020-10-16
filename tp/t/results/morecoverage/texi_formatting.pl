@@ -5030,8 +5030,8 @@ Next: <a href="#chapter2" accesskey="n" rel="next">chapter 2</a>, Previous: <a h
 <p><a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 
-<ul class="no-bullet">
-<li><a href="#s_002d_002dect_002cion">1.1 A section</a></li>
+<ul class="section-toc">
+<li><a href="#s_002d_002dect_002cion">A section</a></li>
 </ul>
 <hr>
 <span id="s_002d_002dect_002cion"></span><div class="header">
@@ -5041,8 +5041,8 @@ Up: <a href="#chapter" accesskey="u" rel="up">chapter</a> &nbsp; [<a href="#SEC_
 <span id="A-section"></span><h3 class="section">1.1 A section</h3>
 
 
-<ul class="no-bullet">
-<li><a href="#subsection">1.1.1 subsection</a></li>
+<ul class="section-toc">
+<li><a href="#subsection">subsection</a></li>
 </ul>
 <hr>
 <span id="subsection"></span><div class="header">
@@ -5053,9 +5053,9 @@ Up: <a href="#s_002d_002dect_002cion" accesskey="u" rel="up">A section</a> &nbsp
 
 
 <span id="anchor"></span>
-<ul class="no-bullet">
-<li><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
-<li><a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
+<ul class="section-toc">
+<li><a href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">subsubsection &ldquo;simple-double&ndash;</a></li>
+<li><a href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">three&mdash;four&mdash;-&rdquo;</a></li>
 </ul>
 <hr>
 <span id="subsubsection-_0060_0060simple_002ddouble_002d_002d"></span><div class="header">

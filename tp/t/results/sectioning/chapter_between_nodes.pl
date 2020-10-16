@@ -748,8 +748,8 @@ Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; [<a hr
 
 <p>In chapter
 </p>
-<ul class="no-bullet">
-<li><a href="#Chapter">1 Chapter</a></li>
+<ul class="section-toc">
+<li><a href="#Chapter">Chapter</a></li>
 </ul>
 <hr>
 <span id="section-node"></span><div class="header">

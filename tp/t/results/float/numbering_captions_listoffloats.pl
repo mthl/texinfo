@@ -8322,8 +8322,8 @@ Next: <a href="#Unnumbered" accesskey="n" rel="next">Unnumbered</a>, Previous: <
 
 <div class="float-caption"><p><strong>Warning 1.1: </strong>C A warning in chapter</p></div></div>
 
-<ul class="no-bullet">
-<li><a href="#section">1.1 A section</a></li>
+<ul class="section-toc">
+<li><a href="#section">A section</a></li>
 </ul>
 <hr>
 <span id="section"></span><div class="header">
@@ -8356,7 +8356,7 @@ Next: <a href="#Chapter-with-unnumbsubsec" accesskey="n" rel="next">Chapter with
 
 <div class="float-caption"><p><strong>5: </strong>C No type in unnumbered</p></div></div>
 
-<ul class="no-bullet">
+<ul class="section-toc">
 <li><a href="#Section-within-unnumbered">Section within unnumbered</a></li>
 </ul>
 <hr>
@@ -8384,7 +8384,7 @@ Next: <a href="#Appendix-for-float" accesskey="n" rel="next">Appendix for float<
 </p>
 
 <div class="float-caption"><p><strong>Text 2.1: </strong>C Chapter with subsec</p></div></div>
-<ul class="no-bullet">
+<ul class="section-toc">
 <li><a href="#unnumbered-sec">unnumbered sec</a></li>
 </ul>
 <hr>
