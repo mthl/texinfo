@@ -6101,10 +6101,12 @@ sub _mini_toc
   my $result = '';
 
   if ($command->{'section_childs'} and @{$command->{'section_childs'}}) {
-    $result .= $self->_attribute_class('ul', $NO_BULLET_LIST_CLASS).">\n";
+    $result .= $self->_attribute_class('ul', 'section-toc').">\n";
 
     foreach my $section (@{$command->{'section_childs'}}) {
-      my $text = $self->command_text($section);
+      my $tree = $self->command_text($section, 'tree_nonumber');
+      my $text = $self->_convert($tree);
+
       my $href = $self->command_href($section, $filename);
       if ($text ne '') {
         if ($href ne '') {

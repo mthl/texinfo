@@ -1,3 +1,8 @@
+2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Convert/HTML.pm (_mini_toc): Add bullets to
+	list and remove section numbers.
+
 2020-10-15  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	@displaymath for HTML.
