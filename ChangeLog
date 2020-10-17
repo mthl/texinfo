@@ -1,3 +1,11 @@
+2020-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@displaymath for docbook
+
+	* tp/Texinfo/Convert/DocBook.pm (_convert): Wrap
+	output for @displaymath in <informalequation> and
+	<mathphrase>.
+
 2020-10-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Info Format FAQ): New node.

@@ -1,6 +1,6 @@
 # DocBook.pm: output tree as DocBook.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1260,6 +1260,9 @@ sub _convert($$;$)
         }
       } elsif ($root->{'cmdname'} eq 'verbatim') {
         push @elements, 'screen';
+      } elsif ($root->{'cmdname'} eq 'displaymath') {
+        push @elements, 'informalequation';
+        push @elements, 'mathphrase';
       } elsif ($root->{'cmdname'} eq 'quotation' 
                or $root->{'cmdname'} eq 'smallquotation') {
         my $element;

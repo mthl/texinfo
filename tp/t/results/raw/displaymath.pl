@@ -133,7 +133,8 @@ $result_converted_errors{'file_html'}->{'displaymath'} = [
 
 
 
-$result_converted{'docbook'}->{'displaymath'} = '';
+$result_converted{'docbook'}->{'displaymath'} = '<informalequation><mathphrase>\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+</mathphrase></informalequation>';
 
 
 $result_converted{'plaintext'}->{'displaymath'} = '\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
