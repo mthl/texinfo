@@ -139,6 +139,13 @@ request_callback (WebKitWebPage     *web_page,
          "../MANUAL/NODE.html" but by the time this function is called
          they are absolute paths beginning "file:/". */
       parse_external_url (uri, &manual, &node);
+      if (!manual || !node)
+        {
+          /* Possibly a *.css file or malformed link. */
+          free (manual); free (node);
+          return FALSE;
+        }
+
       debug (1, "finding manual and node %s:%s\n", manual, node);
 
       if (!current_manual || strcmp(manual, current_manual) != 0)

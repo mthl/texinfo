@@ -1,3 +1,5 @@
+#define _GNU_SOURCE
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -8,8 +10,10 @@
 
 #include "infopath.h"
 
-char *default_path[] = { "/usr/share/info/html",
-                         "/usr/local/share/info/html",
+void debug (int level, char *fmt, ...);
+
+char *default_path[] = { "/usr/share/doc",
+                         "/usr/local/share/doc",
                          NULL };
 
 static GArray *dirs;
@@ -36,7 +40,7 @@ init_infopath (void)
     }
 }
 
-/* Return pathname of the idirectory containing an HTML manual.*/
+/* Return file name of the directory containing an HTML manual.*/
 char *
 locate_manual (const char *manual)
 {
@@ -54,30 +58,21 @@ locate_manual (const char *manual)
         continue;
       closedir (d);
 
-      char *s = malloc (strlen (datadir) + strlen ("/") + strlen (manual) + 1);
-      sprintf (s, "%s/%s", datadir, manual);
+      char *s = 0, *s2 = 0;
 
-      d = opendir (s);
-      if (!d)
-        {
-          free (s);
-          continue;
-        }
-      closedir (d);
+      asprintf(&s, "%s/%s/%s.html", datadir, manual, manual);
+      asprintf(&s2, "%s/index.html", s);
 
-      char *s2 = malloc (strlen (datadir) + strlen ("/")
-                         + strlen (manual) + strlen ("/index.html") + 1);
-      sprintf (s2, "%s/%s/index.html", datadir, manual);
+      debug (1, "CHECK %s\n", s);
 
       struct stat dummy;
-      if (stat (s2, &dummy) == -1)
+      if (stat (s, &dummy) != -1)
         {
-          free (s); free (s2);
-          continue;
+          free (s2);
+          return s;
         }
 
-      free (s2);
-      return s;
+      free (s); free (s2);
     }
   return 0;
 }
@@ -117,6 +112,11 @@ parse_external_url (const char *url, char **manual, char **node)
   m = malloc (q - p + 1);
   memcpy (m, p, q - p);
   m[q - p] = '\0';
+
+  /* Strip a .html extension off the directory if there is one. */
+  char *e;
+  if ((e = strstr (m, ".html")))
+    *e = '\0';
 
   *manual = m;
 

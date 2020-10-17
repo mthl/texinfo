@@ -416,6 +416,15 @@ new_manual (char *manual)
   if (!current_manual_dir)
     {
       debug (1, "MANUAL NOT FOUND\n");
+      GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+      GtkWidget *dialog = gtk_message_dialog_new (
+                                        GTK_WINDOW(main_window),
+                                        flags,
+                                        GTK_MESSAGE_ERROR,
+                                        GTK_BUTTONS_CLOSE,
+                                        "Manual '%s' not found", manual);
+      gtk_dialog_run (GTK_DIALOG (dialog));
+      gtk_widget_destroy (dialog);
       return 0;
     }
   debug (1, "NEW MANUAL AT %s\n", current_manual_dir);
