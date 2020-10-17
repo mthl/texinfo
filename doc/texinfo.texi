@@ -9895,87 +9895,63 @@ are given consecutively.
 
 
 @node Inserting Math
-@section @code{@@math}: Inserting Mathematical Expressions
+@section @code{@@math} and @code{@@displaymath}: Formatting Mathematics
 
 @anchor{math}@c old name
 @findex math
 @cindex Mathematical expressions, inserting
 @cindex Formulas, mathematical
-
 You can write a short mathematical expression with the @code{@@math}
 command.  Write the mathematical expression between braces, like this:
-
-@example
-@@math@{(a + b) = (b + a)@}
-@end example
-
-@iftex
-@noindent This produces the following in @TeX{}:
-
-@display
-@math{(a + b) = (b + a)}
-@end display
-
-@noindent and the following in other formats:
-@end iftex
-@ifnottex
-@noindent This produces the following in Info and HTML:
-@end ifnottex
-
-@example
-(a + b) = (b + a)
-@end example
-
-@cindex MathML, not used
-The @code{@@math} command has no special effect on the Info and HTML
-output.  @command{makeinfo} expands any @@-commands as usual, but it
-does not try to use produce good mathematical formatting in any way
-(no use of MathML, etc.).  The HTML output is enclosed by
-@code{<em>...</em>}, but nothing more.
-
-@findex \mathopsup
-However, as far as the @TeX{} output is concerned, plain @TeX{}
-mathematical commands are allowed in @code{@@math}, starting with
-@samp{\}.  In essence, @code{@@math} switches into plain @TeX{} math
-mode.  (Exception: the plain @TeX{} command @code{\sup}, which
-typesets the mathematical operator name `sup', must be accessed as
-@code{\mathopsup}, due to the conflict with Texinfo's @code{@@sup}
-command.)
-
-This allows you to use all the plain @TeX{} math control sequences for
-symbols, functions, and so on, and thus get proper formatting in the
-@TeX{} output, at least.
-
-The @code{@@sub} and @code{@@sup} commands described in the previous
-section produce subscripts and superscripts in HTML output as well as
-@TeX{}; the plain @TeX{} characters @code{_} and @code{^} for
-subscripts and superscripts are recognized by @TeX{} inside
-@code{@@math}, but do nothing special in HTML or other output formats.
-
-It's best to use @samp{\} instead of @samp{@@} for any such
-mathematical commands; otherwise, @command{makeinfo} will complain.
-On the other hand, @command{makeinfo} does allow input with matching
-(but unescaped) braces, such as @samp{k_@{75@}}; it complains about
-such bare braces in regular input.
-
-Here's an example:
 
 @example
 @@math@{\sin 2\pi \equiv \cos 3\pi@}
 @end example
 
 @iftex
+@set formatmath
+@end iftex
+@ifset formatmath
 @noindent which looks like this in @TeX{}:
 @display
 @math{\sin 2\pi \equiv \cos 3\pi}
 @end display
 
-@noindent but
-@end iftex
+@noindent and the following in other formats:
+@end ifset
+@ifclear formatmath
 @noindent which looks like the input in Info and HTML:
+@end ifclear
+
 @example
 \sin 2\pi \equiv \cos 3\pi
 @end example
+
+As you can see, the @code{@@math} command has no special effect on the Info
+output or (by default) the HTML output.
+
+@findex \mathopsup
+For the @TeX{} output, @code{@@math} switches into math mode.
+You can use plain @TeX{} mathematical commands, starting with
+@samp{\}.  (Exception: the plain @TeX{} command @code{\sup}, which
+typesets the mathematical operator name `sup', must be accessed as
+@code{\mathopsup}, due to the conflict with Texinfo's @code{@@sup}
+command.)  This allows you to use all the plain @TeX{} math control
+sequences for symbols, functions, and so on, and thus get proper
+formatting in the @TeX{} output, at least.  It's best to use @samp{\}
+instead of @samp{@@} for any such mathematical commands; otherwise,
+@command{texi2any} will complain.
+
+The @code{@@sub} and @code{@@sup} commands described in the previous
+section are an alternative to the plain @TeX{} characters @code{_}
+and @code{^} for subscripts and superscripts.  These commands work in
+the HTML output as well as @TeX{}.
+
+@ignore
+On the other hand, @command{texi2any} does allow input with matching
+(but unescaped) braces, such as @samp{k_@{75@}}; it complains about
+such bare braces in regular input.
+@end ignore
 
 @findex @sortas{\} \ @r{(literal \ in @code{@@math})}
 Since @samp{\} is an escape character inside @code{@@math}, you can
@@ -9986,10 +9962,37 @@ ordinarily produces a literal (typewriter) @samp{\}.  You can also use
 @code{@@backslashchar@{@}} in any mode to get a typewriter backslash.
 @xref{Inserting a Backslash}.
 
+@cindex Math output for HTML
+By default, the HTML output is only enclosed by @code{<em>}.
+@command{texi2any} provides two options for displaying properly
+formatted mathematics for HTML.  You can select these with the
+@code{HTML_MATH} variable (@pxref{HTML Customization Variables}).  With
+@code{HTML_MATH} set to @samp{l2h}, @command{texi2any} attempts to use
+the @code{latex2html} program to produce image files for mathematical
+material.  With the @samp{mathjax} setting, @command{texi2any}
+inserts references in the output files to MathJax scripts to format
+the material.  The MathJax option requires JavaScript to be enabled in
+the browser to work.  See also @ref{MathJax Customization Variables}
+and @ref{@command{latex2html} Customization Variables}.
+
 @cindex Displayed equations
 @cindex Equations, displayed
-For displayed equations, you must at present use @TeX{} directly
-(@pxref{Raw Formatter Commands}).
+@findex displaymath
+For displayed equations, you can use the @code{@@displaymath}
+command.  Example:
+
+@example
+@@displaymath
+f(x) = \frac@{1@}@{\sigma \sqrt@{2\pi@}@}
+e^@{-\frac@{1@}@{2@}\left(\frac@{x-\mu@}@{\sigma@}\right)^2@}
+@@end displaymath
+@end example
+
+@noindent which produces:
+
+@displaymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+@end displaymath
 
 
 @node Glyphs for Text
@@ -19356,6 +19359,9 @@ Begin a kind of example.  Like @code{@@example} (indent text, do not
 fill), but do not select a new font.  Pair with @code{@@end display}.
 @xref{@code{@@display}}.
 
+@item @@displaymath
+Format a block of math in ``display'' format.  @xref{Inserting Math}.
+ 
 @item @@dmn@{@var{dimension}@}
 Format a unit of measure, as in 12@dmn{pt}.  Causes @TeX{} to insert a
 thin space before @var{dimension}.  No effect in Info.
