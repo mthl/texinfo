@@ -2583,14 +2583,18 @@ sub _convert_displaymath_command($$$$)
   if ($self->in_string) {
     return $content;
   }
+
+  my $result = '';
+  $result .= $self->_attribute_class('div', 'displaymath').'>';
   if ($self->get_conf('HTML_MATH')
         and $self->get_conf('HTML_MATH') eq 'mathjax') {
-    return $self->_attribute_class('em', 'tex2jax_process').'>' 
+    $result .= $self->_attribute_class('em', 'tex2jax_process').'>' 
           ."\\[$content\\]".'</em>';
   } else {
-    return $self->_attribute_class('em', 'displaymath').'>' 
-          .$content . '</em>';
+    $result .= $self->_attribute_class('em').'>'."$content".'</em>';
   }
+  $result .= '</div>';
+  return $result;
 }
 
 $default_commands_conversion{'displaymath'} = \&_convert_displaymath_command;

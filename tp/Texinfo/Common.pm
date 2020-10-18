@@ -900,6 +900,7 @@ foreach my $block_command (keys(%block_commands)) {
 }
 
 $close_paragraph_commands{'verbatim'} = 1;
+$close_paragraph_commands{'displaymath'} = 1;
 
 foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem',

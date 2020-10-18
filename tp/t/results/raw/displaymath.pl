@@ -43,6 +43,71 @@ $result_trees{'displaymath'} = {
       'text' => '
 ',
       'type' => 'empty_line_after_command'
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'before
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
+    },
+    {
+      'cmdname' => 'displaymath',
+      'contents' => [
+        {
+          'extra' => {
+            'command' => {}
+          },
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'empty_line_after_command'
+        },
+        {
+          'parent' => {},
+          'text' => '\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS',
+          'type' => 'raw'
+        },
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'last_raw_newline'
+        }
+      ],
+      'line_nr' => {
+        'file_name' => '',
+        'line_nr' => 6,
+        'macro' => ''
+      },
+      'parent' => {}
+    },
+    {
+      'parent' => {},
+      'text' => '
+',
+      'type' => 'empty_line_after_command'
+    },
+    {
+      'contents' => [
+        {
+          'parent' => {},
+          'text' => 'after
+'
+        }
+      ],
+      'parent' => {},
+      'type' => 'paragraph'
     }
   ],
   'type' => 'text_root'
@@ -53,14 +118,35 @@ $result_trees{'displaymath'}{'contents'}[0]{'contents'}[1]{'parent'} = $result_t
 $result_trees{'displaymath'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'displaymath'}{'contents'}[0];
 $result_trees{'displaymath'}{'contents'}[0]{'parent'} = $result_trees{'displaymath'};
 $result_trees{'displaymath'}{'contents'}[1]{'parent'} = $result_trees{'displaymath'};
+$result_trees{'displaymath'}{'contents'}[2]{'parent'} = $result_trees{'displaymath'};
+$result_trees{'displaymath'}{'contents'}[3]{'contents'}[0]{'parent'} = $result_trees{'displaymath'}{'contents'}[3];
+$result_trees{'displaymath'}{'contents'}[3]{'parent'} = $result_trees{'displaymath'};
+$result_trees{'displaymath'}{'contents'}[4]{'contents'}[0]{'extra'}{'command'} = $result_trees{'displaymath'}{'contents'}[4];
+$result_trees{'displaymath'}{'contents'}[4]{'contents'}[0]{'parent'} = $result_trees{'displaymath'}{'contents'}[4];
+$result_trees{'displaymath'}{'contents'}[4]{'contents'}[1]{'parent'} = $result_trees{'displaymath'}{'contents'}[4];
+$result_trees{'displaymath'}{'contents'}[4]{'contents'}[2]{'parent'} = $result_trees{'displaymath'}{'contents'}[4];
+$result_trees{'displaymath'}{'contents'}[4]{'parent'} = $result_trees{'displaymath'};
+$result_trees{'displaymath'}{'contents'}[5]{'parent'} = $result_trees{'displaymath'};
+$result_trees{'displaymath'}{'contents'}[6]{'contents'}[0]{'parent'} = $result_trees{'displaymath'}{'contents'}[6];
+$result_trees{'displaymath'}{'contents'}[6]{'parent'} = $result_trees{'displaymath'};
 
 $result_texis{'displaymath'} = '@displaymath
 \\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
 @end displaymath
+
+before
+@displaymath
+\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+@end displaymath
+after
 ';
 
 
 $result_texts{'displaymath'} = '\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+
+before
+\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+after
 ';
 
 $result_errors{'displaymath'} = [];
@@ -114,8 +200,12 @@ MathJax = {
 </head>
 
 <body lang="en" class="tex2jax_ignore">
-<em class="tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
-\\]</em>
+<div class="displaymath"><em class="tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+\\]</em></div>
+<p>before
+</p><div class="displaymath"><em class="tex2jax_process">\\[\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+\\]</em></div><p>after
+</p>
 
 <a href=\'js_licenses.html\' rel=\'jslicense\'><small>JavaScript license information</small></a>
 </body>
@@ -134,10 +224,18 @@ $result_converted_errors{'file_html'}->{'displaymath'} = [
 
 
 $result_converted{'docbook'}->{'displaymath'} = '<informalequation><mathphrase>\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
-</mathphrase></informalequation>';
+</mathphrase></informalequation>
+<para>before
+</para><informalequation><mathphrase>\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+</mathphrase></informalequation><para>after
+</para>';
 
 
 $result_converted{'plaintext'}->{'displaymath'} = '\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+
+before
+\\int_D ({\\nabla\\cdot} F)dV=\\int_{\\partial D} F\\cdot ndS
+   after
 ';
 
 1;

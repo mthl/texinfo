@@ -332,6 +332,12 @@ in verbatim
 '@displaymath
 \int_D ({\nabla\cdot} F)dV=\int_{\partial D} F\cdot ndS
 @end displaymath
+
+before
+@displaymath
+\int_D ({\nabla\cdot} F)dV=\int_{\partial D} F\cdot ndS
+@end displaymath
+after
 ',
 {'test_formats' => ['file_html', 'docbook']},
 {'HTML_MATH' => 'mathjax'}

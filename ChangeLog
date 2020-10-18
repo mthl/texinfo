@@ -1,3 +1,13 @@
+2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	End paragraph for @displaymath.
+
+	* tp/Texinfo/Common.pm (%close_paragraph_commands),
+	* tp/Texinfo/XS/parsetexi/commands.c (close_paragraph_command):
+	Add @displaymath.
+	* tp/Texinfo/Convert/HTML.pm (_convert_displaymath_command):
+	Wrap output in a <div>.
+
 2020-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Document @displaymath and HTML_MATH.
