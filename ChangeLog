@@ -2,8 +2,8 @@
 
 	Document @displaymath and HTML_MATH.
 
-	(Inserting Math, Command List): Document @displaymath and
-	options for HTML_MATH.
+	* doc/texinfo.texi (Inserting Math, Command List):
+	Document @displaymath and options for HTML_MATH.
 
 2020-10-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
