@@ -1,5 +1,25 @@
 2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reorder nodes.
+
+	* doc/texinfo.texi (Texinfo Document Structure, Writing a Node):
+	Re-order.
+
+2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Document SHOW_MENU changes.
+
+	* doc/texinfo.texi
+	(Other Customization Variables) <SHOW_MENU>: Explain '1' and
+	'sectiontoc' settings.
+	(Invoking texi2any): Move '@vindex HEADERS' here.
+	(Writing a Node): Take out material about menus and detailed
+	menus.
+	(Master Menu Parts, Top Node): Move material about menus here.
+	Use consistent terminology re "master menu" and "detailed menu".
+
+2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Move a line.
 
 2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
