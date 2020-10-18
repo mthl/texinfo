@@ -784,7 +784,6 @@ Texinfo home page: http://www.gnu.org/software/texinfo/") ."\n";
 }
 
 my $Xopt_arg_nr = 0;
-my $latex2html_file = 'latex2html.pm';
 
 my $result_options = Getopt::Long::GetOptions (
  'help|h' => sub { print makeinfo_help(); exit 0; },
@@ -947,6 +946,7 @@ sub normalize_config {
 normalize_config($cmdline_options);
 
 # FIXME do this here or inside format-specific code?
+my $latex2html_file = 'latex2html.pm';
 if (defined($cmdline_options->{'L2H'})) {
   locate_and_load_init_file($latex2html_file, 
                         [ @conf_dirs, @program_init_dirs ]);
