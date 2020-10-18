@@ -2347,16 +2347,24 @@ main text of the document.
 @cindex Top node
 @cindex Node, `Top'
 
-The `Top' node starts off the online output; it does not appear in the
-printed manual.  We repeat the short description from the beginning of
+The `Top' node is the node in which a reader enters an Info manual.
+As such, it should contain a very brief description of the manual
+(including the version number).  The contents of the `Top' node do
+not appear in printed output.
+
+@findex top
+It is conventional to write a @code{@@top} sectioning command
+line containing the title of the document immediately after the
+@code{@@node Top} line (@pxref{@code{@@top} Command}).  This command
+helps @command{makeinfo} determine the relationships between nodes.
+
+We repeat the short description from the beginning of
 the @samp{@@copying} text, but there's no need to repeat the copyright
 information, so we don't use @samp{@@insertcopying} here.
 
-The @samp{@@top} command itself helps @command{makeinfo} determine
-the relationships between nodes.  The `Top' node contains at least a
-top-level @dfn{menu} listing the chapters, and possibly a @dfn{Master
-Menu} listing all the nodes in the entire document.
-
+The `Top' node contains a top-level @dfn{menu} listing the chapters,
+and possibly a @dfn{detailed menu} listing all the nodes in the
+entire document.
 
 @example
 @@node Top
@@ -2372,17 +2380,6 @@ This is a short sample Texinfo file.
 @@end menu
 @end group
 @end example
-
-
-The `Top' node is the node in which a reader enters an Info manual.
-As such, it should contain a very brief description of the manual
-(including the version number) and a master menu for the whole manual.  
-The contents of the `Top' node do not appear in printed output.
-
-@findex top
-It is conventional to write a @code{@@top} sectioning command line 
-containing the title of the document immediately after the @code{@@node 
-Top} line (@pxref{@code{@@top} Command}).
 
 @menu
 * Top Node Example::
@@ -2426,32 +2423,23 @@ Additional general information.
 
 A @dfn{master menu} is the main menu.  It is customary to include a
 detailed menu listing all the nodes in the document in this menu.
-
 Like any other menu, a master menu is enclosed in @code{@@menu} and
 @code{@@end menu} and does not appear in the printed output.
 
-Generally, a master menu is divided into parts.
+The master menu contains entries for the major nodes in the Texinfo
+file: the nodes for the chapters, chapter-like sections, and the
+appendices, followed by nodes for the indices.
 
-@itemize @bullet
-@item
-The first part contains the major nodes in the Texinfo file: the nodes
-for the chapters, chapter-like sections, and the appendices.
-
-@item
-The second part contains nodes for the indices.
-
-@item
 @findex detailmenu
 @cindex Detailed menu
-The third and subsequent parts contain a listing of the other,
-lower-level nodes, often ordered by chapter.  This way, rather than go
-through an intermediary menu, an inquirer can go directly to a
-particular node when searching for specific information.  These menu
-items are not required; add them if you think they are a convenience.
-If you do use them, put @code{@@detailmenu} before the first one, and
-@code{@@end detailmenu} after the last; otherwise, @code{makeinfo}
-will get confused.
-@end itemize
+
+You may choose to follow these entries with a @dfn{defailed menu}.
+This lists other, lower-level nodes, often ordered by chapter.
+These items may be a convenience for an inquirer who can go directly
+to a particular node when searching for specific information, rather
+than going through an intermediate menu.  If you use a detailed menu
+in your master menu, mark it with the @code{@@detailmenu @dots{}
+@@end detailmenu} environment, or @command{makeinfo} will get confused.
 
 Each section in the menu can be introduced by a descriptive line.  So
 long as the line does not begin with an asterisk, it will not be
@@ -2773,21 +2761,12 @@ letting @code{makeinfo} determine them.
 @cindex Automatic pointer creation with @code{makeinfo}
 @cindex Implicit pointer creation with @code{makeinfo}
 The @code{makeinfo} program automatically determines node pointers
-for a hierarchically organized document.  For it do to do this, each 
-@code{@@node} command should be followed immediately by a sectioning 
-command such as @code{@@chapter} or @code{@@section} (except that 
-comment lines may intervene).  Also, you must write the name of each 
-node (except for the `Top' node) in a menu that is one or more 
-hierarchical levels above the node's level.  Finally, you must follow 
-the `Top' @code{@@node} line with a line beginning with @code{@@top} to 
-mark the top-level node in the file.  @xref{@code{@@top} Command}.
-
-@cindex Detail menu
-@findex detailmenu
-If you use a detailed menu in your master menu (@pxref{Master Menu
-Parts}), mark it with the @code{@@detailmenu @dots{} @@end
-detailmenu} environment, or @command{makeinfo} will get confused,
-typically about the last and/or first node in the document.
+for a hierarchically organized document.  For it do to do this, each
+@code{@@node} command should be followed immediately by a sectioning
+command such as @code{@@chapter} or @code{@@section} (except that
+comment lines may intervene).  Finally, you must follow the `Top'
+@code{@@node} line with a line beginning with @code{@@top} to mark
+the top-level node in the file.  @xref{@code{@@top} Command}.
 
 Even when you explicitly specify all pointers, you cannot write the
 nodes in the Texinfo source file in an arbitrary order.
@@ -15556,6 +15535,7 @@ internally by @code{makeinfo} and then discarded.
 @cindex Node separators, omitting with @option{--no-headers}
 @cindex Generating plain text files with @option{--no-headers}
 @cindex Menus, omitting with @option{--no-headers}
+@vindex HEADERS
 Do not include menus or node separator lines in the output.
 
 When generating Info, this is the same as using @option{--plaintext},
@@ -16709,10 +16689,14 @@ Name of the program used.  By default, it is set to the name of the
 program launched, with a trailing @samp{.pl} removed.
 
 @item SHOW_MENU
-@vindex HEADERS
 @opindex --no-headers
-If set, Texinfo menus are output.  By default, it is set unless
-generating Docbook or if @option{--no-headers} is specified.
+If set to @samp{1}, output Texinfo menus.  This is the default for
+Info.  @samp{sectiontoc} is the default setting for HTML, where instead
+of the contents of @code{@@menu} blocks being output, a list of subordinate
+sections is output in each node.
+
+This variable is not set by default when generating Docbook, or when
+@option{--no-headers} is specified.
 
 @item SORT_ELEMENT_COUNT
 @pindex texi-elements-by-size
