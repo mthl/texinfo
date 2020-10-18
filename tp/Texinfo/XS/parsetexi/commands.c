@@ -116,7 +116,7 @@ wipe_user_commands (void)
 int
 close_paragraph_command (enum command_id cmd)
 {
-  if (cmd == CM_verbatim || CM_displaymath)
+  if (cmd == CM_verbatim || cmd == CM_displaymath)
     return 1;
 
   /* Block commands except 'raw' and 'conditional'.  */
