@@ -1,6 +1,6 @@
 /* install-info -- merge Info directory entries from an Info file.
 
-   Copyright 1996-2019 Free Software Foundation, Inc.
+   Copyright 1996-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -632,7 +632,7 @@ ensure_dirfile_exists (char *dirfile)
   if (desc < 0 && errno == ENOENT)
     {
       FILE *f;
-      char *readerr = strerror (errno);
+      const char *readerr = strerror (errno);
       f = fopen (dirfile, "w");
       if (f)
         {

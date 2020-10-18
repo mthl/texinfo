@@ -1,3 +1,11 @@
+2020-10-18  Philipp Klaus Krause <pkk@spth.de>  (tiny change)
+
+	const char *
+
+	* info/filesys.c (filesys_error_string),
+	* install-info/install-info.c (ensure_dirfile_exists): Store
+	return value of strerror in a const char * variable.
+
 2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Top Node Example): Merge into parent.

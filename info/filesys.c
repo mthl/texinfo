@@ -1,6 +1,6 @@
 /* filesys.c -- filesystem specific functions.
 
-   Copyright 1993-2019 Free Software Foundation, Inc.
+   Copyright 1993-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -539,7 +539,7 @@ char *
 filesys_error_string (char *filename, int error_num)
 {
   int len;
-  char *result;
+  const char *result;
 
   if (error_num == 0)
     return NULL;
