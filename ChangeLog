@@ -1,5 +1,9 @@
 2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Top Node Example): Merge into parent.
+
+2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Reorder nodes.
 
 	* doc/texinfo.texi (Texinfo Document Structure, Writing a Node):

@@ -196,7 +196,6 @@ Title and Copyright Pages
 
 The `Top' Node and Master Menu
 
-* Top Node Example::
 * Master Menu Parts::
 
 Nodes
@@ -2346,6 +2345,7 @@ main text of the document.
 @section The `Top' Node and Master Menu
 @cindex Top node
 @cindex Node, `Top'
+@anchor{Top Node Example}@c
 
 The `Top' node is the node in which a reader enters an Info manual.
 As such, it should contain a very brief description of the manual
@@ -2366,6 +2366,7 @@ The `Top' node contains a top-level @dfn{menu} listing the chapters,
 and possibly a @dfn{detailed menu} listing all the nodes in the
 entire document.
 
+@cindex Top node example
 @example
 @@node Top
 @@top Short Sample
@@ -2382,37 +2383,8 @@ This is a short sample Texinfo file.
 @end example
 
 @menu
-* Top Node Example::
 * Master Menu Parts::
 @end menu
-
-
-@node Top Node Example
-@subsection Top Node Example
-
-@cindex Top node example
-
-Here is an example of a Top node.
-
-@example
-@group
-@@node Top
-@@top Sample Title
-
-This is the text of the top node.
-@end group
-
-Additional general information.
-
-@group
-@@menu
-* First Chapter::
-* Second Chapter::
-@dots{}
-* Index::
-@end group
-@@end menu
-@end example
 
 
 @node Master Menu Parts
