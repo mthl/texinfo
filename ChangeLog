@@ -1,3 +1,11 @@
+2020-10-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
+
+	* doc/texinfo.texi: Docbook -> DocBook throughout.
+	(Overview): Reword slightly.
+	(Texinfo Document Structure): Remove node self-reference.
+
 2020-10-18  Philipp Klaus Krause <pkk@spth.de>  (tiny change)
 
 	const char *

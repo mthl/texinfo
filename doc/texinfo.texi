@@ -746,7 +746,7 @@ typesetting system) in PDF or PostScript format, including chapters,
 sections, cross-references, and indices.  From the same Texinfo source
 file, you can create an HTML output file suitable for use with a web
 browser, you can create an Info file with special features to make
-browsing documentation easy, and also create a Docbook file or a
+browsing documentation easy, and also create a DocBook file or a
 transliteration to XML format.
 
 @cindex Source file format
@@ -765,11 +765,11 @@ called Texinfo mode, that provides various Texinfo-related features.
 Texinfo was devised specifically for the purpose of writing software
 documentation and manuals.  If you want to write a good manual for
 your program, Texinfo has many features which we hope will make your
-job easier.  However, it provides almost no commands for controlling
-the final formatting.  Texinfo is not intended to be a general-purpose
-formatting program, so if you need to lay out a newspaper, devise a
-glossy magazine ad, or follow the exact formatting requirements of
-a publishing house, Texinfo may not be the simplest tool.
+job easier.  However, Texinfo is not intended to be a general-purpose
+formatting program.  It provides almost no commands for controlling
+the final formatting, so may be inappropriate for your needs if you
+if you want to lay out a newspaper, devise a glossy magazine ad,
+or follow the exact formatting requirements of a publishing house,
 
 @cindex Spelling of Texinfo
 @cindex Pronunciation of Texinfo
@@ -918,14 +918,14 @@ background.  By default, Texinfo uses the @command{pdftex} program, an
 extension of @TeX{}, to output PDF; see
 @uref{http://tug.org/applications/pdftex}.  @xref{PDF Output}.
 
-@item Docbook
-@cindex Docbook output, overview
-@cindex XML Docbook output, overview
+@item DocBook
+@cindex DocBook output, overview
+@cindex XML DocBook output, overview
 (Generated via @command{makeinfo --docbook}.)  This is an XML-based
 format developed some years ago, primarily for technical
 documentation.  It therefore bears some resemblance, in broad
 outline, to Texinfo.  See @uref{http://www.docbook.org}.  Various
-converters from Docbook @emph{to} Texinfo have also been developed;
+converters from DocBook @emph{to} Texinfo have also been developed;
 see the Texinfo web pages.
 
 @item XML
@@ -1353,7 +1353,7 @@ ignored.
 Keep them everywhere; in attributes, escaped as @samp{\f}; also,
 @samp{\} is escaped as @samp{\\} and newline as @samp{\n}.
 
-@item Docbook
+@item DocBook
 Completely removed, as they are not allowed.
 @end table
 
@@ -1829,7 +1829,7 @@ The @code{@@quotation} has no legal significance; it's there to improve
 readability in some contexts.
 
 The text of @code{@@copying} is output as a comment at the beginning
-of Info, HTML, XML, and Docbook output files.  It is @emph{not} output
+of Info, HTML, XML, and DocBook output files.  It is @emph{not} output
 implicitly in plain text or @TeX{}; it's up to you to use
 @code{@@insertcopying} to emit the copying information.  See the next
 section for details.
@@ -1911,7 +1911,7 @@ beginning of each HTML output file, as an HTML comment.  Again, this
 text is not visible (unless the reader views the HTML source).
 
 The permissions text defined by @code{@@copying} also appears
-automatically at the beginning of the XML and Docbook output files.
+automatically at the beginning of the XML and DocBook output files.
 
 
 @node Titlepage & Copyright Page
@@ -2983,8 +2983,7 @@ chapters, sections, subsections, and the like provide structure for
 printed books.  The two structures are theoretically distinct; in
 practice, however, the tree structure of printed books is essentially
 always used for the node and menu structure also, as this leads to a
-document which is easiest to follow.  @xref{Texinfo Document
-Structure}.
+document which is easiest to follow.
 
 Typically, the sectioning structure and the node structure are
 completely parallel, with one node for each chapter, section, etc.,
@@ -3612,7 +3611,7 @@ In HTML, the @code{@@chapter} command produces an @code{<h2>}-level
 header by default (controlled by the @code{CHAPTER_HEADER_LEVEL}
 customization variable, @pxref{Other Customization Variables}).
 
-In the XML and Docbook output, a @code{<chapter>} element is produced
+In the XML and DocBook output, a @code{<chapter>} element is produced
 that includes all the following sections, up to the next chapter.
 
 
@@ -3640,8 +3639,8 @@ outputs.  This kind of stylistic choice is not usually offered by
 Texinfo.  It may be suitable for short documents.
 @c but the Hacker's Dictionary wanted it, before they quit Texinfo.
 
-@cindex Docbook and prefatory sections
-@cindex Preface, etc., and Docbook
+@cindex DocBook and prefatory sections
+@cindex Preface, etc., and DocBook
 With @code{@@unnumbered}, if the name of the associated node is one of
 these English words (case-insensitive):
 
@@ -3649,13 +3648,13 @@ these English words (case-insensitive):
 Acknowledgements  Colophon  Dedication  Preface
 @end example
 
-@cindex @code{<acknowledgements>} Docbook tag
-@cindex @code{<colophon>} Docbook tag
-@cindex @code{<dedication>} Docbook tag
-@cindex @code{<preface>} Docbook tag
-@cindex @code{<chapter>} Docbook tag
-@cindex @code{<title>} Docbook tag
-@noindent then the Docbook output uses corresponding special tags
+@cindex @code{<acknowledgements>} DocBook tag
+@cindex @code{<colophon>} DocBook tag
+@cindex @code{<dedication>} DocBook tag
+@cindex @code{<preface>} DocBook tag
+@cindex @code{<chapter>} DocBook tag
+@cindex @code{<title>} DocBook tag
+@noindent then the DocBook output uses corresponding special tags
 (@code{<preface>}, etc.)@: instead of the default @code{<chapter>}.
 The argument to @code{@@unnumbered} itself can be anything, and is
 output as the following @code{<title>} text as usual.
@@ -3722,7 +3721,7 @@ might produce the following in Info:
 
 Section titles are listed in the table of contents.
 
-The @TeX{}, HTML, Docbook, and XML output is all analogous to the
+The @TeX{}, HTML, DocBook, and XML output is all analogous to the
 chapter-level output, just ``one level down''; @pxref{@code{@@chapter}}.
 
 
@@ -3797,7 +3796,7 @@ might produce
 
 Subsection titles are listed in the table of contents.
 
-The @TeX{}, HTML, Docbook, and XML output is all analogous to the
+The @TeX{}, HTML, DocBook, and XML output is all analogous to the
 chapter-level output, just ``two levels down'';
 @pxref{@code{@@chapter}}.
 
@@ -3888,7 +3887,7 @@ might produce
 @end group
 @end example
 
-The @TeX{}, HTML, Docbook, and XML output is all analogous to the
+The @TeX{}, HTML, DocBook, and XML output is all analogous to the
 chapter-level output, just ``three levels down''; @pxref{@code{@@chapter}}.
 
 
@@ -3941,7 +3940,7 @@ In the HTML output, the @code{@@part} text is similarly included in
 the tables of contents, and a heading is included in the main document
 text, as part of the following chapter or appendix node.
 
-In the XML and Docbook output, the @code{<part>} element includes all
+In the XML and DocBook output, the @code{<part>} element includes all
 the following chapters, up to the next @code{<part>}.  A @code{<part>}
 containing chapters is also closed at an appendix.
 
@@ -5872,7 +5871,7 @@ the abbreviation do not end a sentence.
 @cindex @code{<abbr>} and @code{<abbrev>} tags
 In @TeX{} and in the Info output, the first argument is printed as-is;
 if the second argument is present, it is printed in parentheses after
-the abbreviation.  In HTML the @code{<abbr>} tag is used; in Docbook,
+the abbreviation.  In HTML the @code{<abbr>} tag is used; in DocBook,
 the @code{<abbrev>} tag is used.  For instance:
 
 @example
@@ -5916,7 +5915,7 @@ argument, remember to use the @code{@@.} or similar command
 In @TeX{}, the acronym is printed in slightly smaller font.  In the
 Info output, the argument is printed as-is.  In either format, if the
 second argument is present, it is printed in parentheses after the
-acronym.  In HTML and Docbook the @code{<acronym>} tag is used.
+acronym.  In HTML and DocBook the @code{<acronym>} tag is used.
 
 For instance (since GNU is a recursive acronym, we use
 @code{@@acronym} recursively):
@@ -6212,11 +6211,11 @@ selects the @t{fixed-width}, typewriter-style font used by @code{@@code};
 others, at which time it did not seem desirable to use very short
 names for such infrequently needed features.)
 
-@cindex @code{<lineannotation>} Docbook tag
+@cindex @code{<lineannotation>} DocBook tag
 The @code{@@r} command can be useful in example-like environments, to
 write comments in the standard roman font instead of the fixed-width
 font.  This looks better in printed output, and produces a
-@code{<lineannotation>} tag in Docbook output.
+@code{<lineannotation>} tag in DocBook output.
 
 For example,
 
@@ -6414,13 +6413,13 @@ If the @code{@@quotation} argument is one of these English words
 Caution  Important  Note  Tip  Warning
 @end example
 
-@cindex @code{<caution>} Docbook tag
-@cindex @code{<important>} Docbook tag
-@cindex @code{<note>} Docbook tag
-@cindex @code{<tip>} Docbook tag
-@cindex @code{<warning>} Docbook tag
+@cindex @code{<caution>} DocBook tag
+@cindex @code{<important>} DocBook tag
+@cindex @code{<note>} DocBook tag
+@cindex @code{<tip>} DocBook tag
+@cindex @code{<warning>} DocBook tag
 @cindex @code{<blockquote>} HTML tag
-@noindent then the Docbook output uses corresponding special tags
+@noindent then the DocBook output uses corresponding special tags
 (@code{<note>}, etc.)@: instead of the default @code{<blockquote>}.
 HTML output always uses @code{<blockquote>}.
 
@@ -7648,7 +7647,7 @@ input lines in your source file as necessary.
 @cindex @code{<thead>} HTML/XML tag
 You can also use @code{@@headitem} instead of @code{@@item} to produce
 a @dfn{heading row}.  The @TeX{} output for such a row is in bold, and
-the HTML and Docbook output uses the @code{<thead>} tag.  In Info, the
+the HTML and DocBook output uses the @code{<thead>} tag.  In Info, the
 heading row is followed by a separator line made of dashes (@samp{-}
 characters).
 
@@ -7984,14 +7983,14 @@ order).  If none of those exist, it gives an error, and outputs a
 reference to @file{@var{filename}.jpg} anyway.
 
 @item
-@cindex SVG images, used in Docbook
-For Docbook, @code{makeinfo} outputs references to
+@cindex SVG images, used in DocBook
+For DocBook, @code{makeinfo} outputs references to
 @file{@var{filename}.eps}, @file{@var{filename}.gif}
 @file{@var{filename}.jpeg}, @file{@var{filename}.jpg},
 @file{@var{filename}.pdf}, @file{@var{filename}.png} and
 @file{@var{filename}.svg}, for every file found.  Also,
 @file{@var{filename}.txt} is included verbatim, if present.  (The
-subsequent Docbook processor is supposed to choose the appropriate one.)
+subsequent DocBook processor is supposed to choose the appropriate one.)
 
 @item
 For Info and HTML output, @code{makeinfo} uses the optional fifth
@@ -8548,7 +8547,7 @@ generates the indexing formatting commands, takes care of placing
 commas in the correct places for you.
 
 These features are most useful with printed documents created
-with @TeX{}, and when translating Texinfo to Docbook.
+with @TeX{}, and when translating Texinfo to DocBook.
 
 @node Index Entries
 @section Making Index Entries
@@ -8696,7 +8695,7 @@ In HTML output, @code{@@printindex} produces links to the index
 entries.
 
 @item
-In XML and Docbook output, it simply records the index to be printed.
+In XML and DocBook output, it simply records the index to be printed.
 @end itemize
 
 
@@ -9339,7 +9338,7 @@ the code-like highlighting commands, @code{@@var}, @code{@@abbr}, and
 @samp{@@code@{foo. bar@}} the period is not considered to be the end of a
 sentence, and no extra space is inserted.
 
-@code{@@:} has no effect on the HTML or Docbook output.
+@code{@@:} has no effect on the HTML or DocBook output.
 
 
 @node Ending a Sentence
@@ -9449,7 +9448,7 @@ This is text. Two sentences. Three sentences. Non-French spacing.
 @code{@@frenchspacing} also affects the output after @code{@@.},
 @code{@@!}, and @code{@@?} (@pxref{Ending a Sentence}).
 
-@code{@@frenchspacing} has no effect on the HTML or Docbook output;
+@code{@@frenchspacing} has no effect on the HTML or DocBook output;
 for XML, it outputs a transliteration of itself (@pxref{Output
 Formats}).
 
@@ -10592,7 +10591,7 @@ an error is given.  (@xref{@code{@@documentencoding}}.)
 
 @cindex Entity reference in HTML et al.
 @cindex @samp{&#x@var{hex};}, output from @code{@@U}
-In HTML, XML, and Docbook, the output from @code{@@U} is always an
+In HTML, XML, and DocBook, the output from @code{@@U} is always an
 entity reference of the form @samp{&#x@var{hex};}, as in
 @samp{&#x0132;} for the example above.  This should work even when an
 HTML document uses some other encoding (say, Latin@tie{}1) and the
@@ -12286,7 +12285,7 @@ this:
      charset=@var{enc}">
 @end example
 
-In XML and Docbook output, UTF-8 is always used for the output,
+In XML and DocBook output, UTF-8 is always used for the output,
 according to the conventions of those formats.
 
 @cindex Computer Modern fonts
@@ -12377,7 +12376,7 @@ The environments for the other formats are analogous:
 
 @table @code
 @item @@ifdocbook @dots{} @@end ifdocbook
-Text to appear only in the Docbook output.
+Text to appear only in the DocBook output.
 
 @item @@ifhtml @dots{} @@end ifhtml
 Text to appear only in the HTML output.
@@ -12420,7 +12419,7 @@ Whereas this text will only appear in plain text.
 Notwithstanding that this will only appear in XML@.
 @@end ifxml
 @@ifdocbook
-Nevertheless, this will only appear in Docbook.
+Nevertheless, this will only appear in DocBook.
 @@end ifdocbook
 @end example
 
@@ -12443,7 +12442,7 @@ Whereas this text will only appear in plain text.
 Notwithstanding that this will only appear in XML@.
 @end ifxml
 @ifdocbook
-Nevertheless, this will only appear in Docbook.
+Nevertheless, this will only appear in DocBook.
 @end ifdocbook
 
 @noindent
@@ -12607,12 +12606,12 @@ will be included in the XML output as:
 @end group
 @end example
 
-@cindex Docbook, including raw
+@cindex DocBook, including raw
 @findex ifdocbook
 @findex docbook
 Again likewise, you can use @code{@@ifdocbook @dots{} @@end ifdocbook}
-to delimit Texinfo source to be included in Docbook output only, and
-@code{@@docbook @dots{} @@end docbook} for a region of raw Docbook.
+to delimit Texinfo source to be included in DocBook output only, and
+@code{@@docbook @dots{} @@end docbook} for a region of raw DocBook.
 
 The behavior of newlines in raw regions is unspecified.
 
@@ -15214,7 +15213,7 @@ supports these formats:
 
 @item plain text (with @option{--plaintext}),
 
-@item Docbook (with @option{--docbook}),
+@item DocBook (with @option{--docbook}),
 
 @item Texinfo XML (with @option{--xml}).
 @end table
@@ -15353,7 +15352,7 @@ and @ref{Inserting Accents}.
 
 @item --docbook
 @opindex --docbook
-Generate Docbook output (rather than Info).
+Generate DocBook output (rather than Info).
 
 @item --document-language=@var{lang}
 @opindex --document-language
@@ -15650,7 +15649,7 @@ name for the directory into which all files are written.  For example,
 @item --output-indent=@var{val}
 @opindex --outputindent
 This option now does nothing, but remains for compatibility.  (It used
-to alter indentation in XML/Docbook output.)
+to alter indentation in XML/DocBook output.)
 
 @item -P @var{path}
 @opindex -P @var{path}
@@ -16507,7 +16506,7 @@ into the categories of the previous sections.
 @vtable @code
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use this character; default @code{&rsquo;}
-in HTML, @code{&#8217;} in Docbook.  The default for Info is the same
+in HTML, @code{&#8217;} in DocBook.  The default for Info is the same
 as @code{OPEN_QUOTE_SYMBOL} (see below).
 
 @item CPP_LINE_DIRECTIVES
@@ -16522,10 +16521,10 @@ If set, debugging output is generated; default is off (zero).
 
 @item DOCTYPE
 @vindex SystemLiteral
-For Docbook, HTML, XML@.  Specifies the @code{SystemLiteral}, the
+For DocBook, HTML, XML@.  Specifies the @code{SystemLiteral}, the
 entity's system identifier.  This is a URI which may be used to
 retrieve the entity, and identifies the canonical DTD for the
-document.  The default value is different for each of HTML, Docbook
+document.  The default value is different for each of HTML, DocBook
 and Texinfo@tie{}XML.
 
 @item DUMP_TEXI
@@ -16618,7 +16617,7 @@ default true.
 @item OPEN_QUOTE_SYMBOL
 When an opening quote is needed, e.g., for @samp{@@samp} output, use
 the specified character; default @code{&lsquo;} for HTML,
-@code{&#8216;} for Docbook.  For Info, the default depends on the
+@code{&#8216;} for DocBook.  For Info, the default depends on the
 enabled document encoding (@pxref{@code{@@documentencoding}}); if no
 document encoding is set, or the encoding is US-ASCII, etc., @samp{'}
 is used.  This character usually appears as an undirected single quote
@@ -16667,7 +16666,7 @@ Info.  @samp{sectiontoc} is the default setting for HTML, where instead
 of the contents of @code{@@menu} blocks being output, a list of subordinate
 sections is output in each node.
 
-This variable is not set by default when generating Docbook, or when
+This variable is not set by default when generating DocBook, or when
 @option{--no-headers} is specified.
 
 @item SORT_ELEMENT_COUNT
@@ -16723,7 +16722,7 @@ more than one is specified, the ordering is irrelevant; each is always
 applied at the necessary point during processing.
 
 The only one executed by default is
-@samp{move_index_entries_after_items} for HTML and Docbook output.
+@samp{move_index_entries_after_items} for HTML and DocBook output.
 Here's an example of updating the master menu in a document:
 
 @example
@@ -16760,7 +16759,7 @@ Insert nodes for sectioning commands lacking a corresponding node.
 In @code{@@enumerate} and @code{@@itemize}, move index entries
 appearing just before an @code{@@item} to just after the
 @code{@@item}.  Comment lines between index entries are moved too.  As
-mentioned, this is always done for HTML and Docbook output.
+mentioned, this is always done for HTML and DocBook output.
 
 @item regenerate_master_menu
 Update the Top node master menu, either replacing the (first)
@@ -17985,7 +17984,7 @@ other programs.  This chapter gives some details on such HTML output.
 with which you can influence the HTML output.  @xref{Customization
 Variables}.
 
-@command{makeinfo} can also produce output in XML and Docbook formats,
+@command{makeinfo} can also produce output in XML and DocBook formats,
 but we do not as yet describe these in detail.  @xref{Output Formats},
 for a brief overview of all the output formats.
 
@@ -19324,7 +19323,7 @@ thin space before @var{dimension}.  No effect in Info.
 @xref{@code{@@dmn}}.
 
 @item @@docbook
-Enter Docbook completely.  Pair with @code{@@end docbook}.  @xref{Raw
+Enter DocBook completely.  Pair with @code{@@end docbook}.  @xref{Raw
 Formatter Commands}.
 
 @item @@documentdescription
@@ -22994,7 +22993,7 @@ indentation set by a @code{@@paragraphindent} command
 (@pxref{@code{@@paragraphindent}}).
 @end table
 
-@code{@@firstparagraphindent} is ignored for HTML and Docbook output.
+@code{@@firstparagraphindent} is ignored for HTML and DocBook output.
 
 It is best to write the @code{@@firstparagraphindent} command before the
 end-of-header line at the beginning of a Texinfo file, so the region
