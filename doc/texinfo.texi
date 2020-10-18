@@ -769,7 +769,7 @@ job easier.  However, Texinfo is not intended to be a general-purpose
 formatting program.  It provides almost no commands for controlling
 the final formatting, so may be inappropriate for your needs if you
 if you want to lay out a newspaper, devise a glossy magazine ad,
-or follow the exact formatting requirements of a publishing house,
+or follow the exact formatting requirements of a publishing house.
 
 @cindex Spelling of Texinfo
 @cindex Pronunciation of Texinfo
