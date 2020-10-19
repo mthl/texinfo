@@ -131,9 +131,11 @@ request_callback (WebKitWebPage     *web_page,
       return FALSE;
     }
 
-  if (!memcmp (uri, "file:", 5))
+  /* Links to other Texinfo manuals are rewritten to have the "private"
+     URI scheme. */
+  if (!memcmp (uri, "file:", 5)
+      || !memcmp (uri, "private:", 8))
     {
-
       char *manual, *node;
       /* The links in the HTML files should be relative links like
          "../MANUAL/NODE.html" but by the time this function is called
@@ -158,6 +160,9 @@ request_callback (WebKitWebPage     *web_page,
       g_string_append (s, node);
       send_datagram (s);
       g_string_free (s, TRUE);
+
+      if (!memcmp (uri, "private:", 8))
+        return TRUE;
     }
 
   return FALSE;
@@ -427,6 +432,24 @@ send_pointer (WebKitDOMElement *link_elt,
   free (link);
 }
 
+/* Script to run in newly loaded files.  End each line with a backslash.
+   Avoid // or /* comments outside of strings. */
+#define INJECTED_JAVASCRIPTZ                                  \
+  var x = document.getElementsByClassName("texi-manual");     \
+  for (var i = 0; i < x.length; i++) {                        \
+      if (x[i].href) {                                        \
+        var re = new RegExp('^http://|^https://');            \
+        x[i].href = x[i].href.replace(re, 'private:');        \
+      }                                                       \
+  };                                                          \
+  ;
+
+
+/* Use variadic macro to allow for commas in argument */
+#define stringize(...) #__VA_ARGS__
+#define dostringize(a) stringize(a)
+#define INJECTED_JAVASCRIPT dostringize(INJECTED_JAVASCRIPTZ)
+
 
 void
 document_loaded_callback (WebKitWebPage *web_page,
@@ -465,6 +488,17 @@ document_loaded_callback (WebKitWebPage *web_page,
       find_indices (links, num_links);
       return;
     }
+
+#if 1
+  WebKitFrame *frame = webkit_web_page_get_main_frame (web_page);
+  if (!frame)
+    return;
+  JSCContext *jsc = webkit_frame_get_js_context (frame);
+  if (!jsc)
+    return;
+  (void) jsc_context_evaluate (jsc, INJECTED_JAVASCRIPT, -1);
+  debug (1, "INJECT |%s|\n", INJECTED_JAVASCRIPT);
+#endif
 
   WebKitDOMElement *link_elt;
 

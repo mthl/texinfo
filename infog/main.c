@@ -522,7 +522,7 @@ socket_cb (GSocket *socket,
       if (!p)
         break;
       *p = 0;
-      debug (1, "received message of type |%s|\n", buffer);
+      //debug (1, "received message of type |%s|\n", buffer);
 
       char **save_where = 0;
       if (!strcmp (buffer, "next"))
@@ -992,7 +992,7 @@ main (int argc, char *argv[])
     /* Create a web view to parse index files.  */
     hiddenWebView = WEBKIT_WEB_VIEW(webkit_web_view_new());
 
-#define FIRST_MANUAL "hello"
+#define FIRST_MANUAL "texinfo"
 
     load_manual (FIRST_MANUAL);
 
