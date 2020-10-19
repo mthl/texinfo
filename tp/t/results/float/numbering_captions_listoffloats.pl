@@ -8433,7 +8433,7 @@ See <a href="#text-with-a-lot-of-features">Text 1</a>.
 <a href="#text-with-a-lot-of-features">title</a>.
 </p>
 <p>And now a ref (with manual without printed manual)
-<a href="manual.html#text-with-a-lot-of-features">(manual)title</a>.
+<a class="texi-manual" href="manual.html#text-with-a-lot-of-features">(manual)title</a>.
 </p>
 <p>And now a ref (without manual with a printed manual)
 &lsquo;title&rsquo; in <cite>printed manual title</cite>.

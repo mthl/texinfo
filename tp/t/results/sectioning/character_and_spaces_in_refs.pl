@@ -2019,11 +2019,11 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 <li><a href="#other-nodes">Chapter with nodes</a></li>
 </ul>
 
-<p><a href="manual.html#a-node">(manual)a  node</a>
-<a href="manual.html#g_t_003a">(manual):</a>
-<a href="manual.html#Top">(manual)top</a>
-<a href="texinfo.html#Cross-References">(texinfo)Cross References</a>
-<a href="doc.html#node">(../manual/doc)node</a>
+<p><a class="texi-manual" href="manual.html#a-node">(manual)a  node</a>
+<a class="texi-manual" href="manual.html#g_t_003a">(manual):</a>
+<a class="texi-manual" href="manual.html#Top">(manual)top</a>
+<a class="texi-manual" href="texinfo.html#Cross-References">(texinfo)Cross References</a>
+<a class="texi-manual" href="doc.html#node">(../manual/doc)node</a>
 </p>
 <span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
 <ul class="section-toc">

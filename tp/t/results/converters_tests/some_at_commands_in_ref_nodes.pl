@@ -1841,7 +1841,7 @@ $result_converted{'html_text'}->{'some_at_commands_in_ref_nodes'} = '
 </div>
 <span id="A-SC-node-i-i-E-l-C-_00a1"></span><h2 class="chapter">1 A <small>SC</small> node &iuml; &iuml; &#274;` &#322; &#262;, &iexcl;</h2>
 
-<p>see <a href="manual.html#a-strong-ref-with-SC_002c-a-i-trema-_00ef_002c-a-dotless-i-trema-_00ef-_1e14-and-exclamdown-_00a1">(manual)a <strong>strong</strong> ref with <small>SC</small>, a i trema &iuml;, a dotless i trema &iuml; &#274;` and exclamdown &iexcl;</a>.
+<p>see <a class="texi-manual" href="manual.html#a-strong-ref-with-SC_002c-a-i-trema-_00ef_002c-a-dotless-i-trema-_00ef-_1e14-and-exclamdown-_00a1">(manual)a <strong>strong</strong> ref with <small>SC</small>, a i trema &iuml;, a dotless i trema &iuml; &#274;` and exclamdown &iexcl;</a>.
 </p><hr>
 ';
 

@@ -855,8 +855,8 @@ Next: <a href="no_existing_no_manual_direction.html#Top" accesskey="n" rel="next
 </div>
 <span id="top"></span><h1 class="top">top</h1>
 
-<p><a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
-<a href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
+<p><a class="texi-manual" href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
+<a class="texi-manual" href="no_existing_no_manual.html#a">(no_existing_no_manual.info)c</a>
 </p>
 
 <hr>

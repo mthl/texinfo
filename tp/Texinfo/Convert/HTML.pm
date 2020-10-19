@@ -3321,10 +3321,12 @@ sub _convert_xref_commands($$$$)
     my $reference = $name;
     my $book_reference = '';
     if (!$self->in_string() and $href ne '') {
+      # class to distiguish links to Texinfo manuals from other links
+      my $class = $self->_attribute_class('a', 'texi-manual');
       if ($name ne '') {
-        $reference = "<a href=\"$href\">$name</a>";
+        $reference = "$class href=\"$href\">$name</a>";
       } elsif ($book ne '') {
-        $book_reference = "<a href=\"$href\">$book</a>"; 
+        $book_reference = "$class href=\"$href\">$book</a>"; 
       }
     }
     if ($cmdname eq 'pxref') {
