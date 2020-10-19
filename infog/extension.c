@@ -131,15 +131,13 @@ request_callback (WebKitWebPage     *web_page,
       return FALSE;
     }
 
-  /* Links to other Texinfo manuals are rewritten to have the "private"
-     URI scheme. */
-  if (!memcmp (uri, "file:", 5)
-      || !memcmp (uri, "private:", 8))
+  /* Web links to other Texinfo manuals are rewritten to have the "private"
+     URI scheme.  Any relative links like "../MANUAL/NODE.html"
+     are absolute paths beginning "file:/" by the time this function
+     is called. */
+  if (!memcmp (uri, "private:", 8))
     {
       char *manual, *node;
-      /* The links in the HTML files should be relative links like
-         "../MANUAL/NODE.html" but by the time this function is called
-         they are absolute paths beginning "file:/". */
       parse_external_url (uri, &manual, &node);
       if (!manual || !node)
         {
@@ -152,19 +150,45 @@ request_callback (WebKitWebPage     *web_page,
 
       if (!current_manual || strcmp(manual, current_manual) != 0)
         {
-          if (!load_manual (manual))
-            ;// return TRUE; /* Cancel load request */
+          load_manual (manual);
         }
+
+      /* Ask main process to load node for us.  */
       GString *s = g_string_new (NULL);
       g_string_append (s, "new-node\n");
       g_string_append (s, node);
       send_datagram (s);
       g_string_free (s, TRUE);
 
-      if (!memcmp (uri, "private:", 8))
-        return TRUE;
+      return TRUE; /* Cancel load request */
     }
+  else if (!memcmp (uri, "file:", 5))
+    {
+      /* Load file for real. */
+      char *manual, *node;
+      parse_external_url (uri, &manual, &node);
+      if (!manual || !node)
+        {
+          /* Possibly a *.css file or malformed link. */
+          free (manual); free (node);
+          return FALSE;
+        }
 
+      debug (1, "finding manual and node %s:%s\n", manual, node);
+
+      if (!current_manual || strcmp(manual, current_manual) != 0)
+        {
+          load_manual (manual);
+        }
+
+      /* Update sidebar */
+      GString *s = g_string_new (NULL);
+      g_string_append (s, "inform-new-node\n");
+      g_string_append (s, node);
+      send_datagram (s);
+      g_string_free (s, TRUE);
+    }
+  
   return FALSE;
 }
 

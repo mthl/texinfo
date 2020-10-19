@@ -495,6 +495,30 @@ switch_node (char *p)
     }
 }
 
+/* Used to load a new node.  Used when the subprocess doesn't
+   know the absolute file name after loading a new manual. */
+void
+load_node (char *p)
+{
+  if (!current_manual_dir)
+    {
+      debug (1, "ABORT LOAD NODE %s\n", p);
+      return;
+    }
+
+  debug (1, "NEW NODE %s\n", p);
+
+  GString *s = g_string_new (NULL);
+  g_string_append (s, "file:");
+  g_string_append (s, current_manual_dir);
+  g_string_append (s, "/");
+  g_string_append (s, p);
+  g_string_append (s, ".html");
+  debug (1, "TRY LOAD %s\n", s->str);
+  webkit_web_view_load_uri (webView, s->str);
+  g_string_free (s, TRUE);
+}
+
 
 gboolean
 socket_cb (GSocket *socket,
@@ -560,13 +584,18 @@ socket_cb (GSocket *socket,
           webkit_web_view_load_uri (hiddenWebView, s->str);
           g_string_free (s, TRUE);
         }
-      else if (!strcmp (buffer, "new-node"))
+      else if (!strcmp (buffer, "inform-new-node"))
         {
           p++;
           if (toc_paths)
             switch_node (p);
           free (next_link); free (prev_link); free (up_link);
           next_link = prev_link = up_link = 0;
+        }
+      else if (!strcmp (buffer, "new-node"))
+        {
+          p++;
+          load_node (p);
         }
       else if (!strcmp (buffer, "toc"))
         {
