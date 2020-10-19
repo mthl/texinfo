@@ -256,6 +256,43 @@ GtkTreeIter last_iter;
 GtkTreeIter *toc_iter_ptr;
 int toc_empty = 1;
 
+/* Used when a new node should be selected in the TOC sidebar,
+   but it is not ready yet. */
+char *pending_node = 0;
+
+/* Activate a new node entry in the sidebar. */
+void
+switch_node (char *p)
+{
+  GtkTreeIter *iter = g_tree_lookup (toc_paths, p);
+  debug (1, "SWITCH %s\n", p);
+  if (iter)
+    {
+      char *path = gtk_tree_model_get_string_from_iter
+                     (GTK_TREE_MODEL(toc_store), iter);
+      if (path)
+        {
+          GtkTreePath *path2 = gtk_tree_path_new_from_string (path);
+          GtkTreePath *parent = gtk_tree_path_copy (path2);
+
+          if (gtk_tree_path_up (parent))
+            gtk_tree_view_expand_to_path (toc_pane, parent);
+
+          gtk_tree_selection_select_path (toc_selection, path2);
+          gtk_tree_view_scroll_to_cell (toc_pane, path2,
+                                        NULL, TRUE, 0.5, 0);
+          gtk_tree_path_free (path2);
+          gtk_tree_path_free (parent);
+          free (path);
+        }
+      }
+    else
+      {
+        debug (1, "NOT IN TOC\n");
+      }
+}
+
+
 /* P is a pointer to lines sent from the web process extension representing the 
    table of contents.  The lines are in pairs: the first, with the user-visible 
    text, the second, with the URL.  The hierarchical structure of the TOC is 
@@ -469,32 +506,6 @@ load_manual (char *manual)
   g_string_free (s, TRUE);
 }
 
-void
-switch_node (char *p)
-{
-  GtkTreeIter *iter = g_tree_lookup (toc_paths, p);
-  if (iter)
-    {
-      char *path = gtk_tree_model_get_string_from_iter
-                     (GTK_TREE_MODEL(toc_store), iter);
-      if (path)
-        {
-          GtkTreePath *path2 = gtk_tree_path_new_from_string (path);
-          GtkTreePath *parent = gtk_tree_path_copy (path2);
-
-          if (gtk_tree_path_up (parent))
-            gtk_tree_view_expand_to_path (toc_pane, parent);
-
-          gtk_tree_selection_select_path (toc_selection, path2);
-          gtk_tree_view_scroll_to_cell (toc_pane, path2,
-                                        NULL, TRUE, 0.5, 0);
-          gtk_tree_path_free (path2);
-          gtk_tree_path_free (parent);
-          free (path);
-        }
-    }
-}
-
 /* Used to load a new node.  Used when the subprocess doesn't
    know the absolute file name after loading a new manual. */
 void
@@ -588,7 +599,14 @@ socket_cb (GSocket *socket,
         {
           p++;
           if (toc_paths)
-            switch_node (p);
+            {
+              switch_node (p);
+            }
+          else
+            {
+              free (pending_node); pending_node = strdup (p);
+              debug (1, "TOC PATHS NOT READY\n");
+            }
           free (next_link); free (prev_link); free (up_link);
           next_link = prev_link = up_link = 0;
         }
@@ -601,6 +619,16 @@ socket_cb (GSocket *socket,
         {
           p++;
           load_toc (p);
+        }
+      else if (!strcmp (buffer, "toc-finished"))
+        {
+          debug (1, "TOC FINISHED\n");
+          if (pending_node)
+            {
+              debug (1, "HANDLE PENDING NODE %s\n", pending_node);
+              switch_node (pending_node);
+              free (pending_node); pending_node = 0;
+            }
         }
       else if (!strcmp (buffer, "index-nodes"))
         {
@@ -1002,7 +1030,7 @@ main (int argc, char *argv[])
     /* This is used to use a separate process for the web browser
        that looks up the index files.  This stops the program from freezing 
        while the index files are processed.  */
-    if (0)
+    if (1)
       {
         webkit_web_context_set_process_model (
           webkit_web_context_get_default (),

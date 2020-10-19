@@ -96,7 +96,8 @@ request_callback (WebKitWebPage     *web_page,
 {
   const char *uri = webkit_uri_request_get_uri (request);
 
-  debug (1, "Intercepting link <%s>\n", uri);
+  debug (1, "Intercepting link <%s> (page %d)\n", uri,
+             webkit_web_page_get_id (web_page));
 
   /* Clear flags on WebKitWebPage object.  These flags are checked after
      the page is actually loaded.  We can't use global variables for this
@@ -408,6 +409,11 @@ send_toc (WebKitDOMDocument *dom_document)
 
   packetize ("toc", toc);
   g_string_free (toc, TRUE);
+
+  GString *s1 = g_string_new (NULL);
+  g_string_append (s1, "toc-finished\n");
+  send_datagram (s1);
+  g_string_free (s1, TRUE);
 }
 
 void
