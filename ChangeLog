@@ -1,5 +1,16 @@
 2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Set MENU_ENTRY_COLON back to :.
+	
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	Change 'MENU_ENTRY_COLON' back from '' to ':'.
+
+	If somebody specifies '-c SHOW_MENU=1', they probably
+	want something that looks more like the Info output.
+	':' was the default setting until 2019-02-10.
+
+2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Don't add menus in HTML.pm.
 	
 	* tp/Texinfo/Convert/HTML.pm (_convert): Remove code to add a menu

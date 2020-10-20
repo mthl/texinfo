@@ -760,11 +760,11 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <table class="menu" border="0" cellspacing="0">
-<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="2">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b1c_002ec" accesskey="3">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b2c_002ec" accesskey="4">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
-<tr><td align="left" valign="top">&bull; <a href="f.html#b3c_002ec" accesskey="5">a</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="1">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b" accesskey="2">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b1c_002ec" accesskey="3">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b2c_002ec" accesskey="4">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top"></td></tr>
+<tr><td align="left" valign="top">&bull; <a href="f.html#b3c_002ec" accesskey="5">a</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">d</td></tr>
 </table>
 
 
