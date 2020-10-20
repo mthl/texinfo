@@ -143,6 +143,7 @@ request_callback (WebKitWebPage     *web_page,
       if (!manual || !node)
         {
           /* Possibly a *.css file or malformed link. */
+          debug (1, "COULDNT PARSE URL\n");
           free (manual); free (node);
           return FALSE;
         }
@@ -462,23 +463,28 @@ send_pointer (WebKitDOMElement *link_elt,
   free (link);
 }
 
-/* Script to run in newly loaded files.  End each line with a backslash.
-   Avoid // or /* comments outside of strings. */
-#define INJECTED_JAVASCRIPTZ                                  \
-  var x = document.getElementsByClassName("texi-manual");     \
-  for (var i = 0; i < x.length; i++) {                        \
-      if (x[i].href) {                                        \
-        var re = new RegExp('^http://|^https://');            \
-        x[i].href = x[i].href.replace(re, 'private:');        \
-      }                                                       \
-  };                                                          \
-  ;
-
-
 /* Use variadic macro to allow for commas in argument */
-#define stringize(...) #__VA_ARGS__
-#define dostringize(a) stringize(a)
-#define INJECTED_JAVASCRIPT dostringize(INJECTED_JAVASCRIPTZ)
+#define QUOTE(...) #__VA_ARGS__
+
+const char *INJECTED_JAVASCRIPT = QUOTE(
+  var x = document.getElementsByClassName("texi-manual");
+  for (var i = 0; i < x.length; i++) {
+    var a = x[i].href;
+    var re = new RegExp('^http://|^https://');
+    if (a && a.match(re)) {
+      var array = a.match(/([^/]*)\\/manual\\/html_node\\/([^/]*)$/);
+      if (!Array.isArray(array) || array.length < 2) {
+        array = a.match(/([^/]*)\\/([^/]*)$/);
+      }
+      if (Array.isArray(array) && array.length >= 2) {
+        a = 'private:/' + array[1] + '/' + array[2];
+        x[i].href = a;
+      }
+    }
+  };
+);
+
+
 
 
 void
