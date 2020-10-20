@@ -1,5 +1,12 @@
 2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	SHOW_MENU=1 for TEXI2HTML=1.
+
+	* tp/Texinfo/Convert/HTML.pm (_set_variables_texi2html):
+	Set SHOW_MENU to 1.
+
+2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Set MENU_ENTRY_COLON back to :.
 	
 	* tp/Texinfo/Convert/HTML.pm (%defaults):

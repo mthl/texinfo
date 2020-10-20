@@ -7846,6 +7846,7 @@ sub _convert($$;$)
 sub _set_variables_texi2html()
 {
   my @texi2html_options = (
+  ['SHOW_MENU', '1'],
   ['NO_USE_SETFILENAME', 1],
   ['USE_SETFILENAME_EXTENSION', 0],
   ['footnotestyle', 'separate'],
