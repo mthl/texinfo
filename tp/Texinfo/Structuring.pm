@@ -635,7 +635,7 @@ sub nodes_tree($)
       if ($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
           and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
       # up node is a real node but has no menu entry
-        $self->line_error(sprintf(
+        $self->line_warn(sprintf(
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 
            node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            node_extra_to_texi($node->{'extra'})),

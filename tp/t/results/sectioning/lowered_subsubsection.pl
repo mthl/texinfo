@@ -1959,13 +1959,13 @@ $result_errors{'lowered_subsubsection'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':22: node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
+    'error_line' => ':22: warning: node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 22,
     'macro' => '',
     'text' => 'node `Subsection\' lacks menu item for `Lowered subsubsection\' despite being its Up target',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

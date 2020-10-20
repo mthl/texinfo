@@ -1249,13 +1249,13 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: node `Top\' lacks menu item for `node\' despite being its Up target
+    'error_line' => ':1: warning: node `Top\' lacks menu item for `node\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `node\' despite being its Up target',
-    'type' => 'error'
+    'type' => 'warning'
   }
 ];
 

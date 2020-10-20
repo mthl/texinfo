@@ -1,5 +1,13 @@
 2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Warning only for menu missing node.
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Use a warning instead
+	of an error for the message, "node `%s' lacks menu item for
+	`%s' despite being its Up target".
+
+2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	No automatic menu if node has explicit pointers.
 
 	* tp/Texinfo/Convert/Plaintext.pm (_convert)

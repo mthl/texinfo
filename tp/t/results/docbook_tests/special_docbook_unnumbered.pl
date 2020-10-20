@@ -1257,13 +1257,13 @@ $result_errors{'special_docbook_unnumbered'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':1: node `Top\' lacks menu item for `colophon\' despite being its Up target
+    'error_line' => ':1: warning: node `Top\' lacks menu item for `colophon\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 1,
     'macro' => '',
     'text' => 'node `Top\' lacks menu item for `colophon\' despite being its Up target',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':28: warning: node prev for `acknowledgements\' is `colophon\' in sectioning but `preface\' in menu

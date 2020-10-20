@@ -1660,13 +1660,13 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':6: node `bar\' lacks menu item for `onesub1\' despite being its Up target
+    'error_line' => ':6: warning: node `bar\' lacks menu item for `onesub1\' despite being its Up target
 ',
     'file_name' => '',
     'line_nr' => 6,
     'macro' => '',
     'text' => 'node `bar\' lacks menu item for `onesub1\' despite being its Up target',
-    'type' => 'error'
+    'type' => 'warning'
   },
   {
     'error_line' => ':16: warning: node prev for `onesub2\' is `onesub1\' in sectioning but not in menu
