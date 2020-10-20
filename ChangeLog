@@ -1,5 +1,14 @@
 2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	No automatic menu if node has explicit pointers.
+
+	* tp/Texinfo/Convert/Plaintext.pm (_convert)
+	<sectioning commands>:
+	Check if extra arguments were given to @node, and if they
+	were, do not generate a menu if one was missing.
+
+2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* util/htmlxref.cnf (tar): Fix.
 
 2020-10-19  Gavin Smith  <gavinsmith0123@gmail.com>

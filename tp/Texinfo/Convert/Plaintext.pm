@@ -3269,16 +3269,19 @@ sub _convert($$)
         and $command ne 'part') {
       # add menu if missing
       my $node = $self->{'node'};
-      if ($node) {
-        if (!$self->{'seenmenus'}->{$node}) {
-          $self->{'seenmenus'}->{$node} = 1;
-          my $menu_node
-            = Texinfo::Structuring::node_menu_of_node (undef, $node);
-          if ($menu_node) {
-            my $menu_text = $self->_convert ($menu_node);
-            if ($menu_text) {
-              $result .= $menu_text;
-            }
+      my $automatic_directions;
+      if ($node and defined($node->{'extra'}->{'nodes_manuals'})) {
+        $automatic_directions =
+            (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
+      }
+      if ($node and $automatic_directions
+            and !$self->{'seenmenus'}->{$node}) {
+        $self->{'seenmenus'}->{$node} = 1;
+        my $menu_node = Texinfo::Structuring::node_menu_of_node(undef, $node);
+        if ($menu_node) {
+          my $menu_text = $self->_convert($menu_node);
+          if ($menu_text) {
+            $result .= $menu_text;
           }
         }
       }
