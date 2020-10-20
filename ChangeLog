@@ -16,7 +16,7 @@
 	* tp/Texinfo/Convert/HTML.pm (_convert): Remove code to add a menu
 	to a node where there wasn't one.
 
-	Since SHOW_MENU now has the value section-toc bu default,
+	Since SHOW_MENU now has the value section-toc by default,
 	a menu is not necessary in a node for inferior nodes to be
 	accessible.  If adding menus is wanted as a feature for HTML,
 	this may be better done in non-format-specific code (e.g. with
