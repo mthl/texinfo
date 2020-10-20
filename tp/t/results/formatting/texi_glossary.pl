@@ -1619,6 +1619,10 @@ ul.no-bullet {list-style: none}
 </tr></table>
 <span id="Top-1"></span><h1 class="top">Top</h1>
 
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top"><a href="#glossary">1 glossary</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
+</td></tr>
+</table>
 
 <p>The &lsquo;name1&rsquo;
  is used in many cases while
