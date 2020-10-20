@@ -1,3 +1,7 @@
+2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* util/htmlxref.cnf (tar): Fix.
+
 2020-10-19  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	class="texi-manual"
