@@ -7736,25 +7736,7 @@ sub _convert($$;$)
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
       }
-      # FIXME add a configuration variable to be able turn automatically 
-      # adding menus off?
-      if ($self->get_conf('SHOW_MENU') eq '1'
-          and $sectioning_commands{$command_name}
-          and $self->{'current_node'}
-          and !$self->{'seenmenus'}->{$self->{'current_node'}}) {
-        $self->{'seenmenus'}->{$self->{'current_node'}} = 1;
-        # Generate automatically a menu for this node.
-        my $menu_text;
-        my $menu_node = Texinfo::Structuring::section_menu_of_node (undef,
-          $root->{'extra'}->{'associated_node'});
-        if ($menu_node) {
-          $menu_text = _convert ($self, $menu_node);
-          if ($menu_text) {
-            $result .= $menu_text;
-            $result .= "\n";
-          }
-        }
-      } elsif ($self->get_conf('SHOW_MENU') eq 'sectiontoc'
+      if ($self->get_conf('SHOW_MENU') eq 'sectiontoc'
           and $sectioning_commands{$command_name}
           and $command_name ne 'top'
           and $self->{'current_node'}
