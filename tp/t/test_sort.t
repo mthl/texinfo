@@ -43,6 +43,7 @@ $tree = $parser->parse_texi_text('@node Top
 my ($index_names, $merged_indices) = 
    $parser->indices_information();
 my $index_entries = Texinfo::Structuring::merge_indices($index_names);
+$parser->{'ENABLE_ENCODING'} = 1;
 my $sorted_index_entries 
   = Texinfo::Structuring::sort_indices($parser, $index_entries, $index_names);
 

@@ -1,5 +1,18 @@
 2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove ENABLE_ENCODING setting for parser
+
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Remove 'ENABLE_ENCODING'.  This was passed indirectly to
+	Texinfo::Convert::Text by Texinfo::Parser, but Texinfo::Parser
+	has not depended on Texinfo::Convert::Text since 2016-07-09.
+
+	* tp/t/test_utils.pl, tp/t/test_sort.t:
+	Set 'ENABLE_ENCODING' on parser object before sorting indices
+	to maintain consistency  in test results.
+
+2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove TEST setting for parser
 
 	* tp/Texinfo/Common.pm (%default_customization_values):

@@ -150,10 +150,7 @@ our %default_customization_values = (
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
-  # This is not used directly, but passed to Convert::Text through 
-  # Texinfo::Common::_convert_text_options
-  'ENABLE_ENCODING' => 1,     # output accented and special characters
-                              # based on @documentencoding
+
   # following are used in Texinfo::Structuring
   'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
   'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 

@@ -1,6 +1,6 @@
 # t/* test support for the Perl modules.
 #
-# Copyright 2010-2019 Free Software Foundation, Inc.
+# Copyright 2010-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -689,8 +689,7 @@ sub test($$)
     delete $parser_options->{'test_formats'};
   }
 
-  my $parser = Texinfo::Parser::parser({'TEST' => 1,
-                                        'include_directories' => [
+  my $parser = Texinfo::Parser::parser({'include_directories' => [
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
@@ -736,6 +735,7 @@ sub test($$)
 
   my $sorted_index_entries;
   if ($merged_index_entries) {
+    $parser->{'ENABLE_ENCODING'} = 1;
     $sorted_index_entries 
       = Texinfo::Structuring::sort_indices_by_letter($parser, 
                                                      $merged_index_entries,
