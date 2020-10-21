@@ -1,5 +1,16 @@
 2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	nodes_tree conditions
+
+	* tp/Texinfo/Structuring.pm (nodes_tree):
+	Remove conditions about external manuals in node up pointer.
+	These conditions appeared to be ineffective due to a different
+	check for menus on the up node preventing execution of
+	a block of code.  Combine other conditions.  No functional
+	changes intended.
+
+2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Structuring.pm (nodes_tree): Warn about multiple
 	@menu's regardless of value of SHOW_MENU.  Edit comments.
 	Combine conditions (with no functional changes intended).

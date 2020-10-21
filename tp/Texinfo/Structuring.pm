@@ -625,25 +625,19 @@ sub nodes_tree($)
         }
       }
     }
-    # Warnings for nodes not contained in menus.
-    if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'}) {
-      # check if in the up node's menu
-      if ((!$node->{'menu_up_hash'}
-             or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})
-          and $node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
-          and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
+    # check for node up / menu up mismatch
+    if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'}
+        and (!$node->{'menu_up_hash'}
+          or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
+      # check if up node has a menu
+      if ($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}) {
         $self->line_warn(sprintf(
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 
            node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            node_extra_to_texi($node->{'extra'})),
            $node->{'node_up'}->{'line_nr'});
-      # Check if node is listed in a different menu, or has an external
-      # node as up.  This leads to an error if a node other than
-      # the Top node has an external node as up.
-      } elsif (($node->{'node_up'}->{'extra'}->{'manual_content'}
-              or !$node->{'menu_up_hash'}
-              or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})
-           and  $node->{'menu_up'}) {
+      # check if node is listed in a different menu
+      } elsif ($node->{'menu_up'}) {
         $self->line_warn(sprintf(
            __("for `%s', up in menu `%s' and up `%s' don't match"), 
           node_extra_to_texi($node->{'extra'}),
