@@ -1,5 +1,10 @@
 2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser): Warn on
+	unknown conf value.
+
+2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Remove ENABLE_ENCODING setting for parser
 
 	* tp/Texinfo/Common.pm (%default_customization_values):

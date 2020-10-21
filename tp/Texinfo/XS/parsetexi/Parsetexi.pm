@@ -129,7 +129,7 @@ sub parser (;$$)
       } elsif ($key eq 'in_gdt') {
         # no action needed
       } else {
-        #warn "ignoring parser configuration value \"$key\"\n";
+        warn "ignoring parser configuration value \"$key\"\n";
       }
     }
   }
