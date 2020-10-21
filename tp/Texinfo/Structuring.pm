@@ -400,9 +400,7 @@ sub _check_menu_entry($$$)
   }
 }
 
-# First go through all the menus and set menu_up, menu_next and menu_prev,
-# and warn for unknown nodes.
-# Then go through all the nodes and set directions.
+# set node and menu directions, and check consistency
 sub nodes_tree($)
 {
   my $self = shift;
@@ -412,22 +410,24 @@ sub nodes_tree($)
   my $check_menu_entries = (!$self->{'info'}->{'novalidate'}
                               and $self->{'SHOW_MENU'} eq '1');
 
+  # First go through all the menus and set menu_up, menu_next and menu_prev,
+  # and warn for unknown nodes.
+  # Remark: since the @menu are only checked if they are in @node, 
+  # menu entries before the first node, or @menu nested inside
+  # another command such as @format, may be treated slightly
+  # differently; at least, there are no error messages for them.
+  #
   foreach my $node (@{$self->{'nodes'}}) {
     if ($node->{'extra'}->{'normalized'} eq 'Top') {
       $top_node = $node;
     }
     if ($node->{'menus'}) {
-      if ($self->{'SHOW_MENU'} eq '1' and @{$node->{'menus'}} > 1) {
+      if (@{$node->{'menus'}} > 1) {
         foreach my $menu (@{$node->{'menus'}}[1 .. $#{$node->{'menus'}}]) {
           $self->line_warn(sprintf(__("multiple \@%s"), 
                         $menu->{'cmdname'}), $menu->{'line_nr'});
         }
       }
-      # Remark: since the @menu are only checked if they are in @node, 
-      # menu entries before the first node, or @menu nested inside
-      # another command such as @format, may be treated slightly
-      # differently; at least, there are no error messages for them.
-
       foreach my $menu (@{$node->{'menus'}}) {
         my $previous_node;
         foreach my $menu_content (@{$menu->{'contents'}}) {
@@ -489,6 +489,7 @@ sub nodes_tree($)
     }
   }
 
+  # Go through all the nodes and set directions.
   $top_node = $self->{'nodes'}->[0] if (!$top_node);
   foreach my $node (@{$self->{'nodes'}}) {
     my $automatic_directions = 
@@ -584,7 +585,7 @@ sub nodes_tree($)
           }
         }
       }
-    } else {
+    } else { # explicit directions
       my @directions = @{$node->{'extra'}->{'nodes_manuals'}};
       shift @directions;
       foreach my $direction (@node_directions) {
@@ -624,25 +625,25 @@ sub nodes_tree($)
         }
       }
     }
-    # it may happen (rarely) that the node_up is a manual entry
-    # and therefore $node->{'node_up'}->{'extra'}->{'manual_content'}.
-    # The node_up should always be different from the menu_up, therefore
-    # if in a menu, the second condition/error message applies.
-    if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'} 
-        and ($node->{'node_up'}->{'extra'}->{'manual_content'}
-         or !$node->{'menu_up_hash'}
-         or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
-      if ($node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
+    # Warnings for nodes not contained in menus.
+    if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'}) {
+      # check if in the up node's menu
+      if ((!$node->{'menu_up_hash'}
+             or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})
+          and $node->{'node_up'}->{'menus'} and @{$node->{'node_up'}->{'menus'}}
           and !$node->{'node_up'}->{'extra'}->{'manual_content'}) {
-      # up node is a real node but has no menu entry
         $self->line_warn(sprintf(
            __("node `%s' lacks menu item for `%s' despite being its Up target"), 
            node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            node_extra_to_texi($node->{'extra'})),
            $node->{'node_up'}->{'line_nr'});
-      # This leads to an error when there is an external nodes as up, and 
-      # not in Top node.
-      } elsif ($node->{'menu_up'}) {
+      # Check if node is listed in a different menu, or has an external
+      # node as up.  This leads to an error if a node other than
+      # the Top node has an external node as up.
+      } elsif (($node->{'node_up'}->{'extra'}->{'manual_content'}
+              or !$node->{'menu_up_hash'}
+              or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})
+           and  $node->{'menu_up'}) {
         $self->line_warn(sprintf(
            __("for `%s', up in menu `%s' and up `%s' don't match"), 
           node_extra_to_texi($node->{'extra'}),

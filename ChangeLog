@@ -1,3 +1,9 @@
+2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): Warn about multiple
+	@menu's regardless of value of SHOW_MENU.  Edit comments.
+	Combine conditions (with no functional changes intended).
+
 2020-10-20  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/tests/run_parser_all.sh: Don't pass -c SHOW_MENU=1
