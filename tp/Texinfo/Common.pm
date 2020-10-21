@@ -143,7 +143,6 @@ our %default_parser_state_configuration = (
 # Customization variables obeyed by the parser and other modules, and the 
 # default values.
 our %default_customization_values = (
-  'TEST' => 0,
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
   'SHOW_MENU' => 1,             # if false no menu error related.

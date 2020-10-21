@@ -714,7 +714,6 @@ sub parse_texi_text($$;$$$$)
   }
   $lines_nr = [] if (!defined($lines_nr));
   if (!ref($lines_nr)) {
-    #$file =~ s/^.*\/// if (defined($file) and $self->{'TEST'});
     $lines_array = _complete_line_nr($text, $lines_nr, $file, 
                                      $macro, $fixed_line_number);
   } else {
@@ -794,8 +793,7 @@ sub parse_texi_file($$)
     }
   }
   my ($directories, $suffix);
-  ($file_name, $directories, $suffix) = fileparse($file_name)
-            if ($self->{'TEST'});
+  ($file_name, $directories, $suffix) = fileparse($file_name);
   $self = parser() if (!defined($self));
   $self->{'input'} = [{
        'pending' => [[$pending_first_texi_line, {'line_nr' => $line_nr,
@@ -850,7 +848,6 @@ sub parse_texi_line($$;$$$$)
   if (!ref($text)) {
     $text = _text_to_lines($text);
   }
-  #$file =~ s/^.*\/// if (defined($file) and $self->{'TEST'});
   my $lines_array = _complete_line_nr($text, $lines_nr, $file, 
                                      $macro, $fixed_line_number);
 
@@ -2962,8 +2959,7 @@ sub _end_line($$$)
               $included_file = 1;
               print STDERR "Included $file($filehandle)\n" if ($self->{'DEBUG'});
               my ($directories, $suffix);
-              ($file, $directories, $suffix) = fileparse($file)
-                  if ($self->{'TEST'});
+              ($file, $directories, $suffix) = fileparse($file);
               unshift @{$self->{'input'}}, { 
                 'name' => $file,
                 'line_nr' => 0,

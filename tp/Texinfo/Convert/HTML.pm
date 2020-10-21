@@ -4768,15 +4768,15 @@ sub _load_htmlxref_files {
     # to have reproducible tests, do not use system or user
     # directories if TEST is set.
     @htmlxref_dirs = File::Spec->catdir($curdir, '.texinfo');
+
+    my $input_directory = $self->{'info'}->{'input_directory'};
+    if (defined($input_directory)
+        and $input_directory ne '.' and $input_directory ne '') {
+      unshift @htmlxref_dirs, $input_directory;
+    }
   } elsif ($self->{'language_config_dirs'}
             and @{$self->{'language_config_dirs'}}) {
     @htmlxref_dirs = @{$self->{'language_config_dirs'}};
-  }
-  my $input_directory = $self->{'info'}->{'input_directory'}
-    if $self->{'info'}->{'input_directory'};
-  if (defined($input_directory)
-      and $input_directory ne '.' and $input_directory ne '') {
-    unshift @htmlxref_dirs, $input_directory;
   }
   unshift @htmlxref_dirs, '.';
 

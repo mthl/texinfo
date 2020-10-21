@@ -1,5 +1,21 @@
 2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Remove TEST setting for parser
+
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Remove 'TEST'.
+	* tp/Texinfo/ParserNonXS.pm (parse_texi_text, parse_texi_file)
+	(parse_texi_line, _end_line):
+	Remove code referring to the TEST setting.  This means that
+	the 'input_directory' value is always set and all leading
+	directory components will be removed from the input file name
+	in messages.
+	* tp/Texinfo/Convert/HTML.pm (_load_htmlxref_files): Make
+	adding the input directory to the search path for htmlxref.cnf
+	conditional on TEST.
+
+2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	nodes_tree conditions
 
 	* tp/Texinfo/Structuring.pm (nodes_tree):
