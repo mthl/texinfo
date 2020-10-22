@@ -1,5 +1,13 @@
 2020-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	empty @headitem
+
+	* tp/Texinfo/XS/parsetexi/api.c (element_to_perl_hash):
+	Always create a contents array for @headitem even if it is empty.
+	* tp/t/21multitable.t (empty_headitem): New test.
+
+2020-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Only reference MathJax on those pages which require it.
 
 	* tp/Texinfo/Convert/HTML.pm

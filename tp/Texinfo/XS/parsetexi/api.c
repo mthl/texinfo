@@ -274,15 +274,16 @@ element_to_perl_hash (ELEMENT *e)
 
   /* TODO sort out all these special cases.
      Makes no sense to have 'contents' created for glyph commands like
-     @arrow{} or for accent commands. */
+     @arrow{}, @image, or for accent commands. */
   if (e->contents.number > 0
       || e->type == ET_text_root
       || e->type == ET_root_line
       || e->type == ET_bracketed
       || e->type == ET_bracketed_def_content
       || e->type == ET_line_arg
-      || e->cmd == CM_image // why image?
+      || e->cmd == CM_image
       || e->cmd == CM_item && e->parent && e->parent->type == ET_row
+      || e->cmd == CM_headitem && e->parent && e->parent->type == ET_row
       || e->cmd == CM_tab && e->parent && e->parent->type == ET_row
       || e->cmd == CM_anchor
       || e->cmd == CM_macro
