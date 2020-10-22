@@ -11486,6 +11486,16 @@ directory should work if nowhere else does.}
   \globaldefs = 0
 }}
 
+\def\bsixpaper{{\globaldefs = 1
+  \afourpaper
+  \internalpagesizes{140mm}{100mm}%
+                    {-6.35mm}{-12.7mm}%
+                    {\bindingoffset}{14pt}%
+                    {176mm}{125mm}%
+  \globaldefs = 0
+}}
+
+
 % @pagesizes TEXTHEIGHT[,TEXTWIDTH]
 % Perhaps we should allow setting the margins, \topskip, \parskip,
 % and/or leading, also. Or perhaps we should compute them somehow.

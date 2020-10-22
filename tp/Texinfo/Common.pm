@@ -488,6 +488,7 @@ our %line_commands = (
   'afivepaper'        => 'skipline', # no arg
   'afourlatex'        => 'skipline', # no arg
   'afourwide'         => 'skipline', # no arg
+  'bsixpaper'         => 'skipline', # no arg
   'headings'          => 1, #off on single double singleafter doubleafter
                             # interacts with setchapternewpage
   'setchapternewpage' => 1, # off on odd

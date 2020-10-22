@@ -1,5 +1,13 @@
 2020-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	@bsixpaper
+
+	* doc/texinfo.tex (@bsixpaper): Add.
+	* tp/Texinfo/Common.pm (%line_commands),
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Add 'bsixpaper'.
+
+2020-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	empty @headitem
 
 	* tp/Texinfo/XS/parsetexi/api.c (element_to_perl_hash):

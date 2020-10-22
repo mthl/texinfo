@@ -100,6 +100,7 @@ afourpaper              line                            LINE_skipline
 afivepaper              line                            LINE_skipline
 afourlatex              line                            LINE_skipline
 afourwide               line                            LINE_skipline
+bsixpaper               line                            LINE_skipline
 headings                line,global                     1
 setchapternewpage       line,global_unique              1
 
