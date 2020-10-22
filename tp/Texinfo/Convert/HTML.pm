@@ -1065,8 +1065,13 @@ my %defaults = (
     'Contents'    => 'contents',
     'Overview'    => 'shortcontents',
     'Footnotes'   => 'footnotes',
-   },
-  
+  },
+  'jslicenses' => {},         # for outputting licences file
+  'jslicenses_element' => {}, # scripts used in current output file
+  'jslicenses_math' => {},    # MathJax scripts
+  'jslicenses_infojs' => {},  # info.js scripts
+  'element_math' => 0,        # whether math has been seen in current file
+ 
   'output_format'        => 'html',
 );
 
@@ -1788,6 +1793,7 @@ sub _convert_math_command($$$$)
   if (!defined($math_type) or $math_type eq 'default') {
     return '<em class=\'math\'>'.$args->[0]->{'normal'}.'</em>';
   } elsif ($math_type eq 'mathjax') {
+    $self->{'element_math'} = 1;
     return '<em class=\'tex2jax_process\'>\\('
              .$args->[0]->{'normal'}.'\\)</em>';
   } else {
@@ -2588,6 +2594,7 @@ sub _convert_displaymath_command($$$$)
   $result .= $self->_attribute_class('div', 'displaymath').'>';
   if ($self->get_conf('HTML_MATH')
         and $self->get_conf('HTML_MATH') eq 'mathjax') {
+    $self->{'element_math'} = 1;
     $result .= $self->_attribute_class('em', 'tex2jax_process').'>' 
           ."\\[$content\\]".'</em>';
   } else {
@@ -6300,7 +6307,7 @@ sub _default_end_file($)
   my $setting = $self->get_conf('JS_WEBLABELS');
   my $path = $self->get_conf('JS_WEBLABELS_FILE');
   if ($setting and $path
-        and ($setting eq 'generate' and defined($self->{'jslicenses'})
+        and ($setting eq 'generate' and %{$self->{'jslicenses_element'}}
               or $setting eq 'reference')) {
     $pre_body_close .=
 "<a href='$path' rel='jslicense'><small>"
@@ -6380,7 +6387,7 @@ sub _file_header_informations($$)
   }
   my $doctype = $self->get_conf('DOCTYPE');
   my $bodytext = $self->get_conf('BODYTEXT');
-  if ($self->get_conf('HTML_MATH')) {
+  if ($self->{'element_math'} and $self->get_conf('HTML_MATH')) {
     if ($self->get_conf('HTML_MATH') eq 'mathjax') {
       $bodytext .= ' class="tex2jax_ignore"';
     }
@@ -6420,8 +6427,12 @@ sub _file_header_informations($$)
 <script src="'.$jsdir.'modernizr.js" type="text/javascript"></script>
 <script src="'.$jsdir.'info.js" type="text/javascript"></script>';
     }
+    for my $key (keys %{$self->{'jslicenses_infojs'}}) {
+      $self->{'jslicenses_element'}->{$key} = $self->{'jslicenses_infojs'}->{$key};
+    }
   }
-  if (defined($self->get_conf('HTML_MATH'))
+  if ($self->{'element_math'}
+        and defined($self->get_conf('HTML_MATH'))
         and $self->get_conf('HTML_MATH') eq 'mathjax') {
     my $mathjax_script = $self->get_conf('MATHJAX_SCRIPT');
 
@@ -6437,7 +6448,11 @@ MathJax = {
 </script>"
 .'<script type="text/javascript" id="MathJax-script" async
   src="'.$mathjax_script.'">
-</script>'
+</script>';
+
+    for my $key (keys %{$self->{'jslicenses_math'}}) {
+      $self->{'jslicenses_element'}->{$key} = $self->{'jslicenses_math'}->{$key};
+    }
   }
 
   return ($title, $description, $encoding, $date, $css_lines, 
@@ -7186,10 +7201,27 @@ sub output($$)
       $self->set_conf('MATHJAX_SOURCE', $mathjax_source);
     }
 
-    $self->{'jslicenses'}->{$mathjax_script} =
+    $self->{'jslicenses_math'}->{$mathjax_script} =
         [ 'Apache License, Version 2.0.',
           'https://www.apache.org/licenses/LICENSE-2.0',
           $mathjax_source ];
+    # append to hash
+    %{$self->{'jslicenses'}} = ( %{$self->{'jslicenses'}},
+                                 %{$self->{'jslicenses_math'}} );
+
+  }
+  if ($self->get_conf('INFO_JS_DIR')) {
+    $self->{'jslicenses_infojs'}->{'js/info.js'} =
+      [ 'GNU General Public License 3.0 or later',
+        'http://www.gnu.org/licenses/gpl-3.0.html',
+        'js/info.js' ];
+
+    $self->{'jslicenses_infojs'}->{'js/modernizr.js'} =
+      [ 'Expat',
+        'http://www.jclark.com/xml/copying.txt',
+        'js/modernizr.js' ];
+    %{$self->{'jslicenses'}} = ( %{$self->{'jslicenses'}},
+                                 %{$self->{'jslicenses_infojs'}} );
   }
 
   # FIXME here call _unset_global_multiple_commands?  Problem is
@@ -7223,19 +7255,24 @@ sub output($$)
       }
     }
     $self->{'current_filename'} = $self->{'output_filename'};
-    my $header = &{$self->{'format_begin_file'}}($self, 
-                                           $self->{'output_filename'}, undef);
-    $output .= $self->_output_text($header, $fh);
+
+    my $body = '';
     if ($elements and @$elements) {
       foreach my $element (@$elements) {
         my $element_text = $self->_convert($element);
-        $output .= $self->_output_text($element_text, $fh);
+        $body .= $element_text;
       }
     } else {
-      $output .= $self->_output_text($self->_print_title(), $fh);
-      $output .= $self->_output_text($self->_convert($root), $fh);
+      $body .= $self->_print_title();
+      $body .= $self->_convert($root);
     }
+
+    my $header = &{$self->{'format_begin_file'}}($self, 
+                                           $self->{'output_filename'}, undef);
+    $output .= $self->_output_text($header, $fh);
+    $output .= $self->_output_text($body, $fh);
     $output .= $self->_output_text(&{$self->{'format_end_file'}}($self), $fh);
+
     # NOTE do not close STDOUT now to avoid a perl warning.
     if ($fh and $outfile ne '-') {
       $self->register_close_file($outfile);
@@ -7257,6 +7294,11 @@ sub output($$)
       my $file_fh;
       $self->{'current_filename'} = $element->{'filename'};
       $self->{'counter_in_file'}->{$element->{'filename'}}++;
+      if ($self->{'counter_in_file'}->{$element->{'filename'}} == 1) {
+        $self->{'jslicenses_element'} = {};
+        $self->{'element_math'} = 0;
+      }
+
       # First do the special pages, to avoid outputting these if they are
       # empty.
       my $special_element_content;
@@ -7267,7 +7309,15 @@ sub output($$)
           next ;
         }
       }
-      # Then open the file and output the elements or the special_page_content
+
+      # convert body before header in case this affects the header
+      my $body = '';
+      if (defined($special_element_content)) {
+        $body = $special_element_content;
+      } else {
+        $body = $self->_convert($element);
+      }
+
       if (!$files{$element->{'filename'}}->{'fh'}) {
         $file_fh = $self->Texinfo::Common::open_out($element->{'out_filename'});
         if (!$file_fh) {
@@ -7282,12 +7332,7 @@ sub output($$)
       } else {
         $file_fh = $files{$element->{'filename'}}->{'fh'};
       }
-      if (defined($special_element_content)) {
-        print $file_fh $special_element_content;
-      } else {
-        my $element_text = $self->_convert($element);
-        print $file_fh $element_text;
-      }
+      print $file_fh $body;
       $self->{'file_counters'}->{$element->{'filename'}}--;
       if ($self->{'file_counters'}->{$element->{'filename'}} == 0) {
         # end file
@@ -7333,18 +7378,10 @@ sub output($$)
           }
         }
       }
-      $self->{'jslicenses'}->{'js/info.js'} =
-        [ 'GNU General Public License 3.0 or later',
-          'http://www.gnu.org/licenses/gpl-3.0.html',
-          'js/info.js' ];
-
-      $self->{'jslicenses'}->{'js/modernizr.js'} =
-        [ 'Expat',
-          'http://www.jclark.com/xml/copying.txt',
-          'js/modernizr.js' ];
     }
   }
-  if ($self->{'jslicenses'} and %{$self->{'jslicenses'}}) {
+
+  if (%{$self->{'jslicenses'}}) {
     $self->_do_jslicenses_file();
   }
 

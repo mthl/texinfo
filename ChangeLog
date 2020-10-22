@@ -1,3 +1,23 @@
+2020-10-22  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Only reference MathJax on those pages which require it.
+
+	* tp/Texinfo/Convert/HTML.pm
+	(%defaults): New value 'element_math' to keep track of
+	whether @math or @displaymath has been seen in current file.
+	(_convert_math_command, _convert_displaymath_command)
+	(output): Set and reset 'element_math'.  Process body of
+	file before the header to set 'element_math' correctly.
+	(file_header_informations): Only reference MathJax scripts
+	if 'element_math' is set.
+	
+	(%defaults): New value 'jslicenses_element' to keep track
+	of whether scripts have actually been used in the current output
+	file.
+	(file_header_information): Update 'jslicenses_element'.
+	(_default_end_file): Only output the link to the JS licences page
+	if there were actually JS scripts referenced in the file.
+
 2020-10-21  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser): Warn on
