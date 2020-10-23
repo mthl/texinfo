@@ -1,5 +1,13 @@
 2020-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	MathJax for TeX code only
+
+	* tp/Texinfo/Convert/HTML.pm
+	(_convert_math_command) [HTML_MATH=mathjax]: No MathJax if
+	HTML tags in contents, e.g. @math{a@sup{2}} doesn't work.
+
+2020-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.tex (\pagesizes): Increase physical page dimensions
 	by fixed quantities.
 

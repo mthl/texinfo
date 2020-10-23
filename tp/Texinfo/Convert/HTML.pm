@@ -1789,17 +1789,17 @@ sub _convert_math_command($$$$)
   my $command = shift;
   my $args = shift;
 
+  my $arg = $args->[0]->{'normal'};
+
   my $math_type = $self->get_conf('HTML_MATH');
-  if (!defined($math_type) or $math_type eq 'default') {
-    return '<em class=\'math\'>'.$args->[0]->{'normal'}.'</em>';
-  } elsif ($math_type eq 'mathjax') {
-    $self->{'element_math'} = 1;
-    return '<em class=\'tex2jax_process\'>\\('
-             .$args->[0]->{'normal'}.'\\)</em>';
-  } else {
-    # invalid value - give warning?
-    return '<em class=\'math\'>'.$args->[0]->{'normal'}.'</em>';
+  if ($math_type and $math_type eq 'mathjax') {
+    # MathJax won't handle tags in code
+    if ($arg !~ /</) {
+      $self->{'element_math'} = 1;
+      return "<em class=\'tex2jax_process\'>\\($arg\\)</em>";
+    }
   }
+  return "<em class=\'math\'>$arg</em>";
 }
 
 $default_commands_conversion{'math'} = \&_convert_math_command;
