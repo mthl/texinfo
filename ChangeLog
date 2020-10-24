@@ -10,6 +10,14 @@
 
 2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	@set dispenvsize small for @bsixpaper.
+	
+	* doc/texinfo.tex (@bsixpaper): Switch some block commands
+	to display with a smaller font.
+	(\verbatim): Respect '@set dispenvsize small'.
+
+2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Documentation of customization variables.
 	
 	* doc/texinfo.texi

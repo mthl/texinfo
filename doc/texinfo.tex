@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-10-23.18}
+\def\texinfoversion{2020-10-24.11}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -7666,7 +7666,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 \endgroup
 %
 \envdef\verbatim{%
-    \setupverbatim\doverbatim
+    \setnormaldispenv\setupverbatim\doverbatim
 }
 \let\Everbatim = \afterenvbreak
 
@@ -11492,6 +11492,7 @@ directory should work if nowhere else does.}
                     {-6.35mm}{-12.7mm}%
                     {\bindingoffset}{14pt}%
                     {176mm}{125mm}%
+  \let\SETdispenvsize=\smallword
   \globaldefs = 0
 }}
 
