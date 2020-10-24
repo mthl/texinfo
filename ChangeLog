@@ -1,3 +1,13 @@
+2020-10-24  Patrice Dumas  <pertusus@free.fr>
+
+	do not mix tex4ht commands STDIN with main script STDIN
+
+	* tp/init/tex4ht.pm (tex4ht_process_command): use open
+	with "|-" input pipe to launch tex4ht commands to avoid mixing
+	main script STDIN and tex4ht commands STDIN.  It is important
+	because when tex fails it reads from STDIN and the input may 
+	trigger diverse actions by tex.
+
 2020-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	MathJax for TeX code only

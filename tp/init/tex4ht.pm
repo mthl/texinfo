@@ -258,9 +258,20 @@ sub tex4ht_process_command($$) {
 
   my $cmd = "$commands{$command}->{'exec'} $commands{$command}->{'basefile'} $options";
   print STDERR "tex4ht command: $cmd\n" if ($self->get_conf('VERBOSE'));
-  if (system($cmd)) {
+  # do not use system in order to be sure that tex STDIN is not
+  # mixed up with the main script STDIN.  It is important because
+  # if tex fails, it will read from STDIN and the input may trigger
+  # diverse actions by tex.
+  #if (system($cmd)) {
+  if (not(open(TEX4HT, "|-", $cmd)) {
     $self->document_warn(sprintf(__(
                          "tex4ht.pm: command failed: %s"), $cmd));
+    return 1;
+  }
+  if (!close (TEX4HT)) {
+    $self->document_warn(sprintf(__(
+                         "tex4ht.pm: closing communication failed: %s: %s"),
+                         $cmd, $!));
     return 1;
   }
 
