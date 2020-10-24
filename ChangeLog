@@ -10,6 +10,12 @@
 
 2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Reduce example indent for @bsixpaper.
+
+	* doc/texinfo.tex (@bsixpaper): Set \lispnarrowing to 0.2in.
+
+2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	@set dispenvsize small for @bsixpaper.
 	
 	* doc/texinfo.tex (@bsixpaper): Switch some block commands
