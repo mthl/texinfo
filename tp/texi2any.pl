@@ -952,6 +952,13 @@ if (defined($cmdline_options->{'L2H'})) {
                         [ @conf_dirs, @program_init_dirs ]);
 }
 
+my $tex4ht_file = 'tex4ht.pm';
+if (defined($cmdline_options->{'HTML_MATH'})
+      and $cmdline_options->{'HTML_MATH'} eq 't4h') {
+  locate_and_load_init_file($tex4ht_file, 
+                        [ @conf_dirs, @program_init_dirs ]);
+}
+
 # For tests, set some strings to values not changing with releases
 my %test_conf = (
     'PACKAGE_VERSION' => '',

@@ -1,3 +1,7 @@
+2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Use tex4ht if HTML_MATH is set to 't4h'.
+
 2020-10-24  Patrice Dumas  <pertusus@free.fr>
 
 	do not mix tex4ht commands STDIN with main script STDIN
