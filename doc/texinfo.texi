@@ -9916,14 +9916,16 @@ ordinarily produces a literal (typewriter) @samp{\}.  You can also use
 By default, the HTML output is only enclosed by @code{<em>}.
 @command{texi2any} provides two options for displaying properly
 formatted mathematics for HTML.  You can select these with the
-@code{HTML_MATH} variable (@pxref{HTML Customization Variables}).  With
-@code{HTML_MATH} set to @samp{l2h}, @command{texi2any} attempts to use
-the @code{latex2html} program to produce image files for mathematical
-material.  With the @samp{mathjax} setting, @command{texi2any}
-inserts references in the output files to MathJax scripts to format
-the material.  The MathJax option requires JavaScript to be enabled in
-the browser to work.  See also @ref{MathJax Customization Variables}
-and @ref{@command{latex2html} Customization Variables}.
+@code{HTML_MATH} variable (@pxref{HTML Customization Variables}).
+With @code{HTML_MATH} set to @samp{l2h}, @command{texi2any} attempts
+to use the @command{latex2html} program to produce image files for
+mathematical material.  With the @samp{t4h} setting, @command{texi2any}
+attempts to use the @command{tex4ht} program.  With the @samp{mathjax}
+setting, @command{texi2any} inserts references in the output files
+to MathJax scripts to format the material.  The MathJax option
+requires JavaScript to be enabled in the browser to work.  See also
+@ref{MathJax Customization Variables} and @ref{@command{latex2html}
+Customization Variables}.
 
 @cindex Displayed equations
 @cindex Equations, displayed
@@ -16259,8 +16261,9 @@ Use tables for header formatting rather than a simple
 @item HTML_MATH
 Method to use to render @code{@@math}.  This can be unset, set to
 @samp{mathjax} (@pxref{MathJax Customization Variables}),
-or set to @samp{l2h}, which has the same effect as setting @code{L2H}
-(@pxref{@command{latex2html} Customization Variables}).
+set to @samp{l2h}, which has the same effect as setting @code{L2H}
+(@pxref{@command{latex2html} Customization Variables}), or set to
+@samp{t2h}, which uses @command{tex4ht}.
 
 @item ICONS
 Use icons for the navigation panel; default false.
