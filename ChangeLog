@@ -1,5 +1,13 @@
 2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Re-add example.
+
+	* doc/texinfo.texi
+	(Other Customization Variables): Re-add example of
+	TREE_TRANSFORMATIONS with corrected invocation.
+
+2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (HTML Customization Variables, Inserting Math):
 	Document -c HTML_MATH=t4h.
 

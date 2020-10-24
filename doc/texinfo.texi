@@ -16715,6 +16715,20 @@ applied at the necessary point during processing.
 
 The only one executed by default is
 @samp{move_index_entries_after_items} for HTML and DocBook output.
+Here's an example of updating the master menu in a document:
+
+@example
+makeinfo \
+  -c TREE_TRANSFORMATIONS=regenerate_master_menu \
+  -c TEXINFO_OUTPUT_FORMAT=plaintexinfo \
+  mydoc.texi \
+  -o /tmp/out
+@end example
+
+@noindent (Caveat: Since @samp{plaintexinfo} output expands
+Texinfo macros and conditionals, it's necessary to remove any such
+differences before installing the updates in the original document.
+This may be remedied in a future release.)
 
 The following transformations are currently supported (many are used
 in the @code{pod2texi} utility distributed with Texinfo;
