@@ -31,10 +31,6 @@ set_from_init_file('XREF_USE_NODE_NAME_ARG', 1);
 # if set, chatter about what we are doing
 set_from_init_file('VERBOSE', 1);
 
-# print index summary for 'cp' index
-# obsolete
-#set_from_init_file('IDX_SUMMARY', 'cp');
-
 my $T2H_SING_base_images = '../singular_images/';
 
 # inside <BODY ..>

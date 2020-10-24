@@ -326,7 +326,6 @@ my @variable_string_settables = (
 'USE_ISO',
 'USE_LINKS',
 'USE_NODES',
-'USE_NODE_TARGET',
 'USE_NUMERIC_ENTITY',
 'USE_REL_REV',
 'USE_SETFILENAME_EXTENSION',

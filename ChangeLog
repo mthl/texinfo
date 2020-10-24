@@ -8,6 +8,21 @@
 	because when tex fails it reads from STDIN and the input may 
 	trigger diverse actions by tex.
 
+2020-10-24  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Documentation of customization variables.
+	
+	* doc/texinfo.texi
+	(HTML Customization Variables, Other Customization Variables):
+	Move INDEX_ENTRY_COLON and MENU_ENTRY_COLON to HTML Customization
+	Variables.  Remove commented-out IDX_SUMMARY.  Remove example
+	referring to non-existent PLAINTEXINFO variable.  Remove
+	USE_NODE_TARGET as it doesn't do anything in the current code.
+	* tp/Texinfo/Common.pm (@variable_string_settables),
+	* tp/Texinfo/Convert/HTML.pm (%defaults): Remove 'USE_NODE_TARGET'.
+	* tp/t/init/t2h_singular.init: Remove commented-out code referring
+	to IDX_SUMMARY.
+
 2020-10-23  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	MathJax for TeX code only

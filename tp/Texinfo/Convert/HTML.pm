@@ -979,8 +979,6 @@ my %defaults = (
   'NO_CSS'               => 0,
   'JS_WEBLABELS'	 => 'generate',
   'JS_WEBLABELS_FILE'	 => 'js_licenses.html', # no clash with node name
-# if set, use node anchors for sections targets
-  'USE_NODE_TARGET'      => 1,
   'OPEN_QUOTE_SYMBOL'    => '&lsquo;',
   'CLOSE_QUOTE_SYMBOL'   => '&rsquo;',
   'USE_ISO'              => 1,
