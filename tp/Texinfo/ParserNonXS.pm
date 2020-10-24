@@ -700,8 +700,7 @@ sub _complete_line_nr($$;$$$)
 
 # entry point for text fragments.
 # Used in tests.
-# Note that it has no associated root type a opposed to parse_texi_line
-# and parse_texi_file.
+# It has no specific root type, the default set in _parse_texi is used
 sub parse_texi_text($$;$$$$)
 {
   my ($self, $text, $lines_nr, $file, $macro, $fixed_line_number) = @_;
@@ -5826,7 +5825,7 @@ For all those functions, if the I<$parser> argument is undef, a new
 parser object is generated to parse the line.  Otherwise the parser given 
 as an argument is used to parse into a tree.
 
-When C<parse_texi_text> is used, the resulting tree is rooted at 
+When C<parse_texi_line> is used, the resulting tree is rooted at
 a C<root_line> type container.  Otherwise, the resulting tree should be 
 rooted at a C<text_root> type container if it does not contain nodes or 
 sections, at a C<document_root> type container otherwise.

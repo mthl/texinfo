@@ -1792,6 +1792,8 @@ sub _convert_math_command($$$$)
   my $math_type = $self->get_conf('HTML_MATH');
   if ($math_type and $math_type eq 'mathjax') {
     # MathJax won't handle tags in code
+    # TODO: instead convert inside $command to LaTeX, when such a conversion
+    # becomes possible
     if ($arg !~ /</) {
       $self->{'element_math'} = 1;
       return "<em class=\'tex2jax_process\'>\\($arg\\)</em>";

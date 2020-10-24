@@ -699,6 +699,9 @@ sub split_by_node($)
   return $elements;
 }
 
+# Return a list of elements to be converted into pages.  Each element starts
+# with the @node associated with a sectioning command or with the sectioning
+# command if there is no associated node
 sub split_by_section($)
 {
   my $root = shift;

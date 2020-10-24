@@ -730,7 +730,8 @@ foreach my $unformatted_brace_command ('anchor', 'shortcaption',
 
 # commands delimiting blocks, with an @end.
 # Value is either the number of arguments on the line separated by
-# commas or the type of command, 'raw', 'def' or 'multitable'.
+# commas or the type of command, 'raw', 'def', 'conditional',
+# or 'multitable'.
 our %block_commands;
 
 # commands that have a possible content before an item

@@ -283,7 +283,7 @@ done in the formatting function.
 formatting.
 @item node_file_name now should only returns the node file, since the 
 redirection file isn't used anymore. element_file_name only is used for 
-file names, whatever NODES_FILES is.
+file names, whatever NODE_FILES is.
 @end itemize
 @item changes between 1.66 and 1.68:
 @itemize @bullet
