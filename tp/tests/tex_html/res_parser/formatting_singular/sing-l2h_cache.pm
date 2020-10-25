@@ -1,16 +1,15 @@
 
 $l2h_cache_key = q/$$\partial_t \eta (t) = g(\eta(t),\varphi(t))$$ ''/;
 $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \partial_t \eta (t) = g(\eta(t),\varphi(t))
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="sing_1.svg"
- ALT="\begin{displaymath}\partial_t \eta (t) = g(\eta(t),\varphi(t))\end{displaymath}">
+<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="sing_1.svg"
+ ALT="$\displaystyle \partial_t \eta (t) = g(\eta(t),\varphi(t))$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P> &rdquo;|;

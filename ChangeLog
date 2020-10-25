@@ -1,5 +1,12 @@
 2020-10-25  Patrice Dumas  <pertusus@free.fr>
 
+	regenerate tex4ht/latex2html tests
+
+	Note that tex must be changed to etex in httex and httexi to
+	generate those tests results with recent tex4ht.
+
+2020-10-25  Patrice Dumas  <pertusus@free.fr>
+
 	@displaymath keep strings as is and add to coverage tests
 
 	* tp/Texinfo/Convert/HTML.pm (_convert): increment 'math' context

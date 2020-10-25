@@ -1,5 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <!-- In copying
 
 <
@@ -292,6 +295,9 @@ s-malllisp
 f-ormat
 
 s-mallformat
+
+disp-laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
 
 c-ategory: d-effn_name a-rguments...
 d-effn
@@ -599,9 +605,6 @@ truc: after a deff item
 @inforef{} 
 
  -->
-<!-- Created by texinfo, http://www.gnu.org/software/texinfo/ -->
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Top section (title &ndash;a)</title>
 
 <meta name="description" content="Top section (title &ndash;a)">
@@ -667,7 +670,7 @@ ul.no-bullet {list-style: none}
 
 Menu comment
 
-</pre></th></tr><tr><td align="left" valign="top"><a href="chapter2.html">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
+</pre></th></tr><tr><td align="left" valign="top"><a href="chapter2.html" rel="index">chapter 2</a></td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Chapter 2
 </td></tr>
 </table></blockquote>
 
@@ -1029,6 +1032,9 @@ i&ndash;tem 1
 <pre class="format">s&ndash;mallformat
 </pre></div>
 
+<div class="displaymath"><em>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</em></div>
 <dl>
 <dt id="index-copying-d_002d_002deffn_005fname">c--ategory: <strong>d--effn_name</strong> <em>a--rguments...</em></dt>
 <dd><p>d&ndash;effn
@@ -1169,65 +1175,65 @@ i&ndash;tem 1
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
 
-<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a class="texi-manual" href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 </p>
 <p><code>@ref{chapter}</code> <a href="chapter.html">chapter</a>
-<code>@xref{chapter}</code> See section <a href="chapter.html">chapter</a>.
-<code>@pxref{chapter}</code> see section <a href="chapter.html">chapter</a>
-<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">s--ect,ion</a>
+<code>@xref{chapter}</code> See <a href="chapter.html">chapter</a>.
+<code>@pxref{chapter}</code> see <a href="chapter.html">chapter</a>
+<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">A section</a>
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
+<a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 </p>
 <p><code>@ref{chapter,cross ref name}</code> <a href="chapter.html">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@ref{chapter,,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
 <code>@ref{chapter,,,,manual}</code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@ref{chapter,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
 </p>
 
-<p><code>@ref{(pman)anode,cross ref name}</code> <a href="../pman/anode.html#anode">(pman)cross ref name</a>
-<code>@ref{(pman)anode,,title}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,,,file name}</code> <a href="../file name/anode.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="../file name/anode.html#anode">(file name)cross ref name</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
+<p><code>@ref{(pman)anode,cross ref name}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)anode</a>
+<code>@ref{(pman)anode,,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
 </p>
 
-<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<p><code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@inforef{chapter}</code> See &lsquo;chapter&rsquo;
 <code>@inforef{chapter, cross ref name}</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{chapter,,file name}</code> See <a href="../file name/chapter.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@inforef{chapter,,file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@inforef{node, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@inforef{node}</code> See &lsquo;node&rsquo;
 <code>@inforef{node, cross ref name}</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{node,,file name}</code> See <a href="../file name/node.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
+<code>@inforef{node,,file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a class="texi-manual" href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
 </p>
 <p><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
+See <a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
 ref</a>
 </p>
 
@@ -1289,16 +1295,15 @@ This is a very simple texi manual @  &lt;&gt;.
 html ''
 
 <BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \partial_t \eta (t) = g(\eta(t),\varphi(t))
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="sing_1.svg"
- ALT="\begin{displaymath}\partial_t \eta (t) = g(\eta(t),\varphi(t))\end{displaymath}">
+<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="sing_1.svg"
+ ALT="$\displaystyle \partial_t \eta (t) = g(\eta(t),\varphi(t))$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P> &rdquo;
@@ -1386,37 +1391,37 @@ html ''
 </p>
 <p><code>@ref{,cross ref name}</code> &lsquo;cross ref name&rsquo;
 <code>@ref{,,title}</code> &lsquo;title&rsquo;
-<code>@ref{,,,file name}</code> <a href="../file name/index.html">(file name)</a>
+<code>@ref{,,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)</a>
 <code>@ref{,,,,manual}</code> <cite>manual</cite>
 <code>@ref{node,cross ref name}</code> &lsquo;cross ref name&rsquo;
 <code>@ref{node,,title}</code> &lsquo;title&rsquo;
-<code>@ref{node,,,file name}</code> <a href="../file name/node.html#node">(file name)node</a>
+<code>@ref{node,,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
 <code>@ref{node,,,,manual}</code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> &lsquo;title&rsquo;
-<code>@ref{node,cross ref name,,file name}</code> <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@ref{node,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="../file name/node.html#node">node</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a class="texi-manual" href="../file name/node.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> &lsquo;title&rsquo;
-<code>@ref{,cross ref name,,file name}</code> <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@ref{,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <cite><a href="../file name/index.html">manual</a></cite>
+<code>@ref{,,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <cite><a class="texi-manual" href="../file name/index.html">manual</a></cite>
 </p>
 <p><code>@inforef{,cross ref name }</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{,,file name}</code> See <a href="../file name/index.html">(file name)</a>
-<code>@inforef{,cross ref name, file name}</code> See <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@inforef{,,file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)</a>
+<code>@inforef{,cross ref name, file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@inforef{}</code> 
 </p>
 
@@ -1775,6 +1780,9 @@ i&ndash;tem 1
 <pre class="format">s&ndash;mallformat
 </pre></div>
 
+<div class="displaymath"><em>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</em></div>
 <dl>
 <dt id="index-d_002d_002deffn_005fname">c--ategory: <strong>d--effn_name</strong> <em>a--rguments...</em></dt>
 <dd><p>d&ndash;effn
@@ -1915,65 +1923,65 @@ i&ndash;tem 1
 <dd><p>d&ndash;eftypemethod
 </p></dd></dl>
 
-<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<p><code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a class="texi-manual" href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t&mdash;itle@</a> in <cite>ma&mdash;nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 </p>
 <p><code>@ref{chapter}</code> <a href="chapter.html">chapter</a>
-<code>@xref{chapter}</code> See section <a href="chapter.html">chapter</a>.
-<code>@pxref{chapter}</code> see section <a href="chapter.html">chapter</a>
-<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">s--ect,ion</a>
+<code>@xref{chapter}</code> See <a href="chapter.html">chapter</a>.
+<code>@pxref{chapter}</code> see <a href="chapter.html">chapter</a>
+<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">A section</a>
 </p>
 <p><code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
+<a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 </p>
 <p><code>@ref{chapter,cross ref name}</code> <a href="chapter.html">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@ref{chapter,,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
 <code>@ref{chapter,,,,manual}</code> &lsquo;chapter&rsquo; in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@ref{chapter,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
 </p>
 
-<p><code>@ref{(pman)anode,cross ref name}</code> <a href="../pman/anode.html#anode">(pman)cross ref name</a>
-<code>@ref{(pman)anode,,title}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,,,file name}</code> <a href="../file name/anode.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="../file name/anode.html#anode">(file name)cross ref name</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
+<p><code>@ref{(pman)anode,cross ref name}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)anode</a>
+<code>@ref{(pman)anode,,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
 </p>
 
-<p><code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<p><code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@inforef{chapter}</code> See &lsquo;chapter&rsquo;
 <code>@inforef{chapter, cross ref name}</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{chapter,,file name}</code> See <a href="../file name/chapter.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@inforef{chapter,,file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@inforef{node, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@inforef{node}</code> See &lsquo;node&rsquo;
 <code>@inforef{node, cross ref name}</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{node,,file name}</code> See <a href="../file name/node.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
+<code>@inforef{node,,file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a class="texi-manual" href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
 </p>
 <p><code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
+See <a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
 ref</a>
 </p>
 
@@ -2035,16 +2043,15 @@ This is a very simple texi manual @  &lt;&gt;.
 html ''
 
 <BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \partial_t \eta (t) = g(\eta(t),\varphi(t))
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="sing_1.svg"
- ALT="\begin{displaymath}\partial_t \eta (t) = g(\eta(t),\varphi(t))\end{displaymath}">
+<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="sing_1.svg"
+ ALT="$\displaystyle \partial_t \eta (t) = g(\eta(t),\varphi(t))$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P> &rdquo;
@@ -2132,37 +2139,37 @@ html ''
 </p>
 <p><code>@ref{,cross ref name}</code> &lsquo;cross ref name&rsquo;
 <code>@ref{,,title}</code> &lsquo;title&rsquo;
-<code>@ref{,,,file name}</code> <a href="../file name/index.html">(file name)</a>
+<code>@ref{,,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)</a>
 <code>@ref{,,,,manual}</code> <cite>manual</cite>
 <code>@ref{node,cross ref name}</code> &lsquo;cross ref name&rsquo;
 <code>@ref{node,,title}</code> &lsquo;title&rsquo;
-<code>@ref{node,,,file name}</code> <a href="../file name/node.html#node">(file name)node</a>
+<code>@ref{node,,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
 <code>@ref{node,,,,manual}</code> &lsquo;node&rsquo; in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> &lsquo;title&rsquo;
-<code>@ref{node,cross ref name,,file name}</code> <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@ref{node,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="../file name/node.html#node">node</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a class="texi-manual" href="../file name/node.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> &lsquo;title&rsquo;
-<code>@ref{,cross ref name,,file name}</code> <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@ref{,cross ref name,,,manual}</code> &lsquo;cross ref name&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,cross ref name,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,,title,,manual}</code> &lsquo;title&rsquo; in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <cite><a href="../file name/index.html">manual</a></cite>
+<code>@ref{,,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <cite><a class="texi-manual" href="../file name/index.html">manual</a></cite>
 </p>
 <p><code>@inforef{,cross ref name }</code> See &lsquo;cross ref name&rsquo;
-<code>@inforef{,,file name}</code> See <a href="../file name/index.html">(file name)</a>
-<code>@inforef{,cross ref name, file name}</code> See <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@inforef{,,file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)</a>
+<code>@inforef{,cross ref name, file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@inforef{}</code> 
 </p>
 
@@ -2563,7 +2570,10 @@ After clickstyle &rArr;
 </pre></div>
 <pre class="example">
 
-</pre><dl>
+</pre><div class="displaymath"><em>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</em></div>
+<dl>
 <dt id="index-d_002d_002deffn_005fname-1">c--ategory: <strong>d--effn_name</strong> <em>a--rguments...</em></dt>
 <dd><pre class="example">d--effn
 </pre></dd></dl>
@@ -2726,65 +2736,65 @@ After clickstyle &rArr;
 </pre></dd></dl>
 <pre class="example">
 
-<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t---itle@</a> in <cite>ma---nual@</cite>.
-<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<code>@xref{c---hapter@@, cross r---ef name@@, t---itle@@, file n---ame@@, ma---nual@@}</code> See <a class="texi-manual" href="../file n---ame@/c_002d_002d_002dhapter_0040.html#c_002d_002d_002dhapter_0040">t---itle@</a> in <cite>ma---nual@</cite>.
+<code>@ref{chapter, cross ref name, title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@pxref{chapter, cross ref name, title, file name, manual}</code> see <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 
 <code>@ref{chapter}</code> <a href="chapter.html">chapter</a>
-<code>@xref{chapter}</code> See section <a href="chapter.html">chapter</a>.
-<code>@pxref{chapter}</code> see section <a href="chapter.html">chapter</a>
-<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">s--ect,ion</a>
+<code>@xref{chapter}</code> See <a href="chapter.html">chapter</a>.
+<code>@pxref{chapter}</code> see <a href="chapter.html">chapter</a>
+<code>@ref{s--ect@comma{}ion}</code> <a href="s_002d_002dect_002cion.html">A section</a>
 
 <code>@ref{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in title, a comma@comma{} in file, a @comma{} in manual name }</code>
-<a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
+<a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">a comma, in title</a> in <cite>a , in manual name</cite>
 
 <code>@ref{chapter,cross ref name}</code> <a href="chapter.html">cross ref name</a>
 <code>@ref{chapter,,title}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@ref{chapter,,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
 <code>@ref{chapter,,,,manual}</code> `chapter' in <cite>manual</cite>
 <code>@ref{chapter,cross ref name,title,}</code> <a href="chapter.html">title</a>
-<code>@ref{chapter,cross ref name,,file name}</code> <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<code>@ref{chapter,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@ref{chapter,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,title,file name}</code> <a href="../file name/chapter.html#chapter">(file name)title</a>
+<code>@ref{chapter,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,title,file name}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)title</a>
 <code>@ref{chapter,,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{chapter,,,file name,manual}</code> <a href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{chapter,,,file name,manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">chapter</a> in <cite>manual</cite>
 
 
-<code>@ref{(pman)anode,cross ref name}</code> <a href="../pman/anode.html#anode">(pman)cross ref name</a>
-<code>@ref{(pman)anode,,title}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,,,file name}</code> <a href="../file name/anode.html#anode">(file name)anode</a>
-<code>@ref{(pman)anode,,,,manual}</code> <a href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,}</code> <a href="../pman/anode.html#anode">(pman)title</a>
-<code>@ref{(pman)anode,cross ref name,,file name}</code> <a href="../file name/anode.html#anode">(file name)cross ref name</a>
-<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title,file name}</code> <a href="../file name/anode.html#anode">(file name)title</a>
-<code>@ref{(pman)anode,,title,,manual}</code> <a href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,title, file name, manual}</code> <a href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
-<code>@ref{(pman)anode,,,file name,manual}</code> <a href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)cross ref name</a>
+<code>@ref{(pman)anode,,title}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)anode</a>
+<code>@ref{(pman)anode,,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">anode</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,}</code> <a class="texi-manual" href="../pman/anode.html#anode">(pman)title</a>
+<code>@ref{(pman)anode,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)cross ref name</a>
+<code>@ref{(pman)anode,cross ref name,,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">cross ref name</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,cross ref name,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title,file name}</code> <a class="texi-manual" href="../file name/anode.html#anode">(file name)title</a>
+<code>@ref{(pman)anode,,title,,manual}</code> <a class="texi-manual" href="../pman/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,title, file name, manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">title</a> in <cite>manual</cite>
+<code>@ref{(pman)anode,,,file name,manual}</code> <a class="texi-manual" href="../file name/anode.html#anode">anode</a> in <cite>manual</cite>
 
 
-<code>@inforef{chapter, cross ref name, file name}</code> See <a href="../file name/chapter.html#chapter">(file name)cross ref name</a>
+<code>@inforef{chapter, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)cross ref name</a>
 <code>@inforef{chapter}</code> See `chapter'
 <code>@inforef{chapter, cross ref name}</code> See `cross ref name'
-<code>@inforef{chapter,,file name}</code> See <a href="../file name/chapter.html#chapter">(file name)chapter</a>
-<code>@inforef{node, cross ref name, file name}</code> See <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@inforef{chapter,,file name}</code> See <a class="texi-manual" href="../file name/chapter.html#chapter">(file name)chapter</a>
+<code>@inforef{node, cross ref name, file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@inforef{node}</code> See `node'
 <code>@inforef{node, cross ref name}</code> See `cross ref name'
-<code>@inforef{node,,file name}</code> See <a href="../file name/node.html#node">(file name)node</a>
-<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
+<code>@inforef{node,,file name}</code> See <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
+<code>@inforef{chapter, cross ref name, file name, spurious arg}</code> See <a class="texi-manual" href="../file name, spurious arg/chapter.html#chapter">(file name, spurious arg)cross ref name</a>
 
 <code>@inforef{s--ect@comma{}ion, a @comma{} in cross
 ref, a comma@comma{} in file}</code>
-See <a href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
+See <a class="texi-manual" href="../a comma, in file/s_002d_002dect_002cion.html#s_002d_002dect_002cion">(a comma, in file)a , in cross
 ref</a>
 
 
@@ -2855,16 +2865,15 @@ This is a very simple texi manual @  &lt;&gt;.
 html ''
 
 <BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \partial_t \eta (t) = g(\eta(t),\varphi(t))
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="sing_1.svg"
- ALT="\begin{displaymath}\partial_t \eta (t) = g(\eta(t),\varphi(t))\end{displaymath}">
+<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="sing_1.svg"
+ ALT="$\displaystyle \partial_t \eta (t) = g(\eta(t),\varphi(t))$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P> &rdquo;
@@ -2964,37 +2973,37 @@ Invalid use of @':
 
 <code>@ref{,cross ref name}</code> `cross ref name'
 <code>@ref{,,title}</code> `title'
-<code>@ref{,,,file name}</code> <a href="../file name/index.html">(file name)</a>
+<code>@ref{,,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)</a>
 <code>@ref{,,,,manual}</code> <cite>manual</cite>
 <code>@ref{node,cross ref name}</code> `cross ref name'
 <code>@ref{node,,title}</code> `title'
-<code>@ref{node,,,file name}</code> <a href="../file name/node.html#node">(file name)node</a>
+<code>@ref{node,,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)node</a>
 <code>@ref{node,,,,manual}</code> `node' in <cite>manual</cite>
 <code>@ref{node,cross ref name,title,}</code> `title'
-<code>@ref{node,cross ref name,,file name}</code> <a href="../file name/node.html#node">(file name)cross ref name</a>
+<code>@ref{node,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)cross ref name</a>
 <code>@ref{node,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
-<code>@ref{node,cross ref name,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{node,cross ref name,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,title,file name}</code> <a href="../file name/node.html#node">(file name)title</a>
+<code>@ref{node,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,title,file name}</code> <a class="texi-manual" href="../file name/node.html#node">(file name)title</a>
 <code>@ref{node,,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{chapter,,title, file name, manual}</code> <a href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
-<code>@ref{node,,title, file name, manual}</code> <a href="../file name/node.html#node">title</a> in <cite>manual</cite>
-<code>@ref{node,,,file name,manual}</code> <a href="../file name/node.html#node">node</a> in <cite>manual</cite>
+<code>@ref{chapter,,title, file name, manual}</code> <a class="texi-manual" href="../file name/chapter.html#chapter">title</a> in <cite>manual</cite>
+<code>@ref{node,,title, file name, manual}</code> <a class="texi-manual" href="../file name/node.html#node">title</a> in <cite>manual</cite>
+<code>@ref{node,,,file name,manual}</code> <a class="texi-manual" href="../file name/node.html#node">node</a> in <cite>manual</cite>
 <code>@ref{,cross ref name,title,}</code> `title'
-<code>@ref{,cross ref name,,file name}</code> <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@ref{,cross ref name,,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@ref{,cross ref name,,,manual}</code> `cross ref name' in <cite>manual</cite>
-<code>@ref{,cross ref name,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,cross ref name,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{,cross ref name,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,title,file name}</code> <a href="../file name/index.html">(file name)title</a>
+<code>@ref{,cross ref name,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,title,file name}</code> <a class="texi-manual" href="../file name/index.html">(file name)title</a>
 <code>@ref{,,title,,manual}</code> `title' in <cite>manual</cite>
-<code>@ref{,,title, file name, manual}</code> <a href="../file name/index.html">title</a> in <cite>manual</cite>
-<code>@ref{,,,file name,manual}</code> <cite><a href="../file name/index.html">manual</a></cite>
+<code>@ref{,,title, file name, manual}</code> <a class="texi-manual" href="../file name/index.html">title</a> in <cite>manual</cite>
+<code>@ref{,,,file name,manual}</code> <cite><a class="texi-manual" href="../file name/index.html">manual</a></cite>
 
 <code>@inforef{,cross ref name }</code> See `cross ref name'
-<code>@inforef{,,file name}</code> See <a href="../file name/index.html">(file name)</a>
-<code>@inforef{,cross ref name, file name}</code> See <a href="../file name/index.html">(file name)cross ref name</a>
+<code>@inforef{,,file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)</a>
+<code>@inforef{,cross ref name, file name}</code> See <a class="texi-manual" href="../file name/index.html">(file name)cross ref name</a>
 <code>@inforef{}</code> 
 
 

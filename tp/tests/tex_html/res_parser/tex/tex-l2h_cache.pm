@@ -6,7 +6,7 @@ $$ \chi^2 = \sum_{i=1}^N
 $l2h_cache{$l2h_cache_key} = q|
 <P>
 <BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \chi^2 = \sum_{i=1}^N
@@ -15,11 +15,10 @@ $l2h_cache{$l2h_cache_key} = q|
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="tex_1.svg"
- ALT="\begin{displaymath}\chi^2 = \sum_{i=1}^N
+<IMG STYLE="height: 7.42ex; vertical-align: -3.09ex; " SRC="tex_1.svg"
+ ALT="$\displaystyle \chi^2 = \sum_{i=1}^N
 \left(y_i - (a + b x_i)
-\over \sigma_i\right)^2 \end{displaymath}">
+\over \sigma_i\right)^2 $">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>|;

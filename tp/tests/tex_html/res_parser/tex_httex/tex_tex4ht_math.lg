@@ -1,6 +1,6 @@
 htfcss: cmmi font-style: italic;
 htfcss: cmmib font-style: italic; font-weight: bold;
-htfcss: cmtt font-family: monospace;
+htfcss: cmtt font-family: monospace,monospace;
 File: tex_tex4ht_math.html
 --- characters ---
 Font("cmr","7","7","100")
