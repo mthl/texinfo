@@ -29,6 +29,23 @@ $l2h_cache{$l2h_cache_key} = q|
 <P>
 tex <SPAN CLASS="logo-TeX">T<SMALL>E</SMALL>X</SPAN>|;
 
+$l2h_cache_key = q/$$-- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+$$/;
+$l2h_cache{$l2h_cache_key} = q|<BR><P></P>
+<DIV CLASS="displaymath">
+<!-- MATH
+ \begin{displaymath}
+- - f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+\end{displaymath}
+ -->
+
+<IMG STYLE="height: 6.26ex; vertical-align: -2.32ex; " SRC="tex_7.svg"
+ ALT="$\displaystyle -- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+$">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>|;
+
 $l2h_cache_key = q/$@code{math code} a < b$/;
 $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $@code{math code} a < b$

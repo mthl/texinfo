@@ -67,8 +67,8 @@ post_process_output ()
     rm -f "${outdir}$dir/$basename.1" ${outdir}$dir/*.png ${outdir}$dir/*.svg \
           ${outdir}$dir/*_l2h_images.log ${outdir}$dir/*_l2h_images.pdf ${outdir}$dir/*_tex4ht_*.log \
           ${outdir}$dir/*_tex4ht_*.idv ${outdir}$dir/*_tex4ht_*.dvi \
-          ${outdir}$dir/*_l2h.html.* \
-          ${outdir}$dir/*_tex4ht_tex.html*
+          ${outdir}$dir/*_l2h.html.*
+          #${outdir}$dir/*_tex4ht_tex.html*
   else
     # Otherwise it's only the standard error that needs to be modified.
     mkdir -p "${raw_outdir}$dir"

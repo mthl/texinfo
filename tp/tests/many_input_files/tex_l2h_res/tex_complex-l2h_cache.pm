@@ -3,18 +3,16 @@ $l2h_cache_key = q/$$
  U w V^\dagger
 $$/;
 $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 U w V^\dagger
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="tex_complex_2.svg"
- ALT="\begin{displaymath}
-U w V^\dagger
-\end{displaymath}">
+<IMG STYLE="height: 2.31ex; vertical-align: -0.12ex; " SRC="tex_complex_2.svg"
+ ALT="$\displaystyle U w V^\dagger
+$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>|;
@@ -23,18 +21,16 @@ $l2h_cache_key = q/$$
 \omega = h ( \eta , \varphi) 
 $$/;
 $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \omega = h ( \eta , \varphi)
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="tex_complex_3.svg"
- ALT="\begin{displaymath}
-\omega = h ( \eta , \varphi)
-\end{displaymath}">
+<IMG STYLE="height: 2.55ex; vertical-align: -0.70ex; " SRC="tex_complex_3.svg"
+ ALT="$\displaystyle \omega = h ( \eta , \varphi)
+$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>|;
@@ -42,17 +38,16 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 $l2h_cache_key = q/$$\partial_{\eta} g(\eta(t),\varphi(t));
 $$/;
 $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
-<DIV CLASS="mathdisplay">
+<DIV CLASS="displaymath">
 <!-- MATH
  \begin{displaymath}
 \partial_{\eta} g(\eta(t),\varphi(t));
 \end{displaymath}
  -->
 
-<IMG STYLE=""
- SRC="tex_complex_1.svg"
- ALT="\begin{displaymath}\partial_{\eta} g(\eta(t),\varphi(t));
-\end{displaymath}">
+<IMG STYLE="height: 2.63ex; vertical-align: -0.78ex; " SRC="tex_complex_1.svg"
+ ALT="$\displaystyle \partial_{\eta} g(\eta(t),\varphi(t));
+$">
 </DIV>
 <BR CLEAR="ALL">
 <P></P>|;

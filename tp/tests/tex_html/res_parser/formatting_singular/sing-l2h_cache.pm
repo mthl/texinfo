@@ -14,6 +14,26 @@ $l2h_cache{$l2h_cache_key} = q|<BR><P></P>
 <BR CLEAR="ALL">
 <P></P> &rdquo;|;
 
+$l2h_cache_key = q/$$disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+$$/;
+$l2h_cache{$l2h_cache_key} = q|<BR><P></P>
+<DIV CLASS="displaymath">
+<!-- MATH
+ \begin{displaymath}
+disp- -laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+\end{displaymath}
+ -->
+
+<IMG STYLE="height: 6.26ex; vertical-align: -2.32ex; " SRC="sing_4.svg"
+ ALT="$\displaystyle disp--laymath
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+$">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>|;
+
 $l2h_cache_key = q/$--a {\frac{1}{2}} @minus{}$/;
 $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $- -a {\frac{1}{2}} @minus{}$

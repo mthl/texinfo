@@ -303,7 +303,7 @@ After clickstyle &#8658;
 <screen>s&#8211;mallformat
 </screen>
 <informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
@@ -920,7 +920,7 @@ After clickstyle &#8658;
 <screen>s&#8211;mallformat
 </screen>
 <informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
@@ -1538,7 +1538,7 @@ After clickstyle &#8658;
 <screen>s&#8211;mallformat
 </screen>
 <informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
@@ -2156,7 +2156,7 @@ After clickstyle &#8658;
 <screen>s&#8211;mallformat
 </screen>
 <informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
@@ -2773,7 +2773,7 @@ After clickstyle &#8658;
 <screen>s&#8211;mallformat
 </screen>
 <informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
@@ -3384,7 +3384,7 @@ After clickstyle &#8658;
 </screen><screen>s--mallformat
 </screen><screen>
 </screen><informalequation><mathphrase>disp--laymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
 </mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--effn

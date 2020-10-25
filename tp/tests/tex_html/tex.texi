@@ -45,4 +45,9 @@ Maths with @@-sup
 
 @\
 
+Displaymath
+@displaymath
+-- f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+@end displaymath
+
 @bye
