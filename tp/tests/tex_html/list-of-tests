@@ -16,3 +16,7 @@ math_not_closed math_not_closed.texi -c 'L2H 1' --iftex
 tex_not_closed tex_not_closed.texi -c 'L2H 1' --iftex
 tex_in_copying tex_in_copying.texi -c 'L2H 1' --iftex
 formatting_singular ../layout/formatting.texi --init-file t2h_singular.init -c 'L2H 1' -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
+# The following could be added, mainly to test the full 
+# ../layout/formatting.texi processing with tex4ht, but
+# also to check that singulat style is compatible with tex4ht
+#formatting_singular_tex4ht ../layout/formatting.texi --init-file t2h_singular.init --init tex4ht.pm -c 'EXTENSION htm' -c 'PREFIX sing' -c 'TOP_FILE index.htm' --no-verbose
