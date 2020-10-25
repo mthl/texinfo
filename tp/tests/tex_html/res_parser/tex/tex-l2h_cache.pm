@@ -36,6 +36,13 @@ $l2h_cache{$l2h_cache_key} = q|<!-- MATH
 <SPAN CLASS="MATH"><IMG STYLE="height: 1.93ex; vertical-align: -0.21ex; " SRC="tex_4.svg"
  ALT="$@code{math code} a &lt; b$"></SPAN>|;
 
+$l2h_cache_key = q/$\sum_{i} f(x)@sup{2}$/;
+$l2h_cache{$l2h_cache_key} = q|<!-- MATH
+ $\sum_{i} f(x)@sup{2}$
+ -->
+<SPAN CLASS="MATH"><IMG STYLE="height: 2.66ex; vertical-align: -0.81ex; " SRC="tex_6.svg"
+ ALT="$\sum_{i} f(x)@sup{2}$"></SPAN>|;
+
 $l2h_cache_key = q/$\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$/;
 $l2h_cache{$l2h_cache_key} = q|<!-- MATH
  $\underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}$

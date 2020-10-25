@@ -37,6 +37,10 @@ Maths with code @@-command and braces:
 
 @math{ \underline{@code{math \hbox{ code }}} \sum_{i}{\underline{f}}}
 
+Maths with @@-sup
+
+@math{\sum_{i} f(x)@sup{2}}
+
 @@\ outside of math
 
 @\

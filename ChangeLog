@@ -1,5 +1,12 @@
 2020-10-25  Patrice Dumas  <pertusus@free.fr>
 
+	add a @sup in @math{} in tex tests
+
+	* tp/tests/tex_html/tex.texi: add @math{} with @sup{}
+	to test.
+
+2020-10-25  Patrice Dumas  <pertusus@free.fr>
+
 	regenerate tex4ht/latex2html tests
 
 	Note that tex must be changed to etex in httex and httexi to
