@@ -263,7 +263,7 @@ sub tex4ht_process_command($$) {
   # if tex fails, it will read from STDIN and the input may trigger
   # diverse actions by tex.
   #if (system($cmd)) {
-  if (not(open(TEX4HT, "|-", $cmd)) {
+  if (not(open(TEX4HT, "|-", $cmd))) {
     $self->document_warn(sprintf(__(
                          "tex4ht.pm: command failed: %s"), $cmd));
     return 1;
