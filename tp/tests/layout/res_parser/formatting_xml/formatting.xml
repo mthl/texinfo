@@ -375,6 +375,15 @@ f--ormat
 s--mallformat
 @end smallformat
 
+@ignore
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+@end ignore
+@displaymath
+disp--laymath
+f(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}}e@sup{-\\frac{1}{2}\\left(\\frac{x-\\mu}{\\sigma}\\right)^2}
+@end displaymath
+
 @deffn c--ategory d--effn_name a--rguments...
 d--effn
 @end deffn
@@ -1103,6 +1112,15 @@ After clickstyle &result;
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
 
+<ignore>
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+</ignore>
+<displaymath>
+disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</displaymath>
+
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="3">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
@@ -1824,6 +1842,15 @@ After clickstyle &result;
 <smallformat endspaces=" ">
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
+
+<ignore>
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+</ignore>
+<displaymath>
+disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</displaymath>
 
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="42">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
@@ -2547,6 +2574,15 @@ After clickstyle &result;
 <pre xml:space="preserve">s&textndash;mallformat
 </pre></smallformat>
 
+<ignore>
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+</ignore>
+<displaymath>
+disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</displaymath>
+
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="81">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><para>d&textndash;effn
 </para></definitionitem></deffn>
@@ -3263,7 +3299,16 @@ After clickstyle &result;
 <pre xml:space="preserve">s--mallformat
 </pre></smallformat>
 <pre xml:space="preserve">
-</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="120">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<ignore>
+in the displaymath below, as in math, backslash are doubled because 
+we are in a macro.
+</ignore>
+</pre><displaymath>
+disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</displaymath>
+
+<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="120">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--effn
 </pre></definitionitem></deffn>
 <pre xml:space="preserve">

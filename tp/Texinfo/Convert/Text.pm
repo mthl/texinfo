@@ -575,7 +575,9 @@ sub _convert($;$)
   }
   if ($root->{'contents'}) {
     if ($root->{'cmdname'} 
-        and $Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}) {
+        and ($Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}
+             or (defined($Texinfo::Common::block_commands{$root->{'cmdname'}}) 
+                 and $Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw'))) {
       $options = _code_options($options);
     }
     if (ref($root->{'contents'}) ne 'ARRAY') {
@@ -822,7 +824,7 @@ L<Texinfo::Report> objet.  See also L<Texinfo::Convert::Converter>.
 =item expanded_formats_hash
 
 A reference on a hash.  The keys should be format names (like C<html>, 
-C<tex>), and if thecorresponding  value is set, the format is expanded.
+C<tex>), and if the corresponding  value is set, the format is expanded.
 
 =back
 

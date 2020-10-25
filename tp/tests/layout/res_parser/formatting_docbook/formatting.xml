@@ -302,6 +302,9 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
+<informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
@@ -916,6 +919,9 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
+<informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
@@ -1531,6 +1537,9 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
+<informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
@@ -2146,6 +2155,9 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
+<informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
@@ -2760,6 +2772,9 @@ After clickstyle &#8658;
 </abstract>
 <screen>s&#8211;mallformat
 </screen>
+<informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
 <synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><para>d&#8211;effn
 </para></blockquote>
@@ -3368,7 +3383,10 @@ After clickstyle &#8658;
 </abstract><screen>
 </screen><screen>s--mallformat
 </screen><screen>
-</screen><synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
+</screen><informalequation><mathphrase>disp--laymath
+f(x) = \frac{1}{\sigma \sqrt{2\pi}}e@sup{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+</mathphrase></informalequation>
+<synopsis><indexterm role="fn"><primary>d--effn_name</primary></indexterm><phrase role="category"><emphasis role="bold">c--ategory</emphasis>:</phrase> <function>d--effn_name</function> <replaceable>a--rguments...</replaceable></synopsis>
 <blockquote><screen>d--effn
 </screen></blockquote><screen>
 </screen><synopsis><indexterm role="fn"><primary>de--ffn_name</primary></indexterm><phrase role="category"><emphasis role="bold">cate--gory</emphasis>:</phrase> <function>de--ffn_name</function> <replaceable>ar--guments</replaceable>    <replaceable>more</replaceable> <replaceable>args</replaceable> <replaceable>
