@@ -1208,6 +1208,42 @@ sub _copy_contents($)
   return $copy->{'contents'};
 }
 
+sub get_node_node_childs
+{
+  my ($node) = @_;
+
+  my @node_childs;
+
+  if ($node->{'extra'}->{'associated_section'}->{'section_childs'}) {
+    foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
+      if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+        push @node_childs, $child->{'extra'}->{'associated_node'};
+      }
+    }
+  }
+  # Special case for @top.  Gather all the children of the @part following
+  # @top.
+  if ($node->{'extra'}->{'associated_section'}->{'cmdname'} eq 'top') {
+    my $current = $node->{'extra'}->{'associated_section'};
+    while ($current->{'section_next'}) {
+      $current = $current->{'section_next'};
+      if ($current->{'cmdname'} and $current->{'cmdname'} eq 'part'
+          and $current->{'section_childs'}) {
+        foreach my $child (@{$current->{'section_childs'}}) {
+          if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
+            push @node_childs, $child->{'extra'}->{'associated_node'};
+          }
+        }
+      } elsif ($current->{'extra'}->{'associated_node'}) {
+        # for @appendix, and what follows, as it stops a @part, but is 
+        # not below @top
+        push @node_childs, $current->{'extra'}->{'associated_node'};
+      }
+    }
+  }
+  return @node_childs;
+}
+
 sub new_node_menu_entry
 {
   my ($self, $node, $use_sections) = @_;
@@ -1310,22 +1346,13 @@ sub new_block_command($$$)
   return $new_block;
 }
 
-sub _menu_of_node
+sub new_complete_node_menu
 {
   my ($self, $node, $use_sections) = @_;
 
-  if (!$node->{'extra'}->{'associated_section'}->{'section_childs'}) {
-    return;
-  }
+  my @node_childs = get_node_node_childs($node);
 
-  my @node_childs;
-  foreach my $child (@{$node->{'extra'}->{'associated_section'}->{'section_childs'}}) {
-    if ($child->{'extra'} and $child->{'extra'}->{'associated_node'}) {
-      push @node_childs, $child->{'extra'}->{'associated_node'};
-    }
-  }
-
-  if ($#node_childs+1 == 0) {
+  if (not scalar(@node_childs)) {
     return;
   }
 
@@ -1340,17 +1367,6 @@ sub _menu_of_node
 
   return $current_menu;
 }
-
-sub node_menu_of_node
-{
-  return _menu_of_node (@_, 0);
-}
-
-sub section_menu_of_node
-{
-  return _menu_of_node (@_, 1);
-}
-
 
 sub _sort_string($$)
 {

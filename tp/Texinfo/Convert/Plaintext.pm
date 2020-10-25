@@ -3277,7 +3277,7 @@ sub _convert($$)
       if ($node and $automatic_directions
             and !$self->{'seenmenus'}->{$node}) {
         $self->{'seenmenus'}->{$node} = 1;
-        my $menu_node = Texinfo::Structuring::node_menu_of_node(undef, $node);
+        my $menu_node = Texinfo::Structuring::new_complete_node_menu(undef, $node);
         if ($menu_node) {
           my $menu_text = $self->_convert($menu_node);
           if ($menu_text) {

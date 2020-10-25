@@ -1,3 +1,25 @@
+2020-10-25  Patrice Dumas  <pertusus@free.fr>
+
+	Add a tree transformation to add missing menus
+
+	* tp/Texinfo/Transformations.pm
+	(_get_non_automatic_nodes_with_sections, complete_tree_nodes_menus,
+	complete_tree_nodes_missing_menu, _prepend_new_menu_in_node_section), 
+	doc/texinfo.texi (Other Customization Variables), texi2any.pl,
+	tp/t/automatic_menus.t: add complete_tree_nodes_missing_menu
+	transformation.  Add systematically the optional $use_sections
+	argument to add a menu entry name using the section name to the 
+	functions that can make use of that argument.
+	* tp/Texinfo/Convert/Plaintext.pm (_convert), tp/Texinfo/Structuring.pm
+	(node_menu_of_node): rename node_menu_of_node() as
+	new_complete_node_menu().
+	* tp/Texinfo/Structuring.pm (get_node_node_childs, new_complete_node_menu),
+	tp/Texinfo/Transformations.pm (complete_node_menu): add
+	get_node_node_childs() in Structuring.pm based on code in
+	Transformations.pm, and use that code in new_complete_node_menu().
+	* tp/Texinfo/Structuring.pm (node_menu_of_node, section_menu_of_node): 
+	remove, optional arguments of the functions should be used instead.
+
 2020-10-24  Patrice Dumas  <pertusus@free.fr>
 
 	minor changes in comments and documentation

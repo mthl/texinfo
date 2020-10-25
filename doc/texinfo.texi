@@ -16739,6 +16739,10 @@ in the @code{pod2texi} utility distributed with Texinfo;
 Add menu entries or whole menus for nodes associated with sections of
 any level, based on the sectioning tree.
 
+@item complete_tree_nodes_missing_menu
+Add whole menus for nodes associated with sections without menu.  The
+menus are based on the sectioning tree.
+
 @item fill_gaps_in_sectioning
 Adds empty @code{@@unnumbered...} sections in a tree to fill gaps in
 sectioning.  For example, an @code{@@unnumberedsec} will be inserted
