@@ -9802,10 +9802,8 @@ convenient:
 @findex sup
 @cindex Subscripts and superscripts, text
 
-You can insert subscripts and superscripts, in either text or math,
-with the @code{@@sub} and @code{@@sup} commands.  (For other
-mathematical expressions, see the next section.)  For example, here is
-a purely textual subscript and superscript:
+You can insert subscripts and superscripts with the @code{@@sub}
+and @code{@@sup} commands.  For example:
 
 @example
 here@@sub@{below@}@@sup@{above@}
@@ -9817,31 +9815,18 @@ here@@sub@{below@}@@sup@{above@}
 here@sub{below}@sup{above}
 @end display
 
-@cindex Math italic font
-Inside @code{@@math}, @code{@@sub} and @code{@@sup} produce
-mathematical subscripts and superscripts.  This uses a different font
-in the @TeX{} output (math italic instead of text italic); it makes no
-difference in the other output formats.  Here's an example:
+In Info and plain text, @code{@@sub@{@var{text}@}} is output
+as @samp{_@{@var{text}@}} and @code{@@sup@{@var{text}@}} as
+@samp{^@{@var{text}@}}, including the literal braces (to mark the
+beginning and end of the ``script'' text to the reader).
 
-@example
-@@math@{e@@sup@{x@}@}
-@end example
+When the output format (and display program) permit (@TeX{}, HTML),
+the superscript is set above the subscript when both commands are
+given consecutively.
 
-@noindent produces:
-
-@display
-@math{e@sup{x}}
-@end display
-
-In Info and plain text, regardless of being used inside @code{@@math},
-@code{@@sub@{@var{text}@}} is output as @samp{_@{@var{text}@}} and
-@code{@@sup@{@var{text}@}} as @samp{^@{@var{text}@}}, including the
-literal braces (to mark the beginning and end of the ``script'' text
-to the reader).
-
-When the output format (and display program) permit (@TeX{} math,
-HTML), the superscript is set above the subscript when both commands
-are given consecutively.
+For subscripts and superscripts in mathematical expressions, it is
+better to use @TeX{}'s @samp{_} and @samp{^} characters.  See the
+next section.
 
 
 @node Inserting Math
@@ -9858,63 +9843,25 @@ command.  Write the mathematical expression between braces, like this:
 @@math@{\sin 2\pi \equiv \cos 3\pi@}
 @end example
 
-@iftex
-@set formatmath
-@end iftex
-@ifset formatmath
-@noindent which looks like this in @TeX{}:
+@noindent which looks like this:
 @display
 @math{\sin 2\pi \equiv \cos 3\pi}
 @end display
 
-@noindent and the following in other formats:
-@end ifset
-@ifclear formatmath
-@noindent which looks like the input in Info and HTML:
-@end ifclear
+The @code{@@math} command has no special effect on the Info
+output or (by default) the HTML output, merely outputting
+the contents verbatim.
 
-@example
-\sin 2\pi \equiv \cos 3\pi
-@end example
-
-As you can see, the @code{@@math} command has no special effect on the Info
-output or (by default) the HTML output.
-
-@findex \mathopsup
 For the @TeX{} output, @code{@@math} switches into math mode.
-You can use plain @TeX{} mathematical commands, starting with
-@samp{\}.  (Exception: the plain @TeX{} command @code{\sup}, which
-typesets the mathematical operator name `sup', must be accessed as
-@code{\mathopsup}, due to the conflict with Texinfo's @code{@@sup}
-command.)  This allows you to use all the plain @TeX{} math control
-sequences for symbols, functions, and so on, and thus get proper
-formatting in the @TeX{} output, at least.  It's best to use @samp{\}
-instead of @samp{@@} for any such mathematical commands; otherwise,
-@command{texi2any} will complain.
-
-The @code{@@sub} and @code{@@sup} commands described in the previous
-section are an alternative to the plain @TeX{} characters @code{_}
-and @code{^} for subscripts and superscripts.  These commands work in
-the HTML output as well as @TeX{}.
-
-@ignore
-On the other hand, @command{texi2any} does allow input with matching
-(but unescaped) braces, such as @samp{k_@{75@}}; it complains about
-such bare braces in regular input.
-@end ignore
-
-@findex @sortas{\} \ @r{(literal \ in @code{@@math})}
-Since @samp{\} is an escape character inside @code{@@math}, you can
-use @code{@@\} to get a literal backslash (@code{\\} will work in
-@TeX{}, but you'd get the literal two characters @samp{\\} in Info).
-@code{@@\} is not defined outside of @code{@@math}, since a @samp{\}
-ordinarily produces a literal (typewriter) @samp{\}.  You can also use
-@code{@@backslashchar@{@}} in any mode to get a typewriter backslash.
-@xref{Inserting a Backslash}.
+This allows you to use all the
+plain @TeX{} math control sequences for symbols, functions, and so on,
+starting with @samp{\}.  It's best to use @samp{\} instead of @samp{@@}
+for any such mathematical commands; otherwise, @command{texi2any}
+will complain.
 
 @cindex Math output for HTML
 By default, the HTML output is only enclosed by @code{<em>}.
-@command{texi2any} provides two options for displaying properly
+@command{texi2any} provides three options for displaying properly
 formatted mathematics for HTML.  You can select these with the
 @code{HTML_MATH} variable (@pxref{HTML Customization Variables}).
 With @code{HTML_MATH} set to @samp{l2h}, @command{texi2any} attempts
@@ -9935,16 +9882,44 @@ command.  Example:
 
 @example
 @@displaymath
-f(x) = \frac@{1@}@{\sigma \sqrt@{2\pi@}@}
-e^@{-\frac@{1@}@{2@}\left(\frac@{x-\mu@}@{\sigma@}\right)^2@}
+f(x) = @{1\over@{\sigma \sqrt@{2\pi@}@}@}
+e^@{-@{1\over2@}\left(@{x-\mu\over\sigma@}\right)^2@}
 @@end displaymath
 @end example
 
 @noindent which produces:
 
 @displaymath
-f(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+f(x) = {1\over{\sigma \sqrt{2\pi}}}
+e^{-{1\over2}\left({x-\mu\over\sigma}\right)^2}
 @end displaymath
+
+Although @code{@@sub} and @code{@@sup} may work inside math mode in
+some contexts, it is better to use @TeX{}'s @samp{_} and @samp{^}
+characters to denote subscripts and superscripts within mathematical
+expressions.  In general, the contents of @code{@@math} or
+@code{@@displaymath} should be plain @TeX{} only, with no
+interspersed Texinfo commands.
+
+@ignore
+@findex @sortas{\} \ @r{(literal \ in @code{@@math})}
+Since @samp{\} is an escape character inside @code{@@math}, you can
+use @code{@@\} to get a literal backslash (@code{\\} will work in
+@TeX{}, but you'd get the literal two characters @samp{\\} in Info).
+@code{@@\} is not defined outside of @code{@@math}, since a @samp{\}
+ordinarily produces a literal (typewriter) @samp{\}.  You can also use
+@code{@@backslashchar@{@}} in any mode to get a typewriter backslash.
+@xref{Inserting a Backslash}.
+@end ignore
+
+@findex \mathopsup
+Due to the conflict with Texinfo's @code{@@sup} command, you can access
+the plain @TeX{} command @code{\sup} as @code{\mathopsup} instead,
+in the unlikely occurrence that you want to do this (but only when
+processing with @TeX{}, not with any of the @code{HTML_MATH} options).
+
+
+
 
 
 @node Glyphs for Text

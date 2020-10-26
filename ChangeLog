@@ -1,3 +1,13 @@
+2020-10-26  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@math, @displaymath documentation
+
+	* doc/texinfo.texi (Inserting Subscripts and Superscripts):
+	Do not encourage @sub or @sup inside math.
+	(Inserting Math): Use \over in example, instead of \frac.
+	Comment out explanation of @\.  Explain that using any Texinfo
+	commands inside math is not ideal.
+
 2020-10-25  Patrice Dumas  <pertusus@free.fr>
 
 	handle @displaymath with tex4ht and latex2html
