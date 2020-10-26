@@ -59,7 +59,7 @@ $tex4ht_options_math
 $tex4ht_options_tex
 );
 
-$STYLE_MATH = 'texi' if (!defined($STYLE_MATH));
+$STYLE_MATH = 'tex' if (!defined($STYLE_MATH));
 $STYLE_TEX = 'tex' if (!defined($STYLE_TEX));
 
 if (!defined($tex4ht_command_math)) {
