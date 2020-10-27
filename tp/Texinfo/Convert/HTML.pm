@@ -6037,7 +6037,7 @@ sub _element_direction($$$$;$)
             and ($direction eq 'Up' or $direction eq 'NodeUp')) {
     if ($type eq 'href') {
       return $self->get_conf('TOP_NODE_UP_URL');
-    } elsif ($type eq 'text' or $type eq 'node' or $type eq 'string') {
+    } elsif ($type eq 'text' or $type eq 'node' or $type eq 'string' or $type eq 'section') {
       return $self->get_conf('TOP_NODE_UP');
     } else {
       cluck("type $type not available for TOP_NODE_UP\n");

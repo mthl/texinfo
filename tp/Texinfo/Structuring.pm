@@ -628,6 +628,8 @@ sub nodes_tree($)
     }
     # check for node up / menu up mismatch
     if ($self->{'SHOW_MENU'} eq '1' and $node->{'node_up'}
+        # No check if node up is an external manual
+        and (!$node->{'node_up'}->{'extra'}->{'manual_content'})
         and (!$node->{'menu_up_hash'}
           or !$node->{'menu_up_hash'}->{$node->{'node_up'}->{'extra'}->{'normalized'}})) {
       # check if up node has a menu
@@ -646,6 +648,8 @@ sub nodes_tree($)
           node_extra_to_texi($node->{'node_up'}->{'extra'})),
                         $node->{'line_nr'});
       }
+      # FIXME check that the menu_up_hash is not empty (except for Top)?
+      # FIXME check that node_up is not an external node (except for Top)?
     }
   }
   $self->{'structuring'}->{'top_node'} = $top_node;

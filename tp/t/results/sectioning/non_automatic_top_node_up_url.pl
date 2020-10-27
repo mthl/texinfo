@@ -578,17 +578,7 @@ $result_menus{'non_automatic_top_node_up_url'} = {
 };
 $result_menus{'non_automatic_top_node_up_url'}{'menu_child'}{'menu_up'} = $result_menus{'non_automatic_top_node_up_url'};
 
-$result_errors{'non_automatic_top_node_up_url'} = [
-  {
-    'error_line' => ':8: warning: for `first\', up in menu `Top\' and up `(dir)\' don\'t match
-',
-    'file_name' => '',
-    'line_nr' => 8,
-    'macro' => '',
-    'text' => 'for `first\', up in menu `Top\' and up `(dir)\' don\'t match',
-    'type' => 'warning'
-  }
-];
+$result_errors{'non_automatic_top_node_up_url'} = [];
 
 
 $result_floats{'non_automatic_top_node_up_url'} = {};

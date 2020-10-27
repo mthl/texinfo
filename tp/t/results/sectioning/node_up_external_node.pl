@@ -460,17 +460,7 @@ $result_menus{'node_up_external_node'} = {
 };
 $result_menus{'node_up_external_node'}{'menu_child'}{'menu_up'} = $result_menus{'node_up_external_node'};
 
-$result_errors{'node_up_external_node'} = [
-  {
-    'error_line' => ':7: warning: for `first\', up in menu `Top\' and up `(manual3)\' don\'t match
-',
-    'file_name' => '',
-    'line_nr' => 7,
-    'macro' => '',
-    'text' => 'for `first\', up in menu `Top\' and up `(manual3)\' don\'t match',
-    'type' => 'warning'
-  }
-];
+$result_errors{'node_up_external_node'} = [];
 
 
 $result_floats{'node_up_external_node'} = {};
