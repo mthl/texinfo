@@ -545,7 +545,8 @@ sub nodes_tree($)
                     $node->{'line_nr'});
                 } elsif ($node->{'menu_'.$direction}
                          and $node->{'menu_'.$direction}
-                             ne $node->{'node_'.$direction}) {
+                             ne $node->{'node_'.$direction}
+                         and not $node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
                   $self->line_warn(sprintf(
                __("node %s for `%s' is `%s' in sectioning but `%s' in menu"), 
                   $direction,

@@ -1,3 +1,10 @@
+2020-10-27  Patrice Dumas  <pertusus@free.fr>
+
+	Do not warn if external node in menu is not consistent with sections
+
+	* tp/Texinfo/Structuring.pm (nodes_tree): do not warn if a menu entry
+	referring to an external node is not consistent with sectioning.
+
 2020-10-26  Patrice Dumas  <pertusus@free.fr>
 
 	use httex instead of httexi for @math in default case

@@ -1093,6 +1093,22 @@ $unnumbered_top_without_node_text,
 
 @node   Last with spaces 
 '],
+['external_node_in_menu',
+'@node Top
+@top top
+
+@menu
+* nchapter1::
+* (aaa)other::
+* nchapter2::
+@end menu
+
+@node nchapter1
+@chapter chap1
+
+@node nchapter2
+@chapter chap2
+'],
 ['next_in_menu_is_below',
 '@node Top
 @top top

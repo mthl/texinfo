@@ -1222,15 +1222,6 @@ $result_errors{'nodename_parentheses'} = [
     'type' => 'error'
   },
   {
-    'error_line' => ':15: warning: node next for `Other node\' is `node\' in sectioning but `(manual)node\' in menu
-',
-    'file_name' => '',
-    'line_nr' => 15,
-    'macro' => '',
-    'text' => 'node next for `Other node\' is `node\' in sectioning but `(manual)node\' in menu',
-    'type' => 'warning'
-  },
-  {
     'error_line' => ':22: warning: node prev for `node\' is `Other node\' in sectioning but not in menu
 ',
     'file_name' => '',
