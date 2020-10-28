@@ -1,5 +1,10 @@
 2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):
+	Add a comment about copying the conf to the parser object.
+
+2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Only call do_index_keys with converter object.
 
 	* tp/t/test_utils.pl, tp/t/test_sort.t:

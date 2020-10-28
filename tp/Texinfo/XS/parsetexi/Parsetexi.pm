@@ -74,9 +74,11 @@ sub parser (;$$)
   my $parser = dclone(\%parser_default_configuration);
 
   reset_parser ();
-  # fixme: these are overwritten immediately after
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
+      # Copy conf to parser object.  Not used in parser module itself
+      # but some settings may be used later in the conversion.  It would
+      # probably be better if these effects were removed..
       if ($key ne 'values' and ref($conf->{$key})) {
         $parser->{$key} = dclone($conf->{$key});
       } else {
@@ -103,7 +105,7 @@ sub parser (;$$)
       } elsif ($key eq 'expanded_formats') {
         clear_expanded_formats ();
 
-        for my $f (@{$parser->{$key}}) {
+        for my $f (@{$conf->{$key}}) {
           add_expanded_format ($f);
         }
       } elsif ($key eq 'documentlanguage') {
