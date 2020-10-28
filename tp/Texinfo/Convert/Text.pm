@@ -1,6 +1,6 @@
 # Text.pm: output tree as simple text.
 #
-# Copyright 2010-2018 Free Software Foundation, Inc., 
+# Copyright 2010-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,6 +22,7 @@ package Texinfo::Convert::Text;
 use 5.00405;
 use strict;
 
+use Texinfo::Convert::Converter;
 # accent commands list.
 use Texinfo::Common;
 use Texinfo::Convert::Unicode;

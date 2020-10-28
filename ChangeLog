@@ -1,5 +1,19 @@
 2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Only call do_index_keys with converter object.
+
+	* tp/t/test_utils.pl, tp/t/test_sort.t:
+	Call Texinfo::Structuring::sort_indices with converter object
+	rather than parser object.
+	* tp/Texinfo/Convert/Text.pm: use Texinfo::Convert::Converter.
+	* tp/Texinfo/Structuring.pm (do_index_keys): Update comment.
+
+	This means that index sorting errors disappear from
+	$result_errors, but they are still present in the converter
+	errors.
+
+2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Provide accesskey in section TOC.
 
 	* tp/Texinfo/Convert/HTML.pm: Output accesskey attribute on <a>
