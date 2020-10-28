@@ -57,25 +57,44 @@ Some text one the line following @end tex
 <p>Same that @html (but empty following line not ignored).
 </p>
 <p>Test of @math
-Here some     xi __
-tan y.
+Here some    <span 
+class="cmmi-7">x</span><sup><span 
+class="cmmi-5">i</span></sup> __
+<span 
+class="cmr-7">tan</span> <span 
+class="cmmi-7">y</span> .
 </p>
 <p>Maths with protected \:
-   a\b.
+ <span 
+class="cmmi-10">a</span>@<span 
+class="cmmi-10">&#x00A0;b</span> .
 </p>
 <p>Maths with code @-command:
 </p>
-<p>   mathcodea &#x003C; b
+<p> @<span 
+class="cmmi-10">code</span><span 
+class="cmmi-10">mathcode</span><span 
+class="cmmi-10">a &#x003C; b</span> 
 </p>
 <p>Maths with code @-command and braces:
 </p>
-<p>   math code _&#x2211;
-            i f 
+<p> <span class="underline">@<span 
+class="cmmi-10">code</span><span 
+class="cmmi-10">math</span> code </span><span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span></sub><span class="underline"><span 
+class="cmmi-10">f</span></span> 
 </p>
 <p>Maths with @-sup
 </p>
-<p>   &#x2211;
-    i f(x)2
+<p> <span 
+class="cmex-10">&#x2211;</span>
+  <sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">f</span>(<span 
+class="cmmi-10">x</span>)@<span 
+class="cmmi-10">sup</span>2 
 </p>
 <p>@\ outside of math
 </p>
