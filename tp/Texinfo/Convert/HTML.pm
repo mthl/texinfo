@@ -6112,6 +6112,8 @@ sub _mini_toc
 
   my $filename = $self->{'current_filename'};
   my $result = '';
+  my $entry_index = 0;
+  my $accesskey;
 
   if ($command->{'section_childs'} and @{$command->{'section_childs'}}) {
     $result .= $self->_attribute_class('ul', 'section-toc').">\n";
@@ -6120,6 +6122,11 @@ sub _mini_toc
       my $tree = $self->command_text($section, 'tree_nonumber');
       my $text = $self->_convert($tree);
 
+      $entry_index++;
+      $accesskey = '';
+      $accesskey = " accesskey=\"$entry_index\"" 
+        if ($self->get_conf('USE_ACCESSKEY') and $entry_index < 10);
+
       my $href = $self->command_href($section, $filename);
       if ($text ne '') {
         if ($href ne '') {
@@ -6127,7 +6134,7 @@ sub _mini_toc
           if ($href ne '') {
             $href_attribute = " href=\"$href\"";
           }
-          $result .= "<li><a${href_attribute}>$text</a>";
+          $result .= "<li><a${href_attribute}$accesskey>$text</a>";
         } else {
           $result .= "<li>$text";
         }

@@ -1260,7 +1260,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 
 
 <ul class="section-toc">
-<li><a href="#section">section</a></li>
+<li><a href="#section" accesskey="1">section</a></li>
 </ul>
 <hr>
 <span id="section"></span><div class="header">
@@ -1271,7 +1271,7 @@ Next: <a href="#subsection" accesskey="n" rel="next">subsection</a>, Up: <a href
 
 
 <ul class="section-toc">
-<li><a href="#subsection">subsection</a></li>
+<li><a href="#subsection" accesskey="1">subsection</a></li>
 </ul>
 <hr>
 <span id="subsection"></span><div class="header">

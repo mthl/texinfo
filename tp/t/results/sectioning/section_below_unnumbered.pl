@@ -963,7 +963,7 @@ Previous: <a href="#Top" accesskey="p" rel="prev">Top</a>, Up: <a href="#Top" ac
 
 
 <ul class="section-toc">
-<li><a href="#Sec">Sec</a></li>
+<li><a href="#Sec" accesskey="1">Sec</a></li>
 </ul>
 <hr>
 <span id="Sec"></span><div class="header">

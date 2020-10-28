@@ -317,6 +317,9 @@ a/2
 $result_errors{'displaymath'} = [];
 
 
+$result_floats{'displaymath'} = {};
+
+
 
 $result_converted{'plaintext'}->{'displaymath'} = 'Simple
 --{x^i}\\over{\\tan y}
