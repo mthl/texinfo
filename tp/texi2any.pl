@@ -1264,6 +1264,7 @@ while(@input_files) {
                             %$cmdline_options,
                             %$Texinfo::Config::options };
 
+  $converter_options->{'expanded_formats'} = $parser_default_options->{'expanded_formats'};
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
   $converter_options->{'language_config_dirs'} = \@language_config_dirs;

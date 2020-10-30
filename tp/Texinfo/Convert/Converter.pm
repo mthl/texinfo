@@ -244,13 +244,6 @@ sub converter(;$)
       $converter->set_conf('OUTPUT_PERL_ENCODING', $perl_encoding);
     }
   }
-  if (!defined($converter->{'expanded_formats'})) {
-    if ($converter->{'parser'}) {
-      $converter->{'expanded_formats'} = $converter->{'parser'}->{'expanded_formats'};
-    } else {
-      $converter->{'expanded_formats'} = [];
-    }
-  }
 
   # turn the array to a hash for speed.  Not sure it really matters for such
   # a small array.
