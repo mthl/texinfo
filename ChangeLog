@@ -1,5 +1,22 @@
 2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Do not set include_directories via parser.
+
+	* tp/Texinfo/Convert/Converter.pm (converter): Do not copy
+	'include_directories' from parser object to converter object.
+
+	* tp/texi2any.pl: Add include directories to parser options
+	and converter options separately.
+	* tp/t/test_utils.pl: Set 'include_directories' in converter
+	options explicitly.
+
+	This should make it clearer where the 'include_directories'
+	setting comes from.  Ideally the parser object should be used
+	to access the results of parsing only, not to access parser
+	settings.
+
+2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/XS/parsetexi/Parsetexi.pm (parser):
 	Add a comment about copying the conf to the parser object.
 

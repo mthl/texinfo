@@ -785,6 +785,8 @@ sub test($$)
         $format_converter_options->{'OUTFILE'} = '';
       }
       $format_converter_options->{'TEST'} = 1;
+      $format_converter_options->{'include_directories'} = [
+                                          $srcdir.'t/include/'];
       ($converted_errors{$format}, $converted{$format})
            = &{$formats{$format}}($self, $test_name, $format_type, 
                                   $result, $parser, 

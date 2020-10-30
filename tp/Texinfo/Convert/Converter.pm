@@ -1,6 +1,6 @@
 # Converter.pm: Common code for Converters.
 #
-# Copyright 2011-2019 Free Software Foundation, Inc.
+# Copyright 2011-2020 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -249,13 +249,6 @@ sub converter(;$)
       $converter->{'expanded_formats'} = $converter->{'parser'}->{'expanded_formats'};
     } else {
       $converter->{'expanded_formats'} = [];
-    }
-  }
-  if (!defined($converter->{'include_directories'})) {
-    if ($converter->{'parser'}) {
-      $converter->{'include_directories'} = $converter->{'parser'}->{'include_directories'};
-    } else {
-      $converter->{'include_directories'} = [ '.' ];
     }
   }
 

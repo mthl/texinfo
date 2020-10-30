@@ -943,6 +943,8 @@ sub normalize_config {
   }
 }
 
+$cmdline_options->{'include_directories'} = [@include_dirs];
+
 normalize_config($cmdline_options);
 
 # FIXME do this here or inside format-specific code?
@@ -1072,8 +1074,7 @@ foreach my $parser_settable_option (
   }
 }
 
-## using no warnings is wrong, but a way to avoid a spurious warning.
-#no warnings 'once';
+# Copy some of the customization variables into the parser options.
 # The configuration options are upper-cased when considered as 
 # customization variables, and lower-cased when passed to the Parser
 foreach my $parser_option (map {uc($_)} 
@@ -1122,13 +1123,14 @@ while(@input_files) {
 
   my $parser_options = { %$parser_default_options };
 
-  $parser_options->{'include_directories'} = [@include_dirs];
-  my @prependended_include_directories = ('.');
-  push @prependended_include_directories, $input_directory
+  my @prepended_include_directories = ('.');
+  push @prepended_include_directories, $input_directory
       if ($input_directory ne '.');
+  @prepended_include_directories =
+    (@prepend_dirs, @prepended_include_directories);
+
   unshift @{$parser_options->{'include_directories'}},
-     @prependended_include_directories;
-  unshift @{$parser_options->{'include_directories'}}, @prepend_dirs;
+          @prepended_include_directories;
 
   my $parser = Texinfo::Parser::parser($parser_options);
   my $tree = $parser->parse_texi_file($input_file_name);
@@ -1265,7 +1267,8 @@ while(@input_files) {
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
   $converter_options->{'language_config_dirs'} = \@language_config_dirs;
-
+  unshift @{$converter_options->{'include_directories'}},
+          @prepended_include_directories;
 
   my $converter = &{$formats_table{$format}->{'converter'}}($converter_options);
   $converter->output($tree);
