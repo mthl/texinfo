@@ -1,6 +1,6 @@
 # t/* test support for the Perl modules.
 #
-# Copyright 2010-2020 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -689,7 +689,8 @@ sub test($$)
     delete $parser_options->{'test_formats'};
   }
 
-  my $parser = Texinfo::Parser::parser({'include_directories' => [
+  my $parser = Texinfo::Parser::parser({'TEST' => 1,
+                                        'include_directories' => [
                                           $srcdir.'t/include/'],
                                         'DEBUG' => $self->{'DEBUG'},
                                        %$parser_options});
