@@ -152,7 +152,6 @@ our %default_customization_values = (
   'MAX_MACRO_CALL_NESTING' => 100000, # max number of nested macro calls
 
   # following are used in Texinfo::Structuring
-  'SIMPLE_MENU' => 0,         # not used in the parser but in structuring
   'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
                                      # section up.
 );

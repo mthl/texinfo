@@ -1,5 +1,17 @@
 2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Configuration/customization variables.
+	
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Remove SIMPLE_MENU as this is used in neither Texinfo::Parser
+	or Texinfo::Structuring.
+	* tp/Texinfo/Structuring.pm (nodes_tree): Refer to SHOW_MENU
+	via get_conf to clarify that this is a configuration value.
+	* tp/texi2any.pl: Remove a comment.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Change a comment.
+
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/texi2any.pl: Rename two variables.
 
 2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>

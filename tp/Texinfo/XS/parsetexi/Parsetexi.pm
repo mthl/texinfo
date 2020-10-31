@@ -77,8 +77,8 @@ sub parser (;$$)
   if (defined($conf)) {
     foreach my $key (keys (%$conf)) {
       # Copy conf to parser object.  Not used in parser module itself
-      # but some settings may be used later in the conversion.  It would
-      # probably be better if these effects were removed..
+      # but some settings may be used elsewhere, especially in
+      # Structuring.pm.
       if ($key ne 'values' and ref($conf->{$key})) {
         $parser->{$key} = dclone($conf->{$key});
       } else {

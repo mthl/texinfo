@@ -1058,8 +1058,6 @@ if (defined($formats_table{$format}->{'module'})) {
   %converter_defaults = $converter_class->converter_defaults();
 }
 
-# FIXME should this be set when the --set is set too?  The corresponding
-# code is ready above, but commented out.
 # using no warnings is wrong, but a way to avoid a spurious warning.
 no warnings 'once';
 foreach my $parser_settable_option (
