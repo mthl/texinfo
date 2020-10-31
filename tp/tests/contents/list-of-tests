@@ -22,7 +22,7 @@ no_content_inline no_content.texi -c 'INLINE_CONTENTS 1'
 no_content_do_contents_inline no_content.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
 no_content_setcatpage_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1'
 no_content_setcatpage_do_contents_inline no_content_setcatpage.texi -c 'INLINE_CONTENTS 1' -c 'contents 1'
-double_contents_book double_contents.texi -c SHOW_MENU=0 --init book.pm
+double_contents_book double_contents.texi -c FORMAT_MENU=nomenu --init book.pm
 contents_and_parts contents_and_parts.texi
 
 contents_at_begin_info contents_at_begin.texi --info

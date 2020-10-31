@@ -274,7 +274,7 @@ $texinfo_dtd_version = $configured_version
 # defaults for options relevant in the main program, not undef, and also
 # defaults for all the converters.
 # Other relevant options (undef) are NO_WARN FORCE OUTFILE
-# Others are set in the converters (SHOW_MENU).
+# Others are set in the converters (FORMAT_MENU).
 my $converter_default_options = { 
     'ERROR_LIMIT' => 100,
     'TEXI2DVI' => 'texi2dvi',
@@ -827,7 +827,13 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2020";
  'no-split' => sub { set_from_cmdline('SPLIT', ''); 
                      set_from_cmdline('SPLIT_SIZE', undef);},
  'headers!' => sub { set_from_cmdline('HEADERS', $_[1]);
-                     set_from_cmdline('SHOW_MENU', $_[1]);
+                     if (!$_[1]) {
+                       set_from_cmdline('FORMAT_MENU', 'nomenu');
+                     } else {
+                       # NOTE this may be different from what the 
+                       # converter would have set in the default case.
+                       set_from_cmdline('FORMAT_MENU', 'menu');
+                     }
                      $format = 'plaintext' if (!$_[1] and $format eq 'info'); },
  'output|out|o=s' => sub {
     my $var = 'OUTFILE';

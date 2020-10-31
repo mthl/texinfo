@@ -36,7 +36,7 @@ main::set_global_format('html');
 set_from_init_file('TOP_FILE', undef);
 
 #$SECTION_NAVIGATION = 0; # to avoid headers in normal elements
-set_from_init_file('SHOW_MENU', 0);
+set_from_init_file('FORMAT_MENU', 'nomenu');
 set_from_init_file('SPLIT', 'node');
 set_from_init_file('contents', 1);
 

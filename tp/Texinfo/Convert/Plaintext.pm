@@ -315,7 +315,7 @@ foreach my $command ('var', 'cite', 'dmn', keys(%code_style_commands)) {
 
 my %defaults = (
   'ENABLE_ENCODING'      => 1,
-  'SHOW_MENU'            => 0,
+  'FORMAT_MENU'          => 'nomenu',
   #'EXTENSION'            => 'info',
   'EXTENSION'            => 'txt',
   #'USE_SETFILENAME_EXTENSION' => 1,
@@ -2345,7 +2345,7 @@ sub _convert($$)
       # remark:
       # cartouche group and raggedright -> nothing on format stack
 
-      if ($menu_commands{$command} and !$self->get_conf('SHOW_MENU')) {
+      if ($menu_commands{$command} and $self->get_conf('FORMAT_MENU') eq 'nomenu') {
         return '';
       }
       if ($self->{'preformatted_context_commands'}->{$command}

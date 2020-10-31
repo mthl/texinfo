@@ -11,6 +11,10 @@ See the manual for detailed information.
 
 * texi2any
   . should be faster as Perl XS parser is enabled by default
+  . remove 'SHOW_MENU' customization variable.  Add 'FORMAT_MENU'
+    customization variable.  'FORMAT_MENU' set to 'menu' is the same
+    as 'SHOW_MENU' set to 1 and 'FORMAT_MENU' set to 'nomenu' is the
+    same as 'SHOW_MENU' set to 0.
   . changes to HTML output
     . by default, use sectional tables of contents instead of menus
     . use section names in links by default (configure with

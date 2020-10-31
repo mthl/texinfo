@@ -48,7 +48,7 @@ $VERSION = '6.7dev';
 # SXML specific
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 1,
+  'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'sxml',
   #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',

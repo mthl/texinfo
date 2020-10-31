@@ -59,7 +59,7 @@ my $rsquo = '&#'.hex('2019').';';
 
 my %defaults = (
   #'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 0,
+  'FORMAT_MENU'          => 'nomenu',
   'EXTENSION'            => 'xml', # dbk?
   'OUTPUT_ENCODING_NAME' => 'utf-8',
   'OUTFILE'              => undef,

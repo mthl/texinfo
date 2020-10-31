@@ -15998,7 +15998,7 @@ meaning of the options.
 @item
 @option{--macro-expand}      @tab @code{MACRO_EXPAND}
 @item
-@option{--headers}           @tab @code{HEADERS}, @code{SHOW_MENU}
+@option{--headers}           @tab @code{HEADERS}, @code{FORMAT_MENU}
 @item
 @option{--no-warn}           @tab @code{NO_WARN}
 @item
@@ -16620,14 +16620,15 @@ as whether the output is split.  The default is unset.
 Name of the program used.  By default, it is set to the name of the
 program launched, with a trailing @samp{.pl} removed.
 
-@item SHOW_MENU
+@item FORMAT_MENU
 @opindex --no-headers
-If set to @samp{1}, output Texinfo menus.  This is the default for
+If set to @samp{menu}, output Texinfo menus.  This is the default for
 Info.  @samp{sectiontoc} is the default setting for HTML, where instead
 of the contents of @code{@@menu} blocks being output, a list of subordinate
-sections is output in each node.
+sections is output in each node.  If set to @samp{nomenu} do not output
+menus.
 
-This variable is not set by default when generating DocBook, or when
+This variable is set to @samp{nomenu} generating DocBook, or when
 @option{--no-headers} is specified.
 
 @item SORT_ELEMENT_COUNT
@@ -16979,7 +16980,7 @@ corresponding @command{texi2any} customization variables.
 @item @option{--monolithic}           @tab @code{MONOLITHIC}
 @item @option{--top-file}             @tab @code{TOP_FILE}
 @item @option{--frames}               @tab @code{FRAMES}
-@item @option{--menu}                 @tab @code{SHOW_MENU}
+@item @option{--menu}                 @tab @code{FORMAT_MENU}
 @item @option{--debug}                @tab @code{DEBUG}
 @item @option{--doctype}              @tab @code{DOCTYPE}
 @item @option{--frameset-doctype}     @tab @code{FRAMESET_DOCTYPE}

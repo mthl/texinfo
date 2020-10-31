@@ -145,7 +145,7 @@ our %default_parser_state_configuration = (
 our %default_customization_values = (
   'DEBUG' => 0,     # if >= 10, tree is printed in texi2any.pl after parsing.
                     # If >= 100 tree is printed every line.
-  'SHOW_MENU' => 1,             # if false no menu error related.
+  'FORMAT_MENU' => 'menu',           # if not 'menu' no menu error related.
   'IGNORE_BEFORE_SETFILENAME' => 1,
   'IGNORE_SPACE_AFTER_BRACED_COMMAND_NAME' => 1,
   'CPP_LINE_DIRECTIVES' => 1, # handle cpp like synchronization lines
@@ -307,7 +307,7 @@ my @variable_string_settables = (
 'PROGRAM_NAME_IN_FOOTER',
 'SECTION_NAME_IN_TITLE',
 'SHORTEXTN',
-'SHOW_MENU',
+'FORMAT_MENU',
 'SHOW_TITLE',
 'SIMPLE_MENU',
 'SORT_ELEMENT_COUNT',

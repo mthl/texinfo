@@ -966,7 +966,7 @@ my %PASSIVE_ICONS = (
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 'sectiontoc',
+  'FORMAT_MENU'           => 'sectiontoc',
   'OUTPUT_ENCODING_NAME'  => 'utf-8',
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
@@ -4852,7 +4852,7 @@ sub converter_initialize($)
       $self->{'commands_conversion'}->{$command} 
           = $Texinfo::Config::texinfo_commands_conversion{$command};
     } else {
-      if ($self->get_conf('SHOW_MENU') ne '1'
+      if ($self->get_conf('FORMAT_MENU') ne 'menu'
            and ($command eq 'menu' or $command eq 'detailmenu')) {
         $self->{'commands_conversion'}->{$command} = undef;
       } elsif ($format_raw_commands{$command}
@@ -7780,7 +7780,7 @@ sub _convert($$;$)
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
       }
-      if ($self->get_conf('SHOW_MENU') eq 'sectiontoc'
+      if ($self->get_conf('FORMAT_MENU') eq 'sectiontoc'
           and $sectioning_commands{$command_name}
           and $command_name ne 'top'
           and $self->{'current_node'}
@@ -7890,7 +7890,7 @@ sub _convert($$;$)
 sub _set_variables_texi2html()
 {
   my @texi2html_options = (
-  ['SHOW_MENU', '1'],
+  ['FORMAT_MENU', 'menu'],
   ['NO_USE_SETFILENAME', 1],
   ['USE_SETFILENAME_EXTENSION', 0],
   ['footnotestyle', 'separate'],

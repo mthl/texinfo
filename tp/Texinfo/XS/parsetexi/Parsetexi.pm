@@ -116,8 +116,8 @@ sub parser (;$$)
         if (defined($conf->{$key}->{'novalidate'})) { 
           set_novalidate($conf->{$key}->{'novalidate'});
         }
-      } elsif ($key eq 'SHOW_MENU') {
-        if ($conf->{$key} eq '1') {
+      } elsif ($key eq 'FORMAT_MENU') {
+        if ($conf->{$key} eq 'menu') {
           conf_set_show_menu (1);
         } else {
           conf_set_show_menu (0);

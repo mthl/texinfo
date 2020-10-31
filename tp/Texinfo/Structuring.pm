@@ -408,7 +408,7 @@ sub nodes_tree($)
   my $top_node;
 
   my $check_menu_entries = (!$self->{'info'}->{'novalidate'}
-                              and $self->get_conf('SHOW_MENU') eq '1');
+                      and $self->get_conf('FORMAT_MENU') eq 'menu');
 
   # First go through all the menus and set menu_up, menu_next and menu_prev,
   # and warn for unknown nodes.
@@ -530,7 +530,7 @@ sub nodes_tree($)
             # If set, a direction was found using sections.  Check consistency
             # with menus.
             if ($node->{'node_'.$direction}) {
-              if ($self->get_conf('SHOW_MENU') eq '1') {
+              if ($self->get_conf('FORMAT_MENU') eq 'menu') {
 
                 if ($section->{'section_up'}{'extra'}
           and $section->{'section_up'}{'extra'}{'associated_node'}
@@ -564,7 +564,7 @@ sub nodes_tree($)
           # commands.
           if ($node->{'menu_'.$direction} 
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
-            if ($self->get_conf('SHOW_MENU') eq '1'
+            if ($self->get_conf('FORMAT_MENU') eq 'menu'
                   and $node->{'extra'}->{'associated_section'}) {
               $self->line_warn(sprintf(
                   __("node `%s' is %s for `%s' in menu but not in sectioning"), 
@@ -627,7 +627,7 @@ sub nodes_tree($)
       }
     }
     # check for node up / menu up mismatch
-    if ($self->get_conf('SHOW_MENU') eq '1' and $node->{'node_up'}
+    if ($self->get_conf('FORMAT_MENU') eq 'menu' and $node->{'node_up'}
         # No check if node up is an external manual
         and (!$node->{'node_up'}->{'extra'}->{'manual_content'})
         and (!$node->{'menu_up_hash'}

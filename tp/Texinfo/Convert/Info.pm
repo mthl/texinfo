@@ -48,7 +48,7 @@ $VERSION = '6.7dev';
 my $STDIN_DOCU_NAME = 'stdin';
 
 my %defaults = Texinfo::Convert::Plaintext::converter_defaults(undef, undef);
-$defaults{'SHOW_MENU'} = 1;
+$defaults{'FORMAT_MENU'} = 'menu';
 $defaults{'EXTENSION'} = 'info';
 $defaults{'USE_SETFILENAME_EXTENSION'} = 1;
 $defaults{'OUTFILE'} = undef;

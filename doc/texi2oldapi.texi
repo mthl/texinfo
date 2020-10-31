@@ -112,7 +112,7 @@ given in argument.
 @item  @option{--top-file}                @tab @code{TOP_FILE}
 @item  @option{--toc-file}                @tab @code{TOC_FILE}
 @item  @option{--frames}                  @tab @code{FRAMES}
-@item  @option{--menu}                    @tab @code{SHOW_MENU}
+@item  @option{--menu}                    @tab @code{FORMAT_MENU}
 @item  @option{--debug}                   @tab @code{DEBUG}
 @item  @option{--doctype}                 @tab @code{DOCTYPE}
 @item  @option{--frameset-doctype}        @tab @code{FRAMESET_DOCTYPE}

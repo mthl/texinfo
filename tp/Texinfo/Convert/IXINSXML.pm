@@ -50,7 +50,7 @@ $VERSION = '6.7dev';
 
 my %defaults = (
   'ENABLE_ENCODING'      => 0,
-  'SHOW_MENU'            => 1,
+  'FORMAT_MENU'          => 'menu',
   'EXTENSION'            => 'ixin',
   #'output_perl_encoding' => 'utf8',
   'OUTPUT_ENCODING_NAME' => 'utf-8',

@@ -3301,7 +3301,7 @@ sub _register_extra_menu_entry_information($$;$)
       _isolate_last_space($self, $arg);
       my $parsed_entry_node = _parse_node_manual($arg);
       if (! defined($parsed_entry_node)) {
-        if ($self->{'SHOW_MENU'} eq '1') {
+        if ($self->{'FORMAT_MENU'} eq 'menu') {
           $self->line_error (__("empty node name in menu entry"), $line_nr);
         }
       } else {
@@ -4649,7 +4649,7 @@ sub _parse_texi($;$)
                   if ($command eq 'direntry');
                 if ($self->{'current_node'}) {
                   if ($command eq 'direntry') {
-                    if ($self->{'SHOW_MENU'} eq '1') {
+                    if ($self->{'FORMAT_MENU'} eq 'menu') {
                       $self->line_warn(__("\@direntry after first node"),
                                 $line_nr);
                     }
@@ -4663,7 +4663,7 @@ sub _parse_texi($;$)
                     }
                   }
                 } elsif ($command ne 'direntry') {
-                  if ($self->{'SHOW_MENU'} eq '1') {
+                  if ($self->{'FORMAT_MENU'} eq 'menu') {
                     $self->line_error(sprintf(__("\@%s seen before first \@node"), 
                                               $command), $line_nr);
                     $self->line_error(__(
@@ -5796,10 +5796,10 @@ Default on.
 
 Maximal number of nested user-defined macro calls.  Default is 100000.
 
-=item SHOW_MENU
+=item FORMAT_MENU
 
-Possible values are '0', '1' and 'sectiontoc'.  Only report menu-related
-errors for '1'.
+Possible values are 'nomenu', 'menu' and 'sectiontoc'.  Only report 
+menu-related errors for 'menu'. 
 
 =begin :comment
 
