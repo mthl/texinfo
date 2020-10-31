@@ -1121,6 +1121,8 @@ while(@input_files) {
 
   my $parser_file_options = { %$parser_options };
 
+  $parser_file_options->{'include_directories'} = [@include_dirs];
+
   my @prepended_include_directories = ('.');
   push @prepended_include_directories, $input_directory
       if ($input_directory ne '.');
