@@ -350,9 +350,6 @@ while read line; do
 
         post_process_output
 
-        test -d "$raw_outdir$dir" && rm -rf "$raw_outdir$dir"
-        # This directory isn't cleaned anywhere else.
-
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then

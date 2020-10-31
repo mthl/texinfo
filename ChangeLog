@@ -1,5 +1,12 @@
 2020-10-31  Patrice Dumas  <pertusus@free.fr>
 
+	Do not remove raw_out_parser debug tests output directories
+
+	* tp/tests/run_parser_all.sh: do not remove raw_out_parser.
+	tp/tests/*/Makefile.am (distclean-local): remove raw_out_parser*
+
+2020-10-31  Patrice Dumas  <pertusus@free.fr>
+
 	Set include directories for parser
 
 	* texi2any.pl (%$parser_file_options): set 'include_directories'. 
