@@ -1366,6 +1366,24 @@ $result_errors{'in_table'} = [
     'macro' => '',
     'text' => '@cindex should not appear in @item',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':17: warning: empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 17,
+    'macro' => '',
+    'text' => 'empty index key in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':20: warning: empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 20,
+    'macro' => '',
+    'text' => 'empty index key in @item',
+    'type' => 'warning'
   }
 ];
 

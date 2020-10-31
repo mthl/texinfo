@@ -1,7 +1,7 @@
 # Structuring.pm: extract informations about a document structure based on the 
 #                 document tree.
 #
-# Copyright 2010-2020 Free Software Foundation, Inc.
+# Copyright 2010-2019 Free Software Foundation, Inc.
 # 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -1427,6 +1427,8 @@ sub do_index_keys($$)
   my $parser;
   my $ignore_chars = '';
 
+  # FIXME: sometimes $self is a converter object, sometimes it
+  # is Texinfo::Parser.  This is very confusing.
   if (defined $self->{'parser'}) {
     $parser = $self->{'parser'};
     # '-' must come first to avoid e.g. [<-@] looking like a character range

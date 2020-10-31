@@ -734,12 +734,10 @@ sub test($$)
   $indices->{'index_names'} = $trimmed_index_names
     unless (Data::Compare::Compare($trimmed_index_names, $initial_index_names));
 
-  my $converter = Texinfo::Convert::Text->converter({'ENABLE_ENCODING' => 1, 'parser' => $parser});
-
   my $sorted_index_entries;
   if ($merged_index_entries) {
     $sorted_index_entries 
-      = Texinfo::Structuring::sort_indices_by_letter($converter,
+      = Texinfo::Structuring::sort_indices_by_letter($parser, 
                                                      $merged_index_entries,
                                                      $index_names);
   }
