@@ -1,5 +1,14 @@
 2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	_convert_text_options takes a converter argument
+
+	* tp/Texinfo/Structuring.pm (do_index_keys): Do not call
+	_convert_text_options as this appears to take a converter
+	object as an argument.  Inline some parts of that function
+	at the call site.
+
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Call do_index_keys with parser object.
 	
 	* tp/Texinfo/Convert/HTML.pm (_prepare_index_entries),

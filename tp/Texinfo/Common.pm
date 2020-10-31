@@ -1720,6 +1720,7 @@ sub normalize_top_node_name($)
   return $node;
 }
 
+# Argument is a converter object
 sub _convert_text_options($)
 {
   my $self = shift;

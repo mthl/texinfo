@@ -1441,8 +1441,13 @@ sub do_index_keys($$)
       and $self->{'info'}->{'input_encoding_name'}) {
     $options->{'enabled_encoding'} = $self->{'info'}->{'input_encoding_name'};
   }
-  my %convert_text_options = Texinfo::Common::_convert_text_options($self);
-  $options = {%$options, %convert_text_options};
+
+  if ($self->get_conf('ENABLE_ENCODING')) {
+    if ($self->get_conf('OUTPUT_ENCODING_NAME')) {
+      $options->{'enabled_encoding'} = $self->get_conf('OUTPUT_ENCODING_NAME');
+    }
+  }
+  $options->{'expanded_formats_hash'} = $self->{'expanded_formats_hash'};
 
   foreach my $index_name (keys(%$index_names)) {
     foreach my $entry (@{$index_names->{$index_name}->{'index_entries'}}) {
