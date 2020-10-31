@@ -1,5 +1,11 @@
 2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (texi2any Environment Variables): Update
+	documentation of TEXINFO_XS_PARSER to reflect that this is
+	the default.
+
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Call do_index_keys with parser object again.
 	
 	* tp/Texinfo/Common.pm (%default_customization_values):

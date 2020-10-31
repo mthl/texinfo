@@ -15825,18 +15825,12 @@ Do not use extension modules.
 @end table
 
 @vindex TEXINFO_XS_PARSER
-Set @env{TEXINFO_XS_PARSER} to @samp{1} to enable the use of the native
-code implementation of the parser module.  This is the part of 
-@command{texi2any} that converts Texinfo input into an internal tree 
-format used for further processing into output formats.  This is not 
-enabled by default due to the greater complexity of this module compared 
-with the other modules that have a native code implementation, and the 
-lack of confidence we have that the native code implementation matches 
-the Perl code in all significant aspects.  Despite the lack of maturity 
-of this module in terms of development and testing, it may be useful for 
-decreasing @command{texi2any} run times when working on Texinfo 
-documentation files.  Note that some error and warning messages will not 
-be translated from English if this module is used.
+Set @env{TEXINFO_XS_PARSER} to @samp{0} to disable the use of the
+native code implementation of the parser module.  This is the part of
+@command{texi2any} that converts Texinfo input into an internal tree
+format used for further processing into output formats.  This may
+be useful for working around bugs or incompatibilities between the
+native code implementation and the implementation in pure Perl code.
 
 
 @node @command{texi2any} Printed Output
