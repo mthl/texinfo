@@ -1,6 +1,15 @@
 2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Call do_index_keys with parser object.
+	
+	* tp/Texinfo/Convert/HTML.pm (_prepare_index_entries),
+	* tp/Texinfo/Convert/IXIN.pm (output_ixin):
+	Pass parser object to sort_indices and sort_indices_by_letter
+	instead of converter.
+	
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Call do_index_keys with parser object.
 
 	* tp/Texinfo/Convert/Plaintext.pm (_printindex_formatted):
 	Pass parser object to sort_indices instead of converter.

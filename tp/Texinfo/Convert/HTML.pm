@@ -5795,8 +5795,8 @@ sub _prepare_index_entries($)
     my $merged_index_entries 
         = Texinfo::Structuring::merge_indices($index_names);
     $self->{'index_entries_by_letter'}
-      = $self->Texinfo::Structuring::sort_indices_by_letter($merged_index_entries,
-                                                            $index_names);
+      = Texinfo::Structuring::sort_indices_by_letter ($self->{'parser'},
+                          $merged_index_entries, $index_names);
     $self->{'index_entries'} = $merged_index_entries;
 
     foreach my $index_name (sort(keys(%$index_names))) {

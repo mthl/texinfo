@@ -354,7 +354,7 @@ $result_trees{'ftable_vtable'} = {
                           'index_at_command' => 'item',
                           'index_name' => 'vr',
                           'index_type_command' => 'vtable',
-                          'key' => 'var1 error->',
+                          'key' => 'var1 error-->',
                           'node' => {},
                           'number' => 1
                         },
