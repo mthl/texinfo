@@ -1424,23 +1424,17 @@ sub do_index_keys($$)
 {
   my $self = shift;
   my $index_names = shift;
-  my $parser;
   my $ignore_chars = '';
 
-  # FIXME: sometimes $self is a converter object, sometimes it
-  # is Texinfo::Parser.  This is very confusing.
-  if (defined $self->{'parser'}) {
-    $parser = $self->{'parser'};
-    # '-' must come first to avoid e.g. [<-@] looking like a character range
-    $ignore_chars .= '-'
-      if defined $parser->{'values'}->{'txiindexhyphenignore'};
-    $ignore_chars .= '\\\\' # string with 2 \s, for escaping inside regex
-      if defined $parser->{'values'}->{'txiindexbackslashignore'};
-    $ignore_chars .= '<'
-      if defined $parser->{'values'}->{'txiindexlessthanignore'};
-    $ignore_chars .= '@'
-      if defined $parser->{'values'}->{'txiindexatsignignore'};
-  }
+  # '-' must come first to avoid e.g. [<-@] looking like a character range
+  $ignore_chars .= '-'
+    if defined $self->{'values'}->{'txiindexhyphenignore'};
+  $ignore_chars .= '\\\\' # string with 2 \s, for escaping inside regex
+    if defined $self->{'values'}->{'txiindexbackslashignore'};
+  $ignore_chars .= '<'
+    if defined $self->{'values'}->{'txiindexlessthanignore'};
+  $ignore_chars .= '@'
+    if defined $self->{'values'}->{'txiindexatsignignore'};
 
   my $options = {'sort_string' => 1};
   if ($self->get_conf('ENABLE_ENCODING') 

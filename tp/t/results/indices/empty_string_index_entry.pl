@@ -796,6 +796,78 @@ $result_errors{'empty_string_index_entry'} = [
     'macro' => '',
     'text' => 'empty index key in @defunx',
     'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: empty index key in @findex
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'empty index key in @findex',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'empty index key in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: empty index key in @defun
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'empty index key in @defun',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: empty index key in @defunx
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'empty index key in @defunx',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: empty index key in @findex
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'empty index key in @findex',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: empty index key in @item
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'empty index key in @item',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':9: warning: empty index key in @defun
+',
+    'file_name' => '',
+    'line_nr' => 9,
+    'macro' => '',
+    'text' => 'empty index key in @defun',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: empty index key in @defunx
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'empty index key in @defunx',
+    'type' => 'warning'
   }
 ];
 
@@ -827,46 +899,6 @@ coding: utf-8
 End:
 ';
 
-$result_converted_errors{'info'}->{'empty_string_index_entry'} = [
-  {
-    'error_line' => ':3: warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':6: warning: empty index key in @item
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'empty index key in @item',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':9: warning: empty index key in @defun
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'empty index key in @defun',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: empty index key in @defunx
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'empty index key in @defunx',
-    'type' => 'warning'
-  }
-];
-
-
 
 $result_converted{'plaintext'}->{'empty_string_index_entry'} = '\'\'
 
@@ -874,46 +906,6 @@ $result_converted{'plaintext'}->{'empty_string_index_entry'} = '\'\'
  -- Function: 
 
 ';
-
-$result_converted_errors{'plaintext'}->{'empty_string_index_entry'} = [
-  {
-    'error_line' => ':3: warning: empty index key in @findex
-',
-    'file_name' => '',
-    'line_nr' => 3,
-    'macro' => '',
-    'text' => 'empty index key in @findex',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':6: warning: empty index key in @item
-',
-    'file_name' => '',
-    'line_nr' => 6,
-    'macro' => '',
-    'text' => 'empty index key in @item',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':9: warning: empty index key in @defun
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => 'empty index key in @defun',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':10: warning: empty index key in @defunx
-',
-    'file_name' => '',
-    'line_nr' => 10,
-    'macro' => '',
-    'text' => 'empty index key in @defunx',
-    'type' => 'warning'
-  }
-];
-
 
 
 $result_converted{'html_text'}->{'empty_string_index_entry'} = '<span id="Top"></span><h1 class="node-heading">Top</h1>
