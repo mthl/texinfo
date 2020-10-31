@@ -1,5 +1,20 @@
 2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Call do_index_keys with parser object again.
+	
+	* tp/Texinfo/Common.pm (%default_customization_values):
+	Re-add 'ENABLE_ENCODING'.  It could be used in Texinfo::Structuring
+	for index entry sorting.
+	* tp/t/test_utils.pl, tp/t/test_sort.t:
+	Use parser object instead of converter object to sort indices.
+	* tp/Texinfo/XS/parsetexi/Parsetexi.pm: Ignore ENABLE_ENCODING.
+	
+	This reverts changes on 2020-10-21 and 2020-10-28.  The plan
+	is to call do_index_keys with the parser object instead, which
+	appears to have been the original intention.
+
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Configuration/customization variables.
 	
 	* tp/Texinfo/Common.pm (%default_customization_values):

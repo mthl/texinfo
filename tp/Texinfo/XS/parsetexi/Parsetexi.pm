@@ -128,7 +128,8 @@ sub parser (;$$)
         conf_set_CPP_LINE_DIRECTIVES($conf->{$key});
       } elsif ($key eq 'DEBUG') {
         set_debug($conf->{$key}) if $conf->{'key'};
-      } elsif ($key eq 'in_gdt') {
+      } elsif ($key eq 'in_gdt'
+               or $key eq 'ENABLE_ENCODING') {
         # no action needed
       } else {
         warn "ignoring parser configuration value \"$key\"\n";
