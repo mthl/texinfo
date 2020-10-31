@@ -1,3 +1,7 @@
+2020-10-31  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* tp/texi2any.pl: Rename two variables.
+
 2020-10-28  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Do not set expanded_formats via parser.

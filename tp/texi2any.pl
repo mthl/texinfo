@@ -443,7 +443,7 @@ my @include_dirs = ();
 my @prepend_dirs = ();
 
 # options for all the files
-my $parser_default_options = {'expanded_formats' => [], 
+my $parser_options = {'expanded_formats' => [], 
                               'values' => {'txicommandconditionals' => 1}};
 
 Texinfo::Config::_load_config($converter_default_options, $cmdline_options);
@@ -453,11 +453,11 @@ sub set_expansion($$) {
   my $set = shift;
   $set = 1 if (!defined($set));
   if ($set) {
-    push @{$parser_default_options->{'expanded_formats'}}, $region
-      unless (grep {$_ eq $region} @{$parser_default_options->{'expanded_formats'}});
+    push @{$parser_options->{'expanded_formats'}}, $region
+      unless (grep {$_ eq $region} @{$parser_options->{'expanded_formats'}});
   } else {
-    @{$parser_default_options->{'expanded_formats'}} = 
-      grep {$_ ne $region} @{$parser_default_options->{'expanded_formats'}};
+    @{$parser_options->{'expanded_formats'}} = 
+      grep {$_ ne $region} @{$parser_options->{'expanded_formats'}};
     @{$default_expanded_format} 
        = grep {$_ ne $region} @{$default_expanded_format};
   }
@@ -840,14 +840,14 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2020";
   },
  'no-validate|no-pointer-validate' => sub {
       set_from_cmdline('novalidate',$_[1]);
-      $parser_default_options->{'info'}->{'novalidate'} = $_[1];
+      $parser_options->{'info'}->{'novalidate'} = $_[1];
     },
  'no-warn' => sub { set_from_cmdline('NO_WARN', $_[1]); },
  'verbose|v!' => sub {set_from_cmdline('VERBOSE', $_[1]); 
                      push @texi2dvi_args, '--verbose'; },
  'document-language=s' => sub {
                       set_from_cmdline('documentlanguage', $_[1]); 
-                      $parser_default_options->{'documentlanguage'} = $_[1];
+                      $parser_options->{'documentlanguage'} = $_[1];
                       my @messages 
                        = Texinfo::Common::warn_unknown_language($_[1]);
                       foreach my $message (@messages) {
@@ -858,15 +858,15 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2020";
     my $var = $_[1];
     my @field = split (/\s+/, $var, 2);
     if (@field == 1) {
-      $parser_default_options->{'values'}->{$var} = 1;
+      $parser_options->{'values'}->{$var} = 1;
       push @texi2dvi_args, "--command=\@set $var 1";
     } else {
-      $parser_default_options->{'values'}->{$field[0]} = $field[1];
+      $parser_options->{'values'}->{$field[0]} = $field[1];
       push @texi2dvi_args, "--command=\@set $field[0] $field[1]";
     }
  },
  'U=s' => sub {
-    delete $parser_default_options->{'values'}->{$_[1]};
+    delete $parser_options->{'values'}->{$_[1]};
     push @texi2dvi_args, "--command=\@clear $_[1]";
  },
  'init-file=s' => sub {
@@ -900,9 +900,9 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2020";
  },
  'fill-column|f=i' => sub {set_from_cmdline('FILLCOLUMN',$_[1]);},
  'enable-encoding' => sub {set_from_cmdline('ENABLE_ENCODING',$_[1]);
-                     $parser_default_options->{'ENABLE_ENCODING'} = $_[1];},
+                     $parser_options->{'ENABLE_ENCODING'} = $_[1];},
  'disable-encoding' => sub {set_from_cmdline('ENABLE_ENCODING', 0);
-                     $parser_default_options->{'ENABLE_ENCODING'} = 0;},
+                     $parser_options->{'ENABLE_ENCODING'} = 0;},
  'internal-links=s' => sub {set_from_cmdline('INTERNAL_LINKS', $_[1]);},
  'force|F' => sub {set_from_cmdline('FORCE', $_[1]);},
  'commands-in-node-names' => sub { ;},
@@ -920,7 +920,7 @@ There is NO WARRANTY, to the extent permitted by law.\n"), "2020";
  'ps' => sub {$format = set_format($_[0].'');},
  'pdf' => sub {$format = set_format($_[0].'');},
  'debug=i' => sub {set_from_cmdline('DEBUG', $_[1]); 
-                   $parser_default_options->{'DEBUG'} = $_[1];
+                   $parser_options->{'DEBUG'} = $_[1];
                    push @texi2dvi_args, '--'.$_[0]; },
 );
 
@@ -936,7 +936,7 @@ sub normalize_config {
     $format = set_format($conf->{'TEXINFO_OUTPUT_FORMAT'}, $format, 1);
   } elsif (defined($conf->{'TEXI2HTML'})) {
     $format = set_format('html', $format, 1);
-    $parser_default_options->{'values'}->{'texi2html'} = 1;
+    $parser_options->{'values'}->{'texi2html'} = 1;
   }
   if (defined($conf->{'HTML_MATH'}) and $conf->{'HTML_MATH'} eq 'l2h') {
     $conf->{'L2H'} = 1;
@@ -1037,8 +1037,8 @@ if (get_conf('SPLIT') and !$formats_table{$format}->{'split'}) {
 }
 
 foreach my $expanded_format (@{$default_expanded_format}) {
-  push @{$parser_default_options->{'expanded_formats'}}, $expanded_format 
-    unless (grep {$_ eq $expanded_format} @{$parser_default_options->{'expanded_formats'}});
+  push @{$parser_options->{'expanded_formats'}}, $expanded_format 
+    unless (grep {$_ eq $expanded_format} @{$parser_options->{'expanded_formats'}});
 }
 
 my $converter_class;
@@ -1065,11 +1065,11 @@ no warnings 'once';
 foreach my $parser_settable_option (
                 keys(%Texinfo::Common::default_customization_values)) {
   if (defined(get_conf($parser_settable_option))) {
-    $parser_default_options->{$parser_settable_option} 
+    $parser_options->{$parser_settable_option} 
        = get_conf($parser_settable_option);
   } elsif (defined($converter_class) 
            and defined($converter_defaults{$parser_settable_option})) {
-    $parser_default_options->{$parser_settable_option} 
+    $parser_options->{$parser_settable_option} 
        = $converter_defaults{$parser_settable_option};
   }
 }
@@ -1079,7 +1079,7 @@ foreach my $parser_settable_option (
 # customization variables, and lower-cased when passed to the Parser
 foreach my $parser_option (map {uc($_)} 
                   (keys (%Texinfo::Common::default_parser_state_configuration))) {
-  $parser_default_options->{lc($parser_option)} = get_conf($parser_option)
+  $parser_options->{lc($parser_option)} = get_conf($parser_option)
     if (defined(get_conf($parser_option)));
 }
 
@@ -1121,7 +1121,7 @@ while(@input_files) {
   my $input_file_base = $input_file_name;
   $input_file_base =~ s/\.te?x(i|info)?$//;
 
-  my $parser_options = { %$parser_default_options };
+  my $parser_file_options = { %$parser_options };
 
   my @prepended_include_directories = ('.');
   push @prepended_include_directories, $input_directory
@@ -1129,10 +1129,10 @@ while(@input_files) {
   @prepended_include_directories =
     (@prepend_dirs, @prepended_include_directories);
 
-  unshift @{$parser_options->{'include_directories'}},
+  unshift @{$parser_file_options->{'include_directories'}},
           @prepended_include_directories;
 
-  my $parser = Texinfo::Parser::parser($parser_options);
+  my $parser = Texinfo::Parser::parser($parser_file_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
   #my $global_commands = $parser->global_commands_information();
@@ -1264,7 +1264,7 @@ while(@input_files) {
                             %$cmdline_options,
                             %$Texinfo::Config::options };
 
-  $converter_options->{'expanded_formats'} = $parser_default_options->{'expanded_formats'};
+  $converter_options->{'expanded_formats'} = $parser_options->{'expanded_formats'};
   $converter_options->{'parser'} = $parser;
   $converter_options->{'output_format'} = $format;
   $converter_options->{'language_config_dirs'} = \@language_config_dirs;
