@@ -6881,6 +6881,17 @@ EOT
   return 1;
 }
 
+sub _has_contents_or_shortcontents($)
+{
+  my $self = shift;
+  foreach my $cmdname ('contents', 'shortcontents') {
+    if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
+      return 1;
+    }
+  }
+  return 0;
+}
+
 sub convert($$)
 {
   my $self = shift;
@@ -7816,7 +7827,9 @@ sub _convert($$;$)
       }
       if ($self->get_conf('FORMAT_MENU') eq 'sectiontoc'
           and $sectioning_commands{$command_name}
-          and $command_name ne 'top'
+          and ($command_name ne 'top'
+               or (not ($self->_has_contents_or_shortcontents()
+                       and $self->get_conf('INLINE_CONTENTS'))))
           and $self->{'current_node'}
           and $self->{'current_node'}->{'extra'}
           and $self->{'current_node'}->{'extra'}->{'associated_section'}) {

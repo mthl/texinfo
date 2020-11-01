@@ -1654,6 +1654,9 @@ the author abandon his copyright.
 <span id="index-copying-indexed-caption-function"></span>
 </div></div>
 
+<ul class="section-toc">
+<li><a href="#Copying-and-floats" accesskey="1">Copying and floats</a></li>
+</ul>
 <hr>
 <span id="Copying-and-floats"></span><div class="header">
 <p>

@@ -8291,6 +8291,13 @@ Next: <a href="#chapter" accesskey="n" rel="next">A chapter</a> &nbsp; </p>
 
 <div class="float-caption"><p><strong>Warning 1: </strong>C A warning</p></div></div>
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">A chapter</a></li>
+<li><a href="#Unnumbered" accesskey="2">Unnumbered</a></li>
+<li><a href="#Chapter-with-unnumbsubsec" accesskey="3">Chapter with unnumbsubsec</a></li>
+<li><a href="#Appendix-for-float" accesskey="4">Appendix for float</a></li>
+<li><a href="#list-of-floats" accesskey="5">list of floats</a></li>
+</ul>
 <hr>
 <span id="chapter"></span><div class="header">
 <p>

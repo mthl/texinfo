@@ -12,6 +12,14 @@
 
 2020-11-01  Patrice Dumas  <pertusus@free.fr>
 
+	Output a sectiontoc for @top if there is no contents already output
+
+	* tp/Texinfo/Convert/HTML.pm (_convert): output a sectiontoc in 
+	@top if there is no shortcontent nor summary content inlined.
+	(_has_contents_or_shortcontents): new function.
+
+2020-11-01  Patrice Dumas  <pertusus@free.fr>
+
 	Update pot/po and fr translation to regenerate test result after @def
 	change
 

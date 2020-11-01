@@ -583,6 +583,11 @@ ul.no-bullet {list-style: none}
  &nbsp; </p>
 </div>
 <span id="SEC_Top"></span>
+<ul class="section-toc">
+<li><a href="#c1" accesskey="1">c1</a></li>
+<li><a href="#c2" accesskey="2">c2</a></li>
+<li><a href="#c3" accesskey="3">c3</a></li>
+</ul>
 <hr>
 <span id="c1"></span><div class="header">
 <p>

@@ -713,6 +713,9 @@ Next: <a href="#chapter" accesskey="n" rel="next">Chap</a> &nbsp; </p>
 <p>In top node<a id="DOCF1" href="#FOOT1"><sup>1</sup></a>
 </p>
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">Chap</a></li>
+</ul>
 <hr>
 <span id="chapter"></span><div class="header">
 <p>

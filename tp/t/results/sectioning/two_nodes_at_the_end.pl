@@ -1039,6 +1039,9 @@ Next: <a href="#chapter-1" accesskey="n" rel="next">chapter c1</a> &nbsp; </p>
 <span id="top"></span><h1 class="top">top</h1>
 
 
+<ul class="section-toc">
+<li><a href="#chapter-1" accesskey="1">chapter c1</a></li>
+</ul>
 <hr>
 <span id="chapter-1"></span><div class="header">
 <p>

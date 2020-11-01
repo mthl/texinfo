@@ -22761,6 +22761,15 @@ $result_floats{'at_commands_in_refs_utf8'} = {};
 
 $result_converted_errors{'file_html'}->{'at_commands_in_refs_utf8'} = [
   {
+    'error_line' => ':95: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
+',
+    'file_name' => '',
+    'line_nr' => 95,
+    'macro' => '',
+    'text' => '@image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':93: warning: @image file `f--ile1\' (for HTML) not found, using `f--ile1.jpg\'
 ',
     'file_name' => '',

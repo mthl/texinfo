@@ -1460,6 +1460,9 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 
 
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">Chapter</a></li>
+</ul>
 <hr>
 <span id="chapter"></span><div class="header">
 <p>

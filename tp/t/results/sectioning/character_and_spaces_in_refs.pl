@@ -2037,6 +2037,9 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 <a href="#Top">Test refs</a>
 <a href="#local-node">local   node</a>
 </p>
+<ul class="section-toc">
+<li><a href="#other-nodes" accesskey="1">Chapter with nodes</a></li>
+</ul>
 <hr>
 <span id="other-nodes"></span><div class="header">
 <p>

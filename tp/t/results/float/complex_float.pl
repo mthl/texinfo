@@ -5013,6 +5013,9 @@ A footnote.
 </p>
 <p>TeX and <em><b>t&eacute;&icirc;</b><a href="an_url">an_url</a></em> <small>AND</small> <tt>it is @verb</tt> &nbsp;a word !@ &AElig;.
 </p></div></div>
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">A chapter</a></li>
+</ul>
 <hr>
 <span id="chapter"></span><div class="header">
 <p>
