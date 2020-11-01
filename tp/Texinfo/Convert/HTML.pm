@@ -4126,12 +4126,19 @@ sub _convert_def_line_type($$$$)
     } else {
       $name = '';
     }
-    my $category;
-    if ($command->{'extra'}->{'def_parsed_hash'}->{'category'}) {
-      $category = $command->{'extra'}->{'def_parsed_hash'}->{'category'};
+    my $category = $command->{'extra'}->{'def_parsed_hash'}->{'category'};
+    my $category_result = '';
+    my $category_tree;
+    if ($category) {
+      $category_tree
+        = {'type' => '_code',
+           'contents'=>[$self->gdt("{category}: ", {'category' => $category})]
+          };
+      # NB perhaps the category shouldn't be in_code.
     } else {
       $category = '';
     }
+    # no type
     if ($command_name eq 'deffn'
         or $command_name eq 'defvr'
         or $command_name eq 'deftp'
@@ -4145,16 +4152,15 @@ sub _convert_def_line_type($$$$)
              or ($command_name eq 'deftypecv'
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'type'}))
             and !$command->{'extra'}->{'def_parsed_hash'}->{'class'})) {
+      $category_result = $self->convert_tree($category_tree);
       if ($arguments) {
-        $tree = $self->gdt("{category}: \@strong{{name}} \@emph{{arguments}}", {
-                'category' => $category,
+        $tree = $self->gdt("\@strong{{name}} \@emph{{arguments}}", {
                 'name' => $name,
                 'arguments' => $arguments});
       } else {
-        $tree = $self->gdt("{category}: \@strong{{name}}", {
-                'category' => $category,
-                'name' => $name});
+        $tree = $self->gdt("\@strong{{name}}", {'name' => $name});
       }
+    # with a type
     } elsif ($command_name eq 'deftypefn'
              or $command_name eq 'deftypevr'
              or (($command_name eq 'deftypeop'
@@ -4162,32 +4168,40 @@ sub _convert_def_line_type($$$$)
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'class'})) {
       if ($arguments) {
         my $strings = {
-                'category' => $category,
                 'name' => $name,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
                 'arguments' => $arguments};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
+          $category_tree
+            = {'type' => '_code',
+               'contents'
+                  => [$self->gdt("{category}:@* ", {'category' => $category})]
+              };
           $tree 
-             = $self->gdt("{category}:\@* \@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}", 
+             = $self->gdt("\@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}", 
                           $strings);
         } else {
           $tree 
-             = $self->gdt("{category}: \@emph{{type}} \@strong{{name}} \@emph{{arguments}}", 
+             = $self->gdt("\@emph{{type}} \@strong{{name}} \@emph{{arguments}}", 
                           $strings);
         }
       } else {
         my $strings = {
-                'category' => $category,
                 'type' => $command->{'extra'}->{'def_parsed_hash'}->{'type'},
                 'name' => $name};
         if ($self->get_conf('deftypefnnewline') eq 'on') {
-          $tree = $self->gdt("{category}:\@* \@emph{{type}}\@* \@strong{{name}}",
-                  $strings);
+          $category_tree
+            = {'type' => '_code',
+               'contents'
+                  => [$self->gdt("{category}:@* ", {'category' => $category})]
+              };
         } else {
-          $tree = $self->gdt("{category}: \@emph{{type}} \@strong{{name}}",
+          $tree = $self->gdt("\@emph{{type}} \@strong{{name}}",
                   $strings);
         }
       }
+      $category_result = $self->convert_tree($category_tree);
+    # with a class, no type
     } elsif ($command_name eq 'defcv'
              or ($command_name eq 'deftypecv'
                  and !$command->{'extra'}->{'def_parsed_hash'}->{'type'})) {
@@ -4218,6 +4232,7 @@ sub _convert_def_line_type($$$$)
                 'class' => $command->{'extra'}->{'def_parsed_hash'}->{'class'},
                 'name' => $name});
       }
+    # with a class and a type
     } elsif ($command_name eq 'deftypeop') {
       if ($arguments) {
         my $strings = {
@@ -4286,7 +4301,7 @@ sub _convert_def_line_type($$$$)
       }
     }
 
-    return "<dt$index_label>".$self->convert_tree({'type' => '_code',
+    return "<dt$index_label>".$category_result.$self->convert_tree({'type' => '_code',
                              'contents' => [$tree]}) . "</dt>\n";
   } else {
     my $category_prepared = '';

@@ -1,5 +1,23 @@
 2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Output category separately for @def*.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_def_line_type):
+	Split the conversion of the category away from the rest of
+	the def line.  Add comments to label the different cases.
+
+	This has a slight change to the output for @deffn with
+	a completely empty argument, as this leads to the
+	category being undefined.  It also changes a test
+	result due to a translation for "{category}: " being missing
+	(in French, this should come out as "{category}@ : ").
+
+	This is preparation for allowing changing the formatting of
+	the category with CSS, for example to float it to the right
+	of the page.  Suggestion from Per Bother.
+
+2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* tp/Texinfo/Convert/Text.pm (brace_no_arg_command):
 	Add missing close bracket for defined.
 
