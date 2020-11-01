@@ -309,6 +309,8 @@ $result_converted{'html'}->{'reference_to_external_manual'} = '<!DOCTYPE html PU
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}

@@ -532,6 +532,8 @@ $result_converted{'html'}->{'space_in_def_for_index'} = '<!DOCTYPE html PUBLIC "
 <link href="#Top" rel="index" title="Top">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -556,8 +558,8 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="def">
-<dt id="index-name"><span class="category">Category: </span><strong>name</strong> <em>argument argument2...</em></dt>
-<dt id="index-AAA2"><span class="category">AAA1: </span><strong>AAA2</strong> <em>arg3</em></dt>
+<dt id="index-name"><span class="category">Category: </span><strong>name</strong> <em>argument argument2...</em><a href=\'#index-name\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-AAA2"><span class="category">AAA1: </span><strong>AAA2</strong> <em>arg3</em><a href=\'#index-AAA2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_letter-A"><b>A</b></a>

@@ -457,6 +457,8 @@ $result_converted{'html'}->{'inlineraw_in_menu_description'} = '<!DOCTYPE html P
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}

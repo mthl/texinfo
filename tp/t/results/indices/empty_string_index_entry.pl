@@ -955,8 +955,8 @@ $result_converted{'html_text'}->{'empty_string_index_entry'} = '<span id="Top"><
 </dl>
 
 <dl class="def">
-<dt id="index--2"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em></dt>
-<dt id="index--3"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em></dt>
+<dt id="index--2"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--2\' class=\'permalink\'>&para;</a></dt>
+<dt id="index--3"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--3\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <hr>

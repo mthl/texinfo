@@ -15960,6 +15960,8 @@ $result_converted{'html'}->{'all_commands_delimiters_printindex'} = '<!DOCTYPE h
 <link href="#Top" rel="index" title="Top">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -15983,191 +15985,191 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 <dl class="def">
-<dt id="index-forward_002d_002dchar"><span class="category">Command: </span><strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-forward_002d_002dchar"><span class="category">Command: </span><strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-forward_002d_002dchar\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-fill_002dcolumn"><span class="category">Variable: </span><strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-fill_002dcolumn"><span class="category">Variable: </span><strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-fill_002dcolumn\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-foobar"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em></dt>
+<dt id="index-foobar"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em><a href=\'#index-foobar\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-foobar-1"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em></dt>
+<dt id="index-foobar-1"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em><a href=\'#index-foobar-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-foobug"><span class="category">Library Function: </span><em>int</em> <strong>foobug</strong> <em>[something</em></dt>
+<dt id="index-foobug"><span class="category">Library Function: </span><em>int</em> <strong>foobug</strong> <em>[something</em><a href=\'#index-foobug\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-push"><span class="category">stacks: </span><em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em></dt>
+<dt id="index-push"><span class="category">stacks: </span><em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em><a href=\'#index-push\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-enable"><span class="category">Global Flag: </span><em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-enable"><span class="category">Global Flag: </span><em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-enable\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-pair"><span class="category">Data type: </span><strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-pair"><span class="category">Data type: </span><strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-pair\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-border_002dpattern">Class Option of Window: <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-border_002dpattern">Class Option of Window: <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-border_002dpattern\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-border_002dpattern-of-Window">Class Option2 of Window: <em><code>int</code></em> <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-border_002dpattern-of-Window">Class Option2 of Window: <em><code>int</code></em> <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-border_002dpattern-of-Window\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-expose-on-windows">Operation on windows: <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-expose-on-windows">Operation on windows: <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-expose-on-windows\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-expose-on-W_002cindow">Operation2 on W,indow: <em><code>int</code></em> <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dt id="index-expose-on-W_002cindow">Operation2 on W,indow: <em><code>int</code></em> <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em><a href=\'#index-expose-on-W_002cindow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-expose-on-Window">Operation5 on Window: <em><code>int</code></em> <strong>expose</strong> <em>type arg</em></dt>
+<dt id="index-expose-on-Window">Operation5 on Window: <em><code>int</code></em> <strong>expose</strong> <em>type arg</em><a href=\'#index-expose-on-Window\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_002cxpose-on-W_002cindow">Operation3 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_002cxpose-on-W_002cindow">Operation3 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em><a href=\'#index-e_002cxpose-on-W_002cindow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_002cexpose-on-_002cWindow">Operation4 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
+<dt id="index-_002cexpose-on-_002cWindow">Operation4 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em><a href=\'#index-_002cexpose-on-_002cWindow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_002cxpose-on-W_002cindow-1">Operation6 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_002cxpose-on-W_002cindow-1">Operation6 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em><a href=\'#index-e_002cxpose-on-W_002cindow-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_002cexpose-on-_002cWindow-1">Operation7 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
+<dt id="index-_002cexpose-on-_002cWindow-1">Operation7 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em><a href=\'#index-_002cexpose-on-_002cWindow-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_0029xpose-on-W_0029indow">Operation13 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_0029xpose-on-W_0029indow">Operation13 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em><a href=\'#index-e_0029xpose-on-W_0029indow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_0029expose-on-_0029Window">Operation14 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
+<dt id="index-_0029expose-on-_0029Window">Operation14 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em><a href=\'#index-_0029expose-on-_0029Window\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_0029xpose-on-W_0029indow-1">Operation16 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_0029xpose-on-W_0029indow-1">Operation16 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em><a href=\'#index-e_0029xpose-on-W_0029indow-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_0029expose-on-_0029Window-1">Operation17 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
+<dt id="index-_0029expose-on-_0029Window-1">Operation17 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em><a href=\'#index-_0029expose-on-_0029Window-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_003bxpose-on-W_003bindow">Operation18 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_003bxpose-on-W_003bindow">Operation18 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em><a href=\'#index-e_003bxpose-on-W_003bindow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_003bexpose-on-_003bWindow">Operation19 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
+<dt id="index-_003bexpose-on-_003bWindow">Operation19 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em><a href=\'#index-_003bexpose-on-_003bWindow\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-e_003bxpose-on-W_003bindow-1">Operation20 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
+<dt id="index-e_003bxpose-on-W_003bindow-1">Operation20 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em><a href=\'#index-e_003bxpose-on-W_003bindow-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-_003bexpose-on-_003bWindow-1">Operation21 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
+<dt id="index-_003bexpose-on-_003bWindow-1">Operation21 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em><a href=\'#index-_003bexpose-on-_003bWindow-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-name-on-Windowint">Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong></dt>
+<dt id="index-name-on-Windowint">Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong><a href=\'#index-name-on-Windowint\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-apply"><span class="category">Function: </span><strong>apply</strong> <em>function &amp;rest arguments</em></dt>
+<dt id="index-apply"><span class="category">Function: </span><strong>apply</strong> <em>function &amp;rest arguments</em><a href=\'#index-apply\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em><a href=\'#index-A2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-1"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-1"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em><a href=\'#index-A2-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-5"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2-5"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em><a href=\'#index-A2-5\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-6"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-6"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em><a href=\'#index-A2-6\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em><a href=\'#index-A3\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-1"><span class="category"><code>A1</code>: </span><em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-1"><span class="category"><code>A1</code>: </span><em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em><a href=\'#index-A3-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-2"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-2"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em><a href=\'#index-A3-2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-3"><span class="category"><code>A1</code>: </span><em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-3"><span class="category"><code>A1</code>: </span><em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em><a href=\'#index-A3-3\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dt id="index-A2-2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em><a href=\'#index-A2-2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-3"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dt id="index-A2-3"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em><a href=\'#index-A2-3\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-4"><var>A1</var> of <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-4"><var>A1</var> of <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em><a href=\'#index-A3-4\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A2-4"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A2-4"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em><a href=\'#index-A2-4\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A4-of-A2"><var>A1</var> of <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
+<dt id="index-A4-of-A2"><var>A1</var> of <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em><a href=\'#index-A4-of-A2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A4-of-A2-1"><code>A1</code> of <code>A2</code>: <em><samp>A3</samp></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
+<dt id="index-A4-of-A2-1"><code>A1</code> of <code>A2</code>: <em><samp>A3</samp></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em><a href=\'#index-A4-of-A2-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-on-A2"><var>A1</var> on <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dt id="index-A3-on-A2"><var>A1</var> on <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em><a href=\'#index-A3-on-A2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A3-on-A2-1"><code>A1</code> on <code>A2</code>: <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dt id="index-A3-on-A2-1"><code>A1</code> on <code>A2</code>: <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em><a href=\'#index-A3-on-A2-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A4-on-A2"><var>A1</var> on <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
+<dt id="index-A4-on-A2"><var>A1</var> on <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em><a href=\'#index-A4-on-A2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-A4-on-A2-1"><code>A1</code> on <code>A2</code>: <em><code>A3</code></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
+<dt id="index-A4-on-A2-1"><code>A1</code> on <code>A2</code>: <em><code>A3</code></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em><a href=\'#index-A4-on-A2-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-fun_005fname"><span class="category">code then var: </span><em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em></dt>
+<dt id="index-fun_005fname"><span class="category">code then var: </span><em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em><a href=\'#index-fun_005fname\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-fun_005fname1"><span class="category">var then code: </span><em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em></dt>
+<dt id="index-fun_005fname1"><span class="category">var then code: </span><em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em><a href=\'#index-fun_005fname1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <span id="Functions"></span><h3 class="heading">Functions</h3>

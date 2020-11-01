@@ -954,23 +954,23 @@ $result_converted{'html_text'}->{'test_deftypefnnewline'} = '
 
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 <dl class="def">
-<dt id="index-name"><span class="category">Function:<br> </span><em>data-type</em><br> <strong>name</strong> <em>arguments...</em></dt>
+<dt id="index-name"><span class="category">Function:<br> </span><em>data-type</em><br> <strong>name</strong> <em>arguments...</em><a href=\'#index-name\' class=\'permalink\'>&para;</a></dt>
 <dd><p>aaa
 </p></dd></dl>
 
 <dl class="def">
-<dt id="index-arg"><span class="category">fun: </span><strong>arg</strong></dt>
+<dt id="index-arg"><span class="category">fun: </span><strong>arg</strong><a href=\'#index-arg\' class=\'permalink\'>&para;</a></dt>
 <dd><p>fff
 </p></dd></dl>
 
 
 <dl class="def">
-<dt id="index-name2"><span class="category">Function: </span><em>data-type2</em> <strong>name2</strong> <em>arguments2...</em></dt>
+<dt id="index-name2"><span class="category">Function: </span><em>data-type2</em> <strong>name2</strong> <em>arguments2...</em><a href=\'#index-name2\' class=\'permalink\'>&para;</a></dt>
 <dd><p>aaa2
 </p></dd></dl>
 
 <dl class="def">
-<dt id="index-arg2"><span class="category">fun2: </span><strong>arg2</strong></dt>
+<dt id="index-arg2"><span class="category">fun2: </span><strong>arg2</strong><a href=\'#index-arg2\' class=\'permalink\'>&para;</a></dt>
 <dd><p>fff2
 </p></dd></dl>
 <hr>

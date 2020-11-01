@@ -1,3 +1,15 @@
+2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Anchor links on hover over def.
+
+	* tp/Texinfo/Common.pm (@variable_string_settables),
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	Add PERMALINKS.
+	* tp/Texinfo/Convert/HTML.pm (_get_permalink): New function.
+	(%css_map): Add CSS so as to make permalink appear on hover
+	over parent element.
+	(_convert_def_line_type): Call _get_permalink.
+
 2020-11-01  Patrice Dumas  <pertusus@free.fr>
 
 	Update pot/po and fr translation to regenerate test result after @def

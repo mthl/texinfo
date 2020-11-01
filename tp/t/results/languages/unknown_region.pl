@@ -385,6 +385,8 @@ $result_converted{'html'}->{'unknown_region'} = '<!DOCTYPE html PUBLIC "-//W3C//
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -410,7 +412,7 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="def">
-<dt id="index-BBB-of-AAA">Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
+<dt id="index-BBB-of-AAA">Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em><a href=\'#index-BBB-of-AAA\' class=\'permalink\'>&para;</a></dt>
 </dl>
 <hr>
 

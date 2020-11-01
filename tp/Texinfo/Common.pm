@@ -300,6 +300,7 @@ my @variable_string_settables = (
 'PACKAGE_NAME',
 'PACKAGE_URL',
 'PACKAGE_VERSION',
+'PERMALINKS',
 'PRE_ABOUT',
 'PRE_BODY_CLOSE',
 'PREFIX',

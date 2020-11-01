@@ -1069,6 +1069,7 @@ my %defaults = (
   'jslicenses_math' => {},    # MathJax scripts
   'jslicenses_infojs' => {},  # info.js scripts
   'element_math' => 0,        # whether math has been seen in current file
+  'PERMALINKS' => 1,
  
   'output_format'        => 'html',
 );
@@ -1104,6 +1105,10 @@ my %css_map = (
      'span.roman'         => 'font-family: initial; font-weight: normal',
      'span.nolinebreak'   => 'white-space: nowrap',
      'kbd'                => 'font-style: oblique',
+
+     'a.permalink'
+         => 'padding-left: 0.5em; visibility: hidden; text-decoration: none',
+     '*[id]:hover > a.permalink'         => 'visibility: visible',
 );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
@@ -4305,9 +4310,10 @@ sub _convert_def_line_type($$$$)
       $category_result = $self->_attribute_class('span', 'category')
                             .">$category_result</span>";
     }
+    my $permalink = $self->_get_permalink($index_id);
     return "<dt$index_label>"
              .$category_result.$self->convert_tree({'type' => '_code',
-                               'contents' => [$tree]}) . "</dt>\n";
+                               'contents' => [$tree]}) . "$permalink</dt>\n";
   } else {
     my $category_prepared = '';
     if ($command->{'extra'} and $command->{'extra'}->{'def_parsed_hash'}
@@ -4347,6 +4353,15 @@ sub _convert_def_line_type($$$$)
     return "<tr$index_label><td align=\"left\">" . $type_name .
        "</td><td align=\"right\">" . $category_prepared . "</td></tr>\n";
   }
+}
+
+sub _get_permalink {
+  my ($self, $id) = @_;
+  my $result = '';
+  if ($id and $self->get_conf('PERMALINKS')) {
+    $result = "<a href='#$id' class='permalink'>&para;</a>";
+  }
+  return $result;
 }
 
 $default_types_conversion{'def_line'} = \&_convert_def_line_type;

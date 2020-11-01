@@ -740,12 +740,12 @@ $result_converted{'html_text'}->{'same_index_entry_merged_indices'} = '
 <p>Text.
 </p>
 <dl class="def">
-<dt id="index-mmm_002dmode"><span class="category">Command: </span><strong>mmm-mode</strong> <em><var>arg</var></em></dt>
+<dt id="index-mmm_002dmode"><span class="category">Command: </span><strong>mmm-mode</strong> <em><var>arg</var></em><a href=\'#index-mmm_002dmode\' class=\'permalink\'>&para;</a></dt>
 <dd><p>Toggle the state of MMM Mode.
 </p></dd></dl>
 
 <dl class="def">
-<dt id="index-mmm_002dmode-1"><span class="category">Variable: </span><strong>mmm-mode</strong></dt>
+<dt id="index-mmm_002dmode-1"><span class="category">Variable: </span><strong>mmm-mode</strong><a href=\'#index-mmm_002dmode-1\' class=\'permalink\'>&para;</a></dt>
 <dd><p>This variable represents MMM Mode.
 </p></dd></dl>
 

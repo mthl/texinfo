@@ -302,6 +302,8 @@ $result_converted{'html'}->{'menu_entry_no_entry'} = '<!DOCTYPE html PUBLIC "-//
 <meta name="distribution" content="global">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}

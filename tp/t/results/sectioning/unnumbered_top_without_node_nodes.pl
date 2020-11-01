@@ -685,6 +685,8 @@ $result_converted{'html'}->{'unnumbered_top_without_node_nodes'} = '<!DOCTYPE ht
 <link href="#a-node" rel="start" title="a node">
 <style type="text/css">
 <!--
+*[id]:hover > a.permalink {visibility: visible}
+a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
