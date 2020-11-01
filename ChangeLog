@@ -1,3 +1,13 @@
+2020-11-01  Patrice Dumas  <pertusus@free.fr>
+
+	Update pot/po and fr translation to regenerate test result after @def
+	change
+
+	* po_document/*.po: update strings.
+	* po_document/fr.po: update translations.
+	* tp/tests/layout/res_parser/formatting_fr_icons/formatting.html:
+	update
+
 2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Enable def category CSS.
