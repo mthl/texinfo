@@ -4175,7 +4175,7 @@ sub _convert_def_line_type($$$$)
           $category_tree
             = {'type' => '_code',
                'contents'
-                  => [$self->gdt("{category}:@* ", {'category' => $category})]
+                  => [$self->gdt("{category}:\@* ", {'category' => $category})]
               };
           $tree 
              = $self->gdt("\@emph{{type}}\@* \@strong{{name}} \@emph{{arguments}}", 
@@ -4193,7 +4193,7 @@ sub _convert_def_line_type($$$$)
           $category_tree
             = {'type' => '_code',
                'contents'
-                  => [$self->gdt("{category}:@* ", {'category' => $category})]
+                  => [$self->gdt("{category}:\@* ", {'category' => $category})]
               };
         } else {
           $tree = $self->gdt("\@emph{{type}} \@strong{{name}}",
