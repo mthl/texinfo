@@ -409,7 +409,7 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<dl>
+<dl class="def">
 <dt id="index-BBB-of-AAA">Variable d\'instance de AAA&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 <hr>

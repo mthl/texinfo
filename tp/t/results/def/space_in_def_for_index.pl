@@ -555,9 +555,9 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<dl>
-<dt id="index-name">Category: <strong>name</strong> <em>argument argument2...</em></dt>
-<dt id="index-AAA2">AAA1: <strong>AAA2</strong> <em>arg3</em></dt>
+<dl class="def">
+<dt id="index-name"><span class="category">Category: </span><strong>name</strong> <em>argument argument2...</em></dt>
+<dt id="index-AAA2"><span class="category">AAA1: </span><strong>AAA2</strong> <em>arg3</em></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#Top_fn_letter-A"><b>A</b></a>

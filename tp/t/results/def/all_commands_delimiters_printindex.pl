@@ -15982,192 +15982,192 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <span id="Top"></span><h1 class="node-heading">Top</h1>
-<dl>
-<dt id="index-forward_002d_002dchar">Command: <strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dl class="def">
+<dt id="index-forward_002d_002dchar"><span class="category">Command: </span><strong><var>forward--char</var></strong> <em><var>nchars</var> argument2 argument3         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
-<dt id="index-fill_002dcolumn">Variable: <strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dl class="def">
+<dt id="index-fill_002dcolumn"><span class="category">Variable: </span><strong>fill-column</strong> <em>argument1 argument2         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
-<dt id="index-foobar">Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em></dt>
+<dl class="def">
+<dt id="index-foobar"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)</em></dt>
 </dl>
 
-<dl>
-<dt id="index-foobar-1">Library Function: <em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em></dt>
+<dl class="def">
+<dt id="index-foobar-1"><span class="category">Library Function: </span><em>int</em> <strong>foobar</strong> <em>(int <var>foo</var>, float <var>bar</var>)         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) ct<br><br> last</em></dt>
 </dl>
 
-<dl>
-<dt id="index-foobug">Library Function: <em>int</em> <strong>foobug</strong> <em>[something</em></dt>
+<dl class="def">
+<dt id="index-foobug"><span class="category">Library Function: </span><em>int</em> <strong>foobug</strong> <em>[something</em></dt>
 </dl>
 
-<dl>
-<dt id="index-push">stacks: <em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em></dt>
+<dl class="def">
+<dt id="index-push"><span class="category">stacks: </span><em>private</em> <strong>push</strong> <em>(<var>s</var>:in out stack;                  <var>n</var>:in integer) ; ;barg aarg; ; end</em></dt>
 </dl>
 
-<dl>
-<dt id="index-enable">Global Flag: <em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dl class="def">
+<dt id="index-enable"><span class="category">Global Flag: </span><em>int</em> <strong>enable</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
-<dt id="index-pair">Data type: <strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
+<dl class="def">
+<dt id="index-pair"><span class="category">Data type: </span><strong>pair</strong> <em>car cdr         (arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-border_002dpattern">Class Option of Window: <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-border_002dpattern-of-Window">Class Option2 of Window: <em><code>int</code></em> <strong>border-pattern</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-expose-on-windows">Operation on windows: <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-expose-on-W_002cindow">Operation2 on W,indow: <em><code>int</code></em> <strong>expose</strong> <em>(arg in brace, [something <var>in v--ar</var>, <b>in, b</b> , comma a<var>pref</var> p]) last</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-expose-on-Window">Operation5 on Window: <em><code>int</code></em> <strong>expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_002cxpose-on-W_002cindow">Operation3 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_002cexpose-on-_002cWindow">Operation4 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_002cxpose-on-W_002cindow-1">Operation6 on W,indow: <em><code>int</code></em> <strong>e,xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_002cexpose-on-_002cWindow-1">Operation7 on ,Window: <em><code>int</code></em> <strong>,expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_0029xpose-on-W_0029indow">Operation13 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_0029expose-on-_0029Window">Operation14 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_0029xpose-on-W_0029indow-1">Operation16 on W)indow: <em><code>int</code></em> <strong>e)xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_0029expose-on-_0029Window-1">Operation17 on )Window: <em><code>int</code></em> <strong>)expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_003bxpose-on-W_003bindow">Operation18 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_003bexpose-on-_003bWindow">Operation19 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-e_003bxpose-on-W_003bindow-1">Operation20 on W;indow: <em><code>int</code></em> <strong>e;xpose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-_003bexpose-on-_003bWindow-1">Operation21 on ;Window: <em><code>int</code></em> <strong>;expose</strong> <em>type arg</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-name-on-Windowint">Command<code>com</code> on Window<code>int</code>: <em>expose<var>exp</var></em> <strong>name</strong></dt>
 </dl>
 
-<dl>
-<dt id="index-apply">Function: <strong>apply</strong> <em>function &amp;rest arguments</em></dt>
+<dl class="def">
+<dt id="index-apply"><span class="category">Function: </span><strong>apply</strong> <em>function &amp;rest arguments</em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dl class="def">
+<dt id="index-A2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-1"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dl class="def">
+<dt id="index-A2-1"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-5"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dl class="def">
+<dt id="index-A2-5"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-6"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dl class="def">
+<dt id="index-A2-6"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A3"><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dl class="def">
+<dt id="index-A3"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A3-1"><code>A1</code>: <em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dl class="def">
+<dt id="index-A3-1"><span class="category"><code>A1</code>: </span><em><code>A2</code></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A3-2"><var>A1</var>: <em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
+<dl class="def">
+<dt id="index-A3-2"><span class="category"><var>A1</var>: </span><em><var>A2</var></em> <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A3-3"><code>A1</code>: <em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
+<dl class="def">
+<dt id="index-A3-3"><span class="category"><code>A1</code>: </span><em><tt>A2</tt></em> <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-2"><var>A1</var>: <strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
+<dl class="def">
+<dt id="index-A2-2"><span class="category"><var>A1</var>: </span><strong><var>A2</var></strong> <em><var>A3</var> <var>A4</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-3"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
+<dl class="def">
+<dt id="index-A2-3"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A3-4"><var>A1</var> of <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-A2-4"><code>A1</code>: <strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em></dt>
+<dl class="def">
+<dt id="index-A2-4"><span class="category"><code>A1</code>: </span><strong><code>A2</code></strong> <em><code>A3</code> <code>A4</code> <code>A5</code></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A4-of-A2"><var>A1</var> of <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A4-of-A2-1"><code>A1</code> of <code>A2</code>: <em><samp>A3</samp></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A3-on-A2"><var>A1</var> on <var>A2</var>: <strong><var>A3</var></strong> <em><var>A4</var> <var>A5</var></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A3-on-A2-1"><code>A1</code> on <code>A2</code>: <strong><code>A3</code></strong> <em><code>A4</code> <code>A5</code></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A4-on-A2"><var>A1</var> on <var>A2</var>: <em><var>A3</var></em> <strong><var>A4</var></strong> <em><var>A5</var> <var>A6</var></em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-A4-on-A2-1"><code>A1</code> on <code>A2</code>: <em><code>A3</code></em> <strong><code>A4</code></strong> <em><code>A5</code> <code>A6</code></em></dt>
 </dl>
 
-<dl>
-<dt id="index-fun_005fname">code then var: <em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em></dt>
+<dl class="def">
+<dt id="index-fun_005fname"><span class="category">code then var: </span><em>ret_type</em> <strong>fun_name</strong> <em><code>A1</code> <var>A2</var> <code>A3</code> <var>A4</var></em></dt>
 </dl>
 
-<dl>
-<dt id="index-fun_005fname1">var then code: <em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em></dt>
+<dl class="def">
+<dt id="index-fun_005fname1"><span class="category">var then code: </span><em>ret_type1</em> <strong>fun_name1</strong> <em><var>A1</var> <code>A2</code> <var>A3</var> <code>A4</code></em></dt>
 </dl>
 
 <span id="Functions"></span><h3 class="heading">Functions</h3>

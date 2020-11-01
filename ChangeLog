@@ -1,5 +1,13 @@
 2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Enable def category CSS.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_def_line_type):
+	Wrap def category in <span class='category'>.
+	(_convert_def_command): Add class='def' to <dl> element.
+
+2020-11-01  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Output category separately for @def*.
 
 	* tp/Texinfo/Convert/HTML.pm (_convert_def_line_type):

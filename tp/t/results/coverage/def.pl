@@ -2411,30 +2411,30 @@ $result_converted{'plaintext'}->{'def'} = ' -- c--ategory: d--effn_name a--rgume
 
 
 $result_converted{'html_text'}->{'def'} = '
-<dl>
-<dt id="index-d_002d_002deffn_005fname">c--ategory: <strong>d--effn_name</strong> <em>a--rguments...</em></dt>
+<dl class="def">
+<dt id="index-d_002d_002deffn_005fname"><span class="category">c--ategory: </span><strong>d--effn_name</strong> <em>a--rguments...</em></dt>
 <dd><p>d&ndash;effn
 </p></dd></dl>
 
-<dl>
-<dt id="index-de_002d_002dffn_005fname">cate--gory: <strong>de--ffn_name</strong> <em>ar--guments    more args <br> even more so</em></dt>
+<dl class="def">
+<dt id="index-de_002d_002dffn_005fname"><span class="category">cate--gory: </span><strong>de--ffn_name</strong> <em>ar--guments    more args <br> even more so</em></dt>
 <dd><p>def&ndash;fn
 </p></dd></dl>
 
-<dl>
-<dt id="index-i">fset: <strong><var>i</var></strong> <em>a g</em></dt>
-<dt id="index-truc">cmde: <strong>truc</strong> <em></em></dt>
-<dt id="index-log-trap">Command: <strong>log trap</strong> <em></em></dt>
-<dt id="index-log-trap1">Command: <strong>log trap1</strong> <em></em></dt>
-<dt id="index-log-trap2">Command: <strong>log trap2</strong> <em></em></dt>
-<dt id="index-id-ule">cmde: <strong><b>id ule</b></strong> <em>truc</em></dt>
-<dt id="index-id-i-ule">cmde2: <strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong> <em>truc</em></dt>
-<dt id="index-machin">: <strong>machin</strong></dt>
-<dt id="index-bidule-machin">: <strong>bidule machin</strong></dt>
-<dt id="index-machin-1">truc: <strong>machin</strong></dt>
-<dt id="index-followed">truc: <strong>followed</strong> <em>by a comment</em></dt>
-<dt id="index-after">truc: <strong>after</strong> <em>a deff item</em></dt>
-<dt id="index-deffnx">truc: <strong>deffnx</strong> <em>before end deffn</em></dt>
+<dl class="def">
+<dt id="index-i"><span class="category">fset: </span><strong><var>i</var></strong> <em>a g</em></dt>
+<dt id="index-truc"><span class="category">cmde: </span><strong>truc</strong> <em></em></dt>
+<dt id="index-log-trap"><span class="category">Command: </span><strong>log trap</strong> <em></em></dt>
+<dt id="index-log-trap1"><span class="category">Command: </span><strong>log trap1</strong> <em></em></dt>
+<dt id="index-log-trap2"><span class="category">Command: </span><strong>log trap2</strong> <em></em></dt>
+<dt id="index-id-ule"><span class="category">cmde: </span><strong><b>id ule</b></strong> <em>truc</em></dt>
+<dt id="index-id-i-ule"><span class="category">cmde2: </span><strong><b>id &lsquo;<samp>i</samp>&rsquo; ule</b></strong> <em>truc</em></dt>
+<dt id="index-machin"><span class="category">: </span><strong>machin</strong></dt>
+<dt id="index-bidule-machin"><span class="category">: </span><strong>bidule machin</strong></dt>
+<dt id="index-machin-1"><span class="category">truc: </span><strong>machin</strong></dt>
+<dt id="index-followed"><span class="category">truc: </span><strong>followed</strong> <em>by a comment</em></dt>
+<dt id="index-after"><span class="category">truc: </span><strong>after</strong> <em>a deff item</em></dt>
+<dt id="index-deffnx"><span class="category">truc: </span><strong>deffnx</strong> <em>before end deffn</em></dt>
 <dd><p>Various deff lines
 </p></dd></dl>
 ';

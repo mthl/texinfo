@@ -1413,9 +1413,9 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 </p>
 <span id="index-copying-Copying-this-document"></span>
 
-<dl>
-<dt id="index-copying-fun">Function: <strong>fun</strong> <em>arg</em></dt>
-<dt id="index-copying-xf">Function: <strong>xf</strong> <em>arg</em></dt>
+<dl class="def">
+<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em></dt>
+<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em></dt>
 <dd><p>Defun
 </p></dd></dl>
 
@@ -1470,9 +1470,9 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 
 <span id="index-copying-Copying-this-document"></span>
 
-<dl>
-<dt id="index-copying-fun">Function: <strong>fun</strong> <em>arg</em></dt>
-<dt id="index-copying-xf">Function: <strong>xf</strong> <em>arg</em></dt>
+<dl class="def">
+<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em></dt>
+<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em></dt>
 <dd><p>Defun
 </p></dd></dl>
 

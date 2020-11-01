@@ -383,7 +383,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<dl>
+<dl class="def">
 <dt id="index-b-on-a">Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em></dt>
 </dl>
 <p>&amp; &amp; &amp; { } @

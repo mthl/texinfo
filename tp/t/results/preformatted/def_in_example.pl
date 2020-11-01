@@ -280,8 +280,8 @@ $result_converted{'plaintext'}->{'def_in_example'} = '      -- Function: name ar
 
 
 $result_converted{'html_text'}->{'def_in_example'} = '<div class="example">
-<dl>
-<dt id="index-name">Function: <strong>name</strong> <em>arg</em></dt>
+<dl class="def">
+<dt id="index-name"><span class="category">Function: </span><strong>name</strong> <em>arg</em></dt>
 <dd><pre class="example">in defun
 </pre></dd></dl>
 </div>

@@ -974,20 +974,20 @@ ul.no-bullet {list-style: none}
 
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
-<dl>
+<dl class="def">
 <dt id="index-BBB-of-fr">Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-copying-a-of-copying">Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em></dt>
 </dl>
 
 
-<dl>
+<dl class="def">
 <dt id="index-BBB-of-pt">Variável de instância da pt: <strong>BBB</strong> <em>CCC</em></dt>
 </dl>
 
-<dl>
+<dl class="def">
 <dt id="index-copying-a-of-copying">Variável de instância da copying: <strong>a</strong> <em>b</em></dt>
 </dl>
 <hr>

@@ -4301,8 +4301,13 @@ sub _convert_def_line_type($$$$)
       }
     }
 
-    return "<dt$index_label>".$category_result.$self->convert_tree({'type' => '_code',
-                             'contents' => [$tree]}) . "</dt>\n";
+    if ($category_result ne '') {
+      $category_result = $self->_attribute_class('span', 'category')
+                            .">$category_result</span>";
+    }
+    return "<dt$index_label>"
+             .$category_result.$self->convert_tree({'type' => '_code',
+                               'contents' => [$tree]}) . "</dt>\n";
   } else {
     my $category_prepared = '';
     if ($command->{'extra'} and $command->{'extra'}->{'def_parsed_hash'}
@@ -4373,9 +4378,8 @@ sub _convert_def_command($$$$) {
   my $content = shift;
 
   return $content if ($self->in_string());
-  #print STDERR "IIII $self $cmdname command $command args $args content $content\n";
   if (!$self->get_conf('DEF_TABLE')) {
-    return "<dl>\n". $content ."</dl>\n";
+    return $self->_attribute_class('dl', 'def').">\n". $content ."</dl>\n";
   } else {
     return "<table width=\"100%\">\n" . $content . "</table>\n";
   }
