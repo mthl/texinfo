@@ -1,3 +1,4 @@
 **/*.info       diff
 **/index_nodes  diff
 **/one_node     diff
+ChangeLog       merge=merge-changelog
