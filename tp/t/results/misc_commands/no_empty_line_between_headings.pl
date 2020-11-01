@@ -235,7 +235,13 @@ Subheading
 
 $result_converted{'html_text'}->{'no_empty_line_between_headings'} = '<span id="Top"></span><h1 class="top">Top</h1>
 <span id="Subheading"></span><h4 class="subheading">Subheading</h4>
+<ul class="section-toc">
+<li><a href="#Chapter" accesskey="1">Chapter</a></li>
+</ul>
 <span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
+<ul class="section-toc">
+<li><a href="#Section" accesskey="1">Section</a></li>
+</ul>
 <span id="Section"></span><h3 class="section">1.1 Section</h3>
 <hr>
 ';

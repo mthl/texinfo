@@ -7829,12 +7829,8 @@ sub _convert($$;$)
           and $sectioning_commands{$command_name}
           and ($command_name ne 'top'
                or (not ($self->_has_contents_or_shortcontents()
-                       and $self->get_conf('INLINE_CONTENTS'))))
-          and $self->{'current_node'}
-          and $self->{'current_node'}->{'extra'}
-          and $self->{'current_node'}->{'extra'}->{'associated_section'}) {
-        $result .= _mini_toc
-          ($self, $self->{'current_node'}->{'extra'}->{'associated_section'});
+                       and $self->get_conf('INLINE_CONTENTS'))))){
+        $result .= _mini_toc($self, $root);
       }
       return $result;
     } else {

@@ -1051,6 +1051,9 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a>, Previous: <a href
 <h1 class="part">part</h1>
 <hr>
 
+<ul class="section-toc">
+<li><a href="#chapter" accesskey="1">chapter</a></li>
+</ul>
 <span id="a-node-after-part"></span><h4 class="node-heading">a node after part</h4>
 <p>After a node after part
 </p>

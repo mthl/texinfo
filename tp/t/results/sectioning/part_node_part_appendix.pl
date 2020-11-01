@@ -930,11 +930,17 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 <h1 class="part">Part 1</h1>
 <hr>
 
+<ul class="section-toc">
+<li><a href="#chapter-node" accesskey="1">chapter</a></li>
+</ul>
 <span id="chapter-node"></span><span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 <span id="Part-Appendix"></span><h1 class="part">Part Appendix</h1>
 <hr>
 
+<ul class="section-toc">
+<li><a href="#Appendix" accesskey="1">Appendix</a></li>
+</ul>
 <span id="Appendix"></span><h2 class="appendix">Appendix A Appendix</h2>
 <hr>
 

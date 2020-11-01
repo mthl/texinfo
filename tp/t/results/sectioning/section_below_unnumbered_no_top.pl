@@ -173,6 +173,9 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <span id="U"></span><h2 class="unnumbered">U</h2>
+<ul class="section-toc">
+<li><a href="#S" accesskey="1">S</a></li>
+</ul>
 <span id="S"></span><h3 class="section">S</h3>
 <hr>
 

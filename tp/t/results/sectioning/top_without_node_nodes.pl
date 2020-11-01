@@ -446,6 +446,9 @@ ul.no-bullet {list-style: none}
 <span id="top-section"></span><h1 class="top">top section</h1>
 <p>Top section
 </p>
+<ul class="section-toc">
+<li><a href="#second" accesskey="1">Chapter</a></li>
+</ul>
 <span id="second"></span><span id="Chapter"></span><h2 class="chapter">1 Chapter</h2>
 
 <p>Text of chapter

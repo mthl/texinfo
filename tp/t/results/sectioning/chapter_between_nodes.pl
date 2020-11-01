@@ -751,7 +751,7 @@ Next: <a href="#section-node" accesskey="n" rel="next">section</a> &nbsp; [<a hr
 <p>In chapter
 </p>
 <ul class="section-toc">
-<li><a href="#Chapter" accesskey="1">Chapter</a></li>
+<li><a href="#section-node" accesskey="1">section</a></li>
 </ul>
 <hr>
 <span id="section-node"></span><div class="header">

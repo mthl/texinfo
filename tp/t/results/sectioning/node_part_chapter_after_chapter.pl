@@ -1132,6 +1132,9 @@ Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up:
 <span id="part"></span><h1 class="part">part</h1>
 <hr>
 
+<ul class="section-toc">
+<li><a href="#part-chapter-node" accesskey="1">chapter with part node</a></li>
+</ul>
 <span id="chapter-with-part-node"></span><h2 class="chapter">2 chapter with part node</h2>
 
 <span id="SEC_Contents"></span>

@@ -272,6 +272,9 @@ ul.no-bullet {list-style: none}
 
 <span id="chap2"></span><h2 class="chapter">2 chap2</h2>
 
+<ul class="section-toc">
+<li><a href="#sec" accesskey="1">sec</a></li>
+</ul>
 <span id="sec"></span><h3 class="section">2.1 sec</h3>
 
 <span id="SEC_Overview"></span>

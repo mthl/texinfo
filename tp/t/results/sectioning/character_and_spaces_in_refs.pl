@@ -2017,9 +2017,6 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 
 
 <span id="Testing-distant-nodes"></span><h4 class="subheading">Testing distant nodes</h4>
-<ul class="section-toc">
-<li><a href="#other-nodes" accesskey="1">Chapter with nodes</a></li>
-</ul>
 
 <p><a class="texi-manual" href="manual.html#a-node">(manual)a  node</a>
 <a class="texi-manual" href="manual.html#g_t_003a">(manual):</a>
@@ -2028,9 +2025,6 @@ Next: <a href="#other-nodes" accesskey="n" rel="next">Chapter with nodes</a> &nb
 <a class="texi-manual" href="doc.html#node">(../manual/doc)node</a>
 </p>
 <span id="Testing-local-nodes"></span><h4 class="subheading">Testing local nodes</h4>
-<ul class="section-toc">
-<li><a href="#other-nodes" accesskey="1">Chapter with nodes</a></li>
-</ul>
 
 <p><a href="#g_t_0021_005f_0022_0023_0024_0025_0026_0027_0028_0029_002a_002b_002d_002e">!_&quot;#$%&amp;\'()*+-.</a>
 <a href="#g_t_002f_003b_003c_003d_003e_003f_005b_005c_005d_005e_005f_0060_007c_007e">/;&lt;=&gt;?[\\]^_`|~</a>

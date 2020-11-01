@@ -382,9 +382,6 @@ ul.no-bullet {list-style: none}
 </ul>
 </div>
 
-<ul class="section-toc">
-<li><a href="#dernier" accesskey="1">dernier</a></li>
-</ul>
 <hr>
 
 

@@ -468,6 +468,9 @@ ul.no-bullet {list-style: none}
 </div>
 <h1 class="top">top</h1>
 
+<ul class="section-toc">
+<li><a href="#chap" accesskey="1">chap</a></li>
+</ul>
 <hr>
 <span id="chap"></span><div class="header">
 <p>
@@ -475,6 +478,9 @@ ul.no-bullet {list-style: none}
 </div>
 <h2 class="chapter">1 chap</h2>
 
+<ul class="section-toc">
+<li><a href="#sec" accesskey="1">sec</a></li>
+</ul>
 <hr>
 <span id="sec"></span><div class="header">
 <p>

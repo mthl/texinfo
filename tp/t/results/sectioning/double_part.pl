@@ -917,6 +917,9 @@ Previous: <a href="#Top" accesskey="p" rel="prev">top</a>, Up: <a href="#Top" ac
 <hr>
 <p>Text part second.
 </p>
+<ul class="section-toc">
+<li><a href="#node-chapter" accesskey="1">chapter after 2 parts</a></li>
+</ul>
 <span id="node-chapter"></span><span id="chapter-after-2-parts"></span><h2 class="chapter">1 chapter after 2 parts</h2>
 
 <hr>

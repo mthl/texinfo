@@ -319,6 +319,9 @@ $result_converted{'html_text'}->{'contents_in_html_text'} = '<span id="top"></sp
 
 <span id="Chap1"></span><h2 class="chapter">1 Chap1</h2>
 
+<ul class="section-toc">
+<li><a href="#Sec-1" accesskey="1">Sec 1</a></li>
+</ul>
 <span id="Sec-1"></span><h3 class="section">1.1 Sec 1</h3>
 
 <span id="Chap2"></span><h2 class="chapter">2 Chap2</h2>

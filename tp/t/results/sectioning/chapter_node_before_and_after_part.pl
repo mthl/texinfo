@@ -680,6 +680,9 @@ Previous: <a href="#Top" accesskey="p" rel="prev">chapter</a>, Up: <a href="#Top
 <h1 class="part">part</h1>
 <hr>
 
+<ul class="section-toc">
+<li><a href="#after" accesskey="1">chapter 2</a></li>
+</ul>
 <span id="after"></span><span id="chapter-2"></span><h2 class="chapter">2 chapter 2</h2>
 
 <span id="SEC_Contents"></span>
