@@ -253,7 +253,7 @@ sub brace_no_arg_command($;$)
     $result = Texinfo::Convert::Unicode::unicode_for_brace_no_arg_command(
                        $command, $encoding);
   }
-  if (!defined($result and $options and $options->{'converter'})) {
+  if (!defined($result) and $options and $options->{'converter'}) {
     my $tree = Texinfo::Common::translated_command_tree(
                   $options->{'converter'}, $command);
     if ($tree) {
