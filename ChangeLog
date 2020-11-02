@@ -1,3 +1,24 @@
+2020-11-02  Patrice Dumas  <pertusus@free.fr>
+
+	Determine with USE_NODE_DIRECTIONS if section or nodes directions are
+	used in HTML
+
+	* tp/Texinfo/Convert/HTML.pm (_default_node_direction)
+	rename as _default_panel_button_dynamic_direction.
+	* tp/Texinfo/Convert/HTML.pm (_default_panel_button_dynamic_direction,
+	%defaults), tp/Texinfo/Common.pm (@variable_string_settables):
+	add USE_NODE_DIRECTIONS customization variable, and use it in
+	_default_panel_button_dynamic_direction, defaulting to USE_NODES
+	if USE_NODE_DIRECTIONS is undefined.
+	* doc/texinfo.texi (HTML Customization Variables): add 
+	USE_NODE_DIRECTIONS.
+	* doc/texinfo.texi (Three Arguments): document that 
+	xrefautomaticsectiontitle applies to node headers in HTML too.
+
+	* tp/Texinfo/Convert/HTML.pm (_default_navigation_header_panel,
+	_default_button_formatting): determine if a delimiter is needed
+	before a button from 'format_button' function reference return.
+
 2020-11-01  Patrice Dumas  <pertusus@free.fr>
 
 	Use the section itself for sectiontoc, not the previous node

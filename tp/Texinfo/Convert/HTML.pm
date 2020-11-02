@@ -53,7 +53,7 @@ use Texinfo::Convert::Text;
 use Texinfo::Convert::Unicode;
 use Texinfo::Convert::NodeNameNormalization;
 
-use Carp qw(cluck);
+use Carp qw(cluck confess);
 
 use File::Copy qw(copy);
 
@@ -971,6 +971,7 @@ my %defaults = (
   'OUTFILE'              => undef,
   'SUBDIR'               => undef,
   'USE_NODES'            => 1,
+  'USE_NODE_DIRECTIONS'  => undef,
   'INLINE_CONTENTS'      => 1,
   'SPLIT'                => 'node',
 # if set style is added in attribute.
@@ -1002,15 +1003,17 @@ my %defaults = (
   'OVERVIEW_LINK_TO_TOC' => 1,
   'COMPLEX_FORMAT_IN_TABLE' => 0,
   'WORDS_IN_PAGE'        => 300,
-  'SECTION_BUTTONS'      => [[ 'NodeNext', \&_default_node_direction ],
-                             [ 'NodePrev', \&_default_node_direction ],
-                             [ 'NodeUp', \&_default_node_direction ], ' ',
+  # _default_panel_button_dynamic_direction use nodes direction based on USE_NODE_DIRECTIONS
+  # or USE_NODES if USE_NODE_DIRECTIONS is undefined
+  'SECTION_BUTTONS'      => [[ 'Next', \&_default_panel_button_dynamic_direction ],
+                             [ 'Prev', \&_default_panel_button_dynamic_direction ],
+                             [ 'Up', \&_default_panel_button_dynamic_direction ], ' ',
                              'Contents', 'Index'],
   'LINKS_BUTTONS'        => ['Top', 'Index', 'Contents', 'About', 
                               'NodeUp', 'NodeNext', 'NodePrev'],
-  'NODE_FOOTER_BUTTONS'  => [[ 'NodeNext', \&_default_node_direction_footer ],
-                             [ 'NodePrev', \&_default_node_direction_footer ],
-                             [ 'NodeUp', \&_default_node_direction_footer ],
+  'NODE_FOOTER_BUTTONS'  => [[ 'Next', \&_default_panel_button_dynamic_direction_footer ],
+                             [ 'Prev', \&_default_panel_button_dynamic_direction_footer ],
+                             [ 'Up', \&_default_panel_button_dynamic_direction_footer ],
                              ' ', 'Contents', 'Index'],
   'misc_elements_targets'   => {
                              'Overview' => 'SEC_Overview',
@@ -1977,13 +1980,23 @@ sub _default_heading_text($$$$$)
 }
 
 # Associated to a button.  Return text to use for a link in button bar.
-sub _default_node_direction($$;$)
+# Depending on USE_NODE_DIRECTIONS and xrefautomaticsectiontitle
+# use section or node for link direction and string.
+sub _default_panel_button_dynamic_direction($$;$)
 {
   my $self = shift;
   my $direction = shift;
   my $omit_rel = shift;
   
   my $result = undef;
+
+  if ((defined($self->get_conf('USE_NODE_DIRECTIONS'))
+       and $self->get_conf('USE_NODE_DIRECTIONS'))
+      or (not defined($self->get_conf('USE_NODE_DIRECTIONS'))
+          and $self->get_conf('USE_NODES'))) {
+    $direction = 'Node'.$direction;
+  }
+
   my $href = $self->_element_direction($self->{'current_element'},
                                            $direction, 'href');
   my $node;
@@ -2009,17 +2022,18 @@ sub _default_node_direction($$;$)
     # i18n
     $result = $self->get_conf('BUTTONS_TEXT')->{$direction}.": $anchor";
   }
-  return $result;  
+  # 1 to communicate that a delimiter is needed for that button
+  return ($result, 1);
 }
 
 # Used for button bar at the foot of a node, with "rel" and "accesskey"
 # attributes omitted.
-sub _default_node_direction_footer($$)
+sub _default_panel_button_dynamic_direction_footer($$)
 {
   my $self = shift;
   my $direction = shift;
 
-  return _default_node_direction($self, $direction, 1);
+  return _default_panel_button_dynamic_direction($self, $direction, 1);
 }
 
 # how to create IMG tag
@@ -2069,20 +2083,26 @@ sub _direction_href_attributes($$)
   return $href_attributes;
 }
 
+my %html_default_node_directions;
+foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp') {
+  $html_default_node_directions{$node_directions} = 1;
+}
+
 sub _default_button_formatting($$)
 {
   my $self = shift;
   my $button = shift;
 
-  my ($active, $passive);
+  my ($active, $passive, $need_delimiter);
   if (ref($button) eq 'CODE') {
-    $active = &$button($self);
+    ($active, $need_delimiter) = &$button($self);
   } elsif (ref($button) eq 'SCALAR') {
     $active = "$$button" if defined($$button);
+    $need_delimiter = 1;
   } elsif (ref($button) eq 'ARRAY' and scalar(@$button == 2)) {
     my $text = $button->[1];
     my $button_href = $button->[0];
-    # verify that $button_href is simple text and text is a reference
+    # $button_href is simple text and $text is a reference
     if (defined($button_href) and !ref($button_href)
         and defined($text) and (ref($text) eq 'SCALAR') and defined($$text)) {
       # use given text
@@ -2094,11 +2114,12 @@ sub _default_button_formatting($$)
       } else {
         $passive = $$text;
       }
-    # button_href is simple text and text is a reference on code
+      $need_delimiter = 1;
+    # $button_href is simple text and $text is a reference on code
     } elsif (defined($button_href) and !ref($button_href)
              and defined($text) and (ref($text) eq 'CODE')) {
-      $active = &$text($self, $button_href);
-    # button_href is simple text and text is also a simple text
+      ($active, $need_delimiter) = &$text($self, $button_href);
+    # $button_href is simple text and $text is also a simple text
     } elsif (defined($button_href) and !ref($button_href)
              and defined($text) and !ref($text)) {
       if ($text =~ s/^->\s*//) {
@@ -2116,6 +2137,7 @@ sub _default_button_formatting($$)
           $passive = $text_formatted;
         }
       }
+      $need_delimiter = 1;
     }
   } elsif ($button eq ' ') {
     # handle space button
@@ -2128,6 +2150,7 @@ sub _default_button_formatting($$)
     } else {
       $active = $self->get_conf('BUTTONS_TEXT')->{$button};
     }
+    $need_delimiter = 0;
   } else {
     my $href = $self->_element_direction($self->{'current_element'}, 
                                          $button, 'href');
@@ -2189,13 +2212,23 @@ sub _default_button_formatting($$)
         $passive =  '[' . $self->get_conf('BUTTONS_TEXT')->{$button} . ']';
       }
     }
+    $need_delimiter = 0;
   }
-  return ($active, $passive);
-}
-
-my %html_default_node_directions;
-foreach my $node_directions ('NodeNext', 'NodePrev', 'NodeUp') {
-  $html_default_node_directions{$node_directions} = 1;
+  # FIXME chose another option among those proposed in comments below?
+  if (not defined($need_delimiter)) {
+    # option 1: be forgiving if $need_delimiter is not set
+    # if ($html_default_node_directions{$button}) {
+    #   $need_delimiter = 1;
+    # } else {
+    #   $need_delimiter = 0;
+    # }
+    # option 2: be somewhat forgiving but show a backtrace
+    #cluck ("need_delimiter not defined");
+    # $need_delimiter = 0;
+    # option3: no pity
+    confess ("need_delimiter not defined");
+  }
+  return ($active, $passive, $need_delimiter);
 }
 
 sub _default_navigation_header_panel($$$$;$)
@@ -2232,7 +2265,7 @@ sub _default_navigation_header_panel($$$$;$)
       $direction = $button;
     }
 
-    my ($active, $passive) = &{$self->{'format_button'}}($self, $button);
+    my ($active, $passive, $need_delimiter) = &{$self->{'format_button'}}($self, $button);
     if ($self->get_conf('HEADER_IN_TABLE')) {
       if (defined($active)) {
         $first_button = 0 if ($first_button);
@@ -2245,8 +2278,7 @@ sub _default_navigation_header_panel($$$$;$)
       $result .= "</tr>\n" if $vertical;
     } elsif (defined($active)) { 
       # only active buttons are print out when not in table
-      if (defined($direction) 
-          and $html_default_node_directions{$direction} and !$first_button) {
+      if ($need_delimiter and !$first_button) {
         $active = ', ' .$active;
       }
       $result .= $active;

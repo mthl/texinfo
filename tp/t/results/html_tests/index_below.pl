@@ -474,7 +474,7 @@ ul.no-bullet {list-style: none}
 <hr>
 <span id="chap"></span><div class="header">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+ Up : <a href="#top" accesskey="u" rel="up">top</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h2 class="chapter">1 chap</h2>
 
@@ -484,7 +484,7 @@ ul.no-bullet {list-style: none}
 <hr>
 <span id="sec"></span><div class="header">
 <p>
- &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
+ Up : <a href="#chap" accesskey="u" rel="up">chap</a> &nbsp; [<a href="#chap" title="Index" rel="index">Index</a>]</p>
 </div>
 <h3 class="section">1.1 sec</h3>
 

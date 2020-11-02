@@ -4437,7 +4437,9 @@ Typically this line would be given near the beginning of the document
 and used for the whole manual.  But you can turn it off if you want
 (@code{@@xrefautomaticsectiontitle off}), for example, if you're
 including some other sub-document that doesn't have suitable section
-names.
+names.  This setting also applies to node headers in HTML, if
+@code{@@xrefautomaticsectiontitle} is on, the sections names are used
+in node headers instead of the node names when possible.
 
 
 @node Four and Five Arguments
@@ -16366,6 +16368,15 @@ Use entities for doubled single-quote characters
 Generate @code{<link>} elements in the HTML @code{<head>}
 output; default true.
 
+@item USE_NODE_DIRECTIONS
+If true, use nodes to determine where next, up and prev
+link to in node headers.  If false, use sections.  If undefined, use
+@code{USE_NODES} value.  Default is undefined.  Note that this setting does not
+determine the link string only where the links points to, see @ref{Three
+Arguments, , xrefautomaticsectiontitle} for the link string customization.  If
+nodes and sections are systematically associated, this customization has no
+practical effect.
+
 @item USE_REL_REV
 Use @code{rel} in cross-references; default true.
 
@@ -20150,7 +20161,7 @@ mandatory.  @xref{@code{@@xref}}.
 
 @item @@xrefautomaticsectiontitle @var{on-off}
 By default, use the section title instead of the node name in cross
-references.  @xref{Three Arguments}.
+references, including in node headers in HTML.  @xref{Three Arguments}.
 
 @end table
 
