@@ -1759,25 +1759,17 @@ end example.
 </dl>
 
 <dl compact="compact">
-<dt><strong>item before ignored lines</strong>
-<span id="index-item-before-ignored-lines"></span>
-</dt>
+<dt id=\'index-item-before-ignored-lines\'><strong>item before ignored lines</strong><a href=\'#index-item-before-ignored-lines\' class=\'permalink\'>&para;</a></dt>
 <dd><span id="index-vindex"></span>
 </dd>
-<dt><strong>itemx now</strong>
-<span id="index-itemx-now"></span>
-</dt>
+<dt id=\'index-itemx-now\'><strong>itemx now</strong><a href=\'#index-itemx-now\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Description
 </p></dd>
 </dl>
 <dl compact="compact">
-<dt><span class="roman">item</span>
-<span id="index-item"></span>
-</dt>
-<dt><span class="roman">itemx after an empty line</span>
-<span id="index-itemx-after-an-empty-line"></span>
-</dt>
+<dt id=\'index-item\'><span class="roman">item</span><a href=\'#index-item\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-itemx-after-an-empty-line\'><span class="roman">itemx after an empty line</span><a href=\'#index-itemx-after-an-empty-line\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Description.
 </p>

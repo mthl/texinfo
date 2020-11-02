@@ -949,9 +949,7 @@ $result_converted{'html_text'}->{'empty_string_index_entry'} = '<span id="Top"><
 <span id="index-"></span>
 
 <dl compact="compact">
-<dt><code><!-- /@w --></code>
-<span id="index--1"></span>
-</dt>
+<dt id=\'index--1\'><code><!-- /@w --></code><a href=\'#index--1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <dl class="def">

@@ -1,3 +1,11 @@
+2020-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Anchor links on hover over @vtable or @ftable @item.
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_item_command) <table_term>:
+	Output id on containing <dt> rather than an empty <span>.  Call
+	_get_permalink.
+
 2020-11-02  Patrice Dumas  <pertusus@free.fr>
 
 	Determine with USE_NODE_DIRECTIONS if section or nodes directions are

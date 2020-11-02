@@ -1420,12 +1420,8 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 </p></dd></dl>
 
 <dl compact="compact">
-<dt>ftable item
-<span id="index-copying-ftable-item"></span>
-</dt>
-<dt>xftable xitem
-<span id="index-copying-xftable-xitem"></span>
-</dt>
+<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
@@ -1480,12 +1476,8 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 </p></dd></dl>
 
 <dl compact="compact">
-<dt>ftable item
-<span id="index-copying-ftable-item"></span>
-</dt>
-<dt>xftable xitem
-<span id="index-copying-xftable-xitem"></span>
-</dt>
+<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>

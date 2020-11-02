@@ -2657,26 +2657,18 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Quotation
 </p><blockquote>
 <dl compact="compact">
-<dt>first item
-<span id="index-first-item"></span>
-</dt>
-<dt>second itemx
-<span id="index-second-itemx"></span>
-</dt>
+<dt id=\'index-first-item\'>first item<a href=\'#index-first-item\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-second-itemx\'>second itemx<a href=\'#index-second-itemx\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt>second item
-<span id="index-second-item"></span>
-</dt>
+<dt id=\'index-second-item\'>second item<a href=\'#index-second-item\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt>last
-<span id="index-last"></span>
-</dt>
+<dt id=\'index-last\'>last<a href=\'#index-last\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <p>Something.
@@ -2694,28 +2686,20 @@ $result_converted{'html_text'}->{'table_nested'} = '
 <p>Example
 </p><div class="example">
 <dl compact="compact">
-<dt><tt>first item</tt>
-<span id="index-first-item-1"></span>
-</dt>
-<dt><tt>second itemx</tt>
-<span id="index-second-itemx-1"></span>
-</dt>
+<dt id=\'index-first-item-1\'><tt>first item</tt><a href=\'#index-first-item-1\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-second-itemx-1\'><tt>second itemx</tt><a href=\'#index-second-itemx-1\' class=\'permalink\'>&para;</a></dt>
 <dd><pre class="example">
 
 Text.
 
 </pre></dd>
-<dt><tt>second item</tt>
-<span id="index-second-item-1"></span>
-</dt>
+<dt id=\'index-second-item-1\'><tt>second item</tt><a href=\'#index-second-item-1\' class=\'permalink\'>&para;</a></dt>
 <dd><pre class="example">
 
 Text 2
 
 </pre></dd>
-<dt><tt>last</tt>
-<span id="index-last-1"></span>
-</dt>
+<dt id=\'index-last-1\'><tt>last</tt><a href=\'#index-last-1\' class=\'permalink\'>&para;</a></dt>
 </dl>
 <pre class="example">
 
@@ -2735,26 +2719,18 @@ Something.
 </p><blockquote>
 <blockquote>
 <dl compact="compact">
-<dt>first item
-<span id="index-first-item-2"></span>
-</dt>
-<dt>second itemx
-<span id="index-second-itemx-2"></span>
-</dt>
+<dt id=\'index-first-item-2\'>first item<a href=\'#index-first-item-2\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-second-itemx-2\'>second itemx<a href=\'#index-second-itemx-2\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Text.
 </p>
 </dd>
-<dt>second item
-<span id="index-second-item-2"></span>
-</dt>
+<dt id=\'index-second-item-2\'>second item<a href=\'#index-second-item-2\' class=\'permalink\'>&para;</a></dt>
 <dd>
 <p>Text 2
 </p>
 </dd>
-<dt>last
-<span id="index-last-2"></span>
-</dt>
+<dt id=\'index-last-2\'>last<a href=\'#index-last-2\' class=\'permalink\'>&para;</a></dt>
 </dl>
 
 <p>Something.

@@ -397,9 +397,7 @@ $result_converted{'html_text'}->{'preformatted'} = '
 
 <div class="format">
 <dl compact="compact">
-<dt><code>item in table in format</code>
-<span id="index-item-in-table-in-format"></span>
-</dt>
+<dt id=\'index-item-in-table-in-format\'><code>item in table in format</code><a href=\'#index-item-in-table-in-format\' class=\'permalink\'>&para;</a></dt>
 <dd><pre class="format">
 
 in table in format

@@ -3166,11 +3166,16 @@ sub _convert_item_command($$$$)
         }
       }
       my $index_id = $self->command_id ($command);
-      if (defined($index_id) and $index_id ne '') {
-        $result .= "\n<span id=\"$index_id\"></span>\n";
+      my $permalink;
+      if (defined($index_id)) {
+        $permalink = $self->_get_permalink($index_id);
+        $index_id = " id='$index_id'";
+      } else {
+        $permalink = '';
+        $index_id = '';
       }
     
-      return '<dt>' .$result. '</dt>' . "\n";
+      return "<dt${index_id}>$result$permalink</dt>\n";
     } else {
       return '';
     }
