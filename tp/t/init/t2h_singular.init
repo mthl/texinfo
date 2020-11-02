@@ -133,7 +133,7 @@ sub singular_banner
     src="${T2H_SING_base_images}singular-icon-transparent.png" width="50"
       border="0" alt="Top"></a>
 EOT
-  return $result;
+  return ($result, 0);
 }
 
 # always use bottom navigation
