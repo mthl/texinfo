@@ -320,6 +320,16 @@ $test_text.
 
 @contents
 '],
+# used as a possible comparison with the next two
+['sections_test',
+$test_text
+],
+['sections_test_no_use_nodes',
+$test_text
+,{},{'USE_NODES' => 0}],
+['sections_test_no_use_nodes_use_node_directions',
+$test_text
+,{},{'USE_NODES' => 0, 'USE_NODE_DIRECTIONS' => 1}],
 ['one_subsection',
 '@subsection The subsection
 '],
@@ -485,6 +495,15 @@ $section_in_unnumbered_text
 
 @contents
 '],
+# also used below to test splitting, here used for
+# comparison with next test
+['nodes_after_top_before_chapter_not_split',
+$nodes_after_top_before_chapter_text
+],
+['nodes_after_top_before_chapter_not_split_no_use_node_directions',
+$nodes_after_top_before_chapter_text
+,{}, {'USE_NODE_DIRECTIONS' => 0}
+]
 );
 
 my $character_and_spaces_in_refs_text = '@node Top
