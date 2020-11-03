@@ -237,7 +237,7 @@ sub in_align($)
 #
 # Returns a hash that may have these keys set:
 # 'target': A unique string representing the target.  Used as argument to 
-#           'name' attribute inside <a>.
+#           'id' attribute inside <a>.
 # 'node_filename', 'section_filename',
 # 'misc_filename', 'filename'.  Possibly others.
 #

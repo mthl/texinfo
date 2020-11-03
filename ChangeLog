@@ -1,5 +1,14 @@
 2020-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Anchor links on hover over regular @table items.
+	
+	* tp/Texinfo/Common.pm (relate_index_entries_to_table_entries_in_tree):
+	New function.
+	* tp/texi2any.pl: Call it as a tree transformation for HTML.
+	* tp/Texinfo/Convert/HTML.pm (command_id): Update a comment.
+
+2020-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Anchor links on hover over @vtable or @ftable @item.
 
 	* tp/Texinfo/Convert/HTML.pm (_convert_item_command) <table_term>:

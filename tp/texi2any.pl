@@ -488,6 +488,7 @@ my %formats_table = (
              'internal_links' => 1,
              'simple_menu' => 1,
              'move_index_entries_after_items' => 1,
+             'relate_index_entries_to_table_entries' => 1,
              'no_warn_non_empty_parts' => 1,
              'module' => 'Texinfo::Convert::HTML'
            },
@@ -1141,9 +1142,6 @@ while(@input_files) {
   my $parser = Texinfo::Parser::parser($parser_file_options);
   my $tree = $parser->parse_texi_file($input_file_name);
 
-  #my $global_commands = $parser->global_commands_information();
-  #print STDERR join('|', keys(%$global_commands))."\n";
-
   if (defined($tree)
       and (defined(get_conf('DUMP_TREE')) 
            or (get_conf('DEBUG') and get_conf('DEBUG') >= 10))) {
@@ -1210,6 +1208,11 @@ while(@input_files) {
   if ($formats_table{$format}->{'move_index_entries_after_items'}
       or $tree_transformations{'move_index_entries_after_items'}) {
     Texinfo::Common::move_index_entries_after_items_in_tree($tree);
+  }
+
+  if ($formats_table{$format}->{'relate_index_entries_to_table_entries'}
+      or $tree_transformations{'relate_index_entries_to_table_entries'}) {
+    Texinfo::Common::relate_index_entries_to_table_entries_in_tree($tree);
   }
 
   if ($tree_transformations{'insert_nodes_for_sectioning_commands'}) {

@@ -2456,6 +2456,63 @@ sub move_index_entries_after_items_in_tree($)
   return modify_tree(undef, $tree, \&_move_index_entries_after_items);
 }
 
+sub _relate_index_entry_to_table_entry($)
+{
+  my $current = shift; # table_entry
+
+  my ($table_term, $table_item, $item);
+
+  if ($current->{'contents'}
+        and $current->{'contents'}->[0]
+        and $current->{'contents'}->[0]->{'type'} eq 'table_term') {
+    $table_term = $current->{'contents'}->[0];
+  }
+
+  if ($current->{'contents'}
+        and $current->{'contents'}->[1]
+        and $current->{'contents'}->[1]->{'type'} eq 'table_item') {
+    $table_item = $current->{'contents'}->[1];
+  }
+
+  if ($table_term->{'contents'}
+    and $table_term->{'contents'}->[0]
+    and (!$table_term->{'contents'}->[0]->{'extra'}
+          or !$table_term->{'contents'}->[0]->{'extra'}->{'index_entry'})) {
+    $item = $table_term->{'contents'}->[0];
+  }
+
+  return if !$table_term or !$table_item or !$item;
+
+  if ($table_item->{'contents'}
+    and $table_item->{'contents'}->[0]
+    and $table_item->{'contents'}->[0]->{'type'}
+    and $table_item->{'contents'}->[0]->{'type'} eq 'index_entry_command') {
+      my $index_command = shift @{$table_item->{'contents'}};
+      delete $index_command->{'parent'};
+      $item->{'extra'}->{'index_entry'}
+        = $index_command->{'extra'}->{'index_entry'};
+      $item->{'extra'}->{'index_entry'}->{'command'} = $item;
+  }
+}
+
+sub _relate_index_entries_to_table_entries_in_tree($$$)
+{
+  my ($self, $type, $current) = @_;
+
+  if ($current->{'type'} and ($current->{'type'} eq 'table_entry')) {
+    _relate_index_entry_to_table_entry($current);
+  }
+  return ($current);
+}
+
+sub relate_index_entries_to_table_entries_in_tree($)
+{
+  my $tree = shift;  
+  return modify_tree(undef, $tree,
+                     \&_relate_index_entries_to_table_entries_in_tree);
+}
+
+
 sub debug_list
 {
   my ($label) = shift;
