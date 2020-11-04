@@ -458,7 +458,7 @@ $section_in_unnumbered_text
 
 @node chapter 2
 @chapter chapter c2
-', {'test_split' => 'section'}],
+', {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['two_nodes_at_the_end',
 '@node Top
 @top top
@@ -1050,7 +1050,7 @@ Top node
 * chapter node::
 @end menu
 
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['section_node_before_part',
 '
 @node Top
@@ -1080,7 +1080,7 @@ Top node
 @chapter chapter 2
 
 @contents
-',{'test_formats' => ['plaintext']}],
+', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
@@ -1153,7 +1153,7 @@ $unnumbered_top_without_node_text,
 
 @node subsection
 @subsection subsection
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['empty_top_node_up',
 '@node Top
 @top empty top node up
@@ -1406,7 +1406,7 @@ Dummy section with (manual)node node syntax.
 
 @anchor{(manual)anchor}.
 
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['node_nested_parentheses',
 '@node Top
 
@@ -1545,7 +1545,7 @@ in node following second
 
 @node Section non auto,, Chap1, Top
 @section Section
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['next_no_prev_to_node',
 '@node Top
 
@@ -1592,7 +1592,7 @@ in node following second
 @end menu
 
 @node node down
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['complex',
 $complex_case,
 {'test_split' => 'section'}
@@ -1635,7 +1635,7 @@ Second top.
 
 @node First
 @chapter chap
-', {'test_split' => 'section'}
+', {'test_split' => 'section', 'CHECK_NORMAL_MENU_STRUCTURE' => 1}
 ],
 ['lowered_subsubsection',
 '@node Top
@@ -1684,7 +1684,9 @@ Second top.
 
 @contents
 @bye
-'],
+', # use CHECK_NORMAL_MENU_STRUCTURE to check that lowering leads to
+   # inconsistent menu with sectioning
+{'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['loweredheading',
 '@lowersections
 @section Foo
@@ -1728,7 +1730,7 @@ Second top.
 
 @node sub3
 @section Sub3
-'],
+', {'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
 ['nodes_before_top',
 '@node first, Top, ,(dir)
 

@@ -4152,26 +4152,7 @@ $result_menus{'index_split_nodes'}{'menu_next'}{'menu_prev'} = $result_menus{'in
 $result_menus{'index_split_nodes'}{'menu_next'}{'menu_up'} = $result_menus{'index_split_nodes'};
 $result_menus{'index_split_nodes'}{'menu_up'} = $result_menus{'index_split_nodes'};
 
-$result_errors{'index_split_nodes'} = [
-  {
-    'error_line' => 'index_split.texi:23: warning: node `Top\' is prev for `first\' in menu but not in sectioning
-',
-    'file_name' => 'index_split.texi',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node `Top\' is prev for `first\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'index_split.texi:87: warning: node `node in section 3\' is next for `section 3\' in menu but not in sectioning
-',
-    'file_name' => 'index_split.texi',
-    'line_nr' => 87,
-    'macro' => '',
-    'text' => 'node `node in section 3\' is next for `section 3\' in menu but not in sectioning',
-    'type' => 'warning'
-  }
-];
+$result_errors{'index_split_nodes'} = [];
 
 
 $result_floats{'index_split_nodes'} = {};

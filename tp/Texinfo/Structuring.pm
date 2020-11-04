@@ -530,8 +530,7 @@ sub nodes_tree($)
             # If set, a direction was found using sections.  Check consistency
             # with menus.
             if ($node->{'node_'.$direction}) {
-              if ($self->get_conf('FORMAT_MENU') eq 'menu') {
-
+              if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')) {
                 if ($section->{'section_up'}{'extra'}
           and $section->{'section_up'}{'extra'}{'associated_node'}
           and $section->{'section_up'}{'extra'}{'associated_node'}{'menus'}
@@ -543,31 +542,20 @@ sub nodes_tree($)
                   node_extra_to_texi($node->{'extra'}),
                   node_extra_to_texi($node->{'node_'.$direction}->{'extra'})), 
                     $node->{'line_nr'});
-                } elsif ($node->{'menu_'.$direction}
-                         and $node->{'menu_'.$direction}
-                             ne $node->{'node_'.$direction}
-                         and not $node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
-                  $self->line_warn(sprintf(
-               __("node %s for `%s' is `%s' in sectioning but `%s' in menu"), 
-                  $direction,
-                  node_extra_to_texi($node->{'extra'}),
-                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'}),
-                  node_extra_to_texi($node->{'menu_'.$direction}->{'extra'})), 
-                    $node->{'line_nr'});
                 }
               }
-              next;
             }
           }
           # no direction was found using sections, use menus.  This allows
           # using only automatic direction for manuals without sectioning
           # commands.
-          if ($node->{'menu_'.$direction} 
+          if (!$node->{'node_'.$direction}
+              and $node->{'menu_'.$direction}
               and !$node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
-            if ($self->get_conf('FORMAT_MENU') eq 'menu'
+            if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
                   and $node->{'extra'}->{'associated_section'}) {
               $self->line_warn(sprintf(
-                  __("node `%s' is %s for `%s' in menu but not in sectioning"), 
+                  __("node `%s' is %s for `%s' in menu but not in sectioning"),
                 node_extra_to_texi($node->{'menu_'.$direction}->{'extra'}),
                                    $direction,
                 node_extra_to_texi($node->{'extra'}), 
@@ -626,8 +614,27 @@ sub nodes_tree($)
         }
       }
     }
+    if ($node->{'extra'}->{'normalized'} ne 'Top') {
+      foreach my $direction (@node_directions) {
+        if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
+            and $node->{'node_'.$direction}
+            and $node->{'menu_'.$direction}
+            and $node->{'menu_'.$direction}
+               ne $node->{'node_'.$direction}
+            and not $node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
+          $self->line_warn(sprintf(
+           __("node %s for `%s' is `%s' in sectioning but `%s' in menu"),
+                  $direction,
+                  node_extra_to_texi($node->{'extra'}),
+                  node_extra_to_texi($node->{'node_'.$direction}->{'extra'}),
+                  node_extra_to_texi($node->{'menu_'.$direction}->{'extra'})),
+                 $node->{'line_nr'});
+        }
+      }
+    }
     # check for node up / menu up mismatch
-    if ($self->get_conf('FORMAT_MENU') eq 'menu' and $node->{'node_up'}
+    if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
+        and $node->{'node_up'}
         # No check if node up is an external manual
         and (!$node->{'node_up'}->{'extra'}->{'manual_content'})
         and (!$node->{'menu_up_hash'}
@@ -639,15 +646,17 @@ sub nodes_tree($)
            node_extra_to_texi($node->{'node_up'}->{'extra'}), 
            node_extra_to_texi($node->{'extra'})),
            $node->{'node_up'}->{'line_nr'});
-      # check if node is listed in a different menu
-      } elsif ($node->{'menu_up'}) {
-        $self->line_warn(sprintf(
-           __("for `%s', up in menu `%s' and up `%s' don't match"), 
-          node_extra_to_texi($node->{'extra'}),
-          node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
-          node_extra_to_texi($node->{'node_up'}->{'extra'})),
-                        $node->{'line_nr'});
-      }
+      } #elsif ($node->{'menu_up'}) {
+        # check unneeded as mismatch between node and menu directions
+        # already done just above
+        ## check if node is listed in a different menu
+        #$self->line_warn(sprintf(
+        #   __("for `%s', up in menu `%s' and up `%s' don't match"), 
+        #  node_extra_to_texi($node->{'extra'}),
+        #  node_extra_to_texi($node->{'menu_up'}->{'extra'}), 
+        #  node_extra_to_texi($node->{'node_up'}->{'extra'})),
+        #                $node->{'line_nr'});
+      #}
       # FIXME check that the menu_up_hash is not empty (except for Top)?
       # FIXME check that node_up is not an external node (except for Top)?
     }

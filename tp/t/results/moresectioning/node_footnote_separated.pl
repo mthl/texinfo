@@ -1613,35 +1613,7 @@ $result_menus{'node_footnote_separated'}{'menu_child'}{'menu_next'}{'menu_prev'}
 $result_menus{'node_footnote_separated'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'node_footnote_separated'};
 $result_menus{'node_footnote_separated'}{'menu_child'}{'menu_up'} = $result_menus{'node_footnote_separated'};
 
-$result_errors{'node_footnote_separated'} = [
-  {
-    'error_line' => 'node_footnote.texi:24: warning: node `@`a\' is next for `chapter\' in menu but not in sectioning
-',
-    'file_name' => 'node_footnote.texi',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'node `@`a\' is next for `chapter\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'node_footnote.texi:24: warning: node `@^a\' is prev for `chapter\' in menu but not in sectioning
-',
-    'file_name' => 'node_footnote.texi',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'node `@^a\' is prev for `chapter\' in menu but not in sectioning',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => 'node_footnote.texi:24: warning: node `Top\' is up for `chapter\' in menu but not in sectioning
-',
-    'file_name' => 'node_footnote.texi',
-    'line_nr' => 24,
-    'macro' => '',
-    'text' => 'node `Top\' is up for `chapter\' in menu but not in sectioning',
-    'type' => 'warning'
-  }
-];
+$result_errors{'node_footnote_separated'} = [];
 
 
 $result_floats{'node_footnote_separated'} = {};

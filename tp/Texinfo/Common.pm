@@ -157,6 +157,10 @@ our %default_customization_values = (
   # following are used in Texinfo::Structuring
   'USE_UP_NODE_FOR_ELEMENT_UP' => 0, # Use node up for Up if there is no 
                                      # section up.
+  'CHECK_NORMAL_MENU_STRUCTURE' => 0, # output warnings when node with
+            # automatic direction does directions in menu are not consistent
+            # with sectionning, and when node directions are not consistent
+            # with menu directions
 );
 
 
@@ -233,6 +237,7 @@ my @variable_string_settables = (
 'BODYTEXT',
 'CHAPTER_HEADER_LEVEL',
 'CHECK_HTMLXREF',
+'CHECK_NORMAL_MENU_STRUCTURE',
 'CLOSE_QUOTE_SYMBOL',
 'COMPLEX_FORMAT_IN_TABLE',
 'CPP_LINE_DIRECTIVES',

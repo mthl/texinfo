@@ -16498,6 +16498,10 @@ multiple formats, or affect global behavior, or otherwise don't fit
 into the categories of the previous sections.
 
 @vtable @code
+@item CHECK_NORMAL_MENU_STRUCTURE
+Warn if the nodes pointers (either explicitly or automatically set)
+are not consistent with the order of node menu entries.
+
 @item CLOSE_QUOTE_SYMBOL
 When a closing quote is needed, use this character; default @code{&rsquo;}
 in HTML, @code{&#8217;} in DocBook.  The default for Info is the same
