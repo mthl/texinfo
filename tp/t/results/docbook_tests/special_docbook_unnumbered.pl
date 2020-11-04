@@ -232,7 +232,7 @@ $result_trees{'special_docbook_unnumbered'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'glossary'
+                      'text' => 'colophon'
                     }
                   ],
                   'parent' => {},
@@ -267,7 +267,7 @@ $result_trees{'special_docbook_unnumbered'} = {
                   'node_content' => [
                     {}
                   ],
-                  'normalized' => 'glossary'
+                  'normalized' => 'colophon'
                 }
               },
               'line_nr' => {
@@ -889,7 +889,7 @@ This is the top.
 @menu
 * Dedication::
 * preface::
-* glossary::
+* colophon::
 * acknowledgements::
 @end menu
 
@@ -922,7 +922,7 @@ This is the top.
 
 * Dedication::
 * preface::
-* glossary::
+* colophon::
 * acknowledgements::
 
 a dedication
@@ -1183,8 +1183,20 @@ $result_menus{'special_docbook_unnumbered'} = {
       'menu_next' => {
         'cmdname' => 'node',
         'extra' => {
-          'normalized' => 'acknowledgements',
+          'normalized' => 'colophon',
           'spaces_before_argument' => ' '
+        },
+        'menu_next' => {
+          'cmdname' => 'node',
+          'extra' => {
+            'normalized' => 'acknowledgements',
+            'spaces_before_argument' => ' '
+          },
+          'menu_prev' => {},
+          'menu_up' => {},
+          'menu_up_hash' => {
+            'Top' => 1
+          }
         },
         'menu_prev' => {},
         'menu_up' => {},
@@ -1204,77 +1216,15 @@ $result_menus{'special_docbook_unnumbered'} = {
     }
   }
 };
+$result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'};
+$result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_menus{'special_docbook_unnumbered'}{'menu_child'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 $result_menus{'special_docbook_unnumbered'}{'menu_child'}{'menu_up'} = $result_menus{'special_docbook_unnumbered'};
 
-$result_errors{'special_docbook_unnumbered'} = [
-  {
-    'error_line' => ':9: @menu reference to nonexistent node `glossary\'
-',
-    'file_name' => '',
-    'line_nr' => 9,
-    'macro' => '',
-    'text' => '@menu reference to nonexistent node `glossary\'',
-    'type' => 'error'
-  },
-  {
-    'error_line' => ':18: warning: node next for `preface\' is `colophon\' in sectioning but `acknowledgements\' in menu
-',
-    'file_name' => '',
-    'line_nr' => 18,
-    'macro' => '',
-    'text' => 'node next for `preface\' is `colophon\' in sectioning but `acknowledgements\' in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node next for `colophon\' is `acknowledgements\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node next for `colophon\' is `acknowledgements\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node prev for `colophon\' is `preface\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node prev for `colophon\' is `preface\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':23: warning: node up for `colophon\' is `Top\' in sectioning but not in menu
-',
-    'file_name' => '',
-    'line_nr' => 23,
-    'macro' => '',
-    'text' => 'node up for `colophon\' is `Top\' in sectioning but not in menu',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':1: warning: node `Top\' lacks menu item for `colophon\' despite being its Up target
-',
-    'file_name' => '',
-    'line_nr' => 1,
-    'macro' => '',
-    'text' => 'node `Top\' lacks menu item for `colophon\' despite being its Up target',
-    'type' => 'warning'
-  },
-  {
-    'error_line' => ':28: warning: node prev for `acknowledgements\' is `colophon\' in sectioning but `preface\' in menu
-',
-    'file_name' => '',
-    'line_nr' => 28,
-    'macro' => '',
-    'text' => 'node prev for `acknowledgements\' is `colophon\' in sectioning but `preface\' in menu',
-    'type' => 'warning'
-  }
-];
+$result_errors{'special_docbook_unnumbered'} = [];
 
 
 $result_floats{'special_docbook_unnumbered'} = {};
