@@ -1,3 +1,9 @@
+2020-11-04  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	* doc/texinfo.texi (Invoking texi2any) <--no-validate>: Reword
+	to say it is menu entries that are checked rather than menu
+	structure.  Comment out text that may be inaccurate.
+
 2020-11-02  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Anchor links on hover over regular @table items.
