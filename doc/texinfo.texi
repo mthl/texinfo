@@ -135,7 +135,6 @@ Appendices
 * Tips::                        Hints on how to write a Texinfo document.
 * Sample Texinfo Files::        Complete examples, including full texts.
 * Texinfo Mode::                Using the GNU Emacs Texinfo mode.
-* Catching Mistakes::           How to find mistakes in formatting.
 * Global Document Commands::    Affecting formatting throughout.
 * Info Format Specification::   Technical details of the Info file format.
 * GNU Free Documentation License:: Copying this manual.
@@ -20913,6 +20912,7 @@ commands and tools to help ease your work.
 * Info Formatting::             How to format for Info.
 * Printing::                    How to format and print part or all of a file.
 * Texinfo Mode Summary::        Summary of all the Texinfo mode commands.
+* Catching Mistakes::           How to find mistakes in formatting.
 @end menu
 
 @node Texinfo Mode Overview
@@ -21838,6 +21838,7 @@ M-x texinfo-sequential-node-update
 @end example
 
 
+@lowersections
 @node Catching Mistakes
 @appendix Catching Mistakes
 @cindex Structure, catching mistakes in
@@ -21891,7 +21892,7 @@ its Texinfo mode manifestations, @code{makeinfo-region} and
 @code{makeinfo-buffer}) to format your file and check for other
 errors.  This is the best way to work with Texinfo.  But if you
 cannot use @code{makeinfo}, or your problem is very puzzling, then you
-may want to use the tools described in this appendix.
+may want to use the tools described in this section.
 
 
 @node Debugging with Info
@@ -22446,6 +22447,8 @@ by appending @samp{-} and a number to the original file name.
 
 The primary file still functions as an Info file, but it contains just
 the tag table and a directory of subfiles.
+
+@raisesections
 
 
 @node Global Document Commands

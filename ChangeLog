@@ -1,5 +1,10 @@
 2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* doc/texinfo.texi (Catching Mistakes): Subordinate to
+	previous appendix.
+
+2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	JS_WEBLABELS=reference
 
 	* tp/Texinfo/Convert/HTML.pm (_default_end_file):
