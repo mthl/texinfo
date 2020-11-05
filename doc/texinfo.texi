@@ -635,7 +635,7 @@ Global Document Commands
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
 * @code{@@smallbook}::                  How to print small format books and manuals.
-* A4 Paper::                    How to print on A4 or A5 paper.
+* A4 Paper::                    How to print on A4, A5 or B6 paper.
 * @code{@@pagesizes}::                  How to print with customized page sizes.
 * Magnification::               How to print scaled up output.
 
@@ -19037,6 +19037,9 @@ Set @var{text} in a @b{bold} font.  No effect in Info.  @xref{Fonts}.
 Generate a large round dot, @bullet{} (@samp{*} in Info).  Often used
 with @code{@@table}.  @xref{@code{@@bullet}}.
 
+@item @@bsixpaper
+Change page dimensions for the B6 paper size.  @xref{A4 Paper}.
+
 @item @@bye
 Stop formatting a file.  The formatters do not see anything in the
 input file following @code{@@bye}.  @xref{Ending a File}.
@@ -22461,7 +22464,7 @@ they are given at all.
 * @code{@@firstparagraphindent}::       Suppressing first paragraph indentation.
 * @code{@@exampleindent}::              Specify environment indentation.
 * @code{@@smallbook}::                  How to print small format books and manuals.
-* A4 Paper::                    How to print on A4 or A5 paper.
+* A4 Paper::                    How to print on A4, A5 or B6 paper.
 * @code{@@pagesizes}::                  How to print with customized page sizes.
 * Magnification::               How to print scaled up output.
 @end menu
@@ -23066,37 +23069,27 @@ changing the source file.
 @node A4 Paper
 @section Printing on A4 Paper
 @cindex A4 paper, printing on
-@cindex A5 paper, printing on
 @cindex Paper size, A4
 @cindex European A4 paper
 @findex afourpaper
-@findex afivepaper
+You can tell @TeX{} to format a document for printing on ISO 216
+A4 paper size with the @code{@@afourpaper} command.  Write the command on
+a line by itself near the beginning of the Texinfo file, before the
+title page.
 
-You can tell @TeX{} to format a document for printing on European size
-A4 paper (or A5) with the @code{@@afourpaper} (or @code{@@afivepaper})
-command.  Write the command on a line by itself near the beginning of
-the Texinfo file, before the title page.  For example, this is how you
-would write the header for this manual:
-
-@example
-@group
-\input texinfo    @@c -*-texinfo-*-
-@@c %**start of header
-@@settitle Texinfo
-@@afourpaper
-@@c %**end of header
-@end group
-@end example
-
-@xref{Format with @command{texi2dvi}}, and @ref{Preparing for @TeX{}},
-for other ways to format for different paper sizes that do not require
-changing the source file.
-
+@cindex A5 paper, printing on
 @findex afourlatex
 @findex afourwide
+@findex afivepaper
+@findex bsixpaper
 You may or may not prefer the formatting that results from the command
 @code{@@afourlatex}.  There's also @code{@@afourwide} for A4 paper in
-wide format.
+wide format, @code{@@afivepaper} for A5 paper, and @code{@@bsixpaper} for
+B6 paper.
+
+@xref{Format with @command{texi2dvi}} and @ref{Preparing for @TeX{}},
+for other ways to format for different paper sizes that do not require
+changing the source file.
 
 
 @node @code{@@pagesizes}

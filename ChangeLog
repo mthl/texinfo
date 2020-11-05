@@ -1,3 +1,11 @@
+2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	@bsixpaper
+
+	* NEWS,
+	* doc/texinfo.texi (A4 Paper, Command List),
+	* doc/refcard/txirefcard.tex: Document @bsixpaper.
+
 2020-11-05  Patrice Dumas  <pertusus@free.fr>
 
 	Warn about nodes not references in pointers or in document node menu

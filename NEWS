@@ -9,6 +9,9 @@ See the manual for detailed information.
 
 ------------------------------------------------------------------------------
 
+* Language:
+  . new paper size @bsixpaper
+
 * texi2any
   . should be faster as Perl XS parser is enabled by default
   . remove 'SHOW_MENU' customization variable.  Add 'FORMAT_MENU'
