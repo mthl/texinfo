@@ -1,5 +1,13 @@
 2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	JS_WEBLABELS=reference
+
+	* tp/Texinfo/Convert/HTML.pm (_default_end_file):
+	For JS_WEBLABELS=reference only output the reference link
+	if JS is used in the page.
+
+2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	@bsixpaper
 
 	* NEWS,

@@ -6385,8 +6385,8 @@ sub _default_end_file($)
   my $setting = $self->get_conf('JS_WEBLABELS');
   my $path = $self->get_conf('JS_WEBLABELS_FILE');
   if ($setting and $path
-        and ($setting eq 'generate' and %{$self->{'jslicenses_element'}}
-              or $setting eq 'reference')) {
+        and ($setting eq 'generate' or $setting eq 'reference')
+             and %{$self->{'jslicenses_element'}}) {
     $pre_body_close .=
 "<a href='$path' rel='jslicense'><small>"
 .$self->convert_tree($self->gdt('JavaScript license information'))
