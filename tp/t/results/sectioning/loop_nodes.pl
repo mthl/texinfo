@@ -931,12 +931,12 @@ $result_menus{'loop_nodes'}{'menu_child'}{'menu_up'} = $result_menus{'loop_nodes
 
 $result_errors{'loop_nodes'} = [
   {
-    'error_line' => ':9: warning: node up for `node up\' is `node down\' in sectioning but `Top\' in menu
+    'error_line' => ':9: warning: node up pointer for `node up\' is `node down\' but up is `Top\' in menu
 ',
     'file_name' => '',
     'line_nr' => 9,
     'macro' => '',
-    'text' => 'node up for `node up\' is `node down\' in sectioning but `Top\' in menu',
+    'text' => 'node up pointer for `node up\' is `node down\' but up is `Top\' in menu',
     'type' => 'warning'
   }
 ];

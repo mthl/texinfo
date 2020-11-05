@@ -1678,12 +1678,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':29: warning: node next for `sub1\' is `sub2\' in sectioning but `sub3\' in menu
+    'error_line' => ':29: warning: node next pointer for `sub1\' is `sub2\' but next is `sub3\' in menu
 ',
     'file_name' => '',
     'line_nr' => 29,
     'macro' => '',
-    'text' => 'node next for `sub1\' is `sub2\' in sectioning but `sub3\' in menu',
+    'text' => 'node next pointer for `sub1\' is `sub2\' but next is `sub3\' in menu',
     'type' => 'warning'
   },
   {
@@ -1696,12 +1696,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':32: warning: node prev for `sub2\' is `sub1\' in sectioning but `sub3\' in menu
+    'error_line' => ':32: warning: node prev pointer for `sub2\' is `sub1\' but prev is `sub3\' in menu
 ',
     'file_name' => '',
     'line_nr' => 32,
     'macro' => '',
-    'text' => 'node prev for `sub2\' is `sub1\' in sectioning but `sub3\' in menu',
+    'text' => 'node prev pointer for `sub2\' is `sub1\' but prev is `sub3\' in menu',
     'type' => 'warning'
   },
   {
@@ -1714,12 +1714,12 @@ $result_errors{'menutextorder'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':35: warning: node prev for `sub3\' is `sub2\' in sectioning but `sub1\' in menu
+    'error_line' => ':35: warning: node prev pointer for `sub3\' is `sub2\' but prev is `sub1\' in menu
 ',
     'file_name' => '',
     'line_nr' => 35,
     'macro' => '',
-    'text' => 'node prev for `sub3\' is `sub2\' in sectioning but `sub1\' in menu',
+    'text' => 'node prev pointer for `sub3\' is `sub2\' but prev is `sub1\' in menu',
     'type' => 'warning'
   }
 ];

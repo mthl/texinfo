@@ -1,5 +1,11 @@
 2020-11-05  Patrice Dumas  <pertusus@free.fr>
 
+	* tp/Texinfo/Structuring.pm (nodes_tree): word node pointers and menu
+	order inconsistencies message without referring to section.
+
+
+2020-11-05  Patrice Dumas  <pertusus@free.fr>
+
 	Add CHECK_NORMAL_MENU_STRUCTURE customization variable
 
 	* tp/Texinfo/Common.pm (%default_customization_values, 

@@ -931,21 +931,21 @@ $result_menus{'two_nodes_between_chapters'}{'menu_child'}{'menu_up'} = $result_m
 
 $result_errors{'two_nodes_between_chapters'} = [
   {
-    'error_line' => ':10: warning: node next for `chapter 1\' is `Top\' in sectioning but `node between chapters\' in menu
+    'error_line' => ':10: warning: node next pointer for `chapter 1\' is `Top\' but next is `node between chapters\' in menu
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => 'node next for `chapter 1\' is `Top\' in sectioning but `node between chapters\' in menu',
+    'text' => 'node next pointer for `chapter 1\' is `Top\' but next is `node between chapters\' in menu',
     'type' => 'warning'
   },
   {
-    'error_line' => ':15: warning: node prev for `chapter 2\' is `chapter 1\' in sectioning but `node between chapters\' in menu
+    'error_line' => ':15: warning: node prev pointer for `chapter 2\' is `chapter 1\' but prev is `node between chapters\' in menu
 ',
     'file_name' => '',
     'line_nr' => 15,
     'macro' => '',
-    'text' => 'node prev for `chapter 2\' is `chapter 1\' in sectioning but `node between chapters\' in menu',
+    'text' => 'node prev pointer for `chapter 2\' is `chapter 1\' but prev is `node between chapters\' in menu',
     'type' => 'warning'
   }
 ];

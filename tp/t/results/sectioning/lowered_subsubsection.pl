@@ -1950,12 +1950,12 @@ $result_errors{'lowered_subsubsection'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':41: warning: node up for `Lowered subsubsection\' is `Subsection\' in sectioning but `Lowered subsec\' in menu
+    'error_line' => ':41: warning: node up pointer for `Lowered subsubsection\' is `Subsection\' but up is `Lowered subsec\' in menu
 ',
     'file_name' => '',
     'line_nr' => 41,
     'macro' => '',
-    'text' => 'node up for `Lowered subsubsection\' is `Subsection\' in sectioning but `Lowered subsec\' in menu',
+    'text' => 'node up pointer for `Lowered subsubsection\' is `Subsection\' but up is `Lowered subsec\' in menu',
     'type' => 'warning'
   },
   {

@@ -623,10 +623,11 @@ sub nodes_tree($)
                ne $node->{'node_'.$direction}
             and not $node->{'menu_'.$direction}->{'extra'}->{'manual_content'}) {
           $self->line_warn(sprintf(
-           __("node %s for `%s' is `%s' in sectioning but `%s' in menu"),
+           __("node %s pointer for `%s' is `%s' but %s is `%s' in menu"),
                   $direction,
                   node_extra_to_texi($node->{'extra'}),
                   node_extra_to_texi($node->{'node_'.$direction}->{'extra'}),
+                  $direction,
                   node_extra_to_texi($node->{'menu_'.$direction}->{'extra'})),
                  $node->{'line_nr'});
         }
