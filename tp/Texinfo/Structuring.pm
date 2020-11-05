@@ -491,6 +491,7 @@ sub nodes_tree($)
 
   # Go through all the nodes and set directions.
   $top_node = $self->{'nodes'}->[0] if (!$top_node);
+  my %referenced_nodes = ($top_node => 1);
   foreach my $node (@{$self->{'nodes'}}) {
     my $automatic_directions = 
       (scalar(@{$node->{'extra'}->{'nodes_manuals'}}) == 1);
@@ -614,6 +615,7 @@ sub nodes_tree($)
         }
       }
     }
+    # check consistency between node pointer and node entries menu order
     if ($node->{'extra'}->{'normalized'} ne 'Top') {
       foreach my $direction (@node_directions) {
         if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
@@ -633,6 +635,17 @@ sub nodes_tree($)
         }
       }
     }
+    # gather referenced nodes based on node pointers
+    foreach my $direction (@node_directions) {
+      if ($node->{'node_'.$direction}
+          and not $node->{'node_'.$direction}->{'extra'}->{'manual_content'}) {
+        $referenced_nodes{$node->{'node_'.$direction}} = 1;
+      }
+    }
+    if ($node->{'menu_up_hash'}) {
+      $referenced_nodes{$node} = 1;
+    }
+
     # check for node up / menu up mismatch
     if ($self->get_conf('CHECK_NORMAL_MENU_STRUCTURE')
         and $node->{'node_up'}
@@ -660,6 +673,13 @@ sub nodes_tree($)
       #}
       # FIXME check that the menu_up_hash is not empty (except for Top)?
       # FIXME check that node_up is not an external node (except for Top)?
+    }
+  }
+  foreach my $node (@{$self->{'nodes'}}) {
+    if (not exists($referenced_nodes{$node})){
+      $self->line_warn(sprintf(__("node `%s' unreferenced"),
+          node_extra_to_texi($node->{'extra'})),
+           $node->{'line_nr'});
     }
   }
   $self->{'structuring'}->{'top_node'} = $top_node;

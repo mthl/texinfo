@@ -856,6 +856,60 @@ $result_errors{'node'} = [
     'macro' => '',
     'text' => 'Prev reference to nonexistent `@strong{comma in strong,}\'',
     'type' => 'error'
+  },
+  {
+    'error_line' => ':3: warning: node `one arg2\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => 'node `one arg2\' unreferenced',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':4: warning: node `one arg3\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 4,
+    'macro' => '',
+    'text' => 'node `one arg3\' unreferenced',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':5: warning: node `one arg4\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'node `one arg4\' unreferenced',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':6: warning: node `one arg5\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 6,
+    'macro' => '',
+    'text' => 'node `one arg5\' unreferenced',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':8: warning: node `comment\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 8,
+    'macro' => '',
+    'text' => 'node `comment\' unreferenced',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':10: warning: node `arg1 @comma{} arg2\' unreferenced
+',
+    'file_name' => '',
+    'line_nr' => 10,
+    'macro' => '',
+    'text' => 'node `arg1 @comma{} arg2\' unreferenced',
+    'type' => 'warning'
   }
 ];
 

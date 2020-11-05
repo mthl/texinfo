@@ -1008,6 +1008,15 @@ $result_errors{'equivalent_nodes'} = [
     'macro' => '',
     'text' => 'Next pointer `@asis{node}\' (for node `before top\') different from node name `node\'',
     'type' => 'warning'
+  },
+  {
+    'error_line' => 'equivalent_nodes.texi:5: warning: node `before top\' unreferenced
+',
+    'file_name' => 'equivalent_nodes.texi',
+    'line_nr' => 5,
+    'macro' => '',
+    'text' => 'node `before top\' unreferenced',
+    'type' => 'warning'
   }
 ];
 
