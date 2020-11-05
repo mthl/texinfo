@@ -4,6 +4,7 @@
 
 	* tp/Texinfo/Common.pm (%default_customization_values, 
 	@variable_string_settables),
+	tp/Texinfo/Structuring.pm (nodes_tree),
 	doc/texinfo.texi (Other Customization Variables):
 	add CHECK_NORMAL_MENU_STRUCTURE which must be set in order to
 	get warnings about inconsistencies between node pointers
