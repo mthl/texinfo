@@ -1336,7 +1336,7 @@ my @test_cases = (
 ['node_too_much_args',
 '@node Top, , , , (dir)'
 ],
-[ 'node',
+[ 'node_line_arguments',
 '
 @node one arg1 
 @node one arg2, two arg
