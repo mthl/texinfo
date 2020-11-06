@@ -1,5 +1,14 @@
 2020-11-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	awk for texindex
+
+	* configure.ac: Call AC_CHECK_PROGS instead of AC_PROG_AWK and
+	set TI_AWK.
+	* texindex/texindex.in, texindex/Makefile.am:
+	Substitute TI_AWK instead of AWK.
+
+2020-11-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Allow dir.gz
 
 	* info/dir.c (build_dir_node): Call info_file_find_next_in_path

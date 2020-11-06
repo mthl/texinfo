@@ -41,7 +41,7 @@ EXTRA_DIST += $(noinst_SCRIPTS)
 # Unlike regular Automake, we have to allow for @@VERSION@@,
 # which jrweave generates in the code segment.
 do_subst = sed -e 's,[@]pkgdatadir[@],$(pkgdatadir),g' \
-               -e 's,[@]AWK[@],$(AWK),g' \
+               -e 's,[@]TI_AWK[@],$(TI_AWK),g' \
                -e 's,[@]PACKAGE[@],$(PACKAGE),g' \
                -e 's,[@][@]*VERSION[@][@]*,$(VERSION),g'
 
