@@ -4653,7 +4653,7 @@ This makes it useful as the last part of a sentence.
 
 @cindex Hurricanes
 @example
-For more information, @@ref@{This@}, and @@ref@{That@}.
+For more information, @@pxref@{This@}, and @@ref@{That@}.
 @end example
 
 @noindent
