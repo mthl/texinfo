@@ -676,6 +676,7 @@ Info Format Text Constructs
 @end detailmenu
 @end menu
 
+@ifinfo
 @c Reward readers for getting to the end of the menu :).
 @c Contributed by Arnold Robbins.
 @quotation
@@ -683,6 +684,7 @@ Documentation is like sex: when it is good, it is very, very good; and
 when it is bad, it is better than nothing.
 ---Dick Brandon
 @end quotation
+@end ifinfo
 
 
 @node Copying Conditions
