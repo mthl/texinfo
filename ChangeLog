@@ -1,3 +1,14 @@
+2020-11-06  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Allow dir.gz
+
+	* info/dir.c (build_dir_node): Call info_file_find_next_in_path
+	to get all the dir files.  This means that compressed dir
+	files can be found as dir.gz etc., which install-info already
+	supports.
+	(dir_entry_of_infodir): Only check for dir under the name of "dir",
+	not "localdir".
+
 2020-11-05  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	* doc/texinfo.texi (Catching Mistakes): Subordinate to
