@@ -1,5 +1,9 @@
 2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	* NEWS: Update.
+
+2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Do not use dir.info as dir file.
 	
 	* info/dir.c (dir_entry_of_infodir): Call info_check_compressed

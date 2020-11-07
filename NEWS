@@ -18,17 +18,26 @@ See the manual for detailed information.
     customization variable.  'FORMAT_MENU' set to 'menu' is the same
     as 'SHOW_MENU' set to 1 and 'FORMAT_MENU' set to 'nomenu' is the
     same as 'SHOW_MENU' set to 0.
+  . only check menu structure if CHECK_NORMAL_MENU_STRUCTURE variable is set
   . changes to HTML output
+    . MathJax support for display of math.  new variables HTML_MATH,
+      MATHJAX_SCRIPT and MATHJAX_SOURCE.
+    . new variables JS_WEBLABELS and JS_WEBLABELS_FILE to support
+      JavaScript License Web Labels
     . by default, use sectional tables of contents instead of menus
     . use section names in links by default (configure with
       xrefautomaticsectiontitle customization variable)
-    . MathJax support for display of math.  new variables HTML_MATH,
-      MATHJAX_SCRIPT and MATHJAX_SOURCE.
-    . new variables JS_WEBLABELS and JS_WEBLABELS_FILE
+    . new variable USE_NODE_DIRECTIONS to use node or section structure
+      for node directions
+    . copiable anchor links for definitions
     . Texinfo JS Interface (experimental)
+
+* info
+  . support compressed dir files
 
 * texinfo.tex
   . put logical page numbers into PDF's ('page labels')
+  . put chapter numbers in the PDF outline
   . new Finnish translation
 
 
