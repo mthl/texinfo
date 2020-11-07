@@ -51,6 +51,7 @@ static char *dir_contents;
 static NODE *
 build_dir_node (void)
 {
+  char *this_dir;
   int path_index = 0;
 
   NODE *node;
@@ -74,17 +75,29 @@ build_dir_node (void)
 
   node->nodelen = strlen (node->contents);
 
-  while (1)
-    {
-      char *fullpath;
-      size_t filesize;
-      struct stat finfo;
-      int compressed;
-      char *contents;
+ for (this_dir = infopath_first (&path_index); this_dir; 
+        this_dir = infopath_next (&path_index))
+   {
+     char *result;
+     char *fullpath;
+     int len;
+     size_t filesize;
+     struct stat finfo;
+     int compressed;
+     char *contents;
 
-      fullpath = info_file_find_next_in_path ("dir", &path_index, &finfo);
-      if (!fullpath)
-        break;
+/* Space for an appended compressed file extension, like ".gz". */
+#define PADDING "XXXXXXXXX"
+
+     len = asprintf (&fullpath, "%s/dir%s", this_dir, PADDING);
+     fullpath[len - strlen(PADDING)] = '\0';
+
+     result = info_check_compressed (fullpath, &finfo);
+     if (!result)
+       {
+         free (fullpath);
+         continue;
+       }
 
       contents = filesys_read_info_file (fullpath, &filesize,
                                          &finfo, &compressed);

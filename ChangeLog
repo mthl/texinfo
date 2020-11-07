@@ -1,3 +1,15 @@
+2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Do not use dir.info as dir file.
+	
+	* info/filesys.c (info_check_compressed): Split out new function.
+	Remove code which deals with a file being found which is a
+	directory.
+	(info_add_extension): Use info_check_compressed.
+	* info/dir.c (build_dir_node): Iterate over search
+	path with infopath_first and infopath_next and check for
+	dir file with info_check_compressed.
+
 2020-11-06  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	awk for texindex
