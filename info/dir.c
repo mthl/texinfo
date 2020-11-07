@@ -238,8 +238,9 @@ lookup_dir_entry (char *label, int sloppy)
 REFERENCE *
 dir_entry_of_infodir (char *label, char *searchdir)
 {
-  char *dir_filename = "dir";
   char *dir_fullpath;
+  int len;
+  char *result;
 
   struct stat dummy;
   char *entry_fullpath;
@@ -247,9 +248,8 @@ dir_entry_of_infodir (char *label, char *searchdir)
   NODE *dir_node;
   REFERENCE *entry;
 
-  dir_fullpath = info_add_extension (searchdir, dir_filename, &dummy);
-  if (!dir_fullpath)
-    return 0;
+  len = asprintf (&dir_fullpath, "%s/dir%s", searchdir, PADDING);
+  dir_fullpath[len - strlen(PADDING)] = '\0';
 
   if (!IS_ABSOLUTE(dir_fullpath))
     {
@@ -258,6 +258,13 @@ dir_entry_of_infodir (char *label, char *searchdir)
       free (dir_fullpath);
       dir_fullpath = tmp;
     }
+  result = info_check_compressed (dir_fullpath, NULL);
+  if (!result)
+    {
+      free (dir_fullpath);
+      return 0;
+    }
+
   dir_node = info_get_node (dir_fullpath, "Top");
   free (dir_fullpath);
   entry = info_get_menu_entry_by_label (dir_node, label, 1);
