@@ -1433,15 +1433,15 @@ $result_converted{'html_text'}->{'complex_nestings'} = '<span id="Top"></span><h
 <div class="example">
 <pre class="example">deffs
 </pre><dl class="def">
-<dt id="index-my-def"><span class="category">Function: </span><strong>my def</strong> <em>args <var>arg</var> &hellip;</em><a href=\'#index-my-def\' class=\'permalink\'>&para;</a></dt>
-<dt id="index-other-def"><span class="category">Function: </span><strong>other def</strong> <em>no args</em><a href=\'#index-other-def\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-my-def"><span class="category">Function: </span><strong>my def</strong> <em>args <var>arg</var> &hellip;</em><a href=\'#index-my-def\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id="index-other-def"><span class="category">Function: </span><strong>other def</strong> <em>no args</em><a href=\'#index-other-def\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><dl class="def">
-<dt id="index-name"><span class="category">type: </span><strong>name</strong> <em>and now the args</em><a href=\'#index-name\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-name"><span class="category">type: </span><strong>name</strong> <em>and now the args</em><a href=\'#index-name\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><dl class="def">
-<dt id="index-variables"><span class="category">Variable: </span><strong>variables</strong> <em>variable-name</em><a href=\'#index-variables\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-variables"><span class="category">Variable: </span><strong>variables</strong> <em>variable-name</em><a href=\'#index-variables\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><pre class="example">
 
-</pre></dd><dt id="index-variables-too"><span class="category">Variable: </span><strong>variables too</strong> <em>other-variable</em><a href=\'#index-variables-too\' class=\'permalink\'>&para;</a></dt>
+</pre></dd><dt id="index-variables-too"><span class="category">Variable: </span><strong>variables too</strong> <em>other-variable</em><a href=\'#index-variables-too\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><pre class="example">THis is the defvar
 
 A table within the def

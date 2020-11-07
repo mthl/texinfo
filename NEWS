@@ -29,7 +29,7 @@ See the manual for detailed information.
       xrefautomaticsectiontitle customization variable)
     . new variable USE_NODE_DIRECTIONS to use node or section structure
       for node directions
-    . copiable anchor links for definitions
+    . copiable anchor links for definitions with COPIABLE_ANCHORS variable
     . Texinfo JS Interface (experimental)
 
 * info

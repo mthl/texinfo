@@ -362,8 +362,8 @@ $result_converted{'html'}->{'ampchar'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTM
 <meta name="distribution" content="global">
 <style type="text/css">
 <!--
-*[id]:hover > a.permalink {visibility: visible}
-a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
+*[id]:hover > a.copiable-anchor {visibility: visible}
+a.copiable-anchor {padding-left: 0.5em; visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -386,7 +386,7 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <dl class="def">
-<dt id="index-b-on-a">Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em><a href=\'#index-b-on-a\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-b-on-a">Constructor on a: <strong>b</strong> <em>(<code>const std::vector&lt;int&gt;&amp;</code>)</em><a href=\'#index-b-on-a\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 <p>&amp; &amp; &amp; { } @
 </p>

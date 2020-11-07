@@ -949,8 +949,8 @@ $result_converted{'html'}->{'multiple'} = '<!DOCTYPE html PUBLIC "-//W3C//DTD HT
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
-*[id]:hover > a.permalink {visibility: visible}
-a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
+*[id]:hover > a.copiable-anchor {visibility: visible}
+a.copiable-anchor {padding-left: 0.5em; visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
@@ -977,20 +977,20 @@ ul.no-bullet {list-style: none}
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl class="def">
-<dt id="index-BBB-of-fr">Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em><a href=\'#index-BBB-of-fr\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-BBB-of-fr">Variable d\'instance de fr&nbsp;: <strong>BBB</strong> <em>CCC</em><a href=\'#index-BBB-of-fr\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-copying-a-of-copying">Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em><a href=\'#index-copying-a-of-copying\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-copying-a-of-copying">Variable d\'instance de copying&nbsp;: <strong>a</strong> <em>b</em><a href=\'#index-copying-a-of-copying\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 
 <dl class="def">
-<dt id="index-BBB-of-pt">Variável de instância da pt: <strong>BBB</strong> <em>CCC</em><a href=\'#index-BBB-of-pt\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-BBB-of-pt">Variável de instância da pt: <strong>BBB</strong> <em>CCC</em><a href=\'#index-BBB-of-pt\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index-copying-a-of-copying">Variável de instância da copying: <strong>a</strong> <em>b</em><a href=\'#index-copying-a-of-copying\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-copying-a-of-copying">Variável de instância da copying: <strong>a</strong> <em>b</em><a href=\'#index-copying-a-of-copying\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 <hr>
 

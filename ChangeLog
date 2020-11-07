@@ -1,5 +1,19 @@
 2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Rename PERMALINKS to COPIABLE_ANCHORS
+
+	* tp/Texinfo/Common.pm (@variable_string_settables),
+	* tp/Texinfo/Convert/HTML.pm (%defaults):
+	Rename PERMALINKS to COPIABLE_ANCHORS.
+	* tp/Texinfo/Convert/HTML.pm (_get_permalink, _get_copiable_anchor):
+	Rename.
+	(%css_map) <a.copiable-anchor>: Set line height to 0em to avoid
+	increasing spacing of line.
+	* doc/texinfo.texi (HTML Customization Variables):
+	Add COPIABLE_ANCHORS.  Update documentation of JS_WEBLABELS.
+
+2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* NEWS: Update.
 
 2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>

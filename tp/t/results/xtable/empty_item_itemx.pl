@@ -438,9 +438,9 @@ $result_converted{'html_text'}->{'empty_item_itemx'} = '<dl compact="compact">
 <p>VTable
 </p>
 </dd>
-<dt id=\'index-first-item\'>first item<a href=\'#index-first-item\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-after-an-empty-itemx_002c-before-an-empty-item\'>after an empty itemx, before an empty item<a href=\'#index-after-an-empty-itemx_002c-before-an-empty-item\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-in-item-before-end-table\'>in item before end table<a href=\'#index-in-item-before-end-table\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-first-item\'>first item<a href=\'#index-first-item\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-after-an-empty-itemx_002c-before-an-empty-item\'>after an empty itemx, before an empty item<a href=\'#index-after-an-empty-itemx_002c-before-an-empty-item\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-in-item-before-end-table\'>in item before end table<a href=\'#index-in-item-before-end-table\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 ';
 

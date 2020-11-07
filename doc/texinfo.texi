@@ -16182,6 +16182,13 @@ cross-references (@pxref{Four and Five Arguments}) are present in
 If set, use tables for indentation of complex formats; default
 false.
 
+@item COPIABLE_ANCHORS
+If set, output copiable anchors for the definition commands
+(@pxref{Definition Commands}) and table commands (@pxref{Two-column
+Tables}) where an index entry is defined.  An anchor appears as a `@U{00B6}'
+@c pilcrow sign
+sign that appears when you hover the mouse pointer over the heading text.
+
 @item CSS_LINES
 CSS output, automatically determined by default (@pxref{HTML CSS}).
 
@@ -16273,7 +16280,7 @@ Only do this if actually referencing JavaScript files (either with
 JS browsing interface when @code{INFO_JS_DIR} is set).  With this
 setting, @code{JS_WEBLABELS_FILE} must be a relative path.
 
-With the value @samp{reference}, unconditionally link to the labels
+With the value @samp{reference}, link to the labels
 file given by @code{JS_WEBLABELS_FILE} in the output, and do not
 generate a labels file.  This setting is useful if you separately
 maintain a single labels file for a larger website that includes

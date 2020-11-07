@@ -1072,7 +1072,7 @@ my %defaults = (
   'jslicenses_math' => {},    # MathJax scripts
   'jslicenses_infojs' => {},  # info.js scripts
   'element_math' => 0,        # whether math has been seen in current file
-  'PERMALINKS' => 1,
+  'COPIABLE_ANCHORS' => 1,
  
   'output_format'        => 'html',
 );
@@ -1109,9 +1109,9 @@ my %css_map = (
      'span.nolinebreak'   => 'white-space: nowrap',
      'kbd'                => 'font-style: oblique',
 
-     'a.permalink'
-         => 'padding-left: 0.5em; visibility: hidden; text-decoration: none',
-     '*[id]:hover > a.permalink'         => 'visibility: visible',
+     'a.copiable-anchor'
+=> 'padding-left: 0.5em; visibility: hidden; text-decoration: none; line-height: 0em',
+     '*[id]:hover > a.copiable-anchor'         => 'visibility: visible',
 );
 
 $css_map{'pre.format'} = $css_map{'pre.display'};
@@ -3166,16 +3166,16 @@ sub _convert_item_command($$$$)
         }
       }
       my $index_id = $self->command_id ($command);
-      my $permalink;
+      my $anchor;
       if (defined($index_id)) {
-        $permalink = $self->_get_permalink($index_id);
+        $anchor = $self->_get_copiable_anchor($index_id);
         $index_id = " id='$index_id'";
       } else {
-        $permalink = '';
+        $anchor = '';
         $index_id = '';
       }
     
-      return "<dt${index_id}>$result$permalink</dt>\n";
+      return "<dt${index_id}>$result$anchor</dt>\n";
     } else {
       return '';
     }
@@ -4347,10 +4347,10 @@ sub _convert_def_line_type($$$$)
       $category_result = $self->_attribute_class('span', 'category')
                             .">$category_result</span>";
     }
-    my $permalink = $self->_get_permalink($index_id);
+    my $anchor = $self->_get_copiable_anchor($index_id);
     return "<dt$index_label>"
              .$category_result.$self->convert_tree({'type' => '_code',
-                               'contents' => [$tree]}) . "$permalink</dt>\n";
+                               'contents' => [$tree]}) . "$anchor</dt>\n";
   } else {
     my $category_prepared = '';
     if ($command->{'extra'} and $command->{'extra'}->{'def_parsed_hash'}
@@ -4392,11 +4392,11 @@ sub _convert_def_line_type($$$$)
   }
 }
 
-sub _get_permalink {
+sub _get_copiable_anchor {
   my ($self, $id) = @_;
   my $result = '';
-  if ($id and $self->get_conf('PERMALINKS')) {
-    $result = "<a href='#$id' class='permalink'>&para;</a>";
+  if ($id and $self->get_conf('COPIABLE_ANCHORS')) {
+    $result = "<a href='#$id' class='copiable-anchor'>&para;</a>";
   }
   return $result;
 }

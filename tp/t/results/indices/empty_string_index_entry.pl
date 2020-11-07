@@ -949,12 +949,12 @@ $result_converted{'html_text'}->{'empty_string_index_entry'} = '<span id="Top"><
 <span id="index-"></span>
 
 <dl compact="compact">
-<dt id=\'index--1\'><code><!-- /@w --></code><a href=\'#index--1\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index--1\'><code><!-- /@w --></code><a href=\'#index--1\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <dl class="def">
-<dt id="index--2"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--2\' class=\'permalink\'>&para;</a></dt>
-<dt id="index--3"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--3\' class=\'permalink\'>&para;</a></dt>
+<dt id="index--2"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--2\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id="index--3"><span class="category">Function: </span><strong><!-- /@w --></strong> <em> </em><a href=\'#index--3\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <hr>

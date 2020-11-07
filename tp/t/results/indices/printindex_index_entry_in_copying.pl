@@ -1414,14 +1414,14 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 <span id="index-copying-Copying-this-document"></span>
 
 <dl class="def">
-<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em><a href=\'#index-copying-fun\' class=\'permalink\'>&para;</a></dt>
-<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em><a href=\'#index-copying-xf\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em><a href=\'#index-copying-fun\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em><a href=\'#index-copying-xf\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>Defun
 </p></dd></dl>
 
 <dl compact="compact">
-<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>
@@ -1470,14 +1470,14 @@ $result_converted{'html_text'}->{'printindex_index_entry_in_copying'} = '
 <span id="index-copying-Copying-this-document"></span>
 
 <dl class="def">
-<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em><a href=\'#index-copying-fun\' class=\'permalink\'>&para;</a></dt>
-<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em><a href=\'#index-copying-xf\' class=\'permalink\'>&para;</a></dt>
+<dt id="index-copying-fun"><span class="category">Function: </span><strong>fun</strong> <em>arg</em><a href=\'#index-copying-fun\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id="index-copying-xf"><span class="category">Function: </span><strong>xf</strong> <em>arg</em><a href=\'#index-copying-xf\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>Defun
 </p></dd></dl>
 
 <dl compact="compact">
-<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-copying-ftable-item\'>ftable item<a href=\'#index-copying-ftable-item\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-copying-xftable-xitem\'>xftable xitem<a href=\'#index-copying-xftable-xitem\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <table><tr><th valign="top">Jump to: &nbsp; </th><td><a class="summary-letter" href="#t_h_fn_letter-C"><b>C</b></a>

@@ -1514,27 +1514,27 @@ D
 
 
 $result_converted{'html_text'}->{'inter_item_commands_in_table'} = '<dl compact="compact">
-<dt id=\'index-a-1\'><code>a</code><a href=\'#index-a-1\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-a-1\'><code>a</code><a href=\'#index-a-1\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
 
 <dl compact="compact">
-<dt id=\'index-a-2\'>a<a href=\'#index-a-2\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-b-1\'>b<a href=\'#index-b-1\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-a-2\'>a<a href=\'#index-a-2\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-b-1\'>b<a href=\'#index-b-1\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>l&ndash;ine
 </p></dd>
 </dl>
 
 <dl compact="compact">
-<dt id=\'index-a\'><var>a</var><a href=\'#index-a\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-a\'><var>a</var><a href=\'#index-a\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><span id="index-index-entry-between-item-and-itemx"></span>
 </dd>
-<dt id=\'index-b\'><var>b</var><a href=\'#index-b\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-b\'><var>b</var><a href=\'#index-b\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>l&ndash;ine
 </p></dd>
-<dt id=\'index-c\'><var>c</var><a href=\'#index-c\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-d\'><var>d</var><a href=\'#index-d\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-c\'><var>c</var><a href=\'#index-c\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-d\'><var>d</var><a href=\'#index-d\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <dl compact="compact">

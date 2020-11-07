@@ -691,10 +691,10 @@ $result_converted{'html_text'}->{'table'} = '
 <dd><span id="index-index-entry"></span>
 
 </dd>
-<dt id=\'index-vtable-item\'>&lsquo;<samp>vtable item</samp>&rsquo;<a href=\'#index-vtable-item\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-vtable-item\'>&lsquo;<samp>vtable item</samp>&rsquo;<a href=\'#index-vtable-item\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><span id="index-key"></span>
 </dd>
-<dt id=\'index-itemx-vtable\'>&lsquo;<samp>itemx vtable</samp>&rsquo;<a href=\'#index-itemx-vtable\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-itemx-vtable\'>&lsquo;<samp>itemx vtable</samp>&rsquo;<a href=\'#index-itemx-vtable\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 ';
 

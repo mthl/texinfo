@@ -1759,17 +1759,17 @@ end example.
 </dl>
 
 <dl compact="compact">
-<dt id=\'index-item-before-ignored-lines\'><strong>item before ignored lines</strong><a href=\'#index-item-before-ignored-lines\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-item-before-ignored-lines\'><strong>item before ignored lines</strong><a href=\'#index-item-before-ignored-lines\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><span id="index-vindex"></span>
 </dd>
-<dt id=\'index-itemx-now\'><strong>itemx now</strong><a href=\'#index-itemx-now\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-itemx-now\'><strong>itemx now</strong><a href=\'#index-itemx-now\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd>
 <p>Description
 </p></dd>
 </dl>
 <dl compact="compact">
-<dt id=\'index-item\'><span class="roman">item</span><a href=\'#index-item\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-itemx-after-an-empty-line\'><span class="roman">itemx after an empty line</span><a href=\'#index-itemx-after-an-empty-line\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-item\'><span class="roman">item</span><a href=\'#index-item\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-itemx-after-an-empty-line\'><span class="roman">itemx after an empty line</span><a href=\'#index-itemx-after-an-empty-line\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd>
 <p>Description.
 </p>

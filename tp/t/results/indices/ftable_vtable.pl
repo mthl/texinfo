@@ -926,19 +926,19 @@ $result_converted{'html_text'}->{'ftable_vtable'} = '
 <span id="Top"></span><h1 class="node-heading">Top</h1>
 
 <dl compact="compact">
-<dt id=\'index-function1\'><em>function1</em><a href=\'#index-function1\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-function2x\'><em>function2x</em><a href=\'#index-function2x\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-function1\'><em>function1</em><a href=\'#index-function1\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-function2x\'><em>function2x</em><a href=\'#index-function2x\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>Text
 </p></dd>
-<dt id=\'index-fun3\'><em>fun3</em><a href=\'#index-fun3\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-fun3\'><em>fun3</em><a href=\'#index-fun3\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <dl compact="compact">
-<dt id=\'index-var1-error_002d_002d_003e\'><em>var1 error&rarr;</em><a href=\'#index-var1-error_002d_002d_003e\' class=\'permalink\'>&para;</a></dt>
-<dt id=\'index-varx2\'><em>varx2</em><a href=\'#index-varx2\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-var1-error_002d_002d_003e\'><em>var1 error&rarr;</em><a href=\'#index-var1-error_002d_002d_003e\' class=\'copiable-anchor\'>&para;</a></dt>
+<dt id=\'index-varx2\'><em>varx2</em><a href=\'#index-varx2\' class=\'copiable-anchor\'>&para;</a></dt>
 <dd><p>Text
 </p></dd>
-<dt id=\'index-var3\'><em>var3</em><a href=\'#index-var3\' class=\'permalink\'>&para;</a></dt>
+<dt id=\'index-var3\'><em>var3</em><a href=\'#index-var3\' class=\'copiable-anchor\'>&para;</a></dt>
 </dl>
 
 <span id="index-function1-1"></span>

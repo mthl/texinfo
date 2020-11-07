@@ -486,8 +486,8 @@ $result_converted{'html'}->{'example_in_menu_description'} = '<!DOCTYPE html PUB
 <link href="#Top" rel="start" title="Top">
 <style type="text/css">
 <!--
-*[id]:hover > a.permalink {visibility: visible}
-a.permalink {padding-left: 0.5em; visibility: hidden; text-decoration: none}
+*[id]:hover > a.copiable-anchor {visibility: visible}
+a.copiable-anchor {padding-left: 0.5em; visibility: hidden; text-decoration: none; line-height: 0em}
 a.summary-letter {text-decoration: none}
 blockquote.indentedblock {margin-right: 0em}
 div.display {margin-left: 3.2em}
