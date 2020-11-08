@@ -1330,9 +1330,24 @@ any number of hyphens in the source remain as they are in literal
 contexts, such as @code{@@code} and @code{@@example}.
 
 @item
+Do not use tab characters in a Texinfo file!
+(Except perhaps in verbatim modes.)  @TeX{} uses variable-width fonts,
+which means that it is impractical at best to define a tab to work in
+all circumstances.  Consequently, @TeX{} treats tabs like single
+spaces, and that is not what they look like in the source.
+Furthermore, @code{makeinfo} does nothing special with tabs, and thus
+a tab character in your input file will usually have a different
+appearance in the output.
+
+To avoid this problem, Texinfo mode in GNU Emacs inserts
+multiple spaces when you press the @key{TAB} key.  Also, you can run
+@code{untabify} in Emacs to convert tabs in a region to multiple
+spaces, or use the @code{unexpand} command from the shell.
+
+@item
 @cindex Form feed characters
 @cindex @kbd{CTRL-l}
-Form feed (@kbd{CTRL-l}) characters in the input are handled as
+Lastly, form feed (@kbd{CTRL-l}) characters in the input are handled as
 follows:
 
 @table @asis
@@ -1361,20 +1376,6 @@ Completely removed, as they are not allowed.
 As you can see, because of these differing requirements of the output
 formats, it's not possible to use form feeds completely portably.
 
-@item
-Last, do not use tab characters in a Texinfo file!
-(Except perhaps in verbatim modes.)  @TeX{} uses variable-width fonts,
-which means that it is impractical at best to define a tab to work in
-all circumstances.  Consequently, @TeX{} treats tabs like single
-spaces, and that is not what they look like in the source.
-Furthermore, @code{makeinfo} does nothing special with tabs, and thus
-a tab character in your input file will usually have a different
-appearance in the output.
-
-To avoid this problem, Texinfo mode in GNU Emacs inserts
-multiple spaces when you press the @key{TAB} key.  Also, you can run
-@code{untabify} in Emacs to convert tabs in a region to multiple
-spaces, or use the @code{unexpand} command from the shell.
 @end itemize
 
 
@@ -1469,16 +1470,11 @@ lines at the beginning and the one line at the end.
 @section Short Sample
 @cindex Sample Texinfo file, no comments
 
-Here is a complete, short sample Texinfo file, given without commentary.
-See later sections in this chapter for more documentation on the
-commands listed here.
-
-In a nutshell: The @command{makeinfo} program transforms a Texinfo
-source file such as this into an Info file or HTML; and @TeX{} typesets
-it for a printed manual.
+Here is a short sample Texinfo file.  The @command{makeinfo}
+program transforms a Texinfo source file such as this into an Info
+file or HTML, and @TeX{} typesets it for a printed manual.
 
 
-@sp 1
 @example
 \input texinfo
 @@settitle Sample Manual 1.0
@@ -1496,7 +1492,6 @@ Copyright @@copyright@{@} 2016 Free Software Foundation, Inc.
 @@insertcopying
 @@end titlepage
 
-@@c Output the table of the contents at the beginning.
 @@contents
 
 @@node Top
@@ -1512,11 +1507,11 @@ This manual is for GNU Sample
 @@end menu
 
 
+@group
 @@node First Chapter
 @@chapter First Chapter
 
 @@cindex chapter, first
-
 This is the first chapter.
 @@cindex index entry, another
 
@@ -1529,6 +1524,19 @@ This is the first item.
 @@item
 This is the second item.
 @@end enumerate
+
+
+@@node First Section
+@@section First Section
+
+First section of first chapter.
+
+
+@@node Second Section
+@@section Second Section
+
+Second section of first chapter.
+@end group
 
 
 @@node Index
@@ -2460,8 +2468,9 @@ Beginning a Texinfo File
 @cindex Frontmatter, text in
 The body segment contains all the text of the document.
 A manual is divided into one or more @dfn{nodes} (@pxref{Nodes}).  
-Straight text before the Top node outside of any node should be
-avoided.  This example illustrates a chapter containing an enumerated list.
+The example illustrates a chapter made of three nodes, one
+for introductory material in the chapter, and two sections.
+The introductory material contains an enumerated list.
 
 @example
 @group
@@ -2469,14 +2478,9 @@ avoided.  This example illustrates a chapter containing an enumerated list.
 @@chapter First Chapter
 
 @@cindex chapter, first
-@end group
-
-@group
 This is the first chapter.
 @@cindex index entry, another
-@end group
 
-@group
 Here is a numbered list.
 
 @@enumerate
@@ -2486,15 +2490,33 @@ This is the first item.
 @@item
 This is the second item.
 @@end enumerate
+
+
+@@node First Section
+@@section First Section
+
+First section of first chapter.
+
+
+@@node Second Section
+@@section Second Section
+
+Second section of first chapter.
 @end group
 @end example
 
+In the Info output, the @samp{First Chapter} node will contain a
+menu listing the two sections in the chapter.  Similarly, when this
+node is output in its own HTML file, it will contain a table of contents
+for the chapter.
 
-Here is what the contents of the first chapter of the sample look like:
+Here is what the contents of this chapter will look like:
 
 @sp 1
 @need 700
 @quotation
+@chapheading 1. First Chapter
+
 This is the first chapter.
 
 Here is a numbered list.
@@ -2506,7 +2528,18 @@ This is the first item.
 @item
 This is the second item.
 @end enumerate
+
+@heading 1.1 First Section
+
+First section of first chapter.
+
+@heading 1.2 Second Section
+
+Second section of first chapter.
 @end quotation
+
+@noindent (In the Info and HTML output, the chapter would also be split
+into nodes.)
 
 
 @node Ending a File
@@ -2850,9 +2883,11 @@ in this way.)
 @cindex First node
 
 The first node of a Texinfo file is the @dfn{Top} node, except in an
-included file (@pxref{Include Files}).  The Top node should contain a
-short summary, copying permissions, and a master menu.  @xref{The Top
-Node}, for more information on the Top node contents and examples.
+included file (@pxref{Include Files}).  The Top node should contain
+a short summary and a master menu.  @xref{The Top Node} for more
+information on the Top node contents and examples.  Straight text
+before the Top node outside of any node should be avoided.
+
 
 Here is a description of the node pointers to be used in the Top node:
 

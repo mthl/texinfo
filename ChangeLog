@@ -1,3 +1,15 @@
+2020-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Manual revisions.
+	
+	* doc/texinfo.tex (Conventions): Swap treatment of form feeds
+	and tabs.
+	(Short Sample, Body of the Document):
+	Include sections in the example chapter and headings in the
+	example output.
+	(First Node): Do not encourage putting copying permissions into
+	Top node.
+
 2020-11-07  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Rename PERMALINKS to COPIABLE_ANCHORS
