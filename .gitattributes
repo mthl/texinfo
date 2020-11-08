@@ -2,3 +2,8 @@
 **/index_nodes  diff
 **/one_node     diff
 ChangeLog       merge=merge-changelog
+
+**/*.texi  diff=texinfo
+# put the following in your .gitconfig
+# [diff "texinfo"]
+#        xfuncname = "^(@node .*)$"
