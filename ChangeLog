@@ -1,3 +1,8 @@
+2020-11-08  Per Bother  <per@bothner.com>
+
+	* js/info.js (config): Flatten structure so as to allow merging
+	of configs.
+
 2020-11-08  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Manual revisions.

@@ -32,16 +32,16 @@
     MAIN_ANCHORS: ["Top", "SEC_Contents"],
     WARNING_TIMEOUT: 3000,
     SCREEN_MIN_WIDTH: 700,
-    hooks: {
-      /** Define a function called after 'DOMContentLoaded' event in
-          the INDEX_NAME context.
-          @type {function (): void}*/
-      on_main_load: null,
-      /** Define a function called after 'DOMContentLoaded' event in
-          the iframe context.
-          @type {(function (): void)} */
-      on_iframe_load: null
-    }
+
+    // hooks:
+    /** Define a function called after 'DOMContentLoaded' event in
+        the INDEX_NAME context.
+        @type {function (): void}*/
+    on_main_load: null,
+    /** Define a function called after 'DOMContentLoaded' event in
+        the iframe context.
+        @type {(function (): void)} */
+    on_iframe_load: null
   };
 
   /*-------------------.
@@ -1055,8 +1055,8 @@
       });
 
       /* Call user hook.  */
-      if (config.hooks.on_main_load)
-        config.hooks.on_main_load ();
+      if (config.on_main_load)
+        config.on_main_load ();
     }
 
     /* Handle messages received via the Message API.
@@ -1328,8 +1328,8 @@
       add_icons ();
 
       /* Call user hook.  */
-      if (config.hooks.on_iframe_load)
-        config.hooks.on_iframe_load ();
+      if (config.on_iframe_load)
+        config.on_iframe_load ();
     }
 
     /* Handle messages received via the Message API.  */
