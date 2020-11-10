@@ -1133,6 +1133,7 @@ foreach my $indented_format ('example', 'display', 'lisp') {
 
   $css_map{"div.$indented_format"} = 'margin-left: 3.2em';
 }
+delete $css_map{"div.lisp"}; # output as div.example instead
 
 $css_map{"blockquote.indentedblock"} = 'margin-right: 0em';
 
@@ -2566,8 +2567,8 @@ sub _convert_preformatted_command($$$$)
       $extra_class =  $command->{'args'}->[0]->{'contents'}->[0]->{'text'};
     }
   } elsif ($cmdname eq 'lisp') {
-    # $cmdname = 'example';
-    # $extra_class = 'lisp';
+    $cmdname = 'example';
+    $extra_class = 'lisp';
   }
 
   if ($content ne '' and !$self->in_string()) {
