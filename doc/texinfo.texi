@@ -538,12 +538,12 @@ Format with @command{tex}/@command{texindex}
 
 Customization Variables
 
-* Commands: Customization Variables for @@-Commands.
-* Options:  Customization Variables and Options.
-* HTML:     HTML Customization Variables.
-* latex2html:  @command{latex2html} Customization Variables.
-* MathJax:  MathJax Customization Variables.
-* Other:    Other Customization Variables.
+* Customization Variables for @@-Commands::
+* Customization Variables and Options::
+* HTML Customization Variables::
+* @command{latex2html} Customization Variables::
+* MathJax Customization Variables::
+* Other Customization Variables::
 
 Creating and Installing Info Files
 
@@ -654,17 +654,17 @@ Finding Badly Referenced Nodes
 
 Info Format Specification
 
-* General: Info Format General Layout.
-* Text:    Info Format Text Constructs.
+* Info Format General Layout::
+* Info Format Text Constructs::
 
 Info Format General Layout
 
-* Whole:           Info Format Whole Manual. Split vs.@: nonsplit manuals.
-* Preamble:        Info Format Preamble.
-* Indirect:        Info Format Indirect Table.
-* Tag table:       Info Format Tag Table.
-* Local variables: Info Format Local Variables.
-* Regular nodes:   Info Format Regular Nodes.
+* Info Format Whole Manual::. Split vs.@: nonsplit manuals.
+* Info Format Preamble::
+* Info Format Indirect Table::
+* Info Format Tag Table::
+* Info Format Local Variables::
+* Info Format Regular Nodes::
 
 Info Format Text Constructs
 
@@ -16592,6 +16592,17 @@ Xref Configuration}.
 The extension added to the output file name.  The default is different
 for each output format.
 
+@item FORMAT_MENU
+@opindex --no-headers
+If set to @samp{menu}, output Texinfo menus.  This is the default for
+Info.  @samp{sectiontoc} is the default setting for HTML, where instead
+of the contents of @code{@@menu} blocks being output, a list of subordinate
+sections is output in each node.  If set to @samp{nomenu}, do not output
+menus.
+
+This variable is set to @samp{nomenu} when generating DocBook, or when
+@option{--no-headers} is specified.
+
 @item IGNORE_BEFORE_SETFILENAME
 If set, begin outputting at @code{@@setfilename}, if
 @code{@@setfilename} is present; default true.
@@ -16680,17 +16691,6 @@ as whether the output is split.  The default is unset.
 @item PROGRAM
 Name of the program used.  By default, it is set to the name of the
 program launched, with a trailing @samp{.pl} removed.
-
-@item FORMAT_MENU
-@opindex --no-headers
-If set to @samp{menu}, output Texinfo menus.  This is the default for
-Info.  @samp{sectiontoc} is the default setting for HTML, where instead
-of the contents of @code{@@menu} blocks being output, a list of subordinate
-sections is output in each node.  If set to @samp{nomenu} do not output
-menus.
-
-This variable is set to @samp{nomenu} generating DocBook, or when
-@option{--no-headers} is specified.
 
 @item SORT_ELEMENT_COUNT
 @pindex texi-elements-by-size
