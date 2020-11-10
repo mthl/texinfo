@@ -2553,9 +2553,21 @@ sub _convert_preformatted_command($$$$)
   my $cmdname = shift;
   my $command = shift;
   my $content = shift;
+  my $extra_class;
 
   if ($cmdname eq 'menu') {
     $html_menu_entry_index = 0;
+  } elsif ($cmdname eq 'example') {
+    if ($command->{'args'}
+          and $command->{'args'}->[0]
+          and $command->{'args'}->[0]->{'contents'}
+          and $command->{'args'}->[0]->{'contents'}->[0]
+          and $command->{'args'}->[0]->{'contents'}->[0]->{'text'}) {
+      $extra_class =  $command->{'args'}->[0]->{'contents'}->[0]->{'text'};
+    }
+  } elsif ($cmdname eq 'lisp') {
+    # $cmdname = 'example';
+    # $extra_class = 'lisp';
   }
 
   if ($content ne '' and !$self->in_string()) {
@@ -2566,7 +2578,7 @@ sub _convert_preformatted_command($$$$)
         return $content."\n";
       }
     } else {
-      return $self->_attribute_class('div', $cmdname).">\n".$content.'</div>'."\n";
+      return $self->_attribute_class('div', $cmdname, $extra_class).">\n".$content.'</div>'."\n";
     }
   } else {
     return $content;
@@ -7562,11 +7574,12 @@ sub _convert_contents($$$)
   return $content_formatted;
 }
 
-sub _attribute_class($$$)
+sub _attribute_class($$$;$)
 {
   my $self = shift;
   my $element = shift;
   my $class = shift;
+  my $extra_class = shift;
 
   if (!defined($class) or $class eq '' or $self->get_conf('NO_CSS')) {
     if ($element eq 'span') {
@@ -7582,7 +7595,9 @@ sub _attribute_class($$$)
       and defined($self->{'css_map'}->{"$element.$class"})) {
     $style = ' style="'.$self->{'css_map'}->{"$element.$class"}.'"';
   }
-  return "<$element class=\"$class\"$style";
+  $extra_class = $extra_class ?
+                   ' '.$self->protect_text($extra_class) : '';
+  return "<$element class=\"$class$extra_class\"$style";
 }
 
 sub _protect_space($$)

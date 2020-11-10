@@ -434,7 +434,7 @@ $result_converted{'plaintext'}->{'text_on_command_line'} = '
 
 
 $result_converted{'html_text'}->{'text_on_command_line'} = '
-<div class="example">
+<div class="example text on line followed by text">
 <pre class="example">normal text
 </pre></div>
 

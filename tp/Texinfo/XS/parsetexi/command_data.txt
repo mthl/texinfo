@@ -414,7 +414,7 @@ copying                 block,global_unique             BLOCK_region
 documentdescription     block,global_unique             BLOCK_region
 
 # preformatted commands
-example                 block,preformatted,preformatted_code
+example                 block,preformatted,preformatted_code    1
 smallexample            block,preformatted,preformatted_code
 lisp                    block,preformatted,preformatted_code
 smalllisp               block,preformatted,preformatted_code

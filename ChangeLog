@@ -1,5 +1,21 @@
 2020-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Optional parameter to @example
+	
+	* tp/Texinfo/Common.pm (%block_commands),
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Specify @example to
+	take 1 argument.
+	* tp/Texinfo/Convert/HTML.pm (_convert_preformatted_command):
+	If 'example' takes an argument, pass it as an extra argument
+	to _attribute_class.
+	(_attribute_class): Take an extra argument for extra classes
+	to be added to the element.
+
+	This could be used as e.g. "@example cplusplus" to allow
+	post-processing the HTML output to syntax-highlight C++ code.
+
+2020-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	* doc/texinfo.texi (Other Customization Variables): Alphabetize.
 	(Top): Remove bespoke menu entry names for master menu as these
 	are not useful.

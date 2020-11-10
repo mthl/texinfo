@@ -887,10 +887,10 @@ $block_commands{'ifcommandnotdefined'} = 'conditional';
 
 # 'macro' ?
 foreach my $block_command_one_arg('table', 'ftable', 'vtable',
-  'itemize', 'enumerate', 'quotation', 'smallquotation') {
+  'itemize', 'enumerate', 'quotation', 'smallquotation', 'example') {
   $block_commands{$block_command_one_arg} = 1;
   $block_item_commands{$block_command_one_arg} = 1 
-    unless ($block_command_one_arg =~ /quotation/);
+    unless ($block_command_one_arg =~ /quotation|example/);
 }
 
 $block_commands{'float'} = 2;
