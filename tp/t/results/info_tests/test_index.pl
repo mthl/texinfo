@@ -4566,7 +4566,17 @@ $result_menus{'test_index'}{'menu_child'}{'menu_next'}{'menu_prev'} = $result_me
 $result_menus{'test_index'}{'menu_child'}{'menu_next'}{'menu_up'} = $result_menus{'test_index'};
 $result_menus{'test_index'}{'menu_child'}{'menu_up'} = $result_menus{'test_index'};
 
-$result_errors{'test_index'} = [];
+$result_errors{'test_index'} = [
+  {
+    'error_line' => ':227: warning: @centerchap is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 227,
+    'macro' => '',
+    'text' => '@centerchap is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'test_index'} = {};

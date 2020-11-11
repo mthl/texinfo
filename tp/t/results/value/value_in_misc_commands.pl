@@ -3382,12 +3382,39 @@ $result_errors{'value_in_misc_commands'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':34: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 34,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':34: warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 34,
     'macro' => '',
     'text' => '@definfoenclose should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':40: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 40,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':49: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 49,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
     'type' => 'warning'
   },
   {

@@ -175,7 +175,17 @@ $result_menus{'inforef_too_much_args'} = {
   }
 };
 
-$result_errors{'inforef_too_much_args'} = [];
+$result_errors{'inforef_too_much_args'} = [
+  {
+    'error_line' => ':3: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'inforef_too_much_args'} = {};

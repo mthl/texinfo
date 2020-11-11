@@ -936,6 +936,10 @@ N__('move your @contents command if you want the contents after the title page')
   'setshortcontentsaftertitlepage' =>
 N__('move your @shortcontents and @contents commands if you want the contents after the title page'),
 
+  'definfoenclose' => '',
+  'refill' => '',
+  'inforef' => '',
+  'centerchap' => '',
 );
 
 my %unformatted_block_commands;

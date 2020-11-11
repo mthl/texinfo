@@ -57,7 +57,7 @@ unmacro                 line                            LINE_special
 c                       line                            LINE_lineraw
 comment                 line                            LINE_lineraw
 # special
-definfoenclose          line                            3
+definfoenclose          line,deprecated                 3
 alias                   line                            2
 # number of arguments is not known in advance.
 columnfractions         line                            1
@@ -171,7 +171,7 @@ thisfile                other,in_heading                OTHER_noarg
 thispage                other,in_heading                OTHER_noarg
 thistitle               other,in_heading                OTHER_noarg
 # obsolete @-commands.
-refill                  other                           OTHER_noarg
+refill                  other,deprecated                OTHER_noarg
 
 
 
@@ -335,7 +335,7 @@ email                   brace                           2
 
 uref                    brace                           3
 url                     brace                           3
-inforef                 brace,ref                       3
+inforef                 brace,ref,deprecated            3
 
 xref                    brace,ref                       5
 ref                     brace,ref                       5
@@ -489,5 +489,5 @@ appendixsubsubsec       root,line,sectioning            LINE_line
 part                    root,line,sectioning,global     LINE_line
 appendixsection         root,line,sectioning            LINE_line
 majorheading            line,sectioning                 LINE_line
-centerchap              root,line,sectioning            LINE_line
+centerchap              root,line,sectioning,deprecated LINE_line
 

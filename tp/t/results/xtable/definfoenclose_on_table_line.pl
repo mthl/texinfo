@@ -253,6 +253,15 @@ table content.
 
 $result_errors{'definfoenclose_on_table_line'} = [
   {
+    'error_line' => ':1: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 1,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':3: warning: @phi should not appear in @table
 ',
     'file_name' => '',

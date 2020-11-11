@@ -388,7 +388,17 @@ m1 email.
 
 ';
 
-$result_errors{'paragraph_command'} = [];
+$result_errors{'paragraph_command'} = [
+  {
+    'error_line' => ':11: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 11,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'paragraph_command'} = {};

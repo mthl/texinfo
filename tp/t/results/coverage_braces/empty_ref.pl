@@ -198,12 +198,30 @@ $result_errors{'empty_ref'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':2: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 2,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':2: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 2,
     'macro' => '',
     'text' => 'command @inforef missing a node or external manual argument',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':3: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 3,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
     'type' => 'warning'
   },
   {

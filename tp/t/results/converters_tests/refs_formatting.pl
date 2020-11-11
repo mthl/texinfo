@@ -4376,7 +4376,44 @@ $result_menus{'refs_formatting'} = {
   }
 };
 
-$result_errors{'refs_formatting'} = [];
+$result_errors{'refs_formatting'} = [
+  {
+    'error_line' => ':34: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 34,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':35: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':36: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 36,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':37: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 37,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'refs_formatting'} = {};

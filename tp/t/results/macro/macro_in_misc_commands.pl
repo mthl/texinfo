@@ -4392,12 +4392,39 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'error'
   },
   {
+    'error_line' => ':58: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 58,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':58: warning: @definfoenclose should only appear at the beginning of a line
 ',
     'file_name' => '',
     'line_nr' => 58,
     'macro' => '',
     'text' => '@definfoenclose should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':65: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 65,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':78: warning: @definfoenclose is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 78,
+    'macro' => '',
+    'text' => '@definfoenclose is obsolete.',
     'type' => 'warning'
   },
   {
@@ -4419,12 +4446,30 @@ $result_errors{'macro_in_misc_commands'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':163: warning: @refill is obsolete. (possibly involving @refillmacro)
+',
+    'file_name' => '',
+    'line_nr' => 163,
+    'macro' => 'refillmacro',
+    'text' => '@refill is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':173: warning: @page should only appear at the beginning of a line (possibly involving @pagemacro)
 ',
     'file_name' => '',
     'line_nr' => 173,
     'macro' => 'pagemacro',
     'text' => '@page should only appear at the beginning of a line',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':174: warning: @refill is obsolete. (possibly involving @refillmacro)
+',
+    'file_name' => '',
+    'line_nr' => 174,
+    'macro' => 'refillmacro',
+    'text' => '@refill is obsolete.',
     'type' => 'warning'
   }
 ];

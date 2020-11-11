@@ -4669,6 +4669,15 @@ $result_errors{'formatting_fr'} = [
     'macro' => '',
     'text' => '@menu in invalid context',
     'type' => 'warning'
+  },
+  {
+    'error_line' => 'formatting.texi:130: warning: @centerchap is obsolete.
+',
+    'file_name' => 'formatting.texi',
+    'line_nr' => 130,
+    'macro' => '',
+    'text' => '@centerchap is obsolete.',
+    'type' => 'warning'
   }
 ];
 

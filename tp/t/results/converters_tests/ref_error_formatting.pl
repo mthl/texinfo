@@ -4288,6 +4288,15 @@ $result_errors{'ref_error_formatting'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':33: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 33,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':33: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
@@ -4297,12 +4306,75 @@ $result_errors{'ref_error_formatting'} = [
     'type' => 'warning'
   },
   {
+    'error_line' => ':34: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 34,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':35: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':36: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 36,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':36: warning: command @inforef missing a node or external manual argument
 ',
     'file_name' => '',
     'line_nr' => 36,
     'macro' => '',
     'text' => 'command @inforef missing a node or external manual argument',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':38: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 38,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':39: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 39,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':40: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 40,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':41: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 41,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
     'type' => 'warning'
   },
   {

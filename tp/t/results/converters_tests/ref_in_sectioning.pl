@@ -2453,6 +2453,15 @@ $result_menus{'ref_in_sectioning'}{'menu_child'}{'menu_up'} = $result_menus{'ref
 
 $result_errors{'ref_in_sectioning'} = [
   {
+    'error_line' => ':31: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 31,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
     'error_line' => ':19: warning: @ref to `@code{node}\', different from node name `node\'
 ',
     'file_name' => '',

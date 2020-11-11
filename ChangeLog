@@ -1,3 +1,12 @@
+2020-11-11  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Mark some commands as deprecated.
+	
+	* tp/Texinfo/Common.pm (%deprecated_commands),
+	* tp/Texinfo/XS/parsetexi/command_data.txt:
+	Mark definfoenclose, refill, inforef, centerchap as deprecated.
+	* NEWS: Update.
+
 2020-11-10  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Output @lisp with 'example' class.

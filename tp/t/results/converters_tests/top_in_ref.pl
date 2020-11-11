@@ -4310,7 +4310,44 @@ $result_menus{'top_in_ref'} = {
   }
 };
 
-$result_errors{'top_in_ref'} = [];
+$result_errors{'top_in_ref'} = [
+  {
+    'error_line' => ':33: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 33,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':34: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 34,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':35: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 35,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  },
+  {
+    'error_line' => ':36: warning: @inforef is obsolete.
+',
+    'file_name' => '',
+    'line_nr' => 36,
+    'macro' => '',
+    'text' => '@inforef is obsolete.',
+    'type' => 'warning'
+  }
+];
 
 
 $result_floats{'top_in_ref'} = {};
