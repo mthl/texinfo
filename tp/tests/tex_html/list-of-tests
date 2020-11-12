@@ -14,6 +14,8 @@ tex_gdef_l2h tex_gdef.texi -c 'L2H 1' --iftex
 #tex_l2h_mediawiki tex.texi --html -c 'L2H 1' --iftex --init mediawiki.pm
 tex_complex_httex tex_complex.texi --init tex4ht.pm --iftex
 tex_complex_l2h tex_complex.texi -c 'L2H 1' --iftex
+tex_eqalign_httex tex_eqalign.texi --init tex4ht.pm --iftex
+tex_eqalign_l2h tex_eqalign.texi -c 'L2H 1' --iftex
 math_not_closed math_not_closed.texi -c 'L2H 1' --iftex
 tex_not_closed tex_not_closed.texi -c 'L2H 1' --iftex
 tex_in_copying tex_in_copying.texi -c 'L2H 1' --iftex
