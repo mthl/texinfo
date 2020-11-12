@@ -6,6 +6,8 @@ tex_notex tex.texi
 tex_httex tex.texi --init tex4ht.pm --iftex
 tex_accents_httex tex_accents.texi --init tex4ht.pm --iftex
 tex_accents_l2h tex_accents.texi -c 'L2H 1' --iftex
+tex_gdef_httex tex_gdef.texi --init tex4ht.pm --iftex
+tex_gdef_l2h tex_gdef.texi -c 'L2H 1' --iftex
 # No mediawki tests for now
 #tex_mediawiki tex.texi --init mediawiki.pm --iftex
 #tex_httex_mediawiki tex.texi --html --init tex4ht.pm --init mediawiki.pm --iftex

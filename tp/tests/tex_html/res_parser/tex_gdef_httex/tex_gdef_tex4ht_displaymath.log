@@ -1,0 +1,202 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=etex 2020.10.24)  12 NOV 2020 13:00
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**\def\Link#1.a.b.c.{\expandafter\def\csname tex4ht\endcsname{\expandafter\def\
+csname tex4ht\endcsname{#1,html}\input tex4ht.sty }}\def\HCode{\futurelet\HCode
+\HChar}\def\HChar{\ifx"\HCode\def\HCode"##1"{\Link##1}\expandafter\HCode\else\e
+xpandafter\Link\fi}\HCode .a.b.c.\input  tex_gdef_tex4ht_displaymath.tex
+(./tex_gdef_tex4ht_displaymath.tex
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2020-07-28-14:30
+\tmp:toks=\toks13
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.4ht
+version 2020-03-12-14:03
+--------------------------------------
+--- Note --- for additional information, use the command line option `info'
+--------------------------------------
+
+::::::::::::::::::::::::::::::::::::::::::
+ TeX4ht info is available in the log file 
+::::::::::::::::::::::::::::::::::::::::::
+) (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.sty
+version 2020-07-28-14:30
+
+--- needs --- tex4ht tex_gdef_tex4ht_displaymath ---
+\tmp:cnt=\count27
+\openout15 = `tex_gdef_tex4ht_displaymath.tmp'.
+
+(./tex_gdef_tex4ht_displaymath.tmp)
+\tmp:dim=\skip18
+--------------------------------------
+--- Note --- for XML code, use the command line option `xml' or `xhtml'
+--------------------------------------
+ (./tex_gdef_tex4ht_displaymath.xref)
+\:refout=\write0
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2020-09-02-14:24
+--------------------------------------
+--- Note --- to remove the <?xml version=...?> processing instruction use the c
+ommand line option `no-VERSION'
+--------------------------------------
+--------------------------------------
+--- Note --- to remove the DOCTYPE declaration use the command line option `no-
+DOCTYPE'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2020-07-27-14:08
+)
+--------------------------------------
+--- Note --- for marking of the base font, use the command line option `fonts+'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for non active _, use the command line option `no_'
+--------------------------------------
+--------------------------------------
+--- Note --- for _ of catcode 13, use the command line option `_13'
+--------------------------------------
+--------------------------------------
+--- Note --- for non active ^, use the command line option `no^'
+--------------------------------------
+--------------------------------------
+--- Note --- for ^ of catcode 13, use the command line option `^13'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2020-09-02-14:24
+--------------------------------------
+--- Note --- for alternative charset, use the command line option `charset=...'
+
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS font decoration, use the `NoFonts' command line opti
+on
+--------------------------------------
+--------------------------------------
+--- Note --- for jpg bitmaps of pictures, use the `jpg' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for gif bitmaps of pictures, use the `gif' command line option. (C
+haracter bitmaps are controled only by `g' records of tex4ht.env and `-g' switc
+hes of tex4ht.c) 
+--------------------------------------
+--------------------------------------
+--- Note --- for content and toc in 2 frames, use the command line option `fram
+es'
+--------------------------------------
+--------------------------------------
+--- Note --- for content, toc, and footnotes in 3 frames, use the command line 
+option `frames-fn'
+--------------------------------------
+--------------------------------------
+--- Note --- for file extension name xht, use the command line option `xht'
+--------------------------------------
+TeX4ht package options: html
+--------------------------------------
+--- Note --- To print a timestamp, use the command line option timestamp
+--------------------------------------
+--------------------------------------
+--- Note --- to ignore CSS code, use the command line option `-css
+--------------------------------------
+--------------------------------------
+--- Note --- for inline CSS code, use the command line option `css-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for pop ups on mouse over, use the command line option `mouseover'
+
+--------------------------------------
+--------------------------------------
+--- Note --- for addressing images in a subdirectory, use the command line opti
+on `imgdir:.../'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2020-07-27-14:08
+)
+\:tokwrite=\toks14
+\:tokpage=\toks15
+--------------------------------------
+--- Note --- for back links to toc, use the command line option `sections+'
+--------------------------------------
+--------------------------------------
+--- Note --- for linear crosslinks of pages, use the command line option `next'
+
+--------------------------------------
+\openout15 = `tex_gdef_tex4ht_displaymath.4ct'.
+
+\:tocout=\write1
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2020-09-02-14:24
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2020-07-27-14:08
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/plain.4ht
+version 2020-02-26-14:25
+--------------------------------------
+--- Note --- for reduced implementation, use the command line option `plain-'
+--------------------------------------
+
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2020-09-02-14:24
+--------------------------------------
+--- Note --- for inline footnotes, use the command line option `fn-in'
+--------------------------------------
+--------------------------------------
+--- Note --- for automatic sectioning pagination, use the command line option `
+1'
+--------------------------------------
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2020-07-27-14:08
+--------------------------------------
+--- Note --- for pictorial $...$ environments, use the command line option `pic
+-m' (not recommended!!)
+--------------------------------------
+--------------------------------------
+--- Note --- for pictorial $...$ and $$...$$ environments with latex alt, use t
+he command line option `pic-m+' (not safe!!)
+--------------------------------------
+))
+--- file tex_gdef_tex4ht_displaymath.css ---
+ [1
+\openout0 = `tex_gdef_tex4ht_displaymath.xref'.
+
+\openout1 = `tex_gdef_tex4ht_displaymath.4tc'.
+
+]
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4.4ht
+version 2020-09-02-14:24
+)
+(/usr/share/texlive/texmf-dist/tex/generic/tex4ht/html4-math.4ht
+version 2020-07-27-14:08
+)))
+l. 5 Writing tex_gdef_tex4ht_displaymath.idv[1] (tex_gdef_tex4ht_displaymath0x.
+png)
+
+! Undefined control sequence.
+l.5 $$ \Desig
+             
+? 
+! Emergency stop.
+l.5 $$ \Desig
+             
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 2043 strings out of 497076
+ 19960 string characters out of 6205883
+ 140110 words of memory out of 5000000
+ 3267 multiletter control sequences out of 15000+600000
+ 14794 words of font info for 50 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 25i,2n,21p,620b,159s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on tex_gdef_tex4ht_displaymath.dvi (1 page, 4148 bytes).
