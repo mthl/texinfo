@@ -342,14 +342,14 @@ while read line; do
       if [ -d "$results_dir/$dir" ]; then
         res_dir_used="$results_dir/$dir"
       fi
+      # store raw output
+      raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
+      mkdir -p "${raw_outdir}"
+      rm -rf "${raw_outdir}$dir"
+
+      post_process_output
+
       if test "z$res_dir_used" != 'z' ; then
-        # store raw output
-        raw_outdir="$testdir/raw_out_parser${dir_suffix}/"
-        mkdir -p "${raw_outdir}"
-        rm -rf "${raw_outdir}$dir"
-
-        post_process_output
-
         diff $DIFF_A_OPTION $DIFF_U_OPTION -r "$res_dir_used" "${outdir}$dir" 2>>$logfile > "$testdir/$diffs_dir/$diff_base.diff"
         dif_ret=$?
         if [ $dif_ret != 0 ]; then
