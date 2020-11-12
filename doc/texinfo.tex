@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-10-24.12}
+\def\texinfoversion{2020-11-12.20}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -7370,7 +7370,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 % If you want all examples etc. small: @set dispenvsize small.
 % If you want even small examples the full size: @set dispenvsize nosmall.
 % This affects the following displayed environments:
-%    @example, @display, @format, @lisp
+%    @example, @display, @format, @lisp, @verbatim
 %
 \def\smallword{small}
 \def\nosmallword{nosmall}
@@ -7418,7 +7418,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
   \nonfillstart
   \tt\setupmarkupstyle{example}%
   \let\kbdfont = \kbdexamplefont % Allow @kbd to do something special.
-  \gobble % eat return
+  \parsearg\gobble
 }
 % @display/@smalldisplay: same as @lisp except keep current font.
 %

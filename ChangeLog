@@ -1,3 +1,10 @@
+2020-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Ignore line argument to @example.
+	
+	* doc/texinfo.tex (\example, \lisp) : End call to \makedispenvdef
+	with \parsearg rather than \gobble.
+
 2020-11-12  Patrice Dumas  <pertusus@free.fr>
 
 	* tp/tests/run_parser_all.sh: store raw output and postprocess
