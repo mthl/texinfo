@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-11-12.20}
+\def\texinfoversion{2020-11-13.20}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -572,10 +572,13 @@
   \fi
 }
 
-% @end foo executes the definition of \Efoo.
-% But first, it executes a specialized version of \checkenv
-%
-\parseargdef\end{%
+
+% for @displaymath
+\def\leavemath{\ifmmode\ifinner$\else$$\fi\fi}
+
+% @end foo calls \checkenv and executes the definition of \Efoo.
+\def\end{\leavemath\parsearg\endz}
+\def\endz#1{%
   \if 1\csname iscond.#1\endcsname
   \else
     % The general wording of \badenverr may not be ideal.
@@ -3378,7 +3381,7 @@ end
 $$%
 }
 
-\def\Edisplaymath{$$
+\def\Edisplaymath{%
 \def\thisenv{\tex}%
 \end tex
 }}

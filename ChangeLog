@@ -1,3 +1,16 @@
+2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fix align in @displaymath.
+
+	* doc/texinfo.tex (\end): Leave math mode.
+	(\Edisplaymath): Do not leave math mode here as it is too
+	late if \halign is inside the display math, which has to appear
+	as $$\halign{...}$$.
+	* doc/texinfo-tex-test.texi (Test of @displaymath): New section.
+
+	Christopher Dimech reported that \leqalignno within
+	@displaymath was broken.
+
 2020-11-12  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Ignore line argument to @example.
