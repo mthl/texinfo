@@ -1,5 +1,19 @@
 2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Fix \eqno in @displaymath.
+	
+	* doc/texinfo.tex (\end): Do not exit math mode (reverts previous
+	change).
+	(\displaymath): Temporarily redefine @end to insert $$ immediately,
+	before reading the rest of the line.  This is needed for \halign
+	and \eqno inside display math.
+	* doc/texinfo-tex-test.texi (Test of @displaymath): Add \eqno
+	example.
+	
+	Report of broken \eqno by Christopher Dimech.
+
+2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix align in @displaymath.
 
 	* doc/texinfo.tex (\end): Leave math mode.
