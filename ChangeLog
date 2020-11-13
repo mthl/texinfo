@@ -1,5 +1,13 @@
 2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
+	Avoid excess vertical space above @displaymath.
+	
+	* doc/texinfo.tex (\displaymath): Avoid active newlines in macro
+	definition.  These led to \par tokens which in turn led to extra
+	vertical space above the block.  Report by Christopher Dimech.
+
+2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
+
 	Fix \eqno in @displaymath.
 	
 	* doc/texinfo.tex (\end): Do not exit math mode (reverts previous
