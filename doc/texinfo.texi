@@ -9920,7 +9920,7 @@ command.  Example:
 
 @example
 @@displaymath
-f(x) = @{1\over@{\sigma \sqrt@{2\pi@}@}@}
+f(x) = @{1\over\sigma\sqrt@{2\pi@}@}
 e^@{-@{1\over2@}\left(@{x-\mu\over\sigma@}\right)^2@}
 @@end displaymath
 @end example
@@ -9928,7 +9928,7 @@ e^@{-@{1\over2@}\left(@{x-\mu\over\sigma@}\right)^2@}
 @noindent which produces:
 
 @displaymath
-f(x) = {1\over{\sigma \sqrt{2\pi}}}
+f(x) = {1\over\sigma\sqrt{2\pi}}
 e^{-{1\over2}\left({x-\mu\over\sigma}\right)^2}
 @end displaymath
 
