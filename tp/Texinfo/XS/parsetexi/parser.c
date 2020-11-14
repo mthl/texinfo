@@ -1587,14 +1587,7 @@ value_invalid:
           char *msg = 0;
           switch (cmd)
             {
-            case CM_setcontentsaftertitlepage:
-              msg = "move your @contents command if you want the "
-                    "contents after the title page";
-              break;
-            case CM_setshortcontentsaftertitlepage:
-              msg = "move your @shortcontents and @contents command if "
-                    "you want the contents after the title page";
-              break;
+              /* messages for commands could go here. */
             default:
               break;
             }

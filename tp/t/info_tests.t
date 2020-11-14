@@ -135,14 +135,6 @@ text.
 Hey (@pxref{(m) in pxref}) and continue (@pxref{(m) in pxref, name}) and end.
 @pxref{(m) n}. @pxref{(m) n, name}.
 '],
-['contents_setcontentsaftertitlepage_before_node',
-'
-@contents
-@setcontentsaftertitlepage
-
-@node Top
-@top Double contents
-', {}, {'OUTPUT_CONTENTS_LOCATION' => 'after_title'}],
 ['anchor_in_command',
 '@node Top
 

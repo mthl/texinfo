@@ -19866,13 +19866,6 @@ Make a plain reference that does not start with any special text.
 Follow command with a punctuation mark.  Only the first argument is
 mandatory.  @xref{@code{@@ref}}.
 
-@item @@refill
-@findex refill
-This command used to refill and indent the paragraph after all the
-other processing has been done.  It is no longer needed, since all
-formatters now automatically refill as needed, but you may still see
-it in the source to some manuals, as it does no harm.
-
 @item @@registeredsymbol@{@}
 Generate the legal symbol @registeredsymbol{}.
 @xref{@code{@@registeredsymbol}}.
@@ -20274,6 +20267,12 @@ Here are Texinfo @@-commands which are obsolete or have been removed
 completely.  This section is for historical purposes.
 
 @ftable @code
+@item @@refill
+This command used to refill and indent the paragraph after all the
+other processing has been done.  It is no longer needed, since all
+formatters now automatically refill as needed, but you may still see
+it in the source to some manuals, as it does no harm.
+
 @item @@setcontentsaftertitlepage
 @cindex Contents, after title page
 @cindex Table of contents, after title page
@@ -20283,13 +20282,11 @@ no longer recommend this.
 This command could be used by a user printing a manual, to force the 
 contents to be printed after the title page
 (after the @samp{@@end titlepage} line)
-even if the @code{@@contents} command was at the end of the manual.  It 
-now does nothing.
+even if the @code{@@contents} command was at the end of the manual.
 
 @item @@setshortcontentsaftertitlepage
 This placed the short table of contents after the @samp{@@end titlepage}
-command even if the @code{@@shortcontents} command was at the end.  It 
-now does nothing.
+command even if the @code{@@shortcontents} command was at the end.
 @end ftable
 
 

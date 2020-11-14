@@ -1,3 +1,22 @@
+2020-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Fully remove @setcontentsaftertitlepage.
+
+	* tp/Texinfo/Common.pm (%line_commands, %deprecated_commands),
+	* tp/Texinfo/XS/parsetexi/command_data.txt,
+	* tp/Texinfo/XS/parsetexi/parser.c (process_remaining_on_line):
+	Remove setcontentsaftertitlepage and setshortcontentsaftertitlepage.
+	* tp/t/info_tests.t (contents_setcontentsaftertitlepage_before_node):
+	Remove.
+	* tp/tests/contents/res_parser: Remove results files for removed
+	tests.
+	* doc/texinfo.texi (Command List, Obsolete @-Commands): Move
+	@refill to Obsolete @-Commands.  Update documentation of
+	@setcontentsaftertitlepage.
+	* NEWS: Update.
+	* doc/refcard/txirefcard.tex: Remove documentation of deprecated
+	commands.
+
 2020-11-14  Patrice Dumas  <pertusus@free.fr>
 
 	Use OUTPUT_CONTENTS_LOCATION for HTML

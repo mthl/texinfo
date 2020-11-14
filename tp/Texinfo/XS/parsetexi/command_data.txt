@@ -74,8 +74,6 @@ summarycontents         line,global                     LINE_skipline
 insertcopying           line,global                     LINE_skipline
 clickstyle              line,global                     LINE_special
 # more relevant in preamble
-setcontentsaftertitlepage       line,deprecated         LINE_skipline
-setshortcontentsaftertitlepage  line,deprecated         LINE_skipline
 documentencoding        line,global                     LINE_text
 novalidate              line,global_unique              LINE_skipline
 dircategory             line                            LINE_line

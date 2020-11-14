@@ -543,9 +543,6 @@ our %line_commands = (
   'itemx'             => 'line',
   # not valid for info (should be in @iftex)
   'vskip'             => 'lineraw', # arg line in TeX
-  # obsolete @-commands.
-  'setcontentsaftertitlepage'      => 'skipline', # no arg
-  'setshortcontentsaftertitlepage' => 'skipline', # no arg
   'subentry'          => 'line', 
 );
 
@@ -930,12 +927,6 @@ foreach my $item_line_command ('table', 'ftable', 'vtable') {
 }
 
 our %deprecated_commands = (
-  'setcontentsaftertitlepage' =>
-N__('move your @contents command if you want the contents after the title page'),
-
-  'setshortcontentsaftertitlepage' =>
-N__('move your @shortcontents and @contents commands if you want the contents after the title page'),
-
   'definfoenclose' => '',
   'refill' => '',
   'inforef' => '',

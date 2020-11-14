@@ -474,7 +474,6 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \subsection{Numbered, included in contents}
 
 \txicmd{@chapter}{title}{Begin a numbered chapter; \var{title} appears in the table of contents.}
-\txicmd{@centerchap}{title}{Like \code{@chapter}, with chapter title centered.}
 
 \subsection{Context-dependent, included in contents}
 
@@ -518,7 +517,6 @@ enclosed with \code{@ifnottex ... @end ifnottex}.}
 \txicmd{@xref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Makes a reference that starts with `See' in a printed manual. Follow command with punctuation. Only the first argument is mandatory.}
 \txicmd{@pxref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but starts with `see' instead of `See', and must be used inside parentheses.}
 \txicmd{@ref}{\ttbraced{node, \rmbrack[entry], \rmbrack[node-title], \rmbrack[info-file], \rmbrack[manual]}}{Like \code{@xref}, but produces only the bare reference without `See' or `see'; must be followed by a punctuation mark.}
-\txicmd{@inforef}{\ttbraced{node, \rmbrack[entry-name], info-file}}{Make a cross reference to an Info file for which there is no printed manual.}
 \txicmd{@xrefautomaticsectiontitle}{\code{on|off}}{By default, use the section title instead of the node name in cross references.}
 
 \subsection{Outside of Info}
@@ -763,7 +761,6 @@ exception of \code{@tieaccent}.
 \txicmd{@hyphenation}{\ttbraced{hy-phen-a-ted words}}{Explicitly define hyphenation points.}
 \txicmd{@tie}{\ttbraced{}}{Generate a normal interword space at which a line break is not allowed.}
 \txicmd{@w}{\ttbraced{text}}{Disallow line breaks within \var{text}.}
-\txicmd{@refill}{}{Does nothing (previously refilled and indented the preceding paragraph for Info).}
 
 \subsection{Vertical space}
 
@@ -872,8 +869,6 @@ Descriptive text follows, ended by \samp{@end \var{defcmdname}}.
 \txicmd{@alias}{new\code{=}existing}{Make the command \code{@new} a synonym for the existing command \code{@existing}.}
 \txicmd{@macro}{macroname \ttbraced{\var{params}} \dots\code{@end macro}}{Define a new Texinfo command \code{@\var{macroname}}.}
 \txicmd{@unmacro}{macroname}{Undefine \code{@\var{macroname}} if it is defined.}
-\txicmd{@definfoenclose}{newcmd\code{,} before\code{,} after}{Can only be used within \code{@ifinfo}; create a new command that encloses its argument in the \var{before} and \var{after} strings.}
-
 
 \section{File inclusion}
 
@@ -990,3 +985,10 @@ The Texinfo manual is available via \code{info texinfo}\linebreak
 
 \copyrightnotice
 \bye
+
+not documenting
+\txicmd{@centerchap}
+\txicmd{@definfoenclose}
+\txicmd{@refill}{}{Does nothing (previously refilled and indented the preceding paragraph for Info).}
+
+\txicmd{@inforef}{\ttbraced{node, \rmbrack[entry-name], info-file}}{Make a cross reference to an Info file for which there is no printed manual.}
