@@ -1486,10 +1486,11 @@ More details:
 @code{shortcontents} may be set to trigger the output of the
 respective elements.
 
-@item If @code{INLINECONTENTS} is set, the @emph{Table of contents} and
-@emph{Overview} elements are directly included within the document,
-rather than as separate pages (@pxref{Contents and Overview Elements
-Customization}).
+@item If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{at_commands},
+the @emph{Table of contents} and @emph{Overview} elements are directly
+included within the document.  If @code{OUTPUT_CONTENTS_LOCATION} is set to
+@samp{'separate_element'} the @emph{Table of contents} and @emph{Overview}
+elements are separate (@pxref{Contents and Overview Elements Customization}).
 
 @item When generating HTML, the @emph{Footnotes page} should only
 be present if the footnotes appear on a separate page (@pxref{Footnote
@@ -2152,23 +2153,21 @@ To begin with, the table of contents and short table of contents can
 be made to appear at either the beginning (the default) or end of the
 document.
 
-@vindex INLINE_CONTENTS
+@vindex OUTPUT_CONTENTS_LOCATION
 By default, the configuration variable
-@code{INLINE_CONTENTS} is set, specifying that the tables of contents
-are not output as separate elements but instead where the
-corresponding @@-command, for example @code{@@contents}, is set.  This
-behavior is consistent with @command{texi2dvi}.
+@code{OUTPUT_CONTENTS_LOCATION} is set to @samp{at_commands}, specifying
+that the tables of contents are not output as separate elements but instead
+where the corresponding @@-command, for example @code{@@contents}, is set.
+This behavior is consistent with @command{texi2dvi}.
 
-If @code{INLINE_CONTENTS} is not set, the tables of contents are
-output in separate elements, either at the end of the document if the
-output is unsplit or in separate files if not.  This makes sense
-when menus are used for navigation.
+If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{separate_element},
+the tables of contents are output in separate elements, either at
+the end of the document if the output is unsplit or in separate files if not.
+This makes sense when menus are used for navigation.
 
-@txicmdindex @@setcontentsaftertitlepage @r{and HTML output}
-If @code{@@setcontentsaftertitlepage} appears in the document, even if
-@code{INLINE_CONTENTS} is set, the tables of contents are merged into
-the title material, which in turn is not output by default;
-@pxref{HTML Title Page Customization}.
+If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{after_title}
+the tables of contents are merged into the title material, which in turn is not
+output by default; @pxref{HTML Title Page Customization}.
 
 Next, the following variables allow for some useful control of the
 formatting of table of contents and short table of contents:
@@ -2263,7 +2262,7 @@ of contents.  This function should return the formatted overview
 @end deftypefn
 
 Another function reference is used to add a heading and a reference,
-to be used with @code{INLINE_CONTENTS} or merged into the title
+to be used with @code{OUTPUT_CONTENTS_LOCATION} or merged into the title
 material.  Its output is not used when the tables of contents are
 separate elements.
 

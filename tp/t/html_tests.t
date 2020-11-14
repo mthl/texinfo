@@ -245,6 +245,20 @@ undef, {'test_file' => 'empty_lines_at_beginning_no_setfilename_no_element.texi'
 
 @node first, (no_existing_no_manual.info)
 ', {}, {'CHECK_HTMLXREF' => 1}],
+['text_before_top_and_contents_after_title',
+'
+Some text before top
+
+@node Top
+@top top
+
+In top.
+
+@chapter the chap
+
+@contents
+
+', {}, {'OUTPUT_CONTENTS_LOCATION' => 'after_title'}]
 );
 
 my @test_cases_text = (

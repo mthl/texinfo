@@ -1,3 +1,20 @@
+2020-11-14  Patrice Dumas  <pertusus@free.fr>
+
+	Use OUTPUT_CONTENTS_LOCATION for HTML
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults,
+	_convert_informative_command, _contents_shortcontents_in_title,
+	_default_titlepage, _print_title, _prepare_contents_elements,
+	_convert, _set_variables_texi2html),
+	tp/Texinfo/Common.pm (@variable_string_settables),
+	doc/texinfo.texi (HTML Customization Variables),
+	texi2oldapi.texi, tp/init/book.pm, tp/tests/contents/list-of-tests:
+	Replace INLINE_CONTENTS by OUTPUT_CONTENTS_LOCATION set to 
+	"at_commands", INLINE_CONTENTS unset becomes "separate_element".
+	Add "after_title" as a possibility for OUTPUT_CONTENTS_LOCATION
+	using the code that corresponded to @setcontentaftertitlepage
+	before the @-command was removed.
+
 2020-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Simplify little-used "markup style" infrastructure.

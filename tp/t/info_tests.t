@@ -142,7 +142,7 @@ Hey (@pxref{(m) in pxref}) and continue (@pxref{(m) in pxref, name}) and end.
 
 @node Top
 @top Double contents
-'],
+', {}, {'OUTPUT_CONTENTS_LOCATION' => 'after_title'}],
 ['anchor_in_command',
 '@node Top
 
