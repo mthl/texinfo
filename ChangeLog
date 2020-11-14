@@ -19,6 +19,15 @@
 
 2020-11-14  Patrice Dumas  <pertusus@free.fr>
 
+	Move mini toc formatting to section @-command conversion function
+
+	* tp/Texinfo/Convert/HTML.pm (_convert, _convert_heading_command):
+	Move mini toc formatting code to _convert_heading_command() such that
+	it is in the function that can be customized if set in
+	Texinfo::Config::texinfo_commands_conversion.
+
+2020-11-14  Patrice Dumas  <pertusus@free.fr>
+
 	Use OUTPUT_CONTENTS_LOCATION for HTML
 
 	* tp/Texinfo/Convert/HTML.pm (%defaults,

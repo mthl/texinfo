@@ -2470,6 +2470,14 @@ sub _convert_heading_command($$$$$)
     }
   }
   $result .= $content if (defined($content));
+  if ($self->get_conf('FORMAT_MENU') eq 'sectiontoc'
+      and $sectioning_commands{$cmdname}
+      and ($cmdname ne 'top'
+           or (not ($self->_has_contents_or_shortcontents()
+                   and $self->get_conf('OUTPUT_CONTENTS_LOCATION')
+                       eq 'at_commands')))){
+    $result .= _mini_toc($self, $command);
+  }
 
   return $result;
 }
@@ -7905,14 +7913,6 @@ sub _convert($$;$)
       } else {
         $result = &{$self->{'commands_conversion'}->{$command_name}}($self,
                 $command_name, $root, $content_formatted);
-      }
-      if ($self->get_conf('FORMAT_MENU') eq 'sectiontoc'
-          and $sectioning_commands{$command_name}
-          and ($command_name ne 'top'
-               or (not ($self->_has_contents_or_shortcontents()
-                       and $self->get_conf('OUTPUT_CONTENTS_LOCATION')
-                           eq 'at_commands')))){
-        $result .= _mini_toc($self, $root);
       }
       return $result;
     } else {
