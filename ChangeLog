@@ -1,3 +1,13 @@
+2020-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Simplify little-used "markup style" infrastructure.
+	
+	* doc/texinfo.tex (\currentmarkupstyle, \setupmarkupstyle)
+	(\markupsetuplqdefault, \markupsetuprqdefault): Remove.
+	(\setcodequotes, \setregularquotes): Replacements.
+	* doc/texinfo.texi (Inserting Quote Characters):
+	Do not say that the command interface is preferred.
+
 2020-11-13  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Avoid excess vertical space above @displaymath.
