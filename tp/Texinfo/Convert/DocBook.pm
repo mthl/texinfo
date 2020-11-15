@@ -1380,7 +1380,8 @@ sub _convert($$;$)
     #warn " have contents $root->{'contents'}\n";
     my $in_code;
     if ($root->{'cmdname'} 
-        and $Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}) {
+        and ($Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}
+             or $Texinfo::Common::math_commands{$root->{'cmdname'}})) {
       $in_code = 1;
     }
     push @{$self->{'document_context'}->[-1]->{'monospace'}}, 1

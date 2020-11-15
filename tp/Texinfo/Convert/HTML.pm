@@ -88,6 +88,7 @@ my %block_commands = %Texinfo::Common::block_commands;
 my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
+my %math_commands = %Texinfo::Common::math_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %item_container_commands = %Texinfo::Common::item_container_commands;
 my %raw_commands = %Texinfo::Common::raw_commands;
@@ -7819,7 +7820,7 @@ sub _convert($$;$)
         push @{$self->{'document_context'}->[-1]->{'monospace'}}, 0;
       } elsif ($upper_case_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}++;
-      } elsif ($command_name eq 'math' or $command_name eq 'displaymath') {
+      } elsif ($math_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'math'}++;
       } elsif ($command_name eq 'w') {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}++;
@@ -7898,7 +7899,7 @@ sub _convert($$;$)
         pop @{$self->{'document_context'}->[-1]->{'monospace'}};
       } elsif ($upper_case_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'upper_case'}--;
-      } elsif ($command_name eq 'math' or $command_name eq 'displaymath') {
+      } elsif ($math_commands{$command_name}) {
         $self->{'document_context'}->[-1]->{'math'}--;
       } elsif ($command_name eq 'w') {
         $self->{'document_context'}->[-1]->{'formatting_context'}->[-1]->{'space_protected'}--;

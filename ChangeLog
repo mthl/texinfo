@@ -1,3 +1,19 @@
+2020-11-16  Patrice Dumas  <pertusus@free.fr>
+
+	Parse texinfo commands in @displaymath as in @math
+
+	* tp/Texinfo/Common.pm (%math_commands): Add.  Remove
+	displaymath from raw commands.
+	* tp/Texinfo/ParserNonXS.pm (_close_current, _parse_texi):
+	Handle math commands in a more generic way using a specific
+	"math" context independently of the command name.
+	* tp/Texinfo/Convert/HTML.pm (_convert),
+	tp/Texinfo/Convert/Plaintext.pm (%block_math_commands,
+	new_formatter, _convert),
+	tp/Texinfo/Convert/TexinfoXML.pm (_convert)
+	tp/Texinfo/Convert/Text.pm (_convert): use %math_commands.
+
+
 2020-11-15  Patrice Dumas  <pertusus@free.fr>
 
 	Rename OUTPUT_CONTENTS_LOCATION as CONTENTS_OUTPUT_LOCATION

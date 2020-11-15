@@ -476,12 +476,12 @@ sub _convert($;$)
     } elsif ($root->{'args'} and $root->{'args'}->[0] 
            and (($root->{'args'}->[0]->{'type'}
                 and $root->{'args'}->[0]->{'type'} eq 'brace_command_arg')
-                or $root->{'cmdname'} eq 'math')) {
+                or $Texinfo::Common::math_commands{$root->{'cmdname'}})) {
       my $result;
       if ($root->{'cmdname'} eq 'sc') {
         $options = {%$options, 'sc' => 1};
       } elsif ($Texinfo::Common::code_style_commands{$root->{'cmdname'}}
-               or $root->{'cmdname'} eq 'math') {
+               or $Texinfo::Common::math_commands{$root->{'cmdname'}}) {
         $options = _code_options($options);
       }
       $result = _convert($root->{'args'}->[0], $options);
@@ -577,6 +577,7 @@ sub _convert($;$)
   if ($root->{'contents'}) {
     if ($root->{'cmdname'} 
         and ($Texinfo::Common::preformatted_code_commands{$root->{'cmdname'}}
+             or $Texinfo::Common::math_commands{$root->{'cmdname'}}
              or (defined($Texinfo::Common::block_commands{$root->{'cmdname'}}) 
                  and $Texinfo::Common::block_commands{$root->{'cmdname'}} eq 'raw'))) {
       $options = _code_options($options);

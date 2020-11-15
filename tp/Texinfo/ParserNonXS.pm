@@ -126,6 +126,7 @@ my %parser_default_configuration = (
 #                         'preformatted' is added in block commands 
 #                         where there is no paragraphs and spaces are kept 
 #                         (format, example, display...)
+#                         'math' is added in math block commands (displaymath)
 #                         'rawpreformatted' is added in raw block commands
 #                         (html, xml, docbook...)
 #                         'menu' is added in menu commands
@@ -197,7 +198,8 @@ my %def_commands              = %Texinfo::Common::def_commands;
 my %def_aliases               = %Texinfo::Common::def_aliases;
 my %menu_commands             = %Texinfo::Common::menu_commands;
 my %preformatted_commands     = %Texinfo::Common::preformatted_commands;
-my %format_raw_commands = %Texinfo::Common::format_raw_commands;
+my %math_commands             = %Texinfo::Common::math_commands;
+my %format_raw_commands       = %Texinfo::Common::format_raw_commands;
 my %item_container_commands   = %Texinfo::Common::item_container_commands;
 my %item_line_commands        = %Texinfo::Common::item_line_commands;
 my %deprecated_commands       = %Texinfo::Common::deprecated_commands;
@@ -1550,7 +1552,8 @@ sub _close_current($$$;$$)
       }
       if ($preformatted_commands{$current->{'cmdname'}}
           or $menu_commands{$current->{'cmdname'}}
-          or $format_raw_commands{$current->{'cmdname'}}) {
+          or $format_raw_commands{$current->{'cmdname'}}
+          or $math_commands{$current->{'cmdname'}}) {
         my $context = pop @{$self->{'context_stack'}};
       }
       pop @{$self->{'regions_stack'}} 
@@ -1657,6 +1660,12 @@ sub _close_commands($$$;$$)
       # may be in menu, but context is preformatted if in a preformatted too.
       if ($context ne 'menu' and $context ne 'preformatted') {
         $self->_bug_message("context $context instead of preformatted or menu for $closed_command", 
+                            $line_nr, $current);
+      }
+    } elsif ($math_commands{$current->{'cmdname'}}) {
+      my $context = pop @{$self->{'context_stack'}};
+      if ($context ne 'math') {
+        $self->_bug_message("context $context instead of math for $closed_command",
                             $line_nr, $current);
       }
     }
@@ -4607,6 +4616,8 @@ sub _parse_texi($;$)
             if ($block_arg_commands{$command}) {
               if ($preformatted_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'preformatted';
+              } elsif ($math_commands{$command}) {
+                push @{$self->{'context_stack'}}, 'math';
               } elsif ($format_raw_commands{$command}) {
                 push @{$self->{'context_stack'}}, 'rawpreformatted';
                 if (not $self->{'expanded_formats_hash'}->{$command}) {
@@ -4796,7 +4807,11 @@ sub _parse_texi($;$)
                   }
                 }
               }
-              push @{$self->{'context_stack'}}, $command;
+              if ($math_commands{$command}) {
+                push @{$self->{'context_stack'}}, 'math';
+              } else {
+                push @{$self->{'context_stack'}}, $command;
+              }
               $line =~ s/([^\S\f\n]*)//;
               $current->{'type'} = 'brace_command_context';
               push @{$current->{'contents'}}, { 'type' => 'empty_spaces_before_argument', 
@@ -4874,9 +4889,13 @@ sub _parse_texi($;$)
               and exists $brace_commands{$current->{'parent'}->{'cmdname'}}) {
             # for math and footnote out of paragraph
             if ($context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
-              my $context_command = pop @{$self->{'context_stack'}};
-              if ($context_command ne $current->{'parent'}->{'cmdname'}) {
-                $self->_bug_message("context $context_command instead of brace command $current->{'parent'}->{'cmdname'}", 
+              my $top_context = pop @{$self->{'context_stack'}};
+              my $command_context = $current->{'parent'}->{'cmdname'};
+              if ($math_commands{$current->{'parent'}->{'cmdname'}}) {
+                $command_context = 'math';
+              }
+              if ($top_context ne $command_context) {
+                $self->_bug_message("context $top_context instead of brace command $current->{'parent'}->{'cmdname'} context $command_context",
                                    $line_nr, $current);
                 die;
               }
@@ -5093,11 +5112,15 @@ sub _parse_texi($;$)
              $current = _end_paragraph($self, $current, $line_nr);
              if ($current->{'parent'}
                  and $current->{'parent'}->{'cmdname'}
-                 and $context_brace_commands{$current->{'parent'}->{'cmdname'}}
-                 and $current->{'parent'}->{'cmdname'} eq $self->{'context_stack'}->[-1]) {
-              my $context_command = pop @{$self->{'context_stack'}};
-              if ($context_command ne $current->{'parent'}->{'cmdname'}) {
-                $self->_bug_message("context $context_command instead of brace isolated $current->{'parent'}->{'cmdname'}", 
+                 and $context_brace_commands{$current->{'parent'}->{'cmdname'}}) {
+              #   and $current->{'parent'}->{'cmdname'} eq $self->{'context_stack'}->[-1]) {
+              my $top_context = pop @{$self->{'context_stack'}};
+              my $command_context = $current->{'parent'}->{'cmdname'};
+              if ($math_commands{$current->{'parent'}->{'cmdname'}}) {
+                $command_context = 'math';
+              }
+              if ($top_context ne $command_context) {
+                $self->_bug_message("context $top_context instead of brace isolated $current->{'parent'}->{'cmdname'} context $command_context",
                                    $line_nr, $current);
                 die;
               }

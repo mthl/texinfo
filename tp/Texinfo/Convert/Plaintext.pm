@@ -92,6 +92,7 @@ my %block_commands = %Texinfo::Common::block_commands;
 my %menu_commands = %Texinfo::Common::menu_commands;
 my %root_commands = %Texinfo::Common::root_commands;
 my %preformatted_commands = %Texinfo::Common::preformatted_commands;
+my %math_commands = %Texinfo::Common::math_commands;
 my %explained_commands = %Texinfo::Common::explained_commands;
 my %inline_format_commands = %Texinfo::Common::inline_format_commands;
 my %inline_commands = %Texinfo::Common::inline_commands;
@@ -157,6 +158,13 @@ foreach my $preformatted_command ('verbatim', keys(%menu_commands)) {
   $default_preformatted_context_commands{$preformatted_command} = 1;
 }
 
+my %block_math_commands;
+foreach my $block_math_command (keys(%math_commands)) {
+  if (exists($block_commands{$block_math_command})) {
+    $block_math_commands{$block_math_command} = 1;
+  }
+}
+
 my %ignored_misc_commands;
 foreach my $misc_command (keys(%misc_commands)) {
   $ignored_misc_commands{$misc_command} = 1 
@@ -193,6 +201,8 @@ foreach my $non_indented('format', 'smallformat') {
   delete $indented_commands{$non_indented};
 }
 
+# FIXME should keys(%math_brace_commands) be added here?
+# How can this be tested?
 foreach my $format_context_command (keys(%menu_commands), 'verbatim',
  'flushleft', 'flushright', 'multitable', 'float') {
   $default_format_context_commands{$format_context_command} = 1;
@@ -652,10 +662,12 @@ sub new_formatter($$;$)
       if ($menu_commands{$context}) {
         last;
       } elsif ($preformatted_code_commands{$context}
-               or $format_raw_commands{$context}) {
+               or $format_raw_commands{$context}
+               or $math_commands{$context}) {
         $formatter->{'font_type_stack'}->[-1]->{'monospace'} = 1;
         $formatter->{'font_type_stack'}->[-1]->{'code_command'} = 1 
-          if ($preformatted_code_commands{$context});
+          if ($preformatted_code_commands{$context}
+              or $math_commands{$context});
         last;
       }
     }
@@ -2243,15 +2255,16 @@ sub _convert($$)
         unshift @{$self->{'current_contents'}->[-1]}, ($argument);
       }
       return '';
-    } elsif ($command eq 'math') {
-      push @{$self->{'context'}}, 'math';
+      # condition should actually be that the $command is inline
+    } elsif ($math_commands{$command} and not exists($block_commands{$command})) {
+      push @{$self->{'context'}}, $command;
       if ($root->{'args'}) {
         $result .= _convert($self, {'type' => 'frenchspacing',
              'contents' => [{'type' => '_code',
                             'contents' => [$root->{'args'}->[0]]}]});
       }
       my $old_context = pop @{$self->{'context'}};
-      die if ($old_context ne 'math');
+      die if ($old_context ne $command);
       return $result;
     } elsif ($command eq 'titlefont') {
       push @{$self->{'count_context'}}, {'lines' => 0, 'bytes' => 0};
@@ -2360,7 +2373,7 @@ sub _convert($$)
         push @{$self->{'context'}}, $command;
       } elsif ($flush_commands{$command}) {
         push @{$self->{'context'}}, $command;
-      } elsif ($raw_commands{$command}) {
+      } elsif ($raw_commands{$command} or $block_math_commands{$command}) {
         if (!$self->{'formatters'}->[-1]->{'_top_formatter'}) {
           # reuse the current formatter if not in top level
           $result .= _count_added($self, $formatter->{'container'},

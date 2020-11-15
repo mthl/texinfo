@@ -676,9 +676,18 @@ $brace_commands{'indicateurl'} = 1;
 # Commands that enclose full texts, that can contain multiple paragraphs.
 our %context_brace_commands;
 foreach my $context_brace_command ('footnote', 'caption',
-    'shortcaption', 'math') {
+    'shortcaption') {
   $context_brace_commands{$context_brace_command} = $context_brace_command;
   $brace_commands{$context_brace_command} = 'context';
+}
+
+our %math_commands;
+# Commands that enclose full texts, that can contain multiple paragraphs
+# and contain maths
+foreach my $math_brace_command ('math') {
+  $context_brace_commands{$math_brace_command} = $math_brace_command;
+  $brace_commands{$math_brace_command} = 'context';
+  $math_commands{$math_brace_command} = 1;
 }
 
 our %explained_commands;
@@ -855,6 +864,11 @@ foreach my $preformatted_command(
   $preformatted_commands{$preformatted_command} = 1;
 }
 
+foreach my $block_math_command('displaymath') {
+  $block_commands{$block_math_command} = 0;
+  $math_commands{$block_math_command} = 1;
+}
+
 our %format_raw_commands;
 foreach my $format_raw_command('html', 'tex', 'xml', 'docbook') {
   $block_commands{$format_raw_command} = 0;
@@ -863,7 +877,7 @@ foreach my $format_raw_command('html', 'tex', 'xml', 'docbook') {
 
 our %raw_commands;
 # macro/rmacro are special
-foreach my $raw_command ('verbatim', 'displaymath',
+foreach my $raw_command ('verbatim',
                          'ignore', 'macro', 'rmacro') {
   $block_commands{$raw_command} = 'raw';
   $raw_commands{$raw_command} = 1;
@@ -903,7 +917,6 @@ foreach my $block_command (keys(%block_commands)) {
 }
 
 $close_paragraph_commands{'verbatim'} = 1;
-$close_paragraph_commands{'displaymath'} = 1;
 
 foreach my $close_paragraph_command ('titlefont', 'insertcopying', 'sp',
   'verbatiminclude', 'page', 'item', 'itemx', 'tab', 'headitem',
@@ -2853,6 +2866,10 @@ as C<@macro>, C<@verbatim> or C<@ignore>.
 
 @-commands associated with raw output format, like C<@html>, or
 C<@docbook>.
+
+=item %math_commands
+
+@-commands which contains math, like C<@math> or C<@displaymath>.
 
 =item %texinfo_output_formats
 
