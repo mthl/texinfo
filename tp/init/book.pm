@@ -13,7 +13,7 @@ use strict;
 use vars qw($element_file_name);
 
 set_from_init_file('contents', 1);
-set_from_init_file('OUTPUT_CONTENTS_LOCATION', 'at_commands');
+set_from_init_file('CONTENTS_OUTPUT_LOCATION', 'inline');
 set_from_init_file('USE_TITLEPAGE_FOR_TITLE', 1);
 
 my @book_buttons = ('Back', 'Forward', ' ', 'Contents', 'Index', 'About');

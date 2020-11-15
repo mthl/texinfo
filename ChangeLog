@@ -8,7 +8,8 @@
 	_prepare_special_elements, _prepare_contents_elements,
 	_set_variables_texi2html, tp/Texinfo/Common.pm 
 	(@variable_string_settables), doc/texi2oldapi.texi,
-	doc/texinfo.texi (HTML Customization Variables):
+	doc/texinfo.texi (HTML Customization Variables),
+	tp/init/book.pm:
 	Rename OUTPUT_CONTENTS_LOCATION as CONTENTS_OUTPUT_LOCATION
 	and use 'inline' instead of 'at_commands' for the corresponding
 	value.  Idea from Gavin.
