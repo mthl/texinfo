@@ -225,6 +225,10 @@ FALLBACK:
   # Fall back to using the Perl code.
   # Use eval here to interpret :: properly in module name.
   eval "require $fallback_module";
+  if ($@) {
+    warn();
+    die "Error loading $fallback_module\n";
+  }
 
   return  $fallback_module;
 } # end init

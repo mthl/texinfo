@@ -1,5 +1,13 @@
 2020-11-16  Patrice Dumas  <pertusus@free.fr>
 
+	Warn and die if the fallback ParserNonXS require failed
+
+	* tp/Texinfo/XSLoader.pm (FALLBACK): check the status of 
+	the eval of the require of the fallback module (ParserNonXS)
+	and report the warning and die if the eval failed.
+
+2020-11-16  Patrice Dumas  <pertusus@free.fr>
+
 	Parse texinfo commands in @displaymath as in @math
 
 	* tp/Texinfo/Common.pm (%math_commands): Add.  Remove
