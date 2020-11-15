@@ -107,7 +107,10 @@ my %parser_default_configuration = (
     %Texinfo::Common::default_parser_state_configuration,
     %Texinfo::Common::default_customization_values,
     'clickstyle' => 'arrow',
-    'kbdinputstyle' => 'distinct'
+    'kbdinputstyle' => 'distinct',
+    # this is not really used, but this allows to have an 
+    # output more similar to the XS parser output.
+    'floats' => {},
 );
 
 # the other possible keys for the parser state are:
