@@ -972,7 +972,7 @@ my %defaults = (
   'SUBDIR'               => undef,
   'USE_NODES'            => 1,
   'USE_NODE_DIRECTIONS'  => undef,
-  'OUTPUT_CONTENTS_LOCATION' => 'at_commands',
+  'OUTPUT_CONTENTS_LOCATION' => 'after_top',
   'SPLIT'                => 'node',
 # if set style is added in attribute.
   'INLINE_CSS_STYLE'     => 0,
@@ -2470,12 +2470,31 @@ sub _convert_heading_command($$$$$)
     }
   }
   $result .= $content if (defined($content));
-  if ($self->get_conf('FORMAT_MENU') eq 'sectiontoc'
+
+  my $table_of_contents_was_output = 0.;
+  if ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_top'
+      and $cmdname eq 'top'
+      and $self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
+      and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
+    foreach my $content_command_name ('contents', 'shortcontents') {
+      if ($self->get_conf($content_command_name)) {
+        my $contents_text
+          = $self->_contents_inline_element($content_command_name, undef);
+        if ($contents_text ne '') {
+          $result .= $contents_text;
+          #$result .= $contents_text . $self->get_conf('DEFAULT_RULE')."\n";
+          $table_of_contents_was_output = 1;
+        }
+      }
+    }
+  }
+  if (not $table_of_contents_was_output
+      and $self->get_conf('FORMAT_MENU') eq 'sectiontoc'
       and $sectioning_commands{$cmdname}
       and ($cmdname ne 'top'
            or (not ($self->_has_contents_or_shortcontents()
                    and $self->get_conf('OUTPUT_CONTENTS_LOCATION')
-                       eq 'at_commands')))){
+                       eq 'at_commands')))) {
     $result .= _mini_toc($self, $command);
   }
 
@@ -5799,6 +5818,12 @@ sub _prepare_contents_elements($)
         if ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_title') {
           if ($self->{'elements'}) {
             $default_filename = $self->{'elements'}->[0]->{'filename'};
+          }
+        } elsif ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_top') {
+          my $section_top = undef;
+          if ($self->{'extra'} and $self->{'extra'}->{'top'}) {
+             $section_top = $self->{'extra'}->{'top'};
+             $default_filename = $self->command_filename($section_top)
           }
         } elsif ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'at_commands') {
           if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {

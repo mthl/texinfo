@@ -1,3 +1,13 @@
+2020-11-15  Patrice Dumas  <pertusus@free.fr>
+
+	Add 'after_top' for OUTPUT_CONTENTS_LOCATION and use it as default
+
+	* tp/Texinfo/Convert/HTML.pm (%defaults, _convert_heading_command),
+	doc/texinfo.texi (HTML Customization Variables):
+	If 'OUTPUT_CONTENTS_LOCATION' is set to 'after_top', write the
+	table of contents/Overview at the end of the @top.  Instead of
+	the mini toc.  Set 'after_top' in the default case (Gavin).
+
 2020-11-14  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Fully remove @setcontentsaftertitlepage.

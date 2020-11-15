@@ -336,13 +336,6 @@ ul.no-bullet {list-style: none}
 
 <body lang="en">
 <span id="top"></span><h1 class="top">top</h1>
-<span id="g_t0"></span><h2 class="chapter">1 0</h2>
-<span id="g_t_005f"></span><h2 class="unnumbered">_</h2>
-<ul class="section-toc">
-<li><a href="#g_t_003f" accesskey="1">?</a></li>
-</ul>
-<span id="g_t_003f"></span><h3 class="section">?</h3>
-
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -357,7 +350,6 @@ ul.no-bullet {list-style: none}
 </ul>
 </div>
 
-
 <span id="SEC_Overview"></span>
 <h2 class="shortcontents-heading">Short Table of Contents</h2>
 
@@ -367,6 +359,14 @@ ul.no-bullet {list-style: none}
 <li><a id="stoc-_005f" href="#toc-_005f">_</a></li>
 </ul>
 </div>
+
+<span id="g_t0"></span><h2 class="chapter">1 0</h2>
+<span id="g_t_005f"></span><h2 class="unnumbered">_</h2>
+<ul class="section-toc">
+<li><a href="#g_t_003f" accesskey="1">?</a></li>
+</ul>
+<span id="g_t_003f"></span><h3 class="section">?</h3>
+
 
 
 <hr>

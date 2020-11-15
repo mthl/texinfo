@@ -1115,6 +1115,23 @@ Next: <a href="#chapter-node" accesskey="n" rel="next">chapter node</a> &nbsp; [
 <span id="top"></span><h1 class="top">top</h1>
 
 
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+<ul class="no-bullet">
+<li>
+<ul class="no-bullet">
+  <li><a id="toc-chapter-node-1" href="#chapter-node">1 chapter node</a></li>
+</ul></li>
+<li><a id="toc-part" href="#part">part</a>
+<ul class="no-bullet">
+  <li><a id="toc-chapter-with-part-node" href="#part-chapter-node">2 chapter with part node</a></li>
+</ul></li>
+
+</ul>
+</div>
+
 <hr>
 <span id="chapter-node"></span><div class="header">
 <p>
@@ -1135,23 +1152,6 @@ Previous: <a href="#chapter-node" accesskey="p" rel="prev">chapter node</a>, Up:
 <li><a href="#part-chapter-node" accesskey="1">chapter with part node</a></li>
 </ul>
 <span id="chapter-with-part-node"></span><h2 class="chapter">2 chapter with part node</h2>
-
-<span id="SEC_Contents"></span>
-<h2 class="contents-heading">Table of Contents</h2>
-
-<div class="contents">
-<ul class="no-bullet">
-<li>
-<ul class="no-bullet">
-  <li><a id="toc-chapter-node-1" href="#chapter-node">1 chapter node</a></li>
-</ul></li>
-<li><a id="toc-part" href="#part">part</a>
-<ul class="no-bullet">
-  <li><a id="toc-chapter-with-part-node" href="#part-chapter-node">2 chapter with part node</a></li>
-</ul></li>
-
-</ul>
-</div>
 
 <hr>
 

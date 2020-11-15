@@ -799,6 +799,24 @@ ul.no-bullet {list-style: none}
 <body lang="en">
 <span id="top"></span><h1 class="top">top</h1>
 
+<span id="SEC_Overview"></span>
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
+
+<div class="shortcontents">
+<ul class="no-bullet">
+<li><ul class="no-bullet">
+<li><a id="stoc-chapter" href="#toc-chapter">1 chapter</a></li>
+</ul></li>
+<li><a id="stoc-part" href="#toc-part">part</a><ul class="no-bullet">
+<li><a id="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
+<li><a id="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
+<li><a id="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
+</ul></li>
+<li><a id="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
+
+</ul>
+</div>
+
 <span id="chapter"></span><h2 class="chapter">1 chapter</h2>
 
 <ul class="section-toc">
@@ -836,24 +854,6 @@ ul.no-bullet {list-style: none}
 <li><a href="#appendixsec" accesskey="1">appendixsec</a></li>
 </ul>
 <span id="appendixsec"></span><h3 class="appendixsec">A.1 appendixsec</h3>
-
-<span id="SEC_Overview"></span>
-<h2 class="shortcontents-heading">Short Table of Contents</h2>
-
-<div class="shortcontents">
-<ul class="no-bullet">
-<li><ul class="no-bullet">
-<li><a id="stoc-chapter" href="#toc-chapter">1 chapter</a></li>
-</ul></li>
-<li><a id="stoc-part" href="#toc-part">part</a><ul class="no-bullet">
-<li><a id="stoc-chapter-in-part" href="#toc-chapter-in-part">2 chapter in part</a></li>
-<li><a id="stoc-second-chapter-in-part" href="#toc-second-chapter-in-part">3 second chapter in part</a></li>
-<li><a id="stoc-unnumbered" href="#toc-unnumbered">unnumbered</a></li>
-</ul></li>
-<li><a id="stoc-appendix" href="#toc-appendix">Appendix A appendix</a></li>
-
-</ul>
-</div>
 
 <hr>
 

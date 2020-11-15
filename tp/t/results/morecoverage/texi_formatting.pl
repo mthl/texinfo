@@ -5030,6 +5030,37 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#
 </p>
 
 
+<span id="SEC_Contents"></span>
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="no-bullet">
+  <li><a id="toc-chapter-1" href="#chapter">1 chapter</a>
+  <ul class="no-bullet">
+    <li><a id="toc-A-section" href="#s_002d_002dect_002cion">1.1 A section</a>
+    <ul class="no-bullet">
+      <li><a id="toc-subsection-1" href="#subsection">1.1.1 subsection</a>
+      <ul class="no-bullet">
+        <li><a id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1" href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
+        <li><a id="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
+      </ul></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-chapter-2" href="#chapter2" rel="index">chapter 2</a></li>
+</ul>
+</div>
+
+<span id="SEC_Overview"></span>
+<h2 class="shortcontents-heading">Short Table of Contents</h2>
+
+<div class="shortcontents">
+<ul class="no-bullet">
+<li><a id="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
+<li><a id="stoc-chapter-2" href="#toc-chapter-2" rel="index">chapter 2</a></li>
+</ul>
+</div>
+
 <hr>
 <span id="chapter"></span><div class="header">
 <p>
@@ -5162,37 +5193,6 @@ Previous: <a href="#chapter" accesskey="p" rel="prev">chapter</a>, Up: <a href="
 <a class="summary-letter" href="#chapter2_fn_letter-T"><b>T</b></a>
  &nbsp; 
 </td></tr></table>
-
-<span id="SEC_Contents"></span>
-<h2 class="contents-heading">Table of Contents</h2>
-
-<div class="contents">
-
-<ul class="no-bullet">
-  <li><a id="toc-chapter-1" href="#chapter">1 chapter</a>
-  <ul class="no-bullet">
-    <li><a id="toc-A-section" href="#s_002d_002dect_002cion">1.1 A section</a>
-    <ul class="no-bullet">
-      <li><a id="toc-subsection-1" href="#subsection">1.1.1 subsection</a>
-      <ul class="no-bullet">
-        <li><a id="toc-subsubsection-_0060_0060simple_002ddouble_002d_002d-1" href="#subsubsection-_0060_0060simple_002ddouble_002d_002d">1.1.1.1 subsubsection &ldquo;simple-double&ndash;</a></li>
-        <li><a id="toc-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027" href="#subsubsection-three_002d_002d_002dfour_002d_002d_002d_002d_0027_0027">1.1.1.2 three&mdash;four&mdash;-&rdquo;</a></li>
-      </ul></li>
-    </ul></li>
-  </ul></li>
-  <li><a id="toc-chapter-2" href="#chapter2" rel="index">chapter 2</a></li>
-</ul>
-</div>
-
-<span id="SEC_Overview"></span>
-<h2 class="shortcontents-heading">Short Table of Contents</h2>
-
-<div class="shortcontents">
-<ul class="no-bullet">
-<li><a id="stoc-chapter-1" href="#toc-chapter-1">1 chapter</a></li>
-<li><a id="stoc-chapter-2" href="#toc-chapter-2" rel="index">chapter 2</a></li>
-</ul>
-</div>
 
 <div class="footnote">
 <hr>

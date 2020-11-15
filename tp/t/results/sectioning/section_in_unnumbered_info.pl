@@ -8267,6 +8267,10 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#
 </div>
 <span id="Test-section-in-unnumbered"></span><h1 class="top">Test section in unnumbered</h1>
 
+
+<p>Menu:
+</p>
+
 <span id="SEC_Contents"></span>
 <h2 class="contents-heading">Table of Contents</h2>
 
@@ -8330,10 +8334,6 @@ Next: <a href="#chapter" accesskey="n" rel="next">chapter</a> &nbsp; [<a href="#
   </ul></li>
 </ul>
 </div>
-
-
-<p>Menu:
-</p>
 
 <hr>
 <span id="chapter"></span><div class="header">

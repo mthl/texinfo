@@ -376,7 +376,7 @@ A.
 @part part
 
 @contents
-'],
+', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
 ['chapter_before_part',
 '@chapter chapter
 
@@ -484,7 +484,7 @@ $section_in_unnumbered_text
 @chapter chapter 2
 
 @contents
-', {'test_split' => 'section'}
+', {'test_split' => 'section'}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}
 ],
 ['lone_contents',
 '@contents
@@ -831,7 +831,7 @@ In chapter
 section.
 
 @contents
-'],
+', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
 ['part_node_before_top',
 '@node part node before top, Top,,Top
 @part part
@@ -1080,7 +1080,7 @@ Top node
 @chapter chapter 2
 
 @contents
-', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}],
+', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
@@ -1811,7 +1811,7 @@ $top_chapter_sections_text,
 
 @shortcontents
 @contents
-', {'test_formats' => ['html_text']}
+', {'test_formats' => ['html_text']}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}
 ],
 ['more_sections_than_nodes',
 '@node Top

@@ -170,7 +170,7 @@ in detaildescription
 @section sec
 
 @shortcontents
-'],
+', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
 ['test_xrefautomaticsectiontitle',
 '@node Top
 @top top

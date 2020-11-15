@@ -2540,7 +2540,15 @@ for example *note node:: (*note node::) (*note (file)Top::)
 ';
 
 
-$result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-heading">Table of Contents</h2>
+$result_converted{'html_text'}->{'ref_in_sectioning'} = '
+<span id="Top"></span><div class="header">
+<p>
+ &nbsp; </p>
+</div>
+<span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">See <a class="texi-manual" href="file name.html#node">title</a> in <cite>Manual</cite>.</a> (see <a href="#node">See <a class="texi-manual" href="file name.html#node">title</a> in <cite>Manual</cite>.</a>) (see <cite><a class="texi-manual" href="file.html#Top">Manual</a></cite>)</h1>
+
+
+<h2 class="contents-heading">Table of Contents</h2>
 
 <div class="contents">
 
@@ -2563,14 +2571,6 @@ $result_converted{'html_text'}->{'ref_in_sectioning'} = '<h2 class="contents-hea
   </ul></li>
 </ul>
 </div>
-
-
-<span id="Top"></span><div class="header">
-<p>
- &nbsp; </p>
-</div>
-<span id="for-example-node-_0028node_0029-_0028Top_0029"></span><h1 class="top">for example <a href="#node">See <a class="texi-manual" href="file name.html#node">title</a> in <cite>Manual</cite>.</a> (see <a href="#node">See <a class="texi-manual" href="file name.html#node">title</a> in <cite>Manual</cite>.</a>) (see <cite><a class="texi-manual" href="file.html#Top">Manual</a></cite>)</h1>
-
 
 <hr>
 <span id="node"></span><div class="header">
