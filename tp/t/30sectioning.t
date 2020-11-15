@@ -376,7 +376,7 @@ A.
 @part part
 
 @contents
-', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['chapter_before_part',
 '@chapter chapter
 
@@ -484,7 +484,7 @@ $section_in_unnumbered_text
 @chapter chapter 2
 
 @contents
-', {'test_split' => 'section'}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}
+', {'test_split' => 'section'}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}
 ],
 ['lone_contents',
 '@contents
@@ -831,7 +831,7 @@ In chapter
 section.
 
 @contents
-', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['part_node_before_top',
 '@node part node before top, Top,,Top
 @part part
@@ -1080,7 +1080,7 @@ Top node
 @chapter chapter 2
 
 @contents
-', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
+', {'test_formats' => ['plaintext'], 'CHECK_NORMAL_MENU_STRUCTURE' => 1}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['section_in_unnumbered_info',
 $section_in_unnumbered_text
 ],
@@ -1811,7 +1811,7 @@ $top_chapter_sections_text,
 
 @shortcontents
 @contents
-', {'test_formats' => ['html_text']}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}
+', {'test_formats' => ['html_text']}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}
 ],
 ['more_sections_than_nodes',
 '@node Top

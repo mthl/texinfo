@@ -972,7 +972,7 @@ my %defaults = (
   'SUBDIR'               => undef,
   'USE_NODES'            => 1,
   'USE_NODE_DIRECTIONS'  => undef,
-  'OUTPUT_CONTENTS_LOCATION' => 'after_top',
+  'CONTENTS_OUTPUT_LOCATION' => 'after_top',
   'SPLIT'                => 'node',
 # if set style is added in attribute.
   'INLINE_CSS_STYLE'     => 0,
@@ -2472,7 +2472,7 @@ sub _convert_heading_command($$$$$)
   $result .= $content if (defined($content));
 
   my $table_of_contents_was_output = 0.;
-  if ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_top'
+  if ($self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'after_top'
       and $cmdname eq 'top'
       and $self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
       and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1) {
@@ -2493,8 +2493,8 @@ sub _convert_heading_command($$$$$)
       and $sectioning_commands{$cmdname}
       and ($cmdname ne 'top'
            or (not ($self->_has_contents_or_shortcontents()
-                   and $self->get_conf('OUTPUT_CONTENTS_LOCATION')
-                       eq 'at_commands')))) {
+                   and $self->get_conf('CONTENTS_OUTPUT_LOCATION')
+                       eq 'inline')))) {
     $result .= _mini_toc($self, $command);
   }
 
@@ -3729,7 +3729,7 @@ sub _convert_informative_command($$$$)
   $cmdname = 'shortcontents' if ($cmdname eq 'summarycontents');
 
   $self->_informative_command($command);
-  if ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'at_commands'
+  if ($self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'inline'
       and ($cmdname eq 'contents' or $cmdname eq 'shortcontents')
       and $self->get_conf($cmdname)
       and $self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
@@ -4532,7 +4532,7 @@ sub _contents_shortcontents_in_title($)
 
   if ($self->{'structuring'} and $self->{'structuring'}->{'sectioning_root'}
       and scalar(@{$self->{'structuring'}->{'sections_list'}}) > 1
-      and $self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_title') {
+      and $self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'after_title') {
     foreach my $command ('contents', 'shortcontents') {
       if ($self->get_conf($command)) {
         my $contents_text = $self->_contents_inline_element($command, undef);
@@ -5704,7 +5704,7 @@ sub _prepare_special_elements($$)
     foreach my $cmdname ('contents', 'shortcontents') {
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
-        if ($self->get_conf('OUTPUT_CONTENTS_LOCATION')
+        if ($self->get_conf('CONTENTS_OUTPUT_LOCATION')
             eq 'separate_element') {
           $do_special{$type} = 1;
         }
@@ -5815,17 +5815,17 @@ sub _prepare_contents_elements($)
       my $type = $contents_command_element_name{$cmdname};
       if ($self->get_conf($cmdname)) {
         my $default_filename;
-        if ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_title') {
+        if ($self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'after_title') {
           if ($self->{'elements'}) {
             $default_filename = $self->{'elements'}->[0]->{'filename'};
           }
-        } elsif ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'after_top') {
+        } elsif ($self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'after_top') {
           my $section_top = undef;
           if ($self->{'extra'} and $self->{'extra'}->{'top'}) {
              $section_top = $self->{'extra'}->{'top'};
              $default_filename = $self->command_filename($section_top)
           }
-        } elsif ($self->get_conf('OUTPUT_CONTENTS_LOCATION') eq 'at_commands') {
+        } elsif ($self->get_conf('CONTENTS_OUTPUT_LOCATION') eq 'inline') {
           if ($self->{'extra'} and $self->{'extra'}->{$cmdname}) {
             foreach my $command(@{$self->{'extra'}->{$cmdname}}) {
               my ($element, $root_command) 
@@ -8044,7 +8044,7 @@ sub _set_variables_texi2html()
   ['NO_USE_SETFILENAME', 1],
   ['USE_SETFILENAME_EXTENSION', 0],
   ['footnotestyle', 'separate'],
-  ['OUTPUT_CONTENTS_LOCATION', 'separate_element'],
+  ['CONTENTS_OUTPUT_LOCATION', 'separate_element'],
   ['FORCE', 1],
   ['AVOID_MENU_REDUNDANCY', 1],
   ['USE_ACCESSKEY', 0],

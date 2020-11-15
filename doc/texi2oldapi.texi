@@ -1486,9 +1486,9 @@ More details:
 @code{shortcontents} may be set to trigger the output of the
 respective elements.
 
-@item If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{at_commands},
+@item If @code{CONTENTS_OUTPUT_LOCATION} is set to @samp{inline},
 the @emph{Table of contents} and @emph{Overview} elements are directly
-included within the document.  If @code{OUTPUT_CONTENTS_LOCATION} is set to
+included within the document.  If @code{CONTENTS_OUTPUT_LOCATION} is set to
 @samp{'separate_element'} the @emph{Table of contents} and @emph{Overview}
 elements are separate (@pxref{Contents and Overview Elements Customization}).
 
@@ -2153,19 +2153,19 @@ To begin with, the table of contents and short table of contents can
 be made to appear at either the beginning (the default) or end of the
 document.
 
-@vindex OUTPUT_CONTENTS_LOCATION
+@vindex CONTENTS_OUTPUT_LOCATION
 By default, the configuration variable
-@code{OUTPUT_CONTENTS_LOCATION} is set to @samp{at_commands}, specifying
+@code{CONTENTS_OUTPUT_LOCATION} is set to @samp{inline}, specifying
 that the tables of contents are not output as separate elements but instead
 where the corresponding @@-command, for example @code{@@contents}, is set.
 This behavior is consistent with @command{texi2dvi}.
 
-If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{separate_element},
+If @code{CONTENTS_OUTPUT_LOCATION} is set to @samp{separate_element},
 the tables of contents are output in separate elements, either at
 the end of the document if the output is unsplit or in separate files if not.
 This makes sense when menus are used for navigation.
 
-If @code{OUTPUT_CONTENTS_LOCATION} is set to @samp{after_title}
+If @code{CONTENTS_OUTPUT_LOCATION} is set to @samp{after_title}
 the tables of contents are merged into the title material, which in turn is not
 output by default; @pxref{HTML Title Page Customization}.
 
@@ -2262,7 +2262,7 @@ of contents.  This function should return the formatted overview
 @end deftypefn
 
 Another function reference is used to add a heading and a reference,
-to be used with @code{OUTPUT_CONTENTS_LOCATION} or merged into the title
+to be used with @code{CONTENTS_OUTPUT_LOCATION} or merged into the title
 material.  Its output is not used when the tables of contents are
 separate elements.
 

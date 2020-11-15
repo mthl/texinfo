@@ -16216,6 +16216,15 @@ cross-references (@pxref{Four and Five Arguments}) are present in
 If set, use tables for indentation of complex formats; default
 false.
 
+@item CONTENTS_OUTPUT_LOCATION
+If set to @samp{after_top}, output the contents at the end of the @code{@@top}
+section.  If set to @samp{inline}, output the contents where the
+@code{@@contents} and similar @@-commands are located.  If set to
+@samp{separate_element} output the contents in separate elements, either at the
+end of the document if not split, or in a separate file.  If set to
+@samp{after_title} the tables of contents are output after the title; default
+@samp{after_top}.
+
 @item COPIABLE_ANCHORS
 If set, output copiable anchors for the definition commands
 (@pxref{Definition Commands}) and table commands (@pxref{Two-column
@@ -16291,15 +16300,6 @@ links; default unset.
 @item INDEX_ENTRY_COLON
 Symbol used between the index entry and the associated node or section;
 default @samp{:}.
-
-@item OUTPUT_CONTENTS_LOCATION
-If set to @samp{after_top}, output the contents at the end of the @code{@@top}
-section.  If set to @samp{at_commands}, output the contents where the
-@code{@@contents} and similar @@-commands are located.  If set to
-@samp{separate_element} output the contents in separate elements, either at the
-end of the document if not split, or in a separate file.  If set to
-@samp{after_title} the tables of contents are output after the title; default
-@samp{after_top}.
 
 @item INLINE_CSS_STYLE
 Put CSS directly in HTML elements rather than at the

@@ -170,7 +170,7 @@ in detaildescription
 @section sec
 
 @shortcontents
-', {}, {'OUTPUT_CONTENTS_LOCATION' => 'at_commands'}],
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'inline'}],
 ['test_xrefautomaticsectiontitle',
 '@node Top
 @top top
@@ -258,7 +258,7 @@ In top.
 
 @contents
 
-', {}, {'OUTPUT_CONTENTS_LOCATION' => 'after_title'}]
+', {}, {'CONTENTS_OUTPUT_LOCATION' => 'after_title'}]
 );
 
 my @test_cases_text = (
