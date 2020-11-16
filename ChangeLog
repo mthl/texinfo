@@ -1,3 +1,17 @@
+2020-11-17  Patrice Dumas  <pertusus@free.fr>
+
+	Normalize perl parser and XS parser output for better test comparability
+
+	* tp/Texinfo/ParserNonXS.pm (_end_line): use a string for enumerate
+	default specification for consistency.
+	* tp/Texinfo/ParserNonXS.pm (_check_line_directive): use an integer
+	for the line number for consistency.
+	* tp/t/test_utils.pl (duplicate_key_array, _duplicate_element_keys,
+	duplicate_tree_element_keys): new functions used to normalize
+	parsers outputs for better tests comparabilities.
+	* tp/t/test_utils.pl: put use Texinfo::Transformations; at the 
+	beginning.
+
 2020-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	Parse Texinfo commands in @displaymath as in @math (XS version)

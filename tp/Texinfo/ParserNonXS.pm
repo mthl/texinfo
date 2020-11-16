@@ -2775,7 +2775,7 @@ sub _end_line($$$)
     if ($current->{'cmdname'} 
           and $block_item_commands{$current->{'cmdname'}}) {
       if ($current->{'cmdname'} eq 'enumerate') {
-        my $spec = 1;
+        my $spec = '1';
         if ($current->{'args'} and $current->{'args'}->[0]
             and $current->{'args'}->[0]->{'contents'}
             and @{$current->{'args'}->[0]->{'contents'}}) {
@@ -3404,7 +3404,7 @@ sub _check_line_directive {
       and $line_nr->{'file_name'} ne ''
       and !$line_nr->{'macro'}
       and $line =~ /^\s*#\s*(line)? (\d+)(( "([^"]+)")(\s+\d+)*)?\s*$/) {
-    _save_line_directive ($self, $2, $5);
+    _save_line_directive ($self, int($2), $5);
     return 1;
   }
   return 0;

@@ -37,6 +37,7 @@ use Texinfo::Parser;
 use Texinfo::Convert::Text;
 use Texinfo::Convert::Texinfo;
 use Texinfo::Structuring;
+use Texinfo::Transformations;
 use Texinfo::Convert::Plaintext;
 use Texinfo::Convert::Info;
 use Texinfo::Convert::HTML;
@@ -337,6 +338,74 @@ sub remove_keys($$;$)
     }
   }
   return $root;
+}
+
+sub duplicate_key_array($$)
+{
+  my $element = shift;
+  my $key = shift;
+
+  if (defined($element) and exists($element->{$key})
+      and defined($element->{$key})) {
+    my $new_content = [];
+    foreach my $array_item (@{$element->{$key}}) {
+      push @$new_content, $array_item;
+    }
+    $element->{$key} = $new_content;
+  }
+}
+
+# used to have a similar output as the XS parser
+# when using the pure perl parser.
+sub _duplicate_element_keys($$$)
+{
+  my $self = shift;
+  my $type = shift;
+  my $current = shift;
+
+  if (exists($current->{'line_nr'})) {
+    # cannot use dclone as dclone changes integers to strings
+    #$current->{'line_nr'} = dclone($current->{'line_nr'});
+    my $new_line_nr = {};
+    foreach my $key(keys(%{$current->{'line_nr'}})) {
+      $new_line_nr->{$key} = $current->{'line_nr'}->{$key};
+    }
+    $current->{'line_nr'} = $new_line_nr;
+  }
+
+  if (exists($current->{'extra'})) {
+    if (exists($current->{'extra'}->{'nodes_manuals'})
+        and defined($current->{'extra'}->{'nodes_manuals'})) {
+      foreach my $node_manual (@{$current->{'extra'}->{'nodes_manuals'}}) {
+        duplicate_key_array($node_manual, 'node_content');
+      }
+    }
+    if (exists($current->{'extra'}->{'type'})) {
+      duplicate_key_array($current->{'extra'}->{'type'}, 'content');
+    }
+    # only need to duplicate for @def* index entries
+    # in that case they are not duplicated in the XS parser output
+    if (exists($current->{'extra'}->{'index_entry'})
+        and exists($current->{'extra'}->{'def_command'})) {
+      duplicate_key_array($current->{'extra'}->{'index_entry'},
+        'content_normalized');
+    }
+    if (exists($current->{'extra'}->{'prototypes'})
+        and (defined($current->{'extra'}->{'prototypes'}))) {
+      foreach my $prototype (@{$current->{'extra'}->{'prototypes'}}) {
+        duplicate_key_array($prototype, 'contents');
+      }
+    }
+  }
+
+  return ($current);
+}
+
+sub duplicate_tree_element_keys($$)
+{
+  my $self = shift;
+  my $tree = shift;
+  return Texinfo::Common::modify_tree($self, $tree, \&_duplicate_element_keys);
 }
 
 sub cmp_trimmed($$$$)
@@ -741,7 +810,6 @@ sub test($$)
                                                      $index_names);
   }
   if ($parser_options->{'SIMPLE_MENU'}) {
-    require Texinfo::Transformations;
     $parser->Texinfo::Transformations::set_menus_to_simple_menu();
   }
 
@@ -867,8 +935,12 @@ sub test($$)
   my $split_result;
   if ($elements) {
     $split_result = $elements;
+    foreach my $element (@$elements) {
+      duplicate_tree_element_keys($parser, $element);
+    }
   } else {
     $split_result = $result;
+    duplicate_tree_element_keys($parser, $result);
   }
 
   {

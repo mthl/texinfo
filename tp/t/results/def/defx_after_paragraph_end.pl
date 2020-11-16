@@ -109,7 +109,9 @@ $result_trees{'defx_after_paragraph_end'} = {
               'content' => [
                 {}
               ],
-              'content_normalized' => [],
+              'content_normalized' => [
+                {}
+              ],
               'in_code' => 1,
               'index_at_command' => 'deffn',
               'index_name' => 'fn',
@@ -228,7 +230,9 @@ $result_trees{'defx_after_paragraph_end'} = {
               'content' => [
                 {}
               ],
-              'content_normalized' => [],
+              'content_normalized' => [
+                {}
+              ],
               'in_code' => 1,
               'index_at_command' => 'deffnx',
               'index_name' => 'fn',
@@ -304,7 +308,7 @@ $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
-$result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content'};
+$result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[1]{'contents'}[0]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[1];
@@ -322,7 +326,7 @@ $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'def_parsed_hash'}{'name'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'command'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'}[0] = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
-$result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content'};
+$result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'extra'}{'index_entry'}{'content_normalized'}[0] = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'args'}[0]{'contents'}[2];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[3]{'args'}[0];
 $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'defx_after_paragraph_end'}{'contents'}[0]{'contents'}[3];
