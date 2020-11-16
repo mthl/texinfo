@@ -403,6 +403,13 @@ close_commands (ELEMENT *current, enum command_id closed_command,
           if (c != ct_menu && c != ct_preformatted)
             abort ();
         }
+      else if (current->cmd == CM_math || current->cmd == CM_displaymath)
+        {
+          enum context c;
+          c = pop_context ();
+          if (c != ct_math)
+            abort ();
+        }
 
       if (command_data(current->cmd).data == BLOCK_region)
         pop_region ();

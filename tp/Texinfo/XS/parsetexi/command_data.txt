@@ -432,7 +432,6 @@ verbatim                block                           BLOCK_raw
 ignore                  block                           BLOCK_raw
 macro                   block                           BLOCK_raw
 rmacro                  block                           BLOCK_raw
-displaymath             block                           BLOCK_raw
 
 table                   block,blockitem                 1
 ftable                  block,blockitem                 1
@@ -443,6 +442,7 @@ quotation               block                           1
 smallquotation          block                           1
 
 float                   block                           2
+displaymath             block                           0
 
 ##################################################################
 # Conditional commands

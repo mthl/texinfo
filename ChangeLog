@@ -1,3 +1,16 @@
+2020-11-16  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Parse Texinfo commands in @displaymath as in @math (XS version)
+	
+	* tp/Texinfo/XS/parsetexi/command_data.txt: Remove displaymath
+	from raw commands.
+	* tp/Texinfo/XS/parsetexi/commands.c (close_paragraph_command):
+	Remove displaymath.
+	* tp/Texinfo/XS/parsetexi/handle_commands.c (handle_block_command):
+	Push 'math' context for @displaymath.
+	* tp/Texinfo/XS/parsetexi/close.c (close_commands): Pop context
+	for @math and @displaymath.
+
 2020-11-16  Patrice Dumas  <pertusus@free.fr>
 
 	Warn and die if the fallback ParserNonXS require failed
