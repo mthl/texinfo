@@ -1116,9 +1116,9 @@ After clickstyle &result;
 in the displaymath below, as in math, backslash are doubled because 
 we are in a macro.
 </ignore>
-<displaymath>
+<displaymath endspaces=" ">
 disp--laymath
-f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e<sup>-{1 \over 2}\left({x-\mu \over \sigma}\right)^2</sup>
 </displaymath>
 
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="3">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
@@ -1847,9 +1847,9 @@ After clickstyle &result;
 in the displaymath below, as in math, backslash are doubled because 
 we are in a macro.
 </ignore>
-<displaymath>
+<displaymath endspaces=" ">
 disp--laymath
-f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e<sup>-{1 \over 2}\left({x-\mu \over \sigma}\right)^2</sup>
 </displaymath>
 
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="42">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
@@ -2578,9 +2578,9 @@ After clickstyle &result;
 in the displaymath below, as in math, backslash are doubled because 
 we are in a macro.
 </ignore>
-<displaymath>
+<displaymath endspaces=" ">
 disp--laymath
-f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e<sup>-{1 \over 2}\left({x-\mu \over \sigma}\right)^2</sup>
 </displaymath>
 
 <deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="81">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
@@ -3303,12 +3303,12 @@ After clickstyle &result;
 in the displaymath below, as in math, backslash are doubled because 
 we are in a macro.
 </ignore>
-</pre><displaymath>
+</pre><displaymath endspaces=" ">
 disp--laymath
-f(x) = {1 \over \sigma \sqrt{2\pi}}e@sup{-{1 \over 2}\left({x-\mu \over \sigma}\right)^2}
+f(x) = {1 \over \sigma \sqrt{2\pi}}e<sup>-{1 \over 2}\left({x-\mu \over \sigma}\right)^2</sup>
 </displaymath>
-
-<deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="120">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
+<pre xml:space="preserve">
+</pre><deffn spaces=" " endspaces=" "><definitionterm><indexterm index="fn" number="120">d--effn_name</indexterm><defcategory>c--ategory</defcategory> <deffunction>d--effn_name</deffunction> <defparam>a--rguments...</defparam></definitionterm>
 <definitionitem><pre xml:space="preserve">d--effn
 </pre></definitionitem></deffn>
 <pre xml:space="preserve">
