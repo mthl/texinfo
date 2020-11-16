@@ -281,6 +281,9 @@ as much as possible is closed in order to find the @@float beginning.
 
 Second paragraph.
 '],
+['empty_line_in_math','@math{a
+
+b}'],
 ['math_not_closed','@math{\delta + 2'],
 ['math_bracketed_not_closed','@math{{x^i}\over{\tan '],
 ['math_bracketed_inside_not_closed','@math{{x^i}\over{\tan}'],
