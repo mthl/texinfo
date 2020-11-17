@@ -548,16 +548,12 @@ in a reuglar para @sortas{foo}. @code{inside another @sortas{command}}.
 
 );
 
-sub encoding_index_text($)
-{
-  my $eacutes = shift;
-  return
-'
+my $encoding_index_text = '
 @node Top
 @top top
 
-@cindex '."$eacutes
-".'@cindex @"{i} @"{i}@"{i}@"{i}
+@cindex @\'e @\'e
+@cindex @"{i} @"{i}@"{i}@"{i}
 @cindex @^i @^i@^i@^i@^i
 @cindex a
 @cindex b
@@ -614,52 +610,41 @@ sub encoding_index_text($)
 
 @printindex cp
 ';
-}
 
 my @file_tests = (
 ['encoding_index_ascii',
 '
 @setfilename encoding_index_ascii.info
 @documentencoding us-ascii
-'.encoding_index_text('@\'e @\'e'),
+'.$encoding_index_text,
 {'ENABLE_ENCODING' => 0}, {'ENABLE_ENCODING' => 0}
 ],
-# \x{e9} is e with a acute
 ['encoding_index_latin1',
-'
-@setfilename encoding_index_latin1.info
-@documentencoding iso-8859-1
-'.encoding_index_text("\x{e9} \x{e9}"),
-{'ENABLE_ENCODING' => 0}, {'ENABLE_ENCODING' => 0}
+undef,
+{'test_file' => 'encoding_index_latin1.texi', 'ENABLE_ENCODING' => 0}, 
+{'ENABLE_ENCODING' => 0}
 ],
 ['encoding_index_utf8',
-'
-@setfilename encoding_index_utf8.info
-@documentencoding utf-8
-'.encoding_index_text("\x{e9} \x{e9}"),
-{'ENABLE_ENCODING' => 0}, {'ENABLE_ENCODING' => 0}
+undef,
+{'test_file' => 'encoding_index_utf8.texi', 'ENABLE_ENCODING' => 0}, 
+{'ENABLE_ENCODING' => 0}
 ],
 ['encoding_index_ascii_enable_encoding',
 '
 @setfilename encoding_index_ascii_enable_encoding.info
 @documentencoding us-ascii
-'.encoding_index_text('@\'e @\'e'),
+'.$encoding_index_text,
 {'ENABLE_ENCODING' => 1}, {'ENABLE_ENCODING' => 1}
 ],
-# \x{e9} is e with a acute
 ['encoding_index_latin1_enable_encoding',
-'
-@setfilename encoding_index_latin1_enable_encoding.info
-@documentencoding iso-8859-1
-'.encoding_index_text("\x{e9} \x{e9}"),
-{'ENABLE_ENCODING' => 1}, {'ENABLE_ENCODING' => 1}
+undef,
+{'test_file' => 'encoding_index_latin1.texi', 'ENABLE_ENCODING' => 1}, 
+{'ENABLE_ENCODING' => 1}
 ],
 ['encoding_index_utf8_enable_encoding',
-'
-@setfilename encoding_index_utf8_enable_encoding.info
-@documentencoding utf-8
-'.encoding_index_text("\x{e9} \x{e9}"),
-{'ENABLE_ENCODING' => 1}, {'ENABLE_ENCODING' => 1}
+undef,
+{'test_file' => 'encoding_index_utf8.texi', 'ENABLE_ENCODING' => 1}, 
+{'ENABLE_ENCODING' => 1}
 ],
 );
 

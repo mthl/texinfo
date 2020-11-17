@@ -10,10 +10,22 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
     {
       'contents' => [
         {
-          'parent' => {},
-          'text' => '
+          'contents' => [
+            {
+              'contents' => [
+                {
+                  'parent' => {},
+                  'text' => '
 ',
-          'type' => 'empty_line'
+                  'type' => 'preamble_text'
+                }
+              ],
+              'parent' => {},
+              'type' => 'preamble'
+            }
+          ],
+          'parent' => {},
+          'type' => 'preamble_before_setfilename'
         },
         {
           'args' => [
@@ -21,7 +33,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'encoding_index_latin1_enable_encoding.info'
+                  'text' => 'encoding_index_latin1.info'
                 }
               ],
               'extra' => {
@@ -35,10 +47,10 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
           'cmdname' => 'setfilename',
           'extra' => {
             'spaces_before_argument' => ' ',
-            'text_arg' => 'encoding_index_latin1_enable_encoding.info'
+            'text_arg' => 'encoding_index_latin1.info'
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 2,
             'macro' => ''
           },
@@ -69,7 +81,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'text_arg' => 'iso-8859-1'
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 3,
             'macro' => ''
           },
@@ -121,7 +133,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
         'spaces_before_argument' => ' '
       },
       'line_nr' => {
-        'file_name' => '',
+        'file_name' => 'encoding_index_latin1.texi',
         'line_nr' => 5,
         'macro' => ''
       },
@@ -186,7 +198,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 8,
             'macro' => ''
           },
@@ -213,7 +225,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '"',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 9,
                     'macro' => ''
                   },
@@ -239,7 +251,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '"',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 9,
                     'macro' => ''
                   },
@@ -261,7 +273,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '"',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 9,
                     'macro' => ''
                   },
@@ -283,7 +295,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '"',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 9,
                     'macro' => ''
                   },
@@ -315,7 +327,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 9,
             'macro' => ''
           },
@@ -342,7 +354,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 10,
                     'macro' => ''
                   },
@@ -368,7 +380,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 10,
                     'macro' => ''
                   },
@@ -390,7 +402,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 10,
                     'macro' => ''
                   },
@@ -412,7 +424,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 10,
                     'macro' => ''
                   },
@@ -434,7 +446,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 10,
                     'macro' => ''
                   },
@@ -466,7 +478,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 10,
             'macro' => ''
           },
@@ -507,7 +519,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 11,
             'macro' => ''
           },
@@ -548,7 +560,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 12,
             'macro' => ''
           },
@@ -589,7 +601,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 13,
             'macro' => ''
           },
@@ -630,7 +642,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 14,
             'macro' => ''
           },
@@ -671,7 +683,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 15,
             'macro' => ''
           },
@@ -712,7 +724,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 16,
             'macro' => ''
           },
@@ -753,7 +765,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 17,
             'macro' => ''
           },
@@ -794,7 +806,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 18,
             'macro' => ''
           },
@@ -835,7 +847,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 19,
             'macro' => ''
           },
@@ -876,7 +888,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 20,
             'macro' => ''
           },
@@ -917,7 +929,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 21,
             'macro' => ''
           },
@@ -958,7 +970,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 22,
             'macro' => ''
           },
@@ -999,7 +1011,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 23,
             'macro' => ''
           },
@@ -1040,7 +1052,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 24,
             'macro' => ''
           },
@@ -1081,7 +1093,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 25,
             'macro' => ''
           },
@@ -1122,7 +1134,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 26,
             'macro' => ''
           },
@@ -1163,7 +1175,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 27,
             'macro' => ''
           },
@@ -1204,7 +1216,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 28,
             'macro' => ''
           },
@@ -1245,7 +1257,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 29,
             'macro' => ''
           },
@@ -1286,7 +1298,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 30,
             'macro' => ''
           },
@@ -1327,7 +1339,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 31,
             'macro' => ''
           },
@@ -1368,7 +1380,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 32,
             'macro' => ''
           },
@@ -1409,7 +1421,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 33,
             'macro' => ''
           },
@@ -1450,7 +1462,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 34,
             'macro' => ''
           },
@@ -1491,7 +1503,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 35,
             'macro' => ''
           },
@@ -1532,7 +1544,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 36,
             'macro' => ''
           },
@@ -1573,7 +1585,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 37,
             'macro' => ''
           },
@@ -1614,7 +1626,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 38,
             'macro' => ''
           },
@@ -1636,7 +1648,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'l',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 39,
                     'macro' => ''
                   },
@@ -1668,7 +1680,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 39,
             'macro' => ''
           },
@@ -1690,7 +1702,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'L',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 40,
                     'macro' => ''
                   },
@@ -1722,7 +1734,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 40,
             'macro' => ''
           },
@@ -1749,7 +1761,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'dotless',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 41,
                     'macro' => ''
                   },
@@ -1775,7 +1787,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'dotless',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 41,
                     'macro' => ''
                   },
@@ -1811,7 +1823,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 41,
             'macro' => ''
           },
@@ -1842,7 +1854,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                           'cmdname' => 'dotless',
                           'contents' => [],
                           'line_nr' => {
-                            'file_name' => '',
+                            'file_name' => 'encoding_index_latin1.texi',
                             'line_nr' => 42,
                             'macro' => ''
                           },
@@ -1856,7 +1868,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 42,
                     'macro' => ''
                   },
@@ -1886,7 +1898,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                           'cmdname' => 'dotless',
                           'contents' => [],
                           'line_nr' => {
-                            'file_name' => '',
+                            'file_name' => 'encoding_index_latin1.texi',
                             'line_nr' => 42,
                             'macro' => ''
                           },
@@ -1900,7 +1912,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => '^',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 42,
                     'macro' => ''
                   },
@@ -1936,7 +1948,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 42,
             'macro' => ''
           },
@@ -1958,7 +1970,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'ss',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 43,
                     'macro' => ''
                   },
@@ -1990,7 +2002,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 43,
             'macro' => ''
           },
@@ -2012,7 +2024,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'euro',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 44,
                     'macro' => ''
                   },
@@ -2044,7 +2056,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 44,
             'macro' => ''
           },
@@ -2066,7 +2078,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'AE',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 45,
                     'macro' => ''
                   },
@@ -2098,7 +2110,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 45,
             'macro' => ''
           },
@@ -2120,7 +2132,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'exclamdown',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 46,
                     'macro' => ''
                   },
@@ -2152,7 +2164,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 46,
             'macro' => ''
           },
@@ -2174,7 +2186,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'TH',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 47,
                     'macro' => ''
                   },
@@ -2206,7 +2218,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 47,
             'macro' => ''
           },
@@ -2228,7 +2240,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'DH',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 48,
                     'macro' => ''
                   },
@@ -2260,7 +2272,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 48,
             'macro' => ''
           },
@@ -2282,7 +2294,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'textdegree',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 49,
                     'macro' => ''
                   },
@@ -2314,7 +2326,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 49,
             'macro' => ''
           },
@@ -2355,7 +2367,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 50,
             'macro' => ''
           },
@@ -2396,7 +2408,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 51,
             'macro' => ''
           },
@@ -2418,7 +2430,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'quotedblleft',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 52,
                     'macro' => ''
                   },
@@ -2450,7 +2462,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 52,
             'macro' => ''
           },
@@ -2472,7 +2484,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'geq',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 53,
                     'macro' => ''
                   },
@@ -2504,7 +2516,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 53,
             'macro' => ''
           },
@@ -2526,7 +2538,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
                   'cmdname' => 'comma',
                   'contents' => [],
                   'line_nr' => {
-                    'file_name' => '',
+                    'file_name' => 'encoding_index_latin1.texi',
                     'line_nr' => 54,
                     'macro' => ''
                   },
@@ -2558,7 +2570,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 54,
             'macro' => ''
           },
@@ -2599,7 +2611,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 55,
             'macro' => ''
           },
@@ -2640,7 +2652,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 56,
             'macro' => ''
           },
@@ -2681,7 +2693,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 57,
             'macro' => ''
           },
@@ -2722,7 +2734,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 58,
             'macro' => ''
           },
@@ -2763,7 +2775,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 59,
             'macro' => ''
           },
@@ -2804,7 +2816,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 60,
             'macro' => ''
           },
@@ -2845,7 +2857,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 61,
             'macro' => ''
           },
@@ -2886,7 +2898,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 62,
             'macro' => ''
           },
@@ -2924,7 +2936,7 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
             'spaces_before_argument' => ' '
           },
           'line_nr' => {
-            'file_name' => '',
+            'file_name' => 'encoding_index_latin1.texi',
             'line_nr' => 64,
             'macro' => ''
           },
@@ -2936,15 +2948,29 @@ $result_trees{'encoding_index_latin1_enable_encoding'} = {
       },
       'level' => 0,
       'line_nr' => {
-        'file_name' => '',
+        'file_name' => 'encoding_index_latin1.texi',
         'line_nr' => 6,
         'macro' => ''
       },
+      'parent' => {}
+    },
+    {
+      'args' => [
+        {
+          'parent' => {},
+          'text' => '
+',
+          'type' => 'misc_arg'
+        }
+      ],
+      'cmdname' => 'bye',
       'parent' => {}
     }
   ],
   'type' => 'document_root'
 };
+$result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[0]{'contents'}[0];
+$result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[0];
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0];
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'contents'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0];
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[1]{'args'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[0]{'contents'}[1];
@@ -3409,9 +3435,11 @@ $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2]{'contents'
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2]{'contents'}[57]{'args'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2]{'contents'}[57];
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2]{'contents'}[57]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2];
 $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[2]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'};
+$result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[3]{'args'}[0]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[3];
+$result_trees{'encoding_index_latin1_enable_encoding'}{'contents'}[3]{'parent'} = $result_trees{'encoding_index_latin1_enable_encoding'};
 
 $result_texis{'encoding_index_latin1_enable_encoding'} = '
-@setfilename encoding_index_latin1_enable_encoding.info
+@setfilename encoding_index_latin1.info
 @documentencoding iso-8859-1
 
 @node Top
@@ -3474,11 +3502,11 @@ $result_texis{'encoding_index_latin1_enable_encoding'} = '
 @cindex ---
 
 @printindex cp
+@bye
 ';
 
 
 $result_texts{'encoding_index_latin1_enable_encoding'} = '
-
 top
 ***
 

@@ -7,6 +7,15 @@
 
 2020-11-17  Patrice Dumas  <pertusus@free.fr>
 
+	Use files in input for tests with encodings and non ascii characters
+
+	* tp/t/09indices.t, tp/t/input_files/encoding_index_latin1.texi,
+	tp/t/input_files/encoding_index_utf8.texi: replace 
+	tests with encoded characters provided as perl strings with 
+	actual files properly encoded.
+
+2020-11-17  Patrice Dumas  <pertusus@free.fr>
+
 	Normalize perl parser and XS parser output for better test comparability
 
 	* tp/Texinfo/ParserNonXS.pm (_end_line): use a string for enumerate
