@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-11-14.10}
+\def\texinfoversion{2020-11-17.17}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -9053,20 +9053,22 @@ might help (with 'rm \jobname.?? \jobname.??s')%
       % output the `[mynode]' via the macro below so it can be overridden.
       \xrefprintnodename\printedrefname
       %
-      % But we always want a comma and a space:
-      ,\space
-      %
-      % output the `page 3'.
-      \turnoffactive \putwordpage\tie\refx{#1-pg}{}%
-      % Add a , if xref followed by a space
-      \if\space\noexpand\tokenafterxref ,%
-      \else\ifx\	\tokenafterxref ,% @TAB
-      \else\ifx\*\tokenafterxref ,%   @*
-      \else\ifx\ \tokenafterxref ,%   @SPACE
-      \else\ifx\
-                \tokenafterxref ,%    @NL
-      \else\ifx\tie\tokenafterxref ,% @tie
-      \fi\fi\fi\fi\fi\fi
+      \expandafter\ifx\csname SETtxiomitxrefpg\endcsname\relax
+        % But we always want a comma and a space:
+        ,\space
+        %
+        % output the `page 3'.
+        \turnoffactive \putwordpage\tie\refx{#1-pg}{}%
+        % Add a , if xref followed by a space
+        \if\space\noexpand\tokenafterxref ,%
+        \else\ifx\	\tokenafterxref ,% @TAB
+        \else\ifx\*\tokenafterxref ,%   @*
+        \else\ifx\ \tokenafterxref ,%   @SPACE
+        \else\ifx\
+                  \tokenafterxref ,%    @NL
+        \else\ifx\tie\tokenafterxref ,% @tie
+        \fi\fi\fi\fi\fi\fi
+      \fi
     \fi\fi
   \fi
   \endlink
