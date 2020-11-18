@@ -113,7 +113,7 @@ BBB
 
 F@footnote{In footnote}.
 '],
-['space_in_image','@image{ a ,bb, cc,dd ,e }. @image{ f }.'],
+['space_in_image','@image{ a ,bb, cc,dd ,.e }. @image{ f }.'],
 ['space_command_in_image', '@image{f--ile,,,@ } @image{f--ile,,,@:}'],
 ['end_line_in_anchor',
 '@anchor{an
@@ -162,9 +162,9 @@ two single quotes to left- and right-hand doubled.
 '],
 ['test_image',
 '@macro files-char
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 @end macro
 
 @copying

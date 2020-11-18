@@ -38,7 +38,7 @@ $result_trees{'image_extension'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'gr--a'
+              'text' => '.gr--a'
             }
           ],
           'parent' => {},
@@ -75,7 +75,7 @@ $result_trees{'image_extension'}{'contents'}[0]{'args'}[4]{'parent'} = $result_t
 $result_trees{'image_extension'}{'contents'}[0]{'parent'} = $result_trees{'image_extension'};
 $result_trees{'image_extension'}{'contents'}[1]{'parent'} = $result_trees{'image_extension'};
 
-$result_texis{'image_extension'} = '@image{f---ile,,,,gr--a}
+$result_texis{'image_extension'} = '@image{f---ile,,,,.gr--a}
 ';
 
 
@@ -122,7 +122,7 @@ $result_converted_errors{'html_text'}->{'image_extension'} = [
 
 
 
-$result_converted{'xml'}->{'image_extension'} = '<image><imagefile>f---ile</imagefile><imageextension>gr--a</imageextension></image>
+$result_converted{'xml'}->{'image_extension'} = '<image><imagefile>f---ile</imagefile><imageextension>.gr--a</imageextension></image>
 ';
 
 

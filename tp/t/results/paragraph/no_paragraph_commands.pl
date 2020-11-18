@@ -89,7 +89,7 @@ $result_trees{'no_paragraph_commands'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'ee'
+              'text' => '.ee'
             }
           ],
           'parent' => {},
@@ -137,7 +137,7 @@ $result_trees{'no_paragraph_commands'}{'contents'}[5]{'parent'} = $result_trees{
 
 $result_texis{'no_paragraph_commands'} = '@*
 @titlefont{title font}
-@image{aa,bb,cc,dd,ee}
+@image{aa,bb,cc,dd,.ee}
 ';
 
 

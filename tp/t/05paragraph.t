@@ -21,7 +21,7 @@ text l 2
 '],
 [ 'no_paragraph_commands', '@*
 @titlefont{title font}
-@image{aa,bb,cc,dd,ee}
+@image{aa,bb,cc,dd,.ee}
 '],
 [ 'paragraph_command','@@
 
@@ -40,7 +40,7 @@ text l 2
 
 '],
 ['image_in_paragraph',
-'Para. @image{aa,bb,cc,dd,ee}. After image.
+'Para. @image{aa,bb,cc,dd,.ee}. After image.
 '],
 ['close_paragraph_command',
 'para @titlefont{in titlefont} after titlefont.

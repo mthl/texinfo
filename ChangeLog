@@ -1,3 +1,14 @@
+2020-11-18  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	No extra . for image file extension
+
+	* tp/Texinfo/Convert/HTML.pm (_convert_image_command): Do not
+	include extra period before file extension in the case that the
+	file was not found, in accordance with the manual's statement
+	that the fifth argument to @image includes the extension.
+	Report from Christopher Dimech.
+	* NEWS: Update.
+
 2020-11-17  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	@set txiomitxrefpg

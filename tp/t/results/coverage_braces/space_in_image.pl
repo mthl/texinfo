@@ -63,7 +63,7 @@ $result_trees{'space_in_image'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => 'e'
+              'text' => '.e'
             }
           ],
           'extra' => {
@@ -149,7 +149,7 @@ $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[1]{'parent'} = $resul
 $result_trees{'space_in_image'}{'contents'}[1]{'contents'}[2]{'parent'} = $result_trees{'space_in_image'}{'contents'}[1];
 $result_trees{'space_in_image'}{'contents'}[1]{'parent'} = $result_trees{'space_in_image'};
 
-$result_texis{'space_in_image'} = '@image{ a ,bb, cc,dd ,e }. @image{ f }.';
+$result_texis{'space_in_image'} = '@image{ a ,bb, cc,dd ,.e }. @image{ f }.';
 
 
 $result_texts{'space_in_image'} = 'a. f.';

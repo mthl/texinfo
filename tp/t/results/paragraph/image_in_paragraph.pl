@@ -59,7 +59,7 @@ $result_trees{'image_in_paragraph'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'ee'
+                  'text' => '.ee'
                 }
               ],
               'parent' => {},
@@ -105,7 +105,7 @@ $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[1]{'parent'} = $r
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'contents'}[2]{'parent'} = $result_trees{'image_in_paragraph'}{'contents'}[0];
 $result_trees{'image_in_paragraph'}{'contents'}[0]{'parent'} = $result_trees{'image_in_paragraph'};
 
-$result_texis{'image_in_paragraph'} = 'Para. @image{aa,bb,cc,dd,ee}. After image.
+$result_texis{'image_in_paragraph'} = 'Para. @image{aa,bb,cc,dd,.ee}. After image.
 ';
 
 

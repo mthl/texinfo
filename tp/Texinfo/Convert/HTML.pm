@@ -1753,7 +1753,7 @@ sub _convert_image_command($$$$)
     }
     if (!defined($image_file) or $image_file eq '') {
       if (defined($extension) and $extension ne '') {
-        $image_file = "$basefile.$extension";
+        $image_file = $basefile.$extension;
       } else {
         $image_file = "$basefile.jpg";
       }

@@ -67,11 +67,11 @@ aaa '@image{f--ile,l--i}' ggg
 aaa '@image{f--ile,,l--e}' ggg
 aaa
 '@image{f--ile,,,alt}' ggg
-aaa '@image{f--ile,,,,e-d-xt}' ggg
+aaa '@image{f--ile,,,,.e-d-xt}' ggg
 aaa
-'@image{f--ile,aze,az,alt,e--xt}' ggg
+'@image{f--ile,aze,az,alt,.e--xt}' ggg
 aaa '@image{f-ile,aze,,a--lt}' [a-lt]
-'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}' [alt]
+'@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}' [alt]
 
 
 
@@ -501,11 +501,11 @@ aaa '@image{f--ile,l--i}' ggg
 aaa '@image{f--ile,,l--e}' ggg
 aaa
 '@image{f--ile,,,alt}' ggg
-aaa '@image{f--ile,,,,e-d-xt}' ggg
+aaa '@image{f--ile,,,,.e-d-xt}' ggg
 aaa
-'@image{f--ile,aze,az,alt,e--xt}' ggg
+'@image{f--ile,aze,az,alt,.e--xt}' ggg
 aaa '@image{f-ile,aze,,a--lt}' [a-lt]
-'@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}' [alt]
+'@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}' [alt]
 
 
 
@@ -1072,12 +1072,12 @@ aaa
 aaa
      @image{f--ile,,,alt} ggg
 aaa
-     @image{f--ile,,,,e-d-xt} ggg
+     @image{f--ile,,,,.e-d-xt} ggg
 aaa
-     @image{f--ile,aze,az,alt,e--xt} ggg
+     @image{f--ile,aze,az,alt,.e--xt} ggg
 aaa
      @image{f-ile,aze,,a--lt} [a-lt]
-     @image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@} [alt]
+     @image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@} [alt]
 
 
 

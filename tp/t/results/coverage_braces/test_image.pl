@@ -21,7 +21,7 @@ $result_trees{'test_image'} = {
           'contents' => [
             {
               'parent' => {},
-              'text' => '@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+              'text' => '@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 ',
               'type' => 'raw'
             },
@@ -33,7 +33,7 @@ $result_trees{'test_image'} = {
             },
             {
               'parent' => {},
-              'text' => 'In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.',
+              'text' => 'In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.',
               'type' => 'raw'
             },
             {
@@ -181,7 +181,7 @@ $result_trees{'test_image'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'ext'
+                          'text' => '.ext'
                         },
                         {
                           'cmdname' => '@',
@@ -517,7 +517,7 @@ $result_trees{'test_image'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'ext'
+                          'text' => '.ext'
                         },
                         {
                           'cmdname' => '@',
@@ -779,7 +779,7 @@ $result_trees{'test_image'} = {
               'contents' => [
                 {
                   'parent' => {},
-                  'text' => 'ext'
+                  'text' => '.ext'
                 },
                 {
                   'cmdname' => '@',
@@ -1111,7 +1111,7 @@ $result_trees{'test_image'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'ext'
+                      'text' => '.ext'
                     },
                     {
                       'cmdname' => '@',
@@ -1351,7 +1351,7 @@ $result_trees{'test_image'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'ext'
+                          'text' => '.ext'
                         },
                         {
                           'cmdname' => '@',
@@ -1681,7 +1681,7 @@ $result_trees{'test_image'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'ext'
+                          'text' => '.ext'
                         },
                         {
                           'cmdname' => '@',
@@ -1944,7 +1944,7 @@ $result_trees{'test_image'} = {
                   'contents' => [
                     {
                       'parent' => {},
-                      'text' => 'ext'
+                      'text' => '.ext'
                     },
                     {
                       'cmdname' => '@',
@@ -2276,7 +2276,7 @@ $result_trees{'test_image'} = {
                       'contents' => [
                         {
                           'parent' => {},
-                          'text' => 'ext'
+                          'text' => '.ext'
                         },
                         {
                           'cmdname' => '@',
@@ -2472,7 +2472,7 @@ $result_trees{'test_image'} = {
                           'contents' => [
                             {
                               'parent' => {},
-                              'text' => 'ext'
+                              'text' => '.ext'
                             },
                             {
                               'cmdname' => '@',
@@ -2804,7 +2804,7 @@ $result_trees{'test_image'} = {
                               'contents' => [
                                 {
                                   'parent' => {},
-                                  'text' => 'ext'
+                                  'text' => '.ext'
                                 },
                                 {
                                   'cmdname' => '@',
@@ -3555,41 +3555,41 @@ $result_trees{'test_image'}{'contents'}[1]{'extra'}{'nodes_manuals'}[0]{'node_co
 $result_trees{'test_image'}{'contents'}[1]{'parent'} = $result_trees{'test_image'};
 
 $result_texis{'test_image'} = '@macro files-char
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 @end macro
 
 @copying
 Text in copying.
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 @end copying
 
 @node Top
 
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 
 Insertcopying
 @insertcopying
 
 @example
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 @end example
 
 @float Image, Image with commands
-@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.
 
-@caption{@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
+@caption{@image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,,,,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}
 
-In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.}
+In text @image{f@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :} ,1in, 1cm, alt @b{@^{@dotless{i}}--le@/.@.}  a@*<"%@@@verb{:  < & @ % " :}  ,.ext@@i--le@/.@.  a@@<"%@@@verb{:  < & @ % " :}}.}
 @end float
 
 @listoffloats Image

@@ -2583,7 +2583,7 @@ $result_converted{'html_text'}->{'image_formatting'} = '<span id="Top"></span><h
 <code>@image{f--ile,,,,e-d-xt}</code> <img src="f--ile.png" alt="f--ile">
 <code>@image{f--ile,aze,az,alt,e--xt}</code> <img src="f--ile.png" alt="alt">
 <code>@image{f-ile,aze,,a--lt}</code> <img src="f-ile.jpg" alt="a&ndash;lt">
-<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@..file ext e--xt}" alt="alt">
+<code>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</code> <img src="f--ile@.file ext e--xt}" alt="alt">
 <img src="image.jpg" alt="image"> <img src="image.jpg" alt="image">
 </p>
 <div class="example">
@@ -2616,12 +2616,12 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':10: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
+    'error_line' => ':10: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
     'file_name' => '',
     'line_nr' => 10,
     'macro' => '',
-    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
+    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
   },
   {
@@ -2652,12 +2652,12 @@ $result_converted_errors{'html_text'}->{'image_formatting'} = [
     'type' => 'warning'
   },
   {
-    'error_line' => ':21: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'
+    'error_line' => ':21: warning: @image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'
 ',
     'file_name' => '',
     'line_nr' => 21,
     'macro' => '',
-    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@..file ext e--xt}\'',
+    'text' => '@image file `f--ile@.\' (for HTML) not found, using `f--ile@.file ext e--xt}\'',
     'type' => 'warning'
   },
   {

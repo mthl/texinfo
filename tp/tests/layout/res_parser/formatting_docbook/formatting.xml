@@ -213,12 +213,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &#8594; A
@@ -830,12 +830,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &#8594; A
@@ -1448,12 +1448,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &#8594; A
@@ -2066,12 +2066,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &#8594; A
@@ -2683,12 +2683,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 </para>
 
 <para><literal>@clicksequence{click @click{} A}</literal> click &#8594; A
@@ -3296,12 +3296,12 @@ aaa</literallayout></textobject></inlinemediaobject>
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f--ile,,,alt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,,,,e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,,,,.e-d-xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
-<literal>@image{f--ile,aze,az,alt,e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
+<literal>@image{f--ile,aze,az,alt,.e--xt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile.jpg" format="JPG"></imagedata></imageobject><imageobject><imagedata fileref="f--ile.png" format="PNG"></imagedata></imageobject><textobject><literallayout>ggg
 aaa</literallayout></textobject></inlinemediaobject>
 <literal>@image{f-ile,aze,,a--lt}</literal> <inlinemediaobject><imageobject><imagedata fileref="f-ile.jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
-<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
+<literal>@image{@file{f--ile}@@@.,aze,az,alt,@file{.file ext} e--xt@}</literal> <inlinemediaobject><imageobject><imagedata fileref="f--ile@..jpg" format="JPG"></imagedata></imageobject></inlinemediaobject>
 
 
 <literal>@clicksequence{click @click{} A}</literal> click &#8594; A
