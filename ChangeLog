@@ -1,3 +1,22 @@
+2020-11-21  Gavin Smith  <gavinsmith0123@gmail.com>
+
+	Remove newline at start of @macro argument
+
+	* doc/texinfo.tex (\eatleadingcr): New macro.
+	(\scanmacro): Put \eatleadingcr into definition of \xeatspaces.
+	(\parsemargdef): Put \xempty{} into argument to \xeatspaces.
+	* doc/texinfo-tex-test.texi (Newline at start of argument): New
+	test.
+	
+	Hilaire Fernandes reported the case of a broken macro when a comma
+	separating arguments was at the end of a line.  This led the following
+	newline to be included in the macro argument.
+
+	This change stops whitespace being trimmed from the end of
+	macro arguments, so only leading whitespace is trimmed, as
+	is documented and is the case with texi2any's macro handling.
+
+
 2020-11-18  Gavin Smith  <gavinsmith0123@gmail.com>
 
 	No extra . for image file extension

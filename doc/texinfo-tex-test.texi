@@ -387,11 +387,31 @@ exceeds @math{@frak{1,16}} pt
 <X\a\X\b\X>
 @end macro
 
-No trimming for single-arg macros.
+No trimming for single-arg macros.  Trimming from front of argument only
+for other macros.
 
 @noindent @Mac{b} @Mac{ b} @Mac{b  } @Mac{ b }
 
 @noindent @Mactwo{b,c} @Mactwo{ b, c} @Mactwo{b  ,c  } @Mactwo{ b , c }
+
+
+@section Newline at start of argument
+
+@c Figure with caption
+@macro figure{caption,file,width}
+@float Figure,\file\
+@center image
+@caption{\caption\}
+@end float
+@end macro
+
+@figure{The File List tool@comma{} to install a change set and
+more,ch10-FileListChangeSet,11}
+
+@figure{The File List tool@comma{} to install a change set and more,
+ch10-FileListChangeSetA,11}
+
+
 
 
 @section Multi-line macro argument

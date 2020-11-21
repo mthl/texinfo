@@ -3,7 +3,7 @@
 % Load plain if necessary, i.e., if running under initex.
 \expandafter\ifx\csname fmtname\endcsname\relax\input plain\fi
 %
-\def\texinfoversion{2020-11-17.17}
+\def\texinfoversion{2020-11-21.08}
 %
 % Copyright 1985, 1986, 1988, 1990-2020 Free Software Foundation, Inc.
 %
@@ -8091,11 +8091,18 @@ might help (with 'rm \jobname.?? \jobname.??s')%
   }
 \fi
 
+\let\E=\expandafter
+
 % Used at the time of macro expansion.
 % Argument is macro body with arguments substituted
 \def\scanmacro#1{%
   \newlinechar`\^^M
-  \def\xeatspaces{\eatspaces}%
+  % expand the expansion of \eatleadingcr twice to maybe remove a leading
+  % newline (and \else and \fi tokens), then call \eatspaces on the result.
+  \def\xeatspaces##1{%
+    \E\E\E\E\E\E\E\eatspaces\E\E\E\E\E\E\E{\eatleadingcr##1%
+  }}%
+  \def\xempty##1{}%
   %
   % Process the macro body under the current catcode regime.
   \scantokens{#1@comment}%
@@ -8147,6 +8154,11 @@ might help (with 'rm \jobname.?? \jobname.??s')%
 \def\unbrace#1{#1}
 \unbrace{\gdef\trim@@@ #1 } #2@{#1}
 }
+
+{\catcode`\^^M=\other%
+\gdef\eatleadingcr#1{\if\noexpand#1\noexpand^^M\else\E#1\fi}}%
+% Warning: this won't work for a delimited argument
+% or for an empty argument
 
 % Trim a single trailing ^^M off a string.
 {\catcode`\^^M=\other \catcode`\Q=3%
@@ -8314,6 +8326,7 @@ might help (with 'rm \jobname.?? \jobname.??s')%
   \let\hash\relax
   % \hash is redefined to `#' later to get it into definitions
   \let\xeatspaces\relax
+  \let\xempty\relax
   \parsemargdefxxx#1,;,%
   \ifnum\paramno<10\relax\else
     \paramno0\relax
@@ -8325,9 +8338,11 @@ might help (with 'rm \jobname.?? \jobname.??s')%
   \else \let\next=\parsemargdefxxx
     \advance\paramno by 1
     \expandafter\edef\csname macarg.\eatspaces{#1}\endcsname
-        {\xeatspaces{\hash\the\paramno}}%
+        {\xeatspaces{\hash\the\paramno\noexpand\xempty{}}}%
     \edef\paramlist{\paramlist\hash\the\paramno,}%
   \fi\next}
+% the \xempty{} is to give \eatleadingcr an argument in the case of an
+% empty macro argument.
 
 % \parsemacbody, \parsermacbody
 %
